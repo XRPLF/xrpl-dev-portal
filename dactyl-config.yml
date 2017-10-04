@@ -419,5 +419,5 @@ known_broken_links:
 
 # Style Checker Config ------------------------------------------------------ #
 
-word_substitutions_file: word_substitutions.yaml
-phrase_substitutions_file: phrase_substitutions.yaml
+word_substitutions_file: tool/word_substitutions.yaml
+phrase_substitutions_file: tool/phrase_substitutions.yaml

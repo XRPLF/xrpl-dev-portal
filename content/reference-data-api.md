@@ -5332,7 +5332,7 @@ A Link Object represents a peer-to-peer network connection between two `rippled`
 
 A Validation Object represents one vote from a validator to mark a ledger version as validated. (A ledger is only validated by the consensus process if a quorum of trusted validators votes for the same exact ledger version.)
 
-**Note:** The Data API retain only about 6 months of validation vote data.
+**Note:** The Data API keeps only about 6 months of validation vote data.
 
 A Validation Object has the following fields:
 

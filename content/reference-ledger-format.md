@@ -37,7 +37,7 @@ Every ledger version has a unique header that describes the contents. You can lo
 | `ledger_hash`    | String    | Hash256           | The SHA-512Half of the ledger header, excluding the `ledger_hash` itself. This serves as a unique identifier for this ledger and all its contents. |
 | `account_hash`   | String    | Hash256           | The SHA-512Half of this ledger's state tree information. |
 | `close_time`     | Number    | UInt32            | The approximate time this ledger closed, as the number of seconds since the Ripple Epoch of 2000-01-01 00:00:00. This value is rounded based on the `close_time_resolution`, so later ledgers can have the same value. |
-| `closed`          | Boolean   | bool              | If true, this transaction is no longer accepting new transactions. (However, unless this ledger is validated, it might be replaced by a different ledger with a different set of transactions.) |
+| `closed`          | Boolean   | bool              | If true, this ledger version is no longer accepting new transactions. (However, unless this ledger version is validated, it might be replaced by a different ledger version with a different set of transactions.) |
 | `parent_hash`    | String    | Hash256           | The `ledger_hash` value of the previous ledger that was used to build this one. If there are different versions of the previous ledger index, this indicates from which one the ledger was derived. |
 | `total_coins`    | String    | UInt64            | The total number of [drops of XRP][XRP, in drops] owned by accounts in the ledger. This omits XRP that has been destroyed by transaction fees. The actual amount of XRP in circulation is lower because some accounts are "black holes" whose keys are not known by anyone. |
 | `transaction_hash` | String  | Hash256           | The SHA-512Half of the transactions included in this ledger. |
@@ -110,7 +110,7 @@ The `AccountRoot` node has the following fields:
 | `PreviousTxnID`   | String | Hash256 | The identifying hash of the transaction that most recently modified this node. |
 | `PreviousTxnLgrSeq` | Number | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this node. |
 | `AccountTxnID`    | String | Hash256 | (Optional) The identifying hash of the transaction most recently submitted by this account. |
-| `RegularKey`      | String | AccountID | (Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction](reference-transaction-format.html#setregularkey) to change this value. |
+| `RegularKey`      | String | AccountID | (Optional) The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction][] to change this value. |
 | `EmailHash`       | String | Hash128 | (Optional) The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
 | `WalletLocator`   | String | Hash256 | (Optional) **DEPRECATED**. Do not use. |
 | `WalletSize`      | Number | UInt32  | (Optional) **DEPRECATED**. Do not use. |
@@ -121,7 +121,7 @@ The `AccountRoot` node has the following fields:
 
 ### AccountRoot Flags ###
 
-There are several options which can be either enabled or disabled for an account. These options can be changed with an [AccountSet transaction](reference-transaction-format.html#accountset). In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
+There are several options which can be either enabled or disabled for an account. These options can be changed with an [AccountSet transaction][]. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
 
 AccountRoot nodes can have the following flag values:
 
@@ -245,7 +245,7 @@ The lower 64 bits of an Offer Directory's index represent the TakerPays amount d
 
 _(Requires the [Escrow Amendment](concept-amendments.html#paychan).)_
 
-The `Escrow` node type represents a held payment of XRP waiting to be executed or canceled. An [EscrowCreate transaction](reference-transaction-format.html#escrowcreate) creates an Escrow node in the ledger. A successful [EscrowFinish](reference-transaction-format.html#escrowfinish) or [EscrowCancel](reference-transaction-format.html#escrowcancel) transaction deletes the node. If the Escrow node has a [_crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02), the payment can only succeed if an EscrowFinish transaction provides the corresponding _fulfillment_ that satisfies the condition. (The only supported crypto-condition type is [PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1).) If the Escrow node has a `FinishAfter` time, the held payment can only execute after that time.
+The `Escrow` node type represents a held payment of XRP waiting to be executed or canceled. An [EscrowCreate transaction][] creates an Escrow node in the ledger. A successful [EscrowFinish][] or [EscrowCancel][] transaction deletes the node. If the Escrow node has a [_crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02), the payment can only succeed if an EscrowFinish transaction provides the corresponding _fulfillment_ that satisfies the condition. (The only supported crypto-condition type is [PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1).) If the Escrow node has a `FinishAfter` time, the held payment can only execute after that time.
 
 An Escrow node is associated with two addresses:
 
@@ -289,22 +289,21 @@ An Escrow node has the following fields:
 | `PreviousTxnID`     | String | Hash256 | The identifying hash of the transaction that most recently modified this node. |
 | `PreviousTxnLgrSeq` | Number | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this node. |
 
-[EscrowFinish transaction]: reference-transaction-format.html#escrowfinish
 
 ### Escrow Index Format ###
 
 The `index` of an Escrow node is the SHA-512Half of the following values put together:
 
 * The Escrow space key (`u`)
-* The AccountID of the sender of the EscrowCreate transaction that created the Escrow node
-* The Sequence number of the EscrowCreate transaction that created the Escrow node
+* The AccountID of the sender of the [EscrowCreate transaction][] that created the Escrow node
+* The Sequence number of the [EscrowCreate transaction][] that created the Escrow node
 
 
 
 ## Offer ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
 
-The `Offer` node type describes an offer to exchange currencies, more traditionally known as an _order_, in the XRP Ledger's distributed exchange. An [OfferCreate transaction](reference-transaction-format.html#offercreate) only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.
+The `Offer` node type describes an offer to exchange currencies, more traditionally known as an _order_, in the XRP Ledger's distributed exchange. An [OfferCreate transaction][] only creates an Offer node in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.
 
 An offer can become unfunded through other activities in the network, while remaining in the ledger. However, `rippled` automatically prunes any unfunded offers it happens across in the course of transaction processing (and _only_ transaction processing, because the ledger state must only be changed by transactions). For more information, see [lifecycle of an offer](reference-transaction-format.html#lifecycle-of-an-offer).
 
@@ -338,7 +337,7 @@ An Offer node has the following fields:
 | `LedgerEntryType`   | String    | UInt16    | The value `0x6F`, mapped to the string `Offer`, indicates that this node is an Offer object. |
 | `Flags`             | Number    | UInt32    | A bit-map of boolean flags enabled for this offer. |
 | `Account`           | String    | AccountID | The address of the account that owns this offer. |
-| `Sequence`          | Number    | UInt32    | The `Sequence` value of the [OfferCreate](reference-transaction-format.html#offercreate) transaction that created this Offer node. Used in combination with the `Account` to identify this Offer. |
+| `Sequence`          | Number    | UInt32    | The `Sequence` value of the [OfferCreate][] transaction that created this Offer node. Used in combination with the `Account` to identify this Offer. |
 | `TakerPays`         | String or Object | Amount | The remaining amount and type of currency requested by the offer creator. |
 | `TakerGets`         | String or Object | Amount | The remaining amount and type of currency being provided by the offer creator. |
 | `BookDirectory`     | String    | UInt256   | The index of the [Offer Directory](#directorynode) that links to this offer. |
@@ -350,7 +349,7 @@ An Offer node has the following fields:
 
 ### Offer Flags ###
 
-There are several options which can be either enabled or disabled when an [OfferCreate transaction](reference-transaction-format.html#offercreate) creates an offer node. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
+There are several options which can be either enabled or disabled when an [OfferCreate transaction][] creates an offer node. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
 
 Offer nodes can have the following flag values:
 
@@ -365,7 +364,7 @@ The `index` of an Offer node is the SHA-512Half of the following values put toge
 
 * The Offer space key (`o`)
 * The AccountID of the account placing the offer
-* The Sequence number of the transaction that created the offer
+* The Sequence number of the [OfferCreate transaction][] that created the offer
 
 
 
@@ -376,9 +375,11 @@ _(Requires the [PayChan Amendment](concept-amendments.html#paychan).)_
 
 The `PayChannel` node type represents a payment channel. Payment channels enable small, rapid off-ledger payments of XRP that can be later reconciled with the consensus ledger. A payment channel holds a balance of XRP that can only be paid out to a specific destination address until the channel is closed. Any unspent XRP is returned to the channel's owner (the source address that created and funded it) when the channel closes.
 
-The PaymentChannelCreate transaction type creates a `PayChannel` node. The PaymentChannelFund and PaymentChannelClaim transaction types modify existing `PayChannel` nodes.
+The [PaymentChannelCreate transaction][] type creates a `PayChannel` node. The [PaymentChannelFund][] and [PaymentChannelClaim transaction][] types modify existing `PayChannel` nodes.
 
-When a payment channel expires, at first it remains on the ledger, because only new transactions can modify ledger contents. Transaction processing automatically closes a payment channel when any transaction accesses it after the expiration. Therefore, to "finalize" the closing of an expired channel and return the unspent XRP to the owner, some address must send a new PaymentChannelClaim or PaymentChannelFund transaction accessing the channel.
+When a payment channel expires, at first it remains on the ledger, because only new transactions can modify ledger contents. Transaction processing automatically closes a payment channel when any transaction accesses it after the expiration. To close an expired channel and return the unspent XRP to the owner, some address must send a new PaymentChannelClaim or PaymentChannelFund transaction accessing the channel.
+
+For an example of using payment channels, see the [Payment Channels Tutorial](tutorial-paychan.html).
 
 <!--{# TODO: provide cross-references to tutorial, concept, and tx types when they are ready #}-->
 
@@ -647,3 +648,4 @@ The `index` of a SignerList node is the SHA-512Half of the following values put 
 
 
 {% include 'snippets/rippled_versions.md' %}
+{% include 'snippets/tx-type-links.md' %}

@@ -9,7 +9,7 @@ The process of using a payment channel always involves two parties, a payer and 
 The types of goods and services are not defined by the software or in this tutorial. However, the types of goods and services that are a good fit for payment channels are:
 
 - Things that can be transmitted near-instantly, like digital items
-- Inexpensive things, where the cost of processing a transaction is a non-trivial portion of the price
+- Inexpensive things, where the cost of processing a transaction is a non-trivial part of the price
 - Things normally bought in bulk, where the exact quantity desired is not known in advance
 
 Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](concept-accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
@@ -55,7 +55,7 @@ You can match up the numbered steps in this diagram with the steps of this tutor
 
 ## 1. The payer creates a payment channel to a particular recipient.
 
-This is a [PaymentChannelCreate transaction][]. As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel. The payer also sets the public key that will be used to verify claims against the channel.
+This is a [PaymentChannelCreate transaction][]. As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel. The payer also sets the public key that will be used to verify claims against the channel. <!-- STYLE_OVERRIDE: will -->
 
 **Tip:** The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.
 
@@ -221,7 +221,7 @@ Since there can be multiple channels between the same two parties, it is importa
 
 The amounts of these claims depends on the specific goods or services the payer wants to pay for.
 
-Each claim must be for a cumulative amount. In other words, to purchase two items at 10 XRP each, the first claim should have an amount of 10 XRP and the second claim should have an amount of 20 XRP. The claim can never be more than the total amount of XRP allocated to the channel. (A [PaymentChannelFund][] transaction can increase the total amount of XRP allocated to the channel.)
+Each claim must be for a cumulative amount. In other words, to buy two items at 10 XRP each, the first claim should have an amount of 10 XRP and the second claim should have an amount of 20 XRP. The claim can never be more than the total amount of XRP allocated to the channel. (A [PaymentChannelFund][] transaction can increase the total amount of XRP allocated to the channel.)
 
 You can create claims with the [`channel_authorize` API method](reference-rippled.html#channel-authorize). The following example authorizes 1 XRP from the channel:
 
@@ -265,7 +265,7 @@ The payee also needs to know the Public Key associated with the channel, which i
 
 ## 5. The payee verifies the claims.
 
-You can verify claims using the [`channel_verify` API method](reference-rippled.html#channel-verify). The payee should confirm that the amount of the claim is equal to or greater than the total price of goods and services provided. (Since the amount is cumulative, this is the total price of all goods and services purchased so far.)
+You can verify claims using the [`channel_verify` API method](reference-rippled.html#channel-verify). The payee should confirm that the amount of the claim is equal to or greater than the total price of goods and services provided. (Since the amount is cumulative, this is the total price of all goods and services bought so far.)
 
 Example of using `channel_verify` with the JSON-RPC API:
 
@@ -489,7 +489,7 @@ The channel can remain on the ledger in an expired state indefinitely. This is b
 
 Ripple recommends that the payer sends a second [PaymentChannelClaim transaction][] with the `tfClose` flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.
 
-The command to submit the transaction is identical to the previous example requesting channel expiration. (However, its resulting [auto-filled](reference-transaction-format.html#auto-fillable-fields) `Sequence` number, signature, and identifying hash are unique.)
+The command to submit the transaction is the same as the previous example requesting channel expiration. (However, its resulting [auto-filled](reference-transaction-format.html#auto-fillable-fields) `Sequence` number, signature, and identifying hash are unique.)
 
 Example of [submitting](reference-rippled.html#sign-and-submit-mode) a transaction to close an expired channel:
 

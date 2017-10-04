@@ -216,7 +216,7 @@ The `validator-keys` tool (included in the `rippled` RPM) is the recommended mea
 
         $ /opt/ripple/bin/validator-keys create_token --keyfile /path/to/your/validator-keys.json
 
-    If you had previously configured your validator without using the `validator-keys` tool, you will need to also delete the `[validation_seed]` from your `rippled.cfg` file. This changes your validator public key.
+    If you had previously configured your validator without using the `validator-keys` tool, you must also delete the `[validation_seed]` from your `rippled.cfg` file. This changes your validator public key.
 
 4. Start `rippled`:
 
