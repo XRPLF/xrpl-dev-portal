@@ -146,9 +146,9 @@ Response:
 
 [Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
 
-If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-escrow) instead.
-
 **Tip:** The EscrowFinish transaction is necessary because the XRP Ledger's state can only be modified by transactions. The sender of this transaction may be the recipient of the escrow, the original sender of the escrow, or any other XRP Ledger address.
+
+If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-escrow) instead.
 
 {% include 'snippets/secret-key-warning.md' %}
 
@@ -337,9 +337,9 @@ Response:
 
 [Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. Set the `Condition` and `Fulfillment` fields to the condition and fulfillment values, in hexadecimal, that you generated in step 1. Set the `Fee` ([transaction cost](concept-transaction-cost.html)) value based on the size of the fulfillment in bytes: a conditional EscrowFinish requires at least 330 drops of XRP plus 10 drops per 16 bytes in the size of the fulfillment.
 
-If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-escrow) instead.
-
 **Note:** If you included a `FinishAfter` field in the EscrowCreate transaction, you cannot execute it before that time has passed, even if you provide the correct fulfillment for the Escrow's condition. The EscrowFinish transaction fails with the [result code](reference-transaction-format.html#transaction-results) `tecNO_PERMISSION` if the previously-closed ledger's close time is before the `FinishAfter` time.
+
+If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-escrow) instead.
 
 {% include 'snippets/secret-key-warning.md' %}
 
@@ -482,7 +482,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ### 4. Confirm final result
 
-Use the [`tx` command](reference-rippled.html#tx) with the EscrowCancel transaction's identifying hash to check its final status.Look in the transaction metadata for a `DeletedNode` with `LedgerEntryType` of `Escrow`. Also look for a `ModifiedNode` of type `AccountRoot` for the sender of the escrowed payment. The `FinalFields` of the object should reflect the increase in XRP in the `Balance` field for the returned XRP.
+Use the [`tx` command](reference-rippled.html#tx) with the EscrowCancel transaction's identifying hash to check its final status. Look in the transaction metadata for a `DeletedNode` with `LedgerEntryType` of `Escrow`. Also look for a `ModifiedNode` of type `AccountRoot` for the sender of the escrowed payment. The `FinalFields` of the object should reflect the increase in XRP in the `Balance` field for the returned XRP.
 
 Request:
 
