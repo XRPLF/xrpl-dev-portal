@@ -1,0 +1,26 @@
+{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "account": "r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT",
+    "account_objects": [
+      {
+        "Account": "r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT",
+        "Amount": "10000",
+        "CancelAfter": 559913895,
+        "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "FinishAfter": 559892324,
+        "Flags": 0,
+        "LedgerEntryType": "Escrow",
+        "OwnerNode": "0000000000000000",
+        "PreviousTxnID": "4756C22BBB7FC23D9081FDB180806939D6FEBC967BE0EC2DB95B166AF9C086E9",
+        "PreviousTxnLgrSeq": 2764813,
+        "index": "7243A9750FA4BE3E63F75F6DACFD79AD6B6C76947F6BDC46CD0F52DBEEF64C89"
+      }
+    ],
+    "ledger_hash": "82F24FFA72AED16F467BBE79D387E92FDA39F29038B26E79464CDEDFB506E366",
+    "ledger_index": 2764826,
+    "validated": true
+  }
+}
