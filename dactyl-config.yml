@@ -58,6 +58,7 @@ targets:
             "tutorial-gateway-guide.html": https://ripple.com/build/gateway-guide/
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
+            "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
             "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
@@ -399,6 +400,13 @@ pages:
             - local
             - ripple.com
         template: template-rest-api-tool.html
+
+    -   name: Page Manifest
+        # Used to inform the ripple.com code what pages it should map
+        html: devportal-manifest.php
+        template: template-manifest.php
+        targets:
+            - ripple.com
 
 # Link Checker Config ------------------------------------------------------- #
 
