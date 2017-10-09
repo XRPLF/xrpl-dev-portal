@@ -569,6 +569,8 @@ Admin commands are only available if you [connect to `rippled`](#connecting-to-r
 * [`stop` - Shut down the rippled server](#stop)
 * [`validation_create` - Generate keys for a new rippled validator](#validation-create)
 * [`validation_seed` - Temporarily set key to be used for validating](#validation-seed)
+* [`validator_lists` - Get information about the current listed validators](#validator-lists)
+* [`validator_sites` - Get information about sites that publish validator lists](#validator-sites)
 * [`wallet_propose` - Generate keys for a new account](#wallet-propose)
 
 The following admin commands are deprecated and may be removed without further notice:
@@ -8797,7 +8799,8 @@ An example of a successful response:
         "reserve_inc_xrp": 5,
         "seq": 18614732
       },
-      "validation_quorum": 4
+      "validation_quorum": 4,
+      "validator_list_expires" : "2017-Oct-12 16:06:36"
     }
   }
 }
@@ -8914,7 +8917,8 @@ An example of a successful response:
             "reserve_inc_xrp" : 5,
             "seq" : 24901185
          },
-         "validation_quorum" : 4
+         "validation_quorum" : 4,
+         "validator_list_expires" : "2017-Oct-12 16:06:36"
       },
       "status" : "success"
    }
@@ -8961,6 +8965,7 @@ The `info` object may have some arrangement of the following fields:
 | `validated_ledger.reserve_inc_xrp`  | Unsigned Integer          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger |
 | `validated_ledger.seq`              | Number - [Ledger Index][] | The ledger index of the latest validate ledger |
 | `validation_quorum`                 | Number                    | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
+| `validator_list_expires`            | String                    | *Admin only* Either the human readable time when the current validator list will expire or the string `unknown` if the server has yet to load a published validator list. [New in: rippled 0.90.0][] |
 
 **Note:** If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes about 5 minutes to sync with the network, depending on your connection speed and hardware specs.
 
@@ -9111,7 +9116,8 @@ An example of a successful response:
         "reserve_inc": 5000000,
         "seq": 18615049
       },
-      "validation_quorum": 4
+      "validation_quorum": 4,
+      "validator_list_expires": 561139596
     }
   }
 }
@@ -9206,7 +9212,8 @@ An example of a successful response:
             "reserve_inc" : 5000000,
             "seq" : 18615037
          },
-         "validation_quorum" : 4
+         "validation_quorum" : 4,
+         "validator_list_expires" : 561139596
       },
       "status" : "success"
    }
@@ -9251,6 +9258,7 @@ The `state` object may have some arrangement of the following fields:
 | `validated_ledger.reserve_inc`   | Unsigned Integer | Amount, in drops of XRP, that is added to the account reserve for each item the account owns in the ledger. |
 | `validated_ledger.seq`           | Unsigned Integer | Unique sequence number of this ledger |
 | `validation_quorum`              | Number           | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
+| `validator_list_expires`         | Number           | *Admin only* When the current validator list will expire, in seconds since the [Ripple Epoch](#specifying-time), or 0 if the server has yet to load a published validator list. [New in: rippled 0.90.0][] |
 
 [fee levels]: concept-transaction-cost.html#fee-levels
 
@@ -10692,6 +10700,311 @@ The response follows the [standard format](#response-formatting), with a success
 
 * Any of the [universal error types](#universal-errors).
 * `badSeed` - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.
+
+## validator_lists ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorLists.cpp "Source")
+
+The `validator_lists` command returns human readable information about the current list of published and trusted validators used by the server. [New in: rippled 0.90.0]
+
+*The `validator_lists` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": 1,
+    "command": "validator_lists"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "validator_lists",
+    "params": [
+        {}
+    ]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: validator_lists
+rippled validator_lists
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The request includes no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id":5,
+    "status":"success",
+    "type":"response",
+    "result":{
+        "local_static_keys": [],
+        "publisher_lists":[
+            {
+                "available":true,
+                "expiration":"2017-Oct-13 14:56:00",
+                "list":[
+                    "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H",
+                    "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1"
+                ],
+                "pubkey_publisher":"ED58ED4AA543B524F16771F6E1367BAA220D99DCF22CD8CF7A11309E9EAB1B647B",
+                "seq":1,
+                "version":1
+            }
+        ],
+        "status":"success",
+        "trusted_validator_keys":[
+            "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1",
+            "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H"
+        ],
+        "validation_quorum":2,
+        "validator_list_expires":"2017-Oct-13 14:56:00"
+    }
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+{
+    "result":{
+        "local_static_keys": [],
+        "publisher_lists":[
+            {
+                "available":true,
+                "expiration":"2017-Oct-13 14:56:00",
+                "list":[
+                    "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H",
+                    "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1"
+                ],
+                "pubkey_publisher":"ED58ED4AA543B524F16771F6E1367BAA220D99DCF22CD8CF7A11309E9EAB1B647B",
+                "seq":1,
+                "version":1
+            }
+        ],
+        "status":"success",
+        "trusted_validator_keys":[
+            "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1",
+            "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H"
+        ],
+        "validation_quorum":2,
+        "validator_list_expires":"2017-Oct-13 14:56:00"
+    },
+    "status":"success"
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+    "result":{
+        "local_static_keys": [],
+        "publisher_lists":[
+            {
+                "available":true,
+                "expiration":"2017-Oct-13 14:56:00",
+                "list":[
+                    "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H",
+                    "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1"
+                ],
+                "pubkey_publisher":"ED58ED4AA543B524F16771F6E1367BAA220D99DCF22CD8CF7A11309E9EAB1B647B",
+                "seq":1,
+                "version":1
+            }
+        ],
+        "status":"success",
+        "trusted_validator_keys":[
+            "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1",
+            "n9Ltz6ZxPRWTkqwBbpvgbaXPgm6GYCxCJRqFgNXhWVUebgezo28H"
+        ],
+        "validation_quorum":2,
+        "validator_list_expires":"2017-Oct-13 14:56:00"
+    },
+    "status":"success"
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+
+| `Field`                  | Type   | Description                              |
+|:-------------------------|:-------|:-----------------------------------------|
+| `listed_static_keys`     | Array  | Array of public keys for validators always eligible for inclusion in the trusted list. |
+| `publisher_lists`        | Array  | Array of publisher list objects.         |
+| `trusted_validator_keys` | Array  | Array of public keys for currently trusted validators. |
+| `validation_quorum`      | Number | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
+| `validator_list_expires` | String | Either the human readable time when the current validator list will expire or the string `unknown` if the server has yet to load a published validator list. |
+
+Each member of the `publisher_lists` array is an object with the following fields:
+
+| `Field`            | Type             | Description                              |
+|:-------------------|:-----------------|:-----------------------------------------|
+| `available`        | Boolean          | If `false`, the validator keys in `list` may no longer be supported by this publisher. |
+| `expiration`       | String           |  Either the human readable time when this published list will expire or the string `unknown` if the server has yet to load a list for this publisher.      |
+| `list`             | Array            | Array of published validator keys.   |
+| `pubkey_publisher` | String           | Hex encoded public key of publisher. |
+| `seq`              | Unsigned Integer | The sequence number of this published list. | 
+| `version`          | Unsigned Integer | The version of the list format.      |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
+
+
+## validator_sites ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorSites.cpp "Source")
+
+The `validator_sites` command returns status information of sites serving validator lists. [New in: rippled 0.90.0]
+
+*The `validator_sites` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+
+#### Request Format ####
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id": 1,
+    "command": "validator_sites"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "method": "validator_sites",
+    "params": [
+        {}
+    ]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: validator_sites
+rippled validator_sites
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The request includes no parameters.
+
+#### Response Format ####
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "id":5,
+    "status":"success",
+    "type":"response",
+    "result": {
+        "validator_sites": [
+            {
+                "last_refresh_status": "accepted",
+                "last_refresh_time": "2017-Oct-13 21:26:37",
+                "refresh_interval_min": 5,
+                "uri": "http://127.0.0.1:51447/validators"
+            }
+        ]
+    }
+}
+}
+```
+
+*JSON-RPC*
+
+```
+200 OK
+{
+    "result": {
+        "status": "success",
+        "validator_sites": [
+            {
+                "last_refresh_status": "accepted",
+                "last_refresh_time": "2017-Oct-13 21:26:37",
+                "refresh_interval_min": 5,
+                "uri": "http://127.0.0.1:51447/validators"
+            }
+        ]
+    }
+}
+```
+
+*Commandline*
+
+```
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+    "result": {
+        "status": "success",
+        "validator_sites": [
+            {
+                "last_refresh_status": "accepted",
+                "last_refresh_time": "2017-Oct-13 21:26:37",
+                "refresh_interval_min": 5,
+                "uri": "http://127.0.0.1:51447/validators"
+            }
+        ]
+    }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The response follows the [standard format](#response-formatting), with a successful result containing the following field:
+
+| `Field`           | Type  | Description                      |
+|:------------------|:------|----------------------------------|
+| `validator_sites` | Array | Array of validator site objects. |
+
+Each member of the `validator_sites` field array is an object with the following fields:
+
+| `Field`                | Type             | Description                     |
+|:-----------------------|:-----------------|:--------------------------------|
+| `last_refresh_status`  | String           | If present, the[`ListDisposition`](https://github.com/ripple/rippled/blob/master/src/ripple/app/misc/ValidatorList.h) of the most recent refresh of the site. If missing, the site has not yet been succesfully queried. |
+| `last_refresh_time`    | String           | Human readable time when the site was last queried. If missing, the site has not yet been succesfully queried. |
+| `refresh_interval_min` | Unsigned Integer | The number of minutes between refresh attempts. |
+| `uri`                  | String           | The URI of the site. |
+
+#### Possible Errors ####
+
+* Any of the [universal error types](#universal-errors).
 
 
 ## peers ##
