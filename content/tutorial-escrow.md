@@ -184,7 +184,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ### 8. Confirm final result
 
-Use the [`tx` command](reference-rippled.html#tx) with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should reflect the increase in XRP in the `Balance` field.
+Use the [`tx` command](reference-rippled.html#tx) with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field.
 
 Request:
 
@@ -373,7 +373,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ### 8. Confirm final result
 
-Use the [`tx` command](reference-rippled.html#tx) with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should reflect the increase in XRP in the `Balance` field.
+Use the [`tx` command](reference-rippled.html#tx) with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field.
 
 Request:
 
@@ -482,7 +482,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ### 4. Confirm final result
 
-Use the [`tx` command](reference-rippled.html#tx) with the EscrowCancel transaction's identifying hash to check its final status. Look in the transaction metadata for a `DeletedNode` with `LedgerEntryType` of `Escrow`. Also look for a `ModifiedNode` of type `AccountRoot` for the sender of the escrowed payment. The `FinalFields` of the object should reflect the increase in XRP in the `Balance` field for the returned XRP.
+Use the [`tx` command](reference-rippled.html#tx) with the EscrowCancel transaction's identifying hash to check its final status. Look in the transaction metadata for a `DeletedNode` with `LedgerEntryType` of `Escrow`. Also look for a `ModifiedNode` of type `AccountRoot` for the sender of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field for the returned XRP.
 
 Request:
 

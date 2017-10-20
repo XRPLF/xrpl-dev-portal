@@ -148,7 +148,7 @@ In this example, the SignerList has 3 members, with the weights and quorum set u
        }
     }
 
-Make sure that the [Transaction Result](reference-transaction-format.html#transaction-results) is [**tesSUCCESS**](reference-transaction-format.html#tes-success). Otherwise, the transaction failed. If you encounter a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](#availability-of-multi-signing).
+Make sure that the [Transaction Result](reference-transaction-format.html#transaction-results) is [**tesSUCCESS**](reference-transaction-format.html#tes-success). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](#availability-of-multi-signing).
 
 **Note:** The more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](concept-reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](reference-transaction-format.html#tec-codes). See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
 
@@ -314,7 +314,7 @@ Use the [`sign_for` command](reference-rippled.html#sign-for) with the secret ke
 
 Save the `tx_json` field of the response: it has the new signature in the `Signers` field. You can discard the value of the `tx_blob` field.
 
-If you encounter a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](#availability-of-multi-signing).
+If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](#availability-of-multi-signing).
 
 ### 3. Get additional signatures ###
 

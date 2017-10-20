@@ -6,9 +6,9 @@ The XRP Ledger is a universal payment system enabling users to transfer funds (i
 
 ## Mechanics
 
-At the core, the XRP Ledger is a shared database that records information such as accounts, balances, and offers to trade assets. Operations such as creating accounts, making payments, and converting assets are performed through signed instructions called “transactions.”
+At the core, the XRP Ledger is a shared database that records information such as accounts, balances, and offers to trade assets. Signed instructions called "transactions" cause changes such as creating accounts, making payments, and trading assets.
 
-As a cryptographic system, the owners of XRP Ledger accounts are identified by cryptographic identities. Transactions are authorized by cryptographic signatures matching these identities. Every server processes every transaction according to the same deterministic, known rules. Ultimately, the goal is for every server in the network to have an identical, complete copy of the ledger state, without needing a single central authority to arbitrate transactions.
+As a cryptographic system, the owners of XRP Ledger accounts are identified by cryptographic identities. Transactions are authorized by cryptographic signatures matching these identities. Every server processes every transaction according to the same deterministic, known rules. Ultimately, the goal is for every server in the network to have a complete copy of the exact same ledger state, without needing a single central authority to arbitrate transactions.
 
 ## The Double Spend Problem
 
@@ -32,9 +32,9 @@ Consider the example of Alice trying to send the same $10 to both Bob and Charli
 
 We can also order transactions by deterministic rules. Because transactions are collections of digital information, it's trivial for a computer to sort them.
 
-This would be sufficient to solve the double spend problem without a central authority, but it would require us to have every transaction that would ever occur (so that we could sort them) before we could be certain of the results of any transaction. Obviously, this is impractical.
+This would be enough to solve the double spend problem without a central authority, but it would require us to have every transaction that would ever occur (so that we could sort them) before we could be certain of the results of any transaction. Obviously, this is impractical. <!-- STYLE_OVERRIDE: obviously -->
 
-However, if we could collect transactions into groups and agree on those groupings, we could sort the transactions within that group. That is, so long as every participant agrees on which transactions are to be processed as a unit, they can use deterministic rules to solve the double spend problem without any need for a central authority. The participants simply each sort the transactions and apply them in a deterministic way following the known rules. The XRP Ledger solves the double-spend problem in exactly this way.
+If we could collect transactions into groups and agree on those groupings, we could sort the transactions within that group. As long as every participant agrees on which transactions are to be processed as a unit, they can use deterministic rules to solve the double spend problem without any need for a central authority. The participants each sort the transactions and apply them in a deterministic way following the known rules. The XRP Ledger solves the double-spend problem in exactly this way.
 
 The XRP Ledger allows multiple conflicting transactions to be in the agreed group. The group of transactions is executed according to deterministic rules, so whichever transaction comes first according to the sorting rules succeeds and whichever conflicting transaction comes second fails.
 
@@ -42,7 +42,7 @@ The XRP Ledger allows multiple conflicting transactions to be in the agreed grou
 
 The primary role of consensus is for participants in the process to agree on which transactions are to be processed as a group to resolve the double spend problem. There are four reasons this agreement is easier to achieve than might be expected:
 
-1. If there is no reason a transaction should not be included in such a group of transactions, all honest participants will agree to include it. If all participants already agree, consensus has no work to do.
+1. If there is no reason a transaction should not be included in such a group of transactions, all honest participants agree to include it. If all participants already agree, consensus has no work to do.
 2. If there is any reason at all a transaction should not be included in such a group of transactions, all honest participants are willing to exclude it. If the transaction is still valid, there is no reason not to include it in the next round, and they should all agree to include it then.
 3. It is extremely rare for a participant to particularly care how the transactions were grouped. Agreement is easiest when everyone’s priority is reaching agreement and only challenging when there are diverging interests.
 4. Deterministic rules can be used even to form the groupings, leading to disagreement only in edge cases. For example, if there are two conflicting transactions in a round, deterministic rules can be used to determine which is included in the next round.
@@ -51,7 +51,7 @@ Every participant’s top priority is correctness. They must first enforce the r
 
 ## Consensus Rounds
 
-A consensus round is an attempt to agree on a group of transactions so they can be processed. A consensus round starts with each participant who wishes to do so taking an initial position. This is the set of valid transactions they have witnessed.
+A consensus round is an attempt to agree on a group of transactions so they can be processed. A consensus round starts with each participant who wishes to do so taking an initial position. This is the set of valid transactions they have seen.
 
 Participants then “avalanche” to consensus: If a particular transaction does not have majority support, participants agree to defer that transaction. If a particular transaction does have majority support, participants agree to include the transaction. Thus slight majorities rapidly become full support and slight minorities rapidly become universal rejection from the current round.
 
@@ -61,11 +61,11 @@ When a participant sees a supermajority that agrees on the set of transactions t
 
 ## Consensus Can Fail
 
-It is not practical to develop a consensus algorithm that never fails to achieve perfect consensus. To understand why, consider how the consensus process terminates. At some point, each participant must declare that a consensus has been reached and that some set of transactions is known to be the result of the process. This declaration commits that participant irrevocably to some particular set of transactions as the result of the consensus process.
+It is not practical to develop a consensus algorithm that never fails to achieve perfect consensus. To understand why, consider how the consensus process finishes. At some point, each participant must declare that a consensus has been reached and that some set of transactions is known to be the result of the process. This declaration commits that participant irrevocably to some particular set of transactions as the result of the consensus process.
 
-Clearly, some participant must do this first or no participant will ever do it, and they will never reach a consensus. Now, consider the participant that does this first. When this participant decides that consensus is finished, other participants have not yet made that decision. If they were incapable of changing the agreed set from their point of view, they would have already decided consensus was finished. So they must be still capable of changing their agreed set.
+Some participant must do this first or no participant will ever do it, and they will never reach a consensus. Now, consider the participant that does this first. When this participant decides that consensus is finished, other participants have not yet made that decision. If they were incapable of changing the agreed set from their point of view, they would have already decided consensus was finished. So they must be still capable of changing their agreed set. <!-- STYLE_OVERRIDE: will -->
 
-In other words, for the consensus process to ever terminate, some participant must declare that consensus has been reached on a set of transactions even though every other participant is theoretically still capable of changing the agreed upon set of transactions.
+In other words, for the consensus process to ever finish, some participant must declare that consensus has been reached on a set of transactions even though every other participant is theoretically still capable of changing the agreed upon set of transactions.
 
 Imagine a group of people in a room trying to agree which door they should use to exit. No matter how much the participants discuss, at some point, _someone_ has to be the first one to walk out of a door, even though the people behind that person could still change their minds and leave through the other door.
 
@@ -85,9 +85,9 @@ Participants then find themselves in one of three cases, in order of probability
 2. They built a different ledger than a supermajority agreed on. In this case, they must build and accept the supermajority ledger. This typically indicates that they declared a consensus early and many other participants changed after that. They must “jump” to the super-majority ledger to resume operation.
 3. No supermajority is clear from the received validations. In this case, the previous consensus round was wasted and a new round must occur before any ledger can be validated.
 
-Of course, case 1 is the most common. Case 2 does no harm to the network whatsoever. A small percentage of the participants could even fall into case 2 every round, and the network would operate with no issues. Even those participants can recognize that they did not build the same ledger as the supermajority, so they know not to report their results as final until they are in agreement with the supermajority.
+Of course, case 1 is the most common. Case 2 does no harm to the network whatsoever. A small percentage of the participants could even fall into case 2 every round, and the network would work with no issues. Even those participants can recognize that they did not build the same ledger as the supermajority, so they know not to report their results as final until they are in agreement with the supermajority.
 
-Case 3 results in the network losing a few seconds in which it could have made forward progress, but is extremely rare. In this case, the subsequent consensus round is much less likely to fail because disagreements are resolved in the consensus process and only remaining disagreements can cause a failure.
+Case 3 results in the network losing a few seconds in which it could have made forward progress, but is extremely rare. In this case, the next consensus round is much less likely to fail because disagreements are resolved in the consensus process and only remaining disagreements can cause a failure.
 
 On rare occasions, the network as a whole fails to make forward progress for a few seconds. In exchange, average transaction confirmation times are low.
 

@@ -22,7 +22,7 @@ In this formula, "fees" refers to [transfer fees](concept-transfer-fees.html) an
 
 ### With Partial Payments
 
-When sending a Payment that has the Partial Payment flag enabled, the `Amount` field of the transaction specifies a maximum amount to deliver. Partial payments can succeed at sending _some_ of the intended value despite limitations including fees, lack of liquidity, insufficient space in the receiving account's trust lines, or other reasons.
+When sending a Payment that has the Partial Payment flag enabled, the `Amount` field of the transaction specifies a maximum amount to deliver. Partial payments can succeed at sending _some_ of the intended value despite limitations including fees, not enough liquidity, not enough space in the receiving account's trust lines, or other reasons.
 
 The optional `DeliverMin` field specifies a minimum amount to deliver. The `SendMax` field functions the same as with non-partial payments. The partial payment transaction is successful if it delivers any amount equal or greater than the `DeliverMin` field without exceeding the `SendMax` amount. If the `DeliverMin` field is not specified, a partial payment can succeed by delivering any positive amount.
 
@@ -97,7 +97,7 @@ In the case of a merchant, the order of operations is slightly different, but th
 
 ### Further Mitigations
 
-Using [the `delivered_amount` field](#the-delivered-amount-field) when processing incoming transactions is sufficient to avoid this exploit. Still, additional proactive business practices can also avoid or mitigate the likelihood of this and similar exploits. For example:
+Using [the `delivered_amount` field](#the-delivered-amount-field) when processing incoming transactions is enough to avoid this exploit. Still, additional proactive business practices can also avoid or mitigate the likelihood of this and similar exploits. For example:
 
 - Add additional sanity checks to your business logic for processing withdrawals. Never process a withdrawal if the total balance you hold in the XRP Ledger does not match your expected assets and obligations.
 - Follow "Know Your Customer" guidelines and strictly verify your customers' identities. You may be able to recognize and block malicious users in advance, or pursue legal action against a malicious actor who exploits your system.

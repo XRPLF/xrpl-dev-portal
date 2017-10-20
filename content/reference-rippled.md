@@ -499,10 +499,14 @@ The format of the `marker` field is intentionally undefined. Each server can def
 
 ## Modifying the Ledger ##
 
-All changes to the XRP Ledger happen as the result of transactions. The only API methods that can change the contents of the XRP Ledger are the [`submit` command](#submit) and the [`submit_multisigned` command](#submit-multisigned). Most other methods represent different ways to view the data represented in the XRP Ledger. The remaining commands generate data for your convenience. (The [`wallet_propose`](#wallet-propose), [`path_find`](#path-find), and [`random`](#random) commands fall into this category.)
+All changes to the XRP Ledger happen as the result of transactions. The only API methods that can change the contents of the XRP Ledger are the commands that submit transactions. Even then, changes only apply permanently if the transactions are approved by the [consensus process](concept-consensus.html). Most other public methods represent different ways to view the data represented in the XRP Ledger, or request information about the state of the server.
 
-For more information on the various transactions you can submit, see the [Transaction Format](reference-transaction-format.html).
+Transaction submission commands:
 
+- [`submit` command](#submit)
+- [`submit_multisigned` command](#submit-multisigned)
+
+For more information on the various transactions you can submit, see the [Transaction Reference](reference-transaction-format.html).
 
 
 
@@ -896,12 +900,12 @@ Each Channel Object has the following fields:
 |-------|------|-------------|
 | `account` | String | The owner of the channel, as an [Address][]. |
 | `amount` | String | The total amount of [XRP, in drops](#specifying-currency-amounts) allocated to this channel. |
-| `balance` | String | The total amount of XRP, in drops, paid out from this channel, as of the ledger version used. (You can calculate the amount of XRP remaining in the channel by subtracting `balance` from `amount`.) |
+| `balance` | String | The total amount of XRP, in drops, paid out from this channel, as of the ledger version used. (You can calculate the amount of XRP left in the channel by subtracting `balance` from `amount`.) |
 | `channel_id` | String | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [index of the channel](reference-ledger-format.html#paychannel-index-format) in the ledger's state data. |
-| `destination_account` | String | the destination account of the channel, as an [Address][]. Only this account can receive the XRP in the channel while it remains open. |
+| `destination_account` | String | the destination account of the channel, as an [Address][]. Only this account can receive the XRP in the channel while it is open. |
 | `public_key` | String | _(May be omitted)_ The public key for the payment channel in base58 format. Signed claims against this channel must be redeemed with the matching key pair. |
 | `public_key_hex` | String | _(May be omitted)_ The public key for the payment channel in hexadecimal format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair. |
-| `settle_delay` | Unsigned Integer | The number of seconds the payment channel must remain open after the owner of the channel requests to close it. |
+| `settle_delay` | Unsigned Integer | The number of seconds the payment channel must stay open after the owner of the channel requests to close it. |
 | `expiration` | Unsigned Integer | _(May be omitted)_ Time, in seconds since the [Ripple Epoch](#specifying-time), when this channel is set to expire. This expiration date is mutable. If this is before the close time of the most recent validated ledger, the channel is expired. |
 | `cancel_after` | Unsigned Integer | _(May be omitted)_ Time, in seconds since the [Ripple Epoch](#specifying-time), of this channel's immutable expiration, if one was specified at channel creation. If this is before the close time of the most recent validated ledger, the channel is expired. |
 | `source_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](tutorial-gateway-guide.html#source-and-destination-tags) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the `DestinationTag` of the return payment. |
@@ -7995,7 +7999,7 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | `signature_verified` | Boolean | If `true`, the signature is valid for the stated amount, channel, and public key. |
 
-**Caution:** This does not indicate check that the channel has sufficient XRP allocated to it. Before considering a claim valid, you should look up the channel in the latest validated ledger and confirm that the channel is open and its `amount` value is equal or greater than the `amount` of the claim. To do so, use the [`account_channels` method](#account-channels).
+**Caution:** This does not indicate check that the channel has enough XRP allocated to it. Before considering a claim valid, you should look up the channel in the latest validated ledger and confirm that the channel is open and its `amount` value is equal or greater than the `amount` of the claim. To do so, use the [`account_channels` method](#account-channels).
 
 #### Possible Errors ####
 
@@ -10554,7 +10558,7 @@ The request includes the following parameters:
 |:---------|:-------|:---------------------------------------------------------|
 | `secret` | String | _(Optional)_ Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or Ripple's [base58][] format. If omitted, generate a random seed. |
 
-**Note:** The security of your validator depends on the entropy of your seed. Do not use a secret value that is not sufficiently randomized for real business purposes. We recommend omitting the `secret` when generating new credentials for the first time.
+**Note:** The security of your validator depends on the entropy of your seed. Do not use a secret value for real business purposes unless it is generated with a strong source of randomness. Ripple recommends omitting the `secret` when generating new credentials for the first time.
 
 #### Response Format ####
 
@@ -11737,11 +11741,11 @@ The response follows the [standard format](#response-formatting), with a success
 
 # Peer Protocol #
 
-Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol, also known as RTXP. Peer servers connect via HTTPS and then perform an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to RTXP. (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
+Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol, also known as RTXP. Peer servers connect via HTTPS and then do an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to switch to RTXP. (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
 
 ## Configuring the Peer Protocol ##
 
-In order to participate in the XRP Ledger, `rippled` servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are [clustered](tutorial-rippled-setup.html#clustering) with the current server.)
+To participate in the XRP Ledger, `rippled` servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are [clustered](tutorial-rippled-setup.html#clustering) with the current server.)
 
 Ideally, the server should be able to send _and_ receive connections on the peer port. You should forward the port used for the peer protocol through your firewall to the `rippled` server. The [default `rippled` configuration file](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) listens for incoming peer protocol connections on port 51235 on all network interfaces. You can change the port used by editing the appropriate stanza in your `rippled.cfg` file.
 

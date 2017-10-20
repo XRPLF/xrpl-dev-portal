@@ -1,7 +1,7 @@
 #Ripple Style Guide suggestions
 consult: see
-gateway: financial institution, issuer
-gateways: financial institutions, issuers
+# gateway: financial institution, issuer
+# gateways: financial institutions, issuers
 wallet: address, client application, account
 ious: issuances
 will: (avoid future tense)
@@ -27,9 +27,9 @@ ascertain: find out, learn
 assist: aid, help
 assistance: aid, help
 attain: meet
-attempt: try
+#attempt: try
 basically: (omit)
-benefit: help
+#benefit: help
 capability: ability
 caveat: warning
 clearly: (omit)
@@ -95,7 +95,7 @@ insane: (omit)
 just: (omit)
 liaison: discussion
 magnitude: size
-maintain: keep, support
+#maintain: keep, support
 methodology: method
 #minimize: decrease, method
 #modify: change
@@ -110,7 +110,7 @@ observe: see
 obviously: (omit)
 operate: run, use, work
 optimum: best, greatest, most
-perform: do
+#perform: do
 performed: done
 permit: let
 portion: part
@@ -126,7 +126,7 @@ purchase: buy
 reflect: say, show
 regarding: about, of, on
 relocate: move
-remain: stay
+#remain: stay
 remainder: rest
 remuneration: pay, payment
 render: give, make
