@@ -182,7 +182,7 @@ Example `Amendments` object:
 
 Amendments are added to the `Amendments` table by an [EnableAmendment][] pseudo-transaction with no flags as the result of the [amendment process](concept-amendments.html#amendment-process).
 
-**Note:** Technically, all transactions in a ledger are processed based on which amendments are enabled in the ledger versions immediately before it. While applying transactions to a ledger version where an amendment becomes enabled, the rules don't change mid-ledger. After the ledger is closed, the next ledger uses the new rules as defined by any new amendments that applied.
+**Note:** Technically, all transactions in a ledger are processed based on which amendments are enabled in the ledger version immediately before it. While applying transactions to a ledger version where an amendment becomes enabled, the rules don't change mid-ledger. After the ledger is closed, the next ledger uses the new rules as defined by any new amendments that applied.
 
 ### Amendments ID Format
 
