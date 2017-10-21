@@ -80,7 +80,7 @@ Each ledger object consists of several fields. In the peer protocol that `ripple
 
 The `AccountRoot` object type describes a single _account_ object. Example `AccountRoot` object:
 
-```
+```json
 {
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "AccountTxnID": "0D5FB50FA65C9FE1538FD7E398FFFE9D1908DFA4576D8D7A020040686F93C77D",
@@ -146,6 +146,55 @@ The ID of an AccountRoot object is the SHA-512Half of the following values put t
 * The AccountID of the account
 
 
+## Amendments
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
+
+The `Amendments` object type contains a list of [Amendments](concept-amendments.html) that are currently active. Each ledger version contains **at most one** `Amendments` object.
+
+Example `Amendments` object:
+
+```json
+{
+    "Amendments": [
+        "42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE",
+        "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
+        "6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC",
+        "740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11",
+        "1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146",
+        "532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164",
+        "08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647",
+        "E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA",
+        "07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104",
+        "42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC",
+        "DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF"
+    ],
+    "Flags": 0,
+    "LedgerEntryType": "Amendments",
+    "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4"
+}
+```
+
+| Name              | JSON Type | [Internal Type][] | Description |
+|-------------------|-----------|-------------------|-------------|
+| `Amendments`      | Array     | STI_VECTOR256     | Array of 256-bit [amendment IDs](concept-amendments.html#about-amendments) for all currently-enabled amendments. |
+| `Flags`           | Number    | UInt32    | Not used. |
+| `LedgerEntryType` | String    | UInt16    |  The value `0x66`, mapped to the string `Amendments`, indicates that this is the Amendments object. |
+
+Amendments are added to the `Amendments` table by an [EnableAmendment][] pseudo-transaction with no flags as the result of the [amendment process](concept-amendments.html#amendment-process).
+
+**Note:** Technically, all transactions in a ledger are processed based on which amendments are enabled in the ledger versions immediately before it. While applying transactions to a ledger version where an amendment becomes enabled, the rules don't change mid-ledger. After the ledger is closed, the next ledger uses the new rules as defined by any new amendments that applied.
+
+### Amendments ID Format
+
+The `Amendments` object ID is the hash of the `Amendments` space key (`f`) only. This means that the ID of the Amendments object in a ledger is always:
+
+```
+7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4
+```
+
+(Don't mix up the ID of the `Amendments` ledger object type with the Amendment ID of an individual amendment.)
+
+
 ## DirectoryNode
 [[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
 
@@ -162,7 +211,7 @@ Example Directories:
 
 *Offer Directory*
 
-```
+```json
 {
     "ExchangeRate": "4F069BA8FF484000",
     "Flags": 0,
@@ -181,7 +230,7 @@ Example Directories:
 
 *Owner Directory*
 
-```
+```json
 {
     "Flags": 0,
     "Indexes": [
@@ -256,7 +305,7 @@ An Escrow object is associated with two addresses:
 
 Example Escrow object:
 
-```
+```json
 {
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "Amount": "10000",
@@ -311,7 +360,7 @@ An offer can become unfunded through other activities in the network, while rema
 
 Example Offer object:
 
-```
+```json
 {
     "Account": "rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt",
     "BookDirectory": "ACC27DE91DBA86FC509069EAF4BC511D73128B780F2E54BF5E07A369E2446000",
@@ -479,7 +528,7 @@ Since no account is privileged in the XRP Ledger, a RippleState object sorts the
 
 Example RippleState object:
 
-```
+```json
 {
     "Balance": {
         "currency": "USD",
@@ -581,7 +630,7 @@ The `SignerList` object type represents a list of parties that, as a group, are 
 
 Example SignerList object:
 
-```
+```json
 {
     "Flags": 0,
     "LedgerEntryType": "SignerList",
