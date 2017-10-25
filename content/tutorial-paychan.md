@@ -61,6 +61,8 @@ This is a [PaymentChannelCreate transaction][]. As part of this process, the pay
 
 The following example shows creation of a payment channel by [submitting](reference-rippled.html#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (rN7n7...) to the [example payee](#example-values) (rf1Bi...) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
 
+**Note:** A payment channel counts as one object toward the payer's [owner reserve](concept-reserves.html#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
+
 Request:
 
     POST http://localhost:5005/

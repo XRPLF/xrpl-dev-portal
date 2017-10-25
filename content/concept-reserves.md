@@ -23,6 +23,7 @@ Many objects in the ledger are owned by a particular address, and count toward t
 - [Trust lines](reference-ledger-format.html#ripplestate) are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See [Contributing to the Owner Reserve](reference-ledger-format.html#contributing-to-the-owner-reserve) for details.
 - A single [SignerList](reference-ledger-format.html#signerlist) counts as 3 to 10 objects for purposes of the owner reserve, depending on how many members it has. See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
 - [Held Payments (Escrow)](reference-ledger-format.html#escrow) are owned by the address that placed them.
+- [Payment Channels](tutorial-paychan.html) are owned by the address that created them.
 - [Owner directories](reference-ledger-format.html#directorynode) list all the ledger nodes that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.
 
 #### Owner Reserve Edge Cases ####
