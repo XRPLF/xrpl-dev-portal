@@ -7753,7 +7753,7 @@ In addition to the standard Offer fields, the following fields may be included i
 
 | `Field`             | Type                             | Description         |
 |:--------------------|:---------------------------------|:--------------------|
-| `owner_funds`       | String (XRP) or Object (non-XRP) | Amount of the currency the side placing the offer has available to be traded. If a trader has multiple offers in the same book, only the highest-ranked offer includes this field. |
+| `owner_funds`       | String                           | Amount of the TakerGets currency the side placing the offer has available to be traded. (XRP is represented as drops; any other currency is represented as a decimal value.) If a trader has multiple offers in the same book, only the highest-ranked offer includes this field. |
 | `taker_gets_funded` | String (XRP) or Object (non-XRP) | (Only included in partially-funded offers) The maximum amount of currency that the taker can get, given the funding status of the offer. |
 | `taker_pays_funded` | String (XRP) or Object (non-XRP) | (Only included in partially-funded offers) The maximum amount of currency that the taker would pay, given the funding status of the offer. |
 | `quality`           | Number                           | The exchange rate, as the ratio `taker_pays` divided by `taker_gets`. For fairness, offers that have the same quality are automatically taken first-in, first-out. (In other words, if multiple people offer to exchange currency at the same rate, the oldest offer is taken first.) |
