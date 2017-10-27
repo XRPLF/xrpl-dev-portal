@@ -155,18 +155,19 @@ Example `Amendments` object:
 
 ```json
 {
+    "Majorities": [
+        {
+            "Majority": {
+                "Amendment": "1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146",
+                "CloseTime": 535589001
+            }
+        }
+    ],
     "Amendments": [
         "42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE",
         "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
         "6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC",
-        "740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11",
-        "1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146",
-        "532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164",
-        "08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647",
-        "E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA",
-        "07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104",
-        "42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC",
-        "DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF"
+        "740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11"
     ],
     "Flags": 0,
     "LedgerEntryType": "Amendments",
@@ -176,11 +177,19 @@ Example `Amendments` object:
 
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|-------------------|-------------|
-| `Amendments`      | Array     | STI_VECTOR256     | Array of 256-bit [amendment IDs](concept-amendments.html#about-amendments) for all currently-enabled amendments. |
+| `Amendments`      | Array     | STI_VECTOR256     | _(Optional)_ Array of 256-bit [amendment IDs](concept-amendments.html#about-amendments) for all currently-enabled amendments. If omitted, there are no enabled amendments. |
+| `Majorities`      | Array     | STI_ARRAY | _(Optional)_ Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
 | `Flags`           | Number    | UInt32    | Not used. |
 | `LedgerEntryType` | String    | UInt16    |  The value `0x66`, mapped to the string `Amendments`, indicates that this is the Amendments object. |
 
-Amendments are added to the `Amendments` table by an [EnableAmendment][] pseudo-transaction with no flags as the result of the [amendment process](concept-amendments.html#amendment-process).
+Each member of the `Majorities` field, if it is present, is an object with a one field, `Majority`, whose contents are a nested object with the following fields:
+
+| Name              | JSON Type | [Internal Type][] | Description |
+|-------------------|-----------|-------------------|-------------|
+| `Amendment`       | String    | Hash256           | The Amendment ID of the pending amendment. |
+| `CloseTime`       | Number    | UInt32            | The [`close_time` field](#header-format) of the ledger version where this amendment most recently gained a majority. |
+
+In the [amendment process](concept-amendments.html#amendment-process), a consensus of validators adds a new amendment to the `Majorities` field using an [EnableAmendment][] pseudo-transaction with the `tfGotMajority` flag when 80% or more of validators support it. If support for a pending amendment goes below 80%, an [EnableAmendment][] pseudo-transaction with the `tfLostMajority` flag removes the amendment from the `Majorities` array. If an amendment remains in the `Majorities` field for at least 2 weeks, an [EnableAmendment][] pseudo-transaction with no flags removes it from `Majorities` and permanently adds it to the `Amendments` field.
 
 **Note:** Technically, all transactions in a ledger are processed based on which amendments are enabled in the ledger version immediately before it. While applying transactions to a ledger version where an amendment becomes enabled, the rules don't change mid-ledger. After the ledger is closed, the next ledger uses the new rules as defined by any new amendments that applied.
 
