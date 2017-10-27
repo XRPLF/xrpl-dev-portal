@@ -24,7 +24,7 @@ Many objects in the ledger are owned by a particular address, and count toward t
 - A single [SignerList](reference-ledger-format.html#signerlist) counts as 3 to 10 objects for purposes of the owner reserve, depending on how many members it has. See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
 - [Held Payments (Escrow)](reference-ledger-format.html#escrow) are owned by the address that placed them.
 - [Payment Channels](tutorial-paychan.html) are owned by the address that created them.
-- [Owner directories](reference-ledger-format.html#directorynode) list all the ledger nodes that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.
+- [Owner directories](reference-ledger-format.html#directorynode) list all the ledger objects that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.
 
 #### Owner Reserve Edge Cases ####
 
