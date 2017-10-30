@@ -142,7 +142,7 @@ AccountRoot objects can have the following flag values:
 
 The ID of an AccountRoot object is the SHA-512Half of the following values put together:
 
-* The Account space key (`a`)
+* The Account space key (`0x0061`)
 * The AccountID of the account
 
 
@@ -195,7 +195,7 @@ In the [amendment process](concept-amendments.html#amendment-process), a consens
 
 ### Amendments ID Format
 
-The `Amendments` object ID is the hash of the `Amendments` space key (`f`) only. This means that the ID of the Amendments object in a ledger is always:
+The `Amendments` object ID is the hash of the `Amendments` space key (`0x0066`) only. This means that the ID of the Amendments object in a ledger is always:
 
 ```
 7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4
@@ -280,12 +280,12 @@ There are three different formulas for creating the ID of a DirectoryNode, depen
 
 **The first page of an Owner Directory** has an ID that is the SHA-512Half of the following values put together:
 
-* The Owner Directory space key (`O`, capital letter O)
+* The Owner Directory space key (`0x004F`)
 * The AccountID from the `Owner` field.
 
 **The first page of an Offer Directory** has a special ID: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (The ID is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the SHA-512Half of the following values put together:
 
-* The Book Directory space key (`B`)
+* The Book Directory space key (`0x0042`)
 * The 160-bit currency code from the `TakerPaysCurrency`
 * The 160-bit currency code from the `TakerGetsCurrency`
 * The AccountID from the `TakerPaysIssuer`
@@ -295,7 +295,7 @@ The lower 64 bits of an Offer Directory's ID represent the TakerPays amount divi
 
 **If the DirectoryNode is not the first page in the Directory** (regardless of whether it is an Owner Directory or an Offer Directory), then it has an ID that is the SHA-512Half of the following values put together:
 
-* The DirectoryNode space key (`d`)
+* The DirectoryNode space key (`0x0064`)
 * The ID of the root DirectoryNode
 * The page number of this object. (Since 0 is the root DirectoryNode, this value is an integer 1 or higher.)
 
@@ -354,7 +354,7 @@ An Escrow object has the following fields:
 
 The ID of an Escrow object is the SHA-512Half of the following values put together:
 
-* The Escrow space key (`u`)
+* The Escrow space key (`0x0075`)
 * The AccountID of the sender of the [EscrowCreate transaction][] that created the Escrow object
 * The Sequence number of the [EscrowCreate transaction][] that created the Escrow object
 
@@ -422,7 +422,7 @@ Offer objects can have the following flag values:
 
 The ID of an Offer object is the SHA-512Half of the following values put together:
 
-* The Offer space key (`o`)
+* The Offer space key (`0x006F`)
 * The AccountID of the account placing the offer
 * The Sequence number of the [OfferCreate transaction][] that created the offer
 
@@ -521,7 +521,7 @@ If any other address attempts to set an `Expiration` field, the transaction fail
 
 The ID of a PayChannel object is the SHA-512Half of the following values put together:
 
-* The PayChannel space key (`x`)
+* The PayChannel space key (`0x0078`)
 * The AccountID of the source account
 * The AccountID of the destination account
 * The Sequence number of the transaction that created the channel
@@ -626,7 +626,7 @@ Fortunately, `rippled` uses lazy evaluation to calculate the owner reserve. This
 
 The ID of a RippleState object is the SHA-512Half of the following values put together:
 
-* The RippleState space key (`r`)
+* The RippleState space key (`0x0072`)
 * The AccountID of the low account
 * The AccountID of the high account
 * The 160-bit currency code of the trust line(s)
@@ -704,7 +704,7 @@ A SignerList contributes to its owner's [reserve requirement](concept-reserves.h
 
 The ID of a SignerList object is the SHA-512Half of the following values put together:
 
-* The RippleState space key (`S`)
+* The RippleState space key (`0x0053`)
 * The AccountID of the owner of the SignerList
 * The SignerListID (currently always `0`)
 
