@@ -103,7 +103,7 @@ The `AccountRoot` object has the following fields:
 
 | Field           | JSON Type | [Internal Type][] | Description |
 |-----------------|-----------|---------------|-------------|
-| `LedgerEntryType` | String | UInt16 | The value `0x61`, mapped to the string `AccountRoot`, indicates that this object is an AccountRoot object. |
+| `LedgerEntryType` | String | UInt16 | The value `0x0061`, mapped to the string `AccountRoot`, indicates that this object is an AccountRoot object. |
 | `Account`         | String | AccountID | The identifying address of this account, such as rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn. |
 | [Flags](#accountroot-flags) | Number | UInt32 | A bit-map of boolean flags enabled for this account. |
 | `Sequence`        | Number | UInt32 | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
@@ -180,7 +180,7 @@ Example `Amendments` object:
 | `Amendments`      | Array     | STI_VECTOR256     | _(Optional)_ Array of 256-bit [amendment IDs](concept-amendments.html#about-amendments) for all currently-enabled amendments. If omitted, there are no enabled amendments. |
 | `Majorities`      | Array     | STI_ARRAY | _(Optional)_ Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
 | `Flags`           | Number    | UInt32    | Not used. |
-| `LedgerEntryType` | String    | UInt16    |  The value `0x66`, mapped to the string `Amendments`, indicates that this is the Amendments object. |
+| `LedgerEntryType` | String    | UInt16    |  The value `0x0066`, mapped to the string `Amendments`, indicates that this is the Amendments object. |
 
 Each member of the `Majorities` field, if it is present, is an object with a one field, `Majority`, whose contents are a nested object with the following fields:
 
@@ -257,7 +257,7 @@ Example Directories:
 
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|---------------|-------------|
-| `LedgerEntryType`   | Number    | UInt16    | The value `0x64`, mapped to the string `DirectoryNode`, indicates that this object is part of a Directory. |
+| `LedgerEntryType`   | String    | UInt16    | The value `0x0064`, mapped to the string `DirectoryNode`, indicates that this object is part of a Directory. |
 | `Flags`             | Number    | UInt32    | A bit-map of boolean flags enabled for this directory. Currently, the protocol defines no flags for DirectoryNode objects. |
 | `RootIndex`         | Number    | Hash256   | The ID of root object for this directory. |
 | `Indexes`           | Array     | Vector256 | The contents of this Directory: an array of IDs of other objects. |
@@ -337,6 +337,7 @@ An Escrow object has the following fields:
 
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|---------------|-------------|
+| `LedgerEntryType`   | String    | UInt16    | The value `0x0075`, mapped to the string `Escrow`, indicates that this object is an Escrow object. |
 | `Account`           | String | AccountID | The address of the owner (sender) of this held payment. This is the account that provided the XRP, and gets it back if the held payment is canceled. |
 | `Destination`       | String | AccountID | The destination address where the XRP is paid if the held payment is successful. |
 | `Amount`            | String | Amount    | The amount of XRP, in drops, to be delivered by the held payment. |
@@ -358,6 +359,116 @@ The ID of an Escrow object is the SHA-512Half of the following values put togeth
 * The AccountID of the sender of the [EscrowCreate transaction][] that created the Escrow object
 * The Sequence number of the [EscrowCreate transaction][] that created the Escrow object
 
+## FeeSettings
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")
+
+The `FeeSettings` object type contains the current base [transaction cost](concept-transaction-cost.html) and [reserve amounts](concept-reserves.html) as determined by [fee voting](concept-fee-voting.html). Each ledger version contains **at most one** `FeeSettings` object.
+
+Example `FeeSettings` object:
+
+```json
+{
+   "BaseFee": "000000000000000A",
+   "Flags": 0,
+   "LedgerEntryType": "FeeSettings",
+   "ReferenceFeeUnits": 10,
+   "ReserveBase": 20000000,
+   "ReserveIncrement": 5000000,
+   "index": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651"
+}
+```
+
+The `FeeSettings` object has the following fields:
+
+| Name              | JSON Type | [Internal Type][] | Description |
+|-------------------|-----------|-------------------|-------------|
+| `LedgerEntryType` | String    | UInt16    | The value `0x0065`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
+| `BaseFee`         | String    | UInt64 | The [transaction cost](concept-transaction-cost.html) of the "reference transaction" in drops of XRP as hexadecimal. |
+| `ReferenceFeeUnits` | Number | UInt32 | The `BaseFee` translated into "fee units". |
+| `ReserveBase`       | Number | UInt32 | The [base reserve](concept-reserves.html#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
+| `ReserveIncrement`  | Number | UInt32 | The incremental [owner reserve](concept-reserves.html#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
+
+**Warning:** The JSON format for this ledger object type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP](reference-rippled.html#specifying-currency-amounts).
+
+### FeeSettings ID Format
+
+The `FeeSettings` object ID is the hash of the `FeeSettings` space key (`0x0065`) only. This means that the ID of the Amendments object in a ledger is always:
+
+```
+4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651
+```
+
+
+## LedgerHashes
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L107 "Source")
+
+(Not to be confused with the ["ledger hash" string data type][Hash], which uniquely identifies a ledger version. This section describes the `LedgerHashes` ledger object type.)
+
+The `LedgerHashes` object type contains a history of prior ledgers that led up to this ledger version, in the form of their hashes. Objects of this ledger type are modified automatically in the process of closing a ledger. (This is the only time the ledger's "state" tree is modified without a transaction or pseudo-transaction.) The `LedgerHashes` objects exist to make it possible to look up a previous ledger's hash with only the current ledger version and at most one lookup of a previous ledger version.
+
+There are two kinds of `LedgerHashes` object. Both types have the same fields. Each ledger version contains:
+
+- Exactly one "recent history" LedgerHashes object
+- A number of "previous history" LedgerHashes objects based on the current ledger index (that is, the length of the ledger history).
+
+**Note:** As an exception, a new genesis ledger has no `LedgerHashes` objects at all, because it has no ledger history. <!--{# TODO: confirm this experimentally by looking up B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B on a fresh ledger in stand-alone mode #}-->
+
+Example LedgerHashes object (trimmed for length):
+
+```json
+{
+  "LedgerEntryType": "LedgerHashes",
+  "Flags": 0,
+  "FirstLedgerSequence": 2,
+  "LastLedgerSequence": 33872029,
+  "Hashes": [
+    "D638208ADBD04CBB10DE7B645D3AB4BA31489379411A3A347151702B6401AA78",
+    "254D690864E418DDD9BCAC93F41B1F53B1AE693FC5FE667CE40205C322D1BE3B",
+    "A2B31D28905E2DEF926362822BC412B12ABF6942B73B72A32D46ED2ABB7ACCFA",
+    "AB4014846DF818A4B43D6B1686D0DE0644FE711577C5AB6F0B2A21CCEE280140",
+    "3383784E82A8BA45F4DD5EF4EE90A1B2D3B4571317DBAC37B859836ADDE644C1",
+    ... (up to 256 ledger hashes) ...
+  ],
+  "index": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B"
+}
+```
+
+A `LedgerHashes` object has the following fields:
+
+| Name              | JSON Type | [Internal Type][] | Description |
+|-------------------|-----------|-------------------|-------------|
+| `LedgerEntryType` | String    | UInt16    | The value `0x0068`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
+| `FirstLedgerSequence` | Number | UInt32   | **DEPRECATED** Do not use. (The "recent hashes" object of the production XRP Ledger has the value `2` in this field as a result of a previous `rippled` software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](tutorial-rippled-setup.html#parallel-networks) started with more recent versions of `rippled`.) |
+| `LastLedgerSequence` | Number | UInt32 | The [ledger index][] of the last entry in this object's `Hashes` array. |
+| `Hashes` | Array of Strings | STI_VECTOR256 | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
+| `Flags`             | Number    | UInt32    | A bit-map of boolean flags for this object. No flags are defined for this type. |
+
+### Recent History LedgerHashes
+
+There is exactly one `LedgerHashes` object of the "recent history" sub-type in every ledger after the genesis ledger. This object contains the most recent 256 ledgers (or fewer, if the ledger history has less than 256 ledgers total) in the `Hashes` array. Whenever a new ledger is closed, part of the process of closing it involves updating the "recent history" object with the hash of the previous ledger version this ledger version is derived from (also known as this ledger version's _parent ledger_). When there are more than 256 hashes, the oldest one is removed.
+
+Using the "recent history" `LedgerHashes` object of a given ledger, you can get the hash of any ledger index within the 256 ledger versions before the given ledger version.
+
+### Previous History LedgerHashes
+
+The "previous history" `LedgerHashes` entries collectively contain the hash of every 256th ledger version (also called "flag ledgers") in the full history of the ledger. When the child of a flag ledger closes, the flag ledger's hash is added to the `Hashes` array of the newest "previous history" `LedgerHashes` object. Every 65536 ledgers, `rippled` creates a new `LedgerHashes` object, so that each "previous history" object has the hashes of 256 flag ledgers.
+
+**Note:** The oldest "previous history" `LedgerHashes` object contains only 255 entries because the genesis ledger has ledger index 1, not 0.
+
+The "previous history" `LedgerHashes` objects act as a [skip list](https://en.wikipedia.org/wiki/Skip_list) so you can get the hash of any historical flag ledger from its index. From there, you can use that flag ledger's "recent history" object to get the hash of any other ledger.
+
+### LedgerHashes ID Formats
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/Indexes.cpp#L28-L43)
+
+There are two formats for `LedgerHashes` object IDs, depending on whether the object is a "recent history" sub-type or a "previous history" sub-type.
+
+The **"recent history"** `LedgerHashes` object has an ID that is the SHA-512Half of the `LedgerHashes` space key (`0x0073`). In other words, the "recent history" always has the ID `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`.
+
+The **"previous history"** `LedgerHashes` objects have an ID that is the SHA-512Half of the following values put together:
+
+- The `LedgerHashes` space key (`0x0073`)
+- The 32-bit [ledger index](#ledger-index) of a flag ledger in the object's `Hashes` array, divided by 65536.
+    **Tip:** Dividing by 65536 keeps the most significant 16 bits, which are the same for all the flag ledgers listed in a "previous history" object, and only those ledgers. You can use this fact to look up the `LedgerHashes` object that contains the hash of any flag ledger.
 
 
 ## Offer
@@ -394,7 +505,7 @@ An Offer object has the following fields:
 
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|---------------|-------------|
-| `LedgerEntryType`   | String    | UInt16    | The value `0x6F`, mapped to the string `Offer`, indicates that this object is an Offer object. |
+| `LedgerEntryType`   | String    | UInt16    | The value `0x006F`, mapped to the string `Offer`, indicates that this object is an Offer object. |
 | `Flags`             | Number    | UInt32    | A bit-map of boolean flags enabled for this offer. |
 | `Account`           | String    | AccountID | The address of the account that owns this offer. |
 | `Sequence`          | Number    | UInt32    | The `Sequence` value of the [OfferCreate][] transaction that created this Offer object. Used in combination with the `Account` to identify this Offer. |
@@ -470,7 +581,7 @@ A `PayChannel` object has the following fields:
 
 | Name                | JSON Type | [Internal Type][] | Description            |
 |:--------------------|:----------|:------------------|:-----------------------|
-| `LedgerEntryType`   | String    | UInt16            | The value `0x78`, mapped to the string `PayChannel`, indicates that this object is a payment channel object. |
+| `LedgerEntryType`   | String    | UInt16            | The value `0x0078`, mapped to the string `PayChannel`, indicates that this object is a payment channel object. |
 | `Account`           | String    | AccountID         | The source address that owns this payment channel. This comes from the sending address of the transaction that created the channel. |
 | `Destination`       | String    | AccountID         | The destination address for this payment channel. While the payment channel is open, this address is the only one that can receive XRP from the channel. This comes from the `Destination` field of the transaction that created the channel. |
 | `Amount`            | String    | Amount            | Total [XRP, in drops][], that has been allocated to this channel. This includes XRP that has been paid to the destination address. This is initially set by the transaction that created the channel and can be increased if the source address sends a PaymentChannelFund transaction. |
@@ -568,7 +679,7 @@ A RippleState object has the following fields:
 
 | Name            | JSON Type | Internal Type | Description |
 |-----------------|-----------|---------------|-------------|
-| `LedgerEntryType` | String    | UInt16 | The value `0x72`, mapped to the string `RippleState`, indicates that this object is a RippleState object. |
+| `LedgerEntryType` | String    | UInt16 | The value `0x0072`, mapped to the string `RippleState`, indicates that this object is a RippleState object. |
 | `Flags`           | Number    | UInt32 | A bit-map of boolean options enabled for this object. |
 | `Balance`         | Object    | Amount | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the low account has issued currency to the high account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](concept-accounts.html#special-addresses). |
 | `LowLimit`        | Object    | Amount | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
@@ -676,6 +787,7 @@ A SignerList object has the following fields:
 
 | Name            | JSON Type | Internal Type | Description |
 |-----------------|-----------|---------------|-------------|
+| `LedgerEntryType`   | String    | UInt16    | The value `0x0053`, mapped to the string `SignerList`, indicates that this object is a SignerList object. |
 | `OwnerNode`       | String    | UInt64        | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. |
 | `SignerQuorum`    | Number    | UInt32        | A target number for signer weights. To produce a valid signature for the owner of this SignerList, the signers must provide valid signatures whose weights sum to this value or more. |
 | `SignerEntries`   | Array     | Array         | An array of SignerEntry objects representing the parties who are part of this signer list. |

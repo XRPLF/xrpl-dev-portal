@@ -6,11 +6,11 @@ Operators of [`rippled` validators](tutorial-rippled-setup.html#running-a-valida
 
 | Parameter | Description | Recommended Value |
 |-----------|-------------|-------------------|
-| reference\_fee | Amount of XRP, in _drops_, that must be destroyed to send the reference transaction, the cheapest possible transaction. (1 XRP = 1 million drops.) The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers. | `10` (0.00001 XRP) |
-| account\_reserve | Minimum amount of XRP, in _drops_, that an account must have on reserve. This is the smallest amount that can be sent to fund a new account in the ledger. | `20000000` (20 XRP) |
-| owner\_reserve | How much more XRP, in _drops_, that an address must hold for _each_ object it owns in the ledger. | `5000000` (5 XRP) |
+| `reference_fee` | Amount of XRP, in _drops_, that must be destroyed to send the reference transaction, the cheapest possible transaction. (1 XRP = 1 million drops.) The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers. | `10` (0.00001 XRP) |
+| `account_reserve` | Minimum amount of XRP, in _drops_, that an account must have on reserve. This is the smallest amount that can be sent to fund a new account in the ledger. | `20000000` (20 XRP) |
+| `owner_reserve` | How much more XRP, in _drops_, that an address must hold for _each_ object it owns in the ledger. | `5000000` (5 XRP) |
 
-## Voting Process ##
+## Voting Process
 
 Every 256th ledger is called a "flag" ledger. (A flag ledger is defined such that the `ledger_index` [modulo](https://en.wikipedia.org/wiki/Modulo_operation) `256` is equal to `0`.) In the ledger immediately before the flag ledger, each validator whose account reserve or transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.
 
@@ -24,3 +24,13 @@ In short:
 * **Flag ledger**: Validators tally votes and decide what SetFee to include, if any.
 * **Flag ledger +1**: Validators insert SetFee pseudo-transaction into their proposed ledgers.
 * **Flag ledger +2**: New settings take effect, if a SetFee psuedotransaction achieved consensus.
+
+## Maximum Fee Values
+
+The maximum possible values for the fees are limited by the internal data types stored in the [FeeSettings ledger object](reference-ledger-format.html#feesettings). These values are as follows:
+
+| Parameter | Maximum Value (drops) | Maximum Value (XRP)
+|-----------|-----------------------|----|
+| `reference_fee` | 2**64 | (More XRP than has ever existed.) |
+| `account_reserve` | 2^32 drops | Approximately 4294 XRP |
+| `owner_reserve` | 2^32 drops | Approximately 4294 XRP |
