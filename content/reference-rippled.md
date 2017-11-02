@@ -343,7 +343,7 @@ All methods can potentially return any of the following values for the `error` c
 
 The WebSocket and JSON-RPC APIs generally take the same arguments, although they're provided in a different way (See [Request Formatting](#request-formatting) for details). Many similar parameters appear throughout the APIs, and there are conventions for how to specify these parameters.
 
-All field names are case-sensitive. In responses, fields that are taken directly from Ledger Node or Transaction objects start with upper-case letters. Other fields, including ones that are dynamically generated for a response, are lower case.
+All field names are case-sensitive. In responses, fields that are taken directly from ledger objects or transaction instructions start with upper-case letters. Other fields, including ones that are dynamically generated for a response, are lower case.
 
 ## Basic Data Types ##
 
@@ -387,8 +387,8 @@ Many API methods require you to specify an instance of the ledger, with the data
 2. Specify a ledger by its [Hash][] value in the `ledger_hash` parameter.
 3. Specify a ledger by one of the following shortcuts, in the `ledger_index` parameter:
     * `validated` for the most recent ledger that has been validated by the whole network
-    * `closed` for the most recent ledger that has been closed for modifications and proposed for validation by the node
-    * `current` for the node's current working version of the ledger.
+    * `closed` for the most recent ledger that has been closed for modifications and proposed for validation
+    * `current` for the server's current working version of the ledger.
 
 There is also a deprecated `ledger` parameter which accepts any of the above three formats. *Do not* use this parameter; it may be removed without further notice.
 
@@ -512,7 +512,7 @@ For more information on the various transactions you can submit, see the [Transa
 
 # API Methods #
 
-API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include operations such as checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for trusted server operators, and include commands for managing the state of the server, the nodes it uses for validation, and other administrative features.
+API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include operations such as checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for trusted server operators, and include commands for managing, monitoring, and debugging the server.
 
 
 ## List of Public Commands ##
@@ -1094,8 +1094,8 @@ The response follows the [standard format](#response-formatting), with the resul
 
 | `Field`                | Type    | Description                               |
 |:-----------------------|:--------|:------------------------------------------|
-| `account_data`         | Object  | The [AccountRoot ledger node](reference-ledger-format.html#accountroot) with this account's information, as stored in the ledger. |
-| `signer_lists`         | Array   | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger nodes](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](reference-transaction-format.html#multi-signing). Since an account can own at most one SignerList, this array must have exactly one member if it is present. [New in: rippled 0.31.0][] |
+| `account_data`         | Object  | The [AccountRoot ledger object](reference-ledger-format.html#accountroot) with this account's information, as stored in the ledger. |
+| `signer_lists`         | Array   | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger objects](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](reference-transaction-format.html#multi-signing). Since an account can own at most one SignerList, this array must have exactly one member if it is present. [New in: rippled 0.31.0][] |
 | `ledger_current_index` | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
 | `ledger_index`         | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
 | `queue_data`           | Object  | (Omitted unless `queue` specified as `true` and querying the current open ledger.) Information about [queued transactions](concept-transaction-cost.html#queued-transactions) sent by this account. This information describes the state of the local `rippled` server, which may be different from other servers in the consensus network. Some fields may be omitted because the values are calculated "lazily" by the queuing mechanism. |
@@ -1515,11 +1515,11 @@ The `account_objects` command returns the raw [ledger format][] for all objects 
 
 The types of objects that may appear in the `account_objects` response for an account include:
 
-- [Offer nodes](reference-ledger-format.html#offer) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer) for more information.)
-- [RippleState nodes](reference-ledger-format.html#ripplestate) for trust lines where this account's side is not in the default state.
-- The account's [SignerList node](reference-ledger-format.html#signerlist), if the account has [multi-signing](reference-transaction-format.html#multi-signing) enabled.
-- [Escrow nodes](reference-ledger-format.html#escrow) for held payments that have not yet been executed or canceled.
-- [PayChannel nodes](reference-ledger-format.html#paychannel) for open payment channels.
+- [Offer objects](reference-ledger-format.html#offer) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer) for more information.)
+- [RippleState objects](reference-ledger-format.html#ripplestate) for trust lines where this account's side is not in the default state.
+- The account's [SignerList](reference-ledger-format.html#signerlist), if the account has [multi-signing](reference-transaction-format.html#multi-signing) enabled.
+- [Escrow objects](reference-ledger-format.html#escrow) for held payments that have not yet been executed or canceled.
+- [PayChannel objects](reference-ledger-format.html#paychannel) for open payment channels.
 
 
 #### Request Format ####
@@ -1571,7 +1571,7 @@ The request includes the following parameters:
 | `Field`        | Type                                       | Description    |
 |:---------------|:-------------------------------------------|:---------------|
 | `account`      | String                                     | A unique identifier for the account, most commonly the account's address. |
-| `type`         | String                                     | _(Optional)_ If included, filter results to include only this type of ledger node. The valid types are: `offer`, `signer_list`, `state` (trust line), `escrow`, and `payment_channel`. <!-- Author's note: Omitted types from this list that can't be owned by an account: https://github.com/ripple/rippled/blob/1dbc5a57e6b0e90a9da0d6e56f2f5a99e6ac1d8c/src/ripple/rpc/impl/RPCHelpers.cpp#L676-L686 --> |
+| `type`         | String                                     | _(Optional)_ If included, filter results to include only this type of ledger object. The valid types are: `offer`, `signer_list`, `state` (trust line), `escrow`, and `payment_channel`. <!-- Author's note: Omitted types from this list that can't be owned by an account: https://github.com/ripple/rippled/blob/1dbc5a57e6b0e90a9da0d6e56f2f5a99e6ac1d8c/src/ripple/rpc/impl/RPCHelpers.cpp#L676-L686 --> |
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `limit`        | Unsigned Integer                           | _(Optional)_ The maximum number of objects to include in the results. Must be within the inclusive range 10 to 400 on non-admin connections. Defaults to 200. |
@@ -3741,8 +3741,8 @@ A request can include the following fields:
 | `id`           | (Arbitrary)                                | (WebSocket only) Any identifier to separate this request from others in case the responses are delayed or out of order. |
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `binary`       | Boolean                                    | (Optional, defaults to False) If set to true, return data nodes as hashed hex strings instead of JSON. |
-| `limit`        | Integer                                    | (Optional, default varies) Limit the number of nodes to retrieve. The server is not required to honor this value. |
+| `binary`       | Boolean                                    | (Optional, defaults to False) If set to true, return ledger objects as hashed hex strings instead of JSON. |
+| `limit`        | Integer                                    | (Optional, default varies) Limit the number of ledger objects to retrieve. The server is not required to honor this value. |
 | `marker`       | [(Not Specified)](#markers-and-pagination) | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 The `ledger` field is deprecated and may be removed without further notice.
@@ -3941,7 +3941,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 | `Field`             | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
 | `data`              | String    | (Only included if `"binary":true`) Hex representation of the requested data |
-| `LedgerEntryType`   | String    | (Only included if `"binary":false`) String indicating what type of ledger node this object represents. See [ledger format][] for the full list. |
+| `LedgerEntryType`   | String    | (Only included if `"binary":false`) String indicating what type of ledger object this object represents. See [ledger format][] for the full list. |
 | (Additional fields) | (Various) | (Only included if `"binary":false`) Additional fields describing this object, depending on which LedgerEntryType it is. |
 | `index`             | String    | Unique identifier for this ledger entry, as hex. |
 
@@ -3955,7 +3955,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 ## ledger_entry ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
-The `ledger_entry` method returns a single ledger node from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of objects you can retrieve.
+The `ledger_entry` method returns a single ledger object from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of objects you can retrieve.
 
 **Note:** There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
 
@@ -3998,11 +3998,11 @@ An example of the request format:
 
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
-1. `index` - Retrieve any type of ledger node by its unique index
-2. `account_root` - Retrieve an [AccountRoot node](reference-ledger-format.html#accountroot). This is roughly equivalent to the [account_info](#account-info) command.
-3. `directory` - Retrieve a [DirectoryNode](reference-ledger-format.html#directorynode), which contains a list of other nodes
-4. `offer` - Retrieve an [Offer node](reference-ledger-format.html#offer), which defines an offer to exchange currency
-5. `ripple_state` - Retrieve a [RippleState node](reference-ledger-format.html#ripplestate), which tracks a (non-XRP) currency balance between two accounts.
+1. `index` - Retrieve any type of ledger object by its unique ID
+2. `account_root` - Retrieve an [AccountRoot object](reference-ledger-format.html#accountroot). This is roughly equivalent to the [account_info](#account-info) command.
+3. `directory` - Retrieve a [DirectoryNode](reference-ledger-format.html#directorynode), which contains a list of other ledger objects
+4. `offer` - Retrieve an [Offer object](reference-ledger-format.html#offer), which defines an offer to exchange currency
+5. `ripple_state` - Retrieve a [RippleState object](reference-ledger-format.html#ripplestate), which tracks a (non-XRP) currency balance between two accounts.
 
 If you specify more than one of the above items, the server retrieves only of them; it is undefined which it chooses.
 
@@ -4011,18 +4011,18 @@ The full list of parameters recognized by this method is as follows:
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
 | `index`                 | String                     | _(Optional)_ Specify the unique identifier of a single ledger entry to retrieve. |
-| `account_root`          | String - [Address][]       | _(Optional)_ Specify an [AccountRoot node](reference-ledger-format.html#accountroot) to retrieve. |
-| `directory`             | Object or String           | _(Optional)_ Specify a [DirectoryNode](reference-ledger-format.html#directorynode). (Directory nodes each contain a list of IDs for things contained in them.) If a string, interpret as the [unique index](reference-ledger-format.html#tree-format) to the directory, in hex. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
-| `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a further sub-node in the [DirectoryNode](reference-ledger-format.html#directorynode). |
+| `account_root`          | String - [Address][]       | _(Optional)_ Specify an [AccountRoot object](reference-ledger-format.html#accountroot) to retrieve. |
+| `directory`             | Object or String           | _(Optional)_ Specify a [DirectoryNode](reference-ledger-format.html#directorynode). (DirectoryNode objects each contain a list of IDs for things contained in them.) If a string, interpret as the [unique index](reference-ledger-format.html#tree-format) to the directory, in hex. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [Directory](reference-ledger-format.html#directorynode). |
 | `directory.dir_root`    | String                     | (Required if `directory` is specified as an object and `directory.owner` is not provided) Unique index identifying the directory to retrieve, as a hex string. |
 | `directory.owner`       | String                     | (Required if `directory` is specified as an object and `directory.dir_root` is not provided) Unique address of the account associated with this directory |
-| `offer`                 | Object or String           | _(Optional)_ Specify an [Offer node](reference-ledger-format.html#offer) to retrieve. If a string, interpret as the [unique index](reference-ledger-format.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| `offer`                 | Object or String           | _(Optional)_ Specify an [Offer object](reference-ledger-format.html#offer) to retrieve. If a string, interpret as the [unique index](reference-ledger-format.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
 | `offer.account`         | String - [Address][]       | (Required if `offer` specified) The account that placed the offer. |
-| `offer.seq`             | Unsigned Integer           | (Required if `offer` specified) The sequence number of the transaction that created the Offer node. |
-| `ripple_state`          | Object                     | _(Optional)_ Object specifying the RippleState (trust line) node to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
-| `ripple_state.accounts` | Array                      | (Required if `ripple_state` specified) 2-length array of account [Address][]es, defining the two accounts linked by this [RippleState node](reference-ledger-format.html#ripplestate) |
-| `ripple_state.currency` | String                     | (Required if `ripple_state` specified) [Currency Code][] of the [RippleState node](reference-ledger-format.html#ripplestate) to retrieve. |
-| `binary`                | Boolean                    | (Optional, defaults to false) If true, return the requested ledger node's contents as a hex string. Otherwise, return data in JSON format. |
+| `offer.seq`             | Unsigned Integer           | (Required if `offer` specified) The sequence number of the transaction that created the Offer object. |
+| `ripple_state`          | Object                     | _(Optional)_ Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
+| `ripple_state.accounts` | Array                      | (Required if `ripple_state` specified) 2-length array of account [Address][]es, defining the two accounts linked by this [RippleState object](reference-ledger-format.html#ripplestate) |
+| `ripple_state.currency` | String                     | (Required if `ripple_state` specified) [Currency Code][] of the [RippleState object](reference-ledger-format.html#ripplestate) to retrieve. |
+| `binary`                | Boolean                    | _(Optional)_ If true, return the requested ledger object's contents as a hex string. Otherwise, return data in JSON format. The default is `true` if searching by `index` and `false` otherwise. |
 | `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `ledger_index`          | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 
@@ -4091,8 +4091,8 @@ The response follows the [standard format](#response-formatting), with a success
 |:---------------|:-----------------|:-----------------------------------------|
 | `index`        | String           | Unique identifying key for this ledger_entry |
 | `ledger_index` | Unsigned Integer | Unique sequence number of the ledger from which this data was retrieved |
-| `node`         | Object           | (Omitted if `"binary": true` specified.) Object containing the data of this ledger node, according to the [ledger format][]. |
-| `node_binary`  | String           | (Omitted unless `"binary":true` specified) Binary data of the ledger node, as hex. |
+| `node`         | Object           | (Omitted if `"binary": true` specified.) Object containing the data of this ledger object, according to the [ledger format][]. |
+| `node_binary`  | String           | (Omitted unless `"binary":true` specified) Binary data of the ledger object, as hex. |
 
 #### Possible Errors ####
 
@@ -4269,8 +4269,8 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 | `have_header`               | Boolean          | Whether the server has the header section of the requested ledger. |
 | `have_state`                | Boolean          | (May be omitted) Whether the server has the [account-state section](reference-ledger-format.html#tree-format) of the requested ledger. |
 | `have_transactions`         | Boolean          | (May be omitted) Whether the server has the transaction section of the requested ledger. |
-| `needed_state_hashes`       | Array of Strings | (May be omitted) Up to 16 hashes of nodes in the [state tree](reference-ledger-format.html#tree-format) that the server still needs to retrieve. |
-| `needed_transaction_hashes` | Array of Strings | (May be omitted) Up to 16 hashes of nodes in the transaction tree that the server still needs to retrieve. |
+| `needed_state_hashes`       | Array of Strings | (May be omitted) Up to 16 hashes of objects in the [state tree](reference-ledger-format.html#tree-format) that the server still needs to retrieve. |
+| `needed_transaction_hashes` | Array of Strings | (May be omitted) Up to 16 hashes of objects in the transaction tree that the server still needs to retrieve. |
 | `peers`                     | Number           | How many peers the server is querying to find this ledger. |
 | `timeouts`                  | Number           | Number of times fetching this ledger has timed out so far. |
 
@@ -8950,9 +8950,9 @@ The `info` object may have some arrangement of the following fields:
 | `load_factor_fee_escalation`        | Number                    | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger. [New in: rippled 0.32.0][] |
 | `load_factor_fee_queue`             | Number                    | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full. [New in: rippled 0.32.0][] |
 | `load_factor_server`                | Number                    | (May be omitted) The load factor the server is enforcing, not including the [open ledger cost](concept-transaction-cost.html#open-ledger-cost). [New in: rippled 0.33.0][] |
-| `peers`                             | Number                    | How many other `rippled` servers the node is currently connected to. |
-| `pubkey_node`                       | String                    | Public key used to verify this node for internal communications; this key is automatically generated by the server the first time it starts up. (If deleted, the node can create a new pair of keys.) |
-| `pubkey_validator`                  | String                    | *Admin only* Public key used by this node to sign ledger validations. |
+| `peers`                             | Number                    | How many other `rippled` servers this one is currently connected to. |
+| `pubkey_node`                       | String                    | Public key used to verify this server for peer-to-peer communications; this key is automatically generated by the server the first time it starts up. (If deleted, the server can create a new pair of keys.) |
+| `pubkey_validator`                  | String                    | *Admin only* Public key used by this server to sign ledger validations. |
 | `server_state`                      | String                    | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
 | `state_accounting`                  | Object                    | A map of various [server states](#possible-server-states) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. [New in: rippled 0.30.1][] |
 | `state_accounting.*.duration_us`    | String                    | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) [New in: rippled 0.30.1][] |
@@ -9240,8 +9240,8 @@ The `state` object may have some arrangement of the following fields:
 | `load_factor_fee_queue`          | Integer          | (May be omitted) The current multiplier to the [transaction cost][] to get into the queue, if the queue is full, in [fee levels][]. [New in: rippled 0.32.0][] |
 | `load_factor_fee_reference`      | Integer          | (May be omitted) The [transaction cost][] with no load scaling, in [fee levels][]. [New in: rippled 0.32.0][] |
 | `load_factor_server`             | Number           | (May be omitted) The load factor the server is enforcing, not including the [open ledger cost](concept-transaction-cost.html#open-ledger-cost). [New in: rippled 0.33.0][] |
-| `peers`                          | Number           | How many other `rippled` servers the node is currently connected to. |
-| `pubkey_node`                    | String           | Public key used by this server (along with the corresponding private key) for secure communications between nodes. This key pair is automatically created and stored in `rippled`'s local database the first time it starts up; if lost or deleted, a new key pair can be generated with no ill effects. |
+| `peers`                          | Number           | How many other `rippled` servers this one is currently connected to. |
+| `pubkey_node`                    | String           | Public key used to verify this server for peer-to-peer communications; this key pair is automatically generated by the server the first time it starts up. (If deleted, the server can create a new pair of keys.)  |
 | `pubkey_validator`               | String           | *Admin only* Public key of the keypair used by this server to sign proposed ledgers for validation. |
 | `server_state`                   | String           | A string indicating to what extent the server is participating in the network. See [Possible Server States](#possible-server-states) for more details. |
 | `state_accounting`               | Object           | A map of various [server states](#possible-server-states) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. [New in: rippled 0.30.1][] |
@@ -9711,12 +9711,12 @@ The fields describing a fetch in progress are subject to change without notice. 
 
 | `Field`               | Type                    | Description                |
 |:----------------------|:------------------------|:---------------------------|
-| `hash`                | String                  | The hash of the object being fetched. |
+| `hash`                | String                  | The hash of the item being fetched. |
 | `have_header`         | Boolean                 | For a ledger, whether this server has already obtained the ledger's header section. |
 | `have_transactions`   | Boolean                 | For a ledger, whether this server has already obtained the transaction section of that ledger. |
-| `needed_state_hashes` | Array of (Hash) Strings | The hash values of state nodes still needed from this object. If more than 16 are needed, the response contains only the first 16. |
-| `peers`               | Number                  | The number of peers who have this object available. |
-| `timeouts`            | Number                  | The number of times that fetching this object has resulted in a timeout (2.5 seconds). |
+| `needed_state_hashes` | Array of (Hash) Strings | The hash values of state objects still needed from this item. If more than 16 are needed, the response contains only the first 16. |
+| `peers`               | Number                  | The number of peers who have this item available. |
+| `timeouts`            | Number                  | The number of times that fetching this item has resulted in a timeout (2.5 seconds). |
 
 #### Possible Errors ####
 
@@ -10257,9 +10257,9 @@ The request includes the following parameters:
 | `ledger`      | Number (Ledger Sequence Number) | _(Optional)_ If provided, check and correct this specific ledger only. |
 | `max_ledger`  | Number (Ledger Sequence Number) | _(Optional)_ Configure the ledger cleaner to check ledgers with sequence numbers equal or lower than this. |
 | `min_ledger`  | Number (Ledger Sequence Number) | _(Optional)_ Configure the ledger cleaner to check ledgers with sequence numbers equal or higher than this. |
-| `full`        | Boolean                         | _(Optional)_ If true, fix ledger state nodes and transations in the specified ledger(s). Defaults to false. Automatically set to `true` if `ledger` is provided. |
+| `full`        | Boolean                         | _(Optional)_ If true, fix ledger state objects and transations in the specified ledger(s). Defaults to false. Automatically set to `true` if `ledger` is provided. |
 | `fix_txns`    | Boolean                         | _(Optional)_ If true, correct transaction in the specified ledger(s). Overrides `full` if provided. |
-| `check_nodes` | Boolean                         | _(Optional)_ If true, correct ledger state nodes in the specified ledger(s). Overrides `full` if provided. |
+| `check_nodes` | Boolean                         | _(Optional)_ If true, correct ledger state objects in the specified ledger(s). Overrides `full` if provided. |
 | `stop`        | Boolean                         | _(Optional)_ If true, disable the ledger cleaner. |
 
 #### Response Format ####
@@ -10512,7 +10512,7 @@ The response follows the [standard format](#response-formatting), with a success
 ## validation_create ##
 [[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
 
-Use the `validation_create` command to generate the keys for a rippled [validating node](tutorial-rippled-setup.html#validator-setup). Similar to the [wallet_propose](#wallet-propose) command, this command makes no real changes, but only generates a set of keys in the proper format.
+Use the `validation_create` command to generate the keys for a rippled [validator](tutorial-rippled-setup.html#validator-setup). Similar to the [wallet_propose](#wallet-propose) command, this command makes no real changes, but only generates a set of keys in the proper format.
 
 _The `validation_create` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
@@ -11092,7 +11092,7 @@ Each member of the `peers` array is a peer object with the following fields:
 |:-------------------|:--------|:----------------------------------------------|
 | `address`          | String  | The IP address and port where this peer is connected |
 | `cluster`          | Boolean | (May be omitted) If `true`, the current server and the peer server are part of the same `rippled` cluster. |
-| `name`             | String  | (May be omitted) If the peer is part of the same cluster, this is the display name for that node as defined in the config file. |
+| `name`             | String  | (May be omitted) If the peer is part of the same cluster, this is the display name for that server as defined in the config file. |
 | `complete_ledgers` | String  | Range expression indicating the sequence numbers of the ledger versions the peer `rippled` has available |
 | `inbound`          | Boolean | (May be omitted) If `true`, the peer is connecting to the local server. |
 | `latency`          | Number  | The network latency to the peer (in milliseconds) |

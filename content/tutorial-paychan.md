@@ -165,7 +165,7 @@ In the response from the JSON-RPC, the payer should look for the following:
 - In the transaction's `meta` field, confirm that the `TransactionResult` is `tesSUCCESS`.
 - Confirm that the response has `"validated":true` to indicate the data comes from a validated ledger. (The result `tesSUCCESS` is only [final](reference-transaction-format.html#finality-of-results) if it appears in a validated ledger version.)
 - In the `AffectedNodes` array of the transaction's `meta` field, look for a `CreatedNode` object with the `LedgerEntryType` of `PayChannel`. The `LedgerIndex` field of the `CreatedNode` object indicates the Channel ID. (In the above example, this is a hex string starting with "5DB0...") The Channel ID is necessary later to sign claims.
-    For more information on the PayChannel ledger object type, see [PayChannel ledger node type](reference-ledger-format.html#paychannel).
+    For more information on the PayChannel ledger object type, see [PayChannel ledger object](reference-ledger-format.html#paychannel).
 
 
 ## 2. The payee checks specifics of the payment channel.

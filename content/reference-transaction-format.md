@@ -429,7 +429,7 @@ There are several options which can be either enabled or disabled for an account
 
 * The `AccountSet` transaction type has several "AccountSet Flags" (prefixed **asf**) that can enable an option when passed as the `SetFlag` parameter, or disable an option when passed as the `ClearFlag` parameter.
 * The `AccountSet` transaction type has several transaction flags (prefixed **tf**) that can be used to enable or disable specific account options when passed in the `Flags` parameter. This style is discouraged. New account options do not have corresponding transaction (tf) flags.
-* The `AccountRoot` ledger node type has several ledger-specific-flags (prefixed **lsf**) which represent the state of particular account options within a particular ledger. Naturally, the values apply until a later ledger version changes them.
+* The `AccountRoot` ledger object type has several ledger-specific-flags (prefixed **lsf**) which represent the state of particular account options within a particular ledger. Naturally, the values apply until a later ledger version changes them.
 
 The preferred way to enable and disable Account Flags is using the `SetFlag` and `ClearFlag` parameters of an AccountSet transaction. AccountSet flags have names that begin with **asf**.
 
@@ -590,7 +590,7 @@ Any account may submit an EscrowFinish transaction.
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp "Source")
 
-An OfferCancel transaction removes an Offer node from the XRP Ledger.
+An OfferCancel transaction removes an Offer object from the XRP Ledger.
 
 ```
 {
@@ -606,7 +606,7 @@ An OfferCancel transaction removes an Offer node from the XRP Ledger.
 
 | Field         | JSON Type        | [Internal Type][] | Description           |
 |:--------------|:-----------------|:------------------|:----------------------|
-| OfferSequence | Unsigned Integer | UInt32            | The sequence number of a previous OfferCreate transaction. If specified, cancel any offer node in the ledger that was created by that transaction. It is not considered an error if the offer specified does not exist. |
+| OfferSequence | Unsigned Integer | UInt32            | The sequence number of a previous OfferCreate transaction. If specified, cancel any offer object in the ledger that was created by that transaction. It is not considered an error if the offer specified does not exist. |
 
 *Tip:* To remove an old offer and replace it with a new one, you can use an [OfferCreate transaction][] with an `OfferSequence` parameter, instead of using OfferCancel and another OfferCreate.
 
@@ -618,7 +618,7 @@ The OfferCancel method returns [tesSUCCESS](#transaction-results) even if it did
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")
 
-An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer node in the XRP Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
+An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an Offer object in the XRP Ledger if not completely fulfilled when placed. Offers can be partially fulfilled.
 
 ```
 {
@@ -646,7 +646,7 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 
 ### Lifecycle of an Offer ###
 
-When an OfferCreate transaction is processed, it automatically consumes matching or crossing offers to the extent possible. (If existing offers provide a better rate than requested, the offer creator could pay less than the full `TakerGets` amount to receive the entire `TakerPays` amount.) If that does not completely fulfill the `TakerPays` amount, then the offer becomes an Offer node in the ledger. (You can use [OfferCreate Flags](#offercreate-flags) to modify this behavior.)
+When an OfferCreate transaction is processed, it automatically consumes matching or crossing offers to the extent possible. (If existing offers provide a better rate than requested, the offer creator could pay less than the full `TakerGets` amount to receive the entire `TakerPays` amount.) If that does not completely fulfill the `TakerPays` amount, then the offer becomes an Offer object in the ledger. (You can use [OfferCreate Flags](#offercreate-flags) to modify this behavior.)
 
 An offer in the ledger can be fulfilled either by additional OfferCreate transactions that match up with the existing offers, or by [Payments](#payment) that use the offer to connect the payment path. Offers can be partially fulfilled and partially funded. A single transaction can consume up to 850 Offers from the ledger. (Any more than that, and the metadata becomes too large, resulting in [`tecOVERSIZE`](#tec-codes).)
 
@@ -729,8 +729,8 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 
 | Flag Name           | Hex Value  | Decimal Value | Description               |
 |:--------------------|:-----------|:--------------|:--------------------------|
-| tfPassive           | 0x00010000 | 65536         | If enabled, the offer does not consume offers that exactly match it, and instead becomes an Offer node in the ledger. It still consumes offers that cross it. |
-| tfImmediateOrCancel | 0x00020000 | 131072        | Treat the offer as an [Immediate or Cancel order](http://en.wikipedia.org/wiki/Immediate_or_cancel). If enabled, the offer never becomes a ledger node: it only tries to match existing offers in the ledger. |
+| tfPassive           | 0x00010000 | 65536         | If enabled, the offer does not consume offers that exactly match it, and instead becomes an Offer object in the ledger. It still consumes offers that cross it. |
+| tfImmediateOrCancel | 0x00020000 | 131072        | Treat the offer as an [Immediate or Cancel order](http://en.wikipedia.org/wiki/Immediate_or_cancel). If enabled, the offer never becomes a ledger object: it only tries to match existing offers in the ledger. |
 | tfFillOrKill        | 0x00040000 | 262144        | Treat the offer as a [Fill or Kill order](http://en.wikipedia.org/wiki/Fill_or_kill). Only try to match existing offers in the ledger, and only do so if the entire `TakerPays` quantity can be obtained. |
 | tfSell              | 0x00080000 | 524288        | Exchange the entire `TakerGets` amount, even if it means obtaining more than the `TakerPays` amount in exchange. |
 
@@ -787,7 +787,7 @@ Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates 
 
 ### Creating Accounts ###
 
-The Payment transaction type is the only way to create new accounts in the XRP Ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](concept-reserves.html) to a mathematically-valid account address that does not exist yet. When the Payment is processed, a new [AccountRoot node](reference-ledger-format.html#accountroot) is added to the ledger.
+The Payment transaction type is the only way to create new accounts in the XRP Ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](concept-reserves.html) to a mathematically-valid account address that does not exist yet. When the Payment is processed, a new [AccountRoot object](reference-ledger-format.html#accountroot) is added to the ledger.
 
 If you send an insufficient amount of XRP, or any other currency, the Payment fails.
 
@@ -1279,11 +1279,11 @@ Some fields that may appear in transaction metadata include:
 
 | Field                                 | Value               | Description    |
 |:--------------------------------------|:--------------------|:---------------|
-| AffectedNodes                         | Array               | List of nodes that were created, deleted, or modified by this transaction, and specific changes to each. |
-| DeliveredAmount                       | [Currency Amount][] | **DEPRECATED.** Replaced by `delivered_amount`. Omitted if not a partial payment. |
-| TransactionIndex                      | Unsigned Integer    | The transaction's position within the ledger that included it. (For example, the value `2` means it was the 2nd transaction in that ledger.) |
-| TransactionResult                     | String              | A [result code](#result-categories) indicating whether the transaction succeeded or how it failed. |
-| [delivered_amount](#delivered-amount) | [Currency Amount][] | The [Currency Amount][] actually received by the `Destination` account. Use this field to determine how much was delivered, regardless of whether the transaction is a [partial payment](#partial-payments). [New in: rippled 0.27.0][] |
+| `AffectedNodes`                       | Array               | List of [ledger objects](reference-ledger-format.html#ledger-object-types) that were created, deleted, or modified by this transaction, and specific changes to each. |
+| `DeliveredAmount`                     | [Currency Amount][] | **DEPRECATED.** Replaced by `delivered_amount`. Omitted if not a partial payment. |
+| `TransactionIndex`                    | Unsigned Integer    | The transaction's position within the ledger that included it. (For example, the value `2` means it was the 2nd transaction in that ledger.) |
+| `TransactionResult`                   | String              | A [result code](#result-categories) indicating whether the transaction succeeded or how it failed. |
+| [`delivered_amount`](#delivered-amount) | [Currency Amount][] | The [Currency Amount][] actually received by the `Destination` account. Use this field to determine how much was delivered, regardless of whether the transaction is a [partial payment](#partial-payments). [New in: rippled 0.27.0][] |
 
 ### delivered_amount ###
 
@@ -1444,7 +1444,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | `tecNO_LINE_REDUNDANT`     | 127   | The transaction failed because it tried to set a trust line to its default state, but the trust line did not exist. |
 | `tecNO_PERMISSION`         | 139   | The sender does not have permission to do this operation. For example, the [EscrowFinish transaction][] tried to release a held payment before its `FinishAfter` time, or someone tried to use [PaymentChannelFund][] on a channel the sender does not own. |
 | `tecNO_REGULAR_KEY`        | 131   | The [AccountSet transaction][] tried to disable the master key, but the account does not have another way to [authorize transactions](#authorizing-transactions). If [multi-signing](#multi-signing) is enabled, this code is deprecated and `tecNO_ALTERNATIVE_KEY` is used instead. |
-| `tecNO_TARGET`             | 138   | The transaction referenced an Escrow or PayChannel ledger node that doesn't exist, either because it never existed or it has already been deleted. (For example, another [EscrowFinish transaction][] has already executed the held payment.) Alternatively, the destination account has `asfDisallowXRP` set so it cannot be the destination of this [PaymentChannelCreate][] or [EscrowCreate][] transaction. |
+| `tecNO_TARGET`             | 138   | The transaction referenced an Escrow or PayChannel ledger object that doesn't exist, either because it never existed or it has already been deleted. (For example, another [EscrowFinish transaction][] has already executed the held payment.) Alternatively, the destination account has `asfDisallowXRP` set so it cannot be the destination of this [PaymentChannelCreate][] or [EscrowCreate][] transaction. |
 | `tecOVERSIZE`              | 145   | This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. [New in: rippled 0.29.0-hf1][] |
 | `tecOWNERS`                | 132   | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
 | `tecPATH_DRY`              | 128   | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
