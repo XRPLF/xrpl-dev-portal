@@ -295,6 +295,13 @@ pages:
             - local
             - ripple.com
 
+    -   md: concept-money.md
+        category: Features
+        html: concept-money.html
+        targets:
+            - local
+            - ripple.com
+
     -   md: concept-partial-payments.md
         category: Features
         html: concept-partial-payments.html
