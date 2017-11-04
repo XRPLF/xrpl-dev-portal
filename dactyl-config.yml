@@ -158,6 +158,13 @@ pages:
             - local
             - ripple.com
 
+    -   md: reference-currency.md
+        category: References
+        html: reference-currency.html
+        targets:
+            - local
+            - ripple.com
+
 # Tutorials are step-by-step guides to a specific goal
     -   name: How to Multi-Sign
         category: Tutorials
@@ -298,6 +305,13 @@ pages:
     -   md: concept-money.md
         category: Features
         html: concept-money.html
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-demurrage.md
+        category: Features
+        html: concept-demurrage.html
         targets:
             - local
             - ripple.com
