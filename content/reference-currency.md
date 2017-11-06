@@ -4,16 +4,16 @@ The XRP Ledger has [two kinds of money](concept-money.html): XRP, and issued cur
 
 ## String Formatting
 
-XRP Ledger APIs generally use strings, rather than native JSON numbers, to represent numeric amounts of currency for both XRP and issued currencies. This protects against a loss of precision when using JSON parsers, which may automatically try to represent all JSON numbers in a floating-point format.
+{% include 'snippets/string-number-formatting.md' %}
 
 ## XRP Precision
 
 XRP has the same precision as a 64-bit unsigned integer where each unit is equivalent to 0.000001 XRP. Its properties are:
 
 * Minimum value: `0`
-* Maximum value: `100000000000` (10^11) XRP
-    - `"100000000000000000"` (10^17) drops of XRP
-* Precise to the nearest `0.000001` (10^-6) XRP
+* Maximum value: `100000000000` (10<sup>11</sup>) XRP
+    - `"100000000000000000"` (10<sup>17</sup>) drops of XRP
+* Precise to the nearest `0.000001` (10<sup>-6</sup>) XRP
     - `"1"` drop of XRP
 
 ## Issued Currency Precision

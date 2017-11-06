@@ -1,6 +1,6 @@
 # Money in the XRP Ledger
 
-The XRP Ledger is an advanced blockchain-like system that was designed to let people transact in multiple currencies. Users of the XRP Ledger can seamlessly track, trade, and settle multiple currencies in an exchange that's as decentralized as the network itself. Users can issue their own currency-like digital assets, which may or may not represent obligations owed outside the XRP Ledger. Tying it all together is XRP, the XRP Ledger's native cryptocurrency, which serves anti-spam purposes and acts as a medium of exchange.
+The XRP Ledger is an advanced blockchain-like system that was designed to let people transact in multiple currencies. Users of the XRP Ledger can seamlessly track, trade, and settle multiple currencies in an exchange that's as decentralized as the network itself. Users can issue their own currency-like digital assets, which may or may not represent obligations owed outside the XRP Ledger. Tying it all together is XRP, the XRP Ledger's native cryptocurrency, which acts as a medium of exchange and serves anti-spam purposes.
 
 ## XRP
 
@@ -8,7 +8,7 @@ The XRP Ledger is an advanced blockchain-like system that was designed to let pe
 
 Some advanced features of the XRP Ledger, such as [Escrow](concept-escrow.html) and [Payment Channels](tutorial-paychan.html), only work with XRP. Order book [autobridging](https://ripple.com/dev-blog/introducing-offer-autobridging/) uses XRP to deepen liquidity in the decentralized exchange by merging order books of two issued currencies with XRP order books to create synthetic combined order books. (For example, autobridging matches USD:XRP and XRP:EUR orders to augment USD:EUR order books.)
 
-XRP also serves as a protective measure against spamming the network. All XRP Ledger addresses need a small amount of XRP to pay the costs of maintaining the XRP Ledger. The [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html) are neutral fees denoted in XRP and not paid to any party. In the ledger's data format, XRP is stored in [AccountRoot objects](reference-ledger-format.html#accountroot).
+XRP also serves as a protective measure against spamming the network. All XRP Ledger addresses need a small amount of XRP to pay the costs of maintaining the XRP Ledger. The [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html) are neutral fees denominated in XRP and not paid to any party. In the ledger's data format, XRP is stored in [AccountRoot objects](reference-ledger-format.html#accountroot).
 
 For more information on XRP's use cases, benefits, and news, see the [XRP Portal](https://ripple.com/xrp-portal/).
 
@@ -28,7 +28,11 @@ Issued currencies can be traded with XRP or each other in the XRP Ledger's decen
 
 In the typical model, an issued currency is tied to holdings of currency or other assets outside the XRP Ledger. The issuer of the currency, called a _gateway_, handles deposits and withdrawals to exchange currency outside the XRP Ledger for equivalent balances of issued currency in the XRP Ledger. For more information on how to run a gateway, see the [Gateway Guide](tutorial-gateway-guide.html).
 
-There are other use cases for issued currencies in the XRP Ledger. For example, you can create an "Initial Coin Offering" (ICO) by issuing a fixed amount of currency to a secondary address, then "throwing away the key" to the issuer. (Be aware: ICOs may be [regulated as securities](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings) in the USA.) Ripple recommends researching the relevant regulations before engaging in any financial service business.
+There are other use cases for issued currencies in the XRP Ledger. For example, you can create an "Initial Coin Offering" (ICO) by issuing a fixed amount of currency to a secondary address, then "throwing away the key" to the issuer.
+
+**Warning:** ICOs may be [regulated as securities](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings) in the USA.
+
+Ripple recommends researching the relevant regulations before engaging in any financial service business.
 
 ### Issued Currency Properties
 
