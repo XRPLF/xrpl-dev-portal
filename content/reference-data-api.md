@@ -4980,15 +4980,7 @@ As a REST API, the Data API v2 uses [JSON](http://json.org/)'s native datatypes 
 ### Numbers and Precision ###
 [String - Number]: #numbers-and-precision
 
-Currency amounts in the XRP Ledger require more precision than most native number types, so the Data API v2 uses the String type to represent some values.
-
-Within the String value, the numbers are serialized in the same way as native JSON numbers:
-
-* Base-10.
-* Non-zero-prefaced.
-* May contain `.` as a decimal point. For example, ½ is represented as `0.5`. (American style, not European)
-* May contain `E` or `e` to indicate being raised to a power of 10. For example, `1.2E5` is equivalent to `120000`.
-* No comma (`,`) characters are used.
+{% include 'snippets/string-number-formatting.md' %}
 
 The precision for amounts of **non-XRP currency** in the XRP Ledger is as follows:
 
