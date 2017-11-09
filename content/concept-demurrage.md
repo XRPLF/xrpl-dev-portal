@@ -69,7 +69,9 @@ To calculate an e-folding time for a given rate of annual percent interest:
 To support interest-bearing and demurraging currencies, client applications must implement several features:
 
 - When displaying the amount of a demurraging currency retrieved from ledger or transaction data, the client must convert from the ledger value to the display value. (With demurrage, the display values are smaller than the ledger values.)
+
 - When accepting input for a demurraging currency, the client must convert amounts from a display format to the ledger format. (With demurrage, the ledger values are are larger than the user input value.) The client must use the ledger value when creating payments, offers, and other types of transaction.
+
 - Clients must distinguish between currencies that do and do not have interest or demurrage, and among currencies that have different rates of interest or demurrage. Clients should be able to parse the [Interest-Bearing Currency Code Format](#interest-bearing-currency-code-format) into a display such as "XAU (-0.5% pa)".
 
 ### ripple-lib Support

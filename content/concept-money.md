@@ -20,7 +20,7 @@ In technical contexts, XRP is measured precisely to the nearest 0.000001 XRP, ca
 
 ## Issued Currencies
 
-All currencies other than XRP are represented as **issued currencies**. These digital assets, sometimes called "issuances" or "IOUs", are tracked in accounting relationships, called "trust lines," between addresses. Issued currencies are typically considered as liabilities from one perspective and assets from the other, so the balance of a trust line is negative or positive depending on which side you view it from. Any address may freely issue (non-XRP) currencies, limited only by how much other addresses are willing to hold.
+All currencies other than XRP are represented as **issued currencies**. These digital assets (sometimes called "issuances" or "IOUs") are tracked in accounting relationships, called "trust lines," between addresses. Issued currencies are typically considered as liabilities from one perspective and assets from the other, so the balance of a trust line is negative or positive depending on which side you view it from. Any address may freely issue (non-XRP) currencies, limited only by how much other addresses are willing to hold.
 
 Issued currencies can "ripple" through multiple issuers and holders if they use the same currency code. This is useful in some cases, but can cause unexpected and undesirable behavior in others. You can use the [NoRipple flag](concept-noripple.html) on trust lines to prevent those trust lines from rippling.
 
@@ -32,7 +32,7 @@ There are other use cases for issued currencies in the XRP Ledger. For example, 
 
 **Warning:** ICOs may be [regulated as securities](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings) in the USA.
 
-Ripple recommends researching the relevant regulations before engaging in any financial service business.
+Ripple strongly recommends researching the relevant regulations before engaging in any financial service business.
 
 ### Issued Currency Properties
 
