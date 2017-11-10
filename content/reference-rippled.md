@@ -901,7 +901,7 @@ Each Channel Object has the following fields:
 | `account` | String | The owner of the channel, as an [Address][]. |
 | `amount` | String | The total amount of [XRP, in drops](#specifying-currency-amounts) allocated to this channel. |
 | `balance` | String | The total amount of XRP, in drops, paid out from this channel, as of the ledger version used. (You can calculate the amount of XRP left in the channel by subtracting `balance` from `amount`.) |
-| `channel_id` | String | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [index of the channel](reference-ledger-format.html#paychannel-index-format) in the ledger's state data. |
+| `channel_id` | String | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [ID of the channel object](reference-ledger-format.html#paychannel-id-format) in the ledger's state data. |
 | `destination_account` | String | the destination account of the channel, as an [Address][]. Only this account can receive the XRP in the channel while it is open. |
 | `public_key` | String | _(May be omitted)_ The public key for the payment channel in base58 format. Signed claims against this channel must be redeemed with the matching key pair. |
 | `public_key_hex` | String | _(May be omitted)_ The public key for the payment channel in hexadecimal format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair. |
