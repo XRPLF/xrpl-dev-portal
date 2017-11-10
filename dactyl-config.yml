@@ -78,6 +78,9 @@ targets:
             "gb-2015-05.html": https://ripple.com/build/gateway-guide/gb-2015-05-historical-ledger-query-migration/
             "ripple-api-tool.html": https://ripple.com/build/websocket-tool/
             "data-api-v2-tool.html": https://ripple.com/build/data-api-tool/
+            "concept-money.html": https://ripple.com/build/money-xrp-ledger/
+            "reference-currency.html": https://ripple.com/build/currency-format/
+            "concept-demurrage": https://ripple.com/build/demurrage/
         image_subs:
             "img/funds_flow_diagram.png": https://cdn.ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
             "img/e2g-01.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-01.png
@@ -108,6 +111,9 @@ targets:
             "img/xrp-ledger-network.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-04.png
             "img/escrow-success-flow.png": https://cdn.ripple.com/wp-content/uploads/2017/09/escrow-success-flow.png
             "img/escrow-cancel-flow.png": https://cdn.ripple.com/wp-content/uploads/2017/09/escrow-cancel-flow.png
+            "img/currency-code-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/currency-code-format.png
+            "img/currency-number-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/currency-number-format.png
+            "img/demurrage-currency-code-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/demurrage-currency-code-format.png
 
     -   name: rippled-setup
         display_name: rippled Setup Guide
