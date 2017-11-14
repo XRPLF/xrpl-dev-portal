@@ -117,6 +117,8 @@ targets:
 
     -   name: rippled-setup
         display_name: rippled Setup Guide
+        link_subs:
+            "reference-rippled.html": https://ripple.com/build/rippled-apis/
 
 pages:
 # References are exhaustive lists of commands and options
