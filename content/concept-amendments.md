@@ -347,7 +347,7 @@ For more information, see the [Payment Channels Tutorial](tutorial-paychan.html)
 
 Sorts the entries in [DirectoryNode ledger objects](reference-ledger-format.html#directorynode) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
 
-**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem,
+**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](tutorial-rippled-setup.html#updating-rippled) to `rippled` version 0.80.0 or later.
 
 
 
