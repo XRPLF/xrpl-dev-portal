@@ -66,8 +66,11 @@ The `closeFlags` field is not included in any JSON representations of a ledger, 
 There are several different kinds of objects that can appear in the ledger's state tree:
 
 * [**AccountRoot** - The settings, XRP balance, and other metadata for one account.](#accountroot)
+* [**Amendments** - Singleton object with status of enabled and pending amendments.](#amendments)
 * [**DirectoryNode** - Contains links to other objects.](#directorynode)
-* [**Escrow** - Contains XRP held for a conditional payment](#escrow)
+* [**Escrow** - Contains XRP held for a conditional payment.](#escrow)
+* [**FeeSettings** - Singleton object with consensus-approved base transaction cost and reserve requirements.](#feesettings)
+* [**LedgerHashes** - Lists of prior ledger versions' hashes for history lookup.](#ledgerhashes)
 * [**Offer** - An offer to exchange currencies, known in finance as an _order_.](#offer)
 * [**PayChannel** - A channel for asynchronous XRP payments.](#paychannel)
 * [**RippleState** - Links two accounts, tracking the balance of one currency between them. The concept of a _trust line_ is really an abstraction of this object type.](#ripplestate)
