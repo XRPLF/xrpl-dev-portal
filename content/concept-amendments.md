@@ -115,8 +115,13 @@ The following is a comprehensive list of all known amendments and their status o
 |:--------------------------------------|:-----------|:------------------------|
 | [FlowCross](#flowcross)               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2](#shamapv2)                 | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [OwnerPaysFee](#ownerpaysfee)         | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [OwnerPaysFee](#ownerpaysfee)         | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets](#tickets)                   | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [SortedDirectories](#sorteddirectories) | v0.80.0  | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29 "BADGE_GREEN") |
+| [fix1201](#fix1201)                   | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E "BADGE_GREEN") |
+| [fix1512](#fix1512)                   | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647 "BADGE_GREEN") |
+| [fix1523](#fix1523)                   | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469 "BADGE_GREEN") |
+| [fix1528](#fix1528)                   | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E "BADGE_GREEN") |
 | [EnforceInvariants](#enforceinvariants) | v0.70.0  | [Enabled: 2017-07-07](https://xrpcharts.ripple.com/#/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6 "BADGE_GREEN") |
 | [fix1373](#fix1373)                   | v0.70.0    | [Enabled: 2017-07-07](https://xrpcharts.ripple.com/#/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399 "BADGE_GREEN") |
 | [fix1368](#fix1368)                   | v0.60.0    | [Enabled: 2017-03-31](https://xrpcharts.ripple.com/#/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F "BADGE_GREEN") |
@@ -131,7 +136,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [MultiSign](#multisign)               | v0.31.0    | [Enabled: 2016-06-27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation](#feeescalation)       | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
 
-**Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version.
+**Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "N/A" indicates that the amendment is not yet considered stable.
 
 ## CryptoConditions
 
@@ -191,6 +196,17 @@ A transaction remains in the queue until one of the following happens:
 * It becomes invalid (for example, the [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) causes it to expire)
 * It gets dropped because there are too many transactions in the queue with a higher transaction cost.
 
+## fix1201
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD | Enabled   |
+
+Correctly implements a limit on [transfer fees](concept-transfer-fees.html) to a 100% fee, represented by a maximum `TransferRate` value of `2000000000`. (A 100% fee in this case means you must send 2 units of the issued currency for every 1 unit you want to deliver.) Without the amendment, the effective limit is a `TransferRate` value of 2<sup>32</sup>-1, for approximately a 329% fee.
+
+With this amendment enabled, an [AccountSet][] transaction that attempts to set `TransferRate` higher than `2000000000` fails with the result code `temBAD_TRANSFER_RATE`. Any existing `TransferRate` already set to a value higher than the limit is treated as equal to the limit instead.
+
+
 ## fix1368
 
 | Amendment ID                                                     | Status    |
@@ -208,6 +224,37 @@ Fixes a minor bug in transaction processing that causes some payments to fail wh
 Fixes a minor bug in transaction processing that causes failures when trying to prepare certain [payment paths](concept-paths.html) for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.
 
 The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose [steps](concept-paths.html#path-specifications) include conflicting fields and paths that loop through the same object more than once.
+
+## fix1512
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1 | Enabled   |
+
+Fixes a bug in transaction processing that causes some invalid [PaymentChannelClaim][] transactions to fail with the wrong error code. Without this amendment, the transactions have a `tec`-class result code despite not being included in a ledger and therefore not paying the [transaction cost](concept-transaction-cost.html).
+
+With this amendment, the transactions fail with a more appropriate result code, `temBAD_AMOUNT`, instead.
+
+## fix1523
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D | Enabled   |
+
+Adds tracking by destination account to [escrows](concept-escrow.html). Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the [`account_objects` command](reference-rippled.html#account-objects), excluding any pending escrows that were created before this amendment became enabled. This amendment also makes [EscrowCreate transactions][] appear in the destination's transaction history, as viewed with the [`account_tx` command](reference-rippled.html#account-tx).
+
+With this amendment, new escrows are added to the [owner directories](reference-ledger-format.html#directorynode) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](reference-ledger-format.html#escrow), containing the address of the destination of the escrow.
+
+
+## fix1528
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454 | Enabled   |
+
+Fixes a bug where validators could build consensus ledgers with different timestamps, potentially delaying the process of declaring validated ledgers. The circumstances for this to occur require precise timing, so validators are unlikely to encounter this bug outside of controlled test conditions.
+
+This amendment changes how validators negotiate the close time of the consensus ledger so that they cannot reach a consensus on ledger contents but build ledger versions with different timestamps.
 
 
 ## Flow
@@ -270,11 +317,13 @@ An address with a SignerList can disable the master key even if a regular key is
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | Released but not enabled |
+| 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | In development |
 
 Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
+
+**Note:** An incomplete version of this amendment was introduced in v0.33.0 and removed in v0.80.0. (It was never enabled.) Ripple plans to re-add the amendment when the code is stable enough.
 
 
 ## PayChan
@@ -288,6 +337,18 @@ Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating
 Creates three new transaction types:[PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](reference-ledger-format.html#paychannel). Defines an off-ledger data structure called a `Claim`, used in the ChannelClaim transaction. Creates new `rippled` API methods: [`channel_authorize`](reference-rippled.html#channel-authorize) (creates a signed Claim), [`channel_verify`](reference-rippled.html#channel-verify) (verifies a signed Claim), and [`account_channels`](reference-rippled.html#account-channels) (lists Channels associated with an account).
 
 For more information, see the [Payment Channels Tutorial](tutorial-paychan.html).
+
+
+## SortedDirectories
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E | Enabled   |
+
+Sorts the entries in [DirectoryNode ledger objects](reference-ledger-format.html#directorynode) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
+
+**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem,
+
 
 
 ## SHAMapV2

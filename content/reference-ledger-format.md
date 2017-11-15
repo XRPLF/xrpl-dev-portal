@@ -326,6 +326,7 @@ Example Escrow object:
     "Flags": 0,
     "LedgerEntryType": "Escrow",
     "OwnerNode": "0000000000000000",
+    "DestinationNode": "0000000000000000",
     "PreviousTxnID": "C44F2EB84196B9AD820313DBEBA6316A15C9A2D35787579ED172B87A30131DA7",
     "PreviousTxnLgrSeq": 28991004,
     "SourceTag": 11747,
@@ -346,6 +347,7 @@ An Escrow object has the following fields:
 | `SourceTag`         | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address. |
 | `DestinationTag`    | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address. |
 | `OwnerNode`         | String    | UInt64    | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
+| `DestinationNode`   | String    | UInt64    | _(Optional)_ A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on escrows created before enabling the [fix1523 amendment](concept-amendments.html#fix1523). |
 | `PreviousTxnID`     | String | Hash256 | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this object. |
 
