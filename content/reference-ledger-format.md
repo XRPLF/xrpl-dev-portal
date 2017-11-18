@@ -383,13 +383,14 @@ Example `FeeSettings` object:
 
 The `FeeSettings` object has the following fields:
 
-| Name              | JSON Type | [Internal Type][] | Description |
-|-------------------|-----------|-------------------|-------------|
-| `LedgerEntryType` | String    | UInt16    | The value `0x0065`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
-| `BaseFee`         | String    | UInt64 | The [transaction cost](concept-transaction-cost.html) of the "reference transaction" in drops of XRP as hexadecimal. |
-| `ReferenceFeeUnits` | Number | UInt32 | The `BaseFee` translated into "fee units". |
-| `ReserveBase`       | Number | UInt32 | The [base reserve](concept-reserves.html#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
-| `ReserveIncrement`  | Number | UInt32 | The incremental [owner reserve](concept-reserves.html#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
+| Name                | JSON Type | [Internal Type][] | Description            |
+|:--------------------|:----------|:------------------|:-----------------------|
+| `LedgerEntryType`   | String    | UInt16            | The value `0x0073`, mapped to the string `FeeSettings`, indicates that this object is a list of ledger hashes. |
+| `BaseFee`           | String    | UInt64            | The [transaction cost](concept-transaction-cost.html) of the "reference transaction" in drops of XRP as hexadecimal. |
+| `ReferenceFeeUnits` | Number    | UInt32            | The `BaseFee` translated into "fee units". |
+| `ReserveBase`       | Number    | UInt32            | The [base reserve](concept-reserves.html#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
+| `ReserveIncrement`  | Number    | UInt32            | The incremental [owner reserve](concept-reserves.html#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
+| `Flags`             | Number    | UInt32            | A bit-map of boolean flags for this object. No flags are defined for this type. |
 
 **Warning:** The JSON format for this ledger object type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP](reference-rippled.html#specifying-currency-amounts).
 
@@ -412,11 +413,11 @@ The `LedgerHashes` object type contains a history of prior ledgers that led up t
 There are two kinds of `LedgerHashes` object. Both types have the same fields. Each ledger version contains:
 
 - Exactly one "recent history" LedgerHashes object
-- A number of "previous history" LedgerHashes objects based on the current ledger index (that is, the length of the ledger history).
+- A number of "previous history" LedgerHashes objects based on the current ledger index (that is, the length of the ledger history). Specifically, the XRP Ledger adds a new "previous history" object every 65536 ledger versions.
 
-**Note:** As an exception, a new genesis ledger has no `LedgerHashes` objects at all, because it has no ledger history. <!--{# TODO: confirm this experimentally by looking up B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B on a fresh ledger in stand-alone mode #}-->
+**Note:** As an exception, a new genesis ledger has no `LedgerHashes` objects at all, because it has no ledger history.
 
-Example LedgerHashes object (trimmed for length):
+Example `LedgerHashes` object (trimmed for length):
 
 ```json
 {
@@ -448,7 +449,7 @@ A `LedgerHashes` object has the following fields:
 
 ### Recent History LedgerHashes
 
-There is exactly one `LedgerHashes` object of the "recent history" sub-type in every ledger after the genesis ledger. This object contains the most recent 256 ledgers (or fewer, if the ledger history has less than 256 ledgers total) in the `Hashes` array. Whenever a new ledger is closed, part of the process of closing it involves updating the "recent history" object with the hash of the previous ledger version this ledger version is derived from (also known as this ledger version's _parent ledger_). When there are more than 256 hashes, the oldest one is removed.
+There is exactly one `LedgerHashes` object of the "recent history" sub-type in every ledger after the genesis ledger. This object contains the identifying hashes of the most recent 256 ledger versions (or fewer, if the ledger history has less than 256 ledgers total) in the `Hashes` array. Whenever a new ledger is closed, part of the process of closing it involves updating the "recent history" object with the hash of the previous ledger version this ledger version is derived from (also known as this ledger version's _parent ledger_). When there are more than 256 hashes, the oldest one is removed.
 
 Using the "recent history" `LedgerHashes` object of a given ledger, you can get the hash of any ledger index within the 256 ledger versions before the given ledger version.
 
@@ -471,6 +472,7 @@ The **"previous history"** `LedgerHashes` objects have an ID that is the SHA-512
 
 - The `LedgerHashes` space key (`0x0073`)
 - The 32-bit [ledger index](#ledger-index) of a flag ledger in the object's `Hashes` array, divided by 65536.
+
     **Tip:** Dividing by 65536 keeps the most significant 16 bits, which are the same for all the flag ledgers listed in a "previous history" object, and only those ledgers. You can use this fact to look up the `LedgerHashes` object that contains the hash of any flag ledger.
 
 
