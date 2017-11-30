@@ -569,8 +569,8 @@ Admin commands are only available if you [connect to `rippled`](#connecting-to-r
 * [`stop` - Shut down the rippled server](#stop)
 * [`validation_create` - Generate keys for a new rippled validator](#validation-create)
 * [`validation_seed` - Temporarily set key to be used for validating](#validation-seed)
-* [`validator_lists` - Get information about the current listed validators](#validator-lists)
-* [`validator_sites` - Get information about sites that publish validator lists](#validator-sites)
+* [`validators` - Get information about the current validators](#validators)
+* [`validator_list_sites` - Get information about sites that publish validator lists](#validator-list-sites)
 * [`wallet_propose` - Generate keys for a new account](#wallet-propose)
 
 The following admin commands are deprecated and may be removed without further notice:
@@ -8965,7 +8965,7 @@ The `info` object may have some arrangement of the following fields:
 | `validated_ledger.reserve_inc_xrp`  | Unsigned Integer          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger |
 | `validated_ledger.seq`              | Number - [Ledger Index][] | The ledger index of the latest validate ledger |
 | `validation_quorum`                 | Number                    | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
-| `validator_list_expires`            | String                    | _(Admin only)_ Either the human readable time when the current validator list will expire or the string `unknown` if the server has yet to load a published validator list. [New in: rippled 0.80.1][] |
+| `validator_list_expires`            | String                    | _(Admin only)_ Either the human readable time when the current validator list will expire, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. [New in: rippled 0.80.1][] |
 
 **Note:** If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes about 5 minutes to sync with the network, depending on your connection speed and hardware specs.
 
@@ -10701,12 +10701,12 @@ The response follows the [standard format](#response-formatting), with a success
 * Any of the [universal error types](#universal-errors).
 * `badSeed` - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.
 
-## validator_lists ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorLists.cpp "Source")
+## validators ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
 
-The `validator_lists` command returns human readable information about the current list of published and trusted validators used by the server. [New in: rippled 0.80.1][]
+The `validators` command returns human readable information about the current list of published and trusted validators used by the server. [New in: rippled 0.80.1][]
 
-*The `validator_lists` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `validators` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
 #### Request Format ####
 An example of the request format:
@@ -10718,7 +10718,7 @@ An example of the request format:
 ```
 {
     "id": 1,
-    "command": "validator_lists"
+    "command": "validators"
 }
 ```
 
@@ -10726,7 +10726,7 @@ An example of the request format:
 
 ```
 {
-    "method": "validator_lists",
+    "method": "validators",
     "params": [
         {}
     ]
@@ -10736,8 +10736,8 @@ An example of the request format:
 *Commandline*
 
 ```
-#Syntax: validator_lists
-rippled validator_lists
+#Syntax: validators
+rippled validators
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -10772,6 +10772,7 @@ An example of a successful response:
                 "version":1
             }
         ],
+        "signing_keys":{},
         "status":"success",
         "trusted_validator_keys":[
             "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1",
@@ -10803,6 +10804,7 @@ An example of a successful response:
                 "version":1
             }
         ],
+        "signing_keys":{},
         "status":"success",
         "trusted_validator_keys":[
             "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1",
@@ -10836,6 +10838,7 @@ Connecting to 127.0.0.1:5005
                 "version":1
             }
         ],
+        "signing_keys":{},
         "status":"success",
         "trusted_validator_keys":[
             "n94D73ZKSUaTDCnUqYW5ugJ9fHPNxda9GQVoWA6BGtcKuuhozrD1",
@@ -10856,16 +10859,17 @@ The response follows the [standard format](#response-formatting), with a success
 |:-------------------------|:-------|:-----------------------------------------|
 | `listed_static_keys`     | Array  | Array of public keys for validators always eligible for inclusion in the trusted list. |
 | `publisher_lists`        | Array  | Array of publisher list objects.         |
+| `signing_keys`           | Object | Mapping from master public key to current signing key for listed validators that use validator manifests. |
 | `trusted_validator_keys` | Array  | Array of public keys for currently trusted validators. |
 | `validation_quorum`      | Number | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
-| `validator_list_expires` | String | Either the human readable time when the current validator list will expire or the string `unknown` if the server has yet to load a published validator list. |
+| `validator_list_expires` | String | Either the human readable time when the current validator list will expire, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. |
 
 Each member of the `publisher_lists` array is an object with the following fields:
 
 | `Field`            | Type             | Description                          |
 |:-------------------|:-----------------|:-------------------------------------|
 | `available`        | Boolean          | If `false`, the validator keys in `list` may no longer be supported by this publisher. |
-| `expiration`       | String           | Either the human readable time when this published list will expire or the string `unknown` if the server has yet to load a list for this publisher. |
+| `expiration`       | String           | The human readable time when this published list will expire. |
 | `list`             | Array            | Array of published validator keys.   |
 | `pubkey_publisher` | String           | Ed25519 or ECDSA public key of the list publisher, as hexadecimal. |
 | `seq`              | Unsigned Integer | The sequence number of this published list. |
@@ -10876,12 +10880,12 @@ Each member of the `publisher_lists` array is an object with the following field
 * Any of the [universal error types](#universal-errors).
 
 
-## validator_sites ##
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorSites.cpp "Source")
+## validator_list_sites ##
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")
 
-The `validator_sites` command returns status information of sites serving validator lists. [New in: rippled 0.80.1][]
+The `validator_list_sites` command returns status information of sites serving validator lists. [New in: rippled 0.80.1][]
 
-*The `validator_sites` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `validator_list_sites` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
 #### Request Format ####
 An example of the request format:
@@ -10893,7 +10897,7 @@ An example of the request format:
 ```
 {
     "id": 1,
-    "command": "validator_sites"
+    "command": "validator_list_sites"
 }
 ```
 
@@ -10901,7 +10905,7 @@ An example of the request format:
 
 ```
 {
-    "method": "validator_sites",
+    "method": "validator_list_sites",
     "params": [
         {}
     ]
@@ -10911,8 +10915,8 @@ An example of the request format:
 *Commandline*
 
 ```
-#Syntax: validator_sites
-rippled validator_sites
+#Syntax: validator_list_sites
+rippled validator_list_sites
 ```
 
 <!-- MULTICODE_BLOCK_END -->
