@@ -115,6 +115,7 @@ The following is a comprehensive list of all known amendments and their status o
 |:--------------------------------------|:-----------|:------------------------|
 | [FlowCross](#flowcross)               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2](#shamapv2)                 | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [CryptoConditionsSuite](#cryptoconditionssuite) | N/A | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee](#ownerpaysfee)         | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets](#tickets)                   | N/A        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SortedDirectories](#sorteddirectories) | v0.80.0  | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29 "BADGE_GREEN") |
@@ -145,6 +146,16 @@ The following is a comprehensive list of all known amendments and their status o
 | 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | Enabled |
 
 Although this amendment is enabled, it has no effect unless the [SusPay](#suspay) amendment is also enabled. Ripple does not expect SusPay to become enabled. Instead, Ripple plans to incorporate crypto-conditions in the [Escrow](#escrow) amendment.
+
+## CryptoConditionsSuite
+
+| Amendment ID                                                     | Status  |
+|:-----------------------------------------------------------------|:--------|
+| 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 | In Development |
+
+Implements several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions. Without this amendment, only the PREIMAGE-SHA-256 type is supported.
+
+**Caution:** This amendment is still [in development](https://github.com/ripple/rippled/pull/2170). The version from `rippled` v0.60.0 to present does not implement the full functionality.
 
 
 ## EnforceInvariants
