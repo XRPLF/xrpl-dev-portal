@@ -5,7 +5,7 @@ The XRP Ledger supports held payments, or _escrows_, that can be executed only a
 - [Send a time-held escrow](#send-a-time-held-escrow)
 - [Send a conditionally-held escrow](#send-a-conditionally-held-escrow)
 - [Cancel an expired escrow](#cancel-an-expired-escrow)
-- [Look up escrows by sender](#look-up-escrows-by-sender)
+- [Look up escrows](#look-up-escrows)
 <!-- {# Doesn't work yet:- Look up escrows by destination #}-->
 
 
@@ -511,9 +511,19 @@ _Websocket_
 
 In the above example, `r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT` is the sender of the escrow, and the increase in `Balance` from 99999**8**9990 drops to 99999**9**9990 drops represents the return of the escrowed 10,000 drops of XRP (0.01 XRP).
 
-## Look up escrows by sender
+**Tip:** If you don't know what `OfferSequence` to use in the [EscrowFinish transaction][] to execute an escrow, use the [`tx` method](reference-rippled.html) to look up the transaction that created the escrow, using the identifying hash of the transaction in the Escrow's `PreviousTxnID` field. Use the `Sequence` value of that transaction as the `OfferSequence` value when finishing the escrow.
 
-All pending escrows are stored in the ledger as [Escrow objects](reference-ledger-format.html#escrow). You can look up escrow nodes owned by your address using the [`account_objects` method](reference-rippled.html#account-objects).
+## Look up escrows
+
+All pending escrows are stored in the ledger as [Escrow objects](reference-ledger-format.html#escrow).
+
+You can look up escrow nodes by [sender](#look-up-escrows-by-sender) or [receiver](#look-up-escrows-by-receiver) using the [`account_objects`](reference-rippled.html#account-objects) method.
+
+###Look up escrows by sender
+
+You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrows by sender.
+
+The following examples illustrate an escrow lookup by sender. Note that the `account` in the request is the sender `Account` of the escrow `account_objects` returned in the response.
 
 Request:
 
@@ -539,6 +549,36 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Tip:** If you don't know what `OfferSequence` to use in the [EscrowFinish transaction][] to execute an escrow, use the [`tx` method](reference-rippled.html) to look up the transaction that created the escrow, using the identifying hash of the transaction in the Escrow's `PreviousTxnID` field. Use the `Sequence` value of that transaction as the `OfferSequence` value when finishing the escrow.
+###Look up escrows by receiver
+
+You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrows by receiver address.
+
+Look up by receiver is possible for only pending escrows created after [fix1523](concept-amendments.html#fix1523) was enabled for rippled 0.80.0 on 2017-11-14.
+
+The following examples illustrate an escrow lookup by receiver. Note that the `account` in the request is the receiver `Destination` of the escrow `account_objects` returned in the response.
+
+Request:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/account_objects-request-receiver.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/account_objects-response-receiver.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
 
 {% include 'snippets/tx-type-links.md' %}
