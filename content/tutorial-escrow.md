@@ -6,7 +6,6 @@ The XRP Ledger supports held payments, or _escrows_, that can be executed only a
 - [Send a conditionally-held escrow](#send-a-conditionally-held-escrow)
 - [Cancel an expired escrow](#cancel-an-expired-escrow)
 - [Look up escrows](#look-up-escrows)
-<!-- {# Doesn't work yet:- Look up escrows by destination #}-->
 
 
 ## Send a Time-Held Escrow
@@ -517,13 +516,13 @@ In the above example, `r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT` is the sender of the 
 
 All pending escrows are stored in the ledger as [Escrow objects](reference-ledger-format.html#escrow).
 
-You can look up escrow nodes by [sender](#look-up-escrows-by-sender) or [receiver](#look-up-escrows-by-receiver) using the [`account_objects`](reference-rippled.html#account-objects) method.
+You can look up escrow objects by the [sender's address](#look-up-escrows-by-sender-address) or the [receiver's address](#look-up-escrows-by-receiver-address) using the [`account_objects`](reference-rippled.html#account-objects) method.
 
-###Look up escrows by sender
+###Look up escrows by sender address
 
-You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrows by sender.
+You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrow objects by sender address.
 
-The following examples illustrate an escrow lookup by sender. Note that the `account` in the request is the sender `Account` of the escrow `account_objects` returned in the response.
+Let's say that you want to look up all pending escrow objects with a sender address of `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`. You can do this using the following example request, where the sender address is the `account` value.
 
 Request:
 
@@ -537,6 +536,11 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
+
+The response will look something like the following example. Note that the response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as the sender or receiver address, where the sender address is the `Account` value and the receiver address is the `Destination` value.
+
+In this case, the second and fourth escrow objects have `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as their sender address (`Account`) value and are what we are looking for.
+
 Response:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -549,13 +553,13 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-###Look up escrows by receiver
+###Look up escrows by receiver address
 
-You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrows by receiver address.
+You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrow objects by receiver address.
 
-Look up by receiver is possible for only pending escrows created after [fix1523](concept-amendments.html#fix1523) was enabled for rippled 0.80.0 on 2017-11-14.
+You can only look up pending escrow objects by receiver address if those escrows were created after the [fix1523 amendment](concept-amendments.html#fix1523) was enabled on 2017-11-14.
 
-The following examples illustrate an escrow lookup by receiver. Note that the `account` in the request is the receiver `Destination` of the escrow `account_objects` returned in the response.
+Let's say that you want to look up all pending escrow objects with a receiver address of `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`. You can do this using the following example request, where the receiver address is the `account` value.
 
 Request:
 
@@ -564,10 +568,15 @@ Request:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-request-receiver.json' %}
+{% include 'code_samples/escrow/websocket/account_objects-request-sender.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
+
+
+The response will look something like the following example. Note that the response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as the receiver or sender address, where the receiver address is the `Destination` value and the sender address is the `Account` value.
+
+In this case, the first and third escrow objects have `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as their receiver address (`Destination`) value and are what we are looking for.
 
 Response:
 
@@ -576,7 +585,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-response-receiver.json' %}
+{% include 'code_samples/escrow/websocket/account_objects-response-sender.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
