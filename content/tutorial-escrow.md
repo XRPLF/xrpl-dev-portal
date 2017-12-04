@@ -537,9 +537,9 @@ _Websocket_
 <!-- MULTICODE_BLOCK_END -->
 
 
-The response will look something like the following example. Note that the response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as the sender or receiver address, where the sender address is the `Account` value and the receiver address is the `Destination` value.
+The response resembles the following example. Note that the response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as the sender or receiver address, where the sender address is the `Account` value and the receiver address is the `Destination` value.
 
-In this case, the second and fourth escrow objects have `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as their sender address (`Account`) value and are what we are looking for.
+In this example, the second and fourth escrow objects meet our lookup criteria because their `Account` (sender address) values are set to `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`.
 
 Response:
 
@@ -574,9 +574,9 @@ _Websocket_
 <!-- MULTICODE_BLOCK_END -->
 
 
-The response will look something like the following example. Note that the response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as the receiver or sender address, where the receiver address is the `Destination` value and the sender address is the `Account` value.
+The response resembles the following example. Note that the response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as the receiver or sender address, where the receiver address is the `Destination` value and the sender address is the `Account` value.
 
-In this case, the first and third escrow objects have `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as their receiver address (`Destination`) value and are what we are looking for.
+In this example, the first and third escrow objects meet our lookup criteria because their `Destination` (receiver address) values are set to `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`.
 
 Response:
 
