@@ -531,7 +531,7 @@ Request:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-request-sender.json' %}
+{% include 'code_samples/escrow/websocket/account_objects-request.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -548,7 +548,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-response-sender.json' %}
+{% include 'code_samples/escrow/websocket/account_objects-response.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -568,7 +568,7 @@ Request:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-request-sender.json' %}
+{% include 'code_samples/escrow/websocket/account_objects-request.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -585,7 +585,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-response-sender.json' %}
+{% include 'code_samples/escrow/websocket/account_objects-response.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
