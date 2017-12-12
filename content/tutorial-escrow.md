@@ -5,8 +5,7 @@ The XRP Ledger supports held payments, or _escrows_, that can be executed only a
 - [Send a time-held escrow](#send-a-time-held-escrow)
 - [Send a conditionally-held escrow](#send-a-conditionally-held-escrow)
 - [Cancel an expired escrow](#cancel-an-expired-escrow)
-- [Look up escrows by sender](#look-up-escrows-by-sender)
-<!-- {# Doesn't work yet:- Look up escrows by destination #}-->
+- [Look up escrows](#look-up-escrows)
 
 
 ## Send a Time-Held Escrow
@@ -511,9 +510,19 @@ _Websocket_
 
 In the above example, `r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT` is the sender of the escrow, and the increase in `Balance` from 99999**8**9990 drops to 99999**9**9990 drops represents the return of the escrowed 10,000 drops of XRP (0.01 XRP).
 
-## Look up escrows by sender
+**Tip:** If you don't know what `OfferSequence` to use in the [EscrowFinish transaction][] to execute an escrow, use the [`tx` method](reference-rippled.html) to look up the transaction that created the escrow, using the identifying hash of the transaction in the Escrow's `PreviousTxnID` field. Use the `Sequence` value of that transaction as the `OfferSequence` value when finishing the escrow.
 
-All pending escrows are stored in the ledger as [Escrow objects](reference-ledger-format.html#escrow). You can look up escrow nodes owned by your address using the [`account_objects` method](reference-rippled.html#account-objects).
+## Look up escrows
+
+All pending escrows are stored in the ledger as [Escrow objects](reference-ledger-format.html#escrow).
+
+You can look up escrow objects by the [sender's address](#look-up-escrows-by-sender-address) or the [destination address](#look-up-escrows-by-destination-address) using the [`account_objects`](reference-rippled.html#account-objects) method.
+
+###Look up escrows by sender address
+
+You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrow objects by sender address.
+
+Let's say that you want to look up all pending escrow objects with a sender address of `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`. You can do this using the following example request, where the sender address is the `account` value.
 
 Request:
 
@@ -522,10 +531,15 @@ Request:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-request-sender.json' %}
+{% include 'code_samples/escrow/websocket/account_objects-request.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
+
+
+The response resembles the following example. Note that the response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as the sender or destination address, where the sender address is the `Account` value and the destination address is the `Destination` value.
+
+In this example, the second and fourth escrow objects meet our lookup criteria because their `Account` (sender address) values are set to `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`.
 
 Response:
 
@@ -534,11 +548,46 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-response-sender.json' %}
+{% include 'code_samples/escrow/websocket/account_objects-response.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Tip:** If you don't know what `OfferSequence` to use in the [EscrowFinish transaction][] to execute an escrow, use the [`tx` method](reference-rippled.html) to look up the transaction that created the escrow, using the identifying hash of the transaction in the Escrow's `PreviousTxnID` field. Use the `Sequence` value of that transaction as the `OfferSequence` value when finishing the escrow.
+###Look up escrows by destination address
+
+You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrow objects by destination address.
+
+**Note:** You can only look up pending escrow objects by destination address if those escrows were created after the [fix1523 amendment](concept-amendments.html#fix1523) was enabled on 2017-11-14.
+
+Let's say that you want to look up all pending escrow objects with a destination address of `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`. You can do this using the following example request, where the destination address is the `account` value.
+
+Request:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/account_objects-request.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+
+The response resembles the following example. Note that the response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm` as the destination or sender address, where the destination address is the `Destination` value and the sender address is the `Account` value.
+
+In this example, the first and third escrow objects meet our lookup criteria because their `Destination` (destination address) values are set to `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`.
+
+Response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_Websocket_
+
+```json
+{% include 'code_samples/escrow/websocket/account_objects-response.json' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
 
 {% include 'snippets/tx-type-links.md' %}
