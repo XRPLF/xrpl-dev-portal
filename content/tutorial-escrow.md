@@ -518,7 +518,7 @@ All pending escrows are stored in the ledger as [Escrow objects](reference-ledge
 
 You can look up escrow objects by the [sender's address](#look-up-escrows-by-sender-address) or the [destination address](#look-up-escrows-by-destination-address) using the [`account_objects`](reference-rippled.html#account-objects) method.
 
-###Look up escrows by sender address
+### Look up escrows by sender address
 
 You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrow objects by sender address.
 
@@ -553,7 +553,7 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-###Look up escrows by destination address
+### Look up escrows by destination address
 
 You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrow objects by destination address.
 

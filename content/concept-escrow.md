@@ -104,7 +104,7 @@ For more information about Escrow in the XRP Ledger, see the following:
 - [Escrow Tutorials](tutorial-escrow.html)
     - [Send a Time-Held Escrow](tutorial-escrow.html#send-a-time-held-escrow)
     - [Send a conditionally-held escrow](tutorial-escrow.html#send-a-conditionally-held-escrow)
-    - [Look up escrows by sender](tutorial-escrow.html#look-up-escrows-by-sender)
+    - [Look up escrows by sender or receiver](tutorial-escrow.html#look-up-escrows)
 - [Transaction Reference](reference-transaction-format.html)
     - [EscrowCreate transaction][]
     - [EscrowFinish transaction][]
