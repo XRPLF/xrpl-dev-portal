@@ -60,7 +60,7 @@ targets:
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
-            # Jha added link below
+            # Jha added placeholder link_sub below - need to get the permalink from Wordpress
             "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
@@ -258,7 +258,7 @@ pages:
             - local
             - ripple.com
 
-# Jha added entry below
+# Jha added entry below - not sure if this is the proper sequence.
     -   name: Build and Run rippled on Ubuntu
         md: tutorial-build-run-rippled-ubuntu.md
         html: tutorial-build-run-rippled-ubuntu.html
