@@ -2,7 +2,7 @@
 
 `rippled` is the core peer-to-peer server that manages the XRP Ledger. A `rippled` server can connect to a network of peers, relay cryptographically signed transactions, and maintain a local copy of the complete shared global ledger.
 
-For an overview of `rippled`, see [Operating rippled Servers](tutorial-rippled-setup.html)
+For an overview of `rippled`, see [Operating rippled Servers](tutorial-rippled-setup.html).
 
 Use these instructions to build a `rippled` binary file and run it as a stock `rippled` server on Ubuntu 15.04 or later. These instructions were tested on Ubuntu 16.04 LTS.
 
@@ -11,7 +11,7 @@ For information about building `rippled` for other platforms, see [Builds](https
 
 ## System Requirements
 
-Ripple recommends meeting the following **minimum** system requirements for building and running `rippled`.
+Here are the **minimum** system requirements for building and running `rippled`.
 
 **_To build rippled:_**
 
@@ -22,24 +22,24 @@ Ripple recommends meeting the following **minimum** system requirements for buil
 * RAM: 4GB
 * CPU: 64-bit x86_64, 2+ cores
 * Disk: 50GB SSD with 500 IOPS for the database partition
-* Network: A fast network connection is preferable.
+* Network: A fast network connection is preferable
 
 If you are running `rippled` in an Amazon EC2 instance, Ripple recommends selecting a **Type** of **_m3.large_**. If you choose to run a validating `rippled` server, you may need more resources.
 
 
 ## 1. Build `rippled`
 
-These instructions use Ubuntu's APT (Advanced Packaging Tool) to install software prerequisites that you'll need to build `rippled`.
+These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the software prerequisites you need to build and run `rippled`.
 
-1. Update the list of packages that can be installed or upgraded.
+1. Update the list of packages that are available for `apt-get` to install or upgrade.
 ```
 sudo apt-get update
-```		
-2. Retrieve and upgrade currently installed packages.
+```
+2. Upgrade currently installed packages.
 ```
 sudo apt-get -y upgrade
 ```
-3. Install git.
+3. Install Git.
 ```
 sudo apt-get -y install git
 ```
@@ -60,7 +60,7 @@ sudo apt-get -y install pkg-config
 sudo apt-get -y install protobuf-compiler
 sudo apt-get -y install libprotobuf-dev
 ```
-8. Install SSL.
+8. Install Secure Socket Layer (SSL) toolkit development files.
 ```
 sudo apt-get -y install libssl-dev
 ```
@@ -95,17 +95,17 @@ scons
 
     `rippled.cfg` is the configuration file for `rippled`.
 
-    You can find an example configuration file (`rippled-example.cfg`) in `rippled/doc`. See the file for a description of all configuration options. You should be able to connect to the XRP Ledger using the default configuration defined in the example file.
+    You can find the `rippled-example.cfg` example file in `rippled/doc`. See the file for a description of all configuration options. You should be able to connect to the XRP Ledger using the default configuration defined in the example file.
 
-    Put `rippled.cfg` in `etc/opt/ripple/`.
+    Put your configured `rippled.cfg` file in `etc/opt/ripple/`.
 
 2. Configure `validators.txt`.
 
-    When you start `rippled` for the first time, it uses an initial list of validators defined in `validators.txt` to retrieve validation information and form its UNL (unique node list). `validators.txt` also enables `rippled` clients to indirectly locate IPs they can use to contact the Ripple network.
+    When you start your `rippled` server for the first time, it uses an initial list of validators defined in `validators.txt` to retrieve validation information and to form its UNL (unique node list). The information in `validators.txt` also enables `rippled` clients to indirectly locate IPs they can use to contact the Ripple network.
 
-    You can find an example validators file (`validators-example.txt`) in `rippled/doc`. See the file for a description of all validator options. You should be able to connect to the XRP Ledger using the default validators defined in the example file.
+    You can find the `validators-example.txt` example file in `rippled/doc`. See the file for a description of all validator options. You should be able to connect to the XRP Ledger using the default validators defined in the example file.
 
-    Put `validators.txt` in `etc/opt/ripple/`.
+    Put your configured `validators.txt` file in `etc/opt/ripple/`.
 
 
 ## 3. Run `rippled`
@@ -119,7 +119,7 @@ sudo ./rippled
 
 ### What to Expect
 
-Once you've run `rippled`, here are excerpts of what you can expect to see in your terminal.
+Once you've run `rippled`, here are excerpts of what you can expect to see in your terminal:
 
 ```
 Loading: "/etc/opt/ripple/rippled.cfg"
@@ -170,4 +170,4 @@ Now that you have a stock `rippled` server running, you may want to consider run
 
 For information about updating and maintaining your `rippled` server, see [Updating rippled](tutorial-rippled-setup.html#updating-rippled).
 
-For information about using the `rippled` API, see [rippled](reference-rippled.html).
+For information about communicating with your `rippled` server using the `rippled` API, see [rippled](reference-rippled.html).
