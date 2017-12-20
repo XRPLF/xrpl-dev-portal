@@ -14,9 +14,11 @@ If you want to communicate directly with a `rippled` server, you can use either 
 
 * The WebSocket API uses the [WebSocket protocol](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API), available in most browsers and Javascript implementations, to achieve persistent two-way communication. There is not a 1:1 correlation between requests and responses. Some requests prompt the server to send multiple messages back asynchronously; other times, responses may arrive in a different order than the requests that prompted them. The `rippled` server can be configured to accept secured (wss:), unsecured (ws:) WebSocket connections, or both.
 * The JSON-RPC API relies on request-response communication via HTTP or HTTPS. (The `rippled` server can be configured to accept HTTP, HTTPS, or both.) For commands that prompt multiple responses, you can provide a callback URL.
-* The `rippled` program can also be used as a quick commandline client to make JSON-RPC requests to a running `rippled` server. This is only intended for administrative purposes, and is not a supported API.
 
 In general, we recommend using WebSocket, because WebSocket's push paradigm has less latency and less network overhead. WebSocket is also more reliable; you can worry less about missing messages and establishing multiple connections. On the other hand, there is widespread support for JSON-RPC because you can use a standard HTTP library to connect to `rippled`'s JSON-RPC API.
+
+**Note:** The `rippled` program can also be used as a quick commandline client to make JSON-RPC requests to a running `rippled` server. The commandline interface is intended for administrative purposes only and is _not a supported API_.
+
 
 ## Changes to the APIs ##
 
@@ -98,6 +100,9 @@ The commandline interface connects to the same service as the JSON-RPC one, so t
 ```
 rippled --conf=/etc/rippled.cfg server_info
 ```
+
+**Note:** The commandline interface is intended for administrative purposes only and is _not a supported API_.
+
 
 #### Request Formatting ####
 
@@ -590,6 +595,7 @@ You can use the `rippled` application (as a separate instance) as a JSON-RPC cli
 
 * [`json` - Pass JSON through the commandline](#json)
 
+**Note:** The commandline interface is intended for administrative purposes only and is _not a supported API_.
 
 
 # Account Information #
@@ -2149,7 +2155,6 @@ An example of the request format:
   "ledger_index_min": -1,
   "ledger_index_max": -1,
   "binary": false,
-  "count": false,
   "limit": 2,
   "forward": false
 }
@@ -2164,13 +2169,10 @@ An example of the request format:
         {
             "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
             "binary": false,
-            "count": false,
-            "descending": false,
             "forward": false,
             "ledger_index_max": -1,
             "ledger_index_min": -1,
-            "limit": 2,
-            "offset": 1
+            "limit": 2
         }
     ]
 }
@@ -2179,8 +2181,8 @@ An example of the request format:
 *Commandline*
 
 ```
-#Syntax account_tx account [ledger_index_min [ledger_index_max [limit]]] [binary] [count] [forward]
-rippled account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 false false false
+#Syntax account_tx account ledger_index_min ledger_index_max [offset] [limit] [binary] [count] [forward]
+rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -2192,17 +2194,20 @@ The request includes the following parameters:
 | `Field`            | Type                                       | Description |
 |:-------------------|:-------------------------------------------|:-----------|
 | `account`          | String                                     | A unique identifier for the account, most commonly the account's address. |
-| `ledger_index_min` | Integer                                    | Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
-| `ledger_index_max` | Integer                                    | Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
-| `ledger_hash`      | String                                     | _(Optional)_ Use instead of ledger\_index\_min and ledger\_index\_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index`     | String or Unsigned Integer                 | _(Optional)_ Use instead of ledger\_index\_min and ledger\_index\_max to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `binary`           | Boolean                                    | (Optional, defaults to False) If set to True, return transactions as hex strings instead of JSON. |
-| `forward`          | boolean                                    | (Optional, defaults to False) If set to True, return values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
-| `limit`            | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. |
+| `ledger_index_min` | Integer                                    | _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
+| `ledger_index_max` | Integer                                    | _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
+| `ledger_hash`      | String                                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers).) |
+| `ledger_index`     | String or Unsigned Integer                 | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers).) |
+| `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
+| `forward`          | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
+| `limit`            | Integer                                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | `marker`           | [(Not Specified)](#markers-and-pagination) | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")
-There is also a deprecated legacy variation of the `account_tx` method. For that reason, we recommend *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, `ledger_min`.
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")<br>
+
+While each of these fields is marked as optional, **you must use at least one** in your request: `ledger_index`, `ledger_hash`, `ledger_index_min`, or `ledger_index_max`.
+
+**Note:** For WebSocket and JSON-RPC, there is also a deprecated legacy variation of the `account_tx` method. For that reason, Ripple recommends *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, and `ledger_min`. If you use any of these deprecated fields, the method does not support pagination.
 
 ##### **Iterating over queried data** ######
 
@@ -2228,7 +2233,6 @@ An example of a successful response:
         "ledger_index_max": 6542489,
         "ledger_index_min": 32570,
         "limit": 2,
-        "offset": 1,
         "transactions": [
             {
                 "meta": {
@@ -2463,7 +2467,6 @@ An example of a successful response:
         "ledger_index_max": 8696227,
         "ledger_index_min": 32570,
         "limit": 2,
-        "offset": 1,
         "status": "success",
         "transactions": [
             {
@@ -2700,7 +2703,6 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_index_max` | Integer                                    | The sequence number of the most recent ledger actually searched for transactions. |
 | `limit`            | Integer                                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
 | `marker`           | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
-| `offset`           | Integer                                    | The `offset` value used in the request. |
 | `transactions`     | Array                                      | Array of transactions matching the request's criteria, as explained below. |
 | `validated`        | Boolean                                    | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
 
