@@ -258,7 +258,6 @@ pages:
             - local
             - ripple.com
 
-# Jha added entry below. Is there where we want this tutorial to be accessbile?
     -   name: Build and Run rippled on Ubuntu
         md: tutorial-build-run-rippled-ubuntu.md
         html: tutorial-build-run-rippled-ubuntu.html

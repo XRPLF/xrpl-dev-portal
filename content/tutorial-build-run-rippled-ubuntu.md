@@ -11,20 +11,13 @@ For information about building `rippled` for other platforms, see [Builds](https
 
 ## System Requirements
 
-Here are the **minimum** system requirements for building and running `rippled`.
+**_To build `rippled`:_**
 
-**_To build rippled:_**
+You need a **minimum** of 8GB of RAM.
 
-* RAM: 8GB
+**_To run `rippled`:_**
 
-**_To run rippled:_**
-
-* RAM: 4GB
-* CPU: 64-bit x86_64, 2+ cores
-* Disk: 50GB SSD with 500 IOPS for the database partition
-* Network: A fast network connection is preferable
-
-If you are running `rippled` in an Amazon EC2 instance, Ripple recommends selecting a **Type** of **_m3.large_**. If you choose to run a validating `rippled` server, you may need more resources.
+Meet these [system requirements](tutorial-rippled-setup.html#system-requirements).
 
 
 ## 1. Build `rippled`
@@ -32,94 +25,95 @@ If you are running `rippled` in an Amazon EC2 instance, Ripple recommends select
 These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the software prerequisites you need to build and run `rippled`.
 
 1. Update the list of packages that are available for `apt-get` to install or upgrade.
-```
-sudo apt-get update
-```
+
+        sudo apt-get update
+
 2. Upgrade currently installed packages.
-```
-sudo apt-get -y upgrade
-```
+
+        sudo apt-get -y upgrade
+
 3. Install Git.
-```
-sudo apt-get -y install git
-```
+
+        sudo apt-get -y install git
+
 4. Install SCons.
-```
-sudo apt-get -y install scons
-```
+
+        sudo apt-get -y install scons
+
 5. Install Ctags.
-```
-sudo apt-get -y install ctags
-```
+
+        sudo apt-get -y install ctags
+
 6. Install `pkg-config`.
-```
-sudo apt-get -y install pkg-config
-```
+
+        sudo apt-get -y install pkg-config
+
 7. Install Protocol Buffers.
-```
-sudo apt-get -y install protobuf-compiler
-sudo apt-get -y install libprotobuf-dev
-```
+
+        sudo apt-get -y install protobuf-compiler
+        sudo apt-get -y install libprotobuf-dev
+
 8. Install Secure Socket Layer (SSL) toolkit development files.
-```
-sudo apt-get -y install libssl-dev
-```
+
+        sudo apt-get -y install libssl-dev
+
 9. Install `python-software-properties`.
-```
-sudo apt-get install -y python-software-properties
-```
+
+        sudo apt-get install -y python-software-properties
+
 10. Install Boost.
-```
-sudo add-apt-repository -y ppa:boost-latest/ppa
-sudo apt-get -y update
-sudo apt-get install -y libboost-all-dev
-```
+
+        sudo add-apt-repository -y ppa:boost-latest/ppa
+        sudo apt-get -y update
+        sudo apt-get install -y libboost-all-dev
+
 11. Get `rippled` source code.
-```
-git clone https://github.com/ripple/rippled.git
-cd rippled
-git checkout master
-```
-12. Build `rippled` binary executable from source code. This may take about 30 minutes.
+
+        git clone https://github.com/ripple/rippled.git
+        cd rippled
+        git checkout master
+
+12. Build `rippled` binary executable from source code. This may take about 30 minutes, depending on your hardware specs.
+
+        scons
 
     SCons saves the built executable in `rippled/build`.
-
-```
-scons
-```
 
 
 ## 2. Configure `rippled`
 
-1. Configure `rippled.cfg`.
+Complete the following configurations that are required for `rippled` to start up successfully. All other configuration is optional and can be tweaked after you have a working server.
 
-    `rippled.cfg` is the configuration file for `rippled`.
+1. Create a copy of the example config file (assumes you're in the `rippled` folder already). Saving the config file to this location enables you to run `rippled` as a non-root user (recommended).
 
-    You can find the `rippled-example.cfg` example file in `rippled/doc`. See the file for a description of all configuration options. You should be able to connect to the XRP Ledger using the default configuration defined in the example file.
+         cp doc/rippled-example.cfg ~/.config/ripple/rippled.cfg
 
-    Put your configured `rippled.cfg` file in `etc/opt/ripple/`.
+2. Edit the config file to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here.
 
-2. Configure `validators.txt`.
+    1. Set the `[node_db]`'s path to the location where you want to store the ledger database.
 
-    When you start your `rippled` server for the first time, it uses an initial list of validators defined in `validators.txt` to retrieve validation information and to form its UNL (unique node list). The information in `validators.txt` also enables `rippled` clients to indirectly locate IPs they can use to contact the Ripple network.
+    2. Set the `[database_path]` to the location where you want to store other database data. (This includes an SQLite database with configuration data, and is typically one level above the `[node_db]` path field.)
 
-    You can find the `validators-example.txt` example file in `rippled/doc`. See the file for a description of all validator options. You should be able to connect to the XRP Ledger using the default validators defined in the example file.
+    3. Set the `[debug_logfile]` to a path where `rippled` can write logging information.
 
-    Put your configured `validators.txt` file in `etc/opt/ripple/`.
+3. Copy the example `validators.txt` file to the same folder as `rippled.cfg`:
 
+        cp doc/validators-example.txt ~/.config/ripple/validators.txt
+
+    **Warning:** Ripple has designed and [documented](https://ripple.com/dev-blog/decentralization-strategy-update/) a decentralization plan with maximum safety in mind. During the transition, you *should not* modify the `validators.txt` file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
 ## 3. Run `rippled`
 
 To run your stock `rippled` server from the executable you built, using the configurations you defined:
 ```
 cd build
-sudo ./rippled
+./rippled
 ```
 
 
 ### What to Expect
 
-Once you've run `rippled`, here are excerpts of what you can expect to see in your terminal:
+Once you've run `rippled`, here are excerpts of what you can expect to see in your terminal.
 
 ```
 Loading: "/etc/opt/ripple/rippled.cfg"
@@ -168,6 +162,4 @@ Watchdog: Launching child 1
 
 Now that you have a stock `rippled` server running, you may want to consider running it as a validating server. For information about validating servers and why you might want to run one, see the [rippled Setup Tutorial](tutorial-rippled-setup.html).
 
-For information about updating and maintaining your `rippled` server, see [Updating rippled](tutorial-rippled-setup.html#updating-rippled).
-
-For information about communicating with your `rippled` server using the `rippled` API, see [rippled](reference-rippled.html).
+For information about communicating with your `rippled` server using the `rippled` API, see the [`rippled` API reference](reference-rippled.html).
