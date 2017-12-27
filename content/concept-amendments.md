@@ -113,6 +113,8 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                                  | Introduced | Status                  |
 |:--------------------------------------|:-----------|:------------------------|
+| [Checks](#checks) | v0.90.0 | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [DepositAuth](#depositauth) | v0.90.0 | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross](#flowcross)               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2](#shamapv2)                 | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite](#cryptoconditionssuite) | N/A | [Planned: TBD]( "BADGE_LIGHTGREY") |
@@ -138,6 +140,28 @@ The following is a comprehensive list of all known amendments and their status o
 | [FeeEscalation](#feeescalation)       | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "N/A" indicates that the amendment is not yet considered stable.
+
+## Checks
+
+| Amendment ID                                                     | Status  |
+|:-----------------------------------------------------------------|:--------|
+| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | In Development |
+
+Introduces "checks" to the XRP Ledger. Checks work similarly to actual bank checks in real life. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity.
+
+The sender or the receiver can cancel a Check at any time before it is cashed. A Check can also have an expiration time, after which it cannot be cashed, and anyone can cancel it.
+
+Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash, and a new ledger object type, Check. Adds a new transaction result code, `tecEXPIRED`, which occurs when trying to create a Check whose expiration time is in the past.
+
+This amendment also changes the OfferCreate transaction to return `tecEXPIRED` when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns `tesSUCCESS` but does not create or execute an Offer.
+
+## DepositAuth
+
+| Amendment ID                                                     | Status  |
+|:-----------------------------------------------------------------|:--------|
+| F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064 | In Development |
+
+Adds a new account flag, `DepositAuth`, which lets an account strictly reject any incoming payments that are not signed by the receiver. This includes payments of XRP and of issued currencies. This also includes EscrowFinish and PaymentChannelClaim transactions not sent by the destination account. Businesses can use this flag to comply with strict regulations that require due diligence before receiving money from any source. As an exception, accounts with `DepositAuth` enabled can receive small amounts of XRP (equal or less than the minimum [account reserve](concept-reserves.html)) if their current XRP balance is below the account reserve.
 
 ## CryptoConditions
 
