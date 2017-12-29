@@ -409,7 +409,7 @@ Example AccountSet:
 | MessageKey                     | String           | PubKey            | _(Optional)_ Public key for sending encrypted messages to this account. |
 | [SetFlag](#accountset-flags)   | Unsigned Integer | UInt32            | _(Optional)_ Integer flag to enable for this account. |
 | [TransferRate](#transferrate)  | Unsigned Integer | UInt32            | _(Optional)_ The fee to charge when users transfer this account's issued currencies, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
-| [TickSize](#ticksize)          | Unsigned Integer | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment](concept-amendments.html#ticksize).)_ |
+| [TickSize](#ticksize)          | Unsigned Integer | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment](reference-amendments.html#ticksize).)_ |
 | WalletLocator                  | String           | Hash256           | _(Optional)_ Not used. |
 | WalletSize                     | Unsigned Integer | UInt32            | _(Optional)_ Not used. |
 
@@ -483,7 +483,7 @@ In `rippled`'s WebSocket and JSON-RPC APIs, the TransferRate is represented as a
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
-_Requires the [Escrow Amendment](concept-amendments.html#escrow)._
+_Requires the [Escrow Amendment](reference-amendments.html#escrow)._
 
 Return escrowed XRP to the sender.
 
@@ -514,7 +514,7 @@ Any account may submit an EscrowCancel transaction.
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
-_Requires the [Escrow Amendment](concept-amendments.html#escrow)._
+_Requires the [Escrow Amendment](reference-amendments.html#escrow)._
 
 Sequester XRP until the escrow process either finishes or is canceled.
 
@@ -552,7 +552,7 @@ Either `CancelAfter` or `FinishAfter` must be specified. If both are included, t
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
-_Requires the [Escrow Amendment](concept-amendments.html#escrow)._
+_Requires the [Escrow Amendment](reference-amendments.html#escrow)._
 
 Deliver XRP from a held payment to the recipient.
 
@@ -693,7 +693,7 @@ When offers of the same exchange rate are placed in the same ledger version, the
 
 #### TickSize
 
-_Requires the [TickSize amendment](concept-amendments.html#ticksize)._
+_Requires the [TickSize amendment](reference-amendments.html#ticksize)._
 
 When an Offer is placed into an order book, its exchange rate is truncated based on the `TickSize` values set by the issuers of the currencies involved in the Offer. When a trader offers to exchange XRP and an issued currency, the `TickSize` from the issuer of the currency applies. When a trader offers to exchange two issued currencies, the offer uses the smaller `TickSize` value (that is, the one with fewer significant digits). If neither currency has a `TickSize` set, the default behavior applies.
 
@@ -848,7 +848,7 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 ## PaymentChannelClaim
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Requires the [PayChan Amendment](concept-amendments.html#paychan)._
+_Requires the [PayChan Amendment](reference-amendments.html#paychan)._
 
 Claim XRP from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
 
@@ -905,7 +905,7 @@ Transactions of the PaymentChannelClaim type support additional values in the [`
 ## PaymentChannelCreate
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Requires the [PayChan Amendment](concept-amendments.html#paychan)._
+_Requires the [PayChan Amendment](reference-amendments.html#paychan)._
 
 Create a unidirectional channel and fund it with XRP. The address sending this transaction becomes the "source address" of the payment channel.
 
@@ -940,7 +940,7 @@ Example PaymentChannelCreate:
 ## PaymentChannelFund
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Requires the [PayChan Amendment](concept-amendments.html#paychan)._
+_Requires the [PayChan Amendment](reference-amendments.html#paychan)._
 
 Add additional XRP to an open payment channel, update the expiration time of the channel, or both. Only the source address of the channel can use this transaction. (Transactions from other addresses fail with the error `tecNO_PERMISSION`.)
 
@@ -999,7 +999,7 @@ For even greater security, you can use [multi-signing](#multi-signing), but mult
 ## SignerListSet
 [[Source]<br>](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
-The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](#multi-signing) a transaction. This transaction type was introduced by the [MultiSign amendment](concept-amendments.html#multisign). [New in: rippled 0.31.0][]
+The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](#multi-signing) a transaction. This transaction type was introduced by the [MultiSign amendment](reference-amendments.html#multisign). [New in: rippled 0.31.0][]
 
 Example SignerListSet:
 
@@ -1381,7 +1381,7 @@ These codes indicate that the transaction failed and was not included in a ledge
 | `tefEXCEPTION`           | While processing the transaction, the server entered an unexpected state. This may be caused by unexpected inputs, for example if the binary data for the transaction is grossly malformed. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
 | `tefFAILURE`             | Unspecified failure in applying the transaction.    |
 | `tefINTERNAL`            | When trying to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
-| `tefINVARIANT_FAILED`   | An invariant check failed when trying to claim the [transaction cost](concept-transaction-cost.html). Requires the [EnforceInvariants amendment](concept-amendments.html#enforceinvariants). If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues). |
+| `tefINVARIANT_FAILED`   | An invariant check failed when trying to claim the [transaction cost](concept-transaction-cost.html). Requires the [EnforceInvariants amendment](reference-amendments.html#enforceinvariants). If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues). |
 | `tefMASTER_DISABLED`    | The transaction was signed with the account's master key, but the account has the `lsfDisableMaster` field set. |
 | `tefMAX_LEDGER`         | The transaction included a [`LastLedgerSequence`](#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
 | `tefNO_AUTH_REQUIRED`  | The [TrustSet transaction][] tried to mark a trustline as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
@@ -1431,7 +1431,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 | `tecINSUF_RESERVE_OFFER`   | 123   | The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: [Reserves](concept-reserves.html)) |
 | `tecINSUFFICIENT_RESERVE`  | 141   | The transaction would increase the [reserve requirement](concept-reserves.html) higher than the sending account's balance. [SignerListSet][], [PaymentChannelCreate][], [PaymentChannelFund][], and [EscrowCreate][] can return this error code. See [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves) for more information. |
 | `tecINTERNAL`              | 144   | Unspecified internal error, with transaction cost applied. This error code should not normally be returned. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues). |
-| `tecINVARIANT_FAILED`      | 147   | An invariant check failed when trying to execute this transaction. Requires the [EnforceInvariants amendment](concept-amendments.html#enforceinvariants). If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues). |
+| `tecINVARIANT_FAILED`      | 147   | An invariant check failed when trying to execute this transaction. Requires the [EnforceInvariants amendment](reference-amendments.html#enforceinvariants). If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues). |
 | `tecNEED_MASTER_KEY`       | 142   | This transaction tried to cause changes that require the master key, such as [disabling the master key or giving up the ability to freeze balances](#accountset-flags). [New in: rippled 0.28.0][] |
 | `tecNO_ALTERNATIVE_KEY`    | 130   | The transaction tried to remove the only available method of [authorizing transactions](#authorizing-transactions). This could be a [SetRegularKey transaction][] to remove the regular key, a [SignerListSet transaction][] to delete a SignerList, or an [AccountSet transaction][] to disable the master key. (Prior to `rippled` 0.30.0, this was called `tecMASTER_DISABLED`.) |
 | `tecNO_AUTH`               | 134   | The transaction failed because it needs to add a balance on a trust line to an account with the `lsfRequireAuth` flag enabled, and that trust line has not been authorized. If the trust line does not exist at all, `tecNO_LINE` occurs instead. |
