@@ -6,7 +6,7 @@ A single Payment transaction in the XRP Ledger can use multiple paths, combining
 
 Since XRP can be sent directly to any address, an XRP-to-XRP transaction does not use any paths.
 
-## Path Steps ##
+## Path Steps
 
 A path is made of steps that connect the sender to the receiver of the payment. Every step is either:
 
@@ -23,9 +23,9 @@ In both types of steps, each intermediate address gains and loses approximately 
 
 
 
-# Technical Details #
+# Technical Details
 
-## Pathfinding ##
+## Pathfinding
 
 The `rippled` API has two methods that can be used for pathfinding. The [`ripple_path_find` command](reference-rippled.html#ripple-path-find) does a one-time lookup of possible path sets. The [`path_find` command](reference-rippled.html#path-find) (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
 
@@ -36,7 +36,7 @@ You can have `rippled` automatically fill in paths when you sign it, by includin
 Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so `rippled` is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.
 
 
-## Implied Steps ##
+## Implied Steps
 
 By convention, several steps of a path are implied by the [fields of the Payment transaction](reference-transaction-format.html#payment): specifically, the `Account` (sender), `Destination` (receiver), `Amount` (currency and amount to be delivered) and `SendMax` (currency and amount to be sent, if specified). The implied steps are as follows:
 
@@ -47,7 +47,7 @@ By convention, several steps of a path are implied by the [fields of the Payment
 * Finally, last step of a path is always implied to be the receiver of a transaction, as defined by the transaction's `Destination` field.
 
 
-## Default Paths ##
+## Default Paths
 
 In addition to explicitly specified paths, a transaction can execute along the _default path_. The default path is the simplest possible way to connect the [implied steps](#implied-steps) of the transaction.
 
@@ -64,7 +64,7 @@ The following diagram enumerates all possible default paths:
 You can use the [`tfNoDirectRipple` flag](reference-transaction-format.html#payment-flags) to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.
 
 
-## Path Specifications ##
+## Path Specifications
 
 A path set is an array. Each member of the path set is another array that represents an individual _path_. Each member of a path is an object that specifies the step. A step has the following fields:
 

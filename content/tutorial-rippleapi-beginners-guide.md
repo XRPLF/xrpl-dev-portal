@@ -4,11 +4,11 @@ This tutorial guides you through the basics of building an XRP Ledger-connected 
 
 The scripts and configuration files used in this guide are [available in the Ripple Dev Portal GitHub Repository](https://github.com/ripple/ripple-dev-portal/tree/master/content/code_samples/rippleapi_quickstart).
 
-# Environment Setup #
+# Environment Setup
 
 The first step to using RippleAPI is setting up your development environment.
 
-## Install Node.js and npm ##
+## Install Node.js and npm
 
 RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. RippleAPI requires Node.js version 0.12, version 4.x, or higher.
 
@@ -26,7 +26,7 @@ On some platforms, the binary is named `nodejs` instead:
 nodejs --version
 ```
 
-## Use NPM to install RippleAPI and dependencies ##
+## Use NPM to install RippleAPI and dependencies
 
 RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). To use the new features of ECMAScript 6, RippleAPI depends on [Babel-Node](https://babeljs.io) and its ES2015 presets. You can use `npm` to install RippleAPI and these dependencies together.
 
@@ -76,7 +76,7 @@ npm WARN notsup Not compatible with your operating system or architecture: fseve
 npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
 ```
 
-# First RippleAPI Script ##
+# First RippleAPI Script
 
 This script, `get-account-info.js`, fetches information about a hard-coded account. Use it to test that RippleAPI works:
 
@@ -84,7 +84,7 @@ This script, `get-account-info.js`, fetches information about a hard-coded accou
 {% include 'code_samples/rippleapi_quickstart/get-account-info.js' %}
 ```
 
-## Running the script ##
+## Running the script
 
 RippleAPI and the script both use the ECMAScript 6 version of JavaScript. That's why we installed Babel earlier. The easiest way to run ECMAScript 6 is to use the `babel-node` binary, which NPM installs in the `node_modules/.bin/` directory of your project. Thus, running the script looks like this:
 
@@ -106,11 +106,11 @@ getAccountInfo done
 done and disconnected.
 ```
 
-## Understanding the script ##
+## Understanding the script
 
 In addition to RippleAPI-specific code, this script uses syntax and conventions that are recent developments in JavaScript. Let's divide the sample code into smaller chunks to explain each one.
 
-### Script opening ###
+### Script opening
 
 ```
 'use strict';
@@ -119,9 +119,9 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 
 The opening line enables [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode). This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: [Restrictions on Code in Strict Mode](https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1).
 
-The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is one of [the modules `ripple-lib` exports](https://github.com/ripple/ripple-lib/blob/develop/src/index.js).
+The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is one of [the modules `ripple-lib` exports](https://github.com/ripple/ripple-lib/blob/develop/src/index.ts).
 
-### Instantiating the API ###
+### Instantiating the API
 
 ```
 const api = new RippleAPI({
@@ -138,7 +138,7 @@ The one argument to the constructor is an options object, which has [a variety o
 * You can specify a [Ripple Test Net](https://ripple.com/build/ripple-test-net/) server instead to connect to the parallel-world Test Network instead of the production XRP Ledger.
 * If you [run your own `rippled`](tutorial-rippled-setup.html), you can instruct it to connect to your local server. For example, you might say `server: 'ws://localhost:5005'` instead.
 
-### Connecting and Promises ###
+### Connecting and Promises
 
 ```
 api.connect().then(() => {
@@ -152,7 +152,7 @@ When a Promise finishes with its asynchronous operations, the Promise runs the c
 
 Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions). Arrow functions are a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax `()=> {...}` is mostly equivalent to `function() {...}`. If you want an anonymous function with one parameter, you can use a syntax like `info => {...}` instead, which is almost the same as `function(info) {...}` syntax.
 
-### Custom code ###
+### Custom code
 
 ```
   /* begin custom code ------------------------------------ */
@@ -178,7 +178,7 @@ Keep in mind that the example code starts in the middle of a callback function (
 
 The `getAccountInfo` API method returns another Promise, so the line `}).then( info => {` defines another anonymous callback function to run when this Promise's asynchronous work is done. Unlike the previous case, this callback function takes one argument, called `info`, which holds the asynchronous return value from the `getAccountInfo` API method. The rest of this callback function outputs that return value to the console.
 
-### Cleanup ###
+### Cleanup
 
 ```
 }).then(() => {
@@ -192,7 +192,7 @@ The rest of the sample code is mostly more [boilerplate code](reference-rippleap
 
 The `catch` method ends this Promise chain. The callback provided here runs if any of the Promises or their callback functions encounters an error. In this case, we pass the standard `console.error` function, which writes to the console, instead of defining a custom callback. You could define a smarter callback function here to intelligently catch certain error types.
 
-# Waiting for Validation #
+# Waiting for Validation
 
 One of the biggest challenges in using the XRP Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you [follow the best practices](tutorial-reliable-transaction-submission.html) you still have to wait for the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:
 
@@ -208,11 +208,11 @@ If you are the administrator of the `rippled` server, you can [manually request 
 
 See [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html) for a more thorough explanation.
 
-# RippleAPI in Web Browsers #
+# RippleAPI in Web Browsers
 
 RippleAPI can also be used in a web browser if you compile a browser-compatible version and include [lodash](https://www.npmjs.com/package/lodash) as a dependency before the RippleAPI script.
 
-## Build Instructions ##
+## Build Instructions
 
 To use RippleAPI in a browser, you need to build a browser-compatible version. The following process compiles RippleAPI into a single JavaScript file you can include in a webpage.
 
@@ -276,7 +276,7 @@ This may take a while. At the end, the build process creates a new `build/` fold
 
 The file `build/ripple-<VERSION NUMBER>.js` is a straight export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in `-min.js` is the same thing, but with the content [minified](https://en.wikipedia.org/wiki/Minification_%28programming%29) for faster loading.
 
-## Example Browser Usage ##
+## Example Browser Usage
 
 The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public `rippled` server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named `ripple`, which contains the `RippleAPI` class.
 

@@ -1,5 +1,4 @@
-How to Multi-Sign
-=============================
+# How to Multi-Sign
 
 Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with [regular keys](reference-transaction-format.html#setregularkey) and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.
 
@@ -17,8 +16,7 @@ To use multi-signing:
 3. [Send transactions using multiple signatures.](#sending-a-multi-signed-transaction)
 
 
-Availability of Multi-Signing
------------------------------
+## Availability of Multi-Signing
 
 Multi-signing has been enabled by an [**Amendment**](concept-amendments.html) to the XRP Ledger Consensus Protocol since 2016-06-27.
 
@@ -30,13 +28,12 @@ To force the multi-signing feature to be enabled, add the following stanza to yo
     MultiSign
 
 
-Setting up Multi-Signing
-------------------------
+## Setting up Multi-Signing
 
 To multi-sign transactions from a particular address, you must create a list of addresses that can contribute to a multi-signature for your address. This list is stored in the XRP Ledger as a [SignerList node](reference-ledger-format.html#signerlist). The following procedure demonstrates how to set up a SignerList for your address:
 
 
-### 1. Prepare a funded address ###
+### 1. Prepare a funded address
 
 You need an XRP Ledger address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the [account reserve](concept-reserves.html) and [transaction cost](concept-transaction-cost.html), increasing with the number of signers and signatures you use.
 
@@ -47,7 +44,7 @@ If you started `rippled` in [stand-alone mode](concept-stand-alone-mode.html) wi
 3. Manually close the ledger.
 
 
-### 2. Prepare member keys ###
+### 2. Prepare member keys
 
 You need several sets of XRP Ledger keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the [`wallet_propose` command](reference-rippled.html#wallet-propose). For example:
 
@@ -70,7 +67,7 @@ You need several sets of XRP Ledger keys (address and secret) to include as memb
 Take note of the `account_id` (XRP Ledger Address) and `master_seed` (secret key) for each one you generate.
 
 
-### 3. Send SignerListSet transaction ###
+### 3. Send SignerListSet transaction
 
 [Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) a [SignerListSet transaction](reference-transaction-format.html#signerlistset) in the normal (single-signature) way. This associates a SignerList with your XRP Ledger address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.
 
@@ -153,7 +150,7 @@ Make sure that the [Transaction Result](reference-transaction-format.html#transa
 **Note:** The more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](concept-reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](reference-transaction-format.html#tec-codes). See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
 
 
-### 4. Close the ledger ###
+### 4. Close the ledger
 
 On the live network, you can wait 4-7 seconds for the ledger to close automatically.
 
@@ -170,7 +167,7 @@ If you're running `rippled` in stand-alone mode, use the [`ledger_accept` comman
     }
 
 
-### 5. Confirm the new signer list ###
+### 5. Confirm the new signer list
 
 Use the [`account_objects` command](reference-rippled.html#account-objects) to confirm that the SignerList is associated with the address in the latest validated ledger.
 
@@ -223,7 +220,7 @@ Normally, an account can own many objects of different types (such as trust line
 
 If the SignerList is present with the expected contents, then your address is ready to multi-sign.
 
-### 6. Further steps ###
+### 6. Further steps
 
 At this point, your address is ready to [send a multi-signed transaction](#sending-a-multi-signed-transaction). You may also want to:
 
@@ -231,12 +228,11 @@ At this point, your address is ready to [send a multi-signed transaction](#sendi
 * Remove the address's regular key pair (if you previously set one) by sending a [SetRegularKey transaction](reference-transaction-format.html#setregularkey).
 
 
-Sending a Multi-Signed Transaction
-----------------------------------
+## Sending a Multi-Signed Transaction
 
 Before you can multi-sign a transaction, first  [set up multi-signing](#setting-up-multi-signing) for your address. The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.
 
-### 1. Create the transaction ##
+### 1. Create the transaction
 
 Create a JSON object that represents the transaction you want to submit. You have to specify _everything_ about this transaction, including `Fee` and `Sequence`. Also include the field `SigningPubKey` as an empty string, to indicate that the transaction is multi-signed.
 
@@ -261,7 +257,7 @@ Here's an example transaction ready to be multi-signed:
 (This transaction creates an accounting relationship from rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC to rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh with a maximum balance of 100 USD.)
 
 
-### 2. Get one signature ###
+### 2. Get one signature
 
 Use the [`sign_for` command](reference-rippled.html#sign-for) with the secret key and address of one of the members of your SignerList to get a signature for that member.
 
@@ -316,7 +312,7 @@ Save the `tx_json` field of the response: it has the new signature in the `Signe
 
 If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](#availability-of-multi-signing).
 
-### 3. Get additional signatures ###
+### 3. Get additional signatures
 
 You can collect additional signatures in parallel or in serial:
 
@@ -390,7 +386,7 @@ You can collect additional signatures in parallel or in serial:
 Depending on the SignerList you configured, you may need to repeat this step several times to get signatures from all the necessary parties.
 
 
-### 4. Combine signatures and submit ###
+### 4. Combine signatures and submit
 
 If you collected the signatures in serial, the `tx_json` from the last `sign_for` response has all the signatures assembled, so you can use that as the argument to the [`submit_multisigned` command](reference-rippled.html#submit-multisigned).
 
@@ -469,7 +465,7 @@ If you collected the signatures in parallel, you must manually construct a `tx_j
 Take note of the `hash` value from the response so you can check the results of the transaction later.  (In this case, the hash is `BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6`.)
 
 
-### 5. Close the ledger ##
+### 5. Close the ledger
 
 If you are using the live network, you can wait 4-7 seconds for the ledger to close automatically.
 
@@ -486,7 +482,7 @@ If you're running `rippled` in stand-alone mode, use the [`ledger_accept` comman
     }
 
 
-### 6. Confirm transaction results ###
+### 6. Confirm transaction results
 
 Use the hash value from the response to the `submit_multisigned` command to look up the transaction using the [`tx` command](reference-rippled.html#tx). In particular, check that the `TransactionResult` is the string `tesSUCCESS`.
 
