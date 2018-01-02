@@ -41,7 +41,7 @@ The following is a comprehensive list of all known amendments and their status o
 |:-----------------------------------------------------------------|:--------|
 | 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | In Development |
 
-Introduces "checks" to the XRP Ledger. Checks work similarly to actual bank checks in real life. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity.
+Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.
 
 The sender or the receiver can cancel a Check at any time before it is cashed. A Check can also have an expiration time, after which it cannot be cashed, and anyone can cancel it.
 
@@ -50,6 +50,7 @@ Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash,
 This amendment also changes the OfferCreate transaction to return `tecEXPIRED` when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns `tesSUCCESS` but does not create or execute an Offer.
 
 **Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2245) and is expected for `rippled` v0.90.0.
+
 
 ## CryptoConditions
 [CryptoConditions]: #cryptoconditions
@@ -80,9 +81,14 @@ Implements several types of crypto-conditions from the official [crypto-conditio
 |:-----------------------------------------------------------------|:--------|
 | F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064 | In Development |
 
-Adds a new account flag, `DepositAuth`, which lets an account strictly reject any incoming payments that are not signed by the receiver. This includes payments of XRP and of issued currencies. This also includes EscrowFinish and PaymentChannelClaim transactions not sent by the destination account. Businesses can use this flag to comply with strict regulations that require due diligence before receiving money from any source. As an exception, accounts with `DepositAuth` enabled can receive small amounts of XRP (equal or less than the minimum [account reserve](concept-reserves.html)) if their current XRP balance is below the account reserve.
+Adds a new account flag, `DepositAuth`, which lets an account strictly reject any incoming money from transactions sent by other accounts. Businesses can use this flag to comply with strict regulations that require due diligence before receiving money from any source.
+
+When an account enables this flag, Payment transactions fail if the account is the destination, regardless of whether the Payment would have delivered XRP or an issued currency. EscrowFinish and PaymentChannelClaim transactions fail if the account is the destination unless the destination account itself sends those transactions. If the [Checks][] amendment is enabled, the account can receive XRP or issued currencies by sending CheckCash transactions.
+
+As an exception, accounts with `DepositAuth` enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum [account reserve](concept-reserves.html)) if their current XRP balance is below the account reserve.
 
 **Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2239) and is expected for `rippled` v0.90.0.
+
 
 ## EnforceInvariants
 [EnforceInvariants]: #enforceinvariants
