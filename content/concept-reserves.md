@@ -1,4 +1,4 @@
-# Reserves #
+# Reserves
 
 The XRP Ledger applies _reserve requirements_, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM and the full ledger history on disk.
 
@@ -7,7 +7,7 @@ To submit transactions, an address must hold a minimum amount of XRP in the shar
 The current minimum reserve requirement is **20 XRP**. (This is the cost of an address that owns no other objects in the ledger.)
 
 
-## Base Reserve and Owner Reserve ##
+## Base Reserve and Owner Reserve
 
 The reserve requirement is divided into two parts:
 
@@ -15,7 +15,7 @@ The reserve requirement is divided into two parts:
 * The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger. Currently, this is 5 XRP (`5000000` drops) per item.
 
 
-### Owner Reserves ###
+### Owner Reserves
 
 Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.
 
@@ -26,13 +26,13 @@ Many objects in the ledger are owned by a particular address, and count toward t
 - [Payment Channels](tutorial-paychan.html) are owned by the address that created them.
 - [Owner directories](reference-ledger-format.html#directorynode) list all the ledger objects that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.
 
-#### Owner Reserve Edge Cases ####
+#### Owner Reserve Edge Cases
 
 The XRP Ledger considers an [OfferCreate transaction][] to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the `taker_pays` currency if such a trust line does not exist. However, if the offer's owner does not hold enough XRP to also meet the owner reserve requirement of the new trust line, the offer is considered unfunded. See also: [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer).
 
 
 
-## Going Below the Reserve Requirement ##
+## Going Below the Reserve Requirement
 
 During transaction processing, the [transaction cost](concept-transaction-cost.html) destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.
 
@@ -40,7 +40,7 @@ When an address holds less XRP than its current reserve requirement, it cannot s
 
 **Tip:** When an address is below the reserve requirement, it can send new [OfferCreate transactions][] to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](reference-ledger-format.html#ripplestate), or [Offer nodes in the ledger](reference-ledger-format.html#offer), so they can only execute trades that consume Offers that are already in the order books.
 
-## Changing the Reserve Requirements ##
+## Changing the Reserve Requirements
 
 The XRP Ledger has a mechanism to adjust the reserve requirements for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](concept-fee-voting.html) for more information.
 

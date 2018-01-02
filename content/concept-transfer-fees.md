@@ -1,4 +1,4 @@
-# Transfer Fees #
+# Transfer Fees
 
 The `TransferRate` setting in the XRP Ledger allows [financial institutions that issue currency in the XRP Ledger](tutorial-gateway-guide.html) to charge users a _transfer fee_ for sending the currencies issued by that financial institution. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee, which becomes the property of the issuing address, and is no longer tracked in the XRP Ledger. The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address][] to another user.
 
@@ -13,7 +13,7 @@ The following diagram shows an XRP Ledger payment of 2 EUR.ACME from Alice to Ch
 
 ![Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger](img/e2g-with_transferrate.png)
 
-## Transfer Fees in Payment Paths ##
+## Transfer Fees in Payment Paths
 
 <!--{# TODO: Update this for OnwerPaysFee amendment when that gets added #}-->
 
@@ -33,7 +33,7 @@ The transfer fee is represented by a setting on the [issuing address][]. The tra
 
 **Note:** The [fix1201 amendment](concept-amendments.html), introduced in `rippled` v0.80.0 and enabled on 2017-11-14, lowered the maximum transfer fee to 100% from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). The ledger may still contain accounts with a transfer fee setting higher than 100% (a `TransferRate` of `2000000000`). Any transfer fees already set continue to operate at their stated rate.
 
-## RippleAPI ##
+## RippleAPI
 
 In RippleAPI, the transfer fee is specified in the `transferRate` field, as a decimal which represents the amount you must send for the recipient to get 1 unit of the same currency. A `transferRate` of `1.005` is equivalent to a transfer fee of 0.5%. By default, the `transferRate` is set to no fee. The value of `transferRate` cannot be less than `1.0` or more than `2.0`. The value `null` is a special case for no fee, equivalent to `1000000000`.
 
@@ -41,7 +41,7 @@ A financial institution can send a [Settings transaction](reference-rippleapi.ht
 
 You can check an account's `transferRate` with the [getSettings method](reference-rippleapi.html#getsettings).
 
-## rippled ##
+## rippled
 
 In `rippled`'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set to no fee. The value of `TransferRate` cannot be set to less than `1000000000` or more than `2000000000` (a "100%" fee). The value `0` is special case for no fee, equivalent to `1000000000`.
 

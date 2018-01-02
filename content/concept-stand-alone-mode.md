@@ -1,5 +1,4 @@
-Stand-Alone Mode
-===============================================================================
+# Stand-Alone Mode
 
 You can run `rippled` in stand-alone mode without a consensus of trusted servers. In stand-alone mode, `rippled` does not communicate with any other servers in the XRP Ledger peer-to-peer network, but you can do most of the same actions on your local server only. Stand-alone provides a method for testing `rippled` behavior without being tied to the live network. For example, you can [test the effects of Amendments](concept-amendments.html#testing-amendments) before those Amendments have gone into effect across the decentralized network.
 
@@ -11,8 +10,8 @@ When you run `rippled` in stand-alone mode, you have to tell it what ledger vers
 **Caution:** In stand-alone mode, you must [manually advance the ledger](#advancing-ledgers-in-stand-alone-mode).
 
 
-New Genesis Ledger
--------------------------------------------------------------------------------
+## New Genesis Ledger
+
 In stand-alone mode, you can have `rippled` create a new genesis ledger. This provides a known state, with none of the ledger history from the production XRP Ledger. (This is very useful for unit tests, among other things.)
 
 * To start `rippled` in stand-alone mode with a new genesis ledger, use the [`-a`](https://wiki.ripple.com/Rippled#--standalone.2C_-a) and [`--start`](https://wiki.ripple.com/Rippled#--start) options:
@@ -32,11 +31,11 @@ In a genesis ledger, the [genesis address](concept-accounts.html#special-address
 [New in: rippled 0.50.0][] If you start a new genesis ledger with `--start`, all The genesis ledger contains an [EnableAmendment pseudo-transaction](reference-transaction-format.html#enableamendment) to turn on all [Amendments](concept-amendments.html) natively supported by the `rippled` server, except for amendments that you explicitly disable in the configuration file. The effects of those amendments are available starting from the very next ledger version.
 
 
-Load Saved Ledger
--------------------------------------------------------------------------------
+## Load Saved Ledger
+
 You can start with a ledger version that was saved to disk if your `rippled` server was previously synced with the XRP Ledger peer-to-peer network (either the production network or the [Test Net](tutorial-rippled-setup.html#parallel-networks)).
 
-### 1. Start `rippled` normally. ###
+### 1. Start `rippled` normally.
 
 To load an existing ledger, you must first retrieve that ledger from the network. Start `rippled` in online mode as normal:
 
@@ -44,7 +43,7 @@ To load an existing ledger, you must first retrieve that ledger from the network
 rippled --conf=/path/to/rippled.cfg
 ```
 
-### 2. Wait until `rippled` is synced. ###
+### 2. Wait until `rippled` is synced.
 
 Use the [`server_info` command](reference-rippled.html#server-info) to check the state of your server relative to the network. Your server is synced when the `server_state` value shows any of the following values:
 
@@ -54,7 +53,7 @@ Use the [`server_info` command](reference-rippled.html#server-info) to check the
 
 For more information, see [Possible Server States](reference-rippled.html#possible-server-states).
 
-### 3. (Optional) Retrieve specific ledger versions. ###
+### 3. (Optional) Retrieve specific ledger versions.
 
 If you only want the most recent ledger, you can skip this step.
 
@@ -62,7 +61,7 @@ If you want to load a specific historical ledger version, use the [`ledger_reque
 
 If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version before it. (The previous ledger version sets up the initial state upon which you apply the changes described by the ledger version you replay.)
 
-### 4. Shut down `rippled`. ###
+### 4. Shut down `rippled`.
 
 Use the [`stop` command](reference-rippled.html#stop):
 
@@ -70,7 +69,7 @@ Use the [`stop` command](reference-rippled.html#stop):
 rippled stop --conf=/path/to/rippled.cfg
 ```
 
-### 5. Start `rippled` in stand-alone mode. ###
+### 5. Start `rippled` in stand-alone mode.
 
 To load the most recent ledger version, you can use the [`-a`](https://wiki.ripple.com/Rippled#--standalone.2C_-a) and [`--load`](https://wiki.ripple.com/Rippled#--load) options when starting the server:
 
@@ -84,7 +83,7 @@ To instead load a specific historical ledger, use the [`--load`](https://wiki.ri
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 ```
 
-### 6. Manually advance the ledger. ###
+### 6. Manually advance the ledger.
 
 When you load a ledger with `--ledger` in stand-alone mode, it goes to the current open ledger, so you must [manually advance the ledger](#advancing-ledgers-in-stand-alone-mode):
 
@@ -93,8 +92,7 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
 
 
-Advancing Ledgers in Stand-Alone Mode
--------------------------------------------------------------------------------
+## Advancing Ledgers in Stand-Alone Mode
 
 In stand-alone mode, `rippled` does not communicate to other members of the peer-to-peer network or participate in a consensus process. Instead, you must manually advance the ledger index using the [`ledger_accept` command](reference-rippled.html#ledger-accept):
 

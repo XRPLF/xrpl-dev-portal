@@ -1,4 +1,4 @@
-# Operating rippled Servers #
+# Operating rippled Servers
 
 The core server of the XRP Ledger peer-to-peer network is [`rippled`](reference-rippled.html). Anyone can run their own `rippled` server that follows the network and keeps a complete copy of the XRP Ledger. You can even have your server take part in the consensus process.
 
@@ -8,7 +8,7 @@ This page contains instructions for:
 * [Participating in the Consensus Process](#running-a-validator)
 
 
-## Types of rippled Servers ##
+## Types of rippled Servers
 
 The `rippled` server software can run in several modes depending on its configuration, including:
 
@@ -19,7 +19,7 @@ The `rippled` server software can run in several modes depending on its configur
 You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](reference-rippled.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
 
 
-## Reasons to Run a Stock Server ##
+## Reasons to Run a Stock Server
 
 There are lots of reasons you might want to run your own `rippled` server, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it. Of course, you must practice good network security to protect your server from malicious hackers.
 
@@ -42,7 +42,7 @@ Not all `rippled` servers need to be validators: trusting more servers from the 
 
 If your organization runs a validating server, you may also run one or more stock servers, to balance the computing load of API access, or as a proxy between your validation server and the outside network.
 
-### Properties of a Good Validator ###
+### Properties of a Good Validator
 
 There are several properties that define a good validator. The more of these properties your server embodies, the more reason others have to include your server in their list of trusted validators:
 
@@ -58,13 +58,13 @@ There are several properties that define a good validator. The more of these pro
 At present, Ripple (the company) cannot recommend any validators aside from the 5 core validators run by Ripple: these validators are included in the default `rippled` configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
 
 
-# Installing rippled #
+# Installing rippled
 
 For development, you can [compile `rippled` from source](https://wiki.ripple.com/Rippled_build_instructions).
 
 Production `rippled` instances can [use Ripple's binary executable](#installation-on-centosred-hat-with-yum), available from the Ripple [yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified) repository.
 
-## System Requirements ##
+## System Requirements
 
 A `rippled` server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, we recommend the following:
 
@@ -80,7 +80,7 @@ Amazon EC2's m3.large VM size may be appropriate depending on your workload. (Va
 Naturally, a fast network connection is preferable.
 
 
-## Installation on CentOS/Red Hat with yum ##
+## Installation on CentOS/Red Hat with yum
 
 This section assumes that you are using CentOS 7 or Red Hat Enterprise Linux 7.
 
@@ -100,7 +100,7 @@ This section assumes that you are using CentOS 7 or Red Hat Enterprise Linux 7.
 
         $ sudo systemctl start rippled.service
 
-## Installation on Ubuntu with alien ##
+## Installation on Ubuntu with alien
 
 This section assumes that you are using Ubuntu 15.04 or later.
 
@@ -133,7 +133,7 @@ This section assumes that you are using Ubuntu 15.04 or later.
 
         $ sudo systemctl start rippled.service
 
-## Postinstall ##
+## Postinstall
 
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger.
 
@@ -142,11 +142,11 @@ It can take several minutes for `rippled` to sync with the rest of the network, 
         $ /opt/ripple/bin/rippled <command>
 
 
-## Updating rippled ##
+## Updating rippled
 
 You can subscribe to the [rippled Google Group](https://groups.google.com/forum/#!forum/ripple-server) to receive notifications of new `rippled` releases.
 
-### Automatic Update on CentOS/Red Hat ###
+### Automatic Update on CentOS/Red Hat
 
 Automatic rippled updates can be enabled with a one-time Cron configuration:
 
@@ -168,7 +168,7 @@ Automatic rippled updates can be enabled with a one-time Cron configuration:
 
 The script updates the installed `rippled` package within an hour of each new release.
 
-### Manual Update on CentOS/Red Hat ###
+### Manual Update on CentOS/Red Hat
 
 Run the following commands to update to the latest release of `rippled`:
 
@@ -177,7 +177,7 @@ Run the following commands to update to the latest release of `rippled`:
         $ sudo systemctl daemon-reload
         $ sudo service rippled restart
 
-### Manual Update on Ubuntu ###
+### Manual Update on Ubuntu
 
 Run the following commands to update to the latest release of `rippled`:
 
@@ -189,7 +189,7 @@ Run the following commands to update to the latest release of `rippled`:
         $ sudo service rippled restart
 
 
-# Running a Validator #
+# Running a Validator
 
 Running a `rippled` validator that participates in the Consensus process is simple:
 
@@ -200,7 +200,7 @@ Running a `rippled` validator that participates in the Consensus process is simp
     * Also see [Properties of a Good Validator](#properties-of-a-good-validator) for best practices.
 
 
-## Validator Setup ##
+## Validator Setup
 
 The `validator-keys` tool (included in the `rippled` RPM) is the recommended means to securely generate and manage your validator keys.
 
@@ -225,7 +225,7 @@ The `validator-keys` tool (included in the `rippled` RPM) is the recommended mea
 See [the `validator-keys-tool` GitHub repository](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md) for more information about managing validator keys.
 
 
-## Public-Facing Server ##
+## Public-Facing Server
 
 To protect a production validator from [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) attacks, you can use a stock `rippled` server as a proxy between the validator and the outside network.
 
@@ -246,7 +246,7 @@ Remember to restart `rippled` for config changes to take effect.
 Take care not to publish the IP address of your validator.
 
 
-## Domain Verification ##
+## Domain Verification
 
 Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they control.
 
@@ -265,7 +265,7 @@ Network participants are unlikely to trust validators without knowing who is ope
 4. In order to have the verified validator domain published, email <validators@ripple.com> with both signatures as well as the validator public key and domain name.
 
 
-# Additional Configuration #
+# Additional Configuration
 
 `rippled` should connect to the XRP Ledger with the default configuration. However, you can change your settings by editing the `rippled.cfg` file (located at `/opt/ripple/etc/rippled.cfg` when installing `rippled` with yum).
 
@@ -280,7 +280,7 @@ Restart `rippled` for any configuration changes to take effect:
         $ sudo service rippled restart
 
 
-## Parallel Networks ##
+## Parallel Networks
 
 Most of the time, we describe the XRP Ledger as one collective, singular entity -- and that's mostly true. There is one production XRP Ledger peer-to-peer network, and all business that takes place on the XRP Ledger occurs within the production network.
 
@@ -290,12 +290,12 @@ However, sometimes you may want to do tests and experiments without interacting 
 
 Over time, there may also be smaller, temporary test networks for specific purposes.
 
-### Parallel Networks and Consensus ###
+### Parallel Networks and Consensus
 
 There is no `rippled` setting that defines which network it uses. Instead, it uses the consensus of validators it trusts to know which ledger to accept as the truth. When different consensus groups of `rippled` instances only trust other members of the same group, each group continues as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.
 
 
-## Clustering ##
+## Clustering
 
 If you are running multiple `rippled` servers in a single datacenter, you can configure those servers into a cluster to maximize efficiency. Running your `rippled` servers in a cluster provides the following benefits:
 
