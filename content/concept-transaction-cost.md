@@ -30,7 +30,7 @@ The transaction cost is not paid to any party: the XRP is irrevocably destroyed.
 
 ## Load Cost and Open Ledger Cost
 
-When the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, there are two thresholds for the transaction cost:
+When the [FeeEscalation amendment](reference-amendments.html#feeescalation) is enabled, there are two thresholds for the transaction cost:
 
 * If the transaction cost does not meet a `rippled` server's [load-based transaction cost threshold](#local-load-cost), the server ignores the transaction completely. (This logic is essentially unchanged with or without the amendment.)
 * If the transaction cost does not meet a `rippled` server's [open ledger cost threshold](#open-ledger-cost), the server queues the transaction for a later ledger.
@@ -109,7 +109,7 @@ _Fee levels_ represent the proportional difference between the minimum cost and 
 
 The `rippled` APIs have two ways to query the local load-based transaction cost: the `server_info` command (intended for humans) and the `server_state` command (intended for machines).
 
-If the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, you can use the [`fee` command](reference-rippled.html#fee) to check the open ledger cost.
+If the [FeeEscalation amendment](reference-amendments.html#feeescalation) is enabled, you can use the [`fee` command](reference-rippled.html#fee) to check the open ledger cost.
 
 ### server_info
 
@@ -171,7 +171,7 @@ This feature is designed to allow you to recover an account if the regular key i
 
 The [lsfPasswordSpent flag](reference-ledger-format.html#accountroot-flags) starts out disabled. It gets enabled when you send a SetRegularKey transaction signed by the master key pair. It gets disabled again when the account receives a [Payment](reference-transaction-format.html#payment) of XRP.
 
-When the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
+When the [FeeEscalation amendment](reference-amendments.html#feeescalation) is enabled, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
 
 ## Changing the Transaction Cost

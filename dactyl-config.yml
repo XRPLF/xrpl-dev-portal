@@ -50,6 +50,7 @@ targets:
             "reference-transaction-format.html": https://ripple.com/build/transactions/
             "reference-ledger-format.html": https://ripple.com/build/ledger-format/
             "reference-data-api.html": https://ripple.com/build/data-api-v2/
+            "reference-amendments.html": https://ripple.com/build/known-amendments/
             "tutorial-multisign.html": https://ripple.com/build/how-to-multi-sign/
             "concept-issuing-and-operational-addresses.html": https://ripple.com/build/issuing-operational-addresses/
             "tutorial-reliable-transaction-submission.html": https://ripple.com/build/reliable-transaction-submission/
@@ -169,6 +170,13 @@ pages:
     -   md: reference-currency.md
         category: References
         html: reference-currency.html
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-amendments.md
+        category: References
+        html: reference-amendments.html
         targets:
             - local
             - ripple.com

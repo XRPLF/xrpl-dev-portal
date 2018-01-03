@@ -756,7 +756,7 @@ The response follows the [standard format](#response-formatting), with a success
 ## account_channels
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
-_(Requires the [PayChan amendment](concept-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+_(Requires the [PayChan amendment](reference-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
 
 The `account_channels` method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.
 
@@ -987,8 +987,8 @@ The request contains the following parameters:
 | `strict`       | Boolean                    | (Optional, defaults to False) If set to True, then the `account` field only accepts a public key or XRP Ledger address. |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `queue`        | Boolean                    | _(Optional)_ If `true`, and the [FeeEscalation amendment](concept-amendments.html#feeescalation) is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. [New in: rippled 0.33.0][] |
-| `signer_lists` | Boolean                    | _(Optional)_ If `true`, and the [MultiSign amendment](concept-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. [New in: rippled 0.31.0][] |
+| `queue`        | Boolean                    | _(Optional)_ If `true`, and the [FeeEscalation amendment](reference-amendments.html#feeescalation) is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. [New in: rippled 0.33.0][] |
+| `signer_lists` | Boolean                    | _(Optional)_ If `true`, and the [MultiSign amendment](reference-amendments.html#multisign) is enabled, also returns any [SignerList objects](reference-ledger-format.html#signerlist) associated with this account. [New in: rippled 0.31.0][] |
 
 The following fields are deprecated and should not be provided: `ident`, `ledger`.
 
@@ -3486,7 +3486,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger.transactions`          | Array   | (Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying [Hash][] strings. If the request specified `expand` as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified `binary` as true. |
 | `ledger_hash`                  | String  | Unique identifying hash of the entire ledger. |
 | `ledger_index`                 | Number  | The [Ledger Index][] of this ledger. |
-| `queue_data`                   | Array   | (Omitted unless requested with the `queue` parameter) Array of objects describing queued transactions, in the same order as the queue. If the request specified `expand` as true, members contain full representations of the transactions, in either JSON or binary depending on whether the request specified `binary` as true. Requires the [FeeEscalation amendment](concept-amendments.html#known-amendments). [New in: rippled 0.70.0][] |
+| `queue_data`                   | Array   | (Omitted unless requested with the `queue` parameter) Array of objects describing queued transactions, in the same order as the queue. If the request specified `expand` as true, members contain full representations of the transactions, in either JSON or binary depending on whether the request specified `binary` as true. Requires the [FeeEscalation amendment](reference-amendments.html#feeescalation). [New in: rippled 0.70.0][] |
 
 The following fields are deprecated and may be removed without further notice: `accepted`, `hash`, `seqNum`, `totalCoins`.
 
@@ -6826,7 +6826,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `sign_for` command provides one signature for a [multi-signed transaction](reference-transaction-format.html#multi-signing).
 
-This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
+This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
 #### Request Format
 An example of the request format:
@@ -7342,7 +7342,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 The `submit_multisigned` command applies a [multi-signed](reference-transaction-format.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
 
-This command requires the [MultiSign amendment](concept-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
+This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
 #### Request Format
 An example of the request format:
@@ -7778,7 +7778,7 @@ In addition to the standard Offer fields, the following fields may be included i
 ## channel_authorize
 [[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
 
-_(Requires the [PayChan amendment](concept-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+_(Requires the [PayChan amendment](reference-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
 
 The `channel_authorize` method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.
 
@@ -7896,7 +7896,7 @@ The response follows the [standard format](#response-formatting), with a success
 ## channel_verify
 [[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
 
-_(Requires the [PayChan amendment](concept-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+_(Requires the [PayChan amendment](reference-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
 
 The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
 
@@ -9927,7 +9927,7 @@ The response follows the [standard format](#response-formatting), with a success
 ## fee
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
 
-The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](concept-transaction-cost.html). This requires the [FeeEscalation amendment](concept-amendments.html#feeescalation) to be enabled. [New in: rippled 0.31.0][]
+The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](concept-transaction-cost.html). This requires the [FeeEscalation amendment](reference-amendments.html#feeescalation) to be enabled. [New in: rippled 0.31.0][]
 
 This is a public command available to unprivileged users. [Updated in: rippled 0.32.0][New in: rippled 0.32.0]
 
