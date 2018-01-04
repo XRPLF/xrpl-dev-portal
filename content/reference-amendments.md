@@ -5,13 +5,13 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                      | Introduced | Status                              |
 |:--------------------------|:-----------|:------------------------------------|
-| [Checks][]                | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY")  |
-| [DepositAuth][]           | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY")  |
-| [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY")  |
-| [SHAMapV2][]              | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY")  |
-| [CryptoConditionsSuite][] | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY")  |
-| [OwnerPaysFee][]          | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY")  |
-| [Tickets][]               | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY")  |
+| [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [SHAMapV2][]              | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [Checks][]                | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [DepositAuth][]           | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [CryptoConditionsSuite][] | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [OwnerPaysFee][]          | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [Tickets][]               | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SortedDirectories][]     | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29 "BADGE_GREEN") |
 | [fix1201][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E "BADGE_GREEN") |
 | [fix1512][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647 "BADGE_GREEN") |
@@ -23,22 +23,21 @@ The following is a comprehensive list of all known amendments and their status o
 | [PayChan][]               | v0.33.0    | [Enabled: 2017-03-31](https://xrpcharts.ripple.com/#/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E "BADGE_GREEN") |
 | [Escrow][]                | v0.60.0    | [Enabled: 2017-03-31](https://xrpcharts.ripple.com/#/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515 "BADGE_GREEN") |
 | [TickSize][]              | v0.50.0    | [Enabled: 2017-02-21](https://xrpcharts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_GREEN") |
-| [SusPay][]                | v0.31.0    | [Vetoed: Removed in v0.60.0](https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features "BADGE_RED") |
 | [CryptoConditions][]      | v0.50.0    | [Enabled: 2017-01-03](https://xrpcharts.ripple.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
 | [Flow][]                  | v0.33.0    | [Enabled: 2016-10-21](https://xrpcharts.ripple.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
-| [FlowV2][]                | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
 | [TrustSetAuth][]          | v0.30.0    | [Enabled: 2016-07-19](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]             | v0.31.0    | [Enabled: 2016-06-27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]         | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| [FlowV2][]                | v0.32.1    | [Vetoed: Removed in v0.33.0](https://ripple.com/dev-blog/flowv2-amendment-vetoed/ "BADGE_RED") |
+| [SusPay][]                | v0.31.0    | [Vetoed: Removed in v0.60.0](https://ripple.com/dev-blog/ticksize-amendment-open-voting/#upcoming-features "BADGE_RED") |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.
-
 
 ## Checks
 [Checks]: #checks
 
-| Amendment ID                                                     | Status  |
-|:-----------------------------------------------------------------|:--------|
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
 | 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | In Development |
 
 Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.
@@ -52,21 +51,23 @@ This amendment also changes the OfferCreate transaction to return `tecEXPIRED` w
 **Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2245) and is expected for `rippled` v0.90.0.
 
 
+
 ## CryptoConditions
 [CryptoConditions]: #cryptoconditions
 
-| Amendment ID                                                     | Status  |
-|:-----------------------------------------------------------------|:--------|
-| 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | Enabled |
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | Enabled   |
 
 Although this amendment is enabled, it has no effect unless the [SusPay](#suspay) amendment is also enabled. Ripple does not expect SusPay to become enabled. Instead, Ripple plans to incorporate crypto-conditions in the [Escrow](#escrow) amendment.
+
 
 
 ## CryptoConditionsSuite
 [CryptoConditionsSuite]: #cryptoconditionssuite
 
-| Amendment ID                                                     | Status  |
-|:-----------------------------------------------------------------|:--------|
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
 | 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 | In Development |
 
 Implements several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions. Without this amendment, only the PREIMAGE-SHA-256 type is supported.
@@ -74,11 +75,12 @@ Implements several types of crypto-conditions from the official [crypto-conditio
 **Caution:** This amendment is still [in development](https://github.com/ripple/rippled/pull/2170). The version from `rippled` v0.60.0 to present does not implement the full functionality.
 
 
+
 ## DepositAuth
 [DepositAuth]: #depositauth
 
-| Amendment ID                                                     | Status  |
-|:-----------------------------------------------------------------|:--------|
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
 | F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064 | In Development |
 
 Adds a new account flag, `DepositAuth`, which lets an account strictly reject any incoming money from transactions sent by other accounts. Businesses can use this flag to comply with strict regulations that require due diligence before receiving money from any source.
@@ -90,12 +92,13 @@ As an exception, accounts with `DepositAuth` enabled can receive Payment transac
 **Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2239) and is expected for `rippled` v0.90.0.
 
 
+
 ## EnforceInvariants
 [EnforceInvariants]: #enforceinvariants
 
-| Amendment ID                                                     | Status  |
-|:-----------------------------------------------------------------|:--------|
-| DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF | Enabled |
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF | Enabled   |
 
 Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra, independent layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the XRP Ledger. Ripple expects to add more invariant checks in future versions of `rippled` without additional amendments.
 
@@ -110,12 +113,13 @@ Examples of invariant checks:
 - There cannot be a trust line for XRP.
 
 
+
 ## Escrow
 [Escrow]: #escrow
 
-| Amendment ID                                                     | Status  |
-|:-----------------------------------------------------------------|:--------|
-| 07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104 | Enabled |
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104 | Enabled   |
 
 Replaces the [SusPay](#suspay) and [CryptoConditions](#cryptoconditions) amendments.
 
@@ -123,12 +127,13 @@ Provides "suspended payments" for XRP for escrow within the XRP Ledger, includin
 
 
 
+
 ## FeeEscalation
 [FeeEscalation]: #feeescalation
 
-| Amendment ID                                                     | Status  |
-|:-----------------------------------------------------------------|:--------|
-| 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE | Enabled |
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE | Enabled   |
 
 Changes the way the [transaction cost](concept-transaction-cost.html) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize -->
 
@@ -142,6 +147,7 @@ A transaction remains in the queue until one of the following happens:
 * It becomes invalid (for example, the [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) causes it to expire)
 * It gets dropped because there are too many transactions in the queue with a higher transaction cost.
 
+
 ## fix1201
 [fix1201]: #fix1201
 
@@ -154,6 +160,7 @@ Correctly implements a limit on [transfer fees](concept-transfer-fees.html) to a
 With this amendment enabled, an [AccountSet][] transaction that attempts to set `TransferRate` higher than `2000000000` fails with the result code `temBAD_TRANSFER_RATE`. Any existing `TransferRate` which was set to a higher value under the previous rules continues to apply at the higher rate.
 
 
+
 ## fix1368
 [fix1368]: #fix1368
 
@@ -162,6 +169,7 @@ With this amendment enabled, an [AccountSet][] transaction that attempts to set 
 | E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA | Enabled   |
 
 Fixes a minor bug in transaction processing that causes some payments to fail when they should be valid. Specifically, during payment processing, some payment steps that are expected to produce a certain amount of currency may produce a microscopically different amount, due to a loss of precision related to floating-point number representation. When this occurs, those payments fail because they cannot deliver the exact amount intended. The fix1368 amendment corrects transaction processing so payments can no longer fail in this manner.
+
 
 ## fix1373
 [fix1373]: #fix1373
@@ -174,6 +182,7 @@ Fixes a minor bug in transaction processing that causes failures when trying to 
 
 The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose [steps](concept-paths.html#path-specifications) include conflicting fields and paths that loop through the same object more than once.
 
+
 ## fix1512
 [fix1512]: #fix1512
 
@@ -185,6 +194,7 @@ Fixes a bug in transaction processing that causes some invalid [PaymentChannelCl
 
 With this amendment, the transactions fail with a more appropriate result code, `temBAD_AMOUNT`, instead.
 
+
 ## fix1523
 [fix1523]: #fix1523
 
@@ -195,6 +205,7 @@ With this amendment, the transactions fail with a more appropriate result code, 
 Adds tracking by destination account to [escrows](concept-escrow.html). Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the [`account_objects` command](reference-rippled.html#account-objects), excluding any pending escrows that were created before this amendment became enabled. This amendment also makes [EscrowCreate transactions][] appear in the destination's transaction history, as viewed with the [`account_tx` command](reference-rippled.html#account-tx).
 
 With this amendment, new escrows are added to the [owner directories](reference-ledger-format.html#directorynode) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](reference-ledger-format.html#escrow), indicating which page of the destination's owner directory contains the escrow.
+
 
 
 ## fix1528
@@ -209,6 +220,7 @@ Fixes a bug where validators could build consensus ledgers with different timest
 This amendment changes how validators negotiate the close time of the consensus ledger so that they cannot reach a consensus on ledger contents but build ledger versions with different timestamps.
 
 
+
 ## Flow
 [Flow]: #flow
 
@@ -219,6 +231,7 @@ This amendment changes how validators negotiate the close time of the consensus 
 Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) amendment.
 
 The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.
+
 
 
 ## FlowCross
@@ -235,6 +248,7 @@ Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange.
 - The new logic may delete more or fewer offers than the old logic. (This includes cases caused by differences in rounding and offers that were incorrectly removed as unfunded by the old logic.)
 
 
+
 ## FlowV2
 [FlowV2]: #flowv2
 
@@ -245,12 +259,13 @@ Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange.
 This is a previous version of the [Flow](#flow) amendment. It was [rejected due to a bug](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) and removed in version 0.33.0.
 
 
+
 ## MultiSign
 [MultiSign]: #multisign
 
-| Amendment ID                                                     | Status  |
-|:-----------------------------------------------------------------|:--------|
-| 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 | Enabled |
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 | Enabled   |
 
 Introduces [multi-signing](reference-transaction-format.html#multi-signing) as a way to authorize transactions. Creates the [`SignerList` ledger object type](reference-ledger-format.html#signerlist) and the [`SignerListSet` transaction type](reference-transaction-format.html#signerlistset). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
 
@@ -269,6 +284,7 @@ An address with a SignerList can disable the master key even if a regular key is
 * `tefBAD_AUTH_MASTER`
 
 
+
 ## OwnerPaysFee
 [OwnerPaysFee]: #ownerpaysfee
 
@@ -281,6 +297,7 @@ Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) ar
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
 **Note:** An incomplete version of this amendment was introduced in v0.33.0 and removed in v0.80.0. (It was never enabled.) Ripple plans to re-add the amendment when the code is stable enough.
+
 
 
 ## PayChan
@@ -297,18 +314,6 @@ Creates three new transaction types:[PaymentChannelCreate][], [PaymentChannelCla
 For more information, see the [Payment Channels Tutorial](tutorial-paychan.html).
 
 
-## SortedDirectories
-[SortedDirectories]: #sorteddirectories
-
-| Amendment ID                                                     | Status    |
-|:-----------------------------------------------------------------|:----------|
-| CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E | Enabled   |
-
-Sorts the entries in [DirectoryNode ledger objects](reference-ledger-format.html#directorynode) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
-
-**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](tutorial-rippled-setup.html#updating-rippled) to `rippled` version 0.80.0 or later.
-
-
 
 ## SHAMapV2
 [SHAMapV2]: #shamapv2
@@ -322,26 +327,44 @@ Changes the hash tree structure that `rippled` uses to represent a ledger. The n
 When this amendment is activated, the XRP Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure. <!-- STYLE_OVERRIDE: will -->
 
 
+
+## SortedDirectories
+[SortedDirectories]: #sorteddirectories
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E | Enabled   |
+
+Sorts the entries in [DirectoryNode ledger objects](reference-ledger-format.html#directorynode) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
+
+**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](tutorial-rippled-setup.html#updating-rippled) to `rippled` version 0.80.0 or later.
+
+
+
+
 ## SusPay
 [SusPay]: #suspay
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 |Enabled on TestNet; not intended for production.  |
+| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Enabled on TestNet; not intended for production. |
 
 This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/). In production, Ripple expects to enable similar functionality with the [Escrow](#escrow) amendment instead.
 
 
-## TrustSetAuth
-[TrustSetAuth]: #trustsetauth
 
-| Amendment ID                                                     | Status  |
-|:-----------------------------------------------------------------|:--------|
-| 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC | Enabled |
+## Tickets
+[Tickets]: #tickets
 
-Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Accounts](tutorial-gateway-guide.html#authorized-accounts).
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | In development |
 
-With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](reference-transaction-format.html#trustset-flags) can create a new [`RippleState` ledger object](reference-ledger-format.html#ripplestate) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](reference-ledger-format.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](reference-ledger-format.html#accountroot-flags) by sending an [AccountSet transaction](reference-transaction-format.html#accountset) with the [asfRequireAuth flag enabled](reference-transaction-format.html#accountset-flags).
+Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the `Ticket` ledger object type and the transaction types `TicketCreate` and `TicketCancel`.
+
+**Caution:** This amendment is still in development.
+
+
 
 ## TickSize
 [TickSize]: #ticksize
@@ -355,16 +378,17 @@ Changes the way [Offers](reference-transaction-format.html#lifecycle-of-an-offer
 Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](reference-transaction-format.html#accountset). If a currency issuer sets the `TickSize` field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
 
 
-## Tickets
-[Tickets]: #tickets
+
+## TrustSetAuth
+[TrustSetAuth]: #trustsetauth
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | In development |
+| 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC | Enabled   |
 
-Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the `Ticket` ledger object type and the transaction types `TicketCreate` and `TicketCancel`.
+Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Accounts](tutorial-gateway-guide.html#authorized-accounts).
 
-**Caution:** This amendment is still in development.
+With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](reference-transaction-format.html#trustset-flags) can create a new [`RippleState` ledger object](reference-ledger-format.html#ripplestate) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](reference-ledger-format.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](reference-ledger-format.html#accountroot-flags) by sending an [AccountSet transaction](reference-transaction-format.html#accountset) with the [asfRequireAuth flag enabled](reference-transaction-format.html#accountset-flags).
 
 
 {% include 'snippets/rippled_versions.md' %}
