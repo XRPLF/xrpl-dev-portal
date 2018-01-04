@@ -8,8 +8,8 @@ The following is a comprehensive list of all known amendments and their status o
 | [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2][]              | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Checks][]                | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [DepositAuth][]           | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][] | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [DepositAuth][]           | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]          | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]               | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SortedDirectories][]     | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29 "BADGE_GREEN") |
