@@ -50,7 +50,7 @@ Here is an example of an unsigned [Payment transaction][] in JSON:
      "value" : "1",
      "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
   },
-  "Fee": "10",
+  "Fee": "12",
   "Flags": 2147483648,
   "Sequence": 2,
 }
@@ -393,9 +393,9 @@ Example AccountSet:
 {
     "TransactionType": "AccountSet",
     "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Fee": "10000",
+    "Fee": "12",
     "Sequence": 5,
-    "Domain": "6D64756F31332E636F6D",
+    "Domain": "6578616D706C652E636F6D",
     "SetFlag": 5,
     "MessageKey": "rQD4SqHJtDxn5DDL7xNnojNa3vxS1Jx5gv"
 }
@@ -417,7 +417,7 @@ If none of these options are provided, then the AccountSet transaction has no ef
 
 ### Domain
 
-The `Domain` field is represented as the hex string of the lowercase ASCII of the domain. For example, the domain *example.com* would be represented as `"6578616d706c652e636f6d"`.
+The `Domain` field is represented as the hex string of the lowercase ASCII of the domain. For example, the domain *example.com* would be represented as `"6578616D706C652E636F6D"`.
 
 To remove the `Domain` field from an account, send an AccountSet with the Domain set to an empty string.
 
@@ -761,7 +761,7 @@ Example payment:
      "value" : "1",
      "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
   },
-  "Fee": "10",
+  "Fee": "12",
   "Flags": 2147483648,
   "Sequence": 2,
 }
@@ -1008,7 +1008,7 @@ Example SignerListSet:
     "Flags": 0,
     "TransactionType": "SignerListSet",
     "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Fee": "10000",
+    "Fee": "12",
     "SignerQuorum": 3,
     "SignerEntries": [
         {
