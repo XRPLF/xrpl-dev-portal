@@ -1,0 +1,32 @@
+## CheckCash
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp "Source")
+
+_Requires the [Checks Amendment](reference-amendments.html#checks)._
+
+Create a Check object in the ledger, which is a deferred payment that can be cashed by its intended destination. The sender if this transaction is the sender of the Check.
+
+Example CheckCreate:
+
+```json
+TODO
+```
+
+In addition to the [common fields](#common-fields), a CheckCancel transaction has the following:
+
+| Field            | JSON Type           | [Internal Type][] | Description     |
+|:-----------------|:--------------------|:------------------|:----------------|
+| `Destination`    | String              | Account           | The unique address of the [account](concept-accounts.html) that can cash the check. |
+| `SendMax`        | [Currency Amount][] | Amount            | Maximum amount of source currency the Check is allowed to debit the sender, including [transfer fees](concept-transfer-fees.html) on non-XRP currencies. The Check can only credit the destination with the same currency (from the same issuer, for non-XRP currencies). For non-XRP amounts, the nested field names MUST be lower-case. |
+| `Expiration`     | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the check is no longer valid, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
+| `DestinationTag` | Unsigned Integer    | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the check, or a hosted recipient to pay. |
+| `InvoiceID`      | String              | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this check. |
+
+### Error Cases
+
+- If the `Destination` is the sender of the transaction, the transaction fails with the result code `temREDUNDANT`.
+- If the `Destination` [account](concept-accounts.html) does not exist in the ledger, the transaction fails with the result code `tecNO_DST`.
+- If the `Destination` account has the RequireDest flag enabled but the transaction does not include a `DestinationTag` field, the transaction fails with the result code `tecDST_TAG_NEEDED`.
+- If `SendMax` specifies an issued currency which is [frozen](concept-freeze.html), the transaction fails with the result `tecFROZEN`.
+- If the `Expiration` of the transaction is in the past, the transaction fails with the result `tecEXPIRED`.
+- If the sender does not have enough XRP to meet the [owner reserve](concept-reserves.html#owner-reserve) after adding the Check, the transaction fails with the result `tecINSUFFICIENT_RESERVE`.
+- If either the sender or the destination of the Check cannot own more objects in the ledger, the transaction fails with the result `tecDIR_FULL`.

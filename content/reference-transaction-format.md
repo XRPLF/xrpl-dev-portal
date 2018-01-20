@@ -375,7 +375,7 @@ Each transaction type has additional fields relevant to the type of action it ca
 * [SignerListSet - Set multi-signing settings](#signerlistset)
 * [TrustSet - Add or modify a trust line](#trustset)
 
-<!--{# coming soon: 
+<!--{# coming soon:
 * [CheckCancel - Cancel a check](#checkcancel)
 * [CheckCash - Redeem a check](#checkcash)
 * [CheckCreate - Create a check](#checkcreate)
@@ -673,8 +673,9 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 |:---------------------------|:------|:----------------------------------------|
 | `tecCLAIM`                 | 100   | Unspecified failure, with transaction cost destroyed. |
 | `tecCRYPTOCONDITION_ERROR` | 146   | This [EscrowCreate][] or [EscrowFinish][] transaction contained a malformed or mismatched crypto-condition. |
-| `tecDIR_FULL`              | 121   | The address sending the transaction cannot own any more objects in the ledger. |
+| `tecDIR_FULL`              | 121   | The transaction tried to add an object (such as a trust line, Check, Escrow, or Payment Channel) to an account's owner directory, but that account cannot own any more objects in the ledger. |
 | `tecDST_TAG_NEEDED`        | 143   | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. [New in: rippled 0.28.0][] |
+| `tecEXPIRED`               | 148   | The transaction tried to create an object (such as an Offer or a Check) whose provided Expiration time has already passed. |
 | `tecFAILED_PROCESSING`     | 105   | An unspecified error occurred when processing the transaction. |
 | `tecFROZEN`                | 137   | The [OfferCreate transaction][] failed because one or both of the assets involved are subject to a [global freeze](concept-freeze.html). |
 | `tecINSUF_RESERVE_LINE`    | 122   | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](concept-reserves.html)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See `tecNO_LINE_INSUF_RESERVE` for the other case.) |

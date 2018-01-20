@@ -5,7 +5,7 @@ _Requires the [Checks Amendment](reference-amendments.html#checks)._
 
 Attempts to redeem a Check object in the ledger to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a Check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
 
-Since the funds for a check are not guaranteed, redeeming a Check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds.
+Since the funds for a check are not guaranteed, redeeming a Check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds. If this happens, the
 
 Example CheckCash:
 
@@ -26,4 +26,8 @@ The transaction ***must*** include either `Amount` or `DeliverMin`, but not both
 ### Error Cases
 
 - If the sender of the CheckCash transaction is not the `Destination` of the check, the transaction fails with the result code `tecNO_PERMISSION`.
+- If the Check identified by the `CheckID` field does not exist, the transaction fails with the result `tecNO_ENTRY`.
+- If the Check identified by the `CheckID` field has already expired, the transaction fails with the result `tecEXPIRED`.
+- If the destination of the Check has the RequireDest flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.
 - If the transaction specifies both `Amount` and `DeliverMin`, the transaction fails with the result `temMALFORMED`.
+- If the `Amount` or `DeliverMin` does not match the currency (and issuer, if not XRP) of the Check, the transaction fails with the result `temBAD_CURRENCY`
