@@ -70,6 +70,7 @@ There are several different kinds of objects that can appear in the ledger's sta
 
 * [**AccountRoot** - The settings, XRP balance, and other metadata for one account.](#accountroot)
 * [**Amendments** - Singleton object with status of enabled and pending amendments.](#amendments)
+* [**Check** - A potential pull payment authorized by its sender](#check)
 * [**DirectoryNode** - Contains links to other objects.](#directorynode)
 * [**Escrow** - Contains XRP held for a conditional payment.](#escrow)
 * [**FeeSettings** - Singleton object with consensus-approved base transaction cost and reserve requirements.](#feesettings)
@@ -84,6 +85,8 @@ Each ledger object consists of several fields. In the peer protocol that `ripple
 {% include 'ledger-objects/accountroot.md' %}
 
 {% include 'ledger-objects/amendments.md' %}
+
+{% include 'ledger-objects/check.md' %}
 
 {% include 'ledger-objects/directorynode.md' %}
 

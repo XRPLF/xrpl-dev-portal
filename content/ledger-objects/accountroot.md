@@ -28,7 +28,7 @@ The `AccountRoot` object has the following fields:
 |-----------------|-----------|---------------|-------------|
 | `LedgerEntryType` | String | UInt16 | The value `0x0061`, mapped to the string `AccountRoot`, indicates that this object is an AccountRoot object. |
 | `Account`         | String | AccountID | The identifying address of this account, such as rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn. |
-| [Flags](#accountroot-flags) | Number | UInt32 | A bit-map of boolean flags enabled for this account. |
+| [`Flags`](#accountroot-flags) | Number | UInt32 | A bit-map of boolean flags enabled for this account. |
 | `Sequence`        | Number | UInt32 | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
 | `Balance`         | String | Amount | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |
 | `OwnerCount`      | Number | UInt32 | The number of objects this account owns in the ledger, which contributes to its owner reserve. |
