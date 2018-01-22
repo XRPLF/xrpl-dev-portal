@@ -25,7 +25,7 @@ Many objects in the ledger are owned by a particular address, and count toward t
 - [Held Payments (Escrow)](reference-ledger-format.html#escrow) are owned by the address that placed them.
 - [Payment Channels](tutorial-paychan.html) are owned by the address that created them.
 - [Owner directories](reference-ledger-format.html#directorynode) list all the ledger objects that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.
-- Checks are owned by the address that created them (the sender, not the destination).
+- Checks are owned by the address that created them (the sender, not the destination). <!--{# TODO: link the concept or tutorial when one exists #}-->
 
 #### Owner Reserve Edge Cases
 
