@@ -609,17 +609,17 @@ An "Account" in the XRP Ledger represents a holder of XRP and a sender of transa
 
 {% include 'rippled-api-methods/account_lines.md' %}
 
-{% include 'rippled-api-methods/account_objects.md' %}
-
 {% include 'rippled-api-methods/account_offers.md' %}
+
+{% include 'rippled-api-methods/account_objects.md' %}
 
 {% include 'rippled-api-methods/account_tx.md' %}
 
-{% include 'rippled-api-methods/gateway_balances.md' %}
-
 {% include 'rippled-api-methods/noripple_check.md' %}
 
-{% include 'rippled-api-methods/account_info.md' %}
+{% include 'rippled-api-methods/gateway_balances.md' %}
+
+{% include 'rippled-api-methods/wallet_propose.md' %}
 
 # Ledger Information
 
