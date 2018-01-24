@@ -8,7 +8,16 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 Example CheckCreate:
 
 ```json
-TODO
+{
+  "TransactionType": "CheckCreate",
+  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
+  "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
+  "SendMax": "100000000",
+  "Expiration": 570113521,
+  "InvoiceID": "6F1DFD1D0FE8A32E40E1F2C05CF1C15545BAB56B617F9C6C2D63A6B704BEF59B",
+  "DestinationTag": 1,
+  "Fee": "12"
+}
 ```
 
 In addition to the [common fields](#common-fields), a CheckCancel transaction has the following:
