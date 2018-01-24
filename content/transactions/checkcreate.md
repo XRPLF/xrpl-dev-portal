@@ -1,4 +1,4 @@
-## CheckCash
+## CheckCreate
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp "Source")
 
 _Requires the [Checks Amendment](reference-amendments.html#checks)._
@@ -37,5 +37,5 @@ In addition to the [common fields](#common-fields), a CheckCancel transaction ha
 - If the `Destination` account has the RequireDest flag enabled but the transaction does not include a `DestinationTag` field, the transaction fails with the result code `tecDST_TAG_NEEDED`.
 - If `SendMax` specifies an issued currency which is [frozen](concept-freeze.html), the transaction fails with the result `tecFROZEN`.
 - If the `Expiration` of the transaction is in the past, the transaction fails with the result `tecEXPIRED`.
-- If the sender does not have enough XRP to meet the [owner reserve](concept-reserves.html#owner-reserve) after adding the Check, the transaction fails with the result `tecINSUFFICIENT_RESERVE`.
+- If the sender does not have enough XRP to meet the [owner reserve](concept-reserves.html#owner-reserves) after adding the Check, the transaction fails with the result `tecINSUFFICIENT_RESERVE`.
 - If either the sender or the destination of the Check cannot own more objects in the ledger, the transaction fails with the result `tecDIR_FULL`.

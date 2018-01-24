@@ -1,5 +1,8 @@
 {% set txtypes = [
     "AccountSet",
+    "CheckCancel",
+    "CheckCash",
+    "CheckCreate",
     "EscrowCancel",
     "EscrowCreate",
     "EscrowFinish",
