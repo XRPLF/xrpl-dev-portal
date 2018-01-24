@@ -5,7 +5,20 @@ A `Check` object describes a check, a potential pull payment, waiting to be cash
 
 ```json
 {
-  TODO
+  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
+  "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
+  "DestinationNode": "0000000000000000",
+  "DestinationTag": 1,
+  "Expiration": 570113521,
+  "Flags": 0,
+  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",
+  "LedgerEntryType": "Check",
+  "OwnerNode": "0000000000000000",
+  "PreviousTxnID": "5463C6E08862A1FAE5EDAC12D70ADB16546A1F674930521295BC082494B62924",
+  "PreviousTxnLgrSeq": 6,
+  "SendMax": "100000000",
+  "Sequence": 2,
+  "index": "49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0"
 }
 ```
 
