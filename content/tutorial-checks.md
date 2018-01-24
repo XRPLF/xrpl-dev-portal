@@ -7,6 +7,7 @@ rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo snkuWqxoqt6aeykTbkEWrTMJHrWGM (as the sender)
 rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy sn2Zh1tRZyodU9qNy9tMnQr9UbBss (as the dest.)
 
 both need to be funded and the sender needs enough XRP to send and pay the reserves
+Reminder: don't use these addresses for real XRP because the secrets are now public
 #}-->
 
 ## Create check
