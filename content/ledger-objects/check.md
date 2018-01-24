@@ -1,6 +1,8 @@
 ## Check
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L158 "Source")
 
+_Requires the [Checks Amendment](reference-amendments.html#checks)._
+
 A `Check` object describes a check, a potential pull payment, waiting to be cashed. (The potential payment has already been approved by its sender.) Example `Check` object:
 
 ```json
