@@ -60,7 +60,7 @@ AccountRoot objects can have the following flag values:
 | lsfNoFreeze | 0x00200000 | 2097152 | This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. | asfNoFreeze |
 | lsfGlobalFreeze | 0x00400000 | 4194304 |　All assets issued by this address are frozen. | asfGlobalFreeze |
 | lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](concept-noripple.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. | asfDefaultRipple |
-| lsfDepositAuth | 0x01000000 | 16777216 | This account can only receive funds from transactions it sends. |
+| lsfDepositAuth | 0x01000000 | 16777216 | This account can only receive funds from transactions it sends. (It has [DepositAuth](concept-depositauth.html) enabled.) | asfDepositAuth |
 
 ### AccountRoot ID Format
 
