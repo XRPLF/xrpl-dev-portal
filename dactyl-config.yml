@@ -82,6 +82,7 @@ targets:
             "concept-money.html": https://ripple.com/build/money-xrp-ledger/
             "reference-currency.html": https://ripple.com/build/currency-format/
             "concept-demurrage.html": https://ripple.com/build/demurrage/
+            # "concept-depositauth.html": https://ripple.com/build/depositauth/ #TODO: make this page on ripple.com
         image_subs:
             "img/funds_flow_diagram.png": https://cdn.ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
             "img/e2g-01.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-01.png
@@ -284,6 +285,12 @@ pages:
         category: Features
         html: concept-reaching-consensus.html
         md: concept-reaching-consensus.md
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-depositauth.md
+        category: Features
         targets:
             - local
             - ripple.com

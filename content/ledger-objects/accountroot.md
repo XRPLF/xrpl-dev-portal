@@ -52,7 +52,7 @@ AccountRoot objects can have the following flag values:
 
 | Flag Name | Hex Value | Decimal Value | Description | Corresponding [AccountSet Flag](reference-transaction-format.html#accountset-flags) |
 |-----------|-----------|---------------|-------------|-------------------------------|
-| lsfPasswordSpent | 0x00010000 | 65536 | Indicates that the account has used its free SetRegularKey transaction. | (None) |
+| lsfPasswordSpent | 0x00010000 | 65536 | The account has used its free SetRegularKey transaction. | (None) |
 | lsfRequireDestTag | 0x00020000 | 131072 | Requires incoming payments to specify a Destination Tag. | asfRequireDest |
 | lsfRequireAuth | 0x00040000 | 262144 | This account must individually approve other users for those users to hold this account's issuances. | asfRequireAuth |
 | lsfDisallowXRP | 0x00080000 | 524288 | Client applications should not send XRP to this account. Not enforced by `rippled`. | asfDisallowXRP |
@@ -60,6 +60,7 @@ AccountRoot objects can have the following flag values:
 | lsfNoFreeze | 0x00200000 | 2097152 | This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. | asfNoFreeze |
 | lsfGlobalFreeze | 0x00400000 | 4194304 |　All assets issued by this address are frozen. | asfGlobalFreeze |
 | lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](concept-noripple.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. | asfDefaultRipple |
+| lsfDepositAuth | 0x01000000 | 16777216 | This account can only receive funds from transactions it sends. |
 
 ### AccountRoot ID Format
 
