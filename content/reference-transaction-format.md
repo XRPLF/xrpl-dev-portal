@@ -362,6 +362,9 @@ All transactions have certain fields in common:
 Each transaction type has additional fields relevant to the type of action it causes:
 
 * [AccountSet - Set options on an account](#accountset)
+* [CheckCancel - Cancel a check](#checkcancel)
+* [CheckCash - Redeem a check](#checkcash)
+* [CheckCreate - Create a check](#checkcreate)
 * [EscrowCancel - Reclaim escrowed XRP](#escrowcancel)
 * [EscrowCreate - Create an escrowed XRP payment](#escrowcreate)
 * [EscrowFinish - Deliver escrowed XRP to recipient](#escrowfinish)
@@ -375,11 +378,6 @@ Each transaction type has additional fields relevant to the type of action it ca
 * [SignerListSet - Set multi-signing settings](#signerlistset)
 * [TrustSet - Add or modify a trust line](#trustset)
 
-<!--{# coming soon: 
-* [CheckCancel - Cancel a check](#checkcancel)
-* [CheckCash - Redeem a check](#checkcash)
-* [CheckCreate - Create a check](#checkcreate)
-#}-->
 
 _Pseudo-Transactions_ that are not created and submitted in the usual way, but may be added to open ledgers according to ledger rules. They still must be approved by consensus to be included in a validated ledger. Pseudo-transactions have their own unique transaction types:
 
@@ -388,6 +386,12 @@ _Pseudo-Transactions_ that are not created and submitted in the usual way, but m
 
 
 {% include 'transactions/accountset.md' %}
+
+{% include 'transactions/checkcancel.md' %}
+
+{% include 'transactions/checkcash.md' %}
+
+{% include 'transactions/checkcreate.md' %}
 
 {% include 'transactions/escrowcancel.md' %}
 
@@ -557,6 +561,8 @@ See also: [Partial Payments](concept-partial-payments.html)
 
 These codes indicate an error in the local server processing the transaction; it is possible that another server with a different configuration or load level could process the transaction successfully. They have numerical values in the range -399 to -300. The exact code for any given error is subject to change, so don't rely on it.
 
+**Caution:** Transactions with `tel` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+
 | Code                  | Explanation                                          |
 |:----------------------|:-----------------------------------------------------|
 | `telBAD_DOMAIN`        | The transaction specified a domain value (for example, the `Domain` field of an [AccountSet transaction][]) that cannot be used, probably because it is too long to store in the ledger. |
@@ -576,6 +582,8 @@ These codes indicate an error in the local server processing the transaction; it
 ### tem Codes
 
 These codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.
+
+**Tip:** Transactions with `tem` codes are not applied to ledgers, and cannot cause any changes to XRP Ledger state. A `tem` result is final unless the rules for a valid transaction change. (For example, using functionality from an [Amendment](concept-amendments.html) before that amendment is enabled results in `temDISABLED`; such a transaction could succeed later if it becomes valid when the amendment is enabled.)
 
 | Code                         | Explanation                                   |
 |:-----------------------------|:----------------------------------------------|
@@ -618,6 +626,8 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 
 These codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger. Typically this means that the transaction can no longer succeed in any future ledger. They have numerical values in the range -199 to -100. The exact code for any given error is subject to change, so don't rely on it.
 
+**Caution:** Transactions with `tef` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+
 | Code                   | Explanation                                         |
 |:-----------------------|:----------------------------------------------------|
 | `tefALREADY`             | The same exact transaction has already been applied. |
@@ -643,6 +653,8 @@ These codes indicate that the transaction failed and was not included in a ledge
 
 These codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.
 
+**Caution:** Transactions with `ter` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+
 | Code             | Explanation                                               |
 |:-----------------|:----------------------------------------------------------|
 | `terFUNDS_SPENT`  | **DEPRECATED.**                                           |
@@ -659,7 +671,7 @@ These codes indicate that the transaction failed, but it could apply successfull
 
 ### tes Success
 
-The code `tesSUCCESS` is the only code that indicates a transaction succeeded. This does not always mean it did what it was supposed to do. (For example, an [OfferCancel][] can "succeed" even if there is no offer for it to cancel.) Success uses the numerical value 0.
+The code `tesSUCCESS` is the only code that indicates a transaction succeeded. This does not always mean it accomplished what you expected it to do. (For example, an [OfferCancel][] can "succeed" even if there is no offer for it to cancel.) The `tesSUCCESS` result uses the numerical value 0.
 
 | Code       | Explanation                                                     |
 |:-----------|:----------------------------------------------------------------|
@@ -667,14 +679,19 @@ The code `tesSUCCESS` is the only code that indicates a transaction succeeded. T
 
 ### tec Codes
 
-These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](concept-transaction-cost.html). They have numerical values in the range 100 to 199. The exact codes sometimes appear in ledger data, so they do not change, but we recommend not relying on the numeric value regardless.
+These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](concept-transaction-cost.html). They have numerical values in the range 100 to 199. Ripple recommends using the text code, not the numeric value.
+
+For the most part, transactions with `tec` codes take no action other than to destroy the XRP paid as a [transaction cost](concept-transaction-cost.html), but there are some exceptions. As an exception, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](#lifecycle-of-an-offer). Always look at the [transaction metadata](#understanding-transaction-metadata) to see precisely what a transaction did.
+
+**Caution:** A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a validated ledger version. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
 
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|
 | `tecCLAIM`                 | 100   | Unspecified failure, with transaction cost destroyed. |
 | `tecCRYPTOCONDITION_ERROR` | 146   | This [EscrowCreate][] or [EscrowFinish][] transaction contained a malformed or mismatched crypto-condition. |
-| `tecDIR_FULL`              | 121   | The address sending the transaction cannot own any more objects in the ledger. |
+| `tecDIR_FULL`              | 121   | The transaction tried to add an object (such as a trust line, Check, Escrow, or Payment Channel) to an account's owner directory, but that account cannot own any more objects in the ledger. |
 | `tecDST_TAG_NEEDED`        | 143   | The [Payment](#payment) transaction omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. [New in: rippled 0.28.0][] |
+| `tecEXPIRED`               | 148   | The transaction tried to create an object (such as an Offer or a Check) whose provided Expiration time has already passed. |
 | `tecFAILED_PROCESSING`     | 105   | An unspecified error occurred when processing the transaction. |
 | `tecFROZEN`                | 137   | The [OfferCreate transaction][] failed because one or both of the assets involved are subject to a [global freeze](concept-freeze.html). |
 | `tecINSUF_RESERVE_LINE`    | 122   | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](concept-reserves.html)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See `tecNO_LINE_INSUF_RESERVE` for the other case.) |

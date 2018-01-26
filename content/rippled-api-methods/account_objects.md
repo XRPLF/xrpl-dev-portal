@@ -12,6 +12,7 @@ The types of objects that may appear in the `account_objects` response for an ac
 - The account's [SignerList](reference-ledger-format.html#signerlist), if the account has [multi-signing](reference-transaction-format.html#multi-signing) enabled.
 - [Escrow objects](reference-ledger-format.html#escrow) for held payments that have not yet been executed or canceled.
 - [PayChannel objects](reference-ledger-format.html#paychannel) for open payment channels.
+- [Check objects](reference-ledger-format.html#check) for pending checks.
 
 
 #### Request Format
@@ -63,7 +64,7 @@ The request includes the following parameters:
 | `Field`        | Type                                       | Description    |
 |:---------------|:-------------------------------------------|:---------------|
 | `account`      | String                                     | A unique identifier for the account, most commonly the account's address. |
-| `type`         | String                                     | _(Optional)_ If included, filter results to include only this type of ledger object. The valid types are: `offer`, `signer_list`, `state` (trust line), `escrow`, and `payment_channel`. <!-- Author's note: Omitted types from this list that can't be owned by an account: https://github.com/ripple/rippled/blob/1dbc5a57e6b0e90a9da0d6e56f2f5a99e6ac1d8c/src/ripple/rpc/impl/RPCHelpers.cpp#L676-L686 --> |
+| `type`         | String                                     | _(Optional)_ If included, filter results to include only this type of ledger object. The valid types are: `check`, `escrow`, `offer`, `payment_channel`, `signer_list`, and `state` (trust line). <!-- Author's note: Omitted types from this list that can't be owned by an account, and ticket until Tickets are enabled: https://github.com/ripple/rippled/blob/1dbc5a57e6b0e90a9da0d6e56f2f5a99e6ac1d8c/src/ripple/rpc/impl/RPCHelpers.cpp#L676-L686 --> |
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `limit`        | Unsigned Integer                           | _(Optional)_ The maximum number of objects to include in the results. Must be within the inclusive range 10 to 400 on non-admin connections. Defaults to 200. |
