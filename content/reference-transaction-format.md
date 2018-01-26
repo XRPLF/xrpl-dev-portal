@@ -681,7 +681,7 @@ The code `tesSUCCESS` is the only code that indicates a transaction succeeded. T
 
 These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](concept-transaction-cost.html). They have numerical values in the range 100 to 199. Ripple recommends using the text code, not the numeric value.
 
-For the most part, transactions with `tec` codes take no action other than to destroy the XRP paid as a [transaction cost](concept-transaction-cost.html), but there are some exceptions. For example, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](#lifecycle-of-an-offer), and an [OfferCreate][] that results in `tecEXPIRED` can still cancel a previously-placed Offer. Always look at the [transaction metadata](#understanding-transaction-metadata) to see precisely what a transaction did.
+For the most part, transactions with `tec` codes take no action other than to destroy the XRP paid as a [transaction cost](concept-transaction-cost.html), but there are some exceptions. As an exception, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](#lifecycle-of-an-offer). Always look at the [transaction metadata](#understanding-transaction-metadata) to see precisely what a transaction did.
 
 **Caution:** A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a validated ledger version. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
 
