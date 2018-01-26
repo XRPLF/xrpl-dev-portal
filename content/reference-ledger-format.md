@@ -70,7 +70,7 @@ There are several different kinds of objects that can appear in the ledger's sta
 
 * [**AccountRoot** - The settings, XRP balance, and other metadata for one account.](#accountroot)
 * [**Amendments** - Singleton object with status of enabled and pending amendments.](#amendments)
-* [**Check** - A potential pull payment authorized by its sender](#check)
+* [**Check** - A check that can be redeemed for money by its destination](#check)
 * [**DirectoryNode** - Contains links to other objects.](#directorynode)
 * [**Escrow** - Contains XRP held for a conditional payment.](#escrow)
 * [**FeeSettings** - Singleton object with consensus-approved base transaction cost and reserve requirements.](#feesettings)
