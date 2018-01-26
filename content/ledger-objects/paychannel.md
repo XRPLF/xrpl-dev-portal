@@ -89,7 +89,7 @@ If any other address attempts to set an `Expiration` field, the transaction fail
 
 ### PayChannel ID Format
 
-The ID of a `PayChannel` object is the [SHA-512Half](#sha512half) of the following values put together:
+The ID of a `PayChannel` object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
 * The PayChannel space key (`0x0078`)
 * The AccountID of the source account

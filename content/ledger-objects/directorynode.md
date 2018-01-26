@@ -72,12 +72,12 @@ There are three different formulas for creating the ID of a DirectoryNode, depen
 * The first page of an Offer Directory
 * Later pages of either type
 
-**The first page of an Owner Directory** has an ID that is the [SHA-512Half](#sha512half) of the following values put together:
+**The first page of an Owner Directory** has an ID that is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
 * The Owner Directory space key (`0x004F`)
 * The AccountID from the `Owner` field.
 
-**The first page of an Offer Directory** has a special ID: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (The ID is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the [SHA-512Half](#sha512half) of the following values put together:
+**The first page of an Offer Directory** has a special ID: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (The ID is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
 * The Book Directory space key (`0x0042`)
 * The 160-bit currency code from the `TakerPaysCurrency`
@@ -87,7 +87,7 @@ There are three different formulas for creating the ID of a DirectoryNode, depen
 
 The lower 64 bits of an Offer Directory's ID represent the TakerPays amount divided by TakerGets amount from the offer(s) in that directory as a 64-bit number in the XRP Ledger's internal amount format.
 
-**If the DirectoryNode is not the first page in the Directory** (regardless of whether it is an Owner Directory or an Offer Directory), then it has an ID that is the [SHA-512Half](#sha512half) of the following values put together:
+**If the DirectoryNode is not the first page in the Directory** (regardless of whether it is an Owner Directory or an Offer Directory), then it has an ID that is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
 * The DirectoryNode space key (`0x0064`)
 * The ID of the root DirectoryNode

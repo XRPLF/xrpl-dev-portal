@@ -5,7 +5,7 @@ _Requires the [Checks Amendment](reference-amendments.html#checks)._
 
 Attempts to redeem a Check object in the ledger to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a Check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
 
-Since the funds for a check are not guaranteed, redeeming a Check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds. If this happens, the
+Since the funds for a check are not guaranteed, redeeming a Check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds. If this happens, the Check remains in the ledger and the destination can try to cash it again later, or for a different amount.
 
 Example CheckCash:
 
@@ -24,8 +24,8 @@ In addition to the [common fields](#common-fields), a CheckCancel transaction ha
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|
 | `CheckID`   | String    | Hash256           | The ID of the [Check ledger object](reference-ledger-format.html#check) to cash, as a 64-character hexadecimal string. |
-| `Amount`    | [Currency Amount][] | Amount  | _(Optional)_ Redeem the Check for exactly this amount, if possible. The currency must match the `SendMax` of the corresponding CheckCreate transaction. |
-| `DeliverMin` | [Currency Amount][] | Amount | _(Optional)_ Redeem the Check for at least this amount and as much as possible. The currency must match the `SendMax` of the corresponding CheckCreate transaction. |
+| `Amount`    | [Currency Amount][] | Amount  | _(Optional)_ Redeem the Check for exactly this amount, if possible. The currency must match the `SendMax` of the corresponding CheckCreate transaction. You must provide either this field or `DeliverMin`. |
+| `DeliverMin` | [Currency Amount][] | Amount | _(Optional)_ Redeem the Check for at least this amount and as much as possible. The currency must match the `SendMax` of the corresponding CheckCreate transaction. You must provide either this field or `Amount`. |
 
 The transaction ***must*** include either `Amount` or `DeliverMin`, but not both.
 
@@ -35,5 +35,5 @@ The transaction ***must*** include either `Amount` or `DeliverMin`, but not both
 - If the Check identified by the `CheckID` field does not exist, the transaction fails with the result `tecNO_ENTRY`.
 - If the Check identified by the `CheckID` field has already expired, the transaction fails with the result `tecEXPIRED`.
 - If the destination of the Check has the RequireDest flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.
-- If the transaction specifies both `Amount` and `DeliverMin`, the transaction fails with the result `temMALFORMED`.
+- If the transaction specifies both `Amount` and `DeliverMin`, or omits both, the transaction fails with the result `temMALFORMED`.
 - If the `Amount` or `DeliverMin` does not match the currency (and issuer, if not XRP) of the Check, the transaction fails with the result `temBAD_CURRENCY`

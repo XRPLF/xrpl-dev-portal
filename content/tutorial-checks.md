@@ -1,5 +1,8 @@
 # Checks Tutorial (draft)
 
+***TODO: This whole page is just example requests and responses for now, not a finished page.***
+
+
 <!--{# Just the requests and responses right now #}-->
 
 <!--{# Accounts used in this example:
@@ -580,4 +583,6 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
 }
 ```
 
-## TODO: cash check (delivermin amount)
+## cash check (delivermin)
+
+***TODO: alternative version of cashing a check with delivermin instead of amount)

@@ -43,6 +43,7 @@ An `Escrow` object has the following fields:
 | `Condition`         | String | VariableLength | _(Optional)_ A [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1), as hexadecimal. If present, the [EscrowFinish transaction][] must contain a fulfillment that satisfies this condition. |
 | `CancelAfter`       | Number | UInt32 | _(Optional)_ The held payment can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple Epoch](reference-rippled.html#specifying-time) and it "has passed" if it's earlier than the close time of the previous validated ledger. |
 | `FinishAfter`       | Number | UInt32 | _(Optional)_ The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), after which this held payment can be finished. Any [EscrowFinish transaction][] before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
+| `Flags`             | Number | UInt32 | A bit-map of boolean flags. No flags are defined for the Escrow type, so this value is always `0`. |
 | `SourceTag`         | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address. |
 | `DestinationTag`    | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address. |
 | `OwnerNode`         | String    | UInt64    | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
@@ -53,7 +54,7 @@ An `Escrow` object has the following fields:
 
 ### Escrow ID Format
 
-The ID of an `Escrow` object is the [SHA-512Half](#sha512half) of the following values put together:
+The ID of an `Escrow` object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
 * The Escrow space key (`0x0075`)
 * The AccountID of the sender of the [EscrowCreate transaction][] that created the `Escrow` object

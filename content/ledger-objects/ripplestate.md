@@ -1,7 +1,7 @@
 ## RippleState
 [[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
 
-The `RippleState` object type connects two accounts in a single currency. Conceptually, a `RippleState` object represents two _trust lines_ between the accounts, one from each side. Each account can change the settings for its side of the `RippleState` object, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as trust line that does not exist, so `rippled` deletes `RippleState` objects when their properties are entirely default.
+The `RippleState` object type connects two accounts in a single currency. Conceptually, a `RippleState` object represents two _trust lines_ between the accounts, one from each side. Each account can change the settings for its side of the `RippleState` object, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist, so `rippled` deletes `RippleState` objects when their properties are entirely default.
 
 Since no account is privileged in the XRP Ledger, a `RippleState` object sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".
 
@@ -94,7 +94,7 @@ Fortunately, `rippled` uses lazy evaluation to calculate the owner reserve. This
 
 ### RippleState ID Format
 
-The ID of a RippleState object is the [SHA-512Half](#sha512half) of the following values put together:
+The ID of a RippleState object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
 * The RippleState space key (`0x0072`)
 * The AccountID of the low account

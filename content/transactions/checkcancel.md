@@ -25,4 +25,4 @@ In addition to the [common fields](#common-fields), a CheckCancel transaction ha
 ### Error Cases
 
 - If the object identified by the `CheckID` does not exist or is not a Check, the transaction fails with the result `tecNO_ENTRY`.
-- If the Check is not expired and the sender if the CheckCancel transaction is not the source or destination of the Check, the transaction fails with the result `tecNO_PERMISSION`.
+- If the Check is not expired and the sender of the CheckCancel transaction is not the source or destination of the Check, the transaction fails with the result `tecNO_PERMISSION`.

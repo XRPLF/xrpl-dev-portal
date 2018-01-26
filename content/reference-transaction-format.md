@@ -561,7 +561,7 @@ See also: [Partial Payments](concept-partial-payments.html)
 
 These codes indicate an error in the local server processing the transaction; it is possible that another server with a different configuration or load level could process the transaction successfully. They have numerical values in the range -399 to -300. The exact code for any given error is subject to change, so don't rely on it.
 
-**Caution:** Transactions with `tel` codes are not applied to ledgers and have no effects. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+**Caution:** Transactions with `tel` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
 
 | Code                  | Explanation                                          |
 |:----------------------|:-----------------------------------------------------|
@@ -583,7 +583,7 @@ These codes indicate an error in the local server processing the transaction; it
 
 These codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.
 
-**Tip:** Transactions are not applied to ledgers with `tem` codes. A `tem` result is final unless the rules for a valid transaction change. (For example, using functionality from an [Amendment](concept-amendments.html) before that amendment is enabled results in `temDISABLED`; such a transaction could succeed later if it becomes valid when the amendment is enabled.)
+**Tip:** Transactions with `tem` codes are not applied to ledgers, and cannot cause any changes to XRP Ledger state. A `tem` result is final unless the rules for a valid transaction change. (For example, using functionality from an [Amendment](concept-amendments.html) before that amendment is enabled results in `temDISABLED`; such a transaction could succeed later if it becomes valid when the amendment is enabled.)
 
 | Code                         | Explanation                                   |
 |:-----------------------------|:----------------------------------------------|
@@ -626,7 +626,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 
 These codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger. Typically this means that the transaction can no longer succeed in any future ledger. They have numerical values in the range -199 to -100. The exact code for any given error is subject to change, so don't rely on it.
 
-**Caution:** Transactions with `tef` codes are not applied to ledgers and have no effects. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+**Caution:** Transactions with `tef` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
 
 | Code                   | Explanation                                         |
 |:-----------------------|:----------------------------------------------------|
@@ -653,7 +653,7 @@ These codes indicate that the transaction failed and was not included in a ledge
 
 These codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.
 
-**Caution:** Transactions with `ter` codes are not applied to ledgers and have no effects. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+**Caution:** Transactions with `ter` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
 
 | Code             | Explanation                                               |
 |:-----------------|:----------------------------------------------------------|
@@ -671,7 +671,7 @@ These codes indicate that the transaction failed, but it could apply successfull
 
 ### tes Success
 
-The code `tesSUCCESS` is the only code that indicates a transaction succeeded. This does not always mean it did what it was supposed to do. (For example, an [OfferCancel][] can "succeed" even if there is no offer for it to cancel.) The `tesSUCCESS` result uses the numerical value 0.
+The code `tesSUCCESS` is the only code that indicates a transaction succeeded. This does not always mean it accomplished what you expected it to do. (For example, an [OfferCancel][] can "succeed" even if there is no offer for it to cancel.) The `tesSUCCESS` result uses the numerical value 0.
 
 | Code       | Explanation                                                     |
 |:-----------|:----------------------------------------------------------------|

@@ -3,7 +3,7 @@
 
 _Requires the [Checks Amendment](reference-amendments.html#checks)._
 
-Create a Check object in the ledger, which is a deferred payment that can be cashed by its intended destination. The sender if this transaction is the sender of the Check.
+Create a Check object in the ledger, which is a deferred payment that can be cashed by its intended destination. The sender of this transaction is the sender of the Check.
 
 Example CheckCreate:
 
@@ -26,8 +26,8 @@ In addition to the [common fields](#common-fields), a CheckCancel transaction ha
 |:-----------------|:--------------------|:------------------|:----------------|
 | `Destination`    | String              | Account           | The unique address of the [account](concept-accounts.html) that can cash the check. |
 | `SendMax`        | [Currency Amount][] | Amount            | Maximum amount of source currency the Check is allowed to debit the sender, including [transfer fees](concept-transfer-fees.html) on non-XRP currencies. The Check can only credit the destination with the same currency (from the same issuer, for non-XRP currencies). For non-XRP amounts, the nested field names MUST be lower-case. |
-| `Expiration`     | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the check is no longer valid, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
 | `DestinationTag` | Unsigned Integer    | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the check, or a hosted recipient to pay. |
+| `Expiration`     | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the check is no longer valid, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
 | `InvoiceID`      | String              | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this check. |
 
 ### Error Cases
