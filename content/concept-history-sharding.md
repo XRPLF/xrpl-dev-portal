@@ -8,11 +8,11 @@ Ledger data is stored by the node store, but the online delete logic rotates the
 
 ## Acquiring and Sharing Shard Stores
 
-Acquiring shards begins after synchronizing with the network and performing ledger backfilling. During this time of lower network activity, the shard database may be asked to select a shard to acquire. If a shard is selected, the ledger acquire process begins by retrieving the sequence of the last ledger in the shard and working backwards toward the first. Shards continue to be acquired until reaching the maximum allocated disk space for shards, at which point the current shard may replace an older shard.
+Acquiring shards begins after synchronizing with the network and performing ledger backfilling. During this time of lower network activity, the shard database may be asked to select a shard by the acquire ledger process. If a shard is selected, the ledger acquire process begins by retrieving the sequence of the last ledger in the shard and working backwards toward the first. Shards continue to be acquired until reaching the maximum allocated disk space for shards, at which point the current shard may replace an older shard.
 
 Servers advertise to each other the groups of historical ledgers they have available, and servers maintain a map of the portions of the network they see. Periodically, for example every 256 ledgers, servers make a policy decision whether to start a new current ledger database. If they do, they also decide whether to keep or remove older databases. If they have sufficient disk space, they acquire a new range of ledgers or expand one they currently hold.
 
-## Ledger Data Integrity
+## XRP Ledger Network Data Integrity
 
 The history of all ledgers is shared by servers agreeing to keep particular ranges of historical ledgers. This makes it possible for servers to confirm that they have all the data they agreed to maintain, and trivializes the work required to produce proof trees or ledger deltas. Sharding also makes it possible to challenge servers to demonstrate they hold the data they claim to have, and verify their proofs.
 
