@@ -8,16 +8,16 @@ Deposit Authorization is an optional feature of an [account](concept-accounts.ht
 
 Financial services regulations and licenses may require that a business or entity must know the sender of all transactions it receives. This presents a challenge on a decentralized system like the XRP Ledger where participants are identified by pseudonyms which can be freely generated and the default behavior is for any address to be able to pay any other.
 
-The Deposit Authorization flag introduces an option for those using the XRP Ledger to become compliant with such regulations without changing the fundamental nature of the decentralized ledger. With Deposit Authorization enabled, an account can only receive funds it explicitly approves by sending a transaction. The owner of an account using Deposit Authorization can perform the due diligence necessary to identify the sender of any funds _before_ sending the transaction that causes it to receive the money.
+The Deposit Authorization flag introduces an option for those using the XRP Ledger to become compliant with such regulations without changing the fundamental nature of the decentralized ledger. With Deposit Authorization enabled, an account can only receive funds it explicitly approves by sending a transaction. The owner of an account using Deposit Authorization can perform the due diligence necessary to identify the sender of any funds _before_ sending the transaction that causes the account to receive the money.
 
-Deposit Authorization is intended to be used with [Checks](reference-amendments.html#checks), [Escrow](concept-escrow.html), and [Payment Channels](reference-amendments.html#paychan). The "two-step" transaction model allows the sender to first authorize the sending of funds, then the destination to authorize the receipt of funds. Deposit Authorization cannot be used with [Payment transactions][] at present.
+Deposit Authorization is intended to be used with [Checks](reference-amendments.html#checks), [Escrow](concept-escrow.html), and [Payment Channels](reference-amendments.html#paychan). In this "two-step" model, first the source sends a transaction to authorize sending funds, then the destination sends a transaction to authorize receiving those funds. Deposit Authorization cannot be used with [Payment transactions][].
 
 ## Recommended Usage
 
 To get the full effect of Deposit Authorization, Ripple recommends also doing the following:
 
 - Always maintain an XRP balance higher than the minimum [reserve requirement](concept-reserves.html).
-- Keep the DefaultRipple flag in its default (disabled) state. Do not enable [rippling](concept-noripple.html) on any trust lines.
+- Keep the DefaultRipple flag in its default (disabled) state. Do not enable [rippling](concept-noripple.html) on any trust lines. When sending TrustSet transactions, always use the [`tfSetNoRipple` flag](reference-transaction-format.html#trustset-flags).
 - Do not place [Offers](reference-transaction-format.html#offercreate). It is impossible to know in advance which matching offers will be consumed to execute such a trade.
 
 ## Precise Semantics
