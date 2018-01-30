@@ -29,10 +29,10 @@ An account with Deposit Authorization enabled:
 - Can receive XRP from [PaymentChannelClaim transactions][] **only if** the sender of the PaymentChannelClaim transaction is the destination of the payment channel.
 - Can receive XRP from [EscrowFinish transactions][] **only if** the sender of the EscrowFinish transaction is the destination of the escrow.
 - **Can** receive XRP or issued currencies by sending a [CheckCash][] transaction. _(Requires the [Checks amendment](reference-amendments.html#checks).)_
-- **Can** receive XRP or issued currencies by sending [OfferCreate transactions][]. ***TODO: test this***
-    - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the remainder of the ordered XRP or issued currency later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions. ***TODO: test this***
-- If the account has created any trust lines, or issued currency on trust lines created by other accounts, the account **can** receive the issued currencies of those trust lines in [Payment transactions][] as a result of [rippling](concept-noripple.html). It cannot be the destination of those transactions. ***TODO: test this***
-    - If the account has not created any trust lines with a nonzero limit, and has not issued currency on trust lines created by others, it **cannot** receive any issued currencies in any transaction.
+- **Can** receive XRP or issued currencies by sending [OfferCreate transactions][].
+    - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the remainder of the ordered XRP or issued currency later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
+- If the account has created any trust lines without the [NoRipple flag](concept-noripple.html) enabled, or has enabled the DefaultRipple flag and issued any currency, the account **can** receive the issued currencies of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
+    - If the account has not created any trust lines with a nonzero limit, and has not issued currency on trust lines created by others, it **cannot** receive any issued currencies in any transaction. (This rule is not specific to the DepositAuth flag.)
 
 The following table summarizes whether a transaction type can deposit money with DepositAuth enabled or disabled:
 
