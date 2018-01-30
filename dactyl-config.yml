@@ -255,6 +255,13 @@ pages:
             - local
             - ripple.com
 
+    -   md: tutorial-regular-keys.md
+        html: tutorial-regular-keys.html
+        category: Tutorials
+        targets:
+            - local
+            - ripple.com
+
 #Features describe how the XRP Ledger works in a mostly conceptual manner
     -   name: Accounts
         category: Features
