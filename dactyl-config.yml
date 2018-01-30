@@ -60,8 +60,7 @@ targets:
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
-            # Jha added placeholder link_sub below - need to get the permalink from Wordpress
-            "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
+            "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-and-run-rippled-on-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
             "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/

@@ -4,7 +4,7 @@
 
 For an overview of `rippled`, see [Operating rippled Servers](tutorial-rippled-setup.html).
 
-Use these instructions to build a `rippled` 0.90.0+ binary file and run it as a stock `rippled` server on Ubuntu 15.04 or later. ***TODO: Question: I added the specific `rippled` release series to this text - is that okay? Should I remove the reference to Ubuntu 15.04 and just say that this is for Ubuntu 16.04 LTS or later?*** These instructions were tested on Ubuntu 16.04 LTS.
+Use these instructions to build a `rippled` executable from source version 0.90.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.
 
 For information about building `rippled` for other platforms, see [Builds](https://github.com/ripple/rippled/tree/develop/Builds) in the `rippled` GitHub repository.
 
@@ -63,13 +63,13 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
       a. Download Boost 1.65.0.
 
-          wget https://dl.bintray.com/boostorg/release/1.65.0/source/boost_1_65_0.tar.gz
+          wget https://dl.bintray.com/boostorg/release/1.65.0/source/boost_1_65_0.tar.gz ***TODO: If 1.66.0: https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz***
 
-      b. Untar `boost_1_65_0.tar.gz`.
+      b. Untar `boost_1_65_0.tar.gz`. ***TODO: If 1.66.0, boost_1_66_0.tar.gz***
 
-          tar xvzf boost_1_65_0.tar.gz
+          tar xvzf boost_1_65_0.tar.gz ***TODO: If 1.66.0, boost_1_66_0.tar.gz***
 
-      c. In the new `boost_1_65_0` directory, run:
+      c. In the new `boost_1_65_0` directory, run: ***TODO: If 1.66.0, boost_1_66_0***
 
           ./bootstrap.sh
 
@@ -77,9 +77,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
           ./b2 -j<number of jobs>
 
-      e. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_65_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      e. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_65_0` directory. ***TODO: If 1.66.0, boost_1_66_0*** It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-          export BOOST_ROOT=/home/ubuntu/boost_1_65_0
+          export BOOST_ROOT=/home/ubuntu/boost_1_65_0 ***TODO: If 1.66.0, boost_1_66_0***
 
 9. Get `rippled` source code.
 
@@ -89,7 +89,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 10. Build `rippled` binary executable from source code. This may take about 30 minutes, depending on your hardware specs.
 
-        scons
+        scons ***TODO: If 1.66.0, I get errors. Expect that the errors will go away after Scott D's PR is applied to rippled***
 
     SCons saves the built executable in `rippled/build`.
 
@@ -181,4 +181,4 @@ Watchdog: Launching child 1
 
 * As a development best practice, you may want to build a `rippled` .deb file. For more information, see _Ubuntu Packaging Guide_: [Packaging New Software](http://packaging.ubuntu.com/html/packaging-new-software.html).
 
-* You may also want to install a `systemd` unit. For more information, see [systemd for Upstart Users](https://wiki.ubuntu.com/SystemdForUpstartUsers). If you are compiling `rippled` from source, you may want to take a look at the `rippled` [systemd unit file](https://github.com/ripple/rippled-package-builder/blob/staging/rpm-builder/rippled.service) that is a part of the `rippled-package-builder` and adjust it to fit your needs.
+* You may also want to install a `systemd` unit. For more information, see [systemd for Upstart Users](https://wiki.ubuntu.com/SystemdForUpstartUsers). You can use the [official `rippled` system unit file](https://github.com/ripple/rippled-package-builder/blob/staging/rpm-builder/rippled.service) or modify it to suit your needs.
