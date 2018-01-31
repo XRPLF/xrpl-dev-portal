@@ -22,7 +22,7 @@ Like the node store, the shard store derives from the base class `Database`. The
 
 The history of all ledgers is shared by servers agreeing to keep particular ranges of historical ledgers. This makes it possible for servers to confirm that they have all the data they agreed to maintain, and produce proof trees or ledger deltas. Sharding also makes it possible to challenge servers to demonstrate they hold the data they claim to have, and verify their proofs.
 
-## Shard Configuration
+## Shard Store Configuration
 Rippled can be configured to begin storing ledger history in shards by adding the `shard_db` section to the `rippled.cfg` file.
 
 ### Shard Configuration Example
