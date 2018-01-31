@@ -1,6 +1,6 @@
 # Working with Regular Keys
 
-Assign regular keys to your account to enable you to sign most transactions with regular keys, while keeping your master keys offline. A master key [compromise](concept-issuing-and-operational-addresses.html) can be difficult to recover from, while removing or changing compromised regular keys is a simpler task.
+Assign regular keys to your account to enable you to sign most transactions with regular keys, while keeping your master keys offline whenever possible. A master key [compromise](concept-issuing-and-operational-addresses.html) can be difficult to recover from, while removing or changing compromised regular keys is a simpler task.
 
 For an overview of master and regular keys, see [Understanding Master and Regular Keys](reference-transaction-format.html#understanding-master-and-regular-keys).
 
@@ -155,7 +155,6 @@ In the request, send the master account's `account_ID` as the `account` value, t
 
 Here's an example `SetRegularKey` request and response.
 
-***TODO: We tell the user to keep the master private key offline - but we are sending it in few transactions in this tutorial. I'm being too literal - but I think we should acknowledge that what we really mean is to strictly limit online use of the master private key. What do you think?***
 
 #### WebSocket Request:
 
@@ -336,3 +335,11 @@ Here's an example response for a `Payment` transaction signed using an invalid r
   "type": "response"
 }
 ```
+
+In some cases, you can even send a [key reset transaction](concept-transaction-cost.html#key-reset-transaction) without paying the [transaction cost](reference-transaction-format.html#transaction-cost).
+
+***TODO: I don't understand how this key reset transaction mentioned above works. Is it different from sending a SetRegularKey transaction that omits or changes the RegularKey value assigned to an account? Is the difference that the transaction cost can be 0? Does this mean that I can send a SetRegularKey transaction that omits or changes the RegularKey value assigned to an account and includes `Fee : 0` - as long as the `lsfPasswordSpent` flag is disabled? When I send such a transaction for a newly funded account that has had no activity on it other than one payment to fund it and one SetRegularKeys transaction for a `Fee : 10`, I get a response that says: `Fee insufficient`.***
+
+***TODO: I understand that the account's `lsfPasswordSpent` flag must be disabled and that it starts out disabled. We say: "As a special case, an account can send a SetRegularKey transaction with a transaction cost of 0, as long as the account's lsfPasswordSpent flag is disabled. This transaction must be signed by the account's master key pair. Sending this transaction enables the lsfPasswordSpent flag. The lsfPasswordSpent flag starts out disabled. It gets enabled when you send a SetRegularKey transaction signed by the master key pair. It gets disabled again when the account receives a Payment of XRP." When we say that sending the transaction enables the flag - this means that it started off as disabled, fulfilled the `Fee : 0` key reset, and then enabled the flag to deny any further SetRegularKey with `Fee : 0` transaction requests? And it will continue to deny these requests until the account receives a payment? This means that if you are afraid that your account balance is close to 0, you should use your one SetRegularKey with `Fee : 0` to change your RegularKey value and not just remove it. If you remove it, then you won't be able to pay for the transaction to set a new value, correct?***
+
+***TODO: This piece of info is important -- but until I understand the key reset transaction, it is difficult to explain when this prioritization will happen: "When the FeeEscalation amendment is enabled, rippled prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.***
