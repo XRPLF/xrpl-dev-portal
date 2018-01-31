@@ -8,7 +8,7 @@ Rippled sharding is a feature that manages storing and sharing of distributed hi
 
 ## Acquiring and Sharing Shard Stores
 
-Acquiring shards begins after synchronizing with the network and performing ledger backfilling. During this time of lower network activity, the shard database may be asked to select a shard by the acquire ledger process. Shards are randomly selected for acquisition, and the current shard is given no special consideration. If a shard is selected, the ledger acquire process begins by retrieving the sequence of the last ledger in the shard and working backwards toward the first. If the system runs out of space before completely acquiring the shard, progress is halted until space becomes available. Shards continue to be acquired randomly until reaching the maximum allocated disk space for shards.
+Acquiring shards begins after synchronizing with the network and performing ledger backfilling. During this time of lower network activity, the shard database may be asked to select a shard by the acquire ledger process. To increase the probability for an even distribution of the history of the network's ledgers, shards are randomly selected for acquisition, and the current shard is given no special consideration. If a shard is selected, the ledger acquire process begins by fetching the sequence of the last ledger in the shard and working backwards toward the first. If the system runs out of space before completely acquiring the shard, progress is halted until space becomes available. Shards continue to be acquired randomly until reaching the maximum allocated disk space for shards.
 
 Servers share historical data when peer `rippled` servers request selected historical ledgers if those `rippled` servers have that data available. From the peer responses, the historical data for that shard is assembled and stored until the ledger data for that shard is complete. If there is sufficient disk space, the `rippled` server acquires additional shards to add to the `shard store`
 
@@ -19,10 +19,6 @@ Like the `node store`, the `shard store` derives from the base class `Database`.
 ## XRP Ledger Network Data Integrity
 
 The history of all ledgers is shared by servers agreeing to keep particular ranges of historical ledgers. This makes it possible for servers to confirm that they have all the data they agreed to maintain, and produce proof trees or ledger deltas. Sharding also makes it possible to challenge servers to demonstrate they hold the data they claim to have, and verify their proofs.
-
-When a `rippled` server has too much recent history in the shard store, the server has two options. It can discard the shard from recent storage, or it can move the shard from recent storage to historical storage and eject an existing shard. This decision is made following the purge logic for the shard feature.
-
-When a `rippled` server has more space than the configured allocation of shard store size, it assigns that storage for sharding. To increase the probability for an even distribution of the history of the network's ledgers, shards are selected randomly among the shards not currently held, with no preferences. Once chosen, the selected shard is fetched, validated, and committed to long term storage.
 
 ## Shard Configuration
 Rippled can be configured to begin storing ledger history in shards by adding the `shard_db` section to the `rippled.cfg` file.
