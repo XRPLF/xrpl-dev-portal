@@ -46,9 +46,9 @@ Here's an example `wallet_propose` request and response.
   "result": {
     "account_id": "rM8oJwkKtgEU2HZkCHsJScLHqegWpgBRxt",
     "key_type": "secp256k1",
-    "master_key": "SAY ARMY KITE LETS PAN WAVE JUKE ACRE MAT TILT FEAT LED",
+    "master_key": "MAS TER PRIV ATE KEY RFC 1751 XXX XXXX XXX XXXX XXXX",
     "master_seed": "MasterPrivateKeyXXXXXXXXXXXXX",
-    "master_seed_hex": "47E8F7F59D0CC9A3F01FD3D69CCAE93A",
+    "master_seed_hex": "MasterPrivateKeyHexXXXXXXXXXXXXX",
     "public_key": "aBQEK3r6hb8isnCWmortkNdv3MSMKP74o7gj3kHZQF9vDkbXo4Qs",
     "public_key_hex": "032D911AE9887278110A8FE25169546D4E95A82AF5EFA25525FC3FDFFDC5A8B604"
   },
@@ -135,9 +135,9 @@ Here's an example `wallet_propose` request and response.
  "result": {
    "account_id": "rf9vUoqa83foreMr6CYFCEPTZUFagZv83c",
    "key_type": "secp256k1",
-   "master_key": "SAFE TUM GLEN CUR BALD WELT TIDY HO WAYS MALE DON SON",
+   "master_key": "REG ULAR PRIV ATE KEY RFC 1751 XXX XXXX XXX XXXX XXX",
    "master_seed": "RegularPrivateKeyXXXXXXXXXXXX",
-   "master_seed_hex": "7AF430DBE26743EBF3155506325268D5",
+   "master_seed_hex": "RegularPrivateKeyHexXXXXXXXXXXXX",
    "public_key": "aBR9dmoHfrfU24q1cbjdehNsFiuV9k5PrrQTLiH42qxhWr5ybc1K",
    "public_key_hex": "03A45E8E4BFECA7473F932839B982C33CD2FB7B788932A21DCDD8536AE63A1614C"
  },
@@ -226,7 +226,7 @@ Here's an example `Payment` request and response.
 
 #### WebSocket Response:
 
-***TODO: I think it would be useful to call out the SigningPubKey and/or TxnSignature in the response to surface/link to a discussion about signatures and how they are created from keys. I think it's relevant in that the keys topic is surfaced through a discussion of transaction authorization via signing. Useful? Does a topic on signatures exist?***
+***TODO: Per earlier comment on a concepts doc about signatures, I think it would be useful to be able to link to such a doc to call out the SigningPubKey and/or TxnSignature. I think it's relevant in that the keys topic is surfaced via a discussion of transaction authorization via signing.***
 
 ```
 {

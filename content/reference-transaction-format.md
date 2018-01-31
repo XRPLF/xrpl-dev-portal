@@ -29,12 +29,13 @@ Any signature type can authorize any type of transaction, with the following exc
 
 ## Understanding Master and Regular Keys
 
-In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. A digital signature is created based on a key pair associated with the transaction's sending account. There are two types of key pairs available: master keys and regular keys. A key pair includes a private key and a public key.
+In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. A digital signature is created based on a key pair associated with the transaction's sending account. There are two types of key pairs available: master keys and regular keys. Each key pair includes a private key and a public key.
 
+***TODO: I feel like some concept docs on private and public keys would be great -- like when to use them. Talk about the master_key, master_seed, master_seed_hex, public_key, and public_key_hex, for example, and why we provide them and what are the use cases. It would also be good to provide concept doc on how keys are used to generate the "signature" and the different types of signature-like values that we generate: Signature, SigningPubKey, and TxnSignature, for example. What are the use cases? I believe this info is in the doc, but discussed in the context of tutorials.***
 
 ### Master Keys
 
-When you create an account using the [`wallet_propose`](reference-rippled.html#wallet-propose) method, the `master_seed` (private key) and `public_key` returned in the response are the master keys for the account. These keys are an intrinsic part of the account's identity as the `account_id` (account address), also returned in the `wallet_propose` response, and the `public_key` value are mathematically related.
+When you create an account using the [`wallet_propose`](reference-rippled.html#wallet-propose) method, the `master_seed` (private key) and `public_key` returned in the response are the **master keys** for the account. These master keys are an intrinsic part of the account's identity as the `account_id` (account address), also returned in the `wallet_propose` response, and the `public_key` value are mathematically related.
 
 Here's a sample `wallet_propose` response, including the `master_seed` (private key), `public_key`, and `account_id` (account address) values:
 
@@ -53,8 +54,6 @@ Here's a sample `wallet_propose` response, including the `master_seed` (private 
   "type": "response"
 }
 ```
-
-We refer to this key pair that is an intrinsic part of an account as the **master keys** for the account.
 
 Master keys have more powerful signing authority than regular keys. In addition to being able to sign all transactions that regular keys can, master keys are the only keys that can be used to perform the following actions:
 
