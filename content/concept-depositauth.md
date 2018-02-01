@@ -8,7 +8,7 @@ Deposit Authorization is an optional feature of an [account](concept-accounts.ht
 
 Financial services regulations and licenses may require that a business or entity must know the sender of all transactions it receives. This presents a challenge on a decentralized system like the XRP Ledger where participants are identified by pseudonyms which can be freely generated and the default behavior is for any address to be able to pay any other.
 
-The Deposit Authorization flag introduces an option for those using the XRP Ledger to become compliant with such regulations without changing the fundamental nature of the decentralized ledger. With Deposit Authorization enabled, an account can only receive funds it explicitly approves by sending a transaction. The owner of an account using Deposit Authorization can perform the due diligence necessary to identify the sender of any funds _before_ sending the transaction that causes the account to receive the money.
+The Deposit Authorization flag introduces an option for those using the XRP Ledger to comply with such regulations without changing the fundamental nature of the decentralized ledger. With Deposit Authorization enabled, an account can only receive funds it explicitly approves by sending a transaction. The owner of an account using Deposit Authorization can perform the due diligence necessary to identify the sender of any funds _before_ sending the transaction that causes the account to receive the money.
 
 Deposit Authorization is intended to be used with [Checks](reference-amendments.html#checks), [Escrow](concept-escrow.html), and [Payment Channels](reference-amendments.html#paychan). In this "two-step" model, first the source sends a transaction to authorize sending funds, then the destination sends a transaction to authorize receiving those funds. Deposit Authorization cannot be used with [Payment transactions][].
 
@@ -25,14 +25,17 @@ To get the full effect of Deposit Authorization, Ripple recommends also doing th
 An account with Deposit Authorization enabled:
 
 - **Cannot** be the destination of [Payment transactions][], with **one exception**:
-    - If the account's XRP balance is equal to or below the minimum account [reserve requirement](concept-reserves.html), it can be the destination of a Payment whose `Amount` is equal or less than the minimum account reserve (currently 20 XRP). This is to prevent an account from becoming "stuck" by being unable to send transactions but also unable to receive XRP. The account's owner reserve does not matter for this case.
+    - If the account's XRP balance is equal to or below the minimum account [reserve requirement](concept-reserves.html), it can be the destination of an XRP Payment whose `Amount` is equal or less than the minimum account reserve (currently 20 XRP). This is to prevent an account from becoming "stuck" by being unable to send transactions but also unable to receive XRP. The account's owner reserve does not matter for this case.
 - Can receive XRP from [PaymentChannelClaim transactions][] **only if** the sender of the PaymentChannelClaim transaction is the destination of the payment channel.
 - Can receive XRP from [EscrowFinish transactions][] **only if** the sender of the EscrowFinish transaction is the destination of the escrow.
 - **Can** receive XRP or issued currencies by sending a [CheckCash][] transaction. _(Requires the [Checks amendment](reference-amendments.html#checks).)_
 - **Can** receive XRP or issued currencies by sending [OfferCreate transactions][].
     - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the remainder of the ordered XRP or issued currency later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
 - If the account has created any trust lines without the [NoRipple flag](concept-noripple.html) enabled, or has enabled the DefaultRipple flag and issued any currency, the account **can** receive the issued currencies of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
-    - If the account has not created any trust lines with a nonzero limit, and has not issued currency on trust lines created by others, it **cannot** receive any issued currencies in any transaction. (This rule is not specific to the DepositAuth flag.)
+- In general, an account in the XRP Ledger **cannot** receive any non-XRP currencies in the XRP Ledger as long as all of the following are true. (This rule is not specific to the DepositAuth flag.)
+    - The account has not created any trust lines with a nonzero limit.
+    - The account has not issued currency on trust lines created by others
+    - The account has not placed any offers.
 
 The following table summarizes whether a transaction type can deposit money with DepositAuth enabled or disabled:
 
@@ -45,9 +48,9 @@ An account can enable deposit authorization by sending an [AccountSet transactio
 
 ## Checking Whether an Account Has DepositAuth Enabled
 
-To see whether an account has Deposit Authorization enabled, use the [`account_info` command](reference-rippled.html#account-info) to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [boolean flags defined for an AccountRoot ledger object](reference-ledger-format.html#accountroot-flags).
+To see whether an account has Deposit Authorization enabled, use the [`account_info` command](reference-rippled.html#account-info) to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](reference-ledger-format.html#accountroot-flags).
 
-If the result of the `Flags` value boolean-AND the `lsfDepositAuth` flag value (0x01000000) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.
+If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (0x01000000) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.
 
 ## See Also
 
