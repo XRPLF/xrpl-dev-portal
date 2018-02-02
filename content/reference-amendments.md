@@ -89,6 +89,8 @@ When an account enables this flag, Payment transactions fail if the account is t
 
 As an exception, accounts with `DepositAuth` enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum [account reserve](concept-reserves.html)) if their current XRP balance is below the account reserve.
 
+Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the DisallowXRP flag, which is meant to be a non-binding advisory flag. (By not enforcing DisallowXRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](concept-reserves.html) and pay [transaction costs](concept-transaction-cost.html).)
+
 **Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2239) and is expected for `rippled` v0.90.0.
 
 
