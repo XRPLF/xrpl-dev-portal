@@ -4,6 +4,8 @@ _(Requires the [DepositAuth amendment](reference-amendments.html#depositauth).)_
 
 Deposit Authorization is an optional feature of an [account](concept-accounts.html) in the XRP Ledger. With Deposit Authorization enabled, transactions cannot send value of any kind to the account unless the sender of those transactions is the account itself. This includes transfers of XRP and issued currencies.
 
+By default, new accounts have DepositAuth disabled.
+
 ## Background
 
 Financial services regulations and licenses may require that a business or entity must know the sender of all transactions it receives. This presents a challenge on a decentralized system like the XRP Ledger where participants are identified by pseudonyms which can be freely generated and the default behavior is for any address to be able to pay any other.

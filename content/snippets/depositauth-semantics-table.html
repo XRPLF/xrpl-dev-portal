@@ -1,10 +1,10 @@
-<table>
+<table class="depauth">
 <thead>
   <tr>
-    <th>DepositAuth status:</th>
-    <th colspan="2" class="depauth-status">Disabled</th>
+    <th>&nbsp;</th>
+    <th colspan="2" class="depauth-status">DepositAuth Disabled</th>
     <th class="depauth-spacer">&nbsp;</th>
-    <th colspan="2" class="depauth-status">Enabled</th>
+    <th colspan="2" class="depauth-status">DepositAuth Enabled</th>
   </tr>
   <tr>
     <th>Transaction Type</th>
@@ -75,7 +75,7 @@
     <td class="depauth-maybe">Cross-currency only</td>
     <td class="depauth-ok">OK</td>
     <td class="depauth-spacer">&nbsp;</td>
-    <td class="depauth-maybe">Cross-currency payments delivering XRP up to the minimum reserve <!--{# TODO: double-check this #}-->}</td>
+    <td class="depauth-no">No Permission</td>
     <td class="depauth-maybe">XRP payments up to the minimum reserve</td>
   </tr>
   <tr>
@@ -148,7 +148,12 @@
   font-size: 8pt;
 }
 .depauth-spacer {
-  width: 10px;
-  background-color: #999;
+  background-color: black;
+  padding: 2px !important;
+  font-size: 2px;
+}
+th.depauth-spacer {
+  border: 1px solid #dbdde2;
+  border-bottom-color: black;
 }
 </style>
