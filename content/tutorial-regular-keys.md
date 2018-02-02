@@ -1,6 +1,6 @@
 # Working with Regular Keys
 
-Assign regular keys to your account to enable you to sign most transactions with regular keys, while keeping your master keys offline whenever possible. A master key [compromise](concept-issuing-and-operational-addresses.html) can be difficult to recover from, while removing or changing compromised regular keys is a simpler task.
+Assign regular keys to your funded account to enable you to sign most transactions with regular keys, while keeping your master keys offline. A master key [compromise](concept-issuing-and-operational-addresses.html) can be difficult to recover from, while removing or changing compromised regular keys is a simpler task.
 
 For an overview of master and regular keys, see [Understanding Master and Regular Keys](reference-transaction-format.html#understanding-master-and-regular-keys).
 
@@ -22,11 +22,12 @@ This tutorial walks you through the steps required to assign regular keys to an 
 6. [Explore next steps](#6-explore-next-steps)
 
 
-### 1. Generate a Master Account and Its Master Keys
 
-If you already have a master account and master keys, skip this step.
+### 1. Generate an `account_id` and Keys
 
-Use the [`wallet_propose`](reference-rippled.html#wallet-propose) method to generate a master account, along with its master keys.
+If you already have a funded account, skip this step.
+
+Use the [`wallet_propose`](reference-rippled.html#wallet-propose) method to generate an `account_id`, along with keys.
 
 Here's an example `wallet_propose` request and response.
 
@@ -58,13 +59,13 @@ Here's an example `wallet_propose` request and response.
 ```
 
 
-### 2. Fund the Master Account
+### 2. Create and Fund an Account
 
-If you already have a funded master account, skip this step.
+If you already have a funded account, skip this step.
 
-A master account, such as the one created in step 1, must be funded before you can assign regular keys to it. Use the [`Payment`](reference-transaction-format.html#payment) transaction type to fund your master account.
+An `account_id`, such as the one generated in step 1, is not an actual account until it is funded. The act of sending a [`Payment`](reference-transaction-format.html#payment) transaction to the `account_id` creates the account in the XRP Ledger and funds it. After the account is created and funded, you can assign regular keys to it. ***TODO: Still working on this...***
 
-In the request, send the funder's `account_id` as the `Account` value, the funder's `master_seed` (private key) as the `secret` value, and the master account's `account_id` as the `Destination` value.
+In the `Payment` request, send the funder's `account_id` as the `Account` value, the funder's `master_seed` (private key) as the `secret` value, and the master account's `account_id` as the `Destination` value. ***TODO: Does not necessarily need to be the master_seed that signs. Could be whatever key the funding account uses to sign transactions.***
 
 Here's an example `Payment` request and response.
 

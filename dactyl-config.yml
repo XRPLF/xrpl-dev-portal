@@ -60,6 +60,7 @@ targets:
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
+            "concept-keys.html": https://ripple.com/build/keys/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
             "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
@@ -321,6 +322,14 @@ pages:
         category: Features
         html: concept-freeze.html
         md: concept-freeze.md
+        targets:
+            - local
+            - ripple.com
+
+    -   name: Keys
+        category: Features
+        html: concept-keys.html
+        md: concept-keys.md
         targets:
             - local
             - ripple.com

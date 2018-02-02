@@ -3,7 +3,6 @@
 A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only valid if signed, submitted, and accepted into a validated ledger version following the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/). Some ledger rules also generate _[pseudo-transactions](#pseudo-transactions)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost](concept-transaction-cost.html).
 
 * [Authorizing Transactions](#authorizing-transactions)
-* [Understanding Master and Regular Keys](#understanding-master-and-regular-keys)
 * [Common Fields of All Transactions](#common-fields)
 * [Transaction Types](#transaction-types)
 * [Reliable Transaction Submission](#reliable-transaction-submission)
@@ -26,61 +25,7 @@ Any signature type can authorize any type of transaction, with the following exc
 * Only the master key can [permanently give up the ability to freeze](concept-freeze.html#no-freeze).
 * You can never remove the last method of signing transactions from an address.
 
-
-## Understanding Master and Regular Keys
-
-In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. A digital signature is created based on a key pair associated with the transaction's sending account. There are two types of key pairs available: master keys and regular keys. Each key pair includes a private key and a public key.
-
-***TODO: I feel like some concept docs on private and public keys would be great -- like when to use them. Talk about the master_key, master_seed, master_seed_hex, public_key, and public_key_hex, for example, and why we provide them and what are the use cases. It would also be good to provide concept doc on how keys are used to generate the "signature" and the different types of signature-like values that we generate: Signature, SigningPubKey, and TxnSignature, for example. What are the use cases? I believe this info is in the doc, but discussed in the context of tutorials.***
-
-### Master Keys
-
-When you create an account using the [`wallet_propose`](reference-rippled.html#wallet-propose) method, the `master_seed` (private key) and `public_key` returned in the response are the **master keys** for the account. These master keys are an intrinsic part of the account's identity as the `account_id` (account address), also returned in the `wallet_propose` response, and the `public_key` value are mathematically related.
-
-Here's a sample `wallet_propose` response, including the `master_seed` (private key), `public_key`, and `account_id` (account address) values:
-
-```
-{
-  "result": {
-    "account_id": "rM8oJwkKtgEU2HZkCHsJScLHqegWpgBRxt",
-    "key_type": "secp256k1",
-    "master_key": "SAY ARMY KITE LETS PAN WAVE JUKE ACRE MAT TILT FEAT LED",
-    "master_seed": "PrivateKeyXXXXXXXXXXXXXXXXXXX",
-    "master_seed_hex": "47E8F7F59D0CC9A3F01FD3D69CCAE93A",
-    "public_key": "aBQEK3r6hb8isnCWmortkNdv3MSMKP74o7gj3kHZQF9vDkbXo4Qs",
-    "public_key_hex": "032D911AE9887278110A8FE25169546D4E95A82AF5EFA25525FC3FDFFDC5A8B604"
-  },
-  "status": "success",
-  "type": "response"
-}
-```
-
-Master keys have more powerful signing authority than regular keys. In addition to being able to sign all transactions that regular keys can, master keys are the only keys that can be used to perform the following actions:
-
-* Use the master private key to [disable the master public key](#accountset-flags).
-* Permanently give up the ability to [freeze counterparties](concept-freeze.html#no-freeze).
-
-**Important:** Master keys can be disabled, but cannot be changed. This means that if your master private key is [compromised](concept-issuing-and-operational-addresses.html), you cannot change it to stop the compromise.
-
-This is a compelling reason to keep your master keys offline whenever possible and set up regular keys to sign transactions from your master account instead.
-
-
-### Regular Keys
-
-When you create an account using the [`wallet_propose`](reference-rippled.html#wallet-propose) method, the `master_seed` (private key) and `public_key` returned in the response are the master keys for the account. For the purposes of this discussion, let's call this account the master account. Ripple recommends that you keep the master account's master keys offline whenever possible and assign regular keys to the master account to sign your transactions instead.
-
-You generate regular keys using the same `wallet_propose` method used to generate a master account and master keys. However, you use this second account and key pair specifically with the `SetRegularKey` method to assign **regular keys** to the master account.
-
-Once you've assigned the regular keys, the master account has two key pairs associated with it:
-
-* Master keys that are intrinsically related to its address and which you keep offline whenever possible.
-* Regular keys that you've assigned to sign transactions.
-
-You can assign one regular key pair to a master account and use it to sign all transactions, except for the ones reserved for the [master keys](#master-keys).
-
-You can remove or change the regular keys at any time. This means that if a regular private key is compromised (but the master private key is not), you can regain control of your master account by simply removing or changing the regular key pair.
-
-For more information about assigning regular keys, see [Working with Regular Keys](tutorial-regular-keys.html).
+For more information about master and regular keys, see [Understanding Master and Regular Keys](concept-keys.md).
 
 
 ## Signing and Submitting Transactions
