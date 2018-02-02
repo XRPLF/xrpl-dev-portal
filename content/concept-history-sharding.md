@@ -1,10 +1,12 @@
+New in `rippled` 0.90.0
+
 # History Sharding
 
-As servers operate, they naturally produce a database containing data about the ledgers they witnessed or acquired during network runtime. Each `rippled` server stores that ledger data in its node store, but the online delete logic rotates these databases when the number of stored ledgers exceeds configured space limitations.
+As servers operate, they naturally produce a database containing data about the ledgers they witnessed or acquired during network runtime. Each `rippled` server stores that ledger data in its ledger store, but the online delete logic rotates these databases when the number of stored ledgers exceeds configured space limitations.
 
-Historical sharding distributes the transaction history of the XRP Ledger into segments, called shards, across servers in the XRP Ledger network. A shard is a range of ledgers, consisting of a header and two SHAMaps. A `rippled` server stores ledgers in both the node store and the shard store in the same way.
+Historical sharding distributes the transaction history of the XRP Ledger into segments, called shards, across servers in the XRP Ledger network. A shard is a range of ledgers, consisting of a header and two SHAMaps. A `rippled` server stores ledgers in both the ledger store and the shard store in the same way.
 
-Using the history sharding feature, individual `rippled` servers can contribute to storing historical data without needing to store the entire (multiple terabyte) history. A shard store does not replace a node store, but implements a reliable path towards distributed ledger history across the XRP Ledger Network.
+Using the history sharding feature, individual `rippled` servers can contribute to storing historical data without needing to store the entire (multiple terabyte) history. A shard store does not replace a ledger store, but implements a reliable path towards distributed ledger history across the XRP Ledger Network.
 
 [![XRP Ledger Network: Nodes and Shard Store Diagram](img/xrp-ledger-network-node-and-shard-stores.png)](img/xrp-ledger-network-node-and-shard-stores.png)
 
@@ -41,11 +43,13 @@ max_size_gb=50
 For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/ripple/rippled/blob/master/doc/rippled-example.cfg).
 
 ### Sizing the Shard Store
-Determining a suitable size for the shard store involves careful consideration. The following concerns contribute to determining shard store sizing:
+Determining a suitable size for the shard store involves careful consideration. You should consider the following when deciding what size your shard store should be:
 
-- Although redundant, it is possible to hold full ledger history in the node store and the history shard store
-- Each shard of the node store is 2^14 ledgers (16384)
-- An effective configuration might limit the node store only to recent history
-- The node store history size should at minimum be twice the ledgers per shard, due to the fact that the current shard may be chosen to be stored and it would be wasteful to reacquire that data
-- The time to acquire, number of file handles, and memory cache usage is directly affected by sizing
+- Although redundant, it is possible to hold full ledger history in the ledger store and the history shard store.
+- An effective configuration might limit the ledger store only to recent history.
+- The ledger store history size should at minimum be twice the ledgers per shard, due to the fact that the current shard may be chosen to be stored and it would be wasteful to reacquire that data.
+- The time to acquire, number of file handles, and memory cache usage is directly affected by sizing.
+- Each shard contains 2^14 ledgers (16384).
+-  A shard occupies approximately 200 MB to 4 GB based on the age of the shard. Older shards are smaller because there was less activity in the XRP Ledger at the time.
+- A shard occupies approximately 200 MB to 4 GB based on the age of the shard. Older shards are smaller because there was less activity in the XRP Ledger at the time.
 
