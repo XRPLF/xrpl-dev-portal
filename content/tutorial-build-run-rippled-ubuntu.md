@@ -59,7 +59,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 9. Compile Boost.
 
-    Starting in `rippled` 0.90, the compatible Boost version is 1.66.0. Because Boost version 1.66.0 isn't available in the Ubuntu 16.04 repos, you'll need to compile it yourself.
+    Starting in `rippled` 0.90, the compatible Boost version is 1.66.0. Because Boost version 1.66.0 isn't available in the Ubuntu 16.04 repos, you must compile it yourself.
 
       a. Download Boost 1.66.0.
 
@@ -104,6 +104,10 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
         scons
 
     SCons saves the built executable in `rippled/build`.
+
+13. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
+
+        ./rippled -u
 
 
 ## 2. Configure `rippled`
