@@ -8,7 +8,7 @@ Historical sharding distributes the transaction history of the XRP Ledger into s
 
 Using the history sharding feature, individual `rippled` servers can contribute to storing historical data without needing to store the entire (multiple terabyte) history. A shard store does not replace a ledger store, but implements a reliable path towards distributed ledger history across the XRP Ledger Network.
 
-[![XRP Ledger Network: Nodes and Shard Store Diagram](img/xrp-ledger-network-node-and-shard-stores.png)](img/xrp-ledger-network-node-and-shard-stores.png)
+[![XRP Ledger Network: Ledger Store and Shard Store Diagram](img/xrp-ledger-network-ledger-store-and-shard-store.png)](img/xrp-ledger-network-ledger-store-and-shard-store.png)
 
 ## Acquiring and Sharing History Shards
 
