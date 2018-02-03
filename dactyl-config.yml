@@ -66,6 +66,7 @@ targets:
             "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
             "concept-escrow.html": https://ripple.com/build/escrow/
             "concept-reaching-consensus.html": https://ripple.com/build/reaching-consensus-xrp-ledger/
+            "concept-history-sharding.html": https//ripple.com/build/history-sharding/
             "concept-fee-voting.html": https://ripple.com/build/fee-voting/
             "concept-fees.html": https://ripple.com/build/fees-disambiguation/
             "concept-freeze.html": https://ripple.com/build/freeze/
@@ -367,6 +368,13 @@ pages:
         category: Features
         html: concept-reserves.html
         md: concept-reserves.md
+        targets:
+            - local
+            - ripple.com
+
+    -   category: Features
+        html: concept-history-sharding.html
+        md: concept-history-sharding.md
         targets:
             - local
             - ripple.com
