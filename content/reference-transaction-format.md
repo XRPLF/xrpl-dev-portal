@@ -25,7 +25,9 @@ Any signature type can authorize any type of transaction, with the following exc
 * Only the master key can [permanently give up the ability to freeze](concept-freeze.html#no-freeze).
 * You can never remove the last method of signing transactions from an address.
 
-For more information about master and regular keys, see [Understanding Master and Regular Keys](concept-keys.md).
+For more information about master and regular keys, see [Understanding Master and Regular Keys](concept-keys.html).
+
+For more information about signatures, see [Understanding Signatures](concept-signatures.html).
 
 
 ## Signing and Submitting Transactions

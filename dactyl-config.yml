@@ -371,6 +371,15 @@ pages:
             - local
             - ripple.com
 
+
+    -   name: Signatures
+        category: Features
+        html: concept-signatures.html
+        md: concept-signatures.md
+        targets:
+            - local
+            - ripple.com
+
     -   name: Stand-Alone Mode
         category: Features
         html: concept-stand-alone-mode.html
