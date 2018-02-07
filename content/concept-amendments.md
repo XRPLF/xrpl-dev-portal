@@ -86,11 +86,120 @@ When an amendment gets enabled for the network after the voting process, servers
 * Do not participate in the consensus process
 * Do not vote on future amendments
 
-Becoming amendment blocked is a security feature to protect backend applications. Rather than guessing and maybe misinterpreting a ledger after new rules have applied, `rippled` reports that it does not know the state of the ledger because it does not know how the amendment works.
+Becoming amendment blocked is a security feature to protect backend applications. Rather than guessing and maybe misinterpreting a ledger after new rules have been applied, `rippled` reports that it does not know the state of the ledger because it does not know how the amendment works.
 
 The amendments that a `rippled` server is configured to vote for or against have no impact on whether the server becomes amendment blocked. A `rippled` server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if the enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.
 
 If your server is amendment blocked, you must [upgrade to a new version](tutorial-rippled-setup.html#updating-rippled) to sync with the network.
+
+
+#### How to Tell If Your `rippled` Server is Amendment Blocked
+
+***TODO: Question: Okay location for this doc? It is building upon a concept, but is tutorial-ish.***
+
+One of the first signs that your `rippled` server is amendment blocked is that an `amendmentBlocked` error is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
+
+```
+{
+   "result":{
+      "error":"amendmentBlocked",
+      "error_code":14,
+      "error_message":"Amendment blocked, need upgrade.",
+      "request":{
+         "command":"submit",
+         "tx_blob":"479H0KQ4LUUXIHL48WCVN0C9VD7HWSX0MG1UPYNXK6PI9HLGBU2U10K3HPFJSROFEG5VD749WDPHWSHXXO72BOSY2G8TWUDOJNLRTR9LTT8PSOB9NNZ485EY2RD9D80FLDFRBVMP1RKMELILD7I922D6TBCAZK30CSV6KDEDUMYABE0XB9EH8C4LE98LMU91I9ZV2APETJD4AYFEN0VNMIT1XQ122Y2OOXO45GJ737HHM5XX88RY7CXHVWJ5JJ7NYW6T1EEBW9UE0NLB2497YBP9V1XVAEK8JJYVRVW0L03ZDXFY8BBHP6UBU7ZNR0JU9GJQPNHG0DK86S4LLYDN0BTCF4KWV2J4DEB6DAX4BDLNPT87MM75G70DFE9W0R6HRNWCH0X075WHAXPSH7S3CSNXPPA6PDO6UA1RCCZOVZ99H7968Q37HACMD8EZ8SU81V4KNRXM46N520S4FVZNSJHA"
+      },
+      "status":"error"
+   }
+}
+```
+
+***TODO: Is this a universal error? Should it be added here? https://ripple.com/build/rippled-apis/#universal-errors***
+
+You can verify that your `rippled` server is amendment blocked using the [`server_info`](reference-rippled.html#server-info) command. In the response, look for `result.info.amendment_blocked`. If `amendment_blocked` is set to `true`, your server is amendment blocked. For example:
+
+```
+{
+  "result": {
+    "info": {
+      "amendment_blocked": true,
+      "build_version": "0.90.0-b2",
+      "complete_ledgers": "6015234-6022198,6022744-6025498,6026905-6029106,6030549-6031191,6031472-6032443,6033090-6033095,6033339-6033537,6034791-6034950,6034980-6035798,6036466,6036516-6036703,6037478-6037671,6038085-6040415,6042691-6046229,6046413-6053861",
+...
+      "validation_quorum": 4,
+      "validator_list_expires": "2018-Jan-24 00:00:00"
+    },
+    "status": "success"
+  }
+}
+```
+
+If your server is not amendment blocked, the `amendment_blocked` field is not returned in the response.
+
+***TODO: Question: Update the `server_info` doc to include an `amendment_blocked` field descr? https://ripple.com/build/rippled-apis/#server-info. Does this amendment_blocked also display in `server_state`? https://ripple.com/build/rippled-apis/#server-state. If yes, also add descr there?***
+
+To find out which amendments are blocking your `rippled` server, use the [`feature`](reference-rippled.html#feature) admin command and look for features (amendments) that have `"enabled" : true` and `"supported" : false`. These values for a feature mean that the amendment is currently enabled (required) in the latest ledger, but your server does not know how to apply the amendment. For example:
+
+***TODO: Update `features` doc to talk about the implications of when `"enabled" : true` and `"supported" : false`. Useful? https://ripple.com/build/rippled-apis/#feature***
+
+```
+{
+   "id":1,
+   "result":{
+      "features":{
+         "B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD":{
+            "enabled":true,
+            "supported":false,
+            "vetoed":false
+         },
+         "6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1":{
+            "enabled":true,
+            "supported":false,
+            "vetoed":false
+         },
+         "B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D":{
+            "enabled":true,
+            "supported":false,
+            "vetoed":false
+         },
+         "1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454":{
+            "enabled":true,
+            "supported":false,
+            "vetoed":false
+         },
+         "CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E":{
+            "enabled":true,
+            "supported":false,
+            "vetoed":false
+         },
+...
+         "08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647":{
+            "enabled":false,
+            "name":"PayChan",
+            "supported":true,
+            "vetoed":false
+         }
+      },
+      "status":"success"
+   }
+}
+```
+
+In this example, conflicts with the following features are causing the `rippled` server to be amendment blocked:
+
+* `B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD`
+
+* `6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1`
+
+* `B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D`
+
+* `1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454`
+
+* `CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E`
+
+***TODO: Still need to build out an explanation of how these features became the ones that are amendment blocking the server. Working on amendment blocking my rippled server.***
+
+[Upgrade to a new `rippled` version](tutorial-rippled-setup.html#updating-rippled) to unblock your server and enable it to sync with the network again. ***TODO: Question: Do these instructions need a refresh? Need to take a look.***
 
 
 ## Testing Amendments
