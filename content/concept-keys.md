@@ -1,4 +1,4 @@
-# Understanding Master and Regular Keys
+# Cryptographic Keys
 
 In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. A digital signature is created based on a key pair associated with the transaction's sending account.
 

@@ -326,8 +326,7 @@ pages:
             - local
             - ripple.com
 
-    -   name: Keys
-        category: Features
+    -   category: Features
         html: concept-keys.html
         md: concept-keys.md
         targets:
