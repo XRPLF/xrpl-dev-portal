@@ -166,21 +166,23 @@ Connecting to 127.0.0.1:5005
 
 The response follows the [standard format](#response-formatting), with a successful result containing various important information about the new (potential) account, including the following fields:
 
-***TODO: Question: Fleshed out some of the descrs below using excellent source material from Rome. Thought it would be useful to surface.***
-
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
 | `master_seed`     | String | This is the private key of the key pair. The master seed from which all other information about this account is derived, in Ripple's [base58][] encoded string format. Typically, you use the key in this format to sign transactions. |
 | `master_seed_hex` | String | The master seed, in hex format. A simple, widely-supported way to represent the secret key. Can be used to sign transactions. |
 | `master_key`      | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. An easier to remember, easier-to-write-down version of the private key. Can be used to sign transactions. |
 | `account_id`      | String | The [Address][] of the account in base58 format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. [Multi-signing lists](tutorial-multisign.html) also use these to identify other signers. |
-| `public_key`      | String | The public key of the account, in Ripple's [base58][] encoded string format. |
-| `public_key_hex`  | String | This is the public key of the key pair. The public key of the account, in hex format. You need this to validate the signature on a transaction (or any signature). When you send a transaction, it attaches the public key so you can do so. |
+| `public_key`      | String | The public key of the key pair, in Ripple's [base58][] encoded string format. |
+| `public_key_hex`  | String | This is the public key of the key pair, in hexadecimal. To validate the signature on a transaction, `rippled` needs this public key. That's why the format for a signed transaction includes the public key in the `SigningPubKey` field. |
 | `warning`         | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. [New in: rippled 0.32.0][] |
 
-You can also use this method to generate a key to use as a regular key for an account. You assign regular keys to an account to be able to sign most transactions with them, while keeping your master keys offline whenever possible.
+You can also use this method to generate a key to use as a regular key for an account. You assign a regular key to an account to be able to sign most transactions with it, while keeping your master key offline whenever possible.
+
+In addition to using it as a regular key, you can also use it as a member of a multi-signing list (SignerList).
 
 For more information about master and regular keys, see [Understanding Master and Regular Keys](concept-keys.html)
+
+For more information about multi-signing and signer lists, see [Multi-Signing](reference-transaction-format.html#multi-signing).
 
 
 #### Possible Errors

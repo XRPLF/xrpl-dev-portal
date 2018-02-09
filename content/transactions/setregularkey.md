@@ -4,11 +4,11 @@
 
 A `SetRegularKey` transaction assigns, changes, or removes the regular key associated with an account.
 
-You can protect your account by assigning regular keys to it and using them instead of the master keys to sign transactions whenever possible. If your regular keys are compromised, but your master keys are not, you can use a `SetRegularKey` transaction to regain control of your account.
+You can protect your account by assigning a regular key to it and using it instead of the master key to sign transactions whenever possible. If your regular key is compromised, but your master key is not, you can use a `SetRegularKey` transaction to regain control of your account.
 
 For more information about regular and master keys, see [Understanding Master and Regular Keys](concept-keys.html).
 
-For a tutorial on assigning regular keys to an account, see [Working with Regular Keys](tutorial-regular-keys.html).
+For a tutorial on assigning a regular key to an account, see [Working with Regular Keys](tutorial-regular-keys.html).
 
 For even greater security, you can use [multi-signing](#multi-signing), but multi-signing requires additional XRP for the [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html).
 
