@@ -297,7 +297,7 @@ After the issuances have been created in the XRP Ledger, they can be freely tran
 
 - Anyone can buy/sell EUR.ACME on Ripple. If ACME issues multiple currencies on Ripple, a separate trust line is necessary for each.
     - This includes XRP Ledger users who do not have an account in ACME Exchange's systems. To withdraw the funds successfully from ACME, users still have to register with ACME.
-    - Optionally, ACME uses the [Authorized Accounts](#authorized-accounts) feature to limit who can hold EUR.ACME in the XRP Ledger.
+    - Optionally, ACME uses the [Authorized Trust Lines](#authorized-trust-lines) feature to limit who can hold EUR.ACME in the XRP Ledger.
     - If ACME determines that a customer has acted in bad faith, ACME can [Freeze](#freeze) that user's accounting relationships to ACME in the XRP Ledger, so that the user can no longer trade in the gateway's issuances.
 - XRP Ledger users trading and sending EUR.ACME to one another requires no intervention by ACME.
 - All exchanges and balances in the XRP Ledger are publicly viewable.
@@ -319,19 +319,11 @@ A gateway can freeze accounting relationships in the XRP Ledger to meet regulato
 For more information, see the [Freeze article](concept-freeze.html).
 
 
-## Authorized Accounts
+## Authorized Trust Lines
 
-The XRP Ledger's Authorized Accounts feature enables a gateway to limit who can hold that gateway's issuances, so that unknown XRP Ledger addresses cannot hold the currency the gateway issues. Ripple feels this is *not necessary* in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the XRP Ledger.)
+The XRP Ledger's Authorized Trust Lines feature (formerly called "Authorized Accounts") enables a gateway to limit who can hold that gateway's issuances, so that unknown XRP Ledger addresses cannot hold the currency the gateway issues. Ripple feels this is *not necessary* in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the XRP Ledger.)
 
-To use the Authorized Accounts feature, a gateway enables the `RequireAuth` flag for its issuing address, and then individually approves each accounting relationship. An address can only hold funds issued by a gateway after its accounting relationship with that gateway is approved.
-
-The transaction to authorize an accounting relationship must be signed by the issuing address, which unfortunately means an increased risk exposure for that address. The process for sending funds into the XRP Ledger with RequireAuth enabled looks like the following:
-
-1. ACME publishes its issuing address to customers.
-2. Alice creates an accounting relationship from her XRP Ledger address to ACME's issuing address, indicating that she is willing to hold ACME's issuances.
-3. ACME's issuing address sends a transaction authorizing Alice's accounting relationship.
-
-See [RequireAuth](#requireauth) for technical details on how to use Authorized Accounts.
+For more information, see [Authorized Trust Lines](concept-authorized-trust-lines.html).
 
 
 ## Source and Destination Tags
@@ -582,13 +574,7 @@ Response:
 
 ## RequireAuth
 
-The `RequireAuth` setting (`requireAuthorization` in RippleAPI) prevents all counterparties from holding balances issued by an address unless the address has specifically approved an accounting relationship with that counterparty.
-
-We recommend always [enabling `RequireAuth`](#enabling-requireauth) for operational addresses and standby addresses, and then never approving any accounting relationships. This prevents operational addresses from creating issuances even by accident. This is a purely precautionary measure, and does not stop those addresses from transferring issuances created by the issuing address, as they are intended to do.
-
-If you want to use the [Authorized Accounts](#authorized-accounts) feature, you must also enable `RequireAuth` on your issuing address. When using Authorized Accounts, your issuing address must [submit a `TrustSet` transaction to approve each accounting relationship](#authorizing-trust-lines) that customers create with your issuing address.
-
-You can only enable `RequireAuth` if the address owns no accounting relationships (trust lines) and no offers in the XRP Ledger, so you must decide whether or not to use it before you start doing business in the XRP Ledger.
+The `RequireAuth` setting prevents all counterparties from holding balances issued by an address unless the address has specifically approved an accounting relationship with that counterparty. For more information, see [Authorized Trust Lines](concept-authorized-trust-lines.html).
 
 ### Enabling RequireAuth
 
@@ -619,7 +605,7 @@ POST http://localhost:5005/
 
 ### Authorizing Trust Lines
 
-If you are using the [Authorized Accounts](#authorized-accounts) feature, customers cannot hold balances you issue unless you first authorize their accounting relationships to you in the XRP Ledger.
+If you are using the [Authorized Trust Lines](concept-authorized-trust-lines.html) feature, customers cannot hold balances you issue unless you first authorize their accounting relationships to you in the XRP Ledger.
 
 To authorize an accounting relationship, submit a TrustSet transaction from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](reference-transaction-format.html#trustset-flags) flag for the transaction.
 
