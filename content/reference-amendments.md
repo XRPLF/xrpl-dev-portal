@@ -1,5 +1,6 @@
 # Known Amendments
-[[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/app/main/Amendments.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/main/Amendments.cpp "Source")
+<!--{# TODO: after 0.90.0 releases, change to https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/Feature.cpp #}-->
 
 The following is a comprehensive list of all known amendments and their status on the production XRP Ledger:
 
