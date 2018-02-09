@@ -14,9 +14,9 @@ The transaction to authorize a trust line must be signed by the issuing address,
 
 ## RequireAuth Setting
 
-The `RequireAuth` setting (`requireAuthorization` in [RippleAPI](reference-rippleapi.html)) prevents all counterparties from holding balances issued by an address unless the issuing address has specifically approved an accounting relationship with that counterparty.
+The `RequireAuth` setting (`requireAuthorization` in [RippleAPI](reference-rippleapi.html)) prevents all counterparties from holding balances issued by an address unless the issuing address has specifically approved a trust line with that counterparty for the currency in question.
 
-As a precaution, Ripple recommends that issuing gateways always enable `RequireAuth` on [operational addresses and standby addresses](concept-issuing-and-operational-addresses.html), and then never approve any accounting relationships to those addresses. This prevents operational addresses and standby addresses from issuing currency in the XRP Ledger even by accident. This is a purely precautionary measure, and does not stop those addresses from transferring issued currency balances created by the issuing address, as they are intended to do.
+As a precaution, Ripple recommends that issuing gateways always enable `RequireAuth` on [operational addresses and standby addresses](concept-issuing-and-operational-addresses.html), and then never approve any trust lines to those addresses. This prevents operational addresses and standby addresses from issuing currency in the XRP Ledger even by accident. This is a purely precautionary measure, and does not stop those addresses from transferring issued currency balances created by the issuing address, as they are intended to do.
 
 To use the Authorized Trust Lines feature, an issuer must also enable `RequireAuth` on its issuing address. After doing so, the issuing address must [submit a `TrustSet` transaction to approve each trust line](#authorizing-trust-lines) from a customer.
 
@@ -49,11 +49,17 @@ POST http://localhost:5005/
 
 {% include 'snippets/secret-key-warning.md' %}
 
+## Checking Whether an Account Has RequireAuth Enabled
+
+To see whether an account has the RequireAuth setting enabled, use the [`account_info` command](reference-rippled.html#account-info) to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](reference-ledger-format.html#accountroot-flags).
+
+If the result of the `Flags` value bitwise-AND the `lsfRequireAuth` flag value (0x00040000) is nonzero, then the account has RequireAuth enabled. If the result is zero, then the account has RequireAuth disabled.
+
 ## Authorizing Trust Lines
 
-If you are using the Authorized Trust Lines feature, customers cannot hold balances you issue unless you first authorize their trust lines to you.
+If you are using the Authorized Trust Lines feature, others cannot hold balances you issue unless you first authorize their trust lines to you. If you issue more than one currency, you must separately authorize trust lines for each currency.
 
-To authorize an accounting relationship, submit a [TrustSet transaction][] from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](reference-transaction-format.html#trustset-flags) flag for the transaction.
+To authorize a trust line, submit a [TrustSet transaction][] from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](reference-transaction-format.html#trustset-flags) flag for the transaction.
 
 The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send a TrustSet transaction authorizing the customer address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
 
@@ -83,5 +89,11 @@ POST http://localhost:8088/
 ```
 
 {% include 'snippets/secret-key-warning.md' %}
+
+## Checking Whether Trust Lines Are Authorized
+
+To see whether a trust line has been authorized, use the [`account_lines` command](reference-rippled.html#account-lines) to look up the trust line. In the request, provide the customer's address in the `account` field and the issuer's address in the `peer` field.
+
+In the response's `result.lines` array, find the object whose `currency` field indicates that it represents a trust line for the currency you want. If that object has a `peer_authorized` field with the value `true`, then the issuer (the address you used as the request's `peer` field) has authorized the trust line.
 
 {% include 'snippets/tx-type-links.md' %}
