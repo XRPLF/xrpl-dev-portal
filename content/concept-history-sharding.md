@@ -1,6 +1,6 @@
-New in `rippled` 0.90.0
-
 # History Sharding
+
+[Introduced in: rippled 0.90.0][New in: rippled 0.90.0]
 
 As servers operate, they naturally produce a database containing data about the ledgers they witnessed or acquired during network runtime. Each `rippled` server stores that ledger data in its ledger store, but the online delete logic rotates these databases when the number of stored ledgers exceeds configured space limitations.
 
@@ -53,3 +53,4 @@ Determining a suitable size for the shard store involves careful consideration. 
 -  A shard occupies approximately 200 MB to 4 GB based on the age of the shard. Older shards are smaller because there was less activity in the XRP Ledger at the time.
 - A shard occupies approximately 200 MB to 4 GB based on the age of the shard. Older shards are smaller because there was less activity in the XRP Ledger at the time.
 
+{% include 'snippets/rippled_versions.md' %}
