@@ -39,7 +39,7 @@ rippled server_info
 
 [Try it! >](ripple-api-tool.html#server_info)
 
-The request does not takes any parameters.
+The request does not take any parameters.
 
 #### Response Format
 
@@ -280,6 +280,7 @@ The `info` object may have some arrangement of the following fields:
 
 | `Field`                             | Type                      | Description |
 |:------------------------------------|:--------------------------|:-----------|
+| `amendment_blocked`                 | Boolean                   | If the server is [amendment blocked](concept-amendments.html#amendment-blocked), this field displays and is set to `true`. If the server is older than 0.80.0, this field does not display even if the server is amendment blocked. If the server is not amendment blocked, this field does not display. |
 | `build_version`                     | String                    | The version number of the running `rippled` version. |
 | `closed_ledger`                     | Object                    | (May be omitted) Information on the most recently closed ledger that has not been validated by consensus. If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. The member fields are the same as the `validated_ledger` field. |
 | `complete_ledgers`                  | String                    | Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. This may be a disjoint sequence, for example `24900901-24900984,24901116-24901158`. |

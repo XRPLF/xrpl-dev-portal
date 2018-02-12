@@ -93,11 +93,9 @@ The amendments that a `rippled` server is configured to vote for or against have
 If your server is amendment blocked, you must [upgrade to a new version](tutorial-rippled-setup.html#updating-rippled) to sync with the network.
 
 
-#### How to Tell If Your `rippled` Server is Amendment Blocked
+#### How to Tell If Your `rippled` Server Is Amendment Blocked
 
-***TODO: Question: Okay location for this doc? It is building upon a concept, but is tutorial-ish.***
-
-One of the first signs that your `rippled` server is amendment blocked is that an `amendmentBlocked` error is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
+One of the first signs that your `rippled` server is amendment blocked is an `amendmentBlocked` error that is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
 
 ```
 {
@@ -114,92 +112,111 @@ One of the first signs that your `rippled` server is amendment blocked is that a
 }
 ```
 
-***TODO: Is this a universal error? Should it be added here? https://ripple.com/build/rippled-apis/#universal-errors***
+The following `rippled` error also indicates that your server is amendment blocked:
 
-You can verify that your `rippled` server is amendment blocked using the [`server_info`](reference-rippled.html#server-info) command. In the response, look for `result.info.amendment_blocked`. If `amendment_blocked` is set to `true`, your server is amendment blocked. For example:
+```
+2018-Feb-12 19:38:30 LedgerMaster:ERR One or more unsupported amendments activated: server blocked.
+```
+
+If you are on `rippled` version 0.80.0+, you can verify that your `rippled` server is amendment blocked using the [`server_info`](reference-rippled.html#server-info) command. In the response, look for `result.info.amendment_blocked`. If `amendment_blocked` is set to `true`, your server is amendment blocked.
+
+**Example JSON-RPC Response:**
 
 ```
 {
-  "result": {
-    "info": {
-      "amendment_blocked": true,
-      "build_version": "0.90.0-b2",
-      "complete_ledgers": "6015234-6022198,6022744-6025498,6026905-6029106,6030549-6031191,6031472-6032443,6033090-6033095,6033339-6033537,6034791-6034950,6034980-6035798,6036466,6036516-6036703,6037478-6037671,6038085-6040415,6042691-6046229,6046413-6053861",
+    "result": {
+        "info": {
+            "amendment_blocked": true,
+            "build_version": "0.80.1",
+            "complete_ledgers": "6658438-6658596",
+            "hostid": "ip-10-30-96-212.us-west-2.compute.internal",
+            "io_latency_ms": 1,
+            "last_close": {
+                "converge_time_s": 2,
+                "proposers": 10
+            },
 ...
-      "validation_quorum": 4,
-      "validator_list_expires": "2018-Jan-24 00:00:00"
-    },
-    "status": "success"
-  }
+        },
+        "status": "success"
+    }
 }
 ```
 
 If your server is not amendment blocked, the `amendment_blocked` field is not returned in the response.
 
-***TODO: Question: Update the `server_info` doc to include an `amendment_blocked` field descr? https://ripple.com/build/rippled-apis/#server-info. Does this amendment_blocked also display in `server_state`? https://ripple.com/build/rippled-apis/#server-state. If yes, also add descr there?***
+**Caution:** `rippled` versions older than 0.80.0 do not include the `amendment_blocked` field, even if your server is amendment blocked.
 
-To find out which amendments are blocking your `rippled` server, use the [`feature`](reference-rippled.html#feature) admin command and look for features (amendments) that have `"enabled" : true` and `"supported" : false`. These values for a feature mean that the amendment is currently enabled (required) in the latest ledger, but your server does not know how to apply the amendment. For example:
 
-***TODO: Update `features` doc to talk about the implications of when `"enabled" : true` and `"supported" : false`. Useful? https://ripple.com/build/rippled-apis/#feature***
+#### How to Unblock an Amendment-Blocked `rippled` Server
+
+Upgrade to the `rippled` version that supports the amendments that are causing your server to be amendment blocked. Ripple recommends that you [upgrade to the newest `rippled` version](tutorial-rippled-setup.html#updating-rippled) to unblock your server and enable it to sync with the network again.
+
+Depending on the scenario, you may be able to (and want to) unblock your server by upgrading to a `rippled` version that is older than the newest version. This is possible if the older version supports the amendments that are blocking your `rippled` server.
+
+**Warning:** If the newest `rippled` version provides security or other urgent fixes, you should upgrade to the newest version as soon as possible.
+
+To determine if you can unblock your `rippled` server by upgrading to a version older than the newest version, find out which features are blocking your server and then look up the `rippled` version that supports the blocking features.
+
+To find out which features are blocking your `rippled` server, use the [`feature`](reference-rippled.html#feature) admin command. Look for features that have `"enabled" : true` and `"supported" : false`. These values for a feature mean that the amendment is currently enabled (required) in the latest ledger, but your server does not know how to support, or apply, the amendment.
+
+**Example JSON-RPC Response:**
 
 ```
 {
-   "id":1,
-   "result":{
-      "features":{
-         "B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD":{
-            "enabled":true,
-            "supported":false,
-            "vetoed":false
-         },
-         "6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1":{
-            "enabled":true,
-            "supported":false,
-            "vetoed":false
-         },
-         "B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D":{
-            "enabled":true,
-            "supported":false,
-            "vetoed":false
-         },
-         "1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454":{
-            "enabled":true,
-            "supported":false,
-            "vetoed":false
-         },
-         "CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E":{
-            "enabled":true,
-            "supported":false,
-            "vetoed":false
-         },
+    "result": {
+        "features": {
+            "07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104": {
+                "enabled": true,
+                "name": "Escrow",
+                "supported": true,
+                "vetoed": false
+            },
+            "08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647": {
+                "enabled": true,
+                "name": "PayChan",
+                "supported": true,
+                "vetoed": false
+            },
+            "1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146": {
+                "enabled": false,
+                "name": "CryptoConditions",
+                "supported": true,
+                "vetoed": false
+            },
+            "157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1": {
+                "enabled": true,
+                "supported": false,
+                "vetoed": false
+            },
 ...
-         "08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647":{
-            "enabled":false,
-            "name":"PayChan",
-            "supported":true,
-            "vetoed":false
-         }
-      },
-      "status":"success"
-   }
+            "67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172": {
+                "enabled": true,
+                "supported": false,
+                "vetoed": false
+            },
+...
+            "F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064": {
+                "enabled": true,
+                "supported": false,
+                "vetoed": false
+            }
+        },
+        "status": "success"
+    }
 }
 ```
 
-In this example, conflicts with the following features are causing the `rippled` server to be amendment blocked:
+In this example, conflicts with the following features are causing your `rippled` server to be amendment blocked:
 
-* `B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD`
+* `157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1`
 
-* `6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1`
+* `67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172`
 
-* `B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D`
+* `F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064`
 
-* `1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454`
+To look up which `rippled` version supports these features, see [Known Amendments](reference-amendments.html).
 
-* `CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E`
-
-***TODO: Still need to build out an explanation of how these features became the ones that are amendment blocking the server. Working on amendment blocking my rippled server.***
-
-[Upgrade to a new `rippled` version](tutorial-rippled-setup.html#updating-rippled) to unblock your server and enable it to sync with the network again. ***TODO: Question: Do these instructions need a refresh? Need to take a look.***
+***TODO: Question: Do we think this is the workflow users will use to figure this out? If yes, then it might be nice for the user if the table at the top of the Known Amendments page would list amendment IDs. I know that it makes the table a little uglier, but the feature response doesn't always provide the short name and always provides the ID. The way the page is currently structured, the user will need to ctrl+f for the ID, note the short name, and then scroll back up to the table at the top to note the version. They'll need to do this for each amendment.***
 
 
 ## Testing Amendments
