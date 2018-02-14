@@ -296,6 +296,13 @@ pages:
             - local
             - ripple.com
 
+    -   category: Features
+        html: concept-keys.html
+        md: concept-keys.md
+        targets:
+            - local
+            - ripple.com
+
     -   md: concept-escrow.md
         category: Features
         targets:
@@ -322,13 +329,6 @@ pages:
         category: Features
         html: concept-freeze.html
         md: concept-freeze.md
-        targets:
-            - local
-            - ripple.com
-
-    -   category: Features
-        html: concept-keys.html
-        md: concept-keys.md
         targets:
             - local
             - ripple.com

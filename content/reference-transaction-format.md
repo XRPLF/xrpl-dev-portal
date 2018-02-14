@@ -15,19 +15,21 @@ In the decentralized XRP Ledger, a digital signature proves that a transaction i
 
 A transaction can be authorized by any of the following types of signatures:
 
-* A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an [AccountSet transaction][].
-* A single signature that matches a regular key associated with the address. You can add, remove, or replace a regular key using a [SetRegularKey transaction][].
+***TODO: Question: Not sure what we mean by "signature" here. I know that I can submit/authorize a transaction with a `secret` value -- which can either be the master private key or the regular private key. When we refer to "signature" above and below - what are we referring to? Are we calling the `secret` field holding the master or regular private key value a "signature"? Or is this something else - like a signature that is derived from the `secret` value once a transaction has been submitted, but not yet authorized?***
+
+* A single signature from the master private key that is mathematically associated with the sending address. You can disable or enable the master key pair using an [AccountSet transaction][].
+* A single signature that matches the regular private key associated with the address. You can add, remove, or replace a regular key pair using a [SetRegularKey transaction][].
 * A [multi-signature](#multi-signing) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction][].
 
 Any signature type can authorize any type of transaction, with the following exceptions:
 
-* Only the master key can [disable the master key](#accountset-flags).
-* Only the master key can [permanently give up the ability to freeze](concept-freeze.html#no-freeze).
+* Only the master private key can [disable the master public key](#accountset-flags).
+* Only the master private key can [permanently give up the ability to freeze](concept-freeze.html#no-freeze).
 * You can never remove the last method of signing transactions from an address.
 
-For more information about master and regular keys, see [Understanding Master and Regular Keys](concept-keys.html).
+For more information about master and regular key pairs, see [Cryptographic Keys](concept-keys.html).
 
-For more information about signatures, see [Understanding Signatures](concept-signatures.html).
+<!--{# Add this reference after signatures concept doc is published. For more information about signatures, see [Understanding Signatures](concept-signatures.html). #}-->
 
 
 ## Signing and Submitting Transactions

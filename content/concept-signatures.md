@@ -8,6 +8,8 @@ In the XRP Ledger, a digital signature proves that a transaction is authorized t
 
 Here's an overview of some of the more common signature-related fields used in the XRP Ledger.
 
+***TODO: address from Ryan: Where would you see these fields? Either address in text -- or ensure that this is answered via the flow diagram discussed below.***
+
 ***TODO: JHA fix the IA here. Also need to more clearly express the single-signer flow vs multi-signer flow. Provide a flow diagram. Also need to move some conceptual content out of "Authorizing Transactions" and "Signing and Submitting Transactions" and put it in this doc.***
 
 ## `SigningPubKey` (top-level)
@@ -18,7 +20,7 @@ To verify whether a single-signed transaction is valid, a `rippled` server check
 
 1. This key hashes to an address that's authorized by the transaction's sender.
 
-    The default is that only "the address of an account" is authorized to send all transactions for that account. That address is [derived from](concept-accounts.html#address-encoding) the public key from the master key pair that was generated during address creation. Regular keys add a different address (derived from a different key pair) that's authorized to send most transactions. And of course, you can also disable the [master key](concept-keys.html) or add a [multi-signing list](reference-transaction-format.html#multi-signing).
+    The default is that only the address of an account is authorized to send all transactions for that account. That address is [derived from](concept-accounts.html#address-encoding) the public key from the master key pair that was generated during address creation. Regular keys add a different address (derived from a different key pair) that's authorized to send most transactions. And of course, you can also disable the [master key](concept-keys.html) or add a [multi-signing list](reference-transaction-format.html#multi-signing). ***TODO: address from Ryan: "And of course" - Nit: this seems a little informal. Maybe just drop it and go into the next sentence? JHA take a closer look at what this sentence is trying to say.***
 
 2. This key matches the signature on the transaction.
 
