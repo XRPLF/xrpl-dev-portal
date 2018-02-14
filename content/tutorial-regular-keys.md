@@ -7,7 +7,7 @@ For more information about master and regular key pairs, see [Cryptographic Keys
 This article provides the following tutorials:
 
 * [Assigning a regular key pair](#assigning-a-regular-key-pair)
-* [Removing or changing a regular key pair](#removing-or-changing-a-regular-key-pair)
+* [Changing or removing a regular key pair](#changing-or-removing-a-regular-key-pair)
 
 
 ## Assigning a Regular Key Pair
@@ -34,7 +34,7 @@ An example of the request format:
 
 ```
 {
-  "method": "wallet_propose"
+  "command": "wallet_propose"
 }
 ```
 
@@ -116,7 +116,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-In the next step, you'll use the `account_id` from this response to assign the key pair as a regular key pair to your account.
+In the next step, you'll use the `account_id` from this response to assign the key pair as a regular key pair to your account. Also, save the `master_seed` value somewhere securely. (Everything else, you can forget about.)
 
 
 ### 2. Assign the Key Pair to Your Account as a Regular Key Pair
@@ -125,7 +125,7 @@ Use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) metho
 
 When assigning a regular key pair to your account for the first time, the `SetRegularKey` method requires signing by your account's master private key (secret). Transmitting your master private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
 
-When you make subsequent `SetRegularKey` requests, you can sign using the existing regular private key to replace or [remove itself](#removing-or-changing-a-regular-key-pair).
+When you make subsequent `SetRegularKey` requests, you can sign using the existing regular private key to replace or [remove itself](#changing-or-removing-a-regular-key-pair). Note that you should still not submit your regular private key across the network.
 
 
 #### Sign Your Transaction
@@ -136,7 +136,7 @@ Populate the request fields with the following values:
 
 | Request Field | Value                                                        |
 |:--------------|:-------------------------------------------------------------|
-| `Account`     | `account_id` for your account.                               |
+| `Account`     | The address of your account.                                 |
 | `RegularKey`  | `account_id` generated in step 1.                            |
 | `secret`      | `master_key`, `master_seed`, or `master_seed_hex` (master private key) for your account. |
 
@@ -401,19 +401,27 @@ Note that the response contains a `hash` of the transaction, which you can use t
 
 ### 3. Verify the Regular Key Pair
 
-To verify that your account has the regular key pair set correctly, send an [`AccountSet`](reference-transaction-format.html#accountset) transaction from your account, signing it with the regular private key you assigned to your account in step 2.
+To verify that your account has the regular key pair set correctly, submit an [`AccountSet`](reference-transaction-format.html#accountset) transaction from your account, signing it with the regular private key you assigned to your account in step 2.
+
+As discussed in step 2, transmitting your master private key is dangerous. It is equally risky to transmit your regular private key, though the consequences of being comprised might be less severe. Therefore, we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
+
+
+#### Sign Your Transaction
+
+The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
 
 Populate the request fields with the following values:
 
 | Request Field | Value                                                        |
 |:--------------|:-------------------------------------------------------------|
-| `Account`     | `account_id` for your account.                               |
+| `Account`     | The address of your account.                               |
 | `secret`      | `master_key`, `master_seed`, or `master_seed_hex` (regular private key) generated in step 1 and assigned to your account in step 2. |
 
 
-#### Request Format
+##### Request Format
 
 Here's an example of the request format. Note that the request does not include any `AccountSet` options. This means that a successful transaction has no effect other than to confirm that the regular key pair is set correctly for your account (and to destroy the transaction cost).
+
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -421,11 +429,11 @@ Here's an example of the request format. Note that the request does not include 
 
 ```
 {
-   "command": "submit",
-   "tx_json": {
+  "command": "sign",
+  "tx_json": {
       "TransactionType": "AccountSet",
       "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"
-   },
+      },
    "secret": "sh8i92YRnEjJy3fpFkL8txQSCVo79"
 }
 ```
@@ -434,7 +442,7 @@ Here's an example of the request format. Note that the request does not include 
 
 ```
 {
-   "method": "submit",
+   "method": "sign",
    "params": [
       {
          "tx_json": {
@@ -450,14 +458,133 @@ Here's an example of the request format. Note that the request does not include 
 *Commandline*
 
 ```
-#Syntax: submit secret tx_json
-rippled submit sh8i92YRnEjJy3fpFkL8txQSCVo79 '{"TransactionType": "AccountSet", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
+#Syntax: sign secret tx_json
+rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 '{"TransactionType": "AccountSet", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 
-#### Response Format
+##### Response Format
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+  "result": {
+    "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+    "tx_json": {
+      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 4,
+      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+      "TransactionType": "AccountSet",
+      "TxnSignature": "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+      "hash": "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
+    }
+  },
+  "status": "success",
+  "type": "response"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+    "result": {
+        "status": "success",
+        "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+        "tx_json": {
+            "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "Sequence": 4,
+            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+            "TransactionType": "AccountSet",
+            "TxnSignature": "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+            "hash": "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
+        }
+    }
+}
+```
+
+*Commandline*
+
+```
+{
+   "result" : {
+      "status" : "success",
+      "tx_blob" : "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+      "tx_json" : {
+         "Account" : "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+         "Fee" : "10",
+         "Flags" : 2147483648,
+         "Sequence" : 4,
+         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+         "TransactionType" : "AccountSet",
+         "TxnSignature" : "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+         "hash" : "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
+      }
+   }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The `sign` command response contains a `tx_blob` value, as shown above. The offline signing response contains a `signedTransaction` value. Both are signed binary representations (blobs) of the transaction.
+
+Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `signedTransaction`) to the network.
+
+
+#### Submit Your Transaction
+
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled.html#submit) command.
+
+##### Request Format
+
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "command": "submit",
+    "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+   "method":"submit",
+   "params": [
+      {
+         "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
+      }
+   ]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: submit tx_blob
+rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+
+##### Response Format
 
 An example of a successful response:
 
@@ -471,16 +598,16 @@ An example of a successful response:
     "engine_result": "tesSUCCESS",
     "engine_result_code": 0,
     "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-    "tx_blob": "1200032280000000240000000368400000000000000A732103AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E744730450221008F44064A901C3A170A046673EFC8091F2C409E1DB7D78A5EF0D18E9D868AE21002207F594F3BF3821E6DF64CD283F590F6578F809DFD1CAAF654F187645A7CAB91C48114830923439D307E642CED308FD91EF701A7BAA747",
+    "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
     "tx_json": {
       "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
       "Fee": "10",
       "Flags": 2147483648,
-      "Sequence": 3,
-      "SigningPubKey": "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
+      "Sequence": 4,
+      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
       "TransactionType": "AccountSet",
-      "TxnSignature": "30450221008F44064A901C3A170A046673EFC8091F2C409E1DB7D78A5EF0D18E9D868AE21002207F594F3BF3821E6DF64CD283F590F6578F809DFD1CAAF654F187645A7CAB91C4",
-      "hash": "BED704F2A6A80DA4060446C95802F205EE41977A2F63F10B1F8952FC6D01B35B"
+      "TxnSignature": "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+      "hash": "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
     }
   },
   "status": "success",
@@ -497,16 +624,16 @@ An example of a successful response:
         "engine_result_code": 0,
         "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
         "status": "success",
-        "tx_blob": "1200032280000000240000000368400000000000000A732103AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E744730450221008F44064A901C3A170A046673EFC8091F2C409E1DB7D78A5EF0D18E9D868AE21002207F594F3BF3821E6DF64CD283F590F6578F809DFD1CAAF654F187645A7CAB91C48114830923439D307E642CED308FD91EF701A7BAA747",
+        "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
         "tx_json": {
             "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
             "Fee": "10",
             "Flags": 2147483648,
-            "Sequence": 3,
-            "SigningPubKey": "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
+            "Sequence": 4,
+            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
             "TransactionType": "AccountSet",
-            "TxnSignature": "30450221008F44064A901C3A170A046673EFC8091F2C409E1DB7D78A5EF0D18E9D868AE21002207F594F3BF3821E6DF64CD283F590F6578F809DFD1CAAF654F187645A7CAB91C4",
-            "hash": "BED704F2A6A80DA4060446C95802F205EE41977A2F63F10B1F8952FC6D01B35B"
+            "TxnSignature": "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+            "hash": "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
         }
     }
 }
@@ -521,16 +648,16 @@ An example of a successful response:
       "engine_result_code" : 0,
       "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
       "status" : "success",
-      "tx_blob" : "1200032280000000240000000368400000000000000A732103AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E744730450221008F44064A901C3A170A046673EFC8091F2C409E1DB7D78A5EF0D18E9D868AE21002207F594F3BF3821E6DF64CD283F590F6578F809DFD1CAAF654F187645A7CAB91C48114830923439D307E642CED308FD91EF701A7BAA747",
+      "tx_blob" : "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
       "tx_json" : {
          "Account" : "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
          "Fee" : "10",
          "Flags" : 2147483648,
-         "Sequence" : 3,
-         "SigningPubKey" : "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
+         "Sequence" : 4,
+         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
          "TransactionType" : "AccountSet",
-         "TxnSignature" : "30450221008F44064A901C3A170A046673EFC8091F2C409E1DB7D78A5EF0D18E9D868AE21002207F594F3BF3821E6DF64CD283F590F6578F809DFD1CAAF654F187645A7CAB91C4",
-         "hash" : "BED704F2A6A80DA4060446C95802F205EE41977A2F63F10B1F8952FC6D01B35B"
+         "TxnSignature" : "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+         "hash" : "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
       }
    }
 }
@@ -548,19 +675,40 @@ Now that you're familiar with the benefits of assigning a regular key pair to an
 * [Listing XRP as an Exchange](tutorial-listing-xrp.html)
 
 
-## Removing or Changing a Regular Key Pair
+## Changing or Removing a Regular Key Pair
 
 If your account's regular key pair is compromised, or if you just want to periodically change the regular key pair as a security measure, use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method to remove or change the regular key pair for your account.
+
+
+### Changing a Regular Key Pair
 
 The steps to change your existing regular key pair are almost the same as the steps to [assign a regular key](#assigning-a-regular-key-pair) for the first time. You generate the key pair and assign it to your account as a regular key pair, overwriting the existing regular key pair. However, the main difference is that when changing the existing regular key pair, you can use the existing regular private key to replace itself, whereas when assigning a regular key pair to an account for the first time, you have to use the account's master private key to do it.
 
 For more information about master and regular key pairs, see [Cryptographic Keys](concept-keys.html).
 
+
+### Removing a Regular Key Pair
+
 If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Just use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method, omitting the `RegularKey` value in the request. Note that the method fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](reference-transaction-format.html#multi-signing)).
 
-### Request Format
 
-Here's example of the request format that removes an existing regular key pair from an account. Note that it omits the `RegularKey` field.
+When removing a regular key pair to your account, the `SetRegularKey` method requires signing by your account's master private key (secret) or existing regular key pair. Transmitting your master or regular private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
+
+#### Sign Your Transaction
+
+The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+
+Populate the request fields with the following values:
+
+| Request Field | Value                                                        |
+|:--------------|:-------------------------------------------------------------|
+| `Account`     | The address of your account.                                 |
+| `secret`      | `master_key`, `master_seed`, or `master_seed_hex` (master or regular private key) for your account. |
+
+
+##### Request Format
+
+An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -568,12 +716,12 @@ Here's example of the request format that removes an existing regular key pair f
 
 ```
 {
-   "command": "submit",
-   "tx_json": {
+  "command": "sign",
+  "tx_json": {
       "TransactionType": "SetRegularKey",
-      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"
-   },
-   "secret": "sh8i92YRnEjJy3fpFkL8txQSCVo79"
+      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
+      },
+   "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
 }
 ```
 
@@ -581,30 +729,149 @@ Here's example of the request format that removes an existing regular key pair f
 
 ```
 {
-    "method": "submit",
+    "method": "sign",
     "params": [
-        {
-            "tx_json": {
-            	"Account" : "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
-                "TransactionType": "SetRegularKey"
-            },
-            "secret": "sh8i92YRnEjJy3fpFkL8txQSCVo79"
-        }
-    ]
+    	{
+    	"secret" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+		"tx_json" : {
+    		"TransactionType" : "SetRegularKey",
+    		"Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
+			}
+		}
+	]
 }
 ```
 
 *Commandline*
 
 ```
-#Syntax: submit secret tx_json
-rippled submit sh8i92YRnEjJy3fpFkL8txQSCVo79 '{"TransactionType": "SetRegularKey", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
+#Syntax: sign secret tx_json
+rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType": "SetRegularKey", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 
-### Response Format
+##### Response Format
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+  "result": {
+    "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+    "tx_json": {
+      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 2,
+      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+      "TransactionType": "SetRegularKey",
+      "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+      "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
+    }
+  },
+  "status": "success",
+  "type": "response"
+}
+```
+
+*JSON-RPC*
+
+```
+{NEWWWWWWWWWWWW
+    "result": {
+        "status": "success",
+        "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+        "tx_json": {
+            "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "Sequence": 2,
+            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+            "TransactionType": "SetRegularKey",
+            "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+            "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
+        }
+    }
+}
+```
+
+*Commandline*
+
+```
+{
+   "result" : {
+      "status" : "success",
+      "tx_blob" : "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+      "tx_json" : {
+         "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+         "Fee" : "10",
+         "Flags" : 2147483648,
+         "Sequence" : 2,
+         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+         "TransactionType" : "SetRegularKey",
+         "TxnSignature" : "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+         "hash" : "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
+      }
+   }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+The `sign` command response contains a `tx_blob` value, as shown above. The offline signing response contains a `signedTransaction` value. Both are signed binary representations (blobs) of the transaction.
+
+Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `signedTransaction`) to the network.
+
+
+#### Submit Your Transaction
+
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled.html#submit) command.
+
+##### Request Format
+
+An example of the request format:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```
+{
+    "command": "submit",
+    "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
+}
+```
+
+*JSON-RPC*
+
+```
+{
+   "method":"submit",
+   "params":[
+      {
+         "tx_blob":"1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
+      }
+   ]
+}
+```
+
+*Commandline*
+
+```
+#Syntax: submit tx_blob
+rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+
+##### Response Format
 
 An example of a successful response:
 
@@ -618,16 +885,16 @@ An example of a successful response:
     "engine_result": "tesSUCCESS",
     "engine_result_code": 0,
     "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-    "tx_blob": "1200052280000000240000000668400000000000000A732103AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E744630440220703F4EB4D1DF90632DDEB0F3B72B41B7E85C739933C9AF55472BB154637645B202202689C22A10965DA0F0EA1D745EBB8E94E242572490FED69A059D724172E9DCFC8114830923439D307E642CED308FD91EF701A7BAA747",
+    "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
     "tx_json": {
-      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
       "Fee": "10",
       "Flags": 2147483648,
-      "Sequence": 6,
-      "SigningPubKey": "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
+      "Sequence": 2,
+      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
       "TransactionType": "SetRegularKey",
-      "TxnSignature": "30440220703F4EB4D1DF90632DDEB0F3B72B41B7E85C739933C9AF55472BB154637645B202202689C22A10965DA0F0EA1D745EBB8E94E242572490FED69A059D724172E9DCFC",
-      "hash": "15234F29930BFB8A87EB604D4E657CDEE277BAF9D670A90CDE2453A608A9A81C"
+      "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+      "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
     }
   },
   "status": "success",
@@ -644,16 +911,16 @@ An example of a successful response:
         "engine_result_code": 0,
         "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
         "status": "success",
-        "tx_blob": "1200052280000000240000000668400000000000000A732103AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E744630440220703F4EB4D1DF90632DDEB0F3B72B41B7E85C739933C9AF55472BB154637645B202202689C22A10965DA0F0EA1D745EBB8E94E242572490FED69A059D724172E9DCFC8114830923439D307E642CED308FD91EF701A7BAA747",
+        "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
         "tx_json": {
-            "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+            "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
             "Fee": "10",
             "Flags": 2147483648,
-            "Sequence": 6,
-            "SigningPubKey": "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
+            "Sequence": 2,
+            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
             "TransactionType": "SetRegularKey",
-            "TxnSignature": "30440220703F4EB4D1DF90632DDEB0F3B72B41B7E85C739933C9AF55472BB154637645B202202689C22A10965DA0F0EA1D745EBB8E94E242572490FED69A059D724172E9DCFC",
-            "hash": "15234F29930BFB8A87EB604D4E657CDEE277BAF9D670A90CDE2453A608A9A81C"
+            "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+            "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
         }
     }
 }
@@ -668,16 +935,16 @@ An example of a successful response:
       "engine_result_code" : 0,
       "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
       "status" : "success",
-      "tx_blob" : "1200052280000000240000000668400000000000000A732103AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E744630440220703F4EB4D1DF90632DDEB0F3B72B41B7E85C739933C9AF55472BB154637645B202202689C22A10965DA0F0EA1D745EBB8E94E242572490FED69A059D724172E9DCFC8114830923439D307E642CED308FD91EF701A7BAA747",
+      "tx_blob" : "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
       "tx_json" : {
-         "Account" : "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+         "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
          "Fee" : "10",
          "Flags" : 2147483648,
-         "Sequence" : 6,
-         "SigningPubKey" : "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
+         "Sequence" : 2,
+         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
          "TransactionType" : "SetRegularKey",
-         "TxnSignature" : "30440220703F4EB4D1DF90632DDEB0F3B72B41B7E85C739933C9AF55472BB154637645B202202689C22A10965DA0F0EA1D745EBB8E94E242572490FED69A059D724172E9DCFC",
-         "hash" : "15234F29930BFB8A87EB604D4E657CDEE277BAF9D670A90CDE2453A608A9A81C"
+         "TxnSignature" : "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+         "hash" : "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
       }
    }
 }
@@ -685,13 +952,12 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-
 The way to verify that regular key pair removal succeeded is to confirm that you can't send a transaction using the removed regular private key.
 
 Here's an example error response for an [`AccountSet`](reference-transaction-format.html#accountset) transaction signed using the regular private key removed by the `SetRegularKey` transaction above.
 
 
-### Response Format
+#### Response Format
 
 An example of a successful response:
 
@@ -706,9 +972,9 @@ An example of a successful response:
   "error_message": "Secret does not match account.",
   "request": {
     "command": "submit",
-    "secret": "sh8i92YRnEjJy3fpFkL8txQSCVo79",
+    "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
     "tx_json": {
-      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
       "TransactionType": "AccountSet"
     }
   },
@@ -720,17 +986,17 @@ An example of a successful response:
 *JSON-RPC*
 
 ```
-{
+{NEWWWWWWWWWWWW
     "result": {
         "error": "badSecret",
         "error_code": 41,
         "error_message": "Secret does not match account.",
         "request": {
             "command": "submit",
-            "secret": "sh8i92YRnEjJy3fpFkL8txQSCVo79",
+            "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
             "tx_json": {
-                "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
-                "TransactionType": "SetRegularKey"
+                "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+                "TransactionType": "AccountSet"
             }
         },
         "status": "error"
@@ -748,9 +1014,9 @@ An example of a successful response:
       "error_message" : "Secret does not match account.",
       "request" : {
          "command" : "submit",
-         "secret" : "sh8i92YRnEjJy3fpFkL8txQSCVo79",
+         "secret" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
          "tx_json" : {
-            "Account" : "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+            "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
             "TransactionType" : "AccountSet"
          }
       },
