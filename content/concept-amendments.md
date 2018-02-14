@@ -112,7 +112,7 @@ One of the first signs that your `rippled` server is amendment blocked is an `am
 }
 ```
 
-The following `rippled` error also indicates that your server is amendment blocked:
+The following `rippled` log message also indicates that your server is amendment blocked:
 
 ```
 2018-Feb-12 19:38:30 LedgerMaster:ERR One or more unsupported amendments activated: server blocked.
