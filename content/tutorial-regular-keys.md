@@ -408,14 +408,12 @@ Populate the request fields with the following values:
 | Request Field | Value                                                        |
 |:--------------|:-------------------------------------------------------------|
 | `Account`     | `account_id` for your account.                               |
-| `secret`      | `master_key`, `master_seed`, or `master_seed_hex` (regular private key) generated in step 1 and assigned in step 2. |
-
-Here's an example `AccountSet` request and response. Note that the request does not include any `AccountSet` options. This means that a successful transaction has no effect other than to confirm that the regular key pair is set correctly for your account (and to destroy the transaction cost).
+| `secret`      | `master_key`, `master_seed`, or `master_seed_hex` (regular private key) generated in step 1 and assigned to your account in step 2. |
 
 
 #### Request Format
 
-An example of the request format:
+Here's an example of the request format. Note that the request does not include any `AccountSet` options. This means that a successful transaction has no effect other than to confirm that the regular key pair is set correctly for your account (and to destroy the transaction cost).
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -508,7 +506,7 @@ An example of a successful response:
             "SigningPubKey": "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
             "TransactionType": "AccountSet",
             "TxnSignature": "30450221008F44064A901C3A170A046673EFC8091F2C409E1DB7D78A5EF0D18E9D868AE21002207F594F3BF3821E6DF64CD283F590F6578F809DFD1CAAF654F187645A7CAB91C4",
-            "hash": "5F6A2DF78FC9B22CFE85D5257167A4103502ABD230B4ED63D8A4FB42F6E4B7DE"
+            "hash": "BED704F2A6A80DA4060446C95802F205EE41977A2F63F10B1F8952FC6D01B35B"
         }
     }
 }
@@ -532,7 +530,7 @@ An example of a successful response:
          "SigningPubKey" : "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
          "TransactionType" : "AccountSet",
          "TxnSignature" : "30450221008F44064A901C3A170A046673EFC8091F2C409E1DB7D78A5EF0D18E9D868AE21002207F594F3BF3821E6DF64CD283F590F6578F809DFD1CAAF654F187645A7CAB91C4",
-         "hash" : "5F6A2DF78FC9B22CFE85D5257167A4103502ABD230B4ED63D8A4FB42F6E4B7DE"
+         "hash" : "BED704F2A6A80DA4060446C95802F205EE41977A2F63F10B1F8952FC6D01B35B"
       }
    }
 }
@@ -558,11 +556,11 @@ The steps to change your existing regular key pair are almost the same as the st
 
 For more information about master and regular key pairs, see [Cryptographic Keys](concept-keys.html).
 
-If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first and just use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method, omitting the `RegularKey` value in the request. Note that the method fails if you don't have another way of signing for your account currently enabled (either the master key pair or a signer list).
+If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Just use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method, omitting the `RegularKey` value in the request. Note that the method fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](reference-transaction-format.html#multi-signing)).
 
 ### Request Format
 
-An example of the request format that removes an existing regular key pair from an account:
+Here's example of the request format that removes an existing regular key pair from an account. Note that it omits the `RegularKey` field.
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -690,7 +688,7 @@ An example of a successful response:
 
 The way to verify that regular key pair removal succeeded is to confirm that you can't send a transaction using the removed regular private key.
 
-Here's an example error response for an `AccountSet` transaction signed using the regular private key removed by the `SetRegularKey` transaction above.
+Here's an example error response for an [`AccountSet`](reference-transaction-format.html#accountset) transaction signed using the regular private key removed by the `SetRegularKey` transaction above.
 
 
 ### Response Format

@@ -15,8 +15,6 @@ In the decentralized XRP Ledger, a digital signature proves that a transaction i
 
 A transaction can be authorized by any of the following types of signatures:
 
-***TODO: Question: Not sure what we mean by "signature" here. I know that I can submit/authorize a transaction with a `secret` value -- which can either be the master private key or the regular private key. When we refer to "signature" above and below - what are we referring to? Are we calling the `secret` field holding the master or regular private key value a "signature"? Or is this something else - like a signature that is derived from the `secret` value once a transaction has been submitted, but not yet authorized?***
-
 * A single signature from the master private key that is mathematically associated with the sending address. You can disable or enable the master key pair using an [AccountSet transaction][].
 * A single signature that matches the regular private key associated with the address. You can add, remove, or replace a regular key pair using a [SetRegularKey transaction][].
 * A [multi-signature](#multi-signing) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction][].
@@ -177,7 +175,7 @@ Example response from the `tx` command:
 
 ### Multi-Signing
 
-Multi-signing in the XRP Ledger is the act of [authorizing transactions](#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a [regular key](#setregularkey). (The only requirement is that _at least one_ method must be enabled.)
+Multi-signing in the XRP Ledger is the act of [authorizing transactions](#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](concept-keys.html#master-key-pair), and a [regular key pair](concept-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
 
 The [SignerListSet transaction][] defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
 

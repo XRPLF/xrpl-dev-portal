@@ -169,7 +169,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
 | `master_seed`     | String | This is the private key of the key pair. The master seed from which all other information about this account is derived, in Ripple's [base58][] encoded string format. Typically, you use the key in this format to sign transactions. |
-| `master_seed_hex` | String | The master seed, in hex format. A simple, widely-supported way to represent the secret key. Can be used to sign transactions. |
+| `master_seed_hex` | String | The master seed, in hex format. A simple, widely-supported way to represent the private key. Can be used to sign transactions. |
 | `master_key`      | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. An easier to remember, easier-to-write-down version of the private key. Can be used to sign transactions. |
 | `account_id`      | String | The [Address][] of the account in base58 format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. [Multi-signing lists](tutorial-multisign.html) also use these to identify other signers. |
 | `public_key`      | String | The public key of the key pair, in Ripple's [base58][] encoded string format. Derived from the `master_seed`. |

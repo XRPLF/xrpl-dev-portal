@@ -20,7 +20,7 @@ You generate a key pair using the [`wallet_propose`](reference-rippled.html#wall
 }
 ```
 
-The response contains a key pair, a private key and a public key (in various formats), as well as an `account_id`.
+The response contains a key pair (a private key and a public key, in various formats) as well as an `account_id`.
 
 **Private Key**
 
@@ -40,7 +40,7 @@ To create a funded account stored in the ledger, the `account_id` must [receive 
 
 For more information about the `wallet_propose` response, see [`wallet_propose`](reference-rippled.html#wallet-propose).
 
-You use this generated key pair in one of three ways: as [master keys](#master-key-pair), [regular keys](#regular-key-pair), or [signer list members](reference-transaction-format.html#multi-signing).
+You can use this generated key pair in one of three ways: as a [master key pair](#master-key-pair), [regular key pair](#regular-key-pair), or [signer list member](reference-transaction-format.html#multi-signing).
 
 
 ## Master Key Pair
@@ -70,15 +70,15 @@ The XRP Ledger allows an account to authorize a secondary key pair, called a _re
 
 You generate a key pair to use as a regular key pair using the [`wallet_propose`](reference-rippled.html#wallet-propose) method. However, unlike with a [master key pair](#master-key-pair), which is generated alongside and intrinsically related to the `account_id` of an account it supports, you must explicitly create the relationship between a regular key pair and the account you want it to sign transactions for. You use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method to assign a regular key pair to an account.
 
-For a tutorial on assigning a regular key pair, see [Working with Regular Keys](tutorial-regular-keys.html).
+For a tutorial on assigning a regular key pair, see [Working with a Regular Key Pair](tutorial-regular-keys.html).
 
 After you assign a regular key pair to an account, the account has two key pairs associated with it:
 
-* A "master" key pair that is intrinsically related to the account's `account_id` and which you keep offline.
-* A "regular" key pair that you've explicitly assigned to the account and which you use to sign transactions for the account.
+* A master key pair that is intrinsically related to the account's `account_id` and which you keep offline.
+* A regular key pair that you've explicitly assigned to the account and which you use to sign transactions for the account.
 
 You can assign one regular key pair to an account and use it to sign all transactions, except for the ones reserved for the [master key pair](#master-key-pair).
 
 You can remove or change a regular key pair at any time. This means that if a regular private key is compromised (but the master private key is not), you can regain control of your account by simply removing or changing the regular key pair.
 
-For a tutorial on changing or removing a regular key pair, see [Working with Regular Keys](tutorial-regular-keys.html).
+For a tutorial on changing or removing a regular key pair, see [Working with a Regular Key Pair](tutorial-regular-keys.html).
