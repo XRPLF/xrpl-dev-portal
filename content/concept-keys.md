@@ -1,6 +1,12 @@
 # Cryptographic Keys
 
-In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. A digital signature is created based on a key pair associated with the transaction's sending account.
+In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. <!-- STYLE_OVERRIDE: is authorized to -->
+
+Every digital signature is based on a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](reference-transactions.html#multi-signing), regardless of what algorithm was used to generate it.
+
+**Warning:** It is important to maintain proper security over your private keys. Digital signatures are the only way of verifying to the XRP Ledger that you are authorized to send a transaction, and there is no privileged administrator who can undo or reverse any transaction that has been applied to the ledger. If someone else knows the private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.
+
+## Generating Keys
 
 You generate a key pair using the [`wallet_propose`](reference-rippled.html#wallet-propose) method. Here's a sample `wallet_propose` response:
 
@@ -42,6 +48,9 @@ For more information about the `wallet_propose` response, see [`wallet_propose`]
 
 You can use this generated key pair in one of three ways: as a [master key pair](#master-key-pair), [regular key pair](#regular-key-pair), or [signer list member](reference-transaction-format.html#multi-signing).
 
+**Key Type**
+
+The field `key_type` indicates what [cryptographic signing algorithm](#signing-algorithms) was used to generate this key pair. You can specify the `key_type` in the request to
 
 ## Master Key Pair
 
@@ -82,3 +91,25 @@ You can assign one regular key pair to an account and use it to sign all transac
 You can remove or change a regular key pair at any time. This means that if a regular private key is compromised (but the master private key is not), you can regain control of your account by simply removing or changing the regular key pair.
 
 For a tutorial on changing or removing a regular key pair, see [Working with a Regular Key Pair](tutorial-regular-keys.html).
+
+
+## Signing Algorithms
+
+Cryptographic key pairs are always tied to a specific signing algorithm, which defines the mathematical relationships between the private key and the public key. Cryptographic signing algorithms have the property that, given the current state of cryptographic techniques, it is "easy" to use a private key to calculate a matching public key, but it is effectively impossible to compute a matching private key by starting from a public key.
+
+The XRP Ledger supports the following cryptographic signing algorithms:
+
+| Key Type    | Algorithm | Description |
+|-------------|-----------|---|
+| `secp256k1` | [ECDSA](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Algorithm-Validation-Program/documents/dss2/ecdsa2vs.pdf) using the elliptic curve [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | This is the scheme used in Bitcoin. The XRP Ledger uses these key types by default. |
+| `ed25519` | [EdDSA](https://tools.ietf.org/html/rfc8032) using the elliptic curve [Ed25519](https://ed25519.cr.yp.to/) | This is a newer algorithm which has better performance and other convenient properties. Since Ed25519 public keys are one byte shorter than secp256k1 keys, `rippled` prefixes Ed25519 public keys with the byte `0xED` so both types of public key are 33 bytes. |
+
+When you generate a key pair with the [`wallet_propose` command](reference-rippled.html#wallet-propose), you can specify the `key_type` to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the `key_type` when signing transactions.
+
+The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](concept-accounts.html#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
+
+**Note:** Currently, you cannot sign [payment channel claims](tutorial-paychan.html) with Ed25519 keys. This is a bug.
+
+### Future Algorithms
+
+In the future, Ripple expects to add new cryptographic signing algorithms to the XRP Ledger to keep up with developments in cryptography. For example, if it seems that quantum computers using [Shor's algorithm](https://en.wikipedia.org/wiki/Shor's_algorithm) (or something similar) will soon be practical enough to break elliptic curve cryptography, Ripple can add a cryptographic signing algorithm that isn't easily broken. As of early 2018, such "quantum-resistant" signing algorithms are relatively impractical and quantum computers are even more impractical, so Ripple has no immediate plans to add any specific algorithms.
