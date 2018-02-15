@@ -1,16 +1,16 @@
 # Capacity Planning
 
 
-Even the most minimally functional `rippled` server must contain the latest completed Ledgers to submit transactions to the network and verify the integrity of the XRP Ledger. Beyond these, consider the following server requirements:
+Even the most minimally functional `rippled` server must contain the most recently validated Ledger versions to submit transactions to the network and verify the integrity of the XRP Ledger. Beyond these, consider the following server requirements:
 
 - Handling ever-increasing transaction volume
 - Servicing transaction reporting information to clients
 - Maintaining varying amounts of historical data
 
-Planning for the server resources required to run `rippled` relies on understanding the impact of two factors:
+Capacity planning for `rippled` involves two factors:
 
 - The [configuration settings](#configuration-settings) that affect resource utilization
-- The commodity [network and hardware](#network-and-hardware) requirements to achieve scalable architecture with consistent performance across the XRP Ledger Network
+- The [network and hardware] (#network and hardware) requirements to achieve consistent, good performance across the XRP Ledger network
 
 ## Configuration Settings
 
