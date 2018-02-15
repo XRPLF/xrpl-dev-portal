@@ -2,7 +2,7 @@
 
 In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. <!-- STYLE_OVERRIDE: is authorized to -->
 
-Every digital signature is based on a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](reference-transactions.html#multi-signing), regardless of what algorithm was used to generate it.
+Every digital signature is based on a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](reference-transaction-format.html#multi-signing), regardless of what algorithm was used to generate it.
 
 **Warning:** It is important to maintain proper security over your private keys. Digital signatures are the only way of verifying to the XRP Ledger that you are authorized to send a transaction, and there is no privileged administrator who can undo or reverse any transaction that has been applied to the ledger. If someone else knows the private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.
 
