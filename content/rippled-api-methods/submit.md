@@ -272,11 +272,12 @@ The response follows the [standard format](#response-formatting), with a success
 #### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
-* `invalidTransaction` - The transaction is malformed or otherwise invalid.
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `amendmentBlocked` - The transaction cannot be submitted to the network because the `rippled` server is [amendment blocked](concept-amendments.html#amendment-blocked).
 * `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)
-* `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
-* `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
-* `internalTransaction` - An internal error occurred when processing the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
-* `internalSubmit` - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
 * `internalJson` - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `internalSubmit` - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `internalTransaction` - An internal error occurred when processing the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `invalidTransaction` - The transaction is malformed or otherwise invalid.
+* `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
+* `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)

@@ -86,16 +86,16 @@ When an amendment gets enabled for the network after the voting process, servers
 * Do not participate in the consensus process
 * Do not vote on future amendments
 
-Becoming amendment blocked is a security feature to protect backend applications. Rather than guessing and maybe misinterpreting a ledger after new rules have been applied, `rippled` reports that it does not know the state of the ledger because it does not know how the amendment works.
+Becoming amendment blocked is a security feature to protect applications that depend on XRP Ledger data. Rather than guessing and maybe misinterpreting a ledger after new rules have been applied, `rippled` reports that it does not know the state of the ledger because it does not know how the amendment works.
 
-The amendments that a `rippled` server is configured to vote for or against have no impact on whether the server becomes amendment blocked. A `rippled` server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if the enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.
+The amendments that a `rippled` server is configured to vote for or against have no impact on whether the server becomes amendment blocked. A `rippled` server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if an enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.
 
 If your server is amendment blocked, you must [upgrade to a new version](tutorial-rippled-setup.html#updating-rippled) to sync with the network.
 
 
 #### How to Tell If Your `rippled` Server Is Amendment Blocked
 
-One of the first signs that your `rippled` server is amendment blocked is an `amendmentBlocked` error that is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
+One of the first signs that your `rippled` server is amendment blocked is an `amendmentBlocked` error that is returned [when you submit a transaction](reference-rippled.html#submit). Here's an example `amendmentBlocked` error:
 
 ```
 {
@@ -215,8 +215,6 @@ In this example, conflicts with the following features are causing your `rippled
 * `F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064`
 
 To look up which `rippled` version supports these features, see [Known Amendments](reference-amendments.html).
-
-***TODO: Question: Do we think this is the workflow users will use to figure this out? If yes, then it might be nice for the user if the table at the top of the Known Amendments page would list amendment IDs. I know that it makes the table a little uglier, but the feature response doesn't always provide the short name and always provides the ID. The way the page is currently structured, the user will need to ctrl+f for the ID, note the short name, and then scroll back up to the table at the top to note the version. They'll need to do this for each amendment.***
 
 
 ## Testing Amendments
