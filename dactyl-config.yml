@@ -61,11 +61,13 @@ targets:
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
             "concept-keys.html": https://ripple.com/build/keys/
+            "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
             "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
             "concept-escrow.html": https://ripple.com/build/escrow/
             "concept-reaching-consensus.html": https://ripple.com/build/reaching-consensus-xrp-ledger/
+            "concept-history-sharding.html": https//ripple.com/build/history-sharding/
             "concept-fee-voting.html": https://ripple.com/build/fee-voting/
             "concept-fees.html": https://ripple.com/build/fees-disambiguation/
             "concept-freeze.html": https://ripple.com/build/freeze/
@@ -83,6 +85,7 @@ targets:
             "concept-money.html": https://ripple.com/build/money-xrp-ledger/
             "reference-currency.html": https://ripple.com/build/currency-format/
             "concept-demurrage.html": https://ripple.com/build/demurrage/
+            "concept-depositauth.html": https://ripple.com/build/deposit-authorization/
         image_subs:
             "img/funds_flow_diagram.png": https://cdn.ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
             "img/e2g-01.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-01.png
@@ -263,6 +266,14 @@ pages:
             - local
             - ripple.com
 
+    -   name: Build and Run rippled on Ubuntu
+        md: tutorial-build-run-rippled-ubuntu.md
+        html: tutorial-build-run-rippled-ubuntu.html
+        category: Tutorials
+        targets:
+            - local
+            - ripple.com
+
 #Features describe how the XRP Ledger works in a mostly conceptual manner
     -   name: Accounts
         category: Features
@@ -299,6 +310,12 @@ pages:
     -   category: Features
         html: concept-keys.html
         md: concept-keys.md
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-depositauth.md
+        category: Features
         targets:
             - local
             - ripple.com
@@ -366,6 +383,13 @@ pages:
         category: Features
         html: concept-reserves.html
         md: concept-reserves.md
+        targets:
+            - local
+            - ripple.com
+
+    -   category: Features
+        html: concept-history-sharding.html
+        md: concept-history-sharding.md
         targets:
             - local
             - ripple.com

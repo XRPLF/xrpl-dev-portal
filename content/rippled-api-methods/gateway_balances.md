@@ -201,6 +201,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 | `Field`                | Type   | Description                                |
 |:-----------------------|:-------|:-------------------------------------------|
+| `account`              | String | Unique [Address][] identifying the account that issued the balances. |
 | `obligations`          | Object | (Omitted if empty) Total amounts issued to addresses not excluded, as a map of currencies to the total value issued. |
 | `balances`             | Object | (Omitted if empty) Amounts issued to the `hotwallet` addresses from the request. The keys are addresses and the values are arrays of currency amounts they hold. |
 | `assets`               | Object | (Omitted if empty) Total amounts held that are issued by others. In the recommended configuration, the [issuing address](concept-issuing-and-operational-addresses.html) should have none. |

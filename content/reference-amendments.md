@@ -1,5 +1,6 @@
 # Known Amendments
-[[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/app/main/Amendments.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/main/Amendments.cpp "Source")
+<!--{# TODO: after 0.90.0 releases, change to https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/Feature.cpp #}-->
 
 The following is a comprehensive list of all known amendments and their status on the production XRP Ledger:
 
@@ -88,6 +89,8 @@ Adds a new account flag, `DepositAuth`, which lets an account strictly reject an
 When an account enables this flag, Payment transactions fail if the account is the destination, regardless of whether the Payment would have delivered XRP or an issued currency. EscrowFinish and PaymentChannelClaim transactions fail if the account is the destination unless the destination account itself sends those transactions. If the [Checks][] amendment is enabled, the account can receive XRP or issued currencies by sending CheckCash transactions.
 
 As an exception, accounts with `DepositAuth` enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum [account reserve](concept-reserves.html)) if their current XRP balance is below the account reserve.
+
+Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the DisallowXRP flag, which is meant to be a non-binding advisory flag. (By not enforcing DisallowXRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](concept-reserves.html) and pay [transaction costs](concept-transaction-cost.html).)
 
 **Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2239) and is expected for `rippled` v0.90.0.
 
