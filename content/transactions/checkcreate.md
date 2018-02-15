@@ -20,7 +20,7 @@ Example CheckCreate:
 }
 ```
 
-In addition to the [common fields](#common-fields), a CheckCancel transaction has the following:
+In addition to the [common fields](#common-fields), a CheckCreate transaction has the following:
 
 | Field            | JSON Type           | [Internal Type][] | Description     |
 |:-----------------|:--------------------|:------------------|:----------------|
