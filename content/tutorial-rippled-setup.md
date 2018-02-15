@@ -4,6 +4,7 @@ The core server of the XRP Ledger peer-to-peer network is [`rippled`](reference-
 
 This page contains instructions for:
 
+* [Capacity Planning for `rippled`](#capacity-planning)
 * [Installing `rippled`](#installing-rippled)
 * [Participating in the Consensus Process](#running-a-validator)
 
