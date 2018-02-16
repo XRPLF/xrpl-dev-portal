@@ -60,7 +60,7 @@ targets:
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
-            "concept-keys.html": https://ripple.com/build/keys/
+            "cryptographic-keys.html": https://ripple.com/build/cryptographic-keys/
             "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
@@ -260,7 +260,7 @@ pages:
             - ripple.com
 
     -   md: tutorial-regular-keys.md
-        html: tutorial-regular-keys.html
+        html: working-regular-key-pair.html
         category: Tutorials
         targets:
             - local
@@ -308,7 +308,7 @@ pages:
             - ripple.com
 
     -   category: Features
-        html: concept-keys.html
+        html: cryptographic-keys.html
         md: concept-keys.md
         targets:
             - local
