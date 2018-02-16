@@ -25,7 +25,7 @@ Any signature type can authorize any type of transaction, with the following exc
 * Only the master private key can [permanently give up the ability to freeze](concept-freeze.html#no-freeze).
 * You can never remove the last method of signing transactions from an address.
 
-For more information about master and regular key pairs, see [Cryptographic Keys](concept-keys.html).
+For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
 
 <!--{# Add this reference after signatures concept doc is published. For more information about signatures, see [Understanding Signatures](concept-signatures.html). #}-->
 
@@ -175,7 +175,7 @@ Example response from the `tx` command:
 
 ### Multi-Signing
 
-Multi-signing in the XRP Ledger is the act of [authorizing transactions](#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](concept-keys.html#master-key-pair), and a [regular key pair](concept-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
+Multi-signing in the XRP Ledger is the act of [authorizing transactions](#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](cryptographic-keys.html#master-key-pair), and a [regular key pair](cryptographic-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
 
 The [SignerListSet transaction][] defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
 

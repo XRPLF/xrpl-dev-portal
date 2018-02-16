@@ -80,7 +80,7 @@ The XRP Ledger allows an account to authorize a secondary key pair, called a _re
 
 You generate a key pair to use as a regular key pair using the [`wallet_propose`](reference-rippled.html#wallet-propose) method. However, unlike with a [master key pair](#master-key-pair), which is generated alongside and intrinsically related to the `account_id` of an account it supports, you must explicitly create the relationship between a regular key pair and the account you want it to sign transactions for. You use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method to assign a regular key pair to an account.
 
-For a tutorial on assigning a regular key pair, see [Working with a Regular Key Pair](tutorial-regular-keys.html).
+For a tutorial on assigning a regular key pair, see [Working with a Regular Key Pair](working-regular-key-pair.html).
 
 After you assign a regular key pair to an account, the account has two key pairs associated with it:
 
@@ -91,7 +91,7 @@ You can assign one regular key pair to an account and use it to sign all transac
 
 You can remove or change a regular key pair at any time. This means that if a regular private key is compromised (but the master private key is not), you can regain control of your account by simply removing or changing the regular key pair.
 
-For a tutorial on changing or removing a regular key pair, see [Working with a Regular Key Pair](tutorial-regular-keys.html).
+For a tutorial on changing or removing a regular key pair, see [Working with a Regular Key Pair](working-regular-key-pair.html).
 
 
 ## Signing Algorithms
