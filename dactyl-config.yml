@@ -61,6 +61,7 @@ targets:
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
             "cryptographic-keys.html": https://ripple.com/build/cryptographic-keys/
+            "working-regular-key-pair.html": https://ripple.com/build/working-regular-key-pair/
             "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
