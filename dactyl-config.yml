@@ -60,6 +60,7 @@ targets:
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
+            "cryptographic-keys.html": https://ripple.com/build/cryptographic-keys/
             "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
@@ -259,6 +260,13 @@ pages:
             - local
             - ripple.com
 
+    -   md: tutorial-regular-keys.md
+        html: working-regular-key-pair.html
+        category: Tutorials
+        targets:
+            - local
+            - ripple.com
+
     -   name: Build and Run rippled on Ubuntu
         md: tutorial-build-run-rippled-ubuntu.md
         html: tutorial-build-run-rippled-ubuntu.html
@@ -296,6 +304,13 @@ pages:
         category: Features
         html: concept-reaching-consensus.html
         md: concept-reaching-consensus.md
+        targets:
+            - local
+            - ripple.com
+
+    -   category: Features
+        html: cryptographic-keys.html
+        md: concept-keys.md
         targets:
             - local
             - ripple.com

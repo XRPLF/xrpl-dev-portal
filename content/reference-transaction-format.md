@@ -15,15 +15,20 @@ In the decentralized XRP Ledger, a digital signature proves that a transaction i
 
 A transaction can be authorized by any of the following types of signatures:
 
-* A single signature from the master secret key that is mathematically associated with the sending address. You can disable or enable the master key using an [AccountSet transaction][].
-* A single signature that matches a regular key associated with the address. You can add, remove, or replace a regular key using a [SetRegularKey transaction][].
+* A single signature from the master private key that is mathematically associated with the sending address. You can disable or enable the master key pair using an [AccountSet transaction][].
+* A single signature that matches the regular private key associated with the address. You can add, remove, or replace a regular key pair using a [SetRegularKey transaction][].
 * A [multi-signature](#multi-signing) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction][].
 
 Any signature type can authorize any type of transaction, with the following exceptions:
 
-* Only the master key can [disable the master key](#accountset-flags).
-* Only the master key can [permanently give up the ability to freeze](concept-freeze.html#no-freeze).
+* Only the master private key can [disable the master public key](#accountset-flags).
+* Only the master private key can [permanently give up the ability to freeze](concept-freeze.html#no-freeze).
 * You can never remove the last method of signing transactions from an address.
+
+For more information about master and regular key pairs, see [Cryptographic Keys](concept-keys.html).
+
+<!--{# Add this reference after signatures concept doc is published. For more information about signatures, see [Understanding Signatures](concept-signatures.html). #}-->
+
 
 ## Signing and Submitting Transactions
 
@@ -170,7 +175,7 @@ Example response from the `tx` command:
 
 ### Multi-Signing
 
-Multi-signing in the XRP Ledger is the act of [authorizing transactions](#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a master key, and a [regular key](#setregularkey). (The only requirement is that _at least one_ method must be enabled.)
+Multi-signing in the XRP Ledger is the act of [authorizing transactions](#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](concept-keys.html#master-key-pair), and a [regular key pair](concept-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
 
 The [SignerListSet transaction][] defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.
 

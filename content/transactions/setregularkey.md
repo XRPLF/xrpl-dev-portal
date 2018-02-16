@@ -2,7 +2,15 @@
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")
 
-A SetRegularKey transaction changes the regular key associated with an address.
+A `SetRegularKey` transaction assigns, changes, or removes the regular key pair associated with an account.
+
+You can protect your account by assigning a regular key pair to it and using it instead of the master key pair to sign transactions whenever possible. If your regular key pair is compromised, but your master key pair is not, you can use a `SetRegularKey` transaction to regain control of your account.
+
+For more information about regular and master key pairs, see [Cryptographic Keys](concept-keys.html).
+
+For a tutorial on assigning a regular key pair to an account, see [Working with a Regular Key Pair](tutorial-regular-keys.html).
+
+For even greater security, you can use [multi-signing](#multi-signing), but multi-signing requires additional XRP for the [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html).
 
 ```
 {
@@ -14,14 +22,6 @@ A SetRegularKey transaction changes the regular key associated with an address.
 }
 ```
 
-| Field      | JSON Type | [Internal Type][] | Description                     |
-|:-----------|:----------|:------------------|:--------------------------------|
-| RegularKey | String    | AccountID         | _(Optional)_ A base-58-encoded [Ripple address](reference-rippled.html#addresses) to use as the regular key. If omitted, removes the existing regular key. |
-
-In addition to the master key, which is mathematically-related to an address, you can associate **at most 1 additional key pair** with an address using this type of transaction. The additional key pair is called a _regular key_. If your address has a regular key pair defined, you can use the secret key of the regular key pair to [authorize transactions](#authorizing-transactions).
-
-A regular key pair is generated in the same way as any other Ripple keys (for example, with [wallet_propose](reference-rippled.html#wallet-propose)), but it can be changed. A master key pair is an intrinsic part of an address's identity (the address is derived from the master public key). You can [disable](#accountset-flags) a master key but you cannot change it.
-
-You can protect your master secret by using a regular key instead of the master key to sign transactions whenever possible. If your regular key is compromised, but the master key is not, you can use a SetRegularKey transaction to regain control of your address. In some cases, you can even send a [key reset transaction](concept-transaction-cost.html#key-reset-transaction) without paying the [transaction cost](#transaction-cost).
-
-For even greater security, you can use [multi-signing](#multi-signing), but multi-signing requires additional XRP for the [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html).
+| Field        | JSON Type | [Internal Type][] | Description                   |
+|:-------------|:----------|:------------------|:------------------------------|
+| `RegularKey` | String    | AccountID         | _(Optional)_ A base-58-encoded [Ripple address](reference-rippled.html#addresses) that indicates the regular key pair to be assigned to the account. If omitted, removes any existing regular key pair from the account. |
