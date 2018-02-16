@@ -50,7 +50,8 @@ You can use this generated key pair in one of three ways: as a [master key pair]
 
 **Key Type**
 
-The field `key_type` indicates what [cryptographic signing algorithm](#signing-algorithms) was used to generate this key pair. You can specify the `key_type` in the request to
+The field `key_type` indicates what [cryptographic signing algorithm](#signing-algorithms) was used to generate this key pair. You can specify the `key_type` when you make the request to generate a key pair using the [`wallet_propose` command](reference-rippled.html#wallet-propose).
+
 
 ## Master Key Pair
 
