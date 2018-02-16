@@ -118,6 +118,7 @@ targets:
             "img/currency-code-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/currency-code-format.png
             "img/currency-number-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/currency-number-format.png
             "img/demurrage-currency-code-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/demurrage-currency-code-format.png
+            "img/xrp-ledger-network-ledger-store-and-shard-store.png": https://cdn.ripple.com/wp-content/uploads/2018/02/xrp-ledger-network-ledger-store-and-shard-store.png
 
     -   name: rippled-setup
         display_name: rippled Setup Guide
