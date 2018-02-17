@@ -14,20 +14,20 @@ Capacity planning for `rippled` involves two factors:
 
 ## Configuration Settings
 
-Ripple recommends the following guidelines to improve performance, based on how our performance engineers evaluate the configuration properties listed. You can set the following parameters in the `rippled.cfg` file to improve performance for your `rippled` server.
+Ripple recommends the following guidelines to improve performance. You can set the following parameters in the `rippled.cfg` file to improve performance for your `rippled` server.
 
 ### Node Size
 
-The `node_size` parameter determines the size of database caches. For production systems, Ripple recommends that you always set it to `huge`. Increased cache size requires less disk I/O and allows `rippled` to improve performance. The trade-off to improving performance better is that memory requirements increase.
+The `node_size` parameter determines the size of database caches. For production systems, Ripple recommends that for production servers, you always set it to `huge`. Increased cache size requires less disk I/O and allows `rippled` to improve performance. The trade-off to improving performance better is that memory requirements increase.
 
 ### Node DB Type
 
 The `type` field in the `node_db` section of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to persist the XRP Ledger in the Ledger Store. You can set the value to either `rocksdb` or `nudb`. For setting the store that `rippled` uses to persist history shards, if you are participating in history sharding, see [History Sharding](XREF: concept-history-sharding.md#shard-store-configuration).
 
 #### RocksDB vs NuDB
-RocksDB requires approximately one-third less disk storage than NuDB and provides a corresponding improvement in I/O latency. However, this comes at a cost of increased memory utilization as storage size grows. Nudb, on the other hand, has nearly constant performance and memory footprint regardless of storage.
+RocksDB requires approximately one-third less disk storage than NuDB and provides a corresponding improvement in I/O latency. However, this comes at a cost of increased memory utilization as storage size grows. NuDB, on the other hand, has nearly constant performance and memory footprint regardless of storage.
 
-For `rippled` servers that operate as validators, which keep only a few days' worth of data or less, Ripple recommends using RocksDB. For all other uses, Ripple recommends users configure NuDB for the Ledger Store. Nudb has no performance-related configuration options. But tuning parameters are available for RocksDB that have been used to help achieve maximum tested transaction processing throughput, and are as follows:
+For `rippled` servers that operate as validators, which keep only a few days' worth of data or less, Ripple recommends using RocksDB. For all other uses, Ripple recommends users configure NuDB for the Ledger Store. NuDB has no performance-related configuration options. But tuning parameters are available for RocksDB that have been used to help achieve maximum tested transaction processing throughput, and are as follows:
 
 ```
 [node_db]
@@ -42,12 +42,13 @@ path={path_to_ledger_store}
 
 ### Historical Data
 
-The amount of historical data kept online, as set in the `online_delete` and  `advisory_delete` field, is a major contributor to required storage space. Currently, about 12GB of data is stored per day. However, you should expect this amount to grow as transaction volume increases across the XRP Ledger Network.
+The amount of historical data kept online, as set in the `online_delete` and  `advisory_delete` field, is a major contributor to required storage space. Currently, about 12GB of data is stored per day. However, you should expect this amount to grow as transaction volume increases across the XRP Ledger network.
 
 ### Log Level
 
-The default logging verbosity for `rippled` in the `log_level` field is set to `debug` and requires several GB or more per day, depending on transaction volumes and client activity. Setting this to a lower level, such as warning, greatly reduces the space and I/O write requirements. The trade-off to a lower setting is decreased visibility for trouble-shooting problems.
+The default `rippled.cfg` file configures the logging verbosity to `warning`. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility when troubleshooting.
 
+**Note:** If you omit the `log_level` command from the `[rpc_startup]` stanza, `rippled` falls back to `debug` level logging, which requires several more GB of disk space per day, depending on transaction volumes and client activity.
 
 ## Network and Hardware
 
@@ -91,5 +92,4 @@ Amazon Web Services (AWS) is a popular virtualized hosting environment, and you 
 
 AWS instance stores (`ephemeral` storage) do not have these constraints. Therefore, Ripple recommends deploying `rippled` servers with host types such as `M3` that have instance storage. The `database_path` and `node_db` path should each reside on instance storage.
 
-**Caution:** AWS instance storage is not guaranteed to provide durability in the event of hard drive failure. Further, data will be lost when the instance is stopped and restarted (but not when just rebooted).
-
+**Caution:** AWS instance storage is not guaranteed to provide durability in the event of hard drive failure. Further, data that is lost when the instance stops and restarts (but not when just rebooted). This loss can be acceptable for a `rippled` server because an individual server can usually re-acquire that data from its peer servers.

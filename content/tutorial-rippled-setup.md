@@ -71,16 +71,15 @@ Production `rippled` instances can [use Ripple's binary executable](#installatio
 A `rippled` server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, we recommend the following mimimum requirements:
 
 - Operating System:
-    - Production: CentOS or RedHat Enterprise Linux (latest release) or Ubuntu (15.04+) supported
+    - Production: CentOS or RedHat Enterprise Linux (latest release) or Ubuntu (16.04+) supported
     - Development: Mac OS X, Windows (64-bit), or most Linux distributions
 - CPU: 64-bit x86_64, 2+ cores
 - Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
 - RAM: 4+GB
 
-Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load will increase resources needs.
+Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.
 
-**Tip:** For recommendation beyond the minimum requirements, see [Capacity Planning](#capacity-planning).
-
+**Tip:** For recommendations beyond the minimum requirements, see [Capacity Planning](#capacity-planning).
 
 ## Installation on CentOS/Red Hat with yum
 
