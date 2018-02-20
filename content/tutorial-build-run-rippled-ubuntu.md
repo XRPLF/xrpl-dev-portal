@@ -59,19 +59,19 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 9. Compile Boost.
 
-    Starting in `rippled` 0.90, the compatible Boost version is 1.66.0. Because Boost version 1.66.0 isn't available in the Ubuntu 16.04 repos, you must compile it yourself.
+    Starting in `rippled` 0.90.0, the recommended Boost version is 1.64.0. Because Boost version 1.64.0 isn't available in the Ubuntu 16.04 repos, you must compile it yourself.
 
-      a. Download Boost 1.66.0.
+      a. Download Boost 1.64.0.
 
-          wget https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz
+          wget https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.gz
 
-      b. Untar `boost_1_66_0.tar.gz`.
+      b. Untar `boost_1_64_0.tar.gz`.
 
-          tar xvzf boost_1_66_0.tar.gz
+          tar xvzf boost_1_64_0.tar.gz
 
-      c. Access the new `boost_1_66_0` directory:
+      c. Access the new `boost_1_64_0` directory:
 
-          cd boost_1_66_0
+          cd boost_1_64_0
 
       d. To prepare the Boost.Build system for use, run:
 
@@ -81,9 +81,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
           ./b2 -j <number of jobs>
 
-      f. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_66_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      f. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_64_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-          export BOOST_ROOT=/home/ubuntu/boost_1_66_0
+          export BOOST_ROOT=/home/ubuntu/boost_1_64_0
 
       g. Source your updated `.profile` file. For example:
 
