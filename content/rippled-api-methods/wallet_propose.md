@@ -180,7 +180,7 @@ You can also use this method to generate a key pair to use as a regular key pair
 
 In addition to using it as a regular key pair, you can also use it as a member of a multi-signing list (SignerList).
 
-For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html)
+For more information about master and regular key pairs, see [Cryptographic Keys](concept-cryptographic-keys.html)
 
 For more information about multi-signing and signer lists, see [Multi-Signing](reference-transaction-format.html#multi-signing).
 

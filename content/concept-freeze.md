@@ -1,5 +1,4 @@
-Freeze Features
-===============
+# Freezing Issued Currencies
 
 The XRP Ledger gives addresses the ability to freeze non-XRP balances, which can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:
 
@@ -12,8 +11,7 @@ Because no party has a privileged place in the XRP Ledger, the freeze feature ca
 All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the currency issuer or the currency holder can freeze a trust line; however, the effect of a currency holder freezing an issuer is minimal.
 
 
-Individual Freeze
------------------
+## Individual Freeze
 
 The **Individual Freeze** feature is a setting on a trust line. When an issuing address enables the Individual Freeze setting, the following rules apply:
 
@@ -31,8 +29,7 @@ The Individual Freeze applies to a single currency only. To freeze multiple curr
 An address cannot enable the Individual Freeze setting if it has enabled the [No Freeze](#no-freeze) setting.
 
 
-Global Freeze
--------------
+## Global Freeze
 
 The **Global Freeze** feature is a setting on an address. When an issuing address enables the Global Freeze feature, the following rules apply:
 
@@ -49,8 +46,7 @@ Global Freeze applies to _all_ currencies issued and held by the address. You ca
 An address can always enable the Global Freeze setting. However, if the address has enabled the [No Freeze](#no-freeze) setting, it can never _disable_ Global Freeze.
 
 
-No Freeze
----------
+## No Freeze
 
 The **No Freeze** feature is a setting on an address that permanently gives up the ability to freeze counterparties. A business can use this feature to treat its issued funds as "more like physical money" in the sense that the business cannot interfere with customers trading it among themselves. The NoFreeze setting has two effects:
 
@@ -64,11 +60,11 @@ The No Freeze setting applies to all currencies issued to and from an address. I
 You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a [Regular Key](reference-transaction-format.html#setregularkey) or a [multi-signed transaction](reference-transaction-format.html#multi-signing) to enable No Freeze.
 
 
-# Technical Details #
+# Technical Details
 
-## Enabling or Disabling Individual Freeze ##
+## Enabling or Disabling Individual Freeze
 
-### Using `rippled` ###
+### Using `rippled`
 
 To enable or disable Individual Freeze on a specific trust line, send a `TrustSet` transaction. Use the [`tfSetFreeze` flag](reference-transaction-format.html#trustset-flags) to enable a freeze, and the `tfClearFreeze` flag to disable it. The fields of the transaction should be as follows:
 
@@ -112,7 +108,7 @@ Example of submitting a TrustSet transaction to enable an individual freeze usin
 **Caution:** Never send your secret key to an untrusted server or over an insecure channel.
 
 
-### Using RippleAPI ###
+### Using RippleAPI
 
 To enable or disable Individual Freeze on a specific trust line, prepare a *Trustline* transaction using the [prepareTrustline](reference-rippleapi.html#preparetrustline) method. The fields of the `trustline` parameter should be set as follows:
 
@@ -132,9 +128,9 @@ Example JavaScript (ECMAScript 6) code to enable Individual Freeze on a trust li
 ```
 
 
-## Enabling or Disabling Global Freeze ##
+## Enabling or Disabling Global Freeze
 
-### Using `rippled` ###
+### Using `rippled`
 
 To enable Global Freeze on an address, send an `AccountSet` transaction with the [asfGlobalFreeze flag value](reference-transaction-format.html#accountset-flags) in the `SetFlag` field. To disable Global Freeze, put the asfGlobalFreeze flag value in the `ClearFlag` field instead.
 
@@ -162,7 +158,7 @@ Example of submitting an AccountSet transaction to enable Global Freeze using th
 **Caution:** Never send your secret key to an untrusted server or over an insecure channel.
 
 
-### Using RippleAPI ###
+### Using RippleAPI
 
 To enable or disable Global Freeze on an address, prepare a **Settings** transaction using the [prepareSettings](reference-rippleapi.html#preparesettings) method. The `settings` parameter should be an object set as follows:
 
@@ -180,9 +176,9 @@ Example JavaScript (ECMAScript 6) code to enable Global Freeze on an address:
 
 
 
-## Enabling No Freeze ##
+## Enabling No Freeze
 
-### Using `rippled` ###
+### Using `rippled`
 
 To enable No Freeze on an address, send an `AccountSet` transaction with the [asfNoFreeze flag value](reference-transaction-format.html#accountset-flags) in the `SetFlag` field. You must sign this transaction using the master key. Once enabled, you cannot disable No Freeze.
 
@@ -211,7 +207,7 @@ WebSocket request:
 
 **Caution:** Never send your secret key to an untrusted server or over an insecure channel.
 
-### Using RippleAPI ###
+### Using RippleAPI
 
 To enable No Freeze on an address, prepare a **Settings** transaction using the [prepareSettings](reference-rippleapi.html#preparesettings) method. Once enabled, you cannot disable No Freeze. The `settings` parameter should be an object set as follows:
 
@@ -228,9 +224,9 @@ Example JavaScript (ECMAScript 6) code to enable No Freeze on an address:
 ```
 
 
-## Checking for Individual Freeze ##
+## Checking for Individual Freeze
 
-### Using `rippled` ###
+### Using `rippled`
 
 To see if a trust line has an Individual Freeze enabled, use the [`account_lines` method](reference-rippled.html#account-lines) with the following parameters:
 
@@ -288,7 +284,7 @@ Example WebSocket response:
 The field `"freeze": true` indicates that rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn has enabled Individual Freeze on the USD trust line to rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW. The lack of a field `"freeze_peer": true` indicates that the counterparty has _not_ frozen the trust line.
 
 
-### Using RippleAPI ###
+### Using RippleAPI
 
 To see if a trust line has an Individual Freeze enabled, use the [`getTrustlines` method](reference-rippleapi.html#gettrustlines) with the following parameters:
 
@@ -311,9 +307,9 @@ Example JavaScript (ECMAScript 6) code to check whether a trust line is frozen:
 ```
 
 
-## Checking for Global Freeze and No Freeze ##
+## Checking for Global Freeze and No Freeze
 
-### Using `rippled` ###
+### Using `rippled`
 
 To see if an address has enabled Global Freeze, No Freeze, or both, use the [`account_info` method](reference-rippled.html#account-lines) with the following parameters:
 
@@ -385,7 +381,7 @@ console.log(currentFlags & lsfNoFreeze); //0
 //therefore, No Freeze is not enabled
 ```
 
-### Using RippleAPI ###
+### Using RippleAPI
 
 To see if an address has enabled Global Freeze, No Freeze, or both, use the [`getSettings` method](reference-rippleapi.html#getsettings) with the following parameters:
 
@@ -406,7 +402,7 @@ Example JavaScript (ECMAScript 6) code to check whether an address has Global Fr
 {% include 'code_samples/freeze/check-global-freeze-no-freeze.js' %}
 ```
 
-# See Also #
+# See Also
 
 * [GB-2014-02 New Feature: Balance Freeze](https://ripple.com/files/GB-2014-02.pdf)
 * [Freeze Code Samples](https://github.com/ripple/ripple-dev-portal/tree/master/content/code_samples/freeze)
