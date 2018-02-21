@@ -4,7 +4,7 @@
 
 ***TODO: Question: Added this concept section based on fantastic source material from Rome -- thought we should publish it. Useful? May be good to associate it with a flow diagram - like the one for address encoding: https://ripple.com/build/accounts/#address-encoding. Address both single and multi-sign flows.***
 
-In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. A digital signature is created based on a [key pair](cryptographic-keys.html) associated with the transaction's sending account.
+In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. A digital signature is created based on a [key pair](concept-cryptographic-keys.html) associated with the transaction's sending account.
 
 Here's an overview of some of the more common signature-related fields used in the XRP Ledger.
 
@@ -20,7 +20,7 @@ To verify whether a single-signed transaction is valid, a `rippled` server check
 
 1. This key hashes to an address that's authorized by the transaction's sender.
 
-    The default is that only the address of an account is authorized to send all transactions for that account. That address is [derived from](concept-accounts.html#address-encoding) the public key from the master key pair that was generated during address creation. Regular keys add a different address (derived from a different key pair) that's authorized to send most transactions. And of course, you can also disable the [master key](cryptographic-keys.html) or add a [multi-signing list](reference-transaction-format.html#multi-signing). ***TODO: address from Ryan: "And of course" - Nit: this seems a little informal. Maybe just drop it and go into the next sentence? JHA take a closer look at what this sentence is trying to say.***
+    The default is that only the address of an account is authorized to send all transactions for that account. That address is [derived from](concept-accounts.html#address-encoding) the public key from the master key pair that was generated during address creation. Regular keys add a different address (derived from a different key pair) that's authorized to send most transactions. And of course, you can also disable the [master key](concept-cryptographic-keys.html) or add a [multi-signing list](reference-transaction-format.html#multi-signing). ***TODO: address from Ryan: "And of course" - Nit: this seems a little informal. Maybe just drop it and go into the next sentence? JHA take a closer look at what this sentence is trying to say.***
 
 2. This key matches the signature on the transaction.
 
