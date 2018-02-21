@@ -4,7 +4,7 @@
 
 As servers operate, they naturally produce a database containing data about the ledgers they witnessed or acquired during network runtime. Each `rippled` server stores that ledger data in its ledger store, but the online delete logic rotates these databases when the number of stored ledgers exceeds configured space limitations.
 
-Historical sharding distributes the transaction history of the XRP Ledger into segments, called shards, across servers in the XRP Ledger network. A shard is a range of ledgers, consisting of a header and two SHAMaps. A `rippled` server stores ledgers in both the ledger store and the shard store in the same way.
+Historical sharding distributes the transaction history of the XRP Ledger into segments, called shards, across servers in the XRP Ledger network. A shard is a range of ledgers. A `rippled` server stores ledgers in both the ledger store and the shard store in the same way.
 
 Using the history sharding feature, individual `rippled` servers can contribute to storing historical data without needing to store the entire (multiple terabyte) history. A shard store does not replace a ledger store, but implements a reliable path towards distributed ledger history across the XRP Ledger Network.
 
@@ -50,7 +50,6 @@ Determining a suitable size for the shard store involves careful consideration. 
 - The ledger store history size should at minimum be twice the ledgers per shard, due to the fact that the current shard may be chosen to be stored and it would be wasteful to reacquire that data.
 - The time to acquire, number of file handles, and memory cache usage is directly affected by sizing.
 - Each shard contains 2^14 ledgers (16384).
--  A shard occupies approximately 200 MB to 4 GB based on the age of the shard. Older shards are smaller because there was less activity in the XRP Ledger at the time.
 - A shard occupies approximately 200 MB to 4 GB based on the age of the shard. Older shards are smaller because there was less activity in the XRP Ledger at the time.
 
 {% include 'snippets/rippled_versions.md' %}
