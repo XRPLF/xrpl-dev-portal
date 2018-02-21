@@ -56,7 +56,7 @@ If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (
 
 ## See Also
 
-- The [Authorized Accounts](tutorial-gateway-guide.html#authorized-accounts) feature (`RequireAuth` flag) limits which counterparties can hold non-XRP currencies issued by an account.
+- The [Authorized Trust Lines](concept-authorized-trust-lines.html) feature (`RequireAuth` flag) limits which counterparties can hold non-XRP currencies issued by an account.
 - The `DisallowXRP` flag indicates that an account should not receive XRP. This is a softer protection than Deposit Authorization, and is not enforced by the XRP Ledger. (Client applications should honor this flag or at least warn about it.)
 - The `RequireDest` flag indicates that an account can only receive currency amounts if the sending transaction specifies a [Destination Tag](tutorial-gateway-guide.html#source-and-destination-tags). This protects users from forgetting to indicate the purpose of a payment, but does not protect recipients from unknown senders, who can make up arbitrary destination tags.
 - [Partial Payments](concept-partial-payments.html) provide a way for accounts to return unwanted payments while subtracting [transfer fees](concept-transfer-fees.html) and exchange rates from the amount delivered instead of adding them to the amount sent.

@@ -65,6 +65,7 @@ targets:
             "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
+            "concept-authorized-trust-lines.html": https://ripple.com/build/authorized-trust-lines/ #TODO
             "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
             "concept-escrow.html": https://ripple.com/build/escrow/
             "concept-reaching-consensus.html": https://ripple.com/build/reaching-consensus-xrp-ledger/
@@ -424,6 +425,12 @@ pages:
         category: Features
         html: concept-noripple.html
         md: concept-noripple.md
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-authorized-trust-lines.md
+        category: Features
         targets:
             - local
             - ripple.com
