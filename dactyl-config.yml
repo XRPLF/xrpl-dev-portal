@@ -129,6 +129,12 @@ targets:
             "reference-rippled.html": https://ripple.com/build/rippled-apis/
 
 pages:
+    -   md: concept-xrp-ledger-intro.md
+        category: Introduction
+        targets:
+            - local
+            - ripple.com
+
 # References are exhaustive lists of commands and options
     -   name: RippleAPI
         category: References
