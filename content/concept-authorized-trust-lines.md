@@ -1,6 +1,6 @@
 # Authorized Trust Lines
 
-The XRP Ledger's Authorized Trust Lines feature enables a currency issuer to limit who can hold its issued currencies, so that unknown XRP Ledger addresses cannot hold those currencies. The Authorized Trust Lines feature has no effect on XRP.
+The XRP Ledger's Authorized Trust Lines feature enables a currency issuer to limit who can hold its issued (non-XRP) currencies, so that unknown XRP Ledger addresses cannot hold those currencies. The Authorized Trust Lines feature only applies to issued currencies and has no effect on XRP.
 
 To use the Authorized Trust Lines feature, enable the RequireAuth flag on your issuing address. After doing so, your issuing address can send [TrustSet transactions][] to authorize trust lines from other addresses. While RequireAuth is enabled, other addresses can only hold funds issued by your address if the trust line to your issuing address has been authorized.
 
