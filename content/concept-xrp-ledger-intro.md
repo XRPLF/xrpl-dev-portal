@@ -8,7 +8,7 @@ XRP is the native cryptocurrency of the XRP Ledger. Anyone with a cryptographic 
 
 - **[Censorship-resistant transaction processing][]:** No single party decides which XRP transactions are approved or not, and no one can "roll back" a transaction after it has happened. As long as those who choose to participate in the network keep it healthy, XRP can be sent and received in seconds.
 - **[Fast, Efficient Consensus Algorithm][]:** The XRP Ledger's consensus algorithm settles transactions in 4 to 5 seconds, processing at a throughput of up to 1500 transactions per second. These properties put XRP orders of magnitude ahead of other top digital assets.
-- **[Finite XRP Supply][]:** When the XRP Ledger began, 100 billion XRP were created, and no more XRP can be created since. (Each XRP is subdivisible down to 6 decimal places, for a grand total of 100 quintillion "drops" of XRP.) The available supply of XRP decreases slowly over time as small amounts are destroyed to pay transaction costs.
+- **[Finite XRP Supply][]:** When the XRP Ledger began, 100 billion XRP were created, and no more XRP can be created after that. (Each XRP is subdivisible down to 6 decimal places, for a grand total of 100 quintillion "drops" of XRP.) The available supply of XRP decreases slowly over time as small amounts are destroyed to pay transaction costs.
 - **[Responsible Software Governance][]:** The XRP Ledger's software is maintained by a team of world-class developers at Ripple, who maintain the security of the network while adding features and stewarding future developments. Ripple acts as a steward for the software and an advocate for its interests, so the XRP Ledger ecosystem has a constructive relationship with governments and financial institutions, not an adversarial one.
 - **[Secure, Adaptable Cryptography][]:** The XRP Ledger relies on industry standard digital signature systems like ECDSA (the same scheme used by Bitcoin) but also supports modern, efficient algorithms like Ed25519. The extensible nature of the XRP Ledger's software makes it possible to add and disable algorithms as the state of the art in cryptography advances.
 - **[Smart Features for Smart Contracts][]:** The XRP Ledger has features like Escrow, Checks, and Payment Channels to support building cutting-edge financial applications, especially the [Interledger Protocol](https://interledger.org/). This toolbox of advanced features comes with separate double-checks on invariant rules, so even a glitch in the transaction implementation won't cause the XRP Ledger to become inconsistent or corrupt.
@@ -17,7 +17,11 @@ XRP is the native cryptocurrency of the XRP Ledger. Anyone with a cryptographic 
 ## Censorship-Resistant Transaction Processing
 [Censorship-resistant transaction processing]: #censorship-resistant-transaction-processing
 
-***TODO: write this***
+With (physical) coins and paper money, individuals can do business without going through a central party. Non-cryptocurrency digital assets all have a central administrator to confirm and validate transactions, who also has the power to censor or roll back transactions, or disallow some individuals from using the digital asset. (For example, if a digital money company decides a person has violated its terms of service, it can freeze or even confiscate that person's money.) XRP and other cryptocurrencies don't have a central administrator, so no one can roll back transactions, freeze XRP balances, or block someone from using them.
+
+**Note:** Non-XRP currencies issued in the XRP Ledger _can_ be frozen. For more information, see the [Freeze documentation](concept-freeze.html).
+
+***TODO: talk about how validators make it possible that the XRP Ledger can be more decentralized than mining-based coins where power concentrates with cheap electricity.***
 
 ## Fast, Efficient Consensus Algorithm
 [Fast, Efficient Consensus Algorithm]: #fast-efficient-consensus-algorithm
@@ -26,25 +30,36 @@ The XRP Ledger's biggest difference from most cryptocurrencies is that it uses a
 
 For more information on how the XRP Ledger's consensus algorithm works, see [The XRP Ledger Consensus Process](concept-consensus.html). For background on why the XRP Ledger uses a consensus algorithm, see [Reaching Consensus In the XRP Ledger](concept-reaching-consensus.html).
 
+
 ## Finite XRP Supply
 [Finite XRP Supply]: #finite-xrp-supply
 
-***TODO: write this***
+Alongside war and political turmoil, hyperinflation is one of the leading causes of death for currencies. While the decentralized system of validators provides XRP with some resistance to political factors, the rules of the XRP Ledger provide a simpler solution to hyperinflation: the total supply of XRP is finite. Without a mechanism to create more, it becomes much less likely that XRP could suffer hyperinflation.
+
+The supply of XRP available to the general _does_ change due to a few factors:
+
+- Sending transactions in the XRP Ledger destroys a small amount of XRP. Senders choose how much to destroy, with certain minimums based on the expected work of processing the transaction and how busy the network is. If the network is busy, potential transactions that promise to destroy more XRP can cut in front of the transaction queue. This is an anti-spam measure to make it prohibitively expensive to [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) the XRP Ledger network. For more information, see [Transaction Cost](concept-transaction-cost.html).
+- Each account in the XRP Ledger must hold a small amount of XRP in reserve. This is an anti-spam measure to disincentivize making the ledger data occupy too much space. XRP Ledger validators can vote to change the amount of XRP required as a reserve, to compensate for changes in XRP's real-world value. (The last time this happened was in December 2013, when [the reserve requirement decreased from 50 XRP to 20 XRP](https://ripple.com/insights/proposed-change-to-ripple-reserve-requirement-2/).) If the reserve requirement decreases, XRP that was previously locked up by the reserve becomes available again.
+- Ripple (the company) holds a large reserve of XRP in escrow. At the start of each month, 1 billion XRP is released from escrow for Ripple to use. (Ripple uses XRP to incentivize growth in the XRP Ledger ecosystem and sells XRP to institutional investors.) At the end of each month, any remaining XRP the company does not sell or give away is stored into escrow for a 54-month period. For more information on Ripple's escrow policy, see [Ripple Escrows 55 Billion XRP for Supply Predictability](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/). For more information on the technical capabilities of the Escrow feature, see [Escrow](concept-escrow.html).
+
 
 ## Responsible Software Governance
 [Responsible Software Governance]: #responsible-software-governance
 
 ***TODO: write this***
 
+
 ## Secure, Adaptable Cryptography
 [Secure, Adaptable Cryptography]: #secure-adaptable-cryptography
 
 ***TODO: write this***
 
+
 ## Smart Features for Smart Contracts
 [Smart Features for Smart Contracts]: #smart-features-for-smart-contracts
 
 ***TODO: write this***
+
 
 ## On-Ledger Decentralized Exchange
 [On-Ledger Decentralized Exchange]: #on-ledger-decentralized-exchange
