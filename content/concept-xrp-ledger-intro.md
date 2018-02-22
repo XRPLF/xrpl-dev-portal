@@ -21,7 +21,8 @@ With (physical) coins and paper money, individuals can do business without going
 
 **Note:** Non-XRP currencies issued in the XRP Ledger _can_ be frozen. For more information, see the [Freeze documentation](concept-freeze.html).
 
-***TODO: talk about how validators make it possible that the XRP Ledger can be more decentralized than mining-based coins where power concentrates with cheap electricity.***
+Furthermore, the XRP Ledger's system of trusted validators uses a small amount of human interaction to achieve better distribution of authority than other decentralized systems. Fully-automated systems for reaching consensus from an unknown set of participants are vulnerable to concentrations of voting power. For example, Bitcoin mining is disproportionately concentrated in places with cheap electricity. As Ripple curates a list of distinct validators operated by different entities in different jurisdictions, the XRP Ledger can become more resistant to censorship and outside pressures than proof-of-work mining. For more information on Ripple's plan to decentralize the recommended set of validators, see the  [Decentralization Strategy Update](https://ripple.com/dev-blog/decentralization-strategy-update/).
+
 
 ## Fast, Efficient Consensus Algorithm
 [Fast, Efficient Consensus Algorithm]: #fast-efficient-consensus-algorithm
@@ -46,7 +47,14 @@ The supply of XRP available to the general _does_ change due to a few factors:
 ## Responsible Software Governance
 [Responsible Software Governance]: #responsible-software-governance
 
-***TODO: write this***
+Any piece of software can only be as good as the developers who code and manage it. Ripple employs a team of world-class engineers dedicated full-time to maintaining and improving the XRP Ledger software, especially the core server, `rippled`. The [source code for `rippled`](https://github.com/ripple/rippled/) is available to the public with a permissive open-source license, as are many other parts of the XRP Ledger ecosystem. Ripple engineers follow best practices for software engineering, including:
+
+- A famously strict and thorough code review process
+- Comprehensive code coverage and unit tests
+- Regularly running automated checks for potential vulnerabilities and memory leaks
+- Regularly commissioning external reviews by professional organizations
+
+The XRP Ledger also has a built-in "Amendments" system for evolving the existing feature set and transitioning from old rules to new ones. Rather than fracturing the ecosystem or causing uncertainty whenever a transition occurs, any changes to transaction processing in the XRP Ledger are switched on by Amendments that require sustained approval from validators over 2 weeks, giving everyone time to evaluate the changes before they apply, and upgrade their servers appropriately. The system also prevents outdated servers from reporting incorrect data when the rules of the network have changed. For more on how Amendments work, see [Amendments](concept-amendments.html).
 
 
 ## Secure, Adaptable Cryptography
