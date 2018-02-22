@@ -60,16 +60,29 @@ The XRP Ledger also has a built-in "Amendments" system for evolving the existing
 ## Secure, Adaptable Cryptography
 [Secure, Adaptable Cryptography]: #secure-adaptable-cryptography
 
-***TODO: write this***
+Cryptography is one of the hardest parts of any distributed system, and a mistake can lead to money stolen by malicious actors anywhere in the world. The XRP Ledger uses industry-standard schemes for signing and verifying transactions, algorithms that have successfully protected hundreds of billions of US dollars' worth of value for many years. The XRP Ledger also layers multi-signing functionality so you can use multi-factor authorization or split keys across multiple people as a backup, and provides new algorithms with a path to migrate the keys you use if a breakthrough in cryptography makes the old algorithms obsolete.
+
+For more information, see [Cryptographic Keys](concept-cryptographic-keys.html) and [Multi-signing](reference-transaction-format.html#multi-signing).
 
 
 ## Smart Features for Smart Contracts
 [Smart Features for Smart Contracts]: #smart-features-for-smart-contracts
 
-***TODO: write this***
+Besides simple value transfer via XRP payments, the XRP Ledger has several advanced features that provide useful functions for building applications that use Internet of Value to serve previously unknown or impractical needs. Rather than running applications as "smart contracts" in the network itself, the XRP Ledger provides tools for contracts, while letting the applications themselves run anywhere, in whatever environment or container is appropriate. This "keep it simple" approach is flexible, scalable, and powerful.
+
+A sample of advanced features in the XRP Ledger:
+
+- [Payment Channels](tutorial-paychan.html) allow asynchronous balance changes as fast as you can create and validate signatures.
+- [Escrow](concept-escrow.html) locks up XRP until a dedicated time or cryptographic condition.
+- [DepositAuth](concept-depositauth.html) lets an address decide who can send it money and who can't.
+- And of course, there's the [decentralized exchange](#on-ledger-decentralized-exchange) for trading obligations on-ledger...
+
+To ensure that the various functions of the XRP Ledger function as intended, a second layer of protections, called "Invariant Checking" confirms that every transaction follows strict rules and fails transactions that result in behavior outside the defined constraints. With invariant checking, even a bug in transaction processing can't do things like create XRP, delete important data, or cause objects in the ledger to change formats unexpectedly. For more information, see [Protecting the Ledger: Invariant Checking](https://ripple.com/dev-blog/protecting-ledger-invariant-checking/).
 
 
 ## On-Ledger Decentralized Exchange
 [On-Ledger Decentralized Exchange]: #on-ledger-decentralized-exchange
 
-***TODO: write this***
+One of the biggest features that sets the XRP Ledger apart from other cryptocurrency networks is that it also contains a full currency exchange that runs on the XRP Ledger. Within this system, businesses (typically called "gateways") can freely issue any currency they want to customers, and those customers can freely trade issued currencies for XRP or other issued currencies issued by any gateway. The XRP Ledger can execute atomic cross-currency transactions this way, using orders in the exchange to provide liquidity.
+
+For more information on how the decentralized exchange works, see [Money in the XRP Ledger](concept-money.html) and [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer). For more information on the gateway business model, see the [Gateway Guide](tutorial-gateway-guide.html).
