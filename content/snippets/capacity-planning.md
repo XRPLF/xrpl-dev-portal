@@ -18,7 +18,7 @@ Ripple recommends the following guidelines to improve performance. You can set t
 
 ### Node Size
 
-The `node_size` parameter determines the size of database caches. For production systems, Ripple recommends that for production servers, you always set it to `huge`. Increased cache size requires less disk I/O and allows `rippled` to improve performance. The trade-off to improving performance better is that memory requirements increase.
+The `node_size` parameter determines the size of database caches. Ripple recommends you always set it to `huge` for production servers. Increased cache size requires less disk I/O and allows `rippled` to improve performance. The trade-off to improving performance better is that memory requirements increase.
 
 ### Node DB Type
 
@@ -61,7 +61,9 @@ For best performance in enterprise production environments, Ripple recommends ru
 - Operating System: Ubuntu 16.04+
 - CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
 - Disk: SSD
-- RAM: 32 GB RAM
+- RAM:
+	- For testing: 8GB+
+	- For production: 32GB
 - Network: Enterprise data center network with a gigabit network interface on the host
 
 #### SSD Storage
