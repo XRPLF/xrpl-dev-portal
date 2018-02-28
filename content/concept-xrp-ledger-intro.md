@@ -24,11 +24,11 @@ XRP is part of a new class of money which includes Bitcoin and other cryptocurre
 This combines qualities of physical and centralized digital money. Prior to the invention of Bitcoin in 2009, all currencies could be divided into those two categories:
 
 - **Physical coins and paper money**, which individuals can use to do business without going through a central party. As physical objects, they cannot be used online, and doing business long-distance is slow and inconvenient.
-- **Centralized digital currencies**, which need an administrator to confirm transactions. The administrator also has the power to censor or roll back transactions, or disallow some individuals from using the digital currency. If company managing a digital currency decides someone has violated its terms of service, it can freeze or even confiscate that person's money. However, as digital balances, these currencies can be used online and are convenient across long distances.
+- **Centralized digital currencies**, which need an administrator to confirm transactions. The administrator also has the power to censor or roll back transactions, or disallow some individuals from using the digital currency. If the operator of a digital currency decides someone has violated its terms of service, it can freeze or even confiscate that person's money. However, as digital balances, these currencies can be used online and are convenient across long distances.
 
 **Note:** Users of the XRP Ledger _can_ freeze non-XRP currencies issued in the XRP Ledger. For more information, see the [Freeze documentation](concept-freeze.html).
 
-Furthermore, the XRP Ledger's system of trusted validators uses a small amount of human interaction to achieve better distribution of authority than other decentralized systems. Fully-automated systems for reaching consensus from an unknown set of participants are vulnerable to concentrations of voting power. For example, Bitcoin mining is disproportionately concentrated in places with cheap electricity. As Ripple curates a list of distinct validators operated by different entities in different jurisdictions, the XRP Ledger can become more resistant to censorship and outside pressures than proof-of-work mining. For more information on Ripple's plan to decentralize the recommended set of validators, see the  [Decentralization Strategy Update](https://ripple.com/dev-blog/decentralization-strategy-update/).
+The XRP Ledger's system of trusted validators uses a small amount of human interaction to achieve better distribution of authority than other decentralized systems. Fully-automated systems for reaching consensus from an unknown set of participants are vulnerable to concentrations of voting power. For example, Bitcoin mining is disproportionately concentrated in places with cheap electricity. As Ripple curates a list of distinct validators operated by different entities in different jurisdictions, the XRP Ledger can become more resistant to censorship and outside pressures than proof-of-work mining. For more information on Ripple's plan to decentralize the recommended set of validators, see the  [Decentralization Strategy Update](https://ripple.com/dev-blog/decentralization-strategy-update/).
 
 
 ## Fast, Efficient Consensus Algorithm
@@ -75,9 +75,9 @@ For more information, see [Cryptographic Keys](cryptographic-keys.html) and [Mul
 
 
 ## Modern Features for Smart Contracts
-[Modern Features for Smart Contracts]: #smart-features-for-smart-contracts
+[Modern Features for Smart Contracts]: #modern-features-for-smart-contracts
 
-Besides simple value transfer with XRP payments, the XRP Ledger has several advanced features that provide useful functions for building applications that use the Internet of Value to serve previously unknown or impractical needs. Rather than running applications as "smart contracts" in the network itself, the XRP Ledger provides tools for contracts, while letting the applications themselves run anywhere, in whatever environment or container is appropriate. This "keep it simple" approach is flexible, scalable, and powerful.
+Besides simple value transfer with XRP payments, the XRP Ledger has several advanced features that provide useful functions for building applications that use the Internet of Value to serve previously unknown or impractical needs. Rather than running applications as "smart contracts" in the network itself, the XRP Ledger provides tools for settling contracts, while letting the applications themselves run anywhere, in whatever environment or container is appropriate. This "keep it simple" approach is flexible, scalable, and powerful.
 
 A sample of advanced features in the XRP Ledger:
 
