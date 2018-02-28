@@ -1,18 +1,18 @@
 # Known Amendments
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/main/Amendments.cpp "Source")
-<!--{# TODO: after 0.90.0 releases, change to https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/Feature.cpp #}-->
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
 
 The following is a comprehensive list of all known amendments and their status on the production XRP Ledger:
 
 | Name                      | Introduced | Status                              |
 |:--------------------------|:-----------|:------------------------------------|
+| [fix1513][]               | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2][]              | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Checks][]                | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][] | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [DepositAuth][]           | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]          | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]               | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [Checks][]                | v0.90.0    | [Expected: 2018-03-15](https://ripple.com/dev-blog/rippled-version-0-90-0/ "BADGE_BLUE") |
+| [DepositAuth][]           | v0.90.0    | [Expected: 2018-03-15](https://ripple.com/dev-blog/rippled-version-0-90-0/ "BADGE_BLUE") |
 | [fix1201][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E "BADGE_GREEN") |
 | [fix1512][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647 "BADGE_GREEN") |
 | [fix1523][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469 "BADGE_GREEN") |
@@ -52,7 +52,6 @@ This amendment also changes the OfferCreate transaction to return `tecEXPIRED` w
 **Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2245) and is expected for `rippled` v0.90.0.
 
 
-
 ## CryptoConditions
 [CryptoConditions]: #cryptoconditions
 
@@ -61,7 +60,6 @@ This amendment also changes the OfferCreate transaction to return `tecEXPIRED` w
 | 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | Enabled   |
 
 Although this amendment is enabled, it has no effect unless the [SusPay](#suspay) amendment is also enabled. Ripple does not expect SusPay to become enabled. Instead, Ripple plans to incorporate crypto-conditions in the [Escrow](#escrow) amendment.
-
 
 
 ## CryptoConditionsSuite
@@ -74,7 +72,6 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 Implements several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions. Without this amendment, only the PREIMAGE-SHA-256 type is supported.
 
 **Caution:** This amendment is still [in development](https://github.com/ripple/rippled/pull/2170). The version from `rippled` v0.60.0 to present does not implement the full functionality.
-
 
 
 ## DepositAuth
@@ -93,7 +90,6 @@ As an exception, accounts with `DepositAuth` enabled can receive Payment transac
 Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the DisallowXRP flag, which is meant to be a non-binding advisory flag. (By not enforcing DisallowXRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](concept-reserves.html) and pay [transaction costs](concept-transaction-cost.html).)
 
 **Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2239) and is expected for `rippled` v0.90.0.
-
 
 
 ## EnforceInvariants
@@ -116,7 +112,6 @@ Examples of invariant checks:
 - There cannot be a trust line for XRP.
 
 
-
 ## Escrow
 [Escrow]: #escrow
 
@@ -127,8 +122,6 @@ Examples of invariant checks:
 Replaces the [SusPay](#suspay) and [CryptoConditions](#cryptoconditions) amendments.
 
 Provides "suspended payments" for XRP for escrow within the XRP Ledger, including support for [Interledger Protocol Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02). Creates a new ledger object type for suspended payments and new transaction types to create, execute, and cancel suspended payments.
-
-
 
 
 ## FeeEscalation
@@ -161,7 +154,6 @@ A transaction remains in the queue until one of the following happens:
 Correctly implements a limit on [transfer fees](concept-transfer-fees.html) to a 100% fee, represented by a maximum `TransferRate` value of `2000000000`. (A 100% fee in this case means you must send 2 units of the issued currency for every 1 unit you want to deliver.) Without the amendment, the effective limit is a `TransferRate` value of 2<sup>32</sup>-1, for approximately a 329% fee.
 
 With this amendment enabled, an [AccountSet][] transaction that attempts to set `TransferRate` higher than `2000000000` fails with the result code `temBAD_TRANSFER_RATE`. Any existing `TransferRate` which was set to a higher value under the previous rules continues to apply at the higher rate.
-
 
 
 ## fix1368
@@ -198,6 +190,18 @@ Fixes a bug in transaction processing that causes some invalid [PaymentChannelCl
 With this amendment, the transactions fail with a more appropriate result code, `temBAD_AMOUNT`, instead.
 
 
+## fix1513
+[fix1513]: #fix1513
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172 | Planned   |
+
+Fixes a bug that resulted in transaction processing not using new `STAmountCalcSwitchovers` code when the `FeeEscalation` amendment is enabled.
+
+With this amendment, the new `STAmountCalcSwitchovers` code applies, which may cause slight changes to transaction processing due to calculation differences. Amounts may be rounded differently and offers may be executed in a different order as a result.
+
+
 ## fix1523
 [fix1523]: #fix1523
 
@@ -208,7 +212,6 @@ With this amendment, the transactions fail with a more appropriate result code, 
 Adds tracking by destination account to [escrows](concept-escrow.html). Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the [`account_objects` command](reference-rippled.html#account-objects), excluding any pending escrows that were created before this amendment became enabled. This amendment also makes [EscrowCreate transactions][] appear in the destination's transaction history, as viewed with the [`account_tx` command](reference-rippled.html#account-tx).
 
 With this amendment, new escrows are added to the [owner directories](reference-ledger-format.html#directorynode) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](reference-ledger-format.html#escrow), indicating which page of the destination's owner directory contains the escrow.
-
 
 
 ## fix1528
@@ -223,7 +226,6 @@ Fixes a bug where validators could build consensus ledgers with different timest
 This amendment changes how validators negotiate the close time of the consensus ledger so that they cannot reach a consensus on ledger contents but build ledger versions with different timestamps.
 
 
-
 ## Flow
 [Flow]: #flow
 
@@ -234,7 +236,6 @@ This amendment changes how validators negotiate the close time of the consensus 
 Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) amendment.
 
 The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.
-
 
 
 ## FlowCross
@@ -251,7 +252,6 @@ Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange.
 - The new logic may delete more or fewer offers than the old logic. (This includes cases caused by differences in rounding and offers that were incorrectly removed as unfunded by the old logic.)
 
 
-
 ## FlowV2
 [FlowV2]: #flowv2
 
@@ -260,7 +260,6 @@ Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange.
 | 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | Withdrawn |
 
 This is a previous version of the [Flow](#flow) amendment. It was [rejected due to a bug](https://ripple.com/dev-blog/flowv2-amendment-vetoed/) and removed in version 0.33.0.
-
 
 
 ## MultiSign
@@ -287,7 +286,6 @@ An address with a SignerList can disable the master key even if a regular key is
 * `tefBAD_AUTH_MASTER`
 
 
-
 ## OwnerPaysFee
 [OwnerPaysFee]: #ownerpaysfee
 
@@ -300,7 +298,6 @@ Fixes an inconsistency in the way [transfer fees](concept-transfer-fees.html) ar
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
 **Note:** An incomplete version of this amendment was introduced in v0.33.0 and removed in v0.80.0. (It was never enabled.) Ripple plans to re-add the amendment when the code is stable enough.
-
 
 
 ## PayChan
@@ -317,7 +314,6 @@ Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelCl
 For more information, see the [Payment Channels Tutorial](tutorial-paychan.html).
 
 
-
 ## SHAMapV2
 [SHAMapV2]: #shamapv2
 
@@ -328,7 +324,6 @@ For more information, see the [Payment Channels Tutorial](tutorial-paychan.html)
 Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
 
 When this amendment is activated, the XRP Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure. <!-- STYLE_OVERRIDE: will -->
-
 
 
 ## SortedDirectories
@@ -343,8 +338,6 @@ Sorts the entries in [DirectoryNode ledger objects](reference-ledger-format.html
 **Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](tutorial-rippled-setup.html#updating-rippled) to `rippled` version 0.80.0 or later.
 
 
-
-
 ## SusPay
 [SusPay]: #suspay
 
@@ -353,7 +346,6 @@ Sorts the entries in [DirectoryNode ledger objects](reference-ledger-format.html
 | DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Enabled on TestNet; not intended for production. |
 
 This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/). In production, Ripple expects to enable similar functionality with the [Escrow](#escrow) amendment instead.
-
 
 
 ## Tickets
@@ -368,7 +360,6 @@ Introduces Tickets as a way to reserve a transaction sequence number for later e
 **Caution:** This amendment is still in development.
 
 
-
 ## TickSize
 [TickSize]: #ticksize
 
@@ -379,7 +370,6 @@ Introduces Tickets as a way to reserve a transaction sequence number for later e
 Changes the way [Offers](reference-transaction-format.html#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
 
 Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](reference-transaction-format.html#accountset). If a currency issuer sets the `TickSize` field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
-
 
 
 ## TrustSetAuth
