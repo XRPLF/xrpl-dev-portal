@@ -262,7 +262,7 @@ Network participants are unlikely to trust validators without knowing who is ope
 
         $ /opt/ripple/bin/validator-keys --keyfile /path/to/your/validator-keys.json sign <your-domain-name>
 
-4. In order to have the verified validator domain included on [XRP Charts](https://xrpcharts.ripple.com/#/validators), submit this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLScszfq7rRLAfArSZtvitCyl-VFA9cNcdnXLFjURsdCQ3gHW7w/viewform) with your validator's information.
+4. To have the verified validator domain included on [XRP Charts](https://xrpcharts.ripple.com/#/validators), submit this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLScszfq7rRLAfArSZtvitCyl-VFA9cNcdnXLFjURsdCQ3gHW7w/viewform) with your validator's information.
 
 
 # Additional Configuration
