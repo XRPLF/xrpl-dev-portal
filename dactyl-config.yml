@@ -65,7 +65,7 @@ targets:
             "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
-            "concept-authorized-trust-lines.html": https://ripple.com/build/authorized-trust-lines/ #TODO
+            "concept-authorized-trust-lines.html": https://ripple.com/build/authorized-trust-lines/
             "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
             "concept-escrow.html": https://ripple.com/build/escrow/
             "concept-reaching-consensus.html": https://ripple.com/build/reaching-consensus-xrp-ledger/
@@ -80,6 +80,7 @@ targets:
             "concept-transaction-cost.html": https://ripple.com/build/transaction-cost/
             "concept-transfer-fees.html": https://ripple.com/build/transfer-fees/
             "concept-noripple.html": https://ripple.com/build/understanding-the-noripple-flag/
+            "concept-xrp-ledger-intro.html": https://ripple.com/build/xrp-ledger-introduction/
             "gb-2015-06.html": https://ripple.com/build/gateway-guide/gb-2015-06-corrections-autobridging/
             "gb-2015-05.html": https://ripple.com/build/gateway-guide/gb-2015-05-historical-ledger-query-migration/
             "ripple-api-tool.html": https://ripple.com/build/websocket-tool/
