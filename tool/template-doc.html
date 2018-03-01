@@ -18,35 +18,26 @@
     <script src="assets/js/expandcode.js"></script>
     <script src="assets/js/fixsidebarscroll.js"></script>
 
-    <!-- fontawesome icons -->
-    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 {% endblock %}
 
 {% block sidebar %}
-  {% if currentpage.sidebar != 'off' %}
-    <div class="dev_nav_wrapper">
-        <div id="cont">
-            <h5>In this category:</h5>
-            <ul class="dev_nav_sidebar">
-                <li class="level-1"><a href="index.html">Category: {{ currentpage.category }}</a></li>
-            {% for page in pages %}
-	          {% if page.category == currentpage.category %}
-                <li class="level-2"><a href="{{ page.html }}">{{ page.name }}</a></li>
-              {% endif %}
-            {% endfor %}
-            </ul>
-            <hr />
-            <h5>In this page:</h5>
-            <ul class="dev_nav_sidebar" id="dactyl_toc_sidebar">
-                {{ page_toc }}
-            </ul>
-        </div>
-    </div>
-  {% endif %}
+{% if currentpage.sidebar != "disabled" %}
+
+  {% include "template-sidebar_nav.html" %}
+
+{% endif %}
 {% endblock %}
 
 {% block main %}
-    <div class='content'>
+    <h1 class="main-page-header">{{ currentpage.name }}</h1>
+
+    <div id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        {{ sidebar_content }}
+      </ul>
+    </div>
+    <div class='content no-1st-head'>
         {{ content }}
     </div>
 {% endblock %}

@@ -10,11 +10,8 @@
   display:table-cell;
 }
 #command_list {
-  display:table-cell;
   list-style-type:none;
-  padding:36px 0 0 0;
-  margin:0;
-  height:100%;
+  padding:0 0 0 0;
 }
 
 aside.sidebar {
@@ -39,37 +36,6 @@ aside.sidebar {
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 10px;
-}
-
-#command_table {
-  height:100%;
-}
-#io_wrapper {
-  float:right;
-  display:table;
-  height:500px;
-  padding:0;
-  table-layout:fixed;
-  border-spacing:24px 0;
-  width:96%;
-  height: 100%;
-  margin-top: 30px;
-}
-#io_wrapper > div {
-  width:100%;
-  margin:0;
-  padding:0;
-}
-#response, #response_body {
-  min-height:100px;
-  border-top-left-radius:0px !important;
-  border-top-right-radius:0px !important;
-}
-#input {
-  width: 30%;
-}
-#output {
-  width: 60%;
 }
 h3 {
   margin:16px 0;
@@ -149,7 +115,6 @@ h3 {
   cursor:pointer;
 }
 #online_state {
-  position:absolute;
   top:10px;
   line-height:30px;
   font-size:14px;
@@ -378,8 +343,7 @@ span.cm-atom {
     margin: 0 !important;
 }
 
-#rest_url div label, 
+#rest_url div label,
 #rest_url div input {
     display: block;
 }
-
