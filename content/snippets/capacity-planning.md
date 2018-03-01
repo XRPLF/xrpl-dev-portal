@@ -1,13 +1,14 @@
 # Capacity Planning
 
+This section describe some of the challenges related to scaling `rippled` servers for testing and production deployments. Additionally, it describes how hardware and configuration settings relate to those challenges. Finally, this section offers recommendations to assist you in properly setting up `rippled` to meet the goals for the use-case of your deployment.
 
-Even the most minimally functional `rippled` server must contain the most recently validated ledger versions to submit transactions to the network and verify the integrity of the XRP Ledger. Beyond these, consider the following server requirements:
+Even the most minimally functional `rippled` server must contain the most recently validated ledger versions to submit transactions to the network and verify the integrity of the XRP Ledger. Beyond these requirements, consider the following possible business requirements:
 
 - Handling ever-increasing transaction volume
 - Servicing transaction reporting information to clients
 - Maintaining varying amounts of historical data
 
-Capacity planning for `rippled` involves two factors:
+How you meet your `rippled` capacity planning needs depends on how you address these technical factors:
 
 - The [configuration settings](#configuration-settings) that affect resource utilization
 - The [network and hardware] (#network and hardware) requirements to achieve consistent, good performance across the XRP Ledger network
@@ -20,7 +21,7 @@ Ripple recommends the following guidelines to improve performance. You can set t
 
 The `node_size` parameter determines the size of database caches. Ripple recommends you always set it to `huge` for production servers. Increased cache size requires less disk I/O and allows `rippled` to improve performance. The trade-off to improving performance is that memory requirements increase.
 
-The `node_size` parameter determines the size of database caches. Larger database caches decrease disk I/O requirements at a cost of higher memory requirements. Ripple recommends you always use the largest database cache your available memory can support. For production servers with the recommended 32 GB of RAM, set `node_size` to `huge`. For `node_size` guidelines, see the following table:
+The `node_size` parameter determines the size of database caches. Larger database caches decrease disk I/O requirements at a cost of higher memory requirements. Ripple recommends you always use the largest database cache your available memory can support. See the following table for recommended settings.
 
 | Available RAM for `rippled` | Recommended `node_size` value | Notes                              |
 |:----------------------------|:------------------------------|:-----------------------------------|
@@ -31,12 +32,16 @@ The `node_size` parameter determines the size of database caches. Larger databas
 
 ### Node DB Type
 
-The `type` field in the `node_db` section of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to persist the XRP Ledger in the Ledger Store. You can set the value to either `rocksdb` or `nudb`. For setting the store that `rippled` uses to persist history shards, if you are participating in history sharding, see [History Sharding](XREF: concept-history-sharding.md#shard-store-configuration).
+The `type` field in the `node_db` section of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to persist the XRP Ledger in the Ledger Store. You can set the value to either `rocksdb` or `nudb`.
+
+`rippled` offers a history sharding feature that allows you to store a randomized range of ledgers in a separate shard store. For more information about how to use this feature, see [History Sharding](XREF: concept-history-sharding.md#shard-store-configuration).
 
 #### RocksDB vs NuDB
-RocksDB requires approximately one-third less disk storage than NuDB and provides a corresponding improvement in I/O latency. However, this comes at a cost of increased memory utilization as storage size grows. NuDB, on the other hand, has nearly constant performance and memory footprint regardless of storage.
+RocksDB requires approximately one-third less disk storage than NuDB and provides a corresponding improvement in I/O latency. However, this comes at a cost of increased memory utilization as storage size grows. NuDB, on the other hand, has nearly constant performance and memory footprint regardless of [storage](#storage).
 
-For `rippled` servers that operate as validators, which keep only a few days' worth of data or less, Ripple recommends using RocksDB. For all other uses, Ripple recommends users configure NuDB for the Ledger Store. NuDB has no performance-related configuration settings. However, tuning parameters are available for RocksDB that have been used to  achieve the maximum tested transaction processing throughput, shown here:
+`rippled` servers that operate as validators keep only a few days' worth of data or less. Ripple recommends using RocksDB for validators. For all other uses, Ripple recommends using NuDB for the Ledger Store.
+
+NuDB has no performance-related configuration options. RocksDB has performance-related configuration options. You can use these to achieve the maximum tested transaction processing throughput. Here is an example of the recommended configuration:
 
 ```
 [node_db]
@@ -51,13 +56,13 @@ path={path_to_ledger_store}
 
 ### Historical Data
 
-The amount of historical data kept online, as set in the `online_delete` and  `advisory_delete` fields, is a major contributor to required storage space. Currently, about 12GB of data is stored per day. However, you can expect this amount to grow as transaction volume increases across the XRP Ledger network.
+The amount of historical data kept online is a major contributor to required storage space. Currently, about 12GB of data is stored per day. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
 
 <!-- {# ***TODO***: Add link to online_delete section, when complete, per https://ripplelabs.atlassian.net/browse/DOC-1313  #} -->
 
 ### Log Level
 
-The default `rippled.cfg` file configures the logging verbosity to `warning`. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility when troubleshooting.
+The default `rippled.cfg` file sets the logging verbosity to `warning`. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility when troubleshooting.
 
 **Note:** If you omit the `log_level` command from the `[rpc_startup]` stanza, `rippled` falls back to `debug` level logging, which requires several more GB of disk space per day, depending on transaction volumes and client activity.
 
@@ -67,7 +72,7 @@ Each `rippled` server in the XRP Ledger network performs all of the transaction 
 
 ### Recommendation
 
-For best performance in enterprise production environments, Ripple recommends running `rippled` on bare metal, with the following characteristics:
+For best performance in enterprise production environments, Ripple recommends running `rippled` on bare metal with the following characteristics:
 
 - Operating System: Ubuntu 16.04+
 - CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
@@ -103,7 +108,7 @@ You can set the `node_size` parameter lower to use less memory, but you should o
 
 #### Amazon Web Servives
 
-Amazon Web Services (AWS) is a popular virtualized hosting environment, and you can run `rippled`  in that environment. However, using Elastic Block Storage (EBS) is not recommended, because the maximum number of IOPS (5,000) may not be able to keep up with the heaviest demands, yet it is very expensive.
+Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled`  in that environment. Ripple does not recommend using Elastic Block Storage (EBS), because the maximum number of IOPS (5,000) may not be able to keep up with the heaviest demands, but it is very expensive.
 
 AWS instance stores (`ephemeral` storage) do not have these constraints. Therefore, Ripple recommends deploying `rippled` servers with host types such as `M3` that have instance storage. The `database_path` and `node_db` path should each reside on instance storage.
 
