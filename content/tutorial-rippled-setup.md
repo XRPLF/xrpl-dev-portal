@@ -75,7 +75,9 @@ A `rippled` server should run comfortably on commodity hardware, to make it inex
     - Development: Mac OS X, Windows (64-bit), or most Linux distributions
 - CPU: 64-bit x86_64, 2+ cores
 - Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
-- RAM: 8GB
+- RAM:
+    - Testing: 8GB+
+    - Production: 32 GB
 
 Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.
 
