@@ -53,6 +53,8 @@ path={path_to_ledger_store}
 
 The amount of historical data kept online, as set in the `online_delete` and  `advisory_delete` fields, is a major contributor to required storage space. Currently, about 12GB of data is stored per day. However, you can expect this amount to grow as transaction volume increases across the XRP Ledger network.
 
+<!-- {# ***TODO***: Add link to online_delete section, when complete, per https://ripplelabs.atlassian.net/browse/DOC-1313  #} -->
+
 ### Log Level
 
 The default `rippled.cfg` file configures the logging verbosity to `warning`. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility when troubleshooting.
