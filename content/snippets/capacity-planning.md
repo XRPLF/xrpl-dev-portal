@@ -11,7 +11,7 @@ Even the most minimally functional `rippled` server must contain the most recent
 How you meet your `rippled` capacity planning needs depends on how you address these technical factors:
 
 - The [configuration settings](#configuration-settings) that affect resource utilization
-- The [network and hardware] (#network and hardware) requirements to achieve consistent, good performance across the XRP Ledger network
+- The [network and hardware](#network-and-hardware) requirements to achieve consistent, good performance across the XRP Ledger network
 
 ## Configuration Settings
 
@@ -19,16 +19,16 @@ Ripple recommends the following guidelines to improve performance. You can set t
 
 ### Node Size
 
-The `node_size` parameter determines the size of database caches. Ripple recommends you always set it to `huge` for production servers. Increased cache size requires less disk I/O and allows `rippled` to improve performance. The trade-off to improving performance is that memory requirements increase.
-
 The `node_size` parameter determines the size of database caches. Larger database caches decrease disk I/O requirements at a cost of higher memory requirements. Ripple recommends you always use the largest database cache your available memory can support. See the following table for recommended settings.
 
-| Available RAM for `rippled` | Recommended `node_size` value | Notes                              |
-|:----------------------------|:------------------------------|:-----------------------------------|
-| < 8 GB                      | `tiny`                        | Not recommended                    |
-| 8 GB                        | `low`                         |                                    |
-| 16 GB                       | `medium`                      |                                    |
-| 32 GB                       | `huge`                        | Recommended for production servers |
+#### Recommendation
+
+| Available RAM for `rippled` | `node_size` value | Notes                              |
+|:----------------------------|:------------------|:-----------------------------------|
+| < 8GB                       | `tiny`            | Not recommended                    |
+| 8GB                         | `low`             |                                    |
+| 16GB                        | `medium`          |                                    |
+| 32GB                        | `huge`            | Recommended for production servers |
 
 ### Node DB Type
 
@@ -56,7 +56,7 @@ path={path_to_ledger_store}
 
 ### Historical Data
 
-The amount of historical data kept online is a major contributor to required storage space. Currently, about 12GB of data is stored per day. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
+The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. Currently, about 12GB of data is stored per day. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
 
 <!-- {# ***TODO***: Add link to online_delete section, when complete, per https://ripplelabs.atlassian.net/browse/DOC-1313  #} -->
 
@@ -84,15 +84,14 @@ For best performance in enterprise production environments, Ripple recommends ru
 
 #### SSD Storage
 
-SSD Storage should support several thousand both read and write IOPS.
-The maximum reads and writes per second that Ripple engineers have observed are over 10,000 reads per second (in heavily-used public server clusters), and over 7,000 writes per second (in dedicated performance testing).
+SSD Storage should support several thousand of both read and write IOPS. The maximum reads and writes per second that Ripple engineers have observed are over 10,000 reads per second (in heavily-used public server clusters), and over 7,000 writes per second (in dedicated performance testing).
 
 #### CPU Utilization and Virtualization
-Ripple performance engineering finds that bare metal servers achieve maximum throughput. However, it is likely that hypervisors cause minimal degradation in performance.
+Ripple performance engineering has determined that bare metal servers achieve maximum throughput. However, it is likely that hypervisors cause minimal degradation in performance.
 
 #### Network
 
-Any enterprise or carrier-class data center should have plenty of network bandwidth to support running `rippled` servers. The minimum requirements are roughly 2Mbps transmit and 2Mbps receive for current transaction volumes. However, these can burst up to 100MBps transmissions when serving up historical ledger and transaction reports. When a `rippled` server initially starts up, it can burst to well over 20Mbps receive.
+Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers. The minimum requirements are roughly 2Mbps transmit and 2Mbps receive for current transaction volumes. However, these can burst up to 100MBps transmissions when serving up historical ledger and transaction reports. When a `rippled` server initially starts up, it can burst to well over 20Mbps receive.
 
 #### Storage
 
