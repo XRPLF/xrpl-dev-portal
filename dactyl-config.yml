@@ -329,17 +329,17 @@ pages:
 
   # VI. The rippled Server -----------------------------------------------------
 
-    -   md: tutorial-rippled-setup.md
+    -   md: concept-rippled.md
         category: The rippled Server
         targets:
             - local
             - ripple.com
 
-    # -   md: reference-rippled.md # TODO: break out the concept parts for here
-    #     category: The rippled Server
-    #     targets:
-    #         - local
-    #         - ripple.com
+    -   md: tutorial-rippled-setup.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
 
     -   md: concept-stand-alone-mode.md
         category: The rippled Server
