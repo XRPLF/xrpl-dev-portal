@@ -128,10 +128,6 @@
   font-weight: bold;
 }
 
-/* Underline links in Dev Portal content */
-.xrp-ledger-dev-portal .main a {
-  text-decoration: underline !important;
-}
 
 /* "Button-style" links should look like buttons, not links */
 .xrp-ledger-dev-portal a.button {
@@ -257,14 +253,31 @@
 .xrp-ledger-dev-portal .content {
   padding-bottom: 50px;
 }
+#dactyl_toc_sidebar a {
+  text-decoration: none;
+}
+#dactyl_toc_sidebar a:hover {
+  text-decoration: underline;
+}
 .xrp-ledger-dev-portal .level-1 {
+  margin-top: 15px;
   padding-left: 15px;
+  font-weight: bold;
+}
+.xrp-ledger-dev-portal .level-1:first-child {
+  margin-top: 0;
 }
 .xrp-ledger-dev-portal .level-2 {
   padding-left: 30px;
 }
 .xrp-ledger-dev-portal .level-3 {
   padding-left: 45px;
+}
+.xrp-ledger-dev-portal .level-3 a {
+  color: #888;
+}
+.xrp-ledger-dev-portal .level-3 a:hover {
+  color: #333;
 }
 
 .xrp-ledger-dev-portal .dev_nav_sidebar {
@@ -330,9 +343,12 @@
     margin-right: calc(calc(calc(100% - 1370px) / 2) + 195px);
   }
   .xrp-ledger-dev-portal #page-toc-wrapper {
-    max-width: 200px;
-    position: absolute;
-    right: -210px;
+    position: fixed;
+    right: 10px;
+    top: 80px;
+    max-width: calc(77% - 970px);
+    max-height: calc(100% - 150px);
+    overflow-y: auto;
   }
   .draft-warning {
     left: calc(calc(calc(100% - 1370px) / 2) + 90px);
@@ -561,8 +577,8 @@
 .jump-to-top {
   display: none;
   position: fixed;
-  bottom: 80px;
-  right: 80px;
+  bottom: 15px;
+  right: 30px;
   background-color: #333;
   font-weight: bolder;
   z-index: 1000;

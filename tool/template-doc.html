@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="assets/vendor/docco.min.css" />
     <script src="assets/vendor/highlight.min.js"></script>
 
-    <!-- syntax selection js -->
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
     <script src="assets/js/multicodetab.js"></script>
     <script>
         $(document).ready(function() {
@@ -15,8 +17,6 @@
         });
     </script>
 
-    <script src="assets/js/expandcode.js"></script>
-    <script src="assets/js/fixsidebarscroll.js"></script>
 
 {% endblock %}
 
@@ -31,12 +31,12 @@
 {% block main %}
     <h1 class="main-page-header">{{ currentpage.name }}</h1>
 
-    <div id="page-toc-wrapper" class="panel panel-default">
+    <aside id="page-toc-wrapper" class="panel panel-default">
       <p class="in-this-doc panel-heading">In this document:</p>
       <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
         {{ sidebar_content }}
       </ul>
-    </div>
+    </aside>
     <div class='content no-1st-head'>
         {{ content }}
     </div>
