@@ -608,7 +608,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_current_index` | Number                                     | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
 | `limit`                | Number                                     | (May be omitted) The limit that was used in this request, if any. |
 | `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
-| `validated`            | Boolean                                    | If `true`, this information comes from ledger version that has been validated by consensus. |
+| `validated`            | Boolean                                    | If included and set to `true`, the information in this request comes from a validated ledger version. Otherwise, the information is subject to change. |
 
 #### Possible Errors
 
