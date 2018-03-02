@@ -69,9 +69,13 @@
 .draft-warning {
     background-color: red;
     color: white;
-    padding: 10px 20px;
+    padding: 2px 6px;
     margin: 10px;
-    float: right;
+    position: absolute;
+    top: 34px;
+    left: calc(calc(calc(100% - 1070px) / 2) + 90px);
+    font-size: 12px;
+    font-weight: bold;
 }
 
 /* Images should not exceed the main column */
@@ -238,11 +242,12 @@
   bottom: 0;
   right: 0;
 }
-.xrp-ledger-dev-portal .navbar-default {
-  border-bottom: none;
-}
 .xrp-ledger-dev-portal .wrap.container {
   margin-top: 106px;
+}
+.xrp-ledger-dev-portal.sidebar-primary .sidebar {
+  padding-right: 0;
+  padding-left: 0;
 }
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
@@ -262,17 +267,11 @@
   padding-left: 45px;
 }
 
-.xrp-ledger-dev-portal #page-toc-wrapper {
-  max-width: 200px;
-  float: right;
-  position: absolute;
-  right: -210px;
-}
-
 .xrp-ledger-dev-portal .dev_nav_sidebar {
-  padding-left: 5px;
+  padding-left: 10px;
+  padding-top: 0;
   list-style-type: none;
-  max-width: 370px;
+  margin-bottom: 0;
 }
 .xrp-ledger-dev-portal .dev_nav_sidebar li:before {
   content: "\f105"; /* fontawesome angle-right */
@@ -316,23 +315,52 @@
   height: 67px;
   visibility: hidden;
 }
+
+@media (min-width: 1200px) {
+  .xrp-ledger-dev-portal #page-toc-wrapper {
+    float: right;
+    margin-left: 15px;
+  }
+  .draft-warning {
+    left: calc(calc(calc(100% - 1170px) / 2) + 140px);
+  }
+}
+@media (min-width: 1400px) {
+  .xrp-ledger-dev-portal .container {
+    margin-right: calc(calc(calc(100% - 1370px) / 2) + 195px);
+  }
+  .xrp-ledger-dev-portal #page-toc-wrapper {
+    max-width: 200px;
+    position: absolute;
+    right: -210px;
+  }
+  .draft-warning {
+    left: calc(calc(calc(100% - 1370px) / 2) + 90px);
+  }
+}
 @media (max-width: 1200px) {
+  .xrp-ledger-dev-portal #page-toc-wrapper {
+    float: right;
+    margin-left: 15px;
+  }
   .xrp-ledger-dev-portal .dev_nav_wrapper {
     max-width: 290px;
   }
+  .draft-warning {
+    left: calc(calc(calc(100% - 870px) / 2) + 90px);
+  }
+}
+@media (max-width: 992px) {
   .xrp-ledger-dev-portal #page-toc-wrapper {
     position: static;
     float: none;
     max-width: none;
   }
-  .sidebar-primary .wrap.container {
-    width: inherit;
-    margin-right: 0;
-  }
-}
-@media (max-width: 992px) {
   .xrp-ledger-dev-portal .dev_nav_wrapper {
     max-width: 230px;
+  }
+  .draft-warning {
+    left: 140px;
   }
 }
 @media (max-width: 768px) {
@@ -345,17 +373,18 @@
     max-width: 100%;
   }
   .xrp-ledger-dev-portal .main {
-    position: static;
-    clear: both;
-    border-left: none;
     overflow-wrap: break-word;
     word-wrap: break-word;
     overflow: hidden;
   }
-}
-@media (min-width: 768px) {
-  .xrp-ledger-dev-portal .main {
-    float: right;
+  .github-edit-wrap {
+    display: none;
+  }
+  .nav {
+    min-width: 350px;
+  }
+  .nav .breadcrumb {
+    display: none;
   }
 }
 @media (max-width: 480px) {
@@ -490,7 +519,6 @@
 }
 
 .navbar-brand {
-  vertical-align: middle;
   text-decoration: none;
 }
 
@@ -502,7 +530,9 @@
 .navbar-default .navbar-brand .brand-text {
   font-family: open_sansbold, sans-serif;
   font-weight: bold;
-  line-height: 40px;
+  line-height: 36px;
+  margin-bottom: -5px;
+  margin-top: 20px;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -513,10 +543,6 @@
 
 .navbar-default a.active {
     color: #27a2db !important;
-}
-
-.dev_nav .breadcrumb {
-  margin-bottom: 0;
 }
 
 .wrap-container {
@@ -549,8 +575,18 @@
   }
 }
 
+.xrp-ledger-dev-portal .breadcrumb {
+  margin: 0;
+  padding: 15px;
+  background: transparent;
+  float: left;
+  vertical-align: middle;
+}
+
 .xrp-ledger-dev-portal .breadcrumb li {
   margin: 0;
+  margin-bottom: -4px;
+  line-height: 36px;
 }
 .xrp-ledger-dev-portal .breadcrumb > li + li:before {
     content: "\f105"; /* fontawesome angle-right */
@@ -667,6 +703,10 @@
 }
 
 /* Edit on GitHub link --------- */
+.github-edit-wrap {
+  position: absolute;
+  right: 0;
+}
 .github-edit-wrap .github-edit {
   background-color: black;
   background-image: url(../vendor/github-marks/GitHub-Mark-Light-32px.png);
@@ -718,4 +758,40 @@
   margin: 2em 0;
   padding-top: 2em;
   border-top: 1px solid #777;
+}
+
+.page-build .related-projects {
+  float: right;
+  width: 375px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+.page-build .related-projects a {
+  text-decoration: none;
+}
+.page-build .related-projects .project {
+  clear: left;
+}
+.page-build .related-projects h3 {
+  margin: 0;
+  padding: 5px 15px;
+  border-bottom: 1px dashed #777;
+}
+.related-projects .project-name {
+  font-family: open_sanslight, sans-serif;
+  font-size: 18px;
+  display: block;
+}
+.related-projects .login-required {
+  display: block;
+  font-size: 12px;
+}
+.page-build .related-projects p {
+  margin: 10px;
+}
+.related-projects .project-icon {
+  width: 120px;
+  float: left;
+  margin-right: 10px;
 }
