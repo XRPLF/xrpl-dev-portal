@@ -29,7 +29,7 @@
 
     <!-- fontawesome icons -->
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
-    
+
     {% block head %}
 
     {% endblock %}
@@ -42,10 +42,19 @@
       <div class="navbar-header">
           <a href="index.html" class="navbar-brand">
             <img src="assets/img/ripple-logo-color.png" class="logo">
-            <span class="brand-text">XRP Ledger Developer Portal</span>
+            <span class="brand-text">XRP Developers</span>
           </a>
       </div><!-- /.navbar-header -->
       <div class="nav">
+        {% block breadcrumbs %}
+            <ul class="breadcrumb">
+              <li><a href="index.html" style="display: none;">&nbsp;</a></li>
+              {% if currentpage.category %}
+              <li class="active"><a class="dev_heading" href="{{ (pages|selectattr('category', 'equalto', currentpage.category)|first).html }}">{{ currentpage.category }}</a></li>
+              {% endif %}
+              <li class="active">{{ currentpage.name }}</li>
+            </ul>
+        {% endblock %}
         <div class="draft-warning">DRAFT PAGE</div>
         <div class="github-edit-wrap">
           {% if currentpage.md is defined %}
@@ -69,14 +78,6 @@
           {% block sidebar %}{% endblock %}
       </aside>
       <main class="main" role="main">
-          {% block breadcrumbs %}
-              <ul class="breadcrumb">
-                <li><a href="index.html">XRP Ledger Documentation</a></li>
-                {% if currentpage.category %}
-                <li class="active">{{ currentpage.category }}</li>
-                {% endif %}
-              </ul>
-          {% endblock %}
           {% block main %}{% endblock %}
       </main>
   </div>

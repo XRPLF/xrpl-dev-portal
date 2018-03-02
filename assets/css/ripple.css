@@ -5558,9 +5558,6 @@ body {
 .main {
   background: #ffffff;
 }
-.sidebar-primary .wrap.container {
-  margin: 100px auto;
-}
 section#comments,
 section#respond {
   visibility: hidden;
