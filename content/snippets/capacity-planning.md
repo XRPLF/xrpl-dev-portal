@@ -8,7 +8,7 @@ Even the most minimally functional `rippled` server must contain the most recent
 - Servicing transaction reporting information to clients
 - Maintaining varying amounts of historical data
 
-How you meet your `rippled` capacity planning needs depends on how you address these technical factors:
+To meet your `rippled` capacity requirements, you must address these technical factors:
 
 - The [configuration settings](#configuration-settings) that affect resource utilization
 - The [network and hardware](#network-and-hardware) requirements to achieve consistent, good performance across the XRP Ledger network
@@ -32,16 +32,17 @@ The `node_size` parameter determines the size of database caches. Larger databas
 
 ### Node DB Type
 
-The `type` field in the `node_db` section of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to persist the XRP Ledger in the Ledger Store. You can set the value to either `rocksdb` or `nudb`.
+The `type` field in the `node_db` section of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to persist the XRP Ledger in the ledger store. You can set the value to either `rocksdb` or `nudb`.
 
-`rippled` offers a history sharding feature that allows you to store a randomized range of ledgers in a separate shard store. For more information about how to use this feature, see [History Sharding](XREF: concept-history-sharding.md#shard-store-configuration).
+`rippled` offers a history sharding feature that allows you to store a randomized range of ledgers in a separate shard store. You may want to configure the shard store to use a different type of key-value store than the ledger store. For more information about how to use this feature, see [History Sharding](XREF: concept-history-sharding.md#shard-store-configuration).
+
 
 #### RocksDB vs NuDB
 RocksDB requires approximately one-third less disk storage than NuDB and provides a corresponding improvement in I/O latency. However, this comes at a cost of increased memory utilization as storage size grows. NuDB, on the other hand, has nearly constant performance and memory footprint regardless of [storage](#storage).
 
-`rippled` servers that operate as validators keep only a few days' worth of data or less. Ripple recommends using RocksDB for validators. For all other uses, Ripple recommends using NuDB for the Ledger Store.
+`rippled` servers that operate as validators should keep only a few days' worth of data or less. Ripple recommends using RocksDB for validators. For all other uses, Ripple recommends using NuDB for the ledger store.
 
-NuDB has no performance-related configuration options. RocksDB has performance-related configuration options. You can use these to achieve the maximum tested transaction processing throughput. Here is an example of the recommended configuration:
+RocksDB has performance-related configuration options you can modify to achieve maximum transaction processing throughput. (NuDB does not have performance-related configuration options.) Here is an example of the recommended configuration for a rippled server using RockDB:
 
 ```
 [node_db]
