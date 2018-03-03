@@ -1,8 +1,8 @@
-# Build and Run `rippled` on Ubuntu
+# Build and Run rippled on Ubuntu
 
 `rippled` is the core peer-to-peer server that manages the XRP Ledger. A `rippled` server can connect to a network of peers, relay cryptographically signed transactions, and maintain a local copy of the complete shared global ledger.
 
-For an overview of `rippled`, see [Operating rippled Servers](tutorial-rippled-setup.html).
+For an overview of `rippled`, see [Operating `rippled` Servers](tutorial-rippled-setup.html).
 
 Use these instructions to build a `rippled` executable from source version 0.90.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.
 

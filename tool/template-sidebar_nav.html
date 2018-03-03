@@ -1,0 +1,33 @@
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    {% for cat in categories %}
+    <div class="panel panel-default{% if currentpage.category == cat %} active{% endif %}">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_{{loop.index}}">
+        <h5 class="panel-title">
+          <a {% if currentpage.category != cat %}class="collapsed"{% endif %} role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">
+            {{ cat }}
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category == cat %} in{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+          {% for page in pages %}
+            {% if page.category == cat %}
+              {% if page == currentpage %}
+              <li><a class="active" href="{{ page.html }}">{{ page.name }}</a></li>
+              {% else %}
+              <li><a href="{{ page.html }}">{{ page.name }}</a></li>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse{{loop.index}} -->
+
+    </div><!-- /.panel -->
+    {% endfor %}
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
