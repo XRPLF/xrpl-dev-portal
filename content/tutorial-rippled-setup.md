@@ -272,7 +272,7 @@ Network participants are unlikely to trust validators without knowing who is ope
 
 `rippled` should connect to the XRP Ledger with the default configuration. However, you can change your settings by editing the `rippled.cfg` file (located at `/opt/ripple/etc/rippled.cfg` when installing `rippled` with yum). For recommendations about configuration settings, see [Capacity Planning](#capacity-planning).
 
-See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for a description of all configuration options.
+See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) for a description of all configuration options.
 
 Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path:
 
