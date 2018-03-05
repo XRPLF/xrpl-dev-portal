@@ -1,6 +1,6 @@
 # Capacity Planning
 
-This section describes some of the challenges related to scaling `rippled` servers for testing and production deployments. Additionally, it describes how hardware and configuration settings relate to those challenges. Finally, this section offers recommendations to assist you in properly setting up `rippled` to meet the goals for the use-case of your deployment.
+This section describes some of the challenges related to scaling `rippled` servers for testing and production deployments. Additionally, it describes how hardware and configuration settings relate to those challenges. Finally, this section offers recommendations to assist you in properly setting up `rippled` to meet the goals for the use case of your deployment.
 
 Even the most minimally functional `rippled` server must contain the most recently validated ledger versions to submit transactions to the network and verify the integrity of the XRP Ledger. Beyond these requirements, consider the following possible business needs:
 
@@ -42,7 +42,7 @@ RocksDB requires approximately one-third less disk storage than NuDB and provide
 
 `rippled` servers that operate as validators should keep only a few days' worth of data or less. Ripple recommends using RocksDB for validators. For all other uses, Ripple recommends using NuDB for the ledger store.
 
-RocksDB has performance-related configuration options you can modify to achieve maximum transaction processing throughput. (NuDB does not have performance-related configuration options.) Here is an example of the recommended configuration for a rippled server using RockDB:
+RocksDB has performance-related configuration options you can modify to achieve maximum transaction processing throughput. (NuDB does not have performance-related configuration options.) Here is an example of the recommended configuration for a `rippled` server using RocksDB:
 
 ```
 [node_db]
@@ -59,13 +59,13 @@ path={path_to_ledger_store}
 
 The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. At the time of writing (2018-03-01), a `rippled` server stores about 12GB of data per day. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
 
-Online deletion enables pruning of `rippled` ledgers from databases with no disruption of service. Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files. Online deletion only removes records that are not part of the current ledgers.
+Online deletion enables pruning of `rippled` ledgers from databases without any disruption of service. It only removes records that are not part of the current ledgers. Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files.
 
 <!-- {# ***TODO***: Add link to online_delete section, when complete, per https://ripplelabs.atlassian.net/browse/DOC-1313  #} -->
 
 ### Log Level
 
-The default `rippled.cfg` file sets the logging verbosity to `warning`. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility when troubleshooting.
+The default `rippled.cfg` file sets the logging verbosity to `warning`. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
 
 **Note:** If you omit the `log_level` command from the `[rpc_startup]` stanza, `rippled` falls back to `debug` level logging, which requires several more GB of disk space per day, depending on transaction volumes and client activity.
 
