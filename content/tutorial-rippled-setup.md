@@ -4,6 +4,7 @@ The core server of the XRP Ledger peer-to-peer network is [`rippled`](reference-
 
 This page contains instructions for:
 
+* [Capacity Planning for `rippled`](#capacity-planning)
 * [Installing `rippled`](#installing-rippled)
 * [Participating in the Consensus Process](#running-a-validator)
 
@@ -57,6 +58,7 @@ There are several properties that define a good validator. The more of these pro
 
 At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
 
+{% include 'snippets/capacity-planning.md' %}
 
 # Installing rippled
 
@@ -64,21 +66,22 @@ For development, you can [compile `rippled` from source](https://wiki.ripple.com
 
 Production `rippled` instances can [use Ripple's binary executable](#installation-on-centosred-hat-with-yum), available from the Ripple [yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified) repository.
 
-## System Requirements
+## Minimum System Requirements
 
-A `rippled` server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, we recommend the following:
+A `rippled` server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, we recommend the following mimimum requirements:
 
 - Operating System:
-    - Production: CentOS or RedHat Enterprise Linux (latest release) or Ubuntu (15.04+) supported
+    - Production: CentOS or RedHat Enterprise Linux (latest release) or Ubuntu (16.04+) supported
     - Development: Mac OS X, Windows (64-bit), or most Linux distributions
 - CPU: 64-bit x86_64, 2+ cores
 - Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
-- RAM: 4+GB
+- RAM:
+    - Testing: 8GB+
+    - Production: 32 GB
 
-Amazon EC2's m3.large VM size may be appropriate depending on your workload. (Validating servers need more resources.)
+Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.
 
-Naturally, a fast network connection is preferable.
-
+**Tip:** For recommendations beyond the minimum requirements, see [Capacity Planning](#capacity-planning).
 
 ## Installation on CentOS/Red Hat with yum
 
@@ -267,9 +270,9 @@ Network participants are unlikely to trust validators without knowing who is ope
 
 # Additional Configuration
 
-`rippled` should connect to the XRP Ledger with the default configuration. However, you can change your settings by editing the `rippled.cfg` file (located at `/opt/ripple/etc/rippled.cfg` when installing `rippled` with yum).
+`rippled` should connect to the XRP Ledger with the default configuration. However, you can change your settings by editing the `rippled.cfg` file (located at `/opt/ripple/etc/rippled.cfg` when installing `rippled` with yum). For recommendations about configuration settings, see [Capacity Planning](#capacity-planning).
 
-See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for a description of all configuration options.
+See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/release/doc/rippled-example.cfg) for a description of all configuration options.
 
 Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path:
 
