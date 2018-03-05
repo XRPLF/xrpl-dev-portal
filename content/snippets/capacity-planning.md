@@ -34,7 +34,7 @@ The `node_size` parameter determines the size of database caches. Larger databas
 
 The `type` field in the `node_db` section of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to persist the XRP Ledger in the ledger store. You can set the value to either `rocksdb` or `nudb`.
 
-`rippled` offers a history sharding feature that allows you to store a randomized range of ledgers in a separate shard store. You may want to configure the shard store to use a different type of key-value store than the ledger store. For more information about how to use this feature, see [History Sharding](XREF: concept-history-sharding.md#shard-store-configuration).
+`rippled` offers a history sharding feature that allows you to store a randomized range of ledgers in a separate shard store. You may want to configure the shard store to use a different type of key-value store than the ledger store. For more information about how to use this feature, see [History Sharding](https://ripple.com/build/history-sharding/#shard-store-configuration).
 
 
 #### RocksDB vs NuDB

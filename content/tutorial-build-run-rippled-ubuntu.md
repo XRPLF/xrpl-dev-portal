@@ -17,7 +17,7 @@ You need a **minimum** of 8GB of RAM.
 
 **_To run `rippled`:_**
 
-Meet these [system requirements](tutorial-rippled-setup.html#system-requirements).
+Meet these [system requirements](tutorial-rippled-setup.html#minimum-system-requirements).
 
 
 ## 1. Build `rippled`
