@@ -2,7 +2,7 @@
 
 This section describes some of the challenges related to scaling `rippled` servers for testing and production deployments. Additionally, it describes how hardware and configuration settings relate to those challenges. Finally, this section offers recommendations to assist you in properly setting up `rippled` to meet the goals for the use-case of your deployment.
 
-Even the most minimally functional `rippled` server must contain the most recently validated ledger versions to submit transactions to the network and verify the integrity of the XRP Ledger. Beyond these requirements, consider the following possible business requirements:
+Even the most minimally functional `rippled` server must contain the most recently validated ledger versions to submit transactions to the network and verify the integrity of the XRP Ledger. Beyond these requirements, consider the following possible business needs:
 
 - Handling ever-increasing transaction volume
 - Servicing transaction reporting information to clients
@@ -57,7 +57,7 @@ path={path_to_ledger_store}
 
 ### Historical Data
 
-The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. Currently, a `rippled` server stores about 12GB of data per day (2018-03-01). You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
+The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. At the time of writing (2018-03-01), a `rippled` server stores about 12GB of data per day. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
 
 Online deletion enables pruning of `rippled` ledgers from databases with no disruption of service. Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files. Online deletion only removes records that are not part of the current ledgers.
 
@@ -98,7 +98,7 @@ Any enterprise or carrier-class data center should have substantial network band
 
 #### Storage
 
-Ripple recommends estimating storage sizing at roughly 12GB per day of data kept online with NuDB. RocksDB requires around 8GB per day. However, the data per day changes with activity in the network. You should provision extra capacity to prepare for future growth. Currently, a server with all XRP Ledger history requires 6.8TB (2018-03-01).
+Ripple recommends estimating storage sizing at roughly 12GB per day of data kept online with NuDB. RocksDB requires around 8GB per day. However, the data per day changes with activity in the network. You should provision extra capacity to prepare for future growth. At the time of writing (2018-03-01), a server with all XRP Ledger history requires 6.8TB.
 
 <!-- {# ***TODO: Update the dated storage consideration above, as needed. ***#} -->
 <!-- {# ***TODO: DOC-1331 tracks: Create historic metrics that a user can use to derive what will be required. For ex, a chart with 1TB in 2014, 3TB in 2015, 7TB in 2018 ***#} -->
@@ -110,7 +110,7 @@ You can set the `node_size` parameter lower to use less memory, but you should o
 
 #### Amazon Web Servives
 
-Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled`  in that environment. Ripple does not recommend using Elastic Block Storage (EBS), because the maximum number of IOPS (5,000) may not be able to keep up with the heaviest demands, but it is very expensive.
+Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run rippled in AWS, but Ripple does not recommend using Elastic Block Storage (EBS). Elastic Block Storage's maximum number of IOPS (5,000) is insufficient for `rippled`'s heaviest loads, despite being very expensive.
 
 AWS instance stores (`ephemeral` storage) do not have these constraints. Therefore, Ripple recommends deploying `rippled` servers with host types such as `M3` that have instance storage. The `database_path` and `node_db` path should each reside on instance storage.
 
