@@ -16,7 +16,7 @@
           {% for page in pages %}
             {% if page.category == cat %}
               {% if page == currentpage %}
-              <li><a class="active" href="{{ page.html }}">{{ page.name }}</a></li>
+              <li><a class="active" href="#main_content_body">{{ page.name }}</a></li>
               {% else %}
               <li><a href="{{ page.html }}">{{ page.name }}</a></li>
               {% endif %}

@@ -8,36 +8,15 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-    <link href="assets/css/landing.css" rel="stylesheet">
-
 {% endblock %}
 
-{% block bodyclasses %}client-portal-docs page-build no-sidebar{% endblock %}
+{% block bodyclasses %}xrp-ledger-dev-portal no-sidebar{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-  <div class="container build-index">
-    <aside class="related-projects">
-      <h3>Related Projects</h3>
-      <div class="project">
-        <p><a class="client-portal-link" href="https://clients.ripple.com/">
-          <img class="project-icon" src="assets/img/RippleNet-condensed.svg" />
-          <span class="project-name">Ripple Client Portal</span>
-          <span class="login-required">(login required)</span>
-        </a></p>
-        <p>For financial institutions using Ripple's proprietary solutions to send money globally.</p>
-      </div>
-      <div class="project">
-        <p><a class="interledger-link" href="https://interledger.org/">
-            <img class="project-icon" src="assets/img/ilp_logo.svg" />
-            <span class="project-name">Interledger</span>
-        </a></p>
-        <p>An open protocol suite for connecting all forms of digital money.</p>
-    </aside>
-
-    <h2>XRP Ledger Documentation Table of Contents</h2>
+  <div class="container portal-index">
+    <h2>XRP Ledger Documentation</h2>
     <div class="row">
       <div class="col-md-8">
         {% for cat in categories %}
@@ -53,6 +32,24 @@
       </div>
     </div>
   </div>
+
+  <aside class="related-projects">
+    <h3>Related Projects</h3>
+    <div class="project">
+      <p><a class="client-portal-link" href="https://clients.ripple.com/">
+        <img class="project-icon" src="assets/img/RippleNet-condensed.svg" />
+        <span class="project-name">Ripple Client Portal</span>
+        <span class="login-required">(login required)</span>
+      </a></p>
+      <p class="project-summary">For financial institutions using Ripple's proprietary solutions to send money globally.</p>
+    </div>
+    <div class="project">
+      <p><a class="interledger-link" href="https://interledger.org/">
+          <img class="project-icon" src="assets/img/ilp_logo.svg" />
+          <span class="project-name">Interledger</span>
+      </a></p>
+      <p class="project-summary">An open protocol suite for connecting all forms of digital money.</p>
+  </aside>
 
   <!-- Disclaimer block -->
   <div class="container build-disclaimer">
