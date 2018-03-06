@@ -38,11 +38,9 @@ Partial Payments have the following limitations:
 - Direct XRP-to-XRP payments cannot be partial payments; this case returns the [result code][] `temBAD_SEND_XRP_PARTIAL`.
     - However, issuance-to-XRP payments or XRP-to-issuance payments _can_ be partial payments.
 
-[result code]: reference-transaction-format.html#transaction-results
-
 ### The `delivered_amount` Field
 
-To help understand how much a partial payment actually delivered, the metadata of a successful Payment transaction includes a `delivered_amount` field. This field describes the amount actually delivered, in the [same format](reference-rippled.html#specifying-currency-amounts) as the `Amount` field.
+To help understand how much a partial payment actually delivered, the metadata of a successful Payment transaction includes a `delivered_amount` field. This field describes the amount actually delivered, in the [same format][Currency Amount] as the `Amount` field.
 
 For non-partial payments, the `delivered_amount` field of the transaction metadata is equal to the `Amount` field of the transaction. When a payment delivers an issued currency, the `delivered_amount` may be slightly different than the `Amount` field due to rounding.
 
@@ -57,13 +55,13 @@ You can find the `delivered_amount` field in the following places:
 
 | API | Method | Field |
 |-----|--------|-------|
-| [JSON-RPC / WebSocket][] | [`account_tx` command](reference-rippled.html#account-tx) | `result.transactions` array members' `meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [`tx` command](reference-rippled.html#tx) | `result.meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [`transaction_entry` command](reference-rippled.html#transaction-entry) | `result.metadata.delivered_amount` |
+| [JSON-RPC / WebSocket][] | [`account_tx` command](reference-rippled-api-public.html#account-tx) | `result.transactions` array members' `meta.delivered_amount` |
+| [JSON-RPC / WebSocket][] | [`tx` command](reference-rippled-api-public.html#tx) | `result.meta.delivered_amount` |
+| [JSON-RPC / WebSocket][] | [`transaction_entry` command](reference-rippled-api-public.html#transaction-entry) | `result.metadata.delivered_amount` |
 | [RippleAPI][] | [`getTransaction` method](reference-rippleapi.html#gettransaction) | `outcome.deliveredAmount` |
 | [RippleAPI][] | [`getTransactions` method](reference-rippleapi.html#gettransactions) | array members' `outcome.deliveredAmount` |
 
-[JSON-RPC / WebSocket]: reference-rippled.html
+[JSON-RPC / WebSocket]: reference-rippled-intro.html
 [RippleAPI]: reference-rippleapi.html
 
 ## Partial Payments Exploit
@@ -102,4 +100,8 @@ Using [the `delivered_amount` field](#the-delivered-amount-field) when processin
 - Add additional sanity checks to your business logic for processing withdrawals. Never process a withdrawal if the total balance you hold in the XRP Ledger does not match your expected assets and obligations.
 - Follow "Know Your Customer" guidelines and strictly verify your customers' identities. You may be able to recognize and block malicious users in advance, or pursue legal action against a malicious actor who exploits your system.
 
+
+<!--{# Common Links #}-->
+{% include 'snippets/rippled_versions.md' %}
 {% include 'snippets/tx-type-links.md' %}
+{% include 'snippets/rippled-api-links.md' %}

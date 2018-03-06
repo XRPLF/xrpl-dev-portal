@@ -58,8 +58,8 @@ The request can contain the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)). |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]). |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `full`         | Boolean                    | _(Optional)_ **Admin required** If `true`, return full information on the entire ledger. Ignored if you did not specify a ledger version. Defaults to `false`. (Equivalent to enabling `transactions`, `accounts`, and `expand`.) **Caution:** This is a very large amount of data -- on the order of several hundred megabytes! |
 | `accounts`     | Boolean                    | _(Optional)_ **Admin required.** If `true`, return information on accounts in the ledger. Ignored if you did not specify a ledger version. Defaults to `false`. **Caution:** This returns a very large amount of data! |
 | `transactions` | Boolean                    | _(Optional)_ If `true`, return information on transactions in the specified ledger version. Defaults to `false`. Ignored if you did not specify a ledger version. |
@@ -143,14 +143,14 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing information about the ledger, including the following fields:
+The response follows the [standard format][], with a successful result containing information about the ledger, including the following fields:
 
 | `Field`                        | Type    | Description                       |
 |:-------------------------------|:--------|:----------------------------------|
 | `ledger`                       | Object  | The complete header data of this ledger. |
 | `ledger.account_hash`          | String  | Hash of all account state information in this ledger, as hex |
 | `ledger.accounts`              | Array   | (Omitted unless requested) All the [account-state information](reference-ledger-format.html) in this ledger. |
-| `ledger.close_time`            | Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
+| `ledger.close_time`            | Integer | The time this ledger was closed, in [seconds since the Ripple Epoch][] |
 | `ledger.close_time_human`      | String  | The time this ledger was closed, in human-readable format |
 | `ledger.close_time_resolution` | Integer | Ledger close times are rounded to within this many seconds. |
 | `ledger.closed`                | Boolean | Whether or not this ledger has been closed |
@@ -171,14 +171,14 @@ Each member of the `queue_data` array represents one transaction in the queue. S
 | Field               | Value            | Description                         |
 |:--------------------|:-----------------|:------------------------------------|
 | `account`           | String           | The [Address][] of the sender for this queued transaction. |
-| `tx`                | String or Object | By default, this is a String containing the [identifying hash](#hashes) of the transaction. If transactions are expanded in binary format, this is an object whose only field is `tx_blob`, containing the binary form of the transaction as a decimal string. If transactions are expanded in JSON format, this is an object containing the [transaction object](reference-transaction-format.html) including the transaction's identifying hash in the `hash` field. |
+| `tx`                | String or Object | By default, this is a String containing the [identifying hash](reference-rippled-api-conventions.html#hashes) of the transaction. If transactions are expanded in binary format, this is an object whose only field is `tx_blob`, containing the binary form of the transaction as a decimal string. If transactions are expanded in JSON format, this is an object containing the [transaction object](reference-transaction-format.html) including the transaction's identifying hash in the `hash` field. |
 | `retries_remaining` | Number           | How many times this transaction can be retried before being dropped. |
 | `preflight_result`  | String           | The tentative result from preliminary transaction checking. This is always `tesSUCCESS`. |
-| `last_result`       | String           | _(May be omitted)_ If this transaction was left in the queue after getting a [retriable (`ter`) result](reference-transaction-format.html#result-categories), this is the exact `ter` result code it got. |
-| `auth_change`       | Boolean          | _(May be omitted)_ Whether this transaction changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). |
-| `fee`               | String           | _(May be omitted)_ The [Transaction Cost](concept-transaction-cost.html) of this transaction, in [drops of XRP](#specifying-currency-amounts). |
+| `last_result`       | String           | _(May be omitted)_ If this transaction was left in the queue after getting a [retriable (`ter`) result](reference-transaction-results.html#result-categories), this is the exact `ter` result code it got. |
+| `auth_change`       | Boolean          | _(May be omitted)_ Whether this transaction changes this address's [ways of authorizing transactions](concept-transactions.html#authorizing-transactions). |
+| `fee`               | String           | _(May be omitted)_ The [Transaction Cost](concept-transaction-cost.html) of this transaction, in [drops of XRP][]. |
 | `fee_level`         | String           | _(May be omitted)_ The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in [fee levels][]. |
-| `max_spend_drops`   | String           | _(May be omitted)_ The maximum amount of XRP, [in drops](#specifying-currency-amounts), this transaction could potentially send or destroy. |
+| `max_spend_drops`   | String           | _(May be omitted)_ The maximum amount of XRP, [in drops][Currency Amount], this transaction could potentially send or destroy. |
 
 If the request specified `"owner_funds": true` and expanded transactions, the response has a field `owner_funds` in the `metaData` object of each [OfferCreate-type transaction](reference-transaction-format.html#offercreate). The purpose of this field is to make it easier to track the [funding status of offers](reference-transaction-format.html#lifecycle-of-an-offer) with each new validated ledger. This field is defined slightly differently than the version of this field in [Order Book subscription streams](#order-book-streams):
 
@@ -188,7 +188,7 @@ If the request specified `"owner_funds": true` and expanded transactions, the re
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `noPermission` - If you specified `full` or `accounts` as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).

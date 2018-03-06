@@ -3,7 +3,7 @@
 
 Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
 
-*The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
+*The `wallet_propose` request is an [admin command][] that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
 [Updated in: rippled 0.31.0][New in: rippled 0.31.0]
 
@@ -83,7 +83,7 @@ You must provide **at most one** of the following fields: `passphrase`, `seed`, 
 
 ##### Specifying a Seed
 
-For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
+For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](concept-transactions.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
 
 Cases where you would specify a known seed include:
 
@@ -96,10 +96,6 @@ If you do specify a seed, you can specify it in any of the following formats:
 * As an [RFC-1751][] format string (secp256k1 key pairs only). Example: `I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE`.
 * As a 128-bit [hexadecimal][] string. Example: `DEDCE9CE67B451D852FD4E846FCDE31C`.
 * An arbitrary string to use as a seed value. For example: `masterpassphrase`.
-
-[base58]: https://en.wikipedia.org/wiki/Base58
-[RFC-1751]: https://tools.ietf.org/html/rfc1751
-[hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 
 #### Response Format
 
@@ -164,7 +160,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing various important information about the new (potential) account, including the following fields:
+The response follows the [standard format][], with a successful result containing various important information about the new (potential) account, including the following fields:
 
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
@@ -182,11 +178,11 @@ In addition to using it as a regular key pair, you can also use it as a member o
 
 For more information about master and regular key pairs, see [Cryptographic Keys](concept-cryptographic-keys.html)
 
-For more information about multi-signing and signer lists, see [Multi-Signing](reference-transaction-format.html#multi-signing).
+For more information about multi-signing and signer lists, see [Multi-Signing](concept-transactions.html#multi-signing).
 
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly.
 * `badSeed` - The request specified a disallowed seed value (in the `passphrase`, `seed`, or `seed_hex` fields), such as an empty string, or a string resembling a XRP Ledger address.

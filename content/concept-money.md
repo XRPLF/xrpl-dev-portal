@@ -16,7 +16,7 @@ For more information on XRP's use cases, benefits, and news, see the [XRP Portal
 
 The very first ledger contained 100 billion XRP, and no new XRP can be created. XRP can be destroyed by [transaction costs](concept-transaction-cost.html) or lost by sending it to addresses for which no one holds a key, so XRP is slightly [deflationary](https://en.wikipedia.org/wiki/Deflation) by nature. No need to worry about running out, though: at the current rate of destruction, it would take at least 70,000 years to destroy all XRP, and XRP [prices and fees can be adjusted](concept-fee-voting.html) as the total supply of XRP changes.
 
-In technical contexts, XRP is measured precisely to the nearest 0.000001 XRP, called a "drop" of XRP. The [`rippled` APIs](reference-rippled.html) require all XRP amounts to be specified in drops of XRP. For example, 1 XRP is represented as `1000000` drops. For more detailed information, see the [currency format reference](reference-currency.html).
+In technical contexts, XRP is measured precisely to the nearest 0.000001 XRP, called a "drop" of XRP. The [`rippled` APIs](reference-rippled-intro.html) require all XRP amounts to be specified in drops of XRP. For example, 1 XRP is represented as `1000000` drops. For more detailed information, see the [currency format reference](reference-currency.html).
 
 ## Issued Currencies
 

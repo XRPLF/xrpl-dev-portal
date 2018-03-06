@@ -3,7 +3,7 @@
 
 The `log_level` command changes the `rippled` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
 
-_The `log_level` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `log_level` method is an [admin command][] that cannot be run by unprivileged users._
 
 #### Request Format
 An example of the request format:
@@ -121,7 +121,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting). The response format depends on whether the request specified a `severity`. If it did, the log level is changed and a successful result contains no additional fields.
+The response follows the [standard format][]. The response format depends on whether the request specified a `severity`. If it did, the log level is changed and a successful result contains no additional fields.
 
 Otherwise, the request contains the following field:
 
@@ -131,5 +131,5 @@ Otherwise, the request contains the following field:
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.

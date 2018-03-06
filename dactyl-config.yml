@@ -51,7 +51,7 @@ targets:
         github_branch: master
         template: template-contentwithtoc.html
         link_subs:
-            "reference-rippled.html": https://ripple.com/build/rippled-apis/
+            "reference-rippled-intro.html": https://ripple.com/build/rippled-apis/
             "reference-rippleapi.html": https://ripple.com/build/rippleapi/
             "reference-transaction-format.html": https://ripple.com/build/transactions/
             "reference-ledger-format.html": https://ripple.com/build/ledger-format/
@@ -155,7 +155,11 @@ pages:
             - local
             - ripple.com
 
-    # "Transaction Processing" goes here (broken off from transaction reference)
+    -   md: concept-transactions.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
 
     -   md: concept-accounts.md
         category: Technical Overview
@@ -341,6 +345,12 @@ pages:
             - local
             - ripple.com
 
+    -   md: tutorial-build-run-rippled-ubuntu.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
+
     -   md: concept-stand-alone-mode.md
         category: The rippled Server
         targets:
@@ -353,7 +363,7 @@ pages:
             - local
             - ripple.com
 
-    -   md: tutorial-build-run-rippled-ubuntu.md
+    -   md: concept-peer-protocol.md
         category: The rippled Server
         targets:
             - local
@@ -392,7 +402,25 @@ pages:
             - ripple.com
 
   # IX. Reference Material
-    -   md: reference-rippled.md
+    -   md: reference-rippled-intro.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-rippled-api-conventions.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-rippled-api-public.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-rippled-api-admin.md
         category: Reference Material
         targets:
             - local
@@ -405,6 +433,12 @@ pages:
             - ripple.com
 
     -   md: reference-transaction-format.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-transaction-results.md
         category: Reference Material
         targets:
             - local

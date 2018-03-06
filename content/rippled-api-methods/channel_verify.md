@@ -55,7 +55,7 @@ The request includes the following parameters:
 |-------|------|-------------|
 | `amount` | String | The amount of [XRP, in drops][], the provided `signature` authorizes. |
 | `channel_id` | String | The Channel ID of the channel that provides the XRP. This is a 64-character hexadecimal string. |
-| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in base58 format. (One way to get the public key in base58 format is to use the [`wallet_propose` command](#wallet-propose).) |
+| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in base58 format. (One way to get the public key in base58 format is to use the [`wallet_propose` command](reference-rippled-api-admin.html#wallet-propose).) |
 | `signature` | String | The signature to verify, in hexadecimal. |
 
 #### Response Format
@@ -103,7 +103,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -113,8 +113,8 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58. The base58 representation of account public keys starts with the letter `a`.
 * `channelMalformed` - The `channel_id` field of the request is not a valid Channel ID. The Channel ID must be a 256-bit (64-character) hexadecimal string.
-* `channelAmtMalformed` - The value specified in the `amount` field was not a valid [XRP amount](#specifying-currency-amounts).
+* `channelAmtMalformed` - The value specified in the `amount` field was not a valid [XRP amount][Currency Amount].

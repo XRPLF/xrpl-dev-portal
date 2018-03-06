@@ -3,7 +3,7 @@
 
 The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.
 
-*The `validation_seed` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `validation_seed` request is an [admin command][] that cannot be run by unprivileged users!*
 
 #### Request Format
 An example of the request format:
@@ -72,7 +72,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                 | Type   | Description                               |
 |:------------------------|:-------|:------------------------------------------|
@@ -82,5 +82,5 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `badSeed` - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.

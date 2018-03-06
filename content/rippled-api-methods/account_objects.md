@@ -9,7 +9,7 @@ The types of objects that may appear in the `account_objects` response for an ac
 
 - [Offer objects](reference-ledger-format.html#offer) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer) for more information.)
 - [RippleState objects](reference-ledger-format.html#ripplestate) for trust lines where this account's side is not in the default state.
-- The account's [SignerList](reference-ledger-format.html#signerlist), if the account has [multi-signing](reference-transaction-format.html#multi-signing) enabled.
+- The account's [SignerList](reference-ledger-format.html#signerlist), if the account has [multi-signing](concept-transactions.html#multi-signing) enabled.
 - [Escrow objects](reference-ledger-format.html#escrow) for held payments that have not yet been executed or canceled.
 - [PayChannel objects](reference-ledger-format.html#paychannel) for open payment channels.
 - [Check objects](reference-ledger-format.html#check) for pending checks.
@@ -65,10 +65,10 @@ The request includes the following parameters:
 |:---------------|:-------------------------------------------|:---------------|
 | `account`      | String                                     | A unique identifier for the account, most commonly the account's address. |
 | `type`         | String                                     | _(Optional)_ If included, filter results to include only this type of ledger object. The valid types are: `check`, `escrow`, `offer`, `payment_channel`, `signer_list`, and `state` (trust line). <!-- Author's note: Omitted types from this list that can't be owned by an account, and ticket until Tickets are enabled: https://github.com/ripple/rippled/blob/1dbc5a57e6b0e90a9da0d6e56f2f5a99e6ac1d8c/src/ripple/rpc/impl/RPCHelpers.cpp#L676-L686 --> |
-| `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Unsigned Integer                           | _(Optional)_ The maximum number of objects to include in the results. Must be within the inclusive range 10 to 400 on non-admin connections. Defaults to 200. |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 #### Response Format
 
@@ -597,7 +597,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                | Type                                       | Description |
 |:-----------------------|:-------------------------------------------|:-------|
@@ -607,12 +607,12 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_index`         | Number                                     | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
 | `ledger_current_index` | Number                                     | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
 | `limit`                | Number                                     | (May be omitted) The limit that was used in this request, if any. |
-| `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
+| `marker`               | [Marker][] | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 | `validated`            | Boolean                                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

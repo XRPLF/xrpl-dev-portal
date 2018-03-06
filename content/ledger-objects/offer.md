@@ -43,7 +43,7 @@ An `Offer` object has the following fields:
 | `OwnerNode`         | String    | UInt64    | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | `PreviousTxnID`     | String | Hash256 | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this object. |
-| `Expiration`        | Number    | UInt32    | (Optional) Indicates the time after which this offer is considered unfunded. See [Specifying Time](reference-rippled.html#specifying-time) for details. |
+| `Expiration`        | Number    | UInt32    | (Optional) Indicates the time after which this offer is considered unfunded. See [Specifying Time][] for details. |
 
 ### Offer Flags
 

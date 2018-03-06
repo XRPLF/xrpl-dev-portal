@@ -1,4 +1,4 @@
-# Reliable Transaction Submission
+(reference-rippled-intro.html)# Reliable Transaction Submission
 
 Financial institutions and other services using the XRP Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted (locally operated) `rippled` servers.
 
@@ -28,7 +28,7 @@ If a power or network outage occurs, applications face more challenges finding t
 
 ### Transaction Timeline
 
-The XRP Ledger provides several APIs for submitting transactions, including [`rippled`](reference-rippled.html), and [RippleAPI](reference-rippleapi.html).  Regardless of the API used, the transaction is applied to the ledger as follows.
+The XRP Ledger provides several APIs for submitting transactions, including [`rippled`](reference-rippled-intro.html), and [RippleAPI](reference-rippleapi.html).  Regardless of the API used, the transaction is applied to the ledger as follows.
 
 1. An account owner creates and signs a transaction.
 2. The owner submits the transaction to the network as a candidate transaction.
@@ -138,7 +138,7 @@ To implement the transaction submission and verification best practices, applica
 
 How the application does these actions depends on the API the application uses.  An application may use any of the following interfaces:
 
-1. [`rippled`'s internal APIs](reference-rippled.html)
+1. [`rippled`'s APIs](reference-rippled-intro.html)
 2. [RippleAPI](reference-rippleapi.html)
 3. Any number of other software APIs layered on top of `rippled`
 
@@ -147,7 +147,7 @@ How the application does these actions depends on the API the application uses. 
 
 #### Determine the Account Sequence
 
-`rippled` provides the [account_info](reference-rippled.html#account-info) method to learn an account's sequence number in the last validated ledger.
+`rippled` provides the [`account_info` method](reference-rippled-api-public.html#account-info) to look up an account's sequence number in the last validated ledger.
 
 JSON-RPC Request:
 
@@ -193,7 +193,7 @@ If an application were to submit three transactions signed by this account, they
 
 #### Determine the Last Validated Ledger
 
-`rippled` provides the [server_state](reference-rippled.html#server-state) command which returns the ledger sequence number of the last validated ledger.
+`rippled` provides the [`server_state` method](reference-rippled-api-public.html#server-state) which returns the ledger sequence number of the last validated ledger.
 
 Request:
 
@@ -244,7 +244,7 @@ In this example the last validated ledger sequence number is 10268596 (found und
 
 #### Construct the Transaction
 
-`rippled` provides the [sign method](reference-rippled.html#sign) to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `rippled` instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.
+`rippled` provides the [`sign` method](reference-rippled-api-public.html#sign) to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `rippled` instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.
 
 Request:
 
@@ -311,7 +311,7 @@ Applications should persist the transaction's hash before submitting.  The resul
 
 #### Submit the transaction
 
-`rippled` provides the [`submit` method](reference-rippled.html#submit), allowing us to submit the signed transaction.  This uses the `tx_blob` parameter that was returned by the `sign` method.
+`rippled` provides the [`submit` method](reference-rippled-api-public.html#submit), allowing us to submit the signed transaction.  This uses the `tx_blob` parameter that was returned by the `sign` method.
 
 Request:
 
@@ -362,7 +362,7 @@ This a **preliminary** result.  Final results are only available from validated 
 
 #### Verify the Transaction
 
-The transaction hash, generated when the transaction was signed, is passed to the [`tx` method](reference-rippled.html#tx) to retrieve the result of a transaction.
+The transaction hash, generated when the transaction was signed, is passed to the [`tx` method](reference-rippled-api-public.html#tx) to retrieve the result of a transaction.
 
 Request:
 
@@ -419,7 +419,7 @@ If the response does not include `"validated": true`, the result is provisional 
 
 #### Verify Missing Transaction
 
-Applications must handle cases where a call to the [`tx` method](reference-rippled.html#tx) returns a `txnNotFound` error.
+Applications must handle cases where a call to the [`tx` method](reference-rippled-api-public.html#tx) returns a `txnNotFound` error.
 
 ```
 {
@@ -439,7 +439,7 @@ Applications must handle cases where a call to the [`tx` method](reference-rippl
 
 The `txnNotFound` result code occurs in cases where the transaction is not included in any ledger.  However, it could also occur when a `rippled` instance does not have a complete ledger history, or if the transaction has not yet propagated to the `rippled` instance.  Applications should make further queries to determine how to react.
 
-The [`server_state` method](reference-rippled.html#server-state) (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under `result.state.complete_ledgers`.
+The [`server_state` method](reference-rippled-api-public.html#server-state) (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under `result.state.complete_ledgers`.
 
 ```
 {

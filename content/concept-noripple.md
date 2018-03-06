@@ -12,7 +12,7 @@ If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the mon
 
 ![Charlie --($13)-- Alice --($17)-- Bob](img/noripple-02.png)
 
-We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the XRP Ledger. Rippling occurs when addresses are linked by trust lines that use the same [currency code](reference-rippled.html#currency-codes). The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
+We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the XRP Ledger. Rippling occurs when addresses are linked by trust lines that use the same [currency code](reference-rippled-api-conventions.html#currency-codes). The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
 
 ## Justification
 
@@ -44,7 +44,7 @@ The NoRipple flag makes certain paths invalid, so that they cannot be used to ma
 
 The NoRipple flag can only be enabled on a trust line if the address has a positive or zero balance on that trust line. This is so that the feature cannot be abused to default on the obligation the trust line balance represents. (Of course, you can still default by abandoning the address.)
 
-In the [`rippled` APIs](reference-rippled.html), you can enable the NoRipple flag by sending a [TrustSet Transaction](reference-transaction-format.html#trustset) with the `tfSetNoRipple` flag. You can disable NoRipple (enable rippling) with the `tfClearNoRipple` flag.
+In the [`rippled` APIs](reference-rippled-intro.html), you can enable the NoRipple flag by sending a [TrustSet Transaction](reference-transaction-format.html#trustset) with the `tfSetNoRipple` flag. You can disable NoRipple (enable rippling) with the `tfClearNoRipple` flag.
 
 In [RippleAPI](reference-rippleapi.html), you can enable the NoRipple flag by sending a [Trustline transaction](reference-rippleapi.html#preparetrustline) transaction with the `ripplingDisabled` field of the trust line set to `true`.
 
@@ -53,6 +53,6 @@ In [RippleAPI](reference-rippleapi.html), you can enable the NoRipple flag by se
 
 In the case of two accounts that mutually trust each other, the NoRipple flag is tracked separately for each account.
 
-In the [`rippled` APIs](reference-rippled.html), you can use the [account_lines method](https://ripple.com/build/rippled-apis/#account-lines) to look up the trust lines associated with an address. For each trust line, the `no_ripple` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the NoRipple flag.
+In the [`rippled` APIs](reference-rippled-intro.html), you can use the [account_lines method](https://ripple.com/build/rippled-apis/#account-lines) to look up the trust lines associated with an address. For each trust line, the `no_ripple` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the NoRipple flag.
 
 In [RippleAPI](reference-rippleapi.html), you can use the [getTrustlines](reference-rippleapi.html#gettrustlines) method to look up the trust lines associated with an address. For each trust line, the `ripplingDisabled` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `counterparty.ripplingDisabled` field shows whether the counterparty has enabled the NoRipple flag.

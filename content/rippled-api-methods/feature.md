@@ -5,7 +5,7 @@ The `feature` command returns information about [amendments](concept-amendments.
 
 You can use the `feature` command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the `rippled.cfg` file. See [Configuring Amendment Voting](concept-amendments.html#configuring-amendment-voting) for more information.
 
-_The `feature` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `feature` method is an [admin command][] that cannot be run by unprivileged users._
 
 #### Request Format
 An example of the request format:
@@ -171,7 +171,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing **a map of amendments** as a JSON object. The keys of the object are amendment IDs. The values for each key are _amendment objects_ that describe the status of the amendment with that ID. If the request specified a `feature`, the map contains only the requested amendment object, after applying any changes from the request. Each amendment object has the following fields:
+The response follows the [standard format][], with a successful result containing **a map of amendments** as a JSON object. The keys of the object are amendment IDs. The values for each key are _amendment objects_ that describe the status of the amendment with that ID. If the request specified a `feature`, the map contains only the requested amendment object, after applying any changes from the request. Each amendment object has the following fields:
 
 | `Field`     | Type    | Description                                          |
 |:------------|:--------|:-----------------------------------------------------|
@@ -184,5 +184,5 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `badFeature` - The `feature` specified was invalidly formatted, or the server does not know an amendment with that name.

@@ -36,4 +36,4 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with whichever fields are appropriate to the type of command made.
+The response follows the [standard format][], with whichever fields are appropriate to the type of command made.

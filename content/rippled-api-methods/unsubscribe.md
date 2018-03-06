@@ -51,8 +51,8 @@ The objects in the `books` array are defined almost like the ones from subscribe
 
 | `Field`      | Type    | Description                                         |
 |:-------------|:--------|:----------------------------------------------------|
-| `taker_gets` | Object  | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
-| `taker_pays` | Object  | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
+| `taker_gets` | Object  | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts][Currency Amount]. |
+| `taker_pays` | Object  | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts][Currency Amount]. |
 | `both`       | Boolean | (Optional, defaults to false) If true, remove a subscription for both sides of the order book. |
 
 #### Response Format
@@ -74,11 +74,11 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing no fields.
+The response follows the [standard format][], with a successful result containing no fields.
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The request included the `url` field, but you are not connected as an admin.
 * `malformedStream` - The `streams` field of the request is not formatted properly.

@@ -66,7 +66,7 @@ The available AccountSet flags are:
 | asfRequireAuth   | 2             | lsfRequireAuth            | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
 | asfRequireDest   | 1             | lsfRequireDestTag         | Require a destination tag to send transactions to this account. |
 
-To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](#authorizing-transactions) by signing it with the master key. You cannot use a regular key or a multi-signature. [New in: rippled 0.28.0][]
+To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](concept-transactions.html#authorizing-transactions) by signing it with the master key. You cannot use a regular key or a multi-signature. [New in: rippled 0.28.0][]
 
 The following [Transaction flags](#flags), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
 

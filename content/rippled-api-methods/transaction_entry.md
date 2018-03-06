@@ -49,8 +49,8 @@ The request includes the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `tx_hash`      | String                     | Unique hash of the transaction you are looking up |
 
 **Note:** This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`.
@@ -193,7 +193,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
@@ -210,7 +210,7 @@ There are a couple possible reasons the server may fail to find the transaction:
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `fieldNotFoundTransaction` - The `tx_hash` field was omitted from the request
 * `notYetImplemented` - A ledger version was not specified in the request.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

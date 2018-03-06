@@ -186,7 +186,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the fields of the [Transaction object](reference-transaction-format.html) as well as the following additional fields:
+The response follows the [standard format][], with a successful result containing the fields of the [Transaction object](reference-transaction-format.html) as well as the following additional fields:
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
@@ -199,6 +199,6 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `txnNotFound` - Either the transaction does not exist, or it was part of an older ledger version that `rippled` does not have available.
