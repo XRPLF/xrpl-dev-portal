@@ -16,7 +16,7 @@ A submit-only request includes the following parameters:
 
 | `Field`     | Type    | Description                                          |
 |:------------|:--------|:-----------------------------------------------------|
-| `tx_blob`   | String  | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](reference-transaction-format.html#multi-signing). |
+| `tx_blob`   | String  | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](concept-transactions.html#multi-signing). |
 | `fail_hard` | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 
 #### Request Format
@@ -60,7 +60,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 
 ### Sign-and-Submit Mode
 
-This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](reference-transaction-format.html#multi-signing).
+This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](concept-transactions.html#multi-signing).
 
 You can provide the secret key used to sign the transaction in the following ways:
 
@@ -250,7 +250,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                 | Type    | Description                              |
 |:------------------------|:--------|:-----------------------------------------|
@@ -260,7 +260,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `tx_blob`               | String  | The complete transaction in hex string format |
 | `tx_json`               | Object  | The complete transaction in JSON format  |
 
-**Caution:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](reference-transaction-format.html#full-transaction-response-list) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
+**Caution:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](reference-transaction-results.html#full-transaction-response-list) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
 
 **Caution:** If this command results in an error messages, the message can contain the secret key from the request. (This is not a problem if the request contained a signed tx_blob instead.) Make sure that these errors are not visible to others.
 
@@ -271,7 +271,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `amendmentBlocked` - The transaction cannot be submitted to the network because the `rippled` server is [amendment blocked](concept-amendments.html#amendment-blocked).
 * `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)
 * `internalJson` - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.

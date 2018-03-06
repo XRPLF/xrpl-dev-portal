@@ -1,9 +1,9 @@
 ## validation_create
 [[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
 
-Use the `validation_create` command to generate the keys for a rippled [validator](tutorial-rippled-setup.html#validator-setup). Similar to the [wallet_propose](#wallet-propose) command, this command makes no real changes, but only generates a set of keys in the proper format.
+Use the `validation_create` command to generate the keys for a rippled [validator](tutorial-rippled-setup.html#validator-setup). Similar to the [wallet_propose](reference-rippled-api-admin.html#wallet-propose) command, this command makes no real changes, but only generates a set of keys in the proper format.
 
-_The `validation_create` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `validation_create` method is an [admin command][] that cannot be run by unprivileged users._
 
 #### Request Format
 An example of the request format:
@@ -86,7 +86,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                 | Type   | Description                               |
 |:------------------------|:-------|:------------------------------------------|
@@ -96,5 +96,5 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `badSeed` - The request provided an invalid seed value. This usually means that the seed value appears to be a valid string of a different format, such as an account address or validation public key.

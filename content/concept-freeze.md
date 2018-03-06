@@ -57,7 +57,7 @@ The XRP Ledger cannot force a financial institution to honor the obligations tha
 
 The No Freeze setting applies to all currencies issued to and from an address. If you want to be able to freeze some currencies but not others, you should use different addresses for each currency.
 
-You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a [Regular Key](reference-transaction-format.html#setregularkey) or a [multi-signed transaction](reference-transaction-format.html#multi-signing) to enable No Freeze.
+You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a [regular key pair](concept-cryptographic-keys.html#regular-key-pair) or a [multi-signed transaction](concept-transactions.html#multi-signing) to enable No Freeze.
 
 
 # Technical Details
@@ -78,9 +78,9 @@ To enable or disable Individual Freeze on a specific trust line, send a `TrustSe
 | LimitAmount.value    | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. From the perspective of a financial institution, this is typically `"0"`. |
 | Flags                | Number | To enable a freeze, use a value with the bit `0x00100000` (tfSetFreeze) enabled. To disable a freeze, use a value with the bit `0x00200000` (tfClearFreeze) enabled instead. |
 
-Set the `Fee`, `Sequence`, and `LastLedgerSequence` parameters [in the typical way](reference-transaction-format.html#signing-and-submitting-transactions).
+Set the `Fee`, `Sequence`, and `LastLedgerSequence` parameters [in the typical way](concept-transactions.html#signing-and-submitting-transactions).
 
-Example of submitting a TrustSet transaction to enable an individual freeze using the [WebSocket API](reference-rippled.html#websocket-api):
+Example of submitting a TrustSet transaction to enable an individual freeze using the [WebSocket API](reference-rippled-intro.html#websocket-api):
 
 ```
 {
@@ -134,7 +134,7 @@ Example JavaScript (ECMAScript 6) code to enable Individual Freeze on a trust li
 
 To enable Global Freeze on an address, send an `AccountSet` transaction with the [asfGlobalFreeze flag value](reference-transaction-format.html#accountset-flags) in the `SetFlag` field. To disable Global Freeze, put the asfGlobalFreeze flag value in the `ClearFlag` field instead.
 
-Example of submitting an AccountSet transaction to enable Global Freeze using the [WebSocket API](reference-rippled.html#websocket-api):
+Example of submitting an AccountSet transaction to enable Global Freeze using the [WebSocket API](reference-rippled-intro.html#websocket-api):
 
 ```
 {
@@ -182,7 +182,7 @@ Example JavaScript (ECMAScript 6) code to enable Global Freeze on an address:
 
 To enable No Freeze on an address, send an `AccountSet` transaction with the [asfNoFreeze flag value](reference-transaction-format.html#accountset-flags) in the `SetFlag` field. You must sign this transaction using the master key. Once enabled, you cannot disable No Freeze.
 
-Example of submitting an AccountSet transaction to enable No Freeze using the [WebSocket API](reference-rippled.html#websocket-api):
+Example of submitting an AccountSet transaction to enable No Freeze using the [WebSocket API](reference-rippled-intro.html#websocket-api):
 
 WebSocket request:
 
@@ -228,7 +228,7 @@ Example JavaScript (ECMAScript 6) code to enable No Freeze on an address:
 
 ### Using `rippled`
 
-To see if a trust line has an Individual Freeze enabled, use the [`account_lines` method](reference-rippled.html#account-lines) with the following parameters:
+To see if a trust line has an Individual Freeze enabled, use the [`account_lines` method](reference-rippled-api-public.html#account-lines) with the following parameters:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
@@ -311,7 +311,7 @@ Example JavaScript (ECMAScript 6) code to check whether a trust line is frozen:
 
 ### Using `rippled`
 
-To see if an address has enabled Global Freeze, No Freeze, or both, use the [`account_info` method](reference-rippled.html#account-lines) with the following parameters:
+To see if an address has enabled Global Freeze, No Freeze, or both, use the [`account_info` method](reference-rippled-api-public.html#account-lines) with the following parameters:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|

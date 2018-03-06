@@ -38,7 +38,7 @@ When transmitting non-XRP amounts across the network or recording them in ledger
 
 ## Currency Codes
 
-All non-XRP currencies in the XRP Ledger have a 160-bit currency code. The [`rippled` APIs](reference-rippled.html) map 3-character ASCII strings (case-sensitive) to 160-bit currency codes using a standard mapping. The currency code `XRP` is disallowed for issued currencies. Currencies with the same code can [ripple](concept-noripple.html) across connected trustlines. Currency codes have no other behavior built into the XRP Ledger.
+All non-XRP currencies in the XRP Ledger have a 160-bit currency code. The [`rippled` APIs](reference-rippled-intro.html) map 3-character ASCII strings (case-sensitive) to 160-bit currency codes using a standard mapping. The currency code `XRP` is disallowed for issued currencies. Currencies with the same code can [ripple](concept-noripple.html) across connected trustlines. Currency codes have no other behavior built into the XRP Ledger.
 
 ### Standard Currency Codes
 

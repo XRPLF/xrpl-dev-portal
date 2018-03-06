@@ -39,7 +39,7 @@ A `Check` object has the following fields:
 | `Sequence`          | Number           | UInt32            | The sequence number of the [CheckCreate transaction][] that created this check. |
 | `DestinationNode`   | String           | UInt64            | _(Optional)_ A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. |
 | `DestinationTag`    | Number           | UInt32            | _(Optional)_ An arbitrary tag to further specify the destination for this Check, such as a hosted recipient at the destination address. |
-| `Expiration`        | Number           | UInt32            | _(Optional)_ Indicates the time after which this Check is considered expired. See [Specifying Time](reference-rippled.html#specifying-time) for details. |
+| `Expiration`        | Number           | UInt32            | _(Optional)_ Indicates the time after which this Check is considered expired. See [Specifying Time][] for details. |
 | `InvoiceID`         | String           | Hash256           | _(Optional)_ Arbitrary 256-bit hash provided by the sender as a specific reason or identifier for this Check. |
 | `SourceTag`         | Number           | UInt32            | _(Optional)_ An arbitrary tag to further specify the source for this Check, such as a hosted recipient at the sender's address. |
 

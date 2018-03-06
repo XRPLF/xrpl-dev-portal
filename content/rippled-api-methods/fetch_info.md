@@ -3,7 +3,7 @@
 
 The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.
 
-_The `fetch_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `fetch_info` method is an [admin command][] that cannot be run by unprivileged users._
 
 #### Request Format
 An example of the request format:
@@ -134,7 +134,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
@@ -153,4 +153,4 @@ The fields describing a fetch in progress are subject to change without notice. 
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].

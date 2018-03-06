@@ -1,7 +1,7 @@
 ## sign_for
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
 
-The `sign_for` command provides one signature for a [multi-signed transaction](reference-transaction-format.html#multi-signing).
+The `sign_for` command provides one signature for a [multi-signed transaction](concept-transactions.html#multi-signing).
 
 This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
@@ -212,7 +212,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
@@ -221,7 +221,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `srcActNotFound` - If the `Account` from the transaction is not a funded address in the ledger.
 * `srcActMalformed` - If the signing address (`account` field) from the request is not validly formed.

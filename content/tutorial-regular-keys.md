@@ -22,7 +22,7 @@ This tutorial walks you through the steps required to assign a regular key pair 
 
 ### 1. Generate a Key Pair
 
-Use the [`wallet_propose`](reference-rippled.html#wallet-propose) method to generate the key pair that you'll assign to your account as a regular key pair.
+Use the [`wallet_propose`](reference-rippled-api-admin.html#wallet-propose) method to generate the key pair that you'll assign to your account as a regular key pair.
 
 #### Request Format
 
@@ -130,7 +130,7 @@ When you make subsequent `SetRegularKey` requests, you can sign using the existi
 
 #### Sign Your Transaction
 
-The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled-api-public.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
 
 Populate the request fields with the following values:
 
@@ -271,7 +271,7 @@ Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `s
 
 #### Submit Your Transaction
 
-Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled.html#submit) command.
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled-api-public.html#submit) command.
 
 ##### Request Format
 
@@ -396,7 +396,7 @@ An example of a successful response:
 <!-- MULTICODE_BLOCK_END -->
 
 
-Note that the response contains a `hash` of the transaction, which you can use to [look up the transaction's final outcome](reference-rippled.html#tx).
+Note that the response contains a `hash` of the transaction, which you can use to [look up the transaction's final outcome](reference-rippled-api-public.html#tx).
 
 
 ### 3. Verify the Regular Key Pair
@@ -408,7 +408,7 @@ As discussed in step 2, transmitting your master private key is dangerous. It is
 
 #### Sign Your Transaction
 
-The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled-api-public.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
 
 Populate the request fields with the following values:
 
@@ -544,7 +544,7 @@ Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `s
 
 #### Submit Your Transaction
 
-Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled.html#submit) command.
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled-api-public.html#submit) command.
 
 ##### Request Format
 
@@ -689,14 +689,14 @@ For more information about master and regular key pairs, see [Cryptographic Keys
 
 ### Removing a Regular Key Pair
 
-If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Just use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method, omitting the `RegularKey` value in the request. Note that the method fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](reference-transaction-format.html#multi-signing)).
+If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Just use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method, omitting the `RegularKey` value in the request. Note that the method fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](concept-transactions.html#multi-signing)).
 
 
 When removing a regular key pair to your account, the `SetRegularKey` method requires signing by your account's master private key (secret) or existing regular key pair. Transmitting your master or regular private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
 
 #### Sign Your Transaction
 
-The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled-api-public.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
 
 Populate the request fields with the following values:
 
@@ -831,7 +831,7 @@ Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `s
 
 #### Submit Your Transaction
 
-Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled.html#submit) command.
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled-api-public.html#submit) command.
 
 ##### Request Format
 

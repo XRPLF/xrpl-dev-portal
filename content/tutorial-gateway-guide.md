@@ -48,7 +48,7 @@ The XRP Ledger contains a currency exchange, where any user can place and fulfil
 
 Currency traders who hold a gateway's issuances can provide liquidity to other popular currencies, without the gateway needing to float a large reserve in various destination currencies. The gateway also does not need to take on the risk of financial exchange. However, a gateway may still want to provide liquidity to XRP or other popular currencies at a baseline rate, especially when the gateway is new to the exchange. If you do provide liquidity, use a different address for trading than your issuing address.
 
-Third-party liquidity providers can use the [`rippled` APIs](reference-rippled.html), [RippleAPI JavaScript Library](reference-rippleapi.html), or a third-party client application to access the distributed exchange. Some client applications look up the addresses associated with a gateway using [ripple.txt](#rippletxt), so it can be helpful to publish a good ripple.txt.
+Third-party liquidity providers can use the [`rippled` APIs](reference-rippled-intro.html), [RippleAPI JavaScript Library](reference-rippleapi.html), or a third-party client application to access the distributed exchange. Some client applications look up the addresses associated with a gateway using [ripple.txt](#rippletxt), so it can be helpful to publish a good ripple.txt.
 
 Contact [partners@ripple.com](mailto:partners@ripple.com) for help establishing liquidity between your gateway and others.
 
@@ -374,7 +374,7 @@ Contact [partners@ripple.com](mailto:partners@ripple.com) to see how Ripple can 
 
 There are several interfaces you can use to connect to the XRP Ledger, depending on your needs and your existing software:
 
-* [`rippled`](reference-rippled.html) provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core XRP Ledger functionality.
+* [`rippled`](reference-rippled-intro.html) provides JSON-RPC and WebSocket APIs that can be used as a low-level interface to all core XRP Ledger functionality.
 * [RippleAPI](reference-rippleapi.html) provides a simplified API for JavaScript applications.
 
 
@@ -391,7 +391,7 @@ The DefaultRipple flag controls whether the balances in an accounting relationsh
 
 Before asking customers to create accounting relationships to its issuing address, a gateway should enable the DefaultRipple flag on that address. Otherwise, the gateway must individually disable the NoRipple flag for each accounting relationship that other addresses have created.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction to enable the DefaultRipple flag:
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled-api-public.html#submit) to send an AccountSet transaction to enable the DefaultRipple flag:
 
 Request:
 
@@ -441,7 +441,7 @@ Response:
 }
 ```
 
-To confirm that an address has DefaultRipple enabled, look up the address using the [account_info command](reference-rippled.html#account-info), specifying a validated ledger version. Use [a bitwise-AND operator](https://en.wikipedia.org/wiki/Bitwise_operation#AND) to compare the `Flags` field with 0x00800000 (the [ledger flag lsfDefaultRipple](reference-ledger-format.html#accountroot-flags)). If the result of the bitwise-AND operation is nonzero, then the address has DefaultRipple enabled.
+To confirm that an address has DefaultRipple enabled, look up the address using the [account_info command](reference-rippled-api-public.html#account-info), specifying a validated ledger version. Use [a bitwise-AND operator](https://en.wikipedia.org/wiki/Bitwise_operation#AND) to compare the `Flags` field with 0x00800000 (the [ledger flag lsfDefaultRipple](reference-ledger-format.html#accountroot-flags)). If the result of the bitwise-AND operation is nonzero, then the address has DefaultRipple enabled.
 
 
 ## Generating Source and Destination Tags
@@ -463,7 +463,7 @@ The DisallowXRP setting (`disallowIncomingXRP` in RippleAPI) is designed to disc
 
 An issuing gateway that does not trade XRP should enable the DisallowXRP flag on the gateway's issuing and operational addresses. A private exchange that trades in XRP should only enable the DisallowXRP flag on addresses that are not expected to receive XRP.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction to enable the DisallowXRP flag:
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled-api-public.html#submit) to send an AccountSet transaction to enable the DisallowXRP flag:
 
 Request:
 
@@ -520,7 +520,7 @@ The `RequireDest` setting (`requireDestinationTag` in RippleAPI) is designed to 
 
 We recommend enabling the `RequireDest` flag on all gateway issuing and operational addresses.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction to enable the `RequireDest` flag:
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled-api-public.html#submit) to send an AccountSet transaction to enable the `RequireDest` flag:
 
 Request:
 
@@ -578,7 +578,7 @@ The `RequireAuth` setting prevents all counterparties from holding balances issu
 
 ### Enabling RequireAuth
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction to enable the RequireAuth flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled-api-public.html#submit) to send an AccountSet transaction to enable the RequireAuth flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
 
 Request:
 
@@ -609,7 +609,7 @@ If you are using the [Authorized Trust Lines](concept-authorized-trust-lines.htm
 
 To authorize an accounting relationship, submit a TrustSet transaction from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](reference-transaction-format.html#trustset-flags) flag for the transaction.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send a TrustSet transaction authorizing the customer address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled-api-public.html#submit) to send a TrustSet transaction authorizing the customer address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
 
 Request:
 
@@ -654,7 +654,7 @@ To make things simpler for your customers, we recommend accepting payments to ei
 
 As an added precaution, we recommend comparing the balances of your issuing address with the collateral funds in your internal accounting system as of each new XRP Ledger ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.
 
-* Use [`rippled`'s `gateway_balances` command](reference-rippled.html#gateway-balances) or [RippleAPI's `getTrustlines` method](reference-rippleapi.html#gettrustlines) to check your balances.
+* Use [`rippled`'s `gateway_balances` command](reference-rippled-api-public.html#gateway-balances) or [RippleAPI's `getTrustlines` method](reference-rippleapi.html#gettrustlines) to check your balances.
 * If you have a [TransferRate](#transferrate) set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your issuances among themselves.
 
 
@@ -662,7 +662,7 @@ As an added precaution, we recommend comparing the balances of your issuing addr
 
 The *TransferRate* setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issuances from one XRP Ledger address to another. See [Transfer Fees](concept-transfer-fees.html) for more information.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction for the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW, setting the TransferRate to charge a fee of 0.5%.
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled-api-public.html#submit) to send an AccountSet transaction for the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW, setting the TransferRate to charge a fee of 0.5%.
 
 Request:
 
@@ -728,7 +728,7 @@ When you build an automated system to send payments into the XRP Ledger for your
 
 One common pitfall is performing pathfinding before sending sending a payment to customers in the XRP Ledger. If you specify the issuers correctly, the [default paths](concept-paths.html#default-paths) can deliver the currency as intended.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send a payment from the operational address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to the customer address raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n, sending and delivering funds issued by the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.
+The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled-api-public.html#submit) to send a payment from the operational address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to the customer address raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n, sending and delivering funds issued by the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.
 
 Request:
 

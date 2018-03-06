@@ -28,7 +28,7 @@ Naturally, a fast network connection is preferable.
 
 Production `rippled` instances can [use Ripple's binary executable](#installation-on-centosred-hat-with-yum), available from the Ripple [yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified) repository.
 
-For development, you can [compile `rippled` from source](https://github.com/ripple/rippled/tree/develop/Builds).
+For development, you can [compile `rippled` from source](https://github.com/ripple/rippled/tree/master/Builds).
 
 
 ## Installation on CentOS/Red Hat with yum
@@ -88,7 +88,7 @@ This section assumes that you are using Ubuntu 15.04 or later.
 
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger.
 
-[rippled commands](reference-rippled.html#list-of-public-commands) can be run with:
+[rippled commands](reference-rippled-api-public.html) can be run with:
 
         $ /opt/ripple/bin/rippled <command>
 
@@ -220,7 +220,7 @@ Network participants are unlikely to trust validators without knowing who is ope
 
 `rippled` should connect to the XRP Ledger with the default configuration. However, you can change your settings by editing the `rippled.cfg` file (located at `/opt/ripple/etc/rippled.cfg` when installing `rippled` with yum).
 
-See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg) for a description of all configuration options.
+See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/master/doc/rippled-example.cfg) for a description of all configuration options.
 
 Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path:
 
@@ -247,6 +247,6 @@ To enable clustering, change the following sections of your [config file](https:
         192.168.0.1 51235
         192.168.0.2 51235
 
-* Generate a unique seed (using the [`validation_create` command](reference-rippled.html#validation-seed)) for each of your servers, and configure it under the `[node_seed]` section. The `rippled` server uses this key to sign its messages to other servers in the peer-to-peer network.
+* Generate a unique seed (using the [`validation_create` command](reference-rippled-api-admin.html#validation-seed)) for each of your servers, and configure it under the `[node_seed]` section. The `rippled` server uses this key to sign its messages to other servers in the peer-to-peer network.
 
 * Add the public keys (for peer communication) of each of your other servers under the `[cluster_nodes]` section.

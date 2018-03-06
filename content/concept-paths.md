@@ -27,9 +27,9 @@ In both types of steps, each intermediate address gains and loses approximately 
 
 ## Pathfinding
 
-The `rippled` API has two methods that can be used for pathfinding. The [`ripple_path_find` command](reference-rippled.html#ripple-path-find) does a one-time lookup of possible path sets. The [`path_find` command](reference-rippled.html#path-find) (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
+The `rippled` API has two methods that can be used for pathfinding. The [`ripple_path_find` command](reference-rippled-api-public.html#ripple-path-find) does a one-time lookup of possible path sets. The [`path_find` command](reference-rippled-api-public.html#path-find) (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
 
-You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [`sign` command](reference-rippled.html#sign) or [`submit` command (sign-and-submit mode)](reference-rippled.html#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
+You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [`sign` command](reference-rippled-api-public.html#sign) or [`submit` command (sign-and-submit mode)](reference-rippled-api-public.html#sign-and-submit-mode). Ripple recommends pathfinding separately and confirming the results before signing, to avoid surprises.
 
 **Caution:** Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.
 
@@ -38,7 +38,7 @@ Finding paths is a very challenging problem that changes slightly every few seco
 
 ## Implied Steps
 
-By convention, several steps of a path are implied by the [fields of the Payment transaction](reference-transaction-format.html#payment): specifically, the `Account` (sender), `Destination` (receiver), `Amount` (currency and amount to be delivered) and `SendMax` (currency and amount to be sent, if specified). The implied steps are as follows:
+By convention, several steps of a path are implied by the fields of the [Payment transaction][]: specifically, the `Account` (sender), `Destination` (receiver), `Amount` (currency and amount to be delivered) and `SendMax` (currency and amount to be sent, if specified). The implied steps are as follows:
 
 * The first step of a path is always implied to be the sender of the transaction, as defined by the transaction's `Account` field.
 * If the transaction includes a `SendMax` field with an `issuer` that is not the sender of the transaction, that issuer is implied to be the second step of the path.
@@ -92,3 +92,8 @@ The `type` field, used for the binary serialization of a path set, is actually c
 | 0x01        | 1               | A change of address (rippling): the `account` field is present. |
 | 0x10        | 16              | A change of currency: the `currency` field is present. |
 | 0x20        | 32              | A change of issuer: the `issuer` field is present. |
+
+<!--{# Common links #}-->
+{% include 'snippets/rippled_versions.md' %}
+{% include 'snippets/tx-type-links.md' %}
+{% include 'snippets/rippled-api-links.md' %}

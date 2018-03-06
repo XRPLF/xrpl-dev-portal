@@ -71,7 +71,7 @@ As an entity that is obligated to hold large amounts of XRP for the long term, R
 
 Cryptography is one of the hardest parts of any distributed system, and a mistake can lead to money stolen by malicious actors anywhere in the world. The XRP Ledger uses industry-standard schemes for signing and verifying transactions, algorithms that have successfully protected hundreds of billions of US dollars' worth of value for many years. The XRP Ledger also layers multi-signing functionality so you can use multi-factor authorization or split keys across multiple people as a backup, and provides new algorithms with a path to migrate the keys you use if a breakthrough in cryptography makes the old algorithms obsolete.
 
-For more information, see [Cryptographic Keys](cryptographic-keys.html) and [Multi-signing](reference-transaction-format.html#multi-signing).
+For more information, see [Cryptographic Keys](concept-cryptographic-keys.html) and [Multi-signing](concept-transactions.html#multi-signing).
 
 
 ## Modern Features for Smart Contracts

@@ -457,7 +457,7 @@ Optionally, you can provide the following query parameters:
 | `end` | String - [Timestamp][]  | Filter results to this time and earlier. |
 | `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
 | `type` | String | Filter transactions to a specific [transaction type](reference-transaction-format.html). |
-| `result` | String | Filter transactions for a specific [transaction result](reference-transaction-format.html#transaction-results). |
+| `result` | String | Filter transactions for a specific [transaction result](reference-transaction-results.html). |
 | `binary` | Boolean | If true, return transactions in binary form. Defaults to false. |
 | `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 100. |
 | `marker` | String | [Pagination](#pagination) marker from a previous response. |
@@ -1211,7 +1211,7 @@ The `family` and `metrics` query parameters provide a way to filter results to a
 | Family | Included Metrics | Meaning |
 |--------|------------------|---------|
 | `type` | All XRP Ledger [transaction types](reference-transaction-format.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
-| `result` | All [transaction result codes](reference-transaction-format.html#transaction-results) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
+| `result` | All [transaction result codes](reference-transaction-results.html) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
 | `metric` | Data-API defined Special Transaction Metrics. | (Varies) |
 
 ##### Special Transaction Metrics
@@ -3029,9 +3029,9 @@ Each member in the `validators` array is a Single Validator Report Object with d
 | `date` | String - [Timestamp][] | The start time of the date this object describes. |
 | `total_ledgers` | Integer | Number of ledger hashes for which this validator submitted validation votes. If this number is much lower than other validators in the same time period, that could mean the validator had downtime. |
 | `main_net_agreement` | [String - Number][] | The fraction of consensus-validated production network ledger versions for which this validator voted in this interval. `"1.0"` indicates 100% agreement. |
-| `main_net_ledgers` | Integer | Number of consensus-validated [production network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. |
-| `alt_net_agreement` | [String - Number][] | The fraction of the consensus-validated [Test Network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
-| `alt_net_ledgers` | Integer | Number of consensus-validated [Test Network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. |
+| `main_net_ledgers` | Integer | Number of consensus-validated [production network](concept-rippled.html#parallel-networks) ledger versions this validator voted for. |
+| `alt_net_agreement` | [String - Number][] | The fraction of the consensus-validated [Test Network](concept-rippled.html#parallel-networks) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
+| `alt_net_ledgers` | Integer | Number of consensus-validated [Test Network](concept-rippled.html#parallel-networks) ledger versions this validator voted for. |
 | `other_ledgers` | Integer | Number of other ledger versions this validator voted for. If this number is high, that could indicate that this validator was running non-standard or out-of-date software. |
 
 #### Example
@@ -3120,9 +3120,9 @@ Daily Validator Report Object fields:
 | `date` | String - [Timestamp][] | The start time of the date this object describes. |
 | `total_ledgers` | Integer | Number of ledger indexes for which this validator submitted validation votes. If this number is much lower than other validators in the same time period, that could mean the validator had downtime. |
 | `main_net_agreement` | [String - Number][] | The fraction of consensus-validated production network ledger versions for which this validator voted in this interval. `"1.0"` indicates 100% agreement. |
-| `main_net_ledgers` | Integer | Number of consensus-validated [production network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. |
-| `alt_net_agreement` | [String - Number][] | The fraction of the consensus-validated [Test Network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
-| `alt_net_ledgers` | Integer | Number of consensus-validated [Test Network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. |
+| `main_net_ledgers` | Integer | Number of consensus-validated [production network](concept-rippled.html#parallel-networks) ledger versions this validator voted for. |
+| `alt_net_agreement` | [String - Number][] | The fraction of the consensus-validated [Test Network](concept-rippled.html#parallel-networks) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
+| `alt_net_ledgers` | Integer | Number of consensus-validated [Test Network](concept-rippled.html#parallel-networks) ledger versions this validator voted for. |
 | `other_ledgers` | Integer | Number of other ledger versions this validator voted for. If this number is high, that could indicate that this validator was running non-standard or out-of-date software. |
 | `last_datetime`  | Integer | The last reported validation vote signed by this validator. |
 | `domain` | String | (May be omitted) The DNS domain associated with this validator. |
@@ -4568,7 +4568,7 @@ Each Transaction Stats Object has the following fields:
 |--------|-------|-------------|
 | `date` | String - [Timestamp][] | This object describes activity on this date. |
 | `transaction_count` | Integer | The total number of transactions sent by the account on this date. |
-| `result` | Object | Map of [transaction result codes](reference-transaction-format.html#transaction-results), indicating how many of each result code occurred in the transactions sent by this account on this date. |
+| `result` | Object | Map of [transaction result codes](reference-transaction-results.html), indicating how many of each result code occurred in the transactions sent by this account on this date. |
 | `type` | Object | Map of [transaction types](reference-transaction-format.html), indicating how many of each transaction type the account sent on this date. |
 
 #### Example
@@ -5275,7 +5275,7 @@ Volume objects represent the total volumes of money moved, in either payments or
 [Server Object]: #server-objects
 [Server Objects]: #server-objects
 
-A "Server Object" describes one `rippled` server in the XRP Ledger peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](reference-rippled.html#peer-crawler).
+A "Server Object" describes one `rippled` server in the XRP Ledger peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](concept-peer-protocol.html#peer-crawler).
 
 Server objects have the following fields, with some only appearing if the request specified a verbose response:
 
@@ -5285,7 +5285,7 @@ Server objects have the following fields, with some only appearing if the reques
 | `version` | String | The `rippled` version of this server, when it was last asked. |
 | `uptime` | Integer | Number of seconds this server has been connected to the network. |
 | `ip` | String | (May be omitted) IP address of the node (may be omitted) |
-| `port` | Integer | (May be omitted) Port where this server speaks the [`rippled` Peer Protocol](reference-rippled.html#peer-protocol). |
+| `port` | Integer | (May be omitted) Port where this server speaks the [`rippled` Peer Protocol](concept-peer-protocol.html). |
 | `inbound_count` | Integer | (May be omitted) Number of inbound peer-to-peer connections to this server. |
 | `inbound_added` | String | (May be omitted) Number of new inbound peer-to-peer connections since the last measurement.  |
 | `inbound_dropped` | String | (May be omitted) Number of inbound peer-to-peer connections dropped since the last measurement. |

@@ -3,7 +3,7 @@
 
 The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.
 
-_The `get_counts` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `get_counts` method is an [admin command][] that cannot be run by unprivileged users._
 
 #### Request Format
 An example of the request format:
@@ -132,7 +132,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting). The list of fields contained in the result is subject to change without notice, but it may contain any of the following (among others):
+The response follows the [standard format][]. The list of fields contained in the result is subject to change without notice, but it may contain any of the following (among others):
 
 | `Field`       | Type   | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|
@@ -144,5 +144,5 @@ For most other entries, the value indicates the number of objects of that type c
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.

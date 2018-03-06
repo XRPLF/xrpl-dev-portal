@@ -27,7 +27,7 @@ In addition to the [common fields](#common-fields), a CheckCreate transaction ha
 | `Destination`    | String              | Account           | The unique address of the [account](concept-accounts.html) that can cash the Check. |
 | `SendMax`        | [Currency Amount][] | Amount            | Maximum amount of source currency the Check is allowed to debit the sender, including [transfer fees](concept-transfer-fees.html) on non-XRP currencies. The Check can only credit the destination with the same currency (from the same issuer, for non-XRP currencies). For non-XRP amounts, the nested field names MUST be lower-case. |
 | `DestinationTag` | Unsigned Integer    | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the Check, or a hosted recipient to pay. |
-| `Expiration`     | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the Check is no longer valid, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
+| `Expiration`     | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the Check is no longer valid, in [seconds since the Ripple Epoch][]. |
 | `InvoiceID`      | String              | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this Check. |
 
 ### Error Cases

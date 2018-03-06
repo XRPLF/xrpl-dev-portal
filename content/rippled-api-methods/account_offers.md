@@ -52,9 +52,9 @@ A request can include the following parameters:
 | `account`      | String                                     | A unique identifier for the account, most commonly the account's [Address][]. |
 | `ledger`       | Unsigned integer, or String                | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string identifying the ledger version to use. |
-| `ledger_index` | _(Optional)_ [Ledger Index][]              | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers](#specifying-ledgers)) |
+| `ledger_index` | _(Optional)_ [Ledger Index][]              | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers][]) |
 | `limit`        | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
+| `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -155,7 +155,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                | Type                                       | Description |
 |:-----------------------|:-------------------------------------------|:-------|
@@ -164,7 +164,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_current_index` | Integer                                    | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
 | `ledger_index`         | Integer                                    | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
 | `ledger_hash`          | String                                     | _(May be omitted)_ Hex hash, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `marker`               | [(Not Specified)](#markers-and-pagination) | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
+| `marker`               | [Marker][] | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
 
 
 Each offer object contains the following fields:
@@ -172,15 +172,15 @@ Each offer object contains the following fields:
 | `Field`      | Type             | Description                                |
 |:-------------|:-----------------|:-------------------------------------------|
 | `flags`      | Unsigned integer | Options set for this offer entry as bit-flags. |
-| `seq`        | Unsigned integer | Sequence number of the transaction that created this entry. (Transaction [sequence numbers](#account-sequence) are relative to accounts.) |
-| `taker_gets` | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
-| `taker_pays` | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
+| `seq`        | Unsigned integer | Sequence number of the transaction that created this entry. (Transaction [sequence numbers](reference-rippled-api-conventions.html#account-sequence) are relative to accounts.) |
+| `taker_gets` | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts][Currency Amount]) |
+| `taker_pays` | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts][Currency Amount]) |
 | `quality`    | String           | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. [New in: rippled 0.29.0][] |
-| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as [the number of seconds since the Ripple Epoch](#specifying-time). See also: [Offer Expiration](reference-transaction-format.html#expiration). [New in: rippled 0.30.1][] |
+| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, in [seconds since the Ripple Epoch][]. See also: [Offer Expiration](reference-transaction-format.html#expiration). [New in: rippled 0.30.1][] |
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

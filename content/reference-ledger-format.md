@@ -1,4 +1,4 @@
-# XRP Ledger Data Format
+# Ledger Data Format
 
 The XRP Ledger is a shared, global ledger that is open to all. Individual participants can trust the integrity of the ledger without having to trust any single institution to manage it. The `rippled` server software accomplishes this by managing a ledger database that can only be updated according to very specific rules. Each instance of `rippled` keeps a full copy of the ledger, and the peer-to-peer network of `rippled` servers distributes candidate transactions among themselves. The consensus process determines which transactions get applied to each new version of the ledger. See also: [The Consensus Process](https://ripple.com/build/ripple-ledger-consensus-process/).
 
@@ -34,7 +34,7 @@ All objects in a ledger' state tree have a unique ID. This field is returned as 
 ## Header Format
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
 
-Every ledger version has a unique header that describes the contents. You can look up a ledger's header information with the [`ledger` command](reference-rippled.html#ledger). The contents of the ledger header are as follows:
+Every ledger version has a unique header that describes the contents. You can look up a ledger's header information with the [`ledger` command](reference-rippled-api-public.html#ledger). The contents of the ledger header are as follows:
 
 | Field           | JSON Type | [Internal Type][] | Description |
 |-----------------|-----------|-------------------|-------------|
@@ -54,7 +54,7 @@ Every ledger version has a unique header that describes the contents. You can lo
 
 ### Ledger Index
 {% include 'data_types/ledger_index.md' %}
-[Hash]: reference-rippled.html#hashes
+[Hash]: reference-rippled-api-conventions.html#hashes
 
 ### Close Flags
 
@@ -80,7 +80,7 @@ There are several different kinds of objects that can appear in the ledger's sta
 * [**RippleState** - Links two accounts, tracking the balance of one currency between them. The concept of a _trust line_ is really an abstraction of this object type.](#ripplestate)
 * [**SignerList** - A list of addresses for multi-signing transactions.](#signerlist)
 
-Each ledger object consists of several fields. In the peer protocol that `rippled` servers use to communicate with each other, ledger objects are represented in their raw binary format. In other [`rippled` APIs](reference-rippled.html), ledger objects are represented as JSON objects.
+Each ledger object consists of several fields. In the peer protocol that `rippled` servers use to communicate with each other, ledger objects are represented in their raw binary format. In other [`rippled` APIs](reference-rippled-intro.html), ledger objects are represented as JSON objects.
 
 {% include 'ledger-objects/accountroot.md' %}
 
@@ -104,5 +104,7 @@ Each ledger object consists of several fields. In the peer protocol that `ripple
 
 {% include 'ledger-objects/signerlist.md' %}
 
+<!--{# Common Links #}-->
 {% include 'snippets/rippled_versions.md' %}
 {% include 'snippets/tx-type-links.md' %}
+{% include 'snippets/rippled-api-links.md' %}
