@@ -55,15 +55,19 @@
         <div class="draft-warning">DRAFT PAGE</div>
         <div class="github-edit-wrap">
           {% if currentpage.md is defined %}
-            {% set githuburl = "https://github.com/"
-              + target.github_fork + "/ripple-dev-portal/edit/"
-              + target.github_branch + "/content/" + currentpage.md %}
+              {% set githuburl = target.github_forkurl + "/edit/"
+                  + target.github_branch
+                  + "/content/" + currentpage.md %}
+            {% endif %}
           {% elif currentpage.template is defined %}
-            {% set githuburl = "https://github.com/"
-              + target.github_fork + "/ripple-dev-portal/edit/"
+            {% set githuburl = target.github_forkurl + "/edit/"
               + target.github_branch + "/tool/" + currentpage.template %}
           {% else %}
-            {% set githuburl = "https://github.com/ripple/ripple-dev-portal/" %}
+            {% set githuburl = target.github_forkurl %}
+          {% endif %}
+          {% if target.is_pr_build %}
+            {% set githuburl = githuburl + "?pr=/ripple/ripple-dev-portal/pull/"
+              + target.github_pr_id %}
           {% endif %}
           <a href="{{githuburl}}" class="github-edit">Edit on GitHub</a>
         </div><!-- /.github-edit -->

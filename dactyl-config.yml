@@ -42,12 +42,12 @@ targets:
         display_name: Ripple Developer Portal
         # These github_ fields are used by the template's "Edit on GitHub" link.
         #  Override them with --vars to change which fork/branch to edit.
-        github_fork: ripple
+        github_forkurl: https://github.com/ripple/ripple-dev-portal/
         github_branch: master
 
     -   name: ripple.com
         display_name: Ripple Developer Center
-        github_fork: ripple
+        github_forkurl: https://github.com/ripple/ripple-dev-portal/
         github_branch: master
         template: template-contentwithtoc.html
         link_subs:
