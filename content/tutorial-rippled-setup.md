@@ -74,7 +74,7 @@ A `rippled` server should run comfortably on commodity hardware, to make it inex
     - Production: CentOS or RedHat Enterprise Linux (latest release) or Ubuntu (16.04+) supported
     - Development: Mac OS X, Windows (64-bit), or most Linux distributions
 - CPU: 64-bit x86_64, 2+ cores
-- Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
+- Disk: Minimum 50GB SSD recommended (1000 IOPS, more is better) for the database partition
 - RAM:
     - Testing: 8GB+
     - Production: 32 GB
