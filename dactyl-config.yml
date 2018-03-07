@@ -40,9 +40,15 @@ targets:
     # First member is the default that gets built when target not specified
     -   name: local
         display_name: Ripple Developer Portal
+        # These github_ fields are used by the template's "Edit on GitHub" link.
+        #  Override them with --vars to change which fork/branch to edit.
+        github_fork: ripple
+        github_branch: master
 
     -   name: ripple.com
         display_name: Ripple Developer Center
+        github_fork: ripple
+        github_branch: master
         template: template-contentwithtoc.html
         link_subs:
             "reference-rippled.html": https://ripple.com/build/rippled-apis/
@@ -61,7 +67,7 @@ targets:
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
             "concept-cryptographic-keys.html": https://ripple.com/build/cryptographic-keys/
-            "working-regular-key-pair.html": https://ripple.com/build/working-regular-key-pair/
+            "tutorial-regular-keys.html": https://ripple.com/build/working-regular-key-pair/
             "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
