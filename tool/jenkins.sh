@@ -11,7 +11,7 @@ gitForkWithoutSuffix=${ghprbAuthorRepoGitUrl%.git}
 
 if [ -n "$ghprbPullId" ];
 then
-  dactyl_vars='--vars '"'"'{"github_forkurl": "'"$gitForkWithoutSuffix"'", "github_branch": "'"$ghprbSourceBranch"'", "github_pr_id": "'"$ghprbPullId"'"}'"'"
+  dactyl_vars="'"'{"github_forkurl": "'"$gitForkWithoutSuffix"'", "github_branch": "'"$ghprbSourceBranch"'", "github_pr_id": "'"$ghprbPullId"'", "is_pr_build": true}'"'"
 else
   dactyl_vars=""
 fi

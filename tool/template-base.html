@@ -58,7 +58,6 @@
               {% set githuburl = target.github_forkurl + "/edit/"
                   + target.github_branch
                   + "/content/" + currentpage.md %}
-            {% endif %}
           {% elif currentpage.template is defined %}
             {% set githuburl = target.github_forkurl + "/edit/"
               + target.github_branch + "/tool/" + currentpage.template %}

@@ -1,10 +1,10 @@
 #!/bin/bash
 mkdir -p out
 
-# Pass forward extra dactyl args if provided
+# Pass forward dactyl "vars" arg if provided
 if [ -n "$1" ];
 then
-  dactyl_args=$1
+  dactyl_vars=$1
 fi
 
 targets=`dactyl_build -lq | awk '{print $1}'`
@@ -15,7 +15,11 @@ while read -r line; do
     echo "======================================="
     echo "Checking Target: $line"
     rm -r out
-    dactyl_build -sq -t "$line" "$dactyl_args"
+    if [ -n "$dactyl_vars" ]; then
+      dactyl_build -q -t "$line" --vars "$dactyl_vars"
+    else
+      dactyl_build -q -t "$line"
+    fi
     buildresult=$?
     if [ $buildresult -eq 0 ]
     then
