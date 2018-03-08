@@ -1,6 +1,7 @@
 {% extends "template-base.html" %}
 
 {% block sidebar %}
+    <h2>API Methods</h2>
     <ul id='command_list'>
         <li class='selected'><a href='#server_info'>server_info</a></li>
         <li><a href='#server_state'>server_state</a></li>
@@ -78,7 +79,7 @@
     </div>
     </div>
 {% endblock %}
-  
+
 {% block endbody %}
   <link rel='stylesheet' type='text/css' href='assets/css/api-tools.css'/>
   <link rel='stylesheet' type='text/css' href='assets/vendor/codemirror.css'/>
@@ -88,4 +89,3 @@
   <script type='text/javascript' src='assets/js/ripple-0.11.0-min.js'></script>
   <script type='text/javascript' src='assets/js/apitool-websocket.js'></script>
 {% endblock %}
-

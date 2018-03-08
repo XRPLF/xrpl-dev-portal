@@ -1,3 +1,7 @@
+.no-sidebar aside.sidebar {
+    display: none;
+}
+
 .devportal-callout {
     border-style: solid;
     border-radius: 5px;
@@ -65,14 +69,18 @@
 .draft-warning {
     background-color: red;
     color: white;
-    padding: 10px 20px;
+    padding: 2px 6px;
     margin: 10px;
-    float: right;
+    position: absolute;
+    top: 34px;
+    left: calc(calc(calc(100% - 1070px) / 2) + 90px);
+    font-size: 12px;
+    font-weight: bold;
 }
 
-/* Images should occupy the full main column width if possible */
-.page-template-template-dev-portal-php .content img {
-  width: 100%;
+/* Images should not exceed the main column */
+.content img {
+  max-width: 100%;
   height: auto;
 }
 
@@ -81,24 +89,54 @@
     width: initial;
 }
 
-/* dev portal content h5 should stand out from paragraph text */
-.content h5 {
-    font-weight: bold;
+.no-1st-head h1:first-child,
+.no-1st-head h2:first-child,
+.no-1st-head h3:first-child,
+.no-1st-head h4:first-child,
+.no-1st-head h5:first-child,
+.no-1st-head h6:first-child {
+  display: none;
+}
+.content p {
+  line-height: 1.8;
 }
 
-/* Underline links in Dev Portal content */
-.page-template-template-dev-portal-php .main a {
-  text-decoration: underline !important;
+.content h1 {
+  margin-top: 32px;
+  line-height: 1.2;
 }
+.content h2 {
+  margin-top: 28px;
+  line-height: 1.2;
+}
+.content h3 {
+  margin-top: 24px;
+  line-height: 1.2;
+}
+.content h4 {
+  margin-top: 20px;
+  line-height: 1.2;
+}
+.content h5 {
+  margin-top: 16px;
+  line-height: 1.2;
+  font-weight: bold;
+}
+.content h6 {
+  margin-top: 12px
+  line-height: 1.2;
+  font-weight: bold;
+}
+
 
 /* "Button-style" links should look like buttons, not links */
-.page-template-template-dev-portal-php a.button {
+a.button {
   cursor: pointer;
   text-decoration: none !important;
 }
 
 /* Code Tabs stuff */
-.page-template-template-dev-portal-php .multicode {
+.multicode {
   color: #000;
   margin: 12px 0px 0px 0px;
   padding: 0 0 0 0;
@@ -106,15 +144,15 @@
   padding-left: 10px;
   position: relative;
 }
-.page-template-template-dev-portal-php .multicode ul {
+.multicode ul {
   margin: 0 !important;
   padding: 0;
 }
-.page-template-template-dev-portal-php .multicode pre {
+.multicode pre {
   padding-top: 0;
   clear: both;
 }
-.page-template-template-dev-portal-php .multicode li {
+.multicode li {
   display: block;
   float: left;
   overflow: hidden;
@@ -122,12 +160,12 @@
   margin-right: 5px;
   border-top: 1px solid #DBDDE2;
 }
-.page-template-template-dev-portal-php .multicode ul > li:before {
+.multicode ul > li:before {
   background: none;
   border: none;
 }
-.page-template-template-dev-portal-php .multicode a,
-.page-template-template-dev-portal-php a.current {
+.multicode a,
+a.current {
   color: black;
   background: #DFE2E7;
   border: 1px solid #DBDDE2;
@@ -135,18 +173,18 @@
   margin: 0px;
   text-decoration: none;
 }
-.page-template-template-dev-portal-php .multicode a.current {
+.multicode a.current {
   background: #fff;
   border-bottom: 1px solid #fff;
   color: black;
 }
-.page-template-template-dev-portal-php .multicode a:hover {
+.multicode a:hover {
   color: black;
   background: white;
 }
 /* End of code tabs stuff */
 
-.page-template-template-dev-portal-php .button {
+.button {
   border-radius: 5px;
   background-color: #27a2db;
   padding: 5px 20px;
@@ -164,296 +202,128 @@
   -webkit-transition: .5s;
   transition: .5s;
 }
-.page-template-template-dev-portal-php .button:hover {
+.button:hover {
   background-color: #43bded;
   -o-transition: .5s;
   -webkit-transition: .5s;
   transition: .5s;
 }
-.page-template-template-dev-portal-php pre {
+pre {
   overflow: visible;
   word-wrap: normal;
 }
-.page-template-template-dev-portal-php pre code {
+pre code {
   white-space: pre;
 }
-.page-template-template-dev-portal-php .code_sample pre {
+.code_sample pre {
   background: none;
   border: none;
   border-radius: 0;
 }
-.page-template-template-dev-portal-php .code_sample pre code {
+.code_sample pre code {
   overflow: auto;
   max-height: 14em;
   background-color: #f5f5f5;
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
-.page-template-template-dev-portal-php .code_sample pre code.expanded {
+.code_sample pre code.expanded {
   overflow: visible;
   max-height: none;
   position: absolute;
   min-width: 661px;
 }
-.page-template-template-dev-portal-php .code_sample .code_toggler {
+.code_sample .code_toggler {
   position: absolute;
   bottom: 0;
   right: 0;
 }
-.page-template-template-dev-portal-php .navbar-default {
-  border-bottom: none;
+.xrp-ledger-dev-portal.sidebar-primary .sidebar {
+  padding-right: 0;
+  padding-left: 0;
 }
-.page-template-template-dev-portal-php .wrap.container {
-  margin-top: 110px;
-}
-.page-template-template-dev-portal-php .main {
+.xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
   border-left: 1px solid #cccccc;
   padding-left: 40px;
 }
-.page-template-template-dev-portal-php .content {
+.content {
   padding-bottom: 50px;
 }
-.page-template-template-dev-portal-php .level-1 {
-  margin: 10px 0 3px 0;
-  text-transform: uppercase;
+#dactyl_toc_sidebar a {
+  text-decoration: none;
 }
-.page-template-template-dev-portal-php .level-1 a {
-  color: #000000;
-  font-family: 'open_sansbold', sans-serif;
-  letter-spacing: .04em;
+#dactyl_toc_sidebar a:hover {
+  text-decoration: underline;
 }
-.page-template-template-dev-portal-php .level-2 {
-  margin-left: 2em;
+.level-1 {
+  margin-top: 15px;
+  padding-left: 15px;
+  font-weight: bold;
 }
-.page-template-template-dev-portal-php .level-3 {
-  margin-left: 4em;
+.level-1:first-child {
+  margin-top: 0;
 }
-.page-template-template-dev-portal-php .level-3 a {
-  color: #999999;
+.level-2 {
+  padding-left: 30px;
 }
-.page-template-template-dev-portal-php .level-3 a:hover {
-  color: #666;
+.level-3 {
+  padding-left: 45px;
 }
-.page-template-template-dev-portal-php .dev_nav_sidebar {
-  padding-left: 5px;
+.level-3 a {
+  color: #888;
+}
+.level-3 a:hover {
+  color: #333;
+}
+
+.dev_nav_sidebar {
+  padding-left: 10px;
+  padding-top: 0;
   list-style-type: none;
-  max-width: 370px;
+  margin-bottom: 0;
 }
-.page-template-template-dev-portal-php .dev_nav_wrapper {
+.dev_nav_sidebar li:before {
+  content: "\f105"; /* fontawesome angle-right */
+  font-family: FontAwesome;
+  position: relative;
+  left: -15px;
+  margin-right: -5px;
+}
+
+.dev_nav_wrapper {
   position: fixed;
   width: 100%;
   overflow-y: scroll;
   top: 130px;
 }
-.page-template-template-dev-portal-php td {
+td {
   border: 1px solid #dbdde2;
   padding: 0.2em;
+  vertical-align: text-top;
 }
-.page-template-template-dev-portal-php th {
+th {
   padding: 0.2em;
 }
-.page-template-template-dev-portal-php .content a[title="Source"] {
+.content a[title="Source"] {
   float: right;
   padding-left: 20px;
 }
-.page-template-template-dev-portal-php .content table {
+.content table {
   clear: right;
 }
-.page-template-template-dev-portal-php h1:before,
-.page-template-template-dev-portal-php h2:before,
-.page-template-template-dev-portal-php h3:before {
+.main h1:before,
+.main h2:before,
+.main h3:before,
+.main h4:before,
+.main h5:before,
+.main h6:before,
+#main_content_wrapper:before {
   display: block;
   content: " ";
-  margin-top: -130px;
-  height: 130px;
+  margin-top: -67px;
+  height: 67px;
   visibility: hidden;
-}
-@media (max-width: 1200px) {
-  .page-template-template-dev-portal-php .dev_nav_wrapper {
-    max-width: 290px;
-  }
-}
-@media (max-width: 992px) {
-  .page-template-template-dev-portal-php .dev_nav_wrapper {
-    max-width: 230px;
-  }
-}
-@media (max-width: 768px) {
-  .page-template-template-dev-portal-php .dev_nav_wrapper,
-  .page-template-template-dev-portal-php .sidebar {
-    display: block;
-    clear: both;
-    overflow-y: inherit;
-    position: static;
-    max-width: 100%;
-  }
-  .page-template-template-dev-portal-php .main {
-    position: static;
-    clear: both;
-    border-left: none;
-    padding-left: 0px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    overflow: hidden;
-  }
-}
-@media (min-width: 768px) {
-  .page-template-template-dev-portal-php .main {
-    float: right;
-  }
-}
-@media (max-width: 480px) {
-  .page-template-template-dev-portal-php html {
-    overflow-x: hidden !important;
-  }
-}
-@media print {
-  .page-template-template-dev-portal-php {
-    /* undo code tabs */
-    /* wrap code, not scroll */
-    /* Source URLs are too big to float */
-    /* Show URLs after links - even for anchors */
-    /* Drop header, footer, google translate */
-    /* table of contents can't scroll */
-    /* better margins on main content */
-    /* crazy print-section-numbering idea */
-  }
-  .page-template-template-dev-portal-php .multicode > div {
-    display: block !important;
-  }
-  .page-template-template-dev-portal-php .multicode > ul {
-    display: none !important;
-  }
-  .page-template-template-dev-portal-php .multicode > em,
-  .page-template-template-dev-portal-php .multicode > p > em {
-    display: block !important;
-    page-break-after: avoid;
-  }
-  .page-template-template-dev-portal-php .multicode > p {
-    display: block !important;
-  }
-  .page-template-template-dev-portal-php pre {
-    white-space: pre-wrap;
-    max-height: none !important;
-    overflow: visible;
-    page-break-inside: auto;
-    word-wrap: break-word;
-  }
-  .page-template-template-dev-portal-php pre code {
-    white-space: pre-wrap !important;
-  }
-  .page-template-template-dev-portal-php .content a[title="Source"] {
-    float: none;
-  }
-  .page-template-template-dev-portal-php .main a:after {
-    content: " (" attr(href) ")";
-  }
-  .page-template-template-dev-portal-php header,
-  .page-template-template-dev-portal-php footer {
-    display: none;
-  }
-  .page-template-template-dev-portal-php #goog-gt-tt {
-    display: none;
-  }
-  .page-template-template-dev-portal-php .wrap.container {
-    margin-top: 0 !important;
-  }
-  .page-template-template-dev-portal-php .dev_nav_wrapper {
-    position: static !important;
-  }
-  .page-template-template-dev-portal-php .sidebar:before {
-    display: none !important;
-  }
-  .page-template-template-dev-portal-php .sidebar {
-    padding-top: 0 !important;
-    display: block !important;
-    float: none !important;
-  }
-  .page-template-template-dev-portal-php h1 {
-    page-break-before: always;
-  }
-  .page-template-template-dev-portal-php .main {
-    float: none !important;
-    width: 85% !important;
-    border-left: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: block !important;
-    overflow: visible !important;
-  }
-  .page-template-template-dev-portal-php .main {
-    counter-reset: level1;
-    counter-reset: level2;
-    counter-reset: level3;
-  }
-  .page-template-template-dev-portal-php .main h1 {
-    counter-increment: level1;
-    counter-reset: level2;
-  }
-  .page-template-template-dev-portal-php .main h1:before {
-    content: counter(level1) ". " !important;
-    display: inline !important;
-    background: none !important;
-    position: static !important;
-    box-shadow: none !important;
-    visibility: visible !important;
-  }
-  .page-template-template-dev-portal-php .main h2 {
-    counter-reset: level3;
-  }
-  .page-template-template-dev-portal-php .main h2:before {
-    counter-increment: level2;
-    content: counter(level1) "." counter(level2) ". " !important;
-    display: inline !important;
-    background: none !important;
-    position: static !important;
-    box-shadow: none !important;
-    visibility: visible !important;
-  }
-  .page-template-template-dev-portal-php .main h3:before {
-    counter-increment: level3;
-    content: counter(level1) "." counter(level2) "." counter(level3) ". " !important;
-    display: inline !important;
-    background: none !important;
-    position: static !important;
-    box-shadow: none !important;
-    visibility: visible !important;
-  }
-  .page-template-template-dev-portal-php .menubar,
-  .page-template-template-dev-portal-php .dev_nav_wrapper {
-    counter-reset: toclevel1;
-  }
-  .page-template-template-dev-portal-php .level-1 {
-    counter-reset: toclevel2;
-  }
-  .page-template-template-dev-portal-php .level-1:before {
-    counter-increment: toclevel1;
-    content: counters(toclevel1, ".") ". " !important;
-    display: inline !important;
-    background: none !important;
-    position: static !important;
-    box-shadow: none !important;
-  }
-  .page-template-template-dev-portal-php .level-2 {
-    counter-reset: toclevel3;
-  }
-  .page-template-template-dev-portal-php .level-2:before {
-    counter-increment: toclevel2;
-    content: counters(toclevel1, ".") "." counters(toclevel2, ".") ". " !important;
-    display: inline !important;
-    background: none !important;
-    position: static !important;
-    box-shadow: none !important;
-  }
-  .page-template-template-dev-portal-php .level-3:before {
-    counter-increment: toclevel3;
-    content: counters(toclevel1, ".") "." counters(toclevel2, ".") "." counters(toclevel3, ".") ". " !important;
-    display: inline !important;
-    background: none !important;
-    position: static !important;
-    box-shadow: none !important;
-  }
 }
 
 /*------------- Code Tabs -----------------------------------------*/
@@ -504,4 +374,482 @@
 	background: white;
 }
 
-.multicode a.current:hover {}
+.navbar-default {
+    background-color: #fff;
+    border-bottom: 1px solid #27a2db;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  white-space: pre;
+}
+
+.navbar-default .logo {
+    float: left;
+    margin-right: 0.5em;
+}
+
+.navbar-default .navbar-brand .brand-text {
+  font-family: open_sansbold, sans-serif;
+  font-weight: bold;
+  line-height: 36px;
+  margin-bottom: -5px;
+  margin-top: 20px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-size: 14px;
+    line-height: 30px;
+    color: #777;
+}
+
+.navbar-default a.active {
+    color: #27a2db !important;
+}
+
+.wrap-container {
+  margin-top: 106px;
+}
+
+.no-sidebar main .container {
+  padding-left: 0;
+}
+
+#main_content_wrapper {
+  margin-top: 67px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.jump-to-top {
+  display: none;
+  position: fixed;
+  bottom: 15px;
+  right: 30px;
+  background-color: #333;
+  font-weight: bolder;
+  z-index: 1000;
+  color: white;
+}
+@media screen and (max-width: 767px) {
+  .jump-to-top {
+    bottom: 40px;
+    right: 40px;
+  }
+}
+
+.breadcrumb {
+  margin: 0;
+  padding: 15px;
+  padding-left: 5px;
+  background: transparent;
+  float: left;
+  vertical-align: middle;
+}
+
+.breadcrumb li {
+  margin: 0;
+  margin-bottom: -4px;
+  line-height: 36px;
+}
+.breadcrumb > li + li:before {
+    content: "\f105"; /* fontawesome angle-right */
+    font-family: FontAwesome;
+    padding-right: 5px;
+}
+.breadcrumb > li.active {
+  color: #666;
+}
+
+/* "← Back to guide" link in sidebar */
+.back_to_guide a {
+  display: block;
+  font-size: 14px;
+  padding: 27px 0 14px 15px;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+.back_to_guide a:before {
+    content: "\f100"; /* fontawesome angle-double-left */
+    font-family: FontAwesome;
+    padding-right: 15px;
+    color: #666;
+}
+
+/* Accordion styling for sidebar navigation */
+.sidebar_cat_pagelist {
+  margin-left: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+#sidenav_accordion a {
+  text-decoration: none;
+}
+#sidenav_accordion .panel-body a:hover {
+  text-decoration: underline;
+}
+
+#sidenav_accordion .panel + .panel {
+  margin: 0;
+}
+
+#sidenav_accordion .panel-default {
+  border-width: 0;
+  border-color: #eee;
+}
+
+#sidenav_accordion .panel-body {
+  padding: 0;
+}
+
+#sidenav_accordion .collapse {
+  padding-bottom: 0;
+}
+
+#sidenav_accordion .panel.active {
+  background-color: #f8f8f8;
+}
+#sidenav_accordion .panel:hover {
+  background-color: #f6f6f6;
+}
+
+#sidenav_accordion .panel-heading {
+  padding: 0;
+  background-color: transparent;
+}
+
+#sidenav_accordion .panel {
+  padding: 0;
+  border-radius: 0;
+}
+
+#sidenav_accordion .panel-heading h5 {
+  margin-bottom: 0;
+  text-transform: none;
+}
+
+#sidenav_accordion .panel-heading h5 a {
+  display: block;
+  padding: 16px 15px;
+  font-family: "open_sansregular", sans-serif;
+  color: #666;
+}
+
+#sidenav_accordion .panel-heading a:before {
+    content: "\f106"; /* fontawesome angle-up */
+    font-family: FontAwesome;
+    margin-left: -20px;
+    padding-right: 5px;
+    float: right;
+}
+#sidenav_accordion .panel-heading a.collapsed:before {
+    content: "\f107"; /* fontawesome angle-down */
+}
+
+
+#sidenav_accordion .panel .sidebar_cat_pagelist li a {
+  display: block;
+  margin-top: 5px;
+  padding: 4px 15px 4px 55px;
+  text-indent: -20px;
+  font-size: 14px;
+  color: #27a2db;
+}
+
+#sidenav_accordion .panel .sidebar_cat_pagelist a.active {
+  color: black;
+  font-weight: bold;
+}
+
+#sidenav_accordion .panel .sidebar_cat_pagelist a:hover {
+  color: #333;
+}
+
+/* Edit on GitHub link --------- */
+.github-edit-wrap {
+  position: absolute;
+  right: 0;
+  background-image: linear-gradient(180deg, #fafafa 0%, #ddd 90%);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 15px;
+}
+.github-edit-wrap:hover {
+  border-color: #777;
+}
+.github-edit-wrap:active {
+  background-image: linear-gradient(180deg, #ddd 0%, #fafafa 90%);
+}
+.github-edit-wrap .github-edit {
+  /* background-color: black; */
+  background-image: url(../vendor/github-marks/GitHub-Mark-32px.png);
+  background-size: 24px 24px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+  padding: 8px 8px 8px 34px;
+  color: #777;
+  text-decoration: none;
+  font-size: 13px;
+  display: block;
+}
+
+.portal-index ul {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0;
+}
+
+.portal-index li {
+    font-size: 14px;
+    list-style: outside none none;
+    padding: 5px;
+    padding-left: 25px;
+    text-indent: 20px;
+}
+
+.portal-index li.top {
+    text-indent: 0;
+}
+
+.portal-index .dev_heading {
+    font-family: "Open Sans",sans-serif;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #202020;
+}
+.portal-index a.dev_heading:hover {
+  color: #27a2db;
+  text-decoration: underline;
+}
+
+.build-disclaimer {
+  font-size: 10pt;
+  margin: 2em 0;
+  padding-top: 2em;
+  border-top: 1px solid #777;
+}
+
+.related-projects {
+  position: absolute;
+  top: 70px;
+  right: 15px;
+  width: 375px;
+  border: 1px solid #777;
+  border-radius: 5px;
+}
+.related-projects a {
+  text-decoration: none;
+}
+.related-projects .project {
+  clear: left;
+}
+.related-projects h3 {
+  margin: 0;
+  padding: 5px 15px;
+  border-bottom: 1px dashed #777;
+}
+.related-projects .project-name {
+  font-family: open_sanslight, sans-serif;
+  font-size: 18px;
+  display: block;
+}
+.related-projects .login-required {
+  display: block;
+  font-size: 12px;
+}
+.related-projects p {
+  margin: 10px;
+}
+.related-projects .project-icon {
+  width: 120px;
+  float: left;
+  margin-right: 10px;
+}
+
+/* Responsive design for different viewscreens -------------------------------*/
+@media (min-width: 1200px) {
+  #page-toc-wrapper {
+    float: right;
+    margin-left: 15px;
+  }
+  .draft-warning {
+    left: calc(calc(calc(100% - 1170px) / 2) + 140px);
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    margin-right: calc(calc(calc(100% - 1370px) / 2) + 195px);
+  }
+  #page-toc-wrapper {
+    position: fixed;
+    right: 10px;
+    top: 80px;
+    max-width: calc(75% - 970px);
+    max-height: calc(100% - 150px);
+    overflow-y: auto;
+  }
+  .draft-warning {
+    left: calc(calc(calc(100% - 1370px) / 2) + 140px);
+  }
+}
+@media (max-width: 1200px) {
+  #page-toc-wrapper {
+    float: right;
+    margin-left: 15px;
+  }
+  .dev_nav_wrapper {
+    max-width: 290px;
+  }
+  .draft-warning {
+    left: calc(calc(calc(100% - 870px) / 2) + 90px);
+  }
+
+}
+@media (max-width: 992px) {
+  #page-toc-wrapper {
+    position: static;
+    float: none;
+    max-width: none;
+  }
+  .dev_nav_wrapper {
+    max-width: 230px;
+  }
+  .draft-warning {
+    left: 140px;
+  }
+
+  /* Move "Related Projects" to bottom */
+  .related-projects {
+    position: static;
+    width: auto;
+    border: none;
+    margin-top: 0;
+  }
+  .related-projects .project-icon {
+    display: none;
+  }
+  .related-projects h3 {
+    padding: inherit;
+    border-bottom: none;
+    margin-top: 50px;
+  }
+  .related-projects .project-name,
+  .related-projects .login-required {
+    display: inline;
+    font-size: inherit;
+  }
+  .related-projects p {
+    margin-left: 25px;
+  }
+  .related-projects .project-summary {
+    padding-left: 20px;
+  }
+}
+@media (max-width: 768px) {
+  #main_content_wrapper {
+    margin-top: 0;
+  }
+  .navbar-fixed-top {
+    position: static;
+    margin-bottom: -70px;
+  }
+  .dev_nav_wrapper,
+  .sidebar {
+    display: block;
+    clear: both;
+    overflow-y: inherit;
+    position: static;
+    max-width: 100%;
+  }
+  .main {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+  .github-edit-wrap {
+    display: none;
+  }
+  .nav {
+    min-width: 350px;
+  }
+  .nav .breadcrumb .crumb-top:before {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  html {
+    overflow-x: hidden !important;
+  }
+}
+@media print {
+  {
+    /* undo code tabs */
+    /* wrap code, not scroll */
+    /* Source URLs are too big to float */
+    /* Show URLs after links - even for anchors */
+    /* Drop header, footer, google translate */
+    /* table of contents can't scroll */
+    /* better margins on main content */
+    /* crazy print-section-numbering idea */
+  }
+  .multicode > div {
+    display: block !important;
+  }
+  .multicode > ul {
+    display: none !important;
+  }
+  .multicode > em,
+  .multicode > p > em {
+    display: block !important;
+    page-break-after: avoid;
+  }
+  .multicode > p {
+    display: block !important;
+  }
+  pre {
+    white-space: pre-wrap;
+    max-height: none !important;
+    overflow: visible;
+    page-break-inside: auto;
+    word-wrap: break-word;
+  }
+  pre code {
+    white-space: pre-wrap !important;
+  }
+  .content a[title="Source"] {
+    float: none;
+  }
+  header,
+  footer {
+    display: none;
+  }
+  #goog-gt-tt {
+    display: none;
+  }
+  .dev_nav_wrapper {
+    position: static !important;
+  }
+  .sidebar:before {
+    display: none !important;
+  }
+  .sidebar {
+    padding-top: 0 !important;
+    display: block !important;
+    float: none !important;
+  }
+  h1 {
+    page-break-before: always;
+  }
+  .main {
+    float: none !important;
+    width: 85% !important;
+    border-left: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+}

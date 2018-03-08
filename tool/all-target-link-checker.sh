@@ -1,7 +1,12 @@
 #!/bin/bash
 mkdir -p out
-## One-liner syntax doesn't handle exit codes properly...
-#./build.sh -lq | awk '{print "rm -r out/ && ./build.sh -t "$1" && ./check-links.sh"}' | xargs -0 bash -c
+
+# Pass forward dactyl "vars" arg if provided
+if [ "$1" == "--vars" ] && [ -n "$2" ];
+then
+  dactyl_vars=$2
+  shift 2
+fi
 
 targets=`dactyl_build -lq | awk '{print $1}'`
 linkerrors=0
@@ -11,7 +16,11 @@ while read -r line; do
     echo "======================================="
     echo "Checking Target: $line"
     rm -r out
-    dactyl_build -sq -t "$line"
+    if [ -n "$dactyl_vars" ]; then
+      dactyl_build -q -t "$line" --vars "$dactyl_vars"
+    else
+      dactyl_build -q -t "$line"
+    fi
     buildresult=$?
     if [ $buildresult -eq 0 ]
     then

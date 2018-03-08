@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>{{ currentpage.name }} - {{ target.display_name }}</title>
+    <title>{{ currentpage.name }} - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -21,54 +27,70 @@
     <!-- Bootstrap JS -->
     <script src="assets/vendor/bootstrap.min.js"></script>
 
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
     {% block head %}
 
     {% endblock %}
 
 </head>
 
-<body class="page page-template page-template-template-dev-portal page-template-template-dev-portal-php {% if currentpage.sidebar != 'off' %}sidebar-primary{% endif %} wpb-js-composer js-comp-ver-3.6.2 vc_responsive">
+<body class="{% block bodyclasses %} xrp-ledger-dev-portal sidebar-primary{% endblock %}">
   <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
     <div class="container">
       <div class="navbar-header">
-          <a href="index.html" class="navbar-brand"><img src="assets/img/ripple-logo-color.png" class="logo"></a>
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
       </div><!-- /.navbar-header -->
       <div class="nav">
+        {% block breadcrumbs %}
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              {% if currentpage.category %}
+              <li class="active crumb-category"><a href="{{ (pages|selectattr('category', 'equalto', currentpage.category)|first).html }}">{{ currentpage.category }}</a></li>
+              {% endif %}
+              <li class="active crumb-current">{{ currentpage.name }}</li>
+            </ul>
+        {% endblock %}
         <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          {% set have_edit_link = False %}
+          {% if currentpage.md is defined %}
+              {% if currentpage.md.startswith("http://") or
+                currentpage.md.startswith("https://") %}
+                {# Leave have_edit_link = False #}
+              {% else %}
+                {% set have_edit_link = True %}
+                {% set githuburl = target.github_forkurl + "/edit/"
+                  + target.github_branch
+                  + "/content/" + currentpage.md %}
+              {% endif %}
+          {% elif currentpage.template is defined %}
+            {% set have_edit_link = True %}
+            {% set githuburl = target.github_forkurl + "/edit/"
+              + target.github_branch + "/tool/" + currentpage.template %}
+          {% endif %}
+          {% if target.is_pr_build and have_edit_link %}
+            {% set githuburl = githuburl + "?pr=/ripple/ripple-dev-portal/pull/"
+              + target.github_pr_id %}
+          {% endif %}
+          {% if not have_edit_link %}
+            {% set githuburl = target.github_forkurl %}
+          {% endif %}
+          <a href="{{githuburl}}" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
       </div><!-- /.nav -->
 
     </div><!-- /.container -->
 
-    <div class="subnav dev_nav">
-      <div class="container">
-        <ul id="menu-dev-menu" class="menu">
-          {% for cat in categories %}
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{cat}} <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-            {% for page in pages %}
-    	       {% if page.category == cat %}
-                  <li><a href="{{ page.html }}">{{ page.name }}</a></li>
-                  {% endif %}
-            {% endfor %}
-            </ul>
-          </li>
-          {% endfor %}
-
-          <li><a href="https://github.com/ripple/ripple-dev-portal" title="GitHub">Site Source</a></li>
-        </ul><!-- /#dev-menu -->
-      </div><!-- /.subnav .container -->
-    </div><!-- /.subnav -->
   </header>
 
 
-  <div class="wrap container" role="document">
-      {% if currentpage.sidebar != 'off' %}
+  <div class="wrap container" role="document" id="main_content_wrapper">
       <aside class="sidebar" role="complementary">
           {% block sidebar %}{% endblock %}
       </aside>
-      {% endif %}
-      <main class="main" role="main">
+      <main class="main" role="main" id="main_content_body">
           {% block main %}{% endblock %}
       </main>
   </div>

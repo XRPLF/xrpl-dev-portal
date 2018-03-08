@@ -40,9 +40,15 @@ targets:
     # First member is the default that gets built when target not specified
     -   name: local
         display_name: Ripple Developer Portal
+        # These github_ fields are used by the template's "Edit on GitHub" link.
+        #  Override them with --vars to change which fork/branch to edit.
+        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_branch: master
 
     -   name: ripple.com
         display_name: Ripple Developer Center
+        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_branch: master
         template: template-contentwithtoc.html
         link_subs:
             "reference-rippled.html": https://ripple.com/build/rippled-apis/
@@ -60,8 +66,8 @@ targets:
             "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
             "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
             "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
-            "cryptographic-keys.html": https://ripple.com/build/cryptographic-keys/
-            "working-regular-key-pair.html": https://ripple.com/build/working-regular-key-pair/
+            "concept-cryptographic-keys.html": https://ripple.com/build/cryptographic-keys/
+            "tutorial-regular-keys.html": https://ripple.com/build/working-regular-key-pair/
             "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
             "concept-accounts.html": https://ripple.com/build/accounts/
             "concept-amendments.html": https://ripple.com/build/amendments/
@@ -124,24 +130,296 @@ targets:
             "img/demurrage-currency-code-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/demurrage-currency-code-format.png
             "img/xrp-ledger-network-ledger-store-and-shard-store.png": https://cdn.ripple.com/wp-content/uploads/2018/02/xrp-ledger-network-ledger-store-and-shard-store1.png
 
-    -   name: rippled-setup
-        display_name: rippled Setup Guide
-        link_subs:
-            "reference-rippled.html": https://ripple.com/build/rippled-apis/
-
 pages:
+  # I. Introduction ------------------------------------------------------------
+
     -   md: concept-xrp-ledger-intro.md
         category: Introduction
         targets:
             - local
             - ripple.com
 
-# References are exhaustive lists of commands and options
-    -   name: RippleAPI
-        category: References
-        html: reference-rippleapi.html
-        # Currently this is the only page that's fetched remotely.
+    # "XRP Ledger Ecosystem Overview" goes here
+
+  # II. Technical Overview -----------------------------------------------------
+
+    -   md: concept-consensus.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-reaching-consensus.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    # "Transaction Processing" goes here (broken off from transaction reference)
+
+    -   md: concept-accounts.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-cryptographic-keys.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-fees.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-fee-voting.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-amendments.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-amendments.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    # III. About XRP -----------------------------------------------------------
+
+    -   md: concept-money.md # TODO: maybe split this up into just an XRP intro?
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-reserves.md
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-transaction-cost.md
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-partial-payments.md
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-escrow.md
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-depositauth.md
+        category: About XRP # Not strictly an XRP feature, but most relevant to XRP
+        targets:
+            - local
+            - ripple.com
+
+    # DOC-696 "About Payment Channels" goes here
+
+  # IV. XRP Tasks --------------------------------------------------------------
+
+    # "Connecting to rippled" goes here (extracted from rippled reference)
+
+    -   md: tutorial-rippleapi-beginners-guide.md
+        category: XRP Tasks
+        targets:
+            - local
+            - ripple.com
+
+    # DOC-1299 "Create an XRP Ledger Account" goes here
+
+    # DOC-1322 "Sending Exact XRP Payments" goes here
+
+    -   md: tutorial-reliable-transaction-submission.md
+        category: XRP Tasks
+        targets:
+            - local
+            - ripple.com
+
+    # "Robustly Monitoring for Payments" goes here (adapted from gateway guide?)
+
+    # "Bouncing Payments" goes here (adapted from gateway guide?)
+
+    -   md: tutorial-multisign.md
+        category: XRP Tasks # This isn't strictly XRP-related though...
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-escrow.md
+        category: XRP Tasks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-paychan.md
+        category: XRP Tasks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-regular-keys.md
+        category: XRP Tasks # Not strictly XRP-related, either...
+        targets:
+            - local
+            - ripple.com
+
+  # V. Issued Currencies -------------------------------------------------------
+
+    # TODO: stand-alone issued currencies intro?
+
+    -   md: concept-freeze.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-transfer-fees.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-noripple.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-authorized-trust-lines.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    # DOC-78 "Decentralized Exchange" goes here
+
+    # DOC-844 "TickSize Settings" goes here
+
+    -   md: concept-paths.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-demurrage.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    # DOC-1237 "About Checks" goes here
+
+  # VI. The rippled Server -----------------------------------------------------
+
+    -   md: tutorial-rippled-setup.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
+
+    # -   md: reference-rippled.md # TODO: break out the concept parts for here
+    #     category: The rippled Server
+    #     targets:
+    #         - local
+    #         - ripple.com
+
+    -   md: concept-stand-alone-mode.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-history-sharding.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-build-run-rippled-ubuntu.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
+
+  # VII. The Exchange Business Model -------------------------------------------
+    -   md: tutorial-listing-xrp.md
+        category: The Exchange Business Model
+        targets:
+            - local
+            - ripple.com
+
+  # VIII. The Gateway Business Model -------------------------------------------
+    -   md: concept-issuing-and-operational-addresses.md
+        category: The Gateway Business Model
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-gateway-guide.md
+        category: The Gateway Business Model
+        targets:
+            - local
+            - ripple.com
+
+    -   md: gb-2015-06.md
+        category: The Gateway Business Model
+        targets:
+            - local
+            - ripple.com
+
+    -   md: gb-2015-05.md
+        category: The Gateway Business Model
+        targets:
+            - local
+            - ripple.com
+
+  # IX. Reference Material
+    -   md: reference-rippled.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-currency.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-transaction-format.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-ledger-format.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   name: RippleAPI Reference # name is required for remote-sourced files
         md: https://raw.githubusercontent.com/ripple/ripple-lib/e6d71471e26ca253e762fc7034859951b5d31c47/docs/index.md
+        html: reference-rippleapi.html
+        category: Reference Material
         filters:
             - remove_doctoc
             - add_version
@@ -149,316 +427,13 @@ pages:
             - local
             - ripple.com
 
-    -   name: rippled
-        category: References
-        html: reference-rippled.html
-        md: reference-rippled.md
+    -   md: reference-data-api.md
+        category: Reference Material
         targets:
             - local
             - ripple.com
 
-    -   name: Transaction Format
-        category: References
-        html: reference-transaction-format.html
-        md: reference-transaction-format.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Ledger Format
-        category: References
-        html: reference-ledger-format.html
-        md: reference-ledger-format.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Ripple Data API v2
-        category: References
-        html: reference-data-api.html
-        md: reference-data-api.md
-        targets:
-            - local
-            - ripple.com
-
-    -   md: reference-currency.md
-        category: References
-        html: reference-currency.html
-        targets:
-            - local
-            - ripple.com
-
-    -   md: reference-amendments.md
-        category: References
-        html: reference-amendments.html
-        targets:
-            - local
-            - ripple.com
-
-# Tutorials are step-by-step guides to a specific goal
-    -   name: How to Multi-Sign
-        category: Tutorials
-        html: tutorial-multisign.html
-        md: tutorial-multisign.md
-        targets:
-            - local
-            - ripple.com
-
-    -   category: Tutorials
-        html: tutorial-paychan.html
-        md: tutorial-paychan.md
-        targets:
-            - local
-            - ripple.com
-
-        # This is more like a "best practices" doc than Tutorials...
-    -   name: Issuing and Operational Addresses
-        category: Tutorials
-        html: concept-issuing-and-operational-addresses.html
-        md: concept-issuing-and-operational-addresses.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Reliable Transaction Submission
-        category: Tutorials
-        html: tutorial-reliable-transaction-submission.html
-        md: tutorial-reliable-transaction-submission.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: RippleAPI Beginners Guide
-        category: Tutorials
-        html: tutorial-rippleapi-beginners-guide.html
-        md: tutorial-rippleapi-beginners-guide.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: rippled Setup
-        category: Tutorials
-        html: tutorial-rippled-setup.html
-        md: tutorial-rippled-setup.md
-        targets:
-            - local
-            - ripple.com
-            - rippled-setup
-
-        # The Gateway Guide is also a poor fit for the "tutorials" category
-    -   name: Gateway Guide
-        category: Tutorials
-        html: tutorial-gateway-guide.html
-        md: tutorial-gateway-guide.md
-        targets:
-            - local
-            - ripple.com
-
-# Listing XRP as an Exchange
-    -   category: Tutorials
-        html: tutorial-listing-xrp.html
-        md: tutorial-listing-xrp.md
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-escrow.md
-        html: tutorial-escrow.html
-        category: Tutorials
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-regular-keys.md
-        html: working-regular-key-pair.html
-        category: Tutorials
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Build and Run rippled on Ubuntu
-        md: tutorial-build-run-rippled-ubuntu.md
-        html: tutorial-build-run-rippled-ubuntu.html
-        category: Tutorials
-        targets:
-            - local
-            - ripple.com
-
-#Features describe how the XRP Ledger works in a mostly conceptual manner
-    -   name: Accounts
-        category: Features
-        html: concept-accounts.html
-        md: concept-accounts.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Amendments
-        category: Features
-        html: concept-amendments.html
-        md: concept-amendments.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Consensus Process
-        category: Features
-        html: concept-consensus.html
-        md: concept-consensus.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Reaching Consensus in the XRP Ledger
-        category: Features
-        html: concept-reaching-consensus.html
-        md: concept-reaching-consensus.md
-        targets:
-            - local
-            - ripple.com
-
-    -   category: Features
-        html: cryptographic-keys.html
-        md: concept-keys.md
-        targets:
-            - local
-            - ripple.com
-
-    -   md: concept-depositauth.md
-        category: Features
-        targets:
-            - local
-            - ripple.com
-
-    -   md: concept-escrow.md
-        category: Features
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Fee Voting
-        category: Features
-        html: concept-fee-voting.html
-        md: concept-fee-voting.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Fees (Disambiguation)
-        category: Features
-        html: concept-fees.html
-        md: concept-fees.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Freeze
-        category: Features
-        html: concept-freeze.html
-        md: concept-freeze.md
-        targets:
-            - local
-            - ripple.com
-
-    -   md: concept-money.md
-        category: Features
-        html: concept-money.html
-        targets:
-            - local
-            - ripple.com
-
-    -   md: concept-demurrage.md
-        category: Features
-        html: concept-demurrage.html
-        targets:
-            - local
-            - ripple.com
-
-    -   md: concept-partial-payments.md
-        category: Features
-        html: concept-partial-payments.html
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Paths
-        category: Features
-        html: concept-paths.html
-        md: concept-paths.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Reserves
-        category: Features
-        html: concept-reserves.html
-        md: concept-reserves.md
-        targets:
-            - local
-            - ripple.com
-
-    -   category: Features
-        html: concept-history-sharding.html
-        md: concept-history-sharding.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Stand-Alone Mode
-        category: Features
-        html: concept-stand-alone-mode.html
-        md: concept-stand-alone-mode.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Transaction Cost
-        category: Features
-        html: concept-transaction-cost.html
-        md: concept-transaction-cost.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Transfer Fees
-        category: Features
-        html: concept-transfer-fees.html
-        md: concept-transfer-fees.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: Understanding the NoRipple flag
-        category: Features
-        html: concept-noripple.html
-        md: concept-noripple.md
-        targets:
-            - local
-            - ripple.com
-
-    -   md: concept-authorized-trust-lines.md
-        category: Features
-        targets:
-            - local
-            - ripple.com
-
-    -   name: "GB-2015-06: Corrections to Autobridging"
-        category: Gateway Bulletins
-        html: gb-2015-06.html
-        md: gb-2015-06.md
-        targets:
-            - local
-            - ripple.com
-
-    -   name: "GB-2015-05: Historical Ledger Query Migration"
-        category: Gateway Bulletins
-        html: gb-2015-05.html
-        md: gb-2015-05.md
-        targets:
-            - local
-            - ripple.com
-
-# API tools are interactive software for interfacing with real APIs
+  # Appendix: API Tools --------------------------------------------------------
     -   name: WebSocket API Tool
         category: API Tools
         html: ripple-api-tool.html
@@ -480,19 +455,7 @@ pages:
             - ripple.com
         template: template-rest-api-tool.html
 
-    -   name: rippled JSON-RPC Tool
-        # This tool requires a local server w/ reverse proxy
-        category: API Tools
-        html: tool-jsonrpc.html
-        methods_js: js/apitool-methods-jsonrpc.js
-        rest_host: http://localhost/rippled
-        doc_page: reference-rippled.html
-        sidebar: custom
-        targets:
-            - local
-            - ripple.com
-        template: template-rest-api-tool.html
-
+  # Non-canonical pages
     -   name: Page Manifest
         # Used to inform the ripple.com code what pages it should map
         html: devportal-manifest.php
@@ -512,6 +475,9 @@ ignore_anchors_in:
 known_broken_links:
     # Strangely, Python doesn't like the cert here. Firefox is OK with it.
     - https://validators.ripple.com
+
+    # Login required for the client portal.
+    - https://clients.ripple.com/
 
     # These PDFs download OK in a browser
     - http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847
