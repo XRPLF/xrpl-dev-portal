@@ -681,13 +681,14 @@ th {
 }
 @media (min-width: 1400px) {
   .container {
-    margin-right: calc(calc(calc(100% - 1370px) / 2) + 195px);
+    margin-right: calc(calc(calc(100% - 1300px) / 2) + 230px);
   }
   #page-toc-wrapper {
     position: fixed;
-    right: 10px;
+    left: calc(calc(calc(100% - 1300px) / 2) + 1120px);
     top: 80px;
-    max-width: calc(75% - 970px);
+    max-width: 350px;
+    margin-right: 15px;
     max-height: calc(100% - 150px);
     overflow-y: auto;
   }
