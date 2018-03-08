@@ -2,9 +2,10 @@
 mkdir -p out
 
 # Pass forward dactyl "vars" arg if provided
-if [ -n "$1" ];
+if [ "$1" == "--vars" ] && [ -n "$2" ];
 then
-  dactyl_vars=$1
+  dactyl_vars=$2
+  shift 2
 fi
 
 targets=`dactyl_build -lq | awk '{print $1}'`
