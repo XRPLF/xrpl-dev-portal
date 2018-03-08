@@ -67,7 +67,7 @@ Online deletion enables pruning of `rippled` ledgers from databases without any 
 
 The default `rippled.cfg` file sets the logging verbosity to `warning`. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
 
-**Note:** If you omit the `log_level` command from the `[rpc_startup]` stanza, `rippled` falls back to `warning` level logging, which requires several more GB of disk space per day, depending on transaction volumes and client activity.
+**Caution:** If you omit the `log_level` command from the `[rpc_startup]` stanza, `rippled` writes logs to disk at the `debug` level and outputs `warning` level  logs to the console. `debug` level logging requires several more GB of disk space per day than `warning` level, depending on transaction volumes and client activity.
 
 ## Network and Hardware
 
