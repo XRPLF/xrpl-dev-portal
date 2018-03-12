@@ -6,10 +6,10 @@ An "Account" in the XRP Ledger represents a holder of XRP and a sender of [trans
 - An **XRP balance**. Some of this XRP is set aside for the [Reserve](concept-reserves.html).
 - A **sequence number**, starting at 1 and increasing with each transaction sent from this account. No transaction can be included in a ledger unless the transaction's sequence number matches its sender's next sequence number.
 - A **history of transactions** that affected this account and its balances.
-- One or more ways to [authorize transactions](reference-transaction-format.html#authorizing-transactions), possibly including:
+- One or more ways to [authorize transactions](concept-transactions.html#authorizing-transactions), possibly including:
     - A master key pair intrinsic to the account. (This can be [disabled](reference-transaction-format.html#accountset-flags) but not changed.)
     - A "regular" key pair that [can be rotated](reference-transaction-format.html#setregularkey).
-    - A signer list for [multi-signing](reference-transaction-format.html#multi-signing). (Stored separately from the account's core data.)
+    - A signer list for [multi-signing](concept-transactions.html#multi-signing). (Stored separately from the account's core data.)
 
 In the ledger's data tree, an account's core data is stored in the [AccountRoot](reference-ledger-format.html#accountroot) ledger object type. An account can also be the owner (or partial owner) of several other types of data.
 
@@ -19,7 +19,7 @@ In the ledger's data tree, an account's core data is stored in the [AccountRoot]
 
 {% include 'data_types/address.md' %}
 
-Any valid address can become an account in the XRP Ledger by receiving a [Payment][] of XRP, as long as the amount of XRP delivered is greater than or equal to the [account reserve](concept-reserves.html). This is called _funding_ the account. You can also use an address that has not been funded to represent a [regular key](reference-transaction-format.html#setregularkey) or a member of a [signer list](reference-transaction-format.html#multi-signing). Only a funded account can be the sender of a transaction.
+Any valid address can become an account in the XRP Ledger by receiving a [Payment][] of XRP, as long as the amount of XRP delivered is greater than or equal to the [account reserve](concept-reserves.html). This is called _funding_ the account. You can also use an address that has not been funded to represent a [regular key](reference-transaction-format.html#setregularkey) or a member of a [signer list](concept-transactions.html#multi-signing). Only a funded account can be the sender of a transaction.
 
 Creating a valid address is a strictly mathematical task starting with a key pair. You can generate a key pair and calculate its address entirely offline without communicating to the XRP Ledger or any other party. The conversion from a public key to an address involves a one-way hash function, so it is possible to confirm that a public key matches an address but it is impossible to derive the public key from the address alone. (This is part of the reason why signed transactions include the public key _and_ the address of the sender.)
 
@@ -59,7 +59,7 @@ The _conceptual_ transaction history of an account also includes transactions th
 - `Offer` objects, representing the account's outstanding currency-exchange orders in the decentralized exchange
 - `PayChannel` objects, representing asynchronous payment channels to and from the account
 - `Escrow` objects, representing held payments to or from the account that are locked by time or a crypto-condition.
-- `SignerList` objects, representing lists of addresses that can authorize transactions for the account by [multi-signing](reference-transaction-format.html#multi-signing).
+- `SignerList` objects, representing lists of addresses that can authorize transactions for the account by [multi-signing](concept-transactions.html#multi-signing).
 
 For more information on each of these objects, see the [Ledger Format Reference](reference-ledger-format.html).
 

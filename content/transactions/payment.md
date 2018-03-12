@@ -78,7 +78,7 @@ A partial payment allows a payment to succeed by reducing the amount received. P
 
 A partial payment is any [Payment transaction][] with the **tfPartialPayment** flag enabled. A partial payment can be successful if it delivers any positive amount greater than or equal to its `DeliverMin` field (or any positive amount at all if `DeliverMin` is not specified) without sending more than the `SendMax` value.
 
-The [`delivered_amount`](#delivered-amount) field of a payment's metadata indicates the amount of currency actually received by the destination account.
+The [`delivered_amount`](reference-transaction-results.html#delivered-amount) field of a payment's metadata indicates the amount of currency actually received by the destination account.
 
 For more information, see the full article on [Partial Payments](concept-partial-payments.html).
 
@@ -89,7 +89,7 @@ The XRP Ledger defines the "quality" of a currency exchange as the ratio of the 
 
 The [*tfLimitQuality* flag](#payment-flags) allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination `Amount` divided by the `SendMax` amount (the numeric amounts only, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality.
 
-By itself, the tfLimitQuality flag reduces the number of situations in which a transaction can succeed. Specifically, it rejects payments where some part of the payment uses an unfavorable conversion, even if the overall average *average* quality of conversions in the payment is equal or better than the limit quality. If a payment is rejected in this way, the [transaction result](#transaction-results) is `tecPATH_DRY`.
+By itself, the tfLimitQuality flag reduces the number of situations in which a transaction can succeed. Specifically, it rejects payments where some part of the payment uses an unfavorable conversion, even if the overall average *average* quality of conversions in the payment is equal or better than the limit quality. If a payment is rejected in this way, the [transaction result](reference-transaction-results.html) is `tecPATH_DRY`.
 
 Consider the following example. If I am trying to send you 100 Chinese Yuan (`Amount` = 100 CNY) for 20 United States dollars (`SendMax` = 20 USD) or less, then the limit quality is `5`. Imagine one trader is offering ¥95 for $15 (a ratio of about `6.3` CNY per USD), but the next best offer in the market is ¥5 for $2 (a ratio of `2.5` CNY per USD). If I were to take both offers to send you 100 CNY, then it would cost me 17 USD, for an average quality of about `5.9`.
 

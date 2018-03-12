@@ -49,8 +49,8 @@ The request includes the following parameters:
 | `account`      | String                     | The [Address][] to check. This should be the [issuing address](concept-issuing-and-operational-addresses.html) |
 | `strict`       | Boolean                    | _(Optional)_ If true, only accept an address or public key for the account parameter. Defaults to false. |
 | `hotwallet`    | String or Array            | An [operational address](concept-issuing-and-operational-addresses.html) to exclude from the balances issued, or an array of such addresses. |
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 #### Response Format
 
@@ -197,7 +197,7 @@ An example of a successful response:
 
 **Note:** There is no command-line syntax for this method. Use the [`json` command](#json) to access this from the command line.
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                | Type   | Description                                |
 |:-----------------------|:-------|:-------------------------------------------|
@@ -211,7 +211,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `invalidHotWallet` - One or more of the addresses specified in the `hotwallet` field is not the [Address][] of an account holding currency issued by the account from the request.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.

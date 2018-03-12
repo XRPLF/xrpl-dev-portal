@@ -3,7 +3,7 @@
 
 The `validator_list_sites` command returns status information of sites serving validator lists. [New in: rippled 0.80.1][]
 
-*The `validator_list_sites` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `validator_list_sites` request is an [admin command][] that cannot be run by unprivileged users!*
 
 #### Request Format
 An example of the request format:
@@ -109,7 +109,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following field:
+The response follows the [standard format][], with a successful result containing the following field:
 
 | `Field`           | Type  | Description                      |
 |:------------------|:------|----------------------------------|
@@ -126,4 +126,4 @@ Each member of the `validator_sites` field array is an object with the following
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].

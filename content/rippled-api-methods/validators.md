@@ -3,7 +3,7 @@
 
 The `validators` command returns human readable information about the current list of published and trusted validators used by the server. [New in: rippled 0.80.1][]
 
-*The `validators` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `validators` request is an [admin command][] that cannot be run by unprivileged users!*
 
 #### Request Format
 An example of the request format:
@@ -150,7 +150,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                  | Type   | Description                              |
 |:-------------------------|:-------|:-----------------------------------------|
@@ -174,4 +174,4 @@ Each member of the `publisher_lists` array is an object with the following field
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].

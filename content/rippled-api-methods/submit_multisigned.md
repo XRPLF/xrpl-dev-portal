@@ -1,7 +1,7 @@
 ## submit_multisigned
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
-The `submit_multisigned` command applies a [multi-signed](reference-transaction-format.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
+The `submit_multisigned` command applies a [multi-signed](concept-transactions.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
 
 This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
@@ -232,7 +232,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                 | Type    | Description                              |
 |:------------------------|:--------|:-----------------------------------------|
@@ -244,7 +244,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `srcActMalformed` - The `Account` field from the `tx_json` was invalid or missing.
 * `internal` - An internal error occurred. This includes the case where a signature is not valid for the transaction JSON provided.

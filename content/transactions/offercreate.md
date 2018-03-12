@@ -23,7 +23,7 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 
 | Field                     | JSON Type           | [Internal Type][] | Description |
 |:--------------------------|:--------------------|:------------------|:-------|
-| [Expiration](#expiration) | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
+| [Expiration](#expiration) | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. |
 | OfferSequence             | Unsigned Integer    | UInt32            | _(Optional)_ An offer to delete first, specified in the same way as [OfferCancel][]. |
 | TakerGets                 | [Currency Amount][] | Amount            | The amount and type of currency being provided by the offer creator. |
 | TakerPays                 | [Currency Amount][] | Amount            | The amount and type of currency being requested by the offer creator. |
@@ -32,7 +32,7 @@ An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.or
 
 When an OfferCreate transaction is processed, it automatically consumes matching or crossing offers to the extent possible. (If existing offers provide a better rate than requested, the offer creator could pay less than the full `TakerGets` amount to receive the entire `TakerPays` amount.) If that does not completely fulfill the `TakerPays` amount, then the offer becomes an Offer object in the ledger. (You can use [OfferCreate Flags](#offercreate-flags) to modify this behavior.)
 
-An offer in the ledger can be fulfilled either by additional OfferCreate transactions that match up with the existing offers, or by [Payments](#payment) that use the offer to connect the payment path. Offers can be partially fulfilled and partially funded. A single transaction can consume up to 850 Offers from the ledger. (Any more than that, and the metadata becomes too large, resulting in [`tecOVERSIZE`](#tec-codes).)
+An offer in the ledger can be fulfilled either by additional OfferCreate transactions that match up with the existing offers, or by [Payments](#payment) that use the offer to connect the payment path. Offers can be partially fulfilled and partially funded. A single transaction can consume up to 850 Offers from the ledger. (Any more than that, and the metadata becomes too large, resulting in [`tecOVERSIZE`](reference-transaction-results.html#tec-codes).)
 
 You can create an offer so long as you have at least some (any positive, nonzero amount) of the currency specified by the `TakerGets` parameter of the offer. The offer sells as much of the currency as you have, up to the `TakerGets` amount, until the `TakerPays` amount is satisfied. An offer cannot place anyone in debt.
 
@@ -58,7 +58,7 @@ An unfunded offer can stay on the ledger indefinitely, but it does not have any 
 
 Tracking the funding status of all offers can be computationally taxing. In particular, addresses that are actively trading may have a large number of offers open. A single balance can affect the funding status of many offers to buy different currencies. Because of this, `rippled` does not proactively find and remove offers.
 
-A client application can locally track the funding status of offers. To do this, first retreive an order book using the [`book_offers` command](reference-rippled.html#book-offers) and check the `taker_gets_funded` field of offers. Then,  [subscribe](reference-rippled.html#subscribe) to the `transactions` stream and watch the transaction metadata to see which offers are modified.
+A client application can locally track the funding status of offers. To do this, first retreive an order book using the [`book_offers` command](reference-rippled-api-public.html#book-offers) and check the `taker_gets_funded` field of offers. Then,  [subscribe](reference-rippled-api-public.html#subscribe) to the `transactions` stream and watch the transaction metadata to see which offers are modified.
 
 
 ### Offers and Trust
@@ -94,7 +94,7 @@ Since transactions can take time to propagate and confirm, the timestamp of a le
 
 You can determine the final disposition of an offer with an `Expiration` as soon as you see a fully-validated ledger with a close time equal to or greater than the expiration time.
 
-**Note:** Since only new transactions can modify the ledger, an expired offer can stay on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the [ledger_entry](reference-rippled.html#ledger-entry) command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server finds it while processing.
+**Note:** Since only new transactions can modify the ledger, an expired offer can stay on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the [ledger_entry](reference-rippled-api-public.html#ledger-entry) command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server finds it while processing.
 
 If an OfferCreate transaction has an `Expiration` time that has already passed when the transaction first gets included in a ledger, the transaction does not execute the offer. The result code of such a transaction depends on whether the [Checks amendment](reference-amendments.html#checks) is enabled. With the Checks amendment enabled, the transaction has the `tecEXPIRED` result code. Otherwise, the transaction has the `tesSUCCESS` transaction code. In either case, the transaction has no effect except to destroy the XRP paid as a [transaction cost](concept-transaction-cost.html).
 
@@ -122,4 +122,4 @@ The following invalid flag combination prompts a `temINVALID_FLAG` error:
 
 * tfImmediateOrCancel and tfFillOrKill
 
-**Note:** When an OfferCreate uses tfImmediateOrCancel or tfFillOrKill and the offer cannot be executed when placed, the transaction may conclude "successfully" without trading any currency or having any effect on the order books. In this case, the transaction has the [result code](#result-categories) `tesSUCCESS`, it pays the [transaction cost](concept-transaction-cost.html) and uses up a `Sequence` number, but has no other effect.
+**Note:** When an OfferCreate uses tfImmediateOrCancel or tfFillOrKill and the offer cannot be executed when placed, the transaction may conclude "successfully" without trading any currency or having any effect on the order books. In this case, the transaction has the [result code](reference-transaction-results.html#result-categories) `tesSUCCESS`, it pays the [transaction cost](concept-transaction-cost.html) and uses up a `Sequence` number, but has no other effect.

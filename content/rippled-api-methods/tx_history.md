@@ -878,7 +878,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field` | Type             | Description                               |
 |:--------|:-----------------|:------------------------------------------|
@@ -889,6 +889,6 @@ The fields included in each transaction object vary slightly depending on the ty
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The `start` field specified was greater than 10000, but you are not connected to the server as an admin.

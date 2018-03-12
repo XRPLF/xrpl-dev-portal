@@ -3,7 +3,7 @@
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 
-_The `logrotate` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `logrotate` method is an [admin command][] that cannot be run by unprivileged users._
 
 #### Request Format
 An example of the request format:
@@ -64,7 +64,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
@@ -72,4 +72,4 @@ The response follows the [standard format](#response-formatting), with a success
 
 #### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].

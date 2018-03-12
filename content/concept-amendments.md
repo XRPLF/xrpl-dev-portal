@@ -10,7 +10,7 @@ For a complete list of known amendments, their statuses, and IDs, see: [Known Am
 
 ## Background
 
-Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If some _validators_ (`rippled` servers [participating in consensus](tutorial-rippled-setup.html#reasons-to-run-a-validator)) have upgraded to a new version of the software while other validators use the old version, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, [the consensus process][] might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.
+Any changes to transaction processing could cause servers to build a different ledger with the same set of transactions. If some _validators_ (`rippled` servers [participating in consensus](concept-rippled.html#reasons-to-run-a-validator)) have upgraded to a new version of the software while other validators use the old version, this could cause anything from minor inconveniences to full outages. In the minor case, a minority of servers spend more time and bandwidth fetching the actual consensus ledger because they cannot build it using the transaction processing rules they already know. In the worst case, [the consensus process][] might be unable to validate new ledger versions because servers with different rules could not reach a consensus on the exact ledger to build.
 
 Amendments solve this problem, so that new features can be enabled only when enough validators support those features.
 
@@ -58,7 +58,7 @@ As with all aspects of the consensus process, amendment votes are only taken int
 
 ### Configuring Amendment Voting
 
-You can temporarily configure an amendment using the [`feature` command](reference-rippled.html#feature). To make a persistent change to your server's support for an amendment, change your server's `rippled.cfg` file.
+You can temporarily configure an amendment using the [`feature` command](reference-rippled-api-admin.html#feature). To make a persistent change to your server's support for an amendment, change your server's `rippled.cfg` file.
 
 Use the `[veto_amendments]` stanza to list amendments you do not want the server to vote for. Each line should contain one amendment's unique ID, optionally followed by the short name for the amendment. For example:
 
@@ -95,7 +95,7 @@ If your server is amendment blocked, you must [upgrade to a new version](tutoria
 
 #### How to Tell If Your `rippled` Server Is Amendment Blocked
 
-One of the first signs that your `rippled` server is amendment blocked is an `amendmentBlocked` error that is returned [when you submit a transaction](reference-rippled.html#submit). Here's an example `amendmentBlocked` error:
+One of the first signs that your `rippled` server is amendment blocked is an `amendmentBlocked` error that is returned [when you submit a transaction](reference-rippled-api-public.html#submit). Here's an example `amendmentBlocked` error:
 
 ```
 {
@@ -118,7 +118,7 @@ The following `rippled` log message also indicates that your server is amendment
 2018-Feb-12 19:38:30 LedgerMaster:ERR One or more unsupported amendments activated: server blocked.
 ```
 
-If you are on `rippled` version 0.80.0+, you can verify that your `rippled` server is amendment blocked using the [`server_info`](reference-rippled.html#server-info) command. In the response, look for `result.info.amendment_blocked`. If `amendment_blocked` is set to `true`, your server is amendment blocked.
+If you are on `rippled` version 0.80.0+, you can verify that your `rippled` server is amendment blocked using the [`server_info`](reference-rippled-api-public.html#server-info) command. In the response, look for `result.info.amendment_blocked`. If `amendment_blocked` is set to `true`, your server is amendment blocked.
 
 **Example JSON-RPC Response:**
 
@@ -157,7 +157,7 @@ Depending on the scenario, you may be able to (and want to) unblock your server 
 
 To determine if you can unblock your `rippled` server by upgrading to a version older than the newest version, find out which features are blocking your server and then look up the `rippled` version that supports the blocking features.
 
-To find out which features are blocking your `rippled` server, use the [`feature`](reference-rippled.html#feature) admin command. Look for features that have `"enabled" : true` and `"supported" : false`. These values for a feature mean that the amendment is currently enabled (required) in the latest ledger, but your server does not know how to support, or apply, the amendment.
+To find out which features are blocking your `rippled` server, use the [`feature`](reference-rippled-api-admin.html#feature) admin command. Look for features that have `"enabled" : true` and `"supported" : false`. These values for a feature mean that the amendment is currently enabled (required) in the latest ledger, but your server does not know how to support, or apply, the amendment.
 
 **Example JSON-RPC Response:**
 

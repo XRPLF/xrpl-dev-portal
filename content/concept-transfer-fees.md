@@ -47,4 +47,4 @@ In `rippled`'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the
 
 A financial institution can submit an [AccountSet transaction](reference-transaction-format.html#accountset) from its [issuing address][] to change the `TransferRate` for its issuances.
 
-You can check an account's `TransferRate` with the [`account_info` command](reference-rippled.html#account-info). If the `TransferRate` is omitted, then that indicates no fee.
+You can check an account's `TransferRate` with the [`account_info` command](reference-rippled-api-public.html#account-info). If the `TransferRate` is omitted, then that indicates no fee.

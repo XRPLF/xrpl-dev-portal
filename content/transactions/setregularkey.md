@@ -10,7 +10,7 @@ For more information about regular and master key pairs, see [Cryptographic Keys
 
 For a tutorial on assigning a regular key pair to an account, see [Working with a Regular Key Pair](tutorial-regular-keys.html).
 
-For even greater security, you can use [multi-signing](#multi-signing), but multi-signing requires additional XRP for the [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html).
+For even greater security, you can use [multi-signing](concept-transactions.html#multi-signing), but multi-signing requires additional XRP for the [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html).
 
 ```
 {
@@ -24,4 +24,4 @@ For even greater security, you can use [multi-signing](#multi-signing), but mult
 
 | Field        | JSON Type | [Internal Type][] | Description                   |
 |:-------------|:----------|:------------------|:------------------------------|
-| `RegularKey` | String    | AccountID         | _(Optional)_ A base-58-encoded [Ripple address](reference-rippled.html#addresses) that indicates the regular key pair to be assigned to the account. If omitted, removes any existing regular key pair from the account. |
+| `RegularKey` | String    | AccountID         | _(Optional)_ A base-58-encoded [Ripple address](concept-accounts.html#addresses) that indicates the regular key pair to be assigned to the account. If omitted, removes any existing regular key pair from the account. |

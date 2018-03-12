@@ -14,7 +14,7 @@ The XRP set aside in an escrow is locked up. No one can use or destroy the XRP u
 
 **Step 2:** After this transaction has been processed, the XRP Ledger has an [Escrow object](reference-ledger-format.html#escrow) that holds the escrowed XRP. This object contains the properties of the escrow as defined by the transaction that created it. If this escrow has a finish time, no one can access the XRP before then.
 
-**Step 3:** The recipient, or any other XRP Ledger address, sends an [EscrowFinish transaction][] to deliver the XRP. If the correct conditions are met, this destroys the Escrow object in the ledger and credits the XRP to the intended recipient. If the escrow has a crypto-condition, this transaction must include a fulfillment for that condition. If the escrow has an expiration time that has already passed, the EscrowFinish transaction instead fails with the code [`tecNO_PERMISSION`](reference-transaction-format.html#tec-codes).
+**Step 3:** The recipient, or any other XRP Ledger address, sends an [EscrowFinish transaction][] to deliver the XRP. If the correct conditions are met, this destroys the Escrow object in the ledger and credits the XRP to the intended recipient. If the escrow has a crypto-condition, this transaction must include a fulfillment for that condition. If the escrow has an expiration time that has already passed, the EscrowFinish transaction instead fails with the code [`tecNO_PERMISSION`](reference-transaction-results.html#tec-codes).
 
 ### Expiration Case
 
@@ -48,7 +48,7 @@ When testing in [stand-alone mode](concept-stand-alone-mode.html), you can force
     [features]
     Escrow
 
-You can check the status of the Escrow amendment using the [`feature` command](reference-rippled.html#feature).
+You can check the status of the Escrow amendment using the [`feature` command](reference-rippled-api-admin.html#feature).
 
 ## EscrowFinish Transaction Cost
 
@@ -56,7 +56,7 @@ When using [crypto-conditions][], the EscrowFinish transaction must pay a [highe
 
 If the escrow is purely time-locked with no crypto-condition, the EscrowFinish costs only the standard [transaction cost](concept-transaction-cost.html) for a reference transaction.
 
-The additional transaction cost required is proportional to the size of the fulfillment. Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](reference-rippled.html#specifying-currency-amounts) plus 10 drops per 16 bytes in the size of the fulfillment**. If the transaction is [multi-signed](reference-transaction-format.html#multi-signing), the cost of multi-signing is added to the cost of the fulfillment.
+The additional transaction cost required is proportional to the size of the fulfillment. Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP][] plus 10 drops per 16 bytes in the size of the fulfillment**. If the transaction is [multi-signed](concept-transactions.html#multi-signing), the cost of multi-signing is added to the cost of the fulfillment.
 
 **Note:** The above formula is based on the assumption that the reference cost of a transaction is 10 drops of XRP.
 
@@ -116,8 +116,8 @@ For more information on Interledger and how conditional transfers enable secure 
 
 For more information on Ripple's 55-Billion XRP Lockup, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
 
-<!--{# reference link definitions #}-->
-[Interledger Protocol]: https://interledger.org/
-[crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
-[crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
+
+<!--{# Common Links #}-->
+{% include 'snippets/rippled_versions.md' %}
 {% include 'snippets/tx-type-links.md' %}
+{% include 'snippets/rippled-api-links.md' %}
