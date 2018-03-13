@@ -327,13 +327,19 @@ pages:
             - local
             - ripple.com
 
-    -   md: concept-demurrage.md
+    # DOC-1237 "About Checks" goes here
+
+    -   md: tutorial-checks.md
         category: Issued Currencies
         targets:
             - local
             - ripple.com
 
-    # DOC-1237 "About Checks" goes here
+    -   md: concept-demurrage.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
 
   # VI. The rippled Server -----------------------------------------------------
 

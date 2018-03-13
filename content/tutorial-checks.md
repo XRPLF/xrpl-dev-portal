@@ -1,21 +1,61 @@
-# Checks Tutorial (draft)
+# Checks Tutorials
 
-***TODO: This whole page is just example requests and responses for now, not a finished page.***
+Checks in the XRP Ledger are similar to paper personal checks. This tutorial steps through the following processes for using Checks:
 
+- Sending a Check
+- Looking for incoming Checks
+- Looking for outgoing Checks
+- Cashing a Check for an exact amount
+- Cashing a Check for a flexible amount
+- Canceling a Check
 
-<!--{# Just the requests and responses right now #}-->
-
-<!--{# Accounts used in this example:
+<!--{# Accounts used in these examples:
 rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo snkuWqxoqt6aeykTbkEWrTMJHrWGM (as the sender)
 rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy sn2Zh1tRZyodU9qNy9tMnQr9UbBss (as the dest.)
-
-both need to be funded and the sender needs enough XRP to send and pay the reserves
-Reminder: don't use these addresses for real XRP because the secrets are now public
 #}-->
 
-## Create check
+## Sending a Check
 
-CheckCreate tx rUn84→rfkE1
+Sending a Check involves sending a [CheckCreate transaction][], which creates a [Check object in the ledger](reference-ledger-format.html#check). Most of the fields of a CheckCreate transaction are similar to the fields of a (push) [Payment][], because a Check is like writing permission for an intended recipient to pull a payment from you. You can create a check for XRP or an issued currency.
+
+
+### 1. Prepare the CheckCreate transaction
+
+Decide how much money the Check is for and who can cash it. Figure out the values of the [CheckCreate transaction][] fields.
+
+| Field | Value | Description |
+|---|---|---|
+| `Account` | String (Address) | The address of the sender who is creating the Check. (In other words, your address.) |
+| `Destination` | String (Address) | The address of the intended recipient who can cash the Check. |
+| `SendMax` | String or Object (Amount) | The maximum amount you can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](concept-transfer-fees.html), remember to include an extra percentage to pay for the transfer fee. |
+
+For example, here is a transaction to create a Check for 100 XRP from rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo to rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy, with an expiration time of 2018-01-24T12:52:01Z:
+
+```
+{
+  "TransactionType": "CheckCreate",
+  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
+  "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
+  "SendMax": "100000000",
+  "Expiration": 570113521,
+  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",
+  "DestinationTag": 1,
+  "Fee": "12"
+}
+```
+
+### 2. Sign the CheckCreate transaction
+
+The most secure way to sign a transaction is to do it locally with a signing library, such as [RippleAPI](reference-rippleapi.html). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+
+
+#### Example Request
+
+***TODO: Change this from submit to sign***
+
+<!-- MULTICODE_BLOCK_START -->
+
+*Commandline*
 
 ```
 $ ./rippled submit snkuWqxoqt6aeykTbkEWrTMJHrWGM '{                                                                                                               "TransactionType": "CheckCreate",
@@ -27,6 +67,19 @@ $ ./rippled submit snkuWqxoqt6aeykTbkEWrTMJHrWGM '{                             
   "DestinationTag": 1,
   "Fee": "12"
 }'
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+#### Example Response
+
+***TODO: Change this from submit to sign***
+
+<!-- MULTICODE_BLOCK_START -->
+
+*Commandline*
+
+```
 Loading: "/home/mduo13/.config/ripple/rippled.cfg"
 2018-Jan-24 01:01:20 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
@@ -56,11 +109,22 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
 }
 ```
 
-## wait for ledger to close
+<!-- MULTICODE_BLOCK_END -->
 
-or use `ledger_accept` if in standalone mode
 
-## Confirm CheckCreate by hash with tx command
+### 3. Wait for validation
+
+{% include 'snippets/wait-for-validation.md' %}
+
+### 4. Confirm final result
+
+Use the [`tx` method](reference-rippled.html#tx) with the CheckCreate transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
+
+Look for a `CreatedNode` object in the transaction metadata to indicate that the transaction created a [Check ledger object](reference-ledger-format.html#check). The `LedgerIndex` of this object is the ID of the Check. For example, in the following example, the Check's ID is `49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`.
+
+<!-- MULTICODE_BLOCK_START -->
+
+*Commandline*
 
 ```
 $ ./rippled tx 5463C6E08862A1FAE5EDAC12D70ADB16546A1F674930521295BC082494B62924
@@ -154,9 +218,11 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
 }
 ```
 
-find CreatedNode of type Check, LedgerIndex is its ID: `49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`
+<!-- MULTICODE_BLOCK_END -->
 
-## Cancel Check
+
+
+## Cancel a Check
 
 ```
 $ ./rippled submit snkuWqxoqt6aeykTbkEWrTMJHrWGM '{
@@ -430,6 +496,7 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
 new check's id: `838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334`
 
 ## Cash check (exact amount)
+As long as the Check is in the ledger and not expired, the specified recipient can cash it for up to the amount specified in the Check. (If it's an issued currency, the recipient can only cash the Check for that currency from the sender or from a specified issuer they both trust.)
 
 rfkE1 sends this one
 
@@ -585,4 +652,9 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
 
 ## cash check (delivermin)
 
-***TODO: alternative version of cashing a check with delivermin instead of amount)
+***TODO: alternative version of cashing a check with delivermin instead of amount)***
+
+
+<!--{# common links TODO change this after PR#321 #}-->
+[Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
+{% include 'snippets/tx-type-links.md' %}
