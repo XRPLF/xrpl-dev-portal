@@ -83,7 +83,10 @@ An example of a successful response:
         "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
         "settle_delay": 86400
       }
-    ]
+    ],
+    "ledger_hash": "F168208EECDAA57DDAC32780CDD8330FA3E89F0E84D27A9052AA2F88681EBD08",
+    "ledger_index": 37230642,
+    "validated": true
   }
 }
 ```
@@ -107,7 +110,10 @@ An example of a successful response:
             "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
             "settle_delay": 86400
         }],
-        "status": "success"
+        "ledger_hash": "B9D3D80EDF4083A06B2D51202E0BFB63C46FC0985E015D06767C21A62853BF6D",
+        "ledger_index": 37230600,
+        "status": "success",
+        "validated": true
     }
 }
 ```
@@ -131,7 +137,10 @@ An example of a successful response:
             "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
             "settle_delay": 86400
         }],
-        "status": "success"
+        "ledger_hash": "B9D3D80EDF4083A06B2D51202E0BFB63C46FC0985E015D06767C21A62853BF6D",
+        "ledger_index": 37230600,
+        "status": "success",
+        "validated": true
     }
 }
 ```
@@ -144,6 +153,9 @@ The response follows the [standard format](#response-formatting), with a success
 |:-----------|:-------------------------------------------|:-------------------|
 | `account`  | String                                     | The address of the source/owner of the payment channels. This corresponds to the `account` field of the request. |
 | `channels` | Array of Channel Objects                   | Payment channels owned by this `account`. |
+| `ledger_hash` | String                                  | The identifying [Hash][] of the ledger version used to generate this response. [New in: rippled 0.90.0][] |
+| `ledger_index` | Number                                 | The [Ledger Index][] of the ledger version used to generate this response. [New in: rippled 0.90.0][] |
+| `validated` | Boolean                                   | _(May be omitted)_ If `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. [New in: rippled 0.90.0][] |
 | `limit`    | Number                                     | _(May be omitted)_ The limit to how many channel objects were actually returned by this request. |
 | `marker`   | [(Not Specified)](#markers-and-pagination) | _(May be omitted)_ Server-defined value for pagination. Pass this to the next call to resume getting results where this call left off. Omitted when there are no additional pages after this one. |
 

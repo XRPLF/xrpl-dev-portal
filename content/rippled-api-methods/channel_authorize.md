@@ -55,7 +55,7 @@ The request includes the following parameters:
 | `secret` | String | The secret key to use to sign the claim. This must be the same key pair as the public key specified in the channel. |
 | `amount` | String | Cumulative amount of XRP, in drops, to authorize. If the destination has already received a lesser amount of XRP from this channel, the signature created by this method can be redeemed for the difference. |
 
-**Note:** You cannot use Ed25519 keys to sign claims with this method. This is a known bug.
+**Note:** You cannot use Ed25519 keys to sign claims with this method. This is a known bug (RIPD-1474).
 
 #### Response Format
 
