@@ -45,10 +45,10 @@ A `Check` object has the following fields:
 
 
 ### Check ID Format
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
 The ID of a `Check` object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
-* The Escrow space key (`0x0043`)
+* The Check space key (`0x0043`)
 * The AccountID of the sender of the [CheckCreate transaction][] that created the `Check` object
 * The Sequence number of the [CheckCreate transaction][] that created the `Check` object
