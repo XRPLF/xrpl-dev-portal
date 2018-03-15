@@ -253,6 +253,7 @@ pre code {
   z-index: 5;
   border-left: 1px solid #cccccc;
   padding-left: 40px;
+  min-height: 700px;
 }
 .content {
   padding-bottom: 50px;

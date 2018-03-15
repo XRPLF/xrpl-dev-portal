@@ -1,0 +1,65 @@
+.cta_readmore {
+	background-color: #27a2db;
+	color: white;
+	border-radius: 5px;
+	padding: 10px 50px;
+	border: none;
+	outline: 0;
+}
+.cta_readmore:hover,
+.cta_readmore:active,
+.cta_readmore:focus {
+	background-color: #43bded;
+  color: white;
+	outline: 0;
+  border: none;
+}
+
+#your-credentials {
+	display: none;
+	margin: 15px 0 30px;
+}
+
+#loader {
+	display: none;
+}
+
+#loader img {
+  margin: 0 10px 0 20px;
+  width: 25px;
+  height: auto;
+}
+
+.test-net-servers {
+	font-size: 15px;
+	border-radius: 5px;
+  border: 1px solid #27a2db;
+  padding: 20px 20px 10px 20px;
+}
+
+
+h2 {
+	font-size: 36px;
+  color: #066b98;
+  line-height: 1.2em;
+  margin-top: 0;
+}
+
+.test-net-servers h5 {
+	letter-spacing: .04em;
+  font-family: 'open_sansbold', sans-serif;
+  text-transform: uppercase;
+  color: #344e5a;
+  clear: both;
+  margin-top: 20px !important;
+}
+
+.test-net-servers .panel-heading {
+  margin-top: 0;
+  padding: 0;
+  font-size: 21px;
+  font-family: "open_sanslight", sans-serif;
+  color: #27a2db;
+  line-height: 1.2em;
+  margin-bottom: 20px;
+}
