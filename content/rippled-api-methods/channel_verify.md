@@ -55,7 +55,7 @@ The request includes the following parameters:
 |-------|------|-------------|
 | `amount` | String | The amount of [XRP, in drops][], the provided `signature` authorizes. |
 | `channel_id` | String | The Channel ID of the channel that provides the XRP. This is a 64-character hexadecimal string. |
-| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in base58 format. (One way to get the public key in base58 format is to use the [`wallet_propose` command](#wallet-propose).) |
+| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in hexadecimal or base58 format. [Updated in: rippled 0.90.0][New in: rippled 0.90.0] |
 | `signature` | String | The signature to verify, in hexadecimal. |
 
 #### Response Format
@@ -115,6 +115,6 @@ The response follows the [standard format](#response-formatting), with a success
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58. The base58 representation of account public keys starts with the letter `a`.
+* `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58 or hexadecimal. The base58 representation of account public keys starts with the letter `a`. The hexadecimal representation is 66 characters long.
 * `channelMalformed` - The `channel_id` field of the request is not a valid Channel ID. The Channel ID must be a 256-bit (64-character) hexadecimal string.
 * `channelAmtMalformed` - The value specified in the `amount` field was not a valid [XRP amount](#specifying-currency-amounts).
