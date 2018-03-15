@@ -417,7 +417,7 @@ pages:
             - ripple.com
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/e6d71471e26ca253e762fc7034859951b5d31c47/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.19.0/docs/index.md
         html: reference-rippleapi.html
         category: Reference Material
         filters:
