@@ -95,7 +95,14 @@
 .no-1st-head h4:first-child,
 .no-1st-head h5:first-child,
 .no-1st-head h6:first-child {
-  display: none;
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+.no-1st-head h1:first-child:before {
+  margin-top: -167px;
+  height: 167px;
 }
 .content p {
   line-height: 1.8;
