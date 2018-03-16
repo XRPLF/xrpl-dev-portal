@@ -149,13 +149,15 @@ The response follows the [standard format](#response-formatting), with a success
 |:-------------------------------|:--------|:----------------------------------|
 | `ledger`                       | Object  | The complete header data of this ledger. |
 | `ledger.account_hash`          | String  | Hash of all account state information in this ledger, as hex |
-| `ledger.accounts`              | Array   | (Omitted unless requested) All the [account-state information](reference-ledger-format.html) in this ledger. |
+| `ledger.accountState`          | Array   | (Omitted unless requested) All the [account-state information](reference-ledger-format.html) in this ledger. |
+| `ledger.close_flags`           | Integer | A bit-map of flags relating to the closing of this ledger. Currently, the ledger has only one flag defined for `close_flags`: **sLCF_NoConsensusTime** (value 1). If this flag is enabled, it means that validators were in conflict regarding the correct close time for the ledger, but build otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a `close_time` that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified `close_time`.) |
 | `ledger.close_time`            | Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
 | `ledger.close_time_human`      | String  | The time this ledger was closed, in human-readable format |
 | `ledger.close_time_resolution` | Integer | Ledger close times are rounded to within this many seconds. |
 | `ledger.closed`                | Boolean | Whether or not this ledger has been closed |
 | `ledger.ledger_hash`           | String  | Unique identifying hash of the entire ledger. |
 | `ledger.ledger_index`          | String  | The [Ledger Index][] of this ledger, as a quoted integer |
+| `ledger.parent_close_time`     | Integer | The time at which the previous ledger was closed. |
 | `ledger.parent_hash`           | String  | Unique identifying hash of the ledger that came immediately before this one. |
 | `ledger.total_coins`           | String  | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction costs destroy XRP.) |
 | `ledger.transaction_hash`      | String  | Hash of the transaction information included in this ledger, as hex |
@@ -164,7 +166,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_index`                 | Number  | The [Ledger Index][] of this ledger. |
 | `queue_data`                   | Array   | (Omitted unless requested with the `queue` parameter) Array of objects describing queued transactions, in the same order as the queue. If the request specified `expand` as true, members contain full representations of the transactions, in either JSON or binary depending on whether the request specified `binary` as true. Requires the [FeeEscalation amendment](reference-amendments.html#feeescalation). [New in: rippled 0.70.0][] |
 
-The following fields are deprecated and may be removed without further notice: `accepted`, `hash`, `seqNum`, `totalCoins`.
+The following fields are deprecated and may be removed without further notice: `accepted`, `hash` (use `ledger_hash` instead), `seqNum` (use `ledger_index` instead), `totalCoins` (use `total_coins` instead).
 
 Each member of the `queue_data` array represents one transaction in the queue. Some fields of this object may be omitted because they have not yet been calculated. The fields of this object are as follows:
 
