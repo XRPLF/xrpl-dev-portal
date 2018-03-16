@@ -138,7 +138,7 @@ See also:
 
 - [Suspicious Activity Reporting Overview (USA FFIEC)](https://www.ffiec.gov/bsa_aml_infobase/pages_manual/OLM_015.htm)
 
-- [FATF Recommendation 16: Reporting of suspicious transactions and compliance](http://www.un.org/en/sc/ctc/docs/bestpractices/fatf/40recs-moneylaundering/fatf-rec16.pdf)
+- [FATF Recommendation 16: Reporting of suspicious transactions and compliance](http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html)
 
 ### Travel Rule
 
