@@ -1,12 +1,8 @@
 # Checks
 
-In the XRP Ledger (XRPL), a Check is similar to a personal paper check. As with traditional checks, XRPL Checks start with the sender of the funds. The sender signs a transaction to create a Check and specifies an amount that the receiver may pull from the sender's account and sends the Check to the receiver. When the receiver cashes the Check, the funds are deducted from the sender's account and credited to the receiver's account. No money moves until the receiver cashes the Check. Like a traditional check, cashing a XRPL Check could fail if the sender doesn't have enough funds to cover the amount specified in the Check. The sender can retry cashing the Check until the Check expires. If the receiver doesn't successfully cash the Check before it expires, the Check object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and receiver can cancel the Check before it expires or is cashed.
+In the XRP Ledger (XRPL), a Check is similar to a personal paper check. Like traditional checks, XRPL Checks start with the sender of the funds creating a Check that specifies an amount and receiver. The receiver cashes the check to pull the funds from the sender's account into the receiver's account. No money moves until the receiver cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the receiver tries to cash it, just like traditional checks. If there's a failure cashing the check, the sender can retry until the check expires.
 
-The receiver has two options when cashing the Check by using the [`CheckCash` transaction](https://ripple.com/build/transactions/#checkcash):
-
-* `Amount` — The receiver can use this option to specify an exact amount to cash. This may be useful for cases where the sender has padded the check to cover possible [transfer fees](https://ripple.com/build/transfer-fees/) and the receiver can only accept the exact amount on an invoice or other contract.
-
-* `DeliverMin` — The receiver can use this option to specify the minimum amount they are willing to receive from the check. If the receiver uses this option, `rippled` attempts to deliver as much as possible and will deliver at least this amount. The transaction fails if the sender doesn't have at least this amount in their account.
+Unlike traditional checks, XRPL checks have expiration dates after which they may no longer be cashed. This is to prevent an unusable Check object from cluttering the Ledger. If the receiver doesn't successfully cash the Check before it expires, the Check object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and receiver can cancel the Check before it expires or is cashed. The Check object is removed from the Ledger when the sender cashes the check or someone cancels it.
 
 Checks are similar to [Escrow](https://ripple.com/build/escrow/#escrow) and [Payment Channels](https://ripple.com/build/payment-channels-tutorial/), two other asynchronous transfer methods available on the XRP Ledger. There are two important differences between those methods and Checks:
 
@@ -14,30 +10,6 @@ Checks are similar to [Escrow](https://ripple.com/build/escrow/#escrow) and [Pay
 
 * Checks do not tie up any funds. The XRP involved in Payment Channels and Escrow cannot be spent after until it is released by the sender (Payment Channels), an expiration, or crypto-condition (Escrow).
 
-
-
-
-
-
-
-In the XRP Ledger, a check is an entry in the ledger that is a promise from the source of the check that the destination of the check may cash the check and receive up to the `SendMax` specified on the check. The Check can have an expiration date, after which the check can no longer be cashed.
-
-Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.
-
-The sender or the receiver can cancel a Check at any time before it is cashed. A Check can also have an expiration time, after which it cannot be cashed, and anyone can cancel it.
-
-***TODO: Some questions that have come up:
-
-
-How would you "Get Checks"?
-
-Is the ltCheck object owned by the destination?
-
-Does the Check object contribute to the owner reserve (of the destination)?
-
-
-In current implementation, checks are only for XRP?
-***
 
 ***Note:*** The [Checks](https://ripple.com/build/known-amendments/#checks) amendment changes the [OfferCreate transaction](https://ripple.com/build/transactions/#offercreate) to return `tecEXPIRED` when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns `tesSUCCESS` but does not create or execute an Offer.
 
@@ -54,20 +26,72 @@ Checks potentially enable many other use cases. Ripple encourages the community 
 
 **Problem:** To comply with regulations like [BSA, KYC, AML, and CFT](https://ripple.com/build/gateway-guide/#gateway-compliance), financial institutions must provide documentation about the source of funds they receive. Such regulations seek to prevent the illicit transfer of funds by requiring institutions to disclose the source and destination of all payments processed by the institution. Because of the nature of the XRP Ledger, anyone could potentially send XRP (and, under the right circumstances, issued currencies) to an institution's account on the XRP Ledger. Dealing with such unwanted payments adds significant overhead cost to these institutions' compliance departments, including potential fines or penalties.
 
-**Solution:** Institutions can enable [Deposit Authorization](https://ripple.com/build/deposit-authorization/#deposit-authorization) on their XRP Ledger accounts by [setting the `asfDepositAuth` flag in an `AccountSet` transaction](https://ripple.com/build/transactions/#accountset-flags). This makes the account unable to accept Payment transactions. The only way for accounts with Deposit Authorization set to receive funds is through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds.
-
+**Solution:** Institutions can enable [Deposit Authorization](https://ripple.com/build/deposit-authorization/#deposit-authorization) on their XRP Ledger accounts by [setting the `asfDepositAuth` flag in an `AccountSet` transaction](https://ripple.com/build/transactions/#accountset-flags). This makes the account unable to accept Payment transactions. The only way for accounts with Deposit Authorization set to receive funds is through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds if Deposit Authorization is enabled.
 
 
 ## Usage
 
+Checks typically have the lifecycle described below.
+
+<!--{# Diagram sources: https://docs.google.com/drawings/d/1Ez8OZVB2TLH-b_kSFOAgfYqXlEQt4KaUBW6F3TJAv_Q/edit #}-->
 
 
-### Expiration Case
+[![Check flow diagram (successful cashing)](img/checks-happy_path.png)](img/checks-happy_path.png)
+
+**Step 1:** To create a Check, the sender submits a [CheckCreate](https://ripple.com/build/transactions/#checkcreate) transaction and specifies the receiver (`Destination`), expiration date (`Expiration`), and maximum amount that may be debited from the sender's account (`SendMax`).
+
+
+**Step 2:** After the CheckCreate transaction is processed, a [Check object](https://ripple.com/build/ledger-format/#check) (`tlCheck`) is created on the XRP Ledger. This object contains the properties of the Check as defined by the transaction that created it. The object can only be modified by the sender (by canceling it with a [CheckCancel](https://ripple.com/build/transactions/#checkcancel) transaction) or receiver (by canceling it or cashing it) before the expiration time is reached. After the expiration time, anyone may cancel the Check.
+
+**Step 3:** To cash the check, the receiver submits a [CheckCash](https://ripple.com/build/transactions/#checkcash) transaction. The receiver has two options for cashing the check:
+
+* `Amount` — The receiver can use this option to specify an exact amount to cash. This may be useful for cases where the sender has padded the check to cover possible [transfer fees](https://ripple.com/build/transfer-fees/) and the receiver can only accept the exact amount on an invoice or other contract.
+
+* `DeliverMin` — The receiver can use this option to specify the minimum amount they are willing to receive from the check. If the receiver uses this option, `rippled` attempts to deliver as much as possible and will deliver at least this amount. The transaction fails if the sender doesn't have at least this amount in their account.
+
+If the sender has enough funds to cover the Check and the expiration date has not passed, the funds are debited from the sender's account and credited to the receiver's account, and the Check object is is destroyed.
+
+
+
+#### Expiration Case
+
+In the case of expirations, Checks have the lifecycle described below.
+
+<!--{# Diagram sources: https://docs.google.com/drawings/d/1JOgI3H5tpV1yasYe5WLrdxVXLhcQu0bhPfN0mzzS1YQ/edit #}-->
+
+
+[![Check flow diagram (expiration)](img/checks-expiration.png)](img/checks-expiration.png)
+
+
+All Checks start the same way, so **Steps 1 and 2** are the same.
+
+**Step 3a:** If the Check expires before the receiver can cash it, the Check can no longer be cashed but remains in the Ledger.
+
+**Step 4a:** After a Check expires, anyone may cancel it by submitting a [CheckCancel](https://ripple.com/build/transactions/#checkcancel) transaction. That transaction removes the Check from the Ledger.  
+
 
 
 ## Availability of Checks
 
-Checks were enabled in `rippled` v0.90.0 with the  ["Checks" amendment](https://ripple.com/build/known-amendments/#checks). Before attempting to use Checks, make sure that your `rippled` server is not [amendment blocked](https://ripple.com/build/amendments/#amendment-blocked).
+Checks were enabled in `rippled` v0.90.0 with the  ["Checks" amendment](https://ripple.com/build/known-amendments/#checks).
+
+You can check the status of the Checks amendment using the [`feature` command](https://ripple.com/build/rippled-apis/#feature).
 
 
 ## Further Reading
+
+For more information about Checks in the XRP Ledger, see:
+
+<!--{#TODO: add link to Checks tutorial#}-->
+
+* [Transaction Reference](https://ripple.com/build/transactions/#transaction-types)
+  * [Checks amendment](https://ripple.com/build/known-amendments/#checks)
+  * [CheckCreate](https://ripple.com/build/transactions/#checkcreate)
+  * [CheckCash](https://ripple.com/build/transactions/#checkcash)
+  * [CheckCancel](https://ripple.com/build/transactions/#checkcancel)
+
+For more information about related features, see:
+
+* [Deposit Authorization](https://ripple.com/build/deposit-authorization/)
+* [Escrow](https://ripple.com/build/escrow/)
+* [Payment Channels Tutorial](https://ripple.com/build/payment-channels-tutorial/)
