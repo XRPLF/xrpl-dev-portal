@@ -13,11 +13,11 @@ Applications which fail to implement best practices are at risk of the following
 2. Mistaking provisional transaction results for their final, immutable results.
 3. Failing to find authoritative results of transactions previously applied to the ledger.
 
-These types of errors can potentially lead to serious problems.  For example, an application that fails to find a prior successful payment transaction might erroneously submit another transaction, duplicating the original payment.  This underscores the importance that applications base their actions on authoritive transaction results, using the techniques described in this document.
+These types of errors can potentially lead to serious problems.  For example, an application that fails to find a prior successful payment transaction might erroneously submit another transaction, duplicating the original payment.  This underscores the importance that applications base their actions on authoritative transaction results, using the techniques described in this document.
 
 ## Background
 
-The XRP Ledger protocol provides a ledger shared across all servers in the network.  Through a [process of consensus and validation](https://ripple.com/build/ripple-ledger-consensus-process/), the network agrees on order in which transactions are applied to (or omitted from) the ledger.
+The XRP Ledger protocol provides a ledger shared across all servers in the network.  Through a [process of consensus and validation](https://ripple.com/build/ripple-ledger-consensus-process/), the network agrees on the order in which transactions are applied to (or omitted from) the ledger.
 
 Well-formed transactions submitted to trusted XRP Ledger servers are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](concept-transaction-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.
 
@@ -56,9 +56,11 @@ Each validated ledger has a canonical order in which transactions apply. This or
 
 [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) is an optional parameter of all transactions.  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger instance.  The XRP Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's `LastLedgerSequence` parameter.
 
-Use the `LastLedgerSequence` parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger. You should specify the `LastLedgerSequence` parameter on every transaction. Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.
+Use the `LastLedgerSequence` parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger.  You should specify the `LastLedgerSequence` parameter on every transaction.  Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.
 
-Applications using `rippled` APIs should explicitly specify a `LastLedgerSequence` when submitting transactions. RippleAPI uses the `maxLedgerVersion` field of [Transaction Instructions](reference-rippleapi.html#transaction-instructions) to specify the `LastLedgerSequence`. RippleAPI automatically provides an appropriate value by default. You can specify `maxLedgerVersion` as `null` to intentionally omit `LastLedgerSequence`, in case you want a transaction that can be executed after an unlimited amount of time.
+Applications using `rippled` APIs should explicitly specify a `LastLedgerSequence` when submitting transactions.
+
+RippleAPI uses the `maxLedgerVersion` field of [Transaction Instructions](reference-rippleapi.html#transaction-instructions) to specify the `LastLedgerSequence`.  RippleAPI automatically provides an appropriate value by default.  You can specify `maxLedgerVersion` as `null` to intentionally omit `LastLedgerSequence`, in case you want a transaction that can be executed after an unlimited amount of time (this is strongly discouraged).
 
 
 
@@ -414,7 +416,7 @@ Response:
 
 This example response shows `"validated": true`, indicating the transaction has been included in a validated ledger, so the result of the transaction is immutable.  Further, the metadata includes `"TransactionResult": "tesSUCCESS"`, indicating the transaction was applied to the ledger.
 
-If the response does not include `"validated": true`, the result is provisional and subject to change.  To retrieve a final result, applications must invoke the `tx` method again, allowing enough time for the network to validate more ledger instances.  It may be necessary to wait for the ledger specified in `LastLedgerSequence` to be validated, although if the transaction is included in an earlier validated ledger the result become immutable at that time.
+If the response does not include `"validated": true`, the result is provisional and subject to change.  To retrieve a final result, applications must invoke the `tx` method again, allowing enough time for the network to validate more ledger instances.  It may be necessary to wait for the ledger specified in `LastLedgerSequence` to be validated, although if the transaction is included in an earlier validated ledger the result becomes immutable at that time.
 
 
 #### Verify Missing Transaction
