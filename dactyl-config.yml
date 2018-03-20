@@ -169,6 +169,12 @@ pages:
             - local
             - ripple.com
 
+    -   md: concept-checks.md
+        category: Technical Overview
+        targets:
+          - local
+          - ripple.com
+
     -   md: concept-fees.md
         category: Technical Overview
         targets:
