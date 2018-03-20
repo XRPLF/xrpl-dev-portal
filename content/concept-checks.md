@@ -27,7 +27,7 @@ Checks potentially enable many other use cases. Ripple encourages the community 
 
 **Problem:** To comply with regulations like [BSA, KYC, AML, and CFT](tutorial-gateway-guide.html#gateway-compliance), financial institutions must provide documentation about the source of funds they receive. Such regulations seek to prevent the illicit transfer of funds by requiring institutions to disclose the source and destination of all payments processed by the institution. Because of the nature of the XRP Ledger, anyone could potentially send XRP (and, under the right circumstances, issued currencies) to an institution's account on the XRP Ledger. Dealing with such unwanted payments adds significant cost and time delays to these institutions' compliance departments, including potential fines or penalties.
 
-**Solution:** Institutions can enable [Deposit Authorization](concept-deposit-auth.html) on their XRP Ledger accounts by [setting the `asfDepositAuth` flag in an `AccountSet` transaction](reference-transaction-format.html#accountset-flags). This makes the account unable to receive Payment transactions. Accounts with Deposit Authorization enabled can only receive funds through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds if Deposit Authorization is enabled.
+**Solution:** Institutions can enable [Deposit Authorization](concept-depositauth.html) on their XRP Ledger accounts by [setting the `asfDepositAuth` flag in an `AccountSet` transaction](reference-transaction-format.html#accountset-flags). This makes the account unable to receive Payment transactions. Accounts with Deposit Authorization enabled can only receive funds through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds if Deposit Authorization is enabled.
 
 
 ## Usage
@@ -93,6 +93,6 @@ For more information about Checks in the XRP Ledger, see:
 
 For more information about related features, see:
 
-* [Deposit Authorization](concept-deposit-auth.html)
+* [Deposit Authorization](concept-depositauth.html)
 * [Escrow](concept-escrow.html)
 * [Payment Channels Tutorial](tutorial-paychan.html)
