@@ -10,6 +10,8 @@ Checks are similar to [Escrow](concept-escrow.html) and [Payment Channels](tutor
 
 * Checks do not tie up any funds. The XRP involved in Payment Channels and Escrow cannot be spent until it is redeemed with a claim provided by the sender (Payment Channels), or released by an expiration or crypto-condition (Escrow).
 
+* You can send XRP to yourself through Escrow. You cannot use Checks or Payment Channels to send XRP (or, in the case of Checks, issued currencies) to yourself. 
+
 
 ***Note:*** The [Checks](reference-amendments.html#checks) amendment changes the expiration behavior of the [OfferCreate transaction](reference-transaction-format.html#offercreate). For more information, see [OfferCreate](reference-transaction-format.html#expiration).
 
