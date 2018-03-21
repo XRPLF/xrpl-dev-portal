@@ -4,7 +4,7 @@ In the XRP Ledger, a Check is similar to a personal paper check. Like traditiona
 
 XRP Ledger Checks have expiration times after which they may no longer be cashed. If the receiver doesn't successfully cash the Check before it expires, the Check object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and receiver can cancel the Check before it expires or is cashed. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
 
-Checks are similar to [Escrow](concept-escrow.html) and [Payment Channels](tutorial-paychan.html), but there are two important differences between those features and Checks:
+Checks are similar to [Escrow](concept-escrow.html) and [Payment Channels](tutorial-paychan.html), but there are some important differences between those features and Checks:
 
 * You can send issued currency with Checks. With Payment Channels and Escrow, you can only send XRP.
 
@@ -13,7 +13,7 @@ Checks are similar to [Escrow](concept-escrow.html) and [Payment Channels](tutor
 * You can send XRP to yourself through Escrow. You cannot use Checks or Payment Channels to send XRP (or, in the case of Checks, issued currencies) to yourself.
 
 
-***Note:*** The [Checks amendment](reference-amendments.html#checks) changes the expiration behavior of the [OfferCreate][] transaction. For more information, see [Expiration](reference-transaction-format.html#expiration).
+***Note:*** The [Checks amendment](reference-amendments.html#checks) changes the expiration behavior of the [OfferCreate][] transaction. For more information, see [OfferCreate Expiration](reference-transaction-format.html#expiration).
 
 
 ## Why Checks?
