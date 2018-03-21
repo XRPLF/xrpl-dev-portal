@@ -530,6 +530,7 @@ th {
 #sidenav_accordion .panel {
   padding: 0;
   border-radius: 0;
+  border-bottom: 1px solid #cccccc;
 }
 
 #sidenav_accordion .panel-heading h5 {
@@ -678,7 +679,7 @@ th {
 }
 
 /* Responsive design for different viewscreens -------------------------------*/
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
   #page-toc-wrapper {
     float: right;
     margin-left: 15px;

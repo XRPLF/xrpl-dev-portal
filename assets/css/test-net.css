@@ -30,13 +30,41 @@
   height: auto;
 }
 
-.test-net-servers {
+#test-net-servers {
 	font-size: 15px;
 	border-radius: 5px;
   border: 1px solid #27a2db;
-  padding: 20px 20px 10px 20px;
+  width: 350px;
+  float: right;
+  margin-left: 15px;
 }
 
+#test-net-servers pre {
+  overflow-x: auto;
+}
+
+.page-test-net .container {
+  margin-left: 15px;
+  margin-right: 15px;
+  width: auto;
+}
+@media (min-width: 1600px) {
+  .page-test-net .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1500px;
+  }
+}
+
+@media (max-width: 992px) {
+  #test-net-servers {
+    position: static;
+    float: none;
+    max-width: none;
+    width: auto;
+    margin: 0 0 30px 0;
+  }
+}
 
 h2 {
 	font-size: 36px;
@@ -45,7 +73,7 @@ h2 {
   margin-top: 0;
 }
 
-.test-net-servers h5 {
+#test-net-servers h5 {
 	letter-spacing: .04em;
   font-family: 'open_sansbold', sans-serif;
   text-transform: uppercase;
@@ -54,7 +82,7 @@ h2 {
   margin-top: 20px !important;
 }
 
-.test-net-servers .panel-heading {
+#test-net-servers .panel-heading {
   margin-top: 0;
   padding: 0;
   font-size: 21px;
