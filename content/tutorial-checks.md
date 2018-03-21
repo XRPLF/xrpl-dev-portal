@@ -9,33 +9,49 @@ Checks in the XRP Ledger are similar to paper personal checks. This tutorial ste
 - Cashing a Check for a flexible amount
 - Canceling a Check
 
-<!--{# Accounts used in these examples:
+
+<!--{# Accounts used in old examples:
 rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo snkuWqxoqt6aeykTbkEWrTMJHrWGM (as the sender)
 rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy sn2Zh1tRZyodU9qNy9tMnQr9UbBss (as the dest.)
+
+new examples:
+rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za ssqSRChhs5qTiUzn9jYf25khmQuwL as the sender
+rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis sn2DreVBky7kzbXJoaUMXMKCR8HAc as the receiver
 #}-->
 
 ## Sending a Check
 
 Sending a Check involves sending a [CheckCreate transaction][], which creates a [Check object in the ledger](reference-ledger-format.html#check). Most of the fields of a CheckCreate transaction are similar to the fields of a (push) [Payment][], because a Check is like writing permission for an intended recipient to pull a payment from you. You can create a check for XRP or an issued currency.
 
+### Prerequisites
+
+To send a Check with this tutorial, you need the following:
+
+- The **address** and **secret key** of a funded account to send the Check from.
+    - You can use the [XRP Ledger Test Net Faucet](https://ripple.com/build/xrp-test-net/) to get a funded address and secret with 10,000 Test Net XRP.
+- The **address** of a funded account to receive the Check.
+- A secure way to sign transactions, such as [RippleAPI][] or your own [`rippled` server](tutorial-rippled-setup.html).
+- A client library that can connect to a `rippled` server, such as [RippleAPI][] or any HTTP or WebSocket library.
+    - For more information, see [Connecting to `rippled`](reference-rippled.html#connecting-to-rippled).
 
 ### 1. Prepare the CheckCreate transaction
 
-Decide how much money the Check is for and who can cash it. Figure out the values of the [CheckCreate transaction][] fields.
+Decide how much money the Check is for and who can cash it. Figure out the values of the [CheckCreate transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](reference-transaction-format.html#auto-fillable-fields) when signing:
 
 | Field | Value | Description |
 |---|---|---|
+| `TransactionType` | String | The value `CheckCreate` indicates this is a CheckCreate transaction. |
 | `Account` | String (Address) | The address of the sender who is creating the Check. (In other words, your address.) |
 | `Destination` | String (Address) | The address of the intended recipient who can cash the Check. |
-| `SendMax` | String or Object (Amount) | The maximum amount you can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](concept-transfer-fees.html), remember to include an extra percentage to pay for the transfer fee. |
+| `SendMax` | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](concept-transfer-fees.html), remember to include an extra percentage to pay for the transfer fee. |
 
 For example, here is a transaction to create a Check for 100 XRP from rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo to rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy, with an expiration time of 2018-01-24T12:52:01Z:
 
 ```
 {
   "TransactionType": "CheckCreate",
-  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
-  "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
+  "Account": "rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
+  "Destination": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
   "SendMax": "100000000",
   "Expiration": 570113521,
   "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",
@@ -44,79 +60,105 @@ For example, here is a transaction to create a Check for 100 XRP from rUn84CUYbN
 }
 ```
 
+#### Preparing CheckCreate with RippleAPI
+
+If you are using [RippleAPI](reference-rippleapi.html), you can use the `prepareCheckCreate()` helper method. For example:
+
+```js
+{% include 'code_samples/checks/js/prepareCreate.js' %}
+```
+
+**Note:** Checks require RippleAPI version 0.19.0 or higher.
+
 ### 2. Sign the CheckCreate transaction
 
 The most secure way to sign a transaction is to do it locally with a signing library, such as [RippleAPI](reference-rippleapi.html). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
 
+In all cases, note the signed transaction's identifying hash for later.
 
 #### Example Request
 
-***TODO: Change this from submit to sign***
-
 <!-- MULTICODE_BLOCK_START -->
+
+*RippleAPI*
+
+```js
+{% include 'code_samples/checks/js/signCreate.js' %}
+```
+
+*WebSocket*
+
+```json
+{% include 'code_samples/checks/websocket/sign-req-1.json' %}
+```
 
 *Commandline*
 
-```
-$ ./rippled submit snkuWqxoqt6aeykTbkEWrTMJHrWGM '{                                                                                                               "TransactionType": "CheckCreate",
-  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
-  "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
-  "SendMax": "100000000",
-  "Expiration": 570113521,
-  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",
-  "DestinationTag": 1,
-  "Fee": "12"
-}'
+```bash
+{% include 'code_samples/checks/cli/sign-req-1.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 #### Example Response
 
-***TODO: Change this from submit to sign***
-
 <!-- MULTICODE_BLOCK_START -->
+
+*RippleAPI*
+
+```js
+{% include 'code_samples/checks/js/sign-resp-example.txt' %}
+```
+
+*WebSocket*
+
+```json
+{% include 'code_samples/checks/websocket/sign-resp-1.json' %}
+```
 
 *Commandline*
 
-```
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
-2018-Jan-24 01:01:20 HTTPClient:NFO Connecting to 127.0.0.1:5005
-
-{
-   "result" : {
-      "engine_result" : "tesSUCCESS",
-      "engine_result_code" : 0,
-      "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
-      "status" : "success",
-      "tx_blob" : "120010228000000024000000022A21FB3DF12E00000001501146060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE29168400000000000000C694000000005F5E1007321022C53CD19049F32F31848DD3B3BE5CEF6A2DD1EFDA7971AB3FA49B1BAF12AEF7874473045022100CC5B7069DF8133E91216F49933A685194DDB9BDCFF8241A7EF2F838993B98BEB022016DF6D746DF13AEA0D4BC867149BFEFFAF724AB0842A823A440D0EC684D876D181147990EC5D1D8DF69E070A968D4B186986FDF06ED0831449FF0C73CA6AF9733DA805F76CA2C37776B7C46B",
-      "tx_json" : {
-         "Account" : "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
-         "Destination" : "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
-         "DestinationTag" : 1,
-         "Expiration" : 570113521,
-         "Fee" : "12",
-         "Flags" : 2147483648,
-         "InvoiceID" : "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",
-         "SendMax" : "100000000",
-         "Sequence" : 2,
-         "SigningPubKey" : "022C53CD19049F32F31848DD3B3BE5CEF6A2DD1EFDA7971AB3FA49B1BAF12AEF78",
-         "TransactionType" : "CheckCreate",
-         "TxnSignature" : "3045022100CC5B7069DF8133E91216F49933A685194DDB9BDCFF8241A7EF2F838993B98BEB022016DF6D746DF13AEA0D4BC867149BFEFFAF724AB0842A823A440D0EC684D876D1",
-         "hash" : "5463C6E08862A1FAE5EDAC12D70ADB16546A1F674930521295BC082494B62924"
-      }
-   }
-}
+```json
+{% include 'code_samples/checks/cli/sign-resp-1.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
+### 3. Submit the signed transaction
 
-### 3. Wait for validation
+Take the signed transaction blob from the previous step and submit it to a `rippled` server. You can do this safely even if you do not operate the `rippled` server. The response contains a provisional result, which should be `tesSUCCESS`, but this result is [usually not final](reference-transaction-format.html#finality-of-results).
+
+**Tip:** If the preliminary result is `tefMAX_LEDGER`, the transaction has failed permanently because its `LastLedgerSequence` parameter is lower than the current ledger. This happens when you take longer than the expected number of ledger versions between preparing and submitting the transaction. If this occurs, [start over from step 1](#1-prepare-the-checkcreate-transaction) with a higher `LastLedgerSequence` value.
+
+#### Example Request
+
+<!-- MULTICODE_BLOCK_START -->
+
+*RippleAPI*
+
+```js
+{% include 'code_samples/checks/js/submitCreate.js' %}
+```
+
+*WebSocket*
+
+```json
+{% include 'code_samples/checks/websocket/submit-create-req-1.json' %}
+```
+
+*Commandline*
+
+```bash
+{% include 'code_samples/checks/cli/submit-create-req-1.sh' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+### 4. Wait for validation
 
 {% include 'snippets/wait-for-validation.md' %}
 
-### 4. Confirm final result
+### 5. Confirm final result
 
 Use the [`tx` method](reference-rippled.html#tx) with the CheckCreate transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
@@ -657,4 +699,5 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
 
 <!--{# common links TODO change this after PR#321 #}-->
 [Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
+[RippleAPI]: reference-rippleapi.html
 {% include 'snippets/tx-type-links.md' %}
