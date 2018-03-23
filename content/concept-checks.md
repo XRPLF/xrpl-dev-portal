@@ -1,6 +1,6 @@
 # Checks
 
-In the XRP Ledger, a Check is similar to a personal paper check. Like traditional checks, XRP Ledger Checks start with the sender of the funds creating a Check that specifies an amount and receiver. The receiver cashes the check to pull the funds from the sender's account into the receiver's account. No money moves until the receiver cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the receiver tries to cash it, just like traditional checks. If there's a failure cashing the check, the sender can retry until the check expires.
+The Checks feature in the XRP Ledger allows users to create deferred payments that can be canceled or cashed by the intended recipients. Like personal paper checks, XRP Ledger Checks start with the sender of the funds creating a Check that specifies an amount and receiver. The receiver cashes the check to pull the funds from the sender's account into the receiver's account. No money moves until the receiver cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the receiver tries to cash it, just like traditional checks. If there's a failure cashing the check, the sender can retry until the check expires.
 
 XRP Ledger Checks have expiration times after which they may no longer be cashed. If the receiver doesn't successfully cash the Check before it expires, the Check object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and receiver can cancel the Check before it expires or is cashed. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
 
@@ -76,7 +76,10 @@ All Checks start the same way, so **Steps 1 and 2** are the same.
 
 ## Availability of Checks
 
-Checks require `rippled` v0.90.0 or later and have been enabled on the production XRP Ledger since 2018-03-15.
+Checks require `rippled` v0.90.0 or later. The Checks amendment was enabled for voting on the production XRP Ledger on 2018-03-22 in this [EnableAmendment pseudo-transaction](https://ripple.com/build/transactions/#enableamendment): [`EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04`](https://xrpcharts.ripple.com/#/transactions/EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04).
+
+<!-- {***TODO:*** update this with the GotMajority tx id when available }  -->
+
 
 When not using the production XRP Ledger, you can check the status of the Checks amendment using the [`feature` command](reference-rippled.html#feature).
 
