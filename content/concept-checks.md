@@ -76,9 +76,9 @@ All Checks start the same way, so **Steps 1 and 2** are the same.
 
 ## Availability of Checks
 
-Checks require `rippled` v0.90.0 or later. The Checks amendment was enabled for voting on the production XRP Ledger on 2018-03-22 in this [EnableAmendment pseudo-transaction](https://ripple.com/build/transactions/#enableamendment): [`EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04`](https://xrpcharts.ripple.com/#/transactions/EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04).
+Checks require `rippled` v0.90.0 or later. The Checks amendment gained support of a majority of validators on the production XRP Ledger on 2018-03-22 in this [EnableAmendment pseudo-transaction](https://ripple.com/build/transactions/#enableamendment): [`EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04`](https://xrpcharts.ripple.com/#/transactions/EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04). For more information about how amendments are enabled and voted on, see [Amendment Process](concept-amendments.html#amendment-process).
 
-<!-- {***TODO:*** update this with the GotMajority tx id when available }  -->
+<!-- {***TODO:*** update this with the...other pseudo-transaction that will enable this amendment after two weeks with majority support? }  -->
 
 
 When not using the production XRP Ledger, you can check the status of the Checks amendment using the [`feature` command](reference-rippled.html#feature).
