@@ -13,7 +13,7 @@ Checks are similar to [Escrow](concept-escrow.html) and [Payment Channels](tutor
 * You can send XRP to yourself through Escrow. You cannot use Checks or Payment Channels to send XRP (or, in the case of Checks, issued currencies) to yourself.
 
 
-***Note:*** The [Checks amendment](reference-amendments.html#checks) changes the expiration behavior of the [OfferCreate][] transaction. For more information, see [OfferCreate Expiration](reference-transaction-format.html#expiration).
+**Note:** The [Checks amendment](reference-amendments.html#checks) changes the expiration behavior of the [OfferCreate][] transaction. For more information, see [OfferCreate Expiration](reference-transaction-format.html#expiration).
 
 
 ## Why Checks?
