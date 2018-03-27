@@ -1,0 +1,119 @@
+.input-xxlarge {
+	width: 100%;
+	padding: 5px;
+}
+
+.progress .bar {
+  width:0%;
+  height:100%;
+  color:#ffffff;
+  float:left;
+  font-size:12px;
+  text-align:center
+  ;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color:#0e90d2;
+  background-image:-moz-linear-gradient(top, #149bdf, #0480be);
+  background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#149bdf), to(#0480be));
+  background-image:-webkit-linear-gradient(top, #149bdf, #0480be);
+  background-image:-o-linear-gradient(top, #149bdf, #0480be);
+  background-image:linear-gradient(to bottom, #149bdf, #0480be);
+  background-repeat:repeat-x;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf', endColorstr='#ff0480be', GradientType=0);
+  -webkit-box-shadow:inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow:inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow:inset 0 -1px 0 rgba(0, 0, 0, 0.15);-webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;box-sizing:border-box;
+  -webkit-transition:width 0.6s ease;
+  -moz-transition:width 0.6s ease;
+  -o-transition:width 0.6s ease;
+  transition:width 0.6s ease;
+}
+
+#result {
+  display: none;
+}
+
+#log {
+  font-weight: 700;
+}
+
+.json .name {
+  color: #A513AC;
+}
+
+.json ul {
+  margin: 0;
+  display: none;
+}
+
+.json li {
+  padding: 0;
+  list-style-type: none;
+}
+
+.json .type-string .val {
+  color: #CC2A41;
+}
+
+.json .type-number .val {
+  color: #2973BA;
+}
+
+.json a.toggle:hover {
+  text-decoration: none;
+}
+
+.json > a.toggle {
+  display: none;
+}
+
+.json a.toggle:after {
+  content: " +\0000a0";
+  cursor: pointer;
+}
+
+.json > ul,
+.json .expanded > ul {
+  display: block;
+}
+
+.json .ellipsis {
+  color: #ccc;
+}
+
+.json > .ellipsis,
+.json .expanded > .ellipsis {
+  display: none;
+}
+
+.json .expanded > a.toggle:after {
+  content: " \2212\0000a0";
+}
+
+.json .indentafter {
+  display: none;
+}
+
+.json .expanded > .indentafter {
+  display: inline;
+}
+
+.tools {
+  background-color: #f5f5f5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  margin: 0 0 10px;
+}
+
+.tools>li>a {
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 6px 9px;
+}

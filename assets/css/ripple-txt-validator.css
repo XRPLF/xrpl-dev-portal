@@ -1,0 +1,16 @@
+input#domain {
+  padding: 10px 20px;
+  width: 255px;
+}
+
+.result-title {
+	display: none;
+}
+
+span.red {
+  color: red;
+}
+
+span.green {
+ 	color: green;
+}

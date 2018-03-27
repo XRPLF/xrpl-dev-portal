@@ -36,7 +36,7 @@
 
 </head>
 
-<body class="{% block bodyclasses %} xrp-ledger-dev-portal sidebar-primary{% endblock %}">
+<body class="xrp-ledger-dev-portal {% block bodyclasses %}sidebar-primary{% endblock %}">
   <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
     <div class="container">
       <div class="navbar-header">
@@ -77,7 +77,7 @@
           {% if not have_edit_link %}
             {% set githuburl = target.github_forkurl %}
           {% endif %}
-          <a href="{{githuburl}}" class="github-edit">Edit on GitHub</a>
+          <a href="{{githuburl}}" target="_blank" class="github-edit">Edit on GitHub</a>
         </div><!-- /.github-edit -->
       </div><!-- /.nav -->
 

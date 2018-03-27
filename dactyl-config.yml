@@ -33,7 +33,6 @@ callout_class: "devportal-callout"
 cover_page:
     name: Overview
     html: index.html
-    sidebar: "off"
     template: template-index.html
 
 targets:
@@ -434,13 +433,19 @@ pages:
             - ripple.com
 
   # Appendix: API Tools --------------------------------------------------------
+    -   name: RPC Tool
+        category: API Tools
+        html: xrp-ledger-rpc-tool.html
+        targets:
+            - local
+        template: template-xrp-ledger-rpc-tool.html
+
     -   name: WebSocket API Tool
         category: API Tools
         html: ripple-api-tool.html
         sidebar: custom
         targets:
             - local
-            - ripple.com
         template: template-ripple-api-tool.html
 
     -   name: Data API v2 Tool
@@ -452,8 +457,21 @@ pages:
         sidebar: custom
         targets:
             - local
-            - ripple.com
         template: template-rest-api-tool.html
+
+    -   name: ripple.txt Validator
+        category: API Tools
+        html: ripple-txt-validator.html
+        targets:
+            - local
+        template: template-ripple-txt-validator.html
+
+    -   name: XRP Test Net Faucet
+        category: API Tools
+        html: xrp-test-net-faucet.html
+        targets:
+            - local
+        template: template-test-net.html
 
   # Non-canonical pages
     -   name: Page Manifest

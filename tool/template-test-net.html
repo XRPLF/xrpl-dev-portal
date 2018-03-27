@@ -1,0 +1,44 @@
+{% extends "template-base.html" %}
+
+{% block bodyclasses %}sidebar-primary page-test-net{% endblock %}
+
+{% block main %}
+
+<h1>XRP Test Net Faucet</h1>
+
+<aside id="test-net-servers" class="panel panel-default">
+  <div class="panel-body">
+    <p class="in-this-doc panel-heading">Test Net Servers</p>
+    <p>Use the following addresses to connect to the XRP Test Net and send transactions from your account.</p>
+    <h5>Websockets and Ripple API</h4>
+    <pre><code>wss://s.altnet.rippletest.net:51233</code></pre>
+    <h5>JSON-RPC</h4>
+    <pre><code>https://s.altnet.rippletest.net:51234</code></pre>
+  </div>
+</aside>
+
+<div class="content">
+  <p>Ripple has created this alternative XRP Ledger test network with nodes in every region of the world to provide a testing platform for any software products built on the XRP Ledger without using real funds.</p>
+  <p>Test Net funds are intended for <strong>testing</strong> only. The Test Net ledger and balances will be reset on a regular basis.</p>
+  <button class="cta_readmore btn">Generate credentials</button>
+  <div id='your-credentials'></div>
+  <div id='loader' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"> Generating Keys...</div>
+  <div id='address'></div>
+  <div id='secret'></div>
+  <div id='balance'></div>
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+{% if currentpage.sidebar != "disabled" %}
+
+  {% include "template-sidebar_nav.html" %}
+
+{% endif %}
+{% endblock %}
+
+{% block endbody %}
+  <link rel='stylesheet' type='text/css' href='assets/css/test-net.css'/>
+  <script type='text/javascript' src='assets/js/test-net.js'></script>
+{% endblock %}

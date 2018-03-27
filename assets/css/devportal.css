@@ -95,7 +95,14 @@
 .no-1st-head h4:first-child,
 .no-1st-head h5:first-child,
 .no-1st-head h6:first-child {
-  display: none;
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+.no-1st-head h1:first-child:before {
+  margin-top: -167px;
+  height: 167px;
 }
 .content p {
   line-height: 1.8;
@@ -246,6 +253,7 @@ pre code {
   z-index: 5;
   border-left: 1px solid #cccccc;
   padding-left: 40px;
+  min-height: 700px;
 }
 .content {
   padding-bottom: 50px;
@@ -522,6 +530,7 @@ th {
 #sidenav_accordion .panel {
   padding: 0;
   border-radius: 0;
+  border-bottom: 1px solid #cccccc;
 }
 
 #sidenav_accordion .panel-heading h5 {
@@ -670,7 +679,7 @@ th {
 }
 
 /* Responsive design for different viewscreens -------------------------------*/
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
   #page-toc-wrapper {
     float: right;
     margin-left: 15px;
