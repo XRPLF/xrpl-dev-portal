@@ -5,14 +5,14 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                      | Introduced | Status                              |
 |:--------------------------|:-----------|:------------------------------------|
-| [fix1513][]               | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [SHAMapV2][]              | v0.33.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [SHAMapV2][]              | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][] | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]          | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]               | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Checks][]                | v0.90.0    | [Expected: 2018-03-15](https://ripple.com/dev-blog/rippled-version-0-90-0/ "BADGE_BLUE") |
-| [DepositAuth][]           | v0.90.0    | [Expected: 2018-03-15](https://ripple.com/dev-blog/rippled-version-0-90-0/ "BADGE_BLUE") |
+| [Checks][]                | v0.90.0    | [Expected: 2018-04-05](https://ripple.com/dev-blog/rippled-version-0-90-1/#upcoming-features "BADGE_BLUE") |
+| [DepositAuth][]           | v0.90.0    | [Expected: 2018-04-05](https://ripple.com/dev-blog/rippled-version-0-90-1/#upcoming-features "BADGE_BLUE") |
+| [fix1513][]               | v0.90.0    | [Expected: 2018-04-05](https://ripple.com/dev-blog/rippled-version-0-90-1/#upcoming-features "BADGE_BLUE") |
 | [fix1201][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E "BADGE_GREEN") |
 | [fix1512][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647 "BADGE_GREEN") |
 | [fix1523][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469 "BADGE_GREEN") |
