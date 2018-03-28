@@ -9,9 +9,10 @@ const txJSON = '{"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za", \
   "Destination":"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis", \
   "SendMax":"100000000", \
   "Flags":2147483648, \
-  "LastLedgerSequence":7672735, \
+  "LastLedgerSequence":7835923, \
   "Fee":"12", \
-  "Sequence":1}'
+  "Sequence":2}'
+
 // Be careful where you store your real secret.
 const secret = 's████████████████████████████'
 

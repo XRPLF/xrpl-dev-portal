@@ -31,3 +31,14 @@ api.connect().then(() => {
     process.exit()
   })
 }).catch(console.error)
+
+
+// Example output:
+//
+// Connected
+// txJSON: {"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
+//  "TransactionType":"CheckCreate",
+//  "Destination":"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
+//  "SendMax":"100000000","Flags":2147483648,
+//  "LastLedgerSequence":7835917,"Fee":"12","Sequence":2}
+// Disconnected
