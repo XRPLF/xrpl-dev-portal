@@ -224,7 +224,7 @@ Look for a `CreatedNode` object in the transaction metadata to indicate that the
 *WebSocket*
 
 ```json
-{% include 'code_samples/checks/websocket/tx-create-resp.txt' %}
+{% include 'code_samples/checks/websocket/tx-create-resp.json' %}
 ```
 
 *Commandline*
