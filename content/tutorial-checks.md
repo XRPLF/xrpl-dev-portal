@@ -1,12 +1,12 @@
-# Checks Tutorials
+for Checks# Checks Tutorials
 
 Checks in the XRP Ledger are similar to paper personal checks. This tutorial steps through the following processes for using Checks:
 
 - [Send a Check](#send-a-check)
 - Look for incoming Checks
 - Look for outgoing Checks
-- Cash a Check for an exact amount
-- Cash a Check for a flexible amount
+- [Cash a Check for an exact amount](#cash-a-check-for-an-exact-amount)
+- [Cash a Check for a flexible amount](#cash-a-check-for-a-flexible-amount)
 - [Cancel a Check](#cancel-a-check)
 
 
@@ -23,6 +23,8 @@ rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis sn2DreVBky7kzbXJoaUMXMKCR8HAc as the receiver
 
 Sending a Check involves sending a [CheckCreate transaction][], which creates a [Check object in the ledger](reference-ledger-format.html#check). Most of the fields of a CheckCreate transaction are similar to the fields of a (push) [Payment][], because a Check is like writing permission for an intended recipient to pull a payment from you. You can create a check for XRP or an issued currency.
 
+{% set send_n = cycler(* range(1,99)) %}
+
 ### Prerequisites
 
 To send a Check with this tutorial, you need the following:
@@ -34,7 +36,7 @@ To send a Check with this tutorial, you need the following:
 - A client library that can connect to a `rippled` server, such as [RippleAPI][] or any HTTP or WebSocket library.
     - For more information, see [Connecting to `rippled`](reference-rippled.html#connecting-to-rippled).
 
-### 1. Prepare the CheckCreate transaction
+### {{send_n.next()}}. Prepare the CheckCreate transaction
 
 Decide how much money the Check is for and who can cash it. Figure out the values of the [CheckCreate transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](reference-transaction-format.html#auto-fillable-fields) when signing:
 
@@ -78,7 +80,7 @@ This example transaction creates a Check for 100 XRP from rUn84CUYbNjRoTQ6mSW7BV
 
 <!-- MULTICODE_BLOCK_END -->
 
-### 2. Sign the CheckCreate transaction
+### {{send_n.next()}}. Sign the CheckCreate transaction
 
 The most secure way to sign a transaction is to do it locally with a signing library, such as [RippleAPI](reference-rippleapi.html). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
 
@@ -132,7 +134,7 @@ In all cases, note the signed transaction's identifying hash for later.
 
 <!-- MULTICODE_BLOCK_END -->
 
-### 3. Submit the signed transaction
+### {{send_n.next()}}. Submit the signed transaction
 
 Take the signed transaction blob from the previous step and submit it to a `rippled` server. You can do this safely even if you do not operate the `rippled` server. The response contains a provisional result, which should be `tesSUCCESS`, but this result is [usually not final](reference-transaction-format.html#finality-of-results). A provisional response of `terQUEUED` is also OK, since [queued transactions](concept-transaction-cost.html#queued-transactions) are generally included in the next open ledger version (usually about 10 seconds after submission).
 
@@ -187,17 +189,17 @@ Take the signed transaction blob from the previous step and submit it to a `ripp
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 4. Wait for validation
+### {{send_n.next()}}. Wait for validation
 
 {% include 'snippets/wait-for-validation.md' %}
 
-### 5. Confirm final result
+### {{send_n.next()}}. Confirm final result
 
 Use the [`tx` method](reference-rippled.html#tx) with the CheckCreate transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
 Look for a `CreatedNode` object in the transaction metadata to indicate that the transaction created a [Check ledger object](reference-ledger-format.html#check). The `LedgerIndex` of this object is the ID of the Check. In the following example, the Check's ID is `49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`.
 
-***TODO: Is there a way to look up the Check ID using RippleAPI? As far as I can tell, there isn't. Reported as https://github.com/ripple/ripple-lib/issues/876 for now.***
+***TODO: Add code to look up the Check ID using account_objects in RippleAPI or to calculate the ID deterministically. Also, if https://github.com/ripple/ripple-lib/issues/876 gets resolved, there will be an easier way to get the Check ID from the RippleAPI response.***
 
 #### Example Request
 
@@ -241,6 +243,8 @@ Look for a `CreatedNode` object in the transaction metadata to indicate that the
 
 Canceling a Check involves sending a [CheckCancel transaction][], which removes a [Check object from the ledger](reference-ledger-format.html#check) without redeeming it. Either the sender or the recipient of a Check can cancel it before it has been redeemed. If the Check has expired, anyone can cancel it (and no one can cash it).
 
+{% set cancel_n = cycler(* range(1,99)) %}
+
 ### Prerequisites
 
 To cancel a Check with this tutorial, you need the following:
@@ -253,21 +257,21 @@ To cancel a Check with this tutorial, you need the following:
     - For more information, see [Connecting to `rippled`](reference-rippled.html#connecting-to-rippled).
 
 
-### 1. Prepare the CheckCancel transaction
+### {{cancel_n.next()}}. Prepare the CheckCancel transaction
 
 Figure out the values of the [CheckCancel transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](reference-transaction-format.html#auto-fillable-fields) when signing:
 
-| Field             | Value                     | Description                  |
-|:------------------|:--------------------------|:-----------------------------|
-| `TransactionType` | String                    | The value `CheckCancel` indicates this is a CheckCancel transaction. |
-| `Account`         | String (Address)          | The address of the sender who is canceling the Check. (In other words, your address.) |
-| `CheckID`         | String                    | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for checks using the [`account_objects` method](reference-rippled.html#account-objects). |
+| Field             | Value            | Description                           |
+|:------------------|:-----------------|:--------------------------------------|
+| `TransactionType` | String           | The value `CheckCancel` indicates this is a CheckCancel transaction. |
+| `Account`         | String (Address) | The address of the sender who is canceling the Check. (In other words, your address.) |
+| `CheckID`         | String           | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for Checks using the [`account_objects` method](reference-rippled.html#account-objects). |
 
 If you are using [RippleAPI](reference-rippleapi.html), you can use the `prepareCheckCancel()` helper method.
 
 **Note:** RippleAPI supports Checks in versions 0.19.0 and up.
 
-### 2. Sign the CheckCancel transaction
+### {{cancel_n.next()}}. Sign the CheckCancel transaction
 
 ***TODO: separate signing/submitting of CheckCancel***
 
@@ -302,15 +306,16 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
    }
 }
 ```
-### 3. Submit the signed CheckCancel transaction
+
+### {{cancel_n.next()}}. Submit the signed CheckCancel transaction
 
 ***TODO: examples of submitting signed blob***
 
-### 4. Wait for validation
+### {{cancel_n.next()}}. Wait for validation
 
 {% include 'snippets/wait-for-validation.md' %}
 
-### 5. Confirm final result
+### {{cancel_n.next()}}. Confirm final result
 
 Use the [`tx` method](reference-rippled.html#tx) with the CheckCancel transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
@@ -344,11 +349,33 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 
 ## Cash a Check for an exact amount
 
-As long as the Check is in the ledger and not expired, the specified recipient can cash it for up to the amount specified in the Check. (If it's an issued currency, the recipient can only cash the Check for that currency from the sender or from a specified issuer they both trust.)
+As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive any exact amount up to the amount specified in the Check by sending a [CheckCash transaction][] with an `Amount` field.
 
-Uses check id: `838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334`
+The specified recipient can also [cash the check for a flexible amount](#cash-a-check-for-a-flexible-amount).
 
-rfkE1 sends this one
+{% set cash_exact_n = cycler(* range(1,99)) %}
+
+### Prerequisites
+
+{% include 'snippets/checkcash-prereqs.md' %}
+
+### {{cash_exact_n.next()}}. Prepare the CheckCash transaction
+***TODO: Uses check id: `838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334`***
+
+Figure out the values of the [CheckCash transaction][] fields. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](reference-transaction-format.html#auto-fillable-fields) when signing:
+
+| Field             | Value                     | Description                  |
+|:------------------|:--------------------------|:-----------------------------|
+| `TransactionType` | String                    | The value `CheckCancel` indicates this is a CheckCancel transaction. |
+| `Account`         | String (Address)          | The address of the sender who is canceling the Check. (In other words, your address.) |
+| `CheckID`         | String                    | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for Checks using the [`account_objects` method](reference-rippled.html#account-objects). |
+| `Amount`          | String or Object (Amount) | The amount to redeem from the Check. For XRP, this must be a string specifying drops of XRP. For issued currencies, this is an object with `currency`, `issuer`, and `value` fields. The `currency` and `issuer` fields must match the corresponding fields in the Check object, and the `value` must be less than or equal to the amount in the Check object. For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
+
+### {{cash_exact_n.next()}}. Sign the CheckCash transaction
+
+### {{cash_exact_n.next()}}. Submit the signed CheckCancel transaction
+
+***TODO: examples of submitting signed blob***
 
 ```
 $ ./rippled submit sn2Zh1tRZyodU9qNy9tMnQr9UbBss '{
@@ -384,125 +411,77 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
 }
 ```
 
-## validate
+### {{cash_exact_n.next()}}. Wait for validation
 
-## tx the checkcash for final result
+{% include 'snippets/wait-for-validation.md' %}
 
-```
-$ ./rippled tx 0521707D510858BC8AF69D2227E1D1ADA7DB7C5B4B74115BCD0D91B62AFA8EDC
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
-2018-Jan-24 01:18:39 HTTPClient:NFO Connecting to 127.0.0.1:5005
+### {{cash_exact_n.next()}}. Confirm final result
 
-{
-   "result" : {
-      "Account" : "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
-      "Amount" : "100000000",
-      "CheckID" : "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
-      "Fee" : "12",
-      "Flags" : 2147483648,
-      "Sequence" : 1,
-      "SigningPubKey" : "02F135B14C552968B0ABE8493CC4C5795A7484D73F6BFD01379F73456F725F66ED",
-      "TransactionType" : "CheckCash",
-      "TxnSignature" : "3045022100C64278AC90B841CD3EA9889A4847CAB3AC9927057A34130810FAA7FAC0C6E3290220347260A4C0A6DC9B699DA12510795B2B3414E1FA222AF743226345FBAAEF937C",
-      "date" : 570071920,
-      "hash" : "0521707D510858BC8AF69D2227E1D1ADA7DB7C5B4B74115BCD0D91B62AFA8EDC",
-      "inLedger" : 9,
-      "ledger_index" : 9,
-      "meta" : {
-         "AffectedNodes" : [
-            {
-               "ModifiedNode" : {
-                  "FinalFields" : {
-                     "Flags" : 0,
-                     "Owner" : "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
-                     "RootIndex" : "032D861D151E38E86F46805ED1896D1A50144F65459717B6D12470A9E6E3B66E"
-                  },
-                  "LedgerEntryType" : "DirectoryNode",
-                  "LedgerIndex" : "032D861D151E38E86F46805ED1896D1A50144F65459717B6D12470A9E6E3B66E"
-               }
-            },
-            {
-               "ModifiedNode" : {
-                  "FinalFields" : {
-                     "Account" : "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
-                     "Balance" : "1000099999988",
-                     "Flags" : 0,
-                     "OwnerCount" : 0,
-                     "Sequence" : 2
-                  },
-                  "LedgerEntryType" : "AccountRoot",
-                  "LedgerIndex" : "38E1EF3284A45B090D549EFFB014ACF68927FE0884CDAF01CE3629DF90542D66",
-                  "PreviousFields" : {
-                     "Balance" : "1000000000000",
-                     "Sequence" : 1
-                  },
-                  "PreviousTxnID" : "3E14D859F6B4BE923323EFC94571606455921E65173147A89BC6EDDA4374B294",
-                  "PreviousTxnLgrSeq" : 5
-               }
-            },
-            {
-               "DeletedNode" : {
-                  "FinalFields" : {
-                     "Account" : "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
-                     "Destination" : "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
-                     "DestinationNode" : "0000000000000000",
-                     "DestinationTag" : 1,
-                     "Expiration" : 570113521,
-                     "Flags" : 0,
-                     "InvoiceID" : "6F1DFD1D0FE8A32E40E1F2C05CF1C15545BAB56B617F9C6C2D63A6B704BEF59B",
-                     "OwnerNode" : "0000000000000000",
-                     "PreviousTxnID" : "0FD9F719CDE29E6F6DF752B93EB9AC6FBB493BF989F2CB63B8C0E73A8DCDF61A",
-                     "PreviousTxnLgrSeq" : 8,
-                     "SendMax" : "100000000",
-                     "Sequence" : 4
-                  },
-                  "LedgerEntryType" : "Check",
-                  "LedgerIndex" : "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334"
-               }
-            },
-            {
-               "ModifiedNode" : {
-                  "FinalFields" : {
-                     "Flags" : 0,
-                     "Owner" : "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
-                     "RootIndex" : "AD136EC2A266027D8F202C97D294BBE32F6FC2AD5501D9853F785FE77AB94C94"
-                  },
-                  "LedgerEntryType" : "DirectoryNode",
-                  "LedgerIndex" : "AD136EC2A266027D8F202C97D294BBE32F6FC2AD5501D9853F785FE77AB94C94"
-               }
-            },
-            {
-               "ModifiedNode" : {
-                  "FinalFields" : {
-                     "Account" : "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
-                     "Balance" : "4999899999952",
-                     "Flags" : 0,
-                     "OwnerCount" : 1,
-                     "Sequence" : 5
-                  },
-                  "LedgerEntryType" : "AccountRoot",
-                  "LedgerIndex" : "D3A1DBAA28717975A9119EC4CBC891BA9A66236C484F03C9911F463AD3B66DE0",
-                  "PreviousFields" : {
-                     "Balance" : "4999999999952",
-                     "OwnerCount" : 2
-                  },
-                  "PreviousTxnID" : "0FD9F719CDE29E6F6DF752B93EB9AC6FBB493BF989F2CB63B8C0E73A8DCDF61A",
-                  "PreviousTxnLgrSeq" : 8
-               }
-            }
-         ],
-         "TransactionIndex" : 0,
-         "TransactionResult" : "tesSUCCESS"
-      },
-      "status" : "success",
-      "validated" : true
-   }
-}
-```
+Use the [`tx` method](reference-rippled.html#tx) with the CheckCash transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
+
+If the check was cashed for an exact `Amount` and succeeded, you can assume that the recipient was credited for exactly that amount (with possible rounding for very large or very small amounts of issued currencies).
+
+If cashing the Check failed,
+
 
 ## Cash a Check for a flexible amount
 
-***TODO: alternative version of cashing a check with delivermin instead of amount)***
+***TODO: description***
+
+{% set cash_flex_n = cycler(* range(1,99)) %}
+
+
+### Prerequisites
+
+{% include 'snippets/checkcash-prereqs.md' %}
+
+### {{cash_flex_n.next()}}. Prepare the CheckCash transaction
+
+Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](reference-transaction-format.html#auto-fillable-fields) when signing:
+
+| Field             | Value                     | Description                  |
+|:------------------|:--------------------------|:-----------------------------|
+| `TransactionType` | String                    | The value `CheckCancel` indicates this is a CheckCancel transaction. |
+| `Account`         | String (Address)          | The address of the sender who is canceling the Check. (In other words, your address.) |
+| `CheckID`         | String                    | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for Checks using the [`account_objects` method](reference-rippled.html#account-objects). |
+| `DeliverMin`      | String or Object (Amount) | A minimum amount to receive from the Check. If you cannot receive at least this much, cashing the Check fails, leaving the Check in the ledger so you can try again. For XRP, this must be a string specifying drops of XRP. For issued currencies, this is an object with `currency`, `issuer`, and `value` fields. The `currency` and `issuer` fields must match the corresponding fields in the Check object, and the `value` must be less than or equal to the amount in the Check object. For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
+
+### {{cash_flex_n.next()}}. Sign the CheckCash transaction
+
+### {{cash_flex_n.next()}}. Submit the signed CheckCash transaction
+
+***TODO: examples of submitting signed blob***
+
+### {{cash_flex_n.next()}}. Wait for validation
+
+{% include 'snippets/wait-for-validation.md' %}
+
+### {{cash_flex_n.next()}}. Confirm final result
+
+Use the [`tx` method](reference-rippled.html#tx) with the CheckCash transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
+
+If cashing the Check failed with a `tec`-class code, look up the code in the [Full Transaction Response List](reference-transaction-format.html#full-transaction-response-list) and respond accordingly. Some common possibilities for CheckCash transactions:
+
+| Result Code | Meaning | How to Respond |
+|-------------|---------|----------------|
+| `tecEXPIRED` | The Check has expired. | Cancel the Check and ask the sender to create a new Check with a later Expiration time. |
+| `tecNO_ENTRY` | The Check ID doesn't exist. | Confirm that the `CheckID` from the CheckCash transaction is correct. Confirm that the Check has not already been canceled or successfully cashed. |
+| `tecNO_LINE` | The recipient doesn't have a trust line for the Check's currency. | If you want to hold this currency from this issuer, create a trust line for the specified currency and issuer with a reasonable limit using a [TrustSet transaction][], then try to cash the check again. |
+| `tecNO_PERMISSION` | The sender of the CheckCash transaction isn't the `Destination` of the Check. | Double-check the `Destination` of the Check. |
+| `tecNO_AUTH` | The issuer of the currency from the check is using [Authorized Trust Lines](concept-authorized-trust-lines.html) but the recipient's trust line to the issuer is not approved. | Ask the issuer to authorize this trust line, then try again to cash the Check after they do. |
+| `tecPATH_PARTIAL` | The Check could not deliver enough issued currency, either due to trust line limits or because the sender does not have enough balance of the currency to send (after including the issuer's [transfer fee](concept-transfer-fee.html), if there is one). ***TODO: confirm this.*** | If the problem is the trust line limit, send a [TrustSet transaction][] to increase your limit (if desired) or lower your balance by spending some of the currency, then try to cash the Check again. If the problem is the sender's balance, wait for the sender to have more of the Check's currency, or try again to cash the Check for a lesser amount. |
+| `tecUNFUNDED_PAYMENT` | The Check could not deliver enough XRP. | Wait for the sender to have more XRP, or try again to cash the Check for a lesser amount. |
+
+### {{cash_flex_n.next()}}. Confirm delivered amount
+
+If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you can assume that the Check was cashed for at least the `DeliverMin` amount. To get the exact amount delivered, check the transaction metadata. <!--{# TODO: Update if RIPD-1623 adds a delivered_amount field. #}--> The metadata's `AffectedNodes` array contains one or two objects that reflect the change in balances from cashing the Check, depending on the type of currency.
+
+- For XRP, the `AccountRoot` object of the Check's sender has its XRP `Balance` field debited. The `AccountRoot` object of the Check's recipient (the one who sent the CheckCash transaction) has its XRP `Balance` credited for at least the `DeliverMin` of the CheckCash transaction minus the [transaction cost](concept-transaction-cost.html) of sending the transaction.
+- For issued currencies where the sender or recipient of the check is the issuer, the `RippleState` object representing the trust line between those accounts has its `Balance` adjusted in the favor of the Check's recipient.
+- For issued currencies with a third-party issuer, there are changes to two `RippleState` objects, representing the trust lines connecting the sender to the issuer, and the issuer to the recipient. The `RippleState` object representing the relationship between the Check's sender and the issuer has its `Balance` changed in favor of the issuer, and the `RippleState` object representing the relationship between the issuer and the recipient has its `Balance` changed in favor of the recipient.
+    - If the issued currency has a [transfer fee](concept-transfer-fees.html), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
+
+***TODO: clarify the above with more precise examples?***
 
 
 <!--{# common links TODO change this after PR#321 #}-->
