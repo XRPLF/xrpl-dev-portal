@@ -10,15 +10,6 @@ Checks in the XRP Ledger are similar to paper personal checks. This tutorial ste
 - [Cancel a Check](#cancel-a-check)
 
 
-<!--{# Accounts used in old examples:
-rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo snkuWqxoqt6aeykTbkEWrTMJHrWGM (as the sender)
-rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy sn2Zh1tRZyodU9qNy9tMnQr9UbBss (as the dest.)
-
-new examples:
-rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za ssqSRChhs5qTiUzn9jYf25khmQuwL as the sender
-rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis sn2DreVBky7kzbXJoaUMXMKCR8HAc as the receiver
-#}-->
-
 ## Send a Check
 
 Sending a Check involves sending a [CheckCreate transaction][], which creates a [Check object in the ledger](reference-ledger-format.html#check). Most of the fields of a CheckCreate transaction are similar to the fields of a (push) [Payment][], because a Check is like writing permission for an intended recipient to pull a payment from you. You can create a check for XRP or an issued currency.
