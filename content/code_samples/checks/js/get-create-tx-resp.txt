@@ -14,4 +14,5 @@ Final transaction result: { type: 'checkCreate',
      orderbookChanges: {},
      ledgerVersion: 7835887,
      indexInLedger: 0 } }
+Calculated checkID: CEA5F0BD7B2B5C85A70AE735E4CE722C43C86410A79AB87C11938AA13A11DBF9
 Disconnected
