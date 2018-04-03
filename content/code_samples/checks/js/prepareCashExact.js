@@ -35,11 +35,12 @@ api.connect().then(() => {
 // Example output:
 //
 // Connected
-// txJSON: {"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
-//   "TransactionType":"CheckCancel",
-//   "CheckID":"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2",
+// txJSON: {"Account":"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
+//   "TransactionType":"CheckCash",
+//   "CheckID":"84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9",
+//   "Amount":"95000000",
 //   "Flags":2147483648,
-//   "LastLedgerSequence":8004884,
+//   "LastLedgerSequence":8006841,
 //   "Fee":"12",
-//   "Sequence":7}
+//   "Sequence":5}
 // Disconnected
