@@ -1,6 +1,6 @@
 # Freezing Issued Currencies
 
-The XRP Ledger gives addresses the ability to freeze non-XRP balances, which can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:
+The XRP Ledger gives issuers the ability to freeze non-XRP balances they have issued. This feature can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:
 
 * [**Individual Freeze**](#individual-freeze) - Freeze one counterparty.
 * [**Global Freeze**](#global-freeze) - Freeze all counterparties.
