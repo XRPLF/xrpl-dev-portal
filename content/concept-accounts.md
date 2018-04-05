@@ -17,7 +17,7 @@ In the ledger's data tree, an account's core data is stored in the [AccountRoot]
 
 ### Creating Accounts
 
-There is not a dedicated "create account" transaction. The [Payment transaction][] automatically creates a new account if the payment sends XRP equal to or greater than the [account reserve](concept-reserves.html) to a mathematically-valid address that does not already have an account. This is called _funding_ an account, and creates an [AccountRoot object](reference-ledger-format.html#accountroot) in the ledger. No other transaction type or
+There is not a dedicated "create account" transaction. The [Payment transaction][] automatically creates a new account if the payment sends XRP equal to or greater than the [account reserve](concept-reserves.html) to a mathematically-valid address that does not already have an account. This is called _funding_ an account, and creates an [AccountRoot object](reference-ledger-format.html#accountroot) in the ledger. No other transaction can create an account.
 
 **Caution:** Funding an account **does not** give you any special privileges over that account. Whoever has the secret key corresponding to the account's address has full control over the account and all XRP it contains. For some addresses, it's possible that no one has the secret key, in which case the account is a [black hole](#special-addresses) and the XRP is lost forever.
 
