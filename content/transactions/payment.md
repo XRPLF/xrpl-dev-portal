@@ -43,9 +43,9 @@ Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates 
 
 ### Creating Accounts
 
-The Payment transaction type is the only way to create new accounts in the XRP Ledger. To do so, send an amount of XRP that is equal or greater than the [account reserve](concept-reserves.html) to a mathematically-valid account address that does not exist yet. When the Payment is processed, a new [AccountRoot object](reference-ledger-format.html#accountroot) is added to the ledger.
+The Payment transaction type can create new accounts in the XRP Ledger by sending enough XRP to an unfunded address. Other transactions to unfunded addresses always fail.
 
-If you send an insufficient amount of XRP, or any other currency, the Payment fails.
+For more information, see [Accounts](concept-accounts.html#creating-accounts).
 
 ### Paths
 
