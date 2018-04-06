@@ -1,6 +1,6 @@
 # Checks Tutorials
 
-Checks in the XRP Ledger are similar to paper personal checks. This tutorial steps through the following processes for using Checks:
+[Checks in the XRP Ledger](concept-checks.html) are similar to paper personal checks. This tutorial steps through the following processes for using Checks:
 
 - [Send a Check](#send-a-check)
 - [Look up Checks by sender address](#look-up-checks-by-sender-address)
@@ -12,7 +12,9 @@ Checks in the XRP Ledger are similar to paper personal checks. This tutorial ste
 
 ## Send a Check
 
-Sending a Check involves sending a [CheckCreate transaction][], which creates a [Check object in the ledger](reference-ledger-format.html#check). Most of the fields of a CheckCreate transaction are similar to the fields of a (push) [Payment][], because a Check is like writing permission for an intended recipient to pull a payment from you. You can create a check for XRP or an issued currency.
+Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check object in the ledger](reference-ledger-format.html#check) which the recipient can cash later.
+
+In many cases, you want to send a [Payment][] instead of a Check, since that delivers the money directly to the recipient in one step. However, if your intended recipient uses [DepositAuth](concept-depositauth.html), you cannot send them Payments directly, so a Check is a good alternative.
 
 {% set send_n = cycler(* range(1,99)) %}
 
@@ -36,7 +38,7 @@ Decide how much money the Check is for and who can cash it. Figure out the value
 | `TransactionType` | String                    | The value `CheckCreate` indicates this is a CheckCreate transaction. |
 | `Account`         | String (Address)          | The address of the sender who is creating the Check. (In other words, your address.) |
 | `Destination`     | String (Address)          | The address of the intended recipient who can cash the Check. |
-| `SendMax`         | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](concept-transfer-fees.html), remember to include an extra percentage to pay for the transfer fee. |
+| `SendMax`         | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](concept-transfer-fees.html), remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the `SendMax` to 102 CAD from that issuer.) |
 
 If you are using [RippleAPI](reference-rippleapi.html), you can use the `prepareCheckCreate()` helper method.
 
@@ -376,7 +378,7 @@ account_objects_response = get_account_objects({
 
 for (i=0; i < account_objects_response.account_objects.length; i++) {
   check_object = account_objects_response.account_objects[i]
-  if (check_object.Account == recipient_address) {
+  if (check_object.Destination == recipient_address) {
     log("Check to recipient:", check_object)
   }
 }
@@ -384,7 +386,7 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 
 ## Cancel a Check
 
-Canceling a Check involves sending a [CheckCancel transaction][], which removes a [Check object from the ledger](reference-ledger-format.html#check) without redeeming it. Either the sender or the recipient of a Check can cancel it before it has been redeemed. If the Check has expired, anyone can cancel it (and no one can cash it).
+Canceling a Check removes the [Check object from the ledger](reference-ledger-format.html#check) without sending money. You may want to cancel an incoming Check if you do not want it. You might cancel an outgoing Check if you made a mistake when sending it or if circumstances have changed. If a Check expires, it's also necessary to cancel it to remove it from the ledger so the sender gets their [owner reserve](concept-reserves.html#owner-reserves) back.
 
 {% set cancel_n = cycler(* range(1,99)) %}
 
@@ -573,7 +575,7 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 
 ## Cash a Check for an exact amount
 
-As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive any exact amount up to the amount specified in the Check by sending a [CheckCash transaction][] with an `Amount` field.
+As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive any exact amount up to the amount specified in the Check by sending a [CheckCash transaction][] with an `Amount` field. You would cash a Check this way if you want to receive a specific amount, for example to pay off an invoice or bill exactly.
 
 The specified recipient can also [cash the check for a flexible amount](#cash-a-check-for-a-flexible-amount).
 
@@ -589,10 +591,10 @@ Figure out the values of the [CheckCash transaction][] fields. To cash a check f
 
 | Field             | Value                     | Description                  |
 |:------------------|:--------------------------|:-----------------------------|
-| `TransactionType` | String                    | The value `CheckCancel` indicates this is a CheckCancel transaction. |
-| `Account`         | String (Address)          | The address of the sender who is canceling the Check. (In other words, your address.) |
-| `CheckID`         | String                    | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for Checks using the [`account_objects` method](reference-rippled.html#account-objects). |
-| `Amount`          | String or Object (Amount) | The amount to redeem from the Check. For XRP, this must be a string specifying drops of XRP. For issued currencies, this is an object with `currency`, `issuer`, and `value` fields. The `currency` and `issuer` fields must match the corresponding fields in the Check object, and the `value` must be less than or equal to the amount in the Check object. For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
+| `TransactionType` | String                    | The value `CheckCash` indicates this is a CheckCash transaction. |
+| `Account`         | String (Address)          | The address of the sender who is cashing the Check. (In other words, your address.) |
+| `CheckID`         | String                    | The ID of the Check object in the ledger to cash. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for Checks using the [`account_objects` method](reference-rippled.html#account-objects). |
+| `Amount`          | String or Object (Amount) | The amount to redeem from the Check. For XRP, this must be a string specifying drops of XRP. For issued currencies, this is an object with `currency`, `issuer`, and `value` fields. The `currency` and `issuer` fields must match the corresponding fields in the Check object, and the `value` must be less than or equal to the amount in the Check object. (For currencies with transfer fees, you must cash the Check for less than its `SendMax` so the transfer fee can be paid by the `SendMax`.) If you cannot receive this much, cashing the Check fails, leaving the Check in the ledger so you can try again. For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
 
 
 #### Example CheckCash Preparation for an exact amount
@@ -724,6 +726,8 @@ If cashing the Check failed, the Check remains in the ledger so you can try cash
 
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive a flexible amount by sending a [CheckCash transaction][] with a `DeliverMin` field. When cashing a Check in this way, the receiver gets as much as is possible to deliver, debiting the Check's sender for the Check's full `SendMax` amount or as much as is available. Cashing fails if it doesn't deliver at least the `DeliverMin` amount to the Check's recipient.
 
+You might cash a Check for a flexible amount if you just want to get as much as possible from the Check.
+
 The specified recipient can also [cash the check for an exact amount](#cash-a-check-for-an-exact-amount).
 
 {% set cash_flex_n = cycler(* range(1,99)) %}
@@ -739,9 +743,9 @@ Figure out the values of the [CheckCash transaction][] fields. To cash a check f
 
 | Field             | Value                     | Description                  |
 |:------------------|:--------------------------|:-----------------------------|
-| `TransactionType` | String                    | The value `CheckCancel` indicates this is a CheckCancel transaction. |
-| `Account`         | String (Address)          | The address of the sender who is canceling the Check. (In other words, your address.) |
-| `CheckID`         | String                    | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for Checks using the [`account_objects` method](reference-rippled.html#account-objects). |
+| `TransactionType` | String                    | The value `CheckCash` indicates this is a CheckCash transaction. |
+| `Account`         | String (Address)          | The address of the sender who is cashing the Check. (In other words, your address.) |
+| `CheckID`         | String                    | The ID of the Check object in the ledger to cash. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for Checks using the [`account_objects` method](reference-rippled.html#account-objects). |
 | `DeliverMin`      | String or Object (Amount) | A minimum amount to receive from the Check. If you cannot receive at least this much, cashing the Check fails, leaving the Check in the ledger so you can try again. For XRP, this must be a string specifying drops of XRP. For issued currencies, this is an object with `currency`, `issuer`, and `value` fields. The `currency` and `issuer` fields must match the corresponding fields in the Check object, and the `value` must be less than or equal to the amount in the Check object. For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
 
 #### Example CheckCash Preparation for a flexible amount
@@ -873,7 +877,7 @@ If cashing the Check failed with a `tec`-class code, look up the code in the [Fu
 | `tecNO_LINE` | The recipient doesn't have a trust line for the Check's currency. | If you want to hold this currency from this issuer, create a trust line for the specified currency and issuer with a reasonable limit using a [TrustSet transaction][], then try to cash the check again. |
 | `tecNO_PERMISSION` | The sender of the CheckCash transaction isn't the `Destination` of the Check. | Double-check the `Destination` of the Check. |
 | `tecNO_AUTH` | The issuer of the currency from the check is using [Authorized Trust Lines](concept-authorized-trust-lines.html) but the recipient's trust line to the issuer is not approved. | Ask the issuer to authorize this trust line, then try again to cash the Check after they do. |
-| `tecPATH_PARTIAL` | The Check could not deliver enough issued currency, either due to trust line limits or because the sender does not have enough balance of the currency to send (after including the issuer's [transfer fee](concept-transfer-fee.html), if there is one). | If the problem is the trust line limit, send a [TrustSet transaction][] to increase your limit (if desired) or lower your balance by spending some of the currency, then try to cash the Check again. If the problem is the sender's balance, wait for the sender to have more of the Check's currency, or try again to cash the Check for a lesser amount. |
+| `tecPATH_PARTIAL` | The Check could not deliver enough issued currency, either due to trust line limits or because the sender does not have enough balance of the currency to send (after including the issuer's [transfer fee](concept-transfer-fees.html), if there is one). | If the problem is the trust line limit, send a [TrustSet transaction][] to increase your limit (if desired) or lower your balance by spending some of the currency, then try to cash the Check again. If the problem is the sender's balance, wait for the sender to have more of the Check's currency, or try again to cash the Check for a lesser amount. |
 | `tecUNFUNDED_PAYMENT` | The Check could not deliver enough XRP. | Wait for the sender to have more XRP, or try again to cash the Check for a lesser amount. |
 
 ### {{cash_flex_n.next()}}. Confirm delivered amount
@@ -882,7 +886,7 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
 
 - For XRP, the `AccountRoot` object of the Check's sender has its XRP `Balance` field debited. The `AccountRoot` object of the Check's recipient (the one who sent the CheckCash transaction) has its XRP `Balance` credited for at least the `DeliverMin` of the CheckCash transaction minus the [transaction cost](concept-transaction-cost.html) of sending the transaction.
 
-    For example, the following `ModifiedNode` shows that the the account rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis, the Check's recipient and the sender of this CheckCash transaction, had its XRP balance change from `9999999970` drops to `10099999960` drops, meaning the recipient was credited a _net_ of 99.99999 XRP as a result of processing the transaction.
+    For example, the following `ModifiedNode` shows that the account rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis, the Check's recipient and the sender of this CheckCash transaction, had its XRP balance change from `9999999970` drops to `10099999960` drops, meaning the recipient was credited a _net_ of 99.99999 XRP as a result of processing the transaction.
 
           {
             "ModifiedNode": {
@@ -904,7 +908,7 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
             }
           }
 
-    The net amount of 99.99999 XRP includes deducting the transaction cost is destroyed to pay for sending this CheckCash transaction. The following transaction instructions (excerpted) show that the transaction cost (the `Fee` field) was 10 drops of XRP. By adding this to the net balance change, we conclude that the recipient, rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis, was credited a _gross_ amount of exactly 100 XRP for cashing the Check.
+    The net amount of 99.99999 XRP includes deducting the transaction cost that is destroyed to pay for sending this CheckCash transaction. The following transaction instructions (excerpted) show that the transaction cost (the `Fee` field) was 10 drops of XRP. By adding this to the net balance change, we conclude that the recipient, rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis, was credited a _gross_ amount of exactly 100 XRP for cashing the Check.
 
         "Account" : "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
         "TransactionType" : "CheckCash",
