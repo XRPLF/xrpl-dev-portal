@@ -19,6 +19,7 @@ api.connect().then(() => {
       "currency": "XRP",
       "value": "100" // RippleAPI uses decimal XRP, not integer drops
     }
+    "invoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"
   }, options)
 
 }).then(prepared => {
@@ -39,6 +40,8 @@ api.connect().then(() => {
 // txJSON: {"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
 //  "TransactionType":"CheckCreate",
 //  "Destination":"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
-//  "SendMax":"100000000","Flags":2147483648,
+//  "SendMax":"100000000",
+//  "Flags":2147483648,
+//  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",
 //  "LastLedgerSequence":7835917,"Fee":"12","Sequence":2}
 // Disconnected

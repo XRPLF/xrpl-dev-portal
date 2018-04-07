@@ -322,16 +322,35 @@ pages:
             - ripple.com
 
     -   md: concept-checks.md
-        category: Technical Overview
+        category: Checks
         targets:
           - local
           - ripple.com
 
-    -   md: tutorial-checks.md
-        category: Issued Currencies
+    -   md: tutorial-checks-send.md
+        category: Checks
         targets:
             - local
             - ripple.com
+
+    -   md: tutorial-checks-lookup-by-sender.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-checks-lookup-by-recipient.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-checks-cancel.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
 
     -   md: concept-demurrage.md
         category: Issued Currencies
