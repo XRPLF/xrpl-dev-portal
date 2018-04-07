@@ -81,7 +81,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## {{cash_flex_n.next()}}. Submit the signed CheckCash transaction
 
-{% set step_1_link = "#1-prepare-the-checkcash-transaction-1" %}
+{% set step_1_link = "#1-prepare-the-checkcash-transaction" %}
 {% include 'snippets/tutorial-submit-step.md' %}
 
 ### Example Request

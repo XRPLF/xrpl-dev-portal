@@ -118,7 +118,7 @@ Use the [`tx` method](reference-rippled.html#tx) with the CheckCash transaction'
 
 If the check was cashed for an exact `Amount` and succeeded, you can assume that the recipient was credited for exactly that amount (with possible rounding for very large or very small amounts of issued currencies).
 
-If cashing the Check failed, the Check remains in the ledger so you can try cashing again later. You may want to [cash the Check for a flexible amount](#cash-a-check-for-a-flexible-amount) instead.
+If cashing the Check failed, the Check remains in the ledger so you can try cashing again later. You may want to [cash the Check for a flexible amount](tutorial-checks-cash-flex.html) instead.
 
 ### Example Request
 

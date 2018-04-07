@@ -351,6 +351,17 @@ pages:
             - local
             - ripple.com
 
+    -   md: tutorial-checks-cash-exact.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-checks-cash-flex.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
 
     -   md: concept-demurrage.md
         category: Issued Currencies
