@@ -15,15 +15,32 @@ In the ledger's data tree, an account's core data is stored in the [AccountRoot]
 
 **Tip:** An "Account" in the XRP Ledger is somewhere between the financial usage (like "bank account") and the computing usage (like "UNIX account"). Non-XRP currencies and assets aren't stored in an XRP Ledger Account itself; each such asset is stored in an accounting relationship called a "Trust Line" that connects two parties.
 
+### Creating Accounts
+
+There is not a dedicated "create account" transaction. The [Payment transaction][] automatically creates a new account if the payment sends XRP equal to or greater than the [account reserve](concept-reserves.html) to a mathematically-valid address that does not already have an account. This is called _funding_ an account, and creates an [AccountRoot object](reference-ledger-format.html#accountroot) in the ledger. No other transaction can create an account.
+
+**Caution:** Funding an account **does not** give you any special privileges over that account. Whoever has the secret key corresponding to the account's address has full control over the account and all XRP it contains. For some addresses, it's possible that no one has the secret key, in which case the account is a [black hole](#special-addresses) and the XRP is lost forever.
+
+The typical way to get an account in the XRP Ledger is as follows:
+
+1. Generate a key pair from a strong source of randomness and calculate the address of that key pair. (For example, you can use the [`wallet_propose` command](reference-rippled.html#wallet-propose) to do this.)
+
+2. Have someone who already has an account in the XRP Ledger send XRP to the address you generated.
+
+    - For example, you can purchase XRP in a private exchange, then withdraw XRP from the exchange to the address you specified.
+
+        **Caution:** The first time you receive XRP at your own XRP Ledger address, you must pay the [account reserve](concept-reserves.html) (currently 20 XRP), which locks up that amount of XRP indefinitely. In contrast, private exchanges usually hold all their customers' XRP in a few shared XRP Ledger accounts, so customers don't have to pay the reserve for individual accounts at the exchange. Before withdrawing, consider whether having your own account directly on the XRP Ledger is worth the price.
+
 ## Addresses
 
 {% include 'data_types/address.md' %}
 
-Any valid address can become an account in the XRP Ledger by receiving a [Payment][] of XRP, as long as the amount of XRP delivered is greater than or equal to the [account reserve](concept-reserves.html). This is called _funding_ the account. You can also use an address that has not been funded to represent a [regular key](reference-transaction-format.html#setregularkey) or a member of a [signer list](reference-transaction-format.html#multi-signing). Only a funded account can be the sender of a transaction.
+Any valid address can [become an account in the XRP Ledger](#creating-accounts) by being funded. You can also use an address that has not been funded to represent a [regular key](reference-transaction-format.html#setregularkey) or a member of a [signer list](reference-transaction-format.html#multi-signing). Only a funded account can be the sender of a transaction.
 
 Creating a valid address is a strictly mathematical task starting with a key pair. You can generate a key pair and calculate its address entirely offline without communicating to the XRP Ledger or any other party. The conversion from a public key to an address involves a one-way hash function, so it is possible to confirm that a public key matches an address but it is impossible to derive the public key from the address alone. (This is part of the reason why signed transactions include the public key _and_ the address of the sender.)
 
 For more technical details of how to calculate an XRP Ledger address, see [Address Encoding](#address-encoding).
+
 
 ### Special Addresses
 
