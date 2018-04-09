@@ -5,14 +5,14 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                      | Introduced | Status                              |
 |:--------------------------|:-----------|:------------------------------------|
+| [Checks][]                | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2][]              | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][] | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]          | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]               | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Checks][]                | v0.90.0    | [Expected: 2018-04-05](https://ripple.com/dev-blog/rippled-version-0-90-1/#upcoming-features "BADGE_BLUE") |
-| [DepositAuth][]           | v0.90.0    | [Expected: 2018-04-05](https://ripple.com/dev-blog/rippled-version-0-90-1/#upcoming-features "BADGE_BLUE") |
-| [fix1513][]               | v0.90.0    | [Expected: 2018-04-05](https://ripple.com/dev-blog/rippled-version-0-90-1/#upcoming-features "BADGE_BLUE") |
+| [DepositAuth][]           | v0.90.0    | [Enabled: 2018-04-06](https://xrpcharts.ripple.com/#/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25 "BADGE_GREEN") |
+| [fix1513][]               | v0.90.0    | [Enabled: 2018-04-06](https://xrpcharts.ripple.com/#/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B "BADGE_GREEN") |
 | [fix1201][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E "BADGE_GREEN") |
 | [fix1512][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647 "BADGE_GREEN") |
 | [fix1523][]               | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469 "BADGE_GREEN") |
@@ -39,7 +39,7 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | In Development |
+| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | Planned |
 
 Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.
 
@@ -49,7 +49,6 @@ Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash,
 
 This amendment also changes the OfferCreate transaction to return `tecEXPIRED` when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns `tesSUCCESS` but does not create or execute an Offer.
 
-**Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2245) and is expected for `rippled` v0.90.0.
 
 
 ## CryptoConditions
@@ -79,7 +78,7 @@ Implements several types of crypto-conditions from the official [crypto-conditio
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064 | In Development |
+| F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064 | Enabled   |
 
 Adds a new account flag, `DepositAuth`, which lets an account strictly reject any incoming money from transactions sent by other accounts. Businesses can use this flag to comply with strict regulations that require due diligence before receiving money from any source.
 
@@ -195,7 +194,7 @@ With this amendment, the transactions fail with a more appropriate result code, 
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172 | Planned   |
+| 67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172 | Enabled   |
 
 Fixes a bug that resulted in transaction processing not using new `STAmountCalcSwitchovers` code when the `FeeEscalation` amendment is enabled.
 
