@@ -1,0 +1,16 @@
+Connected
+Final transaction result: { type: 'checkCancel',
+  address: 'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za',
+  sequence: 7,
+  id: '54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215',
+  specification:
+   { checkID: '2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2' },
+  outcome:
+   { result: 'tesSUCCESS',
+     timestamp: '2018-04-02T23:42:22.000Z',
+     fee: '0.000012',
+     balanceChanges: { rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za: [Array] },
+     orderbookChanges: {},
+     ledgerVersion: 8004870,
+     indexInLedger: 3 } }
+Disconnected

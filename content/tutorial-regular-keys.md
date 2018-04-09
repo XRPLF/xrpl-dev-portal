@@ -130,7 +130,7 @@ When you make subsequent `SetRegularKey` requests, you can sign using the existi
 
 #### Sign Your Transaction
 
-The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+{% include 'snippets/tutorial-sign-step.md' %}
 
 Populate the request fields with the following values:
 

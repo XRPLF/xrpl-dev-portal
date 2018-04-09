@@ -1,0 +1,10 @@
+{
+    "method": "account_objects",
+    "params": [
+        {
+            "account": "rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
+            "ledger_index": "validated",
+            "type": "check"
+        }
+    ]
+}

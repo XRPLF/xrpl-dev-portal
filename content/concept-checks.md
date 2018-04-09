@@ -88,13 +88,18 @@ When not using the production XRP Ledger, you can check the status of the Checks
 
 For more information about Checks in the XRP Ledger, see:
 
-<!--{#TODO: add link to Checks tutorial#}-->
-
-* [Transaction Reference](reference-transaction-format.html#transaction-types)
-  * [Checks amendment](reference-amendments.html#checks)
-  * [CheckCreate][]
-  * [CheckCash][]
-  * [CheckCancel][]
+- [Transaction Reference](reference-transaction-format.html#transaction-types)
+    - [Checks amendment](reference-amendments.html#checks)
+    - [CheckCreate][]
+    - [CheckCash][]
+    - [CheckCancel][]
+- Checks Tutorials
+    - [Send a Check](tutorial-checks-send.html)
+    - [Look up Checks by sender address](tutorial-checks-lookup-by-sender.html)
+    - [Look up Checks by recipient address](tutorial-checks-lookup-by-recipient.html)
+    - [Cash a Check for an exact amount](tutorial-checks-cash-exact.html)
+    - [Cash a Check for a flexible amount](tutorial-checks-cash-flex.html)
+    - [Cancel a Check](tutorial-checks-cancel.html)
 
 For more information about related features, see:
 
