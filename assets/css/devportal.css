@@ -863,3 +863,15 @@ th {
     overflow: visible !important;
   }
 }
+
+/*******************************************************************************
+* New stuff for 5-level nesting
+*******************************************************************************/
+
+.subcategory_title {
+  font-weight: bold;
+}
+
+#sidenav_accordion .panel .sidebar_cat_pagelist li .subpage {
+  padding-left: 75px;
+}

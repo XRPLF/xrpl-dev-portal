@@ -1,4 +1,4 @@
-# XRP Ledger Accounts
+# Accounts
 
 An "Account" in the XRP Ledger represents a holder of XRP and a sender of [transactions](reference-transaction-format.html). The core elements of an account are:
 

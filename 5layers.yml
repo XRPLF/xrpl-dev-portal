@@ -1,0 +1,219 @@
+# Relative paths work OK as long as you start the tool from its local dir
+template_path: tool
+
+# This folder gets copied into the output directory
+template_static_path: assets
+
+# Templates should have filenames starting in template-
+default_template: template-doc.html
+default_pdf_template: template-forpdf.html
+
+# HTML, PDF, GFM all get output here
+out_path: out
+
+# MD files should be here (and in subdirs)
+content_path: content
+
+# This folder gets copied into the output directory
+content_static_path: img
+
+# PDF creation needs a dir for temporary files
+temporary_files_path: /tmp/
+
+default_filters:
+    - multicode_tabs
+    - standardize_header_ids
+    - buttonize
+    - callouts
+    - badges
+    - link_replacement
+
+callout_class: "devportal-callout"
+
+cover_page:
+    name: Overview
+    html: index.html
+    template: template-5layerindex.html
+
+targets:
+    # First member is the default that gets built when target not specified
+    -   name: local
+        display_name: XRP Ledger Dev Portal
+        # These github_ fields are used by the template's "Edit on GitHub" link.
+        #  Override them with --vars to change which fork/branch to edit.
+        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_branch: master
+
+pages:
+
+    -   name: Docs
+        funnel: Docs
+        template: template-landing-docs.html
+        html: landing-docs.html
+        targets:
+            - local
+
+    -   name: Concepts
+        funnel: Docs
+        doc_type: Concepts
+        html: landing-concepts.html
+        targets:
+            - local
+
+    -   name: Payment System
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System
+        html: concept-payment-system.html
+        template: template-cat-landing.html
+        targets:
+            - local
+
+    -   md: concept-accounts.md
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System
+        subcategory: Accounts
+        targets:
+            - local
+
+    -   md: concept-depositauth.md
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System
+        subcategory: Accounts
+        targets:
+            - local
+
+    -   md: concept-transaction-cost.md
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System
+        targets:
+            - local
+
+    -   md: concept-money.md
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System
+        targets:
+            - local
+
+    -   name: Consensus Network
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        html: concept-consensus-network.html
+        template: template-cat-landing.html
+        targets:
+            - local
+
+    -   name: References
+        funnel: Docs
+        doc_type: References
+        html: landing-references.html
+        targets:
+            - local
+
+    -   name: rippled API Public Methods
+        funnel: Docs
+        doc_type: References
+        category: rippled API Public Methods
+        html: reference-rippled-public.html
+        template: template-cat-landing.html
+        targets:
+            - local
+
+    -   name: Ledger Methods
+        funnel: Docs
+        doc_type: References
+        category: rippled API Public Methods
+        subcategory: Ledger Methods
+        template: template-subcat-landing.html
+        html: reference-rippled-public-ledger-methods.html
+        targets:
+            - local
+
+    -   md: rippled-api-methods/ledger_closed.md
+        funnel: Docs
+        doc_type: References
+        category: rippled API Public Methods
+        subcategory: Ledger Methods
+        targets:
+            - local
+
+    -   md: rippled-api-methods/ledger_current.md
+        funnel: Docs
+        doc_type: References
+        category: rippled API Public Methods
+        subcategory: Ledger Methods
+        targets:
+            - local
+
+    -   md: rippled-api-methods/ledger_data.md
+        funnel: Docs
+        doc_type: References
+        category: rippled API Public Methods
+        subcategory: Ledger Methods
+        targets:
+            - local
+
+    -   name: Account Methods
+        funnel: Docs
+        doc_type: References
+        category: rippled API Public Methods
+        subcategory: Account Methods
+        template: template-subcat-landing.html
+        html: reference-rippled-public-account-methods.html
+        targets:
+            - local
+
+    -   md: rippled-api-methods/account_channels.md
+        funnel: Docs
+        doc_type: References
+        category: rippled API Public Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    -   md: rippled-api-methods/account_info.md
+        funnel: Docs
+        doc_type: References
+        category: rippled API Public Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    -   name: Transaction Methods
+        funnel: Docs
+        doc_type: References
+        category: rippled API Public Methods
+        subcategory: Transaction Methods
+        template: template-subcat-landing.html
+        html: reference-rippled-public-tx-methods.html
+        targets:
+            - local
+
+
+ignore_anchors_in:
+    - data-api-v2-tool.html
+    - ripple-api-tool.html
+    - tool-jsonrpc.html
+
+#Sometimes, a link is not really problematic, but the link checker detects it
+# as such and the easiest solution is to ignore it.
+known_broken_links:
+    # Strangely, Python doesn't like the cert here. Firefox is OK with it.
+    - https://validators.ripple.com
+
+    # Login required for the client portal.
+    - https://clients.ripple.com/
+
+    # These PDFs download OK in a browser
+    - http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847
+    - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF
+
+# Style Checker Config ------------------------------------------------------ #
+
+word_substitutions_file: tool/word_substitutions.yaml
+phrase_substitutions_file: tool/phrase_substitutions.yaml

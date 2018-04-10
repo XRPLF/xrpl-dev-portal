@@ -1,0 +1,25 @@
+{% extends "template-base.html" %}
+
+{% block sidebar %}
+{% if currentpage.sidebar != "disabled" %}
+
+  {% include "template-sidebar_nav.html" %}
+
+{% endif %}
+{% endblock %}
+
+{% block main %}
+    <h1 class="main-page-header">{{ currentpage.name }}</h1>
+
+    <div class='content'>
+      <h2>Pages in this category:</h2>
+      <ul class="cat_pagelist">
+        {% for page in pages %}
+          {% if page.category == currentpage.category and
+              page.name != currentpage.name %}
+            <li><a href="{{page.html}}">{{page.name}}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+{% endblock %}
