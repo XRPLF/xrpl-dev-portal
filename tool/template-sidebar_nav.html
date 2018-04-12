@@ -1,6 +1,11 @@
 <div class="guide_toc">
   <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
     {% for cat in categories %}
+      {% set catpages = pages|selectattr("category", "equalto", cat)|list %}
+      {% if currentpage.doc_type is defined %}
+        {% set catpages = catpages|selectattr("doc_type", "equalto", currentpage.doc_type)|list %}
+      {% endif %}
+    {% if catpages|length %}
     <div class="panel panel-default{% if currentpage.category == cat %} active{% endif %}">
       <div class="panel-heading" role="tab" id="sidenav_cat_head_{{loop.index}}">
         <h5 class="panel-title">
@@ -13,7 +18,6 @@
       <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category == cat %} in{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
         <div class="panel-body">
           <ul class="sidebar_cat_pagelist">
-          {% set catpages = pages|selectattr("category", "equalto", cat)|list %}
           {% set printed_subcategories = [] %}
           {% for page in catpages %}
             {% if page.subcategory is undefined %}
@@ -48,6 +52,7 @@
       </div><!-- /#sidenav_collapse{{loop.index}} -->
 
     </div><!-- /.panel -->
+    {% endif %}
     {% endfor %}
 
   </div><!-- /#sidenav_accordion -->
