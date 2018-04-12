@@ -99,6 +99,14 @@ pages:
         targets:
             - local
 
+    -   md: concept-authorized-trust-lines.md
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System
+        subcategory: Accounts
+        targets:
+            - local
+
     -   name: Consensus Network
         funnel: Docs
         doc_type: Concepts

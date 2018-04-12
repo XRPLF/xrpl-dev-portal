@@ -13,26 +13,36 @@
       <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category == cat %} in{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
         <div class="panel-body">
           <ul class="sidebar_cat_pagelist">
-          {% set nosubcatpages = pages|selectattr("category", "equalto", cat)|selectattr("subcategory", "undefined") %}
-          {% for page in nosubcatpages %}
-            <li class="nosubcat-page"><a href=" {{ page.html }}">{{ page.name }}</a></li>
+          {% set catpages = pages|selectattr("category", "equalto", cat)|list %}
+          {% set printed_subcategories = [] %}
+          {% for page in catpages %}
+            {% if page.subcategory is undefined %}
+              {% if page == currentpage %}
+              <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
+              {% else %}
+              <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
+              {% endif %}
+            {% elif page.subcategory not in printed_subcategories %}
+              {% if page == currentpage %}
+              <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}</a></li>
+              {% else %}
+              <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}</a></li>
+              {% endif %}
+
+              {% for subpage in catpages|selectattr('subcategory', 'equalto', page.subcategory) %}
+                {% if subpage != page %}
+                {% if subpage == currentpage %}
+                <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}</a></li>
+                {% else %}
+                <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}</a></li>
+                {% endif %}
+                {% endif %}
+              {% endfor %}
+              {% set _ = printed_subcategories.append(page.subcategory) %}
+
+            {% endif %}
           {% endfor %}
 
-          {% set subcatpages = pages|selectattr("category", "equalto", cat)|selectattr("subcategory", "defined") %}
-          {% for subcat in subcatpages|groupby("subcategory") %}
-            {% if subcat.list[0].name != subcat.grouper %}
-            <li class="subcategory_title"><a>{{ subcat.grouper }}</a></li>
-            {% else %}
-            <li class="subcategory_title"><a href="{{subcat.list[0].html}}">{{ subcat.grouper }}</a></li>
-            {% endif %}
-            {% for page in subcat.list if page.name != subcat.grouper %}
-              {% if page == currentpage %}
-              <li><a class="active subpage" href="#main_content_body">{{ page.name }}</a></li>
-              {% else %}
-              <li><a class="subpage" href="{{ page.html }}">{{ page.name }}</a></li>
-              {% endif %}
-            {% endfor %}
-          {% endfor %}
           </ul>
         </div><!-- /.panel-body -->
       </div><!-- /#sidenav_collapse{{loop.index}} -->
