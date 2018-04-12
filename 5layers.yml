@@ -50,6 +50,7 @@ pages:
         funnel: Docs
         template: template-landing-docs.html
         html: landing-docs.html
+        sidebar: disabled
         targets:
             - local
 

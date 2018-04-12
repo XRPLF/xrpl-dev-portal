@@ -12,11 +12,15 @@
     <h1 class="main-page-header">{{ currentpage.name }}</h1>
 
     <section>
+      {% for grouper, docpages in pages|selectattr("doc_type", "defined")|groupby("doc_type") %}
       <div class="panel panel-default">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <h3><a href="{{(docpages|list)[0].html}}">{{ grouper }}</a></h3>
+        <ul>
+          {% for cat, catpages in docpages|selectattr("category", "defined")|groupby("category") %}
+            <li><a href="{{(catpages|first).html}}">{{ (catpages|first).name }}</a></li>
+          {% endfor %}
+        </ul>
       </div>
-      <div class="panel panel-default">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </div>
+      {% endfor %}
     </section>
 {% endblock %}
