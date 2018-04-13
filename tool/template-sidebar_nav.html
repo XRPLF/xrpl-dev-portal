@@ -9,9 +9,8 @@
     <div class="panel panel-default{% if currentpage.category == cat %} active{% endif %}">
       <div class="panel-heading" role="tab" id="sidenav_cat_head_{{loop.index}}">
         <h5 class="panel-title">
-          <a {% if currentpage.category != cat %}class="collapsed"{% endif %} role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">
-            {{ cat }}
-          </a>
+        <a class="{% if currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">&nbsp;</a>
+          <a class="sidenav_cat_title" href="{{ (pages|selectattr('category', 'equalto', cat)|first).html }}">{{ cat }}</a>
         </h5>
       </div><!-- /.panel-heading -->
 
@@ -20,6 +19,7 @@
           <ul class="sidebar_cat_pagelist">
           {% set printed_subcategories = [] %}
           {% for page in catpages %}
+            {% if loop.index != 1 %}{# Skip the first element since it's linked by the category header #}
             {% if page.subcategory is undefined %}
               {% if page == currentpage %}
               <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
@@ -44,6 +44,7 @@
               {% endfor %}
               {% set _ = printed_subcategories.append(page.subcategory) %}
 
+            {% endif %}
             {% endif %}
           {% endfor %}
 

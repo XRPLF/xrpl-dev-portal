@@ -117,6 +117,20 @@ pages:
         targets:
             - local
 
+    -   md: concept-amendments.md
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        targets:
+            - local
+
+    -   md: concept-fee-voting.md
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        targets:
+            - local
+
     -   name: References
         funnel: Docs
         doc_type: References

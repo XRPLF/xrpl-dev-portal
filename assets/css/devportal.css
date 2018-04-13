@@ -538,22 +538,31 @@ th {
   text-transform: none;
 }
 
-#sidenav_accordion .panel-heading h5 a {
+#sidenav_accordion .panel-heading h5 .sidenav_cat_title {
   display: block;
   padding: 16px 15px;
   font-family: "open_sansregular", sans-serif;
   color: #666;
 }
 
-#sidenav_accordion .panel-heading a:before {
-    content: "\f106"; /* fontawesome angle-up */
-    font-family: FontAwesome;
-    margin-left: -20px;
-    padding-right: 5px;
-    float: right;
+#sidenav_accordion .panel-heading .sidenav_cat_toggler {
+    position: absolute;
+    right: 0;
+    padding: 15px 16px 17px 16px;
+    background-color: #ccc;
+    line-height: 0;
 }
-#sidenav_accordion .panel-heading a.collapsed:before {
-    content: "\f107"; /* fontawesome angle-down */
+
+#sidenav_accordion .panel-heading .sidenav_cat_toggler:before {
+    font-family: "FontAwesome";
+    content: "\f107";
+    display: block;
+    transition: transform 0.5s;
+    line-height: 17.7px;
+}
+#sidenav_accordion .panel-heading .sidenav_cat_toggler.collapsed:before {
+  /* content: "\f106"; */
+  transform: rotate(90deg);
 }
 
 
