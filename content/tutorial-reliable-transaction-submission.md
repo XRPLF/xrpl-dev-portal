@@ -104,23 +104,35 @@ On restart, or the determination of a new last validated ledger (pseudocode):
 For each persisted transaction without validated result:
     Query transaction by hash
     If (result appears in validated ledger)
-		Persist the final result
-		If (result code is tesSUCCESS)
-			Application may act based on successful transaction
-		Else
-			Application may act based on failure
-			Maybe resubmit with new LastLedgerSequence and Fee
-	Else if (LastLedgerSequence > newest validated ledger)
-        Wait for more ledgers to be validated
-	Else
-		If (server has contiguous ledger history up to and
-	        including the ledger identified by LastLedgerSequence)
-			The transaction failed
-			Submit a new transaction, if appropriate for application
-		Else
-			Repeat submission of original transaction
+      # Outcome is final
+      Persist the final result
+      If (result code is tesSUCCESS)
+        Application may act based on successful transaction
+      Else
+        Application may act based on failure
+        Maybe resubmit with new LastLedgerSequence and Fee
+
+    Else if (LastLedgerSequence > newest validated ledger)
+      # Outcome is not yet final
+      Wait for more ledgers to be validated
+
+    Else
+      If (server has contiguous ledger history up to and
+            including the ledger identified by LastLedgerSequence)
+        The transaction failed
+        Submit a new transaction, if appropriate for application
+      Else
+        # Outcome is final, but not known due to a ledger gap
+        Wait to acquire contiguous ledger history
 ```
 
+#### Ledger Gaps
+
+If your server does not have contiguous ledger history from when the transaction was originally submitted up to and including the ledger identified by LastLedgerSequence, you may not know the final outcome of the transaction. (If it was included in one of the ledger versions your server is missing, you do not know whether it succeeded or failed.)
+
+Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its configured amount of history to store. Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can also manually request your server to acquire historical ledger versions using the [`ledger_request` command](reference-rippled.html#ledger-request).
+
+Alternatively, you can look up the status of the transaction using a different `rippled` server that already has the needed ledger history, such as Ripple's full-history servers at `s2.ripple.com`. Only use a server you trust for this purpose. A malicious server could be programmed to provide false information about the status and outcome of a transaction.
 
 
 ## Technical Application
