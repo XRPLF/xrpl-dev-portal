@@ -544,6 +544,10 @@ th {
   font-family: "open_sansregular", sans-serif;
   color: #666;
 }
+#sidenav_accordion .panel-heading h5 .sidenav_cat_title.active {
+  color: #333;
+  font-weight: bold;
+}
 
 #sidenav_accordion .panel-heading .sidenav_cat_toggler {
     position: absolute;

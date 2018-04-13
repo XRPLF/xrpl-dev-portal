@@ -10,7 +10,7 @@
       <div class="panel-heading" role="tab" id="sidenav_cat_head_{{loop.index}}">
         <h5 class="panel-title">
         <a class="{% if currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">&nbsp;</a>
-          <a class="sidenav_cat_title" href="{{ (pages|selectattr('category', 'equalto', cat)|first).html }}">{{ cat }}</a>
+          <a class="sidenav_cat_title{% if currentpage == (pages|selectattr('category', 'equalto', cat)|first) %} active{% endif %}" href="{{ (pages|selectattr('category', 'equalto', cat)|first).html }}">{{ cat }}</a>
         </h5>
       </div><!-- /.panel-heading -->
 
