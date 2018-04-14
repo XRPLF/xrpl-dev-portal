@@ -133,12 +133,13 @@ For each persisted transaction without validated result:
 
 #### Failure Cases
 
-The difference between the two transaction failure cases (labeled (1) and (2) in the pseudo-code) is whether the transaction was included in a validated ledger.
+The difference between the two transaction failure cases (labeled (1) and (2) in the pseudo-code) is whether the transaction was included in a validated ledger. In both cases, you should decide carefully how to process the failure.
 
-- In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](concept-transaction-cost.html), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](concept-paths.html), or other circumstances. For many such failures, immediately retrying the transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
+- In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](concept-transaction-cost.html), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](concept-paths.html), or other circumstances. For many such failures, immediately retrying with a similar transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
 
-- In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or simply a coincidence. Compared to failure case (1), it is more likely that a new transaction is likely to succeed by changing only the `LastLedgerSequence` and possibly the `Fee` and submitting again.
-    - It is also possible that the transaction could not succeed due to the state of the ledger, for example because sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](reference-transaction-format.html#tef-codes), the transaction is less likely to succeed without further modification.
+- In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or simply a coincidence. In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again.
+    - It is also possible that the transaction could not succeed due to the state of the ledger, for example because the sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](reference-transaction-format.html#tef-codes), the transaction is less likely to succeed without further modification.
+
 
 #### Ledger Gaps
 
