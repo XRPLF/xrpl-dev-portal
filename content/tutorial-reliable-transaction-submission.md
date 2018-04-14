@@ -89,6 +89,7 @@ The submission process:
     - Transaction hash
     - `LastLedgerSequence`
     - Sender address and sequence number
+    - Most recently-validated ledger index at the time of submission
     - Application-specific data, as needed
 3. Submit the transaction
 
@@ -109,28 +110,41 @@ For each persisted transaction without validated result:
       If (result code is tesSUCCESS)
         Application may act based on successful transaction
       Else
-        Application may act based on failure
-        Maybe resubmit with new LastLedgerSequence and Fee
+        The transaction failed (1)
+        If appropriate for the application and failure type, submit with
+            new LastLedgerSequence and Fee
 
     Else if (LastLedgerSequence > newest validated ledger)
       # Outcome is not yet final
       Wait for more ledgers to be validated
 
     Else
-      If (server has contiguous ledger history up to and
-            including the ledger identified by LastLedgerSequence)
-        The transaction failed
-        Submit a new transaction, if appropriate for application
+      If (server has continuous ledger history from the ledger when the
+            transaction was submitted up to and including the ledger identified
+            by LastLedgerSequence)
+        The transaction failed (2)
+        If appropriate for the application, submit with
+            new LastLedgerSequence and Fee
+
       Else
         # Outcome is final, but not known due to a ledger gap
-        Wait to acquire contiguous ledger history
+        Wait to acquire continuous ledger history
 ```
+
+#### Failure Cases
+
+The difference between the two transaction failure cases (labeled (1) and (2) in the pseudo-code) is whether the transaction was included in a validated ledger.
+
+- In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](concept-transaction-cost.html), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](concept-paths.html), or other circumstances. For many such failures, immediately retrying the transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
+
+- In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or simply a coincidence. Compared to failure case (1), it is more likely that a new transaction is likely to succeed by changing only the `LastLedgerSequence` and possibly the `Fee` and submitting again.
+    - It is also possible that the transaction could not succeed due to the state of the ledger, for example because sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](reference-transaction-format.html#tef-codes), the transaction is less likely to succeed without further modification.
 
 #### Ledger Gaps
 
-If your server does not have contiguous ledger history from when the transaction was originally submitted up to and including the ledger identified by LastLedgerSequence, you may not know the final outcome of the transaction. (If it was included in one of the ledger versions your server is missing, you do not know whether it succeeded or failed.)
+If your server does not have continuous ledger history from when the transaction was originally submitted up to and including the ledger identified by `LastLedgerSequence`, you may not know the final outcome of the transaction. (If it was included in one of the ledger versions your server is missing, you do not know whether it succeeded or failed.)
 
-Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its configured amount of history to store. Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can also manually request your server to acquire historical ledger versions using the [`ledger_request` command](reference-rippled.html#ledger-request).
+Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its [configured amount of history to store](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L581). Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can also manually request your server to acquire historical ledger versions using the [`ledger_request` command](reference-rippled.html#ledger-request).
 
 Alternatively, you can look up the status of the transaction using a different `rippled` server that already has the needed ledger history, such as Ripple's full-history servers at `s2.ripple.com`. Only use a server you trust for this purpose. A malicious server could be programmed to provide false information about the status and outcome of a transaction.
 
