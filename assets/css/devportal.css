@@ -552,7 +552,7 @@ th {
 
 #sidenav_accordion .panel-heading h5 .sidenav_cat_title {
   display: block;
-  padding: 16px 15px;
+  padding: 16px 15px 16px 55px;
   font-family: "open_sansregular", sans-serif;
   color: #666;
 }
@@ -563,29 +563,32 @@ th {
 
 #sidenav_accordion .panel-heading .sidenav_cat_toggler {
     position: absolute;
-    right: 0;
+    left: 0;
     padding: 15px 16px 17px 16px;
-    background-color: #ccc;
+    background-color: #e0e0e0;
     line-height: 0;
+    transition: background-color 0.5s;
+}
+#sidenav_accordion .panel-heading .sidenav_cat_toggler.collapsed {
+  background-color: #ccc;
 }
 
 #sidenav_accordion .panel-heading .sidenav_cat_toggler:before {
-    font-family: "FontAwesome";
-    content: "\f107";
+    content: "-";
+    width: 0.8em;
+    text-align: center;
     display: block;
-    transition: transform 0.5s;
     line-height: 17.7px;
 }
 #sidenav_accordion .panel-heading .sidenav_cat_toggler.collapsed:before {
-  /* content: "\f106"; */
-  transform: rotate(90deg);
+    content: "+";
 }
 
 
 #sidenav_accordion .panel .sidebar_cat_pagelist li a {
   display: block;
   margin-top: 5px;
-  padding: 4px 15px 4px 55px;
+  padding: 4px 15px 4px 75px;
   text-indent: -20px;
   font-size: 14px;
   color: #27a2db;
@@ -898,5 +901,5 @@ th {
 }
 
 #sidenav_accordion .panel .sidebar_cat_pagelist li .subpage {
-  padding-left: 75px;
+  padding-left: 95px;
 }

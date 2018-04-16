@@ -217,6 +217,33 @@ pages:
         targets:
             - local
 
+    -   name: rippled API Admin Methods
+        funnel: Docs
+        doc_type: References
+        category: rippled API Admin Methods
+        html: reference-rippled-admin.html
+        template: template-cat-landing.html
+        targets:
+            - local
+
+    -   md: rippled-api-methods/ledger_accept.md
+        funnel: Docs
+        doc_type: References
+        category: rippled API Admin Methods
+        subcategory: Server Control Methods
+        template: template-cat-landing.html
+        targets:
+            - local
+
+    -   name: Test Empty Category
+        funnel: Docs
+        doc_type: References
+        category: Test Empty Category
+        html: reference-rippled-conventions.html
+        template: template-cat-landing.html
+        targets:
+            - local
+
 
 ignore_anchors_in:
     - data-api-v2-tool.html
