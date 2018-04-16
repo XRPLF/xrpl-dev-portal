@@ -89,7 +89,7 @@ The submission process:
     - Transaction hash
     - `LastLedgerSequence`
     - Sender address and sequence number
-    - Most recently-validated ledger index at the time of submission
+    - Latest validated ledger index at the time of submission
     - Application-specific data, as needed
 3. Submit the transaction
 
@@ -105,30 +105,30 @@ On restart, or the determination of a new last validated ledger (pseudocode):
 For each persisted transaction without validated result:
     Query transaction by hash
     If (result appears in validated ledger)
-      # Outcome is final
-      Persist the final result
-      If (result code is tesSUCCESS)
-        Application may act based on successful transaction
-      Else
-        The transaction failed (1)
-        If appropriate for the application and failure type, submit with
-            new LastLedgerSequence and Fee
+        # Outcome is final
+        Persist the final result
+        If (result code is tesSUCCESS)
+            Application may act based on successful transaction
+        Else
+            The transaction failed (1)
+            If appropriate for the application and failure type, submit with
+                new LastLedgerSequence and Fee
 
     Else if (LastLedgerSequence > newest validated ledger)
-      # Outcome is not yet final
-      Wait for more ledgers to be validated
+        # Outcome is not yet final
+        Wait for more ledgers to be validated
 
     Else
-      If (server has continuous ledger history from the ledger when the
-            transaction was submitted up to and including the ledger identified
-            by LastLedgerSequence)
-        The transaction failed (2)
-        If appropriate for the application, submit with
-            new LastLedgerSequence and Fee
+        If (server has continuous ledger history from the ledger when the
+              transaction was submitted up to and including the ledger
+              identified by LastLedgerSequence)
+            The transaction failed (2)
+            If appropriate for the application, submit with
+                new LastLedgerSequence and Fee
 
-      Else
-        # Outcome is final, but not known due to a ledger gap
-        Wait to acquire continuous ledger history
+        Else
+            # Outcome is final, but not known due to a ledger gap
+            Wait to acquire continuous ledger history
 ```
 
 #### Failure Cases
@@ -137,7 +137,7 @@ The difference between the two transaction failure cases (labeled (1) and (2) in
 
 - In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](concept-transaction-cost.html), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](concept-paths.html), or other circumstances. For many such failures, immediately retrying with a similar transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
 
-- In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or simply a coincidence. In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again.
+- In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or it could be due to other conditions such as an unstable network connection. In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again.
     - It is also possible that the transaction could not succeed due to the state of the ledger, for example because the sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](reference-transaction-format.html#tef-codes), the transaction is less likely to succeed without further modification.
 
 
