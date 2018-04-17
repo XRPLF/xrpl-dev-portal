@@ -41,40 +41,29 @@
     <div class="container">
       <div class="navbar-header">
           <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+          <div class="draft-warning">BETA</div>
       </div><!-- /.navbar-header -->
-      <div class="nav">
-        {% block breadcrumbs %}
-          {% include 'template-breadcrumbs.html' %}
-        {% endblock %}
-        <div class="draft-warning">DRAFT PAGE</div>
-        <div class="github-edit-wrap">
-          {% set have_edit_link = False %}
-          {% if currentpage.md is defined %}
-              {% if currentpage.md.startswith("http://") or
-                currentpage.md.startswith("https://") %}
-                {# Leave have_edit_link = False #}
-              {% else %}
-                {% set have_edit_link = True %}
-                {% set githuburl = target.github_forkurl + "/edit/"
-                  + target.github_branch
-                  + "/content/" + currentpage.md %}
-              {% endif %}
-          {% elif currentpage.template is defined %}
-            {% set have_edit_link = True %}
-            {% set githuburl = target.github_forkurl + "/edit/"
-              + target.github_branch + "/tool/" + currentpage.template %}
+      <ul class="nav navbar-nav">
+        {% set funnels = [] %}
+        {% for page in pages %}
+          {% if page.funnel is defined and page.funnel not in funnels %}
+            {% set thisfunneltop = pages|selectattr('funnel', 'equalto', page.funnel)|first %}
+            <li class="nav-item{% if currentpage == thisfunneltop %} active{% elif currentpage.funnel == thisfunneltop.name %} active-parent{% endif %}">
+              <a class="nav-link" href="{{ thisfunneltop.html }}">{{ thisfunneltop.name }}</a>
+            </li>
+            {% set _ = funnels.append(page.funnel) %}
+            <!-- funnels is: {{ funnels }} -->
           {% endif %}
-          {% if target.is_pr_build and have_edit_link %}
-            {% set githuburl = githuburl + "?pr=/ripple/ripple-dev-portal/pull/"
-              + target.github_pr_id %}
-          {% endif %}
-          {% if not have_edit_link %}
-            {% set githuburl = target.github_forkurl %}
-          {% endif %}
-          <a href="{{githuburl}}" target="_blank" class="github-edit">Edit on GitHub</a>
-        </div><!-- /.github-edit -->
-      </div><!-- /.nav -->
-
+        {% endfor %}
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-group">
+          <input name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+        {% include 'template-github-edit.html' %}
+      </form>
     </div><!-- /.container -->
 
   </header>
@@ -85,6 +74,9 @@
           {% block sidebar %}{% endblock %}
       </aside>
       <main class="main" role="main" id="main_content_body">
+          {% block breadcrumbs %}
+            {% include 'template-breadcrumbs.html' %}
+          {% endblock %}
           {% block main %}{% endblock %}
       </main>
   </div>

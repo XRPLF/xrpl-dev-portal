@@ -244,6 +244,27 @@ pages:
         targets:
             - local
 
+    -   name: Use Cases
+        funnel: Use Cases
+        html: use-cases.html
+        template: template-cat-landing.html # TODO: use-cases landing
+        targets:
+            - local
+
+    -   name: Dev Tools
+        funnel: Dev Tools
+        html: dev-tools.html
+        template: template-cat-landing.html # TODO: dev tools landing
+        targets:
+            - local
+
+    -   name: News
+        funnel: News
+        html: news.html
+        template: template-cat-landing.html # TODO: news landing
+        targets:
+            - local
+
 
 ignore_anchors_in:
     - data-api-v2-tool.html

@@ -3447,7 +3447,7 @@ ul#menu-primary-navigation {
   margin-top: 10px;
   letter-spacing: .03em;
 }
-.home .navbar-default {
+/* .home .navbar-default {
   z-index: 99999;
   background-color: transparent;
   border-bottom: none;
@@ -3856,7 +3856,7 @@ fieldset[disabled] .navbar-inverse .btn-link:hover,
 .navbar-inverse .btn-link[disabled]:focus,
 fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #444444;
-}
+} */
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 20px;

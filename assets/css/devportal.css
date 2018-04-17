@@ -61,10 +61,6 @@
     padding-right: 5px;
 }
 
-.navbar-header {
-    float: left;
-}
-
 /* Big draft warning at top of page so it's hard to mix up with the live site */
 .draft-warning {
     background-color: red;
@@ -405,26 +401,43 @@ th {
 }
 
 .navbar-default .logo {
-    float: left;
     margin-right: 0.5em;
 }
 
 .navbar-default .navbar-brand .brand-text {
-  font-family: open_sansbold, sans-serif;
-  font-weight: bold;
+  font-family: 'open_sansbold', sans-serif;
   line-height: 36px;
   margin-bottom: -5px;
   margin-top: 20px;
+  margin-right: 20px;
+  color: #777;
 }
 
-.navbar-default .navbar-nav > li > a {
-    font-size: 14px;
-    line-height: 30px;
-    color: #777;
+.navbar-default .navbar-nav a {
+    font-size: 18px;
+    line-height: 38px;
+    color: #27a2db;
+    text-decoration: none;
 }
 
-.navbar-default a.active {
-    color: #27a2db !important;
+.navbar-default .navbar-nav .active a {
+    font-weight: bold;
+    color: #333;
+    background-color: #eee;
+
+}
+.navbar-default .active-parent a {
+    font-weight: bold;
+    background-color: #eee;
+}
+
+.navbar-default .navbar-form {
+  margin: 17px 16px;
+}
+
+.navbar-form .btn.fa-search {
+  padding: 8px;
+  font-size: 16px;
 }
 
 .wrap-container {
@@ -463,7 +476,6 @@ th {
   padding: 15px;
   padding-left: 5px;
   background: transparent;
-  float: left;
   vertical-align: middle;
 }
 
@@ -611,12 +623,10 @@ th {
 
 /* Edit on GitHub link --------- */
 .github-edit-wrap {
-  position: absolute;
-  right: 0;
+  margin-left: 15px;
   background-image: linear-gradient(180deg, #fafafa 0%, #ddd 90%);
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 15px;
 }
 .github-edit-wrap:hover {
   border-color: #777;
@@ -635,6 +645,7 @@ th {
   text-decoration: none;
   font-size: 13px;
   display: block;
+  line-height: 16px;
 }
 
 .portal-index ul {
@@ -713,7 +724,7 @@ th {
 }
 
 /* Responsive design for different viewscreens -------------------------------*/
-@media (min-width: 1201px) {
+@media (min-width: 1200px) {
   #page-toc-wrapper {
     float: right;
     margin-left: 15px;
@@ -739,10 +750,13 @@ th {
     left: calc(calc(calc(100% - 1370px) / 2) + 140px);
   }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   #page-toc-wrapper {
     float: right;
     margin-left: 15px;
+  }
+  #main_content_wrapper {
+    margin-top: 137px;
   }
   .dev_nav_wrapper {
     max-width: 290px;
@@ -758,11 +772,22 @@ th {
     float: none;
     max-width: none;
   }
+  #main_content_wrapper {
+    margin-top: 0;
+  }
   .dev_nav_wrapper {
     max-width: 230px;
   }
   .draft-warning {
     left: 140px;
+  }
+  .navbar-fixed-top {
+    position: static;
+    margin-bottom: -70px;
+  }
+  .navbar-fixed-top {
+    position: static;
+    margin-bottom: -70px;
   }
 
   /* Move "Related Projects" to bottom */
@@ -792,14 +817,7 @@ th {
     padding-left: 20px;
   }
 }
-@media (max-width: 768px) {
-  #main_content_wrapper {
-    margin-top: 0;
-  }
-  .navbar-fixed-top {
-    position: static;
-    margin-bottom: -70px;
-  }
+@media (max-width: 768px) {z
   .dev_nav_wrapper,
   .sidebar {
     display: block;
@@ -814,12 +832,6 @@ th {
     overflow: hidden;
   }
   .github-edit-wrap {
-    display: none;
-  }
-  .nav {
-    min-width: 350px;
-  }
-  .nav .breadcrumb .crumb-top:before {
     display: none;
   }
 }
@@ -915,5 +927,5 @@ th {
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
-  padding: 15px 16px 15px 0;
+  padding: 15px 16px 15px 10px;
 }

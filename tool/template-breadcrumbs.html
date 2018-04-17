@@ -1,16 +1,18 @@
-<ul class="breadcrumb">
-  <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
-  {% if currentpage.funnel and currentpage != pages|selectattr('funnel', 'equalto', currentpage.funnel)|first %}
-  <li class="active crumb-category"><a href="{{ (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first).html }}">{{ currentpage.funnel }}</a></li>
-  {% endif %}
-  {% if currentpage.doc_type and currentpage != pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first%}
-  <li class="active crumb-category"><a href="{{ (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first).html }}">{{ currentpage.doc_type }}</a></li>
-  {% endif %}
-  {% if currentpage.category and currentpage != pages|selectattr('category', 'equalto', currentpage.category)|first %}
-  <li class="active crumb-category"><a href="{{ (pages|selectattr('category', 'equalto', currentpage.category)|first).html }}">{{ currentpage.category }}</a></li>
-  {% endif %}
-  {% if currentpage.subcategory and currentpage != pages|selectattr('subcategory', 'equalto', currentpage.subcategory)|first %}
-  <li class="active crumb-category"><a href="{{ (pages|selectattr('subcategory', 'equalto', currentpage.subcategory)|first).html }}">{{ currentpage.subcategory }}</a></li>
-  {% endif %}
-  <li class="active crumb-current">{{ currentpage.name }}</li>
-</ul>
+<div class="breadcrumbs-wrap">
+  <ul class="breadcrumb">
+    <li class="crumb-top"><a href="index.html">Home</a></li>
+    {% if currentpage.funnel and currentpage != pages|selectattr('funnel', 'equalto', currentpage.funnel)|first %}
+    <li class="active crumb-category"><a href="{{ (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first).html }}">{{ currentpage.funnel }}</a></li>
+    {% endif %}
+    {% if currentpage.doc_type and currentpage != pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first%}
+    <li class="active crumb-category"><a href="{{ (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first).html }}">{{ currentpage.doc_type }}</a></li>
+    {% endif %}
+    {% if currentpage.category and currentpage != pages|selectattr('category', 'equalto', currentpage.category)|first %}
+    <li class="active crumb-category"><a href="{{ (pages|selectattr('category', 'equalto', currentpage.category)|first).html }}">{{ currentpage.category }}</a></li>
+    {% endif %}
+    {% if currentpage.subcategory and currentpage != pages|selectattr('subcategory', 'equalto', currentpage.subcategory)|first %}
+    <li class="active crumb-category"><a href="{{ (pages|selectattr('subcategory', 'equalto', currentpage.subcategory)|first).html }}">{{ currentpage.subcategory }}</a></li>
+    {% endif %}
+    <li class="active crumb-current">{{ currentpage.name }}</li>
+  </ul>
+</div>
