@@ -554,11 +554,17 @@ th {
   display: block;
   padding: 16px 15px 16px 55px;
   font-family: "open_sansregular", sans-serif;
-  color: #666;
+}
+#sidenav_accordion .panel-heading h5 a.sidenav_cat_title {
+  color: #27a2db;
 }
 #sidenav_accordion .panel-heading h5 .sidenav_cat_title.active {
   color: #333;
   font-weight: bold;
+  cursor: default;
+}
+#sidenav_accordion .panel-heading h5 .sidenav_cat_title.active-parent {
+  color: #333;
 }
 
 #sidenav_accordion .panel-heading .sidenav_cat_toggler {
