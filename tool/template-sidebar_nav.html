@@ -1,4 +1,9 @@
 <div class="guide_toc">
+  {% if currentpage.doc_type is defined %}
+  <div class="sidenav_parent">
+    <a href="{{ (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first).html }}">{{ currentpage.doc_type }}</a>
+  </div>
+  {% endif %}
   <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
     {% for cat in categories %}
       {% set catpages = pages|selectattr("category", "equalto", cat)|list %}
@@ -31,6 +36,8 @@
             {% elif page.subcategory not in printed_subcategories %}
               {% if page == currentpage %}
               <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}</a></li>
+              {% elif page.subcategory == currentpage.subcategory %}
+              <li><a class="subcat-title active-parent" href="{{ page.html }}">{{ page.name }}</a></li>
               {% else %}
               <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}</a></li>
               {% endif %}

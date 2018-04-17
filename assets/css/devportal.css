@@ -542,7 +542,7 @@ th {
 #sidenav_accordion .panel {
   padding: 0;
   border-radius: 0;
-  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
 }
 
 #sidenav_accordion .panel-heading h5 {
@@ -896,10 +896,18 @@ th {
 * New stuff for 5-level nesting
 *******************************************************************************/
 
-.subcat-title {
+.subcat-title.active-parent {
   font-weight: bold;
 }
 
 #sidenav_accordion .panel .sidebar_cat_pagelist li .subpage {
-  padding-left: 95px;
+  padding-left: 105px;
+}
+
+.sidenav_parent a {
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 16px 15px 0;
 }
