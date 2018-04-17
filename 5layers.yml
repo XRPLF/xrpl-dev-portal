@@ -258,10 +258,55 @@ pages:
         targets:
             - local
 
+    -   name: RPC Tool
+        funnel: Dev Tools
+        html: xrp-ledger-rpc-tool.html
+        targets:
+            - local
+        template: template-xrp-ledger-rpc-tool.html
+
+    -   name: WebSocket API Tool
+        funnel: Dev Tools
+        html: ripple-api-tool.html
+        sidebar: custom
+        targets:
+            - local
+        template: template-ripple-api-tool.html
+
+    -   name: Data API v2 Tool
+        funnel: Dev Tools
+        html: data-api-v2-tool.html
+        methods_js: js/apitool-methods-data_v2.js
+        rest_host: https://data.ripple.com
+        doc_page: reference-data-api.html
+        sidebar: custom
+        targets:
+            - local
+        template: template-rest-api-tool.html
+
+    -   name: ripple.txt Validator
+        funnel: Dev Tools
+        html: ripple-txt-validator.html
+        targets:
+            - local
+        template: template-ripple-txt-validator.html
+
+    -   name: XRP Test Net Faucet
+        funnel: Dev Tools
+        html: xrp-test-net-faucet.html
+        targets:
+            - local
+        template: template-test-net.html
+
     -   name: News
         funnel: News
         html: news.html
         template: template-cat-landing.html # TODO: news landing
+        targets:
+            - local
+
+    -   md: reference-amendments.md
+        funnel: News
         targets:
             - local
 

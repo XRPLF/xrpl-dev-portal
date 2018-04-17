@@ -6778,11 +6778,11 @@ figure.alignnone {
 .content-info section {
   margin-bottom: 70px;
 }
-.content-info section a {
-  color: #999999;
+.content-info a {
+  text-decoration: none;
   transition: .5s;
 }
-.content-info section a:hover {
+.content-info a:hover {
   color: #ffffff;
   transition: .5s;
 }
@@ -6804,7 +6804,7 @@ figure.alignnone {
 }
 .content-info h5 a {
   color: #ffffff;
-  font-size: 12px;
+  font-size: 16px;
   font-family: 'open_sansbold', sans-serif;
   -o-transition: .5s;
   -ms-transition: .5s;
@@ -6812,6 +6812,7 @@ figure.alignnone {
   -webkit-transition: .5s;
   transition: .5s;
   letter-spacing: .04em;
+  text-decoration: none;
 }
 .content-info h5 a:hover,
 .content-info h5 a:focus {

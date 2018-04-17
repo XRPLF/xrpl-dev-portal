@@ -13,13 +13,15 @@
 
     <div class='content'>
       <h2>Pages in this category:</h2>
-      <ul class="cat_pagelist">
+      {% include 'template-page-children.html' %}
+
+      <!--{# <ul class="cat_pagelist">
         {% for page in pages %}
           {% if page.category == currentpage.category and
               page.name != currentpage.name %}
             <li><a href="{{page.html}}">{{page.name}}</a></li>
           {% endif %}
         {% endfor %}
-      </ul>
+      </ul> #}-->
     </div>
 {% endblock %}

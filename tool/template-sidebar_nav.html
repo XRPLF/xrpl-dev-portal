@@ -3,10 +3,23 @@
   <div class="sidenav_parent">
     <a href="{{ (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first).html }}">{{ currentpage.doc_type }}</a>
   </div>
+  {% elif currentpage.funnel is defined %}
+  <div class="sidenav_parent">
+    {% if currentpage == (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first) %}
+    <a class="active" href="{{ currentpage.html }}">{{ currentpage.funnel }}</a>
+    {% else %}
+    <a href="{{ (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first).html }}">{{ currentpage.funnel }}</a>
+    {% endif %}
+  </div>
   {% endif %}
-  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+
+  {% if pages|selectattr("funnel", "equalto", currentpage.funnel)|selectattr("category", "defined")|list|length %}
+  <div id="sidenav" class="panel-group" role="tablist" aria-multiselectable="true">
     {% for cat in categories %}
       {% set catpages = pages|selectattr("category", "equalto", cat)|list %}
+      {% if currentpage.funnel is defined %}
+        {% set catpages = catpages|selectattr("funnel", "equalto", currentpage.funnel)|list %}
+      {% endif %}
       {% if currentpage.doc_type is defined %}
         {% set catpages = catpages|selectattr("doc_type", "equalto", currentpage.doc_type)|list %}
       {% endif %}
@@ -23,7 +36,7 @@
 
       <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category == cat %} in{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
         <div class="panel-body">
-          <ul class="sidebar_cat_pagelist">
+          <ul class="sidebar_pagelist">
           {% set printed_subcategories = [] %}
           {% for page in catpages %}
             {% if loop.index != 1 %}{# Skip the first element since it's linked by the category header #}
@@ -64,6 +77,26 @@
     </div><!-- /.panel -->
     {% endif %}
     {% endfor %}
+  </div><!-- /#sidenav -->
 
-  </div><!-- /#sidenav_accordion -->
+  {% else %}
+  {#--- No categories in this funnel --#}
+  {% set funnelpages = pages|selectattr("funnel", "equalto", currentpage.funnel)|list %}
+  <div id="sidenav" class="panel-group" aria-multiselectable="true">
+    <div class="panel panel-default active">
+      <div class="panel-body">
+        <ul class="sidebar_pagelist">
+        {% for page in funnelpages %}
+          {% if loop.index == 1 %}{# Skip the first element since it's linked by the funnel header #}
+          {% elif page == currentpage %}
+          <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
+          {% else %}
+          <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </div><!-- /.panel-body -->
+    </div><!-- /.panel -->
+  </div><!-- /#sidenav -->
+  {% endif %}
 </div><!-- /.guide_toc -->
