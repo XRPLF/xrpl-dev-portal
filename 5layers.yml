@@ -47,10 +47,19 @@ targets:
 pages:
 
     -   name: Docs
+        md: landing-docs.md
         funnel: Docs
         template: template-landing-docs.html
         html: landing-docs.html
         sidebar: disabled
+        recently_updated:
+            - tutorial-reliable-transaction-submission.html
+            - tutorial-checks-send.html
+            - reference-amendments.html
+        doc_type_blurbs:
+            Concepts: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
+            Tutorials: Get step-by-step guidance to perform common tasks with the XRP Ledger.
+            References: Look up the ins-and-outs of our APIs, including sample requests and responses.
         targets:
             - local
 
@@ -244,6 +253,35 @@ pages:
         targets:
             - local
 
+    -   name: Tutorials #TODO: real page content
+        funnel: Docs
+        doc_type: Tutorials
+        template: template-landing-category.html
+        targets:
+            - local
+
+    -   name:  Send and Receive Money
+        funnel: Docs
+        doc_type: Tutorials
+        category: Send and Receive Money
+        template: template-landing-category.html
+        targets:
+            - local
+
+    -   md: tutorial-reliable-transaction-submission.md
+        funnel: Docs
+        doc_type: Tutorials
+        category: Send and Receive Money
+        targets:
+            - local
+
+    -   md: tutorial-checks-send.md
+        funnel: Docs
+        doc_type: Tutorials
+        category: Send and Receive Money
+        targets:
+            - local
+
     -   name: Use Cases
         funnel: Use Cases
         html: use-cases.html
@@ -267,7 +305,7 @@ pages:
 
     -   name: WebSocket API Tool
         funnel: Dev Tools
-        html: ripple-api-tool.html
+        html: websocket-api-tool.html
         sidebar: custom
         targets:
             - local
@@ -305,7 +343,7 @@ pages:
         targets:
             - local
 
-    -   md: reference-amendments.md
+    -   md: reference-amendments.md # TODO: rename to news-amendments.md
         funnel: News
         targets:
             - local

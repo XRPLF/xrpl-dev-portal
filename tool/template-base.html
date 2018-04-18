@@ -36,7 +36,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal {% block bodyclasses %}sidebar-primary{% endblock %}">
+<body class="xrp-ledger-dev-portal {% if currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}{% block bodyclasses %}{% endblock %}">
   <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
     <div class="container">
       <div class="navbar-header">
@@ -69,9 +69,11 @@
 
 
   <div class="wrap container" role="document" id="main_content_wrapper">
+      {% if currentpage.sidebar != "disabled" %}
       <aside class="sidebar" role="complementary">
           {% block sidebar %}{% endblock %}
       </aside>
+      {% endif %}
       <main class="main" role="main" id="main_content_body">
           {% block breadcrumbs %}
             {% include 'template-breadcrumbs.html' %}

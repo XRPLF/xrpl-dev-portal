@@ -1,15 +1,18 @@
 {% extends "template-base.html" %}
 
 {% block sidebar %}
-{% if currentpage.sidebar != "disabled" %}
-
-  {% include "template-sidebar_nav.html" %}
-
-{% endif %}
 {% endblock %}
 
 {% block main %}
-    <h1 class="main-page-header">{{ currentpage.name }}</h1>
+    <h1 class="main-page-header">XRP Ledger Documentation</h1>
+
+    <section class="container">
+      <div class="row">
+        <div class="blurb col-sm-12">
+          {{content}}
+        </div>
+      </div>
+    </section>
 
     <section class="container">
       <div class="row">
@@ -17,21 +20,100 @@
       {% for page in pages %}
         {% if page.doc_type is defined and page.doc_type not in doc_types %}
           {% set doc_type_top = pages|selectattr('doc_type', 'equalto', page.doc_type)|first %}
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title"><a href="{{doc_type_top.html}}">{{doc_type_top.name}}</a></h3>
               </div><!--/.panel-heading-->
               <div class="panel-body">
+                {% if currentpage.doc_type_blurbs[page.doc_type] is defined %}
+                  <p class="doc-type-blurb">{{currentpage.doc_type_blurbs[page.doc_type]}}</p>
+                {% endif %}
                 {% set parent_page = doc_type_top %}
-                {% set depth = 3 %}
+                {% set depth = 1 %}
                 {% include 'template-page-children.html' %}
               </div><!--/.panel-body-->
             </div><!--/.panel-->
-          </div><!--/.col-sm-3-->
+          </div><!--/.col-sm-4-->
           {% set _ = doc_types.append(page.doc_type) %}
         {% endif %}
       {% endfor %}
+      </div><!--/.row-->
+
+      <div class="row">
+
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Get Started</h3>
+            </div><!--/.panel-heading-->
+            <div class="panel-body">
+              <div class="curated-links">
+                <ul>
+                  <li><a href="websocket-api-tool.html">Make a call to the rippled API</a></li>
+                  <li><a href="xrp-test-net-faucet.html">Access the XRP Ledger Test Net</a></li>
+                  <li><a href="landing-concepts.html">Understand XRP Ledger Concepts</a></li>
+                </ul>
+              </div><!--/.curated-links-->
+            </div><!--/.panel-body-->
+          </div><!--/.panel-->
+        </div><!--/.col-sm-3-->
+
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Popular Docs</h3>
+            </div><!--/.panel-heading-->
+            <div class="panel-body">
+              <div class="curated-links">
+                <ol>
+                  <li><a href="reference-rippled-public.html">rippled API Public Methods Reference</a></li>
+                  <li><a href="concept-accounts.html">Accounts</a></li>
+                  <li><a href="rippled-setup.html">rippled Server Setup</a></li>
+                  <li><a href="reference-rippleapi.html">RippleAPI for JavaScript</a></li>
+                </ol>
+              </div><!--/.curated-links-->
+            </div><!--/.panel-body-->
+          </div><!--/.panel-->
+        </div><!--/.col-sm-3-->
+
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Popular Tools</h3>
+            </div><!--/.panel-heading-->
+            <div class="panel-body">
+              <div class="curated-links">
+                <ol>
+                  <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+                  <li><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+                  <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+                  <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+                  <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+                </ol>
+              </div><!--/.curated-links-->
+            </div><!--/.panel-body-->
+          </div><!--/.panel-->
+        </div><!--/.col-sm-3-->
+
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Recently Updated</h3>
+            </div><!--/.panel-heading-->
+            <div class="panel-body">
+              <div class="curated-links">
+                <ol>
+                  {% for link in currentpage.recently_updated %}
+                    {% set linkpage = pages|selectattr("html", "equalto", link)|first %}
+                    <li><a href="{{linkpage.html}}">{{linkpage.name}}</a></li>
+                  {% endfor %}
+                </ol>
+              </div><!--/.curated-links-->
+            </div><!--/.panel-body-->
+          </div><!--/.panel-->
+        </div><!--/.col-sm-3-->
+
       </div><!--/.row-->
     </section>
 {% endblock %}
