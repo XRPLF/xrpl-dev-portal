@@ -34,6 +34,7 @@ cover_page:
     name: Overview
     html: index.html
     template: template-5layerindex.html
+    sidebar: disabled
 
 targets:
     # First member is the default that gets built when target not specified
@@ -67,6 +68,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         html: landing-concepts.html
+        template: template-landing-category.html
         targets:
             - local
 
