@@ -66,7 +66,7 @@ pages:
         doc_type: Concepts
         category: Payment System
         html: concept-payment-system.html
-        template: template-cat-landing.html
+        template: template-landing-category.html
         targets:
             - local
 
@@ -113,7 +113,7 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         html: concept-consensus-network.html
-        template: template-cat-landing.html
+        template: template-landing-category.html
         targets:
             - local
 
@@ -143,7 +143,7 @@ pages:
         doc_type: References
         category: rippled API Public Methods
         html: reference-rippled-public.html
-        template: template-cat-landing.html
+        template: template-landing-category.html
         targets:
             - local
 
@@ -222,7 +222,7 @@ pages:
         doc_type: References
         category: rippled API Admin Methods
         html: reference-rippled-admin.html
-        template: template-cat-landing.html
+        template: template-landing-category.html
         targets:
             - local
 
@@ -231,7 +231,7 @@ pages:
         doc_type: References
         category: rippled API Admin Methods
         subcategory: Server Control Methods
-        template: template-cat-landing.html
+        template: template-landing-category.html
         targets:
             - local
 
@@ -240,21 +240,21 @@ pages:
         doc_type: References
         category: Test Empty Category
         html: reference-rippled-conventions.html
-        template: template-cat-landing.html
+        template: template-landing-category.html
         targets:
             - local
 
     -   name: Use Cases
         funnel: Use Cases
         html: use-cases.html
-        template: template-cat-landing.html # TODO: use-cases landing
+        template: template-landing-category.html # TODO: use-cases landing
         targets:
             - local
 
     -   name: Dev Tools
         funnel: Dev Tools
         html: dev-tools.html
-        template: template-cat-landing.html # TODO: dev tools landing
+        template: template-landing-category.html # TODO: dev tools landing
         targets:
             - local
 
@@ -301,7 +301,7 @@ pages:
     -   name: News
         funnel: News
         html: news.html
-        template: template-cat-landing.html # TODO: news landing
+        template: template-landing-category.html # TODO: news landing
         targets:
             - local
 

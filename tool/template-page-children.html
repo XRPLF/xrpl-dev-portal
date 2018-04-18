@@ -1,60 +1,73 @@
 {% if parent_page is undefined %}
   {% set parent_page = currentpage %}
 {% endif %}
-
-{% if parent_level is undefined %}
-  {% if parent_page.funnel is undefined %}
-    <!-- TEMPLATE ERROR: need funnel for children-display -->
-  {% elif parent_page == pages|selectattr("funnel", "equalto", parent_page.funnel)|first %}
-    {% set parent_level = "funnel" %}
-  {% elif parent_page == pages|selectattr("doc_type", "equalto", parent_page.doc_type)|first %}
-    {% set parent_level = "doc_type" %}
-  {% elif parent_page == pages|selectattr("category", "equalto", parent_page.category)|first %}
-    {% set parent_level = "category" %}
-  {% elif parent_page == pages|selectattr("subcategory", "equalto", parent_page.subcategory)|first %}
-    {% set parent_level = "subcategory" %}
-  {% else %}
-    <!-- TEMPLATE ERROR: page {{parent_page.name}} is not the parent of anything? -->
-  {% endif %}
-  <!-- parent_level is {{parent_level}} -->
-  {% set childpages = pages|selectattr(parent_level, "equalto", parent_page[parent_level])|list %}
+{% if depth is undefined %}
+  {% set depth = 5 %}
 {% endif %}
+
+{% if parent_page.funnel is undefined %}
+  <!-- TEMPLATE ERROR: need funnel for children-display -->
+{% elif parent_page == pages|selectattr("funnel", "equalto", parent_page.funnel)|first %}
+  {% set parent_level = "funnel" %}
+  {% set level_2 = "doc_type" %}
+  {% set level_3 = "category" %}
+{% elif parent_page == pages|selectattr("doc_type", "equalto", parent_page.doc_type)|first %}
+  {% set parent_level = "doc_type" %}
+  {% set level_2 = "category" %}
+  {% set level_3 = "subcategory" %}
+{% elif parent_page == pages|selectattr("category", "equalto", parent_page.category)|first %}
+  {% set parent_level = "category" %}
+  {% set level_2 = "subcategory" %}
+  {% set level_3 = None %}
+{% elif parent_page == pages|selectattr("subcategory", "equalto", parent_page.subcategory)|first %}
+  {% set parent_level = "subcategory" %}
+  {% set level_2 = None %}
+  {% set level_3 = None %}
+{% else %}
+  <!-- TEMPLATE ERROR: page {{parent_page.name}} is not the parent of anything? -->
+{% endif %}
+<!-- parent_level is {{parent_level}} -->
+{% set childpages = pages|selectattr(parent_level, "equalto", parent_page[parent_level])|list %}
+
 <div class="children-display">
   <ul>
-    {% set printed_subcategories = [] %}
+    {% set printed_level2s = [] %}
     {% for page in childpages %}
       {% if page == parent_page %}{# skip parent #}
-
-      {% elif parent_level == "funnel" %}
-        {% if page.doc_type is defined and page in childpages|selectattr("category", "undefined") %}
-          <li class="level-1"><a href="{{page.html}}">{{page.name}}</a></li>
-        {% elif not childpages|selectattr("category", "defined")|list %}
-          {# no categories in this funnel #}
-          <li class="level-1"><a href="{{page.html}}">{{page.name}}</a></li>
-        {% endif %}
-
-      {% elif parent_level == "category" %}
-        {% if page.subcategory is defined and (depth is undefined or depth > 1) %}
-          {% if page.subcategory not in printed_subcategories %}
-            {% for subpage in childpages|selectattr("subcategory",  "equalto", page.subcategory) %}
-              {% if loop.index == 1 %}
-                <li class="level-1"><a href="{{subpage.html}}">{{subpage.name}}</a></li>
-              {% else %}
-              <li class="level-2"><a href="{{subpage.html}}">{{subpage.name}}</a></li>
-              {% endif %}
-            {% endfor %}
-            {% set _ = printed_subcategories.append(page.subcategory) %}
-          {% endif %}
-        {% else %}
-          {# non-subcategory page #}
-          <li class="level-1"><a href="{{page.html}}">{{page.name}}</a></li>
-        {% endif %}
-
-      {% else %}
-        <!-- TEMPLATE WARNING: unhandled case -->
+      {% elif level_2 == None or page[level_2] is undefined %}
         <li class="level-1"><a href="{{page.html}}">{{page.name}}</a></li>
-      {% endif %}
+      {% elif page[level_2] is defined %}
+        {% if page[level_2] not in printed_level2s %}
+          {% set printed_level3s = [] %}
+          {% set subpages = childpages|selectattr(level_2, "equalto", page[level_2])|list %}
+          {% for subpage in subpages %}
+            {% if loop.index == 1 %}
+              <li class="level-1"><a href="{{subpage.html}}">{{subpage.name}}</a></li>
+            {% else %}
+              {% if depth > 1 %}
+                {% if level_3 == None or subpage[level_3] is undefined %}
+                  <li class="level-2"><a href="{{subpage.html}}">{{subpage.name}}</a></li>
+                {% elif subpage[level_3] is defined %}
+                  {% if subpage[level_3] not in printed_level3s %}
+                    {% for subsubpage in subpages|selectattr(level_3, "equalto", subpage[level_3])|list %}
+                      {% if loop.index == 1 %}
+                        <li class="level-2"><a href="{{subsubpage.html}}">{{subsubpage.name}}</a></li>
+                      {% elif depth > 2 %}
+                        <li class="level-3"><a href="{{subsubpage.html}}">{{subsubpage.name}}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    {% set _ = printed_level3s.append(subpage[level_3]) %}
+                  {% endif %}
+                {% endif %}
 
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          {% set _ = printed_level2s.append(page[level_2]) %}
+        {% endif %}
+      {% else %}
+        <!-- TEMPLATE warning: else case -->
+      {% endif %}
     {% endfor %}
   </ul>
 </div>

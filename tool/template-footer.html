@@ -1,23 +1,32 @@
 <footer class="content-info" role="contentinfo">
     <div class="container">
         <div class="row">
+          <div class="col-sm-1">&nbsp;</div>
           {% set funnels = [] %}
           {% for page in pages %}
             {% if page.funnel is defined and page.funnel not in funnels %}
               {% set parent_page = pages|selectattr('funnel', 'equalto', page.funnel)|first %}
 
-              <!--{#<li class="nav-item{% if currentpage == thisfunneltop %} active{% elif currentpage.funnel == thisfunneltop.name %} active-parent{% endif %}">
-                <a class="nav-link" href="{{ thisfunneltop.html }}">{{ thisfunneltop.name }}</a>
-              </li>#}-->
+              <div class="col-sm-2 foot-nav-col">
+                <h5><a class="foot-nav-link" href="{{ parent_page.html }}">{{ parent_page.name }}</a></h5>
+                {% set depth=1 %}
+                {% include 'template-page-children.html' %}
+              </div><!--/.foot-nav-col -->
 
-          <div class="col-sm-3 foot-nav-col">
-            <h5><a class="foot-nav-link" href="{{ parent_page.html }}">{{ parent_page.name }}</a></h5>
-            {% set depth=1 %}
-            {% include 'template-page-children.html' %}
-          </div><!--/.foot-nav-col -->
-            {% set _ = funnels.append(page.funnel) %}
-          {% endif %}
-        {% endfor %}
+              {% set _ = funnels.append(page.funnel) %}
+            {% endif %}
+          {% endfor %}
+
+              <div class="col-sm-2 foot-nav-col">
+                <h5><a class="foot-nav-link" href="https://ripple.com/">Ripple <i class="fa fa-external-link"></i></a></h5>
+                <div class="children-display">
+                  <ul>
+                    <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/">Our Company <i class="fa fa-external-link"></i></a></li>
+                    <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/">Careers <i class="fa fa-external-link"></i></a></li>
+                    <li class="level-1"><a href="https://ripple.com/collateral/#xrp">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                  </ul>
+                </div>
+              </div><!--/.foot-nav-col -->
         </div><!--/.row-->
     </div>
 

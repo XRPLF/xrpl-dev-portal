@@ -421,6 +421,7 @@ th {
     line-height: 38px;
     color: #27a2db;
     text-decoration: none;
+    transition: 0.5s;
 }
 
 .navbar-default .navbar-nav .active a {
@@ -955,12 +956,8 @@ th {
   font-size:
 }
 
-.foot-nav-col .children-display ul {
-  padding-left: 20px;
-}
-.foot-nav-col .children-display li {
+.children-display ul {
   padding-left: 0;
-  margin-left: 0;
 }
 .foot-nav-col .children-display li:before {
   content: "";

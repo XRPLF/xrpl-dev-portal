@@ -11,16 +11,27 @@
 {% block main %}
     <h1 class="main-page-header">{{ currentpage.name }}</h1>
 
-    <section>
-      {% for grouper, docpages in pages|selectattr("doc_type", "defined")|groupby("doc_type") %}
-      <div class="panel panel-default">
-        <h3><a href="{{(docpages|list)[0].html}}">{{ grouper }}</a></h3>
-        <ul>
-          {% for cat, catpages in docpages|selectattr("category", "defined")|groupby("category") %}
-            <li><a href="{{(catpages|first).html}}">{{ (catpages|first).name }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
+    <section class="container">
+      <div class="row">
+      {% set doc_types = [] %}
+      {% for page in pages %}
+        {% if page.doc_type is defined and page.doc_type not in doc_types %}
+          {% set doc_type_top = pages|selectattr('doc_type', 'equalto', page.doc_type)|first %}
+          <div class="col-sm-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><a href="{{doc_type_top.html}}">{{doc_type_top.name}}</a></h3>
+              </div><!--/.panel-heading-->
+              <div class="panel-body">
+                {% set parent_page = doc_type_top %}
+                {% set depth = 3 %}
+                {% include 'template-page-children.html' %}
+              </div><!--/.panel-body-->
+            </div><!--/.panel-->
+          </div><!--/.col-sm-3-->
+          {% set _ = doc_types.append(page.doc_type) %}
+        {% endif %}
       {% endfor %}
+      </div><!--/.row-->
     </section>
 {% endblock %}
