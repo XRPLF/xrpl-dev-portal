@@ -260,19 +260,39 @@ pre code {
 #dactyl_toc_sidebar a:hover {
   text-decoration: underline;
 }
-.level-1 {
-  margin-top: 15px;
-  padding-left: 15px;
+.dev_nav_sidebar {
+  padding-left: 10px;
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+.curated-links ul,
+.curated-links ol,
+.children-display ul {
+  padding-left: 0;
+}
+
+.level-1,
+.curated-links ul li {
+  list-style-type: disc;
+}
+.level-1,
+.curated-links li {
   font-weight: bold;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 .level-1:first-child {
   margin-top: 0;
 }
 .level-2 {
-  padding-left: 30px;
+  list-style-type: circle;
+  margin-left: 30px;
 }
 .level-3 {
-  padding-left: 45px;
+  list-style-type: square;
+  margin-left: 45px;
+  color: #888;
 }
 .level-3 a {
   color: #888;
@@ -281,33 +301,8 @@ pre code {
   color: #333;
 }
 
-.dev_nav_sidebar {
-  padding-left: 10px;
-  padding-top: 0;
+.foot-nav-col .children-display li {
   list-style-type: none;
-  margin-bottom: 0;
-}
-.dev_nav_sidebar li:before,
-.children-display li:before {
-  content: "\f111"; /* fontawesome circle */
-  font-family: FontAwesome;
-  font-size: 8px;
-  position: relative;
-  left: -15px;
-  top: -2px;
-  margin-right: -5px;
-}
-.dev_nav_sidebar .level-2:before,
-.children-display .level-2:before {
-  content: "\f1db"; /* fontawesome circle-thin */
-}
-.dev_nav_sidebar .level-3:before,
-.children-display .level-3:before {
-  content: "\f0c8"; /* fontawesome square */
-  font-size: 6px;
-  top: -2px;
-  left: -14px;
-  color: #888;
 }
 
 .dev_nav_wrapper {
@@ -939,26 +934,7 @@ th {
   cursor: default;
 }
 
-.funnel-sidebar a {
-
-}
-
 .funnel-sidebar a.active {
   color: #333;
   cursor: default;
-}
-
-.children-display ul {
-  list-style-type: none;
-}
-
-.foot-nav-col h5 {
-  font-size:
-}
-
-.children-display ul {
-  padding-left: 0;
-}
-.foot-nav-col .children-display li:before {
-  content: "";
 }
