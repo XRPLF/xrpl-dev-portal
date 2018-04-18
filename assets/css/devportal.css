@@ -942,6 +942,14 @@ th {
   text-decoration: none;
 }
 
+.landing-docs .curated-links li:first-child {
+  margin-top: 5px;
+}
+
+.landing-docs .blurb p {
+  padding: 20px 0;
+}
+
 .content p,
 .content li,
 .content td {
