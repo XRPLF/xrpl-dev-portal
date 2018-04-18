@@ -100,9 +100,6 @@
   margin-top: -167px;
   height: 167px;
 }
-.content p {
-  line-height: 1.8;
-}
 
 .content h1 {
   margin-top: 32px;
@@ -260,6 +257,10 @@ pre code {
 #dactyl_toc_sidebar a:hover {
   text-decoration: underline;
 }
+#dactyl_toc_sidebar li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 .dev_nav_sidebar {
   padding-left: 10px;
   padding-top: 0;
@@ -403,7 +404,7 @@ th {
 }
 
 .navbar-default .navbar-brand .brand-text {
-  font-family: 'open_sansbold', sans-serif;
+  font-weight: bold;
   line-height: 36px;
   margin-bottom: -5px;
   margin-top: 20px;
@@ -473,9 +474,11 @@ th {
 .breadcrumb {
   margin: 0;
   padding: 15px;
-  padding-left: 5px;
   background: transparent;
   vertical-align: middle;
+}
+.sidebar-primary .breadcrumb {
+  padding-left: 5px;
 }
 
 .breadcrumb li {
@@ -564,7 +567,6 @@ th {
 #sidenav .panel-heading h5 .sidenav_cat_title {
   display: block;
   padding: 16px 15px 16px 55px;
-  font-family: "open_sansregular", sans-serif;
 }
 #sidenav .panel-heading h5 a.sidenav_cat_title {
   color: #27a2db;
@@ -583,6 +585,7 @@ th {
     left: 0;
     padding: 15px 16px 17px 16px;
     background-color: #e0e0e0;
+    color: black;
     line-height: 0;
     transition: background-color 0.5s;
 }
@@ -654,7 +657,6 @@ th {
 }
 
 .portal-index li {
-    font-size: 14px;
     list-style: outside none none;
     padding: 5px;
     padding-left: 25px;
@@ -666,9 +668,6 @@ th {
 }
 
 .portal-index .dev_heading {
-    font-family: "Open Sans",sans-serif;
-    letter-spacing: 0.04em;
-    font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
     color: #202020;
@@ -705,7 +704,6 @@ th {
   border-bottom: 1px dashed #777;
 }
 .related-projects .project-name {
-  font-family: open_sanslight, sans-serif;
   font-size: 18px;
   display: block;
 }
@@ -937,4 +935,15 @@ th {
 .funnel-sidebar a.active {
   color: #333;
   cursor: default;
+}
+
+.landing-docs .panel-title > a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.content p,
+.content li,
+.content td {
+  line-height: 1.65;
 }
