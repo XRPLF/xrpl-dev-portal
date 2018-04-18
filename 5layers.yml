@@ -142,6 +142,34 @@ pages:
         targets:
             - local
 
+    -   name: Tutorials #TODO: real page content
+        funnel: Docs
+        doc_type: Tutorials
+        template: template-landing-category.html
+        targets:
+            - local
+
+    -   name:  Send and Receive Money
+        funnel: Docs
+        doc_type: Tutorials
+        category: Send and Receive Money
+        template: template-landing-category.html
+        targets:
+            - local
+
+    -   md: tutorial-reliable-transaction-submission.md
+        funnel: Docs
+        doc_type: Tutorials
+        category: Send and Receive Money
+        targets:
+            - local
+
+    -   md: tutorial-checks-send.md
+        funnel: Docs
+        doc_type: Tutorials
+        category: Send and Receive Money
+        targets:
+            - local
     -   name: References
         funnel: Docs
         doc_type: References
@@ -252,35 +280,6 @@ pages:
         category: Test Empty Category
         html: reference-rippled-conventions.html
         template: template-landing-category.html
-        targets:
-            - local
-
-    -   name: Tutorials #TODO: real page content
-        funnel: Docs
-        doc_type: Tutorials
-        template: template-landing-category.html
-        targets:
-            - local
-
-    -   name:  Send and Receive Money
-        funnel: Docs
-        doc_type: Tutorials
-        category: Send and Receive Money
-        template: template-landing-category.html
-        targets:
-            - local
-
-    -   md: tutorial-reliable-transaction-submission.md
-        funnel: Docs
-        doc_type: Tutorials
-        category: Send and Receive Money
-        targets:
-            - local
-
-    -   md: tutorial-checks-send.md
-        funnel: Docs
-        doc_type: Tutorials
-        category: Send and Receive Money
         targets:
             - local
 
