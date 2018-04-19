@@ -700,7 +700,6 @@ samp {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
   background-color: #f9f2f4;
   border-radius: 4px;
 }
@@ -2082,10 +2081,8 @@ select[multiple].input-lg {
   background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  border-radius: 4px;
+  padding: 10px 15px;
+  border-radius: 5px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -2164,7 +2161,6 @@ fieldset[disabled] .btn-default.active {
 .btn-primary {
   color: #ffffff;
   background-color: #27a2db;
-  border-color: #2e5e96;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -2172,8 +2168,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #285282;
-  border-color: #204067;
+  background-color: #0987d7;
 }
 .btn-primary:active,
 .btn-primary.active,

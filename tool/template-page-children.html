@@ -6,7 +6,10 @@
 {% endif %}
 
 {% if parent_page.funnel is undefined %}
-  <!-- TEMPLATE ERROR: need funnel for children-display -->
+  {% set parent_level = "home" %}
+  {% set level_2 = "funnel" %}
+  {% set level_3 = "doc_type" %}
+  {% set childpages = pages %}{# special case for home #}
 {% elif parent_page == pages|selectattr("funnel", "equalto", parent_page.funnel)|first %}
   {% set parent_level = "funnel" %}
   {% set level_2 = "doc_type" %}
@@ -27,7 +30,9 @@
   <!-- TEMPLATE ERROR: page {{parent_page.name}} is not the parent of anything? -->
 {% endif %}
 <!-- parent_level is {{parent_level}} -->
-{% set childpages = pages|selectattr(parent_level, "equalto", parent_page[parent_level])|list %}
+{% if parent_level != "home" %}
+  {% set childpages = pages|selectattr(parent_level, "equalto", parent_page[parent_level])|list %}
+{% endif %}
 
 <div class="children-display">
   <ul>

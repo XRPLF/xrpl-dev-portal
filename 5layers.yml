@@ -44,6 +44,10 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
+        recently_updated:
+            - tutorial-reliable-transaction-submission.html
+            - tutorial-checks-send.html
+            - reference-amendments.html
 
 pages:
 
@@ -53,10 +57,6 @@ pages:
         template: template-landing-docs.html
         html: landing-docs.html
         sidebar: disabled
-        recently_updated:
-            - tutorial-reliable-transaction-submission.html
-            - tutorial-checks-send.html
-            - reference-amendments.html
         doc_type_blurbs:
             Concepts: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
             Tutorials: Get step-by-step guidance to perform common tasks with the XRP Ledger.
@@ -69,6 +69,22 @@ pages:
         doc_type: Concepts
         html: landing-concepts.html
         template: template-landing-category.html
+        targets:
+            - local
+
+    -   name: Understanding the XRP Ledger
+        funnel: Docs
+        doc_type: Concepts
+        category: Understanding the XRP Ledger
+        html: concept-xrp-ledger.html
+        template: template-landing-category.html
+        targets:
+            - local
+
+    -   md: concept-xrp-ledger-intro.md
+        funnel: Docs
+        doc_type: Concepts
+        category: Understanding the XRP Ledger
         targets:
             - local
 
@@ -170,6 +186,22 @@ pages:
         category: Send and Receive Money
         targets:
             - local
+
+    -   name:  Manage the rippled Server
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        template: template-landing-category.html
+        targets:
+            - local
+
+    -   md: tutorial-rippled-setup.md
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
     -   name: References
         funnel: Docs
         doc_type: References
@@ -274,12 +306,17 @@ pages:
         targets:
             - local
 
-    -   name: Test Empty Category
+    -   md: reference-transaction-format.md
         funnel: Docs
         doc_type: References
-        category: Test Empty Category
-        html: reference-rippled-conventions.html
-        template: template-landing-category.html
+        category: Transaction Format
+        targets:
+            - local
+
+    -   md: reference-data-api.md
+        funnel: Docs
+        doc_type: References
+        category: Data API
         targets:
             - local
 
@@ -287,6 +324,11 @@ pages:
         funnel: Use Cases
         html: use-cases.html
         template: template-landing-category.html # TODO: use-cases landing
+        targets:
+            - local
+
+    -   md: tutorial-listing-xrp.md # TODO: split up and rename?
+        funnel: Use Cases
         targets:
             - local
 

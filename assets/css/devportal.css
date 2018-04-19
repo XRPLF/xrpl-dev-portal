@@ -650,33 +650,6 @@ th {
   line-height: 16px;
 }
 
-.portal-index ul {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding: 0;
-}
-
-.portal-index li {
-    list-style: outside none none;
-    padding: 5px;
-    padding-left: 25px;
-    text-indent: 20px;
-}
-
-.portal-index li.top {
-    text-indent: 0;
-}
-
-.portal-index .dev_heading {
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #202020;
-}
-.portal-index a.dev_heading:hover {
-  color: #27a2db;
-  text-decoration: underline;
-}
-
 .build-disclaimer {
   font-size: 10pt;
   margin: 2em 0;
@@ -684,14 +657,6 @@ th {
   border-top: 1px solid #777;
 }
 
-.related-projects {
-  position: absolute;
-  top: 70px;
-  right: 15px;
-  width: 375px;
-  border: 1px solid #777;
-  border-radius: 5px;
-}
 .related-projects a {
   text-decoration: none;
 }
@@ -701,7 +666,6 @@ th {
 .related-projects h3 {
   margin: 0;
   padding: 5px 15px;
-  border-bottom: 1px dashed #777;
 }
 .related-projects .project-name {
   font-size: 18px;
@@ -937,21 +901,49 @@ th {
   cursor: default;
 }
 
-.landing-docs .panel-title > a {
+.landing .panel-title {
   font-weight: bold;
+}
+.landing .panel-title > a {
   text-decoration: none;
 }
 
-.landing-docs .curated-links li:first-child {
+.landing .curated-links li:first-child {
   margin-top: 5px;
 }
 
-.landing-docs .blurb p {
-  padding: 20px 0;
+.landing .blurb {
+  padding: 20px;
 }
 
 .content p,
 .content li,
 .content td {
   line-height: 1.65;
+}
+
+.readmore {
+  display: block;
+  margin: 15px auto 5px;
+}
+
+.readmore .btn {
+  font-size: 18px;
+  transition: 0.5s;
+}
+
+
+.hero-emoji {
+  font-size: 80px;
+  text-align: center;
+}
+
+.landing section {
+  padding: 40px 20px;
+  border-top: 1px solid #aaa;
+}
+
+.landing section:first-child {
+  padding-top: 0;
+  border-top-width: 0;
 }

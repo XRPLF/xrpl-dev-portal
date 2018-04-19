@@ -3,7 +3,7 @@
 {% block sidebar %}
 {% endblock %}
 
-{% block bodyclasses %}landing-docs {% endblock %}
+{% block bodyclasses %}landing{% endblock %}
 
 {% block main %}
     <section class="container">
@@ -105,7 +105,7 @@
             <div class="panel-body">
               <div class="curated-links">
                 <ol>
-                  {% for link in currentpage.recently_updated %}
+                  {% for link in target.recently_updated %}
                     {% set linkpage = pages|selectattr("html", "equalto", link)|first %}
                     <li><a href="{{linkpage.html}}">{{linkpage.name}}</a></li>
                   {% endfor %}
