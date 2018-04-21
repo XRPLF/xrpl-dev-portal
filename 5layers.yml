@@ -68,7 +68,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         html: landing-concepts.html
-        template: template-landing-category.html
+        template: template-landing-children.html
         targets:
             - local
 
@@ -77,7 +77,7 @@ pages:
         doc_type: Concepts
         category: Understanding the XRP Ledger
         html: concept-xrp-ledger.html
-        template: template-landing-category.html
+        template: template-landing-children.html
         targets:
             - local
 
@@ -93,7 +93,7 @@ pages:
         doc_type: Concepts
         category: Payment System
         html: concept-payment-system.html
-        template: template-landing-category.html
+        template: template-landing-children.html
         targets:
             - local
 
@@ -140,7 +140,7 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         html: concept-consensus-network.html
-        template: template-landing-category.html
+        template: template-landing-children.html
         targets:
             - local
 
@@ -161,7 +161,7 @@ pages:
     -   name: Tutorials #TODO: real page content
         funnel: Docs
         doc_type: Tutorials
-        template: template-landing-category.html
+        template: template-landing-children.html
         targets:
             - local
 
@@ -169,7 +169,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Send and Receive Money
-        template: template-landing-category.html
+        template: template-landing-children.html
         targets:
             - local
 
@@ -191,7 +191,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        template: template-landing-category.html
+        template: template-landing-children.html
         targets:
             - local
 
@@ -214,7 +214,7 @@ pages:
         doc_type: References
         category: rippled API Public Methods
         html: reference-rippled-public.html
-        template: template-landing-category.html
+        template: template-landing-children.html
         targets:
             - local
 
@@ -223,7 +223,7 @@ pages:
         doc_type: References
         category: rippled API Public Methods
         subcategory: Ledger Methods
-        template: template-subcat-landing.html
+        template: template-landing-children.html
         html: reference-rippled-public-ledger-methods.html
         targets:
             - local
@@ -257,7 +257,7 @@ pages:
         doc_type: References
         category: rippled API Public Methods
         subcategory: Account Methods
-        template: template-subcat-landing.html
+        template: template-landing-children.html
         html: reference-rippled-public-account-methods.html
         targets:
             - local
@@ -283,7 +283,7 @@ pages:
         doc_type: References
         category: rippled API Public Methods
         subcategory: Transaction Methods
-        template: template-subcat-landing.html
+        template: template-landing-children.html
         html: reference-rippled-public-tx-methods.html
         targets:
             - local
@@ -293,7 +293,7 @@ pages:
         doc_type: References
         category: rippled API Admin Methods
         html: reference-rippled-admin.html
-        template: template-landing-category.html
+        template: template-landing-children.html
         targets:
             - local
 
@@ -302,7 +302,6 @@ pages:
         doc_type: References
         category: rippled API Admin Methods
         subcategory: Server Control Methods
-        template: template-landing-category.html
         targets:
             - local
 
@@ -323,7 +322,7 @@ pages:
     -   name: Use Cases
         funnel: Use Cases
         html: use-cases.html
-        template: template-landing-category.html # TODO: use-cases landing
+        template: template-landing-children.html # TODO: use-cases landing
         targets:
             - local
 
@@ -335,7 +334,7 @@ pages:
     -   name: Dev Tools
         funnel: Dev Tools
         html: dev-tools.html
-        template: template-landing-category.html # TODO: dev tools landing
+        template: template-landing-children.html # TODO: dev tools landing
         targets:
             - local
 
@@ -382,7 +381,7 @@ pages:
     -   name: News
         funnel: News
         html: news.html
-        template: template-landing-category.html # TODO: news landing
+        template: template-landing-children.html # TODO: news landing
         targets:
             - local
 

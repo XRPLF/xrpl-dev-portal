@@ -1,13 +1,12 @@
-<footer class="content-info" role="contentinfo">
-    <div class="container">
+<footer class="ripple-footer" role="contentinfo">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-1">&nbsp;</div>
           {% set funnels = [] %}
           {% for page in pages %}
             {% if page.funnel is defined and page.funnel not in funnels %}
               {% set parent_page = pages|selectattr('funnel', 'equalto', page.funnel)|first %}
 
-              <div class="col-sm-2 foot-nav-col">
+              <div class="col foot-nav-col">
                 <h5><a class="foot-nav-link" href="{{ parent_page.html }}">{{ parent_page.name }}</a></h5>
                 {% set depth=1 %}
                 {% include 'template-page-children.html' %}
@@ -17,7 +16,7 @@
             {% endif %}
           {% endfor %}
 
-              <div class="col-sm-2 foot-nav-col">
+              <div class="col foot-nav-col">
                 <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a></h5>
                 <div class="children-display">
                   <ul>
@@ -30,17 +29,14 @@
         </div><!--/.row-->
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
        		<div class="col-sm-12 absolute_bottom_footer">
-       			<div class="col-sm-8">
-                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
-                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
-                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
-                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
-                </div>
-            </div><!-- /.absolute_bottom_footer -->
-
+              <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+              <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+              <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+              <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+          </div><!-- /.absolute_bottom_footer -->
         </div><!-- /.row -->
     </div><!-- /.container -->
 </footer>

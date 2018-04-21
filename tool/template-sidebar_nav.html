@@ -14,7 +14,7 @@
   {% endif %}
 
   {% if pages|selectattr("funnel", "equalto", currentpage.funnel)|selectattr("category", "defined")|list|length %}
-  <div id="sidenav" class="panel-group" role="tablist" aria-multiselectable="true">
+  <div id="sidenav" role="tablist" aria-multiselectable="true">
     {% for cat in categories %}
       {% set catpages = pages|selectattr("category", "equalto", cat)|list %}
       {% if currentpage.funnel is defined %}
@@ -24,18 +24,18 @@
         {% set catpages = catpages|selectattr("doc_type", "equalto", currentpage.doc_type)|list %}
       {% endif %}
     {% if catpages|length %}
-    <div class="panel panel-default{% if currentpage.category == cat %} active{% endif %}">
-      <div class="panel-heading" role="tab" id="sidenav_cat_head_{{loop.index}}">
-        <h5 class="panel-title">
+    <div class="card{% if currentpage.category == cat %} active{% endif %}">
+      <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
+        <h5 class="card-title">
         {% if catpages|length > 1 %}
         <a class="{% if currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">&nbsp;</a>
         {% endif %}
         <a class="sidenav_cat_title{% if currentpage == (pages|selectattr('category', 'equalto', cat)|first) %} active{% elif currentpage.category == cat %} active-parent{% endif %}" href="{{ (pages|selectattr('category', 'equalto', cat)|first).html }}">{{ cat }}</a>
         </h5>
-      </div><!-- /.panel-heading -->
+      </div><!-- /.card-header -->
 
-      <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category == cat %} in{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
-        <div class="panel-body">
+      <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category == cat %} show{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
+        <div class="card-body">
           <ul class="sidebar_pagelist">
           {% set printed_subcategories = [] %}
           {% for page in catpages %}
@@ -71,7 +71,7 @@
           {% endfor %}
 
           </ul>
-        </div><!-- /.panel-body -->
+        </div><!-- /.card-body -->
       </div><!-- /#sidenav_collapse{{loop.index}} -->
 
     </div><!-- /.panel -->
@@ -82,9 +82,9 @@
   {% else %}
   {#--- No categories in this funnel --#}
   {% set funnelpages = pages|selectattr("funnel", "equalto", currentpage.funnel)|list %}
-  <div id="sidenav" class="panel-group" aria-multiselectable="true">
-    <div class="panel panel-default active">
-      <div class="panel-body">
+  <div id="sidenav" aria-multiselectable="true">
+    <div class="card active">
+      <div class="card-body">
         <ul class="sidebar_pagelist">
         {% for page in funnelpages %}
           {% if loop.index == 1 %}{# Skip the first element since it's linked by the funnel header #}
@@ -95,7 +95,7 @@
           {% endif %}
         {% endfor %}
         </ul>
-      </div><!-- /.panel-body -->
+      </div><!-- /.card-body -->
     </div><!-- /.panel -->
   </div><!-- /#sidenav -->
   {% endif %}

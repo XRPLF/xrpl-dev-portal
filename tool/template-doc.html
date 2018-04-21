@@ -20,24 +20,19 @@
 
 {% endblock %}
 
-{% block sidebar %}
-{% if currentpage.sidebar != "disabled" %}
-
-  {% include "template-sidebar_nav.html" %}
-
-{% endif %}
-{% endblock %}
-
 {% block main %}
-    <h1 class="main-page-header">{{ currentpage.name }}</h1>
-
-    <aside id="page-toc-wrapper" class="panel panel-default">
-      <p class="in-this-doc panel-heading">In this document:</p>
-      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
-        {{ sidebar_content }}
-      </ul>
-    </aside>
-    <div class='content no-1st-head'>
+  <article class="p-3">
+    <div class="content">
         {{ content }}
     </div>
+  </article>
+{% endblock %}
+
+{% block right_sidebar %}
+  <div class="card" id="page-toc-wrapper">
+    <p class="in-this-doc card-header">In this document:</p>
+    <ul class="dev_nav_sidebar card-body" id="dactyl_toc_sidebar">
+      {{ sidebar_content }}
+    </ul>
+  </div>
 {% endblock %}

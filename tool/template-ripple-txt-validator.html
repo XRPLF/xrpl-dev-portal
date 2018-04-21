@@ -24,14 +24,6 @@
 </div>
 {% endblock %}
 
-{% block sidebar %}
-{% if currentpage.sidebar != "disabled" %}
-
-  {% include "template-sidebar_nav.html" %}
-
-{% endif %}
-{% endblock %}
-
 {% block endbody %}
   <link rel='stylesheet' type='text/css' href='assets/css/ripple-txt-validator.css' />
   <script type='text/javascript' src='assets/vendor/async.min.js'></script>

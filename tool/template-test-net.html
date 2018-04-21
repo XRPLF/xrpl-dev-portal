@@ -6,9 +6,9 @@
 
 <h1>XRP Test Net Faucet</h1>
 
-<aside id="test-net-servers" class="panel panel-default">
-  <div class="panel-body">
-    <p class="in-this-doc panel-heading">Test Net Servers</p>
+<aside id="test-net-servers" class="card">
+  <div class="card-body">
+    <p class="in-this-doc card-header">Test Net Servers</p>
     <p>Use the following addresses to connect to the XRP Test Net and send transactions from your account.</p>
     <h5>Websockets and Ripple API</h4>
     <pre><code>wss://s.altnet.rippletest.net:51233</code></pre>
@@ -28,14 +28,6 @@
   <div id='balance'></div>
 </div>
 
-{% endblock %}
-
-{% block sidebar %}
-{% if currentpage.sidebar != "disabled" %}
-
-  {% include "template-sidebar_nav.html" %}
-
-{% endif %}
 {% endblock %}
 
 {% block endbody %}
