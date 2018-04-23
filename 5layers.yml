@@ -319,10 +319,10 @@ pages:
         targets:
             - local
 
-    -   name: Use Cases
+    -   md: use-cases.md
         funnel: Use Cases
-        html: use-cases.html
-        template: template-landing-children.html # TODO: use-cases landing
+        filters:
+            - buttonize
         targets:
             - local
 
@@ -331,10 +331,10 @@ pages:
         targets:
             - local
 
-    -   name: Dev Tools
+    -   md: dev-tools.md
         funnel: Dev Tools
-        html: dev-tools.html
-        template: template-landing-children.html # TODO: dev tools landing
+        filters:
+            - buttonize
         targets:
             - local
 
@@ -378,10 +378,8 @@ pages:
             - local
         template: template-test-net.html
 
-    -   name: News
+    -   md: news.md
         funnel: News
-        html: news.html
-        template: template-landing-children.html # TODO: news landing
         targets:
             - local
 

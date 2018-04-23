@@ -1,31 +1,23 @@
-# XRP Ledger News and Releases
+# News
 
-Get the latest XRP Ledger news and release information. 
+<!--{# Note: the title in the first line of this file gets used to generate the top nav. #}-->
+
+Get the latest XRP Ledger news and release information.
 
 <!--{# area will eventually include a Network Health page #}-->
 
 ## Known Amendments
 
-Amendments provide a way to introduce new features to the decentralized XRP Ledger network without causing disruptions. Get the comprehensive list of [all known amendments](x) and their statuses on the production XRP Ledger. <!--{# check with Nik. Not just NEW - changes to transaction processing for example #}-->
+Amendments provide a way to introduce breaking changes to the decentralized XRP Ledger network without causing disruptions. Get the comprehensive list of [all known amendments](reference-amendments.html) and their statuses on the production XRP Ledger.
 
 ## Ripple Dev Blog
 
-[Visit the Dev Blog](https://ripple.com/category/dev-blog/) <!--{# open link in new tab. display open in new tab icon #}--> for the latest news and stories about the XRP Ledger and `rippled`. 
+<a href="https://ripple.com/category/dev-blog/" target="_blank">Visit the Dev Blog <i class="fa fa-external-link"></i></a> <!--{#_ open link in new tab #}--> for the latest news and stories about the XRP Ledger and `rippled`.
 
 ## Ripple Open Source Project Releases  
 
-[Visit the ripple GitHub repo](https://github.com/ripple) <!--{# open link in new tab. display open in new tab icon #}--> to access open source projects, including `rippled`, `ripple-lib`, and `ripple-libpp`. 
+<a href="https://github.com/ripple" target="_blank">Visit the Ripple GitHub Organization <i class="fa fa-external-link"></i></a> <!--{#_ open link in new tab #}--> to access open source projects, including `rippled`, `ripple-lib`, and `ripple-libpp`.
 
-## Interledger 
+## Interledger
 
-[Learn about Interledger](https://interledger.org/)<!--{# open link in new tab. display open in new tab icon #}-->, an open protocol suite for sending payments across different ledgers. The open architecture and minimal protocol enable interoperability for any value transfer system.<!--{# grab from site #}-->
-
-### Related Resources
-[rippled API Reference](x)
-[Manage a `rippled` Server](x)
-[XRP Test Net](x)
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTUwNzIzNDksMzk2Njc1MjA3LDEwMT
-U1OTE0MjhdfQ==
--->
+<a href="https://interledger.org/" target="_blank">Learn about Interledger <i class="fa fa-external-link"></i></a> <!--{#_ open link in new tab #}-->, an open protocol suite for sending payments across different ledgers. The open architecture and minimal protocol enable interoperability for any value transfer system.

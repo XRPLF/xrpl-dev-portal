@@ -692,29 +692,6 @@ th {
 
 /* Responsive design for different viewscreens -------------------------------*/
 
-@media (max-width: 1199px) {
-  #main_content_wrapper {
-    margin-top: 137px;
-  }
-}
-@media (max-width: 992px) {
-  #page-toc-wrapper {
-    position: static;
-    float: none;
-    max-width: none;
-  }
-  #main_content_wrapper {
-    margin-top: 0;
-  }
-  .navbar-fixed-top {
-    position: static;
-    margin-bottom: -70px;
-  }
-  .navbar-fixed-top {
-    position: static;
-    margin-bottom: -70px;
-  }
-}
 @media (max-width: 768px) {
   .dev_nav_wrapper,
   .sidebar {
@@ -738,6 +715,20 @@ th {
     overflow-x: hidden !important;
   }
 }
+@media (max-width: 400px) {
+  .navbar .navbar-brand .brand-text {
+    margin-right: 0;
+    letter-spacing: -0.08rem;
+  }
+  .navbar .navbar-brand {
+    margin-right: 0;
+  }
+  .navbar .navbar-brand .logo {
+    margin-right: 0;
+    margin-left: -1rem;
+  }
+}
+
 @media print {
   {
     /* undo code tabs */
@@ -868,6 +859,10 @@ th {
 .readmore .btn {
   font-size: 18px;
   transition: 0.5s;
+}
+
+.btn-primary code {
+  color: inherit;
 }
 
 .landing section {
