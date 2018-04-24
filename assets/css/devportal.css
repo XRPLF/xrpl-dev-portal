@@ -878,3 +878,34 @@ th {
   width: auto;
   text-align: center;
 }
+
+/* Use Cases stuff----------------------- */
+.use-case-step-num {
+  border: 1px solid #333;
+  border-radius: 50%;
+  padding: 0.9rem;
+  position: absolute;
+  left: 1.8rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  text-align: center;
+  background-color: white;
+}
+
+.use-case-step-length {
+  float: right;
+  color: #888;
+  font-size: 16px;
+}
+
+.use-case p:not(:first-of-type) {
+  margin-top: .8rem;
+  margin-bottom: -.6rem;
+  padding-left: 2.5rem;
+  margin-left: 2.5rem;
+  border-left: 1px dashed #333;
+}
+.use-case h2 {
+  margin-left: 5rem;
+  margin-top: 0;
+}

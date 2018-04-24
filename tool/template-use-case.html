@@ -1,0 +1,25 @@
+{% extends "template-base.html" %}
+
+{% block main %}
+  <article class="use-case p-3">
+    <div class="content">
+        {{ content }}
+    </div>
+  </article>
+{% endblock %}
+
+{% block right_sidebar %}
+  <div class="card" id="use-case-related">
+    <p class="in-this-doc card-header">Useful Background:</p>
+    <div class="card-body">
+      <div class="curated-links">
+        <ol>
+          {% for link in currentpage.useful_background %}
+            {% set linkpage = pages|selectattr("html", "equalto", link)|first %}
+            <li><a href="{{linkpage.html}}">{{linkpage.name}}</a></li>
+          {% endfor %}
+        </ol>
+      </div><!--/.curated-links-->
+    </div><!--/.card-body-->
+  </div>
+{% endblock %}
