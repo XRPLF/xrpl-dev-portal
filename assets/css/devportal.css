@@ -334,13 +334,38 @@ pre code {
 .level-3 {
   list-style-type: square;
   margin-left: 45px;
-  color: #888;
+  color: #555;
 }
 .level-3 a {
-  color: #888;
+  color: #555;
 }
 .level-3 a:hover {
   color: #333;
+}
+.level-4 {
+  margin-left: 60px;
+  color: #888;
+}
+.level-4 a {
+  color: #888;
+}
+.level-4 a:hover {
+  color: #333;
+}
+.level-5 {
+  margin-left: 75px;
+  list-style-type: circle;
+  color: #aaa;
+}
+.level-5 a {
+  color: #aaa;
+}
+.level-5 a:hover {
+  color: #333;
+}
+.level-6 {
+  /* Probably not used */
+  margin-left: 90px;
 }
 
 .foot-nav-col .children-display li {

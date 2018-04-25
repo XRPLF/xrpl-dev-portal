@@ -8,24 +8,22 @@
 {% if parent_page.funnel is undefined %}
   {% set parent_level = "home" %}
   {% set level_2 = "funnel" %}
-  {% set level_3 = "doc_type" %}
   {% set childpages = pages %}{# special case for home #}
 {% elif parent_page == pages|selectattr("funnel", "equalto", parent_page.funnel)|first %}
   {% set parent_level = "funnel" %}
   {% set level_2 = "doc_type" %}
-  {% set level_3 = "category" %}
 {% elif parent_page == pages|selectattr("doc_type", "equalto", parent_page.doc_type)|first %}
   {% set parent_level = "doc_type" %}
+  {% set level_2 = "supercategory" %}
+{% elif parent_page == pages|selectattr("supercategory", "equalto", parent_page.supercategory)|first %}
+  {% set parent_level = "supercategory" %}
   {% set level_2 = "category" %}
-  {% set level_3 = "subcategory" %}
 {% elif parent_page == pages|selectattr("category", "equalto", parent_page.category)|first %}
   {% set parent_level = "category" %}
   {% set level_2 = "subcategory" %}
-  {% set level_3 = None %}
 {% elif parent_page == pages|selectattr("subcategory", "equalto", parent_page.subcategory)|first %}
   {% set parent_level = "subcategory" %}
   {% set level_2 = None %}
-  {% set level_3 = None %}
 {% else %}
   <!-- TEMPLATE ERROR: page {{parent_page.name}} is not the parent of anything? -->
 {% endif %}
@@ -34,45 +32,74 @@
   {% set childpages = pages|selectattr(parent_level, "equalto", parent_page[parent_level])|list %}
 {% endif %}
 
+{% macro print_children(parent, thosepages, indent_level, next_level_field, depth_limit) %}
+  {% set printed_next_levels = [] %}
+  {% for onepage in thosepages %}
+    {% if onepage == parent %}{# pass #}
+    {% elif next_level_field == None or (onepage[next_level_field] is undefined and next_level_field != "supercategory") %}
+      {# direct child, print it! #}
+      <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.name}}</a></li>
+
+    {% elif onepage[next_level_field] is undefined and next_level_field == "supercategory" %}
+      {# special case, might need to skip "supercategory" #}
+
+      {% if onepage.category is defined %}
+        {# possible direct child or grandchild due to skipped level #}
+
+        {% if onepage.category not in printed_next_levels %}
+          {% set next_level_children = thosepages|selectattr("category",
+              "equalto", onepage.category)|list %}
+          {% set next_level_parent = next_level_children|first %}
+          <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a></li>
+          {% if indent_level+1 <= depth_limit and next_level_field != None %}
+            {# Recurse! #}
+            {% set field_after = "subcategory" %}
+            {{ print_children(next_level_parent, next_level_children, indent_level+1, field_after, depth_limit) }}
+          {% endif %}
+          {% set _ = printed_next_levels.append(onepage.category) %}
+        {% endif %}
+
+      {% else %}
+        <!-- Template WARNING: no category for page '{{onepage.name}}'? -->
+        <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.html}}</a></li>
+      {% endif %}
+
+    {% elif onepage[next_level_field] is defined %}
+      {# might be a grandchild or lower #}
+      {% if onepage[next_level_field] not in printed_next_levels %}
+        {% set next_level_children = thosepages|selectattr(next_level_field,
+            "equalto", onepage[next_level_field])|list %}
+        {% set next_level_parent = next_level_children|first %}
+        <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a></li>
+        {% if (indent_level+1 <= depth_limit and next_level_field != None)
+          or (next_level_field == "supercategory" and depth_limit == 1.5) %}
+          {# Recurse! #}
+
+          {# figure out what level to use next #}
+          {% if next_level_field == "subcategory" %}
+            {% set field_after = None %}
+          {% elif next_level_field == "category" %}
+            {% set field_after = "subcategory" %}
+          {% elif next_level_field == "supercategory" %}
+            {% set field_after = "category" %}
+          {% elif next_level_field == "doc_type" %}
+            {% set field_after = "supercategory" %}
+          {% elif next_level_field == "funnel" %}
+            {% set field_after = "doc_type" %}
+          {% else %}
+            <!-- ERROR: child-pages template reached unexpected next_level_field case. -->
+          {% endif %}
+
+          {{ print_children(next_level_parent, next_level_children, indent_level+1, field_after, depth_limit) }}
+        {% endif %}
+        {% set _ = printed_next_levels.append(onepage[next_level_field]) %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
 <div class="children-display">
   <ul>
-    {% set printed_level2s = [] %}
-    {% for page in childpages %}
-      {% if page == parent_page %}{# skip parent #}
-      {% elif level_2 == None or page[level_2] is undefined %}
-        <li class="level-1"><a href="{{page.html}}">{{page.name}}</a></li>
-      {% elif page[level_2] is defined %}
-        {% if page[level_2] not in printed_level2s %}
-          {% set printed_level3s = [] %}
-          {% set subpages = childpages|selectattr(level_2, "equalto", page[level_2])|list %}
-          {% for subpage in subpages %}
-            {% if loop.index == 1 %}
-              <li class="level-1"><a href="{{subpage.html}}">{{subpage.name}}</a></li>
-            {% else %}
-              {% if depth > 1 %}
-                {% if level_3 == None or subpage[level_3] is undefined %}
-                  <li class="level-2"><a href="{{subpage.html}}">{{subpage.name}}</a></li>
-                {% elif subpage[level_3] is defined %}
-                  {% if subpage[level_3] not in printed_level3s %}
-                    {% for subsubpage in subpages|selectattr(level_3, "equalto", subpage[level_3])|list %}
-                      {% if loop.index == 1 %}
-                        <li class="level-2"><a href="{{subsubpage.html}}">{{subsubpage.name}}</a></li>
-                      {% elif depth > 2 %}
-                        <li class="level-3"><a href="{{subsubpage.html}}">{{subsubpage.name}}</a></li>
-                      {% endif %}
-                    {% endfor %}
-                    {% set _ = printed_level3s.append(subpage[level_3]) %}
-                  {% endif %}
-                {% endif %}
-
-              {% endif %}
-            {% endif %}
-          {% endfor %}
-          {% set _ = printed_level2s.append(page[level_2]) %}
-        {% endif %}
-      {% else %}
-        <!-- TEMPLATE warning: else case -->
-      {% endif %}
-    {% endfor %}
+    {{ print_children(parent_page, childpages, 1, level_2, depth) }}
   </ul>
 </div>
