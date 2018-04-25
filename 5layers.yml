@@ -205,13 +205,24 @@ pages:
     -   name: References
         funnel: Docs
         doc_type: References
+        template: template-landing-children.html
         html: landing-references.html
+        targets:
+            - local
+
+    -   name: References
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        template: template-landing-children.html
+        html: reference-rippled-api.html
         targets:
             - local
 
     -   name: rippled API Public Methods
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Public Methods
         html: reference-rippled-public.html
         template: template-landing-children.html
@@ -221,6 +232,7 @@ pages:
     -   name: Ledger Methods
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Public Methods
         subcategory: Ledger Methods
         template: template-landing-children.html
@@ -231,6 +243,7 @@ pages:
     -   md: rippled-api-methods/ledger_closed.md
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Public Methods
         subcategory: Ledger Methods
         targets:
@@ -239,6 +252,7 @@ pages:
     -   md: rippled-api-methods/ledger_current.md
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Public Methods
         subcategory: Ledger Methods
         targets:
@@ -247,6 +261,7 @@ pages:
     -   md: rippled-api-methods/ledger_data.md
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Public Methods
         subcategory: Ledger Methods
         targets:
@@ -255,6 +270,7 @@ pages:
     -   name: Account Methods
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Public Methods
         subcategory: Account Methods
         template: template-landing-children.html
@@ -265,6 +281,7 @@ pages:
     -   md: rippled-api-methods/account_channels.md
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Public Methods
         subcategory: Account Methods
         targets:
@@ -273,6 +290,7 @@ pages:
     -   md: rippled-api-methods/account_info.md
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Public Methods
         subcategory: Account Methods
         targets:
@@ -281,6 +299,7 @@ pages:
     -   name: Transaction Methods
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Public Methods
         subcategory: Transaction Methods
         template: template-landing-children.html
@@ -291,6 +310,7 @@ pages:
     -   name: rippled API Admin Methods
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Admin Methods
         html: reference-rippled-admin.html
         template: template-landing-children.html
@@ -300,6 +320,7 @@ pages:
     -   md: rippled-api-methods/ledger_accept.md
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: rippled API Admin Methods
         subcategory: Server Control Methods
         targets:
@@ -308,6 +329,7 @@ pages:
     -   md: reference-transaction-format.md
         funnel: Docs
         doc_type: References
+        supercategory: rippled API
         category: Transaction Format
         targets:
             - local
@@ -316,6 +338,18 @@ pages:
         funnel: Docs
         doc_type: References
         category: Data API
+        targets:
+            - local
+
+    -   name: RippleAPI Reference # name is required for remote-sourced files
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.21.0/docs/index.md
+        html: reference-rippleapi.html
+        funnel: Docs
+        doc_type: References
+        category: RippleAPI for JavaScript
+        filters:
+            - remove_doctoc
+            - add_version
         targets:
             - local
 
