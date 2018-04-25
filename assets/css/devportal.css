@@ -372,12 +372,6 @@ pre code {
   list-style-type: none;
 }
 
-.dev_nav_wrapper {
-  position: fixed;
-  width: 100%;
-  overflow-y: scroll;
-  top: 130px;
-}
 td {
   border: 1px solid #dbdde2;
   padding: 0.2em;
@@ -713,17 +707,17 @@ th {
   max-height: calc(100% - 150px);
   max-width: 16.66667%;
   overflow: auto;
+  z-index: 10;
 }
 
 /* Responsive design for different viewscreens -------------------------------*/
 
 @media (max-width: 768px) {
-  .dev_nav_wrapper,
-  .sidebar {
+  #page-toc-wrapper {
+    position: static;
     display: block;
     clear: both;
     overflow-y: inherit;
-    position: static;
     max-width: 100%;
   }
   .main {
@@ -798,17 +792,6 @@ th {
   }
   #goog-gt-tt {
     display: none;
-  }
-  .dev_nav_wrapper {
-    position: static !important;
-  }
-  .sidebar:before {
-    display: none !important;
-  }
-  .sidebar {
-    padding-top: 0 !important;
-    display: block !important;
-    float: none !important;
   }
   h1 {
     page-break-before: always;

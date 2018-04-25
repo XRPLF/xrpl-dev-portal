@@ -70,22 +70,26 @@
 
   <div class="container-fluid" role="document" id="main_content_wrapper">
     <div class="row">
-      {% if currentpage.sidebar != "disabled" %}
-      <aside class="sidebar col-md-3 col-xl-2 p-0" role="complementary">
-          {% block left_sidebar %}
-            {% include "template-sidebar_nav.html" %}
-          {% endblock %}
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      {% if currentpage.sidebar != "disabled" and currentpage.sidebar != "left_only" %}
+      <aside class="right-sidebar col-md-3 col-xl-2 p-0 order-md-last" role="complementary">
+          {% block right_sidebar %}{% endblock %}
       </aside>
       {% endif %}
-      <main class="main {% if currentpage.sidebar == "left_only" %}col-md-9 col-xl-10{% elif currentpage.sidebar == "disabled" %}col-md-12 col-xl-12{% else %}col-md-6 col-xl-8{% endif %} p-0" role="main" id="main_content_body">
+
+      <!-- main column -->
+      <main class="main {% if currentpage.sidebar == "left_only" %}col-md-8 col-xl-10{% elif currentpage.sidebar == "disabled" %}col-md-12 col-xl-12{% else %}col-md-6 col-xl-8{% endif %} p-0" role="main" id="main_content_body">
           {% block breadcrumbs %}
             {% include 'template-breadcrumbs.html' %}
           {% endblock %}
           {% block main %}{% endblock %}
       </main>
-      {% if currentpage.sidebar != "disabled" and currentpage.sidebar != "left_only" %}
-      <aside class="right-sidebar col-md-3 col-xl-2 p-0" role="complementary">
-          {% block right_sidebar %}{% endblock %}
+      {% if currentpage.sidebar != "disabled" %}
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-3 col-xl-2 p-0 order-md-first" role="complementary">
+          {% block left_sidebar %}
+            {% include "template-sidebar_nav.html" %}
+          {% endblock %}
       </aside>
       {% endif %}
     </div>
