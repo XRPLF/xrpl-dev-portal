@@ -1,0 +1,84 @@
+{% extends "template-base.html" %}
+
+{% block bodyclasses %}landing{% endblock %}
+
+{% block main %}
+  <section class="container-fluid px-5 pb-3 pt-0">
+    <div class="row">
+      <h1 class="main-page-header">References</h1>
+    </div>
+  </section>
+
+  <section class="container-fluid bg-light p-5">
+
+    <h2><a href="reference-rippled-api.html">rippled API Reference</a></h2>
+    <div class="blurb col-sm-12">
+      <p>Use the <code>rippled</code> API to communicate with a <code>rippled</code> server, the core peer-to-peer server that manages the XRP Ledger.</p>
+    </div>
+
+      <div class="card-deck p-2">
+
+        {% for page in pages|selectattr("supercategory", "equalto", "rippled API")|list %}
+        {% if loop.index != 1 and page == pages|selectattr("category", "equalto", page.category)|first %}
+          <div class="card">
+            {#{% set parent_page = pages|selectattr("html", "equalto", "reference-rippled-public.html")|first %}#}
+            <div class="card-header">
+              <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="ref-blurb">{{page.blurb}}</p>
+              {% set depth = 1 %}
+              {% set parent_page = page %}
+              {% include 'template-page-children.html' %}
+            </div><!--/.card-body-->
+          </div><!--/.card-->
+
+          {# go to new row after admin methods #}
+          {% if page.html == "reference-rippled-admin.html" %}
+      </div><!--/.card-deck-->
+      <div class="card-deck p-2">
+          {% endif %}
+        {% endif %}
+        {% endfor %}
+
+      </div><!--/.card-deck-->
+
+  </section>
+
+  <section class="container-fluid bg-white p-5">
+
+    <h2>Other XRP Ledger Interfaces</h2>
+    <div class="blurb col-sm-12">
+      <p>Here are a few other ways to interact with the XRP Ledger.</p>
+    </div>
+    <div class="card-deck p-2">
+
+      {% for page in pages|selectattr("doc_type", "equalto", "References")|selectattr("supercategory", "ne", "rippled API") %}
+        {% if loop.index != 1 and page == pages|selectattr("category", "equalto", page.category)|first %}
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="ref-blurb">{{page.blurb}}</p>
+              {% if page.curated_anchors is defined %}
+                <ul class="curated-links">
+                  {% for link in page.curated_anchors %}
+                  <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+
+              {% set depth = 1 %}
+              {% set parent_page = page %}
+              {% include 'template-page-children.html' %}
+            </div><!--/.card-body-->
+          </div><!--/.card-->
+        {% endif %}
+      {% endfor %}
+
+    </div><!--/.card-deck-->
+
+  </section>
+
+{% endblock %}

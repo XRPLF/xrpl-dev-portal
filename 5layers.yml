@@ -205,8 +205,9 @@ pages:
     -   name: References
         funnel: Docs
         doc_type: References
-        template: template-landing-children.html
+        template: template-landing-references.html
         html: landing-references.html
+        sidebar: disabled
         targets:
             - local
 
@@ -224,6 +225,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: rippled API Public Methods
+        blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
         html: reference-rippled-public.html
         template: template-landing-children.html
         targets:
@@ -312,7 +314,19 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: rippled API Admin Methods
+        blurb: Administer a rippled server with these admin API methods.
         html: reference-rippled-admin.html
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   name: Server Control Methods
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: rippled API Admin Methods
+        subcategory: Server Control Methods
+        html: reference-rippled-admin-server-control-methods.html
         template: template-landing-children.html
         targets:
             - local
@@ -331,6 +345,53 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: Transaction Format
+        blurb: A transaction is the only way to modify the XRP Ledger. Get details about its required format.
+        targets:
+            - local
+
+    -   name: Transaction Common Fields #TODO: replace with real md file
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Format
+        html: reference-rippled-transactions-common-fields.html
+        targets:
+            - local
+
+    -   name: Transaction Types #TODO: replace with real md file
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Format
+        html: reference-rippled-transaction-types.html
+        targets:
+            - local
+
+    -   name: Transaction Results #TODO: replace with real md file
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Format
+        html: reference-rippled-transaction-results.html
+        targets:
+            - local
+
+    -   md: reference-ledger-format.md
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Format
+        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+        targets:
+            - local
+
+    -   name: API Conventions #TODO: replace with real md file
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        html: reference-rippled-api-conventions.html
+        blurb: Lorem ipsum dolor sit amet...
         targets:
             - local
 
@@ -338,6 +399,12 @@ pages:
         funnel: Docs
         doc_type: References
         category: Data API
+        blurb: Access more XRP Ledger data, including transaction history and analytics.
+        curated_anchors:
+            - name: Methods
+              anchor: "#api-method-reference"
+            - name: API Conventions
+              anchor: "#api-conventions"
         targets:
             - local
 
@@ -347,6 +414,14 @@ pages:
         funnel: Docs
         doc_type: References
         category: RippleAPI for JavaScript
+        blurb: Official client library to the XRP Ledger. Available for JavaScript only.
+        curated_anchors:
+            - name: Transactions
+              anchor: "#transaction-overview"
+            - name: Basic Types
+              anchor: "#basic-types"
+            - name: Methods
+              anchor: "#api-methods"
         filters:
             - remove_doctoc
             - add_version

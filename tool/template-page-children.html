@@ -27,7 +27,6 @@
 {% else %}
   <!-- TEMPLATE ERROR: page {{parent_page.name}} is not the parent of anything? -->
 {% endif %}
-<!-- parent_level is {{parent_level}} -->
 {% if parent_level != "home" %}
   {% set childpages = pages|selectattr(parent_level, "equalto", parent_page[parent_level])|list %}
 {% endif %}
