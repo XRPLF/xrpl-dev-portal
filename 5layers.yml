@@ -210,7 +210,7 @@ pages:
         targets:
             - local
 
-    -   name: References
+    -   name: rippled API
         funnel: Docs
         doc_type: References
         supercategory: rippled API
