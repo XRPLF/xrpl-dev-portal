@@ -22,8 +22,8 @@
                 <h3 class="card-title"><a href="{{doc_type_top.html}}">{{doc_type_top.name}}</a></h3>
               </div><!--/.card-header-->
               <div class="card-body">
-                {% if currentpage.doc_type_blurbs[page.doc_type] is defined %}
-                  <p class="doc-type-blurb">{{currentpage.doc_type_blurbs[page.doc_type]}}</p>
+                {% if page.blurb is defined %}
+                  <p class="doc-type-blurb">{{page.blurb}}</p>
                 {% endif %}
                 {% set parent_page = doc_type_top %}
                 {% set depth = 1.5 %}

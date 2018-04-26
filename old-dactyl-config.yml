@@ -1,0 +1,556 @@
+# Relative paths work OK as long as you start the tool from its local dir
+template_path: tool
+
+# This folder gets copied into the output directory
+template_static_path: assets
+
+# Templates should have filenames starting in template-
+default_template: template-doc.html
+default_pdf_template: template-forpdf.html
+
+# HTML, PDF, GFM all get output here
+out_path: out
+
+# MD files should be here (and in subdirs)
+content_path: content
+
+# This folder gets copied into the output directory
+content_static_path: img
+
+# PDF creation needs a dir for temporary files
+temporary_files_path: /tmp/
+
+default_filters:
+    - multicode_tabs
+    - standardize_header_ids
+    - buttonize
+    - callouts
+    - badges
+    - link_replacement
+
+callout_class: "devportal-callout"
+
+cover_page:
+    name: Overview
+    html: index.html
+    template: template-index.html
+
+targets:
+    # First member is the default that gets built when target not specified
+    -   name: local
+        display_name: Ripple Developer Portal
+        # These github_ fields are used by the template's "Edit on GitHub" link.
+        #  Override them with --vars to change which fork/branch to edit.
+        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_branch: master
+
+    -   name: ripple.com
+        display_name: Ripple Developer Center
+        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_branch: master
+        template: template-contentwithtoc.html
+        link_subs:
+            "reference-rippled.html": https://ripple.com/build/rippled-apis/
+            "reference-rippleapi.html": https://ripple.com/build/rippleapi/
+            "reference-transaction-format.html": https://ripple.com/build/transactions/
+            "reference-ledger-format.html": https://ripple.com/build/ledger-format/
+            "reference-data-api.html": https://ripple.com/build/data-api-v2/
+            "reference-amendments.html": https://ripple.com/build/known-amendments/
+            "tutorial-multisign.html": https://ripple.com/build/how-to-multi-sign/
+            "concept-issuing-and-operational-addresses.html": https://ripple.com/build/issuing-operational-addresses/
+            "tutorial-reliable-transaction-submission.html": https://ripple.com/build/reliable-transaction-submission/
+            "tutorial-rippleapi-beginners-guide.html": https://ripple.com/build/rippleapi-beginners-guide/
+            "tutorial-rippled-setup.html": https://ripple.com/build/rippled-setup/
+            "tutorial-gateway-guide.html": https://ripple.com/build/gateway-guide/
+            "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
+            "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
+            "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
+            "concept-cryptographic-keys.html": https://ripple.com/build/cryptographic-keys/
+            "tutorial-regular-keys.html": https://ripple.com/build/working-regular-key-pair/
+            "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
+            "concept-accounts.html": https://ripple.com/build/accounts/
+            "concept-amendments.html": https://ripple.com/build/amendments/
+            "concept-authorized-trust-lines.html": https://ripple.com/build/authorized-trust-lines/
+            "concept-checks.html": https://ripple.com/build/checks/
+            "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
+            "concept-escrow.html": https://ripple.com/build/escrow/
+            "concept-reaching-consensus.html": https://ripple.com/build/reaching-consensus-xrp-ledger/
+            "concept-history-sharding.html": https://ripple.com/build/history-sharding/
+            "concept-fee-voting.html": https://ripple.com/build/fee-voting/
+            "concept-fees.html": https://ripple.com/build/fees-disambiguation/
+            "concept-freeze.html": https://ripple.com/build/freeze/
+            "concept-paths.html": https://ripple.com/build/paths/
+            "concept-partial-payments.html": https://ripple.com/build/partial-payments/
+            "concept-reserves.html": https://ripple.com/build/reserves/
+            "concept-stand-alone-mode.html": https://ripple.com/build/stand-alone-mode/
+            "concept-transaction-cost.html": https://ripple.com/build/transaction-cost/
+            "concept-transfer-fees.html": https://ripple.com/build/transfer-fees/
+            "concept-noripple.html": https://ripple.com/build/understanding-the-noripple-flag/
+            "concept-xrp-ledger-intro.html": https://ripple.com/build/xrp-ledger-introduction/
+            "gb-2015-06.html": https://ripple.com/build/gateway-guide/gb-2015-06-corrections-autobridging/
+            "gb-2015-05.html": https://ripple.com/build/gateway-guide/gb-2015-05-historical-ledger-query-migration/
+            "ripple-api-tool.html": https://ripple.com/build/websocket-tool/
+            "data-api-v2-tool.html": https://ripple.com/build/data-api-tool/
+            "concept-money.html": https://ripple.com/build/money-xrp-ledger/
+            "reference-currency.html": https://ripple.com/build/currency-format/
+            "concept-demurrage.html": https://ripple.com/build/demurrage/
+            "concept-depositauth.html": https://ripple.com/build/deposit-authorization/
+            "tutorial-checks-send.html": https://ripple.com/build/how-to-send-a-check/
+            "tutorial-checks-lookup-by-sender.html": https://ripple.com/build/look-checks-sender/
+            "tutorial-checks-lookup-by-recipient.html": https://ripple.com/build/look-checks-recipient/
+            "tutorial-checks-cancel.html": https://ripple.com/build/how-to-cancel-a-check/
+            "tutorial-checks-cash-exact.html": https://ripple.com/build/cash-check-exact-amount/
+            "tutorial-checks-cash-flex.html": https://ripple.com/build/cash-check-flexible-amount/
+        image_subs:
+            "img/funds_flow_diagram.png": https://cdn.ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
+            "img/checks-happy_path.png": https://cdn.ripple.com/wp-content/uploads/2018/03/checks-happy_path.png
+            "img/checks_expiration.png": https://cdn.ripple.com/wp-content/uploads/2018/03/checks_expiration.png
+            "img/e2g-01.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-01.png
+            "img/e2g-02.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-02.png
+            "img/e2g-03.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-03.png
+            "img/e2g-with_transferrate.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-with_transferrate.png
+            "img/transfer_fees_example.png": https://cdn.ripple.com/wp-content/uploads/2015/06/transfer_fees_example1.png
+            "img/ledger-process.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-process.png
+            "img/ledger-components.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-components.png
+            "img/ledger-indexes.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-indexes.png
+            "img/ledger-history.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-02.png
+            "img/ledger-changes.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-03.png
+            "img/paths-examples.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-examples.png
+            "img/paths-default_paths.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-default_paths.png
+            "img/noripple-01.png": https://cdn.ripple.com/wp-content/uploads/2015/04/noripple-01.png
+            "img/noripple-02.png": https://cdn.ripple.com/wp-content/uploads/2015/04/noripple-02.png
+            "img/noripple-03.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-03.png
+            "img/noripple-04.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-04.png
+            "img/noripple-05.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-05.png
+            "img/noripple-06.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-06.png
+            "img/key-address-rels.png": https://cdn.ripple.com/wp-content/uploads/2017/05/key-address-rels.png
+            "img/paychan-flow.png": https://cdn.ripple.com/wp-content/uploads/2017/05/paychan-flow1.png
+            "img/consensus-agreed-transaction-set.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-06.png
+            "img/consensus-calculate-validation.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-07.png
+            "img/consensus-candidate-transaction-sets.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-05.png
+            "img/consensus-declare-validation.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-08.png
+            "img/consensus-validated-ledger.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-09.png
+            "img/xrp-ledger-network.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-04.png
+            "img/escrow-success-flow.png": https://cdn.ripple.com/wp-content/uploads/2017/09/escrow-success-flow.png
+            "img/escrow-cancel-flow.png": https://cdn.ripple.com/wp-content/uploads/2017/09/escrow-cancel-flow.png
+            "img/currency-code-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/currency-code-format.png
+            "img/currency-number-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/currency-number-format.png
+            "img/demurrage-currency-code-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/demurrage-currency-code-format.png
+            "img/xrp-ledger-network-ledger-store-and-shard-store.png": https://cdn.ripple.com/wp-content/uploads/2018/02/xrp-ledger-network-ledger-store-and-shard-store1.png
+
+pages:
+  # I. Introduction ------------------------------------------------------------
+
+    -   md: concept-xrp-ledger-intro.md
+        category: Introduction
+        targets:
+            - local
+            - ripple.com
+
+    # "XRP Ledger Ecosystem Overview" goes here
+
+  # II. Technical Overview -----------------------------------------------------
+
+    -   md: concept-consensus.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-reaching-consensus.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    # "Transaction Processing" goes here (broken off from transaction reference)
+
+    -   md: concept-accounts.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-cryptographic-keys.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-fees.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-fee-voting.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-amendments.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-amendments.md
+        category: Technical Overview
+        targets:
+            - local
+            - ripple.com
+
+    # III. About XRP -----------------------------------------------------------
+
+    -   md: concept-money.md # TODO: maybe split this up into just an XRP intro?
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-reserves.md
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-transaction-cost.md
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-partial-payments.md
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-escrow.md
+        category: About XRP
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-depositauth.md
+        category: About XRP # Not strictly an XRP feature, but most relevant to XRP
+        targets:
+            - local
+            - ripple.com
+
+    # DOC-696 "About Payment Channels" goes here
+
+  # IV. XRP Tasks --------------------------------------------------------------
+
+    # "Connecting to rippled" goes here (extracted from rippled reference)
+
+    -   md: tutorial-rippleapi-beginners-guide.md
+        category: XRP Tasks
+        targets:
+            - local
+            - ripple.com
+
+    # DOC-1299 "Create an XRP Ledger Account" goes here
+
+    # DOC-1322 "Sending Exact XRP Payments" goes here
+
+    -   md: tutorial-reliable-transaction-submission.md
+        category: XRP Tasks
+        targets:
+            - local
+            - ripple.com
+
+    # "Robustly Monitoring for Payments" goes here (adapted from gateway guide?)
+
+    # "Bouncing Payments" goes here (adapted from gateway guide?)
+
+    -   md: tutorial-multisign.md
+        category: XRP Tasks # This isn't strictly XRP-related though...
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-escrow.md
+        category: XRP Tasks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-paychan.md
+        category: XRP Tasks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-regular-keys.md
+        category: XRP Tasks # Not strictly XRP-related, either...
+        targets:
+            - local
+            - ripple.com
+
+  # V. Issued Currencies -------------------------------------------------------
+
+    # TODO: stand-alone issued currencies intro?
+
+    -   md: concept-freeze.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-transfer-fees.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-noripple.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-authorized-trust-lines.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    # DOC-78 "Decentralized Exchange" goes here
+
+    # DOC-844 "TickSize Settings" goes here
+
+    -   md: concept-paths.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-checks.md
+        category: Checks
+        targets:
+          - local
+          - ripple.com
+
+    -   md: tutorial-checks-send.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-checks-lookup-by-sender.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-checks-lookup-by-recipient.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-checks-cancel.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-checks-cash-exact.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-checks-cash-flex.md
+        category: Checks
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-demurrage.md
+        category: Issued Currencies
+        targets:
+            - local
+            - ripple.com
+
+  # VI. The rippled Server -----------------------------------------------------
+
+    -   md: tutorial-rippled-setup.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
+
+    # -   md: reference-rippled.md # TODO: break out the concept parts for here
+    #     category: The rippled Server
+    #     targets:
+    #         - local
+    #         - ripple.com
+
+    -   md: concept-stand-alone-mode.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
+
+    -   md: concept-history-sharding.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-build-run-rippled-ubuntu.md
+        category: The rippled Server
+        targets:
+            - local
+            - ripple.com
+
+  # VII. The Exchange Business Model -------------------------------------------
+    -   md: tutorial-listing-xrp.md
+        category: The Exchange Business Model
+        targets:
+            - local
+            - ripple.com
+
+  # VIII. The Gateway Business Model -------------------------------------------
+    -   md: concept-issuing-and-operational-addresses.md
+        category: The Gateway Business Model
+        targets:
+            - local
+            - ripple.com
+
+    -   md: tutorial-gateway-guide.md
+        category: The Gateway Business Model
+        targets:
+            - local
+            - ripple.com
+
+    -   md: gb-2015-06.md
+        category: The Gateway Business Model
+        targets:
+            - local
+            - ripple.com
+
+    -   md: gb-2015-05.md
+        category: The Gateway Business Model
+        targets:
+            - local
+            - ripple.com
+
+  # IX. Reference Material
+    -   md: reference-rippled.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-currency.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-transaction-format.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-ledger-format.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+    -   name: RippleAPI Reference # name is required for remote-sourced files
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.19.1/docs/index.md
+        html: reference-rippleapi.html
+        category: Reference Material
+        filters:
+            - remove_doctoc
+            - add_version
+        targets:
+            - local
+            - ripple.com
+
+    -   md: reference-data-api.md
+        category: Reference Material
+        targets:
+            - local
+            - ripple.com
+
+  # Appendix: API Tools --------------------------------------------------------
+    -   name: RPC Tool
+        category: API Tools
+        html: xrp-ledger-rpc-tool.html
+        targets:
+            - local
+        template: template-xrp-ledger-rpc-tool.html
+
+    -   name: WebSocket API Tool
+        category: API Tools
+        html: ripple-api-tool.html
+        sidebar: custom
+        targets:
+            - local
+        template: template-ripple-api-tool.html
+
+    -   name: Data API v2 Tool
+        category: API Tools
+        html: data-api-v2-tool.html
+        methods_js: js/apitool-methods-data_v2.js
+        rest_host: https://data.ripple.com
+        doc_page: reference-data-api.html
+        sidebar: custom
+        targets:
+            - local
+        template: template-rest-api-tool.html
+
+    -   name: ripple.txt Validator
+        category: API Tools
+        html: ripple-txt-validator.html
+        targets:
+            - local
+        template: template-ripple-txt-validator.html
+
+    -   name: XRP Test Net Faucet
+        category: API Tools
+        html: xrp-test-net-faucet.html
+        targets:
+            - local
+        template: template-test-net.html
+
+  # Non-canonical pages
+    -   name: Page Manifest
+        # Used to inform the ripple.com code what pages it should map
+        html: devportal-manifest.php
+        template: template-manifest.php
+        targets:
+            - ripple.com
+
+# Link Checker Config ------------------------------------------------------- #
+
+ignore_anchors_in:
+    - data-api-v2-tool.html
+    - ripple-api-tool.html
+    - tool-jsonrpc.html
+
+#Sometimes, a link is not really problematic, but the link checker detects it
+# as such and the easiest solution is to ignore it.
+known_broken_links:
+    # Strangely, Python doesn't like the cert here. Firefox is OK with it.
+    - https://validators.ripple.com
+
+    # Login required for the client portal.
+    - https://clients.ripple.com/
+
+    # These PDFs download OK in a browser
+    - http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847
+    - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF
+
+# Style Checker Config ------------------------------------------------------ #
+
+word_substitutions_file: tool/word_substitutions.yaml
+phrase_substitutions_file: tool/phrase_substitutions.yaml
