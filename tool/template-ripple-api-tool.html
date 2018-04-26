@@ -1,6 +1,7 @@
 {% extends "template-base.html" %}
 
 {% block right_sidebar %}
+  <aside class="p-3">
     <h2>API Methods</h2>
     <ul id='command_list'>
         <li class='selected'><a href='#server_info'>server_info</a></li>
@@ -32,17 +33,17 @@
         <li><a href='#path_find'>path_find</a></li>
         <li><a href='#book_offers'>book_offers</a></li>
     </ul>
+  </aside>
 {% endblock %}
 
 {% block main %}
-    <div class='content-root'>
+  <section class="container-fluid p-3">
+    <h1>WebSocket Tool</h1>
     <div id='online_state'>Offline</div>
-    <div style="clear:both;"></div>
     <div id='command_wrapper'>
         <div id='command_table'>
             <div id='io_wrapper'>
                 <div id='input' class='io'>
-                    <h2>WebSocket Request</h2>
                     <div id='test_warning' class='alert alert-danger' style='display:none;'>
                         <h4>Test accounts only!</h4>
                         <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
@@ -77,7 +78,7 @@
             </div>
         </div>
     </div>
-    </div>
+  </section>
 {% endblock %}
 
 {% block endbody %}

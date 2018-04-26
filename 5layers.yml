@@ -466,11 +466,10 @@ pages:
 
     -   name: WebSocket API Tool
         funnel: Dev Tools
+        template: template-ripple-api-tool.html
         html: websocket-api-tool.html
-        sidebar: custom
         targets:
             - local
-        template: template-ripple-api-tool.html
 
     -   name: Data API v2 Tool
         funnel: Dev Tools

@@ -1,7 +1,7 @@
 {% extends "template-base.html" %}
 
 {% block main %}
-<div id="container" class="lit">
+<section class="container-fluid p-3">
   <h1>ripple.txt Validator</h1>
 
   <p>If you run a business that connects to the XRP Ledger, serving a <code>ripple.txt</code> file from your domain can help clarify which XRP Ledger addresses you own and use, and which validating server(s) you run.</p>
@@ -13,7 +13,7 @@
       <input id="domain" type="text" required
              placeholder="Domain name, e.g.example.com"
              pattern="^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$"><br>
-      <button class="cta_readmore btn">Verify ripple.txt</button>
+      <button class="btn btn-primary">Verify ripple.txt</button>
     </fieldset>
   </form>
   <div id="result">
@@ -21,7 +21,7 @@
       <ul id="log">
     </ul>
   </div>
-</div>
+</section>
 {% endblock %}
 
 {% block endbody %}
