@@ -2,7 +2,7 @@
 
 ## [`rippled` API Reference](x)
 <!--{# provide link to PDF #}-->
-Use the `rippled` API to communicate with a rippled server, the core peer-to-peer server that manages the XRP Ledger.
+Use the `rippled` API to communicate with a `rippled` server, the core peer-to-peer server that manages the XRP Ledger.
 
 ### [Public `rippled` API Methods](x)
 Communicate directly with a `rippled` server using these public API methods.
@@ -39,7 +39,3 @@ Official client library to the XRP Ledger. Available for JavaScript only.
 Access info about changes to the XRP Ledger, including transaction history and analytics.
 
 <!--{# content populated based on hierarchy and template #}-->
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk0MDQ2NzBdfQ==
--->
