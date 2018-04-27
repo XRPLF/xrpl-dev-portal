@@ -1,7 +1,166 @@
+/* Generic styles and colors not in the bootstrap files --------------------- */
+
 body {
   font-family: Roboto, sans-serif;
 }
 
+/* Images should not exceed the main column */
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* But badge images shouldn't be resized */
+.content img.dactyl_badge {
+    width: initial;
+}
+
+td {
+  border: 1px solid #dbdde2;
+  padding: 0.2em;
+  vertical-align: text-top;
+}
+th {
+  padding: 0.2em;
+}
+
+/* Top navigation ----------------------------------------------------------- */
+
+.navbar-brand {
+  text-decoration: none;
+  white-space: pre;
+}
+
+.navbar .logo {
+  margin-right: 0.5em;
+  position: relative;
+  bottom: 3px;
+}
+
+.navbar .navbar-brand .brand-text {
+  font-weight: 300;
+  margin-right: 20px;
+  color: #777;
+}
+
+.navbar .navbar-nav a {
+  font-size: 18px;
+  line-height: 38px;
+  color: #27a2db;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.navbar .navbar-nav .active a {
+  font-weight: bold;
+  color: #333;
+  background-color: #eee;
+
+}
+.navbar .active-parent a {
+  font-weight: bold;
+  background-color: #eee;
+}
+
+/* Push content below fixed header ------------------------------------------ */
+#main_content_wrapper {
+  margin-top: 55px;
+}
+
+/* Fix so anchors don't jump under the fixed header ------------------------- */
+.main h1:before,
+.main h2:before,
+.main h3:before,
+.main h4:before,
+.main h5:before,
+.main h6:before,
+#main_content_wrapper:before {
+  display: block;
+  content: " ";
+  margin-top: -67px;
+  height: 67px;
+  visibility: hidden;
+}
+
+.card h1:before,
+.card h2:before,
+.card h3:before,
+.card h4:before,
+.card h5:before,
+.card h6:before {
+  display: none;
+}
+
+/* Content text styling ----------------------------------------------------- */
+
+.content {
+  padding-bottom: 50px;
+}
+
+.content h1 {
+  margin-top: 32px;
+  line-height: 1.2;
+}
+.content h1:first-child {
+  margin-top: 0;
+  line-height: 1.2;
+}
+.content h1:first-child:before {
+  margin-top: -100px;
+}
+.content h2 {
+  margin-top: 28px;
+  line-height: 1.2;
+}
+.content h3 {
+  margin-top: 24px;
+  line-height: 1.2;
+}
+.content h4 {
+  margin-top: 20px;
+  line-height: 1.2;
+}
+.content h5 {
+  margin-top: 16px;
+  line-height: 1.2;
+  font-weight: bold;
+}
+.content h6 {
+  margin-top: 12px
+  line-height: 1.2;
+  font-weight: bold;
+}
+
+.content p,
+.content li,
+.content td {
+  line-height: 1.65;
+}
+
+/* "Source" links float right */
+.content a[title="Source"] {
+  float: right;
+  padding-left: 20px;
+}
+
+.content table {
+  clear: right;
+}
+
+/* Big draft warning at top of page so it's hard to mix up with the live site */
+.draft-warning {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    margin: 10px;
+    position: absolute;
+    top: 25px;
+    left: 150px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Footer ------------------------------------------------------------------- */
 .ripple-footer {
   z-index: 2;
   color: #999999;
@@ -45,9 +204,11 @@ body {
   margin-right: 25px;
 }
 
-.no-sidebar aside.sidebar {
-    display: none;
+.foot-nav-col .children-display li {
+  list-style-type: none;
 }
+
+/* Callouts ----------------------------------------------------------------- */
 
 .devportal-callout {
     border-style: solid;
@@ -108,84 +269,85 @@ body {
     padding-right: 5px;
 }
 
-/* Big draft warning at top of page so it's hard to mix up with the live site */
-.draft-warning {
-    background-color: red;
-    color: white;
-    padding: 2px 6px;
-    margin: 10px;
-    position: absolute;
-    top: 25px;
-    left: 150px;
-    font-size: 12px;
-    font-weight: bold;
+/* Button styling ----------------------------------------------------------- */
+
+.readmore {
+  display: block;
+  margin: 15px auto 5px;
+  text-align: center;
 }
 
-/* Images should not exceed the main column */
-.content img {
-  max-width: 100%;
-  height: auto;
+.readmore .btn {
+  font-size: 18px;
+  transition: 0.5s;
 }
 
-/* But badge images shouldn't be resized */
-.content img.dactyl_badge {
-    width: initial;
+.btn-primary code {
+  color: inherit;
 }
 
-.no-1st-head h1:first-child,
-.no-1st-head h2:first-child,
-.no-1st-head h3:first-child,
-.no-1st-head h4:first-child,
-.no-1st-head h5:first-child,
-.no-1st-head h6:first-child {
-  visibility: hidden;
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-}
-
-.content h1 {
-  margin-top: 32px;
-  line-height: 1.2;
-}
-.content h1:first-child {
-  margin-top: 0;
-  line-height: 1.2;
-}
-.content h1:first-child:before {
-  margin-top: -100px;
-}
-.content h2 {
-  margin-top: 28px;
-  line-height: 1.2;
-}
-.content h3 {
-  margin-top: 24px;
-  line-height: 1.2;
-}
-.content h4 {
-  margin-top: 20px;
-  line-height: 1.2;
-}
-.content h5 {
-  margin-top: 16px;
-  line-height: 1.2;
-  font-weight: bold;
-}
-.content h6 {
-  margin-top: 12px
-  line-height: 1.2;
-  font-weight: bold;
-}
-
-
-/* "Button-style" links should look like buttons, not links */
 a.button {
   cursor: pointer;
   text-decoration: none !important;
 }
 
-/* Code Tabs stuff */
+.button, #request_button { /* Should be same as btn btn-primary */
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #fff;
+  background-color: #1db4ff;
+  border-color: #1db4ff;
+}
+.button:hover {
+  background-color: #43bded;
+  -o-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+/* Code Tabs ---------------------------------------------------------------- */
+
+pre {
+  overflow: visible;
+  word-wrap: normal;
+}
+pre code {
+  white-space: pre;
+}
+.code_sample pre {
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+.code_sample pre code {
+  overflow: auto;
+  max-height: 14em;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+.code_sample pre code.expanded {
+  overflow: visible;
+  max-height: none;
+  position: absolute;
+  min-width: 661px;
+}
+.code_sample .code_toggler {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .multicode {
   color: #000;
   margin: 12px 0px 0px 0px;
@@ -232,81 +394,8 @@ a.current {
   color: black;
   background: white;
 }
-/* End of code tabs stuff */
 
-.button, #request_button { /* Should be same as btn btn-primary */
-  display: inline-block;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  color: #fff;
-  background-color: #1db4ff;
-  border-color: #1db4ff;
-}
-.button:hover {
-  background-color: #43bded;
-  -o-transition: .5s;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-pre {
-  overflow: visible;
-  word-wrap: normal;
-}
-pre code {
-  white-space: pre;
-}
-.code_sample pre {
-  background: none;
-  border: none;
-  border-radius: 0;
-}
-.code_sample pre code {
-  overflow: auto;
-  max-height: 14em;
-  background-color: #f5f5f5;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-}
-.code_sample pre code.expanded {
-  overflow: visible;
-  max-height: none;
-  position: absolute;
-  min-width: 661px;
-}
-.code_sample .code_toggler {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-.xrp-ledger-dev-portal.sidebar-primary .sidebar {
-  padding-right: 0;
-  padding-left: 0;
-}
-.xrp-ledger-dev-portal.sidebar-primary .main {
-  z-index: 5;
-  border-left: 1px solid #cccccc;
-  padding-left: 40px;
-  min-height: 700px;
-}
-.content {
-  padding-bottom: 50px;
-}
-#dactyl_toc_sidebar a {
-  text-decoration: none;
-}
-#dactyl_toc_sidebar a:hover {
-  text-decoration: underline;
-}
-
+/* Common list modules (children, curated links) ---------------------------- */
 .curated-links ul,
 .curated-links ol,
 .children-display ul {
@@ -323,6 +412,11 @@ pre code {
   margin-top: 15px;
   margin-left: 15px;
 }
+.landing .level-1,
+.landing .curated-links li {
+  font-weight: 400;
+  font-size: 18px;
+}
 .level-1:first-child {
   margin-top: 0;
 }
@@ -333,180 +427,22 @@ pre code {
 .level-3 {
   list-style-type: square;
   margin-left: 45px;
-  color: #555;
-}
-.level-3 a {
-  color: #555;
-}
-.level-3 a:hover {
-  color: #333;
 }
 .level-4 {
   margin-left: 60px;
-  color: #888;
-}
-.level-4 a {
-  color: #888;
-}
-.level-4 a:hover {
-  color: #333;
 }
 .level-5 {
   margin-left: 75px;
   list-style-type: circle;
-  color: #aaa;
-}
-.level-5 a {
-  color: #aaa;
-}
-.level-5 a:hover {
-  color: #333;
 }
 .level-6 {
   /* Probably not used */
   margin-left: 90px;
+  list-style-type: square;
 }
 
-.foot-nav-col .children-display li {
-  list-style-type: none;
-}
 
-td {
-  border: 1px solid #dbdde2;
-  padding: 0.2em;
-  vertical-align: text-top;
-}
-th {
-  padding: 0.2em;
-}
-.content a[title="Source"] {
-  float: right;
-  padding-left: 20px;
-}
-.content table {
-  clear: right;
-}
-.main h1:before,
-.main h2:before,
-.main h3:before,
-.main h4:before,
-.main h5:before,
-.main h6:before,
-#main_content_wrapper:before {
-  display: block;
-  content: " ";
-  margin-top: -67px;
-  height: 67px;
-  visibility: hidden;
-}
-
-.card h1:before,
-.card h2:before,
-.card h3:before,
-.card h4:before,
-.card h5:before,
-.card h6:before {
-  display: none;
-}
-
-/*------------- Code Tabs -----------------------------------------*/
-.multicode {
-	color: #000;
-	border-bottom: 1px solid #DBDDE2;
-	margin: 12px 0px 0px 0px;
-	padding: 0 0 0 0;
-	z-index: 1;
-	padding-left: 10px;
-}
-
-.multicode ul {
-    padding-bottom: 0;
-}
-
-.multicode pre {
-    padding-top: 0;
-}
-
-.multicode li {
-	display: inline;
-	overflow: hidden;
-	list-style-type: none;
-}
-
-.multicode ul > li:before {
-    background: none;
-    border: none;
-}
-
-.multicode a, a.current {
-	color: black;
-	background: #DFE2E7;
-	border: 1px solid #DBDDE2;
-	padding: 1em 1em 0 1em;
-	margin: 0px;
-	text-decoration: none; }
-
-.multicode a.current {
-	background: #fff;
-	border-bottom: 1px solid #fff;
-    color : black;
-}
-
-.multicode a:hover {
-	color: black;
-	background: white;
-}
-
-.navbar {
-    background-color: #fff;
-    border-bottom: 1px solid #0f72e5;
-}
-
-.navbar-brand {
-  text-decoration: none;
-  white-space: pre;
-}
-
-.navbar .logo {
-  margin-right: 0.5em;
-  position: relative;
-  bottom: 3px;
-}
-
-.navbar .navbar-brand .brand-text {
-  font-weight: bold;
-  margin-right: 20px;
-  color: #777;
-}
-
-.navbar .navbar-nav a {
-    font-size: 18px;
-    line-height: 38px;
-    color: #27a2db;
-    text-decoration: none;
-    transition: 0.5s;
-}
-
-.navbar .navbar-nav .active a {
-    font-weight: bold;
-    color: #333;
-    background-color: #eee;
-
-}
-.navbar .active-parent a {
-    font-weight: bold;
-    background-color: #eee;
-}
-
-/*.navbar-form .btn.fa-search {
-  padding: 8px;
-  font-size: 16px;
-}*/
-
-#main_content_wrapper {
-  margin-top: 55px;
-}
-
+/* (Jump to) "Top" button --------------------------------------------------- */
 .jump-to-top {
   display: none;
   position: fixed;
@@ -524,6 +460,9 @@ th {
   }
 }
 
+
+/* Breacrumbs --------------------------------------------------------------- */
+
 .breadcrumb-item + .breadcrumb-item:before {
     content: "\f105"; /* fontawesome angle-right */
     font-family: FontAwesome;
@@ -534,7 +473,8 @@ th {
 }
 
 
-/* Accordion styling for sidebar navigation */
+/* Left navigation ---------------------------------------------------------- */
+
 .sidebar_pagelist {
   margin-left: 0;
   margin-bottom: 0;
@@ -631,6 +571,39 @@ th {
     content: "+";
 }
 
+.funnel-sidebar a.active {
+  color: #333;
+  cursor: default;
+}
+
+.xrp-ledger-dev-portal.sidebar-primary .sidebar {
+  padding-right: 0;
+  padding-left: 0;
+}
+.xrp-ledger-dev-portal.sidebar-primary .main {
+  z-index: 5;
+  border-left: 1px solid #cccccc;
+  padding-left: 40px;
+  min-height: 700px;
+}
+
+/* Right navigation --------------------------------------------------------- */
+
+#dactyl_toc_sidebar a {
+  text-decoration: none;
+}
+#dactyl_toc_sidebar a:hover {
+  text-decoration: underline;
+}
+
+#page-toc-wrapper {
+  position: fixed;
+  top: 75px;
+  max-height: calc(100% - 150px);
+  max-width: 16.66667%;
+  overflow: auto;
+  z-index: 10;
+}
 
 .card .sidebar_pagelist li a {
   display: block;
@@ -650,7 +623,28 @@ th {
   color: #333;
 }
 
-/* Edit on GitHub link --------- */
+.subcat-title.active-parent {
+  font-weight: bold;
+}
+
+.card .sidebar_pagelist li .subpage {
+  padding-left: 105px;
+}
+
+.sidenav_parent a {
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 16px 15px 10px;
+}
+
+.sidenav_parent a.active {
+  color: #333;
+  cursor: default;
+}
+
+/* Edit on GitHub link ------------------------------------------------------ */
 .github-edit-wrap {
   background-image: linear-gradient(180deg, #fafafa 0%, #ddd 90%);
   border: 1px solid #ccc;
@@ -676,9 +670,133 @@ th {
   line-height: 16px;
 }
 
+/* Use Cases ---------------------------------------------------------------- */
+.use-case-step-num {
+  border: 1px solid #333;
+  border-radius: 50%;
+  padding: 0.9rem;
+  position: absolute;
+  left: 1.8rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  text-align: center;
+  background-color: white;
+}
+
+.use-case-step-length {
+  float: right;
+  color: #888;
+  font-size: 16px;
+}
+
+.use-case p:not(:first-of-type) {
+  margin-top: .8rem;
+  margin-bottom: -.6rem;
+  padding-left: 2.5rem;
+  margin-left: 2.5rem;
+  border-left: 1px dashed #333;
+}
+.use-case h2 {
+  margin-left: 5rem;
+  margin-top: 0;
+}
+
+/* Landing Pages ------------------------------------------------------------ */
+
+.landing section:first-of-type {
+  padding-top: 0;
+  border-top-width: 0;
+}
+
+.landing section .card {
+  border-width: 0;
+  background: none;
+}
+
+.landing section .card-header {
+  background: none;
+  border-bottom: none;
+}
+
+.landing h2,
+.landing h3 {
+  font-weight: 300;
+}
+
+.landing section .card-header h3 {
+  font-size: 30px;
+  text-align: center;
+}
+
+#xrp_ledger_intro h3 {
+  font-size: 25px;
+  text-align: center;
+}
+
+.landing .card-img-top {
+  height: 8rem;
+  margin: 0 auto;
+}
+
+#xrp_ledger_intro .card-img-top {
+  display: block;
+  text-align: center;
+}
+
+#xrp_ledger_intro .card-footer {
+  border-width: 0;
+  border-radius: 0;
+  background: none;
+}
+
+#xrp_ledger_intro .card-body {
+  padding: 1px;
+}
+
+#xrp_ledger_intro .card-footer:after {
+  content: " ";
+  display: block;
+  width: 30%;
+  margin: 1.5rem auto;
+  border-top: 2px solid #0f72e5;
+}
+
+.landing .card-title > a {
+  text-decoration: none;
+}
+
+.landing .curated-links li:first-child {
+  margin-top: 5px;
+}
+
+.splash-head {
+  background-color: #102b3e;
+  background-image: url("../img/home-bg-cubes.jpg");
+  background-size: cover;
+  background-position: top center;
+  color: white;
+}
+
+.splash-head h1 {
+  font-weight: 700;
+}
+
+.splash-head p {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.splash-head code {
+  color: white;
+}
+
 .build-disclaimer {
   font-size: 10pt;
 }
+
+
+/* "Related Projects" (i.e. Client Portal & Interledger) boxes -------------- */
 
 .related-projects a {
   text-decoration: none;
@@ -704,16 +822,8 @@ th {
   margin-right: 10px;
 }
 
-#page-toc-wrapper {
-  position: fixed;
-  top: 75px;
-  max-height: calc(100% - 150px);
-  max-width: 16.66667%;
-  overflow: auto;
-  z-index: 10;
-}
 
-/* Responsive design for different viewscreens -------------------------------*/
+/* Responsive design for different viewscreens ------------------------------ */
 
 @media (max-width: 768px) {
   #page-toc-wrapper {
@@ -751,6 +861,7 @@ th {
   }
 }
 
+/* Print styles ------------------------------------------------------------- */
 @media print {
   {
     /* undo code tabs */
@@ -808,115 +919,4 @@ th {
     display: block !important;
     overflow: visible !important;
   }
-}
-
-/*******************************************************************************
-* New stuff for 5-level nesting
-*******************************************************************************/
-
-.subcat-title.active-parent {
-  font-weight: bold;
-}
-
-.card .sidebar_pagelist li .subpage {
-  padding-left: 105px;
-}
-
-.sidenav_parent a {
-  display: block;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 15px 16px 15px 10px;
-}
-
-.sidenav_parent a.active {
-  color: #333;
-  cursor: default;
-}
-
-.funnel-sidebar a.active {
-  color: #333;
-  cursor: default;
-}
-
-.landing .card-title {
-  font-weight: bold;
-}
-.landing #main_content_body .card-title {
-  margin-bottom: 0;
-  font-size: 1.17rem;
-}
-.landing .card-title > a {
-  text-decoration: none;
-}
-
-.landing .curated-links li:first-child {
-  margin-top: 5px;
-}
-
-.content p,
-.content li,
-.content td {
-  line-height: 1.65;
-}
-
-.readmore {
-  display: block;
-  margin: 15px auto 5px;
-  text-align: center;
-}
-
-.readmore .btn {
-  font-size: 18px;
-  transition: 0.5s;
-}
-
-.btn-primary code {
-  color: inherit;
-}
-
-.landing section {
-  border-top: 1px solid #0f72e5;
-}
-
-.landing section:first-of-type {
-  padding-top: 0;
-  border-top-width: 0;
-}
-
-#xrp_ledger_intro .card-img-top {
-  width: auto;
-  text-align: center;
-}
-
-/* Use Cases stuff----------------------- */
-.use-case-step-num {
-  border: 1px solid #333;
-  border-radius: 50%;
-  padding: 0.9rem;
-  position: absolute;
-  left: 1.8rem;
-  height: 3.5rem;
-  width: 3.5rem;
-  text-align: center;
-  background-color: white;
-}
-
-.use-case-step-length {
-  float: right;
-  color: #888;
-  font-size: 16px;
-}
-
-.use-case p:not(:first-of-type) {
-  margin-top: .8rem;
-  margin-bottom: -.6rem;
-  padding-left: 2.5rem;
-  margin-left: 2.5rem;
-  border-left: 1px dashed #333;
-}
-.use-case h2 {
-  margin-left: 5rem;
-  margin-top: 0;
 }
