@@ -4,17 +4,6 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-/* Images should not exceed the main column */
-.content img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* But badge images shouldn't be resized */
-.content img.dactyl_badge {
-    width: initial;
-}
-
 td {
   border: 1px solid #dbdde2;
   padding: 0.2em;
@@ -24,7 +13,16 @@ th {
   padding: 0.2em;
 }
 
+/* Reduce external link icon size */
+.fa.fa-external-link:before {
+  font-size: 80%;
+}
+
 /* Top navigation ----------------------------------------------------------- */
+
+.navbar {
+  font-weight: 300;
+}
 
 .navbar-brand {
   text-decoration: none;
@@ -38,17 +36,17 @@ th {
 }
 
 .navbar .navbar-brand .brand-text {
-  font-weight: 300;
-  margin-right: 20px;
   color: #777;
 }
 
-.navbar .navbar-nav a {
+.navbar .navbar-nav .nav-link {
   font-size: 18px;
   line-height: 38px;
-  color: #27a2db;
   text-decoration: none;
   transition: 0.5s;
+}
+.navbar .navbar-nav .nav-link:hover {
+  color: #27a2db;
 }
 
 .navbar .navbar-nav .active a {
@@ -60,6 +58,22 @@ th {
 .navbar .active-parent a {
   font-weight: bold;
   background-color: #eee;
+}
+
+#navbar-search {
+  position: relative;
+  margin-right: 0.375rem;
+}
+
+@media (min-width: 992px) {
+  #topsearchbar {
+    width: 185px;
+  }
+}
+
+#navbar-search .btn {
+  position: absolute;
+  right: 0.375rem;
 }
 
 /* Push content below fixed header ------------------------------------------ */
@@ -95,6 +109,21 @@ th {
 
 .content {
   padding-bottom: 50px;
+}
+
+/* Images should not exceed the main column */
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* But badge images shouldn't be resized */
+.content img.dactyl_badge {
+    width: initial;
+}
+
+.content a {
+  text-decoration: underline;
 }
 
 .content h1 {
@@ -164,41 +193,38 @@ th {
 .ripple-footer {
   z-index: 2;
   color: #999999;
-  padding: 50px 0;
   font-size: 14px;
   background: #4e4e50 url(../img/ripple_footer_v2.jpg) repeat-x center center;
   background-position-y: -60px;
 }
-.ripple-footer h5 a {
-  color: #ffffff;
-  -o-transition: .5s;
-  -ms-transition: .5s;
-  -moz-transition: .5s;
-  -webkit-transition: .5s;
-  transition: .5s;
-  letter-spacing: .04em;
-  text-decoration: none;
-}
-.ripple-footer h5 a:hover,
-.ripple-footer h5 a:focus {
+
+.ripple-footer a {
   color: #999999;
   -o-transition: .5s;
   -ms-transition: .5s;
   -moz-transition: .5s;
   -webkit-transition: .5s;
   transition: .5s;
-  text-decoration: none;
-}
-.ripple-footer a {
-  -o-transition: .5s;
-  -ms-transition: .5s;
-  -moz-transition: .5s;
-  -webkit-transition: .5s;
-  transition: .5s;
+  font-weight: 500;
 }
 .ripple-footer a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.ripple-footer hr {
+  border-top: 1px solid #999999;
+}
+
+.ripple-footer h5 a {
   color: #ffffff;
+  letter-spacing: .04em;
   text-decoration: none;
+  font-weight: 300;
+  padding-bottom: 0.5rem;
+}
+.ripple-footer h5 a:hover {
+  text-decoration: underline;
 }
 .absolute_bottom_footer span {
   margin-right: 25px;
@@ -206,6 +232,8 @@ th {
 
 .foot-nav-col .children-display li {
   list-style-type: none;
+  margin-left: 0;
+  font-size: 14px;
 }
 
 /* Callouts ----------------------------------------------------------------- */
@@ -600,7 +628,7 @@ a.current {
   position: fixed;
   top: 75px;
   max-height: calc(100% - 150px);
-  max-width: 16.66667%;
+  margin-right: 1.5rem;
   overflow: auto;
   z-index: 10;
 }
@@ -703,17 +731,26 @@ a.current {
 
 /* Landing Pages ------------------------------------------------------------ */
 
+.landing a .card {
+  color: #212529;
+}
+
+.landing .card li {
+  list-style-type: none;
+  margin-left: 0;
+}
+
 .landing section:first-of-type {
   padding-top: 0;
   border-top-width: 0;
 }
 
-.landing section .card {
+#home_first_shortcuts .card {
   border-width: 0;
   background: none;
 }
 
-.landing section .card-header {
+#home_first_shortcuts .card-header {
   background: none;
   border-bottom: none;
 }
@@ -725,22 +762,18 @@ a.current {
 
 .landing section .card-header h3 {
   font-size: 30px;
-  text-align: center;
 }
 
 #xrp_ledger_intro h3 {
   font-size: 25px;
-  text-align: center;
 }
 
 .landing .card-img-top {
-  height: 8rem;
-  margin: 0 auto;
+  height: 6rem;
 }
 
 #xrp_ledger_intro .card-img-top {
   display: block;
-  text-align: center;
 }
 
 #xrp_ledger_intro .card-footer {
@@ -751,14 +784,6 @@ a.current {
 
 #xrp_ledger_intro .card-body {
   padding: 1px;
-}
-
-#xrp_ledger_intro .card-footer:after {
-  content: " ";
-  display: block;
-  width: 30%;
-  margin: 1.5rem auto;
-  border-top: 2px solid #0f72e5;
 }
 
 .landing .card-title > a {
@@ -807,10 +832,8 @@ a.current {
 }
 .related-projects .project-name {
   font-size: 18px;
-  display: block;
 }
 .related-projects .login-required {
-  display: block;
   font-size: 12px;
 }
 .related-projects p {
@@ -825,21 +848,20 @@ a.current {
 
 /* Responsive design for different viewscreens ------------------------------ */
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   #page-toc-wrapper {
     position: static;
     display: block;
     clear: both;
     overflow-y: inherit;
     max-width: 100%;
+    max-height: inherit;
+    word-break: break-all;
   }
   .main {
     overflow-wrap: break-word;
     word-wrap: break-word;
     overflow: hidden;
-  }
-  .github-edit-wrap {
-    display: none;
   }
 }
 @media (max-width: 480px) {

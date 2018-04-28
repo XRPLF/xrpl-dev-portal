@@ -57,9 +57,10 @@
           {% endif %}
         {% endfor %}
       </ul><!-- /.navbar-nav -->
-      <form class="navbar-form navbar-right" role="search" method="get" action="https://www.google.com/search">
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
         <div class="form-inline">
-          <input name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
           <input name="q" value="site:developers.ripple.com" type="hidden">
           <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
         </div>
@@ -72,13 +73,13 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       {% if currentpage.sidebar != "disabled" and currentpage.sidebar != "left_only" %}
-      <aside class="right-sidebar col-md-3 col-xl-2 p-0 order-md-last" role="complementary">
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
           {% block right_sidebar %}{% endblock %}
       </aside>
       {% endif %}
 
       <!-- main column -->
-      <main class="main {% if currentpage.sidebar == "left_only" %}col-md-8 col-xl-10{% elif currentpage.sidebar == "disabled" %}col-md-12 col-xl-12{% else %}col-md-6 col-xl-8{% endif %} p-0" role="main" id="main_content_body">
+      <main class="main {% if currentpage.sidebar == "disabled" %}col-md-12{% else %}col-md-7 col-lg-6{% endif %} order-md-3 p-0" role="main" id="main_content_body">
           {% block breadcrumbs %}
             {% include 'template-breadcrumbs.html' %}
           {% endblock %}
@@ -86,7 +87,7 @@
       </main>
       {% if currentpage.sidebar != "disabled" %}
       <!-- Left sidebar last so it's at the end for mobile -->
-      <aside class="sidebar col-md-3 col-xl-2 p-0 order-md-first" role="complementary">
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
           {% block left_sidebar %}
             {% include "template-sidebar_nav.html" %}
           {% endblock %}
