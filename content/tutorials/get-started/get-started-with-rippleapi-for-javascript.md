@@ -56,7 +56,7 @@ Use the following template, which includes:
 * (Optional) [ESLint](http://eslint.org/) (`eslint`) for checking code quality.
 
 ```
-{% include 'code_samples/rippleapi_quickstart/package.json' %}
+{% include '_code-samples/rippleapi_quickstart/package.json' %}
 ```
 
 
@@ -81,7 +81,7 @@ npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
 This script, `get-account-info.js`, fetches information about a hard-coded account. Use it to test that RippleAPI works:
 
 ```
-{% include 'code_samples/rippleapi_quickstart/get-account-info.js' %}
+{% include '_code-samples/rippleapi_quickstart/get-account-info.js' %}
 ```
 
 ## Running the script
@@ -197,7 +197,7 @@ The `catch` method ends this Promise chain. The callback provided here runs if a
 One of the biggest challenges in using the XRP Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you [follow the best practices](tutorial-reliable-transaction-submission.html) you still have to wait for the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:
 
 ```
-{% include 'code_samples/rippleapi_quickstart/submit-and-verify.js' %}
+{% include '_code-samples/rippleapi_quickstart/submit-and-verify.js' %}
 ```
 
 This code creates and submits an order transaction, although the same principles apply to other types of transactions as well. After submitting the transaction, the code uses a new Promise, which queries the ledger again after using setTimeout to wait a fixed amount of time, to see if the transaction has been verified. If it hasn't been verified, the process repeats until either the transaction is found in a validated ledger or the returned ledger is higher than the LastLedgerSequence parameter.
@@ -285,5 +285,5 @@ To use this example, you must first [build RippleAPI](#build-instructions) and t
 [**browser-demo.html:**](https://github.com/ripple/ripple-dev-portal/blob/master/content/code_samples/rippleapi_quickstart/browser-demo.html "Source on GitHub")
 
 ```
-{% include 'code_samples/rippleapi_quickstart/browser-demo.html' %}
+{% include '_code-samples/rippleapi_quickstart/browser-demo.html' %}
 ```

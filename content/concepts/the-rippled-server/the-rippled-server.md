@@ -1,4 +1,4 @@
-# About rippled
+# The rippled Server
 
 `rippled` is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the `rippled` server.
 

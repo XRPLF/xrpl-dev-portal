@@ -57,7 +57,7 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/prepareCreate.js' %}
+{% include '_code-samples/checks/js/prepareCreate.js' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -73,19 +73,19 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/signCreate.js' %}
+{% include '_code-samples/checks/js/signCreate.js' %}
 ```
 
 *WebSocket*
 
 ```json
-{% include 'code_samples/checks/websocket/sign-create-req.json' %}
+{% include '_code-samples/checks/websocket/sign-create-req.json' %}
 ```
 
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/sign-create-req.sh' %}
+{% include '_code-samples/checks/cli/sign-create-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -97,19 +97,19 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/sign-create-resp.txt' %}
+{% include '_code-samples/checks/js/sign-create-resp.txt' %}
 ```
 
 *WebSocket*
 
 ```json
-{% include 'code_samples/checks/websocket/sign-create-resp.json' %}
+{% include '_code-samples/checks/websocket/sign-create-resp.json' %}
 ```
 
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/sign-create-resp.txt' %}
+{% include '_code-samples/checks/cli/sign-create-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -126,19 +126,19 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/submitCreate.js' %}
+{% include '_code-samples/checks/js/submitCreate.js' %}
 ```
 
 *WebSocket*
 
 ```json
-{% include 'code_samples/checks/websocket/submit-create-req.json' %}
+{% include '_code-samples/checks/websocket/submit-create-req.json' %}
 ```
 
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/submit-create-req.sh' %}
+{% include '_code-samples/checks/cli/submit-create-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -150,19 +150,19 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/submit-create-resp.txt' %}
+{% include '_code-samples/checks/js/submit-create-resp.txt' %}
 ```
 
 *WebSocket*
 
 ```json
-{% include 'code_samples/checks/websocket/submit-create-resp.json' %}
+{% include '_code-samples/checks/websocket/submit-create-resp.json' %}
 ```
 
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/submit-create-resp.txt' %}
+{% include '_code-samples/checks/cli/submit-create-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -187,19 +187,19 @@ Look for a `CreatedNode` object in the transaction metadata to indicate that the
 *RippleAPI*
 
 ```
-{% include 'code_samples/checks/js/getCreateTx.js' %}
+{% include '_code-samples/checks/js/getCreateTx.js' %}
 ```
 
 *WebSocket*
 
 ```json
-{% include 'code_samples/checks/websocket/tx-create-req.json' %}
+{% include '_code-samples/checks/websocket/tx-create-req.json' %}
 ```
 
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/tx-create-req.sh' %}
+{% include '_code-samples/checks/cli/tx-create-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -211,19 +211,19 @@ Look for a `CreatedNode` object in the transaction metadata to indicate that the
 *RippleAPI*
 
 ```
-{% include 'code_samples/checks/js/get-create-tx-resp.txt' %}
+{% include '_code-samples/checks/js/get-create-tx-resp.txt' %}
 ```
 
 *WebSocket*
 
 ```json
-{% include 'code_samples/checks/websocket/tx-create-resp.json' %}
+{% include '_code-samples/checks/websocket/tx-create-resp.json' %}
 ```
 
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/tx-create-resp.txt' %}
+{% include '_code-samples/checks/cli/tx-create-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->

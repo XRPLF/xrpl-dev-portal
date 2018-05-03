@@ -58,7 +58,7 @@ Request:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-request-escrowcreate-time.json' %}
+{% include '_code-samples/escrow/websocket/submit-request-escrowcreate-time.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -70,7 +70,7 @@ Response:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-response-escrowcreate-time.json' %}
+{% include '_code-samples/escrow/websocket/submit-response-escrowcreate-time.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -93,7 +93,7 @@ Request:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-request-escrowcreate-time.json' %}
+{% include '_code-samples/escrow/websocket/tx-request-escrowcreate-time.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -105,7 +105,7 @@ Response:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-response-escrowcreate-time.json' %}
+{% include '_code-samples/escrow/websocket/tx-response-escrowcreate-time.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -123,7 +123,7 @@ Request:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/ledger-request.json' %}
+{% include '_code-samples/escrow/websocket/ledger-request.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -135,7 +135,7 @@ Response:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/ledger-response.json' %}
+{% include '_code-samples/escrow/websocket/ledger-response.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -158,7 +158,7 @@ Request:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-request-escrowfinish-time.json' %}
+{% include '_code-samples/escrow/websocket/submit-request-escrowfinish-time.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -170,7 +170,7 @@ Response:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-response-escrowfinish-time.json' %}
+{% include '_code-samples/escrow/websocket/submit-response-escrowfinish-time.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -192,7 +192,7 @@ Request:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-request-escrowfinish-time.json' %}
+{% include '_code-samples/escrow/websocket/tx-request-escrowfinish-time.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -204,7 +204,7 @@ Response:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-response-escrowfinish-time.json' %}
+{% include '_code-samples/escrow/websocket/tx-response-escrowfinish-time.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -283,7 +283,7 @@ Request:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-request-escrowcreate-condition.json' %}
+{% include '_code-samples/escrow/websocket/submit-request-escrowcreate-condition.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -295,7 +295,7 @@ Response:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-response-escrowcreate-condition.json' %}
+{% include '_code-samples/escrow/websocket/submit-response-escrowcreate-condition.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -315,7 +315,7 @@ Request:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-request-escrowcreate-condition.json' %}
+{% include '_code-samples/escrow/websocket/tx-request-escrowcreate-condition.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -327,7 +327,7 @@ Response:
 *Websocket*
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-response-escrowcreate-condition.json' %}
+{% include '_code-samples/escrow/websocket/tx-response-escrowcreate-condition.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -347,7 +347,7 @@ If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-e
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-request-escrowfinish-condition.json' %}
+{% include '_code-samples/escrow/websocket/submit-request-escrowfinish-condition.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -359,7 +359,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-response-escrowfinish-condition.json' %}
+{% include '_code-samples/escrow/websocket/submit-response-escrowfinish-condition.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -377,13 +377,13 @@ Use the [`tx` command](reference-rippled.html#tx) with the EscrowFinish transact
 Request:
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-request-escrowfinish-condition.json' %}
+{% include '_code-samples/escrow/websocket/tx-request-escrowfinish-condition.json' %}
 ```
 
 Response:
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-response-escrowfinish-condition.json' %}
+{% include '_code-samples/escrow/websocket/tx-response-escrowfinish-condition.json' %}
 ```
 
 ## Cancel an expired escrow
@@ -399,7 +399,7 @@ Request:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/ledger-request-expiration.json' %}
+{% include '_code-samples/escrow/websocket/ledger-request-expiration.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -411,7 +411,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/ledger-response-expiration.json' %}
+{% include '_code-samples/escrow/websocket/ledger-response-expiration.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -426,7 +426,7 @@ Request:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-request-expiration.json' %}
+{% include '_code-samples/escrow/websocket/account_objects-request-expiration.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -438,7 +438,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-response-expiration.json' %}
+{% include '_code-samples/escrow/websocket/account_objects-response-expiration.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -456,7 +456,7 @@ Request:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-request-escrowcancel.json' %}
+{% include '_code-samples/escrow/websocket/submit-request-escrowcancel.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -468,7 +468,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/submit-response-escrowcancel.json' %}
+{% include '_code-samples/escrow/websocket/submit-response-escrowcancel.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -491,7 +491,7 @@ _Websocket_
 
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-request-escrowcancel.json' %}
+{% include '_code-samples/escrow/websocket/tx-request-escrowcancel.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -503,7 +503,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/tx-response-escrowcancel.json' %}
+{% include '_code-samples/escrow/websocket/tx-response-escrowcancel.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -531,7 +531,7 @@ Request:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-request.json' %}
+{% include '_code-samples/escrow/websocket/account_objects-request.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -548,7 +548,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-response.json' %}
+{% include '_code-samples/escrow/websocket/account_objects-response.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -568,7 +568,7 @@ Request:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-request.json' %}
+{% include '_code-samples/escrow/websocket/account_objects-request.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -585,7 +585,7 @@ Response:
 _Websocket_
 
 ```json
-{% include 'code_samples/escrow/websocket/account_objects-response.json' %}
+{% include '_code-samples/escrow/websocket/account_objects-response.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->

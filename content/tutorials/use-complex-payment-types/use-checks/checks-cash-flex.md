@@ -44,7 +44,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/prepareCashFlex.js' %}
+{% include '_code-samples/checks/js/prepareCashFlex.js' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -60,7 +60,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/sign-cash-flex-req.sh' %}
+{% include '_code-samples/checks/cli/sign-cash-flex-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -73,7 +73,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/sign-cash-flex-resp.txt' %}
+{% include '_code-samples/checks/cli/sign-cash-flex-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -91,7 +91,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/submit-cash-flex-req.sh' %}
+{% include '_code-samples/checks/cli/submit-cash-flex-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -104,7 +104,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/submit-cash-flex-resp.txt' %}
+{% include '_code-samples/checks/cli/submit-cash-flex-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -124,7 +124,7 @@ Use the [`tx` method](reference-rippled.html#tx) with the CheckCash transaction'
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/tx-cash-flex-req.sh' %}
+{% include '_code-samples/checks/cli/tx-cash-flex-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -137,7 +137,7 @@ Use the [`tx` method](reference-rippled.html#tx) with the CheckCash transaction'
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/tx-cash-flex-resp.txt' %}
+{% include '_code-samples/checks/cli/tx-cash-flex-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->

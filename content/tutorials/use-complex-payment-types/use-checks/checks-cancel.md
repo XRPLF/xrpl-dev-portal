@@ -52,7 +52,7 @@ The following examples demonstrate how to cancel a Check.
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/prepareCancel.js' %}
+{% include '_code-samples/checks/js/prepareCancel.js' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -68,13 +68,13 @@ The following examples demonstrate how to cancel a Check.
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/signCancel.js' %}
+{% include '_code-samples/checks/js/signCancel.js' %}
 ```
 
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/sign-cancel-req.sh' %}
+{% include '_code-samples/checks/cli/sign-cancel-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -87,13 +87,13 @@ The following examples demonstrate how to cancel a Check.
 *RippleAPI*
 
 ```
-{% include 'code_samples/checks/js/sign-cancel-resp.txt' %}
+{% include '_code-samples/checks/js/sign-cancel-resp.txt' %}
 ```
 
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/sign-cancel-resp.txt' %}
+{% include '_code-samples/checks/cli/sign-cancel-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -111,13 +111,13 @@ The following examples demonstrate how to cancel a Check.
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/submitCancel.js' %}
+{% include '_code-samples/checks/js/submitCancel.js' %}
 ```
 
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/submit-cancel-req.sh' %}
+{% include '_code-samples/checks/cli/submit-cancel-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -130,13 +130,13 @@ The following examples demonstrate how to cancel a Check.
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/submit-cancel-resp.txt' %}
+{% include '_code-samples/checks/js/submit-cancel-resp.txt' %}
 ```
 
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/submit-cancel-resp.txt' %}
+{% include '_code-samples/checks/cli/submit-cancel-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -158,13 +158,13 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/getCancelTx.js' %}
+{% include '_code-samples/checks/js/getCancelTx.js' %}
 ```
 
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/tx-cancel-req.sh' %}
+{% include '_code-samples/checks/cli/tx-cancel-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -177,13 +177,13 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 *RippleAPI*
 
 ```json
-{% include 'code_samples/checks/js/get-cancel-tx-resp.txt' %}
+{% include '_code-samples/checks/js/get-cancel-tx-resp.txt' %}
 ```
 
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/tx-cancel-resp.txt' %}
+{% include '_code-samples/checks/cli/tx-cancel-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->

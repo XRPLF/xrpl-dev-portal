@@ -43,7 +43,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/prepareCashExact.js' %}
+{% include '_code-samples/checks/js/prepareCashExact.js' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -59,7 +59,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/sign-cash-exact-req.sh' %}
+{% include '_code-samples/checks/cli/sign-cash-exact-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -72,7 +72,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/sign-cash-exact-resp.txt' %}
+{% include '_code-samples/checks/cli/sign-cash-exact-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -90,7 +90,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/submit-cash-exact-req.sh' %}
+{% include '_code-samples/checks/cli/submit-cash-exact-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -103,7 +103,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/submit-cash-exact-resp.txt' %}
+{% include '_code-samples/checks/cli/submit-cash-exact-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -127,7 +127,7 @@ If cashing the Check failed, the Check remains in the ledger so you can try cash
 *Commandline*
 
 ```bash
-{% include 'code_samples/checks/cli/tx-cash-exact-req.sh' %}
+{% include '_code-samples/checks/cli/tx-cash-exact-req.sh' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -140,7 +140,7 @@ If cashing the Check failed, the Check remains in the ledger so you can try cash
 *Commandline*
 
 ```json
-{% include 'code_samples/checks/cli/tx-cash-exact-resp.txt' %}
+{% include '_code-samples/checks/cli/tx-cash-exact-resp.txt' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->

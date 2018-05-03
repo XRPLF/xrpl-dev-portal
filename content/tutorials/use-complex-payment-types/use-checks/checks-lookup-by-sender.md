@@ -19,13 +19,13 @@ To get a list of all incoming and outgoing Checks for an account, use the `accou
 *RippleAPI*
 
 ```js
-{% include 'code_samples/checks/js/getChecks.js' %}
+{% include '_code-samples/checks/js/getChecks.js' %}
 ```
 
 *JSON-RPC*
 
 ```json
-{% include 'code_samples/checks/json-rpc/account_objects-req.json' %}
+{% include '_code-samples/checks/json-rpc/account_objects-req.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -37,7 +37,7 @@ To get a list of all incoming and outgoing Checks for an account, use the `accou
 *RippleAPI*
 
 ```
-{% include 'code_samples/checks/js/get-checks-resp.txt' %}
+{% include '_code-samples/checks/js/get-checks-resp.txt' %}
 ```
 
 *JSON-RPC*
@@ -45,7 +45,7 @@ To get a list of all incoming and outgoing Checks for an account, use the `accou
 ```json
 200 OK
 
-{% include 'code_samples/checks/json-rpc/account_objects-resp.json' %}
+{% include '_code-samples/checks/json-rpc/account_objects-resp.json' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->

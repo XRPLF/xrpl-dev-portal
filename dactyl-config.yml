@@ -59,6 +59,8 @@ pages:
         targets:
             - local
 
+# Concepts ---------------------------------------------------------------------
+
     -   name: Concepts
         funnel: Docs
         doc_type: Concepts
@@ -109,6 +111,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment System Basics
+        template: template-landing-children.html
         targets:
             - local
 
@@ -140,122 +143,249 @@ pages:
         targets:
             - local
 
+    -   md: concepts/complex-payment-types/complex-payment-types.md
+        html: complex-payment-types.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
+        template: template-landing-children.html
+        targets:
+            - local
 
-    # -   name: Payment System
-    #     funnel: Docs
-    #     doc_type: Concepts
-    #     category: Payment System
-    #     html: concept-payment-system.html
-    #     template: template-landing-children.html
-    #     targets:
-    #         - local
-    #
-    # -   md: concept-accounts.md
-    #     funnel: Docs
-    #     doc_type: Concepts
-    #     category: Payment System
-    #     subcategory: Accounts
-    #     targets:
-    #         - local
-    #
-    # -   md: concept-depositauth.md
-    #     funnel: Docs
-    #     doc_type: Concepts
-    #     category: Payment System
-    #     subcategory: Accounts
-    #     targets:
-    #         - local
-    #
-    # -   md: concept-transaction-cost.md
-    #     funnel: Docs
-    #     doc_type: Concepts
-    #     category: Payment System
-    #     targets:
-    #         - local
-    #
-    # -   md: concept-money.md
-    #     funnel: Docs
-    #     doc_type: Concepts
-    #     category: Payment System
-    #     targets:
-    #         - local
-    #
-    # -   md: concept-authorized-trust-lines.md
-    #     funnel: Docs
-    #     doc_type: Concepts
-    #     category: Payment System
-    #     subcategory: Accounts
-    #     targets:
-    #         - local
-    #
-    # -   name: Consensus Network
-    #     funnel: Docs
-    #     doc_type: Concepts
-    #     category: Consensus Network
-    #     html: concept-consensus-network.html
-    #     template: template-landing-children.html
-    #     targets:
-    #         - local
-    #
-    # -   md: concept-amendments.md
-    #     funnel: Docs
-    #     doc_type: Concepts
-    #     category: Consensus Network
-    #     targets:
-    #         - local
-    #
-    # -   md: concept-fee-voting.md
-    #     funnel: Docs
-    #     doc_type: Concepts
-    #     category: Consensus Network
-    #     targets:
-    #         - local
-    #
-    # -   name: Tutorials #TODO: real page content
-    #     funnel: Docs
-    #     doc_type: Tutorials
-    #     template: template-landing-children.html
-    #     blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
-    #     targets:
-    #         - local
-    #
-    # -   name:  Send and Receive Money
-    #     funnel: Docs
-    #     doc_type: Tutorials
-    #     category: Send and Receive Money
-    #     template: template-landing-children.html
-    #     targets:
-    #         - local
-    #
-    # -   md: tutorial-reliable-transaction-submission.md
-    #     funnel: Docs
-    #     doc_type: Tutorials
-    #     category: Send and Receive Money
-    #     targets:
-    #         - local
-    #
-    # -   md: tutorial-checks-send.md
-    #     funnel: Docs
-    #     doc_type: Tutorials
-    #     category: Send and Receive Money
-    #     targets:
-    #         - local
-    #
-    # -   name:  Manage the rippled Server
-    #     funnel: Docs
-    #     doc_type: Tutorials
-    #     category: Manage the rippled Server
-    #     template: template-landing-children.html
-    #     targets:
-    #         - local
-    #
-    # -   md: tutorial-rippled-setup.md
-    #     funnel: Docs
-    #     doc_type: Tutorials
-    #     category: Manage the rippled Server
-    #     targets:
-    #         - local
-    #
+    -   md: concepts/complex-payment-types/checks.md
+        html: checks.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
+        targets:
+            - local
+
+    -   md: concepts/complex-payment-types/escrow.md
+        html: escrow.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
+        targets:
+            - local
+
+    -   md: concepts/complex-payment-types/partial-payments.md
+        html: partial-payments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
+        targets:
+            - local
+
+    # TODO: payment channels concept
+
+    -   md: concepts/issued-currencies/issued-currencies.md
+        html: issued-currencies.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: "Trust Lines and Issuing" (see gateway guide, tx reference on "trust limits" etc.)
+
+    -   md: concepts/issued-currencies/authorized-trust-lines.md
+        html: authorized-trust-lines.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        targets:
+            - local
+
+    # TODO: Freezes, Rippling, Transfer Fees, Paths, Demurrage
+
+    -   md: concepts/decentralized-exchange/decentralized-exchange.md
+        html: decentralized-exchange.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Decentralized Exchange
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: Offers, Tick Size, Autobridging, Offer Preference (all compiled from different sources)
+
+    -   md: concepts/consensus-network/consensus-network.md
+        html: consensus-network.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: consensus principles & rules, validators & UNLs
+
+    -   md: concepts/consensus-network/amendments.md
+        html: amendments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        targets:
+            - local
+
+    # TODO: fee voting, consensus research, pseudo-transactions, parallel networks
+
+    -   md: concepts/the-rippled-server/the-rippled-server.md
+        html: the-rippled-server.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        targets:
+            - local
+
+    # TODO: history sharding, stand-alone mode, clustering, peer protocol
+
+# Tutorials --------------------------------------------------------------------
+
+    -   md: tutorials/tutorials.md
+        html: tutorials.html
+        funnel: Docs
+        doc_type: Tutorials
+        template: template-landing-children.html
+        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
+        targets:
+            - local
+
+    -   md: tutorials/get-started/get-started.md
+        html: get-started.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: Get Started with the rippled API, Send a Transaction with the rippled API
+
+    -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.md
+        html: get-started-with-rippleapi-for-javascript.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        targets:
+            - local
+
+    # TODO: Get Started with API Tools
+
+    -   md: tutorials/use-simple-xrp-payments/use-simple-xrp-payments.md
+        html: use-simple-xrp-payments.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: "Send XRP"
+
+    -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.md
+        html: reliable-transaction-submission.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        targets:
+            - local
+
+    # TODO: Cancel or Skip a Transaction, Look Up Transaction Results
+
+    -   md: tutorials/manage-account-settings/manage-account-settings.md
+        html: manage-account-settings.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: "Get an Account", "Configure a Regular Key Pair", "Use Deposit Authorization to Block Unwanted Payments", "Configure Multi-Signing"
+
+    -   md: tutorials/use-complex-payment-types/use-complex-payment-types.md
+        html: use-complex-payment-types.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Complex Payment Types
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: split up "use escrows"
+
+    #TODO: split concept info off of the paychan tutorial
+    -   md: tutorials/use-complex-payment-types/use-payment-channels.md
+        html: use-payment-channels.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Complex Payment Types
+        targets:
+            - local
+
+    -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
+        html: use-checks.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Complex Payment Types
+        subcategory: Use Checks
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.md
+        html: send-a-check.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Complex Payment Types
+        subcategory: Use Checks
+        targets:
+            - local
+
+    # TODO: other 5 checks tutorials
+
+    # TODO: "Send a Cross-Currency Payment"
+
+    -   md: tutorials/manage-issued-currencies/manage-issued-currencies.md
+        html: manage-issued-currencies.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Issued Currencies
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: Set up issuing/operational addresses, monitor changes to balances,
+    # freeze, enable/disable rippling, set transfer fees, use auth'd trust lines
+
+    -   md: tutorials/xrp-ledger-businesses/xrp-ledger-businesses.md
+        html: xrp-ledger-businesses.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: list XRP as an exchange, become a gateway
+    # TODO: identify your accounts with ripple.txt (to come later)
+
+    -   md: tutorials/manage-the-rippled-server/manage-the-rippled-server.md
+        html: manage-the-rippled-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: install rippled, troubleshoot rippled, build & run on ubuntu,
+    #  run a validator, run in stand-alone mode, set up private peers, run in
+    #  a cluster, capacity planning
+
+
     # -   name: References
     #     funnel: Docs
     #     doc_type: References

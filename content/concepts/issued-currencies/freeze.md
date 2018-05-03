@@ -126,7 +126,7 @@ The rest of the [transaction flow](reference-rippleapi.html#transaction-flow) is
 Example JavaScript (ECMAScript 6) code to enable Individual Freeze on a trust line:
 
 ```js
-{% include 'code_samples/freeze/set-individual-freeze.js' %}
+{% include '_code-samples/freeze/set-individual-freeze.js' %}
 ```
 
 
@@ -173,7 +173,7 @@ The rest of the [transaction flow](reference-rippleapi.html#transaction-flow) is
 Example JavaScript (ECMAScript 6) code to enable Global Freeze on an address:
 
 ```js
-{% include 'code_samples/freeze/set-global-freeze.js' %}
+{% include '_code-samples/freeze/set-global-freeze.js' %}
 ```
 
 
@@ -222,7 +222,7 @@ You must [sign](reference-rippleapi.html#sign) this transaction using the master
 Example JavaScript (ECMAScript 6) code to enable No Freeze on an address:
 
 ```js
-{% include 'code_samples/freeze/set-no-freeze.js' %}
+{% include '_code-samples/freeze/set-no-freeze.js' %}
 ```
 
 
@@ -305,7 +305,7 @@ The response contains an array of trust lines, for each currency in which the is
 Example JavaScript (ECMAScript 6) code to check whether a trust line is frozen:
 
 ```js
-{% include 'code_samples/freeze/check-individual-freeze.js' %}
+{% include '_code-samples/freeze/check-individual-freeze.js' %}
 ```
 
 
@@ -401,7 +401,7 @@ Look for the following values in the response object:
 Example JavaScript (ECMAScript 6) code to check whether an address has Global Freeze or No Freeze enabled:
 
 ```js
-{% include 'code_samples/freeze/check-global-freeze-no-freeze.js' %}
+{% include '_code-samples/freeze/check-global-freeze-no-freeze.js' %}
 ```
 
 # See Also
