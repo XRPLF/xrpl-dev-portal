@@ -2,20 +2,18 @@
 
 {% block main %}
   <section class="p-3">
+    {% if not content %}
     <h1 class="main-page-header">{{ currentpage.name }}</h1>
+    {% endif %}
 
     <div class='content'>
+      {{ content }}
+    </div>
+
+  </section>
+
+  <section class="p-3 bg-light">
       <h2>Children of this page:</h2>
       {% include 'template-page-children.html' %}
-
-      <!--{# <ul class="cat_pagelist">
-        {% for page in pages %}
-          {% if page.category == currentpage.category and
-              page.name != currentpage.name %}
-            <li><a href="{{page.html}}">{{page.name}}</a></li>
-          {% endif %}
-        {% endfor %}
-      </ul> #}-->
-    </div>
-  </section><!--/.row-->
+  </section>
 {% endblock %}
