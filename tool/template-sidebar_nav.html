@@ -6,19 +6,23 @@
       {% if currentpage == (pages|selectattr('supercategory', 'equalto', currentpage.supercategory)|first) %}
       <a class="active" href="{{ currentpage.html }}">{{ currentpage.supercategory }}</a>
       {% else %}
-      <a href="{{ (pages|selectattr('supercategory', 'equalto', currentpage.supercategory)|first).html }}">{{ currentpage.supercategory }}</a>
+      <a href="{{ (pages|selectattr('supercategory', 'equalto', currentpage.supercategory)|first).html }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> {{ currentpage.supercategory }}</a>
       {% endif %}
     </div>
   {% elif currentpage.doc_type is defined %}
     <div class="sidenav_parent">
-      <a href="{{ (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first).html }}">{{ currentpage.doc_type }}</a>
+      {% if currentpage == (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first) %}
+      <a class="active" href="{{ currentpage.html }}">{{ currentpage.doc_type }}</a>
+      {% else %}
+      <a href="{{ (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first).html }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> {{ currentpage.doc_type }}</a>
+      {% endif %}
     </div>
   {% elif currentpage.funnel is defined %}
     <div class="sidenav_parent">
       {% if currentpage == (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first) %}
       <a class="active" href="{{ currentpage.html }}">{{ currentpage.funnel }}</a>
       {% else %}
-      <a href="{{ (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first).html }}">{{ currentpage.funnel }}</a>
+      <a href="{{ (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first).html }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> {{ currentpage.funnel }}</a>
       {% endif %}
     </div>
   {% endif %}

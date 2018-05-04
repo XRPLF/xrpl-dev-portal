@@ -86,6 +86,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
+        blurb: Get a quick and concise introduction to key features of the XRP Ledger.
         targets:
             - local
 
@@ -95,6 +96,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
+        blurb: Understand the role of consensus in the XRP Ledger.
         targets:
             - local
 
@@ -103,6 +105,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
+        blurb: Learn about the uses and properties of XRP, the digital asset for payments.
         targets:
             - local
 
@@ -121,6 +124,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Accounts
+        blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP.
         targets:
             - local
 
@@ -130,6 +134,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Accounts
+        blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
         targets:
             - local
 
@@ -140,6 +145,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment System Basics
+        blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
         targets:
             - local
 

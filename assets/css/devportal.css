@@ -55,13 +55,13 @@ th {
 }
 
 .navbar .navbar-nav .active a {
-  font-weight: bold;
+  font-weight: 700;
   color: #333;
   background-color: #eee;
 
 }
 .navbar .active-parent a {
-  font-weight: bold;
+  font-weight: 700;
   background-color: #eee;
 }
 
@@ -157,12 +157,12 @@ th {
 .content h5 {
   margin-top: 16px;
   line-height: 1.2;
-  font-weight: bold;
+  font-weight: 700;
 }
 .content h6 {
   margin-top: 12px
   line-height: 1.2;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .content p,
@@ -191,7 +191,7 @@ th {
     top: 25px;
     left: 150px;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 /* Footer ------------------------------------------------------------------- */
@@ -441,10 +441,14 @@ a.current {
 }
 .level-1,
 .curated-links li {
-  font-weight: bold;
   margin-top: 15px;
   margin-left: 15px;
 }
+.level-1 a,
+.curated-links li a {
+  font-weight: 700;
+}
+
 .landing .level-1,
 .landing .curated-links li {
   font-weight: 400;
@@ -482,7 +486,7 @@ a.current {
   bottom: 15px;
   right: 30px;
   background-color: #333;
-  font-weight: bolder;
+  font-weight: 700;
   z-index: 1000;
   color: white;
 }
@@ -573,7 +577,7 @@ a.current {
 }
 #sidenav .card-header h5 .sidenav_cat_title.active {
   color: #333;
-  font-weight: bold;
+  font-weight: 700;
   cursor: default;
 }
 #sidenav .card-header h5 .sidenav_cat_title.active-parent {
@@ -649,7 +653,7 @@ a.current {
 
 .card .sidebar_pagelist a.active {
   color: black;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .card .sidebar_pagelist a:hover {
@@ -657,7 +661,7 @@ a.current {
 }
 
 .subcat-title.active-parent {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .card .sidebar_pagelist li .subpage {
@@ -668,7 +672,7 @@ a.current {
   display: block;
   text-decoration: none;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
   padding: 15px 16px 15px 10px;
 }
 
