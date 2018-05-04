@@ -108,7 +108,7 @@ Ripple recommends estimating storage sizing at roughly 12GB per day of data kept
 Memory requirements are mainly a function of the `node_size` configuration setting and the amount of client traffic retrieving historical data. As mentioned, production servers should maximize performance and set this parameter to `huge`.
 You can set the `node_size` parameter lower to use less memory, but you should only do this for testing. With a `node_size` of `medium`, a `rippled` server can be reasonably stable in a test Linux system with as little as 8GB of RAM.
 
-#### Amazon Web Servives
+#### Amazon Web Services
 
 Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run rippled in AWS, but Ripple does not recommend using Elastic Block Storage (EBS). Elastic Block Storage's maximum number of IOPS (5,000) is insufficient for `rippled`'s heaviest loads, despite being very expensive.
 
