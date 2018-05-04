@@ -199,7 +199,7 @@ th {
   z-index: 2;
   color: #999999;
   font-size: 14px;
-  background: #4e4e50 url(../img/ripple_footer_v2.jpg) repeat-x center center;
+  background: #28282a url(../img/ripple_footer_v2.jpg) repeat-x center center;
   background-position-y: -60px;
 }
 
@@ -456,22 +456,24 @@ a.current {
   position: relative;
 }
 
-.landing .level-1 a,
-.landing .curated-links li a {
-  padding: 16px;
+.landing .card .level-1 a,
+.landing .card .curated-links li a {
+  padding: 16px 32px 16px 24px;
   display: block;
+  margin: 0 -24px 0 -24px;
 }
-.landing .level-1 a:hover,
-.landing .curated-links li a:hover {
+.landing .card .level-1 a:hover,
+.landing .card .curated-links li a:hover {
   background-color: #F5F7F9;
   text-decoration: none;
 }
-.landing .level-1 a:hover:after,
-.landing .curated-links li a:hover:after {
+.landing .card .level-1 a:hover:after,
+.landing .card .curated-links li a:hover:after {
   content: "\f105"; /* fontawesome angle-right */
   font-family: FontAwesome;
   position: absolute;
-  right: 16px;
+  right: -8px;
+  top: 16px;
   color: #C9CDD1;
 }
 
@@ -527,7 +529,7 @@ a.current {
     padding-right: 5px;
 }
 .breadcrumbs-wrap .breadcrumb {
-  margin-bottom: 0;
+  padding: 0;
 }
 
 
@@ -777,13 +779,13 @@ a.current {
   margin-bottom: 0;
 }
 
-.landing a .card {
+.landing a.card {
   color: #212529;
   box-shadow: 0px 1px 3px rgba(35, 41, 47, 0.24);
   border-radius: 8px;
 }
 
-.landing a:hover .card {
+.landing a.card:hover {
   box-shadow: 0px 4px 24px rgba(35, 41, 47, 0.16);
 }
 
@@ -808,7 +810,7 @@ a.current {
   padding: 24px;
 }
 
-.landing .card-body {
+.landing .card-header + .card-body {
   padding: 0 24px 24px 24px;
 }
 
@@ -836,10 +838,6 @@ a.current {
 
 #xrp_ledger_intro a:hover {
   text-decoration: none;
-}
-
-#xrp_ledger_intro .card {
-  width: 200px;
 }
 
 #xrp_ledger_intro .card-footer {
@@ -872,6 +870,7 @@ a.current {
   font-size: 18px;
   text-align: center;
   font-weight: 300;
+  text-shadow: 0px 1px 2px #171C21;
 }
 
 .splash-head code {
@@ -942,6 +941,10 @@ a.current {
   .navbar .navbar-brand .logo {
     margin-right: 0;
     margin-left: -1rem;
+  }
+
+  .btn {
+    white-space: normal;
   }
 }
 

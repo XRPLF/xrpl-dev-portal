@@ -10,12 +10,13 @@
 
 {% endblock %}
 
-{% block bodyclasses %}landing no-sidebar{% endblock %}
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-  <section class="container-fluid p-5 splash-head">
+  <section class="container-fluid py-3 p-sm-5 splash-head">
     <h1>Learn. Experiment. Integrate. Contribute.</h1>
     <div class="row">
       <div class="blurb col-sm-12">
@@ -25,7 +26,7 @@
     </div>
   </section>
 
-  <section class="container-fluid p-5 bg-white" id="home_first_shortcuts">
+  <section class="container-fluid py-3 p-sm-5 bg-white" id="home_first_shortcuts">
       <div class="card-deck mb-4">
 
           <div class="card">
@@ -76,11 +77,11 @@
 
     </section>
 
-    <section class="container-fluid bg-light p-5">
+    <section class="container-fluid bg-light py-3 p-sm-5">
       <div class="row">
 
         <div class="col-sm-6">
-          <div class="card">
+          <div class="card mb-4">
             <div class="card-header">
               <h3 class="card-title">New and Updated Documentation</h3>
             </div><!--/.card-header-->
@@ -114,7 +115,7 @@
       </div><!--/.row-->
     </section>
 
-    <section class="container-fluid p-5" id="xrp_ledger_intro">
+    <section class="container-fluid py-3 p-sm-5" id="xrp_ledger_intro">
       <h2><a href="xrp-ledger-overview.html">XRP Ledger: A decentralized cryptographic ledger</a></h2>
       <div class="row">
         <div class="blurb col-sm-12">
@@ -123,87 +124,90 @@
         </div>
       </div>
 
-      <div class="card-deck mb-4">
+      <div class="container">
 
-          <a href="xrp-ledger-overview.html#the-best-digital-asset"><div class="card m-3">
-            <img class="card-img-top" src="assets/img/triskellion.svg" alt="(XRP triskellion)" />
-            <div class="card-body">
-              <!-- <p>XRP is a digital asset native to the XRP Ledger. Anyone with a cryptographic key and an internet connection can receive, hold, and send XRP to anyone else.</p> -->
-            </div><!--/.card-body-->
-            <div class="card-footer"><h3>The Digital Asset for Payments</h3></div>
-          </div><!--/.card--></a>
+        <div class="card-deck mb-4">
 
-          <a href="xrp-ledger-overview.html#censorship-resistant-transaction-processing"><div class="card m-3">
-            <img class="card-img-top" src="assets/img/dollar-arrow.svg" alt="(money moving)" />
-            <div class="card-body">
-              <!-- <p>No single party decides which XRP transactions succeed or fail, and no one can "roll back" a transaction after it completes.</p> -->
-            </div><!--/.card-body-->
-            <div class="card-footer"><h3>Censorship-Resistant Transaction Processing</h3></div>
-          </div><!--/.card--></a>
+            <a href="xrp-ledger-overview.html#the-best-digital-asset" class="card m-3">
+              <img class="card-img-top" src="assets/img/triskellion.svg" alt="(XRP triskellion)" />
+              <div class="card-body">
+                <!-- <p>XRP is a digital asset native to the XRP Ledger. Anyone with a cryptographic key and an internet connection can receive, hold, and send XRP to anyone else.</p> -->
+              </div><!--/.card-body-->
+              <div class="card-footer"><h3>The Digital Asset for Payments</h3></div>
+            </a><!--/.card-->
 
-          <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm --></div>
+            <a href="xrp-ledger-overview.html#censorship-resistant-transaction-processing" class="card m-3">
+              <img class="card-img-top" src="assets/img/dollar-arrow.svg" alt="(money moving)" />
+              <div class="card-body">
+                <!-- <p>No single party decides which XRP transactions succeed or fail, and no one can "roll back" a transaction after it completes.</p> -->
+              </div><!--/.card-body-->
+              <div class="card-footer"><h3>Censorship-Resistant Transaction Processing</h3></div>
+            </a><!--/.card-->
 
-          <a href="xrp-ledger-overview.html#fast-efficient-consensus-algorithm"><div class="card m-3">
-            <img class="card-img-top" src="assets/img/network.svg" alt="(consensus network)" />
-            <div class="card-body">
-              <!-- <p>The XRP Ledger's consensus algorithm settles transactions in 4 to 5 seconds, processing at a throughput of up to 1500 transactions per second.</p> -->
-            </div><!--/.card-body-->
-            <div class="card-footer"><h3>Fast, Efficient Consensus Algorithm</h3></div>
-          </div><!--/.card--></a>
+            <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm --></div>
 
-          <div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 3 on md --></div>
+            <a href="xrp-ledger-overview.html#fast-efficient-consensus-algorithm" class="card m-3">
+              <img class="card-img-top" src="assets/img/network.svg" alt="(consensus network)" />
+              <div class="card-body">
+                <!-- <p>The XRP Ledger's consensus algorithm settles transactions in 4 to 5 seconds, processing at a throughput of up to 1500 transactions per second.</p> -->
+              </div><!--/.card-body-->
+              <div class="card-footer"><h3>Fast, Efficient Consensus Algorithm</h3></div>
+            </a><!--/.card-->
 
-          <a href="xrp-ledger-overview.html#finite-xrp-supply"><div class="card m-3">
-            <img class="card-img-top" src="assets/img/line-graph.svg" alt="(price graph)" />
-            <div class="card-body">
-              <!-- <p>When the XRP Ledger began, 100 billion XRP were created, and no more XRP will ever be created.</p> -->
-            </div><!--/.card-body-->
-            <div class="card-footer"><h3>Finite XRP Supply</h3></div>
-          </div><!--/.card--></a>
+            <div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 3 on md --></div>
 
-          <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm --></div>
-          <div class="w-100 d-none d-lg-block"><!-- wrap every 4 on lg/xl --></div>
+            <a href="xrp-ledger-overview.html#finite-xrp-supply" class="card m-3">
+              <img class="card-img-top" src="assets/img/line-graph.svg" alt="(price graph)" />
+              <div class="card-body">
+                <!-- <p>When the XRP Ledger began, 100 billion XRP were created, and no more XRP will ever be created.</p> -->
+              </div><!--/.card-body-->
+              <div class="card-footer"><h3>Finite XRP Supply</h3></div>
+            </a><!--/.card-->
 
-          <a href="xrp-ledger-overview.html#responsible-software-governance"><div class="card m-3">
-            <img class="card-img-top" src="assets/img/scales.svg" alt="(scales of justice)" />
-            <div class="card-body">
-              <!-- <p>A team of full-time, world-class developers at Ripple maintain and continually improve the XRP Ledger's underlying software.</p> -->
-            </div><!--/.card-body-->
-            <div class="card-footer"><h3>Responsible Software Governance</h3></div>
-          </div><!--/.card--></a>
+            <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm --></div>
+            <div class="w-100 d-none d-lg-block"><!-- wrap every 4 on lg/xl --></div>
 
-          <a href="xrp-ledger-overview.html#secure-adaptable-cryptography"><div class="card m-3">
-            <img class="card-img-top" src="assets/img/lock.svg" alt="(lock)" />
-            <div class="card-body">
-              <!-- <p>The XRP Ledger relies on industry standard digital signature systems like ECDSA and also supports modern, efficient algorithms like Ed25519.</p> -->
-            </div><!--/.card-body-->
-            <div class="card-footer"><h3>Secure, Adaptable Cryptography</h3></div>
-          </div><!--/.card--></a>
+            <a href="xrp-ledger-overview.html#responsible-software-governance" class="card m-3">
+              <img class="card-img-top" src="assets/img/scales.svg" alt="(scales of justice)" />
+              <div class="card-body">
+                <!-- <p>A team of full-time, world-class developers at Ripple maintain and continually improve the XRP Ledger's underlying software.</p> -->
+              </div><!--/.card-body-->
+              <div class="card-footer"><h3>Responsible Software Governance</h3></div>
+            </a><!--/.card-->
 
-          <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm --></div>
-          <div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 3 on md --></div>
+            <a href="xrp-ledger-overview.html#secure-adaptable-cryptography" class="card m-3">
+              <img class="card-img-top" src="assets/img/lock.svg" alt="(lock)" />
+              <div class="card-body">
+                <!-- <p>The XRP Ledger relies on industry standard digital signature systems like ECDSA and also supports modern, efficient algorithms like Ed25519.</p> -->
+              </div><!--/.card-body-->
+              <div class="card-footer"><h3>Secure, Adaptable Cryptography</h3></div>
+            </a><!--/.card-->
 
-          <a href="xrp-ledger-overview.html#modern-features-for-smart-contracts"><div class="card m-3">
-            <img class="card-img-top" src="assets/img/gears.svg" alt="(gears)" />
-            <div class="card-body">
-              <!-- <p>Features like Escrow, Checks, and Payment Channels support cutting-edge financial applications while safety features like Invariant Checks and Amendments provide for stable operation.</p> -->
-            </div><!--/.card-body-->
-            <div class="card-footer"><h3>Modern Features for Smart Contracts</h3></div>
-          </div><!--/.card--></a>
+            <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm --></div>
+            <div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 3 on md --></div>
 
-          <a href="xrp-ledger-overview.html#on-ledger-decentralized-exchange"><div class="card m-3">
-            <img class="card-img-top" src="assets/img/exchange.svg" alt="(currency exchange)" />
-            <div class="card-body">
-              <!-- <p>The XRP Ledger also has a fully-functional accounting system for tracking and trading obligations denominated in any way users want, and an exchange built into the protocol.</p> -->
-            </div><!--/.card-body-->
-            <div class="card-footer"><h3>On-Ledger Decentralized Exchange</h3></div>
-          </div><!--/.card--></a>
+            <a href="xrp-ledger-overview.html#modern-features-for-smart-contracts" class="card m-3">
+              <img class="card-img-top" src="assets/img/gears.svg" alt="(gears)" />
+              <div class="card-body">
+                <!-- <p>Features like Escrow, Checks, and Payment Channels support cutting-edge financial applications while safety features like Invariant Checks and Amendments provide for stable operation.</p> -->
+              </div><!--/.card-body-->
+              <div class="card-footer"><h3>Modern Features for Smart Contracts</h3></div>
+            </a><!--/.card-->
 
-      </div><!--/.card-deck-->
+            <a href="xrp-ledger-overview.html#on-ledger-decentralized-exchange" class="card m-3">
+              <img class="card-img-top" src="assets/img/exchange.svg" alt="(currency exchange)" />
+              <div class="card-body">
+                <!-- <p>The XRP Ledger also has a fully-functional accounting system for tracking and trading obligations denominated in any way users want, and an exchange built into the protocol.</p> -->
+              </div><!--/.card-body-->
+              <div class="card-footer"><h3>On-Ledger Decentralized Exchange</h3></div>
+            </a><!--/.card-->
+
+        </div><!--/.card-deck-->
+      </div><!--/.container-->
 
     </section>
 
-    <section class="container-fluid p-5 bg-light">
+    <section class="container-fluid py-3 p-sm-5 bg-light">
       <h2>Built on the XRP Ledger</h2>
       <div class="blurb">
           <p>Learn about just a few of the types of integrations developers have built on the XRP Ledger.</p>
@@ -211,7 +215,7 @@
       </div>
 
       <div class="container">
-        <div class="card-deck mb-4 p-xl-5">
+        <div class="row card-deck mb-4 p-xl-5">
 
           <div class="card">
             <div class="card-header">
@@ -263,40 +267,36 @@
 
     </section>
 
-    <section class="container-fluid related-projects p-5 bg-white">
+    <section class="container-fluid related-projects py-3 p-sm-5 bg-white">
       <h2>Related Projects</h2>
 
       <div class="row">
 
         <div class="col m-2">
-          <a class="client-portal-link" href="https://clients.ripple.com/" target="_blank">
-            <div class="card">
-              <div class="card-body">
-                <p>
-                  <img class="project-icon" src="assets/img/RippleNet-condensed.svg" />
-                  <span class="project-name">Ripple Client Portal</span>
-                  <span class="login-required">(login required)</span>
-                  <i class="fa fa-external-link" aria-hidden="true"></i>
-                </p>
-                <p class="project-summary">For financial institutions using Ripple's proprietary solutions to send money globally.</p>
-              </div><!--/.card-body-->
-            </div><!--/.card-->
-          </a>
+          <a class="client-portal-link card" href="https://clients.ripple.com/" target="_blank">
+            <div class="card-body">
+              <p>
+                <img class="project-icon" src="assets/img/RippleNet-condensed.svg" />
+                <span class="project-name">Ripple Client Portal</span>
+                <span class="login-required">(login required)</span>
+                <i class="fa fa-external-link" aria-hidden="true"></i>
+              </p>
+              <p class="project-summary">For financial institutions using Ripple's proprietary solutions to send money globally.</p>
+            </div><!--/.card-body-->
+          </a><!--/.card-->
         </div><!--/.col-->
 
         <div class="col m-2">
-          <a class="interledger-link" href="https://interledger.org/" target="_blank">
-            <div class="card">
-              <div class="card-body">
-                <p>
-                  <img class="project-icon" src="assets/img/ilp_logo.svg" />
-                  <span class="project-name">Interledger</span>
-                  <i class="fa fa-external-link" aria-hidden="true"></i>
-                </p>
-                <p class="project-summary">An open protocol suite for connecting all forms of digital money.</p>
-              </div><!--/.card-body-->
-            </div><!--/.card-->
-          </a>
+          <a class="interledger-link card" href="https://interledger.org/" target="_blank">
+            <div class="card-body">
+              <p>
+                <img class="project-icon" src="assets/img/ilp_logo.svg" />
+                <span class="project-name">Interledger</span>
+                <i class="fa fa-external-link" aria-hidden="true"></i>
+              </p>
+              <p class="project-summary">An open protocol suite for connecting all forms of digital money.</p>
+            </div><!--/.card-body-->
+          </a><!--/.card-->
         </div><!--/.col-->
 
       </div><!--/.row-->
