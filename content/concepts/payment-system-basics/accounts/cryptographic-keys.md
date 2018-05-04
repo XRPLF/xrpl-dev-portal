@@ -50,7 +50,7 @@ You can use this generated key pair in one of three ways: as a [master key pair]
 
 **Key Type**
 
-The field `key_type` indicates what [cryptographic signing algorithm](#signing-algorithms) was used to generate this key pair. You can specify the `key_type` when you make the request to generate a key pair using the [`wallet_propose` command](reference-rippled.html#wallet-propose).
+The field `key_type` indicates what [cryptographic signing algorithm](#signing-algorithms) was used to generate this key pair. You can specify the `key_type` when you make the request to generate a key pair using the [wallet_propose method][].
 
 
 ## Master Key Pair
@@ -105,7 +105,7 @@ The XRP Ledger supports the following cryptographic signing algorithms:
 | `secp256k1` | [ECDSA](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Algorithm-Validation-Program/documents/dss2/ecdsa2vs.pdf) using the elliptic curve [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | This is the scheme used in Bitcoin. The XRP Ledger uses these key types by default. |
 | `ed25519` | [EdDSA](https://tools.ietf.org/html/rfc8032) using the elliptic curve [Ed25519](https://ed25519.cr.yp.to/) | This is a newer algorithm which has better performance and other convenient properties. Since Ed25519 public keys are one byte shorter than secp256k1 keys, `rippled` prefixes Ed25519 public keys with the byte `0xED` so both types of public key are 33 bytes. |
 
-When you generate a key pair with the [`wallet_propose` command](reference-rippled.html#wallet-propose), you can specify the `key_type` to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the `key_type` when signing transactions.
+When you generate a key pair with the [wallet_propose method][], you can specify the `key_type` to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the `key_type` when signing transactions.
 
 The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](concept-accounts.html#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
 

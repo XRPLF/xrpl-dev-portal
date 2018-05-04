@@ -18,7 +18,7 @@ Figure out the values of the [CheckCash transaction][] fields. To cash a check f
 |:------------------|:--------------------------|:-----------------------------|
 | `TransactionType` | String                    | The value `CheckCash` indicates this is a CheckCash transaction. |
 | `Account`         | String (Address)          | The address of the sender who is cashing the Check. (In other words, your address.) |
-| `CheckID`         | String                    | The ID of the Check object in the ledger to cash. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for Checks using the [`account_objects` method](reference-rippled.html#account-objects). |
+| `CheckID`         | String                    | The ID of the Check object in the ledger to cash. You can get this information by looking up the metadata of the CheckCreate transaction using the [tx method][] or by looking for Checks using the [account_objects method][]. |
 | `Amount`          | String or Object (Amount) | The amount to redeem from the Check. For XRP, this must be a string specifying drops of XRP. For issued currencies, this is an object with `currency`, `issuer`, and `value` fields. The `currency` and `issuer` fields must match the corresponding fields in the Check object, and the `value` must be less than or equal to the amount in the Check object. (For currencies with transfer fees, you must cash the Check for less than its `SendMax` so the transfer fee can be paid by the `SendMax`.) If you cannot receive this much, cashing the Check fails, leaving the Check in the ledger so you can try again. For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
 
 
@@ -114,7 +114,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## {{cash_exact_n.next()}}. Confirm final result
 
-Use the [`tx` method](reference-rippled.html#tx) with the CheckCash transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
+Use the [tx method][] with the CheckCash transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
 If the check was cashed for an exact `Amount` and succeeded, you can assume that the recipient was credited for exactly that amount (with possible rounding for very large or very small amounts of issued currencies).
 

@@ -513,7 +513,6 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Transaction Methods
-        template: template-landing-children.html
         targets:
             - local
 
@@ -623,7 +622,6 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        template: template-landing-children.html
         targets:
             - local
 

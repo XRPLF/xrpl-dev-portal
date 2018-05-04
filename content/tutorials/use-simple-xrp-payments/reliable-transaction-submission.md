@@ -340,7 +340,7 @@ Applications should persist the transaction's hash before submitting.  The resul
 
 #### Submit the transaction
 
-`rippled` provides the [`submit` method](reference-rippled.html#submit), allowing us to submit the signed transaction.  This uses the `tx_blob` parameter that was returned by the `sign` method.
+`rippled` provides the [submit method][], allowing us to submit the signed transaction.  This uses the `tx_blob` parameter that was returned by the `sign` method.
 
 Request:
 
@@ -391,7 +391,7 @@ This a **preliminary** result.  Final results are only available from validated 
 
 #### Verify the Transaction
 
-The transaction hash, generated when the transaction was signed, is passed to the [`tx` method](reference-rippled.html#tx) to retrieve the result of a transaction.
+The transaction hash, generated when the transaction was signed, is passed to the [tx method][] to retrieve the result of a transaction.
 
 Request:
 
@@ -448,7 +448,7 @@ If the response does not include `"validated": true`, the result is provisional 
 
 #### Verify Missing Transaction
 
-Applications must handle cases where a call to the [`tx` method](reference-rippled.html#tx) returns a `txnNotFound` error.
+Applications must handle cases where a call to the [tx method][] returns a `txnNotFound` error.
 
 ```
 {
@@ -468,7 +468,7 @@ Applications must handle cases where a call to the [`tx` method](reference-rippl
 
 The `txnNotFound` result code occurs in cases where the transaction is not included in any ledger.  However, it could also occur when a `rippled` instance does not have a complete ledger history, or if the transaction has not yet propagated to the `rippled` instance.  Applications should make further queries to determine how to react.
 
-The [`server_state` method](reference-rippled.html#server-state) (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under `result.state.complete_ledgers`.
+The [server_state method][] (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under `result.state.complete_ledgers`.
 
 ```
 {

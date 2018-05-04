@@ -26,7 +26,7 @@ Figure out the values of the [CheckCancel transaction][] fields. The following f
 |:------------------|:-----------------|:--------------------------------------|
 | `TransactionType` | String           | Use the string `CheckCancel` when canceling a Check. |
 | `Account`         | String (Address) | The address of the sender who is canceling the Check. (In other words, your address.) |
-| `CheckID`         | String           | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [`tx` method](reference-rippled.html#tx) or by looking for Checks using the [`account_objects` method](reference-rippled.html#account-objects). |
+| `CheckID`         | String           | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [tx method][] or by looking for Checks using the [account_objects method][]. |
 
 If you are using [RippleAPI](reference-rippleapi.html), you can use the `prepareCheckCancel()` helper method.
 
@@ -147,7 +147,7 @@ The following examples demonstrate how to cancel a Check.
 
 ## {{cancel_n.next()}}. Confirm final result
 
-Use the [`tx` method](reference-rippled.html#tx) with the CheckCancel transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
+Use the [tx method][] with the CheckCancel transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
 Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryType": "Check"` to indicate that the transaction removed a [Check ledger object](reference-ledger-format.html#check). The `LedgerIndex` of this object should match the ID of the Check.
 

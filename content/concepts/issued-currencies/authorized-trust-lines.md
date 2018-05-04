@@ -24,7 +24,7 @@ To use the Authorized Trust Lines feature, an issuer must also enable `RequireAu
 
 ### Enabling RequireAuth
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an [AccountSet transaction][] to enable the RequireAuth flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an [AccountSet transaction][] to enable the RequireAuth flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
 
 Request:
 
@@ -51,7 +51,7 @@ POST http://localhost:5005/
 
 ## Checking Whether an Account Has RequireAuth Enabled
 
-To see whether an account has the RequireAuth setting enabled, use the [`account_info` command](reference-rippled.html#account-info) to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](reference-ledger-format.html#accountroot-flags).
+To see whether an account has the RequireAuth setting enabled, use the [account_info method][] to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](reference-ledger-format.html#accountroot-flags).
 
 If the result of the `Flags` value bitwise-AND the `lsfRequireAuth` flag value (0x00040000) is nonzero, then the account has RequireAuth enabled. If the result is zero, then the account has RequireAuth disabled.
 
@@ -61,7 +61,7 @@ If you are using the Authorized Trust Lines feature, others cannot hold balances
 
 To authorize a trust line, submit a [TrustSet transaction][] from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](reference-transaction-format.html#trustset-flags) flag for the transaction.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send a TrustSet transaction authorizing the customer address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send a TrustSet transaction authorizing the customer address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
 
 Request:
 
@@ -92,7 +92,7 @@ POST http://localhost:8088/
 
 ## Checking Whether Trust Lines Are Authorized
 
-To see whether a trust line has been authorized, use the [`account_lines` command](reference-rippled.html#account-lines) to look up the trust line. In the request, provide the customer's address in the `account` field and the issuer's address in the `peer` field.
+To see whether a trust line has been authorized, use the [account_lines method][] to look up the trust line. In the request, provide the customer's address in the `account` field and the issuer's address in the `peer` field.
 
 In the response's `result.lines` array, find the object whose `currency` field indicates that it represents a trust line for the currency you want. If that object has a `peer_authorized` field with the value `true`, then the issuer (the address you used as the request's `peer` field) has authorized the trust line.
 

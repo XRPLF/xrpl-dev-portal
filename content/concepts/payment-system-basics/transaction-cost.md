@@ -109,18 +109,18 @@ _Fee levels_ represent the proportional difference between the minimum cost and 
 
 The `rippled` APIs have two ways to query the local load-based transaction cost: the `server_info` command (intended for humans) and the `server_state` command (intended for machines).
 
-If the [FeeEscalation amendment](reference-amendments.html#feeescalation) is enabled, you can use the [`fee` command](reference-rippled.html#fee) to check the open ledger cost.
+If the [FeeEscalation amendment](reference-amendments.html#feeescalation) is enabled, you can use the [fee method][] to check the open ledger cost.
 
 ### server_info
 
-The [`server_info` command](reference-rippled.html#server-info) reports the unscaled minimum XRP cost, as of the previous ledger, as `validated_ledger.base_fee_xrp`, in the form of decimal XRP. The actual cost necessary to relay a transaction is scaled by multiplying that `base_fee_xrp` value by the `load_factor` parameter in the same response, which represents the server's current load level. In other words:
+The [server_info method][] reports the unscaled minimum XRP cost, as of the previous ledger, as `validated_ledger.base_fee_xrp`, in the form of decimal XRP. The actual cost necessary to relay a transaction is scaled by multiplying that `base_fee_xrp` value by the `load_factor` parameter in the same response, which represents the server's current load level. In other words:
 
 **Current Transaction Cost in XRP = `base_fee_xrp` × `load_factor`**
 
 
 ### server_state
 
-The [`server_state` command](reference-rippled.html#server-state) returns a direct representation of `rippled`'s internal load calculations. In this case, the effective load rate is the ratio of the current `load_factor` to the `load_base`. The `validated_ledger.base_fee` parameter reports the minimum transaction cost in [drops of XRP](reference-rippled.html#specifying-currency-amounts). This design enables `rippled` to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:
+The [server_state method][] returns a direct representation of `rippled`'s internal load calculations. In this case, the effective load rate is the ratio of the current `load_factor` to the `load_base`. The `validated_ledger.base_fee` parameter reports the minimum transaction cost in [drops of XRP](reference-rippled.html#specifying-currency-amounts). This design enables `rippled` to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:
 
 **Current Transaction Cost in Drops = (`base_fee` × `load_factor`) ÷ `load_base`**
 
@@ -142,7 +142,7 @@ When you sign a transaction online, you can omit the `Fee` field. In this case, 
 * If the network's transaction cost goes up between signing and distributing the transaction, the transaction may not be confirmed.
     * In the worst case, the transaction may be stuck in a state of being neither definitively confirmed or rejected, unless it included a `LastLedgerSequence` parameter or until you cancel it with a new transaction that uses the same `Sequence` number. See [reliable transaction submission](tutorial-reliable-transaction-submission.html) for best practices.
 * You do not know in advance exactly what value you are signing for the `Fee` field.
-    * If you are using `rippled`, you can also use the `fee_mult_max` and `fee_div_max` parameters of the [`sign` command](reference-rippled.html#sign) to set a limit to the load scaling you are willing to sign.
+    * If you are using `rippled`, you can also use the `fee_mult_max` and `fee_div_max` parameters of the [sign method][] to set a limit to the load scaling you are willing to sign.
 * You cannot look up the current transaction cost from an offline machine.
 * You cannot automatically specify the transaction cost when [multi-signing](reference-transaction-format.html#multi-signing).
 

@@ -20,7 +20,7 @@ To use multi-signing:
 
 Multi-signing has been enabled by an [**Amendment**](concept-amendments.html) to the XRP Ledger Consensus Protocol since 2016-06-27.
 
-If you want to use multi-signing with `rippled` with a fresh ledger in [stand-alone mode](concept-stand-alone-mode.html), you must force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the [`feature` command](reference-rippled.html#feature).
+If you want to use multi-signing with `rippled` with a fresh ledger in [stand-alone mode](concept-stand-alone-mode.html), you must force the MultiSign feature to be enabled. You can check the status of the MultiSign amendment using the [feature method][].
 
 To force the multi-signing feature to be enabled, add the following stanza to your `rippled.cfg`: <!--{# TODO: Link to rippled.cfg docs when those exist. #}-->
 
@@ -46,7 +46,7 @@ If you started `rippled` in [stand-alone mode](concept-stand-alone-mode.html) wi
 
 ### 2. Prepare member keys
 
-You need several sets of XRP Ledger keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the [`wallet_propose` command](reference-rippled.html#wallet-propose). For example:
+You need several sets of XRP Ledger keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the [wallet_propose method][]. For example:
 
     $ rippled wallet_propose
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
@@ -154,7 +154,7 @@ Make sure that the [Transaction Result](reference-transaction-format.html#transa
 
 On the live network, you can wait 4-7 seconds for the ledger to close automatically.
 
-If you're running `rippled` in stand-alone mode, use the [`ledger_accept` command](reference-rippled.html#ledger-accept) to manually close the ledger:
+If you're running `rippled` in stand-alone mode, use the [ledger_accept method][] to manually close the ledger:
 
     $ rippled ledger_accept
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
@@ -169,7 +169,7 @@ If you're running `rippled` in stand-alone mode, use the [`ledger_accept` comman
 
 ### 5. Confirm the new signer list
 
-Use the [`account_objects` command](reference-rippled.html#account-objects) to confirm that the SignerList is associated with the address in the latest validated ledger.
+Use the [account_objects method][] to confirm that the SignerList is associated with the address in the latest validated ledger.
 
 Normally, an account can own many objects of different types (such as trust lines and offers). If you funded a new address for this tutorial, the SignerList is the only object in the response.
 
@@ -259,7 +259,7 @@ Here's an example transaction ready to be multi-signed:
 
 ### 2. Get one signature
 
-Use the [`sign_for` command](reference-rippled.html#sign-for) with the secret key and address of one of the members of your SignerList to get a signature for that member.
+Use the [sign_for method][] with the secret key and address of one of the members of your SignerList to get a signature for that member.
 
 {% include '_snippets/secret-key-warning.md' %}
 
@@ -388,9 +388,9 @@ Depending on the SignerList you configured, you may need to repeat this step sev
 
 ### 4. Combine signatures and submit
 
-If you collected the signatures in serial, the `tx_json` from the last `sign_for` response has all the signatures assembled, so you can use that as the argument to the [`submit_multisigned` command](reference-rippled.html#submit-multisigned).
+If you collected the signatures in serial, the `tx_json` from the last `sign_for` response has all the signatures assembled, so you can use that as the argument to the [submit_multisigned method][].
 
-If you collected the signatures in parallel, you must manually construct a `tx_json` object with all the signatures included. Take the `Signers` arrays from all the `sign_for` responses, and combine their contents into a single `Signers` array that has each signature. Add the combined `Signers` array to the original transaction JSON value, and use that as the argument to the [`submit_multisigned` command](reference-rippled.html#submit-multisigned).
+If you collected the signatures in parallel, you must manually construct a `tx_json` object with all the signatures included. Take the `Signers` arrays from all the `sign_for` responses, and combine their contents into a single `Signers` array that has each signature. Add the combined `Signers` array to the original transaction JSON value, and use that as the argument to the [submit_multisigned method][].
 
     $ rippled submit_multisigned '{
     >              "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -469,7 +469,7 @@ Take note of the `hash` value from the response so you can check the results of 
 
 If you are using the live network, you can wait 4-7 seconds for the ledger to close automatically.
 
-If you're running `rippled` in stand-alone mode, use the [`ledger_accept` command](reference-rippled.html#ledger-accept) to manually close the ledger:
+If you're running `rippled` in stand-alone mode, use the [ledger_accept method][] to manually close the ledger:
 
     $ rippled ledger_accept
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
@@ -484,7 +484,7 @@ If you're running `rippled` in stand-alone mode, use the [`ledger_accept` comman
 
 ### 6. Confirm transaction results
 
-Use the hash value from the response to the `submit_multisigned` command to look up the transaction using the [`tx` command](reference-rippled.html#tx). In particular, check that the `TransactionResult` is the string `tesSUCCESS`.
+Use the hash value from the response to the `submit_multisigned` command to look up the transaction using the [tx method][]. In particular, check that the `TransactionResult` is the string `tesSUCCESS`.
 
 On the live network, you must also confirm that the `validated` field is set to the boolean `true`. If the field is not `true`, you might need to wait longer for the consensus process to finish; or your transaction may be unable to be included in a ledger for some reason.
 

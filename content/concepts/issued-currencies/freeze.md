@@ -230,7 +230,7 @@ Example JavaScript (ECMAScript 6) code to enable No Freeze on an address:
 
 ### Using `rippled`
 
-To see if a trust line has an Individual Freeze enabled, use the [`account_lines` method](reference-rippled.html#account-lines) with the following parameters:
+To see if a trust line has an Individual Freeze enabled, use the [account_lines method][] with the following parameters:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
@@ -313,7 +313,7 @@ Example JavaScript (ECMAScript 6) code to check whether a trust line is frozen:
 
 ### Using `rippled`
 
-To see if an address has enabled Global Freeze, No Freeze, or both, use the [`account_info` method](reference-rippled.html#account-lines) with the following parameters:
+To see if an address has enabled Global Freeze, No Freeze, or both, use the [account_info method][] with the following parameters:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|

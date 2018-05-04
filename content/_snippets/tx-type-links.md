@@ -21,20 +21,15 @@
   "SetFee"
 ] %}
 
-{% if currentpage.html == "reference-transaction-format.html" %}
-  {% set basepage = "" %}
-{% else %}
-  {% set basepage = "reference-transaction-format.html" %}
-{% endif %}
 
 {% for tx in txtypes %}
-[{{tx}}]: {{basepage}}#{{tx|lower}}
-[{{tx}} transaction]: {{basepage}}#{{tx|lower}}
-[{{tx}} transactions]: {{basepage}}#{{tx|lower}}
+[{{tx}}]: {{tx|lower}}.html
+[{{tx}} transaction]: {{tx|lower}}.html
+[{{tx}} transactions]: {{tx|lower}}.html
 {% endfor %}
 
 {% for tx in pstxtypes %}
-[{{tx}}]: {{basepage}}#{{tx|lower}}
-[{{tx}} pseudo-transaction]: {{basepage}}#{{tx|lower}}
-[{{tx}} pseudo-transactions]: {{basepage}}#{{tx|lower}}
+[{{tx}}]: {{tx|lower}}.html
+[{{tx}} pseudo-transaction]:  {{tx|lower}}.html
+[{{tx}} pseudo-transactions]:  {{tx|lower}}.html
 {% endfor %}

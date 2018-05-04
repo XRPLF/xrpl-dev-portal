@@ -266,6 +266,6 @@ To enable clustering, change the following sections of your [config file](https:
         192.168.0.1 51235
         192.168.0.2 51235
 
-* Generate a unique seed (using the [`validation_create` command](reference-rippled.html#validation-seed)) for each of your servers, and configure it under the `[node_seed]` section. The `rippled` server uses this key to sign its messages to other servers in the peer-to-peer network.
+* Generate a unique seed (using the [validation_create method][]) for each of your servers, and configure it under the `[node_seed]` section. The `rippled` server uses this key to sign its messages to other servers in the peer-to-peer network.
 
 * Add the public keys (for peer communication) of each of your other servers under the `[cluster_nodes]` section.

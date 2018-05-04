@@ -342,11 +342,11 @@ The payee should check the following:
 - Confirm that the `amount` of the claim is equal or less than the `amount` of the channel. If the `amount` of the claim is higher, the claim cannot be redeemed unless the payer uses a [PaymentChannelFund transaction][] to increase the total amount of XRP available to the channel.
 - Confirm that the `balance` of the channel matches the amount the payee expects to have already received from the channel. If these do not match up, the payee should double-check the channel's transaction history. Some possible explanations for a mismatch include:
     - The payer used a [PaymentChannelClaim][] transaction to deliver XRP from the channel to the payee, but the payee did not notice and record the incoming transaction.
-    - The payee's records include transactions that are "in flight" or have not yet been included in the latest validated ledger version. The payee can use the [`tx` command](reference-rippled.html#tx) to look up the state of individual transactions to check this.
+    - The payee's records include transactions that are "in flight" or have not yet been included in the latest validated ledger version. The payee can use the [tx method][] to look up the state of individual transactions to check this.
     - The `account_channels` request did not specify the correct ledger version. (Use `"ledger_index": "validated"` to get the latest validated ledger version)
     - The payee previously redeemed XRP but forgot to record it.
     - The payee attempted to redeem XRP and recorded the tentative result, but the transaction's final validated result was not the same and the payee neglected to record the final validated result.
-    - The `rippled` server the payee queried has lost sync with the rest of the network or is experiencing an unknown bug. Use the [`server_info` command](reference-rippled.html#server-info) to check the state of the server. (If you can reproduce this situation, please [report an issue](https://github.com/ripple/rippled/issues/).)
+    - The `rippled` server the payee queried has lost sync with the rest of the network or is experiencing an unknown bug. Use the [server_info method][] to check the state of the server. (If you can reproduce this situation, please [report an issue](https://github.com/ripple/rippled/issues/).)
 
 After confirming both the signature and the current state of the payment channel, the payee has not yet received the XRP, but is certain that he or she _can_ redeem the XRP as long as the transaction to do so is processed before the channel expires.
 
@@ -456,7 +456,7 @@ Example of [submitting a transaction](reference-rippled.html#sign-and-submit-mod
         }]
     }
 
-After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel using the [`account_channels` method](reference-rippled.html#account-channels). Be sure to specify `"ledger_index": "validated"` to get data from the latest validated ledger version.
+After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel using the [account_channels method][]. Be sure to specify `"ledger_index": "validated"` to get data from the latest validated ledger version.
 
 Example `account_channels` response:
 
@@ -511,7 +511,7 @@ Example of [submitting](reference-rippled.html#sign-and-submit-mode) a transacti
 
 When the transaction has been included in a validated ledger, you can look at the metadata of the transaction to confirm that it deleted the channel and returned the XRP to the sender.
 
-Example response from using the [`tx` command](reference-rippled.html#tx) to look up the transaction from this step:
+Example response from using the [tx method][] to look up the transaction from this step:
 
     {
         "result": {

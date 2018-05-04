@@ -50,7 +50,7 @@ An account can enable deposit authorization by sending an [AccountSet transactio
 
 ## Checking Whether an Account Has DepositAuth Enabled
 
-To see whether an account has Deposit Authorization enabled, use the [`account_info` command](reference-rippled.html#account-info) to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](reference-ledger-format.html#accountroot-flags).
+To see whether an account has Deposit Authorization enabled, use the [account_info method][] to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](reference-ledger-format.html#accountroot-flags).
 
 If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (0x01000000) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.
 

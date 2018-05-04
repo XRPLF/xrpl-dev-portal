@@ -48,7 +48,7 @@ When testing in [stand-alone mode](concept-stand-alone-mode.html), you can force
     [features]
     Escrow
 
-You can check the status of the Escrow amendment using the [`feature` command](reference-rippled.html#feature).
+You can check the status of the Escrow amendment using the [feature method][].
 
 ## EscrowFinish Transaction Cost
 

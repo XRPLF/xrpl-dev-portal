@@ -81,7 +81,7 @@ Checks require `rippled` v0.90.0 or later. The Checks amendment gained support o
 <!-- {***TODO:*** update this with the...other pseudo-transaction that will enable this amendment after two weeks with majority support? }  -->
 
 
-When not using the production XRP Ledger, you can check the status of the Checks amendment using the [`feature` command](reference-rippled.html#feature).
+When not using the production XRP Ledger, you can check the status of the Checks amendment using the [feature method][].
 
 
 ## Further Reading

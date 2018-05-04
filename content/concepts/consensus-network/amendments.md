@@ -58,7 +58,7 @@ As with all aspects of the consensus process, amendment votes are only taken int
 
 ### Configuring Amendment Voting
 
-You can temporarily configure an amendment using the [`feature` command](reference-rippled.html#feature). To make a persistent change to your server's support for an amendment, change your server's `rippled.cfg` file.
+You can temporarily configure an amendment using the [feature method][]. To make a persistent change to your server's support for an amendment, change your server's `rippled.cfg` file.
 
 Use the `[veto_amendments]` stanza to list amendments you do not want the server to vote for. Each line should contain one amendment's unique ID, optionally followed by the short name for the amendment. For example:
 

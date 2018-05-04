@@ -84,7 +84,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ### 4. Confirm that the escrow was created
 
-Use the [`tx` command](reference-rippled.html#tx) with the transaction's identifying hash to check its final status. Look for a `CreatedNode` in the transaction metadata to indicate that it created an [Escrow ledger object](reference-ledger-format.html#escrow).
+Use the [tx method][] with the transaction's identifying hash to check its final status. Look for a `CreatedNode` in the transaction metadata to indicate that it created an [Escrow ledger object](reference-ledger-format.html#escrow).
 
 Request:
 
@@ -114,7 +114,7 @@ Response:
 
 Held payments with a `FinishAfter` time cannot be finished until a ledger has already closed with a [`close_time` header field](reference-ledger-format.html#header-format) that is later than the Escrow node's `FinishAfter` time.
 
-You can check the close time of the most recently-validated ledger with the [`ledger` command](reference-rippled.html#ledger):
+You can check the close time of the most recently-validated ledger with the [ledger method][]:
 
 Request:
 
@@ -183,7 +183,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ### 8. Confirm final result
 
-Use the [`tx` command](reference-rippled.html#tx) with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field.
+Use the [tx method][] with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field.
 
 Request:
 
@@ -306,7 +306,7 @@ Response:
 
 ### 5. Confirm that the escrow was created
 
-Use the [`tx` command](reference-rippled.html#tx) with the transaction's identifying hash to check its final status. In particular, look for a `CreatedNode` in the transaction metadata to indicate that it created an [Escrow ledger object](reference-ledger-format.html#escrow).
+Use the [tx method][] with the transaction's identifying hash to check its final status. In particular, look for a `CreatedNode` in the transaction metadata to indicate that it created an [Escrow ledger object](reference-ledger-format.html#escrow).
 
 Request:
 
@@ -372,7 +372,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ### 8. Confirm final result
 
-Use the [`tx` command](reference-rippled.html#tx) with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field.
+Use the [tx method][] with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field.
 
 Request:
 
@@ -390,7 +390,7 @@ Response:
 
 ### 1. Confirm the expired escrow
 
-An escrow in the XRP Ledger is expired when its `CancelAfter` time is lower than the `close_time` of a validated ledger version. (If the escrow does not have a `CancelAfter` time, it never expires.) You can look up the close time of the latest validated ledger with the [`ledger` command](reference-rippled.html#ledger):
+An escrow in the XRP Ledger is expired when its `CancelAfter` time is lower than the `close_time` of a validated ledger version. (If the escrow does not have a `CancelAfter` time, it never expires.) You can look up the close time of the latest validated ledger with the [ledger method][]:
 
 Request:
 
@@ -417,7 +417,7 @@ _Websocket_
 <!-- MULTICODE_BLOCK_END -->
 
 
-You can look up the escrow and compare to the `CancelAfter` time using the [`account_objects` command](reference-rippled.html#account-objects):
+You can look up the escrow and compare to the `CancelAfter` time using the [account_objects method][]:
 
 Request:
 
@@ -481,7 +481,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ### 4. Confirm final result
 
-Use the [`tx` command](reference-rippled.html#tx) with the EscrowCancel transaction's identifying hash to check its final status. Look in the transaction metadata for a `DeletedNode` with `LedgerEntryType` of `Escrow`. Also look for a `ModifiedNode` of type `AccountRoot` for the sender of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field for the returned XRP.
+Use the [tx method][] with the EscrowCancel transaction's identifying hash to check its final status. Look in the transaction metadata for a `DeletedNode` with `LedgerEntryType` of `Escrow`. Also look for a `ModifiedNode` of type `AccountRoot` for the sender of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field for the returned XRP.
 
 Request:
 

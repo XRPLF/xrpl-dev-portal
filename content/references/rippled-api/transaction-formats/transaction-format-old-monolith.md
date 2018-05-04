@@ -188,7 +188,7 @@ To successfully submit a multi-signed transaction, you must do all of the follow
 * For the provided signatures, the total `weight` associated with those signers must be equal or greater than the `quorum` for the SignerList.
 * The [transaction cost](concept-transaction-cost.html) (specified in the `Fee` field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.
 * All fields of the transaction must be defined before collecting signatures. You cannot [auto-fill](#auto-fillable-fields) any fields.
-* If presented in binary form, the `Signers` array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the [`submit_multisigned` command](reference-rippled.html#submit-multisigned) handles this automatically.)
+* If presented in binary form, the `Signers` array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the [submit_multisigned method][] handles this automatically.)
 
 For more information, see [How to Multi-Sign](tutorial-multisign.html).
 
@@ -447,7 +447,7 @@ Some of the fields that are mandatory for normal transactions do not make sense 
 
 ## Immediate Response
 
-The response from the [`submit` command](reference-rippled.html#submit) contains a provisional result from the `rippled` server indicating what happened during local processing of the transaction.
+The response from the [submit method][] contains a provisional result from the `rippled` server indicating what happened during local processing of the transaction.
 
 The response from `submit` contains the following fields:
 
@@ -469,7 +469,7 @@ If nothing went wrong when submitting and applying the transaction locally, the 
 
 ## Looking up Transaction Results
 
-To see the final result of a transaction, use the [`tx` command](reference-rippled.html#tx), [`account_tx` command](reference-rippled.html#account-tx), or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus.
+To see the final result of a transaction, use the [tx method][], [account_tx method][], or other response from `rippled`. Look for `"validated": true` to indicate that this response uses a ledger version that has been validated by consensus.
 
 | Field                  | Value   | Description                               |
 |:-----------------------|:--------|:------------------------------------------|

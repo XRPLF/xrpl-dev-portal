@@ -47,7 +47,7 @@ rippled --conf=/path/to/rippled.cfg
 
 ### 2. Wait until `rippled` is synced.
 
-Use the [`server_info` command](reference-rippled.html#server-info) to check the state of your server relative to the network. Your server is synced when the `server_state` value shows any of the following values:
+Use the [server_info method][] to check the state of your server relative to the network. Your server is synced when the `server_state` value shows any of the following values:
 
 * `full`
 * `proposing`
@@ -59,13 +59,13 @@ For more information, see [Possible Server States](reference-rippled.html#possib
 
 If you only want the most recent ledger, you can skip this step.
 
-If you want to load a specific historical ledger version, use the [`ledger_request` command](reference-rippled.html#ledger-request) to make `rippled` fetch it. If `rippled` does not already have the ledger version, you may have to run the `ledger_request` command multiple times until it has finished retrieving the ledger.
+If you want to load a specific historical ledger version, use the [ledger_request method][] to make `rippled` fetch it. If `rippled` does not already have the ledger version, you may have to run the `ledger_request` command multiple times until it has finished retrieving the ledger.
 
 If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version before it. (The previous ledger version sets up the initial state upon which you apply the changes described by the ledger version you replay.)
 
 ### 4. Shut down `rippled`.
 
-Use the [`stop` command](reference-rippled.html#stop):
+Use the [stop method][]:
 
 ```
 rippled stop --conf=/path/to/rippled.cfg
@@ -96,7 +96,7 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 
 ## Advancing Ledgers in Stand-Alone Mode
 
-In stand-alone mode, `rippled` does not communicate to other members of the peer-to-peer network or participate in a consensus process. Instead, you must manually advance the ledger index using the [`ledger_accept` command](reference-rippled.html#ledger-accept):
+In stand-alone mode, `rippled` does not communicate to other members of the peer-to-peer network or participate in a consensus process. Instead, you must manually advance the ledger index using the [ledger_accept method][]:
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg

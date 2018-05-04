@@ -34,7 +34,7 @@ All objects in a ledger' state tree have a unique ID. This field is returned as 
 ## Header Format
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
 
-Every ledger version has a unique header that describes the contents. You can look up a ledger's header information with the [`ledger` command](reference-rippled.html#ledger). The contents of the ledger header are as follows:
+Every ledger version has a unique header that describes the contents. You can look up a ledger's header information with the [ledger method][]. The contents of the ledger header are as follows:
 
 | Field           | JSON Type | [Internal Type][] | Description |
 |-----------------|-----------|-------------------|-------------|

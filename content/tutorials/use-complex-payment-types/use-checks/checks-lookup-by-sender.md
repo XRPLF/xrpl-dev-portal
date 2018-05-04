@@ -8,7 +8,7 @@ This tutorial shows how to look up [Checks](concept-checks.html) by their sender
 
 To get a list of all incoming and outgoing Checks for an account, use the `account_objects` command with the sending account's address and set the `type` field of the request to `checks`.
 
-**Note:** The commandline interface to the `account_objects` command does not accept the `type` field. You can use the [`json` command](reference-rippled.html#json) to send the JSON-RPC format request on the commandline instead.
+**Note:** The commandline interface to the `account_objects` command does not accept the `type` field. You can use the [json method][] to send the JSON-RPC format request on the commandline instead.
 
 **Caution:** RippleAPI does not have built-in support for the `account_objects` method. You can make a raw request in the WebSocket format using the `api.connection.request(websocket_request_json)` method. The response to this method is in the `rippled` API format. (For example, XRP is specified in integer "drops" rather than as a decimal.)
 

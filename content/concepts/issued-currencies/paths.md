@@ -27,9 +27,9 @@ In both types of steps, each intermediate address gains and loses approximately 
 
 ## Pathfinding
 
-The `rippled` API has two methods that can be used for pathfinding. The [`ripple_path_find` command](reference-rippled.html#ripple-path-find) does a one-time lookup of possible path sets. The [`path_find` command](reference-rippled.html#path-find) (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
+The `rippled` API has two methods that can be used for pathfinding. The [ripple_path_find method][] does a one-time lookup of possible path sets. The [path_find method][] (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
 
-You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [`sign` command](reference-rippled.html#sign) or [`submit` command (sign-and-submit mode)](reference-rippled.html#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
+You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign method][] or [`submit` command (sign-and-submit mode)](reference-rippled.html#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
 
 **Caution:** Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.
 

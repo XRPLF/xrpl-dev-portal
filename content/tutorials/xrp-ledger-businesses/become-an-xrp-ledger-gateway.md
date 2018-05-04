@@ -391,7 +391,7 @@ The DefaultRipple flag controls whether the balances in an accounting relationsh
 
 Before asking customers to create accounting relationships to its issuing address, a gateway should enable the DefaultRipple flag on that address. Otherwise, the gateway must individually disable the NoRipple flag for each accounting relationship that other addresses have created.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction to enable the DefaultRipple flag:
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an AccountSet transaction to enable the DefaultRipple flag:
 
 Request:
 
@@ -463,7 +463,7 @@ The DisallowXRP setting (`disallowIncomingXRP` in RippleAPI) is designed to disc
 
 An issuing gateway that does not trade XRP should enable the DisallowXRP flag on the gateway's issuing and operational addresses. A private exchange that trades in XRP should only enable the DisallowXRP flag on addresses that are not expected to receive XRP.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction to enable the DisallowXRP flag:
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an AccountSet transaction to enable the DisallowXRP flag:
 
 Request:
 
@@ -520,7 +520,7 @@ The `RequireDest` setting (`requireDestinationTag` in RippleAPI) is designed to 
 
 We recommend enabling the `RequireDest` flag on all gateway issuing and operational addresses.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction to enable the `RequireDest` flag:
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an AccountSet transaction to enable the `RequireDest` flag:
 
 Request:
 
@@ -578,7 +578,7 @@ The `RequireAuth` setting prevents all counterparties from holding balances issu
 
 ### Enabling RequireAuth
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction to enable the RequireAuth flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an AccountSet transaction to enable the RequireAuth flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
 
 Request:
 
@@ -609,7 +609,7 @@ If you are using the [Authorized Trust Lines](concept-authorized-trust-lines.htm
 
 To authorize an accounting relationship, submit a TrustSet transaction from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](reference-transaction-format.html#trustset-flags) flag for the transaction.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send a TrustSet transaction authorizing the customer address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send a TrustSet transaction authorizing the customer address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
 
 Request:
 
@@ -662,7 +662,7 @@ As an added precaution, we recommend comparing the balances of your issuing addr
 
 The *TransferRate* setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issuances from one XRP Ledger address to another. See [Transfer Fees](concept-transfer-fees.html) for more information.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send an AccountSet transaction for the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW, setting the TransferRate to charge a fee of 0.5%.
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an AccountSet transaction for the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW, setting the TransferRate to charge a fee of 0.5%.
 
 Request:
 
@@ -728,7 +728,7 @@ When you build an automated system to send payments into the XRP Ledger for your
 
 One common pitfall is performing pathfinding before sending sending a payment to customers in the XRP Ledger. If you specify the issuers correctly, the [default paths](concept-paths.html#default-paths) can deliver the currency as intended.
 
-The following is an example of using a locally-hosted `rippled`'s [`submit` command](reference-rippled.html#submit) to send a payment from the operational address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to the customer address raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n, sending and delivering funds issued by the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send a payment from the operational address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to the customer address raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n, sending and delivering funds issued by the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.
 
 Request:
 

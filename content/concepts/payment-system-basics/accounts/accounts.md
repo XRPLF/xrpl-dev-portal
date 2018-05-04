@@ -23,7 +23,7 @@ There is not a dedicated "create account" transaction. The [Payment transaction]
 
 The typical way to get an account in the XRP Ledger is as follows:
 
-1. Generate a key pair from a strong source of randomness and calculate the address of that key pair. (For example, you can use the [`wallet_propose` command](reference-rippled.html#wallet-propose) to do this.)
+1. Generate a key pair from a strong source of randomness and calculate the address of that key pair. (For example, you can use the [wallet_propose method][] to do this.)
 
 2. Have someone who already has an account in the XRP Ledger send XRP to the address you generated.
 

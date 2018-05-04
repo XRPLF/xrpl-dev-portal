@@ -58,7 +58,7 @@ An unfunded offer can stay on the ledger indefinitely, but it does not have any 
 
 Tracking the funding status of all offers can be computationally taxing. In particular, addresses that are actively trading may have a large number of offers open. A single balance can affect the funding status of many offers to buy different currencies. Because of this, `rippled` does not proactively find and remove offers.
 
-A client application can locally track the funding status of offers. To do this, first retreive an order book using the [`book_offers` command](reference-rippled.html#book-offers) and check the `taker_gets_funded` field of offers. Then,  [subscribe](reference-rippled.html#subscribe) to the `transactions` stream and watch the transaction metadata to see which offers are modified.
+A client application can locally track the funding status of offers. To do this, first retreive an order book using the [book_offers method][] and check the `taker_gets_funded` field of offers. Then,  [subscribe](reference-rippled.html#subscribe) to the `transactions` stream and watch the transaction metadata to see which offers are modified.
 
 
 ### Offers and Trust
