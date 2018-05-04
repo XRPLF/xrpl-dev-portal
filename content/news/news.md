@@ -8,7 +8,7 @@ Get the latest XRP Ledger news and release information.
 
 <!--{# TODO: see if the link to the content makes more sense in the bullet itself - moved the link there just to make this consistent across landing pages like Dev Tools and Use Cases. See how it looks and feels. #}-->
 
-* **[Known Amendments](x)**
+* **[Known Amendments](known-amendments.html)**
 
       Amendments provide a way to introduce breaking changes to the decentralized XRP Ledger network without causing disruptions. Get the comprehensive list of [all known amendments](reference-amendments.html) and their statuses on the production XRP Ledger.
 

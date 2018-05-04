@@ -802,11 +802,13 @@ pages:
 # News -------------------------------------------------------------------------
 
     -   md: news/news.md
+        html: news.html
         funnel: News
         targets:
             - local
 
     -   md: news/known-amendments.md
+        html: known-amendments.html
         funnel: News
         targets:
             - local
