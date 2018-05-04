@@ -1,6 +1,6 @@
-# `rippled` Ledger Data Format
+# Ledger Data Formats
 
-Learn about the format of individual ledgers that make up the shared, global XRP Ledger.
+{{currentpage.blurb}}
 
 * **[Ledger Header](x)**
 <!--{# TODO: provide overview text of what this content is all about #}-->

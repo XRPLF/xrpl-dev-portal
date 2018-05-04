@@ -399,8 +399,8 @@ pages:
 
     # rippled API --------------------------------------------------------------
 
-    -   name: rippled API # TODO: md landing page?
-        html: reference-rippled-api.html
+    -   md: references/rippled-api/rippled-api.md
+        html: rippled-api.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -432,7 +432,7 @@ pages:
 
     # TODO: rippled Server States, Error Formatting
 
-    -   name: Public rippled Methods #TODO: possible md landing content?
+    -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.md
         html: public-rippled-methods.html
         funnel: Docs
         doc_type: References
@@ -542,7 +542,7 @@ pages:
     # - Server Info Methods (3)
     # - Utility Methods (3)
 
-    -   name: Admin rippled Methods #TODO: possible md landing content?
+    -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
         html: admin-rippled-methods.html
         funnel: Docs
         doc_type: References
@@ -579,6 +579,114 @@ pages:
     # - Server Control Methods (4)
     # - Status and Debugging Messages (8)
 
+    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.md
+        html: ledger-data-formats.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   name: Ledger Header #TODO: break off from ledger-format-old-monolith.md file
+        html: ledger-header.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        targets:
+            - local
+
+    -   name: Ledger Object Types #TODO: break off from ledger-format-old-monolith.md file
+        html: ledger-object-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.md
+        html: accountroot.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: 10 other ledger object types
+
+    -   md: references/rippled-api/transaction-formats/transaction-formats.md
+        html: transaction-formats.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        blurb: Transactions are the only way to modify the XRP Ledger. Get details about their required format.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   name: Transaction Common Fields #TODO: break off from transaction-format-old-monolith.md
+        html: transaction-common-fields.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+        targets:
+            - local
+
+    -   name: Transaction Types #TODO: pull landing content from transaction-format-old-monolith.md
+        html: transaction-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/accountset.md
+        html: accountset.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        targets:
+            - local
+
+    # TODO: 17 other transaction types
+
+    -   name: Transaction Results #TODO: pull landing content from transaction-format-old-monolith.md
+        html: transaction-results.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   name: tel Codes #TODO: break off content from transaction-format-old-monolith.md
+        html: tel-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    # TODO: 5 other result code classes
 
     # --------------- end "rippled API" section --------------------------------
 

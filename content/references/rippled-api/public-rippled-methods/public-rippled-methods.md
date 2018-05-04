@@ -1,4 +1,4 @@
-# Public `rippled` Methods
+# Public rippled Methods
 
 Communicate directly with a `rippled` server using these public API methods.
 

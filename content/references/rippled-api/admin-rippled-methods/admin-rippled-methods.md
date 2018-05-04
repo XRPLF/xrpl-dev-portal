@@ -1,4 +1,4 @@
-# Admin `rippled` Methods
+# Admin rippled Methods
 
 Communicate directly with a `rippled` server using these admin API methods.
 
