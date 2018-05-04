@@ -1,55 +1,53 @@
 {% extends "template-base.html" %}
 
-{% block sidebar %}
+{% block right_sidebar %}
     <ul id='command_list'>
     </ul>
 {% endblock %}
 
 {% block main %}
-    <div id='wrapper'>
-        <div style="clear:both;"></div>
-        <div id='command_wrapper'>
-            <div id='command_table'>
-                <div id='io_wrapper'>
-                    <div id='input' class='io'>
-                        <h2>REST Request</h2>
-                        <div id='test_warning' class='alert alert-danger' style='display:none;'>
-                            <h4>Test accounts only!</h4>
-                            <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
-                        </div>
-                        <div style="clear:both;"></div>
-                        <h3 id='selected_command' title='Reference information'></h3>
-                        <p id='description'></p>
-                        <div id='invalid'>Invalid JSON</div>
-                        <div id='rest_url_wrapper'>
-                            <p><span id='rest_host'>{{ currentpage.rest_host }}</span><span id='rest_url'></span></p>
-                        </div>
-                        <div id='request_body'></div>
-                        <div id='request_options'>
-                            <a class="button btn btn-primary api" id='request_button'>Send request</a>
-                        </div>
+  <section class="container-fluid p-3">
+    <div id='command_wrapper'>
+        <div id='command_table'>
+            <div id='io_wrapper'>
+                <div id='input' class='io'>
+                    <h2>REST Request</h2>
+                    <div id='test_warning' class='alert alert-danger' style='display:none;'>
+                        <h4>Test accounts only!</h4>
+                        <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
                     </div>
-                    <div id='output' class='io'>
-                        <h2>Response</h2>
-                        <div>
-                            <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
-                            <span id='rest_responsecode'></span>
-                        </div>
-                        <div id='response_body'></div>
-                        <div id='tooltip'></div>
+                    <div style="clear:both;"></div>
+                    <h3 id='selected_command' title='Reference information'></h3>
+                    <p id='description'></p>
+                    <div id='invalid'>Invalid JSON</div>
+                    <div id='rest_url_wrapper'>
+                        <p><span id='rest_host'>{{ currentpage.rest_host }}</span><span id='rest_url'></span></p>
                     </div>
+                    <div id='request_body'></div>
+                    <div id='request_options'>
+                        <a class="btn btn-primary api" id='request_button'>Send request</a>
+                    </div>
+                </div>
+                <div id='output' class='io'>
+                    <h2>Response</h2>
+                    <div>
+                        <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
+                        <span id='rest_responsecode'></span>
+                    </div>
+                    <div id='response_body'></div>
+                    <div id='tooltip'></div>
                 </div>
             </div>
         </div>
     </div>
+  </section>
+{% endblock %}
+{% block endbody %}
     <script type='text/javascript'>
     // Set some constants for the REST tool script
     var URL_BASE = '{{ currentpage.rest_host }}';
     var DOC_BASE = '{{ currentpage.doc_page }}';
     </script>
-{% endblock %}
-{% block endbody %}
-
     <link rel='stylesheet' type='text/css' href='assets/css/api-tools.css'/>
     <link rel='stylesheet' type='text/css' href='assets/vendor/codemirror.css'/>
     <script type='text/javascript' src='assets/js/es5-shim.js'></script>
@@ -60,4 +58,3 @@
     <script type='text/javascript' src='assets/{{ currentpage.methods_js }}'></script>
 
 {% endblock %}
-

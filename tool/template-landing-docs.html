@@ -1,0 +1,100 @@
+{% extends "template-base.html" %}
+
+{% block bodyclasses %}landing{% endblock %}
+
+{% block main %}
+    <section class="container-fluid px-5 pb-5 pt-0">
+      <div class="row">
+        <h1 class="main-page-header">XRP Ledger Documentation</h1>
+        <div class="blurb col-sm-12">
+          <p>Dive into our documentation and start integrating with the XRP Ledger.</p>
+        </div>
+      </div>
+
+      <div class="card-deck p-2">
+      {% set doc_types = [] %}
+      {% for page in pages %}
+        {% if page.doc_type is defined and page.doc_type not in doc_types %}
+          {% set doc_type_top = pages|selectattr('doc_type', 'equalto', page.doc_type)|first %}
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"><a href="{{doc_type_top.html}}">{{doc_type_top.name}}</a></h3>
+              </div><!--/.card-header-->
+              <div class="card-body">
+                {% if page.blurb is defined %}
+                  <p class="doc-type-blurb">{{page.blurb}}</p>
+                {% endif %}
+                {% set parent_page = doc_type_top %}
+                {% set depth = 1.5 %}
+                {% include 'template-page-children.html' %}
+              </div><!--/.card-body-->
+            </div><!--/.card-->
+
+          {% set _ = doc_types.append(page.doc_type) %}
+        {% endif %}
+      {% endfor %}
+    </div><!--/.card-deck-->
+    <div class="card-deck p-2">
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Get Started</h3>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="curated-links">
+              <ul>
+                <li><a href="websocket-api-tool.html">Make a call to the rippled API</a></li>
+                <li><a href="xrp-test-net-faucet.html">Access the XRP Ledger Test Net</a></li>
+                <li><a href="landing-concepts.html">Understand XRP Ledger Concepts</a></li>
+              </ul>
+            </div><!--/.curated-links-->
+          </div><!--/.card-body-->
+        </div><!--/.card-->
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Popular Docs</h3>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="curated-links">
+              <ol>
+                <li><a href="reference-rippled-public.html">rippled API Public Methods Reference</a></li>
+                <li><a href="concept-accounts.html">Accounts</a></li>
+                <li><a href="rippled-setup.html">rippled Server Setup</a></li>
+                <li><a href="reference-rippleapi.html">RippleAPI for JavaScript</a></li>
+              </ol>
+            </div><!--/.curated-links-->
+          </div><!--/.card-body-->
+        </div><!--/.card-->
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Recently Updated</h3>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="curated-links">
+              <ol>
+                {% for link in target.recently_updated %}
+                  {% set linkpage = pages|selectattr("html", "equalto", link)|first %}
+                  <li><a href="{{linkpage.html}}">{{linkpage.name}}</a></li>
+                {% endfor %}
+              </ol>
+            </div><!--/.curated-links-->
+          </div><!--/.card-body-->
+        </div><!--/.card-->
+
+      </div><!--/.card-deck-->
+    </section>
+
+    <section class="container-fluid p-3 p-lg-5">
+      <h2>Full Documentation Index</h2>
+      <div class="row">
+        <div class="col-md-8">
+          {% set parent_page = currentpage %}
+          {% set depth = 5 %}
+          {% include 'template-page-children.html' %}
+        </div>
+      </div>
+    </section>
+{% endblock %}

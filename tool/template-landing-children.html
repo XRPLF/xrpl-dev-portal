@@ -1,0 +1,20 @@
+{% extends "template-base.html" %}
+
+{% block main %}
+  <section class="p-3">
+    {% if not content %}
+    <h1 class="main-page-header">{{ currentpage.name }}</h1>
+    {% endif %}
+
+    <div class='content'>
+      {{ content }}
+    </div>
+
+  </section>
+
+  <section class="p-3 bg-light">
+      <h2>Children of this page:</h2>
+      {% set show_blurbs = True %}
+      {% include 'template-page-children.html' %}
+  </section>
+{% endblock %}

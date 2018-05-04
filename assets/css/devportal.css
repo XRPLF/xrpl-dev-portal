@@ -1,6 +1,247 @@
-.no-sidebar aside.sidebar {
-    display: none;
+/* Generic styles and colors not in the bootstrap files --------------------- */
+
+body {
+  font-family: Roboto, sans-serif;
 }
+
+code,
+pre {
+  font-family: "Roboto Mono", monospace;
+}
+
+td {
+  border: 1px solid #dbdde2;
+  padding: 0.2em;
+  vertical-align: text-top;
+}
+th {
+  padding: 0.2em;
+}
+
+/* Reduce external link icon size */
+.fa.fa-external-link:before {
+  font-size: 80%;
+}
+
+/* Top navigation ----------------------------------------------------------- */
+
+.navbar {
+  font-weight: 300;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  white-space: pre;
+}
+
+.navbar .logo {
+  margin-right: 0.5em;
+  position: relative;
+  bottom: 3px;
+}
+
+.navbar .navbar-brand .brand-text {
+  color: #777;
+}
+
+.navbar .navbar-nav .nav-link {
+  font-size: 18px;
+  line-height: 38px;
+  text-decoration: none;
+  transition: 0.5s;
+}
+.navbar .navbar-nav .nav-link:hover {
+  color: #27a2db;
+}
+
+.navbar .navbar-nav .active a {
+  font-weight: 700;
+  color: #333;
+  background-color: #eee;
+
+}
+.navbar .active-parent a {
+  font-weight: 700;
+  background-color: #eee;
+}
+
+#navbar-search {
+  position: relative;
+  margin-right: 0.375rem;
+}
+
+@media (min-width: 992px) {
+  #topsearchbar {
+    width: 185px;
+  }
+}
+
+#navbar-search .btn {
+  position: absolute;
+  right: 0.375rem;
+}
+
+/* Push content below fixed header ------------------------------------------ */
+#main_content_wrapper {
+  margin-top: 55px;
+}
+
+/* Fix so anchors don't jump under the fixed header ------------------------- */
+.main h1:before,
+.main h2:before,
+.main h3:before,
+.main h4:before,
+.main h5:before,
+.main h6:before,
+#main_content_wrapper:before {
+  display: block;
+  content: " ";
+  margin-top: -67px;
+  height: 67px;
+  visibility: hidden;
+}
+
+.card h1:before,
+.card h2:before,
+.card h3:before,
+.card h4:before,
+.card h5:before,
+.card h6:before {
+  display: none;
+}
+
+/* Content text styling ----------------------------------------------------- */
+
+.content {
+  padding-bottom: 50px;
+}
+
+/* Images should not exceed the main column */
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* But badge images shouldn't be resized */
+.content img.dactyl_badge {
+    width: initial;
+}
+
+.content a {
+  text-decoration: underline;
+}
+
+.content h1 {
+  margin-top: 32px;
+  line-height: 1.2;
+}
+.content h1:first-child {
+  margin-top: 0;
+  line-height: 1.2;
+}
+.content h1:first-child:before {
+  margin-top: -100px;
+}
+.content h2 {
+  margin-top: 28px;
+  line-height: 1.2;
+}
+.content h3 {
+  margin-top: 24px;
+  line-height: 1.2;
+}
+.content h4 {
+  margin-top: 20px;
+  line-height: 1.2;
+}
+.content h5 {
+  margin-top: 16px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.content h6 {
+  margin-top: 12px
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.content p,
+.content li,
+.content td {
+  line-height: 1.65;
+}
+
+/* "Source" links float right */
+.content a[title="Source"] {
+  float: right;
+  padding-left: 20px;
+}
+
+.content table {
+  clear: right;
+}
+
+/* Big draft warning at top of page so it's hard to mix up with the live site */
+.draft-warning {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    margin: 10px;
+    position: absolute;
+    top: 25px;
+    left: 150px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Footer ------------------------------------------------------------------- */
+.ripple-footer {
+  z-index: 2;
+  color: #999999;
+  font-size: 14px;
+  background: #4e4e50 url(../img/ripple_footer_v2.jpg) repeat-x center center;
+  background-position-y: -60px;
+}
+
+.ripple-footer a {
+  color: #999999;
+  -o-transition: .5s;
+  -ms-transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+  font-weight: 500;
+}
+.ripple-footer a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.ripple-footer hr {
+  border-top: 1px solid #999999;
+}
+
+.ripple-footer h5 a {
+  color: #ffffff;
+  letter-spacing: .04em;
+  text-decoration: none;
+  font-weight: 300;
+  padding-bottom: 0.5rem;
+}
+.ripple-footer h5 a:hover {
+  text-decoration: underline;
+}
+.absolute_bottom_footer span {
+  margin-right: 25px;
+}
+
+.foot-nav-col .children-display li {
+  list-style-type: none;
+  margin-left: 0;
+  font-size: 14px;
+}
+
+/* Callouts ----------------------------------------------------------------- */
 
 .devportal-callout {
     border-style: solid;
@@ -61,88 +302,85 @@
     padding-right: 5px;
 }
 
-.navbar-header {
-    float: left;
+/* Button styling ----------------------------------------------------------- */
+
+.readmore {
+  display: block;
+  margin: 15px auto 5px;
+  text-align: center;
 }
 
-/* Big draft warning at top of page so it's hard to mix up with the live site */
-.draft-warning {
-    background-color: red;
-    color: white;
-    padding: 2px 6px;
-    margin: 10px;
-    position: absolute;
-    top: 34px;
-    left: calc(calc(calc(100% - 1070px) / 2) + 90px);
-    font-size: 12px;
-    font-weight: bold;
+.readmore .btn {
+  font-size: 18px;
+  transition: 0.5s;
 }
 
-/* Images should not exceed the main column */
-.content img {
-  max-width: 100%;
-  height: auto;
+.btn-primary code {
+  color: inherit;
 }
 
-/* But badge images shouldn't be resized */
-.content img.dactyl_badge {
-    width: initial;
-}
-
-.no-1st-head h1:first-child,
-.no-1st-head h2:first-child,
-.no-1st-head h3:first-child,
-.no-1st-head h4:first-child,
-.no-1st-head h5:first-child,
-.no-1st-head h6:first-child {
-  visibility: hidden;
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-}
-.no-1st-head h1:first-child:before {
-  margin-top: -167px;
-  height: 167px;
-}
-.content p {
-  line-height: 1.8;
-}
-
-.content h1 {
-  margin-top: 32px;
-  line-height: 1.2;
-}
-.content h2 {
-  margin-top: 28px;
-  line-height: 1.2;
-}
-.content h3 {
-  margin-top: 24px;
-  line-height: 1.2;
-}
-.content h4 {
-  margin-top: 20px;
-  line-height: 1.2;
-}
-.content h5 {
-  margin-top: 16px;
-  line-height: 1.2;
-  font-weight: bold;
-}
-.content h6 {
-  margin-top: 12px
-  line-height: 1.2;
-  font-weight: bold;
-}
-
-
-/* "Button-style" links should look like buttons, not links */
 a.button {
   cursor: pointer;
   text-decoration: none !important;
 }
 
-/* Code Tabs stuff */
+.button, #request_button { /* Should be same as btn btn-primary */
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #fff;
+  background-color: #1db4ff;
+  border-color: #1db4ff;
+}
+.button:hover {
+  background-color: #43bded;
+  -o-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+/* Code Tabs ---------------------------------------------------------------- */
+
+pre {
+  overflow: visible;
+  word-wrap: normal;
+}
+pre code {
+  white-space: pre;
+}
+.code_sample pre {
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+.code_sample pre code {
+  overflow: auto;
+  max-height: 14em;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+.code_sample pre code.expanded {
+  overflow: visible;
+  max-height: none;
+  position: absolute;
+  min-width: 661px;
+}
+.code_sample .code_toggler {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .multicode {
   color: #000;
   margin: 12px 0px 0px 0px;
@@ -189,253 +427,66 @@ a.current {
   color: black;
   background: white;
 }
-/* End of code tabs stuff */
 
-.button {
-  border-radius: 5px;
-  background-color: #27a2db;
-  padding: 5px 20px;
-  text-align: center;
-  cursor: default;
-  margin: 10px 0;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  display: inline-block;
-  vertical-align: middle;
-  color: #ffffff;
-  -o-transition: .5s;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-.button:hover {
-  background-color: #43bded;
-  -o-transition: .5s;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-pre {
-  overflow: visible;
-  word-wrap: normal;
-}
-pre code {
-  white-space: pre;
-}
-.code_sample pre {
-  background: none;
-  border: none;
-  border-radius: 0;
-}
-.code_sample pre code {
-  overflow: auto;
-  max-height: 14em;
-  background-color: #f5f5f5;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-}
-.code_sample pre code.expanded {
-  overflow: visible;
-  max-height: none;
-  position: absolute;
-  min-width: 661px;
-}
-.code_sample .code_toggler {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-.xrp-ledger-dev-portal.sidebar-primary .sidebar {
-  padding-right: 0;
+/* Common list modules (children, curated links) ---------------------------- */
+.curated-links ul,
+.curated-links ol,
+.children-display ul {
   padding-left: 0;
 }
-.xrp-ledger-dev-portal.sidebar-primary .main {
-  z-index: 5;
-  border-left: 1px solid #cccccc;
-  padding-left: 40px;
-  min-height: 700px;
+
+.level-1,
+.curated-links ul li {
+  list-style-type: disc;
 }
-.content {
-  padding-bottom: 50px;
-}
-#dactyl_toc_sidebar a {
-  text-decoration: none;
-}
-#dactyl_toc_sidebar a:hover {
-  text-decoration: underline;
-}
-.level-1 {
+.level-1,
+.curated-links li {
   margin-top: 15px;
-  padding-left: 15px;
-  font-weight: bold;
+  margin-left: 15px;
+}
+.level-1 a,
+.curated-links li a {
+  font-weight: 700;
+}
+
+.landing .level-1,
+.landing .curated-links li {
+  font-weight: 400;
+  font-size: 18px;
 }
 .level-1:first-child {
   margin-top: 0;
 }
 .level-2 {
-  padding-left: 30px;
+  list-style-type: circle;
+  margin-left: 30px;
 }
 .level-3 {
-  padding-left: 45px;
+  list-style-type: square;
+  margin-left: 45px;
 }
-.level-3 a {
-  color: #888;
+.level-4 {
+  margin-left: 60px;
 }
-.level-3 a:hover {
-  color: #333;
+.level-5 {
+  margin-left: 75px;
+  list-style-type: circle;
 }
-
-.dev_nav_sidebar {
-  padding-left: 10px;
-  padding-top: 0;
-  list-style-type: none;
-  margin-bottom: 0;
-}
-.dev_nav_sidebar li:before {
-  content: "\f105"; /* fontawesome angle-right */
-  font-family: FontAwesome;
-  position: relative;
-  left: -15px;
-  margin-right: -5px;
+.level-6 {
+  /* Probably not used */
+  margin-left: 90px;
+  list-style-type: square;
 }
 
-.dev_nav_wrapper {
-  position: fixed;
-  width: 100%;
-  overflow-y: scroll;
-  top: 130px;
-}
-td {
-  border: 1px solid #dbdde2;
-  padding: 0.2em;
-  vertical-align: text-top;
-}
-th {
-  padding: 0.2em;
-}
-.content a[title="Source"] {
-  float: right;
-  padding-left: 20px;
-}
-.content table {
-  clear: right;
-}
-.main h1:before,
-.main h2:before,
-.main h3:before,
-.main h4:before,
-.main h5:before,
-.main h6:before,
-#main_content_wrapper:before {
-  display: block;
-  content: " ";
-  margin-top: -67px;
-  height: 67px;
-  visibility: hidden;
-}
 
-/*------------- Code Tabs -----------------------------------------*/
-.multicode {
-	color: #000;
-	border-bottom: 1px solid #DBDDE2;
-	margin: 12px 0px 0px 0px;
-	padding: 0 0 0 0;
-	z-index: 1;
-	padding-left: 10px;
-}
-
-.multicode ul {
-    padding-bottom: 0;
-}
-
-.multicode pre {
-    padding-top: 0;
-}
-
-.multicode li {
-	display: inline;
-	overflow: hidden;
-	list-style-type: none;
-}
-
-.multicode ul > li:before {
-    background: none;
-    border: none;
-}
-
-.multicode a, a.current {
-	color: black;
-	background: #DFE2E7;
-	border: 1px solid #DBDDE2;
-	padding: 1em 1em 0 1em;
-	margin: 0px;
-	text-decoration: none; }
-
-.multicode a.current {
-	background: #fff;
-	border-bottom: 1px solid #fff;
-    color : black;
-}
-
-.multicode a:hover {
-	color: black;
-	background: white;
-}
-
-.navbar-default {
-    background-color: #fff;
-    border-bottom: 1px solid #27a2db;
-}
-
-.navbar-brand {
-  text-decoration: none;
-  white-space: pre;
-}
-
-.navbar-default .logo {
-    float: left;
-    margin-right: 0.5em;
-}
-
-.navbar-default .navbar-brand .brand-text {
-  font-family: open_sansbold, sans-serif;
-  font-weight: bold;
-  line-height: 36px;
-  margin-bottom: -5px;
-  margin-top: 20px;
-}
-
-.navbar-default .navbar-nav > li > a {
-    font-size: 14px;
-    line-height: 30px;
-    color: #777;
-}
-
-.navbar-default a.active {
-    color: #27a2db !important;
-}
-
-.wrap-container {
-  margin-top: 106px;
-}
-
-.no-sidebar main .container {
-  padding-left: 0;
-}
-
-#main_content_wrapper {
-  margin-top: 67px;
-  padding-left: 0;
-  padding-right: 0;
-}
-
+/* (Jump to) "Top" button --------------------------------------------------- */
 .jump-to-top {
   display: none;
   position: fixed;
   bottom: 15px;
   right: 30px;
   background-color: #333;
-  font-weight: bolder;
+  font-weight: 700;
   z-index: 1000;
   color: white;
 }
@@ -446,143 +497,195 @@ th {
   }
 }
 
-.breadcrumb {
-  margin: 0;
-  padding: 15px;
-  padding-left: 5px;
-  background: transparent;
-  float: left;
-  vertical-align: middle;
-}
 
-.breadcrumb li {
-  margin: 0;
-  margin-bottom: -4px;
-  line-height: 36px;
-}
-.breadcrumb > li + li:before {
+/* Breacrumbs --------------------------------------------------------------- */
+
+.breadcrumb-item + .breadcrumb-item:before {
     content: "\f105"; /* fontawesome angle-right */
     font-family: FontAwesome;
     padding-right: 5px;
 }
-.breadcrumb > li.active {
-  color: #666;
+.breadcrumbs-wrap .breadcrumb {
+  margin-bottom: 0;
 }
 
-/* "← Back to guide" link in sidebar */
-.back_to_guide a {
-  display: block;
-  font-size: 14px;
-  padding: 27px 0 14px 15px;
-  color: #666;
-  border-bottom: 1px solid #eee;
-}
-.back_to_guide a:before {
-    content: "\f100"; /* fontawesome angle-double-left */
-    font-family: FontAwesome;
-    padding-right: 15px;
-    color: #666;
-}
 
-/* Accordion styling for sidebar navigation */
-.sidebar_cat_pagelist {
+/* Left navigation ---------------------------------------------------------- */
+
+.sidebar_pagelist {
   margin-left: 0;
+  margin-bottom: 0;
   padding-left: 0;
+  padding-bottom: 15px;
   list-style-type: none;
 }
 
-#sidenav_accordion a {
+#sidenav a {
   text-decoration: none;
 }
-#sidenav_accordion .panel-body a:hover {
+#sidenav .card-body a:hover {
   text-decoration: underline;
 }
 
-#sidenav_accordion .panel + .panel {
+#sidenav .card + .card {
   margin: 0;
 }
 
-#sidenav_accordion .panel-default {
+#sidenav .card {
   border-width: 0;
   border-color: #eee;
 }
 
-#sidenav_accordion .panel-body {
+#sidenav .card-body {
   padding: 0;
 }
 
-#sidenav_accordion .collapse {
+#sidenav .collapse {
   padding-bottom: 0;
 }
 
-#sidenav_accordion .panel.active {
+#sidenav .card.active {
   background-color: #f8f8f8;
 }
-#sidenav_accordion .panel:hover {
+#sidenav .card:hover {
   background-color: #f6f6f6;
 }
 
-#sidenav_accordion .panel-heading {
+#sidenav .card-header {
   padding: 0;
   background-color: transparent;
+  border-bottom: 0;
 }
 
-#sidenav_accordion .panel {
+#sidenav .card {
   padding: 0;
   border-radius: 0;
-  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
 }
 
-#sidenav_accordion .panel-heading h5 {
+#sidenav .card-header h5 {
   margin-bottom: 0;
   text-transform: none;
 }
 
-#sidenav_accordion .panel-heading h5 a {
+#sidenav .card-header h5 .sidenav_cat_title {
   display: block;
-  padding: 16px 15px;
-  font-family: "open_sansregular", sans-serif;
-  color: #666;
+  padding: 16px 15px 16px 55px;
+}
+#sidenav .card-header h5 a.sidenav_cat_title {
+  color: #27a2db;
+}
+#sidenav .card-header h5 .sidenav_cat_title.active {
+  color: #333;
+  font-weight: 700;
+  cursor: default;
+}
+#sidenav .card-header h5 .sidenav_cat_title.active-parent {
+  color: #333;
 }
 
-#sidenav_accordion .panel-heading a:before {
-    content: "\f106"; /* fontawesome angle-up */
-    font-family: FontAwesome;
-    margin-left: -20px;
-    padding-right: 5px;
-    float: right;
+#sidenav .card-header .sidenav_cat_toggler {
+    position: absolute;
+    left: 0;
+    padding: 15px 16px 17px 16px;
+    background-color: #e0e0e0;
+    color: black;
+    line-height: 0;
+    transition: background-color 0.5s;
 }
-#sidenav_accordion .panel-heading a.collapsed:before {
-    content: "\f107"; /* fontawesome angle-down */
+#sidenav .card-header .sidenav_cat_toggler.collapsed {
+  background-color: #ccc;
 }
 
+#sidenav .card-header .sidenav_cat_toggler:before {
+    content: "-";
+    width: 0.8em;
+    text-align: center;
+    display: block;
+    line-height: 17.7px;
+}
+#sidenav .card-header .sidenav_cat_toggler.collapsed:before {
+    content: "+";
+}
 
-#sidenav_accordion .panel .sidebar_cat_pagelist li a {
+.funnel-sidebar a.active {
+  color: #333;
+  cursor: default;
+}
+
+.xrp-ledger-dev-portal.sidebar-primary .sidebar {
+  padding-right: 0;
+  padding-left: 0;
+}
+.xrp-ledger-dev-portal.sidebar-primary .main {
+  z-index: 5;
+  border-left: 1px solid #cccccc;
+  padding-left: 40px;
+  min-height: 700px;
+}
+
+/* Right navigation --------------------------------------------------------- */
+
+#dactyl_toc_sidebar a {
+  text-decoration: none;
+}
+#dactyl_toc_sidebar a:hover {
+  text-decoration: underline;
+}
+
+#page-toc-wrapper {
+  position: fixed;
+  top: 75px;
+  max-height: calc(100% - 150px);
+  margin-right: 1.5rem;
+  overflow: auto;
+  z-index: 10;
+}
+
+.card .sidebar_pagelist li a {
   display: block;
   margin-top: 5px;
-  padding: 4px 15px 4px 55px;
+  padding: 4px 15px 4px 75px;
   text-indent: -20px;
   font-size: 14px;
   color: #27a2db;
 }
 
-#sidenav_accordion .panel .sidebar_cat_pagelist a.active {
+.card .sidebar_pagelist a.active {
   color: black;
-  font-weight: bold;
+  font-weight: 700;
 }
 
-#sidenav_accordion .panel .sidebar_cat_pagelist a:hover {
+.card .sidebar_pagelist a:hover {
   color: #333;
 }
 
-/* Edit on GitHub link --------- */
+.subcat-title.active-parent {
+  font-weight: 700;
+}
+
+.card .sidebar_pagelist li .subpage {
+  padding-left: 105px;
+}
+
+.sidenav_parent a {
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 15px 16px 15px 10px;
+}
+
+.sidenav_parent a.active {
+  color: #333;
+  cursor: default;
+}
+
+/* Edit on GitHub link ------------------------------------------------------ */
 .github-edit-wrap {
-  position: absolute;
-  right: 0;
   background-image: linear-gradient(180deg, #fafafa 0%, #ddd 90%);
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 15px;
 }
 .github-edit-wrap:hover {
   border-color: #777;
@@ -601,72 +704,145 @@ th {
   text-decoration: none;
   font-size: 13px;
   display: block;
+  line-height: 16px;
 }
 
-.portal-index ul {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding: 0;
+/* Use Cases ---------------------------------------------------------------- */
+.use-case-step-num {
+  border: 1px solid #333;
+  border-radius: 50%;
+  padding: 0.9rem;
+  position: absolute;
+  left: 1.8rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  text-align: center;
+  background-color: white;
 }
 
-.portal-index li {
-    font-size: 14px;
-    list-style: outside none none;
-    padding: 5px;
-    padding-left: 25px;
-    text-indent: 20px;
+.use-case-step-length {
+  float: right;
+  color: #888;
+  font-size: 16px;
 }
 
-.portal-index li.top {
-    text-indent: 0;
+.use-case p:not(:first-of-type) {
+  margin-top: .8rem;
+  margin-bottom: -.6rem;
+  padding-left: 2.5rem;
+  margin-left: 2.5rem;
+  border-left: 1px dashed #333;
+}
+.use-case h2 {
+  margin-left: 5rem;
+  margin-top: 0;
 }
 
-.portal-index .dev_heading {
-    font-family: "Open Sans",sans-serif;
-    letter-spacing: 0.04em;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #202020;
+/* Landing Pages ------------------------------------------------------------ */
+
+.landing a .card {
+  color: #212529;
 }
-.portal-index a.dev_heading:hover {
-  color: #27a2db;
-  text-decoration: underline;
+
+.landing .card li {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.landing section:first-of-type {
+  padding-top: 0;
+  border-top-width: 0;
+}
+
+#home_first_shortcuts .card {
+  border-width: 0;
+  background: none;
+}
+
+#home_first_shortcuts .card-header {
+  background: none;
+  border-bottom: none;
+}
+
+.landing h2,
+.landing h3 {
+  font-weight: 300;
+}
+
+.landing section .card-header h3 {
+  font-size: 30px;
+}
+
+#xrp_ledger_intro h3 {
+  font-size: 25px;
+}
+
+.landing .card-img-top {
+  height: 6rem;
+}
+
+#xrp_ledger_intro .card-img-top {
+  display: block;
+}
+
+#xrp_ledger_intro .card-footer {
+  border-width: 0;
+  border-radius: 0;
+  background: none;
+}
+
+#xrp_ledger_intro .card-body {
+  padding: 1px;
+}
+
+.landing .card-title > a {
+  text-decoration: none;
+}
+
+.landing .curated-links li:first-child {
+  margin-top: 5px;
+}
+
+.splash-head {
+  background-color: #102b3e;
+  background-image: url("../img/home-bg-cubes.jpg");
+  background-size: cover;
+  background-position: top center;
+  color: white;
+}
+
+.splash-head h1 {
+  font-weight: 700;
+}
+
+.splash-head p {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.splash-head code {
+  color: white;
 }
 
 .build-disclaimer {
   font-size: 10pt;
-  margin: 2em 0;
-  padding-top: 2em;
-  border-top: 1px solid #777;
 }
 
-.related-projects {
-  position: absolute;
-  top: 70px;
-  right: 15px;
-  width: 375px;
-  border: 1px solid #777;
-  border-radius: 5px;
-}
+
+/* "Related Projects" (i.e. Client Portal & Interledger) boxes -------------- */
+
 .related-projects a {
   text-decoration: none;
-}
-.related-projects .project {
-  clear: left;
 }
 .related-projects h3 {
   margin: 0;
   padding: 5px 15px;
-  border-bottom: 1px dashed #777;
 }
 .related-projects .project-name {
-  font-family: open_sanslight, sans-serif;
   font-size: 18px;
-  display: block;
 }
 .related-projects .login-required {
-  display: block;
   font-size: 12px;
 }
 .related-projects p {
@@ -678,115 +854,23 @@ th {
   margin-right: 10px;
 }
 
-/* Responsive design for different viewscreens -------------------------------*/
-@media (min-width: 1201px) {
-  #page-toc-wrapper {
-    float: right;
-    margin-left: 15px;
-  }
-  .draft-warning {
-    left: calc(calc(calc(100% - 1170px) / 2) + 140px);
-  }
-}
-@media (min-width: 1400px) {
-  .container {
-    margin-right: calc(calc(calc(100% - 1300px) / 2) + 230px);
-  }
-  #page-toc-wrapper {
-    position: fixed;
-    left: calc(calc(calc(100% - 1300px) / 2) + 1120px);
-    top: 80px;
-    max-width: 350px;
-    margin-right: 15px;
-    max-height: calc(100% - 150px);
-    overflow-y: auto;
-  }
-  .draft-warning {
-    left: calc(calc(calc(100% - 1370px) / 2) + 140px);
-  }
-}
-@media (max-width: 1200px) {
-  #page-toc-wrapper {
-    float: right;
-    margin-left: 15px;
-  }
-  .dev_nav_wrapper {
-    max-width: 290px;
-  }
-  .draft-warning {
-    left: calc(calc(calc(100% - 870px) / 2) + 90px);
-  }
 
-}
-@media (max-width: 992px) {
+/* Responsive design for different viewscreens ------------------------------ */
+
+@media (max-width: 991px) {
   #page-toc-wrapper {
     position: static;
-    float: none;
-    max-width: none;
-  }
-  .dev_nav_wrapper {
-    max-width: 230px;
-  }
-  .draft-warning {
-    left: 140px;
-  }
-
-  /* Move "Related Projects" to bottom */
-  .related-projects {
-    position: static;
-    width: auto;
-    border: none;
-    margin-top: 0;
-  }
-  .related-projects .project-icon {
-    display: none;
-  }
-  .related-projects h3 {
-    padding: inherit;
-    border-bottom: none;
-    margin-top: 50px;
-  }
-  .related-projects .project-name,
-  .related-projects .login-required {
-    display: inline;
-    font-size: inherit;
-  }
-  .related-projects p {
-    margin-left: 25px;
-  }
-  .related-projects .project-summary {
-    padding-left: 20px;
-  }
-}
-@media (max-width: 768px) {
-  #main_content_wrapper {
-    margin-top: 0;
-  }
-  .navbar-fixed-top {
-    position: static;
-    margin-bottom: -70px;
-  }
-  .dev_nav_wrapper,
-  .sidebar {
     display: block;
     clear: both;
     overflow-y: inherit;
-    position: static;
     max-width: 100%;
+    max-height: inherit;
+    word-break: break-all;
   }
   .main {
     overflow-wrap: break-word;
     word-wrap: break-word;
     overflow: hidden;
-  }
-  .github-edit-wrap {
-    display: none;
-  }
-  .nav {
-    min-width: 350px;
-  }
-  .nav .breadcrumb .crumb-top:before {
-    display: none;
   }
 }
 @media (max-width: 480px) {
@@ -794,6 +878,21 @@ th {
     overflow-x: hidden !important;
   }
 }
+@media (max-width: 400px) {
+  .navbar .navbar-brand .brand-text {
+    margin-right: 0;
+    letter-spacing: -0.08rem;
+  }
+  .navbar .navbar-brand {
+    margin-right: 0;
+  }
+  .navbar .navbar-brand .logo {
+    margin-right: 0;
+    margin-left: -1rem;
+  }
+}
+
+/* Print styles ------------------------------------------------------------- */
 @media print {
   {
     /* undo code tabs */
@@ -838,17 +937,6 @@ th {
   }
   #goog-gt-tt {
     display: none;
-  }
-  .dev_nav_wrapper {
-    position: static !important;
-  }
-  .sidebar:before {
-    display: none !important;
-  }
-  .sidebar {
-    padding-top: 0 !important;
-    display: block !important;
-    float: none !important;
   }
   h1 {
     page-break-before: always;

@@ -1,106 +1,104 @@
 {% extends "template-base.html" %}
 
-{% block bodyclasses %}rpc-tool sidebar-primary{% endblock %}
-
-{% block sidebar %}
-{% include "template-sidebar_nav.html" %}
-{% endblock %}
+{% block bodyclasses %}rpc-tool{% endblock %}
 
 {% block main %}
-<h1>RPC Tool</h1>
-<div class="content">
+<section class="container-fluid p-3">
+  <h1>RPC Tool</h1>
+  <div class="content">
 
-<p>This is a debug tool for printing raw information about an account, a transaction (by hash) or a ledger (by sequence number).</p>
+  <p>This is a debug tool for printing raw information about an account, a transaction (by hash) or a ledger (by sequence number).</p>
 
-<form id="account-entry">
-<fieldset><input id="target" class="input-xxlarge" required="" type="text" placeholder="Ripple address or transaction ID" />
-<span class="help-block"><small>Try an account like <em>r9kiSEUEw6iSCNksDVKf9k3AyxjW3r1qPf</em>.</small></span>
-<button class="btn btn-primary">Get info</button></fieldset>
-</form>
-<div id="result">
-  <h2>Result</h2>
-  <div id="progress" class="progress">
-  <div class="bar"></div>
-  </div>
-  <div id="error" class="alert alert-error"></div>
-  <ul id="links" class="nav nav-pills">
-   	<li><a id="permalink" href="#" target="_blank" rel="noopener">Permalink</a></li>
-   	<li><a id="graphlink" href="#" target="_blank" rel="noopener">Graph</a></li>
-  </ul>
-  <div class="alert alert-info"><strong>Tip:</strong> This page features intelligent copy/paste. Any
-  nodes you expand will be copied, any that you don't expand will show up
-  as a little <code>/* */</code> comment in your copy/pasted text.</div>
-  <div class="group group-tx">
-  <h3>tx</h3>
-  <ul class="tools nav nav-pills">
-   	<li><a class="tx-expand">expand all</a></li>
-   	<li><a class="tx-collapse">collapse all</a></li>
-  </ul>
-  <pre id="tx_info" class="json"></pre>
-  <ul class="tools nav nav-pills">
-   	<li><a class="tx-expand">expand all</a></li>
-   	<li><a class="tx-collapse">collapse all</a></li>
-  </ul>
-  </div>
+  <form id="account-entry">
+  <fieldset><input id="target" class="input-xxlarge" required="" type="text" placeholder="Ripple address or transaction ID" />
+  <span class="help-block"><small>Try an account like <em>r9kiSEUEw6iSCNksDVKf9k3AyxjW3r1qPf</em>.</small></span>
+  <button class="btn btn-primary">Get info</button></fieldset>
+  </form>
+  <div id="result">
+    <h2>Result</h2>
+    <div id="progress" class="progress">
+    <div class="bar"></div>
+    </div>
+    <div id="error" class="alert alert-error"></div>
+    <ul id="links" class="nav nav-pills">
+     	<li><a id="permalink" href="#" target="_blank" rel="noopener">Permalink</a></li>
+     	<li><a id="graphlink" href="#" target="_blank" rel="noopener">Graph</a></li>
+    </ul>
+    <div class="alert alert-info"><strong>Tip:</strong> This page features intelligent copy/paste. Any
+    nodes you expand will be copied, any that you don't expand will show up
+    as a little <code>/* */</code> comment in your copy/pasted text.</div>
+    <div class="group group-tx">
+    <h3>tx</h3>
+    <ul class="tools nav nav-pills">
+     	<li><a class="tx-expand">expand all</a></li>
+     	<li><a class="tx-collapse">collapse all</a></li>
+    </ul>
+    <pre id="tx_info" class="json"></pre>
+    <ul class="tools nav nav-pills">
+     	<li><a class="tx-expand">expand all</a></li>
+     	<li><a class="tx-collapse">collapse all</a></li>
+    </ul>
+    </div>
 
-  <div class="group group-account">
-  <h3>account_info</h3>
-  <pre id="account_info" class="json"></pre>
-  <h3>account_lines</h3>
-  <ul class="tools nav nav-pills">
-   	<li><a class="account-lines-expand">expand all</a></li>
-   	<li><a class="account-lines-collapse">collapse all</a></li>
-  </ul>
-  <pre id="account_lines" class="json"></pre>
-  <ul class="tools nav nav-pills">
-   	<li><a class="account-lines-expand">expand all</a></li>
-   	<li><a class="account-lines-collapse">collapse all</a></li>
-  </ul>
-  <h3>account_tx (last 20)</h3>
-  <ul class="tools nav nav-pills">
-   	<li><a class="account-tx-expand-tx">expand tx</a></li>
-   	<li><a class="account-tx-expand">expand all</a></li>
-   	<li><a class="account-tx-collapse">collapse all</a></li>
-   	<li><a class="account-tx-more">next 20</a></li>
-   	<li><a class="account-tx-back">prev 20</a></li>
-  </ul>
-  <pre id="account_tx" class="json"></pre>
-  <ul class="tools nav nav-pills">
-   	<li><a class="account-tx-expand-tx">expand tx</a></li>
-   	<li><a class="account-tx-expand">expand all</a></li>
-   	<li><a class="account-tx-collapse">collapse all</a></li>
-   	<li><a class="account-tx-more">next 20</a></li>
-   	<li><a class="account-tx-back">prev 20</a></li>
-  </ul>
-  <h3>account_offers</h3>
-  <ul class="tools nav nav-pills">
-   	<li><a class="account-offers-expand">expand all</a></li>
-   	<li><a class="account-offers-collapse">collapse all</a></li>
-  </ul>
-  <pre id="account_offers" class="json"></pre>
-  <ul class="tools nav nav-pills">
-   	<li><a class="account-offers-expand">expand all</a></li>
-   	<li><a class="account-offers-collapse">collapse all</a></li>
-  </ul>
-  </div>
+    <div class="group group-account">
+    <h3>account_info</h3>
+    <pre id="account_info" class="json"></pre>
+    <h3>account_lines</h3>
+    <ul class="tools nav nav-pills">
+     	<li><a class="account-lines-expand">expand all</a></li>
+     	<li><a class="account-lines-collapse">collapse all</a></li>
+    </ul>
+    <pre id="account_lines" class="json"></pre>
+    <ul class="tools nav nav-pills">
+     	<li><a class="account-lines-expand">expand all</a></li>
+     	<li><a class="account-lines-collapse">collapse all</a></li>
+    </ul>
+    <h3>account_tx (last 20)</h3>
+    <ul class="tools nav nav-pills">
+     	<li><a class="account-tx-expand-tx">expand tx</a></li>
+     	<li><a class="account-tx-expand">expand all</a></li>
+     	<li><a class="account-tx-collapse">collapse all</a></li>
+     	<li><a class="account-tx-more">next 20</a></li>
+     	<li><a class="account-tx-back">prev 20</a></li>
+    </ul>
+    <pre id="account_tx" class="json"></pre>
+    <ul class="tools nav nav-pills">
+     	<li><a class="account-tx-expand-tx">expand tx</a></li>
+     	<li><a class="account-tx-expand">expand all</a></li>
+     	<li><a class="account-tx-collapse">collapse all</a></li>
+     	<li><a class="account-tx-more">next 20</a></li>
+     	<li><a class="account-tx-back">prev 20</a></li>
+    </ul>
+    <h3>account_offers</h3>
+    <ul class="tools nav nav-pills">
+     	<li><a class="account-offers-expand">expand all</a></li>
+     	<li><a class="account-offers-collapse">collapse all</a></li>
+    </ul>
+    <pre id="account_offers" class="json"></pre>
+    <ul class="tools nav nav-pills">
+     	<li><a class="account-offers-expand">expand all</a></li>
+     	<li><a class="account-offers-collapse">collapse all</a></li>
+    </ul>
+    </div>
 
-  <div class="group group-ledger">
-  <h3>ledger</h3>
-  <ul class="tools nav nav-pills">
-   	<li><a class="ledger-expand-tx">expand tx</a></li>
-   	<li><a class="ledger-tx-expand">expand all</a></li>
-   	<li><a class="ledger-tx-collapse">collapse all</a></li>
-  </ul>
-  <pre id="ledger_info" class="json"></pre>
-  <ul class="tools nav nav-pills">
-   	<li><a class="ledger-tx-expand-tx">expand tx</a></li>
-   	<li><a class="ledger-tx-expand">expand all</a></li>
-   	<li><a class="ledger-tx-collapse">collapse all</a></li>
-  </ul>
-  </div>
+    <div class="group group-ledger">
+    <h3>ledger</h3>
+    <ul class="tools nav nav-pills">
+     	<li><a class="ledger-expand-tx">expand tx</a></li>
+     	<li><a class="ledger-tx-expand">expand all</a></li>
+     	<li><a class="ledger-tx-collapse">collapse all</a></li>
+    </ul>
+    <pre id="ledger_info" class="json"></pre>
+    <ul class="tools nav nav-pills">
+     	<li><a class="ledger-tx-expand-tx">expand tx</a></li>
+     	<li><a class="ledger-tx-expand">expand all</a></li>
+     	<li><a class="ledger-tx-collapse">collapse all</a></li>
+    </ul>
+    </div>
 
+    </div>
   </div>
-</div>
+</section>
 {% endblock %}
 
 {% block endbody %}

@@ -1,55 +1,246 @@
-<div class="guide_toc">
-  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
-    {% for cat in categories %}
-    <div class="panel panel-default{% if currentpage.category == cat %} active{% endif %}">
-      <div class="panel-heading" role="tab" id="sidenav_cat_head_{{loop.index}}">
-        <h5 class="panel-title">
-          <a {% if currentpage.category != cat %}class="collapsed"{% endif %} role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">
-            {{ cat }}
-          </a>
-        </h5>
-      </div><!-- /.panel-heading -->
+<div class="tree_nav">
 
-      <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category == cat %} in{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
-        <div class="panel-body">
-          <ul class="sidebar_cat_pagelist">
-          {% for page in pages %}
-            {% if page.category == cat %}
-              {% if page == currentpage %}
-              <li><a class="active" href="#main_content_body">{{ page.name }}</a></li>
-              {% else %}
-              <li><a href="{{ page.html }}">{{ page.name }}</a></li>
-              {% endif %}
+  <!--{############# Parent page link ###############################}-->
+  {% if currentpage.supercategory is defined %}
+    <div class="sidenav_parent">
+      {% if currentpage == (pages|selectattr('supercategory', 'equalto', currentpage.supercategory)|first) %}
+      <a class="active" href="{{ currentpage.html }}">{{ currentpage.supercategory }}</a>
+      {% else %}
+      <a href="{{ (pages|selectattr('supercategory', 'equalto', currentpage.supercategory)|first).html }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> {{ currentpage.supercategory }}</a>
+      {% endif %}
+    </div>
+  {% elif currentpage.doc_type is defined %}
+    <div class="sidenav_parent">
+      {% if currentpage == (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first) %}
+      <a class="active" href="{{ currentpage.html }}">{{ currentpage.doc_type }}</a>
+      {% else %}
+      <a href="{{ (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first).html }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> {{ currentpage.doc_type }}</a>
+      {% endif %}
+    </div>
+  {% elif currentpage.funnel is defined %}
+    <div class="sidenav_parent">
+      {% if currentpage == (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first) %}
+      <a class="active" href="{{ currentpage.html }}">{{ currentpage.funnel }}</a>
+      {% else %}
+      <a href="{{ (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first).html }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> {{ currentpage.funnel }}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <!--{############# Sidebar links ###############################}-->
+
+  {% if not pages|selectattr("funnel", "equalto", currentpage.funnel)|selectattr("category", "defined")|list|length %}
+    <!--{##### Case: no funnel categories, simple one-category sidebar ####}-->
+    {% set funnelpages = pages|selectattr("funnel", "equalto", currentpage.funnel)|list %}
+    <div id="sidenav" aria-multiselectable="true">
+      <div class="card active">
+        <div class="card-body">
+          <ul class="sidebar_pagelist">
+          {% for page in funnelpages %}
+            {% if loop.index == 1 %}{# Skip the first element since it's linked by the funnel header #}
+            {% elif page == currentpage %}
+            <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
+            {% else %}
+            <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
             {% endif %}
           {% endfor %}
           </ul>
-        </div><!-- /.panel-body -->
-      </div><!-- /#sidenav_collapse{{loop.index}} -->
+        </div><!-- /.card-body -->
+      </div><!-- /.card -->
+    </div><!-- /#sidenav -->
 
-    </div><!-- /.panel -->
+  {% elif currentpage.supercategory is defined %}
+    <!--{# Case: in a supercategory, show cards for that supercategory's categories #}-->
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+      {% for cat in categories %}
+        {% set catpages = pages|selectattr("category", "equalto", cat)|list %}
+        {% if currentpage.funnel is defined %}
+          {% set catpages = catpages|selectattr("funnel", "equalto", currentpage.funnel)|list %}
+        {% endif %}
+        {% if currentpage.doc_type is defined %}
+          {% set catpages = catpages|selectattr("doc_type", "equalto", currentpage.doc_type)|list %}
+        {% endif %}
+        {% set catpages = catpages|selectattr("supercategory", "equalto", currentpage.supercategory)|list %}
+        {% if catpages|length %}
+          {% set cat_parent = pages|selectattr('category', 'equalto', cat)|first %}
+            <div class="card{% if currentpage.category == cat %} active{% endif %}">
+              <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
+                <h5 class="card-title">
+                {% if catpages|length > 1 %}
+                <a class="{% if currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">&nbsp;</a>
+                {% endif %}
+                <a class="sidenav_cat_title{% if currentpage == (cat_parent) %} active{% elif currentpage.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category == cat %} show{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                  {% set printed_subcategories = [] %}
+                  {% for page in catpages %}
+                    {% if loop.index != 1 %}{# Skip the first element since it's linked by the category header #}
+                    {% if page.subcategory is undefined %}
+                      {% if page == currentpage %}
+                      <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
+                      {% else %}
+                      <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
+                      {% endif %}
+                    {% elif page.subcategory not in printed_subcategories %}
+                      {% if page == currentpage %}
+                      <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}</a></li>
+                      {% elif page.subcategory == currentpage.subcategory %}
+                      <li><a class="subcat-title active-parent" href="{{ page.html }}">{{ page.name }}</a></li>
+                      {% else %}
+                      <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}</a></li>
+                      {% endif %}
+
+                      {% for subpage in catpages|selectattr('subcategory', 'equalto', page.subcategory) %}
+                        {% if subpage != page %}
+                          {% if subpage == currentpage %}
+                          <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}</a></li>
+                          {% else %}
+                          <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}</a></li>
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                      {% set _ = printed_subcategories.append(page.subcategory) %}
+
+                    {% endif %}
+                    {% endif %}
+                  {% endfor %}
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse{{loop.index}} -->
+
+            </div><!-- /.panel -->
+        {% endif %}
+      {% endfor %}
+    </div><!-- /#sidenav -->
+
+  {% else %}
+    <!--{##### Case: Not in a supercategory, but siblings might be #}-->
+    {% set sidebar_pagelist = pages|selectattr("funnel", "equalto", currentpage.funnel)|list %}
+    {% if currentpage.doc_type is defined %}
+      {% set sidebar_pagelist = sidebar_pagelist|selectattr("doc_type", "equalto", currentpage.doc_type)|list %}
+    {% endif %}
+    {% set printed_modules = [] %}
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+    {% for page in sidebar_pagelist %}
+      {% if page.supercategory is defined %}
+        {% if page.supercategory not in printed_modules %}
+          <!--{################# Supercategory Card ####################}-->
+          {% set supercat = page.supercategory %}
+          {% set supercatpages = sidebar_pagelist|selectattr("supercategory", "equalto", page.supercategory)|list %}
+          {% if supercatpages|length %}
+            {% set supercat_parent = supercatpages|first %}
+            {% set _ = printed_modules.append(page.supercategory) %}
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
+                <h5 class="card-title">
+                {% if supercatpages|length > 1 %}
+                  <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">&nbsp;</a>
+                {% endif %}
+                  <a class="sidenav_cat_title" href="{{ supercat_parent.html }}">{{ supercat }}</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_{{loop.index}}" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                  {% set printed_categories = [] %}
+                  {% for subpage in supercatpages %}
+                    {% if loop.index != 1 %}{# Skip the first element since it's linked by the supercategory header #}
+                      {% if subpage.category not in printed_categories %}
+                        <li><a class="subcat-title" href="{{ subpage.html }}">{{ subpage.name }}</a></li>
+
+                        {% set category_members = supercatpages|selectattr('category', 'equalto', subpage.category)|list %}
+                        <!-- DEBUG: category_members is {{ category_members }} -->
+                        {% for subsubpage in category_members %}
+                          {% if subsubpage != subpage and (subsubpage.subcategory is undefined or
+                              subsubpage == category_members|selectattr('subcategory', 'equalto', subsubpage.subcategory)|first) %}
+                            <li><a class="subpage" href="{{ subsubpage.html }}">{{ subsubpage.name }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+                        {% set _ = printed_categories.append(subpage.category) %}
+                      {% endif %}
+
+                    {% endif %}
+                  {% endfor %}
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse{{loop.index}} -->
+
+            </div><!-- /.card -->
+
+          {% endif %}
+        {% endif %}
+
+
+
+
+      {% elif page.category is defined and page.category not in printed_modules %}
+        <!--{################# Category Card ####################}-->
+        {% set cat = page.category %}
+        {% set catpages = sidebar_pagelist|selectattr("category", "equalto", page.category)|list %}
+        {% if catpages|length %}
+          {% set cat_parent = catpages|first %}
+          <div class="card{% if currentpage.category == cat %} active{% endif %}">
+            <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
+              <h5 class="card-title">
+              {% if catpages|length > 1 %}
+                <a class="{% if currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">&nbsp;</a>
+              {% endif %}
+                <a class="sidenav_cat_title{% if currentpage == (cat_parent) %} active{% elif currentpage.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category == cat %} show{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                {% set printed_subcategories = [] %}
+                {% for page in catpages %}
+                  {% if loop.index != 1 %}{# Skip the first element since it's linked by the category header #}
+                  {% if page.subcategory is undefined %}
+                    {% if page == currentpage %}
+                    <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
+                    {% else %}
+                    <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}</a></li>
+                    {% endif %}
+                  {% elif page.subcategory not in printed_subcategories %}
+                    {% if page == currentpage %}
+                    <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}</a></li>
+                    {% elif page.subcategory == currentpage.subcategory %}
+                    <li><a class="subcat-title active-parent" href="{{ page.html }}">{{ page.name }}</a></li>
+                    {% else %}
+                    <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}</a></li>
+                    {% endif %}
+
+                    {% for subpage in catpages|selectattr('subcategory', 'equalto', page.subcategory) %}
+                      {% if subpage != page %}
+                        {% if subpage == currentpage %}
+                        <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}</a></li>
+                        {% else %}
+                        <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}</a></li>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                    {% set _ = printed_subcategories.append(page.subcategory) %}
+
+                  {% endif %}
+                  {% endif %}
+                {% endfor %}
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse{{loop.index}} -->
+
+          </div><!-- /.card -->
+        {% endif %}
+        {% set _ = printed_modules.append(page.category) %}
+
+      {% endif %}
     {% endfor %}
-
-    {# special Ripple Resources section #}
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
-        <h5 class="panel-title">
-          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
-            Ripple Resources
-          </a>
-        </h5>
-      </div><!-- /.panel-heading -->
-
-      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
-        <div class="panel-body">
-          <ul class="sidebar_cat_pagelist">
-            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
-            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
-            <li><a href="https://ripple.com/">Corporate Website</a></li>
-          </ul>
-        </div><!-- /.panel-body -->
-      </div><!-- /#sidenav_collapseripple_resources -->
-
-    </div><!-- /.panel -->
-
-  </div><!-- /#sidenav_accordion -->
-</div><!-- /.guide_toc -->
+    </div><!-- /#sidenav -->
+  {% endif %}
+</div><!-- /.tree_nav -->

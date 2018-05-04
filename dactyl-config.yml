@@ -33,509 +33,793 @@ callout_class: "devportal-callout"
 cover_page:
     name: Overview
     html: index.html
-    template: template-index.html
+    template: template-home.html
+    sidebar: disabled
 
 targets:
     # First member is the default that gets built when target not specified
     -   name: local
-        display_name: Ripple Developer Portal
+        display_name: XRP Ledger Dev Portal
         # These github_ fields are used by the template's "Edit on GitHub" link.
         #  Override them with --vars to change which fork/branch to edit.
-        github_forkurl: https://github.com/ripple/ripple-dev-portal
-        github_branch: master
-
-    -   name: ripple.com
-        display_name: Ripple Developer Center
-        github_forkurl: https://github.com/ripple/ripple-dev-portal
-        github_branch: master
-        template: template-contentwithtoc.html
-        link_subs:
-            "reference-rippled.html": https://ripple.com/build/rippled-apis/
-            "reference-rippleapi.html": https://ripple.com/build/rippleapi/
-            "reference-transaction-format.html": https://ripple.com/build/transactions/
-            "reference-ledger-format.html": https://ripple.com/build/ledger-format/
-            "reference-data-api.html": https://ripple.com/build/data-api-v2/
-            "reference-amendments.html": https://ripple.com/build/known-amendments/
-            "tutorial-multisign.html": https://ripple.com/build/how-to-multi-sign/
-            "concept-issuing-and-operational-addresses.html": https://ripple.com/build/issuing-operational-addresses/
-            "tutorial-reliable-transaction-submission.html": https://ripple.com/build/reliable-transaction-submission/
-            "tutorial-rippleapi-beginners-guide.html": https://ripple.com/build/rippleapi-beginners-guide/
-            "tutorial-rippled-setup.html": https://ripple.com/build/rippled-setup/
-            "tutorial-gateway-guide.html": https://ripple.com/build/gateway-guide/
-            "tutorial-paychan.html": https://ripple.com/build/payment-channels-tutorial/
-            "tutorial-escrow.html": https://ripple.com/build/escrow-tutorials/
-            "tutorial-listing-xrp.html": https://ripple.com/build/listing-xrp-exchange/
-            "concept-cryptographic-keys.html": https://ripple.com/build/cryptographic-keys/
-            "tutorial-regular-keys.html": https://ripple.com/build/working-regular-key-pair/
-            "tutorial-build-run-rippled-ubuntu.html": https://ripple.com/build/build-run-rippled-ubuntu/
-            "concept-accounts.html": https://ripple.com/build/accounts/
-            "concept-amendments.html": https://ripple.com/build/amendments/
-            "concept-authorized-trust-lines.html": https://ripple.com/build/authorized-trust-lines/
-            "concept-checks.html": https://ripple.com/build/checks/
-            "concept-consensus.html": https://ripple.com/build/xrp-ledger-consensus-process/
-            "concept-escrow.html": https://ripple.com/build/escrow/
-            "concept-reaching-consensus.html": https://ripple.com/build/reaching-consensus-xrp-ledger/
-            "concept-history-sharding.html": https://ripple.com/build/history-sharding/
-            "concept-fee-voting.html": https://ripple.com/build/fee-voting/
-            "concept-fees.html": https://ripple.com/build/fees-disambiguation/
-            "concept-freeze.html": https://ripple.com/build/freeze/
-            "concept-paths.html": https://ripple.com/build/paths/
-            "concept-partial-payments.html": https://ripple.com/build/partial-payments/
-            "concept-reserves.html": https://ripple.com/build/reserves/
-            "concept-stand-alone-mode.html": https://ripple.com/build/stand-alone-mode/
-            "concept-transaction-cost.html": https://ripple.com/build/transaction-cost/
-            "concept-transfer-fees.html": https://ripple.com/build/transfer-fees/
-            "concept-noripple.html": https://ripple.com/build/understanding-the-noripple-flag/
-            "concept-xrp-ledger-intro.html": https://ripple.com/build/xrp-ledger-introduction/
-            "gb-2015-06.html": https://ripple.com/build/gateway-guide/gb-2015-06-corrections-autobridging/
-            "gb-2015-05.html": https://ripple.com/build/gateway-guide/gb-2015-05-historical-ledger-query-migration/
-            "ripple-api-tool.html": https://ripple.com/build/websocket-tool/
-            "data-api-v2-tool.html": https://ripple.com/build/data-api-tool/
-            "concept-money.html": https://ripple.com/build/money-xrp-ledger/
-            "reference-currency.html": https://ripple.com/build/currency-format/
-            "concept-demurrage.html": https://ripple.com/build/demurrage/
-            "concept-depositauth.html": https://ripple.com/build/deposit-authorization/
-            "tutorial-checks-send.html": https://ripple.com/build/how-to-send-a-check/
-            "tutorial-checks-lookup-by-sender.html": https://ripple.com/build/look-checks-sender/
-            "tutorial-checks-lookup-by-recipient.html": https://ripple.com/build/look-checks-recipient/
-            "tutorial-checks-cancel.html": https://ripple.com/build/how-to-cancel-a-check/
-            "tutorial-checks-cash-exact.html": https://ripple.com/build/cash-check-exact-amount/
-            "tutorial-checks-cash-flex.html": https://ripple.com/build/cash-check-flexible-amount/
-        image_subs:
-            "img/funds_flow_diagram.png": https://cdn.ripple.com/wp-content/uploads/2016/03/funds_flow_diagram.png
-            "img/checks-happy_path.png": https://cdn.ripple.com/wp-content/uploads/2018/03/checks-happy_path.png
-            "img/checks_expiration.png": https://cdn.ripple.com/wp-content/uploads/2018/03/checks_expiration.png
-            "img/e2g-01.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-01.png
-            "img/e2g-02.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-02.png
-            "img/e2g-03.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-03.png
-            "img/e2g-with_transferrate.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/e2g-with_transferrate.png
-            "img/transfer_fees_example.png": https://cdn.ripple.com/wp-content/uploads/2015/06/transfer_fees_example1.png
-            "img/ledger-process.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-process.png
-            "img/ledger-components.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-components.png
-            "img/ledger-indexes.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/ledger-indexes.png
-            "img/ledger-history.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-02.png
-            "img/ledger-changes.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-03.png
-            "img/paths-examples.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-examples.png
-            "img/paths-default_paths.png": https://ripple.com/wp-content/themes/ripple-beta/assets/img/paths-default_paths.png
-            "img/noripple-01.png": https://cdn.ripple.com/wp-content/uploads/2015/04/noripple-01.png
-            "img/noripple-02.png": https://cdn.ripple.com/wp-content/uploads/2015/04/noripple-02.png
-            "img/noripple-03.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-03.png
-            "img/noripple-04.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-04.png
-            "img/noripple-05.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-05.png
-            "img/noripple-06.png": https://cdn.ripple.com/wp-content/uploads/2015/01/noripple-06.png
-            "img/key-address-rels.png": https://cdn.ripple.com/wp-content/uploads/2017/05/key-address-rels.png
-            "img/paychan-flow.png": https://cdn.ripple.com/wp-content/uploads/2017/05/paychan-flow1.png
-            "img/consensus-agreed-transaction-set.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-06.png
-            "img/consensus-calculate-validation.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-07.png
-            "img/consensus-candidate-transaction-sets.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-05.png
-            "img/consensus-declare-validation.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-08.png
-            "img/consensus-validated-ledger.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-09.png
-            "img/xrp-ledger-network.png": https://cdn.ripple.com/wp-content/uploads/2014/12/Overview-of-Ripple-Ledger-Consensus-and-Validation-12_12-04.png
-            "img/escrow-success-flow.png": https://cdn.ripple.com/wp-content/uploads/2017/09/escrow-success-flow.png
-            "img/escrow-cancel-flow.png": https://cdn.ripple.com/wp-content/uploads/2017/09/escrow-cancel-flow.png
-            "img/currency-code-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/currency-code-format.png
-            "img/currency-number-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/currency-number-format.png
-            "img/demurrage-currency-code-format.png": https://cdn.ripple.com/wp-content/uploads/2017/11/demurrage-currency-code-format.png
-            "img/xrp-ledger-network-ledger-store-and-shard-store.png": https://cdn.ripple.com/wp-content/uploads/2018/02/xrp-ledger-network-ledger-store-and-shard-store1.png
+        github_forkurl: https://github.com/mDuo13/ripple-dev-portal
+        github_branch: 5layertest
+        recently_updated:
+            - introduction.html #TODO: update the recently_updated
+            # - tutorial-checks-send.html
+            # - reference-amendments.html
 
 pages:
-  # I. Introduction ------------------------------------------------------------
 
-    -   md: concept-xrp-ledger-intro.md
+    -   name: Docs
+        funnel: Docs
+        template: template-landing-docs.html
+        html: docs.html
+        sidebar: disabled
+        targets:
+            - local
+
+# Concepts ---------------------------------------------------------------------
+
+    -   name: Concepts
+        funnel: Docs
+        doc_type: Concepts
+        md: concepts/concepts.md
+        html: concepts.html
+        template: template-landing-children.html
+        blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
+        targets:
+            - local
+
+    -   name: Introduction
+        funnel: Docs
+        doc_type: Concepts
         category: Introduction
+        md: concepts/introduction/introduction.md
+        html: introduction.html
+        template: template-landing-children.html
         targets:
             - local
-            - ripple.com
 
-    # "XRP Ledger Ecosystem Overview" goes here
-
-  # II. Technical Overview -----------------------------------------------------
-
-    -   md: concept-consensus.md
-        category: Technical Overview
+    -   md: concepts/introduction/xrp-ledger-overview.md
+        html: xrp-ledger-overview.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: Get a quick and concise introduction to key features of the XRP Ledger.
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-reaching-consensus.md
-        category: Technical Overview
+        #TODO: DOC-1503: replace this with a more concise intro to consensus
+    -   md: concepts/introduction/consensus.md
+        html: consensus.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: Understand the role of consensus in the XRP Ledger.
         targets:
             - local
-            - ripple.com
 
-    # "Transaction Processing" goes here (broken off from transaction reference)
-
-    -   md: concept-accounts.md
-        category: Technical Overview
+    -   md: concepts/introduction/xrp.md
+        html: xrp.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: Learn about the uses and properties of XRP, the digital asset for payments.
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-cryptographic-keys.md
-        category: Technical Overview
+    -   md: concepts/payment-system-basics/payment-system-basics.md
+        html: payment-system-basics.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        template: template-landing-children.html
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-fees.md
-        category: Technical Overview
+    -   md: concepts/payment-system-basics/accounts/accounts.md
+        html: accounts.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP.
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-fee-voting.md
-        category: Technical Overview
+    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.md
+        html: cryptographic-keys.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-amendments.md
-        category: Technical Overview
+    # TODO: multi-signing, depositauth, reserves
+
+    -   md: concepts/payment-system-basics/fees.md
+        html: fees.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
         targets:
             - local
-            - ripple.com
 
-    -   md: reference-amendments.md
-        category: Technical Overview
+    -   md: concepts/complex-payment-types/complex-payment-types.md
+        html: complex-payment-types.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
+        template: template-landing-children.html
         targets:
             - local
-            - ripple.com
 
-    # III. About XRP -----------------------------------------------------------
-
-    -   md: concept-money.md # TODO: maybe split this up into just an XRP intro?
-        category: About XRP
+    -   md: concepts/complex-payment-types/checks.md
+        html: checks.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-reserves.md
-        category: About XRP
+    -   md: concepts/complex-payment-types/escrow.md
+        html: escrow.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-transaction-cost.md
-        category: About XRP
+    -   md: concepts/complex-payment-types/partial-payments.md
+        html: partial-payments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-partial-payments.md
-        category: About XRP
+    # TODO: payment channels concept
+
+    -   md: concepts/issued-currencies/issued-currencies.md
+        html: issued-currencies.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        template: template-landing-children.html
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-escrow.md
-        category: About XRP
-        targets:
-            - local
-            - ripple.com
+    # TODO: "Trust Lines and Issuing" (see gateway guide, tx reference on "trust limits" etc.)
 
-    -   md: concept-depositauth.md
-        category: About XRP # Not strictly an XRP feature, but most relevant to XRP
-        targets:
-            - local
-            - ripple.com
-
-    # DOC-696 "About Payment Channels" goes here
-
-  # IV. XRP Tasks --------------------------------------------------------------
-
-    # "Connecting to rippled" goes here (extracted from rippled reference)
-
-    -   md: tutorial-rippleapi-beginners-guide.md
-        category: XRP Tasks
-        targets:
-            - local
-            - ripple.com
-
-    # DOC-1299 "Create an XRP Ledger Account" goes here
-
-    # DOC-1322 "Sending Exact XRP Payments" goes here
-
-    -   md: tutorial-reliable-transaction-submission.md
-        category: XRP Tasks
-        targets:
-            - local
-            - ripple.com
-
-    # "Robustly Monitoring for Payments" goes here (adapted from gateway guide?)
-
-    # "Bouncing Payments" goes here (adapted from gateway guide?)
-
-    -   md: tutorial-multisign.md
-        category: XRP Tasks # This isn't strictly XRP-related though...
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-escrow.md
-        category: XRP Tasks
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-paychan.md
-        category: XRP Tasks
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-regular-keys.md
-        category: XRP Tasks # Not strictly XRP-related, either...
-        targets:
-            - local
-            - ripple.com
-
-  # V. Issued Currencies -------------------------------------------------------
-
-    # TODO: stand-alone issued currencies intro?
-
-    -   md: concept-freeze.md
+    -   md: concepts/issued-currencies/authorized-trust-lines.md
+        html: authorized-trust-lines.html
+        funnel: Docs
+        doc_type: Concepts
         category: Issued Currencies
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-transfer-fees.md
-        category: Issued Currencies
+    # TODO: Freezes, Rippling, Transfer Fees, Paths, Demurrage
+
+    -   md: concepts/decentralized-exchange/decentralized-exchange.md
+        html: decentralized-exchange.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Decentralized Exchange
+        template: template-landing-children.html
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-noripple.md
-        category: Issued Currencies
+    # TODO: Offers, Tick Size, Autobridging, Offer Preference (all compiled from different sources)
+
+    -   md: concepts/consensus-network/consensus-network.md
+        html: consensus-network.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        template: template-landing-children.html
         targets:
             - local
-            - ripple.com
 
-    -   md: concept-authorized-trust-lines.md
-        category: Issued Currencies
+    # TODO: consensus principles & rules, validators & UNLs
+
+    -   md: concepts/consensus-network/amendments.md
+        html: amendments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
         targets:
             - local
-            - ripple.com
 
-    # DOC-78 "Decentralized Exchange" goes here
+    # TODO: fee voting, consensus research, pseudo-transactions, parallel networks
 
-    # DOC-844 "TickSize Settings" goes here
-
-    -   md: concept-paths.md
-        category: Issued Currencies
-        targets:
-            - local
-            - ripple.com
-
-    -   md: concept-checks.md
-        category: Checks
-        targets:
-          - local
-          - ripple.com
-
-    -   md: tutorial-checks-send.md
-        category: Checks
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-checks-lookup-by-sender.md
-        category: Checks
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-checks-lookup-by-recipient.md
-        category: Checks
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-checks-cancel.md
-        category: Checks
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-checks-cash-exact.md
-        category: Checks
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-checks-cash-flex.md
-        category: Checks
-        targets:
-            - local
-            - ripple.com
-
-    -   md: concept-demurrage.md
-        category: Issued Currencies
-        targets:
-            - local
-            - ripple.com
-
-  # VI. The rippled Server -----------------------------------------------------
-
-    -   md: tutorial-rippled-setup.md
+    -   md: concepts/the-rippled-server/the-rippled-server.md
+        html: the-rippled-server.html
+        funnel: Docs
+        doc_type: Concepts
         category: The rippled Server
         targets:
             - local
-            - ripple.com
 
-    # -   md: reference-rippled.md # TODO: break out the concept parts for here
-    #     category: The rippled Server
+    # TODO: history sharding, stand-alone mode, clustering, peer protocol
+
+# Tutorials --------------------------------------------------------------------
+
+    -   md: tutorials/tutorials.md
+        html: tutorials.html
+        funnel: Docs
+        doc_type: Tutorials
+        template: template-landing-children.html
+        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
+        targets:
+            - local
+
+    -   md: tutorials/get-started/get-started.md
+        html: get-started.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: Get Started with the rippled API, Send a Transaction with the rippled API
+
+    -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.md
+        html: get-started-with-rippleapi-for-javascript.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        targets:
+            - local
+
+    # TODO: Get Started with API Tools
+
+    -   md: tutorials/use-simple-xrp-payments/use-simple-xrp-payments.md
+        html: use-simple-xrp-payments.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: "Send XRP"
+
+    -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.md
+        html: reliable-transaction-submission.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        targets:
+            - local
+
+    # TODO: Cancel or Skip a Transaction, Look Up Transaction Results
+
+    -   md: tutorials/manage-account-settings/manage-account-settings.md
+        html: manage-account-settings.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: "Get an Account", "Configure a Regular Key Pair", "Use Deposit Authorization to Block Unwanted Payments", "Configure Multi-Signing"
+
+    -   md: tutorials/use-complex-payment-types/use-complex-payment-types.md
+        html: use-complex-payment-types.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Complex Payment Types
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: split up "use escrows"
+
+    #TODO: split concept info off of the paychan tutorial
+    -   md: tutorials/use-complex-payment-types/use-payment-channels.md
+        html: use-payment-channels.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Complex Payment Types
+        targets:
+            - local
+
+    -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
+        html: use-checks.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Complex Payment Types
+        subcategory: Use Checks
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.md
+        html: send-a-check.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Complex Payment Types
+        subcategory: Use Checks
+        targets:
+            - local
+
+    # TODO: other 5 checks tutorials
+
+    # TODO: "Send a Cross-Currency Payment"
+
+    -   md: tutorials/manage-issued-currencies/manage-issued-currencies.md
+        html: manage-issued-currencies.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Issued Currencies
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: Set up issuing/operational addresses, monitor changes to balances,
+    # freeze, enable/disable rippling, set transfer fees, use auth'd trust lines
+
+    -   md: tutorials/xrp-ledger-businesses/xrp-ledger-businesses.md
+        html: xrp-ledger-businesses.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: list XRP as an exchange, become a gateway
+    # TODO: identify your accounts with ripple.txt (to come later)
+
+    -   md: tutorials/manage-the-rippled-server/manage-the-rippled-server.md
+        html: manage-the-rippled-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: install rippled, troubleshoot rippled, build & run on ubuntu,
+    #  run a validator, run in stand-alone mode, set up private peers, run in
+    #  a cluster, capacity planning
+
+# References -------------------------------------------------------------------
+
+    -   name: References
+        funnel: Docs
+        doc_type: References
+        template: template-landing-references.html
+        html: references.html
+        sidebar: disabled
+        blurb: Look up the ins-and-outs of XRP Ledger APIs, including sample requests and responses.
+        targets:
+            - local
+
+    # rippled API --------------------------------------------------------------
+
+    -   md: references/rippled-api/rippled-api.md
+        html: rippled-api.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        template: template-landing-children.html
+        blurb: Use the rippled API to communicate with a rippled server, the core peer-to-peer server that manages the XRP Ledger.
+        targets:
+            - local
+
+    -   md: references/rippled-api/api-conventions/api-conventions.md
+        html: api-conventions.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        template: template-landing-children.html
+        targets:
+            - local
+
+    # TODO: Basic Data Types, Ripple Epoch Time
+
+    -   md: references/rippled-api/api-conventions/currency-formatting.md
+        html: currency-formatting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        targets:
+            - local
+
+    # TODO: rippled Server States, Error Formatting
+
+    -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.md
+        html: public-rippled-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   name: Account Methods #TODO: possible md landing content?
+        html: account-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.md
+        html: account_channels.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    # TODO: 8 other account methods
+
+    -   name: Ledger Methods #TODO: possible md landing content?
+        html: ledger-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.md
+        html: ledger.html # Watch carefully for clashes w/ this filename
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        targets:
+            - local
+
+    # TODO: 5 other ledger methods
+
+    -   name: Transaction Methods #TODO: possible md landing content?
+        html: transaction-methods.html # watch for clashes w/ this filename
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.md
+        html: sign.html # watch for clashes w/ this filename
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        targets:
+            - local
+
+    # TODO: 6 other transaction methods
+
+    -   name: Path and Order Book Methods #TODO: possible md landing content?
+        html: path-and-order-book-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.md
+        html: book_offers.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        targets:
+            - local
+
+    # TODO: 2 other Path and Order Book methods
+
+    # TODO: subcategory landings and method pages for:
+    # - Payment Channel Methods (2)
+    # - Subscription Methods (2)
+    # - Server Info Methods (3)
+    # - Utility Methods (3)
+
+    -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
+        html: admin-rippled-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        blurb: Administer a rippled server with these admin API methods.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   name: Key Generation Methods #TODO: possible md landing content?
+        html: key-generation-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Key Generation Methods
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.md
+        html: validation_create.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Key Generation Methods
+        targets:
+            - local
+
+    # TODO: Subcategory landings and pages for:
+    # - Logging and Data Management Methods (5)
+    # - Server Control Methods (4)
+    # - Status and Debugging Messages (8)
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.md
+        html: ledger-data-formats.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   name: Ledger Header #TODO: break off from ledger-format-old-monolith.md file
+        html: ledger-header.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        targets:
+            - local
+
+    -   name: Ledger Object Types #TODO: break off from ledger-format-old-monolith.md file
+        html: ledger-object-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.md
+        html: accountroot.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        targets:
+            - local
+
+    # TODO: 10 other ledger object types
+
+    -   md: references/rippled-api/transaction-formats/transaction-formats.md
+        html: transaction-formats.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        blurb: Transactions are the only way to modify the XRP Ledger. Get details about their required format.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   name: Transaction Common Fields #TODO: break off from transaction-format-old-monolith.md
+        html: transaction-common-fields.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+        targets:
+            - local
+
+    -   name: Transaction Types #TODO: pull landing content from transaction-format-old-monolith.md
+        html: transaction-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/accountset.md
+        html: accountset.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        targets:
+            - local
+
+    # TODO: 17 other transaction types
+
+    -   name: Transaction Results #TODO: pull landing content from transaction-format-old-monolith.md
+        html: transaction-results.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   name: tel Codes #TODO: break off content from transaction-format-old-monolith.md
+        html: tel-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    # TODO: 5 other result code classes
+
+    # --------------- end "rippled API" section --------------------------------
+
+    # # Temporarily commented out to make building the dev portal faster
+    # -   name: RippleAPI Reference # name is required for remote-sourced files
+    #     md: https://raw.githubusercontent.com/ripple/ripple-lib/0.21.0/docs/index.md
+    #     html: rippleapi-reference.html
+    #     funnel: Docs
+    #     doc_type: References
+    #     category: RippleAPI for JavaScript
+    #     blurb: Official client library to the XRP Ledger. Available for JavaScript only.
+    #     curated_anchors:
+    #         - name: Transactions
+    #           anchor: "#transaction-overview"
+    #         - name: Basic Types
+    #           anchor: "#basic-types"
+    #         - name: Methods
+    #           anchor: "#api-methods"
+    #     filters:
+    #         - remove_doctoc
+    #         - add_version
     #     targets:
     #         - local
-    #         - ripple.com
 
-    -   md: concept-stand-alone-mode.md
-        category: The rippled Server
-        targets:
-            - local
-            - ripple.com
+    # # Temporarily commented out to make building the dev portal faster
+    # -   md: references/data-api.md
+    #     funnel: Docs
+    #     doc_type: References
+    #     category: Data API
+    #     blurb: Access more XRP Ledger data, including transaction history and analytics.
+    #     curated_anchors:
+    #         - name: Methods
+    #           anchor: "#api-method-reference"
+    #         - name: API Conventions
+    #           anchor: "#api-conventions"
+    #     targets:
+    #         - local
 
-    -   md: concept-history-sharding.md
-        category: The rippled Server
-        targets:
-            - local
-            - ripple.com
 
-    -   md: tutorial-build-run-rippled-ubuntu.md
-        category: The rippled Server
-        targets:
-            - local
-            - ripple.com
-
-  # VII. The Exchange Business Model -------------------------------------------
-    -   md: tutorial-listing-xrp.md
-        category: The Exchange Business Model
-        targets:
-            - local
-            - ripple.com
-
-  # VIII. The Gateway Business Model -------------------------------------------
-    -   md: concept-issuing-and-operational-addresses.md
-        category: The Gateway Business Model
-        targets:
-            - local
-            - ripple.com
-
-    -   md: tutorial-gateway-guide.md
-        category: The Gateway Business Model
-        targets:
-            - local
-            - ripple.com
-
-    -   md: gb-2015-06.md
-        category: The Gateway Business Model
-        targets:
-            - local
-            - ripple.com
-
-    -   md: gb-2015-05.md
-        category: The Gateway Business Model
-        targets:
-            - local
-            - ripple.com
-
-  # IX. Reference Material
-    -   md: reference-rippled.md
-        category: Reference Material
-        targets:
-            - local
-            - ripple.com
-
-    -   md: reference-currency.md
-        category: Reference Material
-        targets:
-            - local
-            - ripple.com
-
-    -   md: reference-transaction-format.md
-        category: Reference Material
-        targets:
-            - local
-            - ripple.com
-
-    -   md: reference-ledger-format.md
-        category: Reference Material
-        targets:
-            - local
-            - ripple.com
-
-    -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.19.1/docs/index.md
-        html: reference-rippleapi.html
-        category: Reference Material
+# --------------- end "Docs" section -------------------------------------------
+# Use Cases --------------------------------------------------------------------
+    -   md: use-cases/use-cases.md
+        html: use-cases.html
+        funnel: Use Cases
         filters:
-            - remove_doctoc
-            - add_version
+            - buttonize
         targets:
             - local
-            - ripple.com
 
-    -   md: reference-data-api.md
-        category: Reference Material
+    -   md: use-cases/listing-xrp.md
+        html: listing-xrp.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - xrp-ledger-overview.html
+            - reliable-transaction-submission.html
+            - xrp.html
         targets:
             - local
-            - ripple.com
 
-  # Appendix: API Tools --------------------------------------------------------
+
+# Dev Tools --------------------------------------------------------------------
+    -   md: dev-tools/dev-tools.md
+        funnel: Dev Tools
+        filters:
+            - buttonize
+        targets:
+            - local
+
     -   name: RPC Tool
-        category: API Tools
+        funnel: Dev Tools
         html: xrp-ledger-rpc-tool.html
         targets:
             - local
         template: template-xrp-ledger-rpc-tool.html
 
     -   name: WebSocket API Tool
-        category: API Tools
-        html: ripple-api-tool.html
-        sidebar: custom
+        funnel: Dev Tools
+        template: template-websocket-api-tool.html
+        html: websocket-api-tool.html
         targets:
             - local
-        template: template-ripple-api-tool.html
 
     -   name: Data API v2 Tool
-        category: API Tools
+        funnel: Dev Tools
         html: data-api-v2-tool.html
         methods_js: js/apitool-methods-data_v2.js
         rest_host: https://data.ripple.com
-        doc_page: reference-data-api.html
+        doc_page: data-api.html
         sidebar: custom
         targets:
             - local
         template: template-rest-api-tool.html
 
     -   name: ripple.txt Validator
-        category: API Tools
+        funnel: Dev Tools
         html: ripple-txt-validator.html
         targets:
             - local
         template: template-ripple-txt-validator.html
 
     -   name: XRP Test Net Faucet
-        category: API Tools
+        funnel: Dev Tools
         html: xrp-test-net-faucet.html
         targets:
             - local
         template: template-test-net.html
 
-  # Non-canonical pages
-    -   name: Page Manifest
-        # Used to inform the ripple.com code what pages it should map
-        html: devportal-manifest.php
-        template: template-manifest.php
-        targets:
-            - ripple.com
+# News -------------------------------------------------------------------------
 
-# Link Checker Config ------------------------------------------------------- #
+    -   md: news/news.md
+        html: news.html
+        funnel: News
+        targets:
+            - local
+
+    -   md: news/known-amendments.md
+        html: known-amendments.html
+        funnel: News
+        targets:
+            - local
+
+    # Note: other "News" links (Release Notes, eventually Network Status)
+    #  are external to this site
+
 
 ignore_anchors_in:
     - data-api-v2-tool.html
-    - ripple-api-tool.html
-    - tool-jsonrpc.html
+    - websocket-api-tool.html
 
 #Sometimes, a link is not really problematic, but the link checker detects it
 # as such and the easiest solution is to ignore it.
