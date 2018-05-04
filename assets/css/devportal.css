@@ -304,18 +304,17 @@ th {
 
 /* Button styling ----------------------------------------------------------- */
 
-.readmore {
-  display: block;
-  margin: 15px auto 5px;
-  text-align: center;
-}
-
 .readmore .btn {
   font-size: 18px;
   transition: 0.5s;
 }
 
-.btn-primary code {
+.readmore .btn i {
+  margin: 0 0.2em 0 0.8em;
+}
+
+.btn-primary code,
+.btn-secondary code {
   color: inherit;
 }
 
@@ -453,7 +452,29 @@ a.current {
 .landing .curated-links li {
   font-weight: 400;
   font-size: 18px;
+  margin-top: 0;
+  position: relative;
 }
+
+.landing .level-1 a,
+.landing .curated-links li a {
+  padding: 16px;
+  display: block;
+}
+.landing .level-1 a:hover,
+.landing .curated-links li a:hover {
+  background-color: #F5F7F9;
+  text-decoration: none;
+}
+.landing .level-1 a:hover:after,
+.landing .curated-links li a:hover:after {
+  content: "\f105"; /* fontawesome angle-right */
+  font-family: FontAwesome;
+  position: absolute;
+  right: 16px;
+  color: #C9CDD1;
+}
+
 .level-1:first-child {
   margin-top: 0;
 }
@@ -740,8 +761,30 @@ a.current {
 
 /* Landing Pages ------------------------------------------------------------ */
 
+.landing h2 {
+  font-weight: bold;
+  line-height: 40px;
+  font-size: 32px;
+}
+
+.landing h3 {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.landing h3.card-title {
+  margin-bottom: 0;
+}
+
 .landing a .card {
   color: #212529;
+  box-shadow: 0px 1px 3px rgba(35, 41, 47, 0.24);
+  border-radius: 8px;
+}
+
+.landing a:hover .card {
+  box-shadow: 0px 4px 24px rgba(35, 41, 47, 0.16);
 }
 
 .landing .card li {
@@ -754,35 +797,49 @@ a.current {
   border-top-width: 0;
 }
 
+.landing .card-header,
+.landing .card-footer {
+  background: none;
+  border-bottom: none;
+  border-top: none;
+}
+
+.landing .card-header {
+  padding: 24px;
+}
+
+.landing .card-body {
+  padding: 0 24px 24px 24px;
+}
+
+.landing .card-footer {
+  padding: 0 24px 24px 24px;
+}
+
+.landing .card > .card-img-top {
+  padding: 0 24px;
+}
+
 #home_first_shortcuts .card {
   border-width: 0;
   background: none;
 }
 
+#home_first_shortcuts .card-img-top {
+  height: 130px;
+  width: 130px;
+}
+
 #home_first_shortcuts .card-header {
-  background: none;
-  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.landing h2,
-.landing h3 {
-  font-weight: 300;
+#xrp_ledger_intro a:hover {
+  text-decoration: none;
 }
 
-.landing section .card-header h3 {
-  font-size: 30px;
-}
-
-#xrp_ledger_intro h3 {
-  font-size: 25px;
-}
-
-.landing .card-img-top {
-  height: 6rem;
-}
-
-#xrp_ledger_intro .card-img-top {
-  display: block;
+#xrp_ledger_intro .card {
+  width: 200px;
 }
 
 #xrp_ledger_intro .card-footer {
@@ -793,10 +850,6 @@ a.current {
 
 #xrp_ledger_intro .card-body {
   padding: 1px;
-}
-
-.landing .card-title > a {
-  text-decoration: none;
 }
 
 .landing .curated-links li:first-child {
