@@ -433,6 +433,7 @@ a.current {
 .curated-links ol,
 .children-display ul {
   padding-left: 0;
+  margin-bottom: 4px;
 }
 
 .level-1,
@@ -459,9 +460,9 @@ a.current {
 
 .landing .card .level-1 a,
 .landing .card .curated-links li a {
-  padding: 16px 32px 16px 24px;
+  padding: 12px;
   display: block;
-  margin: 0 -24px 0 -24px;
+  margin: 0 -12px 0 -12px;
   font-weight: 400;
 }
 .landing .card .level-1 a:hover,
@@ -474,8 +475,8 @@ a.current {
   content: "\f105"; /* fontawesome angle-right */
   font-family: FontAwesome;
   position: absolute;
-  right: -8px;
-  top: 16px;
+  right: 0;
+  top: 12px;
   color: #0D294E;
 }
 
@@ -773,7 +774,7 @@ a.current {
 
 .landing h3 {
   font-size: 20px;
-  line-height: 24px;
+  line-height: 20px;
   font-weight: 700;
 }
 
@@ -789,7 +790,7 @@ a.current {
 }
 
 .landing a.card:hover {
-  box-shadow: 0px 4px 24px rgba(35, 41, 47, 0.16);
+  box-shadow: 0px 4px 20px rgba(35, 41, 47, 0.16);
 }
 
 .landing .card li {
@@ -802,6 +803,10 @@ a.current {
   border-top-width: 0;
 }
 
+.landing .card-body {
+  padding: 12px;
+}
+
 .landing .card-header,
 .landing .card-footer {
   background: none;
@@ -810,21 +815,21 @@ a.current {
 }
 
 .landing .card-header {
-  padding: 24px;
+  padding: 16px;
 }
 
 .landing .card-header + .card-body {
-  padding: 0 24px 24px 24px;
+  padding: 0 12px 12px 12px;
 }
 
 .landing .card-footer {
-  padding: 0 24px 24px 24px;
+  padding: 0 12px 12px 12px;
 }
 
 .landing .card-header a {
   display: block;
-  margin: -24px;
-  padding: 24px;
+  margin: -12px;
+  padding: 12px;
   border-radius: inherit;
   transition: 0.5s;
 }
@@ -843,7 +848,7 @@ a.current {
 }
 
 .landing .card > .card-img-top {
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 #home_first_shortcuts .card-img-top {

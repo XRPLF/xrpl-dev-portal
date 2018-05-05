@@ -16,7 +16,7 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-  <section class="container-fluid py-3 p-sm-5 splash-head">
+  <section class="container-fluid py-3 p-sm-4 splash-head">
     <h1>Learn. Experiment. Integrate. Contribute.</h1>
     <div class="row">
       <div class="blurb col-sm-12">
@@ -26,14 +26,16 @@
     </div>
   </section>
 
-  <section class="container-fluid py-3 p-sm-5 bg-white" id="home_first_shortcuts">
+  <section class="container-fluid py-3 p-sm-4 bg-white" id="home_first_shortcuts">
       <div class="card-deck mb-4">
 
-          <div class="card">
+          <div class="card-spacer d-none d-xl-block pt-5"><img class="card-img-top" src="assets/img/reference-book.svg" alt="(reference book icon)" /></div>
+
+          <div class="card mr-xl-5">
             <div class="card-header bg-dark">
               <h3 class="card-title"><a href="references.html">Go to the References <i class="fa fa-arrow-right" aria-hidden="true"></i></a></h3>
             </div><!--/.card-header-->
-            <img class="card-img-top" src="assets/img/reference-book.svg" alt="(reference book icon)" />
+            <img class="card-img-top d-xl-none" src="assets/img/reference-book.svg" alt="(reference book icon)" />
             <div class="card-body">
               <div class="curated-links">
                 <ul>
@@ -45,11 +47,13 @@
             </div><!--/.card-body-->
           </div><!--/.card-->
 
-          <div class="card">
+          <div class="card-spacer d-none d-xl-block pt-5"><img class="card-img-top" src="assets/img/airplane.svg" alt="(airplane icon)" /></div>
+
+          <div class="card mr-xl-5">
             <div class="card-header bg-dark">
               <h3 class="card-title">Get Started</h3>
             </div><!--/.card-header-->
-            <img class="card-img-top" src="assets/img/airplane.svg" alt="(airplane icon)" />
+            <img class="card-img-top d-xl-none" src="assets/img/airplane.svg" alt="(airplane icon)" />
             <div class="card-body">
               <div class="curated-links">
                 <ul>
@@ -61,11 +65,13 @@
             </div><!--/.card-body-->
           </div><!--/.card-->
 
+          <div class="card-spacer d-none d-xl-block pt-5"><img class="card-img-top" src="assets/img/map.svg" alt="(map icon)" /></div>
+
           <div class="card">
             <div class="card-header bg-dark">
               <h3 class="card-title"><a href="use-cases.html">View Use Cases <i class="fa fa-arrow-right" aria-hidden="true"></i></a></h3>
             </div><!--/.card-header-->
-            <img class="card-img-top" src="assets/img/map.svg" alt="(map icon)" />
+            <img class="card-img-top d-xl-none" src="assets/img/map.svg" alt="(map icon)" />
             <div class="card-body">
               {% set parent_page = pages|selectattr("name", "equalto", "Use Cases")|first %}
               {% set depth = 1 %}
@@ -77,7 +83,7 @@
 
     </section>
 
-    <section class="container-fluid bg-light py-3 p-sm-5">
+    <section class="container-fluid bg-light py-3 p-sm-4">
       <div class="row">
 
         <div class="col-sm-6">
@@ -115,7 +121,7 @@
       </div><!--/.row-->
     </section>
 
-    <section class="container-fluid py-3 p-sm-5" id="xrp_ledger_intro">
+    <section class="container-fluid py-3 p-sm-4" id="xrp_ledger_intro">
       <h2><a href="xrp-ledger-overview.html">XRP Ledger: A decentralized cryptographic ledger</a></h2>
       <div class="row">
         <div class="blurb col-sm-12">
@@ -207,7 +213,7 @@
 
     </section>
 
-    <section class="container-fluid py-3 p-sm-5 bg-light">
+    <section class="container-fluid py-3 p-sm-4 bg-light">
       <h2>Built on the XRP Ledger</h2>
       <div class="blurb">
           <p>Learn about just a few of the types of integrations developers have built on the XRP Ledger.</p>
@@ -267,7 +273,7 @@
 
     </section>
 
-    <section class="container-fluid related-projects py-3 p-sm-5 bg-white">
+    <section class="container-fluid related-projects py-3 p-sm-4 bg-white">
       <h2>Related Projects</h2>
 
       <div class="row">
