@@ -309,7 +309,8 @@ th {
   transition: 0.5s;
 }
 
-.readmore .btn i {
+.readmore .btn i,
+.card-header a i {
   margin: 0 0.2em 0 0.8em;
 }
 
@@ -364,7 +365,7 @@ pre code {
 .code_sample pre code {
   overflow: auto;
   max-height: 14em;
-  background-color: #f5f5f5;
+  background-color: #E1E4E8;
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
@@ -461,10 +462,11 @@ a.current {
   padding: 16px 32px 16px 24px;
   display: block;
   margin: 0 -24px 0 -24px;
+  font-weight: 400;
 }
 .landing .card .level-1 a:hover,
 .landing .card .curated-links li a:hover {
-  background-color: #F5F7F9;
+  background-color: #D8EEFC;
   text-decoration: none;
 }
 .landing .card .level-1 a:hover:after,
@@ -474,7 +476,7 @@ a.current {
   position: absolute;
   right: -8px;
   top: 16px;
-  color: #C9CDD1;
+  color: #0D294E;
 }
 
 .level-1:first-child {
@@ -779,7 +781,8 @@ a.current {
   margin-bottom: 0;
 }
 
-.landing a.card {
+.landing a.card,
+.landing .card {
   color: #212529;
   box-shadow: 0px 1px 3px rgba(35, 41, 47, 0.24);
   border-radius: 8px;
@@ -818,22 +821,34 @@ a.current {
   padding: 0 24px 24px 24px;
 }
 
-.landing .card > .card-img-top {
-  padding: 0 24px;
+.landing .card-header a {
+  display: block;
+  margin: -24px;
+  padding: 24px;
+  border-radius: inherit;
+  transition: 0.5s;
 }
 
-#home_first_shortcuts .card {
-  border-width: 0;
-  background: none;
+.landing .card-header.bg-dark {
+  color: white;
+}
+
+.landing .card-header.bg-dark a:hover {
+  text-decoration: none;
+  color: #FF9900;
+}
+
+.landing .ref-blurb {
+  margin-top: 1rem;
+}
+
+.landing .card > .card-img-top {
+  padding: 0 24px;
 }
 
 #home_first_shortcuts .card-img-top {
   height: 130px;
   width: 130px;
-}
-
-#home_first_shortcuts .card-header {
-  padding-bottom: 0;
 }
 
 #xrp_ledger_intro a:hover {
