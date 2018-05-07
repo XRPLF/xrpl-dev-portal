@@ -3,11 +3,11 @@
 {% block main %}
   {% if content %}
 
-  <section class="p-3">
+  <article class="p-3">
       <div class='content'>
         {{ content }}
       </div>
-  </section>
+  </article>
 
   <section class="p-3">
     <h2>Children of this page:</h2>
@@ -18,14 +18,13 @@
 
   {% else %}
   <section class="p-3">
-    <h1 class="main-page-header">{{ currentpage.name }}</h1>
-
-    <div class="content">
+    <article class="content">
+      <h1 id="main-page-header">{{ currentpage.name }}</h1>
       <p class="blurb">{{ currentpage.blurb }}</p>
       {% set show_blurbs = True %}
       {% set depth= 1 %}
       {% include 'template-page-children.html' %}
-    </div>
+    </article>
   </section>
   {% endif %}
 {% endblock %}

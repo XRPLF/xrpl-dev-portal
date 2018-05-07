@@ -3,11 +3,12 @@
 {% block mainclasses %}landing{% endblock %}
 
 {% block main %}
-  <section class="container-fluid px-5 pb-3 pt-0">
+  <section class="container-fluid bg-white p-3 px-sm-5">
       <h1 class="main-page-header">References</h1>
+      <p class="blurb">{{currentpage.blurb}}</p>
   </section>
 
-  <section class="container-fluid bg-light p-5">
+  <section class="container-fluid bg-light p-3 px-sm-5">
 
     <h2><a href="rippled-api.html">rippled API Reference</a></h2>
     <div class="blurb">

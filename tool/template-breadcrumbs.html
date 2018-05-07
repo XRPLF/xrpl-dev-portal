@@ -1,4 +1,4 @@
-<nav class="breadcrumbs-wrap px-3 px-sm-5" aria-label="breacrumb">
+<nav class="breadcrumbs-wrap {% if currentpage.sidebar == 'disabled' %}p-3 px-sm-5{% else %}p-3{% endif %}" aria-label="breacrumb">
   <ul class="breadcrumb bg-white">
     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
     {% if currentpage.funnel and currentpage != pages|selectattr('funnel', 'equalto', currentpage.funnel)|first %}

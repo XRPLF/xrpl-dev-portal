@@ -25,8 +25,9 @@ th {
 
 /* Top navigation ----------------------------------------------------------- */
 
-.navbar {
+.navbar.fixed-top {
   font-weight: 300;
+  border-bottom: 1px solid #C9CDD1;
 }
 
 .navbar-brand {
@@ -135,12 +136,14 @@ th {
   margin-top: 32px;
   line-height: 1.2;
 }
-.content h1:first-child {
+.content h1:first-child,
+.landing section:first-of-type h1:first-child {
   margin-top: 0;
   line-height: 1.2;
 }
-.content h1:first-child:before {
-  margin-top: -100px;
+.content h1:first-child:before,
+.landing section:not(.splash-head):first-of-type h1:first-child:before {
+  margin-top: -90px;
 }
 .content h2 {
   margin-top: 28px;
@@ -555,6 +558,7 @@ a.current {
 }
 .breadcrumbs-wrap .breadcrumb {
   padding: 0;
+  margin-bottom: 0;
 }
 
 
