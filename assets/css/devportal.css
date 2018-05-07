@@ -480,6 +480,28 @@ a.current {
   color: #0D294E;
 }
 
+.landing .card .level-2 {
+  position: relative;
+}
+.landing .card .level-2 a {
+  padding: 8px 12px 8px 32px;
+  display: block;
+  margin: 0 -12px 0 -12px;
+  font-weight: 400;
+}
+.landing .card .level-2 a:hover {
+  background-color: #D8EEFC;
+  text-decoration: none;
+}
+.landing .card .level-2 a:hover:after {
+  content: "\f105"; /* fontawesome angle-right */
+  font-family: FontAwesome;
+  position: absolute;
+  right: 0;
+  top: 8px;
+  color: #0D294E;
+}
+
 .level-1:first-child {
   margin-top: 0;
 }
@@ -843,7 +865,7 @@ a.current {
   color: #FF9900;
 }
 
-.landing .ref-blurb {
+.landing .card .blurb {
   margin-top: 1rem;
 }
 
