@@ -866,7 +866,8 @@ a.current {
   color: #FF9900;
 }
 
-.landing .card .blurb {
+.landing .card .blurb,
+.child-blurb {
   margin-top: 1rem;
 }
 

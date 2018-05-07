@@ -1,20 +1,31 @@
 {% extends "template-base.html" %}
 
 {% block main %}
+  {% if content %}
+
   <section class="p-3">
-    {% if not content %}
+      <div class='content'>
+        {{ content }}
+      </div>
+  </section>
+
+  <section class="p-3">
+    <h2>Children of this page:</h2>
+    {% set show_blurbs = True %}
+    {% set depth= 1 %}
+    {% include 'template-page-children.html' %}
+  </section>
+
+  {% else %}
+  <section class="p-3">
     <h1 class="main-page-header">{{ currentpage.name }}</h1>
-    {% endif %}
 
-    <div class='content'>
-      {{ content }}
-    </div>
-
-  </section>
-
-  <section class="p-3 bg-light">
-      <h2>Children of this page:</h2>
+    <div class="content">
+      <p class="blurb">{{ currentpage.blurb }}</p>
       {% set show_blurbs = True %}
+      {% set depth= 1 %}
       {% include 'template-page-children.html' %}
+    </div>
   </section>
+  {% endif %}
 {% endblock %}
