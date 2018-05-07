@@ -1,5 +1,10 @@
-// Variable overrides here
+// Bootstrap SASS styling. Use a SASS compiler (such as sassc) to parse this
+// and write the output to {repo_top}/assets/vendor/bootstrap.css
+// Requires node_modules/bootstrap/scss/bootstrap to contain the Bootstrap
+// source files.
 
+
+// Override some Bootstrap variables
 $primary:       #1db4ff; // "Ripple Blue" (aka "Blue-1")
 $secondary:     #0A93EB; // "Blue-2"
 $light:         #e1e4e8; // "Black-20"
