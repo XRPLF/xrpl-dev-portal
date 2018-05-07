@@ -56,13 +56,13 @@ th {
 
 .navbar .navbar-nav .active a {
   font-weight: 700;
-  color: #333;
-  background-color: #eee;
+  color: #3B4147;
+  background-color: #E1E5E8;
 
 }
 .navbar .active-parent a {
   font-weight: 700;
-  background-color: #eee;
+  background-color: #E1E5E8;
 }
 
 #navbar-search {
@@ -366,7 +366,7 @@ pre code {
   overflow: auto;
   max-height: 14em;
   background-color: #E1E4E8;
-  border: 1px solid #cccccc;
+  border: 1px solid #C9CDD1;
   border-radius: 4px;
 }
 .code_sample pre code.expanded {
@@ -533,7 +533,7 @@ a.current {
   position: fixed;
   bottom: 15px;
   right: 30px;
-  background-color: #333;
+  background-color: #3B4147;
   font-weight: 700;
   z-index: 1000;
   color: white;
@@ -568,11 +568,28 @@ a.current {
   list-style-type: none;
 }
 
-#sidenav a {
+#sidenav a,
+.sidenav_parent a {
   text-decoration: none;
+  color: black;
 }
-#sidenav .card-body a:hover {
+#sidenav a.active-parent {
+  color: #3B4147;
+  font-weight: 700;
+}
+#sidenav a:hover,
+.sidenav_parent a:hover {
   text-decoration: underline;
+  color: #1db4ff;
+}
+#sidenav a.active,
+#sidenav a.active:hover,
+.sidenav_parent a.active,
+.sidenav_parent a.active:hover {
+  color: #0F72E5;
+  font-weight: 700;
+  cursor: default;
+  text-decoration: none;
 }
 
 #sidenav .card + .card {
@@ -581,7 +598,7 @@ a.current {
 
 #sidenav .card {
   border-width: 0;
-  border-color: #eee;
+  border-color: #E1E5E8;
 }
 
 #sidenav .card-body {
@@ -593,10 +610,7 @@ a.current {
 }
 
 #sidenav .card.active {
-  background-color: #f8f8f8;
-}
-#sidenav .card:hover {
-  background-color: #f6f6f6;
+  background-color: #F1F5F8;
 }
 
 #sidenav .card-header {
@@ -608,7 +622,7 @@ a.current {
 #sidenav .card {
   padding: 0;
   border-radius: 0;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid #C9CDD1;
 }
 
 #sidenav .card-header h5 {
@@ -619,17 +633,6 @@ a.current {
 #sidenav .card-header h5 .sidenav_cat_title {
   display: block;
   padding: 16px 15px 16px 55px;
-}
-#sidenav .card-header h5 a.sidenav_cat_title {
-  color: #27a2db;
-}
-#sidenav .card-header h5 .sidenav_cat_title.active {
-  color: #333;
-  font-weight: 700;
-  cursor: default;
-}
-#sidenav .card-header h5 .sidenav_cat_title.active-parent {
-  color: #333;
 }
 
 #sidenav .card-header .sidenav_cat_toggler {
@@ -642,7 +645,10 @@ a.current {
     transition: background-color 0.5s;
 }
 #sidenav .card-header .sidenav_cat_toggler.collapsed {
-  background-color: #ccc;
+  background-color: #C9CDD1;
+}
+#sidenav .card-header .sidenav_cat_toggler:hover {
+  text-decoration: none;
 }
 
 #sidenav .card-header .sidenav_cat_toggler:before {
@@ -656,18 +662,13 @@ a.current {
     content: "+";
 }
 
-.funnel-sidebar a.active {
-  color: #333;
-  cursor: default;
-}
-
 .xrp-ledger-dev-portal.sidebar-primary .sidebar {
   padding-right: 0;
   padding-left: 0;
 }
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
-  border-left: 1px solid #cccccc;
+  border-left: 1px solid #C9CDD1;
   padding-left: 40px;
   min-height: 700px;
 }
@@ -705,7 +706,7 @@ a.current {
 }
 
 .card .sidebar_pagelist a:hover {
-  color: #333;
+  color: #3B4147;
 }
 
 .subcat-title.active-parent {
@@ -724,15 +725,10 @@ a.current {
   padding: 15px 16px 15px 10px;
 }
 
-.sidenav_parent a.active {
-  color: #333;
-  cursor: default;
-}
-
 /* Edit on GitHub link ------------------------------------------------------ */
 .github-edit-wrap {
   background-image: linear-gradient(180deg, #fafafa 0%, #ddd 90%);
-  border: 1px solid #ccc;
+  border: 1px solid #C9CDD1;
   border-radius: 5px;
 }
 .github-edit-wrap:hover {
@@ -757,7 +753,7 @@ a.current {
 
 /* Use Cases ---------------------------------------------------------------- */
 .use-case-step-num {
-  border: 1px solid #333;
+  border: 1px solid #3B4147;
   border-radius: 50%;
   padding: 0.9rem;
   position: absolute;
@@ -779,7 +775,7 @@ a.current {
   margin-bottom: -.6rem;
   padding-left: 2.5rem;
   margin-left: 2.5rem;
-  border-left: 1px dashed #333;
+  border-left: 1px dashed #3B4147;
 }
 .use-case h2 {
   margin-left: 5rem;
