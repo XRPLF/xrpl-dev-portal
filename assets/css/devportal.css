@@ -794,14 +794,19 @@ a.current {
   font-size: 32px;
 }
 
-.landing h3 {
+.landing h3,
+#test-net-servers h3 {
   font-size: 20px;
   line-height: 20px;
   font-weight: 700;
 }
 
-.landing h3.card-title {
+.card-header.bg-dark h3.card-title {
   margin-bottom: 0;
+}
+
+#test-net-servers pre {
+  overflow-x: auto;
 }
 
 .landing a.card,
@@ -840,7 +845,7 @@ a.current {
   padding: 16px;
 }
 
-.landing .card-header + .card-body {
+.landing .card-header:not(.bg-dark) + .card-body {
   padding: 0 12px 12px 12px;
 }
 
@@ -856,7 +861,7 @@ a.current {
   transition: 0.5s;
 }
 
-.landing .card-header.bg-dark {
+.card-header.bg-dark {
   color: white;
 }
 
@@ -988,6 +993,52 @@ a.current {
   .btn {
     white-space: normal;
   }
+}
+
+/* Test Net Faucet stuff ---------------------------------------------------- */
+
+/* Progress spinner animation */
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+
+.page-test-net .throbber {
+    -webkit-animation: rotating 1s linear infinite;
+    -moz-animation: rotating 1s linear infinite;
+    -ms-animation: rotating 1s linear infinite;
+    -o-animation: rotating 1s linear infinite;
+    animation: rotating 1s linear infinite;
+    width: 25px;height:25px;
 }
 
 /* Print styles ------------------------------------------------------------- */

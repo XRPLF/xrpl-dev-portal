@@ -1,6 +1,7 @@
 input#domain {
   padding: 10px 20px;
-  width: 255px;
+  margin-bottom: 16px;
+  width: 100%;
 }
 
 .result-title {
