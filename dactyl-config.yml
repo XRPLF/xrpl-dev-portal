@@ -45,9 +45,12 @@ targets:
         github_forkurl: https://github.com/mDuo13/ripple-dev-portal
         github_branch: 5layertest
         recently_updated:
-            - introduction.html #TODO: update the recently_updated
-            # - tutorial-checks-send.html
-            # - reference-amendments.html
+            - html: introduction.html
+              date: 2018-05-07
+            # - html: capacity-planning.html
+            #   date: 2018-05-04
+            - html: reliable-transaction-submission.html
+              date: 2018-04-16
 
 pages:
 

@@ -74,8 +74,8 @@
             <div class="curated-links">
               <ol>
                 {% for link in target.recently_updated %}
-                  {% set linkpage = pages|selectattr("html", "equalto", link)|first %}
-                  <li><a href="{{linkpage.html}}">{{linkpage.name}}</a></li>
+                  {% set linkpage = pages|selectattr("html", "equalto", link.html)|first %}
+                  <li><a href="{{linkpage.html}}">{{linkpage.name}}{% if link.date is defined %} <span class="recently-updated-date">({{link.date}})</span>{% endif %}</a></li>
                 {% endfor %}
               </ol>
             </div><!--/.curated-links-->

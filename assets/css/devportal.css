@@ -898,6 +898,13 @@ a.current {
   margin-top: 5px;
 }
 
+.recently-updated-date {
+  font-style: italic;
+  color: #6B7075;
+  font-size: 13px;
+  padding-left: 8px;
+}
+
 .splash-head {
   background-color: #102b3e;
   background-image: url("../img/home-bg-cubes.jpg");
