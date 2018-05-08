@@ -45,9 +45,12 @@ targets:
         github_forkurl: https://github.com/mDuo13/ripple-dev-portal
         github_branch: 5layertest
         recently_updated:
-            - introduction.html #TODO: update the recently_updated
-            # - tutorial-checks-send.html
-            # - reference-amendments.html
+            - html: introduction.html
+              date: 2018-05-07
+            # - html: capacity-planning.html
+            #   date: 2018-05-04
+            - html: reliable-transaction-submission.html
+              date: 2018-04-16
 
 pages:
 
@@ -64,7 +67,6 @@ pages:
     -   name: Concepts
         funnel: Docs
         doc_type: Concepts
-        md: concepts/concepts.md
         html: concepts.html
         template: template-landing-children.html
         blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
@@ -75,9 +77,9 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        md: concepts/introduction/introduction.md
         html: introduction.html
         template: template-landing-children.html
+        blurb: The XRP Ledger is a decentralized cryptographic ledger powered by a network of peer-to-peer rippled servers. This section covers basic concepts that help you learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
         targets:
             - local
 
@@ -109,12 +111,13 @@ pages:
         targets:
             - local
 
-    -   md: concepts/payment-system-basics/payment-system-basics.md
+    -   name: Payment System Basics
         html: payment-system-basics.html
         funnel: Docs
         doc_type: Concepts
         category: Payment System Basics
         template: template-landing-children.html
+        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system.
         targets:
             - local
 
@@ -149,12 +152,24 @@ pages:
         targets:
             - local
 
-    -   md: concepts/complex-payment-types/complex-payment-types.md
+    -   md: concepts/payment-system-basics/transaction-cost.md
+        html: transaction-cost.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
+        targets:
+            - local
+
+    # TODO: "Source and Destination Tags" stand-alone document
+
+    -   name: Complex Payment Types
         html: complex-payment-types.html
         funnel: Docs
         doc_type: Concepts
         category: Complex Payment Types
         template: template-landing-children.html
+        blurb: In addition to simple point-to-point XRP Payments, the XRP Ledger supports a number of complex payment types for a variety of use cases and situations.
         targets:
             - local
 
@@ -163,6 +178,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Complex Payment Types
+        blurb: Checks let users to create deferred payments that can be canceled or cashed by the intended recipients.
         targets:
             - local
 
@@ -171,6 +187,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Complex Payment Types
+        blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
         targets:
             - local
 
@@ -179,6 +196,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Complex Payment Types
+        blurb: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
         targets:
             - local
 
@@ -190,6 +208,7 @@ pages:
         doc_type: Concepts
         category: Issued Currencies
         template: template-landing-children.html
+        blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger.
         targets:
             - local
 
@@ -211,6 +230,7 @@ pages:
         doc_type: Concepts
         category: Decentralized Exchange
         template: template-landing-children.html
+        blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other.
         targets:
             - local
 
@@ -222,6 +242,7 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         template: template-landing-children.html
+        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
         targets:
             - local
 
@@ -232,6 +253,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
+        blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
         targets:
             - local
 
@@ -242,6 +264,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
+        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
         targets:
             - local
 
@@ -740,8 +763,8 @@ pages:
         targets:
             - local
 
-    -   md: use-cases/listing-xrp.md
-        html: listing-xrp.html
+    -   md: use-cases/list-xrp-in-your-exchange.md
+        html: list-xrp-in-your-exchange.html
         funnel: Use Cases
         template: template-use-case.html
         useful_background:

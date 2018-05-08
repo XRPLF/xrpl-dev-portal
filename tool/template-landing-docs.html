@@ -1,16 +1,16 @@
 {% extends "template-base.html" %}
 
-{% block bodyclasses %}landing{% endblock %}
+{% block mainclasses %}landing{% endblock %}
 
 {% block main %}
-    <section class="container-fluid px-5 pb-5 pt-0">
-      <div class="row">
-        <h1 class="main-page-header">XRP Ledger Documentation</h1>
-        <div class="blurb col-sm-12">
-          <p>Dive into our documentation and start integrating with the XRP Ledger.</p>
-        </div>
+    <section class="container-fluid bg-white p-3 px-sm-5">
+      <h1 class="main-page-header">XRP Ledger Documentation</h1>
+      <div class="blurb">
+        <p>Dive into our documentation and start integrating with the XRP Ledger.</p>
       </div>
+    </section>
 
+    <section class="container-fluid bg-light p-3 px-sm-5">
       <div class="card-deck p-2">
       {% set doc_types = [] %}
       {% for page in pages %}
@@ -18,12 +18,12 @@
           {% set doc_type_top = pages|selectattr('doc_type', 'equalto', page.doc_type)|first %}
 
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title"><a href="{{doc_type_top.html}}">{{doc_type_top.name}}</a></h3>
+              <div class="card-header bg-dark">
+                <h3 class="card-title"><a href="{{doc_type_top.html}}">{{doc_type_top.name}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a></h3>
               </div><!--/.card-header-->
               <div class="card-body">
                 {% if page.blurb is defined %}
-                  <p class="doc-type-blurb">{{page.blurb}}</p>
+                  <p class="blurb">{{page.blurb}}</p>
                 {% endif %}
                 {% set parent_page = doc_type_top %}
                 {% set depth = 1.5 %}
@@ -38,7 +38,7 @@
     <div class="card-deck p-2">
 
         <div class="card">
-          <div class="card-header">
+          <div class="card-header bg-dark">
             <h3 class="card-title">Get Started</h3>
           </div><!--/.card-header-->
           <div class="card-body">
@@ -53,31 +53,31 @@
         </div><!--/.card-->
 
         <div class="card">
-          <div class="card-header">
+          <div class="card-header bg-dark">
             <h3 class="card-title">Popular Docs</h3>
           </div><!--/.card-header-->
           <div class="card-body">
             <div class="curated-links">
               <ol>
-                <li><a href="reference-rippled-public.html">rippled API Public Methods Reference</a></li>
-                <li><a href="concept-accounts.html">Accounts</a></li>
-                <li><a href="rippled-setup.html">rippled Server Setup</a></li>
-                <li><a href="reference-rippleapi.html">RippleAPI for JavaScript</a></li>
+                <li><a href="public-rippled-methods.html">rippled API Public Methods Reference</a></li>
+                <li><a href="accounts.html">Accounts</a></li>
+                <li><a href="install-rippled.html">Install rippled</a></li>
+                <li><a href="reference-rippleapi.html">RippleAPI for JavaScript Reference</a></li>
               </ol>
             </div><!--/.curated-links-->
           </div><!--/.card-body-->
         </div><!--/.card-->
 
         <div class="card">
-          <div class="card-header">
+          <div class="card-header bg-dark">
             <h3 class="card-title">Recently Updated</h3>
           </div><!--/.card-header-->
           <div class="card-body">
             <div class="curated-links">
               <ol>
                 {% for link in target.recently_updated %}
-                  {% set linkpage = pages|selectattr("html", "equalto", link)|first %}
-                  <li><a href="{{linkpage.html}}">{{linkpage.name}}</a></li>
+                  {% set linkpage = pages|selectattr("html", "equalto", link.html)|first %}
+                  <li><a href="{{linkpage.html}}">{{linkpage.name}}{% if link.date is defined %} <span class="recently-updated-date">({{link.date}})</span>{% endif %}</a></li>
                 {% endfor %}
               </ol>
             </div><!--/.curated-links-->
@@ -88,7 +88,7 @@
     </section>
 
     <section class="container-fluid p-3 p-lg-5">
-      <h2>Full Documentation Index</h2>
+      <h2 id="full-doc-index">Full Documentation Index</h2>
       <div class="row">
         <div class="col-md-8">
           {% set parent_page = currentpage %}

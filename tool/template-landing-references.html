@@ -1,18 +1,17 @@
 {% extends "template-base.html" %}
 
-{% block bodyclasses %}landing{% endblock %}
+{% block mainclasses %}landing{% endblock %}
 
 {% block main %}
-  <section class="container-fluid px-5 pb-3 pt-0">
-    <div class="row">
+  <section class="container-fluid bg-white p-3 px-sm-5">
       <h1 class="main-page-header">References</h1>
-    </div>
+      <p class="blurb">{{currentpage.blurb}}</p>
   </section>
 
-  <section class="container-fluid bg-light p-5">
+  <section class="container-fluid bg-light p-3 px-sm-5">
 
-    <h2><a href="reference-rippled-api.html">rippled API Reference</a></h2>
-    <div class="blurb col-sm-12">
+    <h2><a href="rippled-api.html">rippled API Reference</a></h2>
+    <div class="blurb">
       <p>Use the <code>rippled</code> API to communicate with a <code>rippled</code> server, the core peer-to-peer server that manages the XRP Ledger.</p>
     </div>
 
@@ -21,9 +20,8 @@
         {% for page in pages|selectattr("supercategory", "equalto", "rippled API")|list %}
         {% if loop.index != 1 and page == pages|selectattr("category", "equalto", page.category)|first %}
           <div class="card">
-            {#{% set parent_page = pages|selectattr("html", "equalto", "reference-rippled-public.html")|first %}#}
-            <div class="card-header">
-              <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
+            <div class="card-header bg-dark">
+              <h3 class="card-title"><a href="{{page.html}}">{{page.name}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a></h3>
             </div><!--/.card-header-->
             <div class="card-body">
               <p class="ref-blurb">{{page.blurb}}</p>
@@ -34,7 +32,7 @@
           </div><!--/.card-->
 
           {# go to new row after admin methods #}
-          {% if page.html == "reference-rippled-admin.html" %}
+          {% if page.html == "admin-rippled-methods.html" %}
       </div><!--/.card-deck-->
       <div class="card-deck p-2">
           {% endif %}

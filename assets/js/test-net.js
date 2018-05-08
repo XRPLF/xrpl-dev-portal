@@ -35,5 +35,5 @@ function rippleTestNetCredentials() {
 }
 
 $(document).ready(function() {
-  $('.cta_readmore').click(rippleTestNetCredentials);
+  $('#generate-creds-button').click(rippleTestNetCredentials);
 });

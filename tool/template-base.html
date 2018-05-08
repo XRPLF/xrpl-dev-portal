@@ -31,6 +31,16 @@
     <!-- fontawesome icons -->
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118874867-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-118874867-1');
+    </script>
+
+
     {% block head %}
 
     {% endblock %}
@@ -79,7 +89,7 @@
       {% endif %}
 
       <!-- main column -->
-      <main class="main {% if currentpage.sidebar == "disabled" %}col-md-12{% else %}col-md-7 col-lg-6{% endif %} order-md-3 p-0" role="main" id="main_content_body">
+      <main class="main {% if currentpage.sidebar == "disabled" %}col-md-12{% else %}col-md-7 col-lg-6{% endif %} order-md-3 p-0 {% block mainclasses %}{% endblock %}" role="main" id="main_content_body">
           {% block breadcrumbs %}
             {% include 'template-breadcrumbs.html' %}
           {% endblock %}

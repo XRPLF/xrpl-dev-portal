@@ -41,7 +41,7 @@
     {% if onepage == parent %}{# pass #}
     {% elif next_level_field == None or (onepage[next_level_field] is undefined and next_level_field != "supercategory") %}
       {# direct child, print it! #}
-      <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.name}}</a>{% if show_blurbs and onepage.blurb is defined %}<p class="blurb child-blurb">{{onepage.blurb}}</p>{% endif %}</li>
+      <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.name}}</a>{% if show_blurbs and onepage.blurb is defined and indent_level == 1%}<p class="blurb child-blurb">{{onepage.blurb}}</p>{% endif %}</li>
 
     {% elif onepage[next_level_field] is undefined and next_level_field == "supercategory" %}
       {# special case, might need to skip "supercategory" #}
@@ -53,7 +53,7 @@
           {% set next_level_children = thosepages|selectattr("category",
               "equalto", onepage.category)|list %}
           {% set next_level_parent = next_level_children|first %}
-          <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a>{% if show_blurbs and next_level_parent.blurb is defined %}<p class="blurb child-blurb">{{next_level_parent.blurb}}</p>{% endif %}</li>
+          <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a>{% if show_blurbs and next_level_parent.blurb is defined and indent_level == 1 %}<p class="blurb child-blurb">{{next_level_parent.blurb}}</p>{% endif %}</li>
           {% if indent_level+1 <= depth_limit and next_level_field != None %}
             {# Recurse! #}
             {% set field_after = "subcategory" %}
@@ -64,7 +64,7 @@
 
       {% else %}
         <!-- Template WARNING: no category for page '{{onepage.name}}'? -->
-        <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.html}}</a>{% if show_blurbs and onepage.blurb is defined %}<p class="blurb child-blurb">{{onepage.blurb}}</p>{% endif %}</li>
+        <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.html}}</a>{% if show_blurbs and onepage.blurb is defined and indent_level == 1 %}<p class="blurb child-blurb">{{onepage.blurb}}</p>{% endif %}</li>
       {% endif %}
 
     {% elif onepage[next_level_field] is defined %}
@@ -73,7 +73,7 @@
         {% set next_level_children = thosepages|selectattr(next_level_field,
             "equalto", onepage[next_level_field])|list %}
         {% set next_level_parent = next_level_children|first %}
-        <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a>{% if show_blurbs and next_level_parent.blurb is defined %}<p class="blurb child-blurb">{{next_level_parent.blurb}}</p>{% endif %}</li>
+        <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a>{% if show_blurbs and next_level_parent.blurb is defined and indent_level == 1 %}<p class="blurb child-blurb">{{next_level_parent.blurb}}</p>{% endif %}</li>
         {% if (indent_level+1 <= depth_limit and next_level_field != None)
           or (next_level_field == "supercategory" and depth_limit == 1.5) %}
           {# Recurse! #}
