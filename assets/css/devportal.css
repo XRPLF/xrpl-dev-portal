@@ -928,6 +928,10 @@ a.current {
   text-shadow: 0px 1px 2px #171C21;
 }
 
+.splash-head p .btn {
+  text-shadow: none;
+}
+
 .splash-head code {
   color: white;
 }
