@@ -1,4 +1,4 @@
-## PayChannel
+# PayChannel
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L134 "Source")
 
 _(Requires the [PayChan Amendment](reference-amendments.html#paychan).)_
@@ -11,9 +11,7 @@ When a payment channel expires, at first it remains on the ledger, because only 
 
 For an example of using payment channels, see the [Payment Channels Tutorial](tutorial-paychan.html).
 
-<!--{# TODO: provide cross-references to tutorial, concept, and tx types when they are ready #}-->
-
-Example `PayChannel` object:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -36,6 +34,8 @@ Example `PayChannel` object:
 }
 ```
 
+## {{currentpage.name}} Fields
+
 A `PayChannel` object has the following fields:
 
 | Name                | JSON Type | [Internal Type][] | Description            |
@@ -53,16 +53,15 @@ A `PayChannel` object has the following fields:
 | `Flags`             | Number    | UInt32            | A bit-map of boolean flags enabled for this payment channel. Currently, the protocol defines no flags for `PayChannel` objects. |
 | `Expiration`        | Number    | UInt32            | _(Optional)_ The mutable expiration time for this payment channel, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). The channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](#header-format). See [Setting Channel Expiration](#setting-channel-expiration) for more details. |
 | `CancelAfter`       | Number    | UInt32            | _(Optional)_ The immutable expiration time for this payment channel, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). This channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](#header-format). This is optionally set by the transaction that created the channel, and cannot be changed. |
-| `SourceTag`           | Number    | UInt32            | _(Optional)_ An arbitrary tag to further specify the source for this payment channel, such as a hosted recipient at the owner's address. |
-| `DestinationTag`      | Number    | UInt32            | _(Optional)_ An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
+| `SourceTag`         | Number    | UInt32            | _(Optional)_ An arbitrary tag to further specify the source for this payment channel, such as a hosted recipient at the owner's address. |
+| `DestinationTag`    | Number    | UInt32            | _(Optional)_ An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
 
-[XRP, in drops]: reference-rippled.html#specifying-currency-amounts
 
-### Setting Channel Expiration
+## Setting Channel Expiration
 
 The `Expiration` field of a payment channel is the mutable expiration time, in contrast to the immutable expiration time represented by the `CancelAfter` field. The expiration of a channel is always considered relative to the [`close_time` field](#header-format) of the previous ledger. The `Expiration` field is omitted when a `PayChannel` object is created. There are several ways the `Expiration` field of a `PayChannel` object can be updated, which can be summarized as follows: a channel's source address can set the `Expiration` of the channel freely as long as the channel always remains open at least `SettleDelay` seconds after the first attempt to close it.
 
-#### Source Address
+### Source Address
 
 The source address can set the `Expiration` directly with the PaymentChannelFund transaction type. The new value must not be earlier than whichever of the following values is earliest:
 
@@ -78,16 +77,16 @@ The source address can also set the `Expiration` with the `tfClose` flag of the 
 
 The source address can remove the `Expiration` with the `tfRenew` flag of the PaymentChannelClaim transaction type.
 
-#### Destination Address
+### Destination Address
 
 The destination address cannot set the `Expiration` field. However, the destination address can use the PaymentChannelClaim's `tfClose` flag to close a channel immediately.
 
-#### Other Addresses
+### Other Addresses
 
 If any other address attempts to set an `Expiration` field, the transaction fails with the `tecNO_PERMISSION` error code. However, if the channel is already expired, the transaction causes the channel to close and results in `tesSUCCESS` instead.
 
 
-### PayChannel ID Format
+## PayChannel ID Format
 
 The ID of a `PayChannel` object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
@@ -95,3 +94,8 @@ The ID of a `PayChannel` object is the [SHA-512Half](#sha512half) of the followi
 * The AccountID of the source account
 * The AccountID of the destination account
 * The Sequence number of the transaction that created the channel
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

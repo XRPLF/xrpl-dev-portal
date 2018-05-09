@@ -1,9 +1,9 @@
-## Amendments
+# Amendments
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
 
 The `Amendments` object type contains a list of [Amendments](concept-amendments.html) that are currently active. Each ledger version contains **at most one** `Amendments` object.
 
-Example `Amendments` object:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -27,6 +27,8 @@ Example `Amendments` object:
 }
 ```
 
+## {{currentpage.name}} Fields
+
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|-------------------|-------------|
 | `Amendments`      | Array     | STI_VECTOR256     | _(Optional)_ Array of 256-bit [amendment IDs](concept-amendments.html#about-amendments) for all currently-enabled amendments. If omitted, there are no enabled amendments. |
@@ -45,7 +47,7 @@ In the [amendment process](concept-amendments.html#amendment-process), a consens
 
 **Note:** Technically, all transactions in a ledger are processed based on which amendments are enabled in the ledger version immediately before it. While applying transactions to a ledger version where an amendment becomes enabled, the rules don't change mid-ledger. After the ledger is closed, the next ledger uses the new rules as defined by any new amendments that applied.
 
-### Amendments ID Format
+## Amendments ID Format
 
 The `Amendments` object ID is the hash of the `Amendments` space key (`0x0066`) only. This means that the ID of the `Amendments` object in a ledger is always:
 
@@ -54,3 +56,8 @@ The `Amendments` object ID is the hash of the `Amendments` space key (`0x0066`) 
 ```
 
 (Don't mix up the ID of the `Amendments` ledger object type with the Amendment ID of an individual amendment.)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

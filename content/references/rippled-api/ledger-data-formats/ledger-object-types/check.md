@@ -1,9 +1,11 @@
-## Check
+# Check
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L158 "Source")
 
 _Requires the [Checks Amendment](reference-amendments.html#checks)._
 
-A `Check` object describes a check, similar to a paper personal check, which can be cashed by its destination to get money from its sender. (The potential payment has already been approved by its sender, but no money moves until it is cashed. Unlike an [Escrow](concept-escrow.html), the money for a Check is not set aside, so cashing the Check could fail due to lack of funds.) Example `Check` object:
+A `Check` object describes a check, similar to a paper personal check, which can be cashed by its destination to get money from its sender. (The potential payment has already been approved by its sender, but no money moves until it is cashed. Unlike an [Escrow](concept-escrow.html), the money for a Check is not set aside, so cashing the Check could fail due to lack of funds.)
+
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -23,6 +25,8 @@ A `Check` object describes a check, similar to a paper personal check, which can
   "index": "49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0"
 }
 ```
+
+## {{currentpage.name}} Fields
 
 A `Check` object has the following fields:
 
@@ -44,7 +48,7 @@ A `Check` object has the following fields:
 | `SourceTag`         | Number           | UInt32            | _(Optional)_ An arbitrary tag to further specify the source for this Check, such as a hosted recipient at the sender's address. |
 
 
-### Check ID Format
+## Check ID Format
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
 The ID of a `Check` object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
@@ -52,3 +56,8 @@ The ID of a `Check` object is the [SHA-512Half](#sha512half) of the following va
 * The Check space key (`0x0043`)
 * The AccountID of the sender of the [CheckCreate transaction][] that created the `Check` object
 * The Sequence number of the [CheckCreate transaction][] that created the `Check` object
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

@@ -1,4 +1,4 @@
-## Escrow
+# Escrow
 [[Source]<br>](https://github.com/ripple/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
 
 _(Requires the [Escrow Amendment](reference-amendments.html#escrow).)_
@@ -10,7 +10,7 @@ An `Escrow` object is associated with two addresses:
 - The owner, who provides the XRP when creating the `Escrow` object. If the held payment is canceled, the XRP returns to the owner.
 - The destination, where the XRP is paid when the held payment succeeds. The destination can be the same as the owner.
 
-Example `Escrow` object:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -32,6 +32,8 @@ Example `Escrow` object:
 }
 ```
 
+## {{currentpage.name}} Fields
+
 An `Escrow` object has the following fields:
 
 | Name              | JSON Type | [Internal Type][] | Description |
@@ -52,10 +54,15 @@ An `Escrow` object has the following fields:
 | `PreviousTxnLgrSeq` | Number | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this object. |
 
 
-### Escrow ID Format
+## Escrow ID Format
 
 The ID of an `Escrow` object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
 * The Escrow space key (`0x0075`)
 * The AccountID of the sender of the [EscrowCreate transaction][] that created the `Escrow` object
 * The Sequence number of the [EscrowCreate transaction][] that created the `Escrow` object
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
