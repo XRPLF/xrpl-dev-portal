@@ -767,7 +767,9 @@ pages:
         html: run-a-rippled-validator.html
         funnel: Use Cases
         template: template-use-case.html
-        # jha TODO - add useful_background
+        useful_background:
+            - amendments.html
+            - the-rippled-server.html #TODO - add to useful_background when available: fee voting, consensus principles & rules
         targets:
             - local
 
@@ -786,7 +788,9 @@ pages:
         html: contribute-code-to-rippled.html
         funnel: Use Cases
         template: template-use-case.html
-        # jha TODO - add useful_background
+        useful_background:
+            - consensus.html
+            - amendments.html #TODO add to useful_background: stand-alone mode, rippled.cfg reference (future feature)
         targets:
             - local
 

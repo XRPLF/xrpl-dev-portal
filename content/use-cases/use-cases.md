@@ -5,16 +5,14 @@ Use these roadmaps to walk you, task-by-task, through implementing your use case
 Here are some of our users' most popular use cases:
 
 * **[Run a rippled Validator](run-a-rippled-validator.html)**
-<!--{# TODO: link #}-->
 
       Learn how to install, run, and maintain a `rippled` server in validator mode.
 
-* **[List XRP in My Exchange](list-xrp-in-your-exchange)**
+* **[List XRP in My Exchange](list-xrp-in-your-exchange.html)**
 
       Integrate with the XRP Ledger to be able to list XRP in your exchange, enabling your users to deposit and withdraw XRP.
 
 * **[Contribute Code to `rippled`](contribute-code-to-rippled.html)**
-<!--{# TODO: link #}-->
 
       Help us improve the open source reference server implementation of `rippled`, the server that is the core of the XRP Ledger peer-to-peer network.
 
