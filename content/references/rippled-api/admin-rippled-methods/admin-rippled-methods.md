@@ -7,14 +7,14 @@ Admin methods are meant only for trusted personnel in charge of keeping the serv
 Admin commands are available only if you connect to `rippled` on a host and port that the `rippled.cfg` file identifies as admin. By default, the commandline client uses an admin connection.
 <!--{# TODO: add a link to a doc that specifically talks about how to set this config setting #}-->
 
-* **[Key Generation Methods](x)**
+* **[Key Generation Methods](key-generation-methods.html)**
 <!--{# TODO: provide overview text of what this method type is all about #}-->
 
-* **[Logging and Data Management Methods](x)**
+* **[Logging and Data Management Methods](logging-and-data-management-methods.html)**
 <!--{# TODO: provide overview text of what this method type is all about #}-->
 
-* **[Server Control Methods](x)**
+* **[Server Control Methods](server-and-control-methods.html)**
 <!--{# TODO: provide overview text of what this method type is all about #}-->
 
-* **[Status and Debugging Methods](x)**
+* **[Status and Debugging Methods](status-and-debugging-methods.html)**
 <!--{# TODO: provide overview text of what this method type is all about #}-->
