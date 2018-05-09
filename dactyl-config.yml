@@ -597,10 +597,70 @@ pages:
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Public rippled Methods
+        category: Admin rippled Methods
         subcategory: Key Generation Methods
         targets:
             - local
+
+    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.md
+        html: wallet_propose.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Key Generation Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.md
+        html: can_delete.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.md
+        html: ledger_cleaner.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md
+        html: ledger_request.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.md
+        html: log_level.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.md
+        html: logrotate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
 
     # TODO: Subcategory landings and pages for:
     # - Logging and Data Management Methods (5)
