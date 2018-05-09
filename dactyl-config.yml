@@ -763,6 +763,14 @@ pages:
         targets:
             - local
 
+    -   md: use-cases/run-a-rippled-validator.md
+        html: run-a-rippled-validator.html
+        funnel: Use Cases
+        template: template-use-case.html
+        # jha TODO - add useful_background
+        targets:
+            - local
+
     -   md: use-cases/list-xrp-in-your-exchange.md
         html: list-xrp-in-your-exchange.html
         funnel: Use Cases
@@ -771,6 +779,14 @@ pages:
             - xrp-ledger-overview.html
             - reliable-transaction-submission.html
             - xrp.html
+        targets:
+            - local
+
+    -   md: use-cases/contribute-code-to-rippled.md
+        html: contribute-code-to-rippled.html
+        funnel: Use Cases
+        template: template-use-case.html
+        # jha TODO - add useful_background
         targets:
             - local
 
