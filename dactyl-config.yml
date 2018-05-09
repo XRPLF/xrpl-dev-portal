@@ -459,7 +459,61 @@ pages:
         targets:
             - local
 
-    # TODO: rippled Server States, Error Formatting
+    -  md: references/rippled-api/api-conventions/basic-data-types.md
+       html: basic-data-types.html
+       funnel: Docs
+       doc_type: References
+       supercategory: rippled API
+       category: API Conventions
+       targets:
+         - local
+
+    -  md: references/rippled-api/api-conventions/error-formatting.md
+       html: error-formatting.html
+       funnel: Docs
+       doc_type: References
+       supercategory: rippled API
+       category: API Conventions
+       targets:
+         - local
+
+    -  md: references/rippled-api/api-conventions/markers-and-pagination.md
+       html: markers-and-pagination.html
+       funnel: Docs
+       doc_type: References
+       supercategory: rippled API
+       category: API Conventions
+       targets:
+         - local
+
+    -  md: references/rippled-api/api-conventions/modifying-the-ledger.md
+       html: modifying-the-ledger.html
+       funnel: Docs
+       doc_type: References
+       supercategory: rippled API
+       category: API Conventions
+       targets:
+         - local
+
+    -  md: references/rippled-api/api-conventions/request-formatting.md
+       html: request-formatting.html
+       funnel: Docs
+       doc_type: References
+       supercategory: rippled API
+       category: API Conventions
+       targets:
+         - local
+
+    -  md: references/rippled-api/api-conventions/rippled-server-states.md
+       html: rippled-server-states.html
+       funnel: Docs
+       doc_type: References
+       supercategory: rippled API
+       category: API Conventions
+       targets:
+         - local
+
+# rippled Public Methods
 
     -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.md
         html: public-rippled-methods.html
