@@ -1,11 +1,11 @@
-## fetch_info
+# fetch_info
 [[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/FetchInfo.cpp "Source")
 
 The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.
 
 _The `fetch_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -48,7 +48,7 @@ The request includes the following parameters:
 |:--------|:--------|:---------------------------------------------------------|
 | `clear` | Boolean | If `true`, reset current fetches. Otherwise, only get status of fetches in progress. |
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -151,6 +151,6 @@ The fields describing a fetch in progress are subject to change without notice. 
 | `peers`               | Number                  | The number of peers who have this item available. |
 | `timeouts`            | Number                  | The number of times that fetching this item has resulted in a timeout (2.5 seconds). |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).

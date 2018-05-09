@@ -1,4 +1,4 @@
-## wallet_propose
+# wallet_propose
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
 Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
@@ -7,7 +7,7 @@ Use the `wallet_propose` method to generate a key pair and XRP Ledger address. T
 
 [Updated in: rippled 0.31.0][New in: rippled 0.31.0]
 
-#### Request Format
+### Request Format
 
 An example of the request format:
 
@@ -81,7 +81,7 @@ You must provide **at most one** of the following fields: `passphrase`, `seed`, 
 
 **Note:** [Ed25519](https://ed25519.cr.yp.to/) support is experimental. The commandline version of this command cannot generate Ed25519 keys.
 
-##### Specifying a Seed
+#### Specifying a Seed
 
 For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
 
@@ -101,7 +101,7 @@ If you do specify a seed, you can specify it in any of the following formats:
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -185,7 +185,7 @@ For more information about master and regular key pairs, see [Cryptographic Keys
 For more information about multi-signing and signer lists, see [Multi-Signing](reference-transaction-format.html#multi-signing).
 
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly.

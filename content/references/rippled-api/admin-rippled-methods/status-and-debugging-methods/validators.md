@@ -1,11 +1,11 @@
-## validators
+# validators
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
 
 The `validators` command returns human readable information about the current list of published and trusted validators used by the server. [New in: rippled 0.80.1][]
 
 *The `validators` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -41,7 +41,7 @@ rippled validators
 
 The request includes no parameters.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -172,6 +172,6 @@ Each member of the `publisher_lists` array is an object with the following field
 | `seq`              | Unsigned Integer | The sequence number of this published list. |
 | `version`          | Unsigned Integer | The version of the list format.      |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).

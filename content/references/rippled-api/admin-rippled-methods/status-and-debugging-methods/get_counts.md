@@ -1,11 +1,11 @@
-## get_counts
+# get_counts
 [[Source]<br>](https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp "Source")
 
 The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.
 
 _The `get_counts` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -48,7 +48,7 @@ The request includes the following parameters:
 |:------------|:--------------------------|:-----------------------------------|
 | `min_count` | Number (Unsigned Integer) | Only return fields with a value at least this high. |
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -142,7 +142,7 @@ The response follows the [standard format](#response-formatting). The list of fi
 
 For most other entries, the value indicates the number of objects of that type currently in memory.
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.

@@ -1,11 +1,11 @@
-## connect
+# connect
 [[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp "Source")
 
 The `connect` command forces the `rippled` server to connect to a specific peer `rippled` server.
 
 *The `connect` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -51,7 +51,7 @@ The request includes the following parameters:
 | `ip`    | String | IP address of the server to connect to                    |
 | `port`  | Number | _(Optional)_ Port number to use when connecting. Defaults to 6561. |
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -89,7 +89,7 @@ The response follows the [standard format](#response-formatting), with a success
 |:----------|:-------|:-------------------------------------------------------|
 | `message` | String | The value `connecting`, if the command was successful. |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.

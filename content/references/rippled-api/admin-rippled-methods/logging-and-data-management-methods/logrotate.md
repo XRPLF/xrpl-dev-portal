@@ -1,11 +1,11 @@
-## logrotate
+# logrotate
 [[Source]<br>](https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 
 _The `logrotate` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -29,7 +29,7 @@ rippled logrotate
 
 The request includes no parameters.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -70,6 +70,6 @@ The response follows the [standard format](#response-formatting), with a success
 |:----------|:-------|:--------------------------------------------------------|
 | `message` | String | On success, contains the message `The log file was closed and reopened.` |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).

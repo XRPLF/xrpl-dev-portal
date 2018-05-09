@@ -1,11 +1,11 @@
-## validation_seed
+# validation_seed
 [[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
 
 The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.
 
 *The `validation_seed` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -35,7 +35,7 @@ The request includes the following parameters:
 |:---------|:-------|:---------------------------------------------------------|
 | `secret` | String | _(Optional)_ If present, use this value as the secret value for the validating key pair. Valid formats include [base58][], [RFC-1751](https://tools.ietf.org/html/rfc1751), or as a passphrase. If omitted, disables proposing validations to the network. |
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -80,7 +80,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `validation_public_key` | String | (Omitted if proposing disabled) The public key for these validation credentials, in Ripple's [base58][] encoded string format. |
 | `validation_seed`       | String | (Omitted if proposing disabled) The secret key for these validation credentials, in Ripple's [base58][] encoded string format. |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `badSeed` - The request provided an invalid secret value. This usually means that the secret value appears to be a valid string of a different format, such as an account address or validation public key.

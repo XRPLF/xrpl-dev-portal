@@ -1,11 +1,11 @@
-## ledger_request
+# ledger_request
 [[Source]<br>](https://github.com/ripple/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp "Source")
 
 The `ledger_request` command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.
 
 *The `ledger_request` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -37,7 +37,7 @@ The request includes the following parameters:
 
 You must provide either `ledger_index` or `ledger_hash` but not both.
 
-#### Response Format
+### Response Format
 
 The response follows the [standard format](#response-formatting). However, the request returns a failure response if it does not have the specified ledger _even if it successfully instructed the `rippled` server to start retrieving the ledger_.
 
@@ -156,7 +156,7 @@ The three possible response formats are as follows:
 2. When the response shows the server is currently fetching the ledger, the body of the result is a [Ledger Request Object](#ledger-request-object) indicating the progress of fetching the ledger from the peer-to-peer network.
 3. When the ledger is fully available, the response is a representation of the [ledger header](reference-ledger-format.html#header-format).
 
-#### Ledger Request Object
+### Ledger Request Object
 
 When the server is in the progress of fetching a ledger, but has not yet finished, the `rippled` server returns a ledger request object indicating its progress towards fetching the ledger. This object has the following fields:
 
@@ -171,7 +171,7 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 | `peers`                     | Number           | How many peers the server is querying to find this ledger. |
 | `timeouts`                  | Number           | Number of times fetching this ledger has timed out so far. |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.
