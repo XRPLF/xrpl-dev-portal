@@ -440,22 +440,12 @@ pages:
 
     -   md: references/rippled-api/api-conventions/api-conventions.md
         html: api-conventions.html
+        blurb: Common conventions used across the rippled API.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: API Conventions
         template: template-landing-children.html
-        targets:
-            - local
-
-    # TODO: Basic Data Types, Ripple Epoch Time
-
-    -   md: references/rippled-api/api-conventions/currency-formatting.md
-        html: currency-formatting.html
-        funnel: Docs
-        doc_type: References
-        supercategory: rippled API
-        category: API Conventions
         targets:
             - local
 
@@ -467,6 +457,15 @@ pages:
        category: API Conventions
        targets:
          - local
+
+    -   md: references/rippled-api/api-conventions/currency-formatting.md
+        html: currency-formatting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        targets:
+            - local
 
     -  md: references/rippled-api/api-conventions/error-formatting.md
        html: error-formatting.html
