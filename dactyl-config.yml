@@ -257,6 +257,25 @@ pages:
         targets:
             - local
 
+    -   md: concepts/consensus-network/consensus-principles-and-rules.md
+        html: consensus-principles-and-rules.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
+        targets:
+          - local
+
+    -   md: concepts/consensus-network/fee-voting.md
+        html: fee-voting.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: How validators vote on fees (transaction cost and reserve requirements).
+        targets:
+          - local
+
+
     # TODO: fee voting, consensus research, pseudo-transactions, parallel networks
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
