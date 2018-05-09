@@ -1,10 +1,12 @@
-## TrustSet
+# TrustSet
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
 
 Create or modify a trust line linking two accounts.
 
-```
+## Example {{currentpage.name}} JSON
+
+```json
 {
     "TransactionType": "TrustSet",
     "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
@@ -20,6 +22,9 @@ Create or modify a trust line linking two accounts.
 }
 ```
 
+{% include '_snippets/tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
+
 | Field                        | JSON Type        | [Internal Type][] | Description |
 |:-----------------------------|:-----------------|:------------------|:-------|
 | [LimitAmount](#trust-limits) | Object           | Amount            | Object defining the trust line to create or modify, in the format of a [Currency Amount][]. |
@@ -29,7 +34,7 @@ Create or modify a trust line linking two accounts.
 | QualityIn                    | Unsigned Integer | UInt32            | _(Optional)_ Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 | QualityOut                   | Unsigned Integer | UInt32            | _(Optional)_ Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 
-### Trust Limits
+## Trust Limits
 
 All balances on the XRP Ledger, except for XRP, represent value owed in the world outside the XRP Ledger. The address that issues those funds in the XRP Ledger (identified by the `issuer` field of the `LimitAmount` object) is expected to pay the balance back, outside of the XRP Ledger, when users redeem their XRP Ledger balances by returning them to the issuer.
 
@@ -45,7 +50,7 @@ The default state of all flags is off, except for the [NoRipple flag](concept-no
 
 The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. An issuer can pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0.
 
-### TrustSet Flags
+## TrustSet Flags
 
 Transactions of the TrustSet type support additional values in the [`Flags` field](#flags), as follows:
 
@@ -56,3 +61,8 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | tfClearNoRipple | 0x00040000 | 262144        | Clears the No-Rippling flag. (See [NoRipple](concept-noripple.html) for details.) |
 | tfSetFreeze     | 0x00100000 | 1048576       | [Freeze](concept-freeze.html) the trustline. |
 | tfClearFreeze   | 0x00200000 | 2097152       | [Unfreeze](concept-freeze.html) the trustline. |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

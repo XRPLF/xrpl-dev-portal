@@ -1,4 +1,4 @@
-## CheckCash
+# CheckCash
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/CashCheck.cpp "Source") <!--{# TODO: change from develop to master when 0.90.0 is released #}-->
 
 _Requires the [Checks Amendment](reference-amendments.html#checks)._
@@ -7,7 +7,7 @@ Attempts to redeem a Check object in the ledger to receive up to the amount auth
 
 Since the funds for a check are not guaranteed, redeeming a Check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds. If this happens, the Check remains in the ledger and the destination can try to cash it again later, or for a different amount.
 
-Example CheckCash:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -19,6 +19,10 @@ Example CheckCash:
 }
 ```
 
+{% include '_snippets/tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
+
+
 In addition to the [common fields](#common-fields), a CheckCash transaction has the following:
 
 | Field       | JSON Type | [Internal Type][] | Description                    |
@@ -29,7 +33,7 @@ In addition to the [common fields](#common-fields), a CheckCash transaction has 
 
 The transaction ***must*** include either `Amount` or `DeliverMin`, but not both.
 
-### Error Cases
+## Error Cases
 
 - If the sender of the CheckCash transaction is not the `Destination` of the check, the transaction fails with the result code `tecNO_PERMISSION`.
 - If the Check identified by the `CheckID` field does not exist, the transaction fails with the result `tecNO_ENTRY`.
@@ -37,3 +41,8 @@ The transaction ***must*** include either `Amount` or `DeliverMin`, but not both
 - If the destination of the Check has the RequireDest flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.
 - If the transaction specifies both `Amount` and `DeliverMin`, or omits both, the transaction fails with the result `temMALFORMED`.
 - If the `Amount` or `DeliverMin` does not match the currency (and issuer, if not XRP) of the Check, the transaction fails with the result `temBAD_CURRENCY`.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

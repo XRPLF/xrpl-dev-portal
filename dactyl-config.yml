@@ -671,13 +671,15 @@ pages:
         targets:
             - local
 
-    -   name: Transaction Types #TODO: pull landing content from transaction-format-old-monolith.md
+    -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.md
         html: transaction-types.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Types
+        blurb: All the different types of transactions that the XRP Ledger can process.
+        template: template-landing-children.html
         targets:
             - local
 
@@ -688,10 +690,208 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Types
+        blurb: Set options on an account.
         targets:
             - local
 
-    # TODO: 17 other transaction types
+    -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
+        html: checkcancel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Cancel a check.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.md
+        html: checkcash.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Redeem a check.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.md
+        html: checkcreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Create a check.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.md
+        html: escrowcancel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Reclaim escrowed XRP.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.md
+        html: escrowcreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb:  Create an escrowed XRP payment.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.md
+        html: escrowfinish.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Deliver escrowed XRP to recipient.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.md
+        html: offercancel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Withdraw a currency-exchange order.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.md
+        html: offercreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Submit an order to exchange currency.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/payment.md
+        html: payment.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Send funds from one account to another.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.md
+        html: paymentchannelclaim.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Claim money from a payment channel.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.md
+        html: paymentchannelcreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Open a new payment channel.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.md
+        html: paymentchannelfund.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Add more XRP to a payment channel.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.md
+        html: setregularkey.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Add, remove, or modify an account's regular key pair.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.md
+        html: signerlistset.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Add, remove, or modify an account's multi-signing list.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md
+        html: trustset.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Add or modify a trust line.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.md
+        html: pseudo-transaction-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Pseudo-Transaction Types
+        blurb: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.md
+        html: enableamendment.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Pseudo-Transaction Types
+        blurb: Enable a change in transaction processing.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.md
+        html: setfee.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Pseudo-Transaction Types
+        blurb: Change global reserve and transaction cost settings.
+        targets:
+            - local
 
     -   name: Transaction Results #TODO: pull landing content from transaction-format-old-monolith.md
         html: transaction-results.html
@@ -700,6 +900,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        blurb: All possible transaction result codes and their meanings.
         targets:
             - local
 

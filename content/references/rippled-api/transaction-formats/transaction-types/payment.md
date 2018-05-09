@@ -1,13 +1,13 @@
-## Payment
+# Payment
 [[Source]<br>](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "Source")
 
 A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, this can involve additional exchanges of value, which occur atomically.)
 
 Payments are also the only way to [create accounts](#creating-accounts).
 
-Example payment:
+## Example {{currentpage.name}} JSON
 
-```
+```json
 {
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -23,6 +23,10 @@ Example payment:
 }
 ```
 
+{% include '_snippets/tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
+
+
 | Field          | JSON Type            | [Internal Type][] | Description      |
 |:---------------|:---------------------|:------------------|:-----------------|
 | Amount         | [Currency Amount][]  | Amount            | The amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the [**tfPartialPayment** flag](#payment-flags) is set, deliver _up to_ this amount instead. |
@@ -33,7 +37,7 @@ Example payment:
 | SendMax        | [Currency Amount][]  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](concept-transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](#transaction-cost). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
 | DeliverMin     | [Currency Amount][]  | Amount            | _(Optional)_ Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). For non-XRP amounts, the nested field names are lower-case. |
 
-### Special issuer Values for SendMax and Amount
+## Special issuer Values for SendMax and Amount
 
 Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates a financial institution's [issuing address](concept-issuing-and-operational-addresses.html). However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
 
@@ -41,13 +45,13 @@ Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates 
 * When the `issuer` field of the destination `Amount` field matches the `Destination` address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all addresses to which the destination has extended trust lines, as well as issuances created by the destination which are held on other trust lines.
 * When the `issuer` field of the `SendMax` field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new issuances on trust lines that other accounts have extended to the source account, and sending issuances the source account holds from other issuers.
 
-### Creating Accounts
+## Creating Accounts
 
 The Payment transaction type can create new accounts in the XRP Ledger by sending enough XRP to an unfunded address. Other transactions to unfunded addresses always fail.
 
 For more information, see [Accounts](concept-accounts.html#creating-accounts).
 
-### Paths
+## Paths
 
 If present, the `Paths` field must contain a _path set_ - an array of path arrays. Each individual path represents one way value can flow from the sender to receiver through various intermediary accounts and order books. A single transaction can potentially use multiple paths, for example if the transaction exchanges currency using several different order books to achieve the best rate.
 
@@ -62,7 +66,7 @@ The `Paths` field must not be an empty array, nor an array whose members are all
 
 For more information, see [Paths](concept-paths.html).
 
-### Payment Flags
+## Payment Flags
 
 Transactions of the Payment type support additional values in the [`Flags` field](#flags), as follows:
 
@@ -72,7 +76,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 | tfPartialPayment | 0x00020000 | 131072        | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](#partial-payments) for more details. |
 | tfLimitQuality   | 0x00040000 | 262144        | Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of `Amount`:`SendMax`. See [Limit Quality](#limit-quality) for details. |
 
-### Partial Payments
+## Partial Payments
 
 A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for [returning payments](tutorial-gateway-guide.html#bouncing-payments) without incurring additional costs to oneself. However, partial payments can also be used to exploit integrations that naively assume the `Amount` field of a successful transaction always describes the exact amount delivered.
 
@@ -83,7 +87,7 @@ The [`delivered_amount`](#delivered-amount) field of a payment's metadata indica
 For more information, see the full article on [Partial Payments](concept-partial-payments.html).
 
 
-### Limit Quality
+## Limit Quality
 
 The XRP Ledger defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is `0.5`.
 
@@ -98,3 +102,8 @@ Without the tfLimitQuality flag set, this transaction would succeed, because the
 The tfLimitQuality flag is most useful when combined with [partial payments](#partial-payments). When both *tfPartialPayment* and *tfLimitQuality* are set on a transaction, then the transaction delivers as much of the destination `Amount` as it can, without using any conversions that are worse than the limit quality.
 
 In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is different if my transaction has both tfPartialPayment and tfLimitQuality enabled. If we keep my `SendMax` of 20 USD and a destination `Amount` of 100 CNY, then the limit quality is still `5`. However, because I am doing a partial payment, the transaction sends as much as it can instead of failing if the full destination amount cannot be sent. This means that my transaction consumes the ¥95/$15 offer, whose quality is about `6.3`, but it rejects the ¥5/$2 offer because that offer's quality of `2.5` is worse than the quality limit of `5`. In the end, my transaction only delivers ¥95 instead of the full ¥100, but it avoids wasting money on poor exchange rates.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

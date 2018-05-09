@@ -31,6 +31,7 @@
 
 <!--{# Transaction reference common links #}-->
 [Internal Type]: https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp
+[common fields]: transaction-common-fields.html
 
 {% set api_methods = [
   "account_channels",

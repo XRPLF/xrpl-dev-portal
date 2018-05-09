@@ -1,13 +1,5 @@
 # Transactions Overview
 
-A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only valid if signed, submitted, and accepted into a validated ledger version following the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/). Some ledger rules also generate _[pseudo-transactions](#pseudo-transactions)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost](concept-transaction-cost.html).
-
-* [Authorizing Transactions](#authorizing-transactions)
-* [Common Fields of All Transactions](#common-fields)
-* [Transaction Types](#transaction-types)
-* [Reliable Transaction Submission](#reliable-transaction-submission)
-* [Transaction Results - How to find and interpret transaction results](#transaction-results)
-* [Full Transaction Response List - Complete table of all error codes](#full-transaction-response-list)
 
 ## Authorizing Transactions
 
@@ -303,24 +295,9 @@ _Pseudo-Transactions_ that are not created and submitted in the usual way, but m
 {% include 'transactions/trustset.md' %}
 
 
-# Pseudo-Transactions
-
-Pseudo-Transactions are never submitted by users, nor propagated through the network. Instead, a server may choose to inject them in a proposed ledger directly. If enough servers inject an equivalent pseudo-transaction for it to pass consensus, then it becomes included in the ledger, and appears in ledger data thereafter.
-
-Some of the fields that are mandatory for normal transactions do not make sense for pseudo-transactions. In those cases, the pseudo-transaction has the following default values:
-
-| Field         | Default Value                                            |
-|:--------------|:---------------------------------------------------------|
-| Account       | [ACCOUNT_ZERO](concept-accounts.html#special-addresses) |
-| Sequence      | 0                                                        |
-| Fee           | 0                                                        |
-| SigningPubKey | ""                                                       |
-| Signature     | ""                                                       |
 
 
-{% include 'transactions/enableamendment.md' %}
 
-{% include 'transactions/setfee.md' %}
 
 
 # Transaction Results
