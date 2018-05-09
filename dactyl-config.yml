@@ -893,7 +893,7 @@ pages:
         targets:
             - local
 
-    -   name: Transaction Results #TODO: pull landing content from transaction-format-old-monolith.md
+    -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md
         html: transaction-results.html
         funnel: Docs
         doc_type: References
@@ -904,13 +904,72 @@ pages:
         targets:
             - local
 
-    -   name: tel Codes #TODO: break off content from transaction-format-old-monolith.md
+    -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.md
+        html: tec-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.md
+        html: tef-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.md
         html: tel-codes.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.md
+        html: tem-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.md
+        html: ter-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.md
+        html: tes-success.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-metadata.md
+        html: transaction-metadata.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
         targets:
             - local
 
