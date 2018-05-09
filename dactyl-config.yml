@@ -711,7 +711,7 @@ pages:
         blurb: Close and advance the ledger in stand-alone mode.
         funnel: Docs
         doc_type: References
-        supercategory:
+        supercategory: rippled API
         category: Admin rippled Methods
         subcategory: Server Control Methods
         targets:
