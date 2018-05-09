@@ -4,6 +4,10 @@
 [XRP, in drops]: reference-rippled-api-conventions.html#specifying-currency-amounts
 [drops of XRP]: reference-rippled-api-conventions.html#specifying-currency-amounts
 
+[Transaction Cost]: transaction-cost.html
+[transaction cost]: transaction-cost.html
+[ripple-lib]: https://github.com/ripple/ripple-lib
+
 [Currency Code]: reference-rippled-api-conventions.html#currency-codes
 [Address]: reference-rippled-api-conventions.html#addresses
 [Hash]: reference-rippled-api-conventions.html#hashes
@@ -24,6 +28,9 @@
 [Interledger Protocol]: https://interledger.org/
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
 [crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
+
+<!--{# Transaction reference common links #}-->
+[Internal Type]: https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp
 
 {% set api_methods = [
   "account_channels",

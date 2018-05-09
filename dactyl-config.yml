@@ -661,13 +661,13 @@ pages:
         targets:
             - local
 
-    -   name: Transaction Common Fields #TODO: break off from transaction-format-old-monolith.md
+    -   md: references/rippled-api/transaction-formats/transaction-common-fields.md
         html: transaction-common-fields.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Transaction Formats
-        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+        blurb: These common fields can be provided on any XRP Ledger transaction.
         targets:
             - local
 
