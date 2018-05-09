@@ -19,9 +19,11 @@ This includes creating XRP Ledger accounts and balance sheets, complying with re
 
 `rippled` is the core peer-to-peer server that manages the XRP Ledger.
 
-While it isn’t required, your exchange should consider running a your own `rippled` server to be able to control the speed and reliability of your exchange’s XRP transaction processing.
+While it isn’t required, your exchange should consider running your own `rippled` server to be able to control the speed and reliability of your exchange’s XRP transaction processing.
 
-Running a `rippled` server in validator mode also enables your exchange to contribute to the strength and decentralization of the XRP Ledger network.
+You can start out running one `rippled` server to support development and exploration. If required for your use case, you can then build up to an enterprise deployment that consists of multiple clustered servers with one private-peer validator, for example.
+
+[Running a `rippled` server in validator mode](run-a-rippled-validator.html) enables your exchange to contribute to the strength and decentralization of the XRP Ledger network.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
@@ -47,3 +49,11 @@ Connect your rippled server to the Test Net to make test calls and get to know t
 ## [Understand and code integrations to support the flow of funds](xxxxx.html)
 
 To support listing XRP, code integrations with the XRP Ledger to deposit XRP into your exchange, trade XRP on the exchange, rebalance XRP holding, and withdraw XRP from your exchange.
+
+
+### Related Tasks
+
+- [Contribute Code to `rippled`](contribute-code-to-rippled.html)
+- [Subscribe to XRP Ledger Updates](x) <!-- TODO: create this link -->
+- [Capacity Planning](x) <!-- TODO: create this link -->
+- [Look Up an XRP Ledger Account’s Transaction History](x) <!-- TODO: create this link -->
