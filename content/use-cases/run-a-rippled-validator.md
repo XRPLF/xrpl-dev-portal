@@ -49,4 +49,4 @@ To protect a production validator from DDoS attacks, you can use a stock `ripple
 ## [Associate your validator with a web domain you control](xxxxx.html)
 
 Network participants are unlikely to trust a validator without knowing who is operating it. To address this concern, associate your validator with a web domain you control.
-You may also wish to have your validator listed with one or more validator tracking services, such as the <a href="https://xrpcharts.ripple.com/#/validators" target="blank">XRP Charts Validator Registry</a> <i class="fa fa-external-link" aria-hidden="true"></i>.
+You may also wish to have your validator listed with one or more validator tracking services, such as the <a href="https://xrpcharts.ripple.com/#/validators" target="_blank">XRP Charts Validator Registry</a> <i class="fa fa-external-link" aria-hidden="true"></i>.

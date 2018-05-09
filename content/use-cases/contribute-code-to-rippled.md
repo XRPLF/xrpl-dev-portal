@@ -7,7 +7,7 @@ Want to contribute code or a bug report to help improve rippled, the core peer-t
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/rippled target="blank">Access the `rippled` repo</a> <i class="fa fa-external-link" aria-hidden="true"></i>
+## <a href="https://github.com/ripple/rippled" target="_blank">Access the `rippled` repo</a> <i class="fa fa-external-link" aria-hidden="true"></i><!--#{ fix md highlighting_ #}-->
 
 `rippled` is an open-source project. You can take a look at `rippled` code simply by accessing the `rippled` GitHub repo. Before contributing or reporting bugs, we recommend that you get to know the code and developer experience by performing the following tasks.
 
@@ -42,15 +42,15 @@ Use the XRP Ledger Test Net to get a test account and test XRP. Connect your `ri
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/rippled/pulls target="blank">Contribute code</a> <i class="fa fa-external-link" aria-hidden="true"></i>
+## <a href="https://github.com/ripple/rippled/pulls" target="_blank">Contribute code</a> <i class="fa fa-external-link" aria-hidden="true"></i><!--#{ fix md highlighting_ #}-->
 
 Now that you have a handle on `rippled`, you may have ideas for how to improve it. Perhaps you’re developing on the XRP Ledger and want to contribute some code that enables the XRP Ledger to provide a feature your application needs. Access the `rippled` repo and open an issue or pull request.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/rippled/issues target="blank">Report bugs</a> <i class="fa fa-external-link" aria-hidden="true"></i>
+## <a href="https://github.com/ripple/rippled/issues" target="_blank">Report bugs</a> <i class="fa fa-external-link" aria-hidden="true"></i><!--#{ fix md highlighting_ #}-->
 
 As you explore rippled, you may find code that you don’t think is working as intended. To report a bug, open an issue in the rippled repo.
 
-If the bug you wish to report is security-related, we urge you to disclose it responsibly through Ripple's <a href="https://ripple.com/bug-bounty/ target="blank">Bug Bounty program</a> <i class="fa fa-external-link" aria-hidden="true"></i>.
+If the bug you wish to report is security-related, we urge you to disclose it responsibly through Ripple's <a href="https://ripple.com/bug-bounty/" target="_blank">Bug Bounty program</a> <i class="fa fa-external-link" aria-hidden="true"></i>.
