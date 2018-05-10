@@ -246,7 +246,7 @@ pages:
         targets:
             - local
 
-    # TODO: consensus principles & rules, validators & UNLs
+    # TODO: validators & UNLs
 
     -   md: concepts/consensus-network/amendments.md
         html: amendments.html
@@ -275,8 +275,25 @@ pages:
         targets:
           - local
 
+    -   md: concepts/consensus-network/consensus-research.md
+        html: consensus-research.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Scholarly articles on consensus algorithms and related research.
+        targets:
+          - local
 
-    # TODO: fee voting, consensus research, pseudo-transactions, parallel networks
+    # TODO: add pseudo-transactions concept page
+
+    -   md: concepts/consensus-network/parallel-networks.md
+        html: parallel-networks.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand where test networks and alternate ledger chains come from.
+        targets:
+          - local
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
         html: the-rippled-server.html
