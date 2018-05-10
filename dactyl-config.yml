@@ -323,16 +323,47 @@ pages:
 
     # TODO: Cancel or Skip a Transaction, Look Up Transaction Results
 
-    -   md: tutorials/manage-account-settings/manage-account-settings.md
+    -   name: Manage Account Settings
         html: manage-account-settings.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
         template: template-landing-children.html
+        blurb: Set up your XRP Ledger account to send and receive payments the way you want it to.
         targets:
             - local
 
-    # TODO: "Get an Account", "Configure a Regular Key Pair", "Use Deposit Authorization to Block Unwanted Payments", "Configure Multi-Signing"
+    # TODO: "Get an Account" (DOC-1554)
+    # blurb: Learn how to generate and fund an XRP Ledger address to create an XRP Ledger account.
+
+    -   md: tutorials/manage-account-settings/assign-a-regular-key-pair.md
+        html: assign-a-regular-key-pair.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later.
+        targets:
+            - local
+
+    -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md
+        html: change-or-remove-a-regular-key-pair.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Remove or update a regular key pair already authorized by your account.
+        targets:
+            - local
+
+    -   md: tutorials/manage-account-settings/set-up-multi-signing.md
+        html: set-up-multi-signing.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Add a signer list to your account to enable multi-signing.
+        targets:
+            - local
+
+    # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
 
     -   md: tutorials/use-complex-payment-types/use-complex-payment-types.md
         html: use-complex-payment-types.html
