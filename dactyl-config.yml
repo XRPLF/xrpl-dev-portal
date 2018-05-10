@@ -236,7 +236,7 @@ pages:
 
     # TODO: Offers, Tick Size, Autobridging, Offer Preference (all compiled from different sources)
 
-    -   md: concepts/consensus-network/consensus-network.md
+    -   name: Consensus Network
         html: consensus-network.html
         funnel: Docs
         doc_type: Concepts
@@ -246,7 +246,7 @@ pages:
         targets:
             - local
 
-    # TODO: consensus principles & rules, validators & UNLs
+    # TODO: validators & UNLs
 
     -   md: concepts/consensus-network/amendments.md
         html: amendments.html
@@ -257,7 +257,43 @@ pages:
         targets:
             - local
 
-    # TODO: fee voting, consensus research, pseudo-transactions, parallel networks
+    -   md: concepts/consensus-network/consensus-principles-and-rules.md
+        html: consensus-principles-and-rules.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
+        targets:
+          - local
+
+    -   md: concepts/consensus-network/fee-voting.md
+        html: fee-voting.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: How validators vote on fees (transaction cost and reserve requirements).
+        targets:
+          - local
+
+    -   md: concepts/consensus-network/consensus-research.md
+        html: consensus-research.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Scholarly articles on consensus algorithms and related research.
+        targets:
+          - local
+
+    # TODO: add pseudo-transactions concept page
+
+    -   md: concepts/consensus-network/parallel-networks.md
+        html: parallel-networks.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
+        targets:
+          - local
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
         html: the-rippled-server.html
