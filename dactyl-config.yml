@@ -290,7 +290,15 @@ pages:
         targets:
             - local
 
-    # TODO: Get Started with the rippled API, Send a Transaction with the rippled API
+    -   md: tutorials/get-started/get-started-with-the-rippled-api.md
+        html: get-started-with-the-rippled-api.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        targets:
+            - local
+
+    # TODO: Send a Transaction with the rippled API
 
     -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.md
         html: get-started-with-rippleapi-for-javascript.html
