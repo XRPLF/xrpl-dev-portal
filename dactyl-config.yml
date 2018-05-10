@@ -652,7 +652,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md
         html: ledger_request.html
-        blurb: Query a peer server for a specific ledger version.
+        blurb: Query peer servers for a specific ledger version.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
