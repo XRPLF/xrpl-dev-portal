@@ -42,8 +42,8 @@ targets:
         display_name: XRP Ledger Dev Portal
         # These github_ fields are used by the template's "Edit on GitHub" link.
         #  Override them with --vars to change which fork/branch to edit.
-        github_forkurl: https://github.com/mDuo13/ripple-dev-portal
-        github_branch: 5layertest
+        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_branch: master
         recently_updated:
             - html: introduction.html
               date: 2018-05-07
@@ -173,6 +173,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/complex-payment-types/cross-currency-payments.md
+        html: cross-currency-payments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
+        blurb: Cross-currency payments atomically deliver a different currency than they send by converting through paths and order books.
+        targets:
+            - local
+
     -   md: concepts/complex-payment-types/checks.md
         html: checks.html
         funnel: Docs
@@ -200,7 +209,14 @@ pages:
         targets:
             - local
 
-    # TODO: payment channels concept
+    -   md: concepts/complex-payment-types/payment-channels.md
+        html: payment-channels.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
+        blurb: Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later.
+        targets:
+            - local
 
     -   md: concepts/issued-currencies/issued-currencies.md
         html: issued-currencies.html
@@ -236,7 +252,7 @@ pages:
 
     # TODO: Offers, Tick Size, Autobridging, Offer Preference (all compiled from different sources)
 
-    -   md: concepts/consensus-network/consensus-network.md
+    -   name: Consensus Network
         html: consensus-network.html
         funnel: Docs
         doc_type: Concepts
@@ -246,7 +262,7 @@ pages:
         targets:
             - local
 
-    # TODO: consensus principles & rules, validators & UNLs
+    # TODO: validators & UNLs
 
     -   md: concepts/consensus-network/amendments.md
         html: amendments.html
@@ -257,18 +273,90 @@ pages:
         targets:
             - local
 
-    # TODO: fee voting, consensus research, pseudo-transactions, parallel networks
+    -   md: concepts/consensus-network/consensus-principles-and-rules.md
+        html: consensus-principles-and-rules.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
+        targets:
+          - local
+
+    -   md: concepts/consensus-network/fee-voting.md
+        html: fee-voting.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: How validators vote on fees (transaction cost and reserve requirements).
+        targets:
+          - local
+
+    -   md: concepts/consensus-network/consensus-research.md
+        html: consensus-research.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Scholarly articles on consensus algorithms and related research.
+        targets:
+          - local
+
+    # TODO: add pseudo-transactions concept page
+
+    -   md: concepts/consensus-network/parallel-networks.md
+        html: parallel-networks.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
+        targets:
+          - local
 
     -   md: concepts/the-rippled-server/the-rippled-server.md
         html: the-rippled-server.html
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
+        template: template-landing-children.html
         blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
         targets:
             - local
 
-    # TODO: history sharding, stand-alone mode, clustering, peer protocol
+    -   md: concepts/the-rippled-server/clustering.md
+        html: clustering.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: Run rippled servers in a cluster to share the load of cryptography between them.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/history-sharding.md
+        html: history-sharding.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/peer-protocol.md
+        html: peer-protocol.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: The peer protocol specifies the language rippled servers speak to each other.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/stand-alone-mode.md
+        html: stand-alone-mode.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: Stand-alone mode provides a way to test rippled servers without connecting to a network of peers.
+        targets:
+            - local
+
 
 # Tutorials --------------------------------------------------------------------
 
@@ -290,7 +378,15 @@ pages:
         targets:
             - local
 
-    # TODO: Get Started with the rippled API, Send a Transaction with the rippled API
+    -   md: tutorials/get-started/get-started-with-the-rippled-api.md
+        html: get-started-with-the-rippled-api.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        targets:
+            - local
+
+    # TODO: Send a Transaction with the rippled API
 
     -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.md
         html: get-started-with-rippleapi-for-javascript.html
@@ -321,18 +417,63 @@ pages:
         targets:
             - local
 
-    # TODO: Cancel or Skip a Transaction, Look Up Transaction Results
+    -   md: tutorials/use-simple-xrp-payments/cancel-or-skip-a-transaction.md
+        html: cancel-or-skip-a-transaction.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        targets:
+          - local
 
-    -   md: tutorials/manage-account-settings/manage-account-settings.md
+    -   md: tutorials/use-simple-xrp-payments/look-up-transaction-results.md
+        html: look-up-transaction-results.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        targets:
+          - local
+
+    -   name: Manage Account Settings
         html: manage-account-settings.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
         template: template-landing-children.html
+        blurb: Set up your XRP Ledger account to send and receive payments the way you want it to.
         targets:
             - local
 
-    # TODO: "Get an Account", "Configure a Regular Key Pair", "Use Deposit Authorization to Block Unwanted Payments", "Configure Multi-Signing"
+    # TODO: "Get an Account" (DOC-1554)
+    # blurb: Learn how to generate and fund an XRP Ledger address to create an XRP Ledger account.
+
+    -   md: tutorials/manage-account-settings/assign-a-regular-key-pair.md
+        html: assign-a-regular-key-pair.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later.
+        targets:
+            - local
+
+    -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md
+        html: change-or-remove-a-regular-key-pair.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Remove or update a regular key pair already authorized by your account.
+        targets:
+            - local
+
+    -   md: tutorials/manage-account-settings/set-up-multi-signing.md
+        html: set-up-multi-signing.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Add a signer list to your account to enable multi-signing.
+        targets:
+            - local
+
+    # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
 
     -   md: tutorials/use-complex-payment-types/use-complex-payment-types.md
         html: use-complex-payment-types.html
@@ -398,7 +539,22 @@ pages:
         targets:
             - local
 
-    # TODO: list XRP as an exchange, become a gateway
+    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
+        html: list-xrp-as-an-exchange.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        targets:
+            - local
+
+    -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
+        html: become-an-xrp-ledger-gateway.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        targets:
+            - local
+
     # TODO: identify your accounts with ripple.txt (to come later)
 
     -   md: tutorials/manage-the-rippled-server/manage-the-rippled-server.md
@@ -697,6 +853,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
         html: admin-rippled-methods.html
+        blurb: Admin methods are meant only for trusted personnel in charge of keeping the server operational. Admin methods include commands for managing, monitoring, and debugging the server.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -706,12 +863,13 @@ pages:
         targets:
             - local
 
-    -   name: Key Generation Methods #TODO: possible md landing content?
+    -   name: Key Generation Methods
         html: key-generation-methods.html
+        blurb: Use these methods to generate and manage keys.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Public rippled Methods
+        category: Admin rippled Methods
         subcategory: Key Generation Methods
         template: template-landing-children.html
         targets:
@@ -719,18 +877,249 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.md
         html: validation_create.html
+        blurb: Generate keys for a new rippled validator.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Public rippled Methods
+        category: Admin rippled Methods
         subcategory: Key Generation Methods
         targets:
             - local
 
-    # TODO: Subcategory landings and pages for:
-    # - Logging and Data Management Methods (5)
-    # - Server Control Methods (4)
-    # - Status and Debugging Messages (8)
+    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.md
+        html: wallet_propose.html
+        blurb: Generate keys for a new account.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Key Generation Methods
+        targets:
+          - local
+
+    -   name: Logging and Data Management Methods
+        html: logging-and-data-management-methods.html
+        blurb: Use these methods to manage log levels and other data, such as ledgers.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        template: template-landing-children.html
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.md
+        html: can_delete.html
+        blurb: Allow online deletion of ledgers up to a specific ledger.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.md
+        html: ledger_cleaner.html
+        blurb: Configure the ledger cleaner service to check for corrupted data.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md
+        html: ledger_request.html
+        blurb: Query peer servers for a specific ledger version.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.md
+        html: log_level.html
+        blurb: Get or modify log verbosity.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.md
+        html: logrotate.html
+        blurb: Reopen the log file.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   name: Server Control Methods
+        html: server-and-control-methods.html
+        blurb: Use these methods to manage the rippled server.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        template: template-landing-children.html
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/connect.md
+        html: connect.html
+        blurb: Force the rippled server to connect to a specific peer.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.md
+        html: ledger_accept.html
+        blurb: Close and advance the ledger in stand-alone mode.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.md
+        html: stop.html
+        blurb: Shut down the rippled server.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.md
+        html: validation_seed.html
+        blurb: Temporarily set key to be used for validating.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
+          - local
+
+    -   name: Status and Debugging Methods
+        html: status-and-debugging-methods.html
+        blurb: Use these methods to check the status of the network and server.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        template: template-landing-children.html
+        targets:
+          - local
+
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.md
+        html: consensus_info.html
+        blurb: Get information about the state of consensus as it happens.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.md
+        html: feature.html
+        blurb: Get information about protocol amendments.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.md
+        html: fetch_info.html
+        blurb: Get information about the server's sync with the network.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.md
+        html: get_counts.html
+        blurb: Get statistics about the server's internals and memory usage.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/peers.md
+        html: peers.html
+        blurb: Get information about the peer servers connected.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
+        html: print.html
+        blurb: Get information about internal subsystems.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
+        html: validator_list_sites.html
+        blurb: Get information about sites that publish validator lists.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.md
+        html: validators.html
+        blurb: Get information about the current validators.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
 
     -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.md
         html: ledger-data-formats.html
@@ -739,27 +1128,29 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
-        template: template-landing-children.html
+        template: template-landing-children.html #TODO: consider using the default template instead for page sidebar?
         targets:
             - local
 
-    -   name: Ledger Header #TODO: break off from ledger-format-old-monolith.md file
+    -   md: references/rippled-api/ledger-data-formats/ledger-header.md
         html: ledger-header.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Ledger Data Formats
+        blurb: A unique header that describes the contents of a ledger version.
         targets:
             - local
 
-    -   name: Ledger Object Types #TODO: break off from ledger-format-old-monolith.md file
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledger-object-types.md
         html: ledger-object-types.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        template: template-landing-children.html
+        template: template-landing-children.html #TODO: consider dropping the md since the page children handles this OK
+        blurb: Specifications for the types of objects that can be stored in a ledger's state tree.
         targets:
             - local
 
@@ -770,10 +1161,119 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
+        blurb: The settings, XRP balance, and other metadata for one account.
         targets:
             - local
 
-    # TODO: 10 other ledger object types
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/amendments.md
+        html: amendments-object.html #amendments.html is taken by the concept page
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Singleton object with status of enabled and pending amendments.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/check.md
+        html: check.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A check that can be redeemed for money by its destination.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.md
+        html: directorynode.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Contains links to other objects.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/escrow.md
+        html: escrow-object.html #escrow.html is taken by the concept page
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Contains XRP held for a conditional payment.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/feesettings.md
+        html: feesettings.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledgerhashes.md
+        html: ledgerhashes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Lists of prior ledger versions' hashes for history lookup.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.md
+        html: offer.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: An order to make a currency trade.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.md
+        html: paychannel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A channel for asynchronous XRP payments.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.md
+        html: ripplestate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.md
+        html: signerlist.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A list of addresses for multi-signing transactions.
+        targets:
+            - local
 
     -   md: references/rippled-api/transaction-formats/transaction-formats.md
         html: transaction-formats.html
@@ -786,23 +1286,25 @@ pages:
         targets:
             - local
 
-    -   name: Transaction Common Fields #TODO: break off from transaction-format-old-monolith.md
+    -   md: references/rippled-api/transaction-formats/transaction-common-fields.md
         html: transaction-common-fields.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Transaction Formats
-        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+        blurb: These common fields can be provided on any XRP Ledger transaction.
         targets:
             - local
 
-    -   name: Transaction Types #TODO: pull landing content from transaction-format-old-monolith.md
+    -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.md
         html: transaction-types.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Types
+        blurb: All the different types of transactions that the XRP Ledger can process.
+        template: template-landing-children.html
         targets:
             - local
 
@@ -813,28 +1315,286 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Types
+        blurb: Set options on an account.
         targets:
             - local
 
-    # TODO: 17 other transaction types
+    -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
+        html: checkcancel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Cancel a check.
+        targets:
+            - local
 
-    -   name: Transaction Results #TODO: pull landing content from transaction-format-old-monolith.md
+    -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.md
+        html: checkcash.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Redeem a check.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.md
+        html: checkcreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Create a check.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.md
+        html: escrowcancel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Reclaim escrowed XRP.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.md
+        html: escrowcreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb:  Create an escrowed XRP payment.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.md
+        html: escrowfinish.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Deliver escrowed XRP to recipient.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.md
+        html: offercancel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Withdraw a currency-exchange order.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.md
+        html: offercreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Submit an order to exchange currency.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/payment.md
+        html: payment.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Send funds from one account to another.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.md
+        html: paymentchannelclaim.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Claim money from a payment channel.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.md
+        html: paymentchannelcreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Open a new payment channel.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.md
+        html: paymentchannelfund.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Add more XRP to a payment channel.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.md
+        html: setregularkey.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Add, remove, or modify an account's regular key pair.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.md
+        html: signerlistset.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Add, remove, or modify an account's multi-signing list.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md
+        html: trustset.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Add or modify a trust line.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.md
+        html: pseudo-transaction-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Pseudo-Transaction Types
+        blurb: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.md
+        html: enableamendment.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Pseudo-Transaction Types
+        blurb: Enable a change in transaction processing.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.md
+        html: setfee.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Pseudo-Transaction Types
+        blurb: Change global reserve and transaction cost settings.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md
         html: transaction-results.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        blurb: All possible transaction result codes and their meanings.
         targets:
             - local
 
-    -   name: tel Codes #TODO: break off content from transaction-format-old-monolith.md
+    -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.md
+        html: tec-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.md
+        html: tef-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.md
         html: tel-codes.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.md
+        html: tem-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.md
+        html: ter-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.md
+        html: tes-success.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-metadata.md
+        html: transaction-metadata.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
         targets:
             - local
 
@@ -888,6 +1648,16 @@ pages:
         targets:
             - local
 
+    -   md: use-cases/run-a-rippled-validator.md
+        html: run-a-rippled-validator.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - amendments.html
+            - the-rippled-server.html #TODO - add to useful_background when available: fee voting, consensus principles & rules
+        targets:
+            - local
+
     -   md: use-cases/list-xrp-in-your-exchange.md
         html: list-xrp-in-your-exchange.html
         funnel: Use Cases
@@ -896,6 +1666,16 @@ pages:
             - xrp-ledger-overview.html
             - reliable-transaction-submission.html
             - xrp.html
+        targets:
+            - local
+
+    -   md: use-cases/contribute-code-to-rippled.md
+        html: contribute-code-to-rippled.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - consensus.html
+            - amendments.html #TODO add to useful_background: stand-alone mode, rippled.cfg reference (future feature)
         targets:
             - local
 

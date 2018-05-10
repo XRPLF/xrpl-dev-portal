@@ -1,11 +1,11 @@
-## print
+# print
 [[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
 
 The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
 
 *The `print` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -29,7 +29,7 @@ rippled print
 
 The request includes no parameters.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -226,6 +226,6 @@ Connecting to 127.0.0.1:5005
 
 The response follows the [standard format](#response-formatting). Additional fields in the result depend on the internal state of the `rippled` server. The results of this command are subject to change without notice.
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).

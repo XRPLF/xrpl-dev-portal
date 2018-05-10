@@ -1,11 +1,11 @@
-## ledger_accept
+# ledger_accept
 [[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp "Source")
 
 The `ledger_accept` method forces the server to close the current-working ledger and move to the next ledger number. This method is intended for testing purposes only, and is only available when the `rippled` server is running stand-alone mode.
 
 *The `ledger_accept` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
-#### Request Format
+### Request Format
 
 An example of the request format:
 
@@ -31,7 +31,7 @@ rippled ledger_accept
 
 The request accepts no parameters.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 ```js
@@ -53,7 +53,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 **Note:** When you close a ledger, `rippled` determines the canonical order of transactions in that ledger and replays them. This can change the outcome of transactions that were provisionally applied to the current ledger.
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `notStandAlone` - If the `rippled` server is not currently running in stand-alone mode.

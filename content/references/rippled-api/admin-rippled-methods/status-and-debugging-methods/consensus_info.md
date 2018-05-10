@@ -1,11 +1,11 @@
-## consensus_info
+# consensus_info
 [[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
 
 The `consensus_info` command provides information about the consensus process for debugging purposes.
 
 _The `consensus_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -41,7 +41,7 @@ rippled consensus_info
 
 The request has no parameters.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -223,6 +223,6 @@ It is also normal to get a minimal result where the only field in `info` is `"co
 The results of the `consensus_info` command can vary dramatically if you run it several times, even in short succession.
 
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).

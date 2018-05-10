@@ -1,4 +1,4 @@
-## feature
+# feature
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
 The `feature` command returns information about [amendments](concept-amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](concept-amendments.html#amendment-process). [New in: rippled 0.31.0][]
@@ -7,7 +7,7 @@ You can use the `feature` command to temporarily configure the server to vote ag
 
 _The `feature` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -64,7 +64,7 @@ The request includes the following parameters:
 
 **Note:** You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the `feature` field. For example, you might want to do this if you plan to upgrade soon to a new `rippled` version that _does_ support the amendment.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -182,7 +182,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 **Caution:** The `name` for an amendment does not strictly indicate what that amendment does. The name is not guaranteed to be unique or consistent across servers.
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `badFeature` - The `feature` specified was invalidly formatted, or the server does not know an amendment with that name.

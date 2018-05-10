@@ -1,11 +1,11 @@
-## Offer
+# Offer
 [[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
 
 The `Offer` object type describes an offer to exchange currencies, more traditionally known as an _order_, in the XRP Ledger's distributed exchange. An [OfferCreate transaction][] only creates an `Offer` object in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.
 
 An offer can become unfunded through other activities in the network, while remaining in the ledger. However, `rippled` automatically prunes any unfunded offers it happens across in the course of transaction processing (and _only_ transaction processing, because the ledger state must only be changed by transactions). For more information, see [lifecycle of an offer](reference-transaction-format.html#lifecycle-of-an-offer).
 
-Example `Offer` object:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -28,6 +28,8 @@ Example `Offer` object:
 }
 ```
 
+## {{currentpage.name}} Fields
+
 An `Offer` object has the following fields:
 
 | Name              | JSON Type | [Internal Type][] | Description |
@@ -45,7 +47,7 @@ An `Offer` object has the following fields:
 | `PreviousTxnLgrSeq` | Number | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this object. |
 | `Expiration`        | Number    | UInt32    | (Optional) Indicates the time after which this offer is considered unfunded. See [Specifying Time](reference-rippled.html#specifying-time) for details. |
 
-### Offer Flags
+## Offer Flags
 
 There are several options which can be either enabled or disabled when an [OfferCreate transaction][] creates an offer object. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
 
@@ -56,10 +58,15 @@ There are several options which can be either enabled or disabled when an [Offer
 | lsfPassive | 0x00010000 | 65536 | The object was placed as a passive offer. This has no effect on the object in the ledger. | tfPassive |
 | lsfSell   | 0x00020000 | 131072 | The object was placed as a sell offer. This has no effect on the object in the ledger (because tfSell only matters if you get a better rate than you asked for, which cannot happen after the object enters the ledger). | tfSell |
 
-### Offer ID Format
+## Offer ID Format
 
 The ID of an `Offer` object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
 * The Offer space key (`0x006F`)
 * The AccountID of the account placing the offer
 * The Sequence number of the [OfferCreate transaction][] that created the offer
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

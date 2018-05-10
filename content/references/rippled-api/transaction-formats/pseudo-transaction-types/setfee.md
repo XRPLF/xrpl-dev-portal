@@ -1,4 +1,4 @@
-## SetFee
+# SetFee
 
 A change in [transaction cost](concept-transaction-cost.html) or [account reserve](concept-reserves.html) requirements as a result of [Fee Voting](concept-fee-voting.html).
 
@@ -28,3 +28,8 @@ A change in [transaction cost](concept-transaction-cost.html) or [account reserv
 | ReserveBase       | Unsigned Integer | UInt32            | The base reserve, in drops |
 | ReserveIncrement  | Unsigned Integer | UInt32            | The incremental reserve, in drops |
 | LedgerSequence    | Number           | UInt32            | The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

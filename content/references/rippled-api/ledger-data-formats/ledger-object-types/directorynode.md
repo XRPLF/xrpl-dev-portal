@@ -1,4 +1,4 @@
-## DirectoryNode
+# DirectoryNode
 [[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
 
 The `DirectoryNode` object type provides a list of links to other objects in the ledger's state tree. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode objects each containing up to 32 [IDs](#tree-format) of other objects. The first object is called the root of the directory, and all objects other than the root object can be added or deleted as necessary.
@@ -8,7 +8,7 @@ There are two kinds of Directories:
 * **Owner directories** list other objects owned by an account, such as `RippleState` or `Offer` objects.
 * **Offer directories** list the offers available in the distributed exchange. A single Offer directory contains all the offers that have the same exchange rate for the same issuances.
 
-Example Directories:
+## Example {{currentpage.name}} JSON
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -49,6 +49,8 @@ Example Directories:
 
 <!-- MULTICODE_BLOCK_END -->
 
+## {{currentpage.name}} Fields
+
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|---------------|-------------|
 | `LedgerEntryType`   | String    | UInt16    | The value `0x0064`, mapped to the string `DirectoryNode`, indicates that this object is part of a Directory. |
@@ -64,7 +66,7 @@ Example Directories:
 | `TakerGetsCurrency` | String    | Hash160   | (Offer Directories only) The currency code of the TakerGets amount from the offers in this directory. |
 | `TakerGetsIssuer`   | String    | Hash160   | (Offer Directories only) The issuer of the TakerGets amount from the offers in this directory. |
 
-### Directory ID Formats
+## Directory ID Formats
 
 There are three different formulas for creating the ID of a DirectoryNode, depending on which of the following the DirectoryNode represents:
 
@@ -92,3 +94,8 @@ The lower 64 bits of an Offer Directory's ID represent the TakerPays amount divi
 * The DirectoryNode space key (`0x0064`)
 * The ID of the root DirectoryNode
 * The page number of this object. (Since 0 is the root DirectoryNode, this value is an integer 1 or higher.)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

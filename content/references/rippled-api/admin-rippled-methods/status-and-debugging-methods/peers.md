@@ -1,11 +1,11 @@
-## peers
+# peers
 [[Source]<br>](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
 
 The `peers` command returns a list of all other `rippled` servers currently connected to this one, including information on their connection and sync status.
 
 *The `peers` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -29,7 +29,7 @@ rippled peers
 
 The request includes no additional parameters.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -404,6 +404,6 @@ Each member of the `peers` array is a peer object with the following fields:
 | `uptime`           | Number  | The number of seconds that your `rippled` server has been continuously connected to this peer. [New in: rippled 0.30.1][] |
 | `version`          | string  | (May be omitted) The `rippled` version number of the peer server |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).

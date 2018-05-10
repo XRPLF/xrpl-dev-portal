@@ -1,0 +1,25 @@
+# Cross-Currency Payments
+
+In the XRP Ledger, you can send cross-currency payments that exchange one or more issued currencies, XRP, or both. Like [direct XRP payments](TODO-link), these payments use the [Payment transaction type][Payment]. Cross-currency payments within the XRP Ledger are fully atomic, meaning that either the payment fully executes or no part of it executes.
+
+By default, cross-currency payments deliver a fixed amount to their destination at a variable cost to their source. Cross-currency payments can also be [partial payments](partial-payments.html), which deliver a variable amount to the destination within a fixed sending limit.
+
+
+## Prerequisites
+
+- By definition, a cross-currency payment involves at least two currencies, which means that at least one currency involved must be a non-XRP issued currency.
+    - Typically, this means using one or more currencies issued by an [XRP Ledger Gateway](become-an-xrp-ledger-gateway.html). Such currencies are backed by funds outside the XRP Ledger, and can be withdrawn through the gateway.
+    - You could also use digital tokens that are only issued within the XRP Ledger and has no outside backing, as long as the parties transacting are willing to send or receive those tokens and treat them as something of value.
+- There must be at least one [Path](paths.html) between the sender and receiver, and the total liquidity across all paths must be enough to facilitate the payment. For cross-currency payments, this usually means consuming [Offers](offers.html) to convert from one currency to another.
+
+
+## Autobridging
+
+Cross-currency payments that exchange two issued currencies automatically use XRP, when it decreases the cost of the payment, by connecting order books to deepen the pool of available liquidity. For example, a payment sending from USD to MXN automatically converts USD to XRP and then XRP to MXN if doing so is cheaper than converting USD to MXN directly.
+
+For more information, see [Autobridging](autobridging.html).
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

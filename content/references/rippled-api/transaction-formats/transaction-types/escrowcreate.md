@@ -1,4 +1,4 @@
-## EscrowCreate
+# EscrowCreate
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
@@ -6,7 +6,7 @@ _Requires the [Escrow Amendment](reference-amendments.html#escrow)._
 
 Sequester XRP until the escrow process either finishes or is canceled.
 
-Example EscrowCreate:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -22,6 +22,10 @@ Example EscrowCreate:
 }
 ```
 
+{% include '_snippets/tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
+
+
 | Field            | JSON Type | [Internal Type][] | Description               |
 |:-----------------|:----------|:------------------|:--------------------------|
 | `Amount`         | String    | Amount            | Amount of [XRP, in drops][Currency Amount], to deduct from the sender's balance and escrow. Once escrowed, the XRP can either go to the `Destination` address (after the `FinishAfter` time) or returned to the sender (after the `CancelAfter` time). |
@@ -30,6 +34,10 @@ Example EscrowCreate:
 | `FinishAfter`    | Number    | UInt32            | _(Optional)_ The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when the escrowed XRP can be released to the recipient. This value is immutable; the funds cannot move until this time is reached. |
 | `Condition`      | String    | VariableLength    | _(Optional)_ Hex value representing a [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1). The funds can only be delivered to the recipient if this condition is fulfilled. |
 | `DestinationTag` | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the destination for this escrowed payment, such as a hosted recipient at the destination address. |
-| `SourceTag`      | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the source for this escrowed payment, such as a hosted sender at the source address. |
 
 Either `CancelAfter` or `FinishAfter` must be specified. If both are included, the `FinishAfter` time must precede that of `CancelAfter`.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

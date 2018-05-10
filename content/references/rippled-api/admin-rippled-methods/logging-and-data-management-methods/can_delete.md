@@ -1,11 +1,11 @@
-## can_delete
+# can_delete
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
 With `online_delete` and `advisory_delete` configuration options enabled, the `can_delete` method informs the rippled server of the latest ledger which may be deleted.
 
 _The `can_delete` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
-#### Request Format
+### Request Format
 
 An example of the request format:
 
@@ -60,7 +60,7 @@ a successful result containing the following fields:
 
 Use this command with no parameter to query the existing `can_delete` setting.
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `notEnabled` - Not enabled in configuration.
