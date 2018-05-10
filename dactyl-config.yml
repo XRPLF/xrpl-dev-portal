@@ -546,7 +546,85 @@ pages:
         targets:
             - local
 
-    # TODO: 8 other account methods
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.md
+        html: account_currencies.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.md
+        html: account_info.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.md
+        html: account_lines.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.md
+        html: account_objects.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.md
+        html: account_offers.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.md
+        html: account_tx.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.md
+        html: gateway_balances.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.md
+        html: noripple_check.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        targets:
+            - local
 
     -   name: Ledger Methods #TODO: possible md landing content?
         html: ledger-methods.html
@@ -569,7 +647,45 @@ pages:
         targets:
             - local
 
-    # TODO: 5 other ledger methods
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.md
+        html: ledger_closed.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.md
+        html: ledger_current.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.md
+        html: ledger_data.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.md
+        html: ledger_entry.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        targets:
+            - local
 
     -   name: Transaction Methods #TODO: possible md landing content?
         html: transaction-methods.html # watch for clashes w/ this filename
@@ -592,7 +708,65 @@ pages:
         targets:
             - local
 
-    # TODO: 6 other transaction methods
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.md
+        html: sign_for.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.md
+        html: submit.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.md
+        html: submit_multisigned.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.md
+        html: transaction_entry.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.md
+        html: tx.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.md
+        html: tx_history.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        targets:
+            - local
 
     -   name: Path and Order Book Methods #TODO: possible md landing content?
         html: path-and-order-book-methods.html
@@ -615,13 +789,169 @@ pages:
         targets:
             - local
 
-    # TODO: 2 other Path and Order Book methods
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md
+        html: path_find.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        targets:
+            - local
 
-    # TODO: subcategory landings and method pages for:
-    # - Payment Channel Methods (2)
-    # - Subscription Methods (2)
-    # - Server Info Methods (3)
-    # - Utility Methods (3)
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.md
+        html: ripple_path_find.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        targets:
+            - local
+
+    -   name: Payment Channel Methods #TODO: possible md landing content?
+        html: payment-channel-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Payment Channel Methods
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_authorize.md
+        html: channel_authorize.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Payment Channel Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.md
+        html: channel_verify.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Payment Channel Methods
+        targets:
+            - local
+
+    -   name: Subscription Methods #TODO: possible md landing content?
+        html: subscription-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Subscription Methods
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.md
+        html: subscribe.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Subscription Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.md
+        html: unsubscribe.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Subscription Methods
+        targets:
+            - local
+
+    -   name: Server Info Methods #TODO: possible md landing content?
+        html: server-info-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.md
+        html: fee.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
+        html: server_info.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.md
+        html: server_state.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        targets:
+            - local
+
+    -   name: Utility Methods #TODO: possible md landing content?
+        html: utility-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Utility Methods
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/utility-methods/json.md
+        html: json.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Utility Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.md
+        html: ping.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Utility Methods
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/utility-methods/random.md
+        html: random.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Utility Methods
+        targets:
+            - local
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
         html: admin-rippled-methods.html
