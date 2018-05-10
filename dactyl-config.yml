@@ -42,8 +42,8 @@ targets:
         display_name: XRP Ledger Dev Portal
         # These github_ fields are used by the template's "Edit on GitHub" link.
         #  Override them with --vars to change which fork/branch to edit.
-        github_forkurl: https://github.com/mDuo13/ripple-dev-portal
-        github_branch: 5layertest
+        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_branch: master
         recently_updated:
             - html: introduction.html
               date: 2018-05-07
