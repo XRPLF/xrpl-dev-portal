@@ -682,27 +682,29 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
-        template: template-landing-children.html
+        template: template-landing-children.html #TODO: consider using the default template instead for page sidebar?
         targets:
             - local
 
-    -   name: Ledger Header #TODO: break off from ledger-format-old-monolith.md file
+    -   md: references/rippled-api/ledger-data-formats/ledger-header.md
         html: ledger-header.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Ledger Data Formats
+        blurb: A unique header that describes the contents of a ledger version.
         targets:
             - local
 
-    -   name: Ledger Object Types #TODO: break off from ledger-format-old-monolith.md file
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledger-object-types.md
         html: ledger-object-types.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        template: template-landing-children.html
+        template: template-landing-children.html #TODO: consider dropping the md since the page children handles this OK
+        blurb: Specifications for the types of objects that can be stored in a ledger's state tree.
         targets:
             - local
 
@@ -713,10 +715,119 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
+        blurb: The settings, XRP balance, and other metadata for one account.
         targets:
             - local
 
-    # TODO: 10 other ledger object types
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/amendments.md
+        html: amendments-object.html #amendments.html is taken by the concept page
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Singleton object with status of enabled and pending amendments.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/check.md
+        html: check.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A check that can be redeemed for money by its destination.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.md
+        html: directorynode.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Contains links to other objects.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/escrow.md
+        html: escrow-object.html #escrow.html is taken by the concept page
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Contains XRP held for a conditional payment.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/feesettings.md
+        html: feesettings.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledgerhashes.md
+        html: ledgerhashes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Lists of prior ledger versions' hashes for history lookup.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.md
+        html: offer.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: An order to make a currency trade.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.md
+        html: paychannel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A channel for asynchronous XRP payments.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.md
+        html: ripplestate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
+        targets:
+            - local
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.md
+        html: signerlist.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A list of addresses for multi-signing transactions.
+        targets:
+            - local
 
     -   md: references/rippled-api/transaction-formats/transaction-formats.md
         html: transaction-formats.html

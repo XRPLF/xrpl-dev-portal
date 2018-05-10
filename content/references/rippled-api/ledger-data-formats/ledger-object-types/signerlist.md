@@ -1,9 +1,9 @@
-## SignerList
+# SignerList
 [[Source]<br>](https://github.com/ripple/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
 
 The `SignerList` object type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a SignerList using the [SignerListSet transaction type](reference-transaction-format.html#signerlistset). This object type is introduced by the [MultiSign amendment](reference-amendments.html#multisign). [New in: rippled 0.31.0][]
 
-Example SignerList object:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -38,7 +38,9 @@ Example SignerList object:
 }
 ```
 
-A SignerList object has the following fields:
+## {{currentpage.name}} Fields
+
+A `SignerList` object has the following fields:
 
 | Name            | JSON Type | Internal Type | Description |
 |-----------------|-----------|---------------|-------------|
@@ -64,14 +66,19 @@ Each member of the `SignerEntries` field is an object that describes that signer
 
 When processing a multi-signed transaction, the server dereferences the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot object](#accountroot), then only the master secret associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
 
-### SignerLists and Reserves
+## SignerLists and Reserves
 
 A SignerList contributes to its owner's [reserve requirement](concept-reserves.html). The SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](#ripplestate)) or [Offer](#offer) object in the ledger.
 
-### SignerList ID Format
+## SignerList ID Format
 
 The ID of a SignerList object is the SHA-512Half of the following values, concatenated in order:
 
 * The RippleState space key (`0x0053`)
 * The AccountID of the owner of the SignerList
 * The SignerListID (currently always `0`)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

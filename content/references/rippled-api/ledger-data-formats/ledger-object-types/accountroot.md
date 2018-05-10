@@ -1,7 +1,9 @@
-## AccountRoot
+# AccountRoot
 [[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
 
-The `AccountRoot` object type describes a single _account_ object. Example `AccountRoot` object:
+The `AccountRoot` object type describes a single [account](accounts.html), its settings, and XRP balance.
+
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -21,6 +23,8 @@ The `AccountRoot` object type describes a single _account_ object. Example `Acco
     "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
 }
 ```
+
+## {{currentpage.name}} Fields
 
 The `AccountRoot` object has the following fields:
 
@@ -44,13 +48,13 @@ The `AccountRoot` object has the following fields:
 | `WalletLocator`               | String    | Hash256           | _(Optional)_ **DEPRECATED**. Do not use. |
 | `WalletSize`                  | Number    | UInt32            | _(Optional)_ **DEPRECATED**. Do not use. |
 
-### AccountRoot Flags
+## AccountRoot Flags
 
 There are several options which can be either enabled or disabled for an account. These options can be changed with an [AccountSet transaction][]. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
 
 AccountRoot objects can have the following flag values:
 
-| Flag Name | Hex Value | Decimal Value | Description | Corresponding [AccountSet Flag](reference-transaction-format.html#accountset-flags) |
+| Flag Name | Hex Value | Decimal Value | Description | Corresponding [AccountSet Flag](accountset.html#accountset-flags) |
 |-----------|-----------|---------------|-------------|-------------------------------|
 | lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](concept-noripple.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. | asfDefaultRipple |
 | lsfDepositAuth | 0x01000000 | 16777216 | This account can only receive funds from transactions it sends. (It has [DepositAuth](concept-depositauth.html) enabled.) | asfDepositAuth |
@@ -62,9 +66,14 @@ AccountRoot objects can have the following flag values:
 | lsfRequireAuth | 0x00040000 | 262144 | This account must individually approve other users for those users to hold this account's issuances. | asfRequireAuth |
 | lsfRequireDestTag | 0x00020000 | 131072 | Requires incoming payments to specify a Destination Tag. | asfRequireDest |
 
-### AccountRoot ID Format
+## AccountRoot ID Format
 
 The ID of an AccountRoot object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
 * The Account space key (`0x0061`)
 * The AccountID of the account
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
