@@ -1,0 +1,99 @@
+# Technical FAQ
+
+## Validators and Unique Node Lists
+
+<!--#{ using h4s for questions to keep them out of the right side nav (too cluttered when they display) and to provide appropriate text size for questions. #}-->
+#### What service do transaction validators provide?
+
+Validators determine if transactions meet protocol requirements, and are therefore “valid.” The service validators uniquely provide is grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending.
+
+See [The Ripple Ledger Consensus Process](x) and the <a href="https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/" target="_blank">Ripple Labs Tech Talk: Understanding Consensus <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}--> for more information about the consensus process.
+
+
+#### How much does it cost to run a validator?
+
+Running a validator does not require any fees or XRP. It is comparable in cost to running an email server in terms of electricity.
+
+
+#### What are Unique Node Lists (UNLs)?
+
+They are the lists of transaction validators a given participant believes will not conspire to defraud them.
+
+
+#### Which UNL should I select?
+
+Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, _Ripple_ (further mentions of Ripple in this document that are italicized to represent the company) provides a default and recommended list which we expand based on watching the history of validators operated by _Ripple_ and third parties. Eventually, _Ripple_ intends to remove itself from this process entirely by having network participants select their own lists based on publicly available data about validator quality.
+<!--#{ TODO: See the references to _Ripple_ the company vs Ripple (non-ital) as what I think is the XRP Ledger. Should we just replace all references to the non-italicized Ripple with "XRP Ledger" or "`rippled`" as appropriate? #}-->
+
+#### If _Ripple_ recommends adoption of its UNL, doesn’t that create a centralized system?
+
+No. The Ripple network is opt-in. Each participant directly or indirectly chooses its UNL. Should _Ripple_ stop operating or should _Ripple_ act maliciously, participants could change their UNLs to continue using the network.
+
+
+#### What is the validator incentive structure for validators not run by _Ripple_?
+
+If the Ripple network becomes successful and is widely used for interbank settlement, there will be an incentive for participants to ensure the reliability and stability of the network. If this happens, institutions will run Ripple servers to participate in the network. Once you are running a server, the additional cost and effort to operate a validator is essentially zero—it would simply involve flipping a software switch from off to on. It is the validators who decide the evolution of the Ripple network, so the primary incentive to run a validator is to preserve and protect the stable operation and sensible evolution of the network.
+
+
+#### Can financial institutions set up transaction validators that will help them meet specific institutional standards and requirements?
+
+No, institutions cannot set up customized validator policies for transaction selection. Validators either follow the protocol, or they do not. If software does not follow protocol rules, it will not function. Thus, it is not recommended that institutions seek out custom implementations without in-house expertise.
+
+
+#### What will happen if more than 20% of nodes within the network do not agree with the majority? How is the final version of the ledger chosen?
+
+The network may temporarily halt to reconfigure itself to continue with the new UNL list based on those that want to reach consensus. This temporary processing delay is desired rather than double spending.
+
+In the process of determining the final, authoritative version of the ledger, there may be multiple temporary internal versions. Such internal versions  will happen in distributed systems because not all nodes will receive transactions in the same order. The analogous behavior in Bitcoin is where two servers each see a different longest chain because two blocks were mined at about the same time.
+
+However, there will only be one authoritative ledger version at any given time; other versions are irrelevant and harmless.
+
+
+#### Does Ripple utilize a formal validator onboarding process?
+
+No, a formal validator onboarding process is not compatible with Ripple, as it is a system with no central authority. Rather, _Ripple_ provides recommendations and best practices.
+
+
+## Role of XRP
+
+
+#### Why does _Ripple_ utilize XRP holdings?
+
+_Ripple_ XRP holdings incentivize the company to make Ripple as useful as possible. XRP exists as a native asset on Ripple for anti-spam transaction purposes, and for currency bridging only if beneficial to users. Otherwise, the use of XRP in transactions is completely optional.
+
+
+#### How does Ripple respond to transaction floods?
+
+Ripple is designed to set the transaction fee dynamically based on demand as an anti-spam measure. The impact of any potential XRP manipulation is minimized by increases in network size as the market cap and transaction volume increase.
+
+
+#### What is _Ripple_ standard operating procedure regarding money laundering and suspicious economic activity?
+
+_Ripple_ is committed to monitoring and reporting any AML flags across the Ripple network, as well as reporting suspicious activity to FinCEN as applicable.
+
+
+## Security Concerns
+
+
+#### What is _Ripple’s_ process for reviewing third-party code contributions before they go live in the master codebase?
+
+_Ripple_ controls who has access to modify official versions of the Ripple server code, and it thoroughly audits all code.
+
+
+#### Does _Ripple_ offer a secure method to download their software?
+
+`rippled` source code is available at <a href="https://github.com/ripple/rippled" target="_blank">https://github.com/ripple/rippled <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->, where the tip of the master, release and develop branches always contains a version-setting commit signed by a Ripple developer. Ripple also offers prebuilt RPM packages for CentOS, RedHat Enterprise Linux, Fedora and Ubuntu. Those packages are digitally signed by _Ripple_ so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the md5sum of the RPM packages that are published.
+
+
+#### Does _Ripple_ distinguish between the codebase for validation and the one for user software?
+
+Yes. Ripple-lib/rest (user software) has a different codebase and repositories from `rippled` (validation).
+
+
+## See Also
+
+- <a href="https://github.com/ripple/rippled" target="_blank">`rippled` codebase <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+- User software codebase:
+      - <a href="https://github.com/ripple/ripple-lib" target="_blank">ripple-lib <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+      - <a href="https://github.com/ripple/ripplecharts-frontend" target="_blank">ripplecharts-frontend <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+- <a href="https://github.com/ripple/" target="_blank">Ripple GitHub Organization <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
