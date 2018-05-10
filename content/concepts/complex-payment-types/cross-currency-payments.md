@@ -15,7 +15,7 @@ By default, cross-currency payments deliver a fixed amount to their destination 
 
 ## Autobridging
 
-Cross-currency payments that exchange two issued currencies automatically use XRP, when it decreases the cost of the payment, by connecting order books and deepen the pool of available liquidity. For example, a payment sending from USD to MXN automatically converts USD to XRP and then XRP to MXN if doing so is cheaper than converting USD to MXN directly.
+Cross-currency payments that exchange two issued currencies automatically use XRP, when it decreases the cost of the payment, by connecting order books to deepen the pool of available liquidity. For example, a payment sending from USD to MXN automatically converts USD to XRP and then XRP to MXN if doing so is cheaper than converting USD to MXN directly.
 
 For more information, see [Autobridging](autobridging.html).
 
