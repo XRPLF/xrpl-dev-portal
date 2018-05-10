@@ -410,9 +410,81 @@ pages:
         targets:
             - local
 
-    # TODO: install rippled, troubleshoot rippled, build & run on ubuntu,
+    -   md: tutorials/manage-the-rippled-server/capacity-planning.md
+        html: capacity-planning.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/install-rippled.md
+        html: install-rippled.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/update-rippled.md
+        html: update-rippled.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/cluster-rippled-servers.md
+        html: cluster-rippled-servers.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/run-rippled-as-a-validator.md
+        html: run-rippled-as-a-validator.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/start-a-new-genesis-ledger-in-stand-alone-mode.md
+        html: start-a-new-genesis-ledger-in-stand-alone-mode.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/load-a-saved-ledger-in-stand-alone-mode.md
+        html: load-a-saved-ledger-in-stand-alone-mode.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/advance-the-ledger-in-stand-alone-mode.md
+        html: advance-the-ledger-in-stand-alone-mode.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/build-run-rippled-ubuntu.md
+        html: build-run-rippled-ubuntu.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
+    # TODO: troubleshoot rippled,
     #  run a validator, run in stand-alone mode, set up private peers, run in
-    #  a cluster, capacity planning
+    #  a cluster
 
 # References -------------------------------------------------------------------
 
