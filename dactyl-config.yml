@@ -264,11 +264,47 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
+        template: template-landing-children.html
         blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
         targets:
             - local
 
-    # TODO: history sharding, stand-alone mode, clustering, peer protocol
+    -   md: concepts/the-rippled-server/clustering.md
+        html: clustering.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: Run rippled servers in a cluster to share the load of cryptography between them.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/history-sharding.md
+        html: history-sharding.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/peer-protocol.md
+        html: peer-protocol.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: The peer protocol specifies the language rippled servers speak to each other.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/stand-alone-mode.md
+        html: stand-alone-mode.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: Stand-alone mode provides a way to test rippled servers without connecting to a network of peers.
+        targets:
+            - local
+
 
 # Tutorials --------------------------------------------------------------------
 
