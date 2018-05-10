@@ -1,4 +1,4 @@
-## PaymentChannelClaim
+# PaymentChannelClaim
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
 _Requires the [PayChan Amendment](reference-amendments.html#paychan)._
@@ -21,7 +21,7 @@ The **destination address** of a channel can:
 
 - Cause a channel to be closed if its `Expiration` or `CancelAfter` time is older than the previous ledger's close time. Any validly-formed PaymentChannelClaim transaction has this effect regardless of the contents of the transaction.
 
-Example PaymentChannelClaim:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -35,6 +35,10 @@ Example PaymentChannelClaim:
 
 <!--{# TODO: replace the above example with one where the channel, pubkey, signature, and balance match #}-->
 
+{% include '_snippets/tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
+
+
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|
 | `Channel`   | String    | Hash256           | The unique ID of the channel, as a 64-character hexadecimal string. |
@@ -44,7 +48,7 @@ Example PaymentChannelClaim:
 | `PublicKey` | String    | PubKey            | _(Optional)_ The public key used for the signature, as hexadecimal. This must match the `PublicKey` stored in the ledger for the channel. Required unless the sender of the transaction is the source address of the channel and the `Signature` field is omitted. (The transaction includes the PubKey so that `rippled` can check the validity of the signature before trying to apply the transaction to the ledger.) |
 
 
-### PaymentChannelClaim Flags
+## PaymentChannelClaim Flags
 
 Transactions of the PaymentChannelClaim type support additional values in the [`Flags` field](#flags), as follows:
 
@@ -52,3 +56,8 @@ Transactions of the PaymentChannelClaim type support additional values in the [`
 |:----------|:-----------|:--------------|:------------------------------------|
 | `tfRenew` | 0x00010000 | 65536         | Clear the channel's `Expiration` time. (`Expiration` is different from the channel's immutable `CancelAfter` time.) Only the source address of the payment channel can use this flag. |
 | `tfClose` | 0x00020000 | 131072        | Request to close the channel. Only the channel source and destination addresses can use this flag. This flag closes the channel immediately if it has no more XRP allocated to it after processing the current claim, or if the destination address uses it. If the source address uses this flag when the channel still holds XRP, this schedules the channel to close after `SettleDelay` seconds have passed. (Specifically, this sets the `Expiration` of the channel to the close time of the previous ledger plus the channel's `SettleDelay` time, unless the channel already has an earlier `Expiration` time.) If the destination address uses this flag when the channel still holds XRP, any XRP that remains after processing the claim is returned to the source address. |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

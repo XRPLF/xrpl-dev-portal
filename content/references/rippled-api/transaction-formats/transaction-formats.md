@@ -1,14 +1,9 @@
 # Transaction Formats
 
-Transactions are the only way to modify the XRP Ledger. Get details about their required format.
+A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only final if signed, submitted, and accepted into a validated ledger version following the [consensus process](consensus.html). Some ledger rules also generate _[pseudo-transactions](#pseudo-transactions)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost][].
 
-* **[Transaction Common Fields](transaction-common-fields.html)**
-<!--{# TODO: provide overview text of what this content is all about #}-->
 
-* **[Transaction Types](transaction-types.html)**
-<!--{# TODO: provide overview text of what this content is all about #}-->
-
-* **[Transaction Results](transaction-results.html)**
-<!--{# TODO: provide overview text of what this content is all about #}-->
-
-<!--{# TODO: This page may need to catch overflow of any doc from https://developers.ripple.com/reference-transaction-format.html that hasn't been moved out to other docs, such as tutorials and more granular reference docs. If yes - need to adjust presentation of links to child pages above because they may look like anchor links to topics on the page and cause confusion. Ideally, we'd provide another page in this hierarchy that reflects the content in the overflow. #}-->
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

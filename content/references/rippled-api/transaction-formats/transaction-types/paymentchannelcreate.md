@@ -1,11 +1,11 @@
-## PaymentChannelCreate
+# PaymentChannelCreate
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
 _Requires the [PayChan Amendment](reference-amendments.html#paychan)._
 
 Create a unidirectional channel and fund it with XRP. The address sending this transaction becomes the "source address" of the payment channel.
 
-Example PaymentChannelCreate:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -21,6 +21,10 @@ Example PaymentChannelCreate:
 }
 ```
 
+{% include '_snippets/tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
+
+
 | Field            | JSON Type | [Internal Type][] | Description               |
 |:-----------------|:----------|:------------------|:--------------------------|
 | `Amount`         | String    | Amount            | Amount of [XRP, in drops][Currency Amount], to deduct from the sender's balance and set aside in this channel. While the channel is open, the XRP can only go to the `Destination` address. When the channel closes, any unclaimed XRP is returned to the source address's balance. |
@@ -29,4 +33,8 @@ Example PaymentChannelCreate:
 | `PublicKey`      | String    | PubKey            | The public key of the key pair the source will use to sign claims against this channel, in hexadecimal. This can be any secp256k1 or Ed25519 public key. <!-- STYLE_OVERRIDE: will --> |
 | `CancelAfter`    | Number    | UInt32            | _(Optional)_ The time, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time), when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time. |
 | `DestinationTag` | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
-| `SourceTag`      | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the source for this payment channel, such as a hosted sender at the source address. |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

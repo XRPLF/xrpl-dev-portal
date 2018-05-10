@@ -1,12 +1,12 @@
-## AccountSet
+# AccountSet
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
 An AccountSet transaction modifies the properties of an [account in the XRP Ledger](reference-ledger-format.html#accountroot).
 
-Example AccountSet:
+## Example {{currentpage.name}} JSON
 
-```
+```json
 {
     "TransactionType": "AccountSet",
     "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -17,6 +17,10 @@ Example AccountSet:
     "MessageKey": "rQD4SqHJtDxn5DDL7xNnojNa3vxS1Jx5gv"
 }
 ```
+
+{% include '_snippets/tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
+
 
 | Field                          | JSON Type        | [Internal Type][] | Description |
 |:-------------------------------|:-----------------|:------------------|:-----|
@@ -32,7 +36,7 @@ Example AccountSet:
 
 If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Canceling or Skipping a Transaction](#canceling-or-skipping-a-transaction) for more details.
 
-### Domain
+## Domain
 
 The `Domain` field is represented as the hex string of the lowercase ASCII of the domain. For example, the domain *example.com* would be represented as `"6578616D706C652E636F6D"`.
 
@@ -40,7 +44,7 @@ To remove the `Domain` field from an account, send an AccountSet with the Domain
 
 Client applications can use the [ripple.txt](https://wiki.ripple.com/Ripple.txt) file hosted by the domain to confirm that the account is actually operated by that domain.
 
-### AccountSet Flags
+## AccountSet Flags
 
 There are several options which can be either enabled or disabled for an account. Account options are represented by different types of flags depending on the situation:
 
@@ -82,7 +86,7 @@ The following [Transaction flags](#flags), specific to the AccountSet transactio
 **Caution:** The numeric values of `tf` and `asf` flags in transactions do not match up with the values they set in the accounts "at rest" in the ledger. To read the flags of an account in the ledger, see [`AccountRoot` flags](reference-ledger-format.html#accountroot-flags).
 
 
-#### Blocking Incoming Transactions
+### Blocking Incoming Transactions
 
 Incoming transactions with unclear purposes may be an inconvenience for financial institutions, who would have to recognize when a customer made a mistake, and then potentially refund accounts or adjust balances depending on the mistake. The `asfRequireDest` and `asfDisallowXRP` flags are intended to protect users from accidentally sending funds in a way that is unclear about the reason the funds were sent.
 
@@ -90,8 +94,13 @@ For example, a destination tag is typically used to identify which hosted balanc
 
 You can protect against unwanted incoming payments for non-XRP currencies by not creating trust lines in those currencies. Since XRP does not require trust, the `asfDisallowXRP` flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in `rippled` because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the `asfDisallowXRP` flag enabled.
 
-### TransferRate
+## TransferRate
 
 The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See [Transfer Fees](concept-transfer-fees.html) for more information.
 
 In `rippled`'s WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `1200000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
