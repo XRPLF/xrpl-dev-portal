@@ -2,18 +2,6 @@
 
 `rippled` is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the `rippled` server.
 
-Other pages in this category:
-
-* **[History Sharding](history-sharding.html)**
-
-      Historical sharding distributes the transaction history of the XRP Ledger into segments, called shards, across servers in the XRP Ledger network. Understand the purpose of history sharding and when to use it.
-<!--{# TODO: Is this History Sharding or Historical Sharding? #}-->
-
-* **[Clustering](clustering.html)**
-
-      If you are running multiple `rippled` servers in a single datacenter, you can configure those servers into a cluster to maximize efficiency. Understand the purpose of clustering and when to use it.
-
-
 ## Types of rippled Servers
 
 The `rippled` server software can run in several modes depending on its configuration, including:

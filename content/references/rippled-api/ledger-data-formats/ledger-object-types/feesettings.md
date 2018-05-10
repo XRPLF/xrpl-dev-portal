@@ -1,7 +1,9 @@
-## FeeSettings
+# FeeSettings
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")
 
 The `FeeSettings` object type contains the current base [transaction cost](concept-transaction-cost.html) and [reserve amounts](concept-reserves.html) as determined by [fee voting](concept-fee-voting.html). Each ledger version contains **at most one** `FeeSettings` object.
+
+## Example {{currentpage.name}} JSON
 
 Example `FeeSettings` object:
 
@@ -17,6 +19,8 @@ Example `FeeSettings` object:
 }
 ```
 
+## {{currentpage.name}} Fields
+
 The `FeeSettings` object has the following fields:
 
 | Name                | JSON Type | [Internal Type][] | Description            |
@@ -30,10 +34,15 @@ The `FeeSettings` object has the following fields:
 
 **Warning:** The JSON format for this ledger object type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP](reference-rippled.html#specifying-currency-amounts).
 
-### FeeSettings ID Format
+## FeeSettings ID Format
 
 The `FeeSettings` object ID is the hash of the `FeeSettings` space key (`0x0065`) only. This means that the ID of the `FeeSettings` object in a ledger is always:
 
 ```
 4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651
 ```
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

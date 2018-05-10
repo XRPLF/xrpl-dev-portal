@@ -1,11 +1,11 @@
-## RippleState
+# RippleState
 [[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
 
 The `RippleState` object type connects two accounts in a single currency. Conceptually, a `RippleState` object represents two _trust lines_ between the accounts, one from each side. Each account can change the settings for its side of the `RippleState` object, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist, so `rippled` deletes `RippleState` objects when their properties are entirely default.
 
 Since no account is privileged in the XRP Ledger, a `RippleState` object sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".
 
-Example `RippleState` object:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -34,7 +34,9 @@ Example `RippleState` object:
 }
 ```
 
-A RippleState object has the following fields:
+## {{currentpage.name}} Fields
+
+A `RippleState` object has the following fields:
 
 | Name            | JSON Type | Internal Type | Description |
 |-----------------|-----------|---------------|-------------|
@@ -52,7 +54,7 @@ A RippleState object has the following fields:
 | `HighQualityIn`   | Number    | UInt32 | (Optional) The inbound quality set by the high account, as an integer in the implied ratio HighQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or face value. |
 | `HighQualityOut`  | Number    | UInt32 | (Optional) The outbound quality set by the high account, as an integer in the implied ratio HighQualityOut:1,000,000,000. The value 0 is equivalent to 1 billion, or face value. |
 
-### RippleState Flags
+## RippleState Flags
 
 There are several options which can be either enabled or disabled for a trust line. These options can be changed with a [TrustSet transaction](reference-transaction-format.html#trustset). In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
 
@@ -69,7 +71,7 @@ RippleState objects can have the following flag values:
 | lsfLowFreeze | 0x00400000 | 4194304 | The low account has frozen the trust line, preventing the high account from transferring the asset. | tfSetFreeze |
 | lsfHighFreeze | 0x00800000 | 8388608 | The high account has frozen the trust line, preventing the low account from transferring the asset. | tfSetFreeze |
 
-### Contributing to the Owner Reserve
+## Contributing to the Owner Reserve
 
 If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's [owner reserve](concept-reserves.html#owner-reserves). In a RippleState object, the `lsfLowReserve` and `lsfHighReserve` flags indicate which account(s) are responsible for the owner reserve. The `rippled` server automatically sets these flags when it modifies a trust line.
 
@@ -92,7 +94,7 @@ The default state of the two NoRipple flags depends on the state of the [lsfDefa
 
 Fortunately, `rippled` uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the DefaultRipple flag, that account's reserve stays the same initially. If an account modifies a trust line, `rippled` re-evaluates whether that individual trust line is in its default state and should contribute to the owner reserve.
 
-### RippleState ID Format
+## RippleState ID Format
 
 The ID of a RippleState object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
 
@@ -100,3 +102,8 @@ The ID of a RippleState object is the [SHA-512Half](#sha512half) of the followin
 * The AccountID of the low account
 * The AccountID of the high account
 * The 160-bit currency code of the trust line(s)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

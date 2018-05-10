@@ -1,4 +1,4 @@
-## EscrowFinish
+# EscrowFinish
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
@@ -6,7 +6,7 @@ _Requires the [Escrow Amendment](reference-amendments.html#escrow)._
 
 Deliver XRP from a held payment to the recipient.
 
-Example EscrowFinish:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -18,6 +18,10 @@ Example EscrowFinish:
     "Fulfillment": "A0028000"
 }
 ```
+
+{% include '_snippets/tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
+
 
 | Field           | JSON Type        | [Internal Type][] | Description               |
 |:----------------|:-----------------|:------------------|:--------------------------|
@@ -33,3 +37,8 @@ Any account may submit an EscrowFinish transaction.
 - You cannot execute a held payment after it has expired. Specifically, if the corresponding [EscrowCreate transaction][] specified a `CancelAfter` time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
 
 **Note:** The minimum [transaction cost](concept-transaction-cost.html) to submit an EscrowFinish transaction increases if it contains a fulfillment. If the transaction has no fulfillment, the transaction cost is the standard 10 drops. If the transaction contains a fulfillment, the transaction cost is 330 [drops of XRP](reference-rippled.html#specifying-currency-amounts) plus another 10 drops for every 16 bytes in size of the preimage.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

@@ -1,11 +1,11 @@
-## CheckCreate
+# CheckCreate
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/CreateCheck.cpp "Source") <!--{# TODO: change from develop to master when 0.90.0 is released #}-->
 
 _Requires the [Checks Amendment](reference-amendments.html#checks)._
 
 Create a Check object in the ledger, which is a deferred payment that can be cashed by its intended destination. The sender of this transaction is the sender of the Check.
 
-Example CheckCreate:
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -20,6 +20,10 @@ Example CheckCreate:
 }
 ```
 
+{% include '_snippets/tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
+
+
 In addition to the [common fields](#common-fields), a CheckCreate transaction has the following:
 
 | Field            | JSON Type           | [Internal Type][] | Description     |
@@ -30,7 +34,7 @@ In addition to the [common fields](#common-fields), a CheckCreate transaction ha
 | `Expiration`     | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the Check is no longer valid, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
 | `InvoiceID`      | String              | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this Check. |
 
-### Error Cases
+## Error Cases
 
 - If the `Destination` is the sender of the transaction, the transaction fails with the result code `temREDUNDANT`.
 - If the `Destination` [account](concept-accounts.html) does not exist in the ledger, the transaction fails with the result code `tecNO_DST`.
@@ -39,3 +43,8 @@ In addition to the [common fields](#common-fields), a CheckCreate transaction ha
 - If the `Expiration` of the transaction is in the past, the transaction fails with the result `tecEXPIRED`.
 - If the sender does not have enough XRP to meet the [owner reserve](concept-reserves.html#owner-reserves) after adding the Check, the transaction fails with the result `tecINSUFFICIENT_RESERVE`.
 - If either the sender or the destination of the Check cannot own more objects in the ledger, the transaction fails with the result `tecDIR_FULL`.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
