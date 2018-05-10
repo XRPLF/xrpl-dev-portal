@@ -4,7 +4,7 @@ Validators can vote for changes to basic [transaction cost](concept-transaction-
 
 Operators of [`rippled` validators](tutorial-rippled-setup.html#running-a-validator) can set their preferences for the transaction cost and reserve requirements in the `[voting]` stanza of the `rippled.cfg` file.
 
-**Caution:** Insufficient requirements could expose the XRP Ledger peer-to-peer network to denial-of-service attacks.
+**Caution:** Insufficient requirements, if adopted by a consensus of trusted validators, could expose the XRP Ledger peer-to-peer network to denial-of-service attacks.
 
 The parameters you can set are as follows:
 
