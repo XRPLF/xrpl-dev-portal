@@ -556,35 +556,6 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 
 The `owner_info` command is deprecated. Use [`account_objects`](#account-objects) instead.
 
-## List of Admin Commands
-
-Admin commands are only available if you [connect to `rippled`](#connecting-to-rippled) on a host and port that the config file identifies as admin. (By default, the commandline client uses an admin connection.)
-
-* [`can_delete` - Allow online deletion of ledgers up to a specific ledger](#can-delete)
-* [`connect` - Force the rippled server to connect to a specific peer](#connect)
-* [`consensus_info` - Get information about the state of consensus as it happens](#consensus-info)
-* [`feature` - Get information about protocol amendments](#feature)
-* [`fetch_info` - Get information about the server's sync with the network](#fetch-info)
-* [`get_counts` - Get statistics about the server's internals and memory usage](#get-counts)
-* [`ledger_accept` - Close and advance the ledger in stand-alone mode](#ledger-accept)
-* [`ledger_cleaner` - Configure the ledger cleaner service to check for corrupted data](#ledger-cleaner)
-* [`ledger_request` - Query a peer server for a specific ledger version](#ledger-request)
-* [`log_level` - Get or modify log verbosity](#log-level)
-* [`logrotate` - Reopen the log file](#logrotate)
-* [`peers` - Get information about the peer servers connected](#peers)
-* [`print` - Get information about internal subsystems](#print)
-* [`stop` - Shut down the rippled server](#stop)
-* [`validation_create` - Generate keys for a new rippled validator](#validation-create)
-* [`validation_seed` - Temporarily set key to be used for validating](#validation-seed)
-* [`validators` - Get information about the current validators](#validators)
-* [`validator_list_sites` - Get information about sites that publish validator lists](#validator-list-sites)
-* [`wallet_propose` - Generate keys for a new account](#wallet-propose)
-
-The following admin commands are deprecated and may be removed without further notice:
-
-* `ledger_header` - Use the [`ledger` command](#ledger) instead.
-* `unl_add`, `unl_delete`, `unl_list`, `unl_load`, `unl_network`, `unl_reset`, `unl_score` - Use the configuration file for UNL management instead.
-* `wallet_seed` - Use [`wallet_propose`](#wallet-propose) instead.
 
 
 ## Commandline Access

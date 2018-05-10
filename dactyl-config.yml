@@ -570,7 +570,7 @@ pages:
     # - Server Info Methods (3)
     # - Utility Methods (3)
 
-    -   name: Admin rippled Methods
+    -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
         html: admin-rippled-methods.html
         blurb: Admin methods are meant only for trusted personnel in charge of keeping the server operational. Admin methods include commands for managing, monitoring, and debugging the server.
         funnel: Docs
@@ -582,7 +582,7 @@ pages:
         targets:
             - local
 
-    -   name: Key Generation Methods #TODO: possible md landing content?
+    -   name: Key Generation Methods
         html: key-generation-methods.html
         blurb: Use these methods to generate and manage keys.
         funnel: Docs
