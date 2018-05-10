@@ -236,7 +236,7 @@ pages:
 
     # TODO: Offers, Tick Size, Autobridging, Offer Preference (all compiled from different sources)
 
-    -   md: concepts/consensus-network/consensus-network.md
+    -   name: Consensus Network
         html: consensus-network.html
         funnel: Docs
         doc_type: Concepts
@@ -291,7 +291,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Understand where test networks and alternate ledger chains come from.
+        blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
         targets:
           - local
 
