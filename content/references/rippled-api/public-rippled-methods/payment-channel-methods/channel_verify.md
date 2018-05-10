@@ -1,11 +1,11 @@
-## channel_verify
+# channel_verify
 [[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
 
 _(Requires the [PayChan amendment](reference-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
 
 The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -58,7 +58,7 @@ The request includes the following parameters:
 | `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in hexadecimal or base58 format. [Updated in: rippled 0.90.0][New in: rippled 0.90.0] |
 | `signature` | String | The signature to verify, in hexadecimal. |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -111,10 +111,14 @@ The response follows the [standard format](#response-formatting), with a success
 
 **Caution:** This does not indicate check that the channel has enough XRP allocated to it. Before considering a claim valid, you should look up the channel in the latest validated ledger and confirm that the channel is open and its `amount` value is equal or greater than the `amount` of the claim. To do so, use the [`account_channels` method](#account-channels).
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58 or hexadecimal. The base58 representation of account public keys starts with the letter `a`. The hexadecimal representation is 66 characters long.
 * `channelMalformed` - The `channel_id` field of the request is not a valid Channel ID. The Channel ID must be a 256-bit (64-character) hexadecimal string.
 * `channelAmtMalformed` - The value specified in the `amount` field was not a valid [XRP amount](#specifying-currency-amounts).
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

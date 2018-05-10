@@ -1,8 +1,8 @@
-## json
+# json
 
 The `json` method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is *exclusive to the Commandline client*, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -16,7 +16,7 @@ rippled -q json ledger_closed '{}'
 
 <!-- MULTICODE_BLOCK_END -->
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -37,3 +37,7 @@ An example of a successful response:
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format](#response-formatting), with whichever fields are appropriate to the type of command made.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

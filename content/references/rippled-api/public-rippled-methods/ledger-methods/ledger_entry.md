@@ -1,11 +1,11 @@
-## ledger_entry
+# ledger_entry
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
 The `ledger_entry` method returns a single ledger object from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of objects you can retrieve.
 
 **Note:** There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
 
-#### Request Format
+## Request Format
 
 An example of the request format:
 
@@ -74,7 +74,7 @@ The full list of parameters recognized by this method is as follows:
 
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -140,8 +140,14 @@ The response follows the [standard format](#response-formatting), with a success
 | `node`         | Object           | (Omitted if `"binary": true` specified.) Object containing the data of this ledger object, according to the [ledger format][]. |
 | `node_binary`  | String           | (Omitted unless `"binary":true` specified) Binary data of the ledger object, as hex. |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+<!-- TODO: we should add this ledger format link to rippled-api-links.md. account_objects.md is also including this as a one-off.-->
+[ledger format]: reference-ledger-format.html
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

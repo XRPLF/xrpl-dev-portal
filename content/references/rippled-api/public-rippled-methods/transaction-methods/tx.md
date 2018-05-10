@@ -1,9 +1,9 @@
-## tx
+# tx
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
 
 The `tx` method retrieves information on a single transaction.
 
-#### Request Format
+## Request Format
 
 An example of the request format:
 
@@ -50,7 +50,7 @@ The request includes the following parameters:
 | `transaction` | String  | The 256-bit hash of the transaction, as hex.       |
 | `binary`      | Boolean | (Optional, defaults to false) If true, return transaction data and metadata as hex strings instead of JSON |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -197,8 +197,12 @@ The response follows the [standard format](#response-formatting), with a success
 | `validated`    | Boolean          | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 | (Various)      | (Various)        | Other fields from the [Transaction object](reference-transaction-format.html) |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `txnNotFound` - Either the transaction does not exist, or it was part of an older ledger version that `rippled` does not have available.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

@@ -1,4 +1,4 @@
-## account_objects
+# account_objects
 [[Source]<br>](https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
 The `account_objects` command returns the raw [ledger format][] for all objects owned by an account. For a higher-level view of an account's trust lines and balances, see [`account_lines`](#account-lines) instead.
@@ -15,7 +15,7 @@ The types of objects that may appear in the `account_objects` response for an ac
 - [Check objects](reference-ledger-format.html#check) for pending checks.
 
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -70,7 +70,7 @@ The request includes the following parameters:
 | `limit`        | Unsigned Integer                           | _(Optional)_ The maximum number of objects to include in the results. Must be within the inclusive range 10 to 400 on non-admin connections. Defaults to 200. |
 | `marker`       | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -610,9 +610,13 @@ The response follows the [standard format](#response-formatting), with a success
 | `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 | `validated`            | Boolean                                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

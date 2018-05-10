@@ -1,9 +1,9 @@
-## transaction_entry
+# transaction_entry
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
 
 The `transaction_entry` method retrieves information on a single transaction from a specific ledger version. (The [`tx`](#tx) command, by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.)
 
-#### Request Format
+## Request Format
 
 An example of the request format:
 
@@ -55,7 +55,7 @@ The request includes the following parameters:
 
 **Note:** This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -208,7 +208,7 @@ There are a couple possible reasons the server may fail to find the transaction:
 * The transaction exists, but not in the specified ledger version
 * The server does not have the specified ledger version available. Another server that has the correct version on hand may have a different response.
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `fieldNotFoundTransaction` - The `tx_hash` field was omitted from the request
@@ -217,3 +217,7 @@ There are a couple possible reasons the server may fail to find the transaction:
 * `transactionNotFound` - The transaction specified in the request could not be found in the specified ledger. (It might be in a different ledger version, or it might not be available at all.)
 
 <!-- I think ledgerNotFound ( https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/TransactionEntry.cpp#L62 ) should not occur because lookupLedger would have errored out first. -->
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

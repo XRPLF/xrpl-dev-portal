@@ -1,4 +1,4 @@
-## ripple_path_find
+# ripple_path_find
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")
 
 The `ripple_path_find` method is a simplified version of [`path_find`](#path-find) that provides a single response with a [payment path](concept-paths.html) you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making multiple calls to stay updated, you should use [`path_find`](#path-find) instead where possible.
@@ -7,7 +7,7 @@ Although the `rippled` server tries to find the cheapest path or combination of 
 
 **Caution:** Be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. A server may also return poor results when under heavy load. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -86,7 +86,7 @@ The request includes the following parameters:
 | `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `ledger_index`        | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -328,7 +328,7 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 The following fields are deprecated, and may be omitted: `paths_canonical`, and `paths_expanded`. If they appear, you should disregard them.
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `tooBusy` - The server is under too much load to calculate paths. Not returned if you are connected as an admin.
@@ -339,3 +339,7 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 * `dstActMalformed` - The `destination_account` field in the request is not formatted properly.
 * `srcCurMalformed` - The `source_currencies` field is not formatted properly.
 * `srcIsrMalformed` - The `issuer` field of one or more of the currency objects in the request is not valid.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

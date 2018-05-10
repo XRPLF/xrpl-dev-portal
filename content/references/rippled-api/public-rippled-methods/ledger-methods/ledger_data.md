@@ -1,9 +1,9 @@
-## ledger_data
+# ledger_data
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerData.cpp "Source")
 
 The `ledger_data` method retrieves contents of the specified ledger. You can iterate through several calls to retrieve the entire contents of a single ledger version.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -52,7 +52,7 @@ A request can include the following fields:
 
 The `ledger` field is deprecated and may be removed without further notice.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -250,8 +250,12 @@ The format of each object in the `state` array depends on whether `binary` was s
 | (Additional fields) | (Various) | (Only included if `"binary":false`) Additional fields describing this object, depending on which LedgerEntryType it is. |
 | `index`             | String    | Unique identifier for this ledger entry, as hex. |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors)
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

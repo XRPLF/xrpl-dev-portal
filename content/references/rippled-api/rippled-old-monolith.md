@@ -520,40 +520,6 @@ API methods for the Websocket and JSON-RPC APIs are defined by command names, an
 
 ## List of Public Commands
 
-* [`account_currencies` - Get a list of currencies an account can send or receive](#account-currencies)
-* [`account_channels` - Get a list of payment channels where the account is the source of the channel](#account-channels)
-* [`account_info` - Get basic data about an account](#account-info)
-* [`account_lines` - Get info about an account's trust lines](#account-lines)
-* [`account_objects` - Get all ledger objects owned by an account](#account-objects)
-* [`account_offers` - Get info about an account's currency exchange offers](#account-offers)
-* [`account_tx` - Get info about an account's transactions](#account-tx)
-* [`book_offers` - Get info about offers to exchange two currencies](#book-offers)
-* [`channel_authorize` - Sign a claim for money from a payment channel](#channel-authorize)
-* [`channel_verify` - Check a payment channel claim's signature](#channel-verify)
-* [`fee` - Get information about transaction cost](#fee)
-* [`gateway_balances` - Calculate total amounts issued by an account](#gateway-balances)
-* [`ledger` - Get info about a ledger version](#ledger)
-* [`ledger_closed` - Get the latest closed ledger version](#ledger-closed)
-* [`ledger_current` - Get the current working ledger version](#ledger-current)
-* [`ledger_data` - Get the raw contents of a ledger version](#ledger-data)
-* [`ledger_entry` - Get one element from a ledger version](#ledger-entry)
-* [`noripple_check` - Get recommended changes to an account's DefaultRipple and NoRipple settings](#noripple-check)
-* [`path_find` - Find a path for a payment between two accounts and receive updates](#path-find)
-* [`ping` - Confirm connectivity with the server](#ping)
-* [`random` - Generate a random number](#random)
-* [`ripple_path_find` - Find a path for payment between two accounts, once](#ripple-path-find)
-* [`server_info` - Retrieve status of the server in human-readable format](#server-info)
-* [`server_state` - Retrieve status of the server in machine-readable format](#server-state)
-* [`sign` - Cryptographically sign a transaction](#sign)
-* [`sign_for` - Contribute to a multi-signature](#sign-for)
-* [`submit` - Send a transaction to the network](#submit)
-* [`submit_multisigned` - Send a multi-signed transaction to the network](#submit-multisigned)
-* [`subscribe` - Listen for updates about a particular subject](#subscribe)
-* [`transaction_entry` - Retrieve info about a transaction from a particular ledger version](#transaction-entry)
-* [`tx` - Retrieve info about a transaction from all the ledgers on hand](#tx)
-* [`tx_history` - Retrieve info about all recent transactions](#tx-history)
-* [`unsubscribe` - Stop listening for updates about a particular subject](#unsubscribe)
-
 The `owner_info` command is deprecated. Use [`account_objects`](#account-objects) instead.
 
 ## List of Admin Commands
@@ -591,99 +557,31 @@ The following admin commands are deprecated and may be removed without further n
 
 You can use the `rippled` application (as a separate instance) as a JSON-RPC client. In this mode, it has syntax for triggering most API methods with a single line from the command prompt, as described in each method. However, some methods or options don't have commandline syntax. For otherwise unsupported syntax, you can use the following method:
 
-* [`json` - Pass JSON through the commandline](#json)
-
 **Note:** The commandline interface is intended for administrative purposes only and is _not a supported API_.
 
 
 # Account Information
-An "Account" in the XRP Ledger represents a holder of XRP and a sender of transactions. Accounts can send and receive XRP and issued assets, participate in the decentralized exchange, and change their own settings. Creating an account involves generating keys and then receiving XRP from another account. For more information, see [Accounts](concept-accounts.html).
 
-{% include 'rippled-api-methods/account_currencies.md' %}
-
-{% include 'rippled-api-methods/account_channels.md' %}
-
-{% include 'rippled-api-methods/account_info.md' %}
-
-{% include 'rippled-api-methods/account_lines.md' %}
-
-{% include 'rippled-api-methods/account_offers.md' %}
-
-{% include 'rippled-api-methods/account_objects.md' %}
-
-{% include 'rippled-api-methods/account_tx.md' %}
-
-{% include 'rippled-api-methods/noripple_check.md' %}
-
-{% include 'rippled-api-methods/gateway_balances.md' %}
+For more information, see [Accounts](concept-accounts.html).
 
 {% include 'rippled-api-methods/wallet_propose.md' %}
 
 # Ledger Information
-
-Each `rippled` server keeps a complete copy of the XRP Ledger's current state, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger version become candidates to be included in the next validated version.
-
-{% include 'rippled-api-methods/ledger.md' %}
-
-{% include 'rippled-api-methods/ledger_closed.md' %}
-
-{% include 'rippled-api-methods/ledger_current.md' %}
-
-{% include 'rippled-api-methods/ledger_data.md' %}
-
-{% include 'rippled-api-methods/ledger_entry.md' %}
 
 {% include 'rippled-api-methods/ledger_request.md' %}
 
 {% include 'rippled-api-methods/ledger_accept.md' %}
 
 # Transactions
-
-Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the ledger itself (like adopting new features).
-
+<!-- TODO: Took the main overview and put it in the blurb for the Transactions landing page. Needed to leave the content below b/c it contains links that the blurb can't handle. Need to find a home for this. -->
 There are several sources of complication in transactions. Unlike traditional banking, where a trusted third party (the bank, or the [ACH](http://en.wikipedia.org/wiki/Automated_Clearing_House)) verifies the participants' identities and ensures their balances are adjusted accurately, Ripple uses cryptography and decentralized computing power to do the same thing. Sending XRP requires no third party aside from the distributed network itself. However, the XRP Ledger also supports issuing balances in any currency and trading them in a decentralized exchange. This brings far more power, but it also means that the system must account for [counterparty risk](http://en.wikipedia.org/wiki/Counterparty_risk#Counterparty_risk), currency conversions, and other issues. The XRP Ledger must be robust to keep track of which transactions have been completely validated, even when subject to hardware failures, attacks, or natural disasters.
-
-{% include 'rippled-api-methods/tx.md' %}
-
-{% include 'rippled-api-methods/transaction_entry.md' %}
-
-{% include 'rippled-api-methods/tx_history.md' %}
-
-{% include 'rippled-api-methods/path_find.md' %}
-
-{% include 'rippled-api-methods/ripple_path_find.md' %}
-
-{% include 'rippled-api-methods/sign.md' %}
-
-{% include 'rippled-api-methods/sign_for.md' %}
-
-{% include 'rippled-api-methods/submit.md' %}
-
-{% include 'rippled-api-methods/submit_multisigned.md' %}
-
-{% include 'rippled-api-methods/book_offers.md' %}
-
-{% include 'rippled-api-methods/channel_authorize.md' %}
-
-{% include 'rippled-api-methods/channel_verify.md' %}
 
 # Subscriptions
 
-Using subscriptions, you can have the server push updates to your client when various events happen, so that you can know and react right away. Subscriptions are only supported in the WebSocket API, where you can receive additional responses in the same channel.
-
-JSON-RPC support for subscription callbacks is deprecated and may not work as expected.
-
-{% include 'rippled-api-methods/subscribe.md' %}
-
-{% include 'rippled-api-methods/unsubscribe.md' %}
 
 # Server Information
 
 There are also commands that retrieve information about the current state of the server. These may be useful for monitoring the health of the server, or in preparing for making other API methods. For example, you may query for the current fee schedule before sending a transaction, or you may check which ledger versions are available before digging into the ledger history for a specific record.
-
-{% include 'rippled-api-methods/server_info.md' %}
-
-{% include 'rippled-api-methods/server_state.md' %}
 
 {% include 'rippled-api-methods/can_delete.md' %}
 
@@ -692,8 +590,6 @@ There are also commands that retrieve information about the current state of the
 {% include 'rippled-api-methods/fetch_info.md' %}
 
 {% include 'rippled-api-methods/feature.md' %}
-
-{% include 'rippled-api-methods/fee.md' %}
 
 {% include 'rippled-api-methods/get_counts.md' %}
 
@@ -719,12 +615,6 @@ There are also commands that retrieve information about the current state of the
 # Convenience Functions
 
 The `rippled` server also provides a few commands purely for convenience.
-
-{% include 'rippled-api-methods/ping.md' %}
-
-{% include 'rippled-api-methods/random.md' %}
-
-{% include 'rippled-api-methods/json.md' %}
 
 {% include 'rippled-api-methods/connect.md' %}
 

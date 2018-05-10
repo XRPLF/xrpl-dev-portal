@@ -1,4 +1,4 @@
-## path_find
+# path_find
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
 
 *WebSocket API only!* The `path_find` method searches for a [path](concept-paths.html) along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see [`ripple_path_find`](#ripple-path-find). For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.
@@ -11,14 +11,14 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 
 Although the `rippled` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results. (**Note:** A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
 
-### path_find create
+## path_find create
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L38 "Source")
 
 The `create` subcommand of `path_find` creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with `"type": "path_find"`, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.
 
 A client can only have one pathfinding request open at a time. If another pathfinding request is already open on the same connection, the old request is automatically closed and replaced with the new request.
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -57,7 +57,7 @@ The request includes the following parameters:
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -451,13 +451,13 @@ Each element in the `alternatives` array is an object that represents a path fro
 | `paths_computed` | Array            | Array of arrays of objects defining [payment paths](concept-paths.html) |
 | `source_amount`  | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path for the destination to receive the desired amount |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
 
-#### Asynchronous Follow-ups
+### Asynchronous Follow-ups
 
 In addition to the initial response, the server sends more messages in a similar format to update on the status of [payment paths](concept-paths.html) over time. These messages include the `id` of the original WebSocket request so you can tell which request prompted them, and the field `"type": "path_find"` at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.
 
@@ -488,12 +488,12 @@ Here is an example of an asychronous follow-up from a path_find create request:
 
 <!-- MULTICODE_BLOCK_END -->
 
-### path_find close
+## path_find close
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L46 "Source")
 
 The `close` subcommand of `path_find` instructs the server to stop sending information about the current open pathfinding request.
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -516,7 +516,7 @@ The request includes the following parameters:
 |:-------------|:-------|:-------------------------------------------|
 | `subcommand` | String | Use `"close"` to send the close subcommand |
 
-#### Response Format
+### Response Format
 
 If a pathfinding request was successfully closed, the response follows the same format as the initial response to [`path_find create`](#path-find-create), plus the following field:
 
@@ -526,19 +526,19 @@ If a pathfinding request was successfully closed, the response follows the same 
 
 If there was no outstanding pathfinding request, an error is returned instead.
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - If any fields are specified incorrectly, or any required fields are missing.
 * `noEvents` - If you tried to use this method on a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
 * `noPathRequest` - You tried to close a pathfinding request when there is not an open one.
 
-### path_find status
+## path_find status
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L57 "Source")
 
 The `status` subcommand of `path_find` requests an immediate update about the client's currently-open pathfinding request.
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -561,7 +561,7 @@ The request includes the following parameters:
 |:-------------|:-------|:---------------------------------------------|
 | `subcommand` | String | Use `"status"` to send the status subcommand |
 
-#### Response Format
+### Response Format
 
 If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path-find-create), plus the following field:
 
@@ -571,9 +571,13 @@ If a pathfinding request is open, the response follows the same format as the in
 
 If there was no outstanding pathfinding request, an error is returned instead.
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
 * `noPathRequest` - You tried to check the status of a pathfinding request when there is not an open one.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

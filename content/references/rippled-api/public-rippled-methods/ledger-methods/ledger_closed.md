@@ -1,9 +1,9 @@
-## ledger_closed
+# ledger_closed
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerClosed.cpp "Source")
 
 The `ledger_closed` method returns the unique identifiers of the most recently closed ledger. (This ledger is not necessarily validated and immutable yet.)
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -41,7 +41,7 @@ rippled ledger_closed
 
 This method accepts no parameters.
 
-#### Response Format
+## Response Format
 An example of a successful response:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -82,6 +82,10 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_hash`  | String           | 20-byte hex string with a unique hash of the ledger |
 | `ledger_index` | Unsigned Integer | Sequence number of this ledger           |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

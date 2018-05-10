@@ -1,9 +1,9 @@
-## book_offers
+# book_offers
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
 The `book_offers` method retrieves a list of offers, also known as the [order book](http://www.investopedia.com/terms/o/order-book.asp), between two currencies. If the results are very large, a partial result is returned with a marker so that later requests can resume from where the previous one left off.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -70,7 +70,7 @@ The request includes the following parameters:
 | `taker_gets`   | Object                                     | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 | `taker_pays`   | Object                                     | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -172,7 +172,7 @@ In addition to the standard Offer fields, the following fields may be included i
 | `taker_pays_funded` | String (XRP) or Object (non-XRP) | (Only included in partially-funded offers) The maximum amount of currency that the taker would pay, given the funding status of the offer. |
 | `quality`           | Number                           | The exchange rate, as the ratio `taker_pays` divided by `taker_gets`. For fairness, offers that have the same quality are automatically taken first-in, first-out. (In other words, if multiple people offer to exchange currency at the same rate, the oldest offer is taken first.) |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
@@ -182,3 +182,7 @@ In addition to the standard Offer fields, the following fields may be included i
 * `srcIsrMalformed` - The `issuer` field of the `taker_pays` field in the request is not valid.
 * `dstIsrMalformed` - The `issuer` field of the `taker_gets` field in the request is not valid.
 * `badMarket` - The desired order book does not exist; for example, offers to exchange a currency for itself.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

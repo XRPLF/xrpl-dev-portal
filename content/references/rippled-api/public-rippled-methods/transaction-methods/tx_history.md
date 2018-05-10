@@ -1,11 +1,11 @@
-## tx_history
+# tx_history
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp "Source")
 
 The `tx_history` method retrieves some of the most recent transactions made.
 
 **Caution:** This method is deprecated, and may be removed without further notice.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -50,7 +50,7 @@ The request includes the following parameters:
 |:--------|:-----------------|:-------------------------------------|
 | `start` | Unsigned Integer | Number of transactions to skip over. |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -887,8 +887,12 @@ The response follows the [standard format](#response-formatting), with a success
 
 The fields included in each transaction object vary slightly depending on the type of transaction. See [Transaction Format](reference-transaction-format.html) for details.
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The `start` field specified was greater than 10000, but you are not connected to the server as an admin.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

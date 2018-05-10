@@ -1,9 +1,9 @@
-## ping
+# ping
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
 
 The `ping` command returns an acknowledgement, so that clients can test the connection status and latency.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -41,7 +41,7 @@ rippled ping
 
 The request includes no parameters.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -73,6 +73,6 @@ An example of a successful response:
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).

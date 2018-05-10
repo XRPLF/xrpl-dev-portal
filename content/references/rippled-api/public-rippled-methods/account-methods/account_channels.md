@@ -1,11 +1,11 @@
-## account_channels
+# account_channels
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
 _(Requires the [PayChan amendment](reference-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
 
 The `account_channels` method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -55,7 +55,7 @@ The request includes the following parameters:
 | `limit`               | Integer                                    | _(Optional)_ Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. Defaults to 200. |
 | `marker`              | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -176,9 +176,13 @@ Each Channel Object has the following fields:
 | `source_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](tutorial-gateway-guide.html#source-and-destination-tags) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the `DestinationTag` of the return payment. |
 | `destination_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [destination tag](tutorial-gateway-guide.html#source-and-destination-tags) for payments through this channel, if one was specified at channel creation. This indicates the payment channel's beneficiary or other purpose at the destination account. |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

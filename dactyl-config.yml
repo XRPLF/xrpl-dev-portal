@@ -525,13 +525,14 @@ pages:
         targets:
             - local
 
-    -   name: Account Methods #TODO: possible md landing content?
+    -   name: Account Methods
         html: account-methods.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: An Account in the XRP Ledger represents a holder of XRP and a sender of transactions. Accounts can send and receive XRP and issued assets, participate in the decentralized exchange, and change their own settings. Creating an account involves generating keys and then receiving XRP from another account.
         template: template-landing-children.html
         targets:
             - local
@@ -543,6 +544,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: Get a list of payment channels where the account is the source of the channel.
         targets:
             - local
 
@@ -553,6 +555,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: Get a list of currencies an account can send or receive.
         targets:
             - local
 
@@ -563,6 +566,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: Get basic data about an account.
         targets:
             - local
 
@@ -573,6 +577,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: Get info about an account's trust lines.
         targets:
             - local
 
@@ -583,6 +588,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: Get all ledger objects owned by an account.
         targets:
             - local
 
@@ -593,6 +599,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: Get info about an account's currency exchange offers.
         targets:
             - local
 
@@ -603,6 +610,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: Get info about an account's transactions.
         targets:
             - local
 
@@ -613,6 +621,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: Calculate total amounts issued by an account.
         targets:
             - local
 
@@ -623,16 +632,18 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
+        blurb: Get recommended changes to an account's DefaultRipple and NoRipple settings.
         targets:
             - local
 
-    -   name: Ledger Methods #TODO: possible md landing content?
+    -   name: Ledger Methods
         html: ledger-methods.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
+        blurb: Each `rippled` server keeps a complete copy of the XRP Ledger's current state, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger version become candidates to be included in the next validated version.
         template: template-landing-children.html
         targets:
             - local
@@ -644,6 +655,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
+        blurb: Get info about a ledger version.
         targets:
             - local
 
@@ -654,6 +666,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
+        blurb: Get the latest closed ledger version.
         targets:
             - local
 
@@ -664,6 +677,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
+        blurb: Get the current working ledger version.
         targets:
             - local
 
@@ -674,6 +688,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
+        blurb: Get the raw contents of a ledger version.
         targets:
             - local
 
@@ -684,10 +699,11 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
+        blurb: Get one element from a ledger version.
         targets:
             - local
 
-    -   name: Transaction Methods #TODO: possible md landing content?
+    -   name: Transaction Methods
         html: transaction-methods.html # watch for clashes w/ this filename
         funnel: Docs
         doc_type: References
@@ -695,6 +711,7 @@ pages:
         category: Public rippled Methods
         subcategory: Transaction Methods
         template: template-landing-children.html
+        blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the ledger itself (like adopting new features).
         targets:
             - local
 
@@ -705,6 +722,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Transaction Methods
+        blurb: Cryptographically sign a transaction.
         targets:
             - local
 
@@ -715,6 +733,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Transaction Methods
+        blurb: Contribute to a multi-signature.
         targets:
             - local
 
@@ -725,6 +744,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Transaction Methods
+        blurb: Send a transaction to the network.
         targets:
             - local
 
@@ -735,6 +755,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Transaction Methods
+        blurb: Send a multi-signed transaction to the network.
         targets:
             - local
 
@@ -745,6 +766,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Transaction Methods
+        blurb: Retrieve info about a transaction from a particular ledger version.
         targets:
             - local
 
@@ -755,6 +777,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Transaction Methods
+        blurb: Retrieve info about a transaction from all the ledgers on hand.
         targets:
             - local
 
@@ -765,16 +788,18 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Transaction Methods
+        blurb: Retrieve info about all recent transactions.
         targets:
             - local
 
-    -   name: Path and Order Book Methods #TODO: possible md landing content?
+    -   name: Path and Order Book Methods
         html: path-and-order-book-methods.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Path and Order Book Methods
+        blurb: In the XRP Ledger, paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books.
         template: template-landing-children.html
         targets:
             - local
@@ -786,6 +811,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Path and Order Book Methods
+        blurb: Get info about offers to exchange two currencies.
         targets:
             - local
 
@@ -796,6 +822,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Path and Order Book Methods
+        blurb: Find a path for a payment between two accounts and receive updates.
         targets:
             - local
 
@@ -806,16 +833,18 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Path and Order Book Methods
+        blurb: Find a path for payment between two accounts, once.
         targets:
             - local
 
-    -   name: Payment Channel Methods #TODO: possible md landing content?
+    -   name: Payment Channel Methods
         html: payment-channel-methods.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Payment Channel Methods
+        blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Learn about methods that work on payment channels.
         template: template-landing-children.html
         targets:
             - local
@@ -827,6 +856,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Payment Channel Methods
+        blurb: Sign a claim for money from a payment channel.
         targets:
             - local
 
@@ -837,16 +867,18 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Payment Channel Methods
+        blurb: Check a payment channel claim's signature.
         targets:
             - local
 
-    -   name: Subscription Methods #TODO: possible md landing content?
+    -   name: Subscription Methods
         html: subscription-methods.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Subscription Methods
+        blurb: Using subscriptions, you can have the server push updates to your client when various events happen, so that you can know and react right away. Subscriptions are only supported in the WebSocket API, where you can receive additional responses in the same channel. JSON-RPC support for subscription callbacks is deprecated and may not work as expected.
         template: template-landing-children.html
         targets:
             - local
@@ -858,6 +890,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Subscription Methods
+        blurb: Listen for updates about a particular subject.
         targets:
             - local
 
@@ -868,16 +901,18 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Subscription Methods
+        blurb: Stop listening for updates about a particular subject.
         targets:
             - local
 
-    -   name: Server Info Methods #TODO: possible md landing content?
+    -   name: Server Info Methods
         html: server-info-methods.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Server Info Methods
+        blurb: Learn about methods that enable you to retrieve information about the current state of the `rippled` server. These may be useful for monitoring the health of the server, or in preparing to make requests to other API methods.
         template: template-landing-children.html
         targets:
             - local
@@ -889,6 +924,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Server Info Methods
+        blurb: Get information about transaction cost.
         targets:
             - local
 
@@ -899,6 +935,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Server Info Methods
+        blurb: Retrieve status of the server in human-readable format.
         targets:
             - local
 
@@ -909,16 +946,18 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Server Info Methods
+        blurb: Retrieve status of the server in machine-readable format.
         targets:
             - local
 
-    -   name: Utility Methods #TODO: possible md landing content?
+    -   name: Utility Methods
         html: utility-methods.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Utility Methods
+        blurb: Learn about methods that provide convenient functions, such as ping and a random number generator.
         template: template-landing-children.html
         targets:
             - local
@@ -930,6 +969,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Utility Methods
+        blurb: Pass JSON through the commandline.
         targets:
             - local
 
@@ -940,6 +980,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Utility Methods
+        blurb: Confirm connectivity with the server.
         targets:
             - local
 
@@ -950,6 +991,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Utility Methods
+        blurb: Generate a random number.
         targets:
             - local
 

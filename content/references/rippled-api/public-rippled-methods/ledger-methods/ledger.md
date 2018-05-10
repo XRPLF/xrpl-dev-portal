@@ -1,9 +1,9 @@
-## ledger
+# ledger
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
 
 Retrieve information about the public ledger.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -70,7 +70,7 @@ The request can contain the following parameters:
 
 The `ledger` field is deprecated and may be removed without further notice.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -188,9 +188,15 @@ If the request specified `"owner_funds": true` and expanded transactions, the re
 |:--------------|:-------|:----------------------------------------------------|
 | `owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is [frozen](concept-freeze.html). |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `noPermission` - If you specified `full` or `accounts` as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).
+
+
+<!-- TODO: we should add this fee levels link to rippled-api-links.md. server_state.md is also including this as a one-off.-->
+[fee levels]: concept-transaction-cost.html#fee-levels
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

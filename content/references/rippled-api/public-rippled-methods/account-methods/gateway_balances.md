@@ -1,9 +1,9 @@
-## gateway_balances
+# gateway_balances
 [[Source]<br>](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
 
 The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](concept-issuing-and-operational-addresses.html). [New in: rippled 0.28.2][]
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -52,7 +52,7 @@ The request includes the following parameters:
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -209,10 +209,14 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_index`         | Number | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
 | `ledger_current_index` | Number | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `invalidHotWallet` - One or more of the addresses specified in the `hotwallet` field is not the [Address][] of an account holding currency issued by the account from the request.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

@@ -1,11 +1,11 @@
-## channel_authorize
+# channel_authorize
 [[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
 
 _(Requires the [PayChan amendment](reference-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
 
 The `channel_authorize` method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -57,7 +57,7 @@ The request includes the following parameters:
 
 **Note:** You cannot use Ed25519 keys to sign claims with this method. This is a known bug (RIPD-1474).
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -107,9 +107,14 @@ The response follows the [standard format](#response-formatting), with a success
 |-------|------|-------------|
 | `signature` | String | The signature for this claim, as a hexadecimal value. To process the claim, the destination account of the payment channel must send a [PaymentChannelClaim transaction][] with this signature, the exact Channel ID, XRP amount, and public key of the channel. |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `badSeed` - The `secret` in the request is not a valid secret key.
 * `channelAmtMalformed` - The `amount` in the request is not a valid [XRP amount](#specifying-currency-amounts).
 * `channelMalformed` - The `channel_id` in the request is not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}

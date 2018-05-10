@@ -1,9 +1,9 @@
-## account_offers
+# account_offers
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
 The `account_offers` method retrieves a list of offers made by a given account that are outstanding as of a particular ledger version.
 
-#### Request Format
+## Request Format
 
 An example of the request format:
 
@@ -58,7 +58,7 @@ A request can include the following parameters:
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -178,10 +178,14 @@ Each offer object contains the following fields:
 | `quality`    | String           | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. [New in: rippled 0.29.0][] |
 | `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as [the number of seconds since the Ripple Epoch](#specifying-time). See also: [Offer Expiration](reference-transaction-format.html#expiration). [New in: rippled 0.30.1][] |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `actMalformed` - If the `marker` field provided is not acceptable.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

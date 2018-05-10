@@ -1,9 +1,9 @@
-## unsubscribe
+# unsubscribe
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
 
 The `unsubscribe` command tells the server to stop sending messages for a particular subscription or set of subscriptions.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -55,7 +55,7 @@ The objects in the `books` array are defined almost like the ones from subscribe
 | `taker_pays` | Object  | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 | `both`       | Boolean | (Optional, defaults to false) If true, remove a subscription for both sides of the order book. |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -76,7 +76,7 @@ An example of a successful response:
 
 The response follows the [standard format](#response-formatting), with a successful result containing no fields.
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
@@ -89,3 +89,7 @@ The response follows the [standard format](#response-formatting), with a success
 * `srcIsrMalformed` - The `issuer` field of one or more `taker_pays` sub-fields of the `books` field in the request is not valid.
 * `dstIsrMalformed` - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
 * `badMarket` - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

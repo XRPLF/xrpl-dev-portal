@@ -1,11 +1,11 @@
-## sign_for
+# sign_for
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
 
 The `sign_for` command provides one signature for a [multi-signed transaction](reference-transaction-format.html#multi-signing).
 
 This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -97,7 +97,7 @@ The request includes the following parameters:
 
 You must provide exactly 1 field with the secret key. You can use any of the following fields: `secret`, `passphrase`, `seed`, or `seed_hex`.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -219,7 +219,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `tx_blob` | String | Hexadecimal representation of the signed transaction, including the newly-added signature. If it has enough signatures, you can [submit this string using the `submit` command](#submit-only-mode). |
 | `tx_json` | Object | The [transaction specification](reference-transaction-format.html) in JSON format, with the newly-added signature in the `Signers` array. If it has enough signatures, you can submit this object using the [`submit_multisigned` command](#submit-multisigned). |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
@@ -227,3 +227,7 @@ The response follows the [standard format](#response-formatting), with a success
 * `srcActMalformed` - If the signing address (`account` field) from the request is not validly formed.
 * `badSeed` - The seed value supplied was invalidly-formatted.
 * `badSecret` - The secret value supplied was invalidly-formatted.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

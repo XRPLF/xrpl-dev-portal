@@ -1,4 +1,4 @@
-## submit
+# submit
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
 
 The `submit` method applies a [transaction](reference-transaction-format.html) and sends it to the network to be confirmed and included in future ledgers.
@@ -10,7 +10,7 @@ This command has two modes:
 
 To send a transaction as robustly as possible, you should construct and [`sign`](#sign) it in advance, persist it somewhere that you can access even after a power outage, then `submit` it as a `tx_blob`. After submission, monitor the network with the [`tx`](#tx) command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the `tx_blob` transaction: it won't be applied twice since it has the same sequence number as the old transaction.
 
-### Submit-Only Mode
+## Submit-Only Mode
 
 A submit-only request includes the following parameters:
 
@@ -19,7 +19,7 @@ A submit-only request includes the following parameters:
 | `tx_blob`   | String  | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](reference-transaction-format.html#multi-signing). |
 | `fail_hard` | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 
-#### Request Format
+### Request Format
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -58,7 +58,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 [Try it! >](ripple-api-tool.html#submit)
 
 
-### Sign-and-Submit Mode
+## Sign-and-Submit Mode
 
 This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](reference-transaction-format.html#multi-signing).
 
@@ -85,7 +85,7 @@ The request includes the following parameters:
 
 See the [sign command](#sign) for detailed information on how the server automatically fills in certain fields.
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -148,7 +148,7 @@ rippled submit s█████████████████████�
 
 [Try it! >](ripple-api-tool.html#submit)
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -269,7 +269,7 @@ The response follows the [standard format](#response-formatting), with a success
 * Do not display an error message including your secret key on a website, even by accident.
 
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `amendmentBlocked` - The transaction cannot be submitted to the network because the `rippled` server is [amendment blocked](concept-amendments.html#amendment-blocked).
@@ -281,3 +281,7 @@ The response follows the [standard format](#response-formatting), with a success
 * `invalidTransaction` - The transaction is malformed or otherwise invalid.
 * `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
 * `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

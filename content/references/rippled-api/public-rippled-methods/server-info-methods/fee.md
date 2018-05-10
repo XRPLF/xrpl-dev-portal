@@ -1,11 +1,11 @@
-## fee
+# fee
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
 
 The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](concept-transaction-cost.html). This requires the [FeeEscalation amendment](reference-amendments.html#feeescalation) to be enabled. [New in: rippled 0.31.0][]
 
 This is a public command available to unprivileged users. [Updated in: rippled 0.32.0][New in: rippled 0.32.0]
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -39,7 +39,7 @@ rippled fee
 
 The request does not include any parameters.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -153,6 +153,12 @@ The response follows the [standard format](#response-formatting), with a success
 | `levels.reference_level`   | String (Integer) | The equivalent of the minimum transaction cost, represented in [fee levels][]. |
 | `max_queue_size`           | String (Integer) | The maximum number of transactions that the [transaction queue](concept-transaction-cost.html#queued-transactions) can currently hold. |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
+
+
+<!-- TODO: fee levels link to rippled-api-links.md - it is being used one off in a couple of files -->
+[fee levels]: concept-transaction-cost.html#fee-levels
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}
