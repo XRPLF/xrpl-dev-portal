@@ -312,7 +312,6 @@ pages:
             - local
 
     # TODO: "Send XRP"
-    # Use Simple XRP Payments
 
     -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.md
         html: reliable-transaction-submission.html
@@ -337,8 +336,6 @@ pages:
         category: Use Simple XRP Payments
         targets:
           - local
-
-    # TODO: Cancel or Skip a Transaction, Look Up Transaction Results
 
     -   md: tutorials/manage-account-settings/manage-account-settings.md
         html: manage-account-settings.html

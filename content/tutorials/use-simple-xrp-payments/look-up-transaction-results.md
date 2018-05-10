@@ -7,7 +7,7 @@ To see the final result of a transaction, use the [tx method][], [account_tx met
 | meta.TransactionResult | String  | A code that categorizes the result, such as `tecPATH_DRY` |
 | validated              | Boolean | Whether or not this result comes from a validated ledger. If `false`, then the result is provisional. If `true`, then the result is final. |
 
-```js
+```json
     "hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
     "meta": {
       ...
@@ -15,3 +15,8 @@ To see the final result of a transaction, use the [tx method][], [account_tx met
     },
     "validated": true
 ```
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
