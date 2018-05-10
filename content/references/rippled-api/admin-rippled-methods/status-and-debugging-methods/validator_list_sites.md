@@ -1,11 +1,11 @@
-## validator_list_sites
+# validator_list_sites
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")
 
 The `validator_list_sites` command returns status information of sites serving validator lists. [New in: rippled 0.80.1][]
 
 *The `validator_list_sites` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -41,7 +41,7 @@ rippled validator_list_sites
 
 The request includes no parameters.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -124,6 +124,6 @@ Each member of the `validator_sites` field array is an object with the following
 | `refresh_interval_min` | Unsigned Integer | The number of minutes between refresh attempts. |
 | `uri`                  | String           | The URI of the site. |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).

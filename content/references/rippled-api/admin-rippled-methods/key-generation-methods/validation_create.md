@@ -1,11 +1,11 @@
-## validation_create
+# validation_create
 [[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
 
 Use the `validation_create` command to generate the keys for a rippled [validator](tutorial-rippled-setup.html#validator-setup). Similar to the [wallet_propose](#wallet-propose) command, this command makes no real changes, but only generates a set of keys in the proper format.
 
 _The `validation_create` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -50,7 +50,7 @@ The request includes the following parameters:
 
 **Note:** The security of your validator depends on the entropy of your seed. Do not use a secret value for real business purposes unless it is generated with a strong source of randomness. Ripple recommends omitting the `secret` when generating new credentials for the first time.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -94,7 +94,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `validation_public_key` | String | The public key for these validation credentials, in Ripple's [base58][] encoded string format. |
 | `validation_seed`       | String | The secret key for these validation credentials, in Ripple's [base58][] encoded string format. |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `badSeed` - The request provided an invalid seed value. This usually means that the seed value appears to be a valid string of a different format, such as an account address or validation public key.

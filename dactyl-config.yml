@@ -743,6 +743,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
         html: admin-rippled-methods.html
+        blurb: Admin methods are meant only for trusted personnel in charge of keeping the server operational. Admin methods include commands for managing, monitoring, and debugging the server.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -752,12 +753,13 @@ pages:
         targets:
             - local
 
-    -   name: Key Generation Methods #TODO: possible md landing content?
+    -   name: Key Generation Methods
         html: key-generation-methods.html
+        blurb: Use these methods to generate and manage keys.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Public rippled Methods
+        category: Admin rippled Methods
         subcategory: Key Generation Methods
         template: template-landing-children.html
         targets:
@@ -765,18 +767,249 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.md
         html: validation_create.html
+        blurb: Generate keys for a new rippled validator.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Public rippled Methods
+        category: Admin rippled Methods
         subcategory: Key Generation Methods
         targets:
             - local
 
-    # TODO: Subcategory landings and pages for:
-    # - Logging and Data Management Methods (5)
-    # - Server Control Methods (4)
-    # - Status and Debugging Messages (8)
+    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.md
+        html: wallet_propose.html
+        blurb: Generate keys for a new account.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Key Generation Methods
+        targets:
+          - local
+
+    -   name: Logging and Data Management Methods
+        html: logging-and-data-management-methods.html
+        blurb: Use these methods to manage log levels and other data, such as ledgers.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        template: template-landing-children.html
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.md
+        html: can_delete.html
+        blurb: Allow online deletion of ledgers up to a specific ledger.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.md
+        html: ledger_cleaner.html
+        blurb: Configure the ledger cleaner service to check for corrupted data.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md
+        html: ledger_request.html
+        blurb: Query peer servers for a specific ledger version.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.md
+        html: log_level.html
+        blurb: Get or modify log verbosity.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.md
+        html: logrotate.html
+        blurb: Reopen the log file.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   name: Server Control Methods
+        html: server-and-control-methods.html
+        blurb: Use these methods to manage the rippled server.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        template: template-landing-children.html
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/connect.md
+        html: connect.html
+        blurb: Force the rippled server to connect to a specific peer.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.md
+        html: ledger_accept.html
+        blurb: Close and advance the ledger in stand-alone mode.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.md
+        html: stop.html
+        blurb: Shut down the rippled server.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.md
+        html: validation_seed.html
+        blurb: Temporarily set key to be used for validating.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
+          - local
+
+    -   name: Status and Debugging Methods
+        html: status-and-debugging-methods.html
+        blurb: Use these methods to check the status of the network and server.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        template: template-landing-children.html
+        targets:
+          - local
+
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.md
+        html: consensus_info.html
+        blurb: Get information about the state of consensus as it happens.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.md
+        html: feature.html
+        blurb: Get information about protocol amendments.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.md
+        html: fetch_info.html
+        blurb: Get information about the server's sync with the network.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.md
+        html: get_counts.html
+        blurb: Get statistics about the server's internals and memory usage.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/peers.md
+        html: peers.html
+        blurb: Get information about the peer servers connected.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
+        html: print.html
+        blurb: Get information about internal subsystems.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
+        html: validator_list_sites.html
+        blurb: Get information about sites that publish validator lists.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.md
+        html: validators.html
+        blurb: Get information about the current validators.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+          - local
 
     -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.md
         html: ledger-data-formats.html

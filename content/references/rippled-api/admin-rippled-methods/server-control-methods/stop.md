@@ -1,11 +1,11 @@
-## stop
+# stop
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Stop.cpp "Source")
 
 Gracefully shuts down the server.
 
 *The `stop` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
 
-#### Request Format
+### Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -40,7 +40,7 @@ rippled stop
 
 The request includes no parameters.
 
-#### Response Format
+### Response Format
 
 An example of a successful response:
 
@@ -78,6 +78,6 @@ The response follows the [standard format](#response-formatting), with a success
 |:----------|:-------|:-------------------------------------|
 | `message` | String | `ripple server stopping` on success. |
 
-#### Possible Errors
+### Possible Errors
 
 * Any of the [universal error types](#universal-errors).
