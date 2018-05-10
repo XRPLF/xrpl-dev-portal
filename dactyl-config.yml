@@ -1568,6 +1568,16 @@ pages:
         targets:
             - local
 
+    -   md: use-cases/run-a-rippled-validator.md
+        html: run-a-rippled-validator.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - amendments.html
+            - the-rippled-server.html #TODO - add to useful_background when available: fee voting, consensus principles & rules
+        targets:
+            - local
+
     -   md: use-cases/list-xrp-in-your-exchange.md
         html: list-xrp-in-your-exchange.html
         funnel: Use Cases
@@ -1576,6 +1586,16 @@ pages:
             - xrp-ledger-overview.html
             - reliable-transaction-submission.html
             - xrp.html
+        targets:
+            - local
+
+    -   md: use-cases/contribute-code-to-rippled.md
+        html: contribute-code-to-rippled.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - consensus.html
+            - amendments.html #TODO add to useful_background: stand-alone mode, rippled.cfg reference (future feature)
         targets:
             - local
 
