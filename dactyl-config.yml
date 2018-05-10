@@ -398,7 +398,22 @@ pages:
         targets:
             - local
 
-    # TODO: list XRP as an exchange, become a gateway
+    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
+        html: list-xrp-as-an-exchange.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        targets:
+            - local
+
+    -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
+        html: become-an-xrp-ledger-gateway.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        targets:
+            - local
+
     # TODO: identify your accounts with ripple.txt (to come later)
 
     -   md: tutorials/manage-the-rippled-server/manage-the-rippled-server.md
