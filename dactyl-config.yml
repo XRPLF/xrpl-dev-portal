@@ -173,6 +173,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/complex-payment-types/cross-currency-payments.md
+        html: cross-currency-payments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
+        blurb: Cross-currency payments atomically deliver a different currency than they send by converting through paths and order books.
+        targets:
+            - local
+
     -   md: concepts/complex-payment-types/checks.md
         html: checks.html
         funnel: Docs
@@ -200,7 +209,14 @@ pages:
         targets:
             - local
 
-    # TODO: payment channels concept
+    -   md: concepts/complex-payment-types/payment-channels.md
+        html: payment-channels.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Complex Payment Types
+        blurb: Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later.
+        targets:
+            - local
 
     -   md: concepts/issued-currencies/issued-currencies.md
         html: issued-currencies.html

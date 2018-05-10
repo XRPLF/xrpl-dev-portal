@@ -1,18 +1,8 @@
 # Payment Channels Tutorial
 
-Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](reference-rippled.html) of a local `rippled` server.
+This tutorial walks through the entire process of using a [payment channel](payment-channels.html), with examples using the [JSON-RPC API](reference-rippled.html) of a local `rippled` server.
 
-## Background
-
-The process of using a payment channel always involves two parties, a payer and a payee. The payer is an individual person or institution using the XRP Ledger who is a customer of the payee. The payee is a person or business who is doing business on the XRP Ledger (XRP Ledger), receiving XRP as payment for goods or services.
-
-The types of goods and services are not defined by the software or in this tutorial. However, the types of goods and services that are a good fit for payment channels are:
-
-- Things that can be transmitted near-instantly, like digital items
-- Inexpensive things, where the cost of processing a transaction is a non-trivial part of the price
-- Things normally bought in bulk, where the exact quantity desired is not known in advance
-
-Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](concept-accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
+Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
 ## Example Values
 
