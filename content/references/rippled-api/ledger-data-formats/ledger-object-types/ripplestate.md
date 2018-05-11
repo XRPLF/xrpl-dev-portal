@@ -56,11 +56,11 @@ A `RippleState` object has the following fields:
 
 ## RippleState Flags
 
-There are several options which can be either enabled or disabled for a trust line. These options can be changed with a [TrustSet transaction](reference-transaction-format.html#trustset). In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
+There are several options which can be either enabled or disabled for a trust line. These options can be changed with a [TrustSet transaction][]. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
 
 RippleState objects can have the following flag values:
 
-| Flag Name | Hex Value | Decimal Value | Description | Corresponding [TrustSet Flag](reference-transaction-format.html#trustset-flags) |
+| Flag Name | Hex Value | Decimal Value | Description | Corresponding [TrustSet Flag](trustset.html#trustset-flags) |
 |-----------|-----------|---------------|-------------|------------------------|
 | lsfLowReserve | 0x00010000 | 65536 | This RippleState object [contributes to the low account's owner reserve](#contributing-to-the-owner-reserve). | (None) |
 | lsfHighReserve | 0x00020000 |131072 | This RippleState object [contributes to the high account's owner reserve](#contributing-to-the-owner-reserve). | (None) |
