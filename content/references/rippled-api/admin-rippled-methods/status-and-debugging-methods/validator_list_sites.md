@@ -109,7 +109,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following field:
+The response follows the [standard format][], with a successful result containing the following field:
 
 | `Field`           | Type  | Description                      |
 |:------------------|:------|----------------------------------|

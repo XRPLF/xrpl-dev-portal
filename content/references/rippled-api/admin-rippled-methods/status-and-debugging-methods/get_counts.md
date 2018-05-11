@@ -132,7 +132,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting). The list of fields contained in the result is subject to change without notice, but it may contain any of the following (among others):
+The response follows the [standard format][]. The list of fields contained in the result is subject to change without notice, but it may contain any of the following (among others):
 
 | `Field`       | Type   | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|

@@ -148,7 +148,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the address of the account and an array of trust line objects. Specifically, the result object contains the following fields:
+The response follows the [standard format][], with a successful result containing the address of the account and an array of trust line objects. Specifically, the result object contains the following fields:
 
 | `Field`                | Type                                       | Description |
 |:-----------------------|:-------------------------------------------|:-------|

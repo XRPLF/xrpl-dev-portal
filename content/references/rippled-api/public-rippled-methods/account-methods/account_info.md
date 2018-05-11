@@ -168,7 +168,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:
+The response follows the [standard format][], with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:
 
 | `Field`                | Type    | Description                               |
 |:-----------------------|:--------|:------------------------------------------|

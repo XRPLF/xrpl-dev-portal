@@ -71,7 +71,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.
+The response follows the [standard format][], with a successful result containing no fields. The client can measure the round-trip time from request to response as latency.
 
 ## Possible Errors
 

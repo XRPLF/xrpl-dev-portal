@@ -51,7 +51,7 @@ The request includes the following optional parameter:
 
 If no parameter is specified, no change is made.
 
-The response follows the [standard format](#response-formatting), with
+The response follows the [standard format][], with
 a successful result containing the following fields:
 
 | `Field`      | Type    | Description                                         |

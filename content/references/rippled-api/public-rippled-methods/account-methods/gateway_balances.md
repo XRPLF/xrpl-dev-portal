@@ -197,7 +197,7 @@ An example of a successful response:
 
 **Note:** There is no command-line syntax for this method. Use the [`json` command](#json) to access this from the command line.
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                | Type   | Description                                |
 |:-----------------------|:-------|:-------------------------------------------|

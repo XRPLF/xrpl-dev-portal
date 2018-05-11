@@ -244,7 +244,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing a `state` object as its only field.
+The response follows the [standard format][], with a successful result containing a `state` object as its only field.
 
 The `state` object may have some arrangement of the following fields:
 

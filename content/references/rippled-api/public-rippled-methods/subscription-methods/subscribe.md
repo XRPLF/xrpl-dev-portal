@@ -106,7 +106,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting). The fields contained in the response vary depending on what subscriptions were included in the request.
+The response follows the [standard format][]. The fields contained in the response vary depending on what subscriptions were included in the request.
 
 * `accounts` and `accounts_proposed` - No fields returned
 * *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change.
