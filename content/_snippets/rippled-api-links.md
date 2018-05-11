@@ -11,6 +11,7 @@
 [result code]: transaction-results.html
 [seconds since the Ripple Epoch]: basic-data-types.html#specifying-time
 [Sequence Number]: basic-data-types.html#account-sequence
+[SHA-512Half]: ledger-data-formats.html#sha512half
 [Specifying Ledgers]: basic-data-types.html#specifying-ledgers
 [Specifying Time]: basic-data-types.html#specifying-time
 [standard format]: response-formatting.html

@@ -68,7 +68,7 @@ AccountRoot objects can have the following flag values:
 
 ## AccountRoot ID Format
 
-The ID of an AccountRoot object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
+The ID of an AccountRoot object is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Account space key (`0x0061`)
 * The AccountID of the account

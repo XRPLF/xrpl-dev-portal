@@ -56,7 +56,7 @@ An `Escrow` object has the following fields:
 
 ## Escrow ID Format
 
-The ID of an `Escrow` object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
+The ID of an `Escrow` object is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Escrow space key (`0x0075`)
 * The AccountID of the sender of the [EscrowCreate transaction][] that created the `Escrow` object

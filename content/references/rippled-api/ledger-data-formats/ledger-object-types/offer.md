@@ -60,7 +60,7 @@ There are several options which can be either enabled or disabled when an [Offer
 
 ## Offer ID Format
 
-The ID of an `Offer` object is the [SHA-512Half](#sha512half) of the following values, concatenated in order:
+The ID of an `Offer` object is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Offer space key (`0x006F`)
 * The AccountID of the account placing the offer
