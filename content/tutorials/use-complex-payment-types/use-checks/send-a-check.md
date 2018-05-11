@@ -1,4 +1,4 @@
-# How to Send a Check
+# Send a Check
 
 Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check object in the ledger](reference-ledger-format.html#check) which the recipient can cash later.
 

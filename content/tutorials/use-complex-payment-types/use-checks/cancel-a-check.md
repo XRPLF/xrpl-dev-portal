@@ -59,7 +59,7 @@ The following examples demonstrate how to cancel a Check.
 
 ## {{cancel_n.next()}}. Sign the CheckCancel transaction
 
-{% include '_snippets/tutorial-sign-step.md' %}
+{% include '_snippets/tutorial-sign-step.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### Example Request
 
@@ -102,7 +102,7 @@ The following examples demonstrate how to cancel a Check.
 ## {{cancel_n.next()}}. Submit the signed CheckCancel transaction
 
 {% set step_1_link = "#1-prepare-the-checkcancel-transaction" %}
-{% include '_snippets/tutorial-submit-step.md' %}
+{% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### Example Request
 
@@ -143,7 +143,7 @@ The following examples demonstrate how to cancel a Check.
 
 ## {{cancel_n.next()}}. Wait for validation
 
-{% include '_snippets/wait-for-validation.md' %}
+{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## {{cancel_n.next()}}. Confirm final result
 
@@ -192,3 +192,4 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 [Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
 [RippleAPI]: reference-rippleapi.html
 {% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled-api-links.md' %}

@@ -1,4 +1,4 @@
-# Look up Checks by recipient address
+# Look Up Checks by Recipient
 
 This tutorial shows how to look up [Checks](concept-checks.html) by their recipient. You may also want to [look up Checks by sender](tutorial-checks-lookup-by-sender.html).
 
@@ -75,3 +75,4 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 [Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
 [RippleAPI]: reference-rippleapi.html
 {% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled-api-links.md' %}

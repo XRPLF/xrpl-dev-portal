@@ -1,4 +1,4 @@
-# Cash a Check for an exact amount
+# Cash a Check for an Exact Amount
 
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive any exact amount up to the amount specified in the Check by sending a [CheckCash transaction][] with an `Amount` field. You would cash a Check this way if you want to receive a specific amount, for example to pay off an invoice or bill exactly.
 
@@ -8,7 +8,7 @@ The specified recipient can also [cash the check for a flexible amount](tutorial
 
 ## Prerequisites
 
-{% include '_snippets/checkcash-prereqs.md' %}
+{% include '_snippets/checkcash-prereqs.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## {{cash_exact_n.next()}}. Prepare the CheckCash transaction
 
@@ -50,7 +50,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## {{cash_exact_n.next()}}. Sign the CheckCash transaction
 
-{% include '_snippets/tutorial-sign-step.md' %}
+{% include '_snippets/tutorial-sign-step.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### Example Request
 
@@ -81,7 +81,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 ## {{cash_exact_n.next()}}. Submit the signed CheckCash transaction
 
 {% set step_1_link = "#1-prepare-the-checkcash-transaction" %}
-{% include '_snippets/tutorial-submit-step.md' %}
+{% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### Example Request
 
@@ -110,7 +110,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## {{cash_exact_n.next()}}. Wait for validation
 
-{% include '_snippets/wait-for-validation.md' %}
+{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## {{cash_exact_n.next()}}. Confirm final result
 
@@ -149,3 +149,4 @@ If cashing the Check failed, the Check remains in the ledger so you can try cash
 [Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
 [RippleAPI]: reference-rippleapi.html
 {% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled-api-links.md' %}
