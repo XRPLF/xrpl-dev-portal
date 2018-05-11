@@ -57,3 +57,8 @@ The response follows the [standard format](#response-formatting), with a success
 
 * Any of the [universal error types][].
 * `notStandAlone` - If the `rippled` server is not currently running in stand-alone mode.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

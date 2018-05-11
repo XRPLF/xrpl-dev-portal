@@ -41,7 +41,7 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#tx)
+[Try it! >](websocket-api-tool.html#tx)
 
 The request includes the following parameters:
 

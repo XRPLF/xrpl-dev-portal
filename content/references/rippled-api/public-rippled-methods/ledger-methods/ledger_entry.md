@@ -40,7 +40,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#ledger_entry)
+[Try it! >](websocket-api-tool.html#ledger_entry)
 
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 

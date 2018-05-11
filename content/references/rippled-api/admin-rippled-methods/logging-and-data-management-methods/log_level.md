@@ -133,3 +133,8 @@ Otherwise, the request contains the following field:
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

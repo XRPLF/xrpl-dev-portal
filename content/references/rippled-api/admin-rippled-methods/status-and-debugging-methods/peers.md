@@ -407,3 +407,8 @@ Each member of the `peers` array is a peer object with the following fields:
 ### Possible Errors
 
 * Any of the [universal error types][].
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

@@ -37,7 +37,7 @@ rippled server_info
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#server_info)
+[Try it! >](websocket-api-tool.html#server_info)
 
 The request does not take any parameters.
 

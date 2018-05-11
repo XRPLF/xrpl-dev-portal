@@ -42,7 +42,7 @@ rippled tx_history 0
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#tx_history)
+[Try it! >](websocket-api-tool.html#tx_history)
 
 The request includes the following parameters:
 

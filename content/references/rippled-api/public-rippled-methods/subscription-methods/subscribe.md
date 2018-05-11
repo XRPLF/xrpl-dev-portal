@@ -51,7 +51,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#subscribe)
+[Try it! >](websocket-api-tool.html#subscribe)
 
 The request includes the following parameters:
 

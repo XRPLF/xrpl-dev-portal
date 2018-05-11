@@ -66,7 +66,7 @@ rippled sign s██████████████████████
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#sign)
+[Try it! >](websocket-api-tool.html#sign)
 
 To sign a transaction, you must provide a secret key that can [authorize the transaction](reference-transaction-format.html#authorizing-transactions). You can do this in a few ways:
 

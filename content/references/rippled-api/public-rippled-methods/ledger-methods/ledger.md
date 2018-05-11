@@ -52,7 +52,7 @@ rippled ledger current
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#ledger)
+[Try it! >](websocket-api-tool.html#ledger)
 
 The request can contain the following parameters:
 

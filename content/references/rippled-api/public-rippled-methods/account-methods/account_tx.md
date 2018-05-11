@@ -51,7 +51,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#account_tx)
+[Try it! >](websocket-api-tool.html#account_tx)
 
 The request includes the following parameters:
 

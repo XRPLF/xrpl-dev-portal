@@ -55,7 +55,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#submit)
+[Try it! >](websocket-api-tool.html#submit)
 
 
 ## Sign-and-Submit Mode
@@ -146,7 +146,7 @@ rippled submit s█████████████████████�
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#submit)
+[Try it! >](websocket-api-tool.html#submit)
 
 ## Response Format
 

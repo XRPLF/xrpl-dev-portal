@@ -42,7 +42,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#path_find)
+[Try it! >](websocket-api-tool.html#path_find)
 
 The request includes the following parameters:
 

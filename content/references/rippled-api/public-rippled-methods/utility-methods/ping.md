@@ -37,7 +37,7 @@ rippled ping
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#ping)
+[Try it! >](websocket-api-tool.html#ping)
 
 The request includes no parameters.
 

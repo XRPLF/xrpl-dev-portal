@@ -67,3 +67,8 @@ Use this command with no parameter to query the existing `can_delete` setting.
 * `notReady` - Not ready to handle this request.
 * `lgrNotFound` - Ledger not found.
 * `invalidParams` - Invalid parameters.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

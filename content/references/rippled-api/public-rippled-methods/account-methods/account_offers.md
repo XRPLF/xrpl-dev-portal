@@ -43,7 +43,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#account_offers)
+[Try it! >](websocket-api-tool.html#account_offers)
 
 A request can include the following parameters:
 

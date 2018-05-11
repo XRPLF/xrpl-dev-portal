@@ -34,7 +34,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#unsubscribe)
+[Try it! >](websocket-api-tool.html#unsubscribe)
 
 The parameters in the request are specified almost exactly like the parameters to [`subscribe`](#subscribe), except that they are used to define which subscriptions to end instead. The parameters are:
 
