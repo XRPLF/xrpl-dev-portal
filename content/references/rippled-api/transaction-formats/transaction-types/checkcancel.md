@@ -24,7 +24,7 @@ In addition to the [common fields](#common-fields), a CheckCancel transaction ha
 
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|
-| `CheckID`   | String    | Hash256           | The ID of the [Check ledger object](reference-ledger-format.html#check) to cancel, as a 64-character hexadecimal string. |
+| `CheckID`   | String    | Hash256           | The ID of the [Check ledger object](check.html) to cancel, as a 64-character hexadecimal string. |
 
 ## Error Cases
 

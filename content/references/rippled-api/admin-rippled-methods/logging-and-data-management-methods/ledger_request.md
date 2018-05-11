@@ -154,7 +154,7 @@ The three possible response formats are as follows:
 
 1. When returning a `lgrNotFound` error, the response has a field, `acquiring` with a [Ledger Request Object](#ledger-request-object) indicating the progress of fetching the ledger from the peer-to-peer network.
 2. When the response shows the server is currently fetching the ledger, the body of the result is a [Ledger Request Object](#ledger-request-object) indicating the progress of fetching the ledger from the peer-to-peer network.
-3. When the ledger is fully available, the response is a representation of the [ledger header](reference-ledger-format.html#header-format).
+3. When the ledger is fully available, the response is a representation of the [ledger header](ledger-header.html).
 
 ### Ledger Request Object
 

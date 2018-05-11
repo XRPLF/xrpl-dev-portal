@@ -149,7 +149,7 @@ The response follows the [standard format][], with a successful result containin
 |:-------------------------------|:--------|:----------------------------------|
 | `ledger`                       | Object  | The complete header data of this ledger. |
 | `ledger.account_hash`          | String  | Hash of all account state information in this ledger, as hex |
-| `ledger.accountState`          | Array   | (Omitted unless requested) All the [account-state information](reference-ledger-format.html) in this ledger. |
+| `ledger.accountState`          | Array   | (Omitted unless requested) All the [account-state information](ledger-data-formats.html) in this ledger. |
 | `ledger.close_flags`           | Integer | A bit-map of flags relating to the closing of this ledger. Currently, the ledger has only one flag defined for `close_flags`: **sLCF_NoConsensusTime** (value 1). If this flag is enabled, it means that validators were in conflict regarding the correct close time for the ledger, but build otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, the consensus ledger contains a `close_time` that is 1 second after that of the previous ledger. (In this case, there is no official close time, but the actual real-world close time is probably 3-6 seconds later than the specified `close_time`.) |
 | `ledger.close_time`            | Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
 | `ledger.close_time_human`      | String  | The time this ledger was closed, in human-readable format |

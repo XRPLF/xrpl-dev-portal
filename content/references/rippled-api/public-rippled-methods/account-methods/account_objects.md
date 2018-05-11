@@ -3,16 +3,16 @@
 
 The `account_objects` command returns the raw [ledger format][] for all objects owned by an account. For a higher-level view of an account's trust lines and balances, see [`account_lines`](#account-lines) instead.
 
-[ledger format]: reference-ledger-format.html
+[ledger format]: ledger-data-formats.html
 
 The types of objects that may appear in the `account_objects` response for an account include:
 
-- [Offer objects](reference-ledger-format.html#offer) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer) for more information.)
-- [RippleState objects](reference-ledger-format.html#ripplestate) for trust lines where this account's side is not in the default state.
-- The account's [SignerList](reference-ledger-format.html#signerlist), if the account has [multi-signing](multi-signing.html) enabled.
-- [Escrow objects](reference-ledger-format.html#escrow) for held payments that have not yet been executed or canceled.
-- [PayChannel objects](reference-ledger-format.html#paychannel) for open payment channels.
-- [Check objects](reference-ledger-format.html#check) for pending checks.
+- [Offer objects](offer.html) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer) for more information.)
+- [RippleState objects](ripplestate.html) for trust lines where this account's side is not in the default state.
+- The account's [SignerList](signerlist.html), if the account has [multi-signing](multi-signing.html) enabled.
+- [Escrow objects](escrow.html) for held payments that have not yet been executed or canceled.
+- [PayChannel objects](paychannel.html) for open payment channels.
+- [Check objects](check.html) for pending checks.
 
 
 ## Request Format

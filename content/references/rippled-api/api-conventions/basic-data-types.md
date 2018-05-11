@@ -6,7 +6,7 @@ Different types of objects are uniquely identified in different ways:
 
 [Transactions](transaction-formats.html) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
-Each closed [Ledger](reference-ledger-format.html) has a [Ledger Index][] and a [Hash][] value. When [Specifying a Ledger Instance](#specifying-ledgers) you can use either one.
+Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Hash][] value. When [Specifying a Ledger Instance](#specifying-ledgers) you can use either one.
 
 ## Addresses
 [Address]: #addresses
@@ -58,7 +58,7 @@ There are two kinds of currencies in the XRP Ledger: XRP, and everything else. T
 |:----------------------------------------------------------------|:-----------|
 | Has no issuer.                                                  | Always issued by an XRP Ledger account |
 | Specified as a string                                           | Specified as an object |
-| Tracked in [accounts](accountroot.html) | Tracked in [trust lines](reference-ledger-format.html#ripplestate) |
+| Tracked in [accounts](accountroot.html) | Tracked in [trust lines](ripplestate.html) |
 | Can never be created; can only be destroyed                     | Can be issued or redeemed freely |
 | Maximum value `100000000000` (`1e11`)                           | Maximum value `9999999999999999e80` |
 | Precise to the nearest ["drop"](#xrp) (0.000001 XRP)            | 15 decimal digits of precision, with a minimum nonzero absolute value of `1000000000000000e-96` |
