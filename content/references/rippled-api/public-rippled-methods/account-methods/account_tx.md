@@ -60,8 +60,8 @@ The request includes the following parameters:
 | `account`          | String                                     | A unique identifier for the account, most commonly the account's address. |
 | `ledger_index_min` | Integer                                    | _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
 | `ledger_index_max` | Integer                                    | _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
-| `ledger_hash`      | String                                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers).) |
-| `ledger_index`     | String or Unsigned Integer                 | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying a Ledger](#specifying-ledgers).) |
+| `ledger_hash`      | String                                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
+| `ledger_index`     | String or Unsigned Integer                 | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
 | `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
 | `forward`          | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | `limit`            | Integer                                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |

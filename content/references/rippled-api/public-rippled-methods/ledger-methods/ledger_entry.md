@@ -69,8 +69,8 @@ The full list of parameters recognized by this method is as follows:
 | `ripple_state.accounts` | Array                      | (Required if `ripple_state` specified) 2-length array of account [Address][]es, defining the two accounts linked by this [RippleState object](reference-ledger-format.html#ripplestate) |
 | `ripple_state.currency` | String                     | (Required if `ripple_state` specified) [Currency Code][] of the [RippleState object](reference-ledger-format.html#ripplestate) to retrieve. |
 | `binary`                | Boolean                    | _(Optional)_ If true, return the requested ledger object's contents as a hex string. Otherwise, return data in JSON format. The default is `true` if searching by `index` and `false` otherwise. |
-| `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
-| `ledger_index`          | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
+| `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index`          | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
