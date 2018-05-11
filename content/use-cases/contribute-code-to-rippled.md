@@ -14,30 +14,30 @@ Want to contribute code or a bug report to help improve `rippled`, the core peer
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Set up and run a `rippled` server](xxxxx.html)
+## [Set up and run a `rippled` server](manage-the-rippled-server.html)
 
 Set up and run a `rippled` server to understand the developer experience and functionality of the core peer-to-peer server that manages the XRP Ledger. Anyone can run their own `rippled` server that follows the network and keeps a complete copy of the XRP Ledger.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Try out XRP Ledger integration tools](xxxxx.html)
+## [Try out XRP Ledger integration tools](get-started-with-the-rippled-api.html)
 
 Take a look at the various tools provided to help developers integrate with the XRP Ledger. From WebSocket and JSON-RPC API endpoints to the `ripple-lib` JavaScript library, take a look at the modes of integration offered to the developer community.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Get a sandbox XRP Ledger account](xxxxx.html)
+## [Get a sandbox XRP Ledger account](xrp-test-net-faucet.html)
 
 Use the XRP Ledger Test Net to get a sandbox account. Connect your `rippled server` to the Test Net to make test calls and get to know the XRP Ledger.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Set up your development environment](xxxxx.html)
+## Set up your development environment
 
-A `rippled` development environment has a C++ compiler, access to the necessary libraries to compile `rippled` (such as Boost), and an editor for making changes to the source files. See the <a href="https://github.com/ripple/rippled" target="_blank">`rippled` repository <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}--> for the latest recommendations of each. You should also create your own fork of the `rippled` repository on GitHub so you can contribute pull requests to the official repo. <!-- TODO: awaiting links to a few rippled repo md files -->
+A `rippled` development environment has a C++ compiler, access to the necessary libraries to compile `rippled` (such as Boost), and an editor for making changes to the source files. See the <a href="https://github.com/ripple/rippled" target="_blank">`rippled` repository <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}--> for the latest recommendations of each. You should also create your own fork of the `rippled` repository on GitHub so you can contribute pull requests to the official repo. <!-- for future, awaiting links to a few rippled repo md files - Nik -->
 
 
 <span class="use-case-step-num">{{n.next()}}</span>

@@ -8,7 +8,7 @@ Each `rippled` server (not running in stand-alone mode) connects to a network of
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Understand what it means to run a validator](Manage the rippled Server > Reasons to Run a Validator - includes Properties of a Good Validator.html)
+## [Understand what it means to run a validator](the-rippled-server.html#reasons-to-run-a-validator)
 
 If you or your organization relies on the XRP Ledger, it is in your interest to run a validator to participate in the consensus process and provide a trusted validator that supports the ongoing decentralization of the XRP Ledger.
 
@@ -21,7 +21,7 @@ Despite that, it is important to note that every validator contributes to the lo
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Set up and run a `rippled` server](Manage the rippled Server.html)
+## [Set up and run a `rippled` server](manage-the-rippled-server.html)
 
 Install and run a `rippled` server. Anyone can run their own `rippled` server that follows the network and keeps a complete copy of the XRP Ledger.
 
@@ -30,21 +30,21 @@ For configuration guidance and network and hardware requirements, see [Capacity 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Enable validation on your rippled server](Manage the rippled server > Run a Validator.html)
+## [Enable validation on your rippled server](run-rippled-as-a-validator.html)
 
 To configure your `rippled` server to run in validator mode, generate a validator key pair and add it to your `rippled.cfg` file.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Set up a stock rippled server as a proxy](Manage the rippled server > Run a Validator > Public-Facing Server.html)
+## [Set up a stock rippled server as a proxy](run-rippled-as-a-validator.html#public-facing-server)
 
 To protect a production validator from DDoS attacks, you can use a stock `rippled` server as a proxy between the validator and the outside network.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Associate your validator with a web domain you control](Manage the rippled server > Run a Validator > Domain Verification.html)
+## [Associate your validator with a web domain you control](run-rippled-as-a-validator.html#domain-verification)
 
 Network participants are unlikely to trust a validator without knowing who is operating it. To address this concern, associate your validator with a web domain you control.
 You may also wish to have your validator listed with one or more validator tracking services, such as the <a href="https://xrpcharts.ripple.com/#/validators" target="_blank">XRP Charts Validator Registry <i class="fa fa-external-link" aria-hidden="true"></i></a>.<!--#{ fix md highlighting_ #}-->
