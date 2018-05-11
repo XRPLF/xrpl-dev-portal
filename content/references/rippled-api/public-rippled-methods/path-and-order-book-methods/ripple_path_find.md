@@ -1,7 +1,7 @@
 # ripple_path_find
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")
 
-The `ripple_path_find` method is a simplified version of [`path_find`](#path-find) that provides a single response with a [payment path](concept-paths.html) you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making multiple calls to stay updated, you should use [`path_find`](#path-find) instead where possible.
+The `ripple_path_find` method is a simplified version of [`path_find`](#path-find) that provides a single response with a [payment path](paths.html) you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making multiple calls to stay updated, you should use [`path_find`](#path-find) instead where possible.
 
 Although the `rippled` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths.
 
@@ -323,7 +323,7 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 | `Field`          | Type             | Description                            |
 |:-----------------|:-----------------|:---------------------------------------|
-| `paths_computed` | Array            | Array of arrays of objects defining [payment paths](concept-paths.html) |
+| `paths_computed` | Array            | Array of arrays of objects defining [payment paths](paths.html) |
 | `source_amount`  | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path for the destination to receive the desired amount |
 
 The following fields are deprecated, and may be omitted: `paths_canonical`, and `paths_expanded`. If they appear, you should disregard them.

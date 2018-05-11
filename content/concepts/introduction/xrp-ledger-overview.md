@@ -26,7 +26,7 @@ This combines qualities of physical and centralized digital money. Prior to the 
 - **Physical coins and paper money**, which individuals can use to do business without going through a central party. As physical objects, they cannot be used online, and doing business long-distance is slow and inconvenient.
 - **Centralized digital currencies**, which need an administrator to confirm transactions. The administrator also has the power to censor or roll back transactions, or disallow some individuals from using the digital currency. If the operator of a digital currency decides someone has violated its terms of service, it can freeze or even confiscate that person's money. However, as digital balances, these currencies can be used online and are convenient across long distances.
 
-**Note:** Users of the XRP Ledger _can_ freeze non-XRP currencies issued in the XRP Ledger. For more information, see the [Freeze documentation](concept-freeze.html).
+**Note:** Users of the XRP Ledger _can_ freeze non-XRP currencies issued in the XRP Ledger. For more information, see the [Freeze documentation](freeze.html).
 
 The XRP Ledger's system of trusted validators uses a small amount of human interaction to achieve better distribution of authority than other decentralized systems. Fully-automated systems for reaching consensus from an unknown set of participants are vulnerable to concentrations of voting power. For example, Bitcoin mining is disproportionately concentrated in places with cheap electricity. As Ripple curates a list of distinct validators operated by different entities in different jurisdictions, the XRP Ledger can become more resistant to censorship and outside pressures than proof-of-work mining. For more information on Ripple's plan to decentralize the recommended set of validators, see the  [Decentralization Strategy Update](https://ripple.com/dev-blog/decentralization-strategy-update/).
 
@@ -38,7 +38,7 @@ The XRP Ledger's biggest difference from most cryptocurrencies is that it uses a
 
 Furthermore, each new "ledger version" in the XRP Ledger (the equivalent of a "block") contains the full current state of all balances, so a server can synchronize with the network in minutes instead of spending hours downloading and re-processing the full transaction history.
 
-For more information on how the XRP Ledger's consensus algorithm works, see [The XRP Ledger Consensus Process](concept-consensus.html). For background on why the XRP Ledger uses this consensus algorithm, see [Reaching Consensus In the XRP Ledger](concept-reaching-consensus.html).
+For more information on how the XRP Ledger's consensus algorithm works, see [The XRP Ledger Consensus Process](consensus.html). For background on why the XRP Ledger uses this consensus algorithm, see [Reaching Consensus In the XRP Ledger](reaching-consensus.html).
 
 
 ## Finite XRP Supply
@@ -48,9 +48,9 @@ Alongside war and political turmoil, hyperinflation is one of the leading causes
 
 The supply of XRP available to the general public _does_ change due to a few factors:
 
-- Sending transactions in the XRP Ledger destroys a small amount of XRP. Senders choose how much to destroy, with certain minimums based on the expected work of processing the transaction and how busy the network is. If the network is busy, potential transactions that promise to destroy more XRP can cut in front of the transaction queue. This is an anti-spam measure to make it prohibitively expensive to [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) the XRP Ledger network. For more information, see [Transaction Cost](concept-transaction-cost.html).
+- Sending transactions in the XRP Ledger destroys a small amount of XRP. Senders choose how much to destroy, with certain minimums based on the expected work of processing the transaction and how busy the network is. If the network is busy, potential transactions that promise to destroy more XRP can cut in front of the transaction queue. This is an anti-spam measure to make it prohibitively expensive to [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) the XRP Ledger network. For more information, see [Transaction Cost](transaction-cost.html).
 - Each account in the XRP Ledger must hold a small amount of XRP in reserve. This is an anti-spam measure to disincentivize making the ledger data occupy too much space. XRP Ledger validators can vote to change the amount of XRP required as a reserve, to compensate for changes in XRP's real-world value. (The last time this happened was in December 2013, when [the reserve requirement decreased from 50 XRP to 20 XRP](https://ripple.com/insights/proposed-change-to-ripple-reserve-requirement-2/).) If the reserve requirement decreases, XRP that was previously locked up by the reserve becomes available again.
-- Ripple (the company) holds a large reserve of XRP in escrow. At the start of each month, 1 billion XRP is released from escrow for Ripple to use. (Ripple uses XRP to incentivize growth in the XRP Ledger ecosystem and sells XRP to institutional investors.) At the end of each month, any remaining XRP the company does not sell or give away is stored into escrow for a 54-month period. For more information on Ripple's escrow policy, see [Ripple Escrows 55 Billion XRP for Supply Predictability](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/). For more information on the technical capabilities of the Escrow feature, see [Escrow](concept-escrow.html).
+- Ripple (the company) holds a large reserve of XRP in escrow. At the start of each month, 1 billion XRP is released from escrow for Ripple to use. (Ripple uses XRP to incentivize growth in the XRP Ledger ecosystem and sells XRP to institutional investors.) At the end of each month, any remaining XRP the company does not sell or give away is stored into escrow for a 54-month period. For more information on Ripple's escrow policy, see [Ripple Escrows 55 Billion XRP for Supply Predictability](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/). For more information on the technical capabilities of the Escrow feature, see [Escrow](escrow.html).
 
 
 ## Responsible Software Governance
@@ -71,7 +71,7 @@ As an entity that is obligated to hold large amounts of XRP for the long term, R
 
 Cryptography is one of the hardest parts of any distributed system, and a mistake can lead to money stolen by malicious actors anywhere in the world. The XRP Ledger uses industry-standard schemes for signing and verifying transactions, algorithms that have successfully protected hundreds of billions of US dollars' worth of value for many years. The XRP Ledger also layers multi-signing functionality so you can use multi-factor authorization or split keys across multiple people as a backup, and provides new algorithms with a path to migrate the keys you use if a breakthrough in cryptography makes the old algorithms obsolete.
 
-For more information, see [Cryptographic Keys](concept-cryptographic-keys.html) and [Multi-signing](reference-transaction-format.html#multi-signing).
+For more information, see [Cryptographic Keys](cryptographic-keys.html) and [Multi-signing](reference-transaction-format.html#multi-signing).
 
 
 ## Modern Features for Smart Contracts
@@ -82,11 +82,11 @@ Besides simple value transfer with XRP payments, the XRP Ledger has several adva
 A sample of advanced features in the XRP Ledger:
 
 - [Payment Channels](tutorial-paychan.html) allow asynchronous balance changes as fast as you can create and validate signatures.
-- [Escrow](concept-escrow.html) locks up XRP until a declared time passes or cryptographic condition is met.
-- [DepositAuth](concept-depositauth.html) lets users decide who can send them money and who can't.
+- [Escrow](escrow.html) locks up XRP until a declared time passes or cryptographic condition is met.
+- [DepositAuth](depositauth.html) lets users decide who can send them money and who can't.
 - A [Decentralized Exchange](#on-ledger-decentralized-exchange) lets users trade obligations and XRP on-ledger.
 - [Invariant Checking](https://ripple.com/dev-blog/protecting-ledger-invariant-checking/) provides an independent layer of protections against bugs in transaction execution.
-- [Amendments](concept-amendments.html) provide smooth upgrades to the existing feature set, so the technology can continue to evolve without fracturing the ecosystem or causing uncertainty around times of transition.
+- [Amendments](amendments.html) provide smooth upgrades to the existing feature set, so the technology can continue to evolve without fracturing the ecosystem or causing uncertainty around times of transition.
 
 
 ## On-Ledger Decentralized Exchange
@@ -94,4 +94,4 @@ A sample of advanced features in the XRP Ledger:
 
 One of the biggest features that sets the XRP Ledger apart from other cryptocurrency networks is that it also contains a full currency exchange that runs on the XRP Ledger. Within this system, businesses (typically called "gateways") can freely issue any currency they want to customers, and those customers can freely trade issued currencies for XRP or other issued currencies issued by any gateway. The XRP Ledger can execute atomic cross-currency transactions this way, using orders in the exchange to provide liquidity.
 
-For more information on how the decentralized exchange works, see [Money in the XRP Ledger](concept-money.html) and [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer). For more information on the gateway business model, see the [Gateway Guide](tutorial-gateway-guide.html).
+For more information on how the decentralized exchange works, see [Money in the XRP Ledger](money.html) and [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer). For more information on the gateway business model, see the [Gateway Guide](tutorial-gateway-guide.html).

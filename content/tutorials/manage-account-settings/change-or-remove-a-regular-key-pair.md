@@ -2,7 +2,7 @@
 
 The XRP Ledger allows an account to authorize a secondary key pair, called a _regular key pair_, to sign future transactions.  If your account's regular key pair is compromised, or if you just want to periodically change the regular key pair as a security measure, use a [SetRegularKey transaction][] to remove or change the regular key pair for your account.
 
-For more information about master and regular key pairs, see [Cryptographic Keys](concept-cryptographic-keys.html).
+For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
 
 
 ## Changing a Regular Key Pair
@@ -352,7 +352,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](concept-transaction-cost.html#key-reset-transaction) without paying the [transaction cost](reference-transaction-format.html#transaction-cost). With the enablement of the FeeEscalation amendment, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
+In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](transaction-cost.html#key-reset-transaction) without paying the [transaction cost](reference-transaction-format.html#transaction-cost). With the enablement of the FeeEscalation amendment, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

@@ -3,7 +3,7 @@
 An "Account" in the XRP Ledger represents a holder of XRP and a sender of [transactions](reference-transaction-format.html). The core elements of an account are:
 
 - An identifying **address**, such as `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`
-- An **XRP balance**. Some of this XRP is set aside for the [Reserve](concept-reserves.html).
+- An **XRP balance**. Some of this XRP is set aside for the [Reserve](reserves.html).
 - A **sequence number**, starting at 1 and increasing with each transaction sent from this account. No transaction can be included in a ledger unless the transaction's sequence number matches its sender's next sequence number.
 - A **history of transactions** that affected this account and its balances.
 - One or more ways to [authorize transactions](reference-transaction-format.html#authorizing-transactions), possibly including:
@@ -17,7 +17,7 @@ In the ledger's data tree, an account's core data is stored in the [AccountRoot]
 
 ### Creating Accounts
 
-There is not a dedicated "create account" transaction. The [Payment transaction][] automatically creates a new account if the payment sends XRP equal to or greater than the [account reserve](concept-reserves.html) to a mathematically-valid address that does not already have an account. This is called _funding_ an account, and creates an [AccountRoot object](reference-ledger-format.html#accountroot) in the ledger. No other transaction can create an account.
+There is not a dedicated "create account" transaction. The [Payment transaction][] automatically creates a new account if the payment sends XRP equal to or greater than the [account reserve](reserves.html) to a mathematically-valid address that does not already have an account. This is called _funding_ an account, and creates an [AccountRoot object](reference-ledger-format.html#accountroot) in the ledger. No other transaction can create an account.
 
 **Caution:** Funding an account **does not** give you any special privileges over that account. Whoever has the secret key corresponding to the account's address has full control over the account and all XRP it contains. For some addresses, it's possible that no one has the secret key, in which case the account is a [black hole](#special-addresses) and the XRP is lost forever.
 
@@ -29,7 +29,7 @@ The typical way to get an account in the XRP Ledger is as follows:
 
     - For example, you can purchase XRP in a private exchange, then withdraw XRP from the exchange to the address you specified.
 
-        **Caution:** The first time you receive XRP at your own XRP Ledger address, you must pay the [account reserve](concept-reserves.html) (currently 20 XRP), which locks up that amount of XRP indefinitely. In contrast, private exchanges usually hold all their customers' XRP in a few shared XRP Ledger accounts, so customers don't have to pay the reserve for individual accounts at the exchange. Before withdrawing, consider whether having your own account directly on the XRP Ledger is worth the price.
+        **Caution:** The first time you receive XRP at your own XRP Ledger address, you must pay the [account reserve](reserves.html) (currently 20 XRP), which locks up that amount of XRP indefinitely. In contrast, private exchanges usually hold all their customers' XRP in a few shared XRP Ledger accounts, so customers don't have to pay the reserve for individual accounts at the exchange. Before withdrawing, consider whether having your own account directly on the XRP Ledger is worth the price.
 
 ## Addresses
 
@@ -66,7 +66,7 @@ Unlike Bitcoin and many other crypto-currencies, each new version of the XRP Led
 
 In the XRP Ledger, transaction history is tracked by a "thread" of transactions linked by a transaction's identifying hash and the ledger index. The `AccountRoot` ledger object has the identifying hash and ledger of the transaction that most recently modified it; the metadata of that transaction includes the previous state of the `AccountRoot` node, so it is possible to iterate through the history of a single account this way. This transaction history includes any transactions that modify the `AccountRoot` node directly, including:
 
-- Transactions sent by the account, because they modify the account's `Sequence` number. These transactions also modify the account's XRP balance because of the [transaction cost](concept-transaction-cost.html).
+- Transactions sent by the account, because they modify the account's `Sequence` number. These transactions also modify the account's XRP balance because of the [transaction cost](transaction-cost.html).
 - Transactions that modified the account's XRP balance, including incoming [Payment transactions][] and other types of transactions such as [PaymentChannelClaim][] and [EscrowFinish][].
 
 The _conceptual_ transaction history of an account also includes transactions that modified the account's owned objects and non-XRP balances. These objects are separate ledger objects, each with their own thread of transactions that affected them. If you have an account's full ledger history, you can follow it forward to find the ledger objects created or modified by it. A "complete" transaction history includes the history of objects owned by a transaction, such as:

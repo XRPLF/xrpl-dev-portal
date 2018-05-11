@@ -1,8 +1,8 @@
 # Partial Payments
 
-In the default case, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the exact amount to deliver, after charging for exchange rates and [transfer fees](concept-transfer-fees.html). The "Partial Payment" flag ([**tfPartialPayment**](reference-transaction-format.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](tutorial-gateway-guide.html#bouncing-payments) without incurring additional costs to oneself.
+In the default case, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the exact amount to deliver, after charging for exchange rates and [transfer fees](transfer-fees.html). The "Partial Payment" flag ([**tfPartialPayment**](reference-transaction-format.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](tutorial-gateway-guide.html#bouncing-payments) without incurring additional costs to oneself.
 
-The amount of XRP used for the [transaction cost](concept-transaction-cost.html) is always deducted from the sender’s account, regardless of the type of transaction.
+The amount of XRP used for the [transaction cost](transaction-cost.html) is always deducted from the sender’s account, regardless of the type of transaction.
 
 Partial payments can be used to exploit naive integrations with the XRP Ledger to steal money from exchanges and gateways. The [Partial Payments Exploit](#partial-payments-exploit) section of this document describes how this exploit works and how you can avoid it.
 
@@ -16,9 +16,9 @@ In other words:
 
     Amount + (fees) = (sent amount) ≤ SendMax
 
-In this formula, "fees" refers to [transfer fees](concept-transfer-fees.html) and currency exchange rates. The "sent amount" and the delivered amount (`Amount`) may be denominated in different currencies and converted by consuming Offers in the XRP Ledger's decentralized exchange.
+In this formula, "fees" refers to [transfer fees](transfer-fees.html) and currency exchange rates. The "sent amount" and the delivered amount (`Amount`) may be denominated in different currencies and converted by consuming Offers in the XRP Ledger's decentralized exchange.
 
-**Note:** The `Fee` field of the transaction refers to the XRP [transaction cost](concept-transaction-cost.html), which is destroyed to relay the transaction to the network. The exact transaction cost specified is always debited from the sender and is completely separate from the fee calculations for any type of payment.
+**Note:** The `Fee` field of the transaction refers to the XRP [transaction cost](transaction-cost.html), which is destroyed to relay the transaction to the network. The exact transaction cost specified is always debited from the sender and is completely separate from the fee calculations for any type of payment.
 
 ### With Partial Payments
 

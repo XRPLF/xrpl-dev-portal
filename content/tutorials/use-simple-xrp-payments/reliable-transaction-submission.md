@@ -19,7 +19,7 @@ These types of errors can potentially lead to serious problems.  For example, an
 
 The XRP Ledger protocol provides a ledger shared across all servers in the network.  Through a [process of consensus and validation](https://ripple.com/build/ripple-ledger-consensus-process/), the network agrees on the order in which transactions are applied to (or omitted from) the ledger.
 
-Well-formed transactions submitted to trusted XRP Ledger servers are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](concept-transaction-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.
+Well-formed transactions submitted to trusted XRP Ledger servers are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](transaction-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.
 
 If a power or network outage occurs, applications face more challenges finding the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly get authoritative results.
 
@@ -135,7 +135,7 @@ For each persisted transaction without validated result:
 
 The difference between the two transaction failure cases (labeled (1) and (2) in the pseudo-code) is whether the transaction was included in a validated ledger. In both cases, you should decide carefully how to process the failure.
 
-- In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](concept-transaction-cost.html), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](concept-paths.html), or other circumstances. For many such failures, immediately retrying with a similar transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
+- In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](transaction-cost.html), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](paths.html), or other circumstances. For many such failures, immediately retrying with a similar transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
 
 - In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or it could be due to other conditions such as an unstable network connection. In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again.
     - It is also possible that the transaction could not succeed due to the state of the ledger, for example because the sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](reference-transaction-format.html#tef-codes), the transaction is less likely to succeed without further modification.
@@ -511,7 +511,7 @@ Finally the server may show one or more gaps in the transaction history. The `co
 ## Additional Resources
 
 - [Transaction Format](reference-transaction-format.html)
-- [Transaction Cost](concept-transaction-cost.html)
+- [Transaction Cost](transaction-cost.html)
 - [`LastLedgerSequence` field](reference-transaction-format.html#lastledgersequence)
-- [Overview of XRP Ledger Consensus Process](concept-consensus.html)
-- [Reaching Consensus in the XRP Ledger](concept-reaching-consensus.html)
+- [Overview of XRP Ledger Consensus Process](consensus.html)
+- [Reaching Consensus in the XRP Ledger](reaching-consensus.html)

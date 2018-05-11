@@ -1,7 +1,7 @@
 # gateway_balances
 [[Source]<br>](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
 
-The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](concept-issuing-and-operational-addresses.html). [New in: rippled 0.28.2][]
+The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](issuing-and-operational-addresses.html). [New in: rippled 0.28.2][]
 
 ## Request Format
 An example of the request format:
@@ -46,9 +46,9 @@ The request includes the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `account`      | String                     | The [Address][] to check. This should be the [issuing address](concept-issuing-and-operational-addresses.html) |
+| `account`      | String                     | The [Address][] to check. This should be the [issuing address](issuing-and-operational-addresses.html) |
 | `strict`       | Boolean                    | _(Optional)_ If true, only accept an address or public key for the account parameter. Defaults to false. |
-| `hotwallet`    | String or Array            | An [operational address](concept-issuing-and-operational-addresses.html) to exclude from the balances issued, or an array of such addresses. |
+| `hotwallet`    | String or Array            | An [operational address](issuing-and-operational-addresses.html) to exclude from the balances issued, or an array of such addresses. |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying a Ledger](#specifying-ledgers)) |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying a Ledger](#specifying-ledgers)) |
 
@@ -204,7 +204,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `account`              | String | Unique [Address][] identifying the account that issued the balances. |
 | `obligations`          | Object | (Omitted if empty) Total amounts issued to addresses not excluded, as a map of currencies to the total value issued. |
 | `balances`             | Object | (Omitted if empty) Amounts issued to the `hotwallet` addresses from the request. The keys are addresses and the values are arrays of currency amounts they hold. |
-| `assets`               | Object | (Omitted if empty) Total amounts held that are issued by others. In the recommended configuration, the [issuing address](concept-issuing-and-operational-addresses.html) should have none. |
+| `assets`               | Object | (Omitted if empty) Total amounts held that are issued by others. In the recommended configuration, the [issuing address](issuing-and-operational-addresses.html) should have none. |
 | `ledger_hash`          | String | (May be omitted) The identifying hash of the ledger that was used to generate this response. |
 | `ledger_index`         | Number | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
 | `ledger_current_index` | Number | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |

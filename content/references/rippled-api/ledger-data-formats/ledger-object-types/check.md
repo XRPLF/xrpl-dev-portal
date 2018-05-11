@@ -3,7 +3,7 @@
 
 _Requires the [Checks Amendment](reference-amendments.html#checks)._
 
-A `Check` object describes a check, similar to a paper personal check, which can be cashed by its destination to get money from its sender. (The potential payment has already been approved by its sender, but no money moves until it is cashed. Unlike an [Escrow](concept-escrow.html), the money for a Check is not set aside, so cashing the Check could fail due to lack of funds.)
+A `Check` object describes a check, similar to a paper personal check, which can be cashed by its destination to get money from its sender. (The potential payment has already been approved by its sender, but no money moves until it is cashed. Unlike an [Escrow](escrow.html), the money for a Check is not set aside, so cashing the Check could fail due to lack of funds.)
 
 ## Example {{currentpage.name}} JSON
 

@@ -91,7 +91,7 @@ If none of the above occur, transactions can stay in the queue for a theoretical
 
 ## Reference Transaction Cost
 
-The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary [transaction cost](concept-transaction-cost.html) before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](reference-transaction-format.html#multi-signing), require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.
+The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary [transaction cost](transaction-cost.html) before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](reference-transaction-format.html#multi-signing), require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.
 
 ### Fee Levels
 
@@ -101,7 +101,7 @@ _Fee levels_ represent the proportional difference between the minimum cost and 
 |-------------|-----------------------|----------------------------|----------------------|---------------------------|
 | Reference transaction (most transactions) | 10 | 256 | 20 | 512 |
 | [Multi-signed transaction](reference-transaction-format.html#multi-signing) with 4 signatures | 50 | 256 | 100 | 512 |
-| [Key reset transaction](concept-transaction-cost.html#key-reset-transaction) | 0 | (Effectively infinite) | N/A | (Effectively infinite) |
+| [Key reset transaction](transaction-cost.html#key-reset-transaction) | 0 | (Effectively infinite) | N/A | (Effectively infinite) |
 | [EscrowFinish transaction](reference-transaction-format.html#escrowfinish) with 32-byte preimage. | 350 | 256 | 700 | 512 |
 
 
@@ -130,7 +130,7 @@ The [server_state method][] returns a direct representation of `rippled`'s inter
 
 Every signed transaction must include the transaction cost in the [`Fee` field](reference-transaction-format.html#common-fields). Like all fields of a signed transaction, this field cannot be changed without invalidating the signature.
 
-As a rule, the XRP Ledger executes transactions _exactly_ as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the `Fee` field, even if the specified amount is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's [reserve requirement](concept-reserves.html).
+As a rule, the XRP Ledger executes transactions _exactly_ as they are signed. (To do anything else would be difficult to coordinate across a decentralized consensus network, at the least.) As a consequence of this, every transaction destroys the exact amount of XRP specified by the `Fee` field, even if the specified amount is much more than the current minimum transaction cost for any part of the network. The transaction cost can even destroy XRP that would otherwise be set aside for an account's [reserve requirement](reserves.html).
 
 Before signing a transaction, we recommend [looking up the current load-based transaction cost](#querying-the-transaction-cost). If the transaction cost is high due to load scaling, you may want to wait for it to decrease. If you do not plan on submitting the transaction immediately, we recommend specifying a slightly higher transaction cost to account for future load-based fluctuations in the transaction cost.
 
@@ -176,6 +176,6 @@ When the [FeeEscalation amendment](reference-amendments.html#feeescalation) is e
 
 ## Changing the Transaction Cost
 
-The XRP Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](concept-fee-voting.html) for more information.
+The XRP Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](fee-voting.html) for more information.
 
 {% include '_snippets/rippled_versions.md' %}

@@ -250,7 +250,7 @@ The `state` object may have some arrangement of the following fields:
 
 | `Field`                          | Type             | Description            |
 |:---------------------------------|:-----------------|:-----------------------|
-| `amendment_blocked`              | Boolean          | _(May be omitted)_ If `true`, this server is [amendment blocked](concept-amendments.html#amendment-blocked). If the server is not amendment blocked, the response omits this field. [New in: rippled 0.80.0][] |
+| `amendment_blocked`              | Boolean          | _(May be omitted)_ If `true`, this server is [amendment blocked](amendments.html#amendment-blocked). If the server is not amendment blocked, the response omits this field. [New in: rippled 0.80.0][] |
 | `build_version`                  | String           | The version number of the running `rippled` version. |
 | `complete_ledgers`               | String           | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". |
 | `closed_ledger`                  | Object           | (May be omitted) Information on the most recently closed ledger that has not been validated by consensus. If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. The member fields are the same as the `validated_ledger` field. |
@@ -258,12 +258,12 @@ The `state` object may have some arrangement of the following fields:
 | `load`                           | Object           | _(Admin only)_ Detailed information about the current load state of the server |
 | `load.job_types`                 | Array            | _(Admin only)_ Information about the rate of different types of jobs the server is doing and how much time it spends on each. |
 | `load.threads`                   | Number           | _(Admin only)_ The number of threads in the server's main job pool. |
-| `load_base`                      | Integer          | This is the baseline amount of server load used in [transaction cost](concept-transaction-cost.html) calculations. If the `load_factor` is equal to the `load_base` then only the base transaction cost is enforced. If the `load_factor` is higher than the `load_base`, then transaction costs are multiplied by the ratio between them. For example, if the `load_factor` is double the `load_base`, then transaction costs are doubled. |
-| `load_factor`                    | Number           | The load factor the server is currently enforcing. The ratio between this value and the `load_base` determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, the [open ledger cost](concept-transaction-cost.html#open-ledger-cost), and the overall network's load factor. [Updated in: rippled 0.33.0][New in: rippled 0.33.0] |
+| `load_base`                      | Integer          | This is the baseline amount of server load used in [transaction cost](transaction-cost.html) calculations. If the `load_factor` is equal to the `load_base` then only the base transaction cost is enforced. If the `load_factor` is higher than the `load_base`, then transaction costs are multiplied by the ratio between them. For example, if the `load_factor` is double the `load_base`, then transaction costs are doubled. |
+| `load_factor`                    | Number           | The load factor the server is currently enforcing. The ratio between this value and the `load_base` determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, the [open ledger cost](transaction-cost.html#open-ledger-cost), and the overall network's load factor. [Updated in: rippled 0.33.0][New in: rippled 0.33.0] |
 | `load_factor_fee_escalation`     | Integer          | (May be omitted) The current multiplier to the [transaction cost][] to get into the open ledger, in [fee levels][]. [New in: rippled 0.32.0][] |
 | `load_factor_fee_queue`          | Integer          | (May be omitted) The current multiplier to the [transaction cost][] to get into the queue, if the queue is full, in [fee levels][]. [New in: rippled 0.32.0][] |
 | `load_factor_fee_reference`      | Integer          | (May be omitted) The [transaction cost][] with no load scaling, in [fee levels][]. [New in: rippled 0.32.0][] |
-| `load_factor_server`             | Number           | (May be omitted) The load factor the server is enforcing, not including the [open ledger cost](concept-transaction-cost.html#open-ledger-cost). [New in: rippled 0.33.0][] |
+| `load_factor_server`             | Number           | (May be omitted) The load factor the server is enforcing, not including the [open ledger cost](transaction-cost.html#open-ledger-cost). [New in: rippled 0.33.0][] |
 | `peers`                          | Number           | How many other `rippled` servers this one is currently connected to. |
 | `pubkey_node`                    | String           | Public key used to verify this server for peer-to-peer communications. This key pair is automatically generated by the server the first time it starts up. (If deleted, the server can create a new pair of keys.) |
 | `pubkey_validator`               | String           | _(Admin only)_ Public key of the keypair used by this server to sign proposed ledgers for validation. |
@@ -288,8 +288,8 @@ The `state` object may have some arrangement of the following fields:
 * Any of the [universal error types][].
 
 <!-- TODO: add fee levels and transaction cost to rippled-api-links.md. multiple files are including them one-off, as below -->
-[fee levels]: concept-transaction-cost.html#fee-levels
-[transaction cost]: concept-transaction-cost.html
+[fee levels]: transaction-cost.html#fee-levels
+[transaction cost]: transaction-cost.html
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}

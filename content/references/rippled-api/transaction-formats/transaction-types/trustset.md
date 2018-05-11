@@ -42,11 +42,11 @@ Since a computer program cannot force a someone to keep a promise and not defaul
 
 There are two cases where you can hold a balance on a trust line that is *greater* than your limit: when you acquire more of that currency through [trading](#offercreate), or when you decrease the limit on your trust line.
 
-Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](concept-reserves.html). This applies to the account extending trust, not to the account receiving it.
+Since a trust line occupies space in the ledger, [a trust line increases the XRP your account must hold in reserve](reserves.html). This applies to the account extending trust, not to the account receiving it.
 
 A trust line with settings in the default state is equivalent to no trust line.
 
-The default state of all flags is off, except for the [NoRipple flag](concept-noripple.html), whose default state depends on the DefaultRipple flag.
+The default state of all flags is off, except for the [NoRipple flag](noripple.html), whose default state depends on the DefaultRipple flag.
 
 The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. An issuer can pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0.
 
@@ -57,10 +57,10 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | Flag Name       | Hex Value  | Decimal Value | Description                   |
 |:----------------|:-----------|:--------------|:------------------------------|
 | tfSetfAuth      | 0x00010000 | 65536         | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
-| tfSetNoRipple   | 0x00020000 | 131072        | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](concept-noripple.html) for details.) |
-| tfClearNoRipple | 0x00040000 | 262144        | Clears the No-Rippling flag. (See [NoRipple](concept-noripple.html) for details.) |
-| tfSetFreeze     | 0x00100000 | 1048576       | [Freeze](concept-freeze.html) the trustline. |
-| tfClearFreeze   | 0x00200000 | 2097152       | [Unfreeze](concept-freeze.html) the trustline. |
+| tfSetNoRipple   | 0x00020000 | 131072        | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](noripple.html) for details.) |
+| tfClearNoRipple | 0x00040000 | 262144        | Clears the No-Rippling flag. (See [NoRipple](noripple.html) for details.) |
+| tfSetFreeze     | 0x00100000 | 1048576       | [Freeze](freeze.html) the trustline. |
+| tfClearFreeze   | 0x00200000 | 2097152       | [Unfreeze](freeze.html) the trustline. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

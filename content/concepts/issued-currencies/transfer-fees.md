@@ -2,8 +2,8 @@
 
 The `TransferRate` setting in the XRP Ledger allows [financial institutions that issue currency in the XRP Ledger](tutorial-gateway-guide.html) to charge users a _transfer fee_ for sending the currencies issued by that financial institution. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee, which becomes the property of the issuing address, and is no longer tracked in the XRP Ledger. The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address][] to another user.
 
-[operational address]: concept-issuing-and-operational-addresses.html
-[issuing address]: concept-issuing-and-operational-addresses.html
+[operational address]: issuing-and-operational-addresses.html
+[issuing address]: issuing-and-operational-addresses.html
 
 XRP never has a transfer fee, because it never has an issuer.
 
@@ -31,7 +31,7 @@ In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to de
 
 The transfer fee is represented by a setting on the [issuing address][]. The transfer fee cannot be less than 0% or more than 100% and is rounded down to the nearest 0.0000001%. The TransferRate setting applies to all currencies issued by the same account. If you want to have different transfer fee percentages for different currencies, use different [issuing addresses][issuing address] for each currency.
 
-**Note:** The [fix1201 amendment](concept-amendments.html), introduced in `rippled` v0.80.0 and enabled on 2017-11-14, lowered the maximum transfer fee to 100% from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). The ledger may still contain accounts with a transfer fee setting higher than 100% (a `TransferRate` of `2000000000`). Any transfer fees already set continue to operate at their stated rate.
+**Note:** The [fix1201 amendment](amendments.html), introduced in `rippled` v0.80.0 and enabled on 2017-11-14, lowered the maximum transfer fee to 100% from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). The ledger may still contain accounts with a transfer fee setting higher than 100% (a `TransferRate` of `2000000000`). Any transfer fees already set continue to operate at their stated rate.
 
 ## RippleAPI
 

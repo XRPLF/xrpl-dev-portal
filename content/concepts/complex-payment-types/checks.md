@@ -4,7 +4,7 @@ The Checks feature in the XRP Ledger allows users to create deferred payments th
 
 XRP Ledger Checks have expiration times after which they may no longer be cashed. If the receiver doesn't successfully cash the Check before it expires, the Check object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and receiver can cancel the Check before it expires or is cashed. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
 
-Checks are similar to [Escrow](concept-escrow.html) and [Payment Channels](tutorial-paychan.html), but there are some important differences between those features and Checks:
+Checks are similar to [Escrow](escrow.html) and [Payment Channels](tutorial-paychan.html), but there are some important differences between those features and Checks:
 
 * You can send issued currency with Checks. With Payment Channels and Escrow, you can only send XRP.
 
@@ -29,7 +29,7 @@ Checks potentially enable many other use cases. Ripple encourages the community 
 
 **Problem:** To comply with regulations like [BSA, KYC, AML, and CFT](tutorial-gateway-guide.html#gateway-compliance), financial institutions must provide documentation about the source of funds they receive. Such regulations seek to prevent the illicit transfer of funds by requiring institutions to disclose the source and destination of all payments processed by the institution. Because of the nature of the XRP Ledger, anyone could potentially send XRP (and, under the right circumstances, issued currencies) to an institution's account on the XRP Ledger. Dealing with such unwanted payments adds significant cost and time delays to these institutions' compliance departments, including potential fines or penalties.
 
-**Solution:** Institutions can enable [Deposit Authorization](concept-depositauth.html) on their XRP Ledger accounts by [setting the `asfDepositAuth` flag in an `AccountSet` transaction](reference-transaction-format.html#accountset-flags). This makes the account unable to receive Payment transactions. Accounts with Deposit Authorization enabled can only receive funds through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds if Deposit Authorization is enabled.
+**Solution:** Institutions can enable [Deposit Authorization](depositauth.html) on their XRP Ledger accounts by [setting the `asfDepositAuth` flag in an `AccountSet` transaction](reference-transaction-format.html#accountset-flags). This makes the account unable to receive Payment transactions. Accounts with Deposit Authorization enabled can only receive funds through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds if Deposit Authorization is enabled.
 
 
 ## Usage
@@ -48,7 +48,7 @@ Checks typically have the lifecycle described below.
 
 **Step 3:** To cash the check, the receiver submits a [CheckCash][] transaction. The receiver has two options for cashing the check:
 
-* `Amount` — The receiver can use this option to specify an exact amount to cash. This may be useful for cases where the sender has padded the check to cover possible [transfer fees](concept-transfer-fees.html) and the receiver can only accept the exact amount on an invoice or other contract.
+* `Amount` — The receiver can use this option to specify an exact amount to cash. This may be useful for cases where the sender has padded the check to cover possible [transfer fees](transfer-fees.html) and the receiver can only accept the exact amount on an invoice or other contract.
 
 * `DeliverMin` — The receiver can use this option to specify the minimum amount they are willing to receive from the Check. If the receiver uses this option, `rippled` attempts to deliver as much as possible and will deliver at least this amount. The transaction fails if the amount that can be credited to the receiver is not at least this amount.
 
@@ -76,7 +76,7 @@ All Checks start the same way, so **Steps 1 and 2** are the same.
 
 ## Availability of Checks
 
-Checks require `rippled` v0.90.0 or later. The Checks amendment gained support of a majority of validators on the production XRP Ledger on 2018-03-22 in this [EnableAmendment pseudo-transaction](https://ripple.com/build/transactions/#enableamendment): [`EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04`](https://xrpcharts.ripple.com/#/transactions/EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04). For more information about how amendments are enabled and voted on, see [Amendment Process](concept-amendments.html#amendment-process).
+Checks require `rippled` v0.90.0 or later. The Checks amendment gained support of a majority of validators on the production XRP Ledger on 2018-03-22 in this [EnableAmendment pseudo-transaction](https://ripple.com/build/transactions/#enableamendment): [`EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04`](https://xrpcharts.ripple.com/#/transactions/EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04). For more information about how amendments are enabled and voted on, see [Amendment Process](amendments.html#amendment-process).
 
 <!-- {***TODO:*** update this with the...other pseudo-transaction that will enable this amendment after two weeks with majority support? }  -->
 
@@ -103,8 +103,8 @@ For more information about Checks in the XRP Ledger, see:
 
 For more information about related features, see:
 
-* [Deposit Authorization](concept-depositauth.html)
-* [Escrow](concept-escrow.html)
+* [Deposit Authorization](depositauth.html)
+* [Escrow](escrow.html)
 * [Payment Channels Tutorial](tutorial-paychan.html)
 
 

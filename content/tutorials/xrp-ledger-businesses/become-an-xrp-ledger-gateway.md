@@ -36,7 +36,7 @@ A "trust line" is link between two addresses in the XRP Ledger. A trust line rep
 
 **XRP** is the native cryptocurrency of the XRP Ledger. Like issuances, XRP can be freely sent and exchanged among XRP Ledger addresses. Unlike issuances, XRP is not tied to an accounting relationship. XRP can be sent directly from any XRP Ledger address to any other, without going through a gateway or liquidity provider. This helps make XRP a convenient bridge currency. For more information on XRP, see the [XRP Portal](https://ripple.com/xrp-portal/).
 
-XRP also serves other purposes in the XRP Ledger, in particular as a protective measure against spamming the network. All XRP Ledger addresses need a small amount of XRP to pay the costs of maintaining the XRP Ledger. The [transaction cost](concept-transaction-cost.html) and [reserve](concept-reserves.html) are neutral fees denoted in XRP and not paid to any party.
+XRP also serves other purposes in the XRP Ledger, in particular as a protective measure against spamming the network. All XRP Ledger addresses need a small amount of XRP to pay the costs of maintaining the XRP Ledger. The [transaction cost](transaction-cost.html) and [reserve](reserves.html) are neutral fees denoted in XRP and not paid to any party.
 
 Issuing gateways do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to send transactions through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy gateway.
 
@@ -57,7 +57,7 @@ Contact [partners@ripple.com](mailto:partners@ripple.com) for help establishing 
 
 The value of a gateway's issuances in the XRP Ledger comes directly from the trust that customers can redeem them with the gateway when needed. We recommend the following precautions to reduce the risk of business interruptions:
 
-* Use separate [Issuing and Operational Addresses](concept-issuing-and-operational-addresses.html) to limit your risk profile on the network.
+* Use separate [Issuing and Operational Addresses](issuing-and-operational-addresses.html) to limit your risk profile on the network.
 * Follow anti-money-laundering regulations for your jurisdiction, such as the [Bank Secrecy Act](http://en.wikipedia.org/wiki/Bank_Secrecy_Act). This usually includes requirements to collect ["Know-Your-Customer" (KYC) information](http://en.wikipedia.org/wiki/Know_your_customer).
 * Read and stay up-to-date with [Gateway Bulletins](#gateway-bulletins), which provide news and suggestions for XRP Ledger gateways.
 * Publicize all your policies and fees.
@@ -67,7 +67,7 @@ The value of a gateway's issuances in the XRP Ledger comes directly from the tru
 
 {% include '_snippets/issuing-and-operational-addresses-intro.md' %}
 
-For more information, see [Issuing and Operational Addresses](concept-issuing-and-operational-addresses.html)
+For more information, see [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
 
 
 ## Fees and Revenue Sources
@@ -242,7 +242,7 @@ There are several prerequisites that ACME must meet for this to happen:
     - ACME may create a XRP Ledger collateral account in ACME's system of record.
     - ACME can store the funds allocated to the XRP Ledger in a separate bank account.
     - If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof to customers that the gateway is solvent.
-- ACME must control an address in the XRP Ledger. Ripple's best practices recommend using a separate issuing address and operational address. See [Issuing and Operational Addresses](concept-issuing-and-operational-addresses.html) for details.
+- ACME must control an address in the XRP Ledger. Ripple's best practices recommend using a separate issuing address and operational address. See [Issuing and Operational Addresses](issuing-and-operational-addresses.html) for details.
     - ACME must enable the [DefaultRipple Flag](#defaultripple) on its issuing address for customers to send and receive its issuances.
 - Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.
     - ACME should publicize its issuing address on its website where customers can find it. It can also use [ripple.txt](#rippletxt) to publish the issuing address to automated systems.
@@ -316,14 +316,14 @@ A gateway can freeze accounting relationships in the XRP Ledger to meet regulato
 * Gateways can freeze all accounting relationships to their issuing address, in case of a major security compromise or for migrating to a new issuing address.
 * Furthermore, gateways can permanently opt out of their ability to freeze accounting relationships. This allows a gateway to assure its customers that it will continue to provide "physical-money-like" services. <!-- STYLE_OVERRIDE: will -->
 
-For more information, see the [Freeze article](concept-freeze.html).
+For more information, see the [Freeze article](freeze.html).
 
 
 ## Authorized Trust Lines
 
 The XRP Ledger's Authorized Trust Lines feature (formerly called "Authorized Accounts") enables a gateway to limit who can hold that gateway's issuances, so that unknown XRP Ledger addresses cannot hold the currency the gateway issues. Ripple feels this is *not necessary* in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the XRP Ledger.)
 
-For more information, see [Authorized Trust Lines](concept-authorized-trust-lines.html).
+For more information, see [Authorized Trust Lines](authorized-trust-lines.html).
 
 
 ## Source and Destination Tags
@@ -387,7 +387,7 @@ The examples in this document show API methods that include a secret key. This i
 
 ## DefaultRipple
 
-The DefaultRipple flag controls whether the balances in an accounting relationship [allowed to ripple](concept-noripple.html) by default. Rippling is what allows customers to trade issuances, so a gateway must allow rippling on all the accounting relationships to its issuing address.
+The DefaultRipple flag controls whether the balances in an accounting relationship [allowed to ripple](noripple.html) by default. Rippling is what allows customers to trade issuances, so a gateway must allow rippling on all the accounting relationships to its issuing address.
 
 Before asking customers to create accounting relationships to its issuing address, a gateway should enable the DefaultRipple flag on that address. Otherwise, the gateway must individually disable the NoRipple flag for each accounting relationship that other addresses have created.
 
@@ -574,7 +574,7 @@ Response:
 
 ## RequireAuth
 
-The `RequireAuth` setting prevents all counterparties from holding balances issued by an address unless the address has specifically approved an accounting relationship with that counterparty. For more information, see [Authorized Trust Lines](concept-authorized-trust-lines.html).
+The `RequireAuth` setting prevents all counterparties from holding balances issued by an address unless the address has specifically approved an accounting relationship with that counterparty. For more information, see [Authorized Trust Lines](authorized-trust-lines.html).
 
 ### Enabling RequireAuth
 
@@ -605,7 +605,7 @@ POST http://localhost:5005/
 
 ### Authorizing Trust Lines
 
-If you are using the [Authorized Trust Lines](concept-authorized-trust-lines.html) feature, customers cannot hold balances you issue unless you first authorize their accounting relationships to you in the XRP Ledger.
+If you are using the [Authorized Trust Lines](authorized-trust-lines.html) feature, customers cannot hold balances you issue unless you first authorize their accounting relationships to you in the XRP Ledger.
 
 To authorize an accounting relationship, submit a TrustSet transaction from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](reference-transaction-format.html#trustset-flags) flag for the transaction.
 
@@ -660,7 +660,7 @@ As an added precaution, we recommend comparing the balances of your issuing addr
 
 ## TransferRate
 
-The *TransferRate* setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issuances from one XRP Ledger address to another. See [Transfer Fees](concept-transfer-fees.html) for more information.
+The *TransferRate* setting (`transferRate` in RippleAPI) defines a fee to charge for transferring issuances from one XRP Ledger address to another. See [Transfer Fees](transfer-fees.html) for more information.
 
 The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an AccountSet transaction for the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW, setting the TransferRate to charge a fee of 0.5%.
 
@@ -726,7 +726,7 @@ For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver
 
 When you build an automated system to send payments into the XRP Ledger for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.
 
-One common pitfall is performing pathfinding before sending sending a payment to customers in the XRP Ledger. If you specify the issuers correctly, the [default paths](concept-paths.html#default-paths) can deliver the currency as intended.
+One common pitfall is performing pathfinding before sending sending a payment to customers in the XRP Ledger. If you specify the issuers correctly, the [default paths](paths.html#default-paths) can deliver the currency as intended.
 
 The following is an example of using a locally-hosted `rippled`'s [submit method][] to send a payment from the operational address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to the customer address raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n, sending and delivering funds issued by the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.
 
@@ -796,7 +796,7 @@ Response:
 
 In particular, note the following features of the [Payment Transaction](reference-transaction-format.html#payment):
 
-- No `Paths` field. The payment only succeeds if it can use a [default path](concept-paths.html#default-paths), which is preferable. Using less direct paths can become much more expensive.
+- No `Paths` field. The payment only succeeds if it can use a [default path](paths.html#default-paths), which is preferable. Using less direct paths can become much more expensive.
 - The `issuer` of both the `SendMax` and the `Amount` is the issuing address. This ensures that the transaction sends and delivers issuances from the issuing address, and not from some other gateway.
 - The `value` of the `SendMax` amount is slightly higher than the destination `Amount`, to compensate for the [transfer fee](#transferrate). In this case, the transfer fee is 0.5%, so the `SendMax` amount is exactly 1.005 times the destination `Amount`.
 

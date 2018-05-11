@@ -2233,7 +2233,7 @@ Response:
 ## Get Transaction Costs
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getFees.js "Source")
 
-Returns [transaction cost](concept-transaction-cost.html) stats per ledger, hour, or day.  The data shows the average, minimum, maximum, and total transaction costs paid for the given interval or ledger. _(New in [v2.2.0][])_
+Returns [transaction cost](transaction-cost.html) stats per ledger, hour, or day.  The data shows the average, minimum, maximum, and total transaction costs paid for the given interval or ledger. _(New in [v2.2.0][])_
 
 #### Request Format
 
@@ -3282,7 +3282,7 @@ Each field in the top level JSON object is a [Currency Code][]. The content of e
 | Field    | Value   | Description |
 |----------|---------|-------------|
 | `name` | String  | A human-readable proper name for the gateway. |
-| `account` | String - [Address][] | The [issuing address](concept-issuing-and-operational-addresses.html) of this currency. |
+| `account` | String - [Address][] | The [issuing address](issuing-and-operational-addresses.html) of this currency. |
 | `featured` | Boolean | Whether this gateway is considered a "featured" issuer of the currency. Ripple decides which gateways to feature based on responsible business practices, volume, and other measures. |
 | `label` | String  | (May be omitted) Only provided when the [Currency Code][] is a 40-character hexadecimal value. This is an alternate human-readable name for the currency issued by this gateway.
 | `assets` | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by XRP Charts.) |
@@ -3384,8 +3384,8 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |-------------|--------|-------------|
 | `name` | String | Human-readable name of the gateway. |
 | `start_date` | String - [Timestamp][] | The approximate date of the first time exchanges for this gateway's currencies appeared in the ledger. |
-| `accounts` | Array | A list of [issuing addresses](concept-issuing-and-operational-addresses.html) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
-| `hotwallets` | Array of [Address][]es | This gateway's [operational addresses](concept-issuing-and-operational-addresses.html). |
+| `accounts` | Array | A list of [issuing addresses](issuing-and-operational-addresses.html) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
+| `hotwallets` | Array of [Address][]es | This gateway's [operational addresses](issuing-and-operational-addresses.html). |
 | `domain` | String | The domain name where this gateway does business. Typically the gateway hosts a [`ripple.txt`](https://wiki.ripple.com/Ripple.txt) there. |
 | `normalized` | String | A normalized version of the `name` field suitable for including in URLs. |
 | `assets` | Array of Strings | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by XRP Charts.) |
@@ -3394,7 +3394,7 @@ Each object in the `accounts` field array has the following fields:
 
 | Field      | Value  | Description |
 |------------|--------|-------------|
-| `address` | String | The [issuing address](concept-issuing-and-operational-addresses.html) used by this gateway. |
+| `address` | String | The [issuing address](issuing-and-operational-addresses.html) used by this gateway. |
 | `currencies` | Object | Each field in this object is a [Currency Code][] corresponding to a currency issued from this address. Each value is an object with a `featured` boolean indicating whether that currency is featured. Ripple decides which currencies and gateways to feature based on responsible business practices, volume, and other measures. |
 
 #### Example
