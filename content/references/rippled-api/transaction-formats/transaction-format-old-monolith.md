@@ -16,7 +16,7 @@ To have both qualities when submitting a transaction, an application should:
 4. Confirm that the transaction was either included in a validated ledger, or that it has expired due to `LastLedgerSequence`.
 5. If a transaction fails or expires, you can modify and resubmit it.
 
-Main article: [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html)
+Main article: [Reliable Transaction Submission](reliable-transaction-submission.html)
 
 
 

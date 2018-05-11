@@ -4,7 +4,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 
 For the most part, transactions with `tec` codes take no action other than to destroy the XRP paid as a [transaction cost](transaction-cost.html), but there are some exceptions. As an exception, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](#lifecycle-of-an-offer). Always look at the [transaction metadata](#understanding-transaction-metadata) to see precisely what a transaction did.
 
-**Caution:** A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a validated ledger version. For more information, see [Finality of Results](finality-of-results.html) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+**Caution:** A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a validated ledger version. For more information, see [Finality of Results](finality-of-results.html) and [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|

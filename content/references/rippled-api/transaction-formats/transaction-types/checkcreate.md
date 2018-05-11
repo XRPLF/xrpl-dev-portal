@@ -24,7 +24,7 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 <!--{# fix md highlighting_ #}-->
 
 
-In addition to the [common fields](#common-fields), a CheckCreate transaction has the following:
+In addition to the [common fields](transaction-common-fields.html), a CheckCreate transaction has the following:
 
 | Field            | JSON Type           | [Internal Type][] | Description     |
 |:-----------------|:--------------------|:------------------|:----------------|

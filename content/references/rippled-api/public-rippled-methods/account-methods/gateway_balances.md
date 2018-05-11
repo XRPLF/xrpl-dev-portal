@@ -195,7 +195,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Note:** There is no command-line syntax for this method. Use the [`json` command](#json) to access this from the command line.
+**Note:** There is no command-line syntax for this method. Use the [json method][] to access this from the command line.
 
 The response follows the [standard format][], with a successful result containing the following fields:
 

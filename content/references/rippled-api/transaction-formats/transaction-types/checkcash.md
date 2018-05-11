@@ -23,7 +23,7 @@ Since the funds for a check are not guaranteed, redeeming a Check can fail becau
 <!--{# fix md highlighting_ #}-->
 
 
-In addition to the [common fields](#common-fields), a CheckCash transaction has the following:
+In addition to the [common fields](transaction-common-fields.html), a CheckCash transaction has the following:
 
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|

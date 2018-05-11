@@ -3,7 +3,7 @@
 
 The `ledger_entry` method returns a single ledger object from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of objects you can retrieve.
 
-**Note:** There is no commandline version of this method. You can use the [`json` command](#json) to access this method from the commandline instead.
+**Note:** There is no commandline version of this method. You can use the [json method][] to access this method from the commandline instead.
 
 ## Request Format
 

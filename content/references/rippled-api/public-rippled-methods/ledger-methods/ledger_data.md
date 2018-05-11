@@ -37,7 +37,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Note:** There is no commandline syntax for `ledger_data`. You can use the [`json` command](#json) to access this method from the commandline instead.
+**Note:** There is no commandline syntax for `ledger_data`. You can use the [json method][] to access this method from the commandline instead.
 
 A request can include the following fields:
 
