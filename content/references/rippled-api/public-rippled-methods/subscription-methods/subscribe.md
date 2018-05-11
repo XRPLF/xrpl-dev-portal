@@ -158,7 +158,7 @@ The fields from a ledger stream message are as follows:
 | `fee_ref`           | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. |
 | `ledger_hash`       | String           | Unique hash of the ledger that was closed, as hex |
 | `ledger_index`      | Unsigned Integer | Sequence number of the ledger that was closed |
-| `ledger_time`       | Unsigned Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
+| `ledger_time`       | Unsigned Integer | The time this ledger was closed, in [seconds since the Ripple Epoch][] |
 | `reserve_base`      | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account. If the ledger includes a [SetFee pseudo-transaction](reference-transaction-format.html#setfee) the new base reserve applies after this ledger. |
 | `reserve_inc`       | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines. If the ledger includes a [SetFee pseudo-transaction](reference-transaction-format.html#setfee) the new owner reserve applies after this ledger. |
 | `txn_count`         | Unsigned Integer | Number of new transactions included in this ledger |
@@ -210,7 +210,7 @@ The fields from a validations stream message are as follows:
 | `reserve_base`          | Integer          | (May be omitted) The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
 | `reserve_inc`           | Integer          | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
 | `signature`             | String           | The signature that the validator used to sign its vote for this ledger. |
-| `signing_time`          | Number           | When this validation vote was signed, in seconds since the [Ripple Epoch](#specifying-time). [New in: rippled 0.32.0][] |
+| `signing_time`          | Number           | When this validation vote was signed, in [seconds since the Ripple Epoch][]. [New in: rippled 0.32.0][] |
 | `validation_public_key` | String           | The [base58][] encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
 
 
@@ -376,7 +376,7 @@ Peer Status stream messages represent some event where the status of the peer `r
 |:-------------------|:-------|:-----------------------------------------------|
 | `type`             | String | `peerStatusChange` indicates this comes from the Peer Status stream. |
 | `action`           | String | The type of event that prompted this message. See [Peer Status Events](#peer-status-events) for possible values. |
-| `date`             | Number | The time this event occurred, in seconds since the [Ripple Epoch](#specifying-time). |
+| `date`             | Number | The time this event occurred, in [seconds since the Ripple Epoch][]. |
 | `ledger_hash`      | String | (May be omitted) The identifying [Hash][] of a ledger version to which this message pertains. |
 | `ledger_index`     | Number | (May be omitted) The [Ledger Index][] of a ledger version to which this message pertains. |
 | `ledger_index_max` | Number | (May be omitted) The largest [Ledger Index][] the peer has currently available. |
