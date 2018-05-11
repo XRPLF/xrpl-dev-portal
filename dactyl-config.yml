@@ -111,6 +111,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/introduction/technical-faq.md
+        html: technical-faq.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: Get answers to frequently asked questions, covering topics such as validators, unique node lists, the role of XRP, and security.
+        targets:
+            - local
+
     -   name: Payment System Basics
         html: payment-system-basics.html
         funnel: Docs
