@@ -286,7 +286,14 @@ pages:
         targets:
             - local
 
-    # TODO: "Trust Lines and Issuing" (see gateway guide, tx reference on "trust limits" etc.)
+    -   md: concepts/issued-currencies/trust-lines-and-issuing.md
+        html: trust-lines-and-issuing.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Learn about the properties and rationale of trust lines.
+        targets:
+            - local
 
     -   md: concepts/issued-currencies/authorized-trust-lines.md
         html: authorized-trust-lines.html
@@ -296,7 +303,50 @@ pages:
         targets:
             - local
 
-    # TODO: Freezes, Rippling, Transfer Fees, Paths, Demurrage
+    -   md: concepts/issued-currencies/freezes.md
+        html: freezes.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Freezes can suspend trading of issued currencies for compliance purposes.
+        targets:
+            - local
+
+    -   md: concepts/issued-currencies/rippling.md
+        html: rippling.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Rippling is automatic multi-party net settlement of issued currency balances.
+        targets:
+            - local
+
+    -   md: concepts/issued-currencies/transfer-fees.md
+        html: transfer-fees.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Currency issuers can charge a fee for transferring their issued currencies.
+        targets:
+            - local
+
+    -   md: concepts/issued-currencies/paths.md
+        html: paths.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Payments of issued currencies must traverse paths of connected users and order books.
+        targets:
+            - local
+
+    -   md: concepts/issued-currencies/demurrage.md
+        html: demurrage.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: (Obsolete) Some older XRP Ledger tools used to support currency codes with built-in interest and negative interest rates.
+        targets:
+            - local
 
     -   name: Decentralized Exchange
         html: decentralized-exchange.html
