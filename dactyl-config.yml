@@ -249,7 +249,7 @@ pages:
 
     # TODO: Freezes, Rippling, Transfer Fees, Paths, Demurrage
 
-    -   md: concepts/decentralized-exchange/decentralized-exchange.md
+    -   name: Decentralized Exchange
         html: decentralized-exchange.html
         funnel: Docs
         doc_type: Concepts
@@ -259,7 +259,32 @@ pages:
         targets:
             - local
 
-    # TODO: Offers, Tick Size, Autobridging, Offer Preference (all compiled from different sources)
+    -   md: concepts/decentralized-exchange/offers.md
+        html: offers.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Decentralized Exchange
+        blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
+        targets:
+            - local
+
+    -   md: concepts/decentralized-exchange/autobridging.md
+        html: autobridging.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Decentralized Exchange
+        blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs.
+        targets:
+            - local
+
+    -   md: concepts/decentralized-exchange/ticksize.md
+        html: ticksize.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Decentralized Exchange
+        blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
+        targets:
+            - local
 
     -   name: Consensus Network
         html: consensus-network.html
