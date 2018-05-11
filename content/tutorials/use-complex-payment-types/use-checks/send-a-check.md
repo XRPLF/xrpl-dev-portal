@@ -1,5 +1,7 @@
 # Send a Check
 
+_Requires the [Checks Amendment](reference-amendments.html#checks)._
+
 Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check object in the ledger](reference-ledger-format.html#check) which the recipient can cash later.
 
 In many cases, you want to send a [Payment][] instead of a Check, since that delivers the money directly to the recipient in one step. However, if your intended recipient uses [DepositAuth](concept-depositauth.html), you cannot send them Payments directly, so a Check is a good alternative.

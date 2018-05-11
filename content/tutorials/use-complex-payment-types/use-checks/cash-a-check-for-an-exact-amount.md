@@ -1,5 +1,7 @@
 # Cash a Check for an Exact Amount
 
+_Requires the [Checks Amendment](reference-amendments.html#checks)._
+
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive any exact amount up to the amount specified in the Check by sending a [CheckCash transaction][] with an `Amount` field. You would cash a Check this way if you want to receive a specific amount, for example to pay off an invoice or bill exactly.
 
 The specified recipient can also [cash the check for a flexible amount](tutorial-checks-cash-flex.html).

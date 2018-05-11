@@ -1,5 +1,7 @@
 # Cancel a Check
 
+_Requires the [Checks Amendment](reference-amendments.html#checks)._
+
 This tutorial shows how to cancel a [Check](concept-checks.html), which removes the [Check object from the ledger](reference-ledger-format.html#check) without sending money.
 
 You may want to cancel an incoming Check if you do not want it. You might cancel an outgoing Check if you made a mistake when sending it or if circumstances have changed. If a Check expires, it's also necessary to cancel it to remove it from the ledger so the sender gets their [owner reserve](concept-reserves.html#owner-reserves) back.
