@@ -225,4 +225,4 @@ The results of the `consensus_info` command can vary dramatically if you run it 
 
 ### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].

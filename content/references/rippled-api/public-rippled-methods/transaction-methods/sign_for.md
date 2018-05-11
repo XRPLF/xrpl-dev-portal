@@ -221,7 +221,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `srcActNotFound` - If the `Account` from the transaction is not a funded address in the ledger.
 * `srcActMalformed` - If the signing address (`account` field) from the request is not validly formed.

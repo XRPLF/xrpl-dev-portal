@@ -174,4 +174,4 @@ Each member of the `publisher_lists` array is an object with the following field
 
 ### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].

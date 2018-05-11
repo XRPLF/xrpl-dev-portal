@@ -244,7 +244,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `srcActMalformed` - The `Account` field from the `tx_json` was invalid or missing.
 * `internal` - An internal error occurred. This includes the case where a signature is not valid for the transaction JSON provided.

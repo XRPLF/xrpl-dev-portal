@@ -210,7 +210,7 @@ There are a couple possible reasons the server may fail to find the transaction:
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `fieldNotFoundTransaction` - The `tx_hash` field was omitted from the request
 * `notYetImplemented` - A ledger version was not specified in the request.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

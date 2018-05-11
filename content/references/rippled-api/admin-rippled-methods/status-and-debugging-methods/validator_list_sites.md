@@ -126,4 +126,4 @@ Each member of the `validator_sites` field array is an object with the following
 
 ### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].

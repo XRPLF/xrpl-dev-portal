@@ -211,7 +211,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `invalidHotWallet` - One or more of the addresses specified in the `hotwallet` field is not the [Address][] of an account holding currency issued by the account from the request.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.

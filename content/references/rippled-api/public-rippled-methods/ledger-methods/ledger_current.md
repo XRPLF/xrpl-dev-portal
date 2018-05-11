@@ -85,7 +85,7 @@ A `ledger_hash` field is not provided, because the hash of the current ledger is
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 
 
 {% include '_snippets/rippled_versions.md' %}

@@ -184,5 +184,5 @@ The response follows the [standard format](#response-formatting), with a success
 
 ### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `badFeature` - The `feature` specified was invalidly formatted, or the server does not know an amendment with that name.

@@ -330,7 +330,7 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `tooBusy` - The server is under too much load to calculate paths. Not returned if you are connected as an admin.
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `srcActMissing` - The `source_account` field is omitted from the request.

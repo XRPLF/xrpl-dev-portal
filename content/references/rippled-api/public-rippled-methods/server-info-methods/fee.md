@@ -155,7 +155,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 
 
 <!-- TODO: fee levels link to rippled-api-links.md - it is being used one off in a couple of files -->

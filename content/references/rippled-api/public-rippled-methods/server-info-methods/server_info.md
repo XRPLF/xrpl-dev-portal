@@ -321,7 +321,7 @@ The `info` object may have some arrangement of the following fields:
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 
 
 {% include '_snippets/rippled_versions.md' %}

@@ -584,7 +584,7 @@ Each transaction object includes the following fields, depending on whether it w
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
 * `actBitcoin` - The [Address][] specified in the `account` field is formatted like a Bitcoin address instead of a XRP Ledger address.

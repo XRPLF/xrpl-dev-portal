@@ -228,4 +228,4 @@ The response follows the [standard format](#response-formatting). Additional fie
 
 ### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].

@@ -285,7 +285,7 @@ The `state` object may have some arrangement of the following fields:
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 
 <!-- TODO: add fee levels and transaction cost to rippled-api-links.md. multiple files are including them one-off, as below -->
 [fee levels]: concept-transaction-cost.html#fee-levels

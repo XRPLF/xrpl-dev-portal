@@ -174,7 +174,7 @@ In addition to the standard Offer fields, the following fields may be included i
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `srcCurMalformed` - The `taker_pays` field in the request is not formatted properly.
