@@ -2,7 +2,7 @@
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
-_Requires the [Escrow Amendment](reference-amendments.html#escrow)._
+_Requires the [Escrow Amendment](known-amendments.html#escrow)._
 
 Sequester XRP until the escrow process either finishes or is canceled.
 

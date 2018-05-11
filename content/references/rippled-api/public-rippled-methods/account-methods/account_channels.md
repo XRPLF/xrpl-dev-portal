@@ -1,7 +1,7 @@
 # account_channels
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
-_(Requires the [PayChan amendment](reference-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+_(Requires the [PayChan amendment](known-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
 
 The `account_channels` method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.
 

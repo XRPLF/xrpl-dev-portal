@@ -3,7 +3,7 @@
 
 The `sign_for` command provides one signature for a [multi-signed transaction](reference-transaction-format.html#multi-signing).
 
-This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
+This command requires the [MultiSign amendment](known-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
 ## Request Format
 An example of the request format:

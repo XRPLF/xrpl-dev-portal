@@ -1,7 +1,7 @@
 # PaymentChannelCreate
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Requires the [PayChan Amendment](reference-amendments.html#paychan)._
+_Requires the [PayChan Amendment](known-amendments.html#paychan)._
 
 Create a unidirectional channel and fund it with XRP. The address sending this transaction becomes the "source address" of the payment channel.
 

@@ -1,7 +1,7 @@
 # CheckCancel
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/CancelCheck.cpp "Source") <!--{# TODO: change from develop to master when 0.90.0 is released #}-->
 
-_Requires the [Checks Amendment](reference-amendments.html#checks)._
+_Requires the [Checks Amendment](known-amendments.html#checks)._
 
 Cancels an unredeemed Check, removing it from the ledger without sending any money. The source or the destination of the check can cancel a Check at any time using this transaction type. If the Check has expired, any address can cancel it.
 

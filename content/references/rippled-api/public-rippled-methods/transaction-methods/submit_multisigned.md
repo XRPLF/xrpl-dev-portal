@@ -3,7 +3,7 @@
 
 The `submit_multisigned` command applies a [multi-signed](reference-transaction-format.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
 
-This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
+This command requires the [MultiSign amendment](known-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
 ## Request Format
 An example of the request format:

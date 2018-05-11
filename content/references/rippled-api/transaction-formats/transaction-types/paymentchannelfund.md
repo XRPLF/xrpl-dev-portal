@@ -1,7 +1,7 @@
 # PaymentChannelFund
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Requires the [PayChan Amendment](reference-amendments.html#paychan)._
+_Requires the [PayChan Amendment](known-amendments.html#paychan)._
 
 Add additional XRP to an open payment channel, update the expiration time of the channel, or both. Only the source address of the channel can use this transaction. (Transactions from other addresses fail with the error `tecNO_PERMISSION`.)
 

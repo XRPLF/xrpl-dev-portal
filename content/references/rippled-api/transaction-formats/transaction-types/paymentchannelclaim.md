@@ -1,7 +1,7 @@
 # PaymentChannelClaim
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Requires the [PayChan Amendment](reference-amendments.html#paychan)._
+_Requires the [PayChan Amendment](known-amendments.html#paychan)._
 
 Claim XRP from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
 

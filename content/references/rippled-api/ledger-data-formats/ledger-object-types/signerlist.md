@@ -1,7 +1,7 @@
 # SignerList
 [[Source]<br>](https://github.com/ripple/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
 
-The `SignerList` object type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a SignerList using the [SignerListSet transaction type](reference-transaction-format.html#signerlistset). This object type is introduced by the [MultiSign amendment](reference-amendments.html#multisign). [New in: rippled 0.31.0][]
+The `SignerList` object type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a SignerList using the [SignerListSet transaction type](reference-transaction-format.html#signerlistset). This object type is introduced by the [MultiSign amendment](known-amendments.html#multisign). [New in: rippled 0.31.0][]
 
 ## Example {{currentpage.name}} JSON
 
