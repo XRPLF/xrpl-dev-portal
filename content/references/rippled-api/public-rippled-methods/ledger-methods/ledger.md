@@ -186,7 +186,7 @@ If the request specified `"owner_funds": true` and expanded transactions, the re
 
 | `Field`       | Value  | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|
-| `owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is [frozen](freeze.html). |
+| `owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is [frozen](freezes.html). |
 
 ## Possible Errors
 

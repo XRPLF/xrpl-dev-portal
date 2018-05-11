@@ -61,12 +61,12 @@ The available AccountSet flags are:
 | Flag Name        | Decimal Value | Corresponding Ledger Flag | Description   |
 |:-----------------|:--------------|:--------------------------|:--------------|
 | asfAccountTxnID  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) |
-| asfDefaultRipple | 8             | lsfDefaultRipple          | Enable [rippling](noripple.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
+| asfDefaultRipple | 8             | lsfDefaultRipple          | Enable [rippling](rippling.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
 | asfDepositAuth   | 9             | lsfDepositAuth            | Enable [Deposit Authorization](depositauth.html) on this account. _(Requires the [DepositAuth amendment](reference-amendments.html#depositauth).)_ |
 | asfDisableMaster | 4             | lsfDisableMaster          | Disallow use of the master key. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](#setregularkey) or a [Signer List](#signerlistset). |
 | asfDisallowXRP   | 3             | lsfDisallowXRP            | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) |
-| asfGlobalFreeze  | 7             | lsfGlobalFreeze           | [Freeze](freeze.html) all assets issued by this account. |
-| asfNoFreeze      | 6             | lsfNoFreeze               | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](freeze.html). This flag can never be disabled after being enabled. |
+| asfGlobalFreeze  | 7             | lsfGlobalFreeze           | [Freeze](freezes.html) all assets issued by this account. |
+| asfNoFreeze      | 6             | lsfNoFreeze               | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](freezes.html). This flag can never be disabled after being enabled. |
 | asfRequireAuth   | 2             | lsfRequireAuth            | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
 | asfRequireDest   | 1             | lsfRequireDestTag         | Require a destination tag to send transactions to this account. |
 
@@ -83,7 +83,7 @@ The following [Transaction flags](#flags), specific to the AccountSet transactio
 | tfDisallowXRP     | 0x00100000 | 1048576       | asfDisallowXRP (SetFlag)    |
 | tfAllowXRP        | 0x00200000 | 2097152       | asfDisallowXRP (ClearFlag)  |
 
-**Caution:** The numeric values of `tf` and `asf` flags in transactions do not match up with the values they set in the accounts "at rest" in the ledger. To read the flags of an account in the ledger, see [`AccountRoot` flags](reference-ledger-format.html#accountroot-flags).
+**Caution:** The numeric values of `tf` and `asf` flags in transactions do not match up with the values they set in the accounts "at rest" in the ledger. To read the flags of an account in the ledger, see [`AccountRoot` flags](accountroot.html#accountroot-flags).
 
 
 ### Blocking Incoming Transactions

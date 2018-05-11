@@ -529,7 +529,7 @@ The format of an order book stream message is the same as that of [transaction s
 
 | `Field`                   | Value  | Description                             |
 |:--------------------------|:-------|:----------------------------------------|
-| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](freeze.html). |
+| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](freezes.html). |
 
 
 {% include '_snippets/rippled_versions.md' %}

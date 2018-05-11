@@ -66,8 +66,8 @@ RippleState objects can have the following flag values:
 | lsfHighReserve | 0x00020000 |131072 | This RippleState object [contributes to the high account's owner reserve](#contributing-to-the-owner-reserve). | (None) |
 | lsfLowAuth | 0x00040000 | 262144 | The low account has authorized the high account to hold the low account's issuances. | tfSetAuth |
 | lsfHighAuth | 0x00080000 | 524288 |  The high account has authorized the low account to hold the high account's issuances. | tfSetAuth |
-| lsfLowNoRipple | 0x00100000 | 1048576 | The low account [has disabled rippling](noripple.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
-| lsfHighNoRipple | 0x00200000 | 2097152 | The high account [has disabled rippling](noripple.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
+| lsfLowNoRipple | 0x00100000 | 1048576 | The low account [has disabled rippling](rippling.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
+| lsfHighNoRipple | 0x00200000 | 2097152 | The high account [has disabled rippling](rippling.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
 | lsfLowFreeze | 0x00400000 | 4194304 | The low account has frozen the trust line, preventing the high account from transferring the asset. | tfSetFreeze |
 | lsfHighFreeze | 0x00800000 | 8388608 | The high account has frozen the trust line, preventing the low account from transferring the asset. | tfSetFreeze |
 
@@ -88,7 +88,7 @@ The values that count towards a trust line's non-default state are as follows:
 
 The **lsfLowAuth** and **lsfHighAuth** flags do not count against the default state, because they cannot be disabled.
 
-The default state of the two NoRipple flags depends on the state of the [lsfDefaultRipple flag](#accountroot-flags) in their corresponding AccountRoot objects. If DefaultRipple is disabled (the default), then the default state of the lsfNoRipple flag is _enabled_ for all of an account's trust lines. If an account enables DefaultRipple, then the lsfNoRipple flag is _disabled_ (rippling is enabled) for an account's trust lines by default.
+The default state of the two NoRipple flags depends on the state of the [lsfDefaultRipple flag](accountroot.html#accountroot-flags) in their corresponding AccountRoot objects. If DefaultRipple is disabled (the default), then the default state of the lsfNoRipple flag is _enabled_ for all of an account's trust lines. If an account enables DefaultRipple, then the lsfNoRipple flag is _disabled_ (rippling is enabled) for an account's trust lines by default.
 
 **Note:** Prior to the introduction of the DefaultRipple flags in `rippled` version 0.27.3 (March 10, 2015), the default state for all trust lines was with both NoRipple flags disabled (rippling enabled).
 
