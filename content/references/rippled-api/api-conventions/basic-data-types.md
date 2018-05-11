@@ -6,7 +6,7 @@ Different types of objects are uniquely identified in different ways:
 
 [Transactions](transaction-formats.html) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
-Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Hash][] value. When [Specifying a Ledger Instance](#specifying-ledgers) you can use either one.
+Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Hash][] value. When [Specifying Ledgers][] you can use either one.
 
 ## Addresses
 [Address]: #addresses

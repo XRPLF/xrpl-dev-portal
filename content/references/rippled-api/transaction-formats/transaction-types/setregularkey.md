@@ -23,13 +23,13 @@ You can protect your account by assigning a regular key pair to it and using it 
 
 | Field        | JSON Type | [Internal Type][] | Description                   |
 |:-------------|:----------|:------------------|:------------------------------|
-| `RegularKey` | String    | AccountID         | _(Optional)_ A base-58-encoded [Ripple address](reference-rippled.html#addresses) that indicates the regular key pair to be assigned to the account. If omitted, removes any existing regular key pair from the account. |
+| `RegularKey` | String    | AccountID         | _(Optional)_ A base-58-encoded [Address][] that indicates the regular key pair to be assigned to the account. If omitted, removes any existing regular key pair from the account. |
 
 ## See Also
 
 For more information about regular and master key pairs, see [Cryptographic Keys](cryptographic-keys.html).
 
-For a tutorial on assigning a regular key pair to an account, see [Working with a Regular Key Pair](working-with-a-regular-key-pair.html).
+For a tutorial on assigning a regular key pair to an account, see [Working with a Regular Key Pair](assign-a-regular-key-pair.html).
 
 For even greater security, you can use [multi-signing](multi-signing.html), but multi-signing requires additional XRP for the [transaction cost][] and [reserve](reserves.html).
 
