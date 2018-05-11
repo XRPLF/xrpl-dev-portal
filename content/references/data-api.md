@@ -1210,7 +1210,7 @@ The `family` and `metrics` query parameters provide a way to filter results to a
 
 | Family | Included Metrics | Meaning |
 |--------|------------------|---------|
-| `type` | All XRP Ledger [transaction types](reference-transaction-format.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
+| `type` | All XRP Ledger [transaction types](transaction-formats.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
 | `result` | All [transaction result codes](transaction-results.html) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
 | `metric` | Data-API defined Special Transaction Metrics. | (Varies) |
 
@@ -4569,7 +4569,7 @@ Each Transaction Stats Object has the following fields:
 | `date` | String - [Timestamp][] | This object describes activity on this date. |
 | `transaction_count` | Integer | The total number of transactions sent by the account on this date. |
 | `result` | Object | Map of [transaction result codes](transaction-results.html), indicating how many of each result code occurred in the transactions sent by this account on this date. |
-| `type` | Object | Map of [transaction types](reference-transaction-format.html), indicating how many of each transaction type the account sent on this date. |
+| `type` | Object | Map of [transaction types](transaction-formats.html), indicating how many of each transaction type the account sent on this date. |
 
 #### Example
 
@@ -5067,7 +5067,7 @@ Transactions have two formats - a compact "binary" format where the defining fie
 | `hash`  | String - [Hash][] | An identifying hash value unique to this transaction, as a hex string. |
 | `date`  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
 | `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
-| `tx`    | Object | The fields of this transaction object, as defined by the [Transaction Format](reference-transaction-format.html) |
+| `tx`    | Object | The fields of this transaction object, as defined by the [Transaction Format](transaction-formats.html) |
 | `meta`  | Object | Metadata about the results of this transaction. |
 
 ### Binary Format

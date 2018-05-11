@@ -4,7 +4,7 @@ The core peer-to-peer server that manages the XRP Ledger is called `rippled`. Ea
 
 * [`rippled` Setup](tutorial-rippled-setup.html)
 * [API Reference](#api-methods)
-* [Transaction Reference](reference-transaction-format.html)
+* [Transaction Reference](transaction-formats.html)
 * JavaScript Client Library - [RippleAPI](reference-rippleapi.html)
 
 
@@ -146,7 +146,7 @@ Different types of objects are uniquely identified in different ways:
 
 [Accounts](accounts.html) are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
 
-[Transactions](reference-transaction-format.html) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
+[Transactions](transaction-formats.html) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
 Each closed [Ledger](reference-ledger-format.html) has a [Ledger Index][] and a [Hash][] value. When [Specifying a Ledger Instance](#specifying-ledgers) you can use either one.
 
@@ -301,7 +301,7 @@ Transaction submission commands:
 - [`submit` command](#submit)
 - [`submit_multisigned` command](#submit-multisigned)
 
-For more information on the various transactions you can submit, see the [Transaction Reference](reference-transaction-format.html).
+For more information on the various transactions you can submit, see the [Transaction Reference](transaction-formats.html).
 
 
 

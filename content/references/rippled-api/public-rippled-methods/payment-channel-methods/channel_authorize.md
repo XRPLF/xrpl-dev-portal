@@ -111,7 +111,7 @@ The response follows the [standard format][], with a successful result containin
 
 * Any of the [universal error types][].
 * `badSeed` - The `secret` in the request is not a valid secret key.
-* `channelAmtMalformed` - The `amount` in the request is not a valid [XRP amount](#specifying-currency-amounts).
+* `channelAmtMalformed` - The `amount` in the request is not a valid [XRP amount][XRP, in drops].
 * `channelMalformed` - The `channel_id` in the request is not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
 
 

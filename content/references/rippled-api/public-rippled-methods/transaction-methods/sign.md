@@ -1,7 +1,7 @@
 # sign
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")
 
-The `sign` method takes a [transaction in JSON format](reference-transaction-format.html) and a secret key, and returns a signed binary representation of the transaction. The result is always different, even when you provide the same transaction JSON and secret key. To contribute one signature to a multi-signed transaction, use the [`sign_for` command](#sign-for) instead.
+The `sign` method takes a [transaction in JSON format](transaction-formats.html) and a secret key, and returns a signed binary representation of the transaction. The result is always different, even when you provide the same transaction JSON and secret key. To contribute one signature to a multi-signed transaction, use the [`sign_for` command](#sign-for) instead.
 
 **Caution:** Unless you run the `rippled` server yourself, you should do [local signing with RippleAPI](reference-rippleapi.html#sign) instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.
 
@@ -77,7 +77,7 @@ The request includes the following parameters:
 
 | `Field`        | Type    | Description                                       |
 |:---------------|:--------|:--------------------------------------------------|
-| `tx_json`      | Object  | [Transaction definition](reference-transaction-format.html) in JSON format |
+| `tx_json`      | Object  | [Transaction definition](transaction-formats.html) in JSON format |
 | `secret`       | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
 | `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | `seed_hex`     | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
@@ -90,7 +90,7 @@ The request includes the following parameters:
 
 ### Auto-Fillable Fields
 
-The server automatically tries to fill in certain fields in `tx_json` (the [Transaction object](reference-transaction-format.html)) automatically if you omit them. The server provides the following fields before signing, unless the request specified `offline` as `true`:
+The server automatically tries to fill in certain fields in `tx_json` (the [Transaction object](transaction-formats.html)) automatically if you omit them. The server provides the following fields before signing, unless the request specified `offline` as `true`:
 
 * `Sequence` - The server automatically uses the next Sequence number from the sender's account information.
     * **Caution:** The next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must manually provide the correct sequence numbers for each transaction after the first.
@@ -199,7 +199,7 @@ The response follows the [standard format][], with a successful result containin
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
 | `tx_blob` | String | Binary representation of the fully-qualified, signed transaction, as hex |
-| `tx_json` | Object | JSON specification of the [complete transaction](reference-transaction-format.html) as signed, including any fields that were automatically filled in |
+| `tx_json` | Object | JSON specification of the [complete transaction](transaction-formats.html) as signed, including any fields that were automatically filled in |
 
 **Caution:** If this command results in an error messages, the message can contain the secret key from the request. Make sure that these errors are not visible to others.
 

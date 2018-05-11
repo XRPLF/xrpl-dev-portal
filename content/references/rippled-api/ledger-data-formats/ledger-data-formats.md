@@ -11,7 +11,7 @@ A single ledger version consists of several parts:
 ![Diagram: A ledger has transactions, a state tree, and a header with the close time and validation info](img/ledger-components.png)
 
 * A **header** - The [ledger index](#ledger-index), hashes of its other contents, and other metadata.
-* A **transaction tree** - The [transactions](reference-transaction-format.html) that were applied to the previous ledger to make this one. Transactions are the _only_ way to change the ledger.
+* A **transaction tree** - The [transactions](transaction-formats.html) that were applied to the previous ledger to make this one. Transactions are the _only_ way to change the ledger.
 * A **state tree** - All the [ledger objects](#ledger-object-types) that contain the settings, balances, and objects in the ledger as of this version.
 
 

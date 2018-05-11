@@ -348,7 +348,7 @@ Transaction stream messages have the following fields:
 | `ledger_hash`           | String           | (Omitted for unvalidated transactions) Unique hash of the ledger version that includes this transaction, as hex |
 | `ledger_index`          | Unsigned Integer | (Omitted for unvalidated transactions) Sequence number of the ledger version that includes this transaction |
 | `meta`                  | Object           | (Omitted for unvalidated transactions) Various metadata about the transaction, including which ledger entries it affected |
-| `transaction`           | Object           | The [definition of the transaction](reference-transaction-format.html) in JSON format |
+| `transaction`           | Object           | The [definition of the transaction](transaction-formats.html) in JSON format |
 | `validated`             | Boolean          | If true, this transaction is included in a validated ledger. Responses from the `transaction` stream should always be validated. |
 
 

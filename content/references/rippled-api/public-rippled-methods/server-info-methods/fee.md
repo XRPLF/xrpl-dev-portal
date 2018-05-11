@@ -139,7 +139,7 @@ The response follows the [standard format][], with a successful result containin
 |:---------------------------|:-----------------|:-----------------------------|
 | `current_ledger_size`      | String (Integer) | Number of transactions provisionally included in the in-progress ledger. |
 | `current_queue_size`       | String (Integer) | Number of transactions currently queued for the next ledger. |
-| `drops`                    | Object           | Various information about the transaction cost (the `Fee` field of a transaction), in [drops of xrp](#specifying-currency-amounts). |
+| `drops`                    | Object           | Various information about the transaction cost (the `Fee` field of a transaction), in [drops of XRP][]. |
 | `drops.base_fee`           | String (Integer) | The transaction cost required for a [reference transaction](transaction-cost.html#reference-transaction-cost) to be included in a ledger under minimum load, represented in drops of XRP. |
 | `drops.median_fee`         | String (Integer) | An approximation of the median transaction cost among transactions included in the previous validated ledger, represented in drops of XRP. |
 | `drops.minimum_fee`        | String (Integer) | The minimum transaction cost for a [reference transaction](transaction-cost.html#reference-transaction-cost) to be queued for a later ledger, represented in drops of XRP. If greater than `base_fee`, the transaction queue is full. |

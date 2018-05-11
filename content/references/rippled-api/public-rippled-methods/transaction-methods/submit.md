@@ -1,7 +1,7 @@
 # submit
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
 
-The `submit` method applies a [transaction](reference-transaction-format.html) and sends it to the network to be confirmed and included in future ledgers.
+The `submit` method applies a [transaction](transaction-formats.html) and sends it to the network to be confirmed and included in future ledgers.
 
 This command has two modes:
 
@@ -71,7 +71,7 @@ The request includes the following parameters:
 
 | `Field`        | Type    | Description                                       |
 |:---------------|:--------|:--------------------------------------------------|
-| `tx_json`      | Object  | [Transaction definition](reference-transaction-format.html) in JSON format, optionally omitting any auto-fillable fields. |
+| `tx_json`      | Object  | [Transaction definition](transaction-formats.html) in JSON format, optionally omitting any auto-fillable fields. |
 | `secret`       | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
 | `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | `seed_hex`     | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |

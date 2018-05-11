@@ -1,6 +1,6 @@
 # Transaction Common Fields
 
-Every transaction has the same set of common fields, plus additional fields based on the [transaction type][]. Field names are case-sensitive. The common fields for all transactions are:
+Every transaction has the same set of common fields, plus additional fields based on the [transaction type](transaction-types.html). Field names are case-sensitive. The common fields for all transactions are:
 
 | Field              | JSON Type        | [Internal Type][] | Description      |
 |:-------------------|:-----------------|:------------------|:-----------------|

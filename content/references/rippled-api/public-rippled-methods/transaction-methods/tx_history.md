@@ -885,7 +885,7 @@ The response follows the [standard format][], with a successful result containin
 | `index` | Unsigned Integer | The value of `start` used in the request. |
 | `txs`   | Array            | Array of transaction objects.             |
 
-The fields included in each transaction object vary slightly depending on the type of transaction. See [Transaction Format](reference-transaction-format.html) for details.
+The fields included in each transaction object vary slightly depending on the type of transaction. See [Transaction Format](transaction-formats.html) for details.
 
 ## Possible Errors
 

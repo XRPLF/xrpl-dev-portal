@@ -37,8 +37,8 @@ A `LedgerHashes` object has the following fields:
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|-------------------|-------------|
 | `LedgerEntryType` | String    | UInt16    | The value `0x0068`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
-| `FirstLedgerSequence` | Number | UInt32   | **DEPRECATED** Do not use. (The "recent hashes" object of the production XRP Ledger has the value `2` in this field as a result of a previous `rippled` software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](tutorial-rippled-setup.html#parallel-networks) started with more recent versions of `rippled`.) |
-| `LastLedgerSequence` | Number | UInt32 | The [ledger index](#ledger-index) of the last entry in this object's `Hashes` array. |
+| `FirstLedgerSequence` | Number | UInt32   | **DEPRECATED** Do not use. (The "recent hashes" object of the production XRP Ledger has the value `2` in this field as a result of a previous `rippled` software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](parallel-networks.html) started with more recent versions of `rippled`.) |
+| `LastLedgerSequence` | Number | UInt32 | The [Ledger Index][] of the last entry in this object's `Hashes` array. |
 | `Hashes` | Array of Strings | STI_VECTOR256 | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
 | `Flags`             | Number    | UInt32    | A bit-map of boolean flags for this object. No flags are defined for this type. |
 
@@ -66,7 +66,7 @@ The **"recent history"** `LedgerHashes` object has an ID that is the [SHA-512Hal
 The **"previous history"** `LedgerHashes` objects have an ID that is the [SHA-512Half][] of the following values, concatenated in order:
 
 - The `LedgerHashes` space key (`0x0073`)
-- The 32-bit [ledger index](#ledger-index) of a flag ledger in the object's `Hashes` array, divided by 65536.
+- The 32-bit [Ledger Index][] of a flag ledger in the object's `Hashes` array, divided by 65536.
 
     **Tip:** Dividing by 65536 keeps the most significant 16 bits, which are the same for all the flag ledgers listed in a "previous history" object, and only those ledgers. You can use this fact to look up the `LedgerHashes` object that contains the hash of any flag ledger.
 

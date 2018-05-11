@@ -31,7 +31,7 @@ For more information about how Offers work, see [Offers](offers.html).
 
 | Field                     | JSON Type           | [Internal Type][] | Description |
 |:--------------------------|:--------------------|:------------------|:-------|
-| [Expiration](offers.html#offer-expiration) | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
+| [Expiration](offers.html#offer-expiration) | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. |
 | OfferSequence             | Unsigned Integer    | UInt32            | _(Optional)_ An offer to delete first, specified in the same way as [OfferCancel][]. |
 | TakerGets                 | [Currency Amount][] | Amount            | The amount and type of currency being provided by the offer creator. |
 | TakerPays                 | [Currency Amount][] | Amount            | The amount and type of currency being requested by the offer creator. |
@@ -51,7 +51,7 @@ The following invalid flag combination prompts a `temINVALID_FLAG` error:
 
 * tfImmediateOrCancel and tfFillOrKill
 
-**Note:** When an OfferCreate uses tfImmediateOrCancel or tfFillOrKill and the offer cannot be executed when placed, the transaction may conclude "successfully" without trading any currency or having any effect on the order books. In this case, the transaction has the [result code](#result-categories) `tesSUCCESS`, it pays the [transaction cost][] and uses up a `Sequence` number, but has no other effect.
+**Note:** When an OfferCreate uses tfImmediateOrCancel or tfFillOrKill and the offer cannot be executed when placed, the transaction may conclude "successfully" without trading any currency or having any effect on the order books. In this case, the transaction has the [result code](transaction-results.html) `tesSUCCESS`, it pays the [transaction cost][] and uses up a `Sequence` number, but has no other effect.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

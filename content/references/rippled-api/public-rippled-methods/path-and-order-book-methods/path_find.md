@@ -51,8 +51,8 @@ The request includes the following parameters:
 | `subcommand`          | String           | Use `"create"` to send the create subcommand |
 | `source_account`      | String           | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
 | `destination_account` | String           | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
-| `destination_amount`  | String or Object | [Currency amount](#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0][] You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| `send_max`            | String or Object | _(Optional)_ [Currency amount](#specifying-currency-amounts) that would be spent in the transaction. Not compatible with `source_currencies`. [New in: rippled 0.30.0][] |
+| `destination_amount`  | String or Object | [Currency Amount][] that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0][] You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| `send_max`            | String or Object | _(Optional)_ [Currency Amount][] that would be spent in the transaction. Not compatible with `source_currencies`. [New in: rippled 0.30.0][] |
 | `paths`               | Array            | _(Optional)_ Array of arrays of objects, representing [payment paths](paths.html) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
@@ -439,7 +439,7 @@ The initial response follows the [standard format](#response-formatting), with a
 |:----------------------|:-----------------|:----------------------------------|
 | `alternatives`        | Array            | Array of objects with suggested [paths](paths.html) to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
 | `destination_account` | String           | Unique address of the account that would receive a transaction |
-| `destination_amount`  | String or Object | [Currency amount](#specifying-currency-amounts) that the destination would receive in a transaction |
+| `destination_amount`  | String or Object | [Currency Amount][] that the destination would receive in a transaction |
 | `id`                  | (Various)        | (WebSocket only) The ID provided in the WebSocket request is included again at this level. |
 | `source_account`      | String           | Unique address that would send a transaction |
 | `full_reply`          | Boolean          | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. [New in: rippled 0.29.0][] |
@@ -449,7 +449,7 @@ Each element in the `alternatives` array is an object that represents a path fro
 | `Field`          | Type             | Description                            |
 |:-----------------|:-----------------|:---------------------------------------|
 | `paths_computed` | Array            | Array of arrays of objects defining [payment paths](paths.html) |
-| `source_amount`  | String or Object | [Currency amount](#specifying-currency-amounts) that the source would have to send along this path for the destination to receive the desired amount |
+| `source_amount`  | String or Object | [Currency Amount][] that the source would have to send along this path for the destination to receive the desired amount |
 
 ### Possible Errors
 

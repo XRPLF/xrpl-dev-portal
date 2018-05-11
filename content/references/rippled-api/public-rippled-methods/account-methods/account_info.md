@@ -187,7 +187,7 @@ The `queue_data` parameter, if present, contains the following fields:
 | `auth_change_queued`    | Boolean | (May be omitted) Whether a transaction in the queue changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). If `true`, this address can queue no further transactions until that transaction has been executed or dropped from the queue. |
 | `lowest_sequence`       | Integer | (May be omitted) The lowest [Sequence Number][] among transactions queued by this address. |
 | `highest_sequence`      | Integer | (May be omitted) The highest [Sequence Number][] among transactions queued by this address. |
-| `max_spend_drops_total` | String  | (May be omitted) Integer amount of [drops of XRP](#specifying-currency-amounts) that could be debited from this address if every transaction in the queue consumes the maximum amount of XRP possible. |
+| `max_spend_drops_total` | String  | (May be omitted) Integer amount of [drops of XRP][] that could be debited from this address if every transaction in the queue consumes the maximum amount of XRP possible. |
 | `transactions`          | Array   | (May be omitted) Information about each queued transaction from this address. |
 
 Each object in the `transactions` array, if present, may contain any or all of the following fields:
@@ -195,9 +195,9 @@ Each object in the `transactions` array, if present, may contain any or all of t
 | `Field`           | Type    | Description                                    |
 |:------------------|:--------|:-----------------------------------------------|
 | `auth_change`     | Boolean | Whether this transaction changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). |
-| `fee`             | String  | The [Transaction Cost](transaction-cost.html) of this transaction, in [drops of XRP](#specifying-currency-amounts). |
+| `fee`             | String  | The [Transaction Cost](transaction-cost.html) of this transaction, in [drops of XRP][]. |
 | `fee_level`       | String  | The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in [fee levels][]. |
-| `max_spend_drops` | String  | The maximum amount of XRP, [in drops](#specifying-currency-amounts), this transaction could send or destroy. |
+| `max_spend_drops` | String  | The maximum amount of [XRP, in drops][], this transaction could send or destroy. |
 | `seq`             | Integer | The [Sequence Number][] of this transaction.   |
 
 ## Possible Errors

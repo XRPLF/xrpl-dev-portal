@@ -200,7 +200,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index` | Unsigned Integer | Sequence number of the ledger version the transaction was found in; this is the same as the one from the request. |
 | `ledger_hash`  | String           | (May be omitted) Unique hash of the ledger version the transaction was found in; this is the same as the one from the request. |
 | `metadata`     | Object           | Various metadata about the transaction.  |
-| `tx_json`      | Object           | JSON representation of the [Transaction object](reference-transaction-format.html) |
+| `tx_json`      | Object           | JSON representation of the [Transaction object](transaction-formats.html) |
 
 There are a couple possible reasons the server may fail to find the transaction:
 

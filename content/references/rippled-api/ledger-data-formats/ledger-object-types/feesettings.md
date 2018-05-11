@@ -32,7 +32,7 @@ The `FeeSettings` object has the following fields:
 | `ReserveIncrement`  | Number    | UInt32            | The incremental [owner reserve](reserves.html#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
 | `Flags`             | Number    | UInt32            | A bit-map of boolean flags for this object. No flags are defined for this type. |
 
-**Warning:** The JSON format for this ledger object type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP](reference-rippled.html#specifying-currency-amounts).
+**Warning:** The JSON format for this ledger object type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP][Currency Amount].
 
 ## FeeSettings ID Format
 
