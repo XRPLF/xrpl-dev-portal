@@ -12,7 +12,7 @@ var urlParams;
 })();
 
 ;(function() {
-  var DOC_BASE = 'reference-rippled.html';
+  var DOC_BASE = '';
 
   var request_button  = $('#request_button');
   var online_state    = $('#online_state');
@@ -28,7 +28,7 @@ var urlParams;
   var status          = $('#status');
   var info            = $('#info');
   var spinner = $(".loader");
-  
+
   var BASE_HOST_DEFAULT = 's2.ripple.com';
   var BASE_PORT_DEFAULT = 443;
 
@@ -44,7 +44,7 @@ var urlParams;
       }
     ]
   });
-  
+
   function new_remote(options) {
     remote = new ripple.Remote(options);
   }
@@ -119,17 +119,17 @@ var urlParams;
 
   Request('server_info', {
     _description: 'Get information about the state of the server for human consumption. Results are subject to change without notice.',
-    _link: DOC_BASE + '#server-info'
+    _link: DOC_BASE + 'server_info.html'
   });
 
   Request('server_state', {
     _description: 'Get information about the state of the server for machine consumption.',
-    _link: DOC_BASE + '#server-state'
+    _link: DOC_BASE + 'server_state.html'
   });
 
   Request('ping', {
     _description: 'Check connectivity to the server.',
-    _link: DOC_BASE + '#ping'
+    _link: DOC_BASE + 'ping.html'
   });
 
   /* ---- ---- */
@@ -138,7 +138,7 @@ var urlParams;
     accounts: [ ],
     streams: [ 'server', 'ledger' ],
     _description: 'Start receiving selected streams from the server.',
-    _link: DOC_BASE + '#subscribe',
+    _link: DOC_BASE + 'subscribe.html',
     _stream: true
   });
 
@@ -146,7 +146,7 @@ var urlParams;
     accounts: [ ],
     streams: [ 'server', 'ledger' ],
     _description: 'Stop receiving selected streams from the server.',
-    _link: DOC_BASE + '#unsubscribe',
+    _link: DOC_BASE + 'unsubscribe.html',
     _stream: true
   });
 
@@ -160,7 +160,7 @@ var urlParams;
     transactions:  true,
     accounts:      true,
     _description: 'Returns ledger information.',
-    _link: DOC_BASE + '#ledger'
+    _link: DOC_BASE + 'ledger.html'
   });
 
   Request('ledger_entry', {
@@ -169,17 +169,17 @@ var urlParams;
     ledger_index:   'validated',
     ledger_hash:  void(0),
     _description: 'Get a single node from the ledger',
-    _link: DOC_BASE + '#ledger-entry'
+    _link: DOC_BASE + 'ledger_entry.html'
   });
 
   Request('ledger_closed', {
     _description: 'Get the most recent closed ledger index.',
-    _link: DOC_BASE + '#ledger-closed'
+    _link: DOC_BASE + 'ledger_closed.html'
   });
 
   Request('ledger_current', {
     _description: 'Get the current in-progress ledger index.',
-    _link: DOC_BASE + '#ledger-current'
+    _link: DOC_BASE + 'ledger_current.html'
   });
 
   /* ---- ---- */
@@ -187,7 +187,7 @@ var urlParams;
   Request('account_info', {
     account: sample_address,
     _description: 'Get information about the specified account.',
-    _link: DOC_BASE + '#account-info'
+    _link: DOC_BASE + 'account_info.html'
   });
 
   Request('account_lines', {
@@ -195,7 +195,7 @@ var urlParams;
     account_index:  void(0),
     ledger:         'current',
     _description: "Get a list of trust lines connected to an account.",
-    _link: DOC_BASE + '#account-lines'
+    _link: DOC_BASE + 'account_lines.html'
   });
 
   Request('account_offers', {
@@ -203,7 +203,7 @@ var urlParams;
     account_index:  void(0),
     ledger:         'current',
     _description: 'Get a list of offers created by an account.',
-    _link: DOC_BASE + '#account-offers'
+    _link: DOC_BASE + 'account_offers.html'
   });
 
   Request('account_tx', {
@@ -216,18 +216,18 @@ var urlParams;
     forward:           false,
     marker:            void(0),
     _description: 'Get a list of transactions that applied to a specified account.',
-    _link: DOC_BASE + '#account-tx'
+    _link: DOC_BASE + 'account_tx.html'
   });
-  
+
   Request('account_currencies', {
     account:           sample_address,
     strict:            true,
     ledger_index:      "validated",
     account_index:     0,
     _description: 'Returns a list of currencies the account can send or receive.',
-    _link: DOC_BASE + '#account-currencies'
+    _link: DOC_BASE + 'account_currencies.html'
   });
-  
+
   Request('gateway_balances', {
     account:           sample_address,
     strict:            true,
@@ -235,7 +235,7 @@ var urlParams;
     ledger_index:      "validated",
     account_index:     0,
     _description: 'Returns a list of currencies the account can send or receive.',
-    _link: DOC_BASE + '#gateway-balances'
+    _link: DOC_BASE + 'gateway_balances.html'
   });
 
   /* ---- ---- */
@@ -245,19 +245,19 @@ var urlParams;
     ledger_index:  348734,
     ledger_hash:   void(0),
     _description: 'Get information about a specified transaction.',
-    _link: DOC_BASE + '#transaction-entry'
+    _link: DOC_BASE + 'transaction_entry.html'
   });
 
   Request('tx', {
     transaction: sample_tx,
     _description: 'Returns information about a specified transaction.',
-    _link: DOC_BASE + '#tx'
+    _link: DOC_BASE + 'tx.html'
   });
 
   Request('tx_history', {
     start: 10,
     _description: 'Returns the last N transactions starting from start index, in descending order, by ledger sequence number. Server sets N.',
-    _link: DOC_BASE + '#tx-history'
+    _link: DOC_BASE + 'tx_history.html'
   });
 
   Request('book_offers', {
@@ -273,7 +273,7 @@ var urlParams;
     },
     limit: 10,
     _description: 'Returns a snapshot of the offers for an order book.',
-    _link: DOC_BASE + '#book-offers'
+    _link: DOC_BASE + 'book_offers.html'
   });
 
   Request('path_find', {
@@ -286,7 +286,7 @@ var urlParams;
         "issuer": sample_address_2
     },
     _description: 'Start or stop searching for payment paths between specified accounts.',
-    _link: DOC_BASE + '#path-find',
+    _link: DOC_BASE + 'path_find.html',
     _stream: true
   });
 
@@ -302,7 +302,7 @@ var urlParams;
         "issuer": sample_address_2
     },
     _description: 'Find a path between specified accounts once. For repeated usage, call <strong>path_find</strong> instead.',
-    _link: DOC_BASE + '#ripple-path-find'
+    _link: DOC_BASE + 'ripple_path_find.html'
   });
 
   Request('submit', {
@@ -316,16 +316,16 @@ var urlParams;
       Flags: 0
     },
     _description: 'Submits a transaction to the network.',
-    _link: DOC_BASE + '#submit',
+    _link: DOC_BASE + 'submit.html',
     _takes_secret: true
   });
-  
+
   Request('sign', {
   tx_json : {
       "TransactionType" : "Payment",
       "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
       "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "Amount" : { 
+      "Amount" : {
          "currency" : "USD",
          "value" : "1",
          "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
@@ -335,7 +335,7 @@ var urlParams;
    offline: false,
    fee_mult_max: 1000,
    _description: 'Sends a transaction to be signed by the server.',
-   _link: DOC_BASE + '#sign',
+   _link: DOC_BASE + 'sign.html',
     _takes_secret: true
 });
 
@@ -446,7 +446,7 @@ var urlParams;
     selected_request.message.id = id();
     selected_request.message = rewrite_obj(selected_request.message);
     set_input(selected_request);
-    
+
     //Remove sign button & sequence number lookup
 
 //    if (selected_request.name !== 'submit') {
@@ -459,7 +459,7 @@ var urlParams;
     } else {
         $("#test_warning").hide();
     }
-    
+
     if (selected_request._stream === true) {
         $("#stream_output").show();
     } else {
@@ -516,7 +516,7 @@ var urlParams;
   /* ---- ---- ---- ---- ---- */
 
   function prepare_request(request) {
-  
+
     var isArray = Array.isArray(request);
     var result  = isArray ? [ ] : { };
 
@@ -683,7 +683,7 @@ var urlParams;
 
   $(function() {
     set_online_state('connecting');
-    
+
     if (urlParams["base_url"]) {
         base_url = urlParams["base_url"].split(":");
         if (base_url.length == 2) {
@@ -693,14 +693,14 @@ var urlParams;
             base_host = base_url[0];
             base_port = BASE_PORT_DEFAULT;
         }
-        
+
         if (urlParams["use_wss"]
             && urlParams["use_wss"].toLowerCase() === "false") {
             use_wss = false;
         } else {
             use_wss = true;
         }
-        
+
         new_remote({
             trusted:        true,
             local_signing:  true,
