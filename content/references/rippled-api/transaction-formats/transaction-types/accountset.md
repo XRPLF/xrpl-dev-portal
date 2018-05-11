@@ -2,7 +2,7 @@
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
-An AccountSet transaction modifies the properties of an [account in the XRP Ledger](reference-ledger-format.html#accountroot).
+An AccountSet transaction modifies the properties of an [account in the XRP Ledger](accountroot.html).
 
 ## Example {{currentpage.name}} JSON
 
@@ -30,11 +30,11 @@ An AccountSet transaction modifies the properties of an [account in the XRP Ledg
 | MessageKey                     | String           | PubKey            | _(Optional)_ Public key for sending encrypted messages to this account. |
 | [SetFlag](#accountset-flags)   | Unsigned Integer | UInt32            | _(Optional)_ Integer flag to enable for this account. |
 | [TransferRate](#transferrate)  | Unsigned Integer | UInt32            | _(Optional)_ The fee to charge when users transfer this account's issued currencies, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
-| [TickSize](#ticksize)          | Unsigned Integer | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment](known-amendments.html#ticksize).)_ |
+| [TickSize](ticksize.html)      | Unsigned Integer | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment](known-amendments.html#ticksize).)_ |
 | WalletLocator                  | String           | Hash256           | _(Optional)_ Not used. |
 | WalletSize                     | Unsigned Integer | UInt32            | _(Optional)_ Not used. |
 
-If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Canceling or Skipping a Transaction](#canceling-or-skipping-a-transaction) for more details.
+If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Canceling or Skipping a Transaction](#cancel-or-skip-a-transaction) for more details.
 
 ## Domain
 
@@ -60,17 +60,17 @@ The available AccountSet flags are:
 
 | Flag Name        | Decimal Value | Corresponding Ledger Flag | Description   |
 |:-----------------|:--------------|:--------------------------|:--------------|
-| asfAccountTxnID  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) |
+| asfAccountTxnID  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [AccountTxnID](transaction-common-fields.html#accounttxnid) |
 | asfDefaultRipple | 8             | lsfDefaultRipple          | Enable [rippling](rippling.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
 | asfDepositAuth   | 9             | lsfDepositAuth            | Enable [Deposit Authorization](depositauth.html) on this account. _(Requires the [DepositAuth amendment](known-amendments.html#depositauth).)_ |
-| asfDisableMaster | 4             | lsfDisableMaster          | Disallow use of the master key. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](cryptographic-keys.html) or a [Signer List](#signerlistset). |
+| asfDisableMaster | 4             | lsfDisableMaster          | Disallow use of the master key. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](cryptographic-keys.html) or a [Signer List](multi-signing.html). |
 | asfDisallowXRP   | 3             | lsfDisallowXRP            | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) |
 | asfGlobalFreeze  | 7             | lsfGlobalFreeze           | [Freeze](freezes.html) all assets issued by this account. |
 | asfNoFreeze      | 6             | lsfNoFreeze               | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](freezes.html). This flag can never be disabled after being enabled. |
 | asfRequireAuth   | 2             | lsfRequireAuth            | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
 | asfRequireDest   | 1             | lsfRequireDestTag         | Require a destination tag to send transactions to this account. |
 
-To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](#authorizing-transactions) by signing it with the master key. You cannot use a regular key or a multi-signature. [New in: rippled 0.28.0][]
+To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](transaction-basics.html#authorizing-transactions) by signing it with the master key. You cannot use a regular key or a multi-signature. [New in: rippled 0.28.0][]
 
 The following [Transaction flags](transaction-common-fields.html#flags-field), specific to the AccountSet transaction type, serve the same purpose, but are discouraged:
 

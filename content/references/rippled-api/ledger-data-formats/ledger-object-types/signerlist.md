@@ -47,7 +47,7 @@ A `SignerList` object has the following fields:
 | `LedgerEntryType`   | String    | UInt16    | The value `0x0053`, mapped to the string `SignerList`, indicates that this object is a SignerList object. |
 | `Flags`             | Number | UInt32 | A bit-map of boolean flags. No flags are defined for the SignerList type, so this value is always `0`. |
 | `PreviousTxnID`   | String    | Hash256       | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number  | UInt32        | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq` | Number  | UInt32        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `OwnerNode`       | String    | UInt64        | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. |
 | `SignerEntries`   | Array     | Array         | An array of SignerEntry objects representing the parties who are part of this signer list. |
 | `SignerListID`    | Number    | UInt32        | An ID for this signer list. Currently always set to `0`. If a future [amendment](amendments.html) allows multiple signer lists for an account, this may change. |

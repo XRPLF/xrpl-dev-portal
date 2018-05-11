@@ -4,20 +4,20 @@ The XRP Ledger is a shared, global ledger that is open to all. Individual partic
 
 ![Diagram: Each ledger is the result of applying transactions to the previous ledger version.](img/ledger-process.png)
 
-The shared global ledger is actually a series of individual ledgers, or ledger versions, which `rippled` keeps in its internal database. Every ledger version has a [ledger index](#ledger-index) which identifies the order in which ledgers occur. Each closed ledger version also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a `rippled` instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be correct and immutable.
+The shared global ledger is actually a series of individual ledgers, or ledger versions, which `rippled` keeps in its internal database. Every ledger version has a [Ledger Index][] which identifies the order in which ledgers occur. Each closed ledger version also has an identifying hash value, which uniquely identifies the contents of that ledger. At any given time, a `rippled` instance has an in-progress "current" open ledger, plus some number of closed ledgers that have not yet been approved by consensus, and any number of historical ledgers that have been validated by consensus. Only the validated ledgers are certain to be correct and immutable.
 
 A single ledger version consists of several parts:
 
 ![Diagram: A ledger has transactions, a state tree, and a header with the close time and validation info](img/ledger-components.png)
 
-* A **header** - The [ledger index](#ledger-index), hashes of its other contents, and other metadata.
+* A **header** - The [Ledger Index][], hashes of its other contents, and other metadata.
 * A **transaction tree** - The [transactions](transaction-formats.html) that were applied to the previous ledger to make this one. Transactions are the _only_ way to change the ledger.
-* A **state tree** - All the [ledger objects](#ledger-object-types) that contain the settings, balances, and objects in the ledger as of this version.
+* A **state tree** - All the [ledger objects](ledger-object-types.html) that contain the settings, balances, and objects in the ledger as of this version.
 
 
 ## Tree Format
 
-As its name might suggest, a ledger's state tree is a tree data structure. Each object in the state tree is identified by a 256-bit object ID. In JSON, a ledger object's ID is the `index` field, which contains a 64-character hexadecimal string like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every object in the state tree has an ID that you can use to look up that object; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the `index` (ID) of a ledger object with the [`ledger_index` (sequence number) of a ledger](#ledger-index).
+As its name might suggest, a ledger's state tree is a tree data structure. Each object in the state tree is identified by a 256-bit object ID. In JSON, a ledger object's ID is the `index` field, which contains a 64-character hexadecimal string like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every object in the state tree has an ID that you can use to look up that object; every transaction has an indentifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the `index` (ID) of a ledger object with the [`ledger_index` (sequence number) of a ledger][Ledger Index].
 
 **Tip:** Sometimes, an object in the ledger's state tree is called a "ledger node". For example, transaction metadata returns a list of `AffectedNodes`. Do not confuse this with a "node" (server) in the peer-to-peer network.
 

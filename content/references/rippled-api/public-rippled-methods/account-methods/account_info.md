@@ -172,7 +172,7 @@ The response follows the [standard format][], with the result containing the req
 
 | `Field`                | Type    | Description                               |
 |:-----------------------|:--------|:------------------------------------------|
-| `account_data`         | Object  | The [AccountRoot ledger object](reference-ledger-format.html#accountroot) with this account's information, as stored in the ledger. |
+| `account_data`         | Object  | The [AccountRoot ledger object](accountroot.html) with this account's information, as stored in the ledger. |
 | `signer_lists`         | Array   | (Omitted unless the request specified `signer_lists` and at least one SignerList is associated with the account.) Array of [SignerList ledger objects](reference-ledger-format.html#signerlist) associated with this account for [Multi-Signing](multi-signing.html). Since an account can own at most one SignerList, this array must have exactly one member if it is present. [New in: rippled 0.31.0][] |
 | `ledger_current_index` | Integer | (Omitted if `ledger_index` is provided instead) The sequence number of the most-current ledger, which was used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |
 | `ledger_index`         | Integer | (Omitted if `ledger_current_index` is provided instead) The sequence number of the ledger used when retrieving this information. The information does not contain any changes from ledgers newer than this one. |

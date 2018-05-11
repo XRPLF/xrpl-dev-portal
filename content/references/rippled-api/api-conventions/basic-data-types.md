@@ -58,7 +58,7 @@ There are two kinds of currencies in the XRP Ledger: XRP, and everything else. T
 |:----------------------------------------------------------------|:-----------|
 | Has no issuer.                                                  | Always issued by an XRP Ledger account |
 | Specified as a string                                           | Specified as an object |
-| Tracked in [accounts](reference-ledger-format.html#accountroot) | Tracked in [trust lines](reference-ledger-format.html#ripplestate) |
+| Tracked in [accounts](accountroot.html) | Tracked in [trust lines](reference-ledger-format.html#ripplestate) |
 | Can never be created; can only be destroyed                     | Can be issued or redeemed freely |
 | Maximum value `100000000000` (`1e11`)                           | Maximum value `9999999999999999e80` |
 | Precise to the nearest ["drop"](#xrp) (0.000001 XRP)            | 15 decimal digits of precision, with a minimum nonzero absolute value of `1000000000000000e-96` |

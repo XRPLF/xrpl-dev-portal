@@ -36,7 +36,7 @@ The `AccountRoot` object has the following fields:
 | [`Flags`](#accountroot-flags) | Number    | UInt32            | A bit-map of boolean flags enabled for this account. |
 | `OwnerCount`                  | Number    | UInt32            | The number of objects this account owns in the ledger, which contributes to its owner reserve. |
 | `PreviousTxnID`               | String    | Hash256           | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq`           | Number    | UInt32            | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq`           | Number    | UInt32            | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `Sequence`                    | Number    | UInt32            | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
 | `AccountTxnID`                | String    | Hash256           | _(Optional)_ The identifying hash of the transaction most recently submitted by this account. |
 | `Domain`                      | String    | VariableLength    | _(Optional)_ A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. |

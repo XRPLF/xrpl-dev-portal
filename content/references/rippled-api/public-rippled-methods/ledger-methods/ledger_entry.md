@@ -45,7 +45,7 @@ An example of the request format:
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
 1. `index` - Retrieve any type of ledger object by its unique ID
-2. `account_root` - Retrieve an [AccountRoot object](reference-ledger-format.html#accountroot). This is roughly equivalent to the [account_info](#account-info) command.
+2. `account_root` - Retrieve an [AccountRoot object](accountroot.html). This is roughly equivalent to the [account_info](#account-info) command.
 3. `directory` - Retrieve a [DirectoryNode](reference-ledger-format.html#directorynode), which contains a list of other ledger objects
 4. `offer` - Retrieve an [Offer object](reference-ledger-format.html#offer), which defines an offer to exchange currency
 5. `ripple_state` - Retrieve a [RippleState object](reference-ledger-format.html#ripplestate), which tracks a (non-XRP) currency balance between two accounts.
@@ -57,7 +57,7 @@ The full list of parameters recognized by this method is as follows:
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
 | `index`                 | String                     | _(Optional)_ Specify the unique identifier of a single ledger entry to retrieve. |
-| `account_root`          | String - [Address][]       | _(Optional)_ Specify an [AccountRoot object](reference-ledger-format.html#accountroot) to retrieve. |
+| `account_root`          | String - [Address][]       | _(Optional)_ Specify an [AccountRoot object](accountroot.html) to retrieve. |
 | `directory`             | Object or String           | _(Optional)_ Specify a [DirectoryNode](reference-ledger-format.html#directorynode). (DirectoryNode objects each contain a list of IDs for things contained in them.) If a string, interpret as the [unique index](ledger-data-formats.html#tree-format) to the directory, in hex. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
 | `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [Directory](reference-ledger-format.html#directorynode). |
 | `directory.dir_root`    | String                     | (Required if `directory` is specified as an object and `directory.owner` is not provided) Unique index identifying the directory to retrieve, as a hex string. |

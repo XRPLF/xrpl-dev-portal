@@ -5196,8 +5196,8 @@ Payment objects have the following fields:
 | `destination_balance_changes` | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
 | `source_balance_changes` | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
 | `transaction_cost` | [String - Number][] | The amount of XRP spent by the `source` account on the transaction cost. (Prior to [v2.0.4][], this parameter was called `fee`.) |
-| `destination_tag` | Integer | (May be omitted) A [destination tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
-| `source_tag` | Integer | (May be omitted) A [source tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
+| `destination_tag` | Integer | (May be omitted) A [destination tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags) specified in this payment. |
+| `source_tag` | Integer | (May be omitted) A [source tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags) specified in this payment. |
 | `currency` | String - [Currency Code][] | The currency that the `destination` account received. |
 | `destination` | String - [Address][] | The account that received the payment. |
 | `executed_time` | String - [Timestamp][] | The time the ledger that included this payment closed. |

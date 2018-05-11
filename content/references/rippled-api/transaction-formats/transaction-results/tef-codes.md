@@ -2,7 +2,7 @@
 
 These codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger. Typically this means that the transaction can no longer succeed in any future ledger. They have numerical values in the range -199 to -100. The exact code for any given error is subject to change, so don't rely on it.
 
-**Caution:** Transactions with `tef` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+**Caution:** Transactions with `tef` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](finality-of-results.html) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
 
 | Code                   | Explanation                                         |
 |:-----------------------|:----------------------------------------------------|

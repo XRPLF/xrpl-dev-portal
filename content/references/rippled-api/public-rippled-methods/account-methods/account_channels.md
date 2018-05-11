@@ -165,16 +165,16 @@ Each Channel Object has the following fields:
 |-------|------|-------------|
 | `account` | String | The owner of the channel, as an [Address][]. |
 | `amount` | String | The total amount of [XRP, in drops][] allocated to this channel. |
-| `balance` | String | The total amount of XRP, in drops, paid out from this channel, as of the ledger version used. (You can calculate the amount of XRP left in the channel by subtracting `balance` from `amount`.) |
-| `channel_id` | String | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [ID of the channel object](reference-ledger-format.html#paychannel-id-format) in the ledger's state data. |
+| `balance` | String | The total amount of [XRP, in drops][], paid out from this channel, as of the ledger version used. (You can calculate the amount of XRP left in the channel by subtracting `balance` from `amount`.) |
+| `channel_id` | String | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [ID of the channel object](paychannel.html#paychannel-id-format) in the ledger's state data. |
 | `destination_account` | String | the destination account of the channel, as an [Address][]. Only this account can receive the XRP in the channel while it is open. |
 | `public_key` | String | _(May be omitted)_ The public key for the payment channel in base58 format. Signed claims against this channel must be redeemed with the matching key pair. |
 | `public_key_hex` | String | _(May be omitted)_ The public key for the payment channel in hexadecimal format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair. |
 | `settle_delay` | Unsigned Integer | The number of seconds the payment channel must stay open after the owner of the channel requests to close it. |
 | `expiration` | Unsigned Integer | _(May be omitted)_ Time, in seconds since the [Ripple Epoch](#specifying-time), when this channel is set to expire. This expiration date is mutable. If this is before the close time of the most recent validated ledger, the channel is expired. |
 | `cancel_after` | Unsigned Integer | _(May be omitted)_ Time, in seconds since the [Ripple Epoch](#specifying-time), of this channel's immutable expiration, if one was specified at channel creation. If this is before the close time of the most recent validated ledger, the channel is expired. |
-| `source_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](tutorial-gateway-guide.html#source-and-destination-tags) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the `DestinationTag` of the return payment. |
-| `destination_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [destination tag](tutorial-gateway-guide.html#source-and-destination-tags) for payments through this channel, if one was specified at channel creation. This indicates the payment channel's beneficiary or other purpose at the destination account. |
+| `source_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the `DestinationTag` of the return payment. |
+| `destination_tag` | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [destination tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags) for payments through this channel, if one was specified at channel creation. This indicates the payment channel's beneficiary or other purpose at the destination account. |
 
 ## Possible Errors
 
