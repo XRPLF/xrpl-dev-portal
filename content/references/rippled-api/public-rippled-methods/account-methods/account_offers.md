@@ -54,7 +54,7 @@ A request can include the following parameters:
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string identifying the ledger version to use. |
 | `ledger_index` | _(Optional)_ [Ledger Index][]              | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers](#specifying-ledgers)) |
 | `limit`        | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
+| `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -164,7 +164,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_current_index` | Integer                                    | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
 | `ledger_index`         | Integer                                    | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
 | `ledger_hash`          | String                                     | _(May be omitted)_ Hex hash, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `marker`               | [(Not Specified)](#markers-and-pagination) | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
+| `marker`               | [Marker][] | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
 
 
 Each offer object contains the following fields:
@@ -176,7 +176,7 @@ Each offer object contains the following fields:
 | `taker_gets` | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
 | `taker_pays` | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts](#specifying-currency-amounts)) |
 | `quality`    | String           | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. [New in: rippled 0.29.0][] |
-| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as [the number of seconds since the Ripple Epoch](#specifying-time). See also: [Offer Expiration](reference-transaction-format.html#expiration). [New in: rippled 0.30.1][] |
+| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as [the number of seconds since the Ripple Epoch](#specifying-time). See also: [Offer Expiration](offers.html#offer-expiration). [New in: rippled 0.30.1][] |
 
 ## Possible Errors
 

@@ -41,7 +41,7 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 
 | Flag Name       | Hex Value  | Decimal Value | Description                   |
 |:----------------|:-----------|:--------------|:------------------------------|
-| tfSetfAuth      | 0x00010000 | 65536         | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](#accountset-flags).) Cannot be unset. |
+| tfSetfAuth      | 0x00010000 | 65536         | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](accountset.html#accountset-flags).) Cannot be unset. |
 | tfSetNoRipple   | 0x00020000 | 131072        | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](rippling.html) for details.) |
 | tfClearNoRipple | 0x00040000 | 262144        | Clears the No-Rippling flag. (See [NoRipple](rippling.html) for details.) |
 | tfSetFreeze     | 0x00100000 | 1048576       | [Freeze](freezes.html) the trustline. |

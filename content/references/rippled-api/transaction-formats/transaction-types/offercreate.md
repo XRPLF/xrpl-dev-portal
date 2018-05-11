@@ -31,7 +31,7 @@ For more information about how Offers work, see [Offers](offers.html).
 
 | Field                     | JSON Type           | [Internal Type][] | Description |
 |:--------------------------|:--------------------|:------------------|:-------|
-| [Expiration](#expiration) | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
+| [Expiration](offers.html#offer-expiration) | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time). |
 | OfferSequence             | Unsigned Integer    | UInt32            | _(Optional)_ An offer to delete first, specified in the same way as [OfferCancel][]. |
 | TakerGets                 | [Currency Amount][] | Amount            | The amount and type of currency being provided by the offer creator. |
 | TakerPays                 | [Currency Amount][] | Amount            | The amount and type of currency being requested by the offer creator. |

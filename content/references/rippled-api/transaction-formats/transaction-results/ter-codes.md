@@ -13,7 +13,7 @@ These codes indicate that the transaction failed, but it could apply successfull
 | `terNO_AUTH`      | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
 | `terNO_LINE`      | Used internally only. This code should never be returned. |
 | `terNO_RIPPLE`    | Used internally only. This code should never be returned. |
-| `terOWNERS`        | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](#accountset-flags) flag if it has any trust lines or available offers. |
+| `terOWNERS`        | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
 | `terPRE_SEQ`      | The `Sequence` number of the current transaction is higher than the current sequence number of the account sending the transaction. |
 | `terRETRY`         | Unspecified retriable error.                              |
 | `terQUEUED`        | The transaction met the load-scaled [transaction cost](transaction-cost.html) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |

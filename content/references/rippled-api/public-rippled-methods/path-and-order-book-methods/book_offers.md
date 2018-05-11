@@ -65,7 +65,7 @@ The request includes the following parameters:
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Unsigned Integer                           | _(Optional)_ If provided, the server does not provide more than this many offers in the results. The total number of results returned may be fewer than the limit, because the server omits unfunded offers. |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 | `taker`        | String                                     | _(Optional)_ The [Address][] of an account to use as a perspective. [Unfunded offers](reference-transaction-format.html#lifecycle-of-an-offer) placed by this account are always included in the response. (You can use this to look up your own orders to cancel them.) |
 | `taker_gets`   | Object                                     | Specification of which currency the account taking the offer would receive, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
 | `taker_pays`   | Object                                     | Specification of which currency the account taking the offer would pay, as an object with `currency` and `issuer` fields (omit issuer for XRP), like [currency amounts](#specifying-currency-amounts). |
@@ -160,7 +160,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_current_index` | Integer                                    | (Omitted if ledger version provided) Sequence number of the ledger version used when retrieving this data. |
 | `ledger_index`         | Integer                                    | (Omitted if ledger\_current\_index provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. |
 | `ledger_hash`          | String                                     | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. |
-| `marker`               | [(Not Specified)](#markers-and-pagination) | (May be omitted) Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. |
+| `marker`               | [Marker][] | (May be omitted) Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. |
 | `offers`               | Array                                      | Array of offer objects, each of which has the fields of an [OfferCreate transaction](reference-transaction-format.html#offercreate) |
 
 In addition to the standard Offer fields, the following fields may be included in members of the `offers` array:

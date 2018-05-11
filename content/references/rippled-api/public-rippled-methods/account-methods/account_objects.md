@@ -68,7 +68,7 @@ The request includes the following parameters:
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Unsigned Integer                           | _(Optional)_ The maximum number of objects to include in the results. Must be within the inclusive range 10 to 400 on non-admin connections. Defaults to 200. |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 ## Response Format
 
@@ -607,7 +607,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index`         | Number                                     | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
 | `ledger_current_index` | Number                                     | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
 | `limit`                | Number                                     | (May be omitted) The limit that was used in this request, if any. |
-| `marker`               | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
+| `marker`               | [Marker][] | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 | `validated`            | Boolean                                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
 ## Possible Errors

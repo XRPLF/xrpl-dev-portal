@@ -28,7 +28,7 @@ An OfferCancel transaction removes an Offer object from the XRP Ledger.
 
 *Tip:* To remove an old offer and replace it with a new one, you can use an [OfferCreate transaction][] with an `OfferSequence` parameter, instead of using OfferCancel and another OfferCreate.
 
-The OfferCancel method returns [tesSUCCESS](#transaction-results) even if it did not find an offer with the matching sequence number.
+The OfferCancel method returns [tesSUCCESS](tes-success.html) even if it did not find an offer with the matching sequence number.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

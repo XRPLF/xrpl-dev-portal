@@ -7,12 +7,12 @@ Every transaction has the same set of common fields, plus additional fields base
 | Account            | String           | Account           | _(Required)_ The unique address of the [account](accounts.html) that initiated the transaction. |
 | TransactionType    | String           | UInt16            | _(Required)_ The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, `SetRegularKey`, `SignerListSet`, `EscrowCreate`, `EscrowFinish`, `EscrowCancel`, `PaymentChannelCreate`, `PaymentChannelFund`, and `PaymentChannelClaim`. |
 | Fee                | String           | Amount            | _(Required; [auto-fillable][])_ Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. Some transaction types have different minimum requirements. See [Transaction Cost][] for details. |
-| Sequence           | Unsigned Integer | UInt32            | _(Required; [auto-fillable][])_ The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. For how to use the `Sequence` number to invalidate a pending transaction, see [Canceling or Skipping a Transaction](canceling-or-skipping-a-transaction.html). |
+| Sequence           | Unsigned Integer | UInt32            | _(Required; [auto-fillable][])_ The sequence number, relative to the initiating account, of this transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. For how to use the `Sequence` number to invalidate a pending transaction, see [Cancel or Skip a Transaction](cancel-or-skip-a-transaction.html). |
 | [AccountTxnID][]   | String           | Hash256           | _(Optional)_ Hash value identifying another transaction. If provided, this transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
 | [Flags][]          | Unsigned Integer | UInt32            | _(Optional)_ Set of bit-flags for this transaction. |
 | LastLedgerSequence | Number           | UInt32            | _(Optional; strongly recommended)_ Highest ledger index this transaction can appear in. Specifying this field places a strict upper limit on how long the transaction can wait to be validated or rejected. See [Reliable Transaction Submission](reliable-transaction-submission.html) for more details. |
 | [Memos][]          | Array of Objects | Array             | _(Optional)_ Additional arbitrary information used to identify this transaction. |
-| [Signers][]        | Array            | Array             | _(Optional)_ Array of objects that represent a [multi-signature](#multi-signing) which authorizes this transaction. |
+| [Signers][]        | Array            | Array             | _(Optional)_ Array of objects that represent a [multi-signature](multi-signing.html) which authorizes this transaction. |
 | SourceTag          | Unsigned Integer | UInt32            | _(Optional)_ Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
 | SigningPubKey      | String           | PubKey            | _(Automatically added when signing)_ Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
 | TxnSignature       | String           | VariableLength    | _(Automatically added when signing)_ The signature that verifies this transaction as originating from the account it says it is from. |
@@ -32,7 +32,7 @@ The `AccountTxnID` field lets you chain your transactions together, so that a cu
 
 One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially have serious problems like some transactions sending twice and others not at all. Chaining your transactions together with `AccountTxnID` ensures that, even if both systems are active, only one of them can submit valid transactions at a time.
 
-To use AccountTxnID, you must first set the [asfAccountTxnID](#accountset-flags) flag, so that the ledger keeps track of the ID for the account's previous transaction.
+To use AccountTxnID, you must first set the [asfAccountTxnID](accountset.html#accountset-flags) flag, so that the ledger keeps track of the ID for the account's previous transaction.
 
 
 ## Auto-fillable Fields
@@ -101,7 +101,7 @@ Example of a transaction with a Memos field:
 
 ## Signers Field
 
-The `Signers` field contains a [multi-signature](#multi-signing), which has signatures from up to 8 key pairs, that together should authorize the transaction. The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
+The `Signers` field contains a [multi-signature](multi-signing.html), which has signatures from up to 8 key pairs, that together should authorize the transaction. The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
 
 | Field         | Type   | [Internal Type][] | Description                     |
 |:--------------|:-------|:------------------|:--------------------------------|

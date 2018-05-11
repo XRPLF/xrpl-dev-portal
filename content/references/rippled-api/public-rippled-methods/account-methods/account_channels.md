@@ -53,7 +53,7 @@ The request includes the following parameters:
 | `ledger_hash`         | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`               | Integer                                    | _(Optional)_ Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. Defaults to 200. |
-| `marker`              | [(Not Specified)](#markers-and-pagination) | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `marker`              | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 ## Response Format
 
@@ -157,7 +157,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index` | Number                                 | The [Ledger Index][] of the ledger version used to generate this response. [New in: rippled 0.90.0][] |
 | `validated` | Boolean                                   | _(May be omitted)_ If `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. [New in: rippled 0.90.0][] |
 | `limit`    | Number                                     | _(May be omitted)_ The limit to how many channel objects were actually returned by this request. |
-| `marker`   | [(Not Specified)](#markers-and-pagination) | _(May be omitted)_ Server-defined value for pagination. Pass this to the next call to resume getting results where this call left off. Omitted when there are no additional pages after this one. |
+| `marker`   | [Marker][] | _(May be omitted)_ Server-defined value for pagination. Pass this to the next call to resume getting results where this call left off. Omitted when there are no additional pages after this one. |
 
 Each Channel Object has the following fields:
 

@@ -48,7 +48,7 @@ A request can include the following fields:
 | `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `binary`       | Boolean                                    | (Optional, defaults to False) If set to true, return ledger objects as hashed hex strings instead of JSON. |
 | `limit`        | Integer                                    | (Optional, default varies) Limit the number of ledger objects to retrieve. The server is not required to honor this value. |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `marker`       | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 The `ledger` field is deprecated and may be removed without further notice.
 
@@ -239,7 +239,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index` | Unsigned Integer                           | Sequence number of this ledger |
 | `ledger_hash`  | String                                     | Unique identifying hash of the entire ledger. |
 | `state`        | Array                                      | Array of JSON objects containing data from the tree, as defined below |
-| `marker`       | [(Not Specified)](#markers-and-pagination) | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
+| `marker`       | [Marker][] | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
 
 The format of each object in the `state` array depends on whether `binary` was set to true or not in the request. Each `state` object may include the following fields:
 

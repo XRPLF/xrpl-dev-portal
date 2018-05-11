@@ -457,7 +457,7 @@ Optionally, you can provide the following query parameters:
 | `end` | String - [Timestamp][]  | Filter results to this time and earlier. |
 | `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
 | `type` | String | Filter transactions to a specific transaction-types.html. |
-| `result` | String | Filter transactions for a specific [transaction result](reference-transaction-format.html#transaction-results). |
+| `result` | String | Filter transactions for a specific [transaction result](transaction-results.html). |
 | `binary` | Boolean | If true, return transactions in binary form. Defaults to false. |
 | `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 100. |
 | `marker` | String | [Pagination](#pagination) marker from a previous response. |
@@ -1211,7 +1211,7 @@ The `family` and `metrics` query parameters provide a way to filter results to a
 | Family | Included Metrics | Meaning |
 |--------|------------------|---------|
 | `type` | All XRP Ledger [transaction types](reference-transaction-format.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
-| `result` | All [transaction result codes](reference-transaction-format.html#transaction-results) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
+| `result` | All [transaction result codes](transaction-results.html) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
 | `metric` | Data-API defined Special Transaction Metrics. | (Varies) |
 
 ##### Special Transaction Metrics
@@ -4568,7 +4568,7 @@ Each Transaction Stats Object has the following fields:
 |--------|-------|-------------|
 | `date` | String - [Timestamp][] | This object describes activity on this date. |
 | `transaction_count` | Integer | The total number of transactions sent by the account on this date. |
-| `result` | Object | Map of [transaction result codes](reference-transaction-format.html#transaction-results), indicating how many of each result code occurred in the transactions sent by this account on this date. |
+| `result` | Object | Map of [transaction result codes](transaction-results.html), indicating how many of each result code occurred in the transactions sent by this account on this date. |
 | `type` | Object | Map of [transaction types](reference-transaction-format.html), indicating how many of each transaction type the account sent on this date. |
 
 #### Example
