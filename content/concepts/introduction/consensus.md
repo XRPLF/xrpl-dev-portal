@@ -2,11 +2,11 @@
 
 _Written by Dave Cohen, David Schwartz, and Arthur Britto._
 
-This article provides a high level overview of the XRP Ledger, the information it stores, and how [transactions](reference-transaction-format.html) result in changes to the ledger.
+This article provides a high level overview of the XRP Ledger, the information it stores, and how [transactions](transaction-formats.html) result in changes to the ledger.
 
 When building applications on the XRP Ledger, it is important to understand this process, so as not to be surprised by the behavior of XRP Ledger APIs and their effects.
 
-**Caution:** Transactions are not applied to the XRP Ledger instantaneously; it takes some time for the effects of transactions to be applied. During this process, [`rippled` APIs](reference-rippled.html) may return provisional results that should not be mistaken for the final, immutable results of a transaction. Immutable results can only be determined by looking at validated ledgers.
+**Caution:** Transactions are not applied to the XRP Ledger instantaneously; it takes some time for the effects of transactions to be applied. During this process, [`rippled` APIs](rippled-api.html) may return provisional results that should not be mistaken for the final, immutable results of a transaction. Immutable results can only be determined by looking at validated ledgers.
 
 ## Introduction
 
@@ -18,7 +18,7 @@ The peer-to-peer XRP Ledger network provides a worldwide, shared ledger, which g
 - network settings, such as [transaction costs](transaction-cost.html) and [reserve](reserves.html) amounts
 - a time stamp
 
-For a full, technical description of which data is included in a ledger version, see the [Ledger Format Reference](reference-ledger-format.html).
+For a full, technical description of which data is included in a ledger version, see the [Ledger Format Reference](ledger-data-formats.html).
 
 [![Figure 1: XRP Ledger Elements](img/ledger-components.png)](img/ledger-components.png)
 
@@ -32,7 +32,7 @@ _Figure 2: XRP Ledger Sequence and History_
 
 A ledger instance is identified by its _sequence number_ <a href="#footnote_1" id="footnote_from_1"><sup>1</sup></a>, also called a _ledger index_. Ledgers are numbered incrementally. If the last validated ledger is N, the previous was N-1 and the next is N+1. The N+1 ledger is produced by applying a set of transactions to ledger N.
 
-User level changes to the ledger are the results of transactions. Examples of [transactions](reference-transaction-format.html) include payments, changes to account settings or trust lines, and offers to trade. Each transaction authorizes changes to the ledger and is cryptographically signed by an account owner. Transactions are the only way to authorize changes to an account.
+User level changes to the ledger are the results of transactions. Examples of [transactions](transaction-formats.html) include payments, changes to account settings or trust lines, and offers to trade. Each transaction authorizes changes to the ledger and is cryptographically signed by an account owner. Transactions are the only way to authorize changes to an account.
 
 A ledger instance also contains a set of transactions and metadata about those transactions. The transactions are those that have been applied to the prior ledger to create the new instance. The metadata records precisely the effects of the transaction on the ledger.
 
@@ -42,15 +42,15 @@ _Figure 3: Transactions Applied to Ledger Version_
 
 The set of transactions included in a ledger instance are recorded in that ledger and allow auditability of the XRP Ledger history. If an account balance is different in ledger N+1 than it was in ledger N, then ledger N+1 contains the transaction(s) responsible for the change.
 
-Transactions that appear in a validated ledger may have succeeded in changing the ledger, or may have been processed without doing the requested action. Successful transactions have the **tesSUCCESS** [result code](reference-transaction-format.html#transaction-results) which indicates the requested changes are applied to the ledger and a fee was claimed. Other transactions in the ledger have **tec** class result codes, which indicate transactions that only claim a fee and perform no other changes <a href="#footnote_2" id="footnote_from_2"><sup>2</sup></a>.
+Transactions that appear in a validated ledger may have succeeded in changing the ledger, or may have been processed without doing the requested action. Successful transactions have the **tesSUCCESS** [result code](transaction-results.html) which indicates the requested changes are applied to the ledger and a fee was claimed. Other transactions in the ledger have **tec** class result codes, which indicate transactions that only claim a fee and perform no other changes <a href="#footnote_2" id="footnote_from_2"><sup>2</sup></a>.
 
 Transactions of the **tec** class are included with the ledger because they change an account balance when claiming a fee.
 
 In addition to the **tes** and **tec** class result codes, there are **ter**, **tef** and **tem** class codes. The latter three indicate provisional failures returned by API calls. Only **tes** and **tec** codes appear in ledgers.
 
-When working with [`rippled` APIs](reference-rippled.html), applications must distinguish between candidate transactions proposed for inclusion in a ledger versus validated transactions which are included in a validated ledger. Only transaction results found in a validated ledger are immutable. A candidate transaction may or may not ever be included in a validated ledger.
+When working with [`rippled` APIs](rippled-api.html), applications must distinguish between candidate transactions proposed for inclusion in a ledger versus validated transactions which are included in a validated ledger. Only transaction results found in a validated ledger are immutable. A candidate transaction may or may not ever be included in a validated ledger.
 
-Important: Some [`rippled` APIs](reference-rippled.html) provide provisional results, based on candidate transactions <a href="#footnote_3" id="footnote_from_3"><sup>3</sup></a>. Applications should never rely on provisional results to determine the final outcome of a transaction. The only way to know with certainty that a transaction finally succeeded is to check the status of the transaction until it is both in a validated ledger and has result code tesSUCCESS. If the transaction is in a validated ledger with any other result code, it has failed. If the ledger specified in a transaction’s [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) has been validated, yet the transaction does not appear in that ledger or any before it, then that transaction has failed and can never appear in any ledger. An outcome is final only for transactions that appear in a validated ledger or can never appear because of `LastLedgerSequence` restrictions as explained later in this document.
+Important: Some [`rippled` APIs](rippled-api.html) provide provisional results, based on candidate transactions <a href="#footnote_3" id="footnote_from_3"><sup>3</sup></a>. Applications should never rely on provisional results to determine the final outcome of a transaction. The only way to know with certainty that a transaction finally succeeded is to check the status of the transaction until it is both in a validated ledger and has result code tesSUCCESS. If the transaction is in a validated ledger with any other result code, it has failed. If the ledger specified in a transaction’s [`LastLedgerSequence`](transaction-common-fields.html) has been validated, yet the transaction does not appear in that ledger or any before it, then that transaction has failed and can never appear in any ledger. An outcome is final only for transactions that appear in a validated ledger or can never appear because of `LastLedgerSequence` restrictions as explained later in this document.
 
 ## The XRP Ledger Protocol – Consensus and Validation
 
@@ -82,7 +82,7 @@ _Figure 6: Through Consensus, Nodes Agree On Transaction Set — Nodes apply the
 
 Typically, a transaction which does not pass one round of consensus succeeds in the following round. However, in some circumstances, a transaction could fail to pass consensus indefinitely. One such circumstance is if the network increases the base fee to a value higher than the transaction provides. The transaction could potentially succeed if the fees are lowered at some point in the future.
 
-The [`LastLedgerSequence` transaction field](reference-transaction-format.html#lastledgersequence) is a mechanism to expire such a transaction if it does not execute in a reasonable time frame. Applications should include a `LastLedgerSequence` parameter with each transaction. This ensures a transaction either succeeds or fails on or before the specified ledger sequence number, thus limiting the amount of time an application must wait before obtaining a definitive transaction result. For more information, see [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+The [`LastLedgerSequence` transaction field](transaction-common-fields.html) is a mechanism to expire such a transaction if it does not execute in a reasonable time frame. Applications should include a `LastLedgerSequence` parameter with each transaction. This ensures a transaction either succeeds or fails on or before the specified ledger sequence number, thus limiting the amount of time an application must wait before obtaining a definitive transaction result. For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 ### Validation
 
@@ -126,7 +126,7 @@ The lifecycle of a single transaction is as follows:
     - If a consensus round fails, the consensus process repeats until it succeeds.
 - The validated ledger includes the transaction and its effects on the ledger state.
 
-Applications should only rely on information in validated ledgers, not on the provisional results of candidate transactions. Some [`rippled` APIs](reference-rippled.html) initially return provisional results for transactions. The results of a transaction become immutable only when that transaction is included in a validated ledger, or the transaction includes `LastLedgerSequence` and does not appear in any validated ledger with that sequence number or lower.
+Applications should only rely on information in validated ledgers, not on the provisional results of candidate transactions. Some [`rippled` APIs](rippled-api.html) initially return provisional results for transactions. The results of a transaction become immutable only when that transaction is included in a validated ledger, or the transaction includes `LastLedgerSequence` and does not appear in any validated ledger with that sequence number or lower.
 
 Best practices for applications submitting transactions include:
 
@@ -142,9 +142,9 @@ Best practices for applications submitting transactions include:
 ## Further Resources
 
 - [Consensus White Paper](https://ripple.com/files/ripple_consensus_whitepaper.pdf)
-- [Ledger Format Reference](reference-ledger-format.html)
+- [Ledger Format Reference](ledger-data-formats.html)
 - [Ripple Consensus Video](https://www.youtube.com/watch?v=pj1QVb1vlC0)
-- [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html)
+- [Reliable Transaction Submission](reliable-transaction-submission.html)
 
 
 

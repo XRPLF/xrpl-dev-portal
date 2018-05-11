@@ -26,7 +26,7 @@ This combines qualities of physical and centralized digital money. Prior to the 
 - **Physical coins and paper money**, which individuals can use to do business without going through a central party. As physical objects, they cannot be used online, and doing business long-distance is slow and inconvenient.
 - **Centralized digital currencies**, which need an administrator to confirm transactions. The administrator also has the power to censor or roll back transactions, or disallow some individuals from using the digital currency. If the operator of a digital currency decides someone has violated its terms of service, it can freeze or even confiscate that person's money. However, as digital balances, these currencies can be used online and are convenient across long distances.
 
-**Note:** Users of the XRP Ledger _can_ freeze non-XRP currencies issued in the XRP Ledger. For more information, see the [Freeze documentation](freeze.html).
+**Note:** Users of the XRP Ledger _can_ freeze non-XRP currencies issued in the XRP Ledger. For more information, see the [Freeze documentation](freezes.html).
 
 The XRP Ledger's system of trusted validators uses a small amount of human interaction to achieve better distribution of authority than other decentralized systems. Fully-automated systems for reaching consensus from an unknown set of participants are vulnerable to concentrations of voting power. For example, Bitcoin mining is disproportionately concentrated in places with cheap electricity. As Ripple curates a list of distinct validators operated by different entities in different jurisdictions, the XRP Ledger can become more resistant to censorship and outside pressures than proof-of-work mining. For more information on Ripple's plan to decentralize the recommended set of validators, see the  [Decentralization Strategy Update](https://ripple.com/dev-blog/decentralization-strategy-update/).
 
@@ -38,7 +38,7 @@ The XRP Ledger's biggest difference from most cryptocurrencies is that it uses a
 
 Furthermore, each new "ledger version" in the XRP Ledger (the equivalent of a "block") contains the full current state of all balances, so a server can synchronize with the network in minutes instead of spending hours downloading and re-processing the full transaction history.
 
-For more information on how the XRP Ledger's consensus algorithm works, see [The XRP Ledger Consensus Process](consensus.html). For background on why the XRP Ledger uses this consensus algorithm, see [Reaching Consensus In the XRP Ledger](reaching-consensus.html).
+For more information on how the XRP Ledger's consensus algorithm works, see [The XRP Ledger Consensus Process](consensus.html). For background on why the XRP Ledger uses this consensus algorithm, see [Consensus Principles and Rules](consensus-principles-and-rules.html).
 
 
 ## Finite XRP Supply
@@ -81,7 +81,7 @@ Besides simple value transfer with XRP payments, the XRP Ledger has several adva
 
 A sample of advanced features in the XRP Ledger:
 
-- [Payment Channels](tutorial-paychan.html) allow asynchronous balance changes as fast as you can create and validate signatures.
+- [Payment Channels](use-payment-channels.html) allow asynchronous balance changes as fast as you can create and validate signatures.
 - [Escrow](escrow.html) locks up XRP until a declared time passes or cryptographic condition is met.
 - [DepositAuth](depositauth.html) lets users decide who can send them money and who can't.
 - A [Decentralized Exchange](#on-ledger-decentralized-exchange) lets users trade obligations and XRP on-ledger.
@@ -94,4 +94,4 @@ A sample of advanced features in the XRP Ledger:
 
 One of the biggest features that sets the XRP Ledger apart from other cryptocurrency networks is that it also contains a full currency exchange that runs on the XRP Ledger. Within this system, businesses (typically called "gateways") can freely issue any currency they want to customers, and those customers can freely trade issued currencies for XRP or other issued currencies issued by any gateway. The XRP Ledger can execute atomic cross-currency transactions this way, using orders in the exchange to provide liquidity.
 
-For more information on how the decentralized exchange works, see [Money in the XRP Ledger](money.html) and [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer). For more information on the gateway business model, see the [Gateway Guide](tutorial-gateway-guide.html).
+For more information on how the decentralized exchange works, see [Decentralized Exchange](decentralized-exchange.html). For more information on the gateway business model, see the [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html).
