@@ -643,7 +643,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
-        blurb: Each `rippled` server keeps a complete copy of the XRP Ledger's current state, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger version become candidates to be included in the next validated version.
+        blurb: Each rippled server keeps a complete copy of the XRP Ledger's current state, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger version become candidates to be included in the next validated version.
         template: template-landing-children.html
         targets:
             - local
@@ -912,7 +912,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Server Info Methods
-        blurb: Learn about methods that enable you to retrieve information about the current state of the `rippled` server. These may be useful for monitoring the health of the server, or in preparing to make requests to other API methods.
+        blurb: Learn about methods that enable you to retrieve information about the current state of the rippled server. These may be useful for monitoring the health of the server, or in preparing to make requests to other API methods.
         template: template-landing-children.html
         targets:
             - local
