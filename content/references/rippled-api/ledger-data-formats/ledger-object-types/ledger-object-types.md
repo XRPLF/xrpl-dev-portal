@@ -14,4 +14,4 @@ There are several different kinds of objects that can appear in the ledger's sta
 * [**RippleState** - Links two accounts, tracking the balance of one currency between them. The concept of a _trust line_ is really an abstraction of this object type.](ripplestate.html)
 * [**SignerList** - A list of addresses for multi-signing transactions.](signerlist.html)
 
-Each ledger object consists of several fields. In the peer protocol that `rippled` servers use to communicate with each other, ledger objects are represented in their raw binary format. In [`rippled` APIs](rippled-apis.html), ledger objects are represented as JSON objects.
+Each ledger object consists of several fields. In the peer protocol that `rippled` servers use to communicate with each other, ledger objects are represented in their raw binary format. In the [`rippled` API](rippled-api.html), ledger objects are represented as JSON objects.

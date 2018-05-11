@@ -34,7 +34,7 @@ An AccountSet transaction modifies the properties of an [account in the XRP Ledg
 | WalletLocator                  | String           | Hash256           | _(Optional)_ Not used. |
 | WalletSize                     | Unsigned Integer | UInt32            | _(Optional)_ Not used. |
 
-If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Canceling or Skipping a Transaction](#cancel-or-skip-a-transaction) for more details.
+If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Cancel or Skip a Transaction](cancel-or-skip-a-transaction.html) for more details.
 
 ## Domain
 
