@@ -150,7 +150,35 @@ pages:
         targets:
             - local
 
-    # TODO: multi-signing, depositauth, reserves
+    -   md: concepts/payment-system-basics/accounts/multi-signing.md
+        html: multi-signing.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: Use multi-signing for greater security sending transactions.
+        targets:
+            - local
+
+    -   md: concepts/payment-system-basics/accounts/reserves.md
+        html: reserves.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: XRP Ledger accounts require a reserve of XRP to reduce spam in ledger data.
+        targets:
+            - local
+
+    -   md: concepts/payment-system-basics/accounts/depositauth.md
+        html: depositauth.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: The DepositAuth setting lets an account block incoming payments by default.
+        targets:
+            - local
 
     -   md: concepts/payment-system-basics/fees.md
         html: fees.html
@@ -161,12 +189,33 @@ pages:
         targets:
             - local
 
-    -   md: concepts/payment-system-basics/transaction-cost.md
+    -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
+        html: transaction-basics.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Transaction Basics
+        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
+        targets:
+            - local
+
+    -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
         html: transaction-cost.html
         funnel: Docs
         doc_type: Concepts
         category: Payment System Basics
+        subcategory: Transaction Basics
         blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
+        targets:
+            - local
+
+    -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.md
+        html: finality-of-results.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Transaction Basics
+        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
         targets:
             - local
 
