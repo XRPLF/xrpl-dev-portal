@@ -38,11 +38,11 @@ The `public_key` and `public_key_hex` are the public key in various formats, wit
 
 **account_id**
 
-The `account_id` is [derived from the public key](concept-accounts.html#address-encoding) and designates the *potential* for an account to be created in the XRP Ledger. It is important to know that while an `account_id` exists, no actual account exists in the XRP Ledger until the `account_id` receives its first XRP payment. In addition, the `account_id` can't send any transactions until after it's received a transaction that funds and creates the account.
+The `account_id` is [derived from the public key](accounts.html#address-encoding) and designates the *potential* for an account to be created in the XRP Ledger. It is important to know that while an `account_id` exists, no actual account exists in the XRP Ledger until the `account_id` receives its first XRP payment. In addition, the `account_id` can't send any transactions until after it's received a transaction that funds and creates the account.
 
 The `account_id` (without a funded account) can, however, be used as a [regular key](#regular-key-pair) or a [member of a signer list](reference-transaction-format.html#multi-signing) to authorize transactions for another account that does exist.
 
-To create a funded account stored in the ledger, the `account_id` must [receive a `Payment` transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
+To create a funded account stored in the ledger, the `account_id` must [receive a `Payment` transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
 
 For more information about the `wallet_propose` response, see [`wallet_propose`](reference-rippled.html#wallet-propose).
 
@@ -59,11 +59,11 @@ The master key pair is composed of a private key and a public key. In addition t
 
 * [Disable the master public key](reference-transaction-format.html#accountset-flags).
 
-* Permanently give up the ability to [freeze](concept-freeze.html#no-freeze).
+* Permanently give up the ability to [freeze](freeze.html#no-freeze).
 
-* Send a cost-0 [key reset transaction](concept-transaction-cost.html#key-reset-transaction).
+* Send a cost-0 [key reset transaction](transaction-cost.html#key-reset-transaction).
 
-The master key pair for an account is generated in the same [`wallet_propose`](reference-rippled.html#wallet-propose) response as the `account_id` of the account the master key pair is authorized to sign transactions for. Because the master key pair is generated in the same response, it is [intrinsically related](concept-accounts.html#address-encoding) to the `account_id`, which is derived from the `public_key_hex`.
+The master key pair for an account is generated in the same [`wallet_propose`](reference-rippled.html#wallet-propose) response as the `account_id` of the account the master key pair is authorized to sign transactions for. Because the master key pair is generated in the same response, it is [intrinsically related](accounts.html#address-encoding) to the `account_id`, which is derived from the `public_key_hex`.
 
 This is as opposed to a regular key pair, which is also generated using the `wallet_propose` method, but which must be explicitly assigned as a regular key pair to an account. Because a regular key pair is explicitly assigned, it is not intrinsically related to the `account_id` of the account it is authorized to sign transactions for. For more information, see [Regular Key Pair](#regular-key-pair).
 
@@ -107,7 +107,7 @@ The XRP Ledger supports the following cryptographic signing algorithms:
 
 When you generate a key pair with the [wallet_propose method][], you can specify the `key_type` to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the `key_type` when signing transactions.
 
-The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](concept-accounts.html#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
+The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](accounts.html#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
 
 **Note:** Currently, you cannot sign [payment channel claims](tutorial-paychan.html) with Ed25519 keys. This is a bug.
 

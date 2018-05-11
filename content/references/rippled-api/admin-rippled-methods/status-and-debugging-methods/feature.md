@@ -1,9 +1,9 @@
 # feature
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
-The `feature` command returns information about [amendments](concept-amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](concept-amendments.html#amendment-process). [New in: rippled 0.31.0][]
+The `feature` command returns information about [amendments](amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](amendments.html#amendment-process). [New in: rippled 0.31.0][]
 
-You can use the `feature` command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the `rippled.cfg` file. See [Configuring Amendment Voting](concept-amendments.html#configuring-amendment-voting) for more information.
+You can use the `feature` command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the `rippled.cfg` file. See [Configuring Amendment Voting](amendments.html#configuring-amendment-voting) for more information.
 
 _The `feature` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
 
@@ -177,12 +177,12 @@ The response follows the [standard format](#response-formatting), with a success
 |:------------|:--------|:-----------------------------------------------------|
 | `enabled`   | Boolean | Whether this amendment is currently enabled in the latest ledger. |
 | `name`      | String  | (May be omitted) The human-readable name for this amendment, if known. |
-| `supported` | Boolean | Whether the server knows how to apply this amendment. If this field is set to `false` (the server does not know how to apply this amendment) and `enabled` is set to `true` (this amendment is enabled in the latest ledger), this amendment may cause your server to be [amendment blocked](concept-amendments.html#amendment-blocked). |
+| `supported` | Boolean | Whether the server knows how to apply this amendment. If this field is set to `false` (the server does not know how to apply this amendment) and `enabled` is set to `true` (this amendment is enabled in the latest ledger), this amendment may cause your server to be [amendment blocked](amendments.html#amendment-blocked). |
 | `vetoed`    | Boolean | Whether the server has been instructed to vote against this amendment. |
 
 **Caution:** The `name` for an amendment does not strictly indicate what that amendment does. The name is not guaranteed to be unique or consistent across servers.
 
 ### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `badFeature` - The `feature` specified was invalidly formatted, or the server does not know an amendment with that name.

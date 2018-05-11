@@ -4,7 +4,7 @@ _Requires the [Checks Amendment](reference-amendments.html#checks)._
 
 Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check object in the ledger](reference-ledger-format.html#check) which the recipient can cash later.
 
-In many cases, you want to send a [Payment][] instead of a Check, since that delivers the money directly to the recipient in one step. However, if your intended recipient uses [DepositAuth](concept-depositauth.html), you cannot send them Payments directly, so a Check is a good alternative.
+In many cases, you want to send a [Payment][] instead of a Check, since that delivers the money directly to the recipient in one step. However, if your intended recipient uses [DepositAuth](depositauth.html), you cannot send them Payments directly, so a Check is a good alternative.
 
 This tutorial uses the example of a fictitious company, BoxSend SG (whose XRP Ledger address is rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za) paying a fictitious cryptocurrency consulting company named Grand Payments (with XRP Ledger address rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis) for some consulting work. Grand Payments prefers be paid in XRP, but to simplify their taxes and regulation, only accepts payments they've explicitly approved.
 
@@ -32,7 +32,7 @@ Decide how much money the Check is for and who can cash it. Figure out the value
 | `TransactionType` | String                    | Use the string `CheckCreate` here. |
 | `Account`         | String (Address)          | The address of the sender who is creating the Check. (In other words, your address.) |
 | `Destination`     | String (Address)          | The address of the intended recipient who can cash the Check. |
-| `SendMax`         | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](concept-transfer-fees.html), remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the `SendMax` to 102 CAD from that issuer.) |
+| `SendMax`         | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](transfer-fees.html), remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the `SendMax` to 102 CAD from that issuer.) |
 
 If you are using [RippleAPI](reference-rippleapi.html), you can use the `prepareCheckCreate()` helper method.
 

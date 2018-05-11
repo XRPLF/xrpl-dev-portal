@@ -382,7 +382,7 @@ Each field of the `cluster` object is the public key of that `rippled` server's 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
 | `tag`   | String | The display name for this cluster member as defined in the config file. |
-| `fee`   | Number | (May be omitted) The load multiplier this cluster member is applying to the [transaction cost](concept-transaction-cost.html) |
+| `fee`   | Number | (May be omitted) The load multiplier this cluster member is applying to the [transaction cost](transaction-cost.html) |
 | `age`   | Number | The number of seconds since the last cluster report from this cluster member. |
 
 Each member of the `peers` array is a peer object with the following fields:
@@ -406,4 +406,4 @@ Each member of the `peers` array is a peer object with the following fields:
 
 ### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].

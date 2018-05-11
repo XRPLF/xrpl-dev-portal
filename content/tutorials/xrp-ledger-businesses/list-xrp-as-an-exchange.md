@@ -50,17 +50,17 @@ Before integrating, exchanges should be aware of the [partial payments](referenc
 
 When the [tfPartialPayment flag](reference-transaction-format.html#payment-flags) is enabled, the `Amount` field **_is not guaranteed to be the amount received_**. The `delivered_amount` field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the Amount field to determine how much your account received instead.
 
-**Warning:** Be aware that malicious actors could exploit this. For more information, see [Partial Payments](concept-partial-payments.html).
+**Warning:** Be aware that malicious actors could exploit this. For more information, see [Partial Payments](partial-payments.html).
 
 ### Accounts
 
-XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, accounts can [never be deleted](concept-accounts.html#permanence-of-accounts), and each account must hold a separate [reserve of XRP](concept-reserves.html) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.
+XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, accounts can [never be deleted](accounts.html#permanence-of-accounts), and each account must hold a separate [reserve of XRP](reserves.html) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.
 
 <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet -->
 
 To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 
-* A [_cold wallet_](concept-issuing-and-operational-addresses.html#issuing-address) to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send [deposits](#deposit-xrp-into-exchange).   To provide optimal security, this account's secret key should be offline.
+* A [_cold wallet_](issuing-and-operational-addresses.html#issuing-address) to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send [deposits](#deposit-xrp-into-exchange).   To provide optimal security, this account's secret key should be offline.
 
     If a malicious actor compromises an exchange's cold wallet, the possible consequences are:
 
@@ -76,24 +76,24 @@ To follow Ripple's recommended best practices, Alpha Exchange should create at l
 
         * If a malicious actor sets the asfRequireAuth flag for the account, that cannot be unset, although this only relates to issuing currency and should not affect an exchange that is not also a gateway. Any other settings a malicious actor sets or unsets with a master key can be reverted.
 
-* One or more [_hot wallets_](concept-issuing-and-operational-addresses.html#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
+* One or more [_hot wallets_](issuing-and-operational-addresses.html#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
 
-    For more information about the possible consequences of a compromised hot wallet, see [Operational Account Compromise](concept-issuing-and-operational-addresses.html#operational-address-compromise).
+    For more information about the possible consequences of a compromised hot wallet, see [Operational Account Compromise](issuing-and-operational-addresses.html#operational-address-compromise).
 
 * Optionally, one or more warm wallets to provide an additional layer of security between the cold and hot wallets. Unlike a hot wallet, the secret key of a warm wallet does not need to be online. Additionally, you can distribute the secret keys for the warm wallet to several different people and implement [multisigning](tutorial-multisign.html) to increase security.
 
-    For more information about the possible consequences of a compromised warm wallet, see [Standby Account Compromise](concept-issuing-and-operational-addresses.html#standby-address-compromise).
+    For more information about the possible consequences of a compromised warm wallet, see [Standby Account Compromise](issuing-and-operational-addresses.html#standby-address-compromise).
 
 
 See also:
 
 * ["Suggested Business Practices" in the _Gateway Guide_](tutorial-gateway-guide.html#suggested-business-practices)
 
-* [Issuing and Operational Addresses](concept-issuing-and-operational-addresses.html)
+* [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
 
 * [Creating Accounts](reference-transaction-format.html#creating-accounts)
 
-* [Reserves](concept-reserves.html)
+* [Reserves](reserves.html)
 
 ### Balance Sheets
 
@@ -193,7 +193,7 @@ For more information, see [Specifying Currency Amounts](reference-rippled.html#s
 
 With exchanges like _Alpha Exchange_, XRP can be "on-ledger" or "off-ledger":
 
-* **On-Ledger XRP**: XRP that can be queried through the public XRP Ledger by specifying the public [address](concept-accounts.html#addresses) of the XRP holder. The counterparty to these balances is the XRP Ledger. For more information, see [Currencies](reference-rippled.html#currencies).
+* **On-Ledger XRP**: XRP that can be queried through the public XRP Ledger by specifying the public [address](accounts.html#addresses) of the XRP holder. The counterparty to these balances is the XRP Ledger. For more information, see [Currencies](reference-rippled.html#currencies).
 
 * **Off-Ledger XRP**: XRP that is held by the accounting system of an exchange and can be queried through the exchange interface. Off-ledger XRP balances are credit-based. The counterparty is the exchange holding the XRP.
 
@@ -412,7 +412,7 @@ Customers who hold XRP in their own XRP Ledger accounts can also use the distrib
 
 ### Rebalance XRP Holdings
 
-Exchanges can adjust the balances between their hot and cold wallets at any time. Each balance adjustment consumes a [transaction cost](concept-transaction-cost.html), but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be enough to cover the XRP Ledger's transaction costs.)
+Exchanges can adjust the balances between their hot and cold wallets at any time. Each balance adjustment consumes a [transaction cost](transaction-cost.html), but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be enough to cover the XRP Ledger's transaction costs.)
 
 The following table demonstrates a balance adjustment of 80,000 XRP (via a [_payment_](reference-transaction-format.html#payment) on the XRP Ledger) between Alpha Exchange's cold wallet and its hot wallet, where the cold wallet was debited and the hot wallet was credited. If the payment were reversed (debiting the hot wallet and crediting the cold wallet), the hot wallet balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online hot wallets.
 

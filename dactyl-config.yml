@@ -904,6 +904,15 @@ pages:
        targets:
          - local
 
+    -  md: references/rippled-api/api-conventions/response-formatting.md
+       html: response-formatting.html
+       funnel: Docs
+       doc_type: References
+       supercategory: rippled API
+       category: API Conventions
+       targets:
+         - local
+
     -  md: references/rippled-api/api-conventions/rippled-server-states.md
        html: rippled-server-states.html
        funnel: Docs

@@ -51,7 +51,7 @@ This is a [PaymentChannelCreate transaction][]. As part of this process, the pay
 
 The following example shows creation of a payment channel by [submitting](reference-rippled.html#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (rN7n7...) to the [example payee](#example-values) (rf1Bi...) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
 
-**Note:** A payment channel counts as one object toward the payer's [owner reserve](concept-reserves.html#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
+**Note:** A payment channel counts as one object toward the payer's [owner reserve](reserves.html#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
 
 Request:
 
@@ -160,7 +160,7 @@ In the response from the JSON-RPC, the payer should look for the following:
 
 ## 2. The payee checks specifics of the payment channel.
 
-You can look up payment channels with the [`account_channels` API method](reference-rippled.html#account-channels), using the payer of the channel, as in the following example (using the JSON-RPC API):
+You can look up payment channels with the [account_channels method][], using the payer of the channel, as in the following example (using the JSON-RPC API):
 
 Request:
 
@@ -215,7 +215,7 @@ The amounts of these claims depends on the specific goods or services the payer 
 
 Each claim must be for a cumulative amount. In other words, to buy two items at 10 XRP each, the first claim should have an amount of 10 XRP and the second claim should have an amount of 20 XRP. The claim can never be more than the total amount of XRP allocated to the channel. (A [PaymentChannelFund][] transaction can increase the total amount of XRP allocated to the channel.)
 
-You can create claims with the [`channel_authorize` API method](reference-rippled.html#channel-authorize). The following example authorizes 1 XRP from the channel:
+You can create claims with the [channel_authorize method][]. The following example authorizes 1 XRP from the channel:
 
 Request:
 
@@ -257,7 +257,7 @@ The payee also needs to know the Public Key associated with the channel, which i
 
 ## 5. The payee verifies the claims.
 
-You can verify claims using the [`channel_verify` API method](reference-rippled.html#channel-verify). The payee should confirm that the amount of the claim is equal to or greater than the total price of goods and services provided. (Since the amount is cumulative, this is the total price of all goods and services bought so far.)
+You can verify claims using the [channel_verify method][]. The payee should confirm that the amount of the claim is equal to or greater than the total price of goods and services provided. (Since the amount is cumulative, this is the total price of all goods and services bought so far.)
 
 Example of using `channel_verify` with the JSON-RPC API:
 
@@ -477,7 +477,7 @@ In this example, the `expiration` value 547073182 in [seconds since the Ripple E
 
 After the settlement delay has passed or the channel has reached its planned expiration time, the channel is expired. Any further transaction that would affect the channel can only close it, returning unclaimed XRP to the payer.
 
-The channel can remain on the ledger in an expired state indefinitely. This is because the ledger cannot change except as the results of a transaction, so _someone_ must send a transaction to cause the expired channel to close. As long as the channel remains on the ledger, it counts as an object owned by the payer for purposes of the [owner reserve](concept-reserves.html#owner-reserves).
+The channel can remain on the ledger in an expired state indefinitely. This is because the ledger cannot change except as the results of a transaction, so _someone_ must send a transaction to cause the expired channel to close. As long as the channel remains on the ledger, it counts as an object owned by the payer for purposes of the [owner reserve](reserves.html#owner-reserves).
 
 Ripple recommends that the payer sends a second [PaymentChannelClaim transaction][] with the `tfClose` flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.
 

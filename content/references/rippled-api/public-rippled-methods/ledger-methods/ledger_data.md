@@ -252,7 +252,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors)
+* Any of the [universal error types][]
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 

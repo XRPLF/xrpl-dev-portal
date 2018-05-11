@@ -1,12 +1,12 @@
 # EnableAmendment
 
-Tracks the progress of the [amendment process](concept-amendments.html#amendment-process) for changes in transaction processing. This can indicate that a proposed amendment gained or lost majority approval, or that an amendment has been enabled.
+Tracks the progress of the [amendment process](amendments.html#amendment-process) for changes in transaction processing. This can indicate that a proposed amendment gained or lost majority approval, or that an amendment has been enabled.
 
 **Note:** You cannot send a pseudo-transaction, but you may find one when processing ledgers.
 
 | Field          | JSON Type | [Internal Type][] | Description                 |
 |:---------------|:----------|:------------------|:----------------------------|
-| Amendment      | String    | Hash256           | A unique identifier for the amendment. This is not intended to be a human-readable name. See [Amendments](concept-amendments.html) for a list of known amendments. |
+| Amendment      | String    | Hash256           | A unique identifier for the amendment. This is not intended to be a human-readable name. See [Amendments](amendments.html) for a list of known amendments. |
 | LedgerSequence | Number    | UInt32            | The index of the ledger version where this amendment appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 ## EnableAmendment Flags

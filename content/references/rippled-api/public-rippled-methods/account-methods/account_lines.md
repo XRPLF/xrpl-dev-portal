@@ -170,16 +170,16 @@ Each trust line object has some combination of the following fields:
 | `limit_peer`     | String           | The maximum amount of currency that the counterparty account is willing to owe the perspective account |
 | `quality_in`     | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | `quality_out`    | Unsigned Integer | Rate at which the account values outgoing balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| `no_ripple`      | Boolean          | (May be omitted) `true` if this account has enabled the [NoRipple flag](concept-noripple.html) for this line. If omitted, that is the same as `false`. |
-| `no_ripple_peer` | Boolean          | (May be omitted) `true` if the peer account has enabled the [NoRipple flag](concept-noripple.html). If omitted, that is the same as `false`. |
-| `authorized`     | Boolean          | (May be omitted) `true` if this account has [authorized this trust line](concept-authorized-trust-lines.html). If omitted, that is the same as `false`. |
-| `peer_authorized`| Boolean          | (May be omitted) `true` if the peer account has [authorized this trust line](concept-authorized-trust-lines.html). If omitted, that is the same as `false`. |
-| `freeze`         | Boolean          | (May be omitted) `true` if this account has [frozen](concept-freeze.html) this trust line. If omitted, that is the same as `false`. |
-| `freeze_peer`    | Boolean          | (May be omitted) `true` if the peer account has [frozen](concept-freeze.html) this trust line. If omitted, that is the same as `false`. |
+| `no_ripple`      | Boolean          | (May be omitted) `true` if this account has enabled the [NoRipple flag](noripple.html) for this line. If omitted, that is the same as `false`. |
+| `no_ripple_peer` | Boolean          | (May be omitted) `true` if the peer account has enabled the [NoRipple flag](noripple.html). If omitted, that is the same as `false`. |
+| `authorized`     | Boolean          | (May be omitted) `true` if this account has [authorized this trust line](authorized-trust-lines.html). If omitted, that is the same as `false`. |
+| `peer_authorized`| Boolean          | (May be omitted) `true` if the peer account has [authorized this trust line](authorized-trust-lines.html). If omitted, that is the same as `false`. |
+| `freeze`         | Boolean          | (May be omitted) `true` if this account has [frozen](freeze.html) this trust line. If omitted, that is the same as `false`. |
+| `freeze_peer`    | Boolean          | (May be omitted) `true` if the peer account has [frozen](freeze.html) this trust line. If omitted, that is the same as `false`. |
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

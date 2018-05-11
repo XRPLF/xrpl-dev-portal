@@ -12,10 +12,10 @@ When building applications on the XRP Ledger, it is important to understand this
 
 The peer-to-peer XRP Ledger network provides a worldwide, shared ledger, which gives applications authoritative information about the state of its contents. This state information includes:
 
-- settings for each [account](concept-accounts.html)
+- settings for each [account](accounts.html)
 - balances between accounts (trust lines)
 - offers in the distributed exchange
-- network settings, such as [transaction costs](concept-transaction-cost.html) and [reserve](concept-reserves.html) amounts
+- network settings, such as [transaction costs](transaction-cost.html) and [reserve](reserves.html) amounts
 - a time stamp
 
 For a full, technical description of which data is included in a ledger version, see the [Ledger Format Reference](reference-ledger-format.html).
@@ -102,7 +102,7 @@ Nodes of the network recognize a ledger instance as validated when a supermajori
 
 In cases where a node is in the minority, having computed a ledger that differs from its peers, the node disregards the ledger it computed <a href="#footnote_9" id="footnote_from_9"><sup>9</sup></a>. It recomputes the correct ledger, or retrieves the correct ledger as needed.
 
-If the network fails to achieve supermajority agreement on validations, this implies that transaction volume was too high or network latency too great for the consensus process to produce consistent proposals. In this case, the nodes repeat the consensus process. As time passes since consensus began, it becomes increasingly likely that a majority of the nodes have received the same set of candidate transactions, as each consensus round reduces disagreement. The XRP Ledger dynamically adjusts [transaction costs](concept-transaction-cost.html) and the time to wait for consensus in response to these conditions.
+If the network fails to achieve supermajority agreement on validations, this implies that transaction volume was too high or network latency too great for the consensus process to produce consistent proposals. In this case, the nodes repeat the consensus process. As time passes since consensus began, it becomes increasingly likely that a majority of the nodes have received the same set of candidate transactions, as each consensus round reduces disagreement. The XRP Ledger dynamically adjusts [transaction costs](transaction-cost.html) and the time to wait for consensus in response to these conditions.
 
 [![Figure 9: Network Recognizes a New Validated Ledger Version](img/consensus-validated-ledger.png)](img/consensus-validated-ledger.png)
 

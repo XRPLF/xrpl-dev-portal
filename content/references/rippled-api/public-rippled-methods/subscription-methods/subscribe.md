@@ -116,7 +116,7 @@ The response follows the [standard format](#response-formatting). The fields con
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The request included the `url` field, but you are not connected as an admin.
 * `unknownStream` - One or more the members of the `streams` field of the request is not a valid stream name.
@@ -154,7 +154,7 @@ The fields from a ledger stream message are as follows:
 | `Field`             | Type             | Description                         |
 |:--------------------|:-----------------|:------------------------------------|
 | `type`              | String           | `ledgerClosed` indicates this is from the ledger stream |
-| `fee_base`          | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Cost](concept-transaction-cost.html) If the ledger includes a [SetFee pseudo-transaction](reference-transaction-format.html#setfee) the new transaction cost applies to all transactions after this ledger. |
+| `fee_base`          | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Cost](transaction-cost.html) If the ledger includes a [SetFee pseudo-transaction](reference-transaction-format.html#setfee) the new transaction cost applies to all transactions after this ledger. |
 | `fee_ref`           | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. |
 | `ledger_hash`       | String           | Unique hash of the ledger that was closed, as hex |
 | `ledger_index`      | Unsigned Integer | Sequence number of the ledger that was closed |
@@ -200,15 +200,15 @@ The fields from a validations stream message are as follows:
 | `Field`                 | Type             | Description                     |
 |:------------------------|:-----------------|:--------------------------------|
 | `type`                  | String           | The value `validationReceived` indicates this is from the validations stream. |
-| `amendments`            | Array of Strings | (May be omitted) The [amendments](concept-amendments.html) this server wants to be added to the protocol. [New in: rippled 0.32.0][] |
-| `base_fee`              | Integer          | (May be omitted) The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](concept-fee-voting.html). [New in: rippled 0.32.0][] |
+| `amendments`            | Array of Strings | (May be omitted) The [amendments](amendments.html) this server wants to be added to the protocol. [New in: rippled 0.32.0][] |
+| `base_fee`              | Integer          | (May be omitted) The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
 | `flags`                 | Number           | Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
 | `full`                  | Boolean          | If `true`, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
 | `ledger_hash`           | String           | The identifying hash of the proposed ledger is being validated. |
 | `ledger_index`          | String - Integer | The [Ledger Index][] of the proposed ledger. [New in: rippled 0.31.0][] |
 | `load_fee`              | Integer          | (May be omitted) The local load-scaled transaction cost this validator is currently enforcing, in fee units. [New in: rippled 0.32.0][] |
-| `reserve_base`          | Integer          | (May be omitted) The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](concept-fee-voting.html). [New in: rippled 0.32.0][] |
-| `reserve_inc`           | Integer          | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](concept-fee-voting.html). [New in: rippled 0.32.0][] |
+| `reserve_base`          | Integer          | (May be omitted) The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
+| `reserve_inc`           | Integer          | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
 | `signature`             | String           | The signature that the validator used to sign its vote for this ledger. |
 | `signing_time`          | Number           | When this validation vote was signed, in seconds since the [Ripple Epoch](#specifying-time). [New in: rippled 0.32.0][] |
 | `validation_public_key` | String           | The [base58][] encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
@@ -529,7 +529,7 @@ The format of an order book stream message is the same as that of [transaction s
 
 | `Field`                   | Value  | Description                             |
 |:--------------------------|:-------|:----------------------------------------|
-| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](concept-freeze.html). |
+| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](freeze.html). |
 
 
 {% include '_snippets/rippled_versions.md' %}

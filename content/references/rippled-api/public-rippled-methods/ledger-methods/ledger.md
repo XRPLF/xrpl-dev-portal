@@ -66,7 +66,7 @@ The request can contain the following parameters:
 | `expand`       | Boolean                    | _(Optional)_ Provide full JSON-formatted information for transaction/account information instead of only hashes. Defaults to `false`. Ignored unless you request transactions, accounts, or both. |
 | `owner_funds`  | Boolean                    | _(Optional)_ If `true`, include `owner_funds` field in the metadata of OfferCreate transactions in the response. Defaults to `false`. Ignored unless transactions are included and `expand` is true. |
 | `binary`       | Boolean                    | _(Optional)_ If `true`, and `transactions` and `expand` are both also `true`, return transaction information in binary format (hexadecimal string) instead of JSON format. [New in: rippled 0.28.0][] |
-| `queue`        | Boolean                    | _(Optional)_ If `true`, and the command is requesting the `current` ledger, includes an array of [queued transactions](concept-transaction-cost.html#queued-transactions) in the results.
+| `queue`        | Boolean                    | _(Optional)_ If `true`, and the command is requesting the `current` ledger, includes an array of [queued transactions](transaction-cost.html#queued-transactions) in the results.
 
 The `ledger` field is deprecated and may be removed without further notice.
 
@@ -178,7 +178,7 @@ Each member of the `queue_data` array represents one transaction in the queue. S
 | `preflight_result`  | String           | The tentative result from preliminary transaction checking. This is always `tesSUCCESS`. |
 | `last_result`       | String           | _(May be omitted)_ If this transaction was left in the queue after getting a [retriable (`ter`) result](reference-transaction-format.html#result-categories), this is the exact `ter` result code it got. |
 | `auth_change`       | Boolean          | _(May be omitted)_ Whether this transaction changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). |
-| `fee`               | String           | _(May be omitted)_ The [Transaction Cost](concept-transaction-cost.html) of this transaction, in [drops of XRP](#specifying-currency-amounts). |
+| `fee`               | String           | _(May be omitted)_ The [Transaction Cost](transaction-cost.html) of this transaction, in [drops of XRP](#specifying-currency-amounts). |
 | `fee_level`         | String           | _(May be omitted)_ The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in [fee levels][]. |
 | `max_spend_drops`   | String           | _(May be omitted)_ The maximum amount of XRP, [in drops](#specifying-currency-amounts), this transaction could potentially send or destroy. |
 
@@ -186,17 +186,17 @@ If the request specified `"owner_funds": true` and expanded transactions, the re
 
 | `Field`       | Value  | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|
-| `owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is [frozen](concept-freeze.html). |
+| `owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is [frozen](freeze.html). |
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `noPermission` - If you specified `full` or `accounts` as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).
 
 
 <!-- TODO: we should add this fee levels link to rippled-api-links.md. server_state.md is also including this as a one-off.-->
-[fee levels]: concept-transaction-cost.html#fee-levels
+[fee levels]: transaction-cost.html#fee-levels
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}

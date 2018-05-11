@@ -6,13 +6,13 @@ Every ledger version has a unique header that describes the contents. You can lo
 | Field           | JSON Type | [Internal Type][] | Description |
 |-----------------|-----------|-------------------|-------------|
 | [`ledger_index`](#ledger-index)   | String    | UInt32            | The sequence number of the ledger. Some API methods display this as a quoted integer; some display it as a native JSON number. |
-| `ledger_hash`    | String    | Hash256           | The [SHA-512Half](#sha512half) of the ledger header, excluding the `ledger_hash` itself. This serves as a unique identifier for this ledger and all its contents. |
-| `account_hash`   | String    | Hash256           | The [SHA-512Half](#sha512half) of this ledger's state tree information. |
+| `ledger_hash`    | String    | Hash256           | The [SHA-512Half][] of the ledger header, excluding the `ledger_hash` itself. This serves as a unique identifier for this ledger and all its contents. |
+| `account_hash`   | String    | Hash256           | The [SHA-512Half][] of this ledger's state tree information. |
 | `close_time`     | Number    | UInt32            | The approximate time this ledger closed, as the number of seconds since the Ripple Epoch of 2000-01-01 00:00:00. This value is rounded based on the `close_time_resolution`, so later ledgers can have the same value. |
 | `closed`          | Boolean   | bool              | If true, this ledger version is no longer accepting new transactions. (However, unless this ledger version is validated, it might be replaced by a different ledger version with a different set of transactions.) |
 | `parent_hash`    | String    | Hash256           | The `ledger_hash` value of the previous ledger that was used to build this one. If there are different versions of the previous ledger index, this indicates from which one the ledger was derived. |
 | `total_coins`    | String    | UInt64            | The total number of [drops of XRP][XRP, in drops] owned by accounts in the ledger. This omits XRP that has been destroyed by transaction fees. The actual amount of XRP in circulation is lower because some accounts are "black holes" whose keys are not known by anyone. |
-| `transaction_hash` | String  | Hash256           | The [SHA-512Half](#sha512half) of the transactions included in this ledger. |
+| `transaction_hash` | String  | Hash256           | The [SHA-512Half][] of the transactions included in this ledger. |
 | `close_time_resolution` | Number | Uint8        | An integer in the range \[2,120\] indicating the maximum number of seconds by which the `close_time` could be rounded. |
 | [`closeFlags`](#close-flags) | (Omitted) | UInt8             | A bit-map of flags relating to the closing of this ledger. |
 

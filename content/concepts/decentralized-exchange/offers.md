@@ -19,7 +19,7 @@ It is possible for an offer to become temporarily or permanently _unfunded_:
 
 * If the creator no longer has any of the `TakerGets` currency.
     * The offer becomes funded again when the creator obtains more of that currency.
-* If the currency required to fund the offer is held in a [frozen trust line](concept-freeze.html).
+* If the currency required to fund the offer is held in a [frozen trust line](freeze.html).
     * The offer becomes funded again when the trust line is no longer frozen.
 * If the creator does not have enough XRP for the reserve amount of a new trust line required by the offer. (See [Offers and Trust](#offers-and-trust).)
     * The offer becomes funded again when the creator obtains more XRP, or the reserve requirements decrease.
@@ -44,7 +44,7 @@ A client application can locally track the funding status of offers. To do this,
 
 The limit values of trust lines (See [TrustSet](#trustset)) do not affect offers. In other words, you can use an offer to acquire more than the maximum amount you trust an issuer to redeem.
 
-However, holding non-XRP balances still requires a trust line to the address issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](concept-reserves.html), any offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.
+However, holding non-XRP balances still requires a trust line to the address issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](reserves.html), any offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.
 
 A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers are explicit instructions to acquire certain issuances, so they are allowed to go beyond those limits.
 
@@ -64,7 +64,7 @@ You can determine the final disposition of an offer with an `Expiration` as soon
 
 **Note:** Since only new transactions can modify the ledger, an expired offer can stay on the ledger after it becomes inactive. The offer is treated as unfunded and has no effect, but it can continue to appear in results (for example, from the [ledger_entry](reference-rippled.html#ledger-entry) command). Later on, the expired offer can get finally deleted as a result of another transaction (such as another OfferCreate) if the server finds it while processing.
 
-If an OfferCreate transaction has an `Expiration` time that has already passed when the transaction first gets included in a ledger, the transaction does not execute the offer. The result code of such a transaction depends on whether the [Checks amendment](reference-amendments.html#checks) is enabled. With the Checks amendment enabled, the transaction has the `tecEXPIRED` result code. Otherwise, the transaction has the `tesSUCCESS` transaction code. In either case, the transaction has no effect except to destroy the XRP paid as a [transaction cost](concept-transaction-cost.html).
+If an OfferCreate transaction has an `Expiration` time that has already passed when the transaction first gets included in a ledger, the transaction does not execute the offer. The result code of such a transaction depends on whether the [Checks amendment](reference-amendments.html#checks) is enabled. With the Checks amendment enabled, the transaction has the `tecEXPIRED` result code. Otherwise, the transaction has the `tesSUCCESS` transaction code. In either case, the transaction has no effect except to destroy the XRP paid as a [transaction cost](transaction-cost.html).
 
 
 <!--{# common link defs #}-->

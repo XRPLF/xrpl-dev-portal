@@ -25,7 +25,7 @@ Many objects in the ledger are owned by a particular address, and count toward t
 - [Held Payments (Escrow)](reference-ledger-format.html#escrow) are owned by the address that placed them.
 - [Payment Channels](tutorial-paychan.html) are owned by the address that created them.
 - [Owner directories](reference-ledger-format.html#directorynode) list all the ledger objects that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.
-- [Checks](concept-checks.html) are owned by the address that created them (the sender, not the destination).
+- [Checks](checks.html) are owned by the address that created them (the sender, not the destination).
 
 #### Owner Reserve Edge Cases
 
@@ -35,7 +35,7 @@ The XRP Ledger considers an [OfferCreate transaction][] to be an explicit statem
 
 ## Going Below the Reserve Requirement
 
-During transaction processing, the [transaction cost](concept-transaction-cost.html) destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.
+During transaction processing, the [transaction cost](transaction-cost.html) destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.
 
 When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would transfer XRP to others, or increase its own reserve. Even so, the address continues to exist in the ledger and can send other transactions as long as it has enough XRP to pay the transaction cost. The address can become able to send all types of transactions again if it receives enough XRP to meet its reserve requirement again, or if the [reserve requirement decreases](#changing-the-reserve-requirements) to less than the address's XRP holdings.
 
@@ -43,6 +43,6 @@ When an address holds less XRP than its current reserve requirement, it cannot s
 
 ## Changing the Reserve Requirements
 
-The XRP Ledger has a mechanism to adjust the reserve requirements for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](concept-fee-voting.html) for more information.
+The XRP Ledger has a mechanism to adjust the reserve requirements for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](fee-voting.html) for more information.
 
 {% include '_snippets/tx-type-links.md' %}

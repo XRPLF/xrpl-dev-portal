@@ -10,7 +10,7 @@ All non-XRP currency balances (issuances) in the XRP Ledger are tied to accounti
 
 When the issuing address sends payments, it creates balances in the accounting relationships in the XRP Ledger. Within the XRP Ledger, users can exchange balances across different accounting relationships, so we use the term _issuances_ to describe any non-XRP balance. Issuances have negative value from the perspective of the issuing address, since they represent obligations. The same issuances have positive value from the perspective of the issuing address's counterparties. When the issuing address receives a payment, this reduces its obligations, erasing the issuances that were sent.
 
-The issuing address sends issuances to a standby address, or directly to an operational address. The standby addresses send those issuances to operational addresses. Operational addresses send payments to other counterparties, such as liquidity providers, partners, and other customers. Because all issuances are tied to accounting relationships with the issuing address, payments and exchanges of issuances "ripple through" the issuing address. The payment debits the sender's balance in its accounting relationship with the issuing address and credits the recipient's balance in the recipient's accounting relationship with the issuing address. The XRP Ledger also supports more complicated [paths](concept-paths.html) that connect multiple issuers through order books and [liquidity providers who allow their funds to ripple](concept-noripple.html).
+The issuing address sends issuances to a standby address, or directly to an operational address. The standby addresses send those issuances to operational addresses. Operational addresses send payments to other counterparties, such as liquidity providers, partners, and other customers. Because all issuances are tied to accounting relationships with the issuing address, payments and exchanges of issuances "ripple through" the issuing address. The payment debits the sender's balance in its accounting relationship with the issuing address and credits the recipient's balance in the recipient's accounting relationship with the issuing address. The XRP Ledger also supports more complicated [paths](paths.html) that connect multiple issuers through order books and [liquidity providers who allow their funds to ripple](noripple.html).
 
 ## Issuing Address
 
@@ -24,7 +24,7 @@ If a malicious actor learns the secret key behind a institution's issuing addres
 
 ### Multiple Issuing Addresses
 
-A financial institution can issue more than one currency in the XRP Ledger from a single issuing address. However, there are some settings that apply equally to all currencies issued from an address, including the percentage for [transfer fees](concept-transfer-fees.html) and the [global freeze](concept-freeze.html) status. If the financial institution wants the flexibility to manage settings differently for each currency, the institution must use a different issuing address for each currency.
+A financial institution can issue more than one currency in the XRP Ledger from a single issuing address. However, there are some settings that apply equally to all currencies issued from an address, including the percentage for [transfer fees](transfer-fees.html) and the [global freeze](freeze.html) status. If the financial institution wants the flexibility to manage settings differently for each currency, the institution must use a different issuing address for each currency.
 
 
 ## Operational Addresses

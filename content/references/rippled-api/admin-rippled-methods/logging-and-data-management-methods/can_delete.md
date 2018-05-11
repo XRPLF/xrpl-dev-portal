@@ -62,7 +62,7 @@ Use this command with no parameter to query the existing `can_delete` setting.
 
 ### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `notEnabled` - Not enabled in configuration.
 * `notReady` - Not ready to handle this request.
 * `lgrNotFound` - Ledger not found.

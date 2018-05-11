@@ -2,7 +2,7 @@
 
 _Requires the [Checks Amendment](reference-amendments.html#checks)._
 
-This tutorial shows how to look up [Checks](concept-checks.html) by their recipient. You may also want to [look up Checks by sender](tutorial-checks-lookup-by-sender.html).
+This tutorial shows how to look up [Checks](checks.html) by their recipient. You may also want to [look up Checks by sender](tutorial-checks-lookup-by-sender.html).
 
 ## 1. Look up all Checks for the address
 

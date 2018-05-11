@@ -2,7 +2,7 @@
 
 The XRP Ledger allows an account to authorize a secondary key pair, called a _regular key pair_, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your account and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)
 
-For more information about master and regular key pairs, see [Cryptographic Keys](concept-cryptographic-keys.html).
+For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
 
 This tutorial walks through the steps required to assign a regular key pair to your account:
 
@@ -665,7 +665,7 @@ Now that you're familiar with the benefits of assigning a regular key pair to an
 
 - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
 - [How to Multi-Sign](tutorial-multisign.html)
-- [Issuing and Operational Addresses](concept-issuing-and-operational-addresses.html)
+- [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
 - [Listing XRP as an Exchange](tutorial-listing-xrp.html)
 
 <!--{# common link defs #}-->

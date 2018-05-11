@@ -1,7 +1,7 @@
 # wallet_propose
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](concept-reserves.html).
+Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
 
 *The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
@@ -180,13 +180,13 @@ You can also use this method to generate a key pair to use as a regular key pair
 
 In addition to using it as a regular key pair, you can also use it as a member of a multi-signing list (SignerList).
 
-For more information about master and regular key pairs, see [Cryptographic Keys](concept-cryptographic-keys.html)
+For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html)
 
 For more information about multi-signing and signer lists, see [Multi-Signing](reference-transaction-format.html#multi-signing).
 
 
 ### Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly.
 * `badSeed` - The request specified a disallowed seed value (in the `passphrase`, `seed`, or `seed_hex` fields), such as an empty string, or a string resembling a XRP Ledger address.

@@ -6,7 +6,7 @@ Some of the fields that are mandatory for normal transactions do not make sense 
 
 | Field         | Default Value                                            |
 |:--------------|:---------------------------------------------------------|
-| Account       | [ACCOUNT_ZERO](concept-accounts.html#special-addresses) |
+| Account       | [ACCOUNT_ZERO](accounts.html#special-addresses) |
 | Sequence      | 0                                                        |
 | Fee           | 0                                                        |
 | SigningPubKey | ""                                                       |

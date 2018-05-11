@@ -138,11 +138,11 @@ The response follows the [standard format](#response-formatting), with a success
 | `send_currencies`    | Array of Strings           | Array of [Currency Code][]s for currencies that this account can send. |
 | `validated`          | Boolean                    | If `true`, this data comes from a validated ledger. |
 
-**Note:** The currencies that an account can send or receive are defined based on a check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method _doesn't_ check whether the trust line is [frozen](concept-freeze.html) or authorized.
+**Note:** The currencies that an account can send or receive are defined based on a check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method _doesn't_ check whether the trust line is [frozen](freeze.html) or authorized.
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

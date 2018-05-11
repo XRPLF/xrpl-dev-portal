@@ -1,38 +1,36 @@
-<!-- TODO: update all the local links with their new locations -->
-
-[Currency Amount]: reference-rippled-api-conventions.html#specifying-currency-amounts
-[XRP, in drops]: reference-rippled-api-conventions.html#specifying-currency-amounts
-[drops of XRP]: reference-rippled-api-conventions.html#specifying-currency-amounts
-
+<!--{# Links within the dev portal #}-->
+[Address]: basic-data-types.html#addresses
+[admin command]: admin-rippled-methods.html
+[common fields]: transaction-common-fields.html
+[Currency Amount]: basic-data-types.html#specifying-currency-amounts
+[Currency Code]: currency-formatting.html#currency-codes
+[drops of XRP]: basic-data-types.html#specifying-currency-amounts
+[Hash]: basic-data-types.html#hashes
+[Ledger Index]: basic-data-types.html#ledger-index
+[Marker]: markers-and-pagination.html
+[result code]: transaction-results.html
+[seconds since the Ripple Epoch]: basic-data-types.html#specifying-time
+[Sequence Number]: basic-data-types.html#account-sequence
+[SHA-512Half]: ledger-data-formats.html#sha512half
+[Specifying Ledgers]: basic-data-types.html#specifying-ledgers
+[Specifying Time]: basic-data-types.html#specifying-time
+[standard format]: response-formatting.html
 [Transaction Cost]: transaction-cost.html
 [transaction cost]: transaction-cost.html
-[ripple-lib]: https://github.com/ripple/ripple-lib
+[universal error types]: error-formatting.html#universal-errors
+[XRP, in drops]: basic-data-types.html#specifying-currency-amounts
 
-[Currency Code]: reference-rippled-api-conventions.html#currency-codes
-[Address]: reference-rippled-api-conventions.html#addresses
-[Hash]: reference-rippled-api-conventions.html#hashes
-[Sequence Number]: reference-rippled-api-conventions.html#account-sequence
-[Ledger Index]: reference-rippled-api-conventions.html#ledger-index
-[universal error types]: reference-rippled-api-conventions.html#universal-errors
-[Specifying Time]: reference-rippled-api-conventions.html#time
+<!--{# Links to external sites #}-->
 [base58]: https://en.wikipedia.org/wiki/Base58
-[RFC-1751]: https://tools.ietf.org/html/rfc1751
-[hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
-[admin command]: reference-rippled-intro.html#admin-connections
-[standard format]: reference-rippled-intro.html#response-formatting
-[seconds since the Ripple Epoch]: reference-rippled-api-conventions.html#time
-[result code]: reference-transaction-results.html
-[Specifying Ledgers]: reference-rippled-api-conventions.html#specifying-ledgers
-[Marker]: reference-rippled-api-conventions.html#markers-and-pagination
-
-[Interledger Protocol]: https://interledger.org/
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
 [crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
-
-<!--{# Transaction reference common links #}-->
+[hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
+[Interledger Protocol]: https://interledger.org/
 [Internal Type]: https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp
-[common fields]: transaction-common-fields.html
+[RFC-1751]: https://tools.ietf.org/html/rfc1751
+[ripple-lib]: https://github.com/ripple/ripple-lib
 
+<!--{# rippled API methods #}-->
 {% set api_methods = [
   "account_channels",
   "account_currencies",

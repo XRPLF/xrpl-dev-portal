@@ -61,12 +61,12 @@ The available AccountSet flags are:
 | Flag Name        | Decimal Value | Corresponding Ledger Flag | Description   |
 |:-----------------|:--------------|:--------------------------|:--------------|
 | asfAccountTxnID  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [AccountTxnID](#accounttxnid) |
-| asfDefaultRipple | 8             | lsfDefaultRipple          | Enable [rippling](concept-noripple.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
-| asfDepositAuth   | 9             | lsfDepositAuth            | Enable [Deposit Authorization](concept-depositauth.html) on this account. _(Requires the [DepositAuth amendment](reference-amendments.html#depositauth).)_ |
+| asfDefaultRipple | 8             | lsfDefaultRipple          | Enable [rippling](noripple.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
+| asfDepositAuth   | 9             | lsfDepositAuth            | Enable [Deposit Authorization](depositauth.html) on this account. _(Requires the [DepositAuth amendment](reference-amendments.html#depositauth).)_ |
 | asfDisableMaster | 4             | lsfDisableMaster          | Disallow use of the master key. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](#setregularkey) or a [Signer List](#signerlistset). |
 | asfDisallowXRP   | 3             | lsfDisallowXRP            | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) |
-| asfGlobalFreeze  | 7             | lsfGlobalFreeze           | [Freeze](concept-freeze.html) all assets issued by this account. |
-| asfNoFreeze      | 6             | lsfNoFreeze               | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](concept-freeze.html). This flag can never be disabled after being enabled. |
+| asfGlobalFreeze  | 7             | lsfGlobalFreeze           | [Freeze](freeze.html) all assets issued by this account. |
+| asfNoFreeze      | 6             | lsfNoFreeze               | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](freeze.html). This flag can never be disabled after being enabled. |
 | asfRequireAuth   | 2             | lsfRequireAuth            | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
 | asfRequireDest   | 1             | lsfRequireDestTag         | Require a destination tag to send transactions to this account. |
 
@@ -96,7 +96,7 @@ You can protect against unwanted incoming payments for non-XRP currencies by not
 
 ## TransferRate
 
-The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See [Transfer Fees](concept-transfer-fees.html) for more information.
+The TransferRate field specifies a fee to charge whenever counterparties transfer the currency you issue. See [Transfer Fees](transfer-fees.html) for more information.
 
 In `rippled`'s WebSocket and JSON-RPC APIs, the TransferRate is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `1200000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.
 

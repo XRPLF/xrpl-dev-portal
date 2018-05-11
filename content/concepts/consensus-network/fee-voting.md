@@ -1,6 +1,6 @@
 # Fee Voting
 
-Validators can vote for changes to basic [transaction cost](concept-transaction-cost.html) as well as [reserve requirements](concept-reserves.html). If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to adjust to long-term changes in the value of XRP.
+Validators can vote for changes to basic [transaction cost](transaction-cost.html) as well as [reserve requirements](reserves.html). If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to adjust to long-term changes in the value of XRP.
 
 Operators of [`rippled` validators](tutorial-rippled-setup.html#running-a-validator) can set their preferences for the transaction cost and reserve requirements in the `[voting]` stanza of the `rippled.cfg` file.
 

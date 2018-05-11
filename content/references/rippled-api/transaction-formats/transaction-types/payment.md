@@ -33,13 +33,13 @@ Payments are also the only way to [create accounts](#creating-accounts).
 | Destination    | String               | Account           | The unique address of the account receiving the payment. |
 | DestinationTag | Unsigned Integer     | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
 | InvoiceID      | String               | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
-| Paths          | Array of path arrays | PathSet           | (Optional, auto-fillable) Array of [payment paths](concept-paths.html) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
-| SendMax        | [Currency Amount][]  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](concept-transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](#transaction-cost). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+| Paths          | Array of path arrays | PathSet           | (Optional, auto-fillable) Array of [payment paths](paths.html) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
+| SendMax        | [Currency Amount][]  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](#transaction-cost). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
 | DeliverMin     | [Currency Amount][]  | Amount            | _(Optional)_ Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). For non-XRP amounts, the nested field names are lower-case. |
 
 ## Special issuer Values for SendMax and Amount
 
-Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates a financial institution's [issuing address](concept-issuing-and-operational-addresses.html). However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
+Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates a financial institution's [issuing address](issuing-and-operational-addresses.html). However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
 
 * There is only ever one balance for the same currency between two addresses. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty that is redeeming issuances, instead of the address that created the issuances.
 * When the `issuer` field of the destination `Amount` field matches the `Destination` address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all addresses to which the destination has extended trust lines, as well as issuances created by the destination which are held on other trust lines.
@@ -49,7 +49,7 @@ Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates 
 
 The Payment transaction type can create new accounts in the XRP Ledger by sending enough XRP to an unfunded address. Other transactions to unfunded addresses always fail.
 
-For more information, see [Accounts](concept-accounts.html#creating-accounts).
+For more information, see [Accounts](accounts.html#creating-accounts).
 
 ## Paths
 
@@ -64,7 +64,7 @@ If the `Paths` field is provided, the server decides at transaction processing t
 
 The `Paths` field must not be an empty array, nor an array whose members are all empty arrays.
 
-For more information, see [Paths](concept-paths.html).
+For more information, see [Paths](paths.html).
 
 ## Payment Flags
 
@@ -84,7 +84,7 @@ A partial payment is any [Payment transaction][] with the **tfPartialPayment** f
 
 The [`delivered_amount`](#delivered-amount) field of a payment's metadata indicates the amount of currency actually received by the destination account.
 
-For more information, see the full article on [Partial Payments](concept-partial-payments.html).
+For more information, see the full article on [Partial Payments](partial-payments.html).
 
 
 ## Limit Quality

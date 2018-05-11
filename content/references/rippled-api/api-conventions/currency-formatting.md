@@ -1,6 +1,6 @@
 # Currency Formats
 
-The XRP Ledger has [two kinds of money](concept-money.html): XRP, and issued currencies. In the XRP Ledger, both types have high precision, although their formats are different.
+The XRP Ledger has [two kinds of money](money.html): XRP, and issued currencies. In the XRP Ledger, both types have high precision, although their formats are different.
 
 ## String Formatting
 
@@ -38,7 +38,7 @@ When transmitting non-XRP amounts across the network or recording them in ledger
 
 ## Currency Codes
 
-All non-XRP currencies in the XRP Ledger have a 160-bit currency code. The [`rippled` APIs](reference-rippled.html) map 3-character ASCII strings (case-sensitive) to 160-bit currency codes using a standard mapping. The currency code `XRP` is disallowed for issued currencies. Currencies with the same code can [ripple](concept-noripple.html) across connected trustlines. Currency codes have no other behavior built into the XRP Ledger.
+All non-XRP currencies in the XRP Ledger have a 160-bit currency code. The [`rippled` APIs](reference-rippled.html) map 3-character ASCII strings (case-sensitive) to 160-bit currency codes using a standard mapping. The currency code `XRP` is disallowed for issued currencies. Currencies with the same code can [ripple](noripple.html) across connected trustlines. Currency codes have no other behavior built into the XRP Ledger.
 
 ### Standard Currency Codes
 
@@ -57,4 +57,4 @@ The standard currency mapping allocates the bits as follows:
 
 You can also issue currency of other types by using a 160-bit (40-character) hexadecimal string such as `015841551A748AD2C1F76FF6ECB0CCCD00000000` as the currency code. To prevent this from being treated as a different currency code type, the first 8 bits MUST NOT be `0x00`.
 
-**Deprecated:** Some previous versions of [ripple-lib](https://github.com/ripple/ripple-lib) supported an "interest-bearing" or "demurraging" currency code type. These currencies have the first 8 bits `0x01`. Demurraging / interest-bearing currencies are no longer supported, but you may encounter them in ledger data. For more information, see [Demurrage](concept-demurrage.html).
+**Deprecated:** Some previous versions of [ripple-lib](https://github.com/ripple/ripple-lib) supported an "interest-bearing" or "demurraging" currency code type. These currencies have the first 8 bits `0x01`. Demurraging / interest-bearing currencies are no longer supported, but you may encounter them in ledger data. For more information, see [Demurrage](demurrage.html).

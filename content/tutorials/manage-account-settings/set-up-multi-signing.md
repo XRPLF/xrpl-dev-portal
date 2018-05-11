@@ -11,14 +11,14 @@ This tutorial demonstrates how to enable multi-signing for an address.
 
 - You must have access to a tool that can generate key pairs in the XRP Ledger format. If you are using a `rippled` server for this, you must have admin access because the [wallet_propose method][] is admin-only.
 
-- Multi-signing must be available. Multi-signing has been enabled by an [**Amendment**](concept-amendments.html) to the XRP Ledger Consensus Protocol since 2016-06-27.
+- Multi-signing must be available. Multi-signing has been enabled by an [**Amendment**](amendments.html) to the XRP Ledger Consensus Protocol since 2016-06-27.
 
 
 ## 1. Prepare a funded address
 
-You need an XRP Ledger address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the [account reserve](concept-reserves.html) and [transaction cost](concept-transaction-cost.html), increasing with the number of signers and signatures you use.
+You need an XRP Ledger address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the [account reserve](reserves.html) and [transaction cost](transaction-cost.html), increasing with the number of signers and signatures you use.
 
-If you started `rippled` in [stand-alone mode](concept-stand-alone-mode.html) with a new genesis ledger, you must:
+If you started `rippled` in [stand-alone mode](stand-alone-mode.html) with a new genesis ledger, you must:
 
 1. Generate keys for a new address, or reuse keys you already have.
 2. Submit a Payment transaction to fund the new address from the genesis account. (Send at least 100,000,000 [drops of XRP](reference-rippled.html#specifying-currency-amounts).)
@@ -129,7 +129,7 @@ In this example, the SignerList has 3 members, with the weights and quorum set u
 
 Make sure that the [Transaction Result](reference-transaction-format.html#transaction-results) is [**tesSUCCESS**](reference-transaction-format.html#tes-success). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](#availability-of-multi-signing).
 
-**Note:** The more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](concept-reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](reference-transaction-format.html#tec-codes). See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
+**Note:** The more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](reference-transaction-format.html#tec-codes). See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
 
 
 ## 4. Close the ledger

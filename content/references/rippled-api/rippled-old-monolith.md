@@ -144,7 +144,7 @@ All field names are case-sensitive. In responses, fields that are taken directly
 
 Different types of objects are uniquely identified in different ways:
 
-[Accounts](concept-accounts.html) are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
+[Accounts](accounts.html) are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
 
 [Transactions](reference-transaction-format.html) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
@@ -294,7 +294,7 @@ The format of the `marker` field is intentionally undefined. Each server can def
 
 ## Modifying the Ledger
 
-All changes to the XRP Ledger happen as the result of transactions. The only API methods that can change the contents of the XRP Ledger are the commands that submit transactions. Even then, changes only apply permanently if the transactions are approved by the [consensus process](concept-consensus.html). Most other public methods represent different ways to view the data represented in the XRP Ledger, or request information about the state of the server.
+All changes to the XRP Ledger happen as the result of transactions. The only API methods that can change the contents of the XRP Ledger are the commands that submit transactions. Even then, changes only apply permanently if the transactions are approved by the [consensus process](consensus.html). Most other public methods represent different ways to view the data represented in the XRP Ledger, or request information about the state of the server.
 
 Transaction submission commands:
 
@@ -325,7 +325,7 @@ You can use the `rippled` application (as a separate instance) as a JSON-RPC cli
 
 # Account Information
 
-For more information, see [Accounts](concept-accounts.html).
+For more information, see [Accounts](accounts.html).
 
 {% include 'rippled-api-methods/wallet_propose.md' %}
 

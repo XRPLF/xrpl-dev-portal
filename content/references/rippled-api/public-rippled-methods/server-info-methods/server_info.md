@@ -280,7 +280,7 @@ The `info` object may have some arrangement of the following fields:
 
 | `Field`                             | Type                      | Description |
 |:------------------------------------|:--------------------------|:-----------|
-| `amendment_blocked`                 | Boolean                   | _(May be omitted)_ If `true`, this server is [amendment blocked](concept-amendments.html#amendment-blocked). If the server is not amendment blocked, the response omits this field. [New in: rippled 0.80.0][] |
+| `amendment_blocked`                 | Boolean                   | _(May be omitted)_ If `true`, this server is [amendment blocked](amendments.html#amendment-blocked). If the server is not amendment blocked, the response omits this field. [New in: rippled 0.80.0][] |
 | `build_version`                     | String                    | The version number of the running `rippled` version. |
 | `closed_ledger`                     | Object                    | (May be omitted) Information on the most recently closed ledger that has not been validated by consensus. If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. The member fields are the same as the `validated_ledger` field. |
 | `complete_ledgers`                  | String                    | Range expression indicating the sequence numbers of the ledger versions the local rippled has in its database. This may be a disjoint sequence, for example `24900901-24900984,24901116-24901158`. |
@@ -290,13 +290,13 @@ The `info` object may have some arrangement of the following fields:
 | `load`                              | Object                    | _(Admin only)_ Detailed information about the current load state of the server |
 | `load.job_types`                    | Array                     | _(Admin only)_ Information about the rate of different types of jobs the server is doing and how much time it spends on each. |
 | `load.threads`                      | Number                    | _(Admin only)_ The number of threads in the server's main job pool. |
-| `load_factor`                       | Number                    | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](concept-transaction-cost.html#local-load-cost), the cluster's load factor, the [open ledger cost](concept-transaction-cost.html#open-ledger-cost) and the overall network's load factor. [Updated in: rippled 0.33.0][New in: rippled 0.33.0] |
+| `load_factor`                       | Number                    | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](transaction-cost.html#local-load-cost), the cluster's load factor, the [open ledger cost](transaction-cost.html#open-ledger-cost) and the overall network's load factor. [Updated in: rippled 0.33.0][New in: rippled 0.33.0] |
 | `load_factor_local`                 | Number                    | (May be omitted) Current multiplier to the [transaction cost][] based on load to this server. |
 | `load_factor_net`                   | Number                    | (May be omitted) Current multiplier to the [transaction cost][] being used by the rest of the network (estimated from other servers' reported load values). |
 | `load_factor_cluster`               | Number                    | (May be omitted) Current multiplier to the [transaction cost][] based on load to servers in [this cluster](tutorial-rippled-setup.html#clustering). |
 | `load_factor_fee_escalation`        | Number                    | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the open ledger. [New in: rippled 0.32.0][] |
 | `load_factor_fee_queue`             | Number                    | (May be omitted) The current multiplier to the [transaction cost][] that a transaction must pay to get into the queue, if the queue is full. [New in: rippled 0.32.0][] |
-| `load_factor_server`                | Number                    | (May be omitted) The load factor the server is enforcing, not including the [open ledger cost](concept-transaction-cost.html#open-ledger-cost). [New in: rippled 0.33.0][] |
+| `load_factor_server`                | Number                    | (May be omitted) The load factor the server is enforcing, not including the [open ledger cost](transaction-cost.html#open-ledger-cost). [New in: rippled 0.33.0][] |
 | `peers`                             | Number                    | How many other `rippled` servers this one is currently connected to. |
 | `pubkey_node`                       | String                    | Public key used to verify this server for peer-to-peer communications. This key is automatically generated by the server the first time it starts up. (If deleted, the server can create a new pair of keys.) |
 | `pubkey_validator`                  | String                    | _(Admin only)_ Public key used by this node to sign ledger validations. |
@@ -317,11 +317,11 @@ The `info` object may have some arrangement of the following fields:
 
 **Note:** If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes about 5 minutes to sync with the network, depending on your connection speed and hardware specs.
 
-[transaction cost]: concept-transaction-cost.html
+[transaction cost]: transaction-cost.html
 
 ## Possible Errors
 
-* Any of the [universal error types](#universal-errors).
+* Any of the [universal error types][].
 
 
 {% include '_snippets/rippled_versions.md' %}
