@@ -310,11 +310,6 @@ For more information on the various transactions you can submit, see the [Transa
 API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include operations such as checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for trusted server operators, and include commands for managing, monitoring, and debugging the server.
 
 
-## List of Public Commands
-
-The `owner_info` command is deprecated. Use [`account_objects`](#account-objects) instead.
-
-
 
 ## Commandline Access
 
