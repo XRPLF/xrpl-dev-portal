@@ -1,4 +1,6 @@
-# Cash a Check for a flexible amount
+# Cash a Check for a Flexible Amount
+
+_Requires the [Checks Amendment](reference-amendments.html#checks)._
 
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive a flexible amount by sending a [CheckCash transaction][] with a `DeliverMin` field. When cashing a Check in this way, the receiver gets as much as is possible to deliver, debiting the Check's sender for the Check's full `SendMax` amount or as much as is available. Cashing fails if it doesn't deliver at least the `DeliverMin` amount to the Check's recipient.
 
@@ -11,7 +13,7 @@ The specified recipient can also [cash the check for an exact amount](tutorial-c
 
 ## Prerequisites
 
-{% include '_snippets/checkcash-prereqs.md' %}
+{% include '_snippets/checkcash-prereqs.md' %}<!--#{ fix md highlighting_ #}-->
 
 ## {{cash_flex_n.next()}}. Prepare the CheckCash transaction
 
@@ -51,7 +53,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## {{cash_flex_n.next()}}. Sign the CheckCash transaction
 
-{% include '_snippets/tutorial-sign-step.md' %}
+{% include '_snippets/tutorial-sign-step.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### Example Request
 
@@ -82,7 +84,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 ## {{cash_flex_n.next()}}. Submit the signed CheckCash transaction
 
 {% set step_1_link = "#1-prepare-the-checkcash-transaction" %}
-{% include '_snippets/tutorial-submit-step.md' %}
+{% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### Example Request
 
@@ -111,7 +113,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## {{cash_flex_n.next()}}. Wait for validation
 
-{% include '_snippets/wait-for-validation.md' %}
+{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## {{cash_flex_n.next()}}. Confirm final result
 
@@ -205,3 +207,4 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
 [Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
 [RippleAPI]: reference-rippleapi.html
 {% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled-api-links.md' %}

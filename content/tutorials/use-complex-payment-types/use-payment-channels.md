@@ -1,6 +1,6 @@
-# Payment Channels Tutorial
+# Use Payment Channels
 
-This tutorial walks through the entire process of using a [payment channel](payment-channels.html), with examples using the [JSON-RPC API](reference-rippled.html) of a local `rippled` server.
+Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a [payment channel](payment-channels.html), with examples using the [JSON-RPC API](reference-rippled.html) of a local `rippled` server.
 
 Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
