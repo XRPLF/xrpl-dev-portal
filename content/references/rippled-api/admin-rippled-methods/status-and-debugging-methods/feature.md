@@ -5,7 +5,7 @@ The `feature` command returns information about [amendments](amendments.html) th
 
 You can use the `feature` command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the `rippled.cfg` file. See [Configuring Amendment Voting](amendments.html#configuring-amendment-voting) for more information.
 
-_The `feature` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `feature` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:

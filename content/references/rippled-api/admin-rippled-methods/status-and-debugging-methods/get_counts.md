@@ -3,7 +3,7 @@
 
 The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.
 
-_The `get_counts` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `get_counts` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:

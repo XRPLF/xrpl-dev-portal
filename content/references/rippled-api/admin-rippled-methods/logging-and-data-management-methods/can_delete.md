@@ -3,7 +3,7 @@
 
 With `online_delete` and `advisory_delete` configuration options enabled, the `can_delete` method informs the rippled server of the latest ledger which may be deleted.
 
-_The `can_delete` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `can_delete` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
 ### Request Format
 

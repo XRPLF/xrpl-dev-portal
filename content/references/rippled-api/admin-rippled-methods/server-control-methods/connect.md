@@ -3,7 +3,7 @@
 
 The `connect` command forces the `rippled` server to connect to a specific peer `rippled` server.
 
-*The `connect` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `connect` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:

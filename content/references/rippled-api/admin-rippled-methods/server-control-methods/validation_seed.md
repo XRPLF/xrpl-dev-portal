@@ -3,7 +3,7 @@
 
 The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server.
 
-*The `validation_seed` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `validation_seed` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:

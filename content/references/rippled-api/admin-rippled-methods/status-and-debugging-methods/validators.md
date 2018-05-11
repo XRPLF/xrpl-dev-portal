@@ -3,7 +3,7 @@
 
 The `validators` command returns human readable information about the current list of published and trusted validators used by the server. [New in: rippled 0.80.1][]
 
-*The `validators` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `validators` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:

@@ -3,7 +3,7 @@
 
 Use the `validation_create` command to generate the keys for a rippled [validator](tutorial-rippled-setup.html#validator-setup). Similar to the [wallet_propose](#wallet-propose) command, this command makes no real changes, but only generates a set of keys in the proper format.
 
-_The `validation_create` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `validation_create` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:

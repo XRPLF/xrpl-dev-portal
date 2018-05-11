@@ -3,7 +3,7 @@
 
 The `ledger_request` command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.
 
-*The `ledger_request` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `ledger_request` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:

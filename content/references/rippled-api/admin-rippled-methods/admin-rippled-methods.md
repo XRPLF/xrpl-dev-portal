@@ -4,7 +4,7 @@ Communicate directly with a `rippled` server using these admin API methods.
 
 Admin methods are meant only for trusted personnel in charge of keeping the server operational. Admin methods include commands for managing, monitoring, and debugging the server.
 
-Admin commands are available only if you connect to `rippled` on a host and port that the `rippled.cfg` file identifies as admin. By default, the commandline client uses an admin connection.
+Admin commands are available only if you connect to `rippled` on a host and port that the `rippled.cfg` file identifies as admin. By default, the commandline client uses an admin connection. For more information on connecting to `rippled`, see [Getting Started with the rippled API](get-started-with-the-rippled-api.html).
 
 ## List of Admin Methods
 

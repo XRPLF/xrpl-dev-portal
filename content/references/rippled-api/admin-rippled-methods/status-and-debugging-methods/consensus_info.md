@@ -3,7 +3,7 @@
 
 The `consensus_info` command provides information about the consensus process for debugging purposes.
 
-_The `consensus_info` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `consensus_info` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:

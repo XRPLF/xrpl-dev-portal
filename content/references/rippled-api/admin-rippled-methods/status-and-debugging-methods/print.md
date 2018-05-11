@@ -3,7 +3,7 @@
 
 The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
 
-*The `print` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `print` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:

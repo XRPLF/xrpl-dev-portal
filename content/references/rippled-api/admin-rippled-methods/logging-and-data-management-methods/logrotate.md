@@ -3,7 +3,7 @@
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 
-_The `logrotate` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `logrotate` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:
