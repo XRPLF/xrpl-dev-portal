@@ -2179,6 +2179,7 @@ pages:
 
     # # Temporarily commented out to make building the dev portal faster
     # -   md: references/data-api.md
+    #     html: data-api.html
     #     funnel: Docs
     #     doc_type: References
     #     category: Data API
