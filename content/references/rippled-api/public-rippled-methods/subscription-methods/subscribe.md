@@ -1,9 +1,9 @@
-## subscribe
+# subscribe
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp "Source")
 
 The `subscribe` method requests periodic notifications from the server when certain events happen.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -87,7 +87,7 @@ Each member of the `books` array, if provided, is an object with the following f
 | `snapshot`   | Boolean | (Optional, defaults to false) If true, return the current state of the order book once when you subscribe before sending updates |
 | `both`       | Boolean | (Optional, defaults to false) If true, return both sides of the order book. |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -114,7 +114,7 @@ The response follows the [standard format](#response-formatting). The fields con
 * *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions in XRP), `fee_ref` (current base fee for transactions in fee units), `ledger_hash` (hash of the latest validated ledger), `reserve_base` (minimum reserve for accounts), and more.
 * `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book)
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
@@ -130,7 +130,7 @@ The response follows the [standard format](#response-formatting). The fields con
 
 When you subscribe to a particular stream, you receive periodic responses on that stream until you unsubscribe or close the WebSocket connection. The content of those responses depends on what you subscribed to. Here are some examples:
 
-### Ledger Stream
+## Ledger Stream
 
 The `ledger` stream only sends `ledgerClosed` messages when [the consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) declares a new validated ledger. The message identifies the ledger and provides some information about its contents.
 
@@ -165,7 +165,7 @@ The fields from a ledger stream message are as follows:
 | `validated_ledgers` | String           | (May be omitted) Range of ledgers that the server has available. This may be discontiguous. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network. |
 
 
-### Validations Stream
+## Validations Stream
 
 [New in: rippled 0.29.0][]
 
@@ -214,8 +214,7 @@ The fields from a validations stream message are as follows:
 | `validation_public_key` | String           | The [base58][] encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
 
 
-
-### Transaction Streams
+## Transaction Streams
 
 Many subscriptions result in messages about transactions, including the following:
 
@@ -353,7 +352,7 @@ Transaction stream messages have the following fields:
 | `validated`             | Boolean          | If true, this transaction is included in a validated ledger. Responses from the `transaction` stream should always be validated. |
 
 
-### Peer Status Stream
+## Peer Status Stream
 
 The admin-only `peer_status` stream reports a large amount of information on the activities of other `rippled` servers to which this server is connected, in particular their status in the consensus process.
 
@@ -383,7 +382,7 @@ Peer Status stream messages represent some event where the status of the peer `r
 | `ledger_index_max` | Number | (May be omitted) The largest [Ledger Index][] the peer has currently available. |
 | `ledger_index_min` | Number | (May be omitted) The smallest [Ledger Index][] the peer has currently available. |
 
-#### Peer Status Events
+### Peer Status Events
 
 The `action` field of a Peer Status stream message can have the following values:
 
@@ -395,7 +394,7 @@ The `action` field of a Peer Status stream message can have the following values
 | `LOST_SYNC`       | The peer fell behind the rest of the network in tracking which ledger versions are validated and which are undergoing consensus. |
 
 
-### Order Book Streams
+## Order Book Streams
 
 When you subscribe to one or more order books with the `books` field, you get back any transactions that affect those order books.
 
@@ -531,3 +530,7 @@ The format of an order book stream message is the same as that of [transaction s
 | `Field`                   | Value  | Description                             |
 |:--------------------------|:-------|:----------------------------------------|
 | `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](concept-freeze.html). |
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

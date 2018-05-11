@@ -1,9 +1,9 @@
-## account_lines
+# account_lines
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp "Source")
 
 The `account_lines` method returns information about an account's trust lines, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.
 
-#### Request Format
+## Request Format
 
 An example of the request format:
 
@@ -51,7 +51,7 @@ The request accepts the following paramters:
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -177,10 +177,14 @@ Each trust line object has some combination of the following fields:
 | `freeze`         | Boolean          | (May be omitted) `true` if this account has [frozen](concept-freeze.html) this trust line. If omitted, that is the same as `false`. |
 | `freeze_peer`    | Boolean          | (May be omitted) `true` if the peer account has [frozen](concept-freeze.html) this trust line. If omitted, that is the same as `false`. |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `actMalformed` - If the `marker` field provided is not acceptable.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

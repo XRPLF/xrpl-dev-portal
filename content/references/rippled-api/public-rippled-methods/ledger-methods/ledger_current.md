@@ -1,9 +1,9 @@
-## ledger_current
+# ledger_current
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")
 
 The `ledger_current` method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger returned is still in flux.
 
-#### Request Format
+## Request Format
 
 An example of the request format:
 
@@ -43,7 +43,7 @@ rippled ledger_current
 The request contains no parameters.
 
 
-#### Response Format
+## Response Format
 An example of a successful response:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -83,6 +83,10 @@ The response follows the [standard format](#response-formatting), with a success
 
 A `ledger_hash` field is not provided, because the hash of the current ledger is constantly changing along with its contents.
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

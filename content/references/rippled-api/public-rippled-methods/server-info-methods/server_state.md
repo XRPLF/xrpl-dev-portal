@@ -1,9 +1,9 @@
-## server_state
+# server_state
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerState.cpp "Source")
 
 The `server_state` command asks the server for various machine-readable information about the `rippled` server's current state. The results are almost the same as [`server_info`](#server-info), but using units that are easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -41,7 +41,7 @@ rippled server_state
 
 The request does not takes any parameters.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -282,8 +282,14 @@ The `state` object may have some arrangement of the following fields:
 | `validation_quorum`              | Number           | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 | `validator_list_expires`         | Number           | _(Admin only)_ When the current validator list will expire, in seconds since the [Ripple Epoch](#specifying-time), or 0 if the server has yet to load a published validator list. [New in: rippled 0.80.1][] |
 
-[fee levels]: concept-transaction-cost.html#fee-levels
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
+
+<!-- TODO: add fee levels and transaction cost to rippled-api-links.md. multiple files are including them one-off, as below -->
+[fee levels]: concept-transaction-cost.html#fee-levels
+[transaction cost]: concept-transaction-cost.html
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}

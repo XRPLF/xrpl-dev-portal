@@ -1,9 +1,9 @@
-## server_info
+# server_info
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
 
 The `server_info` command asks the server for a human-readable version of various information about the `rippled` server being queried.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -41,7 +41,7 @@ rippled server_info
 
 The request does not take any parameters.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -319,6 +319,10 @@ The `info` object may have some arrangement of the following fields:
 
 [transaction cost]: concept-transaction-cost.html
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

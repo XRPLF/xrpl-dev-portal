@@ -1,11 +1,11 @@
-## submit_multisigned
+# submit_multisigned
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
 The `submit_multisigned` command applies a [multi-signed](reference-transaction-format.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
 
 This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -133,7 +133,7 @@ The request includes the following parameters:
 | `tx_json`   | Object  | [Transaction in JSON format](reference-transaction-format.html) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](reference-ledger-format.html#signerlist). |
 | `fail_hard` | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers. |
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -242,9 +242,13 @@ The response follows the [standard format](#response-formatting), with a success
 | `tx_blob`               | String  | The complete [transaction](reference-transaction-format.html) in hex string format |
 | `tx_json`               | Object  | The complete [transaction](reference-transaction-format.html) in JSON format |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `srcActMalformed` - The `Account` field from the `tx_json` was invalid or missing.
 * `internal` - An internal error occurred. This includes the case where a signature is not valid for the transaction JSON provided.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

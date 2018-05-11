@@ -1,9 +1,9 @@
-## random
+# random
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
 
 The `random` command provides a random number to be used as a source of entropy for random number generation by clients.
 
-#### Request Format
+## Request Format
 An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
@@ -39,7 +39,7 @@ rippled random
 
 The request includes no parameters.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -78,7 +78,7 @@ The response follows the [standard format](#response-formatting), with a success
 |:---------|:-------|:--------------------------|
 | `random` | String | Random 256-bit hex value. |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `internal` - Some internal error occurred, possibly relating to the random number generator.

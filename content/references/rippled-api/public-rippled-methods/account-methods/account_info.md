@@ -1,9 +1,9 @@
-## account_info
+# account_info
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp "Source")
 
 The `account_info` command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger.
 
-#### Request Format
+## Request Format
 
 An example of an account_info request:
 
@@ -62,7 +62,7 @@ The request contains the following parameters:
 
 The following fields are deprecated and should not be provided: `ident`, `ledger`.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -200,9 +200,13 @@ Each object in the `transactions` array, if present, may contain any or all of t
 | `max_spend_drops` | String  | The maximum amount of XRP, [in drops](#specifying-currency-amounts), this transaction could send or destroy. |
 | `seq`             | Integer | The [Sequence Number][] of this transaction.   |
 
-#### Possible Errors
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. For example, the request specified `queue` as `true` but specified a `ledger_index` that is not the current open ledger.
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}

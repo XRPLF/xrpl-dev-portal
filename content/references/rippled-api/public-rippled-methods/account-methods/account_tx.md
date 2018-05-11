@@ -1,9 +1,9 @@
-## account_tx
+# account_tx
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
 
 The `account_tx` method retrieves a list of transactions that involved the specified account.
 
-#### Request Format
+## Request Format
 
 An example of the request format:
 
@@ -73,13 +73,13 @@ While each of these fields is marked as optional, **you must use at least one** 
 
 **Note:** For WebSocket and JSON-RPC, there is also a deprecated legacy variation of the `account_tx` method. For that reason, Ripple recommends *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, and `ledger_min`. If you use any of these deprecated fields, the method does not support pagination.
 
-##### **Iterating over queried data**
+### Iterating over queried data
 
 As with other paginated methods, you can use the `marker` field to return multiple pages of data.
 
 In the time between requests, `"ledger_index_min": -1` and `"ledger_index_max": -1` may change to refer to different ledger versions than they did before. The `marker` field can safely paginate even if there are changes in the ledger range from the request, so long as the marker does not indicate a point outside the range of ledgers specified in the request.
 
-#### Response Format
+## Response Format
 
 An example of a successful response:
 
@@ -581,11 +581,15 @@ Each transaction object includes the following fields, depending on whether it w
 | `tx`           | Object                           | (JSON mode only) JSON object defining the transaction |
 | `tx_blob`      | String                           | (Binary mode only) Unique hashed String representing the transaction. |
 | `validated`    | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
- 
-#### Possible Errors
+
+## Possible Errors
 
 * Any of the [universal error types](#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
 * `actBitcoin` - The [Address][] specified in the `account` field is formatted like a Bitcoin address instead of a XRP Ledger address.
 * `lgrIdxsInvalid` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
+
+
+{% include '_snippets/rippled_versions.md' %}
+{% include '_snippets/rippled-api-links.md' %}
