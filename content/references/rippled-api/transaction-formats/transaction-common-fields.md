@@ -45,7 +45,7 @@ Some fields can be automatically filled in before a transaction is signed, eithe
 
 For a production system, we recommend _not_ leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.
 
-The [`Paths` field](#paths) of the [Payment](#payment) transaction type can also be automatically filled in.
+The [`Paths` field](payment.html#paths) of the [Payment transaction][] type can also be automatically filled in.
 
 
 ## Flags Field

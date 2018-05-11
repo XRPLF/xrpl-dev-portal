@@ -8,7 +8,7 @@ These codes indicate that the transaction failed and was not included in a ledge
 |:-----------------------|:----------------------------------------------------|
 | `tefALREADY`             | The same exact transaction has already been applied. |
 | `tefBAD_ADD_AUTH`      | **DEPRECATED.**                                     |
-| `tefBAD_AUTH`           | The key used to sign this account is not authorized to modify this account. (It could be authorized if the account had the same key set as the [Regular Key](#setregularkey).) |
+| `tefBAD_AUTH`           | The key used to sign this account is not authorized to modify this account. (It could be authorized if the account had the same key set as the [Regular Key](cryptographic-keys.html).) |
 | `tefBAD_AUTH_MASTER`   | The single signature provided to authorize this transaction does not match the master key, but no regular key is associated with this address. |
 | `tefBAD_LEDGER`         | While processing the transaction, the ledger was discovered in an unexpected state. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
 | `tefBAD_QUORUM`         | The transaction was [multi-signed](#multi-signing), but the total weights of all included signatures did not meet the quorum. |

@@ -9,7 +9,7 @@ The types of objects that may appear in the `account_objects` response for an ac
 
 - [Offer objects](reference-ledger-format.html#offer) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](reference-transaction-format.html#lifecycle-of-an-offer) for more information.)
 - [RippleState objects](reference-ledger-format.html#ripplestate) for trust lines where this account's side is not in the default state.
-- The account's [SignerList](reference-ledger-format.html#signerlist), if the account has [multi-signing](reference-transaction-format.html#multi-signing) enabled.
+- The account's [SignerList](reference-ledger-format.html#signerlist), if the account has [multi-signing](multi-signing.html) enabled.
 - [Escrow objects](reference-ledger-format.html#escrow) for held payments that have not yet been executed or canceled.
 - [PayChannel objects](reference-ledger-format.html#paychannel) for open payment channels.
 - [Check objects](reference-ledger-format.html#check) for pending checks.

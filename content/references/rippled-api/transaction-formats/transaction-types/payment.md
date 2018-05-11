@@ -68,7 +68,7 @@ For more information, see [Paths](paths.html).
 
 ## Payment Flags
 
-Transactions of the Payment type support additional values in the [`Flags` field](#flags), as follows:
+Transactions of the Payment type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
 
 | Flag Name        | Hex Value  | Decimal Value | Description                  |
 |:-----------------|:-----------|:--------------|:-----------------------------|

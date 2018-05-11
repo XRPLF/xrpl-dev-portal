@@ -37,7 +37,7 @@ Create or modify a trust line linking two accounts.
 
 ## TrustSet Flags
 
-Transactions of the TrustSet type support additional values in the [`Flags` field](#flags), as follows:
+Transactions of the TrustSet type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
 
 | Flag Name       | Hex Value  | Decimal Value | Description                   |
 |:----------------|:-----------|:--------------|:------------------------------|

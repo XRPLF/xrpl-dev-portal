@@ -38,7 +38,7 @@ For more information about how Offers work, see [Offers](offers.html).
 
 ## OfferCreate Flags
 
-Transactions of the OfferCreate type support additional values in the [`Flags` field](#flags), as follows:
+Transactions of the OfferCreate type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
 
 | Flag Name           | Hex Value  | Decimal Value | Description               |
 |:--------------------|:-----------|:--------------|:--------------------------|

@@ -1,7 +1,7 @@
 # sign_for
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
 
-The `sign_for` command provides one signature for a [multi-signed transaction](reference-transaction-format.html#multi-signing).
+The `sign_for` command provides one signature for a [multi-signed transaction](multi-signing.html).
 
 This command requires the [MultiSign amendment](known-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 

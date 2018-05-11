@@ -1,7 +1,7 @@
 # wallet_propose
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
+Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](accounts.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
 
 *The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
@@ -83,7 +83,7 @@ You must provide **at most one** of the following fields: `passphrase`, `seed`, 
 
 #### Specifying a Seed
 
-For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
+For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](transaction-basics.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
 
 Cases where you would specify a known seed include:
 
@@ -182,7 +182,7 @@ In addition to using it as a regular key pair, you can also use it as a member o
 
 For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html)
 
-For more information about multi-signing and signer lists, see [Multi-Signing](reference-transaction-format.html#multi-signing).
+For more information about multi-signing and signer lists, see [Multi-Signing](multi-signing.html).
 
 
 ### Possible Errors

@@ -50,7 +50,7 @@ The **destination address** of a channel can:
 
 ## PaymentChannelClaim Flags
 
-Transactions of the PaymentChannelClaim type support additional values in the [`Flags` field](#flags), as follows:
+Transactions of the PaymentChannelClaim type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
 
 | Flag Name | Hex Value  | Decimal Value | Description                         |
 |:----------|:-----------|:--------------|:------------------------------------|

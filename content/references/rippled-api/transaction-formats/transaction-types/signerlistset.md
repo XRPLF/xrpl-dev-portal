@@ -49,7 +49,7 @@ You cannot create a SignerList such that the SignerQuorum could never be met. Th
 
 You can create, update, or remove a SignerList using the master key, regular key, or the current SignerList, if those methods of signing transactions are available.
 
-You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the [`lsfDisableMaster` flag](accountroot.html#accountroot-flags) enabled) and the account does not have a [Regular Key](#setregularkey) configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error [`tecNO_ALTERNATIVE_KEY`](#tec-codes).
+You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the [`lsfDisableMaster` flag](accountroot.html#accountroot-flags) enabled) and the account does not have a [Regular Key](cryptographic-keys.html) configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error [`tecNO_ALTERNATIVE_KEY`](#tec-codes).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

@@ -456,7 +456,7 @@ Optionally, you can provide the following query parameters:
 | `start` | String - [Timestamp][]  | Filter results to this time and later. |
 | `end` | String - [Timestamp][]  | Filter results to this time and earlier. |
 | `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
-| `type` | String | Filter transactions to a specific [transaction type](reference-transaction-format.html). |
+| `type` | String | Filter transactions to a specific transaction-types.html. |
 | `result` | String | Filter transactions for a specific [transaction result](reference-transaction-format.html#transaction-results). |
 | `binary` | Boolean | If true, return transactions in binary form. Defaults to false. |
 | `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 100. |
@@ -3906,7 +3906,7 @@ Optionally, you can provide the following query parameters:
 | `end` | String - [Timestamp][]  | End time of query range. Defaults to the current date. |
 | `min_sequence` | String  | Minimum sequence number to query. |
 | `max_sequence` | String  | Max sequence number to query. |
-| `type` | String  | Restrict results to a specified [transaction type](reference-transaction-format.html) |
+| `type` | String  | Restrict results to a specified transaction-types.html |
 | `result` | String  | Restrict results to specified transaction result. |
 | `binary` | Boolean | Return results in binary format. |
 | `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
@@ -5185,7 +5185,7 @@ A Payment Summary Object contains a reduced amount of information about a single
 ## Payment Objects
 [Payment Objects]: #payment-objects
 
-In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with XRP Ledger transactions of the `Payment` [transaction type](reference-transaction-format.html), except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
+In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with XRP Ledger transactions of the `Payment` transaction-types.html, except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
 
 Payment objects have the following fields:
 

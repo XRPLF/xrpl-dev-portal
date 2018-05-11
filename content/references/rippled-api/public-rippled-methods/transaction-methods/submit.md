@@ -16,7 +16,7 @@ A submit-only request includes the following parameters:
 
 | `Field`     | Type    | Description                                          |
 |:------------|:--------|:-----------------------------------------------------|
-| `tx_blob`   | String  | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](reference-transaction-format.html#multi-signing). |
+| `tx_blob`   | String  | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](multi-signing.html). |
 | `fail_hard` | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers |
 
 ### Request Format
@@ -60,7 +60,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 
 ## Sign-and-Submit Mode
 
-This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](reference-transaction-format.html#multi-signing).
+This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](multi-signing.html).
 
 You can provide the secret key used to sign the transaction in the following ways:
 
