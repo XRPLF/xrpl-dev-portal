@@ -12,9 +12,9 @@ The XRP set aside in an escrow is locked up. No one can use or destroy the XRP u
 
 **Step 1:** To send an escrow, the sender uses an [EscrowCreate transaction][] to lock up some XRP. This transaction defines a finish time, an expiration time, or both. The transaction may also define a crypto-condition that must be fulfilled to finish the escrow. This transaction must define an intended recipient for the XRP; the recipient _may_ be the same as the sender.
 
-**Step 2:** After this transaction has been processed, the XRP Ledger has an [Escrow object](reference-ledger-format.html#escrow) that holds the escrowed XRP. This object contains the properties of the escrow as defined by the transaction that created it. If this escrow has a finish time, no one can access the XRP before then.
+**Step 2:** After this transaction has been processed, the XRP Ledger has an [Escrow object](escrow-object.html) that holds the escrowed XRP. This object contains the properties of the escrow as defined by the transaction that created it. If this escrow has a finish time, no one can access the XRP before then.
 
-**Step 3:** The recipient, or any other XRP Ledger address, sends an [EscrowFinish transaction][] to deliver the XRP. If the correct conditions are met, this destroys the Escrow object in the ledger and credits the XRP to the intended recipient. If the escrow has a crypto-condition, this transaction must include a fulfillment for that condition. If the escrow has an expiration time that has already passed, the EscrowFinish transaction instead fails with the code [`tecNO_PERMISSION`](reference-transaction-format.html#tec-codes).
+**Step 3:** The recipient, or any other XRP Ledger address, sends an [EscrowFinish transaction][] to deliver the XRP. If the correct conditions are met, this destroys the Escrow object in the ledger and credits the XRP to the intended recipient. If the escrow has a crypto-condition, this transaction must include a fulfillment for that condition. If the escrow has an expiration time that has already passed, the EscrowFinish transaction instead fails with the code [`tecNO_PERMISSION`](tec-codes.html).
 
 ### Expiration Case
 
@@ -24,7 +24,7 @@ All escrows start the same way, so **Steps 1 and 2** are the same as in the succ
 
 **Step 3a:** If the escrow has an expiration time, and it has not been successfully finished before then, the escrow is considered expired. It continues to exist in the XRP Ledger, but can no longer successfully finish. (Expired objects remain in the ledger until a transaction modifies them. Time-based triggers cannot change the ledger contents.)
 
-**Step 4a:** The sender, or any other XRP Ledger address, sends an [EscrowCancel transaction][] to cancel the expired escrow. This destroys the [Escrow object](reference-ledger-format.html#escrow) in the ledger and returns the XRP to the sender.
+**Step 4a:** The sender, or any other XRP Ledger address, sends an [EscrowCancel transaction][] to cancel the expired escrow. This destroys the [Escrow object](escrow-object.html) in the ledger and returns the XRP to the sender.
 
 ## Limitations
 
@@ -37,7 +37,7 @@ Escrow is designed as a feature to enable the XRP Ledger to be used in the [Inte
 - Timed releases and expirations are limited to the resolution of XRP Ledger closes. This means that, in practice, times may be rounded to approximately 5 second intervals, depending on exactly when the ledgers close.
 - The only supported [crypto-condition][] type is PREIMAGE-SHA-256.
 
-Escrow provides strong guarantees that are best suited for high-value, low-quantity payments. [Payment Channels](use-payment-channels.html) are better suited for fast, low-value payments. Of course, unconditional [Payments](reference-transaction-format.html#payment) are also preferable for many use cases.
+Escrow provides strong guarantees that are best suited for high-value, low-quantity payments. [Payment Channels](use-payment-channels.html) are better suited for fast, low-value payments. Of course, unconditional [Payments](payment.html) are also preferable for many use cases.
 
 ## Availability of Escrow
 
@@ -56,7 +56,7 @@ When using [crypto-conditions][], the EscrowFinish transaction must pay a [highe
 
 If the escrow is purely time-locked with no crypto-condition, the EscrowFinish costs only the standard [transaction cost](transaction-cost.html) for a reference transaction.
 
-The additional transaction cost required is proportional to the size of the fulfillment. Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](reference-rippled.html#specifying-currency-amounts) plus 10 drops per 16 bytes in the size of the fulfillment**. If the transaction is [multi-signed](reference-transaction-format.html#multi-signing), the cost of multi-signing is added to the cost of the fulfillment.
+The additional transaction cost required is proportional to the size of the fulfillment. Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](basic-data-types.html#specifying-currency-amounts) plus 10 drops per 16 bytes in the size of the fulfillment**. If the transaction is [multi-signed](multi-signing.html), the cost of multi-signing is added to the cost of the fulfillment.
 
 **Note:** The above formula is based on the assumption that the reference cost of a transaction is 10 drops of XRP.
 
@@ -96,21 +96,20 @@ The most fundamental principle of inter-ledger payments is _conditional transfer
 **Solution:** The Escrow feature makes the XRP Ledger ideal for bridging multi-hop payments using the Interledger Protocol, because it natively supports transfers that deliver XRP based on PREIMAGE-SHA-256 crypto-conditions, and it executes those transfers within seconds of being presented with the matching fulfillment.
 
 
-
 ## Further Reading
 
 For more information about Escrow in the XRP Ledger, see the following:
 
-- [Escrow Tutorials](tutorial-escrow.html)
-    - [Send a Time-Held Escrow](tutorial-escrow.html#send-a-time-held-escrow)
-    - [Send a conditionally-held escrow](tutorial-escrow.html#send-a-conditionally-held-escrow)
-    - [Look up escrows by sender or receiver](tutorial-escrow.html#look-up-escrows)
-- [Transaction Reference](reference-transaction-format.html)
+- [Escrow Tutorials](use-escrows.html)
+    - [Send a Time-Held Escrow](send-a-time-held-escrow.html)
+    - [Send a conditionally-held escrow](send-a-conditionally-held-escrow.html)
+    - [Look up escrows by sender or receiver](look-up-escrows.html)
+- [Transaction Reference](transaction-formats.html)
     - [EscrowCreate transaction][]
     - [EscrowFinish transaction][]
     - [EscrowCancel transaction][]
-- [Ledger Reference](reference-ledger-format.html)
-    - [Escrow object](reference-ledger-format.html#escrow)
+- [Ledger Reference](ledger-data-formats.html)
+    - [Escrow object](escrow-object.html)
 
 For more information on Interledger and how conditional transfers enable secure payments across multiple ledgers, see [Interledger Architecture](https://interledger.org/rfcs/0001-interledger-architecture/).
 

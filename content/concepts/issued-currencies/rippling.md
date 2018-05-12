@@ -66,7 +66,7 @@ The NoRipple flag can only be enabled on a trust line if the address has a posit
 
 In the [`rippled` APIs](rippled-api.html), you can enable the NoRipple flag by sending a [TrustSet transaction][] with the `tfSetNoRipple` flag. You can disable NoRipple (enable rippling) with the `tfClearNoRipple` flag.
 
-In [RippleAPI](rippleapi.html), you can enable the NoRipple flag by sending a [Trustline transaction](rippleapi-reference.html#preparetrustline) transaction with the `ripplingDisabled` field of the trust line set to `true`.
+In [RippleAPI](rippleapi-reference.html), you can enable the NoRipple flag by sending a [Trustline transaction](rippleapi-reference.html#preparetrustline) transaction with the `ripplingDisabled` field of the trust line set to `true`.
 
 
 ### Looking Up NoRipple Status
@@ -75,7 +75,7 @@ In the case of two accounts that mutually trust each other, the NoRipple flag is
 
 In the [`rippled` APIs](rippled-api.html), you can use the [account_lines method][] to look up the trust lines associated with an address. For each trust line, the `no_ripple` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the NoRipple flag.
 
-In [RippleAPI](rippleapi-reference.html), you can use the [getTrustlines](rippleapi.html#gettrustlines) method to look up the trust lines associated with an address. For each trust line, the `ripplingDisabled` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `counterparty.ripplingDisabled` field shows whether the counterparty has enabled the NoRipple flag.
+In [RippleAPI](rippleapi-reference.html), you can use the [getTrustlines](rippleapi-reference.html#gettrustlines) method to look up the trust lines associated with an address. For each trust line, the `ripplingDisabled` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `counterparty.ripplingDisabled` field shows whether the counterparty has enabled the NoRipple flag.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
