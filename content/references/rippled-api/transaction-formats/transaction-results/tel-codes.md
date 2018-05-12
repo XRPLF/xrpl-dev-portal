@@ -2,7 +2,7 @@
 
 These codes indicate an error in the local server processing the transaction; it is possible that another server with a different configuration or load level could process the transaction successfully. They have numerical values in the range -399 to -300. The exact code for any given error is subject to change, so don't rely on it.
 
-**Caution:** Transactions with `tel` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](#finality-of-results) and [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+**Caution:** Transactions with `tel` codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see [Finality of Results](finality-of-results.html) and [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 | Code                  | Explanation                                          |
 |:----------------------|:-----------------------------------------------------|
@@ -18,7 +18,7 @@ These codes indicate an error in the local server processing the transaction; it
 | `telFAILED_PROCESSING` | An unspecified error occurred when processing the transaction. |
 | `telINSUF_FEE_P`       | The `Fee` from the transaction is not high enough to meet the server's current [transaction cost](transaction-cost.html) requirement, which is derived from its load level. |
 | `telLOCAL_ERROR`        | Unspecified local error.                             |
-| `telNO_DST`_`PARTIAL`   | The transaction is an XRP payment that would fund a new account, but the [tfPartialPayment flag](#partial-payments) was enabled. This is disallowed. |
+| `telNO_DST`_`PARTIAL`   | The transaction is an XRP payment that would fund a new account, but the [tfPartialPayment flag](partial-payments.html) was enabled. This is disallowed. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

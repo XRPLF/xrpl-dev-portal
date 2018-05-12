@@ -38,7 +38,7 @@ rippled ledger_current
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#ledger_current)
+[Try it! >](websocket-api-tool.html#ledger_current)
 
 The request contains no parameters.
 
@@ -75,7 +75,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following field:
+The response follows the [standard format][], with a successful result containing the following field:
 
 | `Field`                | Type             | Description                    |
 |:-----------------------|:-----------------|:-------------------------------|

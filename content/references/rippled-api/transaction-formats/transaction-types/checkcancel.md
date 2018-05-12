@@ -1,7 +1,7 @@
 # CheckCancel
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/CancelCheck.cpp "Source") <!--{# TODO: change from develop to master when 0.90.0 is released #}-->
 
-_Requires the [Checks Amendment](reference-amendments.html#checks)._
+_Requires the [Checks Amendment](known-amendments.html#checks)._
 
 Cancels an unredeemed Check, removing it from the ledger without sending any money. The source or the destination of the check can cancel a Check at any time using this transaction type. If the Check has expired, any address can cancel it.
 
@@ -20,11 +20,11 @@ Cancels an unredeemed Check, removing it from the ledger without sending any mon
 <!--{# fix md highlighting_ #}-->
 
 
-In addition to the [common fields](#common-fields), a CheckCancel transaction has the following:
+In addition to the [common fields](transaction-common-fields.html), a CheckCancel transaction has the following:
 
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|
-| `CheckID`   | String    | Hash256           | The ID of the [Check ledger object](reference-ledger-format.html#check) to cancel, as a 64-character hexadecimal string. |
+| `CheckID`   | String    | Hash256           | The ID of the [Check ledger object](check.html) to cancel, as a 64-character hexadecimal string. |
 
 ## Error Cases
 

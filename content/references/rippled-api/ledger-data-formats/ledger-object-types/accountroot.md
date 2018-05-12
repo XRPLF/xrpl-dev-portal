@@ -36,14 +36,14 @@ The `AccountRoot` object has the following fields:
 | [`Flags`](#accountroot-flags) | Number    | UInt32            | A bit-map of boolean flags enabled for this account. |
 | `OwnerCount`                  | Number    | UInt32            | The number of objects this account owns in the ledger, which contributes to its owner reserve. |
 | `PreviousTxnID`               | String    | Hash256           | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq`           | Number    | UInt32            | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq`           | Number    | UInt32            | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `Sequence`                    | Number    | UInt32            | The sequence number of the next valid transaction for this account. (Each account starts with Sequence = 1 and increases each time a transaction is made.) |
 | `AccountTxnID`                | String    | Hash256           | _(Optional)_ The identifying hash of the transaction most recently submitted by this account. |
 | `Domain`                      | String    | VariableLength    | _(Optional)_ A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. |
 | `EmailHash`                   | String    | Hash128           | _(Optional)_ The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
 | `MessageKey`                  | String    | VariableLength    | _(Optional)_ A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. No more than 33 bytes. |
 | `RegularKey`                  | String    | AccountID         | _(Optional)_ The address of a keypair that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction][] to change this value. |
-| `TickSize`                    | Number    | UInt8             | _(Optional)_ How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. _(Requires the [TickSize amendment](reference-amendments.html#ticksize).)_ |
+| `TickSize`                    | Number    | UInt8             | _(Optional)_ How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. _(Requires the [TickSize amendment](known-amendments.html#ticksize).)_ |
 | `TransferRate`                | Number    | UInt32            | _(Optional)_ A [transfer fee](https://ripple.com/knowledge_center/transfer-fees/) to charge other users for sending currency issued by this account to each other. |
 | `WalletLocator`               | String    | Hash256           | _(Optional)_ **DEPRECATED**. Do not use. |
 | `WalletSize`                  | Number    | UInt32            | _(Optional)_ **DEPRECATED**. Do not use. |
@@ -56,7 +56,7 @@ AccountRoot objects can have the following flag values:
 
 | Flag Name | Hex Value | Decimal Value | Description | Corresponding [AccountSet Flag](accountset.html#accountset-flags) |
 |-----------|-----------|---------------|-------------|-------------------------------|
-| lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](noripple.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. | asfDefaultRipple |
+| lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](rippling.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. | asfDefaultRipple |
 | lsfDepositAuth | 0x01000000 | 16777216 | This account can only receive funds from transactions it sends. (It has [DepositAuth](depositauth.html) enabled.) | asfDepositAuth |
 | lsfDisableMaster | 0x00100000 | 1048576 | Disallows use of the master key to sign transactions for this account. | asfDisableMaster |
 | lsfDisallowXRP | 0x00080000 | 524288 | Client applications should not send XRP to this account. Not enforced by `rippled`. | asfDisallowXRP |

@@ -3,7 +3,7 @@
 
 The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/ripple/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in `rippled`'s database of ledgers.
 
-_The `ledger_cleaner` method is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users._
+_The `ledger_cleaner` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:
@@ -56,7 +56,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`   | Type   | Description                      |
 |:----------|:-------|:---------------------------------|
@@ -66,3 +66,8 @@ The response follows the [standard format](#response-formatting), with a success
 
 * Any of the [universal error types][].
 * `internal` if one the parameters is specified incorrectly. (This is a bug; the intended error code is `invalidParams`.)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

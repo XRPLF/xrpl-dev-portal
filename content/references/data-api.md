@@ -456,8 +456,8 @@ Optionally, you can provide the following query parameters:
 | `start` | String - [Timestamp][]  | Filter results to this time and later. |
 | `end` | String - [Timestamp][]  | Filter results to this time and earlier. |
 | `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
-| `type` | String | Filter transactions to a specific [transaction type](reference-transaction-format.html). |
-| `result` | String | Filter transactions for a specific [transaction result](reference-transaction-format.html#transaction-results). |
+| `type` | String | Filter transactions to a specific transaction-types.html. |
+| `result` | String | Filter transactions for a specific [transaction result](transaction-results.html). |
 | `binary` | Boolean | If true, return transactions in binary form. Defaults to false. |
 | `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 100. |
 | `marker` | String | [Pagination](#pagination) marker from a previous response. |
@@ -1210,8 +1210,8 @@ The `family` and `metrics` query parameters provide a way to filter results to a
 
 | Family | Included Metrics | Meaning |
 |--------|------------------|---------|
-| `type` | All XRP Ledger [transaction types](reference-transaction-format.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
-| `result` | All [transaction result codes](reference-transaction-format.html#transaction-results) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
+| `type` | All XRP Ledger [transaction types](transaction-formats.html), including `Payment`, `AccountSet`, `OfferCreate`, and others. | Number of transactions of the given type that occurred during the interval. |
+| `result` | All [transaction result codes](transaction-results.html) (string codes, not the numeric codes), including `tesSUCCESS`, `tecPATH_DRY`, and many others. | Number of transactions that resulted in the given code during the interval. |
 | `metric` | Data-API defined Special Transaction Metrics. | (Varies) |
 
 ##### Special Transaction Metrics
@@ -3906,7 +3906,7 @@ Optionally, you can provide the following query parameters:
 | `end` | String - [Timestamp][]  | End time of query range. Defaults to the current date. |
 | `min_sequence` | String  | Minimum sequence number to query. |
 | `max_sequence` | String  | Max sequence number to query. |
-| `type` | String  | Restrict results to a specified [transaction type](reference-transaction-format.html) |
+| `type` | String  | Restrict results to a specified transaction-types.html |
 | `result` | String  | Restrict results to specified transaction result. |
 | `binary` | Boolean | Return results in binary format. |
 | `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
@@ -4568,8 +4568,8 @@ Each Transaction Stats Object has the following fields:
 |--------|-------|-------------|
 | `date` | String - [Timestamp][] | This object describes activity on this date. |
 | `transaction_count` | Integer | The total number of transactions sent by the account on this date. |
-| `result` | Object | Map of [transaction result codes](reference-transaction-format.html#transaction-results), indicating how many of each result code occurred in the transactions sent by this account on this date. |
-| `type` | Object | Map of [transaction types](reference-transaction-format.html), indicating how many of each transaction type the account sent on this date. |
+| `result` | Object | Map of [transaction result codes](transaction-results.html), indicating how many of each result code occurred in the transactions sent by this account on this date. |
+| `type` | Object | Map of [transaction types](transaction-formats.html), indicating how many of each transaction type the account sent on this date. |
 
 #### Example
 
@@ -5067,7 +5067,7 @@ Transactions have two formats - a compact "binary" format where the defining fie
 | `hash`  | String - [Hash][] | An identifying hash value unique to this transaction, as a hex string. |
 | `date`  | String - [Timestamp][] | The time when this transaction was included in a validated ledger. |
 | `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
-| `tx`    | Object | The fields of this transaction object, as defined by the [Transaction Format](reference-transaction-format.html) |
+| `tx`    | Object | The fields of this transaction object, as defined by the [Transaction Format](transaction-formats.html) |
 | `meta`  | Object | Metadata about the results of this transaction. |
 
 ### Binary Format
@@ -5185,7 +5185,7 @@ A Payment Summary Object contains a reduced amount of information about a single
 ## Payment Objects
 [Payment Objects]: #payment-objects
 
-In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with XRP Ledger transactions of the `Payment` [transaction type](reference-transaction-format.html), except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
+In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with XRP Ledger transactions of the `Payment` transaction-types.html, except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
 
 Payment objects have the following fields:
 
@@ -5196,8 +5196,8 @@ Payment objects have the following fields:
 | `destination_balance_changes` | Array | Array of [balance change objects][], indicating all changes made to the `destination` account's balances. |
 | `source_balance_changes` | Array | Array of [balance change objects][], indicating all changes to the `source` account's balances (except the XRP transaction cost). |
 | `transaction_cost` | [String - Number][] | The amount of XRP spent by the `source` account on the transaction cost. (Prior to [v2.0.4][], this parameter was called `fee`.) |
-| `destination_tag` | Integer | (May be omitted) A [destination tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
-| `source_tag` | Integer | (May be omitted) A [source tag](tutorial-gateway-guide.html#source-and-destination-tags) specified in this payment. |
+| `destination_tag` | Integer | (May be omitted) A [destination tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags) specified in this payment. |
+| `source_tag` | Integer | (May be omitted) A [source tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags) specified in this payment. |
 | `currency` | String - [Currency Code][] | The currency that the `destination` account received. |
 | `destination` | String - [Address][] | The account that received the payment. |
 | `executed_time` | String - [Timestamp][] | The time the ledger that included this payment closed. |

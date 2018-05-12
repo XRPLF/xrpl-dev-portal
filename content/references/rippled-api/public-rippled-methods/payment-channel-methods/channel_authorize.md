@@ -1,7 +1,7 @@
 # channel_authorize
 [[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
 
-_(Requires the [PayChan amendment](reference-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+_(Requires the [PayChan amendment](known-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
 
 The `channel_authorize` method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.
 
@@ -101,7 +101,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -111,7 +111,7 @@ The response follows the [standard format](#response-formatting), with a success
 
 * Any of the [universal error types][].
 * `badSeed` - The `secret` in the request is not a valid secret key.
-* `channelAmtMalformed` - The `amount` in the request is not a valid [XRP amount](#specifying-currency-amounts).
+* `channelAmtMalformed` - The `amount` in the request is not a valid [XRP amount][XRP, in drops].
 * `channelMalformed` - The `channel_id` in the request is not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
 
 

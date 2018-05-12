@@ -4,7 +4,7 @@ The core peer-to-peer server that manages the XRP Ledger is called `rippled`. Ea
 
 * [`rippled` Setup](tutorial-rippled-setup.html)
 * [API Reference](#api-methods)
-* [Transaction Reference](reference-transaction-format.html)
+* [Transaction Reference](transaction-formats.html)
 * JavaScript Client Library - [RippleAPI](reference-rippleapi.html)
 
 
@@ -146,7 +146,7 @@ Different types of objects are uniquely identified in different ways:
 
 [Accounts](accounts.html) are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
 
-[Transactions](reference-transaction-format.html) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
+[Transactions](transaction-formats.html) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
 Each closed [Ledger](reference-ledger-format.html) has a [Ledger Index][] and a [Hash][] value. When [Specifying a Ledger Instance](#specifying-ledgers) you can use either one.
 
@@ -200,7 +200,7 @@ There are two kinds of currencies in the XRP Ledger: XRP, and everything else. T
 |:----------------------------------------------------------------|:-----------|
 | Has no issuer.                                                  | Always issued by an XRP Ledger account |
 | Specified as a string                                           | Specified as an object |
-| Tracked in [accounts](reference-ledger-format.html#accountroot) | Tracked in [trust lines](reference-ledger-format.html#ripplestate) |
+| Tracked in [accounts](accountroot.html) | Tracked in [trust lines](reference-ledger-format.html#ripplestate) |
 | Can never be created; can only be destroyed                     | Can be issued or redeemed freely |
 | Maximum value `100000000000` (`1e11`)                           | Maximum value `9999999999999999e80` |
 | Precise to the nearest ["drop"](#xrp) (0.000001 XRP)            | 15 decimal digits of precision, with a minimum nonzero absolute value of `1000000000000000e-96` |
@@ -301,18 +301,13 @@ Transaction submission commands:
 - [`submit` command](#submit)
 - [`submit_multisigned` command](#submit-multisigned)
 
-For more information on the various transactions you can submit, see the [Transaction Reference](reference-transaction-format.html).
+For more information on the various transactions you can submit, see the [Transaction Reference](transaction-formats.html).
 
 
 
 # API Methods
 
 API methods for the Websocket and JSON-RPC APIs are defined by command names, and are divided into Public Commands and Admin Commands. Public Commands are not necessarily meant for the general public, but they are used by any client attached to the server. (Think of Public Commands as being for members or customers of the organization running the server, while the Admin Commands are for the personnel in charge of keeping the server operational.) Public Commands include operations such as checking the state of the ledger, finding a path to connecting users, and submitting a transaction, among others. Admin Commands, on the other hand, are meant only for trusted server operators, and include commands for managing, monitoring, and debugging the server.
-
-
-## List of Public Commands
-
-The `owner_info` command is deprecated. Use [`account_objects`](#account-objects) instead.
 
 
 

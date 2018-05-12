@@ -3,7 +3,7 @@
 
 The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
 
-*The `print` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `print` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:
@@ -224,8 +224,13 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting). Additional fields in the result depend on the internal state of the `rippled` server. The results of this command are subject to change without notice.
+The response follows the [standard format][]. Additional fields in the result depend on the internal state of the `rippled` server. The results of this command are subject to change without notice.
 
 ### Possible Errors
 
 * Any of the [universal error types][].
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

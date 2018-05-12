@@ -41,7 +41,7 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#tx)
+[Try it! >](websocket-api-tool.html#tx)
 
 The request includes the following parameters:
 
@@ -186,7 +186,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the fields of the [Transaction object](reference-transaction-format.html) as well as the following additional fields:
+The response follows the [standard format][], with a successful result containing the fields of the [Transaction object](transaction-formats.html) as well as the following additional fields:
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
@@ -195,7 +195,7 @@ The response follows the [standard format](#response-formatting), with a success
 | `ledger_index` | Unsigned Integer | The sequence number of the ledger that includes this transaction. |
 | `meta`         | Object           | Various metadata about the transaction.  |
 | `validated`    | Boolean          | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
-| (Various)      | (Various)        | Other fields from the [Transaction object](reference-transaction-format.html) |
+| (Various)      | (Various)        | Other fields from the [Transaction object](transaction-formats.html) |
 
 ## Possible Errors
 

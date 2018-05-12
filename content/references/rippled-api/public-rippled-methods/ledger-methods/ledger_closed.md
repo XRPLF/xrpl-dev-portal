@@ -37,7 +37,7 @@ rippled ledger_closed
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#ledger_closed)
+[Try it! >](websocket-api-tool.html#ledger_closed)
 
 This method accepts no parameters.
 
@@ -75,7 +75,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|

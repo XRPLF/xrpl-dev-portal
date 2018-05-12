@@ -1,7 +1,7 @@
 # Check
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L158 "Source")
 
-_Requires the [Checks Amendment](reference-amendments.html#checks)._
+_Requires the [Checks Amendment](known-amendments.html#checks)._
 
 A `Check` object describes a check, similar to a paper personal check, which can be cashed by its destination to get money from its sender. (The potential payment has already been approved by its sender, but no money moves until it is cashed. Unlike an [Escrow](escrow.html), the money for a Check is not set aside, so cashing the Check could fail due to lack of funds.)
 
@@ -38,12 +38,12 @@ A `Check` object has the following fields:
 | `Flags`             | Number           | UInt32            |  A bit-map of boolean flags. No flags are defined for Checks, so this value is always `0`. |
 | `OwnerNode`         | String           | UInt64            | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | `PreviousTxnID`     | String           | Hash256           | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number           | UInt32            | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq` | Number           | UInt32            | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `SendMax`           | String or Object | Amount            | The maximum amount of currency this Check can debit the sender. If the Check is successfully cashed, the destination is credited in the same currency for up to this amount. |
 | `Sequence`          | Number           | UInt32            | The sequence number of the [CheckCreate transaction][] that created this check. |
 | `DestinationNode`   | String           | UInt64            | _(Optional)_ A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. |
 | `DestinationTag`    | Number           | UInt32            | _(Optional)_ An arbitrary tag to further specify the destination for this Check, such as a hosted recipient at the destination address. |
-| `Expiration`        | Number           | UInt32            | _(Optional)_ Indicates the time after which this Check is considered expired. See [Specifying Time](reference-rippled.html#specifying-time) for details. |
+| `Expiration`        | Number           | UInt32            | _(Optional)_ Indicates the time after which this Check is considered expired. See [Specifying Time][] for details. |
 | `InvoiceID`         | String           | Hash256           | _(Optional)_ Arbitrary 256-bit hash provided by the sender as a specific reason or identifier for this Check. |
 | `SourceTag`         | Number           | UInt32            | _(Optional)_ An arbitrary tag to further specify the source for this Check, such as a hosted recipient at the sender's address. |
 

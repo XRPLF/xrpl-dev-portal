@@ -5,7 +5,7 @@ Every ledger version has a unique header that describes the contents. You can lo
 
 | Field           | JSON Type | [Internal Type][] | Description |
 |-----------------|-----------|-------------------|-------------|
-| [`ledger_index`](#ledger-index)   | String    | UInt32            | The sequence number of the ledger. Some API methods display this as a quoted integer; some display it as a native JSON number. |
+| [`ledger_index`][Ledger Index]   | String    | UInt32            | The sequence number of the ledger. Some API methods display this as a quoted integer; some display it as a native JSON number. |
 | `ledger_hash`    | String    | Hash256           | The [SHA-512Half][] of the ledger header, excluding the `ledger_hash` itself. This serves as a unique identifier for this ledger and all its contents. |
 | `account_hash`   | String    | Hash256           | The [SHA-512Half][] of this ledger's state tree information. |
 | `close_time`     | Number    | UInt32            | The approximate time this ledger closed, as the number of seconds since the Ripple Epoch of 2000-01-01 00:00:00. This value is rounded based on the `close_time_resolution`, so later ledgers can have the same value. |

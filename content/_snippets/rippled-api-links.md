@@ -3,7 +3,7 @@
 [admin command]: admin-rippled-methods.html
 [common fields]: transaction-common-fields.html
 [Currency Amount]: basic-data-types.html#specifying-currency-amounts
-[Currency Code]: currency-formatting.html#currency-codes
+[Currency Code]: currency-formats.html#currency-codes
 [drops of XRP]: basic-data-types.html#specifying-currency-amounts
 [Hash]: basic-data-types.html#hashes
 [Ledger Index]: basic-data-types.html#ledger-index

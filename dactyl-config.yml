@@ -909,8 +909,8 @@ pages:
        targets:
          - local
 
-    -   md: references/rippled-api/api-conventions/currency-formatting.md
-        html: currency-formatting.html
+    -   md: references/rippled-api/api-conventions/currency-formats.md
+        html: currency-formats.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API

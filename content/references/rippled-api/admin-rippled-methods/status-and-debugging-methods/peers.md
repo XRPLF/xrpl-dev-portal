@@ -3,7 +3,7 @@
 
 The `peers` command returns a list of all other `rippled` servers currently connected to this one, including information on their connection and sync status.
 
-*The `peers` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `peers` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:
@@ -370,14 +370,14 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing a JSON object with the following fields:
+The response follows the [standard format][], with a successful result containing a JSON object with the following fields:
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
-| `cluster` | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](tutorial-rippled-setup.html#clustering). [New in: rippled 0.30.1][] |
+| `cluster` | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](clustering.html). [New in: rippled 0.30.1][] |
 | `peers`   | Array  | Array of peer objects.                                  |
 
-Each field of the `cluster` object is the public key of that `rippled` server's identifying keypair. (This is the same value that that server returns as `pubkey_node` in the [`server_info` command](#server-info).) The contents of that field are an object with the following fields:
+Each field of the `cluster` object is the public key of that `rippled` server's identifying keypair. (This is the same value that that server returns as `pubkey_node` in the [server_info method][].) The contents of that field are an object with the following fields:
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
@@ -407,3 +407,8 @@ Each member of the `peers` array is a peer object with the following fields:
 ### Possible Errors
 
 * Any of the [universal error types][].
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

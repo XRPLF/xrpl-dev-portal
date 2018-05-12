@@ -42,7 +42,7 @@ rippled tx_history 0
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#tx_history)
+[Try it! >](websocket-api-tool.html#tx_history)
 
 The request includes the following parameters:
 
@@ -878,14 +878,14 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field` | Type             | Description                               |
 |:--------|:-----------------|:------------------------------------------|
 | `index` | Unsigned Integer | The value of `start` used in the request. |
 | `txs`   | Array            | Array of transaction objects.             |
 
-The fields included in each transaction object vary slightly depending on the type of transaction. See [Transaction Format](reference-transaction-format.html) for details.
+The fields included in each transaction object vary slightly depending on the type of transaction. See [Transaction Format](transaction-formats.html) for details.
 
 ## Possible Errors
 

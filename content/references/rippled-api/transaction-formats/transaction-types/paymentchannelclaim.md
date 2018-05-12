@@ -1,7 +1,7 @@
 # PaymentChannelClaim
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Requires the [PayChan Amendment](reference-amendments.html#paychan)._
+_Requires the [PayChan Amendment](known-amendments.html#paychan)._
 
 Claim XRP from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
 
@@ -50,7 +50,7 @@ The **destination address** of a channel can:
 
 ## PaymentChannelClaim Flags
 
-Transactions of the PaymentChannelClaim type support additional values in the [`Flags` field](#flags), as follows:
+Transactions of the PaymentChannelClaim type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
 
 | Flag Name | Hex Value  | Decimal Value | Description                         |
 |:----------|:-----------|:--------------|:------------------------------------|

@@ -3,7 +3,7 @@
 
 The `connect` command forces the `rippled` server to connect to a specific peer `rippled` server.
 
-*The `connect` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!*
+*The `connect` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:
@@ -83,7 +83,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`   | Type   | Description                                            |
 |:----------|:-------|:-------------------------------------------------------|
@@ -94,3 +94,8 @@ The response follows the [standard format](#response-formatting), with a success
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * Cannot connect in standalone mode - Network-related commands are disabled in stand-alone mode.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

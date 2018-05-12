@@ -1,9 +1,9 @@
 # submit_multisigned
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
-The `submit_multisigned` command applies a [multi-signed](reference-transaction-format.html#multi-signing) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
+The `submit_multisigned` command applies a [multi-signed](multi-signing.html) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
 
-This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
+This command requires the [MultiSign amendment](known-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
 ## Request Format
 An example of the request format:
@@ -130,7 +130,7 @@ The request includes the following parameters:
 
 | `Field`     | Type    | Description                                          |
 |:------------|:--------|:-----------------------------------------------------|
-| `tx_json`   | Object  | [Transaction in JSON format](reference-transaction-format.html) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](reference-ledger-format.html#signerlist). |
+| `tx_json`   | Object  | [Transaction in JSON format](transaction-formats.html) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](signerlist.html). |
 | `fail_hard` | Boolean | (Optional, defaults to false) If true, and the transaction fails locally, do not retry or relay the transaction to other servers. |
 
 ## Response Format
@@ -232,15 +232,15 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`                 | Type    | Description                              |
 |:------------------------|:--------|:-----------------------------------------|
 | `engine_result`         | String  | Code indicating the preliminary result of the transaction, for example `tesSUCCESS` |
 | `engine_result_code`    | Integer | Numeric code indicating the preliminary result of the transaction, directly correlated to `engine_result` |
 | `engine_result_message` | String  | Human-readable explanation of the preliminary transaction result |
-| `tx_blob`               | String  | The complete [transaction](reference-transaction-format.html) in hex string format |
-| `tx_json`               | Object  | The complete [transaction](reference-transaction-format.html) in JSON format |
+| `tx_blob`               | String  | The complete [transaction](transaction-formats.html) in hex string format |
+| `tx_json`               | Object  | The complete [transaction](transaction-formats.html) in JSON format |
 
 ## Possible Errors
 

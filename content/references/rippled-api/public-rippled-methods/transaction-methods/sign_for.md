@@ -1,9 +1,9 @@
 # sign_for
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
 
-The `sign_for` command provides one signature for a [multi-signed transaction](reference-transaction-format.html#multi-signing).
+The `sign_for` command provides one signature for a [multi-signed transaction](multi-signing.html).
 
-This command requires the [MultiSign amendment](reference-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
+This command requires the [MultiSign amendment](known-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 
 ## Request Format
 An example of the request format:
@@ -88,7 +88,7 @@ The request includes the following parameters:
 | `Field`      | Type                 | Description                            |
 |:-------------|:---------------------|:---------------------------------------|
 | `account`    | String - [Address][] | The address which is providing the signature. |
-| `tx_json`    | Object               | The [Transaction](reference-transaction-format.html) to sign. Unlike using the [`sign` command](#sign), all fields of the transaction must be provided, including `Fee` and `Sequence`. The transaction must include the field `SigningPubKey` with an empty string as the value. The object may optionally contain a `Signers` array with previously-collected signatures. |
+| `tx_json`    | Object               | The [Transaction](transaction-formats.html) to sign. Unlike using the [sign method][], all fields of the transaction must be provided, including `Fee` and `Sequence`. The transaction must include the field `SigningPubKey` with an empty string as the value. The object may optionally contain a `Signers` array with previously-collected signatures. |
 | `secret`     | String               | _(Optional)_ The secret key to sign with. (Cannot be used with `key_type`.) |
 | `passphrase` | String               | _(Optional)_ A passphrase to use as the secret key to sign with. |
 | `seed`       | String               | _(Optional)_ A [base58][]-encoded secret key to sign with. |
@@ -212,12 +212,12 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
-| `tx_blob` | String | Hexadecimal representation of the signed transaction, including the newly-added signature. If it has enough signatures, you can [submit this string using the `submit` command](#submit-only-mode). |
-| `tx_json` | Object | The [transaction specification](reference-transaction-format.html) in JSON format, with the newly-added signature in the `Signers` array. If it has enough signatures, you can submit this object using the [`submit_multisigned` command](#submit-multisigned). |
+| `tx_blob` | String | Hexadecimal representation of the signed transaction, including the newly-added signature. If it has enough signatures, you can [submit this string using the `submit` method](submit.html#submit-only-mode). |
+| `tx_json` | Object | The [transaction specification](transaction-formats.html) in JSON format, with the newly-added signature in the `Signers` array. If it has enough signatures, you can submit this object using the [submit_multisigned method][]. |
 
 ## Possible Errors
 

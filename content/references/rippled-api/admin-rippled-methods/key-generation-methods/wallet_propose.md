@@ -1,9 +1,9 @@
 # wallet_propose
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
+Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](accounts.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
 
-*The `wallet_propose` request is an [admin command](#connecting-to-rippled) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
+*The `wallet_propose` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
 [Updated in: rippled 0.31.0][New in: rippled 0.31.0]
 
@@ -83,7 +83,7 @@ You must provide **at most one** of the following fields: `passphrase`, `seed`, 
 
 #### Specifying a Seed
 
-For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](reference-transaction-format.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
+For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](transaction-basics.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
 
 Cases where you would specify a known seed include:
 
@@ -164,14 +164,14 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting), with a successful result containing various important information about the new (potential) account, including the following fields:
+The response follows the [standard format][], with a successful result containing various important information about the new (potential) account, including the following fields:
 
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
 | `master_seed`     | String | This is the private key of the key pair. The master seed from which all other information about this account is derived, in Ripple's [base58][] encoded string format. Typically, you use the key in this format to sign transactions. |
 | `master_seed_hex` | String | The master seed, in hex format. A simple, widely-supported way to represent the private key. Can be used to sign transactions. |
 | `master_key`      | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. An easier to remember, easier-to-write-down version of the private key. Can be used to sign transactions. |
-| `account_id`      | String | The [Address][] of the account in base58 format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. [Multi-signing lists](tutorial-multisign.html) also use these to identify other signers. |
+| `account_id`      | String | The [Address][] of the account in base58 format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. [Multi-signing lists](multi-signing.html) also use these to identify other signers. |
 | `public_key`      | String | The public key of the key pair, in Ripple's [base58][] encoded string format. Derived from the `master_seed`. |
 | `public_key_hex`  | String | This is the public key of the key pair, in hexadecimal. Derived from the `master_seed`. To validate the signature on a transaction, `rippled` needs this public key. That's why the format for a signed transaction includes the public key in the `SigningPubKey` field. |
 | `warning`         | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. [New in: rippled 0.32.0][] |
@@ -182,7 +182,7 @@ In addition to using it as a regular key pair, you can also use it as a member o
 
 For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html)
 
-For more information about multi-signing and signer lists, see [Multi-Signing](reference-transaction-format.html#multi-signing).
+For more information about multi-signing and signer lists, see [Multi-Signing](multi-signing.html).
 
 
 ### Possible Errors
@@ -190,3 +190,8 @@ For more information about multi-signing and signer lists, see [Multi-Signing](r
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly.
 * `badSeed` - The request specified a disallowed seed value (in the `passphrase`, `seed`, or `seed_hex` fields), such as an empty string, or a string resembling a XRP Ledger address.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

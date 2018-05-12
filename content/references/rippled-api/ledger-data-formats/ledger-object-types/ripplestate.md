@@ -46,7 +46,7 @@ A `RippleState` object has the following fields:
 | `LowLimit`        | Object    | Amount | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
 | `HighLimit`       | Object    | Amount | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
 | `PreviousTxnID`   | String    | Hash256 | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number  | UInt32 | The [index of the ledger](#ledger-index) that contains the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq` | Number  | UInt32 | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `LowNode`         | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this object, in case the directory consists of multiple pages. |
 | `HighNode`        | String    | UInt64 | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this object, in case the directory consists of multiple pages. |
 | `LowQualityIn`    | Number    | UInt32 | (Optional) The inbound quality set by the low account, as an integer in the implied ratio LowQualityIn:1,000,000,000. The value 0 is equivalent to 1 billion, or face value. |
@@ -56,18 +56,18 @@ A `RippleState` object has the following fields:
 
 ## RippleState Flags
 
-There are several options which can be either enabled or disabled for a trust line. These options can be changed with a [TrustSet transaction](reference-transaction-format.html#trustset). In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
+There are several options which can be either enabled or disabled for a trust line. These options can be changed with a [TrustSet transaction][]. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
 
 RippleState objects can have the following flag values:
 
-| Flag Name | Hex Value | Decimal Value | Description | Corresponding [TrustSet Flag](reference-transaction-format.html#trustset-flags) |
+| Flag Name | Hex Value | Decimal Value | Description | Corresponding [TrustSet Flag](trustset.html#trustset-flags) |
 |-----------|-----------|---------------|-------------|------------------------|
 | lsfLowReserve | 0x00010000 | 65536 | This RippleState object [contributes to the low account's owner reserve](#contributing-to-the-owner-reserve). | (None) |
 | lsfHighReserve | 0x00020000 |131072 | This RippleState object [contributes to the high account's owner reserve](#contributing-to-the-owner-reserve). | (None) |
 | lsfLowAuth | 0x00040000 | 262144 | The low account has authorized the high account to hold the low account's issuances. | tfSetAuth |
 | lsfHighAuth | 0x00080000 | 524288 |  The high account has authorized the low account to hold the high account's issuances. | tfSetAuth |
-| lsfLowNoRipple | 0x00100000 | 1048576 | The low account [has disabled rippling](noripple.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
-| lsfHighNoRipple | 0x00200000 | 2097152 | The high account [has disabled rippling](noripple.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
+| lsfLowNoRipple | 0x00100000 | 1048576 | The low account [has disabled rippling](rippling.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
+| lsfHighNoRipple | 0x00200000 | 2097152 | The high account [has disabled rippling](rippling.html) from this trust line to other trust lines with the same account's NoRipple flag set. | tfSetNoRipple |
 | lsfLowFreeze | 0x00400000 | 4194304 | The low account has frozen the trust line, preventing the high account from transferring the asset. | tfSetFreeze |
 | lsfHighFreeze | 0x00800000 | 8388608 | The high account has frozen the trust line, preventing the low account from transferring the asset. | tfSetFreeze |
 
@@ -88,7 +88,7 @@ The values that count towards a trust line's non-default state are as follows:
 
 The **lsfLowAuth** and **lsfHighAuth** flags do not count against the default state, because they cannot be disabled.
 
-The default state of the two NoRipple flags depends on the state of the [lsfDefaultRipple flag](#accountroot-flags) in their corresponding AccountRoot objects. If DefaultRipple is disabled (the default), then the default state of the lsfNoRipple flag is _enabled_ for all of an account's trust lines. If an account enables DefaultRipple, then the lsfNoRipple flag is _disabled_ (rippling is enabled) for an account's trust lines by default.
+The default state of the two NoRipple flags depends on the state of the [lsfDefaultRipple flag](accountroot.html#accountroot-flags) in their corresponding AccountRoot objects. If DefaultRipple is disabled (the default), then the default state of the lsfNoRipple flag is _enabled_ for all of an account's trust lines. If an account enables DefaultRipple, then the lsfNoRipple flag is _disabled_ (rippling is enabled) for an account's trust lines by default.
 
 **Note:** Prior to the introduction of the DefaultRipple flags in `rippled` version 0.27.3 (March 10, 2015), the default state for all trust lines was with both NoRipple flags disabled (rippling enabled).
 

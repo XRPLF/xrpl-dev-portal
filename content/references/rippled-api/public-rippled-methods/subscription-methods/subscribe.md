@@ -51,7 +51,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](ripple-api-tool.html#subscribe)
+[Try it! >](websocket-api-tool.html#subscribe)
 
 The request includes the following parameters:
 
@@ -73,7 +73,7 @@ The `streams` parameter provides access to the following default streams of info
 * `ledger` - Sends a message whenever the consensus process declares a new validated ledger
 * `transactions` - Sends a message whenever a transaction is included in a closed ledger
 * `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation.
-    **Note:** [Even some transactions that don't succeed are included](reference-transaction-format.html#result-categories) in validated ledgers, because they take the anti-spam transaction fee.
+    **Note:** [Even some transactions that don't succeed are included](transaction-results.html) in validated ledgers, because they take the anti-spam transaction fee.
 * `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
 * `peer_status` - **(Admin only)** Information about connected peer `rippled` servers, especially with regards to the consensus process.
 
@@ -81,8 +81,8 @@ Each member of the `books` array, if provided, is an object with the following f
 
 | `Field`      | Type    | Description                                         |
 |:-------------|:--------|:----------------------------------------------------|
-| `taker_gets` | Object  | Specification of which currency the account taking the offer would receive, as a [currency object with no amount](#specifying-currencies-without-amounts). |
-| `taker_pays` | Object  | Specification of which currency the account taking the offer would pay, as a [currency object with no amount](#specifying-currencies-without-amounts). |
+| `taker_gets` | Object  | Specification of which currency the account taking the offer would receive, as a [currency object with no amount](basic-data-types.html#specifying-currencies-without-amounts). |
+| `taker_pays` | Object  | Specification of which currency the account taking the offer would pay, as a [currency object with no amount](basic-data-types.html#specifying-currencies-without-amounts). |
 | `taker`      | String  | Unique [base58][] account address to use as a perspective for viewing offers. (This affects the funding status and fees of offers.) |
 | `snapshot`   | Boolean | (Optional, defaults to false) If true, return the current state of the order book once when you subscribe before sending updates |
 | `both`       | Boolean | (Optional, defaults to false) If true, return both sides of the order book. |
@@ -106,7 +106,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format](#response-formatting). The fields contained in the response vary depending on what subscriptions were included in the request.
+The response follows the [standard format][]. The fields contained in the response vary depending on what subscriptions were included in the request.
 
 * `accounts` and `accounts_proposed` - No fields returned
 * *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change.
@@ -154,13 +154,13 @@ The fields from a ledger stream message are as follows:
 | `Field`             | Type             | Description                         |
 |:--------------------|:-----------------|:------------------------------------|
 | `type`              | String           | `ledgerClosed` indicates this is from the ledger stream |
-| `fee_base`          | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Cost](transaction-cost.html) If the ledger includes a [SetFee pseudo-transaction](reference-transaction-format.html#setfee) the new transaction cost applies to all transactions after this ledger. |
+| `fee_base`          | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Cost](transaction-cost.html) If the ledger includes a [SetFee pseudo-transaction](setfee.html) the new transaction cost applies to all transactions after this ledger. |
 | `fee_ref`           | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. |
 | `ledger_hash`       | String           | Unique hash of the ledger that was closed, as hex |
 | `ledger_index`      | Unsigned Integer | Sequence number of the ledger that was closed |
-| `ledger_time`       | Unsigned Integer | The time this ledger was closed, in seconds since the [Ripple Epoch](#specifying-time) |
-| `reserve_base`      | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account. If the ledger includes a [SetFee pseudo-transaction](reference-transaction-format.html#setfee) the new base reserve applies after this ledger. |
-| `reserve_inc`       | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines. If the ledger includes a [SetFee pseudo-transaction](reference-transaction-format.html#setfee) the new owner reserve applies after this ledger. |
+| `ledger_time`       | Unsigned Integer | The time this ledger was closed, in [seconds since the Ripple Epoch][] |
+| `reserve_base`      | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account. If the ledger includes a [SetFee pseudo-transaction](setfee.html) the new base reserve applies after this ledger. |
+| `reserve_inc`       | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines. If the ledger includes a [SetFee pseudo-transaction](setfee.html) the new owner reserve applies after this ledger. |
 | `txn_count`         | Unsigned Integer | Number of new transactions included in this ledger |
 | `validated_ledgers` | String           | (May be omitted) Range of ledgers that the server has available. This may be discontiguous. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network. |
 
@@ -210,7 +210,7 @@ The fields from a validations stream message are as follows:
 | `reserve_base`          | Integer          | (May be omitted) The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
 | `reserve_inc`           | Integer          | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
 | `signature`             | String           | The signature that the validator used to sign its vote for this ledger. |
-| `signing_time`          | Number           | When this validation vote was signed, in seconds since the [Ripple Epoch](#specifying-time). [New in: rippled 0.32.0][] |
+| `signing_time`          | Number           | When this validation vote was signed, in [seconds since the Ripple Epoch][]. [New in: rippled 0.32.0][] |
 | `validation_public_key` | String           | The [base58][] encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
 
 
@@ -341,14 +341,14 @@ Transaction stream messages have the following fields:
 | `Field`                 | Type             | Description                     |
 |:------------------------|:-----------------|:--------------------------------|
 | `type`                  | String           | `transaction` indicates this is the notification of a transaction, which could come from several possible streams. |
-| `engine_result`         | String           | String [Transaction result code](reference-transaction-format.html#result-categories) |
-| `engine_result_code`    | Number           | Numeric [transaction response code](reference-transaction-format.html#result-categories), if applicable. |
+| `engine_result`         | String           | String [Transaction result code](transaction-results.html) |
+| `engine_result_code`    | Number           | Numeric [transaction response code](transaction-results.html), if applicable. |
 | `engine_result_message` | String           | Human-readable explanation for the transaction response |
 | `ledger_current_index`  | Unsigned Integer | (Omitted for validated transactions) Sequence number of the current ledger version for which this transaction is currently proposed |
 | `ledger_hash`           | String           | (Omitted for unvalidated transactions) Unique hash of the ledger version that includes this transaction, as hex |
 | `ledger_index`          | Unsigned Integer | (Omitted for unvalidated transactions) Sequence number of the ledger version that includes this transaction |
 | `meta`                  | Object           | (Omitted for unvalidated transactions) Various metadata about the transaction, including which ledger entries it affected |
-| `transaction`           | Object           | The [definition of the transaction](reference-transaction-format.html) in JSON format |
+| `transaction`           | Object           | The [definition of the transaction](transaction-formats.html) in JSON format |
 | `validated`             | Boolean          | If true, this transaction is included in a validated ledger. Responses from the `transaction` stream should always be validated. |
 
 
@@ -376,7 +376,7 @@ Peer Status stream messages represent some event where the status of the peer `r
 |:-------------------|:-------|:-----------------------------------------------|
 | `type`             | String | `peerStatusChange` indicates this comes from the Peer Status stream. |
 | `action`           | String | The type of event that prompted this message. See [Peer Status Events](#peer-status-events) for possible values. |
-| `date`             | Number | The time this event occurred, in seconds since the [Ripple Epoch](#specifying-time). |
+| `date`             | Number | The time this event occurred, in [seconds since the Ripple Epoch][]. |
 | `ledger_hash`      | String | (May be omitted) The identifying [Hash][] of a ledger version to which this message pertains. |
 | `ledger_index`     | Number | (May be omitted) The [Ledger Index][] of a ledger version to which this message pertains. |
 | `ledger_index_max` | Number | (May be omitted) The largest [Ledger Index][] the peer has currently available. |
@@ -529,7 +529,7 @@ The format of an order book stream message is the same as that of [transaction s
 
 | `Field`                   | Value  | Description                             |
 |:--------------------------|:-------|:----------------------------------------|
-| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](freeze.html). |
+| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](freezes.html). |
 
 
 {% include '_snippets/rippled_versions.md' %}
