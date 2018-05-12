@@ -64,7 +64,7 @@ For more information, see [DefaultRipple in 'Becoming an XRP Ledger Gateway'](be
 
 The NoRipple flag can only be enabled on a trust line if the address has a positive or zero balance on that trust line. This is so that the feature cannot be abused to default on the obligation the trust line balance represents. (Of course, you can still default by abandoning the address.)
 
-In the [`rippled` APIs](rippled-apis.html), you can enable the NoRipple flag by sending a [TrustSet transaction][] with the `tfSetNoRipple` flag. You can disable NoRipple (enable rippling) with the `tfClearNoRipple` flag.
+In the [`rippled` APIs](rippled-api.html), you can enable the NoRipple flag by sending a [TrustSet transaction][] with the `tfSetNoRipple` flag. You can disable NoRipple (enable rippling) with the `tfClearNoRipple` flag.
 
 In [RippleAPI](rippleapi.html), you can enable the NoRipple flag by sending a [Trustline transaction](reference-rippleapi.html#preparetrustline) transaction with the `ripplingDisabled` field of the trust line set to `true`.
 
@@ -73,7 +73,7 @@ In [RippleAPI](rippleapi.html), you can enable the NoRipple flag by sending a [T
 
 In the case of two accounts that mutually trust each other, the NoRipple flag is tracked separately for each account.
 
-In the [`rippled` APIs](reference-rippled.html), you can use the [account_lines method][] to look up the trust lines associated with an address. For each trust line, the `no_ripple` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the NoRipple flag.
+In the [`rippled` APIs](rippled-api.html), you can use the [account_lines method][] to look up the trust lines associated with an address. For each trust line, the `no_ripple` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the NoRipple flag.
 
 In [RippleAPI](reference-rippleapi.html), you can use the [getTrustlines](rippleapi.html#gettrustlines) method to look up the trust lines associated with an address. For each trust line, the `ripplingDisabled` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `counterparty.ripplingDisabled` field shows whether the counterparty has enabled the NoRipple flag.
 
