@@ -178,4 +178,7 @@ When the [FeeEscalation amendment](known-amendments.html#feeescalation) is enabl
 
 The XRP Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](fee-voting.html) for more information.
 
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}

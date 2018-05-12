@@ -92,3 +92,8 @@ The `type` field, used for the binary serialization of a path set, is actually c
 | 0x01        | 1               | A change of address (rippling): the `account` field is present. |
 | 0x10        | 16              | A change of currency: the `currency` field is present. |
 | 0x20        | 32              | A change of issuer: the `issuer` field is present. |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

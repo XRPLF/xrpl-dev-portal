@@ -4,7 +4,12 @@ All changes to the XRP Ledger happen as the result of transactions. The only API
 
 Transaction submission commands:
 
-- [`submit` command](XREF: submit.md)
-- [`submit_multisigned` command](XREF: submit-multisigned.md)
+- [submit method][]
+- [submit_multisigned method][]
 
-For more information on the various transactions you can submit, see the [Transaction Reference](xref: transaction-methods.html).
+For more information on the various transactions you can submit, see the [Transaction Formats Reference](transaction-formats.html).
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

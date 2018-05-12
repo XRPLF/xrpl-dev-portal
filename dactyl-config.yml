@@ -45,12 +45,12 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
-            - html: introduction.html
-              date: 2018-05-07
-            # - html: capacity-planning.html
-            #   date: 2018-05-04
-            - html: reliable-transaction-submission.html
-              date: 2018-04-16
+            - html: technical-faq.html
+              date: 2018-05-11
+            - html: cross-currency-payments.html
+              date: 2018-05-10
+            - html: capacity-planning.html
+              date: 2018-05-04
 
 pages:
 
@@ -622,8 +622,8 @@ pages:
         targets:
             - local
 
-    -   md: tutorials/use-simple-xrp-payments/send-a-multisigned-transaction.md
-        html: send-a-multisigned-transaction.html
+    -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.md
+        html: send-a-multi-signed-transaction.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
@@ -2231,12 +2231,10 @@ pages:
         targets:
             - local
 
-    # TODO: 5 other result code classes
-
     # --------------- end "rippled API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.21.0/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.22.0/docs/index.md
         html: rippleapi-reference.html
         funnel: Docs
         doc_type: References
@@ -2384,12 +2382,6 @@ ignore_anchors_in:
 #Sometimes, a link is not really problematic, but the link checker detects it
 # as such and the easiest solution is to ignore it.
 known_broken_links:
-    # Strangely, Python doesn't like the cert here. Firefox is OK with it.
-    - https://validators.ripple.com
-
-    # Login required for the client portal.
-    - https://clients.ripple.com/
-
     # These PDFs download OK in a browser
     - http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847
     - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF

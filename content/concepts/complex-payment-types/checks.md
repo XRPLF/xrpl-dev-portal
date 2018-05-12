@@ -108,4 +108,7 @@ For more information about related features, see:
 * [Payment Channels Tutorial](use-payment-channels.html)
 
 
-{% include '_snippets/tx-type-links.md' %}
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

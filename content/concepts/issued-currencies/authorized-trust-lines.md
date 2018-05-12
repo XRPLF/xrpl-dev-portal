@@ -48,6 +48,7 @@ POST http://localhost:5005/
 ```
 
 {% include '_snippets/secret-key-warning.md' %}
+<!--{#_ #}-->
 
 ## Checking Whether an Account Has RequireAuth Enabled
 
@@ -89,6 +90,7 @@ POST http://localhost:8088/
 ```
 
 {% include '_snippets/secret-key-warning.md' %}
+<!--{#_ #}-->
 
 ## Checking Whether Trust Lines Are Authorized
 
@@ -96,4 +98,7 @@ To see whether a trust line has been authorized, use the [account_lines method][
 
 In the response's `result.lines` array, find the object whose `currency` field indicates that it represents a trust line for the currency you want. If that object has a `peer_authorized` field with the value `true`, then the issuer (the address you used as the request's `peer` field) has authorized the trust line.
 
-{% include '_snippets/tx-type-links.md' %}
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

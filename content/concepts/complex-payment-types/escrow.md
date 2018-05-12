@@ -41,7 +41,7 @@ Escrow provides strong guarantees that are best suited for high-value, low-quant
 
 ## Availability of Escrow
 
-Conditional payments have been enabled by the ["Escrow" Amendment](reference-amendments.html#escrow) to the XRP Ledger Consensus Protocol since 2017-03-31. A previous version of the same functionality was available on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/) by the name "Suspended Payments" (SusPay) in 2016.
+Conditional payments have been enabled by the ["Escrow" Amendment](known-amendments.html#escrow) to the XRP Ledger Consensus Protocol since 2017-03-31. A previous version of the same functionality was available on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/) by the name "Suspended Payments" (SusPay) in 2016.
 
 When testing in [stand-alone mode](stand-alone-mode.html), you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your `rippled.cfg`:
 
@@ -115,8 +115,7 @@ For more information on Interledger and how conditional transfers enable secure 
 
 For more information on Ripple's 55-Billion XRP Lockup, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
 
-<!--{# reference link definitions #}-->
-[Interledger Protocol]: https://interledger.org/
-[crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
-[crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
-{% include '_snippets/tx-type-links.md' %}
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

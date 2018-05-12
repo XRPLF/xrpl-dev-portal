@@ -45,6 +45,11 @@ You can check an account's `transferRate` with the [getSettings method](rippleap
 
 In `rippled`'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set to no fee. The value of `TransferRate` cannot be set to less than `1000000000` ("0%" fee) or more than `2000000000` (a "100%" fee). The value `0` is special case for no fee, equivalent to `1000000000`.
 
-A financial institution can submit an [AccountSet transaction](accountset.html) from its [issuing address][] to change the `TransferRate` for its issuances.
+A financial institution can submit an [AccountSet transaction][] from its [issuing address][] to change the `TransferRate` for its issuances.
 
 You can check an account's `TransferRate` with the [account_info method][]. If the `TransferRate` is omitted, then that indicates no fee.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

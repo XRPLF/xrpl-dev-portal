@@ -42,7 +42,7 @@ An `Offer` object has the following fields:
 | `Sequence`          | Number    | UInt32    | The `Sequence` value of the [OfferCreate][] transaction that created this `Offer` object. Used in combination with the `Account` to identify this Offer. |
 | `TakerPays`         | String or Object | Amount | The remaining amount and type of currency requested by the offer creator. |
 | `TakerGets`         | String or Object | Amount | The remaining amount and type of currency being provided by the offer creator. |
-| `BookDirectory`     | String    | UInt256   | The ID of the [Offer Directory](#directorynode) that links to this offer. |
+| `BookDirectory`     | String    | UInt256   | The ID of the [Offer Directory](directorynode.html) that links to this offer. |
 | `BookNode`          | String    | UInt64    | A hint indicating which page of the offer directory links to this object, in case the directory consists of multiple pages. |
 | `OwnerNode`         | String    | UInt64    | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | `PreviousTxnID`     | String | Hash256 | The identifying hash of the transaction that most recently modified this object. |
@@ -55,7 +55,7 @@ There are several options which can be either enabled or disabled when an [Offer
 
 `Offer` objects can have the following flag values:
 
-| Flag Name | Hex Value | Decimal Value | Description | Corresponding [OfferCreate Flag](reference-transaction-format.html#offercreate-flags) |
+| Flag Name | Hex Value | Decimal Value | Description | Corresponding [OfferCreate Flag](offercreate.html#offercreate-flags) |
 |-----------|-----------|---------------|-------------|------------------------|
 | lsfPassive | 0x00010000 | 65536 | The object was placed as a passive offer. This has no effect on the object in the ledger. | tfPassive |
 | lsfSell   | 0x00020000 | 131072 | The object was placed as a sell offer. This has no effect on the object in the ledger (because tfSell only matters if you get a better rate than you asked for, which cannot happen after the object enters the ledger). | tfSell |

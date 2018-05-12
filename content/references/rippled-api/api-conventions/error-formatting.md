@@ -99,7 +99,7 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 
 All methods can potentially return any of the following values for the `error` code:
 
-* `unknownCmd` - The request does not contain a [command](XREF: rippled-api.md) that the `rippled` server recognizes.
+* `unknownCmd` - The request does not contain a [command](rippled-api.html) that the `rippled` server recognizes.
 * `jsonInvalid` - (WebSocket only) The request is not a proper JSON object.
     * JSON-RPC returns a 400 Bad Request HTTP error in this case instead.
 * `missingCommand` - (WebSocket only) The request did not specify a `command` field.

@@ -201,7 +201,7 @@ The fields of a successful response include:
 | `id`            | (Varies) | (WebSocket only) ID provided in the request that prompted this response |
 | `status`        | String   | (WebSocket only) The value `success` indicates the request was successfully received and understood by the server. |
 | `result.status` | String   | (JSON-RPC and Commandline) The value `success` indicates the request was successfully received and understood by the server. |
-| `type`          | String   | (WebSocket only) The value `response` indicates a successful response to a command. [Asynchronous notifications](subscriptions.html) use a different value such as `ledgerClosed` or `transaction`. |
+| `type`          | String   | (WebSocket only) The value `response` indicates a successful response to a command. [Asynchronous notifications](subscribe.html) use a different value such as `ledgerClosed` or `transaction`. |
 | `result`        | Object   | The result of the query; contents vary depending on the command. |
 
 ### Commandline
