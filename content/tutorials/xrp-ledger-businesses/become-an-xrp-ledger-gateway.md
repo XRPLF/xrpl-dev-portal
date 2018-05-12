@@ -840,3 +840,8 @@ The [ripple.txt](https://wiki.ripple.com/Ripple.txt) standard provides a way to 
 For example, if you run a validating `rippled` server, you can use ripple.txt to publish the public key of your validating server. You can also publish information about what currencies your gateway issues, and which XRP Ledger addresses you control, to protect against impostors or confusion.
 
 <!-- STYLE_OVERRIDE: gateway, gateways -->
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

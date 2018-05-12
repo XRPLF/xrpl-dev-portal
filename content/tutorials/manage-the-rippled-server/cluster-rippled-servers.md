@@ -17,3 +17,8 @@ To enable clustering, change the following sections of your [config file](https:
 * Generate a unique seed (using the [validation_create method][]) for each of your servers, and configure it under the `[node_seed]` section. The `rippled` server uses this key to sign its messages to other servers in the peer-to-peer network.
 
 * Add the public keys (for peer communication) of each of your other servers under the `[cluster_nodes]` section.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

@@ -791,7 +791,7 @@ pages:
 
     # TODO: identify your accounts with ripple.txt (to come later)
 
-    -   md: tutorials/manage-the-rippled-server/manage-the-rippled-server.md
+    -   name: Manage the rippled Server
         html: manage-the-rippled-server.html
         funnel: Docs
         doc_type: Tutorials

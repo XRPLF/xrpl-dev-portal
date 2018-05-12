@@ -184,7 +184,7 @@ Watchdog: Launching child 1
 
 * Now that you have a stock `rippled` server running, you may want to consider running it as a validating server. For information about validating servers and why you might want to run one, see the [rippled Setup Tutorial](install-rippled.html).
 
-* For information about communicating with your `rippled` server using the `rippled` API, see the [`rippled` API reference](reference-rippled.html).
+* For information about communicating with your `rippled` server using the `rippled` API, see the [`rippled` API reference](rippled-api.html).
 
 * As a development best practice, you may want to build a `rippled` `.deb` file. For more information, see _Ubuntu Packaging Guide_: [Packaging New Software](http://packaging.ubuntu.com/html/packaging-new-software.html).
 

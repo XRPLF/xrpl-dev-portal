@@ -57,3 +57,8 @@ When you load a ledger with `--ledger` in stand-alone mode, it goes to the curre
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
