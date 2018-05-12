@@ -60,8 +60,8 @@ You can find the `delivered_amount` field in the following places:
 | [JSON-RPC / WebSocket][] | [account_tx method][] | `result.transactions` array members' `meta.delivered_amount` |
 | [JSON-RPC / WebSocket][] | [tx method][] | `result.meta.delivered_amount` |
 | [JSON-RPC / WebSocket][] | [transaction_entry method][] | `result.metadata.delivered_amount` |
-| [RippleAPI][] | [`getTransaction` method](reference-rippleapi.html#gettransaction) | `outcome.deliveredAmount` |
-| [RippleAPI][] | [`getTransactions` method](reference-rippleapi.html#gettransactions) | array members' `outcome.deliveredAmount` |
+| [RippleAPI][] | [`getTransaction` method](rippleapi-reference.html#gettransaction) | `outcome.deliveredAmount` |
+| [RippleAPI][] | [`getTransactions` method](rippleapi-reference.html#gettransaction) | array members' `outcome.deliveredAmount` |
 
 [JSON-RPC / WebSocket]: rippled-api.html
 [RippleAPI]: rippleapi-reference.html
