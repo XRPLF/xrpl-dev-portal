@@ -60,11 +60,13 @@
             <div class="card-body">
               <p class="ref-blurb">{{page.blurb}}</p>
               {% if page.curated_anchors is defined %}
-                <ul class="curated-links">
-                  {% for link in page.curated_anchors %}
-                  <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
-                  {% endfor %}
-                </ul>
+                <div class="curated-links">
+                  <ul>
+                    {% for link in page.curated_anchors %}
+                    <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div><!--/.curated-links-->
               {% endif %}
 
               {% set depth = 1 %}
