@@ -2226,41 +2226,39 @@ pages:
 
     # --------------- end "rippled API" section --------------------------------
 
-    # # Temporarily commented out to make building the dev portal faster
-    # -   name: RippleAPI Reference # name is required for remote-sourced files
-    #     md: https://raw.githubusercontent.com/ripple/ripple-lib/0.21.0/docs/index.md
-    #     html: rippleapi-reference.html
-    #     funnel: Docs
-    #     doc_type: References
-    #     category: RippleAPI for JavaScript
-    #     blurb: Official client library to the XRP Ledger. Available for JavaScript only.
-    #     curated_anchors:
-    #         - name: Transactions
-    #           anchor: "#transaction-overview"
-    #         - name: Basic Types
-    #           anchor: "#basic-types"
-    #         - name: Methods
-    #           anchor: "#api-methods"
-    #     filters:
-    #         - remove_doctoc
-    #         - add_version
-    #     targets:
-    #         - local
+    -   name: RippleAPI Reference # name is required for remote-sourced files
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.21.0/docs/index.md
+        html: rippleapi-reference.html
+        funnel: Docs
+        doc_type: References
+        category: RippleAPI for JavaScript
+        blurb: Official client library to the XRP Ledger. Available for JavaScript only.
+        curated_anchors:
+            - name: Transactions
+              anchor: "#transaction-overview"
+            - name: Basic Types
+              anchor: "#basic-types"
+            - name: Methods
+              anchor: "#api-methods"
+        filters:
+            - remove_doctoc
+            - add_version
+        targets:
+            - local
 
-    # # Temporarily commented out to make building the dev portal faster
-    # -   md: references/data-api.md
-    #     html: data-api.html
-    #     funnel: Docs
-    #     doc_type: References
-    #     category: Data API
-    #     blurb: Access more XRP Ledger data, including transaction history and analytics.
-    #     curated_anchors:
-    #         - name: Methods
-    #           anchor: "#api-method-reference"
-    #         - name: API Conventions
-    #           anchor: "#api-conventions"
-    #     targets:
-    #         - local
+    -   md: references/data-api.md
+        html: data-api.html
+        funnel: Docs
+        doc_type: References
+        category: Data API
+        blurb: Access more XRP Ledger data, including transaction history and analytics.
+        curated_anchors:
+            - name: Methods
+              anchor: "#api-method-reference"
+            - name: API Conventions
+              anchor: "#api-conventions"
+        targets:
+            - local
 
 
 # --------------- end "Docs" section -------------------------------------------
