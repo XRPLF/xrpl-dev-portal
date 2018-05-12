@@ -113,11 +113,11 @@ In the next step, you'll use the `account_id` from this response to assign the k
 
 ## 2. Assign the Key Pair to Your Account as a Regular Key Pair
 
-Use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method to assign the key pair you generated in step 1 to your account as a regular key pair.
+Use a [SetRegularKey transaction][] to assign the key pair you generated in step 1 to your account as a regular key pair.
 
-When assigning a regular key pair to your account for the first time, the `SetRegularKey` method requires signing by your account's master private key (secret). Transmitting your master private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
+When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing by your account's master private key (secret). Transmitting your master private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
 
-When you make subsequent `SetRegularKey` requests, you can sign using the existing regular private key to replace or [remove itself](#changing-or-removing-a-regular-key-pair). Note that you should still not submit your regular private key across the network.
+When you send subsequent SetRegularKey transactions, you can sign using the existing regular private key to replace or [remove itself](change-or-remove-a-regular-key-pair.html). Note that you should still not submit your regular private key across the network.
 
 
 ### Sign Your Transaction
@@ -389,19 +389,20 @@ An example of a successful response:
 <!-- MULTICODE_BLOCK_END -->
 
 
-Note that the response contains a `hash` of the transaction, which you can use to [look up the transaction's final outcome](reference-rippled.html#tx).
+Note that the response contains a `hash` of the transaction, which you can use to [look up the transaction's final outcome](tx.html).
 
 
 ## 3. Verify the Regular Key Pair
 
-To verify that your account has the regular key pair set correctly, submit an [`AccountSet`](reference-transaction-format.html#accountset) transaction from your account, signing it with the regular private key you assigned to your account in step 2.
+To verify that your account has the regular key pair set correctly, submit an [AccountSet transaction][] from your account, signing it with the regular private key you assigned to your account in step 2.
 
 As discussed in step 2, transmitting your master private key is dangerous. It is equally risky to transmit your regular private key, though the consequences of being comprised might be less severe. Therefore, we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
 
 
 ### Sign Your Transaction
 
-The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](rippleapi-reference.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+{% include '_snippets/tutorial-sign-step.md' %}
+<!--{#_ #}-->
 
 Populate the request fields with the following values:
 
@@ -537,7 +538,7 @@ Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `s
 
 ### Submit Your Transaction
 
-Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled.html#submit) command.
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [submit method][].
 
 #### Request Format
 
@@ -666,7 +667,7 @@ Now that you're familiar with the benefits of assigning a regular key pair to an
 - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
 - [Set Up Multi-Signing](set-up-multi-signing.html)
 - [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
-- [Listing XRP as an Exchange](tutorial-listing-xrp.html)
+- [List XRP as an Exchange](list-xrp-as-an-exchange.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

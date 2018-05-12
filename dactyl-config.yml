@@ -511,7 +511,7 @@ pages:
         targets:
             - local
 
-    -   md: tutorials/get-started/get-started.md
+    -   name: Get Started
         html: get-started.html
         funnel: Docs
         doc_type: Tutorials
@@ -619,6 +619,15 @@ pages:
         doc_type: Tutorials
         category: Manage Account Settings
         blurb: Add a signer list to your account to enable multi-signing.
+        targets:
+            - local
+
+    -   md: tutorials/use-simple-xrp-payments/send-a-multisigned-transaction.md
+        html: send-a-multisigned-transaction.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Send a transaction authorized with multiple signatures.
         targets:
             - local
 

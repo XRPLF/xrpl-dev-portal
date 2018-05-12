@@ -14,14 +14,15 @@ For more information about master and regular key pairs, see [Cryptographic Keys
 
 ## Removing a Regular Key Pair
 
-If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](reference-transaction-format.html#multi-signing)).
+If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](multi-signing.html)).
 
 
 When removing a regular key pair to your account, the `SetRegularKey` transaction requires signing by your account's master private key (secret) or existing regular key pair. Transmitting your master or regular private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
 
 ### Sign Your Transaction
 
-The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](rippleapi-reference.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+{% include '_snippets/tutorial-sign-step.md' %}
+<!--{#_ #}-->
 
 Populate the request fields with the following values:
 
@@ -156,7 +157,7 @@ Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `s
 
 ### Submit Your Transaction
 
-Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled.html#submit) command.
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [submit method][].
 
 #### Request Format
 
@@ -279,7 +280,7 @@ An example of a successful response:
 
 The way to verify that regular key pair removal succeeded is to confirm that you can't send a transaction using the removed regular private key.
 
-Here's an example error response for an [`AccountSet`](reference-transaction-format.html#accountset) transaction signed using the regular private key removed by the `SetRegularKey` transaction above.
+Here's an example error response for an [AccountSet transaction][] signed using the regular private key removed by the `SetRegularKey` transaction above.
 
 
 ### Response Format
@@ -352,7 +353,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](transaction-cost.html#key-reset-transaction) without paying the [transaction cost](reference-transaction-format.html#transaction-cost). With the enablement of the FeeEscalation amendment, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
+In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](transaction-cost.html#key-reset-transaction) without paying the [transaction cost](transaction-cost.html). With the enablement of the FeeEscalation amendment, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

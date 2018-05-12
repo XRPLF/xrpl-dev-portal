@@ -1,6 +1,6 @@
 # Set Up Multi-Signing
 
-Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with [regular keys](reference-transaction-format.html#setregularkey) and master keys. You can configure your address to allow any combination of the three methods to authorize transactions.
+Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with [regular keys and master keys](cryptographic-keys.html). You can configure your address to allow any combination of the three methods to authorize transactions.
 
 This tutorial demonstrates how to enable multi-signing for an address.
 
@@ -127,9 +127,9 @@ In this example, the SignerList has 3 members, with the weights and quorum set u
        }
     }
 
-Make sure that the [Transaction Result](reference-transaction-format.html#transaction-results) is [**tesSUCCESS**](reference-transaction-format.html#tes-success). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](#availability-of-multi-signing).
+Make sure that the [Transaction Result](transaction-results.html) is [**tesSUCCESS**](tes-success.html). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](start-a-new-genesis-ledger-in-stand-alone-mode.html#settings-in-new-genesis-ledgers).
 
-**Note:** The more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](reference-transaction-format.html#tec-codes). See also: [SignerLists and Reserves](reference-ledger-format.html#signerlists-and-reserves).
+**Note:** The more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](tec-codes.html). See also: [SignerLists and Reserves](signerlist.html#signerlists-and-reserves).
 
 
 ## 4. Close the ledger
@@ -206,8 +206,8 @@ If the SignerList is present with the expected contents, then your address is re
 
 At this point, your address is ready to [send a multi-signed transaction](send-a-multi-signed-transaction.html). You may also want to:
 
-* Disable the address's master key pair by sending an [AccountSet transaction](reference-transaction-format.html#accountset) using the `asfDisableMaster` flag.
-* Remove the address's regular key pair (if you previously set one) by sending a [SetRegularKey transaction](reference-transaction-format.html#setregularkey).
+* Disable the address's master key pair by sending an [AccountSet transaction][] using the `asfDisableMaster` flag.
+* Remove the address's regular key pair (if you previously set one) by sending a [SetRegularKey transaction][].
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

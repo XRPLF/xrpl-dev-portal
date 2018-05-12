@@ -66,6 +66,7 @@ The value of a gateway's issuances in the XRP Ledger comes directly from the tru
 ### Hot and Cold Wallets
 
 {% include '_snippets/issuing-and-operational-addresses-intro.md' %}
+<!--{#_ #}-->
 
 For more information, see [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
 
@@ -316,7 +317,7 @@ A gateway can freeze accounting relationships in the XRP Ledger to meet regulato
 * Gateways can freeze all accounting relationships to their issuing address, in case of a major security compromise or for migrating to a new issuing address.
 * Furthermore, gateways can permanently opt out of their ability to freeze accounting relationships. This allows a gateway to assure its customers that it will continue to provide "physical-money-like" services. <!-- STYLE_OVERRIDE: will -->
 
-For more information, see the [Freeze article](freeze.html).
+For more information, see the [Freeze article](freezes.html).
 
 
 ## Authorized Trust Lines
@@ -346,8 +347,8 @@ See [Generating Source and Destination Tags](#generating-source-and-destination-
 
 Historically, Ripple (the company) issued gateway bulletins to introduce new features or discuss topics related to compliance and risk. Gateway Bulletins are listed here in reverse chronological order.
 
-- May 13, 2015 - [GB-2015-06 Gateway Bulletin: Corrections to Autobridging](gb-2015-06.html)
-- April 17, 2015 - [GB-2015-05 Historical Ledger Query Migration](gb-2015-05.html)
+- May 13, 2015 - [GB-2015-06 Gateway Bulletin: Corrections to Autobridging (PDF)](assets/pdf/GB-2015-06.pdf)
+- April 17, 2015 - [GB-2015-05 Historical Ledger Query Migration](assets/pdf/GB-2015-05.pdf)
 - March 13, 2015 - [GB-2015-04 Action Required: Default Ripple Flag (PDF)](https://ripple.com/files/GB-2015-04.pdf)
 - March 3, 2015 - [GB-2015-03 Gateway Advisory: FinCEN Ruling on MoneyGram Compliance Program (PDF)](https://ripple.com/files/GB-2015-03.pdf)
 - March 2, 2015 (Updated) - [GB-2015-02 New Standards: How to be Featured on Ripple Trade and Ripple Charts (PDF)](https://ripple.com/files/GB-2015-02.pdf)
@@ -415,6 +416,7 @@ POST http://localhost:8088/
 ```
 
 {% include '_snippets/secret-key-warning.md' %}
+<!--{#_ #}-->
 
 Response:
 
@@ -441,7 +443,7 @@ Response:
 }
 ```
 
-To confirm that an address has DefaultRipple enabled, look up the address using the [account_info command](reference-rippled.html#account-info), specifying a validated ledger version. Use [a bitwise-AND operator](https://en.wikipedia.org/wiki/Bitwise_operation#AND) to compare the `Flags` field with 0x00800000 (the [ledger flag lsfDefaultRipple](accountroot.html#accountroot-flags)). If the result of the bitwise-AND operation is nonzero, then the address has DefaultRipple enabled.
+To confirm that an address has DefaultRipple enabled, look up the address using the [account_info method][], specifying a validated ledger version. Use [a bitwise-AND operator](https://en.wikipedia.org/wiki/Bitwise_operation#AND) to compare the `Flags` field with 0x00800000 (the [ledger flag lsfDefaultRipple](accountroot.html#accountroot-flags)). If the result of the bitwise-AND operation is nonzero, then the address has DefaultRipple enabled.
 
 
 ## Generating Source and Destination Tags
@@ -487,6 +489,7 @@ POST http://localhost:8088/
 ```
 
 {% include '_snippets/secret-key-warning.md' %}
+<!--{#_ #}-->
 
 Response:
 
@@ -545,6 +548,7 @@ Content-Type: application/json
 ```
 
 {% include '_snippets/secret-key-warning.md' %}
+<!--{#_ #}-->
 
 Response:
 
@@ -602,6 +606,7 @@ POST http://localhost:5005/
 ```
 
 {% include '_snippets/secret-key-warning.md' %}
+<!--{#_ #}-->
 
 ### Authorizing Trust Lines
 
@@ -637,6 +642,7 @@ POST http://localhost:8088/
 ```
 
 {% include '_snippets/secret-key-warning.md' %}
+<!--{#_ #}-->
 
 
 ## Robustly Monitoring for Payments

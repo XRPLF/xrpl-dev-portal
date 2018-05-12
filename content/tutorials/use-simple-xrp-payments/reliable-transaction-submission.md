@@ -54,7 +54,7 @@ Each validated ledger has a canonical order in which transactions apply. This or
 
 ### LastLedgerSequence
 
-[`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) is an optional parameter of all transactions.  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger instance.  The XRP Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's `LastLedgerSequence` parameter.
+`LastLedgerSequence` is an optional [parameter of all transactions](transaction-common-fields.html).  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger instance.  The XRP Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's `LastLedgerSequence` parameter.
 
 Use the `LastLedgerSequence` parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger.  You should specify the `LastLedgerSequence` parameter on every transaction.  Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.
 
@@ -138,14 +138,14 @@ The difference between the two transaction failure cases (labeled (1) and (2) in
 - In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](transaction-cost.html), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](paths.html), or other circumstances. For many such failures, immediately retrying with a similar transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
 
 - In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or it could be due to other conditions such as an unstable network connection. In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again.
-    - It is also possible that the transaction could not succeed due to the state of the ledger, for example because the sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](reference-transaction-format.html#tef-codes), the transaction is less likely to succeed without further modification.
+    - It is also possible that the transaction could not succeed due to the state of the ledger, for example because the sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](tef-codes.html), the transaction is less likely to succeed without further modification.
 
 
 #### Ledger Gaps
 
 If your server does not have continuous ledger history from when the transaction was originally submitted up to and including the ledger identified by `LastLedgerSequence`, you may not know the final outcome of the transaction. (If it was included in one of the ledger versions your server is missing, you do not know whether it succeeded or failed.)
 
-Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its [configured amount of history to store](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L581). Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can also manually request your server to acquire historical ledger versions using the [`ledger_request` command](reference-rippled.html#ledger-request).
+Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its [configured amount of history to store](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L581). Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can also manually request your server to acquire historical ledger versions using the [ledger_request method][].
 
 Alternatively, you can look up the status of the transaction using a different `rippled` server that already has the needed ledger history, such as Ripple's full-history servers at `s2.ripple.com`. Only use a server you trust for this purpose. A malicious server could be programmed to provide false information about the status and outcome of a transaction.
 
@@ -176,7 +176,7 @@ How the application does these actions depends on the API the application uses. 
 
 #### Determine the Account Sequence
 
-`rippled` provides the [account_info](reference-rippled.html#account-info) method to learn an account's sequence number in the last validated ledger.
+`rippled` provides the [account_info method][] to learn an account's sequence number in the last validated ledger.
 
 JSON-RPC Request:
 
@@ -222,7 +222,7 @@ If an application were to submit three transactions signed by this account, they
 
 #### Determine the Last Validated Ledger
 
-`rippled` provides the [server_state](reference-rippled.html#server-state) command which returns the ledger sequence number of the last validated ledger.
+The [server_state method][] returns the ledger index of the last validated ledger.
 
 Request:
 
@@ -273,7 +273,7 @@ In this example the last validated ledger sequence number is 10268596 (found und
 
 #### Construct the Transaction
 
-`rippled` provides the [sign method](reference-rippled.html#sign) to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `rippled` instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.
+`rippled` provides the [sign method][] to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `rippled` instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.
 
 Request:
 
@@ -510,8 +510,12 @@ Finally the server may show one or more gaps in the transaction history. The `co
 
 ## Additional Resources
 
-- [Transaction Format](reference-transaction-format.html)
+- [Transaction Formats](transaction-formats.html)
 - [Transaction Cost](transaction-cost.html)
-- [`LastLedgerSequence` field](reference-transaction-format.html#lastledgersequence)
 - [Overview of XRP Ledger Consensus Process](consensus.html)
-- [Reaching Consensus in the XRP Ledger](reaching-consensus.html)
+- [Consensus Principles and Rules](consensus-principles-and-rules.html)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

@@ -52,7 +52,7 @@ rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 
 ## 6. Manually advance the ledger.
 
-When you load a ledger with `--ledger` in stand-alone mode, it goes to the current open ledger, so you must [manually advance the ledger](#advancing-ledgers-in-stand-alone-mode):
+When you load a ledger with `--ledger` in stand-alone mode, it goes to the current open ledger, so you must [manually advance the ledger](advance-the-ledger-in-stand-alone-mode.html):
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
