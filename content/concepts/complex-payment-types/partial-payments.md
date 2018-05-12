@@ -64,7 +64,7 @@ You can find the `delivered_amount` field in the following places:
 | [RippleAPI][] | [`getTransactions` method](reference-rippleapi.html#gettransactions) | array members' `outcome.deliveredAmount` |
 
 [JSON-RPC / WebSocket]: rippled-api.html
-[RippleAPI]: rippled-api.html
+[RippleAPI]: rippleapi-reference.html
 
 ## Partial Payments Exploit
 
