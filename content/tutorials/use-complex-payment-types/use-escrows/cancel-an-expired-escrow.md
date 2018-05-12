@@ -57,7 +57,7 @@ _Websocket_
 
 ## 2. Submit EscrowCancel transaction
 
-***Anyone*** can cancel an expired escrow in the XRP Ledger by [signing and submitting](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCancel transaction][]. Set the `Owner` field of the transaction to the `Account` of the `EscrowCreate` transaction that created this escrow. Set the `OfferSequence` field to the `Sequence` of the `EscrowCreate` transaction.
+***Anyone*** can cancel an expired escrow in the XRP Ledger by [signing and submitting](transaction-basics.html#signing-and-submitting-transactions) an [EscrowCancel transaction][]. Set the `Owner` field of the transaction to the `Account` of the `EscrowCreate` transaction that created this escrow. Set the `OfferSequence` field to the `Sequence` of the `EscrowCreate` transaction.
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 

@@ -157,7 +157,7 @@ Next, use the `submit` command to transmit the transaction blob (`tx_blob` or `s
 
 ### Submit Your Transaction
 
-Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [`submit`](reference-rippled.html#submit) command.
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [submit method][].
 
 #### Request Format
 
@@ -280,7 +280,7 @@ An example of a successful response:
 
 The way to verify that regular key pair removal succeeded is to confirm that you can't send a transaction using the removed regular private key.
 
-Here's an example error response for an [`AccountSet`](reference-transaction-format.html#accountset) transaction signed using the regular private key removed by the `SetRegularKey` transaction above.
+Here's an example error response for an [AccountSet transaction][] signed using the regular private key removed by the `SetRegularKey` transaction above.
 
 
 ### Response Format
@@ -353,7 +353,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](transaction-cost.html#key-reset-transaction) without paying the [transaction cost](reference-transaction-format.html#transaction-cost). With the enablement of the FeeEscalation amendment, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
+In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](transaction-cost.html#key-reset-transaction) without paying the [transaction cost](transaction-cost.html). With the enablement of the FeeEscalation amendment, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

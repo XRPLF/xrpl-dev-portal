@@ -183,7 +183,7 @@ Use the [tx method][] with the CheckCreate transaction's identifying hash to che
 
 Look for a `CreatedNode` object in the transaction metadata to indicate that the transaction created a [Check ledger object](check.html). The `LedgerIndex` of this object is the ID of the Check. In the following example, the Check's ID is `49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`.
 
-**Note:** RippleAPI does not report the Check's ID when you look up a CheckCreate transaction. You can work around this by calculating the Check's ID from the [Check ID format](reference-ledger-format.html#check-id-format), as in the example RippleAPI code below. <!--{# TODO: Remove this and update the code samples if ripple-lib #876 gets fixed. #}-->
+**Note:** RippleAPI does not report the Check's ID when you look up a CheckCreate transaction. You can work around this by calculating the Check's ID from the [Check ID format](check.html#check-id-format), as in the example RippleAPI code below. <!--{# TODO: Remove this and update the code samples if ripple-lib #876 gets fixed. #}-->
 
 ### Example Request
 

@@ -287,7 +287,7 @@ Response:
         }
     }
 
-If the response shows `"signature_verified": true` then the claim's signature is genuine. The payee must **also** confirm that the channel has enough XRP available to honor the claim. To do this, the payee makes an [`account_channels` request](reference-rippled.html#account-channels) to confirm the most recent validated state of the payment channel.
+If the response shows `"signature_verified": true` then the claim's signature is genuine. The payee must **also** confirm that the channel has enough XRP available to honor the claim. To do this, the payee uses the [account_channels method][] to confirm the most recent validated state of the payment channel.
 
 Request:
 
@@ -354,7 +354,7 @@ The payer and payee can repeat steps 3 through 6 (creating, transmitting, and ve
 
 - The amount of XRP in the payment channel. (If necessary, the payer can send a [PaymentChannelFund transaction][] to increase the total amount of XRP available to the channel.)
 
-- The immutable expiration of the payment channel, if one is set. (The `cancel_after` field in the [`account_channels`](reference-rippled.html#account-channels) response shows this.)
+- The immutable expiration of the payment channel, if one is set. (The `cancel_after` field in the response to the [account_channels method][] shows this.)
 
 
 ## 8. When ready, the payee redeems a claim for the authorized amount.
