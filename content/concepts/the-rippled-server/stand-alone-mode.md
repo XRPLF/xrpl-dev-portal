@@ -4,9 +4,9 @@ You can run `rippled` in stand-alone mode without a consensus of trusted servers
 
 When you run `rippled` in stand-alone mode, you have to tell it what ledger version to start from:
 
-* Create a [new genesis ledger](#new-genesis-ledger) from scratch.
-* [Load an existing ledger version](#load-saved-ledger) from disk.
+* Create a [new genesis ledger](start-a-new-genesis-ledger-in-stand-alone-mode.html) from scratch.
+* [Load an existing ledger version](load-a-saved-ledger-in-stand-alone-mode.html) from disk.
 
-**Caution:** In stand-alone mode, you must [manually advance the ledger](#advancing-ledgers-in-stand-alone-mode).
+**Caution:** In stand-alone mode, you must [manually advance the ledger](advance-the-ledger-in-stand-alone-mode.html).
 
 {% include '_snippets/rippled_versions.md' %}

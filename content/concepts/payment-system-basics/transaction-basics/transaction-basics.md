@@ -7,7 +7,7 @@ A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only 
 
 Every signed transaction has a unique `"hash"` that identifies it. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the [account_tx command](account_tx.html).
 
-The transaction hash can be used as a "proof of payment" since anyone can [look up the transaction by its hash](#looking-up-transaction-results) to verify its final status.
+The transaction hash can be used as a "proof of payment" since anyone can [look up the transaction by its hash](look-up-transaction-results.html) to verify its final status.
 
 
 ## Claimed Cost Justification
@@ -32,7 +32,7 @@ A transaction can be authorized by any of the following types of signatures:
 Any signature type can authorize any type of transaction, with the following exceptions:
 
 * Only the master private key can [disable the master public key](accountset.html).
-* Only the master private key can [permanently give up the ability to freeze](concept-freeze.html#no-freeze).
+* Only the master private key can [permanently give up the ability to freeze](freezes.html#no-freeze).
 * You can never remove the last method of signing transactions from an address.
 
 For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
@@ -44,7 +44,7 @@ For more information about master and regular key pairs, see [Cryptographic Keys
 
 Sending a transaction to the XRP Ledger involves several steps:
 
-1. Create an [unsigned transaction in JSON format](#unsigned-transaction-format).
+1. Create an [unsigned transaction in JSON format](#example-unsigned-transaction).
 2. Use one or more signatures to [authorize the transaction](#authorizing-transactions).
 3. Submit a transaction to a `rippled` server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
 4. The [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) determines which provisional transactions get included in the next validated ledger.

@@ -4,7 +4,7 @@ Servers in the XRP Ledger communicate to each other using the XRP Ledger peer pr
 
 ## Configuring the Peer Protocol
 
-To participate in the XRP Ledger, `rippled` servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are [clustered](tutorial-rippled-setup.html#clustering) with the current server.)
+To participate in the XRP Ledger, `rippled` servers connects to arbitrary peers using the peer protocol. (All such peers are treated as untrusted, unless they are [clustered](clustering.html) with the current server.)
 
 Ideally, the server should be able to send _and_ receive connections on the peer port. You should forward the port used for the peer protocol through your firewall to the `rippled` server. The [default `rippled` configuration file](https://github.com/ripple/rippled/blob/release/doc/rippled-example.cfg) listens for incoming peer protocol connections on port 51235 on all network interfaces. You can change the port used by editing the appropriate stanza in your `rippled.cfg` file.
 
@@ -19,7 +19,7 @@ protocol = peer
 
 ## Peer Crawler
 
-The Peer Crawler asks a `rippled` server to report information about the other `rippled` servers it is connected to as peers. The [`peers` command](#peers) in the [WebSocket and JSON-RPC APIs](#websocket-and-json-rpc-apis) also returns a similar, more comprehensive set of information, but requires [administrative access](#connecting-to-rippled) to the server. The Peer Crawler response is available to other servers on a non-privileged basis through the Peer Protocol (RTXP) port.
+The Peer Crawler asks a `rippled` server to report information about the other `rippled` servers it is connected to as peers. The [`peers` command](peers.html) in the [WebSocket and JSON-RPC APIs](get-started-with-the-rippled-api.html) also returns a similar, more comprehensive set of information, but requires [administrative access](admin-rippled-methods.html) to the server. The Peer Crawler response is available to other servers on a non-privileged basis through the Peer Protocol (RTXP) port.
 
 #### Request Format
 
@@ -48,7 +48,7 @@ Each member of the `active` array is a Peer Object with the following fields:
 |:-------------|:-------------------------|:-----------------------------------|
 | `ip`         | String (IPv4 Address)    | The IP address of this connected peer. |
 | `port`       | String (Number)          | The port number on the peer server that serves RTXP. Typically 51235. |
-| `public_key` | String (Base-64 Encoded) | The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the `pubkey_node` reported in the peer server's [`server_info` command](#server-info).) |
+| `public_key` | String (Base-64 Encoded) | The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the `pubkey_node` reported in the peer server's [`server_info` command](server-info.html).) |
 | `type`       | String                   | The value `in` or `out`, indicating whether the TCP connection to the peer is incoming or outgoing. |
 | `uptime`     | Number                   | The number of seconds the server has been has been connected to this peer. |
 | `version`    | String                   | The `rippled` version number the peer reports to be using. |
@@ -160,7 +160,7 @@ Response:
 
 You can use the `[peer_private]` stanza of the `rippled` config file to request that peer servers do not report your IP address in the Peer Crawler response. Servers you do not control can be modified not to respect this setting. However, you can use this to hide the IP addresses of `rippled` servers you control that _only_ connect to peers you control (using `[ips_fixed]` and a firewall). In this way, you can use public rippled servers you control as proxies for your private rippled servers.
 
-To protect an important [validating server](tutorial-rippled-setup.html#types-of-rippled-servers), Ripple recommends configuring one or more public tracking servers to act as proxies, while the validating server is protected by a firewall and only connects to the public tracking servers.
+To protect an important [validating server](the-rippled-server.html#types-of-rippled-servers), Ripple recommends configuring one or more public tracking servers to act as proxies, while the validating server is protected by a firewall and only connects to the public tracking servers.
 
 <!--{# TODO: network diagram of private peers #}-->
 
