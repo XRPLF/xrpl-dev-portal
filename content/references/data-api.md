@@ -2704,7 +2704,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `last_datetime`  | Integer | The last reported validation vote signed by this validator. |
 | `validation_public_key` | String - Base-58 [Public Key][] | This validator's validator public key. |
 | `domain` | String | (May be omitted) The DNS domain associated with this validator. |
-| `domain_state` | String | The value `verified` indicates that this validator has a [verified domain](tutorial-rippled-setup.html#domain-verification) controlled by the same operator as the validator. The value `AccountDomainNotFound` indicates that the "Account Domain" part of Domain Verification is not set up properly. The value `RippleTxtNotFound` indicates that the ripple.txt step of Domain Verification is not set up properly. |
+| `domain_state` | String | The value `verified` indicates that this validator has a [verified domain](run-rippled-as-a-validator.html#domain-verification) controlled by the same operator as the validator. The value `AccountDomainNotFound` indicates that the "Account Domain" part of Domain Verification is not set up properly. The value `RippleTxtNotFound` indicates that the ripple.txt step of Domain Verification is not set up properly. |
 
 #### Example
 
@@ -3029,9 +3029,9 @@ Each member in the `validators` array is a Single Validator Report Object with d
 | `date` | String - [Timestamp][] | The start time of the date this object describes. |
 | `total_ledgers` | Integer | Number of ledger hashes for which this validator submitted validation votes. If this number is much lower than other validators in the same time period, that could mean the validator had downtime. |
 | `main_net_agreement` | [String - Number][] | The fraction of consensus-validated production network ledger versions for which this validator voted in this interval. `"1.0"` indicates 100% agreement. |
-| `main_net_ledgers` | Integer | Number of consensus-validated [production network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. |
-| `alt_net_agreement` | [String - Number][] | The fraction of the consensus-validated [Test Network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
-| `alt_net_ledgers` | Integer | Number of consensus-validated [Test Network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. |
+| `main_net_ledgers` | Integer | Number of consensus-validated [production network](parallel-networks.html) ledger versions this validator voted for. |
+| `alt_net_agreement` | [String - Number][] | The fraction of the consensus-validated [Test Network](parallel-networks.html) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
+| `alt_net_ledgers` | Integer | Number of consensus-validated [Test Network](parallel-networks.html) ledger versions this validator voted for. |
 | `other_ledgers` | Integer | Number of other ledger versions this validator voted for. If this number is high, that could indicate that this validator was running non-standard or out-of-date software. |
 
 #### Example
@@ -3120,13 +3120,13 @@ Daily Validator Report Object fields:
 | `date` | String - [Timestamp][] | The start time of the date this object describes. |
 | `total_ledgers` | Integer | Number of ledger indexes for which this validator submitted validation votes. If this number is much lower than other validators in the same time period, that could mean the validator had downtime. |
 | `main_net_agreement` | [String - Number][] | The fraction of consensus-validated production network ledger versions for which this validator voted in this interval. `"1.0"` indicates 100% agreement. |
-| `main_net_ledgers` | Integer | Number of consensus-validated [production network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. |
-| `alt_net_agreement` | [String - Number][] | The fraction of the consensus-validated [Test Network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
-| `alt_net_ledgers` | Integer | Number of consensus-validated [Test Network](tutorial-rippled-setup.html#parallel-networks) ledger versions this validator voted for. |
+| `main_net_ledgers` | Integer | Number of consensus-validated [production network](parallel-networks.html) ledger versions this validator voted for. |
+| `alt_net_agreement` | [String - Number][] | The fraction of the consensus-validated [Test Network](parallel-networks.html) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
+| `alt_net_ledgers` | Integer | Number of consensus-validated [Test Network](parallel-networks.html) ledger versions this validator voted for. |
 | `other_ledgers` | Integer | Number of other ledger versions this validator voted for. If this number is high, that could indicate that this validator was running non-standard or out-of-date software. |
 | `last_datetime`  | Integer | The last reported validation vote signed by this validator. |
 | `domain` | String | (May be omitted) The DNS domain associated with this validator. |
-| `domain_state` | String | The value `verified` indicates that this validator has a [verified domain](tutorial-rippled-setup.html#domain-verification) controlled by the same operator as the validator. The value `AccountDomainNotFound` indicates that the "Account Domain" part of Domain Verification is not set up properly. The value `RippleTxtNotFound` indicates that the ripple.txt step of Domain Verification is not set up properly. |
+| `domain_state` | String | The value `verified` indicates that this validator has a [verified domain](run-rippled-as-a-validator.html#domain-verification) controlled by the same operator as the validator. The value `AccountDomainNotFound` indicates that the "Account Domain" part of Domain Verification is not set up properly. The value `RippleTxtNotFound` indicates that the ripple.txt step of Domain Verification is not set up properly. |
 
 #### Example
 
@@ -5275,7 +5275,7 @@ Volume objects represent the total volumes of money moved, in either payments or
 [Server Object]: #server-objects
 [Server Objects]: #server-objects
 
-A "Server Object" describes one `rippled` server in the XRP Ledger peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](reference-rippled.html#peer-crawler).
+A "Server Object" describes one `rippled` server in the XRP Ledger peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](peer-protocol.html#peer-crawler).
 
 Server objects have the following fields, with some only appearing if the request specified a verbose response:
 
@@ -5285,7 +5285,7 @@ Server objects have the following fields, with some only appearing if the reques
 | `version` | String | The `rippled` version of this server, when it was last asked. |
 | `uptime` | Integer | Number of seconds this server has been connected to the network. |
 | `ip` | String | (May be omitted) IP address of the node (may be omitted) |
-| `port` | Integer | (May be omitted) Port where this server speaks the [`rippled` Peer Protocol](reference-rippled.html#peer-protocol). |
+| `port` | Integer | (May be omitted) Port where this server speaks the [`rippled` Peer Protocol](peer-protocol.html). |
 | `inbound_count` | Integer | (May be omitted) Number of inbound peer-to-peer connections to this server. |
 | `inbound_added` | String | (May be omitted) Number of new inbound peer-to-peer connections since the last measurement.  |
 | `inbound_dropped` | String | (May be omitted) Number of inbound peer-to-peer connections dropped since the last measurement. |
