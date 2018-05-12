@@ -10,7 +10,7 @@ The `rippled` server software can run in several modes depending on its configur
 * Validating server, or _validator_ for short - participates in consensus.
 * `rippled` server in stand-alone mode - for testing. Does not communicate to other `rippled` servers.
 
-You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](reference-rippled.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
+You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](rippled-api.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
 
 ## Reasons to Run a Stock Server
 
@@ -46,6 +46,6 @@ There are several properties that define a good validator. The more of these pro
 * **Timeliness**. A validator's votes should arrive quickly, and not after a consensus round has already finished.
     * A fast internet connection helps with this.
 * **Identified**. It should be clear who runs the validator. Ideally, a list of trusted validators should include validators operated by different owners in multiple legal jurisdictions and geographic areas, to reduce the chance that any localized events could interfere with the validator's impartial operation.
-    * Setting up [Domain Verification](#domain-verification) is a good start.
+    * Setting up [Domain Verification](run-rippled-as-a-validator.html#domain-verification) is a good start.
 
 At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
