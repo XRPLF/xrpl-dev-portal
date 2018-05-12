@@ -2374,6 +2374,13 @@ pages:
     # Note: other "News" links (Release Notes, eventually Network Status)
     #  are external to this site
 
+# Special sitemap file (for better Google indexing)
+    -   name: Sitemap
+        html: sitemap.txt
+        template: template-sitemap.txt
+        targets:
+            - local
+
 
 ignore_anchors_in:
     - data-api-v2-tool.html

@@ -1,0 +1,4 @@
+{% for page in pages -%}
+{%- if page.html is defined and page.html != "sitemap.txt" -%}
+https://developers.ripple.com/{{page.html}}
+{% endif %}{% endfor %}
