@@ -463,7 +463,6 @@ a.current {
 
 .landing .card .level-1 a,
 .landing .card .curated-links li a {
-  padding: 12px;
   display: block;
   margin: 4px;
   font-weight: 200;
@@ -475,15 +474,11 @@ a.current {
   background-color: #D8EEFC;
   text-decoration: none;
 }
-/*.landing .card .level-1 a:hover:after,
-.landing .card .curated-links li a:hover:after {
-  content: "\f105";  fontawesome angle-right
-  font-family: FontAwesome;
-  position: absolute;
-  right: 0;
-  top: 12px;
-  color: #0D294E;
-}*/
+.card-image-top {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .landing .card .level-2 {
   position: relative;
@@ -791,7 +786,7 @@ a.current {
 /* Landing Pages ------------------------------------------------------------ */
 
 .landing h2 {
-  font-weight: bold;
+  font-weight: lighter;
   line-height: 40px;
   font-size: 32px;
 }
@@ -859,6 +854,8 @@ a.current {
 
 .landing .card-footer {
   padding: 0 12px 12px 12px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .landing .card-header a {
@@ -868,13 +865,12 @@ a.current {
 }
 
 .card-header.bg-dark {
-  color: #e1e4e8;
+  background-color: #e1e4e8 !important;
 }
 
 .landing .card-header.bg-dark a:hover {
   text-decoration: none;
-  color: #b1b3b5;
-  background: #fcf3e8;
+  color: #084c7a;
 }
 
 .landing .card .blurb,
