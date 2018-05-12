@@ -10,7 +10,7 @@ Get the latest XRP Ledger news and release information.
 
 * **[Known Amendments](known-amendments.html)**
 
-      Amendments provide a way to introduce breaking changes to the decentralized XRP Ledger network without causing disruptions. Get the comprehensive list of [all known amendments](reference-amendments.html) and their statuses on the production XRP Ledger.
+      Amendments provide a way to introduce breaking changes to the decentralized XRP Ledger network without causing disruptions. Get the comprehensive list of [all known amendments](known-amendments.html) and their statuses on the production XRP Ledger.
 
 * **<a href="https://ripple.com/category/dev-blog/" target="_blank">Ripple Dev Blog </a><i class="fa fa-external-link"></i><!--{#_ open link in new tab #}-->**
 
