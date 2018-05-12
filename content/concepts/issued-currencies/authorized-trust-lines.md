@@ -10,7 +10,7 @@ The transaction to authorize a trust line must be signed by the issuing address,
 2. A customer sends a [TrustSet transaction][] to create a trust line from her XRP Ledger address to the gateway's issuing address. This indicates that she is willing to hold a specific currency issued by the gateway, up to a specific numeric limit.
 3. The gateway's issuing address sends a TrustSet transaction authorizing the customer's trust line.
 
-**Tip:** An issuing gateway can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. _(Requires the [TrustSetAuth amendment](reference-amendments.html#trustsetauth), which has been enabled in the production XRP Ledger since 2016-07-19.)_
+**Tip:** An issuing gateway can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. _(Requires the [TrustSetAuth amendment](known-amendments.html#trustsetauth), which has been enabled in the production XRP Ledger since 2016-07-19.)_
 
 ## RequireAuth Setting
 
@@ -51,7 +51,7 @@ POST http://localhost:5005/
 
 ## Checking Whether an Account Has RequireAuth Enabled
 
-To see whether an account has the RequireAuth setting enabled, use the [account_info method][] to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](reference-ledger-format.html#accountroot-flags).
+To see whether an account has the RequireAuth setting enabled, use the [account_info method][] to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](accountroot.html).
 
 If the result of the `Flags` value bitwise-AND the `lsfRequireAuth` flag value (0x00040000) is nonzero, then the account has RequireAuth enabled. If the result is zero, then the account has RequireAuth disabled.
 
@@ -59,7 +59,7 @@ If the result of the `Flags` value bitwise-AND the `lsfRequireAuth` flag value (
 
 If you are using the Authorized Trust Lines feature, others cannot hold balances you issue unless you first authorize their trust lines to you. If you issue more than one currency, you must separately authorize trust lines for each currency.
 
-To authorize a trust line, submit a [TrustSet transaction][] from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](reference-transaction-format.html#trustset-flags) flag for the transaction.
+To authorize a trust line, submit a [TrustSet transaction][] from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [tfSetfAuth](trustset.html#trustset-flags) flag for the transaction.
 
 The following is an example of using a locally-hosted `rippled`'s [submit method][] to send a TrustSet transaction authorizing the customer address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:
 

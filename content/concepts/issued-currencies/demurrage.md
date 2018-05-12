@@ -2,7 +2,7 @@
 
 **Warning:** Demurrage is a deprecated feature with no ongoing support. This page describes historical behavior of older versions of Ripple software.
 
-[Demurrage](http://en.wikipedia.org/wiki/Demurrage_%28currency%29) is a negative interest rate on assets held that represents the cost of holding those assets. To represent the demurrage on an issued currency in the XRP Ledger, you can track it using a custom [currency code](reference-currency.html#currency-codes) that indicates the demurrage rate. This effectively creates separate versions of the currency for each varying amount of demurrage. Client applications can support this by representing the demurraging currency code with an annual percentage rate alongside the currency code. For example: "XAU (-0.5%pa)".
+[Demurrage](http://en.wikipedia.org/wiki/Demurrage_%28currency%29) is a negative interest rate on assets held that represents the cost of holding those assets. To represent the demurrage on an issued currency in the XRP Ledger, you can track it using a custom [currency code](currency-formats.html#currency-codes) that indicates the demurrage rate. This effectively creates separate versions of the currency for each varying amount of demurrage. Client applications can support this by representing the demurraging currency code with an annual percentage rate alongside the currency code. For example: "XAU (-0.5%pa)".
 
 ## Representing Demurraging Currency Amounts
 
@@ -35,12 +35,12 @@ To convert between display amounts and ledger amounts, you can use the following
 2. Apply it to the amount to convert:
     - To convert ledger values to display values, multiply by the demurrage coefficient.
     - To convert display values to ledger values, divide by the demurrage coefficient.
-3. If necessary, adjust the resulting value so that it can be represented to the desired accuracy. Ledger values are limited to 15 decimal digits of precision, according to the XRP Ledger's [issued currency format](reference-currency.html#issued-currency-precision).
+3. If necessary, adjust the resulting value so that it can be represented to the desired accuracy. Ledger values are limited to 15 decimal digits of precision, according to the XRP Ledger's [issued currency format](currency-formats.html#issued-currency-precision).
 
 
 ## Interest-Bearing Currency Code Format
 
-Rather than using the [standard currency code format](reference-currency.html#currency-codes), currencies that have positive interest or negative interest (demurrage) use a 160-bit currency code in the following format:
+Rather than using the [standard currency code format](currency-formats.html#currency-codes), currencies that have positive interest or negative interest (demurrage) use a 160-bit currency code in the following format:
 
 ![Demurraging Currency Code Format](img/demurrage-currency-code-format.png)
 

@@ -25,7 +25,7 @@ If a malicious actor learns the secret key behind a institution's issuing addres
 
 ### Multiple Issuing Addresses
 
-A financial institution can issue more than one currency in the XRP Ledger from a single issuing address. However, there are some settings that apply equally to all currencies issued from an address, including the percentage for [transfer fees](transfer-fees.html) and the [global freeze](freeze.html) status. If the financial institution wants the flexibility to manage settings differently for each currency, the institution must use a different issuing address for each currency.
+A financial institution can issue more than one currency in the XRP Ledger from a single issuing address. However, there are some settings that apply equally to all currencies issued from an address, including the percentage for [transfer fees](transfer-fees.html) and the [global freeze](freezes.html) status. If the financial institution wants the flexibility to manage settings differently for each currency, the institution must use a different issuing address for each currency.
 
 
 ## Operational Addresses

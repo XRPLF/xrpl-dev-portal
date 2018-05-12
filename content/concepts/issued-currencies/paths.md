@@ -13,7 +13,7 @@ A path is made of steps that connect the sender to the receiver of the payment. 
 * Rippling through another address with the same currency
 * Exchanging currency at an order book
 
-Rippling through another address is the process of moving debt around. In the typical case, this involves reducing an issuer's obligation to one party and increasing the obligation to another party. Rippling can occur between any addresses that are connected by trust lines. See [Understanding the NoRipple Flag](noripple.html) for more examples of rippling.
+Rippling through another address is the process of moving debt around. In the typical case, this involves reducing an issuer's obligation to one party and increasing the obligation to another party. Rippling can occur between any addresses that are connected by trust lines. See [Understanding the NoRipple Flag](rippling.html) for more examples of rippling.
 
 In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available Offers at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
 
@@ -29,7 +29,7 @@ In both types of steps, each intermediate address gains and loses approximately 
 
 The `rippled` API has two methods that can be used for pathfinding. The [ripple_path_find method][] does a one-time lookup of possible path sets. The [path_find method][] (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
 
-You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign method][] or [`submit` command (sign-and-submit mode)](reference-rippled.html#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
+You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign method][] or [`submit` command (sign-and-submit mode)](submit.html#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
 
 **Caution:** Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.
 
@@ -38,11 +38,11 @@ Finding paths is a very challenging problem that changes slightly every few seco
 
 ## Implied Steps
 
-By convention, several steps of a path are implied by the [fields of the Payment transaction](reference-transaction-format.html#payment): specifically, the `Account` (sender), `Destination` (receiver), `Amount` (currency and amount to be delivered) and `SendMax` (currency and amount to be sent, if specified). The implied steps are as follows:
+By convention, several steps of a path are implied by the [fields of the Payment transaction](payment.html): specifically, the `Account` (sender), `Destination` (receiver), `Amount` (currency and amount to be delivered) and `SendMax` (currency and amount to be sent, if specified). The implied steps are as follows:
 
 * The first step of a path is always implied to be the sender of the transaction, as defined by the transaction's `Account` field.
 * If the transaction includes a `SendMax` field with an `issuer` that is not the sender of the transaction, that issuer is implied to be the second step of the path.
-    * If `issuer` of the `SendMax` _is_ the sending address, then the path starts at the sending address, and may use any of that address's trust lines in the given currency. See [special values for SendMax and Amount](reference-transaction-format.html#special-issuer-values-for-sendmax-and-amount) for details.
+    * If `issuer` of the `SendMax` _is_ the sending address, then the path starts at the sending address, and may use any of that address's trust lines in the given currency. See [special values for SendMax and Amount](payment.html#special-issuer-values-for-sendmax-and-amount) for details.
 * If the `Amount` field of the transaction includes an `issuer` that is not the same as the `Destination` of the transaction, that issuer is implied to be the second-to-last step of the path.
 * Finally, last step of a path is always implied to be the receiver of a transaction, as defined by the transaction's `Destination` field.
 
@@ -61,7 +61,7 @@ The default path could be any of the following:
 The following diagram enumerates all possible default paths:
 [![Diagram of default paths](img/paths-default_paths.png)](img/paths-default_paths.png)
 
-You can use the [`tfNoDirectRipple` flag](reference-transaction-format.html#payment-flags) to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.
+You can use the [`tfNoDirectRipple` flag](payment.html#payment-flags) to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.
 
 
 ## Path Specifications

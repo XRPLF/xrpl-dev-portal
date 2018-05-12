@@ -1,6 +1,6 @@
 # Transfer Fees
 
-The `TransferRate` setting in the XRP Ledger allows [financial institutions that issue currency in the XRP Ledger](tutorial-gateway-guide.html) to charge users a _transfer fee_ for sending the currencies issued by that financial institution. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee, which becomes the property of the issuing address, and is no longer tracked in the XRP Ledger. The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address][] to another user.
+The `TransferRate` setting in the XRP Ledger allows [financial institutions that issue currency in the XRP Ledger](become-an-xrp-ledger-gateway.html) to charge users a _transfer fee_ for sending the currencies issued by that financial institution. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee, which becomes the property of the issuing address, and is no longer tracked in the XRP Ledger. The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address][] to another user.
 
 [operational address]: issuing-and-operational-addresses.html
 [issuing address]: issuing-and-operational-addresses.html
@@ -45,6 +45,6 @@ You can check an account's `transferRate` with the [getSettings method](referenc
 
 In `rippled`'s JSON-RPC and WebSocket APIs, the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same currency. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set to no fee. The value of `TransferRate` cannot be set to less than `1000000000` ("0%" fee) or more than `2000000000` (a "100%" fee). The value `0` is special case for no fee, equivalent to `1000000000`.
 
-A financial institution can submit an [AccountSet transaction](reference-transaction-format.html#accountset) from its [issuing address][] to change the `TransferRate` for its issuances.
+A financial institution can submit an [AccountSet transaction](accountset.html) from its [issuing address][] to change the `TransferRate` for its issuances.
 
 You can check an account's `TransferRate` with the [account_info method][]. If the `TransferRate` is omitted, then that indicates no fee.
