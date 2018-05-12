@@ -1,11 +1,11 @@
 # Transaction Basics
 
-A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only final if signed, submitted, and accepted into a validated ledger version following the [consensus process](consensus.html). Some ledger rules also generate _[pseudo-transactions](#pseudo-transactions)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost][].
+A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only final if signed, submitted, and accepted into a validated ledger version following the [consensus process](consensus.html). Some ledger rules also generate _[pseudo-transactions](pseudo-transaction-types.html)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost][].
 
 
 ### Identifying Transactions
 
-Every signed transaction has a unique `"hash"` that identifies it. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the [account_tx command](reference-rippled.html#account-tx).
+Every signed transaction has a unique `"hash"` that identifies it. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the [account_tx command](account_tx.html).
 
 The transaction hash can be used as a "proof of payment" since anyone can [look up the transaction by its hash](#looking-up-transaction-results) to verify its final status.
 
@@ -19,7 +19,6 @@ Although it may seem unfair to charge a [transaction cost](transaction-cost.html
 * The transaction cost is generally very small in real-world value, so it should not harm users unless they are sending large quantities of transactions.
 
 
-
 ## Authorizing Transactions
 
 In the decentralized XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction. <!-- STYLE_OVERRIDE: is authorized to -->
@@ -28,15 +27,15 @@ A transaction can be authorized by any of the following types of signatures:
 
 * A single signature from the master private key that is mathematically associated with the sending address. You can disable or enable the master key pair using an [AccountSet transaction][].
 * A single signature that matches the regular private key associated with the address. You can add, remove, or replace a regular key pair using a [SetRegularKey transaction][].
-* A [multi-signature](#multi-signing) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction][].
+* A [multi-signature](multi-signing.html) that matches a list of signers owned by the address. You can add, remove, or replace a list of signers using a [SignerListSet transaction][].
 
 Any signature type can authorize any type of transaction, with the following exceptions:
 
-* Only the master private key can [disable the master public key](#accountset-flags).
+* Only the master private key can [disable the master public key](accountset.html).
 * Only the master private key can [permanently give up the ability to freeze](concept-freeze.html#no-freeze).
 * You can never remove the last method of signing transactions from an address.
 
-For more information about master and regular key pairs, see [Cryptographic Keys](concept-cryptographic-keys.html).
+For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
 
 <!--{# Add this reference after signatures concept doc is published. For more information about signatures, see [Understanding Signatures](concept-signatures.html). #}-->
 
@@ -50,7 +49,8 @@ Sending a transaction to the XRP Ledger involves several steps:
 3. Submit a transaction to a `rippled` server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
 4. The [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) determines which provisional transactions get included in the next validated ledger.
 5. The `rippled` servers apply those transactions to the previous ledger in a canonical order and share their results.
-6. If enough [trusted validators](tutorial-rippled-setup.html#reasons-to-run-a-validator) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](#transaction-results) in that ledger are immutable.
+6. If enough [trusted validators](the-rippled-server.html#reasons-to-run-a-validator) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](transaction-results.html) in that ledger are immutable.
+
 
 ### Example Unsigned Transaction
 
@@ -75,13 +75,13 @@ Here is an example of an unsigned [Payment transaction][] in JSON:
 The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the `Account`) field. For transactions authorized by only a single signature, you have two options:
 
 1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
-    * You can use [RippleAPI](reference-rippleapi.html#sign) for offline signing.
-2. Have a `rippled` server sign the transaction for you. The [sign command](reference-rippled.html#sign) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted connection, or through a local connection, and only to a server you control.)
-    * As a shortcut, you can use the [submit command](reference-rippled.html#submit) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.
+    * You can use [RippleAPI](sign.html) for offline signing.
+2. Have a `rippled` server sign the transaction for you. The [sign command](sign.html) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted connection, or through a local connection, and only to a server you control.)
+    * As a shortcut, you can use the [submit command](submit.html) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.
 
 ## Example Signed Transaction Blob
 
-Signing a transaction generates a binary blob that can be submitted to the network. This means using `rippled`'s [submit command](reference-rippled.html#submit). Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:
+Signing a transaction generates a binary blob that can be submitted to the network. This means using `rippled`'s [submit command](submit.html). Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:
 
 ```
 {
@@ -93,7 +93,7 @@ Signing a transaction generates a binary blob that can be submitted to the netwo
 
 ## Example Executed Transaction with Metadata
 
-After a transaction has been submitted, you can check its status using the API, for example using the [tx command](reference-rippled.html#tx).
+After a transaction has been submitted, you can check its status using the API, for example using the [tx command](tx.html).
 
 **Caution:** The success of a transaction is not final unless the transaction appears in a **validated** ledger with the result code `tesSUCCESS`. See also: [Finality of Results](finality-of-results.html).
 
