@@ -4,7 +4,7 @@ The [EscrowCreate transaction][] type can create an escrow whose only condition 
 
 ## 1. Calculate release time
 
-You must [specify the time](reference-rippled.html#specifying-time) as whole **seconds since the Ripple Epoch**, which is 946684800 seconds after the UNIX epoch. For example, to release funds at midnight UTC on November 13, 2017:
+You must specify the time as whole **[seconds since the Ripple Epoch][]**, which is 946684800 seconds after the UNIX epoch. For example, to release funds at midnight UTC on November 13, 2017:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -37,7 +37,7 @@ print(release_date_ripple)
 
 ## 2. Submit EscrowCreate transaction
 
-[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops](reference-rippled.html#specifying-currency-amounts), to escrow.
+[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 
@@ -74,7 +74,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 4. Confirm that the escrow was created
 
-Use the [tx method][] with the transaction's identifying hash to check its final status. Look for a `CreatedNode` in the transaction metadata to indicate that it created an [Escrow ledger object](reference-ledger-format.html#escrow).
+Use the [tx method][] with the transaction's identifying hash to check its final status. Look for a `CreatedNode` in the transaction metadata to indicate that it created an [Escrow ledger object](escrow.html).
 
 Request:
 
@@ -102,7 +102,7 @@ Response:
 
 ## 5. Wait for the release time
 
-Held payments with a `FinishAfter` time cannot be finished until a ledger has already closed with a [`close_time` header field](reference-ledger-format.html#header-format) that is later than the Escrow node's `FinishAfter` time.
+Held payments with a `FinishAfter` time cannot be finished until a ledger has already closed with a [`close_time` header field](ledger-header.html) that is later than the Escrow node's `FinishAfter` time.
 
 You can check the close time of the most recently-validated ledger with the [ledger method][]:
 
@@ -133,11 +133,11 @@ Response:
 
 ## 6. Submit EscrowFinish transaction
 
-[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
+[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
 
 **Tip:** The EscrowFinish transaction is necessary because the XRP Ledger's state can only be modified by transactions. The sender of this transaction may be the recipient of the escrow, the original sender of the escrow, or any other XRP Ledger address.
 
-If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-escrow) instead.
+If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.html) instead.
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 
@@ -200,6 +200,8 @@ Response:
 <!-- MULTICODE_BLOCK_END -->
 
 
-{% include '_snippets/tx-type-links.md' %}
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

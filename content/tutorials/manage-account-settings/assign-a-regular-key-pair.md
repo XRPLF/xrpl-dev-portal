@@ -14,7 +14,7 @@ This tutorial walks through the steps required to assign a regular key pair to y
 
 ## 1. Generate a Key Pair
 
-Use the [`wallet_propose`](reference-rippled.html#wallet-propose) method to generate the key pair that you'll assign to your account as a regular key pair.
+Use the [wallet_propose method][] to generate the key pair that you'll assign to your account as a regular key pair.
 
 ### Request Format
 
@@ -401,7 +401,7 @@ As discussed in step 2, transmitting your master private key is dangerous. It is
 
 ### Sign Your Transaction
 
-The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](reference-rippleapi.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](rippleapi-reference.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
 
 Populate the request fields with the following values:
 
@@ -664,7 +664,7 @@ An example of a successful response:
 Now that you're familiar with the benefits of assigning a regular key pair to an account, consider taking a look at these related topics and tutorials:
 
 - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
-- [How to Multi-Sign](tutorial-multisign.html)
+- [Set Up Multi-Signing](set-up-multi-signing.html)
 - [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
 - [Listing XRP as an Exchange](tutorial-listing-xrp.html)
 

@@ -28,7 +28,7 @@ If a power or network outage occurs, applications face more challenges finding t
 
 ### Transaction Timeline
 
-The XRP Ledger provides several APIs for submitting transactions, including [`rippled`](reference-rippled.html), and [RippleAPI](reference-rippleapi.html).  Regardless of the API used, the transaction is applied to the ledger as follows.
+The XRP Ledger provides several APIs for submitting transactions, including [`rippled` API](rippled-api.html), and [RippleAPI](rippleapi-reference.html).  Regardless of the API used, the transaction is applied to the ledger as follows.
 
 1. An account owner creates and signs a transaction.
 2. The owner submits the transaction to the network as a candidate transaction.
@@ -60,7 +60,7 @@ Use the `LastLedgerSequence` parameter to prevent undesirable cases where a tran
 
 Applications using `rippled` APIs should explicitly specify a `LastLedgerSequence` when submitting transactions.
 
-RippleAPI uses the `maxLedgerVersion` field of [Transaction Instructions](reference-rippleapi.html#transaction-instructions) to specify the `LastLedgerSequence`.  RippleAPI automatically provides an appropriate value by default.  You can specify `maxLedgerVersion` as `null` to intentionally omit `LastLedgerSequence`, in case you want a transaction that can be executed after an unlimited amount of time (this is strongly discouraged).
+RippleAPI uses the `maxLedgerVersion` field of [Transaction Instructions](rippleapi-reference.html#transaction-instructions) to specify the `LastLedgerSequence`.  RippleAPI automatically provides an appropriate value by default.  You can specify `maxLedgerVersion` as `null` to intentionally omit `LastLedgerSequence`, in case you want a transaction that can be executed after an unlimited amount of time (this is strongly discouraged).
 
 
 
@@ -167,8 +167,8 @@ To implement the transaction submission and verification best practices, applica
 
 How the application does these actions depends on the API the application uses.  An application may use any of the following interfaces:
 
-1. [`rippled`'s internal APIs](reference-rippled.html)
-2. [RippleAPI](reference-rippleapi.html)
+1. The [`rippled` API](rippled-api.html)
+2. [RippleAPI](rippleapi-reference.html)
 3. Any number of other software APIs layered on top of `rippled`
 
 

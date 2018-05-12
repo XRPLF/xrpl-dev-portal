@@ -1,6 +1,6 @@
 # Use Payment Channels
 
-Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a [payment channel](payment-channels.html), with examples using the [JSON-RPC API](reference-rippled.html) of a local `rippled` server.
+Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a [payment channel](payment-channels.html), with examples using the [JSON-RPC API](rippled-api.html) of a local `rippled` server.
 
 Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
@@ -153,9 +153,9 @@ Response:
 In the response from the JSON-RPC, the payer should look for the following:
 
 - In the transaction's `meta` field, confirm that the `TransactionResult` is `tesSUCCESS`.
-- Confirm that the response has `"validated":true` to indicate the data comes from a validated ledger. (The result `tesSUCCESS` is only [final](reference-transaction-format.html#finality-of-results) if it appears in a validated ledger version.)
+- Confirm that the response has `"validated":true` to indicate the data comes from a validated ledger. (The result `tesSUCCESS` is only [final](finality-of-results.html) if it appears in a validated ledger version.)
 - In the `AffectedNodes` array of the transaction's `meta` field, look for a `CreatedNode` object with the `LedgerEntryType` of `PayChannel`. The `LedgerIndex` field of the `CreatedNode` object indicates the Channel ID. (In the above example, this is a hex string starting with "5DB0...") The Channel ID is necessary later to sign claims.
-    For more information on the PayChannel ledger object type, see [PayChannel ledger object](reference-ledger-format.html#paychannel).
+    For more information on the PayChannel ledger object type, see [PayChannel ledger object](paychannel.html).
 
 
 ## 2. The payee checks specifics of the payment channel.
@@ -418,7 +418,7 @@ Response:
         }
     }
 
-The payee should confirm that this transaction is successful in a validated ledger. For the full details, see [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html).
+The payee should confirm that this transaction is successful in a validated ledger. For the full details, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 ## 9. When the payer and payee are done doing business, the payer requests for the channel to be closed.
 
@@ -471,7 +471,7 @@ Example `account_channels` response:
         }
     }
 
-In this example, the `expiration` value 547073182 in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time) maps to 2017-05-02T20:46:22Z, so any claims not redeemed by that time are no longer valid.
+In this example, the `expiration` value 547073182 in [seconds since the Ripple Epoch][] maps to 2017-05-02T20:46:22Z, so any claims not redeemed by that time are no longer valid.
 
 ## 10. Anyone can close the expired channel.
 
@@ -481,7 +481,7 @@ The channel can remain on the ledger in an expired state indefinitely. This is b
 
 Ripple recommends that the payer sends a second [PaymentChannelClaim transaction][] with the `tfClose` flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.
 
-The command to submit the transaction is the same as the previous example requesting channel expiration. (However, its resulting [auto-filled](reference-transaction-format.html#auto-fillable-fields) `Sequence` number, signature, and identifying hash are unique.)
+The command to submit the transaction is the same as the previous example requesting channel expiration. (However, its resulting [auto-filled](transaction-common-fields.html#auto-fillable-fields) `Sequence` number, signature, and identifying hash are unique.)
 
 Example of [submitting](reference-rippled.html#sign-and-submit-mode) a transaction to close an expired channel:
 
@@ -601,5 +601,7 @@ This concludes the tutorial of Payment Channel usage. Ripple encourages users to
 
 
 
-
-{% include '_snippets/tx-type-links.md' %}
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

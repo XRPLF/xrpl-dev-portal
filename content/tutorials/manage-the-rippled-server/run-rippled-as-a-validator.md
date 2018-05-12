@@ -2,18 +2,18 @@
 
 Running a `rippled` validator that participates in the Consensus process is simple:
 
-1. [Enable validation](#validator-setup) on your `rippled` server.
+1. [Enable validation](run-rippled-as-a-validator.html) on your `rippled` server.
     * At first, your server is an _untrusted validator_. Others can see the validations your server issues, but they disregard them in the consensus process.
 2. Share the public key with the public, especially other `rippled` operators.
 3. When other `rippled` operators add your public key to their list of trusted servers, you have become a _trusted validator_.
-    * Also see [Properties of a Good Validator](#properties-of-a-good-validator) for best practices.
+    * Also see [Properties of a Good Validator](the-rippled-server.html#properties-of-a-good-validator) for best practices.
 
 
 ## Validator Setup
 
 The `validator-keys` tool (included in the `rippled` RPM) is the recommended means to securely generate and manage your validator keys.
 
-1. [Install a `rippled` server.](#installing-rippled)
+1. [Install a `rippled` server.](install-rippled.html)
 
 2. Generate a validator key pair:
 
@@ -38,11 +38,11 @@ See [the `validator-keys-tool` GitHub repository](https://github.com/ripple/vali
 
 To protect a production validator from [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) attacks, you can use a stock `rippled` server as a proxy between the validator and the outside network.
 
-1. [Set up the `rippled` validator.](#validator-setup)
+1. [Set up the `rippled` validator.](run-rippled-as-a-validator.html)
 
-2. [Set up one or more stock `rippled` servers.](#installing-rippled)
+2. [Set up one or more stock `rippled` servers.](install-rippled.html)
 
-3. Configure the validator and stock `rippled` servers to be [clustered](#clustering) with each other.
+3. Configure the validator and stock `rippled` servers to be [clustered](cluster-rippled-servers.html) with each other.
 
 4. Make the following configuration changes to your validator:
     * Copy the `[ips_fixed]` list and paste it under `[ips]`. These fields should contain only the IP addresses and ports of the public-facing rippled(s). The validator connects to only these peers.

@@ -1,12 +1,12 @@
 # Look up escrows
 
-All pending escrows are stored in the ledger as [Escrow objects](reference-ledger-format.html#escrow).
+All pending escrows are stored in the ledger as [Escrow objects](escrow.html).
 
-You can look up escrow objects by the [sender's address](#look-up-escrows-by-sender-address) or the [destination address](#look-up-escrows-by-destination-address) using the [`account_objects`](reference-rippled.html#account-objects) method.
+You can look up escrow objects by the [sender's address](#look-up-escrows-by-sender-address) or the [destination address](#look-up-escrows-by-destination-address) using the [account_objects method][].
 
 ## Look up escrows by sender address
 
-You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrow objects by sender address.
+You can use the [account_objects method][] to look up escrow objects by sender address.
 
 Let's say that you want to look up all pending escrow objects with a sender address of `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`. You can do this using the following example request, where the sender address is the `account` value.
 
@@ -41,9 +41,9 @@ _Websocket_
 
 ## Look up escrows by destination address
 
-You can use the [`account_objects`](reference-rippled.html#account-objects) method to look up escrow objects by destination address.
+You can use the [account_objects method][] to look up escrow objects by destination address.
 
-**Note:** You can only look up pending escrow objects by destination address if those escrows were created after the [fix1523 amendment](reference-amendments.html#fix1523) was enabled on 2017-11-14.
+**Note:** You can only look up pending escrow objects by destination address if those escrows were created after the [fix1523 amendment](known-amendments.html#fix1523) was enabled on 2017-11-14.
 
 Let's say that you want to look up all pending escrow objects with a destination address of `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`. You can do this using the following example request, where the destination address is the `account` value.
 

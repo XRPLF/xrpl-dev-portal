@@ -1,12 +1,12 @@
 # Cash a Check for a Flexible Amount
 
-_Requires the [Checks Amendment](reference-amendments.html#checks)._
+_Requires the [Checks Amendment](known-amendments.html#checks)._
 
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive a flexible amount by sending a [CheckCash transaction][] with a `DeliverMin` field. When cashing a Check in this way, the receiver gets as much as is possible to deliver, debiting the Check's sender for the Check's full `SendMax` amount or as much as is available. Cashing fails if it doesn't deliver at least the `DeliverMin` amount to the Check's recipient.
 
 You might cash a Check for a flexible amount if you just want to get as much as possible from the Check.
 
-The specified recipient can also [cash the check for an exact amount](tutorial-checks-cash-flex.html).
+The specified recipient can also [cash the check for an exact amount](cash-a-check-for-a-flexible-amount.html).
 
 {% set cash_flex_n = cycler(* range(1,99)) %}
 
@@ -17,7 +17,7 @@ The specified recipient can also [cash the check for an exact amount](tutorial-c
 
 ## {{cash_flex_n.next()}}. Prepare the CheckCash transaction
 
-Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](reference-transaction-format.html#auto-fillable-fields) when signing:
+Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](transaction-common-fields.html#auto-fillable-fields) when signing:
 
 | Field             | Value                     | Description                  |
 |:------------------|:--------------------------|:-----------------------------|
@@ -146,7 +146,7 @@ Use the [tx method][] with the CheckCash transaction's identifying hash to check
 
 ### Handling Errors
 
-If cashing the Check failed with a `tec`-class code, look up the code in the [Full Transaction Response List](reference-transaction-format.html#full-transaction-response-list) and respond accordingly. Some common possibilities for CheckCash transactions:
+If cashing the Check failed with a `tec`-class code, look up the code in the [Full Transaction Response List](transaction-results.html) and respond accordingly. Some common possibilities for CheckCash transactions:
 
 | Result Code | Meaning | How to Respond |
 |-------------|---------|----------------|
@@ -204,7 +204,6 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
     - If the issued currency has a [transfer fee](transfer-fees.html), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
 
 <!--{# common links #}-->
-[Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
-[RippleAPI]: reference-rippleapi.html
+[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

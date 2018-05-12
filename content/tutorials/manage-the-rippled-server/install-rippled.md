@@ -1,8 +1,12 @@
 # Install rippled
 
-For development, you can [compile `rippled` from source](https://wiki.ripple.com/Rippled_build_instructions).
-
 Production `rippled` instances can [use Ripple's binary executable](#installation-on-centosred-hat-with-yum), available from the Ripple [yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified) repository.
+
+For development, you can compile `rippled` from source:
+
+- See [Build and Run `rippled` on Ubuntu](build-run-rippled-ubuntu.html) for Ubuntu Linux 16.04 and higher.
+- For other platforms, see the [rippled repository](https://github.com/ripple/rippled/tree/develop/Builds) for instructions.
+
 
 ## Minimum System Requirements
 
@@ -19,7 +23,8 @@ A `rippled` server should run comfortably on commodity hardware, to make it inex
 
 Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.
 
-**Tip:** For recommendations beyond the minimum requirements, see [Capacity Planning](#capacity-planning).
+**Tip:** For recommendations beyond the minimum requirements, see [Capacity Planning](capacity-planning.html).
+
 
 ## Installation on CentOS/Red Hat with yum
 
@@ -78,6 +83,8 @@ This section assumes that you are using Ubuntu 15.04 or later.
 
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger.
 
-[rippled commands](reference-rippled.html#list-of-public-commands) can be run with:
+You can use the [rippled commandline interface](get-started-with-the-rippled-api.html#commandline) as follows:
 
-        $ /opt/ripple/bin/rippled <command>
+    $ /opt/ripple/bin/rippled <METHOD>
+
+For a full list of available methods, see the [rippled API reference](rippled-api.html).

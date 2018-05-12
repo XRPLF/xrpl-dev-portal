@@ -21,7 +21,7 @@ You need an XRP Ledger address that can send transactions, and has enough XRP av
 If you started `rippled` in [stand-alone mode](stand-alone-mode.html) with a new genesis ledger, you must:
 
 1. Generate keys for a new address, or reuse keys you already have.
-2. Submit a Payment transaction to fund the new address from the genesis account. (Send at least 100,000,000 [drops of XRP](reference-rippled.html#specifying-currency-amounts).)
+2. Submit a Payment transaction to fund the new address from the genesis account. (Send at least 100,000,000 [drops of XRP][].)
 3. Manually close the ledger.
 
 
@@ -50,7 +50,7 @@ Take note of the `account_id` (XRP Ledger Address) and `master_seed` (secret key
 
 ## 3. Send SignerListSet transaction
 
-[Sign and submit](reference-transaction-format.html#signing-and-submitting-transactions) a [SignerListSet transaction](reference-transaction-format.html#signerlistset) in the normal (single-signature) way. This associates a SignerList with your XRP Ledger address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.
+[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) a [SignerListSet transaction][] in the normal (single-signature) way. This associates a SignerList with your XRP Ledger address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.
 
 In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.
 

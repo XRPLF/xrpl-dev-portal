@@ -1,6 +1,6 @@
 # Load a Saved Ledger in Stand-Alone Mode
 
-You can start with a ledger version that was saved to disk if your `rippled` server was previously synced with the XRP Ledger peer-to-peer network (either the production network or the [Test Net](tutorial-rippled-setup.html#parallel-networks)).
+You can start with a ledger version that was saved to disk if your `rippled` server was previously synced with the XRP Ledger peer-to-peer network (either the production network or the [Test Net](parallel-networks.html)).
 
 ## 1. Start `rippled` normally.
 
@@ -18,7 +18,7 @@ Use the [server_info method][] to check the state of your server relative to the
 * `proposing`
 * `validating`
 
-For more information, see [Possible Server States](reference-rippled.html#possible-server-states).
+For more information, see [Possible Server States](rippled-server-states.html).
 
 ## 3. (Optional) Retrieve specific ledger versions.
 
@@ -57,3 +57,8 @@ When you load a ledger with `--ledger` in stand-alone mode, it goes to the curre
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

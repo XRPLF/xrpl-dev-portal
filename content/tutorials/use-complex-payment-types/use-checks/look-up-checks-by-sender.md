@@ -1,6 +1,6 @@
 # Look Up Checks by Sender
 
-_Requires the [Checks Amendment](reference-amendments.html#checks)._
+_Requires the [Checks Amendment](known-amendments.html#checks)._
 
 This tutorial shows how to look up [Checks](checks.html) by their sender. You may also want to [look up Checks by recipient](tutorial-checks-lookup-by-recipient.html).
 
@@ -75,7 +75,6 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 ```
 
 <!--{# common links #}-->
-[Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
-[RippleAPI]: reference-rippleapi.html
+[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}
