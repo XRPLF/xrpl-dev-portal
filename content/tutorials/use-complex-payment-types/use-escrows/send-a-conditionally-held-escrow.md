@@ -126,7 +126,7 @@ Response:
 
 **Note:** If you included a `FinishAfter` field in the EscrowCreate transaction, you cannot execute it before that time has passed, even if you provide the correct fulfillment for the Escrow's condition. The EscrowFinish transaction fails with the [result code](reference-transaction-format.html#transaction-results) `tecNO_PERMISSION` if the previously-closed ledger's close time is before the `FinishAfter` time.
 
-If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-escrow) instead.
+If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.html) instead.
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 

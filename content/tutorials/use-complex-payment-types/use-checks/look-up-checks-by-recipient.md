@@ -2,7 +2,7 @@
 
 _Requires the [Checks Amendment](known-amendments.html#checks)._
 
-This tutorial shows how to look up [Checks](checks.html) by their recipient. You may also want to [look up Checks by sender](tutorial-checks-lookup-by-sender.html).
+This tutorial shows how to look up [Checks](checks.html) by their recipient. You may also want to [look up Checks by sender](look-up-checks-by-sender.html).
 
 ## 1. Look up all Checks for the address
 
@@ -74,6 +74,6 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 ```
 
 <!--{# common links #}-->
-[RippleAPI]: reference-rippleapi.html
+[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

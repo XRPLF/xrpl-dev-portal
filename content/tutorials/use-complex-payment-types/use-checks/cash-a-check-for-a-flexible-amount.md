@@ -6,7 +6,7 @@ As long as the Check is in the ledger and not expired, the specified recipient c
 
 You might cash a Check for a flexible amount if you just want to get as much as possible from the Check.
 
-The specified recipient can also [cash the check for an exact amount](tutorial-checks-cash-flex.html).
+The specified recipient can also [cash the check for an exact amount](cash-a-check-for-a-flexible-amount.html).
 
 {% set cash_flex_n = cycler(* range(1,99)) %}
 
@@ -146,7 +146,7 @@ Use the [tx method][] with the CheckCash transaction's identifying hash to check
 
 ### Handling Errors
 
-If cashing the Check failed with a `tec`-class code, look up the code in the [Full Transaction Response List](reference-transaction-format.html#full-transaction-response-list) and respond accordingly. Some common possibilities for CheckCash transactions:
+If cashing the Check failed with a `tec`-class code, look up the code in the [Full Transaction Response List](transaction-results.html) and respond accordingly. Some common possibilities for CheckCash transactions:
 
 | Result Code | Meaning | How to Respond |
 |-------------|---------|----------------|
@@ -204,6 +204,6 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
     - If the issued currency has a [transfer fee](transfer-fees.html), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
 
 <!--{# common links #}-->
-[RippleAPI]: reference-rippleapi.html
+[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

@@ -102,7 +102,7 @@ Response:
 
 ## 5. Wait for the release time
 
-Held payments with a `FinishAfter` time cannot be finished until a ledger has already closed with a [`close_time` header field](reference-ledger-format.html#header-format) that is later than the Escrow node's `FinishAfter` time.
+Held payments with a `FinishAfter` time cannot be finished until a ledger has already closed with a [`close_time` header field](ledger-header.html) that is later than the Escrow node's `FinishAfter` time.
 
 You can check the close time of the most recently-validated ledger with the [ledger method][]:
 
@@ -137,7 +137,7 @@ Response:
 
 **Tip:** The EscrowFinish transaction is necessary because the XRP Ledger's state can only be modified by transactions. The sender of this transaction may be the recipient of the escrow, the original sender of the escrow, or any other XRP Ledger address.
 
-If the escrow has expired, you can only [cancel the escrow](#cancel-an-expired-escrow) instead.
+If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.html) instead.
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 

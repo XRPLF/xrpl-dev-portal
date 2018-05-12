@@ -34,7 +34,7 @@ Decide how much money the Check is for and who can cash it. Figure out the value
 | `Destination`     | String (Address)          | The address of the intended recipient who can cash the Check. |
 | `SendMax`         | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](transfer-fees.html), remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the `SendMax` to 102 CAD from that issuer.) |
 
-If you are using [RippleAPI](reference-rippleapi.html), you can use the `prepareCheckCreate()` helper method.
+If you are using [RippleAPI](rippleapi-reference.html), you can use the `prepareCheckCreate()` helper method.
 
 **Note:** RippleAPI supports Checks in versions 0.19.0 and up.
 
@@ -234,7 +234,7 @@ Look for a `CreatedNode` object in the transaction metadata to indicate that the
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common link defs #}-->
-[RippleAPI]: reference-rippleapi.html
+[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}

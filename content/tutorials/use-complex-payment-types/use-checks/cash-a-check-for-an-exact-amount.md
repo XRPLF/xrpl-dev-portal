@@ -4,7 +4,7 @@ _Requires the [Checks Amendment](known-amendments.html#checks)._
 
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive any exact amount up to the amount specified in the Check by sending a [CheckCash transaction][] with an `Amount` field. You would cash a Check this way if you want to receive a specific amount, for example to pay off an invoice or bill exactly.
 
-The specified recipient can also [cash the check for a flexible amount](tutorial-checks-cash-flex.html).
+The specified recipient can also [cash the check for a flexible amount](cash-a-check-for-a-flexible-amount.html).
 
 {% set cash_exact_n = cycler(* range(1,99)) %}
 
@@ -120,7 +120,7 @@ Use the [tx method][] with the CheckCash transaction's identifying hash to check
 
 If the check was cashed for an exact `Amount` and succeeded, you can assume that the recipient was credited for exactly that amount (with possible rounding for very large or very small amounts of issued currencies).
 
-If cashing the Check failed, the Check remains in the ledger so you can try cashing again later. You may want to [cash the Check for a flexible amount](tutorial-checks-cash-flex.html) instead.
+If cashing the Check failed, the Check remains in the ledger so you can try cashing again later. You may want to [cash the Check for a flexible amount](cash-a-check-for-a-flexible-amount.html) instead.
 
 ### Example Request
 
@@ -148,6 +148,6 @@ If cashing the Check failed, the Check remains in the ledger so you can try cash
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common links #}-->
-[RippleAPI]: reference-rippleapi.html
+[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

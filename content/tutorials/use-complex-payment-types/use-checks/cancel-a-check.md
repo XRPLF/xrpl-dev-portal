@@ -30,7 +30,7 @@ Figure out the values of the [CheckCancel transaction][] fields. The following f
 | `Account`         | String (Address) | The address of the sender who is canceling the Check. (In other words, your address.) |
 | `CheckID`         | String           | The ID of the Check object in the ledger to cancel. You can get this information by looking up the metadata of the CheckCreate transaction using the [tx method][] or by looking for Checks using the [account_objects method][]. |
 
-If you are using [RippleAPI](reference-rippleapi.html), you can use the `prepareCheckCancel()` helper method.
+If you are using [RippleAPI](rippleapi-reference.html), you can use the `prepareCheckCancel()` helper method.
 
 **Note:** RippleAPI supports Checks in versions 0.19.0 and up.
 
@@ -191,7 +191,7 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common link defs #}-->
-[RippleAPI]: rippleapi.html
+[RippleAPI]: rippleapi-reference.html
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}
