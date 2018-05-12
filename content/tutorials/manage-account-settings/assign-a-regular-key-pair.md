@@ -14,7 +14,7 @@ This tutorial walks through the steps required to assign a regular key pair to y
 
 ## 1. Generate a Key Pair
 
-Use the [`wallet_propose`](reference-rippled.html#wallet-propose) method to generate the key pair that you'll assign to your account as a regular key pair.
+Use the [wallet_propose method][] to generate the key pair that you'll assign to your account as a regular key pair.
 
 ### Request Format
 

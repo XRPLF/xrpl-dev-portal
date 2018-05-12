@@ -1,6 +1,6 @@
 # Operating rippled Servers
 
-The core server of the XRP Ledger peer-to-peer network is [`rippled`](reference-rippled.html). Anyone can run their own `rippled` server that follows the network and keeps a complete copy of the XRP Ledger. You can even have your server take part in the consensus process.
+The core server of the XRP Ledger peer-to-peer network is [`rippled`](the-rippled-server.html). Anyone can run their own `rippled` server that follows the network and keeps a complete copy of the XRP Ledger. You can even have your server take part in the consensus process.
 
 This page contains instructions for:
 

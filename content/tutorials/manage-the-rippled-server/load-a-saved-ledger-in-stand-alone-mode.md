@@ -18,7 +18,7 @@ Use the [server_info method][] to check the state of your server relative to the
 * `proposing`
 * `validating`
 
-For more information, see [Possible Server States](reference-rippled.html#possible-server-states).
+For more information, see [Possible Server States](rippled-server-states.html).
 
 ## 3. (Optional) Retrieve specific ledger versions.
 

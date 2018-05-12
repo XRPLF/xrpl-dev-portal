@@ -28,7 +28,7 @@ If a power or network outage occurs, applications face more challenges finding t
 
 ### Transaction Timeline
 
-The XRP Ledger provides several APIs for submitting transactions, including [`rippled`](reference-rippled.html), and [RippleAPI](rippleapi-reference.html).  Regardless of the API used, the transaction is applied to the ledger as follows.
+The XRP Ledger provides several APIs for submitting transactions, including [`rippled` API](rippled-api.html), and [RippleAPI](rippleapi-reference.html).  Regardless of the API used, the transaction is applied to the ledger as follows.
 
 1. An account owner creates and signs a transaction.
 2. The owner submits the transaction to the network as a candidate transaction.
@@ -167,7 +167,7 @@ To implement the transaction submission and verification best practices, applica
 
 How the application does these actions depends on the API the application uses.  An application may use any of the following interfaces:
 
-1. [`rippled`'s internal APIs](reference-rippled.html)
+1. The [`rippled` API](rippled-api.html)
 2. [RippleAPI](rippleapi-reference.html)
 3. Any number of other software APIs layered on top of `rippled`
 

@@ -330,6 +330,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/issued-currencies/issuing-and-operational-addresses.md
+        html: issuing-and-operational-addresses.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
+        targets:
+            - local
+
     -   md: concepts/issued-currencies/paths.md
         html: paths.html
         funnel: Docs

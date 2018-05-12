@@ -194,7 +194,7 @@ The `catch` method ends this Promise chain. The callback provided here runs if a
 
 # Waiting for Validation
 
-One of the biggest challenges in using the XRP Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you [follow the best practices](tutorial-reliable-transaction-submission.html) you still have to wait for the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:
+One of the biggest challenges in using the XRP Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you [follow the best practices](reliable-transaction-submission.html) you still have to wait for the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:
 
 ```
 {% include '_code-samples/rippleapi_quickstart/submit-and-verify.js' %}
@@ -204,9 +204,9 @@ This code creates and submits an order transaction, although the same principles
 
 In rare cases (particularly with a large delay or a loss of power), the `rippled` server may be missing a ledger version between when you submitted the transaction and when you determined that the network has passed the `maxLedgerVersion`. In this case, you cannot be definitively sure whether the transaction has failed, or has been included in one of the missing ledger versions. RippleAPI returns `MissingLedgerHistoryError` in this case.
 
-If you are the administrator of the `rippled` server, you can [manually request the missing ledger(s)](reference-rippled.html#ledger-request). Otherwise, you can try checking the ledger history using a different server. (Ripple runs a public full-history server at `s2.ripple.com` for this purpose.)
+If you are the administrator of the `rippled` server, you can [manually request the missing ledger(s)](ledger_request.html). Otherwise, you can try checking the ledger history using a different server. (Ripple runs a public full-history server at `s2.ripple.com` for this purpose.)
 
-See [Reliable Transaction Submission](tutorial-reliable-transaction-submission.html) for a more thorough explanation.
+See [Reliable Transaction Submission](reliable-transaction-submission.html) for a more thorough explanation.
 
 # RippleAPI in Web Browsers
 
