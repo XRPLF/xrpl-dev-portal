@@ -2231,12 +2231,10 @@ pages:
         targets:
             - local
 
-    # TODO: 5 other result code classes
-
     # --------------- end "rippled API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.21.0/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.22.0/docs/index.md
         html: rippleapi-reference.html
         funnel: Docs
         doc_type: References
