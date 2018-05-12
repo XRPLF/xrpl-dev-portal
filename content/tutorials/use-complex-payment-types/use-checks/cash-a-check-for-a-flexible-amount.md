@@ -17,7 +17,7 @@ The specified recipient can also [cash the check for an exact amount](tutorial-c
 
 ## {{cash_flex_n.next()}}. Prepare the CheckCash transaction
 
-Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](reference-transaction-format.html#auto-fillable-fields) when signing:
+Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](transaction-common-fields.html#auto-fillable-fields) when signing:
 
 | Field             | Value                     | Description                  |
 |:------------------|:--------------------------|:-----------------------------|
@@ -204,7 +204,6 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
     - If the issued currency has a [transfer fee](transfer-fees.html), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
 
 <!--{# common links #}-->
-[Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
 [RippleAPI]: reference-rippleapi.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

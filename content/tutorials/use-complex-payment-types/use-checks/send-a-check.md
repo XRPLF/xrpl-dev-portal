@@ -2,7 +2,7 @@
 
 _Requires the [Checks Amendment](known-amendments.html#checks)._
 
-Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check object in the ledger](reference-ledger-format.html#check) which the recipient can cash later.
+Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check object in the ledger](check.html) which the recipient can cash later.
 
 In many cases, you want to send a [Payment][] instead of a Check, since that delivers the money directly to the recipient in one step. However, if your intended recipient uses [DepositAuth](depositauth.html), you cannot send them Payments directly, so a Check is a good alternative.
 
@@ -19,13 +19,13 @@ To send a Check with this tutorial, you need the following:
 - The **address** and **secret key** of a funded account to send the Check from.
     - You can use the [XRP Ledger Test Net Faucet](https://ripple.com/build/xrp-test-net/) to get a funded address and secret with 10,000 Test Net XRP.
 - The **address** of a funded account to receive the Check.
-- A secure way to sign transactions, such as [RippleAPI][] or your own [`rippled` server](tutorial-rippled-setup.html).
+- A secure way to sign transactions, such as [RippleAPI][] or your own [`rippled` server](install-rippled.html).
 - A client library that can connect to a `rippled` server, such as [RippleAPI][] or any HTTP or WebSocket library.
-    - For more information, see [Connecting to `rippled`](reference-rippled.html#connecting-to-rippled).
+    - For more information, see [Get Started with the `rippled` API](get-started-with-the-rippled-api.html).
 
 ## {{send_n.next()}}. Prepare the CheckCreate transaction
 
-Decide how much money the Check is for and who can cash it. Figure out the values of the [CheckCreate transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](reference-transaction-format.html#auto-fillable-fields) when signing:
+Decide how much money the Check is for and who can cash it. Figure out the values of the [CheckCreate transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](transaction-common-fields.html#auto-fillable-fields) when signing:
 
 | Field             | Value                     | Description                  |
 |:------------------|:--------------------------|:-----------------------------|
@@ -67,6 +67,7 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 ## {{send_n.next()}}. Sign the CheckCreate transaction
 
 {% include '_snippets/tutorial-sign-step.md' %}
+<!--{#_ #}-->
 
 ### Example Request
 
@@ -120,6 +121,7 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 
 {% set step_1_link = "#1-prepare-the-checkcreate-transaction" %}
 {% include '_snippets/tutorial-submit-step.md' %}
+<!--{#_ #}-->
 
 ### Example Request
 
@@ -173,12 +175,13 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 ## {{send_n.next()}}. Wait for validation
 
 {% include '_snippets/wait-for-validation.md' %}
+<!--{#_ #}-->
 
 ## {{send_n.next()}}. Confirm final result
 
 Use the [tx method][] with the CheckCreate transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
-Look for a `CreatedNode` object in the transaction metadata to indicate that the transaction created a [Check ledger object](reference-ledger-format.html#check). The `LedgerIndex` of this object is the ID of the Check. In the following example, the Check's ID is `49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`.
+Look for a `CreatedNode` object in the transaction metadata to indicate that the transaction created a [Check ledger object](check.html). The `LedgerIndex` of this object is the ID of the Check. In the following example, the Check's ID is `49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`.
 
 **Note:** RippleAPI does not report the Check's ID when you look up a CheckCreate transaction. You can work around this by calculating the Check's ID from the [Check ID format](reference-ledger-format.html#check-id-format), as in the example RippleAPI code below. <!--{# TODO: Remove this and update the code samples if ripple-lib #876 gets fixed. #}-->
 
@@ -230,7 +233,8 @@ Look for a `CreatedNode` object in the transaction metadata to indicate that the
 
 <!-- MULTICODE_BLOCK_END -->
 
-<!--{# common links #}-->
-[Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
+<!--{# common link defs #}-->
 [RippleAPI]: reference-rippleapi.html
-{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

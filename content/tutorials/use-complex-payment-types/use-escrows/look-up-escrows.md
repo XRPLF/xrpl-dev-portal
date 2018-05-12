@@ -1,6 +1,6 @@
 # Look up escrows
 
-All pending escrows are stored in the ledger as [Escrow objects](reference-ledger-format.html#escrow).
+All pending escrows are stored in the ledger as [Escrow objects](escrow.html).
 
 You can look up escrow objects by the [sender's address](#look-up-escrows-by-sender-address) or the [destination address](#look-up-escrows-by-destination-address) using the [`account_objects`](reference-rippled.html#account-objects) method.
 

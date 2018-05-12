@@ -74,7 +74,6 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 ```
 
 <!--{# common links #}-->
-[Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
 [RippleAPI]: reference-rippleapi.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

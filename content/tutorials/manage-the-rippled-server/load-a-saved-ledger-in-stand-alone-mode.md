@@ -1,6 +1,6 @@
 # Load a Saved Ledger in Stand-Alone Mode
 
-You can start with a ledger version that was saved to disk if your `rippled` server was previously synced with the XRP Ledger peer-to-peer network (either the production network or the [Test Net](tutorial-rippled-setup.html#parallel-networks)).
+You can start with a ledger version that was saved to disk if your `rippled` server was previously synced with the XRP Ledger peer-to-peer network (either the production network or the [Test Net](parallel-networks.html)).
 
 ## 1. Start `rippled` normally.
 

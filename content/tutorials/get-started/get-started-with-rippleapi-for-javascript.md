@@ -136,7 +136,7 @@ The one argument to the constructor is an options object, which has [a variety o
 * The example `server` setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.
 * If you don't include the `server` option, RippleAPI runs in [offline mode](reference-rippleapi.html#offline-functionality) instead, which only provides methods that don't need network connectivity.
 * You can specify a [Ripple Test Net](https://ripple.com/build/ripple-test-net/) server instead to connect to the parallel-world Test Network instead of the production XRP Ledger.
-* If you [run your own `rippled`](tutorial-rippled-setup.html), you can instruct it to connect to your local server. For example, you might say `server: 'ws://localhost:5005'` instead.
+* If you [run your own `rippled`](install-rippled.html), you can instruct it to connect to your local server. For example, you might say `server: 'ws://localhost:5005'` instead.
 
 ### Connecting and Promises
 

@@ -14,7 +14,7 @@ The specified recipient can also [cash the check for a flexible amount](tutorial
 
 ## {{cash_exact_n.next()}}. Prepare the CheckCash transaction
 
-Figure out the values of the [CheckCash transaction][] fields. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](reference-transaction-format.html#auto-fillable-fields) when signing:
+Figure out the values of the [CheckCash transaction][] fields. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](transaction-common-fields.html#auto-fillable-fields) when signing:
 
 | Field             | Value                     | Description                  |
 |:------------------|:--------------------------|:-----------------------------|
@@ -148,7 +148,6 @@ If cashing the Check failed, the Check remains in the ledger so you can try cash
 <!-- MULTICODE_BLOCK_END -->
 
 <!--{# common links #}-->
-[Specifying Currency Amounts]: reference-rippled.html#specifying-currency-amounts
 [RippleAPI]: reference-rippleapi.html
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled-api-links.md' %}

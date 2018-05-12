@@ -187,7 +187,7 @@ Amounts of XRP are represented on the XRP Ledger as an unsigned integer count of
 
 One drop (.000001 XRP) cannot be further subdivided. Keep this in mind when calculating and displaying FX rates between XRP and other assets.
 
-For more information, see [Specifying Currency Amounts](reference-rippled.html#specifying-currency-amounts).
+For more information, see [Specifying Currency Amounts][].
 
 #### On-Ledger and Off-Ledger
 
@@ -599,4 +599,7 @@ Off-Ledger Balances</td>
 </table>
 
 
-{% include '_snippets/tx-type-links.md' %}
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
