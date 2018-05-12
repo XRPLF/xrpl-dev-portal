@@ -52,7 +52,7 @@ To support listing XRP, code integrations with the XRP Ledger to deposit XRP int
 ### Related Tasks
 
 - [Contribute Code to `rippled`](contribute-code-to-rippled.html)
-- [Subscribe to XRP Ledger Updates](subscription-methods.html)
+- [Listen for New Ledger Versions](subscription-methods.html)
 - [Capacity Planning](capacity-planning.html)
 - [Look Up an XRP Ledger Account’s Transaction History](tx_history.html)
 <!-- for the future, link to Implement Destination Tags -->
