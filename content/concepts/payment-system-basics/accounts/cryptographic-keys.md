@@ -114,3 +114,8 @@ The supported types of key pairs can be used interchangeably throughout the XRP 
 ### Future Algorithms
 
 In the future, Ripple expects to add new cryptographic signing algorithms to the XRP Ledger to keep up with developments in cryptography. For example, if it seems that quantum computers using [Shor's algorithm](https://en.wikipedia.org/wiki/Shor's_algorithm) (or something similar) will soon be practical enough to break elliptic curve cryptography, Ripple can add a cryptographic signing algorithm that isn't easily broken. As of early 2018, such "quantum-resistant" signing algorithms are relatively impractical and quantum computers are even more impractical, so Ripple has no immediate plans to add any specific algorithms.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

@@ -88,3 +88,17 @@ You can use the [rippled commandline interface](get-started-with-the-rippled-api
     $ /opt/ripple/bin/rippled <METHOD>
 
 For a full list of available methods, see the [rippled API reference](rippled-api.html).
+
+### Additional Configuration
+
+`rippled` should connect to the XRP Ledger with the default configuration. However, you can change your settings by editing the `rippled.cfg` file (located at `/opt/ripple/etc/rippled.cfg` when installing `rippled` with yum). For recommendations about configuration settings, see [Capacity Planning](capacity-planning.html).
+
+See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/master/doc/rippled-example.cfg) for a description of all configuration options.
+
+Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path:
+
+        $ chown -R rippled:rippled <configured path>
+
+Restart `rippled` for any configuration changes to take effect:
+
+        $ sudo service rippled restart

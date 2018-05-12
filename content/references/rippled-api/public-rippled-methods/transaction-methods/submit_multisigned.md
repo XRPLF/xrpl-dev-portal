@@ -1,7 +1,7 @@
 # submit_multisigned
 [[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
-The `submit_multisigned` command applies a [multi-signed](multi-signing.html) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](#submit-only-mode).)
+The `submit_multisigned` command applies a [multi-signed](multi-signing.html) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](submit.html#submit-only-mode).)
 
 This command requires the [MultiSign amendment](known-amendments.html#multisign) to be enabled. [New in: rippled 0.31.0][]
 

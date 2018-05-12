@@ -1,7 +1,7 @@
 # path_find
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
 
-*WebSocket API only!* The `path_find` method searches for a [path](paths.html) along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see [`ripple_path_find`](#ripple-path-find). For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.
+*WebSocket API only!* The `path_find` method searches for a [path](paths.html) along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see the [ripple_path_find method][]. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.
 
 There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the `subcommand` parameter:
 
@@ -433,7 +433,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-The initial response follows the [standard format](#response-formatting), with a successful result containing the following fields:
+The initial response follows the [standard format](response-formatting.html), with a successful result containing the following fields:
 
 | `Field`               | Type             | Description                       |
 |:----------------------|:-----------------|:----------------------------------|
@@ -455,7 +455,7 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See the [ripple_path_find method][] for a pathfinding method that _is_ compatible with JSON-RPC.)
 
 ### Asynchronous Follow-ups
 
@@ -530,7 +530,7 @@ If there was no outstanding pathfinding request, an error is returned instead.
 
 * Any of the [universal error types][].
 * `invalidParams` - If any fields are specified incorrectly, or any required fields are missing.
-* `noEvents` - If you tried to use this method on a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* `noEvents` - If you tried to use this method on a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See the [ripple_path_find method][] for a pathfinding method that _is_ compatible with JSON-RPC.)
 * `noPathRequest` - You tried to close a pathfinding request when there is not an open one.
 
 ## path_find status
@@ -575,7 +575,7 @@ If there was no outstanding pathfinding request, an error is returned instead.
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See [ripple\_path\_find](#ripple-path-find) for a pathfinding method that _is_ compatible with JSON-RPC.)
+* `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See the [ripple_path_find method][] for a pathfinding method that _is_ compatible with JSON-RPC.)
 * `noPathRequest` - You tried to check the status of a pathfinding request when there is not an open one.
 
 

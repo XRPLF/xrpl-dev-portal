@@ -93,7 +93,7 @@ The following diagram shows the relationship between keys and addresses:
 
 ![Passphrase → Secret Key → Public Key + Type Prefix → Account ID + Checksum → Address](img/key-address-rels.png)
 
-The formula for calculating an XRP Ledger address is as follows. For the complete example code, see [`encode_address.js`](https://github.com/ripple/ripple-dev-portal/blob/master/content/code_samples/address_encoding/encode_address.js).
+The formula for calculating an XRP Ledger address is as follows. For the complete example code, see [`encode_address.js`](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/address_encoding/encode_address.js).
 
 1. Import required algorithms: SHA-256, RIPEMD160, and base58. Set the dictionary for base58.
 
@@ -135,6 +135,7 @@ The formula for calculating an XRP Ledger address is as follows. For the complet
         console.log(address);
         // rDTXLQ7ZKZVKz33zJbHjgVShjsBnqMBhmN
 
-<!--{# Reference link definitions #}-->
-
-{% include '_snippets/tx-type-links.md' %}
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

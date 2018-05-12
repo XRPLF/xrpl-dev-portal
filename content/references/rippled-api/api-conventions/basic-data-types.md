@@ -12,24 +12,28 @@ Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Has
 [Address]: #addresses
 
 {% include '_snippets/data_types/address.md' %}
+<!--{#_ #}-->
 
 
 ## Hashes
 [Hash]: #hashes
 
 {% include '_snippets/data_types/hash.md' %}
+<!--{#_ #}-->
 
 
 ## Account Sequence
 [Sequence Number]: #account-sequence
 
 {% include '_snippets/data_types/account_sequence.md' %}
+<!--{#_ #}-->
 
 
 ## Ledger Index
 [Ledger Index]: #ledger-index
 
 {% include '_snippets/data_types/ledger_index.md' %}
+<!--{#_ #}-->
 
 
 ### Specifying Ledgers
@@ -119,6 +123,7 @@ Finally, if the recipient account of the payment trusts multiple issuers for a c
 [Currency Code]: #currency-codes
 
 {% include '_snippets/data_types/currency_code.md' %}
+<!--{#_ #}-->
 
 
 ## Specifying Time
@@ -126,3 +131,8 @@ Finally, if the recipient account of the payment trusts multiple issuers for a c
 The `rippled` server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the "Ripple Epoch" of January 1, 2000 (00:00 UTC). This is like the way the [Unix epoch](http://en.wikipedia.org/wiki/Unix_time) works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.
 
 Don't convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

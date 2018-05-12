@@ -1,10 +1,11 @@
 # Currency Formats
 
-The XRP Ledger has [two kinds of money](money.html): XRP, and issued currencies. In the XRP Ledger, both types have high precision, although their formats are different.
+The XRP Ledger has two kinds of money: [XRP](xrp.html), and [issued currencies](issued-currencies.html). In the XRP Ledger, both types have high precision, although their formats are different.
 
 ## String Formatting
 
 {% include '_snippets/string-number-formatting.md' %}
+<!--{#_ #}-->
 
 ## XRP Precision
 
@@ -38,7 +39,7 @@ When transmitting non-XRP amounts across the network or recording them in ledger
 
 ## Currency Codes
 
-All non-XRP currencies in the XRP Ledger have a 160-bit currency code. The [`rippled` APIs](reference-rippled.html) map 3-character ASCII strings (case-sensitive) to 160-bit currency codes using a standard mapping. The currency code `XRP` is disallowed for issued currencies. Currencies with the same code can [ripple](rippling.html) across connected trustlines. Currency codes have no other behavior built into the XRP Ledger.
+All non-XRP currencies in the XRP Ledger have a 160-bit currency code. The [`rippled` APIs](rippled-api.html) map 3-character ASCII strings (case-sensitive) to 160-bit currency codes using a standard mapping. The currency code `XRP` is disallowed for issued currencies. Currencies with the same code can [ripple](rippling.html) across connected trustlines. Currency codes have no other behavior built into the XRP Ledger.
 
 ### Standard Currency Codes
 

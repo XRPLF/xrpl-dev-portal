@@ -622,8 +622,8 @@ pages:
         targets:
             - local
 
-    -   md: tutorials/use-simple-xrp-payments/send-a-multisigned-transaction.md
-        html: send-a-multisigned-transaction.html
+    -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.md
+        html: send-a-multi-signed-transaction.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
@@ -2384,12 +2384,6 @@ ignore_anchors_in:
 #Sometimes, a link is not really problematic, but the link checker detects it
 # as such and the easiest solution is to ignore it.
 known_broken_links:
-    # Strangely, Python doesn't like the cert here. Firefox is OK with it.
-    - https://validators.ripple.com
-
-    # Login required for the client portal.
-    - https://clients.ripple.com/
-
     # These PDFs download OK in a browser
     - http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847
     - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF

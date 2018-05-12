@@ -407,4 +407,9 @@ Example JavaScript (ECMAScript 6) code to check whether an address has Global Fr
 # See Also
 
 * [GB-2014-02 New Feature: Balance Freeze](https://ripple.com/files/GB-2014-02.pdf)
-* [Freeze Code Samples](https://github.com/ripple/ripple-dev-portal/tree/master/content/code_samples/freeze)
+* [Freeze Code Samples](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/freeze)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

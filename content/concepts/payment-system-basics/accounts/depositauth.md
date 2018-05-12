@@ -42,6 +42,7 @@ An account with Deposit Authorization enabled:x
 The following table summarizes whether a transaction type can deposit money with DepositAuth enabled or disabled:
 
 {% include '_snippets/depositauth-semantics-table.html' %}
+<!--{#_ #}-->
 
 
 ## Enabling or Disabling Deposit Authorization
@@ -61,4 +62,7 @@ If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (
 - The `RequireDest` flag indicates that an account can only receive currency amounts if the sending transaction specifies a [Destination Tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags). This protects users from forgetting to indicate the purpose of a payment, but does not protect recipients from unknown senders, who can make up arbitrary destination tags.
 - [Partial Payments](partial-payments.html) provide a way for accounts to return unwanted payments while subtracting [transfer fees](transfer-fees.html) and exchange rates from the amount delivered instead of adding them to the amount sent.
 
-{% include '_snippets/tx-type-links.md' %}
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

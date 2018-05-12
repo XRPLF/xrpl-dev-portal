@@ -48,4 +48,4 @@ There are several properties that define a good validator. The more of these pro
 * **Identified**. It should be clear who runs the validator. Ideally, a list of trusted validators should include validators operated by different owners in multiple legal jurisdictions and geographic areas, to reduce the chance that any localized events could interfere with the validator's impartial operation.
     * Setting up [Domain Verification](run-rippled-as-a-validator.html#domain-verification) is a good start.
 
-At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
+At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see the [XRPCharts Validator Registry](https://xrpcharts.ripple.com/#/validators).

@@ -1,4 +1,4 @@
-# Listing XRP as an Exchange
+# List XRP as an Exchange
 
 This document describes the steps that an exchange needs to take to list XRP. For details about other aspects of `rippled` and the XRP Ledger, see the  [Ripple Developer Center](https://ripple.com/build).
 
