@@ -465,23 +465,25 @@ a.current {
 .landing .card .curated-links li a {
   padding: 12px;
   display: block;
-  margin: 0 -12px 0 -12px;
-  font-weight: 400;
+  margin: 4px;
+  font-weight: 200;
+  font-size: medium;
+  color;
 }
 .landing .card .level-1 a:hover,
 .landing .card .curated-links li a:hover {
   background-color: #D8EEFC;
   text-decoration: none;
 }
-.landing .card .level-1 a:hover:after,
+/*.landing .card .level-1 a:hover:after,
 .landing .card .curated-links li a:hover:after {
-  content: "\f105"; /* fontawesome angle-right */
+  content: "\f105";  fontawesome angle-right
   font-family: FontAwesome;
   position: absolute;
   right: 0;
   top: 12px;
   color: #0D294E;
-}
+}*/
 
 .landing .card .level-2 {
   position: relative;
@@ -796,9 +798,10 @@ a.current {
 
 .landing h3,
 #test-net-servers h3 {
-  font-size: 20px;
-  line-height: 20px;
-  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  font-weight: 200;
 }
 
 .card-header.bg-dark h3.card-title {
@@ -812,8 +815,9 @@ a.current {
 .landing a.card,
 .landing .card {
   color: #212529;
-  box-shadow: 0px 1px 3px rgba(35, 41, 47, 0.24);
-  border-radius: 8px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16), 0 2px 8px 0 rgba(0,0,0,0.12);
+  border-radius: 0px;
+  padding: 6px 15px;
 }
 
 .landing a.card:hover {
@@ -832,6 +836,10 @@ a.current {
 
 .landing .card-body {
   padding: 12px;
+}
+
+.card-body p{
+  padding: 4px 8px;
 }
 
 .landing .card-header,
@@ -855,19 +863,18 @@ a.current {
 
 .landing .card-header a {
   display: block;
-  margin: -12px;
-  padding: 12px;
   border-radius: inherit;
   transition: 0.5s;
 }
 
 .card-header.bg-dark {
-  color: white;
+  color: #e1e4e8;
 }
 
 .landing .card-header.bg-dark a:hover {
   text-decoration: none;
-  color: #FF9900;
+  color: #b1b3b5;
+  background: #fcf3e8;
 }
 
 .landing .card .blurb,
@@ -877,6 +884,7 @@ a.current {
 
 .landing .card > .card-img-top {
   padding: 0 16px;
+  width: 35%;
 }
 
 #home_first_shortcuts .card-img-top {
@@ -895,7 +903,7 @@ a.current {
 }
 
 #xrp_ledger_intro .card-body {
-  padding: 1px;
+  padding: 2px;
 }
 
 .landing .curated-links li:first-child {
