@@ -76,7 +76,7 @@ To support interest-bearing and demurraging currencies, client applications must
 
 ### ripple-lib Support
 
-Demurrage was supported in ripple-lib versions **0.7.37** through **0.12.9**. Demurrage is ***not supported*** in [RippleAPI](reference-rippleapi.html).
+Demurrage was supported in ripple-lib versions **0.7.37** through **0.12.9**. Demurrage is ***not supported*** in [RippleAPI](rippleapi-reference.html).
 
 The following code samples demonstrate how to use compatible versions of ripple-lib to convert between ledger values and display values. Also see the [Ripple Demurrage Calculator](https://ripple.github.io/ripple-demurrage-tool/).
 

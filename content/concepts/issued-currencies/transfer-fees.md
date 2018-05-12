@@ -37,9 +37,9 @@ The transfer fee is represented by a setting on the [issuing address][]. The tra
 
 In RippleAPI, the transfer fee is specified in the `transferRate` field, as a decimal which represents the amount you must send for the recipient to get 1 unit of the same currency. A `transferRate` of `1.005` is equivalent to a transfer fee of 0.5%. By default, the `transferRate` is set to no fee. The value of `transferRate` cannot be less than `1.0` or more than `2.0`. The transfer rate is rounded to 10 significant digits including the ones digit. The value `null` is a special case for no fee, equivalent to `1.0`.
 
-A financial institution can send a [Settings transaction](reference-rippleapi.html#settings) from its [issuing address][] to change the `transferRate` for its issuances.
+A financial institution can send a [Settings transaction](rippleapi-reference.html#settings) from its [issuing address][] to change the `transferRate` for its issuances.
 
-You can check an account's `transferRate` with the [getSettings method](reference-rippleapi.html#getsettings).
+You can check an account's `transferRate` with the [getSettings method](rippleapi-reference.html#getsettings).
 
 ## rippled
 

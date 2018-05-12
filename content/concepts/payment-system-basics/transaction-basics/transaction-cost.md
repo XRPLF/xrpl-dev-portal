@@ -137,7 +137,7 @@ Before signing a transaction, we recommend [looking up the current load-based tr
 
 ### Automatically Specifying the Transaction Cost
 
-When you sign a transaction online, you can omit the `Fee` field. In this case, `rippled` or [RippleAPI](reference-rippleapi.html) checks the state of the peer-to-peer network for the current requirement and adds a `Fee` value before signing the transaction. However, there are several drawbacks and limitations to automatically filling in the transaction cost in this manner:
+When you sign a transaction online, you can omit the `Fee` field. In this case, `rippled` or [RippleAPI](rippleapi-reference.html) checks the state of the peer-to-peer network for the current requirement and adds a `Fee` value before signing the transaction. However, there are several drawbacks and limitations to automatically filling in the transaction cost in this manner:
 
 * If the network's transaction cost goes up between signing and distributing the transaction, the transaction may not be confirmed.
     * In the worst case, the transaction may be stuck in a state of being neither definitively confirmed or rejected, unless it included a `LastLedgerSequence` parameter or until you cancel it with a new transaction that uses the same `Sequence` number. See [reliable transaction submission](reliable-transaction-submission.html) for best practices.

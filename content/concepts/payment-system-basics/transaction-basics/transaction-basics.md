@@ -75,7 +75,7 @@ Here is an example of an unsigned [Payment transaction][] in JSON:
 The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the `Account`) field. For transactions authorized by only a single signature, you have two options:
 
 1. Convert it to a binary blob and sign it offline. This is preferable, since it means that the account secret used for signing the transaction is never transmitted over any network connection.
-    * You can use [RippleAPI](reference-rippleapi.html#sig) for offline signing.
+    * You can use [RippleAPI](rippleapi-reference.html#sign) for offline signing.
 2. Have a `rippled` server sign the transaction for you. The [sign command](sign.html) takes a JSON-format transaction and secret and returns the signed binary transaction format ready for submission. (Transmitting your account secret is dangerous, so you should only do this from within a trusted and encrypted connection, or through a local connection, and only to a server you control.)
     * As a shortcut, you can use the [submit command](submit.html) with a `tx_json` object to sign and submit a transaction all at once. This is only recommended for testing and development purposes.
 
