@@ -2,13 +2,13 @@
 
 In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. <!-- STYLE_OVERRIDE: is authorized to -->
 
-Every digital signature is based on a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](reference-transaction-format.html#multi-signing), regardless of what algorithm was used to generate it.
+Every digital signature is based on a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](multi-signing.html), regardless of what algorithm was used to generate it.
 
 **Warning:** It is important to maintain proper security over your private keys. Digital signatures are the only way of verifying to the XRP Ledger that you are authorized to send a transaction, and there is no privileged administrator who can undo or reverse any transaction that has been applied to the ledger. If someone else knows the private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.
 
 ## Generating Keys
 
-You generate a key pair using the [`wallet_propose`](reference-rippled.html#wallet-propose) method. Here's a sample `wallet_propose` response:
+You generate a key pair using the [`wallet_propose`](wallet_propose.html) method. Here's a sample `wallet_propose` response:
 
 ```
 {
@@ -40,13 +40,13 @@ The `public_key` and `public_key_hex` are the public key in various formats, wit
 
 The `account_id` is [derived from the public key](accounts.html#address-encoding) and designates the *potential* for an account to be created in the XRP Ledger. It is important to know that while an `account_id` exists, no actual account exists in the XRP Ledger until the `account_id` receives its first XRP payment. In addition, the `account_id` can't send any transactions until after it's received a transaction that funds and creates the account.
 
-The `account_id` (without a funded account) can, however, be used as a [regular key](#regular-key-pair) or a [member of a signer list](reference-transaction-format.html#multi-signing) to authorize transactions for another account that does exist.
+The `account_id` (without a funded account) can, however, be used as a [regular key](#regular-key-pair) or a [member of a signer list](multi-signing.html) to authorize transactions for another account that does exist.
 
-To create a funded account stored in the ledger, the `account_id` must [receive a `Payment` transaction](reference-transaction-format.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
+To create a funded account stored in the ledger, the `account_id` must [receive a `Payment` transaction](payment.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
 
-For more information about the `wallet_propose` response, see [`wallet_propose`](reference-rippled.html#wallet-propose).
+For more information about the `wallet_propose` response, see [`wallet_propose`](wallet_propose.html).
 
-You can use this generated key pair in one of three ways: as a [master key pair](#master-key-pair), [regular key pair](#regular-key-pair), or [signer list member](reference-transaction-format.html#multi-signing).
+You can use this generated key pair in one of three ways: as a [master key pair](#master-key-pair), [regular key pair](#regular-key-pair), or [signer list member](multi-signing.html).
 
 **Key Type**
 
@@ -57,17 +57,17 @@ The field `key_type` indicates what [cryptographic signing algorithm](#signing-a
 
 The master key pair is composed of a private key and a public key. In addition to being able to sign all transactions that a regular key pair can, the master key pair's private key is the only key that can be used to perform the following actions:
 
-* [Disable the master public key](reference-transaction-format.html#accountset-flags).
+* [Disable the master public key](accountset.html).
 
-* Permanently give up the ability to [freeze](freeze.html#no-freeze).
+* Permanently give up the ability to [freeze](freezes.html#no-freeze).
 
 * Send a cost-0 [key reset transaction](transaction-cost.html#key-reset-transaction).
 
-The master key pair for an account is generated in the same [`wallet_propose`](reference-rippled.html#wallet-propose) response as the `account_id` of the account the master key pair is authorized to sign transactions for. Because the master key pair is generated in the same response, it is [intrinsically related](accounts.html#address-encoding) to the `account_id`, which is derived from the `public_key_hex`.
+The master key pair for an account is generated in the same [`wallet_propose`](wallet_propose.html) response as the `account_id` of the account the master key pair is authorized to sign transactions for. Because the master key pair is generated in the same response, it is [intrinsically related](accounts.html#address-encoding) to the `account_id`, which is derived from the `public_key_hex`.
 
 This is as opposed to a regular key pair, which is also generated using the `wallet_propose` method, but which must be explicitly assigned as a regular key pair to an account. Because a regular key pair is explicitly assigned, it is not intrinsically related to the `account_id` of the account it is authorized to sign transactions for. For more information, see [Regular Key Pair](#regular-key-pair).
 
-**Caution:** A master key pair cannot be changed, but it can be disabled. This means that if your master private key is compromised, rather than change it, you must [disable it](reference-transaction-format.html#accountset-flags).
+**Caution:** A master key pair cannot be changed, but it can be disabled. This means that if your master private key is compromised, rather than change it, you must [disable it](accountset.html).
 
 Because a master key pair cannot be changed and can only disabled in the event of a compromise, this is a compelling reason to keep your master key pair offline and set up a regular key pair to sign transactions from your account instead.
 
@@ -78,9 +78,9 @@ Keeping your master key pair offline means not putting your master private key s
 
 The XRP Ledger allows an account to authorize a secondary key pair, called a _regular key pair_, to sign future transactions, while keeping your master key pair offline. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your account and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)
 
-You generate a key pair to use as a regular key pair using the [`wallet_propose`](reference-rippled.html#wallet-propose) method. However, unlike with a [master key pair](#master-key-pair), which is generated alongside and intrinsically related to the `account_id` of an account it supports, you must explicitly create the relationship between a regular key pair and the account you want it to sign transactions for. You use the [`SetRegularKey`](reference-transaction-format.html#setregularkey) method to assign a regular key pair to an account.
+You generate a key pair to use as a regular key pair using the [`wallet_propose`](wallet_propose.html) method. However, unlike with a [master key pair](#master-key-pair), which is generated alongside and intrinsically related to the `account_id` of an account it supports, you must explicitly create the relationship between a regular key pair and the account you want it to sign transactions for. You use the [`SetRegularKey`](setregularkey.html) method to assign a regular key pair to an account.
 
-For a tutorial on assigning a regular key pair, see [Working with a Regular Key Pair](tutorial-regular-keys.html).
+For a tutorial on assigning a regular key pair, see [Assign a Regular Key Pair](assign-a-regular-key-pair.html).
 
 After you assign a regular key pair to an account, the account has two key pairs associated with it:
 
@@ -91,7 +91,7 @@ You can assign one regular key pair to an account and use it to sign all transac
 
 You can remove or change a regular key pair at any time. This means that if a regular private key is compromised (but the master private key is not), you can regain control of your account by simply removing or changing the regular key pair.
 
-For a tutorial on changing or removing a regular key pair, see [Working with a Regular Key Pair](tutorial-regular-keys.html).
+For a tutorial on changing or removing a regular key pair, see [Assign a Regular Key Pair](assign-a-regular-key-pair.html).
 
 
 ## Signing Algorithms
@@ -109,7 +109,7 @@ When you generate a key pair with the [wallet_propose method][], you can specify
 
 The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](accounts.html#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
 
-**Note:** Currently, you cannot sign [payment channel claims](tutorial-paychan.html) with Ed25519 keys. This is a bug.
+**Note:** Currently, you cannot sign [payment channel claims](use-payment-channels.html) with Ed25519 keys. This is a bug.
 
 ### Future Algorithms
 

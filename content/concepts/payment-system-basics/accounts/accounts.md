@@ -1,23 +1,23 @@
 # Accounts
 
-An "Account" in the XRP Ledger represents a holder of XRP and a sender of [transactions](reference-transaction-format.html). The core elements of an account are:
+An "Account" in the XRP Ledger represents a holder of XRP and a sender of [transactions](transaction-formats.html). The core elements of an account are:
 
 - An identifying **address**, such as `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`
 - An **XRP balance**. Some of this XRP is set aside for the [Reserve](reserves.html).
 - A **sequence number**, starting at 1 and increasing with each transaction sent from this account. No transaction can be included in a ledger unless the transaction's sequence number matches its sender's next sequence number.
 - A **history of transactions** that affected this account and its balances.
-- One or more ways to [authorize transactions](reference-transaction-format.html#authorizing-transactions), possibly including:
-    - A master key pair intrinsic to the account. (This can be [disabled](reference-transaction-format.html#accountset-flags) but not changed.)
-    - A "regular" key pair that [can be rotated](reference-transaction-format.html#setregularkey).
-    - A signer list for [multi-signing](reference-transaction-format.html#multi-signing). (Stored separately from the account's core data.)
+- One or more ways to [authorize transactions](transaction-basics.html#authorizing-transactions), possibly including:
+    - A master key pair intrinsic to the account. (This can be [disabled](accountset.html) but not changed.)
+    - A "regular" key pair that [can be rotated](setregularkey.html).
+    - A signer list for [multi-signing](multi-signing.html). (Stored separately from the account's core data.)
 
-In the ledger's data tree, an account's core data is stored in the [AccountRoot](reference-ledger-format.html#accountroot) ledger object type. An account can also be the owner (or partial owner) of several other types of data.
+In the ledger's data tree, an account's core data is stored in the [AccountRoot](accountroot.html) ledger object type. An account can also be the owner (or partial owner) of several other types of data.
 
 **Tip:** An "Account" in the XRP Ledger is somewhere between the financial usage (like "bank account") and the computing usage (like "UNIX account"). Non-XRP currencies and assets aren't stored in an XRP Ledger Account itself; each such asset is stored in an accounting relationship called a "Trust Line" that connects two parties.
 
 ### Creating Accounts
 
-There is not a dedicated "create account" transaction. The [Payment transaction][] automatically creates a new account if the payment sends XRP equal to or greater than the [account reserve](reserves.html) to a mathematically-valid address that does not already have an account. This is called _funding_ an account, and creates an [AccountRoot object](reference-ledger-format.html#accountroot) in the ledger. No other transaction can create an account.
+There is not a dedicated "create account" transaction. The [Payment transaction][] automatically creates a new account if the payment sends XRP equal to or greater than the [account reserve](reserves.html) to a mathematically-valid address that does not already have an account. This is called _funding_ an account, and creates an [AccountRoot object](accountroot.html) in the ledger. No other transaction can create an account.
 
 **Caution:** Funding an account **does not** give you any special privileges over that account. Whoever has the secret key corresponding to the account's address has full control over the account and all XRP it contains. For some addresses, it's possible that no one has the secret key, in which case the account is a [black hole](#special-addresses) and the XRP is lost forever.
 
@@ -35,7 +35,7 @@ The typical way to get an account in the XRP Ledger is as follows:
 
 {% include '_snippets/data_types/address.md' %}
 
-Any valid address can [become an account in the XRP Ledger](#creating-accounts) by being funded. You can also use an address that has not been funded to represent a [regular key](reference-transaction-format.html#setregularkey) or a member of a [signer list](reference-transaction-format.html#multi-signing). Only a funded account can be the sender of a transaction.
+Any valid address can [become an account in the XRP Ledger](#creating-accounts) by being funded. You can also use an address that has not been funded to represent a [regular key](setregularkey.html) or a member of a [signer list](multi-signing.html). Only a funded account can be the sender of a transaction.
 
 Creating a valid address is a strictly mathematical task starting with a key pair. You can generate a key pair and calculate its address entirely offline without communicating to the XRP Ledger or any other party. The conversion from a public key to an address involves a one-way hash function, so it is possible to confirm that a public key matches an address but it is impossible to derive the public key from the address alone. (This is part of the reason why signed transactions include the public key _and_ the address of the sender.)
 
@@ -49,7 +49,7 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 | Address                     | Name | Meaning | Black Hole? |
 |-----------------------------|------|---------|-------------|
 | rrrrrrrrrrrrrrrrrrrrrhoLvTp | ACCOUNT\_ZERO | An address that is the base58 encoding of the value `0`. In peer-to-peer communications, `rippled` uses this address as the issuer for XRP. | Yes |
-| rrrrrrrrrrrrrrrrrrrrBZbvji  | ACCOUNT\_ONE | An address that is the base58 encoding of the value `1`. In the ledger, [RippleState entries](reference-ledger-format.html#ripplestate) use this address as a placeholder for the issuer of a trust line balance. | Yes |
+| rrrrrrrrrrrrrrrrrrrrBZbvji  | ACCOUNT\_ONE | An address that is the base58 encoding of the value `1`. In the ledger, [RippleState entries](ripplestate.html) use this address as a placeholder for the issuer of a trust line balance. | Yes |
 | rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh | The genesis account | When `rippled` starts a new genesis ledger from scratch (for example, in stand-alone mode), this account holds all the XRP. This address is generated from the seed value "masterpassphrase" which is [hard-coded](https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184). | No |
 | rrrrrrrrrrrrrrrrrNAMEtxvNvQ | Ripple Name reservation black-hole | In the past, Ripple asked users to send XRP to this account to reserve Ripple Names.| Yes |
 | rrrrrrrrrrrrrrrrrrrn5RM1rHd | NaN Address | Previous versions of [ripple-lib](https://github.com/ripple/ripple-lib) generated this address when base58 encoding the value [NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN). | Yes |
@@ -59,7 +59,7 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 
 Once created, an account exists in the XRP Ledger's data tree forever. This is because the current sequence number for a transaction must be tracked forever, so that old transactions cannot be processed a second time.
 
-Unlike Bitcoin and many other crypto-currencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, Ripple discourages creating new accounts unless entirely necessary. Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](tutorial-gateway-guide.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
+Unlike Bitcoin and many other crypto-currencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, Ripple discourages creating new accounts unless entirely necessary. Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](become-an-xrp-ledger-gateway.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
 
 
 ## Transaction History
@@ -76,9 +76,9 @@ The _conceptual_ transaction history of an account also includes transactions th
 - `Offer` objects, representing the account's outstanding currency-exchange orders in the decentralized exchange
 - `PayChannel` objects, representing asynchronous payment channels to and from the account
 - `Escrow` objects, representing held payments to or from the account that are locked by time or a crypto-condition.
-- `SignerList` objects, representing lists of addresses that can authorize transactions for the account by [multi-signing](reference-transaction-format.html#multi-signing).
+- `SignerList` objects, representing lists of addresses that can authorize transactions for the account by [multi-signing](multi-signing.html).
 
-For more information on each of these objects, see the [Ledger Format Reference](reference-ledger-format.html).
+For more information on each of these objects, see the [Ledger Format Reference](ledger-data-formats.html).
 
 
 ## Address Encoding

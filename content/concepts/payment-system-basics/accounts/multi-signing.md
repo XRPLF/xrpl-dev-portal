@@ -1,6 +1,6 @@
 # Multi-Signing
 
-Multi-signing in the XRP Ledger is a method of [authorizing transactions](#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](concept-cryptographic-keys.html#master-key-pair), and a [regular key pair](concept-cryptographic-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
+Multi-signing in the XRP Ledger is a method of [authorizing transactions](transaction-basics.html#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](cryptographic-keys.html#master-key-pair), and a [regular key pair](cryptographic-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
 
 Benefits of multi-signing include:
 
@@ -19,13 +19,17 @@ The [SignerListSet transaction][] defines which addresses can authorize transact
 
 To successfully submit a multi-signed transaction, you must do all of the following:
 
-* The address sending the transaction (specified in the `Account` field) must own a [`SignerList` in the ledger](reference-ledger-format.html#signerlist).
+* The address sending the transaction (specified in the `Account` field) must own a [`SignerList` in the ledger](signerlist.html).
 * The transaction must include the `SigningPubKey` field as an empty string.
-* The transaction must include a [`Signers` field](#signers-field) containing an array of signatures.
+* The transaction must include a [`Signers` field](transaction-common-fields.html#signers-field) containing an array of signatures.
 * The signatures present in the `Signers` array must match signers defined in the SignerList.
 * For the provided signatures, the total `weight` associated with those signers must be equal or greater than the `quorum` for the SignerList.
-* The [transaction cost](concept-transaction-cost.html) (specified in the `Fee` field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.
-* All fields of the transaction must be defined before collecting signatures. You cannot [auto-fill](#auto-fillable-fields) any fields.
+* The [transaction cost](transaction-cost.html) (specified in the `Fee` field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.
+* All fields of the transaction must be defined before collecting signatures. You cannot [auto-fill](transaction-common-fields.html#auto-fillable-fields) any fields.
 * If presented in binary form, the `Signers` array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the [submit_multisigned method][] handles this automatically.)
 
-For more information, see [How to Multi-Sign](how-to-multi-sign.html).
+For more information, see [Set Up Multi-Signing](set-up-multi-signing.html).
+
+
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
