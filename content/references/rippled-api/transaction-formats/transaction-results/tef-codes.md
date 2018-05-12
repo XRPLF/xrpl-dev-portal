@@ -19,7 +19,7 @@ These codes indicate that the transaction failed and was not included in a ledge
 | `tefINTERNAL`            | When trying to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues) to get it fixed. |
 | `tefINVARIANT_FAILED`   | An invariant check failed when trying to claim the [transaction cost](transaction-cost.html). Requires the [EnforceInvariants amendment](known-amendments.html#enforceinvariants). If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues). |
 | `tefMASTER_DISABLED`    | The transaction was signed with the account's master key, but the account has the `lsfDisableMaster` field set. |
-| `tefMAX_LEDGER`         | The transaction included a [`LastLedgerSequence`](#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
+| `tefMAX_LEDGER`         | The transaction included a [`LastLedgerSequence`](reliable-transaction-submission.html#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
 | `tefNO_AUTH_REQUIRED`  | The [TrustSet transaction][] tried to mark a trustline as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
 | `tefNOT_MULTI_SIGNING` | The transaction was [multi-signed](multi-signing.html), but the sending account has no SignerList defined. |
 | `tefPAST_SEQ`           | The sequence number of the transaction is lower than the current sequence number of the account sending the transaction. |

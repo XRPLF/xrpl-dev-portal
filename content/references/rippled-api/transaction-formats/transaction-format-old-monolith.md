@@ -10,7 +10,7 @@ Reliably submitting transactions is the process of achieving both of the followi
 
 To have both qualities when submitting a transaction, an application should:
 
-1. Construct and sign the transaction first, including a [`LastLedgerSequence`](#lastledgersequence) parameter that gives the transaction a limited lifespan.
+1. Construct and sign the transaction first, including a [`LastLedgerSequence`](reliable-transaction-submission.html#lastledgersequence) parameter that gives the transaction a limited lifespan.
 2. Persist details of the transaction before submitting.
 3. Submit the transaction.
 4. Confirm that the transaction was either included in a validated ledger, or that it has expired due to `LastLedgerSequence`.

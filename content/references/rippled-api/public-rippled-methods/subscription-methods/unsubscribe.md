@@ -36,7 +36,7 @@ An example of the request format:
 
 [Try it! >](websocket-api-tool.html#unsubscribe)
 
-The parameters in the request are specified almost exactly like the parameters to [`subscribe`](#subscribe), except that they are used to define which subscriptions to end instead. The parameters are:
+The parameters in the request are specified almost exactly like the parameters to the [subscribe method][], except that they are used to define which subscriptions to end instead. The parameters are:
 
 | `Field`             | Type  | Description                                    |
 |:--------------------|:------|:-----------------------------------------------|

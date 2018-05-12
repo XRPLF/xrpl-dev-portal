@@ -184,7 +184,7 @@ The `queue_data` parameter, if present, contains the following fields:
 | `Field`                 | Type    | Description                              |
 |:------------------------|:--------|:-----------------------------------------|
 | `txn_count`             | Integer | Number of queued transactions from this address. |
-| `auth_change_queued`    | Boolean | (May be omitted) Whether a transaction in the queue changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). If `true`, this address can queue no further transactions until that transaction has been executed or dropped from the queue. |
+| `auth_change_queued`    | Boolean | (May be omitted) Whether a transaction in the queue changes this address's [ways of authorizing transactions](transaction-basics.html#authorizing-transactions). If `true`, this address can queue no further transactions until that transaction has been executed or dropped from the queue. |
 | `lowest_sequence`       | Integer | (May be omitted) The lowest [Sequence Number][] among transactions queued by this address. |
 | `highest_sequence`      | Integer | (May be omitted) The highest [Sequence Number][] among transactions queued by this address. |
 | `max_spend_drops_total` | String  | (May be omitted) Integer amount of [drops of XRP][] that could be debited from this address if every transaction in the queue consumes the maximum amount of XRP possible. |
@@ -194,7 +194,7 @@ Each object in the `transactions` array, if present, may contain any or all of t
 
 | `Field`           | Type    | Description                                    |
 |:------------------|:--------|:-----------------------------------------------|
-| `auth_change`     | Boolean | Whether this transaction changes this address's [ways of authorizing transactions](reference-transaction-format.html#authorizing-transactions). |
+| `auth_change`     | Boolean | Whether this transaction changes this address's [ways of authorizing transactions](transaction-basics.html#authorizing-transactions). |
 | `fee`             | String  | The [Transaction Cost](transaction-cost.html) of this transaction, in [drops of XRP][]. |
 | `fee_level`       | String  | The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in [fee levels][]. |
 | `max_spend_drops` | String  | The maximum amount of [XRP, in drops][], this transaction could send or destroy. |
@@ -207,6 +207,6 @@ Each object in the `transactions` array, if present, may contain any or all of t
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
-
+[fee levels]: transaction-cost.html#fee-levels
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}

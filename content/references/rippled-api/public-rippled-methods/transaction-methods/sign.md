@@ -68,7 +68,7 @@ rippled sign s██████████████████████
 
 [Try it! >](websocket-api-tool.html#sign)
 
-To sign a transaction, you must provide a secret key that can [authorize the transaction](reference-transaction-format.html#authorizing-transactions). You can do this in a few ways:
+To sign a transaction, you must provide a secret key that can [authorize the transaction](transaction-basics.html#authorizing-transactions). You can do this in a few ways:
 
 * Provide a `secret` value and omit the `key_type` field. This value can be formatted as [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
 * Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)

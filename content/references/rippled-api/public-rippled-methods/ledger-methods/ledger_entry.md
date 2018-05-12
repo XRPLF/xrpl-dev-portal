@@ -45,7 +45,7 @@ An example of the request format:
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:
 
 1. `index` - Retrieve any type of ledger object by its unique ID
-2. `account_root` - Retrieve an [AccountRoot object](accountroot.html). This is roughly equivalent to the [account_info](#account-info) command.
+2. `account_root` - Retrieve an [AccountRoot object](accountroot.html). This is roughly equivalent to the [account_info method][].
 3. `directory` - Retrieve a [DirectoryNode](directorynode.html), which contains a list of other ledger objects
 4. `offer` - Retrieve an [Offer object](offer.html), which defines an offer to exchange currency
 5. `ripple_state` - Retrieve a [RippleState object](ripplestate.html), which tracks a (non-XRP) currency balance between two accounts.
@@ -148,6 +148,6 @@ The response follows the [standard format][], with a successful result containin
 
 
 <!-- TODO: we should add this ledger format link to rippled-api-links.md. account_objects.md is also including this as a one-off.-->
-[ledger format]: reference-ledger-format.html
+[ledger format]: ledger-data-formats.html
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}
