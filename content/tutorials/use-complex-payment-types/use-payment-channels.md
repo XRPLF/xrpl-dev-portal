@@ -471,7 +471,7 @@ Example `account_channels` response:
         }
     }
 
-In this example, the `expiration` value 547073182 in [seconds since the Ripple Epoch](reference-rippled.html#specifying-time) maps to 2017-05-02T20:46:22Z, so any claims not redeemed by that time are no longer valid.
+In this example, the `expiration` value 547073182 in [seconds since the Ripple Epoch][] maps to 2017-05-02T20:46:22Z, so any claims not redeemed by that time are no longer valid.
 
 ## 10. Anyone can close the expired channel.
 
@@ -601,5 +601,7 @@ This concludes the tutorial of Payment Channel usage. Ripple encourages users to
 
 
 
-
-{% include '_snippets/tx-type-links.md' %}
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
