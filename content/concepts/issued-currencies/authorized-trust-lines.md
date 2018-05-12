@@ -14,7 +14,7 @@ The transaction to authorize a trust line must be signed by the issuing address,
 
 ## RequireAuth Setting
 
-The `RequireAuth` setting (`requireAuthorization` in [RippleAPI](reference-rippleapi.html)) prevents all counterparties from holding balances issued by an address unless the issuing address has specifically approved a trust line with that counterparty for the currency in question.
+The `RequireAuth` setting (`requireAuthorization` in [RippleAPI](rippleapi-reference.html)) prevents all counterparties from holding balances issued by an address unless the issuing address has specifically approved a trust line with that counterparty for the currency in question.
 
 As a precaution, Ripple recommends that issuing gateways always enable `RequireAuth` on [operational addresses and standby addresses](issuing-and-operational-addresses.html), and then never approve any trust lines to those addresses. This prevents operational addresses and standby addresses from issuing currency in the XRP Ledger even by accident. This is a purely precautionary measure, and does not stop those addresses from transferring issued currency balances created by the issuing address, as they are intended to do.
 

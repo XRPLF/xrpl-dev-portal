@@ -112,16 +112,16 @@ Example of submitting a TrustSet transaction to enable an individual freeze usin
 
 ### Using RippleAPI
 
-To enable or disable Individual Freeze on a specific trust line, prepare a *Trustline* transaction using the [prepareTrustline](reference-rippleapi.html#preparetrustline) method. The fields of the `trustline` parameter should be set as follows:
+To enable or disable Individual Freeze on a specific trust line, prepare a *Trustline* transaction using the [prepareTrustline](rippleapi-reference.html#preparetrustline) method. The fields of the `trustline` parameter should be set as follows:
 
 | Field        | Value  | Description |
 |--------------|--------|-------------|
-| currency     | String | The [currency](reference-rippleapi.html#currency) of the trust line to freeze |
-| counterparty | String | The [XRP Ledger address](reference-rippleapi.html#address) of the counterparty |
+| currency     | String | The [currency](rippleapi-reference.html#currency) of the trust line to freeze |
+| counterparty | String | The [XRP Ledger address](rippleapi-reference.html#address) of the counterparty |
 | limit        | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. From the perspective of a financial institution, this is typically `"0"`. |
 | frozen       | Boolean | `true` to enable Individual Freeze on this trust line. `false` to disable Individual Freeze. |
 
-The rest of the [transaction flow](reference-rippleapi.html#transaction-flow) is the same as any other transaction.
+The rest of the [transaction flow](rippleapi-reference.html#transaction-flow) is the same as any other transaction.
 
 Example JavaScript (ECMAScript 6) code to enable Individual Freeze on a trust line:
 
@@ -162,13 +162,13 @@ Example of submitting an AccountSet transaction to enable Global Freeze using th
 
 ### Using RippleAPI
 
-To enable or disable Global Freeze on an address, prepare a **Settings** transaction using the [prepareSettings](reference-rippleapi.html#preparesettings) method. The `settings` parameter should be an object set as follows:
+To enable or disable Global Freeze on an address, prepare a **Settings** transaction using the [prepareSettings](rippleapi-reference.html#preparesettings) method. The `settings` parameter should be an object set as follows:
 
 | Field        | Value  | Description |
 |--------------|--------|-------------|
 | globalFreeze | Boolean | `true` to enable a Global Freeze on this address. `false` to disable Global Freeze. |
 
-The rest of the [transaction flow](reference-rippleapi.html#transaction-flow) is the same as any other transaction.
+The rest of the [transaction flow](rippleapi-reference.html#transaction-flow) is the same as any other transaction.
 
 Example JavaScript (ECMAScript 6) code to enable Global Freeze on an address:
 
@@ -211,13 +211,13 @@ WebSocket request:
 
 ### Using RippleAPI
 
-To enable No Freeze on an address, prepare a **Settings** transaction using the [prepareSettings](reference-rippleapi.html#preparesettings) method. Once enabled, you cannot disable No Freeze. The `settings` parameter should be an object set as follows:
+To enable No Freeze on an address, prepare a **Settings** transaction using the [prepareSettings](rippleapi-reference.html#preparesettings) method. Once enabled, you cannot disable No Freeze. The `settings` parameter should be an object set as follows:
 
 | Field    | Value   | Description |
 |----------|---------|-------------|
 | noFreeze | Boolean | `true`      |
 
-You must [sign](reference-rippleapi.html#sign) this transaction using the master key. The rest of the [transaction flow](reference-rippleapi.html#transaction-flow) is the same as any other transaction.
+You must [sign](rippleapi-reference.html#sign) this transaction using the master key. The rest of the [transaction flow](rippleapi-reference.html#transaction-flow) is the same as any other transaction.
 
 Example JavaScript (ECMAScript 6) code to enable No Freeze on an address:
 
@@ -288,7 +288,7 @@ The field `"freeze": true` indicates that rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn has
 
 ### Using RippleAPI
 
-To see if a trust line has an Individual Freeze enabled, use the [`getTrustlines` method](reference-rippleapi.html#gettrustlines) with the following parameters:
+To see if a trust line has an Individual Freeze enabled, use the [`getTrustlines` method](rippleapi-reference.html#gettrustlines) with the following parameters:
 
 | Field         | Value   | Description |
 |---------------|---------|-------------|
@@ -385,7 +385,7 @@ console.log(currentFlags & lsfNoFreeze); //0
 
 ### Using RippleAPI
 
-To see if an address has enabled Global Freeze, No Freeze, or both, use the [`getSettings` method](reference-rippleapi.html#getsettings) with the following parameters:
+To see if an address has enabled Global Freeze, No Freeze, or both, use the [`getSettings` method](rippleapi-reference.html#getsettings) with the following parameters:
 
 | Field         | Value   | Description |
 |---------------|---------|-------------|
