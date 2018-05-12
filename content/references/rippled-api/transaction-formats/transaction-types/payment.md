@@ -34,7 +34,7 @@ Payments are also the only way to [create accounts](#creating-accounts).
 | DestinationTag | Unsigned Integer     | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
 | InvoiceID      | String               | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | Paths          | Array of path arrays | PathSet           | (Optional, auto-fillable) Array of [payment paths](paths.html) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
-| SendMax        | [Currency Amount][]  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](#transaction-cost). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+| SendMax        | [Currency Amount][]  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](transaction-cost.html). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
 | DeliverMin     | [Currency Amount][]  | Amount            | _(Optional)_ Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](partial-payments.html). For non-XRP amounts, the nested field names are lower-case. |
 
 ## Special issuer Values for SendMax and Amount
@@ -82,7 +82,7 @@ A partial payment allows a payment to succeed by reducing the amount received. P
 
 A partial payment is any [Payment transaction][] with the **tfPartialPayment** flag enabled. A partial payment can be successful if it delivers any positive amount greater than or equal to its `DeliverMin` field (or any positive amount at all if `DeliverMin` is not specified) without sending more than the `SendMax` value.
 
-The [`delivered_amount`](#delivered-amount) field of a payment's metadata indicates the amount of currency actually received by the destination account.
+The [`delivered_amount`](transaction-metadata.html#delivered-amount) field of a payment's metadata indicates the amount of currency actually received by the destination account.
 
 For more information, see the full article on [Partial Payments](partial-payments.html).
 

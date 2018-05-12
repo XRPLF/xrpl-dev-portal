@@ -6,7 +6,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 
 | Code                         | Explanation                                   |
 |:-----------------------------|:----------------------------------------------|
-| `temBAD_AMOUNT`               | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment](#payment)) was invalid, possibly because it was a negative number. |
+| `temBAD_AMOUNT`               | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment][]) was invalid, possibly because it was a negative number. |
 | `temBAD_AUTH_MASTER`         | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](cryptographic-keys.html) set. |
 | `temBAD_CURRENCY`             | The transaction improperly specified a currency field. See [Specifying Currency Amounts][Currency Amount] for the correct format. |
 | `temBAD_EXPIRATION`           | The transaction improperly specified an expiration value, for example as part of an [OfferCreate transaction][]. Alternatively, the transaction did not specify a required expiration value, for example as part of an [EscrowCreate transaction][]. |
@@ -22,9 +22,9 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temBAD_SEND_XRP_PARTIAL`   | The [Payment transaction][] used the [tfPartialPayment](partial-payments.html) flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments should always deliver the full amount. |
 | `temBAD_SEND_XRP_PATHS`     | The [Payment transaction][] included `Paths` while sending XRP, even though XRP-to-XRP payments should always be direct. |
 | `temBAD_SEQUENCE`             | The transaction is references a sequence number that is higher than its own `Sequence` number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it. |
-| `temBAD_SIGNATURE`            | The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See [tecNO_PERMISSION](#tec-codes) for the case where the signature is properly formed, but not authorized for this account.) |
+| `temBAD_SIGNATURE`            | The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See [tecNO_PERMISSION](tec-codes.html) for the case where the signature is properly formed, but not authorized for this account.) |
 | `temBAD_SRC_ACCOUNT`         | The `Account` on whose behalf this transaction is being sent (the "source account") is not a properly-formed [account](accounts.html) address. |
-| `temBAD_TRANSFER_RATE`       | The [`TransferRate` field of an AccountSet transaction](#transferrate) is not properly formatted or out of the acceptable range. |
+| `temBAD_TRANSFER_RATE`       | The [`TransferRate` field of an AccountSet transaction](accountset.html#transferrate) is not properly formatted or out of the acceptable range. |
 | `temDST_IS_SRC`              | The transaction improperly specified a destination address as the `Account` sending the transaction. This includes trust lines (where the destination address is the `issuer` field of `LimitAmount`) and payment channels (where the destination address is the `Destination` field). |
 | `temDST_NEEDED`               | The transaction improperly omitted a destination. This could be the `Destination` field of a [Payment transaction][], or the `issuer` sub-field of the `LimitAmount` field fo a `TrustSet` transaction. |
 | `temINVALID`                   | The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction. |

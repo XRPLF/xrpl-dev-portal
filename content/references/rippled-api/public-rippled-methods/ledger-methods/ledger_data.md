@@ -246,7 +246,7 @@ The format of each object in the `state` array depends on whether `binary` was s
 | `Field`             | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
 | `data`              | String    | (Only included if `"binary":true`) Hex representation of the requested data |
-| `LedgerEntryType`   | String    | (Only included if `"binary":false`) String indicating what type of ledger object this object represents. See [ledger format][] for the full list. |
+| `LedgerEntryType`   | String    | (Only included if `"binary":false`) String indicating what type of ledger object this object represents. See [ledger data formats](ledger-data-formats.html) for the full list. |
 | (Additional fields) | (Various) | (Only included if `"binary":false`) Additional fields describing this object, depending on which LedgerEntryType it is. |
 | `index`             | String    | Unique identifier for this ledger entry, as hex. |
 
