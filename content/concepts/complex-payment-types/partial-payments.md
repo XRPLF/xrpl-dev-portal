@@ -1,6 +1,6 @@
 # Partial Payments
 
-In the default case, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the exact amount to deliver, after charging for exchange rates and [transfer fees](transfer-fees.html). The "Partial Payment" flag ([**tfPartialPayment**](reference-transaction-format.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](tutorial-gateway-guide.html#bouncing-payments) without incurring additional costs to oneself.
+In the default case, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the exact amount to deliver, after charging for exchange rates and [transfer fees](transfer-fees.html). The "Partial Payment" flag ([**tfPartialPayment**](payment.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](become-an-xrp-ledger-gateway.html#bouncing-payments) without incurring additional costs to oneself.
 
 The amount of XRP used for the [transaction cost](transaction-cost.html) is always deducted from the sender’s account, regardless of the type of transaction.
 
@@ -42,7 +42,7 @@ Partial Payments have the following limitations:
 
 ### The `delivered_amount` Field
 
-To help understand how much a partial payment actually delivered, the metadata of a successful Payment transaction includes a `delivered_amount` field. This field describes the amount actually delivered, in the [same format](reference-rippled.html#specifying-currency-amounts) as the `Amount` field.
+To help understand how much a partial payment actually delivered, the metadata of a successful Payment transaction includes a `delivered_amount` field. This field describes the amount actually delivered, in the [same format](basic-data-types.html#specifying-currency-amounts) as the `Amount` field.
 
 For non-partial payments, the `delivered_amount` field of the transaction metadata is equal to the `Amount` field of the transaction. When a payment delivers an issued currency, the `delivered_amount` may be slightly different than the `Amount` field due to rounding.
 
@@ -63,8 +63,8 @@ You can find the `delivered_amount` field in the following places:
 | [RippleAPI][] | [`getTransaction` method](reference-rippleapi.html#gettransaction) | `outcome.deliveredAmount` |
 | [RippleAPI][] | [`getTransactions` method](reference-rippleapi.html#gettransactions) | array members' `outcome.deliveredAmount` |
 
-[JSON-RPC / WebSocket]: reference-rippled.html
-[RippleAPI]: reference-rippleapi.html
+[JSON-RPC / WebSocket]: rippled-api.html
+[RippleAPI]: rippled-api.html
 
 ## Partial Payments Exploit
 

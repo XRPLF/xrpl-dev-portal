@@ -37,7 +37,7 @@ Escrow is designed as a feature to enable the XRP Ledger to be used in the [Inte
 - Timed releases and expirations are limited to the resolution of XRP Ledger closes. This means that, in practice, times may be rounded to approximately 5 second intervals, depending on exactly when the ledgers close.
 - The only supported [crypto-condition][] type is PREIMAGE-SHA-256.
 
-Escrow provides strong guarantees that are best suited for high-value, low-quantity payments. [Payment Channels](tutorial-paychan.html) are better suited for fast, low-value payments. Of course, unconditional [Payments](reference-transaction-format.html#payment) are also preferable for many use cases.
+Escrow provides strong guarantees that are best suited for high-value, low-quantity payments. [Payment Channels](use-payment-channels.html) are better suited for fast, low-value payments. Of course, unconditional [Payments](reference-transaction-format.html#payment) are also preferable for many use cases.
 
 ## Availability of Escrow
 

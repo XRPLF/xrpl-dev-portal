@@ -1,6 +1,6 @@
 # Cross-Currency Payments
 
-In the XRP Ledger, you can send cross-currency payments that exchange one or more issued currencies, XRP, or both. Like [direct XRP payments](TODO-link), these payments use the [Payment transaction type][Payment]. Cross-currency payments within the XRP Ledger are fully atomic, meaning that either the payment fully executes or no part of it executes.
+In the XRP Ledger, you can send cross-currency payments that exchange one or more issued currencies, XRP, or both. Like [direct XRP payments](use-simple-xrp-payments.html), these payments use the [Payment transaction type][Payment]. Cross-currency payments within the XRP Ledger are fully atomic, meaning that either the payment fully executes or no part of it executes.
 
 By default, cross-currency payments deliver a fixed amount to their destination at a variable cost to their source. Cross-currency payments can also be [partial payments](partial-payments.html), which deliver a variable amount to the destination within a fixed sending limit.
 
