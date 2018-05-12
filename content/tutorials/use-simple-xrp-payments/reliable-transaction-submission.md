@@ -273,7 +273,7 @@ In this example the last validated ledger sequence number is 10268596 (found und
 
 #### Construct the Transaction
 
-`rippled` provides the [sign method](reference-rippled.html#sign) to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `rippled` instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.
+`rippled` provides the [sign method][] to prepare a transaction for submission.  This method requires an account secret, which should only be passed to trusted `rippled` instances.  This example issues 10 FOO (a made-up currency) to another XRP Ledger address.
 
 Request:
 
@@ -510,8 +510,12 @@ Finally the server may show one or more gaps in the transaction history. The `co
 
 ## Additional Resources
 
-- [Transaction Format](reference-transaction-format.html)
+- [Transaction Formats](transaction-formats.html)
 - [Transaction Cost](transaction-cost.html)
-- [`LastLedgerSequence` field](reference-transaction-format.html#lastledgersequence)
 - [Overview of XRP Ledger Consensus Process](consensus.html)
-- [Reaching Consensus in the XRP Ledger](reaching-consensus.html)
+- [Consensus Principles and Rules](consensus-principles-and-rules.html)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

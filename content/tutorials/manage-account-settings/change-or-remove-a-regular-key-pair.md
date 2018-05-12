@@ -14,14 +14,15 @@ For more information about master and regular key pairs, see [Cryptographic Keys
 
 ## Removing a Regular Key Pair
 
-If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](reference-transaction-format.html#multi-signing)).
+If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](multi-signing.html)).
 
 
 When removing a regular key pair to your account, the `SetRegularKey` transaction requires signing by your account's master private key (secret) or existing regular key pair. Transmitting your master or regular private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
 
 ### Sign Your Transaction
 
-The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](rippleapi-reference.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+{% include '_snippets/tutorial-sign-step.md' %}
+<!--{#_ #}-->
 
 Populate the request fields with the following values:
 

@@ -401,7 +401,8 @@ As discussed in step 2, transmitting your master private key is dangerous. It is
 
 ### Sign Your Transaction
 
-The most secure way to sign a transaction is to do it offline with a signing library, such as [RippleAPI](rippleapi-reference.html#offline-functionality). Alternatively, you can sign the transaction using the [`sign`](reference-rippled.html#sign) command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.
+{% include '_snippets/tutorial-sign-step.md' %}
+<!--{#_ #}-->
 
 Populate the request fields with the following values:
 

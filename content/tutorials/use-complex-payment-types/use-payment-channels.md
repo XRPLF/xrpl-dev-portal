@@ -49,7 +49,7 @@ This is a [PaymentChannelCreate transaction][]. As part of this process, the pay
 
 **Tip:** The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.
 
-The following example shows creation of a payment channel by [submitting](reference-rippled.html#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (rN7n7...) to the [example payee](#example-values) (rf1Bi...) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
+The following example shows creation of a payment channel by [submitting](submit.html#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (rN7n7...) to the [example payee](#example-values) (rf1Bi...) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
 
 **Note:** A payment channel counts as one object toward the payer's [owner reserve](reserves.html#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
 
@@ -430,7 +430,7 @@ If the channel _does_ have XRP remaining, the request to close a channel acts as
 
 The payee can also close a payment channel immediately after processing a claim _(9b in the [flow diagram][])_.
 
-Example of [submitting a transaction](reference-rippled.html#sign-and-submit-mode) requesting a channel to close:
+Example of [submitting a transaction](submit.html#sign-and-submit-mode) requesting a channel to close:
 
     {
         "method": "submit",
@@ -483,7 +483,7 @@ Ripple recommends that the payer sends a second [PaymentChannelClaim transaction
 
 The command to submit the transaction is the same as the previous example requesting channel expiration. (However, its resulting [auto-filled](transaction-common-fields.html#auto-fillable-fields) `Sequence` number, signature, and identifying hash are unique.)
 
-Example of [submitting](reference-rippled.html#sign-and-submit-mode) a transaction to close an expired channel:
+Example of [submitting](submit.html#sign-and-submit-mode) a transaction to close an expired channel:
 
     {
         "method": "submit",
