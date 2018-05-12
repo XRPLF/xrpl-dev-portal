@@ -106,8 +106,8 @@ Examples of invariant checks:
 
 - The total amount of XRP destroyed by a transaction must match the [transaction cost](transaction-cost.html) exactly.
 - XRP cannot be created.
-- [`AccountRoot` objects in the ledger](reference-ledger-format.html#accountroot) cannot be deleted. (See also: [Permanence of Accounts](accounts.html#permanence-of-accounts).)
-- [An object in the ledger](reference-ledger-format.html#ledger-object-types) cannot change its type. (The `LedgerEntryType` field is immutable.)
+- [`AccountRoot` objects in the ledger](accountroot.html) cannot be deleted. (See also: [Permanence of Accounts](accounts.html#permanence-of-accounts).)
+- [An object in the ledger](ledger-object-types.html) cannot change its type. (The `LedgerEntryType` field is immutable.)
 - There cannot be a trust line for XRP.
 
 
@@ -139,7 +139,7 @@ While the consensus network is under heavy load, legitimate users can pay a high
 A transaction remains in the queue until one of the following happens:
 
 * It gets applied to a validated ledger (regardless of success or failure)
-* It becomes invalid (for example, the [`LastLedgerSequence`](reference-transaction-format.html#lastledgersequence) causes it to expire)
+* It becomes invalid (for example, the [`LastLedgerSequence`](transaction-common-fields.html) causes it to expire)
 * It gets dropped because there are too many transactions in the queue with a higher transaction cost.
 
 
@@ -210,7 +210,7 @@ With this amendment, the new `STAmountCalcSwitchovers` code applies, which may c
 
 Adds tracking by destination account to [escrows](escrow.html). Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the [account_objects method][], excluding any pending escrows that were created before this amendment became enabled. This amendment also makes [EscrowCreate transactions][] appear in the destination's transaction history, as viewed with the [account_tx method][].
 
-With this amendment, new escrows are added to the [owner directories](reference-ledger-format.html#directorynode) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](reference-ledger-format.html#escrow), indicating which page of the destination's owner directory contains the escrow.
+With this amendment, new escrows are added to the [owner directories](directorynode.html) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](reference-ledger-format.html#escrow), indicating which page of the destination's owner directory contains the escrow.
 
 
 ## fix1528
@@ -268,13 +268,13 @@ This is a previous version of the [Flow](#flow) amendment. It was [rejected due 
 |:-----------------------------------------------------------------|:----------|
 | 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 | Enabled   |
 
-Introduces [multi-signing](reference-transaction-format.html#multi-signing) as a way to authorize transactions. Creates the [`SignerList` ledger object type](reference-ledger-format.html#signerlist) and the [`SignerListSet` transaction type](reference-transaction-format.html#signerlistset). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
+Introduces [multi-signing](multi-signing.html) as a way to authorize transactions. Creates the [`SignerList` ledger object type](signerlist.html) and the [`SignerListSet` transaction type](signerlistset.html). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
 
 This amendment allows addresses to have a list of signers who can authorize transactions from that address in a multi-signature. The list has a quorum and 1 to 8 weighted signers. This allows various configurations, such as "any 3-of-5" or "signature from A plus any other two signatures."
 
 Signers can be funded or unfunded addresses. Funded addresses in a signer list can sign using a regular key (if defined) or master key (unless disabled). Unfunded addresses can sign with a master key. Multi-signed transactions have the same permissions as transactions signed with a regular key.
 
-An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. The `tecMASTER_DISABLED` transaction result code is renamed `tecNO_ALTERNATIVE_KEY`. The `tecNO_REGULAR_KEY` transaction result is retired and replaced with `tecNO_ALTERNATIVE_KEY`. Additionally, this amendment adds the following new [transaction result codes](reference-transaction-format.html#result-categories):
+An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. The `tecMASTER_DISABLED` transaction result code is renamed `tecNO_ALTERNATIVE_KEY`. The `tecNO_REGULAR_KEY` transaction result is retired and replaced with `tecNO_ALTERNATIVE_KEY`. Additionally, this amendment adds the following new [transaction result codes](transaction-results.html):
 
 * `temBAD_SIGNER`
 * `temBAD_QUORUM`
@@ -292,7 +292,7 @@ An address with a SignerList can disable the master key even if a regular key is
 |:-----------------------------------------------------------------|:----------|
 | 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | In development |
 
-Fixes an inconsistency in the way [transfer fees](transfer-fees.html) are calculated between [OfferCreate](reference-transaction-format.html#offercreate) and [Payment](reference-transaction-format.html#payment) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
+Fixes an inconsistency in the way [transfer fees](transfer-fees.html) are calculated between [OfferCreate](offercreate.html) and [Payment](payment.html) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
@@ -308,9 +308,9 @@ This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
 Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. Ripple expects this feature to be useful for the [Interledger Protocol](https://interledger.org/). One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.
 
-Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](reference-ledger-format.html#paychannel). Defines an off-ledger data structure called a `Claim`, used in the ChannelClaim transaction. Creates new `rippled` API methods: [`channel_authorize`](reference-rippled.html#channel-authorize) (creates a signed Claim), [`channel_verify`](reference-rippled.html#channel-verify) (verifies a signed Claim), and [`account_channels`](reference-rippled.html#account-channels) (lists Channels associated with an account).
+Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](paychannel.html). Defines an off-ledger data structure called a `Claim`, used in the ChannelClaim transaction. Creates new `rippled` API methods: [`channel_authorize`](channel_authorize.html) (creates a signed Claim), [`channel_verify`](channel_verify.html) (verifies a signed Claim), and [`account_channels`](account_channels.html) (lists Channels associated with an account).
 
-For more information, see the [Payment Channels Tutorial](tutorial-paychan.html).
+For more information, see the [Payment Channels Tutorial](use-payment-channels.html).
 
 
 ## SHAMapV2
@@ -332,9 +332,9 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 |:-----------------------------------------------------------------|:----------|
 | CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E | Enabled   |
 
-Sorts the entries in [DirectoryNode ledger objects](reference-ledger-format.html#directorynode) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
+Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
 
-**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](tutorial-rippled-setup.html#updating-rippled) to `rippled` version 0.80.0 or later.
+**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](update-rippled.html) to `rippled` version 0.80.0 or later.
 
 
 ## SusPay
@@ -344,7 +344,7 @@ Sorts the entries in [DirectoryNode ledger objects](reference-ledger-format.html
 |:-----------------------------------------------------------------|:----------|
 | DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Enabled on TestNet; not intended for production. |
 
-This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/). In production, Ripple expects to enable similar functionality with the [Escrow](#escrow) amendment instead.
+This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/). In production, Ripple expects to enable similar functionality with the [Escrow](escrow-object.html) amendment instead.
 
 
 ## Tickets
@@ -366,9 +366,9 @@ Introduces Tickets as a way to reserve a transaction sequence number for later e
 |:-----------------------------------------------------------------|:----------|
 | 532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164 | Enabled   |
 
-Changes the way [Offers](reference-transaction-format.html#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
+Changes the way [Offers](offers.html#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
 
-Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](reference-transaction-format.html#accountset). If a currency issuer sets the `TickSize` field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
+Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](accountset.html). If a currency issuer sets the `TickSize` field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
 
 
 ## TrustSetAuth
@@ -380,7 +380,7 @@ Introduces a `TickSize` field to accounts, which can be set with the [AccountSet
 
 Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Trust Lines](authorized-trust-lines.html).
 
-With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](reference-transaction-format.html#trustset-flags) can create a new [`RippleState` ledger object](reference-ledger-format.html#ripplestate) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](reference-ledger-format.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](reference-ledger-format.html#accountroot-flags) by sending an [AccountSet transaction](reference-transaction-format.html#accountset) with the [asfRequireAuth flag enabled](reference-transaction-format.html#accountset-flags).
+With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](trustset.html#trustset-flags) can create a new [`RippleState` ledger object](ripplestate.html) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](ripplestate.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](accountroot.html#accountroot-flags) by sending an [AccountSet transaction](accountset.html) with the [asfRequireAuth flag enabled](accountset.html#accountset-flags).
 
 
 {% include '_snippets/rippled_versions.md' %}
