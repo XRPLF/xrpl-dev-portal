@@ -45,12 +45,12 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
-            - html: introduction.html
-              date: 2018-05-07
-            # - html: capacity-planning.html
-            #   date: 2018-05-04
-            - html: reliable-transaction-submission.html
-              date: 2018-04-16
+            - html: technical-faq.html
+              date: 2018-05-11
+            - html: cross-currency-payments.html
+              date: 2018-05-10
+            - html: capacity-planning.html
+              date: 2018-05-04
 
 pages:
 
