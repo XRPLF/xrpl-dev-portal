@@ -26,8 +26,9 @@ th {
 /* Top navigation ----------------------------------------------------------- */
 
 .navbar.fixed-top {
-  font-weight: 300;
+  font-weight: 400;
   border-bottom: 1px solid #C9CDD1;
+  padding: 0 5px;
 }
 
 .navbar-brand {
@@ -45,8 +46,14 @@ th {
   color: #777;
 }
 
+@media (max-width: 1010px) {
+  .navbar-brand {
+    margin-right: 5px;
+  }
+}
+
 .navbar .navbar-nav .nav-link {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 38px;
   text-decoration: none;
   transition: 0.5s;
@@ -629,20 +636,29 @@ a.current {
   border-top: 1px solid #C9CDD1;
 }
 
+#sidenav .card:only-child {
+  border-top: 0;
+  background: none;
+}
+#sidenav .card:only-child .sidebar_pagelist li a {
+  padding-left: 55px;
+}
+
 #sidenav .card-header h5 {
   margin-bottom: 0;
   text-transform: none;
+  font-size: 16px;
 }
 
 #sidenav .card-header h5 .sidenav_cat_title {
   display: block;
-  padding: 16px 15px 16px 55px;
+  padding: 11px 10px 11px 50px;
 }
 
 #sidenav .card-header .sidenav_cat_toggler {
     position: absolute;
     left: 0;
-    padding: 15px 16px 17px 16px;
+    padding: 10px 12px 12px 12px;
     background-color: #e0e0e0;
     color: black;
     line-height: 0;
@@ -877,11 +893,9 @@ a.current {
 
 .landing .card > .card-img-top {
   padding: 0 16px;
-}
-
-#home_first_shortcuts .card-img-top {
-  height: 130px;
-  width: 130px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #xrp_ledger_intro a:hover {
@@ -923,7 +937,6 @@ a.current {
 
 .splash-head p {
   font-size: 18px;
-  text-align: center;
   font-weight: 300;
   text-shadow: 0px 1px 2px #171C21;
 }

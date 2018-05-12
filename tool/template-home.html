@@ -20,7 +20,7 @@
     <h1>Learn. Experiment. Integrate. Contribute.</h1>
     <div class="row">
       <div class="blurb col-sm-12">
-        <p>The <a href="#xrp_ledger_intro">XRP Ledger</a> is built on <code>rippled</code>, an open-source technology that anyone can use.</p>
+        <p>The <a href="#xrp_ledger_intro">XRP Ledger</a> is built on open-source technology that anyone can use.</p>
         <p>Use the tools and information provided here to integrate with and contribute to the open-source platform.</p>
         <p>Want more? Get updates about XRP Ledger webinars, releases, and documentation! <a class="btn btn-light ml-3" href="https://goo.gl/forms/sHMFxU8dKiTUaltE3">Sign up! <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
       </div>
@@ -30,13 +30,10 @@
   <section class="container-fluid py-3 p-sm-4 bg-white" id="home_first_shortcuts">
       <div class="card-deck mb-4">
 
-          <div class="card-spacer d-none d-xl-block pt-5"><img class="card-img-top" src="assets/img/reference-book.svg" alt="(reference book icon)" /></div>
-
           <div class="card mr-xl-5">
             <div class="card-header bg-dark">
-              <h3 class="card-title"><a href="references.html">Go to the References <i class="fa fa-arrow-right" aria-hidden="true"></i></a></h3>
+              <h3 class="card-title"><img class="card-title-icon" src="assets/img/reference-book.svg" alt="(reference book icon)" width="32" height="32" /> Go to the References</h3>
             </div><!--/.card-header-->
-            <img class="card-img-top d-xl-none" src="assets/img/reference-book.svg" alt="(reference book icon)" />
             <div class="card-body">
               <div class="curated-links">
                 <ul>
@@ -45,16 +42,14 @@
                   <li><a href="data-api.html">Data API</a></li>
                 </ul>
               </div><!--/.curated-links-->
+              <a href="references.html" class="btn btn-secondary">View All References <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div><!--/.card-body-->
           </div><!--/.card-->
 
-          <div class="card-spacer d-none d-xl-block pt-5"><img class="card-img-top" src="assets/img/airplane.svg" alt="(airplane icon)" /></div>
-
           <div class="card mr-xl-5">
             <div class="card-header bg-dark">
-              <h3 class="card-title">Get Started</h3>
+              <h3 class="card-title"><img class="card-title-icon" src="assets/img/airplane.svg" alt="(airplane icon)" width="32" height="32" /> Get Started</h3>
             </div><!--/.card-header-->
-            <img class="card-img-top d-xl-none" src="assets/img/airplane.svg" alt="(airplane icon)" />
             <div class="card-body">
               <div class="curated-links">
                 <ul>
@@ -66,17 +61,15 @@
             </div><!--/.card-body-->
           </div><!--/.card-->
 
-          <div class="card-spacer d-none d-xl-block pt-5"><img class="card-img-top" src="assets/img/map.svg" alt="(map icon)" /></div>
-
           <div class="card">
             <div class="card-header bg-dark">
-              <h3 class="card-title"><a href="use-cases.html">View Use Cases <i class="fa fa-arrow-right" aria-hidden="true"></i></a></h3>
+              <h3 class="card-title"><img class="card-title-icon" src="assets/img/map.svg" alt="(map icon)" width="32" height="32" /> View Use Cases</h3>
             </div><!--/.card-header-->
-            <img class="card-img-top d-xl-none" src="assets/img/map.svg" alt="(map icon)" />
             <div class="card-body">
               {% set parent_page = pages|selectattr("name", "equalto", "Use Cases")|first %}
               {% set depth = 1 %}
               {% include 'template-page-children.html' %}
+              <a href="use-cases.html" class="btn btn-secondary">View All Use Cases <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div><!--/.card-body-->
           </div><!--/.card-->
 
@@ -85,41 +78,37 @@
     </section>
 
     <section class="container-fluid bg-light py-3 p-sm-4">
-      <div class="row">
+      <div class="card-deck">
 
-        <div class="col-sm-6">
-          <div class="card mb-4">
-            <div class="card-header">
-              <h3 class="card-title">New and Updated Documentation</h3>
-            </div><!--/.card-header-->
-            <div class="card-body">
-              <div class="curated-links">
-                <ol>
-                  {% for link in target.recently_updated %}
-                    {% set linkpage = pages|selectattr("html", "equalto", link.html)|first %}
-                    <li><a href="{{linkpage.html}}">{{linkpage.name}}{% if link.date is defined %} <span class="recently-updated-date">({{link.date}})</span>{% endif %}</a></li>
-                  {% endfor %}
-                </ol>
-              </div><!--/.curated-links-->
-            </div><!--/.card-body-->
-          </div><!--/.card-->
-        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3 class="card-title">New and Updated Documentation</h3>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="curated-links">
+              <ol>
+                {% for link in target.recently_updated %}
+                  {% set linkpage = pages|selectattr("html", "equalto", link.html)|first %}
+                  <li><a href="{{linkpage.html}}">{{linkpage.name}}{% if link.date is defined %} <span class="recently-updated-date">({{link.date}})</span>{% endif %}</a></li>
+                {% endfor %}
+              </ol>
+            </div><!--/.curated-links-->
+          </div><!--/.card-body-->
+        </div><!--/.card-->
 
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Known Amendments</h3>
-            </div><!--/.card-header-->
-            <div class="card-body">
-              <p>Amendments introduce new features to the decentralized XRP Ledger without causing disruptions.</p>
-              <div class="readmore">
-                <a href="known-amendments.html"><button class="btn btn-secondary" type="button">View Known Amendments <i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
-              </div>
-            </div><!--/.card-body-->
-          </div><!--/.card-->
-        </div><!--/.col-->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Known Amendments</h3>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <p>Amendments introduce new features to the decentralized XRP Ledger without causing disruptions.</p>
+            <div class="readmore">
+              <a href="known-amendments.html"><button class="btn btn-secondary" type="button">View Known Amendments <i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+            </div>
+          </div><!--/.card-body-->
+        </div><!--/.card-->
 
-      </div><!--/.row-->
+      </div><!--/.card-deck-->
     </section>
 
     <section class="container-fluid py-3 p-sm-4" id="xrp_ledger_intro">
@@ -127,7 +116,6 @@
       <div class="row">
         <div class="blurb col-sm-12">
           <p>The XRP Ledger is built powered by a network of peer-to-peer servers. It is the home of XRP, a digital asset designed to bridge the many different currencies in use worldwide.</p>
-          <p>Ripple stewards the development of the XRP Ledger, and advances XRP as a key contribution to the Internet of Value: a world in which money moves the way information does today.</p>
         </div>
       </div>
 
@@ -218,7 +206,8 @@
       <h2>Built on the XRP Ledger</h2>
       <div class="blurb">
           <p>Learn about just a few of the types of integrations developers have built on the XRP Ledger.</p>
-          <p>Have an idea for a use case not listed here? <a href="mailto:projectlotus@ripple.com">Contact us</a></p>
+          <p>Get updates about XRP Ledger use cases, webinars, and releases. <a class="btn btn-secondary ml-3" href="http
+s://goo.gl/forms/sHMFxU8dKiTUaltE3">Sign up! <i class="fa fa-external-link" aria-hidden="true"></i></a></p></p>
       </div>
 
       <div class="container">
@@ -248,8 +237,8 @@
               <p>Integrate with the XRP Ledger to place offers algorithmically or through your own trading interface, providing liquidity between different gateways and their users.</p>
             </div><!--/.card-body-->
             <div class="card-footer">
-              <div class="readmore">
-                <a href="mailto:projectlotus@ripple.com"><button class="btn btn-secondary" type="button">Contact Us  <i class="fa fa-envelope" aria-hidden="true"></i></button></a>
+              <div class="readmore coming-soon">
+                <h4>Coming Soon</h4>
               </div><!--/.readmore-->
             </div><!--/.card-footer-->
           </div><!--/.card-->
@@ -263,8 +252,8 @@
               <p>Build a wallet app on the XRP Ledger to enable your users to send and trade XRP and other currencies issued by a gateway you trust.</p>
             </div><!--/.card-body-->
             <div class="card-footer">
-              <div class="readmore">
-                <a href="mailto:projectlotus@ripple.com"><button class="btn btn-secondary" type="button">Contact Us <i class="fa fa-envelope" aria-hidden="true"></i></button></a>
+              <div class="readmore coming-soon">
+                <h4>Coming Soon</h4>
               </div><!--/.readmore-->
             </div><!--/.card-footer-->
           </div><!--/.card-->
@@ -279,21 +268,7 @@
 
       <div class="row">
 
-        <div class="col m-2">
-          <a class="client-portal-link card" href="https://clients.ripple.com/" target="_blank">
-            <div class="card-body">
-              <p>
-                <img class="project-icon" src="assets/img/RippleNet-condensed.svg" />
-                <span class="project-name">Ripple Client Portal</span>
-                <span class="login-required">(login required)</span>
-                <i class="fa fa-external-link" aria-hidden="true"></i>
-              </p>
-              <p class="project-summary">For financial institutions using Ripple's proprietary solutions to send money globally.</p>
-            </div><!--/.card-body-->
-          </a><!--/.card-->
-        </div><!--/.col-->
-
-        <div class="col m-2">
+        <div class="col">
           <a class="interledger-link card" href="https://interledger.org/" target="_blank">
             <div class="card-body">
               <p>
@@ -301,7 +276,9 @@
                 <span class="project-name">Interledger</span>
                 <i class="fa fa-external-link" aria-hidden="true"></i>
               </p>
-              <p class="project-summary">An open protocol suite for connecting all forms of digital money.</p>
+              <p class="project-summary">Interledger is an open protocol suite for sending payemnts across different ledgers.</p>
+              <p class="project-summary">Like routers on the Internet, connectors route packets of money across independent payment networks. The open architecture and minimal protocol enable interoperability for any value transfer system.</p>
+              <p class="project-summary">Interledger is not tied to any one company, blockchain, or currency.</p>
             </div><!--/.card-body-->
           </a><!--/.card-->
         </div><!--/.col-->
