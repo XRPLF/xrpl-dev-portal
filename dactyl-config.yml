@@ -493,7 +493,7 @@ pages:
 
 # Tutorials --------------------------------------------------------------------
 
-    -   md: tutorials/tutorials.md
+    -   name: Tutorials
         html: tutorials.html
         funnel: Docs
         doc_type: Tutorials
@@ -508,6 +508,7 @@ pages:
         doc_type: Tutorials
         category: Get Started
         template: template-landing-children.html
+        blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger.
         targets:
             - local
 
@@ -516,6 +517,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Get Started
+        blurb: Connect to the rippled API and get data about the shared ledger state.
         targets:
             - local
 
@@ -526,6 +528,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Get Started
+        blurb: Build an entry-level JavaScript application for querying the XRP Ledger.
         targets:
             - local
 
@@ -537,6 +540,7 @@ pages:
         doc_type: Tutorials
         category: Use Simple XRP Payments
         template: template-landing-children.html
+        blurb: Send and receive XRP Ledger transactions securely and robustly.
         targets:
             - local
 
@@ -547,6 +551,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Use Simple XRP Payments
+        blurb: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly.
         targets:
             - local
 
@@ -555,6 +560,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Use Simple XRP Payments
+        blurb: Replace a pending transaction if it gets stuck from paying too low a transaction cost.
         targets:
           - local
 
@@ -563,6 +569,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Use Simple XRP Payments
+        blurb: Find the results of previously-submitted transactions.
         targets:
           - local
 
@@ -614,6 +621,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         template: template-landing-children.html
+        blurb: Use advanced features like Escrow and Payment Channels to build applications on top of XRP.
         targets:
             - local
 
@@ -741,14 +749,16 @@ pages:
 
     # TODO: "Send a Cross-Currency Payment"
 
-    -   md: tutorials/manage-issued-currencies/manage-issued-currencies.md
-        html: manage-issued-currencies.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage Issued Currencies
-        template: template-landing-children.html
-        targets:
-            - local
+    ## This category commented out until DOC-1562 gets done
+    # -   md: tutorials/manage-issued-currencies/manage-issued-currencies.md
+    #     html: manage-issued-currencies.html
+    #     funnel: Docs
+    #     doc_type: Tutorials
+    #     category: Manage Issued Currencies
+    #     blurb: Use issued currencies for cross-currency payments, trading in the decentralized exchange, or as natively digital tokens.
+    #     template: template-landing-children.html
+    #     targets:
+    #         - local
 
     # TODO: Set up issuing/operational addresses, monitor changes to balances,
     # freeze, enable/disable rippling, set transfer fees, use auth'd trust lines
@@ -758,6 +768,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
+        blurb: Follow best practices for businesses that use the XRP Ledger, such as exchanges and gateways.
         template: template-landing-children.html
         targets:
             - local
@@ -785,6 +796,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
+        blurb: Build, install, and run the rippled server. Configure it to your use case and troubleshoot problems.
         template: template-landing-children.html
         targets:
             - local
@@ -862,8 +874,7 @@ pages:
             - local
 
     # TODO: troubleshoot rippled,
-    #  run a validator, run in stand-alone mode, set up private peers, run in
-    #  a cluster
+    #  run a validator, run in stand-alone mode, set up private peers
 
 # References -------------------------------------------------------------------
 
