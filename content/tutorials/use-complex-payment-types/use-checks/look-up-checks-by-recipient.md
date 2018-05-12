@@ -1,6 +1,6 @@
 # Look Up Checks by Recipient
 
-_Requires the [Checks Amendment](reference-amendments.html#checks)._
+_Requires the [Checks Amendment](known-amendments.html#checks)._
 
 This tutorial shows how to look up [Checks](checks.html) by their recipient. You may also want to [look up Checks by sender](tutorial-checks-lookup-by-sender.html).
 

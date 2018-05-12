@@ -615,13 +615,13 @@ pages:
 
     # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
 
-    -   md: tutorials/use-complex-payment-types/use-complex-payment-types.md
+    -   name: Use Complex Payment Types
         html: use-complex-payment-types.html
         funnel: Docs
         doc_type: Tutorials
         category: Use Complex Payment Types
         template: template-landing-children.html
-        blurb: Use advanced features like Escrow and Payment Channels to build applications on top of XRP.
+        blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger.
         targets:
             - local
 
