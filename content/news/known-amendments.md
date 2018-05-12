@@ -210,7 +210,7 @@ With this amendment, the new `STAmountCalcSwitchovers` code applies, which may c
 
 Adds tracking by destination account to [escrows](escrow.html). Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the [account_objects method][], excluding any pending escrows that were created before this amendment became enabled. This amendment also makes [EscrowCreate transactions][] appear in the destination's transaction history, as viewed with the [account_tx method][].
 
-With this amendment, new escrows are added to the [owner directories](directorynode.html) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](reference-ledger-format.html#escrow), indicating which page of the destination's owner directory contains the escrow.
+With this amendment, new escrows are added to the [owner directories](directorynode.html) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](escrow-object.html), indicating which page of the destination's owner directory contains the escrow.
 
 
 ## fix1528
