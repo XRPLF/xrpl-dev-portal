@@ -13,7 +13,7 @@
     <p class="in-this-doc card-header">Useful Background:</p>
     <div class="card-body">
       <div class="curated-links">
-        <ol>
+        <ul>
           {% for link in currentpage.useful_background %}
             {% set linkpage = pages|selectattr("html", "equalto", link)|first %}
             <li><a href="{{linkpage.html}}">{{linkpage.name}}</a></li>
