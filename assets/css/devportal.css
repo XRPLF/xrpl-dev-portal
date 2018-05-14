@@ -28,18 +28,11 @@ th {
 .navbar.fixed-top {
   font-weight: 400;
   border-bottom: 1px solid #C9CDD1;
-  padding: 0 5px;
 }
 
 .navbar-brand {
   text-decoration: none;
   white-space: pre;
-}
-
-.navbar .logo {
-  margin-right: 0.5em;
-  position: relative;
-  bottom: 3px;
 }
 
 .navbar .navbar-brand .brand-text {
@@ -925,9 +918,9 @@ a.current {
 
 .splash-head {
   background-color: #102b3e;
-  background-image: url("../img/home-bg-cubes.jpg");
+  background-image: url("../img/splash-map.svg");
   background-size: cover;
-  background-position: top center;
+  background-position: center center;
   color: white;
 }
 
