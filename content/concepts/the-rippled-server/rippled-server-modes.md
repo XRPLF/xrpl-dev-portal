@@ -1,9 +1,5 @@
 # rippled Server Modes
 
-`rippled` is the core peer-to-peer server that manages the XRP Ledger.
-
-## Types of rippled Servers
-
 The `rippled` server software can run in several modes depending on its configuration, including:
 
 * Stock server - follows the network with a local copy of the ledger.
@@ -11,6 +7,7 @@ The `rippled` server software can run in several modes depending on its configur
 * `rippled` server in stand-alone mode - for testing. Does not communicate to other `rippled` servers.
 
 You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](rippled-api.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
+
 
 ## Reasons to Run a Stock Server
 
@@ -34,6 +31,7 @@ The robustness of the XRP Ledger depends on an interconnected web of validators 
 Not all `rippled` servers need to be validators: trusting more servers from the same operator does not offer better protection against collusion. An organization might run validators in multiple regions for redundancy in case of natural disasters and other emergencies.
 
 If your organization runs a validating server, you may also run one or more stock servers, to balance the computing load of API access, or as a proxy between your validation server and the outside network.
+
 
 ### Properties of a Good Validator
 
