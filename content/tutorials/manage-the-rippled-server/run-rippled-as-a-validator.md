@@ -6,7 +6,7 @@ Running a `rippled` validator that participates in the Consensus process is simp
     * At first, your server is an _untrusted validator_. Others can see the validations your server issues, but they disregard them in the consensus process.
 2. Share the public key with the public, especially other `rippled` operators.
 3. When other `rippled` operators add your public key to their list of trusted servers, you have become a _trusted validator_.
-    * Also see [Properties of a Good Validator](the-rippled-server.html#properties-of-a-good-validator) for best practices.
+    * Also see [Properties of a Good Validator](rippled-server-modes.html#properties-of-a-good-validator) for best practices.
 
 
 ## Validator Setup
