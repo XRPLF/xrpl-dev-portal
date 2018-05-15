@@ -453,13 +453,22 @@ pages:
         targets:
           - local
 
-    -   md: concepts/the-rippled-server/the-rippled-server.md
+    -   name: The rippled Server
         html: the-rippled-server.html
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
         template: template-landing-children.html
         blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/rippled-server-modes.md
+        html: rippled-server-modes.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
         targets:
             - local
 
@@ -489,16 +498,6 @@ pages:
         blurb: The peer protocol specifies the language rippled servers speak to each other.
         targets:
             - local
-
-    -   md: concepts/the-rippled-server/stand-alone-mode.md
-        html: stand-alone-mode.html
-        funnel: Docs
-        doc_type: Concepts
-        category: The rippled Server
-        blurb: Stand-alone mode provides a way to test rippled servers without connecting to a network of peers.
-        targets:
-            - local
-
 
 # Tutorials --------------------------------------------------------------------
 

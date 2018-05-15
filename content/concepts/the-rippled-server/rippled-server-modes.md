@@ -1,6 +1,6 @@
-# The rippled Server
+# rippled Server Modes
 
-`rippled` is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the `rippled` server.
+`rippled` is the core peer-to-peer server that manages the XRP Ledger.
 
 ## Types of rippled Servers
 
@@ -49,3 +49,17 @@ There are several properties that define a good validator. The more of these pro
     * Setting up [Domain Verification](run-rippled-as-a-validator.html#domain-verification) is a good start.
 
 At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see the [XRPCharts Validator Registry](https://xrpcharts.ripple.com/#/validators).
+
+
+## Reasons to Run a `rippled` Server in Stand-Alone Mode
+
+You can run `rippled` in stand-alone mode without a consensus of trusted servers. In stand-alone mode, `rippled` does not communicate with any other servers in the XRP Ledger peer-to-peer network, but you can do most of the same actions on your local server only. Stand-alone provides a method for testing `rippled` behavior without being tied to the live network. For example, you can [test the effects of Amendments](amendments.html#testing-amendments) before those Amendments have gone into effect across the decentralized network.
+
+When you run `rippled` in stand-alone mode, you have to tell it what ledger version to start from:
+
+* Create a [new genesis ledger](start-a-new-genesis-ledger-in-stand-alone-mode.html) from scratch.
+* [Load an existing ledger version](load-a-saved-ledger-in-stand-alone-mode.html) from disk.
+
+**Caution:** In stand-alone mode, you must [manually advance the ledger](advance-the-ledger-in-stand-alone-mode.html).
+
+{% include '_snippets/rippled_versions.md' %}
