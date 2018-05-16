@@ -8,7 +8,7 @@ Each `rippled` server (not running in stand-alone mode) connects to a network of
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Understand what it means to run a validator](the-rippled-server.html#reasons-to-run-a-validator)
+## [Understand what it means to run a validator](rippled-server-modes.html#reasons-to-run-a-validator)
 
 If you or your organization relies on the XRP Ledger, it is in your interest to run a validator to participate in the consensus process and provide a trusted validator that supports the ongoing decentralization of the XRP Ledger.
 

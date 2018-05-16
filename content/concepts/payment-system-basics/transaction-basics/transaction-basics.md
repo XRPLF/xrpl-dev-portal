@@ -49,7 +49,7 @@ Sending a transaction to the XRP Ledger involves several steps:
 3. Submit a transaction to a `rippled` server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
 4. The [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) determines which provisional transactions get included in the next validated ledger.
 5. The `rippled` servers apply those transactions to the previous ledger in a canonical order and share their results.
-6. If enough [trusted validators](the-rippled-server.html#reasons-to-run-a-validator) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](transaction-results.html) in that ledger are immutable.
+6. If enough [trusted validators](rippled-server-modes.html#reasons-to-run-a-validator) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](transaction-results.html) in that ledger are immutable.
 
 
 ### Example Unsigned Transaction

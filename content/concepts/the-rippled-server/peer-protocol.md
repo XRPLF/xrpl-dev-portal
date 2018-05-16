@@ -160,7 +160,7 @@ Response:
 
 You can use the `[peer_private]` stanza of the `rippled` config file to request that peer servers do not report your IP address in the Peer Crawler response. Servers you do not control can be modified not to respect this setting. However, you can use this to hide the IP addresses of `rippled` servers you control that _only_ connect to peers you control (using `[ips_fixed]` and a firewall). In this way, you can use public rippled servers you control as proxies for your private rippled servers.
 
-To protect an important [validating server](the-rippled-server.html#types-of-rippled-servers), Ripple recommends configuring one or more public tracking servers to act as proxies, while the validating server is protected by a firewall and only connects to the public tracking servers.
+To protect an important [validating server](rippled-server-modes.html), Ripple recommends configuring one or more public tracking servers to act as proxies, while the validating server is protected by a firewall and only connects to the public tracking servers.
 
 <!--{# TODO: network diagram of private peers #}-->
 

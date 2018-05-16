@@ -1,7 +1,7 @@
 # validation_create
 [[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
 
-Use the `validation_create` command to generate the keys for a rippled [validator](the-rippled-server.html#reasons-to-run-a-validator). Similar to the [wallet_propose method][], this command makes no real changes, but only generates a set of keys in the proper format.
+Use the `validation_create` command to generate the keys for a rippled [validator](rippled-server-modes.html#reasons-to-run-a-validator). Similar to the [wallet_propose method][], this command makes no real changes, but only generates a set of keys in the proper format.
 
 _The `validation_create` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
