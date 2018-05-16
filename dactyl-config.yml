@@ -552,13 +552,13 @@ pages:
 
     # TODO: Get Started with API Tools
 
-    -   md: tutorials/use-simple-xrp-payments/use-simple-xrp-payments.md
+    -   name: Use Simple XRP Payments
         html: use-simple-xrp-payments.html
         funnel: Docs
         doc_type: Tutorials
         category: Use Simple XRP Payments
         template: template-landing-children.html
-        blurb: Send and receive XRP Ledger transactions securely and robustly.
+        blurb: Direct XRP payments from one account to another are the simplest way to transact in the XRP Ledger. This section includes tutorials for how to use simple transactions proficiently and robustly.
         targets:
             - local
 
