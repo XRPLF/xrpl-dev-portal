@@ -2151,14 +2151,26 @@ pages:
         targets:
             - local
 
-    -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md
+    -   name: Transaction Results
         html: transaction-results.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
-        blurb: All possible transaction result codes and their meanings.
+        blurb: Learn how to interpret rippled server transaction results.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results-overview.md
+        html: transaction-results-overview.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        blurb: Understand the difference between provisional and final results. Get an introduction to transaction result codes.
         targets:
             - local
 
@@ -2169,6 +2181,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        blurb: tec codes indicate that the transaction failed, but it was applied to a ledger to apply the transaction cost.
         targets:
             - local
 
@@ -2179,6 +2192,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        blurb: tef codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger.
         targets:
             - local
 
@@ -2189,6 +2203,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        blurb: tel codes indicate an error in the local server processing the transaction.
         targets:
             - local
 
@@ -2199,6 +2214,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        blurb: tem codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol.
         targets:
             - local
 
@@ -2209,6 +2225,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        blurb: ter codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first.
         targets:
             - local
 
@@ -2219,6 +2236,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
+        blurb: tesSUCCESS is the only code that indicates a transaction succeeded. This does not always mean it accomplished what you expected it to do.
         targets:
             - local
 
