@@ -652,13 +652,13 @@ pages:
         targets:
             - local
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/use-escrows.md
+    -   name: Use Escrows
         html: use-escrows.html
         funnel: Docs
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Escrows
-        blurb: The XRP Ledger supports held payments, or _escrows_, that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies. You can use these features to build publicly-provable smart contracts. This article explains basic tasks relating to held payments.
+        blurb: The XRP Ledger supports held payments, or escrows, that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies. You can use these features to build publicly-provable smart contracts. This sections explains basic tasks relating to held payments.
         template: template-landing-children.html
         targets:
             - local
@@ -669,6 +669,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Escrows
+        blurb: Create an escrow whose only condition for release is that a specific time has passed.
         targets:
             - local
 
@@ -678,6 +679,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Escrows
+        blurb: Create an escrow whose release is based on a condition being fulfilled.
         targets:
             - local
 
@@ -687,6 +689,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Escrows
+        blurb: Cancel an expired escrow.
         targets:
             - local
 
@@ -696,6 +699,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Escrows
+        blurb: Look up pending escrows by sender or destination address.
         targets:
             - local
 
