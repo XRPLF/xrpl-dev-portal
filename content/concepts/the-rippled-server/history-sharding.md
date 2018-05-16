@@ -40,7 +40,7 @@ max_size_gb=50
 
 **Tip:** While both validator and tracking (or stock) `rippled` servers can be configured to use history shard stores, Ripple recommends adding history sharding only for non-validator `rippled` servers to reduce overhead for validators. If you run a validator and want to manage ledger history using sharding, run a separate `rippled` server with sharding enabled.
 
-For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/ripple/rippled/blob/master/doc/rippled-example.cfg).
+For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg).
 
 ### Sizing the Shard Store
 Determining a suitable size for the shard store involves careful consideration. You should consider the following when deciding what size your shard store should be:
