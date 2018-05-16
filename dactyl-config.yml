@@ -245,7 +245,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Complex Payment Types
-        blurb: Checks let users to create deferred payments that can be canceled or cashed by the intended recipients.
+        blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients.
         targets:
             - local
 
