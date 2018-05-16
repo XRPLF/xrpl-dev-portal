@@ -794,12 +794,12 @@ pages:
     # TODO: Set up issuing/operational addresses, monitor changes to balances,
     # freeze, enable/disable rippling, set transfer fees, use auth'd trust lines
 
-    -   md: tutorials/xrp-ledger-businesses/xrp-ledger-businesses.md
+    -   name: XRP Ledger Businesses
         html: xrp-ledger-businesses.html
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: Follow best practices for businesses that use the XRP Ledger, such as exchanges and gateways.
+        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger.
         template: template-landing-children.html
         targets:
             - local
@@ -809,6 +809,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
+        blurb: Using a fictitious business called Alpha Exchange, this tutorial demonstrates the high-level steps required to list XRP.
         targets:
             - local
 
@@ -817,6 +818,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
+        blurb: Gateways are the businesses that link the XRP Ledger to the rest of the world. This tutorial demonstrates how an existing online financial institution can expand to act as a gateway in the the XRP Ledger.
         targets:
             - local
 
