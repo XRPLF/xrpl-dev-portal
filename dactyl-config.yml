@@ -276,13 +276,22 @@ pages:
         targets:
             - local
 
-    -   md: concepts/issued-currencies/issued-currencies.md
+    -   name: Issued Currencies
         html: issued-currencies.html
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
         template: template-landing-children.html
         blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger.
+        targets:
+            - local
+
+    -   md: concepts/issued-currencies/issued-currencies-overview.md
+        html: issued-currencies-overview.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Get an overview of issued currencies and their properties in the XRP Ledger.
         targets:
             - local
 
@@ -300,6 +309,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
+        blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies.
         targets:
             - local
 
