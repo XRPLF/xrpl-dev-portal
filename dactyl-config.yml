@@ -2169,7 +2169,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
-        blurb: tec codes indicate that the transaction failed, but it was applied to a ledger to apply the transaction cost.
+        blurb: tec codes indicate that the transaction failed, but it was applied to a ledger to deduct the transaction cost.
         targets:
             - local
 
