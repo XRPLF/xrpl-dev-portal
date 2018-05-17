@@ -189,6 +189,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/payment-system-basics/ledgers.md
+        html: ledgers.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers.
+        targets:
+            - local
+
     -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
         html: transaction-basics.html
         funnel: Docs
@@ -1769,7 +1778,7 @@ pages:
         targets:
           - local
 
-    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.md
+    -   name: Ledger Data Formats
         html: ledger-data-formats.html
         funnel: Docs
         doc_type: References
@@ -1797,7 +1806,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        template: template-landing-children.html #TODO: consider dropping the md since the page children handles this OK
+        # template: template-landing-children.html #TODO: consider dropping the md since the page children handles this OK
         blurb: Specifications for the types of objects that can be stored in a ledger's state tree.
         targets:
             - local
@@ -1809,7 +1818,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: The settings, XRP balance, and other metadata for one account.
+        # blurb: The settings, XRP balance, and other metadata for one account.
         targets:
             - local
 
@@ -1820,7 +1829,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Singleton object with status of enabled and pending amendments.
+        # blurb: Singleton object with status of enabled and pending amendments.
         targets:
             - local
 
@@ -1831,7 +1840,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: A check that can be redeemed for money by its destination.
+        # blurb: A check that can be redeemed for money by its destination.
         targets:
             - local
 
@@ -1842,7 +1851,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Contains links to other objects.
+        # blurb: Contains links to other objects.
         targets:
             - local
 
@@ -1853,7 +1862,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Contains XRP held for a conditional payment.
+        # blurb: Contains XRP held for a conditional payment.
         targets:
             - local
 
@@ -1864,7 +1873,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
+        # blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
         targets:
             - local
 
@@ -1875,7 +1884,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Lists of prior ledger versions' hashes for history lookup.
+        # blurb: Lists of prior ledger versions' hashes for history lookup.
         targets:
             - local
 
@@ -1886,7 +1895,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: An order to make a currency trade.
+        # blurb: An order to make a currency trade.
         targets:
             - local
 
@@ -1897,7 +1906,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: A channel for asynchronous XRP payments.
+        # blurb: A channel for asynchronous XRP payments.
         targets:
             - local
 
@@ -1908,7 +1917,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
+        # blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
         targets:
             - local
 
@@ -1919,7 +1928,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: A list of addresses for multi-signing transactions.
+        # blurb: A list of addresses for multi-signing transactions.
         targets:
             - local
 
