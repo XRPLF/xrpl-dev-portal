@@ -42,10 +42,12 @@
                   <li><a href="data-api.html">Data API</a></li>
                 </ul>
               </div><!--/.curated-links-->
+            </div><!--/.card-body-->
+            <div class="card-footer">
               <div class="readmore">
                 <a href="references.html" class="btn btn-secondary">View All References <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
               </div>
-            </div><!--/.card-body-->
+            </div><!--/.card-footer-->
           </div><!--/.card-->
 
           <div class="card">
@@ -71,10 +73,12 @@
               {% set parent_page = pages|selectattr("name", "equalto", "Use Cases")|first %}
               {% set depth = 1 %}
               {% include 'template-page-children.html' %}
+            </div><!--/.card-body-->
+            <div class="card-footer">
               <div class="readmore">
                 <a href="use-cases.html" class="btn btn-secondary">View All Use Cases <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
               </div>
-            </div><!--/.card-body-->
+            </div><!--/.card-footer-->
           </div><!--/.card-->
 
         </div><!--/.card-deck-->
