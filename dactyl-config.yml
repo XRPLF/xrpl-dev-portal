@@ -1025,7 +1025,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
-        template: template-landing-children.html
+        # template: template-landing-children.html
         targets:
             - local
 
@@ -1036,8 +1036,8 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
-        # blurb: An Account in the XRP Ledger represents a holder of XRP and a sender of transactions. Accounts can send and receive XRP and issued assets, participate in the decentralized exchange, and change their own settings. Creating an account involves generating keys and then receiving XRP from another account.
         template: template-landing-children.html
+        blurb: An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info.
         targets:
             - local
 
@@ -1147,7 +1147,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
-        # blurb: Each rippled server keeps a complete copy of the XRP Ledger's current state, which contains all the accounts, transactions, offers, and other data in the network in an optimized tree format. As transactions and offers are proposed, each server incorporates them into its current copy of the ledger, closes it periodically, and (if configured) participates in advancing the globally-validated version. After the network reaches consensus, that ledger version is validated and becomes permanently immutable. Any transactions that were not included in one ledger version become candidates to be included in the next validated version.
+        blurb: A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info.
         template: template-landing-children.html
         targets:
             - local
@@ -1215,7 +1215,7 @@ pages:
         category: Public rippled Methods
         subcategory: Transaction Methods
         template: template-landing-children.html
-        # blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions, which include not only payments, but also currency-exchange offers, account settings, and changes to the properties of the ledger itself (like adopting new features).
+        blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions.
         targets:
             - local
 
@@ -1303,7 +1303,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Path and Order Book Methods
-        # blurb: In the XRP Ledger, paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books.
+        blurb: Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.
         template: template-landing-children.html
         targets:
             - local
@@ -1348,7 +1348,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Payment Channel Methods
-        # blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Learn about methods that work on payment channels.
+        blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels.
         template: template-landing-children.html
         targets:
             - local
@@ -1382,7 +1382,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Subscription Methods
-        # blurb: Using subscriptions, you can have the server push updates to your client when various events happen, so that you can know and react right away. Subscriptions are only supported in the WebSocket API, where you can receive additional responses in the same channel. JSON-RPC support for subscription callbacks is deprecated and may not work as expected.
+        blurb: Use these methods to enable the server to push updates to your client when various events happen, so that you can know and react right away. WebSocket API only.
         template: template-landing-children.html
         targets:
             - local
@@ -1416,7 +1416,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Server Info Methods
-        # blurb: Learn about methods that enable you to retrieve information about the current state of the rippled server. These may be useful for monitoring the health of the server, or in preparing to make requests to other API methods.
+        blurb: Use these methods to retrieve information about the current state of the rippled server.
         template: template-landing-children.html
         targets:
             - local
@@ -1461,7 +1461,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Utility Methods
-        # blurb: Learn about methods that provide convenient functions, such as ping and a random number generator.
+        blurb: Use these methods to perform convenient tasks, such as ping and random number generation.
         template: template-landing-children.html
         targets:
             - local
