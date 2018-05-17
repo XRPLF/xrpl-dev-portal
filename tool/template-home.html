@@ -28,9 +28,9 @@
   </section>
 
   <section class="container-fluid py-3 p-sm-4 bg-white" id="home_first_shortcuts">
-      <div class="card-deck mb-4">
+      <div class="card-deck">
 
-          <div class="card mr-xl-5">
+          <div class="card">
             <div class="card-header bg-dark">
               <h3 class="card-title"><img class="card-title-icon" src="assets/img/reference-book.svg" alt="(reference book icon)" width="32" height="32" /> Go to the References</h3>
             </div><!--/.card-header-->
@@ -42,11 +42,13 @@
                   <li><a href="data-api.html">Data API</a></li>
                 </ul>
               </div><!--/.curated-links-->
-              <a href="references.html" class="btn btn-secondary">View All References <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              <div class="readmore">
+                <a href="references.html" class="btn btn-secondary">View All References <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
             </div><!--/.card-body-->
           </div><!--/.card-->
 
-          <div class="card mr-xl-5">
+          <div class="card">
             <div class="card-header bg-dark">
               <h3 class="card-title"><img class="card-title-icon" src="assets/img/airplane.svg" alt="(airplane icon)" width="32" height="32" /> Get Started</h3>
             </div><!--/.card-header-->
@@ -69,7 +71,9 @@
               {% set parent_page = pages|selectattr("name", "equalto", "Use Cases")|first %}
               {% set depth = 1 %}
               {% include 'template-page-children.html' %}
-              <a href="use-cases.html" class="btn btn-secondary">View All Use Cases <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              <div class="readmore">
+                <a href="use-cases.html" class="btn btn-secondary">View All Use Cases <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
             </div><!--/.card-body-->
           </div><!--/.card-->
 
@@ -121,7 +125,7 @@
 
       <div class="container">
 
-        <div class="card-deck mb-4">
+        <div class="card-deck">
 
             <a href="xrp-ledger-overview.html#the-best-digital-asset" class="card m-3">
               <img class="card-img-top" src="assets/img/payment-card.svg" alt="(XRP triskellion)" />
@@ -210,7 +214,7 @@
       </div>
 
       <div class="container">
-        <div class="row card-deck mb-4 p-xl-5">
+        <div class="row card-deck mx-4 mt-4 mb-0">
 
           <div class="card">
             <div class="card-header">
@@ -270,11 +274,10 @@
         <div class="col">
           <a class="interledger-link card" href="https://interledger.org/" target="_blank">
             <div class="card-body">
-              <p>
-                <img class="project-icon" src="assets/img/ilp_logo.svg" />
-                <span class="project-name">Interledger</span>
+              <img class="project-icon" src="assets/img/ilp_logo.svg" />
+              <h3 class="card-title">Interledger
                 <i class="fa fa-external-link" aria-hidden="true"></i>
-              </p>
+              </h3>
               <p class="project-summary">Interledger is an open protocol suite for sending payemnts across different ledgers.</p>
               <p class="project-summary">Like routers on the Internet, connectors route packets of money across independent payment networks. The open architecture and minimal protocol enable interoperability for any value transfer system.</p>
               <p class="project-summary">Interledger is not tied to any one company, blockchain, or currency.</p>
