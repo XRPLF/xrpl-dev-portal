@@ -1,4 +1,4 @@
-# Transaction Results Overview
+# Transaction Results
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/TER.h "Source")
 
