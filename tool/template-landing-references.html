@@ -3,38 +3,38 @@
 {% block mainclasses %}landing{% endblock %}
 
 {% block main %}
-  <section class="container-fluid bg-white p-3 px-sm-5">
-      <h1 class="main-page-header">References</h1>
-      <p class="blurb">{{currentpage.blurb}}</p>
+  <section class="container-fluid bg-white p-3 px-sm-4 pb-sm-4">
+    <h1 class="main-page-header">References</h1>
+    <p class="blurb">{{currentpage.blurb}}</p>
   </section>
 
-  <section class="container-fluid bg-light p-3 px-sm-5">
-
+  <section class="container-fluid bg-light p-3 px-sm-4 pb-sm-4">
     <h2><a href="rippled-api.html">rippled API Reference</a></h2>
-    <div class="blurb">
-      <p>Use the <code>rippled</code> API to communicate with a <code>rippled</code> server, the core peer-to-peer server that manages the XRP Ledger.</p>
-    </div>
-
-      <div class="card-deck p-2">
-
+    <p class="blurb">Use the <code>rippled</code> API to communicate with a <code>rippled</code> server, the core peer-to-peer server that manages the XRP Ledger.</p>
+      <div class="card-deck pt-3 pt-sm-4">
         {% for page in pages|selectattr("supercategory", "equalto", "rippled API")|list %}
         {% if loop.index != 1 and page == pages|selectattr("category", "equalto", page.category)|first %}
           <div class="card">
             <div class="card-header bg-dark">
-              <h3 class="card-title"><a href="{{page.html}}">{{page.name}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a></h3>
+              <h3 class="card-title">{{page.name}}</h3>
             </div><!--/.card-header-->
             <div class="card-body">
-              <p class="ref-blurb">{{page.blurb}}</p>
+              <p class="blurb">{{page.blurb}}</p>
               {% set depth = 1 %}
               {% set parent_page = page %}
               {% include 'template-page-children.html' %}
             </div><!--/.card-body-->
+            <div class="card-footer">
+              <div class="readmore">
+                <a class="btn btn-secondary" href="{{page.html}}">View All {{page.name}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div><!--/.card-footer-->
           </div><!--/.card-->
 
           {# go to new row after admin methods #}
           {% if page.html == "admin-rippled-methods.html" %}
       </div><!--/.card-deck-->
-      <div class="card-deck p-2">
+      <div class="card-deck pt-3 pt-sm-4">
           {% endif %}
         {% endif %}
         {% endfor %}
@@ -43,13 +43,11 @@
 
   </section>
 
-  <section class="container-fluid bg-white p-5">
+  <section class="container-fluid bg-white p-3 px-sm-4 pb-sm-4">
 
     <h2>Other XRP Ledger Interfaces</h2>
-    <div class="blurb col-sm-12">
-      <p>Here are a few other ways to interact with the XRP Ledger.</p>
-    </div>
-    <div class="card-deck p-2">
+    <p class="blurb">Here are a few other ways to interact with the XRP Ledger.</p>
+    <div class="card-deck pt-3 pt-sm-4">
 
       {% for page in pages|selectattr("doc_type", "equalto", "References")|selectattr("supercategory", "ne", "rippled API") %}
         {% if loop.index != 1 and page == pages|selectattr("category", "equalto", page.category)|first %}
@@ -58,7 +56,7 @@
               <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
             </div><!--/.card-header-->
             <div class="card-body">
-              <p class="ref-blurb">{{page.blurb}}</p>
+              <p class="blurb">{{page.blurb}}</p>
               {% if page.curated_anchors is defined %}
                 <div class="curated-links">
                   <ul>
