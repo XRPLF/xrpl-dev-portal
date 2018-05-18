@@ -23,12 +23,11 @@ As its name might suggest, a ledger's state tree is a tree data structure. Each 
 
 In the case of transactions, the identifying hash is based on the signed transaction instructions, but the contents of the transaction object when you look it up also contain the results and metadata of the transaction, which are not taken into account when generating the hash.
 
-## Object IDs
-<a id="sha512half"></a>
 
-All objects in a ledger' state tree have a unique ID. This field is returned as the `index` field in JSON, at the same level as the object's contents. The ID is derived by hashing important contents of the object, along with a [namespace identifier](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/LedgerFormats.h#L97). The ledger object type determines which namespace identifier to use and which contents to include in the hash. This ensures every ID is unique. To calculate the hash, `rippled` uses SHA-512 and then truncates the result to the first 256 bytes. This algorithm, informally called **SHA-512Half**, provides an output that has comparable security to SHA-256, but runs faster on 64-bit processors.
+## See Also
 
-![Diagram: rippled uses SHA-512Half to generate IDs for ledger objects. The space key prevents IDs for different object types from colliding.](img/ledger-indexes.png)
+For more information about ledger headers, ledger object IDs, and ledger object types, see [Ledger Data Formats](ledger-data-formats.html)
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
