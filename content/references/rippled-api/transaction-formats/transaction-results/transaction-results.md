@@ -6,12 +6,12 @@ The `rippled` server summarizes transaction results with result codes, which app
 
 | Category              | Prefix                  | Description                |
 |:----------------------|:------------------------|:---------------------------|
+| Claimed cost only     | [tec](tec-codes.html)   | The transaction did not achieve its intended purpose, but the [transaction cost](transaction-cost.html) was destroyed. This result is only final in a validated ledger. |
+| Failure               | [tef](tef-codes.html)   | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or the condition of the ledger makes it impossible to apply in the future. |
 | Local error           | [tel](tel-codes.html)   | The `rippled` server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
 | Malformed transaction | [tem](tem-codes.html)   | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
-| Failure               | [tef](tef-codes.html)   | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or the condition of the ledger makes it impossible to apply in the future. |
 | Retry                 | [ter](ter-codes.html)   | The transaction could not be applied, but it might be possible to apply later. |
 | Success               | [tes](tes-success.html) | (Not an error) The transaction succeeded. This result only final in a validated ledger. |
-| Claimed cost only     | [tec](tec-codes.html)   | The transaction did not achieve its intended purpose, but the [transaction cost](transaction-cost.html) was destroyed. This result is only final in a validated ledger. |
 
 **Warning:** Transactions' provisional result codes may differ than their final result. Transactions that provisionally succeeded may eventually fail and transactions that provisionally failed may eventually succeed. Transactions that provisionally failed may also eventually fail with a different code. See [finality of results](finality-of-results.html) for how to know when a transaction's result is final.
 
