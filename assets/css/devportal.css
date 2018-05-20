@@ -182,6 +182,7 @@ th {
 
 .content table {
   clear: right;
+  margin-bottom: 1rem;
 }
 
 /* Big draft warning at top of page so it's hard to mix up with the live site */
@@ -228,7 +229,6 @@ th {
   color: #ffffff;
   letter-spacing: .04em;
   text-decoration: none;
-  font-weight: 300;
   padding-bottom: 0.5rem;
 }
 .ripple-footer h5 a:hover {
@@ -306,6 +306,10 @@ th {
 }
 
 /* Button styling ----------------------------------------------------------- */
+
+p + .readmore {
+  margin-top: 12px;
+}
 
 .readmore .btn {
   font-size: 18px;
@@ -436,7 +440,7 @@ a.current {
 .curated-links ol,
 .children-display ul {
   padding-left: 0;
-  margin-bottom: 4px;
+  margin-bottom: 0;
 }
 
 .level-1,
@@ -797,6 +801,11 @@ a.current {
 
 /* Landing Pages ------------------------------------------------------------ */
 
+.landing p {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
 .landing h2 {
   font-weight: bold;
   line-height: 40px;
@@ -810,7 +819,7 @@ a.current {
   font-weight: 700;
 }
 
-.card-header.bg-dark h3.card-title {
+.card-header h3.card-title {
   margin-bottom: 0;
 }
 
@@ -851,14 +860,14 @@ a.current {
 }
 
 .landing .card-header {
-  padding: 16px;
-}
-
-.landing .card-header:not(.bg-dark) + .card-body {
-  padding: 0 12px 12px 12px;
+  padding: 12px;
 }
 
 .landing .card-footer {
+  padding: 0 12px 12px 12px;
+}
+
+.landing .card-header + .card-body {
   padding: 0 12px 12px 12px;
 }
 
@@ -870,6 +879,11 @@ a.current {
   transition: 0.5s;
 }
 
+.landing .card-body > p {
+  padding: 0;
+  font-size: 18px;
+}
+
 .card-header.bg-dark {
   color: white;
 }
@@ -879,8 +893,7 @@ a.current {
   color: #FF9900;
 }
 
-.landing .card .blurb,
-.child-blurb {
+.landing .card .blurb {
   margin-top: 1rem;
 }
 
@@ -905,10 +918,6 @@ a.current {
   padding: 1px;
 }
 
-.landing .curated-links li:first-child {
-  margin-top: 5px;
-}
-
 .recently-updated-date {
   font-style: italic;
   color: #6B7075;
@@ -922,6 +931,7 @@ a.current {
   background-size: cover;
   background-position: center center;
   color: white;
+  line-height: 38px;
 }
 
 .splash-head h1 {
@@ -929,9 +939,8 @@ a.current {
 }
 
 .splash-head p {
-  font-size: 18px;
-  font-weight: 300;
   text-shadow: 0px 1px 2px #171C21;
+  margin-bottom: 0;
 }
 
 .splash-head p .btn {
