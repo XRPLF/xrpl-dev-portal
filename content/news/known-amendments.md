@@ -264,9 +264,13 @@ Updates Escrow transactions so you can't make escrows that can be finished uncon
 |:-----------------------------------------------------------------|:----------|
 | 58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F | Planned   |
 
-Adds the `delivered_amount` field to Checks metadata. (Has no effect unless the [Checks](#checks) amendment is enabled.)
+Adds delivered amount to metadata for CheckCash transactions cashed for a flexible amount. (Has no effect unless the [Checks](#checks) amendment is enabled.)
 
-***TODO: More specifics***
+With this amendment enabled, transaction processing adds a `DeliveredAmount` field added to the metadata of [CheckCash transactions][] for a variable amount (using the `DeliverMin` field). This change is written to the ledger data, resulting in a different ledger hash than would result from processing the transaction without this amendment. It does not affect the actual amounts delivered. Additionally, with this amendment enabled, the [tx method][] and [account_tx method][] return a [`delivered_amount` field](transaction-metadata.html#delivered-amount) for CheckCash transactions. (The `delivered_amount` field is calculated when you look up a transaction, and is not part of the data that is written to the ledger.)
+
+The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed amount (using the `Amount` field) or any other transaction types.
+
+**Caution:** In `rippled` 1.0.0, if the Checks amendment is enabled before the fix1623 amendment, the `delivered_amount` may display as "0" for variable-amount CheckCash transactions from before this amendment was enabled, even if the transaction delivered a nonzero amount. Ripple plans to enable fix1623 at the same time as the [Checks][] amendment on the production network, but this situation may be possible on [parallel networks](parallel-networks.html).
 
 
 ## Flow
