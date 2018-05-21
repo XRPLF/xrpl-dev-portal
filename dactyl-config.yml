@@ -923,7 +923,7 @@ pages:
 
     # rippled API --------------------------------------------------------------
 
-    -   md: references/rippled-api/rippled-api.md
+    -   name: rippled API Reference
         html: rippled-api.html
         funnel: Docs
         doc_type: References
