@@ -189,6 +189,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/payment-system-basics/ledgers.md
+        html: ledgers.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers.
+        targets:
+            - local
+
     -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
         html: transaction-basics.html
         funnel: Docs
@@ -1768,7 +1777,7 @@ pages:
         targets:
           - local
 
-    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.md
+    -   name: Ledger Data Formats
         html: ledger-data-formats.html
         funnel: Docs
         doc_type: References
@@ -1789,7 +1798,17 @@ pages:
         targets:
             - local
 
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledger-object-types.md
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.md
+        html: ledger-object-ids.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        blurb: All objects in a ledger's state tree have a unique ID.
+        targets:
+            - local
+
+    -   name: Ledger Object Types
         html: ledger-object-types.html
         funnel: Docs
         doc_type: References
@@ -1797,7 +1816,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         template: template-landing-children.html #TODO: consider dropping the md since the page children handles this OK
-        blurb: Specifications for the types of objects that can be stored in a ledger's state tree.
+        blurb: Each ledger's state tree consists of a set of ledger objects, which collectively represent all settings, balances, and relationships in the shared ledger. In the peer protocol that rippled servers use to communicate with each other, ledger objects are represented in their raw binary format. In the rippled API, ledger objects are represented as JSON objects.
         targets:
             - local
 

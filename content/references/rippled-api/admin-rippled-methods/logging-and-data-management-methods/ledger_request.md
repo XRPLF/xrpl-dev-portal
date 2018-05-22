@@ -164,9 +164,9 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 |:----------------------------|:-----------------|:----------------------------|
 | `hash`                      | String           | (May be omitted) The [Hash][] of the requested ledger, if the server knows it. |
 | `have_header`               | Boolean          | Whether the server has the header section of the requested ledger. |
-| `have_state`                | Boolean          | (May be omitted) Whether the server has the [account-state section](ledger-data-formats.html#tree-format) of the requested ledger. |
+| `have_state`                | Boolean          | (May be omitted) Whether the server has the [account-state section](ledgers.html#tree-format) of the requested ledger. |
 | `have_transactions`         | Boolean          | (May be omitted) Whether the server has the transaction section of the requested ledger. |
-| `needed_state_hashes`       | Array of Strings | (May be omitted) Up to 16 hashes of objects in the [state tree](ledger-data-formats.html#tree-format) that the server still needs to retrieve. |
+| `needed_state_hashes`       | Array of Strings | (May be omitted) Up to 16 hashes of objects in the [state tree](ledgers.html#tree-format) that the server still needs to retrieve. |
 | `needed_transaction_hashes` | Array of Strings | (May be omitted) Up to 16 hashes of objects in the transaction tree that the server still needs to retrieve. |
 | `peers`                     | Number           | How many peers the server is querying to find this ledger. |
 | `timeouts`                  | Number           | Number of times fetching this ledger has timed out so far. |
