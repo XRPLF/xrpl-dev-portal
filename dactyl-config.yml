@@ -1025,7 +1025,6 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
-        # template: template-landing-children.html
         targets:
             - local
 
