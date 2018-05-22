@@ -252,9 +252,10 @@ The affected transaction types are:
 |:-----------------------------------------------------------------|:----------|
 | 7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C | Planned   |
 
-Updates Escrow transactions so you can't make escrows that can be finished unconditionally by anyone right away.
+Changes Escrow to fix the following issues:
 
-***TODO: More specifics***
+- Changes the [EscrowCreate transaction][] to require the `Condition` or `FinishAfter` field (or both). Escrows with neither `Condition` nor `FinishAfter` that were created before this amendment can be finished by anyone at any time before their `CancelAfter` time.
+- Fixes a flaw that incorrectly prevents time-based Escrows from being finished in some circumstances.
 
 
 ## fix1623
