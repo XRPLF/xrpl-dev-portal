@@ -183,6 +183,11 @@ th {
 .content table {
   clear: right;
   margin-bottom: 1rem;
+  font-size: 15px;
+}
+
+.content table code {
+  word-break: normal;
 }
 
 /* Big draft warning at top of page so it's hard to mix up with the live site */
