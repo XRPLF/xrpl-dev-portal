@@ -45,12 +45,14 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: transaction-common-fields.html
+              date: 2018-05-23
+            - html: escrowcreate.html
+              date: 2018-05-23
+            - html: known-amendments.html
+              date: 2018-05-23
             - html: technical-faq.html
               date: 2018-05-11
-            - html: cross-currency-payments.html
-              date: 2018-05-10
-            - html: capacity-planning.html
-              date: 2018-05-04
 
 pages:
 
