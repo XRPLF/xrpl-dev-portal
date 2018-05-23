@@ -52,7 +52,7 @@ The [`Paths` field](payment.html#paths) of the [Payment transaction][] type can 
 
 The `Flags` field can contain various options that affect how a transaction should behave. The options are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.
 
-To check whether a transaction has a given flag enabled, use a bitwise-and operation comparing the flag's value to the `Flags` field; result of zero indicates the flag is disabled, and a result equal to the flag value indicates the flag is enabled. (Any other result indicates you performed the wrong operation.)
+To check whether a transaction has a given flag enabled, use the bitwise-and operator on the flag's value and the `Flags` field. A result of zero indicates the flag is disabled, and a result equal to the flag value indicates the flag is enabled. (Any other result indicates you performed the wrong operation.)
 
 Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the `TransactionType` field when setting and reading flags.
 
@@ -72,7 +72,7 @@ When using the [sign method][] (or [submit method][] in "sign-and-submit" mode),
 
 ### Flag Ranges
 
-The `Flags` field can contain flags that apply at different levels or contexts. Flags for each context are limited to the following ranges:
+A transaction's `Flags` field can contain flags that apply at different levels or contexts. Flags for each context are limited to the following ranges:
 
 | Range Name       | Bit Mask     | Description                                |
 |:-----------------|:-------------|:-------------------------------------------|
@@ -80,7 +80,7 @@ The `Flags` field can contain flags that apply at different levels or contexts. 
 | Type-based Flags | `0x00ff0000` | Flags with different meanings depending on the [transaction type](transaction-types.html) that uses them. |
 | Reserved Flags   | `0x0000ffff` | Flags that are not currently defined. A transaction is only valid if these flags are disabled. |
 
-**Note:** The [AccountSet transaction][] type has [its own non-bitwise flags](accountset.html#accountset-flags), which serve a similar purpose to type-based flags.
+**Note:** The [AccountSet transaction][] type has [its own non-bitwise flags](accountset.html#accountset-flags), which serve a similar purpose to type-based flags. [Ledger objects](ledger-object-types.html) also have a `Flags` field with different bitwise flag definitions.
 
 
 ## Memos Field
