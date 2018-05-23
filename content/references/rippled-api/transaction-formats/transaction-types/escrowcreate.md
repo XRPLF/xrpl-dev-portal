@@ -35,7 +35,9 @@ Sequester XRP until the escrow process either finishes or is canceled.
 | `Condition`      | String    | VariableLength    | _(Optional)_ Hex value representing a [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1). The funds can only be delivered to the recipient if this condition is fulfilled. |
 | `DestinationTag` | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the destination for this escrowed payment, such as a hosted recipient at the destination address. |
 
-Either `CancelAfter` or `FinishAfter` must be specified. If both are included, the `FinishAfter` time must precede that of `CancelAfter`.
+Either `CancelAfter` or `FinishAfter` must be specified. If both are included, the `FinishAfter` time must be before the `CancelAfter` time.
+
+With the [fix1571 amendment](known-amendments.html#fix1571) enabled, you must supply `FinishAfter`, `Condition`, or both. [New in: rippled 1.0.0][]
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
