@@ -1515,7 +1515,6 @@ pages:
         supercategory: rippled API
         category: Admin rippled Methods
         blurb: Administer a rippled server with these admin API methods.
-        template: template-landing-children.html
         targets:
             - local
 
@@ -1621,7 +1620,7 @@ pages:
           - local
 
     -   name: Server Control Methods
-        html: server-and-control-methods.html
+        html: server-control-methods.html
         blurb: Use these methods to manage the rippled server.
         funnel: Docs
         doc_type: References
