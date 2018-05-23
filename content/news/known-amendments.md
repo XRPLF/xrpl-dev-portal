@@ -5,11 +5,14 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                      | Introduced | Status                              |
 |:--------------------------|:-----------|:------------------------------------|
+| [fix1543][]               | v1.0.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [fix1571][]               | v1.0.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [fix1623][]               | v1.0.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Checks][]                | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [SHAMapV2][]              | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][] | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]          | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [SHAMapV2][]              | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]               | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [DepositAuth][]           | v0.90.0    | [Enabled: 2018-04-06](https://xrpcharts.ripple.com/#/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25 "BADGE_GREEN") |
 | [fix1513][]               | v0.90.0    | [Enabled: 2018-04-06](https://xrpcharts.ripple.com/#/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B "BADGE_GREEN") |
@@ -39,7 +42,7 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | Planned |
+| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | Planned   |
 
 Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.
 
@@ -48,7 +51,6 @@ The sender or the receiver can cancel a Check at any time before it is cashed. A
 Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash, and a new ledger object type, Check. Adds a new transaction result code, `tecEXPIRED`, which occurs when trying to create a Check whose expiration time is in the past.
 
 This amendment also changes the OfferCreate transaction to return `tecEXPIRED` when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns `tesSUCCESS` but does not create or execute an Offer.
-
 
 
 ## CryptoConditions
@@ -225,6 +227,53 @@ Fixes a bug where validators could build consensus ledgers with different timest
 This amendment changes how validators negotiate the close time of the consensus ledger so that they cannot reach a consensus on ledger contents but build ledger versions with different timestamps.
 
 
+## fix1543
+[fix1543]: #fix1543
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2 | Planned   |
+
+Enforces reserved flag ranges on some transaction types that did not correctly enforce them already. Transactions of the affected types are now considered invalid if they enable undefined or unknown flags, or flags from the reserved range. (Transactions unaffected by this change already correctly enforce the same rules.)
+
+Without this amendment, transactions of certain types are considered valid even when they have undefined or reserved flags enabled.
+
+The affected transaction types are:
+
+- Escrow transactions: [EscrowCancel][], [EscrowCreate][], and [EscrowFinish][]
+- Payment Channel transactions: [PaymentChannelClaim][], [PaymentChannelClaim][], and [PaymentChannelCreate][]
+- Ticket transactions: `CancelTicket` and `CreateTicket` (from the in-development [Tickets](#tickets) amendment)
+
+
+## fix1571
+[fix1571]: #fix1571
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C | Planned   |
+
+Changes Escrow to fix the following issues:
+
+- Changes the [EscrowCreate transaction][] to require the `Condition` or `FinishAfter` field (or both). Escrows with neither `Condition` nor `FinishAfter` that were created before this amendment can be finished by anyone at any time before their `CancelAfter` time.
+- Fixes a flaw that incorrectly prevents time-based Escrows from being finished in some circumstances.
+
+
+## fix1623
+[fix1623]: #fix1623
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F | Planned   |
+
+Adds delivered amount to metadata for CheckCash transactions cashed for a flexible amount. (Has no effect unless the [Checks](#checks) amendment is enabled.)
+
+With this amendment enabled, transaction processing adds a `DeliveredAmount` field to the metadata of [CheckCash transactions][] for a variable amount (using the `DeliverMin` field). This change is written to the ledger data, resulting in a different ledger hash than would result from processing the transaction without this amendment. It does not affect the actual amounts delivered. Additionally, with this amendment enabled, the [tx method][] and [account_tx method][] return a [`delivered_amount` field](transaction-metadata.html#delivered-amount) for CheckCash transactions. (The `delivered_amount` field is calculated when you look up a transaction, and is not part of the data that is written to the ledger.)
+
+The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed amount (using the `Amount` field) or any other transaction types.
+
+**Caution:** In `rippled` 1.0.0, if the Checks amendment is enabled before the fix1623 amendment, the `delivered_amount` may display as "0" for variable-amount CheckCash transactions from before this amendment was enabled, even if the transaction delivered a nonzero amount. Ripple plans to enable fix1623 at the same time as the [Checks][] amendment on the production network, but this situation may be possible on [parallel networks](parallel-networks.html).
+
+
 ## Flow
 [Flow]: #flow
 
@@ -384,6 +433,6 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
