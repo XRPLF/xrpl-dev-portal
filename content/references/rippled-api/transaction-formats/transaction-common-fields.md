@@ -74,11 +74,11 @@ When using the [sign method][] (or [submit method][] in "sign-and-submit" mode),
 
 The `Flags` field can contain flags that apply at different levels or contexts. Flags for each context are limited to the following ranges:
 
-| Range Name | Bit Mask | Description |
-|--|---|---|
-| Universal Flags | `0xff000000` | Flags that apply equally to all transaction types. |
+| Range Name       | Bit Mask     | Description                                |
+|:-----------------|:-------------|:-------------------------------------------|
+| Universal Flags  | `0xff000000` | Flags that apply equally to all transaction types. |
 | Type-based Flags | `0x00ff0000` | Flags with different meanings depending on the [transaction type](transaction-types.html) that uses them. |
-| Reserved Flags | `0x0000ffff` | Flags that are not currently defined. A transaction is only valid if these flags are disabled. |
+| Reserved Flags   | `0x0000ffff` | Flags that are not currently defined. A transaction is only valid if these flags are disabled. |
 
 **Note:** The [AccountSet transaction][] type has [its own non-bitwise flags](accountset.html#accountset-flags), which serve a similar purpose to type-based flags.
 
