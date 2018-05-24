@@ -24,6 +24,7 @@ The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](
 [v2.1.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.1.0
 [v2.2.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0
 [v2.3.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.0
+[v2.3.2]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.2
 
 
 # API Method Reference
@@ -46,6 +47,7 @@ Ledger Contents Methods:
 * [Get Exchange Volume - `GET /v2/network/exchange_volume`](#get-exchange-volume)
 * [Get Payment Volume - `GET /v2/network/payment_volume`](#get-payment-volume)
 * [Get Issued Value - `GET /v2/network/issued_value`](#get-issued-value)
+* [Get External Markets - `GET /v2/network/external_markets`](#get-external-markets)
 * [Get XRP Distribution - `GET /v2/network/xrp_distribution`](#get-xrp-distribution)
 * [Get Top Currencies - `GET /v2/network/top_currencies`](#get-top-currencies)
 * [Get Top Markets - `GET /v2/network/top_markets`](#get-top-markets)
@@ -67,7 +69,6 @@ Account Methods:
 
 External Information Methods:
 
-* [Get rippled Versions - `GET /v2/network/rippled_versions`](#get-rippled-versions)
 * [Get All Gateways - `GET /v2/gateways`](#get-all-gateways)
 * [Get Gateway - `GET /v2/gateways/{:gateway}`](#get-gateway)
 * [Get Currency Image - `GET /v2/currencies/{:currencyimage}`](#get-currency-image)
@@ -75,6 +76,7 @@ External Information Methods:
 Validation Network Methods:
 
 * [Get Transaction Costs - `GET /v2/network/fees`](#get-transaction-costs)
+* [Get Fee Stats - `GET /v2/network/fee_stats`](#get-fee-stats)
 * [Get Ledger Validations - `GET /v2/ledger/{:hash}/validations`](#get-ledger-validations)
 * [Get Ledger Validation - `GET /v2/ledger/{:hash}/validations/{:pubkey}`](#get-ledger-validation)
 * [Get Topology - `GET /v2/network/topology`](#get-topology)
@@ -87,6 +89,7 @@ Validation Network Methods:
 * [Get Validator Validations - `GET /v2/network/validators/{:pubkey}/validations`](#get-validator-validations)
 * [Get Single Validator Reports - `GET /v2/network/validators/{:pubkey}/reports`](#get-single-validator-reports)
 * [Get Daily Validator Reports - `GET /v2/network/validator_reports`](#get-daily-validator-reports)
+* [Get rippled Versions - `GET /v2/network/rippled_versions`](#get-rippled-versions)
 
 Health Checks:
 
@@ -456,7 +459,7 @@ Optionally, you can provide the following query parameters:
 | `start` | String - [Timestamp][]  | Filter results to this time and later. |
 | `end` | String - [Timestamp][]  | Filter results to this time and earlier. |
 | `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
-| `type` | String | Filter transactions to a specific transaction-types.html. |
+| `type` | String | Filter transactions to a specific [transaction type](transaction-types.html). |
 | `result` | String | Filter transactions for a specific [transaction result](transaction-results.html). |
 | `binary` | Boolean | If true, return transactions in binary form. Defaults to false. |
 | `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 100. |
@@ -1884,7 +1887,7 @@ Each Issued Value Object represents the total value issued at one point in time,
 |--------|-------|-------------|
 | `components` | Array of Objects | The data on individual issuers that was used to assemble this total. |
 | `exchange` | Object | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
-| `exchangeRate` | Number | The exchange rate to the displayed currency from XRP.
+| `exchange_rate` | Number | The exchange rate to the displayed currency from XRP.
 | `time` | String - [Timestamp][] | When this data was measured. |
 | `total` | Number | Total value of all issued assets at this time, in units of the display currency. |
 
@@ -1940,6 +1943,128 @@ Response:
       "date": "2015-10-01T00:00:00Z"
     }
   ]
+}
+```
+
+
+## Get External Markets
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/externalMarkets.js "Source")
+
+Get aggregated exchange volume from a list of off ledger exchanges for a specified rolling interval.
+
+The API returns results in units of a single _display currency_ rather than many different currencies. The conversion uses standard rates to and from XRP.
+
+#### Request Format ####
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/external_markets
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](data-api-v2-tool.html#get-external-markets)
+
+Optionally, you can provide the following query parameters:
+
+| Field    | Value   | Description |
+|----------|---------|-------------|
+| `period` | String  | Aggregation Period - valid intervals are `1hour`, `1day`, `3day`, `7day`, or `30day`. Defaults to `1day`. |
+| `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. Defaults to XRP. |
+| `exchange_issuer` | String - [Address][] | Normalize results to the specified `currency` issued by this issuer. |
+
+
+#### Response Format ####
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `data` | Object | Contains data for the specified period |
+| `data.date` | String | Date at which this period was calculated. |
+| `data.total` | Number | Total XRP volume exchanged during the period. |
+| `data.period` | String | Name of the period queried. |
+
+Each object in the `components` array of the Volume Objects represent the volume of a single external market.  Not all fields will be present for each market, depending on availability.
+
+| Field  | Value  | Description |
+|--------|--------|-------------|
+| `source` | String | Domain name of the specific external market. |
+| `base_volume` | Number | Exchange volume in terms of the base currency (XRP) |
+| `counter_volume` | Number | Exchange volume in terms of the counter currency. |
+| `base_currecy` | String | Base currency of the market pair.  |
+| `counter_currency` | String | Counter currency of the market pair. |
+| `rate` | Number | Exchange rate. |
+
+#### Example ####
+
+Request:
+
+```
+GET /v2/network/external_markets
+```
+
+
+Response:
+
+```
+200 OK
+
+{
+  "result": "success",
+  "data": {
+    "components": [
+      {
+        "base_volume": "52847221.256202064",
+        "counter_volume": "619.8111371100003",
+        "source": "poloniex.com",
+        "base_currency": "XRP",
+        "counter_currency": "BTC",
+        "rate": "0.0000117284"
+      },
+      {
+        "base_volume": "389955.29648717004",
+        "counter_volume": "3212.07137265",
+        "source": "poloniex.com",
+        "base_currency": "XRP",
+        "counter_currency": "USD",
+        "rate": "0.00823702"
+      },
+      {
+        "base_volume": "6025268.09143092",
+        "counter_volume": "70.57870572291264",
+        "count": 250,
+        "source": "kraken.com",
+        "base_currency": "XRP",
+        "counter_currency": "BTC",
+        "rate": "0.0000117138"
+      },
+      {
+        "base_volume": "4141962.161763998",
+        "source": "btc38.com",
+        "base_currency": "XRP",
+        "counter_currency": "CNY"
+      },
+      {
+        "base_volume": "303505",
+        "source": "btc38.com",
+        "base_currency": "XRP",
+        "counter_currency": "BTC"
+      },
+      {
+        "base_volume": "1275008.2922999999",
+        "source": "jubi.com",
+        "base_currency": "XRP",
+        "counter_currency": "CNY"
+      }
+    ],
+    "date": "2016-10-31T20:45:20Z",
+    "period": "1day",
+    "total": "64982920.098184146"
+  }
 }
 ```
 
@@ -2331,6 +2456,107 @@ Response:
 
 
 
+
+## Get Fee Stats
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getFeeStats.js "Source")
+
+Returns snapshots of the metrics derived from rippled's fee command. _(New in [v2.3.2][])_
+
+#### Request Format
+
+<!-- MULTICODE_BLOCK_START -->
+
+*REST*
+
+```
+GET /v2/network/fee_stats
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](data-api-v2-tool.html#get-fee-stats)
+
+Optionally, you can provide the following query parameters:
+
+| Field  | Value   | Description |
+|--------|---------|-------------|
+| `start`    | String - [Timestamp][]  | Start time of query range. Defaults to the earliest data available. |
+| `end`      | String - [Timestamp][]  | End time of query range. Defaults to the latest data available. |
+| `interval` | String  | Snapshot Interval - valid intervals are `minute`, `hour`, or `day`. Default interval is 5 seconds. |
+| `descending` | Boolean | If true, sort results with most recent first. By default, sort results with oldest first. |
+| `limit`    | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker`   | String  | [Pagination](#pagination) key from previously returned response. |
+| `format`   | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
+
+#### Response Format
+
+A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `result` | String | The value `success` indicates that this is a successful response. |
+| `marker` | String | (May be omitted) [Pagination](#pagination) marker. |
+| `count`  | Integer | Number of results in the `markets` field. |
+| `rows` | Array of Fee Summary Objects | Transaction cost statistics for each interval. |
+
+Each Fee Summary object has the following fields:
+
+| Field  | Value | Description |
+|--------|-------|-------------|
+| `date` | String - [Timestamp][] | The date-time this snapshot was taken. |
+| `current_ledger_size` | Number | Number of transactions in the current ledger at the specified time. |
+| `expected_ledger_size` | Number | Number of transactions expected in the next ledger at the specified time. |
+| `current_queue_size` | Number | Number of transactions queued for inclusion in future ledgers. |
+| `pct_max_queue_size` | Number | current queue size in terms of percentage of maximum queue size. |
+| `median_fee` | Number | Median fee of transactions in the current ledger. |
+| `minimum_fee` | Number | Minimum fee for inclusion in any ledger. |
+| `open_ledger_fee` | Cost threshold for inclusion in the ledger open at the time of the snapshot |
+
+#### Example
+
+Request:
+
+```
+GET /v2/network/fee_stats
+```
+
+Response:
+
+```
+200 OK
+{
+  result: "success",
+  marker: "raw|20160701032100",
+  count: 200,
+  rows: [
+    {
+      current_ledger_size: 39,
+      current_queue_size: 0,
+      date: "2016-07-01T00:00:00Z",
+      expected_ledger_size: 59,
+      median_fee: 0.005,
+      minimum_fee: 0.00001,
+      open_ledger_fee: 0.00001,
+      pct_max_queue_size: 0
+    },
+    {
+      current_ledger_size: 33,
+      current_queue_size: 0,
+      date: "2016-07-01T00:01:00Z",
+      expected_ledger_size: 59,
+      median_fee: 0.00543,
+      minimum_fee: 0.00001,
+      open_ledger_fee: 0.00001,
+      pct_max_queue_size: 0
+    },
+    ...
+  ]
+}
+```
+
+
+
+
 ## Get Topology
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getTopology.js "Source")
 
@@ -2667,7 +2893,7 @@ Response:
 ## Get Validator
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidators.js "Source")
 
-Get details of a single validator in the [consensus network](https://ripple.com/build/ripple-ledger-consensus-process/). _(New in [v2.2.0][])_
+Get details of a single validator in the [consensus network](consensus.html). _(New in [v2.2.0][])_
 
 
 #### Request Format
@@ -3483,19 +3709,19 @@ Content-Type: image/svg+xml
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+   width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
 <g>
-	<path fill="#FC6E74" d="M105.1,181.5c-12.2,0-24-2.1-35.1-6.2c-11.1-4.1-21.6-10.5-31.1-19.1l-1.3-1.2l18.8-22.3l1.4,1.2
-		c7.4,6.4,14.9,11.3,22.4,14.7c7.4,3.4,16,5.1,25.5,5.1c8,0,14.4-1.7,19-5c4.5-3.2,6.7-7.3,6.7-12.7c0-3-0.4-5.2-1.3-7.1
-		c-0.8-1.8-2.4-3.6-4.8-5.4c-2.4-1.8-5.9-3.5-10.2-5.1c-4.5-1.6-10.3-3.2-17.5-4.8c-8.3-1.9-15.8-4.1-22.4-6.6
-		c-6.6-2.5-12.3-5.6-16.8-9.2C54,94.3,50.4,89.8,48,84.5c-2.4-5.2-3.6-11.6-3.6-18.9c0-7.4,1.4-13.8,4.1-19.5
-		c2.7-5.8,6.6-10.7,11.4-14.8c4.8-4.1,10.6-7.3,17.3-9.5c6.7-2.3,14-3.4,21.9-3.4c11.6,0,22.2,1.7,31.4,5.1
-		c9.3,3.4,18.1,8.4,26.2,14.8l1.4,1.1l-16.8,23.6l-1.5-1.1c-6.9-5-13.9-9-20.7-11.6c-6.7-2.6-13.6-4-20.4-4
-		c-7.5,0-13.4,1.6-17.5,4.9c-4,3.2-6,7-6,11.6c0,3.1,0.5,5.5,1.4,7.5c0.9,2,2.6,3.8,5,5.4c2.6,1.8,6.3,3.4,10.9,5
-		c4.8,1.6,10.9,3.3,18.2,5c8.3,2.1,15.7,4.4,22,7c6.5,2.6,12,5.8,16.3,9.5c4.3,3.8,7.7,8.3,9.9,13.3c2.2,5,3.4,10.9,3.4,17.5
-		c0,7.9-1.4,14.7-4.2,20.7c-2.8,6-6.8,11.1-11.9,15.3c-5,4.1-11.1,7.3-18.1,9.4C121.2,180.5,113.4,181.5,105.1,181.5z"/>
-	<rect x="86.7" y="0" fill="#FC6E74" width="26.5" height="40.1"/>
-	<rect x="86.5" y="159.2" fill="#FC6E74" width="27" height="40.8"/>
+  <path fill="#FC6E74" d="M105.1,181.5c-12.2,0-24-2.1-35.1-6.2c-11.1-4.1-21.6-10.5-31.1-19.1l-1.3-1.2l18.8-22.3l1.4,1.2
+    c7.4,6.4,14.9,11.3,22.4,14.7c7.4,3.4,16,5.1,25.5,5.1c8,0,14.4-1.7,19-5c4.5-3.2,6.7-7.3,6.7-12.7c0-3-0.4-5.2-1.3-7.1
+    c-0.8-1.8-2.4-3.6-4.8-5.4c-2.4-1.8-5.9-3.5-10.2-5.1c-4.5-1.6-10.3-3.2-17.5-4.8c-8.3-1.9-15.8-4.1-22.4-6.6
+    c-6.6-2.5-12.3-5.6-16.8-9.2C54,94.3,50.4,89.8,48,84.5c-2.4-5.2-3.6-11.6-3.6-18.9c0-7.4,1.4-13.8,4.1-19.5
+    c2.7-5.8,6.6-10.7,11.4-14.8c4.8-4.1,10.6-7.3,17.3-9.5c6.7-2.3,14-3.4,21.9-3.4c11.6,0,22.2,1.7,31.4,5.1
+    c9.3,3.4,18.1,8.4,26.2,14.8l1.4,1.1l-16.8,23.6l-1.5-1.1c-6.9-5-13.9-9-20.7-11.6c-6.7-2.6-13.6-4-20.4-4
+    c-7.5,0-13.4,1.6-17.5,4.9c-4,3.2-6,7-6,11.6c0,3.1,0.5,5.5,1.4,7.5c0.9,2,2.6,3.8,5,5.4c2.6,1.8,6.3,3.4,10.9,5
+    c4.8,1.6,10.9,3.3,18.2,5c8.3,2.1,15.7,4.4,22,7c6.5,2.6,12,5.8,16.3,9.5c4.3,3.8,7.7,8.3,9.9,13.3c2.2,5,3.4,10.9,3.4,17.5
+    c0,7.9-1.4,14.7-4.2,20.7c-2.8,6-6.8,11.1-11.9,15.3c-5,4.1-11.1,7.3-18.1,9.4C121.2,180.5,113.4,181.5,105.1,181.5z"/>
+  <rect x="86.7" y="0" fill="#FC6E74" width="26.5" height="40.1"/>
+  <rect x="86.5" y="159.2" fill="#FC6E74" width="27" height="40.8"/>
 </g>
 </svg>
 ```
@@ -3906,8 +4132,8 @@ Optionally, you can provide the following query parameters:
 | `end` | String - [Timestamp][]  | End time of query range. Defaults to the current date. |
 | `min_sequence` | String  | Minimum sequence number to query. |
 | `max_sequence` | String  | Max sequence number to query. |
-| `type` | String  | Restrict results to a specified transaction-types.html |
-| `result` | String  | Restrict results to specified transaction result. |
+| `type` | String  | Restrict results to a specified [transaction type](transaction-types.html) |
+| `result` | String  | Restrict results to a specified [transaction result](transaction-results.html). |
 | `binary` | Boolean | Return results in binary format. |
 | `descending` | Boolean | If true, return results in reverse chronological order. Defaults to false. |
 | `limit` | Integer | Maximum results per page. Defaults to 20. Cannot be more than 1,000. |
@@ -4759,9 +4985,9 @@ Response:
 ```
 200 OK
 {
-	"score": 0,
-	"response_time": "0.014s",
-	"response_time_threshold": "5s"
+  "score": 0,
+  "response_time": "0.014s",
+  "response_time_threshold": "5s"
 }
 ```
 
@@ -5185,7 +5411,7 @@ A Payment Summary Object contains a reduced amount of information about a single
 ## Payment Objects
 [Payment Objects]: #payment-objects
 
-In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with XRP Ledger transactions of the `Payment` transaction-types.html, except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
+In the Data API, a Payment Object represents an event where one account sent value to another account. This mostly lines up with XRP Ledger transactions of the `Payment` [transaction type](transaction-types.html), except that the Data API does not consider a transaction to be a payment if the sending `Account` and the `Destination` account are the same, or if the transaction failed.
 
 Payment objects have the following fields:
 
@@ -5264,10 +5490,10 @@ Volume objects represent the total volumes of money moved, in either payments or
 |--------|-------|-------------|
 | `components` | Array of Objects | The data that was used to assemble this total. For payment volume, each object represents payments in a particular currency and issuer. For exchange volume, each object represents a market between two currencies. |
 | `count` | Number | The total number of exchanges in this period. |
-| `endTime` | String - [Timestamp][] | The end time of this interval. |
+| `end_time` | String - [Timestamp][] | The end time of this interval. |
 | `exchange` | Object | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
-| `exchangeRate` | Number | The exchange rate to the displayed currency from XRP.
-| `startTime` | String - [Timestamp][] | The start of this period. |
+| `exchange_rate` | Number | The exchange rate to the displayed currency from XRP.
+| `start_time` | String - [Timestamp][] | The start of this period. |
 | `total` | Number | Total volume of all recorded exchanges in the period. |
 
 
