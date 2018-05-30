@@ -15,8 +15,7 @@ An example of the request format:
 {
   "id": 2,
   "command": "account_offers",
-  "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
-  "ledger": "current"
+  "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM"
 }
 ```
 
@@ -27,8 +26,7 @@ An example of the request format:
     "method": "account_offers",
     "params": [
         {
-            "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
-            "ledger_index": "current"
+            "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM"
         }
     ]
 }
@@ -52,7 +50,7 @@ A request can include the following parameters:
 | `account`      | String                                     | A unique identifier for the account, most commonly the account's [Address][]. |
 | `ledger`       | Unsigned integer, or String                | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string identifying the ledger version to use. |
-| `ledger_index` | _(Optional)_ [Ledger Index][]              | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers][]) |
+| `ledger_index` | [Ledger Index][]                           | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers][]) |
 | `limit`        | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
 | `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
 
