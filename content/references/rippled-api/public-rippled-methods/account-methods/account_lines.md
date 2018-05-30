@@ -15,8 +15,7 @@ An example of the request format:
 {
   "id": 1,
   "command": "account_lines",
-  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "ledger": "current"
+  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }
 ```
 
@@ -27,8 +26,7 @@ An example of the request format:
     "method": "account_lines",
     "params": [
         {
-            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "ledger": "current"
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
         }
     ]
 }
