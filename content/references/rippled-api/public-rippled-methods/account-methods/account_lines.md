@@ -16,7 +16,7 @@ An example of the request format:
   "id": 1,
   "command": "account_lines",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "ledger": "current"
+  "ledger_index": "current"
 }
 ```
 
@@ -28,7 +28,7 @@ An example of the request format:
     "params": [
         {
             "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "ledger": "current"
+            "ledger_index": "current"
         }
     ]
 }
