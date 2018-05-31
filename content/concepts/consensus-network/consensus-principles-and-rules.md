@@ -18,7 +18,7 @@ Suppose Alice, Bob, and Charlie are using a payment system, and Alice has a bala
 
 If Alice can send the "same" $10 to both Charlie and Bob, the payment system ceases to be useful. The payment system needs a way to choose which transaction should succeed and which should fail, in such a way that all participants agree on which transaction has happened. Either of those two transactions is equally valid on its own. However, different participants in the payment system may have a different view of which transaction came first.
 
-Conventionally, payment systems solve the double spend problem by having a central authority track and approve transactions. For example, a bank decides to clear a deck based on the issuer's available balance, of which the bank is the sole custodian. In such a system, all participants follow the central authority's decisions.
+Conventionally, payment systems solve the double spend problem by having a central authority track and approve transactions. For example, a bank decides to clear a check based on the issuer's available balance, of which the bank is the sole custodian. In such a system, all participants follow the central authority's decisions.
 
 Distributed ledger technologies, like the XRP Ledger, have no central authority. They must solve the double spend problem in some other way.
 
