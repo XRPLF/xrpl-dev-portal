@@ -122,7 +122,7 @@ An example of a successful response:
         "problems": [
             "You should immediately set your default ripple flag",
             "You should clear the no ripple flag on your XAU line to r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
-            "You should clear the no ripple flag on your USD line to rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "You should clear the no ripple flag on your USD line to rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
         ],
         "status": "success",
         "transactions": [
