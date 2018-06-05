@@ -2,7 +2,7 @@
 
 The **XRP Ledger** is a decentralized cryptographic ledger powered by a network of peer-to-peer servers. The XRP Ledger is the home of **XRP**, a digital asset designed to bridge the many different currencies in use worldwide. Ripple stewards the development of the XRP Ledger, and advances XRP as a key contribution to the _Internet of Value_: a world in which money moves the way information does today.
 
-## The Best Digital Asset
+## The Digital Asset for Payments
 
 XRP is a digital asset native to the XRP Ledger. Anyone with a cryptographic key and an internet connection can receive, hold, and send XRP to anyone else. XRP's creators have developed it to be a desirable bridge currency that can facilitate trades in any other currency. XRP has many properties which make it an appealing asset for many other use cases, too:
 
