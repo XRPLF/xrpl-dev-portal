@@ -53,7 +53,7 @@ This method can retrieve several different types of data. You can select which t
 7. `escrow` - Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specific time or condition is met. [New in: rippled 1.0.0][]
 8. `payment_channel` - Retireve a [PayChannel object](paychannel.html), which holds XRP for asynchronous payments. [New in: rippled 1.0.0][]
 
-If you specify more than one of the above items, the server retrieves only of them; it is undefined which it chooses.
+If you specify more than one of the above items, the server retrieves only one of them; it is undefined which it chooses.
 
 The full list of parameters recognized by this method is as follows:
 
