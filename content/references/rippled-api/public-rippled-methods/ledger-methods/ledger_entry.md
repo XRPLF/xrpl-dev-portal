@@ -46,25 +46,33 @@ This method can retrieve several different types of data. You can select which t
 
 1. `index` - Retrieve any type of ledger object by its unique ID
 2. `account_root` - Retrieve an [AccountRoot object](accountroot.html). This is roughly equivalent to the [account_info method][].
-3. `directory` - Retrieve a [DirectoryNode](directorynode.html), which contains a list of other ledger objects
-4. `offer` - Retrieve an [Offer object](offer.html), which defines an offer to exchange currency
+3. `directory` - Retrieve a [DirectoryNode](directorynode.html), which contains a list of other ledger objects.
+4. `offer` - Retrieve an [Offer object](offer.html), which defines an offer to exchange currency.
 5. `ripple_state` - Retrieve a [RippleState object](ripplestate.html), which tracks a (non-XRP) currency balance between two accounts.
+6. `check` - Retrieve a [Check object](check.html), which is a potential payment that can be cashed by its recipient. [New in: rippled 1.0.0][]
+7. `escrow` - Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specific time or condition is met. [New in: rippled 1.0.0][]
+8. `payment_channel` - Retireve a [PayChannel object](paychannel.html), which holds XRP for asynchronous payments. [New in: rippled 1.0.0][]
 
-If you specify more than one of the above items, the server retrieves only of them; it is undefined which it chooses.
+If you specify more than one of the above items, the server retrieves only one of them; it is undefined which it chooses.
 
 The full list of parameters recognized by this method is as follows:
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `index`                 | String                     | _(Optional)_ Specify the unique identifier of a single ledger entry to retrieve. |
+| `index`                 | String                     | _(Optional)_ Specify the [object ID](ledger-object-ids.html) of a single object to retrieve from the ledger. |
 | `account_root`          | String - [Address][]       | _(Optional)_ Specify an [AccountRoot object](accountroot.html) to retrieve. |
-| `directory`             | Object or String           | _(Optional)_ Specify a [DirectoryNode](directorynode.html). (DirectoryNode objects each contain a list of IDs for things contained in them.) If a string, interpret as the [unique index](ledgers.html#tree-format) to the directory, in hex. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
-| `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [Directory](directorynode.html). |
+| `check`                 | String                     | _(Optional)_ Specify the [object ID](ledger-object-ids.html) of a [Check object](check.html) to retrieve. |
+| `directory`             | Object or String           | _(Optional)_ Specify a [DirectoryNode](directorynode.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [DirectoryNode](directorynode.html). |
 | `directory.dir_root`    | String                     | (Required if `directory` is specified as an object and `directory.owner` is not provided) Unique index identifying the directory to retrieve, as a hex string. |
 | `directory.owner`       | String                     | (Required if `directory` is specified as an object and `directory.dir_root` is not provided) Unique address of the account associated with this directory |
+| `escrow` | Object or String | _(Optional)_ Specify an [Escrow object](escrow-object.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
+| `escrow.owner` | String - [Address][] | (Required if `escrow` is specified as an object) The owner (sender) of the Escrow object. |
+| `escrow.seq` | Unsigned Integer | (Required if `escrow` is specified as an object) The sequence number of the transaction that created the Escrow object. |
 | `offer`                 | Object or String           | _(Optional)_ Specify an [Offer object](offer.html) to retrieve. If a string, interpret as the [unique index](ledgers.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
 | `offer.account`         | String - [Address][]       | (Required if `offer` specified) The account that placed the offer. |
 | `offer.seq`             | Unsigned Integer           | (Required if `offer` specified) The sequence number of the transaction that created the Offer object. |
+| `payment_channel` | String | _(Optional)_ Specify the [object ID](ledger-object-ids.html) of a [PayChannel object](paychannel.html) to retrieve. |
 | `ripple_state`          | Object                     | _(Optional)_ Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
 | `ripple_state.accounts` | Array                      | (Required if `ripple_state` specified) 2-length array of account [Address][]es, defining the two accounts linked by this [RippleState object](ripplestate.html) |
 | `ripple_state.currency` | String                     | (Required if `ripple_state` specified) [Currency Code][] of the [RippleState object](ripplestate.html) to retrieve. |
@@ -143,8 +151,14 @@ The response follows the [standard format][], with a successful result containin
 ## Possible Errors
 
 * Any of the [universal error types][].
+* `deprecatedFeature` - The request specified a removed field, such as `generator`.
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `malformedAddress` - The request improperly specified an [Address][] field.
+* `malformedCurrency` - The request improperly specified a [Currency Code][] field.
+* `malformedOwner` - The request improperly specified the `escrow.owner` sub-field.
+* `malformedRequest` - The request provided an invalid combination of fields, or provided the wrong type for one or more fields.
+* `unknownOption` - The fields provided in the request did not match any of the expected request formats.
 
 
 <!-- TODO: we should add this ledger format link to rippled-api-links.md. account_objects.md is also including this as a one-off.-->
