@@ -61,55 +61,58 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
     The recommended Boost version is 1.64.0. Because Boost version 1.64.0 isn't available in the Ubuntu 16.04 repos, you must compile it yourself.
 
-      a. Download Boost 1.64.0.
+    If you have previously built Boost 1.64.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
-          wget https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.gz
+      1. Download Boost 1.64.0.
 
-      b. Untar `boost_1_64_0.tar.gz`.
+              wget https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.gz
 
-          tar xvzf boost_1_64_0.tar.gz
+      2. Untar `boost_1_64_0.tar.gz`.
 
-      c. Access the new `boost_1_64_0` directory:
+              tar xvzf boost_1_64_0.tar.gz
 
-          cd boost_1_64_0
+      3. Access the new `boost_1_64_0` directory:
 
-      d. To prepare the Boost.Build system for use, run:
+              cd boost_1_64_0
 
-          ./bootstrap.sh
+      4. To prepare the Boost.Build system for use, run:
 
-      e. To invoke Boost.Build to build the separately-compiled Boost libraries, run the following command. Replace `<number of parallel jobs>` with the number of jobs, or commands, to run in parallel. Choose this value based on the number of cores you want to use for building. This may take about 10 minutes, depending on your hardware specs.
+              ./bootstrap.sh
 
-          ./b2 -j <number of parallel jobs>
+      5. To invoke Boost.Build to build the separately-compiled Boost libraries, run the following command. Replace `<number of parallel jobs>` with the number of jobs to run in parallel. Choose this value based on the number of CPU cores you want to use for building. This may take about 10 minutes, depending on your hardware specs.
 
-      f. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_64_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+              ./b2 -j <number of parallel jobs>
 
-          export BOOST_ROOT=/home/ubuntu/boost_1_64_0
+      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_64_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-      g. Source your updated `.profile` file. For example:
+              export BOOST_ROOT=/home/ubuntu/boost_1_64_0
 
-          source ~/.profile
+      7. Source your updated `.profile` file. For example:
 
-10. Get `rippled` source code.
+              source ~/.profile
 
+10. From a working directory, get the `rippled` source code.
+
+        cd ~
         git clone https://github.com/ripple/rippled.git
         cd rippled
         git checkout master
 
-11. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `build/` directory to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
+11. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
 
-    If this is your first time building `rippled,` you won't have a `build/` directory and can move on to the next step.
+    If this is your first time building `rippled` 1.0.0 or higher, you won't have a `my_build/` directory and can move on to the next step.
 
 12. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
 
-      a. Generate the build system. Builds should be performed in a directory that is separate from the source tree root. In this example, we'll use a `my_build` directory that is a subdirectory of `rippled`.
+      1. Generate the build system. Builds should be performed in a directory that is separate from the source tree root. In this example, we'll use a `my_build` directory that is a subdirectory of `rippled`.
 
-          mkdir my_build
-          cd my_build
-          cmake -Dtarget=gcc.debug.unity ..
+              mkdir my_build
+              cd my_build
+              cmake -Dtarget=gcc.debug.unity ..
 
-      b. Build the `rippled` binary executable.
+      2. Build the `rippled` binary executable. Replace `<number of parallel jobs>` with the number of jobs to run in parallel. Choose this value based on the number of CPU cores you want to use for building.
 
-          cmake --build . -- -j <number of parallel jobs>
+              cmake --build . -- -j <number of parallel jobs>
 
 13. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
 
@@ -127,11 +130,11 @@ Complete the following configurations that are required for `rippled` to start u
 
 2. Edit the config file to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here.
 
-      a. Set the `[node_db]`'s path to the location where you want to store the ledger database.
+      1. Set the `[node_db]`'s path to the location where you want to store the ledger database.
 
-      b. Set the `[database_path]` to the location where you want to store other database data. (This includes an SQLite database with configuration data, and is typically one level above the `[node_db]` path field.)
+      2. Set the `[database_path]` to the location where you want to store other database data. (This includes an SQLite database with configuration data, and is typically one level above the `[node_db]` path field.)
 
-      c. Set the `[debug_logfile]` to a path where `rippled` can write logging information.
+      3. Set the `[debug_logfile]` to a path where `rippled` can write logging information.
 
 3. Copy the example `validators.txt` file to the same folder as `rippled.cfg`:
 
