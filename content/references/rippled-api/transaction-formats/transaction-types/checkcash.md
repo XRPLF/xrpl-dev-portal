@@ -22,9 +22,6 @@ Since the funds for a check are not guaranteed, redeeming a Check can fail becau
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 
-
-In addition to the [common fields](transaction-common-fields.html), a CheckCash transaction has the following:
-
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|
 | `CheckID`   | String    | Hash256           | The ID of the [Check ledger object](check.html) to cash, as a 64-character hexadecimal string. |
