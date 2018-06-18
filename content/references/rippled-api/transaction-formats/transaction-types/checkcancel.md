@@ -19,9 +19,6 @@ Cancels an unredeemed Check, removing it from the ledger without sending any mon
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 
-
-In addition to the [common fields](transaction-common-fields.html), a CheckCancel transaction has the following:
-
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|
 | `CheckID`   | String    | Hash256           | The ID of the [Check ledger object](check.html) to cancel, as a 64-character hexadecimal string. |
