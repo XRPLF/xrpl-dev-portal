@@ -91,18 +91,28 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
               source ~/.profile
 
-10. From a working directory, get the `rippled` source code.
+10. From a working directory, get the `rippled` source code. The `master` branch has the latest released version.
 
         cd ~
         git clone https://github.com/ripple/rippled.git
         cd rippled
         git checkout master
 
-11. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
+11. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
+
+        $ git log
+
+        commit f31ca2860fb5f045b618aa05d1e76c7e2e9494ec (HEAD, tag: 1.0.0, origin/release, origin/master, master)
+        Author: Nikolaos D. Bougalis <nikb@bougalis.net>
+        Date:   Fri May 11 10:29:41 2018 -0700
+
+            Set version to 1.0.0
+
+12. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
 
     If this is your first time building `rippled` 1.0.0 or higher, you won't have a `my_build/` directory and can move on to the next step.
 
-12. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
+13. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
 
       1. Generate the build system. Builds should be performed in a directory that is separate from the source tree root. In this example, we'll use a `my_build` directory that is a subdirectory of `rippled`.
 
@@ -114,7 +124,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
               cmake --build . -- -j <number of parallel jobs>
 
-13. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
+14. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
 
         ./rippled -u
 
