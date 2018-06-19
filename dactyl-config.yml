@@ -45,14 +45,14 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: build-run-rippled-ubuntu.html
+              date: 2018-06-19
+            - html: ledger_entry.html
+              date: 2018-06-07
             - html: transaction-common-fields.html
               date: 2018-05-23
             - html: escrowcreate.html
               date: 2018-05-23
-            - html: known-amendments.html
-              date: 2018-05-23
-            - html: technical-faq.html
-              date: 2018-05-11
 
 pages:
 
