@@ -23,9 +23,6 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 
-
-In addition to the [common fields](transaction-common-fields.html), a CheckCreate transaction has the following:
-
 | Field            | JSON Type           | [Internal Type][] | Description     |
 |:-----------------|:--------------------|:------------------|:----------------|
 | `Destination`    | String              | Account           | The unique address of the [account](accounts.html) that can cash the Check. |
