@@ -12,7 +12,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [SHAMapV2][]              | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]               | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [fix1543][]               | v1.0.0     | [Expected: 2018-06-21](https://ripple.com/dev-blog/fix1543-fix1571-fix1623-amendments-open-voting/ "BADGE_BLUE") |
-| [fix1623][]               | v1.0.0     | [Expected: 2018-06-20](https://ripple.com/dev-blog/fix1543-fix1571-fix1623-amendments-open-voting/ "BADGE_BLUE") |
+| [fix1623][]               | v1.0.0     | [Enabled: 2018-06-20](https://xrpcharts.ripple.com/#/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB "BADGE_GREEN") |
 | [fix1571][]               | v1.0.0     | [Enabled: 2018-06-19](https://xrpcharts.ripple.com/#/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC "BADGE_GREEN") |
 | [DepositAuth][]           | v0.90.0    | [Enabled: 2018-04-06](https://xrpcharts.ripple.com/#/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25 "BADGE_GREEN") |
 | [fix1513][]               | v0.90.0    | [Enabled: 2018-04-06](https://xrpcharts.ripple.com/#/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B "BADGE_GREEN") |
@@ -263,7 +263,7 @@ Changes Escrow to fix the following issues:
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F | Expected  |
+| 58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F | Enabled   |
 
 Adds delivered amount to metadata for CheckCash transactions cashed for a flexible amount. (Has no effect unless the [Checks](#checks) amendment is enabled.)
 
