@@ -1,26 +1,30 @@
 # Freezing Issued Currencies
 
-The XRP Ledger gives issuers the ability to freeze non-XRP balances they have issued. This feature can be useful to meet regulatory requirements, or while investigating suspicious activity. There are three settings related to freezes:
+No one can freeze XRP. For other currencies in the XRP Ledger, their issuers can freeze the non-XRP balances they have issued. This feature can be useful to meet regulatory requirements, or while investigating suspicious activity.
+
+**Tip:** No one can freeze XRP.
+
+There are three settings related to freezes:
 
 * [**Individual Freeze**](#individual-freeze) - Freeze one counterparty.
 * [**Global Freeze**](#global-freeze) - Freeze all counterparties.
 * [**No Freeze**](#no-freeze) - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.
 
-Because no party has a privileged place in the XRP Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties.
-
-**Tip:** The freeze feature only applies to issued currencies. No one can freeze XRP.
+The freeze feature only applies to issued currencies. Because no party has a privileged place in the XRP Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one, not even Ripple, can freeze XRP.
 
 All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the currency issuer or the currency holder can freeze a trust line; however, the effect of a currency holder freezing an issuer is minimal.
 
 
 ## Individual Freeze
 
-The **Individual Freeze** feature is a setting on a trust line. When an issuing address enables the Individual Freeze setting, the following rules apply:
+The **Individual Freeze** feature is a setting on a [trust line](trust-lines-and-issuing.html). When an issuing address enables the Individual Freeze setting, the following rules apply to the currency of that trust line:
 
 * Payments can still occur directly between the two parties of the frozen trust line.
 * The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer. The counterparty can only send the frozen issuances directly to the issuer.
 * The counterparty can still receive payments from others on the frozen trust line.
 * The counterparty's offers to sell the currency issued on the frozen trust line are [considered unfunded](offers.html#lifecycle-of-an-offer).
+
+Reminder: Trust lines do not hold XRP. XRP cannot be frozen.
 
 A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution operates that are connected to the XRP Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)
 
@@ -33,11 +37,13 @@ An address cannot enable the Individual Freeze setting if it has enabled the [No
 
 ## Global Freeze
 
-The **Global Freeze** feature is a setting on an address. When an issuing address enables the Global Freeze feature, the following rules apply:
+The **Global Freeze** feature is a setting on an address. When an issuing address enables the Global Freeze feature, the following rules apply to all currencies they issue:
 
 * All counterparties of the frozen issuing address can no longer decrease the balances in their trust lines to the frozen address, except in direct payments to the issuer. (This also affects any [operational addresses](issuing-and-operational-addresses.html).)
 * Counterparties of the frozen issuing address can still send and receive payments directly to and from the issuing address.
 * All offers to sell currencies issued by the frozen address are [considered unfunded](offers.html#lifecycle-of-an-offer).
+
+Reminder: addresses cannot issue XRP. Global freezes do not apply to XRP.
 
 It can be useful to enable Global Freeze on a financial institution's [issuing address](issuing-and-operational-addresses.html) if the secret key to an operational address is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the XRP Ledger, a financial institution should also suspend activities in its connectors to outside systems.
 
@@ -50,7 +56,11 @@ An address can always enable the Global Freeze setting. However, if the address 
 
 ## No Freeze
 
-The **No Freeze** feature is a setting on an address that permanently gives up the ability to freeze counterparties. A business can use this feature to treat its issued funds as "more like physical money" in the sense that the business cannot interfere with customers trading it among themselves. The NoFreeze setting has two effects:
+The **No Freeze** feature is a setting on an address that permanently gives up the ability to freeze counterparties' issued currencies. A business can use this feature to treat its issued funds as "more like physical money" in the sense that the business cannot interfere with customers trading it among themselves.
+
+Reminder: XRP already cannot be frozen. The No Freeze feature only applies to other currencies issued in the XRP Ledger.
+
+The NoFreeze setting has two effects:
 
 * The issuing address can no longer enable Individual Freeze on trust lines to any counterparty.
 * The issuing address can still enable Global Freeze to enact a global freeze, but the address cannot _disable_ Global Freeze.
@@ -75,7 +85,7 @@ To enable or disable Individual Freeze on a specific trust line, send a `TrustSe
 | Account              | String | The XRP Ledger address to enable or disable the freeze. |
 | TransactionType      | String | `TrustSet` |
 | LimitAmount          | Object | Object defining the trust line to freeze. |
-| LimitAmount.currency | String | Currency of the trust line |
+| LimitAmount.currency | String | Currency of the trust line (cannot be XRP) |
 | LimitAmount.issuer   | String | The XRP Ledger address of the counterparty to freeze |
 | LimitAmount.value    | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. From the perspective of a financial institution, this is typically `"0"`. |
 | Flags                | Number | To enable a freeze, use a value with the bit `0x00100000` (tfSetFreeze) enabled. To disable a freeze, use a value with the bit `0x00200000` (tfClearFreeze) enabled instead. |
@@ -116,7 +126,7 @@ To enable or disable Individual Freeze on a specific trust line, prepare a *Trus
 
 | Field        | Value  | Description |
 |--------------|--------|-------------|
-| currency     | String | The [currency](rippleapi-reference.html#currency) of the trust line to freeze |
+| currency     | String | The [currency](rippleapi-reference.html#currency) of the trust line to freeze (cannot be XRP) |
 | counterparty | String | The [XRP Ledger address](rippleapi-reference.html#address) of the counterparty |
 | limit        | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. From the perspective of a financial institution, this is typically `"0"`. |
 | frozen       | Boolean | `true` to enable Individual Freeze on this trust line. `false` to disable Individual Freeze. |
