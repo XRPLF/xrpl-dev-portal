@@ -26,8 +26,7 @@ The following generic options affect the amount of information written to standa
 
 | Option      | Short Version | Description                                    |
 |:------------|:--------------|:-----------------------------------------------|
-| `--debug`   |               | Print debug-level logging. ***TODO: to stdout and/or logs?*** |
-| `--quiet`   | `-q`          | Print fewer messages to standard out. ***TODO: and logs?*** |
+| `--debug`   |               | Print debug-level logging. |
 | `--silent`  |               | After logging, print less to standard output. ***TODO: comparison with -q?*** |
 | `--verbose` | `-v`          | Print more information (***TODO: how much?***) to logs and standard output. |
 
@@ -57,12 +56,12 @@ The following options determine which ledger to load first when starting up. The
 
 | Option                | Short Version | Description                          |
 |:----------------------|:--------------|:-------------------------------------|
-| `--ledger {LEDGER}`   |               | Load the ledger version identified by `{LEDGER}` (either a ledger hash or a ledger index) as the initial ledger. ***TODO: this is more useful in stand-alone but can be used in both, I think? Maybe reconsider the organization of options...*** |
-| `--ledgerfile {FILE}` |               | Load the ledger version from the specified `{FILE}`. ***TODO: what sort of file should this be? where does it come from?*** |
-| `--load`              |               | Load the initial ledger from the ledger store on disk. ***TODO: isn't this the default behavior anyway?*** |
-| `--net`               |               | Load the initial ledger from the network. ***TODO: In what circumstances is this meaningfully different from `--load`?*** |
-| `--start`             |               | Create a new genesis ledger to use as the initial ledger. |
-| `---valid`            |               | Consider the initial ledger a valid network ledger. ***TODO: clarify how this is different from the default and why you might use it.*** |
+| `--ledger {LEDGER}`   |               | Load the ledger version identified by `{LEDGER}` (either a ledger hash or a ledger index) as the initial ledger. The specified ledger version must be in the server's ledger store. |
+| `--ledgerfile {FILE}` |               | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. |
+| `--load`              |               | **DEPRECATED** Intended for debugging: Only load the initial ledger from the ledger store on disk.  |
+| `--net`               |               | **DEPRECATED** Intended for debugging: Load the initial ledger from the network. <!--{# Maybe this shouldn't be in the Stand-Alone section since it doesn't apply in that mode? #}--> |
+| `--start`             |               | **DEPRECATED** Intended for debugging. Mostly represents the default behavior  |
+| `---valid`            |               | Consider the initial ledger a valid network ledger. <!--{# @nikb to clarify what this does  #}--> |
 
 ## Client Mode
 
@@ -79,8 +78,8 @@ In addition to the individual command syntax, client mode accepts the [Generic O
 | Option                  | Short Version | Description                        |
 |:------------------------|:--------------|:-----------------------------------|
 | `--rpc`                 |               | Explicitly specify that the server should run in client mode. Not required. |
-| `--rpc_ip {IP_ADDRESS}` |               | Connect to the `rippled` server at the specified IP Address. |
-| `--rpc_port {PORT}`     |               | Connect to the `rippled` server on the specified port. |
+| `--rpc_ip {IP_ADDRESS}` |               | Connect to the `rippled` server at the specified IP Address, optionally including a port number. |
+| `--rpc_port {PORT}`     |               | **DEPRECATED** Connect to the `rippled` server on the specified port. |
 
 **Tip:** Some arguments accept negative numbers as values. To ensure that arguments to API commands are not interpreted as options instead, pass the `--` argument before the command name.
 
@@ -105,6 +104,12 @@ If unit testing reports a failure, that generally indicates one of the following
 - A problem occurred when compiling `rippled` and it is not functioning as intended
 - The source code for `rippled` contains a bug
 - A unit test has a bug or has not been updated to account for new behavior
+
+While running unit tests, you can also provide the following options:
+
+| Option    | Short Version | Description                                      |
+|:----------|:--------------|:-------------------------------------------------|
+| `--quiet` | `-q`          | Print fewer diagnostic messages to standard out while running unit tests. |
 
 ### Specific Unit Tests
 
