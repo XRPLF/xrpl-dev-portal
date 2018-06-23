@@ -241,8 +241,7 @@ Without this amendment, transactions of certain types are considered valid even 
 The affected transaction types are:
 
 - Escrow transactions: [EscrowCancel][], [EscrowCreate][], and [EscrowFinish][]
-- Payment Channel transactions: [PaymentChannelClaim][], [PaymentChannelClaim][], and [PaymentChannelCreate][]
-- Ticket transactions: `CancelTicket` and `CreateTicket` (from the in-development [Tickets](#tickets) amendment)
+- Payment Channel transactions: [PaymentChannelClaim][], [PaymentChannelCreate][], and [PaymentChannelFund][]
 
 
 ## fix1571
