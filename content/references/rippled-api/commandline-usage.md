@@ -142,3 +142,8 @@ Longest suite times:
    60.9s ripple.tx.OversizeMeta
 60.9s, 1 suite, 1 case, 9016 tests total, 0 failures
 ```
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
