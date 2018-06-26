@@ -2272,6 +2272,27 @@ pages:
         targets:
             - local
 
+    -   md: references/rippled-api/commandline-usage.md
+        html: commandline-usage.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Commandline Usage
+        blurb: Commandline usage options for the rippled server.
+        curated_anchors:
+            - name: Available Modes
+              anchor: "#available-modes"
+            - name: Daemon Mode Options
+              anchor: "#daemon-mode-options"
+            - name: Stand-Alone Mode Options
+              anchor: "#stand-alone-mode-options"
+            - name: Client Mode Options
+              anchor: "#client-mode-options"
+            - name: Unit Tests
+              anchor: "#unit-tests"
+        targets:
+            - local
+
     # --------------- end "rippled API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files

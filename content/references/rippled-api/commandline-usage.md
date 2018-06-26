@@ -16,9 +16,9 @@ The `rippled` executable usually runs as a daemon that powers the XRP Ledger, al
 
 These options are apply to most modes:
 
-| Option | Short Version | Description |
-|---|---|---|
-| `--conf {FILE}` | | Use `{FILE}` as the configuration file instead of looking for config files in the default locations. ***TODO: list default config file paths in priority order*** |
+| Option          | Description                                                |
+|:----------------|:-----------------------------------------------------------|
+| `--conf {FILE}` | Use `{FILE}` as the configuration file instead of looking for config files in the default locations. If not specified, `rippled` first checks the local working directory for a `rippled.cfg` file. On Linux, if that file is not found, `rippled` next checks for `$XDG_CONFIG_HOME/ripple/ripple.cfg`. (Typically, `$XDG_CONFIG_HOME` maps to `$HOME/.config`.) |
 
 ### Verbosity Options
 
@@ -26,44 +26,50 @@ The following generic options affect the amount of information written to standa
 
 | Option      | Short Version | Description                                    |
 |:------------|:--------------|:-----------------------------------------------|
-| `--debug`   |               | Print debug-level logging. |
-| `--silent`  |               | After logging, print less to standard output. ***TODO: comparison with -q?*** |
-| `--verbose` | `-v`          | Print more information (***TODO: how much?***) to logs and standard output. |
+| `--debug`   |               | **DEPRECATED** Enables trace-level debugging (alias for `--verbose`). Use the [log_level method][] instead. |
+| `--silent`  |               | **DEPRECATED** Don't write logs to standard out. |
+| `--verbose` | `-v`          | **DEPRECATED** Enables trace-level debugging. Use the [log_level method][] instead. |
 
 
 ## Daemon Mode Options
 
-Daemon mode is the default mode of operation for `rippled`. In addition to the [Generic Options](#generic-options)
+```bash
+rippled [OPTIONS]
+```
 
-| Option              | Short Version | Description                            |
-|:--------------------|:--------------|:---------------------------------------|
-| `--fg`              |               | Run the daemon as a single process in the foreground. Otherwise, `rippled` forks a second process for the daemon while the first process runs as a monitor. |
-| `--import`          |               | Before fully starting, import ledger data from another `rippled` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
-| `--nodetoshard`     |               | Before fully starting, copy any complete [history shards](history-sharding.html) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# TODO: make a tutorial for this? #}--> |
-| `--quorum {QUORUM}` |               | Override the minimum quorum for validation by requiring a agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. This options is intended for bootstrapping [test networks](parallel-networks.html). If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
-| `---validateShards` |               | Check that the data in the shard store is valid and consistent with the network history. For more information see, [History Sharding](history-sharding.html). |
+Daemon mode is the default mode of operation for `rippled`. In addition to the [Generic Options](#generic-options), you can provide any of the following:
+
+| Option              | Description                                            |
+|:--------------------|:-------------------------------------------------------|
+| `--fg`              | Run the daemon as a single process in the foreground. Otherwise, `rippled` forks a second process for the daemon while the first process runs as a monitor. |
+| `--import`          | Before fully starting, import ledger data from another `rippled` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
+| `--net`             | **DEPRECATED** Intended for debugging: do not build a local ledger until one can be obtained from the network. |
+| `--nodetoshard`     | Before fully starting, copy any complete [history shards](history-sharding.html) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
+| `--quorum {QUORUM}` | This option is intended for bootstrapping [test networks](parallel-networks.html). Override the minimum quorum for validation by requiring a agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
+| `---validateShards` | Check that the data in the shard store is valid and consistent with the network history. For more information on the shard store, see [History Sharding](history-sharding.html). |
 
 ## Stand-Alone Mode Options
 
-| Option         | Short Version | Description                                 |
-|:---------------|:--------------|:--------------------------------------------|
-| `--standalone` | `-a`          | Run in stand-alone mode. In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.) |
-| `--replay`     |               | Replay a ledger close. ***TODO: Does this belong with the initial ledger options? How does this even work?*** |
+```bash
+rippled --standalone [OPTIONS]
+rippled -a [OPTIONS]
+```
+Run in stand-alone mode. In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.)
 
 ### Initial Ledger Options
 
 The following options determine which ledger to load first when starting up. These options are intended for replaying historical ledgers or bootstrapping test networks.
 
-| Option                | Short Version | Description                          |
-|:----------------------|:--------------|:-------------------------------------|
-| `--ledger {LEDGER}`   |               | Load the ledger version identified by `{LEDGER}` (either a ledger hash or a ledger index) as the initial ledger. The specified ledger version must be in the server's ledger store. |
-| `--ledgerfile {FILE}` |               | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. |
-| `--load`              |               | **DEPRECATED** Intended for debugging: Only load the initial ledger from the ledger store on disk.  |
-| `--net`               |               | **DEPRECATED** Intended for debugging: Load the initial ledger from the network. <!--{# Maybe this shouldn't be in the Stand-Alone section since it doesn't apply in that mode? #}--> |
-| `--start`             |               | **DEPRECATED** Intended for debugging. Mostly represents the default behavior  |
-| `---valid`            |               | Consider the initial ledger a valid network ledger. <!--{# @nikb to clarify what this does  #}--> |
+| Option                | Description                                          |
+|:----------------------|:-----------------------------------------------------|
+| `--ledger {LEDGER}`   | Load the ledger version identified by `{LEDGER}` (either a ledger hash or a ledger index) as the initial ledger. The specified ledger version must be in the server's ledger store. |
+| `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided [`ledger-file.json`]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/rippled-cli/ledger-file.json). |
+| `--load`              | **DEPRECATED** Intended for debugging. Only load the initial ledger from the ledger store on disk. |
+| `--replay`            | Intended for debugging. Use with `--ledger` to replay a ledger close. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
+| `--start`             | Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. The functionality of those amendments is therefore available starting from the second ledger, rather than going through the full two-week [Amendment Process](amendments.html). |
+| `---valid`            | **DEPRECATED** Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network. |
 
-## Client Mode
+## Client Mode Options
 
 ```bash
 rippled [OPTIONS] -- {COMMAND} {COMMAND_PARAMETERS}
@@ -75,11 +81,11 @@ To run in client mode, provide the [commandline syntax](request-formatting.html#
 
 In addition to the individual command syntax, client mode accepts the [Generic Options](#generic-options) and the following options:
 
-| Option                  | Short Version | Description                        |
-|:------------------------|:--------------|:-----------------------------------|
-| `--rpc`                 |               | Explicitly specify that the server should run in client mode. Not required. |
-| `--rpc_ip {IP_ADDRESS}` |               | Connect to the `rippled` server at the specified IP Address, optionally including a port number. |
-| `--rpc_port {PORT}`     |               | **DEPRECATED** Connect to the `rippled` server on the specified port. |
+| Option                  | Description                                        |
+|:------------------------|:---------------------------------------------------|
+| `--rpc`                 | Explicitly specify that the server should run in client mode. Not required. |
+| `--rpc_ip {IP_ADDRESS}` | Connect to the `rippled` server at the specified IP Address, optionally including a port number. |
+| `--rpc_port {PORT}`     | **DEPRECATED** Connect to the `rippled` server on the specified port. Specify the port alongside the IP address using `--rpc_ip` instead. |
 
 **Tip:** Some arguments accept negative numbers as values. To ensure that arguments to API commands are not interpreted as options instead, pass the `--` argument before the command name.
 
@@ -93,8 +99,8 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1
 ## Unit Tests
 
 ```bash
-rippled --unittest
-rippled -u
+rippled --unittest [OPTIONS]
+rippled -u [OPTIONS]
 ```
 
 Unit testing runs tests built into the `rippled` source code to confirm that the executable performs as expected. This includes things like testing built-in data types and transaction processing routines.
