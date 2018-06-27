@@ -27,8 +27,9 @@ The following generic options affect the amount of information written to standa
 | Option      | Short Version | Description                                    |
 |:------------|:--------------|:-----------------------------------------------|
 | `--debug`   |               | **DEPRECATED** Enables trace-level debugging (alias for `--verbose`). Use the [log_level method][] instead. |
-| `--silent`  |               | **DEPRECATED** Don't write logs to standard out. |
+| `--silent`  |               | Don't write logs to standard out and standard error during startup. Recommended when starting `rippled` as a systemd unit to reduce redundant logging. |
 | `--verbose` | `-v`          | **DEPRECATED** Enables trace-level debugging. Use the [log_level method][] instead. |
+
 
 
 ## Daemon Mode Options
@@ -111,11 +112,14 @@ If unit testing reports a failure, that generally indicates one of the following
 - The source code for `rippled` contains a bug
 - A unit test has a bug or has not been updated to account for new behavior
 
-While running unit tests, you can also provide the following options:
+While running unit tests, you can specify the [Generic Options](#generic-options) in addition to any of the following options:
 
-| Option    | Short Version | Description                                      |
-|:----------|:--------------|:-------------------------------------------------|
-| `--quiet` | `-q`          | Print fewer diagnostic messages to standard out while running unit tests. |
+| Option                             | Short Version | Description             |
+|:-----------------------------------|:--------------|:------------------------|
+| `--unittest-jobs {NUMBER_OF_JOBS}` |               | Use the specified number of processes to run unit tests. This can finish running tests faster on multi-core systems. The `{NUMBER_OF_JOBS}` should be a positive integer indicating the number of processes to use. |
+| `--unittest-log`                   |               | Allow unit tests to write to logs even if `--quiet` is specified. (No effect otherwise.) |
+| `--quiet`                          | `-q`          | Print fewer diagnostic messages when running unit tests. |
+
 
 ### Specific Unit Tests
 
@@ -125,13 +129,17 @@ rippled --unittest={TEST_OR_PACKAGE_NAME}
 
 By default, `rippled` runs all unit tests except ones that are classified as "manual". You can run an individual test by specifying its name, or run a subset of tests by specifying a package name.
 
-The `print` unit test is a special case that prints a list of available tests:
+Tests are grouped into a hierarchy of packages separated by `.` characters and ending in the test case name.
+
+#### Printing Unit Tests
 
 ```bash
 rippled --unittest=print
 ```
 
-Tests are grouped into a hierarchy of packages separated by `.` characters and ending in the test case name.
+The `print` unit test is a special case that prints a list of available tests with their packages.
+
+#### Manual Unit Tests
 
 Certain unit tests are classified as "manual" because they take too long to run. These tests are marked with `|M|` in the output of the `print` unit test. Manual tests do not run by default when you run all unit tests or a package of unit tests. You can run manual tests individually by specifying the name of the test. For example:
 
@@ -142,6 +150,15 @@ Longest suite times:
    60.9s ripple.tx.OversizeMeta
 60.9s, 1 suite, 1 case, 9016 tests total, 0 failures
 ```
+
+#### Providing Arguments to Unit Tests
+
+Certain manual unit tests accept an argument. You can provide the argument with the following option:
+
+| Option                  | Description                                        |
+|:------------------------|:---------------------------------------------------|
+| `--unittest-arg {ARG}`  | Provide the argument `{ARG}` to the unit test(s) currently being run. Each unit test that accepts arguments defines its own argument format.  |
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

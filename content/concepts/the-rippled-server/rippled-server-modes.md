@@ -58,7 +58,7 @@ When you run `rippled` in stand-alone mode, you have to tell it what ledger vers
 * Create a [new genesis ledger](start-a-new-genesis-ledger-in-stand-alone-mode.html) from scratch.
 * [Load an existing ledger version](load-a-saved-ledger-in-stand-alone-mode.html) from disk.
 
-**Caution:** In stand-alone mode, you must [manually advance the
+**Caution:** In stand-alone mode, you must [manually advance the ledger](advance-the-ledger-in-stand-alone-mode.html).
 
 ## See Also
 
