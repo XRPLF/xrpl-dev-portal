@@ -4,7 +4,7 @@ XRP is not an issued currency. XRP is the only native asset on the XRP Ledger an
 
 All non-XRP currencies can be represented in the XRP Ledger as issued currencies. These issued currencies (sometimes called "issuances" or "IOUs") are tracked in accounting relationships, called "trust lines," between addresses. Issued currencies are typically considered as liabilities from one perspective and assets from the other, so the balance of a trust line is negative or positive depending on which side you view it from. Any address may freely issue (non-XRP) currencies, limited only by how much other addresses are willing to hold.
 
-In certain cases, to meet regulatory requirements, or while investigating suspicious activity, an exchange or gateway may want to quickly freeze non-XRP issued currency balances to temporarily prevent unauthorized withdrawals.
+In certain cases, to meet regulatory requirements, or while investigating suspicious activity, an exchange or gateway may want to quickly freeze non-XRP issued currency balances.
 
 **Tip:** No one can freeze XRP.
 
