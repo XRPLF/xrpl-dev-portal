@@ -20,9 +20,19 @@
             </div><!--/.card-header-->
             <div class="card-body">
               <p class="blurb">{{page.blurb}}</p>
-              {% set depth = 1 %}
-              {% set parent_page = page %}
-              {% include 'template-page-children.html' %}
+              {% if page.curated_anchors is defined %}
+                <div class="curated-links">
+                  <ul>
+                    {% for link in page.curated_anchors %}
+                    <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div><!--/.curated-links-->
+              {% else %}
+                {% set depth = 1 %}
+                {% set parent_page = page %}
+                {% include 'template-page-children.html' %}
+              {% endif %}
             </div><!--/.card-body-->
             <div class="card-footer">
               <div class="readmore">

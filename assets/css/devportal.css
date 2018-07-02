@@ -188,6 +188,7 @@ th {
 
 .content table code {
   word-break: normal;
+  white-space: nowrap;
 }
 
 /* Big draft warning at top of page so it's hard to mix up with the live site */
