@@ -14,7 +14,7 @@ The `rippled` executable usually runs as a daemon that powers the XRP Ledger, al
 
 ## Generic Options
 
-These options are apply to most modes:
+These options apply to most modes:
 
 | Option          | Description                                                |
 |:----------------|:-----------------------------------------------------------|
@@ -46,7 +46,7 @@ Daemon mode is the default mode of operation for `rippled`. In addition to the [
 | `--import`          | Before fully starting, import ledger data from another `rippled` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
 | `--net`             | **DEPRECATED** Intended for debugging: do not build a local ledger until one can be obtained from the network. |
 | `--nodetoshard`     | Before fully starting, copy any complete [history shards](history-sharding.html) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
-| `--quorum {QUORUM}` | This option is intended for bootstrapping [test networks](parallel-networks.html). Override the minimum quorum for validation by requiring a agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
+| `--quorum {QUORUM}` | This option is intended for bootstrapping [test networks](parallel-networks.html). Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
 | `---validateShards` | Check that the data in the shard store is valid and consistent with the network history. For more information on the shard store, see [History Sharding](history-sharding.html). |
 
 ## Stand-Alone Mode Options
@@ -104,7 +104,7 @@ rippled --unittest [OPTIONS]
 rippled -u [OPTIONS]
 ```
 
-Unit testing runs tests built into the `rippled` source code to confirm that the executable performs as expected. This includes things like testing built-in data types and transaction processing routines.
+Unit testing runs tests built into the `rippled` source code to confirm that the executable performs as expected. After running unit tests, the process displays a summary of results and exits. Unit tests cover functionality such as built-in data types and transaction processing routines.
 
 If unit testing reports a failure, that generally indicates one of the following:
 
@@ -141,7 +141,7 @@ The `print` unit test is a special case that prints a list of available tests wi
 
 #### Manual Unit Tests
 
-Certain unit tests are classified as "manual" because they take too long to run. These tests are marked with `|M|` in the output of the `print` unit test. Manual tests do not run by default when you run all unit tests or a package of unit tests. You can run manual tests individually by specifying the name of the test. For example:
+Certain unit tests are classified as "manual" because they take a long time to complete. These tests are marked with `|M|` in the output of the `print` unit test. Manual tests do not run by default when you run all unit tests or a package of unit tests. You can run manual tests individually by specifying the name of the test. For example:
 
 ```bash
 $ ./rippled --unittest=ripple.tx.OversizeMeta
