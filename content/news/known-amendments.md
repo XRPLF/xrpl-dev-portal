@@ -5,6 +5,7 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                      | Introduced | Status                              |
 |:--------------------------|:-----------|:------------------------------------|
+| [DepositPreauth][]        | v1.1.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Checks][]                | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][] | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
@@ -90,7 +91,17 @@ As an exception, accounts with `DepositAuth` enabled can receive Payment transac
 
 Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the DisallowXRP flag, which is meant to be a non-binding advisory flag. (By not enforcing DisallowXRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](reserves.html) and pay [transaction costs](transaction-cost.html).)
 
-**Caution:** This amendment is [in development](https://github.com/ripple/rippled/pull/2239) and is expected for `rippled` v0.90.0.
+
+## DepositPreauth
+[DepositPreauth]: #depositpreauth
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194 | In Development |
+
+Provides users of [deposit authorization](depositauth.html) with a way to preauthorize specific senders so those senders are allowed to send payments directly.
+
+Adds a new transaction type, DepositPreauth for adding or removing preauthorization, and a DepositPreauth ledger object type for tracking preauthorizations from one account to another. Adds a JSON-RPC command, `deposit_authorized`, to query whether an account is authorized to send payments directly to another.
 
 
 ## EnforceInvariants

@@ -10,17 +10,17 @@
     <th>Transaction Type</th>
     <th>Sent by Destination</th><th>Sent by Others</th>
     <th class="depauth-spacer">&nbsp;</th>
-    <th>Sent by Destination</th><th>Sent by Others</th>
+    <th>Sent by Destination</th><th>Sent by Others</th><th>Sent by Preauthorized Others</th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td class="depauth-txtype">AccountSet</td>
-    <td colspan="5" class="depauth-na">(This transaction type never sends money.)</td>
+    <td colspan="6" class="depauth-na">(This transaction type never sends money.)</td>
   </tr>
   <tr>
     <td class="depauth-txtype">CheckCancel</td>
-    <td colspan="5" class="depauth-na">(This transaction type never sends money.)</td>
+    <td colspan="6" class="depauth-na">(This transaction type never sends money.)</td>
   </tr>
   <tr>
     <td class="depauth-txtype">CheckCash</td>
@@ -29,18 +29,19 @@
     <td class="depauth-spacer">&nbsp;</td>
     <td class="depauth-ok">OK</td>
     <td class="depauth-no">No Permission</td>
+    <td class="depauth-no">No Permission</td>
   </tr>
   <tr>
     <td class="depauth-txtype">CheckCreate</td>
-    <td colspan="5" class="depauth-na">(This transaction type never sends money.)</td>
+    <td colspan="6" class="depauth-na">(This transaction type never sends money.)</td>
   </tr>
   <tr>
     <td class="depauth-txtype">EscrowCancel</td>
-    <td class="depauth-maybe" colspan="5">Can return XRP from an expired escrow</td>
+    <td class="depauth-maybe" colspan="6">Can return XRP from an expired escrow</td>
   </tr>
   <tr>
     <td class="depauth-txtype">EscrowCreate</td>
-    <td colspan="5" class="depauth-na">(This transaction type can only debit XRP, not credit it.)</td>
+    <td colspan="6" class="depauth-na">(This transaction type can only debit XRP, not credit it.)</td>
   </tr>
   <tr>
     <td class="depauth-txtype">EscrowFinish</td>
@@ -49,10 +50,11 @@
     <td class="depauth-spacer">&nbsp;</td>
     <td class="depauth-ok">OK</td>
     <td class="depauth-no">No Permission</td>
+    <td class="depauth-ok">OK</td>
   </tr>
   <tr>
     <td class="depauth-txtype">OfferCancel</td>
-    <td colspan="5" class="depauth-na">This transaction type never sends money.</td>
+    <td colspan="6" class="depauth-na">This transaction type never sends money.</td>
   </tr>
   <tr>
     <td class="depauth-txtype">OfferCreate</td>
@@ -60,6 +62,7 @@
     <td class="depauth-maybe">Only if account previously created a matching offer</td>
     <td class="depauth-spacer">&nbsp;</td>
     <td class="depauth-ok">OK</td>
+    <td class="depauth-maybe">Only if account previously created a matching offer</td>
     <td class="depauth-maybe">Only if account previously created a matching offer</td>
   </tr>
   <tr>
@@ -69,6 +72,7 @@
     <td class="depauth-spacer">&nbsp;</td>
     <td class="depauth-no">No Permission</td>
     <td class="depauth-no">No Permission</td>
+    <td class="depauth-ok">OK</td>
   </tr>
   <tr>
     <td class="depauth-txtype">Payment <div class="depauth-subtype">(If account XRP balance is below the minimum XRP reserve)</div></td>
@@ -77,6 +81,7 @@
     <td class="depauth-spacer">&nbsp;</td>
     <td class="depauth-no">No Permission</td>
     <td class="depauth-maybe">XRP payments up to the minimum reserve</td>
+    <td class="depauth-ok">OK</td>
   </tr>
   <tr>
     <td class="depauth-txtype">Payment <div class="depauth-subtype">(If account has any trust lines with NoRipple disabled)</div></td>
@@ -85,6 +90,7 @@
     <td class="depauth-spacer">&nbsp;</td>
     <td class="depauth-no">No Permission</td>
     <td class="depauth-maybe">Balance changes from rippling</td>
+    <td class="depauth-ok">OK</td>
   </tr>
   <tr>
     <td class="depauth-txtype">Payment <div class="depauth-subtype">(If account has placed offers)</div></td>
@@ -93,6 +99,7 @@
     <td class="depauth-spacer">&nbsp;</td>
     <td class="depauth-no">No Permission</td>
     <td class="depauth-maybe">Balance changes from executing offers</td>
+    <td class="depauth-ok">OK</td>
   </tr>
   <tr>
     <td class="depauth-txtype">PaymentChannelClaim</td>
@@ -101,26 +108,27 @@
     <td class="depauth-spacer">&nbsp;</td>
     <td class="depauth-ok">OK</td>
     <td class="depauth-no">No Permission</td>
+    <td class="depauth-ok">OK</td>
   </tr>
   <tr>
     <td class="depauth-txtype">PaymentChannelCreate</td>
-    <td colspan="5" class="depauth-na">(This transaction type can only debit XRP, not credit it.)</td>
+    <td colspan="6" class="depauth-na">(This transaction type can only debit XRP, not credit it.)</td>
   </tr>
   <tr>
     <td class="depauth-txtype">PaymentChannelFund</td>
-    <td class="depauth-maybe" colspan="5">Can return XRP when closing a channel created by self</td>
+    <td class="depauth-maybe" colspan="6">Can return XRP when closing a channel created by self</td>
   </tr>
   <tr>
     <td class="depauth-txtype">SetRegularKey</td>
-    <td colspan="5" class="depauth-na">(This transaction type never sends money.)</td>
+    <td colspan="6" class="depauth-na">(This transaction type never sends money.)</td>
   </tr>
   <tr>
     <td class="depauth-txtype">SignerListSet</td>
-    <td colspan="5" class="depauth-na">(This transaction type never sends money.)</td>
+    <td colspan="6" class="depauth-na">(This transaction type never sends money.)</td>
   </tr>
   <tr>
     <td class="depauth-txtype">TrustSet</td>
-    <td colspan="5" class="depauth-na">(This transaction type never sends money.)</td>
+    <td colspan="6" class="depauth-na">(This transaction type never sends money.)</td>
   </tr>
 </table>
 
