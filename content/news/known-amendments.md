@@ -5,13 +5,14 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                      | Introduced | Status                              |
 |:--------------------------|:-----------|:------------------------------------|
-| [DepositPreauth][]        | v1.1.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Checks][]                | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [CryptoConditionsSuite][] | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [OwnerPaysFee][]          | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [SHAMapV2][]              | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Tickets][]               | TBD        | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [DepositPreauth][]        | v1.1.0     | [Planned: TBD]( "BADGE_LIGHTGREY")  |
+| [fix1515][]               | v1.1.0     | [Planned: TBD]( "BADGE_LIGHTGREY")  |
+| [Checks][]                | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY")  |
+| [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY")  |
+| [CryptoConditionsSuite][] | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [OwnerPaysFee][]          | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [SHAMapV2][]              | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [Tickets][]               | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fix1543][]               | v1.0.0     | [Enabled: 2018-06-21](https://xrpcharts.ripple.com/#/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
 | [fix1623][]               | v1.0.0     | [Enabled: 2018-06-20](https://xrpcharts.ripple.com/#/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB "BADGE_GREEN") |
 | [fix1571][]               | v1.0.0     | [Enabled: 2018-06-19](https://xrpcharts.ripple.com/#/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC "BADGE_GREEN") |
@@ -69,7 +70,7 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 | Planned   |
+| 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 | In Development |
 
 Implements several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions. Without this amendment, only the PREIMAGE-SHA-256 type is supported.
 
@@ -214,6 +215,18 @@ Fixes a bug that resulted in transaction processing not using new `STAmountCalcS
 With this amendment, the new `STAmountCalcSwitchovers` code applies, which may cause slight changes to transaction processing due to calculation differences. Amounts may be rounded differently and offers may be executed in a different order as a result.
 
 
+## fix1515
+[fix1515]: #fix1515
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE | Planned   |
+
+Fixes a bug that can occur when a cross-currency payment attempts to consume a large number of offers at the same exchange rate. (Also applies to offers if [FlowCross][] is enabled.) Without the amendment, payment processing gives up on using particular order books if processing the order book would require consuming over 2000 offers.
+
+With this amendment, if a transaction processes over 1000 offers at the same exchange rate, the payment correctly consumes the liquidity from those offers, then moves on to other paths or exchange rates to finish processing the transaction.
+
+
 ## fix1523
 [fix1523]: #fix1523
 
@@ -349,7 +362,7 @@ An address with a SignerList can disable the master key even if a regular key is
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | Planned   |
+| 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | In Development |
 
 Fixes an inconsistency in the way [transfer fees](transfer-fees.html) are calculated between [OfferCreate](offercreate.html) and [Payment](payment.html) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
@@ -377,7 +390,7 @@ For more information, see the [Payment Channels Tutorial](use-payment-channels.h
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | Planned   |
+| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | In Development |
 
 Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
 
@@ -411,7 +424,7 @@ This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | Planned   |
+| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | In Development |
 
 Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the `Ticket` ledger object type and the transaction types `TicketCreate` and `TicketCancel`.
 
