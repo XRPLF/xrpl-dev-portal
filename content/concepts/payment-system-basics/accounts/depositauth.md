@@ -12,7 +12,9 @@ Financial services regulations and licenses may require that a business or entit
 
 The Deposit Authorization flag introduces an option for those using the XRP Ledger to comply with such regulations without changing the fundamental nature of the decentralized ledger. With Deposit Authorization enabled, an account can only receive funds it explicitly approves by sending a transaction. The owner of an account using Deposit Authorization can perform the due diligence necessary to identify the sender of any funds _before_ sending the transaction that causes the account to receive the money.
 
-Deposit Authorization is intended to be used with [Checks](known-amendments.html#checks), [Escrow](escrow.html), and [Payment Channels](known-amendments.html#paychan). In this "two-step" model, first the source sends a transaction to authorize sending funds, then the destination sends a transaction to authorize receiving those funds. Deposit Authorization cannot be used with [Payment transactions][].
+When you have Deposit Authorization enabled, you can receive money from [Checks](known-amendments.html#checks), [Escrow](escrow.html), and [Payment Channels](known-amendments.html#paychan). In these transactions' "two-step" model, first the source sends a transaction to authorize sending funds, then the destination sends a transaction to authorize receiving those funds.
+
+To receive money from [Payment transactions][] when you have Deposit Authorization enabled, you must [preauthorize](#preauthorization) the senders of those Payments. _(Requires the [DepositPreauth amendment][])_
 
 ## Recommended Usage
 
@@ -24,12 +26,17 @@ To get the full effect of Deposit Authorization, Ripple recommends also doing th
 
 ## Precise Semantics
 
-An account with Deposit Authorization enabled:x
+An account with Deposit Authorization enabled:
 
-- **Cannot** be the destination of [Payment transactions][], with **one exception**:
+- **Cannot** be the destination of [Payment transactions][], with **the following exceptions**:
+    - If the destination has [preauthorized](#preauthorization) the sender of the Payment. _(Requires the [DepositPreauth amendment][])_
     - If the account's XRP balance is equal to or below the minimum account [reserve requirement](reserves.html), it can be the destination of an XRP Payment whose `Amount` is equal or less than the minimum account reserve (currently 20 XRP). This is to prevent an account from becoming "stuck" by being unable to send transactions but also unable to receive XRP. The account's owner reserve does not matter for this case.
-- Can receive XRP from [PaymentChannelClaim transactions][] **only if** the sender of the PaymentChannelClaim transaction is the destination of the payment channel.
-- Can receive XRP from [EscrowFinish transactions][] **only if** the sender of the EscrowFinish transaction is the destination of the escrow.
+- Can receive XRP from [PaymentChannelClaim transactions][] **only in the following cases**:
+    - The sender of the PaymentChannelClaim transaction is the destination of the payment channel.
+    - The destination of the PaymentChannelClaim transaction has [preauthorized](#preauthorization) the sender of the PaymentChannelClaim. _(Requires the [DepositPreauth amendment][])_
+- Can receive XRP from [EscrowFinish transactions][] **only in the following cases**:
+    - The sender of the EscrowFinish transaction is the destination of the escrow.
+    - The destination of the EscrowFinish transaction has [preauthorized](#preauthorization) the sender of the EscrowFinish. _(Requires the [DepositPreauth amendment][])_
 - **Can** receive XRP or issued currencies by sending a [CheckCash][] transaction. _(Requires the [Checks amendment](known-amendments.html#checks).)_
 - **Can** receive XRP or issued currencies by sending [OfferCreate transactions][].
     - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the remainder of the ordered XRP or issued currency later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
@@ -55,14 +62,38 @@ To see whether an account has Deposit Authorization enabled, use the [account_in
 
 If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (0x01000000) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.
 
+## Preauthorization
+
+_(Requires the [DepositPreauth amendment][])_
+
+Accounts with DepositAuth enabled can _preauthorize_ certain senders, to allow payments from those senders to succeed even with DepositAuth enabled. This allows specific senders to send funds directly without the receiver taking action on each transaction individually. Preauthorization is not required to use DepositAuth, but can make certain operations more convenient.
+
+Preauthorization is currency-agnostic. You cannot preauthorize accounts for specific currencies only.
+
+To preauthorize a particular sender, send a DepositPreauth transaction <!--{# TODO: link when the transaction reference is updated #}--> with the address of another account to preauthorize in the `Authorize` field. To revoke preauthorization, provide the other account's address in the `Unauthorize` field instead. Specify your own address in the `Account` field as usual. You can preauthorize or unauthorize accounts even if you do not currently have DepositAuth enabled; the preauthorization status you set for other accounts is saved, but has no effect unless you enable DepositAuth. An account cannot preauthorize itself.
+
+Preauthorizing another account adds an object to the ledger, which increases the [owner reserve](reserves.html#owner-reserves) of the account providing the authorization. If the account revokes this preauthorization, doing so removes the object and the reserve decreases accordingly.
+
+After the DepositPreauth transaction has been processed, the authorized account can send funds to your account, even if you have DepositAuth enabled, using any of the following transaction types:
+
+- [Payment][]
+- [EscrowFinish][]
+- [PaymentChannelClaim][]
+
+Preauthorization has no effect on the other ways to send money to an account with DepositAuth enabled. See [Precise Semantics](#precise-semantics) for the exact rules.
+
+
 ## See Also
 
 - The [Authorized Trust Lines](authorized-trust-lines.html) feature (`RequireAuth` flag) limits which counterparties can hold non-XRP currencies issued by an account.
 - The `DisallowXRP` flag indicates that an account should not receive XRP. This is a softer protection than Deposit Authorization, and is not enforced by the XRP Ledger. (Client applications should honor this flag or at least warn about it.)
 - The `RequireDest` flag indicates that an account can only receive currency amounts if the sending transaction specifies a [Destination Tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags). This protects users from forgetting to indicate the purpose of a payment, but does not protect recipients from unknown senders, who can make up arbitrary destination tags.
 - [Partial Payments](partial-payments.html) provide a way for accounts to return unwanted payments while subtracting [transfer fees](transfer-fees.html) and exchange rates from the amount delivered instead of adding them to the amount sent.
+<!--{# TODO: Add links for Preauth-related reference material DOC-1652 #}-->
+<!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
 
 <!--{# common link defs #}-->
+[DepositPreauth amendment]: known-amendments.html#depositpreauth
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}
