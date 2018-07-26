@@ -1854,6 +1854,17 @@ pages:
         targets:
             - local
 
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/depositpreauth.md
+        html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A record of preauthorization for sending payments to an account that requires authorization.
+        targets:
+            - local
+
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.md
         html: directorynode.html
         funnel: Docs
@@ -2016,6 +2027,17 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Create a check.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.md
+        html: depositpreauth.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Preauthorizes an account to send payments to this one.
         targets:
             - local
 
