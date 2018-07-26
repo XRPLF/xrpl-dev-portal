@@ -222,9 +222,13 @@ With this amendment, the new `STAmountCalcSwitchovers` code applies, which may c
 |:-----------------------------------------------------------------|:----------|
 | 5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE | Planned   |
 
-Fixes a bug that can occur when a cross-currency payment attempts to consume a large number of offers at the same exchange rate. (Also applies to offers if [FlowCross][] is enabled.) Without the amendment, payment processing gives up on using particular order books if processing the order book would require consuming over 2000 offers.
+Changes how Payment transactions consume offers to remove a minor difference in how payment processing and offer processing consume liquidity. (Also affects how OfferCreate transactions are processed if [FlowCross][] is enabled.)
 
-With this amendment, if a transaction processes over 1000 offers at the same exchange rate, the payment correctly consumes the liquidity from those offers, then moves on to other paths or exchange rates to finish processing the transaction.
+Without the amendment, payment processing gives up on using particular order books if the transaction would consume over 2000 offers at the same exchange rate. In this case, the payment does not use the liquidity from those offers, and does not consider that order book's remaining liquidity when attempting to complete the payment.
+
+With this amendment, if any transaction processes over 1000 offers at the same exchange rate, the transaction consumes the liquidity from the first 1000 offers, then does not consider that order book's remaining liquidity when attempting to complete the payment.
+
+In both cases, transaction processing can still complete by using liquidity from other paths or exchange rates.
 
 
 ## fix1523
