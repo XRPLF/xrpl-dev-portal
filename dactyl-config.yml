@@ -1329,6 +1329,17 @@ pages:
         targets:
             - local
 
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.md
+        html: deposit_authorized.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        blurb: Check whether an account is authorized to send money directly to another.
+        targets:
+            - local
+
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md
         html: path_find.html
         funnel: Docs

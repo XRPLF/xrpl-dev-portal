@@ -52,6 +52,7 @@ This method can retrieve several different types of data. You can select which t
 6. `check` - Retrieve a [Check object](check.html), which is a potential payment that can be cashed by its recipient. [New in: rippled 1.0.0][]
 7. `escrow` - Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specific time or condition is met. [New in: rippled 1.0.0][]
 8. `payment_channel` - Retireve a [PayChannel object](paychannel.html), which holds XRP for asynchronous payments. [New in: rippled 1.0.0][]
+9. `deposit_preauth` - Retrieve a [DepositPreauth object](depositpreauth-object.html), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](depositauth.html). [New in: rippled 1.1.0][]
 
 If you specify more than one of the above items, the server retrieves only one of them; it is undefined which it chooses.
 
@@ -62,13 +63,16 @@ The full list of parameters recognized by this method is as follows:
 | `index`                 | String                     | _(Optional)_ Specify the [object ID](ledger-object-ids.html) of a single object to retrieve from the ledger. |
 | `account_root`          | String - [Address][]       | _(Optional)_ Specify an [AccountRoot object](accountroot.html) to retrieve. |
 | `check`                 | String                     | _(Optional)_ Specify the [object ID](ledger-object-ids.html) of a [Check object](check.html) to retrieve. |
+| `deposit_preauth`       | Object or String           | _(Optional)_ Specify a [DepositPreauth object](depositpreauth-object.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the DepositPreauth object, as hexadecimal. If an object, requires `owner` and `authorized` sub-fields. |
+| `deposit_preauth.owner` | String - [Address][]       | _(Required if `deposit_preauth` is specified as an object)_ The account that provided the preauthorization. |
+| `deposit_preauth.authorized` | String - [Address][]  | _(Required if `deposit_preauth` is specified as an object)_ The account that received the preauthorization. |
 | `directory`             | Object or String           | _(Optional)_ Specify a [DirectoryNode](directorynode.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
 | `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [DirectoryNode](directorynode.html). |
-| `directory.dir_root`    | String                     | (Required if `directory` is specified as an object and `directory.owner` is not provided) Unique index identifying the directory to retrieve, as a hex string. |
-| `directory.owner`       | String                     | (Required if `directory` is specified as an object and `directory.dir_root` is not provided) Unique address of the account associated with this directory |
+| `directory.dir_root`    | String                     | _(Required if `directory` is specified as an object and `directory.owner` is not provided)_ Unique index identifying the directory to retrieve, as a hex string. |
+| `directory.owner`       | String                     | _(Required if `directory` is specified as an object and `directory.dir_root` is not provided)_ Unique address of the account associated with this directory |
 | `escrow` | Object or String | _(Optional)_ Specify an [Escrow object](escrow-object.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
-| `escrow.owner` | String - [Address][] | (Required if `escrow` is specified as an object) The owner (sender) of the Escrow object. |
-| `escrow.seq` | Unsigned Integer | (Required if `escrow` is specified as an object) The sequence number of the transaction that created the Escrow object. |
+| `escrow.owner` | String - [Address][] | _(Required if `escrow` is specified as an object)_ The owner (sender) of the Escrow object. |
+| `escrow.seq` | Unsigned Integer | _(Required if `escrow` is specified as an object)_ The sequence number of the transaction that created the Escrow object. |
 | `offer`                 | Object or String           | _(Optional)_ Specify an [Offer object](offer.html) to retrieve. If a string, interpret as the [unique index](ledgers.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
 | `offer.account`         | String - [Address][]       | (Required if `offer` specified) The account that placed the offer. |
 | `offer.seq`             | Unsigned Integer           | (Required if `offer` specified) The sequence number of the transaction that created the Offer object. |
