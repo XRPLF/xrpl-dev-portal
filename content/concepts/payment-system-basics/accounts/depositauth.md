@@ -70,7 +70,7 @@ Accounts with DepositAuth enabled can _preauthorize_ certain senders, to allow p
 
 Preauthorization is currency-agnostic. You cannot preauthorize accounts for specific currencies only.
 
-To preauthorize a particular sender, send a DepositPreauth transaction <!--{# TODO: link when the transaction reference is updated #}--> with the address of another account to preauthorize in the `Authorize` field. To revoke preauthorization, provide the other account's address in the `Unauthorize` field instead. Specify your own address in the `Account` field as usual. You can preauthorize or unauthorize accounts even if you do not currently have DepositAuth enabled; the preauthorization status you set for other accounts is saved, but has no effect unless you enable DepositAuth. An account cannot preauthorize itself.
+To preauthorize a particular sender, send a [DepositPreauth transaction][] with the address of another account to preauthorize in the `Authorize` field. To revoke preauthorization, provide the other account's address in the `Unauthorize` field instead. Specify your own address in the `Account` field as usual. You can preauthorize or unauthorize accounts even if you do not currently have DepositAuth enabled; the preauthorization status you set for other accounts is saved, but has no effect unless you enable DepositAuth. An account cannot preauthorize itself.
 
 Preauthorizing another account adds an object to the ledger, which increases the [owner reserve](reserves.html#owner-reserves) of the account providing the authorization. If the account revokes this preauthorization, doing so removes the object and the reserve decreases accordingly.
 
@@ -82,9 +82,19 @@ After the DepositPreauth transaction has been processed, the authorized account 
 
 Preauthorization has no effect on the other ways to send money to an account with DepositAuth enabled. See [Precise Semantics](#precise-semantics) for the exact rules.
 
+### Checking for Authorization
+
+You can use the [deposit_authorized method][] to see if an account is authorized to deposit to another account. This method checks two things:
+
+- Whether the destination account requires Deposit Authorization. (If it does not require authorization, then all source accounts are considered authorized.)
+- Whether the source account is preauthorized to send money to the destination.
+
 
 ## See Also
 
+- The [DepositPreauth transaction][] reference.
+- The [DepositPreauth ledger object type](depositpreauth-object.html).
+- The [deposit_authorized method][] of the [`rippled` API](rippled-api.html).
 - The [Authorized Trust Lines](authorized-trust-lines.html) feature (`RequireAuth` flag) limits which counterparties can hold non-XRP currencies issued by an account.
 - The `DisallowXRP` flag indicates that an account should not receive XRP. This is a softer protection than Deposit Authorization, and is not enforced by the XRP Ledger. (Client applications should honor this flag or at least warn about it.)
 - The `RequireDest` flag indicates that an account can only receive currency amounts if the sending transaction specifies a [Destination Tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags). This protects users from forgetting to indicate the purpose of a payment, but does not protect recipients from unknown senders, who can make up arbitrary destination tags.

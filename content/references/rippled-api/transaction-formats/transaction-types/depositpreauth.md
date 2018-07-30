@@ -10,7 +10,14 @@ A DepositPreauth transaction gives another account pre-approval to deliver payme
 ## Example {{currentpage.name}} JSON
 
 ```json
-TODO
+{
+  "TransactionType" : "DepositPreauth",
+  "Account" : "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+  "Authorize" : "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
+  "Fee" : "10",
+  "Flags" : 2147483648,
+  "Sequence" : 2
+}
 ```
 
 {% include '_snippets/tx-fields-intro.md' %}

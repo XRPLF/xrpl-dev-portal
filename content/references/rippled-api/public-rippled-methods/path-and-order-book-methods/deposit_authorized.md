@@ -14,8 +14,8 @@ An example of the request format:
 {
   "id": 1,
   "command": "deposit_authorized",
-  "source_account": "rnUy2SHTrB9DubsPmkJZUXTf5FcNDGrYEA",
-  "destination_account": "rDg53Haik2475DJx8bjMDSDPj4VX7htaMd",
+  "source_account": "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
+  "destination_account": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
   "ledger_index": "validated"
 }
 ```
@@ -27,8 +27,8 @@ An example of the request format:
   "method": "deposit_authorized",
   "params": [
     {
-      "source_account": "rnUy2SHTrB9DubsPmkJZUXTf5FcNDGrYEA",
-      "destination_account": "rDg53Haik2475DJx8bjMDSDPj4VX7htaMd",
+      "source_account": "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
+      "destination_account": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
       "ledger_index": "validated"
     }
   ]
@@ -39,7 +39,7 @@ An example of the request format:
 
 ```bash
 #Syntax: deposit_authorized <source_account> <destination_account> [<ledger>]
-rippled deposit_authorized rnUy2SHTrB9DubsPmkJZUXTf5FcNDGrYEA rDg53Haik2475DJx8bjMDSDPj4VX7htaMd validated
+rippled deposit_authorized rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8 validated
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -63,23 +63,53 @@ An example of a successful response:
 *WebSocket*
 
 ```json
-TODO
+{
+  "id": 1,
+  "result": {
+    "deposit_authorized": true,
+    "destination_account": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+    "ledger_hash": "BD03A10653ED9D77DCA859B7A735BF0580088A8F287FA2C5403E0A19C58EF322",
+    "ledger_index": 8,
+    "source_account": "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
+    "validated": true
+  },
+  "status": "success",
+  "type": "response"
+}
 ```
 
 *JSON-RPC*
 
 ```json
 {
-  "result":
-  {
+  "result": {
     "deposit_authorized": true,
-    "destination_account": "rDg53Haik2475DJx8bjMDSDPj4VX7htaMd",
-    "ledger_hash": "4C99E5F63C0D0B1C2283B4F5DCE2239F80CE92E8B1A6AED1E110C198FC96E659",
-    "ledger_index": 14380380,
-    "source_account": "rnUy2SHTrB9DubsPmkJZUXTf5FcNDGrYEA",
+    "destination_account": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+    "ledger_hash": "BD03A10653ED9D77DCA859B7A735BF0580088A8F287FA2C5403E0A19C58EF322",
+    "ledger_index": 8,
+    "source_account": "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
     "status": "success",
     "validated": true
   }
+}
+```
+
+*Commandline*
+
+```json
+Loading: "/etc/rippled.cfg"
+2018-Jul-30 20:07:38.771658157 HTTPClient:NFO Connecting to 127.0.0.1:5005
+
+{
+   "result" : {
+      "deposit_authorized" : true,
+      "destination_account" : "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+      "ledger_hash" : "BD03A10653ED9D77DCA859B7A735BF0580088A8F287FA2C5403E0A19C58EF322",
+      "ledger_index" : 8,
+      "source_account" : "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
+      "status" : "success",
+      "validated" : true
+   }
 }
 ```
 
@@ -103,7 +133,8 @@ The response follows the [standard format][], with a successful result containin
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actNotFound` - An [Address][] specified in the `source_account` or `destination_account` field of the request does not correspond to an account in the ledger.
+* `actMalformed` - An [Address][] specified in the `source_account` or `destination_account` field of the request was not properly formatted. (It may contain a typo or be the wrong length, causing a failed checksum.)
+* `dstActMissing` - The `destination_account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
