@@ -4,7 +4,7 @@
 
 For an overview of `rippled`, see [Operating rippled Servers](install-rippled.html).
 
-Use these instructions to build a `rippled` executable from source version 1.0.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.
+Use these instructions to build a `rippled` executable from source version 1.1.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.
 
 For information about building `rippled` for other platforms, see [Builds](https://github.com/ripple/rippled/tree/develop/Builds) in the `rippled` GitHub repository.
 
@@ -59,21 +59,21 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 9. Compile Boost.
 
-    The recommended Boost version is 1.64.0. Because Boost version 1.64.0 isn't available in the Ubuntu 16.04 repos, you must compile it yourself.
+    The recommended Boost version is 1.67.0. Because Boost version 1.67.0 isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
 
-    If you have previously built Boost 1.64.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
+    If you have previously built Boost 1.67.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
-      1. Download Boost 1.64.0.
+      1. Download Boost 1.67.0.
 
-              wget https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.gz
+              wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz
 
-      2. Untar `boost_1_64_0.tar.gz`.
+      2. Untar `boost_1_67_0.tar.gz`.
 
-              tar xvzf boost_1_64_0.tar.gz
+              tar xvzf boost_1_67_0.tar.gz
 
-      3. Access the new `boost_1_64_0` directory:
+      3. Access the new `boost_1_67_0` directory:
 
-              cd boost_1_64_0
+              cd boost_1_67_0
 
       4. To prepare the Boost.Build system for use, run:
 
@@ -83,9 +83,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
               ./b2 -j <number of parallel jobs>
 
-      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_64_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_67_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-              export BOOST_ROOT=/home/ubuntu/boost_1_64_0
+              export BOOST_ROOT=/home/ubuntu/boost_1_67_0
 
       7. Source your updated `.profile` file. For example:
 
@@ -99,6 +99,8 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
         git checkout master
 
 11. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
+
+    <!--{# TODO: Update with the version-setting commit from the v1.1.0 release #}-->
 
         $ git log
 
@@ -118,7 +120,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
               mkdir my_build
               cd my_build
-              cmake -Dtarget=gcc.debug.unity ..
+              cmake ..
+
+          **Tip:** The default build includes debugging symbols, which can be useful for development but are inefficient in production. To build `rippled` for use on production servers, add the `-DCMAKE_BUILD_TYPE=Release` flag when running the `cmake` command.
 
       2. Build the `rippled` binary executable. Replace `<number of parallel jobs>` with the number of jobs to run in parallel. Choose this value based on the number of CPU cores you want to use for building.
 
