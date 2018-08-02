@@ -32,32 +32,11 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
         sudo apt-get -y upgrade
 
-3. Install Git.
+3. Install dependencies.
 
-        sudo apt-get -y install git
+        sudo apt-get -y install git cmake pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget
 
-4. Install CMake.
-
-        sudo apt-get -y install cmake
-
-5. Install `pkg-config`.
-
-        sudo apt-get -y install pkg-config
-
-6. Install Protocol Buffers.
-
-        sudo apt-get -y install protobuf-compiler
-        sudo apt-get -y install libprotobuf-dev
-
-7. Install Secure Socket Layer (SSL) toolkit development files.
-
-        sudo apt-get -y install libssl-dev
-
-8. Install `wget` to be able to download Boost in the next step.
-
-        sudo apt-get -y install wget
-
-9. Compile Boost.
+4. Compile Boost.
 
     The recommended Boost version is 1.64.0. Because Boost version 1.64.0 isn't available in the Ubuntu 16.04 repos, you must compile it yourself.
 
@@ -79,40 +58,45 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
               ./bootstrap.sh
 
-      5. To invoke Boost.Build to build the separately-compiled Boost libraries, run the following command. Replace `<number of parallel jobs>` with the number of jobs to run in parallel. Choose this value based on the number of CPU cores you want to use for building. This may take about 10 minutes, depending on your hardware specs.
+      5. Set parallel jobs to the half the number of CPUs available on your box, with minimum of 1
+      
+              PROCESSORS=$(expr "`grep processor /proc/cpuinfo | wc -l`" / 2)
 
-              ./b2 -j <number of parallel jobs>
+      6. To invoke Boost.Build to build the separately-compiled Boost libraries, run the following command.
 
-      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_64_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+              ./b2 -j $PROCESSORS
 
-              export BOOST_ROOT=/home/ubuntu/boost_1_64_0
+      7. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_64_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-      7. Source your updated `.profile` file. For example:
+              cd ~
+              echo "export BOOST_ROOT=$PWD/boost_1_64_0" >> ~/.profile
+
+      8. Source your updated `.profile` file. For example:
 
               source ~/.profile
 
-10. From a working directory, get the `rippled` source code. The `master` branch has the latest released version.
+5. From a working directory, get the `rippled` source code. The `master` branch has the latest released version.
 
         cd ~
         git clone https://github.com/ripple/rippled.git
         cd rippled
         git checkout master
 
-11. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
+6. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
 
-        $ git log
+        $ git log -1
 
-        commit f31ca2860fb5f045b618aa05d1e76c7e2e9494ec (HEAD, tag: 1.0.0, origin/release, origin/master, master)
-        Author: Nikolaos D. Bougalis <nikb@bougalis.net>
-        Date:   Fri May 11 10:29:41 2018 -0700
+        commit 8429dd67e60ba360da591bfa905b58a35638fda1
+        Author: Nik Bougalis <nikb@bougalis.net>
+        Date:   Mon Jun 4 16:36:22 2018 -0700
 
-            Set version to 1.0.0
+            Set version to 1.0.1
 
-12. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
+7. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
 
     If this is your first time building `rippled` 1.0.0 or higher, you won't have a `my_build/` directory and can move on to the next step.
 
-13. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
+8. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
 
       1. Generate the build system. Builds should be performed in a directory that is separate from the source tree root. In this example, we'll use a `my_build` directory that is a subdirectory of `rippled`.
 
@@ -122,9 +106,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
       2. Build the `rippled` binary executable. Replace `<number of parallel jobs>` with the number of jobs to run in parallel. Choose this value based on the number of CPU cores you want to use for building.
 
-              cmake --build . -- -j <number of parallel jobs>
+              cmake --build . -- -j $PROCESSORS
 
-14. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
+9. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
 
         ./rippled -u
 
