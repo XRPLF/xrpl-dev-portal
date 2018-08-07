@@ -4340,7 +4340,6 @@ Optionally, you can provide the following query parameters:
 | `issuer`          | String - [Address][]       | Filter results to specified issuer. |
 | `source_tag`      | Integer                    | Filter results to specified source tag. |
 | `destination_tag` | Integer                    | Filter results to specified destination tag. |
-| `descending`      | Boolean                    | If `true`, sort results with most recent first. Otherwise, return oldest results first. The default is `false`. |
 | `limit`           | Integer                    | Maximum results per page. The default is 200. Cannot be more than 1,000. |
 | `marker`          | String                     | [Pagination](#pagination) key from previously returned response. |
 | `format`          | String                     | Format of returned results: `csv` or `json`. The default is `json`. |
@@ -4355,7 +4354,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `result`   | String                       | The value `success` indicates that this is a successful response. |
 | `count`    | Integer                      | The number of objects contained in the `payments` field. |
 | `marker`   | String                       | (May be omitted) [Pagination](#pagination) marker. |
-| `payments` | Array of [payment objects][] | All payments matching the request. |
+| `payments` | Array of [payment objects][] | All payments matching the request, sorted with oldest first. |
 
 #### Example
 
