@@ -54,6 +54,15 @@ targets:
             - html: ledger_entry.html
               date: 2018-06-07
 
+    # Data API target for porting changes to the README in the upstream repo
+    # Intended for use in markdown (--md) mode.
+    -   name: data-api-only
+        display_name: XRP Ledger Data API
+        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_branch: master
+        link_re_subs:
+           "([\\w-]+\\.html)": https://developers.ripple.com/\1
+
 pages:
 
     -   name: Docs
@@ -2328,6 +2337,7 @@ pages:
               anchor: "#api-conventions"
         targets:
             - local
+            - data-api-only
 
 
 # --------------- end "Docs" section -------------------------------------------
