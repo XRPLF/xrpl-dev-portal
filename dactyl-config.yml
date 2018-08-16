@@ -920,6 +920,14 @@ pages:
     # TODO: troubleshoot rippled,
     #  run a validator, run in stand-alone mode, set up private peers
 
+    -   md: tutorials/manage-the-rippled-server/sqlitepagesize.md
+        html: sqlitepagesize.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
 # References -------------------------------------------------------------------
 
     -   name: References
