@@ -50,7 +50,7 @@
 <body class="xrp-ledger-dev-portal {% if currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}{% block bodyclasses %}{% endblock %}">
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
-    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <a href="{% if target.no_cover %}/{% else %}index.html{% endif %}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
