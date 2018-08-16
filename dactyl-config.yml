@@ -60,6 +60,7 @@ targets:
         display_name: XRP Ledger Data API
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
+        no_cover: True
         link_re_subs:
            "([\\w-]+\\.html)": https://developers.ripple.com/\1
 
