@@ -920,8 +920,8 @@ pages:
     # TODO: troubleshoot rippled,
     #  run a validator, run in stand-alone mode, set up private peers
 
-    -   md: tutorials/manage-the-rippled-server/sqlitepagesize.md
-        html: sqlitepagesize.html
+    -   md: tutorials/manage-the-rippled-server/fix-sqlite-tx-db-page-size-issue.md
+        html: fix-sqlite-tx-db-page-size-issue.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
