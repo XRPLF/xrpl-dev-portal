@@ -459,6 +459,8 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         blurb: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system.
+        targets:
+            - local
 
     -   md: concepts/consensus-network/amendments.md
         html: amendments.html
