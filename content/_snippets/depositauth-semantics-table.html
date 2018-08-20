@@ -70,7 +70,7 @@
     <td class="depauth-maybe">Cross-currency only</td>
     <td class="depauth-ok">OK</td>
     <td class="depauth-spacer">&nbsp;</td>
-    <td class="depauth-no">No Permission</td>
+    <td class="depauth-maybe">Cross-currency only<sup>1</sup></td>
     <td class="depauth-no">No Permission</td>
     <td class="depauth-ok">OK</td>
   </tr>
@@ -79,7 +79,7 @@
     <td class="depauth-maybe">Cross-currency only</td>
     <td class="depauth-ok">OK</td>
     <td class="depauth-spacer">&nbsp;</td>
-    <td class="depauth-no">No Permission</td>
+    <td class="depauth-maybe">Cross-currency only<sup>1</sup></td>
     <td class="depauth-maybe">XRP payments up to the minimum reserve</td>
     <td class="depauth-ok">OK</td>
   </tr>
@@ -88,7 +88,7 @@
     <td class="depauth-maybe">Cross-currency only</td>
     <td class="depauth-ok">OK</td>
     <td class="depauth-spacer">&nbsp;</td>
-    <td class="depauth-no">No Permission</td>
+    <td class="depauth-maybe">Cross-currency only<sup>1</sup></td>
     <td class="depauth-maybe">Balance changes from rippling</td>
     <td class="depauth-ok">OK</td>
   </tr>
@@ -97,7 +97,7 @@
     <td class="depauth-maybe">Cross-currency only</td>
     <td class="depauth-ok">OK</td>
     <td class="depauth-spacer">&nbsp;</td>
-    <td class="depauth-no">No Permission</td>
+    <td class="depauth-maybe">Cross-currency only<sup>1</sup></td>
     <td class="depauth-maybe">Balance changes from executing offers</td>
     <td class="depauth-ok">OK</td>
   </tr>
@@ -131,6 +131,8 @@
     <td colspan="6" class="depauth-na">(This transaction type never sends money.)</td>
   </tr>
 </table>
+
+<p class="depauth-subtype"><sup>1</sup>: The DepositPreauth amendment fixes a bug in DepositAuth which causes cross-currency payments to oneself to fail if the account requires deposit authorization. If the DepositPreauth amendment is not enabled, these cases result in "No Permission" instead.</p>
 
 <style type="text/css">
 .depauth-txtype {
