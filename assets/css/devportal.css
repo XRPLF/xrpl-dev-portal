@@ -381,6 +381,8 @@ pre code {
   background-color: #E1E4E8;
   border: 1px solid #C9CDD1;
   border-radius: 4px;
+  display: block;
+  padding: 0.5em;
 }
 .code_sample pre code.expanded {
   overflow: visible;
