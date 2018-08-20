@@ -3,6 +3,7 @@
     "CheckCancel",
     "CheckCash",
     "CheckCreate",
+    "DepositPreauth",
     "EscrowCancel",
     "EscrowCreate",
     "EscrowFinish",

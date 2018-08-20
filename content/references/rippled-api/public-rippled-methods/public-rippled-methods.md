@@ -47,6 +47,7 @@ Transactions are the only thing that can modify the shared state of the XRP Ledg
 Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.
 
 * **[`book_offers`](book_offers.html)** - Get info about offers to exchange two currencies.
+* **[`deposit_authorized`](deposit_authorized.html)** - Look up whether one account is authorized to send payments directly to another.
 * **[`path_find`](path_find.html)** - Find a path for a payment between two accounts and receive updates.
 * **[`ripple_path_find`](ripple_path_find.html)** - Find a path for payment between two accounts, once.
 

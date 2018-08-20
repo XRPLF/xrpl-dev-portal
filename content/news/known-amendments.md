@@ -104,6 +104,8 @@ Provides users of [deposit authorization](depositauth.html) with a way to preaut
 
 Adds a new transaction type, DepositPreauth for adding or removing preauthorization, and a DepositPreauth ledger object type for tracking preauthorizations from one account to another. Adds a JSON-RPC command, `deposit_authorized`, to query whether an account is authorized to send payments directly to another.
 
+Also changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code tecNO_PERMISSION. With this amendment, those payments succeed as they would with Deposit Authorization disabled.
+
 
 ## EnforceInvariants
 [EnforceInvariants]: #enforceinvariants
