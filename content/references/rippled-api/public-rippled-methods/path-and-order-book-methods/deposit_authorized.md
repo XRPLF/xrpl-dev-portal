@@ -134,8 +134,9 @@ The response follows the [standard format][], with a successful result containin
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actMalformed` - An [Address][] specified in the `source_account` or `destination_account` field of the request was not properly formatted. (It may contain a typo or be the wrong length, causing a failed checksum.)
-* `dstActMissing` - The `destination_account` field of the request does not correspond to an account in the ledger.
+* `dstActNotFound` - The `destination_account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `srcActNotFound` - The `source_account` field of the request does not correspond to an account in the ledger.
 
 
 {% include '_snippets/rippled_versions.md' %}
