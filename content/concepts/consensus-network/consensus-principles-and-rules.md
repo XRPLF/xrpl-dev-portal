@@ -1,6 +1,8 @@
 # Consensus Principles and Rules
 
-The XRP Ledger is a universal payment system enabling users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email. Like other digital currencies such as Bitcoin, the XRP Ledger enables peer-to-peer transaction settlement across a decentralized network of computers. Unlike other digital currency protocols,the XRP Ledger also allows users to transact in currencies other than the ledger's native currency, XRP. In addition, the technology enables near real-time settlement (three to six seconds) and is built to route each international transaction to the cheapest FX bid/ask spread available in the network.
+The XRP Ledger is a universal payment system enabling users to transfer funds across national boundaries as seamlessly as sending an email. Like other peer-to-peer payment networks such as Bitcoin, the XRP Ledger enables peer-to-peer transaction settlement across a decentralized network of computers. Unlike other digital currency protocols, the XRP Ledger allows users to denominate their transactions with any currency they prefer, including fiat currencies, digital currencies and other forms of value, in addition to XRP (the native asset of the XRP Ledger).
+
+The XRP Ledger's technology enables near real-time settlement (three to six seconds) and contains a decentralized exchange, where payments automatically use the cheapest currency trade orders available to bridge currencies.
 
 # Background
 
@@ -8,7 +10,8 @@ The XRP Ledger is a universal payment system enabling users to transfer funds (i
 
 At the core, the XRP Ledger is a shared database that records information such as accounts, balances, and offers to trade assets. Signed instructions called "transactions" cause changes such as creating accounts, making payments, and trading assets.
 
-As a cryptographic system, the owners of XRP Ledger accounts are identified by cryptographic identities. Transactions are authorized by cryptographic signatures matching these identities. Every server processes every transaction according to the same deterministic, known rules. Ultimately, the goal is for every server in the network to have a complete copy of the exact same ledger state, without needing a single central authority to arbitrate transactions.
+As a cryptographic system, the owners of XRP Ledger accounts are identified by _cryptographic identities_, which correspond to public/private key pairs. Transactions are authorized by cryptographic signatures matching these identities. Every server processes every transaction according to the same deterministic, known rules. Ultimately, the goal is for every server in the network to have a complete copy of the exact same ledger state, without needing a single central authority to arbitrate transactions.
+
 
 ## The Double Spend Problem
 
@@ -22,9 +25,10 @@ Conventionally, payment systems solve the double spend problem by having a centr
 
 Distributed ledger technologies, like the XRP Ledger, have no central authority. They must solve the double spend problem in some other way.
 
+
 # How Consensus Works
 
-## Simplfying the Problem
+## Simplifying the Problem
 
 Much of the double spend problem can be solved by well-known rules such as prohibiting an account from spending funds it does not have. In fact, the double spend problem can be reduced to putting transactions in order.
 
