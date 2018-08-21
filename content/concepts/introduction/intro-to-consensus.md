@@ -63,7 +63,7 @@ For a longer exploration of how the XRP Ledger Consensus Protocol responds to va
 
 ## Footnotes
 
-1. <a id="footnote-1"></a> Due to a mishap early in the XRP Ledger's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. Because the XRP Ledger's state is recorded in every ledger version, the ledger can continue without the missing history. New test networks still start with ledger index 1.
+1. <a id="footnote-1"></a> Due to a mishap early in the XRP Ledger's history, [ledgers 1 through 32569 were lost](https://forum.ripple.com/viewtopic.php?f=2&t=3613). (This loss represents approximately the first week of ledger history.) Thus, ledger #32570 is the earliest ledger available anywhere. Because the XRP Ledger's state is recorded in every ledger version, the ledger can continue without the missing history. New test networks still start with ledger index 1.
 
 2. <a id="footnote-2"></a> In Bitcoin, the current state is sometimes called the set of "UTXOs" (unspent transaction outputs). Unlike the XRP Ledger, a Bitcoin server must download the entire transaction history to know the full set of UTXOs and process new transactions. Currently (as of 2018), there have been some proposals to modify Bitcoin's consensus mechanism to periodically summarize the latest UTXOs so new servers would not need to do this. Etherium, which also uses a UTXO model, has already implemented a similar approach with a summary of the current state, called a _state root_, in each block.
 

@@ -1,6 +1,6 @@
 # Consensus Principles and Rules
 
-The XRP Ledger is a universal payment system enabling users to transfer funds across national boundaries as seamlessly as sending an email. Like other peer-to-peer payment networks such as Bitcoin, the XRP Ledger enables peer-to-peer transaction settlement across a decentralized network of computers. Unlike other digital currency protocols, the XRP Ledger allows users to denominate their transactions with any currency they prefer, including fiat currencies, digital currencies and other forms of value, in addition XRP (the native asset of the XRP Ledger).
+The XRP Ledger is a universal payment system enabling users to transfer funds across national boundaries as seamlessly as sending an email. Like other peer-to-peer payment networks such as Bitcoin, the XRP Ledger enables peer-to-peer transaction settlement across a decentralized network of computers. Unlike other digital currency protocols, the XRP Ledger allows users to denominate their transactions with any currency they prefer, including fiat currencies, digital currencies and other forms of value, in addition to XRP (the native asset of the XRP Ledger).
 
 The XRP Ledger's technology enables near real-time settlement (three to six seconds) and contains a decentralized exchange, where payments automatically use the cheapest currency trade orders available to bridge currencies.
 
