@@ -1,5 +1,5 @@
 # CheckCancel
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/CancelCheck.cpp "Source") <!--{# TODO: change from develop to master when 0.90.0 is released #}-->
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelCheck.cpp "Source") <!--{# TODO: change from develop to master when 0.90.0 is released #}-->
 
 _Requires the [Checks Amendment](known-amendments.html#checks)._
 

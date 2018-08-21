@@ -1,5 +1,5 @@
 # Check
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L158 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
 
 _Requires the [Checks Amendment](known-amendments.html#checks)._
 

@@ -1,5 +1,5 @@
 # DepositPreauth
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/DepositPreauth.cpp "Source") <!--{# TODO: change from develop to master when 1.1.0 is released #}-->
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/DepositPreauth.cpp "Source") <!--{# TODO: change from develop to master when 1.1.0 is released #}-->
 
 _Requires the [DepositPreauth amendment](known-amendments.html#depositpreauth)._
 

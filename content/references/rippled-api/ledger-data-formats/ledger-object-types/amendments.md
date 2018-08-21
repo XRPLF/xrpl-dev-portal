@@ -1,5 +1,5 @@
 # Amendments
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
 
 The `Amendments` object type contains a list of [Amendments](amendments.html) that are currently active. Each ledger version contains **at most one** `Amendments` object.
 

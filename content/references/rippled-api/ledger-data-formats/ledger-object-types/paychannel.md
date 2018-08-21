@@ -1,5 +1,5 @@
 # PayChannel
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L134 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L141-L155 "Source")
 
 _(Requires the [PayChan Amendment](known-amendments.html#paychan).)_
 

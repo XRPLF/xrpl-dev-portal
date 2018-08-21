@@ -1,6 +1,5 @@
 # DepositPreauth
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/LedgerFormats.cpp#L172 "Source")
-<!--{# TODO: change from develop to master when 1.1.0 is released #}-->
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
 
 A `DepositPreauth` object tracks a preauthorization from one account to another. [DepositPreauth transactions][] create these objects.
 

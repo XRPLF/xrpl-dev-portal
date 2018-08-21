@@ -12,7 +12,7 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 Although the `rippled` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results. (**Note:** A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
 
 ## path_find create
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L38 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56 "Source")
 
 The `create` subcommand of `path_find` creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with `"type": "path_find"`, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.
 
@@ -489,7 +489,7 @@ Here is an example of an asychronous follow-up from a path_find create request:
 <!-- MULTICODE_BLOCK_END -->
 
 ## path_find close
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L46 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67 "Source")
 
 The `close` subcommand of `path_find` instructs the server to stop sending information about the current open pathfinding request.
 
@@ -534,7 +534,7 @@ If there was no outstanding pathfinding request, an error is returned instead.
 * `noPathRequest` - You tried to close a pathfinding request when there is not an open one.
 
 ## path_find status
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L57 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77 "Source")
 
 The `status` subcommand of `path_find` requests an immediate update about the client's currently-open pathfinding request.
 
