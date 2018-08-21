@@ -54,7 +54,7 @@ For a longer exploration of how the XRP Ledger Consensus Protocol responds to va
 ## See Also
 
 - [Consensus Network Concepts](consensus-network.html) for several articles describing the mechanics of the XRP Ledger Consensus Protocol in greater depth.
-- [Run `rippled` as a Validator](run-rippled-as-a-validator.html) for instructions running your own validator.
+- [Run `rippled` as a Validator](run-rippled-as-a-validator.html) for instructions on running your own validator.
 - [Decentralization Strategy Update (Ripple Dev Blog)](https://ripple.com/dev-blog/decentralization-strategy-update/) for a description of Ripple's goals and plans for decentralizing the XRP Ledger.
 
 <!--{# TODO: Replace the Decent Strategy Update w/ a newer article when we have one #}-->
@@ -63,6 +63,6 @@ For a longer exploration of how the XRP Ledger Consensus Protocol responds to va
 
 ## Footnotes
 
-1. <a id="footnote-1"></a> In Bitcoin, the current state is sometimes called the set of "UTXOs" (unspent transaction outputs). Unlike the XRP Ledger, a Bitcoin server must download the entire transaction history to know the full set of UTXOs and process new transactions. Currently (as of 2018), there have been some proposals to modify Bitcoin's consensus mechanism to periodically summarize the latest UTXOs so new servers would not need to do this. Etherium, which also uses a UTXO model, has already implemented a similar approach with summary of the current state, called a _state root_, in each block.
+1. <a id="footnote-1"></a> In Bitcoin, the current state is sometimes called the set of "UTXOs" (unspent transaction outputs). Unlike the XRP Ledger, a Bitcoin server must download the entire transaction history to know the full set of UTXOs and process new transactions. Currently (as of 2018), there have been some proposals to modify Bitcoin's consensus mechanism to periodically summarize the latest UTXOs so new servers would not need to do this. Etherium, which also uses a UTXO model, has already implemented a similar approach with a summary of the current state, called a _state root_, in each block.
 
 2. <a id="footnote-2"></a> A server does not need a direct connection to its trusted validators to hear from them. The XRP Ledger peer-to-peer network uses a _gossip protocol_ where servers identify each other by public keys and relay digitally-signed messages from others.

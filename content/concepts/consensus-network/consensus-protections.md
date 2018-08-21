@@ -52,11 +52,11 @@ A "51% attack" is an attack on a blockchain system where one party controls more
 
 For all participants in the XRP Ledger to agree on what they consider validated, they must start by choosing a set of trusted validators that are fairly similar to the sets chosen by everyone else. In the worst case, less than about 90% overlap could cause some participants to diverge from each other. For that reason, Ripple publishes a signed list of recommended validators, including trustworthy and well-maintained servers run by the company, industry, and community.
 
-By default, XRP Ledger servers are configured to use a validator list site run by Ripple. The site provides a list of recommended validators (also known as a recommended UNL), which Ripple updates periodically. Servers configured this way trust all validators in the latest version of the list, which ensures 100% overlap with others also using the same list. The default configuration includes a public key that verifies the authenticity of the site's contents. In case the site goes down, servers in the XRP Ledger's peer-to-peer network can directly relay the signed updates to the list among themselves.
+By default, XRP Ledger servers are configured to use a validator list site run by Ripple. The site provides a list of recommended validators (also known as a recommended _Unique Node List_, or UNL), which Ripple updates periodically. Servers configured this way trust all validators in the latest version of the list, which ensures 100% overlap with others also using the same list. The default configuration includes a public key that verifies the authenticity of the site's contents. In case the site goes down, servers in the XRP Ledger's peer-to-peer network can directly relay the signed updates to the list among themselves.
 
 Technically, if you run a server, you can configure your own list site or explicitly choose validators to trust on an individual basis, but Ripple does not recommended doing so. If your chosen set of validators does not have enough overlap with others, your server may diverge from the rest of the network, and you could lose money by taking action based on your server's divergent state.
 
-Research is ongoing to design an improved consensus protocol that allow more heterogeneous validator lists. For more information, see the [Consensus Research](consensus-research.html) page.
+Research is ongoing to design an improved consensus protocol that allows more heterogeneous validator lists. For more information, see the [Consensus Research](consensus-research.html) page.
 
 
 ## See Also
