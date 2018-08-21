@@ -866,7 +866,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        blurb: Build, install, and run the rippled server. Configure it to your use case and troubleshoot problems.
+        blurb: Build, install, configure, and run the rippled server.
         template: template-landing-children.html
         targets:
             - local
@@ -943,8 +943,27 @@ pages:
         targets:
             - local
 
-    # TODO: troubleshoot rippled,
-    #  run a validator, run in stand-alone mode, set up private peers
+    # TODO: run a validator, run in stand-alone mode, set up private peers
+
+    -   name: Troubleshoot the rippled Server
+        html: troubleshoot-the-rippled-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Troubleshoot the rippled Server
+        blurb: Troubleshoot all kinds of problems with the rippled server.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: tutorials/troubleshoot-the-rippled-server/server-wont-start.md
+        html: server-wont-start.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Troubleshoot the rippled Server
+        targets:
+            - local
+
+    # TODO: more troubleshooting rippled articles
 
 # References -------------------------------------------------------------------
 

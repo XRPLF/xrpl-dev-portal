@@ -1,0 +1,147 @@
+# rippled Server Won't Start (Troubleshooting)
+
+This page explains possible reasons the `rippled` server does not start successfully, and how to fix them.
+
+These instructions assume you have [installed `rippled`](install-rippled.html) on a supported platform.
+
+
+## File Descriptors Limit
+
+On some Linux variants, you may get an error message such as the following when trying to run `rippled`:
+
+```text
+WARNING: There are only 1024 file descriptors (soft limit) available, which
+limit the number of simultaneous connections.
+```
+
+This occurs because the system has a security limit on the number of files a single process may open, but the limit is set too low for `rippled`. To fix the problem, **root access is required**. Increase the number of files `rippled` is allowed to open with the following steps:
+
+1. Add the following lines to the end of your `/etc/security/limits.conf` file:
+
+        *                soft    nofile          5200
+        *                hard    nofile          10240
+
+2. Check that the number of files that can be opened is now `10240`:
+
+        ulimit -Hn
+
+    The command prints the hard limit on the number of open files, which should be 10240.
+
+3. Try starting `rippled` again.
+
+        systemctl start rippled
+
+4. If `rippled` still does not start, open `/etc/sysctl.conf` and add the following line to the bottom of the file:
+
+        fs.file-max = 65536
+
+
+## Failed to open /etc/opt/ripple/rippled.cfg
+
+If `rippled` crashes on startup with an error such as the following, it means that `rippled` cannot read its config file:
+
+```text
+Loading: "/etc/opt/ripple/rippled.cfg"
+Failed to open '"/etc/opt/ripple/rippled.cfg"'.
+Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/opt/ripple"'
+Aborted (core dumped)
+```
+
+Possible solutions:
+
+- Check that `/etc/opt/ripple/rippled.cfg` exists and the `rippled` user has read permissions to the file. (Assuming you use the `rippled` user to run the `rippled` process, and you want to use the default location for the config file.)
+
+- Create a config file that can be read by the `rippled` user to `$HOME/.config/ripple/rippled.cfg` (where `$HOME` points to the `rippled` user's home directory).
+
+    **Tip:** The `rippled` repository contains [an example `rippled.cfg` file](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg) which is provided as the default config when you do an RPM installation. If you do not have the file, you can copy it from there.
+
+- Specify the path to your preferred config file using the `--conf` [commandline option](commandline-usage.html).
+
+## Failed to open validators file
+
+If `rippled` crashes on startup with an error such as the following, it means it can read its primary config file, but that config file specifies a separate validators config file (typically named `validators.txt`), which `rippled` cannot read.
+
+```text
+Loading: "/home/rippled/.config/ripple/rippled.cfg"
+Terminating thread rippled: main: unhandled St13runtime_error 'The file specified in [validators_file] does not exist: /home/rippled/.config/ripple/validators.txt'
+Aborted (core dumped)
+```
+
+Possible solutions:
+
+- Check that the `[validators.txt]` file exists and the `rippled` user has permissions to read it.
+
+    **Tip:** The `rippled` repository contains [an example `validators.txt` file](https://github.com/ripple/rippled/blob/master/cfg/validators-example.txt) which is provided as the default config when you do an RPM installation. If you do not have the file, you can copy it from there.
+
+- Edit your `rippled.cfg` file and modify the `[validators_file]` setting to have the correct path to your `validators.txt` (or equivalent) file. Check for extra whitespace before or after the filename.
+
+- Edit your `rippled.cfg` file and remove the `[validators_file]` setting. Add validator settings directly to your `rippled.cfg` file. For example:
+
+        [validator_list_sites]
+        https://vl.ripple.com
+
+        [validator_list_keys]
+        ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+
+
+## Cannot create database path
+
+If `rippled` crashes on startup with an error such as the following, it means the server does not have write permissions to the `[database_path]` from its config file.
+
+```text
+Loading: "/home/rippled/.config/ripple/rippled.cfg"
+Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/rippled/db"'
+Aborted (core dumped)
+```
+
+The paths to the configuration file (`/home/rippled/.config/ripple/rippled.cfg`) and the database path (`/var/lib/rippled/db`) may vary depending on your system.
+
+Possible solutions:
+
+- Run `rippled` as a different user that has write permissions to the database path printed in the error message.
+
+- Edit your `rippled.cfg` file and change the `[database_path]` setting to use a path that the `rippled` user has write permissions to.
+
+- Grant the `rippled` user write permissions to the configured database path.
+
+
+## State DB Error
+
+The following error can occur if the `rippled` server's state database is corrupted (possibly as the result of being shutdown unexpectedly):
+
+```text
+2018-Aug-21 23:06:38.675117810 SHAMapStore:ERR state db error:
+  writableDbExists false archiveDbExists false
+  writableDb '/var/lib/rippled/db/rocksdb/rippledb.11a9' archiveDb '/var/lib/rippled/db/rocksdb/rippledb.2d73'
+
+To resume operation, make backups of and remove the files matching /var/lib/rippled/db/state* and contents of the directory /var/lib/rippled/db/rocksdb
+
+Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
+```
+
+The easiest way to fix this problem is to delete the databases entirely. You may want to back them up elsewhere instead. For example:
+
+```sh
+mv /var/lib/rippled/db /var/lib/rippled/db-bak
+```
+
+Or, if you are sure you don't need the databases:
+
+```sh
+rm -r /var/lib/rippled/db
+```
+
+**Tip:** It is generally safe to delete the `rippled` databases, because any individual server can re-download ledger history from other servers in the XRP Ledger network. If you are using [clustering](clustering.html), be sure your servers each have a unique `[node_seed]` configured first; if not, servers may not be recognized as part of the cluster after you restart them.
+
+
+## Online Delete is Less Than Ledger History
+
+An error message such as the following indicates that the `rippled.cfg` file has contradictory values for `[ledger_history]` and `online_delete`.
+
+```text
+Terminating thread rippled: main: unhandled St13runtime_error 'online_delete must not be less than ledger_history (currently 3000)
+```
+
+The `[ledger_history]` setting represents how many ledgers of history the server should seek to back-fill. The `online_delete` field (in the `[node_db]` stanza) indicates how many ledgers of history to keep when dropping older history. The `online_delete` value must be equal or larger than `[ledger_history]` to prevent the server from deleting historical ledgers that it is also trying to download.
+
+To fix the problem, edit the `rippled.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options.
