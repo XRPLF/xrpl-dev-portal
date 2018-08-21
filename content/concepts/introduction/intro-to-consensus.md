@@ -33,7 +33,7 @@ The XRP Ledger processes transactions in blocks called "ledger versions", or "le
 [![Figure 1: Anatomy of a ledger version, which includes transactions, state, and metadata](img/anatomy-of-a-ledger-simplified.png)](img/anatomy-of-a-ledger-simplified.png)
 <!--{# Diagram source: https://docs.google.com/presentation/d/1mg2jZQwgfLCIhOU8Mr5aOiYpIgbIgk3ymBoDb2hh7_s/ #}-->
 
-Each ledger version is numbered with a _ledger index_ and builds on a previous ledger version whose index is one less, going all the way back to a starting point called the _genesis ledger_ with ledger index 1. Like Bitcoin and other blockchain technologies, this forms a public history of all transactions and their results. Unlike many blockchain technologies, each new "block" in the XRP Ledger contains the entirety of the current state, so you don't need to collect the entire history to know what's happening now.[¹](#footnote-1)
+Each ledger version is numbered with a _ledger index_ and builds on a previous ledger version whose index is one less, going all the way back to a starting point called the _genesis ledger_ with ledger index 1.[¹](#footnote-1) Like Bitcoin and other blockchain technologies, this forms a public history of all transactions and their results. Unlike many blockchain technologies, each new "block" in the XRP Ledger contains the entirety of the current state, so you don't need to collect the entire history to know what's happening now.[²](#footnote-2)
 
 The main job of the XRP Ledger Consensus Protocol is to agree on a set of transactions to apply to the previous ledger, apply them in a well-defined order, then confirm that everyone got the same results. When this happens successfully, a ledger version is considered _validated_, and final. From there, the process continues by building the next ledger version.
 
@@ -42,7 +42,7 @@ The main job of the XRP Ledger Consensus Protocol is to agree on a set of transa
 
 The core principle behind the XRP Ledger's consensus mechanism is that a little trust goes a long way. Each participant in the network chooses a set of _validators_, servers [specifically configured to participate actively in consensus](run-a-rippled-validator.html), run by different parties who are expected to behave honestly most of the time. More importantly, the set of chosen validators should not be likely to collude with one another to break the rules in the exact same way. This list is sometimes called a _Unique Node List_, or UNL.
 
-As the network progresses, each server listens to its trusted validators[²](#footnote-2); as long as a large enough percentage of them agree that a set of transactions should occur and that a given ledger is the result, the server declares a consensus. If they don't agree, validators modify their proposals to more closely match the other validators they trust, repeating the process in several rounds until they reach a consensus.
+As the network progresses, each server listens to its trusted validators[³](#footnote-3); as long as a large enough percentage of them agree that a set of transactions should occur and that a given ledger is the result, the server declares a consensus. If they don't agree, validators modify their proposals to more closely match the other validators they trust, repeating the process in several rounds until they reach a consensus.
 
 [![Figure 2: Consensus rounds. Validators revise their proposals to match other validators they trust](img/consensus-rounds.png)](img/consensus-rounds.png)
 
@@ -63,6 +63,8 @@ For a longer exploration of how the XRP Ledger Consensus Protocol responds to va
 
 ## Footnotes
 
-1. <a id="footnote-1"></a> In Bitcoin, the current state is sometimes called the set of "UTXOs" (unspent transaction outputs). Unlike the XRP Ledger, a Bitcoin server must download the entire transaction history to know the full set of UTXOs and process new transactions. Currently (as of 2018), there have been some proposals to modify Bitcoin's consensus mechanism to periodically summarize the latest UTXOs so new servers would not need to do this. Etherium, which also uses a UTXO model, has already implemented a similar approach with a summary of the current state, called a _state root_, in each block.
+1. <a id="footnote-1"></a> Due to a mishap early in the XRP Ledger's history, ledgers 1 through 32569 were lost. Thus, ledger #32570 is the earliest ledger available anywhere. Because the XRP Ledger's state is recorded in every ledger version, the ledger can continue without the missing history. New test networks still start with ledger index 1.
 
-2. <a id="footnote-2"></a> A server does not need a direct connection to its trusted validators to hear from them. The XRP Ledger peer-to-peer network uses a _gossip protocol_ where servers identify each other by public keys and relay digitally-signed messages from others.
+2. <a id="footnote-2"></a> In Bitcoin, the current state is sometimes called the set of "UTXOs" (unspent transaction outputs). Unlike the XRP Ledger, a Bitcoin server must download the entire transaction history to know the full set of UTXOs and process new transactions. Currently (as of 2018), there have been some proposals to modify Bitcoin's consensus mechanism to periodically summarize the latest UTXOs so new servers would not need to do this. Etherium, which also uses a UTXO model, has already implemented a similar approach with a summary of the current state, called a _state root_, in each block.
+
+3. <a id="footnote-3"></a> A server does not need a direct connection to its trusted validators to hear from them. The XRP Ledger peer-to-peer network uses a _gossip protocol_ where servers identify each other by public keys and relay digitally-signed messages from others.
