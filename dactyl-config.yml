@@ -105,12 +105,12 @@ pages:
             - local
 
         #TODO: DOC-1503: replace this with a more concise intro to consensus
-    -   md: concepts/introduction/consensus.md
-        html: consensus.html
+    -   md: concepts/introduction/intro-to-consensus.md
+        html: intro-to-consensus.html
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Understand the role of consensus in the XRP Ledger.
+        blurb: Develop a basic understanding of the XRP Ledger's consensus mechanism.
         targets:
             - local
 
@@ -435,14 +435,12 @@ pages:
         targets:
             - local
 
-    # TODO: validators & UNLs
-
-    -   md: concepts/consensus-network/amendments.md
-        html: amendments.html
+    -   md: concepts/consensus-network/consensus.md
+        html: consensus.html
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
+        blurb: Understand the role of consensus in the XRP Ledger.
         targets:
             - local
 
@@ -454,6 +452,24 @@ pages:
         blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
         targets:
           - local
+
+    -   md: concepts/consensus-network/consensus-protections.md
+        html: consensus-protections.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system.
+        targets:
+            - local
+
+    -   md: concepts/consensus-network/amendments.md
+        html: amendments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
+        targets:
+            - local
 
     -   md: concepts/consensus-network/fee-voting.md
         html: fee-voting.html
