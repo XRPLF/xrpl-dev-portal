@@ -104,7 +104,6 @@ pages:
         targets:
             - local
 
-        #TODO: DOC-1503: replace this with a more concise intro to consensus
     -   md: concepts/introduction/intro-to-consensus.md
         html: intro-to-consensus.html
         funnel: Docs
@@ -981,14 +980,15 @@ pages:
         targets:
             - local
 
-    -  md: references/rippled-api/api-conventions/basic-data-types.md
-       html: basic-data-types.html
-       funnel: Docs
-       doc_type: References
-       supercategory: rippled API
-       category: API Conventions
-       targets:
-         - local
+    -   md: references/rippled-api/api-conventions/basic-data-types.md
+        html: basic-data-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Format and meaning of fundamental data types like addresses, ledger index, and currency codes.
+        targets:
+            - local
 
     -   md: references/rippled-api/api-conventions/currency-formats.md
         html: currency-formats.html
@@ -996,62 +996,69 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: API Conventions
+        blurb: Precision and range for currency numbers, plus formats of custom currency codes.
         targets:
             - local
 
-    -  md: references/rippled-api/api-conventions/error-formatting.md
-       html: error-formatting.html
-       funnel: Docs
-       doc_type: References
-       supercategory: rippled API
-       category: API Conventions
-       targets:
-         - local
+    -   md: references/rippled-api/api-conventions/error-formatting.md
+        html: error-formatting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces.
+        targets:
+            - local
 
-    -  md: references/rippled-api/api-conventions/markers-and-pagination.md
-       html: markers-and-pagination.html
-       funnel: Docs
-       doc_type: References
-       supercategory: rippled API
-       category: API Conventions
-       targets:
-         - local
+    -   md: references/rippled-api/api-conventions/markers-and-pagination.md
+        html: markers-and-pagination.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Convention for paginating large queries into multiple responses.
+        targets:
+            - local
 
-    -  md: references/rippled-api/api-conventions/modifying-the-ledger.md
-       html: modifying-the-ledger.html
-       funnel: Docs
-       doc_type: References
-       supercategory: rippled API
-       category: API Conventions
-       targets:
-         - local
+    -   md: references/rippled-api/api-conventions/modifying-the-ledger.md
+        html: modifying-the-ledger.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Why and how only transactions can modify the ledger.
+        targets:
+            - local
 
-    -  md: references/rippled-api/api-conventions/request-formatting.md
-       html: request-formatting.html
-       funnel: Docs
-       doc_type: References
-       supercategory: rippled API
-       category: API Conventions
-       targets:
-         - local
+    -   md: references/rippled-api/api-conventions/request-formatting.md
+        html: request-formatting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
+        targets:
+            - local
 
-    -  md: references/rippled-api/api-conventions/response-formatting.md
-       html: response-formatting.html
-       funnel: Docs
-       doc_type: References
-       supercategory: rippled API
-       category: API Conventions
-       targets:
-         - local
+    -   md: references/rippled-api/api-conventions/response-formatting.md
+        html: response-formatting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
+        targets:
+            - local
 
-    -  md: references/rippled-api/api-conventions/rippled-server-states.md
-       html: rippled-server-states.html
-       funnel: Docs
-       doc_type: References
-       supercategory: rippled API
-       category: API Conventions
-       targets:
-         - local
+    -   md: references/rippled-api/api-conventions/rippled-server-states.md
+        html: rippled-server-states.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Definitions of state information reported in some API methods.
+        targets:
+            - local
 
 # rippled Public Methods
 
