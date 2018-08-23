@@ -945,21 +945,32 @@ pages:
 
     # TODO: run a validator, run in stand-alone mode, set up private peers
 
-    -   name: Troubleshoot the rippled Server
+    -   name: Troubleshooting rippled
         html: troubleshoot-the-rippled-server.html
         funnel: Docs
         doc_type: Tutorials
-        category: Troubleshoot the rippled Server
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
         blurb: Troubleshoot all kinds of problems with the rippled server.
         template: template-landing-children.html
         targets:
             - local
 
-    -   md: tutorials/troubleshoot-the-rippled-server/server-wont-start.md
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.md
+        html: diagnosing-problems.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
         html: server-wont-start.html
         funnel: Docs
         doc_type: Tutorials
-        category: Troubleshoot the rippled Server
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
         targets:
             - local
 
