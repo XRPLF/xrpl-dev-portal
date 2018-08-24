@@ -2,7 +2,7 @@
 
 `rippled` servers with full transaction history (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to encounter this problem.
 
-This document describes steps to detect and correct this problem if it arises.
+This document describes steps to detect and correct this problem if it occurs.
 
 ## Background
 
