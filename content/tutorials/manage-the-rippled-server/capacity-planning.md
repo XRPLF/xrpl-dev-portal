@@ -26,7 +26,7 @@ The `node_size` parameter determines the size of database caches. Larger databas
 | Available RAM for `rippled` | `node_size` value | Notes                              |
 |:----------------------------|:------------------|:-----------------------------------|
 | < 8GB                       | `tiny`            | Not recommended                    |
-| 8GB                         | `low`             |                                    |
+| 8GB                         | `small`           |                                    |
 | 16GB                        | `medium`          |                                    |
 | 32GB                        | `huge`            | Recommended for production servers |
 
