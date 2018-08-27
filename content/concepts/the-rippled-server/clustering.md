@@ -10,7 +10,7 @@ If you are running a validator as a [private peer](peer-protocol.html#private-pe
 
 ## Configuring Clustering
 
-To enable clustering, change the following sections of your [config file](https://github.com/ripple/rippled/blob/d7def5509d8338b1e46c0adf309b5912e5168af0/doc/rippled-example.cfg#L297-L346) for each server:
+To enable clustering, change the following sections of your [config file](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg) for each server:
 
 1. List the IP address and port of each other server under the `[ips_fixed]` section. The port should be the one from the other servers' `protocol = peer` setting in their `rippled.cfg`. Example:
 

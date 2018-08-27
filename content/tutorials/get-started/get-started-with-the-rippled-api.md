@@ -4,7 +4,7 @@ Before you can run any commands against a `rippled` server, you must know which 
 
 Alternatively, you can [run your own local copy of `rippled`](install-rippled.html). This is required if you want to access any of the [Admin Methods](admin-rippled-methods.html). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`) Additionally, to access admin functionality, you must connect from a port/IP address marked as admin in the config file.
 
-The [example config file](https://github.com/ripple/rippled/blob/718d217158c41b21b4947fe77f380ae468f6e33a/doc/rippled-example.cfg#L1028-L1056) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
+The [example config file](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
 ## WebSocket API
 
