@@ -962,6 +962,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
+        blurb: Collect information to identify the cause of problems.
         targets:
             - local
 
@@ -971,6 +972,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
+        blurb: A collection of problems that would cause a rippled server not to start, and how to fix them.
         targets:
             - local
 
