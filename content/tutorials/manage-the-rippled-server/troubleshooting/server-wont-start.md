@@ -144,4 +144,26 @@ Terminating thread rippled: main: unhandled St13runtime_error 'online_delete mus
 
 The `[ledger_history]` setting represents how many ledgers of history the server should seek to back-fill. The `online_delete` field (in the `[node_db]` stanza) indicates how many ledgers of history to keep when dropping older history. The `online_delete` value must be equal or larger than `[ledger_history]` to prevent the server from deleting historical ledgers that it is also trying to download.
 
-To fix the problem, edit the `rippled.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options.
+To fix the problem, edit the `rippled.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options. (If you omit `[ledger_history]`, it defaults to 256 ledger versions, so `online_delete`, if present, must be larger than 256. If you omit `online_delete`, it disables automatic deletion of old ledger versions.)
+
+
+## Bad node_size value
+
+An error such as the following indicates that the `rippled.cfg` file has an improper value for the `node_size` setting:
+
+```text
+Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'
+```
+
+Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, or `huge`. For more information see [Node Size](capacity-planning.html#node-size).
+
+
+## Shard path missing
+
+An error such as the following indicates that the `rippled.cfg` has an incomplete [history sharding](history-sharding.html) configuration:
+
+```text
+Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
+```
+
+If your config includes a `[shard_db]` stanza, it must contain a `path` field, which points to a directory where `rippled` can write the data for the shard store. This error means the `path` field is missing or located in the wrong place. Check for extra whitespace or typos in your config file, and compare against the [Shard Configuration Example](history-sharding.html#shard-configuration-example).
