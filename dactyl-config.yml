@@ -887,6 +887,14 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/manage-the-rippled-server/enable-public-signing.md
+        html: enable-public-signing.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
     -   md: tutorials/manage-the-rippled-server/run-rippled-as-a-validator.md
         html: run-rippled-as-a-validator.html
         funnel: Docs

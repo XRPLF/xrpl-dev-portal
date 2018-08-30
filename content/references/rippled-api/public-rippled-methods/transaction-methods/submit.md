@@ -62,6 +62,8 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 
 This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](multi-signing.html).
 
+_By default, sign-and-submit mode is [admin-only](admin-rippled-methods.html)._ It can be used as a public method if the server has [enabled public signing](enable-public-signing.html).
+
 You can provide the secret key used to sign the transaction in the following ways:
 
 * Provide a `secret` value and omit the `key_type` field. This value can be formatted as [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
