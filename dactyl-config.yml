@@ -966,6 +966,16 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
+        html: understanding-log-messages.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Interpret and respond to warning and error messages in the debug log.
+        targets:
+            - local
+
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
         html: server-wont-start.html
         funnel: Docs

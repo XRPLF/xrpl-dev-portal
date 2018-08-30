@@ -1,4 +1,4 @@
-# rippled Server Won't Start (Troubleshooting)
+# rippled Server Won't Start
 
 This page explains possible reasons the `rippled` server does not start successfully, and how to fix them.
 
