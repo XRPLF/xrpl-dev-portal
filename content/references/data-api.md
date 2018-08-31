@@ -25,6 +25,7 @@ The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](
 [v2.2.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0
 [v2.3.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.0
 [v2.3.2]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.2
+[v2.3.5]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.5
 
 
 # API Method Reference
@@ -633,37 +634,24 @@ Optionally, you can provide the following query parameters:
 |:-------------|:-----------------------|:-------------------------------------|
 | `start`      | String - [Timestamp][] | Filter results to this time and later. |
 | `end`        | String - [Timestamp][] | Filter results to this time and earlier. |
-| `interval`   | String                 | If provided and `currency` is also specified, return results aggregated into intervals of the specified length instead of individual payments. Valid intervals are `day`, `week`, or `month`. |
 | `descending` | Boolean                | If `true`, return results in reverse chronological order. The default is `false`. |
 | `limit`      | Integer                | Maximum results per page. The default is 200. Cannot be more than 1000. |
 | `marker`     | String                 | [Pagination](#pagination) key from previously returned response. |
 | `format`     | String                 | Format of returned results: `csv` or `json`. The default is `json`. |
 
+The `interval` parameter for aggregated results has been removed as of [v2.3.5][].
 
 #### Response Format
 
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
 
-| Field      | Value                                                        | Description |
-|:-----------|:-------------------------------------------------------------|:--|
-| `result`   | String                                                       | The value `success` indicates that this is a successful response. |
-| `count`    | Integer                                                      | Number of payments returned. |
-| `marker`   | String                                                       | (May be omitted) [Pagination](#pagination) marker. |
-| `payments` | Array of [Payment Objects][], or array of aggregate objects. | The requested payments. |
+| Field      | Value                        | Description                      |
+|:-----------|:-----------------------------|:---------------------------------|
+| `result`   | String                       | The value `success` indicates that this is a successful response. |
+| `count`    | Integer                      | Number of payments returned.     |
+| `marker`   | String                       | (May be omitted) [Pagination](#pagination) marker. |
+| `payments` | Array of [Payment Objects][] | The requested payments.          |
 
-
-##### Aggregate Results
-
-If the request specifies a `currency` and an `interval`, the result includes objects summarizing activity over a specific time period instead of listing individual payments. <!-- STYLE_OVERRIDE: time period --> Each interval summary object has the following fields:
-
-| Field            | Value                  | Description                      |
-|:-----------------|:-----------------------|:---------------------------------|
-| `count`          | Number                 | The number of payments that occurred during this interval. |
-| `currency`       | String - Currency Code | This summary describes payments that delivered the specified currency. |
-| `issuer`         | String - Address       | (Omitted for XRP) This summary describes payments that delivered the currency issued by this address. |
-| `start`          | String - [Timestamp][] | The start time of this interval. |
-| `total_amount`   | Number                 | The amount of the `currency` delivered during this interval. |
-| `average_amount` | Number                 | The average amount of currency delivered by a single payment during this interval. |
 
 #### Example
 
@@ -1586,15 +1574,12 @@ Optionally, you can provide the following query parameters:
 
 | Field               | Value                      | Description               |
 |:--------------------|:---------------------------|:--------------------------|
-| `start`             | String - [Timestamp][]     | Start time of query range. The default is the start of the most recent interval. |
-| `end`               | String - [Timestamp][]     | End time of query range. The default is the end of the most recent interval. |
-| `interval`          | String                     | Aggregation interval - valid intervals are `day`, `week`, or `month`. The default is `day`. |
-| `live`              | String                     | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. _(New in [v2.3.0][])_ |
+| `live`              | String                     | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. _(New in [v2.3.0][])_ |
 | `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. The default is XRP. |
 | `exchange_issuer`   | String - [Address][]       | Normalize results to the specified `currency` issued by this issuer. |
-| `limit`             | Integer                    | Maximum results per page. The default is 200. Cannot be more than 1000. |
-| `marker`            | String                     | [Pagination](#pagination) key from previously returned response. |
 | `format`            | String                     | Format of returned results: `csv` or `json`. The default is `json`. |
+
+The `start`, `end`, `interval`, `limit`, and `marker` parameters have been removed in [v2.3.5][].
 
 #### Response Format
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -1736,15 +1721,12 @@ Optionally, you can provide the following query parameters:
 
 | Field               | Value                      | Description               |
 |:--------------------|:---------------------------|:--------------------------|
-| `start`             | String - [Timestamp][]     | Start time of query range. The default is the start of the most recent interval. |
-| `end`               | String - [Timestamp][]     | End time of query range. The default is the end of the most recent interval. |
-| `interval`          | String                     | Aggregation interval - valid intervals are `day`, `week`, or `month`. The default is `day`. |
-| `live`              | String                     | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. Ignored if `interval` is provided. _(New in [v2.3.0][])_ |
+| `live`              | String                     | Return a live rolling window of this length of time. Valid values are `day`, `hour`, or `minute`. _(New in [v2.3.0][])_ |
 | `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. The default is XRP. |
 | `exchange_issuer`   | String - [Address][]       | Normalize results to the specified `currency` issued by this issuer. |
-| `limit`             | Integer                    | Maximum results per page. The default is 200. Cannot be more than 1000. |
-| `marker`            | String                     | [Pagination](#pagination) key from previously returned response. |
 | `format`            | String                     | Format of returned results: `csv` or `json`. The default is `json`. |
+
+The `start`, `end`, `interval`, `limit`, and `marker` parameters have been removed in [v2.3.5][].
 
 #### Response Format
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -1840,115 +1822,6 @@ Response:
 }
 ```
 
-
-
-## Get Issued Value
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getMetric.js "Source")
-
-Get the total value of all currencies issued by major gateways over time. By default, returns only the most recent measurement. _(New in [v2.0.4][])_
-
-The API returns results in units of a single _display currency_ rather than many different currencies. The conversion uses standard rates to and from XRP.
-
-#### Request Format
-
-<!-- MULTICODE_BLOCK_START -->
-
-*REST*
-
-```
-GET /v2/network/issued_value
-```
-
-<!-- MULTICODE_BLOCK_END -->
-
-[Try it! >](data-api-v2-tool.html#get-issued-value)
-
-Optionally, you can provide the following query parameters:
-
-| Field               | Value                      | Description               |
-|:--------------------|:---------------------------|:--------------------------|
-| `start`             | String - [Timestamp][]     | Start time of query range. The default is the start of the most recent interval. |
-| `end`               | String - [Timestamp][]     | End time of query range. The default is the end of the most recent interval. |
-| `exchange_currency` | String - [Currency Code][] | Normalize all amounts to use this as a display currency. If not XRP, `exchange_issuer` is also required. The default is XRP. |
-| `exchange_issuer`   | String - [Address][]       | Normalize results to the specified `currency` issued by this issuer. |
-| `limit`             | Integer                    | Maximum results per page. The default is 200. Cannot be more than 1000. |
-| `marker`            | String                     | [Pagination](#pagination) key from previously returned response. |
-| `format`            | String                     | Format of returned results: `csv` or `json`. The default is `json`. |
-
-#### Response Format
-
-A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
-
-| Field    | Value                         | Description                       |
-|:---------|:------------------------------|:----------------------------------|
-| `result` | String                        | The value `success` indicates that this is a successful response. |
-| `count`  | Integer                       | Number of results returned.       |
-| `rows`   | Array of Issued Value Objects | Aggregated capitalization at the requested point(s) in time. |
-
-Each **Issued Value Object** represents the total value issued at one point in time, and has the following fields:
-
-| Field           | Value                  | Description                       |
-|:----------------|:-----------------------|:----------------------------------|
-| `components`    | Array of Objects       | The data on individual issuers that was used to assemble this total. |
-| `exchange`      | Object                 | Indicates the display currency used, as with fields `currency` and (except for XRP) `issuer`. All amounts are normalized by first converting to XRP, and then to the display currency specified in the request. |
-| `exchange_rate` | Number                 | The exchange rate to the displayed currency from XRP. |
-| `time`          | String - [Timestamp][] | When this data was measured.      |
-| `total`         | Number                 | Total value of all issued assets at this time, in units of the display currency. |
-
-#### Example
-
-Request:
-
-```
-GET /v2/network/issued_value?start=2015-10-01T00:00:00&end=2015-10-01T00:00:00&exchange_currency=USD&exchange_issuer=rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
-```
-
-Response:
-
-```
-200 OK
-{
-  "result": "success",
-  "count": 1,
-  "rows": [
-    {
-      "components": [
-        {
-          "currency": "USD",
-          "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-          "amount": "2177473.2843876695",
-          "rate": "0.000028818194",
-          "converted_amount": "2166521.1303508882"
-        },
-        {
-          "currency": "USD",
-          "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-          "amount": "1651297.315492664",
-          "rate": "0.000028888001",
-          "converted_amount": "1639021.4313562333"
-        },
-
-        ... (additional results trimmed for size) ...
-
-        {
-          "currency": "MXN",
-          "issuer": "rG6FZ31hDHN1K5Dkbma3PSB5uVCuVVRzfn",
-          "amount": "2288827.2376308907",
-          "rate": "0.00050850375",
-          "converted_amount": "129061.20018881827"
-        }
-      ],
-      "exchange": {
-        "currency": "USD",
-        "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
-      },
-      "total": "8338101.394233938",
-      "exchange_rate": "0.0053547404",
-      "date": "2015-10-01T00:00:00Z"
-    }
-  ]
-}
-```
 
 
 ## Get External Markets
@@ -3757,13 +3630,13 @@ Optionally, you can provide the following query parameters:
 |:-------------|:-----------------------|:-------------------------------------|
 | `start`      | String - [Timestamp][] | Start time of query range.           |
 | `end`        | String - [Timestamp][] | End time of query range.             |
-| `interval`   | String                 | Aggregation interval (`hour`,`day`,`week`). If omitted, return individual accounts. Not compatible with the `parent` parameter. |
 | `limit`      | Integer                | Maximum results per page. The default is 200. Cannot be more than 1,000. |
 | `marker`     | String                 | [Pagination](#pagination) key from previously returned response. |
 | `descending` | Boolean                | If `true`, return results in reverse chronological order. The default is `false`. |
 | `parent`     | String                 | Filter results to children of the specified parent account. Not compatible with the `interval` parameter. |
-| `reduce`     | Boolean                | Return a count of results only.      |
 | `format`     | String                 | Format of returned results: `csv` or `json`. The default is `json`. |
+
+The `interval` and `reduce` parameters have been removed in [v2.3.5][].
 
 #### Response Format
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
@@ -3773,16 +3646,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `result`   | String  | The value `success` indicates that this is a successful response. |
 | `count`    | Integer | Number of accounts returned.                          |
 | `marker`   | String  | (May be omitted) [Pagination](#pagination) marker.    |
-| `accounts` | Array   | If the request used the `interval` query parameter, each member of the array is an interval object. Otherwise, this field is an array of [account creation objects](#account-creation-objects). |
-
-##### Interval Objects
-
-If the request uses the `interval` query parameter, the response has an array of interval objects, each of which represents the number of accounts created during a single interval. Interval objects have the following fields:
-
-| Field   | Value                | Description                                 |
-|:--------|:---------------------|:--------------------------------------------|
-| `date`  | String - [Timestamp] | When this interval starts. (The length of the interval is determined by the request.) |
-| `count` | Number               | How many accounts were created in this interval. |
+| `accounts` | Array   |An array of [account creation objects](#account-creation-objects). |
 
 #### Example
 
