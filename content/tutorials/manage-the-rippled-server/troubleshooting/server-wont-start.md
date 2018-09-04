@@ -1,6 +1,6 @@
 # rippled Server Won't Start
 
-This page explains possible reasons the `rippled` server does not start successfully, and how to fix them.
+This page explains possible reasons the `rippled` server does not start and how to fix them.
 
 These instructions assume you have [installed `rippled`](install-rippled.html) on a supported platform.
 
@@ -18,20 +18,20 @@ This occurs because the system has a security limit on the number of files a sin
 
 1. Add the following lines to the end of your `/etc/security/limits.conf` file:
 
-        *                soft    nofile          5200
-        *                hard    nofile          10240
+        *                soft    nofile          65536
+        *                hard    nofile          65536
 
-2. Check that the number of files that can be opened is now `10240`:
+2. Check that the [hard limit on number of files that can be opened](https://ss64.com/bash/ulimit.html) is now `65536`:
 
         ulimit -Hn
 
-    The command prints the hard limit on the number of open files, which should be 10240.
+    The command should output `65536`.
 
 3. Try starting `rippled` again.
 
         systemctl start rippled
 
-4. If `rippled` still does not start, open `/etc/sysctl.conf` and add the following line to the bottom of the file:
+4. If `rippled` still does not start, open `/etc/sysctl.conf` and append the following kernel-level setting:
 
         fs.file-max = 65536
 
@@ -49,9 +49,9 @@ Aborted (core dumped)
 
 Possible solutions:
 
-- Check that `/etc/opt/ripple/rippled.cfg` exists and the `rippled` user has read permissions to the file. (Assuming you use the `rippled` user to run the `rippled` process, and you want to use the default location for the config file.)
+- Check that the config file exists (the default location is `/etc/opt/ripple/rippled.cfg`) and the user that runs your `rippled` process (usually `rippled`) has read permissions to the file.
 
-- Create a config file that can be read by the `rippled` user to `$HOME/.config/ripple/rippled.cfg` (where `$HOME` points to the `rippled` user's home directory).
+- Create a config file that can be read by the `rippled` user at `$HOME/.config/ripple/rippled.cfg` (where `$HOME` points to the `rippled` user's home directory).
 
     **Tip:** The `rippled` repository contains [an example `rippled.cfg` file](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg) which is provided as the default config when you do an RPM installation. If you do not have the file, you can copy it from there.
 
@@ -131,7 +131,7 @@ Or, if you are sure you don't need the databases:
 rm -r /var/lib/rippled/db
 ```
 
-**Tip:** It is generally safe to delete the `rippled` databases, because any individual server can re-download ledger history from other servers in the XRP Ledger network. If you are using [clustering](clustering.html), be sure your servers each have a unique `[node_seed]` configured first; if not, servers may not be recognized as part of the cluster after you restart them.
+**Tip:** It is generally safe to delete the `rippled` databases, because any individual server can re-download ledger history from other servers in the XRP Ledger network.
 
 
 ## Online Delete is Less Than Ledger History
@@ -142,7 +142,7 @@ An error message such as the following indicates that the `rippled.cfg` file has
 Terminating thread rippled: main: unhandled St13runtime_error 'online_delete must not be less than ledger_history (currently 3000)
 ```
 
-The `[ledger_history]` setting represents how many ledgers of history the server should seek to back-fill. The `online_delete` field (in the `[node_db]` stanza) indicates how many ledgers of history to keep when dropping older history. The `online_delete` value must be equal or larger than `[ledger_history]` to prevent the server from deleting historical ledgers that it is also trying to download.
+The `[ledger_history]` setting represents how many ledgers of history the server should seek to back-fill. The `online_delete` field (in the `[node_db]` stanza) indicates how many ledgers of history to keep when dropping older history. The `online_delete` value must be equal to or larger than `[ledger_history]` to prevent the server from deleting historical ledgers that it is also trying to download.
 
 To fix the problem, edit the `rippled.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options. (If you omit `[ledger_history]`, it defaults to 256 ledger versions, so `online_delete`, if present, must be larger than 256. If you omit `online_delete`, it disables automatic deletion of old ledger versions.)
 

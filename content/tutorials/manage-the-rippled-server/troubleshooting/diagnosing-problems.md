@@ -1,10 +1,10 @@
 # Diagnosing Problems with rippled
 
-If you have having problems with `rippled`, the first step is to collect more information to accurately characterize the problem. From there, it can be easier to figure out a root cause and a fix.
+If you are having problems with `rippled`, the first step is to collect more information to accurately characterize the problem. From there, it can be easier to figure out a root cause and a fix.
 
-If your server does not start, see [rippled Server Won't Start](server-wont-start.html) for a list of some possible causes and fixes.
+If your server does not start (such as crashing or otherwise shutting down automatically), see [rippled Server Won't Start](server-wont-start.html) for a list of some possible causes and fixes.
 
-The remainder of this document suggests steps for diagnosing the problem if your server starts successfully.
+The remainder of this document suggests steps for diagnosing problems that happen while your server is up and running (including if the process is active but unable to sync with the network).
 
 ## Get the server_info
 
@@ -17,9 +17,9 @@ rippled server_info
 The response to this command has a lot of information, which is documented along with the [server_info method][].
 For troubleshooting purposes, the most important fields are (from most commonly used to least):
 
-- **`server_state`** - Most of the time, this field should show either `full` or `proposing` depending on whether it is [configured as a validator](run-rippled-as-a-validator.html). The value `connected` means that the server can communicate with the rest of the peer-to-peer network, but it does not yet have enough data to track progress of the shared ledger state. Normally, syncing to the state of the rest of the ledger takes about 5-15 minutes after starting.
+- **`server_state`** - Most of the time, this field should show `proposing` for a server that is [configured as a validator](run-rippled-as-a-validator.html), or `full` for a non-validating server. The value `connected` means that the server can communicate with the rest of the peer-to-peer network, but it does not yet have enough data to track progress of the shared ledger state. Normally, syncing to the state of the rest of the ledger takes about 5-15 minutes after starting.
 
-    - If your server remains in the `connected` state for hours, or returns to the `connected` state after being in the `full` or `proposing` states, that usually indicates that your server cannot keep up with the rest of the network. The most common bottlenecks are disk I/O and network bandwidth.
+    - If your server remains in the `connected` state for hours, or returns to the `connected` state after being in the `full` or `proposing` states, that usually indicates that your server cannot keep up with the rest of the network. The most common bottlenecks are disk I/O, network bandwidth, and RAM.
 
 - **`complete_ledgers`** - This field shows which [ledger indexes](basic-data-types.html#ledger-index) your server has complete ledger data for. Healthy servers usually have a single range of recent ledgers, such as `"12133424-12133858"`.
 
@@ -35,6 +35,8 @@ For troubleshooting purposes, the most important fields are (from most commonly 
 - **`peers`** - This field indicates how many other servers in the XRP Ledger peer-to-peer network your server is connected to. Healthy servers typically show between 5 and 50 peers, unless explicitly configured to connect only to certain peers.
 
     - If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an [NTP](http://www.ntp.org/) daemon on all servers to keep their clocks synced.)
+
+    - If you have exactly 10 peers, that may indicate that your `rippled` is unable to receive incoming connections through a router using [NAT](https://en.wikipedia.org/wiki/Network_address_translation). You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 51235 [by default](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065)).
 
 ### No Response from Server
 
@@ -53,14 +55,14 @@ This generally indicates one of several problems:
 
 - The `rippled` server is just starting up, or is not running at all. Check the status of the service; if it is running, wait a few seconds and try again.
 - You may need to pass different [parameters to the `rippled` commandline client](commandline-usage.html#client-mode-options) to connect to your server.
-- The `rippled` server may not be configured not to accept JSON-RPC connections.
+- The `rippled` server may be configured not to accept JSON-RPC connections.
 
 
 ## Check the server log
 
-While running, `rippled` servers write information to a debug log. The location of the debug log depends on your server's configuration file. The [default configuration](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142) writes the server's debug log to the file `/var/log/rippled/debug.log`. If you start the `rippled` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
+[By default,](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142) `rippled` writes the server's debug log to the file `/var/log/rippled/debug.log`. The location of the debug log can differ based on your server's configuration file. If you start the `rippled` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
 
-You can control the verbosity of the debug log with the [log_level method][]. The default config file sets the `log_level` to severity "warning" for all categories of log messages. (See the `[rpc_startup]` stanza of the config file for settings.)
+The default config file sets the log level to severity "warning" for all categories of log messages by internally using the [log_level method][] during startup. You can control the verbosity of the debug log [using the `--silent` commandline option during startup](commandline-usage.html#verbosity-options) and with the [log_level method][] while the server is running. (See the `[rpc_startup]` stanza of the config file for settings.)
 
 It is normal for a `rippled` the server to print many warning-level (`WRN`) messages during startup and a few warning-level messages from time to time later on. You can **safely ignore** most warnings in the first 5 to 15 minutes of server startup.
 
