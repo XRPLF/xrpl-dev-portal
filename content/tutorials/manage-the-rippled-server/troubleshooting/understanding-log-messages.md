@@ -45,13 +45,14 @@ A large number of these messages around the same time may indicate a problem, su
 
 ## No hash for fetch pack
 
+Messages such as the following are caused by a bug in `rippled` v1.1.0 and earlier when downloading historical ledgers for [history sharding](history-sharding.html):
+
 ```text
 2018-Aug-28 22:56:21.397076850 LedgerMaster:ERR No hash for fetch pack. Missing Index 7159808
 ```
 
-***TODO: how serious is this?*** https://github.com/ripple/rippled/blob/8a02903fa5eda4daa10972800d2598b9542b02d2/src/ripple/app/ledger/impl/LedgerMaster.cpp#L526
+These can be safely ignored.
 
-(If not serious, may be worth dropping down one or two severity levels.)
 
 ## LoadMonitor Job
 
