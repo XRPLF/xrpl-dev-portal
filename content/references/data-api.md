@@ -47,7 +47,6 @@ Ledger Contents Methods:
 * [Get Active Accounts - `GET /v2/active_accounts/{base}/{counter}`](#get-active-accounts)
 * [Get Exchange Volume - `GET /v2/network/exchange_volume`](#get-exchange-volume)
 * [Get Payment Volume - `GET /v2/network/payment_volume`](#get-payment-volume)
-* [Get Issued Value - `GET /v2/network/issued_value`](#get-issued-value)
 * [Get External Markets - `GET /v2/network/external_markets`](#get-external-markets)
 * [Get XRP Distribution - `GET /v2/network/xrp_distribution`](#get-xrp-distribution)
 * [Get Top Currencies - `GET /v2/network/top_currencies`](#get-top-currencies)
