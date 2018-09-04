@@ -71,7 +71,7 @@ You can fix this issue using `rippled` on supported Linux systems according to t
 
 - You must be running **[rippled version 1.1.0][New in: rippled 1.1.0] or later**.
 
-    - [Upgrade rippled](upgrade-rippled.html) to the latest stable version before starting this process.
+    - [Upgrade rippled](update-rippled.html) to the latest stable version before starting this process.
 
     - You can check what version of `rippled` you have installed locally by running the following command:
 
