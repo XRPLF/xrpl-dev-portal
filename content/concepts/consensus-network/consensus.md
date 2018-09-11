@@ -29,7 +29,9 @@ The XRP Ledger has a new ledger version every several seconds. When the network 
 
 _Figure 2: XRP Ledger Sequence and History_
 
-A ledger instance is identified by its _ledger index_, <a href="#footnote_1" id="footnote_from_1"><sup>1</sup></a>, also called a _sequence number_. Ledgers are numbered incrementally. If the current ledger is N, the previous was N-1 and the next is N+1. The N+1 ledger is produced by applying a set of transactions to ledger N. For any ledger index, there may be several candidate versions with slightly different contents, but only one version can become validated; the others are discarded.
+A ledger version has two identifiers. One identifier is its _ledger index_, also called a _sequence number_. Ledger versions are numbered incrementally. For example, if the current ledger version has ledger index of 100, the previous has ledger index 99 and the next has ledger index 101. The other identifier is a _ledger hash_, which is a digital fingerprint of the ledger's contents.
+
+As servers propose transactions to apply to the ledger, they may create several candidate ledger versions with slightly different contents. These candidate ledger versions have the same ledger index but different ledger hashes. Of the many candidates, only one can become validated. All the other candidate ledger versions are discarded. Thus, there is exactly exactly one validated ledger hash for each ledger index in history.
 
 User level changes to the ledger are the results of transactions. Examples of [transactions](transaction-formats.html) include payments, changes to account settings or trust lines, and offers to trade. Each transaction authorizes changes to the ledger and is cryptographically signed by an account owner. Transactions are the only way to authorize changes to an account, or to change anything else in the ledger.
 
@@ -69,27 +71,21 @@ The servers on the network share information about candidate transactions. Throu
 
 During consensus, each server evaluates proposals from a specific set of peers, called chosen validators <a href="#footnote_6" id="footnote_from_6"><sup>6</sup></a>. Chosen validators represent a subset of the network which, when taken collectively, is "trusted" not to collude in an attempt to defraud the server evaluating the proposals. This definition of "trust" does not require that each individual chosen validator is trusted. Rather, validators are chosen based on the expectation they will not collude in a coordinated effort to falsify data relayed to the network <a href="#footnote_7" id="footnote_from_7"><sup>7</sup></a>. <!-- STYLE_OVERRIDE: will -->
 
-[![Figure 5: Validators Propose Transaction Sets](img/consensus-candidate-transaction-sets.png)](img/consensus-candidate-transaction-sets.png)
+[![Figure 5: Validators Propose and Revise Transaction Sets](img/consensus-rounds.png)](img/consensus-rounds.png)
 
-_Figure 5: Validators Propose Transaction Sets — At the start of consensus, servers work with different sets of transactions. Rounds of proposals determine which transactions to apply to the ledger, and which must wait for a later round of consensus._
+_Figure 5: Validators Propose and Revise Transaction Sets — At the start of consensus, validators may have different sets of transactions. In later rounds, servers modify their proposals to match what their trusted validators proposed. This process determines which transactions the should apply to the ledger version currently being discussed, and which they should postpone for later ledger versions._
 
-Candidate transactions which fail to be included in the agreed-upon proposal remain candidate transactions. They may be considered again in the next round of consensus.
+Candidate transactions that are not included in the agreed-upon proposal remain candidate transactions. They may be considered again in for the next ledger version. Typically, a transaction which is omitted from one ledger version is included in the next ledger version.
 
-[![Figure 6: Through Consensus, Servers Agree on Transaction Set](img/consensus-agreed-transaction-set.png)](img/consensus-agreed-transaction-set.png)
-
-_Figure 6: Through Consensus, Servers Agree On Transaction Set — Servers apply the agreed-upon set of transactions (shown in green) to the last validated ledger. Transactions not in the set (in red) may be agreed upon in the next round._
-
-Typically, a transaction which does not pass one round of consensus succeeds in the following round. However, in some circumstances, a transaction could fail to pass consensus indefinitely. One such circumstance is if the network increases the base fee to a value higher than the transaction provides. The transaction could potentially succeed if the fees are lowered at some point in the future.
-
-The [`LastLedgerSequence` transaction field](transaction-common-fields.html) is a mechanism to expire such a transaction if it does not execute in a reasonable time frame. Applications should include a `LastLedgerSequence` parameter with each transaction. This ensures a transaction either succeeds or fails on or before the specified ledger sequence number, thus limiting the amount of time an application must wait before obtaining a definitive transaction result. For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
+In some circumstances, a transaction could fail to achieve consensus indefinitely. One such circumstance is if the network increases the required [transaction cost](transaction-cost.html) to a value higher than the transaction provides. The transaction could potentially succeed if the fees are lowered at some point in the future. To ensure that a transaction either succeeds or fails within a limited amount of time, transactions can be set to expire if they are not processed by a certain ledger index. For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 ### Validation
 
-When a round of consensus completes, each server computes a new ledger by applying the candidate transactions in the consensus transaction set to the last validated ledger.
+When the consensus process completes, each server computes a new ledger by applying the agreed-upon set of transactions to the previous validated ledger.
 
-[![Figure 7: A Network Node Calculates a Ledger Validation](img/consensus-calculate-validation.png)](img/consensus-calculate-validation.png)
+[![Figure 7: An XRP Ledger Server Calculates a Ledger Validation](img/consensus-calculate-validation.png)](img/consensus-calculate-validation.png)
 
-_Figure 7: A Network Node Calculates a Ledger Validation — Each tracking server applies agreed-upon transactions to the last validated ledger. Validating servers send their results to the entire network._
+_Figure 7: An XRP Ledger Server Calculates a Ledger Validation — Each server applies agreed-upon transactions to the previous validated ledger. Validators send their results to the entire network._
 
 The validators calculate a new version of the ledger and relay their results to the network, each sending a signed hash of the ledger it calculated based on the candidate transactions proposed during consensus. These signed hashes, called validations, allow each server to compare the ledger it computed with those of its peers.
 
@@ -148,8 +144,6 @@ Best practices for applications submitting transactions include:
 
 
 ## End Notes
-
-<a href="#footnote_from_1" id="footnote_1"><sup>1</sup></a> – A ledger instance can also be uniquely identified by its hash, which is a digital fingerprint of its contents.
 
 <a href="#footnote_from_2" id="footnote_2"><sup>2</sup></a> – Transactions with **tec** result codes are included in ledgers and not do the requested action. The rationale for this is that multiple transactions may be submitted in sequence, with the order of processing determined by a sequence number associated with an account (not to be confused with the ledger sequence number). To prevent a hold on account sequence numbers which would block later transactions, the transaction is processed to consume the sequence number. Additionally, transactions which are distributed to the network must claim a fee to prevent network abuse.
 
