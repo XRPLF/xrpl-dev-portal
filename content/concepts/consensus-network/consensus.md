@@ -99,11 +99,8 @@ In cases where a server is in the minority, having computed a ledger that differ
 
 If the network fails to achieve supermajority agreement on validations, this implies that transaction volume was too high or network latency too great for the consensus process to produce consistent proposals. In this case, the servers repeat the consensus process. As time passes since consensus began, it becomes increasingly likely that a majority of the servers have received the same set of candidate transactions, as each consensus round reduces disagreement. The XRP Ledger dynamically adjusts [transaction costs](transaction-cost.html) and the time to wait for consensus in response to these conditions.
 
-[![Figure 9: Network Recognizes a New Validated Ledger Version](img/consensus-validated-ledger.png)](img/consensus-validated-ledger.png)
-
-_Figure 9: Network Recognises the New Validated Ledger Version — At the end of a round of the consensus process, servers have an updated validated ledger._
-
 Once they reach supermajority agreement on validations, the servers work with the new validated ledger, sequence number N+1. The consensus and validation process repeats <a href="#footnote_10" id="footnote_from_10"><sup>10</sup></a>, considering candidate transactions that were not included in the last round along with new transactions submitted in the meantime.
+
 
 ## Key Takeaways
 

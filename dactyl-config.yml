@@ -461,6 +461,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/consensus-network/transaction-queue.md
+        html: transaction-queue.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand how transactions can be queued before reaching consensus.
+        targets:
+            - local
+
     -   md: concepts/consensus-network/amendments.md
         html: amendments.html
         funnel: Docs
