@@ -81,13 +81,43 @@ In some circumstances, a transaction could fail to achieve consensus indefinitel
 
 ### Validation
 
-When the consensus process completes, each server computes a new ledger by applying the agreed-upon set of transactions to the previous validated ledger.
+Validation is the second stage of the overall consensus process, which verifies that the servers got the same results and declares a ledger version final. In rare cases, the first stage of [consensus can fail](consensus-principles-and-rules.html#consensus-can-fail); validation provides a confirmation afterward so that servers can recognize this and act accordingly.
+
+Validation can be broken up into roughly two parts:
+
+- Calculating the resulting ledger version from an agreed-upon transaction set.
+- Comparing results and declaring the ledger version validated if enough trusted validators agree.
+
+#### Calculate and Share Validations
+
+When the consensus process completes, each server independently computes a new ledger from the agreed-upon set of transactions. Each server calculates the results by following the same rules, which can be summarized as follows:
+
+1. Start with the previous validated ledger.
+
+2. Place the agreed-upon transaction set in _canonical order_ so that every server processes them the same way.
+
+    [Canonical order](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/src/ripple/app/misc/CanonicalTXSet.cpp#L25-L36) is not the order the transactions were received, because servers may receive the same transactions in different order. To prevent participants from competing over transaction ordering, canonical order is hard to manipulate.
+
+3. Process each transaction according to its instructions, in order. Update the ledger's state data accordingly.
+
+    If the transaction cannot be successfully executed, destroy the XRP transaction cost only. Include the transaction with a [`tec`-class result code](tec-codes.html).
+
+    For certain "retriable" transaction failures, instead move the transaction to the end of the canonical order to be retried after other transactions in the same ledger version have executed.
+
+4. Update the ledger header with the appropriate metadata.
+
+    This includes data such as the ledger index, the identifying hash of the previous validated ledger (this one's "parent"), this ledger version's approximate close time, and the cryptographic hashes of this ledger's contents.
+
+5. Calculate the identifying hash of the new ledger version.
+
 
 [![Figure 7: An XRP Ledger Server Calculates a Ledger Validation](img/consensus-calculate-validation.png)](img/consensus-calculate-validation.png)
 
 _Figure 7: An XRP Ledger Server Calculates a Ledger Validation — Each server applies agreed-upon transactions to the previous validated ledger. Validators send their results to the entire network._
 
-The validators calculate a new version of the ledger and relay their results to the network, each sending a signed hash of the ledger it calculated based on the candidate transactions proposed during consensus. These signed hashes, called validations, allow each server to compare the ledger it computed with those of its peers.
+#### Compare Results
+
+Validators each relay their results in the form of a signed message containing the hash of the ledger version they calculated. These messages, called _validations_, allow each server to compare the ledger it computed with those of its peers.
 
 [![Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result Result](img/consensus-declare-validation.png)](img/consensus-declare-validation.png)
 
