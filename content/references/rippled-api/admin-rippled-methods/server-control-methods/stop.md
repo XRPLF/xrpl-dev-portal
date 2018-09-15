@@ -1,5 +1,5 @@
 # stop
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Stop.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")
 
 Gracefully shuts down the server.
 

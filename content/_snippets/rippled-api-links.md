@@ -46,6 +46,7 @@
   "channel_verify",
   "connect",
   "consensus_info",
+  "deposit_authorized",
   "feature",
   "fee",
   "fetch_info",

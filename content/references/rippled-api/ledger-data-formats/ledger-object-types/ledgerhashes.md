@@ -1,5 +1,5 @@
 # LedgerHashes
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L107 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108 "Source")
 
 (Not to be confused with the ["ledger hash" string data type][Hash], which uniquely identifies a ledger version. This section describes the `LedgerHashes` ledger object type.)
 
@@ -57,7 +57,7 @@ The "previous history" `LedgerHashes` entries collectively contain the hash of e
 The "previous history" `LedgerHashes` objects act as a [skip list](https://en.wikipedia.org/wiki/Skip_list) so you can get the hash of any historical flag ledger from its index. From there, you can use that flag ledger's "recent history" object to get the hash of any other ledger.
 
 ## LedgerHashes ID Formats
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/Indexes.cpp#L28-L43)
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42)
 
 There are two formats for `LedgerHashes` object IDs, depending on whether the object is a "recent history" sub-type or a "previous history" sub-type.
 

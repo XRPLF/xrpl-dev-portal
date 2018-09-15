@@ -902,6 +902,14 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/manage-the-rippled-server/enable-public-signing.md
+        html: enable-public-signing.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
+
     -   md: tutorials/manage-the-rippled-server/run-rippled-as-a-validator.md
         html: run-rippled-as-a-validator.html
         funnel: Docs
@@ -944,6 +952,14 @@ pages:
 
     # TODO: troubleshoot rippled,
     #  run a validator, run in stand-alone mode, set up private peers
+
+    -   md: tutorials/manage-the-rippled-server/fix-sqlite-tx-db-page-size-issue.md
+        html: fix-sqlite-tx-db-page-size-issue.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        targets:
+            - local
 
 # References -------------------------------------------------------------------
 
@@ -1359,6 +1375,17 @@ pages:
         category: Public rippled Methods
         subcategory: Path and Order Book Methods
         blurb: Get info about offers to exchange two currencies.
+        targets:
+            - local
+
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.md
+        html: deposit_authorized.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        blurb: Check whether an account is authorized to send money directly to another.
         targets:
             - local
 
@@ -1887,6 +1914,17 @@ pages:
         targets:
             - local
 
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/depositpreauth.md
+        html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A record of preauthorization for sending payments to an account that requires authorization.
+        targets:
+            - local
+
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.md
         html: directorynode.html
         funnel: Docs
@@ -2049,6 +2087,17 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Create a check.
+        targets:
+            - local
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.md
+        html: depositpreauth.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Preauthorizes an account to send payments to this one.
         targets:
             - local
 

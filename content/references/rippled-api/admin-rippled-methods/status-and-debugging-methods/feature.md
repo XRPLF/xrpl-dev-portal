@@ -1,5 +1,5 @@
 # feature
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/Feature1.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
 The `feature` command returns information about [amendments](amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](amendments.html#amendment-process). [New in: rippled 0.31.0][]
 

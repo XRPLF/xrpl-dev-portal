@@ -1,5 +1,5 @@
 # PaymentChannelCreate
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/PayChan.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
 _Requires the [PayChan Amendment](known-amendments.html#paychan)._
 

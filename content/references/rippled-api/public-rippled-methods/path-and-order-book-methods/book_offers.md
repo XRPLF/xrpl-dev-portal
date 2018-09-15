@@ -1,5 +1,5 @@
 # book_offers
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/BookOffers.cpp "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
 The `book_offers` method retrieves a list of offers, also known as the [order book](http://www.investopedia.com/terms/o/order-book.asp), between two currencies. If the results are very large, a partial result is returned with a marker so that later requests can resume from where the previous one left off.
 
