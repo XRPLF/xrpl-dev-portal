@@ -865,7 +865,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        blurb: Build, install, and run the rippled server. Configure it to your use case and troubleshoot problems.
+        blurb: Build, install, configure, and run the rippled server.
         template: template-landing-children.html
         targets:
             - local
@@ -950,8 +950,50 @@ pages:
         targets:
             - local
 
-    # TODO: troubleshoot rippled,
-    #  run a validator, run in stand-alone mode, set up private peers
+    # TODO: run a validator, run in stand-alone mode, set up private peers
+
+    -   name: Troubleshooting rippled
+        html: troubleshoot-the-rippled-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Troubleshoot all kinds of problems with the rippled server.
+        template: template-landing-children.html
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.md
+        html: diagnosing-problems.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Collect information to identify the cause of problems.
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
+        html: understanding-log-messages.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Interpret and respond to warning and error messages in the debug log.
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
+        html: server-wont-start.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: A collection of problems that would cause a rippled server not to start, and how to fix them.
+        targets:
+            - local
+
+    # TODO: more troubleshooting rippled articles
 
     -   md: tutorials/manage-the-rippled-server/fix-sqlite-tx-db-page-size-issue.md
         html: fix-sqlite-tx-db-page-size-issue.html
