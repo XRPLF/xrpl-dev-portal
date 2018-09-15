@@ -83,11 +83,12 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
         $ git log -1
 
-        commit 8429dd67e60ba360da591bfa905b58a35638fda1
+        commit 3e22a1e9e8f2de450eded6ca4c2db6411e329b2a
         Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Mon Jun 4 16:36:22 2018 -0700
+        Date:   Wed Sep 5 18:34:43 2018 -0700
 
-            Set version to 1.0.1
+            Set version to 1.1.0
+
 
 7. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
 
