@@ -1,6 +1,7 @@
 'use strict';
 /* import RippleAPI and support libraries */
 const RippleAPI = require('ripple-lib').RippleAPI;
+const assert = require('assert');
 
 /* Credentials of the account placing the order */
 const myAddr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
@@ -31,7 +32,7 @@ const myInstructions = {maxLedgerVersionOffset: ledgerOffset};
 
 /* Verify a transaction is in a validated XRP Ledger version */
 function verifyTransaction(hash, options) {
-  console.log('Verifying Transaction');
+  console.log('Verifing Transaction');
   return api.getTransaction(hash, options).then(data => {
     console.log('Final Result: ', data.outcome.result);
     console.log('Validated in Ledger: ', data.outcome.ledgerVersion);
@@ -57,10 +58,11 @@ function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
   return api.submit(signedData.signedTransaction).then(data => {
     console.log('Tentative Result: ', data.resultCode);
     console.log('Tentative Message: ', data.resultMessage);
-    /* The tentative result should be ignored. Transactions that succeed here can ultimately fail,
-       and transactions that fail here can ultimately succeed. */
+    /* If transaction was not successfully submitted throw error */
+    assert.strictEqual(data.resultCode, 'tesSUCCESS');
+    /* 'tesSUCCESS' means the transaction is being considered for the next ledger, and requires validation. */
 
-    /* Begin validation workflow */
+    /* If successfully submitted, begin validation workflow */
     const options = {
       minLedgerVersion: lastClosedLedgerVersion,
       maxLedgerVersion: prepared.instructions.maxLedgerVersion
