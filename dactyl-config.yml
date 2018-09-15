@@ -45,14 +45,16 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
-            - html: intro-to-consensus.html
-              date: 2018-08-20
-            - html: consensus-protections.html
-              date: 2018-08-20
-            - html: commandline-usage.html
-              date: 2018-07-02
-            - html: freezes.html
-              date: 2018-07-02
+            - html: build-run-rippled-ubuntu.html
+              date: 2018-09-14
+            - html: troubleshoot-the-rippled-server.html
+              date: 2018-09-14
+            - html: depositauth.html
+              date: 2018-09-14
+            - html: enable-public-signing.html
+              date: 2018-09-14
+            - html: rippleapi-reference.html
+              date: 2018-09-14
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
@@ -2420,7 +2422,7 @@ pages:
     # --------------- end "rippled API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/0.22.0/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.0.0/docs/index.md
         html: rippleapi-reference.html
         funnel: Docs
         doc_type: References
