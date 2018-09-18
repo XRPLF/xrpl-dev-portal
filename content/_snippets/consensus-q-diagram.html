@@ -1,96 +1,97 @@
 <div id="consensus-q-diagram-wrapper">
 
   <div id="consensus-q-diagram-steps">
-    <div class="card">
-      <div class="card-header bg-dark">
-        <h4>Consensus Round 1</h4>
-      </div><!-- /.card-header -->
-      <div class="card-body">
-        <img src="img/consensus-w-q-1.png" alt="Consensus round 1" width="250" height="180" />
-        <div class="description">
-          <p>Each validator proposes a set of transactions to be included in the next ledger version.</p>
-          <p>Each also keeps a queue of candidate transactions not currently proposed.</p>
+    <div class="steps-col" id="left-steps">
+      <div class="card">
+        <div class="card-header bg-dark">
+          <h4>Consensus Round 1</h4>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+          <img src="img/consensus-w-q-1.png" alt="Consensus round 1" width="188" height="135" />
+          <div class="description">
+            <p>Each validator proposes a set of transactions to be included in the next ledger version.</p>
+            <p>Each also keeps a queue of candidate transactions not currently proposed.</p>
+          </div>
         </div>
-      </div>
-    </div><!-- /.card -->
+      </div><!-- /.card -->
 
-    <div class="next-step">↓</div>
+      <div class="next-step">↓</div>
 
-    <div class="card">
-      <div class="card-header bg-dark">
-        <h4>Consensus Round 2</h4>
-      </div><!-- /.card-header -->
-      <div class="card-body">
-        <img src="img/consensus-w-q-2.png" alt="Consensus round 2" width="250" height="180" />
-        <div class="description">
-          <p>If a validator removes a transaction from its proposal in later rounds, it adds that transaction to its queue.</p>
+      <div class="card">
+        <div class="card-header bg-dark">
+          <h4>Consensus Round 2</h4>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+          <img src="img/consensus-w-q-2.png" alt="Consensus round 2" width="188" height="135" />
+          <div class="description">
+            <p>If a validator removes a transaction from its proposal in later rounds, it adds that transaction to its queue.</p>
+          </div>
         </div>
-      </div>
-    </div><!-- /.card -->
+      </div><!-- /.card -->
 
-    <div class="next-step">↓</div>
+      <div class="next-step">↓</div>
 
-    <div class="card">
-      <div class="card-header bg-dark">
-        <h4>Consensus Ends</h4>
-      </div><!-- /.card-header -->
-      <div class="card-body">
-        <img src="img/consensus-w-q-3.png" alt="Consensus Ends" width="250" height="180" />
-        <div class="description">
-          <p>The consensus process continues until enough servers agree on a transaction set.</p>
+      <div class="card">
+        <div class="card-header bg-dark">
+          <h4>Consensus Ends</h4>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+          <img src="img/consensus-w-q-3.png" alt="Consensus Ends" width="188" height="135" />
+          <div class="description">
+            <p>The consensus process continues until enough servers agree on a transaction set.</p>
+          </div>
         </div>
-      </div>
-    </div><!-- /.card -->
+      </div><!-- /.card -->
 
-    <div class="next-step">↓</div>
+      <div class="next-step down-right">→</div>
+    </div><!-- /#left-steps -->
 
-    <div class="card">
-      <div class="card-header bg-dark">
-        <h4>Validation</h4>
-      </div><!-- /.card-header -->
-      <div class="card-body">
-        <img src="img/consensus-w-q-4.png" alt="Validation" width="250" height="180" />
-        <div class="description">
-          <p>Servers confirm that they built the same resulting ledger and declare it validated.</p>
+    <div class="steps-col" id="right-steps">
+
+      <div class="card">
+        <div class="card-header bg-dark">
+          <h4>Validation</h4>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+          <img src="img/consensus-w-q-4.png" alt="Validation" width="188" height="135" />
+          <div class="description">
+            <p>Servers confirm that they built the same resulting ledger and declare it validated.</p>
+          </div>
         </div>
-      </div>
-    </div><!-- /.card -->
+      </div><!-- /.card -->
 
-    <div class="next-step">↓</div>
+      <div class="next-step up">up</div>
 
-    <div class="card">
-      <div class="card-header bg-dark">
-        <h4>Building the Next Proposal</h4>
-      </div><!-- /.card-header -->
-      <div class="card-body">
-        <img src="img/consensus-w-q-5.png" alt="Building the Next Proposal" width="250" height="180" />
-        <div class="description">
-          <p>Each validator prepares its proposal for the next ledger version, starting with queued transactions.</p>
+      <div class="card">
+        <div class="card-header bg-dark">
+          <h4>Building the Next Proposal</h4>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+          <img src="img/consensus-w-q-5.png" alt="Building the Next Proposal" width="188" height="135" />
+          <div class="description">
+            <p>Each validator prepares its proposal for the next ledger version, starting with queued transactions.</p>
+          </div>
         </div>
-      </div>
-    </div><!-- /.card -->
+      </div><!-- /.card -->
 
-    <div class="next-step">↓</div>
+      <div class="next-step up">up</div>
 
-    <div class="card">
-      <div class="card-header bg-dark">
-        <h4>Adding to the Queue</h4>
-      </div><!-- /.card-header -->
-      <div class="card-body">
-        <img src="img/consensus-w-q-6.png" alt="Adding to the Queue" width="250" height="180" />
-        <div class="description">
-          <p>If the next proposed ledger is already full, incoming transactions are queued for a later ledger version.</p>
+      <div class="card">
+        <div class="card-header bg-dark">
+          <h4>Adding to the Queue</h4>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+          <img src="img/consensus-w-q-6.png" alt="Adding to the Queue" width="188" height="135" />
+          <div class="description">
+            <p>If the next proposed ledger is already full, incoming transactions are queued for a later ledger version.</p>
+          </div>
         </div>
-      </div>
-    </div><!-- /.card -->
+      </div><!-- /.card -->
+
+      <div class="next-step up-left">(back to start)</div>
+    </div><!-- /#right-steps -->
+
   </div><!-- /#consensus-q-diagram-steps -->
-
-  <div id="consensus-q-diagram-repeat">
-    (Return to the first step)
-    <div class="return-arrow">&nbsp;</div>
-    <div class="right-bar">&nbsp;</div>
-    <div class="bottom-right-angle">&nbsp;</div>
-  </div>
 
 </div><!-- /#consensus-q-diagram-wrapper -->
 
@@ -99,6 +100,15 @@
 #consensus-q-diagram-wrapper {
   display: flex;
   flex-direction: row;
+  margin: 1rem 0;
+}
+
+#consensus-q-diagram-wrapper .card-header {
+  padding: 0.25rem 1rem;
+}
+
+#consensus-q-diagram-wrapper .card-body {
+  padding: 0.5rem;
 }
 
 #consensus-q-diagram-wrapper .next-step {
@@ -108,7 +118,24 @@
   background-repeat: no-repeat;
   font-size: 0;
   color: rgba(255,255,255,0);
-  margin: 1rem;
+  margin: 0.25rem;
+  background-position: top 0 right 45px;
+}
+#consensus-q-diagram-wrapper .next-step.up {
+  transform: rotate(180deg);
+}
+#consensus-q-diagram-wrapper .next-step.up-left {
+  background-image: url("img/up-left-angle-arrow.png");
+  height: 75px;
+  background-position: left;
+}
+
+#consensus-q-diagram-wrapper .next-step.down-right {
+  background-image: url("img/up-left-angle-arrow.png");
+  background-position: right;
+  transform: rotate(180deg);
+  height: 75px;
+  background-position: left;
 }
 
 #consensus-q-diagram-repeat,
@@ -121,39 +148,21 @@
 }
 
 #consensus-q-diagram-steps {
-  flex: 1 1 auto;
-}
-
-#consensus-q-diagram-repeat {
-  flex: 0 0 75px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
-.return-arrow {
-  height: 75px;
-  width: 75px;
-  background-image: url("img/up-left-angle-arrow.png");
-  background-repeat: no-repeat;
-  flex: 0 0 75px;
-  margin: 100px 1rem 0 0;
+#consensus-q-diagram-steps #right-steps {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
-.bottom-right-angle {
-  height: 75px;
-  width: 75px;
-  background-image: url("img/bottom-right-angle.png");
-  background-repeat: no-repeat;
-  flex: 0 0 75px;
-  margin: 0 1rem 100px 0;
+#consensus-q-diagram-wrapper #left-steps .card {
+  margin-right: 1rem;
 }
 
-.right-bar {
-  width: 75px;
-  flex: 1 0 75px;
-  background-image: url("img/right-bar.png");
-  background-repeat: repeat-y;
-  margin: 0 1rem 0 0;
+#consensus-q-diagram-wrapper #right-steps .card {
+  margin-left: 1rem;
 }
 
 #consensus-q-diagram-wrapper .card h4 {
@@ -169,8 +178,14 @@
   flex-direction: row
 }
 
+@media (max-width: 992px) {
+  #consensus-q-diagram-wrapper .card-body {
+    display: block;
+  }
+}
+
 #consensus-q-diagram-wrapper .card-body img {
-  flex: 0 0 250px;
+  flex: 0 1 188px;
 }
 
 #consensus-q-diagram-wrapper .description {
