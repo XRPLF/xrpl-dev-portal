@@ -6,8 +6,21 @@ The `rippled` server uses a transaction queue to help enforce the [open ledger c
 
 The transaction queue plays an important role in selecting the transactions that are included or excluded from a given ledger version in the consensus process. The following steps describe how the transaction queue relates to the [consensus process](consensus.html).
 
-{% include '_snippets/consensus-q-diagram.html' %}
-<!--_ -->
+[![Transaction queue and consensus diagram](img/consensus-with-queue.png)](img/consensus-with-queue.png)
+
+1. **Consensus Round 1** - Each validator proposes a set of transactions to be included in the next ledger version. Each also keeps a queue of candidate transactions not currently proposed.
+
+2. **Consensus Round 2** - If a validator removes a transaction from its proposal in later rounds, it adds that transaction to its queue.
+
+3. **Consensus Round N** - The consensus process continues until enough servers agree on a transaction set.
+
+4. **Validation** - Servers confirm that they built the same resulting ledger and declare it validated.
+
+5. **Building the Next Proposal** - Each validator prepares its proposal for the next ledger version, starting with queued transactions.
+
+6. **Adding to the Queue** - If the next proposed ledger is already full, incoming transactions are queued for a later ledger version.
+
+    After this step, the process repeats from the beginning.
 
 **Note:** Technically, several of the steps described in the above process occur in parallel, because each server is always listening for new transactions, and starts preparing its next ledger proposal while the consensus process for the previous ledger version is ongoing.
 
