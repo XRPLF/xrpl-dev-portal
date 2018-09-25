@@ -161,7 +161,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index`         | Integer                                    | (Omitted if ledger\_current\_index provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. |
 | `ledger_hash`          | String                                     | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. |
 | `marker`               | [Marker][] | (May be omitted) Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. |
-| `offers`               | Array                                      | Array of offer objects, each of which has the fields of an [OfferCreate transaction][] |
+| `offers`               | Array                                      | Array of offer objects, each of which has the fields of an [Offer object](offer.html) |
 
 In addition to the standard Offer fields, the following fields may be included in members of the `offers` array:
 
