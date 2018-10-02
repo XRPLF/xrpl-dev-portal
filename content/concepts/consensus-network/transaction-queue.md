@@ -18,7 +18,7 @@ The transaction queue plays an important role in selecting the transactions that
 
 5. **Building the Next Proposal** - Each validator prepares its proposal for the next ledger version, starting with queued transactions.
 
-6. **Adding to the Queue** - If the next proposed ledger is already full, incoming transactions are queued for a later ledger version.
+6. **Adding to the Queue** - If the next proposed ledger is already full, incoming transactions are queued for a later ledger version. (Transactions that pay the [open ledger cost](transaction-cost.html#open-ledger-cost) can still get into the next proposed ledger even if it's "full", but the open ledger cost grows exponentially with each transaction added this way.)
 
     After this step, the process repeats from the beginning.
 
@@ -32,19 +32,19 @@ The `rippled` server uses a variety of heuristics to estimate which transactions
 * Transactions with an `AccountTxnID` field cannot be queued.
 * A single sending address can have at most 10 transactions queued at the same time. In order for a transaction to be queued, the sender must have enough XRP to pay all the XRP costs of all the sender's queued transactions including both the `Fee` fields and the sum of the XRP that each transaction could send. [New in: rippled 0.32.0][]
 * If a transaction affects how the sending address authorizes transactions, no other transactions from the same address can be queued behind it. [New in: rippled 0.32.0][]
-* If the transaction includes a `LastLedgerSequence` field, the value of that field must be at least **the current ledger index + 2**.
+* If a transaction includes a `LastLedgerSequence` field, the value of that field must be at least **the current ledger index + 2**.
 
 ### Fee Averaging
 
 [New in: rippled 0.33.0][]
 
-If a sending address has one or more transactions queued, that sender can "push" the existing queued transactions into the open ledger by submitting a new transaction with a high enough transaction cost to pay for all of them. Specifically, the new transaction must increase the total transaction cost of the queued transactions from the same sending address, including the new transaction, to cover the [open ledger cost](transaction-cost.html#open-ledger-cost) of each transaction as it gets added to the ledger. The total must include the increased open ledger cost for each new transaction. The transactions must still follow the other [queuing restrictions](#queuing-restrictions) and the sending address must have enough XRP to pay the transaction costs of all the queued transactions.
+If a sending address has one or more transactions queued, that sender can "push" the existing queued transactions into the open ledger by submitting a new transaction with a high enough transaction cost to pay for all of them. Specifically, the new transaction must pay a high enough transaction cost to cover the [open ledger cost](transaction-cost.html#open-ledger-cost) of itself and each other transaction from the same sender before it in the queue. (Keep in mind that the open ledger cost increases exponentially each time a transaction pays it.) The transactions must still follow the other [queuing restrictions](#queuing-restrictions) and the sending address must have enough XRP to pay the transaction costs of all the queued transactions.
 
-This feature helps you work around a particular situation. If you submitted one or more transactions with a low cost, which got queued, you cannot send new transactions from the same address unless you do one of the following:
+This feature helps you work around a particular situation. If you submitted one or more transactions with a low cost that were queued, you cannot send new transactions from the same address unless you do one of the following:
 
 * Wait for the queued transactions to be included in a validated ledger, _or_
 * Wait for the queued transactions to be permanently invalidated if the transactions have the [`LastLedgerSequence` field](reliable-transaction-submission.html#lastledgersequence) set, _or_
-* [Cancel the queued transactions](cancel-or-skip-a-transaction.html) by submitting a new transaction with the same sequence number.
+* [Cancel the queued transactions](cancel-or-skip-a-transaction.html) by submitting a new transaction with the same sequence number and a higher transaction cost.
 
 If none of the above occur, transactions can stay in the queue for a theoretically unlimited amount of time, while other senders can "cut in line" by submitting transactions with higher transaction costs. Since signed transactions are immutable, you cannot increase the transaction cost of the queued transactions to increase their priority. If you do not want to invalidate the previously submitted transactions, fee averaging provides a workaround. If you increase the transaction cost of your new transaction to compensate, you can ensure the queued transactions are included in an open ledger right away.
 

@@ -15,7 +15,7 @@ The peer-to-peer XRP Ledger network provides a worldwide, shared ledger, which g
 - balances of XRP and [issued currencies](issued-currencies.html)
 - offers in the distributed exchange
 - network settings, such as [transaction costs](transaction-cost.html) and [reserve](reserves.html) amounts
-- a time stamp
+- a timestamp
 
 For a full, technical description of which data is included in a ledger version, see the [Ledger Format Reference](ledger-data-formats.html).
 
@@ -61,7 +61,7 @@ The peer-to-peer XRP Ledger network consists of many independent XRP Ledger serv
 
 _Figure 4: Participants in the XRP Ledger Protocol_
 
-The servers that receive, relay and process transactions may be either tracking servers or validators. Tracking servers’ primary functions include distributing transactions from clients and responding to queries about the ledger. Validating servers perform the same functions as tracking servers and additionally contribute to advancing the ledger sequence <a href="#footnote_3" id="from_footnote_3"><sup>3</sup></a>.
+The servers that receive, relay and process transactions may be either tracking servers or validators. The major functions of tracking servers include distributing transactions from clients and responding to queries about the ledger. Validating servers perform the same functions as tracking servers and also contribute to advancing the ledger sequence <a href="#footnote_3" id="from_footnote_3"><sup>3</sup></a>.
 
 While accepting transactions submitted by client applications, each tracking server uses the last validated ledger as a starting point. The accepted transactions are candidates. The servers relay their candidate transactions to their peers, allowing the candidate transactions to propagate throughout the network. Ideally, each candidate transaction would be known to all servers, allowing each to consider the same set of transactions to apply to the last validated ledger. As transactions take time to propagate however, the servers do not work with the same set of candidate transactions at all times. To account for this, the XRP Ledger uses a process called consensus to ensure that the same transactions are processed and validated ledgers are consistent across the peer-to-peer XRP Ledger network.
 
@@ -73,7 +73,7 @@ During consensus, each server evaluates proposals from a specific set of servers
 
 [![Figure 5: Validators Propose and Revise Transaction Sets](img/consensus-rounds.png)](img/consensus-rounds.png)
 
-_Figure 5: Validators Propose and Revise Transaction Sets — At the start of consensus, validators may have different sets of transactions. In later rounds, servers modify their proposals to match what their trusted validators proposed. This process determines which transactions the should apply to the ledger version currently being discussed, and which they should postpone for later ledger versions._
+_Figure 5: Validators Propose and Revise Transaction Sets — At the start of consensus, validators may have different sets of transactions. In later rounds, servers modify their proposals to match what their trusted validators proposed. This process determines which transactions they should apply to the ledger version currently being discussed, and which they should postpone for later ledger versions._
 
 Candidate transactions that are not included in the agreed-upon proposal remain candidate transactions. They may be considered again in for the next ledger version. Typically, a transaction which is omitted from one ledger version is included in the next ledger version.
 
@@ -121,7 +121,7 @@ Validators each relay their results in the form of a signed message containing t
 
 [![Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result Result](img/consensus-declare-validation.png)](img/consensus-declare-validation.png)
 
-_Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result — Servers compare their calculated ledger with the hashes received from chosen validators. If not in agreement, the server must re-calculate or retrieve the correct ledger._
+_Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result — Each server compares its calculated ledger with the hashes received from its chosen validators. If not in agreement, the server must recalculate or retrieve the correct ledger._
 
 Servers in the network recognize a ledger instance as validated when a supermajority of the peers have signed and broadcast the same validation hash <a href="#footnote_7" id="from_footnote_7"><sup>7</sup></a>. Going forward, transactions are applied to this updated and now validated ledger with sequence number N+1.
 
