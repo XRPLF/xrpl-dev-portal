@@ -25,7 +25,7 @@ If you run multiple `rippled` servers in the same data center, you can configure
 
 3. On each server, edit the [config file](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg), modifying the following sections:
 
-    1. List the IP address and port of each other server under the `[ips_fixed]` section. The port should be the one from the other servers' `protocol = peer` setting in their `rippled.cfg` (usually 51235). Each member of the cluster should list all _other_ members of the cluster here. For example:
+    1. In the `[ips_fixed]` section, list the IP address and port of each _other_ member of the cluster. For each of those servers, the port number should match the `protocol = peer` port (usually 51235) from that server's `rippled.cfg`. For example:
 
             [ips_fixed]
             192.168.0.1 51235
@@ -33,16 +33,14 @@ If you run multiple `rippled` servers in the same data center, you can configure
 
         This defines specific peer servers to which this server should always attempt to maintain a direct peer-to-peer connection.
 
-    2. Set the server's node seed one of the `validation_seed` values you generated using the [validation_create method][] in step 2. Each server must use a unique node seed. For example:
+    2. In the `[node_seed]` section, set the server's node seed to one of the `validation_seed` values you generated using the [validation_create method][] in step 2. Each server must use a unique node seed. For example:
 
             [node_seed]
             ssZkdwURFMBXenJPbrpE14b6noJSu
 
         This defines the key pair the server uses to sign peer-to-peer communications, excluding validation messages.
 
-    3. Set the members of the server's cluster, identified by their `validation_public_key` values. Each server should list the public keys of all _other_ members of the cluster here. Optionally, add a custom name for each server.
-
-        For example:
+    3. In the `[cluster_nodes]` section, set the members of the server's cluster, identified by their `validation_public_key` values. Each server should list the public keys of all _other_ members of the cluster here. Optionally, add a custom name for each server. For example:
 
             [cluster_nodes]
             n9McNsnzzXQPbg96PEUrrQ6z3wrvgtU4M7c97tncMpSoDzaQvPar keynes
