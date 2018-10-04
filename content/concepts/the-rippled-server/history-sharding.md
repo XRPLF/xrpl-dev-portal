@@ -10,6 +10,8 @@ Using the history sharding feature, individual `rippled` servers can contribute 
 
 [![XRP Ledger Network: Ledger Store and Shard Store Diagram](img/xrp-ledger-network-ledger-store-and-shard-store.png)](img/xrp-ledger-network-ledger-store-and-shard-store.png)
 
+<!-- Diagram source: https://docs.google.com/presentation/d/1mg2jZQwgfLCIhOU8Mr5aOiYpIgbIgk3ymBoDb2hh7_s/edit#slide=id.g417450e8da_0_316 -->
+
 ## Acquiring and Sharing History Shards
 
 `rippled` servers acquire and store history shards only if configured to do so. For those servers, acquiring shards begins after synchronizing with the network and backfilling ledger history to the configured number of recent ledgers. During this time of lower network activity, a `rippled` server set to maintain a `shard_db` randomly chooses a shard to add to its shard store. To increase the probability for an even distribution of the network ledger history, shards are randomly selected for acquisition, and the current shard is given no special consideration.
