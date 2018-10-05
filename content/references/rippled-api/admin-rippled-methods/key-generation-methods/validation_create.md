@@ -1,9 +1,14 @@
 # validation_create
 [[Source]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
 
-Use the `validation_create` command to generate the keys for a rippled [validator](rippled-server-modes.html#reasons-to-run-a-validator). Similar to the [wallet_propose method][], this command makes no real changes, but only generates a set of keys in the proper format.
+Use the `validation_create` command to generate cryptographic keys a `rippled` server can use to identify itself to the network. Similar to the [wallet_propose method][], this command makes no real changes, but only generates a set of keys in the proper format.
 
 _The `validation_create` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
+
+You can configure your server to use the generated key pair to sign validations (validation key pair) or regular peer-to-peer communications (node key pair).
+
+**Tip:** For configuring a robust validator, you should use the `validator-keys` tool (included in the `rippled` RPM) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](run-rippled-as-a-validator.html#validator-setup).
+
 
 ### Request Format
 An example of the request format:
