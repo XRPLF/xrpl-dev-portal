@@ -45,15 +45,15 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: cluster-rippled-servers.html
+              date: 2018-10-05
+            - html: consensus.html
+              date: 2018-10-05
+            - html: book_offers.html
+              date: 2018-10-05
             - html: build-run-rippled-ubuntu.html
               date: 2018-09-14
             - html: troubleshoot-the-rippled-server.html
-              date: 2018-09-14
-            - html: depositauth.html
-              date: 2018-09-14
-            - html: enable-public-signing.html
-              date: 2018-09-14
-            - html: rippleapi-reference.html
               date: 2018-09-14
 
     # Data API target for porting changes to the README in the upstream repo
