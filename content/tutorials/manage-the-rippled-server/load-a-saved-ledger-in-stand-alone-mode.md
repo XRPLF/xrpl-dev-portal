@@ -38,17 +38,19 @@ rippled stop --conf=/path/to/rippled.cfg
 
 ## 5. Start `rippled` in stand-alone mode.
 
-To load the most recent ledger version, you can use the [`-a`](https://wiki.ripple.com/Rippled#--standalone.2C_-a) and [`--load`](https://wiki.ripple.com/Rippled#--load) options when starting the server:
+To load the most recent ledger version, you can use the `-a` and `--load` options when starting the server:
 
 ```
 rippled -a --load --conf=/path/to/rippled.cfg
 ```
 
-To instead load a specific historical ledger, use the [`--load`](https://wiki.ripple.com/Rippled#--load) parameter along with the `--ledger` parameter, providing the ledger index or identifying hash of the ledger version to load:
+To instead load a specific historical ledger, use the `--load` parameter along with the `--ledger` parameter, providing the ledger index or identifying hash of the ledger version to load:
 
 ```
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 ```
+
+For more information on the options you can use when starting `rippled` in Stand-Alone mode, see [Commandline Usage: Stand-Alone Mode Options](commandline-usage.html#stand-alone-mode-options).
 
 ## 6. Manually advance the ledger.
 

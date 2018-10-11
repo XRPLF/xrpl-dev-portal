@@ -42,7 +42,11 @@ The `Domain` field is represented as the hex string of the lowercase ASCII of th
 
 To remove the `Domain` field from an account, send an AccountSet with the Domain set to an empty string.
 
-Client applications can use the [ripple.txt](https://wiki.ripple.com/Ripple.txt) file hosted by the domain to confirm that the account is actually operated by that domain.
+You can put any domain in your account's `Domain` field. To prove that an account truly belongs to the same person or business as a domain, Ripple recommends establishing a "two-way link":
+
+- Accounts you own should have a domain you own in the `Domain` field.
+- A website hosted at that domain should have a text file listing accounts you own, and optionally other information about how you use the XRP Ledger. Conventionally, this file is named `ripple.txt`. For an example, see <https://ripple.com/ripple.txt>.
+    - To prevent man-in-the-middle attacks, this website should be hosted via HTTPS with an up-to-date TLS certificate.
 
 ## AccountSet Flags
 
