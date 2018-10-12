@@ -36,10 +36,9 @@ Checks potentially enable many other use cases. Ripple encourages the community 
 
 Checks typically have the lifecycle described below.
 
-<!--{# Diagram sources: https://docs.google.com/drawings/d/1Ez8OZVB2TLH-b_kSFOAgfYqXlEQt4KaUBW6F3TJAv_Q/edit #}-->
+<!--{# Diagram source: https://docs.google.com/drawings/d/1Ez8OZVB2TLH-b_kSFOAgfYqXlEQt4KaUBW6F3TJAv_Q/edit #}-->
 
-
-[![Check flow diagram (successful cashing)](img/checks-happy_path.png)](img/checks-happy_path.png)
+[![Check flow diagram (successful cashing)](img/checks-happy-path.png)](img/checks-happy-path.png)
 
 **Step 1:** To create a Check, the sender submits a [CheckCreate][] transaction and specifies the receiver (`Destination`), expiration time (`Expiration`), and maximum amount that may be debited from the sender's account (`SendMax`).
 
@@ -60,10 +59,9 @@ If the sender has enough funds to cover the Check and the expiration time has no
 
 In the case of expirations, Checks have the lifecycle described below.
 
-<!--{# Diagram sources: https://docs.google.com/drawings/d/1JOgI3H5tpV1yasYe5WLrdxVXLhcQu0bhPfN0mzzS1YQ/edit #}-->
+<!--{# Diagram source: https://docs.google.com/drawings/d/11auqa0kVUPonqlc_RaQUfHcSkUI47xneSKpwlLxzSK0/edit #}-->
 
-
-[![Check flow diagram (expiration)](img/checks_expiration.png)](img/checks_expiration.png)
+[![Check flow diagram (expiration)](img/checks-expiration.png)](img/checks-expiration.png)
 
 
 All Checks start the same way, so **Steps 1 and 2** are the same.
@@ -76,12 +74,9 @@ All Checks start the same way, so **Steps 1 and 2** are the same.
 
 ## Availability of Checks
 
-Checks require `rippled` v0.90.0 or later. The Checks amendment gained support of a majority of validators on the production XRP Ledger on 2018-03-22 in this [EnableAmendment pseudo-transaction](https://ripple.com/build/transactions/#enableamendment): [`EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04`](https://xrpcharts.ripple.com/#/transactions/EC0D90F114D4F3C599FEABCAF47DCF0CAC29A272D1EF6C9BEF7F420819540F04). For more information about how amendments are enabled and voted on, see [Amendment Process](amendments.html#amendment-process).
+Checks require `rippled` v0.90.0 or later. As of 2018-10-11, the Checks amendment has not yet been enabled on the production XRP Ledger. For the latest status of all known amendments, see [Known Amendments](known-amendments.html). For more information about how amendments are enabled and voted on, see [Amendment Process](amendments.html#amendment-process).
 
-<!-- {***TODO:*** update this with the...other pseudo-transaction that will enable this amendment after two weeks with majority support? }  -->
-
-
-When not using the production XRP Ledger, you can check the status of the Checks amendment using the [feature method][].
+To check the status of an amendment on a test net or private XRP Ledger network, use the [feature method][].
 
 
 ## Further Reading
@@ -89,17 +84,17 @@ When not using the production XRP Ledger, you can check the status of the Checks
 For more information about Checks in the XRP Ledger, see:
 
 - [Transaction Reference](transaction-types.html)
-    - [Checks amendment](known-amendments.html#checks)
     - [CheckCreate][]
     - [CheckCash][]
     - [CheckCancel][]
-- Checks Tutorials
+- [Checks Tutorials](use-checks.html)
     - [Send a Check](send-a-check.html)
     - [Look up Checks by sender address](look-up-checks-by-sender.html)
     - [Look up Checks by recipient address](look-up-checks-by-recipient.html)
     - [Cash a Check for an exact amount](cash-a-check-for-an-exact-amount.html)
     - [Cash a Check for a flexible amount](cash-a-check-for-a-flexible-amount.html)
     - [Cancel a Check](cancel-a-check.html)
+- [Checks amendment](known-amendments.html#checks)
 
 For more information about related features, see:
 
