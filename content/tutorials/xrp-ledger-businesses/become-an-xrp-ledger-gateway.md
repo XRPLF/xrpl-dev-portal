@@ -841,9 +841,7 @@ For more information, see [Reliable Transaction Submission](reliable-transaction
 
 ## ripple.txt
 
-The [ripple.txt](https://wiki.ripple.com/Ripple.txt) standard provides a way to publish information about your gateway so that automated tools and applications can read and understand it.
-
-For example, if you run a validating `rippled` server, you can use ripple.txt to publish the public key of your validating server. You can also publish information about what currencies your gateway issues, and which XRP Ledger addresses you control, to protect against impostors or confusion.
+If you run a `rippled` validator, you can publish the public key of your validating server and other information about what currencies your gateway issues, and which XRP Ledger addresses you control, to protect against impostors or confusion. Conventionally, gateways do this by hosting a file named `ripple.txt` on their website. For an example, see <https://ripple.com/ripple.txt>.
 
 <!-- STYLE_OVERRIDE: gateway, gateways -->
 

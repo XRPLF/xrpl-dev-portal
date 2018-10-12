@@ -3360,7 +3360,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `start_date` | String - [Timestamp][] | The approximate date of the first time exchanges for this gateway's currencies appeared in the ledger. |
 | `accounts`   | Array                  | A list of [issuing addresses](issuing-and-operational-addresses.html) used by this gateway. (Gateways may use different issuing accounts for different currencies.) |
 | `hotwallets` | Array of [Address][]es | This gateway's [operational addresses](issuing-and-operational-addresses.html). |
-| `domain`     | String                 | The domain name where this gateway does business. Typically the gateway hosts a [`ripple.txt`](https://wiki.ripple.com/Ripple.txt) there. |
+| `domain`     | String                 | The domain name where this gateway does business. |
 | `normalized` | String                 | A normalized version of the `name` field suitable for including in URLs. |
 | `assets`     | Array of Strings       | Graphics filenames available for this gateway, if any. (Mostly, these are logos used by XRP Charts.) |
 

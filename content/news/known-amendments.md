@@ -5,14 +5,14 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                      | Introduced | Status                              |
 |:--------------------------|:-----------|:------------------------------------|
-| [DepositPreauth][]        | v1.1.0     | [Planned: TBD]( "BADGE_LIGHTGREY")  |
-| [fix1515][]               | v1.1.0     | [Planned: TBD]( "BADGE_LIGHTGREY")  |
 | [Checks][]                | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY")  |
 | [FlowCross][]             | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY")  |
 | [CryptoConditionsSuite][] | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]          | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2][]              | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]               | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [DepositPreauth][]        | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
+| [fix1515][]               | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
 | [fix1543][]               | v1.0.0     | [Enabled: 2018-06-21](https://xrpcharts.ripple.com/#/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
 | [fix1623][]               | v1.0.0     | [Enabled: 2018-06-20](https://xrpcharts.ripple.com/#/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB "BADGE_GREEN") |
 | [fix1571][]               | v1.0.0     | [Enabled: 2018-06-19](https://xrpcharts.ripple.com/#/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC "BADGE_GREEN") |
@@ -98,7 +98,7 @@ Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194 | In Development |
+| 3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194 | Enabled   |
 
 Provides users of [deposit authorization](depositauth.html) with a way to preauthorize specific senders so those senders are allowed to send payments directly.
 
@@ -222,7 +222,7 @@ With this amendment, the new `STAmountCalcSwitchovers` code applies, which may c
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE | Planned   |
+| 5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE | Enabled   |
 
 Changes how Payment transactions consume offers to remove a minor difference in how payment processing and offer processing consume liquidity. (Also affects how OfferCreate transactions are processed if [FlowCross][] is enabled.)
 
