@@ -36,8 +36,7 @@ Checks potentially enable many other use cases. Ripple encourages the community 
 
 Checks typically have the lifecycle described below.
 
-<!--{# Diagram sources: https://docs.google.com/drawings/d/1Ez8OZVB2TLH-b_kSFOAgfYqXlEQt4KaUBW6F3TJAv_Q/edit #}-->
-
+<!--{# Diagram source: https://docs.google.com/drawings/d/1Ez8OZVB2TLH-b_kSFOAgfYqXlEQt4KaUBW6F3TJAv_Q/edit #}-->
 
 [![Check flow diagram (successful cashing)](img/checks-happy-path.png)](img/checks-happy-path.png)
 
@@ -60,8 +59,7 @@ If the sender has enough funds to cover the Check and the expiration time has no
 
 In the case of expirations, Checks have the lifecycle described below.
 
-<!--{# Diagram sources: https://docs.google.com/drawings/d/1JOgI3H5tpV1yasYe5WLrdxVXLhcQu0bhPfN0mzzS1YQ/edit #}-->
-
+<!--{# Diagram source: https://docs.google.com/drawings/d/11auqa0kVUPonqlc_RaQUfHcSkUI47xneSKpwlLxzSK0/edit #}-->
 
 [![Check flow diagram (expiration)](img/checks-expiration.png)](img/checks-expiration.png)
 
