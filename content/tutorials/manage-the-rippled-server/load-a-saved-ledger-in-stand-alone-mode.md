@@ -50,7 +50,7 @@ To instead load a specific historical ledger, use the `--load` parameter along w
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 ```
 
-For more information on the options you can use when starting `rippled` in Stand-Alone mode, see [Commandline Usage: Stand-Alone Mode Options](commandline-usage.html#stand-alone-mode-options).
+For more information on the options you can use when starting `rippled` in stand-alone mode, see [Commandline Usage: Stand-Alone Mode Options](commandline-usage.html#stand-alone-mode-options).
 
 ## 6. Manually advance the ledger.
 
