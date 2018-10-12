@@ -38,13 +38,13 @@ rippled stop --conf=/path/to/rippled.cfg
 
 ## 5. Start `rippled` in stand-alone mode.
 
-To load the most recent ledger version, you can use the `-a` and `--load` options when starting the server:
+To load the most recent ledger version, start the server with the `-a` and `--load` options:
 
 ```
 rippled -a --load --conf=/path/to/rippled.cfg
 ```
 
-To instead load a specific historical ledger, use the `--load` parameter along with the `--ledger` parameter, providing the ledger index or identifying hash of the ledger version to load:
+To load a specific historical ledger, start the server with the `--load` parameter along with the `--ledger` parameter, providing the ledger index or identifying hash of the ledger version to load:
 
 ```
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
