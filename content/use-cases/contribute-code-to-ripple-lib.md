@@ -21,9 +21,9 @@ RippleAPI is an API for interacting with the XRP Ledger. The core peer-to-peer s
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Get a sandbox XRP Ledger account](xrp-test-net-faucet.html)
+## [Get a Test Net XRP Ledger account](xrp-test-net-faucet.html)
 
-Use the XRP Ledger Test Net to get a sandbox account. Connect your `rippled` server to the Test Net to make test calls and get to know the XRP Ledger.
+Use the XRP Ledger Test Net to get a test account. Connect your `rippled` server to the Test Net to make test calls and get to know the XRP Ledger.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
@@ -51,7 +51,11 @@ Before you start contributing code to `ripple-lib,` take some time to familiariz
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
 ## <a href="https://github.com/ripple/ripple-lib/pulls" target="_blank">Contribute code <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix for md highlighting_ #}-->
 
-Now that you have a handle on `ripple-lib`, you may have ideas for how to improve it. Perhaps you’re developing on the XRP Ledger and want to contribute some code that enables `ripple-lib` to provide a feature your application needs. Access the `ripple-lib` repo and open an issue or pull request.
+Now that you have a handle on `ripple-lib`, you may have ideas for how to improve it. Perhaps you’re developing on the XRP Ledger and want to contribute some code that enables `ripple-lib` to provide a feature your application needs.
+
+Access the `ripple-lib` repo and open an issue or pull request.
+
+Looking for ideas about how you can help? Take a look at our list of [Help Wanted issues](https://github.com/ripple/ripple-lib/issues?utf8=%E2%9C%93&q=label%3A%22help+wanted%22).
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
