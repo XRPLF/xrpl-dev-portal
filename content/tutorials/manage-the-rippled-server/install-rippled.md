@@ -79,6 +79,66 @@ This section assumes that you are using Ubuntu 15.04 or later.
 
         $ sudo systemctl start rippled.service
 
+
+## Installation on macOS with homebrew
+
+We don't recommend macOS for `rippled` production use at this time. Currently, the [Ubuntu platform](#installation-on-ubuntu-with-alien) has received the highest level of quality assurance and testing. That said, macOS is suitable for many development/test tasks.
+
+https://github.com/ripple/rippled/tree/develop/Builds/macos
+
+This section assumes that you are using macOS X 10.0 or higher. ***TODO: correct?***
+
+1. Download Xcode: https://developer.apple.com/download/
+
+2. Install home brew: ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
+
+3. brew update
+
+4. brew install git cmake pkg-config protobuf openssl ninja
+
+5. Download boost: https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.bz2
+
+6. build boost: ./bootstrap.sh
+
+7. build boost: ./b2 cxxflags=“-std=c++14”
+
+8. create boost_root variable: export BOOST_ROOT=/Users/manojdoshi/rippled/boost_1_67_0
+
+9. Clone the ripple repo: git clone https://github.com/ripple/rippled.git
+
+10. switch the branch: git checkout develop
+
+11. Create build folder: mkdir my_build
+
+12. cd my_build
+
+13. Build rippled:
+
+14. cmake -G “Unix Makefiles” -DCMAKE_BUILD_TYPE=Debug ../rippled/
+
+15. cmake --build . -- -j 4
+
+16. Run unit tests: ./rippled --unittest
+
+Daniel: Compiling from source (OSX)
+
+Installing homebrew removes the need to install xcode command line tools separately
+  homebrew install lists xcode commend line tools as a requirement: https://docs.brew.sh/Installation#requirements. What does this comment mean?
+
+Installing Boost directly is going to frustrate people - brew can do it in one command
+  Which release to choose?
+  Have to deal with environment variables
+  “rc” files is a vague statement
+  Build issues with Boost not finding lib (boost-context) in my case
+  I ended up installing Boost with Brew with no issues
+
+Cloning github repo is going to require proper github setup
+  Should we provide some guidance or references?
+
+Update rippled
+  No instructions on github or dev docs on how to do this for OSX, Windows, or other Linux distros
+
+
 ## Postinstall
 
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers. After that, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger.
