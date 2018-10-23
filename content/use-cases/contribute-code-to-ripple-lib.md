@@ -7,7 +7,7 @@ Want to contribute code or a bug report to help improve `ripple-lib`, the offici
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/ripple-lib" target="_blank">Access the `ripple-lib` repo <i class="fa fa-external-link" aria-hidden="true"></i></a> <!--#{ fix md highlighting_ #}-->
+## <a href="https://github.com/ripple/ripple-lib" target="_blank">Access the `ripple-lib` repo <i class="fa fa-external-link" aria-hidden="true"></i></a> <!--#{ fix for md highlighting_ #}-->
 
 `ripple-lib` is an open-source project. You can take a look at `ripple-lib` code simply by accessing the `ripple-lib` GitHub repo. Before contributing or reporting bugs, we recommend that you get to know the code and developer experience by performing the following tasks.
 
@@ -49,15 +49,15 @@ Before you start contributing code to `ripple-lib,` take some time to familiariz
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/ripple-lib/pulls" target="_blank">Contribute code <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+## <a href="https://github.com/ripple/ripple-lib/pulls" target="_blank">Contribute code <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix for md highlighting_ #}-->
 
 Now that you have a handle on `ripple-lib`, you may have ideas for how to improve it. Perhaps you’re developing on the XRP Ledger and want to contribute some code that enables `ripple-lib` to provide a feature your application needs. Access the `ripple-lib` repo and open an issue or pull request.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/ripple-lib/issues" target="_blank">Report bugs <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+## <a href="https://github.com/ripple/ripple-lib/issues" target="_blank">Report bugs <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix for md highlighting_ #}-->
 
-As you explore `ripple-lib`, you may find code that you don’t think is working as intended. To report a bug, <a href="https://github.com/ripple/ripple-lib/issues" target="_blank">open an issue <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}--> in the `ripple-lib` repo.
+As you explore `ripple-lib`, you may find code that you don’t think is working as intended. To report a bug, <a href="https://github.com/ripple/ripple-lib/issues" target="_blank">open an issue <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix for md highlighting_ #}--> in the `ripple-lib` repo.
 
 If the bug you wish to report is security-related, we urge you to disclose it responsibly through Ripple's <a href="https://ripple.com/bug-bounty/" target="_blank">Bug Bounty program <i class="fa fa-external-link" aria-hidden="true"></i></a>.
