@@ -57,10 +57,10 @@ AccountRoot objects can have the following flag values:
 | Flag Name | Hex Value | Decimal Value | Description | Corresponding [AccountSet Flag](accountset.html#accountset-flags) |
 |-----------|-----------|---------------|-------------|-------------------------------|
 | lsfDefaultRipple | 0x00800000 | 8388608 | Enable [rippling](rippling.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. | asfDefaultRipple |
-| lsfDepositAuth | 0x01000000 | 16777216 | This account can only receive funds from transactions it sends. (It has [DepositAuth](depositauth.html) enabled.) | asfDepositAuth |
+| lsfDepositAuth | 0x01000000 | 16777216 | This account can only receive funds from transactions it sends, and from [preauthorized](depositauth.html#preauthorization) accounts. (It has [DepositAuth](depositauth.html) enabled.) | asfDepositAuth |
 | lsfDisableMaster | 0x00100000 | 1048576 | Disallows use of the master key to sign transactions for this account. | asfDisableMaster |
 | lsfDisallowXRP | 0x00080000 | 524288 | Client applications should not send XRP to this account. Not enforced by `rippled`. | asfDisallowXRP |
-| lsfGlobalFreeze | 0x00400000 | 4194304 |　All assets issued by this address are frozen. | asfGlobalFreeze |
+| lsfGlobalFreeze | 0x00400000 | 4194304 | All assets issued by this address are frozen. | asfGlobalFreeze |
 | lsfNoFreeze | 0x00200000 | 2097152 | This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. | asfNoFreeze |
 | lsfPasswordSpent | 0x00010000 | 65536 | The account has used its free SetRegularKey transaction. | (None) |
 | lsfRequireAuth | 0x00040000 | 262144 | This account must individually approve other users for those users to hold this account's issuances. | asfRequireAuth |
