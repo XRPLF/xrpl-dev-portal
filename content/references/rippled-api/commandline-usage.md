@@ -47,7 +47,7 @@ Daemon mode is the default mode of operation for `rippled`. In addition to the [
 | `--net`             | **DEPRECATED** Intended for debugging: do not build a local ledger until one can be obtained from the network. |
 | `--nodetoshard`     | Before fully starting, copy any complete [history shards](history-sharding.html) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
 | `--quorum {QUORUM}` | This option is intended for bootstrapping [test networks](parallel-networks.html). Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
-| `---validateShards` | Check that the data in the shard store is valid and consistent with the network history. For more information on the shard store, see [History Sharding](history-sharding.html). |
+| `--validateShards` | Check that the data in the shard store is valid and consistent with the network history. For more information on the shard store, see [History Sharding](history-sharding.html). |
 
 ## Stand-Alone Mode Options
 
@@ -68,7 +68,7 @@ The following options determine which ledger to load first when starting up. The
 | `--load`              | **DEPRECATED** Intended for debugging. Only load the initial ledger from the ledger store on disk. |
 | `--replay`            | Intended for debugging. Use with `--ledger` to replay a ledger close. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
 | `--start`             | Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. The functionality of those amendments is therefore available starting from the second ledger, rather than going through the full two-week [Amendment Process](amendments.html). |
-| `---valid`            | **DEPRECATED** Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network. |
+| `--valid`            | **DEPRECATED** Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network. |
 
 ## Client Mode Options
 
