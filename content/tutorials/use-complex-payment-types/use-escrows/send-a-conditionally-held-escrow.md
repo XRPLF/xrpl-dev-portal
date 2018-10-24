@@ -10,14 +10,20 @@ XRP Ledger escrows require PREIMAGE-SHA-256 [Crypto-Conditions](https://tools.ie
 Example JavaScript code for a random fulfillment and condition:
 
 ```js
-cc = require('five-bells-condition');
+const cc = require('five-bells-condition')
+const crypto = require('crypto')
 
-const fulfillment_bytes = crypto.randomBytes(32);
-const myFulfillment = new cc.PreimageSha256();
-myFulfillment.setPreimage(fulfillment_bytes);
-console.log(myFulfillment.serializeBinary().toString('hex'));
+const preimageData = crypto.randomBytes(32)
+const myFulfillment = new cc.PreimageSha256()
+myFulfillment.setPreimage(preimageData)
+
+const condition = myFulfillment.getConditionBinary().toString('hex').toUpperCase()
+console.log('Condition:', condition)
 // (Random hexadecimal, 72 chars in length)
-console.log(myFulfillment.getConditionBinary().toString('hex'));
+
+// keep secret until you want to finish executing the held payment:
+const fulfillment = myFulfillment.serializeBinary().toString('hex').toUpperCase()
+console.log('Fulfillment:', fulfillment)
 // (Random hexadecimal, 78 chars in length)
 ```
 
@@ -35,9 +41,9 @@ Example for setting a `CancelAfter` time of 24 hours in the future:
 _JavaScript_
 
 ```js
-const rippleOffset = 946684800;
-const CancelAfter = Math.floor(Date.now() / 1000) + (24*60*60) - rippleOffset;
-console.log(CancelAfter);
+const rippleOffset = 946684800
+const CancelAfter = Math.floor(Date.now() / 1000) + (24*60*60) - rippleOffset
+console.log(CancelAfter)
 // Example: 556927412
 ```
 
