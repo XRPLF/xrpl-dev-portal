@@ -80,7 +80,7 @@ This section assumes that you are using Ubuntu 15.04 or later.
         $ sudo systemctl start rippled.service
 
 
-## Installation on macOS with homebrew
+## Installation on macOS with Homebrew
 
 We don't recommend macOS for `rippled` production use at this time. Currently, the [Ubuntu platform](#installation-on-ubuntu-with-alien) has received the highest level of quality assurance and testing. That said, macOS is suitable for many development/test tasks.
 
@@ -88,15 +88,31 @@ https://github.com/ripple/rippled/tree/develop/Builds/macos
 
 This section assumes that you are using macOS X 10.0 or higher. ***TODO: correct?***
 
-1. Download Xcode: https://developer.apple.com/download/
+1. Install [Xcode](https://developer.apple.com/download/). ***TODO: min and max version? If you try to install Xcode today, you'll need at least macOS 10.13.6.***
 
-2. Install home brew: ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
+Installing homebrew removes the need to install xcode command line tools separately
+  homebrew install lists xcode commend line tools as a requirement: https://docs.brew.sh/Installation#requirements. What does this comment mean?
 
-3. brew update
+2. Install Homebrew.
 
-4. brew install git cmake pkg-config protobuf openssl ninja
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-5. Download boost: https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.bz2
+3. Update Homebrew.
+
+        brew update
+
+4. Use Homebrew to install git, cmake, pkg-config, protobuf, openssl, and ninja.
+
+        brew install git cmake pkg-config protobuf openssl ninja
+
+5. Download [boost](https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.bz2):
+
+Installing Boost directly is going to frustrate people - brew can do it in one command
+  Which release to choose?
+  Have to deal with environment variables
+  “rc” files is a vague statement
+  Build issues with Boost not finding lib (boost-context) in my case
+  I ended up installing Boost with Brew with no issues
 
 6. build boost: ./bootstrap.sh
 
@@ -105,6 +121,9 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: correct
 8. create boost_root variable: export BOOST_ROOT=/Users/manojdoshi/rippled/boost_1_67_0
 
 9. Clone the ripple repo: git clone https://github.com/ripple/rippled.git
+
+Cloning github repo is going to require proper github setup
+  Should we provide some guidance or references?
 
 10. switch the branch: git checkout develop
 
@@ -122,22 +141,10 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: correct
 
 Daniel: Compiling from source (OSX)
 
-Installing homebrew removes the need to install xcode command line tools separately
-  homebrew install lists xcode commend line tools as a requirement: https://docs.brew.sh/Installation#requirements. What does this comment mean?
-
-Installing Boost directly is going to frustrate people - brew can do it in one command
-  Which release to choose?
-  Have to deal with environment variables
-  “rc” files is a vague statement
-  Build issues with Boost not finding lib (boost-context) in my case
-  I ended up installing Boost with Brew with no issues
-
-Cloning github repo is going to require proper github setup
-  Should we provide some guidance or references?
-
 Update rippled
   No instructions on github or dev docs on how to do this for OSX, Windows, or other Linux distros
 
+Is this about how to run rippled too? How to do that...and how to tell if what you are running is working correctly?
 
 ## Postinstall
 
