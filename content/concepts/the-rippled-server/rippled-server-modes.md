@@ -3,10 +3,12 @@
 The `rippled` server software can run in several modes depending on its configuration, including:
 
 * Stock server - follows the network with a local copy of the ledger.
-* Validating server, or _validator_ for short - participates in consensus.
+* Validating server, or _validator_ for short - participates in consensus (and does everything a stock server does, too).
 * `rippled` server in stand-alone mode - for testing. Does not communicate to other `rippled` servers.
 
 You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](rippled-api.html) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
+
+For information on the commands to run rippled in each of these modes, see the [Commandline Reference](commandline-usage.html).
 
 
 ## Reasons to Run a Stock Server
