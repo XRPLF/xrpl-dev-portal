@@ -96,7 +96,7 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
 {{n.next()}}. Install [Xcode](https://developer.apple.com/download/).
 
-{{n.next()}}. Install Xcode command line tools. ***TODO: Comment from Daniel: Installing homebrew removes the need to install xcode command line tools separately. JHA: homebrew lists xcode command line tools as a requirement: https://docs.brew.sh/Installation#requirements. Do we keep or remove this step?***
+{{n.next()}}. Install Xcode command line tools. ***TODO: Comment from PM: Installing homebrew removes the need to install xcode command line tools separately. JHA: homebrew lists xcode command line tools as a requirement: https://docs.brew.sh/Installation#requirements. Do we keep or remove this step?***
 
         xcode-select --install
 
@@ -108,11 +108,11 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
         brew update
 
-{{n.next()}}. Use Homebrew to install dependencies. ***TODO: Added boost per Daniel's request: Installing Boost directly is going to frustrate people - brew can do it in one command. I ended up installing Boost with Brew with no issues. Which release to choose? JHA: I did `brew install boost` and brew installs 1.67.0 in /usr/local/Cellar/boost/1.67.0_1 -- is this okay? If we install Boost via brew, do we no longer have to compile boost: ./bootstrap.sh and ./b2 cxxflags="-std=c++14"? Comment from Daniel: Build issues with Boost not finding lib (boost-context) in my case. JHA: when does this issue come up? How can we help the user avoid or address this issue?***
+{{n.next()}}. Use Homebrew to install dependencies. ***TODO: Added boost per PM's request: Installing Boost directly is going to frustrate people - brew can do it in one command. I ended up installing Boost with Brew with no issues. Which release to choose? JHA: I did `brew install boost` and brew installs 1.67.0 in /usr/local/Cellar/boost/1.67.0_1 -- is this okay? If we install Boost via brew, do we no longer have to compile boost: ./bootstrap.sh and ./b2 cxxflags="-std=c++14"? Comment from PM: Build issues with Boost not finding lib (boost-context) in my case. JHA: when does this issue come up? How can we help the user avoid or address this issue?***
 
         brew install git cmake pkg-config protobuf openssl ninja boost
 
-{{n.next()}}. Set the `BOOST_ROOT` environment variable to point to the new directory created by the Homebrew installation of Boost. Put this environment variable in your `.bash_profile` so it's automatically set when you log in. For example, add the following line to the file. To find your Boost install directory, use `brew info boost`. ***TODO: Feedback from Daniel: Have to deal with environment variables. “rc” files is a vague statement. JHA: If you do brew install boost - you still have to set env variables, correct? I did it using .bash_profile and removed references to "rc files" - is this okay? Or do we want to tell users that they can choose to put the env var in the .bashrc file instead of .bash_profile - is there any benefit to saying this?***
+{{n.next()}}. Set the `BOOST_ROOT` environment variable to point to the new directory created by the Homebrew installation of Boost. Put this environment variable in your `.bash_profile` so it's automatically set when you log in. For example, add the following line to the file. To find your Boost install directory, use `brew info boost`. ***TODO: Feedback from PM: Have to deal with environment variables. “rc” files is a vague statement. JHA: If you do brew install boost - you still have to set env variables, correct? I did it using .bash_profile and removed references to "rc files" - is this okay? Or do we want to tell users that they can choose to put the env var in the .bashrc file instead of .bash_profile - is there any benefit to saying this?***
 
         export BOOST_ROOT=/usr/local/Cellar/boost/1.67.0_1
 
@@ -120,7 +120,7 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
         source .bashrc
 
-{{n.next()}}. Clone the `rippled` source code into your desired location and access the `rippled` directory.  ***TODO: Note from Daniel: Cloning github repo is going to require proper github setup. Should we provide some guidance or references? JHA: What is the proper github setup? I may have set this up a whlie ago and I can't remember the steps that may have been required.***
+{{n.next()}}. Clone the `rippled` source code into your desired location and access the `rippled` directory.  ***TODO: Note from PM: Cloning github repo is going to require proper github setup. Should we provide some guidance or references? JHA: What is the proper github setup? I may have set this up a whlie ago and I can't remember the steps that may have been required.***
 
         git clone git@github.com:ripple/rippled.git
         cd rippled
