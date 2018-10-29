@@ -131,7 +131,7 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
         git checkout master
 
-      Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases GitHub).
+      Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
 
       If you want to test out the latest release candidate, checkout the `release` branch:
 
@@ -172,7 +172,7 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
       * Set the `[debug_logfile]` to a path where `rippled` can write logging information.
 
-      These are the only configurations required for `rippled` to start up successfully. All other configuration is optional and can be tweaked after you have a working server. For more information, see [Additional Configurations](#additional-configurations).
+      These are the only configurations required for `rippled` to start up successfully. All other configuration is optional and can be tweaked after you have a working server. For more information, see [Additional Configurations](#additional-configuration).
 
 {{n.next()}}. Copy the example `validators.txt` file to the same folder as `rippled.cfg`:
 
