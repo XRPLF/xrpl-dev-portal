@@ -96,7 +96,7 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
 {{n.next()}}. Install [Xcode](https://developer.apple.com/download/).
 
-{{n.next()}}. Install Xcode command line tools. ***TODO: Comment from PM: Installing homebrew removes the need to install xcode command line tools separately. JHA: homebrew lists xcode command line tools as a requirement: https://docs.brew.sh/Installation#requirements. Do we keep or remove this step?***
+{{n.next()}}. Install Xcode command line tools.
 
         xcode-select --install
 
@@ -108,19 +108,19 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
         brew update
 
-{{n.next()}}. Use Homebrew to install dependencies. ***TODO: Added boost per PM's request: Installing Boost directly is going to frustrate people - brew can do it in one command. I ended up installing Boost with Brew with no issues. Which release to choose? JHA: I did `brew install boost` and brew installs 1.67.0 in /usr/local/Cellar/boost/1.67.0_1 -- is this okay? If we install Boost via brew, do we no longer have to compile boost: ./bootstrap.sh and ./b2 cxxflags="-std=c++14"? Comment from PM: Build issues with Boost not finding lib (boost-context) in my case. JHA: when does this issue come up? How can we help the user avoid or address this issue?***
+{{n.next()}}. Use Homebrew to install dependencies. ***TODO: Added boost to the brew installs per PM's request: Installing Boost directly is going to frustrate people - brew can do it in one command.*** Boost 1.67.x to 1.68.x are supported. To view the Boost version that will be installed by `brew install boost`, use `brew info boost`. ***TODO: added this text to ensure that users don't install unsupported versions of Boost. For example, what if the brew install boost starts installing 1.69, but we haven't tested and verified yet? Are the supported versions correct? Do we need to list supported version for any of the other dependencies as well?***
 
         brew install git cmake pkg-config protobuf openssl ninja boost
 
-{{n.next()}}. Set the `BOOST_ROOT` environment variable to point to the new directory created by the Homebrew installation of Boost. Put this environment variable in your `.bash_profile` so it's automatically set when you log in. For example, add the following line to the file. To find your Boost install directory, use `brew info boost`. ***TODO: Feedback from PM: Have to deal with environment variables. “rc” files is a vague statement. JHA: If you do brew install boost - you still have to set env variables, correct? I did it using .bash_profile and removed references to "rc files" - is this okay? Or do we want to tell users that they can choose to put the env var in the .bashrc file instead of .bash_profile - is there any benefit to saying this?***
+{{n.next()}}. Ensure that the `BOOST_ROOT` environment variable points to the directory created by the Homebrew installation of Boost. Put this environment variable in your `.bash_profile` so it's automatically set when you log in. For example, ensure that the following line is in the file. To find your Boost install directory, use `brew info boost`. ***TODO: Feedback from PM: Have to deal with environment variables. JHA: When I did a brew install boost, I had to set the env variable -- but I think it may be because I had an existing BOOST_ROOT env var set to a location I created when I previously did a manual boost install. Maybe the brew install doesn't overwrite/update an existing BOOST_ROOT value? Changed the wording a bit to address this - so it is not that you'll always need to add the env var - just make sure it is there and up to date?***
 
         export BOOST_ROOT=/usr/local/Cellar/boost/1.67.0_1
 
-{{n.next()}}. Source the file you added the `BOOST_ROOT` environment variable to. For example:
+{{n.next()}}. If you updated your `.bash_profile` file in the previous step, be sure to source the file. For example:
 
-        source .bashrc
+        source .bash_profile
 
-{{n.next()}}. Clone the `rippled` source code into your desired location and access the `rippled` directory.  ***TODO: Note from PM: Cloning github repo is going to require proper github setup. Should we provide some guidance or references? JHA: What is the proper github setup? I may have set this up a whlie ago and I can't remember the steps that may have been required.***
+{{n.next()}}. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://help.github.com/articles/set-up-git/).
 
         git clone git@github.com:ripple/rippled.git
         cd rippled
@@ -154,11 +154,11 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
       This example uses a `-j` parameter set to `4`, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use `sysctl -a | grep machdep.cpu | grep core_count` to get your CPU core count. ***TODO: the mac build page in the github repo goes much more in-depth about cmake build options - should we include these here? https://github.com/ripple/rippled/tree/develop/Builds/macos#generate-and-build***
 
-{{n.next()}}. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended) ***TODO: We should provide info about what to do if you get failures. What should the user do?***
+{{n.next()}}. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended) ***TODO: We should provide info about what to do if you get failures. What should the user do? PM looking into this.***
 
         ./rippled --unittest
 
-{{n.next()}}. Create a copy of the example config file and save it to a location that enables you to run `rippled` as a non-root user (recommended). ***TODO: unlike the centos and ubuntu installs on this page, the macos install requires that you manually put rippled.cfg and validator.txt in place. At least that is what I experienced - true?***
+{{n.next()}}. Create a copy of the example config file and save it to a location that enables you to run `rippled` as a non-root user (recommended).
 
         mkdir -p ~/.config/ripple
         cd rippled
