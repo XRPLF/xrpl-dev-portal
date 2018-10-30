@@ -57,7 +57,7 @@ path={path_to_ledger_store}
 
 ### Historical Data
 
-The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. At the time of writing (2018-10-30), a `rippled` server stores about 12GB of data per day and requires 8.4TB to store the full history of the XRP Ledger. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
+The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. At the time of writing (2018-10-29), a `rippled` server stores about 12GB of data per day and requires 8.4TB to store the full history of the XRP Ledger. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
 
 Online deletion enables pruning of `rippled` ledgers from databases without any disruption of service. It only removes records that are not part of the current ledgers. Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files.
 
@@ -98,7 +98,7 @@ Any enterprise or carrier-class data center should have substantial network band
 
 #### Storage
 
-Ripple recommends estimating storage sizing at roughly 12GB per day of data kept online with NuDB. RocksDB requires around 8GB per day. However, the data per day changes with activity in the network. You should provision extra capacity to prepare for future growth. At the time of writing (2018-10-30), a server with all XRP Ledger history requires 8.4TB.
+Ripple recommends estimating storage sizing at roughly 12GB per day of data kept online with NuDB. RocksDB requires around 8GB per day. However, the data per day changes with activity in the network. You should provision extra capacity to prepare for future growth. At the time of writing (2018-10-29), a server with all XRP Ledger history requires 8.4TB.
 
 <!-- {# ***TODO: Update the dated storage consideration above, as needed. ***#} -->
 <!-- {# ***TODO: DOC-1331 tracks: Create historic metrics that a user can use to derive what will be required. For ex, a chart with 1TB in 2014, 3TB in 2015, 7TB in 2018 ***#} -->
