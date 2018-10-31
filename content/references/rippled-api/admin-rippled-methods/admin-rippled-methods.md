@@ -18,6 +18,7 @@ Use these methods to generate and manage keys.
 Use these methods to manage log levels and other data, such as ledgers.
 
 * **[`can_delete`](can_delete.html)** - Allow online deletion of ledgers up to a specific ledger.
+* **[`download_shard`](download_shard.html)** - Download a specific shard of ledger history.
 * **[`ledger_cleaner`](ledger_cleaner.html)** - Configure the ledger cleaner service to check for corrupted data.
 * **[`ledger_request`](ledger_request.html)** - Query a peer server for a specific ledger version.
 * **[`log_level`](log_level.html)** - Get or modify log verbosity.
