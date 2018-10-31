@@ -27,6 +27,8 @@ Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A
 
 ## Installation on Ubuntu with alien
 
+<!--{# ***TODO: this doc states that ubuntu has received the highest level of QA and testing - so I moved it above centos and macOS install sections. Okay?*** #}-->
+
 This section assumes that you are using Ubuntu 15.04 or later.
 
 1. Install yum-utils and alien:
@@ -108,11 +110,31 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
         brew update
 
-{{n.next()}}. Use Homebrew to install dependencies. ***TODO: Added boost to the brew installs per PM's request: Installing Boost directly is going to frustrate people - brew can do it in one command.*** Boost 1.67.x to 1.68.x are supported. To view the Boost version that will be installed by `brew install boost`, use `brew info boost`. ***TODO: added this text to ensure that users don't install unsupported versions of Boost. For example, what if the brew install boost starts installing 1.69, but we haven't tested and verified yet? Are the supported versions correct? Do we need to list supported version for any of the other dependencies as well?***
+{{n.next()}}. Use Homebrew to install dependencies.
 
-        brew install git cmake pkg-config protobuf openssl ninja boost
+        brew install git cmake pkg-config protobuf openssl ninja
 
-{{n.next()}}. Ensure that the `BOOST_ROOT` environment variable points to the directory created by the Homebrew installation of Boost. Put this environment variable in your `.bash_profile` so it's automatically set when you log in. For example, ensure that the following line is in the file. To find your Boost install directory, use `brew info boost`. ***TODO: Feedback from PM: Have to deal with environment variables. JHA: When I did a brew install boost, I had to set the env variable -- but I think it may be because I had an existing BOOST_ROOT env var set to a location I created when I previously did a manual boost install. Maybe the brew install doesn't overwrite/update an existing BOOST_ROOT value? Changed the wording a bit to address this - so it is not that you'll always need to add the env var - just make sure it is there and up to date?***
+{{n.next()}}. Install a supported version of Boost. Supported versions include Boost 1.67.x - 1.68.x. ***TODO: correctly stated supported versions? Doc will need to keep an eye on these supported versions. In the rippled repo, we say "Boost 1.67 or later is required." <-- Based on our discussion in this doc, I don't think this is true.*** Installation using Homebrew is faster and requires fewer manual steps, but you must ensure that Homebrew installs a supported version of Boost.
+
+    Pick one of the following options to install Boost:
+
+    * To ensure that Homebrew installs a supported version of Boost, use `brew install boost@1.67` to install Boost 1.67.0. ***TODO: When the supported versions change above, we can also change this, if needed. There is no brew command to install 1.68 right now. brew install boost is still installing 1.67 and there is no brew formula boost@1.68.***
+
+    * To use Homebrew to install a different supported version of Boost, check [Homebrew Formulae - boost](https://formulae.brew.sh/formula/boost) to see if there is a formula for the version you want to install. To verify the Boost version a Homebrew formula will install, use `brew info <formula>`. For example, `brew info boost` or `brew info boost@1.67`.
+
+    * To install a supported version of Boost that does not have a defined Homebrew formula, compile Boost yourself. These compile instructions are for Boost 1.68.0.
+
+        1. Download [Boost 1.68.0](https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2). ***TODO: do we want to give them CLI instructions? If yes, then we need to have them use brew install wget.***
+
+        2. Extract it to a folder. Be sure to note the location. ***TODO: provide CLI instructions?***
+
+        3. In a terminal, run:
+
+              `./bootstrap.sh`
+
+              `./b2 cxxflags="-std=c++14"`
+
+{{n.next()}}. Ensure that the `BOOST_ROOT` environment variable points to the directory created by your Boost installation. Put this environment variable in your `.bash_profile` so it's automatically set when you log in. For example, ensure that the following line is in the file. To find your Boost install directory, use `brew info boost`. ***TODO: JHA clean out boost env vars and uninstall boost - then try again and see what gets populated in bash_profile....***
 
         export BOOST_ROOT=/usr/local/Cellar/boost/1.67.0_1
 
@@ -152,9 +174,9 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
         cmake --build . -- -j 4
 
-      This example uses a `-j` parameter set to `4`, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use `sysctl -a | grep machdep.cpu | grep core_count` to get your CPU core count. ***TODO: the mac build page in the github repo goes much more in-depth about cmake build options - should we include these here? https://github.com/ripple/rippled/tree/develop/Builds/macos#generate-and-build***
+      This example uses a `-j` parameter set to `4`, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use `sysctl -a | grep machdep.cpu | grep core_count` to get your CPU core count. ***TODO: the mac build page in the github repo (https://github.com/ripple/rippled/tree/develop/Builds/macos#generate-and-build) goes much more in-depth about cmake build options - should we include these here, just to bring a parity between what we say in the rippled repo and what we say here? That said -- do we want to eventually just have one doc on how to do the mac install -- meaning the macos doc content in the rippled repo would go away and just link to this article in the Dev Portal? We also probably want to take a look at what to do with the Linux and Visual Studio install in the rippled repo.***
 
-{{n.next()}}. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended) ***TODO: We should provide info about what to do if you get failures. What should the user do? PM looking into this.***
+{{n.next()}}. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended) <!--{# ***TODO: We should provide info about what to do if you get failures. What should the user do? PM looking into this.*** #}-->
 
         ./rippled --unittest
 
@@ -164,7 +186,7 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
         cd rippled
         cp cfg/rippled-example.cfg ~/.config/ripple/rippled.cfg
 
-{{n.next()}}. Edit `rippled.cfg` to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here. ***TODO: this is required at this point in the install b/c if you don't have the permissions set correctly, rippled won't run, correct? It is not that the default values in rippled.cfg are incorrect--there may just be permission issues, is that right? what is the equivalent command in macOS for `chown -R rippled:rippled <configured path>`? I think we need to add this step to the centos and ubuntu tasks. The config files are placed in the correct directory automatically -- but these values still need to be manually updated, yes?***
+{{n.next()}}. Edit `rippled.cfg` to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here. ***TODO: I think we need to add this step to the centos and ubuntu tasks, correct? For centos and ubuntu, the config files are automatically placed in the correct directories, but the following paths still need to be manually updated to avoid permission issues, correct?***
 
       * Set the `[node_db]` path to the location where you want to store the ledger database.
 
@@ -191,7 +213,7 @@ For next steps, see [Postinstall](#postinstall) and [Additional Configuration](#
 
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers.
 
-Here's an excerpt of what you can expect to see in your terminal: ***TODO: you'll see this for the macOS install, but not for centos and ubuntu. For centos and ubuntu - is there any benefit to giving the user a command that will display this view? Does such a command exist? Alternatively, for centos and ubuntu - we need to give the user some other way to tell that the service is running - refer them to server states?***
+Here's an excerpt of what you can expect to see in your terminal: ***TODO: you'll see this in the CLI for the macOS install, but not for centos and ubuntu using the instructions provided in this doc. For centos and ubuntu - is there a benefit to giving the user a command that will display this view? Does such a command exist? If not, for centos and ubuntu - we need to give the user some other way to tell that the service is running correctly - refer them to server states?***
 
         2018-Oct-26 18:21:39.593738 JobQueue:NFO Auto-tuning to 6 validation/transaction/proposal threads.
         2018-Oct-26 18:21:39.599634 Amendments:DBG Amendment 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 is supported.
@@ -243,7 +265,7 @@ Here's an excerpt of what you can expect to see in your terminal: ***TODO: you'l
         2018-Oct-26 18:23:03.034560 InboundLedger:WRN Want: 8CFE3912001BDC5B2C4B2691F3C7811B9F3F193E835D293459D80FBF1C4E684E
         2018-Oct-26 18:23:03.034750 InboundLedger:WRN Want: 8DFAD21AD3090DE5D6F7592B3821C3DA77A72287705B4CF98DC0F84D5DD2BDF8
 
-***TODO: for the future, provide a reference for what the most common and unintuitive messages mean -- esp when signalling possible errors.***
+<!--{# ***TODO: for the future, provide a reference for what the most common and unintuitive messages mean -- esp when signaling possible errors.*** #}-->
 
 Once your `rippled` has synchronized with the rest of the network, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger. Use [`rippled` server states](rippled-server-states.html) to tell whether your `rippled` server has synchronized with the network.
 
@@ -262,12 +284,12 @@ The default locations for `rippled.cfg` are as follows:
 
 * Ubuntu with alien: `~/.config/ripple/`
 
-* macOS: `~/.config/ripple/` ***TODO: Info in rippled-example.cfg points to the wiki to tell folks where to put this file -- need to update rippled-example.cfg to address. Specifically, the section explaining the --conf command line option: https://ripple.com/wiki/Rippled#--conf.3Dpath - the content doesn't exist on the wiki page and we are retiring the wiki.***
+* macOS: `~/.config/ripple/`
 
-Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path: ***TODO: Per notes above, I think we need to add the "Edit `rippled.cfg` to set necessary file paths." step to centos and ubuntu tasks. Once we do that, we can put this command info in the context of each task.***
+Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path: ***TODO: [node_db] as well? When I try this for a [node_db] value of /var/lib/rippled/db/rocksdb: chown -R rippled:rippled /var/lib/rippled/db/rocksdb, I get -- chown: rippled: illegal group name. Is rippled:rippled just an example below? Or should there be a rippled group?***
 
     $ chown -R rippled:rippled <configured path>
 
-Restart `rippled` for any configuration changes to take effect: ***TODO: what is the macOS command for this?***
+Restart `rippled` for any configuration changes to take effect: ***TODO: does this command work for centos, ubuntu, and macOS? JHA verify.***
 
     $ sudo service rippled restart
