@@ -9,16 +9,9 @@ Use these instructions to build a `rippled` executable from source version 1.1.0
 For information about building `rippled` for other platforms, see [Builds](https://github.com/ripple/rippled/tree/develop/Builds) in the `rippled` GitHub repository.
 
 
-## System Requirements
+## Prerequisites
 
-**_To build `rippled`:_**
-
-You need a **minimum** of 8GB of RAM.
-
-**_To run `rippled`:_**
-
-Meet these [system requirements](install-rippled.html#minimum-system-requirements).
-
+Before you compile or install `rippled`, you must meet the [System Requirements](system-requirements.html).
 
 ## 1. Build `rippled`
 
