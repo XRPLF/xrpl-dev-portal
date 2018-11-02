@@ -114,35 +114,51 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
         brew install git cmake pkg-config protobuf openssl ninja
 
-{{n.next()}}. Install a supported version of Boost. Supported versions include Boost 1.67.x - 1.68.x. ***TODO: correctly stated supported versions? Doc will need to keep an eye on these supported versions. In the rippled repo, we say "Boost 1.67 or later is required." <-- Based on our discussion in this doc, I don't think this is true.*** Installation using Homebrew is faster and requires fewer manual steps, but you must ensure that Homebrew installs a supported version of Boost.
+{{n.next()}}. Install a supported version of Boost. Supported versions include Boost 1.67.x - 1.68.x. ***TODO: correctly stated supported versions? In the rippled repo, we say "Boost 1.67 or later is required." <-- Based on our discussion in this doc, I don't think this open-ended "later" part is true, is it?***
 
-    Pick one of the following options to install Boost:
+    Pick one of the following Boost installation methods: ***TODO: I provided the two options below because these are the most straightforward ways for a user to install one of the two supported versions of Boost. In the future, if there are more supported versions or more brew boost formalae, there may be more options to document.***
 
-    * To ensure that Homebrew installs a supported version of Boost, use `brew install boost@1.67` to install Boost 1.67.0. ***TODO: When the supported versions change above, we can also change this, if needed. There is no brew command to install 1.68 right now. brew install boost is still installing 1.67 and there is no brew formula boost@1.68.***
+    * To install Boost 1.67.0, use `brew install boost@1.67`. ***TODO: When Boost 1.67.0 is no longer supported, we'll need to change this formula. Until then, the user will be able to use this command to get a supported version of Boost. `brew install boost` also installs 1.67.0, but as discussed, we don't want to provide the command because it won't always install 1.67.0 and may cause the user to install an unsupported version. There is no brew command to install 1.68 right now.***
 
-    * To use Homebrew to install a different supported version of Boost, check [Homebrew Formulae - boost](https://formulae.brew.sh/formula/boost) to see if there is a formula for the version you want to install. To verify the Boost version a Homebrew formula will install, use `brew info <formula>`. For example, `brew info boost` or `brew info boost@1.67`.
+    * To install Boost 1.68.0, compile Boost yourself. ***TODO: When the supported versions change above, we can also change these instructions, if needed. It would be great to genericize - but the way that the Boost brew and compiles are working right now - being version-specific seems necessary to keep folks from inadvertently installing an unsupported version.***
 
-    * To install a supported version of Boost that does not have a defined Homebrew formula, compile Boost yourself. These compile instructions are for Boost 1.68.0.
+        1. Download [Boost 1.68.0](https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2) to an appropriate directory. ***TODO: okay to do it outside of CLI? If we want to give them CLI instructions, need to have them run `brew install wget` and then `wget https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2`.***
 
-        1. Download [Boost 1.68.0](https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2). ***TODO: do we want to give them CLI instructions? If yes, then we need to have them use brew install wget.***
+        2. Extract `boost_1_68_0.tar.bz2`.
 
-        2. Extract it to a folder. Be sure to note the location. ***TODO: provide CLI instructions?***
+              `tar xvzf boost_1_68_0.tar.bz2`
 
-        3. In a terminal, run:
+        3. Change to the newly created `boost_1_68_0` directory.
+
+              `cd boost_1_68_0`
+
+        4. Prepare the Boost.Build system for use.
 
               `./bootstrap.sh`
 
-              `./b2 cxxflags="-std=c++14"`
+        5. Build the separately-compiled Boost libraries. This may take about 10 minutes, depending on your hardware specs. 11:14
 
-{{n.next()}}. Ensure that the `BOOST_ROOT` environment variable points to the directory created by your Boost installation. Put this environment variable in your `.bash_profile` so it's automatically set when you log in. For example, ensure that the following line is in the file. To find your Boost install directory, use `brew info boost`. ***TODO: JHA clean out boost env vars and uninstall boost - then try again and see what gets populated in bash_profile....***
+              `./b2 cxxflags="-std=c++14" -j 4`
 
-        export BOOST_ROOT=/usr/local/Cellar/boost/1.67.0_1
+            **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use `sysctl -n hw.ncpu` to get your CPU core count.
 
-{{n.next()}}. If you updated your `.bash_profile` file in the previous step, be sure to source the file. For example:
+{{n.next()}}. Ensure that the `BOOST_ROOT` environment variable points to the directory created by your Boost installation. Put this environment variable in your `.bash_profile` file so it's automatically set when you log in.
+
+    * If you used Homebrew to install Boost, ensure that `BOOST_ROOT` is set to the location where Homebrew installed Boost. For example:
+
+        `export BOOST_ROOT=/usr/local/Cellar/boost/1.67.0_1`
+
+        To find your Boost install directory, use `brew info boost`.
+
+    * If you manually compiled and installed Boost, ensure that `BOOST_ROOT` is set to the location where you installed Boost. For example:
+
+        `export BOOST_ROOT=/Users/tblee/boost/boost_1_68_0`
+
+{{n.next()}}. If you updated your `.bash_profile` file in the previous step, be sure to source it. For example:
 
         source .bash_profile
 
-{{n.next()}}. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://help.github.com/articles/set-up-git/).
+{{n.next()}}. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://help.github.com/articles/set-up-git/). ***TODO: does this sound okay for introducing what a user may have to do to set up git and GitHub?***
 
         git clone git@github.com:ripple/rippled.git
         cd rippled
@@ -159,7 +175,7 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
         git checkout release
 
-{{n.next()}}. Create your `rippled` build directory and access it. For example:
+{{n.next()}}. In the `rippled` directory you just cloned, create your build directory and access it. ***TODO: Does this "In the rippled directory you just cloned" language make sense? I just want to tell the user where to create the build directory.*** For example:
 
         mkdir my_build
         cd my_build
@@ -174,17 +190,16 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
         cmake --build . -- -j 4
 
-      This example uses a `-j` parameter set to `4`, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use `sysctl -a | grep machdep.cpu | grep core_count` to get your CPU core count. ***TODO: the mac build page in the github repo (https://github.com/ripple/rippled/tree/develop/Builds/macos#generate-and-build) goes much more in-depth about cmake build options - should we include these here, just to bring a parity between what we say in the rippled repo and what we say here? That said -- do we want to eventually just have one doc on how to do the mac install -- meaning the macos doc content in the rippled repo would go away and just link to this article in the Dev Portal? We also probably want to take a look at what to do with the Linux and Visual Studio install in the rippled repo.***
+      This example uses a `-j` parameter set to `4`, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use `sysctl -n hw.ncpu` to get your CPU core count.
 
 {{n.next()}}. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended) <!--{# ***TODO: We should provide info about what to do if you get failures. What should the user do? PM looking into this.*** #}-->
 
         ./rippled --unittest
 
-{{n.next()}}. Create a copy of the example config file and save it to a location that enables you to run `rippled` as a non-root user (recommended).
+{{n.next()}}. `rippled` requires the `rippled.cfg` configuration file to run. You can find an example config file, `rippled-example.cfg` in `rippled/cfg`. Make a copy and save it as `rippled.cfg` in a location that enables you to run `rippled` as a non-root user. Access the `rippled` directory and run:
 
-        mkdir -p ~/.config/ripple
-        cd rippled
-        cp cfg/rippled-example.cfg ~/.config/ripple/rippled.cfg
+        mkdir -p /etc/opt/ripple ***TODO: changed this from ~/.config/ripple to match guidance coming in conf-file-location.md PR -- okay?***
+        cp cfg/rippled-example.cfg /etc/opt/ripple/rippled.cfg
 
 {{n.next()}}. Edit `rippled.cfg` to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here. ***TODO: I think we need to add this step to the centos and ubuntu tasks, correct? For centos and ubuntu, the config files are automatically placed in the correct directories, but the following paths still need to be manually updated to avoid permission issues, correct?***
 
@@ -196,13 +211,13 @@ This section assumes that you are using macOS X 10.0 or higher. ***TODO: okay?**
 
       These are the only configurations required for `rippled` to start up successfully. All other configuration is optional and can be tweaked after you have a working server. For more information, see [Additional Configurations](#additional-configuration).
 
-{{n.next()}}. Copy the example `validators.txt` file to the same folder as `rippled.cfg`:
+{{n.next()}}. `rippled` requires the `validators.txt` file to run. You can find an example validators file, `validators-example.txt`, in `rippled/cfg/`. Make a copy and save it as `validators.txt` in the same folder as your `rippled.cfg` file. Access the `rippled` directory and run:
 
-        cp cfg/validators-example.txt ~/.config/ripple/validators.txt
+        cp cfg/validators-example.txt /etc/opt/ripple ***TODO: changed this from ~/.config/ripple to match guidance coming in conf-file-location.md PR -- okay?***
 
       **Warning:** Ripple has designed a decentralization plan with maximum safety in mind. During the transition, you should not modify the `validators.txt` file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
-{{n.next()}}. Start the `rippled` service.
+{{n.next()}}. Access your build directory, `my_build` for example, and start the `rippled` service.
 
         sudo ./rippled
 
@@ -213,7 +228,7 @@ For next steps, see [Postinstall](#postinstall) and [Additional Configuration](#
 
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers.
 
-Here's an excerpt of what you can expect to see in your terminal: ***TODO: you'll see this in the CLI for the macOS install, but not for centos and ubuntu using the instructions provided in this doc. For centos and ubuntu - is there a benefit to giving the user a command that will display this view? Does such a command exist? If not, for centos and ubuntu - we need to give the user some other way to tell that the service is running correctly - refer them to server states?***
+Here's an excerpt of what you can expect to see in your terminal: ***TODO: you'll see this in the CLI for the macOS install because we tell them to start the service using `sudo ./rippled`, but not for centos and ubuntu. For centos and ubuntu, we tell the user to start the service using `sudo systemctl start rippled.service`, which starts the service, but doesn't display a log of the service starting up. At least for first-time start up - would it make sense to give the user this start up command (sudo ./rippled) instead so that they can see it running? Perhaps in Postinstall we can give them the `sudo systemctl start rippled.service` command for when they want to start the service, but don't need to see the running log?***
 
         2018-Oct-26 18:21:39.593738 JobQueue:NFO Auto-tuning to 6 validation/transaction/proposal threads.
         2018-Oct-26 18:21:39.599634 Amendments:DBG Amendment 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 is supported.
@@ -276,20 +291,14 @@ Once you have your stock `rippled` server running, you may want to consider runn
 
 ## Additional Configuration
 
+<!--{# TODO: Once post-rippled-install.md PR is merged, include it here to get latest, consistent info. #}-->
+
 `rippled` should connect to the XRP Ledger with the default configurations. However, you can change your settings by editing the `rippled.cfg` file. For recommendations about configuration settings, see [Capacity Planning](capacity-planning.html).
 
-The default locations for `rippled.cfg` are as follows:
-
-* CentOS/Red Hat with yum: `/opt/ripple/etc/`
-
-* Ubuntu with alien: `~/.config/ripple/`
-
-* macOS: `~/.config/ripple/`
-
-Changes to the `[debug_logfile]` or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path: ***TODO: [node_db] as well? When I try this for a [node_db] value of /var/lib/rippled/db/rocksdb: chown -R rippled:rippled /var/lib/rippled/db/rocksdb, I get -- chown: rippled: illegal group name. Is rippled:rippled just an example below? Or should there be a rippled group?***
+Changes to the `[node_db]`, `[debug_logfile]`, or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path: ***TODO: I added [node_db] to this list - okay? When I try the following command, `chown -R rippled:rippled /var/lib/rippled/db/rocksdb`, I get `chown: rippled: illegal group name.` Is `rippled:rippled` just an example below -- or should there be a `rippled` group that is created by the build/install process?***
 
     $ chown -R rippled:rippled <configured path>
 
-Restart `rippled` for any configuration changes to take effect: ***TODO: does this command work for centos, ubuntu, and macOS? JHA verify.***
+Restart `rippled` for any configuration changes to take effect: ***TODO: when I try this on macOS, I get `sudo: service: command not found`. I don't think the `service` command exists for macOS. For macOS, can the user just stop (ctrl+c? Not sure if that is the proper way to stop the service) and start rippled (sudo ./rippled) instead? For centos and ubuntu, we use `sudo systemctl start rippled.service` to start the service - below should we use `sudo systemctl restart rippled.service` - just to be consistent?***
 
     $ sudo service rippled restart
