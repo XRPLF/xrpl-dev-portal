@@ -1,6 +1,6 @@
 # Contribute Code to ripple-lib
 
-Want to contribute code or a bug report to help improve `ripple-lib`, the official client library for [RippleAPI](rippleapi-reference.html)? RippleAPI is a JavaScript API for interacting with the XRP Ledger. Here’s a roadmap to the high-level tasks that’ll have you reviewing code and functionality in no time. ***TODO: What do you think of the use of ripple-lib vs RippleAPI throughout this use case? Are these being used correctly?***
+Want to contribute code or a bug report to help improve `ripple-lib`, the official client library for [RippleAPI](rippleapi-reference.html)? RippleAPI is a JavaScript API for interacting with the XRP Ledger. Here’s a roadmap to the high-level tasks that’ll have you reviewing code and functionality in no time.
 
 
 {% set n = cycler(* range(1,99)) %}
@@ -16,21 +16,21 @@ Want to contribute code or a bug report to help improve `ripple-lib`, the offici
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
 ## [Set up and run a `rippled` server](manage-the-rippled-server.html)
 
-RippleAPI is an API for interacting with the XRP Ledger. The core peer-to-peer server that manages the XRP Ledger is `rippled`. Set up and run a `rippled` server to understand its developer experience and functionality. Anyone can run their own `rippled` server that follows the network and keeps a complete copy of the XRP Ledger.
+RippleAPI is an API for interacting with the XRP Ledger. The core peer-to-peer server that manages the XRP Ledger is `rippled`. Optionally, you can set up and run a `rippled` server to understand its developer experience and functionality. Anyone can run their own `rippled` server that follows the network and keeps a complete copy of the XRP Ledger.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
 ## [Get a Test Net XRP Ledger account](xrp-test-net-faucet.html)
 
-Use the XRP Ledger Test Net to get a test account. Connect your `rippled` server to the Test Net to make test calls and get to know the XRP Ledger.
+Use the XRP Test Net Faucet to get a test account on the XRP Test Network. If you set up a `rippled` server, you can connect it to the XRP Test Net to make test calls and get to know the XRP Ledger.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
 ## [Set up your `ripple-lib` development environment](get-started-with-rippleapi-for-javascript.html#environment-setup)
 
-`ripple-lib` requires Node.js and a few dependencies that you can get using npm (Node Package Manager). Also, be sure to create your own fork of the `ripple-lib` repository on GitHub so you can contribute pull requests to the official repo.
+`ripple-lib` requires Node.js and a few dependencies. We recommend using [Node.js v10 LTS](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/en/) dependency management. Also, be sure to create your own fork of the `ripple-lib` repository on GitHub so you can contribute pull requests to the official repo.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
@@ -38,13 +38,6 @@ Use the XRP Ledger Test Net to get a test account. Connect your `rippled` server
 ## [Run your first `ripple-lib` script](get-started-with-rippleapi-for-javascript.html#first-rippleapi-script)
 
 Examine and run the `get-account-info.js` script. Use it to get a feel for how RippleAPI scripts work and to verify that your RippleAPI interface is working.
-
-
-<span class="use-case-step-num">{{n.next()}}</span>
-<!-- <span class="use-case-step-length">(1 hour)</span> -->
-## Familiarize yourself with `ripple-lib`'s coding style<!--#{ link up once we have some a ripple-lib coding style page #}-->
-
-Before you start contributing code to `ripple-lib,` take some time to familiarize yourself with the coding standards used in the `ripple-lib` repo. These standards gradually evolve and propagate through code reviews. Some aspects are enforced more strictly than others. ***TODO: Here are the coding standards for rippled - specific to C++: https://github.com/ripple/rippled/blob/develop/docs/CodingStyle.md. Do we want to modify for JavaScript and ripple-lib and provide it in the ripple-lib repo?***
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
