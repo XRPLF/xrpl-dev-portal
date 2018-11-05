@@ -272,3 +272,47 @@ Changes to the `[node_db]`, `[debug_logfile]`, or `[database_path]` sections may
 Restart `rippled` for any configuration changes to take effect: ***TODO: when I try this on macOS, I get `sudo: service: command not found`. I don't think the `service` command exists for macOS. For macOS, can the user just stop (ctrl+c? Not sure if that is the proper way to stop the service) and start rippled (sudo ./rippled) instead? For centos and ubuntu, we use `sudo systemctl start rippled.service` to start the service - below should we use `sudo systemctl restart rippled.service` - just to be consistent?***
 
     $ sudo service rippled restart
+
+### Connect Your `rippled` to the XRP Test Net
+
+Ripple has created the [XRP Test Network](https://ripple.com/build/xrp-test-net/) to provide a testing platform for the XRP Ledger. XRP Test Net funds are not real funds and are intended for testing only. You may want to connect your `rippled` server to the XRP Test Net to test out and understand `rippled` functionality before connecting to the production XRP Ledger Network. ***TODO: stated correctly?***
+
+**Note:** The XRP Test Net ledger and balances are reset on a regular basis.
+
+_**To connect your `rippled` server to the XRP Test Net, set the following configurations:**_
+
+1. In your `rippled.cfg` file:
+
+      a. Uncomment the following section, as follows:
+
+        [ips]
+        r.altnet.rippletest.net 51235
+
+      b. Comment out the following section, as follows:
+
+        # [ips]
+        # r.ripple.com 51235
+
+2. In your `validators.txt` file:
+
+      a. Uncomment the following sections, as follows:
+
+        [validator_list_sites]
+        https://vl.altnet.rippletest.net
+
+        [validator_list_keys]
+        ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
+
+      b. Comment out the following sections, as follows:
+
+        # [validator_list_sites]
+        # https://vl.ripple.com
+        #
+        # [validator_list_keys]
+        # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+
+3. Restart `rippled`.
+
+4. To verify that your `rippled` is connected to the XRP Test Net, go to the [XRP Test Net Faucet](https://developers.ripple.com/xrp-test-net-faucet.html) and click **Generate credentials**. Make a note of the **Address** value. Make the [`account_info`](https://developers.ripple.com/account_info.html) request to your `rippled` server. ***TODO: Any ideas for a better way to this check?***
+
+      If the request returns account information, your `rippled` is connected to the XRP Test Net. If the request cannot find the account, your `rippled` is not connected to the XRP Test Net. Check your `rippled.cfg` and `validators.txt` configurations.
