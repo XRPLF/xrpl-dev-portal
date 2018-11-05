@@ -30,7 +30,7 @@ Use the XRP Test Net Faucet to get a test account on the XRP Test Network. If yo
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
 ## [Set up your `ripple-lib` development environment](get-started-with-rippleapi-for-javascript.html#environment-setup)
 
-`ripple-lib` requires Node.js and a few dependencies. We recommend using [Node.js v10 LTS](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/en/) dependency management. Also, be sure to create your own fork of the `ripple-lib` repository on GitHub so you can contribute pull requests to the official repo.
+`ripple-lib` requires Node.js and a few dependencies. We recommend using <a href="https://nodejs.org/en/" target="_blank">Node.js v10 LTS <i class="fa fa-external-link" aria-hidden="true"></i></a> <!--#{ fix for md highlighting_ #}--> and <a href="https://yarnpkg.com/en/" target="_blank">Yarn <i class="fa fa-external-link" aria-hidden="true"></i></a> <!--#{ fix for md highlighting_ #}--> dependency management. Also, be sure to create your own fork of the `ripple-lib` repository on GitHub so you can contribute pull requests to the official repo.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
@@ -48,7 +48,7 @@ Now that you have a handle on `ripple-lib`, you may have ideas for how to improv
 
 Perhaps you’re developing on the XRP Ledger and want to contribute some code that enables `ripple-lib` to provide a feature your application needs.
 
-Need some inspiration? Take a look at our list of [Help Wanted issues](https://github.com/ripple/ripple-lib/issues?utf8=%E2%9C%93&q=label%3A%22help+wanted%22).
+Need some inspiration? Take a look at our list of <a href="https://github.com/ripple/ripple-lib/issues?utf8=%E2%9C%93&q=label%3A%22help+wanted%22" target="_blank">Help Wanted issues <i class="fa fa-external-link" aria-hidden="true"></i></a> <!--#{ fix for md highlighting_ #}-->.
 
 Access the `ripple-lib` repo and open an issue or pull request.
 
