@@ -98,82 +98,80 @@ At this time, we don't recommend using the macOS platform for `rippled` producti
 
 That said, macOS is suitable for many development and testing tasks. `rippled` has been tested for use with macOS High Sierra up to 10.13.
 
-{% set n = cycler(* range(1,99)) %}
+1. Install [Xcode](https://developer.apple.com/download/).
 
-{{n.next()}}. Install [Xcode](https://developer.apple.com/download/).
+0. Install Xcode command line tools.
 
-{{n.next()}}. Install Xcode command line tools.
+        $ xcode-select --install
 
-        xcode-select --install
+0. Install [Homebrew](https://brew.sh/).
 
-{{n.next()}}. Install [Homebrew](https://brew.sh/).
+        $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+0. Update Homebrew.
 
-{{n.next()}}. Update Homebrew.
+        $ brew update
 
-        brew update
+0. Use Homebrew to install dependencies.
 
-{{n.next()}}. Use Homebrew to install dependencies.
+        $ brew install git cmake pkg-config protobuf openssl ninja
 
-        brew install git cmake pkg-config protobuf openssl ninja
+0. Install Boost 1.67.0. `rippled` 1.1.x is compatible with Boost 1.67.
 
-{{n.next()}}. Install Boost 1.67.0. Currently, we support Boost 1.67 only.
+        $ brew install boost@1.67
 
-        brew install boost@1.67
-
-{{n.next()}}. Ensure that your `BOOST_ROOT` environment variable points to the directory created by the Boost installation. To find your Boost install directory, use `brew info boost`. Put this environment variable in your `.bash_profile` file so it's automatically set when you log in. For example:
+0. Ensure that your `BOOST_ROOT` environment variable points to the directory created by the Boost installation. To find your Boost install directory, use `brew info boost`. Put this environment variable in your `.bash_profile` file so it's automatically set when you log in. For example:
 
         export BOOST_ROOT=/usr/local/Cellar/boost/1.67.0_1
 
-{{n.next()}}. If you updated your `.bash_profile` file in the previous step, be sure to source it. For example:
+0. If you updated your `.bash_profile` file in the previous step, be sure to source it. For example:
 
-        source .bash_profile
+        $ source .bash_profile
 
-{{n.next()}}. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://help.github.com/articles/set-up-git/).
+0. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://help.github.com/articles/set-up-git/).
 
-        git clone git@github.com:ripple/rippled.git
-        cd rippled
+        $ git clone git@github.com:ripple/rippled.git
+        $ cd rippled
 
-{{n.next()}}. By default, cloning puts you on the `develop` branch. Use this branch if you are doing development work and want the latest set of untested features.
+0. By default, cloning puts you on the `develop` branch. Use this branch if you are doing development work and want the latest set of untested features.
 
       If you want the latest stable release, checkout the `master` branch.
 
-        git checkout master
+        $ git checkout master
 
       If you want to test out the latest release candidate, checkout the `release` branch:
 
-        git checkout release
+        $ git checkout release
 
       Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
 
-{{n.next()}}. In the `rippled` directory you just cloned, create your build directory and access it. For example:
+0. In the `rippled` directory you just cloned, create your build directory and access it. For example:
 
-        mkdir my_build
-        cd my_build
+        $ mkdir my_build
+        $ cd my_build
 
-{{n.next()}}. Build `rippled`. This could take about 5 minutes, depending on your hardware specs.
+0. Build `rippled`. This could take about 5 minutes, depending on your hardware specs.
 
-        cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ..
+        $ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ..
 
       You can set `CMAKE_BUILD_TYPE` to the `Debug` or `Release` build type. All four standard [`CMAKE_BUILD_TYPE`](https://cmake.org/cmake/help/v3.0/variable/CMAKE_BUILD_TYPE.html) values are supported.
 
-{{n.next()}}. Run the build using CMake. This could take about 10 minutes, depending on your hardware specs.
+0. Run the build using CMake. This could take about 10 minutes, depending on your hardware specs.
 
-        cmake --build . -- -j 4
+        $ cmake --build . -- -j 4
 
       **Tip:** This example uses a `-j` parameter set to `4`, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use `sysctl -n hw.ncpu` to get your CPU core count.
 
-{{n.next()}}. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended) <!--{# ***TODO: We should provide info about what to do if you get failures. What should the user do? PM looking into this.*** #}-->
+0. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended) <!--{# ***TODO: We should provide info about what to do if you get failures. What should the user do? PM looking into this.*** #}-->
 
-        ./rippled --unittest
+        $ ./rippled --unittest
 
-{{n.next()}}. `rippled` requires the `rippled.cfg` configuration file to run. You can find an example config file, `rippled-example.cfg` in `rippled/cfg`. Make a copy and save it as `rippled.cfg` in a location that enables you to run `rippled` as a non-root user. Access the `rippled` directory and run:
+0. `rippled` requires the `rippled.cfg` configuration file to run. You can find an example config file, `rippled-example.cfg` in `rippled/cfg`. Make a copy and save it as `rippled.cfg` in a location that enables you to run `rippled` as a non-root user. Access the `rippled` directory and run:
 
-        mkdir -p /etc/opt/ripple ***TODO: changed this from ~/.config/ripple to match guidance coming in conf-file-location.md PR -- okay?***
-        cp cfg/rippled-example.cfg /etc/opt/ripple/rippled.cfg
+        $ mkdir -p /etc/opt/ripple ***TODO: changed this from ~/.config/ripple to match guidance coming in conf-file-location.md PR -- okay?***
+        $ cp cfg/rippled-example.cfg /etc/opt/ripple/rippled.cfg
 
-{{n.next()}}. Edit `rippled.cfg` to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here. ***TODO: We need to add this step to the centos and ubuntu tasks, correct? For centos and ubuntu, the config files are automatically placed in the correct directories, but the following paths still need to be manually checked/updated to ensure that there are no permission issues, correct?***
+0. Edit `rippled.cfg` to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here. ***TODO: We need to add this step to the centos and ubuntu tasks, correct? For centos and ubuntu, the config files are automatically placed in the correct directories, but the following paths still need to be manually checked/updated to ensure that there are no permission issues, correct?***
 
       * Set the `[node_db]` path to the location where you want to store the ledger database.
 
@@ -183,15 +181,15 @@ That said, macOS is suitable for many development and testing tasks. `rippled` h
 
       These are the only configurations required for `rippled` to start up successfully. All other configuration is optional and can be tweaked after you have a working server. For more information, see [Additional Configurations](#additional-configuration).
 
-{{n.next()}}. `rippled` requires the `validators.txt` file to run. You can find an example validators file, `validators-example.txt`, in `rippled/cfg/`. Make a copy and save it as `validators.txt` in the same folder as your `rippled.cfg` file. Access the `rippled` directory and run:
+0. `rippled` requires the `validators.txt` file to run. You can find an example validators file, `validators-example.txt`, in `rippled/cfg/`. Make a copy and save it as `validators.txt` in the same folder as your `rippled.cfg` file. Access the `rippled` directory and run:
 
-        cp cfg/validators-example.txt /etc/opt/ripple ***TODO: changed this from ~/.config/ripple to match guidance coming in conf-file-location.md PR -- okay?***
+        $ cp cfg/validators-example.txt /etc/opt/ripple ***TODO: changed this from ~/.config/ripple to match guidance coming in conf-file-location.md PR -- okay?***
 
       **Warning:** Ripple has designed a decentralization plan with maximum safety in mind. During the transition, you should not modify the `validators.txt` file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
-{{n.next()}}. Access your build directory, `my_build` for example, and start the `rippled` service.
+0. Access your build directory, `my_build` for example, and start the `rippled` service.
 
-        sudo ./rippled
+        $ sudo ./rippled
 
       Here's an excerpt of what you can expect to see in your terminal:
 
