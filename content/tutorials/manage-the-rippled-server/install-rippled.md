@@ -94,9 +94,11 @@ For next steps, see [Postinstall](#postinstall) and [Additional Configuration](#
 
 ## Installation on macOS
 
-At this time, we don't recommend using the macOS platform for `rippled` production use. For production, consider using the [Ubuntu platform](#installation-on-ubuntu-with-alien), which has received the highest level of quality assurance and testing.
+At this time, Ripple doesn't recommend using the macOS platform for `rippled` production use. For production, consider using the [Ubuntu platform](#installation-on-ubuntu-with-alien), which has received the highest level of quality assurance and testing.
 
 That said, macOS is suitable for many development and testing tasks. `rippled` has been tested for use with macOS High Sierra up to 10.13.
+
+Ripple recommends running `rippled` as your own user.
 
 1. Install [Xcode](https://developer.apple.com/download/).
 
@@ -168,10 +170,10 @@ That said, macOS is suitable for many development and testing tasks. `rippled` h
 
 0. `rippled` requires the `rippled.cfg` configuration file to run. You can find an example config file, `rippled-example.cfg` in `rippled/cfg`. Make a copy and save it as `rippled.cfg` in a location that enables you to run `rippled` as a non-root user. Access the `rippled` directory and run:
 
-        $ mkdir -p /etc/opt/ripple ***TODO: changed this from ~/.config/ripple to match guidance coming in conf-file-location.md PR -- okay?***
-        $ cp cfg/rippled-example.cfg /etc/opt/ripple/rippled.cfg
+        $ mkdir -p $HOME/.config/ripple
+        $ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
-0. Edit `rippled.cfg` to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here. ***TODO: We need to add this step to the centos and ubuntu tasks, correct? For centos and ubuntu, the config files are automatically placed in the correct directories, but the following paths still need to be manually checked/updated to ensure that there are no permission issues, correct?***
+0. Edit `rippled.cfg` to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here.
 
       * Set the `[node_db]` path to the location where you want to store the ledger database.
 
@@ -183,13 +185,13 @@ That said, macOS is suitable for many development and testing tasks. `rippled` h
 
 0. `rippled` requires the `validators.txt` file to run. You can find an example validators file, `validators-example.txt`, in `rippled/cfg/`. Make a copy and save it as `validators.txt` in the same folder as your `rippled.cfg` file. Access the `rippled` directory and run:
 
-        $ cp cfg/validators-example.txt /etc/opt/ripple ***TODO: changed this from ~/.config/ripple to match guidance coming in conf-file-location.md PR -- okay?***
+        $ cp cfg/validators-example.txt $HOME/.config/ripple/validators.txt
 
       **Warning:** Ripple has designed a decentralization plan with maximum safety in mind. During the transition, you should not modify the `validators.txt` file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
 0. Access your build directory, `my_build` for example, and start the `rippled` service.
 
-        $ sudo ./rippled
+        $ ./rippled
 
       Here's an excerpt of what you can expect to see in your terminal:
 
@@ -241,6 +243,8 @@ That said, macOS is suitable for many development and testing tasks. `rippled` h
       2018-Oct-26 18:23:03.034750 InboundLedger:WRN Want: 8DFAD21AD3090DE5D6F7592B3821C3DA77A72287705B4CF98DC0F84D5DD2BDF8
 ```
 
+For information about `rippled` log messages, see [Understanding Log Messages](understanding-log-messages.html).
+
 For next steps, see [Postinstall](#postinstall) and [Additional Configuration](#additional-configuration).
 
 
@@ -248,7 +252,7 @@ For next steps, see [Postinstall](#postinstall) and [Additional Configuration](#
 
 It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers.
 
-<!--{# ***TODO: for the future, provide a reference for what the most common and unintuitive messages mean -- esp when signaling possible errors.*** #}-->
+For information about `rippled` log messages, see [Understanding Log Messages](understanding-log-messages.html).
 
 Once your `rippled` has synchronized with the rest of the network, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger. Use [`rippled` server states](rippled-server-states.html) to tell whether your `rippled` server has synchronized with the network.
 
@@ -256,24 +260,31 @@ For information about communicating with your `rippled` server using the rippled
 
 Once you have your stock `rippled` server running, you may want to consider running it as a validating server. For information about validating servers and why you might want to run one, see [Run rippled as a Validator](run-rippled-as-a-validator.html).
 
+Having trouble getting your `rippled` server started? See [rippled Server Won't Start](server-wont-start.html).
+
 
 ## Additional Configuration
 
 <!--{# TODO: Once post-rippled-install.md PR is merged, include it here to get latest, consistent info. #}-->
 
-`rippled` should connect to the XRP Ledger with the default configurations. However, you can change your settings by editing the `rippled.cfg` file. For recommendations about configuration settings, see [Capacity Planning](capacity-planning.html).
+`rippled` should connect to the XRP Ledger with the default configurations. However, you can change your settings by editing the `rippled.cfg` file.
 
-Changes to the `[node_db]`, `[debug_logfile]`, or `[database_path]` sections may require you to give the `rippled` user and group ownership to your new configured path: ***TODO: I added [node_db] to this list - okay?***
+For recommendations about configuration settings, see [Capacity Planning](capacity-planning.html).
 
-    $ chown -R rippled:rippled <configured path> ***TODO: Is `rippled:rippled` just an example value? When I run this command on macOS, I get `chown: rippled: illegal group name.` When I run it on centos, I get chown: changing ownership of ... : Operation not permitted***
+You must restart `rippled` for any configuration changes to take effect:
 
-Restart `rippled` for any configuration changes to take effect: ***TODO: when I try this on macOS, I get `sudo: service: command not found`. I don't think the `service` command exists for macOS. For macOS, can the user just stop (ctrl+c? Not sure if that is the proper way to stop the service) and start rippled (sudo ./rippled) instead? For centos and ubuntu, we use `sudo systemctl start rippled.service` to start the service - below should we use `sudo systemctl restart rippled.service` - just to be consistent?***
+  * For Ubuntu and CentOS/Red Hat:
 
-    $ sudo service rippled restart
+        $ sudo systemctl restart rippled.service
+
+  * For macOS, use Ctrl-C to stop `rippled` and then start it again:
+
+        $ ./rippled
+
 
 ### Connect Your `rippled` to the XRP Test Net
 
-Ripple has created the [XRP Test Network](https://ripple.com/build/xrp-test-net/) to provide a testing platform for the XRP Ledger. XRP Test Net funds are not real funds and are intended for testing only. You may want to connect your `rippled` server to the XRP Test Net to test out and understand `rippled` functionality before connecting to the production XRP Ledger Network. ***TODO: stated correctly?***
+Ripple has created the [XRP Test Network](https://ripple.com/build/xrp-test-net/) to provide a testing platform for the XRP Ledger. XRP Test Net funds are not real funds and are intended for testing only. You can connect your `rippled` server to the XRP Test Net to test out and understand `rippled` functionality before connecting to the production XRP Ledger Network. You can also use the XRP Test Net to verify that your own code interacts correctly with `rippled`.
 
 **Note:** The XRP Test Net ledger and balances are reset on a regular basis.
 
@@ -281,19 +292,19 @@ _**To connect your `rippled` server to the XRP Test Net, set the following confi
 
 1. In your `rippled.cfg` file:
 
-      a. Uncomment the following section, as follows:
+    a. Uncomment the following section, as follows:
 
         [ips]
         r.altnet.rippletest.net 51235
 
-      b. Comment out the following section, as follows:
+    b. Comment out the following section, as follows:
 
         # [ips]
         # r.ripple.com 51235
 
 2. In your `validators.txt` file:
 
-      a. Uncomment the following sections, as follows:
+    a. Uncomment the following sections, as follows:
 
         [validator_list_sites]
         https://vl.altnet.rippletest.net
@@ -301,7 +312,7 @@ _**To connect your `rippled` server to the XRP Test Net, set the following confi
         [validator_list_keys]
         ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
 
-      b. Comment out the following sections, as follows:
+    b. Comment out the following sections, as follows:
 
         # [validator_list_sites]
         # https://vl.ripple.com
@@ -311,6 +322,8 @@ _**To connect your `rippled` server to the XRP Test Net, set the following confi
 
 3. Restart `rippled`.
 
-4. To verify that your `rippled` is connected to the XRP Test Net, go to the [XRP Test Net Faucet](https://developers.ripple.com/xrp-test-net-faucet.html) and click **Generate credentials**. Make a note of the **Address** value. Make the [`account_info`](https://developers.ripple.com/account_info.html) request to your `rippled` server. ***TODO: Any ideas for a better way to this check?***
+4. To verify that your `rippled` is connected to the XRP Test Net, go to the [XRP Test Net Faucet](https://developers.ripple.com/xrp-test-net-faucet.html) and click **Generate credentials**. Make a note of the **Address** value. Make the [`account_info`](https://developers.ripple.com/account_info.html) request to your `rippled` server.
 
       If the request returns account information, your `rippled` is connected to the XRP Test Net. If the request cannot find the account, your `rippled` is not connected to the XRP Test Net. Check your `rippled.cfg` and `validators.txt` configurations.
+
+      Ripple recommends that you generate new test credentials each time you want to perform this verification. Using an old XRP Test Net **Address** value may not provide accurate results.
