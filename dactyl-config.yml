@@ -2512,8 +2512,8 @@ pages:
         funnel: Use Cases
         template: template-use-case.html
         useful_background:
-            - consensus.html
-            - amendments.html #TODO add to useful_background: stand-alone mode, rippled.cfg reference (future feature)
+            - rippleapi-reference.html
+            - get-started-with-rippleapi-for-javascript.html
         targets:
             - local
 
