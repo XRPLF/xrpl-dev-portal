@@ -16,5 +16,8 @@ Here are some of our users' most popular use cases:
 
       Help us improve the open source reference server implementation of `rippled`, the server that is the core of the XRP Ledger peer-to-peer network.
 
+* **[Contribute Code to `ripple-lib`](contribute-code-to-ripple-lib.html)**
+
+      Help us improve `ripple-lib`, the official client library for RippleAPI.
 
 Want to see a roadmap for a case not listed here? [Contact us >](mailto:docs@ripple.com)
