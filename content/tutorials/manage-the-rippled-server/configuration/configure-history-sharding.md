@@ -35,7 +35,7 @@ max_size_gb=50
 
 **Tip:** Ripple recommends using NuDB for the shard store (`type=NuDB`). NuDB uses fewer file handles per shard than RocksDB. RocksDB uses memory that scales with the size of data it stores, which may require excessive memory overhead. However, NuDB is designed to be used with SSD drives and does not work with rotational disks.
 
-**Caution:** If you enable history sharding, then later change the database type of your shard store, you must also change the path or delete the existing data from the configured path. If `rippled` detects the wrong type of data in the shard store path, it may fail to start.
+**Caution:** If you enable history sharding, then later change the database type of your shard store, you must also change the path or delete the existing data from the configured path. If `rippled` detects the wrong type of data in the shard store path, it may [fail to start](server-wont-start.html).
 
 For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg).
 
