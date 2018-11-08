@@ -22,7 +22,7 @@ If your server crashes randomly during operation or as a result of particular co
 
 - Is your server running out of memory? On some systems, `rippled` may be terminated by the Out Of Memory (OOM) Killer or another monitor process.
 - If your server is running in a shared environment, are other users or administrators causing the machine or service to be restarted? For example, some hosted providers automatically kill any service that uses a large amount of a shared machine's resources for an extended period of time.
-- Does your server meet the [minimum requirements](install-rippled.html#minimum-system-requirements) to run `rippled`? What about the [recommendations for production servers](capacity-planning.html#recommendation-1)?
+- Does your server meet the [minimum requirements](system-requirements.html) to run `rippled`? What about the [recommendations for production servers](system-requirements.html#recommended-specifications)?
 
 If none of the above apply, please report the issue to Ripple as a security-sensitive bug. If Ripple can reproduce the crash, you may be eligible for a bounty. See <https://ripple.com/bug-bounty/> for details.
 

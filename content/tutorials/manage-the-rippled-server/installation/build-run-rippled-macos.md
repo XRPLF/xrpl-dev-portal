@@ -157,6 +157,6 @@ For information about `rippled` log messages, see [Understanding Log Messages](u
 
 ## See Also
 
-- [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu.html) (Pre-built binary on Ubuntu for production use)
+- [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu-with-alien.html) (Pre-built binary on Ubuntu for production use)
 - [Build and Run `rippled` on Ubuntu](build-run-rippled-ubuntu.html) (Compile `rippled` yourself on Ubuntu)
 - [Compilation instructions for other platforms](https://github.com/ripple/rippled/tree/develop/Builds)

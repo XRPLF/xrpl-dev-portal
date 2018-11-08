@@ -35,7 +35,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 ## See Also
 
-- [Automatically Update rippled on Ubuntu Linux]()
-- [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu.html) (Pre-built binary on Ubuntu)
+- [Update Automatically on CentOS/Red Hat](update-rippled-automatically-on-centos-rhel.html)
+- [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu-with-alien.html) (Pre-built binary on Ubuntu)
 - [Build and Run `rippled` on Ubuntu](build-run-rippled-ubuntu.html) (Compile `rippled` yourself on Ubuntu)
 - [Compilation instructions for other platforms](https://github.com/ripple/rippled/tree/develop/Builds)

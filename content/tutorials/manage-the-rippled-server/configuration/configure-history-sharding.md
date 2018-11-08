@@ -35,6 +35,8 @@ max_size_gb=50
 
 **Tip:** Ripple recommends using NuDB for the shard store (`type=NuDB`). NuDB uses fewer file handles per shard than RocksDB. RocksDB uses memory that scales with the size of data it stores, which may require excessive memory overhead. However, NuDB is designed to be used with SSD drives and does not work with rotational disks.
 
+**Caution:** If you enable history sharding, then later change the database type of your shard store, you must also change the path or delete the existing data from the configured path. If `rippled` detects the wrong type of data in the shard store path, it may fail to start.
+
 For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg).
 
 ## 3. Restart the server
@@ -43,4 +45,10 @@ For more information, reference the `[shard_db]` example in the [rippled.cfg con
 systemctl restart rippled
 ```
 
-***TODO: is there an API method you can use to check that the server started and sharding was successfully enabled?***
+## 4. Wait for shards to download
+
+After your server syncs to the network, it automatically starts downloading history shards to fill the available space in the shard store. You can see which shards are being downloaded by looking at which folders are created in the folder where you configured your shard store. (This is defined by the `path` field of the `[shard_db]` stanza in the `rippled.cfg` file.)
+
+This folder should contain a numbered folder for each shard your server has. At any given time, up to one folder may contain a `control.txt` file, indicating it is incomplete.
+
+<!-- TODO: add download_shard and crawl_shards commands when they get added. -->
