@@ -82,10 +82,9 @@ Validation Network Methods:
 * [Get Topology Nodes - `GET /v2/network/topology/nodes`](#get-topology-nodes)
 * [Get Topology Node - `GET /v2/network/topology/nodes/{pubkey}`](#get-topology-node)
 * [Get Topology Links - `GET /v2/network/topology/links`](#get-topology-links)
-* [Get Validations  - `GET /v2/network/validations`](#get-validations)
 * [Get Validator  - `GET /v2/network/validators/{pubkey}`](#get-validator)
 * [Get Validators  - `GET /v2/network/validators`](#get-validators)
-* [Get Validator Validations - `GET /v2/network/validators/{pubkey}/validations`](#get-validator-validations)
+* [Get Validator Manifests - `GET /v2/network/validators/{pubkey}/manifests`](#get-validator-manifests)
 * [Get Single Validator Reports - `GET /v2/network/validators/{pubkey}/reports`](#get-single-validator-reports)
 * [Get Daily Validator Reports - `GET /v2/network/validator_reports`](#get-daily-validator-reports)
 * [Get `rippled` Versions - `GET /v2/network/rippled_versions`](#get-rippled-versions)
@@ -2641,7 +2640,7 @@ Response:
 ## Get Validator
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidators.js "Source")
 
-Get details of a single validator in the [consensus network](consensus.html). _(New in [v2.2.0][])_
+Get details of a single validator in the [consensus network](consensus.html). _(Updated in [v2.4.0][])_
 
 
 #### Request Format
@@ -2675,10 +2674,23 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | Field                   | Value                           | Description      |
 |:------------------------|:--------------------------------|:-----------------|
 | `result`                | String                          | The value `success` indicates that the body represents a successful response. |
-| `last_datetime`         | Integer                         | The last reported validation vote signed by this validator. |
 | `validation_public_key` | String - Base-58 [Public Key][] | This validator's validator public key. |
 | `domain`                | String                          | (May be omitted) The DNS domain associated with this validator. |
-| `domain_state`          | String                          | The value `verified` indicates that this validator has a [verified domain](run-rippled-as-a-validator.html#domain-verification) controlled by the same operator as the validator. The value `AccountDomainNotFound` indicates that the "Account Domain" part of Domain Verification is not set up properly. The value `RippleTxtNotFound` indicates that the ripple.txt step of Domain Verification is not set up properly. |
+| `chain`                 | String                          | Ledger hash chain which this validator is currently following. The value `main` indicates the main network and `altnet` indicates the XRP Test Network. Other forks are named `chain.{NUMBER}`, where `{NUMBER}` is a unique number for each fork. |
+| `unl`                   | Bool                            | True if the validator is part of the ledger chain's recommended UNL. |
+| `current_index`         | Number                          | Ledger index of most recently validated ledger. |
+| `partial`               | Bool                            | True if the most recent validation was a partial one. |
+| `agreement_1h`          | Agreement Object                | Object containing agreement stats for the most recent hour. |
+| `aggreement_24h`        | Agreement Object                | Object containing agreement stats for the most recent 24 hour period. |
+
+#### Agreement Objects
+
+| Field                   | Value                           | Description      |
+|:------------------------|:--------------------------------|:-----------------|
+| `score`                 | String                          | Score of agreement with the ledger chain being followed. |
+| `missed`                | Integer                         | Number of ledgers not validated during the time period. |
+| `total`                 | Integer                         | Number of ledgers that could have been validated during the time period. |
+| `incomplete`            | Bool                            | True indicates the data does not cover the entire time period. |
 
 #### Example
 
@@ -2693,10 +2705,24 @@ Response:
 ```
 200 OK
 {
-  "domain": "ripple.com",
-  "domain_state": "verified",
-  "last_datetime": "2016-06-07T01:22:59.929Z",
-  "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
+  "validation_public_key": "nHBidG3pZK11zQD6kpNDoAhDxH6WLGui6ZxSbUx7LSqLHsgzMPec",
+  "domain": "bitso.com",
+  "chain": "main",
+  "current_index": 42279525,
+  "agreement_1h": {
+    "missed": 0,
+    "total": 981,
+    "score": "1.0000",
+    "incomplete": false
+  },
+  "agreement_24h": {
+    "missed": 0,
+    "total": 23519,
+    "score": "1.0000",
+    "incomplete": false
+  },
+  "partial": false,
+  "unl": true,
   "result": "success"
 }
 ```
@@ -2706,7 +2732,7 @@ Response:
 ## Get Validators
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidators.js "Source")
 
-Get a list of known validators. _(New in [v2.2.0][])_
+Get a list of known validators active in the last 24 hours. _(Updated in [v2.4.0][])_
 
 
 #### Request Format
@@ -2736,16 +2762,37 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | Field                   | Value                           | Description      |
 |:------------------------|:--------------------------------|:-----------------|
 | `result`                | String                          | The value `success` indicates that the body represents a successful response. |
-| `last_datetime`         | Integer                         | Number of links returned. |
-| `validation_public_key` | String - Base-58 [Public Key][] | Validator public key of this validator. |
+| `count`                 | Integer                         | Number of validators returned. |
+| `validators`            | Array of [Validator Objects][]  | List of validators active in the last 24 hours. |
 
+#### Validator Objects
+
+| Field                   | Value                           | Description      |
+|:------------------------|:--------------------------------|:-----------------|
+| `validation_public_key` | String - Base-58 [Public Key][] | This validator's validator public key. |
+| `domain`                | String                          | (May be omitted) The DNS domain associated with this validator. |
+| `chain`                 | String                          | Ledger hash chain which this validator is currently following. The value `main` indicates the main network and `altnet` indicates the XRP Test Network. Other forks are named `chain.{NUMBER}`, where `{NUMBER}` is a unique number for each fork. |
+| `unl`                   | Bool                            | True if the validator is part of the ledger chain's recommended UNL. |
+| `current_index`         | Number                          | Ledger index of most recently validated ledger. |
+| `partial`               | Bool                            | True if the most recent validation was a partial one. |
+| `agreement_1h`          | Agreement Object                | Object containing agreement stats for the most recent hour. |
+| `aggreement_24h`        | Agreement Object                | Object containing agreement stats for the most recent 24 hour period. |
+
+#### Agreement Objects
+
+| Field                   | Value                           | Description      |
+|:------------------------|:--------------------------------|:-----------------|
+| `score`                 | String                          | Score of agreement with the ledger chain being followed. |
+| `missed`                | Integer                         | Number of ledgers not validated during the time period. |
+| `total`                 | Integer                         | Number of ledgers that could have been validated during the time period. |
+| `incomplete`            | Bool                            | True indicates the data does not cover the entire time period. |
 
 #### Example
 
 Request:
 
 ```
-GET /v2/network/validators/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7
+GET /v2/network/validators/
 ```
 
 Response:
@@ -2753,20 +2800,41 @@ Response:
 ```
 200 OK
 {
-  result: "success",
-  last_datetime: "2016-02-11T23:20:41.319Z",
-  validation_public_key: "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+  "result": "success",
+  "count": 141,
+  "validators": [
+    {
+      "validation_public_key": "nHBidG3pZK11zQD6kpNDoAhDxH6WLGui6ZxSbUx7LSqLHsgzMPec",
+      "domain: "bitso.com",
+      "chain": "main",
+      "current_index": 42281151,
+      "agreement_1h": {
+        "missed": 0,
+        "total": 1029,
+        "score": "1.0000",
+        "incomplete": false
+      },
+      "agreement_24h": {
+        "missed": 0,
+        "total": 23585,
+        "score": "1.0000",
+        "incomplete": false
+      },
+      "partial": false,
+      "unl": true
+    }
+  ]
 }
 ```
 
 
 
-## Get Validator Validations
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidations.js "Source")
+## Get Validator Manifests
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getManifests.js "Source")
 
-Retrieve validation votes signed by a specified validator, including votes for ledger versions that are outside the main ledger chain. _(New in [v2.2.0][])_
+Retrieve manifests signed by a specified validator, used to designate ephemeral key to sign proposals and validations. _(New in [v2.3.7][])_
 
-**Note:** The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.
+**Note:** The Data API does not have a comprehensive record of all manifests. The response only includes data that the Data API has recorded.
 
 #### Request Format
 
@@ -2775,39 +2843,35 @@ Retrieve validation votes signed by a specified validator, including votes for l
 *REST*
 
 ```
-GET /v2/network/validators/{pubkey}/validations
+GET /v2/network/validators/{pubkey}/manifests
 ```
 
 <!-- MULTICODE_BLOCK_END -->
-
-[Try it! >](data-api-v2-tool.html#get-validator-validations)
 
 This method requires the following URL parameters:
 
-| Field    | Value                           | Description           |
-|:---------|:--------------------------------|:----------------------|
-| `pubkey` | String - Base-58 [Public Key][] | Validator public key. |
+| Field     | Value                           | Description           |
+|:----------|:--------------------------------|:----------------------|
+| `pubkey`  | String - Base-58 [Public Key][] | Validator public key. |
 
 Optionally, you can provide the following query parameters:
 
-| Field    | Value                  | Description                              |
-|:---------|:-----------------------|:-----------------------------------------|
-| `start`  | String - [Timestamp][] | Filter results to this time and later.   |
-| `end`    | String - [Timestamp][] | Filter results to this time and earlier. |
-| `limit`  | Integer                | Maximum results per page. The default is 200. Cannot be more than 1000. |
-| `marker` | String                 | [Pagination](#pagination) key from previously returned response. |
-| `format` | String                 | Format of returned results: `csv` or `json`. The default is `json`. |
+| Field    | Value   | Description                                             |
+|:---------|:--------|:--------------------------------------------------------|
+| `limit`  | Integer | Maximum results per page. Defaults to 200. Cannot be more than 1000. |
+| `marker` | String  | [Pagination](#pagination) key from previously returned response. |
+| `format` | String  | Format of returned results: `csv` or `json`. Defaults to `json`. |
 
 #### Response Format
 
 A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
 
-| Field         | Value                           | Description                |
-|:--------------|:--------------------------------|:---------------------------|
-| `result`      | String                          | The value `success` indicates that the body represents a successful response. |
-| `count`       | Integer                         | Number of validations returned. |
-| `marker`      | String                          | (May be omitted) [Pagination](#pagination) marker. |
-| `validations` | Array of [Validation Objects][] | The requested validations. |
+| Field       | Value                         | Description                    |
+|:------------|:------------------------------|:-------------------------------|
+| `result`    | String                        | The value `success` indicates that the body represents a successful response. |
+| `count`     | Integer                       | Number of manifests returned.  |
+| `marker`    | String                        | (May be omitted) [Pagination](#pagination) marker. |
+| `manifests` | Array of [Manifest Objects][] | The requested manifests.       |
 
 
 #### Example
@@ -2815,7 +2879,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 Request:
 
 ```
-GET /v2/network/validator/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7/validations?limit=3&descending=true
+GET /v2/network/validator/nHDEmQKb2nbcewdQ1fqCTGcPTcePhJ2Rh6MRftsCaf6UNRQLv7pB/manifests
 ```
 
 Response:
@@ -2824,139 +2888,41 @@ Response:
 200 OK
 {
   "result": "success",
-  "count": 3,
-  "marker": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7|20160608020910|4499E5D60FD4F3F239C5B274E65B9CAE033398BE976E4FB49E9B30508D95F5A5",
-  "validations": [
+  "count": 2,
+  "manifests": [
     {
-      "count": 27,
-      "first_datetime": "2016-06-08T02:09:21.280Z",
-      "last_datetime": "2016-06-08T02:09:21.390Z",
-      "ledger_hash": "246C5142A108C7B64F5D700936D31360B7790FA6349A98A2A1F7A14671D70B48",
-      "reporter_public_key": "n9KKTtooV4h2UsmNEhBqPvMRNj6RAHLPS6Baktf4u1AhgKNbyJAF",
-      "signature": "304402204506DD69B831886C4738F97CEED43AAFDBA67254D3EAF4FB5B3BF167A15B1B690220147E366CA53A3EC8B513978F2BA3A0905DC412CCE553E8ECE544236B097F2C8A",
-      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+      "count": 1,
+      "ephemeral_public_key": "nHUvPMeNsrwdJd7d65eaYGkKx6bPEcxJGudjVDqwCybtEfrSUE8w",
+      "first_datetime": "2018-09-06T20:20:08.353Z",
+      "last_datetime": "2018-09-06T20:20:08.353Z",
+      "master_public_key": "nHDEmQKb2nbcewdQ1fqCTGcPTcePhJ2Rh6MRftsCaf6UNRQLv7pB",
+      "master_signature":
+        "D8E78AD2C10ADA5A91D673C2EA66045926D3ED3D4C77DE4350AAA076379F69B8D0EC492A626EA9228964F694EED9EC63394D051001BA432EC57F2B6031204806",
+      "sequence": "1",
+      "signature":
+        "C794C3D1159932FF8EE7360074E7D17CB59F6646B227EF35D439892C00832648C46FD1958714E153AF4BD0540A7B27011B7F58D357B68B87DCBF5CA81874480C"
     },
     {
-      "count": 27,
-      "first_datetime": "2016-06-08T02:09:17.275Z",
-      "last_datetime": "2016-06-08T02:09:17.383Z",
-      "ledger_hash": "1DC9245CDBFE2C640ACD766DB4AF1DE66F6E92A8EE78F628281A6568760DBAB2",
-      "reporter_public_key": "n9JySgyBVcQKvyDoeRKg7s2Mm6ZcFHk22vUZb3o1HSosWxcj9xPt",
-      "signature": "3045022100E07D8CB801EC7AC98DB1DED813D49AE1FFE3C4CB027314EB6ED1BA7796653DE902204E65E96B0961AC09D8D7542EC59B3CE2ECAE6BC02557A4D1C0385DED00445329",
-      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
-    },
-    {
-      "count": 27,
-      "first_datetime": "2016-06-08T02:09:13.277Z",
-      "last_datetime": "2016-06-08T02:09:13.387Z",
-      "ledger_hash": "0E11FA2052E8D345069CF09F13D76A8EF618C32F2B25A948FF104D59F53371BE",
-      "reporter_public_key": "n9KKTtooV4h2UsmNEhBqPvMRNj6RAHLPS6Baktf4u1AhgKNbyJAF",
-      "signature": "3045022100C1252F3FE8D0683F7FE5261D36876650EE185EEFE558150DEEF67F86E928463F022017237E1D89D5DBD8C4C2CC041C2EA73D96260D44A283D6CFF95359E86008E765",
-      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
+      "count": 1,
+      "ephemeral_public_key": "n9M7mktkbZCnKWa41LFkZsfXemBGdYsFT6fqJBXa4xupV8X8px7W",
+      "first_datetime": "2018-09-06T20:20:08.357Z",
+      "last_datetime": "2018-09-06T20:20:08.357Z",
+      "master_public_key": "nHDEmQKb2nbcewdQ1fqCTGcPTcePhJ2Rh6MRftsCaf6UNRQLv7pB",
+      "master_signature":
+        "F7ECCB90F84ED3FC5E0DE1A6B0B7E835A8D2A94C8E985A74932DE30CD2EDCB46936FD14C39A5AA1BB3583CF888C869167979FEE068C6C34B9B63AB922850090E",
+      "sequence": "2",
+      "signature":
+        "3044022055ED7EFF1245DE21D3C28C57D19301291F0D617CA3A6D3D4CFDF8692D9E0E68502200276215BA986BA61834E0AC71E8590706C851B8F55F0B80A44EECE868F71415F"
     }
   ]
 }
 ```
-
-
-
-## Get Validations
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidations.js "Source")
-
-Retrieve validation votes, including votes for ledger versions that are outside the main ledger chain. _(New in [v2.2.0][])_
-
-**Note:** The Data API does not have a comprehensive record of all validations. The response only includes data that the Data API has recorded. Some ledger versions, especially older ledgers, may have no validations even if they were validated by consensus.
-
-#### Request Format
-
-<!-- MULTICODE_BLOCK_START -->
-
-*REST*
-
-```
-GET /v2/network/validations
-```
-
-<!-- MULTICODE_BLOCK_END -->
-
-[Try it! >](data-api-v2-tool.html#get-validations)
-
-Optionally, you can provide the following query parameters:
-
-| Field        | Value                  | Description                          |
-|:-------------|:-----------------------|:-------------------------------------|
-| `start`      | String - [Timestamp][] | Filter results to this time and later. |
-| `end`        | String - [Timestamp][] | Filter results to this time and earlier. |
-| `limit`      | Integer                | Maximum results per page. The default is 200. Cannot be more than 1000. |
-| `marker`     | String                 | [Pagination](#pagination) key from previously returned response. |
-| `format`     | String                 | Format of returned results: `csv` or `json`. The default is `json`. |
-| `descending` | Boolean                | If `true`, return results sorted with earliest first. Otherwise, return oldest results first. The default is `false`. |
-
-#### Response Format
-
-A successful response uses the HTTP code **200 OK** and has a JSON body with the following:
-
-| Field         | Value                           | Description                |
-|:--------------|:--------------------------------|:---------------------------|
-| `result`      | String                          | The value `success` indicates that the body represents a successful response. |
-| `count`       | Integer                         | Number of validation votes returned. |
-| `marker`      | String                          | (May be omitted) [Pagination](#pagination) marker. |
-| `validations` | Array of [Validation Objects][] | The requested validation votes. |
-
-#### Example
-
-Request:
-
-```
-GET /v2/network/validations?limit=3&descending=true
-```
-
-Response:
-
-```
-200 OK
-{
-  "result": "success",
-  "count": 3,
-  "marker": "20160608005421561|nHUBJUyiW7ePZdjoLYrRvLB6JEytaAiX2NFqcmgNqW3CCFgBV7LZ|ADB496DFDBF27382E4D49F79D7EC5DD15229AF21E664934217A82D404748C994",
-  "validations": [
-    {
-      "count": 7,
-      "first_datetime": "2016-06-08T00:54:21.583Z",
-      "last_datetime": "2016-06-08T00:54:21.583Z",
-      "ledger_hash": "ADB496DFDBF27382E4D49F79D7EC5DD15229AF21E664934217A82D404748C994",
-      "reporter_public_key": "n9MVezjxa3Wk1vsZ8omj7Hga3tEcFiNH3gjWwx2SsQxkiamBwFw5",
-      "signature": "3044022027DCB43438A27F4F51DFD436FC078933524C6D675DBD7E0033C5A33DA3683699022029A5143EE172CA94AAD706454192CC2EC3CC93182697F0B2C00818C1C43ECE27",
-      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7"
-    },
-    {
-      "count": 1,
-      "first_datetime": "2016-06-08T00:54:21.574Z",
-      "last_datetime": "2016-06-08T00:54:21.574Z",
-      "ledger_hash": "ADB496DFDBF27382E4D49F79D7EC5DD15229AF21E664934217A82D404748C994",
-      "reporter_public_key": "n9MqZ95ENFuf9yCWjZFsvCuvjNv9K3NpYgE9NYLAgzmCkkFpNs9W",
-      "signature": "3044022054FC074D6AFA022316C24EAEAC70644F3646151C164B72FB3B5A509A692ECAA7022038C93B3E282B5475FC9DC962CA4AD15A28796A1C10A978F66B0C8BBFF42A5782",
-      "validation_public_key": "n9MM9o8j5HmjNF2YFcvNWdKxAsMsMf58Ke6WQvcnn7oHLsuvkAtf"
-    },
-    {
-      "count": 1,
-      "first_datetime": "2016-06-08T00:54:21.574Z",
-      "last_datetime": "2016-06-08T00:54:21.574Z",
-      "ledger_hash": "ADB496DFDBF27382E4D49F79D7EC5DD15229AF21E664934217A82D404748C994",
-      "reporter_public_key": "n9MexcuoJg7KsVnJkvyPuLCtJNx5DSWnZbuWpcdsZ2jeqbU1ghEA",
-      "signature": "3045022100B6CD4FAFF0B699689885D48AB4CA449FA9E4E51832737E36BE5AA6642F88C52C02202297D2F4EFE41F512A4985A571E4D64F8161651DF3FA94561B2F583769305E27",
-      "validation_public_key": "n9KeL6TaqiQoUGndmyYKFDE868bFSAQQJ6XT1LmsuCDCebBdF5BV"
-    }
-  ]
-}
-```
-
 
 
 ## Get Single Validator Reports
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidatorReports.js "Source")
 
-Get a single validator's validation vote stats for 24-hour intervals.
+Get a single validator's validation vote stats for 24-hour intervals. _(Updated in [v2.4.0][])_
 
 #### Request Format
 
@@ -2982,9 +2948,10 @@ Optionally, you can provide the following query parameters:
 
 | Field    | Value                  | Description                              |
 |:---------|:-----------------------|:-----------------------------------------|
-| `start`  | String - [Timestamp][] | Start date and time for historical query. The default is to start 200 days before the current date. |
-| `end`    | String - [Timestamp][] | End date and time for historical query. The default is to end with the most recent data available. |
-| `format` | String                 | Format of returned results: `csv` or `json`. The default is `json`. |
+| `start`      | String - [Timestamp][] | Start date and time for historical query. The default is to start 200 days before the current date. |
+| `end`        | String - [Timestamp][] | End date and time for historical query. The default is to end with the most recent data available. |
+| `descending` | Bool                   | Return results in reverse order. |
+| `format`     | String                 | Format of returned results: `csv` or `json`. The default is `json`. |
 
 #### Response Format
 
@@ -2994,19 +2961,19 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 |:-------------|:-----------------------------------------|:-------------------|
 | `result`     | String                                   | The value `success` indicates that the body represents a successful response. |
 | `count`      | Integer                                  | Number of validators returned. |
-| `validators` | Array of Single Validator Report Objects | Daily reports of this validator's validation votes. |
+| `reports`    | Array of Single Validator Report Objects | Daily reports of this validator's validation votes. |
 
-Each member in the `validators` array is a Single Validator Report Object with data on that validator's performance on that day. Each has the following fields:
+Each member in the `reports` array is a Single Validator Report Object with data on that validator's performance on that day. Each has the following fields:
 
-| Field                | Value                  | Description                  |
-|:---------------------|:-----------------------|:-----------------------------|
-| `date`               | String - [Timestamp][] | The start time of the date this object describes. |
-| `total_ledgers`      | Integer                | Number of ledger hashes for which this validator submitted validation votes. If this number is much lower than other validators in the same time period, that could mean the validator had downtime. |
-| `main_net_agreement` | [String - Number][]    | The fraction of consensus-validated production network ledger versions for which this validator voted in this interval. `"1.0"` indicates 100% agreement. |
-| `main_net_ledgers`   | Integer                | Number of consensus-validated [production network](parallel-networks.html) ledger versions this validator voted for. |
-| `alt_net_agreement`  | [String - Number][]    | The fraction of the consensus-validated [Test Network](parallel-networks.html) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
-| `alt_net_ledgers`    | Integer                | Number of consensus-validated [Test Network](parallel-networks.html) ledger versions this validator voted for. |
-| `other_ledgers`      | Integer                | Number of other ledger versions this validator voted for. If this number is high, that could indicate that this validator was running non-standard or out-of-date software. |
+| Field                | Value                           | Description                  |
+|:---------------------|:--------------------------------|:-----------------------------|
+| `validation_public_key` | String - Base-58 [Public Key][] | Validator public key. |
+| `date`               | String - [Timestamp][]          | The start time of the date this object describes. |
+| `chain`              | String                          | Ledger hash chain which this validator is currently following. The value `main` indicates the main network and `altnet` indicates the XRP Test Network. Other forks are named `chain.{NUMBER}`, where `{NUMBER}` is a unique number for each fork. |
+| `score`              | String                          | Score of agreement with the ledger chain being followed. |
+| `missed`             | Integer                         | Number of ledgers not validated during the time period. |
+| `total`              | Integer                         | Number of ledgers that could have been validated during the time period. |
+| `incomplete`         | Bool                            | True indicates the data does not cover the entire time period. |
 
 #### Example
 
@@ -3049,7 +3016,6 @@ Response:
 ```
 
 
-
 ## Get Daily Validator Reports
 [[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidatorReports.js "Source")
 
@@ -3088,19 +3054,17 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 Daily Validator Report Object fields:
 
-| Field                   | Value                           | Description      |
-|:------------------------|:--------------------------------|:-----------------|
-| `validation_public_key` | String - Base-58 [Public Key][] | This validator's validator public key. |
-| `date`                  | String - [Timestamp][]          | The start time of the date this object describes. |
-| `total_ledgers`         | Integer                         | Number of ledger indexes for which this validator submitted validation votes. If this number is much lower than other validators in the same time period, that could mean the validator had downtime. |
-| `main_net_agreement`    | [String - Number][]             | The fraction of consensus-validated production network ledger versions for which this validator voted in this interval. `"1.0"` indicates 100% agreement. |
-| `main_net_ledgers`      | Integer                         | Number of consensus-validated [production network](parallel-networks.html) ledger versions this validator voted for. |
-| `alt_net_agreement`     | [String - Number][]             | The fraction of the consensus-validated [Test Network](parallel-networks.html) ledger versions this validator voted for. `"1.0"` indicates 100% agreement. |
-| `alt_net_ledgers`       | Integer                         | Number of consensus-validated [Test Network](parallel-networks.html) ledger versions this validator voted for. |
-| `other_ledgers`         | Integer                         | Number of other ledger versions this validator voted for. If this number is high, that could indicate that this validator was running non-standard or out-of-date software. |
-| `last_datetime`         | Integer                         | The last reported validation vote signed by this validator. |
-| `domain`                | String                          | (May be omitted) The DNS domain associated with this validator. |
-| `domain_state`          | String                          | The value `verified` indicates that this validator has a [verified domain](run-rippled-as-a-validator.html#domain-verification) controlled by the same operator as the validator. The value `AccountDomainNotFound` indicates that the "Account Domain" part of Domain Verification is not set up properly. The value `RippleTxtNotFound` indicates that the ripple.txt step of Domain Verification is not set up properly. |
+Each member in the `reports` array is a Single Validator Report Object with data on that validator's performance on that day. Each has the following fields:
+
+| Field                | Value                           | Description                  |
+|:---------------------|:--------------------------------|:-----------------------------|
+| `validation_public_key` | String - Base-58 [Public Key][] | Validator public key. |
+| `date`               | String - [Timestamp][]          | The start time of the date this object describes. |
+| `chain`              | String                          | Ledger hash chain which this validator is currently following. The value `main` indicates the main network and `altnet` indicates the XRP Test Network. Other forks are named `chain.{NUMBER}`, where `{NUMBER}` is a unique number for each fork. |
+| `score`              | String                          | Score of agreement with the ledger chain being followed. |
+| `missed`             | Integer                         | Number of ledgers not validated during the time period. |
+| `total`              | Integer                         | Number of ledgers that could have been validated during the time period. |
+| `incomplete`         | Bool - Optional                 | True indicates the data does not cover the entire time period. |
 
 #### Example
 
@@ -3119,33 +3083,13 @@ Response:
   "count": 27,
   "reports": [
     {
-      "validation_public_key": "n9KvSsyJiheyFnivzFqChZ58pQgjwWWuc7Tp28WPzXbkdwqL6P5y",
-      "date": "2016-06-07T00:00:00Z",
-      "total_ledgers": 1289,
-      "main_net_agreement": "1.00000",
-      "main_net_ledgers": 1289,
-      "alt_net_agreement": "0.00000",
-      "alt_net_ledgers": 0,
-      "other_ledgers": 0,
-      "domain": "rippled.media.mit.edu",
-      "domain_state": "verified",
-      "last_datetime": "2016-06-07T01:20:20.753Z"
-    },
-    {
-      "validation_public_key": "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7",
-      "date": "2016-06-07T00:00:00Z",
-      "total_ledgers": 1289,
-      "main_net_agreement": "1.00000",
-      "main_net_ledgers": 1289,
-      "alt_net_agreement": "0.00000",
-      "alt_net_ledgers": 0,
-      "other_ledgers": 0,
-      "domain": "ripple.com",
-      "domain_state": "verified",
-      "last_datetime": "2016-06-07T01:20:20.717Z"
-    },
-
-    ...
+      "validation_public_key": "n9J2N3FfiUFC4rBX5UBob8JzgDGsYqUou1cwKdsaymS44mZDfnYe",
+      "date": "2018-10-15T00:00:00Z",
+      "chain": "main",
+      "score": "0.6909",
+      "total": "16127",
+      "missed": "7216"
+    }
   ]
 }
 ```
