@@ -90,7 +90,7 @@ Becoming amendment blocked is a security feature to protect applications that de
 
 The amendments that a `rippled` server is configured to vote for or against have no impact on whether the server becomes amendment blocked. A `rippled` server always follows the set of amendments enabled by the rest of the network, to the extent possible. A server only becomes amendment blocked if an enabled amendment is not included in the amendment definitions compiled into the server's source code -- in other words, if the amendment is newer than the server.
 
-If your server is amendment blocked, you must [upgrade to a new version](update-rippled.html) to sync with the network.
+If your server is amendment blocked, you must [upgrade to a new version](install-rippled.html) to sync with the network.
 
 
 #### How to Tell If Your `rippled` Server Is Amendment Blocked
@@ -149,7 +149,7 @@ If your server is not amendment blocked, the `amendment_blocked` field is not re
 
 #### How to Unblock an Amendment-Blocked `rippled` Server
 
-Upgrade to the `rippled` version that supports the amendments that are causing your server to be amendment blocked. Ripple recommends that you [upgrade to the newest `rippled` version](update-rippled.html) to unblock your server and enable it to sync with the network again.
+Upgrade to the `rippled` version that supports the amendments that are causing your server to be amendment blocked. Ripple recommends that you [upgrade to the newest `rippled` version](install-rippled.html) to unblock your server and enable it to sync with the network again.
 
 Depending on the scenario, you may be able to (and want to) unblock your server by upgrading to a `rippled` version that is older than the newest version. This is possible if the older version supports the amendments that are blocking your `rippled` server.
 

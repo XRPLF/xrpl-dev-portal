@@ -18,7 +18,7 @@ To enable public signing, perform the following steps:
 
         vim /etc/opt/ripple/rippled.cfg
 
-    The [recommended installation](install-rippled.html) uses the config file `/etc/opt/ripple/rippled.cfg` by default. Other places you can put a config file include `$HOME/.config/ripple/rippled.cfg` (where `$HOME` is the home directory of the user running `rippled`) or
+    {% include '_snippets/conf-file-location.md' %}<!--_ -->
 
 2. Add the following stanza to your config file, and save the changes:
 

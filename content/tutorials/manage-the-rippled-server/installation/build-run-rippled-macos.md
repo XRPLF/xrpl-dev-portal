@@ -1,104 +1,10 @@
-# Install rippled
+# Build and Run rippled on macOS
 
-For production, you can install a `rippled` instance using Ripple's binary executable for [Ubuntu](#installation-on-ubuntu-with-alien) or [CentOS/Red Hat](#installation-on-centosred-hat-with-yum).
+At this time, Ripple doesn't recommend using the macOS platform for `rippled` production use. For production, consider using the [Ubuntu platform](install-rippled-on-ubuntu-with-alien.html), which has received the highest level of quality assurance and testing.
 
-For development, you can install a `rippled` instance using Ripple's binary executable for [macOS](#installation-on-macos), or you can build and run `rippled` from source for [Ubuntu](build-run-rippled-ubuntu.html).
+That said, macOS is suitable for many development and testing tasks. `rippled` has been tested for use with macOS up to 10.13 High Sierra.
 
-For installation information for other platforms, see the [rippled repository](https://github.com/ripple/rippled/tree/develop/Builds).
-
-
-## Minimum System Requirements
-
-A `rippled` server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, we recommend the following minimum requirements:
-
-- Operating System:
-    - Production: CentOS or RedHat Enterprise Linux (latest release) or Ubuntu (16.04+) supported
-    - Development: Mac OS X, Windows (64-bit), or most Linux distributions
-- CPU: 64-bit x86_64, 2+ cores
-- Disk: Minimum 50GB SSD recommended (1000 IOPS, more is better) for the database partition
-- RAM:
-    - Testing: 8GB+
-    - Production: 32 GB
-
-Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.
-
-**Tip:** For recommendations beyond the minimum requirements, see [Capacity Planning](capacity-planning.html).
-
-
-## Installation on Ubuntu with alien
-
-This section assumes that you are using Ubuntu 15.04 or later.
-
-1. Install yum-utils and alien:
-
-        $ sudo apt-get update
-        $ sudo apt-get install yum-utils alien
-
-2. Install the Ripple RPM repository:
-
-        $ sudo rpm -Uvh https://mirrors.ripple.com/ripple-repo-el7.rpm
-
-3. Download the `rippled` software package:
-
-        $ yumdownloader --enablerepo=ripple-stable --releasever=el7 rippled
-
-4. Verify the signature on the `rippled` software package:
-
-        $ sudo rpm --import https://mirrors.ripple.com/rpm/RPM-GPG-KEY-ripple-release && rpm -K rippled*.rpm
-
-5. Install the `rippled` software package:
-
-        $ sudo alien -i --scripts rippled*.rpm && rm rippled*.rpm
-
-6. Configure the `rippled` service to start on system boot:
-
-        $ sudo systemctl enable rippled.service
-
-7. Start the `rippled` service
-
-        $ sudo systemctl start rippled.service
-
-8. Verify that `rippled` has started.
-
-        $ sudo systemctl status rippled
-
-For next steps, see [Postinstall](#postinstall) and [Additional Configuration](#additional-configuration).
-
-
-## Installation on CentOS/Red Hat with yum
-
-This section assumes that you are using CentOS 7 or Red Hat Enterprise Linux 7.
-
-1. Install the Ripple RPM repository:
-
-        $ sudo rpm -Uvh https://mirrors.ripple.com/ripple-repo-el7.rpm
-
-2. Install the `rippled` software package:
-
-        $ sudo yum install --enablerepo=ripple-stable rippled
-
-3. Configure the `rippled` service to start on system boot:
-
-        $ sudo systemctl enable rippled.service
-
-4. Start the `rippled` service
-
-        $ sudo systemctl start rippled.service
-
-5. Verify that `rippled` has started.
-
-        $ sudo systemctl status rippled
-
-For next steps, see [Postinstall](#postinstall) and [Additional Configuration](#additional-configuration).
-
-
-## Installation on macOS
-
-At this time, Ripple doesn't recommend using the macOS platform for `rippled` production use. For production, consider using the [Ubuntu platform](#installation-on-ubuntu-with-alien), which has received the highest level of quality assurance and testing.
-
-That said, macOS is suitable for many development and testing tasks. `rippled` has been tested for use with macOS High Sierra up to 10.13.
-
-Ripple recommends running `rippled` as your own user.
+For development purposes Ripple recommends running `rippled` as your own user, not using `sudo`.
 
 1. Install [Xcode](https://developer.apple.com/download/).
 
@@ -245,85 +151,12 @@ Ripple recommends running `rippled` as your own user.
 
 For information about `rippled` log messages, see [Understanding Log Messages](understanding-log-messages.html).
 
-For next steps, see [Postinstall](#postinstall) and [Additional Configuration](#additional-configuration).
+## Next Steps
 
+{% include '_snippets/post-rippled-install.md' %}<!--_ -->
 
-## Postinstall
+## See Also
 
-It can take several minutes for `rippled` to sync with the rest of the network, during which time it outputs warnings about missing ledgers.
-
-For information about `rippled` log messages, see [Understanding Log Messages](understanding-log-messages.html).
-
-Once your `rippled` has synchronized with the rest of the network, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger. Use [`rippled` server states](rippled-server-states.html) to tell whether your `rippled` server has synchronized with the network.
-
-For information about communicating with your `rippled` server using the rippled API, see the [rippled API reference](rippled-api.html).
-
-Once you have your stock `rippled` server running, you may want to consider running it as a validating server. For information about validating servers and why you might want to run one, see [Run rippled as a Validator](run-rippled-as-a-validator.html).
-
-Having trouble getting your `rippled` server started? See [rippled Server Won't Start](server-wont-start.html).
-
-
-## Additional Configuration
-
-<!--{# TODO: Once post-rippled-install.md PR is merged, include it here to get latest, consistent info. #}-->
-
-`rippled` should connect to the XRP Ledger with the default configurations. However, you can change your settings by editing the `rippled.cfg` file.
-
-For recommendations about configuration settings, see [Capacity Planning](capacity-planning.html).
-
-You must restart `rippled` for any configuration changes to take effect:
-
-  * For Ubuntu and CentOS/Red Hat:
-
-        $ sudo systemctl restart rippled.service
-
-  * For macOS, use Ctrl-C to stop `rippled` and then start it again:
-
-        $ ./rippled
-
-
-### Connect Your `rippled` to the XRP Test Net
-
-Ripple has created the [XRP Test Network](https://ripple.com/build/xrp-test-net/) to provide a testing platform for the XRP Ledger. XRP Test Net funds are not real funds and are intended for testing only. You can connect your `rippled` server to the XRP Test Net to test out and understand `rippled` functionality before connecting to the production XRP Ledger Network. You can also use the XRP Test Net to verify that your own code interacts correctly with `rippled`.
-
-**Note:** The XRP Test Net ledger and balances are reset on a regular basis.
-
-_**To connect your `rippled` server to the XRP Test Net, set the following configurations:**_
-
-1. In your `rippled.cfg` file:
-
-    a. Uncomment the following section, as follows:
-
-        [ips]
-        r.altnet.rippletest.net 51235
-
-    b. Comment out the following section, as follows:
-
-        # [ips]
-        # r.ripple.com 51235
-
-2. In your `validators.txt` file:
-
-    a. Uncomment the following sections, as follows:
-
-        [validator_list_sites]
-        https://vl.altnet.rippletest.net
-
-        [validator_list_keys]
-        ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
-
-    b. Comment out the following sections, as follows:
-
-        # [validator_list_sites]
-        # https://vl.ripple.com
-        #
-        # [validator_list_keys]
-        # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-
-3. Restart `rippled`.
-
-4. To verify that your `rippled` is connected to the XRP Test Net, go to the [XRP Test Net Faucet](https://developers.ripple.com/xrp-test-net-faucet.html) and click **Generate credentials**. Make a note of the **Address** value. Make the [`account_info`](https://developers.ripple.com/account_info.html) request to your `rippled` server.
-
-      If the request returns account information, your `rippled` is connected to the XRP Test Net. If the request cannot find the account, your `rippled` is not connected to the XRP Test Net. Check your `rippled.cfg` and `validators.txt` configurations.
-
-      Ripple recommends that you generate new test credentials each time you want to perform this verification. Using an old XRP Test Net **Address** value may not provide accurate results.
+- [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu-with-alien.html) (Pre-built binary on Ubuntu for production use)
+- [Build and Run `rippled` on Ubuntu](build-run-rippled-ubuntu.html) (Compile `rippled` yourself on Ubuntu)
+- [Compilation instructions for other platforms](https://github.com/ripple/rippled/tree/develop/Builds)

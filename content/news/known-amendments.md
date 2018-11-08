@@ -412,7 +412,7 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 
 Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
 
-**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](update-rippled.html) to `rippled` version 0.80.0 or later.
+**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](install-rippled.html) to `rippled` version 0.80.0 or later.
 
 
 ## SusPay

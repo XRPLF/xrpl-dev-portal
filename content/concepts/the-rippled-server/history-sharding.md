@@ -24,34 +24,12 @@ If a `rippled` server runs out of space before completely acquiring a shard, it 
 
 The history of all ledgers is shared by servers agreeing to keep particular ranges of historical ledgers. This makes it possible for servers to confirm that they have all the data they agreed to maintain, and produce proof trees or ledger deltas. Since `rippled` servers that are configured with history sharding randomly select the shards that they store, the entire history of all closed ledgers is stored in a normal distribution curve, increasing the probability that the XRP Ledger Network evenly maintains the history.
 
-## Shard Store Configuration
+## See Also
 
-To configure your `rippled` to store shards of ledger history, add a `shard_db` section to your `rippled.cfg` file.
+- [Configure History Sharding](configure-history-sharding.html)
+<!--{# - [download_shard method][] #}-->
 
-### Shard Configuration Example
-The following snippet from an example `rippled.cfg` file shows the configuration fields for adding sharding to a `rippled` server:
-
-```
-[shard_db]
-type=NuDB
-path=/var/lib/rippled/db/shards/nudb
-max_size_gb=50
-```
-
-**Tip:** Ripple recommends using NuDB for the shard store (`type=NuDB`). NuDB uses fewer file handles per shard than RocksDB. RocksDB uses memory that scales with the size of data it stores, which may require excessive memory overhead.
-
-**Tip:** While both validator and tracking (or stock) `rippled` servers can be configured to use history shard stores, Ripple recommends adding history sharding only for non-validator `rippled` servers to reduce overhead for validators. If you run a validator and want to manage ledger history using sharding, run a separate `rippled` server with sharding enabled.
-
-For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg).
-
-### Sizing the Shard Store
-Determining a suitable size for the shard store involves careful consideration. You should consider the following when deciding what size your shard store should be:
-
-- Although redundant, it is possible to hold full ledger history in the ledger store and the history shard store.
-- An effective configuration might limit the ledger store only to recent history.
-- The ledger store history size should at minimum be twice the ledgers per shard, due to the fact that the current shard may be chosen to be stored and it would be wasteful to reacquire that data.
-- The time to acquire, number of file handles, and memory cache usage is directly affected by sizing.
-- Each shard contains 2^14 ledgers (16384).
-- A shard occupies approximately 200 MB to 4 GB based on the age of the shard. Older shards are smaller because there was less activity in the XRP Ledger at the time.
-
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
 {% include '_snippets/rippled_versions.md' %}

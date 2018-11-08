@@ -166,4 +166,19 @@ An error such as the following indicates that the `rippled.cfg` has an incomplet
 Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
 ```
 
-If your config includes a `[shard_db]` stanza, it must contain a `path` field, which points to a directory where `rippled` can write the data for the shard store. This error means the `path` field is missing or located in the wrong place. Check for extra whitespace or typos in your config file, and compare against the [Shard Configuration Example](history-sharding.html#shard-configuration-example).
+If your config includes a `[shard_db]` stanza, it must contain a `path` field, which points to a directory where `rippled` can write the data for the shard store. This error means the `path` field is missing or located in the wrong place. Check for extra whitespace or typos in your config file, and compare against the [Shard Configuration Example](configure-history-sharding.html#2-edit-rippledcfg).
+
+
+## ShardStore unable to open/create RocksDB
+
+If you enable [history sharding](history-sharding.html), then later change the configuration to use RocksDB instead of NuDB, the server may try to read the existing NuDB data as RocksDB data and fail to start. In this case, the server writes an error such as the following:
+
+```text
+ShardStore:ERR shard 504 error: Unable to open/create RocksDB: Invalid argument: /var/lib/rippled/db/shards/504: does not exist (create_if_missing is false)
+```
+
+To fix this problem, do one of the following:
+
+- Move or delete the existing shard data from the configured folder
+- Change where the shard store is located on disk by changing the `path` of the `[shard_db]` stanza in the `rippled.cfg` file.
+- Change the shard store back to using NuDB.
