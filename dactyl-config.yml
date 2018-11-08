@@ -1003,6 +1003,16 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.md
+        html: connect-your-rippled-to-the-xrp-test-net.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Connect your rippled server to the test net to try out new features or test functionality with fake money.
+        targets:
+            - local
+
     -   md: tutorials/manage-the-rippled-server/configuration/cluster-rippled-servers.md
         html: cluster-rippled-servers.html
         funnel: Docs

@@ -25,20 +25,24 @@ Having trouble getting your `rippled` server started? See [rippled Server Won't 
 
 See [the `rippled` GitHub repository](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg) for a description of all configuration options.
 
+You must restart `rippled` for any configuration changes to take effect:
+
+
 {% if currentpage.md == "tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu-with-alien.md" or
       currentpage.md == "tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum" %}
-If you change the `[debug_logfile]` or `[database_path]` sections, you may need to grant the `rippled` user and group ownership to your new configured path:
+        $ sudo systemctl restart rippled.service
 
-```
-$ chown -R rippled:rippled <configured path>
-```
+{% elif currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md" or
+        currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md" %}
 
-Restart `rippled` for any configuration changes to take effect:
+  * Use Ctrl-C to stop `rippled`, then start it again:
 
-```
-$ sudo service rippled restart
-```
+        $ ./rippled
+
 {% endif %}
+
+If you change the `[debug_logfile]` or `[database_path]` sections, you may need to grant ownership of the new configured path to the user you run `rippled` as.
+
 
 ### Updates
 
