@@ -18,7 +18,7 @@ Terminating thread rippled: main: unhandled St13runtime_error
 
 If your server always crashes on startup, see [Server Won't Start](server-wont-start.html) for possible cases.
 
-If your server crashes randomly during operation or as a result of particular commands, make sure you are [updated](update-rippled.html) to the latest `rippled` version. If you are on the latest version and your server is still crashing, check the following:
+If your server crashes randomly during operation or as a result of particular commands, make sure you are [updated](install-rippled.html) to the latest `rippled` version. If you are on the latest version and your server is still crashing, check the following:
 
 - Is your server running out of memory? On some systems, `rippled` may be terminated by the Out Of Memory (OOM) Killer or another monitor process.
 - If your server is running in a shared environment, are other users or administrators causing the machine or service to be restarted? For example, some hosted providers automatically kill any service that uses a large amount of a shared machine's resources for an extended period of time.

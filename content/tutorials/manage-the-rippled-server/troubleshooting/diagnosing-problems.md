@@ -30,7 +30,7 @@ For troubleshooting purposes, the most important fields are (from most commonly 
             [ips_fixed]
             s2.ripple.com 51235
 
-- **`amendment_blocked`** - This field is normally omitted from the `server_info` response. If this field appears with the value `true`, then the network has approved an [amendment](amendments.html) for which your server doesn't have an implementation. Most likely, you can fix this by [updating rippled](update-rippled.html) to the latest version. You can also use the [feature method][] to see what amendment IDs are currently enabled and which one(s) your server does and does not support.
+- **`amendment_blocked`** - This field is normally omitted from the `server_info` response. If this field appears with the value `true`, then the network has approved an [amendment](amendments.html) for which your server doesn't have an implementation. Most likely, you can fix this by [updating rippled](install-rippled.html) to the latest version. You can also use the [feature method][] to see what amendment IDs are currently enabled and which one(s) your server does and does not support.
 
 - **`peers`** - This field indicates how many other servers in the XRP Ledger peer-to-peer network your server is connected to. Healthy servers typically show between 5 and 50 peers, unless explicitly configured to connect only to certain peers.
 
