@@ -26,6 +26,7 @@ The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](
 [v2.3.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.0
 [v2.3.2]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.2
 [v2.3.5]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.3.5
+[v2.4.0]: https://github.com/ripple/rippled-historical-database/releases/tag/v2.4.0
 
 
 # API Method Reference

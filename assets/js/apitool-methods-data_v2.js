@@ -470,16 +470,17 @@ Request('Get Validators', {
     }
 });
 
-Request('Get Validator Validations', {
-    method: GET,
-    path: "/v2/network/validators/{:validation_public_key}/validations?{:query_params}",
-    description: "Get validation votes from a single validator.",
-    link: "#get-validator-validations",
-    params: {
-        "{:validation_public_key}": VALIDATOR_PUBKEY,
-        "{:query_params}": "limit=3"
-    }
-});
+// Removed in v2.4.0
+// Request('Get Validator Validations', {
+//     method: GET,
+//     path: "/v2/network/validators/{:validation_public_key}/validations?{:query_params}",
+//     description: "Get validation votes from a single validator.",
+//     link: "#get-validator-validations",
+//     params: {
+//         "{:validation_public_key}": VALIDATOR_PUBKEY,
+//         "{:query_params}": "limit=3"
+//     }
+// });
 
 Request('Get Single Validator Reports', {
     method: GET,
@@ -498,6 +499,17 @@ Request('Get Daily Validator Reports', {
     description: "Get validation vote stats for all validators for a single day.",
     link: "#get-single-validator-reports",
     params: {
+        "{:query_params}": "format=json"
+    }
+});
+
+Request('Get Validator Manifests', {
+    method: GET,
+    path: "/v2/network/validators/{:validation_public_key}/manifests",
+    description: "Get validation vote stats for all validators for a single day.",
+    link: "#get-validator-manifests",
+    params: {
+        "{:validation_public_key}": VALIDATOR_PUBKEY,
         "{:query_params}": "format=json"
     }
 });
