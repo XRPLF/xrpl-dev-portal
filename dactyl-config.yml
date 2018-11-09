@@ -2665,7 +2665,7 @@ pages:
         funnel: Dev Tools
         html: data-api-v2-tool.html
         methods_js: js/apitool-methods-data_v2.js
-        rest_host: https://data-staging.ripple.com
+        rest_host: https://data.ripple.com
         doc_page: data-api.html
         sidebar: custom
         targets:
