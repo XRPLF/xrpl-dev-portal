@@ -100,7 +100,7 @@ Health Checks:
 
 
 ## Get Ledger
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getLedger.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getLedger.js "Source")
 
 Retrieve a specific Ledger by hash, index, date, or latest validated.
 
@@ -172,7 +172,7 @@ Response:
 
 
 ## Get Ledger Validations
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getLedger.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getLedger.js "Source")
 
 Retrieve a any validations recorded for a specific ledger hash.  This dataset includes ledger versions that are outside the validated ledger chain. _(New in [v2.2.0][])_
 
@@ -262,7 +262,7 @@ Response:
 
 
 ## Get Ledger Validation
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getLedger.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getLedger.js "Source")
 
 Retrieve a validation vote recorded for a specific ledger hash by a specific validator.  This dataset includes ledger versions that are outside the validated ledger chain. _(New in [v2.2.0][])_
 
@@ -326,7 +326,7 @@ Response:
 
 
 ## Get Transaction
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getTransactions.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getTransactions.js "Source")
 
 Retrieve a specific transaction by its identifying hash.
 
@@ -436,7 +436,7 @@ Response (trimmed for size):
 
 
 ## Get Transactions
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getTransactions.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getTransactions.js "Source")
 
 Retrieve transactions by time
 
@@ -595,7 +595,7 @@ Response:
 
 
 ## Get Payments
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getPayments.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getPayments.js "Source")
 
 Retrieve Payments over time, where Payments are defined as `Payment` type transactions where the sender of the transaction is not also the destination. _(New in [v2.0.4][])_
 
@@ -735,7 +735,7 @@ Response:
 
 
 ## Get Exchanges
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getExchanges.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getExchanges.js "Source")
 
 Retrieve Exchanges for a given currency pair over time.  Results can be returned as individual exchanges or aggregated to a specific list of intervals
 
@@ -867,7 +867,7 @@ Response:
 
 
 ## Get Exchange Rates
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getExchangeRate.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getExchangeRate.js "Source")
 
 Retrieve an exchange rate for a given currency pair at a specific time.
 
@@ -935,7 +935,7 @@ Response:
 
 
 ## Normalize
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/normalize.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/normalize.js "Source")
 
 Convert an amount from one currency and issuer to another, using the network exchange rates.
 
@@ -1002,7 +1002,7 @@ Response:
 
 
 ## Get Daily Reports
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/reports.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/reports.js "Source")
 
 Retrieve per account per day aggregated payment summaries
 
@@ -1166,7 +1166,7 @@ Response (trimmed for size):
 
 
 ## Get Stats
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/stats.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/stats.js "Source")
 
 Retrieve statistics about transaction activity in the XRP Ledger, divided into intervals of time.
 
@@ -1270,7 +1270,7 @@ Response:
 
 
 ## Get Active Accounts
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/activeAccounts.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/activeAccounts.js "Source")
 
 Get information on which accounts are actively trading in a specific currency pair. _(New in [v2.0.4][])_
 
@@ -1422,7 +1422,7 @@ Response:
 
 
 ## Get Exchange Volume
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getMetric.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getMetric.js "Source")
 
 Get aggregated exchange volume for a given time period. _(New in [v2.0.4][])_
 
@@ -1569,7 +1569,7 @@ Response:
 
 
 ## Get Payment Volume
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getMetric.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getMetric.js "Source")
 
 Get aggregated payment volume for a given time period. _(New in [v2.0.4][])_
 
@@ -1697,7 +1697,7 @@ Response:
 
 
 ## Get External Markets
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/externalMarkets.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/externalMarkets.js "Source")
 
 Get aggregated exchange volume from a list of off ledger exchanges for a specified rolling interval.
 
@@ -1820,7 +1820,7 @@ Response:
 
 
 ## Get XRP Distribution
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/xrpDistribution.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/xrpDistribution.js "Source")
 
 Get information on the total amount of XRP in existence and in circulation, by weekly intervals. _(New in [v2.2.0][])_
 
@@ -1898,7 +1898,7 @@ Response:
 
 
 ## Get Top Currencies
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/topCurrencies.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/topCurrencies.js "Source")
 
 Returns the top currencies on the XRP Ledger, ordered from highest rank to lowest. The ranking is determined by the volume and count of transactions and the number of unique counterparties. By default, returns results for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. _(New in [v2.1.0][])_
 
@@ -2001,7 +2001,7 @@ Response:
 
 
 ## Get Top Markets
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/topMarkets.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/topMarkets.js "Source")
 
 Returns the top exchange markets on the XRP Ledger, ordered from highest rank to lowest. The rank is determined by the number and volume of exchanges and the number of counterparties participating. By default, returns top markets for the 30-day rolling window ending on the current date. You can specify a date to get results for the 30-day window ending on that date. _(New in [v2.1.0][])_
 
@@ -2105,7 +2105,7 @@ Response:
 
 
 ## Get Transaction Costs
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getFees.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getFees.js "Source")
 
 Returns [transaction cost](transaction-cost.html) stats per ledger, hour, or day.  The data shows the average, minimum, maximum, and total transaction costs paid for the given interval or ledger. _(New in [v2.2.0][])_
 
@@ -2207,7 +2207,7 @@ Response:
 
 
 ## Get Fee Stats
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getFeeStats.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getFeeStats.js "Source")
 
 Returns snapshots of the metrics derived from `rippled`'s [`fee` command](fee.html). _(New in [v2.3.2][])_
 
@@ -2307,7 +2307,7 @@ Response:
 
 
 ## Get Topology
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getTopology.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getTopology.js "Source")
 
 Get known `rippled` servers and peer-to-peer connections between them. _(New in [v2.2.0][])_
 
@@ -2412,7 +2412,7 @@ Response:
 
 
 ## Get Topology Nodes
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getNodes.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getNodes.js "Source")
 
 Get known `rippled` nodes. (This is a subset of the data returned by the [Get Topology method](#get-topology).) _(New in [v2.2.0][])_
 
@@ -2503,7 +2503,7 @@ Response:
 
 
 ## Get Topology Node
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getNodes.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getNodes.js "Source")
 
 Get information about a single `rippled` server by its [node public key](#public-keys) (not validator public key). _(New in [v2.2.0][])_
 
@@ -2575,7 +2575,7 @@ Response:
 
 
 ## Get Topology Links
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getLinks.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getLinks.js "Source")
 
 Get information on peer-to-peer connections between `rippled` servers. (This is a subset of the data returned by the [Get Topology method](#get-topology).) _(New in [v2.2.0][])_
 
@@ -2640,7 +2640,7 @@ Response:
 
 
 ## Get Validator
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidators.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidators.js "Source")
 
 Get details of a single validator in the [consensus network](consensus.html). _(Updated in [v2.4.0][])_
 
@@ -2734,7 +2734,7 @@ Response:
 
 
 ## Get Validators
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidators.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidators.js "Source")
 
 Get a list of known validators active in the last 24 hours. _(Updated in [v2.4.0][])_
 
@@ -2857,7 +2857,7 @@ Response:
 
 
 ## Get Validator Manifests
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getManifests.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getManifests.js "Source")
 
 Retrieve manifests signed by a specified validator. (Manifests, also called _subkey authorizations_, designate the ephemeral key a validator uses to sign proposals and validations.) _(New in [v2.3.7][])_
 
@@ -2964,7 +2964,7 @@ Response:
 
 
 ## Get Single Validator Reports
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidatorReports.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidatorReports.js "Source")
 
 Get a single validator's validation vote stats for 24-hour intervals. _(Updated in [v2.4.0][])_
 
@@ -3064,7 +3064,7 @@ Response:
 
 
 ## Get Daily Validator Reports
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getValidatorReports.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidatorReports.js "Source")
 
 Get validation vote stats and validator information for all known validators in a 24-hour period.
 
@@ -3144,7 +3144,7 @@ Response:
 
 
 ## Get rippled Versions
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/network/getVersions.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getVersions.js "Source")
 
 Reports the latest versions of `rippled` available from the official Ripple Yum repositories. _(New in [v2.3.0][].)_
 
@@ -3219,7 +3219,7 @@ Response:
 
 
 ## Get All Gateways
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/gateways.js "Source")
 
 Get information about [known gateways](https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json). _(New in [v2.0.4][])_
 
@@ -3315,7 +3315,7 @@ Response:
 
 
 ## Get Gateway
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/gateways.js "Source")
 
 <!-- STYLE_OVERRIDE: gateway, gateways -->
 Get information about a specific gateway from [the Data API's list of known gateways](https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json). _(New in [v2.0.4][])_
@@ -3408,7 +3408,7 @@ Response:
 
 ## Get Currency Image
 
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/gateways.js#L199 "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/gateways.js#L199 "Source")
 
 Retrieve vector icons for various currencies. _(New in [v2.0.4][])_
 
@@ -3469,7 +3469,7 @@ Content-Type: image/svg+xml
 
 
 ## Get Accounts
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accounts.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accounts.js "Source")
 
 Retrieve information about the creation of new accounts in the XRP Ledger.
 
@@ -3557,7 +3557,7 @@ Response:
 
 
 ## Get Account
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/getAccount.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getAccount.js "Source")
 
 Get creation info for a specific ripple account
 
@@ -3619,7 +3619,7 @@ Response:
 
 
 ## Get Account Balances
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountBalances.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountBalances.js "Source")
 
 Get all balances held or owed by a specific XRP Ledger account.
 
@@ -3704,7 +3704,7 @@ Response:
 
 
 ## Get Account Orders
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountOrders.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountOrders.js "Source")
 
 Get orders in the order books, placed by a specific account. This does not return orders that have already been filled.
 
@@ -3830,7 +3830,7 @@ Response:
 
 
 ## Get Account Transaction History
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountTransactions.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountTransactions.js "Source")
 
 Retrieve a history of transactions that affected a specific account. This includes all transactions the account sent, payments the account received, and payments that rippled through the account.
 
@@ -3962,7 +3962,7 @@ Response:
 
 
 ## Get Transaction By Account And Sequence
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountTxSeq.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountTxSeq.js "Source")
 
 Retrieve a specifc transaction originating from a specified account
 
@@ -4031,7 +4031,7 @@ Response:
 
 
 ## Get Account Payments
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountPayments.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountPayments.js "Source")
 
 Retrieve a payments for a specified account
 
@@ -4136,7 +4136,7 @@ Response:
 
 
 ## Get Account Exchanges
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountExchanges.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountExchanges.js "Source")
 
 Retrieve Exchanges for a given account over time.
 
@@ -4256,7 +4256,7 @@ Response:
 
 
 ## Get Account Balance Changes
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountBalanceChanges.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountBalanceChanges.js "Source")
 
 Retrieve Balance changes for a given account over time.
 
@@ -4361,7 +4361,7 @@ Response:
 
 
 ## Get Account Reports
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountReports.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountReports.js "Source")
 
 Retrieve daily summaries of payment activity for an account.
 
@@ -4474,7 +4474,7 @@ Response:
 
 
 ## Get Account Transaction Stats
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountStats.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountStats.js "Source")
 
 Retrieve daily summaries of transaction activity for an account. _(New in [v2.1.0][].)_
 
@@ -4573,7 +4573,7 @@ Response:
 
 
 ## Get Account Value Stats
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/accountStats.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountStats.js "Source")
 
 Retrieve daily summaries of transaction activity for an account. _(New in [v2.1.0][].)_
 
@@ -4660,7 +4660,7 @@ Response:
 
 
 ## Health Check - API
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
 
 Check the health of the API service.
 
@@ -4723,7 +4723,7 @@ Response:
 
 
 ## Health Check - Ledger Importer
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
 
 Check the health of the Ledger Importer Service.
 
@@ -4795,7 +4795,7 @@ Response:
 
 
 ## Health Check - Nodes ETL
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
 
 Check the health of the Topology Nodes Extract, Transform, Load (ETL) Service.
 
@@ -4861,7 +4861,7 @@ Response:
 
 
 ## Health Check - Validations ETL
-[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/develop/api/routes/checkHealth.js "Source")
+[[Source]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
 
 Check the health of the Validations Extract, Transform, Load (ETL) Service.
 
@@ -5332,7 +5332,7 @@ To install the Data API v2:
 
 4. Change the config files as needed. Remove the `postgres` section from `api.config.json`.
 
-Reports, stats, and aggregated exchange data needs more processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See [Storm Setup](https://github.com/ripple/rippled-historical-database/blob/develop/storm/README.md) for more information.
+Reports, stats, and aggregated exchange data needs more processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See [Storm Setup](https://github.com/ripple/rippled-historical-database/blob/master/storm/README.md) for more information.
 
 At this point, the Data API is installed. See [Services](#services) for the different components that you can run.
 
