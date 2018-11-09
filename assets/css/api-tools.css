@@ -1,14 +1,3 @@
-#command_wrapper {
-  display:table;
-  width:100%;
-  padding:0;
-  margin:0;
-  border-spacing:0;
-}
-#command_wrapper > * {
-  vertical-align:top;
-  display:table-cell;
-}
 #command_list {
   list-style-type:none;
   padding:0 0 0 0;
