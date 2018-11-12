@@ -45,6 +45,8 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: data-api.html
+              date: 2018-11-12
             - html: download_shard.html
               date: 2018-11-08
             - html: install-rippled.html
@@ -52,8 +54,6 @@ targets:
             - html: build-run-rippled-macos.html
               date: 2018-11-08
             - html: connect-your-rippled-to-the-xrp-test-net.html
-              date: 2018-11-08
-            - html: configure-history-sharding.html
               date: 2018-11-08
 
     # Data API target for porting changes to the README in the upstream repo
