@@ -8,7 +8,7 @@ var KRW_TRADER_ADDRESS = "rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw";
 var JPY_TRADER_ADDRESS = "rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV";
 var DEFAULT_HASH = "9D591B18EDDD34F0B6CF4223A2940AEA2C3CC778925BABF289E0011CD8FA056E";
 var DEFAULT_LEDGER = "3170DA37CE2B7F045F889594CBC323D88686D2E90E8FFD2BBCD9BAD12E416DB5";
-var VALIDATOR_PUBKEY = "n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7";
+var VALIDATOR_PUBKEY = "nHUon2tpyJEHHYGmxqeGu37cvPYHzrMtUNQFVdCgGNvEkjmCpTqK";
 var LEDGER_WITH_VALIDATIONS = "A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7";
 
 // general methods -----------------------------------//
@@ -437,15 +437,16 @@ Request('Get Topology Links', {
     }
 });
 
-Request('Get Validations', {
-    method: GET,
-    path: "/v2/network/validations?{:query_params}",
-    description: "Get validation votes.",
-    link: "#get-validations",
-    params: {
-        "{:query_params}": "limit=3&descending=true"
-    }
-});
+// Removed in v2.4.0
+// Request('Get Validations', {
+//     method: GET,
+//     path: "/v2/network/validations?{:query_params}",
+//     description: "Get validation votes.",
+//     link: "#get-validations",
+//     params: {
+//         "{:query_params}": "limit=3&descending=true"
+//     }
+// });
 
 Request('Get Validator', {
     method: GET,
@@ -469,16 +470,17 @@ Request('Get Validators', {
     }
 });
 
-Request('Get Validator Validations', {
-    method: GET,
-    path: "/v2/network/validators/{:validation_public_key}/validations?{:query_params}",
-    description: "Get validation votes from a single validator.",
-    link: "#get-validator-validations",
-    params: {
-        "{:validation_public_key}": VALIDATOR_PUBKEY,
-        "{:query_params}": "limit=3"
-    }
-});
+// Removed in v2.4.0
+// Request('Get Validator Validations', {
+//     method: GET,
+//     path: "/v2/network/validators/{:validation_public_key}/validations?{:query_params}",
+//     description: "Get validation votes from a single validator.",
+//     link: "#get-validator-validations",
+//     params: {
+//         "{:validation_public_key}": VALIDATOR_PUBKEY,
+//         "{:query_params}": "limit=3"
+//     }
+// });
 
 Request('Get Single Validator Reports', {
     method: GET,
@@ -497,6 +499,17 @@ Request('Get Daily Validator Reports', {
     description: "Get validation vote stats for all validators for a single day.",
     link: "#get-single-validator-reports",
     params: {
+        "{:query_params}": "format=json"
+    }
+});
+
+Request('Get Validator Manifests', {
+    method: GET,
+    path: "/v2/network/validators/{:validation_public_key}/manifests",
+    description: "Get validation vote stats for all validators for a single day.",
+    link: "#get-validator-manifests",
+    params: {
+        "{:validation_public_key}": VALIDATOR_PUBKEY,
         "{:query_params}": "format=json"
     }
 });
