@@ -6,6 +6,7 @@
 
 import json
 import logging
+import re
 
 from address import decode_address
 
@@ -43,12 +44,31 @@ def field_id(field_name):
     field_code = DEFINITIONS["FIELDS"][field_name]["nth"]
 
     if type_code < 16 and field_code < 16:
-        # first 4 bits is the type_code, next 4 bits is the field code
+        # high 4 bits is the type_code
+        # low 4 bits is the field code
         combined_code = (type_code << 4) | field_code
-        return combined_code.to_bytes(1, byteorder="big", signed=False)
-    else:
-        # TODO: need more than 1 byte to encode this field id
-        raise ValueError("field_id not yet implemented for types/fields > 16")
+        return bytes_from_uint(combined_code, 8)
+    elif type_code >= 16 and field_code < 16:
+        # first 4 bits are zeroes
+        # next 4 bits is field code
+        # next byte is type code
+        byte1 = bytes_from_uint(field_code, 8)
+        byte2 = bytes_from_uint(type_code, 8)
+        return b''.join( (byte1, byte2) )
+    elif type_code < 16 and field_code >= 16:
+        # first 4 bits is type code
+        # next 4 bits are zeroes
+        # next byte is field code
+        byte1 = bytes_from_uint(type_code << 4, 8)
+        byte2 = bytes_from_uint(field_code, 8)
+        return b''.join( (byte1, byte2) )
+    else: # both are >= 16
+        # first byte is all zeroes
+        # second byte is type
+        # third byte is field code
+        byte2 = bytes_from_uint(type_code, 8)
+        byte3 = bytes_from_uint(field_code, 8)
+        return b''.join( (bytes(1), byte2, byte3) )
 
 def bytes_from_uint(i, bits):
     if bits % 8:
@@ -74,8 +94,7 @@ def amount_to_bytes(a):
         # https://developers.ripple.com/currency-formats.html#issued-currency-math
         # temporarily returning all zeroes
         issued_amt = bytes(8)
-        # TODO: calculate 160-bit currency ID
-        currency_code = bytes(20)
+        currency_code = currency_code_to_bytes(a["currency"])
         return issued_amt + currency_code + decode_address(a["issuer"])
     else:
         raise ValueError("amount must be XRP string or {currency, value, issuer}")
@@ -83,6 +102,51 @@ def amount_to_bytes(a):
 def tx_type_to_bytes(txtype):
     type_uint = DEFINITIONS["TRANSACTION_TYPES"][txtype]
     return type_uint.to_bytes(2, byteorder="big", signed=False)
+
+def currency_code_to_bytes(code_string):
+    if re.match(r"^[A-Za-z0-9?!@#$%^&*<>(){}\[\]|]{3}$", code_string):
+        # ISO 4217-like code
+        if code_string == "XRP":
+            raise ValueError("issued currency can't be XRP")
+        code_ascii = code_string.encode("ASCII")
+        # standard currency codes: https://developers.ripple.com/currency-formats.html#standard-currency-codes
+        # 8 bits type code (0x00)
+        # 96 bits reserved (0's)
+        # 24 bits ASCII
+        # 8 bits version (0x00)
+        # 24 bits reserved (0's)
+        return b''.join( ( bytes(13), code_ascii, bytes(4) ) )
+    elif re.match(r"^[0-9a-fA-F]{40}$", code_string):
+        # raw hex code
+        return bytes.fromhex(code_string) # requires Python 3.5+
+    else:
+        raise ValueError("invalid currency code")
+
+def vl_encode(vl_contents):
+    vl_len = len(vl_contents)
+    if vl_len <= 192:
+        len_byte = vl_len.to_bytes(1, byteorder="big", signed=False)
+        return b''.join( (len_byte, vl_contents) )
+    elif vl_len <= 12480:
+        vl_len -= 193
+        byte1 = ((vl_len >> 8) + 193).to_bytes(1, byteorder="big", signed=False)
+        byte2 = (vl_len & 0xff).to_bytes(1, byteorder="big", signed=False)
+        return b''.join( (byte1, byte2, vl_contents) )
+    elif vl_len <= 918744:
+        vl_len -= 12481
+        byte1 = (241 + (vl_len >> 16)).to_bytes(1, byteorder="big", signed=False)
+        byte2 = ((vl_len >> 8) & 0xff).to_bytes(1, byteorder="big", signed=False)
+        byte3 = (vl_len & 0xff).to_bytes(1, byteorder="big", signed=False)
+        return b''.join( (byte1, byte2, byte3, vl_contents) )
+
+    raise ValueError("VariableLength field must be <= 918744 bytes long")
+
+def vl_to_bytes(field_val):
+    vl_contents = bytes.fromhex(field_val)
+    return vl_encode(vl_contents)
+
+def accountid_to_bytes(address):
+    return vl_encode(decode_address(address))
 
 def field_to_bytes(field_name, field_val):
     field_type = DEFINITIONS["FIELDS"][field_name]["type"]
@@ -101,8 +165,9 @@ def field_to_bytes(field_name, field_val):
         "UInt32": lambda x:bytes_from_uint(x, 32),
         "UInt16": lambda x:bytes_from_uint(x, 16),
         "UInt8" : lambda x:bytes_from_uint(x, 8),
-        "AccountID": decode_address,
-        "Amount": amount_to_bytes
+        "AccountID": accountid_to_bytes,
+        "Amount": amount_to_bytes,
+        "Blob": vl_to_bytes
     }
     field_binary = dispatch[field_type](field_val)
     return b''.join( (id_prefix, field_binary) )
@@ -113,8 +178,11 @@ def serialize_tx(tx):
 
     fields_as_bytes = []
     for field_name in field_order:
-        field_val = tx[field_name]
-        fields_as_bytes.append(field_to_bytes(field_name, field_val))
+        if (DEFINITIONS["FIELDS"][field_name]["isSerialized"]):
+            field_val = tx[field_name]
+            field_bytes = field_to_bytes(field_name, field_val)
+            logger.debug("{n}: {h}".format(n=field_name, h=field_bytes.hex()))
+            fields_as_bytes.append(field_bytes)
 
     all_serial = b''.join(fields_as_bytes)
     logger.info(all_serial.hex().upper())
@@ -128,19 +196,22 @@ if __name__ == "__main__":
     logger.setLevel(logging.DEBUG)
     DEFINITIONS = load_defs()
 
-    example_tx = {
-      "TransactionType" : "Payment",
-      "Account" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-      "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "Amount" : {
-         "currency" : "USD",
-         "value" : "1",
-         "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-      },
-      "Fee": "12",
-      "Flags": 2147483648,
-      "Sequence": 2
-    }
+    # example_tx = {
+    #   "TransactionType" : "Payment",
+    #   "Account" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    #   "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    #   "Amount" : {
+    #      "currency" : "USD",
+    #      "value" : "1",
+    #      "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+    #   },
+    #   "Fee": "12",
+    #   "Flags": 2147483648,
+    #   "Sequence": 2
+    # }
+
+    with open("test-cases/tx1-nometa.json") as f:
+        example_tx = json.load(f)
 
     serialize_tx(example_tx)
 

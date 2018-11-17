@@ -31,7 +31,25 @@ For example, the `Flags` [common transaction field](transaction-common-fields.ht
 
 All fields in a transaction are sorted in a specific order based on the field's type first, then the field itself second. (Think of it as sorting by family name, then given name, where the family name is the field's type and the given name is the field itself.)
 
-When you combine the type code and sort code, you get the field's identifier, which is prefixed before the field in the final serialized blob. If both the type code and the field code 
+### Field IDs
+
+[[Source - Encoding]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L117-L148 "Source")
+[[Source - Decoding]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L484-L509 "Source")
+
+
+When you combine the type code and sort code, you get the field's identifier, which is prefixed before the field in the final serialized blob. The size of the Field ID is one to three bytes depending on the type code and field codes it combines. See the following table:
+
+|                  | Type Code < 16                                                                | Type Code >= 16 |
+|:-----------------|:------------------------------------------------------------------------------|:--|
+| **Field Code < 16**  | 1 byte: high 4 bits define type; low 4 bits define field.                     | 2 bytes: low 4 bits of the first byte define field; next byte defines type |
+| **Field Code >= 16** | 2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field | 3 bytes: first byte is 0x00, second byte defines type; third byte defines field |
+
+When decoding, you can tell how many bytes the field ID is by which bits **of the first byte** are zeroes. This corresponds to the cases in the above table:
+
+|                  | High 4 bits are nonzero                                                                | High 4 bits are zero |
+|:-----------------|:------------------------------------------------------------------------------|:--|
+| **Low 4 bits are nonzero**  | 1 byte: high 4 bits define type; low 4 bits define field.                     | 2 bytes: low 4 bits of the first byte define field; next byte defines type |
+| **Low 4 bits are zero** | 2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field | 3 bytes: first byte is 0x00, second byte defines type; third byte defines field |
 
 ### Type Codes
 
@@ -67,3 +85,22 @@ The "Amount" type is a special field type that represents an amount of currency,
     3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](accounts.html#address-encoding))
 
 You can tell which of the two sub-types it is based on the first bit: `0` for XRP; `1` for issued currency.
+
+### VariableLength Fields
+
+The "VariableLength" type represents binary data of arbitrary length. The most important such fields are `SigningPubKey`, which every signed transaction includes to indicate the key pair used to sign the transaction, and `TxnSignature`, which contains the actual signature for any signed transaction. (Other uses of variable length fields include account `Domain` settings and the `Condition` and `Fulfillment` of conditional escrows.)
+
+VariableLength fields are encoded with one to three bytes indicating the length of the field immediately after the type prefix and before the contents.
+
+- If the VariableLength field contains 0 to 192 bytes of data, the first byte defines the length of the VariableLength data, then that many bytes of data follow immediately after the length byte.
+- If the VariableLength field contains 193 to 12480 bytes of data, the first two bytes indicate the length of the field with the following formula:
+        193 + ((byte1 - 193) * 256) + byte2
+- If the VariableLength field contains 12481 to 918744 bytes of data, the first three bytes indicate the length of the field with the following formula:
+        12481 + ((byte1 - 241) * 65536) + (byte2 * 256) + byte3;
+- A VariableLength field cannot contain more than 918744 bytes of data.
+
+When decoding, you can tell from the value of the first length byte whether there are 0, 1, or 2 more length bytes:
+
+- If the first length byte has a value of 192 or less, then that's the only length byte and it contains the exact length of the field contents in bytes.
+- If the first length byte has a value of 193 to 240, then there are two length bytes.
+- If the first length byte has a value of 241 to 254, then there are three length bytes.

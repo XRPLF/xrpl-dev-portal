@@ -14,7 +14,7 @@ Every transaction has the same set of common fields, plus additional fields base
 | [Memos][]          | Array of Objects | Array             | _(Optional)_ Additional arbitrary information used to identify this transaction. |
 | [Signers][]        | Array            | Array             | _(Optional)_ Array of objects that represent a [multi-signature](multi-signing.html) which authorizes this transaction. |
 | SourceTag          | Unsigned Integer | UInt32            | _(Optional)_ Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
-| SigningPubKey      | String           | PubKey            | _(Automatically added when signing)_ Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
+| SigningPubKey      | String           | VariableLength    | _(Automatically added when signing)_ Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
 | TxnSignature       | String           | VariableLength    | _(Automatically added when signing)_ The signature that verifies this transaction as originating from the account it says it is from. |
 
 [auto-fillable]: #auto-fillable-fields
