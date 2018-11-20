@@ -22,7 +22,7 @@ Ripple recommends using these configuration guidelines to optimize performance o
 
 ### Node Size
 
-The `node_size` parameter determines the size of database caches and how much RAM you want the `rippled` server to be able to use at once. ***TODO: Edit stated correctly? What does "use at once" mean? The amount of RAM it can use to make a single read or write call? Do we need to say "at once"? For a single rippled server, are there multiple database caches - or just a single database cache? When we talk about Node Size, we are talking about configuring memory, and not storage, correct? Just clarifying for myself bc the two seem to get a little intertwined for me in this doc. For example, when we talk about a database cache - this is stored in RAM? But when we talk about the ledger store - that is stored in "storage," is that right? What is in the database cache vs the ledger store? The available RAM configured below has nothing to do with hardware storage, correct?*** Larger database caches decrease disk I/O requirements at a cost of higher memory requirements. Ripple recommends you always use the largest database cache your available memory can support. See the following table for recommended settings.
+The `node_size` parameter determines the size of database caches and how much RAM you want the `rippled` server to be able to use at once. ***TODO: Edit stated correctly? What does "use at once" mean? The amount of RAM it can use to make a single read or write call? Do we need to say "at once"? For a single rippled server, are there multiple database caches - or just a single database cache? When we talk about Node Size, we are talking about configuring memory, and not storage, correct? Just clarifying for myself bc the two seem to get a little intertwined for me in this doc. For example, when we talk about a database cache - this is stored in RAM? But when we talk about the ledger store - that is stored in "storage," is that right? What is in the database cache vs the ledger store? The available RAM configured below has nothing to do with hardware storage, correct?*** Larger database caches decrease disk I/O requirements at a cost of higher memory requirements. ***TODO: Does it matter that SSDs don't have disks? Throughout, should we just refer to "storage" instead of "disks" or "disk storage"? For example, here we would refer to "storage I/O" instead? Does it matter?*** Ripple recommends you always use the largest database cache your available memory can support. See the following table for recommended settings.
 
 #### Recommendation
 
@@ -44,7 +44,7 @@ The `type` field in the `[node_db]` stanza of the `rippled.cfg` file sets the ty
 
 The default backend data store is RocksDB, which is optimized for spinning disks. ***TODO: I need to test this but by default do we mean that if you don't set a node_db value, does it use RocksDB? Or by default do we mean that this is the value set in rippled-example.cfg? Just making sure.*** RocksDB requires approximately one-third less disk storage than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes. ***TODO: I edited this section to clear up some ambiguity that was confusing to me. I hope that what I've come up with is still accurate? Can we change "default backend data store" to "default key-value database type"? I just want to correlate the node_db stanza name with how we refer to it here in the doc. When we talk about "data indexes" - is this akin to the database cache? Meaning, while storage is used for the ledger store -- memory is used for the database cache (aka data indexes?)***
 
-NuDB, on the other hand, has nearly constant performance and memory footprint regardless of the amount of data being [stored](#disk-storage). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
+NuDB, on the other hand, has nearly constant performance and memory footprint regardless of the amount of data being [stored](#storage). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
 
 Ripple recommends using RocksDB for validators. `rippled` servers that operate as validators should keep only a few days' worth of [historical data](#historical-data) or less. For all other uses, Ripple recommends using NuDB.
 
@@ -90,7 +90,7 @@ For best performance in enterprise production environments, Ripple recommends ru
 
 - Operating System: Ubuntu 16.04+
 - CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
-- Disk: SSD
+- Disk: SSD ***TODO: instead of "Disk" - refer to "Storage" instead?***
 - RAM:
 	- For testing: 8GB+
 	- For production: 32GB
@@ -102,7 +102,7 @@ For best performance in enterprise production environments, Ripple recommends ru
 
 Ripple performance engineering has determined that bare metal servers achieve maximum throughput. However, it is likely that hypervisors cause minimal degradation in performance. ***TODO: What are we saying about hypervisors here? Are we saying that you can run `rippled` on a virtual machine managed by a hypervisor with minimal degradation?***
 
-#### Disk Storage
+#### Storage
 
 Ripple recommends estimating storage sizing at roughly 12GB per day of data kept online with NuDB. RocksDB requires around 8GB per day. However, the data per day changes with activity in the network. You should provision extra capacity to prepare for future growth. At the time of writing (2018-10-29), a server with all XRP Ledger history requires 8.4TB.
 
@@ -113,7 +113,7 @@ SSD storage should support several thousand of both read and write IOPS. The max
 
 ##### Amazon Web Services
 
-***TODO: I moved this to the Disk Storage section so you see this info about AWS in the most relevant context. Is this okay?***
+***TODO: I moved this to the Storage section so you see this info about AWS in the most relevant context. Is this okay?***
 
 Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but Ripple does not recommend using Elastic Block Storage (EBS). ***TODO: When we say "run rippled in AWS" - do we mean AWS EC2?***  Elastic Block Storage's maximum number of IOPS (5,000) is insufficient for `rippled`'s heaviest loads, despite being very expensive.
 
