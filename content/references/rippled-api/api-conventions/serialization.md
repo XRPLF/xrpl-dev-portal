@@ -41,7 +41,7 @@ The following table defines the top-level fields from the definitions file:
 | `TRANSACTION_RESULTS` | Map of [transaction result codes](transaction-results.html) to their numeric values. Result types not included in ledgers have negative values;`tesSUCCESS` has numeric value 0; [`tec`-class codes](tec-codes.html) represent failures that are included in ledgers. |
 | `TRANSACTION_TYPES`   | Map of all [transaction types](transaction-types.html) to their numeric values. |
 
-For purposes of serializing transactions for signing and submitting, only `FIELDS` and `TYPES` are necessary.
+For purposes of serializing transactions for signing and submitting, the `FIELDS`, `TYPES`, and `TRANSACTION_TYPES` fields are necessary.
 
 The field definition objects in the `FIELDS` array have the following fields:
 
@@ -222,4 +222,6 @@ The following example shows the serialization format for an object (a single `Me
 
 The XRP Ledger has several unsigned integer types: UInt8, UInt16, UInt32, and UInt64. All of these are standard big-endian binary unsigned integers with the specified number of bits.
 
-When representing these fields in JSON objects, most are represented as JSON numbers by default. The exception is UInt64, which is represented as a string because some JSON decoders may try to represent these integers as 64-bit "double precision" floating point numbers, which cannot represent all distinct UInt64 values with full precision.
+When representing these fields in JSON objects, most are represented as JSON numbers by default. One exception is UInt64, which is represented as a string because some JSON decoders may try to represent these integers as 64-bit "double precision" floating point numbers, which cannot represent all distinct UInt64 values with full precision.
+
+Another special case is the `TransactionType` field. In JSON, this field is conventionally represented as a string with the name of the transaction type, but in binary, this field is a UInt16. The `TRANSACTION_TYPES` object in the [definitions file](#definitions-file) maps these strings to specific numeric values.
