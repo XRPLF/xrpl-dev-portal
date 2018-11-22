@@ -18,18 +18,42 @@ The result is a single binary blob that can be signed using well-known signature
 
 **Note:** The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger objects](ledger-object-types.html) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.
 
-The hard work is the details of each of those steps.
-
-***Notes: some useful links for signing:***
-
-- Actual core of the signing code in rippled: https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L697-L718
-- Serialization code in ripple-lib depends on `ripple-binary-codec`. These definitions have the canonical types and sort codes for all fields: https://github.com/ripple/ripple-binary-codec/blob/master/src/enums/definitions.json
 
 ## Internal Format
 
 Each field has an "internal" binary format used in the `rippled` source code to represent that field when signing (and in most other cases). The internal formats for all fields are defined in the source code of [`SField.cpp`](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp). (This file also includes fields other than transaction fields. The [Transaction Format Reference](transaction-formats.html) also lists the internal formats for all transaction fields. <!--{# TODO: Clean up the "Internal Format" type listing and come up with an explicit definition of every type. #}-->
 
 For example, the `Flags` [common transaction field](transaction-common-fields.html) becomes a UInt32 (32-bit unsigned integer).
+
+### Definitions File
+
+The following JSON file defines the important constants you need for serializing XRP Ledger data to its binary format and deserializing it from binary:
+
+**<https://github.com/ripple/ripple-binary-codec/blob/master/src/enums/definitions.json>**
+
+The following table defines the top-level fields from the definitions file:
+
+| Field                 | Contents                                             |
+|:----------------------|:-----------------------------------------------------|
+| `TYPES`               | Map of data types to their "type code" for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. |
+| `LEDGER_ENTRY_TYPES`  | Map of [ledger objects](ledger-object-types.html) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transaction-metadata.html). |
+| `FIELDS`              | A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See the "Field properties" table below for definitions of those fields.) |
+| `TRANSACTION_RESULTS` | Map of [transaction result codes](transaction-results.html) to their numeric values. Result types not included in ledgers have negative values;`tesSUCCESS` has numeric value 0; [`tec`-class codes](tec-codes.html) represent failures that are included in ledgers. |
+| `TRANSACTION_TYPES`   | Map of all [transaction types](transaction-types.html) to their numeric values. |
+
+For purposes of serializing transactions for signing and submitting, only `FIELDS` and `TYPES` are necessary.
+
+The field definition objects in the `FIELDS` array have the following fields:
+
+| Field            | Type    | Contents                                        |
+|:-----------------|:--------|:------------------------------------------------|
+| `nth`            | Number  | The [field code](#field-codes) of this field, for use in constructing its [Field ID](#field-ids) and ordering it with other fields of the same data type. |
+| `isVLEncoded`    | Boolean | If `true`, this field is [variable-length encoded](#variable-length-encoding). |
+| `isSerialized`   | Boolean | If `true`, this field should be encoded into serialized binary data. When this field is `false`, the field is typically reconstructed on demand rather than stored. |
+| `isSigningField` | Boolean | If `true` this field should be serialized when preparing a transaction for signing. If `false`, this field should be omitted from the data to be signed. (It may not be part of transactions at all.) |
+| `type`           | String  | The internal data type of this field. This maps to a key in the `TYPES` map, which gives the [type code](#type-codes) for this field. |
+
+
 
 ## Canonical Field Order
 
@@ -149,9 +173,11 @@ You can tell which of the two sub-types it is based on the first bit: `0` for XR
 ### Array Fields
 [STArray]: #array-fields
 
-Some transaction fields, such as `SignerEntries` (in [SignerListSet transactions][]) and [`Memos`](transaction-common-fields.html#memos-field), are arrays.
+Some transaction fields, such as `SignerEntries` (in [SignerListSet transactions][]) and [`Memos`](transaction-common-fields.html#memos-field), are arrays of objects (called the "STArray" type).
 
-Arrays contain several other fields in their native binary format in a specific order. Each of these fields has its normal Field ID prefix and contents. To mark the end of an array, append an item with a "Field ID" of `0xf1` (the type code for array with field code of 1) and no contents.
+Arrays contain several [object fields](#object-fields) in their native binary format in a specific order. In JSON, each array member is a JSON "wrapper" object with a single field, which is the name of the member object field. The value of that field is the ("inner") object itself.
+
+In the binary format, each member of the array has a Field ID prefix (based on the single key of the wrapper object) and contents (comprising the inner object, [serialized as an object](#object-fields)). To mark the end of an array, append an item with a "Field ID" of `0xf1` (the type code for array with field code of 1) and no contents.
 
 The following example shows the serialization format for an array (the `SignerEntries` field):
 
@@ -166,16 +192,27 @@ The Blob type is a [variable-length encoded](#variable-length-encoding) field wi
 Blob fields have no further structure to their contents, so they consist of exactly the amount of bytes indicated in the variable-length encoding, after the Field ID and length prefixes.
 
 
+### Hash Fields
+[Hash128]: #hash-fields
+[Hash160]: #hash-fields
+[Hash256]: #hash-fields
+
+The XRP Ledger has several "hash" types: Hash128, Hash160, and Hash256. These fields contain arbitrary binary data of the given number of bits, which may or may not represent the result of a hash operation.
+
+All such fields are serialized as the specific number of bits, with no length indicator, in big-endian byte order.
+
+
 ### Object Fields
 [STObject]: #object-fields
 
-Some fields, such as `SignerEntry` (in [SignerListSet transactions][]), and `Memo` (in `Memos` arrays) are objects. The serialization of objects is very similar to that of arrays, with one difference: **object members must be placed in canonical order** within the object field, where array fields have an explicit order already.
+Some fields, such as `SignerEntry` (in [SignerListSet transactions][]), and `Memo` (in `Memos` arrays) are objects (called the "STObject" type). The serialization of objects is very similar to that of arrays, with one difference: **object members must be placed in canonical order** within the object field, where array fields have an explicit order already.
 
 The [canonical field order](#canonical-field-order) of object fields is the same as the canonical field order for all top-level fields, but the members of the object must be sorted within the object. After the last member, there is an "Object end" Field ID of `0xe1` with no contents.
 
 The following example shows the serialization format for an object (a single `Memo` object in the `Memos` array).
 
 ![Object field ID, followed by the Object ID and contents of each object member in canonical order, followed by the "Object end" field ID](img/serialization-object.png)
+
 
 ### UInt Fields
 [UInt8]: #uint-fields

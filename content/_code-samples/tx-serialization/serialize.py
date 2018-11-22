@@ -39,6 +39,11 @@ def field_sort_key(field_name):
     return (DEFINITIONS["TYPES"][field_type_name], DEFINITIONS["FIELDS"][field_name]["nth"])
 
 def field_id(field_name):
+    """
+    Returns the unique field ID for a given field name.
+    This field ID consists of the type code and field code, in 1 to 3 bytes
+    depending on whether those values are "common" (<16) or uncommon (>=16)
+    """
     field_type_name = DEFINITIONS["FIELDS"][field_name]["type"]
     type_code = DEFINITIONS["TYPES"][field_type_name]
     field_code = DEFINITIONS["FIELDS"][field_name]["nth"]
@@ -145,10 +150,59 @@ def vl_to_bytes(field_val):
     vl_contents = bytes.fromhex(field_val)
     return vl_encode(vl_contents)
 
+def hash_to_bytes(contents):
+    return bytes.fromhex(field_val)
+
 def accountid_to_bytes(address):
     return vl_encode(decode_address(address))
 
+def array_to_bytes(array):
+    """
+    Serialize an array of objects.
+    Each member object must have a type wrapper and an inner object.
+    """
+    members_as_bytes = []
+    for el in array:
+        wrapper_key = list(el.keys())[0]
+        inner_obj = el[wrapper_key]
+        members_as_bytes.append(field_to_bytes(field_name=wrapper_key, field_val=el))
+    members_as_bytes.append(field_id("ArrayEndMarker"))
+    return b''.join(members_as_bytes)
+
+def object_to_bytes(obj):
+    """
+    Serialize an object, assuming a type wrapper, for example:
+
+    {
+        "SignerEntry": {
+            "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+            "SignerWeight": 1
+        }
+    }
+
+    Puts the child fields (e.g. Account, SignerWeight) in canonical order
+    and appends an object end marker.
+    """
+    wrapper_key = list(obj.keys())[0]
+    inner_obj = obj[wrapper_key]
+    child_order = sorted(inner_obj.keys(), key=field_sort_key)
+    fields_as_bytes = []
+    for field_name in child_order:
+        if (DEFINITIONS["FIELDS"][field_name]["isSerialized"]):
+            field_val = inner_obj[field_name]
+            field_bytes = field_to_bytes(field_name, field_val)
+            logger.debug("{n}: {h}".format(n=field_name, h=field_bytes.hex()))
+            fields_as_bytes.append(field_bytes)
+
+    fields_as_bytes.append(field_id("ObjectEndMarker"))
+    return b''.join(fields_as_bytes)
+
+
 def field_to_bytes(field_name, field_val):
+    """
+    Returns a bytes object containing the serialized version of a field
+    including its field ID prefix.
+    """
     field_type = DEFINITIONS["FIELDS"][field_name]["type"]
     logger.debug("Serializing field {f} of type {t}".format(f=field_name, t=field_type))
 
@@ -161,13 +215,19 @@ def field_to_bytes(field_name, field_val):
 
     dispatch = {
         # TypeName: function(field): bytes object
-        "UInt64": lambda x:bytes_from_uint(x, 64),
-        "UInt32": lambda x:bytes_from_uint(x, 32),
-        "UInt16": lambda x:bytes_from_uint(x, 16),
-        "UInt8" : lambda x:bytes_from_uint(x, 8),
         "AccountID": accountid_to_bytes,
         "Amount": amount_to_bytes,
-        "Blob": vl_to_bytes
+        "Blob": vl_to_bytes,
+        "Hash128": hash_to_bytes,
+        "Hash160": hash_to_bytes,
+        "Hash256": hash_to_bytes,
+        # TODO: PathSet
+        "STArray": array_to_bytes,
+        "STObject": object_to_bytes,
+        "UInt8" : lambda x:bytes_from_uint(x, 8),
+        "UInt16": lambda x:bytes_from_uint(x, 16),
+        "UInt32": lambda x:bytes_from_uint(x, 32),
+        "UInt64": lambda x:bytes_from_uint(x, 64),
     }
     field_binary = dispatch[field_type](field_val)
     return b''.join( (id_prefix, field_binary) )
@@ -210,7 +270,7 @@ if __name__ == "__main__":
     #   "Sequence": 2
     # }
 
-    with open("test-cases/tx1-nometa.json") as f:
+    with open("test-cases/tx2-nometa.json") as f:
         example_tx = json.load(f)
 
     serialize_tx(example_tx)

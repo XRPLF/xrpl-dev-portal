@@ -1,0 +1,94 @@
+{
+    "hash": "C0B450C8601E19CB0BDED71C4B523B2A4AAB77415B08E7923D8DA3F831631702",
+    "ledger_index": 36259236,
+    "date": "2018-02-01T09:45:32+00:00",
+    "tx": {
+        "TransactionType": "EscrowFinish",
+        "Flags": 2147483648,
+        "Sequence": 1,
+        "OfferSequence": 11,
+        "Fee": "10101",
+        "SigningPubKey": "0268D79CD579D077750740FA18A2370B7C2018B2714ECE70BA65C38D223E79BC9C",
+        "TxnSignature": "3045022100F06FB54049D6D50142E5CF2E2AC21946AF305A13E2A2D4BA881B36484DD01A540220311557EC8BEF536D729605A4CB4D4DC51B1E37C06C93434DD5B7651E1E2E28BF",
+        "Account": "r3Y6vCE8XqfZmYBRngy22uFYkmz3y9eCRA",
+        "Owner": "r9NpyVfLfUG8hatuCCHKzosyDtKnBdsEN3",
+        "Memos": [
+            {
+                "Memo": {
+                    "MemoData": "04C4D46544659A2D58525043686174"
+                }
+            }
+        ]
+    },
+    "meta": {
+        "TransactionIndex": 35,
+        "AffectedNodes": [
+            {
+                "DeletedNode": {
+                    "LedgerEntryType": "Escrow",
+                    "LedgerIndex": "983EBDF89C1C30CECDB105B593E7DEBE602AF89012EDB4DD76D24ACEF92C89EF",
+                    "FinalFields": {
+                        "Flags": 0,
+                        "PreviousTxnLgrSeq": 35059511,
+                        "FinishAfter": 570758400,
+                        "OwnerNode": "0000000000000000",
+                        "PreviousTxnID": "6F54E04D7B205CBE2FCAEF1C249E62A9759721C7FE1F6992FD800266C8E4814C",
+                        "Amount": "1000000000000000",
+                        "Account": "r9NpyVfLfUG8hatuCCHKzosyDtKnBdsEN3",
+                        "Destination": "r9NpyVfLfUG8hatuCCHKzosyDtKnBdsEN3"
+                    }
+                }
+            },
+            {
+                "ModifiedNode": {
+                    "LedgerEntryType": "DirectoryNode",
+                    "LedgerIndex": "C05DC35EBDCA5D8697190FF41950EC5AFCBF7F61C1177DC73000CC17C2149886",
+                    "FinalFields": {
+                        "Flags": 0,
+                        "RootIndex": "C05DC35EBDCA5D8697190FF41950EC5AFCBF7F61C1177DC73000CC17C2149886",
+                        "Owner": "r9NpyVfLfUG8hatuCCHKzosyDtKnBdsEN3"
+                    }
+                }
+            },
+            {
+                "ModifiedNode": {
+                    "LedgerEntryType": "AccountRoot",
+                    "PreviousTxnLgrSeq": 36230933,
+                    "PreviousTxnID": "9366F75CD350ACE0EEFC0A392ECBD5AC2B84C06E5DEC2DE895B76FFC7BD55553",
+                    "LedgerIndex": "C180CA555CE8820D8F1086CDCA756FF8D5813FEB2AE3FF002B9F48F870CA08A0",
+                    "PreviousFields": {
+                        "Sequence": 1,
+                        "Balance": "26000000"
+                    },
+                    "FinalFields": {
+                        "Flags": 0,
+                        "Sequence": 2,
+                        "OwnerCount": 0,
+                        "Balance": "25989899",
+                        "Account": "r3Y6vCE8XqfZmYBRngy22uFYkmz3y9eCRA"
+                    }
+                }
+            },
+            {
+                "ModifiedNode": {
+                    "LedgerEntryType": "AccountRoot",
+                    "PreviousTxnLgrSeq": 36253527,
+                    "PreviousTxnID": "F2AA5584005847C19F59A9C87E7BF3108F97F2567C5083159EEC40B08ED90F46",
+                    "LedgerIndex": "DCED5AAFE87AA8D00E651DBBFBA2F992927BC3DC5FFD905EF49019ED02824B3A",
+                    "PreviousFields": {
+                        "OwnerCount": 14,
+                        "Balance": "200923000"
+                    },
+                    "FinalFields": {
+                        "Flags": 1048576,
+                        "Sequence": 18,
+                        "OwnerCount": 13,
+                        "Balance": "1000000200923000",
+                        "Account": "r9NpyVfLfUG8hatuCCHKzosyDtKnBdsEN3"
+                    }
+                }
+            }
+        ],
+        "TransactionResult": "tesSUCCESS"
+    }
+}
