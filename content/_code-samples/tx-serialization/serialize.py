@@ -9,6 +9,7 @@ import logging
 import re
 
 from address import decode_address
+from xrpl_num import IssuedAmount
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
@@ -81,6 +82,11 @@ def bytes_from_uint(i, bits):
     return i.to_bytes(bits // 8, byteorder="big", signed=False)
 
 def amount_to_bytes(a):
+    """
+    Serializes an "Amount" type, which can be either XRP or an issued currency:
+    - XRP: 64 bits; 0, followed by 1 ("is positive"), followed by 62 bit UInt amount
+    - Issued Currency: 64 bits of amount, followed by
+    """
     if type(a) == str:
         # is XRP
         xrp_amt = int(a)
@@ -95,32 +101,42 @@ def amount_to_bytes(a):
         if sorted(a.keys()) != ["currency", "issuer", "value"]:
             raise ValueError("amount must have currency, value, issuer only (actually had: %s)" %
                     sorted(a.keys()))
-        #TODO: canonicalize mantissa/exponent/etc. of issued currency amount
-        # https://developers.ripple.com/currency-formats.html#issued-currency-math
-        # temporarily returning all zeroes
-        issued_amt = bytes(8)
+
+        issued_amt = IssuedAmount(a["value"]).to_bytes()
+        logger.debug("Issued amount: %s"%issued_amt.hex())
         currency_code = currency_code_to_bytes(a["currency"])
         return issued_amt + currency_code + decode_address(a["issuer"])
     else:
         raise ValueError("amount must be XRP string or {currency, value, issuer}")
 
+def issued_amount_as_bytes(strnum):
+    num = Decimal(strnum)
+
+
 def tx_type_to_bytes(txtype):
     type_uint = DEFINITIONS["TRANSACTION_TYPES"][txtype]
     return type_uint.to_bytes(2, byteorder="big", signed=False)
 
-def currency_code_to_bytes(code_string):
+def currency_code_to_bytes(code_string, xrp_ok=False):
     if re.match(r"^[A-Za-z0-9?!@#$%^&*<>(){}\[\]|]{3}$", code_string):
         # ISO 4217-like code
         if code_string == "XRP":
+            if xrp_ok:
+                # Rare, but when the currency code "XRP" is serialized, it's
+                # a special-case all zeroes.
+                logger.debug("Currency code(XRP): "+("0"*40))
+                return bytes(20)
             raise ValueError("issued currency can't be XRP")
+
         code_ascii = code_string.encode("ASCII")
+        logger.debug("Currency code ASCII: %s"%code_ascii.hex())
         # standard currency codes: https://developers.ripple.com/currency-formats.html#standard-currency-codes
         # 8 bits type code (0x00)
-        # 96 bits reserved (0's)
+        # 88 bits reserved (0's)
         # 24 bits ASCII
-        # 8 bits version (0x00)
+        # 16 bits version (0x00)
         # 24 bits reserved (0's)
-        return b''.join( ( bytes(13), code_ascii, bytes(4) ) )
+        return b''.join( ( bytes(12), code_ascii, bytes(5) ) )
     elif re.match(r"^[0-9a-fA-F]{40}$", code_string):
         # raw hex code
         return bytes.fromhex(code_string) # requires Python 3.5+
@@ -197,6 +213,58 @@ def object_to_bytes(obj):
     fields_as_bytes.append(field_id("ObjectEndMarker"))
     return b''.join(fields_as_bytes)
 
+def pathset_to_bytes(pathset):
+    """
+    Serialize a PathSet, which is an array of arrays,
+    where each inner array represents one possible payment path.
+    A path consists of "path step" objects in sequence, each with one or
+    more of "account", "currency", and "issuer" fields, plus (ignored) "type"
+    and "type_hex" fields which indicate which fields are present.
+    (We re-create the type field for serialization based on which of the core
+    3 fields are present.)
+    """
+
+    if not len(pathset):
+        raise ValueError("PathSet type must not be empty")
+
+    paths_as_bytes = []
+    for n in range(len(pathset)):
+        path = path_as_bytes(pathset[n])
+        logger.debug("Path %d:  %s"%(n, path.hex()))
+        paths_as_bytes.append(path)
+        if n + 1 == len(pathset): # last path; add an end byte
+            paths_as_bytes.append(bytes.fromhex("00"))
+        else: # add a path separator byte
+            paths_as_bytes.append(bytes.fromhex("ff"))
+
+    return b''.join(paths_as_bytes)
+
+def path_as_bytes(path):
+    """
+    Helper function for representing one member of a pathset as a bytes object
+    """
+
+    if not len(path):
+        raise ValueError("Path must not be empty")
+
+    path_contents = []
+    for step in path:
+        step_data = []
+        type_byte = 0
+        if "account" in step.keys():
+            type_byte |= 0x01
+            step_data.append(decode_address(step["account"]))
+        if "currency" in step.keys():
+            type_byte |= 0x10
+            step_data.append(currency_code_to_bytes(step["currency"], xrp_ok=True))
+        if "issuer" in step.keys():
+            type_byte |= 0x20
+            step_data.append(decode_address(step["issuer"]))
+        step_data = [bytes_from_uint(type_byte, 8)] + step_data
+        path_contents += step_data
+
+    return b''.join(path_contents)
+
 
 def field_to_bytes(field_name, field_val):
     """
@@ -221,7 +289,7 @@ def field_to_bytes(field_name, field_val):
         "Hash128": hash_to_bytes,
         "Hash160": hash_to_bytes,
         "Hash256": hash_to_bytes,
-        # TODO: PathSet
+        "PathSet": pathset_to_bytes,
         "STArray": array_to_bytes,
         "STObject": object_to_bytes,
         "UInt8" : lambda x:bytes_from_uint(x, 8),
@@ -270,7 +338,7 @@ if __name__ == "__main__":
     #   "Sequence": 2
     # }
 
-    with open("test-cases/tx2-nometa.json") as f:
+    with open("test-cases/tx3-nometa.json") as f:
         example_tx = json.load(f)
 
     serialize_tx(example_tx)
