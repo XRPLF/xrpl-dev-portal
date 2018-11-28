@@ -70,7 +70,7 @@ To follow Ripple's recommended best practices, Alpha Exchange should create at l
 
         * If this happens, the exchange has to make a new cold wallet address and tell its customers the new address.
 
-    * If the regular key or signer list are comromised, the exchange can regain control of the cold wallet. However, some of a malicious actor's actions cannot easily be undone: <!-- STYLE_OVERRIDE: easily -->
+    * If the regular key or signer list are compromised, the exchange can regain control of the cold wallet. However, some of a malicious actor's actions cannot easily be undone: <!-- STYLE_OVERRIDE: easily -->
 
         * The malicious actor could issue currency in the XRP Ledger by using the cold wallet, but that currency should not be valued by anyone (unless the exchange explicitly stated it was also a gateway).
 
