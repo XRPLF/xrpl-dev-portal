@@ -151,7 +151,7 @@ In addition to all of the above field types, the following types may appear in o
 
 Fields of this type contain the 160-bit identifier for an XRP Ledger [account](accounts.html). In JSON, these fields are represented as base58 XRP Ledger "addresses", with additional checksum data so that typos are unlikely to result in valid addresses. (This encoding, sometimes called "Base58Check", prevents accidentally sending money to the wrong address.) The binary format for these fields does not contain any checksum data. (However, since the binary format is used mostly for signed transactions, a typo or other error in transcribing a signed transaction would invalidate the signature, preventing it from sending money.)
 
-These fields are [variable-length encoded](#variable-length-encoding) despite being a fixed 160 bits in length. As a result, the length indicator for these fields is always the byte `0x14`.
+AccountIDs that appear as stand-alone fields (such as `Account` and `Destination`) are [variable-length encoded](#variable-length-encoding) despite being a fixed 160 bits in length. As a result, the length indicator for these fields is always the byte `0x14`. AccountIDs that appear as children of special fields ([Amount `issuer`][Amount] and [PathSet `account`][PathSet]) are _not_ variable-length encoded.
 
 
 ### Amount Fields
@@ -164,7 +164,7 @@ The "Amount" type is a special field type that represents an amount of currency,
 - **Issued Currencies**
     Issued currencies consist of three segments in order:
     1. 64 bits indicating the amount in the [internal currency format](currency-formats.html#issued-currency-math). The first bit is `1` to indicate that this is not XRP.
-    2. 160 bits indicating the [currency code](https://developers.ripple.com/currency-formats.html#currency-codes). The standard API converts 3-character codes such as "USD" into 160-bit codes using the [standard currency code format](currency-formats.html#standard-currency-codes), but custom 160-bit codes are also possible.
+    2. 160 bits indicating the [currency code](currency-formats.html#currency-codes). The standard API converts 3-character codes such as "USD" into 160-bit codes using the [standard currency code format](currency-formats.html#standard-currency-codes), but custom 160-bit codes are also possible.
     3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](accounts.html#address-encoding))
 
 You can tell which of the two sub-types it is based on the first bit: `0` for XRP; `1` for issued currency.
@@ -212,6 +212,35 @@ The [canonical field order](#canonical-field-order) of object fields is the same
 The following example shows the serialization format for an object (a single `Memo` object in the `Memos` array).
 
 ![Object field ID, followed by the Object ID and contents of each object member in canonical order, followed by the "Object end" field ID](img/serialization-object.png)
+
+
+### PathSet Fields
+[PathSet]: #pathset-fields
+
+The `Paths` field of a cross-currency [Payment transaction][] is a "PathSet", represented in JSON as an array of arrays. For more information on what paths are used for, see [Paths](paths.html).
+
+A PathSet is serialized as each individual path in sequence. Each complete path is followed by a byte that indicates what comes next:
+
+- `0xff` indicates another path follows
+- `0x00` indicates the end of the PathSet
+
+Each path consists of a set of path steps in order. Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x11` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
+
+The following table describes the possible fields and the bitwise flags to set in the type byte to indicate them:
+
+| Type Flag | Field Present | Field Type        | Bit Size | Order |
+|:----------|:--------------|:------------------|:---------|:------|
+| `0x01`    | `account`     | [AccountID][]     | 160 bits | 1st   |
+| `0x10`    | `currency`    | [Currency Code][] | 160 bits | 2nd   |
+| `0x20`    | `issuer`      | [AccountID][]     | 160 bits | 3rd   |
+
+[Currency Code]: currency-formats.html#standard-currency-codes
+
+Some combinations are invalid; see [Path Specifications](paths.html#path-specifications) for details.
+
+The AccountIDs in the `account` and `issuer` fields are presented _without_ a variable-length encoding prefix. When the `currency` is XRP, the currency code is represented as 160 bits of zeroes.
+
+Each step is followed directly by the next step of the path. As described above, last step of a path is followed by either `0xff` (if another path follows) or `0x00` (if this ends the last path).
 
 
 ### UInt Fields
