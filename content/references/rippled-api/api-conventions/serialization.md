@@ -136,14 +136,14 @@ Transaction instructions may contain fields of any of the following types:
 
 In addition to all of the above field types, the following types may appear in other contexts, such as [ledger objects](ledger-object-types.html) and [transaction metadata](transaction-metadata.html):
 
-| Type Name     | Type Code | Variable-Length? | Description                   |
-|:--------------|:----------|:-----------------|:------------------------------|
-| Transaction   | 10001     | No               | A "high-level" type containing an entire [transaction](transaction-formats.html). |
-| LedgerEntry   | 10002     | No               | A "high-level" type containing an entire [ledger object](ledger-object-types.html). |
-| Validation    | 10003     | No               | A "high-level" type used in peer-to-peer communications to represent a validation vote in the [consensus process](consensus.html). |
-| Metadata      | 10004     | No               | A "high-level" type containing [metadata for one transaction](transaction-metadata.html). |
-| [UInt64][]    | 3         | No               | A 64-bit unsigned integer. This type does not appear in transaction instructions, but several  use fields of this type. |
-| [Vector256][] | 19        | Yes              | This type does not appear in transaction instructions, but the [Amendments ledger object](amendments-object.html)'s `Amendments` field uses this to represent which [amendments](amendments.html) are currently enabled. |
+| Type Name   | Type Code | Variable-Length? | Description                     |
+|:------------|:----------|:-----------------|:--------------------------------|
+| Transaction | 10001     | No               | A "high-level" type containing an entire [transaction](transaction-formats.html). |
+| LedgerEntry | 10002     | No               | A "high-level" type containing an entire [ledger object](ledger-object-types.html). |
+| Validation  | 10003     | No               | A "high-level" type used in peer-to-peer communications to represent a validation vote in the [consensus process](consensus.html). |
+| Metadata    | 10004     | No               | A "high-level" type containing [metadata for one transaction](transaction-metadata.html). |
+| [UInt64][]  | 3         | No               | A 64-bit unsigned integer. This type does not appear in transaction instructions, but several ledger objects use fields of this type. |
+| Vector256   | 19        | Yes              | This type does not appear in transaction instructions, but the [Amendments ledger object](amendments-object.html)'s `Amendments` field uses this to represent which [amendments](amendments.html) are currently enabled. |
 
 
 ### AccountID Fields
@@ -219,12 +219,12 @@ The following example shows the serialization format for an object (a single `Me
 
 The `Paths` field of a cross-currency [Payment transaction][] is a "PathSet", represented in JSON as an array of arrays. For more information on what paths are used for, see [Paths](paths.html).
 
-A PathSet is serialized as each individual path in sequence. Each complete path is followed by a byte that indicates what comes next:
+A PathSet is serialized as **one or more** individual paths in sequence. Each complete path is followed by a byte that indicates what comes next:
 
 - `0xff` indicates another path follows
 - `0x00` indicates the end of the PathSet
 
-Each path consists of a set of path steps in order. Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x11` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
+Each path consists of **one or more** path steps in order. Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x30` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
 
 The following table describes the possible fields and the bitwise flags to set in the type byte to indicate them:
 
@@ -242,6 +242,10 @@ The AccountIDs in the `account` and `issuer` fields are presented _without_ a va
 
 Each step is followed directly by the next step of the path. As described above, last step of a path is followed by either `0xff` (if another path follows) or `0x00` (if this ends the last path).
 
+The following example shows the serialization format for a PathSet:
+
+![PathSet is several paths each followed by a continue or end byte; each path is several path steps consisting of a type byte and one or more 160-bit fields based on the type byte](img/serialization-pathset.png)
+
 
 ### UInt Fields
 [UInt8]: #uint-fields
@@ -254,3 +258,8 @@ The XRP Ledger has several unsigned integer types: UInt8, UInt16, UInt32, and UI
 When representing these fields in JSON objects, most are represented as JSON numbers by default. One exception is UInt64, which is represented as a string because some JSON decoders may try to represent these integers as 64-bit "double precision" floating point numbers, which cannot represent all distinct UInt64 values with full precision.
 
 Another special case is the `TransactionType` field. In JSON, this field is conventionally represented as a string with the name of the transaction type, but in binary, this field is a UInt16. The `TRANSACTION_TYPES` object in the [definitions file](#definitions-file) maps these strings to specific numeric values.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
