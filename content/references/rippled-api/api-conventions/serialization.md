@@ -1,5 +1,5 @@
 # Serialization Format
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L697-L718 "Source")
+[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
 
 This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places. The [rippled APIs](rippled-apis.html) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
@@ -17,6 +17,17 @@ The process of serializing a transaction from JSON or any other representation i
 The result is a single binary blob that can be signed using well-known signature algorithms such as ECDSA (with the secp256k1 elliptic curve) and Ed25519. After signing, you must attach the signature to the transaction, calculate the transaction's identifying hash, then re-serialize the transaction with the additional fields.
 
 **Note:** The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger objects](ledger-object-types.html) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.
+
+## Sample Code
+
+The serialization processes described here are implemented in multiple places and programming languages:
+
+- In C++ [in the `rippled` code base](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp).
+- In JavaScript in the [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/) package.
+- In Python 3 [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/serialize.py).
+
+These implementations are all provided with permissive open-source licenses, so you can import, use, or adapt the code for your needs in addition to using it alongside these documents for learning purposes.
+
 
 
 ## Internal Format
@@ -165,7 +176,7 @@ AccountIDs that appear as stand-alone fields (such as `Account` and `Destination
 The "Amount" type is a special field type that represents an amount of currency, either XRP or an issued currency. This type consists of two sub-types:
 
 - **XRP**
-    XRP is serialized as a 64-bit unsigned integer (big-endian order), except that the second-most-significant bit is `1` to indicate that it is positive. In other words, take a standard UInt64 and calculate the bitwise-OR of that with `0x4000000000000000` to get the serialized format.
+    XRP is serialized as a 64-bit unsigned integer (big-endian order), except that the most significant bit is always 0 to indicate that it's XRP, and the second-most-significant bit is `1` to indicate that it is positive. Since the maximum amount of XRP (10<sup>17</sup> drops) only requires 57 bits, you can calculate XRP serialized format by taking standard 64-bit unsigned integer and performing a bitwise-OR with `0x4000000000000000`.
 - **Issued Currencies**
     Issued currencies consist of three segments in order:
     1. 64 bits indicating the amount in the [internal currency format](currency-formats.html#issued-currency-math). The first bit is `1` to indicate that this is not XRP.
@@ -173,6 +184,10 @@ The "Amount" type is a special field type that represents an amount of currency,
     3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](accounts.html#address-encoding))
 
 You can tell which of the two sub-types it is based on the first bit: `0` for XRP; `1` for issued currency.
+
+The following diagram shows the serialization formats for both XRP amounts and issued currency amounts:
+
+![XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Issued currency amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), mantissa (54 bits), currency code (160 bits), and issuer (160 bits).](img/serialization-amount.png)
 
 
 ### Array Fields

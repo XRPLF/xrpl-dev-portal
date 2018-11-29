@@ -4,17 +4,6 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>160</y>
-      <w>600</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>90</x>
       <y>170</y>
       <w>40</w>
@@ -73,17 +62,17 @@ Field ID</panel_attributes>
     <coordinates>
       <x>630</x>
       <y>190</y>
-      <w>30</w>
-      <h>80</h>
+      <w>80</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;60.0;30.0;60.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>590</x>
-      <y>250</y>
+      <x>640</x>
+      <y>230</y>
       <w>100</w>
       <h>60</h>
     </coordinates>
@@ -109,22 +98,10 @@ no contents</panel_attributes>
       <x>160</x>
       <y>190</y>
       <w>50</w>
-      <h>80</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0;30.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>220</x>
-      <y>120</y>
-      <w>190</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>Length prefix for 
-variable-length Blob fields</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;10.0;10.0;40.0;30.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -149,21 +126,10 @@ variable-length Blob fields</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>190</x>
-      <y>130</y>
-      <w>50</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0;30.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>Text</id>
     <coordinates>
       <x>190</x>
-      <y>230</y>
+      <y>210</y>
       <w>110</w>
       <h>50</h>
     </coordinates>
@@ -196,30 +162,19 @@ Field ID</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>130</y>
-      <w>70</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>50.0;40.0;50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>130</x>
-      <y>80</y>
-      <w>490</w>
+      <y>210</y>
+      <w>500</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;20.0;220.0;20.0;220.0;10.0;220.0;20.0;470.0;20.0;470.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;480.0;70.0;480.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>290</x>
-      <y>40</y>
+      <x>300</x>
+      <y>280</y>
       <w>170</w>
       <h>50</h>
     </coordinates>
@@ -230,24 +185,56 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>340</x>
+      <x>290</x>
       <y>230</y>
-      <w>110</w>
-      <h>50</h>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>MemoData
-Field ID</panel_attributes>
+    <panel_attributes>MemoData Field ID</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>390</x>
+      <x>350</x>
       <y>190</y>
-      <w>30</w>
+      <w>70</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>50.0;10.0;50.0;30.0;10.0;30.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>80</x>
+      <y>140</y>
+      <w>600</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Memos field</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>190</y>
+      <w>50</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;30.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>460</x>
+      <y>210</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Length prefix</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
