@@ -14,8 +14,8 @@ Every transaction has the same set of common fields, plus additional fields base
 | [Memos][]          | Array of Objects | Array             | _(Optional)_ Additional arbitrary information used to identify this transaction. |
 | [Signers][]        | Array            | Array             | _(Optional)_ Array of objects that represent a [multi-signature](multi-signing.html) which authorizes this transaction. |
 | SourceTag          | Unsigned Integer | UInt32            | _(Optional)_ Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
-| SigningPubKey      | String           | VariableLength    | _(Automatically added when signing)_ Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
-| TxnSignature       | String           | VariableLength    | _(Automatically added when signing)_ The signature that verifies this transaction as originating from the account it says it is from. |
+| SigningPubKey      | String           | Blob              | _(Automatically added when signing)_ Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
+| TxnSignature       | String           | Blob              | _(Automatically added when signing)_ The signature that verifies this transaction as originating from the account it says it is from. |
 
 [auto-fillable]: #auto-fillable-fields
 [AccountTxnID]: #accounttxnid
@@ -89,9 +89,9 @@ The `Memos` field includes arbitrary messaging data with the transaction. It is 
 
 | Field      | Type   | [Internal Type][] | Description                        |
 |:-----------|:-------|:------------------|:-----------------------------------|
-| MemoData   | String | VariableLength    | Arbitrary hex value, conventionally containing the content of the memo. |
-| MemoFormat | String | VariableLength    | Hex value representing characters allowed in URLs. Conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml). |
-| MemoType   | String | VariableLength    | Hex value representing characters allowed in URLs. Conventionally, a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| MemoData   | String | Blob              | Arbitrary hex value, conventionally containing the content of the memo. |
+| MemoFormat | String | Blob              | Hex value representing characters allowed in URLs. Conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml). |
+| MemoType   | String | Blob              | Hex value representing characters allowed in URLs. Conventionally, a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
 
 The MemoType and MemoFormat fields should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
 
@@ -125,7 +125,7 @@ The `Signers` field contains a [multi-signature](multi-signing.html), which has 
 |:--------------|:-------|:------------------|:--------------------------------|
 | Account       | String | AccountID         | The address associated with this signature, as it appears in the SignerList. |
 | TxnSignature  | String | Blob              | A signature for this transaction, verifiable using the `SigningPubKey`. |
-| SigningPubKey | String | PubKey            | The public key used to create this signature. |
+| SigningPubKey | String | Blob              | The public key used to create this signature. |
 
 The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [lsfDisableMaster](accountroot.html#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
 

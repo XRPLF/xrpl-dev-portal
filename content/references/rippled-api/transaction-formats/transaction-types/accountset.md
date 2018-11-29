@@ -22,17 +22,23 @@ An AccountSet transaction modifies the properties of an [account in the XRP Ledg
 <!--{# fix md highlighting_ #}-->
 
 
-| Field                          | JSON Type        | [Internal Type][] | Description |
-|:-------------------------------|:-----------------|:------------------|:-----|
-| [ClearFlag](#accountset-flags) | Unsigned Integer | UInt32            | _(Optional)_ Unique identifier of a flag to disable for this account. |
-| [Domain](#domain)              | String           | VariableLength    | _(Optional)_ The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
-| EmailHash                      | String           | Hash128           | _(Optional)_ Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
-| MessageKey                     | String           | PubKey            | _(Optional)_ Public key for sending encrypted messages to this account. |
-| [SetFlag](#accountset-flags)   | Unsigned Integer | UInt32            | _(Optional)_ Integer flag to enable for this account. |
-| [TransferRate](accountset.html#transferrate)  | Unsigned Integer | UInt32            | _(Optional)_ The fee to charge when users transfer this account's issued currencies, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
-| [TickSize](ticksize.html)      | Unsigned Integer | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment](known-amendments.html#ticksize).)_ |
-| WalletLocator                  | String           | Hash256           | _(Optional)_ Not used. |
-| WalletSize                     | Unsigned Integer | UInt32            | _(Optional)_ Not used. |
+| Field            | JSON Type        | [Internal Type][] | Description        |
+|:-----------------|:-----------------|:------------------|:-------------------|
+| [ClearFlag][]    | Number           | UInt32            | _(Optional)_ Unique identifier of a flag to disable for this account. |
+| [Domain][]       | String           | Blob              | _(Optional)_ The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. |
+| EmailHash        | String           | Hash128           | _(Optional)_ Hash of an email address to be used for generating an avatar image. Conventionally, clients use [Gravatar](http://en.gravatar.com/site/implement/hash/) to display this image. |
+| MessageKey       | String           | Blob              | _(Optional)_ Public key for sending encrypted messages to this account. |
+| [SetFlag][]      | Number           | UInt32            | _(Optional)_ Integer flag to enable for this account. |
+| [TransferRate][] | Unsigned Integer | UInt32            | _(Optional)_ The fee to charge when users transfer this account's issued currencies, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
+| [TickSize][]     | Unsigned Integer | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment](known-amendments.html#ticksize).)_ |
+| WalletLocator    | String           | Hash256           | _(Optional)_ Not used. |
+| WalletSize       | Number           | UInt32            | _(Optional)_ Not used. |
+
+[ClearFlag]: #accountset-flags
+[Domain]: #domain
+[SetFlag]: #accountset-flags
+[TickSize]: ticksize.html
+[TransferRate]: accountset.html#transferrate
 
 If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Cancel or Skip a Transaction](cancel-or-skip-a-transaction.html) for more details.
 

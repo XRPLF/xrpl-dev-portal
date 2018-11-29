@@ -21,7 +21,7 @@ The result is a single binary blob that can be signed using well-known signature
 
 ## Internal Format
 
-Each field has an "internal" binary format used in the `rippled` source code to represent that field when signing (and in most other cases). The internal formats for all fields are defined in the source code of [`SField.cpp`](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp). (This file also includes fields other than transaction fields. The [Transaction Format Reference](transaction-formats.html) also lists the internal formats for all transaction fields. <!--{# TODO: Clean up the "Internal Format" type listing and come up with an explicit definition of every type. #}-->
+Each field has an "internal" binary format used in the `rippled` source code to represent that field when signing (and in most other cases). The internal formats for all fields are defined in the source code of [`SField.cpp`](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp). (This file also includes fields other than transaction fields.) The [Transaction Format Reference](transaction-formats.html) also lists the internal formats for all transaction fields.
 
 For example, the `Flags` [common transaction field](transaction-common-fields.html) becomes a UInt32 (32-bit unsigned integer).
 
@@ -102,13 +102,18 @@ Some types of fields are Variable-Length encoding, which means they are not alwa
 Variable-length fields are encoded with one to three bytes indicating the length of the field immediately after the type prefix and before the contents.
 
 - If the field contains 0 to 192 bytes of data, the first byte defines the length of the VariableLength data, then that many bytes of data follow immediately after the length byte.
+
 - If the field contains 193 to 12480 bytes of data, the first two bytes indicate the length of the field with the following formula:
+
         193 + ((byte1 - 193) * 256) + byte2
+
 - If the field contains 12481 to 918744 bytes of data, the first three bytes indicate the length of the field with the following formula:
-        12481 + ((byte1 - 241) * 65536) + (byte2 * 256) + byte3;
+
+        12481 + ((byte1 - 241) * 65536) + (byte2 * 256) + byte3
+
 - A variable-length field cannot contain more than 918744 bytes of data.
 
-When decoding, you can tell from the value of the first length byte whether there are 0, 1, or 2 more length bytes:
+When decoding, you can tell from the value of the first length byte whether there are 0, 1, or 2 additional length bytes:
 
 - If the first length byte has a value of 192 or less, then that's the only length byte and it contains the exact length of the field contents in bytes.
 - If the first length byte has a value of 193 to 240, then there are two length bytes.
@@ -122,7 +127,7 @@ Transaction instructions may contain fields of any of the following types:
 | Type Name     | Type Code | Variable-Length? | Description                   |
 |:--------------|:----------|:-----------------|:------------------------------|
 | [AccountID][] | 8         | Yes              | The unique identifier for an [account](accounts.html). This field is variable-length encoded, but always exactly 20 bytes. |
-| [Amount][]    | 6         | No               | An amount of XRP or issued currency. The length of the field is 64 bits for XRP or |
+| [Amount][]    | 6         | No               | An amount of XRP or issued currency. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for issued currencies. |
 | [Blob][]      | 7         | Yes              | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
 | [Hash128][]   | 4         | No               | A 128-bit arbitrary binary value. The only such field is `EmailHash`, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a [Gravatar](https://www.gravatar.com/). |
 | [Hash160][]   | 17        | No               | A 160-bit arbitrary binary value. This may define a currency code or issuer. |
@@ -219,12 +224,12 @@ The following example shows the serialization format for an object (a single `Me
 
 The `Paths` field of a cross-currency [Payment transaction][] is a "PathSet", represented in JSON as an array of arrays. For more information on what paths are used for, see [Paths](paths.html).
 
-A PathSet is serialized as **one or more** individual paths in sequence. Each complete path is followed by a byte that indicates what comes next:
+A PathSet is serialized as **1 to 6** individual paths in sequence[[Source]](https://github.com/ripple/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36 "Source"). Each complete path is followed by a byte that indicates what comes next:
 
 - `0xff` indicates another path follows
 - `0x00` indicates the end of the PathSet
 
-Each path consists of **one or more** path steps in order. Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x30` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
+Each path consists of **1 to 8** path steps in order[[Source]](https://github.com/ripple/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L38-L39 "Source"). Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x30` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
 
 The following table describes the possible fields and the bitwise flags to set in the type byte to indicate them:
 

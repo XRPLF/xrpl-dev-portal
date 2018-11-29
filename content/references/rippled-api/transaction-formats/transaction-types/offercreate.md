@@ -29,12 +29,14 @@ For more information about how Offers work, see [Offers](offers.html).
 <!--{# fix md highlighting_ #}-->
 
 
-| Field                     | JSON Type           | [Internal Type][] | Description |
-|:--------------------------|:--------------------|:------------------|:-------|
-| [Expiration](offers.html#offer-expiration) | Unsigned Integer    | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. |
-| OfferSequence             | Unsigned Integer    | UInt32            | _(Optional)_ An offer to delete first, specified in the same way as [OfferCancel][]. |
-| TakerGets                 | [Currency Amount][] | Amount            | The amount and type of currency being provided by the offer creator. |
-| TakerPays                 | [Currency Amount][] | Amount            | The amount and type of currency being requested by the offer creator. |
+| Field          | JSON Type           | [Internal Type][] | Description       |
+|:---------------|:--------------------|:------------------|:------------------|
+| [Expiration][] | Number              | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. |
+| OfferSequence  | Number              | UInt32            | _(Optional)_ An offer to delete first, specified in the same way as [OfferCancel][]. |
+| TakerGets      | [Currency Amount][] | Amount            | The amount and type of currency being provided by the offer creator. |
+| TakerPays      | [Currency Amount][] | Amount            | The amount and type of currency being requested by the offer creator. |
+
+[Expiration]: offers.html#offer-expiration
 
 ## OfferCreate Flags
 
