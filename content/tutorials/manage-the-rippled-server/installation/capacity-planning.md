@@ -24,90 +24,83 @@ You can set the following parameters in the `rippled.cfg` file used for your `ri
 
 ### Node Size
 
-Set the `node_size` parameter to define your `rippled` server's database cache size, as well as how much RAM you want the server to be able to use. Pick the appropriate size based on your server's expected load and available memory. ***TODO: correctly stated? The `tiny`, `huge`, etc values are setting the database cache size. When we list an Available RAM value in the table below - are we saying that this is how much RAM rippled will use? Or are we saying that if you select HUGE, you need to have at least 32GB available RAM for rippled?***
+Set the `node_size` based on your server's expected load and the amount of memory you can make available to `rippled`.
 
-The `node_size` you define determines how big of an object to treat as one "node" in the ledger's underlying tree structure. 
+The node size is talking about how big of an object to treat as one "node" in the ledger's underlying tree structure. It's not directly configuring storage or RAM, but it affects how much RAM your server uses and how fast your server can fetch things from disk.
 
-It doesn't directly configure storage or RAM, but it affects how much RAM your `rippled` server uses and how fast it can fetch things from disk. For example, a larger node size decreases disk I/O requirements, but increases memory requirements.  ***TODO: Thank you for your patient explanations. I am so close to understanding this. The current doc says that node_size defines the  But one more question - and I'm sorry if I'm making this more complicated than it is - but by "node," we usually mean an instance of a rippled server. But in this case, are we talking about "node" as a unit of information or data to be retrieved or stored, the size of which we are defining based on this setting? The current doc says that this value sets the size of the database cache.***
+For example, think of node size as the size of cardboard boxes you use to ship vases from a warehouse to your store. A larger cardboard box means that you can ship more vases at once with fewer trips from the warehouse. A large node size means that you can get more `rippled` transaction data, for example, with fewer trips to disk storage.
 
-Ripple recommends you always use the largest database cache your available memory can support. See the following table for recommended settings.
+However, with a larger box, you also need to include more packing material to keep the vases from breaking during shipping, which takes up precious space in the box. Likewise, with a larger node size, you can get a lot of transaction data, but the data may also contain `rippled` start up information and ledger reports, which takes up precious RAM that can't be used for the subset of data you're actually using.
+
+A part of tuning these configurations is about choosing the right node size so that the subset of data you're actually using can be retrieved in the fewest trips to disk storage, while also ensuring that all of it, including other data you aren't using right now, can fit in your available RAM.
+
+Ripple recommends you always use the largest node size your available RAM can support. See the following table for recommended settings.
 
 #### Recommendation
 
-| Available RAM for `rippled` | `node_size` value | Notes                      |
-|:----------------------------|:------------------|:---------------------------|
-| < 8GB                       | `tiny`            | Not recommended. If not specified in `rippled.cfg`, `tiny` is the default value. |
-| 8GB                         | `small`           | Recommended for test servers. |
-| 16GB                        | `medium`          | The example `rippled-example.cfg` has its `node_size` value set to `medium`. |
-| 32GB                        | `large`           | Ripple recommends using `huge` instead. `large` uses less memory than `huge`, but increases disk access requirements, which decreases performance. ***TODO: Included this row because `large` is an option in `rippled-example.cfg` and I think we need to acknowledge it here. Is the Available RAM value correct? We say that `large` uses less memory than `huge`, but the RAM values are the same.*** |
-| 32GB                        | `huge`            | Recommended for production servers. |
+Each `node_size` has a corresponding requirement for available RAM. For example, if you set `node_size` to `huge`, you should have at least 32GB of available RAM to help ensure that `rippled` can run smoothly.
+
+To tune your server, it may be useful to start with `tiny` and increase the size to `small`, `medium`, and so on as you refine the requirements for your use case.
+
+***TODO: Small thing, but I switched the order of the node size and RAM columns because the node size column contains the value that you are setting and should be the starting point of focus.***
+
+| `node_size` value | Available RAM for `rippled` | Notes                      |
+|:------------------|:----------------------------|:---------------------------|
+| `tiny`            | < 8GB                       | Not recommended for testing or production servers. If not specified in `rippled.cfg`, `tiny` is the default value. |
+| `small`           | 8GB                         | Recommended for test servers. |
+| `medium`          | 16GB                        | Note that the `rippled-example.cfg` has its `node_size` value set to `medium`. ***TODO: The doc also says: With a `node_size` of `medium`, a `rippled` server can be reasonably stable in a test Linux system with 16GB of RAM -- is our recommendation for test servers - small or medium? Or either?*** |
+| `large`           | 32GB                        | While `large` is a legal value, Ripple recommends just using `huge` instead. ***TODO: Per Mark, `large` uses less memory, but increases disk access requirements. Since disk is slower than memory, this reduces performance. This is a great clarification - but for both large and huge, we list 32GB RAM. If we want to include this info from Mark - do we need to reduce the RAM value we list for `large` for it to make sense?*** |
+| `huge`            | 32GB                        | Recommended for production servers. |
 
 For `node_size` troubleshooting, see [Bad node_size value](server-wont-start.html#bad-node-size-value).
 
 
 ### Node DB Type
 
-The `type` field in the `[node_db]` stanza of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to hold ledger data on disk. This setting does not directly configure RAM settings, but the choice of key-value store has important implications for RAM usage because of the different ways these technologies cache and index data for fast lookup.
+The `type` field in the `[node_db]` stanza of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to hold the ledger store on disk.
+
+This setting does not directly configure RAM settings, but the choice of key-value store has important implications for RAM usage because of the different ways these technologies cache and index data for fast lookup.
 
 You can set the value to either `RocksDB` or `NuDB`.
 
-#### RocksDB vs NuDB
+* If you are running a `rippled` server as a production validator, Ripple recommends that you use `RocksDB` with rotational disk storage. [Learn more](#more-about-using-rocksdb)
 
-In the example `rippled-example.cfg` file, the `type` field in the `[node_db]` stanza is set to `RocksDB`, which is optimized for spinning disks. RocksDB requires approximately one-third less disk storage than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes. ***TODO: in this case, if you don't set a type value, rippled will not run. there is no default value set in the code.***
+* If you are running a `rippled` server for any other production use, Ripple recommends that you use `NuDB` with SSD storage. NuDB works with SSD storage only. [Learn more](#more-about-using-nudb)
 
-NuDB, on the other hand, has nearly constant performance and memory footprint regardless of the amount of data being [stored](#storage). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
+The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza is set to `RocksDB`. ***TODO: Just an FYI that in this case, if you don't set a type value, rippled will not run. There is no default value coded into rippled.***
 
-Validators should be configured to use RocksDB and to store no more than about 300,000 ledgers (approximately two weeks' worth of [historical data](#historical-data) in the ledger store. For other production servers, Ripple recommends using NuDB, with an amount of historical data configured based on business needs. Machines with only spinning disks (not recommended) must use RocksDB.
+#### More About Using RocksDB
 
-***TODO: When we talk about "data indexes" - is this akin to the database cache? Meaning, while storage is used for the ledger store -- memory is used for the database cache (aka data indexes?)***
+[RocksDB](https://rocksdb.org/docs/getting-started.html) is an embeddable persistent key-value store that is optimized for rotational disks.
 
-***TODO: Based on my confusion above about the difference between storage and memory -- it would be great to standardize how we talk about what is being stored. Here we call what we are storing a "few days' worth of data", as well as something called the "ledger store". In the rippled.cfg, we refer to the "persistent datastore for rippled." In other areas of this doc and inputs to this doc, we talk about "data indexes," "persisting the XRP Ledger in the ledger store", a "database cache," and a "backend data store." Perhaps when we are talking about storage we can talk about the ledger store (or a few days' worth of ledger store data) and when we are talking about memory we can talk about the database cache? Any thoughts?***
+RocksDB requires approximately one-third less disk [storage](#storage) than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.
 
-***TODO: from rome:
+Validators should be configured to use RocksDB and to store no more than about 300,000 ledgers (approximately two weeks' worth of [historical data](#historical-data)) in the ledger store.
 
-I'm not entirely sure what you're advocating regarding the terminology, but I suspect your confusion may come from trying to separate the the persistent stores (on disk) from the transient storage (in RAM) that they require for indexes and cache. "Persist" is specifically referring to storing data for the long term (that is, on disk). The ledger store handles persisting, caching, and indexing the data to whatever extent the chosen tech is designed to do. To a large extent, the amount of RAM you need is directly correlated to how much you have stored on disk. (The size of your phone book depends on how many people are listed.)
+RocksDB has performance-related configuration options that you can set in `rippled.cfg` to achieve maximum transaction processing throughput. Here is the recommended configuration for a `rippled` server using RocksDB:
 
-I agree that there are a lot of almost interchangeable terms in use here like "ledger store", "key-value store", "node backend", "ledger database", etc. but I think untangling them and reducing the number of unique terms used may be beyond our control since those terms are also used as config options and API methods, and the names used in those places are really not that distinct or consistent. I'll try to give my breakdown of terms though (my preferred terms in bold):
-
-ledger store / node store / node DB / ledger DB - The (mandatory) thing that stores current and historical ledgers (well, their contents) in a continuous history as they're produced.
-
-shard store / shard DB - A place to store chunks of historical ledgers
-
-key-value store / node backend / key-value database - The technology that actually stores the data in the ledger store or shard store. The two current choices are RocksDB and NuDB. (In the past, rippled supported other storage technologies too.)***
-
-***TODO: from ryan: Saying "ledgers from the last few days" would probably add clarity.
-
-I think the basic breakdown is:
-
-"ledger store" -- Stores hashes of ledgers
-"persistent datastore for rippled" -- Data that's stored for a medium to long-term period. As opposed to ledger storage, which can be deleted periodically in the short-term (depending on use-cases)
-"data indexes" -- How RocksDB stores hashes
-"database cache" -- same thing as ledger store?
-"backend data store" -- same thing as ledger store?
-Perhaps when we are talking about storage we can talk about the ledger store (or a few days' worth of ledger store data) and when we are talking about memory we can talk about the database cache? Any thoughts?
-
-I think this makes sense. Instead of database cache, we might want to say "key-value store", but I might be confused as to the difference there.***
-
-***TODO: from rome: Database cache and indexes are different things. Both are involved in fetching records quickly.
-
-Index: A list of all the records you have, and possibly some details about them. For example, if you frequently have to look up people with a specific hair color, you might keep an index of people with brown hair in your yellow pages, so you can do that without calling every person in the book and asking them for their hair color. The problem is, the more indexes you keep, the more huge yellow books (indexes) you have occupying your office (RAM). Depending on how many indexes of how many records you keep, at some point you may have so many books in your office that you can't even fit enough many clients in your office to hold actual meetings. That's what happens if you use RocksDB with a big database and a small amount of RAM.
-
-Cache: A convenient place where you keep a subset of things you expect to access soon. There are many different kinds of caches but for these key-value stores, it's most likely stored in RAM. So cache may contain entire records/blocks/objects/whatever that you expect to need to fetch soon, and is probably an order of magnitude faster than going all the way to disk to fetch those things. The trick is correctly predicting which things you're going to access again soon—stuff you saw recently, stuff that's sequentially after or just nearby stuff you recently looked up, etc. Going back to our yellow pages analogy, cache is almost like a waiting room space right next to your office. Cache also takes up space (as I mentioned, probably in RAM), so you don't want to dedicate so many square feet to the waiting room that you can't actually invite many people into the office proper.
-
-RocksDB has a pretty thorough and efficient system for managing both of them. NuDB takes a different approach entirely: it says, "look, we have fast elevators and everyone lives pretty close to my office, so I'll just call them as I need them and keep as much office space as I can for actual work". If your elevators are actually slow (spinning disks) then you're going to spend a lot of time waiting around for people to show up in your office.***
-
-RocksDB has performance-related configuration options you can modify to achieve maximum transaction processing throughput. (NuDB does not have performance-related configuration options.) Here is an example of the recommended configuration for a `rippled` server using RocksDB:
+***TODO: reordered to match order in rippled-example.cfg***
 
 ```
 [node_db]
 type=RocksDB
+path={path_to_ledger_store}
 open_files=512
-file_size_mb=64
-file_size_mult=2
 filter_bits=12
 cache_mb=512
-path={path_to_ledger_store}
+file_size_mb=64
+file_size_mult=2
 ```
+
+#### More About Using NuDb
+
+[NuDB](https://github.com/vinniefalco/nudb#introduction) is an append-only key-value store that is optimized for SSD drives.
+
+NuDB has nearly constant performance and memory footprints regardless of the amount of data being [stored](#storage). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
+
+Non-validator production servers should be configured to use NuDB and to store the amount of historical data required for the use case.
+
+NuDB does not have performance-related configuration options available in `rippled.cfg`.
 
 #### History Sharding
 
@@ -118,13 +111,13 @@ path={path_to_ledger_store}
 
 The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. At the time of writing (2018-10-29), a `rippled` server stores about 12GB of data per day and requires 8.4TB to store the full history of the XRP Ledger. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
 
-Online deletion enables purging of `rippled` ledgers from databases without any disruption of service. It removes only records that are not part of the current ledgers. ***TODO: what do we mean by "current ledgers"?*** Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files. For more information, see [`[node_db]`: `online_delete`](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L832).
+Online deletion enables the purging of `rippled` ledgers from databases without any disruption of service. It removes only records that are not part of the current ledgers. ***TODO: what do we mean by "current ledgers"?*** Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files. For more information, see [`[node_db]`: `online_delete`](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L832).
 
 <!-- {# ***TODO***: Add link to online_delete section, when complete, per https://ripplelabs.atlassian.net/browse/DOC-1313  #} -->
 
 ### Log Level
 
-The default `rippled.cfg` file sets the logging verbosity to `warning` in the `[rpc_startup]` stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
+The example `rippled-example.cfg` file sets the logging verbosity to `warning` in the `[rpc_startup]` stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
 
 **Caution:** If you omit the `log_level` command from the `[rpc_startup]` stanza, `rippled` writes logs to disk at the `debug` level and outputs `warning` level logs to the console. `debug` level logging requires several more GB of disk space per day than `warning` level, depending on transaction volumes and client activity.
 
@@ -153,12 +146,22 @@ You'll get the best performance on bare metal, but virtual machines can perform 
 
 #### Storage
 
-Ripple recommends estimating storage sizing at roughly 12GB per day of data kept online with NuDB. RocksDB requires around 8GB per day. However, the data per day changes with activity in the network. You should provision extra capacity to prepare for future growth. At the time of writing (2018-10-29), a server with all XRP Ledger history requires 8.4TB.
+Here are some estimated `rippled` storage requirements:
+
+- RocksDB stores around 8GB per day
+- NuDB stores around 12GB per day
+
+The amount of data stored per day changes with activity in the network.
+
+You should provision extra storage capacity to prepare for future growth. At the time of writing (2018-10-29), a `rippled` server storing the full history of the XRP Ledger required 8.4TB.
 
 <!-- {# ***TODO: Update the dated storage consideration above, as needed. ***#} -->
 <!-- {# ***TODO: DOC-1331 tracks: Create historic metrics that a user can use to derive what will be required. For ex, a chart with 1TB in 2014, 3TB in 2015, 7TB in 2018 ***#} -->
 
-SSD storage should support several thousand of both read and write IOPS. The maximum reads and writes per second that Ripple engineers have observed are over 10,000 reads per second (in heavily-used public server clusters), and over 7,000 writes per second (in dedicated performance testing).
+SSD storage should support several thousand of both read and write IOPS. Ripple engineers observed the following maximum reads and writes per second:
+
+- Over 10,000 reads per second (in heavily-used public server clusters)
+- Over 7,000 writes per second (in dedicated performance testing)
 
 ##### Amazon Web Services
 
@@ -170,10 +173,16 @@ AWS instance stores (`ephemeral` storage) do not have these constraints. Therefo
 
 #### RAM/Memory
 
-Memory requirements are mainly a function of the `node_size` configuration setting and the amount of client traffic retrieving historical data. As mentioned, production servers should maximize performance and set this parameter to `huge`.
-
-You can set the `node_size` parameter lower to use less memory, but you should only do this for testing. With a `node_size` of `medium`, a `rippled` server can be reasonably stable in a test Linux system with 16GB of RAM.
+Memory requirements are mainly a function of the `node_size` configuration setting and the amount of client traffic retrieving historical data. For more information about memory requirements, see [Node Size](#node-size).
 
 #### Network
 
-Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers. The minimum requirements are roughly 2Mbps transmit and 2Mbps receive for current transaction volumes. However, these can burst up to 100MBps transmissions when serving historical ledger and transaction reports. When a `rippled` server initially starts up, it can burst to over 20Mbps receive.
+Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers.
+
+Here are examples of observed network bandwidth use for common `rippled` tasks:
+
+| Task                                            | Transmit/Receive           |
+|:------------------------------------------------|:---------------------------|
+| Process current transaction volumes             | 2Mbps transmit, 2 Mbps receive |
+| Serve historical ledger and transaction reports | 100Mbps transmit           |
+| Start up `rippled`                              | 20Mbps receive             |
