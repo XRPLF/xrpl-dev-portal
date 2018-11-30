@@ -1,23 +1,12 @@
 # Capacity Planning
 
-This section describes some of the challenges related to scaling `rippled` servers for testing and production deployments. Additionally, it describes how hardware and configuration settings relate to those challenges. Finally, this section offers recommendations to assist you in properly setting up `rippled` to meet the goals for the use case of your deployment.
-
-Even the most minimally functional `rippled` server must contain the most recently validated ledger versions to submit transactions to the network and verify the integrity of the XRP Ledger. Beyond these requirements, consider the following possible business needs:
-
-- Handling ever-increasing transaction volume
-- Servicing transaction reporting information to clients
-- Maintaining varying amounts of historical data
-
-To meet your `rippled` capacity requirements, you must address these technical factors:
-
-- The [configuration settings](#configuration-settings) that affect resource utilization
-- The [network and hardware](#network-and-hardware) requirements to achieve consistent, good performance across the XRP Ledger network
+This section describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of your `rippled` server. Being aware of these considerations can help you ensure that your `rippled` server is ready to handle XRP Ledger network capacity today and in the near future.
 
 
 
 ## Configuration Settings
 
-Ripple recommends using these configuration guidelines to optimize performance of your `rippled` server.
+Ripple recommends using these configuration guidelines to optimize resource utilization and performance of your `rippled` server.
 
 You can set the following parameters in the `rippled.cfg` file used for your `rippled` server. You can access an example configuration file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo.
 
@@ -126,6 +115,8 @@ The example `rippled-example.cfg` file sets the logging verbosity to `warning` i
 ## Network and Hardware
 
 Each `rippled` server in the XRP Ledger network performs all of the transaction processing work of the network. Therefore, the baseline hardware for production `rippled` servers should be similar to that used in Ripple's [performance testing](https://ripple.com/dev-blog/demonstrably-scalable-blockchain/).
+
+Ensuring that your `rippled` server meets these network and hardware requirements helps achieve consistent, good performance across the XRP Ledger network.
 
 
 ### Recommendation
