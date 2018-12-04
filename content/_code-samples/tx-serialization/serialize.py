@@ -3,6 +3,7 @@
 # Transaction Serialization Sample Code (Python3 version)
 # Author: rome@ripple.com
 # Copyright Ripple 2018
+# Requires Python 3.5+ because of bytes.hex()
 
 import argparse
 import json
@@ -416,6 +417,9 @@ def serialize_tx(tx, for_signing=False):
     fields_as_bytes = []
     for field_name in field_order:
         if (DEFINITIONS["FIELDS"][field_name]["isSerialized"]):
+            if for_signing and not DEFINITIONS["FIELDS"][field_name]["isSigningField"]:
+                # Skip non-signing fields in for_signing mode.
+                continue
             field_val = tx[field_name]
             field_bytes = field_to_bytes(field_name, field_val)
             logger.debug("{n}: {h}".format(n=field_name, h=field_bytes.hex()))
