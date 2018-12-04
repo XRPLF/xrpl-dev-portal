@@ -4,9 +4,11 @@
 # Author: rome@ripple.com
 # Copyright Ripple 2018
 
+import argparse
 import json
 import logging
 import re
+import sys
 
 from address import decode_address
 from xrpl_num import IssuedAmount
@@ -15,6 +17,12 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
 
 def load_defs(fname="definitions.json"):
+    """
+    Loads JSON from the definitions file and converts it to a preferred format.
+
+    (The definitions file should be drop-in compatible with the one from the
+    ripple-binary-codec JavaScript package.)
+    """
     with open(fname) as definitions_file:
         definitions = json.load(definitions_file)
         return {
@@ -53,33 +61,71 @@ def field_id(field_name):
         # high 4 bits is the type_code
         # low 4 bits is the field code
         combined_code = (type_code << 4) | field_code
-        return bytes_from_uint(combined_code, 8)
+        return uint8_to_bytes(combined_code)
     elif type_code >= 16 and field_code < 16:
         # first 4 bits are zeroes
         # next 4 bits is field code
         # next byte is type code
-        byte1 = bytes_from_uint(field_code, 8)
-        byte2 = bytes_from_uint(type_code, 8)
+        byte1 = uint8_to_bytes(field_code)
+        byte2 = uint8_to_bytes(type_code)
         return b''.join( (byte1, byte2) )
     elif type_code < 16 and field_code >= 16:
         # first 4 bits is type code
         # next 4 bits are zeroes
         # next byte is field code
-        byte1 = bytes_from_uint(type_code << 4, 8)
-        byte2 = bytes_from_uint(field_code, 8)
+        byte1 = uint8_to_bytes(type_code << 4)
+        byte2 = uint8_to_bytes(field_code)
         return b''.join( (byte1, byte2) )
     else: # both are >= 16
         # first byte is all zeroes
         # second byte is type
         # third byte is field code
-        byte2 = bytes_from_uint(type_code, 8)
-        byte3 = bytes_from_uint(field_code, 8)
+        byte2 = uint8_to_bytes(type_code)
+        byte3 = uint8_to_bytes(field_code)
         return b''.join( (bytes(1), byte2, byte3) )
 
-def bytes_from_uint(i, bits):
-    if bits % 8:
-        raise ValueError("bytes_from_uint: bits must be divisible by 8")
-    return i.to_bytes(bits // 8, byteorder="big", signed=False)
+def vl_encode(vl_contents):
+    """
+    Helper function for variable-length fields including Blob types
+    and some AccountID types.
+
+    Encodes arbitrary binary data with a length prefix. The length of the prefix
+    is 1-3 bytes depending on the length of the contents:
+
+    Content length <= 192 bytes: prefix is 1 byte
+    192 bytes < Content length <= 12480 bytes: prefix is 2 bytes
+    12480 bytes < Content length <= 918744 bytes: prefix is 3 bytes
+    """
+
+    vl_len = len(vl_contents)
+    if vl_len <= 192:
+        len_byte = vl_len.to_bytes(1, byteorder="big", signed=False)
+        return b''.join( (len_byte, vl_contents) )
+    elif vl_len <= 12480:
+        vl_len -= 193
+        byte1 = ((vl_len >> 8) + 193).to_bytes(1, byteorder="big", signed=False)
+        byte2 = (vl_len & 0xff).to_bytes(1, byteorder="big", signed=False)
+        return b''.join( (byte1, byte2, vl_contents) )
+    elif vl_len <= 918744:
+        vl_len -= 12481
+        byte1 = (241 + (vl_len >> 16)).to_bytes(1, byteorder="big", signed=False)
+        byte2 = ((vl_len >> 8) & 0xff).to_bytes(1, byteorder="big", signed=False)
+        byte3 = (vl_len & 0xff).to_bytes(1, byteorder="big", signed=False)
+        return b''.join( (byte1, byte2, byte3, vl_contents) )
+
+    raise ValueError("VariableLength field must be <= 918744 bytes long")
+
+
+# Individual field type serialization routines ---------------------------------
+
+def accountid_to_bytes(address):
+    """
+    Serialize an AccountID field type. These are variable-length encoded.
+
+    Some fields contain nested non-VL-encoded AccountIDs directly; those call
+    decode_address() instead of this function.
+    """
+    return vl_encode(decode_address(address))
 
 def amount_to_bytes(a):
     """
@@ -109,13 +155,38 @@ def amount_to_bytes(a):
     else:
         raise ValueError("amount must be XRP string or {currency, value, issuer}")
 
-def issued_amount_as_bytes(strnum):
-    num = Decimal(strnum)
+def array_to_bytes(array):
+    """
+    Serialize an array of objects from decoded JSON.
+    Each member object must have a type wrapper and an inner object.
+    For example:
+    [
+        {
+            // wrapper object
+            "Memo": {
+                // inner object
+                "MemoType": "687474703a2f2f6578616d706c652e636f6d2f6d656d6f2f67656e65726963",
+                "MemoData": "72656e74"
+            }
+        }
+    ]
+    """
+    members_as_bytes = []
+    for el in array:
+        wrapper_key = list(el.keys())[0]
+        inner_obj = el[wrapper_key]
+        members_as_bytes.append(field_to_bytes(field_name=wrapper_key, field_val=el))
+    members_as_bytes.append(field_id("ArrayEndMarker"))
+    return b''.join(members_as_bytes)
 
-
-def tx_type_to_bytes(txtype):
-    type_uint = DEFINITIONS["TRANSACTION_TYPES"][txtype]
-    return type_uint.to_bytes(2, byteorder="big", signed=False)
+def blob_to_bytes(field_val):
+    """
+    Serializes a string of hex as binary data with a variable-length encoded
+    length prefix. (The prefix is 1-3 bytes depending on the length of the
+    contents.)
+    """
+    vl_contents = bytes.fromhex(field_val)
+    return vl_encode(vl_contents)
 
 def currency_code_to_bytes(code_string, xrp_ok=False):
     if re.match(r"^[A-Za-z0-9?!@#$%^&*<>(){}\[\]|]{3}$", code_string):
@@ -143,54 +214,43 @@ def currency_code_to_bytes(code_string, xrp_ok=False):
     else:
         raise ValueError("invalid currency code")
 
-def vl_encode(vl_contents):
-    vl_len = len(vl_contents)
-    if vl_len <= 192:
-        len_byte = vl_len.to_bytes(1, byteorder="big", signed=False)
-        return b''.join( (len_byte, vl_contents) )
-    elif vl_len <= 12480:
-        vl_len -= 193
-        byte1 = ((vl_len >> 8) + 193).to_bytes(1, byteorder="big", signed=False)
-        byte2 = (vl_len & 0xff).to_bytes(1, byteorder="big", signed=False)
-        return b''.join( (byte1, byte2, vl_contents) )
-    elif vl_len <= 918744:
-        vl_len -= 12481
-        byte1 = (241 + (vl_len >> 16)).to_bytes(1, byteorder="big", signed=False)
-        byte2 = ((vl_len >> 8) & 0xff).to_bytes(1, byteorder="big", signed=False)
-        byte3 = (vl_len & 0xff).to_bytes(1, byteorder="big", signed=False)
-        return b''.join( (byte1, byte2, byte3, vl_contents) )
+def hash128_to_bytes(contents):
+    """
+    Serializes a hexadecimal string as binary and confirms that it's 128 bits
+    """
+    b = hash_to_bytes(contents)
+    if len(b) != 16: # 16 bytes = 128 bits
+        raise ValueError("Hash128 is not 128 bits long")
+    return b
 
-    raise ValueError("VariableLength field must be <= 918744 bytes long")
+def hash160_to_bytes(contents):
+    b = hash_to_bytes(contents)
+    if len(b) != 20: # 20 bytes = 160 bits
+        raise ValueError("Hash160 is not 160 bits long")
+    return b
 
-def vl_to_bytes(field_val):
-    vl_contents = bytes.fromhex(field_val)
-    return vl_encode(vl_contents)
+def hash256_to_bytes(contents):
+    b = hash_to_bytes(contents)
+    if len(b) != 32: # 32 bytes = 256 bits
+        raise ValueError("Hash256 is not 256 bits long")
+    return b
 
 def hash_to_bytes(contents):
+    """
+    Helper function; serializes a hash value from a hexadecimal string
+    of any length.
+    """
     return bytes.fromhex(field_val)
-
-def accountid_to_bytes(address):
-    return vl_encode(decode_address(address))
-
-def array_to_bytes(array):
-    """
-    Serialize an array of objects.
-    Each member object must have a type wrapper and an inner object.
-    """
-    members_as_bytes = []
-    for el in array:
-        wrapper_key = list(el.keys())[0]
-        inner_obj = el[wrapper_key]
-        members_as_bytes.append(field_to_bytes(field_name=wrapper_key, field_val=el))
-    members_as_bytes.append(field_id("ArrayEndMarker"))
-    return b''.join(members_as_bytes)
 
 def object_to_bytes(obj):
     """
-    Serialize an object, assuming a type wrapper, for example:
+    Serialize an object from decoded JSON.
+    Each object must have a type wrapper and an inner object. For example:
 
     {
+        // type wrapper
         "SignerEntry": {
+            // inner object
             "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
             "SignerWeight": 1
         }
@@ -260,11 +320,31 @@ def path_as_bytes(path):
         if "issuer" in step.keys():
             type_byte |= 0x20
             step_data.append(decode_address(step["issuer"]))
-        step_data = [bytes_from_uint(type_byte, 8)] + step_data
+        step_data = [uint8_to_bytes(type_byte)] + step_data
         path_contents += step_data
 
     return b''.join(path_contents)
 
+def tx_type_to_bytes(txtype):
+    """
+    TransactionType field is a special case that is written in JSON
+    as a string name but in binary as a UInt16.
+    """
+    type_uint = DEFINITIONS["TRANSACTION_TYPES"][txtype]
+    return uint16_to_bytes(type_uint)
+
+
+def uint8_to_bytes(i):
+    return i.to_bytes(1, byteorder="big", signed=False)
+
+def uint16_to_bytes(i):
+    return i.to_bytes(2, byteorder="big", signed=False)
+
+def uint32_to_bytes(i):
+    return i.to_bytes(4, byteorder="big", signed=False)
+
+
+# Core serialization logic -----------------------------------------------------
 
 def field_to_bytes(field_name, field_val):
     """
@@ -285,22 +365,51 @@ def field_to_bytes(field_name, field_val):
         # TypeName: function(field): bytes object
         "AccountID": accountid_to_bytes,
         "Amount": amount_to_bytes,
-        "Blob": vl_to_bytes,
-        "Hash128": hash_to_bytes,
-        "Hash160": hash_to_bytes,
-        "Hash256": hash_to_bytes,
+        "Blob": blob_to_bytes,
+        "Hash128": hash128_to_bytes,
+        "Hash160": hash160_to_bytes,
+        "Hash256": hash256_to_bytes,
         "PathSet": pathset_to_bytes,
         "STArray": array_to_bytes,
         "STObject": object_to_bytes,
-        "UInt8" : lambda x:bytes_from_uint(x, 8),
-        "UInt16": lambda x:bytes_from_uint(x, 16),
-        "UInt32": lambda x:bytes_from_uint(x, 32),
-        "UInt64": lambda x:bytes_from_uint(x, 64),
+        "UInt8" : uint8_to_bytes,
+        "UInt16": uint16_to_bytes,
+        "UInt32": uint32_to_bytes,
     }
     field_binary = dispatch[field_type](field_val)
     return b''.join( (id_prefix, field_binary) )
 
-def serialize_tx(tx):
+def serialize_tx(tx, for_signing=False):
+    """
+    Takes a transaction as decoded JSON and returns a bytes object representing
+    the transaction in binary format.
+
+    The input format should omit transaction metadata and the transaction
+    should be formatted with the transaction instructions at the top level.
+    ("hash" can be included, but will be ignored)
+
+    If for_signing=True, then only signing fields are serialized, so you can use
+    the output to sign the transaction.
+
+    SigningPubKey and TxnSignature are optional, but the transaction can't
+    be submitted without them.
+
+    For example:
+
+    {
+      "TransactionType" : "Payment",
+      "Account" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+      "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "Amount" : {
+         "currency" : "USD",
+         "value" : "1",
+         "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+      },
+      "Fee": "12",
+      "Flags": 2147483648,
+      "Sequence": 2
+    }
+    """
     field_order = sorted(tx.keys(), key=field_sort_key)
     logger.debug("Canonical field order: %s" % field_order)
 
@@ -313,41 +422,39 @@ def serialize_tx(tx):
             fields_as_bytes.append(field_bytes)
 
     all_serial = b''.join(fields_as_bytes)
-    logger.info(all_serial.hex().upper())
+    logger.debug(all_serial.hex().upper())
     return all_serial
 
+# Startup stuff ----------------------------------------------------------------
+logger.setLevel(logging.WARNING)
+DEFINITIONS = load_defs()
 
-
-################################################################################
-
+# Commandline utility ----------------------------------------------------------
+#    parses JSON from a file or commandline argument and prints the serialized
+#    form of the transaction as hex
 if __name__ == "__main__":
-    logger.setLevel(logging.DEBUG)
-    DEFINITIONS = load_defs()
+    p = argparse.ArgumentParser()
+    txsource = p.add_mutually_exclusive_group()
+    txsource.add_argument("-f", "--filename", default="test-cases/tx1.json",
+        help="Read input transaction from a JSON file. (Uses test-cases/tx1.json by default)")
+    txsource.add_argument("-j", "--json",
+        help="Read input transaction JSON from the command line")
+    txsource.add_argument("--stdin", action="store_true", default=False,
+        help="Read input transaction JSON from standard input (stdin)")
+    p.add_argument("-v", "--verbose", action="store_true", default=False,
+        help="Display debug messages (such as individual field serializations)")
+    args = p.parse_args()
 
-    # example_tx = {
-    #   "TransactionType" : "Payment",
-    #   "Account" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-    #   "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-    #   "Amount" : {
-    #      "currency" : "USD",
-    #      "value" : "1",
-    #      "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-    #   },
-    #   "Fee": "12",
-    #   "Flags": 2147483648,
-    #   "Sequence": 2
-    # }
+    if args.verbose:
+        logger.setLevel(logging.DEBUG)
 
-    with open("test-cases/tx3-nometa.json") as f:
-        example_tx = json.load(f)
+    # Determine source of JSON transaction:
+    if args.json:
+        example_tx = json.loads(args.json)
+    elif args.stdin:
+        example_tx = json.load(sys.stdin)
+    else:
+        with open(args.filename) as f:
+            example_tx = json.load(f)
 
-    serialize_tx(example_tx)
-
-    # example rippled signature:
-    # ./rippled sign masterpassphrase (the above JSON)
-    # where "masterpassphrase" is the key behind rHb9...
-    # snoPBrXtMeMyMHUVTgbuqAfg1SUTb in base58
-    # "tx_blob" : "1200002280000000240000000261D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000C73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD0207446304402201FE0A74FC1BDB509C8F42B861EF747C43B92917706BB623F0A0D621891933AF402205206FBA8B0BF6733DB5B03AD76B5A76A2D46DF9093916A3BEC78897E58A3DF148114B5F762798A53D543A014CAF8B297CFF8F2F937E883143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
-    # "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-    # "TxnSignature" : "304402201FE0A74FC1BDB509C8F42B861EF747C43B92917706BB623F0A0D621891933AF402205206FBA8B0BF6733DB5B03AD76B5A76A2D46DF9093916A3BEC78897E58A3DF14",
-    # "hash" : "8BA1509E4FB80CCF76CD9DE924B8B71597637C775BA2DC515F90C333DA534BF3"
+    print(serialize_tx(example_tx).hex().upper())
