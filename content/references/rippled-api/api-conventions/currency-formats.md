@@ -60,7 +60,7 @@ The standard currency mapping allocates the bits as follows:
     Ripple recommends using [ISO 4217](http://www.xe.com/iso4217.php) codes, or popular pseudo-ISO 4217 codes such as "BTC". However, any combination of the following characters is permitted: all uppercase and lowercase letters, digits, as well as the symbols `?`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `<`, `>`, `(`, `)`, `{`, `}`, `[`, `]`, and <code>&#124;</code>. The currency code `XRP` (all-uppercase) is reserved for XRP and cannot be used by issued currencies.
 4. The next 40 bits are reserved and should be all `0`'s.
 
-In the rare case that a field specifies a currency code for XRP, the currency code should be all zeroes.
+Usually, XRP amounts are not specified with currency codes. In the rare case that a field specifies a currency code for XRP, the currency code's binary format is all zeroes.
 
 ### Nonstandard Currency Codes
 
