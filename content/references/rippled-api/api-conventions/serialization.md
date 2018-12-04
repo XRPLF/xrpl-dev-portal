@@ -1,7 +1,7 @@
 # Serialization Format
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
 
-This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places. The [rippled APIs](rippled-apis.html) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
+This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places. The [rippled APIs](rippled-api.html) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
 The process of serializing a transaction from JSON or any other representation into their canonical binary format can be summarized with these steps:
 
@@ -106,7 +106,7 @@ The field code is combined with the type code to make a field's [Field ID](#fiel
 
 ### Variable-Length Encoding
 
-Some types of fields are Variable-Length encoding, which means they are not always the same byte length and are prefixed with a length indicator to indicate how much data they contain. `Blob` fields (containing arbitrary binary data) are one such variable-length encoded type. For a list of which types are variable-length encoded, see the [Internal Formats](#internal-formats) table.
+Some types of fields are Variable-Length encoding, which means they are not always the same byte length and are prefixed with a length indicator to indicate how much data they contain. `Blob` fields (containing arbitrary binary data) are one such variable-length encoded type. For a list of which types are variable-length encoded, see the [Type List](#type-list) table.
 
 **Note:** Some types that are not variable-length encoded nonetheless vary in length. These types have different ways of indicating how long they are.
 
