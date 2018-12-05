@@ -545,6 +545,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/the-rippled-server/online-deletion.md
+        html: online-deletion.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: Online deletion purges outdated transaction and state history.
+        targets:
+            - local
+
     -   md: concepts/the-rippled-server/peer-protocol.md
         html: peer-protocol.html
         funnel: Docs

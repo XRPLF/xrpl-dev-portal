@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>70</y>
+      <w>210</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Ledgers not stored
+bg=#e1e4e8
+fg=#23292f
+lt=..</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>20</x>
+      <y>110</y>
+      <w>740</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+
+Ledger versions
+m1=oldest
+m2=newest</panel_attributes>
+    <additional_attributes>10.0;20.0;720.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>70</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Ledgers available locally but not served to peers
+style=wordwrap
+bg=#999da2
+fg=#f5f7f9
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>70</y>
+      <w>260</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Ledgers served to peers 
+when requested
+style=wordwrap
+bg=#1db4ff
+transparency=0
+fg=#f5f7f9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>270</x>
+      <y>30</y>
+      <w>170</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>fetch_depth setting
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>410</x>
+      <y>30</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>70.0;40.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
