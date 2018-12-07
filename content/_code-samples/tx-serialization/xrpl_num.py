@@ -54,12 +54,10 @@ class IssuedAmount:
 
     def canonical_zero_serial(self):
         """
-        Returns canonical format for zero:
+        Returns canonical format for zero (a special case):
         - "Not XRP" bit = 1
-        - "Sign bit" = 1 (for positive !!)
-        - exponent ???
+        - Everything else is zeroes
+        - Arguably this means it's canonically written as "negative zero"
+          because the encoding usually uses 1 for positive.
         """
-        # Mantissa is all zeroes. Must be positive zero.
-        #bitval = 0b1100000001000000000000000000000000000000000000000000000000000000
-        #return bitval.to_bytes(8, byteorder="big", signed=False)
         return (0x8000000000000000).to_bytes(8, byteorder="big", signed=False)

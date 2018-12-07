@@ -2,17 +2,6 @@
 <diagram program="umlet" version="14.2">
   <zoom_level>10</zoom_level>
   <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>40</x>
-      <y>40</y>
-      <w>650</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>PathSet</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
       <x>50</x>
@@ -123,26 +112,15 @@
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>40</x>
-      <y>180</y>
-      <w>650</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>Path</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>30</x>
       <y>90</y>
       <w>40</w>
-      <h>110</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;90.0;20.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;20.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -292,11 +270,11 @@
     <coordinates>
       <x>410</x>
       <y>20</y>
-      <w>60</w>
+      <w>70</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0;40.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0;50.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
@@ -319,5 +297,49 @@
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;40.0;40.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>60</y>
+      <w>650</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>40</x>
+      <y>30</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>PathSet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>50</x>
+      <y>170</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Path</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>200</y>
+      <w>650</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
   </element>
 </diagram>

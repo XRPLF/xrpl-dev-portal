@@ -10,13 +10,32 @@ The process of serializing a transaction from JSON or any other representation i
     **Note:** The `SigningPubKey` must also be provided at this step. When signing, you can derive this key from the secret key that is provided for signing.
 
 2. Convert each field's data into its "internal" binary format.
+
 3. Sort the fields in canonical order.
+
 4. Prefix each field with a Field ID.
+
 5. Concatenate the fields (including prefixes) in their sorted order.
 
-The result is a single binary blob that can be signed using well-known signature algorithms such as ECDSA (with the secp256k1 elliptic curve) and Ed25519. After signing, you must attach the signature to the transaction, calculate the transaction's identifying hash, then re-serialize the transaction with the additional fields.
+The result is a single binary blob that can be signed using well-known signature algorithms such as ECDSA (with the secp256k1 elliptic curve) and Ed25519. After signing, you must re-serialize the transaction with the `TxnSignature` field included.
 
 **Note:** The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger objects](ledger-object-types.html) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.
+
+### Examples
+
+Both signed and unsigned transactions can be represented in both JSON and binary formats. The following samples show the same signed transaction in its JSON and binary formats:
+
+**JSON:**
+
+```json
+{% include '_code-samples/tx-serialization/test-cases/tx1.json' %}
+```
+
+**Binary (represented as hexadecimal):**
+
+```text
+{% include '_code-samples/tx-serialization/test-cases/tx1-binary.txt' %}
+```
 
 ## Sample Code
 
@@ -49,7 +68,7 @@ The following table defines the top-level fields from the definitions file:
 | `TYPES`               | Map of data types to their "type code" for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. |
 | `LEDGER_ENTRY_TYPES`  | Map of [ledger objects](ledger-object-types.html) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transaction-metadata.html). |
 | `FIELDS`              | A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See the "Field properties" table below for definitions of those fields.) |
-| `TRANSACTION_RESULTS` | Map of [transaction result codes](transaction-results.html) to their numeric values. Result types not included in ledgers have negative values;`tesSUCCESS` has numeric value 0; [`tec`-class codes](tec-codes.html) represent failures that are included in ledgers. |
+| `TRANSACTION_RESULTS` | Map of [transaction result codes](transaction-results.html) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](tec-codes.html) represent failures that are included in ledgers. |
 | `TRANSACTION_TYPES`   | Map of all [transaction types](transaction-types.html) to their numeric values. |
 
 For purposes of serializing transactions for signing and submitting, the `FIELDS`, `TYPES`, and `TRANSACTION_TYPES` fields are necessary.
@@ -59,7 +78,7 @@ The field definition objects in the `FIELDS` array have the following fields:
 | Field            | Type    | Contents                                        |
 |:-----------------|:--------|:------------------------------------------------|
 | `nth`            | Number  | The [field code](#field-codes) of this field, for use in constructing its [Field ID](#field-ids) and ordering it with other fields of the same data type. |
-| `isVLEncoded`    | Boolean | If `true`, this field is [variable-length encoded](#variable-length-encoding). |
+| `isVLEncoded`    | Boolean | If `true`, this field is [length-prefixed](#length-prefixing). |
 | `isSerialized`   | Boolean | If `true`, this field should be encoded into serialized binary data. When this field is `false`, the field is typically reconstructed on demand rather than stored. |
 | `isSigningField` | Boolean | If `true` this field should be serialized when preparing a transaction for signing. If `false`, this field should be omitted from the data to be signed. (It may not be part of transactions at all.) |
 | `type`           | String  | The internal data type of this field. This maps to a key in the `TYPES` map, which gives the [type code](#type-codes) for this field. |
@@ -68,15 +87,14 @@ The field definition objects in the `FIELDS` array have the following fields:
 
 ## Canonical Field Order
 
-All fields in a transaction are sorted in a specific order based on the field's type first, then the field itself second. (Think of it as sorting by family name, then given name, where the family name is the field's type and the given name is the field itself.)
+All fields in a transaction are sorted in a specific order based first on the field's type, then on the field itself (a "field code"). (Think of it as sorting by family name, then given name, where the family name is the field's type and the given name is the field itself.)
 
 ### Field IDs
 
 [[Source - Encoding]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L117-L148 "Source")
 [[Source - Decoding]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L484-L509 "Source")
 
-
-When you combine the type code and sort code, you get the field's identifier, which is prefixed before the field in the final serialized blob. The size of the Field ID is one to three bytes depending on the type code and field codes it combines. See the following table:
+When you combine the type code and field code, you get the field's unique identifier, which is prefixed before the field in the final serialized blob. The size of the Field ID is one to three bytes depending on the type code and field codes it combines. See the following table:
 
 |                  | Type Code < 16                                                                | Type Code >= 16 |
 |:-----------------|:------------------------------------------------------------------------------|:--|
@@ -90,29 +108,31 @@ When decoding, you can tell how many bytes the field ID is by which bits **of th
 | **Low 4 bits are nonzero**  | 1 byte: high 4 bits define type; low 4 bits define field.                     | 2 bytes: low 4 bits of the first byte define field; next byte defines type |
 | **Low 4 bits are zero** | 2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field | 3 bytes: first byte is 0x00, second byte defines type; third byte defines field |
 
+**Caution:** Even though the Field ID consists of the two elements that are used to sort fields, you should not sort by the serialized Field ID itself, because the byte structure of the Field ID changes the sort order.
+
 ### Type Codes
 
-Each field type has an arbitrary sort code, with lower codes sorting first. These codes are defined in [`SField.h`](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74).
+Each field type has an arbitrary type code, with lower codes sorting first. These codes are defined in [`SField.h`](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74).
 
 For example, [UInt32 has sort order 2](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L59), so all UInt32 fields come before all [Amount fields with order 6](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L63).
 
 ### Field Codes
 
-Each field also has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in [`SField.cpp`](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266).
+Each field has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in [`SField.cpp`](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266).
 
 For example, the `Account` field of a [Payment transaction][] [has sort code 1](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L219), so it comes before the `Destination` field which [has sort code 3](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L221).
 
-The field code is combined with the type code to make a field's [Field ID](#field-ids).
+Field codes are reused for fields of different field types, but fields of the same type never have the same field code. When you combine the type code with the field code, you get the field's unique [Field ID](#field-ids).
 
-### Variable-Length Encoding
+### Length Prefixing
 
-Some types of fields are Variable-Length encoding, which means they are not always the same byte length and are prefixed with a length indicator to indicate how much data they contain. `Blob` fields (containing arbitrary binary data) are one such variable-length encoded type. For a list of which types are variable-length encoded, see the [Type List](#type-list) table.
+Some types of variable-length fields are prefixed with a length indicator. `Blob` fields (containing arbitrary binary data) are one such type. For a list of which types are length-prefixed, see the [Type List](#type-list) table.
 
-**Note:** Some types that are not variable-length encoded nonetheless vary in length. These types have different ways of indicating how long they are.
+**Note:** Some types of fields that vary in length are not length-prefixed. Those types have other ways of indicating the end of their contents.
 
-Variable-length fields are encoded with one to three bytes indicating the length of the field immediately after the type prefix and before the contents.
+The length prefix consists of one to three bytes indicating the length of the field immediately after the type prefix and before the contents.
 
-- If the field contains 0 to 192 bytes of data, the first byte defines the length of the VariableLength data, then that many bytes of data follow immediately after the length byte.
+- If the field contains 0 to 192 bytes of data, the first byte defines the length of the contents, then that many bytes of data follow immediately after the length byte.
 
 - If the field contains 193 to 12480 bytes of data, the first two bytes indicate the length of the field with the following formula:
 
@@ -122,7 +142,7 @@ Variable-length fields are encoded with one to three bytes indicating the length
 
         12481 + ((byte1 - 241) * 65536) + (byte2 * 256) + byte3
 
-- A variable-length field cannot contain more than 918744 bytes of data.
+- A length-prefixed field cannot contain more than 918744 bytes of data.
 
 When decoding, you can tell from the value of the first length byte whether there are 0, 1, or 2 additional length bytes:
 
@@ -135,39 +155,41 @@ When decoding, you can tell from the value of the first length byte whether ther
 
 Transaction instructions may contain fields of any of the following types:
 
-| Type Name     | Type Code | Variable-Length? | Description                   |
-|:--------------|:----------|:-----------------|:------------------------------|
-| [AccountID][] | 8         | Yes              | The unique identifier for an [account](accounts.html). This field is variable-length encoded, but always exactly 20 bytes. |
-| [Amount][]    | 6         | No               | An amount of XRP or issued currency. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for issued currencies. |
-| [Blob][]      | 7         | Yes              | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
-| [Hash128][]   | 4         | No               | A 128-bit arbitrary binary value. The only such field is `EmailHash`, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a [Gravatar](https://www.gravatar.com/). |
-| [Hash160][]   | 17        | No               | A 160-bit arbitrary binary value. This may define a currency code or issuer. |
-| [Hash256][]   | 5         | No               | A 256-bit arbitrary binary value. This usually represents the "SHA-512Half" hash of a transaction, ledger version, or ledger data object. |
-| [PathSet][]   | 18        | No               | A set of possible [payment paths](paths.html) for a [cross-currency payment](cross-currency-payments.html). |
-| [STArray][]   | 15        | No               | An array containing a variable number of members, which can be different types depending on the field. Two cases of this include [memos](transaction-common-fields.html#memos-field) and lists of signers used in [multi-signing](multi-signing.html). |
-| [STObject][]  | 14        | No               | An object containing one or more nested fields. |
-| [UInt8][]     | 16        | No               | An 8-bit unsigned integer.    |
-| [UInt16][]    | 1         | No               | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
-| [UInt32][]    | 2         | No               | A 32-bit unsigned integer. The `Flags` and `Sequence` fields on all transactions are examples of this type. |
+| Type Name     | Type Code | Bit Length | [Length-prefixed]? | Description    |
+|:--------------|:----------|:-----------|:-------------------|----------------|
+| [AccountID][] | 8         | 160        | Yes             | The unique identifier for an [account](accounts.html). |
+| [Amount][]    | 6         | 64 or 384  | No               | An amount of XRP or issued currency. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for issued currencies. |
+| [Blob][]      | 7         | Variable   | Yes                                 | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
+| [Hash128][]   | 4         | 128        | No                                  | A 128-bit arbitrary binary value. The only such field is `EmailHash`, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a [Gravatar](https://www.gravatar.com/). |
+| [Hash160][]   | 17        | 160        | No                                  | A 160-bit arbitrary binary value. This may define a currency code or issuer. |
+| [Hash256][]   | 5         | 256        | No                                  | A 256-bit arbitrary binary value. This usually represents the "SHA-512Half" hash of a transaction, ledger version, or ledger data object. |
+| [PathSet][]   | 18        | Variable   | No                                  | A set of possible [payment paths](paths.html) for a [cross-currency payment](cross-currency-payments.html). |
+| [STArray][]   | 15        | Variable   | No                                  | An array containing a variable number of members, which can be different types depending on the field. Two cases of this include [memos](transaction-common-fields.html#memos-field) and lists of signers used in [multi-signing](multi-signing.html). |
+| [STObject][]  | 14        | Variable   | No                                  | An object containing one or more nested fields. |
+| [UInt8][]     | 16        | 8          | No                                  | An 8-bit unsigned integer. |
+| [UInt16][]    | 1         | 16         | No                                  | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
+| [UInt32][]    | 2         | 32         | No                                  | A 32-bit unsigned integer. The `Flags` and `Sequence` fields on all transactions are examples of this type. |
+
+[Length-prefixed]: #length-prefixing
 
 In addition to all of the above field types, the following types may appear in other contexts, such as [ledger objects](ledger-object-types.html) and [transaction metadata](transaction-metadata.html):
 
-| Type Name   | Type Code | Variable-Length? | Description                     |
-|:------------|:----------|:-----------------|:--------------------------------|
-| Transaction | 10001     | No               | A "high-level" type containing an entire [transaction](transaction-formats.html). |
-| LedgerEntry | 10002     | No               | A "high-level" type containing an entire [ledger object](ledger-object-types.html). |
-| Validation  | 10003     | No               | A "high-level" type used in peer-to-peer communications to represent a validation vote in the [consensus process](consensus.html). |
-| Metadata    | 10004     | No               | A "high-level" type containing [metadata for one transaction](transaction-metadata.html). |
-| [UInt64][]  | 3         | No               | A 64-bit unsigned integer. This type does not appear in transaction instructions, but several ledger objects use fields of this type. |
-| Vector256   | 19        | Yes              | This type does not appear in transaction instructions, but the [Amendments ledger object](amendments-object.html)'s `Amendments` field uses this to represent which [amendments](amendments.html) are currently enabled. |
+| Type Name   | Type Code | [Length-prefixed]? | Description                   |
+|:------------|:----------|:-------------------|:------------------------------|
+| Transaction | 10001     | No                 | A "high-level" type containing an entire [transaction](transaction-formats.html). |
+| LedgerEntry | 10002     | No                 | A "high-level" type containing an entire [ledger object](ledger-object-types.html). |
+| Validation  | 10003     | No                 | A "high-level" type used in peer-to-peer communications to represent a validation vote in the [consensus process](consensus.html). |
+| Metadata    | 10004     | No                 | A "high-level" type containing [metadata for one transaction](transaction-metadata.html). |
+| [UInt64][]  | 3         | No                 | A 64-bit unsigned integer. This type does not appear in transaction instructions, but several ledger objects use fields of this type. |
+| Vector256   | 19        | Yes                | This type does not appear in transaction instructions, but the [Amendments ledger object](amendments-object.html)'s `Amendments` field uses this to represent which [amendments](amendments.html) are currently enabled. |
 
 
 ### AccountID Fields
 [AccountID]: #accountid-fields
 
-Fields of this type contain the 160-bit identifier for an XRP Ledger [account](accounts.html). In JSON, these fields are represented as base58 XRP Ledger "addresses", with additional checksum data so that typos are unlikely to result in valid addresses. (This encoding, sometimes called "Base58Check", prevents accidentally sending money to the wrong address.) The binary format for these fields does not contain any checksum data. (However, since the binary format is used mostly for signed transactions, a typo or other error in transcribing a signed transaction would invalidate the signature, preventing it from sending money.)
+Fields of this type contain the 160-bit identifier for an XRP Ledger [account](accounts.html). In JSON, these fields are represented as base58 XRP Ledger "addresses", with additional checksum data so that typos are unlikely to result in valid addresses. (This encoding, sometimes called "Base58Check", prevents accidentally sending money to the wrong address.) The binary format for these fields does not contain any checksum data nor does it include the `0x00` "type prefix" used in [address base58 encoding](accounts.html#address-encoding). (However, since the binary format is used mostly for signed transactions, a typo or other error in transcribing a signed transaction would invalidate the signature, preventing it from sending money.)
 
-AccountIDs that appear as stand-alone fields (such as `Account` and `Destination`) are [variable-length encoded](#variable-length-encoding) despite being a fixed 160 bits in length. As a result, the length indicator for these fields is always the byte `0x14`. AccountIDs that appear as children of special fields ([Amount `issuer`][Amount] and [PathSet `account`][PathSet]) are _not_ variable-length encoded.
+AccountIDs that appear as stand-alone fields (such as `Account` and `Destination`) are [length-prefixed](#length-prefixing) despite being a fixed 160 bits in length. As a result, the length indicator for these fields is always the byte `0x14`. AccountIDs that appear as children of special fields ([Amount `issuer`][Amount] and [PathSet `account`][PathSet]) are _not_ length-prefixed.
 
 
 ### Amount Fields
@@ -176,9 +198,13 @@ AccountIDs that appear as stand-alone fields (such as `Account` and `Destination
 The "Amount" type is a special field type that represents an amount of currency, either XRP or an issued currency. This type consists of two sub-types:
 
 - **XRP**
+
     XRP is serialized as a 64-bit unsigned integer (big-endian order), except that the most significant bit is always 0 to indicate that it's XRP, and the second-most-significant bit is `1` to indicate that it is positive. Since the maximum amount of XRP (10<sup>17</sup> drops) only requires 57 bits, you can calculate XRP serialized format by taking standard 64-bit unsigned integer and performing a bitwise-OR with `0x4000000000000000`.
+
 - **Issued Currencies**
+
     Issued currencies consist of three segments in order:
+
     1. 64 bits indicating the amount in the [internal currency format](currency-formats.html#issued-currency-math). The first bit is `1` to indicate that this is not XRP.
     2. 160 bits indicating the [currency code](currency-formats.html#currency-codes). The standard API converts 3-character codes such as "USD" into 160-bit codes using the [standard currency code format](currency-formats.html#standard-currency-codes), but custom 160-bit codes are also possible.
     3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](accounts.html#address-encoding))
@@ -207,7 +233,7 @@ The following example shows the serialization format for an array (the `SignerEn
 ### Blob Fields
 [Blob]: #blob-fields
 
-The Blob type is a [variable-length encoded](#variable-length-encoding) field with arbitrary data. Two common fields that use this type are `SigningPubKey` and `TxnSignature`, which contain (respectively) the public key and signature that authorize a transaction to be executed.
+The Blob type is a [length-prefixed](#length-prefixing) field with arbitrary data. Two common fields that use this type are `SigningPubKey` and `TxnSignature`, which contain (respectively) the public key and signature that authorize a transaction to be executed.
 
 Blob fields have no further structure to their contents, so they consist of exactly the amount of bytes indicated in the variable-length encoding, after the Field ID and length prefixes.
 
@@ -258,7 +284,7 @@ The following table describes the possible fields and the bitwise flags to set i
 
 Some combinations are invalid; see [Path Specifications](paths.html#path-specifications) for details.
 
-The AccountIDs in the `account` and `issuer` fields are presented _without_ a variable-length encoding prefix. When the `currency` is XRP, the currency code is represented as 160 bits of zeroes.
+The AccountIDs in the `account` and `issuer` fields are presented _without_ a length prefix. When the `currency` is XRP, the currency code is represented as 160 bits of zeroes.
 
 Each step is followed directly by the next step of the path. As described above, last step of a path is followed by either `0xff` (if another path follows) or `0x00` (if this ends the last path).
 

@@ -2,17 +2,6 @@
 <diagram program="umlet" version="14.2">
   <zoom_level>10</zoom_level>
   <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>30</x>
-      <y>240</y>
-      <w>850</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>Issued Currency Amount Format</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
       <x>40</x>
@@ -193,17 +182,6 @@ style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>30</x>
-      <y>480</y>
-      <w>620</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>Issued Currency Code Format</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>310</x>
@@ -231,10 +209,10 @@ style=wordwrap</panel_attributes>
       <x>20</x>
       <y>290</y>
       <w>460</w>
-      <h>210</h>
+      <h>230</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;190.0;440.0;10.0</additional_attributes>
+    <additional_attributes>10.0;210.0;440.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -246,17 +224,6 @@ style=wordwrap</panel_attributes>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>10.0;210.0;20.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>30</x>
-      <y>30</y>
-      <w>620</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>XRP Amount Format</panel_attributes>
-    <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
@@ -336,6 +303,72 @@ style=wordwrap</panel_attributes>
       <h>30</h>
     </coordinates>
     <panel_attributes>integer drops (62 bits)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>50</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>30</x>
+      <y>20</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>XRP Amount Format</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>30</x>
+      <y>230</y>
+      <w>240</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Issued Currency Amount Format</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>260</y>
+      <w>850</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>90</x>
+      <y>470</y>
+      <w>240</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Issued Currency Code Format</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>500</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
     <additional_attributes/>
   </element>
 </diagram>

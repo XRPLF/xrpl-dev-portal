@@ -87,7 +87,7 @@ def field_id(field_name):
 
 def vl_encode(vl_contents):
     """
-    Helper function for variable-length fields including Blob types
+    Helper function for length-prefixed fields including Blob types
     and some AccountID types.
 
     Encodes arbitrary binary data with a length prefix. The length of the prefix
@@ -121,10 +121,10 @@ def vl_encode(vl_contents):
 
 def accountid_to_bytes(address):
     """
-    Serialize an AccountID field type. These are variable-length encoded.
+    Serialize an AccountID field type. These are length-prefixed.
 
-    Some fields contain nested non-VL-encoded AccountIDs directly; those call
-    decode_address() instead of this function.
+    Some fields contain nested non-length-prefixed AccountIDs directly; those
+    call decode_address() instead of this function.
     """
     return vl_encode(decode_address(address))
 
@@ -182,9 +182,7 @@ def array_to_bytes(array):
 
 def blob_to_bytes(field_val):
     """
-    Serializes a string of hex as binary data with a variable-length encoded
-    length prefix. (The prefix is 1-3 bytes depending on the length of the
-    contents.)
+    Serializes a string of hex as binary data with a length prefix.
     """
     vl_contents = bytes.fromhex(field_val)
     return vl_encode(vl_contents)

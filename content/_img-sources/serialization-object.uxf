@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>170</y>
+      <x>50</x>
+      <y>80</y>
       <w>40</w>
       <h>30</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>100</x>
-      <y>190</y>
+      <x>60</x>
+      <y>100</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>70</x>
-      <y>230</y>
+      <x>30</x>
+      <y>140</y>
       <w>80</w>
       <h>50</h>
     </coordinates>
@@ -38,8 +38,8 @@ Field ID</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>170</y>
+      <x>100</x>
+      <y>80</y>
       <w>50</w>
       <h>30</h>
     </coordinates>
@@ -49,8 +49,8 @@ Field ID</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>170</y>
+      <x>580</x>
+      <y>80</y>
       <w>50</w>
       <h>30</h>
     </coordinates>
@@ -60,8 +60,8 @@ Field ID</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>190</y>
+      <x>590</x>
+      <y>100</y>
       <w>80</w>
       <h>60</h>
     </coordinates>
@@ -71,8 +71,8 @@ Field ID</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>640</x>
-      <y>230</y>
+      <x>600</x>
+      <y>140</y>
       <w>100</w>
       <h>60</h>
     </coordinates>
@@ -84,8 +84,8 @@ no contents</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>220</x>
-      <y>170</y>
+      <x>180</x>
+      <y>80</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -95,19 +95,19 @@ no contents</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>190</y>
+      <x>120</x>
+      <y>100</y>
       <w>50</w>
-      <h>60</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0;30.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;30.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>380</x>
-      <y>170</y>
+      <x>340</x>
+      <y>80</y>
       <w>50</w>
       <h>30</h>
     </coordinates>
@@ -117,8 +117,8 @@ no contents</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>170</y>
+      <x>150</x>
+      <y>80</y>
       <w>30</w>
       <h>30</h>
     </coordinates>
@@ -128,8 +128,8 @@ no contents</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>190</x>
-      <y>210</y>
+      <x>150</x>
+      <y>140</y>
       <w>110</w>
       <h>50</h>
     </coordinates>
@@ -140,8 +140,8 @@ Field ID</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
-      <y>170</y>
+      <x>420</x>
+      <y>80</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -151,8 +151,8 @@ Field ID</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>430</x>
-      <y>170</y>
+      <x>390</x>
+      <y>80</y>
       <w>30</w>
       <h>30</h>
     </coordinates>
@@ -162,8 +162,8 @@ Field ID</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>130</x>
-      <y>210</y>
+      <x>90</x>
+      <y>120</y>
       <w>500</w>
       <h>90</h>
     </coordinates>
@@ -173,8 +173,8 @@ Field ID</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>300</x>
-      <y>280</y>
+      <x>260</x>
+      <y>190</y>
       <w>170</w>
       <h>50</h>
     </coordinates>
@@ -185,8 +185,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>290</x>
-      <y>230</y>
+      <x>370</x>
+      <y>30</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -197,29 +197,18 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>350</x>
-      <y>190</y>
-      <w>70</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>50.0;10.0;50.0;30.0;10.0;30.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>80</x>
-      <y>140</y>
-      <w>600</w>
+      <y>30</y>
+      <w>40</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>Memos field</panel_attributes>
-    <additional_attributes/>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0;20.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
-      <y>190</y>
+      <x>390</x>
+      <y>100</y>
       <w>50</w>
       <h>50</h>
     </coordinates>
@@ -229,12 +218,45 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>460</x>
-      <y>210</y>
+      <x>420</x>
+      <y>120</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Length prefix</panel_attributes>
+    <panel_attributes>Length prefixes</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>70</y>
+      <w>600</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>40</x>
+      <y>40</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Memo (object) field</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>150</x>
+      <y>100</y>
+      <w>290</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;270.0;30.0</additional_attributes>
   </element>
 </diagram>
