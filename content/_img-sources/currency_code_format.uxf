@@ -28,11 +28,12 @@
     <coordinates>
       <x>80</x>
       <y>120</y>
-      <w>300</w>
-      <h>40</h>
+      <w>200</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Type code (8 bits)
-0x00 for ISO 4217/pseudo-ISO currency</panel_attributes>
+0x00 for ISO 4217 or 
+pseudo-ISO currency</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -43,7 +44,7 @@
       <w>220</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Reserved (96 bits)</panel_attributes>
+    <panel_attributes>Reserved (88 bits)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -51,45 +52,10 @@
     <coordinates>
       <x>460</x>
       <y>70</y>
-      <w>20</w>
+      <w>180</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>460</x>
-      <y>90</y>
-      <w>40</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0;20.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>480</x>
-      <y>120</y>
-      <w>250</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>Version (8 bits)
-Increment if currency is reissued
-with the same code</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>490</x>
-      <y>70</y>
-      <w>150</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>Reserved (24 bits)</panel_attributes>
+    <panel_attributes>Reserved (40 bits)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -120,10 +86,10 @@ with the same code</panel_attributes>
       <x>310</x>
       <y>90</y>
       <w>40</w>
-      <h>50</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0;20.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;20.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
@@ -131,9 +97,32 @@ with the same code</panel_attributes>
       <x>330</x>
       <y>110</y>
       <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>3 chars of ASCII
+(can't be "XRP")</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>30</x>
+      <y>220</y>
+      <w>620</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Special Case XRP Currency Code</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>250</y>
+      <w>600</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>3 chars of ASCII</panel_attributes>
+    <panel_attributes>0x00000000000000000000000000000000000000000 (160 bits of 0's)</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

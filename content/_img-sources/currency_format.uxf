@@ -4,12 +4,12 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>20</x>
-      <y>20</y>
+      <x>30</x>
+      <y>250</y>
       <w>650</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>Issued Currency Number Format</panel_attributes>
+    <panel_attributes>Special Case (Issued currency amount = 0)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -61,17 +61,17 @@
     <coordinates>
       <x>60</x>
       <y>70</y>
-      <w>50</w>
-      <h>60</h>
+      <w>40</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0;30.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;20.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>90</x>
-      <y>100</y>
+      <x>80</x>
+      <y>130</y>
       <w>260</w>
       <h>30</h>
     </coordinates>
@@ -82,8 +82,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>70</x>
-      <y>130</y>
+      <x>60</x>
+      <y>170</y>
       <w>270</w>
       <h>30</h>
     </coordinates>
@@ -96,10 +96,102 @@ style=wordwrap</panel_attributes>
     <coordinates>
       <x>30</x>
       <y>70</y>
-      <w>60</w>
-      <h>90</h>
+      <w>50</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;40.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;30.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>140</x>
+      <y>70</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;70.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>210</x>
+      <y>100</y>
+      <w>280</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Unsigned integer; original value +97
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>70</y>
+      <w>50</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;30.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>530</x>
+      <y>110</y>
+      <w>150</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Normalized to the range 
+(10¹⁵, 10¹⁶-1) inclusive
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>650</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Issued Currency Number Format</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>280</y>
+      <w>630</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>0x8000000000000000000000000000000000000000</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>300</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;70.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>130</x>
+      <y>330</y>
+      <w>280</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Most significant bit is 1, the rest is 0's
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
