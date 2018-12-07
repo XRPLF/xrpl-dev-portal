@@ -21,6 +21,24 @@ Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Has
 {% include '_snippets/data_types/hash.md' %}
 <!--{#_ #}-->
 
+### Hash Prefixes
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
+
+In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if their binary formats are the same. The 4-byte codes are structured as three bytes of ASCII followed by a zero byte.
+
+The following table shows the hash prefixes for some common types of data:
+
+| Object Type                                         | Hash Prefix (Hex) | Hash Prefix (Text) |
+|:----------------------------------------------------|:------------------|:---|
+| Transaction (Signed)                                | `0x54584E00`      | `TXN\0` |
+| Ledger Version (`ledger_hash`)                      | `0x4C575200`      | `LWR\0` |
+| [Ledger state tree information](ledger-header.html) | `0x4D4C4E00`      | `MLN\0` |
+| Transaction (Unsigned, for single-signing)          | `0x53545800`      | `STX\0` |
+| Transaction (Unsigned, for multi-signing)           | `0x534D5400`      | `SMT\0` |
+| Validation vote                                     | `0x56414C00`      | `VAL\0` |
+
+[Ledger objects IDs](ledger-object-ids.html) are calculated in a similar way, with 16-bit "space key" prefixes for each object type.
+
 
 ## Account Sequence
 [Sequence Number]: #account-sequence
