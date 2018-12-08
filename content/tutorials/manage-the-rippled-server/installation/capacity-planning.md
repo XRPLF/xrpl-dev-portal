@@ -15,14 +15,6 @@ You can set the following parameters in the `rippled.cfg` file used for your `ri
 
 Set the `node_size` based on your server's expected load and the amount of memory you can make available to `rippled`.
 
-The node size is talking about how big of an object to treat as one "node" in the ledger's underlying tree structure. It's not directly configuring storage or RAM, but it affects how much RAM your server uses and how fast your server can fetch things from disk.
-
-For example, think of node size as the size of cardboard boxes you use to ship vases from a warehouse to your store. A larger cardboard box means that you can ship more vases at once with fewer trips from the warehouse. A large node size means that you can get more `rippled` transaction data, for example, with fewer trips to disk storage.
-
-However, with a larger box, you also need to include more packing material to keep the vases from breaking during shipping, which takes up precious space in the box. Likewise, with a larger node size, you can get a lot of transaction data, but the data may also contain `rippled` start up information and ledger reports, which takes up precious RAM that can't be used for the subset of data you're actually using.
-
-A part of tuning these configurations is about choosing the right node size so that the subset of data you're actually using can be retrieved in the fewest trips to disk storage, while also ensuring that all of it, including other data you aren't using right now, can fit in your available RAM.
-
 Ripple recommends you always use the largest node size your available RAM can support. See the following table for recommended settings.
 
 #### Recommendation
@@ -31,32 +23,33 @@ Each `node_size` has a corresponding requirement for available RAM. For example,
 
 To tune your server, it may be useful to start with `tiny` and increase the size to `small`, `medium`, and so on as you refine the requirements for your use case.
 
-***TODO: Small thing, but I switched the order of the node size and RAM columns because the node size column contains the value that you are setting and should be the starting point of focus.***
-
-| `node_size` value | Available RAM for `rippled` | Notes                      |
+| `node_size` value | RAM available for `rippled` | Notes                      |
 |:------------------|:----------------------------|:---------------------------|
-| `tiny`            | < 8GB                       | Not recommended for testing or production servers. If not specified in `rippled.cfg`, `tiny` is the default value. |
-| `small`           | 8GB                         | Recommended for test servers. |
-| `medium`          | 16GB                        | Note that the `rippled-example.cfg` has its `node_size` value set to `medium`. ***TODO: The doc also says: With a `node_size` of `medium`, a `rippled` server can be reasonably stable in a test Linux system with 16GB of RAM -- is our recommendation for test servers - small or medium? Or either?*** |
-| `large`           | 32GB                        | While `large` is a legal value, Ripple recommends just using `huge` instead. ***TODO: Per Mark, `large` uses less memory, but increases disk access requirements. Since disk is slower than memory, this reduces performance. This is a great clarification - but for both large and huge, we list 32GB RAM. If we want to include this info from Mark - do we need to reduce the RAM value we list for `large` for it to make sense?*** |
-| `huge`            | 32GB                        | Recommended for production servers. |
+| < 8GB             | `tiny`                      | Not recommended for testing or production servers. If not specified in `rippled.cfg`, `tiny` is the default value. |
+| 8GB               | `small`                     | Recommended for test servers. |
+| 16GB              | `medium`                    | Note that the `rippled-example.cfg` has its `node_size` value set to `medium`. |
+| 32GB              | `huge`                      | Recommended for production servers. |
 
-For `node_size` troubleshooting, see [Bad node_size value](server-wont-start.html#bad-node-size-value).
+Although `large` is also a legal value for `[node_size]`, in practice it performs worse than `huge` in most circumstances. Ripple recommends always using `huge` instead of `large`.
+
+If you set the `node_size` parameter to an invalid value, the [server fails to start](server-wont-start.html#bad-node-size-value).
 
 
 ### Node DB Type
 
-The `type` field in the `[node_db]` stanza of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to hold the ledger store on disk.
+The `type` field in the `[node_db]` stanza of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to hold the ledger store.
 
 This setting does not directly configure RAM settings, but the choice of key-value store has important implications for RAM usage because of the different ways these technologies cache and index data for fast lookup.
 
 You can set the value to either `RocksDB` or `NuDB`.
 
-* If you are running a `rippled` server as a production validator, Ripple recommends that you use `RocksDB` with rotational disk storage. [Learn more](#more-about-using-rocksdb)
+- If your server is a validator, it only needs a small amount of history, so use `RocksDB` for best performance. [Learn more](#more-about-using-rocksdb)
 
-* If you are running a `rippled` server for any other production use, Ripple recommends that you use `NuDB` with SSD storage. NuDB works with SSD storage only. [Learn more](#more-about-using-nudb)
+- For most cases, use `NuDB` because its performance is constant even with large amounts of data on disk. A fast SSD is required. [Learn more](#more-about-using-nudb)
 
-The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza is set to `RocksDB`. ***TODO: Just an FYI that in this case, if you don't set a type value, rippled will not run. There is no default value coded into rippled.***
+- If you are using rotational disks (not recommended) or even just a slow SSD, use `RocksDB`. [Learn more](#more-about-using-rocksdb)
+
+The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza set to `RocksDB`.
 
 #### More About Using RocksDB
 
@@ -67,8 +60,6 @@ RocksDB requires approximately one-third less disk [storage](#storage) than NuDB
 Validators should be configured to use RocksDB and to store no more than about 300,000 ledgers (approximately two weeks' worth of [historical data](#historical-data)) in the ledger store.
 
 RocksDB has performance-related configuration options that you can set in `rippled.cfg` to achieve maximum transaction processing throughput. Here is the recommended configuration for a `rippled` server using RocksDB:
-
-***TODO: reordered to match order in rippled-example.cfg***
 
 ```
 [node_db]
@@ -100,7 +91,7 @@ NuDB does not have performance-related configuration options available in `rippl
 
 The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. At the time of writing (2018-10-29), a `rippled` server stores about 12GB of data per day and requires 8.4TB to store the full history of the XRP Ledger. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
 
-Online deletion enables the purging of `rippled` ledgers from databases without any disruption of service. It removes only records that are not part of the current ledgers. ***TODO: what do we mean by "current ledgers"?*** Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files. For more information, see [`[node_db]`: `online_delete`](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L832).
+Online deletion enables the purging of `rippled` ledgers from databases without any disruption of service. It removes only records that are not part of the current ledgers. Data in current ledgers means any data that's used by ledger versions that are new enough not to be deleted. Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files. For more information, see [`[node_db]`: `online_delete`](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L832).
 
 <!-- {# ***TODO***: Add link to online_delete section, when complete, per https://ripplelabs.atlassian.net/browse/DOC-1313  #} -->
 
@@ -126,9 +117,7 @@ For best performance in enterprise production environments, Ripple recommends ru
 - Operating System: Ubuntu 16.04+
 - CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
 - Disk: SSD (7000+ writes/second, 10,000+ reads/second)
-- RAM:
-	- For testing: 8GB+
-	- For production: 32GB
+- RAM: 32GB
 - Network: Enterprise data center network with a gigabit network interface on the host
 
 #### CPU Utilization and Virtualization

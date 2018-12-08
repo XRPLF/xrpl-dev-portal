@@ -155,7 +155,7 @@ An error such as the following indicates that the `rippled.cfg` file has an impr
 Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'
 ```
 
-Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, or `huge`. For more information see [Node Size](capacity-planning.html#node-size).
+Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large`, or `huge`. For more information see [Node Size](capacity-planning.html#node-size).
 
 
 ## Shard path missing
