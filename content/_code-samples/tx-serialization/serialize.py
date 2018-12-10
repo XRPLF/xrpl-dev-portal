@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 
 # Transaction Serialization Sample Code (Python3 version)
 # Author: rome@ripple.com
@@ -52,11 +52,15 @@ def field_id(field_name):
     """
     Returns the unique field ID for a given field name.
     This field ID consists of the type code and field code, in 1 to 3 bytes
-    depending on whether those values are "common" (<16) or uncommon (>=16)
+    depending on whether those values are "common" (<16) or "uncommon" (>=16)
     """
     field_type_name = DEFINITIONS["FIELDS"][field_name]["type"]
     type_code = DEFINITIONS["TYPES"][field_type_name]
     field_code = DEFINITIONS["FIELDS"][field_name]["nth"]
+
+    # Codes must be nonzero and fit in 1 byte
+    assert 0 < field_code <= 255
+    assert 0 < type_code <= 255
 
     if type_code < 16 and field_code < 16:
         # high 4 bits is the type_code
@@ -132,15 +136,18 @@ def amount_to_bytes(a):
     """
     Serializes an "Amount" type, which can be either XRP or an issued currency:
     - XRP: 64 bits; 0, followed by 1 ("is positive"), followed by 62 bit UInt amount
-    - Issued Currency: 64 bits of amount, followed by
+    - Issued Currency: 64 bits of amount, followed by 160 bit currency code and
+      160 bit issuer AccountID.
     """
     if type(a) == str:
         # is XRP
         xrp_amt = int(a)
         if (xrp_amt >= 0):
+            assert xrp_amt <= 10**17
             # set the "is positive" bit -- this is backwards from usual two's complement!
             xrp_amt = xrp_amt | 0x4000000000000000
         else:
+            assert xrp_amt >= -(10**17)
             # convert to absolute value, leaving the "is positive" bit unset
             xrp_amt = -xrp_amt
         return xrp_amt.to_bytes(8, byteorder="big", signed=False)
