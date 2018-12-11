@@ -45,7 +45,7 @@ The serialization processes described here are implemented in multiple places an
 
 - In C++ [in the `rippled` code base](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp).
 - In JavaScript in the [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/) package.
-- In Python 3 [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/serialize.py).
+- In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/serialize.py).
 
 These implementations are all provided with permissive open-source licenses, so you can import, use, or adapt the code for your needs in addition to using it alongside these documents for learning purposes.
 
@@ -94,8 +94,8 @@ When you combine a field's type code and field code, you get the field's unique 
 
 |                  | Type Code < 16                                                                | Type Code >= 16 |
 |:-----------------|:------------------------------------------------------------------------------|:--|
-| **Field Code < 16**  | 1 byte: high 4 bits define type; low 4 bits define field.                     | 2 bytes: low 4 bits of the first byte define field; next byte defines type |
-| **Field Code >= 16** | 2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field | 3 bytes: first byte is 0x00, second byte defines type; third byte defines field |
+| **Field Code < 16**  | ![1 byte: high 4 bits define type; low 4 bits define field.](img/field-id-common-type-common-field.png) | ![2 bytes: low 4 bits of the first byte define field; next byte defines type.](img/field-id-uncommon-type-common-field.png) |
+| **Field Code >= 16** | ![2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field](img/field-id-common-type-uncommon-field.png) | ![3 bytes: first byte is 0x00, second byte defines type; third byte defines field](img/field-id-uncommon-type-uncommon-field.png) |
 
 When decoding, you can tell how many bytes the field ID is by which bits **of the first byte** are zeroes. This corresponds to the cases in the above table:
 
