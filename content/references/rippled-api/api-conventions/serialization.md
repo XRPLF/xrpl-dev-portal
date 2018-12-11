@@ -5,19 +5,21 @@ This page describes the XRP Ledger's canonical binary format for transactions an
 
 The process of serializing a transaction from JSON or any other representation into their canonical binary format can be summarized with these steps:
 
-1. Make sure all required fields are provided, including any required but "auto-fillable" fields.
+1. Make sure all required fields are provided, including any required but ["auto-fillable" fields](transaction-common-fields.html#auto-fillable-fields).
+
+    The [Transaction Formats Reference](transaction-formats.html) defines the required and optional fields for XRP Ledger transactions.
 
     **Note:** The `SigningPubKey` must also be provided at this step. When signing, you can derive this key from the secret key that is provided for signing.
 
-2. Convert each field's data into its "internal" binary format.
+2. Convert each field's data into its ["internal" binary format](#internal-format).
 
-3. Sort the fields in canonical order.
+3. Sort the fields in [canonical order](#canonical-field-order).
 
-4. Prefix each field with a Field ID.
+4. Prefix each field with a [Field ID](#field-ids).
 
 5. Concatenate the fields (including prefixes) in their sorted order.
 
-The result is a single binary blob that can be signed using well-known signature algorithms such as ECDSA (with the secp256k1 elliptic curve) and Ed25519. After signing, you must re-serialize the transaction with the `TxnSignature` field included.
+The result is a single binary blob that can be signed using well-known signature algorithms such as ECDSA (with the secp256k1 elliptic curve) and Ed25519. For purposes of the XRP Ledger, you must also [hash][Hash] the data with the appropriate prefix (`0x53545800` if single-signing, or `0x534D5400` if multi-signing). After signing, you must re-serialize the transaction with the `TxnSignature` field included. <!--{# TODO: link docs on how to compute a transaction signature. #}-->
 
 **Note:** The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger objects](ledger-object-types.html) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.
 
@@ -65,7 +67,7 @@ The following table defines the top-level fields from the definitions file:
 
 | Field                 | Contents                                             |
 |:----------------------|:-----------------------------------------------------|
-| `TYPES`               | Map of data types to their "type code" for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. |
+| `TYPES`               | Map of data types to their ["type code"](#type-codes) for constructing field IDs and sorting fields in canonical order. Codes below 1 should not appear in actual data; codes above 10000 represent special "high-level" object types such as "Transaction" that cannot be serialized inside other objects. See the [Type List](#type-list) for details of how to serialize each type. |
 | `LEDGER_ENTRY_TYPES`  | Map of [ledger objects](ledger-object-types.html) to their data type. These appear in ledger state data, and in the "affected nodes" section of processed transactions' [metadata](transaction-metadata.html). |
 | `FIELDS`              | A sorted array of tuples representing all fields that may appear in transactions, ledger objects, or other data. The first member of each tuple is the string name of the field and the second member is an object with that field's properties. (See the "Field properties" table below for definitions of those fields.) |
 | `TRANSACTION_RESULTS` | Map of [transaction result codes](transaction-results.html) to their numeric values. Result types not included in ledgers have negative values; `tesSUCCESS` has numeric value 0; [`tec`-class codes](tec-codes.html) represent failures that are included in ledgers. |
@@ -83,18 +85,12 @@ The field definition objects in the `FIELDS` array have the following fields:
 | `isSigningField` | Boolean | If `true` this field should be serialized when preparing a transaction for signing. If `false`, this field should be omitted from the data to be signed. (It may not be part of transactions at all.) |
 | `type`           | String  | The internal data type of this field. This maps to a key in the `TYPES` map, which gives the [type code](#type-codes) for this field. |
 
-
-
-## Canonical Field Order
-
-All fields in a transaction are sorted in a specific order based first on the field's type, then on the field itself (a "field code"). (Think of it as sorting by family name, then given name, where the family name is the field's type and the given name is the field itself.)
-
 ### Field IDs
 
 [[Source - Encoding]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L117-L148 "Source")
 [[Source - Decoding]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L484-L509 "Source")
 
-When you combine the type code and field code, you get the field's unique identifier, which is prefixed before the field in the final serialized blob. The size of the Field ID is one to three bytes depending on the type code and field codes it combines. See the following table:
+When you combine a field's type code and field code, you get the field's unique identifier, which is prefixed before the field in the final serialized blob. The size of the Field ID is one to three bytes depending on the type code and field codes it combines. See the following table:
 
 |                  | Type Code < 16                                                                | Type Code >= 16 |
 |:-----------------|:------------------------------------------------------------------------------|:--|
@@ -109,20 +105,6 @@ When decoding, you can tell how many bytes the field ID is by which bits **of th
 | **Low 4 bits are zero** | 2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field | 3 bytes: first byte is 0x00, second byte defines type; third byte defines field |
 
 **Caution:** Even though the Field ID consists of the two elements that are used to sort fields, you should not sort by the serialized Field ID itself, because the byte structure of the Field ID changes the sort order.
-
-### Type Codes
-
-Each field type has an arbitrary type code, with lower codes sorting first. These codes are defined in [`SField.h`](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74).
-
-For example, [UInt32 has sort order 2](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L59), so all UInt32 fields come before all [Amount fields with order 6](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L63).
-
-### Field Codes
-
-Each field has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in [`SField.cpp`](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266).
-
-For example, the `Account` field of a [Payment transaction][] [has sort code 1](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L219), so it comes before the `Destination` field which [has sort code 3](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L221).
-
-Field codes are reused for fields of different field types, but fields of the same type never have the same field code. When you combine the type code with the field code, you get the field's unique [Field ID](#field-ids).
 
 ### Length Prefixing
 
@@ -149,6 +131,28 @@ When decoding, you can tell from the value of the first length byte whether ther
 - If the first length byte has a value of 192 or less, then that's the only length byte and it contains the exact length of the field contents in bytes.
 - If the first length byte has a value of 193 to 240, then there are two length bytes.
 - If the first length byte has a value of 241 to 254, then there are three length bytes.
+
+
+## Canonical Field Order
+
+All fields in a transaction are sorted in a specific order based first on the field's type (specifically, a numeric "type code" assigned to each type), then on the field itself (a "field code"). (Think of it as sorting by family name, then given name, where the family name is the field's type and the given name is the field itself.)
+
+### Type Codes
+
+Each field type has an arbitrary type code, with lower codes sorting first. These codes are defined in [`SField.h`](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74).
+
+For example, [UInt32 has type code 2](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L59), so all UInt32 fields come before all [Amount fields, which have type code 6](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L63).
+
+The [definitions file](#definitions-file) lists the type codes for each type in the `TYPES` map.
+
+### Field Codes
+
+Each field has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in [`SField.cpp`](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266).
+
+For example, the `Account` field of a [Payment transaction][] [has sort code 1](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L219), so it comes before the `Destination` field which [has sort code 3](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L221).
+
+Field codes are reused for fields of different field types, but fields of the same type never have the same field code. When you combine the type code with the field code, you get the field's unique [Field ID](#field-ids).
+
 
 
 ## Type List
