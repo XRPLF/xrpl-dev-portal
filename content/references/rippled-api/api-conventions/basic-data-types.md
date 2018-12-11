@@ -33,6 +33,8 @@ The following table shows the prefixes for some hash types that appear in API re
 | Signed Transaction (`hash` field of transactions)                           | `0x54584E00`      | `TXN\0` |
 | Ledger Version (`ledger_hash` fields)                                       | `0x4C575200`      | `LWR\0` |
 | [Ledger state tree information (`account_state` field)](ledger-header.html) | `0x4D4C4E00`      | `MLN\0` |
+| Unsigned Transaction (For single-signing)                                   | `0x53545800`      | `STX\0` |
+| Unsigned Transaction (For multi-signing)                                    | `0x534D5400`      | `SMT\0` |
 
 **Note:** There are several other hash prefixes which are only used when calculating the hash as the first step of signing a specific type of data. For the complete list, see [the source code](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/HashPrefix.cpp).
 
