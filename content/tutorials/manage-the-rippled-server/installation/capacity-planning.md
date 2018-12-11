@@ -23,12 +23,12 @@ Each `node_size` has a corresponding requirement for available RAM. For example,
 
 To tune your server, it may be useful to start with `tiny` and increase the size to `small`, `medium`, and so on as you refine the requirements for your use case.
 
-| `node_size` value | RAM available for `rippled` | Notes                      |
-|:------------------|:----------------------------|:---------------------------|
-| < 8GB             | `tiny`                      | Not recommended for testing or production servers. If not specified in `rippled.cfg`, `tiny` is the default value. |
-| 8GB               | `small`                     | Recommended for test servers. |
-| 16GB              | `medium`                    | Note that the `rippled-example.cfg` has its `node_size` value set to `medium`. |
-| 32GB              | `huge`                      | Recommended for production servers. |
+| RAM available for `rippled` | `node_size` value | Notes                      |
+|:----------------------------|:------------------|:---------------------------|
+| < 8GB                       | `tiny`            | Not recommended for testing or production servers. This is the default value if you don't specify a value in `rippled.cfg`. |
+| 8GB                         | `small`           | Recommended for test servers. |
+| 16GB                        | `medium`          | The `rippled-example.cfg` file uses this value. |
+| 32GB                        | `huge`            | Recommended for production servers. |
 
 Although `large` is also a legal value for `[node_size]`, in practice it performs worse than `huge` in most circumstances. Ripple recommends always using `huge` instead of `large`.
 
