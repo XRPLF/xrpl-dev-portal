@@ -57,6 +57,14 @@ With online deletion enabled and running automatically (that is, with advisory d
 
 When online deletion runs, it does not reduce the size of the database files on disk; it only makes space within those files available to be reused for new data. To actually reduce the disk space allocated to the database files, you must restart `rippled`.
 
+### Interrupting Online Deletion
+
+Online deletion automatically stops if the [server state](rippled-server-states.html) becomes less than `full`. If this happens, the server writes a log message with the prefix `SHAMapStore::WRN`. The server attempts to start online deletion again after the next validated ledger version after becoming fully synced.
+
+If you stop the server or it crashes while online deletion is running, online deletion resumes after the server is restarted and the server becomes fully synced.
+
+To temporarily disable online deletion, you can use the [can_delete method][] with an argument of `never`. This change persists until the server restarts or you re-enable online deletion by calling [can_delete][can_delete method] again. For more information on controlling when online deletion happens, see [Advisory Deletion](#advisory-deletion).
+
 
 ## Configuration
 
@@ -95,16 +103,16 @@ The following settings relate to online deletion:
 
 Online deletion settings must be configured in terms of the number of ledger versions, not in terms of real time. You can estimate the amount of time represented by a number of ledger versions using the rate of ledger progress. Ledger versions typically close 3-4 seconds apart, with the overall rate of ledger closures ranging from about 20,000 to 27,000 per day throughout the years 2017-2018. There are hard limits of at least 2 seconds and no more than 20 seconds between ledgers as long as consensus is operating properly.
 
-The following table summarizes some
+The following table approximates the requirements for different amounts of history:
 
-| Real Time Amount | Approximate Number of Ledgers |
-|:-----------------|:------------------------------|
-| 1 day            | 25,000                        |
-| 14 days          | 350,000                       |
-| 30 days          | 750,000                       |
-| 90 days          | 2,250,000                     |
-| 1 year           | 10,000,000                    |
-| 2 years          | 20,000,000                    |
+| Real Time Amount | Number of Ledger Versions | Disk Space Required (RocksDB) | Disk Space Required (NuDB) |
+|:-----------------|:--------------------------|:------------------------------|:--|
+| 1 day            | 25,000                    | 8 GB                          | 12 GB |
+| 14 days          | 350,000                   | 112 GB                        | 168 GB |
+| 30 days          | 750,000                   | 240 GB                        | 360 GB |
+| 90 days          | 2,250,000                 | 720 GB                        | 1 TB |
+| 1 year           | 10,000,000                | 3 TB                          | 4.5 TB |
+| 2 years          | 20,000,000                | 6 TB                          | 9 TB |
 
 These numbers are estimates and depend on several factors:
 
@@ -112,15 +120,22 @@ These numbers are estimates and depend on several factors:
 - The volume of transactions in the network. A high rate of transactions can increase the work needed to close a new ledger version, reducing the number of separate ledgers closed. An extremely low rate of transactions can also cause ledgers to close further apart (because there is nothing to be done).
 - Changes and optimizations to the XRP Ledger's consensus algorithm can affect the speed of consensus and the rate of disagreement either positively or negatively.
 
-### Advisory Delete
+### Advisory Deletion
 
-By default, online deletion happens automatically and periodically. If the advisory delete setting is enabled, online deletion only happens when an administrator triggers it using the [can_delete method][]. (You can trigger this command with a `cron` job to run automatic deletion based on actual time instead of the number of ledger versions closed.)
+By default, online deletion happens automatically and periodically. If the `advisory_delete` setting is enabled, online deletion only happens when an administrator triggers it using the [can_delete method][]. You can run this command with a scheduled job to trigger automatic deletion based on clock time instead of the number of ledger versions closed.
 
 If your server is heavily used, the extra load from online deletion can cause your server to fall behind and temporarily de-sync from the consensus network. If this is the case, you can use advisory delete and schedule online deletion to happen only during off-peak times.
 
 You can also use advisory delete for other reasons, such as if you want to manually confirm that the transaction data is backed up to a separate server before deleting it.
 
-The `can_delete` API method can enable advisory delete (with the value `never`) or disable advisory delete (with the value `always`). These setting changes persist until you restart the `rippled` server, at which point the settings in the config file override them.
+The `can_delete` API method can enable advisory deletion (with the value `never`) or disable advisory delete (with the value `always`). These setting changes persist until you restart the `rippled` server, at which point the settings in the config file override them.
+
+
+## See Also
+
+- [can_delete method][] API reference documentation
+- [Configure Online Deletion with Advisory Delete](configure-online-deletion.html)
+
 
 
 

@@ -1040,6 +1040,26 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
+        html: configure-online-deletion.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Use advisory deletion to delete older ledger history on a schedule rather than as new history becomes available.
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.md
+        html: configure-full-history.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run.
+        targets:
+            - local
+
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
         html: enable-public-signing.html
         funnel: Docs
