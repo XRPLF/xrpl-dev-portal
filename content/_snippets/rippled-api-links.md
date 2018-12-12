@@ -6,6 +6,7 @@
 [Currency Code]: currency-formats.html#currency-codes
 [drops of XRP]: basic-data-types.html#specifying-currency-amounts
 [Hash]: basic-data-types.html#hashes
+[Internal Type]: serialization.html
 [Ledger Index]: basic-data-types.html#ledger-index
 [Marker]: markers-and-pagination.html
 [result code]: transaction-results.html
@@ -27,7 +28,6 @@
 [crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 [Interledger Protocol]: https://interledger.org/
-[Internal Type]: https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [ripple-lib]: https://github.com/ripple/ripple-lib
 

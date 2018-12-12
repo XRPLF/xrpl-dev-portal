@@ -1251,6 +1251,16 @@ pages:
         targets:
             - local
 
+    -   md: references/rippled-api/api-conventions/serialization.md
+        html: serialization.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects.
+        targets:
+            - local
+
 # rippled Public Methods
 
     -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.md

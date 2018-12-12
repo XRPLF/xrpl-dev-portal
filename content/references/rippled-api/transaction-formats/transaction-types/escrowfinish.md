@@ -23,12 +23,12 @@ Deliver XRP from a held payment to the recipient.
 <!--{# fix md highlighting_ #}-->
 
 
-| Field           | JSON Type        | [Internal Type][] | Description               |
-|:----------------|:-----------------|:------------------|:--------------------------|
-| `Owner`         | String           | AccountID         | Address of the source account that funded the held payment.
-| `OfferSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction][] that created the held payment to finish.
-| `Condition`     | String           | VariableLength    | _(Optional)_ Hex value matching the previously-supplied [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the held payment. |
-| `Fulfillment`   | String           | VariableLength    | _(Optional)_ Hex value of the [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the held payment's `Condition`. |
+| Field           | JSON Type        | [Internal Type][] | Description         |
+|:----------------|:-----------------|:------------------|:--------------------|
+| `Owner`         | String           | AccountID         | Address of the source account that funded the held payment. |
+| `OfferSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction][] that created the held payment to finish. |
+| `Condition`     | String           | Blob              | _(Optional)_ Hex value matching the previously-supplied [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the held payment. |
+| `Fulfillment`   | String           | Blob              | _(Optional)_ Hex value of the [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the held payment's `Condition`. |
 
 Any account may submit an EscrowFinish transaction.
 

@@ -22,9 +22,9 @@ An OfferCancel transaction removes an Offer object from the XRP Ledger.
 <!--{# fix md highlighting_ #}-->
 
 
-| Field         | JSON Type        | [Internal Type][] | Description           |
-|:--------------|:-----------------|:------------------|:----------------------|
-| OfferSequence | Unsigned Integer | UInt32            | The sequence number of a previous OfferCreate transaction. If specified, cancel any offer object in the ledger that was created by that transaction. It is not considered an error if the offer specified does not exist. |
+| Field         | JSON Type | [Internal Type][] | Description                  |
+|:--------------|:----------|:------------------|:-----------------------------|
+| OfferSequence | Number    | UInt32            | The sequence number of a previous OfferCreate transaction. If specified, cancel any offer object in the ledger that was created by that transaction. It is not considered an error if the offer specified does not exist. |
 
 *Tip:* To remove an old offer and replace it with a new one, you can use an [OfferCreate transaction][] with an `OfferSequence` parameter, instead of using OfferCancel and another OfferCreate.
 
