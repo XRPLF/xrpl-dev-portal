@@ -98,27 +98,7 @@ The following settings relate to online deletion:
 
     ![Ledger versions older than fetch_depth are not served to peers](img/fetch_depth.png)
 
-
-### Relation to Real Time
-
-Online deletion settings must be configured in terms of the number of ledger versions, not in terms of real time. You can estimate the amount of time represented by a number of ledger versions using the rate of ledger progress. Ledger versions typically close 3-4 seconds apart, with the overall rate of ledger closures ranging from about 20,000 to 27,000 per day throughout the years 2017-2018. There are hard limits of at least 2 seconds and no more than 20 seconds between ledgers as long as consensus is operating properly.
-
-The following table approximates the requirements for different amounts of history:
-
-| Real Time Amount | Number of Ledger Versions | Disk Space Required (RocksDB) | Disk Space Required (NuDB) |
-|:-----------------|:--------------------------|:------------------------------|:--|
-| 1 day            | 25,000                    | 8 GB                          | 12 GB |
-| 14 days          | 350,000                   | 112 GB                        | 168 GB |
-| 30 days          | 750,000                   | 240 GB                        | 360 GB |
-| 90 days          | 2,250,000                 | 720 GB                        | 1 TB |
-| 1 year           | 10,000,000                | 3 TB                          | 4.5 TB |
-| 2 years          | 20,000,000                | 6 TB                          | 9 TB |
-
-These numbers are estimates and depend on several factors:
-
-- The rate of agreement among trusted validators. More disagreement slows the rate of new ledger creation. Disagreement can occur because of random chance, network latency, or validators running different software versions.
-- The volume of transactions in the network. A high rate of transactions can increase the work needed to close a new ledger version, reducing the number of separate ledgers closed. An extremely low rate of transactions can also cause ledgers to close further apart (because there is nothing to be done).
-- Changes and optimizations to the XRP Ledger's consensus algorithm can affect the speed of consensus and the rate of disagreement either positively or negatively.
+For estimates of how much disk space is required to store different amounts of history, see [Capacity Planning](capacity-planning.html#historical-data).
 
 ### Advisory Deletion
 

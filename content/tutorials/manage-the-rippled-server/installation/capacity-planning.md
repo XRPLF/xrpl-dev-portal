@@ -82,18 +82,34 @@ Non-validator production servers should be configured to use NuDB and to store t
 
 NuDB does not have performance-related configuration options available in `rippled.cfg`.
 
-#### History Sharding
-
-`rippled` offers a history sharding feature that allows you to store a randomized range of ledgers in a separate shard store. You can use the `[shard_db]` stanza to configure the shard store to use a different type of key-value store than the one you defined for the ledger store using the `[node_db]` stanza. For more information about how to use this feature, see [History Sharding](history-sharding.html).
 
 
 ### Historical Data
 
-The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. At the time of writing (2018-10-29), a `rippled` server stores about 12GB of data per day and requires 8.4TB to store the full history of the XRP Ledger. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
+The amount of historical data that a `rippled` server keeps available locally is a major contributor to the amount of disk space `rippled` requires. The server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally. You can control how much data you keep with [online deletion](online-deletion.html); the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.
 
-Online deletion enables the purging of `rippled` ledgers from databases without any disruption of service. It removes only records that are not part of the current ledgers. Data in current ledgers means any data that's used by ledger versions that are new enough not to be deleted. Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files. For more information, see [`[node_db]`: `online_delete`](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L832).
+The following table approximates the requirements for different amounts of history, at the time of writing (2018-12-13):
 
-<!-- {# ***TODO***: Add link to online_delete section, when complete, per https://ripplelabs.atlassian.net/browse/DOC-1313  #} -->
+| Real Time Amount | Number of Ledger Versions | Disk Space Required (RocksDB) | Disk Space Required (NuDB) |
+|:-----------------|:--------------------------|:------------------------------|:--|
+| 1 day            | 25,000                    | 8 GB                          | 12 GB |
+| 14 days          | 350,000                   | 112 GB                        | 168 GB |
+| 30 days          | 750,000                   | 240 GB                        | 360 GB |
+| 90 days          | 2,250,000                 | 720 GB                        | 1 TB |
+| 1 year           | 10,000,000                | 3 TB                          | 4.5 TB |
+| 2 years          | 20,000,000                | 6 TB                          | 9 TB |
+| Full history (through 2018) | 43,000,000+    | 9 TB                          | (Unknown) |
+
+These numbers are estimates. They depend on several factors, most importantly the volume of transactions in the network. As transaction volume increases, each ledger version stores more unique data.
+
+The `online_delete` setting tells the server how many ledger versions to keep after deleting old history. You should plan for enough disk space to store twice that many ledger versions at maximum (right before online deletion runs).
+
+For instructions on how to change the amount of history you keep, see [Configure Online Deletion](configure-online-deletion.html).
+
+
+#### History Sharding
+
+`rippled` offers a history sharding feature that allows you to store a randomized range of ledgers in a separate shard store. You can use the `[shard_db]` stanza to configure the shard store to use a different type of key-value store than the one you defined for the ledger store using the `[node_db]` stanza. For more information about how to use this feature, see [History Sharding](history-sharding.html).
 
 ### Log Level
 
