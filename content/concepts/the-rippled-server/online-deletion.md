@@ -32,7 +32,7 @@ Backfilling history is one of the server's lowest priorities, so it may take a l
 
 Some servers in the XRP Ledger network are configured as "full-history" servers. These servers, which require significantly more disk space than other tracking servers, collect all available XRP Ledger history and **do not use online deletion**.
 
-<!--{# TODO: link an eventual "run a full history server" tutorial #}-->
+For instructions setting up full history, see [Configure Full History](configure-full-history.html).
 
 ### History Sharding
 
@@ -113,11 +113,11 @@ The `can_delete` API method can enable advisory deletion (with the value `never`
 
 ## See Also
 
+- [Capacity Planning](capacity-planning.html)
 - [can_delete method][] API reference documentation
-- [Configure Online Deletion with Advisory Delete](configure-online-deletion.html)
-
-
-
+- [Configure Online Deletion](configure-online-deletion.html)
+- [Configure Advisory Deletion](configure-advisory-deletion.html)
+- [Configure Full History](configure-full-history.html)
 
 
 <!--{# common link defs #}-->
