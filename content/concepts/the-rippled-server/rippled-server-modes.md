@@ -34,21 +34,8 @@ Not all `rippled` servers need to be validators: trusting more servers from the 
 
 If your organization runs a validating server, you may also run one or more stock servers, to balance the computing load of API access, or as a proxy between your validation server and the outside network.
 
+For more information about running a validator, see [Run `rippled` as a Validator](run-rippled-as-a-validator.html).
 
-### Properties of a Good Validator
-
-There are several properties that define a good validator. The more of these properties your server embodies, the more reason others have to include your server in their list of trusted validators:
-
-* **Availability**. An ideal validator should always be running, submitting validation votes for every proposed ledger.
-    * Strive for 100% uptime.
-* **Agreement**. A validator's votes should match the outcome of the consensus process as often as possible. To do otherwise could indicate that the validator's software is outdated, buggy, or intentionally biased.
-    * Always run the latest `rippled` release without modifications.
-* **Timeliness**. A validator's votes should arrive quickly, and not after a consensus round has already finished.
-    * A fast internet connection helps with this.
-* **Identified**. It should be clear who runs the validator. Ideally, a list of trusted validators should include validators operated by different owners in multiple legal jurisdictions and geographic areas, to reduce the chance that any localized events could interfere with the validator's impartial operation.
-    * Setting up [Domain Verification](run-rippled-as-a-validator.html#domain-verification) is a good start.
-
-At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see the [XRPCharts Validator Registry](https://xrpcharts.ripple.com/#/validators).
 
 
 ## Reasons to Run a `rippled` Server in Stand-Alone Mode
