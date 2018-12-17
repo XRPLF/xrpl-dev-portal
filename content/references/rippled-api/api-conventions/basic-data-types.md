@@ -24,7 +24,7 @@ Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Has
 ### Hash Prefixes
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
 
-In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if their binary formats are the same. The 4-byte codes are structured as three bytes of ASCII followed by a zero byte.
+In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if their binary formats are the same. The existing 4-byte codes are structured as three alphabetic characters, encoded as ASCII, followed by a zero byte.
 
 Some types of hash appear in API requests and responses. Others are only calculated as the first step of signing a certain type of data, or calculating a higher-level hash. The following table shows all 4-byte hash prefixes the XRP Ledger uses:
 
@@ -41,7 +41,7 @@ Some types of hash appear in API requests and responses. Others are only calcula
 | Unsigned Transaction (Single-signing) | N/A                                  | `0x53545800`      | `STX\0` |
 | Unsigned Transaction (Multi-signing)  | N/A                                  | `0x534D5400`      | `SMT\0` |
 | Validation vote                       | N/A                                  | `0x56414C00`      | `VAL\0` |
-| Validator ephemeral key update        | N/A                                  | `0x4D414E00`      | `MAN\0` |
+| Validator subkey authorization ("validator manifest") | N/A                  | `0x4D414E00`      | `MAN\0` |
 
 [ledger header]: ledger-header.html
 [SHAMapv2]: known-amendments.html#shamapv2
