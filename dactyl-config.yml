@@ -1179,6 +1179,16 @@ pages:
         targets:
             - local
 
+    -   md: references/rippled-api/api-conventions/base58-encodings.md
+        html: base58-encodings.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Formats for representing cryptographic keys and related data in base58 format.
+        targets:
+            - local
+
     -   md: references/rippled-api/api-conventions/currency-formats.md
         html: currency-formats.html
         funnel: Docs
