@@ -858,6 +858,15 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
+        html: list-your-exchange-on-xrp-charts.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        blurb: This tutorial describes how to list your exchange on XRP Charts.
+        targets:
+            - local
+
     -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
         html: become-an-xrp-ledger-gateway.html
         funnel: Docs
