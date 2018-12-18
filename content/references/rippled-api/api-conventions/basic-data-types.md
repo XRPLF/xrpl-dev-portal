@@ -21,6 +21,33 @@ Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Has
 {% include '_snippets/data_types/hash.md' %}
 <!--{#_ #}-->
 
+### Hash Prefixes
+[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
+
+In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if their binary formats are the same. The existing 4-byte codes are structured as three alphabetic characters, encoded as ASCII, followed by a zero byte.
+
+Some types of hash appear in API requests and responses. Others are only calculated as the first step of signing a certain type of data, or calculating a higher-level hash. The following table shows all 4-byte hash prefixes the XRP Ledger uses:
+
+| Object Type                           | API Fields                           | Hash Prefix (Hex) | Hash Prefix (Text) |
+|:--------------------------------------|:-------------------------------------|:------------------|:--|
+| Consensus proposal                    | N/A                                  | `0x50525000`      | `PRP\0` |
+| Ledger Version                        | `ledger_hash`                        | `0x4C575200`      | `LWR\0` |
+| Ledger state data                     | `account_state` in [ledger header][] | `0x4D4C4E00`      | `MLN\0` |
+| Ledger data inner node                | N/A                                  | `0x4D494E00`      | `MIN\0` |
+| Ledger data inner node ([SHAMapv2][]) | N/A                                  | `0x494E5200`      | `INR\0` |
+| Payment Channel Claim                 | N/A                                  | `0x434C4D00`      | `CLM\0` |
+| Signed Transaction                    | `hash` of transactions               | `0x54584E00`      | `TXN\0` |
+| Transaction with metadata             | N/A                                  | `0x534E4400`      | `SND\0` |
+| Unsigned Transaction (Single-signing) | N/A                                  | `0x53545800`      | `STX\0` |
+| Unsigned Transaction (Multi-signing)  | N/A                                  | `0x534D5400`      | `SMT\0` |
+| Validation vote                       | N/A                                  | `0x56414C00`      | `VAL\0` |
+| Validator subkey authorization ("validator manifest") | N/A                  | `0x4D414E00`      | `MAN\0` |
+
+[ledger header]: ledger-header.html
+[SHAMapv2]: known-amendments.html#shamapv2
+
+[Ledger objects IDs](ledger-object-ids.html) are calculated in a similar way, but they use a 2-byte prefix called a "space key" instead of a prefix in the form described here.
+
 
 ## Account Sequence
 [Sequence Number]: #account-sequence
