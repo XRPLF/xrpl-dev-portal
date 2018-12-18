@@ -1,7 +1,7 @@
 # can_delete
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
-With `online_delete` and `advisory_delete` configuration options enabled, the `can_delete` method informs the rippled server of the latest ledger which may be deleted.
+The `can_delete` method informs the `rippled` server of the latest ledger version which may be deleted when using [online deletion with advisory deletion enabled](online-deletion.html#advisory-deletion). If advisory deletion is not enabled, this method does nothing.
 
 _The `can_delete` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
@@ -47,7 +47,7 @@ The request includes the following optional parameter:
 
 | `Field`      | Type              | Description                               |
 |:-------------|:------------------|:------------------------------------------|
-| `can_delete` | String or Integer | The maximum ledger to allow to be deleted. For `ledger_index` or `ledger_hash`, see [Specifying Ledgers][]. `never` sets the value to 0, and effectively disables online deletion until another `can_delete` is appropriately called.  `always` sets the value to the maximum possible ledger (4294967295), and online deletion occurs as of each configured `online_delete` interval. `now` triggers online deletion at the next validated ledger that meets or exceeds the configured `online_delete` interval, but no further. |
+| `can_delete` | String or Integer | The [Ledger Index][] of the maximum ledger version to allow to be deleted. The special case `never` disables online deletion. The special case `always` enables automatic online deletion as if advisory deletion was disabled. The special case `now` allows online deletion one time at the next validated ledger that meets or exceeds the configured `online_delete` value. |
 
 If no parameter is specified, no change is made.
 
@@ -67,6 +67,11 @@ Use this command with no parameter to query the existing `can_delete` setting.
 * `notReady` - Not ready to handle this request.
 * `lgrNotFound` - Ledger not found.
 * `invalidParams` - Invalid parameters.
+
+## See Also
+
+- [Online Deletion](online-deletion.html)
+- [Configure Advisory Deletion](configure-advisory-deletion.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

@@ -1,6 +1,6 @@
 # Configure Advisory Deletion
 
-In its default configuration, the `rippled` server automatically deletes outdated history of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours to reduce the chances of online deletion
+The default config file sets `rippled` to automatically delete outdated history of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours to reduce the chances of online deletion.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ To configure advisory deletion with a daily schedule, perform the following step
       	online_delete=2000
       	advisory_delete=1
 
-    - Set `advisory_delete` to `1` to require approval before running online deletion. (Set it to `0` to run online deletion automatically as new ledger versions become available.)
+    - Set `advisory_delete` to `1` to run online deletion only when prompted. (Set it to `0` to run online deletion automatically as new ledger versions become available.)
     - Set `online_delete` to the minimum number of ledger versions to keep after running online deletion. The server accumulates more history than this until online deletion runs.
 
     {% include '_snippets/conf-file-location.md' %}<!--_ -->
@@ -57,6 +57,8 @@ To configure advisory deletion with a daily schedule, perform the following step
           }
         }
 
+    The server only deletes those ledger versions if the number of _newer_ validated ledger versions it has is equal to or greater than the `online_delete` setting.
+
 3. Configure your `cron` daemon to run the `can_delete` method you tested in the previous step at a scheduled time.
 
     Edit your `cron` configuration:
@@ -67,9 +69,9 @@ To configure advisory deletion with a daily schedule, perform the following step
 
         5 1 * * * rippled --conf /etc/opt/ripple/rippled.cfg can_delete now
 
-    Be sure that you schedule the command to run based on the time zone your server's clock is configured to use. Ripple recommends running all production servers with the UTC time zone.
+    Be sure that you schedule the command to run based on your server's configured time zone.
 
-    **Tip:** You do not need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `rippled` runs online deletion automatically when the server's oldest available ledger is twice as old as the number of ledgers to keep after deletion.
+    **Tip:** You do not need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `rippled` runs online deletion automatically when the server has approximately twice the number of ledgers to keep after deletion.
 
 4. Start (or restart) the `rippled` service.
 

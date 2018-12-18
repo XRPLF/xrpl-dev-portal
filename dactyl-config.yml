@@ -536,21 +536,33 @@ pages:
         targets:
             - local
 
-    -   md: concepts/the-rippled-server/history-sharding.md
-        html: history-sharding.html
+    -   md: concepts/the-rippled-server/ledger-history/ledger-history.md
+        html: ledger-history.html
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
-        blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
+        subcategory: Ledger History
+        blurb: rippled servers store a variable amount of transaction and state history locally.
         targets:
             - local
 
-    -   md: concepts/the-rippled-server/online-deletion.md
+    -   md: concepts/the-rippled-server/ledger-history/online-deletion.md
         html: online-deletion.html
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
+        subcategory: Ledger History
         blurb: Online deletion purges outdated transaction and state history.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/ledger-history/history-sharding.md
+        html: history-sharding.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        subcategory: Ledger History
+        blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
         targets:
             - local
 

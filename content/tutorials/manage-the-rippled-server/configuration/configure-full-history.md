@@ -20,23 +20,17 @@ To configure your server to acquire and store full history, complete the followi
 
         $ sudo systemctl stop rippled
 
-0. Remove (or comment out) the `online_delete` and `advisory_delete` settings from the `[node_db]` stanza of your server's config file:
+0. Remove (or comment out) the `online_delete` and `advisory_delete` settings from the `[node_db]` stanza of your server's config file, and change the type to `NuDB` if you haven't already:
 
         [node_db]
-      	type=RocksDB
-      	path=/var/lib/rippled/db/rocksdb
-      	open_files=2000
-      	filter_bits=12
-      	cache_mb=256
-      	file_size_mb=8
-      	file_size_mult=2
-        compression=1
+      	type=NuDB
+      	path=/var/lib/rippled/db/nudb
       	#online_delete=2000
       	#advisory_delete=0
 
-    You can store full history with either RocksDB or NuDB as the key-value store behind the ledger store. NuDB requires less RAM but RocksDB requires less disk space. For more information, see [Capacity Planning](capacity-planning.html).
+    On a full-history server, you should use NuDB for the ledger store, because RocksDB requires too much RAM when the database is that large. For more information, see [Capacity Planning](capacity-planning.html). You can remove the following performance-related configuration options from the default `[node_db]` stanza, because they only apply to RocksDB: `open_files`, `filter_bits`, `cache_mb`, `file_size_mb`, and `file_size_mult.`
 
-    If you are using RocksDB, add `compression=1` to enable Snappy compression, which reduces the disk space necessary to store full history (at a cost of greater CPU usage when reading or writing history).
+    **Caution:** If you have any history already downloaded with RocksDB, you must either delete that data or change the `path` field when you switch to NuDB. Otherwise, the server may [fail to start](server-wont-start.html). <!--{# TODO: link a specific case for this error #}-->
 
     {% include '_snippets/conf-file-location.md' %}<!--_ -->
 

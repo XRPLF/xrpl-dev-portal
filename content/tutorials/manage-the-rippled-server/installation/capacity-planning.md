@@ -64,13 +64,17 @@ RocksDB has performance-related configuration options that you can set in `rippl
 ```
 [node_db]
 type=RocksDB
-path={path_to_ledger_store}
+path=/var/lib/rippled/db/rocksdb
 open_files=512
 filter_bits=12
 cache_mb=512
 file_size_mb=64
 file_size_mult=2
+online_delete=2000
+advisory_delete=0
 ```
+
+(Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration.)
 
 #### More About Using NuDb
 
@@ -80,8 +84,17 @@ NuDB has nearly constant performance and memory footprints regardless of the amo
 
 Non-validator production servers should be configured to use NuDB and to store the amount of historical data required for the use case.
 
-NuDB does not have performance-related configuration options available in `rippled.cfg`.
+NuDB does not have performance-related configuration options available in `rippled.cfg`. Here is the recommended configuration for a `rippled` server using NuDB:
 
+```
+[node_db]
+type=NuDB
+path=/var/lib/rippled/db/nudb
+online_delete=2000
+advisory_delete=0
+```
+
+(Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration.)
 
 
 ### Historical Data
@@ -98,7 +111,7 @@ The following table approximates the requirements for different amounts of histo
 | 90 days          | 2,250,000                 | 720 GB                        | 1 TB |
 | 1 year           | 10,000,000                | 3 TB                          | 4.5 TB |
 | 2 years          | 20,000,000                | 6 TB                          | 9 TB |
-| Full history (through 2018) | 43,000,000+    | 9 TB                          | (Unknown) |
+| Full history (through 2018) | 43,000,000+    | (Not recommended)             | ~9 TB |
 
 These numbers are estimates. They depend on several factors, most importantly the volume of transactions in the network. As transaction volume increases, each ledger version stores more unique data.
 
