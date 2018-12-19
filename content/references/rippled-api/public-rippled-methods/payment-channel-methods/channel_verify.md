@@ -115,7 +115,7 @@ The response follows the [standard format][], with a successful result containin
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58 or hexadecimal. The base58 representation of account public keys starts with the letter `a`. The hexadecimal representation is 66 characters long.
+* `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58 or hexadecimal. The [base58 representation of account public keys starts with the letter `a`](base58-encodings.html). The hexadecimal representation is 66 characters long.
 * `channelMalformed` - The `channel_id` field of the request is not a valid Channel ID. The Channel ID must be a 256-bit (64-character) hexadecimal string.
 * `channelAmtMalformed` - The value specified in the `amount` field was not a valid [XRP amount][XRP, in drops].
 

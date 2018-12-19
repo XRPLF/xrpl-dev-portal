@@ -7,5 +7,5 @@ Accounts in the XRP Ledger are identified by a base58 XRP Ledger Address. The ad
 * Includes a 4-byte checksum so that the probability of generating a valid address from random characters is approximately 1 in 2^32
 
 {% if currentpage.md != "concept-accounts.md" %}
-For more information, see [Accounts](accounts.html).
+For more information, see [Accounts](accounts.html) and [base58 Encodings](base58-encodings.html).
 {% endif %}
