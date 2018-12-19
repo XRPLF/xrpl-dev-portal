@@ -107,7 +107,7 @@ Possible solutions:
 
 ## State DB Error
 
-The following error can occur if the `rippled` server's state database is corrupted (possibly as the result of being shutdown unexpectedly):
+The following error can occur if the `rippled` server's state database is corrupted. This can occur as the result of being shutdown unexpectedly, or if you change the type of database from RocksDB to NuDB without changing the `path` and `[database_path]` settings in the config file.
 
 ```text
 2018-Aug-21 23:06:38.675117810 SHAMapStore:ERR state db error:
@@ -132,6 +132,17 @@ rm -r /var/lib/rippled/db
 ```
 
 **Tip:** It is generally safe to delete the `rippled` databases, because any individual server can re-download ledger history from other servers in the XRP Ledger network.
+
+Alternatively, you can change the paths to the databases in the config file. For example:
+
+```
+[node_db]
+type=NuDB
+path=/var/lib/rippled/custom_nudb_path
+
+[database_path]
+/var/lib/rippled/custom_sqlite_db_path
+```
 
 
 ## Online Delete is Less Than Ledger History

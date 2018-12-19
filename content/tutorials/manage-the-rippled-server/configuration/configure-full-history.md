@@ -30,7 +30,7 @@ To configure your server to acquire and store full history, complete the followi
 
     On a full-history server, you should use NuDB for the ledger store, because RocksDB requires too much RAM when the database is that large. For more information, see [Capacity Planning](capacity-planning.html). You can remove the following performance-related configuration options from the default `[node_db]` stanza, because they only apply to RocksDB: `open_files`, `filter_bits`, `cache_mb`, `file_size_mb`, and `file_size_mult.`
 
-    **Caution:** If you have any history already downloaded with RocksDB, you must either delete that data or change the `path` field when you switch to NuDB. Otherwise, the server may [fail to start](server-wont-start.html). <!--{# TODO: link a specific case for this error #}-->
+    **Caution:** If you have any history already downloaded with RocksDB, you must either delete that data or change the paths to the databases in the config file when you switch to NuDB. You must change both the `path` field of the `[node_db]` stanza **and** the `[database_path]` (SQLite database) setting. Otherwise, the server may [fail to start](server-wont-start.html#state-db-error).
 
     {% include '_snippets/conf-file-location.md' %}<!--_ -->
 
