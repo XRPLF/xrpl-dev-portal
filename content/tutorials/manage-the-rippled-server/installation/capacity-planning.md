@@ -143,7 +143,7 @@ The following table approximates the requirements for different amounts of histo
 
 | Real Time Amount | Number of Ledger Versions | Disk Space Required (RocksDB) | Disk Space Required (NuDB) |
 |:-----------------|:--------------------------|:------------------------------|:--|
-| 2 hours          | 2,000                     | ***(TBD)*** | ***(TBD)*** |
+| 2 hours          | 2,000                     | 250 MB                        | 450 MB |
 | 1 day            | 25,000                    | 8 GB                          | 12 GB |
 | 14 days          | 350,000                   | 112 GB                        | 168 GB |
 | 30 days          | 750,000                   | 240 GB                        | 360 GB |
