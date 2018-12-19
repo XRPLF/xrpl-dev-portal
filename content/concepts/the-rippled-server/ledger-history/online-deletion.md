@@ -79,7 +79,7 @@ The following settings relate to online deletion:
 
     ![Ledger versions older than fetch_depth are not served to peers](img/fetch_depth.png)
 
-For estimates of how much disk space is required to store different amounts of history, see [Capacity Planning](capacity-planning.html#historical-data).
+For estimates of how much disk space is required to store different amounts of history, see [Capacity Planning](capacity-planning.html#disk-storage).
 
 ### Advisory Deletion
 

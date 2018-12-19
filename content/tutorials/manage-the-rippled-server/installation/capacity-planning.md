@@ -55,9 +55,9 @@ The example `rippled-example.cfg` file has the `type` field in the `[node_db]` s
 
 [RocksDB](https://rocksdb.org/docs/getting-started.html) is an embeddable persistent key-value store that is optimized for rotational disks.
 
-RocksDB requires approximately one-third less disk [storage](#storage) than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.
+RocksDB requires approximately one-third less [disk storage](#disk-space) than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.
 
-Validators should be configured to use RocksDB and to store no more than about 300,000 ledgers (approximately two weeks' worth of [historical data](#historical-data)) in the ledger store.
+Validators should be configured to use RocksDB and to store no more than about 300,000 ledgers (approximately two weeks' worth of [historical data](#disk-space)) in the ledger store.
 
 RocksDB has performance-related configuration options that you can set in `rippled.cfg` to achieve maximum transaction processing throughput. Here is the recommended configuration for a `rippled` server using RocksDB:
 
@@ -80,7 +80,7 @@ advisory_delete=0
 
 [NuDB](https://github.com/vinniefalco/nudb#introduction) is an append-only key-value store that is optimized for SSD drives.
 
-NuDB has nearly constant performance and memory footprints regardless of the amount of data being [stored](#storage). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
+NuDB has nearly constant performance and memory footprints regardless of the [amount of data being stored](#disk-space). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
 
 Non-validator production servers should be configured to use NuDB and to store the amount of historical data required for the use case.
 
