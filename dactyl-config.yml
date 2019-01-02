@@ -863,7 +863,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: This tutorial describes how to list your exchange on XRP Charts.
+        blurb: This tutorial describes how to have your exchange and its XRP trade and order book data listed on XRP Charts.
         targets:
             - local
 
