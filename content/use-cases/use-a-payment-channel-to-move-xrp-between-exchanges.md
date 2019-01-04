@@ -1,8 +1,8 @@
 # Use a Payment Channel to Move XRP Between Exchanges
 
-***TODO: what do we think of this use case title? I like using the name of the feature and also describing the task to be performed. Is the title accurate? Is it too long?***
+***TODO: what do we think of this use case title? I like using the name of the feature and also describing the task to be performed. Is the language in the title accurate?***
 
-As a digital exchange, you may need the ability to send XRP to another digital exchange. A straightforward way to do this is through a Payment Channel. For example, XXXXXXXX. ***TODO: what is a real-life description of this use case in action between two digital exchanges?*** In this use case, the exchange sending XRP is called the _payer exchange_. The exchange receiving XRP is called the _payee exchange_. Here’s a roadmap to the high-level tasks you’ll need to perform to implement this Payment Channel use case.
+As a digital exchange, you may need the ability to send XRP to another digital exchange. A straightforward way to do this is through a Payment Channel. For example, XXXXXXXX. ***TODO: what are some real-life examples of this use case in action between two digital exchanges?*** In this use case, the exchange sending XRP is called the _payer exchange_. The exchange receiving XRP is called the _payee exchange_. Here’s a roadmap to the high-level tasks you’ll need to perform to implement this Payment Channel use case.
 
 {% set n = cycler(* range(1,99)) %}
 
@@ -19,6 +19,8 @@ Payment Channels enable you to send "asynchronous" XRP payments that can be divi
 To be able to use a Payment Channel to send and receive payments, both the payer and payee exchanges must each have access to a `rippled` server that they can use to send transactions. A great way for an exchange to get access to a `rippled` server is to set up and run one.
 
 
+***TODO: most of the links below lead to sections of the full "Use Payment Channels" tutorial. I'm doing this because this enables us to surface info specific to this use case -- while linking to the more generically applicable tutorial. Does it feel okay to surface content in this way? Or should I just link directly to the full tutorial?***
+
 <span class="use-case-step-num">{{n.next()}}</span>
 ## [Fund XRP Ledger accounts](accounts.html)
 
@@ -34,7 +36,7 @@ The payer exchange opens a Payment Channel to the payee exchange.
 
 The payee exchange then reviews the details of the Payment Channel.
 
-***TODO: do we have any best practices around how long a payment channel should be allowed to remain open for this use case? Is it okay to keep it open for a year and just add more XRP to the Payment Channel whenever more XRP needs to be moved? Or do you want to close it as soon as possible? How much XRP should the payer allow the payment channel to hold? Just enough for the initial claim and then update the channel to hold more XRP the next time you want to send another claim?***
+***TODO: do we have any best practices around how long a payment channel should be allowed to remain open for this use case? Is it okay to keep it open for a year and just add more XRP to the Payment Channel whenever more XRP needs to be moved? Or do you want to close it as soon as possible? Should the payer allow the payment channel to hold just enough XRP for the initial claim and then update the channel to hold more XRP the next time they want to send another claim? Does it matter - is there a best practice?***
 
 <span class="use-case-step-num">{{n.next()}}</span>
 ## [Create a payment claim](use-payment-channels.html#3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel) and [send it](use-payment-channels.html#4-the-payer-sends-a-claim-to-the-payee-as-payment-for-goods-or-services)
@@ -57,5 +59,7 @@ Payer and payee exchanges can continue to send, verify, and redeem payment claim
 
 
 ### Related Tasks
+
+To access the full Payment Channel tutorial, see [Use Payment Channels](use-payment-channels.html).
 
 ***TODO: any suggested related tasks? maybe list your exchange data in XRP Charts?***
