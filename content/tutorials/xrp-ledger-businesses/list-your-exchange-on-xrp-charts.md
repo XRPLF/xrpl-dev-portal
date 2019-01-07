@@ -10,7 +10,7 @@ To enable XRP Charts to list your exchange, complete the following tasks:
 
 3. [Send an exchange listing request to XRP Charts](#send-an-exchange-listing-request-to-xrp-charts).
 
-Your exchange may already provide RESTful API endpoints that can deliver data in the formats described in this document. If so, there may be little to no development required on your part.
+Your exchange may have existing RESTful API endpoints that can deliver data in the formats described in this document. If so, there may be little to no development effort required on your part to complete tasks 1 and 2.
 
 If you have any questions about endpoint specifications, contact xxx@xxxxx.com. ***TODO: do we want to provide a way for them to contact us for dev support?***
 
@@ -19,9 +19,9 @@ If you have any questions about endpoint specifications, contact xxx@xxxxx.com. 
 
 Provide a RESTful API endpoint that returns the most recent 500-1,000 individual trades executed in a particular XRP market.
 
-To ensure that it doesn't miss a trade, XRP Charts queries the endpoint frequently, between every 5 and 30 seconds, aiming to get responses that have overlapping trade data.
+To ensure that it doesn't miss a trade, XRP Charts queries the endpoint frequently, between every 5 and 30 seconds, aiming to get responses that have overlapping trade data. Ensure that any rate limit enforced by your endpoint can accommodate this query frequency. XRP Charts records unique trade data only, even if it gets overlapping trades.
 
-XRP Charts records unique trade data only, even if it gets overlapping trades. XRP Charts adjusts its query frequency if it doesn't get overlapping trades. XRP Charts respects any rate limit enforced by your endpoint, but the limit must not block XRP Charts from querying at the frequency needed to get the required data set. ***TODO: okay to state this? If we can't get the data set needed without exceeding their rate limit - then we need them to increase the rate limit or provide the last_tid parameter, correct?***
+If XRP Charts needs to query your endpoint at a frequency that exceeds your rate limit, XRP Charts may request that you adjust the rate limit or provide the `last_tid` parameter. ***TODO: okay to state this? accurate?***
 
 
 ### Request Format
