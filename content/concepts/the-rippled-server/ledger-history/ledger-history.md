@@ -2,7 +2,7 @@
 
 The [consensus process](intro-to-consensus.html) creates a chain of [validated ledger versions](ledgers.html), each derived from the previous one by applying a set of transactions. Every `rippled` server stores ledger versions and transaction history locally. The amount of transaction history a server stores depends on how long that server has been online and how much history it is configured to fetch and keep.
 
-Servers in the peer-to-peer XRP Ledger network share transactions and other data with each other as part of the consensus process. Each server each independently builds each new ledger version and compares results with its trusted validators to ensure consistency. (If a consensus of trusted validators disagrees with a server's results, that server fetches the necessary data from its peers to achieve consistency.) Servers can download older data from their peers to fill gaps in their available history. The structure of the ledger uses cryptographic [hashes](basic-data-types.html#hashes) of the data so that any server can verify the integrity and consistency of the data.
+Servers in the peer-to-peer XRP Ledger network share transactions and other data with each other as part of the consensus process. Each server independently builds each new ledger version and compares results with its trusted validators to ensure consistency. (If a consensus of trusted validators disagrees with a server's results, that server fetches the necessary data from its peers to achieve consistency.) Servers can download older data from their peers to fill gaps in their available history. The structure of the ledger uses cryptographic [hashes](basic-data-types.html#hashes) of the data so that any server can verify the integrity and consistency of the data.
 
 ## Databases
 
@@ -18,7 +18,7 @@ The [server_info method][] reports how many ledger versions your server has avai
 
 ## Fetching History
 
-When it starts, a `rippled` server's first priority is to get a complete copy of the latest validated ledger. From there, it keeps up with advances in the ledger progress. If configured to do so, the server also backfills ledger history up to a configured amount, which must be equal or less than the cutoff beyond which online deletion is configured to delete.
+When it starts, a `rippled` server's first priority is to get a complete copy of the latest validated ledger. From there, it keeps up with advances in the ledger progress. If configured to do so, the server also backfills ledger history up to a configured amount, which must be equal to or less than the cutoff beyond which online deletion is configured to delete.
 
 The server can backfill history from before it became synced, as well as filling in any gaps in the history it has collected after syncing. (Gaps in ledger history can occur if a server temporarily becomes too busy to keep up with the network, loses its network connection, or suffers other temporary issues.) To backfill history, the server requests data from its peer `rippled` servers. The amount the server tries to backfill is defined by the `[ledger_history]` setting.
 
@@ -39,7 +39,7 @@ Ripple provides a set of public full-history servers as a public service at `s2.
 
 **Tip:** Unlike some cryptocurrency networks, servers in the XRP Ledger do not need full history to know the current state and keep up with current transactions.
 
-For instructions setting up full history, see [Configure Full History](configure-full-history.html).
+For instructions on setting up full history, see [Configure Full History](configure-full-history.html).
 
 ## History Sharding
 

@@ -1,6 +1,6 @@
 # Configure Advisory Deletion
 
-The default config file sets `rippled` to automatically delete outdated history of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours to reduce the chances of online deletion.
+The default config file sets `rippled` to automatically delete outdated history of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours, so that online deletion is less likely to impact server performance.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ This tutorial assumes your server meets the following prerequisites:
 
 - Your server has enough disk space to store your chosen amount of history in its ledger store.
 
-    See [Capacity Planning](capacity-planning.html) for details of how much storage is required for different configuration. With advisory deletion enabled, the maximum history a server may accumulate before deletion is equal to the number of ledger versions configured in the `online_delete` setting **plus** the amount of time between online deletion prompts.
+    See [Capacity Planning](capacity-planning.html) for details of how much storage is required for different configurations. With advisory deletion enabled, the maximum history a server may accumulate before deletion is equal to the number of ledger versions configured in the `online_delete` setting **plus** the amount of time between online deletion prompts.
 
 - You know which hours are least busy for your server.
 
@@ -48,7 +48,7 @@ To configure advisory deletion with a daily schedule, perform the following step
 
         $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
 
-    The response indicates the maximum ledger index that may the server may delete from its ledger store. For example, the following message indicates that ledger versions up to and including ledger index 43633667 are to be deleted:
+    The response indicates the maximum ledger index that the server may delete from its ledger store. For example, the following message indicates that ledger versions up to and including ledger index 43633667 can be deleted:
 
         {
           "result": {
@@ -71,7 +71,7 @@ To configure advisory deletion with a daily schedule, perform the following step
 
     Be sure that you schedule the command to run based on your server's configured time zone.
 
-    **Tip:** You do not need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `rippled` runs online deletion automatically when the server has approximately twice the number of ledgers to keep after deletion.
+    **Tip:** You do not need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `rippled` runs online deletion automatically when the difference between the server's oldest and current validated ledger versions is at least the value of `online_delete`.
 
 4. Start (or restart) the `rippled` service.
 

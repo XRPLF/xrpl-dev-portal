@@ -21,7 +21,7 @@ To change the amount of history your server stores, perform the following steps:
 
 1. Decide how many ledger versions' worth of history to store.
 
-    New ledger versions are usually validated 3 to 4 seconds apart, so the number of ledger versions corresponds roughly to the amount of time you want to store. See [Capacity Planning](capacity-planning.html) for details of how much storage is required for different configuration.
+    New ledger versions are usually validated 3 to 4 seconds apart, so the number of ledger versions corresponds roughly to the amount of time you want to store. See [Capacity Planning](capacity-planning.html) for details of how much storage is required for different configurations.
 
     Online deletion is based on how many ledger versions to keep _after_ deleting history, so you should have enough disk space to store twice as many ledgers as you set it to keep.
 

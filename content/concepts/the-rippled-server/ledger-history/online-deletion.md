@@ -14,7 +14,7 @@ The default config file sets the `rippled` server to keep the most recent 2000 l
 
 The `rippled` server stores [ledger history](ledger-history.html) in its _ledger store_. This data accumulates over time.
 
-Inside the ledger store, ledger data is "de-duplicated": data that doesn't change from version to version is only stored once. The records themselves in the ledger store do not indicate which ledger version(s) contain them; part of the work of online deletion is identifying which records are only used by outdated ledger versions. This process is time consuming and affects the disk I/O and application cache, so it is not feasible to delete old data on every ledger close.
+Inside the ledger store, ledger data is "de-duplicated". In other words, data that doesn't change from version to version is only stored once. The records themselves in the ledger store do not indicate which ledger version(s) contain them; part of the work of online deletion is identifying which records are only used by outdated ledger versions. This process is time consuming and affects the disk I/O and application cache, so it is not feasible to delete old data on every ledger close.
 
 
 ## Online Deletion Behavior
@@ -25,12 +25,16 @@ The online deletion settings configure how many ledger versions the `rippled` se
 - The server may store up to twice the configured number of ledger versions if online deletion is set to run automatically. (Each time it runs, it reduces the number of stored ledger versions to approximately the configured number.)
 - If advisory deletion is enabled, the server stores all the ledger versions that it has acquired and built until its administrator calls the [can_delete method][].
 
-    If you call [can_delete][can_delete method] on a regular basis, the maximum amount of data the server stores is either of the following, whichever is larger:
+    The amount of data the server stores depends on how often you call [can_delete][can_delete method] and the how big an interval of time your `online_delete` setting represents:
 
-    - A number of ledger versions approximately equal to twice the `online_delete` value. (After deletion, this is reduced to approximately the `online_delete` value.)
-    - Ledger versions spanning an amount of time that is approximately twice the interval between `can_delete` calls. (After deletion, this is reduced to approximately one interval's worth of data.)
+    - If you call `can_delete` _more often_ than your `online_delete` interval, the server stores at most a number of ledger versions approximately equal to **twice the `online_delete` value**. (After deletion, this is reduced to approximately the `online_delete` value.)
 
-    For example, if you call `can_delete` with a value of `now` once per day and an `online_delete` value of 2000, the server typically stores up two full day's worth of ledger versions before running deletion. After running deletion, the server keeps approximately 1 day's worth, but never less than 2000 ledger versions.
+        For example, if you call `can_delete` with a value of `now` once per day and an `online_delete` value of 50,000, the server typically stores up to 100,000 ledger versions before running deletion. After running deletion, the server keeps at least 50,000 ledger versions (about two days' worth). With this configuration, approximately every other `can_delete` call results in no change because the server does not have enough ledger versions to delete.
+
+    - If you call `can_delete` _less often_ than your `online_delete` interval, the server stores at most ledger versions spanning an amount of time that is approximately **twice the interval between `can_delete` calls**. (After deletion, this is reduced to approximately one interval's worth of data.)
+
+        For example, if you call `can_delete` with a value of `now` once per day and an `online_delete` value of 2000, the server typically stores up to two full days' worth of ledger versions before running deletion. After running deletion, the server keeps approximately one day's worth (about 25,000 ledger versions), but never fewer than 2000 ledger versions.
+
 
 With online deletion enabled and running automatically (that is, with advisory delete disabled), the total amount of ledger data stored should remain at minimum equal to the number of ledger versions the server is configured to keep, with the maximum being roughly twice that many.
 
@@ -44,7 +48,7 @@ Online deletion automatically stops if the [server state](rippled-server-states.
 
 If you stop the server or it crashes while online deletion is running, online deletion resumes after the server is restarted and the server becomes fully synced.
 
-To temporarily disable online deletion, you can use the [can_delete method][] with an argument of `never`. This change persists until you re-enable online deletion by calling [can_delete][can_delete method] again, even if you change the . For more information on controlling when online deletion happens, see [Advisory Deletion](#advisory-deletion).
+To temporarily disable online deletion, you can use the [can_delete method][] with an argument of `never`. This change persists until you re-enable online deletion by calling [can_delete][can_delete method] again. For more information on controlling when online deletion happens, see [Advisory Deletion](#advisory-deletion).
 
 
 ## Configuration
@@ -55,7 +59,7 @@ The following settings relate to online deletion:
 
     The default config file specifies 2000 for this value. This cannot be less than 256, because some events like [Fee Voting](fee-voting.html) and the [Amendment Process](amendments.html#amendment-process) update only every 256 ledgers.
 
-    **Caution:** If you run `rippled` with `online_delete` disabled, then later enable `online_delete` and restart the server, the server disregards but does not delete existing ledger history that your server already downloaded while `online_delete` was disabled. To save disk space, delete your existing history before re-starting the server with `online_delete` back on.
+    **Caution:** If you run `rippled` with `online_delete` disabled, then later enable `online_delete` and restart the server, the server disregards but does not delete existing ledger history that your server already downloaded while `online_delete` was disabled. To save disk space, delete your existing history before re-starting the server after changing the `online_delete` setting.
 
 - **`[ledger_history]`** - Specify a number of validated ledgers, equal to or less than `online_delete`. If the server does not have at least this many validated ledger versions, it attempts to backfill them by fetching the data from peers.
 
@@ -79,23 +83,31 @@ The following settings relate to online deletion:
 
     ![Ledger versions older than fetch_depth are not served to peers](img/fetch_depth.png)
 
-For estimates of how much disk space is required to store different amounts of history, see [Capacity Planning](capacity-planning.html#disk-storage).
+For estimates of how much disk space is required to store different amounts of history, see [Capacity Planning](capacity-planning.html#disk-space).
 
 ### Advisory Deletion
 
-By default, online deletion happens automatically and periodically. If the `advisory_delete` setting is enabled in the config file, online deletion only happens when an administrator triggers it using the [can_delete method][].
+The default config file schedules online deletion to happen automatically and periodically. If the config file does not specify an `online_delete` interval, online deletion does not occur. If config file enables the `advisory_delete` setting, online deletion only happens when an administrator triggers it using the [can_delete method][].
 
 You can use advisory deletion with a scheduled job to trigger automatic deletion based on clock time instead of the number of ledger versions closed. If your server is heavily used, the extra load from online deletion can cause your server to fall behind and temporarily de-sync from the consensus network. If this is the case, you can use advisory deletion and schedule online deletion to happen only during off-peak times.
 
-Alternatively, you can use advisory deletion for other reasons, such as if you want to manually confirm that transaction data is backed up to a separate server before deleting it.
+You can use advisory deletion for other reasons. For example, you may want to manually confirm that transaction data is backed up to a separate server before deleting it. Alternatively, you may want to manually confirm that a separate task has finished processing transaction data before you delete that data.
 
 The `can_delete` API method can enable or disable automatic deletion, in general or up to a specific ledger version, as long as `advisory_delete` is enabled in the config file. These settings changes persist even if you restart the `rippled` server, unless you disable `advisory_delete` in the config file before restarting.
 
 
+## How It Works
+
+Online deletion works by creating two databases: at any given time, there is an "old" database, which is read-only, and a "current" database, which is writable. The `rippled` server can read objects from either database, so current ledger versions may contain objects in either one. If an object in a ledger does not change from ledger version to ledger version, only one copy of that object remains in the database, so the server does not store redundant copies of that object. When a new ledger version modifies an object, the server stores the modified object in the "new" database, while the previous version of the object (which is still used by previous ledger versions) remains in the "old" database.
+
+When it comes time for online deletion, the server first walks through the oldest ledger version to keep, and copies all objects in that ledger version from the read-only "old" database into the "current" database. This guarantees that the "current" database now contains all objects used in the chosen ledger version and all newer versions. Then, the server deletes the "old" database, and changes the existing "current" database to become "old" and read-only. The server starts a new "current" database to contain any newer changes after this point.
+
+![Diagram showing how online deletion uses two databases](img/online-deletion-process.png)
+
 ## See Also
 
 - [Capacity Planning](capacity-planning.html)
-- [can_delete method][] API reference documentation
+- [can_delete method][] - API reference documentation
 - [Configure Online Deletion](configure-online-deletion.html)
 - [Configure Advisory Deletion](configure-advisory-deletion.html)
 - [Configure Full History](configure-full-history.html)

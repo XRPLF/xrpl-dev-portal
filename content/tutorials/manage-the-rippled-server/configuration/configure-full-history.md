@@ -52,12 +52,12 @@ To configure your server to acquire and store full history, complete the followi
 0. If you have a database dump from another full-history server to use as a basis, set the `[import_db]` stanza of your server's config file to point to the data to be imported. (Otherwise, skip this step.)
 
         [import_db]
-      	type=RocksDB
+      	type=NuDB
       	path=/tmp/full_history_dump/
 
 0. Remove your server's existing database files, if you have any from previously running `rippled`.
 
-    After disabling online deletion, the server ignores any data that was downloaded while online deletion was enabled, so you may as well clear up the disk space:
+    After disabling online deletion, the server ignores any data that was downloaded while online deletion was enabled, so you may as well clear up the disk space. For example:
 
         rm -r /var/lib/rippled/db/rocksdb/*
         rm /var/lib/rippled/db/*.db
