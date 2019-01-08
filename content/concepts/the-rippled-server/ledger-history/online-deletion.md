@@ -25,7 +25,7 @@ The online deletion settings configure how many ledger versions the `rippled` se
 - The server may store up to twice the configured number of ledger versions if online deletion is set to run automatically. (Each time it runs, it reduces the number of stored ledger versions to approximately the configured number.)
 - If advisory deletion is enabled, the server stores all the ledger versions that it has acquired and built until its administrator calls the [can_delete method][].
 
-    The amount of data the server stores depends on how often you call [can_delete][can_delete method] and the how big an interval of time your `online_delete` setting represents:
+    The amount of data the server stores depends on how often you call [can_delete][can_delete method] and how big an interval of time your `online_delete` setting represents:
 
     - If you call `can_delete` _more often_ than your `online_delete` interval, the server stores at most a number of ledger versions approximately equal to **twice the `online_delete` value**. (After deletion, this is reduced to approximately the `online_delete` value.)
 
