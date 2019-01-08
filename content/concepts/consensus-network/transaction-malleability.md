@@ -2,22 +2,122 @@
 
 A transaction is "malleable" if it can be changed in any way after being signed, without the keys to sign it. In the XRP Ledger, the **functionality** of a signed transaction cannot change, but in some circumstances a third party _could_ change the signature and identifying hash of a transaction.
 
-**Use the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags)** to guarantee that a transaction is not malleable in any way. Although transactions [signed with Ed25519 keys](cryptographic-keys.html#signing-algorithms) are not vulnerable to this problem, **there is no downside** to using this flag on _all_ transactions.
+If vulnerable software submits malleable transactions and assumes they can only execute under the original hash, it may lose track of transactions. In the worst case, malicious actors could take advantage of this to steal money from the vulnerable system.
+
+There are two circumstances that could lead to transaction malleability:
+
+1. The transaction does not specify the tfFullyCanonicalSig flag on a transaction signed using the default signing algorithm (ECDSA with the secp256k1 curve).
+
+    **Use the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags)** to guarantee that a transaction is not malleable in this way. Although transactions [signed with Ed25519 keys](cryptographic-keys.html#signing-algorithms) are not vulnerable to this problem, **there is no downside** to using this flag on _all_ transactions.
+
+2. The transaction is [multi-signed](multi-signing.html) and has more signatures than necessary. Even if the transaction originally did not have more signatures than necessary, it could be malleable if one of the authorized signers provides an additional signature.
+
+    There is no solution that prevents all variations of this problem. When using multi-signatures, monitor your account for transactions sent even if they have different hashes, and try not to collect more signatures than necessary.
+
 
 ## Background
 
-In the XRP Ledger, all [fields of a transaction](transaction-common-fields.html) must be signed, except the signature itself. Any change to the signed fields, no matter how small, would invalidate the signature, so no part of the transaction can be malleable except for the signature itself.
+In the XRP Ledger, a transaction cannot execute unless:
 
-For a transaction to be valid, the signature must be canonical, must match the transaction instructions that were signed, and the key pair used to sign it must be one that is [authorized to send transactions on behalf of that account](transaction-basics.html#authorizing-transactions).
+- All [fields of a transaction](transaction-common-fields.html) are signed, except the signature itself.
+- The key pair(s) used to sign the transaction are [authorized to send transactions on behalf of that account](transaction-basics.html#authorizing-transactions).
+- The signature is _canonical_ and matches the transaction instructions.
 
-Signatures created with the ECDSA algorithm and secp256k1 curve (the default) must also meet the following requirements:
+Any change to the signed fields, no matter how small, would invalidate the signature, so no part of the transaction can be malleable except for the signature itself. In most cases, any change to a signature itself also invalidates the signature, but there are some specific exceptions, described below.
+
+### Alternate secp256k1 Signatures
+
+To be "canonical", signatures created with the ECDSA algorithm and secp256k1 curve (the default) must meet the following requirements:
 
 - The signature must be properly [DER-encoded data](https://en.wikipedia.org/wiki/X.690#DER_encoding).
 - The signature must not have any padding bytes outside the DER-encoded data.
 - The signature's component integers must not be negative, and they must not be larger than the secp256k1 modulus.
 
-Generally speaking, any standard ECDSA implementation handles these requirements automatically. However, with secp256k1, those requirements are insufficient to prevent malleability.
+Generally speaking, any standard ECDSA implementation handles these requirements automatically. However, with secp256k1, those requirements are insufficient to prevent malleability. Thus, the XRP Ledger has a concept of "fully canonical" signatures which do not have the same problem.
 
-An ECDSA signature consists of two integers, called R and S. The secp256k1 modulus, called N, is a constant value for all secp256k1 signatures. Specifically, N is the value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`. For any given signature `(R,S)`, the signature `(R, N-S)` (that is, using N minus S in place of S) is also valid. Thus, to have _fully_ canonical signatures, one must choose which of the two possibilities is preferred and declare the other to be invalid. This is what the tfFullyCanonicalSig flag does: without that flag enabled, XRP Ledger transactions are valid with either of the two possible signatures; with it, the signature must use the _smaller_ of the two possible values, `S` or `N-S`.
+An ECDSA signature consists of two integers, called R and S. The secp256k1 modulus, called N, is a constant value for all secp256k1 signatures. Specifically, N is the value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`. For any given signature `(R,S)`, the signature `(R, N-S)` (that is, using N minus S in place of S) is also valid.
 
-To calculate a fully-canonical ECDSA signature, one must compare S and N-S 
+Thus, to have _fully_ canonical signatures, one must choose which of the two possibilities is preferred and declare the other to be invalid. The creators of the XRP Ledger decided arbitrarily to prefer the _smaller_ of the two possible values, `S` or `N-S`. A transaction is considered _fully canonical_ if it uses the preferred (smaller) value of `S`, and follows all the normal rules for being canonical.
+
+To maintain compatibility with older software that did not always generate fully canonical signatures, the XRP Ledger accepts transactions that are not fully canonical. To protect new users from exploits, the XRP Ledger has a flag on transactions called [**tfFullyCanonicalSig**](transaction-common-fields.html#global-flags), which requires that the transaction use a _fully-canonical_ signature to be valid.
+
+To calculate a fully-canonical ECDSA signature, one must compare S and N-S to determine which is smaller, then use that value in the `Signature` field of the transaction, and compute the identifying `hash` of the transaction using that version of the signature.
+
+All XRP Ledger software that Ripple publishes (including `rippled`, and ripple-lib/RippleAPI) generates only fully-canonical signatures. To further protect users, Ripple has configured its code to enable the **tfFullyCanonicalSig** flag by default where possible. Ripple strongly encourages third-party implementations of XRP Ledger software to generate only fully-canonical signatures, and enable tfFullyCanonicalSig on transactions by default.
+
+
+### Malleability with Multi-Signatures
+
+An important, explicit feature of multi-signing is that multiple different possible configurations can render a transaction valid. For example, an account can be configured so that signatures from any three of five signers could authorize a transaction. However, this inherently means that there can be several different variations of a valid transaction, each with a different identifying hash.
+
+All of the following cases can lead to transaction malleability:
+
+- If a transaction still has enough signatures to meet its quorum after removing one or more. Any third party could remove a signature and calculate the hash of the modified transaction.
+- If one can add a valid signature to a transaction that already has a quorum. Only one of the sending account's authorized signers could add such a signature.
+- If one can replace one signature from a transaction with another valid signature while maintaining a quorum. Only one of the sending account's authorized signers could add such a signature.
+
+Generally, you can avoid problems when multi-signing if you do not collect more signatures than necessary and your authorized signers are not trying to exploit your software. Even if your authorized signers are not intentionally malicious, confusion or poor coordination could cause several signers to submit different valid versions of the same transaction. When using multi-signatures, you should be prepared for the possibility that transaction executes with a different hash and set of signatures than you expected. Carefully monitor your account's sent transactions (for example, using the [account_tx method][]) and do not automatically re-create multi-signed transactions.
+
+
+## Exploit With Malleable Transactions
+
+If the software you use to interface with the XRP Ledger sends malleable transactions, a malicious actor may be able to trick your software into losing track of a transaction's final outcome and potentially (in the worst case) sending equivalent payments multiple times.
+
+If you use single-signatures and always enable the tfFullyCanonicalSig flag, you are not vulnerable to this exploit. If you use multi-signatures, you may be vulnerable if you or your signers provide more signatures than necessary.
+
+### Exploit Scenario Steps
+
+The process to exploit a vulnerable system follows a series of steps similar to the following:
+
+1. The vulnerable system constructs and signs a transaction without enabling tfFullyCanonicalSig.
+
+    Three ways that a transaction may not enable the tfFullyCanonicalSig flag are:
+
+    - The system explicitly specifies a `Flags` field that does not have the tfFullyCanonicalSig bit enabled.
+    - The transaction is multi-signed and does not explicitly enable the tfFullyCanonicalSig flag.
+    - The system omits the `Flags` field from the transaction fields, but uses a non-standard implementation that does not automatically enable tfFullyCanonicalSig when signing.
+
+    To be vulnerable, the transaction must be signed with an ECDSA key pair. If multi-signed, the transaction must be signed by at least one ECDSA key pair.
+
+    Most likely, the vulnerable transaction uses a fully-validated signature, but the flags indicate that the transaction would also be valid with a non-fully-canonical one. The transaction may also use `LastLedgerSequence` so that its final outcome is clear in a finite amount of time.
+
+2. The system notes the identifying hash of the vulnerable transaction, submits it to the XRP Ledger network, then begins monitoring for that hash to be included in a validated ledger version.
+
+3. A malicious actor sees the transaction propagating through the network before it becomes confirmed.
+
+4. The malicious actor calculates the alternate signature for the vulnerable transaction, and derives the hash of the resulting transaction data.
+
+    Unlike creating a signature for a different transaction data, this does not require a large amount of computational work. It can be done in much less time than it takes to generate a signature in the first place.
+
+5. The malicious actor submits the modified (likely non-fully-canonical) transaction to the network.
+
+    This creates a "race" between the transaction as originally submitted and the modified version submitted by the malicious actor. The two transactions are mutually exclusive. Both are valid, but they have the same exact transaction data, including the `Sequence` number, so at most one of them can ever be included in a validated ledger.
+
+    Servers in the peer-to-peer network have no way of knowing which one "came first" or was intended by its original sender. Delays or other coincidences in network connectivity could result in validators seeing only one or the other by the time they finalize their consensus proposals, so either one could "win the race".
+
+    A malicious actor could increase the chances of getting non-canonical transactions confirmed if they controlled some number of well-connected servers in the peer-to-peer network, even if those servers are not trusted as validators.
+
+    If the malicious actor controls the only server to which the vulnerable system submitted the transaction, the malicious actor can easily control which version is distributed to the rest of the network.
+
+6. The malicious actor's version of the transaction achieves a consensus and becomes included in a validated ledger.
+
+    At this point, the transaction has executed and cannot be reversed. Its effects (such as sending XRP) are final. The original version of the transaction is no longer valid because its `Sequence` number has been used.
+
+    The effects of the transaction in the XRP Ledger are exactly the same as if the original version had executed.
+
+7. The vulnerable system does not see the transaction hash it is expecting, and erroneously concludes that the transaction did not execute.
+
+    If the transaction included the `LastLedgerSequence` field, this would occur after the specified ledger index has passed.
+
+    If the transaction omitted the `LastLedgerSequence` field, this could be wrong in another way: there is no amount of time after which you can definitively conclude that such a transaction could not later succeed. (See [Reliable Transaction Submission](reliable-transaction-submission.html) for details.)
+
+8. The vulnerable system takes action assuming that the transaction has failed.
+
+    For example, it may refund (or simply not debit) a customer's balance in its own system, to account for the funds that it thinks have not been sent in the XRP Ledger.
+
+    Worse, the vulnerable system might construct a new transaction to replace the transaction, picking new `Sequence`, `LastLedgerSequence`, and `Fee` parameters based on the current state of the network, but keeping the rest of the transaction the same as the original. If this new transaction is also malleable, the system could be exploited in the same way an indefinite number of times.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
