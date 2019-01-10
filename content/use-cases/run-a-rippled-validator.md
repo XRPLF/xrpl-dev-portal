@@ -37,14 +37,14 @@ To configure your `rippled` server to run in validator mode, generate a validato
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Set up a stock rippled server as a proxy](run-rippled-as-a-validator.html#public-facing-server)
+## [Set up a stock rippled server as a proxy](run-rippled-as-a-validator.html#set-up-proxies-to-help-protect-your-validator)
 
 To protect a production validator from DDoS attacks, you can use a stock `rippled` server as a proxy between the validator and the outside network.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Associate your validator with a web domain you control](run-rippled-as-a-validator.html#domain-verification)
+## [Associate your validator with a web domain you control](run-rippled-as-a-validator.html#provide-domain-verification)
 
 Network participants are unlikely to trust a validator without knowing who is operating it. To address this concern, associate your validator with a web domain you control.
 You may also wish to have your validator listed with one or more validator tracking services, such as the <a href="https://xrpcharts.ripple.com/#/validators" target="_blank">XRP Charts Validator Registry <i class="fa fa-external-link" aria-hidden="true"></i></a>.<!--#{ fix md highlighting_ #}-->
