@@ -474,6 +474,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/consensus-network/transaction-malleability.md
+        html: transaction-malleability.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Be aware of ways transactions could be changed have a different hash than expected.
+        targets:
+            - local
+
     -   md: concepts/consensus-network/amendments.md
         html: amendments.html
         funnel: Docs

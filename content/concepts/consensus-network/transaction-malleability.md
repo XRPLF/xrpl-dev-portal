@@ -45,6 +45,11 @@ To calculate a fully-canonical ECDSA signature, one must compare S and N-S to de
 
 All XRP Ledger software that Ripple publishes (including `rippled`, and ripple-lib/RippleAPI) generates only fully-canonical signatures. To further protect users, Ripple has configured its code to enable the **tfFullyCanonicalSig** flag by default where possible. Ripple strongly encourages third-party implementations of XRP Ledger software to generate only fully-canonical signatures, and enable tfFullyCanonicalSig on transactions by default.
 
+There are two cases where Ripple's signing implementations for the XRP Ledger do not automatically enable the tfFullyCanonicalSig flag. Users should take care to set the flag in these situations:
+
+- When the user explicitly specifies the `Flags` field of the transaction. Use bitwise OR to apply tfFullyCanonicalSig _and_ any other desired flags.
+- When the user provides a multi-signature for a transaction. Since different participants in a multi-signature must sign _exactly_ the same data, the signing code does not pre-process the transaction instructions to add the tfFullyCanonicalSig flag. For multi-signed transactions, always enable the tfFullyCanonicalSig flag explicitly.
+
 
 ### Malleability with Multi-Signatures
 
@@ -53,10 +58,21 @@ An important, explicit feature of multi-signing is that multiple different possi
 All of the following cases can lead to transaction malleability:
 
 - If a transaction still has enough signatures to meet its quorum after removing one or more. Any third party could remove a signature and calculate the hash of the modified transaction.
-- If one can add a valid signature to a transaction that already has a quorum. Only one of the sending account's authorized signers could add such a signature.
-- If one can replace one signature from a transaction with another valid signature while maintaining a quorum. Only one of the sending account's authorized signers could add such a signature.
+- If one can add a valid signature to a transaction that already has a quorum. Only an authorized signer of the sending account could create such a signature.
+- If one can replace one signature from a transaction with another valid signature while maintaining a quorum. Only an authorized signer of the sending account could create such a signature.
 
-Generally, you can avoid problems when multi-signing if you do not collect more signatures than necessary and your authorized signers are not trying to exploit your software. Even if your authorized signers are not intentionally malicious, confusion or poor coordination could cause several signers to submit different valid versions of the same transaction. When using multi-signatures, you should be prepared for the possibility that transaction executes with a different hash and set of signatures than you expected. Carefully monitor your account's sent transactions (for example, using the [account_tx method][]) and do not automatically re-create multi-signed transactions.
+Even if your authorized signers are not intentionally malicious, confusion or poor coordination could cause several signers to submit different valid versions of the same transaction.
+
+**Good operational security can protect against these problems.** Generally, you can avoid transaction malleability problems when multi-signing if you follow good operational security practices, including the following:
+
+- Do not collect more signatures than necessary.
+- Either designate one party to assemble a transaction after collecting the necessary number of signatures, or designate a "chain" where signers pass the transaction instructions forward to be signed in a predefined order.
+- Do not add unnecessary or untrusted signers to your multi-signing lists, even if the `weight` values associated with their keys are insufficient to authorize a transaction.
+- Be prepared for the possibility that a transaction executes with a different hash and set of signatures than you expected. Carefully monitor your account's sent transactions (for example, using the [account_tx method][]).
+- If you re-create transactions to be multi-signed, _do not_ change the `Sequence` number unless you have manually confirmed that the intended actions have not already executed.
+- Confirm that the tfFullyCanonicalSig flag is enabled before signing.
+
+For greater security, these guidelines provide multiple layers of protection.
 
 
 ## Exploit With Malleable Transactions
@@ -117,7 +133,8 @@ The process to exploit a vulnerable system follows a series of steps similar to 
 
     Worse, the vulnerable system might construct a new transaction to replace the transaction, picking new `Sequence`, `LastLedgerSequence`, and `Fee` parameters based on the current state of the network, but keeping the rest of the transaction the same as the original. If this new transaction is also malleable, the system could be exploited in the same way an indefinite number of times.
 
+
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
