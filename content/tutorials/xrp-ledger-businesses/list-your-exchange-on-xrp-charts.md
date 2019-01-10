@@ -10,7 +10,7 @@ To enable XRP Charts to list your exchange, you'll need to make the following da
 
 Then, you'll need to [send an exchange listing request to XRP Charts](#send-an-exchange-listing-request-to-xrp-charts).
 
-If you have any questions about endpoint specifications, contact xxx@xxxxx.com. ***TODO: do we want to provide a way for them to contact us for dev support?***
+If you have any questions about endpoint specifications, contact <xrpcharts_support@ripple.com>.
 
 
 ## Provide a Recently Executed Trades Endpoint
@@ -184,10 +184,6 @@ GET https://api.example.com/v1/orderbook?market=xrp_btc
 
 ## Send an Exchange Listing Request to XRP Charts
 
-Contact xxx@xxxxx.com to request that your exchange be listed on XRP Charts. ***TODO: alternatively, do we want to just have them submit everything via a Google Form like this one, for example? https://docs.google.com/forms/d/e/1FAIpQLScszfq7rRLAfArSZtvitCyl-VFA9cNcdnXLFjURsdCQ3gHW7w/viewform***
+Contact <xrpcharts_support@ripple.com> to request that your exchange be listed on XRP Charts.
 
-In the request be sure to include:
-
-- A link to your API documentation
-
-- ***TODO: Anything else we want them to provide?***
+In the request, be sure to include a link to your API documentation
