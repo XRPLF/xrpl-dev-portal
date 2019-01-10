@@ -12,7 +12,7 @@ There are two circumstances that could lead to transaction malleability:
 
 2. The transaction is [multi-signed](multi-signing.html) and has more signatures than necessary. Even if the transaction originally did not have more signatures than necessary, it could be malleable if one of the authorized signers provides an additional signature.
 
-    There is no solution that prevents all variations of this problem. When using multi-signatures, monitor your account for transactions sent even if they have different hashes, and try not to collect more signatures than necessary.
+    Good operational security can protect against these problems. See [Mitigations for Multi-Signature Malleability](#mitigations-for-multi-signature-malleability) for guidelines.
 
 
 ## Background
@@ -62,6 +62,8 @@ All of the following cases can lead to transaction malleability:
 - If one can replace one signature from a transaction with another valid signature while maintaining a quorum. Only an authorized signer of the sending account could create such a signature.
 
 Even if your authorized signers are not intentionally malicious, confusion or poor coordination could cause several signers to submit different valid versions of the same transaction.
+
+#### Mitigations for Multi-Signature Malleability
 
 **Good operational security can protect against these problems.** Generally, you can avoid transaction malleability problems when multi-signing if you follow good operational security practices, including the following:
 
