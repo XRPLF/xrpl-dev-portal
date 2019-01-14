@@ -479,7 +479,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Be aware of ways transactions could be changed have a different hash than expected.
+        blurb: Be aware of ways transactions could be changed to have a different hash than expected.
         targets:
             - local
 
