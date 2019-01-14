@@ -22,7 +22,10 @@ Inside the ledger store, ledger data is "de-duplicated". In other words, data th
 The online deletion settings configure how many ledger versions the `rippled` server should keep available in the ledger store at a time. However, the specified number is a guideline, not a hard rule:
 
 - The server never deletes data more recent than the configured number of ledger versions, but it may have less than that amount available if it has not been running for long enough or if it lost sync with the network at any time. (The server attempts to backfill at least some history; see [fetching history](ledger-history.html#fetching-history) for details.)
-- The server may store up to twice the configured number of ledger versions if online deletion is set to run automatically. (Each time it runs, it reduces the number of stored ledger versions to approximately the configured number.)
+- The server may store up to just over twice the configured number of ledger versions if online deletion is set to run automatically. (Each time it runs, it reduces the number of stored ledger versions to approximately the configured number.)
+
+    If online deletion is delayed because the server is busy, ledger versions can continue to accumulate. When functioning normally, online deletion begins when the server has twice the configured number of ledger versions, but it may not complete until after several more ledger versions have accumulated.
+
 - If advisory deletion is enabled, the server stores all the ledger versions that it has acquired and built until its administrator calls the [can_delete method][].
 
     The amount of data the server stores depends on how often you call [can_delete][can_delete method] and how big an interval of time your `online_delete` setting represents:

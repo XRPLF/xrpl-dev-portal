@@ -59,9 +59,9 @@ To configure your server to acquire and store full history, complete the followi
 
     After disabling online deletion, the server ignores any data that was downloaded while online deletion was enabled, so you may as well clear up the disk space. For example:
 
-        rm -r /var/lib/rippled/db/rocksdb/*
-        rm /var/lib/rippled/db/*.db
-        rm /var/lib/rippled/db/*.sqlite
+        rm -r /var/lib/rippled/db/*
+
+    **Warning:** Be sure that you have not put any files you want to keep in the folder before you delete it. It is generally safe to delete all of a `rippled` server's database files, but you should only do this if the configured database folder is not used for anything other than `rippled`'s databases.
 
 0. Start the `rippled` server, importing the database dump if you have one available:
 

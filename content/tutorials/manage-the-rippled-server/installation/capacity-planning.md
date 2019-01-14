@@ -53,7 +53,9 @@ The example `rippled-example.cfg` file has the `type` field in the `[node_db]` s
 
 #### More About Using RocksDB
 
-[RocksDB](https://rocksdb.org/docs/getting-started.html) is an embeddable persistent key-value store that works well with both rotational disks and solid state disks.
+[RocksDB](https://rocksdb.org/docs/getting-started.html) is an embeddable persistent key-value store.
+
+RocksDB works well on solid-state disks. RocksDB performs better than NuDB when used with rotational disks, but you may still encounter performance problems unless you use solid-state disks.
 
 RocksDB requires approximately one-third less [disk storage](#disk-space) than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.
 
