@@ -45,6 +45,8 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: transaction-malleability.html
+              date: 2019-01-14
             - html: ledger-history.html
               date: 2019-01-14
             - html: online-deletion.html
