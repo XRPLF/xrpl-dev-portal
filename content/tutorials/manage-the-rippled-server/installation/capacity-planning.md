@@ -53,54 +53,57 @@ The example `rippled-example.cfg` file has the `type` field in the `[node_db]` s
 
 #### More About Using RocksDB
 
-[RocksDB](https://rocksdb.org/docs/getting-started.html) is an embeddable persistent key-value store that is optimized for rotational disks.
+[RocksDB](https://rocksdb.org/docs/getting-started.html) is an embeddable persistent key-value store.
 
-RocksDB requires approximately one-third less disk [storage](#storage) than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.
+RocksDB works well on solid-state disks. RocksDB performs better than NuDB when used with rotational disks, but you may still encounter performance problems unless you use solid-state disks.
 
-Validators should be configured to use RocksDB and to store no more than about 300,000 ledgers (approximately two weeks' worth of [historical data](#historical-data)) in the ledger store.
+RocksDB requires approximately one-third less [disk storage](#disk-space) than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.
+
+Validators should be configured to use RocksDB and to store no more than about 300,000 ledgers (approximately two weeks' worth of [historical data](#disk-space)) in the ledger store.
 
 RocksDB has performance-related configuration options that you can set in `rippled.cfg` to achieve maximum transaction processing throughput. Here is the recommended configuration for a `rippled` server using RocksDB:
 
 ```
 [node_db]
 type=RocksDB
-path={path_to_ledger_store}
+path=/var/lib/rippled/db/rocksdb
 open_files=512
 filter_bits=12
 cache_mb=512
 file_size_mb=64
 file_size_mult=2
+online_delete=2000
+advisory_delete=0
 ```
+
+(Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration.)
 
 #### More About Using NuDb
 
 [NuDB](https://github.com/vinniefalco/nudb#introduction) is an append-only key-value store that is optimized for SSD drives.
 
-NuDB has nearly constant performance and memory footprints regardless of the amount of data being [stored](#storage). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
+NuDB has nearly constant performance and memory footprints regardless of the [amount of data being stored](#disk-space). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
 
 Non-validator production servers should be configured to use NuDB and to store the amount of historical data required for the use case.
 
-NuDB does not have performance-related configuration options available in `rippled.cfg`.
+NuDB does not have performance-related configuration options available in `rippled.cfg`. Here is the recommended configuration for a `rippled` server using NuDB:
 
-#### History Sharding
+```
+[node_db]
+type=NuDB
+path=/var/lib/rippled/db/nudb
+online_delete=2000
+advisory_delete=0
+```
 
-`rippled` offers a history sharding feature that allows you to store a randomized range of ledgers in a separate shard store. You can use the `[shard_db]` stanza to configure the shard store to use a different type of key-value store than the one you defined for the ledger store using the `[node_db]` stanza. For more information about how to use this feature, see [History Sharding](history-sharding.html).
+(Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration.)
 
-
-### Historical Data
-
-The amount of historical data that a `rippled` server keeps online is a major contributor to required storage space. At the time of writing (2018-10-29), a `rippled` server stores about 12GB of data per day and requires 8.4TB to store the full history of the XRP Ledger. You can expect this amount to grow as transaction volume increases across the XRP Ledger network. You can control how much data you keep with the `online_delete` and `advisory_delete` fields.
-
-Online deletion enables the purging of `rippled` ledgers from databases without any disruption of service. It removes only records that are not part of the current ledgers. Data in current ledgers means any data that's used by ledger versions that are new enough not to be deleted. Without online deletion, those databases grow without bounds. Freeing disk space requires stopping the process and manually removing database files. For more information, see [`[node_db]`: `online_delete`](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L832).
-
-<!-- {# ***TODO***: Add link to online_delete section, when complete, per https://ripplelabs.atlassian.net/browse/DOC-1313  #} -->
 
 ### Log Level
 
 The example `rippled-example.cfg` file sets the logging verbosity to `warning` in the `[rpc_startup]` stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
 
 **Caution:** If you omit the `log_level` command from the `[rpc_startup]` stanza, `rippled` writes logs to disk at the `debug` level and outputs `warning` level logs to the console. `debug` level logging requires several more GB of disk space per day than `warning` level, depending on transaction volumes and client activity.
-
 
 
 ## Network and Hardware
@@ -116,7 +119,8 @@ For best performance in enterprise production environments, Ripple recommends ru
 
 - Operating System: Ubuntu 16.04+
 - CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
-- Disk: SSD (7000+ writes/second, 10,000+ reads/second)
+- Disk speed: SSD (7000+ writes/second, 10,000+ reads/second)
+- Disk space: Varies. At least 50 GB recommended.
 - RAM: 32GB
 - Network: Enterprise data center network with a gigabit network interface on the host
 
@@ -124,24 +128,40 @@ For best performance in enterprise production environments, Ripple recommends ru
 
 You'll get the best performance on bare metal, but virtual machines can perform nearly as well as long as the host hardware has high enough specs.
 
-#### Storage
+#### Disk Speed
 
-Here are some estimated `rippled` storage requirements:
-
-- RocksDB stores around 8GB per day
-- NuDB stores around 12GB per day
-
-The amount of data stored per day changes with activity in the network.
-
-You should provision extra storage capacity to prepare for future growth. At the time of writing (2018-10-29), a `rippled` server storing the full history of the XRP Ledger required 8.4TB.
-
-<!-- {# ***TODO: Update the dated storage consideration above, as needed. ***#} -->
-<!-- {# ***TODO: DOC-1331 tracks: Create historic metrics that a user can use to derive what will be required. For ex, a chart with 1TB in 2014, 3TB in 2015, 7TB in 2018 ***#} -->
-
-SSD storage should support several thousand of both read and write IOPS. Ripple engineers observed the following maximum reads and writes per second:
+Ripple _strongly recommends_ using a high-grade solid state disk drive (SSD) with low-latency random reads and high throughput. Ripple engineers have observed the following maximum reads and writes per second:
 
 - Over 10,000 reads per second (in heavily-used public server clusters)
 - Over 7,000 writes per second (in dedicated performance testing)
+
+#### Disk Space
+
+The amount of disk space `rippled` requires depend on how much [ledger history](ledger-history.html) you plan to keep available locally. A `rippled` server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally.
+
+You can control how much data you keep with [online deletion](online-deletion.html); the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.
+
+The following table approximates the requirements for different amounts of history, at the time of writing (2018-12-13):
+
+| Real Time Amount | Number of Ledger Versions | Disk Space Required (RocksDB) | Disk Space Required (NuDB) |
+|:-----------------|:--------------------------|:------------------------------|:--|
+| 2 hours          | 2,000                     | 250 MB                        | 450 MB |
+| 1 day            | 25,000                    | 8 GB                          | 12 GB |
+| 14 days          | 350,000                   | 112 GB                        | 168 GB |
+| 30 days          | 750,000                   | 240 GB                        | 360 GB |
+| 90 days          | 2,250,000                 | 720 GB                        | 1 TB |
+| 1 year           | 10,000,000                | 3 TB                          | 4.5 TB |
+| 2 years          | 20,000,000                | 6 TB                          | 9 TB |
+| Full history (through 2018) | 43,000,000+    | (Not recommended)             | ~9 TB |
+
+These numbers are estimates. They depend on several factors, most importantly the volume of transactions in the network. As transaction volume increases, each ledger version stores more unique data. You should provision extra storage capacity to prepare for future growth.
+
+The `online_delete` setting tells the server how many ledger versions to keep after deleting old history. You should plan for enough disk space to store twice that many ledger versions at maximum (right before online deletion runs).
+
+For instructions on how to change the amount of history you keep, see [Configure Online Deletion](configure-online-deletion.html).
+
+If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the [History Sharding](history-sharding.html) feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the `[shard_db]` stanza, and it can use a different type of key-value store than the one you defined for the ledger store using the `[node_db]` stanza.
+
 
 ##### Amazon Web Services
 

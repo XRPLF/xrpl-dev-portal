@@ -536,11 +536,32 @@ pages:
         targets:
             - local
 
-    -   md: concepts/the-rippled-server/history-sharding.md
+    -   md: concepts/the-rippled-server/ledger-history/ledger-history.md
+        html: ledger-history.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        subcategory: Ledger History
+        blurb: rippled servers store a variable amount of transaction and state history locally.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/ledger-history/online-deletion.md
+        html: online-deletion.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        subcategory: Ledger History
+        blurb: Online deletion purges outdated transaction and state history.
+        targets:
+            - local
+
+    -   md: concepts/the-rippled-server/ledger-history/history-sharding.md
         html: history-sharding.html
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
+        subcategory: Ledger History
         blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
         targets:
             - local
@@ -1030,6 +1051,26 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
+        html: configure-online-deletion.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Configure how far back your server should store transaction history.
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.md
+        html: configure-advisory-deletion.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Use advisory deletion to delete older ledger history on a schedule rather than as new history becomes available.
+        targets:
+            - local
+
     -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.md
         html: configure-history-sharding.html
         funnel: Docs
@@ -1037,6 +1078,16 @@ pages:
         category: Manage the rippled Server
         subcategory: Configuration
         blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data.
+        targets:
+            - local
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.md
+        html: configure-full-history.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run.
         targets:
             - local
 
