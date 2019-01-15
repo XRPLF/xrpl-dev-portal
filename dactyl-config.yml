@@ -45,14 +45,18 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
-            - html: base58-encodings.html
-              date: 2018-12-11
-            - html: basic-data-types.html
-              date: 2018-12-11
-            - html: currency-formats.html
-              date: 2018-12-11
-            - html: serialization.html
-              date: 2018-12-11
+            - html: ledger-history.html
+              date: 2019-01-14
+            - html: online-deletion.html
+              date: 2019-01-14
+            - html: configure-online-deletion.html
+              date: 2019-01-14
+            - html: configure-advisory-deletion.html
+              date: 2019-01-14
+            - html: configure-full-history.html
+              date: 2019-01-14
+            - html: list-your-exchange-on-xrp-charts.html
+              date: 2019-01-11
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
