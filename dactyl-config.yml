@@ -45,6 +45,8 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: transaction-malleability.html
+              date: 2019-01-14
             - html: ledger-history.html
               date: 2019-01-14
             - html: online-deletion.html
@@ -471,6 +473,15 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         blurb: Understand how transactions can be queued before reaching consensus.
+        targets:
+            - local
+
+    -   md: concepts/consensus-network/transaction-malleability.md
+        html: transaction-malleability.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Be aware of ways transactions could be changed to have a different hash than expected.
         targets:
             - local
 
