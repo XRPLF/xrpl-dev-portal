@@ -12,9 +12,9 @@ Here are some of our users' most popular use cases:
 
       Integrate with the XRP Ledger to be able to list XRP in your exchange, enabling your users to deposit and withdraw XRP.
 
-* **[Use a Payment Channel to Move XRP Between Exchanges](use-a-payment-channel-to-move-xrp-between-exchanges.html)**
+* **[Open a Payment Channel to Enable an Inter-Exchange Network](open-a-payment-channel-to-enable-an-inter-exchange-network.html)**
 
-      Use a payment channel to move XRP from your digital exchange to another digital exchange.
+      Use a payment channel to move XRP from your digital exchange to another digital exchange, while also enabling an inter-exchange network and connecting to the Internet of Value.
 
 * **[Contribute Code to `rippled`](contribute-code-to-rippled.html)**
 

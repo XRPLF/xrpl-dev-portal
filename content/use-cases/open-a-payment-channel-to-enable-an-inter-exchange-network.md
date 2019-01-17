@@ -79,6 +79,6 @@ When the payer exchange and payee exchange are done using the payment channel, t
 
 - [List XRP in Your Exchange](list-xrp-in-your-exchange.html)
 
-- [List Your Exchange on XRP Charts](list-your-exchange-on-xrp-charts.html)
+<!-- #{TODO: jha rebase on master to be able to link to [List Your Exchange on XRP Charts](list-your-exchange-on-xrp-charts.html) }#-->
 
 ***TODO: any other related tasks?
