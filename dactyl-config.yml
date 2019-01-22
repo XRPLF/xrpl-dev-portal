@@ -2813,6 +2813,16 @@ pages:
         targets:
             - local
 
+    -   md: use-cases/create-a-smart-contract-using-escrow.md
+        html: create-a-smart-contract-using-escrow.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - xrp-ledger-overview.html
+            - escrow.html
+        targets:
+            - local
+
 # Dev Tools --------------------------------------------------------------------
     -   md: dev-tools/dev-tools.md
         funnel: Dev Tools

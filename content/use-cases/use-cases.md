@@ -20,4 +20,8 @@ Here are some of our users' most popular use cases:
 
       Help us improve `ripple-lib`, the official client library for RippleAPI.
 
+* **[Create a Smart Contract Using Escrows](create-a-smart-contract-using-escrow.html)**
+
+      Learn how to create a smart contract using the XRP Ledger escrow feature.
+
 Want to see a roadmap for a case not listed here? [Contact us >](mailto:docs@ripple.com)
