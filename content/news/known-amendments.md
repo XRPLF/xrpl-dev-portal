@@ -297,7 +297,11 @@ Changes Escrow to fix the following issues:
 |:-----------------------------------------------------------------|:----------|
 | FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288 | Planned   |
 
-***TODO: Description***
+Changes the result codes returned by two transaction types:
+
+- Changes the [OfferCreate transaction][] to return a new result code, `tecKILLED`, if the offer used the `tfFillOrKill` flag and was killed. Without this amendment, the offer is killed but the transaction result is `tesSUCCESS`.
+- Changes the [TrustSet transaction][] to fail with `tecNO_PERMISSION` if it tries to enable the [NoRipple flag](rippling.html#the-noripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the NoRipple flag, but the transaction result is `tesSUCCESS` nonetheless.
+
 
 
 ## fix1623
