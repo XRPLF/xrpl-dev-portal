@@ -401,7 +401,7 @@ Reduces the [owner reserve](reserves.html#owner-reserves) counted against your X
 
 Without this amendment, the owner reserve for a SignerList ranges from 15 to 50 XRP, depending on the number of signers in the list.
 
-With this amendment enabled, the owner reserve for a SignerList is 5 XRP, regardless of the number of signers. To receive the reduced reserve, you must wait for this amendment to be enabled and then add or replace your account’s SignerList using the [SignerListSet transaction](signerlistset.html).
+With this amendment enabled, the owner reserve for a SignerList is 5 XRP, regardless of the number of signers. To receive the reduced reserve, you must wait for this amendment to be enabled and then use the [SignerListSet transaction](signerlistset.html) to create a SignerList, or replace or remove a SignerList that you created before the MultiSignReserve amendment was enabled.
 
 
 ## OwnerPaysFee
