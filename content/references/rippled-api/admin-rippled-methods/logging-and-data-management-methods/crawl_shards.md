@@ -108,17 +108,17 @@ The response follows the [standard format][], with a successful result containin
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
 | `complete_shards` | String | The range of history shards that are available across all servers that were searched. This may be disjointed. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. |
-| `peers`           | Array  | List of **Peer Shard Objects** (see below) describing which history shards each peer has available. Only includes servers that have [history sharding](history-sharding.html) enabled. |
+| `peers`           | Array  | List of **Peer Shard Objects** (see below) describing which history shards each peer has available. |
 
 #### Peer Shard Objects
 
-Each member of the `peers` array of the response is an object that describes one server in the peer-to-peer network. These objects contain the following fields:
+Each member of the `peers` array of the response is an object that describes one server in the peer-to-peer network. The list only includes peers that have at least one complete [history shard](history-sharding.html) available. Each object in the array contain the following fields:
 
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
 | `complete_shards` | String | The range of history shards this peer has available. This may be disjointed. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. |
-| `ip` | String | _(May be omitted)_ The IP address of the peer this object describes. This may be an IPv4 or IPv6 address. Omitted if the server is a private peer. |
+| `ip` | String | _(May be omitted)_ The IP address of the peer this object describes. This may be an IPv4 or IPv6 address. Omitted if this is a [private peer](peer-protocol.html#private-peers). |
 | `public_key` | String | _(Omitted unless the request specified `"pubkey": true`)_ The public key this peer uses for peer-to-peer communications, in the XRP Ledger's [base58 format](base58-encodings.html). |
 
 
