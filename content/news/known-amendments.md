@@ -323,7 +323,11 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 |:-----------------------------------------------------------------|:----------|
 | 2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561 | Planned   |
 
-***TODO: Description***
+Fixes a bug in [auto-bridging](autobridging.html) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
+
+Without this fix, the dry offer remains on the ledger and uses up [reserves](reserves.html) in the offer owner's directory without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
+
+With this amendment enabled, the XRP Ledger removes these dry offers.
 
 
 ## Flow
@@ -393,7 +397,11 @@ An address with a SignerList can disable the master key even if a regular key is
 |:-----------------------------------------------------------------|:----------|
 | 586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D | Planned   |
 
-***TODO: Description***
+Reduces the [owner reserve](reserves.html#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](multi-signing.html) SignerList.
+
+Without this amendment, the owner reserve for a SignerList ranges from 15 to 50 XRP, depending on the number of signers in the list.
+
+With this amendment enabled, the owner reserve for a SignerList is 5 XRP, regardless of the number of signers. To receive the reduced reserve, you must wait for this amendment to be enabled and then add or replace your account’s SignerList using the [SignerListSet transaction](signerlistset.html).
 
 
 ## OwnerPaysFee
