@@ -4,7 +4,7 @@
 
 For an overview of `rippled`, see [Operating rippled Servers](install-rippled.html).
 
-Use these instructions to build a `rippled` executable from source version 1.1.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.
+Use these instructions to build a `rippled` executable from source version 1.2.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.
 
 For information about building `rippled` for other platforms, see [Builds](https://github.com/ripple/rippled/tree/develop/Builds) in the `rippled` GitHub repository.
 
@@ -27,25 +27,63 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 3. Install dependencies.
 
-        sudo apt-get -y install git cmake pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget
+        sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget
 
-4. Compile Boost.
+4. Compile CMake.
 
-    Version 1.1.0 of `rippled` requires Boost version 1.67.0 exactly. Because Boost version 1.67.0 isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
+    Version 1.2.0 of `rippled` requires CMake version 3.9.0 or higher. Because CMake version 3.9.0 or higher isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
 
-    If you have previously built Boost 1.67.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
+    If you have previously built CMake 3.9.0 or higher for `rippled` and configured the `CMAKE_ROOT` environment variable, you can skip these steps.
 
-      1. Download Boost 1.67.0.
+      1. Download CMake 3.9.0.
 
-              wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz
+              wget https://cmake.org/files/v3.9/cmake-3.9.0.tar.gz
 
-      2. Extract `boost_1_67_0.tar.gz`.
+      2. Extract `cmake-3.9.0.tar.gz`.
 
-              tar xvzf boost_1_67_0.tar.gz
+              tar xvzf cmake-3.9.0.tar.gz
 
-      3. Change to the new `boost_1_67_0` directory.
+      3. Change to the new `cmake-3.9.0` directory.
 
-              cd boost_1_67_0
+              cd cmake-3.9.0
+
+      4. Prepare the CMake build system for use.
+
+              ./bootstrap
+
+      5. Build the separately-compiled CMake libraries. This may take about 10 minutes, depending on your hardware specs.
+
+              make
+
+      6. Install CMake.
+
+              sudo make install
+
+      7. Set the environment variable `CMAKE_ROOT` to point to the new `cmake-3.9.0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+
+              export CMAKE_ROOT=/home/my_user/cmake-3.9.0
+
+      8. Source your updated `.profile` file. For example:
+
+              source ~/.profile
+
+5. Compile Boost.
+
+    Version 1.2.0 of `rippled` requires Boost version 1.68.0 exactly. Because Boost version 1.68.0 isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
+
+    If you have previously built Boost 1.68.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
+
+      1. Download Boost 1.68.0.
+
+              wget https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz
+
+      2. Extract `boost_1_68_0.tar.gz`.
+
+              tar xvzf boost_1_68_0.tar.gz
+
+      3. Change to the new `boost_1_68_0` directory.
+
+              cd boost_1_68_0
 
       4. Prepare the Boost.Build system for use.
 
@@ -53,41 +91,40 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
       5. Build the separately-compiled Boost libraries. This may take about 10 minutes, depending on your hardware specs.
 
-              ./b2 -j 4
+              ./b2 -j 4 ***TODO: for troubleshooting, ran without -j 4***
 
           **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
 
-      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_67_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_68_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-              export BOOST_ROOT=/home/ubuntu/boost_1_67_0
+              export BOOST_ROOT=/home/my_user/boost_1_68_0
 
       7. Source your updated `.profile` file. For example:
 
               source ~/.profile
 
-5. From a working directory, get the `rippled` source code. The `master` branch has the latest released version.
+6. From a working directory, get the `rippled` source code. The `master` branch has the latest released version.
 
-        cd ~
+        cd ~ ***TODO: I think I should remove this line. If we've already told the user to do this in a working directory, this command will likely take them out of that directory, correct?***
         git clone https://github.com/ripple/rippled.git
         cd rippled
         git checkout master
 
-6. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
+7. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
 
         $ git log -1
 
-        commit 3e22a1e9e8f2de450eded6ca4c2db6411e329b2a
+        commit 4f3a76dec00c0c7ea28e78e625c68499debbbbf3
         Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Wed Sep 5 18:34:43 2018 -0700
+        Date:   Thu Nov 29 21:49:10 2018 -0800
 
-            Set version to 1.1.0
+            Set version to 1.1.2
 
-
-7. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
+8. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
 
     If this is your first time building `rippled` 1.0.0 or higher, you won't have a `my_build/` directory and can move on to the next step.
 
-8. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
+9. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
 
       1. Generate the build system. Builds should be performed in a directory that is separate from the source tree root. In this example, we'll use a `my_build` directory that is a subdirectory of `rippled`.
 
@@ -99,11 +136,11 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
       2. Build the `rippled` binary executable. Replace `<number of parallel jobs>` with the number of jobs to run in parallel. Choose this value based on the number of CPU cores you want to use for building.
 
-              cmake --build . -- -j 4
+              cmake --build . -- -j 4 ***TODO: for troubleshooting, ran without -- -j 4***
 
           **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
 
-9. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
+10. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
 
         ./rippled -u
 
