@@ -51,7 +51,7 @@ You can create, update, or remove a SignerList using the master key, regular key
 
 You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the [`lsfDisableMaster` flag](accountroot.html#accountroot-flags) enabled) and the account does not have a [Regular Key](cryptographic-keys.html) configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error [`tecNO_ALTERNATIVE_KEY`](tec-codes.html).
 
-With the [MultiSignReserve Amendment](known-amendments.html#multisignreserve) enabled, creating or replacing a SignerList enables the lsfOneOwnerCount flag on the SignerList object. When this flag is enabled, the XRP Ledger is able to lower the [`OwnerCount`](accountroot.html#accountroot-fields) and [owner reserve](reserves.html#owner-reserves) for a SignerList as provided by the MultiSignReserve amendment. For more information, see [SignerList Flag](signerlist.html#signerlist-flag).
+With the [MultiSignReserve Amendment](known-amendments.html#multisignreserve) enabled, creating or replacing a SignerList enables the lsfOneOwnerCount flag on the SignerList object. When this flag is enabled, the XRP Ledger is able to lower the [`OwnerCount`](accountroot.html#accountroot-fields) and [owner reserve](reserves.html#owner-reserves) for a SignerList as provided by the MultiSignReserve amendment. For more information, see [SignerList Flag](signerlist.html#signerlist-flags).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
