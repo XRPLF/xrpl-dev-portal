@@ -329,9 +329,9 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 Fixes a bug in [auto-bridging](autobridging.html) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
 
-Without this fix, the dry offer remains on the ledger and uses up [reserves](reserves.html) in the offer owner's directory without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
+Without this fix, the dry offer remains on the ledger and counts toward its owner's [reserve requirement](reserves.html#owner-reserves) without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
 
-With this amendment enabled, the XRP Ledger removes these dry offers.
+With this amendment enabled, the XRP Ledger removes these dry offers when they're matched in auto-bridging.
 
 
 ## Flow
@@ -405,7 +405,7 @@ Reduces the [owner reserve](reserves.html#owner-reserves) counted against your X
 
 Without this amendment, the owner reserve for a SignerList ranges from 15 to 50 XRP, depending on the number of signers in the list.
 
-With this amendment enabled, the owner reserve for a SignerList is 5 XRP, regardless of the number of signers. To receive the reduced reserve, you must wait for this amendment to be enabled and then use the [SignerListSet transaction](signerlistset.html) to create a SignerList, or replace or remove a SignerList that you created before the MultiSignReserve amendment was enabled.
+With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a [SignerListSet transaction](signerlistset.html) to replace the SignerList after this amendment has been enabled. (The replacement can be identical to the previous version.)
 
 
 ## OwnerPaysFee
