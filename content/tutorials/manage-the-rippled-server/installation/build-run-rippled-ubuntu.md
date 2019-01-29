@@ -35,23 +35,23 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
     If you have previously built CMake 3.9.0 or higher for `rippled` and configured the `CMAKE_ROOT` environment variable, you can skip these steps.
 
-      1. Download CMake 3.9.0.
+      1. Download CMake 3.13.3. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
 
-              wget https://cmake.org/files/v3.9/cmake-3.9.0.tar.gz
+              wget https://cmake.org/files/v3.13/cmake-3.13.3.tar.gz
 
-      2. Extract `cmake-3.9.0.tar.gz`.
+      2. Extract `cmake-3.13.3.tar.gz`.
 
-              tar xvzf cmake-3.9.0.tar.gz
+              tar xvzf cmake-3.13.3.tar.gz
 
-      3. Change to the new `cmake-3.9.0` directory.
+      3. Change to the new `cmake-3.13.3` directory.
 
-              cd cmake-3.9.0
+              cd cmake-3.13.3
 
-      4. Prepare the CMake build system for use.
+      4. Prepare to build the CMake installer.  ***TODO: stated correctly?***
 
               ./bootstrap
 
-      5. Build the separately-compiled CMake libraries. This may take about 10 minutes, depending on your hardware specs.
+      5. Build the CMake installer. ***TODO: stated correctly?***
 
               make
 
@@ -59,9 +59,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
               sudo make install
 
-      7. Set the environment variable `CMAKE_ROOT` to point to the new `cmake-3.9.0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      7. Set the environment variable `CMAKE_ROOT` to point to the new `cmake-3.13.3` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-              export CMAKE_ROOT=/home/my_user/cmake-3.9.0
+              export CMAKE_ROOT=/home/my_user/cmake-3.13.3
 
       8. Source your updated `.profile` file. For example:
 
@@ -69,21 +69,21 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.2.0 of `rippled` requires Boost version 1.68.0 exactly. Because Boost version 1.68.0 isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
+    Version 1.2.0 of `rippled` requires Boost version 1.67.0 exactly. Because Boost version 1.67.0 isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
 
-    If you have previously built Boost 1.68.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
+    If you have previously built Boost 1.67.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
-      1. Download Boost 1.68.0.
+      1. Download Boost 1.67.0.
 
-              wget https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz
+              wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz
 
-      2. Extract `boost_1_68_0.tar.gz`.
+      2. Extract `boost_1_67_0.tar.gz`.
 
-              tar xvzf boost_1_68_0.tar.gz
+              tar xvzf boost_1_67_0.tar.gz
 
-      3. Change to the new `boost_1_68_0` directory.
+      3. Change to the new `boost_1_67_0` directory.
 
-              cd boost_1_68_0
+              cd boost_1_67_0
 
       4. Prepare the Boost.Build system for use.
 
@@ -91,13 +91,13 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
       5. Build the separately-compiled Boost libraries. This may take about 10 minutes, depending on your hardware specs.
 
-              ./b2 -j 4 ***TODO: for troubleshooting, ran without -j 4***
+              ./b2 -j 4
 
           **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
 
       6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_68_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-              export BOOST_ROOT=/home/my_user/boost_1_68_0
+              export BOOST_ROOT=/home/my_user/boost_1_67_0
 
       7. Source your updated `.profile` file. For example:
 
@@ -105,7 +105,6 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 6. From a working directory, get the `rippled` source code. The `master` branch has the latest released version.
 
-        cd ~ ***TODO: I think I should remove this line. If we've already told the user to do this in a working directory, this command will likely take them out of that directory, correct?***
         git clone https://github.com/ripple/rippled.git
         cd rippled
         git checkout master
@@ -134,11 +133,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
           **Tip:** The default build includes debugging symbols, which can be useful for development but are inefficient in production. To build `rippled` for use on production servers, add the `-DCMAKE_BUILD_TYPE=Release` flag when running the `cmake` command.
 
-      2. Build the `rippled` binary executable. Replace `<number of parallel jobs>` with the number of jobs to run in parallel. Choose this value based on the number of CPU cores you want to use for building.
+      2. Build the `rippled` binary executable.
 
-              cmake --build . -- -j 4 ***TODO: for troubleshooting, ran without -- -j 4***
-
-          **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
+              cmake --build .
 
 10. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
 
