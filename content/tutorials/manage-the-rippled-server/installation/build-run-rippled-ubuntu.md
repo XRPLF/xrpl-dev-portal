@@ -29,43 +29,18 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
         sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget
 
-4. Compile CMake.
+4. Install CMake.
 
-    Version 1.2.0 of `rippled` requires CMake version 3.9.0 or higher. Because CMake version 3.9.0 or higher isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
+    Version 1.2.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
 
-    If you have previously built CMake 3.9.0 or higher for `rippled` and configured the `CMAKE_ROOT` environment variable, you can skip these steps.
+    If you have previously installed the latest version of CMake, you can skip these steps.
 
-      1. Download CMake 3.13.3. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
+    To install CMake 3.13.3:
 
-              wget https://cmake.org/files/v3.13/cmake-3.13.3.tar.gz
+        wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3-Linux-x86_64.sh
+        sudo sh cmake-3.13.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
 
-      2. Extract `cmake-3.13.3.tar.gz`.
-
-              tar xvzf cmake-3.13.3.tar.gz
-
-      3. Change to the new `cmake-3.13.3` directory.
-
-              cd cmake-3.13.3
-
-      4. Prepare to build the CMake installer.  ***TODO: stated correctly?***
-
-              ./bootstrap
-
-      5. Build the CMake installer. ***TODO: stated correctly?***
-
-              make
-
-      6. Install CMake.
-
-              sudo make install
-
-      7. Set the environment variable `CMAKE_ROOT` to point to the new `cmake-3.13.3` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
-
-              export CMAKE_ROOT=/home/my_user/cmake-3.13.3
-
-      8. Source your updated `.profile` file. For example:
-
-              source ~/.profile
+    Use `cmake --version` to verify that the installation worked.
 
 5. Compile Boost.
 
@@ -95,7 +70,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
           **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
 
-      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_68_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_67_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
               export BOOST_ROOT=/home/my_user/boost_1_67_0
 
@@ -133,7 +108,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
           **Tip:** The default build includes debugging symbols, which can be useful for development but are inefficient in production. To build `rippled` for use on production servers, add the `-DCMAKE_BUILD_TYPE=Release` flag when running the `cmake` command.
 
-      2. Build the `rippled` binary executable.
+      2. Build the `rippled` binary executable. This may take about 30 minutes, depending on your hardware specs.
 
               cmake --build .
 
