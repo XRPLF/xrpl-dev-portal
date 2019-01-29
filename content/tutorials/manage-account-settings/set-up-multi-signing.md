@@ -16,7 +16,11 @@ This tutorial demonstrates how to enable multi-signing for an address.
 
 ## 1. Prepare a funded address
 
-You need an XRP Ledger address that can send transactions, and has enough XRP available. Without the [MultiSignReserve Amendment](known-amendments.html#multisignreserve), multi-signing requires more than the usual amount of XRP for the [account reserve](reserves.html) and [transaction cost](transaction-cost.html), increasing with the number of signers and signatures you use. With the [MultiSignReserve Amendment](known-amendments.html#multisignreserve) enabled, multi-signing requires 5 XRP for the account reserve, regardless of the number of signers and signatures you use.
+You need an XRP Ledger address that can send transactions, and has enough XRP available.
+
+Without the [MultiSignReserve Amendment](known-amendments.html#multisignreserve), multi-signing requires more than the usual amount of XRP for the [account reserve](reserves.html) and [transaction cost](transaction-cost.html), increasing with the number of signers and signatures you use.
+
+With the [MultiSignReserve Amendment](known-amendments.html#multisignreserve) enabled, multi-signing requires 5 XRP for the account reserve, regardless of the number of signers and signatures you use. The [transaction cost](transaction-cost.html) of a multi-signed transaction is unaffected by this amendment and still increases with the number of signers and signatures you use.
 
 If you started `rippled` in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode) with a new genesis ledger, you must:
 

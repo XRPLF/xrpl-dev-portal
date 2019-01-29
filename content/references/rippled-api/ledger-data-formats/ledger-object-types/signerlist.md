@@ -45,7 +45,7 @@ A `SignerList` object has the following fields:
 | Name                | JSON Type | Internal Type | Description                |
 |:--------------------|:----------|:--------------|:---------------------------|
 | `LedgerEntryType`   | String    | UInt16        | The value `0x0053`, mapped to the string `SignerList`, indicates that this object is a SignerList object. |
-| `Flags`             | Number    | UInt32        | A bit-map of boolean flags. Without the [MultiSignReserve amendment](known-amendments.html#multisignreserve), no flags are defined for the SignerList type, so this value is always 0. With the [MultiSignReserve amendment](known-amendments.html#multisignreserve) enabled, a flag is defined for the SignerList type, so this value can be bit-map of a boolean flag enabled for this account. |
+| `Flags`             | Number    | UInt32        | A bit-map of Boolean flags enabled for this SignerList. For more information, see [SignerList Flags](#signerlist-flags). |
 | `PreviousTxnID`     | String    | Hash256       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `OwnerNode`         | String    | UInt64        | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. |
@@ -66,7 +66,7 @@ Each member of the `SignerEntries` field is an object that describes that signer
 
 When processing a multi-signed transaction, the server dereferences the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot object](accountroot.html), then only the master secret associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
 
-## {{currentpage.name}} Flag
+## {{currentpage.name}} Flags
 
 _Requires the [MultiSignReserve Amendment](known-amendments.html#multisignreserve)._
 
@@ -74,7 +74,7 @@ SignerList objects can have the following flag value:
 
 | Flag Name        | Hex Value  | Decimal Value | Description                    |
 |:-----------------|:-----------|:--------------|:-------------------------------|
-| lsfOneOwnerCount | 0x00010000 | 65536         | This flag is set by the [SignerListSet transaction](signerlistset.html) when you create a new SignerList, or replace or remove a SignerList that was created before the MultiSignReserve amendment was enabled. Setting this flag enables the XRP Ledger to lower the [`OwnerCount`](accountroot.html#accountroot-fields) and [owner reserve](reserves.html#owner-reserves) for a SignerList as provided by the MultiSignReserve amendment. For example, when you create a SignerList after the MultiSignReserve amendment is enabled, this flag is set, your `OwnerCount` is increased by 1, and your owner reserve is increased by 5 XRP. When you replace a SignerList that was created before the MultiSignReserve amendment was enabled, this flag is set, your `OwnerCount` and owner reserve for the replaced SignerList are removed, your `OwnerCount` is increased by 1, and your owner reserve is increased by 5 XRP. When you remove a SignerList that was created before the MultiSignReserve amendment was enabled, this flag is set and your `OwnerCount` and owner reserve for the SignerList you removed are removed. |
+| lsfOneOwnerCount | 0x00010000 | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](reserves.html#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment](known-amendments.html#multisignreserve) is enabled. |
 
 ## SignerLists and Reserves
 
@@ -83,6 +83,8 @@ A SignerList contributes to its owner's [reserve requirement](reserves.html).
 Without the [MultiSignReserve Amendment](known-amendments.html#multisignreserve), the SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](ripplestate.html)) or [Offer](offer.html) object in the ledger.
 
 With the [MultiSignReserve Amendment](known-amendments.html#multisignreserve) enabled, the SignerList counts as one object, regardless of how many members it has. As a result, the owner reserve associated with a SignerList is 5 XRP, regardless of how many members it has.
+
+The reserve requirement does not change for SignerLists created before the MultiSignReserve amendment. To take advantage of the new reserve, update the SignerList by sending a [SignerListSet transaction][].
 
 ## SignerList ID Format
 
