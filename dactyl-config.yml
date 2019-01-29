@@ -273,6 +273,7 @@ pages:
         doc_type: Concepts
         category: Complex Payment Types
         blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients.
+        status: not_enabled
         targets:
             - local
 
@@ -811,6 +812,7 @@ pages:
         category: Use Complex Payment Types
         subcategory: Use Checks
         blurb: Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
+        status: not_enabled
         template: template-landing-children.html
         targets:
             - local
@@ -821,6 +823,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Checks
+        status: not_enabled
         targets:
             - local
 
@@ -830,6 +833,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Checks
+        status: not_enabled
         targets:
             - local
 
@@ -839,6 +843,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Checks
+        status: not_enabled
         targets:
             - local
 
@@ -848,6 +853,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Checks
+        status: not_enabled
         targets:
             - local
 
@@ -857,6 +863,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Checks
+        status: not_enabled
         targets:
             - local
 
@@ -866,6 +873,7 @@ pages:
         doc_type: Tutorials
         category: Use Complex Payment Types
         subcategory: Use Checks
+        status: not_enabled
         targets:
             - local
 
@@ -2365,6 +2373,7 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Cancel a check.
+        status: not_enabled
         targets:
             - local
 
@@ -2376,6 +2385,7 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Redeem a check.
+        status: not_enabled
         targets:
             - local
 
@@ -2387,6 +2397,7 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Create a check.
+        status: not_enabled
         targets:
             - local
 
