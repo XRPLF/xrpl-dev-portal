@@ -15,6 +15,8 @@ An offer in the ledger can be fulfilled either by additional OfferCreate transac
 
 You can create an offer so long as you have at least some (any positive, nonzero amount) of the currency specified by the `TakerGets` parameter of the offer. The offer sells as much of the currency as you have, up to the `TakerGets` amount, until the `TakerPays` amount is satisfied. An offer cannot place anyone in debt.
 
+If you place an offer that crosses any offers you have existing in the ledger, the old offers are automatically canceled regardless of the amounts involved.
+
 It is possible for an offer to become temporarily or permanently _unfunded_:
 
 * If the creator no longer has any of the `TakerGets` currency.
