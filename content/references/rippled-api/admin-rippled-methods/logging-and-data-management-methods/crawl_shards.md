@@ -108,12 +108,12 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
-| `complete_shards` | String | The range of history shards that are available across all servers that were searched. This may be disjointed. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. |
+| `complete_shards` | String | _(May be omitted)_ The range of [history shards](history-sharding.html) that are available on the local server. This may be disjointed. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. Omitted if this server does not have any history sharding enabled or does not have any shards available. |
 | `peers`           | Array  | List of **Peer Shard Objects** (see below) describing which history shards each peer has available. |
 
 #### Peer Shard Objects
 
-Each member of the `peers` array of the response is an object that describes one server in the peer-to-peer network. The list only includes peers that have at least one complete [history shard](history-sharding.html) available. Each object in the array contain the following fields:
+Each member of the `peers` array of the response is an object that describes one server in the peer-to-peer network. The list only includes peers that have at least one complete [history shard](history-sharding.html) available. Each object in the array has the following fields:
 
 
 | `Field`   | Type   | Description                                             |
