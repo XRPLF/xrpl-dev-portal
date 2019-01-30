@@ -154,6 +154,10 @@ This is not strictly a problem, but if you want to acquire ledger history faster
 s2.ripple.com 51235
 ```
 
+## Potential Censorship
+
+The transaction censorship detector issues log messages when it detects potential transaction censorship. For more information about the detector and these log messages, see [Transaction Censorship Detection](transaction-censorship-detection.html).
+
 
 
 <!--{# common link defs #}-->
