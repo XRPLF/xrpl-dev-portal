@@ -4,7 +4,7 @@
 
 For an overview of `rippled`, see [Operating rippled Servers](install-rippled.html).
 
-Use these instructions to build a `rippled` executable from source version 1.1.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.
+Use these instructions to build a `rippled` executable from source version 1.2.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.
 
 For information about building `rippled` for other platforms, see [Builds](https://github.com/ripple/rippled/tree/develop/Builds) in the `rippled` GitHub repository.
 
@@ -27,11 +27,24 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 3. Install dependencies.
 
-        sudo apt-get -y install git cmake pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget
+        sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget
 
-4. Compile Boost.
+4. Install CMake.
 
-    Version 1.1.0 of `rippled` requires Boost version 1.67.0 exactly. Because Boost version 1.67.0 isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
+    Version 1.2.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
+
+    If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
+
+    To install CMake 3.13.3:
+
+        wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3-Linux-x86_64.sh
+        sudo sh cmake-3.13.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
+
+    Use `cmake --version` to verify that the installation worked.
+
+5. Compile Boost.
+
+    Version 1.2.0 of `rippled` requires Boost version 1.67.0 exactly. Because Boost version 1.67.0 isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
 
     If you have previously built Boost 1.67.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
@@ -59,35 +72,33 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
       6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_67_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-              export BOOST_ROOT=/home/ubuntu/boost_1_67_0
+              export BOOST_ROOT=/home/my_user/boost_1_67_0
 
       7. Source your updated `.profile` file. For example:
 
               source ~/.profile
 
-5. From a working directory, get the `rippled` source code. The `master` branch has the latest released version.
+6. From a working directory, get the `rippled` source code. The `master` branch has the latest released version.
 
-        cd ~
         git clone https://github.com/ripple/rippled.git
         cd rippled
         git checkout master
 
-6. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
+7. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
 
         $ git log -1
 
-        commit 3e22a1e9e8f2de450eded6ca4c2db6411e329b2a
+        commit 4f3a76dec00c0c7ea28e78e625c68499debbbbf3
         Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Wed Sep 5 18:34:43 2018 -0700
+        Date:   Thu Nov 29 21:49:10 2018 -0800
 
-            Set version to 1.1.0
+            Set version to 1.1.2
 
-
-7. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
+8. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
 
     If this is your first time building `rippled` 1.0.0 or higher, you won't have a `my_build/` directory and can move on to the next step.
 
-8. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
+9. Use CMake to build a `rippled` binary executable from source code. The result will be a `rippled` binary executable in the `my_build` directory.
 
       1. Generate the build system. Builds should be performed in a directory that is separate from the source tree root. In this example, we'll use a `my_build` directory that is a subdirectory of `rippled`.
 
@@ -97,13 +108,11 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
           **Tip:** The default build includes debugging symbols, which can be useful for development but are inefficient in production. To build `rippled` for use on production servers, add the `-DCMAKE_BUILD_TYPE=Release` flag when running the `cmake` command.
 
-      2. Build the `rippled` binary executable. Replace `<number of parallel jobs>` with the number of jobs to run in parallel. Choose this value based on the number of CPU cores you want to use for building.
+      2. Build the `rippled` binary executable. This may take about 30 minutes, depending on your hardware specs.
 
-              cmake --build . -- -j 4
+              cmake --build .
 
-          **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
-
-9. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
+10. _(Optional)_ Run `rippled` unit tests. If there are no test failures, you can be fairly certain that your `rippled` executable compiled correctly.
 
         ./rippled -u
 
