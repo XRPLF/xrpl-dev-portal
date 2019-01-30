@@ -53,7 +53,7 @@ The NoRipple flag makes certain paths invalid, so that they cannot be used to ma
 
 ## The DefaultRipple Flag
 
-The DefaultRipple flag is an account setting that enables rippling on all incoming trust lines by default. Gateways and other currency issuers MUST enable this flag for other addresses to be able to send those the currencies among themselves.
+The DefaultRipple flag is an account setting that enables rippling on all incoming trust lines by default. Gateways and other currency issuers MUST enable this flag for their customers to be able to send those currencies to each other.
 
 The DefaultRipple setting of your account does not affect trust lines that you create; only trust lines that others open to you. If you change the DefaultRipple setting of your account, trust lines that were created before the change keep their existing NoRipple settings. You can use a [TrustSet transaction][] to change the NoRipple setting of a trust line to match your address's new default.
 
