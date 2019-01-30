@@ -106,7 +106,7 @@ An example of a successful response:
       "pubkey_node": "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
       "pubkey_validator": "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
       "server_state": "proposing",
-      "server_state_duration_us": 168295542987,
+      "server_state_duration_us": 92762334,
       "state_accounting": {
         "connected": {
           "duration_us": "150510079",
@@ -203,7 +203,7 @@ An example of a successful response:
          "pubkey_node" : "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
          "pubkey_validator" : "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
          "server_state" : "proposing",
-         "server_state_duration_us": 944104343,
+         "server_state_duration_us": 708078257,
          "state_accounting" : {
             "connected" : {
                "duration_us" : "150510079",
