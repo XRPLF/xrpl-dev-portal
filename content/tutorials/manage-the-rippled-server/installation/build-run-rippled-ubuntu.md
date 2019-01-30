@@ -33,7 +33,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
     Version 1.2.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
 
-    If you have previously installed the latest version of CMake, you can skip these steps.
+    If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
 
     To install CMake 3.13.3:
 
