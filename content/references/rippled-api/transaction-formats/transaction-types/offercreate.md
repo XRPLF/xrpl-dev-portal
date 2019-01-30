@@ -45,15 +45,19 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 | Flag Name           | Hex Value  | Decimal Value | Description               |
 |:--------------------|:-----------|:--------------|:--------------------------|
 | tfPassive           | 0x00010000 | 65536         | If enabled, the offer does not consume offers that exactly match it, and instead becomes an Offer object in the ledger. It still consumes offers that cross it. |
-| tfImmediateOrCancel | 0x00020000 | 131072        | Treat the offer as an [Immediate or Cancel order](http://en.wikipedia.org/wiki/Immediate_or_cancel). If enabled, the offer never becomes a ledger object: it only tries to match existing offers in the ledger. |
-| tfFillOrKill        | 0x00040000 | 262144        | Treat the offer as a [Fill or Kill order](http://en.wikipedia.org/wiki/Fill_or_kill). Only try to match existing offers in the ledger, and only do so if the entire `TakerPays` quantity can be obtained. |
+| tfImmediateOrCancel | 0x00020000 | 131072        | Treat the offer as an [Immediate or Cancel order](http://en.wikipedia.org/wiki/Immediate_or_cancel). If enabled, the offer never becomes a ledger object: it only tries to match existing offers in the ledger. If the offer cannot match any offers immediately, it executes "successfully" without trading any currency. In this case, the transaction has the [result code](transaction-results.html) `tesSUCCESS`, but creates no [Offer objects](offer.html) in the ledger. |
+| tfFillOrKill        | 0x00040000 | 262144        | Treat the offer as a [Fill or Kill order](http://en.wikipedia.org/wiki/Fill_or_kill). Only try to match existing offers in the ledger, and only do so if the entire `TakerPays` quantity can be obtained. If the [fix1578 amendment](known-amendments.html#fix1578) is enabled and the offer cannot be executed when placed, the transaction has the [result code](transaction-results.html) `tecKILLED`; otherwise, the transaction uses the result code `tesSUCCESS` even when it was killed without trading any currency. |
 | tfSell              | 0x00080000 | 524288        | Exchange the entire `TakerGets` amount, even if it means obtaining more than the `TakerPays` amount in exchange. |
 
 The following invalid flag combination prompts a `temINVALID_FLAG` error:
 
 * tfImmediateOrCancel and tfFillOrKill
 
-**Note:** When an OfferCreate uses tfImmediateOrCancel or tfFillOrKill and the offer cannot be executed when placed, the transaction may conclude "successfully" without trading any currency or having any effect on the order books. In this case, the transaction has the [result code](transaction-results.html) `tesSUCCESS`, it pays the [transaction cost][] and uses up a `Sequence` number, but has no other effect.
+
+
+
+
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
