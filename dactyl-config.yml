@@ -1901,6 +1901,17 @@ pages:
         targets:
           - local
 
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.md
+        html: crawl_shards.html
+        blurb: Request information about which history shards peers have.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.md
         html: download_shard.html
         blurb: Download a specific shard of ledger history.
