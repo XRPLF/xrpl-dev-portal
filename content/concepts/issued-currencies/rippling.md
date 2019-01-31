@@ -4,8 +4,9 @@ In the XRP Ledger, "rippling" describes a process of atomic net settlement betwe
 
 Rippling only occurs along the [paths](paths.html) of a payment.
 
-For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between issuers of the same currency. Thus, the [NoRipple Flag](#the-noripple-flag) disables rippling on all trust lines by default, unless the account enables rippling by default by enabling the [DefaultRipple flag](#the-defaultripple-flag).
+For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between issuers of the same currency. Thus, the [NoRipple Flag](#the-noripple-flag) disables rippling on incoming trust lines by default, unless the account enables rippling by default by enabling the [DefaultRipple flag](#the-defaultripple-flag).
 
+**Caution:** If you create a trust line to another address, you must explicitly enable the tfSetNoRipple flag to block rippling on your side of that trust line.
 
 ## Example of Rippling
 
@@ -25,7 +26,7 @@ Non-issuing accounts, especially liquidity providers who may hold balances from 
 
 The "NoRipple" flag is a setting on a trust line. When two trust lines both have NoRipple enabled by the same address, payments from third parties cannot "ripple" through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers of the same currency.
 
-An account can disable NoRipple on a single trust line, which can allow rippling through any pair that includes that trust line. The account can also enable rippling globally by enabling the [DefaultRipple flag](#the-defaultripple-flag).
+An account can disable NoRipple on a single trust line, which can allow rippling through any pair that includes that trust line. The account can also enable rippling by default by enabling the [DefaultRipple flag](#the-defaultripple-flag).
 
 For example, imagine Emily has money issued by two different financial institutions, like so
 
@@ -52,7 +53,9 @@ The NoRipple flag makes certain paths invalid, so that they cannot be used to ma
 
 ## The DefaultRipple Flag
 
-The DefaultRipple flag is an account setting that enables rippling on all trust lines by default. Gateways and other currency issuers MUST enable this flag for other addresses to be able to send those the currencies among themselves.
+The DefaultRipple flag is an account setting that enables rippling on all incoming trust lines by default. Gateways and other currency issuers MUST enable this flag for their customers to be able to send those currencies to each other.
+
+The DefaultRipple setting of your account does not affect trust lines that you create; only trust lines that others open to you. If you change the DefaultRipple setting of your account, trust lines that were created before the change keep their existing NoRipple settings. You can use a [TrustSet transaction][] to change the NoRipple setting of a trust line to match your address's new default.
 
 For more information, see [DefaultRipple in 'Becoming an XRP Ledger Gateway'](become-an-xrp-ledger-gateway.html#defaultripple).
 
