@@ -17,7 +17,7 @@ An example of the request format:
 {
   "command": "crawl_shards",
   "pubkey": true,
-  "limit": 2
+  "limit": 0
 }
 ```
 
@@ -29,7 +29,7 @@ An example of the request format:
   "params": [
     {
       "pubkey": true,
-      "limit": 2
+      "limit": 0
     }
   ]
 }
@@ -44,7 +44,9 @@ The request includes the following fields:
 | `Field`  | Type    | Description                                             |
 |:---------|:--------|:--------------------------------------------------------|
 | `pubkey` | Boolean | _(Optional)_ If `true`, the response includes the node public keys (for peer-to-peer communications) of servers that were crawled. The default is `false`. |
-| `limit`  | Number  | _(Optional)_ How many hops deep to search. The default is 0, which searches direct peers only. With a limit of `1`, searches peers' peers also. (The number of peers searched potentially grows exponentially as `limit` increases.) The maximum value is `3`. |
+| `limit`  | Number  | _(Optional)_ How many hops deep to search. The default is 0, which searches direct peers only. With a limit of `1`, searches peers' peers also. The maximum value is `3`. |
+
+**Caution:** The number of peers potentially searched grows exponentially as `limit` increases. With a limit of 2 or 3, it can take several seconds for the server to respond to the API request.
 
 
 ### Response Format
@@ -108,7 +110,7 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
-| `complete_shards` | String | _(May be omitted)_ The range of [history shards](history-sharding.html) that are available on the local server. This may be disjointed. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. Omitted if this server does not have any history sharding enabled or does not have any shards available. |
+| `complete_shards` | String | _(May be omitted)_ The range of [history shards](history-sharding.html) that are available on the local server. This may be an empty string, or a disjointed range. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. Omitted if this server does not have history sharding enabled. |
 | `peers`           | Array  | List of **Peer Shard Objects** (see below) describing which history shards each peer has available. |
 
 #### Peer Shard Objects
