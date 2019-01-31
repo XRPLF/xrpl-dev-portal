@@ -20,7 +20,7 @@ At a high-level, here’s how the transaction censorship detector works:
 
     For as long as the transaction remains in the tracker, the detector continues to issue a warning message in the log every 15 ledgers, for up to five warning messages. After the fifth warning message, the detector issues a final [error message](#example-error-message) in the log and then stops issuing warning and error messages.
 
-    If you see these messages in your `rippled` server log, first verify that the messages are not [false positives](#potential-false-positives). If they are not false positives, you may want to investigate, off-ledger, why other `rippled` servers are failing to include the transaction.
+    If you see these messages in your `rippled` server log, you should investigate why other servers are failing to include the transaction, starting with the assumption that the cause is more likely to be a [false positive](#potential-false-positives) (innocent bug) than malicious censorship.
 
 
 
@@ -28,16 +28,18 @@ At a high-level, here’s how the transaction censorship detector works:
 
 This is an example warning message issued by the transaction censorship detector after transaction E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 remained in the tracker for 15 ledgers, from ledger 18851530 to ledger 18851545.
 
-        LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851545.
-
+```text
+LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851545.
+```
 
 
 ## Example Error Message
 
 This is an example error message issued by the transaction censorship detector after transaction E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 remained in the tracker for 75 ledgers (5 sets of 15 ledgers), from ledger 18851530 to ledger 18851605.
 
-        LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
-
+```text
+LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
+```
 
 
 ## Potential False Positives
@@ -50,7 +52,7 @@ Here are some scenarios that could cause the detector to issue false positive me
 
 - Your `rippled` server is out of sync with the network and has not yet realized it.
 
-- Your `rippled` server is being impacted by a class of bug that causes `rippled` servers to inconsistently relay transactions to other `rippled` servers in the network.
+- `rippled` servers in the network, including possibly your own server, are being impacted by a class of bug that causes `rippled` servers to inconsistently relay transactions to other `rippled` servers in the network.
 
 
 {% include '_snippets/rippled_versions.md' %}
