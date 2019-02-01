@@ -630,6 +630,15 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/get-started/set-up-secure-signing.md
+        html: set-up-secure-signing.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        blurb: Set up an environment where you can submit transactions securely.
+        targets:
+            - local
+
     # TODO: Send a Transaction with the rippled API
 
     -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.md
