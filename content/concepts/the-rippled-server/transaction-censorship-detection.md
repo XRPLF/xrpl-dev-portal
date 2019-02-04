@@ -54,5 +54,8 @@ Here are some scenarios that could cause the detector to issue false positive me
 
 - `rippled` servers in the network, including possibly your own server, are being impacted by a class of bug that causes `rippled` servers to inconsistently relay transactions to other `rippled` servers in the network.
 
+    Currently, there are no known bugs that cause this unexpected behavior. However, if you see the impact of what you suspect is a bug, consider reporting it to the [Ripple Bug Bounty](https://ripple.com/bug-bounty/) program.
+
+
 
 {% include '_snippets/rippled_versions.md' %}
