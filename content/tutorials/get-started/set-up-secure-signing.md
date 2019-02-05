@@ -2,7 +2,7 @@
 
 To submit transactions to the XRP Ledger, you need a way to digitally sign them without compromising the security of your secret keys. (If others gain access to your secret keys, they have as much control over your accounts as you do, and can steal or destroy all your money.) This page summarizes how to set up such an environment so you can sign transactions securely.
 
-**Tip:** If you are not submitting transactions to the network, you can safely use a trustworthy public server, such as the ones run by Ripple, to monitor for incoming transactions or just to read other network activity. All transactions, balances, and data in the XRP Ledger itself is public.
+**Tip:** If you are not submitting transactions to the network, you can safely use a trustworthy public server, such as the ones run by Ripple, to monitor for incoming transactions or just to read other network activity. All transactions, balances, and data in the XRP Ledger are public.
 
 There are several configurations with varying levels of security that may be acceptable for your situation. Choose one of the following that best fits your needs:
 
@@ -52,7 +52,7 @@ In this configuration, you run a `rippled` server on a dedicated machine in the 
 
 As always, follow industry-standard practices for securing your machines, such as using a firewall, anti-virus, appropriate user permissions, and so on.
 
-**Warning:** This configuration comes with the additional downside that anyone on the LAN can sniff traffic between your machines, potentially gaining access to your secret keys. Do not use this configuration on a network that may have strangers on it. For example, on the LAN at a colocation facility or cloud hosting, other customers may be able to get access to the traffic between your machines. If you employ several developers sending test transactions, you could run one `rippled` machine for your whole office, while the developers use cheaper hardware, but any user on your office network could potentially use a packet sniffer to get access to developers' secret keys.
+**Warning:** This configuration comes with the additional downside that anyone on the LAN can sniff traffic between your machines, potentially gaining access to your secret keys. Do not use this configuration on a network that may have strangers on it. For example, on the LAN at a colocation facility or cloud host, other customers may be able to get access to the traffic between your machines. If you employ several developers sending test transactions, you could run one `rippled` machine for your whole office, while the developers use cheaper hardware, but any user on your office network could potentially use a packet sniffer to get access to developers' secret keys.
 
 To use this configuration:
 
@@ -110,8 +110,8 @@ This configuration uses a client library in the programming language you are usi
 - **RippleAPI (ripple-lib) for JavaScript**
     - [Setup](get-started-with-rippleapi-for-javascript.html)
     - [API Reference](rippleapi-reference.html)
-- **ripple-libpp for C++**
-    - [Source and Documentation](https://github.com/ripple/ripple-libpp/)
+- **Signing Library for C++** (included with `rippled`)
+    - [Documentation](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library)
 
 If you use a client library not published by Ripple, make sure it uses proper, secure implementations of the signing algorithm(s) it implements. (For example, if it uses the default ECDSA algorithm, it should also use deterministic nonces as described in [RFC6979](https://tools.ietf.org/html/rfc6979).) All of Ripple's published libraries listed above follow industry best practices.
 
