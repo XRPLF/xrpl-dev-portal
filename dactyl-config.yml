@@ -586,6 +586,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/the-rippled-server/transaction-censorship-detection.md
+        html: transaction-censorship-detection.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers.
+        targets:
+            - local
+
 # Tutorials --------------------------------------------------------------------
 
     -   name: Tutorials
