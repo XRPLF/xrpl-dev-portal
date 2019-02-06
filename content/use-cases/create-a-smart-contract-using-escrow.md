@@ -10,9 +10,18 @@ The benefit of encoding a smart contract into a blockchain is that it enables th
 
 You can use XRP Ledger escrows as smart contracts that release XRP after a certain time has passed or after a cryptographic condition has been fulfilled. In this case, we'll use an escrow as a smart contract that releases XRP after a cryptographic condition has been fulfilled.
 
-Let's use this scenario to help illustrate this use case: A party planner uses smart contracts to manage payments from party hosts to party vendors. Specifically, the party planner wants to use a smart contract to enable the party host to pay the party band 2000 XRP once they are done with their set.
+Let's use this scenario to help illustrate this use case: A party planner uses smart contracts to manage payments from party hosts to party vendors. Specifically, the party planner wants to use a smart contract to have the party host pay the party band 2000 XRP once they are done with their set.
 
-Here’s a roadmap to the high-level tasks that these participants need to complete to provide this smart contract using an XRP Ledger escrow.
+In this use case, the party host is the sender of the escrow, the party band is the receiver of the escrow, and the party planner is playing the role of an _oracle_. In the context of smart contracts, an oracle is a third-party agent that can verify real-world events to either fulfill or invalidate a smart contract. This use case uses a human oracle for illustrative purposes, but in real-life, a software application would more likely play the role of the oracle to automate the process.
+
+Using an XRP Ledger escrow to provide this smart contract is a great arrangement because the party planner, as the third-party oracle, never "holds" the funds as one might in a traditional escrow arrangement, and can't possibly take the funds for themselves.
+
+The participant that creates these values must be a neutral party, such as the party planner.
+
+
+
+
+Here’s a roadmap to the high-level tasks that these participants need to complete to use an escrow as a smart contract.
 
 
 {% set n = cycler(* range(1,99)) %}
