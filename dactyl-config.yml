@@ -45,6 +45,8 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: rippleapi-reference.html
+              date: 2019-02-06
             - html: known-amendments.html
               date: 2019-01-28
             - html: transaction-malleability.html
@@ -2653,7 +2655,7 @@ pages:
     # --------------- end "rippled API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.0.0/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.1.2/docs/index.md
         html: rippleapi-reference.html
         funnel: Docs
         doc_type: References
