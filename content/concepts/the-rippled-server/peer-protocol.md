@@ -50,7 +50,7 @@ Each member of the `active` array is a Peer Object with the following fields:
 | `port`       | String (Number)          | The port number on the peer server that serves RTXP. Typically 51235. |
 | `public_key` | String (Base-64 Encoded) | The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the `pubkey_node` reported in the peer server's [`server_info` command](server_info.html).) |
 | `type`       | String                   | The value `in` or `out`, indicating whether the TCP connection to the peer is incoming or outgoing. |
-| `uptime`     | Number                   | The number of seconds the server has been has been connected to this peer. |
+| `uptime`     | Number                   | The number of seconds the server has been connected to this peer. |
 | `version`    | String                   | The `rippled` version number the peer reports to be using. |
 
 #### Example
