@@ -6,7 +6,7 @@ Want to contribute code or a bug report to help improve `rippled`, the core peer
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## [Access the `rippled` repo](https://github.com/ripple/rippled")
+## [Access the `rippled` repo](https://github.com/ripple/rippled)
 
 `rippled` is an open-source project. You can take a look at `rippled` code simply by accessing the `rippled` GitHub repo. Before contributing or reporting bugs, we recommend that you get to know the code and developer experience by performing the following tasks.
 
