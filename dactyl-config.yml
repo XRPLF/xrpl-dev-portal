@@ -2813,8 +2813,8 @@ pages:
         targets:
             - local
 
-    -   md: use-cases/create-a-smart-contract-using-escrow.md
-        html: create-a-smart-contract-using-escrow.html
+    -   md: use-cases/use-an-escrow-as-a-smart-contract.md
+        html: use-an-escrow-as-a-smart-contract.html
         funnel: Use Cases
         template: template-use-case.html
         useful_background:
