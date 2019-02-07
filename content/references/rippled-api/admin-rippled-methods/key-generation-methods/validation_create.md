@@ -51,7 +51,7 @@ The request includes the following parameters:
 
 | `Field`  | Type   | Description                                              |
 |:---------|:-------|:---------------------------------------------------------|
-| `secret` | String | _(Optional)_ Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or Ripple's [base58][] format. If omitted, generate a random seed. |
+| `secret` | String | _(Optional)_ Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or the XRP Ledger's [base58][] format. If omitted, generate a random seed. |
 
 **Note:** The security of your validator depends on the entropy of your seed. Do not use a secret value for real business purposes unless it is generated with a strong source of randomness. Ripple recommends omitting the `secret` when generating new credentials for the first time.
 
@@ -96,8 +96,8 @@ The response follows the [standard format][], with a successful result containin
 | `Field`                 | Type   | Description                               |
 |:------------------------|:-------|:------------------------------------------|
 | `validation_key`        | String | The secret key for these validation credentials, in [RFC-1751](https://tools.ietf.org/html/rfc1751) format. |
-| `validation_public_key` | String | The public key for these validation credentials, in Ripple's [base58][] encoded string format. |
-| `validation_seed`       | String | The secret key for these validation credentials, in Ripple's [base58][] encoded string format. |
+| `validation_public_key` | String | The public key for these validation credentials, in the XRP Ledger's [base58][] encoded string format. |
+| `validation_seed`       | String | The secret key for these validation credentials, in the XRP Ledger's [base58][] encoded string format. |
 
 ### Possible Errors
 

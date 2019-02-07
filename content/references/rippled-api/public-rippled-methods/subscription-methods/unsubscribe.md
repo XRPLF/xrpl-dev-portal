@@ -41,7 +41,7 @@ The parameters in the request are specified almost exactly like the parameters t
 | `Field`             | Type  | Description                                    |
 |:--------------------|:------|:-----------------------------------------------|
 | `streams`           | Array | _(Optional)_ Array of string names of generic streams to unsubscribe from, including `ledger`, `server`, `transactions`, and `transactions_proposed`. |
-| `accounts`          | Array | _(Optional)_ Array of unique [base58][] account addresses to stop receiving updates for. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
+| `accounts`          | Array | _(Optional)_ Array of unique account addresses to stop receiving updates for, in the XRP Ledger's [base58][] format. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
 | `accounts_proposed` | Array | _(Optional)_ Like `accounts`, but for `accounts_proposed` subscriptions that included not-yet-validated transactions. |
 | `books`             | Array | _(Optional)_ Array of objects defining order books to unsubscribe from, as explained below. |
 

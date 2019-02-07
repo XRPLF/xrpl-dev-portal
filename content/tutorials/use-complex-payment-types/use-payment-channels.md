@@ -11,7 +11,7 @@ The example addresses used in this tutorial are:
 | | |
 |--|--|
 | **Payer's address** | rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH |
-| **Public key used for channel (in base58)** | aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3
+| **Public key used for channel (in the XRP Ledger's [base58][] encoded string format)** | aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3
 | **Public key used for channel (in hex)** | 023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6 |
 | **Payee's address** | rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn |
 
