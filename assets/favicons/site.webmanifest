@@ -1,0 +1,19 @@
+{
+    "name": "XRP Ledger Dev Portal",
+    "short_name": "XRP Ledger Dev Portal",
+    "icons": [
+        {
+            "src": "android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#1db4ff",
+    "background_color": "#1db4ff",
+    "start_url": "http://developers.ripple.com/"
+}
