@@ -20,6 +20,10 @@ content_static_path: img
 # PDF creation needs a dir for temporary files
 temporary_files_path: /tmp/
 
+# Custom filters live here and start with filter_
+filter_paths:
+    - tool
+
 default_filters:
     - multicode_tabs
     - standardize_header_ids
@@ -27,6 +31,7 @@ default_filters:
     - callouts
     - badges
     - link_replacement
+    - external_links
 
 callout_class: "devportal-callout"
 
