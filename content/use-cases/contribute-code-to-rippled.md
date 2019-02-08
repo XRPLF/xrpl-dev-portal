@@ -6,58 +6,50 @@ Want to contribute code or a bug report to help improve `rippled`, the core peer
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-<!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/rippled" target="_blank">Access the `rippled` repo <i class="fa fa-external-link" aria-hidden="true"></i></a> <!--#{ fix md highlighting_ #}-->
+## [Access the `rippled` repo](https://github.com/ripple/rippled)
 
 `rippled` is an open-source project. You can take a look at `rippled` code simply by accessing the `rippled` GitHub repo. Before contributing or reporting bugs, we recommend that you get to know the code and developer experience by performing the following tasks.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-<!-- <span class="use-case-step-length">(1 hour)</span> -->
 ## [Set up and run a `rippled` server](manage-the-rippled-server.html)
 
 Set up and run a `rippled` server to understand the developer experience and functionality of the core peer-to-peer server that manages the XRP Ledger. Anyone can run their own `rippled` server that follows the network and keeps a complete copy of the XRP Ledger.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-<!-- <span class="use-case-step-length">(1 hour)</span> -->
 ## [Try out XRP Ledger integration tools](get-started-with-the-rippled-api.html)
 
 Take a look at the various tools provided to help developers integrate with the XRP Ledger. From WebSocket and JSON-RPC API endpoints to the `ripple-lib` JavaScript library, take a look at the modes of integration offered to the developer community.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-<!-- <span class="use-case-step-length">(1 hour)</span> -->
 ## [Get a sandbox XRP Ledger account](xrp-test-net-faucet.html)
 
 Use the XRP Ledger Test Net to get a sandbox account. Connect your `rippled server` to the Test Net to make test calls and get to know the XRP Ledger.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-<!-- <span class="use-case-step-length">(1 hour)</span> -->
 ## Set up your development environment
 
-A `rippled` development environment has a C++ compiler, access to the necessary libraries to compile `rippled` (such as Boost), and an editor for making changes to the source files. See the <a href="https://github.com/ripple/rippled" target="_blank">`rippled` repository <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}--> for the latest recommendations of each. You should also create your own fork of the `rippled` repository on GitHub so you can contribute pull requests to the official repo. <!-- for future, awaiting links to a few rippled repo md files - Nik -->
+A `rippled` development environment has a C++ compiler, access to the necessary libraries to compile `rippled` (such as Boost), and an editor for making changes to the source files. See the [`rippled` repository](https://github.com/ripple/rippled) for the latest recommendations of each. You should also create your own fork of the `rippled` repository on GitHub so you can contribute pull requests to the official repo. <!-- for future, awaiting links to a few rippled repo md files - Nik -->
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-<!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/rippled/blob/develop/docs/CodingStyle.md" target="_blank">Familiarize yourself with `rippled`'s coding style <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+## [Familiarize yourself with `rippled`'s coding style](https://github.com/ripple/rippled/blob/develop/docs/CodingStyle.md)
 
 Before you start contributing code to `rippled,` take some time to familiarize yourself with the coding standards used in the `rippled` repo. These standards gradually evolve and propagate through code reviews. Some aspects are enforced more strictly than others.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-<!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/rippled/pulls" target="_blank">Contribute code <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+## [Contribute code](https://github.com/ripple/rippled/pulls)
 
 Now that you have a handle on `rippled`, you may have ideas for how to improve it. Perhaps you’re developing on the XRP Ledger and want to contribute some code that enables the XRP Ledger to provide a feature your application needs. Access the `rippled` repo and open an issue or pull request.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-<!-- <span class="use-case-step-length">(1 hour)</span> -->
-## <a href="https://github.com/ripple/rippled/issues" target="_blank">Report bugs <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+## [Report bugs](https://github.com/ripple/rippled/issues)
 
-As you explore `rippled`, you may find code that you don’t think is working as intended. To report a bug, <a href="https://github.com/ripple/rippled/issues" target="_blank">open an issue <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}--> in the `rippled` repo.
+As you explore `rippled`, you may find code that you don’t think is working as intended. To report a bug, [open an issue](https://github.com/ripple/rippled/issues) in the `rippled` repo.
 
-If the bug you wish to report is security-related, we urge you to disclose it responsibly through Ripple's <a href="https://ripple.com/bug-bounty/" target="_blank">Bug Bounty program <i class="fa fa-external-link" aria-hidden="true"></i></a>.
+If the bug you wish to report is security-related, we urge you to disclose it responsibly through Ripple's [Bug Bounty program](https://ripple.com/bug-bounty/).

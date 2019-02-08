@@ -7,7 +7,7 @@
 
 Validators determine if transactions meet protocol requirements, and are therefore “valid.” The service validators uniquely provide is grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending.
 
-See [Consensus](consensus.html) and the <a href="https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/" target="_blank">Ripple Labs Tech Talk: Understanding Consensus <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}--> for more information about the consensus process.
+See [Consensus](consensus.html) and the [Ripple Labs Tech Talk: Understanding Consensus](https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/) for more information about the consensus process.
 
 
 #### How much does it cost to run a validator?
@@ -82,7 +82,7 @@ Ripple controls who has access to modify official versions of the `rippled` serv
 
 #### Does Ripple offer a secure method to download their software?
 
-`rippled` source code is available at <a href="https://github.com/ripple/rippled" target="_blank">https://github.com/ripple/rippled <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->, where the tip of the master, release and develop branches always contains a version-setting commit signed by a `rippled` developer. The XRP Ledger also offers prebuilt RPM packages for CentOS, RedHat Enterprise Linux, Fedora and Ubuntu. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the md5sum of the RPM packages that are published.
+`rippled` source code is available at <https://github.com/ripple/rippled>, where the tip of the `master`, `release` and `develop` branches always contains a version-setting commit signed by a `rippled` developer. The XRP Ledger also offers prebuilt RPM packages for CentOS, RedHat Enterprise Linux, Fedora and Ubuntu. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the md5sum of the RPM packages that are published.
 
 
 #### Does Ripple distinguish between the codebase for validation and the one for user software?
@@ -92,8 +92,8 @@ Yes. Client software for the XRP Ledger, including ripple-lib, has a different c
 
 ## See Also
 
-- <a href="https://github.com/ripple/rippled" target="_blank">`rippled` codebase <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+- [`rippled` codebase](https://github.com/ripple/rippled)
 - User software codebase:
-      - <a href="https://github.com/ripple/ripple-lib" target="_blank">ripple-lib <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
-      - <a href="https://github.com/ripple/ripplecharts-frontend" target="_blank">ripplecharts-frontend <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
-- <a href="https://github.com/ripple/" target="_blank">Ripple GitHub Organization <i class="fa fa-external-link" aria-hidden="true"></i></a><!--#{ fix md highlighting_ #}-->
+      - [ripple-lib](https://github.com/ripple/ripple-lib)
+      - [ripplecharts-frontend](https://github.com/ripple/ripplecharts-frontend)
+- [Ripple GitHub Organization](https://github.com/ripple/)
