@@ -168,7 +168,7 @@ Each Channel Object has the following fields:
 | `balance` | String | The total amount of [XRP, in drops][], paid out from this channel, as of the ledger version used. (You can calculate the amount of XRP left in the channel by subtracting `balance` from `amount`.) |
 | `channel_id` | String | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [ID of the channel object](paychannel.html#paychannel-id-format) in the ledger's state data. |
 | `destination_account` | String | the destination account of the channel, as an [Address][]. Only this account can receive the XRP in the channel while it is open. |
-| `public_key` | String | _(May be omitted)_ The public key for the payment channel in base58 format. Signed claims against this channel must be redeemed with the matching key pair. |
+| `public_key` | String | _(May be omitted)_ The public key for the payment channel in the XRP Ledger's [base58][] format. Signed claims against this channel must be redeemed with the matching key pair. |
 | `public_key_hex` | String | _(May be omitted)_ The public key for the payment channel in hexadecimal format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair. |
 | `settle_delay` | Unsigned Integer | The number of seconds the payment channel must stay open after the owner of the channel requests to close it. |
 | `expiration` | Unsigned Integer | _(May be omitted)_ Time, in [seconds since the Ripple Epoch][], when this channel is set to expire. This expiration date is mutable. If this is before the close time of the most recent validated ledger, the channel is expired. |

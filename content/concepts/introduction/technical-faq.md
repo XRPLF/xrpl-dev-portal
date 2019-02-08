@@ -77,8 +77,17 @@ Ripple is committed to monitoring and reporting any AML flags across the XRP Led
 
 #### What is Ripple’s process for reviewing third-party code contributions before they go live in the master codebase?
 
-Ripple controls who has access to modify official versions of the `rippled` server source code, and it thoroughly audits all code.
+The code contribution process starts with a developer opening a pull request against Ripple's `rippled` repo. This pull request triggers automated unit and integration tests, as well as code reviews by several developers who, typically, have significant expertise in the area of code that the pull request is changing.
 
+Once the pull request passes automated tests and receives approvals from reviewers, a trusted [maintainer of the repo](https://opensource.guide/best-practices/) can stage it for inclusion in the next beta.
+
+#### Does Ripple own or control the XRP Ledger or XRP Ledger network?
+
+No, Ripple does not own or control the XRP Ledger or XRP Ledger network.
+
+Ripple does publish a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/ripple/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple also periodically publishes precompiled binary packages of the software as a convenience. Anyone is free to [download and compile the software from source](install-rippled.html), if they prefer.  
+
+You don't need to use Ripple’s version of the XRP Ledger software to interact with the XRP Ledger. `rippled` is open-source software and Ripple grants anyone the ability to use, extend, and modify it as long as they follow the terms of the [ISC license](https://github.com/ripple/rippled/blob/develop/LICENSE). The ISC License is very permissive compared to some other open-source licenses that strictly limit how you can use, extend, and adapt the software.
 
 #### Does Ripple offer a secure method to download their software?
 

@@ -62,7 +62,7 @@ To calculate an e-folding time for a given rate of annual percent interest:
 3. Take the natural log of that number. For example, **ln(0.995) = -0.005012541823544286**. (This number is positive if the initial interest rate was positive, and negative if the interest rate was negative.)
 4. Take the number of seconds in one year (31536000) and divide by the natural log result from the previous step. For example, **31536000 ÷ -0.005012541823544286 = -6291418827.045599**. This result is the e-folding time in seconds.
 
-**Note:** By convention, Ripple's interest/demurrage rules use a fixed number of seconds per year (31536000), which is not adjusted for leap days or leap seconds.
+**Note:** By convention, the XRP Ledger's interest/demurrage rules use a fixed number of seconds per year (31536000), which is not adjusted for leap days or leap seconds.
 
 ## Client Support
 

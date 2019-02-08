@@ -58,7 +58,7 @@ The request includes the following parameters:
 | `Field`             | Type   | Description                                   |
 |:--------------------|:-------|:----------------------------------------------|
 | `streams`           | Array  | _(Optional)_ Array of string names of generic streams to subscribe to, as explained below |
-| `accounts`          | Array  | _(Optional)_ Array with the unique [base58][] addresses of accounts to monitor for validated transactions. The server sends a notification for any transaction that affects at least one of these accounts. |
+| `accounts`          | Array  | _(Optional)_ Array with the unique addresses of accounts to monitor for validated transactions. The addresses must be in the XRP Ledger's [base58][] format. The server sends a notification for any transaction that affects at least one of these accounts. |
 | `accounts_proposed` | Array  | _(Optional)_ Like `accounts`, but include transactions that are not yet finalized. |
 | `books`             | Array  | _(Optional)_ Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updates, as detailed below. |
 | `url`               | String | (Optional for Websocket; Required otherwise) URL where the server sends a JSON-RPC callbacks for each event. *Admin-only.* |
@@ -83,7 +83,7 @@ Each member of the `books` array, if provided, is an object with the following f
 |:-------------|:--------|:----------------------------------------------------|
 | `taker_gets` | Object  | Specification of which currency the account taking the offer would receive, as a [currency object with no amount](basic-data-types.html#specifying-currencies-without-amounts). |
 | `taker_pays` | Object  | Specification of which currency the account taking the offer would pay, as a [currency object with no amount](basic-data-types.html#specifying-currencies-without-amounts). |
-| `taker`      | String  | Unique [base58][] account address to use as a perspective for viewing offers. (This affects the funding status and fees of offers.) |
+| `taker`      | String  | Unique account address to use as a perspective for viewing offers, in the XRP Ledger's [base58][] format. (This affects the funding status and fees of offers.) |
 | `snapshot`   | Boolean | (Optional, defaults to false) If true, return the current state of the order book once when you subscribe before sending updates |
 | `both`       | Boolean | (Optional, defaults to false) If true, return both sides of the order book. |
 
@@ -211,7 +211,7 @@ The fields from a validations stream message are as follows:
 | `reserve_inc`           | Integer          | (May be omitted) The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
 | `signature`             | String           | The signature that the validator used to sign its vote for this ledger. |
 | `signing_time`          | Number           | When this validation vote was signed, in [seconds since the Ripple Epoch][]. [New in: rippled 0.32.0][] |
-| `validation_public_key` | String           | The [base58][] encoded public key from the key-pair that the validator used to sign the message. This identifies the validator sending the message and can also be used to verify the `signature`. |
+| `validation_public_key` | String           | The public key from the key-pair that the validator used to sign the message, in the XRP Ledger's [base58][] format. This identifies the validator sending the message and can also be used to verify the `signature`. |
 
 
 ## Transaction Streams

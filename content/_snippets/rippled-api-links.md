@@ -1,6 +1,7 @@
 <!--{# Links within the dev portal #}-->
 [Address]: basic-data-types.html#addresses
 [admin command]: admin-rippled-methods.html
+[base58]: base58-encodings.html
 [common fields]: transaction-common-fields.html
 [Currency Amount]: basic-data-types.html#specifying-currency-amounts
 [Currency Code]: currency-formats.html#currency-codes
@@ -23,7 +24,6 @@
 [XRP, in drops]: basic-data-types.html#specifying-currency-amounts
 
 <!--{# Links to external sites #}-->
-[base58]: https://en.wikipedia.org/wiki/Base58
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
 [crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal

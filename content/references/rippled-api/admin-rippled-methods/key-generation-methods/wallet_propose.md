@@ -73,8 +73,8 @@ The request can contain the following parameters:
 | `Field`      | Type   | Description                                          |
 |:-------------|:-------|:-----------------------------------------------------|
 | `key_type`   | String | Which elliptic curve to use for this key pair. Valid values are `ed25519` and `secp256k1` (all lower case). Defaults to `secp256k1`. |
-| `passphrase` | String | _(Optional)_ Generate a key pair and address from this seed value. This value can be formatted in [hexadecimal][], [base58][], [RFC-1751][], or as an arbitrary string. Cannot be used with `seed` or `seed_hex`. |
-| `seed`       | String | _(Optional)_ Generate the key pair and address from this [base58][]-encoded seed value. Cannot be used with `passphrase` or `seed_hex`. |
+| `passphrase` | String | _(Optional)_ Generate a key pair and address from this seed value. This value can be formatted in [hexadecimal][], the XRP Ledger's [base58][] format, [RFC-1751][], or as an arbitrary string. Cannot be used with `seed` or `seed_hex`. |
+| `seed`       | String | _(Optional)_ Generate the key pair and address from this seed value in the XRP Ledger's [base58][]-encoded format. Cannot be used with `passphrase` or `seed_hex`. |
 | `seed_hex`   | String | _(Optional)_ Generate the key pair and address from this seed value in [hexadecimal][] format. Cannot be used with `passphrase` or `seed`. |
 
 You must provide **at most one** of the following fields: `passphrase`, `seed`, or `seed_hex`. If you omit all three, `rippled` uses a random seed.
@@ -92,12 +92,11 @@ Cases where you would specify a known seed include:
 
 If you do specify a seed, you can specify it in any of the following formats:
 
-* As a [base58][] secret key format string. Example: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`.
+* As a secret key string in the XRP Ledger's [base58][] format. Example: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`.
 * As an [RFC-1751][] format string (secp256k1 key pairs only). Example: `I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE`.
 * As a 128-bit [hexadecimal][] string. Example: `DEDCE9CE67B451D852FD4E846FCDE31C`.
 * An arbitrary string to use as a seed value. For example: `masterpassphrase`.
 
-[base58]: https://en.wikipedia.org/wiki/Base58
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 
@@ -168,11 +167,11 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`           | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
-| `master_seed`     | String | This is the private key of the key pair. The master seed from which all other information about this account is derived, in Ripple's [base58][] encoded string format. Typically, you use the key in this format to sign transactions. |
+| `master_seed`     | String | This is the private key of the key pair. The master seed from which all other information about this account is derived, in the XRP Ledger's [base58][] encoded string format. Typically, you use the key in this format to sign transactions. |
 | `master_seed_hex` | String | The master seed, in hex format. A simple, widely-supported way to represent the private key. Can be used to sign transactions. |
 | `master_key`      | String | The master seed, in [RFC 1751](http://tools.ietf.org/html/rfc1751) format. An easier to remember, easier-to-write-down version of the private key. Can be used to sign transactions. |
-| `account_id`      | String | The [Address][] of the account in base58 format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. [Multi-signing lists](multi-signing.html) also use these to identify other signers. |
-| `public_key`      | String | The public key of the key pair, in Ripple's [base58][] encoded string format. Derived from the `master_seed`. |
+| `account_id`      | String | The [Address][] of the account in the XRP Ledger's [base58][] format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. [Multi-signing lists](multi-signing.html) also use these to identify other signers. |
+| `public_key`      | String | The public key of the key pair, in the XRP Ledger's [base58][] encoded string format. Derived from the `master_seed`. |
 | `public_key_hex`  | String | This is the public key of the key pair, in hexadecimal. Derived from the `master_seed`. To validate the signature on a transaction, `rippled` needs this public key. That's why the format for a signed transaction includes the public key in the `SigningPubKey` field. |
 | `warning`         | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. [New in: rippled 0.32.0][] |
 
