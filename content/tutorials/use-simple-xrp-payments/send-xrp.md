@@ -6,49 +6,78 @@ This tutorial walks through send a simple XRP Payment using JavaScript, by first
 
 This page provides JavaScript examples that use the ripple-lib (RippleAPI) library. The [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.
 
-## Send a Payment on the Test Net
-{% set n = cycler(* range(1,99)) %}
-
-### {{n.next()}}. Get an XRP Test Net Address
-
 To send transactions in the XRP Ledger, you first need an address and secret key, and some XRP. You can get an address in the XRP Test Net with a supply of Test Net XRP using the following interface:
 
-<script type="application/javascript" src="assets/js/test-net.js"></script>
-<div class="test-net-inset">
+<div class="interactive-block test-net-inset">
   <button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
-  <div id='your-credentials'></div>
   <div id='loader' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"> Generating Keys...</div>
   <div id='address'></div>
   <div id='secret'></div>
   <div id='balance'></div>
+  <button id="populate-creds-button" style="display: none;" class="btn btn-primary"></button>
 </div><!--/.test-net-inset-->
+<script type="application/javascript">
+$(document).ready( () => {
+
+  $("#generate-creds-button").click( () => {
+    $.ajax({
+      url: "https://faucet.altnet.rippletest.net/accounts",
+      type: 'POST',
+      dataType: 'json',
+      success: function(data) {
+        $("#loader").hide()
+        $("#address").hide().html("<strong>Address:</strong> " +
+          '<span id="test-net-faucet-address">' +
+          data.account.address
+          + "</span>").show()
+        $("#secret").hide().html('<strong>Secret:</strong> ' +
+          '<span id="test-net-faucet-secret">' +
+          data.account.secret +
+          "</span>").show()
+        $("#balance").hide().html('<strong>Balance:</strong> ' +
+          Number(data.balance).toLocaleString('en') +
+          ' XRP').show()
+        $("#populate-creds-button").text("Populate examples with these credentials")
+        $("#populate-creds-button").show()
+      },
+      error: function() {
+        $("#loader").hide();
+        alert("There was an error with the Ripple Test Net, please try again.");
+      }
+    })
+  })
+
+  const EXAMPLE_ADDR = "rD9bZqwXu67DuZDtNCjjeDUTNLb6iQnHDn"
+  const EXAMPLE_SECRET = "s████████████████████████████"
+  $("#populate-creds-button").click( () => {
+    // Set sender address
+    let generated_addr = ""
+    $("code span:contains('"+EXAMPLE_ADDR+"')").each( function() {
+      let eltext = $(this).text()
+      generated_addr = $("#test-net-faucet-address").text()
+      $(this).text( eltext.replace(EXAMPLE_ADDR, generated_addr) )
+    })
+
+    // Set sender secret
+    $("code span:contains('"+EXAMPLE_SECRET+"')").each( function() {
+      let eltext = $(this).text()
+      let generated_secret = $("#test-net-faucet-secret").text()
+      $(this).text( eltext.replace(EXAMPLE_SECRET, generated_secret) )
+    })
+
+    $("#populate-creds-button").text("... sender set to "+generated_addr+"!")
+    $("#populate-creds-button").prop("disabled", true)
+  })
+
+})
+
+</script>
 
 Ripple operates the XRP Test Net for testing purposes only, and regularly resets the state of the test net along with all balances.
 
-### {{n.next()}}. Prepare Transaction
 
-Typically, we prepare XRP Ledger transactions as objects in [JSON](https://en.wikipedia.org/wiki/JSON) format. The following example shows a minimal Payment specification:
-
-```json
-{
-  "TransactionType": "Payment",
-  "Account": "rD9bZqwXu67DuZDtNCjjeDUTNLb6iQnHDn",
-  "Amount": "2000000",
-  "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
-}
-```
-
-The bare minimum set of instructions for an XRP Payment is:
-
-- An indicator that this is a payment. (`"TransactionType": "Payment"`)
-- The sending address. (`"Account"`)
-- The address that should receive the XRP (`"Destination"`). This can't be the same as the sending address.
-- The amount of XRP to send (`"Amount"`). Typically, this is specified as an integer in "drops" of XRP, where 1,000,000 drops equals 1 XRP.
-
-Technically, a viable transaction must contain some additional fields, but your client library can automatically choose sensible values for those if it's online. Some optional fields, such as `LastLedgerSequence`, are strongly recommended when sending payments with real value. For details, see [Differences for Production](#differences-for-production) below.
-
-**Tip:** The above example uses the standard JSON [transaction format](transaction-formats.html). You can also use RippleAPI's `preparePayment()` method to generate the transaction's JSON format.
-
+## Send a Payment on the Test Net
+{% set n = cycler(* range(1,99)) %}
 
 ### {{n.next()}}. Connect to a Test Net Server
 
@@ -62,21 +91,119 @@ api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
 api.connect()
 ```
 
-### {{n.next()}}. Sign the Transaction Instructions
+For this tutorial, you can connect directly from your browser by pressing the following button:
 
-Use the [sign() method](rippleapi-reference.html#sign) to sign the transaction string with RippleAPI. If you constructed the transaction manually, as in this example, you must convert it from JSON to string first.
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+<script type="application/javascript" src="assets/js/ripple-lib-1.1.2-min.js"></script>
+<div class="interactive-block">
+  <button id="connect-button" class="btn btn-primary">Connect to TestNet</button>
+  <div>
+    <strong>Connection status:</strong>
+    <span id="connection-status">Not connected</span>
+  </div>
+</div>
+<script type="application/javascript">
+api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
+api.on('connected', () => {
+  $("#connection-status").text("Connected")
+  $(".connection-required").prop("disabled", false)
+  $(".connection-required").prop("title", "")
+})
+api.on('disconnected', (code) => {
+  $("#connection-status").text( "Disconnected ("+code+")" )
+  $(".connection-required").prop("disabled", true)
+  $(".connection-required").prop("title", "Connection to Test Net required")
+})
+$("#connect-button").click(() => {
+  $("#connection-status").text( "Connecting..." )
+  api.connect()
+})
+</script>
 
-```js
-let payment_json = {
+
+### {{n.next()}}. Prepare Transaction
+
+Typically, we create XRP Ledger transactions as objects in the JSON [transaction format](transaction-formats.html). The following example shows a minimal Payment specification:
+
+```json
+{
   "TransactionType": "Payment",
   "Account": "rD9bZqwXu67DuZDtNCjjeDUTNLb6iQnHDn",
   "Amount": "2000000",
   "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
 }
-// TODO: 'api' should be online
-const response = api.sign(
-  JSON.stringify(payment_json),
-  "s████████████████████████████")
+```
+
+The bare minimum set of instructions you must provide for an XRP Payment is:
+
+- An indicator that this is a payment. (`"TransactionType": "Payment"`)
+- The sending address. (`"Account"`)
+- The address that should receive the XRP (`"Destination"`). This can't be the same as the sending address.
+- The amount of XRP to send (`"Amount"`). Typically, this is specified as an integer in "drops" of XRP, where 1,000,000 drops equals 1 XRP.
+
+Technically, a viable transaction must contain some additional fields, and certain optional fields like `LastLedgerSequence` are strongly recommended. The [`prepareTransaction()` method](rippleapi-reference.html#preparetransaction) automatically fills in good defaults for the remaining fields of a transaction. Here's an example of preparing the above payment:
+
+```js
+// Continuing after connecting to the API
+async function() {
+const sender = "rD9bZqwXu67DuZDtNCjjeDUTNLb6iQnHDn"
+const preparedTx = await api.prepareTransaction({
+  "TransactionType": "Payment",
+  "Account": sender,
+  "Amount": api.xrpToDrops("2"), // Same as "Amount": "2000000"
+  "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
+}, {
+  // Expire this transaction if it doesn't execute within ~5 minutes:
+  "maxLedgerVersionOffset": 75
+})
+const maxLedgerVersion = preparedTx.instructions.maxLedgerVersion
+console.log("Prepared transaction instructions:", preparedTx.txJSON)
+console.log("XRP transaction cost:", preparedTx.instructions.fee)
+console.log("Transaction expires after ledger:", maxLedgerVersion)
+}()
+```
+
+***TODO: This example doesn't work (something with how I'm using prepareTransaction)***
+
+<div class="interactive-block">
+  <button id="prepare-button" class="btn btn-primary connection-required"
+    title="Connection to Test Net required" disabled="disabled">Prepare
+    example transaction</button>
+  <div id="prepare-output"></div>
+</div>
+<script type="application/javascript">
+  $("#prepare-button").click( async function() {
+    const sender = "rD9bZqwXu67DuZDtNCjjeDUTNLb6iQnHDn"
+    const preparedTx = await api.prepareTransaction({
+      "TransactionType": "Payment",
+      "Account": sender,
+      "Amount": api.xrpToDrops("2"), // Same as "Amount": "2000000"
+      "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
+    }, {
+      // Expire this transaction if it doesn't execute within ~5 minutes:
+      "maxLedgerVersionOffset": 75
+    })
+    const maxLedgerVersion = preparedTx.instructions.maxLedgerVersion
+
+    $("#prepare-output").html(
+      "<div><strong>Prepared transaction instructions:</strong> " +
+      preparedTx.txJSON + "</div>" +
+      "<div><strong>XRP transaction cost:</strong> " +
+      preparedTx.instructions.fee + "</div>" +
+      "<div><strong>Transaction expires after ledger:</strong> " +
+      maxLedgerVersion + "</div>"
+    )
+  })
+</script>
+
+
+### {{n.next()}}. Sign the Transaction Instructions
+
+Use the [sign() method](rippleapi-reference.html#sign) to sign the transaction string with RippleAPI. If you constructed the transaction manually, as in this example, you must convert it from JSON to string first.
+
+```js
+// Continuing from the previous step...
+const response = api.sign(preparedTx.txJSON, "s████████████████████████████")
 const txID = response.id
 console.log("Identifying hash:", txID)
 const txBlob = response.signedTransaction
@@ -131,6 +258,9 @@ You can trigger code to run using the `ledger` event type in RippleAPI. For exam
 ```js
 api.on('ledger', ledger => {
   console.log("Ledger version", ledger.ledgerVersion, "was just validated.")
+  if (ledger.ledgerVersion > maxLedgerVersion) {
+    console.log("If the transaction hasn't succeeded by now, it's expired")
+  }
 })
 ```
 
@@ -140,15 +270,14 @@ api.on('ledger', ledger => {
 To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version. For example, you can use the [getTransaction() method](rippleapi-reference.html#gettransaction) to check the status of a transaction:
 
 ```js
-api.getTransaction(txID).done(tx => {
-  console.log("Transaction result:", tx.outcome.result)
-  console.log("Balance changes:", JSON.stringify(tx.outcome.balanceChanges))
-})
+tx = await api.getTransaction(txID)
+console.log("Transaction result:", tx.outcome.result)
+console.log("Balance changes:", JSON.stringify(tx.outcome.balanceChanges))
 ```
 
 The RippleAPI `getTransaction()` method only returns success if the transaction is in a validated ledger version.
 
-**Caution:** Other APIs may return tentative results from ledger versions that have not yet been validated. For example, if you use the `rippled` APIs' [tx method][], be sure to look for `"validated": true` in the response to confirm that the data comes from a validated ledger version. Any transaction results that are not from a validated ledger version are subject to change.
+**Caution:** Other APIs may return tentative results from ledger versions that have not yet been validated. For example, if you use the `rippled` APIs' [tx method][], be sure to look for `"validated": true` in the response to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](finality-of-results.html).
 
 
 

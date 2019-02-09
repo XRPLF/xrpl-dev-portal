@@ -988,6 +988,14 @@ a.current {
   margin-right: 10px;
 }
 
+/* Boxes with unusual stuff in interactive tutorials ------------------------ */
+
+.interactive-block {
+  border: 1px dashed #ff5c00;
+  padding: 10px;
+  margin: 5px;
+}
+
 
 /* Responsive design for different viewscreens ------------------------------ */
 
@@ -1067,7 +1075,8 @@ a.current {
     }
 }
 
-.page-test-net .throbber {
+.page-test-net .throbber,
+.interactive-block .throbber {
     -webkit-animation: rotating 1s linear infinite;
     -moz-animation: rotating 1s linear infinite;
     -ms-animation: rotating 1s linear infinite;
