@@ -10,22 +10,30 @@ To send transactions in the XRP Ledger, you first need an address and secret key
 
 <div class="interactive-block test-net-inset">
   <button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
-  <div id='loader' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"> Generating Keys...</div>
+  <div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"> Generating Keys...</div>
   <div id='address'></div>
   <div id='secret'></div>
   <div id='balance'></div>
-  <button id="populate-creds-button" style="display: none;" class="btn btn-primary"></button>
+  <div id="populate-creds-status"></div>
 </div><!--/.test-net-inset-->
 <script type="application/javascript">
 $(document).ready( () => {
 
   $("#generate-creds-button").click( () => {
+    // Wipe existing results
+    $("#address").html("")
+    $("#secret").html("")
+    $("#balance").html("")
+    $("#populate-creds-status").html("")
+
+    $("#loader-0").show()
+
     $.ajax({
       url: "https://faucet.altnet.rippletest.net/accounts",
       type: 'POST',
       dataType: 'json',
       success: function(data) {
-        $("#loader").hide()
+        $("#loader-0").hide()
         $("#address").hide().html("<strong>Address:</strong> " +
           '<span id="test-net-faucet-address">' +
           data.account.address
@@ -37,36 +45,35 @@ $(document).ready( () => {
         $("#balance").hide().html('<strong>Balance:</strong> ' +
           Number(data.balance).toLocaleString('en') +
           ' XRP').show()
-        $("#populate-creds-button").text("Populate examples with these credentials")
-        $("#populate-creds-button").show()
+
+        // Automatically populate examples with these credentials...
+        // Set sender address
+        let generated_addr = ""
+        $("code span:contains('"+EXAMPLE_ADDR+"')").each( function() {
+          let eltext = $(this).text()
+          $(this).text( eltext.replace(EXAMPLE_ADDR, data.account.address) )
+        })
+
+        // Set sender secret
+        $("code span:contains('"+EXAMPLE_SECRET+"')").each( function() {
+          let eltext = $(this).text()
+          $(this).text( eltext.replace(EXAMPLE_SECRET, data.account.secret) )
+        })
+
+        $("#populate-creds-status").text("Populated this page's examples with these credentials.")
+
       },
       error: function() {
-        $("#loader").hide();
+        $("#loader-0").hide();
         alert("There was an error with the Ripple Test Net, please try again.");
       }
     })
   })
 
-  const EXAMPLE_ADDR = "rD9bZqwXu67DuZDtNCjjeDUTNLb6iQnHDn"
+  const EXAMPLE_ADDR = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
   const EXAMPLE_SECRET = "s████████████████████████████"
   $("#populate-creds-button").click( () => {
-    // Set sender address
-    let generated_addr = ""
-    $("code span:contains('"+EXAMPLE_ADDR+"')").each( function() {
-      let eltext = $(this).text()
-      generated_addr = $("#test-net-faucet-address").text()
-      $(this).text( eltext.replace(EXAMPLE_ADDR, generated_addr) )
-    })
 
-    // Set sender secret
-    $("code span:contains('"+EXAMPLE_SECRET+"')").each( function() {
-      let eltext = $(this).text()
-      let generated_secret = $("#test-net-faucet-secret").text()
-      $(this).text( eltext.replace(EXAMPLE_SECRET, generated_secret) )
-    })
-
-    $("#populate-creds-button").text("... sender set to "+generated_addr+"!")
-    $("#populate-creds-button").prop("disabled", true)
   })
 
 })
@@ -100,22 +107,27 @@ For this tutorial, you can connect directly from your browser by pressing the fo
   <div>
     <strong>Connection status:</strong>
     <span id="connection-status">Not connected</span>
+    <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
   </div>
 </div>
 <script type="application/javascript">
 api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
 api.on('connected', () => {
   $("#connection-status").text("Connected")
+  $("#connect-button").prop("disabled", true)
   $(".connection-required").prop("disabled", false)
   $(".connection-required").prop("title", "")
+  $("#loader-{{n.current}}").hide()
 })
 api.on('disconnected', (code) => {
   $("#connection-status").text( "Disconnected ("+code+")" )
+  $("#connect-button").prop("disabled", false)
   $(".connection-required").prop("disabled", true)
   $(".connection-required").prop("title", "Connection to Test Net required")
 })
 $("#connect-button").click(() => {
   $("#connection-status").text( "Connecting..." )
+  $("#loader-{{n.current}}").show()
   api.connect()
 })
 </script>
@@ -128,7 +140,7 @@ Typically, we create XRP Ledger transactions as objects in the JSON [transaction
 ```json
 {
   "TransactionType": "Payment",
-  "Account": "rD9bZqwXu67DuZDtNCjjeDUTNLb6iQnHDn",
+  "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
   "Amount": "2000000",
   "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
 }
@@ -146,11 +158,11 @@ Technically, a viable transaction must contain some additional fields, and certa
 ```js
 // Continuing after connecting to the API
 async function() {
-const sender = "rD9bZqwXu67DuZDtNCjjeDUTNLb6iQnHDn"
+const sender = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
 const preparedTx = await api.prepareTransaction({
   "TransactionType": "Payment",
   "Account": sender,
-  "Amount": api.xrpToDrops("2"), // Same as "Amount": "2000000"
+  "Amount": api.xrpToDrops("22"), // Same as "Amount": "22000000"
   "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
 }, {
   // Expire this transaction if it doesn't execute within ~5 minutes:
@@ -163,33 +175,35 @@ console.log("Transaction expires after ledger:", maxLedgerVersion)
 }()
 ```
 
-***TODO: This example doesn't work (something with how I'm using prepareTransaction)***
-
 <div class="interactive-block">
   <button id="prepare-button" class="btn btn-primary connection-required"
-    title="Connection to Test Net required" disabled="disabled">Prepare
+    title="Connection to Test Net required" disabled>Prepare
     example transaction</button>
   <div id="prepare-output"></div>
 </div>
 <script type="application/javascript">
   $("#prepare-button").click( async function() {
-    const sender = "rD9bZqwXu67DuZDtNCjjeDUTNLb6iQnHDn"
+    // Wipe existing results
+    $("#prepare-output").html("")
+
+    const sender = $("#test-net-faucet-address").text() || "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
     const preparedTx = await api.prepareTransaction({
       "TransactionType": "Payment",
       "Account": sender,
-      "Amount": api.xrpToDrops("2"), // Same as "Amount": "2000000"
+      "Amount": api.xrpToDrops("22"), // Same as "Amount": "22000000"
       "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
     }, {
       // Expire this transaction if it doesn't execute within ~5 minutes:
       "maxLedgerVersionOffset": 75
     })
     const maxLedgerVersion = preparedTx.instructions.maxLedgerVersion
+    $("#tx-lls").text(maxLedgerVersion) //for the table in the later step
 
     $("#prepare-output").html(
-      "<div><strong>Prepared transaction instructions:</strong> " +
-      preparedTx.txJSON + "</div>" +
-      "<div><strong>XRP transaction cost:</strong> " +
-      preparedTx.instructions.fee + "</div>" +
+      "<div><strong>Prepared transaction instructions:</strong> <pre><code id='prepared-tx-json'>" +
+      JSON.stringify(JSON.parse(preparedTx.txJSON), null, 2) + "</code></pre></div>" +
+      "<div><strong>Transaction cost:</strong> " +
+      preparedTx.instructions.fee + " XRP</div>" +
       "<div><strong>Transaction expires after ledger:</strong> " +
       maxLedgerVersion + "</div>"
     )
@@ -199,7 +213,7 @@ console.log("Transaction expires after ledger:", maxLedgerVersion)
 
 ### {{n.next()}}. Sign the Transaction Instructions
 
-Use the [sign() method](rippleapi-reference.html#sign) to sign the transaction string with RippleAPI. If you constructed the transaction manually, as in this example, you must convert it from JSON to string first.
+Use the [sign() method](rippleapi-reference.html#sign) to sign the transaction with RippleAPI. The first argument is a string version of the JSON transaction to sign.
 
 ```js
 // Continuing from the previous step...
@@ -210,7 +224,9 @@ const txBlob = response.signedTransaction
 console.log("Signed blob:", txBlob)
 ```
 
-The result of the signing operation is a transaction object containing a signature. Typically, XRP Ledger APIs expect a signed transaction to be the hexadecimal representation of the transaction's canonical [binary format](serialization.html), called a "blob". For a Payment such as this one, a signed transaction blob looks like this (with line breaks added here for readability):
+The result of the signing operation is a transaction object containing a signature. Typically, XRP Ledger APIs expect a signed transaction to be the hexadecimal representation of the transaction's canonical [binary format](serialization.html), called a "blob".
+
+For a Payment such as this one, a signed transaction blob looks like this (with line breaks added here for readability):
 
 ```text
 1200006140000000001E8480732102CD9D02581F13380BB1876313C1C2AA83267CD73
@@ -226,8 +242,40 @@ The signing API also returns the transaction's ID, or identifying hash, which yo
 D403EC6E03A68A4B7624508BAA271143A65D3AAA5D470BECD3A38EC54CEAF85E
 ```
 
+<div class="interactive-block">
+  <button id="sign-button" class="btn btn-primary connection-required"
+    title="Connection to Test Net required" disabled>Sign
+    example transaction</button>
+  <div id="sign-output"></div>
+</div>
+<script type="application/javascript">
+  $("#sign-button").click( async function() {
+    // Wipe previous output
+    $("#sign-output").html("")
+
+    const preparedTxJSON = $("#prepared-tx-json").text()
+    const secret = $("#test-net-faucet-secret").text()
+
+    if (!secret) {
+      alert("Can't sign transaction without a real secret. Generate credentials first.")
+      return
+    }
+
+    signResponse = await api.sign(preparedTxJSON, secret)
+
+    $("#sign-output").html(
+      "<div><strong>Signed Transaction blob:</strong> <code id='signed-tx-blob' style='overflow-wrap: anywhere; word-wrap: anywhere'>" +
+      signResponse.signedTransaction + "</code></div>" +
+      "<div><strong>Identifying hash:</strong> <span id='signed-tx-hash'>" +
+      signResponse.id + "</span></div>"
+    )
+  })
+</script>
+
 
 ### {{n.next()}}. Submit the Signed Blob
+
+Use the [submit() method](rippleapi-reference.html#submit) to submit a transaction to the network.
 
 ```js
 // txBlob from the previous example
@@ -237,7 +285,7 @@ api.submit(txBlob).then(result => {
 })
 ```
 
-This method returns the **tentative** result of trying to apply the transaction locally. This result _can_ change when the transaction is included in a validated ledger: transactions that succeed initially might ultimately fail, and transactions that fail initially might ultimately succeed. Still, the tentative result often matches the final result, so it's OK to get excited if you see `tesSUCCESS` here. 😁
+This method returns the **tentative** result of trying to apply the transaction locally. (***TODO: maybe the RippleAPI version actually waits for a validated result???***) This result _can_ change when the transaction is included in a validated ledger: transactions that succeed initially might ultimately fail, and transactions that fail initially might ultimately succeed. Still, the tentative result often matches the final result, so it's OK to get excited if you see `tesSUCCESS` here. 😁
 
 If you see any other result, you should check the following:
 
@@ -248,6 +296,33 @@ If you see any other result, you should check the following:
 
 See the full list of [transaction results](transaction-results.html) for more possibilities.
 
+
+***TODO: this interactive block seems to take longer than it should...***
+
+<div class="interactive-block">
+  <button id="submit-button" class="btn btn-primary connection-required"
+    title="Connection to Test Net required" disabled>Submit
+    example transaction</button>
+    <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
+    <div id="submit-output"></div>
+</div>
+<script type="application/javascript">
+  $("#sign-button").click( async function() {
+    const txBlob = $("#signed-tx-blob").text()
+    $("#loader-{{n.current}}").show()
+
+    const result = await api.submit(txBlob)
+
+    $("#submit-output").html(
+      "<div><strong>Tentative result:</strong> " +
+      result.resultCode + " - " +
+      result.resultMessage +
+      "</div>"
+    )
+
+    $("#loader-{{n.current}}").hide()
+  })
+</script>
 
 ### {{n.next()}}. Wait for Validation
 
@@ -265,6 +340,25 @@ api.on('ledger', ledger => {
 ```
 
 
+<div class="interactive-block">
+  <table>
+    <tr>
+      <th>Latest Validated Ledger Version:</th>
+      <td id="current-ledger-version">(Not connected)</td>
+    </tr>
+    <tr>
+      <th>Transaction LastLedgerSequence:</th>
+      <td id="tx-lls"></td>
+    </tr>
+  </table>
+</div>
+<script type="application/javascript">
+api.on('ledger', ledger => {
+  $("#current-ledger-version").text(ledger.ledgerVersion)
+})
+</script>
+
+
 ### {{n.next()}}. Check Transaction Status
 
 To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version. For example, you can use the [getTransaction() method](rippleapi-reference.html#gettransaction) to check the status of a transaction:
@@ -279,6 +373,26 @@ The RippleAPI `getTransaction()` method only returns success if the transaction 
 
 **Caution:** Other APIs may return tentative results from ledger versions that have not yet been validated. For example, if you use the `rippled` APIs' [tx method][], be sure to look for `"validated": true` in the response to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](finality-of-results.html).
 
+<div class="interactive-block">
+  <button id="get-tx-button" class="btn btn-primary connection-required"
+    title="Connection to Test Net required" disabled>Check transaction status</button>
+  <div id="get-tx-output"></div>
+</div>
+<script type="application/javascript">
+  $("#get-tx-button").click( async function() {
+    const txID = $("#signed-tx-hash").text()
+
+    const tx = await api.getTransaction(txID)
+
+    $("#get-tx-output").html(
+      "<div><strong>Transaction result:</strong> " +
+      tx.outcome.result + "</div>" +
+      "<div><strong>Balance changes:</strong> <pre><code>" +
+      JSON.stringify(tx.outcome.balanceChanges, null, 2) +
+      "</pre></code></div>"
+    )
+  })
+</script>
 
 
 
