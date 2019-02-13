@@ -4,18 +4,35 @@ This tutorial walks through send a simple XRP Payment using JavaScript, by first
 
 ## Prerequisites
 
-This page provides JavaScript examples that use the ripple-lib (RippleAPI) library. The [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.
+<!-- Interactive example use ripple-lib and its prerequisites -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+<script type="application/javascript" src="assets/js/ripple-lib-1.1.2-min.js"></script>
 
-To send transactions in the XRP Ledger, you first need an address and secret key, and some XRP. You can get an address in the XRP Test Net with a supply of Test Net XRP using the following interface:
+- This page provides JavaScript examples that use the ripple-lib (RippleAPI) library version 1.1.2. The [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.
 
-<div class="interactive-block test-net-inset">
+- To send transactions in the XRP Ledger, you first need an address and secret key, and some XRP. You can get an address in the XRP Test Net with a supply of Test Net XRP using the following interface:
+
+<div class="interactive-block test-net-inset" id="interactive-generate">
+<div class="interactive-block-inner">
+  <div class="breadcrumbs-wrap">
+    <ul class="breadcrumb prereqs">
+      <li class="breadcrumb-item active current bc-generate"><a href="#interactive-generate">Generate</a></li>
+      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
+      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
+      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
+      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
+      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
+      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
+    </ul><!--/.breadcrumb.prereqs-->
+  </div><!--/.breadcrumbs-wrap-->
   <button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
   <div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"> Generating Keys...</div>
   <div id='address'></div>
   <div id='secret'></div>
   <div id='balance'></div>
   <div id="populate-creds-status"></div>
-</div><!--/.test-net-inset-->
+</div>
+</div>
 <script type="application/javascript">
 $(document).ready( () => {
 
@@ -62,6 +79,12 @@ $(document).ready( () => {
 
         $("#populate-creds-status").text("Populated this page's examples with these credentials.")
 
+        // Update all breadcrumbs
+        $(".bc-generate").removeClass("active")
+        $(".bc-generate").addClass("done")
+        $(".bc-connect").removeClass("disabled")
+        $(".bc-connect").addClass("active")
+
       },
       error: function() {
         $("#loader-0").hide();
@@ -77,10 +100,9 @@ $(document).ready( () => {
   })
 
 })
-
 </script>
 
-Ripple operates the XRP Test Net for testing purposes only, and regularly resets the state of the test net along with all balances.
+**Caution:** Ripple operates the XRP Test Net for testing purposes only, and regularly resets the state of the test net along with all balances. As a precaution, Ripple recommends **not** using the same addresses on the Test Net and production.
 
 
 ## Send a Payment on the Test Net
@@ -100,14 +122,25 @@ api.connect()
 
 For this tutorial, you can connect directly from your browser by pressing the following button:
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
-<script type="application/javascript" src="assets/js/ripple-lib-1.1.2-min.js"></script>
-<div class="interactive-block">
-  <button id="connect-button" class="btn btn-primary">Connect to TestNet</button>
-  <div>
-    <strong>Connection status:</strong>
-    <span id="connection-status">Not connected</span>
-    <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
+<div class="interactive-block" id="interactive-connect">
+  <div class="interactive-block-inner">
+    <div class="breadcrumbs-wrap">
+      <ul class="breadcrumb prereqs">
+        <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
+        <li class="breadcrumb-item disabled current bc-connect"><a href="#interactive-connect">Connect</a></li>
+        <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
+        <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
+        <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
+        <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
+        <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
+      </ul><!--/.breadcrumb.prereqs-->
+    </div><!--/.breadcrumbs-wrap-->
+    <button id="connect-button" class="btn btn-primary">Connect to TestNet</button>
+    <div>
+      <strong>Connection status:</strong>
+      <span id="connection-status">Not connected</span>
+      <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
+    </div>
   </div>
 </div>
 <script type="application/javascript">
@@ -115,9 +148,15 @@ api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
 api.on('connected', () => {
   $("#connection-status").text("Connected")
   $("#connect-button").prop("disabled", true)
-  $(".connection-required").prop("disabled", false)
-  $(".connection-required").prop("title", "")
   $("#loader-{{n.current}}").hide()
+
+  // Update all breadcrumbs & active next step
+  $(".bc-connect").removeClass("active")
+  $(".bc-connect").addClass("done")
+  $(".bc-prepare").removeClass("disabled")
+  $(".bc-prepare").addClass("active")
+  $("#interactive-prepare button").prop("disabled", false)
+  $("#interactive-prepare button").prop("title", "")
 })
 api.on('disconnected', (code) => {
   $("#connection-status").text( "Disconnected ("+code+")" )
@@ -157,29 +196,44 @@ Technically, a viable transaction must contain some additional fields, and certa
 
 ```js
 // Continuing after connecting to the API
-async function() {
-const sender = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-const preparedTx = await api.prepareTransaction({
-  "TransactionType": "Payment",
-  "Account": sender,
-  "Amount": api.xrpToDrops("22"), // Same as "Amount": "22000000"
-  "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
-}, {
-  // Expire this transaction if it doesn't execute within ~5 minutes:
-  "maxLedgerVersionOffset": 75
-})
-const maxLedgerVersion = preparedTx.instructions.maxLedgerVersion
-console.log("Prepared transaction instructions:", preparedTx.txJSON)
-console.log("XRP transaction cost:", preparedTx.instructions.fee)
-console.log("Transaction expires after ledger:", maxLedgerVersion)
-}()
+async function doPrepare() {
+  const sender = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+  const preparedTx = await api.prepareTransaction({
+    "TransactionType": "Payment",
+    "Account": sender,
+    "Amount": api.xrpToDrops("22"), // Same as "Amount": "22000000"
+    "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
+  }, {
+    // Expire this transaction if it doesn't execute within ~5 minutes:
+    "maxLedgerVersionOffset": 75
+  })
+  const maxLedgerVersion = preparedTx.instructions.maxLedgerVersion
+  console.log("Prepared transaction instructions:", preparedTx.txJSON)
+  console.log("Transaction cost:", preparedTx.instructions.fee, "XRP")
+  console.log("Transaction expires after ledger:", maxLedgerVersion)
+  return preparedTx.txJSON
+}
+txJSON = doPrepare()
 ```
 
-<div class="interactive-block">
+<div class="interactive-block" id="interactive-prepare">
+<div class="interactive-block-inner">
+  <div class="breadcrumbs-wrap">
+    <ul class="breadcrumb prereqs">
+      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
+      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
+      <li class="breadcrumb-item disabled current bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
+      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
+      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
+      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
+      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
+    </ul><!--/.breadcrumb.prereqs-->
+  </div><!--/.breadcrumbs-wrap-->
   <button id="prepare-button" class="btn btn-primary connection-required"
-    title="Connection to Test Net required" disabled>Prepare
+    title="Connect to Test Net first" disabled>Prepare
     example transaction</button>
   <div id="prepare-output"></div>
+</div>
 </div>
 <script type="application/javascript">
   $("#prepare-button").click( async function() {
@@ -207,6 +261,14 @@ console.log("Transaction expires after ledger:", maxLedgerVersion)
       "<div><strong>Transaction expires after ledger:</strong> " +
       maxLedgerVersion + "</div>"
     )
+
+    // Update all breadcrumbs & active next step
+    $(".bc-prepare").removeClass("active")
+    $(".bc-prepare").addClass("done")
+    $(".bc-sign").removeClass("disabled")
+    $(".bc-sign").addClass("active")
+    $("#interactive-sign button").prop("disabled", false)
+    $("#interactive-sign button").prop("title", "")
   })
 </script>
 
@@ -217,7 +279,7 @@ Use the [sign() method](rippleapi-reference.html#sign) to sign the transaction w
 
 ```js
 // Continuing from the previous step...
-const response = api.sign(preparedTx.txJSON, "s████████████████████████████")
+const response = api.sign(txJSON, "s████████████████████████████")
 const txID = response.id
 console.log("Identifying hash:", txID)
 const txBlob = response.signedTransaction
@@ -226,30 +288,29 @@ console.log("Signed blob:", txBlob)
 
 The result of the signing operation is a transaction object containing a signature. Typically, XRP Ledger APIs expect a signed transaction to be the hexadecimal representation of the transaction's canonical [binary format](serialization.html), called a "blob".
 
-For a Payment such as this one, a signed transaction blob looks like this (with line breaks added here for readability):
+The signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
 
-```text
-1200006140000000001E8480732102CD9D02581F13380BB1876313C1C2AA83267CD73
-45802BFC9BA9311774B9B18A574473045022100DBCB5FE6CEC0CE81B077A11710CB40
-E6A4F9939A45C3B4FBCFFC73C145E14CEC022044857DBE49B50DA14D7369D9BF44202
-07ACB369571EBD905CE8FA37C4154820281148541B0FE2928E372CCAD5A1CC6F47FE8
-5C15DD0B83148008F9193579C7D32FAF4AD1A9BFFDB236F148E3
-```
-
-The signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction. The following is the identifying hash of the transaction from the same example:
-
-```text
-D403EC6E03A68A4B7624508BAA271143A65D3AAA5D470BECD3A38EC54CEAF85E
-```
-
-<div class="interactive-block">
+<div class="interactive-block" id="interactive-sign">
+<div class="interactive-block-inner">
+  <div class="breadcrumbs-wrap">
+    <ul class="breadcrumb prereqs">
+      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
+      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
+      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
+      <li class="breadcrumb-item disabled current bc-sign"><a href="#interactive-sign">Sign</a></li>
+      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
+      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
+      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
+    </ul><!--/.breadcrumb.prereqs-->
+  </div><!--/.breadcrumbs-wrap-->
   <button id="sign-button" class="btn btn-primary connection-required"
-    title="Connection to Test Net required" disabled>Sign
+    title="Complete all previous steps first" disabled>Sign
     example transaction</button>
   <div id="sign-output"></div>
 </div>
+</div>
 <script type="application/javascript">
-  $("#sign-button").click( async function() {
+  $("#sign-button").click( function() {
     // Wipe previous output
     $("#sign-output").html("")
 
@@ -261,7 +322,7 @@ D403EC6E03A68A4B7624508BAA271143A65D3AAA5D470BECD3A38EC54CEAF85E
       return
     }
 
-    signResponse = await api.sign(preparedTxJSON, secret)
+    signResponse = api.sign(preparedTxJSON, secret)
 
     $("#sign-output").html(
       "<div><strong>Signed Transaction blob:</strong> <code id='signed-tx-blob' style='overflow-wrap: anywhere; word-wrap: anywhere'>" +
@@ -269,23 +330,42 @@ D403EC6E03A68A4B7624508BAA271143A65D3AAA5D470BECD3A38EC54CEAF85E
       "<div><strong>Identifying hash:</strong> <span id='signed-tx-hash'>" +
       signResponse.id + "</span></div>"
     )
+
+    // Update all breadcrumbs & activate next step
+    $(".bc-sign").removeClass("active")
+    $(".bc-sign").addClass("done")
+    $(".bc-submit").removeClass("disabled")
+    $(".bc-submit").addClass("active")
+    $("#interactive-submit button").prop("disabled", false)
   })
 </script>
 
 
 ### {{n.next()}}. Submit the Signed Blob
 
-Use the [submit() method](rippleapi-reference.html#submit) to submit a transaction to the network.
+Use the [submit() method](rippleapi-reference.html#submit) to submit a transaction to the network. It's also a good idea to use the [getLedgerVersion() method](rippleapi-reference.html#getledgerversion) to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it.
+
+Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)
 
 ```js
-// txBlob from the previous example
-api.submit(txBlob).then(result => {
+// use txBlob from the previous example
+async function doSubmit(txBlob) {
+  const latestLedgerVersion = await api.getLedgerVersion()
+
+  const result = await api.submit(txBlob)
+
   console.log("Tentative result code:", result.resultCode)
   console.log("Tentative result message:", result.resultMessage)
-})
+
+  // Return the earliest ledger index this transaction could appear in
+  // as a result of this submission, which is the first one after the
+  // validated ledger at time of submission.
+  return latestLedgerVersion + 1
+}
+const earliestLedgerVersion = doSubmit(txBlob)
 ```
 
-This method returns the **tentative** result of trying to apply the transaction locally. (***TODO: maybe the RippleAPI version actually waits for a validated result???***) This result _can_ change when the transaction is included in a validated ledger: transactions that succeed initially might ultimately fail, and transactions that fail initially might ultimately succeed. Still, the tentative result often matches the final result, so it's OK to get excited if you see `tesSUCCESS` here. 😁
+This method returns the **tentative** result of trying to apply the transaction locally. This result _can_ change when the transaction is included in a validated ledger: transactions that succeed initially might ultimately fail, and transactions that fail initially might ultimately succeed. Still, the tentative result often matches the final result, so it's OK to get excited if you see `tesSUCCESS` here. 😁
 
 If you see any other result, you should check the following:
 
@@ -297,30 +377,56 @@ If you see any other result, you should check the following:
 See the full list of [transaction results](transaction-results.html) for more possibilities.
 
 
-***TODO: this interactive block seems to take longer than it should...***
-
-<div class="interactive-block">
+<div class="interactive-block" id="interactive-submit">
+<div class="interactive-block-inner">
+  <div class="breadcrumbs-wrap">
+    <ul class="breadcrumb prereqs">
+      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
+      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
+      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
+      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
+      <li class="breadcrumb-item disabled current bc-submit"><a href="#interactive-submit">Submit</a></li>
+      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
+      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
+    </ul><!--/.breadcrumb.prereqs-->
+  </div><!--/.breadcrumbs-wrap-->
   <button id="submit-button" class="btn btn-primary connection-required"
     title="Connection to Test Net required" disabled>Submit
     example transaction</button>
     <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
     <div id="submit-output"></div>
 </div>
+</div>
 <script type="application/javascript">
-  $("#sign-button").click( async function() {
-    const txBlob = $("#signed-tx-blob").text()
+  $("#submit-button").click( async function() {
+    $("#submit-output").html("") // Wipe previous output
     $("#loader-{{n.current}}").show()
 
-    const result = await api.submit(txBlob)
+    const txBlob = $("#signed-tx-blob").text()
+    const earliestLedgerVersion = await api.getLedgerVersion()
+    $("#earliest-ledger-version").text(earliestLedgerVersion)
 
-    $("#submit-output").html(
-      "<div><strong>Tentative result:</strong> " +
-      result.resultCode + " - " +
-      result.resultMessage +
-      "</div>"
-    )
+    try {
+      const result = await api.submit(txBlob)
+      $("#loader-{{n.current}}").hide()
+      $("#submit-output").html(
+        "<div><strong>Tentative result:</strong> " +
+        result.resultCode + " - " +
+        result.resultMessage +
+        "</div>"
+      )
 
-    $("#loader-{{n.current}}").hide()
+      // Update all breadcrumbs & active next step
+      $(".bc-submit").removeClass("active")
+      $(".bc-submit").addClass("done")
+      $(".bc-wait").removeClass("disabled")
+      $(".bc-wait").addClass("active")
+    }
+    catch(error) {
+      $("#loader-{{n.current}}").hide()
+      $("#submit-output").text("Error: "+error)
+    }
+
   })
 </script>
 
@@ -339,22 +445,47 @@ api.on('ledger', ledger => {
 })
 ```
 
-
-<div class="interactive-block">
+<div class="interactive-block" id="interactive-wait">
+<div class="interactive-block-inner">
+  <div class="breadcrumbs-wrap">
+    <ul class="breadcrumb prereqs">
+      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
+      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
+      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
+      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
+      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
+      <li class="breadcrumb-item disabled current bc-wait"><a href="#interactive-wait">Wait</a></li>
+      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
+    </ul><!--/.breadcrumb.prereqs-->
+  </div><!--/.breadcrumbs-wrap-->
   <table>
     <tr>
       <th>Latest Validated Ledger Version:</th>
       <td id="current-ledger-version">(Not connected)</td>
     </tr>
+      <tr>
+        <th>Ledger Version at Time of Submission:</th>
+        <td id="earliest-ledger-version">(Not submitted)</td>
+      </tr>
     <tr>
       <th>Transaction LastLedgerSequence:</th>
       <td id="tx-lls"></td>
     </tr>
   </table>
 </div>
+</div>
 <script type="application/javascript">
 api.on('ledger', ledger => {
   $("#current-ledger-version").text(ledger.ledgerVersion)
+
+  if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
+    // Advance to "Check" as soon as we see a ledger close
+    $(".breadcrumb-item.bc-wait").removeClass("active")
+    $(".breadcrumb-item.bc-wait").addClass("done")
+    $(".breadcrumb-item.bc-check").removeClass("disabled")
+    $(".breadcrumb-item.bc-check").addClass("active")
+    $("#get-tx-button").prop("disabled", false)
+  }
 })
 </script>
 
@@ -364,7 +495,10 @@ api.on('ledger', ledger => {
 To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version. For example, you can use the [getTransaction() method](rippleapi-reference.html#gettransaction) to check the status of a transaction:
 
 ```js
-tx = await api.getTransaction(txID)
+// Continues from previous examples.
+// earliestLedgerVersion was noted when the transaction was submitted.
+// txID was noted when the transaction was signed.
+tx = await api.getTransaction(txID, {minLedgerVersion: earliestLedgerVersion})
 console.log("Transaction result:", tx.outcome.result)
 console.log("Balance changes:", JSON.stringify(tx.outcome.balanceChanges))
 ```
@@ -373,16 +507,33 @@ The RippleAPI `getTransaction()` method only returns success if the transaction 
 
 **Caution:** Other APIs may return tentative results from ledger versions that have not yet been validated. For example, if you use the `rippled` APIs' [tx method][], be sure to look for `"validated": true` in the response to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](finality-of-results.html).
 
-<div class="interactive-block">
+<div class="interactive-block" id="interactive-check">
+<div class="interactive-block-inner">
+  <div class="breadcrumbs-wrap">
+    <ul class="breadcrumb prereqs">
+      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
+      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
+      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
+      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
+      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
+      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
+      <li class="breadcrumb-item disabled current bc-check"><a href="#interactive-check">Check</a></li>
+    </ul><!--/.breadcrumb.prereqs-->
+  </div><!--/.breadcrumbs-wrap-->
   <button id="get-tx-button" class="btn btn-primary connection-required"
     title="Connection to Test Net required" disabled>Check transaction status</button>
   <div id="get-tx-output"></div>
 </div>
+</div>
 <script type="application/javascript">
   $("#get-tx-button").click( async function() {
-    const txID = $("#signed-tx-hash").text()
+    // Wipe previous output
+    $("#get-tx-output").html("")
 
-    const tx = await api.getTransaction(txID)
+    const txID = $("#signed-tx-hash").text()
+    const earliestLedgerVersion = parseInt($("#earliest-ledger-version").text(), 10)
+
+    const tx = await api.getTransaction(txID, {minLedgerVersion: earliestLedgerVersion})
 
     $("#get-tx-output").html(
       "<div><strong>Transaction result:</strong> " +
