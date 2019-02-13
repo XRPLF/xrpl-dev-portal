@@ -545,7 +545,46 @@ The RippleAPI `getTransaction()` method only returns success if the transaction 
   })
 </script>
 
+## Differences for Production
 
+To send an XRP payment on the production XRP Ledger, the steps you take are largely the same. However, there are some key differences in the necessary setup:
+
+- [Getting real XRP isn't free.](#getting-a-real-xrp-account)
+- [You must connect to a server that's synced with the production XRP Ledger network.](#connecting-to-the-production-xrp-ledger)
+
+### Getting a Real XRP Account
+
+This tutorial uses a button to get an address that's already funded with Test Net XRP, which only works because Test Net XRP is not worth anything. For actual XRP, you need to get XRP from someone who already has some. (For example, you might buy it on an exchange.) You can generate an address and secret that'll work on either production or the test net using RippleAPI's [generateAddress() method](rippleapi-reference.html#generateaddress):
+
+```js
+const generated = api.generateAddress()
+console.log(generated.address) // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
+console.log(generated.secret) // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
+```
+
+**Warning:** You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the test net and for production, because transactions that you created for use on one network could potentially also be viable on the other network, depending on the parameters you provided.
+
+Generating an address and secret doesn't get you XRP directly; it's just choosing a random number. You must also receive XRP at that address to [fund the account](accounts.html#creating-accounts). A common way to acquire XRP is to buy it from an exchange, then withdraw it to your own address. For more information, see Ripple's [XRP Buying Guide](https://ripple.com/xrp/buy-xrp/).
+
+### Connecting to the Production XRP Ledger
+
+When you instantiate the `RippleAPI` object, you must specify a server that's synced with the appropriate XRP Ledger. For many cases, you can use Ripple's public servers, such as in the following snippet:
+
+```js
+ripple = require('ripple-lib')
+api = new ripple.RippleAPI({server: 'wss://s1.ripple.com:51233'})
+api.connect()
+```
+
+If you [install `rippled`](install-rippled.html) yourself, it connects to the production network by default. (You can also [configure it to connect to the Test Net](connect-your-rippled-to-the-xrp-test-net.html) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect RippleAPI to it locally, which has [various benefits](rippled-server-modes.html#reasons-to-run-a-stock-server). The following example shows how to connect RippleAPI to a server running the default configuration:
+
+```js
+ripple = require('ripple-lib')
+api = new ripple.RippleAPI({server: 'ws://localhost:6006'})
+api.connect()
+```
+
+**Tip:** The local connection uses the Websocket protocol (`ws`) unencrypted rather than the TLS-encrypted version (`wss`). This is secure only because the communications never leave the same machine, and is easier to set up because it does not require a TLS certificate. For connections on an outside network, always use `wss`.
 
 
 <!--{# common link defs #}-->
