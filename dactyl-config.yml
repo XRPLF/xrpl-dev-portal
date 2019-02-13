@@ -2817,6 +2817,7 @@ pages:
             - xrp-ledger-overview.html
             - payment-channels.html
             - use-payment-channels.html
+            - list-xrp-in-your-exchange.html
         targets:
             - local
 
