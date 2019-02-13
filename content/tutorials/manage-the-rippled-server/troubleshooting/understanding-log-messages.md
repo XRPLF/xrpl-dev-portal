@@ -155,6 +155,22 @@ s2.ripple.com 51235
 ```
 
 
+## Potential Censorship
+
+Log messages such as the following are issued when the XRP Ledger detects potential transaction censorship. For more information about these log messages and the transaction censorship detector, see [Transaction Censorship Detection](transaction-censorship-detection.html).
+
+**Warning Message**
+
+```text
+LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851545.
+```
+
+**Error Message**
+
+```text
+LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
+```
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

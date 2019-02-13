@@ -16,7 +16,11 @@ This tutorial demonstrates how to enable multi-signing for an address.
 
 ## 1. Prepare a funded address
 
-You need an XRP Ledger address that can send transactions, and has enough XRP available. Multi-signing requires more than the usual amount of XRP for the [account reserve](reserves.html) and [transaction cost](transaction-cost.html), increasing with the number of signers and signatures you use.
+You need an XRP Ledger address that can send transactions, and has enough XRP available.
+
+Without the [MultiSignReserve Amendment](known-amendments.html#multisignreserve), multi-signing requires more than the usual amount of XRP for the [account reserve](reserves.html) and [transaction cost](transaction-cost.html), increasing with the number of signers and signatures you use.
+
+With the [MultiSignReserve Amendment](known-amendments.html#multisignreserve) enabled, multi-signing requires 5 XRP for the account reserve, regardless of the number of signers and signatures you use. The [transaction cost](transaction-cost.html) of a multi-signed transaction is unaffected by this amendment and still increases with the number of signers and signatures you use.
 
 If you started `rippled` in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode) with a new genesis ledger, you must:
 
@@ -129,7 +133,7 @@ In this example, the SignerList has 3 members, with the weights and quorum set u
 
 Make sure that the [Transaction Result](transaction-results.html) is [**tesSUCCESS**](tes-success.html). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](start-a-new-genesis-ledger-in-stand-alone-mode.html#settings-in-new-genesis-ledgers).
 
-**Note:** The more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](tec-codes.html). See also: [SignerLists and Reserves](signerlist.html#signerlists-and-reserves).
+**Note:** Without the [MultiSignReserve Amendment](known-amendments.html#multisignreserve), the more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](tec-codes.html). With the [MultiSignReserve Amendment](known-amendments.html#multisignreserve) enabled, the XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves) is 5 XRP, regardless of the number of members in the SignerList. See also: [SignerLists and Reserves](signerlist.html#signerlists-and-reserves).
 
 
 ## 4. Close the ledger

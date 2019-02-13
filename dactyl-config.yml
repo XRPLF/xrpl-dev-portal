@@ -593,6 +593,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/the-rippled-server/transaction-censorship-detection.md
+        html: transaction-censorship-detection.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers.
+        targets:
+            - local
+
 # Tutorials --------------------------------------------------------------------
 
     -   name: Tutorials
@@ -1900,6 +1909,17 @@ pages:
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.md
         html: can_delete.html
         blurb: Allow online deletion of ledgers up to a specific ledger.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
+          - local
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.md
+        html: crawl_shards.html
+        blurb: Request information about which history shards peers have.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
