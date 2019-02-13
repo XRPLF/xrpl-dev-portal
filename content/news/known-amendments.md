@@ -9,9 +9,9 @@ The following is a comprehensive list of all known amendments and their status o
 | [OwnerPaysFee][]            | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fix1578][]                 | v1.2.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [fixTakerDryOfferRemoval][] | v1.2.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [MultiSignReserve][]        | v1.2.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [fix1578][]                 | v1.2.0     | [Open for Voting: 2019-02-13](https://ripple.com/dev-blog/introducing-xrp-ledger-rippled-version-1-2-0/ "BADGE_1DB4FF") |
+| [fixTakerDryOfferRemoval][] | v1.2.0     | [Open for Voting: 2019-02-13](https://ripple.com/dev-blog/introducing-xrp-ledger-rippled-version-1-2-0/ "BADGE_1DB4FF") |
+| [MultiSignReserve][]        | v1.2.0     | [Open for Voting: 2019-02-13](https://ripple.com/dev-blog/introducing-xrp-ledger-rippled-version-1-2-0/ "BADGE_1DB4FF") |
 | [Checks][]                  | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [DepositPreauth][]          | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
