@@ -50,18 +50,16 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
-            - html: rippleapi-reference.html
-              date: 2019-02-06
-            - html: known-amendments.html
-              date: 2019-01-28
-            - html: transaction-malleability.html
-              date: 2019-01-14
-            - html: ledger-history.html
-              date: 2019-01-14
-            - html: online-deletion.html
-              date: 2019-01-14
-            - html: configure-online-deletion.html
-              date: 2019-01-14
+            - html: transaction-censorship-detection.html
+              date: 2019-02-13
+            - html: crawl_shards.html
+              date: 2019-02-13
+            - html: offercreate.html
+              date: 2019-02-13
+            - html: server_info.html
+              date: 2019-02-13
+            - html: signerlist.html
+              date: 2019-02-13
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
