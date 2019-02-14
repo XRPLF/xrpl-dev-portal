@@ -1,6 +1,6 @@
 # Send XRP
 
-This tutorial walks through send a simple XRP Payment using JavaScript, by first stepping through the process using the XRP Test Net, then comparing that to the additional requirements for doing the equivalent in production.
+This tutorial explains how to send a simple XRP Payment using RippleAPI for JavaScript. First, we step through the process with the XRP Test Net. Then, we compare that to the additional requirements for doing the equivalent in production.
 
 ## Prerequisites
 
@@ -102,7 +102,7 @@ $(document).ready( () => {
 })
 </script>
 
-**Caution:** Ripple operates the XRP Test Net for testing purposes only, and regularly resets the state of the test net along with all balances. As a precaution, Ripple recommends **not** using the same addresses on the Test Net and production.
+**Caution:** Ripple operates the XRP Test Net for testing purposes only, and regularly resets the state of the test net along with all balances. As a precaution, Ripple recommends **not** using the same addresses on the test net and production.
 
 
 ## Send a Payment on the Test Net
@@ -110,7 +110,7 @@ $(document).ready( () => {
 
 ### {{n.next()}}. Connect to a Test Net Server
 
-To provide the necessary auto-fillable fields, ripple-lib must be connected to a server where it can get the current status of your account and the shared ledger itself. (You _can_ sign transactions while being offline, but you need to provide more fields yourself.) You also, obviously, need to be connected to the network to submit transactions to it.
+To provide the necessary auto-fillable fields, ripple-lib must be connected to a server where it can get the current status of your account and the shared ledger itself. (For more security, you should sign transactions while being offline, but you must provide the auto-fillable fields manually if you do so.) You must be connected to the network to submit transactions to it.
 
 The following code sample instantiates a new RippleAPI instance and connects to one of the public XRP Test Net servers that Ripple runs:
 
@@ -192,7 +192,7 @@ The bare minimum set of instructions you must provide for an XRP Payment is:
 - The address that should receive the XRP (`"Destination"`). This can't be the same as the sending address.
 - The amount of XRP to send (`"Amount"`). Typically, this is specified as an integer in "drops" of XRP, where 1,000,000 drops equals 1 XRP.
 
-Technically, a viable transaction must contain some additional fields, and certain optional fields like `LastLedgerSequence` are strongly recommended. The [`prepareTransaction()` method](rippleapi-reference.html#preparetransaction) automatically fills in good defaults for the remaining fields of a transaction. Here's an example of preparing the above payment:
+Technically, a viable transaction must contain some additional fields, and certain optional fields such as `LastLedgerSequence` are strongly recommended. The [`prepareTransaction()` method](rippleapi-reference.html#preparetransaction) automatically fills in good defaults for the remaining fields of a transaction. Here's an example of preparing the above payment:
 
 ```js
 // Continuing after connecting to the API
@@ -372,7 +372,7 @@ If you see any other result, you should check the following:
 - Are you using the correct addresses for the sender and destination?
 - Did you forget any other fields of the transaction, skip any steps, or make any other typos?
 - Do you have enough Test Net XRP to send the transaction? The amount of XRP you can send is limited by the [reserve requirement](reserves.html), which is currently 20 XRP with an additional 5 XRP for each "object" you own in the ledger. (If you generated a new address with the Test Net Faucet, you don't own any objects.)
-- That you are connected to a server on the test network.
+- Are you connected to a server on the test network?
 
 See the full list of [transaction results](transaction-results.html) for more possibilities.
 
@@ -432,9 +432,9 @@ See the full list of [transaction results](transaction-results.html) for more po
 
 ### {{n.next()}}. Wait for Validation
 
-Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see )
+Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
 
-You can trigger code to run using the `ledger` event type in RippleAPI. For example:
+You use the `ledger` event type in RippleAPI to trigger your code to run whenever there is a new validated ledger version. For example:
 
 ```js
 api.on('ledger', ledger => {
@@ -498,12 +498,17 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 // Continues from previous examples.
 // earliestLedgerVersion was noted when the transaction was submitted.
 // txID was noted when the transaction was signed.
-tx = await api.getTransaction(txID, {minLedgerVersion: earliestLedgerVersion})
-console.log("Transaction result:", tx.outcome.result)
-console.log("Balance changes:", JSON.stringify(tx.outcome.balanceChanges))
+try {
+  tx = await api.getTransaction(txID, {minLedgerVersion: earliestLedgerVersion})
+  console.log("Transaction result:", tx.outcome.result)
+  console.log("Balance changes:", JSON.stringify(tx.outcome.balanceChanges))
+} catch(error) {
+  console.log("Couldn't get transaction outcome:", error)
+}
+
 ```
 
-The RippleAPI `getTransaction()` method only returns success if the transaction is in a validated ledger version.
+The RippleAPI `getTransaction()` method only returns success if the transaction is in a validated ledger version. Otherwise, the `await` expression raises an exception.
 
 **Caution:** Other APIs may return tentative results from ledger versions that have not yet been validated. For example, if you use the `rippled` APIs' [tx method][], be sure to look for `"validated": true` in the response to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](finality-of-results.html).
 
@@ -533,15 +538,23 @@ The RippleAPI `getTransaction()` method only returns success if the transaction 
     const txID = $("#signed-tx-hash").text()
     const earliestLedgerVersion = parseInt($("#earliest-ledger-version").text(), 10)
 
-    const tx = await api.getTransaction(txID, {minLedgerVersion: earliestLedgerVersion})
+    try {
+      const tx = await api.getTransaction(txID, {minLedgerVersion: earliestLedgerVersion})
 
-    $("#get-tx-output").html(
-      "<div><strong>Transaction result:</strong> " +
-      tx.outcome.result + "</div>" +
-      "<div><strong>Balance changes:</strong> <pre><code>" +
-      JSON.stringify(tx.outcome.balanceChanges, null, 2) +
-      "</pre></code></div>"
-    )
+      $("#get-tx-output").html(
+        "<div><strong>Transaction result:</strong> " +
+        tx.outcome.result + "</div>" +
+        "<div><strong>Balance changes:</strong> <pre><code>" +
+        JSON.stringify(tx.outcome.balanceChanges, null, 2) +
+        "</pre></code></div>"
+      )
+
+      $(".bc-check").removeClass("active")
+      $(".bc-check").addClass("done")
+    } catch(error) {
+      $("#get-tx-output").text("Couldn't get transaction outcome:" + error)
+    }
+
   })
 </script>
 
@@ -576,7 +589,7 @@ api = new ripple.RippleAPI({server: 'wss://s1.ripple.com:51233'})
 api.connect()
 ```
 
-If you [install `rippled`](install-rippled.html) yourself, it connects to the production network by default. (You can also [configure it to connect to the Test Net](connect-your-rippled-to-the-xrp-test-net.html) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect RippleAPI to it locally, which has [various benefits](rippled-server-modes.html#reasons-to-run-a-stock-server). The following example shows how to connect RippleAPI to a server running the default configuration:
+If you [install `rippled`](install-rippled.html) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](connect-your-rippled-to-the-xrp-test-net.html) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect RippleAPI to it locally, which has [various benefits](rippled-server-modes.html#reasons-to-run-a-stock-server). The following example shows how to connect RippleAPI to a server running the default configuration:
 
 ```js
 ripple = require('ripple-lib')
@@ -584,7 +597,7 @@ api = new ripple.RippleAPI({server: 'ws://localhost:6006'})
 api.connect()
 ```
 
-**Tip:** The local connection uses the Websocket protocol (`ws`) unencrypted rather than the TLS-encrypted version (`wss`). This is secure only because the communications never leave the same machine, and is easier to set up because it does not require a TLS certificate. For connections on an outside network, always use `wss`.
+**Tip:** The local connection uses the WebSocket protocol (`ws`) unencrypted rather than the TLS-encrypted version (`wss`). This is secure only because the communications never leave the same machine, and is easier to set up because it does not require a TLS certificate. For connections on an outside network, always use `wss`.
 
 
 <!--{# common link defs #}-->
