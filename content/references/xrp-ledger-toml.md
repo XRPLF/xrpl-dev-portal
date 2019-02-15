@@ -108,6 +108,25 @@ desc = "Ripple-owned address from old ripple.txt file"
 #   "Domain" field of the account in the XRP Ledger matches the
 #   domain this file was served from.
 
+[[SERVERS]]
+json_rpc = "https://s1.ripple.com:51234/"
+ws = "wss://s1.ripple.com/"
+peer = "https://s1.ripple.com:51235/"
+desc = "General purpose server cluster"
+
+[[SERVERS]]
+json_rpc = "https://s2.ripple.com:51234/"
+ws = "wss://s2.ripple.com/"
+peer = "https://s2.ripple.com:51235/"
+desc = "Full-history server cluster"
+
+[[SERVERS]]
+json_rpc = "https://s.altnet.rippletest.net:51234"
+ws = "wss://s.altnet.rippletest.net:51233"
+peer = "https://s.altnet.rippletest.net:51235/"
+network = "altnet"
+desc = "Test Net public server cluster"
+
 [[PRINCIPALS]]
 name = "Rome Reginelli" # Primary spec author
 email = "rome@example.com" # Not my real email address
@@ -175,6 +194,20 @@ The principals list (`[[PRINCIPALS]]`) provides information about the people (or
 | `email` | String | The email address where this principal can be contacted. |
 
 You may provide other contact information as desired. (See [Custom Fields](#custom-fields) for information about custom fields.)
+
+
+### Servers
+
+The servers list (`[[SERVERS]]`) provides information about XRP Ledger servers (`rippled`) you run with public access. Each entry describes a different server or server cluster. For _each_ `[[SERVERS]]` entry, you MAY provide any of the following fields:
+
+| Field   | Type   | Description                                              |
+|:--------|:-------|:---------------------------------------------------------|
+| `json_rpc` | String (URL) | The URL where you serve a public JSON-RPC API. This MUST begin with either `http://` or `https://`. HTTPS is RECOMMENDED for public APIs. |
+| `ws` | String (URL) | The URL where you serve a public WebSocket API. This MUST begin with either `ws://` or `wss://`. WSS is RECOMMENDED for public APIs. |
+| `peer` | String (URL) | The URL where your server is listening for the XRP Ledger Peer Protocol. Other XRP Ledger servers can connect at this URL. If your server provides a Peer Crawler response, it is served from this URL with `crawl` appended. |
+| `network`  | String | Which network chain this server follows. If omitted, clients SHOULD assume that the server follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `altnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
+
+For all URLs in this section, the trailing slash is RECOMMENDED. If omitted, client applications SHOULD assume that there is a trailing slash implied.
 
 
 ### Currencies
