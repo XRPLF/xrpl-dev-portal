@@ -24,13 +24,13 @@ Use the XRP Test Net Faucet to get a test account on the XRP Test Network. If yo
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## [Set up your `ripple-lib` development environment](get-started-with-rippleapi-for-javascript.html#environment-setup)
+## [Set up your `ripple-lib` development environment](get-started-with-rippleapi-for-javascript.html#set-up-your-environment)
 
 `ripple-lib` requires Node.js and a few dependencies. We recommend using [Node.js v10 LTS](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/en/) dependency management. Also, be sure to create your own fork of the `ripple-lib` repository on GitHub so you can contribute pull requests to the official repo.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## [Run your first `ripple-lib` script](get-started-with-rippleapi-for-javascript.html#first-rippleapi-script)
+## [Run your first `ripple-lib` script](get-started-with-rippleapi-for-javascript.html#create-your-first-rippleapi-script)
 
 Examine and run the `get-account-info.js` script. Use it to get a feel for how RippleAPI scripts work and to verify that your RippleAPI interface is working.
 
