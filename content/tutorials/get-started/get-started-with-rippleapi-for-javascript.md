@@ -10,9 +10,11 @@ The first step to using RippleAPI is setting up your development environment.
 
 ## Install Node.js and npm
 
-RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. RippleAPI requires Node.js version 0.12, version 4.x, or higher.
+***TODO: Yarn instead of npm for dependency management. Node.js v10 LTS is recommended.***
 
-This step depends on your operating system. We recommend [the official instructions for installing Node.js using a package manager](https://nodejs.org/en/download/package-manager/) for your operating system. If the packages for Node.js and `npm` (Node Package Manager) are separate, install both. (This applies to Arch Linux, CentOS, Fedora, and RHEL.)
+RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. RippleAPI requires Node.js version 0.12, version 4.x, or higher. Ripple recommends using Node.js v10 LTS. ***TODO: do we want to list both the requirements and the recommendation, or just the recommendation?***
+
+This step depends on your operating system. We recommend [the official instructions for installing Node.js using a package manager](https://nodejs.org/en/download/package-manager/) for your operating system.
 
 After you have installed Node.js, you can check the version of the `node` binary from a command line:
 
@@ -26,7 +28,12 @@ On some platforms, the binary is named `nodejs` instead:
 nodejs --version
 ```
 
+## Use Yarn to install RippleAPI and dependencies
+
+
 ## Use NPM to install RippleAPI and dependencies
+
+***TODO: use Yarn instead. Babel and the es2015 presets are no longer necessary.***
 
 RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). To use the new features of ECMAScript 6, RippleAPI depends on [Babel-Node](https://babeljs.io) and its ES2015 presets. You can use `npm` to install RippleAPI and these dependencies together.
 
@@ -215,6 +222,14 @@ RippleAPI can also be used in a web browser if you compile a browser-compatible 
 ## Build Instructions
 
 To use RippleAPI in a browser, you need to build a browser-compatible version. The following process compiles RippleAPI into a single JavaScript file you can include in a webpage.
+
+***TODO: Another missing note in the quick start guide: for the browser setup, you have to include the lodash library first. For example, here's how I do it in the Send XRP tutorial:
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+<script type="application/javascript" src="assets/js/ripple-lib-1.1.2-min.js"></script>
+(This loads lodash v4.17.11 from CDNJS on Cloudflare and then loads ripple-lib v1.1.2, but you could also download and load a variant of lodash locally.)
+
+I'm not sure what version(s) of lodash are currently supported; check with Elliot on that.***
 
 #### 1. Download a copy of the RippleAPI git repository.
 
