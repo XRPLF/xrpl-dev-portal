@@ -32,6 +32,7 @@ default_filters:
     - badges
     - link_replacement
     - external_links
+    - status_badges
 
 callout_class: "devportal-callout"
 

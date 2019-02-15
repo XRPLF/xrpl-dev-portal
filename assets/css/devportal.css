@@ -1002,6 +1002,10 @@ a.current {
   color: #0F72E5;
 }
 
+.status.enabled {
+  color: #5cb85c;
+}
+
 /* Responsive design for different viewscreens ------------------------------ */
 
 @media (max-width: 991px) {
