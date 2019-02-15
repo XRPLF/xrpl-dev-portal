@@ -24,7 +24,7 @@ For development purposes Ripple recommends running `rippled` as your own user, n
 
         $ brew install git cmake pkg-config protobuf openssl ninja
 
-0. Install Boost 1.67.0. `rippled` 1.2.x is compatible with Boost 1.67. <!--#{ no boost@1.67 formula, so must manually compile and install. will eventually upgrade to boost 1.68, but needs testing first }# -->
+0. Install Boost 1.67.0. `rippled` 1.2.0 is compatible with Boost 1.67. <!--#{ no boost@1.67 formula, so must manually compile and install. will eventually upgrade to boost 1.68, but needs testing first }# -->
 
       1. Download [Boost 1.67.0](https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.bz2).
 
