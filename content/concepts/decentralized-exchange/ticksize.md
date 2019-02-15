@@ -1,6 +1,6 @@
 # Tick Size
 
-_Requires the [TickSize amendment](known-amendments.html#ticksize)._
+_((ENABLED_ICON) Requires the [TickSize amendment](known-amendments.html#ticksize).)_
 
 When an Offer is placed into an order book, its exchange rate is truncated based on the `TickSize` values set by the issuers of the currencies involved in the Offer. When a trader offers to exchange XRP and an issued currency, the `TickSize` from the issuer of the currency applies. When a trader offers to exchange two issued currencies, the offer uses the smaller `TickSize` value (that is, the one with fewer significant digits). If neither currency has a `TickSize` set, the default behavior applies.
 
