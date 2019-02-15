@@ -8,6 +8,7 @@ There are several configurations with varying levels of security that may be acc
 
 - [Run `rippled` locally](#run-rippled-locally), or [in the same LAN](#run-rippled-on-the-same-lan).
 - [Use a client library](#use-a-client-library-with-local-signing) that can do local signing.
+- [Use a dedicated signing device](#use-a-dedicated-signing-device) that supports XRP Ledger signatures.
 - [Use a secure VPN to connect to a remote `rippled` machine](#use-a-secure-vpn-with-a-remote-rippled-server) you trust.
 
 <!-- Source for all diagrams in this article: https://docs.google.com/presentation/d/1BfGyWgC0njoPiKUZz3gXHMVSUINE3Q-_lHqY_D0TGwg/ -->
@@ -50,55 +51,11 @@ In this configuration, you run `rippled` on the machine that generates the trans
 
 In this configuration, you run a `rippled` server on a dedicated machine in the same private local area network (LAN) as the machine that generates the transactions to be signed. This configuration lets you assemble transaction instructions on one or more machines with very modest system specs, while using a single dedicated machine for running `rippled`. This may appeal to you if you run your own datacenter or server room.
 
+To use this configuration, set the `rippled` server to accept `wss` and `https` connections within your LAN. You can use a self-signed certificate if you use [certificate pinning](https://en.wikipedia.org/wiki/Transport_Layer_Security#Certificate_pinning), or you can use a certificate signed by an in-house or well-known Certificate Authority.
+
+<!--{# TODO: link api-over-lan.html with the detailed instructions when those are ready #}-->
+
 As always, follow industry-standard practices for securing your machines, such as using a firewall, anti-virus, appropriate user permissions, and so on.
-
-**Warning:** This configuration comes with the additional downside that anyone on the LAN can sniff traffic between your machines, potentially gaining access to your secret keys. Do not use this configuration on a network that may have strangers on it. For example, on the LAN at a colocation facility or cloud host, other customers may be able to get access to the traffic between your machines. If you employ several developers sending test transactions, you could run one `rippled` machine for your whole office, while the developers use cheaper hardware, but any user on your office network could potentially use a packet sniffer to get access to developers' secret keys.
-
-To use this configuration:
-
-1. [Install `rippled`](install-rippled.html) on the chosen machine.
-
-    Be sure that this machine meets the minimum [system requirements for `rippled`](system-requirements.html).
-
-2. Configure the `rippled` machine to have a static IP address in your private LAN.
-
-    Consult your network administrator for instructions for setting up a static IP in your LAN. If you do not have a static IP, you must change your config and restart `rippled` every time the machine's IP changes.
-
-    With IPv4, private LAN addresses commonly start with `10.`, `192.168.`, or `172.(16 to 31).`. With IPv6, private LAN addresses typically start with `fc` or `fd`.
-
-3. Configure the `rippled` machine to accept connections from your local private network.
-
-    In the `rippled`'s config file, modify the `[port_rpc_admin_local]` and `[port_ws_admin_local]` stanzas to use your server's private-LAN address:
-
-        [port_rpc_admin_local]
-      	port = 5005
-        # Change the IP port to match the server's static IP
-      	ip = 10.1.10.13
-        # Only the client with the following IP is treated as admin
-      	admin = 10.1.10.2
-      	protocol = http
-
-        [port_ws_admin_local]
-      	port = 6006
-        # Change the IP port to match the server's static IP
-      	ip = 10.1.10.13
-        # Only the client with the following IP is treated as admin
-      	admin = 10.1.10.2
-      	protocol = ws
-
-4. If your `rippled` machine runs a software firewall, configure the firewall to accept connections on your local private network at the JSON-RPC and Websocket ports you configured in the previous step. (Ports `5005` and `6006` in the previous example.)
-
-    The exact configuration depends on your firewall software.
-
-    If you use Network Address Translation (NAT), **do not** configure your router or hardware firewall to forward these ports from the outside.
-
-5. On the machine(s) that will submit transactions, connect to your server using your `rippled` server's private IP address and the configured ports. Use the [sign method][] (for single signatures) or [sign_for method][] (for multi-signatures).
-
-    The example configuration from the previous steps uses port `5005` for JSON-RPC connections and port `6006` for Websocket connections.
-
-6. Keep the `rippled` server running, updated, and in sync with the network while you're using it.
-
-    **Note:** You _can_ turn off your `rippled` server when you're not sending transactions, but it can take up to 15 minutes to sync with the network when you start it up again.
 
 
 ## Use a Client Library with Local Signing
@@ -124,6 +81,18 @@ The following code sample shows how to sign transaction instructions locally wit
 ```js
 {% include '_code-samples/secure-signing/js/signPayment.js' %}
 ```
+
+For greater security, you can load your secret keys from a management tool such as [Vault](https://www.vaultproject.io/).
+
+
+## Use a Dedicated Signing Device
+
+[![Diagram of using dedicated signing hardware](img/secure-signing-dedicated-hardware.png)](img/secure-signing-dedicated-hardware.png)
+
+Some companies sell dedicated signing devices, such as the [Ledger Nano S](https://www.ledger.com/products/ledger-nano-s), which are capable of signing XRP Ledger transactions using a secret key that never leaves the device. Some devices may not support all types of transactions.
+
+Setting up this configuration depends on the specific device. You may need to run a "manager" application on your machine to interact with the signing device. See the manufacturer's instructions for how to set up and use such a device.
+
 
 ## Use a Secure VPN with a Remote rippled Server
 
