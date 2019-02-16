@@ -55,10 +55,10 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal {% if currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}{% block bodyclasses %}{% endblock %}">
+<body class="xrp-ledger-dev-portal {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}{% block bodyclasses %}{% endblock %}">
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
-    <a href="{% if target.no_cover %}/{% else %}index.html{% endif %}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <a href="{% if target.no_cover is defined and target.no_cover %}/{% else %}index.html{% endif %}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -67,8 +67,8 @@
         {% set funnels = [] %}
         {% for page in pages %}
           {% if page.funnel is defined and page.funnel not in funnels %}
-            {% set thisfunneltop = pages|selectattr('funnel', 'equalto', page.funnel)|first %}
-            <li class="nav-item{% if currentpage == thisfunneltop %} active{% elif currentpage.funnel == thisfunneltop.name %} active-parent{% endif %}">
+            {% set thisfunneltop = pages|selectattr('funnel', 'defined_and_equalto', page.funnel)|first %}
+            <li class="nav-item{% if currentpage == thisfunneltop %} active{% elif currentpage.funnel is defined and currentpage.funnel == thisfunneltop.name %} active-parent{% endif %}">
               <a class="nav-link" href="{{ thisfunneltop.html }}">{{ thisfunneltop.name }}</a>
             </li>
             {% set _ = funnels.append(page.funnel) %}
@@ -90,20 +90,20 @@
   <div class="container-fluid" role="document" id="main_content_wrapper">
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
-      {% if currentpage.sidebar != "disabled" and currentpage.sidebar != "left_only" %}
+      {% if currentpage.sidebar is undefined or (currentpage.sidebar != "disabled" and currentpage.sidebar != "left_only") %}
       <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
           {% block right_sidebar %}{% endblock %}
       </aside>
       {% endif %}
 
       <!-- main column -->
-      <main class="main {% if currentpage.sidebar == "disabled" %}col-md-12{% else %}col-md-7 col-lg-6{% endif %} order-md-3 p-0 {% block mainclasses %}{% endblock %}" role="main" id="main_content_body">
+      <main class="main {% if currentpage.sidebar is defined and currentpage.sidebar == "disabled" %}col-md-12{% else %}col-md-7 col-lg-6{% endif %} order-md-3 p-0 {% block mainclasses %}{% endblock %}" role="main" id="main_content_body">
           {% block breadcrumbs %}
             {% include 'template-breadcrumbs.html' %}
           {% endblock %}
           {% block main %}{% endblock %}
       </main>
-      {% if currentpage.sidebar != "disabled" %}
+      {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
           {% block left_sidebar %}

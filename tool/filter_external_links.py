@@ -11,9 +11,7 @@
 
 import re
 
-
 def filter_soup(soup, **kwargs):
-    print("currentpage", kwargs["currentpage"])
     """
     Adds an external link marker to external links
     and makes them open in new tabs.

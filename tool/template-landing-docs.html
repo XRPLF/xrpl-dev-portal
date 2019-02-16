@@ -13,7 +13,7 @@
     {% set doc_types = [] %}
     {% for page in pages %}
       {% if page.doc_type is defined and page.doc_type not in doc_types %}
-        {% set doc_type_top = pages|selectattr('doc_type', 'equalto', page.doc_type)|first %}
+        {% set doc_type_top = pages|selectattr('doc_type', 'defined_and_equalto', page.doc_type)|first %}
 
           <div class="card">
             <div class="card-header bg-dark">
@@ -79,7 +79,7 @@
           <div class="curated-links">
             <ol>
               {% for link in target.recently_updated %}
-                {% set linkpage = pages|selectattr("html", "equalto", link.html)|first %}
+                {% set linkpage = pages|selectattr("html", 'defined_and_equalto', link.html)|first %}
                 <li><a href="{{linkpage.html}}">{{linkpage.name}}{% if link.date is defined %} <span class="recently-updated-date">({{link.date}})</span>{% endif %}</a></li>
               {% endfor %}
             </ol>

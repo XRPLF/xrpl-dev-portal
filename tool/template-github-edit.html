@@ -15,7 +15,7 @@
     {% set githuburl = target.github_forkurl + "/edit/"
       + target.github_branch + "/tool/" + currentpage.template %}
   {% endif %}
-  {% if target.is_pr_build and have_edit_link %}
+  {% if target.is_pr_build is defined and target.is_pr_build and have_edit_link %}
     {% set githuburl = githuburl + "?pr=/ripple/ripple-dev-portal/pull/"
       + target.github_pr_id %}
   {% endif %}
