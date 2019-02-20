@@ -599,6 +599,18 @@ api.connect()
 
 **Tip:** The local connection uses the WebSocket protocol (`ws`) unencrypted rather than the TLS-encrypted version (`wss`). This is secure only because the communications never leave the same machine, and is easier to set up because it does not require a TLS certificate. For connections on an outside network, always use `wss`.
 
+## Next Steps
+
+After completing this tutorial, you may want to try the following:
+
+- Build [Reliable transaction submission](reliable-transaction-submission.html) for production systems.
+- Consult the [RippleAPI JavaScript Reference](rippleapi-reference.html) for the full range of XRP Ledger functionality.
+- Customize your [Account Settings](manage-account-settings.html).
+- Learn how [Transaction Metadata](transaction-metadata.html) describes the outcome of a transaction in detail.
+- Explore [Complex Payment Types](complex-payment-types.html) like escrow and payment channels.
+- Read best practices for [XRP Ledger Businesses](xrp-ledger-businesses.html).
+
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

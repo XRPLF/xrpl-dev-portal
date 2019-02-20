@@ -51,6 +51,8 @@ Sending a transaction to the XRP Ledger involves several steps:
 5. The `rippled` servers apply those transactions to the previous ledger in a canonical order and share their results.
 6. If enough [trusted validators](rippled-server-modes.html#reasons-to-run-a-validator) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](transaction-results.html) in that ledger are immutable.
 
+See [Send XRP](send-xrp.html) for an interactive tutorial in sending XRP payments.
+
 
 ### Example Unsigned Transaction
 
@@ -93,7 +95,7 @@ Signing a transaction generates a binary blob that can be submitted to the netwo
 
 ## Example Executed Transaction with Metadata
 
-After a transaction has been submitted, you can check its status using the API, for example using the [tx command](tx.html).
+After a transaction has been submitted, you can check its status using the API, for example using the [tx command](tx.html). This shows the transaction instructions, its outcome, and the [metadata](transaction-metadata.html) of all changes that were made in the process of executing it.
 
 **Caution:** The success of a transaction is not final unless the transaction appears in a **validated** ledger with the result code `tesSUCCESS`. See also: [Finality of Results](finality-of-results.html).
 
