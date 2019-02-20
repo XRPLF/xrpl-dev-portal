@@ -1856,7 +1856,6 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
         html: admin-rippled-methods.html
-        blurb: Admin methods are meant only for trusted personnel in charge of keeping the server operational. Admin methods include commands for managing, monitoring, and debugging the server.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
