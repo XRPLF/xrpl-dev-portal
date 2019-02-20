@@ -653,7 +653,14 @@ pages:
         targets:
             - local
 
-    # TODO: "Send XRP"
+    -   md: tutorials/use-simple-xrp-payments/send-xrp.md
+        html: send-xrp.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        blurb: Test out sending XRP using the XRP Test Net.
+        targets:
+            - local
 
     -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.md
         html: reliable-transaction-submission.html
