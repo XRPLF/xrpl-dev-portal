@@ -38,7 +38,7 @@ The party planner (oracle) must have:
 
 - To be able to keep a secret (the fulfillment) until the time is right.
 
-- A way to communicate the fulfillment publicly or at least to the payee (the band) when the time is right.
+- A way to communicate the fulfillment publicly or at least to the party band when the time is right.
 
 
 
@@ -53,7 +53,7 @@ To create the escrow as a smart contract, the participants must first define the
 
 - Should the escrow expire?
 
-  Absolutely yes. The participants agree that the escrow should expire after 12 noon the day after the party. This gives the band enough time to finish the escrow, after the party planner verifies that they fulfilled their end of the contract and publishes the cryptographic fulfillment. After expiration, the locked XRP returns to the party host's account.
+  Absolutely yes. The participants agree that the escrow should expire after 12 noon the day after the party. This gives the party band (receiver) enough time to finish the escrow, after the party planner verifies that they fulfilled their end of the contract and publishes the cryptographic fulfillment. After expiration, the locked XRP returns to the party host's (sender's) account.
 
   If the participants don't allow the escrow to expire and the party planner doesn't release the condition, the XRP stays locked in the escrow forever.
 
@@ -101,7 +101,7 @@ The party host (sender) creates the escrow that provides the smart contract. The
 
 The party host (sender) waits for validation of the ledger that contains the escrow creation transaction and then confirms that the escrow was created.
 
-The party host then provides the escrow transaction's `hash` value to the party band (receiver). The party band can use the `hash` value to look up the escrow transaction on the XRP Ledger to ensure that it was created according to the smart contract terms they agreed to. As part of this step, the party band should probably also confirm that the condition matches the one the party planner (oracle) provided. If the condition's wrong, the fulfillment the party planner provides won't let the party band finish the escrow and get paid.
+The party host then provides the escrow transaction's `hash` value to the party band (receiver). The party band can use the `hash` value to look up the escrow transaction on the XRP Ledger to ensure that it was created according to the smart contract terms they agreed to. As part of this step, the party band should also confirm that the condition matches the one the party planner (oracle) provided. If the condition's wrong, the fulfillment the party planner provides won't let the party band finish the escrow and get paid.
 
 
 
@@ -112,9 +112,9 @@ The party band (receiver) shows up and plays their set.
 
 The party planner (oracle) confirms that the party band has fulfilled their contract and publishes the fulfillment publicly, or at least to the party band.
 
-The party band finishes the escrow using the fulfillment value published by the party planner. The party band must finish the escrow before 12 noon or the escrow expires, the party band doesn't get paid, and the XRP returns to the party host's XRP Ledger account.
+The party band finishes the escrow using the fulfillment value published by the party planner. The party band must finish the escrow before 12 noon or the escrow expires, the party band doesn't get paid, and the XRP returns to the party host's (sender's) XRP Ledger account.
 
-Alternatively, if the party band is a no-show, the party planner does not publish the fulfillment. In this case, after 12 noon the next day, any participant can [cancel the escrow](cancel-an-expired-escrow.html) to return the held XRP to the party host's (sender's) account.
+Alternatively, if the party band is a no-show, the party planner does not publish the fulfillment. In this case, after 12 noon the next day, any participant can [cancel the escrow](cancel-an-expired-escrow.html) to return the held XRP to the party host's account.
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
