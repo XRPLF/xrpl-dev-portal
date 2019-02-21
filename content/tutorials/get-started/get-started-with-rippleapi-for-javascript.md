@@ -14,9 +14,9 @@ The first step to using RippleAPI is setting up your development environment.
 
 ## Install Node.js and npm
 
-RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. RippleAPI requires Node.js version 0.12, version 4.x, or higher. Ripple recommends using Node.js v10 LTS. ***TODO: list both the requirements and the recommendation, or just the recommendation?***
+RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. RippleAPI requires Node.js v6 or higher. Ripple recommends using Node.js v10 LTS.
 
-This step depends on your operating system. Ripple recommends using [the official instructions for installing Node.js using a package manager](https://nodejs.org/en/download/package-manager/) for your operating system. If the packages for Node.js and npm (Node Package Manager) are separate, install both. (This applies to Arch Linux, CentOS, Fedora, and RHEL.) ***TODO: I know that the jira ticket for these updates states that NPM is no longer needed for dependency management. I kept this info here b/c when I ran yarn for the browser instructions, I got a few npm warnings (see "Install dependencies using Yarn") -- implying that npm is still being used somewhere and still needs to be installed, even if not being used directly for dependency management? Any thoughts?***
+This step depends on your operating system. Ripple recommends using [the official instructions for installing Node.js using a package manager](https://nodejs.org/en/download/package-manager/) for your operating system. If the packages for Node.js and npm (Node Package Manager) are separate, install both. (This applies to Arch Linux, CentOS, Fedora, and RHEL.)
 
 After you have installed Node.js, you can check the version of the `node` binary from a command line:
 
@@ -34,7 +34,7 @@ nodejs --version
 
 ## Install Yarn
 
-RippleAPI uses Yarn to manage dependencies. Ripple recommends using Yarn v1.13.0. ***TODO: correct version? This is stated as a recommendation. Is it a requirement?***
+RippleAPI uses Yarn to manage dependencies. Ripple recommends using Yarn v1.13.0.
 
 This step depends on your operating system. Ripple recommends using [the official instructions for installing Yarn using a package manager](https://yarnpkg.com/en/docs/install#mac-stable) for your operating system.
 
@@ -90,7 +90,7 @@ yarn
 
 This installs RippleAPI and the dependencies into the local folder `node_modules/`.
 
-The install process may end with a few warnings. You may safely ignore the following warnings: ***TODO: correct? any others to add?***
+The install process may end with a few warnings. You may safely ignore the following warnings:
 
 ```
 warning eslint > file-entry-cache > flat-cache > circular-json@0.3.3: CircularJSON is in maintenance only, flatted is its successor.
@@ -183,7 +183,7 @@ When you get a Promise back from some expression (like `api.connect()`), you cal
 
 When a Promise finishes with its asynchronous operations, the Promise runs the callback function you passed it. The return value from the `then` method is another Promise object, so you can "chain" that into another `then` method, or the Promise's `catch` method, which also takes a callback. The callback you pass to `catch` gets called if something goes wrong.
 
-Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions). Arrow functions are a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax `()=> {...}` is mostly equivalent to `function() {...}`. If you want an anonymous function with one parameter, you can use a syntax like `info => {...}` instead, which is almost the same as `function(info) {...}` syntax.
+The example uses [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax `()=> {...}` is mostly equivalent to `function() {...}`. If you want an anonymous function with one parameter, you can use a syntax like `info => {...}` instead, which is almost the same as `function(info) {...}` syntax.
 
 
 ### Custom code
@@ -282,16 +282,6 @@ Use these instructions to [install Yarn](#install-yarn).
 yarn
 ```
 
-The install process may end with a few warnings. You may safely ignore the following warnings: ***TODO: necessary to mention? Existing doc surfaced NPM warnings - so thought I'd do the same for yarn?***
-
-```
-npm WARN lifecycle The node binary used for scripts is /var/folders/gx/5cs0kgzs2f3ccd_lp76sbbh00000gn/T/yarn--1550268394417-0.38463834710857947/node but npm is using /usr/local/Cellar/node@10/10.15.1/bin/node itself. Use the `--scripts-prepend-node-path` option to include the path for the node binary npm was executed with.
-
-npm WARN lifecycle The node binary used for scripts is /var/folders/gx/5cs0kgzs2f3ccd_lp76sbbh00000gn/T/yarn--1550268394417-0.38463834710857947/node but npm is using /usr/local/Cellar/node@10/10.15.1/bin/node itself. Use the `--scripts-prepend-node-path` option to include the path for the node binary npm was executed with.
-
-npm WARN lifecycle The node binary used for scripts is /var/folders/gx/5cs0kgzs2f3ccd_lp76sbbh00000gn/T/yarn--1550268394417-0.38463834710857947/node but npm is using /usr/local/Cellar/node@10/10.15.1/bin/node itself. Use the `--scripts-prepend-node-path` option to include the path for the node binary npm was executed with.
-```
-
 
 ### 4. Use Gulp to build a single JavaScript output
 
@@ -336,4 +326,4 @@ To use this example, you must first [build a browser-compatible version of Rippl
 {% include '_code-samples/rippleapi_quickstart/browser-demo.html' %}
 ```
 
-This demo HTML loads Lodash v4.17.11 from CDNJS on Cloudflare and then loads ripple-lib v1.1.2, but you could also download and load a variant of Lodash locally. ***TODO: What version(s) of Lodash are currently supported, recommended?***
+This demo HTML loads Lodash v4.17.11 from CDNJS on Cloudflare and then loads ripple-lib v1.1.2, but you could also download and load a variant of Lodash locally. <!--#{ no specific recommended or required version at this time. Update this once we have some guidance to provide here. }#-->
