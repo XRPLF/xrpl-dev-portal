@@ -4,15 +4,19 @@ This tutorial guides you through the basics of building an XRP Ledger-connected 
 
 The scripts and configuration files used in this guide are [available in the Ripple Dev Portal GitHub Repository](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart).
 
+
+<!--#{ keep multiple H1s so that all steps are surfaced in sidebar. Do not change H1 titles unless they provide a clear improvement bc they are linked to on external sites. }# -->
 # Environment Setup
 
 The first step to using RippleAPI is setting up your development environment.
 
+
+
 ## Install Node.js and npm
 
-RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. RippleAPI requires Node.js version 0.12, version 4.x, or higher.
+RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. RippleAPI requires Node.js v6 or higher. Ripple recommends using Node.js v10 LTS.
 
-This step depends on your operating system. We recommend [the official instructions for installing Node.js using a package manager](https://nodejs.org/en/download/package-manager/) for your operating system. If the packages for Node.js and `npm` (Node Package Manager) are separate, install both. (This applies to Arch Linux, CentOS, Fedora, and RHEL.)
+This step depends on your operating system. Ripple recommends using [the official instructions for installing Node.js using a package manager](https://nodejs.org/en/download/package-manager/) for your operating system. If the packages for Node.js and npm (Node Package Manager) are separate, install both. (This applies to Arch Linux, CentOS, Fedora, and RHEL.)
 
 After you have installed Node.js, you can check the version of the `node` binary from a command line:
 
@@ -26,11 +30,28 @@ On some platforms, the binary is named `nodejs` instead:
 nodejs --version
 ```
 
-## Use NPM to install RippleAPI and dependencies
 
-RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). To use the new features of ECMAScript 6, RippleAPI depends on [Babel-Node](https://babeljs.io) and its ES2015 presets. You can use `npm` to install RippleAPI and these dependencies together.
 
-#### 1. Create a new directory for your project
+## Install Yarn
+
+RippleAPI uses Yarn to manage dependencies. Ripple recommends using Yarn v1.13.0.
+
+This step depends on your operating system. Ripple recommends using [the official instructions for installing Yarn using a package manager](https://yarnpkg.com/en/docs/install#mac-stable) for your operating system.
+
+After you have installed Yarn, you can check the version of the `yarn` binary from a command line:
+
+```
+yarn --version
+```
+
+
+
+## Install RippleAPI and Dependencies
+
+Complete these steps to use Yarn to install RippleAPI and dependencies.
+
+
+### 1. Create a new directory for your project
 
 Create a folder called (for example) `my_ripple_experiment`:
 
@@ -46,35 +67,40 @@ git init
 
 Alternatively, you can [create a repo on GitHub](https://help.github.com/articles/create-a-repo/) to version and share your work. After setting it up, [clone the repo](https://help.github.com/articles/cloning-a-repository/) to your local machine and `cd` into that directory.
 
-#### 2. Create a new `package.json` file for your project.
+
+### 2. Create a new `package.json` file for your project
 
 Use the following template, which includes:
 
-* RippleAPI itself (`ripple-lib`)
-* Babel (`babel-cli`)
-* The ECMAScript 6 presets for Babel (`babel-preset-es2015`)
-* (Optional) [ESLint](http://eslint.org/) (`eslint`) for checking code quality.
+- RippleAPI itself (`ripple-lib`)
+- (Optional) [ESLint](http://eslint.org/) (`eslint`) for checking code quality.
 
 ```
 {% include '_code-samples/rippleapi_quickstart/package.json' %}
 ```
 
 
-#### 3. Use NPM to install the dependencies.
+### 3. Use Yarn to install RippleAPI and dependencies
+
+Use Yarn to install RippleAPI and the dependencies defined in the `package.json` file you created for your project.
 
 ```
-npm install
+yarn
 ```
 
-This automatically installs all the dependencies defined in the `package.json` into the local folder `node_modules/`. (We recommend _not_ using `npm -g` to install the dependencies globally.)
+This installs RippleAPI and the dependencies into the local folder `node_modules/`.
 
-The install process may take a while and end with a few warnings. You may safely ignore the following warnings:
+The install process may end with a few warnings. You may safely ignore the following warnings:
 
 ```
+warning eslint > file-entry-cache > flat-cache > circular-json@0.3.3: CircularJSON is in maintenance only, flatted is its successor.
+
 npm WARN optional Skipping failed optional dependency /chokidar/fsevents:
+
 npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.6
-npm WARN ajv@1.4.10 requires a peer of ajv-i18n@0.1.x but none was installed.
 ```
+
+
 
 # First RippleAPI Script
 
@@ -84,12 +110,14 @@ This script, `get-account-info.js`, fetches information about a hard-coded accou
 {% include '_code-samples/rippleapi_quickstart/get-account-info.js' %}
 ```
 
-## Running the script
 
-RippleAPI and the script both use the ECMAScript 6 version of JavaScript. That's why we installed Babel earlier. The easiest way to run ECMAScript 6 is to use the `babel-node` binary, which NPM installs in the `node_modules/.bin/` directory of your project. Thus, running the script looks like this:
+
+## Run the Script
+
+Run your first RippleAPI script using this command:
 
 ```
-./node_modules/.bin/babel-node get-account-info.js
+node get-account-info.js
 ```
 
 Output:
@@ -106,9 +134,12 @@ getAccountInfo done
 done and disconnected.
 ```
 
-## Understanding the script
+
+
+## Understand the Script
 
 In addition to RippleAPI-specific code, this script uses syntax and conventions that are recent developments in JavaScript. Let's divide the sample code into smaller chunks to explain each one.
+
 
 ### Script opening
 
@@ -120,6 +151,7 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 The opening line enables [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode). This is purely optional, but it helps you avoid some common pitfalls of JavaScript.
 
 The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is one of [the modules `ripple-lib` exports](https://github.com/ripple/ripple-lib/blob/develop/src/index.ts).
+
 
 ### Instantiating the API
 
@@ -133,10 +165,11 @@ This section creates a new instance of the RippleAPI class, assigning it to the 
 
 The one argument to the constructor is an options object, which has [a variety of options](rippleapi-reference.html#parameters). The `server` parameter tells it where it should connect to a `rippled` server.
 
-* The example `server` setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.
-* If you don't include the `server` option, RippleAPI runs in [offline mode](rippleapi-reference.html#offline-functionality) instead, which only provides methods that don't need network connectivity.
-* You can specify a [Ripple Test Net](https://ripple.com/build/ripple-test-net/) server instead to connect to the parallel-world Test Network instead of the production XRP Ledger.
-* If you [run your own `rippled`](install-rippled.html), you can instruct it to connect to your local server. For example, you might say `server: 'ws://localhost:5005'` instead.
+- The example `server` setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.
+- If you don't include the `server` option, RippleAPI runs in [offline mode](rippleapi-reference.html#offline-functionality) instead, which only provides methods that don't need network connectivity.
+- You can specify a [Ripple Test Net](https://ripple.com/build/ripple-test-net/) server instead to connect to the parallel-world Test Network instead of the production XRP Ledger.
+- If you [run your own `rippled`](install-rippled.html), you can instruct it to connect to your local server. For example, you might say `server: 'ws://localhost:5005'` instead.
+
 
 ### Connecting and Promises
 
@@ -150,7 +183,8 @@ When you get a Promise back from some expression (like `api.connect()`), you cal
 
 When a Promise finishes with its asynchronous operations, the Promise runs the callback function you passed it. The return value from the `then` method is another Promise object, so you can "chain" that into another `then` method, or the Promise's `catch` method, which also takes a callback. The callback you pass to `catch` gets called if something goes wrong.
 
-Finally, we have more new ECMAScript 6 syntax - an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions). Arrow functions are a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax `()=> {...}` is mostly equivalent to `function() {...}`. If you want an anonymous function with one parameter, you can use a syntax like `info => {...}` instead, which is almost the same as `function(info) {...}` syntax.
+The example uses [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax `()=> {...}` is mostly equivalent to `function() {...}`. If you want an anonymous function with one parameter, you can use a syntax like `info => {...}` instead, which is almost the same as `function(info) {...}` syntax.
+
 
 ### Custom code
 
@@ -178,6 +212,7 @@ Keep in mind that the example code starts in the middle of a callback function (
 
 The `getAccountInfo` API method returns another Promise, so the line `}).then( info => {` defines another anonymous callback function to run when this Promise's asynchronous work is done. Unlike the previous case, this callback function takes one argument, called `info`, which holds the asynchronous return value from the `getAccountInfo` API method. The rest of this callback function outputs that return value to the console.
 
+
 ### Cleanup
 
 ```
@@ -191,6 +226,8 @@ The `getAccountInfo` API method returns another Promise, so the line `}).then( i
 The rest of the sample code is mostly more [boilerplate code](rippleapi-reference.html#boilerplate). The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the XRP Ledger, and has yet another callback which writes to the console when it finishes. If your script waits on [RippleAPI events](rippleapi-reference.html#api-events), do not disconnect until you are done waiting for events.
 
 The `catch` method ends this Promise chain. The callback provided here runs if any of the Promises or their callback functions encounters an error. In this case, we pass the standard `console.error` function, which writes to the console, instead of defining a custom callback. You could define a smarter callback function here to intelligently catch certain error types.
+
+
 
 # Waiting for Validation
 
@@ -208,15 +245,20 @@ If you are the administrator of the `rippled` server, you can [manually request 
 
 See [Reliable Transaction Submission](reliable-transaction-submission.html) for a more thorough explanation.
 
+
+
 # RippleAPI in Web Browsers
 
 RippleAPI can also be used in a web browser if you compile a browser-compatible version and include [lodash](https://www.npmjs.com/package/lodash) as a dependency before the RippleAPI script.
 
-## Build Instructions
+
+
+## Build a Browser-Compatible Version of RippleAPI
 
 To use RippleAPI in a browser, you need to build a browser-compatible version. The following process compiles RippleAPI into a single JavaScript file you can include in a webpage.
 
-#### 1. Download a copy of the RippleAPI git repository.
+
+### 1. Download a copy of the RippleAPI git repository
 
 If you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed, you can clone the repository and check out the **master** branch, which always has the latest official release:
 
@@ -228,31 +270,25 @@ git checkout master
 
 Alternatively, you can download an archive (.zip or .tar.gz) of a specific release from the [RippleAPI releases page](https://github.com/ripple/ripple-lib/releases) and extract it.
 
-#### 2. Install dependencies using NPM
 
-You need to have [NPM (Node.js Package Manager) installed](#install-nodejs-and-npm) first.
+### 2. Install Yarn
 
-Then, from within the `ripple-lib` directory, you can use NPM to install all the necessary dependencies:
+Use these instructions to [install Yarn](#install-yarn).
 
-```
-npm install
-```
 
-(We recommend _not_ using `npm -g` to install dependencies globally.)
-
-This can take a while, and may include some warnings. The following warnings are benign and do not indicate a problem:
+### 3. Install dependencies using Yarn
 
 ```
-npm WARN optional Skipping failed optional dependency /chokidar/fsevents:
-npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.6
+yarn
 ```
 
-#### 3. Use Gulp to build a single JavaScript output
+
+### 4. Use Gulp to build a single JavaScript output
 
 RippleAPI comes with code to use the [gulp](http://gulpjs.com/) package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it. RippleAPI's configuration makes this easy:
 
 ```
-npm run build
+yarn run build
 ```
 
 Output:
@@ -261,29 +297,33 @@ Output:
 > ripple-lib@0.16.5 build /home/username/ripple-lib
 > gulp
 
-[15:22:30] Using gulpfile /home/username/ripple-lib/Gulpfile.js
-[15:22:30] Starting 'build'...
-[15:22:30] Starting 'build-debug'...
-[15:22:42] Finished 'build' after 12 s
-[15:22:42] Starting 'build-min'...
-[15:22:42] Finished 'build-debug' after 12 s
-[15:22:51] Finished 'build-min' after 9.83 s
-[15:22:51] Starting 'default'...
-[15:22:51] Finished 'default' after 4.58 μs
+[14:11:02] Using gulpfile /home/username/ripple-lib/gulpfile.js
+[14:11:02] Starting 'build'...
+[14:11:03] Starting 'build-debug'...
+[14:11:03] Starting 'build-min'...
+[14:11:18] Finished 'build-debug' after 15 s
+[14:11:18] Finished 'build' after 16 s
+[14:11:18] Finished 'build-min' after 15 s
+[14:11:18] Starting 'default'...
+[14:11:18] Finished 'default' after 19 μs
 ```
 
 This may take a while. At the end, the build process creates a new `build/` folder, which contains the files you want.
 
 The file `build/ripple-<VERSION NUMBER>.js` is a straight export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in `-min.js` is the same thing, but with the content [minified](https://en.wikipedia.org/wiki/Minification_%28programming%29) for faster loading.
 
-## Example Browser Usage
+
+
+## Demo RippleAPI in a Browser
 
 The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public `rippled` server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named `ripple`, which contains the `RippleAPI` class.
 
-To use this example, you must first [build RippleAPI](#build-instructions) and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Change the first `<script>` tag in this example to use the correct file name for the version of RippleAPI you built.
+To use this example, you must first [build a browser-compatible version of RippleAPI](#build-a-browser-compatible-version-of-rippleapi) and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Change the second `<script>` tag in this example to use the correct file name for the version of RippleAPI you built.
 
 [**browser-demo.html:**](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/rippleapi_quickstart/browser-demo.html "Source on GitHub")
 
 ```
 {% include '_code-samples/rippleapi_quickstart/browser-demo.html' %}
 ```
+
+This demo HTML loads Lodash v4.17.11 from CDNJS on Cloudflare and then loads ripple-lib v1.1.2, but you could also download and load a variant of Lodash locally. <!--#{ no specific recommended or required version at this time. Update this once we have some guidance to provide here. }#-->
