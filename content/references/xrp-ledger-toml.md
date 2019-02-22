@@ -96,10 +96,10 @@ unl = "https://vl.ripple.com"
 
 [[VALIDATORS]]
 public_key = "nHB57Sey9QgaB8CubTPvMZLkLAzfJzNMWBCCiDRgazWJujRdnz13"
-network = "altnet"
+network = "testnet"
 owner_country = "us"
 server_country = "us"
-unl = "https://vl.altnet.rippletest.net"
+unl = "https://vl.testnet.rippletest.net"
 
 [[ACCOUNTS]]
 address = "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"
@@ -121,10 +121,10 @@ peer = "https://s2.ripple.com:51235/"
 desc = "Full-history server cluster"
 
 [[SERVERS]]
-json_rpc = "https://s.altnet.rippletest.net:51234"
-ws = "wss://s.altnet.rippletest.net:51233"
-peer = "https://s.altnet.rippletest.net:51235/"
-network = "altnet"
+json_rpc = "https://s.testnet.rippletest.net:51234/"
+ws = "wss://s.testnet.rippletest.net:51233/"
+peer = "https://s.testnet.rippletest.net:51235/"
+network = "testnet"
 desc = "Test Net public server cluster"
 
 [[PRINCIPALS]]
@@ -134,7 +134,7 @@ email = "rome@example.com" # Not my real email address
 [[CURRENCIES]]
 code = "LOL"
 issuer = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-network = "altnet"
+network = "testnet"
 display_decimals = 2
 symbol = "😆" # In practical situations, it may be unwise to use emoji
 
@@ -165,7 +165,7 @@ For _each_ `[[VALIDATORS]]` entry, you MAY provide any of the following fields:
 | Field        | Type   | Description                                          |
 |:-------------|:-------|:-----------------------------------------------------|
 | `public_key` | String | The master public key of your primary validator, encoded in the XRP Ledger's base58 format (typically, this starts with `n`). |
-| `network`  | String | Which network chain this validator follows. If omitted, clients SHOULD assume that the validator follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `altnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
+| `network`  | String | Which network chain this validator follows. If omitted, clients SHOULD assume that the validator follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `owner_country` | String | The two-letter ISO-3166-2 country code describing the main legal jurisdiction that you (the validator's owner) are subject to. |
 | `server_country` | String | The two-letter ISO-3166-2 country code describing the physical location where this validating server is. |
 | `unl` | String | An HTTPS URL where one can find the list of other validators this validator trusts. If the validator is configured to use a validator list site for UNL recommendations, this MUST match the server's configuration. For the production XRP Ledger network, use `https://vl.ripple.com` (trailing slash optional). |
@@ -178,7 +178,7 @@ The accounts list (`[[ACCOUNTS]]`) provides information about XRP Ledger account
 | Field     | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
 | `address` | String | The public address of the account, encoded in the XRP Ledger's base58 format (typically, this starts with an `r`). |
-| `network` | String | The network chain where this account is primarily used. If omitted, clients SHOULD assume that the account is claimed on the production XRP Ledger _and_ possibly other network chains. Use `main` for the production XRP Ledger. Use `altnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
+| `network` | String | The network chain where this account is primarily used. If omitted, clients SHOULD assume that the account is claimed on the production XRP Ledger _and_ possibly other network chains. Use `main` for the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `desc`    | String | A human-readable description of this account's purpose or how you use it. |
 
 **Caution:** Anyone could claim ownership of any account by hosting an `xrp-ledger.toml` file, so the presence of an account here SHOULD NOT be considered authoritative unless the [`Domain` field for these accounts in the XRP Ledger](accountset.html#domain) also matches the domain that this `xrp-ledger.toml` file was served from. See [Account Verification](#account-verification) for details.
@@ -205,7 +205,7 @@ The servers list (`[[SERVERS]]`) provides information about XRP Ledger servers (
 | `json_rpc` | String (URL) | The URL where you serve a public JSON-RPC API. This MUST begin with either `http://` or `https://`. HTTPS is RECOMMENDED for public APIs. |
 | `ws` | String (URL) | The URL where you serve a public WebSocket API. This MUST begin with either `ws://` or `wss://`. WSS is RECOMMENDED for public APIs. |
 | `peer` | String (URL) | The URL where your server is listening for the XRP Ledger Peer Protocol. Other XRP Ledger servers can connect at this URL. If your server provides a Peer Crawler response, it is served from this URL with `crawl` appended. |
-| `network`  | String | Which network chain this server follows. If omitted, clients SHOULD assume that the server follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `altnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
+| `network`  | String | Which network chain this server follows. If omitted, clients SHOULD assume that the server follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 
 For all URLs in this section, the trailing slash is RECOMMENDED. If omitted, client applications SHOULD assume that there is a trailing slash implied.
 
@@ -219,7 +219,7 @@ If you issue any assets, tokens, or currencies in the XRP Ledger, you can provid
 | `code` | String | The (case-sensitive) ticker symbol of this currency in the XRP Ledger. This can be a three-digit code, a 40-character hex code, or a custom format (for clients that know how to represent the non-standard code in the XRP Ledger). See the [Currency Code reference](currency-formats.html#currency-codes) for information on the XRP Ledger's currency code formats. |
 | `display_decimals` | Number | The number of decimals that a client application should use to display amounts of this currency. |
 | `issuer` | String | The address of the XRP Ledger account where you issue this currency, encoded in the XRP Ledger's base58 format (typically, this starts with an `r`). You SHOULD also list this address in the `[[ACCOUNTS]]` list. (Reminder: the presence of an address here is not authoritative on its own. See [Account Verification](#account-verification) for details.) |
-| `network` | String | The network chain where you issue this currency. Use `main` to explicitly specify the production XRP Ledger. If omitted, clients SHOULD assume that the currency is issued on the production XRP Ledger. Use `altnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
+| `network` | String | The network chain where you issue this currency. Use `main` to explicitly specify the production XRP Ledger. If omitted, clients SHOULD assume that the currency is issued on the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `symbol` | String | The text symbol, such "$" or "€", that should be used with amounts of this asset or currency, if it has a symbol in the Unicode standard. |
 
 
