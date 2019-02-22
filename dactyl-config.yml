@@ -50,15 +50,15 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: xrp-ledger-toml.html
+              date: 2019-02-22
+            - html: send-xrp.html
+              date: 2019-02-20
             - html: transaction-censorship-detection.html
               date: 2019-02-13
             - html: crawl_shards.html
               date: 2019-02-13
             - html: offercreate.html
-              date: 2019-02-13
-            - html: server_info.html
-              date: 2019-02-13
-            - html: signerlist.html
               date: 2019-02-13
 
     # Data API target for porting changes to the README in the upstream repo
