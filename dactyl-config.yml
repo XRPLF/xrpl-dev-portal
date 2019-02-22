@@ -2718,6 +2718,26 @@ pages:
             - local
             - data-api-only
 
+    -   md: references/xrp-ledger-toml.md
+        html: xrp-ledger-toml.html
+        funnel: Docs
+        doc_type: References
+        category: XRP Ledger TOML File
+        blurb: Provide machine-readable information about yourself to other XRP Ledger users.
+        curated_anchors:
+            - name: Serving the File
+              anchor: "#serving-the-file"
+            - name: Contents
+              anchor: "#contents"
+            - name: CORS Setup
+              anchor: "#cors-setup"
+            - name: Domain Verification
+              anchor: "#domain-verification"
+            - name: Account Verification
+              anchor: "#account-verification"
+        targets:
+            - local
+
 
 # --------------- end "Docs" section -------------------------------------------
 # Use Cases --------------------------------------------------------------------
