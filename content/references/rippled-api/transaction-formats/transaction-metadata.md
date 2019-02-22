@@ -10,7 +10,7 @@ Some fields that may appear in transaction metadata include:
 |:--------------------------------------|:--------------------|:---------------|
 | `AffectedNodes`                       | Array               | List of [ledger objects](ledger-object-types.html) that were created, deleted, or modified by this transaction, and specific changes to each. |
 | `DeliveredAmount`                     | [Currency Amount][] | **DEPRECATED.** Replaced by `delivered_amount`. Omitted if not a partial payment. |
-| `TransactionIndex`                    | Unsigned Integer    | The transaction's position within the ledger that included it. (For example, the value `2` means it was the 2nd transaction in that ledger.) |
+| `TransactionIndex`                    | Unsigned Integer    | The transaction's position within the ledger that included it. This is zero-indexed. (For example, the value `2` means it was the 3nd transaction in that ledger.) |
 | `TransactionResult`                   | String              | A [result code](transaction-results.html) indicating whether the transaction succeeded or how it failed. |
 | [`delivered_amount`](#delivered-amount) | [Currency Amount][] | The [Currency Amount][] actually received by the `Destination` account. Use this field to determine how much was delivered, regardless of whether the transaction is a [partial payment](partial-payments.html). [New in: rippled 0.27.0][] |
 
