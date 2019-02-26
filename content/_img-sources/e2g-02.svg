@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="215.31708mm"
+   height="141.62183mm"
+   viewBox="0 0 215.31708 141.62183"
+   version="1.1"
+   id="svg5080"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="e2g-02.svg">
+  <defs
+     id="defs5074">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9288">
+      <path
+         d="M 0,3093.309 H 3457.466 V 0 H 0 Z"
+         id="path9290"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9226">
+      <path
+         d="M 0,3093.309 H 3457.466 V 0 H 0 Z"
+         id="path9228"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9238">
+      <path
+         d="M 928.034,440.206 H 1103.6 V 405.845 H 928.034 Z"
+         id="path9240"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(175.56705,0,0,-175.56705,928.03436,423.02536)"
+       spreadMethod="pad"
+       id="linearGradient9246">
+      <stop
+         style="stop-opacity:1;stop-color:#4f92b9"
+         offset="0"
+         id="stop9248" />
+      <stop
+         style="stop-opacity:1;stop-color:#3c6aab"
+         offset="1"
+         id="stop9250" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9168">
+      <path
+         d="M 0,3093.309 H 3457.466 V 0 H 0 Z"
+         id="path9170"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9176">
+      <path
+         d="M 1225.03,366.206 H 1400.6 V 331.845 H 1225.03 Z"
+         id="path9178"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(175.56705,0,0,-175.56705,1225.0344,349.02536)"
+       spreadMethod="pad"
+       id="linearGradient9184">
+      <stop
+         style="stop-opacity:1;stop-color:#4f92b9"
+         offset="0"
+         id="stop9186" />
+      <stop
+         style="stop-opacity:1;stop-color:#3c6aab"
+         offset="1"
+         id="stop9188" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9144">
+      <path
+         d="M 0,3093.309 H 3457.466 V 0 H 0 Z"
+         id="path9146"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9066">
+      <path
+         d="M 0,3093.309 H 3457.466 V 0 H 0 Z"
+         id="path9068"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9074">
+      <path
+         d="m 986.727,562.79 h 28.503 v -38.161 h -28.503 z"
+         id="path9076"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath9078">
+      <path
+         d="m 1015.232,539.385 c -1.8,-4.908 -5.272,-9.237 -10.169,-12.045 -2.401,-1.372 -4.93,-2.261 -7.502,-2.711 l -5.337,6.59 -0.632,4.18 -4.865,5.433 8.691,12.378 -3.869,4.629 4.019,4.951 z"
+         id="path9080"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="0"
+       y="0"
+       width="1"
+       height="1"
+       id="mask9092">
+      <g
+         id="g9094">
+        <g
+           id="g9096">
+          <g
+             id="g9098">
+            <g
+               id="g9100">
+              <path
+                 d="M -32768,32767 H 32767 V -32768 H -32768 Z"
+                 style="fill:url(#linearGradient9086);stroke:none"
+                 id="path9102"
+                 inkscape:connector-curvature="0" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </mask>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(23.044645,-23.044645,-23.044645,-23.044645,986.52582,553.74799)"
+       spreadMethod="pad"
+       id="linearGradient9086">
+      <stop
+         style="stop-opacity:1;stop-color:#ffffff"
+         offset="0"
+         id="stop9088" />
+      <stop
+         style="stop-opacity:0;stop-color:#ffffff"
+         offset="1"
+         id="stop9090" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(23.044645,-23.044645,-23.044645,-23.044645,986.52582,553.74799)"
+       spreadMethod="pad"
+       id="linearGradient9104">
+      <stop
+         style="stop-opacity:1;stop-color:#000000"
+         offset="0"
+         id="stop9106" />
+      <stop
+         style="stop-opacity:1;stop-color:#000000"
+         offset="1"
+         id="stop9108" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,-46.130001,-46.130001,0,993.59149,570.41473)"
+       spreadMethod="pad"
+       id="linearGradient9054">
+      <stop
+         style="stop-opacity:1;stop-color:#4f92b9"
+         offset="0"
+         id="stop9056" />
+      <stop
+         style="stop-opacity:1;stop-color:#3c6aab"
+         offset="1"
+         id="stop9058" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath8972">
+      <path
+         d="M 0,3093.309 H 3457.466 V 0 H 0 Z"
+         id="path8974"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath8980">
+      <path
+         d="m 1281.1,551.6 h 31.96 v -27.15 h -31.96 z"
+         id="path8982"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath8984">
+      <path
+         d="m 1313.065,540.41 c -2.68,-8.52 -10.17,-14.9 -19.28,-15.96 l -12.48,14.22 2.26,1.68 -0.06,6.65 -2.4,2.78 19.93,1.82 z"
+         id="path8986"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="0"
+       y="0"
+       width="1"
+       height="1"
+       id="mask8998">
+      <g
+         id="g9000">
+        <g
+           id="g9002">
+          <g
+             id="g9004">
+            <g
+               id="g9006">
+              <path
+                 d="M -32768,32767 H 32767 V -32768 H -32768 Z"
+                 style="fill:url(#linearGradient8992);stroke:none"
+                 id="path9008"
+                 inkscape:connector-curvature="0" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </mask>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(22.505545,-22.505545,-22.505545,-22.505545,1283.5897,552.26471)"
+       spreadMethod="pad"
+       id="linearGradient8992">
+      <stop
+         style="stop-opacity:1;stop-color:#ffffff"
+         offset="0"
+         id="stop8994" />
+      <stop
+         style="stop-opacity:0;stop-color:#ffffff"
+         offset="1"
+         id="stop8996" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(22.505545,-22.505545,-22.505545,-22.505545,1283.5897,552.26471)"
+       spreadMethod="pad"
+       id="linearGradient9010">
+      <stop
+         style="stop-opacity:1;stop-color:#000000"
+         offset="0"
+         id="stop9012" />
+      <stop
+         style="stop-opacity:1;stop-color:#000000"
+         offset="1"
+         id="stop9014" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,-46.140015,-46.140015,0,1291.0697,570.41974)"
+       spreadMethod="pad"
+       id="linearGradient8960">
+      <stop
+         style="stop-opacity:1;stop-color:#6e6e6e"
+         offset="0"
+         id="stop8962" />
+      <stop
+         style="stop-opacity:1;stop-color:#424242"
+         offset="1"
+         id="stop8964" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath8936">
+      <path
+         d="M 0,3093.309 H 3457.466 V 0 H 0 Z"
+         id="path8938"
+         inkscape:connector-curvature="0" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="445.9562"
+     inkscape:cy="190.49896"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="20"
+     fit-margin-left="20"
+     fit-margin-right="20"
+     fit-margin-bottom="20"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5077">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(434.79851,156.20127)">
+    <g
+       id="g8626"
+       transform="matrix(0.33072776,0,0,-0.34637991,-249.67192,-34.579435)">
+      <path
+         d="m 0,0 h -202.031 c -1.205,0 -2.181,0.977 -2.181,2.181 v 287.678 c 0,1.204 0.976,2.181 2.181,2.181 L 0,292.04 c 1.205,0 2.181,-0.977 2.181,-2.181 V 2.181 C 2.181,0.977 1.205,0 0,0"
+         style="fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path8628"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g9148-5"
+       transform="matrix(0.33072917,0,0,-0.38798514,-252.57734,-38.385835)">
+      <path
+         d="m 0,0 h -184.362 c -1.104,0 -2,0.895 -2,2 v 192.055 c 0,1.105 0.896,2 2,2 H 0 c 1.104,0 2,-0.895 2,-2 V 2 C 2,0.895 1.104,0 0,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path9150-6"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,-716.76317,55.627142)"
+       id="g8932"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <g
+         id="g8934"
+         clip-path="url(#clipPath8936)">
+        <g
+           id="g8940"
+           transform="translate(1117.198,311.9666)">
+          <path
+             d="m 0,0 h -201.949 c -1.227,0 -2.222,0.995 -2.222,2.222 v 263.606 c 0,1.227 0.995,2.222 2.222,2.222 L 0,268.05 c 1.227,0 2.222,-0.995 2.222,-2.222 V 2.222 C 2.222,0.995 1.227,0 0,0"
+             style="fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path8942"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+    <text
+       y="-123.28149"
+       x="-279.24045"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text8944"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-279.24045 -275.68149 -272.13376 -267.05673"
+         y="-123.28149"
+         sodipodi:role="line"
+         id="tspan8946"
+         style="font-size:5.62239599px;line-height:1.25;stroke-width:0.33072916">ACME</tspan>
+    </text>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,-716.76317,55.627142)"
+       id="g8948"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <g
+         id="g8950">
+        <g
+           id="g8956">
+          <g
+             id="g8958">
+            <path
+               d="m 1268.005,547.349 c 0,-12.739 10.33,-23.069 23.059,-23.069 v 0 c 0.92,0 1.831,0.05 2.72,0.17 v 0 c 9.111,1.06 16.601,7.44 19.281,15.959 v 0 c 0.699,2.191 1.07,4.52 1.07,6.94 v 0 c 0,12.741 -10.33,23.071 -23.071,23.071 v 0 c -12.729,0 -23.059,-10.33 -23.059,-23.071"
+               style="fill:url(#linearGradient8960);stroke:none"
+               id="path8966"
+               inkscape:connector-curvature="0" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,-716.76317,55.627142)"
+       id="g8968"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <g
+         id="g8970"
+         clip-path="url(#clipPath8972)">
+        <g
+           id="g8976">
+          <g
+             id="g8978" />
+          <g
+             id="g9016">
+            <g
+               clip-path="url(#clipPath8980)"
+               id="g9018"
+               style="opacity:0.30000299">
+              <g
+                 id="g9020">
+                <g
+                   clip-path="url(#clipPath8984)"
+                   id="g9022">
+                  <g
+                     id="g9024">
+                    <g
+                       id="g9026" />
+                    <g
+                       mask="url(#mask8998)"
+                       id="g9028">
+                      <g
+                         id="g9030">
+                        <path
+                           d="m 1313.065,540.41 c -2.68,-8.52 -10.17,-14.9 -19.28,-15.96 l -12.48,14.22 2.26,1.68 -0.06,6.65 -2.4,2.78 19.93,1.82 z"
+                           style="fill:url(#linearGradient9010);stroke:none"
+                           id="path9032"
+                           inkscape:connector-curvature="0" />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g
+           id="g9034"
+           transform="translate(1296.2295,540.665)">
+          <path
+             d="m 0,0 h -3.326 v 5.687 c 0,0.917 0.746,1.664 1.663,1.664 C -0.746,7.351 0,6.605 0,5.687 Z m -7.056,0 h -3.326 v 5.687 c 0,0.917 0.746,1.664 1.663,1.664 0.917,0 1.663,-0.746 1.663,-1.664 z m -5.921,8.153 V 0 h -1.95 V -1.997 H 4.585 V 0 h -1.95 v 8.153 z"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path9036"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           id="g9038"
+           transform="translate(1291.054,557.6298)">
+          <path
+             d="M 0,0 -9.95,-6.031 V -7.852 H 9.979 v 1.821 z"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path9040"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,-716.76317,55.627142)"
+       id="g9042"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <g
+         id="g9044">
+        <g
+           id="g9050">
+          <g
+             id="g9052">
+            <path
+               d="m 982.119,567.355 c -11.049,-6.333 -14.864,-20.425 -8.541,-31.474 v 0 h 0.011 C 978.55,527.222 988.27,523 997.561,524.629 v 0 c 2.572,0.45 5.101,1.339 7.501,2.711 v 0 c 4.898,2.808 8.37,7.137 10.17,12.045 v 0 c 2.272,6.173 1.898,13.278 -1.629,19.429 v 0 c 0,0.011 -0.01,0.011 -0.01,0.011 v 0 c -4.26,7.432 -12.029,11.59 -20.022,11.59 v 0 c -3.89,0 -7.835,-0.986 -11.452,-3.06"
+               style="fill:url(#linearGradient9054);stroke:none"
+               id="path9060"
+               inkscape:connector-curvature="0" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,-716.76317,55.627142)"
+       id="g9062"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <g
+         id="g9064"
+         clip-path="url(#clipPath9066)">
+        <g
+           id="g9070">
+          <g
+             id="g9072" />
+          <g
+             id="g9110">
+            <g
+               clip-path="url(#clipPath9074)"
+               id="g9112"
+               style="opacity:0.19999701">
+              <g
+                 id="g9114">
+                <g
+                   clip-path="url(#clipPath9078)"
+                   id="g9116">
+                  <g
+                     id="g9118">
+                    <g
+                       id="g9120" />
+                    <g
+                       mask="url(#mask9092)"
+                       id="g9122">
+                      <g
+                         id="g9124">
+                        <path
+                           d="m 1015.232,539.385 c -1.8,-4.908 -5.272,-9.237 -10.169,-12.045 -2.401,-1.372 -4.93,-2.261 -7.502,-2.711 l -5.337,6.59 -0.632,4.18 -4.865,5.433 8.691,12.378 -3.869,4.629 4.019,4.951 z"
+                           style="fill:url(#linearGradient9104);stroke:none"
+                           id="path9126"
+                           inkscape:connector-curvature="0" />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g
+           id="g9128"
+           transform="translate(993.0132,563.4263)">
+          <path
+             d="M 0,0 C 0.891,0.164 1.852,-0.062 2.557,-0.635 3.274,-1.183 3.717,-2.055 3.775,-2.951 3.814,-3.76 3.557,-4.594 3.021,-5.21 2.472,-5.876 1.631,-6.282 0.771,-6.329 c -0.803,-0.06 -1.625,0.217 -2.238,0.738 -0.834,0.676 -1.269,1.803 -1.115,2.865 C -2.439,-1.384 -1.325,-0.227 0,0"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path9130"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           id="g9132"
+           transform="translate(989.4796,555.0194)">
+          <path
+             d="M 0,0 C 0.555,0.134 1.115,0.247 1.673,0.372 2.287,-0.263 2.901,-0.9 3.514,-1.535 3.72,-1.739 3.898,-1.972 4.139,-2.137 c 0.804,0.845 1.611,1.688 2.433,2.515 0.553,-0.148 1.12,-0.234 1.67,-0.389 0.901,-4.729 1.834,-9.452 2.737,-14.181 -1.41,-0.46 -2.82,-0.918 -4.229,-1.378 -0.416,-2.743 -0.84,-5.486 -1.259,-8.23 -0.916,-0.005 -1.832,-0.002 -2.748,0 -0.415,2.745 -0.831,5.489 -1.242,8.234 -1.418,0.456 -2.836,0.915 -4.252,1.377 C -1.834,-9.459 -0.925,-4.728 0,0"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path9134"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+    <text
+       y="-123.28088"
+       x="-376.474"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9136"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-376.474 -372.91501 -371.49255 -370.0701 -367.39383"
+         y="-123.28088"
+         sodipodi:role="line"
+         id="tspan9138"
+         style="font-size:5.62239599px;line-height:1.25;stroke-width:0.33072916">Alice</tspan>
+    </text>
+    <g
+       id="g9148"
+       transform="matrix(0.33072917,0,0,-0.33072917,-350.1815,-50.141667)">
+      <path
+         d="m 0,0 h -184.362 c -1.104,0 -2,0.895 -2,2 v 192.055 c 0,1.105 0.896,2 2,2 H 0 c 1.104,0 2,-0.895 2,-2 V 2 C 2,0.895 1.104,0 0,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path9150"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g9152"
+       transform="matrix(0.33072917,0,0,-0.33072917,-311.60859,-95.489498)">
+      <path
+         d="M 0,0 H 176.635"
+         style="fill:none;stroke:#5b6970;stroke-width:0.68900001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path9154"
+         inkscape:connector-curvature="0" />
+    </g>
+    <text
+       y="-107.07576"
+       x="-308.66791"
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9156"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-308.66791 -305.53259 -302.94894 -300.36526 -297.74591 -295.05112 -292.46747 -272.36655 -269.70352 -267.04047 -265.49265 -262.82962 -260.1666 -258.73785"
+         y="-107.07576"
+         sodipodi:role="line"
+         id="tspan9158"
+         style="font-size:3.96875px;line-height:1.25;stroke-width:0.33072916">ASSETS 10,00 €</tspan>
+    </text>
+    <text
+       y="-100.32894"
+       x="-308.66791"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans;writing-mode:lr-tb;fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9160"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-308.66791 -305.12015 -301.99411 -299.31223 -295.86008 -275.09601 -271.88 -268.664 -267.2865 -264.0705 -260.85449 -259.39267"
+         y="-100.32894"
+         sodipodi:role="line"
+         id="tspan9162"
+         style="font-size:5.62239599px;line-height:1.25;stroke-width:0.33072916">Cash 10,00 €</tspan>
+    </text>
+    <g
+       id="g9164"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82"
+       transform="matrix(0.33072917,0,0,-0.33072917,-716.76317,62.506312)">
+      <g
+         id="g9166"
+         clip-path="url(#clipPath9168)">
+        <g
+           id="g9172">
+          <g
+             id="g9174" />
+          <g
+             id="g9190">
+            <g
+               clip-path="url(#clipPath9176)"
+               id="g9192"
+               style="opacity:0.30000299">
+              <g
+                 id="g9194">
+                <g
+                   id="g9196">
+                  <g
+                     id="g9198">
+                    <g
+                       id="g9200">
+                      <path
+                         d="m 1398.601,331.845 h -171.567 c -1.104,0 -2,0.895 -2,2 v 30.361 c 0,1.104 0.896,2 2,2 h 171.567 c 1.105,0 2,-0.896 2,-2 v -30.361 c 0,-1.105 -0.895,-2 -2,-2"
+                         style="fill:url(#linearGradient9184);stroke:none"
+                         id="path9202"
+                         inkscape:connector-curvature="0" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <text
+       y="-87.830177"
+       x="-308.66791"
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9204"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-308.66791 -306.02869 -304.31815 -301.18283 -298.11896 -296.40842 -293.7692 -292.05869 -289.36389 -287.65338 -285.034 -282.45032 -269.3757 -266.71265 -265.16483 -262.5018 -259.83878 -258.41003"
+         y="-87.830177"
+         sodipodi:role="line"
+         id="tspan9206"
+         style="font-size:3.96875px;line-height:1.25;stroke-width:0.33072916">LIABILITIES 8,00 €</tspan>
+    </text>
+    <text
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans;writing-mode:lr-tb;fill:#0071bc;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9208"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82"
+       x="-308.66791"
+       y="-80.554161">
+      <tspan
+         x="-308.66791 -305.02463 -301.62866 -298.18213 -271.88113 -268.6651 -267.28766 -264.07162 -260.85562 -259.3938"
+         y="-80.554161"
+         sodipodi:role="line"
+         id="tspan9210"
+         style="font-size:5.62239599px;line-height:1.25;fill:#b3b3b3;stroke-width:0.33072916">Bob 1,00 €</tspan>
+      <tspan
+         x="-308.66791 -305.12015 -301.66803 -298.54196 -296.24805 -294.82556 -293.40311 -290.24893 -271.88113 -268.6651 -267.28766 -264.07162 -260.85562 -259.3938"
+         y="-73.807289"
+         sodipodi:role="line"
+         id="tspan9212"
+         style="font-size:5.62239599px;line-height:1.25;fill:#b3b3b3;stroke-width:0.33072916">Charlie 2,00 €</tspan>
+      <tspan
+         x="-308.66791 -305.10895 -303.68646 -302.26401 -299.58774 -296.43356 -271.88113 -268.6651 -267.28766 -264.07162 -260.85562 -259.3938"
+         y="-67.06041"
+         sodipodi:role="line"
+         id="tspan9214"
+         style="font-size:5.62239599px;line-height:1.25;fill:#000000;stroke-width:0.33072916">Alice 2,00 €</tspan>
+      <tspan
+         x="-308.66791 -308.66791 -305.10895 -303.68646 -302.26401 -299.58774 -296.43356 -271.88113 -268.6651 -267.28766 -264.07162 -260.85562 -259.3938"
+         y="-67.06041 -67.06041"
+         sodipodi:role="line"
+         style="font-size:5.62239599px;line-height:1.25;fill:#000000;stroke-width:0.33072916"
+         id="tspan14317"> </tspan>
+      <tspan
+         sodipodi:role="line"
+         id="tspan9216"
+         x="-308.66791"
+         y="4.2789192"
+         style="font-size:5.62239599px;line-height:1.25;stroke-width:0.33072916"> </tspan>
+    </text>
+    <text
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9218"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82"
+       x="-308.66791"
+       y="-41.792725">
+      <tspan
+         x="-308.66791 -306.04852 -302.49255 -299.09531 -297.38477 -294.68997 -291.81659 -270.0361 -267.37308 -265.82526 -263.1622 -260.49918 -259.07047"
+         y="-41.792725"
+         sodipodi:role="line"
+         id="tspan9220"
+         style="font-size:3.96875px;line-height:1.25;stroke-width:0.33072916">EQUITY 2,00 €</tspan>
+    </text>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,-716.76317,55.627142)"
+       id="g9222"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <g
+         id="g9224"
+         clip-path="url(#clipPath9226)">
+        <g
+           id="g9230"
+           transform="translate(927.9063,391.5895)">
+          <path
+             d="M 0,0 H 176.634"
+             style="fill:none;stroke:#5b6970;stroke-width:0.68900001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path9232"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           id="g9234">
+          <g
+             id="g9236" />
+          <g
+             id="g9252">
+            <g
+               clip-path="url(#clipPath9238)"
+               id="g9254"
+               style="opacity:0.30000299">
+              <g
+                 id="g9256">
+                <g
+                   id="g9258">
+                  <g
+                     id="g9260">
+                    <g
+                       id="g9262">
+                      <path
+                         d="M 1101.601,405.845 H 930.034 c -1.104,0 -2,0.895 -2,2 v 30.361 c 0,1.104 0.896,2 2,2 h 171.567 c 1.105,0 2,-0.896 2,-2 v -30.361 c 0,-1.105 -0.895,-2 -2,-2"
+                         style="fill:url(#linearGradient9246);stroke:none"
+                         id="path9264"
+                         inkscape:connector-curvature="0" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <text
+       y="-107.07576"
+       x="-406.93692"
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9266"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-406.93692 -403.80161 -401.21796 -398.63431 -396.01492 -393.32016 -390.73648 -367.97571 -365.31268 -363.76486 -361.10184 -358.43881 -357.01004"
+         y="-107.07576"
+         sodipodi:role="line"
+         id="tspan9268"
+         style="font-size:3.96875px;line-height:1.25;stroke-width:0.33072916">ASSETS 6,00 €</tspan>
+    </text>
+    <text
+       y="-100.32894"
+       x="-406.93692"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans;writing-mode:lr-tb;fill:#0071bc;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9270"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-406.93692 -403.38919 -400.26315 -397.58127 -394.12912 -370.15015 -366.93414 -365.55664 -362.34064 -359.12463 -357.66281"
+         y="-100.32894"
+         sodipodi:role="line"
+         id="tspan9272"
+         style="font-size:5.62239599px;line-height:1.25;fill:#b3b3b3;fill-opacity:1;stroke-width:0.33072916">Cash 1,00 €</tspan>
+      <tspan
+         x="-406.93692 -403.37796 -399.83023 -394.7532 -391.62714 -370.15015 -366.93414 -365.55664 -362.34064 -359.12463 -357.66281"
+         y="-93.582062"
+         sodipodi:role="line"
+         id="tspan9274"
+         style="font-size:5.62239599px;line-height:1.25;fill:#000000;fill-opacity:1;stroke-width:0.33072916">ACME 2,00 €</tspan>
+      <tspan
+         x="-406.93692 -403.72092 -400.16193 -396.6142 -391.5372 -388.41113 -371.61084 -368.39484 -367.01736 -363.80133 -360.58533 -359.1235 -355.8063"
+         y="-82.736458"
+         sodipodi:role="line"
+         id="tspan9276"
+         style="font-size:5.62239599px;line-height:1.25;fill:#0071bc;fill-opacity:1;stroke-width:0.33072916">~ACME 3,00 €</tspan>
+    </text>
+    <text
+       y="-66.329742"
+       x="-406.93692"
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9278"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-406.93692 -404.2977 -402.58719 -399.45187 -396.388 -394.67746 -392.03824 -390.3277 -387.63293 -385.92239 -383.30301 -380.71936 -368.30591 -365.64288 -364.09506 -361.43204 -358.76901 -357.34024"
+         y="-66.329742"
+         sodipodi:role="line"
+         id="tspan9280"
+         style="font-size:3.96875px;line-height:1.25;stroke-width:0.33072916">LIABILITIES 0,00 €</tspan>
+      <tspan
+         x="-406.93692 -404.31757 -400.76157 -397.36429 -395.65378 -392.95898 -390.0856 -368.30511 -365.64209 -364.09427 -361.43124 -358.76822 -357.33945"
+         y="-56.804741"
+         sodipodi:role="line"
+         id="tspan9282"
+         style="font-size:3.96875px;line-height:1.25;stroke-width:0.33072916">EQUITY 6,00 €</tspan>
+    </text>
+    <g
+       id="g9284"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82"
+       transform="matrix(0.32848291,0,0,-0.51079191,-713.59036,124.39057)">
+      <g
+         id="g9286"
+         clip-path="url(#clipPath9288)">
+        <g
+           id="g9292"
+           transform="translate(1407.0332,346.7704)">
+          <path
+             d="m 0,0 c 7.985,1.65 13.988,8.722 13.988,17.196 0,9.698 -7.862,17.56 -17.56,17.56"
+             style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path9294"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           id="g9296"
+           transform="translate(1408.0492,344.4556)">
+          <path
+             d="M 0,0 -4.588,1.951 -0.605,4.95 Z"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path9298"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+    <text
+       y="-89.096451"
+       x="-341.26025"
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9300"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-341.26025 -338.59723"
+         y="-89.096451"
+         sodipodi:role="line"
+         id="tspan9302"
+         style="font-size:3.96875px;line-height:1.25;stroke-width:0.33072916">3€</tspan>
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.96875px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.33072916px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-299.24246"
+       y="-58.214432"
+       id="text14309"><tspan
+         sodipodi:role="line"
+         id="tspan14311"
+         x="-299.24246"
+         y="-58.214432"
+         style="font-size:10.58333302px;line-height:1.25;stroke-width:0.33072916px"> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.33072916px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-309.00903"
+       y="-50.990509"
+       id="text14313"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82"
+       inkscape:transform-center-x="4.6141259"
+       inkscape:transform-center-y="-2.3070629"><tspan
+         sodipodi:role="line"
+         id="tspan14315"
+         x="-309.00903"
+         y="-50.990509"
+         style="font-size:5.29166651px;line-height:1.25;stroke-width:0.33072916px">~Alice           3,00 €</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.73633981px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.31136164px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-358.74649"
+       y="-52.477505"
+       id="text14329"
+       transform="scale(0.86083317,1.1616653)"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82"><tspan
+         sodipodi:role="line"
+         id="tspan14333"
+         x="-358.74649"
+         y="-52.477505"
+         style="font-size:4.55524254px;line-height:1.25;stroke-width:0.31136164px">XRP Ledger (Subtotal)	3,00 €</tspan></text>
+    <g
+       transform="matrix(0.33072917,0,0,-0.33072917,-715.59738,55.962589)"
+       id="g5533">
+      <path
+         d="m 1114.0332,424.7704 c 7.985,1.65 13.988,8.722 13.988,17.196 0,9.698 -7.862,17.56 -17.56,17.56"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path9314"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 1115.0492,422.4556 -4.588,1.951 3.983,2.999 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path9318"
+         inkscape:connector-curvature="0" />
+    </g>
+    <text
+       y="-60.738987"
+       x="-244.38269"
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.96875px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.33072916"
+       id="text9300-9"
+       inkscape:export-filename="/home/mduo13/ripple-dev-portal/img/e2g-02.png"
+       inkscape:export-xdpi="100.82"
+       inkscape:export-ydpi="100.82">
+      <tspan
+         x="-244.38269 -241.71967"
+         y="-60.738987"
+         sodipodi:role="line"
+         id="tspan9302-3"
+         style="font-size:3.96875px;line-height:1.25;stroke-width:0.33072916">3€</tspan>
+    </text>
+    <g
+       style="fill:none"
+       id="Canvas-1"
+       transform="matrix(0.01685473,0,0,0.01685473,-321.23554,-56.660947)">
+      <g
+         id="xrp-symbol-black-5">
+        <path
+           style="fill:#23292f"
+           inkscape:connector-curvature="0"
+           id="Vector-5"
+           d="m 436.043,0 h 74.053 L 356.029,152.475 c -55.771,55.195 -146.192,55.195 -201.962,0 L 2.51594e-8,0 H 74.0526 L 191.093,115.832 c 35.321,34.956 92.587,34.956 127.909,0 z"
+           transform="translate(0.943848)" />
+        <path
+           style="fill:#23292f"
+           inkscape:connector-curvature="0"
+           id="Vector_2-4"
+           d="M 74.0527,194.813 H 0 L 155.019,41.3955 c 55.77,-55.194 146.191,-55.194 201.962,0 L 512,194.813 H 437.947 L 319.953,78.0385 c -35.321,-34.9564 -92.587,-34.9564 -127.908,0 z"
+           transform="translate(0,229.187)" />
+      </g>
+    </g>
+    <g
+       style="fill:none"
+       id="Canvas-1-7"
+       transform="matrix(0.01685473,0,0,0.01685473,-420.13182,-88.177263)">
+      <g
+         id="xrp-symbol-black-5-4">
+        <path
+           style="fill:#23292f"
+           inkscape:connector-curvature="0"
+           id="Vector-5-5"
+           d="m 436.043,0 h 74.053 L 356.029,152.475 c -55.771,55.195 -146.192,55.195 -201.962,0 L 2.51594e-8,0 H 74.0526 L 191.093,115.832 c 35.321,34.956 92.587,34.956 127.909,0 z"
+           transform="translate(0.943848)" />
+        <path
+           style="fill:#23292f"
+           inkscape:connector-curvature="0"
+           id="Vector_2-4-2"
+           d="M 74.0527,194.813 H 0 L 155.019,41.3955 c 55.77,-55.194 146.191,-55.194 201.962,0 L 512,194.813 H 437.947 L 319.953,78.0385 c -35.321,-34.9564 -92.587,-34.9564 -127.908,0 z"
+           transform="translate(0,229.187)" />
+      </g>
+    </g>
+  </g>
+</svg>
