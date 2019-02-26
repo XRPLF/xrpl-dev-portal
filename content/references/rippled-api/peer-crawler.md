@@ -1,0 +1,73 @@
+# Peer Crawler
+
+The Peer Crawler is a special API endpoint for reporting on the health and topology of the peer-to-peer network. This API method is available by default on a non-privileged basis through the [Peer Protocol](peer-protocol.html) port, which is also used for `rippled` servers' peer-to-peer communications about consensus, ledger history, and other necessary information.
+
+The information reported by the peer crawler is effectively public, and can be used to collect information about the overall XRP Ledger network, its health, and topology.
+
+The [`peers` command](peers.html) in the [WebSocket and JSON-RPC APIs](get-started-with-the-rippled-api.html) returns a similar, more comprehensive set of information, but requires [administrative access](admin-rippled-methods.html) to the server.
+
+## Request Format
+
+To request the Peer Crawler information, make the following HTTP request:
+
+- **Protocol:** https
+- **HTTP Method:** GET
+- **Host:** (any `rippled` server, by hostname or IP address)
+- **Port:** (the port number where the `rippled` server uses the Peer Protocol, typically 51235)
+- **Path:** `/crawl`
+- **Security:** Most `rippled` servers use a self-signed certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the `--insecure` flag) to display a response from those servers.
+
+**Tip:** Since this request uses the GET method, you can test this request using just the URL bar of your web browser. For example, <https://s1.ripple.com:51235/crawl> requests peer crawler information from one of Ripple's public servers.
+
+## Response Format
+
+The response has the status code **200 OK** and a JSON object in the message body.
+
+The JSON object has the following fields:
+
+| `Field`          | Value  | Description                                      |
+|:-----------------|:-------|:-------------------------------------------------|
+| `counts`         | Object | _(May be omitted)_ Stats about this server's health, similar to the output of the [get_counts][] method. The default configuration does not report this field. |
+| `overlay.active` | Array  | Array of Peer Objects, where each member is a peer that is connected to this server. |
+| `server`         | Object | _(May be omitted)_ Information about this server. Contains the public fields from the [server_state method][]. |
+| `unl`            | Object | _(May be omitted)_ Information about the validators and validator list sites this server is configured to trust, similar to the output of the [validators method][] and [validator_list_sites][] method. |
+| `version`        | Number | Indicates the version of this peer crawler response format. As of rippled v1.2.0, the current peer crawler version number is `1`. |
+
+Each member of the `active` array is a Peer Object with the following fields:
+
+| `Field`      | Value                    | Description                        |
+|:-------------|:-------------------------|:-----------------------------------|
+| `ip`         | String (IPv4 Address)    | _(May be omitted)_ The IP address of this connected peer. |
+| `port`       | String (Number)          | _(May be omitted)_ The port number on the peer server that serves RTXP. Typically 51235. |
+| `public_key` | String (Base-64 Encoded) | The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the `pubkey_node` reported in the peer server's [`server_info` command](server_info.html).) |
+| `type`       | String                   | The value `in` or `out`, indicating whether the TCP connection to the peer is incoming or outgoing. |
+| `uptime`     | Number                   | The number of seconds the server has been connected to this peer. |
+| `version`    | String                   | The `rippled` version number the peer reports to be using. |
+
+#### Example
+
+Request:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*HTTP*
+
+```
+GET https://localhost:51235/crawl
+```
+
+*cURL*
+
+```
+curl --insecure https://localhost:51235/crawl
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Response:
+
+```json
+200 OK
+
+{% include '_code-samples/peer-crawler/crawl.json' %}
+```

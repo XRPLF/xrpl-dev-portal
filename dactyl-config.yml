@@ -2694,6 +2694,16 @@ pages:
         targets:
             - local
 
+    -   md: references/rippled-api/peer-crawler.md
+        html: peer-crawler.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Crawler
+        blurb: Special API method for sharing network topology and status metrics.
+        targets:
+            - local
+
     # --------------- end "rippled API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files

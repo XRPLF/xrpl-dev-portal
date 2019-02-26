@@ -1,0 +1,209 @@
+{
+    "overlay": {
+        "active": [
+            {
+                "complete_ledgers": "45393520-45403520",
+                "ip": "162.243.114.118",
+                "port": "51235",
+                "public_key": "AufDkW4E1DOxjzRPj46Eu+AyJdsakUeJTz3xklv1kCfp",
+                "type": "out",
+                "uptime": 132,
+                "version": "rippled-1.2.0"
+            },
+            {
+                "complete_ledgers": "45403264-45403520",
+                "ip": "52.90.101.104",
+                "port": "51235",
+                "public_key": "AkA04ujnwMn8mRyfJg4K7vzcQSOG7FHq4wUg60OQWnCY",
+                "type": "out",
+                "uptime": 182,
+                "version": "rippled-1.1.2"
+            },
+            {
+                "complete_ledgers": "32570-45403520",
+                "ip": "169.55.164.30",
+                "port": "51235",
+                "public_key": "Aw7J0CVhFKt0h6PDEpqu6t4LbPY0PsX8jCFbvSQFDOkW",
+                "type": "out",
+                "uptime": 182,
+                "version": "rippled-1.1.2"
+            },
+            {
+                "complete_ledgers": "45403264-45403520",
+                "ip": "54.202.12.93",
+                "port": "51235",
+                "public_key": "AxoekFvFYzELGty9cqiXZB+NsOWTZ0Qs9mFIw69CGb3d",
+                "type": "out",
+                "uptime": 260,
+                "version": "rippled-1.2.0-rc2"
+            },
+            {
+                "complete_ledgers": "45401520-45403520",
+                "ip": "173.255.240.113",
+                "port": "51235",
+                "public_key": "A4lWBMIDEQrO8Eerp9Hj3rFacbV0FiID3wTIx8Aoplq2",
+                "type": "out",
+                "uptime": 260,
+                "version": "rippled-1.1.0"
+            },
+            {
+                "complete_ledgers": "45403264-45403520",
+                "ip": "54.202.39.36",
+                "port": "51235",
+                "public_key": "A40zB/XEikqN8/VrPcwb/apuwkLu1fPUpx09iQGvHnI9",
+                "type": "out",
+                "uptime": 260,
+                "version": "rippled-1.1.2"
+            },
+            {
+                "complete_ledgers": "45402496-45403520",
+                "ip": "54.186.73.52",
+                "port": "51235",
+                "public_key": "AjikFnq0P2XybCyREr2KPiqXqJteqwPwVRVbVK+93+3o",
+                "type": "out",
+                "uptime": 260,
+                "version": "rippled-1.1.2"
+            },
+            {
+                "complete_ledgers": "45401520-45403520",
+                "ip": "89.160.135.13",
+                "port": "51235",
+                "public_key": "AxFDR/J21+GB2I4Ra9tm6KPTaPMzlgHgYSvPbA5/EFek",
+                "type": "out",
+                "uptime": 181,
+                "version": "rippled-1.2.0"
+            },
+            {
+                "complete_ledgers": "45402496-45403520",
+                "ip": "54.84.21.230",
+                "port": "51235",
+                "public_key": "AmQgZGrN0mII1lnAFCfFHUe/A9gn7ApTNEgEt406omfu",
+                "type": "out",
+                "uptime": 260,
+                "version": "rippled-1.1.2"
+            },
+            {
+                "complete_ledgers": "45009444-44925014",
+                "ip": "115.68.139.93",
+                "port": "51235",
+                "public_key": "A9tBWk3VwZpvRUHGa+bGgH6OCN+zCtHP5Y9fe9NKMXrB",
+                "type": "out",
+                "uptime": 260,
+                "version": "rippled-1.1.2"
+            }
+        ]
+    },
+    "server": {
+        "build_version": "1.2.0-rc1",
+        "closed_ledger": {
+            "base_fee": 10,
+            "close_time": 604454312,
+            "hash": "2C5EC713C6584C47675AA10C8F3AC589FD3BE3F044958B2C4A28193F84069AAD",
+            "reserve_base": 200000000,
+            "reserve_inc": 50000000,
+            "seq": 47
+        },
+        "complete_ledgers": "empty",
+        "fetch_pack": 16812,
+        "io_latency_ms": 1,
+        "jq_trans_overflow": "0",
+        "last_close": {
+            "converge_time": 3993,
+            "proposers": 26
+        },
+        "load_base": 256,
+        "load_factor": 256,
+        "load_factor_fee_reference": 256,
+        "load_factor_server": 256,
+        "peer_disconnects": "1",
+        "peer_disconnects_resources": "0",
+        "peers": 10,
+        "pubkey_node": "n9MJZBu5HyxyEq8xPGBxXFTfT3uzdnNsvR6R1NyXxbEzt79SrZJE",
+        "published_ledger": "none",
+        "server_state": "connected",
+        "server_state_duration_us": "261636890",
+        "state_accounting": {
+            "connected": {
+                "duration_us": "261636890",
+                "transitions": 1
+            },
+            "disconnected": {
+                "duration_us": "1648820",
+                "transitions": 1
+            },
+            "full": {
+                "duration_us": "0",
+                "transitions": 0
+            },
+            "syncing": {
+                "duration_us": "0",
+                "transitions": 0
+            },
+            "tracking": {
+                "duration_us": "0",
+                "transitions": 0
+            }
+        },
+        "time": "2019-Feb-25 23:58:38.280392",
+        "uptime": 265,
+        "validation_quorum": 22
+    },
+    "unl": {
+        "local_static_keys": [],
+        "publisher_lists": [
+            {
+                "available": true,
+                "expiration": "2019-Mar-06 00:00:00.000000000",
+                "pubkey_publisher": "ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734",
+                "seq": 47,
+                "uri": "https://vl.ripple.com",
+                "version": 1
+            }
+        ],
+        "trusted_validator_keys": [
+            "nHUXeusfwk61c4xJPneb9Lgy7Ga6DVaVLEyB29ftUdt9k2KxD6Hw",
+            "nHULqGBkJtWeNFjhTzYeAsHA3qKKS7HoBh8CV3BAGTGMZuepEhWC",
+            "nHB5kpvUaEpvCtwu31fMf6dTuuCNnWRctWrV3UEZ9rbtPdpvbUvJ",
+            "nHUKp8XUkaFN6GzQ3o4qTE1w9aAD5uFjZ8vDt6pwjBsTFRq5FWEb",
+            "nHUFzgC9fDw2MEDaiv9JMdBFhtJ6DMKoUCpS8gPGi6tkfbqmTyis",
+            "nHUUrjuEMtvzzTsiW2xKinUt7Jd83QFqYgfy3Feb7Hq1EJyoxoSz",
+            "nHUVPzAmAmQ2QSc4oE1iLfsGi17qN2ado8PhxvgEkou76FLxAz7C",
+            "nHUd8g4DWm6HgjGTjKKSfYiRyf8qCvEN1PXR7YDJ5QTFyAnZHkbW",
+            "nHUStq4qu3NXaL6T42wbtpR8mare8gWMVYrUzek227c6QeUn6QGN",
+            "nHU95JxeaHJoSdpE7R49Mxp4611Yk5yL9SGEc12UDJLr4oEUN4NT",
+            "nHUfPizyJyhAJZzeq3duRVrZmsTZfcLn7yLF5s2adzHdcHMb9HmQ",
+            "nHBtDzdRDykxiuv7uSMPTcGexNm879RUUz5GW4h1qgjbtyvWZ1LE",
+            "nHUcNC5ni7XjVYfCMe38Rm3KQaq27jw7wJpcUYdo4miWwpNePRTw",
+            "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+            "nHUCCckfXVBdoounaU7JVnfdPdMXEeetwH8VdCBXD996BaVZ8WdJ",
+            "nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p",
+            "nHUon2tpyJEHHYGmxqeGu37cvPYHzrMtUNQFVdCgGNvEkjmCpTqK",
+            "nHDwHQGjKTz6R6pFigSSrNBrhNYyUGFPHA75HiTccTCQzuu9d7Za",
+            "nHUzum747yqip3HWSgzSNHNMjmLUqhroNVWidSRTREswEVhKNQEM",
+            "nHU2Y1mLGDvTbc2dpvpkQ16qdeTKv2aJwGJHFySSB9U3jkTmj4CA",
+            "nHDDasc9BHNB99PW8KUduS8Phqg8NPUmjufzMU6HGGDMUH2xNpPh",
+            "nHBidG3pZK11zQD6kpNDoAhDxH6WLGui6ZxSbUx7LSqLHsgzMPec",
+            "nHBgiH2aih5JoaL3wbiiqSQfhrC21vJjxXoCoD2fuqcNbriXsfLm",
+            "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+            "nHUpJSKQTZdB1TDkbCREMuf8vEqFkk84BcvZDhsQsDufFDQVajam",
+            "nHUkp7WhouVMobBUKGrV5FNqjsdD9zKP5jpGnnLLnYxUQSGAwrZ6",
+            "nHBSUZJnqK5BRu3bWAmebfkETNeEFmU7sm3DXzCuEYzRkAEdxuTy"
+        ],
+        "validation_quorum": 22,
+        "validator_list": {
+            "count": 1,
+            "expiration": "2019-Mar-06 00:00:00.000000000",
+            "status": "active"
+        },
+        "validator_sites": [
+            {
+                "last_refresh_status": "accepted",
+                "last_refresh_time": "2019-Feb-25 23:54:15.906638391",
+                "next_refresh_time": "2019-Feb-25 23:59:15.541191909",
+                "refresh_interval_min": 5,
+                "uri": "https://vl.ripple.com"
+            }
+        ]
+    },
+    "version": 1
+}
