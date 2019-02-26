@@ -60,9 +60,12 @@ You can find the `delivered_amount` field in the following places:
 | [JSON-RPC / WebSocket][] | [account_tx method][] | `result.transactions` array members' `meta.delivered_amount` |
 | [JSON-RPC / WebSocket][] | [tx method][] | `result.meta.delivered_amount` |
 | [JSON-RPC / WebSocket][] | [transaction_entry method][] | `result.metadata.delivered_amount` |
+| [JSON-RPC / WebSocket][] | [ledger method][] (with transactions expanded) | `result.ledger.transactions` array members' `metaData.delivered_amount` [New in: rippled 1.2.1][] |
+| [WebSocket][] | [Transaction subscriptions](subscribe.html#transaction-streams) | Subscription messages' `meta.delivered_amount` [New in: rippled 1.2.1][] |
 | [RippleAPI][] | [`getTransaction` method](rippleapi-reference.html#gettransaction) | `outcome.deliveredAmount` |
 | [RippleAPI][] | [`getTransactions` method](rippleapi-reference.html#gettransaction) | array members' `outcome.deliveredAmount` |
 
+[WebSocket]: rippled-api.html
 [JSON-RPC / WebSocket]: rippled-api.html
 [RippleAPI]: rippleapi-reference.html
 
