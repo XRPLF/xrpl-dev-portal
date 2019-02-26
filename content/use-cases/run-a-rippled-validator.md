@@ -37,7 +37,7 @@ To configure your `rippled` server to run in validator mode, generate a validato
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [Set up a stock rippled server as a proxy](run-rippled-as-a-validator.html#set-up-proxies-to-help-protect-your-validator)
+## [Set up a stock rippled server as a proxy](run-rippled-as-a-validator.html#connect-to-the-network-using-proxies)
 
 To protect a production validator from DDoS attacks, you can use a stock `rippled` server as a proxy between the validator and the outside network.
 
