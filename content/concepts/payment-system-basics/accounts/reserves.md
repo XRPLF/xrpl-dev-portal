@@ -46,4 +46,7 @@ When an address holds less XRP than its current reserve requirement, it cannot s
 
 The XRP Ledger has a mechanism to adjust the reserve requirements for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](fee-voting.html) for more information.
 
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
