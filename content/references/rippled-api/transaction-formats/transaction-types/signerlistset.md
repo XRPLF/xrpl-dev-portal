@@ -1,7 +1,7 @@
 # SignerListSet
 [[Source]<br>](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
-The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](multi-signing.html) a transaction. This transaction type was introduced by the [MultiSign amendment](known-amendments.html#multisign). [New in: rippled 0.31.0][]
+The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](multi-signing.html) a transaction. This transaction type was introduced by the [MultiSign amendment][]. [New in: rippled 0.31.0][]
 
 ## Example {{currentpage.name}} JSON
 
@@ -51,7 +51,7 @@ You can create, update, or remove a SignerList using the master key, regular key
 
 You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (it has the [`lsfDisableMaster` flag](accountroot.html#accountroot-flags) enabled) and the account does not have a [Regular Key](cryptographic-keys.html) configured, then you cannot delete the SignerList from the account. Instead, the transaction fails with the error [`tecNO_ALTERNATIVE_KEY`](tec-codes.html).
 
-With the [MultiSignReserve Amendment](known-amendments.html#multisignreserve) enabled, creating or replacing a SignerList enables the lsfOneOwnerCount flag on the SignerList object. When this flag is enabled, the XRP Ledger is able to lower the [`OwnerCount`](accountroot.html#accountroot-fields) and [owner reserve](reserves.html#owner-reserves) for a SignerList as provided by the MultiSignReserve amendment. For more information, see [SignerList Flag](signerlist.html#signerlist-flags).
+With the [MultiSignReserve amendment][] enabled, creating or replacing a SignerList enables the lsfOneOwnerCount flag on the SignerList object. When this flag is enabled, the XRP Ledger is able to lower the [`OwnerCount`](accountroot.html#accountroot-fields) and [owner reserve](reserves.html#owner-reserves) for a SignerList as provided by the MultiSignReserve amendment. For more information, see [SignerList Flag](signerlist.html#signerlist-flags).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

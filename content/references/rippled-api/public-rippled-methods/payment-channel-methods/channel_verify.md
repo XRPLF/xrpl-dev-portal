@@ -1,7 +1,7 @@
 # channel_verify
 [[Source]<br>](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
 
-_(Requires the [PayChan amendment](known-amendments.html#paychan) to be enabled. [New in: rippled 0.33.0][])_
+_(Requires the [PayChan amendment][] to be enabled. [New in: rippled 0.33.0][])_
 
 The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
 

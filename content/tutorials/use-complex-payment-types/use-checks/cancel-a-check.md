@@ -1,6 +1,6 @@
 # Cancel a Check
 
-_Requires the [Checks Amendment](known-amendments.html#checks)._
+_Requires the [Checks amendment][]._
 
 This tutorial shows how to cancel a [Check](checks.html), which removes the [Check object from the ledger](check.html) without sending money.
 

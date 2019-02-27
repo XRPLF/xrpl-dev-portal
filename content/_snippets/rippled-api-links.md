@@ -95,3 +95,45 @@
 [{{method}} method]: {{method|lower}}.html
 [{{method}} command]: {{method|lower}}.html
 {% endfor %}
+
+<!--{# Amendment links #}-->
+{% set amendment_names = [
+  "Checks",
+  "CryptoConditions",
+  "CryptoConditionsSuite",
+  "DepositAuth",
+  "DepositPreauth",
+  "EnforceInvariants",
+  "Escrow",
+  "FeeEscalation",
+  "fix1201",
+  "fix1368",
+  "fix1373",
+  "fix1512",
+  "fix1513",
+  "fix1515",
+  "fix1523",
+  "fix1528",
+  "fix1543",
+  "fix1571",
+  "fix1578",
+  "fix1623",
+  "fixTakerDryOfferRemoval",
+  "Flow",
+  "FlowCross",
+  "FlowV2",
+  "MultiSign",
+  "MultiSignReserve",
+  "OwnerPaysFee",
+  "PayChan",
+  "SHAMapV2",
+  "SortedDirectories",
+  "SusPay",
+  "Tickets",
+  "TickSize",
+  "TrustSetAuth"
+] %}
+
+{% for amd in amendment_names %}
+[{{amd}} amendment]: known-amendments.html#{{amd|lower}}
+{% endfor %}

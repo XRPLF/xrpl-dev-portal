@@ -1,7 +1,7 @@
 # SignerList
 [[Source]<br>](https://github.com/ripple/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
 
-_((ENABLED_ICON) Requires the [MultiSign amendment](known-amendments.html#multisign).)_
+_(Requires the [MultiSign amendment][] :enabled:.)_
 
 The `SignerList` object type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a SignerList using a [SignerListSet transaction][].
 
@@ -71,21 +71,21 @@ When processing a multi-signed transaction, the server dereferences the `Account
 
 ## {{currentpage.name}} Flags
 
-_((NOT_ENABLED_ICON) Requires the [MultiSignReserve Amendment](known-amendments.html#multisignreserve).)_
+_((NOT_ENABLED_ICON) Requires the [MultiSignReserve amendment][].)_
 
 SignerList objects can have the following flag value:
 
 | Flag Name        | Hex Value  | Decimal Value | Description                    |
 |:-----------------|:-----------|:--------------|:-------------------------------|
-| lsfOneOwnerCount | 0x00010000 | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](reserves.html#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment](known-amendments.html#multisignreserve) is enabled. |
+| lsfOneOwnerCount | 0x00010000 | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](reserves.html#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment][] is enabled. |
 
 ## SignerLists and Reserves
 
 A SignerList contributes to its owner's [reserve requirement](reserves.html).
 
-Without the [MultiSignReserve Amendment](known-amendments.html#multisignreserve), the SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](ripplestate.html)) or [Offer](offer.html) object in the ledger.
+Without the [MultiSignReserve amendment][], the SignerList itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with a SignerList is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](ripplestate.html)) or [Offer](offer.html) object in the ledger.
 
-(NOT_ENABLED_ICON) With the [MultiSignReserve Amendment](known-amendments.html#multisignreserve) enabled, the SignerList counts as one object, regardless of how many members it has. As a result, the owner reserve associated with a SignerList is 5 XRP, regardless of how many members it has.
+(NOT_ENABLED_ICON) With the [MultiSignReserve amendment][] enabled, the SignerList counts as one object, regardless of how many members it has. As a result, the owner reserve associated with a SignerList is 5 XRP, regardless of how many members it has.
 
 The reserve requirement does not change for SignerLists created before the MultiSignReserve amendment. To take advantage of the new reserve, update the SignerList by sending a [SignerListSet transaction][].
 

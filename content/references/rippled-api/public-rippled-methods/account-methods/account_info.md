@@ -57,8 +57,8 @@ The request contains the following parameters:
 | `strict`       | Boolean                    | (Optional, defaults to False) If set to True, then the `account` field only accepts a public key or XRP Ledger address. |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `queue`        | Boolean                    | _(Optional)_ If `true`, and the [FeeEscalation amendment](known-amendments.html#feeescalation) is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. [New in: rippled 0.33.0][] |
-| `signer_lists` | Boolean                    | _(Optional)_ If `true`, and the [MultiSign amendment](known-amendments.html#multisign) is enabled, also returns any [SignerList objects](signerlist.html) associated with this account. [New in: rippled 0.31.0][] |
+| `queue`        | Boolean                    | _(Optional)_ If `true`, and the [FeeEscalation amendment][] is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. [New in: rippled 0.33.0][] |
+| `signer_lists` | Boolean                    | _(Optional)_ If `true`, and the [MultiSign amendment][] is enabled, also returns any [SignerList objects](signerlist.html) associated with this account. [New in: rippled 0.31.0][] |
 
 The following fields are deprecated and should not be provided: `ident`, `ledger`.
 

@@ -1,5 +1,7 @@
 # Checks
 
+_(Requires the [Checks amendment][] :not_enabled:.)_
+
 The Checks feature in the XRP Ledger allows users to create deferred payments that can be canceled or cashed by the intended recipients. Like personal paper checks, XRP Ledger Checks start with the sender of the funds creating a Check that specifies an amount and receiver. The receiver cashes the check to pull the funds from the sender's account into the receiver's account. No money moves until the receiver cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the receiver tries to cash it, just like traditional checks. If there's a failure cashing the check, the sender can retry until the check expires.
 
 XRP Ledger Checks have expiration times after which they may no longer be cashed. If the receiver doesn't successfully cash the Check before it expires, the Check object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and receiver can cancel the Check before it expires or is cashed. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
@@ -13,7 +15,7 @@ Checks are similar to [Escrow](escrow.html) and [Payment Channels](use-payment-c
 * You can send XRP to yourself through Escrow. You cannot use Checks or Payment Channels to send XRP (or, in the case of Checks, issued currencies) to yourself.
 
 
-**Note:** The [Checks amendment](known-amendments.html#checks) changes the expiration behavior of the [OfferCreate][] transaction. For more information, see [Offer Expiration](offers.html#offer-expiration).
+**Note:** The [Checks amendment][]:not_enabled: changes the expiration behavior of the [OfferCreate][] transaction. For more information, see [Offer Expiration](offers.html#offer-expiration).
 
 
 ## Why Checks?
@@ -94,7 +96,7 @@ For more information about Checks in the XRP Ledger, see:
     - [Cash a Check for an exact amount](cash-a-check-for-an-exact-amount.html)
     - [Cash a Check for a flexible amount](cash-a-check-for-a-flexible-amount.html)
     - [Cancel a Check](cancel-a-check.html)
-- [Checks amendment](known-amendments.html#checks)
+- [Checks amendment][]
 
 For more information about related features, see:
 

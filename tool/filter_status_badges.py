@@ -11,8 +11,8 @@
 import os.path
 
 STATUSES = {
-    "(NOT_ENABLED_ICON)": "template-status_not_enabled.html",
-    "(ENABLED_ICON)": "template-status_enabled.html",
+    ":not_enabled:": "template-status_not_enabled.html",
+    ":enabled:": "template-status_enabled.html",
 }
 
 

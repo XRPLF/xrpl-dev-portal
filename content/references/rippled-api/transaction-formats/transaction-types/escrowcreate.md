@@ -2,7 +2,7 @@
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
-_Requires the [Escrow Amendment](known-amendments.html#escrow)._
+_Requires the [Escrow amendment][]._
 
 Sequester XRP until the escrow process either finishes or is canceled.
 
@@ -37,7 +37,7 @@ Sequester XRP until the escrow process either finishes or is canceled.
 
 Either `CancelAfter` or `FinishAfter` must be specified. If both are included, the `FinishAfter` time must be before the `CancelAfter` time.
 
-With the [fix1571 amendment](known-amendments.html#fix1571) enabled, you must supply `FinishAfter`, `Condition`, or both. [New in: rippled 1.0.0][]
+With the [fix1571 amendment][] enabled, you must supply `FinishAfter`, `Condition`, or both. [New in: rippled 1.0.0][]
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
