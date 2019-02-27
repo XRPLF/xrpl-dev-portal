@@ -3,6 +3,7 @@
 Want to contribute code or a bug report to help improve `ripple-lib`, the official client library for [RippleAPI](rippleapi-reference.html)? RippleAPI is a JavaScript API for interacting with the XRP Ledger. Here’s a roadmap to the high-level tasks that’ll have you reviewing code and functionality in no time.
 
 
+<!-- USE_CASE_STEPS_START -->
 {% set n = cycler(* range(1,99)) %}
 
 <span class="use-case-step-num">{{n.next()}}</span>
