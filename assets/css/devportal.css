@@ -778,12 +778,19 @@ a.current {
 }
 
 /* Use Cases ---------------------------------------------------------------- */
+.use-case-steps {
+  padding-left: 1.5rem;
+  margin-left: 1.5rem;
+  border-left: 1px dashed #3B4147;
+  position: relative;
+}
+
 .use-case-step-num {
   border: 1px solid #3B4147;
   border-radius: 50%;
   padding: 0.9rem;
   position: absolute;
-  left: 1.8rem;
+  left: -1.8rem;
   height: 3.5rem;
   width: 3.5rem;
   text-align: center;
@@ -796,16 +803,17 @@ a.current {
   font-size: 16px;
 }
 
-.use-case p:not(:first-of-type) {
-  margin-top: .8rem;
-  margin-bottom: -.6rem;
-  padding-left: 2.5rem;
-  margin-left: 2.5rem;
-  border-left: 1px dashed #3B4147;
+.use-case-steps p {
+  margin-left: .8rem;
 }
-.use-case h2 {
-  margin-left: 5rem;
+
+.use-case-steps h2 {
+  margin-left: .8rem;
   margin-top: 0;
+}
+
+.use-case-steps h2:first-of-type:before {
+  display: none;
 }
 
 /* Landing Pages ------------------------------------------------------------ */

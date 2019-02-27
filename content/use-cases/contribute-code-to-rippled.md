@@ -2,8 +2,8 @@
 
 Want to contribute code or a bug report to help improve `rippled`, the core peer-to-peer server that manages the XRP Ledger? Here’s a roadmap to the high-level tasks that’ll have you reviewing code and functionality in no time.
 
+<!-- USE_CASE_STEPS_START -->
 {% set n = cycler(* range(1,99)) %}
-
 
 <span class="use-case-step-num">{{n.next()}}</span>
 ## [Access the `rippled` repo](https://github.com/ripple/rippled)

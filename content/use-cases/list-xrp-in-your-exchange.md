@@ -2,6 +2,7 @@
 
 Does your exchange want to list XRP, enabling your users to deposit, trade, and withdraw XRP? Here's a roadmap to the high-level tasks you'll need to perform.
 
+<!-- USE_CASE_STEPS_START -->
 {% set n = cycler(* range(1,99)) %}
 
 <span class="use-case-step-num">{{n.next()}}</span>

@@ -2,9 +2,8 @@
 
 Each `rippled` server (not running in stand-alone mode) connects to a network of peers, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. A `rippled` server running in validator mode additionally participates in the consensus process and is a part of an interconnected web of validators who each trust a specific set of validators not to collude. Here’s a roadmap to the high-level tasks you’ll need to perform to run a `rippled` validator.
 
-
+<!-- USE_CASE_STEPS_START -->
 {% set n = cycler(* range(1,99)) %}
-
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
