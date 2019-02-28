@@ -31,7 +31,7 @@ The JSON object has the following fields:
 | `overlay.active` | Array  | Array of Peer Objects, where each member is a peer that is connected to this server. |
 | `server`         | Object | _(May be omitted)_ Information about this server. Contains the public fields from the [server_state method][]. |
 | `unl`            | Object | _(May be omitted)_ Information about the validators and validator list sites this server is configured to trust, similar to the output of the [validators method][] and [validator_list_sites][] method. |
-| `version`        | Number | Indicates the version of this peer crawler response format. As of rippled v1.2.0, the current peer crawler version number is `1`. |
+| `version`        | Number | Indicates the version of this peer crawler response format. As of rippled v1.2.1, the current peer crawler version number is `2`. |
 
 Each member of the `active` array is a Peer Object with the following fields:
 
@@ -71,3 +71,11 @@ Response:
 
 {% include '_code-samples/peer-crawler/crawl.json' %}
 ```
+
+***TODO: Update the example for v1.2.1***
+
+## See Also
+
+- [Peer Protocol](peer-protocol.html)
+- [Configure the Peer Crawler](configure-the-peer-crawler.html)
+- The [XRPL Network Crawler](https://github.com/ripple/rippled-network-crawler) is an example of a tool that uses the peer crawler data to collect and store information about the XRP Ledger network.
