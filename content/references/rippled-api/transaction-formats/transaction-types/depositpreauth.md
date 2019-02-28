@@ -1,7 +1,7 @@
 # DepositPreauth
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/DepositPreauth.cpp "Source") <!--{# TODO: change from develop to master when 1.1.0 is released #}-->
 
-_Requires the [DepositPreauth amendment](known-amendments.html#depositpreauth)._
+_Requires the [DepositPreauth amendment][]._
 
 A DepositPreauth transaction gives another account pre-approval to deliver payments to the sender of this transaction. This is only useful if the sender of this transaction is using (or plans to use) [Deposit Authorization](depositauth.html).
 

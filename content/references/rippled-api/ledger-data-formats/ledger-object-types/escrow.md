@@ -1,7 +1,7 @@
 # Escrow
 [[Source]<br>](https://github.com/ripple/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
 
-_(Requires the [Escrow Amendment](known-amendments.html#escrow).)_
+_(Requires the [Escrow amendment][].)_
 
 The `Escrow` object type represents a held payment of XRP waiting to be executed or canceled. An [EscrowCreate transaction][] creates an `Escrow` object in the ledger. A successful [EscrowFinish][] or [EscrowCancel][] transaction deletes the object. If the ``Escrow`` object has a [_crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02), the payment can only succeed if an EscrowFinish transaction provides the corresponding _fulfillment_ that satisfies the condition. (The only supported crypto-condition type is [PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1).) If the `Escrow` object has a `FinishAfter` time, the held payment can only execute after that time.
 
@@ -49,7 +49,7 @@ An `Escrow` object has the following fields:
 | `SourceTag`         | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address. |
 | `DestinationTag`    | Number | UInt32 | _(Optional)_ An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address. |
 | `OwnerNode`         | String    | UInt64    | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
-| `DestinationNode`   | String    | UInt64    | _(Optional)_ A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on escrows created before enabling the [fix1523 amendment](known-amendments.html#fix1523). |
+| `DestinationNode`   | String    | UInt64    | _(Optional)_ A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on escrows created before enabling the [fix1523 amendment][]. |
 | `PreviousTxnID`     | String | Hash256 | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number | UInt32 | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 

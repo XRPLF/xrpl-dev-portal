@@ -4,7 +4,7 @@
         {% set funnels = [] %}
         {% for page in pages %}
           {% if page.funnel is defined and page.funnel not in funnels %}
-            {% set parent_page = pages|selectattr('funnel', 'equalto', page.funnel)|first %}
+            {% set parent_page = pages|selectattr('funnel', 'defined_and_equalto', page.funnel)|first %}
 
             <div class="col mx-xl-5 my-3 foot-nav-col">
               <h5><a class="foot-nav-link" href="{{ parent_page.html }}">{{ parent_page.name }}</a><hr /></h5>

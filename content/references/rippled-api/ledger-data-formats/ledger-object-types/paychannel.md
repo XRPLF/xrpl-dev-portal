@@ -1,7 +1,7 @@
 # PayChannel
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L141-L155 "Source")
 
-_(Requires the [PayChan Amendment](known-amendments.html#paychan).)_
+_(Requires the [PayChan amendment][].)_
 
 The `PayChannel` object type represents a payment channel. Payment channels enable small, rapid off-ledger payments of XRP that can be later reconciled with the consensus ledger. A payment channel holds a balance of XRP that can only be paid out to a specific destination address until the channel is closed. Any unspent XRP is returned to the channel's owner (the source address that created and funded it) when the channel closes.
 

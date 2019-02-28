@@ -11,7 +11,6 @@
 
 import re
 
-
 def filter_soup(soup, **kwargs):
     """
     Adds an external link marker to external links

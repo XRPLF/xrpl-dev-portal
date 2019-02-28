@@ -2,7 +2,7 @@
 
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
-_Requires the [Escrow Amendment](known-amendments.html#escrow)._
+_Requires the [Escrow amendment][]._
 
 Return escrowed XRP to the sender.
 

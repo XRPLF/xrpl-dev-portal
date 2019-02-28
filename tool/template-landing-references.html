@@ -12,8 +12,8 @@
     <h2><a href="rippled-api.html">rippled API Reference</a></h2>
     <p class="blurb">Use the <code>rippled</code> API to communicate with a <code>rippled</code> server, the core peer-to-peer server that manages the XRP Ledger.</p>
       <div class="card-deck pt-3 pt-sm-4">
-        {% for page in pages|selectattr("supercategory", "equalto", "rippled API")|list %}
-        {% if loop.index != 1 and page == pages|selectattr("category", "equalto", page.category)|first %}
+        {% for page in pages|selectattr("supercategory", 'defined_and_equalto', "rippled API")|list %}
+        {% if loop.index != 1 and page == pages|selectattr("category", 'defined_and_equalto', page.category)|first %}
           <div class="card">
             <div class="card-header bg-dark">
               <h3 class="card-title">{{page.name}}</h3>
@@ -59,8 +59,8 @@
     <p class="blurb">Here are a few other ways to interact with the XRP Ledger.</p>
     <div class="card-deck pt-3 pt-sm-4">
 
-      {% for page in pages|selectattr("doc_type", "equalto", "References")|selectattr("supercategory", "ne", "rippled API") %}
-        {% if loop.index != 1 and page == pages|selectattr("category", "equalto", page.category)|first %}
+      {% for page in pages|selectattr("doc_type", 'defined_and_equalto', "References")|selectattr("supercategory", "undefined_or_ne", "rippled API") %}
+        {% if loop.index != 1 and page == pages|selectattr("category", 'defined_and_equalto', page.category)|first %}
           <div class="card">
             <div class="card-header">
               <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>

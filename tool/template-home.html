@@ -70,7 +70,7 @@
               <h3 class="card-title"><img class="card-title-icon" src="assets/img/map.svg" alt="(map icon)" width="32" height="32" /> View Use Cases</h3>
             </div><!--/.card-header-->
             <div class="card-body">
-              {% set parent_page = pages|selectattr("name", "equalto", "Use Cases")|first %}
+              {% set parent_page = pages|selectattr("name", 'defined_and_equalto', "Use Cases")|first %}
               {% set depth = 1 %}
               {% include 'template-page-children.html' %}
             </div><!--/.card-body-->
@@ -96,7 +96,7 @@
             <div class="curated-links">
               <ol>
                 {% for link in target.recently_updated %}
-                  {% set linkpage = pages|selectattr("html", "equalto", link.html)|first %}
+                  {% set linkpage = pages|selectattr("html", 'defined_and_equalto', link.html)|first %}
                   <li><a href="{{linkpage.html}}">{{linkpage.name}}{% if link.date is defined %} <span class="recently-updated-date">({{link.date}})</span>{% endif %}</a></li>
                 {% endfor %}
               </ol>

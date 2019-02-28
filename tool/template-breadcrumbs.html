@@ -1,20 +1,20 @@
-<nav class="breadcrumbs-wrap {% if currentpage.sidebar == 'disabled' %}p-3 px-sm-4{% else %}p-3{% endif %}" aria-label="breacrumb">
+<nav class="breadcrumbs-wrap {% if currentpage.sidebar is defined and currentpage.sidebar == 'disabled' %}p-3 px-sm-4{% else %}p-3{% endif %}" aria-label="breacrumb">
   <ul class="breadcrumb bg-white">
-    <li class="breadcrumb-item"><a href="{% if target.no_cover %}/{% else %}index.html{% endif %}">Home</a></li>
-    {% if currentpage.funnel and currentpage != pages|selectattr('funnel', 'equalto', currentpage.funnel)|first %}
-    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('funnel', 'equalto', currentpage.funnel)|first).html }}">{{ currentpage.funnel }}</a></li>
+    <li class="breadcrumb-item"><a href="{% if target.no_cover is defined and target.no_cover %}/{% else %}index.html{% endif %}">Home</a></li>
+    {% if currentpage.funnel is defined and currentpage != pages|selectattr('funnel', 'defined_and_equalto', currentpage.funnel)|first %}
+    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('funnel', 'defined_and_equalto', currentpage.funnel)|first).html }}">{{ currentpage.funnel }}</a></li>
     {% endif %}
-    {% if currentpage.doc_type and currentpage != pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first%}
-    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('doc_type', 'equalto', currentpage.doc_type)|first).html }}">{{ currentpage.doc_type }}</a></li>
+    {% if currentpage.doc_type is defined and currentpage != pages|selectattr('doc_type', 'defined_and_equalto', currentpage.doc_type)|first%}
+    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('doc_type', 'defined_and_equalto', currentpage.doc_type)|first).html }}">{{ currentpage.doc_type }}</a></li>
     {% endif %}
-    {% if currentpage.supercategory and currentpage != pages|selectattr('supercategory', 'equalto', currentpage.supercategory)|first %}
-    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('supercategory', 'equalto', currentpage.supercategory)|first).html }}">{{ currentpage.supercategory }}</a></li>
+    {% if currentpage.supercategory is defined and currentpage != pages|selectattr('supercategory', 'defined_and_equalto', currentpage.supercategory)|first %}
+    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('supercategory', 'defined_and_equalto', currentpage.supercategory)|first).html }}">{{ currentpage.supercategory }}</a></li>
     {% endif %}
-    {% if currentpage.category and currentpage != pages|selectattr('category', 'equalto', currentpage.category)|first %}
-    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('category', 'equalto', currentpage.category)|first).html }}">{{ currentpage.category }}</a></li>
+    {% if currentpage.category is defined and currentpage != pages|selectattr('category', 'defined_and_equalto', currentpage.category)|first %}
+    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('category', 'defined_and_equalto', currentpage.category)|first).html }}">{{ currentpage.category }}</a></li>
     {% endif %}
-    {% if currentpage.subcategory and currentpage != pages|selectattr('subcategory', 'equalto', currentpage.subcategory)|first %}
-    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('subcategory', 'equalto', currentpage.subcategory)|first).html }}">{{ currentpage.subcategory }}</a></li>
+    {% if currentpage.subcategory is defined and currentpage != pages|selectattr('subcategory', 'defined_and_equalto', currentpage.subcategory)|first %}
+    <li class="active breadcrumb-item"><a href="{{ (pages|selectattr('subcategory', 'defined_and_equalto', currentpage.subcategory)|first).html }}">{{ currentpage.subcategory }}</a></li>
     {% endif %}
     <li class="active breadcrumb-item">{{ currentpage.name }}</li>
   </ul>

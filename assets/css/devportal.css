@@ -1041,6 +1041,23 @@ a.current {
   padding-left: 5px;
 }
 
+/* Status labels ("DEV" etc) for non-enabled features ----------------------- */
+
+.status {
+  cursor: help;
+  padding: 1px 2px;
+  font-weight: normal;
+  text-indent: 0;
+}
+
+.status.not_enabled {
+  color: #0F72E5;
+}
+
+.status.enabled {
+  color: #5cb85c;
+}
+
 /* Responsive design for different viewscreens ------------------------------ */
 
 @media (max-width: 991px) {

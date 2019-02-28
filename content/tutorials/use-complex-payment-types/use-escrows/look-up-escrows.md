@@ -43,7 +43,7 @@ _Websocket_
 
 You can use the [account_objects method][] to look up escrow objects by destination address.
 
-**Note:** You can only look up pending escrow objects by destination address if those escrows were created after the [fix1523 amendment](known-amendments.html#fix1523) was enabled on 2017-11-14.
+**Note:** You can only look up pending escrow objects by destination address if those escrows were created after the [fix1523 amendment][] was enabled on 2017-11-14.
 
 Let's say that you want to look up all pending escrow objects with a destination address of `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`. You can do this using the following example request, where the destination address is the `account` value.
 

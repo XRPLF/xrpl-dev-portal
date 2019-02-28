@@ -1,6 +1,6 @@
 # Deposit Authorization
 
-_(Requires the [DepositAuth amendment](known-amendments.html#depositauth).)_
+_(Requires the [DepositAuth amendment][].)_
 
 Deposit Authorization is an optional feature of an [account](accounts.html) in the XRP Ledger. With Deposit Authorization enabled, transactions cannot send value of any kind to the account unless the sender of those transactions is the account itself. This includes transfers of XRP and issued currencies.
 
@@ -14,7 +14,7 @@ The Deposit Authorization flag introduces an option for those using the XRP Ledg
 
 When you have Deposit Authorization enabled, you can receive money from [Checks](known-amendments.html#checks), [Escrow](escrow.html), and [Payment Channels](known-amendments.html#paychan). In these transactions' "two-step" model, first the source sends a transaction to authorize sending funds, then the destination sends a transaction to authorize receiving those funds.
 
-To receive money from [Payment transactions][] when you have Deposit Authorization enabled, you must [preauthorize](#preauthorization) the senders of those Payments. _(Requires the [DepositPreauth amendment][])_
+To receive money from [Payment transactions][] when you have Deposit Authorization enabled, you must [preauthorize](#preauthorization) the senders of those Payments. _(Requires the [DepositPreauth amendment][].)_
 
 ## Recommended Usage
 
@@ -37,7 +37,7 @@ An account with Deposit Authorization enabled:
 - Can receive XRP from [EscrowFinish transactions][] **only in the following cases**:
     - The sender of the EscrowFinish transaction is the destination of the escrow.
     - The destination of the EscrowFinish transaction has [preauthorized](#preauthorization) the sender of the EscrowFinish. _(Requires the [DepositPreauth amendment][])_
-- **Can** receive XRP or issued currencies by sending a [CheckCash][] transaction. _(Requires the [Checks amendment](known-amendments.html#checks).)_
+- **Can** receive XRP or issued currencies by sending a [CheckCash][] transaction. _(Requires the [Checks amendment][] :not_enabled:.)_
 - **Can** receive XRP or issued currencies by sending [OfferCreate transactions][].
     - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the remainder of the ordered XRP or issued currency later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
 - If the account has created any trust lines without the [NoRipple flag](rippling.html) enabled, or has enabled the DefaultRipple flag and issued any currency, the account **can** receive the issued currencies of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
@@ -64,7 +64,7 @@ If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (
 
 ## Preauthorization
 
-_(Requires the [DepositPreauth amendment][])_
+_(Requires the [DepositPreauth amendment][].)_
 
 Accounts with DepositAuth enabled can _preauthorize_ certain senders, to allow payments from those senders to succeed even with DepositAuth enabled. This allows specific senders to send funds directly without the receiver taking action on each transaction individually. Preauthorization is not required to use DepositAuth, but can make certain operations more convenient.
 
@@ -99,7 +99,6 @@ You can use the [deposit_authorized method][] to see if an account is authorized
 - The `DisallowXRP` flag indicates that an account should not receive XRP. This is a softer protection than Deposit Authorization, and is not enforced by the XRP Ledger. (Client applications should honor this flag or at least warn about it.)
 - The `RequireDest` flag indicates that an account can only receive currency amounts if the sending transaction specifies a [Destination Tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags). This protects users from forgetting to indicate the purpose of a payment, but does not protect recipients from unknown senders, who can make up arbitrary destination tags.
 - [Partial Payments](partial-payments.html) provide a way for accounts to return unwanted payments while subtracting [transfer fees](transfer-fees.html) and exchange rates from the amount delivered instead of adding them to the amount sent.
-<!--{# TODO: Add links for Preauth-related reference material DOC-1652 #}-->
 <!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
 
 <!--{# common link defs #}-->

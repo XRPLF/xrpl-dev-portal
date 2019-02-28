@@ -56,7 +56,7 @@ To check whether a transaction has a given flag enabled, use the bitwise-and ope
 
 Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the `TransactionType` field when setting and reading flags.
 
-Bits that are not defined as flags MUST be 0. (The [fix1543 amendment](known-amendments.html#fix1543) enforces this rule on some transaction types. Most transaction types enforce this rule by default.)
+Bits that are not defined as flags MUST be 0. (The [fix1543 amendment][] enforces this rule on some transaction types. Most transaction types enforce this rule by default.)
 
 ### Global Flags
 

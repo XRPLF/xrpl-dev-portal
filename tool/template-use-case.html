@@ -15,7 +15,7 @@
       <div class="curated-links">
         <ul>
           {% for link in currentpage.useful_background %}
-            {% set linkpage = pages|selectattr("html", "equalto", link)|first %}
+            {% set linkpage = pages|selectattr("html", 'defined_and_equalto', link)|first %}
             <li><a href="{{linkpage.html}}">{{linkpage.name}}</a></li>
           {% endfor %}
         </ol>
