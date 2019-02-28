@@ -2820,6 +2820,8 @@ pages:
         useful_background:
             - xrp-ledger-overview.html
             - escrow.html
+        filters:
+            - use_case
         targets:
             - local
 

@@ -15,8 +15,9 @@ Using an XRP Ledger escrow to provide this smart contract is a great arrangement
 Here’s a roadmap to the high-level tasks that these participants need to complete to use an escrow as a smart contract.
 
 
-{% set n = cycler(* range(1,99)) %}
 
+{% set n = cycler(* range(1,99)) %}
+<!-- USE_CASE_STEPS_START -->
 <span class="use-case-step-num">{{n.next()}}</span>
 ## Meet the prerequisites
 
@@ -47,27 +48,27 @@ The party planner (oracle) must have:
 
 To create the escrow as a smart contract, the participants must first define the terms of the contract. In this scenario, the participants need to agree on the following details.
 
-- Should the escrow disallow fulfillment until a specific time?
+- **Should the escrow disallow fulfillment until a specific time?**
 
-  While this is an option, the participants agree that it is unnecessary for their escrow. For conditionally-held escrows, enabling this option doesn't provide any additional security, since whether the escrow can be finished still depends entirely on whether the party planner (oracle) publishes the fulfillment before the expiration.
+      While this is an option, the participants agree that it is unnecessary for their escrow. For conditionally-held escrows, enabling this option doesn't provide any additional security, since whether the escrow can be finished still depends entirely on whether the party planner (oracle) publishes the fulfillment before the expiration.
 
-- Should the escrow expire?
+- **Should the escrow expire?**
 
-  Absolutely yes. The participants agree that the escrow should expire after 12 noon the day after the party. This gives the party band (receiver) enough time to finish the escrow, after the party planner verifies that they fulfilled their end of the contract and publishes the cryptographic fulfillment. After expiration, the locked XRP returns to the party host's (sender's) account.
+      Absolutely yes. The participants agree that the escrow should expire after 12 noon the day after the party. This gives the party band (receiver) enough time to finish the escrow, after the party planner verifies that they fulfilled their end of the contract and publishes the cryptographic fulfillment. After expiration, the locked XRP returns to the party host's (sender's) account.
 
-  If the participants don't allow the escrow to expire and the party planner doesn't release the condition, the XRP stays locked in the escrow forever.
+      If the participants don't allow the escrow to expire and the party planner doesn't release the condition, the XRP stays locked in the escrow forever.
 
-- How much XRP should the escrow lock up and potentially pay?
+- **How much XRP should the escrow lock up and potentially pay?**
 
-  The participants agree that the escrow should lock up and potentially pay 2000 XRP, which is the party band's fee.
+      The participants agree that the escrow should lock up and potentially pay 2000 XRP, which is the party band's fee.
 
-- From which XRP Ledger account should the escrow lock up XRP for potential payment to the party band?
+- **From which XRP Ledger account should the escrow lock up XRP for potential payment to the party band?**
 
-  The participants agree that the escrow should lock up and potentially pay XRP out of the party host's XRP Ledger account.
+      The participants agree that the escrow should lock up and potentially pay XRP out of the party host's XRP Ledger account.
 
-- Which XRP Ledger account should the escrow potentially pay XRP to?
+- **Which XRP Ledger account should the escrow potentially pay XRP to?**
 
-  The participants agree that the escrow should potentially pay XRP to the party band's XRP Ledger account.
+      The participants agree that the escrow should potentially pay XRP to the party band's XRP Ledger account.
 
 
 
@@ -117,6 +118,7 @@ The party band finishes the escrow using the fulfillment value published by the 
 Alternatively, if the party band is a no-show, the party planner does not publish the fulfillment. In this case, after 12 noon the next day, any participant can [cancel the escrow](cancel-an-expired-escrow.html) to return the held XRP to the party host's account.
 
 
+
 <span class="use-case-step-num">{{n.next()}}</span>
 ## [Wait for validation](send-a-conditionally-held-escrow.html#7-wait-for-validation) and [confirm escrow finish](send-a-conditionally-held-escrow.html#8-confirm-final-result) (receiver and sender)
 
@@ -125,7 +127,7 @@ The party band (receiver) waits for validation of the ledger that contains the e
 At this time, the party band provides the transaction's `hash` value to the party host (sender). They can use the `hash` value to look up the escrow transaction on the XRP Ledger to ensure that it is been finished correctly.
 
 The party band can also just check their XRP Ledger account balance to ensure that their balance has increased by 2000 XRP. The party host's balance won't change at this step (unless the escrow was cancelled) because the escrow creation already debited the locked-up XRP from their account.
-
+<!-- USE_CASE_STEPS_START -->
 
 
 ### Related Tasks
