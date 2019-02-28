@@ -10,7 +10,7 @@ The transaction to authorize a trust line must be signed by the issuing address,
 2. A customer sends a [TrustSet transaction][] to create a trust line from her XRP Ledger address to the gateway's issuing address. This indicates that she is willing to hold a specific currency issued by the gateway, up to a specific numeric limit.
 3. The gateway's issuing address sends a TrustSet transaction authorizing the customer's trust line.
 
-**Tip:** An issuing gateway can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. _(Requires the [TrustSetAuth amendment][] :enabled:.)_
+**Tip:** An issuing gateway can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. _(Requires the [TrustSetAuth amendment][].)_
 
 ## RequireAuth Setting
 
