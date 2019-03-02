@@ -1,7 +1,7 @@
 # peers
 [[Source]<br>](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
 
-The `peers` command returns a list of all other `rippled` servers currently connected to this one, including information on their connection and sync status.
+The `peers` command returns a list of all other `rippled` servers currently connected to this one over the [Peer Protocol](peer-protocol.html), including information on their connection and sync status.
 
 *The `peers` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 

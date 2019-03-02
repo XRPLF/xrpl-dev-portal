@@ -2,9 +2,7 @@
 
 The Peer Crawler is a special API endpoint for reporting on the health and topology of the peer-to-peer network. This API method is available by default on a non-privileged basis through the [Peer Protocol](peer-protocol.html) port, which is also used for `rippled` servers' peer-to-peer communications about consensus, ledger history, and other necessary information.
 
-The information reported by the peer crawler is effectively public, and can be used to collect information about the overall XRP Ledger network, its health, and topology.
-
-The [`peers` command](peers.html) in the [WebSocket and JSON-RPC APIs](get-started-with-the-rippled-api.html) returns a similar, more comprehensive set of information, but requires [administrative access](admin-rippled-methods.html) to the server.
+The information reported by the peer crawler is effectively public, and can be used to report on the overall XRP Ledger network, its health, and topology.
 
 ## Request Format
 
@@ -27,10 +25,10 @@ The JSON object has the following fields:
 
 | `Field`          | Value  | Description                                      |
 |:-----------------|:-------|:-------------------------------------------------|
-| `counts`         | Object | _(May be omitted)_ Stats about this server's health, similar to the output of the [get_counts][] method. The default configuration does not report this field. Information reported includes: how large the ledger and transaction databases are, the cache hit rate for the in-application caches, and how many objects of various types are cached in memory. Types of objects that may be stored in memory include ledgers (`Ledger`), transactions (`STTx`), validation messages (`STValidation`), and more. |
-| `overlay` | Object  | Information about the peer servers currently connected to this one. Contains one field, `active`, which is an array of objects (see below). |
+| `counts`         | Object | _(May be omitted)_ Stats about this server's health, similar to the response from the [get_counts method][]. The default configuration does not report this field. Information reported includes: how large the ledger and transaction databases are, the cache hit rate for the in-application caches, and how many objects of various types are cached in memory. Types of objects that may be stored in memory include ledgers (`Ledger`), transactions (`STTx`), validation messages (`STValidation`), and more. |
+| `overlay` | Object  | Information about the peer servers currently connected to this one, similar to the response from the [peers method][]. Contains one field, `active`, which is an array of objects (see below). |
 | `server`         | Object | _(May be omitted)_ Information about this server. Contains public fields from the [server_state method][], including what `rippled` version you are running (`build_version`), which [ledger versions](ledger-history.html) your server has available (`complete_ledgers`), and the amount of load your server is experiencing. [Updated in: rippled 1.2.1][New in: rippled 1.2.1] |
-| `unl`            | Object | _(May be omitted)_ Information about the validators and validator list sites this server is configured to trust, similar to the output of the [validators method][] and [validator_list_sites method][]. [Updated in: rippled 1.2.1][New in: rippled 1.2.1] |
+| `unl`            | Object | _(May be omitted)_ Information about the validators and validator list sites this server is configured to trust, similar to the response from the [validators method][] and [validator_list_sites method][]. [Updated in: rippled 1.2.1][New in: rippled 1.2.1] |
 | `version`        | Number | Indicates the version of this peer crawler response format. The current peer crawler version number is `2`. [Updated in: rippled 1.2.1][New in: rippled 1.2.1] |
 
 Each member of the `overlay.active` array is an object with the following fields:

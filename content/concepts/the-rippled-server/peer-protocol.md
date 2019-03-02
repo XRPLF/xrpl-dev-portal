@@ -1,8 +1,6 @@
 # Peer Protocol
 
-Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol, also known as RTXP. Peer servers connect via HTTPS and then do an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to switch to RTXP. (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
-
-## Peer Protocol Communications
+Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol, also known as RTXP.
 
 The peer protocol is the main mode of communication between servers in the XRP Ledger. All information about the behavior, progress, and connectivity of the XRP Ledger passes through the peer protocol. Examples of peer-to-peer communications include all of the following:
 
@@ -10,6 +8,8 @@ The peer protocol is the main mode of communication between servers in the XRP L
 - Sharing candidate transactions with the rest of the network.
 - Requesting ledger data from historical ledgers, or providing that data.
 - Proposing a set of transactions for consensus, or sharing the calculated outcome of applying a consensus transaction set.
+
+To establish a peer-to-peer connection, one server connects to another via HTTPS and requests an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to switch to RTXP. (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
 
 ## Peer Protocol Port
 
@@ -34,7 +34,7 @@ When a server first starts up, it generates a _node key pair_ to use to identify
 
 The node key pair is saved in the database and reused when the server restarts. If you delete the server's databases, it creates a new node key pair, effectively coming online with a different identity. To reuse the same key pair even if the databases are deleted, you can configure the server with a `[node_seed]` stanza. To generate a value suitable for use in the `[node_seed]` stanza, use the [validation_create method][].
 
-The node key pair also identifies other servers [clustered](clustering.html) with this one. If you have a cluster of servers, you should give each server in the cluster a unique and reusable `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `rippled` Servers](cluster-rippled-servers.html).
+The node key pair also identifies other servers [clustered](clustering.html) with this one. If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `rippled` Servers](cluster-rippled-servers.html).
 
 ## Private Peers
 
@@ -45,12 +45,15 @@ Configuring a server as a private server has several effects:
 - The server does not make outgoing connections to other servers in the peer-to-peer network unless it has been explicitly configured to connect to those servers.
 - The server does not accept incoming connections from other servers unless it has been explicitly configured to accept connections from those servers.
 - The server asks its direct peers not to reveal its IP address in untrusted communications, including the [peer crawler API response](peer-crawler.html). This does not affect trusted communications such as the [peers admin method][peers method].
-    **Note:** It is possible to modify a server's source code so that it ignores this request. You should configure your private server to connect only to servers that you know are not modified in this way.
+
+    Servers configured as validators do this even if they aren't configured as private peers. This helps protect validators from being overloaded by denial of service attacks. [New in: rippled 1.2.1][]
+
+    **Caution:** It is possible to modify a server's source code so that it ignores this request and shares its immediate peers' IP addresses anyway. You should configure your private server to connect only to servers that you know are not modified in this way.
 
 
 ### Configuring a Private Server
 
-Use the `[peer_private]` stanza of the `rippled` config file to request that peer servers do not report your IP address in the Peer Crawler response. Use the `[ips_fixed]` to list servers you want your server to connect to. As an additional precaution, use a firewall to block incoming connections from other servers.
+Use the `[peer_private]` stanza of the `rippled` config file to make your server act as a private peer. Use the `[ips_fixed]` to list servers you want your server to connect to. (If you enable `[peer_private]` without any addresses in `[ips_fixed]`, your server does not connect to the network.) As an additional precaution, use a firewall to block incoming connections from other servers.
 
 Example configuration:
 
