@@ -117,7 +117,7 @@ The party planner (oracle) is present at the party to ensure that everything is 
 
 The party band must finish the escrow before 12 noon. If they don't, the escrow expires and the party band doesn't get paid.
 
-If the party planner does not publish the fulfillment (the party band is a no show) or if the party planner publishes the fulfillment, but no one finishes the escrow; after 12 noon the next day, any participant can [cancel the escrow](cancel-an-expired-escrow.html). Cancelling the escrow returns the held XRP to the party host's account.
+If the party planner does not publish the fulfillment (the party band is a no show) or if the party planner publishes the fulfillment, but no one finishes the escrow; after 12 noon the next day, anyone can [cancel the escrow](cancel-an-expired-escrow.html). Cancelling the escrow returns the held XRP to the party host's account.
 
 
 
@@ -128,7 +128,7 @@ The party band (receiver) waits for validation of the ledger that contains the e
 
 At this time, the party band provides the transaction's `hash` value to the party host (sender). They can use the `hash` value to look up the escrow transaction on the XRP Ledger to ensure that it is been finished correctly.
 
-The party band can also just check their XRP Ledger account balance to ensure that their balance has increased by 2000 XRP. The party host's balance won't change at this step (unless the escrow was cancelled) because the escrow creation already debited the locked-up XRP from their account.
+The party band can check their XRP Ledger account balance to ensure that their balance has increased by 2000 XRP. The party host's balance won't change at this step (unless the escrow was canceled) because the escrow creation already debited the locked-up XRP from their account.
 <!-- USE_CASE_STEPS_END -->
 
 
