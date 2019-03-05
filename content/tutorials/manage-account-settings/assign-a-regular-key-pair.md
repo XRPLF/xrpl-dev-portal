@@ -396,7 +396,7 @@ Note that the response contains a `hash` of the transaction, which you can use t
 
 To verify that your account has the regular key pair set correctly, submit an [AccountSet transaction][] from your account, signing it with the regular private key you assigned to your account in step 2.
 
-As discussed in step 2, transmitting your master private key is dangerous. It is equally risky to transmit your regular private key, though the consequences of being comprised might be less severe. Therefore, we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
+As discussed in step 2, transmitting your master private key is dangerous. It is equally risky to transmit your regular private key. Therefore, we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
 
 
 ### Sign Your Transaction
