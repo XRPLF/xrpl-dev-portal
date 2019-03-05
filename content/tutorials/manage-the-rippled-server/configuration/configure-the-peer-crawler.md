@@ -5,7 +5,7 @@ By default, `rippled` servers provide statistics publicly to anyone who asks usi
 This document contains steps for two options:
 
 - [Change the Information Reported by the Peer Crawler](#change-the-information-reported-by-the-peer-crawler)
-- [Disabling the Peer Crawler](#disabling-the-peer-crawler)
+- [Disable the Peer Crawler](#disable-the-peer-crawler)
 
 ## Change the Information Reported by the Peer Crawler
 
@@ -32,7 +32,7 @@ To configure how much information your server provides in response to peer crawl
         systemctl restart rippled
 
 
-## Disabling the Peer Crawler
+## Disable the Peer Crawler
 
 To disable the peer crawler API on your server, so it does not respond to peer crawler requests at all, complete the following steps:
 

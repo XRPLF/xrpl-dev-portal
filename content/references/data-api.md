@@ -5231,7 +5231,7 @@ Volume objects represent the total volumes of money moved, in either payments or
 [Server Object]: #server-objects
 [Server Objects]: #server-objects
 
-A "Server Object" describes one `rippled` server in the XRP Ledger peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](peer-protocol.html#peer-crawler).
+A "Server Object" describes one `rippled` server in the XRP Ledger peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](peer-crawler.html).
 
 Server objects have the following fields, with some only appearing if the request specified a verbose response:
 
