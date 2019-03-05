@@ -2,4 +2,4 @@ Gateways are businesses that provide a way for money and other forms of value to
 
 * An **Issuing Gateway** receives money (or other assets of value) outside of the XRP Ledger, and creates issuances in the XRP Ledger. This provides a direct way for customers to get money in and out of the XRP Ledger. All currencies in the XRP Ledger, except for XRP, take the form of issuances tied to a specific issuing gateway.
 * A **Private Exchange** holds XRP and lets its customers buy and sell that XRP in its own system. Most cryptocurrencies rely on private exchanges to provide a market for the cryptocurrency, but the XRP Ledger has a currency exchange built into the protocol itself.
-* **Merchants** accept payment within the XRP Ledger in exchange for goods and services in the outside world. Currently, Ripple (the company) does provide support for merchant operations using the XRP Ledger.
+* **Merchants** accept payment within the XRP Ledger in exchange for goods and services in the outside world. Currently, Ripple (the company) does not provide support for merchant operations using the XRP Ledger.
