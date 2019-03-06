@@ -10,27 +10,43 @@ A `rippled` server running in validator mode does everything a stock server does
 
 What makes a validator _different_ is that it also issues validation messages, which are sets of candidate transactions for evaluation by the XRP Ledger network during the [consensus process](consensus-principles-and-rules.html#how-consensus-works).
 
-It's important to understand that these validation messages are used only by `rippled` servers that explicitly trust your validator by listing it on their Unique Node Lists (UNLs). Servers that do not include your validator in their UNLs ignore your validator's messages in the consensus process. A validator that is not included in any UNL is called an _untrusted_ validator.
+It's important to understand that merely issuing validation messages does not automatically give your validator a say in the consensus process. Other servers ignore your validation messages unless they add your validator to their Unique Node List (UNL). If your validator is included in a UNL, it is a _trusted_ validator and its proposals are considered in the consensus process by the servers that trust it.
 
-For this reason, aside from getting your validator up and running, another key aspect of operating a validator is putting infrastructure in place that builds trust in your validator. Before validation list publishers, such as [https://vl.ripple.com](https://vl.ripple.com), can add your validator to their UNLs, they must first have trust in your validator. Once your validator has been added to a UNL, it is a _trusted_ validator that participates in the consensus process.
-
-To run a `rippled` server as a validator, complete the following tasks:
-
-1. Install a `rippled` server. For more information, see [Install rippled](install-rippled.html).
-
-2. [Enable validation on your `rippled` server](#enable-validation-on-your-rippled-server).
-
-Beyond this, you can optionally complete the following tasks that help build trust in your validator:
-
-1. [Understand the traits of a good validator](#understand-the-traits-of-a-good-validator).
-
-2. [Set up proxies to help protect your validator](#set-up-proxies-to-help-protect-your-validator) from [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) attacks.
-
-3. [Provide domain verification](#provide-domain-verification).
+Even if your validator isn't a _trusted_ validator, it stills plays an important role in the overall health of the network. These validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of these validators that aren't listed in UNLs, that might indicate a problem.
 
 
 
-## Enable Validation on Your `rippled` Server
+## 1. Understand the traits of a good validator
+
+Strive to have your validator always embody the following properties. Being a good validator helps `rippled` server operators and validator list publishers, such as [https://vl.ripple.com](https://vl.ripple.com), to trust your validator before adding it to their UNLs.
+
+- **Available**
+
+    A good validator is always running and submitting validation votes for every proposed ledger. Strive for 100% uptime.
+
+- **In agreement**
+
+    A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the [latest `rippled` release](https://github.com/ripple/rippled/tree/master) without modifications. [Watch `rippled` releases](https://github.com/ripple/rippled/releases) to be notified of new releases.
+
+- **Issuing timely votes**
+
+    A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes timely, make sure your validator meets the recommended [system requirements](system-requirements.html), which include a fast internet connection.
+
+- **Identified**
+
+    A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators operated by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
+
+Ripple (the company) publishes a [validator list](https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt) with a set of recommended validators. Ripple strongly recommends using exactly this list for production servers.
+
+
+
+## 2. Install a `rippled` server
+
+For more information, see [Install `rippled`](install-rippled.html).
+
+
+
+## 3. Enable validation on your `rippled` server
 
 Enabling validation on your `rippled` server means providing a validator token in your server's `rippled.cfg` file. Ripple recommends using the `validator-keys` tool (included in `rippled` RPMs) to securely generate and manage your validator keys and tokens.
 
@@ -100,57 +116,71 @@ On your validator:
 
 
 
-## Understand the Traits of a Good Validator
+## 4. Connect to the network
 
-Not every validator is likely to be widely trusted and validator list publishers may require validators to meet stringent criteria before they list them in their UNLs.
+As a validator operator, one of your key responsibilities is to ensure that your validator has reliable and safe connections to the XRP Ledger network. Instead of connecting to random and potentially malicious peers on the network, you can instruct your validator to connect to the network by using one of the following methods:
 
-Strive to have your validator always embody the following properties. The more of these properties your validator embodies, the more reasons validator list publishers have to include it on their UNLs.
+ - [Public hubs](#connect-using-public-hubs)
+ - [Proxies](#connect-using-proxies)
 
-- **Available**
-
-    A good validator is always running and submitting validation votes for every proposed ledger. Strive for 100% uptime.
-
-- **In agreement**
-
-    A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the [latest `rippled` release](https://github.com/ripple/rippled/tree/master) without modifications. [Watch `rippled` releases](https://github.com/ripple/rippled/releases) to be notified of new releases.
-
-- **Issuing timely votes**
-
-    A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes timely, make sure your validator meets the recommended [system requirements](system-requirements.html), which include a fast internet connection.
-
-- **Identified**
-
-    A good validator has a clearly identified owner. Providing [domain verification](#provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators operated by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
-
-It's worth noting that running an untrusted validator can also be helpful to the overall health of the network. Untrusted validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of untrusted validators, that might indicate a problem.
-
-Ripple (the company) publishes a [validator list](https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt) with a set of recommended validators. Ripple strongly recommends using exactly this list for production servers.
+ Using one of these configurations can help provide your validator with reliable connections to the network, as well as protect it from from [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) attacks.
 
 
+### Connect using public hubs
 
-## Set Up Proxies to Help Protect Your Validator
+This configuration involves connecting your validator to one or more public hubs that connect to the network. Successful public hubs embody the following traits:
 
-To help protect a validator from [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) attacks, set up one or more stock `rippled` servers as proxies between your validator and inbound and outbound traffic.
+- Good bandwidth.
+- Connections with a lot of reliable peers.
+- Ability to relay messages reliably.
+
+The benefit of connecting to public hubs is easy access to a lot of safe and reliable connections to the network. These connections help keep your validator healthy.
+
+To connect your validator to the network using public hubs, set the following configurations in your validator’s `rippled.cfg` file.
+
+1. Include the following `[ips_fixed]` stanza. The two values, `r.ripple.com 51235` and `zaphod.alloy.ee 51235`, are public hubs. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs.
+
+        [ips_fixed]
+        r.ripple.com 51235
+        zaphod.alloy.ee 51235
+
+    You can include the IP addresses of other `rippled` servers here, but _**only**_ if you can expect them to:
+
+      - Relay messages without censoring.
+      - Stay online consistently.
+      - Not DDoS you.
+      - Not try to crash your server.
+      - Not publish your IP address to strangers.
+
+2. Include the following `[peer_private]` stanza and set it to `1`. Enabling this setting instructs your validator’s peers not to broadcast your validator’s IP address. This setting also instructs your validator to connect to only the peers configured in your `[ips_fixed]` stanza. This ensures that your validator connects to and shares its IP with only peer `rippled` servers you know and trust.
+
+    **Warning:** Be sure that you don't publish your validator's IP address in other ways.
+
+        [peer_private]
+        1
+
+    With `[peer_private]` enabled, `rippled` ignores any connections suggested by the `[ips]` stanza. If you need to connect to an IP currently in your `[ips]` stanza, put it in the `[ips_fixed]` stanza instead, but _**only**_ if you can expect them to behave as described in step 1.
+
+
+### Connect using proxies
+
+This configuration involves running stock `rippled` servers that you use as proxies between your validator and inbound and outbound network traffic.
 
 **Note:** While these servers are acting as proxies, they are not web proxies for HTTP(S) traffic.
 
+The benefit of this configuration is more redundancy and access to a lot of safe and reliable connections to the network through proxy servers that you run yourself. These connections help keep your validator healthy.
+
 <!-- { TODO: Future: add a recommended network architecture diagram to represent the proxy, clustering, and firewall setup: https://ripplelabs.atlassian.net/browse/DOC-2046 }-->
 
-1. [Enable validation](#enable-validation-on-your-rippled-server) on your `rippled` server.
+1. [Enable validation](#3-enable-validation-on-your-rippled-server) on your `rippled` server.
 
 2. Set up stock `rippled` servers. For more information, see [Install rippled](install-rippled.html).
 
 3. Configure your validator and stock `rippled` servers to run in a [cluster](cluster-rippled-servers.html).
 
-4. In your validator's `rippled.cfg` file:
+4. In your validator's `rippled.cfg` file, set `[peer_private]` to `1` to prevent your validator's IP address from being forwarded. For more information, see [Private Peers](peer-protocol.html#private-peers).
 
-    1. Copy the `[ips_fixed]` IP address list you defined in the previous cluster configuration step and paste it under `[ips]`.
-
-        For this purpose, the `[ips_fixed]` and `[ips]` values must be identical and contain only the IP addresses and ports of the stock `rippled` servers you clustered with your validator. This ensures that your validator connects to only the stock `rippled` servers that you control.
-
-    2. Set `[peer_private]` to `1` to prevent your validator's IP address from being forwarded. For more information, see [Private Peers](peer-protocol.html#private-peers).
-
-        **Warning:** Be sure that you don't publish your validator's IP address in other ways.
+    **Warning:** Be sure that you don't publish your validator's IP address in other ways.
 
 5. Configure your validator host machine's firewall to allow the following traffic only:
 
@@ -165,8 +195,25 @@ To help protect a validator from [DDoS](https://en.wikipedia.org/wiki/Denial-of-
 7. Use the [Peer Crawler](peer-protocol.html#peer-crawler) endpoint on one of your stock `rippled` servers. The response should not include your validator. This verifies that your validator's `[peer_private]` configuration is working. One of the effects of enabling `[peer_private]` on your validator is that your validator's peers do not include it in their Peer Crawler results.
 
 
+## 5. Verify your network connection
 
-## Provide Domain Verification
+Here are some methods you can use to verify that your validator has a healthy connection to the XRP Ledger network:
+
+- Use the [`peers`](peers.html) command to return a list of all `rippled` servers currently connected to your validator. If the `peers` array is `null`, you don’t have a healthy connection to the network. If you've set up your validator using the instructions in this document, the `peers` array should include the same number of objects as the number of peers defined in your `[ips_fixed]` stanza.
+
+    If you listed a public hub in your `[ips_fixed]` stanza and it is busy, it may reject your validator's connection. In this case, you may end up with fewer connections than configured in your `[ips_fixed]` stanza. Your validator retries the connection if it's initially rejected.
+
+    If you are having trouble maintaining a reliable and safe connection to the network and haven't set up connections using public hubs or proxies, see [4. Connect to the network](#4-connect-to-the-network). Using one of the methods described in the section may help your validator remain healthily connected to the network.
+
+- Use the [`server_info`](server_info.html) command to return some basic information about your validator. The `server_state` should be set to `proposing`. It may also be set to `full` or `validating`, but only for a few minutes before moving into `proposing`.
+
+    If the `server_state` does not spend the majority of its time set to `proposing`, it may be a sign that your validator is unable to fully participate in the XRP Ledger network. For more information about server states and using the `server_info` endpoint to diagnose issues with your validator, see [`rippled` Server States](rippled-server-states.html) and [Get the `server_info`](diagnosing-problems.html#get-the-server-info).
+
+- Use the [`validators`](validators.html) command to return the current list of published and trusted validators used by the validator. Ensure that the `validator_list_expires` value is either `never` or not expired or about to expire.
+
+
+
+## 6. Provide domain verification
 
 To help validation list publishers and other participants in the XRP Ledger network understand who operates your validator, provide domain verification for your validator. At a high level, domain verification is a two-way link:
 
@@ -174,7 +221,7 @@ To help validation list publishers and other participants in the XRP Ledger netw
 
 - Use your validator key to claim ownership of a domain.
 
-Creating this link establishes strong evidence that you own both the validator key and the domain.
+Creating this link establishes strong evidence that you own both the validator key and the domain. Providing this evidence is just one aspect of [being a good validator](#1-understand-the-traits-of-a-good-validator).
 
 To provide domain verification:
 
@@ -216,7 +263,7 @@ To provide domain verification:
 
 
 
-## Revoke Validator Keys
+## Revoke validator keys
 
 If your validator's master private key is compromised, you must revoke it immediately and permanently.
 

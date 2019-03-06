@@ -7,7 +7,7 @@ _The `validation_create` method is an [admin method](admin-rippled-methods.html)
 
 You can configure your server to use the generated key pair to sign validations (validation key pair) or regular peer-to-peer communications (node key pair).
 
-**Tip:** For configuring a robust validator, you should use the `validator-keys` tool (included in the `rippled` RPM) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](run-rippled-as-a-validator.html#enable-validation-on-your-rippled-server).
+**Tip:** For configuring a robust validator, you should use the `validator-keys` tool (included in the `rippled` RPM) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).
 
 
 ### Request Format
