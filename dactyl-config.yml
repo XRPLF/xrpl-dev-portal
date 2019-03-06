@@ -51,15 +51,15 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: use-an-escrow-as-a-smart-contract.html
+              date: 2019-03-06
+            - html: run-rippled-as-a-validator.html
+              date: 2019-03-06
             - html: xrp-ledger-toml.html
               date: 2019-02-22
             - html: send-xrp.html
               date: 2019-02-20
             - html: transaction-censorship-detection.html
-              date: 2019-02-13
-            - html: crawl_shards.html
-              date: 2019-02-13
-            - html: offercreate.html
               date: 2019-02-13
 
     # Data API target for porting changes to the README in the upstream repo
