@@ -71,10 +71,9 @@ th {
   margin-right: 0.375rem;
 }
 
-@media (min-width: 992px) {
-  #topsearchbar {
-    width: 185px;
-  }
+#topsearchbar {
+  padding-right: 60px;
+  width: 100%;
 }
 
 #navbar-search .btn {
@@ -321,6 +320,7 @@ p + .readmore {
 .readmore .btn {
   font-size: 18px;
   transition: 0.5s;
+  white-space: normal;
 }
 
 .readmore .btn i,
