@@ -25,7 +25,7 @@ To configure how much information your server provides in response to peer crawl
         counts = 0
         unl = 1
 
-    The settings in this example represent the default values. A setting with a value of `1` means to share that type of information. A value of `0` means not to share that information. The names of the config fields match the names of the fields they control in the [peer crawler response](peer-crawler.html#response-format).
+    The fields in this stanza control which fields the server returns in the [peer crawler response](peer-crawler.html#response-format). The names of the config fields match the fields of the API response. A setting with a value of `1` means to include the field in the response. A value of `0` means to omit that field from the response. This example shows the default values for each setting.
 
 3. After saving the changes to the config file, restart your `rippled` server to apply the updated configuration:
 

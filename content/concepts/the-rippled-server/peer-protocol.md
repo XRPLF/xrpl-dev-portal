@@ -30,11 +30,12 @@ The peer protocol port also serves the [special Peer Crawler API method](peer-cr
 
 ### Node Key Pair
 
-When a server first starts up, it generates a _node key pair_ to use to identify itself in peer protocol communications. The server uses its key to sign all its peer protocol communications. This makes it possible to reliably identify and verify the integrity of messages from another server in the peer-to-peer network even if that server's messages are being relayed by untrusted peers. A node key pair is similar to a validator's ephemeral key pair, but validation key pairs are treated separately from node key pairs.
+When a server first starts up, it generates a _node key pair_ to use to identify itself in peer protocol communications. The server uses its key to sign all its peer protocol communications. This makes it possible to reliably identify and verify the integrity of messages from another server in the peer-to-peer network even if that server's messages are being relayed by untrusted peers.
 
 The node key pair is saved in the database and reused when the server restarts. If you delete the server's databases, it creates a new node key pair, effectively coming online with a different identity. To reuse the same key pair even if the databases are deleted, you can configure the server with a `[node_seed]` stanza. To generate a value suitable for use in the `[node_seed]` stanza, use the [validation_create method][].
 
 The node key pair also identifies other servers [clustered](clustering.html) with this one. If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `rippled` Servers](cluster-rippled-servers.html).
+
 
 ## Private Peers
 
@@ -46,7 +47,7 @@ Configuring a server as a private server has several effects:
 - The server does not accept incoming connections from other servers unless it has been explicitly configured to accept connections from those servers.
 - The server asks its direct peers not to reveal its IP address in untrusted communications, including the [peer crawler API response](peer-crawler.html). This does not affect trusted communications such as the [peers admin method][peers method].
 
-    Servers configured as validators do this even if they aren't configured as private peers. This helps protect validators from being overloaded by denial of service attacks. [New in: rippled 1.2.1][]
+    Validators always ask their peers to hide the validators' IP addresses, regardless of the private server settings. This helps protect validators from being overloaded by denial of service attacks. [New in: rippled 1.2.1][]
 
     **Caution:** It is possible to modify a server's source code so that it ignores this request and shares its immediate peers' IP addresses anyway. You should configure your private server to connect only to servers that you know are not modified in this way.
 
