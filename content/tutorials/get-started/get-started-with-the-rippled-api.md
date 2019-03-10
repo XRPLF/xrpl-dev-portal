@@ -51,18 +51,6 @@ Send request body as a [JSON](https://en.wikipedia.org/wiki/JSON) object with th
 
 The response is also a JSON object.
 
-### Public Servers
-
-Currently, Ripple (the company) maintains a set of public JSON-RPC servers at:
-
-| `Domain`        | Port  | Notes                  |
-|:----------------|:------|:-----------------------|
-| `s1.ripple.com` | 51234 | General purpose server |
-| `s2.ripple.com` | 51234 | Full-history server    |
-
-These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
-
-
 ## Commandline
 
 The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. As a commandline client, `rippled` connects to the local instance. For example:
