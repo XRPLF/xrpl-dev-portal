@@ -1132,6 +1132,16 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-the-peer-crawler.md
+        html: configure-the-peer-crawler.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Configure how much information your server reports publicly about its status and peers.
+        targets:
+            - local
+
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
         html: enable-public-signing.html
         funnel: Docs
@@ -2691,6 +2701,16 @@ pages:
               anchor: "#client-mode-options"
             - name: Unit Tests
               anchor: "#unit-tests"
+        targets:
+            - local
+
+    -   md: references/rippled-api/peer-crawler.md
+        html: peer-crawler.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Crawler
+        blurb: Special API method for sharing network topology and status metrics.
         targets:
             - local
 

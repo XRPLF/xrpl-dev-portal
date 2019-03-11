@@ -192,7 +192,7 @@ The benefit of this configuration is more redundancy and access to a lot of safe
 
         $ sudo systemctl restart rippled.service
 
-7. Use the [Peer Crawler](peer-protocol.html#peer-crawler) endpoint on one of your stock `rippled` servers. The response should not include your validator. This verifies that your validator's `[peer_private]` configuration is working. One of the effects of enabling `[peer_private]` on your validator is that your validator's peers do not include it in their Peer Crawler results.
+7. Use the [Peer Crawler](peer-crawler.html) endpoint on one of your stock `rippled` servers. The response should not include your validator. This verifies that your validator's `[peer_private]` configuration is working. One of the effects of enabling `[peer_private]` on your validator is that your validator's peers do not include it in their Peer Crawler results.
 
 
 ## 5. Verify your network connection
