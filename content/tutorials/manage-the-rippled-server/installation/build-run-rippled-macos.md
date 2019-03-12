@@ -32,6 +32,7 @@ For development purposes Ripple recommends running `rippled` as your own user, n
 
       3. In a terminal, run:
 
+            cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
             ./bootstrap.sh
             ./b2 cxxflags="-std=c++14"
 
