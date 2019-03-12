@@ -1,6 +1,6 @@
 # Escrow
 
-Escrow is a feature of the XRP Ledger that allows you to send conditional XRP payments. These conditional payments, called _escrows_, set aside XRP and deliver it later when certain conditions are met. Conditions to successfully finish an escrow include time-based unlocks and [crypto-conditions][]. Escrows can also be set to expire if not finished in time. Conditional held payments are a key feature for full [Interledger Protocol][] support, which enables chains of payments to cross any number of ledgers.
+Escrow is a feature of the XRP Ledger that allows you to send conditional XRP payments. These conditional payments, called _escrows_, set aside XRP and deliver it later when certain conditions are met. Conditions to successfully finish an escrow include time-based unlocks and [crypto-conditions][]. Escrows can also be set to expire if not finished in time.
 
 The XRP set aside in an escrow is locked up. No one can use or destroy the XRP until the escrow has been successfully finished or canceled. Before the expiration time, only the intended receiver can get the XRP. After the expiration time, the XRP can only be returned to the sender.
 
@@ -33,11 +33,31 @@ Escrow is designed as a feature to enable the XRP Ledger to be used in the [Inte
 - Escrow only works with XRP, not issued currencies.
 - Escrow requires sending at least two transactions: one to create the escrow, and one to finish or cancel it. Thus, it may not be financially sensible to escrow payments for very small amounts, because the participants must destroy the [transaction cost](transaction-cost.html) of the two transactions.
     - When using Crypto-Conditions, the [cost of the transaction to finish the escrow](#escrowfinish-transaction-cost) is higher than usual.
-- All escrows must have a "finish-after" time, an expiration time, or both. Neither time can be in the past when the transaction to create the escrow executes.
+- All escrows must be created with a "finish-after" time or a [crypto-condition][]. If the escrow does not have a finish-after time, it must have an expiration time.
+
+    **Note:** The [fix1571 amendment][] changed the requirements for creating an escrow. Escrows created before that amendment could provide an expiration time with no condition or finish-after time. Anyone can finish such escrows immediately (sending the funds to the intended recipient).
+
+- None of the time values can be in the past when the escrow-creating transaction executes.
 - Timed releases and expirations are limited to the resolution of XRP Ledger closes. This means that, in practice, times may be rounded to approximately 5 second intervals, depending on exactly when the ledgers close.
 - The only supported [crypto-condition][] type is PREIMAGE-SHA-256.
 
 Escrow provides strong guarantees that are best suited for high-value, low-quantity payments. [Payment Channels](use-payment-channels.html) are better suited for fast, low-value payments. Of course, unconditional [Payments](payment.html) are also preferable for many use cases.
+
+## State Diagram
+
+The following diagram shows the states an Escrow can progress through:
+
+[![State diagram showing escrows going from Held → Ready/Conditionally Ready → Expired](img/escrow-states.png)](img/escrow-states.png)
+
+The diagram shows three different cases for three possible combinations of the escrow's "finish-after" time (`FinishAfter` field), crypto-condition (`Condition` field), and expiration time (`CancelAfter` field):
+
+- **Time-based Escrow (left):** With only a finish-after time, the escrow is created in the **Held** state. After the specified time has passed, it becomes **Ready** and anyone can finish it. If the escrow has an expiration time and no one finishes it before that time passes, then the escrow becomes **Expired**. In the expired state, an escrow cannot be finished, and anyone can cancel it.
+
+- **Combination Escrow (center):** If the escrow specifies both a crypto-condition (`Condition` field) _and_ a "finish-after" time (`FinishAfter` field), the escrow is **Held** until its finish-after time has passed. Then it becomes **Conditionally Ready**, and can finish it if they supply the correct fulfillment to the crypto-condition. If the escrow has an expiration time (`CancelAfter` field), and no one finishes it before that time passes, then the escrow becomes **Expired**. In the expired state, an escrow cannot be finished, and anyone can cancel it.
+
+- **Conditional Escrow (right):** If the escrow specifies a crypto-condition (`Condition` field) and not a finish-after time, the escrow becomes **Conditionally Ready** immediately when it is created. During this time, anyone can finish the escrow, but only if they supply the correct fulfillment to the crypto-condition. If no one finishes the escrow before its expiration time (`CancelAfter` field), the escrow becomes **Expired**. (An escrow without a finish-after time _must_ have an expiration time.) In the expired state, the escrow can no longer be finished, and anyone can cancel it.
+
+
 
 ## Availability of Escrow
 
