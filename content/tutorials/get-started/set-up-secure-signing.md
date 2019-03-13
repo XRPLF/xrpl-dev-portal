@@ -51,7 +51,7 @@ In this configuration, you run `rippled` on the machine that generates the trans
 
 In this configuration, you run a `rippled` server on a dedicated machine in the same private local area network (LAN) as the machine that generates the transactions to be signed. This configuration lets you assemble transaction instructions on one or more machines with very modest system specs, while using a single dedicated machine for running `rippled`. This may appeal to you if you run your own datacenter or server room.
 
-To use this configuration, set the `rippled` server to accept `wss` and `https` connections within your LAN. You can use a self-signed certificate if you use [certificate pinning](https://en.wikipedia.org/wiki/Transport_Layer_Security#Certificate_pinning), or you can use a certificate signed by an in-house or well-known Certificate Authority.
+To use this configuration, set the `rippled` server to accept `wss` and `https` connections within your LAN. You can use a self-signed certificate if you use [certificate pinning](https://en.wikipedia.org/wiki/Transport_Layer_Security#Certificate_pinning), or you can use a certificate signed by an in-house or well-known Certificate Authority. Some certificate authorities, such as [Let's Encrypt](https://letsencrypt.org/) issue certificates automatically for free.
 
 <!--{# TODO: link api-over-lan.html with the detailed instructions when those are ready #}-->
 

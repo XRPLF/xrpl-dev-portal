@@ -2,7 +2,7 @@
 
 <!-- DRAFT / INCOMPLETE PAGE. THESE INSTRUCTIONS MAY NOT WORK AS DESCRIBED. DO NOT TRUST THEM UNTIL THIS HAS BEEN MORE THOROUGHLY REVIEWED. -->
 
-***TODO: Describe how to set up a self-signed cert and use certificate-pinning on the client side to protect against MITM attacks.***
+***TODO: Describe how to generate a self-signed cert and use certificate-pinning on the client side to protect against MITM attacks AND/OR describe how to use Let's Encrypt to get and renew a ceritificate automatically. In either case, instruct how to configure the server w/ the cert.***
 
 **Warning:** This configuration comes with the additional downside that anyone on the LAN can sniff traffic between your machines, potentially gaining access to your secret keys. Do not use this configuration on a network that may have strangers on it. For example, on the LAN at a colocation facility or cloud host, other customers may be able to get access to the traffic between your machines. If you employ several developers sending test transactions, you could run one `rippled` machine for your whole office, while the developers use cheaper hardware, but any user on your office network could potentially use a packet sniffer to get access to developers' secret keys. ***TODO: with proper certs set up this mostly doesn't apply***
 
