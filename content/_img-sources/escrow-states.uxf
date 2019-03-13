@@ -357,12 +357,12 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>110</x>
-      <y>40</y>
+      <y>50</y>
       <w>30</w>
-      <h>560</h>
+      <h>550</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;540.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;530.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -382,22 +382,22 @@ style=wordwrap</panel_attributes>
     <coordinates>
       <x>90</x>
       <y>380</y>
-      <w>1230</w>
+      <w>860</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;1210.0;10.0</additional_attributes>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;840.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>90</x>
       <y>230</y>
-      <w>840</w>
+      <w>860</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;820.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;840.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
@@ -420,7 +420,6 @@ style=wordwrap</panel_attributes>
       <h>70</h>
     </coordinates>
     <panel_attributes>CancelAfter time
-(if specified)
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -482,6 +481,42 @@ transaction</panel_attributes>
     </coordinates>
     <panel_attributes>Time
 style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>380</y>
+      <w>380</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>380</x>
+      <y>370</y>
+      <w>170</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>(if CancelAfter specified)
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1020</x>
+      <y>370</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>(CancelAfter required)
+fontsize=12
+</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
