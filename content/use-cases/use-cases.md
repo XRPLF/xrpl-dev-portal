@@ -14,7 +14,7 @@ Here are some of our users' most popular use cases:
 
 * **[Open a Payment Channel to Enable an Inter-Exchange Network](open-a-payment-channel-to-enable-an-inter-exchange-network.html)**
 
-      Use a payment channel to move XRP from your digital exchange to another digital exchange, while also creating an inter-exchange network.
+      Use a payment channel to move XRP from your digital exchange to another digital exchange.
 
 * **[Contribute Code to `rippled`](contribute-code-to-rippled.html)**
 

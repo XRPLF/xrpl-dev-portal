@@ -1,27 +1,25 @@
 # Open a Payment Channel to Enable an Inter-Exchange Network
 
-As a digital asset exchange, if you frequently send XRP to another exchange, you can improve the efficiency of these payments by opening an XRP Ledger [payment channel](payment-channels.html) between your exchange (the _payer_ exchange) and the other exchange (the _payee_ exchange). The need to send XRP from your exchange to another exchange may originate with your customers withdrawing XRP from your exchange and depositing it to the other exchange, for example.
+As a digital asset exchange, if you frequently send XRP to another exchange, you can improve the efficiency of these payments by opening an XRP Ledger [payment channel](payment-channels.html) between your exchange (the _payer_ exchange) and the other exchange (the _payee_ exchange). The need to send XRP from your exchange to another exchange may originate with your customers withdrawing XRP from your exchange and depositing it to the other exchange.
 
 A payment channel enables you to send one-way, "asynchronous" XRP payments that can be divided into very small increments and settled later. If you have a two-way flow with the other exchange, you can simply open two payment channels (one for each direction).
 
-<div>Here are some of the benefits of using a payment channel to send XRP instead of using individual payment transactions:</div>***TODO: the div workaround isn't working for all of the paras above***
+Here are some of the benefits of using a payment channel to send XRP instead of using individual payment transactions:
 
-- **Process withdrawals faster:** A standard payment transaction involves submitting an XRP Ledger transaction and waiting for a new ledger version that includes the transaction to be approved by [consensus](https://developers.ripple.com/consensus.html). When you use a payment channel to send XRP, creation and verification of a claim, which guarantees the payment of XRP, all happen outside of the consensus process. This means that the payer exchange can guarantee XRP payments to the payee exchange at a rate limited only by the participants' ability to create and verify the digital signatures of the claims.
+- **Process withdrawals faster:** A standard payment transaction involves submitting an XRP Ledger transaction and waiting for a new ledger version that includes the transaction to be approved by [consensus](consensus.html). When you use a payment channel to send XRP, creation and verification of a claim, which guarantees the payment of XRP, all happen outside of the consensus process. This means that the payer exchange can guarantee XRP payments to the payee exchange at a rate limited only by the participants' ability to create and verify the digital signatures of the claims.
 
-- **Lower transaction costs:** The payee exchange can choose to take the claims it has received from the payer exchange and redeem them in batches to receive the guaranteed XRP amounts. Redeeming a batch of claims in a single transaction incurs a _single_ transaction cost, while processing multiple XRP payment transactions (one per claim without a payment channel in place, for example) to receive the same amount of XRP incurs _multiple_ transaction costs. ***TODO: accurately stated?***
+- **Lower transaction costs:** The payee exchange can choose to take the claims it has received from the payer exchange and redeem them in batches to receive the guaranteed XRP amounts. Redeeming a batch of claims in a single transaction incurs a _single_ transaction cost, while processing multiple XRP payment transactions (one per claim without a payment channel in place, for example) to receive the same amount of XRP incurs _multiple_ transaction costs.
 
 - **Connect to the Internet of Value:** One of the key requirements of the [Internet of Value](https://ripple.com/insights/the-internet-of-value-what-it-means-and-how-it-benefits-everyone/) is interoperability. The [Interledger Protocol](https://interledger.org/) (ILP), which plays a large role in driving this interoperability, works best when it [uses payment channels](https://interledger.org/rfcs/0027-interledger-protocol-4) as its method for rebalancing accounts. In effect, when you open a payment channel from your exchange to another, you are connecting to the Internet of Value and helping to create the inter-exchange network that is fundamental to the success of the Internet of Value and the apps that are built on it.
 
-<div>Here’s a roadmap to the high-level tasks you’ll need to perform to implement this payment channel use case. To go directly to a full payment channels tutorial, see <a href="use-payment-channels.html">Use Payment Channels</a>.</div>
+Here’s a roadmap to the high-level tasks you’ll need to perform to implement this payment channel use case. To go directly to a full payment channels tutorial, see [Use Payment Channels](use-payment-channels.html).
 
-<!-- #{TODO: for the future: per Warren, it would be great to add diagrams for each step in the flow - showing claims and batch redemptions moving through the payment channel}# -->
+<!-- #{TODO: for the future: per Warren, it would be great to add diagrams for each step in the flow - showing claims and batch redemptions moving through the payment channel.}# -->
 
 
 
 {% set n = cycler(* range(1,99)) %}
-
-
-
+<!-- USE_CASE_STEPS_START -->
 <span class="use-case-step-num">{{n.next()}}</span>
 ## [Understand payment channels](payment-channels.html)
 
@@ -32,20 +30,30 @@ Learn more about payment channels and whether they provide the features you need
 <span class="use-case-step-num">{{n.next()}}</span>
 ## Payer and payee: [Set up and run `rippled` servers](manage-the-rippled-server.html)
 
-To use a payment channel to send and receive XRP, both the payer and payee exchanges must each have access to a `rippled` server that they can use to send transactions. A great way for an exchange to get access to a `rippled` server is to set up and run one.
+To use a payment channel to send and receive XRP, both the payer and payee exchanges must each have access to a `rippled` server that they can use to send transactions. If your exchange processes XRP withdrawals directly, you are probably already running a `rippled` server that you can use for this purpose.
+
+If not, a great way for an exchange to get access to a `rippled` server is to set up and run one.
 
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Payer and payee: [Fund XRP Ledger accounts](accounts.html)
+## Payer and payee: [Fund XRP Ledger accounts with enough XRP](accounts.html)
 
-- The payer exchange must have a funded XRP Ledger account to be used to send XRP to the payee exchange. Aside from the [base reserve](reserves.html) (20 XRP) and the [owner reserve](reserves.html#owner-reserves) of a payment channel (5 XRP), the account must also be able to set aside enough XRP in the payment channel to cover the intended number of transactions.
+If your exchange processes XRP deposits and withdrawals directly, you probably have existing funded XRP Ledger accounts that you can use for this purpose. Just ensure that they are funded with enough XRP as described here.
 
-  The payer exchange can always top-off the channel using the [PaymentChannelFund](paymentchannelfund.html) transaction if it runs out of XRP. However, topping-off requires an actual on-ledger transaction and confirmation, so it could take 4-5 seconds of processing time and ~10 drops of XRP to complete the top-off transaction. The more XRP the payer exchange pre-funds, the less often they need to top-off, so they can save some money by pre-funding more XRP.
+Along these lines, there's a good chance that you are following industry best practices and have a cold account plus one or more hot accounts. Also according to best practices, you probably want to use hot accounts for your payment channels.
 
-  However, if the payer exchange puts in more XRP than they need, they need to [close the payment channel](use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed) to get the XRP back, which means waiting out two transactions (a request to close the channel and another to actually close the channel) and the `SettleDelay` time.
+- The payer exchange must have a funded XRP Ledger account to be used to send XRP to the payee exchange.
 
-- The payee exchange must have a funded XRP Ledger account to be used to redeem (receive) XRP sent by the payer exchange. The account needs at least 21 XRP, which provides the 20 XRP [base reserve](reserves.html), plus enough to pay the transaction costs of redeeming claims, which are trivial. For example, you could redeem thousands of claims for less than 1 XRP in total.
+      Aside from the [base reserve](reserves.html) (20 XRP) and the [owner reserve](reserves.html#owner-reserves) of a payment channel (5 XRP), the account must also be able to set aside enough XRP in the payment channel to cover the intended number of transactions.
+
+      The payer exchange can always top-off the channel using the [PaymentChannelFund](paymentchannelfund.html) transaction if it runs out of XRP. However, topping-off requires an actual on-ledger transaction and confirmation, so it could take 4-5 seconds of processing time and ~10 drops of XRP to complete the top-off transaction. The more XRP the payer exchange pre-funds, the less often they need to top-off, so they can save some money by pre-funding more XRP.
+
+      However, if the payer exchange puts in more XRP than they need, they need to [close the payment channel](use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed) to get the XRP back, which means waiting out the `SettleDelay` time they set for the payment channel and two transactions (a request to close the channel and another request to actually close the channel).
+
+- The payee exchange must have a funded XRP Ledger account to be used to redeem (receive) XRP sent by the payer exchange.
+
+      The account needs at least 21 XRP, which provides the 20 XRP [base reserve](reserves.html), plus enough to pay the transaction costs of redeeming claims, which are trivial. For example, you could redeem thousands of claims for less than 1 XRP in total.
 
 
 
@@ -56,11 +64,15 @@ The payer exchange opens a payment channel from their XRP Ledger account to the 
 
 For this exchange use case, there is no real need to ever close the channel, so the payer exchange may not want to define a `CancelAfter` (expiration) value. If they ever need to close the channel, they can still do so.
 
-Regarding the amount of XRP the payment channel should hold, the payer exchange should consider the typical best practice of holding the vast majority of XRP across all of their user accounts in a cold wallet, with a small amount of XRP in a hot wallet. The payer exchange should also think about their daily traded volume of XRP to help determine how much XRP in their hot wallet to make available in the payment channel. They can always add more XRP to the payment channel after they create it.
+Regarding the amount of XRP the payment channel should hold, the payer exchange should consider the typical best practice of holding the vast majority of XRP across all of their user accounts in a cold wallet, with a small amount of XRP in a hot wallet.
 
-If the payer exchange has multiple XRP Ledger accounts (one for each hot wallet, for example) and wants to use them with payment channels, they must open one payment channel per pair of payer exchange and payee exchange XRP Ledger accounts. To be clear, this use case is about creating a payment channel between the exchanges' XRP Ledger accounts, not between customer accounts.
+As the payer exchange, you should decide approximately how often you want to add more XRP to the channel—--for example, daily, every 4 hours, or every 15 minutes—--and estimate the volume of XRP that you send to the payee exchange during that interval. You should fund the payment channel with enough to cover at least that much volume or the largest withdrawal that you want to process without delay, whichever is larger. For example, if you plan to refill the channel every 15 minutes, have an average volume of 50 XRP every 15 minutes, but occasionally send transfers of 10,000 XRP, you should supply the channel with at least 10,000 XRP.
 
-Also keep in mind that payment channels are unidirectional. So, let's say that exchange A and exchange B want to move XRP in both directions between their XRP Ledger accounts. Exchange A must open a payment channel from their XRP Ledger account to exchange B's XRP Ledger account, and exchange B must open a payment channel from their XRP Ledger account to exchange A's XRP Ledger account. ***TODO: I reworded this a bit to portray the accounts at each end of the payment channel as being owned by separate exchanges. Are both scenarios possible - both accounts owned by the same exchange, each account owned by a different exchange? Which one do we want to surface in this use case?***
+For withdrawals that are larger than the amount of XRP you have in the payment channel, you must process them specially. Either you can send large withdrawals as normal XRP payments, skipping the payment channel entirely, or you can first send a transaction to add the full withdrawal amount to the payment channel before creating claims for those. (See below for details on creating claims.)
+
+If the payer exchange has multiple XRP Ledger accounts (one for each hot wallet, for example), they should pick a pair of accounts to have a channel between them, then use only that pair of accounts for anything that needs the channel. To be clear, this use case is about creating a payment channel between the exchanges' XRP Ledger accounts, not between customer accounts.
+
+Also keep in mind that payment channels are unidirectional. So, let's say that exchange A and exchange B want to move XRP in both directions between their XRP Ledger accounts. Exchange A must open a payment channel from their XRP Ledger account to exchange B's XRP Ledger account, and exchange B must open a payment channel from their XRP Ledger account to exchange A's XRP Ledger account.
 
 
 
@@ -89,7 +101,7 @@ Consider a series of claims prompted by payer exchange customers withdrawing XRP
 
 | Sequence | Signature         | Amount | Destination Tag |
 |:---------|:------------------|:-------|:----------------|
-| 1        | 3045022100CE6E... | 1500   | 12345678        |
+| 1        | 3045022100CE6E... | 2000   | 12345678        |
 | 2        | 304402200C304A... | 3000   | 87654321        |
 | 3        | 30450221009849... | 4000   | 18273645        |
 
@@ -97,10 +109,10 @@ Consider a series of claims prompted by payer exchange customers withdrawing XRP
 |:--------------------|:-------------------------------------------------------|
 | **Channel ID**      | Payment channel the payer exchange used to create the claim. The payee exchange needs this value to verify and redeem the claim. |
 | **Public key**      | Public key the payer exchange used to open the payment channel. The payee exchange needs this value to verify and redeem the claim. |
-| **Sequence**        | A value that indicates the sequence in which the payer exchange created the claims. The payee exchange needs this value to keep track of and redeem claims in the correct order. For example, if the payer exchange did not provide the sequence value and the payee exchange lost track of the second claim above, the payee exchange might incorrectly credit 2500 XRP to destination tag 18273645. If the payer exchange did provide the sequence value, the payee exchange would know that it needs to account for a claim between claim 1 and claim 3. With claim 2 accounted for, the payee exchange could correctly credit 1500 XRP to destination tag 87654321 and 1000 XRP to destination tag 18273645. |
+| **Sequence**        | A value that indicates the sequence in which the payer exchange created the claims. The payee exchange needs this value to keep track of and redeem claims in the correct order. For example, if the payer exchange did not provide the sequence value and the payee exchange lost track of the second claim above, the payee exchange might incorrectly credit 2000 XRP to destination tag 18273645. If the payer exchange did provide the sequence value, the payee exchange would know that it needs to account for a claim between claim 1 and claim 3. With claim 2 accounted for, the payee exchange could correctly credit 1000 XRP to destination tag 87654321 and 1000 XRP to destination tag 18273645. |
 | **Signature**       | Signature of the claim. The payee exchange needs this value to verify and redeem the claim. |
-| **Amount**          | Amount of the claim created by the payer exchange. The payee exchange needs this value to verify and redeem the claim. For information about how to calculate the actual amount the payee exchange needs to credit the customer, see [Verify claims](#payee-verify-claims). |
-| **Destination Tag** | Destination tag of the customer account on the payee exchange that needs to be credited based on the claim. The payer exchange can get this value from their customer's withdrawal transaction, which should require a destination tag for the deposit to the payee exchange. When the payee exchange redeems claims, the XRP is deposited into the payee exchange's XRP Ledger account. The payee exchange can then deposit the XRP from the claim to the appropriate customer account based on the destination tag provided. |
+| **Amount**          | Cumulative amount of the claims created by the payer exchange. The payee exchange needs this value to verify and redeem the claim. For information about how to calculate the actual amount the payee exchange needs to credit the customer, see [Verify claims](#payee-verify-claims). |
+| **Destination Tag** | Destination tag of the customer account on the payee exchange that needs to be credited based on the claim. The payer exchange can get this value from their customer's withdrawal request, which should provide a destination tag for the deposit to the payee exchange. When the payee exchange redeems claims, the XRP is deposited into the payee exchange's XRP Ledger account. The payee exchange can then credit the XRP from the claim to the appropriate customer account based on the destination tag provided. |
 
 
 
@@ -111,20 +123,20 @@ The payee exchange verifies claims sent by the payer exchange.
 
 After verifying claims, the payee exchange should credit the claimed XRP to the customer accounts indicated by the destination tags sent by the payer exchange. Because claim amounts are cumulative, the payee exchange needs to be careful to credit the customer for only the _the difference from the previous claim_.
 
-For example, to know how much to credit a customer for a claim amount of 3000, the payee exchange needs to know that the previous claim amount was 1500. The difference between the claim amount and the previous claim amount (3000 - 1500 = 1500) is the amount the payee exchange must credit to the customer account.
+For example, to know how much to credit a customer for a claim amount of 3000, the payee exchange needs to know that the previous claim amount was 2000. The difference between the claim amount and the previous claim amount (3000 - 2000 = 1000) is the amount the payee exchange must credit to the customer account.
 
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
 ## Payee: [Redeem them in batches](use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount)
 
-This is usually when the payee provides goods or services to the payer in exchange for the amount of XRP listed in the claims. However, in this use case, there is likely no exchange of goods or services. The payee exchange can just redeem batches of claims after verifying them to receive the XRP guaranteed by the payer exchange.
+This is usually when the payee provides goods or services to the payer in exchange for the amount of XRP listed in the claims. In this use case, the service provided is for the customer to be credited in the payee exchange's own systems, so the customer can start trading.
 
-Here are some guidelines the payee exchange can use to decide how often to redeem claims:
+The payee exchange can redeem batches of claims after verifying them to receive the XRP guaranteed by the payer exchange. Here are some guidelines the payee exchange can use to decide how often to redeem claims:
 
 - Don't redeem every claim. That's not gaining any benefit from the payment channels.
 
-- Don't wait until you have more in claims than you're scared to lose. If something goes wrong and you miss your chance to redeem a claim, you don't get paid. If that happens and you already credited someone in another system, you could be in trouble. (For example, if you credited a customer with the XRP and they've already traded it for some other cryptocurrency that they withdrew.)
+- Don't wait until you have more in claims than you're scared to lose. If something goes wrong and you miss your chance to redeem a claim, you don't get paid. If that happens and you have already credited one or more customers in your system, you could be in trouble. Those customers may have already traded the XRP for other cryptocurrencies and withdrawn them. That leaves you with more XRP owed in your system than you were holding for your customers, and it's too late to correct the balances of the customers whose deposits you didn't receive.
 
 - If the payer requests to close the channel, you won't get paid if you don't redeem your claims before it finishes closing. The amount of time you have is based on the `SettleDelay`.
 
@@ -147,3 +159,5 @@ Payer and payee exchanges can continue to send, verify, and redeem batches of cl
 ## Payer: When it's time, make a request to [close the payment channel](use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed)
 
 When the payer exchange and payee exchange are done using the payment channel, the payer exchange can make a request to close the payment channel.
+
+<!-- USE_CASE_STEPS_END -->

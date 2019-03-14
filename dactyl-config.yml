@@ -2818,6 +2818,8 @@ pages:
             - payment-channels.html
             - use-payment-channels.html
             - list-xrp-in-your-exchange.html
+        filters:
+            - use_case
         targets:
             - local
 
