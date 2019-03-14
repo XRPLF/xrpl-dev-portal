@@ -33,7 +33,7 @@ Escrow is designed as a feature to enable the XRP Ledger to be used in the [Inte
 - Escrow only works with XRP, not issued currencies.
 - Escrow requires sending at least two transactions: one to create the escrow, and one to finish or cancel it. Thus, it may not be financially sensible to escrow payments for very small amounts, because the participants must destroy the [transaction cost](transaction-cost.html) of the two transactions.
     - When using Crypto-Conditions, the [cost of the transaction to finish the escrow](#escrowfinish-transaction-cost) is higher than usual.
-- All escrows must be created with a "finish-after" time or a [crypto-condition][]. If the escrow does not have a finish-after time, it must have an expiration time.
+- All escrows must be created with a "finish-after" time or a [crypto-condition][], or both. If the escrow does not have a finish-after time, it must have an expiration time.
 
     **Note:** The [fix1571 amendment][] changed the requirements for creating an escrow. Escrows created before that amendment could provide an expiration time with no condition or finish-after time. Anyone can finish such escrows immediately (sending the funds to the intended recipient).
 
