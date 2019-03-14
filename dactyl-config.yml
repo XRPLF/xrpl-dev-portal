@@ -51,16 +51,16 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: set-up-secure-signing.html
+              date: 2019-03-13
+            - html: escrow.html
+              date: 2019-03-13
             - html: configure-the-peer-crawler.html
               date: 2019-03-11
             - html: peer-crawler.html
               date: 2019-03-11
             - html: peer-protocol.html
               date: 2019-03-11
-            - html: use-an-escrow-as-a-smart-contract.html
-              date: 2019-03-06
-            - html: run-rippled-as-a-validator.html
-              date: 2019-03-06
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
