@@ -66,6 +66,10 @@ RippleAPI uses the `maxLedgerVersion` field of [Transaction Instructions](ripple
 
 ## Best Practices
 
+The following diagram summarizes the recommended flow for submitting a transaction and determining its outcome:
+
+[![Reliable transaction submission flowchart](img/reliable-tx-submission.svg)](img/reliable-tx-submission.svg)
+
 
 ### Reliable Transactions Submission
 
