@@ -1,22 +1,38 @@
 # Open a Payment Channel to Enable an Inter-Exchange Network
 
-A payment channel enables you to send one-way, "asynchronous" XRP payments that can be divided into very small increments and settled later. As a digital asset exchange, if you frequently send XRP to another exchange, you can improve the efficiency of these payments by opening an XRP Ledger [payment channel](payment-channels.html) between your exchange (the _payer_ exchange) and the other exchange (the _payee_ exchange).
+A payment channel enables you to send one-way, "asynchronous" XRP payments that can be divided into very small increments and settled later. As a digital asset exchange, if you frequently send XRP to another exchange, you can improve the efficiency of these payments by opening an XRP Ledger [payment channel](payment-channels.html) between your exchange (the _payer_ exchange) and the other exchange (the _payee_ exchange). In the case of a two-way flow with another exchange, you can simply open two payment channels (one for each direction).
 
-The need to send XRP from your exchange to another exchange may originate with your customers withdrawing XRP from your exchange and depositing it to the other exchange. If you are a large exchange, you probably have many customers moving XRP from your exchange into another exchange. You may be processing XRP payments all day long and with each payment, you are waiting for confirmation times, potentially at both ends of the transaction. In the case of a two-way flow with another exchange, you can simply open two payment channels (one for each direction).
+
+
+## Why Send XRP to Other Exchanges?
+
+The need to send XRP from your exchange to another exchange may originate with your customers withdrawing XRP from your exchange and depositing it to the other exchange. If you are a large exchange, you probably have many customers moving XRP from your exchange into another exchange. You may be processing XRP payments all day long and for each payment, you are waiting for confirmation times, potentially at both ends of the transaction, as well as paying transaction costs.
+
+
+
+## Benefits of Using a Payment Channel
 
 Here are some of the benefits of using a payment channel to send XRP instead of using individual payment transactions:
 
 - **Process withdrawals faster:** A standard payment transaction involves submitting an XRP Ledger transaction and waiting for a new ledger version that includes the transaction to be approved by [consensus](consensus.html). When you use a payment channel to send XRP, creation and verification of a claim, which guarantees the payment of XRP, all happen outside of the consensus process. This means that the payer exchange can guarantee XRP payments to the payee exchange at a rate limited only by the participants' ability to create and verify the digital signatures of the claims.
 
-      For your customers who are moving XRP to take advantage of arbitrage opportunities or to do algorithmic trading, speed matters. Enabling a customer to move XRP and start trading in an instant is a compelling differentiator for an exchange.
+      For your customers who are moving XRP to take advantage of arbitrage opportunities or to do algorithmic trading, speed matters. Enabling a customer to move XRP and start trading in an instant is a compelling differentiator for your exchange.
 
 - **Lower transaction costs:** The payee exchange can choose to take the claims it has received from the payer exchange and redeem them in batches to receive the guaranteed XRP amounts. Redeeming a batch of claims in a single transaction incurs a _single_ transaction cost, while processing multiple XRP payment transactions (one per claim without a payment channel in place, for example) to receive the same amount of XRP incurs _multiple_ transaction costs.
 
-      For example, instead of processing 10,000 XRP payment transactions, you can process the same payments in 5-10 batches of payment channel claims instead. Depending on volume, the savings in transaction costs can be significant over time.
+      For example, instead of processing 10,000 XRP payment transactions, you can process the same payments in 5-10 batches of payment channel claims instead. Depending on volume, the savings in transaction costs can be meaningful over time.
 
 - **Connect to the Internet of Value:** One of the key requirements of the [Internet of Value](https://ripple.com/insights/the-internet-of-value-what-it-means-and-how-it-benefits-everyone/) is interoperability. The [Interledger Protocol](https://interledger.org/) (ILP), which plays a large role in driving this interoperability, works best when it [uses payment channels](https://interledger.org/rfcs/0027-interledger-protocol-4) as its method for rebalancing accounts. In effect, when you open a payment channel from your exchange to another, you are connecting to the Internet of Value and helping to create the inter-exchange network that is fundamental to the success of the Internet of Value and the apps that are built on it.
 
       Connecting your exchange to other exchanges by way of payment channels is another differentiator. For customers who are moving XRP to purchase various currencies across exchanges, knowing that they can move XRP at a moment's notice from your exchange to any number of exchanges in the Internet of Value can make your exchange a preferred place to custody their assets.
+
+
+
+
+
+
+
+
 
 Here’s a roadmap to the high-level tasks you’ll need to perform to implement this payment channel use case. To go directly to a full payment channels tutorial, see [Use Payment Channels](use-payment-channels.html).
 
