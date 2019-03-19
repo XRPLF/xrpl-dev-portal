@@ -126,9 +126,13 @@ For each persisted transaction without validated result:
         If (server has continuous ledger history from the ledger when the
               transaction was submitted up to and including the ledger
               identified by LastLedgerSequence)
-            The transaction failed (2)
-            If appropriate for the application, submit with
-                new LastLedgerSequence and Fee
+
+            # Sanity check
+            If (sender account sequence > transaction sequence)
+                A different transaction with this sequence has a final outcome.
+                Manual intervention suggested (3)
+            Else
+                The transaction failed (2)
 
         Else
             # Outcome is final, but not known due to a ledger gap
@@ -141,15 +145,30 @@ The difference between the two transaction failure cases (labeled (1) and (2) in
 
 - In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](transaction-cost.html), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](paths.html), or other circumstances. For many such failures, immediately retrying with a similar transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
 
-- In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or it could be due to other conditions such as an unstable network connection. In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again.
+- In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or it could be due to other conditions such as an unstable network connection.
+
+    - In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again. However, you should not do this
+
     - It is also possible that the transaction could not succeed due to the state of the ledger, for example because the sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](tef-codes.html), the transaction is less likely to succeed without further modification.
+
+- Failure case (3) represents an unexpected state. When a transaction is not processed, you should check the  `Sequence` number of the sending account in the most recent validated ledger. (You can use the [account_info method][] to do so.) If the account's `Sequence` value in the latest validated ledger is higher than the transaction's `Sequence` value, then a different transaction with the same `Sequence` value has been included in a validated ledger. If your system is not aware of the other transaction, you are in an unexpected state and should stop processing until you have determined why that has happened; otherwise, your system might send multiple transactions to accomplish the same goal. The steps you should take depend on specifically what caused it. Some possibilities include:
+
+    - The previously-sent transaction was [malleable](transaction-malleability.html) and it actually was included in a validated ledger, but with a different hash than you expected. This can happen if you specify a set of flags that do not include the `tfFullyCanonicalSig` flag or if the transaction is multi-signed by more signers than necessary. If this is the case, save the different hash and the final outcome of the transaction, then resume normal activities.
+
+    - You [canceled](cancel-or-skip-a-transaction.html) and replaced the transaction, and the replacement transaction was processed instead. If you are recovering from an outage, it's possible you may have lost record of the replacement transaction. If this is the case, the transaction you were originally looking up has failed permanently, and the final outcome of the replacement transaction is recorded in a validated ledger version. Save both final outcomes, check for any other missing or replaced transactions, then resume normal activities.
+
+    - If you have two or more transaction-sending systems in an active/passive failover configuration, it's possible that the passive system mistakenly believes the active system has failed, and has become active while the original active system is still also sending transactions. Check the connectivity between the systems and ensure that at most one of them is active. Check your account's transaction history (for example, with the [account_tx method][]) and record the final outcome of all transactions that were included in validated ledgers. Any different transactions with the same `Sequence` numbers have failed permanently; save those final outcomes as well. When you have finished reconciling the differences from all the systems and have resolved the issues that made the systems activate simultaneously, resume normal activities.
+
+        **Tip:** The [`AccountTxnID` field](transaction-common-fields.html#accounttxnid) can help prevent redundant transactions from succeeding in this situation.
+
+    - A malicious actor may have used your secret key to send a transaction. If this is the case, [rotate your key pair](change-or-remove-a-regular-key-pair.html) if you can, and check for other transactions sent. You should also audit your network to determine if the secret key was part of a larger intrusion or security leak. When you successfully rotate your key pair and are certain that the malicious actor no longer has access to your accounts and systems, you can resume normal activities.
 
 
 #### Ledger Gaps
 
 If your server does not have continuous ledger history from when the transaction was originally submitted up to and including the ledger identified by `LastLedgerSequence`, you may not know the final outcome of the transaction. (If it was included in one of the ledger versions your server is missing, you do not know whether it succeeded or failed.)
 
-Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its [configured amount of history to store](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg#L581). Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can also manually request your server to acquire historical ledger versions using the [ledger_request method][].
+Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its [configured amount of history to store](ledger-history.html). Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can request your server to acquire historical ledger versions using the [ledger_request method][], but even so you may not be able to look up transaction outcomes from ledger versions that are outside of your server's configured history range.
 
 Alternatively, you can look up the status of the transaction using a different `rippled` server that already has the needed ledger history, such as Ripple's full-history servers at `s2.ripple.com`. Only use a server you trust for this purpose. A malicious server could be programmed to provide false information about the status and outcome of a transaction.
 
@@ -516,6 +535,7 @@ Finally the server may show one or more gaps in the transaction history. The `co
 
 - [Transaction Formats](transaction-formats.html)
 - [Transaction Cost](transaction-cost.html)
+- [Transaction Malleability](transaction-malleability.html)
 - [Overview of XRP Ledger Consensus Process](consensus.html)
 - [Consensus Principles and Rules](consensus-principles-and-rules.html)
 
