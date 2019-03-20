@@ -26,17 +26,9 @@ Here are some of the benefits of using a payment channel to send XRP instead of 
 
       Connecting your exchange to other exchanges by way of payment channels is another differentiator. For customers who are moving XRP to purchase various currencies across exchanges, knowing that they can move XRP at a moment's notice from your exchange to any number of exchanges in the Internet of Value can make your exchange a preferred place to custody their assets.
 
-
-
-
-
-
-
-
-
 Here’s a roadmap to the high-level tasks you’ll need to perform to implement this payment channel use case. To go directly to a full payment channels tutorial, see [Use Payment Channels](use-payment-channels.html).
 
-<!-- #{TODO: for the future: per Warren, it would be great to add diagrams for each step in the flow - showing claims and batch redemptions moving through the payment channel.}# -->
+<!-- #{TODO: for the future: per Warren, it would be great to add diagrams for each step in the flow - showing claims and batch redemptions moving through the payment channel. Also, we have any recommendations around Payment Channel Managers, we can surface that here.}# -->
 
 
 
