@@ -9,11 +9,11 @@ The following is a comprehensive list of all known amendments and their status o
 | [OwnerPaysFee][]            | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fix1578][]                 | v1.2.0     | [Open for Voting: 2019-02-13](https://ripple.com/dev-blog/introducing-xrp-ledger-rippled-version-1-2-0/ "BADGE_1DB4FF") |
-| [fixTakerDryOfferRemoval][] | v1.2.0     | [Open for Voting: 2019-02-13](https://ripple.com/dev-blog/introducing-xrp-ledger-rippled-version-1-2-0/ "BADGE_1DB4FF") |
-| [MultiSignReserve][]        | v1.2.0     | [Open for Voting: 2019-02-13](https://ripple.com/dev-blog/introducing-xrp-ledger-rippled-version-1-2-0/ "BADGE_1DB4FF") |
 | [Checks][]                  | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [MultiSignReserve][]        | v1.2.0     | [Open for Voting: 2019-02-13](https://ripple.com/dev-blog/introducing-xrp-ledger-rippled-version-1-2-0/ "BADGE_1DB4FF") |
+| [fixTakerDryOfferRemoval][] | v1.2.0     | [Expected: 2019-04-02](https://ripple.com/dev-blog/the-fix1578-and-fixtakerdryofferremoval-amendments-are-expected/ "BADGE_BLUE") |
+| [fix1578][]                 | v1.2.0     | [Expected: 2019-03-23](https://ripple.com/dev-blog/the-fix1578-and-fixtakerdryofferremoval-amendments-are-expected/ "BADGE_BLUE") |
 | [DepositPreauth][]          | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
 | [fix1515][]                 | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
 | [fix1543][]                 | v1.0.0     | [Enabled: 2018-06-21](https://xrpcharts.ripple.com/#/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
@@ -295,13 +295,12 @@ Changes Escrow to fix the following issues:
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288 | Planned   |
+| FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288 | Expected  |
 
 Changes the result codes returned by two transaction types:
 
 - Changes the [OfferCreate transaction][] to return a new result code, `tecKILLED`, if the offer used the `tfFillOrKill` flag and was killed. Without this amendment, the offer is killed but the transaction result is `tesSUCCESS`.
 - Changes the [TrustSet transaction][] to fail with `tecNO_PERMISSION` if it tries to enable the [NoRipple flag](rippling.html#the-noripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the NoRipple flag, but the transaction result is `tesSUCCESS` nonetheless.
-
 
 
 ## fix1623
@@ -325,7 +324,7 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561 | Planned   |
+| 2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561 | Expected  |
 
 Fixes a bug in [auto-bridging](autobridging.html) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
 
@@ -399,7 +398,7 @@ An address with a SignerList can disable the master key even if a regular key is
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D | Planned   |
+| 586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D | Open for Voting |
 
 Reduces the [owner reserve](reserves.html#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](multi-signing.html) SignerList.
 
