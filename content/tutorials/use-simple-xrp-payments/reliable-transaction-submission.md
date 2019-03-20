@@ -108,7 +108,7 @@ On restart, or the determination of a new last validated ledger (pseudocode):
 ```
 For each persisted transaction without validated result:
     Query transaction by hash
-    If (result appears in validated ledger)
+    If (result appears in any validated ledger)
         # Outcome is final
         Persist the final result
         If (result code is tesSUCCESS)
