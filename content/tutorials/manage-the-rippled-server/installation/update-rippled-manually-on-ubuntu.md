@@ -28,6 +28,8 @@ To update manually, complete the following steps:
 
         $ sudo service rippled restart
 
-7. Remove the downloaded `rippled` package
+7. Delete the downloaded `rippled` package file:
         
         $ rm rippled*.rpm
+        
+    (This does not affect the installation, but prevents later updates from trying to re-install the old version.)
