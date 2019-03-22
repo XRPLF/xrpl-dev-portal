@@ -147,7 +147,7 @@ The difference between the two transaction failure cases (labeled (1) and (2) in
 
 - In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or it could be due to other conditions such as an unstable network connection.
 
-    - In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again. However, you should not do this
+    - In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again. Use the same `Sequence` number as the original transaction.
 
     - It is also possible that the transaction could not succeed due to the state of the ledger, for example because the sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](tef-codes.html), the transaction is less likely to succeed without further modification.
 
