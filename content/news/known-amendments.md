@@ -13,7 +13,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [FlowCross][]               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [MultiSignReserve][]        | v1.2.0     | [Open for Voting: 2019-02-13](https://ripple.com/dev-blog/introducing-xrp-ledger-rippled-version-1-2-0/ "BADGE_1DB4FF") |
 | [fixTakerDryOfferRemoval][] | v1.2.0     | [Expected: 2019-04-02](https://ripple.com/dev-blog/the-fix1578-and-fixtakerdryofferremoval-amendments-are-expected/ "BADGE_BLUE") |
-| [fix1578][]                 | v1.2.0     | [Expected: 2019-03-23](https://ripple.com/dev-blog/the-fix1578-and-fixtakerdryofferremoval-amendments-are-expected/ "BADGE_BLUE") |
+| [fix1578][]                 | v1.2.0     | [Enabled: 2019-03-23](https://xrpcharts.ripple.com/#/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
 | [DepositPreauth][]          | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
 | [fix1515][]                 | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
 | [fix1543][]                 | v1.0.0     | [Enabled: 2018-06-21](https://xrpcharts.ripple.com/#/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
@@ -295,7 +295,7 @@ Changes Escrow to fix the following issues:
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288 | Expected  |
+| FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288 | Enabled   |
 
 Changes the result codes returned by two transaction types:
 
