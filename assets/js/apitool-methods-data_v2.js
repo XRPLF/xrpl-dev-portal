@@ -369,7 +369,7 @@ Request('Get Transaction Costs', {
     method: GET,
     path: "/v2/network/fees?{:query_params}",
     description: "Get stats on the transaction cost.",
-    link: "#get-network-fees",
+    link: "#get-transaction-costs",
     params: {
         "{:query_params}": "interval=day&limit=3&descending=true"
     }
