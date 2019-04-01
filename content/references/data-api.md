@@ -6,13 +6,15 @@ Ripple provides a live instance of the Data API with as complete a transaction r
 
 [**https://data.ripple.com**](https://data.ripple.com)
 
+You can run a historical database yourself, but we don’t recommend it because of the complexity involved. If your use case requires that you run a historical database, [contact us](mailto:docs@ripple.com) for information about how to set it up.
+
+
 
 ## More Information
 The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](https://github.com/ripple/ripple-data-api/).
 
 * [API Methods](#api-method-reference)
 * [API Conventions](#api-conventions)
-* [Setup (local instance)](#running-the-historical-database)
 * [Source Code on Github](https://github.com/ripple/rippled-historical-database)
 * [Release Notes](https://github.com/ripple/rippled-historical-database/releases)
 
@@ -5292,115 +5294,6 @@ A Validation Object has the following fields:
 | `signature`             | String                          | The validator's signature of the validation details, in hexadecimal. |
 | `first_datetime`        | String - [Timestamp][]          | Date and time of the first report of this validation. |
 | `last_datetime`         | String - [Timestamp][]          | Date and time of the last report of this validation. |
-
-
-
-# Running the Historical Database
-
-You can also serve the Data API v2 from your own instance of the Historical Database software, and populate it with transactions from your own `rippled` instance. This is useful if you do not want to depend on Ripple to run the historical database indefinitely, or you want access to historical transactions from within your own intranet.
-
-## Installation
-
-### Dependencies
-
-The Historical Database requires the following software installed first:
-
-* [HBase](http://hbase.apache.org/) (required for v2),
-* [Node.js](http://nodejs.org/)
-* [npm](https://www.npmjs.org/)
-* [git](http://git-scm.com/) (optional) for installation and updating.
-
-Version 2 of the Historical Database requires HBase instead of [PostgreSQL](http://www.postgresql.org/). Postgres support is deprecated.
-
-### Installation Process
-
-To install the Data API v2:
-
-1. Install HBase. For production use, configure it in distributed mode.
-2. Clone the Historical Database Git Repository:
-
-        git clone https://github.com/ripple/rippled-historical-database.git
-
-    (You can also download and extract a zipped release instead.)
-
-3. Use npm to install additional modules:
-
-        cd rippled-historical-database
-        npm install
-
-    The install script creates the required config files: `config/api.config.json` and `config/import.config.json`
-
-4. Change the config files as needed. Remove the `postgres` section from `api.config.json`.
-
-Reports, stats, and aggregated exchange data needs more processing before the API can make it available. This processing uses Apache Storm as well as some custom scripts. See [Storm Setup](https://github.com/ripple/rippled-historical-database/blob/master/storm/README.md) for more information.
-
-At this point, the Data API is installed. See [Services](#services) for the different components that you can run.
-
-### Tests
-
-Dependencies:
-
-* [Docker Compose](https://docs.docker.com/compose/install/)
-
-```
-$ docker-compose build
-$ docker-compose up -d hbase
-$ docker-compose run --rm webapp npm test
-```
-
-### Services
-
-The `rippled` Historical Database consists of several processes that can be run separately.
-
-* [Live Ledger Importer](#live-ledger-importer) - Monitors `rippled` for newly-validated ledgers.
-    Command: `node import/live`
-* [Backfiller](#backfiller) - Populates the database with older ledgers from a `rippled` instance.
-    Command: `node import/postgres/backfill`
-* API Server - Provides [REST API access](#api-method-reference) to the data.
-    Command:  `npm start` (restarts the server automatically when source files change),
-    or `node api/server.js` (start once)
-
-## Importing Data
-
-In order to retrieve data from the `rippled` Historical Database, you must first populate it with data. Broadly speaking, there are two ways this can happen:
-
-* Connect to a `rippled` server that has the historical ledgers, and retrieve them. (Later, you can reconfigure the `rippled` server not to keep history older than what you have in your Historical Database.)
-    * You can choose to retrieve only new ledgers as they are validated, or you can retrieve old ledgers, too.
-* Or, you can load a dump from a database that already has the historical ledger data. (At this time, there are no publicly-available database dumps of historical data.) Use the standard process for your database.
-
-In all cases, keep in mind that the integrity of the data is only as good as the original source. If you retrieve data from a public server, you are assuming that the operator of that server is trustworthy. If you load from a database dump, you are assuming that the provider of the dump has not corrupted or tampered with the data.
-
-### Live Ledger Importer
-
-The Live Ledger Importer is a service that connects to a `rippled` server using the WebSocket API, and listens for ledger close events. Each time a new ledger is closed, the Importer requests the latest validated ledger. Although this process has some fault tolerance built in to prevent ledgers from being skipped, the Importer may still miss ledgers.
-
-The Live Ledger Importer includes a secondary process that runs periodically to validate the data already imported and check for gaps in the ledger history.
-
-The Live Ledger Importer can import to one or more different data stores concurrently. If you have configured the historical database to use another storage scheme, you can use the `--type` parameter to specify the database type or types to use.
-
-Example usage:
-
-```
-// start loading records into HBase:
-$ node import/live
-```
-
-### Backfiller
-
-The Backfiller retrieves old ledgers from a `rippled` instance by moving backwards in time. You can optionally provide start and stop indexes to retrieve a specific range of ledgers, by their sequence number.
-
-The `--startIndex` parameter defines the most-recent ledger to retrieve. The Backfiller retrieves this ledger first and then continues retrieving progressively older ledgers. If this parameter is omitted, the Backfiller begins with the newest validated ledger.
-
-The `--stopIndex` parameter defines the oldest ledger to retrieve. The Backfiller stops after it retrieves this ledger. If omitted, the Backfiller continues as far back as possible. Because backfilling goes from most recent to least recent, the stop index should be a smaller than the start index.
-
-**Caution:** The Backfiller is best for filling in relatively short histories of transactions. Importing a complete history of all XRP Ledger transactions using the Backfiller could take weeks. If you want a full history, we recommend acquiring a database dump with early transctions, and importing it directly. For the public server, Ripple (the company) used the internal SQLite database from an offline `rippled` to populate its historical databases with the early transactions, then used the Backfiller to catch up to date after the import finished.
-
-Example usage:
-
-```
-// get ledgers #1,000,000 to #2,000,000 (inclusive) and store in HBase
-node import/hbase/backfill --startIndex 2000000 --stopIndex 1000000
-```
 
 
 <!--{# common link defs #}-->
