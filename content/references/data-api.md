@@ -6,7 +6,7 @@ Ripple provides a live instance of the Data API with as complete a transaction r
 
 [**https://data.ripple.com**](https://data.ripple.com)
 
-You can run a historical database yourself, but we don’t recommend it because of the complexity involved. If your use case requires that you run a historical database, [contact us](mailto:docs@ripple.com) for information about how to set it up.
+You can run a historical database yourself, but we don’t recommend it because of the complexity involved. If your use case requires that you run a historical database, contact [Ripple Technical Services](mailto:support@ripple.com) for information about how to set it up.
 
 
 
