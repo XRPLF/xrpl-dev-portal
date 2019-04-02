@@ -99,6 +99,11 @@
       {% endif %}
     {% endif %}
   {% endfor %}
+
+  {# Special case to add Dev Blog to things #}
+  {% if parent.name == "News" %}
+  <li class="level-{{indent_level}}"><a href="/blog/">Ripple Dev Blog</a></li>
+  {% endif %}
 {% endmacro %}
 
 <div class="children-display">

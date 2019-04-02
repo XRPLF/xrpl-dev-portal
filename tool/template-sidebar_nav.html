@@ -44,6 +44,9 @@
             <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
             {% endif %}
           {% endfor %}
+          {% if currentpage.funnel == "News" %}
+          <li><a class="nosubcat-page" href="/blog/">Ripple Dev Blog</a></li>
+          {% endif %}
           </ul>
         </div><!-- /.card-body -->
       </div><!-- /.card -->
