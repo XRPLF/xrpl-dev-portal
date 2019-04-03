@@ -25,6 +25,17 @@ Additionally, running your own server gives you admin control over it, which all
 
 Finally, if you run a validating server, you can use a stock server as a proxy to the public network while keeping your validating server on a private subnet only accessible to the outside world through the stock server. This makes it more difficult to compromise the integrity of your validating server.
 
+### Public Hubs
+
+A public hub is a stock server with lots of [peer protocol connections](peer-protocol.html) to other servers. You can help the XRP Ledger network maintain efficient connectivity by running a stock server as a public hub. Successful public hubs embody the following traits:
+
+- Good bandwidth.
+
+- Connections with a lot of reliable peers.
+
+- Ability to relay messages reliably.
+
+
 
 ## Reasons to Run a Validator
 
