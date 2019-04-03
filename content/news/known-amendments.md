@@ -12,7 +12,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [Checks][]                  | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [MultiSignReserve][]        | v1.2.0     | [Open for Voting: 2019-02-13](https://ripple.com/dev-blog/introducing-xrp-ledger-rippled-version-1-2-0/ "BADGE_1DB4FF") |
-| [fixTakerDryOfferRemoval][] | v1.2.0     | [Expected: 2019-04-02](https://ripple.com/dev-blog/the-fix1578-and-fixtakerdryofferremoval-amendments-are-expected/ "BADGE_BLUE") |
+| [fixTakerDryOfferRemoval][] | v1.2.0     | [Enabled: 2019-04-02](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
 | [fix1578][]                 | v1.2.0     | [Enabled: 2019-03-23](https://xrpcharts.ripple.com/#/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
 | [DepositPreauth][]          | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
 | [fix1515][]                 | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
@@ -324,7 +324,7 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561 | Expected  |
+| 2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561 | Enabled   |
 
 Fixes a bug in [auto-bridging](autobridging.html) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
 
