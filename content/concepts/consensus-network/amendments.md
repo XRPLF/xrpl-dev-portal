@@ -54,7 +54,7 @@ Each version of `rippled` is compiled with a list of known amendments and the co
 
 To become enabled, an amendment must be supported by at least 80% of trusted validators continuously for two weeks. If support for an amendment goes below 80% of trusted validators, the amendment is temporarily rejected. The two week period starts over if the amendment regains support of at least 80% of trusted validators. (This can occur if validators vote differently, or if there is a change in which validators are trusted.) An amendment can gain and lose a majority any number of times before it becomes permanently enabled. An amendment cannot be permanently rejected, but it becomes very unlikely for an amendment to become enabled if new versions of `rippled` do not have the amendment in their known amendments list.
 
-As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. At this time, Ripple (the company) recommends only trusting the validators on the validator registry that Ripple publishes at https://vl.ripple.com. For now, trusting only those validators is enough to coordinate with Ripple on releasing new features.
+As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. At this time, Ripple (the company) recommends only trusting the validators on the validator list that Ripple publishes at <https://vl.ripple.com>. For now, trusting only those validators is enough to coordinate with Ripple on releasing new features.
 
 ### Configuring Amendment Voting
 
