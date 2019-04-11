@@ -55,7 +55,7 @@ For a longer exploration of how the XRP Ledger Consensus Protocol responds to va
 
 - [Consensus Network Concepts](consensus-network.html) for several articles describing the mechanics of the XRP Ledger Consensus Protocol in greater depth.
 - [Run `rippled` as a Validator](run-rippled-as-a-validator.html) for instructions on running your own validator.
-- [Decentralization Strategy Update (Ripple Dev Blog)](https://ripple.com/dev-blog/decentralization-strategy-update/) for a description of Ripple's goals and plans for decentralizing the XRP Ledger.
+- [Decentralization Strategy Update (Ripple Dev Blog)](https://developers.ripple.com/blog/2017/decent-strategy-update.html) for a description of Ripple's goals and plans for decentralizing the XRP Ledger.
 
 <!--{# TODO: Replace the Decent Strategy Update w/ a newer article when we have one #}-->
 
