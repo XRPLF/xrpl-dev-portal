@@ -28,7 +28,7 @@ This combines qualities of physical and centralized digital money. Prior to the 
 
 **Note:** Users of the XRP Ledger _can_ freeze non-XRP currencies issued in the XRP Ledger. For more information, see the [Freeze documentation](freezes.html).
 
-The XRP Ledger's system of trusted validators uses a small amount of human interaction to achieve better distribution of authority than other decentralized systems. Fully-automated systems for reaching consensus from an unknown set of participants are vulnerable to concentrations of voting power. For example, Bitcoin mining is disproportionately concentrated in places with cheap electricity. As Ripple curates a list of distinct validators operated by different entities in different jurisdictions, the XRP Ledger can become more resistant to censorship and outside pressures than proof-of-work mining. For more information on Ripple's plan to decentralize the recommended set of validators, see the  [Decentralization Strategy Update](https://ripple.com/dev-blog/decentralization-strategy-update/).
+The XRP Ledger's system of trusted validators uses a small amount of human interaction to achieve better distribution of authority than other decentralized systems. Fully-automated systems for reaching consensus from an unknown set of participants are vulnerable to concentrations of voting power. For example, Bitcoin mining is disproportionately concentrated in places with cheap electricity. As Ripple curates a list of distinct validators operated by different entities in different jurisdictions, the XRP Ledger can become more resistant to censorship and outside pressures than proof-of-work mining. For more information on Ripple's plan to decentralize the recommended set of validators, see the  [Decentralization Strategy Update](https://developers.ripple.com/blog/2017/decent-strategy-update.html).
 
 For more information about the XRP Ledger's ability to detect censorship, see [Transaction Censorship Detection](transaction-censorship-detection.html).
 
@@ -87,7 +87,7 @@ A sample of advanced features in the XRP Ledger:
 - [Escrow](escrow.html) locks up XRP until a declared time passes or cryptographic condition is met.
 - [DepositAuth](depositauth.html) lets users decide who can send them money and who can't.
 - A [Decentralized Exchange](#on-ledger-decentralized-exchange) lets users trade obligations and XRP on-ledger.
-- [Invariant Checking](https://ripple.com/dev-blog/protecting-ledger-invariant-checking/) provides an independent layer of protections against bugs in transaction execution.
+- [Invariant Checking](https://developers.ripple.com/blog/2017/invariant-checking.html) provides an independent layer of protections against bugs in transaction execution.
 - [Amendments](amendments.html) provide smooth upgrades to the existing feature set, so the technology can continue to evolve without fracturing the ecosystem or causing uncertainty around times of transition.
 
 
