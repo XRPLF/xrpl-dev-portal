@@ -7,6 +7,7 @@
 [Currency Code]: currency-formats.html#currency-codes
 [drops of XRP]: basic-data-types.html#specifying-currency-amounts
 [Hash]: basic-data-types.html#hashes
+[identifying hash]: transaction-basics.html#identifying-transactions
 [Internal Type]: serialization.html
 [Ledger Index]: basic-data-types.html#ledger-index
 [Marker]: markers-and-pagination.html
@@ -22,6 +23,9 @@
 [transaction cost]: transaction-cost.html
 [universal error types]: error-formatting.html#universal-errors
 [XRP, in drops]: basic-data-types.html#specifying-currency-amounts
+
+<!-- API object types -->
+[AccountRoot object]: accountroot.html
 
 <!--{# Links to external sites #}-->
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03

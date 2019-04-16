@@ -1,9 +1,14 @@
 # RippleState
 [[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
 
-The `RippleState` object type connects two accounts in a single currency. Conceptually, a `RippleState` object represents two _trust lines_ between the accounts, one from each side. Each account can change the settings for its side of the `RippleState` object, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist, so `rippled` deletes `RippleState` objects when their properties are entirely default.
+The `RippleState` object type connects two accounts in a single currency. Conceptually, a `RippleState` object represents two [trust lines](trust-lines-and-issuing.html) between the accounts, one from each side. Each account can change the settings for its side of the `RippleState` object, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist, so `rippled` deletes `RippleState` objects when their properties are entirely default.
 
-Since no account is privileged in the XRP Ledger, a `RippleState` object sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower is deemed the "low account" and the other is the "high account".
+## High vs. Low Account
+
+There can only be one `RippleState` object per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a `RippleState` object sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when [decoded](accounts.html#address-encoding) is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.
+
+The "issuer" for the balance in a trust line is whichever account has a negative balance. If a `RippleState` object shows a negative balance, the low account is the issuer. If the balance is positive, the high account is the issuer. Frequently, but not always, you can also recognize the issuer as the account whose limit is set to 0.
+
 
 ## Example {{currentpage.name}} JSON
 
