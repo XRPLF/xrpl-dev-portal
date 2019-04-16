@@ -1,0 +1,7 @@
+| Field                                   | Value               | Description  |
+|:----------------------------------------|:--------------------|:-------------|
+| `AffectedNodes`                         | Array               | List of [ledger objects](ledger-object-types.html) that were created, deleted, or modified by this transaction, and specific changes to each. |
+| `DeliveredAmount`                       | [Currency Amount][] | _(May be omitted)_ For a [partial payment](partial-payments.html), this field records the amount of currency actually delivered to the destination. For more convenient processing, instead use the `delivered_amount` field, which is provided for all Payment transactions, partial or not. |
+| `TransactionIndex`                      | Unsigned Integer    | The transaction's position within the ledger that included it. This is zero-indexed. (For example, the value `2` means it was the 3nd transaction in that ledger.) |
+| `TransactionResult`                     | String              | A [result code](transaction-results.html) indicating whether the transaction succeeded or how it failed. |
+| [`delivered_amount`](#delivered-amount) | [Currency Amount][] | The [Currency Amount][] actually received by the `Destination` account. Use this field to determine how much was delivered, regardless of whether the transaction is a [partial payment](partial-payments.html). See below for details. [New in: rippled 0.27.0][] |
