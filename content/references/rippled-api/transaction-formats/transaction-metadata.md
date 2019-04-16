@@ -8,6 +8,14 @@ Some fields that may appear in transaction metadata include:
 
 {% include '_snippets/tx-metadata-field-table.md' %} <!--_ -->
 
+## Example Metadata
+
+The following JSON object shows the metadata for [a complex cross-currency payment](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B):
+
+```json
+{% include '_code-samples/metadata/cross-currency-payment.json' %}
+```
+
 ## AffectedNodes
 
 The `AffectedNodes` array contains a complete list of the [objects in the ledger](ledger-object-types.html) that this transaction modified in some way. Each entry in this array is an object with one top-level field indicating what type it is:
