@@ -81,7 +81,7 @@ Transaction metadata describes _exactly_ how the transaction was applied to the 
 
 {% include '_snippets/tx-metadata-field-table.md' %} <!--_ -->
 
-Aside from the result code, most of the interesting information is in [the `AffectedNodes` array](transaction-metadata.html#affectednodes). Much of what to look for in this array depends on the type of transaction, but at a minimum, every normal transaction (that is, not a [pseudo-transaction](pseudo-transaction-types.html)) modifies the sender's [AccountRoot object][], to destroy the XRP [transaction cost](transaction-cost.html) and increase the [account's Sequence number](basic-data-types.html#account-sequence).
+Most of the metadata is contained in [the `AffectedNodes` array](transaction-metadata.html#affectednodes). What to look for in this array depends on the type of transaction, but at a minimum, every normal transaction (that is, not a [pseudo-transaction](pseudo-transaction-types.html)) modifies the sender's [AccountRoot object][], to destroy the XRP [transaction cost](transaction-cost.html) and increase the [account's Sequence number](basic-data-types.html#account-sequence).
 
 This example shows the full response from step 1 above. See if you can figure out what changes it made to the ledger:
 
@@ -217,6 +217,8 @@ Payments involving issued currencies are a bit more complicated.
 All changes in issued currency balances are reflected in [RippleState objects](ripplestate.html), which represent [trust lines](trust-lines-and-issuing.html). An increase to one party's balance on a trust line is considered to decrease the counterparty's balance by equal amount; in the metadata, this is only recorded as a single change to the shared `Balance` for the RippleState object. Whether this change is recorded as an "increase" or "decrease" depends on which account has the numerically higher address.
 
 A single payment may go across a long [path](paths.html) consisting of several trust lines and order books. The process of changing the balances on several trust lines to connect parties indirectly is called [rippling](rippling.html). Depending on the `issuer` specified in the transaction's `Amount` field, it is also possible that the amount delivered may be split between several trust lines (`RippleState` accounts) connected to the destination account.
+
+**Tip:** The order that modified objects are presented in the metadata does not necessarily match the order those objects were visited while processing a payment. To better understand payment execution, it may help to reorder `AffectedNodes` members to reconstruct the paths the funds took through the ledger.
 
 Cross-currency payments consume [Offers](offer.html) in part or entirely to change between currencies with different currency codes and issuers. If a transaction shows `DeletedNode` objects for `Offer` types, that can indicate an Offer that was fully consumed, or an Offer that was found to be [expired or unfunded](offers.html#lifecycle-of-an-offer) at the time of processing. If a transaction shows a `ModifiedNode` of type `Offer`, that indicates an Offer that was partially consumed.
 
@@ -414,9 +416,18 @@ Most other transactions create a specific type of ledger entry and [adjust the s
 - [SetRegularKey transactions][] modify the [AccountRoot object][] of the sender, changing the `RegularKey` field as specified.
 - [SignerListSet transactions][] add, remove, or replace a [SignerList object](signerlist.html).
 
+### Pseudo-Transactions
 
+[Pseudo-transactions](pseudo-transaction-types.html) also have metadata, but they do not follow all the rules of normal transactions. They are not tied to a real account (the `Account` value is just the [base58-encoded form of the number 0](accounts.html#special-addresses)), so they do not modify an AccountRoot object in the ledger to increase the `Sequence` number or destroy XRP. Pseudo-transactions only make specific changes to special ledger objects:
 
-### Other Transaction
+- [EnableAmendment pseudo-transactions][] modify the [Amendments ledger object](amendments-object.html) to track which amendments are enabled, and which ones are pending with majority support and for how long.
+- [SetFee pseudo-transactions][] modify the [FeeSettings ledger object](feesettings.html) to change the base levels for the [transaction cost](transaction-cost.html) and [reserve requirements](reserves.html).
+
+## See Also
+
+- [Ledger Object Types Reference](ledger-object-types.html) - All possible fields of all types of ledger objects
+- [Transaction Metadata](transaction-metadata.html) - Summary of the metadata format and fields that appear in metadata
+- [Finality of Results](finality-of-results.html) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
