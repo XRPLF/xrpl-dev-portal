@@ -25,9 +25,9 @@ In the case of transactions, the identifying hash is based on the signed transac
 
 ## Open, Closed, and Validated Ledgers
 
-The `rippled` server makes a distinction between ledger versions that are _open_, _closed_, and _validated_. A server has one open ledger, a history of immutable, validated ledgers, and any number of closed but unvalidated ledgers. The following table summarizes the difference:
+The `rippled` server makes a distinction between ledger versions that are _open_, _closed_, and _validated_. A server has one open ledger, any number of closed but unvalidated ledgers, and an immutable history of validated ledgers. The following table summarizes the difference:
 
-| Ledger Type                      | Open                        | Closed                                     | Validated |
+| Ledger Type:                      | Open                        | Closed                                     | Validated |
 |:---------------------------------|:----------------------------|:-------------------------------------------|:--|
 | **Purpose:**                     | Temporary workspace         | Proposed next state                        | Confirmed previous state |
 | **Number used:**                 | 1                           | Any number, but usually 0 or 1             | One per ledger index, growing over time |

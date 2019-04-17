@@ -22,7 +22,7 @@ When you initially submit a transaction, the `rippled` server tentatively applie
 
 - The transaction may be delayed until a later ledger version, or may never be included in a validated ledger. For the most part, the XRP Ledger follows a principle that all valid transactions should be processed as soon as possible. However, there are exceptions, including:
 
-    - If a proposed transaction has not been relayed a majority of validators by the time a [consensus round](consensus.html) begins, it may be postponed until the next ledger version, to give the remaining validators time to fetch the transaction and confirm that it is valid.
+    - If a proposed transaction has not been relayed to a majority of validators by the time a [consensus round](consensus.html) begins, it may be postponed until the next ledger version, to give the remaining validators time to fetch the transaction and confirm that it is valid.
 
     - If an address sends two different transactions using the same sequence number, at most one of those transactions can become validated. If those transactions are relayed through the network in different paths, a tentatively-successful transaction that some servers saw first may end up failing because the other, conflicting transaction reached a majority of servers first.
 
