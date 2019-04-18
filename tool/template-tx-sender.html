@@ -1,0 +1,127 @@
+{% extends "template-base.html" %}
+
+{% block bodyclasses %}page-tx-sender{% endblock %}
+
+{% block right_sidebar %}
+<div id="connection-status" class="card">
+  <div class="card-header bg-dark">
+    <h3 class="card-title">Status</h3>
+  </div><!--/.card-header-->
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" id="connection-status-label">XRP Test Net:</li>
+      <li class="list-group-item disabled" id="connection-status-item">Not Connected</li>
+      <li class="list-group-item" id="sending-address-label">Sending Address:</li>
+      <li class="list-group-item disabled sending-address-item">(None)</li>
+      <li class="list-group-item" id="balance-label">Test XRP Available:</li>
+      <li class="list-group-item disabled" id="balance-item">(None)</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<section class="container-fluid p-3">
+  <h1>Transaction Sender</h1>
+
+  <div class="content">
+    <p>This tool sends transactions to the <a href="xrp-test-net-faucet.html">XRP Test Net</a> address of your choice so you can test how you monitor and respond to incoming transactions.</p>
+
+    <form>
+      <div class="form-group">
+        <label for="destAddress">Destination Address</label>
+        <input type="text" class="form-control" id="destAddress" aria-describedby="destAddressHelp" value="rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM" />
+        <small id="destAddressHelp" class="form-text text-muted">Send transactions to this XRP Test Net address</small>
+      </div>
+
+      <h3>Send Transaction</h3>
+
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <button class="btn btn-primary form-control" type="button" id="sendPaymentButton">Send XRP Payment</button>
+          <div class="input-group-append">
+            <input class="form-control" type="number" aria-describedby="payment-drops-of-xrp" value="100000" min="1" max="10000000000" />
+            <span class="input-group-text" id="payment-drops-of-xrp">drops of XRP</span>
+          </div>
+        </div>
+        <small class="form-text text-muted">Send a <a href="send-xrp.html">simple XRP-to-XRP payment</a>.</small>
+      </div><!-- /.form group for payment -->
+
+      <hr />
+
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <button class="btn btn-primary form-control" type="button" id="sendPartialPaymentButton">Send Partial Payment</button>
+        </div>
+        <small class="form-text text-muted">Delivers a small amount of XRP with a large <code>Amount</code> value, to test your handling of <a href="partial-payments.html">partial payments</a>.</small>
+      </div><!-- /.form group for partial payment -->
+
+      <hr />
+
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <button class="btn btn-primary form-control" type="button" id="createEscrowButton">Create Escrow</button>
+          <div class="input-group-append">
+            <span class="input-group-text">for</span>
+            <input class="form-control" type="number" value="60" min="5" max="10000" id="escrowSecondsFromNow" />
+            <span class="input-group-text">seconds</span>
+            <span class="input-group-text">
+              (
+              <input type="checkbox" id="escrowAutomatic" checked="checked" />
+              <label class="form-check-label" for="escrowAutomatic">Release automatically</label>)
+            </span>
+          </div>
+        </div>
+        <small class="form-text text-muted">Create a time-based escrow of 1 XRP.</small>
+      </div><!-- /.form group for create escrow -->
+
+      <hr />
+
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <button class="btn btn-primary form-control" type="button" id="createPayChanButton">Create Payment Channel</button>
+          <div class="input-group-append">
+          <span class="input-group-text">funded with</span>
+            <input class="form-control" type="number" aria-describedby="paychan-drops-of-xrp" value="100000" min="1" max="10000000000" />
+            <span class="input-group-text" id="paychan-drops-of-xrp">drops of XRP</span>
+          </div>
+        </div>
+        <small class="form-text text-muted">Create a payment channel.</small>
+      </div><!-- /.form group for create paychan -->
+
+      <hr />
+
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <button class="btn btn-primary form-control" type="button" id="sendIssuedCurrencyButton">Send Issued Currency</button>
+          <div class="input-group-append">
+            <input id="issued-currency-amount" class="form-control" type="number" value="100" />
+            <span class="input-group-text" id="issued-currency-code">FOO</span>
+          </div>
+        </div>
+        <small class="form-text text-muted">Your destination address should trust <span class="sending-address-item">(sending address)</span> for the currency in question.</small>
+      </div><!-- /.form group for issued currency payment -->
+
+      <hr />
+
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <button class="btn btn-primary form-control" type="button" id="trustLineButton">Trust for</button>
+          <div class="input-group-append">
+            <input id="trust-amount" class="form-control disabled" type="number" value="100000" />
+            <span class="input-group-text" id="trust-currency-code">FOO</span>
+          </div>
+        </div>
+        <small class="form-text text-muted">The test sender creates a trust line to your account for the given currency.</small>
+      </div><!-- /.form group for create trust line -->
+
+    </form>
+  </div>
+</section>
+{% endblock %}
+
+{% block endbody %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+  <script type="application/javascript" src="assets/js/ripple-lib-1.1.2-min.js"></script>
+  <script type='text/javascript' src='assets/js/tx-sender.js'></script>
+{% endblock %}

@@ -2915,6 +2915,13 @@ pages:
             - local
         template: template-test-net.html
 
+    -   name: Transaction Sender
+        funnel: Dev Tools
+        html: tx-sender.html
+        targets:
+            - local
+        template: template-tx-sender.html
+
 # News -------------------------------------------------------------------------
 
     -   md: news/news.md
