@@ -11,7 +11,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [Tickets][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Checks][]                  | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [MultiSignReserve][]        | v1.2.0     | [Expected: 2019-04-17](https://developers.ripple.com/blog/2019/multisignreserve-expected.html "BADGE_BLUE") |
+| [MultiSignReserve][]        | v1.2.0     | [Enabled: 2019-04-17](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
 | [fixTakerDryOfferRemoval][] | v1.2.0     | [Enabled: 2019-04-02](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
 | [fix1578][]                 | v1.2.0     | [Enabled: 2019-03-23](https://xrpcharts.ripple.com/#/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
 | [DepositPreauth][]          | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
@@ -398,7 +398,7 @@ An address with a SignerList can disable the master key even if a regular key is
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D | Expected  |
+| 586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D | Enabled   |
 
 Reduces the [owner reserve](reserves.html#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](multi-signing.html) SignerList.
 
