@@ -1137,6 +1137,7 @@ a.current {
 }
 
 .page-test-net .throbber,
+.page-tx-sender .throbber,
 .interactive-block .throbber {
     -webkit-animation: rotating 1s linear infinite;
     -moz-animation: rotating 1s linear infinite;
