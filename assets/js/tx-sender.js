@@ -1,16 +1,38 @@
 const set_up_tx_sender = async function() {
   //////////////////////////////////////////////////////////////////////////////
+  // Notification helpers
+  //////////////////////////////////////////////////////////////////////////////
+
+  function successNotif(msg) {
+    $.bootstrapGrowl(msg, {
+      delay: 7000,
+      offset: {from: 'bottom', amount: 68},
+      type: 'success',
+      width: 'auto'
+    })
+  }
+  function errorNotif(msg) {
+    $.bootstrapGrowl(msg, {
+      delay: 7000,
+      offset: {from: 'bottom', amount: 68},
+      type: 'danger',
+      width: 'auto'
+    })
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
   // Connection / Setup
   //////////////////////////////////////////////////////////////////////////////
 
-  FAUCET_URL = "https://faucet.altnet.rippletest.net/accounts"
-  TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
+  const FAUCET_URL = "https://faucet.altnet.rippletest.net/accounts"
+  const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
   let connection_ready = false
 
   let sending_address
   let sending_secret
   let xrp_balance
+
 
   console.debug("Getting a sending address from the faucet...")
 
@@ -25,20 +47,15 @@ const set_up_tx_sender = async function() {
     $(".sending-address-item").text(sending_address)
   }
 
-  // TEMP: reuse same address for testing
-  faucet_response({account:{address:"r6f2viHtMjNSfERbZmXXkJnMmkBAN6d9X", secret:"spyTc4y4GAQwBfQHCxiJ1Xd2mmnM2"},balance:10000})
-
-  // POST-TEMP: Version that actually uses the faucet on every run:
-  // $.ajax({
-  //   url: FAUCET_URL,
-  //   type: 'POST',
-  //   dataType: 'json',
-  //   success: faucet_response,
-  //   error: function() {
-  //     alert("There was an error with the XRP Ledger Test Net Faucet. Reload this page to try again.");
-  //   }
-  // })
-  //
+  $.ajax({
+    url: FAUCET_URL,
+    type: 'POST',
+    dataType: 'json',
+    success: faucet_response,
+    error: function() {
+      errorNotif("There was an error with the XRP Ledger Test Net Faucet. Reload this page to try again.")
+    }
+  })
 
   api = new ripple.RippleAPI({server: TESTNET_URL})
   api.on('connected', () => {
@@ -97,7 +114,9 @@ const set_up_tx_sender = async function() {
       console.debug("Prepared:", prepared)
     } catch(error) {
       console.log(error)
-      if (!silent) { alert("Error preparing tx: "+error) }
+      if (!silent) {
+        errorNotif("Error preparing tx: "+error)
+      }
       return
     }
 
@@ -114,7 +133,9 @@ const set_up_tx_sender = async function() {
       await api.submit(sign_response.signedTransaction)
     } catch (error) {
       console.log(error)
-      if (!silent) { alert("Error signing & submitting tx: "+error) }
+      if (!silent) {
+        errorNotif("Error signing & submitting "+tx_object.TransactionType+" tx: "+error)
+      }
       return
     }
 
@@ -122,18 +143,24 @@ const set_up_tx_sender = async function() {
     try {
       const data = await verify_transaction(sign_response.id, options)
       const final_result = data.outcome.result
-      // TODO: more "notification-like" system
-      // TODO: output should link to a tx lookup/explainer
+      // Future feature: output should link to a TestNet tx lookup/explainer
       if (final_result === "tesSUCCESS") {
-        if (!silent) { alert("Tx succeeded (hash:"+sign_response.id+")") }
+        if (!silent) {
+          successNotif(tx_object.TransactionType+" tx succeeded (hash: "+sign_response.id+")")
+        }
       } else {
-        if (!silent) { alert("Tx failed w/ code "+final_result+" (hash: "+sign_response.id+")") }
+        if (!silent) {
+          errorNotif(tx_object.TransactionType+" tx failed w/ code "+final_result+
+                      " (hash: "+sign_response.id+")")
+        }
       }
       update_xrp_balance()
       return data
     } catch(error) {
       console.log(error)
-      if (!silent) { alert("Error submitting tx: "+error) }
+      if (!silent) {
+        errorNotif("Error submitting "+tx_object.TransactionType+" tx: "+error)
+      }
     }
 
   }
@@ -284,7 +311,7 @@ const set_up_tx_sender = async function() {
       Destination: destination_address,
       Amount: "1000000000000000", // 1 billion XRP
       SendMax: {
-        value: String(Math.random()*.01), // random very small amount
+        value: (Math.random()*.01).toPrecision(15), // random very small amount
         currency: pp_sending_currency,
         issuer: pp_issuer_address
       },
@@ -306,7 +333,7 @@ const set_up_tx_sender = async function() {
 
     const duration_seconds = parseInt(duration_seconds_txt, 10)
     if (duration_seconds === NaN || duration_seconds < 1) {
-      alert("Error: Escrow duration must be a positive number of seconds")
+      errorNotif("Error: Escrow duration must be a positive number of seconds")
       return
     }
     const finish_after = api.iso8601ToRippleTime(Date()) + duration_seconds
