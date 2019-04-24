@@ -24,7 +24,7 @@ The `AffectedNodes` array contains a complete list of the [objects in the ledger
 - `DeletedNode` indicates that the transaction removed an object from the ledger.
 - `ModifiedNode` indicates that the transaction modified an existing object in the ledger.
 
-The value of each of these fields is an object describing the changes made to the object.
+The value of each of these fields is a JSON object describing the changes made to the ledger object.
 
 ### CreatedNode Fields
 
