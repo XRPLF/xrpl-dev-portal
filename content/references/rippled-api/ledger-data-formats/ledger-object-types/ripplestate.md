@@ -5,9 +5,9 @@ The `RippleState` object type connects two accounts in a single currency. Concep
 
 ## High vs. Low Account
 
-There can only be one `RippleState` object per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a `RippleState` object sorts their account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when [decoded](accounts.html#address-encoding) is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.
+There can only be one `RippleState` object per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a `RippleState` object sorts account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when [decoded](accounts.html#address-encoding) is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.
 
-The ["issuer"](trust-lines-and-issuing.html) for the balance in a trust line is whichever account has a negative balance. If a `RippleState` object shows a negative balance, the low account is the issuer. If the balance is positive, the high account is the issuer. Frequently, the issuer has its limit set to 0 and the other account has a positive limit, but this is not reliable because limits can change without affecting an existing balance.
+The ["issuer"](trust-lines-and-issuing.html) for the balance in a trust line depends on whether the balance is positive or negative. If a `RippleState` object shows a positive balance, the high account is the issuer. If the balance is negative, the low account is the issuer. Frequently, the issuer has its limit set to 0 and the other account has a positive limit, but this is not reliable because limits can change without affecting an existing balance.
 
 
 ## Example {{currentpage.name}} JSON
