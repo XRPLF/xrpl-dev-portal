@@ -30,9 +30,11 @@ Every transaction has the same set of common fields, plus additional fields base
 
 The `AccountTxnID` field lets you chain your transactions together, so that a current transaction is not valid unless the previous one (by Sequence Number) is also valid and matches the transaction you expected.
 
+Unlike the `PreviousTxnID` field, which tracks the last transaction to _modify_ an account (regardless of sender), the `AccountTxnID` tracks the last transaction _sent by_ an account. To use AccountTxnID, you must first set the [asfAccountTxnID](accountset.html#accountset-flags) flag, so that the ledger keeps track of the ID for the account's previous transaction. (`PreviousTxnID`, by comparison, is always tracked.)
+
 One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially have serious problems like some transactions sending twice and others not at all. Chaining your transactions together with `AccountTxnID` ensures that, even if both systems are active, only one of them can submit valid transactions at a time.
 
-To use AccountTxnID, you must first set the [asfAccountTxnID](accountset.html#accountset-flags) flag, so that the ledger keeps track of the ID for the account's previous transaction.
+
 
 
 ## Auto-fillable Fields
