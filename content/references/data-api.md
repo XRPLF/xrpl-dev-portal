@@ -164,7 +164,7 @@ Response:
         "total_coins": 99999980165594400,
         "close_time_res": 10,
         "accounts_hash": "8ad73e49a34d8b9c31bc13b8a97c56981e45ee70225ef4892e8b198fec5a1f7d",
-        "transactions_hash": "33e0b9c5fd7766343e67854aed4222f5ed9c9507e0ec0d7ae7d54d0f17adb98e",
+        "transaction_hash": "33e0b9c5fd7766343e67854aed4222f5ed9c9507e0ec0d7ae7d54d0f17adb98e",
         "close_time": 1408047740,
         "close_time_human": "2014-08-14T20:22:20+00:00"
     }
@@ -5050,7 +5050,7 @@ A "ledger" is one version of the shared global ledger. Each ledger object has th
 | `total_coins`       | [String - Number][]       | The total number of "drops" of XRP still in existence at the time of the ledger. (Each XRP is 1,000,000 drops.) |
 | `close_time_res`    | Number                    | The ledger close time is rounded to this many seconds. |
 | `accounts_hash`     | String - [Hash][]         | Hash of the account information contained in this ledger, as hex. |
-| `transactions_hash` | String - [Hash][]         | Hash of the transaction information contained in this ledger, as hex. |
+| `transaction_hash` | String - [Hash][]         | Hash of the transaction information contained in this ledger, as hex. |
 | `close_time`        | Number                    | When this ledger was closed, in UNIX time. |
 | `close_time_human`  | String - [Timestamp][]    | When this ledger was closed. |
 
