@@ -46,18 +46,23 @@
             <input id="send_xrp_payment_amount" class="form-control" type="number" aria-describedby="send_xrp_payment_amount_help" value="100000" min="1" max="10000000000" />
             <span class="input-group-text" id="send_xrp_payment_amount_help">drops of XRP</span>
           </div>
+          <!-- Future feature: Optional custom destination tag -->
         </div>
         <small class="form-text text-muted">Send a <a href="send-xrp.html">simple XRP-to-XRP payment</a>.</small>
       </div><!-- /#send_xrp_payment -->
 
       <hr />
 
-      <div class="form-group">
+      <div class="form-group" id="send_partial_payment">
+        <div class="progress mb-1" id="pp_progress">
+          <div class="progress-bar progress-bar-striped w-0">&nbsp;</div>
+          <small class="justify-content-center d-flex position-absolute w-100">(Getting ready to send partial payments)</small>
+        </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
           </div>
-          <button class="btn btn-primary form-control" type="button" id="sendPartialPaymentButton">Send Partial Payment</button>
+          <button class="btn btn-primary form-control" type="button" id="send_partial_payment_btn" disabled="disabled" autocomplete="off" title="(Please wait for partial payments setup to finish)">Send Partial Payment</button>
         </div>
         <small class="form-text text-muted">Delivers a small amount of XRP with a large <code>Amount</code> value, to test your handling of <a href="partial-payments.html">partial payments</a>.</small>
       </div><!-- /.form group for partial payment -->
@@ -82,6 +87,10 @@
           </div>
         </div>
         <small class="form-text text-muted">Create a time-based escrow of 1 XRP.</small>
+        <div class="progress mb-1" style="display:none" id="escrow_progress">
+          <div class="progress-bar progress-bar-striped w-0">&nbsp;</div>
+          <small class="justify-content-center d-flex position-absolute w-100">(Waiting to release Escrow when it's ready)</small>
+        </div>
       </div><!-- /.form group for create escrow -->
 
       <hr />
@@ -114,7 +123,7 @@
             <span class="input-group-text" id="send_issued_currency_code">FOO</span><!-- TODO: custom currency codes -->
           </div>
         </div>
-        <small class="form-text text-muted">Your destination address should trust <span class="sending-address-item">(the test sender)</span> for the currency in question.</small>
+        <small class="form-text text-muted">Your destination address needs a trust line to <span class="sending-address-item">(the test sender)</span> for the currency in question. Otherwise, you'll get tecPATH_DRY.</small>
       </div><!-- /.form group for issued currency payment -->
 
       <hr />
