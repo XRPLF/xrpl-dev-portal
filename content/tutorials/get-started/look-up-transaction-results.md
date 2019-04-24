@@ -1,4 +1,4 @@
-# Look up Transaction Results
+# Look Up Transaction Results
 
 To use the XRP Ledger effectively, you need to be able to understand transaction outcomes: did the transaction succeed? What did it accomplish? If it failed, why?
 
@@ -12,7 +12,7 @@ To understand the outcome of a transaction as described in these instructions, y
 
 - Know which transaction you want to understand. If you know the transaction's [identifying hash][], you can look it up that way. You can also look at transactions that executed in a recent ledger or the transactions that most recently affected a given account.
 - Have access to a `rippled` server that provides reliable information and has the necessary history for when the transaction was submitted.
-    - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be sufficient, as long as it maintains sync with the network during tha time.
+    - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be sufficient, as long as it maintains sync with the network during that time.
     - For outcomes of older transactions, you may want to use a [full-history server](ledger-history.html#full-history).
 
 **Tip:** There are other ways of querying for data on transactions from the XRP Ledger, including the [Data API](data-api.html) and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the `rippled` API directly, for the most direct and authoritative results possible.
@@ -54,7 +54,7 @@ The following example shows a successful transaction, as returned by the [tx met
 }
 ```
 
-This example shows an **[AccountSet transaction][]** sent by the [account](accounts.html) with address **rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn**, using [Sequence number][] 376. The transaction's [identifying hash][] is `017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567` and its [result](transaction-results.html) is `tesSUCCESS`. The transaction was included in ledger version 46447423, which has been validated, so these results are final.
+This example shows an [AccountSet transaction][] sent by the [account](accounts.html) with address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn, using [Sequence number][] 376. The transaction's [identifying hash][] is `017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567` and its [result](transaction-results.html) is `tesSUCCESS`. The transaction was included in ledger version 46447423, which has been validated, so these results are final.
 
 
 ### Case: Not Included in a Validated Ledger
@@ -69,8 +69,8 @@ If the transaction's failure is not final, it may still become included in a _fu
 If the transaction _is_ included in a validated ledger, then the [transaction metadata](transaction-metadata.html) contains a full report of all changes that were made to the ledger state as a result of processing the transaction. The metadata's `TransactionResult` field contains a [transaction result code](transaction-results.html) that summarizes the outcome:
 
 - The code `tesSUCCESS` indicates that the transaction was, more or less, successful.
-- A `tec`-class code indicates that the transaction failed, and its only effects on the ledger state are to destroy the XRP [transaction cost](transaction-cost.html) and possibly perform some bookkeeping like removing [expired Offers](ffers.html#offer-expiration) and [closed payment channels](payment-channels.html#payment-channel-lifecycle).
-- (No other code can appear in any ledger.)
+- A `tec`-class code indicates that the transaction failed, and its only effects on the ledger state are to destroy the XRP [transaction cost](transaction-cost.html) and possibly perform some bookkeeping like removing [expired Offers](offers.html#offer-expiration) and [closed payment channels](payment-channels.html#payment-channel-lifecycle).
+- No other code can appear in any ledger.
 
 The result code is only a summary of the transaction's outcome. To understand in more detail what the transaction did, you must read the rest of the metadata in context of the transaction's instructions and the ledger state before the transaction executed.
 
@@ -81,7 +81,9 @@ Transaction metadata describes _exactly_ how the transaction was applied to the 
 
 {% include '_snippets/tx-metadata-field-table.md' %} <!--_ -->
 
-Most of the metadata is contained in [the `AffectedNodes` array](transaction-metadata.html#affectednodes). What to look for in this array depends on the type of transaction, but at a minimum, every normal transaction (that is, not a [pseudo-transaction](pseudo-transaction-types.html)) modifies the sender's [AccountRoot object][], to destroy the XRP [transaction cost](transaction-cost.html) and increase the [account's Sequence number](basic-data-types.html#account-sequence).
+Most of the metadata is contained in [the `AffectedNodes` array](transaction-metadata.html#affectednodes). What to look for in this array depends on the type of transaction, almost every transaction modifies the sender's [AccountRoot object][], to destroy the XRP [transaction cost](transaction-cost.html) and increase the [account's Sequence number](basic-data-types.html#account-sequence).
+
+**Info:** One exception to this rule is for [pseudo-transactions](pseudo-transaction-types.html), which aren't sent from a real account and thus do not modify an AccountRoot object. There are other exceptions that modify an AccountRoot object without changing its `Balance` field: [free key reset transactions](transaction-cost.html#key-reset-transaction) do not change the sender's XRP balance; and in the unlikely scenario that a transaction causes an account to receive exactly as much XRP as it destroys, the account's Balance shows no net change. (The transaction cost is reflected elsewhere in the metadata, from wherever the account received the XRP.)
 
 This example shows the full response from step 1 above. See if you can figure out what changes it made to the ledger:
 
@@ -148,7 +150,7 @@ The _only_ changes made by this [no-op transaction](cancel-or-skip-a-transaction
 
 Since the `ModifiedNode` entry for rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn's account is the only object in the `AffectedNodes` array, no other changes were made to the ledger as a result of this transaction.
 
-**Tip:** If the transaction results in the sends or receives XRP, the sender's balance changes are combined with the transaction cost, resulting in a single change to the `Balance` field in the net amount. For example, if you sent 1 XRP (1,000,000 drops) and destroyed 10 drops for the transaction cost, the metadata shows your `Balance` decreasing by 1,000,010 drops of XRP.
+**Tip:** If the transaction sends or receives XRP, the sender's balance changes are combined with the transaction cost, resulting in a single change to the `Balance` field in the net amount. For example, if you sent 1 XRP (1,000,000 drops) and destroyed 10 drops for the transaction cost, the metadata shows your `Balance` decreasing by 1,000,010 drops of XRP.
 
 ### General-Purpose Bookkeeping
 
@@ -297,13 +299,13 @@ A successful [EscrowCreate transaction][] creates an [Escrow object](escrow-obje
 
 A successful EscrowCreate transaction also debits the same amount of XRP from the sender. Look for a `ModifiedNode` of LedgerEntryType `AccountRoot`, where the `Account` in the final fields matches the address from the `Account` in the transaction instructions. The `Balance` should show the decrease in XRP due to the escrowed XRP (in addition to the XRP destroyed to pay the transaction cost).
 
-A successful [EscrowFinish transaction][] modifies the `AccountRoot` of the recipient to increase their XRP balance (in the `Balance` field), deletes the `Escrow` object, and reduces the owner count of the escrow sender. Since the escrow's sender and recipient may be different or the same account, this can result in _one or two_ `ModifiedNode` objects of LedgerEntryType `AccountRoot`. A successful [EscrowCancel transaction][] is the same, except the XRP goes back to the original sender of the escrow (not necessarily the sender of the EscrowCancel transaction) instead of going to the destination.
+A successful [EscrowFinish transaction][] modifies the `AccountRoot` of the recipient to increase their XRP balance (in the `Balance` field), deletes the `Escrow` object, and reduces the owner count of the escrow creator. Since the escrow's creator, recipient, and finisher may all be different accounts or the same, this can result in _one to three_ `ModifiedNode` objects of LedgerEntryType `AccountRoot`. A successful [EscrowCancel transaction][] is very similar, except it sends the XRP back to the original creator of the escrow.
 
 Of course, an EscrowFinish can only be successful if it meets the conditions of the escrow, and an EscrowCancel can only be successful if the expiration of the Escrow object is before the close time of the previous ledger.
 
 Escrow transactions also do normal [bookkeeping](#general-purpose-bookkeeping) for adjusting the sender's owner reserve and the directories of the accounts involved.
 
-In the following example, we see that r9UUEX...'s balance increases by 1 billion XRP and its owner count decreases by 1 because an escrow from that account to itself finished successfully:
+In the following excerpt, we see that r9UUEX...'s balance increases by 1 billion XRP and its owner count decreases by 1 because an escrow from that account to itself finished successfully. The `Sequence` number does not change because [a third party completed the escrow](https://xrpcharts.ripple.com/#/transactions/C4FE7F5643E20E7C761D92A1B8C98320614DD8B8CD8A04CFD990EBC5A39DDEA2):
 
 ```json
 {
@@ -345,9 +347,9 @@ In the following example, we see that r9UUEX...'s balance increases by 1 billion
 
 ### Payment Channels
 
-Look for a `CreatedNode` of LedgerEntryType `PayChannel` when creating a payment channel. You should also find a `ModifiedNode` of LedgerEntryType `AccountRoot` showing the decrease in the sender's balance. Look for an `Account` field in the `FinalFields` to confirm that the address matching the sender, and look at the difference in the `Balance` fields to see the change in XRP balance.
+Look for a `CreatedNode` of LedgerEntryType `PayChannel` when creating a payment channel. You should also find a `ModifiedNode` of LedgerEntryType `AccountRoot` showing the decrease in the sender's balance. Look for an `Account` field in the `FinalFields` to confirm that the address matches the sender, and look at the difference in the `Balance` fields to see the change in XRP balance.
 
-There are several ways to requesting to close a payment channel, aside from the immutable `CancelAfter` time of the channel (which is only set on creation). If a transaction schedules a channel to close, there is  a `ModifiedNode` entry of LedgerEntryType `PayChannel` for the channel, with the newly-added close time in the `Expiration` field of the `FinalFields`. The following example shows the changes to a `PayChannel` in a case where the sender requested to close the channel without redeeming a claim:
+There are several ways to request to close a payment channel, aside from the immutable `CancelAfter` time of the channel (which is only set on creation). If a transaction schedules a channel to close, there is  a `ModifiedNode` entry of LedgerEntryType `PayChannel` for the channel, with the newly-added close time in the `Expiration` field of the `FinalFields`. The following example shows the changes to a `PayChannel` in a case where the sender requested to close the channel without redeeming a claim:
 
 ```json
 {
@@ -377,7 +379,7 @@ There are several ways to requesting to close a payment channel, aside from the 
 
 TrustSet transactions create, modify, or delete [trust lines](trust-lines-and-issuing.html), which are represented as [`RippleState` objects](ripplestate.html). A single `RippleState` object contains settings for both parties involved, including their limits, [rippling settings](rippling.html), and more. Creating and modifying trust lines can also [adjust the sender's owner reserve and owner directory](#general-purpose-bookkeeping).
 
-The following example shows a new trust line trust line, where **rf1BiG...** is willing to hold up to 110 USD issued by **rsA2Lp...**:
+The following example shows a new trust line, where **rf1BiG...** is willing to hold up to 110 USD issued by **rsA2Lp...**:
 
 ```json
  {
