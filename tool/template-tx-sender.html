@@ -16,6 +16,11 @@
       <li class="list-group-item" id="balance-label">Test XRP Available:</li>
       <li class="list-group-item disabled" id="balance-item">(None)</li>
     </ul>
+    <div id="tx-sender-history">
+      <h5 class="m-3">Transaction History</h5>
+      <ul class="list-group list-group-flush">
+      </ul>
+    </div>
   </div>
 </div>
 {% endblock %}
@@ -42,8 +47,8 @@
             <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
           </div>
           <button class="btn btn-primary form-control" type="button" id="send_xrp_payment_btn">Send XRP Payment</button>
+          <input id="send_xrp_payment_amount" class="form-control" type="number" aria-describedby="send_xrp_payment_amount_help" value="100000" min="1" max="10000000000" />
           <div class="input-group-append">
-            <input id="send_xrp_payment_amount" class="form-control" type="number" aria-describedby="send_xrp_payment_amount_help" value="100000" min="1" max="10000000000" />
             <span class="input-group-text" id="send_xrp_payment_amount_help">drops of XRP</span>
           </div>
           <!-- Future feature: Optional custom destination tag -->
@@ -75,18 +80,17 @@
             <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
           </div>
           <button class="btn btn-primary form-control" type="button" id="create_escrow_btn">Create Escrow</button>
+          <input class="form-control" type="number" value="60" min="5" max="10000" id="create_escrow_duration_seconds" />
           <div class="input-group-append">
-            <span class="input-group-text">for</span>
-            <input class="form-control" type="number" value="60" min="5" max="10000" id="create_escrow_duration_seconds" />
             <span class="input-group-text">seconds</span>
-            <span class="input-group-text">
-              (
-              <input type="checkbox" id="create_escrow_release_automatically" value="1" />
-              <label class="form-check-label" for="create_escrow_release_automatically">Release automatically</label>)
-            </span>
           </div>
+          <span class="input-group-text">
+            (
+            <input type="checkbox" id="create_escrow_release_automatically" value="1" />
+            <label class="form-check-label" for="create_escrow_release_automatically">Finish automatically</label>)
+          </span>
         </div>
-        <small class="form-text text-muted">Create a time-based escrow of 1 XRP.</small>
+        <small class="form-text text-muted">Create a <a href="escrow.html">time-based escrow</a> of 1 XRP for the specified number of seconds.</small>
         <div class="progress mb-1" style="display:none" id="escrow_progress">
           <div class="progress-bar progress-bar-striped w-0">&nbsp;</div>
           <small class="justify-content-center d-flex position-absolute w-100">(Waiting to release Escrow when it's ready)</small>
@@ -101,13 +105,12 @@
             <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
           </div>
           <button class="btn btn-primary form-control" type="button" id="create_payment_channel_btn">Create Payment Channel</button>
+          <input id="create_payment_channel_amount" class="form-control" type="number" aria-describedby="create_payment_channel_amount_help" value="100000" min="1" max="10000000000" />
           <div class="input-group-append">
-          <span class="input-group-text">funded with</span>
-            <input id="create_payment_channel_amount" class="form-control" type="number" aria-describedby="create_payment_channel_amount_help" value="100000" min="1" max="10000000000" />
             <span class="input-group-text" id="create_payment_channel_amount_help">drops of XRP</span>
           </div>
         </div>
-        <small class="form-text text-muted">Create a payment channel.</small>
+        <small class="form-text text-muted">Create a <a href="payment-channels.html">payment channel</a> and fund it with the specified amount of XRP.</small>
       </div><!-- /.form group for create paychan -->
 
       <hr />
@@ -118,12 +121,12 @@
             <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
           </div>
           <button class="btn btn-primary form-control" type="button" id="send_issued_currency_btn">Send Issued Currency</button>
+          <input id="send_issued_currency_amount" class="form-control" type="text" value="100" /><!-- Note: HTML limits "number" inputs to IEEE 764 double precision, which isn't enough for the full range of issued currency amounts -->
           <div class="input-group-append">
-            <input id="send_issued_currency_amount" class="form-control" type="text" value="100" /><!-- Note: HTML limits "number" inputs to IEEE 764 double precision, which isn't enough for the full range of issued currency amounts -->
             <span class="input-group-text" id="send_issued_currency_code">FOO</span><!-- TODO: custom currency codes -->
           </div>
         </div>
-        <small class="form-text text-muted">Your destination address needs a trust line to <span class="sending-address-item">(the test sender)</span> for the currency in question. Otherwise, you'll get tecPATH_DRY.</small>
+        <small class="form-text text-muted">Your destination address needs a <a href="trust-lines-and-issuing.html">trust line</a> to <span class="sending-address-item">(the test sender)</span> for the currency in question. Otherwise, you'll get tecPATH_DRY.</small>
       </div><!-- /.form group for issued currency payment -->
 
       <hr />
@@ -134,12 +137,12 @@
             <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
           </div>
           <button class="btn btn-primary form-control" type="button" id="trust_for_btn">Trust for</button>
+          <input id="trust_for_amount" class="form-control disabled" type="number" value="100000" />
           <div class="input-group-append">
-            <input id="trust_for_amount" class="form-control disabled" type="number" value="100000" />
             <span class="input-group-text" id="trust_for_currency_code">FOO</span>
           </div>
         </div>
-        <small class="form-text text-muted">The test sender creates a trust line to your account for the given currency.</small>
+        <small class="form-text text-muted">The test sender creates a <a href="trust-lines-and-issuing.html">trust line</a> to your account for the given currency.</small>
       </div><!-- /.form group for create trust line -->
 
     </form>

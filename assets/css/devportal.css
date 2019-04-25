@@ -1147,6 +1147,31 @@ a.current {
     width: 25px;height:25px;
 }
 
+#connection-status-item.active {
+  background-color: #2BCB96;
+  border-color: #2BCB96;
+}
+
+#tx-sender-history ul {
+  overflow: auto;
+  height: 220px;
+  border: 1px solid rgba(0, 0, 0, 0.125)
+}
+
+#tx-sender-history .list-group-item {
+  font-size: small;
+  color: #6c757d;
+}
+
+.page-tx-sender .input-group .form-control {
+  flex: 1 1 20%;
+}
+
+.bootstrap-growl {
+  max-width: 90vw !important;
+  overflow: hidden;
+}
+
 
 /* Print styles ------------------------------------------------------------- */
 @media print {

@@ -20,6 +20,18 @@ const set_up_tx_sender = async function() {
     })
   }
 
+  function logTx(txtype, hash, result) {
+    let li = "wtf"
+    // Future feature: link hash to a testnet txsplainer
+    if (result === "tesSUCCESS") {
+      li = '<li class="list-group-item fade-in p-1 text-muted"><i class="fa fa-check-circle"></i> '+txtype+": "+hash+'</li>'
+    } else {
+      li = '<li class="list-group-item fade-in p-1 list-group-item-danger"><i class="fa fa-times-circle"></i> '+txtype+": "+hash+'</li>'
+    }
+
+    $("#tx-sender-history ul").prepend(li)
+  }
+
   //////////////////////////////////////////////////////////////////////////////
   // Connection / Setup
   //////////////////////////////////////////////////////////////////////////////
@@ -43,7 +55,7 @@ const set_up_tx_sender = async function() {
                                        // so this won't go over JavaScript's
                                        // 64-bit double precision
 
-    $("#balance-item").text(xrp_balance) + " drops"
+    $("#balance-item").text(xrp_balance)
     $(".sending-address-item").text(sending_address)
   }
 
@@ -127,6 +139,7 @@ const set_up_tx_sender = async function() {
       maxLedgerVersion: prepared.instructions.maxLedgerVersion
     }
 
+    let sign_response
     try {
       // Sign, submit
       sign_response = api.sign(prepared.txJSON, use_secret)
@@ -147,11 +160,13 @@ const set_up_tx_sender = async function() {
       if (final_result === "tesSUCCESS") {
         if (!silent) {
           successNotif(tx_object.TransactionType+" tx succeeded (hash: "+sign_response.id+")")
+          logTx(tx_object.TransactionType, sign_response.id, final_result)
         }
       } else {
         if (!silent) {
           errorNotif(tx_object.TransactionType+" tx failed w/ code "+final_result+
                       " (hash: "+sign_response.id+")")
+          logTx(tx_object.TransactionType, sign_response.id, final_result)
         }
       }
       update_xrp_balance()
@@ -315,9 +330,7 @@ const set_up_tx_sender = async function() {
         currency: pp_sending_currency,
         issuer: pp_issuer_address
       },
-      Flags: 0x80020000 // tfPartialPayment | tfFullyCanonicalSig
-      /*,
-      Paths: use_path*/
+      Flags: api.txFlags.Payment.PartialPayment | api.txFlags.Universal.FullyCanonicalSig
     })
     $("#send_partial_payment .loader").hide()
     $("#send_partial_payment button").attr("disabled",false)
