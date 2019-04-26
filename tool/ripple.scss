@@ -4,11 +4,17 @@
 // source files.
 
 
-// Override some Bootstrap variables
-$primary:       #1db4ff; // "Ripple Blue" (aka "Blue-1")
-$secondary:     #0A93EB; // "Blue-2"
-$light:         #e1e4e8; // "Black-20"
-$dark:          #2b3e51; // "Background Navy"
+// Set theme colors used by Bootstrap styles
+$theme-colors: (
+"primary":       #1B1818, // XRP Black
+"secondary":     #676463, // Gray
+"light":         #EBE8E7, // light tan?
+"dark":          #1B1818, // XRP Black again
+"success":       #2BCB96, // light green
+"caution":       #D0DB60, // yellowish
+//"info":          todo // currently bluish
+"warning":       #AA4949, // wine red
+);
 $code-color:    #3B4147; // "Black-80"
 $navbar-padding-y: 0;
 $navbar-nav-link-padding-x: 1rem;
@@ -17,38 +23,39 @@ $navbar-nav-link-padding-x: 1rem;
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 300;
-  src: url("../font/Roboto-Light.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
-  src: url("../font/Roboto-Regular.woff2") format('woff2');
+  src: url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2'), url("../font/Roboto-Regular.woff2") format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: url("../font/Roboto-Bold.woff2") format('woff2');
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v19/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2'), url("../font/Roboto-Bold.woff2") format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: 'Roboto Mono';
+  font-family: 'Space Mono';
   font-style: normal;
   font-weight: 400;
-  src: url("../font/Roboto-Mono.woff2") format('woff2');
+  src: local('Space Mono'), local('SpaceMono-Regular'), url(https://fonts.gstatic.com/s/spacemono/v4/i7dPIFZifjKcF5UAWdDRYEF8RQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Space Mono Bold'), local('SpaceMono-Bold'), url(https://fonts.gstatic.com/s/spacemono/v4/i7dMIFZifjKcF5UAWdDRaPpZUFWaHg.woff2) format('woff2'), url("../font/Roboto-Regular.woff2") format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+$font-family-monospace: 'Space Mono', monospace;
+$font-family-sans-serif: 'Roboto', sans-serif;
 
 // Bootstrap v4
-@import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
 
-// CSS overrides
-:root {
-  --font-family-sans-serif: 'Roboto', sans-serif;
-  --font-family-monospace: 'Roboto Mono', monospace;
+h1, h2, h3, h4, h5 {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
 }

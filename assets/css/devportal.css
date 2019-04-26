@@ -1,14 +1,5 @@
 /* Generic styles and colors not in the bootstrap files --------------------- */
 
-body {
-  font-family: Roboto, sans-serif;
-}
-
-code,
-pre {
-  font-family: "Roboto Mono", monospace;
-}
-
 td {
   border: 1px solid #dbdde2;
   padding: 0.2em;
@@ -206,10 +197,7 @@ th {
 
 /* Footer ------------------------------------------------------------------- */
 .ripple-footer {
-  z-index: 2;
-  color: #999999;
   font-size: 14px;
-  background: #28282a url(../img/ripple_footer_v2.jpg) repeat-x center center;
   background-position-y: -60px;
 }
 
@@ -248,6 +236,18 @@ th {
   list-style-type: none;
   margin-left: 0;
   font-size: 14px;
+}
+
+.foot-nav-col {
+  border-left: 1px solid #eae7e6;
+  border-right: 1px solid #eae7e6;
+}
+
+.foot-nav-col:first-of-type {
+  border-left: 0;
+}
+.foot-nav-col:last-of-type {
+  border-right: 0;
 }
 
 /* Callouts ----------------------------------------------------------------- */
@@ -943,8 +943,7 @@ a.current {
 }
 
 .splash-head {
-  background-color: #102b3e;
-  background-image: url("../img/splash-map.svg");
+  background-color: transparent;
   background-size: cover;
   background-position: center center;
   color: white;
