@@ -264,12 +264,7 @@ span.cm-atom {
 }
 
 .loader {
-    -webkit-animation: rotating 1s linear infinite;
-    -moz-animation: rotating 1s linear infinite;
-    -ms-animation: rotating 1s linear infinite;
-    -o-animation: rotating 1s linear infinite;
-    animation: rotating 1s linear infinite;
-    width: 25px;height:25px;
+    width: 24px;height:24px;
 }
 
 
