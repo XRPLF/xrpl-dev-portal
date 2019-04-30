@@ -16,8 +16,12 @@ $theme-colors: (
 "warning":       #AA4949, // wine red
 );
 $code-color:    #3B4147; // "Black-80"
+
 $navbar-padding-y: 0;
 $navbar-nav-link-padding-x: 1rem;
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
 
 // Font face stuff from Google
 @font-face {
@@ -58,4 +62,41 @@ $font-family-sans-serif: 'Roboto', sans-serif;
 h1, h2, h3, h4, h5 {
   font-family: 'Space Mono', monospace;
   font-weight: 700;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1px;
+  background-color: #dedede;
+  padding: 0;
+  border-bottom: 1px solid #dedede;
+
+  &.card-grid-2x2 {
+    /* left half is a hero area; right half is a 2x2 grid. Total grid is 4x2 */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    .section-hero {
+      grid-row-end: span 2;
+    }
+  }
+
+  &.card-grid-2x4 {
+    /* left half is a hero area; right half is a 2x4 grid. Total grid is 4x4 */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+
+    .section-hero {
+      grid-row-end: span 4;
+    }
+  }
+
+  .align-bottom {
+    justify-content: flex-end;
+  }
+
+  .card {
+    padding: 40px;
+    border: 0;
+  }
 }

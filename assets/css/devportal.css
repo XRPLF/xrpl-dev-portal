@@ -132,8 +132,7 @@ th {
   margin-top: 0;
   line-height: 1.2;
 }
-.content h1:first-child:before,
-.landing section:not(.splash-head):first-of-type h1:first-child:before {
+.content h1:first-child:before {
   margin-top: -90px;
 }
 .content h2 {
@@ -469,14 +468,14 @@ a.current {
 .landing .level-1,
 .landing .curated-links li {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   margin-top: 0;
   position: relative;
 }
 
 .landing .card .level-1 a,
 .landing .card .curated-links li a {
-  padding: 12px;
+  padding: 8px;
   display: block;
   margin: 0 -12px 0 -12px;
   font-weight: 400;
@@ -820,7 +819,6 @@ a.current {
 
 .landing p {
   font-size: 18px;
-  margin-bottom: 0;
 }
 
 .landing h2 {
@@ -842,17 +840,6 @@ a.current {
 
 #test-net-servers pre {
   overflow-x: auto;
-}
-
-.landing a.card,
-.landing .card {
-  color: #212529;
-  box-shadow: 0px 1px 3px rgba(35, 41, 47, 0.24);
-  border-radius: 8px;
-}
-
-.landing a.card:hover {
-  box-shadow: 0px 4px 20px rgba(35, 41, 47, 0.16);
 }
 
 .landing .card li {
@@ -877,7 +864,7 @@ a.current {
 }
 
 .landing .card-header {
-  padding: 12px;
+  padding: 8px;
 }
 
 .landing .card-footer {
@@ -916,7 +903,7 @@ a.current {
 
 .landing .card > .card-img-top {
   padding: 0 16px;
-  width: 50%;
+  width: 25%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -942,30 +929,6 @@ a.current {
   padding-left: 8px;
 }
 
-.splash-head {
-  background-color: transparent;
-  background-size: cover;
-  background-position: center center;
-  color: white;
-  line-height: 38px;
-}
-
-.splash-head h1 {
-  font-weight: 700;
-}
-
-.splash-head p {
-  text-shadow: 0px 1px 2px #171C21;
-  margin-bottom: 0;
-}
-
-.splash-head p .btn {
-  text-shadow: none;
-}
-
-.splash-head code {
-  color: white;
-}
 
 .build-disclaimer {
   font-size: 10pt;
