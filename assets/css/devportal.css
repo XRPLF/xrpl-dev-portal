@@ -194,7 +194,23 @@ th {
     font-weight: 700;
 }
 
+.content .children-display li a {
+  /* Category landing pages */
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.content .children-display li a:hover {
+  text-decoration: underline;
+}
+
 /* Footer ------------------------------------------------------------------- */
+.build-disclaimer {
+  font-size: 10pt;
+}
+
 .ripple-footer {
   font-size: 14px;
   background-position-y: -60px;
@@ -477,31 +493,17 @@ a.current {
 .landing .card .curated-links li a {
   padding: 8px;
   display: block;
-  margin: 0 -12px 0 -12px;
+  margin: 0 -8px 0 -8px;
   font-weight: 400;
-}
-.landing .card .level-1 a:hover,
-.landing .card .curated-links li a:hover {
-  background-color: #D8EEFC;
-  text-decoration: none;
-}
-.landing .card .level-1 a:hover:after,
-.landing .card .curated-links li a:hover:after {
-  content: "\f105"; /* fontawesome angle-right */
-  font-family: FontAwesome;
-  position: absolute;
-  right: 0;
-  top: 12px;
-  color: #0D294E;
 }
 
 .landing .card .level-2 {
   position: relative;
 }
 .landing .card .level-2 a {
-  padding: 8px 12px 8px 32px;
+  padding: 8px 8px 8px 28px;
   display: block;
-  margin: 0 -12px 0 -12px;
+  margin: 0 -8px 0 -8px;
   font-weight: 400;
 }
 .landing .card .level-2 a:hover {
@@ -852,8 +854,8 @@ a.current {
   border-top-width: 0;
 }
 
-.landing .card-body {
-  padding: 12px;
+.card-grid .card-body {
+  padding: 8px;
 }
 
 .landing .card-header,
@@ -868,11 +870,7 @@ a.current {
 }
 
 .landing .card-footer {
-  padding: 0 12px 12px 12px;
-}
-
-.landing .card-header + .card-body {
-  padding: 0 12px 12px 12px;
+  padding: 8px;
 }
 
 .landing .card-header a {
@@ -886,15 +884,62 @@ a.current {
 .landing .card-body > p {
   padding: 0;
   font-size: 18px;
+  line-height: 18px;
+  margin-bottom: 0;
 }
 
-.card-header.bg-dark {
-  color: white;
+.btn-outline-secondary {
+  padding: 9px 16px;
+  transition: box-shadow 200ms ease, background-color 200ms ease, color 200ms ease;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #d3d0cf;
 }
 
-.landing .card-header.bg-dark a:hover {
+#main_content_wrapper .btn-outline-secondary:hover,
+#main_content_wrapper .btn-outline-secondary:active {
+  /* Undo Bootstrap styling */
+  color: #1b1818;
+  background-color: inherit;
+  border: 1px solid #1b1818;
+}
+
+.btn:not(.external-link)::after,
+.landing .card .level-1 a::after,
+.landing .card .curated-links li a::after,
+.content .children-display li a::after {
+  content: " ➝";
+  padding-left: 7px;
+  transition: all .2s ease-in-out;
+  display: inline-block;
   text-decoration: none;
-  color: #FF9900;
+}
+
+.btn:not(.external-link):hover::after,
+.landing .card .level-1 a:hover::after,
+.landing .card .curated-links li a:hover::after,
+.landing a.card:hover .btn::after,
+.content .children-display li a:hover::after {
+  padding-left: 14px;
+  text-decoration: none;
+}
+
+.external-link .fa-external-link,
+.related-projects a .fa-external-link {
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  padding-left: 7px;
+}
+.external-link:hover .fa-external-link,
+.related-projects a:hover .fa-external-link  {
+  padding-left: 14px;
+}
+
+/* Avoid shifting other text over */
+.content .external-link .fa-external-link {
+  padding-right: 7px;
+}
+.content .external-link:hover .fa-external-link {
+  padding-right: 0;
 }
 
 .landing .card .blurb {
@@ -902,24 +947,27 @@ a.current {
 }
 
 .landing .card > .card-img-top {
-  padding: 0 16px;
-  width: 25%;
-  margin-left: auto;
+  padding: 8px;
+  width: 60px;
+  height: 60px;
+  margin-left: 0;
   margin-right: auto;
 }
 
-#xrp_ledger_intro a:hover {
+/* Full-link cards */
+.landing a.card {
+  border: 1px solid transparent;
+}
+.landing a.card:hover {
   text-decoration: none;
+  border: 1px solid black;
 }
-
-#xrp_ledger_intro .card-footer {
-  border-width: 0;
-  border-radius: 0;
-  background: none;
+.landing a.card:hover h3 {
+  text-decoration: underline;
 }
-
-#xrp_ledger_intro .card-body {
-  padding: 1px;
+.landing a.card:hover .btn-outline-secondary {
+  border: 1px solid #1b1818;
+  color: #1b1818;
 }
 
 .recently-updated-date {
@@ -929,34 +977,21 @@ a.current {
   padding-left: 8px;
 }
 
+/* "Related Projects" boxes -------------- */
 
-.build-disclaimer {
-  font-size: 10pt;
-}
-
-
-/* "Related Projects" (i.e. Client Portal & Interledger) boxes -------------- */
-
-.related-projects a {
-  text-decoration: none;
-}
-.related-projects h3 {
-  margin: 0;
-  padding: 5px 15px;
-}
-.related-projects .project-name {
-  font-size: 18px;
-}
-.related-projects .login-required {
-  font-size: 12px;
-}
-.related-projects p {
-  margin: 10px;
-}
-.related-projects .project-icon {
+.interledger-link .project-icon {
   width: 120px;
   float: left;
   margin-right: 10px;
+}
+
+.xpring-link .project-icon {
+  background-color: #212529;
+  padding: 4px;
+  border-radius: 4px;
+  height: 24px;
+  line-height: 20px;
+  vertical-align: middle;
 }
 
 /* Interactive blocks in tutorial contents ---------------------------------- */

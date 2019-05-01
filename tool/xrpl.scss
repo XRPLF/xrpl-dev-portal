@@ -79,12 +79,44 @@ h1, h2, h3, h4, h5 {
     .section-hero {
       grid-row-end: span 2;
     }
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, auto);
+    }
+  }
+
+  &.card-grid-2x1 {
+    /* left half is a hero area; right half is a 2x1 grid. Total grid is 4x1 */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
+
+    .section-hero {
+      grid-row-end: span 1;
+    }
   }
 
   &.card-grid-2x4 {
     /* left half is a hero area; right half is a 2x4 grid. Total grid is 4x4 */
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, auto);
+
+      .section-hero {
+        grid-row-end: span 2;
+      }
+    }
 
     .section-hero {
       grid-row-end: span 4;
@@ -98,5 +130,9 @@ h1, h2, h3, h4, h5 {
   .card {
     padding: 40px;
     border: 0;
+
+    @include media-breakpoint-down(md) {
+      padding: 20px;
+    }
   }
 }

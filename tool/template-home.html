@@ -20,50 +20,67 @@
       <div class="section-hero card align-bottom">
         <div>
           <h1 class="display-4">Powering the Internet of Value.</h1>
-          <div class="blurb col-sm-12">
+          <div class="blurb">
             <p>The <a href="#xrp_ledger_intro">XRP Ledger</a> is open-source technology that anyone can use.</p>
             <p>Use the tools and information provided here to integrate with and contribute to the open-source platform.</p>
-            <p>Want more? Get updates about XRP Ledger webinars, releases, and documentation! <a class="btn btn-outline-secondary ml-3" href="https://goo.gl/forms/sHMFxU8dKiTUaltE3" target="_blank">Sign up! <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
+            <h5>Want more?</h5>
+            <p>Get updates about XRP Ledger webinars, releases, and documentation!</p>
+            <p><a class="btn btn-outline-secondary external-link" href="https://goo.gl/forms/sHMFxU8dKiTUaltE3" target="_blank">Sign up! <i class="fa fa-external-link" aria-hidden="true"></i></a></p>
           </div>
         </div>
       </div><!--/.section-hero-->
 
+      <a class="card" href="get-started-with-the-rippled-api.html">
+        <div class="card-header">
+          <h3 class="card-title">Get Started with XRP Ledger APIs</h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <p>Get started with the APIs and libraries available for interacting with the XRP Ledger.</p>
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <button href="references.html" class="btn btn-outline-secondary">Get Started</button>
+        </div><!--/.card-footer-->
+      </a><!--/.card-->
+
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Go to the References</h3>
+          <h3 class="card-title"><a href="concepts.html">Learn How It Works</a></h3>
         </div><!--/.card-header-->
         <div class="card-body">
           <div class="curated-links">
             <ul>
-              <li><a href="rippled-api.html"><code>rippled</code> API</a></li>
-              <li><a href="rippleapi-reference.html">RippleAPI for JavaScript</a></li>
-              <li><a href="data-api.html">Data API</a></li>
+              <li><a href="intro-to-consensus.html">Intro to Consensus</a></li>
+              <li><a href="xrp.html">About XRP</a></li>
+              <li><a href="payment-system-basics.html">Payment System Basics</a></li>
+              <li><a href="decentralized-exchange.html">Decentralized Exchange</a></li>
             </ul>
           </div><!--/.curated-links-->
         </div><!--/.card-body-->
         <div class="card-footer">
-          <div class="readmore">
-            <a href="references.html" class="btn btn-outline-secondary">View References <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
+          <a href="concepts.html" class="btn btn-outline-secondary">All Concepts</a>
         </div><!--/.card-footer-->
       </div><!--/.card-->
 
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Get Started</h3>
+          <h3 class="card-title"><a href="docs.html">Read Documentation</a></h3>
         </div><!--/.card-header-->
         <div class="card-body">
           <div class="curated-links">
             <ul>
-              <li><a href="websocket-api-tool.html">Make a call to the rippled API</a></li>
-              <li><a href="xrp-test-net-faucet.html">Access the XRP Ledger Test Net</a></li>
-              <li><a href="concepts.html">Understand XRP Ledger Concepts</a></li>
+              <li><a href="references.html">API References</a></li>
+              <li><a href="concepts.html">Concepts</a></li>
+              <li><a href="tutorials.html">Tutorials</a></li>
+              <li><a href="docs.html#full-doc-index">Full Doc Index</a></li>
             </ul>
           </div><!--/.curated-links-->
         </div><!--/.card-body-->
+        <div class="card-footer">
+          <a href="docs.html" class="btn btn-outline-secondary">All Docs</a>
+        </div><!--/.card-footer-->
       </div><!--/.card-->
 
-      <div class="card">
+      <a class="card" href="#TODO:EXPLORER_URL">
         <div class="card-header">
           <h3 class="card-title">Explore the XRP Ledger</h3>
         </div><!--/.card-header-->
@@ -72,100 +89,74 @@
         </div><!--/.card-body-->
         <div class="card-footer">
           <div class="readmore">
-            <a href="#TODO:EXPLORER_URL" class="btn btn-outline-secondary">Go to the Explorer <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            <button class="btn btn-outline-secondary">Go to the Explorer</button>
           </div>
         </div><!--/.card-footer-->
-      </div><!--/.card-->
+      </a><!--/.card-->
 
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">New and Updated Documentation</h3>
-        </div><!--/.card-header-->
-        <div class="card-body">
-          <div class="curated-links">
-            <ol>
-              {% for link in target.recently_updated %}
-                {% set linkpage = pages|selectattr("html", 'defined_and_equalto', link.html)|first %}
-                <li><a href="{{linkpage.html}}">{{linkpage.name}}{% if link.date is defined %} <span class="recently-updated-date">({{link.date}})</span>{% endif %}</a></li>
-              {% endfor %}
-            </ol>
-          </div><!--/.curated-links-->
-        </div><!--/.card-body-->
-      </div><!--/.card-->
+  </section><!--/"Above the fold" .card-grid-2x2-->
 
-  </section><!--/.card-grid-2x2-->
+  <section class="container-fluid card-grid">
+    <div class="card">
+      <div class="card-header">
+        <h2><a href="/blog/">XRP Ledger Blog</a></h2>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p>Visit the blog for the latest XRP Ledger info, including <a href="/blog/label/rippled-release-notes.html">Release Notes</a>, <a href="/blog/label/amendments.html">Amendments</a> to the XRP Ledger protocol, <a href="/blog/label/features.html">Feature articles</a> from XRP experts, and more.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/blog/" class="btn btn-outline-secondary">View Blog</a>
+      </div>
+    </div>
+  </section>
 
   <section class="container-fluid card-grid card-grid-2x4" id="xrp_ledger_intro">
     <div class="card section-hero">
-      <h2><a href="xrp-ledger-overview.html">What is the XRP Ledger?</a></h2>
-      <div class="row">
-        <div class="blurb col-sm-12">
-          <p>The XRP Ledger is a decentralized cryptographic ledger, powered by a network of peer-to-peer servers. It is the home of XRP, a digital asset designed to bridge the many different currencies in use worldwide.</p>
-        </div>
+      <div class="card-header">
+        <h2><a href="xrp-ledger-overview.html">What is the XRP Ledger?</a></h2>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p>The XRP Ledger is a decentralized cryptographic ledger, powered by a network of peer-to-peer servers. It is the home of XRP, a digital asset designed to bridge the many different currencies in use worldwide.</p>
       </div>
     </div><!--/.section-hero-->
 
     <a href="xrp-ledger-overview.html#the-digital-asset-for-payments" class="card">
       <img class="card-img-top" src="assets/img/payment-card.svg" alt="(XRP triskellion)" />
-      <div class="card-body">
-        <!-- <p>XRP is a digital asset native to the XRP Ledger. Anyone with a cryptographic key and an internet connection can receive, hold, and send XRP to anyone else.</p> -->
-      </div><!--/.card-body-->
       <div class="card-footer"><h3>The Digital Asset for Payments</h3></div>
     </a><!--/.card-->
 
     <a href="xrp-ledger-overview.html#censorship-resistant-transaction-processing" class="card">
       <img class="card-img-top" src="assets/img/dollar-arrow.svg" alt="(money moving)" />
-      <div class="card-body">
-        <!-- <p>No single party decides which XRP transactions succeed or fail, and no one can "roll back" a transaction after it completes.</p> -->
-      </div><!--/.card-body-->
       <div class="card-footer"><h3>Censorship-Resistant Transaction Processing</h3></div>
     </a><!--/.card-->
 
     <a href="xrp-ledger-overview.html#fast-efficient-consensus-algorithm" class="card">
       <img class="card-img-top" src="assets/img/network.svg" alt="(consensus network)" />
-      <div class="card-body">
-        <!-- <p>The XRP Ledger's consensus algorithm settles transactions in 4 to 5 seconds, processing at a throughput of up to 1500 transactions per second.</p> -->
-      </div><!--/.card-body-->
       <div class="card-footer"><h3>Fast, Efficient Consensus Algorithm</h3></div>
     </a><!--/.card-->
 
     <a href="xrp-ledger-overview.html#finite-xrp-supply" class="card">
       <img class="card-img-top" src="assets/img/line-graph.svg" alt="(price graph)" />
-      <div class="card-body">
-        <!-- <p>When the XRP Ledger began, 100 billion XRP were created, and no more XRP will ever be created.</p> -->
-      </div><!--/.card-body-->
       <div class="card-footer"><h3>Finite XRP Supply</h3></div>
     </a><!--/.card-->
 
     <a href="xrp-ledger-overview.html#responsible-software-governance" class="card">
       <img class="card-img-top" src="assets/img/scales.svg" alt="(scales of justice)" />
-      <div class="card-body">
-        <!-- <p>A team of full-time, world-class developers at Ripple maintain and continually improve the XRP Ledger's underlying software.</p> -->
-      </div><!--/.card-body-->
       <div class="card-footer"><h3>Responsible Software Governance</h3></div>
     </a><!--/.card-->
 
     <a href="xrp-ledger-overview.html#secure-adaptable-cryptography" class="card">
       <img class="card-img-top" src="assets/img/lock.svg" alt="(lock)" />
-      <div class="card-body">
-        <!-- <p>The XRP Ledger relies on industry standard digital signature systems like ECDSA and also supports modern, efficient algorithms like Ed25519.</p> -->
-      </div><!--/.card-body-->
       <div class="card-footer"><h3>Secure, Adaptable Cryptography</h3></div>
     </a><!--/.card-->
 
     <a href="xrp-ledger-overview.html#modern-features-for-smart-contracts" class="card">
       <img class="card-img-top" src="assets/img/gears.svg" alt="(gears)" />
-      <div class="card-body">
-        <!-- <p>Features like Escrow, Checks, and Payment Channels support cutting-edge financial applications while safety features like Invariant Checks and Amendments provide for stable operation.</p> -->
-      </div><!--/.card-body-->
       <div class="card-footer"><h3>Modern Features for Smart Contracts</h3></div>
     </a><!--/.card-->
 
     <a href="xrp-ledger-overview.html#on-ledger-decentralized-exchange" class="card">
       <img class="card-img-top" src="assets/img/exchange.svg" alt="(currency exchange)" />
-      <div class="card-body">
-        <!-- <p>The XRP Ledger also has a fully-functional accounting system for tracking and trading obligations denominated in any way users want, and an exchange built into the protocol.</p> -->
-      </div><!--/.card-body-->
       <div class="card-footer"><h3>On-Ledger Decentralized Exchange</h3></div>
     </a><!--/.card-->
 
@@ -178,7 +169,7 @@
       <div class="blurb">
         <p>Use these tutorials to get step-by-step guidance to perform common tasks with the XRP Ledger.</p>
       </div>
-    </div>
+    </div><!--/.section-hero-->
 
     <a class="card" href="list-xrp-in-your-exchange.html">
       <div class="card-header">
@@ -189,7 +180,7 @@
       </div><!--/.card-body-->
       <div class="card-footer">
         <div class="readmore">
-          <button class="btn btn-outline-secondary">List XRP <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+          <button class="btn btn-outline-secondary">List XRP</button>
         </div>
       </div><!--/.card-footer-->
     </a><!--/.card-->
@@ -203,7 +194,7 @@
       </div><!--/.card-body-->
       <div class="card-footer">
         <div class="readmore">
-          <button class="btn btn-outline-secondary">Send XRP <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+          <button class="btn btn-outline-secondary">Send XRP</button>
         </div>
       </div><!--/.card-footer-->
     </a><!--/.card-->
@@ -217,35 +208,57 @@
       </div><!--/.card-body-->
       <div class="card-footer">
         <div class="readmore">
-          <button class="btn btn-outline-secondary">Run rippled <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+          <button class="btn btn-outline-secondary">Run rippled</button>
         </div>
       </div><!--/.card-footer-->
     </a><!--/.card-->
 
-    <div class="card">&nbsp;</div><!-- dummy spacer -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><a href="tutorials.html">More Tutorials</a></h3>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <div class="curated-links">
+          <ul>
+            <li><a href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
+            <li><a href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
+            <li><a href="use-escrows.html">Use Escrows</a></li>
+            <li><a href="use-payment-channels.html">Use Payment Channels</a></li>
+          </ul>
+        </div><!--/.curated-links-->
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <a href="tutorials.html" class="btn btn-outline-secondary">All Tutorials</a>
+      </div><!--/.card-footer-->
+    </div><!--/.card-->
 
   </section>
 
-  <section class="container-fluid related-projects py-3 p-sm-4 bg-white">
-    <h2>Related Projects</h2>
+  <section class="container-fluid related-projects card-grid card-grid-2x1">
+    <div class="section-hero card">
+      <h2>Related Projects</h2>
+      <div class="blurb">
+        <p>You're not alone in building the Internet of Value. These projects are proudly collaborating with the XRP Ledger to make all the world's money move like information moves today.</p>
+      </div>
+    </div><!--/.section-hero-->
 
-    <div class="row">
+    <a class="interledger-link card" href="https://interledger.org/" target="_blank">
+      <div class="card-body">
+        <img class="project-icon" src="assets/img/ilp_logo.svg" />
+        <h3 class="card-title">Interledger<i class="fa fa-external-link" aria-hidden="true"></i>
+        </h3>
+        <p class="project-summary">Interledger is an open protocol suite for sending payments across different ledgers.</p>
+      </div><!--/.card-body-->
+    </a><!--/.card-->
 
-      <div class="col">
-        <a class="interledger-link card" href="https://interledger.org/" target="_blank">
-          <div class="card-body">
-            <img class="project-icon" src="assets/img/ilp_logo.svg" />
-            <h3 class="card-title">Interledger
-              <i class="fa fa-external-link" aria-hidden="true"></i>
-            </h3>
-            <p class="project-summary">Interledger is an open protocol suite for sending payments across different ledgers.</p>
-            <p class="project-summary">Like routers on the Internet, connectors route packets of money across independent payment networks. The open architecture and minimal protocol enable interoperability for any value transfer system.</p>
-            <p class="project-summary">Interledger is not tied to any one company, blockchain, or currency.</p>
-          </div><!--/.card-body-->
-        </a><!--/.card-->
-      </div><!--/.col-->
+    <a class="xpring-link card" href="https://xpring.co/" target="_blank">
+      <div class="card-body">
+        <h3 class="card-title">
+          <img class="project-icon" src="assets/img/xpring-logo.svg" alt="Xpring" /><i class="fa fa-external-link" aria-hidden="true"></i>
+        </h3>
+        <p class="project-summary">Xpring (pronounced “spring”) is a Ripple initiative that builds infrastructure and helps innovative blockchain projects grow through investments and partnerships.</p>
+      </div><!--/.card-body-->
+    </a><!--/.card-->
 
-    </div><!--/.row-->
-
-  </section>
+  </section><!-- / Related Projects -->
 {% endblock %}
