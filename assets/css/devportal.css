@@ -823,10 +823,8 @@ a.current {
   font-size: 18px;
 }
 
-.landing h2 {
-  font-weight: bold;
-  line-height: 40px;
-  font-size: 32px;
+.landing .display-4 {
+  margin-bottom: 1.5rem;
 }
 
 .landing h3,
@@ -946,8 +944,9 @@ a.current {
   padding-right: 0;
 }
 
-.landing .card .blurb {
-  margin-top: 1rem;
+.blurb a {
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .landing .card > .card-img-top {
