@@ -482,6 +482,7 @@ a.current {
 }
 
 .landing .level-1,
+.landing .level-2,
 .landing .curated-links li {
   font-weight: 400;
   font-size: 14px;
@@ -506,17 +507,10 @@ a.current {
   margin: 0 -8px 0 -8px;
   font-weight: 400;
 }
-.landing .card .level-2 a:hover {
-  background-color: #D8EEFC;
-  text-decoration: none;
-}
-.landing .card .level-2 a:hover:after {
-  content: "\f105"; /* fontawesome angle-right */
-  font-family: FontAwesome;
-  position: absolute;
-  right: 0;
-  top: 8px;
-  color: #0D294E;
+
+.landing .card .blurb + .children-display,
+.landing .card .blurb + .curated-links {
+  margin-top: 1rem;
 }
 
 .level-1:first-child {
@@ -903,6 +897,7 @@ a.current {
 
 .btn:not(.external-link)::after,
 .landing .card .level-1 a::after,
+.landing .card .level-2 a::after,
 .landing .card .curated-links li a::after,
 .content .children-display li a::after {
   content: " ➝";
@@ -918,6 +913,7 @@ a.current {
 
 .btn:not(.external-link):hover::after,
 .landing .card .level-1 a:hover::after,
+.landing .card .level-2 a:hover::after,
 .landing .card .curated-links li a:hover::after,
 .landing a.card:hover .btn::after,
 .content .children-display li a:hover::after {

@@ -1277,7 +1277,7 @@ pages:
         template: template-landing-references.html
         html: references.html
         sidebar: disabled
-        blurb: Look up the ins-and-outs of XRP Ledger APIs, including sample requests and responses.
+        blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
             - local
 
@@ -1289,7 +1289,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         template: template-landing-children.html
-        blurb: Use the rippled API to communicate with a rippled server, the core peer-to-peer server that manages the XRP Ledger.
+        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger.
         targets:
             - local
 
@@ -2765,7 +2765,7 @@ pages:
         funnel: Docs
         doc_type: References
         category: Data API
-        blurb: Access more XRP Ledger data, including transaction history and analytics.
+        blurb: RESTful interface to XRP Ledger analytics and historical data.
         curated_anchors:
             - name: Methods
               anchor: "#api-method-reference"

@@ -64,17 +64,20 @@ h1, h2, h3, h4, h5 {
   font-weight: 700;
 }
 
+.landing section {
+  border-bottom: 1px solid map-get($theme-colors, primary);
+}
+
 .card-grid {
   display: grid;
   gap: 1px;
   background-color: #dedede;
   padding: 0;
-  border-bottom: 1px solid #dedede;
 
   &.card-grid-2x2 {
-    /* left half is a hero area; right half is a 2x2 grid. Total grid is 4x2 */
+    /* left half is a hero area; right half is a 2x2 grid. */
     grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto auto;
 
     .section-hero {
       grid-row-end: span 2;
@@ -88,18 +91,18 @@ h1, h2, h3, h4, h5 {
   }
 
   &.card-grid-2x1 {
-    /* left half is a hero area; right half is a 2x1 grid. Total grid is 4x1 */
+    /* left half is a hero area; right half is a 2x1 grid. */
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr;
+
+    .section-hero {
+      grid-row-end: span 1;
+    }
 
     @include media-breakpoint-down(md) {
       /* Switch to 1-column layout on smaller widths */
       grid-template-columns: 1fr;
       grid-template-rows: 1fr;
-    }
-
-    .section-hero {
-      grid-row-end: span 1;
     }
   }
 
@@ -108,18 +111,44 @@ h1, h2, h3, h4, h5 {
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
 
+    .section-hero {
+      grid-row-end: span 4;
+    }
+
     @include media-breakpoint-down(md) {
       /* Switch to 1-column layout on smaller widths */
       grid-template-columns: 1fr;
       grid-template-rows: repeat(5, auto);
 
       .section-hero {
-        grid-row-end: span 2;
+        grid-row-end: span 1;
       }
     }
+  }
 
-    .section-hero {
-      grid-row-end: span 4;
+  &.card-grid-4xN {
+    /* 4 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.card-grid-3xN {
+    /* 3 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
     }
   }
 

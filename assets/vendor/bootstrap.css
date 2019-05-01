@@ -7161,12 +7161,14 @@ h1, h2, h3, h4, h5 {
   font-family: 'Space Mono', monospace;
   font-weight: 700; }
 
+.landing section {
+  border-bottom: 1px solid #1B1818; }
+
 .card-grid {
   display: grid;
   gap: 1px;
   background-color: #dedede;
-  padding: 0;
-  border-bottom: 1px solid #dedede; }
+  padding: 0; }
   .card-grid.card-grid-2x2 {
     /* left half is a hero area; right half is a 2x2 grid. Total grid is 4x2 */
     grid-template-columns: 2fr 1fr 1fr;
@@ -7182,26 +7184,44 @@ h1, h2, h3, h4, h5 {
     /* left half is a hero area; right half is a 2x1 grid. Total grid is 4x1 */
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr; }
+    .card-grid.card-grid-2x1 .section-hero {
+      grid-row-end: span 1; }
     @media (max-width: 991.98px) {
       .card-grid.card-grid-2x1 {
         /* Switch to 1-column layout on smaller widths */
         grid-template-columns: 1fr;
         grid-template-rows: 1fr; } }
-    .card-grid.card-grid-2x1 .section-hero {
-      grid-row-end: span 1; }
   .card-grid.card-grid-2x4 {
     /* left half is a hero area; right half is a 2x4 grid. Total grid is 4x4 */
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr; }
+    .card-grid.card-grid-2x4 .section-hero {
+      grid-row-end: span 4; }
     @media (max-width: 991.98px) {
       .card-grid.card-grid-2x4 {
         /* Switch to 1-column layout on smaller widths */
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, auto); }
         .card-grid.card-grid-2x4 .section-hero {
-          grid-row-end: span 2; } }
-    .card-grid.card-grid-2x4 .section-hero {
-      grid-row-end: span 4; }
+          grid-row-end: span 1; } }
+  .card-grid.card-grid-4xN {
+    /* 4 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    /* No "hero" blocks expected here. */ }
+    @media (max-width: 991.98px) {
+      .card-grid.card-grid-4xN {
+        /* Switch to 1-column layout on smaller widths */
+        grid-template-columns: 1fr; } }
+  .card-grid.card-grid-3xN {
+    /* 3 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    /* No "hero" blocks expected here. */ }
+    @media (max-width: 991.98px) {
+      .card-grid.card-grid-3xN {
+        /* Switch to 1-column layout on smaller widths */
+        grid-template-columns: 1fr; } }
   .card-grid .align-bottom {
     justify-content: flex-end; }
   .card-grid .card {
