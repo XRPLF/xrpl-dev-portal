@@ -914,6 +914,10 @@ a.current {
   text-decoration: none;
 }
 
+.btn.jump-to-top::after {
+  content: " ↑"
+}
+
 .btn:not(.external-link):hover::after,
 .landing .card .level-1 a:hover::after,
 .landing .card .curated-links li a:hover::after,
