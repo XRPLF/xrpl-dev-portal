@@ -7170,9 +7170,9 @@ h1, h2, h3, h4, h5 {
   background-color: #dedede;
   padding: 0; }
   .card-grid.card-grid-2x2 {
-    /* left half is a hero area; right half is a 2x2 grid. Total grid is 4x2 */
+    /* left half is a hero area; right half is a 2x2 grid. */
     grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr; }
+    grid-template-rows: auto auto; }
     .card-grid.card-grid-2x2 .section-hero {
       grid-row-end: span 2; }
     @media (max-width: 991.98px) {
@@ -7181,7 +7181,7 @@ h1, h2, h3, h4, h5 {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, auto); } }
   .card-grid.card-grid-2x1 {
-    /* left half is a hero area; right half is a 2x1 grid. Total grid is 4x1 */
+    /* left half is a hero area; right half is a 2x1 grid. */
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 1fr; }
     .card-grid.card-grid-2x1 .section-hero {
@@ -7222,8 +7222,6 @@ h1, h2, h3, h4, h5 {
       .card-grid.card-grid-3xN {
         /* Switch to 1-column layout on smaller widths */
         grid-template-columns: 1fr; } }
-  .card-grid .align-bottom {
-    justify-content: flex-end; }
   .card-grid .card {
     padding: 40px;
     border: 0; }
