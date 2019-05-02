@@ -652,6 +652,15 @@ pages:
         targets:
             - local
 
+    -   md: tutorials/get-started/look-up-transaction-results.md
+        html: look-up-transaction-results.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        blurb: Find the results of previously-submitted transactions.
+        targets:
+          - local
+
     # TODO: Get Started with API Tools
 
     -   name: Use Simple XRP Payments
@@ -688,15 +697,6 @@ pages:
         doc_type: Tutorials
         category: Use Simple XRP Payments
         blurb: Replace a pending transaction if it gets stuck from paying too low a transaction cost.
-        targets:
-          - local
-
-    -   md: tutorials/use-simple-xrp-payments/look-up-transaction-results.md
-        html: look-up-transaction-results.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Use Simple XRP Payments
-        blurb: Find the results of previously-submitted transactions.
         targets:
           - local
 
