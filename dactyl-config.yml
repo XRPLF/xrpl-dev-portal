@@ -51,6 +51,8 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: look-up-transaction-results.html
+              date: 2019-05-02
             - html: tx-sender.html
               date: 2019-05-01
             - html: transaction-metadata.html
@@ -58,8 +60,6 @@ targets:
             - html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
               date: 2019-03-22
             - html: set-up-secure-signing.html
-              date: 2019-03-13
-            - html: escrow.html
               date: 2019-03-13
 
     # Data API target for porting changes to the README in the upstream repo
