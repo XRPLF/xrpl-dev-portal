@@ -228,11 +228,11 @@ The [`QualityIn` and `QualityOut` settings of trust lines](trustset.html) can af
 
 If the amount to be sent or received is outside of the [issued currency precision](currency-formats.html#issued-currency-precision), it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. Therefore, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the issued currency. (XRP is never rounded, so this is not possible with XRP.)
 
-Depending on the length of the [paths](paths.html), the metadata for cross-currency payments can be _long_. For example, [transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B) delivered 2.788 GCB issued by rHaaans..., spending XRP but passing through USD from 2* issuers, paying XRP to 2* accounts, removing an unfunded offer from r9ZoLsJ to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified.
+Depending on the length of the [paths](paths.html), the metadata for cross-currency payments can be _long_. For example, [transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B) delivered 2.788 GCB issued by rHaaans..., spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from r9ZoLsJ to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified.
 
 ### Offers
 
-An [OfferCreate transaction][] may or may not create an object in the ledger, depending on how much was matched and whether the transaction used flags such as tfImmediateOrCancel. Look for a `CreatedNode` entry with LedgerEntryType `Offer` to see if the transaction added a new Offer to the ledger's order books. For example:
+An [OfferCreate transaction][] may or may not create an object in the ledger, depending on how much was matched and whether the transaction used flags such as `tfImmediateOrCancel`. Look for a `CreatedNode` entry with LedgerEntryType `Offer` to see if the transaction added a new Offer to the ledger's order books. For example:
 
 ```json
 {
@@ -257,7 +257,7 @@ An [OfferCreate transaction][] may or may not create an object in the ledger, de
 
 A `ModifiedNode` of type `Offer` indicates an Offer that was matched and partially consumed. A single transaction can consume a large number of Offers. An Offer to trade two issued currencies might also consume Offers to trade XRP because of [auto-bridging](autobridging.html). All or part of an exchange can be auto-bridged.
 
-A `DeletedNode` of LedgerEntryType `Offer` can indicate a matching Offer that was fully consumed, an Offer that was found to be [expired or unfunded](offers.html#lifecycle-of-an-offer) at the time of processing, or an Offer that was canceled as part of placing a new Offer. You can recognize a canceled Offer because the `Account` that placed it is the same as the sender of the transaction.
+A `DeletedNode` of LedgerEntryType `Offer` can indicate a matching Offer that was fully consumed, an Offer that was found to be [expired or unfunded](offers.html#lifecycle-of-an-offer) at the time of processing, or an Offer that was canceled as part of placing a new Offer. You can recognize a canceled Offer because the `Account` that placed it is the sender of the transaction that deleted it.
 
 Example of a deleted Offer:
 
