@@ -81,7 +81,7 @@ Transaction metadata describes _exactly_ how the transaction was applied to the 
 
 {% include '_snippets/tx-metadata-field-table.md' %} <!--_ -->
 
-Most of the metadata is contained in [the `AffectedNodes` array](transaction-metadata.html#affectednodes). What to look for in this array depends on the type of transaction, almost every transaction modifies the sender's [AccountRoot object][], to destroy the XRP [transaction cost](transaction-cost.html) and increase the [account's Sequence number](basic-data-types.html#account-sequence).
+Most of the metadata is contained in [the `AffectedNodes` array](transaction-metadata.html#affectednodes). What to look for in this array depends on the type of transaction. Almost every transaction modifies the sender's [AccountRoot object][] to destroy the XRP [transaction cost](transaction-cost.html) and increase the [account's Sequence number](basic-data-types.html#account-sequence).
 
 **Info:** One exception to this rule is for [pseudo-transactions](pseudo-transaction-types.html), which aren't sent from a real account and thus do not modify an AccountRoot object. There are other exceptions that modify an AccountRoot object without changing its `Balance` field: [free key reset transactions](transaction-cost.html#key-reset-transaction) do not change the sender's XRP balance; and in the unlikely scenario that a transaction causes an account to receive exactly as much XRP as it destroys, the account's Balance shows no net change. (The transaction cost is reflected elsewhere in the metadata, from wherever the account received the XRP.)
 
@@ -146,7 +146,7 @@ The _only_ changes made by this [no-op transaction](cancel-or-skip-a-transaction
 
 - The previous transaction to affect this account was the transaction `E710CADE7FE9C26C51E8630138322D80926BE91E46D69BF2F36E6E4598D6D0CF`, which executed in ledger version 46447387, as specified in the `PreviousTxnID` and `PreviousTxnLgrSeq` fields. (This may be useful if you want to walk backwards through the account's transaction history.)
 
-    **Note:** Although the metadata does not explicitly show it, any time a transaction modifies a ledger object, it updates that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields with the current transaction's information.
+    **Note:** Although the metadata does not explicitly show it, any time a transaction modifies a ledger object, it updates that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields with the current transaction's information. If the same sender has multiple transactions in a single ledger version, each one after the first provides a `PreviousTxnLgrSeq` whose value is the [ledger index](basic-data-types.html#ledger-index) of the ledger version that included all those transactions.
 
 Since the `ModifiedNode` entry for rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn's account is the only object in the `AffectedNodes` array, no other changes were made to the ledger as a result of this transaction.
 
@@ -204,7 +204,7 @@ Other things to look for when processing transaction metadata depend on the tran
 
 ### Payments
 
-A [Payment transaction][] can represent a direct XRP-to-XRP transaction, a [cross-currency transaction](cross-currency-transaction.html), or a direct transaction in an [issued (non-XRP) currency](issued-currencies.html). Anything other than a direct XRP-to-XRP transaction can be a [partial payment](partial-payments.html), including issued currency to XRP or XRP to issued currency transactions.
+A [Payment transaction][] can represent a direct XRP-to-XRP transaction, a [cross-currency payment](cross-currency-payments.html), or a direct transaction in an [issued (non-XRP) currency](issued-currencies.html). Anything other than a direct XRP-to-XRP transaction can be a [partial payment](partial-payments.html), including issued currency to XRP or XRP to issued currency transactions.
 
 XRP amounts are tracked in the `Balance` field of `AccountRoot` objects. (XRP can also exist in [Escrow objects](escrow-object.html) and [PayChannel objects](paychannel.html), but Payment transactions cannot affect those.)
 
