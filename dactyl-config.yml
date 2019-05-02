@@ -2870,9 +2870,18 @@ pages:
 
 # Dev Tools --------------------------------------------------------------------
     -   md: dev-tools/dev-tools.md
+        html: dev-tools.html
         funnel: Dev Tools
         filters:
             - buttonize
+        targets:
+            - local
+
+    -   name: Dev Tools # Redirect page for old broken URL
+        html: dev-tools-dev-tools.html
+        template: template-redirect.html
+        redirect_url: dev-tools.html
+        funnel: Dev Tools
         targets:
             - local
 
@@ -2914,6 +2923,13 @@ pages:
         targets:
             - local
         template: template-test-net.html
+
+    -   name: Transaction Sender
+        funnel: Dev Tools
+        html: tx-sender.html
+        targets:
+            - local
+        template: template-tx-sender.html
 
 # News -------------------------------------------------------------------------
 

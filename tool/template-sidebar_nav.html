@@ -38,6 +38,7 @@
           <ul class="sidebar_pagelist">
           {% for page in funnelpages %}
             {% if loop.index == 1 %}{# Skip the first element since it's linked by the funnel header #}
+            {% elif page.template == "template-redirect.html" %}{# skip redirects #}
             {% elif page == currentpage %}
             <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
             {% else %}
@@ -82,33 +83,34 @@
                   {% set printed_subcategories = [] %}
                   {% for page in catpages %}
                     {% if loop.index != 1 %}{# Skip the first element since it's linked by the category header #}
-                    {% if page.subcategory is undefined %}
-                      {% if page == currentpage %}
-                        <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                      {% else %}
-                      <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                      {% endif %}
-                    {% elif page.subcategory not in printed_subcategories %}
-                      {% if page == currentpage %}
-                      <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                      {% elif currentpage.subcategory is defined and page.subcategory == currentpage.subcategory %}
-                      <li><a class="subcat-title active-parent" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                      {% else %}
-                      <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                      {% endif %}
-
-                      {% for subpage in catpages|selectattr('subcategory', 'defined_and_equalto', page.subcategory) %}
-                        {% if subpage != page %}
-                          {% if subpage == currentpage %}
-                          <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                          {% else %}
-                          <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                          {% endif %}
+                      {% if page.template == "template-redirect.html" %}{# skip redirects #}
+                      {% elif page.subcategory is undefined %}
+                        {% if page == currentpage %}
+                          <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                        {% else %}
+                        <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                         {% endif %}
-                      {% endfor %}
-                      {% set _ = printed_subcategories.append(page.subcategory) %}
+                      {% elif page.subcategory not in printed_subcategories %}
+                        {% if page == currentpage %}
+                        <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                        {% elif currentpage.subcategory is defined and page.subcategory == currentpage.subcategory %}
+                        <li><a class="subcat-title active-parent" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                        {% else %}
+                        <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                        {% endif %}
 
-                    {% endif %}
+                        {% for subpage in catpages|selectattr('subcategory', 'defined_and_equalto', page.subcategory) %}
+                          {% if subpage != page %}
+                            {% if subpage == currentpage %}
+                            <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                            {% else %}
+                            <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                        {% set _ = printed_subcategories.append(page.subcategory) %}
+
+                      {% endif %}
                     {% endif %}
                   {% endfor %}
 
@@ -154,7 +156,8 @@
                   {% set printed_categories = [] %}
                   {% for subpage in supercatpages %}
                     {% if loop.index != 1 %}{# Skip the first element since it's linked by the supercategory header #}
-                      {% if subpage.category not in printed_categories %}
+                      {% if subpage.template == "template-redirect.html" %}{# skip redirects #}
+                      {% elif subpage.category not in printed_categories %}
                         <li><a class="subcat-title" href="{{ subpage.html }}">{{ subpage.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
 
                         {% set category_members = supercatpages|selectattr('category', 'defined_and_equalto', subpage.category)|list %}
@@ -204,33 +207,34 @@
                 {% set printed_subcategories = [] %}
                 {% for page in catpages %}
                   {% if loop.index != 1 %}{# Skip the first element since it's linked by the category header #}
-                  {% if page.subcategory is undefined %}
-                    {% if page == currentpage %}
-                    <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                    {% else %}
-                    <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                    {% endif %}
-                  {% elif page.subcategory not in printed_subcategories %}
-                    {% if page == currentpage %}
-                    <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                    {% elif page.subcategory is defined and currentpage.subcategory is defined and page.subcategory == currentpage.subcategory %}
-                    <li><a class="subcat-title active-parent" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                    {% else %}
-                    <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                    {% endif %}
-
-                    {% for subpage in catpages|selectattr('subcategory', 'defined_and_equalto', page.subcategory) %}
-                      {% if subpage != page %}
-                        {% if subpage == currentpage %}
-                        <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                        {% else %}
-                        <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                        {% endif %}
+                    {% if page.template == "template-redirect.html" %}{# skip redirects #}
+                    {% elif page.subcategory is undefined %}
+                      {% if page == currentpage %}
+                      <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                      {% else %}
+                      <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                       {% endif %}
-                    {% endfor %}
-                    {% set _ = printed_subcategories.append(page.subcategory) %}
+                    {% elif page.subcategory not in printed_subcategories %}
+                      {% if page == currentpage %}
+                      <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                      {% elif page.subcategory is defined and currentpage.subcategory is defined and page.subcategory == currentpage.subcategory %}
+                      <li><a class="subcat-title active-parent" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                      {% else %}
+                      <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                      {% endif %}
 
-                  {% endif %}
+                      {% for subpage in catpages|selectattr('subcategory', 'defined_and_equalto', page.subcategory) %}
+                        {% if subpage != page %}
+                          {% if subpage == currentpage %}
+                          <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                          {% else %}
+                          <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                      {% set _ = printed_subcategories.append(page.subcategory) %}
+
+                    {% endif %}
                   {% endif %}
                 {% endfor %}
 

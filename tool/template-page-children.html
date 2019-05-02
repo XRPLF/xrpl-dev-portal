@@ -39,6 +39,7 @@
   {% set printed_next_levels = [] %}
   {% for onepage in thosepages %}
     {% if onepage == parent %}{# pass #}
+    {% elif onepage.template == "template-redirect.html" %}{# don't list redirects #}
     {% elif next_level_field == None or (onepage[next_level_field] is undefined and next_level_field != "supercategory") %}
       {# direct child, print it! #}
       <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.name}}</a>{% if show_blurbs and onepage.blurb is defined and indent_level == 1%}<p class="blurb child-blurb">{{onepage.blurb}}</p>{% endif %}</li>
