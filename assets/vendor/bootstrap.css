@@ -7161,7 +7161,9 @@ h1, h2, h3, h4, h5 {
   font-family: 'Space Mono', monospace;
   font-weight: 700; }
 
-.landing section {
+.landing section,
+.xrpl-footer .card-grid,
+#main_content_wrapper {
   border-bottom: 1px solid #1B1818; }
 
 .card-grid {
@@ -7221,6 +7223,17 @@ h1, h2, h3, h4, h5 {
     @media (max-width: 991.98px) {
       .card-grid.card-grid-3xN {
         /* Switch to 1-column layout on smaller widths */
+        grid-template-columns: 1fr; } }
+  .card-grid.card-grid-Nx1 {
+    /* 1 row of equal sized columns */
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    grid-template-rows: auto;
+    /* No "hero" blocks expected here. */ }
+    @media (max-width: 991.98px) {
+      .card-grid.card-grid-Nx1 {
+        /* Switch to 1-column layout on smaller widths */
+        grid-auto-flow: row;
         grid-template-columns: 1fr; } }
   .card-grid .card {
     padding: 40px;

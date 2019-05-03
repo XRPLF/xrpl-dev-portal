@@ -208,61 +208,22 @@ th {
 
 /* Footer ------------------------------------------------------------------- */
 .build-disclaimer {
-  font-size: 10pt;
+  font-size: 10px;
 }
-
-.ripple-footer {
+.xrpl-footer h5 {
   font-size: 14px;
-  background-position-y: -60px;
+}
+.xrpl-footer li {
+  font-size: 12px;
+}
+.xrpl-footer .card li a {
+  font-weight: 400;
+  font-family: 'Space Mono', monospace;
 }
 
-.ripple-footer a {
-  color: #999999;
-  -o-transition: .5s;
-  -ms-transition: .5s;
-  -moz-transition: .5s;
-  -webkit-transition: .5s;
-  transition: .5s;
-  font-weight: 500;
-}
-.ripple-footer a:hover {
-  text-decoration: underline;
-  color: white;
-}
-
-.ripple-footer hr {
-  border-top: 1px solid #999999;
-}
-
-.ripple-footer h5 a {
-  color: #ffffff;
-  letter-spacing: .04em;
-  text-decoration: none;
-  padding-bottom: 0.5rem;
-}
-.ripple-footer h5 a:hover {
-  text-decoration: underline;
-}
 .absolute_bottom_footer span {
   margin-right: 25px;
-}
-
-.foot-nav-col .children-display li {
-  list-style-type: none;
-  margin-left: 0;
-  font-size: 14px;
-}
-
-.foot-nav-col {
-  border-left: 1px solid #eae7e6;
-  border-right: 1px solid #eae7e6;
-}
-
-.foot-nav-col:first-of-type {
-  border-left: 0;
-}
-.foot-nav-col:last-of-type {
-  border-right: 0;
+  font-size: 10px;
 }
 
 /* Callouts ----------------------------------------------------------------- */
@@ -836,7 +797,8 @@ a.current {
   overflow-x: auto;
 }
 
-.landing .card li {
+.landing .card li,
+.xrpl-footer .card li {
   list-style-type: none;
   margin-left: 0;
 }
@@ -851,26 +813,20 @@ a.current {
 }
 
 .landing .card-header,
-.landing .card-footer {
+.landing .card-footer,
+.xrpl-footer .card-header {
   background: none;
   border-bottom: none;
   border-top: none;
 }
 
-.landing .card-header {
+.landing .card-header,
+.xrpl-footer .card-header {
   padding: 8px;
 }
 
 .landing .card-footer {
   padding: 8px;
-}
-
-.landing .card-header a {
-  display: block;
-  margin: -12px;
-  padding: 12px;
-  border-radius: inherit;
-  transition: 0.5s;
 }
 
 .landing .card-body > p {
