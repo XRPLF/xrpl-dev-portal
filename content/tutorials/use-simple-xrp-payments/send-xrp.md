@@ -12,27 +12,15 @@ This tutorial explains how to send a simple XRP Payment using RippleAPI for Java
 
 - To send transactions in the XRP Ledger, you first need an address and secret key, and some XRP. You can get an address in the XRP Test Net with a supply of Test Net XRP using the following interface:
 
-<div class="interactive-block test-net-inset" id="interactive-generate">
-<div class="interactive-block-inner">
-  <div class="breadcrumbs-wrap">
-    <ul class="breadcrumb prereqs">
-      <li class="breadcrumb-item active current bc-generate"><a href="#interactive-generate">Generate</a></li>
-      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
-      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
-      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
-      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
-      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
-      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
-    </ul><!--/.breadcrumb.prereqs-->
-  </div><!--/.breadcrumbs-wrap-->
-  <button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
-  <div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"> Generating Keys...</div>
-  <div id='address'></div>
-  <div id='secret'></div>
-  <div id='balance'></div>
-  <div id="populate-creds-status"></div>
-</div>
-</div>
+{{ start_step("Generate") }}
+<button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
+<div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"> Generating Keys...</div>
+<div id='address'></div>
+<div id='secret'></div>
+<div id='balance'></div>
+<div id="populate-creds-status"></div>
+{{ end_step() }}
+
 <script type="application/javascript">
 $(document).ready( () => {
 
@@ -122,27 +110,15 @@ api.connect()
 
 For this tutorial, you can connect directly from your browser by pressing the following button:
 
-<div class="interactive-block" id="interactive-connect">
-  <div class="interactive-block-inner">
-    <div class="breadcrumbs-wrap">
-      <ul class="breadcrumb prereqs">
-        <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
-        <li class="breadcrumb-item disabled current bc-connect"><a href="#interactive-connect">Connect</a></li>
-        <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
-        <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
-        <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
-        <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
-        <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
-      </ul><!--/.breadcrumb.prereqs-->
-    </div><!--/.breadcrumbs-wrap-->
-    <button id="connect-button" class="btn btn-primary">Connect to TestNet</button>
-    <div>
-      <strong>Connection status:</strong>
-      <span id="connection-status">Not connected</span>
-      <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
-    </div>
-  </div>
+{{ start_step("Connect") }}
+<button id="connect-button" class="btn btn-primary">Connect to TestNet</button>
+<div>
+  <strong>Connection status:</strong>
+  <span id="connection-status">Not connected</span>
+  <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
 </div>
+{{ end_step() }}
+
 <script type="application/javascript">
 api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
 api.on('connected', () => {
@@ -216,25 +192,13 @@ async function doPrepare() {
 txJSON = doPrepare()
 ```
 
-<div class="interactive-block" id="interactive-prepare">
-<div class="interactive-block-inner">
-  <div class="breadcrumbs-wrap">
-    <ul class="breadcrumb prereqs">
-      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
-      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
-      <li class="breadcrumb-item disabled current bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
-      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
-      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
-      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
-      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
-    </ul><!--/.breadcrumb.prereqs-->
-  </div><!--/.breadcrumbs-wrap-->
+{{ start_step("Prepare") }}
   <button id="prepare-button" class="btn btn-primary connection-required"
     title="Connect to Test Net first" disabled>Prepare
     example transaction</button>
   <div id="prepare-output"></div>
-</div>
-</div>
+{{ end_step() }}
+
 <script type="application/javascript">
   $("#prepare-button").click( async function() {
     // Wipe existing results
@@ -290,25 +254,13 @@ The result of the signing operation is a transaction object containing a signatu
 
 The signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
 
-<div class="interactive-block" id="interactive-sign">
-<div class="interactive-block-inner">
-  <div class="breadcrumbs-wrap">
-    <ul class="breadcrumb prereqs">
-      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
-      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
-      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
-      <li class="breadcrumb-item disabled current bc-sign"><a href="#interactive-sign">Sign</a></li>
-      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
-      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
-      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
-    </ul><!--/.breadcrumb.prereqs-->
-  </div><!--/.breadcrumbs-wrap-->
-  <button id="sign-button" class="btn btn-primary connection-required"
-    title="Complete all previous steps first" disabled>Sign
-    example transaction</button>
-  <div id="sign-output"></div>
-</div>
-</div>
+{{ start_step("Sign") }}
+<button id="sign-button" class="btn btn-primary connection-required"
+  title="Complete all previous steps first" disabled>Sign
+  example transaction</button>
+<div id="sign-output"></div>
+{{ end_step() }}
+
 <script type="application/javascript">
   $("#sign-button").click( function() {
     // Wipe previous output
@@ -377,26 +329,14 @@ If you see any other result, you should check the following:
 See the full list of [transaction results](transaction-results.html) for more possibilities.
 
 
-<div class="interactive-block" id="interactive-submit">
-<div class="interactive-block-inner">
-  <div class="breadcrumbs-wrap">
-    <ul class="breadcrumb prereqs">
-      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
-      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
-      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
-      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
-      <li class="breadcrumb-item disabled current bc-submit"><a href="#interactive-submit">Submit</a></li>
-      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
-      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
-    </ul><!--/.breadcrumb.prereqs-->
-  </div><!--/.breadcrumbs-wrap-->
+{{ start_step("Submit") }}
   <button id="submit-button" class="btn btn-primary connection-required"
     title="Connection to Test Net required" disabled>Submit
     example transaction</button>
     <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
     <div id="submit-output"></div>
-</div>
-</div>
+{{ end_step() }}
+
 <script type="application/javascript">
   $("#submit-button").click( async function() {
     $("#submit-output").html("") // Wipe previous output
@@ -445,35 +385,23 @@ api.on('ledger', ledger => {
 })
 ```
 
-<div class="interactive-block" id="interactive-wait">
-<div class="interactive-block-inner">
-  <div class="breadcrumbs-wrap">
-    <ul class="breadcrumb prereqs">
-      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
-      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
-      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
-      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
-      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
-      <li class="breadcrumb-item disabled current bc-wait"><a href="#interactive-wait">Wait</a></li>
-      <li class="breadcrumb-item disabled bc-check"><a href="#interactive-check">Check</a></li>
-    </ul><!--/.breadcrumb.prereqs-->
-  </div><!--/.breadcrumbs-wrap-->
-  <table>
+{{ start_step("Wait") }}
+<table>
+  <tr>
+    <th>Latest Validated Ledger Version:</th>
+    <td id="current-ledger-version">(Not connected)</td>
+  </tr>
     <tr>
-      <th>Latest Validated Ledger Version:</th>
-      <td id="current-ledger-version">(Not connected)</td>
+      <th>Ledger Version at Time of Submission:</th>
+      <td id="earliest-ledger-version">(Not submitted)</td>
     </tr>
-      <tr>
-        <th>Ledger Version at Time of Submission:</th>
-        <td id="earliest-ledger-version">(Not submitted)</td>
-      </tr>
-    <tr>
-      <th>Transaction LastLedgerSequence:</th>
-      <td id="tx-lls"></td>
-    </tr>
-  </table>
-</div>
-</div>
+  <tr>
+    <th>Transaction LastLedgerSequence:</th>
+    <td id="tx-lls"></td>
+  </tr>
+</table>
+{{ end_step() }}
+
 <script type="application/javascript">
 api.on('ledger', ledger => {
   $("#current-ledger-version").text(ledger.ledgerVersion)
@@ -512,24 +440,12 @@ The RippleAPI `getTransaction()` method only returns success if the transaction 
 
 **Caution:** Other APIs may return tentative results from ledger versions that have not yet been validated. For example, if you use the `rippled` APIs' [tx method][], be sure to look for `"validated": true` in the response to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](finality-of-results.html).
 
-<div class="interactive-block" id="interactive-check">
-<div class="interactive-block-inner">
-  <div class="breadcrumbs-wrap">
-    <ul class="breadcrumb prereqs">
-      <li class="breadcrumb-item active bc-generate"><a href="#interactive-generate">Generate</a></li>
-      <li class="breadcrumb-item disabled bc-connect"><a href="#interactive-connect">Connect</a></li>
-      <li class="breadcrumb-item disabled bc-prepare"><a href="#interactive-prepare">Prepare</a></li>
-      <li class="breadcrumb-item disabled bc-sign"><a href="#interactive-sign">Sign</a></li>
-      <li class="breadcrumb-item disabled bc-submit"><a href="#interactive-submit">Submit</a></li>
-      <li class="breadcrumb-item disabled bc-wait"><a href="#interactive-wait">Wait</a></li>
-      <li class="breadcrumb-item disabled current bc-check"><a href="#interactive-check">Check</a></li>
-    </ul><!--/.breadcrumb.prereqs-->
-  </div><!--/.breadcrumbs-wrap-->
-  <button id="get-tx-button" class="btn btn-primary connection-required"
-    title="Connection to Test Net required" disabled>Check transaction status</button>
-  <div id="get-tx-output"></div>
-</div>
-</div>
+{{ start_step("Check") }}
+<button id="get-tx-button" class="btn btn-primary connection-required"
+  title="Connection to Test Net required" disabled>Check transaction status</button>
+<div id="get-tx-output"></div>
+{{ end_step() }}
+
 <script type="application/javascript">
   $("#get-tx-button").click( async function() {
     // Wipe previous output

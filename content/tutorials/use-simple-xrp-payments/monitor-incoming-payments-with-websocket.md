@@ -57,37 +57,31 @@ const socket = new WebSocket('ws://localhost:6006')
 
 Example:
 
-<div class="interactive-block" id="interactive-connect">
-  <div class="interactive-block-inner">
-    <div class="breadcrumbs-wrap">
-      <ul class="breadcrumb prereqs">
-        <li class="breadcrumb-item disabled current bc-connect"><a href="#interactive-connect">Connect</a></li>
-        <!-- TODO: breadcrumb items for each step -->
-      </ul><!--/.breadcrumb.prereqs-->
-    </div><!--/.breadcrumbs-wrap-->
-    <button id="connect-button" class="btn btn-primary">Connect</button>
-    <div>
-      <strong>Connection status:</strong>
-      <span id="connection-status">Not connected</span>
-      <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
-      <h5>Console:</h5>
-      <div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
-    </div>
-  </div>
-</div>
+{{ start_step("Connect") }}
+<button id="connect-button" class="btn btn-primary">Connect</button>
+<strong>Connection status:</strong>
+<span id="connection-status">Not connected</span>
+<div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
+<h5>Console:</h5>
+<div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
+{{ end_step() }}
+
 <script type="application/javascript">
-const socket = new WebSocket('wss://s1.ripple.com');
-socket.addEventListener('open', (event) => {
-  // This callback runs when the connection is open
-  writeToConsole("#monitor-console-connect", "Connected!")
-  const command = {
-    "id": "on_open_ping_1",
-    "command": "ping"
-  }
-  socket.send(JSON.stringify(command))
-})
-socket.addEventListener('message', (event) => {
-  writeToConsole("#monitor-console-connect", "Got message from server: "+JSON.stringify(event.data))
+let socket;
+$("#connect-button").click((event) => {
+  socket = new WebSocket('wss://s1.ripple.com')
+  socket.addEventListener('open', (event) => {
+    // This callback runs when the connection is open
+    writeToConsole("#monitor-console-connect", "Connected!")
+    const command = {
+      "id": "on_open_ping_1",
+      "command": "ping"
+    }
+    socket.send(JSON.stringify(command))
+  })
+  socket.addEventListener('message', (event) => {
+    writeToConsole("#monitor-console-connect", "Got message from server: "+JSON.stringify(event.data))
+  })
 })
 </script>
 
@@ -99,10 +93,14 @@ Since WebSocket connections can have several messages going each way and there i
 - For any message that is a direct response to a request from the client side, the `type` is the string `response`. In this case, the server also provides an `id` field that matches the `id` provided in the request this is a response for. (This is important because responses may arrive out of order.)
 - For follow-up messages from [subscriptions](subscribe.html), the `type` indicates the type of follow-up message it is, such as the notification of an new transaction, ledger, or validation; or a follow-up to an ongoing [pathfinding request](path_find.html). Your client only receives these messages if it subscribes to them.
 
+{{ start_step("Handle Incoming Messages") }}
+<h5>Handle Incoming Placeholder</h5>
+{{ end_step() }}
+
 
 ## Footnotes
 
-1. <a id="footnote-1"></a> In practice, when calling an HTTP-based API multiple times, the client and server may reuse the same connection for several requests and responses. This practice is called [HTTP persistent connection, or keep-alive](https://en.wikipedia.org/wiki/HTTP_persistent_connection). From a development standpoint, the code to use an HTTP-based API is the same regardless of whether the underlying connection is new or reused.
+[1.](#from-footnote-1) <a id="footnote-1"></a> In practice, when calling an HTTP-based API multiple times, the client and server may reuse the same connection for several requests and responses. This practice is called [HTTP persistent connection, or keep-alive](https://en.wikipedia.org/wiki/HTTP_persistent_connection). From a development standpoint, the code to use an HTTP-based API is the same regardless of whether the underlying connection is new or reused.
 
 
 

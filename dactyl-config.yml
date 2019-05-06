@@ -679,6 +679,8 @@ pages:
         doc_type: Tutorials
         category: Use Simple XRP Payments
         blurb: Test out sending XRP using the XRP Test Net.
+        filters:
+            - interactive_steps
         targets:
             - local
 
@@ -688,6 +690,8 @@ pages:
         doc_type: Tutorials
         category: Use Simple XRP Payments
         blurb: See how to actively monitor for new XRP payments (and transaction of other types).
+        filters:
+            - interactive_steps
         targets:
             - local
 
