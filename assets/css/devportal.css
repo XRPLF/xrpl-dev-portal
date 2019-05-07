@@ -1041,6 +1041,11 @@ a.current {
   padding-left: 5px;
 }
 
+.ws-console {
+  height: 200px;
+  overflow: auto;
+}
+
 /* Status labels ("DEV" etc) for non-enabled features ----------------------- */
 
 .status {

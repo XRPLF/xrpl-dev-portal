@@ -32,7 +32,7 @@ The first step of monitoring for incoming payments is to connect to the XRP Ledg
 The following JavaScript code connects to one of Ripple's public server clusters. It then logs a message to the console, sends a requesting using the [ping method][] and sets up a handler to log to the console again when it receives any message from the server side.
 
 ```js
-const socket = new WebSocket('wss://s1.ripple.com')
+const socket = new WebSocket('wss://s.altnet.rippletest.net:51233')
 socket.addEventListener('open', (event) => {
   // This callback runs when the connection is open
   console.log("Connected!")
@@ -47,7 +47,7 @@ socket.addEventListener('message', (event) => {
 })
 ```
 
-The above example opens a secure connection (`wss://`) over the internet to the default port for TLS-secured connections (443) on a remote server at `s1.ripple.com`. To connect to a locally-running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
+The above example opens a secure connection (`wss://`) to one of Ripple's public Test Net API servers. To connect to a locally-running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')
@@ -69,7 +69,7 @@ Example:
 <script type="application/javascript">
 let socket;
 $("#connect-button").click((event) => {
-  socket = new WebSocket('wss://s1.ripple.com')
+  socket = new WebSocket('wss://s.altnet.rippletest.net:51233')
   socket.addEventListener('open', (event) => {
     // This callback runs when the connection is open
     writeToConsole("#monitor-console-connect", "Connected!")
@@ -78,6 +78,9 @@ $("#connect-button").click((event) => {
       "command": "ping"
     }
     socket.send(JSON.stringify(command))
+
+    // TODO: mark current breadcrumb as done, enable next step breadcrumb
+    $("#enable_dispatcher").prop("disabled",false)
   })
   socket.addEventListener('message', (event) => {
     writeToConsole("#monitor-console-connect", "Got message from server: "+JSON.stringify(event.data))
@@ -86,16 +89,149 @@ $("#connect-button").click((event) => {
 </script>
 
 
-## {{n.next()}}. Handle Incoming Messages By Type and ID
+## {{n.next()}}. Dispatch Incoming Messages to Handlers
 
-Since WebSocket connections can have several messages going each way and there is not a strict 1:1 correlation between requests and responses, the `rippled` server provides a `type` field on every message:
+Since WebSocket connections can have several messages going each way and there is not a strict 1:1 correlation between requests and responses, you need to identify what to do with each incoming message. A good model for coding this is to set up a "dispatcher" function that reads incoming messages and relays each message to the correct code path for handling it. To help dispatch messages appropriately, the `rippled` server provides a `type` field on every WebSocket message:
 
-- For any message that is a direct response to a request from the client side, the `type` is the string `response`. In this case, the server also provides an `id` field that matches the `id` provided in the request this is a response for. (This is important because responses may arrive out of order.)
+- For any message that is a direct response to a request from the client side, the `type` is the string `response`. In this case, the server also provides the following:
+
+    - An `id` field that matches the `id` provided in the request this is a response for. (This is important because responses may arrive out of order.)
+
+    - A `status` field that indicates whether the API successfully processed your request. The string value `success` indicates [a successful response](response-formatting.html). The string value `error` indicates [an error](error-formatting.html).
+
+        **Warning:** When submitting transactions, a `status` of `success` at the top level of the WebSocket message does not mean that the transaction itself succeeded. It only indicates that the server understood your request. For looking up a transaction's actual outcome, see [Look Up Transaction Results](look-up-transaction-results.html).
+
 - For follow-up messages from [subscriptions](subscribe.html), the `type` indicates the type of follow-up message it is, such as the notification of an new transaction, ledger, or validation; or a follow-up to an ongoing [pathfinding request](path_find.html). Your client only receives these messages if it subscribes to them.
 
-{{ start_step("Handle Incoming Messages") }}
-<h5>Handle Incoming Placeholder</h5>
+**Tip:** The [RippleAPI library for JavaScript](rippleapi-reference.html) handles this step by default. All asynchronous API requests use Promises to provide the response, and you can listen to streams using the [`.on(event, callback)` method](rippleapi-reference.html#listening-to-streams).
+
+The following JavaScript code defines a helper function to make API requests into convenient asynchronous [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), and sets up an interface to map other types of messages to global handlers:
+
+```js
+const AWAITING = {}
+const handleResponse = function(data) {
+  if (!data.hasOwnProperty("id")) {
+    console.error("Got response event without ID:", data)
+    return
+  }
+  if (AWAITING.hasOwnProperty(data.id)) {
+    AWAITING[data.id].resolve(data)
+  } else {
+    console.error("Response to un-awaited request w/ ID "+data.id)
+  }
+}
+
+let autoid_n = 0
+function api_request(options) {
+  if (!options.hasOwnProperty("id")) {
+    options.id = "autoid_" + (autoid_n++)
+  }
+
+  let resolveHolder;
+  AWAITING[options.id] = new Promise((resolve, reject) => {
+    // Save the resolve func to be called by the handleResponse function later
+    this.resolve = resolve
+    try {
+      // Use the socket opened in the previous example...
+      socket.send(JSON.stringify(options))
+    } catch {
+      reject()
+    }
+  })
+  AWAITING[options.id].resolve = resolveHolder;
+  return AWAITING[options.id]
+}
+
+const WS_HANDLERS = {
+  "response": handleResponse
+  // Fill this out with your handlers in the following format:
+  // "type": function(event) { /* handle event of this type */ }
+}
+socket.addEventListener('message', (event) => {
+  const parsed_data = JSON.parse(event.data)
+  if (WS_HANDLERS.hasOwnProperty(parsed_data.type)) {
+    // Call the mapped handler
+    WS_HANDLERS[parsed_data.type](parsed_data)
+  } else {
+    console.log("Unhandled message from server", event)
+  }
+})
+
+// Demonstrate api_request functionality
+async function pingpong() {
+  console.log("Ping...")
+  const response = await api_request({command: "ping"})
+  console.log("Pong!", response)
+}
+pingpong()
+```
+
+{{ start_step("Dispatch Messages") }}
+<button id="enable_dispatcher" class="btn btn-primary" disabled="disabled">Enable Dispatcher</button>
+<button id="dispatch_ping" class="btn btn-primary" disabled="disabled">Ping!</button>
+<h5>Responses</h5>
+<div class="ws-console" id="monitor-console-ping"><span class="placeholder">(Log is empty)</span></div>
 {{ end_step() }}
+
+<script type="application/javascript">
+const AWAITING = {}
+const handleResponse = function(data) {
+  if (!data.hasOwnProperty("id")) {
+    writeToConsole("#monitor-console-ping", "Got response event without ID:", data)
+    return
+  }
+  if (AWAITING.hasOwnProperty(data.id)) {
+    AWAITING[data.id].resolve(data)
+  } else {
+    writeToConsole("#monitor-console-ping", "Response to un-awaited request w/ ID "+data.id)
+  }
+}
+
+let autoid_n = 0
+function api_request(options) {
+  if (!options.hasOwnProperty("id")) {
+    options.id = "autoid_" + (autoid_n++)
+  }
+  let resolveFunc;
+  AWAITING[options.id] = new Promise((resolve, reject) => {
+    // Save the resolve func to be called by the handleResponse function later
+    resolveFunc = resolve
+    try {
+      // Use the socket opened in the previous example...
+      socket.send(JSON.stringify(options))
+    } catch {
+      reject()
+    }
+  })
+  AWAITING[options.id].resolve = resolveFunc
+  return AWAITING[options.id]
+}
+
+const WS_HANDLERS = {
+  "response": handleResponse
+}
+$("#enable_dispatcher").click((clickEvent) => {
+  socket.addEventListener('message', (event) => {
+    const parsed_data = JSON.parse(event.data)
+    if (WS_HANDLERS.hasOwnProperty(parsed_data.type)) {
+      // Call the mapped handler
+      WS_HANDLERS[parsed_data.type](parsed_data)
+    } else {
+      writeToConsole("#monitor-console-ping", "Unhandled message from server: "+event)
+    }
+  })
+  $("#dispatch_ping").prop("disabled", false)
+})
+
+async function pingpong() {
+  const response = await api_request({command: "ping"})
+  writeToConsole("#monitor-console-ping", "Pong! "+JSON.stringify(response))
+}
+
+$("#dispatch_ping").click((event) => {
+  pingpong()
+})
+</script>
 
 
 ## Footnotes
