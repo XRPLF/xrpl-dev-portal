@@ -7,6 +7,8 @@ This tutorial explains how to send a simple XRP Payment using RippleAPI for Java
 <!-- Interactive example use ripple-lib and its prerequisites -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
 <script type="application/javascript" src="assets/js/ripple-lib-1.1.2-min.js"></script>
+<!-- Helper for interactive tutorial breadcrumbs -->
+<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
 
 - This page provides JavaScript examples that use the ripple-lib (RippleAPI) library version 1.1.2. The [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.
 
@@ -67,11 +69,7 @@ $(document).ready( () => {
 
         $("#populate-creds-status").text("Populated this page's examples with these credentials.")
 
-        // Update all breadcrumbs
-        $(".bc-generate").removeClass("active")
-        $(".bc-generate").addClass("done")
-        $(".bc-connect").removeClass("disabled")
-        $(".bc-connect").addClass("active")
+        complete_step("Generate")
 
       },
       error: function() {
@@ -126,11 +124,8 @@ api.on('connected', () => {
   $("#connect-button").prop("disabled", true)
   $("#loader-{{n.current}}").hide()
 
-  // Update all breadcrumbs & active next step
-  $(".bc-connect").removeClass("active")
-  $(".bc-connect").addClass("done")
-  $(".bc-prepare").removeClass("disabled")
-  $(".bc-prepare").addClass("active")
+  // Update breadcrumbs & active next step
+  complete_step("Connect")
   $("#interactive-prepare button").prop("disabled", false)
   $("#interactive-prepare button").prop("title", "")
 })
@@ -226,11 +221,8 @@ txJSON = doPrepare()
       maxLedgerVersion + "</div>"
     )
 
-    // Update all breadcrumbs & active next step
-    $(".bc-prepare").removeClass("active")
-    $(".bc-prepare").addClass("done")
-    $(".bc-sign").removeClass("disabled")
-    $(".bc-sign").addClass("active")
+    // Update breadcrumbs & active next step
+    complete_step("Prepare")
     $("#interactive-sign button").prop("disabled", false)
     $("#interactive-sign button").prop("title", "")
   })
@@ -284,10 +276,7 @@ The signing API also returns the transaction's ID, or identifying hash, which yo
     )
 
     // Update all breadcrumbs & activate next step
-    $(".bc-sign").removeClass("active")
-    $(".bc-sign").addClass("done")
-    $(".bc-submit").removeClass("disabled")
-    $(".bc-submit").addClass("active")
+    complete_step("Sign")
     $("#interactive-submit button").prop("disabled", false)
   })
 </script>
@@ -356,11 +345,8 @@ See the full list of [transaction results](transaction-results.html) for more po
         "</div>"
       )
 
-      // Update all breadcrumbs & active next step
-      $(".bc-submit").removeClass("active")
-      $(".bc-submit").addClass("done")
-      $(".bc-wait").removeClass("disabled")
-      $(".bc-wait").addClass("active")
+      // Update breadcrumbs & active next step
+      complete_step("Submit")
     }
     catch(error) {
       $("#loader-{{n.current}}").hide()
@@ -408,10 +394,7 @@ api.on('ledger', ledger => {
 
   if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
     // Advance to "Check" as soon as we see a ledger close
-    $(".breadcrumb-item.bc-wait").removeClass("active")
-    $(".breadcrumb-item.bc-wait").addClass("done")
-    $(".breadcrumb-item.bc-check").removeClass("disabled")
-    $(".breadcrumb-item.bc-check").addClass("active")
+    complete_step("Wait")
     $("#get-tx-button").prop("disabled", false)
   }
 })
@@ -465,8 +448,7 @@ The RippleAPI `getTransaction()` method only returns success if the transaction 
         "</pre></code></div>"
       )
 
-      $(".bc-check").removeClass("active")
-      $(".bc-check").addClass("done")
+      complete_step("Check")
     } catch(error) {
       $("#get-tx-output").text("Couldn't get transaction outcome:" + error)
     }
