@@ -3,6 +3,9 @@ function CountXRPDifference(affected_nodes, address) {
   // its balance changed, if at all. Fortunately, each account appears at most
   // once in the AffectedNodes array, so we can return as soon as we find it.
 
+  // Note: this reports the net balance change. If the address is the sender,
+  // the transaction cost is deducted and combined with XRP sent/received
+
   for (let i=0; i<affected_nodes.length; i++) {
     if ((affected_nodes[i].hasOwnProperty("ModifiedNode"))) {
       // modifies an existing ledger entry
@@ -62,8 +65,9 @@ function CountXRPReceived(tx, address) {
       console.log("Received non-XRP currency.")
       return
     }
-  } elif (["PaymentChannelClaim", "PaymentChannelFund", "OfferCreate",
-          "CheckCash", "EscrowFinish"].includes(tx.transaction.TransactionType) {
+  } else if (["PaymentChannelClaim", "PaymentChannelFund", "OfferCreate",
+          "CheckCash", "EscrowFinish"].includes(
+          tx.transaction.TransactionType)) {
     CountXRPDifference(tx.meta.AffectedNodes, address)
   } else {
     console.log("Not a currency-delivering transaction type (" +

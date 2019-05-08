@@ -77,6 +77,7 @@ $("#connect-button").click((event) => {
   socket.addEventListener('open', (event) => {
     // This callback runs when the connection is open
     writeToConsole("#monitor-console-connect", "Connected!")
+    $("#connection-status").text("Connected")
     const command = {
       "id": "on_open_ping_1",
       "command": "ping"
@@ -84,7 +85,12 @@ $("#connect-button").click((event) => {
     socket.send(JSON.stringify(command))
 
     complete_step("Connect")
+    $("#connect-button").prop("disabled", "disabled")
     $("#enable_dispatcher").prop("disabled",false)
+  })
+  socket.addEventListener('close', (event) => {
+    $("#connection-status").text("Disconnected")
+    $("#connect-button").prop("disabled", false)
   })
   socket.addEventListener('message', (event) => {
     writeToConsole("#monitor-console-connect", "Got message from server: "+JSON.stringify(event.data))
@@ -298,6 +304,7 @@ async function do_subscribe() {
 $("#tx_subscribe").click((event) => {
   do_subscribe()
   complete_step("Subscribe")
+  $("#tx_read").prop("disabled", false)
 })
 
 const log_tx = function(tx) {
@@ -312,7 +319,7 @@ WS_HANDLERS["transaction"] = log_tx
 </script>
 
 
-## {{n.next()}}. Identify Incoming Payments
+## {{n.next()}}. Read Incoming Payments
 
 When you subscribe to an account, you get messages for _all transactions to or from the account_, as well as _transactions that affect the account indirectly_, such as trading its [issued currencies](issued-currencies.html). If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:
 
@@ -342,7 +349,105 @@ The following sample code looks at transaction metadata of all the above transac
 {% include '_code-samples/monitor-payments-websocket/read-amount-received.js' %}
 ```
 
-***TODO: interactive part for identifying incoming payments***
+{{ start_step("Read Payments") }}
+<button id="tx_read" class="btn btn-primary" disabled="disabled">Start Reading</button>
+<h5>Transactions</h5>
+<div class="ws-console" id="monitor-console-read"><span class="placeholder">(Log is empty)</span></div>
+{{ end_step() }}
+
+<script type="application/javascript">
+function CountXRPDifference(affected_nodes, address) {
+  // Helper to find an account in an AffectedNodes array and see how much
+  // its balance changed, if at all. Fortunately, each account appears at most
+  // once in the AffectedNodes array, so we can return as soon as we find it.
+
+  // Note: this reports the net balance change. If the address is the sender,
+  // any XRP balance changes combined with the transaction cost.
+
+  for (let i=0; i<affected_nodes.length; i++) {
+    if ((affected_nodes[i].hasOwnProperty("ModifiedNode"))) {
+      // modifies an existing ledger entry
+      let ledger_entry = affected_nodes[i].ModifiedNode
+      if (ledger_entry.LedgerEntryType === "AccountRoot" &&
+          ledger_entry.FinalFields.Account === address) {
+        if (!ledger_entry.PreviousFields.hasOwnProperty("Balance")) {
+          writeToConsole("#monitor-console-read", "XRP balance did not change.")
+        }
+        // Balance is in PreviousFields, so it changed. Time for
+        // high-precision math!
+        const old_balance = new Big(ledger_entry.PreviousFields.Balance)
+        const new_balance = new Big(ledger_entry.FinalFields.Balance)
+        const diff_in_drops = new_balance.minus(old_balance)
+        const xrp_amount = diff_in_drops.div(10e6)
+        if (xrp_amount.gte(0)) {
+          writeToConsole("#monitor-console-read", "Received "+xrp_amount.toString()+" XRP.")
+          return
+        } else {
+          writeToConsole("#monitor-console-read", "Spent "+xrp_amount.abs().toString()+" XRP.")
+          return
+        }
+      }
+    } else if ((affected_nodes[i].hasOwnProperty("CreatedNode"))) {
+      // created a ledger entry. maybe the account just got funded?
+      let ledger_entry = affected_nodes[i].CreatedNode
+      if (ledger_entry.LedgerEntryType === "AccountRoot" &&
+          ledger_entry.NewFields.Account === address) {
+        const balance_drops = new Big(ledger_entry.NewFields.Balance)
+        const xrp_amount = balance_drops.div(10e6)
+        writeToConsole("#monitor-console-read", "Received "+xrp_amount.toString()+" XRP (account funded).")
+        return
+      }
+    } // accounts cannot be deleted at this time, so we ignore DeletedNode
+  }
+
+  writeToConsole("#monitor-console-read", "Did not find address in affected nodes.")
+  return
+}
+
+function CountXRPReceived(tx, address) {
+  if (tx.meta.TransactionResult !== "tesSUCCESS") {
+    writeToConsole("#monitor-console-read", "Transaction failed.")
+    return
+  }
+  if (tx.transaction.TransactionType === "Payment") {
+    if (tx.transaction.Destination !== address) {
+      writeToConsole("#monitor-console-read", "Not the destination of this payment. (We're "+address+"; they're "+tx.transaction.Destination+")")
+      return
+    }
+    if (typeof tx.meta.delivered_amount === "string") {
+      const amount_in_drops = new Big(tx.meta.delivered_amount)
+      const xrp_amount = amount_in_drops.div(10e6)
+      writeToConsole("#monitor-console-read", "Received " + xrp_amount.toString() + " XRP.")
+      return
+    } else {
+      writeToConsole("#monitor-console-read", "Received non-XRP currency.")
+      return
+    }
+  } else if (["PaymentChannelClaim", "PaymentChannelFund", "OfferCreate",
+          "CheckCash", "EscrowFinish"].includes(
+          tx.transaction.TransactionType)) {
+    CountXRPDifference(tx.meta.AffectedNodes, address)
+  } else {
+    writeToConsole("#monitor-console-read", "Not a currency-delivering transaction type (" +
+                tx.transaction.TransactionType + ").")
+  }
+}
+
+$("#tx_read").click((event) => {
+  // Wrap the existing "transaction" handler to do the old thing and also
+  // do the CountXRPReceived thing
+  const sub_address = $("#subscribe_address").val()
+  const old_handler = WS_HANDLERS["transaction"]
+  const new_handler = function(data) {
+    old_handler(data)
+    CountXRPReceived(data, sub_address)
+  }
+  WS_HANDLERS["transaction"] = new_handler
+  // Disable the button so you can't stack up multiple levels of the new handler
+  $("#tx_read").prop("disabled", "disabled")
+  complete_step("Read Payments")
+})
+</script>
 
 ## {{n.next()}}. Look Out for Gaps
 
