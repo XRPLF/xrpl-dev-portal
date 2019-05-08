@@ -4,25 +4,25 @@
   {% if currentpage.supercategory is defined %}
     <div class="sidenav_parent">
       {% if currentpage == (pages|selectattr('supercategory', 'defined_and_equalto', currentpage.supercategory)|first) %}
-      <a class="active" href="{{ currentpage.html }}">{{ currentpage.supercategory }}</a>
+      <a  href="{{ currentpage.html }}">{{ currentpage.supercategory }}</a>
       {% else %}
-      <a href="{{ (pages|selectattr('supercategory', 'defined_and_equalto', currentpage.supercategory)|first).html }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> {{ currentpage.supercategory }}</a>
+      <a href="{{ (pages|selectattr('supercategory', 'defined_and_equalto', currentpage.supercategory)|first).html }}"> {{ currentpage.supercategory }}</a>
       {% endif %}
     </div>
   {% elif currentpage.doc_type is defined %}
     <div class="sidenav_parent">
       {% if currentpage == (pages|selectattr('doc_type', 'defined_and_equalto', currentpage.doc_type)|first) %}
-      <a class="active" href="{{ currentpage.html }}">{{ currentpage.doc_type }}</a>
+      <a  href="{{ currentpage.html }}">{{ currentpage.doc_type }}</a>
       {% else %}
-      <a href="{{ (pages|selectattr('doc_type', 'defined_and_equalto', currentpage.doc_type)|first).html }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> {{ currentpage.doc_type }}</a>
+      <a href="{{ (pages|selectattr('doc_type', 'defined_and_equalto', currentpage.doc_type)|first).html }}"> {{ currentpage.doc_type }}</a>
       {% endif %}
     </div>
   {% elif currentpage.funnel is defined %}
     <div class="sidenav_parent">
       {% if currentpage == (pages|selectattr('funnel', 'defined_and_equalto', currentpage.funnel)|first) %}
-      <a class="active" href="{{ currentpage.html }}">{{ currentpage.funnel }}</a>
+      <a  href="{{ currentpage.html }}">{{ currentpage.funnel }}</a>
       {% else %}
-      <a href="{{ (pages|selectattr('funnel', 'defined_and_equalto', currentpage.funnel)|first).html }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i> {{ currentpage.funnel }}</a>
+      <a href="{{ (pages|selectattr('funnel', 'defined_and_equalto', currentpage.funnel)|first).html }}"> {{ currentpage.funnel }}</a>
       {% endif %}
     </div>
   {% endif %}
@@ -34,7 +34,7 @@
     {% set funnelpages = pages|selectattr("funnel", 'defined_and_equalto', currentpage.funnel)|list %}
     <div id="sidenav" aria-multiselectable="true">
       <div class="card active">
-        <div class="card-body">
+        <div class="card-body card-body-single">
           <ul class="sidebar_pagelist">
           {% for page in funnelpages %}
             {% if loop.index == 1 %}{# Skip the first element since it's linked by the funnel header #}
@@ -69,11 +69,11 @@
           {% set cat_parent = pages|selectattr('category', 'defined_and_equalto', cat)|first %}
             <div class="card{% if currentpage.category is defined and currentpage.category == cat %} active{% endif %}">
               <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
-                <h5 class="card-title">
                 {% if catpages|length > 1 %}
-                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">&nbsp;</a>
+                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"><div class="accordion-icon {% if currentpage.category is undefined or currentpage.category == cat %}accordion-rotated {% endif %}"></div></a>
                 {% endif %}
-                <a class="sidenav_cat_title{% if currentpage == (cat_parent) %} active{% elif currentpage.category is defined and currentpage.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
+                <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="{{ cat_parent.html }}">{{ cat }}</a>
                 </h5>
               </div><!-- /.card-header -->
 
@@ -142,10 +142,13 @@
             {% set _ = printed_modules.append(page.supercategory) %}
             <div class="card">
               <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
-                <h5 class="card-title">
                 {% if supercatpages|length > 1 %}
-                  <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">&nbsp;</a>
+                  <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"><div class="accordion-icon"></div></a>
                 {% endif %}
+                <h5 class="card-title">
+                <!-- {% if supercatpages|length > 1 %}
+                  <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"><div class="accordion-icon"></div></a>
+                {% endif %} -->
                   <a class="sidenav_cat_title" href="{{ supercat_parent.html }}">{{ supercat }}</a>
                 </h5>
               </div><!-- /.card-header -->
@@ -193,11 +196,11 @@
           {% set cat_parent = catpages|first %}
           <div class="card{% if currentpage.category is defined and currentpage.category == cat %} active{% endif %}">
             <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
-              <h5 class="card-title">
               {% if catpages|length > 1 %}
-                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}">&nbsp;</a>
+                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"><div class="accordion-icon  {% if currentpage.category is undefined or currentpage.category == cat %}accordion-rotated {% endif %}"></div></a>
               {% endif %}
-                <a class="sidenav_cat_title{% if currentpage == (cat_parent) %} active{% elif currentpage.category is defined and currentpage.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
+              <h5 class="card-title">
+                <a class="sidenav_cat_title" href="{{ cat_parent.html }}">{{ cat }}</a>
               </h5>
             </div><!-- /.card-header -->
 

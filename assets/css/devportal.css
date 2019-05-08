@@ -616,18 +616,30 @@ a.current {
 
 /* Left navigation ---------------------------------------------------------- */
 
+.tree_nav {
+  position: sticky;
+  top: 48px;
+  overflow: scroll;
+  padding: 44px 24px 48px;
+  background-color: #fff;
+}
+
 .sidebar_pagelist {
-  margin-left: 0;
-  margin-bottom: 0;
-  padding-left: 0;
   padding-bottom: 15px;
+  margin-bottom: 12px;
+  margin-left: 24px;
+  padding-left: 16px;
   list-style-type: none;
+  border-left: 1px solid #eae7e6;
+  color: hsla(14.999999999999947, 1.98%, 39.61%, 1.00);
 }
 
 #sidenav a,
 .sidenav_parent a {
+  font-family: 'Space Mono', sans-serif;
   text-decoration: none;
-  color: black;
+  line-height: 24px;
+  color: hsla(14.999999999999947, 1.98%, 39.61%, 1.00);
 }
 #sidenav a.active-parent {
   color: #3B4147;
@@ -642,10 +654,8 @@ a.current {
 #sidenav a.active:hover,
 .sidenav_parent a.active,
 .sidenav_parent a.active:hover {
-  color: #0F72E5;
-  font-weight: 700;
-  cursor: default;
-  text-decoration: none;
+  border-left: 2px solid hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
 }
 
 #sidenav .card + .card {
@@ -659,6 +669,11 @@ a.current {
 
 #sidenav .card-body {
   padding: 0;
+  padding-left: 15px;
+}
+
+#sidenav .card-body-single {
+  margin-left: -25px;
 }
 
 #sidenav .collapse {
@@ -666,7 +681,7 @@ a.current {
 }
 
 #sidenav .card.active {
-  background-color: #F1F5F8;
+  /* background-color: #F1F5F8; */
 }
 
 #sidenav .card-header {
@@ -678,7 +693,6 @@ a.current {
 #sidenav .card {
   padding: 0;
   border-radius: 0;
-  border-top: 1px solid #C9CDD1;
 }
 
 #sidenav .card:only-child {
@@ -697,45 +711,62 @@ a.current {
 
 #sidenav .card-header h5 .sidenav_cat_title {
   display: block;
-  padding: 11px 10px 11px 50px;
+  padding: 11px 10px 11px 40px;
+  color: #1B1818;
 }
 
 #sidenav .card-header .sidenav_cat_toggler {
     position: absolute;
     left: 0;
     padding: 10px 12px 12px 12px;
-    background-color: #e0e0e0;
-    color: black;
     line-height: 0;
-    transition: background-color 0.5s;
 }
 #sidenav .card-header .sidenav_cat_toggler.collapsed {
-  background-color: #C9CDD1;
+  /* background-color: #C9CDD1; */
 }
 #sidenav .card-header .sidenav_cat_toggler:hover {
   text-decoration: none;
 }
 
 #sidenav .card-header .sidenav_cat_toggler:before {
-    content: "-";
+    /* content: "-";
     width: 0.8em;
     text-align: center;
     display: block;
-    line-height: 17.7px;
+    line-height: 17.7px; */
 }
+
 #sidenav .card-header .sidenav_cat_toggler.collapsed:before {
-    content: "+";
+    /* content: "+"; */
 }
 
 .xrp-ledger-dev-portal.sidebar-primary .sidebar {
-  padding-right: 0;
+  /* padding-right: 0;
   padding-left: 0;
+  overflow: scroll;
+  background-color: #fff;
+  padding: 44px 24px 48px; */
+  
 }
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
   border-left: 1px solid #C9CDD1;
   padding-left: 40px;
   min-height: 700px;
+}
+
+.accordion-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url(../img/icon-arrow.svg);
+  background-position: 0px 0px;
+  background-size: cover;
+}
+
+.accordion-icon.accordion-rotated {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 /* Right navigation --------------------------------------------------------- */
@@ -799,7 +830,8 @@ a.current {
 .card .sidebar_pagelist li a {
   display: block;
   margin-top: 5px;
-  padding: 4px 15px 4px 75px;
+  margin-left: -17px;
+  padding: 4px 15px 4px 35px;
   text-indent: -20px;
   font-size: 14px;
   color: #27a2db;
@@ -819,7 +851,7 @@ a.current {
 }
 
 .card .sidebar_pagelist li .subpage {
-  padding-left: 105px;
+  padding-left: 55px;
 }
 
 .sidenav_parent a {
@@ -828,6 +860,7 @@ a.current {
   font-size: 18px;
   font-weight: 700;
   padding: 15px 16px 15px 10px;
+  color: #1B1818;
 }
 
 /* Edit on GitHub link ------------------------------------------------------ */
