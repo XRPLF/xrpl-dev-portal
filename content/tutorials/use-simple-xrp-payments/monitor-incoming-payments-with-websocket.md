@@ -10,9 +10,13 @@ WebSocket follows a model where the client and server establish one connection, 
 
 - The examples in this page use JavaScript and the WebSocket protocol, which are available in all major modern browsers. If you have some JavaScript knowledge and expertise in another programming language with a WebSocket client, you can follow along while adapting the instructions to the language of your choice.
 - You need a stable internet connection and access to a `rippled` server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` server](install-rippled.html), you can also connect to that server locally.
+- To properly handle XRP values without rounding error, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [issued currencies](issued-currencies.html), you need even more precision. For more information, see [Currency Precision](currency-formats.html#xrp-precision).
 
+<!-- Helper for interactive tutorial breadcrumbs -->
+<script type="application/javascript" src="assets/vendor/big.min.js"></script>
+<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
 <script type="application/javascript">
-// Helper stuff for this interactive tutorial
+// Helper stuff for this interactive tutorial specifically
 
 function writeToConsole(console_selector, message) {
   let write_msg = "<div class='console-entry'>" + message + "</div>"
@@ -47,7 +51,7 @@ socket.addEventListener('message', (event) => {
 })
 ```
 
-The above example opens a secure connection (`wss://`) to one of Ripple's public Test Net API servers. To connect to a locally-running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
+The above example opens a secure connection (`wss://`) to one of Ripple's public API servers on the [Test Net](xrp-test-net-faucet.html). To connect to a locally-running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')
@@ -79,7 +83,7 @@ $("#connect-button").click((event) => {
     }
     socket.send(JSON.stringify(command))
 
-    // TODO: mark current breadcrumb as done, enable next step breadcrumb
+    complete_step("Connect")
     $("#enable_dispatcher").prop("disabled",false)
   })
   socket.addEventListener('message', (event) => {
@@ -220,7 +224,9 @@ $("#enable_dispatcher").click((clickEvent) => {
       writeToConsole("#monitor-console-ping", "Unhandled message from server: "+event)
     }
   })
+  complete_step("Dispatch Messages")
   $("#dispatch_ping").prop("disabled", false)
+  $("#tx_subscribe").prop("disabled", false)
 })
 
 async function pingpong() {
@@ -232,6 +238,117 @@ $("#dispatch_ping").click((event) => {
   pingpong()
 })
 </script>
+
+## {{n.next()}}. Subscribe to the Account
+
+To get a live notification whenever a transaction affects your account, you can subscribe to the account with the [subscribe method][]. In fact, it doesn't have to be your own account: since all transactions are public, you can subscribe to any account or even a combination of accounts.
+
+After you subscribe to one or more accounts, you the server sends a message with `"type": "transaction"` on each _validated_ transaction that affects any of the specified accounts in some way. To confirm this, look for `"validated": true` in the transaction messages.
+
+The following code sample subscribes to the Test Net Faucet's sending address. It logs a message on each such transaction by adding a handler to the dispatcher from the previous step.
+
+```js
+async function do_subscribe() {
+  const sub_response = await api_request({
+    command:"subscribe",
+    accounts: ["rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"]
+  })
+  if (sub_response.status === "success") {
+    console.log("Successfully subscribed!")
+  } else {
+    console.error("Error subscribing: ", sub_response)
+  }
+}
+do_subscribe()
+
+const log_tx = function(tx) {
+  console.log(tx.transaction.TransactionType+" transaction sent by " +
+              tx.transaction.Account +
+              "\n  Result: "+tx.meta.TransactionResult +
+              " in ledger " + tx.ledger_index +
+              "\n  Validated? " + tx.validated)
+}
+WS_HANDLERS["transaction"] = log_tx
+```
+
+For the following example, try opening the [Transaction Sender](tx-sender.html) in a different window or even on a different device and sending transactions to the address you subscribed to:
+
+{{ start_step("Subscribe") }}
+<label for="subscribe_address">Test Net Address:</label>
+<input type="text" class="form-control" id="subscribe_address" value="rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM">
+<button id="tx_subscribe" class="btn btn-primary" disabled="disabled">Subscribe</button>
+<h5>Transactions</h5>
+<div class="ws-console" id="monitor-console-subscribe"><span class="placeholder">(Log is empty)</span></div>
+{{ end_step() }}
+
+<script type="application/javascript">
+async function do_subscribe() {
+  const sub_address = $("#subscribe_address").val()
+  const sub_response = await api_request({
+    command:"subscribe",
+    accounts: [sub_address]
+  })
+  if (sub_response.status === "success") {
+    writeToConsole("#monitor-console-subscribe", "Successfully subscribed!")
+  } else {
+    writeToConsole("#monitor-console-subscribe",
+                   "Error subscribing: "+JSON.stringify(sub_response))
+  }
+}
+$("#tx_subscribe").click((event) => {
+  do_subscribe()
+  complete_step("Subscribe")
+})
+
+const log_tx = function(tx) {
+  writeToConsole("#monitor-console-subscribe",
+                  tx.transaction.TransactionType+" transaction sent by " +
+                  tx.transaction.Account +
+                  "<br/>&nbsp;&nbsp;Result: "+tx.meta.TransactionResult +
+                  " in ledger " + tx.ledger_index +
+                  "<br/>&nbsp;&nbsp;Validated? " + tx.validated)
+}
+WS_HANDLERS["transaction"] = log_tx
+</script>
+
+
+## {{n.next()}}. Identify Incoming Payments
+
+When you subscribe to an account, you get messages for _all transactions to or from the account_, as well as _transactions that affect the account indirectly_, such as trading its [issued currencies](issued-currencies.html). If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:
+
+- The **`validated` field** indicates that the transaction's outcome is [final](finality-of-results.html). This should always be the case when you subscribe to `accounts`, but if you _also_ subscribe to `accounts_proposed` or the `transactions_proposed` stream then the server sends similar messages on the same connection for unconfirmed transactions. As a precaution, it's best to always check the `validated` field.
+- The **`meta.TransactionResult` field** is the [transaction result](transaction-results.html). If the result is not `tesSUCCESS`, the transaction failed and cannot have delivered any value.
+- The **`transaction.Account`** field is the sender of the transaction. If you are only looking for transactions sent by others, you can ignore any transactions where this field matches your account's address. (Keep in mind, it _is_ possible to make a cross-currency payment to yourself.)
+- The **`transaction.TransactionType` field** is the type of transaction. The transaction types that can possibly deliver currency to an account are as follows:
+    - **[Payment transactions][]** can deliver XRP or [issued currencies](issued-currencies.html). Filter these by the `transaction.Destination` field, which contains the address of the recipient, and always use the `meta.delivered_amount` to see how much the payment actually delivered. XRP amounts are [formatted as strings](basic-data-types.html#specifying-currency-amounts).
+
+        **Warning:** If you use the `transaction.Amount` field instead, you may be vulnerable to the [partial payments exploit](partial-payments.html#partial-payments-exploit). Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.
+
+    - **[CheckCash transactions][]** :not_enabled: allow an account to receive money authorized by a different account's [CheckCreate transaction][]. Look at the metadata of a **CheckCash transaction** to see how much currency the account received.
+
+    - **[EscrowFinish transactions][]** can deliver XRP by finishing an [Escrow](escrow.html) created by a previous [EscrowCreate transaction][]. Look at the metadata of the **EscrowFinish transaction** to see which account received XRP from the escrow and how much.
+
+    - **[OfferCreate transactions][]** can deliver XRP or issued currencies by consuming offers your account has previous placed in the XRP Ledger's [decentralized exchange](decentralized-exchange.html). If you never place offers, you cannot receive money this way. Look at the metadata to see what currency the account received, if any, and how much.
+
+    - **[PaymentChannelClaim transactions][]** can deliver XRP from a [payment channel](payment-channels.html). Look at the metadata to see which accounts, if any, received XRP from the transaction.
+
+    - **[PaymentChannelFund transactions][]** can return XRP from a closed (expired) payment channel to the sender.
+
+- The **`meta` field** contains [transaction metadata](transaction-metadata.html), including exactly how much of which currency or currencies was delivered where. See [Look Up transaction Results](look-up-transaction-results.html) for more information on how to understand transaction metadata.
+
+The following sample code looks at transaction metadata of all the above transaction types to report how much XRP an account received:
+
+```js
+{% include '_code-samples/monitor-payments-websocket/read-amount-received.js' %}
+```
+
+***TODO: interactive part for identifying incoming payments***
+
+## {{n.next()}}. Look Out for Gaps
+
+Notifications about new transactions _should_ all arrive in the correct order, without anything missing, but the internet can be unreliable sometimes. If your software loses connectivity or other glitches occur, some transaction messages could be delayed or never arrive at all. You can compensate for this by following the "cryptographic chain of evidence" the XRP Ledger provides with each transaction. That way, you know when you're missing something, and you can look up any missing transactions until you connect back to the transactions you already know about.
+
+***TODO: using PreviousTxnID for chaining***
 
 
 ## Footnotes
