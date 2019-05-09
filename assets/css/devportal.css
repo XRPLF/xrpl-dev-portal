@@ -748,20 +748,45 @@ a.current {
 
 /* Right navigation --------------------------------------------------------- */
 
-#dactyl_toc_sidebar a {
+.right-sidebar a {
   text-decoration: none;
+  color: hsla(14.999999999999947, 1.98%, 39.61%, 1.00);
 }
-#dactyl_toc_sidebar a:hover {
-  text-decoration: underline;
+.right-sidebar a:hover,
+.right-sidebar a:active  {
+  text-decoration: none;
+  color: #000;
 }
 
-#page-toc-wrapper {
-  position: fixed;
-  top: 75px;
-  max-height: calc(100% - 150px);
-  margin-right: 1.5rem;
-  overflow: auto;
-  z-index: 10;
+.right-sidebar {
+  font-size: 14px;
+}
+
+.right-sidebar .card {
+  position: sticky;
+  top: 48px;
+  overflow: scroll;
+  padding: 44px 24px 48px;
+}
+
+.right-sidebar .card-header {
+  border-bottom: none;
+  background-color: #fff;
+  padding: 10px 0;
+  line-height: 20px;
+  font-weight: 700;
+  font-size: 1.23em;
+}
+
+.right-sidebar ul {
+  padding: 0;
+  border-left: 1px solid #eae7e6;
+  list-style-type: none;
+}
+
+.right-sidebar ul li {
+  list-style-type: none;
+  margin-bottom: 8px
 }
 
 .card .sidebar_pagelist li a {

@@ -1,6 +1,7 @@
 #command_list {
   list-style-type:none;
   padding:0 0 0 0;
+  border-left: none;
 }
 
 aside.sidebar {
