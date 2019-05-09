@@ -18,7 +18,6 @@ th {
 
 .navbar.fixed-top {
   font-weight: 400;
-  /* border-bottom: 1px solid #C9CDD1; */
   box-shadow: inset 0 -1px 0 0 #eae7e6;
   padding: 0;
   margin: 0 48px;
@@ -40,14 +39,14 @@ th {
 }
 
 .navbar .navbar-nav .nav-link {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 52px;
   text-decoration: none;
   transition: 0.5s;
-  font-family: 'Space Mono', sans-serif;
+  font-family: 'Space Mono', monospace;
 }
+
 .navbar .navbar-nav .nav-link:hover {
-  /* color: #27a2db; */
   background-color: transparent;
   box-shadow: inset 0 -1px 0 0 #1b1818;
   color: #1b1818;
@@ -56,13 +55,11 @@ th {
 
 .navbar .navbar-nav .active a {
   font-weight: 700;
-  /* background-color: #E1E5E8; */
   color: #1b1818;
   box-shadow: inset 0 -1px 0 0 #1b1818;
 }
 .navbar .active-parent a {
   font-weight: 700;
-  /* background-color: #E1E5E8; */
   color: #1b1818;
   box-shadow: inset 0 -1px 0 0 #1b1818;
 }
@@ -97,10 +94,8 @@ th {
   }
 
   .navbar-collapse {
-    /* background-color: rgba(0, 0, 0, .88); */
     background-color: #fff;
     position: absolute;
-    /* left: 200%; */
     top: 200px;
     right: 0;
     overflow: scroll;
@@ -118,16 +113,15 @@ th {
 
   .navbar-collapse.show {
     transform: translateX(0px);
-    transition-duration: 1s;
+    transition-duration: 0.5s;
   }
 
   .menu-overlay.active {
     transform: translateX(0px);
-    transition-duration: 1s;
+    transition-duration: 0.5s;
   }
 
   .menu-overlay {
-    /* display: none; */
     background-color: #000;
     bottom: 0;
     left: 0;
@@ -139,7 +133,7 @@ th {
     top: 0;
     z-index: 5;
     transform: translateX(1000px);
-    transition-duration: 1s;
+    transition-duration: 0.5s;
   }
 
 }
@@ -155,7 +149,6 @@ body {
 /* Push content below fixed header ------------------------------------------ */
 #main_content_wrapper {
   margin-top: 55px;
-  padding: 0 48px;
 }
 
 /* Fix so anchors don't jump under the fixed header ------------------------- */
