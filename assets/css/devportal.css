@@ -23,6 +23,15 @@ th {
   margin: 0 48px;
 }
 
+@media (max-width: 1078px) {
+  .navbar.fixed-top {
+    margin: 0 20px;
+  }
+  .navbar .navbar-nav .nav-link {
+    padding-right: 5px;
+  }
+}
+
 .navbar-brand {
   text-decoration: none;
   white-space: pre;
