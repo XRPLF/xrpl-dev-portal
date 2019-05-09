@@ -241,8 +241,16 @@ body {
   font-weight: 700;
 }
 
-.content p,
-.content li,
+/* Some list items contain <p> tags, some don't. These styles make sure both
+   kinds are spaced consistently. */
+.content li {
+  margin: 6px;
+  line-height: 1.65;
+}
+.content li p {
+  margin: 0;
+}
+
 .content td {
   line-height: 1.65;
 }
@@ -916,7 +924,6 @@ a.current {
 .landing .card-body > p {
   padding: 0;
   font-size: 18px;
-  line-height: 18px;
   margin-bottom: 0;
 }
 
@@ -974,10 +981,12 @@ a.current {
 
 /* Avoid shifting other text over */
 .content .external-link .fa-external-link {
+  padding-left: 1px;
   padding-right: 7px;
 }
 .content .external-link:hover .fa-external-link {
-  padding-right: 0;
+  padding-left: 7px;
+  padding-right: 1px;
 }
 
 .blurb a {
