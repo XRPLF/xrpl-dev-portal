@@ -624,7 +624,6 @@ a.current {
 }
 
 .sidebar_pagelist {
-  padding-bottom: 15px;
   margin-bottom: 12px;
   margin-left: 24px;
   padding-left: 16px;
@@ -644,16 +643,23 @@ a.current {
 }
 
 #sidenav .sidebar_pagelist li .subpage  {
-  padding-left: 55px;
+  /* padding-left: 55px; */
+  margin-left: 0;
+  margin-top: 0;
+  padding-left: 35px;
+  border-left: 1px solid #eae7e6;
 }
 #sidenav .sidebar_pagelist li a.subpage:hover  {
-  padding-left: 54px;
+  padding-left: 35px;
+  border-left: 1px solid #1a73e8;
 }
 #sidenav .sidebar_pagelist li a.active.subpage {
-  padding-left: 53px;
+  padding-left: 33px;
+  border-left: 2px solid #1a73e8;
 }
 #sidenav .sidebar_pagelist li a.active.subpage:hover {
-  padding-left: 54px;
+  padding-left: 34px;
+  border-left: 1px solid #1a73e8;
 }
 
 #sidenav a,
@@ -728,10 +734,15 @@ a.current {
 }
 
 #sidenav .card-header .sidenav_cat_toggler {
-    position: absolute;
-    left: 0;
-    padding: 10px 12px 12px 12px;
-    line-height: 0;
+  position: absolute;
+  left: 0;
+  padding: 10px 12px 12px 12px;
+  line-height: 0;
+
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  transition-duration: 0.3s;
 }
 
 #sidenav .card-header .sidenav_cat_toggler:before {
@@ -747,10 +758,18 @@ a.current {
   transform: rotate(0deg);
   transition-duration: 0.3s;
 }
-#sidenav .card-header .sidenav_cat_toggler:hover {
+
+#sidenav .card-header .sidenav_cat_toggler.collapsed:hover {
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
+  transition-duration: 0.3s;
+}
+
+#sidenav .card-header .sidenav_cat_toggler:hover {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
   transition-duration: 0.3s;
 }
 
