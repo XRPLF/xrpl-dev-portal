@@ -970,7 +970,7 @@ a.current {
   border: 1px solid #1b1818;
 }
 
-.btn:not(.external-link):not(.fa-search)::after,
+.btn:not(.external-link)::after,
 .landing .card .level-1 a::after,
 .landing .card .level-2 a::after,
 .landing .card .curated-links li a::after,
@@ -994,6 +994,12 @@ a.current {
 .content .children-display li a:hover::after {
   padding-left: 14px;
   text-decoration: none;
+}
+
+.btn.fa-search::after,
+.btn.fa-search:hover::after {
+  content: "";
+  padding: 0;
 }
 
 .external-link .fa-external-link,
