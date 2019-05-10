@@ -619,7 +619,6 @@ a.current {
 .tree_nav {
   position: sticky;
   top: 48px;
-  overflow: scroll;
   padding: 44px 24px 48px;
   background-color: #fff;
 }
@@ -634,9 +633,31 @@ a.current {
   color: hsla(14.999999999999947, 1.98%, 39.61%, 1.00);
 }
 
+#sidenav .sidebar_pagelist a:hover {
+  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  padding-left: 34px;
+  border-left: 1px solid #1a73e8;
+}
+#sidenav .sidebar_pagelist .active {
+  padding-left: 33px;
+  border-left: 2px solid #1a73e8;
+}
+
+#sidenav .sidebar_pagelist li .subpage  {
+  padding-left: 55px;
+}
+#sidenav .sidebar_pagelist li a.subpage:hover  {
+  padding-left: 54px;
+}
+#sidenav .sidebar_pagelist li a.active.subpage {
+  padding-left: 53px;
+}
+#sidenav .sidebar_pagelist li a.active.subpage:hover {
+  padding-left: 54px;
+}
+
 #sidenav a,
 .sidenav_parent a {
-  font-family: 'Space Mono', sans-serif;
   text-decoration: none;
   line-height: 24px;
   color: hsla(14.999999999999947, 1.98%, 39.61%, 1.00);
@@ -647,14 +668,12 @@ a.current {
 }
 #sidenav a:hover,
 .sidenav_parent a:hover {
-  text-decoration: underline;
-  color: #1db4ff;
+  text-decoration: none;
 }
 #sidenav a.active,
 #sidenav a.active:hover,
 .sidenav_parent a.active,
 .sidenav_parent a.active:hover {
-  border-left: 2px solid hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
   color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
 }
 
@@ -680,10 +699,6 @@ a.current {
   padding-bottom: 0;
 }
 
-#sidenav .card.active {
-  /* background-color: #F1F5F8; */
-}
-
 #sidenav .card-header {
   padding: 0;
   background-color: transparent;
@@ -698,9 +713,6 @@ a.current {
 #sidenav .card:only-child {
   border-top: 0;
   background: none;
-}
-#sidenav .card:only-child .sidebar_pagelist li a {
-  padding-left: 55px;
 }
 
 #sidenav .card-header h5 {
@@ -721,52 +733,32 @@ a.current {
     padding: 10px 12px 12px 12px;
     line-height: 0;
 }
-#sidenav .card-header .sidenav_cat_toggler.collapsed {
-  /* background-color: #C9CDD1; */
-}
-#sidenav .card-header .sidenav_cat_toggler:hover {
-  text-decoration: none;
-}
 
 #sidenav .card-header .sidenav_cat_toggler:before {
-    /* content: "-";
-    width: 0.8em;
-    text-align: center;
-    display: block;
-    line-height: 17.7px; */
+  content: url(../img/icon-arrow.svg);
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
-#sidenav .card-header .sidenav_cat_toggler.collapsed:before {
-    /* content: "+"; */
+#sidenav .card-header .sidenav_cat_toggler.collapsed {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition-duration: 0.3s;
+}
+#sidenav .card-header .sidenav_cat_toggler:hover {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  transition-duration: 0.3s;
 }
 
-.xrp-ledger-dev-portal.sidebar-primary .sidebar {
-  /* padding-right: 0;
-  padding-left: 0;
-  overflow: scroll;
-  background-color: #fff;
-  padding: 44px 24px 48px; */
-  
-}
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
   border-left: 1px solid #C9CDD1;
   padding-left: 40px;
   min-height: 700px;
-}
-
-.accordion-icon {
-  width: 24px;
-  height: 24px;
-  background-image: url(../img/icon-arrow.svg);
-  background-position: 0px 0px;
-  background-size: cover;
-}
-
-.accordion-icon.accordion-rotated {
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
 }
 
 /* Right navigation --------------------------------------------------------- */
@@ -834,7 +826,7 @@ a.current {
   padding: 4px 15px 4px 35px;
   text-indent: -20px;
   font-size: 14px;
-  color: #27a2db;
+  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
 }
 
 .card .sidebar_pagelist a.active {
@@ -843,7 +835,9 @@ a.current {
 }
 
 .card .sidebar_pagelist a:hover {
-  color: #3B4147;
+  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  padding-left: 33px;
+  border-left: 2px solid hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
 }
 
 .subcat-title.active-parent {
@@ -852,6 +846,9 @@ a.current {
 
 .card .sidebar_pagelist li .subpage {
   padding-left: 55px;
+}
+.card .sidebar_pagelist li .subpage a:hover {
+  padding-left: 53px;
 }
 
 .sidenav_parent a {

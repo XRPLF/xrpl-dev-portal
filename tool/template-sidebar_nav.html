@@ -70,10 +70,10 @@
             <div class="card{% if currentpage.category is defined and currentpage.category == cat %} active{% endif %}">
               <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
                 {% if catpages|length > 1 %}
-                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"><div class="accordion-icon {% if currentpage.category is undefined or currentpage.category == cat %}accordion-rotated {% endif %}"></div></a>
+                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></div></a>
                 {% endif %}
                 <h5 class="card-title">
-                  <a class="sidenav_cat_title" href="{{ cat_parent.html }}">{{ cat }}</a>
+                    <a class="sidenav_cat_title{% if currentpage == (cat_parent) %} active{% elif currentpage.category is defined and currentpage.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
                 </h5>
               </div><!-- /.card-header -->
 
@@ -143,12 +143,9 @@
             <div class="card">
               <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
                 {% if supercatpages|length > 1 %}
-                  <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"><div class="accordion-icon"></div></a>
+                  <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></a>
                 {% endif %}
                 <h5 class="card-title">
-                <!-- {% if supercatpages|length > 1 %}
-                  <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"><div class="accordion-icon"></div></a>
-                {% endif %} -->
                   <a class="sidenav_cat_title" href="{{ supercat_parent.html }}">{{ supercat }}</a>
                 </h5>
               </div><!-- /.card-header -->
@@ -197,10 +194,11 @@
           <div class="card{% if currentpage.category is defined and currentpage.category == cat %} active{% endif %}">
             <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
               {% if catpages|length > 1 %}
-                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"><div class="accordion-icon  {% if currentpage.category is undefined or currentpage.category == cat %}accordion-rotated {% endif %}"></div></a>
+                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></a>
               {% endif %}
               <h5 class="card-title">
-                <a class="sidenav_cat_title" href="{{ cat_parent.html }}">{{ cat }}</a>
+                  <a class="sidenav_cat_title{% if currentpage == (cat_parent) %} active{% elif currentpage.category is defined and currentpage.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
+                <!-- <a class="sidenav_cat_title" href="{{ cat_parent.html }}">{{ cat }}</a> -->
               </h5>
             </div><!-- /.card-header -->
 
