@@ -51,7 +51,6 @@ th {
   font-size: 18px;
   line-height: 52px;
   text-decoration: none;
-  transition: 0.5s;
   font-family: 'Space Mono', monospace;
 }
 
@@ -157,7 +156,7 @@ body {
 
 /* Push content below fixed header ------------------------------------------ */
 #main_content_wrapper {
-  margin-top: 55px;
+  margin-top: 68px;
 }
 
 /* Fix so anchors don't jump under the fixed header ------------------------- */
@@ -833,19 +832,13 @@ a.current {
 
 /* Edit on GitHub link ------------------------------------------------------ */
 .github-edit-wrap {
-  background-image: linear-gradient(180deg, #fafafa 0%, #ddd 90%);
-  border: 1px solid #C9CDD1;
-  border-radius: 5px;
+  border: 1px solid #ced4da;
   margin-right: 10px;
 }
 .github-edit-wrap:hover {
-  border-color: #777;
-}
-.github-edit-wrap:active {
-  background-image: linear-gradient(180deg, #ddd 0%, #fafafa 90%);
+  border-color: #1B1818;
 }
 .github-edit-wrap .github-edit {
-  /* background-color: black; */
   background-image: url(../vendor/github-marks/GitHub-Mark-32px.png);
   background-size: 24px 24px;
   background-position: left 5px center;
@@ -853,9 +846,11 @@ a.current {
   padding: 8px 8px 8px 34px;
   color: #777;
   text-decoration: none;
-  font-size: 13px;
   display: block;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
 }
 
 /* Use Cases ---------------------------------------------------------------- */
@@ -975,7 +970,7 @@ a.current {
   border: 1px solid #1b1818;
 }
 
-.btn:not(.external-link)::after,
+.btn:not(.external-link):not(.fa-search)::after,
 .landing .card .level-1 a::after,
 .landing .card .level-2 a::after,
 .landing .card .curated-links li a::after,
