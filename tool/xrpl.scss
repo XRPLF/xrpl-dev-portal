@@ -54,7 +54,7 @@ $border-radius-sm: 0;
 }
 
 $font-family-monospace: 'Space Mono', monospace;
-$font-family-sans-serif: 'Roboto', sans-serif;
+$font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
 
 // Bootstrap v4
 @import "node_modules/bootstrap/scss/bootstrap.scss";
