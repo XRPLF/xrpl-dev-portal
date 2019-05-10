@@ -1221,6 +1221,7 @@ The Data API derives the following values for every interval. These metrics are 
 | `ledger_count`     | Number | The number of ledgers closed during this interval. |
 | `ledger_interval`  | Number | The average number of seconds between ledgers closing during this interval. |
 | `payments_count`   | Number | The number of payments from one account to another during this interval. |
+| `transaction_count`| Number | The number of transactions that executed during this interval. |
 | `tx_per_ledger`    | Number | The average number of transactions per ledger in this interval. |
 
 If any of the metrics have a value of 0, they are omitted from the results.
