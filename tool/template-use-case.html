@@ -10,7 +10,9 @@
 
 {% block right_sidebar %}
   <div class="card" id="use-case-related">
-    <p class="in-this-doc card-header">Useful Background</p>
+    <div class="card-header">
+      <h4>Useful Background</h4>
+    </div>
     <div class="card-body">
       <div class="curated-links">
         <ul>
@@ -18,7 +20,7 @@
             {% set linkpage = pages|selectattr("html", 'defined_and_equalto', link)|first %}
             <li><a href="{{linkpage.html}}">{{linkpage.name}}</a></li>
           {% endfor %}
-        </ol>
+        </ul>
       </div><!--/.curated-links-->
     </div><!--/.card-body-->
   </div>

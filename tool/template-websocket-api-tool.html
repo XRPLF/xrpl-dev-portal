@@ -1,41 +1,41 @@
 {% extends "template-base.html" %}
 
 {% block right_sidebar %}
-  <aside class="p-3">
-        <div class="card">
-            <p class="card-header">API Methods</p>
-            <ul id='command_list'>
-                <li class='selected'><a href='#server_info'>server_info</a></li>
-                <li><a href='#server_state'>server_state</a></li>
-                <li><a href='#ping'>ping</a></li>
-                <br/>
-                <li><a href='#subscribe'>subscribe</a></li>
-                <li><a href='#unsubscribe'>unsubscribe</a></li>
-                <br/>
-                <li><a href='#ledger'>ledger</a></li>
-                <li><a href='#ledger_closed'>ledger_closed</a></li>
-                <li><a href='#ledger_current'>ledger_current</a></li>
-                <li><a href='#ledger_entry'>ledger_entry</a></li>
-                <br/>
-                <li><a href='#account_info'>account_info</a></li>
-                <li><a href='#account_lines'>account_lines</a></li>
-                <li><a href='#account_offers'>account_offers</a></li>
-                <li><a href='#account_tx'>account_tx</a></li>
-                <li><a href='#account_currencies'>account_currencies</a></li>
-                <br/>
-                <li><a href='#transaction_entry'>transaction_entry</a></li>
-                <li><a href='#tx'>tx</a></li>
-                <li><a href='#tx_history'>tx_history</a></li>
-                <br/>
-                <li><a href='#sign'>sign</a></li>
-                <li><a href='#submit'>submit</a></li>
-                <br/>
-                <li><a href='#ripple_path_find'>ripple_path_find</a></li>
-                <li><a href='#path_find'>path_find</a></li>
-                <li><a href='#book_offers'>book_offers</a></li>
-            </ul>
-        </div>
-  </aside>
+  <div class="card">
+      <div class="card-header">
+        <h4>API Methods</h4>
+      </div>
+      <ul class="card-body" id='command_list'>
+          <li class='selected'><a href='#server_info'>server_info</a></li>
+          <li><a href='#server_state'>server_state</a></li>
+          <li><a href='#ping'>ping</a></li>
+          <br/>
+          <li><a href='#subscribe'>subscribe</a></li>
+          <li><a href='#unsubscribe'>unsubscribe</a></li>
+          <br/>
+          <li><a href='#ledger'>ledger</a></li>
+          <li><a href='#ledger_closed'>ledger_closed</a></li>
+          <li><a href='#ledger_current'>ledger_current</a></li>
+          <li><a href='#ledger_entry'>ledger_entry</a></li>
+          <br/>
+          <li><a href='#account_info'>account_info</a></li>
+          <li><a href='#account_lines'>account_lines</a></li>
+          <li><a href='#account_offers'>account_offers</a></li>
+          <li><a href='#account_tx'>account_tx</a></li>
+          <li><a href='#account_currencies'>account_currencies</a></li>
+          <br/>
+          <li><a href='#transaction_entry'>transaction_entry</a></li>
+          <li><a href='#tx'>tx</a></li>
+          <li><a href='#tx_history'>tx_history</a></li>
+          <br/>
+          <li><a href='#sign'>sign</a></li>
+          <li><a href='#submit'>submit</a></li>
+          <br/>
+          <li><a href='#ripple_path_find'>ripple_path_find</a></li>
+          <li><a href='#path_find'>path_find</a></li>
+          <li><a href='#book_offers'>book_offers</a></li>
+      </ul>
+  </div>
 {% endblock %}
 
 {% block main %}
