@@ -730,7 +730,6 @@ a.current {
 #sidenav .card-header h5 .sidenav_cat_title {
   display: block;
   padding: 11px 10px 11px 40px;
-  color: #1B1818;
 }
 
 #sidenav .card-header .sidenav_cat_toggler {
@@ -745,28 +744,23 @@ a.current {
   transition-duration: 0.3s;
 }
 
-#sidenav .card-header .sidenav_cat_toggler:before {
-  content: url(../img/icon-arrow.svg);
+#sidenav .card-header .sidenav_cat_toggler {
   width: 24px;
   height: 24px;
   display: block;
-}
 
-#sidenav .card-header .sidenav_cat_toggler.collapsed {
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  transition-duration: 0.3s;
-}
+  background-color: #676463;
+  -webkit-mask-image: url(../img/icon-arrow.svg);
+  mask-image: url(../img/icon-arrow.svg);
 
-#sidenav .card-header .sidenav_cat_toggler.collapsed:hover {
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  transition-duration: 0.3s;
+  margin: 12px;
 }
 
 #sidenav .card-header .sidenav_cat_toggler:hover {
+  background-color : hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+}
+
+#sidenav .card-header .sidenav_cat_toggler.collapsed {
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
