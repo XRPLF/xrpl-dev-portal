@@ -490,12 +490,23 @@ pages:
         targets:
             - local
 
-    -   md: concepts/consensus-network/amendments.md
+    -   md: concepts/consensus-network/amendments/amendments.md
         html: amendments.html
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
+        subcategory: Amendments
         blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
+        targets:
+            - local
+
+    -   md: concepts/consensus-network/amendments/known-amendments.md
+        html: known-amendments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        subcategory: Amendments
+        blurb: List of all known amendments to the XRP Ledger protocol and their status.
         targets:
             - local
 
@@ -2946,22 +2957,6 @@ pages:
             - local
         template: template-tx-sender.html
 
-# News -------------------------------------------------------------------------
-
-    -   md: news/news.md
-        html: news.html
-        funnel: News
-        targets:
-            - local
-
-    -   md: news/known-amendments.md
-        html: known-amendments.html
-        funnel: News
-        targets:
-            - local
-
-    # Note: other "News" links (Release Notes, eventually Network Status)
-    #  are external to this site
 
 # Special sitemap file (for better Google indexing)
     -   name: Sitemap

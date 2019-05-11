@@ -70,13 +70,16 @@
             {% set _ = funnels.append(page.funnel) %}
           {% endif %}
         {% endfor %}
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
       </ul><!-- /.navbar-nav -->
       {% include 'template-github-edit.html' %}
       <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
         <div class="form-inline">
           <label class="sr-only" for="topsearchbar">Search site with Google...</label>
           <input name="q" value="site:developers.ripple.com" type="hidden">
-          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search site with Google...">
           <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
         </div>
       </form>
