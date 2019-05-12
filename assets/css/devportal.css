@@ -202,12 +202,24 @@ body {
 }
 
 .content a {
+  -webkit-transition: color 200ms ease;
+  transition: color 200ms ease;
+  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  text-decoration: none;
+}
+.content a:hover {
   text-decoration: underline;
 }
+.content h1 a,
+.content h2 a {
+  color: #1B1818;;
+}
+
 
 .content h1 {
   margin-top: 32px;
   line-height: 1.2;
+  font-weight: 400;
 }
 .content h1:first-child,
 .landing section:first-of-type h1:first-child {
@@ -218,7 +230,9 @@ body {
   margin-top: -90px;
 }
 .content h2 {
-  margin-top: 28px;
+  margin-top: 0px;
+  margin-bottom: 24px;
+  font-weight: 400;
   line-height: 1.2;
 }
 .content h3 {
@@ -297,6 +311,16 @@ body {
 }
 
 /* Footer ------------------------------------------------------------------- */
+
+.xrpl-footer {
+  margin: 0 48px;
+  border-top: 1px solid #1B1818;
+  border-bottom: 1px solid #1B1818;
+}
+.xrpl-footer .container-fluid {
+  border-bottom: 1px solid #eae7e6
+}
+
 .build-disclaimer {
   font-size: 10px;
 }
@@ -611,15 +635,22 @@ a.current {
 .breadcrumbs-wrap .breadcrumb {
   padding: 0;
   margin-bottom: 0;
+  font-size: 0.833em;
 }
-
+.breadcrumb-item a {
+  color: hsla(14.999999999999947, 1.98%, 39.61%, 1.00);
+  text-decoration: none;
+}
+.breadcrumb-item a:hover {
+  color: #000;
+}
 
 /* Left navigation ---------------------------------------------------------- */
 
 .tree_nav {
   position: sticky;
   top: 48px;
-  padding: 44px 24px 48px;
+  padding: 44px 24px 48px 48px;
   background-color: #fff;
 }
 
@@ -770,7 +801,8 @@ a.current {
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
   border-left: 1px solid #C9CDD1;
-  padding-left: 40px;
+  border-right: 1px solid #C9CDD1;
+  padding: 44px 24px 48px;
   min-height: 700px;
 }
 
@@ -792,6 +824,7 @@ a.current {
   top: 48px;
   overflow: auto;
   padding: 44px 24px 48px;
+  border: none;
 }
 
 .right-sidebar .card-header {
@@ -1003,6 +1036,10 @@ a.current {
   transition: box-shadow 200ms ease, background-color 200ms ease, color 200ms ease;
   background-color: transparent;
   box-shadow: inset 0 0 0 1px #d3d0cf;
+}
+
+#main_content_wrapper {
+  border-bottom: none;
 }
 
 #main_content_wrapper .btn-outline-secondary:hover,
