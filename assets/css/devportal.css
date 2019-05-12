@@ -660,6 +660,7 @@ a.current {
 /* Left navigation ---------------------------------------------------------- */
 
 .tree_nav {
+  position: sticky;
   top: 48px;
   padding: 44px 24px 48px 48px;
   background-color: #fff;
@@ -928,9 +929,9 @@ a.current {
 .github-edit-wrap .github-edit {
   background-image: url(../vendor/github-marks/GitHub-Mark-32px.png);
   background-size: 24px 24px;
-  background-position: left 5px center;
+  background-position: left 10px center;
   background-repeat: no-repeat;
-  padding: 8px 8px 8px 34px;
+  padding: 8px 10px 8px 40px;
   color: #777;
   text-decoration: none;
   display: block;
