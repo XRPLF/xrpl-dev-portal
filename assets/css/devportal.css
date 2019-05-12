@@ -310,6 +310,25 @@ body {
   text-decoration: underline;
 }
 
+/* Vertical numbers --------------------------------------------------------- */
+
+.flag-vertical {
+  position: absolute;
+  top: 2em;
+  right: 3em;
+  width: 20px;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+  color: #eae7e6;
+  font-size: 0.833em;
+  letter-spacing: 2px;
+}
+
+
 /* Footer ------------------------------------------------------------------- */
 
 .xrpl-footer {
@@ -319,6 +338,14 @@ body {
 }
 .xrpl-footer .container-fluid {
   border-bottom: 1px solid #eae7e6
+}
+
+.xrpl-footer .card-body {
+  margin-top: -15px;
+}
+
+.xrpl-footer .card {
+  padding-top: 24px;
 }
 
 .build-disclaimer {
