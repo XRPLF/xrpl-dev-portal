@@ -648,7 +648,6 @@ a.current {
 /* Left navigation ---------------------------------------------------------- */
 
 .tree_nav {
-  position: sticky;
   top: 48px;
   padding: 44px 24px 48px 48px;
   background-color: #fff;
