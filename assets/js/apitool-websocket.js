@@ -380,7 +380,7 @@ var urlParams;
     if (command._description) {
       //$(description).html(command._description).show();
       $(description).html(command._description);
-      $(description).append(" <a class='button btn btn-primary' href='"+command._link+"'>Read more</a>");
+      $(description).append(" <a class='button btn btn-outline-secondary' href='"+command._link+"'>Read more</a>");
     } else {
       $(description).hide();
     }
