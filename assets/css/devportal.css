@@ -12,6 +12,7 @@ th {
 /* Reduce external link icon size */
 .fa.fa-external-link:before {
   font-size: 80%;
+  content: none;
 }
 
 /* Top navigation ----------------------------------------------------------- */
@@ -232,7 +233,7 @@ body {
   line-height: 1.2;
 }
 .content h1:first-child:before {
-  margin-top: -90px;
+  margin-top: -80px;
 }
 .content h2 {
   margin-top: 0px;
@@ -315,8 +316,11 @@ body {
   text-decoration: underline;
 }
 
-/* Vertical numbers --------------------------------------------------------- */
+.landing {
+  padding: 0 48px;
+}
 
+/* Vertical numbers --------------------------------------------------------- */
 .flag-vertical {
   position: absolute;
   top: 2em;
@@ -332,7 +336,6 @@ body {
   font-size: 0.833em;
   letter-spacing: 2px;
 }
-
 
 /* Footer ------------------------------------------------------------------- */
 
@@ -1118,7 +1121,10 @@ a.current {
 .related-projects a .fa-external-link {
   transition: all .2s ease-in-out;
   display: inline-block;
-  padding-left: 7px;
+  padding: 9px 6px 9px 15px;
+  background-image: url(../img/icon-new-window.svg);
+  background-size: 24px;
+  background-repeat: no-repeat;
 }
 .external-link:hover .fa-external-link,
 .related-projects a:hover .fa-external-link  {
