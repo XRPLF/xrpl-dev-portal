@@ -330,10 +330,6 @@ body {
 .xrpl-footer li {
   font-size: 12px;
 }
-.xrpl-footer .card li a {
-  font-weight: 400;
-  font-family: 'Space Mono', monospace;
-}
 
 .absolute_bottom_footer span {
   margin-right: 25px;
