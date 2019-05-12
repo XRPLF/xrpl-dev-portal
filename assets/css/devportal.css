@@ -404,7 +404,6 @@ p + .readmore {
 }
 
 .readmore .btn {
-  font-size: 18px;
   transition: 0.5s;
   white-space: normal;
 }
@@ -555,6 +554,11 @@ a.current {
 .landing .card .blurb + .children-display,
 .landing .card .blurb + .curated-links {
   margin-top: 1rem;
+}
+
+.blurb {
+  font-size: 1.2em;
+  line-height: 1.71em;
 }
 
 .level-2 {
@@ -942,10 +946,6 @@ a.current {
 
 /* Landing Pages ------------------------------------------------------------ */
 
-.landing p {
-  font-size: 18px;
-}
-
 .landing .display-4 {
   margin-bottom: 1.5rem;
 }
@@ -978,6 +978,7 @@ a.current {
 
 .card-grid .card-body {
   padding: 8px;
+  padding-bottom: 24px;
 }
 
 .landing .card-header,
@@ -999,7 +1000,6 @@ a.current {
 
 .landing .card-body > p {
   padding: 0;
-  font-size: 18px;
   margin-bottom: 0;
 }
 
@@ -1143,8 +1143,6 @@ a.current {
 
 .interledger-link .project-icon {
   width: 120px;
-  float: left;
-  margin-right: 10px;
 }
 
 .xpring-link .project-icon {
