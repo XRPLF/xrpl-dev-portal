@@ -3,13 +3,13 @@
 {% block mainclasses %}landing{% endblock %}
 
 {% block main %}
-  <section class="container-fluid bg-white p-3 p-sm-4">
+  <section class="container-fluid bg-white pl-0 pb-4 pt-2">
     <h1 class="main-page-header">XRP Ledger Documentation</h1>
     <p class="blurb">Dive into our documentation and start integrating with the XRP Ledger.</p>
     <p class="blurb">Browse by category, or skip straight to the <a href="#full-doc-index">full documentation index</a>.</p>
   </section>
 
-  <section class="container-fluid card-grid card-grid-3xN">
+  <section class="container-fluid card-grid card-grid-3xN doc-landing-section">
     {% set doc_types = [] %}
     {% for page in pages %}
       {% if page.doc_type is defined and page.doc_type not in doc_types %}
@@ -40,7 +40,7 @@
 
   </section>
 
-  <section class="container-fluid p-3 p-sm-4">
+  <section class="container-fluid p-3 p-sm-4 pl-0">
     <h2 id="full-doc-index">Full Documentation Index</h2>
     <div class="row">
       <div class="col-md-8">

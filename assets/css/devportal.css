@@ -54,7 +54,7 @@ th {
 }
 
 .navbar .navbar-nav .nav-link {
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 52px;
   text-decoration: none;
   font-family: 'Space Mono', monospace;
@@ -62,20 +62,23 @@ th {
 
 .navbar .navbar-nav .nav-link:hover {
   background-color: transparent;
-  box-shadow: inset 0 -1px 0 0 #1b1818;
-  color: #1b1818;
+  box-shadow: inset 0 -1px 0 0 #000;
+  color: #000;
   text-decoration: none;
+}
+.navbar .navbar-nav .nav-link:active {
+  color: #000;
 }
 
 .navbar .navbar-nav .active a {
   font-weight: 700;
-  color: #1b1818;
-  box-shadow: inset 0 -1px 0 0 #1b1818;
+  color: #000;
+  box-shadow: inset 0 -1px 0 0 #000;
 }
 .navbar .active-parent a {
   font-weight: 700;
-  color: #1b1818;
-  box-shadow: inset 0 -1px 0 0 #1b1818;
+  color: #000;
+  box-shadow: inset 0 -1px 0 0 #000;
 }
 
 #navbar-search {
@@ -86,6 +89,7 @@ th {
 #topsearchbar {
   padding-right: 60px;
   width: 100%;
+  font-size: 0.875rem;
 }
 
 #navbar-search .btn {
@@ -158,6 +162,11 @@ body {
   font-feature-settings: "liga", "kern";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  font-size: 0.875rem;
+}
+
+a {
+  color: #000;
 }
 
 /* Push content below fixed header ------------------------------------------ */
@@ -210,7 +219,7 @@ body {
 .content a {
   -webkit-transition: color 200ms ease;
   transition: color 200ms ease;
-  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  color: #1a73e8;
   text-decoration: none;
 }
 .content a:hover {
@@ -236,7 +245,7 @@ body {
   margin-top: -80px;
 }
 .content h2 {
-  margin-top: 0px;
+  margin-top: 72px;
   margin-bottom: 24px;
   font-weight: 400;
   line-height: 1.2;
@@ -255,7 +264,7 @@ body {
   font-weight: 700;
 }
 .content h6 {
-  margin-top: 12px
+  margin-top: 12px;
   line-height: 1.2;
   font-weight: 700;
 }
@@ -264,7 +273,7 @@ body {
    kinds are spaced consistently. */
 .content li {
   margin: 6px;
-  line-height: 1.65;
+  margin-top: 24px;
 }
 .content li p {
   margin: 0;
@@ -320,6 +329,14 @@ body {
   padding: 0 48px;
 }
 
+.section-hero.card {
+  padding-left: 0;
+}
+
+section.container-fluid.card-grid.card-grid-3xN.doc-landing-section .card:first-child {
+  padding-left: 0;
+}
+
 /* Vertical numbers --------------------------------------------------------- */
 .flag-vertical {
   position: absolute;
@@ -369,6 +386,13 @@ body {
 .absolute_bottom_footer span {
   margin-right: 25px;
   font-size: 10px;
+}
+
+.xrpl-footer .card-grid .card {
+  padding: 24px 48px 48px 48px;
+}
+.xrpl-footer .card-grid .card:first-child {
+  padding-left: 0;
 }
 
 /* Callouts ----------------------------------------------------------------- */
@@ -676,7 +700,7 @@ a.current {
 }
 
 #sidenav .sidebar_pagelist a:hover {
-  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  color: #1a73e8;
   padding-left: 34px;
   border-left: 1px solid #1a73e8;
 }
@@ -723,7 +747,7 @@ a.current {
 #sidenav a.active:hover,
 .sidenav_parent a.active,
 .sidenav_parent a.active:hover {
-  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  color: #1a73e8;
 }
 
 #sidenav .card + .card {
@@ -800,7 +824,7 @@ a.current {
 }
 
 #sidenav .card-header .sidenav_cat_toggler:hover {
-  background-color : hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  background-color : #1a73e8;
 }
 
 #sidenav .card-header .sidenav_cat_toggler.collapsed {
@@ -812,8 +836,8 @@ a.current {
 
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
-  border-left: 1px solid #C9CDD1;
-  border-right: 1px solid #C9CDD1;
+  border-left: 1px solid #eae7e6;
+  border-right: 1px solid #eae7e6;
   padding: 44px 24px 48px;
   min-height: 700px;
 }
@@ -835,8 +859,9 @@ a.current {
   max-height: 85vh;
   top: 48px;
   overflow: auto;
-  padding: 44px 24px 48px;
+  padding: 44px 48px 48px 24px;
   border: none;
+  color: #000;
 }
 
 .right-sidebar .card-header {
@@ -884,7 +909,7 @@ a.current {
   padding: 4px 15px 4px 35px;
   text-indent: -20px;
   font-size: 14px;
-  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  color: #1a73e8;
 }
 
 .card .sidebar_pagelist a.active {
@@ -893,9 +918,9 @@ a.current {
 }
 
 .card .sidebar_pagelist a:hover {
-  color: hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  color: #1a73e8;
   padding-left: 33px;
-  border-left: 2px solid hsla(214.07766990291262, 81.75%, 50.59%, 1.00);
+  border-left: 2px solid #1a73e8;
 }
 
 .subcat-title.active-parent {
@@ -915,7 +940,7 @@ a.current {
   font-size: 18px;
   font-weight: 700;
   padding: 15px 16px 15px 10px;
-  color: #1B1818;
+  color: #000;
 }
 
 /* Edit on GitHub link ------------------------------------------------------ */
@@ -929,9 +954,9 @@ a.current {
 .github-edit-wrap .github-edit {
   background-image: url(../vendor/github-marks/GitHub-Mark-32px.png);
   background-size: 24px 24px;
-  background-position: left 10px center;
+  background-position: left 12px center;
   background-repeat: no-repeat;
-  padding: 8px 10px 8px 40px;
+  padding: 8px 16px 8px 48px;
   color: #777;
   text-decoration: none;
   display: block;
@@ -1043,7 +1068,6 @@ a.current {
   padding: 9px 16px;
   transition: box-shadow 200ms ease, background-color 200ms ease, color 200ms ease;
   background-color: transparent;
-  box-shadow: inset 0 0 0 1px #d3d0cf;
 }
 
 #main_content_wrapper {
@@ -1081,9 +1105,9 @@ a.current {
 #main_content_wrapper .btn-outline-secondary:active,
 .button:hover, #request_button:hover {
   /* Undo Bootstrap styling */
-  color: #1b1818;
+  color: #000;
   background-color: inherit;
-  border: 1px solid #1b1818;
+  border: 1px solid #000;
 }
 
 .btn:not(.external-link)::after,
@@ -1161,7 +1185,6 @@ a.current {
 }
 .landing a.card:hover {
   text-decoration: none;
-  border: 1px solid black;
 }
 .landing a.card:hover h3 {
   text-decoration: underline;
