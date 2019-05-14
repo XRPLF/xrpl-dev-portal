@@ -22,7 +22,7 @@ th {
   margin: 0 48px;
 }
 
-@media (max-width: 1078px) {
+@media (max-width: 1090px) {
   .navbar.fixed-top {
     margin: 0 20px;
   }
@@ -72,6 +72,10 @@ th {
 #navbar-search {
   position: relative;
   margin-right: 0.375rem;
+}
+
+#navbar-search .form-inline {
+  min-width: 250px; /* more room for placeholder text */
 }
 
 #topsearchbar {
