@@ -740,7 +740,13 @@ a.current {
   display: block;
   -webkit-mask-image: url(../img/icon-arrow.svg);
   mask-image: url(../img/icon-arrow.svg);
-  margin: 12px;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 24px 24px;
+  mask-size: 24px 24px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  border: 12px solid transparent;
 }
 
 #sidenav .card-header .sidenav_cat_toggler.collapsed {
