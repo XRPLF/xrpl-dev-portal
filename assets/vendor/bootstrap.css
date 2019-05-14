@@ -7147,6 +7147,8 @@ h3 a:hover {
 
 .landing .curated-links a,
 .landing .curated-links a:hover,
+.landing .children-display a,
+.landing .children-display a:hover,
 .landing a.card,
 .xrpl-footer a {
   color: #1B1818; }

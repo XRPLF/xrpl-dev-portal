@@ -291,12 +291,25 @@ body {
   padding: 0 48px;
 }
 
-.section-hero.card {
+.card-grid .section-hero.card {
   padding-left: 0;
 }
 
+.container-fluid.section-hero {
+  padding: 48px 0;
+}
+
+.doc-index {
+  padding: 48px 0;
+}
+
 @media (max-width: 991px) {
-  section.container-fluid.card-grid.card-grid-3xN.doc-landing-section .card {
+  .landing .card-grid .card,
+  .landing .card-grid .card-body,
+  .landing .card-grid .card-header {
+    padding-left: 0;
+  }
+  .landing .doc-index {
     padding-left: 0;
   }
 }
@@ -539,10 +552,7 @@ a.current {
 .landing .level-1,
 .landing .level-2,
 .landing .curated-links li {
-  font-weight: 400;
-  font-size: 1rem;
   margin-top: 0;
-  position: relative;
 }
 
 .landing .card .level-1 a,
@@ -566,7 +576,7 @@ a.current {
   margin-top: 1rem;
 }
 
-.blurb {
+.section-hero .blurb {
   font-size: 1.2em;
   line-height: 1.71em;
 }
@@ -977,7 +987,7 @@ a.current {
   padding-right: 1px;
 }
 
-.landing .card > .card-img-top {
+.landing .card .card-img-top {
   width: 60px;
   height: 60px;
   margin-left: 0;
