@@ -12,7 +12,6 @@ th {
 /* Reduce external link icon size */
 .fa.fa-external-link:before {
   font-size: 80%;
-  content: none;
 }
 
 /* Top navigation ----------------------------------------------------------- */
@@ -333,8 +332,10 @@ a {
   padding-left: 0;
 }
 
-section.container-fluid.card-grid.card-grid-3xN.doc-landing-section .card:first-child {
-  padding-left: 0;
+@media (max-width: 991px) {
+  section.container-fluid.card-grid.card-grid-3xN.doc-landing-section .card {
+    padding-left: 0;
+  }
 }
 
 /* Vertical numbers --------------------------------------------------------- */
@@ -393,6 +394,11 @@ section.container-fluid.card-grid.card-grid-3xN.doc-landing-section .card:first-
 }
 .xrpl-footer .card-grid .card:first-child {
   padding-left: 0;
+}
+@media (max-width: 991px) {
+  .xrpl-footer .card-grid .card {
+    padding-left: 0;
+  }
 }
 
 /* Callouts ----------------------------------------------------------------- */
@@ -642,6 +648,11 @@ a.current {
 }
 
 
+@media (max-width: 991px) {
+  .landing .card {
+    padding-left: 0px;
+  }
+}
 /* (Jump to) "Top" button --------------------------------------------------- */
 .jump-to-top {
   display: none;
@@ -684,7 +695,6 @@ a.current {
 /* Left navigation ---------------------------------------------------------- */
 
 .tree_nav {
-  position: sticky;
   top: 48px;
   padding: 44px 24px 48px 48px;
   background-color: #fff;
@@ -1146,10 +1156,7 @@ a.current {
 .related-projects a .fa-external-link {
   transition: all .2s ease-in-out;
   display: inline-block;
-  padding: 9px 6px 9px 15px;
-  background-image: url(../img/icon-new-window.svg);
-  background-size: 24px;
-  background-repeat: no-repeat;
+  padding-left: 7px;
 }
 .external-link:hover .fa-external-link,
 .related-projects a:hover .fa-external-link  {
