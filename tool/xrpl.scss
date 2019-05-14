@@ -5,17 +5,31 @@
 
 
 // Set theme colors used by Bootstrap styles
-$theme-colors: (
-"primary":       #1B1818, // XRP Black
-"secondary":     #676463, // Gray
-"light":         #EBE8E7, // light tan?
-"dark":          #1B1818, // XRP Black again
-"success":       #2BCB96, // light green
-"caution":       #D0DB60, // yellowish
-//"info":          todo // currently bluish
-"warning":       #AA4949, // wine red
-);
-$code-color:    #3B4147; // "Black-80"
+$white:    #FFF;
+$gray-100: #F9F7F7;
+$gray-200: #EBE8E7;
+$gray-300: #D3D0CF;
+$gray-400: #B3B0AF;
+$gray-500: #8D8A89;
+$gray-600: #676463;
+$gray-700: #464443;
+$gray-800: #2E2D2C;
+$gray-900: #201F1E;
+$black:    #1B1818;
+
+$primary:       #25A768; // Green
+$secondary:     $gray-600;
+$light:         $gray-200;
+$dark:          $black;
+$success:       #2BCB96; // light green
+$info:          #7699bb; // bluish
+$warning:       #D0DB60; // yellowish -- "caution" callout style
+$danger:        #AA4949; // wine red -- "warning" callout style
+
+$code-color:    $gray-800;
+$body-color:    $black;
+$navbar-light-color: $gray-600;
+
 
 $navbar-padding-y: 0;
 $navbar-nav-link-padding-x: 1rem;
@@ -67,13 +81,13 @@ h1, h2, h3, h4, h5 {
 .landing section,
 .xrpl-footer .card-grid,
 #main_content_wrapper {
-  border-bottom: 1px solid map-get($theme-colors, primary);
+  border-bottom: 1px solid $black;
 }
 
 .card-grid {
   display: grid;
   gap: 1px;
-  background-color: #dedede;
+  background-color: $gray-200;
   padding: 0;
 
   &.card-grid-2x2 {
@@ -177,4 +191,213 @@ h1, h2, h3, h4, h5 {
       padding: 20px;
     }
   }
+}
+
+/* Some styles that use the colors defined above ---------------------------- */
+h1 a,
+h2 a,
+h3 a {
+  color: $black;
+  text-decoration: none;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover {
+  color: $black;
+}
+
+.landing .curated-links a,
+.landing .curated-links a:hover,
+.landing a.card,
+.xrpl-footer a {
+  color: $black;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: $gray-600;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:active,
+.navbar .navbar-nav .active .nav-link,
+.navbar .active-parent .nav-link {
+  color: $black;
+}
+
+.navbar.fixed-top {
+  box-shadow: inset 0 -1px 0 0 $gray-200;
+}
+
+.flag-vertical {
+  color: $gray-200;
+}
+
+.jump-to-top {
+  background-color: $gray-700;
+}
+
+.devportal-callout.tip {
+  border-color: $success;
+}
+.devportal-callout.tip > strong:first-child:before {
+  color: $success;
+}
+.devportal-callout.note > strong:first-child:before {
+  color: $info;
+}
+.devportal-callout.note {
+  border-color: $info;
+}
+.devportal-callout.caution {
+  border-color: $warning; /* not a typo */
+}
+.devportal-callout.caution > strong:first-child:before {
+  color: $warning; /* not a typo */
+}
+.devportal-callout.warning {
+  border-color: $danger;
+}
+.devportal-callout.warning > strong:first-child:before {
+  color: $danger;
+}
+
+.status.not_enabled {
+  /* flask icon for "not yet enabled" features */
+  color: $warning;
+}
+
+#tx-sender-history .list-group-item {
+  font-size: small;
+  color: $gray-600;
+}
+
+.xrpl-footer {
+  border-top: 1px solid $black;
+  border-bottom: 1px solid $black;
+}
+.xrpl-footer .container-fluid {
+  border-bottom: 1px solid $gray-200;
+}
+
+/* Left/right nav color scheme ------------------------------- */
+aside a {
+  color: $gray-600;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+aside .sidenav_cat_title {
+  color: $black;
+}
+aside a:hover,
+aside .sidenav_cat_title:hover {
+  color: $primary;
+}
+
+aside a.active,
+aside a.active:hover {
+  color: $primary;
+  font-weight: 700;
+}
+aside a.active-parent {
+  color: $gray-700;
+  font-weight: 700;
+}
+
+.sidebar_pagelist {
+  border-left: 1px solid $gray-200;
+}
+.sidebar_pagelist a,
+.right-sidebar a {
+  display: block;
+  margin-top: 5px;
+  margin-left: -17px;
+  padding: 4px 15px 4px 35px;
+  text-indent: -20px;
+  font-size: 0.9rem;
+}
+.sidebar_pagelist a:hover {
+  padding-left: 34px;
+  border-left: 1px solid $primary;
+}
+.sidebar_pagelist .active,
+.sidebar_pagelist .active:hover {
+  padding-left: 33px;
+  border-left: 2px solid $primary;
+}
+.sidebar_pagelist .subpage {
+  margin-left: 0;
+  margin-top: 0;
+  padding-left: 35px;
+  border-left: 1px solid $gray-200;
+}
+.sidebar_pagelist .subpage:hover {
+  padding-left: 35px;
+  border-left: 1px solid $primary;
+}
+.sidebar_pagelist .active.subpage,
+.sidebar_pagelist .active.subpage:hover {
+  padding-left: 33px;
+  border-left: 2px solid $primary;
+}
+
+.sidenav_cat_toggler {
+  background-color: $gray-600;
+}
+.sidenav_cat_toggler:hover {
+  background-color: $primary;
+}
+
+.right-sidebar .card-body {
+  border-left: 1px solid $gray-200;
+}
+
+.sidenav_parent a {
+  color: $black;
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 15px 16px 15px 10px;
+}
+
+/* main content area ----------------------------------- */
+.sidebar-primary .main {
+  border-left: 1px solid $gray-200;
+  border-right: 1px solid $gray-200;
+}
+
+.content a.button {
+  box-shadow: inset 0 0 0 1px $gray-300;
+  color: $gray-600;
+  border: 1px solid $gray-600;
+}
+
+#main_content_wrapper .btn-outline-secondary:hover,
+#main_content_wrapper .btn-outline-secondary:active,
+.button:hover, #request_button:hover {
+  /* Undo Bootstrap styling */
+  color: $black;
+  background-color: inherit;
+  border: 1px solid $black;
+}
+
+/* Edit on GitHub link ------------------------------------------------------ */
+.github-edit-wrap {
+  border: 1px solid $gray-400;
+  margin-right: 10px;
+}
+.github-edit-wrap:hover {
+  border-color: $black;
+}
+.github-edit-wrap .github-edit {
+  background-image: url(../vendor/github-marks/GitHub-Mark-32px.png);
+  background-size: 24px 24px;
+  background-position: left 12px center;
+  background-repeat: no-repeat;
+  padding: 8px 16px 8px 48px;
+  color: $gray-600;
+  text-decoration: none;
+  display: block;
+  line-height: 17px; /* Match search box height */
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
 }
