@@ -1401,16 +1401,7 @@ a.current {
 
 /* Print styles ------------------------------------------------------------- */
 @media print {
-  {
     /* undo code tabs */
-    /* wrap code, not scroll */
-    /* Source URLs are too big to float */
-    /* Show URLs after links - even for anchors */
-    /* Drop header, footer, google translate */
-    /* table of contents can't scroll */
-    /* better margins on main content */
-    /* crazy print-section-numbering idea */
-  }
   .multicode > div {
     display: block !important;
   }
@@ -1425,6 +1416,7 @@ a.current {
   .multicode > p {
     display: block !important;
   }
+  /* wrap code, not scroll */
   pre {
     white-space: pre-wrap;
     max-height: none !important;
@@ -1438,23 +1430,30 @@ a.current {
   .content a[title="Source"] {
     float: none;
   }
+  /* Drop header, footer, sidebars */
   header,
-  footer {
+  footer,
+  aside {
     display: none;
   }
-  #goog-gt-tt {
+  /* Full-width content body */
+  .content, #main_content_body {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+  }
+  #main_content_wrapper {
+    margin-top: 0;
+  }
+  #main_content_body::before {
     display: none;
   }
-  h1 {
-    page-break-before: always;
+  .xrp-ledger-dev-portal.sidebar-primary .main {
+    border: 0;
   }
-  .main {
-    float: none !important;
-    width: 85% !important;
-    border-left: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: block !important;
-    overflow: visible !important;
+  .sidebar-primary .row {
+    display: block;
   }
 }
