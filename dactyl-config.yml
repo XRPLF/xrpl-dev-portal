@@ -2812,8 +2812,6 @@ pages:
     -   md: use-cases/use-cases.md
         html: use-cases.html
         funnel: Use Cases
-        filters:
-            - buttonize
         targets:
             - local
 
@@ -2898,8 +2896,6 @@ pages:
     -   md: dev-tools/dev-tools.md
         html: dev-tools.html
         funnel: Dev Tools
-        filters:
-            - buttonize
         targets:
             - local
 
