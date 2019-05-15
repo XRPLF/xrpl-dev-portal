@@ -470,7 +470,7 @@ To look for gaps that might affect a transaction's XRP balance, you can use this
     - If you haven't filled the gap by the time you reach a the transaction that created the object (where the account appears as a `CreatedNode` entry instead of a `ModifiedNode` entry), something has gone wrong and there is a bug somewhere.
 
 ```js
-TODO: code sample of history chaining
+{% include '_code-samples/monitor-payments-websocket/chaining.js' %}
 ```
 
 ***TODO: interactive gap detector (maybe you can force it to have gaps by temporarily switching your browser to offline mode?)***
