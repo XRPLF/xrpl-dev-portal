@@ -5459,7 +5459,7 @@ button.bg-dark:focus {
   z-index: 1;
   pointer-events: auto;
   content: "";
-  background-color: rgba(0, 0, 0, 0); }
+  background-color: transparent; }
 
 .m-0 {
   margin: 0 !important; }
@@ -7050,7 +7050,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 h1, h2, h3, h4, h5 {
   font-family: 'Space Mono', monospace;
-  font-weight: 700; }
+  font-weight: 700;
+  color: #1B1818; }
 
 .landing section,
 .xrpl-footer .card-grid,
@@ -7286,6 +7287,24 @@ aside a.active-parent {
   font-weight: 700;
   padding: 15px 16px 15px 10px; }
 
+.right-sidebar .level-1 a {
+  color: #1B1818; }
+
+.right-sidebar .level-3 {
+  padding-left: 16px;
+  border-left: 1px solid #EBE8E7;
+  margin-bottom: 0;
+  padding-bottom: 5px; }
+
+.right-sidebar .level-3 a {
+  margin-top: 0;
+  padding-bottom: 5px; }
+
+.right-sidebar a:hover {
+  text-decoration: none;
+  border-left: 1px solid #25A768;
+  padding-left: 34px; }
+
 /* main content area ----------------------------------- */
 .sidebar-primary .main {
   border-left: 1px solid #EBE8E7;
@@ -7294,7 +7313,7 @@ aside a.active-parent {
 .content a.button {
   box-shadow: inset 0 0 0 1px #D3D0CF;
   color: #676463;
-  border: 1px solid #676463; }
+  border: 1px solid #D3D0CF; }
 
 #main_content_wrapper .btn-outline-secondary:hover,
 #main_content_wrapper .btn-outline-secondary:active,
@@ -7324,4 +7343,5 @@ aside a.active-parent {
   line-height: 17px;
   /* Match search box height */
   font-family: "Space Mono", monospace;
-  font-weight: 700; }
+  font-weight: 700;
+  margin-left: 10px; }
