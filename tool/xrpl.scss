@@ -409,6 +409,7 @@ aside a.active-parent {
 .github-edit-wrap {
   border: 1px solid $gray-400;
   margin-right: 10px;
+  margin-left: 10px;
 }
 .github-edit-wrap:hover {
   border-color: $black;
@@ -425,5 +426,4 @@ aside a.active-parent {
   line-height: 17px; /* Match search box height */
   font-family: "Space Mono", monospace;
   font-weight: 700;
-  margin-left: 10px;
 }

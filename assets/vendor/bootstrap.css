@@ -5459,7 +5459,7 @@ button.bg-dark:focus {
   z-index: 1;
   pointer-events: auto;
   content: "";
-  background-color: transparent; }
+  background-color: rgba(0, 0, 0, 0); }
 
 .m-0 {
   margin: 0 !important; }
@@ -7326,7 +7326,8 @@ aside a.active-parent {
 /* Edit on GitHub link ------------------------------------------------------ */
 .github-edit-wrap {
   border: 1px solid #B3B0AF;
-  margin-right: 10px; }
+  margin-right: 10px;
+  margin-left: 10px; }
 
 .github-edit-wrap:hover {
   border-color: #1B1818; }
@@ -7343,5 +7344,4 @@ aside a.active-parent {
   line-height: 17px;
   /* Match search box height */
   font-family: "Space Mono", monospace;
-  font-weight: 700;
-  margin-left: 10px; }
+  font-weight: 700; }
