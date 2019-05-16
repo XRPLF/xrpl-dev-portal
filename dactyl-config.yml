@@ -661,6 +661,17 @@ pages:
         targets:
           - local
 
+    -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.md
+        html: monitor-incoming-payments-with-websocket.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
+        filters:
+            - interactive_steps
+        targets:
+            - local
+
     # TODO: Get Started with API Tools
 
     -   name: Use Simple XRP Payments
@@ -679,17 +690,6 @@ pages:
         doc_type: Tutorials
         category: Use Simple XRP Payments
         blurb: Test out sending XRP using the XRP Test Net.
-        filters:
-            - interactive_steps
-        targets:
-            - local
-
-    -   md: tutorials/use-simple-xrp-payments/monitor-incoming-payments-with-websocket.md
-        html: monitor-incoming-payments-with-websocket.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Use Simple XRP Payments
-        blurb: See how to actively monitor for new XRP payments (and transaction of other types).
         filters:
             - interactive_steps
         targets:
