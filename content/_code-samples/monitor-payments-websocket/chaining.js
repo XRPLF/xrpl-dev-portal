@@ -34,7 +34,7 @@ function hasGaps(affected_nodes) {
           return false
         } else {
           console.warn("Gap detected...")
-          return true
+          return ledger_entry.PreviousTxnID
         }
       }
     }
@@ -43,16 +43,50 @@ function hasGaps(affected_nodes) {
   return false
 }
 
+async function fill_gap(gap_tx_hash) {
+  response = await api_request({
+    "command": "tx",
+    "transaction": gap_tx_hash
+  })
+  if (response.status === "success") {
+    reduced_gap_status = hasGaps(response.result.meta.AffectedNodes)
+    if (gap_status === false) {
+      console.log("Successfully closed the gap! Found transaction: "+response.result)
+      // At this point, you'd process the transaction. Warning: the format
+      //  returned by tx is different than transaction subscription messages.
+      return response.result.hash
+    } else if (typeof gap_status === "undefined") {
+      console.log("Can't fill gap. Undefined last known tx.")
+      return false
+    } else if (typeof gap_status === "string") {
+      console.log("Gap extends deeper. Expected PreviousTxnID: " +
+                  knownPreviousTxnID + " vs. actual: " + gap_status)
+      return fill_gap(gap_status)
+    }
+
+  } else {
+    console.error("Error looking up gap TX " + gap_tx_hash +
+                  "; maybe it's older than our server's known history?")
+    return false
+  }
+}
+
 const lookOutForGaps = function(data) {
   const gap_status = hasGaps(data.meta.AffectedNodes)
   if (gap_status === false) {
-    console.log("Chained successfully. New tx:")
-  } else if (gap_status === true) {
-    // fill gap
-  } else if (gap_status === undefined) {
-    console.log("")
+    console.log("Chained successfully. New tx: "+data.transaction.hash)
+    knownPreviousTxnID = data.transaction.hash
+  } else if (typeof gap_status === "undefined") {
+    console.log("Unknown prior status. Starting chain from tx: " +
+                data.transaction.hash)
+  } else if (typeof gap_status === "string") {
+    console.warn("Gap detected. Expected PreviousTxnID: " +
+                knownPreviousTxnID + " vs. actual: " + gap_status)
+    fill_success = await fill_gap(gap_tx_hash)
+    if (fill_success) {
+      knownPreviousTxnID = data.transaction.hash
+    }
   }
-
-
 }
-WS_HANDLERS['transaction'] = watchForGaps
+
+WS_HANDLERS['transaction'] = lookOutForGaps
