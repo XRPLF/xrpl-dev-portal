@@ -61,6 +61,8 @@ Once created, an account exists in the XRP Ledger's data tree forever. This is b
 
 Unlike Bitcoin and many other crypto-currencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, Ripple discourages creating new accounts unless entirely necessary. Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](become-an-xrp-ledger-gateway.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
 
+You cannot spend or transfer the [reserve requirement](reserves.html) of 20 XRP, so this amount is locked up when with each new account. (This XRP _can_ be destroyed to pay for [transaction costs](transaction-cost.html) but cannot be sent to other accounts.) If the reserve requirement were to decrease, some of that XRP could become available again. For more information on how the reserve requirement could change, see [Fee Voting](fee-voting.html).
+
 
 ## Transaction History
 
