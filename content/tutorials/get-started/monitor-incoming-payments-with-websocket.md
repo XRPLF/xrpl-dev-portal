@@ -49,6 +49,11 @@ socket.addEventListener('open', (event) => {
 socket.addEventListener('message', (event) => {
   console.log('Got message from server:', event.data)
 })
+socket.addEventListener('close', (event) => {
+  // Use this event to detect when you have become disconnected
+  // and respond appropriately.
+  console.log('Disconnected...')
+})
 ```
 
 The above example opens a secure connection (`wss://`) to one of Ripple's public API servers on the [Test Net](xrp-test-net-faucet.html). To connect to a locally-running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
@@ -449,38 +454,17 @@ $("#tx_read").click((event) => {
 })
 </script>
 
-## {{n.next()}}. Look Out for Gaps
+## Next Steps
 
-Notifications about new transactions _should_ all arrive in the correct order, without anything missing, but internet can be unreliable. If your software loses connectivity or other unexpected situations occur, some transaction messages could be delayed or never arrive at all. You can compensate for this by following the "cryptographic chain of evidence" the XRP Ledger provides with each transaction. That way, you know when you're missing something, and you can look up any missing transactions until you connect back to the transactions you already know about.
+- [Look Up Transaction Results](look-up-transaction-results.html) to see exactly what a transaction did, and build your software to react appropriately.
+- Try [Sending XRP](send-xrp.html) from your own address.
+- Try monitoring for transactions of advanced types like [Escrows](escrow.html), [Checks](checks.html), or [Payment Channels](payment-channels), and responding to incoming notifications.
+<!--{# TODO: uncomment when it's ready. - To more robustly handle internet instability, [Follow a Transaction Chain](follow-a-transaction-chain.html) to detect if you missed a notification. #}-->
 
-You can follow the history of changes to an [object in the XRP Ledger](ledger-data-types.html) by looking at the `PreviousTxnID` field of that object and checking the transaction whose [identifying hash][] matches. (The `PreviousTxnLgrSeq` field tells you what [ledger index][] has the transaction, so you know how far back to go in the [ledger history](ledger-history.html) to find the transaction.) The metadata for that transaction shows the changes made by the transaction, and the _previous_ `PreviousTxnID` value, so you can repeat the process as far back as you need to go.
-
-To look for gaps that might affect a transaction's XRP balance, you can use this technique on the `AccountRoot` object for the account as follows:
-
-1. When you first connect, establish a starting point by calling the [account_info method][] to look up the latest `PreviousTxnID` value and save it.
-2. Whenever you get a new transaction, look through the modified ledger objects to see if the account in question was modified. This is the same as how you read the account's balance changes. Specifically, you should look in the `meta.AffectedNodes` array for a `ModifiedNode` object of ledger entry type `AccountRoot`, where the `FinalFields.Account` value matches the address of the account.
-    - If no such object exists, the account was not directly modified by the transaction. Since the XRP Ledger tracks XRP balances in this object, you know that the account's XRP balance did not change.[²](#footnote-2) <a id="from-footnote-2"></a> (The `accounts` stream also reports several types of transactions that _indirectly_ affect an account without modifying the `AccountRoot` object itself.)
-3. If the account _was_ modified, compare the `ModifiedNode` object's `PreviousTxnID` field to the value you have saved.
-    - If they match, you did not miss any changes to that account's XRP balance. Update your saved `PreviousTxnID` to the identifying hash of the new transaction (the `transaction.hash` field in `transaction`-type subscription messages). **Continue processing transactions normally.**
-4. If the account was modified _and_ the `PreviousTxnID` value did not match the hash you were expecting, use the [tx method][] to look up the missing transaction, using the `PreviousTxnID` value from the new transaction to identify the missing transaction. We'll call this the "gap" transaction.
-    - If the `tx` method returns a "not found" error, make sure your server has the ledger in its history. Look at the range of `complete_ledgers` reported by the [server_info method][] and confirm that the `PreviousTxnLgrSeq` value is within the specified range. If necessary, use a [full history server](full-history-server.html) to look up old transaction history.
-5. In the "gap" transaction, find the modified account in the `meta.AffectedNodes` array (as in step 2) and compare its `PreviousTxnID` field to the value you were originally expecting.
-    - If the value matches, you have successfully closed the gap. Save the identifying hash of the newest transaction, and resume processing new transactions as normal. (Don't use the transaction you looked up last; use the transaction that caused you to realize you had a gap.) **Resume processing transactions normally.**
-6. If the `PreviousTxnID` of the "gap" transaction does not match the value you were expecting, there are multiple "gap" transactions. Repeat steps 4 and 5 until you close the gap.
-    - If you haven't filled the gap by the time you reach a the transaction that created the object (where the account appears as a `CreatedNode` entry instead of a `ModifiedNode` entry), something has gone wrong and there is a bug somewhere.
-
-```js
-{% include '_code-samples/monitor-payments-websocket/chaining.js' %}
-```
-
-***TODO: interactive gap detector (maybe you can force it to have gaps by temporarily switching your browser to offline mode?)***
 
 ## Footnotes
 
 [1.](#from-footnote-1) <a id="footnote-1"></a> In practice, when calling an HTTP-based API multiple times, the client and server may reuse the same connection for several requests and responses. This practice is called [HTTP persistent connection, or keep-alive](https://en.wikipedia.org/wiki/HTTP_persistent_connection). From a development standpoint, the code to use an HTTP-based API is the same regardless of whether the underlying connection is new or reused.
-
-[2.](#from-footnote-2) <a id="footnote-2"></a> The `Balance` field of an account tracks the XRP held directly by the account. This does not include XRP set aside in [payment channels](payment-channels.html) or [escrows](escrow.html). Additionally, some portion of that `Balance` is set aside for [reserves](reserves.html) and cannot be spent normally.
-
 
 
 
