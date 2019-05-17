@@ -85,6 +85,10 @@ h1, h2, h3, h4, h5 {
   border-bottom: 1px solid $black;
 }
 
+.landing section:last-of-type {
+  border-bottom: none; 
+}
+
 .card-grid {
   display: grid;
   gap: 1px;
@@ -197,8 +201,7 @@ h1, h2, h3, h4, h5 {
 /* Some styles that use the colors defined above ---------------------------- */
 h1 a,
 h2 a,
-h3 a,
-.xrpl-footer h5 a {
+h3 a {
   color: $black;
   text-decoration: none;
 }
@@ -206,6 +209,10 @@ h1 a:hover,
 h2 a:hover,
 h3 a:hover,
 .xrpl-footer h5 a:hover {
+  color: $black;
+}
+
+.xrpl-footer h5 a {
   color: $black;
 }
 
@@ -281,6 +288,7 @@ h3 a:hover,
 }
 
 .xrpl-footer {
+  border-top: 1px solid $black;
   border-bottom: 1px solid $black;
 }
 .xrpl-footer .container-fluid {

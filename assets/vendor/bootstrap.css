@@ -5459,7 +5459,7 @@ button.bg-dark:focus {
   z-index: 1;
   pointer-events: auto;
   content: "";
-  background-color: rgba(0, 0, 0, 0); }
+  background-color: transparent; }
 
 .m-0 {
   margin: 0 !important; }
@@ -7058,6 +7058,9 @@ h1, h2, h3, h4, h5 {
 #main_content_wrapper {
   border-bottom: 1px solid #1B1818; }
 
+.landing section:last-of-type {
+  border-bottom: none; }
+
 .card-grid {
   display: grid;
   gap: 1px;
@@ -7137,8 +7140,7 @@ h1, h2, h3, h4, h5 {
 /* Some styles that use the colors defined above ---------------------------- */
 h1 a,
 h2 a,
-h3 a,
-.xrpl-footer h5 a {
+h3 a {
   color: #1B1818;
   text-decoration: none; }
 
@@ -7146,6 +7148,9 @@ h1 a:hover,
 h2 a:hover,
 h3 a:hover,
 .xrpl-footer h5 a:hover {
+  color: #1B1818; }
+
+.xrpl-footer h5 a {
   color: #1B1818; }
 
 .landing .curated-links a,
@@ -7212,6 +7217,7 @@ h3 a:hover,
   color: #676463; }
 
 .xrpl-footer {
+  border-top: 1px solid #1B1818;
   border-bottom: 1px solid #1B1818; }
 
 .xrpl-footer .container-fluid {
