@@ -197,22 +197,28 @@ h1, h2, h3, h4, h5 {
 /* Some styles that use the colors defined above ---------------------------- */
 h1 a,
 h2 a,
-h3 a {
+h3 a,
+.xrpl-footer h5 a {
   color: $black;
   text-decoration: none;
 }
 h1 a:hover,
 h2 a:hover,
-h3 a:hover {
+h3 a:hover,
+.xrpl-footer h5 a:hover {
   color: $black;
 }
 
 .landing .curated-links a,
-.landing .curated-links a:hover,
 .landing .children-display a,
-.landing .children-display a:hover,
 .landing a.card,
 .xrpl-footer a {
+  color: $gray-600;
+}
+
+.landing .curated-links a:hover,
+.landing .children-display a:hover,
+.xrpl-footer a:hover {
   color: $black;
 }
 
@@ -275,11 +281,14 @@ h3 a:hover {
 }
 
 .xrpl-footer {
-  border-top: 1px solid $black;
   border-bottom: 1px solid $black;
 }
 .xrpl-footer .container-fluid {
   border-bottom: 1px solid $gray-200;
+}
+
+.header-link:hover {
+  color: $black;
 }
 
 /* Left/right nav color scheme ------------------------------- */

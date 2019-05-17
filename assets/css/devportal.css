@@ -156,10 +156,14 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 0.9375rem;
 }
+.row {
+  margin: 0 -1px;
+}
 
 /* Push content below fixed header ------------------------------------------ */
 #main_content_wrapper {
   margin-top: 68px;
+  padding: 0 48px;
 }
 
 /* Fix so anchors don't jump under the fixed header ------------------------- */
@@ -292,7 +296,7 @@ body {
 }
 
 .landing {
-  padding: 0 48px;
+  padding: 0 2px;
 }
 
 .card-grid .section-hero.card {
@@ -357,7 +361,10 @@ body {
 
 .absolute_bottom_footer span {
   margin-right: 25px;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+}
+.xrpl-footer .card-header h5 i {
+  margin-left: 0.2em;
 }
 
 .xrpl-footer .card-grid .card {
@@ -654,7 +661,7 @@ a.current {
 
 .tree_nav {
   top: 48px;
-  padding: 44px 24px 48px 48px;
+  padding: 44px 24px 48px 0;
   background-color: white;
 }
 
@@ -773,7 +780,7 @@ a.current {
   max-height: 85vh;
   top: 48px;
   overflow: auto;
-  padding: 44px 48px 48px 24px;
+  padding: 44px 0 48px 24px;
   border: none;
 }
 
@@ -1002,6 +1009,7 @@ a.current {
 .image-icon {
   width: 60px;
   height: 60px;
+  margin-bottom: 16px;
 }
 
 /* Full-link cards */
