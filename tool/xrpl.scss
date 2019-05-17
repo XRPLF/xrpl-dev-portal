@@ -408,9 +408,11 @@ aside a.active-parent {
 }
 
 .content a.button {
-  box-shadow: inset 0 0 0 1px $gray-300;
-  color: $gray-600;
+  color: $black;
   border: 1px solid $gray-300;
+}
+.content a.button:hover {
+  border: 1px solid $black;
 }
 
 #main_content_wrapper .btn-outline-secondary:hover,
@@ -420,6 +422,23 @@ aside a.active-parent {
   color: $black;
   background-color: inherit;
   border: 1px solid $black;
+}
+
+/* Use Cases ---------------------------------------------------------------- */
+.related-tasks-links a {
+  color: $gray-600;
+  text-decoration: none;
+}
+.related-tasks-links a:hover {
+  color: $black;
+}
+.use-case-external-link {
+  border: 1px solid $gray-300;
+}
+
+.content .use-case-external-link a {
+  text-decoration: none;
+  color: $black;
 }
 
 /* Edit on GitHub link ------------------------------------------------------ */

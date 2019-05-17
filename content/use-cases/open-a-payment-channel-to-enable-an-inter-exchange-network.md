@@ -31,23 +31,25 @@ Here’s a roadmap to the high-level tasks you’ll need to perform to implement
 {% set n = cycler(* range(1,99)) %}
 <!-- USE_CASE_STEPS_START -->
 <span class="use-case-step-num">{{n.next()}}</span>
-## [Understand payment channels](payment-channels.html)
+## Understand payment channels
 
 Learn more about payment channels and whether they provide the features you need for your specific implementation.
 
+[Understand payment channels >](payment-channels.html)
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Payer and payee: [Set up and run `rippled` servers](manage-the-rippled-server.html)
+## Payer and payee: Set up and run `rippled` servers
 
 To use a payment channel to send and receive XRP, both the payer and payee exchanges must each have access to a `rippled` server that they can use to send transactions. If your exchange processes XRP withdrawals directly, you are probably already running a `rippled` server that you can use for this purpose.
 
 If not, a great way for an exchange to get access to a `rippled` server is to set up and run one.
 
+[Set up and run rippled servers >](manage-the-rippled-server.html)
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Payer and payee: [Fund XRP Ledger accounts with enough XRP](accounts.html)
+## Payer and payee: Fund XRP Ledger accounts with enough XRP
 
 If your exchange processes XRP deposits and withdrawals directly, you probably have existing funded XRP Ledger accounts that you can use for this purpose. Just ensure that they are funded with enough XRP as described here.
 
@@ -69,7 +71,7 @@ Along these lines, there's a good chance that you are following industry best pr
 
       The account needs at least 21 XRP, which provides the 20 XRP [base reserve](reserves.html), plus enough to pay the transaction costs of redeeming claims, which are trivial. For example, you could redeem thousands of claims for less than 1 XRP in total.
 
-
+[Fund XRP Ledger accounts with enough XRP >](accounts.html)
 
 <span class="use-case-step-num">{{n.next()}}</span>
 ## Payer: [Open a payment channel](use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient)
@@ -91,19 +93,22 @@ Since payment channels are unidirectional, you need a second channel in the oppo
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Payee: [Verify payment channel details](use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel)
+## Payee: Verify payment channel details
 
 The payee exchange reviews the details of the payment channel.
 
+[Verify payment channel details >](use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel)
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Payer: [Create claims](use-payment-channels.html#3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel)
+## Payer: Create claims
 
 The payer exchange creates one or more claims for amounts of XRP that it wants to guarantee to the payee exchange.
 
+[Create claims >](use-payment-channels.html#3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel)
 
-## Payer: [Send claim details to the payer exchange](use-payment-channels.html#4-the-payer-sends-a-claim-to-the-payee-as-payment-for-goods-or-services)
+<span class="use-case-step-num">{{n.next()}}</span>
+## Payer: Send claim details to the payer exchange
 
 After creating a claim, the payer exchange must send details of the claim to the payee exchange, off-ledger.
 
@@ -128,10 +133,10 @@ Consider a series of claims prompted by payer exchange customers withdrawing XRP
 | **Amount**          | Cumulative amount of the claims created by the payer exchange. The payee exchange needs this value to verify and redeem the claim. For information about how to calculate the actual amount the payee exchange needs to credit the customer, see [Verify claims](#payee-verify-claims). |
 | **Destination Tag** | Destination tag of the customer account on the payee exchange that needs to be credited based on the claim. The payer exchange can get this value from their customer's withdrawal request, which should provide a destination tag for the deposit to the payee exchange. When the payee exchange redeems claims, the XRP is deposited into the payee exchange's XRP Ledger account. The payee exchange can then credit the XRP from the claim to the appropriate customer account based on the destination tag provided. |
 
-
+[Send claim details to the payer exchange >](use-payment-channels.html#4-the-payer-sends-a-claim-to-the-payee-as-payment-for-goods-or-services)
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Payee: [Verify claims](use-payment-channels.html#5-the-payee-verifies-the-claims)
+## Payee: Verify claims
 
 The payee exchange verifies claims sent by the payer exchange.
 
@@ -139,10 +144,11 @@ After verifying claims, the payee exchange should credit the claimed XRP to the 
 
 For example, to know how much to credit a customer for a claim amount of 3000, the payee exchange needs to know that the previous claim amount was 2000. The difference between the claim amount and the previous claim amount (3000 - 2000 = 1000) is the amount the payee exchange must credit to the customer account.
 
+[Verify claims >](use-payment-channels.html#5-the-payee-verifies-the-claims)
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Payee: [Redeem them in batches](use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount)
+## Payee: Redeem them in batches
 
 The payee exchange can redeem batches of claims after verifying them to receive the XRP guaranteed by the payer exchange. Here are some guidelines the payee exchange can use to decide how often to redeem claims:
 
@@ -158,18 +164,20 @@ The payee exchange can redeem batches of claims after verifying them to receive 
 
 <!-- #{ TODO: Talk to some active PayChan users like Coil people to get some more specific recommendations. But I imagine that settling every few minutes or even hours could make sense depending on how much the payee exchange trusts the payer exchange, how many transactions they do how rapidly, etc. }# -->
 
+[Redeem them in batches >](use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount)
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Payer and payee: [Continue to use the payment channel](use-payment-channels.html#7-repeat-steps-3-6-as-desired)
+## Payer and payee: Continue to use the payment channel
 
 Payer and payee exchanges can continue to send, verify, and redeem batches of claims as needed within the parameters set by the payment channel.
 
-
+[Continue to use the payment channel >](use-payment-channels.html#7-repeat-steps-3-6-as-desired)
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Payer: When it's time, make a request to [close the payment channel](use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed)
+## Payer: When it's time, make a request to close the payment channel
 
 When the payer exchange and payee exchange are done using the payment channel, the payer exchange can make a request to close the payment channel.
 
+[Close the payment channel >](use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed)
 <!-- USE_CASE_STEPS_END -->

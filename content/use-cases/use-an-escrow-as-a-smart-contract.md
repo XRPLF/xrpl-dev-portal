@@ -75,7 +75,7 @@ To create the escrow as a smart contract, the participants must first define the
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Oracle: [Generate a condition and a fulfillment](send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment)
+## Oracle: Generate a condition and a fulfillment
 
 Because participants want to create a conditionally-held escrow to provide the smart contract, they need a condition value and a fulfillment value. In this scenario, the participant that creates these values is the neutral party planner (oracle).
 
@@ -83,33 +83,38 @@ The party planner generates the condition and fulfillment values. The party plan
 
 The party planner must keep the fulfillment value a secret. Anyone can use the condition and fulfillment values to finish the escrow. Most often, the receiver finishes the escrow because they're the ones who are motivated to get paid.
 
-
+[Generate a condition and a fulfillment >](send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment)
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Sender: [Calculate time values needed for the escrow](send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time)
+## Sender: Calculate time values needed for the escrow
 
 Because the participants want the escrow to be eligible for cancellation after 12 noon the day after the party, the party host (sender) must calculate a `CancelAfter` value to include in the escrow definition.
 
+[Calculate time values needed for the escrow >](send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time)
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Sender: [Create the escrow](send-a-conditionally-held-escrow.html#3-submit-escrowcreate-transaction)
+## Sender: Create the escrow
 
 The party host (sender) creates the escrow that provides the smart contract. The party host must create the escrow because they are the only participant that can authorize the lock up and potential payout of XRP from their XRP Ledger account.
 
+[Create the escrow >](send-a-conditionally-held-escrow.html#3-submit-escrowcreate-transaction)
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Sender and Receiver: [Wait for validation](send-a-conditionally-held-escrow.html#4-wait-for-validation) and [confirm escrow creation](send-a-conditionally-held-escrow.html#5-confirm-that-the-escrow-was-created)
+## Sender and Receiver: Wait for validation and confirm escrow creation
 
 The party host (sender) waits for validation of the ledger that contains the escrow creation transaction and then confirms that the escrow was created.
 
+[Wait for validation >](send-a-conditionally-held-escrow.html#4-wait-for-validation) 
+
 The party host then provides the escrow transaction's `hash` value to the party band (receiver). The party band can use the `hash` value to look up the escrow transaction on the XRP Ledger to ensure that it was created according to the smart contract terms they agreed to. As part of this step, the party band should confirm that the condition matches the one the party planner (oracle) provided. If the condition is wrong, the fulfillment the party planner provides won't let the party band finish the escrow and get paid.
 
+[confirm escrow creation >](send-a-conditionally-held-escrow.html#5-confirm-that-the-escrow-was-created)
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Receiver: [Finish the escrow](send-a-conditionally-held-escrow.html#6-submit-escrowfinish-transaction)
+## Receiver: Finish the escrow
 
 The party band (receiver) shows up and plays their set.
 
@@ -119,21 +124,29 @@ The party band must finish the escrow before 12 noon. If they don't, the escrow 
 
 If the party planner does not publish the fulfillment (the party band is a no show) or if the party planner publishes the fulfillment, but no one finishes the escrow; after 12 noon the next day, anyone can [cancel the escrow](cancel-an-expired-escrow.html). Cancelling the escrow returns the held XRP to the party host's account.
 
+[Finish the escrow >](send-a-conditionally-held-escrow.html#6-submit-escrowfinish-transaction)
 
 
 <span class="use-case-step-num">{{n.next()}}</span>
-## Receiver and Sender: [Wait for validation](send-a-conditionally-held-escrow.html#7-wait-for-validation) and [confirm final result](send-a-conditionally-held-escrow.html#8-confirm-final-result)
+## Receiver and Sender: Wait for validation and confirm final result
 
 The party band (receiver) waits for validation of the ledger that contains the escrow finish transaction and then confirms that the escrow was finished.
 
 At this time, the party band provides the transaction's `hash` value to the party host (sender). They can use the `hash` value to look up the escrow transaction on the XRP Ledger to ensure that it is been finished correctly.
 
 The party band can check their XRP Ledger account balance to ensure that their balance has increased by 2000 XRP. The party host's balance won't change at this step (unless the escrow was canceled) because the escrow creation already debited the locked-up XRP from their account.
+
+[Wait for validation >](send-a-conditionally-held-escrow.html#7-wait-for-validation)
+
+[confirm final result >](send-a-conditionally-held-escrow.html#8-confirm-final-result)
+
 <!-- USE_CASE_STEPS_END -->
 
-
 ### Related Tasks
+<div class='related-tasks-links'>
 
 - [Send a Time-Held Escrow](send-a-time-held-escrow.html)
 - [Cancel an Expired Escrow](cancel-an-expired-escrow.html)
 - [Look Up Escrows](look-up-escrows.html)
+
+</div>

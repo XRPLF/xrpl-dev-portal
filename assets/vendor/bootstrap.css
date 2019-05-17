@@ -7324,9 +7324,11 @@ aside a.active-parent {
   border-right: 1px solid #EBE8E7; }
 
 .content a.button {
-  box-shadow: inset 0 0 0 1px #D3D0CF;
-  color: #676463;
+  color: #1B1818;
   border: 1px solid #D3D0CF; }
+
+.content a.button:hover {
+  border: 1px solid #1B1818; }
 
 #main_content_wrapper .btn-outline-secondary:hover,
 #main_content_wrapper .btn-outline-secondary:active,
@@ -7335,6 +7337,21 @@ aside a.active-parent {
   color: #1B1818;
   background-color: inherit;
   border: 1px solid #1B1818; }
+
+/* Use Cases ---------------------------------------------------------------- */
+.related-tasks-links a {
+  color: #676463;
+  text-decoration: none; }
+
+.related-tasks-links a:hover {
+  color: #1B1818; }
+
+.use-case-external-link {
+  border: 1px solid #D3D0CF; }
+
+.content .use-case-external-link a {
+  text-decoration: none;
+  color: #1B1818; }
 
 /* Edit on GitHub link ------------------------------------------------------ */
 .github-edit-wrap {
