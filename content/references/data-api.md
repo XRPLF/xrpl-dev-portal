@@ -2,9 +2,11 @@
 
 The Ripple Data API v2 provides access to information about changes in the XRP Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees `rippled` servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as [XRP Charts](https://xrpcharts.ripple.com/) and [ripple.com](https://www.ripple.com).
 
-Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:
+Ripple provides the Data API as a public service at the following address:
 
 [**https://data.ripple.com**](https://data.ripple.com)
+
+**Caution:** Information in the Data API is provided "as is" and solely for informational purposes only. Ripple does not guarantee the availability or accuracy of the Data API. Do not build mission critical infrastructure that depends on the Data API.
 
 You can run a historical database yourself, but we don’t recommend it because of the complexity involved. If your use case requires that you run a historical database, contact [Ripple Technical Services](mailto:support@ripple.com) for information about how to set it up.
 
