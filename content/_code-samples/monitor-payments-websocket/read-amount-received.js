@@ -22,10 +22,10 @@ function CountXRPDifference(affected_nodes, address) {
         const diff_in_drops = new_balance.minus(old_balance)
         const xrp_amount = diff_in_drops.div(10e6)
         if (xrp_amount.gte(0)) {
-          console.log("Received "+xrp_amount.toString()+" XRP.")
+          console.log("Received " + xrp_amount.toString() + " XRP.")
           return
         } else {
-          console.log("Spent "+xrp_amount.abs().toString()+" XRP.")
+          console.log("Spent " + xrp_amount.abs().toString() + " XRP.")
           return
         }
       }
@@ -36,7 +36,7 @@ function CountXRPDifference(affected_nodes, address) {
           ledger_entry.NewFields.Account === address) {
         const balance_drops = new Big(ledger_entry.NewFields.Balance)
         const xrp_amount = balance_drops.div(10e6)
-        console.log("Received "+xrp_amount.toString()+" XRP (account funded).")
+        console.log("Received " + xrp_amount.toString() + " XRP (account funded).")
         return
       }
     } // accounts cannot be deleted at this time, so we ignore DeletedNode

@@ -98,7 +98,8 @@ $("#connect-button").click((event) => {
     $("#connect-button").prop("disabled", false)
   })
   socket.addEventListener('message', (event) => {
-    writeToConsole("#monitor-console-connect", "Got message from server: "+JSON.stringify(event.data))
+    writeToConsole("#monitor-console-connect", "Got message from server: " +
+          JSON.stringify(event.data))
   })
 })
 </script>
@@ -132,7 +133,7 @@ const handleResponse = function(data) {
   if (AWAITING.hasOwnProperty(data.id)) {
     AWAITING[data.id].resolve(data)
   } else {
-    console.error("Response to un-awaited request w/ ID "+data.id)
+    console.error("Response to un-awaited request w/ ID " + data.id)
   }
 }
 
@@ -145,12 +146,12 @@ function api_request(options) {
   let resolveHolder;
   AWAITING[options.id] = new Promise((resolve, reject) => {
     // Save the resolve func to be called by the handleResponse function later
-    this.resolve = resolve
+    resolveHolder = resolve
     try {
       // Use the socket opened in the previous example...
       socket.send(JSON.stringify(options))
-    } catch {
-      reject()
+    } catch(error) {
+      reject(error)
     }
   })
   AWAITING[options.id].resolve = resolveHolder;
@@ -198,7 +199,7 @@ const handleResponse = function(data) {
   if (AWAITING.hasOwnProperty(data.id)) {
     AWAITING[data.id].resolve(data)
   } else {
-    writeToConsole("#monitor-console-ping", "Response to un-awaited request w/ ID "+data.id)
+    writeToConsole("#monitor-console-ping", "Response to un-awaited request w/ ID " + data.id)
   }
 }
 
@@ -214,8 +215,8 @@ function api_request(options) {
     try {
       // Use the socket opened in the previous example...
       socket.send(JSON.stringify(options))
-    } catch {
-      reject()
+    } catch(error) {
+      reject(error)
     }
   })
   AWAITING[options.id].resolve = resolveFunc
@@ -232,7 +233,7 @@ $("#enable_dispatcher").click((clickEvent) => {
       // Call the mapped handler
       WS_HANDLERS[parsed_data.type](parsed_data)
     } else {
-      writeToConsole("#monitor-console-ping", "Unhandled message from server: "+event)
+      writeToConsole("#monitor-console-ping", "Unhandled message from server: " + event)
     }
   })
   complete_step("Dispatch Messages")
@@ -242,7 +243,7 @@ $("#enable_dispatcher").click((clickEvent) => {
 
 async function pingpong() {
   const response = await api_request({command: "ping"})
-  writeToConsole("#monitor-console-ping", "Pong! "+JSON.stringify(response))
+  writeToConsole("#monitor-console-ping", "Pong! " + JSON.stringify(response))
 }
 
 $("#dispatch_ping").click((event) => {
@@ -254,7 +255,7 @@ $("#dispatch_ping").click((event) => {
 
 To get a live notification whenever a transaction affects your account, you can subscribe to the account with the [subscribe method][]. In fact, it doesn't have to be your own account: since all transactions are public, you can subscribe to any account or even a combination of accounts.
 
-After you subscribe to one or more accounts, you the server sends a message with `"type": "transaction"` on each _validated_ transaction that affects any of the specified accounts in some way. To confirm this, look for `"validated": true` in the transaction messages.
+After you subscribe to one or more accounts, the server sends a message with `"type": "transaction"` on each _validated_ transaction that affects any of the specified accounts in some way. To confirm this, look for `"validated": true` in the transaction messages.
 
 The following code sample subscribes to the Test Net Faucet's sending address. It logs a message on each such transaction by adding a handler to the dispatcher from the previous step.
 
@@ -273,9 +274,9 @@ async function do_subscribe() {
 do_subscribe()
 
 const log_tx = function(tx) {
-  console.log(tx.transaction.TransactionType+" transaction sent by " +
+  console.log(tx.transaction.TransactionType + " transaction sent by " +
               tx.transaction.Account +
-              "\n  Result: "+tx.meta.TransactionResult +
+              "\n  Result: " + tx.meta.TransactionResult +
               " in ledger " + tx.ledger_index +
               "\n  Validated? " + tx.validated)
 }
@@ -303,7 +304,7 @@ async function do_subscribe() {
     writeToConsole("#monitor-console-subscribe", "Successfully subscribed!")
   } else {
     writeToConsole("#monitor-console-subscribe",
-                   "Error subscribing: "+JSON.stringify(sub_response))
+                   "Error subscribing: " + JSON.stringify(sub_response))
   }
 }
 $("#tx_subscribe").click((event) => {
@@ -314,9 +315,9 @@ $("#tx_subscribe").click((event) => {
 
 const log_tx = function(tx) {
   writeToConsole("#monitor-console-subscribe",
-                  tx.transaction.TransactionType+" transaction sent by " +
+                  tx.transaction.TransactionType + " transaction sent by " +
                   tx.transaction.Account +
-                  "<br/>&nbsp;&nbsp;Result: "+tx.meta.TransactionResult +
+                  "<br/>&nbsp;&nbsp;Result: " + tx.meta.TransactionResult +
                   " in ledger " + tx.ledger_index +
                   "<br/>&nbsp;&nbsp;Validated? " + tx.validated)
 }
@@ -385,10 +386,10 @@ function CountXRPDifference(affected_nodes, address) {
         const diff_in_drops = new_balance.minus(old_balance)
         const xrp_amount = diff_in_drops.div(10e6)
         if (xrp_amount.gte(0)) {
-          writeToConsole("#monitor-console-read", "Received "+xrp_amount.toString()+" XRP.")
+          writeToConsole("#monitor-console-read", "Received " + xrp_amount.toString()+" XRP.")
           return
         } else {
-          writeToConsole("#monitor-console-read", "Spent "+xrp_amount.abs().toString()+" XRP.")
+          writeToConsole("#monitor-console-read", "Spent " + xrp_amount.abs().toString() + " XRP.")
           return
         }
       }
@@ -399,7 +400,7 @@ function CountXRPDifference(affected_nodes, address) {
           ledger_entry.NewFields.Account === address) {
         const balance_drops = new Big(ledger_entry.NewFields.Balance)
         const xrp_amount = balance_drops.div(10e6)
-        writeToConsole("#monitor-console-read", "Received "+xrp_amount.toString()+" XRP (account funded).")
+        writeToConsole("#monitor-console-read", "Received " + xrp_amount.toString() + " XRP (account funded).")
         return
       }
     } // accounts cannot be deleted at this time, so we ignore DeletedNode
@@ -416,7 +417,8 @@ function CountXRPReceived(tx, address) {
   }
   if (tx.transaction.TransactionType === "Payment") {
     if (tx.transaction.Destination !== address) {
-      writeToConsole("#monitor-console-read", "Not the destination of this payment. (We're "+address+"; they're "+tx.transaction.Destination+")")
+      writeToConsole("#monitor-console-read", "Not the destination of this payment. (We're " +
+                      address + "; they're " + tx.transaction.Destination + ")")
       return
     }
     if (typeof tx.meta.delivered_amount === "string") {
@@ -458,7 +460,7 @@ $("#tx_read").click((event) => {
 
 - [Look Up Transaction Results](look-up-transaction-results.html) to see exactly what a transaction did, and build your software to react appropriately.
 - Try [Sending XRP](send-xrp.html) from your own address.
-- Try monitoring for transactions of advanced types like [Escrows](escrow.html), [Checks](checks.html), or [Payment Channels](payment-channels), and responding to incoming notifications.
+- Try monitoring for transactions of advanced types like [Escrows](escrow.html), [Checks](checks.html), or [Payment Channels](payment-channels.html), and responding to incoming notifications.
 <!--{# TODO: uncomment when it's ready. - To more robustly handle internet instability, [Follow a Transaction Chain](follow-a-transaction-chain.html) to detect if you missed a notification. #}-->
 
 
