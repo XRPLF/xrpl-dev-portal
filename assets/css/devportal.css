@@ -1,12 +1,19 @@
 /* Generic styles and colors not in the bootstrap files --------------------- */
 
-td {
-  border: 1px solid #dbdde2;
+th, td {
   padding: 0.2em;
   vertical-align: text-top;
+  padding: 12px;
 }
 th {
-  padding: 0.2em;
+  border-bottom: 1px solid black;
+}
+tr {
+  border-bottom: 1px solid #ccc;
+}
+
+td:nth-child(1) {
+  font-weight: bold;
 }
 
 /* Reduce external link icon size */
@@ -274,13 +281,14 @@ body {
 
 .content table {
   clear: right;
-  margin-bottom: 1rem;
+  margin-bottom: 48px;
   font-size: 0.95rem;
 }
 
 .content table code {
   word-break: normal;
   white-space: nowrap;
+  font-size: 1rem
 }
 
 .content .children-display li a {
