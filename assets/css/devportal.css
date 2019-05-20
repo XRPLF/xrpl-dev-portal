@@ -467,9 +467,8 @@ pre code {
 }
 .code_sample pre code {
   overflow: auto;
-  max-height: 14em;
-  background-color: #E1E4E8;
-  border: 1px solid #C9CDD1;
+  max-height: 24em;
+  background-color: #f8f6f6;
   border-radius: 4px;
   display: block;
   padding: 0.5em;
@@ -478,7 +477,6 @@ pre code {
   overflow: visible;
   max-height: none;
   position: absolute;
-  min-width: 661px;
 }
 .code_sample .code_toggler {
   position: absolute;
@@ -505,10 +503,13 @@ pre code {
 .multicode li {
   display: block;
   float: left;
-  overflow: hidden;
   list-style-type: none;
-  margin-right: 5px;
-  border-top: 1px solid #DBDDE2;
+  margin-right: 0px;
+  margin-left: 0px;
+  border-style: none solid;
+  border-width: 0.5px;
+  border-color: #eae7e6;
+
 }
 .multicode ul > li:before {
   background: none;
@@ -517,20 +518,31 @@ pre code {
 .multicode a,
 a.current {
   color: black;
-  background: #DFE2E7;
-  border: 1px solid #DBDDE2;
-  padding: 1em 1em 0 1em;
+  padding-right: 32px;
+  padding-left: 32px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   margin: 0px;
   text-decoration: none;
 }
 .multicode a.current {
-  background: #fff;
-  border-bottom: 1px solid #fff;
+  background-color: #f8f6f6;
   color: black;
+}
+.multicode a.current:hover {
+  border-bottom: none;
+  padding-bottom: 10px;
 }
 .multicode a:hover {
   color: black;
-  background: white;
+  border-bottom: 1px solid black;
+  padding-bottom: 7px;
+}
+.multicode li:first-child {
+  border-left: none;
+}
+.multicode li:last-child {
+  border-right: none;
 }
 
 /* Common list modules (children, curated links) ---------------------------- */
