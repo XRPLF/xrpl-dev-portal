@@ -5,12 +5,6 @@ th, td {
   vertical-align: text-top;
   padding: 12px;
 }
-th {
-  border-bottom: 1px solid black;
-}
-tr {
-  border-bottom: 1px solid #ccc;
-}
 
 td:nth-child(1) {
   font-weight: bold;
@@ -269,10 +263,6 @@ body {
   margin: 0;
 }
 
-.content td {
-  line-height: 1.65;
-}
-
 /* "Source" links float right */
 .content a[title="Source"] {
   float: right;
@@ -282,13 +272,11 @@ body {
 .content table {
   clear: right;
   margin-bottom: 48px;
-  font-size: 0.95rem;
 }
 
 .content table code {
   word-break: normal;
   white-space: nowrap;
-  font-size: 1rem
 }
 
 .content .children-display li a {

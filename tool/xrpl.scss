@@ -299,6 +299,16 @@ h3 a:hover,
   color: $black;
 }
 
+/* Tables ------------------------------- */
+
+th {
+  border-bottom: 1px solid $black;
+}
+tr {
+  border-bottom: 1px solid $gray-200;
+}
+
+
 /* Left/right nav color scheme ------------------------------- */
 aside a {
   color: $gray-600;
