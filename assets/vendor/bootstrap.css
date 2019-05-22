@@ -7382,3 +7382,26 @@ aside a.active-parent {
   /* Match search box height */
   font-family: "Space Mono", monospace;
   font-weight: 700; }
+
+/* Code Tabs ---------------------------------------------------------------- */
+.multicode {
+  color: #1B1818; }
+
+.multicode a.current {
+  background-color: #EBE8E7;
+  color: #1B1818; }
+
+.multicode a,
+a.current {
+  color: #1B1818; }
+
+.multicode li {
+  border-color: #D3D0CF; }
+
+.code_sample pre code {
+  background-color: #EBE8E7; }
+
+.multicode a:hover {
+  color: #1B1818;
+  border-bottom: 1px solid #1B1818;
+  padding-bottom: 7px; }

@@ -468,10 +468,9 @@ pre code {
 .code_sample pre code {
   overflow: auto;
   max-height: 24em;
-  background-color: #f8f6f6;
   border-radius: 4px;
   display: block;
-  padding: 0.5em;
+  padding: 24px;
 }
 .code_sample pre code.expanded {
   overflow: visible;
@@ -485,7 +484,6 @@ pre code {
 }
 
 .multicode {
-  color: #000;
   margin: 12px 0px 0px 0px;
   padding: 0 0 0 0;
   z-index: 1;
@@ -508,8 +506,6 @@ pre code {
   margin-left: 0px;
   border-style: none solid;
   border-width: 0.5px;
-  border-color: #eae7e6;
-
 }
 .multicode ul > li:before {
   background: none;
@@ -517,7 +513,6 @@ pre code {
 }
 .multicode a,
 a.current {
-  color: black;
   padding-right: 32px;
   padding-left: 32px;
   padding-bottom: 10px;
@@ -525,18 +520,9 @@ a.current {
   margin: 0px;
   text-decoration: none;
 }
-.multicode a.current {
-  background-color: #f8f6f6;
-  color: black;
-}
 .multicode a.current:hover {
   border-bottom: none;
   padding-bottom: 10px;
-}
-.multicode a:hover {
-  color: black;
-  border-bottom: 1px solid black;
-  padding-bottom: 7px;
 }
 .multicode li:first-child {
   border-left: none;

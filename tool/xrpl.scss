@@ -473,3 +473,33 @@ aside a.active-parent {
   font-family: "Space Mono", monospace;
   font-weight: 700;
 }
+
+/* Code Tabs ---------------------------------------------------------------- */
+
+.multicode {
+  color: $black;
+}
+
+.multicode a.current {
+  background-color: $gray-200;
+  color: $black;
+}
+
+.multicode a,
+a.current {
+  color: $black;
+}
+
+.multicode li {
+  border-color: $gray-300;
+}
+
+.code_sample pre code {
+  background-color: $gray-200;
+}
+
+.multicode a:hover {
+  color: $black;
+  border-bottom: 1px solid $black;
+  padding-bottom: 7px;
+}
