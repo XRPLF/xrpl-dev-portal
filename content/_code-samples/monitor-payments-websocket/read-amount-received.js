@@ -20,7 +20,7 @@ function CountXRPDifference(affected_nodes, address) {
         const old_balance = new Big(ledger_entry.PreviousFields.Balance)
         const new_balance = new Big(ledger_entry.FinalFields.Balance)
         const diff_in_drops = new_balance.minus(old_balance)
-        const xrp_amount = diff_in_drops.div(10e6)
+        const xrp_amount = diff_in_drops.div(1e6)
         if (xrp_amount.gte(0)) {
           console.log("Received " + xrp_amount.toString() + " XRP.")
           return
@@ -35,7 +35,7 @@ function CountXRPDifference(affected_nodes, address) {
       if (ledger_entry.LedgerEntryType === "AccountRoot" &&
           ledger_entry.NewFields.Account === address) {
         const balance_drops = new Big(ledger_entry.NewFields.Balance)
-        const xrp_amount = balance_drops.div(10e6)
+        const xrp_amount = balance_drops.div(1e6)
         console.log("Received " + xrp_amount.toString() + " XRP (account funded).")
         return
       }
@@ -58,7 +58,7 @@ function CountXRPReceived(tx, address) {
     }
     if (typeof tx.meta.delivered_amount === "string") {
       const amount_in_drops = new Big(tx.meta.delivered_amount)
-      const xrp_amount = amount_in_drops.div(10e6)
+      const xrp_amount = amount_in_drops.div(1e6)
       console.log("Received " + xrp_amount.toString() + " XRP.")
       return
     } else {
