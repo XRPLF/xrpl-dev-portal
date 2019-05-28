@@ -1,6 +1,7 @@
-var commandlist = $("#command_list")
+const commandlist = $("#command_list")
 const request_body = $(".request-body.io")
 const response_body = $(".response-body.io")
+const request_button  = $('.request_button')
 
 const GET = "GET"
 const POST = "POST"
@@ -104,9 +105,7 @@ function select_request(request) {
     $(".api-method-description-wrapper .api-readmore").hide()
   }
 
-  $(".selected_command").attr('href', DOC_BASE+command.link).text(command.name)
-
-  change_path(command);
+  $(".selected_command").attr('href', command.link).text(command.name)
 
   if (command.hasOwnProperty("body")) {
       cm_request.setValue(JSON.stringify(command.body, null, 2));
@@ -119,7 +118,20 @@ function select_request(request) {
   reset_response_area();
 };
 
+function reset_response_area() {
+    cm_response.setValue("");
+}
+
+function send_request() {
+  // TODO: send
+}
+
+function connect_to_server(host, port) {
+  // TODO: ws connection stuff
+}
+
 // TODO: more stuff
+
 
 
 $(document).ready(function() {
@@ -135,7 +147,7 @@ $(document).ready(function() {
     }
 
     if (urlParams["base_url"]) {
-        change_base_url(urlParams["base_url"]);
+      //TODO: change_base_url(urlParams["base_url"]);
     }
 
     request_button.click(send_request);
