@@ -1009,7 +1009,7 @@ a.current {
   margin: 5px;
 }
 
-.interactive-block-inner > button {
+.interactive-block-ui > button {
   margin: 10px 0;
 }
 
@@ -1039,6 +1039,11 @@ a.current {
   color: #6B7075;
   padding-right: 5px;
   padding-left: 5px;
+}
+
+.ws-console {
+  height: 200px;
+  overflow: auto;
 }
 
 /* Status labels ("DEV" etc) for non-enabled features ----------------------- */
