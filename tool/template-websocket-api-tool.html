@@ -31,8 +31,8 @@
         </div><!--/.btn-group-->
         <div class="btn-group" role="group">
           <button class="btn btn-outline-secondary connection" data-toggle="modal" data-target="#wstool-1-connection-settings">Online (Main Net)</button>
-          <button class="btn btn-outline-secondary permalink">Permanlink</button>
-          <button class="btn btn-outline-secondary curl">cURL</button>
+          <button class="btn btn-outline-secondary permalink" data-toggle="modal" data-target="#wstool-1-permalink">Permanlink</button>
+          <button class="btn btn-outline-secondary curl" data-toggle="modal" data-target="#wstool-1-curl">cURL</button>
         </div><!--/.btn-group-->
       </div><!--/.request-options.btn-toolbar-->
     </div><!--/.api-input-area-->
@@ -86,6 +86,52 @@
           </div>
 
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div><!--/.modal-footer-->
+      </div><!--/.modal-content-->
+    </div><!--/.modal-dialog-->
+  </div><!--/.modal-->
+
+  <div class="modal fade" id="wstool-1-permalink" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Permalink</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form><div class="form-group">
+            <label for="permalink-box-1">Share the following link to load this page with the currently-loaded inputs:</label>
+            <textarea id="permalink-box-1" class="form-control">http://localhost/ripple-dev-portal/websocket-api-tool.html?q=foo&b=bar&mockup=true</textarea>
+          </div></form>
+
+        </div><!--/.modal-body-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div><!--/.modal-footer-->
+      </div><!--/.modal-content-->
+    </div><!--/.modal-dialog-->
+  </div><!--/.modal-->
+
+  <div class="modal fade" id="wstool-1-curl" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">cURL Syntax</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form><div class="form-group">
+            <label for="curl-box-1">Use the following syntax to make the equivalent JSON-RPC request using <a href="https://curl.haxx.se/">cURL</a> from a commandline interface:</label>
+            <textarea id="curl-box-1" class="form-control" rows="8">curl -x POST -H "Content-Type: application/json" -d '{THIS IS A MOCKUP BUT THE CONTENT GOES HERE}' https://s1.ripple.com/</textarea>
+          </div></form>
+
+        </div><!--/.modal-body-->
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
         </div><!--/.modal-footer-->
