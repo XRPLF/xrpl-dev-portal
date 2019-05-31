@@ -14,6 +14,7 @@
             {% set count = 5 %}
             {% include 'template-page-children.html' %}
           </div><!--/.card-body-->
+          <div class="flag-vertical">0{{ funnels|length + 1 }}</div>
         </div><!--/.card -->
 
         {% set _ = funnels.append(page.funnel) %}
@@ -33,6 +34,7 @@
               </ul>
             </div>
           </div><!--/.card-body-->
+          <div class="flag-vertical">04</div>
         </div><!--/.card -->
   </section>
 

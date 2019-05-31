@@ -7337,6 +7337,10 @@ aside a.active-parent {
 .content a.button:hover {
   border: 1px solid #1B1818; }
 
+.btn-outline-secondary {
+  color: #1B1818;
+  border-color: #D3D0CF; }
+
 #main_content_wrapper .btn-outline-secondary:hover,
 #main_content_wrapper .btn-outline-secondary:active,
 .button:hover, #request_button:hover {

@@ -1114,6 +1114,44 @@ a.current {
 /* Responsive design for different viewscreens ------------------------------ */
 
 @media (max-width: 991px) {
+
+#main_content_wrapper {
+  padding: 0 24px;
+}
+.navbar-brand img {
+  width: 120px;
+}
+.landing section:first-of-type h1:first-child {
+  font-size: 3em;
+  font-weight: 400;
+}
+.section-hero .blurb {
+  font-size: 0.95em;
+}
+
+.sidebar-primary .main {
+  border-left: none;
+  border-right: none;
+}
+
+.right-sidebar .card {
+  padding-left: 0;
+}
+
+#main_content_body {
+  padding: 0;
+  border: none;
+}
+#main_content_body .container-fluid {
+  padding-left: 0;
+}
+
+.xrpl-footer {
+  margin: 0 24px;
+}
+
+
+
   #page-toc-wrapper {
     position: static;
     display: block;

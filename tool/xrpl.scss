@@ -425,6 +425,11 @@ aside a.active-parent {
   border: 1px solid $black;
 }
 
+.btn-outline-secondary {
+  color: $black;
+  border-color: $gray-300;
+}
+
 #main_content_wrapper .btn-outline-secondary:hover,
 #main_content_wrapper .btn-outline-secondary:active,
 .button:hover, #request_button:hover {
