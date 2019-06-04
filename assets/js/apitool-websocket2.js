@@ -1,13 +1,17 @@
 const commandlist = $("#command_list")
-const request_body = $(".request-body.io")
-const response_body = $(".response-body.io")
-const request_button  = $('.request_button')
+const request_body = $(".request-body")
+const response_wrapper = $(".response-body-wrapper")
+const request_button  = $('.send-request')
 const conn_btn = $(".connection")
+const stream_pause = $(".stream-pause")
+const stream_unpause = $(".stream-unpause")
 
 const GET = "GET"
 const POST = "POST"
 const PUT = "PUT"
 const DELETE = "DELETE"
+
+let STREAM_PAUSED = false
 
 function slugify(str) {
   str = str.replace(/^\s+|\s+$/g, '') // trim
@@ -71,14 +75,9 @@ function make_commands_clickable() {
 const cm_request = CodeMirror(request_body.get(0), {
   mode: 'javascript',
   json: true,
-  smartIndent: false
-})
-
-const cm_response = CodeMirror(response_body.get(0), {
-  mode: 'javascript',
-  json: true,
   smartIndent: false,
-  readOnly: true
+  gutters: ["CodeMirror-lint-markers"],
+  lint: CodeMirror.lint.json
 })
 
 function select_request(request) {
@@ -112,19 +111,27 @@ function select_request(request) {
       cm_request.setValue(JSON.stringify(command.body, null, 2));
   } else {
       //No body, so wipe out the current contents.
-      cm_request.setValue("");
+      cm_request.setValue("")
   }
-  cm_request.refresh();
-
-  reset_response_area();
+  cm_request.refresh()
 };
 
-function reset_response_area() {
-    cm_response.setValue("");
-}
-
 function send_request() {
-  // TODO: send
+  if (typeof socket === "undefined" || socket.readyState !== 1) {
+    alert("Can't send request: Must be connected first!")
+    return
+  }
+
+  const req_body = cm_request.getValue()
+  try {
+    JSON.parse(req_body) // we only need the text version, but test JSON syntax
+  } catch(e) {
+    alert("Invalid request JSON")
+    return
+  }
+
+  $(".send-loader").show()
+  socket.send(req_body)
 }
 
 let socket;
@@ -142,33 +149,79 @@ function connect_socket() {
     $(".connect-loader").hide()
   })
   socket.addEventListener('close', (event) => {
-    if (event.wasClean) {
-      console.log("socket clean:", event)
+    const new_conn_url = $("input[name='wstool-1-connection']:checked").val()
+    if (event.wasClean && event.originalTarget.url == new_conn_url) {
+      console.log("socket clean:", event, "vs", new_conn_url)
       conn_btn.text(selected_server_el.data("shortname") + " (Not Connected)")
       conn_btn.removeClass("btn-success")
       conn_btn.removeClass("btn-danger")
       conn_btn.addClass("btn-outline-secondary")
       $(".connect-loader").hide()
+    } else {
+      console.debug("socket close event discarded (new socket status already provided):", event)
     }
   })
   socket.addEventListener('error', (event) => {
-    console.error("socket error:", event)
-    conn_btn.text(selected_server_el.data("shortname") + " (Failed to Connect)")
-    conn_btn.removeClass("btn-outline-secondary")
-    conn_btn.removeClass("btn-success")
-    conn_btn.addClass("btn-danger")
-    $(".connect-loader").hide()
+    const new_conn_url = $("input[name='wstool-1-connection']:checked").val()
+    if (event.originalTarget.url == new_conn_url) {
+      console.error("socket error:", event)
+      conn_btn.text(selected_server_el.data("shortname") + " (Failed to Connect)")
+      conn_btn.removeClass("btn-outline-secondary")
+      conn_btn.removeClass("btn-success")
+      conn_btn.addClass("btn-danger")
+      $(".connect-loader").hide()
+    } else {
+      console.debug("socket error event discarded (new socket status already provided):", event)
+    }
   })
   socket.addEventListener('message', (event) => {
-    // TODO: send to dispatcher?
+    let data;
+    try {
+      data = JSON.parse(event.data)
+    } catch {
+      alert("Couldn't parse response from server.")
+      return
+    }
+
+    if (data.type === "response") {
+      $(".send-loader").hide()
+    }
+    if (data.type === "response" || !STREAM_PAUSED) {
+      const el = $("<div class='response-metadata'><span class='timestamp'>"+(new Date()).toISOString()+"</span><div class='response-json'></div></div>")
+      response_wrapper.prepend(el)
+      const new_cm = CodeMirror($(el).find(".response-json")[0], {
+        value: JSON.stringify(data, null, 2),
+        mode: 'javascript',
+        json: true,
+        smartIndent: false,
+        gutters: ["CodeMirror-lint-markers"], // not used, but provided for consistent sizing
+        readOnly: true
+      })
+      new_cm.setSize(null, "auto")
+    }
+    // If subscription messages are paused, throw out incoming subscription messages
+
+    // Trim response entries to the suggested number
+    let keep_last
+    try {
+      keep_last = parseInt($(".keep-last").val(), 10)
+      if (keep_last < 0) {keep_last = 0}
+    } catch(e) {
+      console.warn("Keep last value invalid:", e)
+      return
+    }
+    while ($(".response-metadata").length > keep_last) {
+      $(".response-metadata").eq(-1).remove()
+    }
   })
 }
 
 handle_select_server = function(event) {
   if (typeof socket !== "undefined") { socket.close(1000) }
   connect_socket()
+  response_wrapper.empty()
 }
-// TODO: more stuff
+
 
 
 
@@ -193,6 +246,16 @@ $(document).ready(function() {
 
     request_button.click(send_request);
     $("input[name='wstool-1-connection']").click(handle_select_server)
+    stream_pause.click((event) => {
+      STREAM_PAUSED = true
+      stream_pause.hide()
+      stream_unpause.show()
+    })
+    stream_unpause.click((event) => {
+      STREAM_PAUSED = false
+      stream_pause.show()
+      stream_unpause.hide()
+    })
 
 });
 

@@ -7226,6 +7226,11 @@ h3 a:hover,
 .header-link:hover {
   color: #1B1818; }
 
+.response-metadata .timestamp {
+  color: #676463;
+  position: relative;
+  top: 16px; }
+
 /* Tables ------------------------------- */
 th {
   border-bottom: 1px solid #1B1818; }

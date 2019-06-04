@@ -17,10 +17,11 @@
       <p class="blurb">Get information about the state of the server, formatted for human consumption.</p>
       <a class="btn btn-outline-secondary api-readmore" href="server_info.html">Read more</a>
     </div><!--/.api-method-description-wrapper-->
-    <div class="api-input-area">
+
+    <div class="api-input-area pt-4">
       <h4>Request</h4>
-      <div class="request-body io"></div>
-      <div class="request-options btn-toolbar" role="toolbar">
+      <div class="request-body"></div>
+      <div class="btn-toolbar justify-content-between" role="toolbar">
         <div class="btn-group mr-3" role="group">
           <button class="btn btn-outline-secondary send-request">Send request</button>
           <div class="input-group loader send-loader" style="display:none;">
@@ -29,22 +30,43 @@
             </span><!--/.input-group-append-->
           </div><!--/.input-group.loader-->
         </div><!--/.btn-group-->
-        <div class="btn-group" role="group">
+        <div class="btn-group request-options" role="group">
           <button class="btn btn-outline-secondary connection" data-toggle="modal" data-target="#wstool-1-connection-settings">Offline (Main Net)</button>
           <div class="input-group loader connect-loader" style="display:none;">
             <span class="input-group-append">
               <img src="assets/img/xrp-loader-96.png" height="24" width="24" />
             </span><!--/.input-group-append-->
           </div><!--/.input-group.loader-->
-          <button class="btn btn-outline-secondary permalink" data-toggle="modal" data-target="#wstool-1-permalink">Permalink</button>
-          <button class="btn btn-outline-secondary curl" data-toggle="modal" data-target="#wstool-1-curl">cURL</button>
-        </div><!--/.btn-group-->
-      </div><!--/.request-options.btn-toolbar-->
+          <button class="btn btn-outline-secondary permalink" data-toggle="modal" data-target="#wstool-1-permalink" title="Permalink"><i class="fa fa-link"></i></button>
+          <button class="btn btn-outline-secondary curl" data-toggle="modal" data-target="#wstool-1-curl" title="cURL syntax"><i class="fa fa-terminal"></i></button>
+        </div><!--/.request-options.btn-group-->
+      </div><!--/.btn-toolbar-->
     </div><!--/.api-input-area-->
 
-    <div class="api-response-area">
+    <div class="api-response-area pt-4">
       <h4>Responses</h4>
-      <div class="response-body io"></div>
+
+      <div class="btn-toolbar justify-content-between response-options" role="toolbar">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" id="wstool-1-keep-last-label">Keep last:</div>
+          </div><!--/.input-group-prepend-->
+          <input type="number" value="50" aria-label="Number of responses to keep at once" aria-describedby="wstool-1-keep-last-label" class="keep-last">
+        </div><!--/.input-group-->
+
+        <div class="btn-group" role="group">
+          <button class="btn btn-outline-secondary stream-pause" title="Pause Subscriptions">
+            <i class="fa fa-pause"></i>
+          </button>
+          <button class="btn btn-outline-secondary stream-unpause" title="Unpause Subscriptions" style="display:none;">
+            <i class="fa fa-play"></i>
+          </button>
+        </div><!--/.btn-group-->
+
+      </div><!--/.btn-toolbar.response-options-->
+
+      <div class="response-body-wrapper">
+      </div>
     </div><!--/.api-response-area-->
 
   </section>
@@ -71,7 +93,7 @@
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s2" value="wss://s2.ripple.com/" data-shortname="Main Net Full History">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s2" value="wss://s2.ripple.com/" data-shortname="Full History">
             <label class="form-check-label" for="wstool-1-connection-s2">
               s2.ripple.com (Full History Public Server)
             </label>
@@ -144,8 +166,9 @@
     </div><!--/.modal-dialog-->
   </div><!--/.modal-->
 
+  <script type="text/javascript" src="assets/vendor/jsonlint.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/vendor/codemirror.css"/>
-  <script type="text/javascript" src="assets/vendor/codemirror-with-js.min.js"></script>
+  <script type="text/javascript" src="assets/vendor/codemirror-js-json-lint.min.js"></script>
   <script type="text/javascript" src="assets/js/apitool-websocket2.js"></script>
   <script type="text/javascript" src="assets/js/apitool-methods-ws.js"></script>
 {% endblock %}

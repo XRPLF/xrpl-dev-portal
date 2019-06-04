@@ -630,8 +630,7 @@ a.current {
   }
 }
 
-
-/* Breacrumbs --------------------------------------------------------------- */
+/* Breadcrumbs -------------------------------------------------------------- */
 
 .breadcrumb-item + .breadcrumb-item:before {
     content: "\f105"; /* fontawesome angle-right */
@@ -991,14 +990,12 @@ a.current {
   text-decoration: none;
 }
 
-.btn-group .btn:hover:after {
-  /* Don't resize buttons in a group this way, because it can cause the group
-  to spill into additional lines or worse */
-  padding-left: 7px;
-}
-
 .btn.fa-search::after,
-.btn.fa-search:hover::after {
+.btn.fa-search:hover::after,
+.request-options .btn::after,
+.request-options .btn:hover::after,
+.response-options .btn::after,
+.response-options .btn:hover::after {
   content: "";
   padding: 0;
 }
