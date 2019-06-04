@@ -802,11 +802,13 @@ a.current {
   margin-left: 0;
 }
 
-.right-sidebar .level-1 a {
+.right-sidebar .level-1 a,
+.right-sidebar .separator {
   font-weight: 700;
   font-family: "Space Mono", monospace;
 }
-.right-sidebar .level-2 {
+.right-sidebar .level-2,
+.right-sidebar .method {
   margin-left: 0;
 }
 
@@ -987,6 +989,12 @@ a.current {
 .content .children-display li a:hover::after {
   padding-left: 14px;
   text-decoration: none;
+}
+
+.btn-group .btn:hover:after {
+  /* Don't resize buttons in a group this way, because it can cause the group
+  to spill into additional lines or worse */
+  padding-left: 7px;
 }
 
 .btn.fa-search::after,

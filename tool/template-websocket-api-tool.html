@@ -23,15 +23,20 @@
       <div class="request-options btn-toolbar" role="toolbar">
         <div class="btn-group mr-3" role="group">
           <button class="btn btn-outline-secondary send-request">Send request</button>
-          <div class="input-group loader" style="display:none;">
+          <div class="input-group loader send-loader" style="display:none;">
             <span class="input-group-append">
               <img src="assets/img/xrp-loader-96.png" height="24" width="24" />
             </span><!--/.input-group-append-->
           </div><!--/.input-group.loader-->
         </div><!--/.btn-group-->
         <div class="btn-group" role="group">
-          <button class="btn btn-outline-secondary connection" data-toggle="modal" data-target="#wstool-1-connection-settings">Online (Main Net)</button>
-          <button class="btn btn-outline-secondary permalink" data-toggle="modal" data-target="#wstool-1-permalink">Permanlink</button>
+          <button class="btn btn-outline-secondary connection" data-toggle="modal" data-target="#wstool-1-connection-settings">Offline (Main Net)</button>
+          <div class="input-group loader connect-loader" style="display:none;">
+            <span class="input-group-append">
+              <img src="assets/img/xrp-loader-96.png" height="24" width="24" />
+            </span><!--/.input-group-append-->
+          </div><!--/.input-group.loader-->
+          <button class="btn btn-outline-secondary permalink" data-toggle="modal" data-target="#wstool-1-permalink">Permalink</button>
           <button class="btn btn-outline-secondary curl" data-toggle="modal" data-target="#wstool-1-curl">cURL</button>
         </div><!--/.btn-group-->
       </div><!--/.request-options.btn-toolbar-->
@@ -60,25 +65,25 @@
         <div class="modal-body">
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="wstool-1-connection-s1" value="wss://s1.ripple.com/" checked>
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s1" value="wss://s1.ripple.com/" data-shortname="Main Net" checked>
             <label class="form-check-label" for="wstool-1-connection-s1">
               s1.ripple.com (Main Net Public Server)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="wstool-1-connection-s2" value="wss://s2.ripple.com/">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s2" value="wss://s2.ripple.com/" data-shortname="Main Net Full History">
             <label class="form-check-label" for="wstool-1-connection-s2">
               s2.ripple.com (Full History Public Server)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="wstool-1-connection-testnet" value="wss://s.altnet.rippletest.net:51233/">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-testnet" value="wss://s.altnet.rippletest.net:51233/" data-shortname="Test Net">
             <label class="form-check-label" for="wstool-1-connection-testnet">
               s.altnet.rippletest.net (Test Net Public Server)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="wstool-1-connection-localhost" value="ws://localhost:6006/">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-localhost" value="ws://localhost:6006/" data-shortname="Local server">
             <label class="form-check-label" for="wstool-1-connection-localhost">
               localhost:6006 (Local <code>rippled</code> Server on port 6006) <br/>
               <small>(Requires that you <a href="install-rippled.html">run <code>rippled</code></a> on this machine with default WebSocket settings)</small>

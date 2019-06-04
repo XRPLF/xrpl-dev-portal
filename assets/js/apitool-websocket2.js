@@ -2,6 +2,7 @@ const commandlist = $("#command_list")
 const request_body = $(".request-body.io")
 const response_body = $(".response-body.io")
 const request_button  = $('.request_button')
+const conn_btn = $(".connection")
 
 const GET = "GET"
 const POST = "POST"
@@ -48,7 +49,7 @@ function generate_table_of_contents() {
     if (req.slug === null) {
         commandlist.append("<li class='separator'>"+req.name+"</li>");
     } else {
-        commandlist.append("<li><a href='#"+req.slug+"'>"+req.name+"</a></li>");
+        commandlist.append("<li class='method'><a href='#"+req.slug+"'>"+req.name+"</a></li>");
     }
   });
 }
@@ -126,10 +127,47 @@ function send_request() {
   // TODO: send
 }
 
-function connect_to_server(host, port) {
-  // TODO: ws connection stuff
+let socket;
+function connect_socket() {
+  $(".connect-loader").show()
+  const selected_server_el = $("input[name='wstool-1-connection']:checked")
+  const conn_url = selected_server_el.val()
+  socket = new WebSocket(conn_url)
+
+  socket.addEventListener('open', (event) => {
+    conn_btn.text(selected_server_el.data("shortname") + " (Connected)")
+    conn_btn.removeClass("btn-outline-secondary")
+    conn_btn.removeClass("btn-danger")
+    conn_btn.addClass("btn-success")
+    $(".connect-loader").hide()
+  })
+  socket.addEventListener('close', (event) => {
+    if (event.wasClean) {
+      console.log("socket clean:", event)
+      conn_btn.text(selected_server_el.data("shortname") + " (Not Connected)")
+      conn_btn.removeClass("btn-success")
+      conn_btn.removeClass("btn-danger")
+      conn_btn.addClass("btn-outline-secondary")
+      $(".connect-loader").hide()
+    }
+  })
+  socket.addEventListener('error', (event) => {
+    console.error("socket error:", event)
+    conn_btn.text(selected_server_el.data("shortname") + " (Failed to Connect)")
+    conn_btn.removeClass("btn-outline-secondary")
+    conn_btn.removeClass("btn-success")
+    conn_btn.addClass("btn-danger")
+    $(".connect-loader").hide()
+  })
+  socket.addEventListener('message', (event) => {
+    // TODO: send to dispatcher?
+  })
 }
 
+handle_select_server = function(event) {
+  if (typeof socket !== "undefined") { socket.close(1000) }
+  connect_socket()
+}
 // TODO: more stuff
 
 
@@ -146,11 +184,15 @@ $(document).ready(function() {
       select_request();
     }
 
-    if (urlParams["base_url"]) {
-      //TODO: change_base_url(urlParams["base_url"]);
-    }
+    // TODO: permalink stuff here?
+    // if (urlParams["base_url"]) {
+    //   //TODO: change_base_url(urlParams["base_url"]);
+    // }
+
+    connect_socket()
 
     request_button.click(send_request);
+    $("input[name='wstool-1-connection']").click(handle_select_server)
 
 });
 

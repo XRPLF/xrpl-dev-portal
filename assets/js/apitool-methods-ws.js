@@ -11,3 +11,14 @@ Request('account_channels', {
       "ledger_index": "validated"
     }
 })
+
+Request('account_currencies', {
+  description: "Retrieves a list of currencies that an account can send or receive, based on its trust lines.",
+  link: "account_currencies.html",
+  body: {
+    "command": "account_currencies",
+    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "strict": true,
+    "ledger_index": "validated"
+  }
+})
