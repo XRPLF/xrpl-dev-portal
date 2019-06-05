@@ -135,7 +135,7 @@
         <div class="modal-body">
           <form><div class="form-group">
             <label for="permalink-box-1">Share the following link to load this page with the currently-loaded inputs:</label>
-            <textarea id="permalink-box-1" class="form-control">http://localhost/ripple-dev-portal/websocket-api-tool.html?q=foo&b=bar&mockup=true</textarea>
+            <textarea id="permalink-box-1" class="form-control">https://xrpl.org/websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A1%2C%22command%22%3A%22server_info%22%7D</textarea>
           </div></form>
 
         </div><!--/.modal-body-->
@@ -158,7 +158,7 @@
         <div class="modal-body">
           <form><div class="form-group">
             <label for="curl-box-1">Use the following syntax to make the equivalent JSON-RPC request using <a href="https://curl.haxx.se/">cURL</a> from a commandline interface:</label>
-            <textarea id="curl-box-1" class="form-control" rows="8">curl -x POST -H "Content-Type: application/json" -d '{THIS IS A MOCKUP BUT THE CONTENT GOES HERE}' https://s1.ripple.com/</textarea>
+            <textarea id="curl-box-1" class="form-control" rows="8">curl -H 'Content-Type: application/json' -d '{"method":"server_info","params":[{}]}' https://s1.ripple.com:51234/</textarea>
           </div></form>
 
         </div><!--/.modal-body-->
