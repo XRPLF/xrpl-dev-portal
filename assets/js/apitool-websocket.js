@@ -82,7 +82,7 @@ function select_request(request) {
   let el
   if (request === undefined) {
     el = commandlist.children("li:not(.separator)").eq(0)
-    const request = slugify(el.text())
+    request = slugify(el.text())
   } else {
     el = commandlist.find("li a[href='#"+request+"']").parent()
   }
@@ -90,6 +90,9 @@ function select_request(request) {
   $(el).addClass('selected');
 
   const command = requests[request];
+  if (command === undefined) {
+    console.log("request:", request, "requests:", requests)
+  }
 
   if (command.description) {
     $(".api-method-description-wrapper .blurb").html(command.description)
