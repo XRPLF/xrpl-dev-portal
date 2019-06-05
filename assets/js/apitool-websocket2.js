@@ -5,11 +5,9 @@ const request_button  = $('.send-request')
 const conn_btn = $(".connection")
 const stream_pause = $(".stream-pause")
 const stream_unpause = $(".stream-unpause")
-
-const GET = "GET"
-const POST = "POST"
-const PUT = "PUT"
-const DELETE = "DELETE"
+const trash_button = $(".wipe-responses")
+const permalink_button = $(".permalink")
+const curl_button = $(".curl")
 
 let STREAM_PAUSED = false
 
@@ -59,17 +57,17 @@ function generate_table_of_contents() {
 }
 
 function make_commands_clickable() {
-    commandlist.children("li").click(function() {
-        var cmd = slugify($(this).text().trim());
+  commandlist.children("li").click(function() {
+    var cmd = slugify($(this).text().trim());
 
-        if (!requests[cmd]) return;
+    if (!requests[cmd]) return;
 
-        select_request(cmd, true);
-        window.location.hash = cmd;
+    select_request(cmd);
+    window.location.hash = cmd;
 
-        $(this).siblings().removeClass('selected');
-        $(this).addClass('selected');
-    });
+    $(this).siblings().removeClass('selected');
+    $(this).addClass('selected');
+  });
 }
 
 const cm_request = CodeMirror(request_body.get(0), {
@@ -81,16 +79,17 @@ const cm_request = CodeMirror(request_body.get(0), {
 })
 
 function select_request(request) {
+  let el
   if (request === undefined) {
-    var el = commandlist.children("li:not(.separator)").eq(0)
-    request = slugify(el.text())
+    el = commandlist.children("li:not(.separator)").eq(0)
+    const request = slugify(el.text())
   } else {
-    var el = commandlist.find("li a[href='#"+request+"']").parent()
+    el = commandlist.find("li a[href='#"+request+"']").parent()
   }
   $(el).siblings().removeClass('selected');
   $(el).addClass('selected');
 
-  command = requests[request];
+  const command = requests[request];
 
   if (command.description) {
     $(".api-method-description-wrapper .blurb").html(command.description)
@@ -117,7 +116,7 @@ function select_request(request) {
 };
 
 function send_request() {
-  if (typeof socket === "undefined" || socket.readyState !== 1) {
+  if (typeof socket === "undefined" || socket.readyState !== WebSocket.OPEN) {
     alert("Can't send request: Must be connected first!")
     return
   }
@@ -136,6 +135,9 @@ function send_request() {
 
 let socket;
 function connect_socket() {
+  if (typeof socket !== "undefined" && socket.readyState < 2) {
+    socket.close()
+  }
   $(".connect-loader").show()
   const selected_server_el = $("input[name='wstool-1-connection']:checked")
   const conn_url = selected_server_el.val()
@@ -149,9 +151,8 @@ function connect_socket() {
     $(".connect-loader").hide()
   })
   socket.addEventListener('close', (event) => {
-    const new_conn_url = $("input[name='wstool-1-connection']:checked").val()
+    const new_conn_url = get_current_server()
     if (event.wasClean && event.originalTarget.url == new_conn_url) {
-      console.log("socket clean:", event, "vs", new_conn_url)
       conn_btn.text(selected_server_el.data("shortname") + " (Not Connected)")
       conn_btn.removeClass("btn-success")
       conn_btn.removeClass("btn-danger")
@@ -162,7 +163,7 @@ function connect_socket() {
     }
   })
   socket.addEventListener('error', (event) => {
-    const new_conn_url = $("input[name='wstool-1-connection']:checked").val()
+    const new_conn_url = get_current_server()
     if (event.originalTarget.url == new_conn_url) {
       console.error("socket error:", event)
       conn_btn.text(selected_server_el.data("shortname") + " (Failed to Connect)")
@@ -216,35 +217,105 @@ function connect_socket() {
   })
 }
 
-handle_select_server = function(event) {
+const handle_select_server = function(event) {
   if (typeof socket !== "undefined") { socket.close(1000) }
   connect_socket()
   response_wrapper.empty()
 }
 
+function get_compressed_body() {
+  let compressed_body;
+  try {
+    const body_json = JSON.parse(cm_request.getValue())
+    compressed_body = JSON.stringify(body_json, null, null)
+  } catch(e) {
+    // Probably invalid JSON. We'll make a permalink anyway, but we can't
+    // compress all the whitespace because we don't know what's escaped. We can
+    // assume that newlines are irrelevant because the rippled APIs don't accept
+    // newlines in strings anywhere
+    compressed_body = cm_request.getValue().replace("\n","").trim()
+  }
 
+  return compressed_body
+}
 
+function get_current_server() {
+  return $("input[name='wstool-1-connection']:checked").val()
+}
+
+const update_permalink = function(event) {
+  const start_href = window.location.origin + window.location.pathname
+  const encoded_body = encodeURIComponent(get_compressed_body())
+  const encoded_server = encodeURIComponent(get_current_server())
+
+  let permalink = start_href + "?server=" + encoded_server + "&req=" + encoded_body
+  // Future Feature: set the hash if the command matches a known method
+  $("#permalink-box-1").text(permalink)
+}
+
+const update_curl = function(event) {
+  let body
+  try {
+    // change WS to JSON-RPC syntax
+    params = JSON.parse(cm_request.getValue())
+    delete params.id
+    const method = params.command
+    delete params.command
+    const body_json = {"method":method, "params":[params]}
+    body = JSON.stringify(body_json, null, null)
+  } catch(e) {
+    alert("Can't provide curl format of invalid JSON syntax")
+    return
+  }
+
+  const server = $("input[name='wstool-1-connection']:checked").data("jsonrpcurl")
+
+  const curl_syntax = "curl -H 'Content-Type: application/json' -d '"+body+"' "+server
+  $("#curl-box-1").text(curl_syntax)
+}
+
+function load_from_permalink(params) {
+  const server = params.get("server")
+  if (server) {
+    const server_checkbox = $("input[value='"+server+"']")
+    if (server_checkbox.length === 1) {
+      server_checkbox.prop("checked", true)
+      // relies on connect_socket() being run shortly thereafter
+    }
+  }
+
+  let req_body = params.get("req")
+  if (req_body) {
+    try {
+      req_body_json = JSON.parse(req_body)
+      req_body = JSON.stringify(req_body_json, null, 2)
+    } catch(e) {
+      console.warn("Loaded request body is invalid JSON:", e)
+    }
+    cm_request.setValue(req_body)
+  }
+}
 
 $(document).ready(function() {
     //wait for the Requests to be populated by another file
-    generate_table_of_contents();
-    make_commands_clickable();
+    generate_table_of_contents()
+    make_commands_clickable()
+
+    const search_params = new URLSearchParams(window.location.search)
 
     if (window.location.hash) {
       var cmd   = window.location.hash.slice(1).toLowerCase();
       select_request(cmd);
+    } else if (search_params.has("server") || search_params.has("req")) {
+      load_from_permalink(search_params)
     } else {
       select_request();
     }
 
-    // TODO: permalink stuff here?
-    // if (urlParams["base_url"]) {
-    //   //TODO: change_base_url(urlParams["base_url"]);
-    // }
-
     connect_socket()
 
-    request_button.click(send_request);
+    request_button.click(send_request)
+
     $("input[name='wstool-1-connection']").click(handle_select_server)
     stream_pause.click((event) => {
       STREAM_PAUSED = true
@@ -257,17 +328,10 @@ $(document).ready(function() {
       stream_unpause.hide()
     })
 
+    trash_button.click((event) => {
+      response_wrapper.empty()
+    })
+    permalink_button.click(update_permalink)
+    curl_button.click(update_curl)
+
 });
-
-var urlParams;
-(window.onpopstate = function () {
-    var match,
-        pl     = /\+/g,  // Regex for replacing addition symbol with a space
-        search = /([^&=]+)=?([^&]*)/g,
-        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-        query  = window.location.search.substring(1);
-
-    urlParams = {};
-    while (match = search.exec(query))
-       urlParams[decode(match[1])] = decode(match[2]);
-})();

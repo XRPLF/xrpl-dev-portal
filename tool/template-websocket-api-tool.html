@@ -61,6 +61,9 @@
           <button class="btn btn-outline-secondary stream-unpause" title="Unpause Subscriptions" style="display:none;">
             <i class="fa fa-play"></i>
           </button>
+          <button class="btn btn-outline-secondary wipe-responses" title="Delete All Responses">
+            <i class="fa fa-trash"></i>
+          </button>
         </div><!--/.btn-group-->
 
       </div><!--/.btn-toolbar.response-options-->
@@ -87,25 +90,25 @@
         <div class="modal-body">
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s1" value="wss://s1.ripple.com/" data-shortname="Main Net" checked>
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s1" value="wss://s1.ripple.com/" data-jsonrpcurl="https://s1.ripple.com:51234/" data-shortname="Main Net" checked>
             <label class="form-check-label" for="wstool-1-connection-s1">
               s1.ripple.com (Main Net Public Server)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s2" value="wss://s2.ripple.com/" data-shortname="Full History">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s2" value="wss://s2.ripple.com/" data-jsonrpcurl="https://s2.ripple.com:51234/" data-shortname="Full History">
             <label class="form-check-label" for="wstool-1-connection-s2">
               s2.ripple.com (Full History Public Server)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-testnet" value="wss://s.altnet.rippletest.net:51233/" data-shortname="Test Net">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-testnet" value="wss://s.altnet.rippletest.net:51233/" data-jsonrpcurl="https://s.altnet.rippletest.net:51234/" data-shortname="Test Net">
             <label class="form-check-label" for="wstool-1-connection-testnet">
               s.altnet.rippletest.net (Test Net Public Server)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-localhost" value="ws://localhost:6006/" data-shortname="Local server">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-localhost" value="ws://localhost:6006/" data-jsonrpcurl="http://localhost:5005/" data-shortname="Local server">
             <label class="form-check-label" for="wstool-1-connection-localhost">
               localhost:6006 (Local <code>rippled</code> Server on port 6006) <br/>
               <small>(Requires that you <a href="install-rippled.html">run <code>rippled</code></a> on this machine with default WebSocket settings)</small>
