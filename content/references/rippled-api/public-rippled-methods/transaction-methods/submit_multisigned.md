@@ -14,7 +14,7 @@ An example of the request format:
 
 ```
 {
-    "id": "submit_multisigned_example"
+    "id": "submit_multisigned_example",
     "command": "submit_multisigned",
     "tx_json": {
         "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
