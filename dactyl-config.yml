@@ -51,6 +51,8 @@ targets:
         github_forkurl: https://github.com/ripple/ripple-dev-portal
         github_branch: master
         recently_updated:
+            - html: rippleapi-reference.html
+              date: 2019-06-06
             - html: look-up-transaction-results.html
               date: 2019-05-02
             - html: tx-sender.html
@@ -2739,7 +2741,7 @@ pages:
     # --------------- end "rippled API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.1.2/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.2.4/docs/index.md
         html: rippleapi-reference.html
         funnel: Docs
         doc_type: References
