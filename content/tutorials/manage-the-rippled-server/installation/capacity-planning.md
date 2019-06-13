@@ -108,7 +108,7 @@ The example `rippled-example.cfg` file sets the logging verbosity to `warning` i
 
 ## Network and Hardware
 
-Each `rippled` server in the XRP Ledger network performs all of the transaction processing work of the network. Therefore, the baseline hardware for production `rippled` servers should be similar to that used in Ripple's [performance testing](https://developers.ripple.com/blog/2017/high-scalability-xrp-ledger.html).
+Each `rippled` server in the XRP Ledger network performs all of the transaction processing work of the network. Therefore, the baseline hardware for production `rippled` servers should be similar to that used in Ripple's [performance testing](https://xrpl.org/blog/2017/high-scalability-xrp-ledger.html).
 
 Ensuring that your `rippled` server meets these network and hardware requirements helps achieve consistent, good performance across the XRP Ledger network.
 

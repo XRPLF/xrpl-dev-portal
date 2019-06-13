@@ -72,7 +72,7 @@ targets:
         github_branch: master
         no_cover: True
         link_re_subs:
-           "([\\w-]+\\.html)": https://developers.ripple.com/\1
+           "([\\w-]+\\.html)": https://xrpl.org/\1
 
 pages:
 
@@ -2972,7 +2972,7 @@ known_broken_links:
     # These PDFs download OK in a browser
     - http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847
     - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF
-    # Dev blog link assumes relationship with developers.ripple.com
+    # Dev blog link assumes relationship with xrpl.org
     - /blog/
 
 # Style Checker Config ------------------------------------------------------ #

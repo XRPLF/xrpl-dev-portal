@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#1db4ff",
-    "background_color": "#1db4ff",
-    "start_url": "http://developers.ripple.com/"
+    "theme_color": "#25A768",
+    "background_color": "#25A768",
+    "start_url": "https://xrpl.org/"
 }
