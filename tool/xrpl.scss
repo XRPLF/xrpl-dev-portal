@@ -299,6 +299,12 @@ h3 a:hover,
   color: $black;
 }
 
+.response-metadata .timestamp {
+  color: $gray-600;
+  position: relative;
+  top: 16px;
+}
+
 /* Tables ------------------------------- */
 
 th {

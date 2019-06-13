@@ -1,739 +1,361 @@
-var urlParams;
-(window.onpopstate = function () {
-    var match,
-        pl     = /\+/g,  // Regex for replacing addition symbol with a space
-        search = /([^&=]+)=?([^&]*)/g,
-        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-        query  = window.location.search.substring(1);
+const commandlist = $("#command_list")
+const request_body = $(".request-body")
+const response_wrapper = $(".response-body-wrapper")
+const request_button  = $('.send-request')
+const conn_btn = $(".connection")
+const stream_pause = $(".stream-pause")
+const stream_unpause = $(".stream-unpause")
+const trash_button = $(".wipe-responses")
+const permalink_button = $(".permalink")
+const curl_button = $(".curl")
 
-    urlParams = {};
-    while (match = search.exec(query))
-       urlParams[decode(match[1])] = decode(match[2]);
-})();
+let STREAM_PAUSED = false
 
-;(function() {
-  var DOC_BASE = '';
+function slugify(str) {
+  str = str.replace(/^\s+|\s+$/g, '') // trim
+  str = str.toLowerCase()
 
-  var request_button  = $('#request_button');
-  var online_state    = $('#online_state');
-  var command_list    = $('#command_list');
-  var commands        = $(command_list).find('li');
-  var command_table   = $('#command_table');
-  var input           = $('#input');
-  var description     = $(input).find('#description');
-  var options         = $(input).find('#options');
-  var output          = $('#output');
-  var response        = $('#response');
-  var request         = $('#request');
-  var status          = $('#status');
-  var info            = $('#info');
-  var spinner = $(".loader");
-
-  var BASE_HOST_DEFAULT = 's2.ripple.com';
-  var BASE_PORT_DEFAULT = 443;
-
-  var remote = new ripple.Remote({
-    trusted:        true,
-    local_signing:  true,
-    local_fee:      false,
-    servers: [
-      {
-        host:    BASE_HOST_DEFAULT,
-        port:    BASE_PORT_DEFAULT,
-        secure:  true
-      }
-    ]
-  });
-
-  function new_remote(options) {
-    remote = new ripple.Remote(options);
+  // remove accents, swap ñ for n, etc
+  const from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;"
+  const to   = "aaaaeeeeiiiioooouuuunc------"
+  for (let i=0, l=from.length ; i<l ; i++) {
+    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
   }
 
-  function set_online_state(state) {
-    var state = state.toLowerCase();
-    $(online_state).removeClass();
-    $(online_state).addClass(state);
-    $(online_state).text(state);
-  };
+  str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+    .replace(/\s+/g, '-') // collapse whitespace and replace by -
+    .replace(/-+/g, '-'); // collapse dashes
 
-  remote.on('disconnect', function() {
-    set_online_state('disconnected');
-  });
+  return str;
+}
 
-  remote.on('connect', function() {
-    var msg = "connected";
-    if (remote._servers.length === 1) {
-        msg = "connected to "+remote._servers[0].getHostID();
-    } else if (remote._servers.length > 1) {
-        msg = "connected to "+remote._servers.length+" servers";
-    }
-    set_online_state(msg);
-  });
-
-  /* ---- ---- ---- ---- ---- */
-
-  //For tracking request IDs
-  function id() { return id._c; };
-
-  id._c = 2;
-
-  id.reset = function() {
-    id._c = remote._get_server()._id;
-  };
-
-  /* ---- ---- ---- ---- ---- */
-
-  //Build requests
-  var selected_request = { };
-  var requests = { };
-
-  $(commands).each(function(i, el) {
-    requests[$(el).text()] = 0;
-  });
-
-  function Request(cmd, attrs) {
-    var obj = {
-      id:       void(0),
-      name:     cmd,
-      message:  { command:  cmd }
+//Build requests
+const requests = { };
+const requestlist = [];
+function Request(name, obj) {
+    if (obj === undefined) {
+        requestlist.push({slug: null,name: name});//separator
+        return null;
     }
 
-    Object.keys(attrs || { }).forEach(function(k) {
-      if (k[0] === '_') {
-        obj[k] = attrs[k];
-      } else {
-        obj.message[k] = attrs[k];
-      }
-    });
-
-    requests[cmd] = obj;
+    obj.name = name;
+    obj.slug = slugify(name);
+    requests[obj.slug] = obj;
+    requestlist.push(obj);
 
     return obj;
-  };
+};
 
-  var sample_address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
-  var sample_address_2 = 'ra5nK24KXen9AHvsdFTKHSANinZseWnPcX';
-  var sample_tx = 'E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7';
-
-  /* ---- ---- */
-
-  Request('server_info', {
-    _description: 'Get information about the state of the server for human consumption. Results are subject to change without notice.',
-    _link: DOC_BASE + 'server_info.html'
-  });
-
-  Request('server_state', {
-    _description: 'Get information about the state of the server for machine consumption.',
-    _link: DOC_BASE + 'server_state.html'
-  });
-
-  Request('ping', {
-    _description: 'Check connectivity to the server.',
-    _link: DOC_BASE + 'ping.html'
-  });
-
-  /* ---- ---- */
-
-  Request('subscribe', {
-    accounts: [ ],
-    streams: [ 'server', 'ledger' ],
-    _description: 'Start receiving selected streams from the server.',
-    _link: DOC_BASE + 'subscribe.html',
-    _stream: true
-  });
-
-  Request('unsubscribe', {
-    accounts: [ ],
-    streams: [ 'server', 'ledger' ],
-    _description: 'Stop receiving selected streams from the server.',
-    _link: DOC_BASE + 'unsubscribe.html',
-    _stream: true
-  });
-
-  /* ---- ---- */
-
-  Request('ledger', {
-    ledger_index:  void(0),
-    ledger_hash:   void(0),
-    full:          false,
-    expand:        false,
-    transactions:  true,
-    accounts:      true,
-    _description: 'Returns ledger information.',
-    _link: DOC_BASE + 'ledger.html'
-  });
-
-  Request('ledger_entry', {
-    type:          'account_root',
-    account_root:  sample_address,
-    ledger_index:   'validated',
-    ledger_hash:  void(0),
-    _description: 'Get a single node from the ledger',
-    _link: DOC_BASE + 'ledger_entry.html'
-  });
-
-  Request('ledger_closed', {
-    _description: 'Get the most recent closed ledger index.',
-    _link: DOC_BASE + 'ledger_closed.html'
-  });
-
-  Request('ledger_current', {
-    _description: 'Get the current in-progress ledger index.',
-    _link: DOC_BASE + 'ledger_current.html'
-  });
-
-  /* ---- ---- */
-
-  Request('account_info', {
-    account: sample_address,
-    _description: 'Get information about the specified account.',
-    _link: DOC_BASE + 'account_info.html'
-  });
-
-  Request('account_lines', {
-    account:        sample_address,
-    account_index:  void(0),
-    ledger:         'current',
-    _description: "Get a list of trust lines connected to an account.",
-    _link: DOC_BASE + 'account_lines.html'
-  });
-
-  Request('account_offers', {
-    account:        sample_address,
-    account_index:  void(0),
-    ledger:         'current',
-    _description: 'Get a list of offers created by an account.',
-    _link: DOC_BASE + 'account_offers.html'
-  });
-
-  Request('account_tx', {
-    account:           sample_address,
-    ledger_index_min:  -1,
-    ledger_index_max:  -1,
-    binary:            false,
-    count:             false,
-    limit:             10,
-    forward:           false,
-    marker:            void(0),
-    _description: 'Get a list of transactions that applied to a specified account.',
-    _link: DOC_BASE + 'account_tx.html'
-  });
-
-  Request('account_currencies', {
-    account:           sample_address,
-    strict:            true,
-    ledger_index:      "validated",
-    account_index:     0,
-    _description: 'Returns a list of currencies the account can send or receive.',
-    _link: DOC_BASE + 'account_currencies.html'
-  });
-
-  Request('gateway_balances', {
-    account:           sample_address,
-    strict:            true,
-    hotwallet:         [],
-    ledger_index:      "validated",
-    account_index:     0,
-    _description: 'Returns a list of currencies the account can send or receive.',
-    _link: DOC_BASE + 'gateway_balances.html'
-  });
-
-  /* ---- ---- */
-
-  Request('transaction_entry', {
-    tx_hash:       sample_tx,
-    ledger_index:  348734,
-    ledger_hash:   void(0),
-    _description: 'Get information about a specified transaction.',
-    _link: DOC_BASE + 'transaction_entry.html'
-  });
-
-  Request('tx', {
-    transaction: sample_tx,
-    _description: 'Returns information about a specified transaction.',
-    _link: DOC_BASE + 'tx.html'
-  });
-
-  Request('tx_history', {
-    start: 10,
-    _description: 'Returns the last N transactions starting from start index, in descending order, by ledger sequence number. Server sets N.',
-    _link: DOC_BASE + 'tx_history.html'
-  });
-
-  Request('book_offers', {
-    ledger_hash: void(0),
-    ledger_index: void(0),
-    taker: sample_address,
-    taker_gets: {
-      currency: 'XRP'
-    },
-    taker_pays: {
-      currency: 'USD',
-      issuer: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
-    },
-    limit: 10,
-    _description: 'Returns a snapshot of the offers for an order book.',
-    _link: DOC_BASE + 'book_offers.html'
-  });
-
-  Request('path_find', {
-    subcommand: 'create',
-    source_account: sample_address,
-    destination_account: sample_address_2,
-    destination_amount: {
-        "currency": "USD",
-        "value": "0.01",
-        "issuer": sample_address_2
-    },
-    _description: 'Start or stop searching for payment paths between specified accounts.',
-    _link: DOC_BASE + 'path_find.html',
-    _stream: true
-  });
-
-  Request('ripple_path_find', {
-    ledger_hash : void(0),
-    ledger_index : void(0),
-    source_account : sample_address,
-    source_currencies : [ { currency : 'USD' } ],
-    destination_account : sample_address_2,
-    destination_amount : {
-        "currency": "USD",
-        "value": "0.01",
-        "issuer": sample_address_2
-    },
-    _description: 'Find a path between specified accounts once. For repeated usage, call <strong>path_find</strong> instead.',
-    _link: DOC_BASE + 'ripple_path_find.html'
-  });
-
-  Request('submit', {
-    secret: 'sn3nxiW7v8KXzPzAqzyHXbSSKNuN9',
-    tx_json: {
-      Flags: 0,
-      TransactionType: 'AccountSet',
-      Account: 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn',
-      Sequence: void(0),
-      Fee: '10000',
-      Flags: 0
-    },
-    _description: 'Submits a transaction to the network.',
-    _link: DOC_BASE + 'submit.html',
-    _takes_secret: true
-  });
-
-  Request('sign', {
-  tx_json : {
-      "TransactionType" : "Payment",
-      "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "Amount" : {
-         "currency" : "USD",
-         "value" : "1",
-         "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-      }
-   },
-   secret : "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-   offline: false,
-   fee_mult_max: 1000,
-   _description: 'Sends a transaction to be signed by the server.',
-   _link: DOC_BASE + 'sign.html',
-    _takes_secret: true
-});
-
-  /* ---- ---- ---- ---- ---- */
-
-  function rewrite_obj(obj) {
-    if (typeof obj === 'string') {
-      var obj = JSON.parse(obj);
-    }
-
-    var rewrite = { };
-    if (obj.id) rewrite.id = obj.id;
-    if (obj.command) rewrite.command = obj.command;
-    if (obj.status) rewrite.status = obj.status;
-    if (obj.type) rewrite.type = obj.type;
-
-    Object.keys(obj).forEach(function(k) {
-      if (!rewrite.hasOwnProperty(k)) {
-        rewrite[k] = obj[k];
-      }
-    });
-
-    return rewrite;
-  };
-
-  var cm_request = CodeMirror(request.get(0), {
-    mode: 'javascript',
-    json: true,
-    smartIndent: false
-  });
-
-  var cm_response = CodeMirror(response.get(0), {
-    mode: 'javascript',
-    json: true,
-    smartIndent: false,
-    readOnly: true
-  });
-
-  function set_input(command) {
-    var message = command.message;
-
-    if (command._description) {
-      //$(description).html(command._description).show();
-      $(description).html(command._description);
-      $(description).append(" <a class='button btn btn-outline-secondary' href='"+command._link+"'>Read more</a>");
+function generate_table_of_contents() {
+  $.each(requestlist, function(i, req) {
+    if (req.slug === null) {
+        commandlist.append("<li class='separator'>"+req.name+"</li>");
     } else {
-      $(description).hide();
+        commandlist.append("<li class='method'><a href='#"+req.slug+"'>"+req.name+"</a></li>");
     }
+  });
+}
 
-    $('#selected_command').html($('<a>')
-                                .attr('href', command._link)
-                                .text(command.name));
-
-    cm_request.setValue(JSON.stringify(message, null, 2));
-  };
-
-  var STREAM_PAUSED = false;
-  var STREAM_SHOWN  = false;
-  var WAITING       = false;
-  var events = [ ];
-
-  function set_output(message) {
-    var parsed = rewrite_obj(message);
-    var is_response = (parsed.type === 'response');
-
-    if (is_response && parsed.id === id._c) {
-      if (!WAITING) return;
-      else WAITING = false;
-      spinner.hide();
-
-      var request_header = '<span class="request_name">'
-      + selected_request.name;
-      + '</span>';
-
-      var timestamp = '<span class="timestamp">'
-      + (Date.now() - selected_request.t) + 'ms'
-      + '</span>';
-
-      $(request_button).removeClass('depressed');
-
-      $(info).html(request_header + timestamp);
-
-      $(response).removeClass()
-      $(response).addClass(parsed.error ? 'error' : 'success');
-
-      cm_response.setValue(JSON.stringify(parsed, null, 2));
-
-      ++id._c;
-    } else if (!is_response && !STREAM_PAUSED) {
-      var el = $('<div class="status">').get(0);
-
-      $(status).prepend(el);
-
-      CodeMirror(el, {
-        value:        JSON.stringify(parsed, null, 2),
-        mode:         'javascript',
-        json:         true,
-        smartIndent:  false,
-        readOnly:     true
-      });
-
-      events.unshift(parsed);
-    }
-  };
-
-  function select_request(request) {
-    selected_request = requests[request];
-    selected_request.message.id = id();
-    selected_request.message = rewrite_obj(selected_request.message);
-    set_input(selected_request);
-
-    //Remove sign button & sequence number lookup
-
-//    if (selected_request.name !== 'submit') {
-//      $('#sign_button').hide();
-//      return;
-//    }
-
-    if (selected_request._takes_secret === true) {
-        $("#test_warning").show();
-    } else {
-        $("#test_warning").hide();
-    }
-
-    if (selected_request._stream === true) {
-        $("#stream_output").show();
-    } else {
-        $("#stream_output").hide();
-    }
-
-    if (!remote._connected) {
-      remote.once('connected', function() {
-        select_request(request);
-      });
-      return;
-    }
-
-//    $('#sign_button').show();
-
-//    var tx_json = selected_request.message.tx_json;
-
-//    if (ripple.UInt160.is_valid(tx_json.Account)) {
-//      selected_request.message.id = id._c;
-//      remote.request_account_info(tx_json.Account, function(err, info) {
-//        id.reset();
-//        tx_json.Sequence = info.account_data.Sequence;
-//        set_input(selected_request);
-//      });
-//    }
-  };
-
-  /* ---- ---- ---- ---- ---- */
-
-  $(commands).click(function() {
-    var cmd = $(this).text().trim();
+function make_commands_clickable() {
+  commandlist.children("li").click(function() {
+    var cmd = slugify($(this).text().trim());
 
     if (!requests[cmd]) return;
 
-    select_request(cmd, true);
+    select_request(cmd);
     window.location.hash = cmd;
 
     $(this).siblings().removeClass('selected');
     $(this).addClass('selected');
   });
+}
 
-  var previous_key = void(0);
+const cm_request = CodeMirror(request_body.get(0), {
+  mode: 'javascript',
+  json: true,
+  smartIndent: false,
+  gutters: ["CodeMirror-lint-markers"],
+  lint: CodeMirror.lint.json
+})
 
-  $(window).keydown(function(e) {
-    if (e.which === 13 && previous_key === 17) {
-      //ctrl + enter
-      e.preventDefault();
-      e.stopPropagation();
-      $(request_button).click();
-    }
-    previous_key = e.which;
-  });
+function select_request(request) {
+  let el
+  if (request === undefined) {
+    el = commandlist.children("li:not(.separator)").eq(0)
+    request = slugify(el.text())
+  } else {
+    el = commandlist.find("li a[href='#"+request+"']").parent()
+  }
+  $(el).siblings().removeClass('selected');
+  $(el).addClass('selected');
 
-  /* ---- ---- ---- ---- ---- */
+  const command = requests[request];
+  if (command === undefined) {
+    console.log("request:", request, "requests:", requests)
+  }
 
-  function prepare_request(request) {
+  if (command.description) {
+    $(".api-method-description-wrapper .blurb").html(command.description)
+    $(".api-method-description-wrapper .blurb").show()
+  } else {
+    $(".api-method-description-wrapper .blurb").hide()
+  }
+  if (command.link) {
+    $(".api-method-description-wrapper .api-readmore").attr("href", command.link)
+    $(".api-method-description-wrapper .api-readmore").show()
+  } else {
+    $(".api-method-description-wrapper .api-readmore").hide()
+  }
+  if (command.ws_only) {
+    $(".curl").hide()
+  } else {
+    $(".curl").show()
+  }
 
-    var isArray = Array.isArray(request);
-    var result  = isArray ? [ ] : { };
+  $(".selected_command").attr('href', command.link).text(command.name)
 
-    Object.keys(request).forEach(function(k) {
-      var v = request[k];
-      switch (typeof v) {
-        case 'undefined': break;
-        case 'object':
-          result[k] = prepare_request(v);
-          break;
-        default:
-          result[k] = v;
-          break
-      }
-    });
+  if (command.hasOwnProperty("body")) {
+      cm_request.setValue(JSON.stringify(command.body, null, 2));
+  } else {
+      //No body, so wipe out the current contents.
+      cm_request.setValue("")
+  }
+  cm_request.refresh()
+};
 
-    if (isArray) {
-      result = result.filter(function(el) {
-        return el !== null && typeof el !== 'undefined'
-      });
-    }
+function send_request() {
+  if (typeof socket === "undefined" || socket.readyState !== WebSocket.OPEN) {
+    alert("Can't send request: Must be connected first!")
+    return
+  }
 
-    var empty = isArray && result.length === 0;
+  const req_body = cm_request.getValue()
+  try {
+    JSON.parse(req_body) // we only need the text version, but test JSON syntax
+  } catch(e) {
+    alert("Invalid request JSON")
+    return
+  }
 
-    return empty ? void(0) : result;
-  };
+  $(".send-loader").show()
+  socket.send(req_body)
+}
 
-  $('#stream_show').click(function() {
-    if ($(status).is(':visible')) {
-      $(status).hide();
-      $(status).empty();
-      $(this).text('show');
-      STREAM_SHOWN = false;
+let socket;
+function connect_socket() {
+  if (typeof socket !== "undefined" && socket.readyState < 2) {
+    socket.close()
+  }
+  $(".connect-loader").show()
+  const selected_server_el = $("input[name='wstool-1-connection']:checked")
+  const conn_url = selected_server_el.val()
+  socket = new WebSocket(conn_url)
+
+  socket.addEventListener('open', (event) => {
+    conn_btn.text(selected_server_el.data("shortname") + " (Connected)")
+    conn_btn.removeClass("btn-outline-secondary")
+    conn_btn.removeClass("btn-danger")
+    conn_btn.addClass("btn-success")
+    $(".connect-loader").hide()
+  })
+  socket.addEventListener('close', (event) => {
+    const new_conn_url = get_current_server()
+    if (event.wasClean && event.originalTarget.url == new_conn_url) {
+      conn_btn.text(selected_server_el.data("shortname") + " (Not Connected)")
+      conn_btn.removeClass("btn-success")
+      conn_btn.removeClass("btn-danger")
+      conn_btn.addClass("btn-outline-secondary")
+      $(".connect-loader").hide()
     } else {
-      $(this).text('hide');
-      $(status).show();
-      STREAM_SHOWN = true;
-
-      events.forEach(function(event) {
-        var el = $('<div class="json status">')[0];
-        $(status).append(el);
-        CodeMirror(el, {
-          value: JSON.stringify(event, null, 2),
-          mode: 'javascript',
-          json: true
-        });
-      });
+      console.debug("socket close event discarded (new socket status already provided):", event)
     }
-  });
-
-  $('#stream_pause').click(function() {
-    if ($(this).hasClass('paused')) {
-      $(this).removeClass('paused');
-      $(this).text('pause');
-      $(status).removeClass('obscured');
-      STREAM_PAUSED = false;
+  })
+  socket.addEventListener('error', (event) => {
+    const new_conn_url = get_current_server()
+    if (event.originalTarget.url == new_conn_url) {
+      console.error("socket error:", event)
+      conn_btn.text(selected_server_el.data("shortname") + " (Failed to Connect)")
+      conn_btn.removeClass("btn-outline-secondary")
+      conn_btn.removeClass("btn-success")
+      conn_btn.addClass("btn-danger")
+      $(".connect-loader").hide()
     } else {
-      $(this).addClass('paused');
-      $(this).text('unpause');
-      $(status).addClass('obscured');
-      STREAM_PAUSED = true;
-    };
-  });
-
-//stop opening all links in new tabs
-//  $(document.body).delegate('a', 'click', function(e) {
-//    e.preventDefault();
-//    e.stopPropagation();
-//    window.open($(this).attr('href'));
-//  });
-
-  var tooltip = $('#tooltip');
-  var mousedown = false;
-
-  $(window).mousedown(function() { mousedown = true; });
-  $(window).mouseup(function() { mousedown = false; });
-
-//get rid of sign button
-//  $('#sign_button').click(function() {
-//    if (selected_request._signed) return;
-//
-//    var self = this;
-//    var message = cm_request.getValue();
-//
-//    try {
-//      message = JSON.parse(message);
-//    } catch(e) {
-//      alert('Invalid JSON');
-//      return;
-//    }
-//
-//    var tx_json = message.tx_json;
-//
-//    if (!ripple.UInt160.is_valid(tx_json.Account)) {
-//      alert('Account is invalid');
-//      return;
-//    }
-//
-//    if (!message.secret) {
-//      alert('Transacting account must have specified secret');
-//      return;
-//    }
-//
-//    $(this).addClass('depressed');
-//
-//    remote.account(tx_json.Account).get_next_sequence(function(e, s) {
-//      id.reset();
-//      tx_json.Sequence = s;
-//
-//      try {
-//        var tx = remote.transaction();
-//        tx.tx_json = tx_json;
-//        tx._secret = message.secret;
-//        tx.complete();
-//        tx.sign();
-//      } catch(e) {
-//        alert('Unable to sign transaction ' + e.message);
-//        $(self).removeClass('depressed');
-//        return;
-//      }
-//
-//      message.tx_blob = tx.serialize().to_hex();
-//
-//      delete message.secret;
-//      delete message.tx_json;
-//
-//      selected_request.message = message;
-//      selected_request._signed = true;
-//
-//      set_input(selected_request);
-//
-//      $(self).removeClass('depressed');
-//    });
-//  });
-
-  function send_request() {
-    var request = remote.request_server_info();
-    var value   = cm_request.getValue();
-
+      console.debug("socket error event discarded (new socket status already provided):", event)
+    }
+  })
+  socket.addEventListener('message', (event) => {
+    let data;
     try {
-      var message = JSON.parse(value);
+      data = JSON.parse(event.data)
+    } catch {
+      alert("Couldn't parse response from server.")
+      return
+    }
+
+    if (data.type === "response") {
+      $(".send-loader").hide()
+    }
+    if (data.type === "response" || !STREAM_PAUSED) {
+      const el = $("<div class='response-metadata'><span class='timestamp'>"+(new Date()).toISOString()+"</span><div class='response-json'></div></div>")
+      response_wrapper.prepend(el)
+      const new_cm = CodeMirror($(el).find(".response-json")[0], {
+        value: JSON.stringify(data, null, 2),
+        mode: 'javascript',
+        json: true,
+        smartIndent: false,
+        gutters: ["CodeMirror-lint-markers"], // not used, but provided for consistent sizing
+        readOnly: true
+      })
+      new_cm.setSize(null, "auto")
+    }
+    // If subscription messages are paused, throw out incoming subscription messages
+
+    // Trim response entries to the suggested number
+    let keep_last
+    try {
+      keep_last = parseInt($(".keep-last").val(), 10)
+      if (keep_last < 0) {keep_last = 0}
     } catch(e) {
-      alert('Invalid request JSON');
-      return;
+      console.warn("Keep last value invalid:", e)
+      return
+    }
+    while ($(".response-metadata").length > keep_last) {
+      $(".response-metadata").eq(-1).remove()
+    }
+  })
+}
+
+const handle_select_server = function(event) {
+  if (typeof socket !== "undefined") { socket.close(1000) }
+  connect_socket()
+  response_wrapper.empty()
+}
+
+function get_compressed_body() {
+  let compressed_body;
+  try {
+    const body_json = JSON.parse(cm_request.getValue())
+    compressed_body = JSON.stringify(body_json, null, null)
+  } catch(e) {
+    // Probably invalid JSON. We'll make a permalink anyway, but we can't
+    // compress all the whitespace because we don't know what's escaped. We can
+    // assume that newlines are irrelevant because the rippled APIs don't accept
+    // newlines in strings anywhere
+    compressed_body = cm_request.getValue().replace("\n","").trim()
+  }
+
+  return compressed_body
+}
+
+function get_current_server() {
+  return $("input[name='wstool-1-connection']:checked").val()
+}
+
+const update_permalink = function(event) {
+  const start_href = window.location.origin + window.location.pathname
+  const encoded_body = encodeURIComponent(get_compressed_body())
+  const encoded_server = encodeURIComponent(get_current_server())
+
+  let permalink = start_href + "?server=" + encoded_server + "&req=" + encoded_body
+  // Future Feature: set the hash if the command matches a known method
+  $("#permalink-box-1").text(permalink)
+}
+
+const update_curl = function(event) {
+  let body
+  try {
+    // change WS to JSON-RPC syntax
+    params = JSON.parse(cm_request.getValue())
+    delete params.id
+    const method = params.command
+    delete params.command
+    const body_json = {"method":method, "params":[params]}
+    body = JSON.stringify(body_json, null, null)
+  } catch(e) {
+    alert("Can't provide curl format of invalid JSON syntax")
+    return
+  }
+
+  const server = $("input[name='wstool-1-connection']:checked").data("jsonrpcurl")
+
+  const curl_syntax = "curl -H 'Content-Type: application/json' -d '"+body+"' "+server
+  $("#curl-box-1").text(curl_syntax)
+}
+
+function load_from_permalink(params) {
+  const server = params.get("server")
+  if (server) {
+    const server_checkbox = $("input[value='"+server+"']")
+    if (server_checkbox.length === 1) {
+      server_checkbox.prop("checked", true)
+      // relies on connect_socket() being run shortly thereafter
+    }
+  }
+
+  let req_body = params.get("req")
+  let cmd_name = ""
+  if (req_body) {
+    try {
+      req_body_json = JSON.parse(req_body)
+      req_body = JSON.stringify(req_body_json, null, 2)
+      cmd_name = req_body_json.command
+    } catch(e) {
+      console.warn("Loaded request body is invalid JSON:", e)
     }
 
-    $(this).addClass('depressed');
-    $(response).addClass('obscured');
-
-    WAITING                  = true;
-    selected_request.message = message;
-    selected_request.t       = Date.now();
-    spinner.show();
-
-    request.message = prepare_request(message);
-    request.request();
-  };
-
-  function init() {
-    id._c = remote._get_server()._id;
-    remote._get_server().on('message', set_output);
-    $(request_button).click(send_request);
-  };
-
-  $(function() {
-    set_online_state('connecting');
-
-    if (urlParams["base_url"]) {
-        base_url = urlParams["base_url"].split(":");
-        if (base_url.length == 2) {
-            base_host = base_url[0];
-            base_port = base_url[1];
-        } else {
-            base_host = base_url[0];
-            base_port = BASE_PORT_DEFAULT;
-        }
-
-        if (urlParams["use_wss"]
-            && urlParams["use_wss"].toLowerCase() === "false") {
-            use_wss = false;
-        } else {
-            use_wss = true;
-        }
-
-        new_remote({
-            trusted:        true,
-            local_signing:  true,
-            local_fee:      false,
-            servers: [
-              {
-                host:    base_host,
-                port:    base_port,
-                secure:  use_wss
-              }
-            ]
-        });
+    $(".selected_command").text(cmd_name)
+    if (requests.hasOwnProperty(slugify(cmd_name))) {
+      const req = requests[slugify(cmd_name)]
+      $(".selected_command").attr('href', req.link)
+      $(".api-method-description-wrapper .blurb").html(req.description)
+      $(".api-method-description-wrapper .api-readmore").attr("href", req.link)
+      $(".api-method-description-wrapper .api-readmore").show()
+    } else {
+      console.debug("Unknown command:", cmd_name)
+      $(".selected_command").attr('href', "")
+      $(".api-method-description-wrapper .blurb").empty()
+      $(".api-method-description-wrapper .api-readmore").hide()
     }
+    cm_request.setValue(req_body)
+  }
+}
 
-    remote.connect(init);
+$(document).ready(function() {
+    //wait for the Requests to be populated by another file
+    generate_table_of_contents()
+    make_commands_clickable()
+
+    const search_params = new URLSearchParams(window.location.search)
 
     if (window.location.hash) {
       var cmd   = window.location.hash.slice(1).toLowerCase();
-      var keys  = Object.keys(requests);
-      var index = keys.indexOf(cmd);
-
-      if (index === -1) return;
-
-      var el = $(commands).eq(index);
-
       select_request(cmd);
-      window.cmd = cmd;
-
-      $(el).siblings().removeClass('selected');
-      $(el).addClass('selected');
+    } else if (search_params.has("server") || search_params.has("req")) {
+      load_from_permalink(search_params)
     } else {
-      select_request('server_info');
+      select_request();
     }
-  });
 
-})();
+    connect_socket()
+
+    request_button.click(send_request)
+
+    $("input[name='wstool-1-connection']").click(handle_select_server)
+    stream_pause.click((event) => {
+      STREAM_PAUSED = true
+      stream_pause.hide()
+      stream_unpause.show()
+    })
+    stream_unpause.click((event) => {
+      STREAM_PAUSED = false
+      stream_pause.show()
+      stream_unpause.hide()
+    })
+
+    trash_button.click((event) => {
+      response_wrapper.empty()
+    })
+    permalink_button.click(update_permalink)
+    curl_button.click(update_curl)
+
+});

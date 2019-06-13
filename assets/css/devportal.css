@@ -630,8 +630,7 @@ a.current {
   }
 }
 
-
-/* Breacrumbs --------------------------------------------------------------- */
+/* Breadcrumbs -------------------------------------------------------------- */
 
 .breadcrumb-item + .breadcrumb-item:before {
     content: "\f105"; /* fontawesome angle-right */
@@ -802,11 +801,13 @@ a.current {
   margin-left: 0;
 }
 
-.right-sidebar .level-1 a {
+.right-sidebar .level-1 a,
+.right-sidebar .separator {
   font-weight: 700;
   font-family: "Space Mono", monospace;
 }
-.right-sidebar .level-2 {
+.right-sidebar .level-2,
+.right-sidebar .method {
   margin-left: 0;
 }
 
@@ -990,7 +991,11 @@ a.current {
 }
 
 .btn.fa-search::after,
-.btn.fa-search:hover::after {
+.btn.fa-search:hover::after,
+.request-options .btn::after,
+.request-options .btn:hover::after,
+.response-options .btn::after,
+.response-options .btn:hover::after {
   content: "";
   padding: 0;
 }
