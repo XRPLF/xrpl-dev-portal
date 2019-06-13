@@ -106,6 +106,11 @@ function select_request(request) {
   } else {
     $(".api-method-description-wrapper .api-readmore").hide()
   }
+  if (command.ws_only) {
+    $(".curl").hide()
+  } else {
+    $(".curl").show()
+  }
 
   $(".selected_command").attr('href', command.link).text(command.name)
 
@@ -288,12 +293,28 @@ function load_from_permalink(params) {
   }
 
   let req_body = params.get("req")
+  let cmd_name = ""
   if (req_body) {
     try {
       req_body_json = JSON.parse(req_body)
       req_body = JSON.stringify(req_body_json, null, 2)
+      cmd_name = req_body_json.command
     } catch(e) {
       console.warn("Loaded request body is invalid JSON:", e)
+    }
+
+    $(".selected_command").text(cmd_name)
+    if (requests.hasOwnProperty(slugify(cmd_name))) {
+      const req = requests[slugify(cmd_name)]
+      $(".selected_command").attr('href', req.link)
+      $(".api-method-description-wrapper .blurb").html(req.description)
+      $(".api-method-description-wrapper .api-readmore").attr("href", req.link)
+      $(".api-method-description-wrapper .api-readmore").show()
+    } else {
+      console.debug("Unknown command:", cmd_name)
+      $(".selected_command").attr('href', "")
+      $(".api-method-description-wrapper .blurb").empty()
+      $(".api-method-description-wrapper .api-readmore").hide()
     }
     cm_request.setValue(req_body)
   }

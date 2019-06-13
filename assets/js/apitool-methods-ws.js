@@ -162,8 +162,8 @@ Request('ledger_entry', {
 
 Request("Transaction Methods")
 
-// TODO: maybe special case sign/sign_for so you can use those if you're
-// connected to a local server?
+// Future feature: special case sign/sign_for so you can use those if you're
+// connected to a local server (with big warning)
 
 Request('submit', {
   description: "Submits a transaction to the network to be confirmed and included in future ledgers.",
@@ -278,6 +278,7 @@ Request('deposit_authorized', {
 Request('path_find', {
   description: "Searches for a path along which a payment can possibly be made, and periodically sends updates when the path changes over time.",
   link: "path_find.html",
+  ws_only: true,
   body: {
     "id": 8,
     "command": "path_find",
