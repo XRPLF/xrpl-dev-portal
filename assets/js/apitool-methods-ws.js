@@ -1,4 +1,4 @@
-Request("Account Methods");
+Request("Account Methods")
 
 Request('account_channels', {
     description: "Returns information about an account's <a href='payment-channels.html'>payment channels</a>.",
