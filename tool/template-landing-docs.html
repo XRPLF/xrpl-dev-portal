@@ -3,21 +3,22 @@
 {% block mainclasses %}landing{% endblock %}
 
 {% block main %}
-  <section class="container-fluid bg-white p-3 p-sm-4">
+  <section class="container-fluid bg-white section-hero pb-4 pt-2">
     <h1 class="main-page-header">XRP Ledger Documentation</h1>
     <p class="blurb">Dive into our documentation and start integrating with the XRP Ledger.</p>
+    <p class="blurb">Browse by category, or skip straight to the <a href="#full-doc-index">full documentation index</a>.</p>
   </section>
 
-  <section class="container-fluid bg-light p-3 p-sm-4">
-    <div class="card-deck">
+  <section class="container-fluid card-grid card-grid-3xN doc-landing-section">
     {% set doc_types = [] %}
+    {% set flag_n = cycler(* range(1,99)) %}
     {% for page in pages %}
       {% if page.doc_type is defined and page.doc_type not in doc_types %}
         {% set doc_type_top = pages|selectattr('doc_type', 'defined_and_equalto', page.doc_type)|first %}
 
           <div class="card">
-            <div class="card-header bg-dark">
-              <h3 class="card-title">{{doc_type_top.name}}</h3>
+            <div class="card-header">
+              <h3 class="card-title"><a href="{{doc_type_top.html}}">{{doc_type_top.name}}</a></h3>
             </div><!--/.card-header-->
             <div class="card-body">
               {% if page.blurb is defined %}
@@ -29,68 +30,19 @@
             </div><!--/.card-body-->
             <div class="card-footer">
               <div class="readmore">
-                <a class="btn btn-secondary" href="{{doc_type_top.html}}">View All {{doc_type_top.name}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                <a class="btn btn-outline-secondary" href="{{doc_type_top.html}}">View All {{doc_type_top.name}}</a>
               </div>
             </div><!--/.card-footer-->
+            <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
           </div><!--/.card-->
 
         {% set _ = doc_types.append(page.doc_type) %}
       {% endif %}
     {% endfor %}
-  </div><!--/.card-deck-->
-  <div class="card-deck pt-3 pt-sm-4">
 
-      <div class="card">
-        <div class="card-header bg-dark">
-          <h3 class="card-title">Get Started</h3>
-        </div><!--/.card-header-->
-        <div class="card-body">
-          <div class="curated-links">
-            <ul>
-              <li><a href="websocket-api-tool.html">Make a call to the rippled API</a></li>
-              <li><a href="xrp-test-net-faucet.html">Access the XRP Ledger Test Net</a></li>
-              <li><a href="concepts.html">Understand XRP Ledger Concepts</a></li>
-            </ul>
-          </div><!--/.curated-links-->
-        </div><!--/.card-body-->
-      </div><!--/.card-->
-
-      <div class="card">
-        <div class="card-header bg-dark">
-          <h3 class="card-title">Popular Docs</h3>
-        </div><!--/.card-header-->
-        <div class="card-body">
-          <div class="curated-links">
-            <ol>
-              <li><a href="public-rippled-methods.html">rippled API Public Methods Reference</a></li>
-              <li><a href="accounts.html">Accounts</a></li>
-              <li><a href="install-rippled.html">Install rippled</a></li>
-              <li><a href="rippleapi-reference.html">RippleAPI for JavaScript Reference</a></li>
-            </ol>
-          </div><!--/.curated-links-->
-        </div><!--/.card-body-->
-      </div><!--/.card-->
-
-      <div class="card">
-        <div class="card-header bg-dark">
-          <h3 class="card-title">Recently Updated</h3>
-        </div><!--/.card-header-->
-        <div class="card-body">
-          <div class="curated-links">
-            <ol>
-              {% for link in target.recently_updated %}
-                {% set linkpage = pages|selectattr("html", 'defined_and_equalto', link.html)|first %}
-                <li><a href="{{linkpage.html}}">{{linkpage.name}}{% if link.date is defined %} <span class="recently-updated-date">({{link.date}})</span>{% endif %}</a></li>
-              {% endfor %}
-            </ol>
-          </div><!--/.curated-links-->
-        </div><!--/.card-body-->
-      </div><!--/.card-->
-
-    </div><!--/.card-deck-->
   </section>
 
-  <section class="container-fluid p-3 p-sm-4">
+  <section class="container-fluid doc-index">
     <h2 id="full-doc-index">Full Documentation Index</h2>
     <div class="row">
       <div class="col-md-8">

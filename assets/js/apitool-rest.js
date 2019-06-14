@@ -58,7 +58,7 @@ function generate_table_of_contents() {
         } else {
             commandlist.append("<li><a href='#"+req.slug+"'>"+req.name+"</a></li>");
         }
-    }); 
+    });
 }
 
 function make_commands_clickable() {
@@ -136,7 +136,7 @@ function select_request(request) {
     if (request === undefined) {
         var el = commandlist.children("li:not(.separator)").eq(0);
         request = slugify(el.text());
-        
+
 /*        var keys  = Object.keys(requests);
         var index = keys.indexOf(cmd);
         if (index === -1) return;*/
@@ -145,7 +145,7 @@ function select_request(request) {
     }
     $(el).siblings().removeClass('selected');
     $(el).addClass('selected');
-    
+
     command = requests[request];
 
     if (command.test_only === true) {
@@ -156,15 +156,15 @@ function select_request(request) {
 
     if (command.description) {
         $(description).html(command.description);
-        
+
         if (command.link) {
-            $(description).append(" <a class='button btn btn-primary' href='" + 
+            $(description).append(" <a class='button btn btn-outline-secondary' href='" + 
                 DOC_BASE+command.link+"'>Read more</a>");
         }
-        
+
         $(description).show();
     } else if (command.link) {
-        $(description).html("<a class='link_underline' href='" + DOC_BASE+ 
+        $(description).html("<a class='link_underline' href='" + DOC_BASE+
                 command.link+"'>Read more</a>");
     } else {
         $(description).hide();
@@ -215,7 +215,7 @@ function send_request() {
 
     $(this).addClass('depressed');
     response_body.addClass('obscured');
-    
+
     var original_cmd = requests[slugify(selected_command.text())];
 
     if (original_cmd.hasOwnProperty("body")) {
@@ -274,13 +274,13 @@ $(document).ready(function() {
     } else {
       select_request();
     }
-    
+
     if (urlParams["base_url"]) {
         change_base_url(urlParams["base_url"]);
     }
-    
+
     request_button.click(send_request);
-    
+
 });
 
 var urlParams;

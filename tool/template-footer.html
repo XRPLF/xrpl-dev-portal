@@ -1,48 +1,48 @@
-<footer class="ripple-footer" role="contentinfo">
-  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
-      <div class="row">
-        {% set funnels = [] %}
-        {% for page in pages %}
-          {% if page.funnel is defined and page.funnel not in funnels %}
-            {% set parent_page = pages|selectattr('funnel', 'defined_and_equalto', page.funnel)|first %}
+{% set flag_n = cycler(* range(1,99)) %}
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid card-grid card-grid-Nx1">
+    {% set funnels = [] %}
+    {% for page in pages %}
+      {% if page.funnel is defined and page.funnel not in funnels %}
+        {% set parent_page = pages|selectattr('funnel', 'defined_and_equalto', page.funnel)|first %}
 
-            <div class="col mx-xl-5 my-3 foot-nav-col">
-              <h5><a class="foot-nav-link" href="{{ parent_page.html }}">{{ parent_page.name }}</a><hr /></h5>
-              {% set depth = 1 %}
-              {% include 'template-page-children.html' %}
-            </div><!--/.foot-nav-col -->
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="{{ parent_page.html }}">{{ parent_page.name }}</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            {% set depth = 1 %}
+            {% set count = 5 %}
+            {% include 'template-page-children.html' %}
+          </div><!--/.card-body-->
+          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+        </div><!--/.card -->
 
-            {% set _ = funnels.append(page.funnel) %}
-          {% endif %}
-        {% endfor %}
+        {% set _ = funnels.append(page.funnel) %}
+      {% endif %}
+    {% endfor %}
 
-            <div class="col mx-xl-5 my-3 foot-nav-col">
-              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
-              <div class="children-display">
-                <ul>
-                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
-                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
-                </ul>
-              </div>
-            </div><!--/.foot-nav-col -->
-      </div><!--/.row-->
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="https://ripple.com/" target="_blank">Ripple<i class="fa fa-external-link"></i></a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="children-display">
+              <ul>
+                <li class="level-1"><a href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://github.com/ripple/" target="_blank">Ripple on GitHub <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+              </ul>
+            </div>
+          </div><!--/.card-body-->
+          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+        </div><!--/.card -->
   </section>
 
-  <section class="container-fluid pb-5 px-5">
-
-    <div class="build-disclaimer">
-      <p>
-        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
-      </p>
-      <p>
-        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
-      </p>
-    </div>
+  <section class="container-fluid p-5 pl-sm-0">
 
     <div class="absolute_bottom_footer">
-      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
-      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
-      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span>&copy; XRP Ledger Project 2019</span>
       <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
     </div><!-- /.absolute_bottom_footer -->
 

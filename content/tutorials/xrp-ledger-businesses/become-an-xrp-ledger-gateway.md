@@ -107,7 +107,7 @@ KYC is critical for financial institutions and related businesses to mitigate ri
 
 See also:
 
-- [The US-Standard on KYC](https://www.ffiec.gov/bsa_aml_infobase/pages_manual/OLM_011.htm)
+- [Customer Identification Program (USA FFIEC)](https://bsaaml.ffiec.gov/manual/RegulatoryRequirements/01)
 
 - [The Non-US Standard on KYC set by the Financial Action Task Force (FATF)](http://www.fatf-gafi.org/topics/fatfrecommendations/documents/fatf-recommendations.html)
 
@@ -137,7 +137,7 @@ If a financial institution suspects that funds may be related to criminal activi
 
 See also:
 
-- [Suspicious Activity Reporting Overview (USA FFIEC)](https://www.ffiec.gov/bsa_aml_infobase/pages_manual/OLM_015.htm)
+- [Suspicious Activity Reporting Overview (USA FFIEC)](https://bsaaml.ffiec.gov/manual/RegulatoryRequirements/04_ep)
 
 - [FATF Recommendation 16: Reporting of suspicious transactions and compliance](http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html)
 

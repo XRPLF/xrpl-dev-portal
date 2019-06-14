@@ -207,7 +207,7 @@ def currency_code_to_bytes(code_string, xrp_ok=False):
 
         code_ascii = code_string.encode("ASCII")
         logger.debug("Currency code ASCII: %s"%code_ascii.hex())
-        # standard currency codes: https://developers.ripple.com/currency-formats.html#standard-currency-codes
+        # standard currency codes: https://xrpl.org/currency-formats.html#standard-currency-codes
         # 8 bits type code (0x00)
         # 88 bits reserved (0's)
         # 24 bits ASCII

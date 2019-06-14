@@ -1,10 +1,12 @@
-The Ripple Dev Portal and all its original contents are provided under the MIT License. Additional libraries and resources used by the Ripple Dev Portal are subject to their own licenses, as described below.
+The XRP Ledger Dev Portal and all its original contents are provided under the MIT License. Additional libraries and resources used by the XRP Ledger Dev Portal are subject to their own licenses, as described below.
 
 The MIT License (MIT)
 
-Ripple Dev Portal Copyright (c) 2014, 2015 Ripple Labs, Inc.
-Flatdoc Copyright (c) 2013, 2014, Rico Sta. Cruz.
+XRP Ledger Dev Portal Copyright (c) 2019 XRP Ledger Project
 jQuery Copyright (c) 2005, 2014 jQuery Foundation and other contributors, https://jquery.org/
+Bootstrap Copyright (c) 2011-2019 Twitter, Inc.
+Bootstrap Copyright (c) 2011-2019 The Bootstrap Authors
+Bootstrap-Growl Copyright (c) Nick Larson, http://github.com/ifightcrime
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -14,18 +16,37 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 -----
 
+ripple-lib is included under the ISC License
+
+ISC License
+
+Copyright (c) 2012-2015 Ripple Labs Inc.
+
+Permission to use, copy, modify, and distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+-----
+
 Fonts included in this site use the following licenses:
 
-Montserrat: Copyright (c) 2011-2012, Julieta Ulanovsky (julieta.ulanovsky@gmail.com), with Reserved Font Names 'Montserrat'
-Used under the SIL Open Font License, 1.1
-http://scripts.sil.org/OFL
-
-Open Sans: Digitized data copyright © 2010-2011, Google Corporation.
-Used under the Apache License, version 2.0
+Roboto: Digitized data copyright © 2010-2017, Google Corporation.
+Font used under the Apache License, version 2.0
 http://www.apache.org/licenses/LICENSE-2.0.html
 
+Space Mono: Copyright 2016 Google Inc. All Rights Reserved.
+Font used under the SIL Open Font License, Version 1.1.
+http://scripts.sil.org/OFL
+
 Font Awesome by Dave Gandy - http://fontawesome.io
-Font used under the SIL Open Font License, 1.1
+Font licensed under the SIL Open Font License, 1.1
 http://scripts.sil.org/OFL
 Code licensed under the MIT License
-

@@ -4,6 +4,10 @@
 {% if depth is undefined %}
   {% set depth = 5 %}
 {% endif %}
+{% if count is undefined %}
+  {# count controls how many direct children to print at each level #}
+  {% set count = 9999 %}
+{% endif %}
 
 {% if show_blurbs is undefined %}
   {% set show_blurbs = False %}
@@ -35,14 +39,18 @@
   {% set childpages = pages|selectattr(parent_level, 'defined_and_equalto', parent_page[parent_level])|list %}
 {% endif %}
 
-{% macro print_children(parent, thosepages, indent_level, next_level_field, depth_limit) %}
+{% macro print_children(parent, thosepages, indent_level, next_level_field, depth_limit, count_limit) %}
   {% set printed_next_levels = [] %}
+  {% set ns=namespace(count_printed = 0) %}
   {% for onepage in thosepages %}
     {% if onepage == parent %}{# pass #}
     {% elif onepage.template == "template-redirect.html" %}{# don't list redirects #}
     {% elif next_level_field == None or (onepage[next_level_field] is undefined and next_level_field != "supercategory") %}
       {# direct child, print it! #}
-      <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.name}}</a>{% if show_blurbs and onepage.blurb is defined and indent_level == 1%}<p class="blurb child-blurb">{{onepage.blurb}}</p>{% endif %}</li>
+      {% if ns.count_printed < count_limit %}
+        <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.name}}</a>{% if show_blurbs and onepage.blurb is defined and indent_level == 1%}<p class="blurb child-blurb">{{onepage.blurb}}</p>{% endif %}</li>
+        {% set ns.count_printed = ns.count_printed + 1 %}
+      {% endif %}
 
     {% elif onepage[next_level_field] is undefined and next_level_field == "supercategory" %}
       {# special case, might need to skip "supercategory" #}
@@ -51,52 +59,61 @@
         {# possible direct child or grandchild due to skipped level #}
 
         {% if onepage.category not in printed_next_levels %}
-          {% set next_level_children = thosepages|selectattr("category",
-              'defined_and_equalto', onepage.category)|list %}
-          {% set next_level_parent = next_level_children|first %}
-          <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a>{% if show_blurbs and next_level_parent.blurb is defined and indent_level == 1 %}<p class="blurb child-blurb">{{next_level_parent.blurb}}</p>{% endif %}</li>
-          {% if indent_level+1 <= depth_limit and next_level_field != None %}
-            {# Recurse! #}
-            {% set field_after = "subcategory" %}
-            {{ print_children(next_level_parent, next_level_children, indent_level+1, field_after, depth_limit) }}
+          {% if ns.count_printed < count_limit %}
+            {% set next_level_children = thosepages|selectattr("category",
+                'defined_and_equalto', onepage.category)|list %}
+            {% set next_level_parent = next_level_children|first %}
+            <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a>{% if show_blurbs and next_level_parent.blurb is defined and indent_level == 1 %}<p class="blurb child-blurb">{{next_level_parent.blurb}}</p>{% endif %}</li>
+            {% if indent_level+1 <= depth_limit and next_level_field != None %}
+              {# Recurse! #}
+              {% set field_after = "subcategory" %}
+              {{ print_children(next_level_parent, next_level_children, indent_level+1, field_after, depth_limit, count_limit) }}
+            {% endif %}
+            {% set _ = printed_next_levels.append(onepage.category) %}
+            {% set ns.count_printed = ns.count_printed + 1 %}
           {% endif %}
-          {% set _ = printed_next_levels.append(onepage.category) %}
         {% endif %}
 
       {% else %}
-        <!-- Template WARNING: no category for page '{{onepage.name}}'? -->
-        <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.html}}</a>{% if show_blurbs and onepage.blurb is defined and indent_level == 1 %}<p class="blurb child-blurb">{{onepage.blurb}}</p>{% endif %}</li>
+        {% if ns.count_printed < count_limit %}
+          <!-- Template WARNING: no category for page '{{onepage.name}}'? -->
+          <li class="level-{{indent_level}}"><a href="{{onepage.html}}">{{onepage.html}}</a>{% if show_blurbs and onepage.blurb is defined and indent_level == 1 %}<p class="blurb child-blurb">{{onepage.blurb}}</p>{% endif %}</li>
+          {% set ns.count_printed = ns.count_printed + 1 %}
+        {% endif %}
       {% endif %}
 
     {% elif onepage[next_level_field] is defined %}
       {# might be a grandchild or lower #}
       {% if onepage[next_level_field] not in printed_next_levels %}
-        {% set next_level_children = thosepages|selectattr(next_level_field,'defined')|selectattr(next_level_field,
-            'defined_and_equalto', onepage[next_level_field])|list %}
-        {% set next_level_parent = next_level_children|first %}
-        <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a>{% if show_blurbs and next_level_parent.blurb is defined and indent_level == 1 %}<p class="blurb child-blurb">{{next_level_parent.blurb}}</p>{% endif %}</li>
-        {% if (indent_level+1 <= depth_limit and next_level_field != None)
-          or (next_level_field == "supercategory" and depth_limit == 1.5) %}
-          {# Recurse! #}
+        {% if ns.count_printed < count_limit %}
+          {% set next_level_children = thosepages|selectattr(next_level_field,'defined')|selectattr(next_level_field,
+              'defined_and_equalto', onepage[next_level_field])|list %}
+          {% set next_level_parent = next_level_children|first %}
+          <li class="level-{{indent_level}}"><a href="{{next_level_parent.html}}">{{next_level_parent.name}}</a>{% if show_blurbs and next_level_parent.blurb is defined and indent_level == 1 %}<p class="blurb child-blurb">{{next_level_parent.blurb}}</p>{% endif %}</li>
+          {% if (indent_level+1 <= depth_limit and next_level_field != None)
+            or (next_level_field == "supercategory" and depth_limit == 1.5) %}
+            {# Recurse! #}
 
-          {# figure out what level to use next #}
-          {% if next_level_field == "subcategory" %}
-            {% set field_after = None %}
-          {% elif next_level_field == "category" %}
-            {% set field_after = "subcategory" %}
-          {% elif next_level_field == "supercategory" %}
-            {% set field_after = "category" %}
-          {% elif next_level_field == "doc_type" %}
-            {% set field_after = "supercategory" %}
-          {% elif next_level_field == "funnel" %}
-            {% set field_after = "doc_type" %}
-          {% else %}
-            <!-- ERROR: child-pages template reached unexpected next_level_field case. -->
+            {# figure out what level to use next #}
+            {% if next_level_field == "subcategory" %}
+              {% set field_after = None %}
+            {% elif next_level_field == "category" %}
+              {% set field_after = "subcategory" %}
+            {% elif next_level_field == "supercategory" %}
+              {% set field_after = "category" %}
+            {% elif next_level_field == "doc_type" %}
+              {% set field_after = "supercategory" %}
+            {% elif next_level_field == "funnel" %}
+              {% set field_after = "doc_type" %}
+            {% else %}
+              <!-- ERROR: child-pages template reached unexpected next_level_field case. -->
+            {% endif %}
+
+            {{ print_children(next_level_parent, next_level_children, indent_level+1, field_after, depth_limit, count_limit) }}
           {% endif %}
-
-          {{ print_children(next_level_parent, next_level_children, indent_level+1, field_after, depth_limit) }}
+          {% set _ = printed_next_levels.append(onepage[next_level_field]) %}
+          {% set ns.count_printed = ns.count_printed + 1 %}
         {% endif %}
-        {% set _ = printed_next_levels.append(onepage[next_level_field]) %}
       {% endif %}
     {% endif %}
   {% endfor %}
@@ -109,6 +126,6 @@
 
 <div class="children-display">
   <ul>
-    {{ print_children(parent_page, childpages, 1, level_2, depth) }}
+    {{ print_children(parent_page, childpages, 1, level_2, depth, count) }}
   </ul>
 </div>

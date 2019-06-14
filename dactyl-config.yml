@@ -72,7 +72,7 @@ targets:
         github_branch: master
         no_cover: True
         link_re_subs:
-           "([\\w-]+\\.html)": https://developers.ripple.com/\1
+           "([\\w-]+\\.html)": https://xrpl.org/\1
 
 pages:
 
@@ -490,12 +490,23 @@ pages:
         targets:
             - local
 
-    -   md: concepts/consensus-network/amendments.md
+    -   md: concepts/consensus-network/amendments/amendments.md
         html: amendments.html
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
+        subcategory: Amendments
         blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
+        targets:
+            - local
+
+    -   md: concepts/consensus-network/amendments/known-amendments.md
+        html: known-amendments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        subcategory: Amendments
+        blurb: List of all known amendments to the XRP Ledger protocol and their status.
         targets:
             - local
 
@@ -1277,7 +1288,7 @@ pages:
         template: template-landing-references.html
         html: references.html
         sidebar: disabled
-        blurb: Look up the ins-and-outs of XRP Ledger APIs, including sample requests and responses.
+        blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
             - local
 
@@ -1289,7 +1300,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         template: template-landing-children.html
-        blurb: Use the rippled API to communicate with a rippled server, the core peer-to-peer server that manages the XRP Ledger.
+        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger.
         targets:
             - local
 
@@ -2765,7 +2776,7 @@ pages:
         funnel: Docs
         doc_type: References
         category: Data API
-        blurb: Access more XRP Ledger data, including transaction history and analytics.
+        blurb: RESTful interface to XRP Ledger analytics and historical data.
         curated_anchors:
             - name: Methods
               anchor: "#api-method-reference"
@@ -2801,8 +2812,6 @@ pages:
     -   md: use-cases/use-cases.md
         html: use-cases.html
         funnel: Use Cases
-        filters:
-            - buttonize
         targets:
             - local
 
@@ -2887,8 +2896,6 @@ pages:
     -   md: dev-tools/dev-tools.md
         html: dev-tools.html
         funnel: Dev Tools
-        filters:
-            - buttonize
         targets:
             - local
 
@@ -2946,22 +2953,6 @@ pages:
             - local
         template: template-tx-sender.html
 
-# News -------------------------------------------------------------------------
-
-    -   md: news/news.md
-        html: news.html
-        funnel: News
-        targets:
-            - local
-
-    -   md: news/known-amendments.md
-        html: known-amendments.html
-        funnel: News
-        targets:
-            - local
-
-    # Note: other "News" links (Release Notes, eventually Network Status)
-    #  are external to this site
 
 # Special sitemap file (for better Google indexing)
     -   name: Sitemap
@@ -2981,7 +2972,7 @@ known_broken_links:
     # These PDFs download OK in a browser
     - http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847
     - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF
-    # Dev blog link assumes relationship with developers.ripple.com
+    # Dev blog link assumes relationship with xrpl.org
     - /blog/
 
 # Style Checker Config ------------------------------------------------------ #

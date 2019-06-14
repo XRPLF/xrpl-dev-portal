@@ -1,0 +1,516 @@
+// Bootstrap SASS styling. Use a SASS compiler (such as sassc) to parse this
+// and write the output to {repo_top}/assets/vendor/bootstrap.css
+// Requires node_modules/bootstrap/scss/bootstrap to contain the Bootstrap
+// source files.
+
+
+// Set theme colors used by Bootstrap styles
+$white:    #FFF;
+$gray-100: #F9F7F7;
+$gray-200: #EBE8E7;
+$gray-300: #D3D0CF;
+$gray-400: #B3B0AF;
+$gray-500: #8D8A89;
+$gray-600: #676463;
+$gray-700: #464443;
+$gray-800: #2E2D2C;
+$gray-900: #201F1E;
+$black:    #1B1818;
+
+$primary:       #25A768; // Green
+$secondary:     $gray-600;
+$light:         $gray-200;
+$dark:          $black;
+$success:       #2BCB96; // light green
+$info:          #7699bb; // bluish
+$warning:       #D0DB60; // yellowish -- "caution" callout style
+$danger:        #AA4949; // wine red -- "warning" callout style
+
+$code-color:    $gray-800;
+$body-color:    $black;
+$navbar-light-color: $gray-600;
+
+
+$navbar-padding-y: 0;
+$navbar-nav-link-padding-x: 1rem;
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+
+// Font face stuff from Google
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"), url("../font/Roboto-Regular.woff2") format('woff2'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url("../font/Roboto-Bold.woff2") format('woff2'), url(https://fonts.gstatic.com/s/roboto/v19/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Space Mono'), local('SpaceMono-Regular'), url("../font/SpaceMono-Regular.woff2") format('woff2'), url(https://fonts.gstatic.com/s/spacemono/v4/i7dPIFZifjKcF5UAWdDRYEF8RQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Space Mono Bold'), local('SpaceMono-Bold'), url("../font/SpaceMono-Bold.woff2") format('woff2'), url(https://fonts.gstatic.com/s/spacemono/v4/i7dMIFZifjKcF5UAWdDRaPpZUFWaHg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+$font-family-monospace: 'Space Mono', monospace;
+$font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
+
+// Bootstrap v4
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  color: $black;
+}
+
+.landing section,
+.xrpl-footer .card-grid,
+#main_content_wrapper {
+  border-bottom: 1px solid $black;
+}
+
+.landing section:last-of-type {
+  border-bottom: none;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1px;
+  background-color: $gray-200;
+  padding: 0;
+
+  &.card-grid-2x2 {
+    /* left half is a hero area; right half is a 2x2 grid. */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+
+    .section-hero {
+      grid-row-end: span 2;
+    }
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, auto);
+    }
+  }
+
+  &.card-grid-2x1 {
+    /* left half is a hero area; right half is a 2x1 grid. */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    .section-hero {
+      grid-row-end: span 1;
+    }
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &.card-grid-2x4 {
+    /* left half is a hero area; right half is a 2x4 grid. Total grid is 4x4 */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+
+    .section-hero {
+      grid-row-end: span 4;
+    }
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, auto);
+
+      .section-hero {
+        grid-row-end: span 1;
+      }
+    }
+  }
+
+  &.card-grid-4xN {
+    /* 4 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.card-grid-3xN {
+    /* 3 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.card-grid-Nx1 {
+    /* 1 row of equal sized columns */
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    grid-template-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    padding: 40px;
+    border: 0;
+
+    @include media-breakpoint-down(md) {
+      padding: 20px;
+    }
+  }
+}
+
+/* Some styles that use the colors defined above ---------------------------- */
+h1 a,
+h2 a,
+h3 a {
+  color: $black;
+  text-decoration: none;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+.xrpl-footer h5 a:hover {
+  color: $black;
+}
+
+.xrpl-footer h5 a {
+  color: $black;
+}
+
+.landing .curated-links a,
+.landing .children-display a,
+.landing a.card,
+.xrpl-footer a {
+  color: $gray-600;
+}
+
+.landing .curated-links a:hover,
+.landing .children-display a:hover,
+.xrpl-footer a:hover {
+  color: $black;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: $gray-600;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:active,
+.navbar .navbar-nav .active .nav-link,
+.navbar .active-parent .nav-link {
+  color: $black;
+}
+
+.navbar.fixed-top {
+  box-shadow: inset 0 -1px 0 0 $gray-200;
+}
+
+.flag-vertical {
+  color: $gray-200;
+}
+
+.jump-to-top {
+  background-color: $gray-700;
+}
+
+.devportal-callout.tip {
+  border-color: $success;
+}
+.devportal-callout.tip > strong:first-child:before {
+  color: $success;
+}
+.devportal-callout.note > strong:first-child:before {
+  color: $info;
+}
+.devportal-callout.note {
+  border-color: $info;
+}
+.devportal-callout.caution {
+  border-color: $warning; /* not a typo */
+}
+.devportal-callout.caution > strong:first-child:before {
+  color: $warning; /* not a typo */
+}
+.devportal-callout.warning {
+  border-color: $danger;
+}
+.devportal-callout.warning > strong:first-child:before {
+  color: $danger;
+}
+
+.status.not_enabled {
+  /* flask icon for "not yet enabled" features */
+  color: $warning;
+}
+
+#tx-sender-history .list-group-item {
+  font-size: small;
+  color: $gray-600;
+}
+
+.xrpl-footer {
+  border-top: 1px solid $black;
+  border-bottom: 1px solid $black;
+}
+.xrpl-footer .container-fluid {
+  border-bottom: 1px solid $gray-200;
+}
+
+.header-link:hover {
+  color: $black;
+}
+
+.response-metadata .timestamp {
+  color: $gray-600;
+  position: relative;
+  top: 16px;
+}
+
+/* Tables ------------------------------- */
+
+th {
+  border-bottom: 1px solid $black;
+}
+tr {
+  border-bottom: 1px solid $gray-200;
+}
+
+
+/* Left/right nav color scheme ------------------------------- */
+aside a {
+  color: $gray-600;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+aside .sidenav_cat_title {
+  color: $black;
+}
+aside a:hover,
+aside .sidenav_cat_title:hover {
+  color: $primary;
+}
+
+aside a.active,
+aside a.active:hover {
+  color: $primary;
+  font-weight: 700;
+}
+aside a.active-parent {
+  color: $gray-700;
+  font-weight: 700;
+}
+
+.sidebar_pagelist {
+  border-left: 1px solid $gray-200;
+}
+.sidebar_pagelist a,
+.right-sidebar a {
+  display: block;
+  margin-top: 5px;
+  margin-left: -17px;
+  padding: 4px 15px 4px 35px;
+  text-indent: -20px;
+  font-size: 0.9rem;
+}
+.sidebar_pagelist a:hover {
+  padding-left: 34px;
+  border-left: 1px solid $primary;
+}
+.sidebar_pagelist .active,
+.sidebar_pagelist .active:hover {
+  padding-left: 33px;
+  border-left: 2px solid $primary;
+}
+.sidebar_pagelist .subpage {
+  margin-left: 0;
+  margin-top: 0;
+  padding-left: 35px;
+  border-left: 1px solid $gray-200;
+}
+.sidebar_pagelist .subpage:hover {
+  padding-left: 35px;
+  border-left: 1px solid $primary;
+}
+.sidebar_pagelist .active.subpage,
+.sidebar_pagelist .active.subpage:hover {
+  padding-left: 33px;
+  border-left: 2px solid $primary;
+}
+
+.sidenav_cat_toggler {
+  background-color: $gray-600;
+}
+.sidenav_cat_toggler:hover {
+  background-color: $primary;
+}
+
+.right-sidebar .card-body {
+  border-left: 1px solid $gray-200;
+}
+
+.sidenav_parent a {
+  color: $black;
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 15px 16px 15px 10px;
+}
+
+.right-sidebar .level-1 a {
+  color: $black;
+}
+
+.right-sidebar .level-3 {
+  padding-left: 16px;
+  border-left: 1px solid $gray-200;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+}
+
+.right-sidebar .level-3 a {
+  margin-top: 0;
+  padding-bottom: 5px;
+}
+
+.right-sidebar a:hover {
+  text-decoration: none;
+  border-left: 1px solid $primary;
+  padding-left: 34px;
+}
+
+/* main content area ----------------------------------- */
+.sidebar-primary .main {
+  border-left: 1px solid $gray-200;
+  border-right: 1px solid $gray-200;
+}
+
+.content a.button {
+  color: $black;
+  border: 1px solid $gray-300;
+}
+.content a.button:hover {
+  border: 1px solid $black;
+}
+
+.btn-outline-secondary {
+  color: $black;
+  border-color: $gray-300;
+}
+
+#main_content_wrapper .btn-outline-secondary:hover,
+#main_content_wrapper .btn-outline-secondary:active,
+.button:hover, #request_button:hover {
+  /* Undo Bootstrap styling */
+  color: $black;
+  background-color: inherit;
+  border: 1px solid $black;
+}
+
+/* Use Cases ---------------------------------------------------------------- */
+.related-tasks-links a {
+  color: $gray-600;
+  text-decoration: none;
+}
+.related-tasks-links a:hover {
+  color: $black;
+}
+.use-case-external-link {
+  border: 1px solid $gray-300;
+}
+
+.content .use-case-external-link a {
+  text-decoration: none;
+  color: $black;
+}
+
+/* Edit on GitHub link ------------------------------------------------------ */
+.github-edit-wrap {
+  border: 1px solid $gray-400;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.github-edit-wrap:hover {
+  border-color: $black;
+}
+.github-edit-wrap .github-edit {
+  background-image: url(../vendor/github-marks/GitHub-Mark-32px.png);
+  background-size: 24px 24px;
+  background-position: left 12px center;
+  background-repeat: no-repeat;
+  padding: 8px 16px 8px 48px;
+  color: $gray-600;
+  text-decoration: none;
+  display: block;
+  line-height: 17px; /* Match search box height */
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
+
+/* Code Tabs ---------------------------------------------------------------- */
+
+.multicode {
+  color: $black;
+}
+
+.multicode a.current {
+  background-color: $gray-200;
+  color: $black;
+}
+
+.multicode a,
+a.current {
+  color: $black;
+}
+
+.multicode li {
+  border-color: $gray-300;
+}
+
+.code_sample pre code {
+  background-color: $gray-200;
+}
+
+.multicode a:hover {
+  color: $black;
+  border-bottom: 1px solid $black;
+  padding-bottom: 7px;
+}

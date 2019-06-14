@@ -3,13 +3,13 @@
 {% block main %}
   {% if content %}
 
-  <article class="p-3">
+  <article class="pt-3 p-md-3">
       <div class='content'>
         {{ content }}
       </div>
   </article>
 
-  <section class="p-3">
+  <section class="pt-3 p-md-3">
     <h2>Children of this page:</h2>
     {% set show_blurbs = True %}
     {% set depth= 1 %}
@@ -17,7 +17,7 @@
   </section>
 
   {% else %}
-  <section class="p-3">
+  <section class="pt-3 p-md-3">
     <article class="content">
       <h1 id="main-page-header">{{ currentpage.name }}</h1>
       <p class="blurb">{{ currentpage.blurb }}</p>

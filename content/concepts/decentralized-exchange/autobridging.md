@@ -8,6 +8,6 @@ Auto-bridging happens automatically on any OfferCreate transaction. [Payment tra
 
 ## See Also
 
-- [Dev Blog: Introducing Autobridging](https://developers.ripple.com/blog/2014/introducing-offer-autobridging.html)
+- [Dev Blog: Introducing Autobridging](https://xrpl.org/blog/2014/introducing-offer-autobridging.html)
 
 - [Offer Preference](offers.html#offer-preference)

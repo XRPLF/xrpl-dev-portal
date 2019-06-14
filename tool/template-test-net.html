@@ -4,9 +4,9 @@
 
 {% block right_sidebar %}
 <div id="test-net-servers" class="card">
-  <div class="card-header bg-dark">
-    <h3 class="card-title">Test Net Servers</h3>
-  </div><!--/.card-header-->
+  <div class="card-header">
+    <h4>Test Net Servers</h4>
+  </div>
   <div class="card-body">
     <p>Use the following addresses to connect to the XRP Test Net and send transactions from your account.</p>
     <h5>Websockets and Ripple API</h4>
@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block main %}
-<section class="container-fluid p-3">
+<section class="container-fluid pt-3 p-md-3">
   <h1>XRP Test Net Faucet</h1>
 
   <div class="content">
@@ -26,7 +26,7 @@
     <p>Test Net funds are intended for <strong>testing</strong> only. The Test Net ledger and balances will be reset on a regular basis.</p>
     <button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
     <div id='your-credentials'></div>
-    <div id='loader' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"> Generating Keys...</div>
+    <div id='loader' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
     <div id='address'></div>
     <div id='secret'></div>
     <div id='balance'></div>

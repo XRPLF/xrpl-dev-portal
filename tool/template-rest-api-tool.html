@@ -1,12 +1,18 @@
 {% extends "template-base.html" %}
 
 {% block right_sidebar %}
-    <ul id='command_list'>
+  <div class="card">
+    <div class="card-header">
+      <h4>API Methods</h4>
+    </div>
+
+    <ul class="dev_nav_sidebar card-body" id='command_list'>
     </ul>
+  </div>
 {% endblock %}
 
 {% block main %}
-  <section class="container-fluid p-3">
+  <section class="container-fluid pt-3 p-md-3">
     <div id='command_wrapper'>
         <div id='command_table'>
             <div id='io_wrapper'>
@@ -25,13 +31,13 @@
                     </div>
                     <div id='request_body'></div>
                     <div id='request_options'>
-                        <a class="btn btn-primary api" id='request_button'>Send request</a>
+                        <a class="btn btn-outline-secondary api" id='request_button'>Send request</a>
                     </div>
                 </div>
                 <div id='output' class='io'>
                     <h2>Response</h2>
                     <div>
-                        <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
+                        <img class="loader" src="assets/img/xrp-loader-96.png" style="vertical-align: middle; display:none;"/>
                         <span id='rest_responsecode'></span>
                     </div>
                     <div id='response_body'></div>
@@ -51,7 +57,7 @@
     <link rel='stylesheet' type='text/css' href='assets/css/api-tools.css'/>
     <link rel='stylesheet' type='text/css' href='assets/vendor/codemirror.css'/>
     <script type='text/javascript' src='assets/js/es5-shim.js'></script>
-    <script type='text/javascript' src='assets/vendor/codemirror.min.js'></script>
+    <script type='text/javascript' src='assets/vendor/codemirror-js-json-lint.min.js'></script>
     <script type='text/javascript' src='assets/vendor/cm-javascript.min.js'></script>
     <script type='text/javascript' src='assets/js/jquery.autosize.input.min.js'></script>
     <script type='text/javascript' src='assets/js/apitool-rest.js'></script>

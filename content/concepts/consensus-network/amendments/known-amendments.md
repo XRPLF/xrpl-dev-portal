@@ -37,8 +37,8 @@ The following is a comprehensive list of all known amendments and their status o
 | [TrustSetAuth][]            | v0.30.0    | [Enabled: 2016-07-19](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]               | v0.31.0    | [Enabled: 2016-06-27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]           | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
-| [FlowV2][]                  | v0.32.1    | [Vetoed: Removed in v0.33.0](https://developers.ripple.com/blog/2016/flowv2-vetoed.html "BADGE_RED") |
-| [SusPay][]                  | v0.31.0    | [Vetoed: Removed in v0.60.0](https://developers.ripple.com/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
+| [FlowV2][]                  | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
+| [SusPay][]                  | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.
 
@@ -340,7 +340,7 @@ With this amendment enabled, the XRP Ledger removes these dry offers when they'r
 |:-----------------------------------------------------------------|:----------|
 | 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 | Enabled   |
 
-Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](https://developers.ripple.com/blog/2016/flowv2-vetoed.html) amendment.
+Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the [FlowV2](https://xrpl.org/blog/2016/flowv2-vetoed.html) amendment.
 
 The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.
 
@@ -366,7 +366,7 @@ Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange.
 |:-----------------------------------------------------------------|:----------|
 | 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | Vetoed    |
 
-This is a previous version of the [Flow](#flow) amendment. It was [rejected due to a bug](https://developers.ripple.com/blog/2016/flowv2-vetoed.html) and removed in version 0.33.0.
+This is a previous version of the [Flow](#flow) amendment. It was [rejected due to a bug](https://xrpl.org/blog/2016/flowv2-vetoed.html) and removed in version 0.33.0.
 
 
 ## MultiSign

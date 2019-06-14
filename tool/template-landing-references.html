@@ -3,90 +3,67 @@
 {% block mainclasses %}landing{% endblock %}
 
 {% block main %}
-  <section class="container-fluid bg-white p-3 px-sm-4 pb-sm-4">
+  <section class="container-fluid bg-white section-hero">
     <h1 class="main-page-header">References</h1>
     <p class="blurb">{{currentpage.blurb}}</p>
+    <p class="blurb">Or, skip ahead to the <a href="#full-reference-index">Full Reference Index</a>.</p>
   </section>
 
-  <section class="container-fluid bg-light p-3 px-sm-4 pb-sm-4">
-    <h2><a href="rippled-api.html">rippled API Reference</a></h2>
-    <p class="blurb">Use the <code>rippled</code> API to communicate with a <code>rippled</code> server, the core peer-to-peer server that manages the XRP Ledger.</p>
-      <div class="card-deck pt-3 pt-sm-4">
-        {% for page in pages|selectattr("supercategory", 'defined_and_equalto', "rippled API")|list %}
-        {% if loop.index != 1 and page == pages|selectattr("category", 'defined_and_equalto', page.category)|first %}
-          <div class="card">
-            <div class="card-header bg-dark">
-              <h3 class="card-title">{{page.name}}</h3>
-            </div><!--/.card-header-->
-            <div class="card-body">
-              <p class="blurb">{{page.blurb}}</p>
-              {% if page.curated_anchors is defined %}
-                <div class="curated-links">
-                  <ul>
-                    {% for link in page.curated_anchors %}
-                    <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
-                    {% endfor %}
-                  </ul>
-                </div><!--/.curated-links-->
-              {% else %}
-                {% set depth = 1 %}
-                {% set parent_page = page %}
-                {% include 'template-page-children.html' %}
-              {% endif %}
-            </div><!--/.card-body-->
-            <div class="card-footer">
-              <div class="readmore">
-                <a class="btn btn-secondary" href="{{page.html}}">View All {{page.name}} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-              </div>
-            </div><!--/.card-footer-->
-          </div><!--/.card-->
+  {% set flag_n = cycler(* range(1,99)) %}
+  <section class="container-fluid card-grid card-grid-4xN">
+    {# hardcoded rippled API block first since it's the only one with a supercategory #}
+    {% set page = pages|selectattr("supercategory", 'defined_and_equalto', "rippled API")|first %}
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p class="blurb">{{page.blurb}}</p>
+        {% set depth = 1 %}
+        {% set parent_page = page %}
+        {% include 'template-page-children.html' %}
+      </div><!--/.card-body-->
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+    </div><!--/.card-->
 
-          {# go to new row after admin methods #}
-          {% if page.html == "admin-rippled-methods.html" %}
-      </div><!--/.card-deck-->
-      <div class="card-deck pt-3 pt-sm-4">
-          {% endif %}
-        {% endif %}
-        {% endfor %}
+    {% for page in pages|selectattr("doc_type", 'defined_and_equalto', "References")|selectattr("supercategory", "undefined_or_ne", "rippled API") %}
+      {% if loop.index != 1 and page == pages|selectattr("category", 'defined_and_equalto', page.category)|first %}
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <p class="blurb">{{page.blurb}}</p>
+            {% if page.curated_anchors is defined %}
+              <div class="curated-links">
+                <ul>
+                  {% for link in page.curated_anchors %}
+                  <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div><!--/.curated-links-->
+            {% endif %}
 
-      </div><!--/.card-deck-->
+            {% set depth = 1 %}
+            {% set parent_page = page %}
+            {% include 'template-page-children.html' %}
+          </div><!--/.card-body-->
+          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+        </div><!--/.card-->
+      {% endif %}
+    {% endfor %}
 
   </section>
 
-  <section class="container-fluid bg-white p-3 px-sm-4 pb-sm-4">
-
-    <h2>Other XRP Ledger Interfaces</h2>
-    <p class="blurb">Here are a few other ways to interact with the XRP Ledger.</p>
-    <div class="card-deck pt-3 pt-sm-4">
-
-      {% for page in pages|selectattr("doc_type", 'defined_and_equalto', "References")|selectattr("supercategory", "undefined_or_ne", "rippled API") %}
-        {% if loop.index != 1 and page == pages|selectattr("category", 'defined_and_equalto', page.category)|first %}
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
-            </div><!--/.card-header-->
-            <div class="card-body">
-              <p class="blurb">{{page.blurb}}</p>
-              {% if page.curated_anchors is defined %}
-                <div class="curated-links">
-                  <ul>
-                    {% for link in page.curated_anchors %}
-                    <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
-                    {% endfor %}
-                  </ul>
-                </div><!--/.curated-links-->
-              {% endif %}
-
-              {% set depth = 1 %}
-              {% set parent_page = page %}
-              {% include 'template-page-children.html' %}
-            </div><!--/.card-body-->
-          </div><!--/.card-->
-        {% endif %}
-      {% endfor %}
-
-    </div><!--/.card-deck-->
-
+  <section class="container-fluid doc-index">
+    <h2 id="full-reference-index">Full Reference Index</h2>
+    <div class="row">
+      <div class="col-md-8">
+        {% set parent_page = currentpage %}
+        {% set depth = 5 %}
+        {% include 'template-page-children.html' %}
+      </div>
+    </div>
   </section>
 
 {% endblock %}

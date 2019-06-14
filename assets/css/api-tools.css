@@ -1,6 +1,7 @@
 #command_list {
   list-style-type:none;
   padding:0 0 0 0;
+  border-left: none;
 }
 
 aside.sidebar {
@@ -264,12 +265,7 @@ span.cm-atom {
 }
 
 .loader {
-    -webkit-animation: rotating 1s linear infinite;
-    -moz-animation: rotating 1s linear infinite;
-    -ms-animation: rotating 1s linear infinite;
-    -o-animation: rotating 1s linear infinite;
-    animation: rotating 1s linear infinite;
-    width: 25px;height:25px;
+    width: 24px;height:24px;
 }
 
 
@@ -295,6 +291,7 @@ span.cm-atom {
     display: inline-block;
     text-indent: -2em;
     padding-left: 2.5em;
+    width: 100%;
 }
 
 #rest_url {
