@@ -11,6 +11,7 @@
 
   <section class="container-fluid card-grid card-grid-3xN doc-landing-section">
     {% set doc_types = [] %}
+    {% set flag_n = cycler(* range(1,99)) %}
     {% for page in pages %}
       {% if page.doc_type is defined and page.doc_type not in doc_types %}
         {% set doc_type_top = pages|selectattr('doc_type', 'defined_and_equalto', page.doc_type)|first %}
@@ -32,6 +33,7 @@
                 <a class="btn btn-outline-secondary" href="{{doc_type_top.html}}">View All {{doc_type_top.name}}</a>
               </div>
             </div><!--/.card-footer-->
+            <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
           </div><!--/.card-->
 
         {% set _ = doc_types.append(page.doc_type) %}

@@ -9,6 +9,7 @@
     <p class="blurb">Or, skip ahead to the <a href="#full-reference-index">Full Reference Index</a>.</p>
   </section>
 
+  {% set flag_n = cycler(* range(1,99)) %}
   <section class="container-fluid card-grid card-grid-4xN">
     {# hardcoded rippled API block first since it's the only one with a supercategory #}
     {% set page = pages|selectattr("supercategory", 'defined_and_equalto', "rippled API")|first %}
@@ -22,6 +23,7 @@
         {% set parent_page = page %}
         {% include 'template-page-children.html' %}
       </div><!--/.card-body-->
+      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
     </div><!--/.card-->
 
     {% for page in pages|selectattr("doc_type", 'defined_and_equalto', "References")|selectattr("supercategory", "undefined_or_ne", "rippled API") %}
@@ -46,6 +48,7 @@
             {% set parent_page = page %}
             {% include 'template-page-children.html' %}
           </div><!--/.card-body-->
+          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
         </div><!--/.card-->
       {% endif %}
     {% endfor %}

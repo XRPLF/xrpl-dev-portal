@@ -1,3 +1,4 @@
+{% set flag_n = cycler(* range(1,99)) %}
 <footer class="xrpl-footer" role="contentinfo">
   <section class="container-fluid card-grid card-grid-Nx1">
     {% set funnels = [] %}
@@ -14,7 +15,7 @@
             {% set count = 5 %}
             {% include 'template-page-children.html' %}
           </div><!--/.card-body-->
-          <div class="flag-vertical">0{{ funnels|length + 1 }}</div>
+          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
         </div><!--/.card -->
 
         {% set _ = funnels.append(page.funnel) %}
@@ -34,7 +35,7 @@
               </ul>
             </div>
           </div><!--/.card-body-->
-          <div class="flag-vertical">04</div>
+          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
         </div><!--/.card -->
   </section>
 
