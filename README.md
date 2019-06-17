@@ -1,7 +1,7 @@
 ripple-dev-portal
 =================
 
-The [Ripple Developer Portal](https://dev.ripple.com) is the authoritative source for Ripple documentation, including the `rippled` server, RippleAPI, the Ripple Data API, and other Ripple open-source software.
+The [Ripple Developer Portal](https://xrpl.org) is the authoritative source for Ripple documentation, including the `rippled` server, RippleAPI, the Ripple Data API, and other Ripple open-source software.
 
 
 Repository Layout
