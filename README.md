@@ -1,7 +1,7 @@
 ripple-dev-portal
 =================
 
-The [Ripple Developer Portal](https://xrpl.org) is the authoritative source for Ripple documentation, including the `rippled` server, RippleAPI, the Ripple Data API, and other Ripple open-source software.
+The [XRP Ledger Dev Portal](https://xrpl.org) is the authoritative source for XRP Ledger documentation, including the `rippled` server, RippleAPI, the Ripple Data API, and other open-source XRP Ledger software.
 
 
 Repository Layout
@@ -31,7 +31,7 @@ Dactyl uses Python 3 and a number of modules. First, make sure you have Python 3
 Contributing
 ------------
 
-The Developer Portal welcomes outside contributions, especially to the documentation contents. If you have any corrections, improvements, or expansions of the portal, please contribute pull requests to the **master** branch.
+The Dev Portal welcomes outside contributions, especially to the documentation contents. If you have any corrections, improvements, or expansions of the portal, please contribute pull requests to the **master** branch.
 
 Contributions become copyright Ripple and are provided under the MIT [LICENSE](LICENSE).
 
