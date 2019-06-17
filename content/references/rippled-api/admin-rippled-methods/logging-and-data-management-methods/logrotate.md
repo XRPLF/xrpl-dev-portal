@@ -1,11 +1,12 @@
 # logrotate
 [[Source]<br>](https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
 
-The `rippled logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
+The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 
-Most linux systems come preinstalled with `logrotate`. Application specific log rotation scripts are placed in `/etc/logrotate.d`
+Most Linux systems come preinstalled with a [`logrotate`](https://linux.die.net/man/8/logrotate) program, which is separate from this command. Application specific log rotation scripts are placed in `/etc/logrotate.d`
 
-The following script is a sample that can be created as /etc/logrotate.d/rippled
+The following script is a sample that can be created as `/etc/logrotate.d/rippled`
+
 ```
 /var/log/rippled/*.log {
   daily
@@ -23,9 +24,10 @@ The following script is a sample that can be created as /etc/logrotate.d/rippled
   endscript
 }
 ```
-Parameters such as `minsize` and `rotate` can be changed depending on the `log_level` set in `rippled.cfg`. This sample script is based on standard `log_level` and will store approximately 2 weeks worth of logs in a compressed format.
 
-**Note:** Only one system logrotate script should exist per application. Please ensure that you do not have any other log rotation that handles the same directory.
+You can configure parameters such as `minsize` and `rotate` depending on the amount of logs you keep. Use the `log_level` setting in your `rippled.cfg` file to configure how verbose your server's logs are. This sample script is based on standard `log_level` and will store approximately 2 weeks worth of logs in a compressed format.
+
+**Note:** You should have only one system logrotate script per application. Please ensure that you do not have any other log rotation that handles the same directory.
 
 _The `logrotate` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
