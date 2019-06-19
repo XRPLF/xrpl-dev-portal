@@ -238,13 +238,22 @@ When creating custom fields, be mindful of the field name you choose. If you use
 
 You MUST configure your web server to allow Cross-Origin Resource Sharing ([CORS][]) for the `xrp-ledger.toml` file. This configuration depends on your web server.
 
-If you use Apache HTTP Server, add the following to your config file or a `.htaccess` file:
+If you run an Apache HTTP Server, add the following to your config file:
 
 ```
 <Location "/.well-known/xrp-ledger.toml">
     Header set Access-Control-Allow-Origin "*"
 </Location>
 ```
+
+Alternatively, you can add the following to a `.htaccess` file in the `/.well-known/` directory of your server:
+
+```
+<Files "xrp-ledger.toml">
+    Header set Access-Control-Allow-Origin "*"
+</Files>
+```
+
 
 If you use nginx, add the following to your config file:
 
