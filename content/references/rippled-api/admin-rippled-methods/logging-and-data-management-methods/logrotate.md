@@ -3,6 +3,32 @@
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 
+Most Linux systems come preinstalled with a [`logrotate`](https://linux.die.net/man/8/logrotate) program, which is separate from this command. Application specific log rotation scripts are placed in `/etc/logrotate.d`
+
+The following script is a sample that can be created as `/etc/logrotate.d/rippled`
+
+```
+/var/log/rippled/*.log {
+  daily
+  minsize 200M
+  rotate 7
+  nocreate
+  missingok
+  notifempty
+  compress
+  compresscmd /usr/bin/nice
+  compressoptions -n19 ionice -c3 gzip
+  compressext .gz
+  postrotate
+    /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg logrotate
+  endscript
+}
+```
+
+You can configure parameters such as `minsize` and `rotate` depending on the amount of logs you keep. Use the `log_level` setting in your `rippled.cfg` file to configure how verbose your server's logs are. This sample script is based on standard `log_level` and will store approximately 2 weeks worth of logs in a compressed format.
+
+**Note:** You should have only one system logrotate script per application. Please ensure that you do not have any other log rotation that handles the same directory.
+
 _The `logrotate` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
 ### Request Format
