@@ -116,7 +116,7 @@ async function parse_xrpl_toml(data, domain) {
       for (j=0; j<fields.length; j++) {
         let fieldname = fields[j]
         if (entry[fieldname] !== undefined) {
-          let field_def = $("<li><strong>"+fieldname+":</strong> ").appendTo(entry_def)
+          let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
           $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
         }
       }
