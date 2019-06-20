@@ -6,7 +6,8 @@ Some advanced features of the XRP Ledger, such as [Escrow](escrow.html) and [Pay
 
 XRP also serves as a protective measure against spamming the network. All XRP Ledger addresses need a small amount of XRP to offset the costs of maintaining the XRP Ledger. The [transaction cost](transaction-cost.html) and [reserve](reserves.html) are neutral fees denominated in XRP and not paid to any party. In the ledger's data format, XRP is stored in [AccountRoot objects](accountroot.html).
 
-For more information on XRP's use cases, benefits, and news, see the [XRP Portal](https://ripple.com/xrp/).
+Some of the desirable properties of XRP come from the nature of the XRP Ledger and its [consensus process](consensus.html). The XRP Ledger does not require mining and the consensus process does not require multiple confirmations for immutability, which makes the XRP Ledger faster and more efficient at processing transactions than Bitcoin and other top cryptocurrencies.
+
 
 ## XRP Properties
 
