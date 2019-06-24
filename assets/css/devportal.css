@@ -1,5 +1,21 @@
 /* Generic styles and colors not in the bootstrap files --------------------- */
 
+
+body {
+  font-feature-settings: "liga", "kern";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.9375rem;
+}
+
+pre, code {
+  /* Disable ligatures on code-font, so, for example,
+  </ doesn't become a diagonal arrow. */
+  font-feature-settings: "liga" 0;
+  font-variant-ligatures: none;
+}
+
+
 th, td {
   padding: 0.2em;
   vertical-align: text-top;
@@ -149,14 +165,6 @@ td:nth-child(1) {
 
 }
 
-
-
-body {
-  font-feature-settings: "liga", "kern";
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  font-size: 0.9375rem;
-}
 .row {
   margin: 0 -1px;
 }
