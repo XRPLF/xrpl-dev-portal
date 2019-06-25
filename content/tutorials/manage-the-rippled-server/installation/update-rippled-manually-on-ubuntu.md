@@ -1,5 +1,7 @@
 # Update Manually on Ubuntu
 
+***TODO: Update for 1.3.0***
+
 This page describes how to update manually to the latest release of `rippled` on Ubuntu Linux. These instructions assume you have already [installed `rippled` using Alien](install-rippled-on-ubuntu-with-alien.html).
 
 To update manually, complete the following steps:
@@ -29,7 +31,7 @@ To update manually, complete the following steps:
         $ sudo service rippled restart
 
 7. Delete the downloaded `rippled` package file:
-        
+
         $ rm rippled*.rpm
-        
+
     (This does not affect the installation, but prevents later updates from trying to re-install the old version.)

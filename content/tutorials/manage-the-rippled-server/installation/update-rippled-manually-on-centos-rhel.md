@@ -1,5 +1,7 @@
 # Update Manually on CentOS/Red Hat
 
+***TODO: update for 1.3.0***
+
 This page describes how to update manually to the latest release of `rippled` on CentOS or Red Hat Enterprise Linux. Ripple recommends setting up [automatic updates](update-rippled-automatically-on-centos-rhel.html) instead, where possible.
 
 These instructions assume you have already [installed `rippled` from the `yum` repository](install-rippled-on-centos-rhel-with-yum.html).
