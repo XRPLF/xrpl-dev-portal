@@ -25,19 +25,35 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         $ wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | \
           sudo apt-key add -
 
-    The key should match the following fingerprint:
+4. Check the fingerprint of the newly-added key:
 
-        C001 0EC2 05B3 5A33 10DC 90DE 395F 97FF CCAF D9A2
+        $ apt-key finger
+
+    The output should include an entry for Ripple such as the following:
+
+        pub   rsa3072 2019-02-14 [SC] [expires: 2012-02-13]
+              C001 0EC2 05B3 5A33 10DC 90DE 395F 97FF CCAF D9A2
+        uid           [ unknown] TechOps Team at Ripple <techops+rippled@ripple.com>
+        sub   rsa3072 2019-02-14 [E] [expires: 2021-02-13]
+
+    In particular, make sure that the fingerprint  matches. (In the above example, the fingerprint is on the second line, starting with `C001`.)
 
 4. Add the appropriate Ripple repository for your operating system version:
 
-        $ sudo echo "deb https://repos.ripple.com/repos/rippled-deb bionic stable" > \
-            /etc/apt/sources.list.d/ripple.list
+        $ echo "deb https://repos.ripple.com/repos/rippled-deb bionic stable" | \
+            sudo tee -a /etc/apt/sources.list.d/ripple.list
 
     The above example is appropriate for **Ubuntu 18.04 Bionic Beaver**. For other operating systems, replace the word `bionic` with one of the following:
 
     - `xenial` for **Ubuntu 16.04 Xenial Xerus**
     - `stretch` for **Debian 9 Stretch**
+
+    If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:
+
+    - `unstable` - Pre-release builds ([`release` branch](https://github.com/ripple/rippled/tree/release))
+    - `nightly` - Experimental/development builds ([`develop` branch](https://github.com/ripple/rippled/tree/develop))
+
+    **Warning:** Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.
 
 5. Fetch the Ripple repository.
 
@@ -51,7 +67,6 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
         $ systemctl status rippled.service
 
-    ***TODO: confirm it starts automatically***
     The `rippled` service should start automatically. If not, you can start it manually:
 
         $ sudo systemctl start rippled.service
