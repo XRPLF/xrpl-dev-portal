@@ -9,9 +9,8 @@ This document provides migration steps for upgrading on supported platforms:
 
 For other platforms, see the updated instructions for compiling from source. ([Ubuntu](build-run-rippled-ubuntu.html), [macOS](build-run-rippled-macos.html), or [Windows](https://github.com/ripple/rippled/tree/develop/Builds/VisualStudio2017))
 
-# Migration on CentOS or Red Hat Enterprise Linux (RHEL)
 
-***TODO: Test. Might be same as manual install steps***
+## Migration on CentOS or Red Hat Enterprise Linux (RHEL)
 
 Ripple's official RPM repository and instructions for using it have changed. To migrate from the old repository to the new one, complete the following steps:
 
@@ -19,45 +18,41 @@ Ripple's official RPM repository and instructions for using it have changed. To 
 
         $ sudo systemctl stop rippled.service
 
-2. Back up your configuration files.
+2. Replace Ripple's old yum repo file with the new one:
 
-    Copy your configuration files to a temporary directory. For example:
+        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        [ripple-stable]
+        name=XRP Ledger Packages
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/stable/
+        enabled=1
+        gpgcheck=0
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
+        repo_gpgcheck=1
+        REPOFILE
 
-        $ mkdir ~/rippled_config_backup
-        $ cp /opt/ripple/etc/rippled.cfg ~/rippled_config_backup
-        $ cp /opt/ripple/etc/validators.txt ~/rippled_config_backup
+3. Fetch the latest repo updates:
 
-    You may need to adjust the paths to the `rippled.cfg` and `validators.txt` files to match your configuration.
+        $ sudo yum -y update
 
-3. Back up your data files.
+4. Install the new `rippled` package:
 
-    Copy your rippled server's database files to a temporary directory. For example:
+        $ sudo yum install rippled
 
-        $ mkdir ~/rippled_data_backup
-        $ cp -r /var/lib/rippled/db/ ~/rippled_data_backup
+    Version 1.3.0 does not require any changes to your configuration files (`rippled.cfg` and `validators.txt`). This update procedure leaves your existing config files in place.
 
-    You may need to adjust the path to your database files to match your configuration. You should be sure to copy all database files, including SQLite databases (`.sqlite` and `.db` files), NuDB or RocksDB files for the [ledger store](ledger-history.html), and the [shard store](history-sharding.html) if you have history sharding enabled.
+5. Reload systemd unit files:
 
-    This process may take a long time, depending on how much data you have stored.
+        $ sudo systemctl daemon-reload
 
-    **Caution:** You can choose to skip this step if you do not need the ledger history data. Your server can download the necessary amount of ledger data from the peer-to-peer network after it comes back online. Validators and simple stock servers do not need large amounts of historical data to keep up with the progress of the XRP Ledger.
+6. Start the `rippled` service:
 
-4. Update the
-
-***TODO: instructions per https://github.com/ripple/ripple-dev-portal/issues/544***
-
-Roughly:
-
-- stop rippled
-- backup data & config
-- uninstall package w/ `rpm -e` or `yum remove`
-- install 1.3 the standard way
-- stop rippled
-- restore config & data files
-- start rippled, check status
+        $ sudo systemctl start rippled.service
 
 
-# Migration on Ubuntu Linux
+**Tip:** If you had [automatic updates](update-rippled-automatically-on-linux.html) enabled before 1.3.0, they should continue working after performing this migration process.
+
+
+## Migration on Ubuntu Linux
 
 Prior to version 1.3.0, the supported way to install `rippled` on Ubuntu Linux was using Alien to install the RPM package. Starting with `rippled` v1.3.0, Ripple provides a native package for Ubuntu and Debian Linux, which is the recommended way of installing it. If you already have the RPM package installed, complete the [installation steps](install-rippled-on-ubuntu.html) to upgrade the package and switch over to the native APT (`.deb`) package.
 
@@ -74,6 +69,6 @@ After installing the new package, if you no longer need Alien for any other pack
         $ sudo apt -y autoremove
 
 
-## Automatic Updates
+### Automatic Updates
 
 The `rippled` v1.3.0 package includes an updated auto-update script that works on Ubuntu and Debian Linux. For more information, see [Update `rippled` Automatically on Linux](update-rippled-automatically-on-linux.html).
