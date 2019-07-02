@@ -37,7 +37,7 @@ rippled ledger_closed
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_closed)
+[Try it! >](websocket-api-tool.html#ledger-closed)
 
 This method accepts no parameters.
 

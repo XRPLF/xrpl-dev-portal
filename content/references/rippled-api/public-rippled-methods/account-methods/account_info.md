@@ -47,7 +47,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#account_info)
+[Try it! >](websocket-api-tool.html#account-info)
 
 The request contains the following parameters:
 

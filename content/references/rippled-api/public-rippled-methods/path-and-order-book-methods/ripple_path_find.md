@@ -72,7 +72,7 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ripple_path_find)
+[Try it! >](websocket-api-tool.html#ripple-path-find)
 
 The request includes the following parameters:
 

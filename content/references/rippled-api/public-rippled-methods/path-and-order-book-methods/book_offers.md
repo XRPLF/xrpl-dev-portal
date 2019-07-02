@@ -56,7 +56,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#book_offers)
+[Try it! >](websocket-api-tool.html#book-offers)
 
 The request includes the following parameters:
 

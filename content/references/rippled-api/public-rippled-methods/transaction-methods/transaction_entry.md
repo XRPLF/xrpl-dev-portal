@@ -43,7 +43,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#transaction_entry)
+[Try it! >](websocket-api-tool.html#transaction-entry)
 
 The request includes the following parameters:
 

@@ -38,7 +38,7 @@ rippled ledger_current
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_current)
+[Try it! >](websocket-api-tool.html#ledger-current)
 
 The request contains no parameters.
 

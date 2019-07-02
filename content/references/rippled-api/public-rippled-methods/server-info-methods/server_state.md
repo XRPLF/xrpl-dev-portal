@@ -37,7 +37,7 @@ rippled server_state
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#server_state)
+[Try it! >](websocket-api-tool.html#server-state)
 
 The request does not takes any parameters.
 

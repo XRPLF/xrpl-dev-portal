@@ -34,7 +34,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#account_lines)
+[Try it! >](websocket-api-tool.html#account-lines)
 
 The request accepts the following paramters:
 
