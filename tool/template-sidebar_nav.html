@@ -100,7 +100,7 @@
                         {% endif %}
 
                         {% for subpage in catpages|selectattr('subcategory', 'defined_and_equalto', page.subcategory) %}
-                          {% if subpage != page %}
+                          {% if subpage != page and subpage.template != "template-redirect.html" %}
                             {% if subpage == currentpage %}
                             <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                             {% else %}
@@ -164,7 +164,7 @@
                         <!-- DEBUG: category_members is {{ category_members }} -->
                         {% for subsubpage in category_members %}
                           {% if subsubpage != subpage and (subsubpage.subcategory is undefined or
-                              subsubpage == category_members|selectattr('subcategory', 'defined_and_equalto', subsubpage.subcategory)|first) %}
+                              subsubpage == category_members|selectattr('subcategory', 'defined_and_equalto', subsubpage.subcategory)|first) and subsubpage.template != "template-redirect.html" %}
                             <li><a class="subpage" href="{{ subsubpage.html }}">{{ subsubpage.name }}{% if subsubpage.status is defined and subsubpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                           {% endif %}
                         {% endfor %}
@@ -228,7 +228,7 @@
                         {% if subpage != page %}
                           {% if subpage == currentpage %}
                           <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                          {% else %}
+                          {% elif subpage.template != "template-redirect.html" %}
                           <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                           {% endif %}
                         {% endif %}
