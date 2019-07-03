@@ -4,7 +4,7 @@ On Linux, you can set up `rippled` to automatically upgrade to the latest versio
 
 These instructions assume you have already installed `rippled` [from the `yum` repository (CentOS/RedHat)](install-rippled-on-centos-rhel-with-yum.html) or [using `apt` (Ubuntu/Debian)](install-rippled-on-ubuntu.html).
 
-**Warning:** As of version 1.3.0, the install and upgrade process has changed. Automatic updates **will not** upgrade to `rippled` 1.3.0. If you have `rippled` v1.2.4 or lower installed, follow the [rippled 1.3.0 migration instructions](rippled-1-3-0-migration-instructions.html) first. After performing the migration, automatic updates should work again.
+**Warning:** As of version 1.3.0, the install and upgrade process has changed. Automatic updates **will not** upgrade from `rippled` 1.2.4 or lower to `rippled` 1.3.0 or higher. If you have `rippled` v1.2.4 or lower installed, follow the [rippled 1.3.0 migration instructions](rippled-1-3-0-migration-instructions.html) first. After performing the migration, automatic updates should work again.
 
 To set up automatic updates, complete the following steps:
 
