@@ -31,7 +31,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 4. Install CMake.
 
-    Version 1.2.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
+    Version 1.3.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
 
     If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
 
@@ -44,7 +44,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.2.0 of `rippled` requires Boost version 1.67.0 exactly. Because Boost version 1.67.0 isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
+    Version 1.3.0 of `rippled` requires Boost version 1.67.0 or higher. Because Boost version 1.67.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself.
 
     If you have previously built Boost 1.67.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
@@ -85,6 +85,8 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
         git checkout master
 
 7. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
+
+    ***TODO: Add the 1.3.0 release commit***
 
         $ git log -1
 

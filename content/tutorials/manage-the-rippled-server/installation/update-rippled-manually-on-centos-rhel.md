@@ -4,6 +4,8 @@ This page describes how to update manually to the latest release of `rippled` on
 
 These instructions assume you have already [installed `rippled` from the `yum` repository](install-rippled-on-centos-rhel-with-yum.html).
 
+**Tip:** To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package.
+
 To update manually, complete the following steps:
 
 1. Download and install the latest `rippled` package:

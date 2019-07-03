@@ -4,7 +4,7 @@ This page describes how to update manually to the latest release of `rippled` on
 
 **Caution:** To upgrade from `rippled` 1.2.x to 1.3.0 or higher on Ubuntu Linux, you should follow the [1.3.0 migration instructions](rippled-1-3-0-migration-instructions.html). The following instructions assume you have already installed the native APT package provided with versions 1.3.0 and up.
 
-**Tip:** To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package and is compatible with Ubuntu and Debian start with `rippled` version 1.3.0.
+**Tip:** To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package and is compatible with Ubuntu and Debian starting with `rippled` version 1.3.0.
 
 To update manually, complete the following steps:
 
