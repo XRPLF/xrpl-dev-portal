@@ -123,7 +123,7 @@ Connecting to 127.0.0.1:5005
 
 The response follows the [standard format][]. The response format depends on whether the request specified a `severity`. If it did, the log level is changed and a successful result contains no additional fields.
 
-Otherwise, the request contains the following field:
+Otherwise, the response contains the following field:
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
