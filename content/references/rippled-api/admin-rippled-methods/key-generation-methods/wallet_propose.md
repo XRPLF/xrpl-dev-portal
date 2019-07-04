@@ -3,7 +3,7 @@
 
 Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](accounts.html#creating-accounts) that provides enough XRP to meet the [reserve requirement](reserves.html).
 
-*The `wallet_propose` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
+*The `wallet_propose` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
 [Updated in: rippled 0.31.0][New in: rippled 0.31.0]
 

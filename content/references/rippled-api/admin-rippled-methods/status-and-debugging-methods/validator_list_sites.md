@@ -3,7 +3,7 @@
 
 The `validator_list_sites` command returns status information of sites serving validator lists. [New in: rippled 0.80.1][]
 
-*The `validator_list_sites` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
+*The `validator_list_sites` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:

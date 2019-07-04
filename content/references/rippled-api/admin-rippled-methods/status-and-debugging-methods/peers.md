@@ -3,7 +3,7 @@
 
 The `peers` command returns a list of all other `rippled` servers currently connected to this one over the [Peer Protocol](peer-protocol.html), including information on their connection and sync status.
 
-*The `peers` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
+*The `peers` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:

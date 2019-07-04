@@ -3,7 +3,7 @@
 
 Gracefully shuts down the server.
 
-*The `stop` request is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
+*The `stop` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:
