@@ -69,8 +69,6 @@ rippled sign s██████████████████████
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#sign)
-
 To sign a transaction, you must provide a secret key that can [authorize the transaction](transaction-basics.html#authorizing-transactions). You can do this in a few ways:
 
 * Provide a `secret` value and omit the `key_type` field. This value can be formatted as an XRP Ledger [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
