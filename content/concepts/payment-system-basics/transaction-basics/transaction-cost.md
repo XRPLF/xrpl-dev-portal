@@ -1,6 +1,6 @@
 # Transaction Cost
 
-To protect the XRP Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](https://ripple.com/xrp-portal/). This _transaction cost_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
+To protect the XRP Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](xrp.html). This _transaction cost_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
 
 Every transaction must [specify how much XRP to destroy](#specifying-the-transaction-cost) to pay the transaction cost.
 
