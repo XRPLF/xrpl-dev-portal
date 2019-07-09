@@ -12,7 +12,7 @@ For other platforms, see the updated instructions for compiling from source. ([U
 
 ## Migration on CentOS or Red Hat Enterprise Linux (RHEL)
 
-Ripple's official RPM repository and instructions for using it have changed. To migrate from the old repository to the new one, complete the following steps:
+Ripple's official RPM repository and instructions for using it have changed. If you have [automatic updates](update-rippled-automatically-on-linux.html) enabled, your system should perform the migration automatically. To migrate manually from the old repository to the new one, complete the following steps:
 
 1. Stop the `rippled` server.
 
@@ -21,6 +21,8 @@ Ripple's official RPM repository and instructions for using it have changed. To 
 2. Remove the old Ripple repository package.
 
         $ sudo rpm -e ripple-repo
+
+    The `rippled-repo` package is **DEPRECATED** as of `rippled` version 1.3.0. The package has been updated one last time for 1.3.0. In the future, any changes to the repositories will require manual changes to your repos file.
 
 3. Add Ripple's new yum repository:
 
@@ -49,7 +51,7 @@ Ripple's official RPM repository and instructions for using it have changed. To 
         $ sudo systemctl start rippled.service
 
 
-**Tip:** If you had [automatic updates](update-rippled-automatically-on-linux.html) enabled before 1.3.0, they should continue working after performing this migration process.
+**Warning:** If you use [automatic updates](update-rippled-automatically-on-linux.html), they should continue working after performing this migration process. However, **the `ripple-repo` package is now deprecated**. As a consequence, in the future, any changes to Ripple's repositories may require you to manually update your repos file.
 
 
 ## Migration on Ubuntu Linux
