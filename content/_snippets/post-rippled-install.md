@@ -48,4 +48,4 @@ If you change the `[debug_logfile]` or `[database_path]` sections, you may need 
 
 You must update `rippled` regularly to remain synced with the rest of the XRP Ledger network. You can subscribe to the [rippled Google Group](https://groups.google.com/forum/#!forum/ripple-server) to receive notifications of new `rippled` releases.
 
-The `rippled` package includes a script you can use to [enable automatic updates on Linux](update-rippled-automatically.html). On other platforms, you must update manually.
+The `rippled` package includes a script you can use to [enable automatic updates on Linux](update-rippled-automatically-on-linux.html). On other platforms, you must update manually.

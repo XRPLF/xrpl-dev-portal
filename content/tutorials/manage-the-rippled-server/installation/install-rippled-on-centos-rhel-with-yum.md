@@ -32,7 +32,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
         $ sudo yum install rippled
 
-    Version 1.3.0 does not require any changes to your configuration files (`rippled.cfg` and `validators.txt`). This update procedure leaves your existing config files in place.
+    Version 1.3.0 does not require any changes to your config files (`rippled.cfg` and `validators.txt`). This update procedure leaves your existing config files in place.
 
 4. Reload systemd unit files:
 

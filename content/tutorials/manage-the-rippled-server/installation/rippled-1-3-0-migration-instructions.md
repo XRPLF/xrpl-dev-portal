@@ -1,6 +1,6 @@
 # rippled v1.3.0 Migration Instructions
 
-This document describes the migration process for upgrading from `rippled` 1.2.4 or earlier to `rippled` v1.3.0 or later. This is necessary because the `rippled` install process has changed as of version 1.3.0.
+This document describes the migration process for upgrading from `rippled` 1.2.4 or earlier to `rippled` v1.3.0 or later. This migration process is necessary because the `rippled` install process has changed as of version 1.3.0.
 
 This document provides migration steps for upgrading on supported platforms:
 
@@ -18,7 +18,11 @@ Ripple's official RPM repository and instructions for using it have changed. To 
 
         $ sudo systemctl stop rippled.service
 
-2. Replace Ripple's old yum repo file with the new one:
+2. Remove the old Ripple repository package.
+
+        $ sudo rpm -e ripple-repo
+
+3. Add Ripple's new yum repository:
 
         $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-stable]
@@ -30,15 +34,11 @@ Ripple's official RPM repository and instructions for using it have changed. To 
         repo_gpgcheck=1
         REPOFILE
 
-3. Fetch the latest repo updates:
-
-        $ sudo yum -y update
-
 4. Install the new `rippled` package:
 
         $ sudo yum install rippled
 
-    Version 1.3.0 does not require any changes to your configuration files (`rippled.cfg` and `validators.txt`). This update procedure leaves your existing config files in place.
+    Version 1.3.0 does not require any changes to your config files (`rippled.cfg` and `validators.txt`). This update procedure leaves your existing config files in place.
 
 5. Reload systemd unit files:
 

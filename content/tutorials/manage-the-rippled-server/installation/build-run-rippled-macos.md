@@ -82,7 +82,7 @@ For development purposes Ripple recommends running `rippled` as your own user, n
 
         $ ./rippled --unittest
 
-0. `rippled` requires the `rippled.cfg` configuration file to run. You can find an example config file, `rippled-example.cfg` in `rippled/cfg`. Make a copy and save it as `rippled.cfg` in a location that enables you to run `rippled` as a non-root user. Access the `rippled` directory and run:
+0. `rippled` requires the `rippled.cfg` config file to run. You can find an example config file, `rippled-example.cfg` in `rippled/cfg`. Make a copy and save it as `rippled.cfg` in a location that enables you to run `rippled` as a non-root user. Access the `rippled` directory and run:
 
         $ mkdir -p $HOME/.config/ripple
         $ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg

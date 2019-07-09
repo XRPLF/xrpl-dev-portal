@@ -1,6 +1,6 @@
 # Install on Ubuntu or Debian Linux
 
-This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 16.04 or higher** or **Debian 9 (Stretch)**, using the [apt](https://help.ubuntu.com/lts/serverguide/apt.html) utility. [Updated in: rippled 1.3.0][New in: rippled 1.3.0]
+This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 16.04 or higher** or **Debian 9 (Stretch)**, using the [`apt`](https://help.ubuntu.com/lts/serverguide/apt.html) utility. [Updated in: rippled 1.3.0][New in: rippled 1.3.0]
 
 These instructions install a binary that has been compiled by Ripple.
 
@@ -12,7 +12,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 ## Installation Steps
 
-1. Update apt repositories:
+1. Update repositories:
 
         $ sudo apt -y update
 
@@ -31,12 +31,12 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     The output should include an entry for Ripple such as the following:
 
-        pub   rsa3072 2019-02-14 [SC] [expires: 2012-02-13]
+        pub   rsa3072 2019-02-14 [SC] [expires: 2021-02-13]
               C001 0EC2 05B3 5A33 10DC 90DE 395F 97FF CCAF D9A2
         uid           [ unknown] TechOps Team at Ripple <techops+rippled@ripple.com>
         sub   rsa3072 2019-02-14 [E] [expires: 2021-02-13]
 
-    In particular, make sure that the fingerprint  matches. (In the above example, the fingerprint is on the second line, starting with `C001`.)
+    In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with `C001`.)
 
 4. Add the appropriate Ripple repository for your operating system version:
 

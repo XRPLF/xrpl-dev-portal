@@ -14,4 +14,4 @@ To set up automatic updates, complete the following steps:
 
         $ sudo ln -s /opt/ripple/etc/update-rippled-cron /etc/cron.d/
 
-    This cron configuration runs a script to update installed `rippled` package within an hour of each new release. To reduce the chance of outages from all servers updating simultaneously, the script delays the update for a random number of minutes, up to 59.
+    This cron configuration runs a script to update the installed `rippled` package within an hour of each new release. To reduce the chance of outages from all servers updating simultaneously, the script delays the update for a random number of minutes, up to 59.

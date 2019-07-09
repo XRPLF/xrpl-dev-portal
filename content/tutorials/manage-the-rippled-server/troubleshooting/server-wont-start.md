@@ -94,7 +94,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/
 Aborted (core dumped)
 ```
 
-The paths to the configuration file (`/home/rippled/.config/ripple/rippled.cfg`) and the database path (`/var/lib/rippled/db`) may vary depending on your system.
+The paths to the config file (`/home/rippled/.config/ripple/rippled.cfg`) and the database path (`/var/lib/rippled/db`) may vary depending on your system.
 
 Possible solutions:
 

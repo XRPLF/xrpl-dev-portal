@@ -10,7 +10,7 @@ This tutorial assumes your server meets the following prerequisites:
 
 - The `rippled` server is already [installed](install-rippled.html) and [online deletion](online-deletion.html) is enabled.
 
-    The default configuration file enables online deletion after 2000 ledger versions.
+    The default config file enables online deletion after 2000 ledger versions.
 
 - A `cron` daemon is installed and running.
 
