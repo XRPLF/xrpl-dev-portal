@@ -8,7 +8,7 @@ This page describes how to update manually to the latest release of `rippled` on
 
 To update manually, complete the following steps:
 
-1. Update apt repositories:
+1. Update repositories:
 
         $ sudo apt -y update
 
