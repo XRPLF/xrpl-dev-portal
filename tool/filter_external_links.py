@@ -28,4 +28,7 @@ def filter_soup(soup, **kwargs):
                     "aria-hidden": "true"})
             link.append(" ")
             link.append(ex_link_marker)
-            link['class'] = link.get('class',[]) + ['external-link']
+            oldclass = link.get('class',[])
+            if type(oldclass) == str:
+                oldclass = [oldclass]
+            link['class'] = oldclass + ['external-link']
