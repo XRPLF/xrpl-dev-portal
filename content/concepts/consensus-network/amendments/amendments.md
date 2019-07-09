@@ -219,7 +219,7 @@ To look up which `rippled` version supports these features, see [Known Amendment
 
 ## Testing Amendments
 
-If you want to see how `rippled` behaves with an amendment enabled, before that amendment gets enabled on the production network, you can run use `rippled`'s configuration file to forcibly enable a feature. This is intended for development purposes only.
+If you want to see how `rippled` behaves with an amendment enabled, before that amendment gets enabled on the production network, you can run use `rippled`'s config file to forcibly enable a feature. This is intended for development purposes only.
 
 Because other members of the consensus network probably do not have the feature enabled, you should not use this feature while connecting to the production network. While testing with features forcibly enabled, you should run `rippled` in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode).
 

@@ -54,7 +54,7 @@ Use these methods to check the status of the network and server.
 The following admin commands are deprecated and may be removed without further notice:
 
 * `ledger_header` - Use the [ledger method][] instead.
-* `unl_add`, `unl_delete`, `unl_list`, `unl_load`, `unl_network`, `unl_reset`, `unl_score` - Use the configuration file for UNL management instead.
+* `unl_add`, `unl_delete`, `unl_list`, `unl_load`, `unl_network`, `unl_reset`, `unl_score` - Use the `validators.txt` config file for UNL management instead.
 * `wallet_seed` - Use the [wallet_propose method][] instead.
 
 
