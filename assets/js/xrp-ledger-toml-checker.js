@@ -1,5 +1,5 @@
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
-const TIPS = '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTP settings, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>'
+const TIPS = '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>'
 const CLASS_GOOD = "badge badge-success"
 const CLASS_BAD = "badge badge-danger"
 
@@ -97,12 +97,21 @@ async function parse_xrpl_toml(data, domain) {
 
   console.log(parsed)
 
-  if (parsed.METADATA.modified) {
-    const mod_log = makeLogEntry("Modified date: ")
-    try {
-      mod_log.resolve(parsed.METADATA.modified.toISOString()).addClass(CLASS_GOOD)
-    } catch(e) {
-      mod_log.resolve("INVALID").addClass(CLASS_BAD)
+  if (parsed.hasOwnProperty("METADATA")) {
+    const metadata_type = makeLogEntry("Metadata section: ")
+    if (Array.isArray(parsed.METADATA)) {
+      metadata_type.resolve("Wrong type - should be table").addClass(CLASS_BAD)
+    } else {
+      metadata_type.resolve("Found").addClass(CLASS_GOOD)
+
+      if (parsed.METADATA.modified) {
+        const mod_log = makeLogEntry("Modified date: ")
+        try {
+          mod_log.resolve(parsed.METADATA.modified.toISOString()).addClass(CLASS_GOOD)
+        } catch(e) {
+          mod_log.resolve("INVALID").addClass(CLASS_BAD)
+        }
+      }
     }
   }
 
@@ -132,24 +141,44 @@ async function parse_xrpl_toml(data, domain) {
   }
 
   if (parsed.ACCOUNTS) {
-    list_entries("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS, async function(acct) {
-      if (acct.address === undefined) {return undefined}
-      let net
-      if (acct.network === undefined) { net = "main" } else { net = acct.network }
-      return await validate_address_domain_on_net(acct.address, domain, net)
-    })
+    if (!Array.isArray(parsed.ACCOUNTS)) {
+      makeLogEntry("Accounts:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+    } else {
+      list_entries("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS, async function(acct) {
+        if (acct.address === undefined) {return undefined}
+        let net
+        if (acct.network === undefined) { net = "main" } else { net = acct.network }
+        return await validate_address_domain_on_net(acct.address, domain, net)
+      })
+    }
   }
   if (parsed.VALIDATORS) {
-    list_entries("Validators:", parsed.VALIDATORS, VALIDATOR_FIELDS)
+    if (!Array.isArray(parsed.VALIDATORS)) {
+      makeLogEntry("Validators:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+    } else {
+      list_entries("Validators:", parsed.VALIDATORS, VALIDATOR_FIELDS)
+    }
   }
   if (parsed.PRINCIPALS) {
-    list_entries("Principals:", parsed.PRINCIPALS, PRINCIPAL_FIELDS)
+    if (!Array.isArray(parsed.PRINCIPALS)) {
+      makeLogEntry("Principals:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+    } else {
+      list_entries("Principals:", parsed.PRINCIPALS, PRINCIPAL_FIELDS)
+    }
   }
   if (parsed.SERVERS) {
-    list_entries("Servers:", parsed.SERVERS, SERVER_FIELDS)
+    if (!Array.isArray(parsed.SERVERS)) {
+      makeLogEntry("Servers:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+    } else {
+      list_entries("Servers:", parsed.SERVERS, SERVER_FIELDS)
+    }
   }
   if (parsed.CURRENCIES) {
-    list_entries("Currencies:", parsed.CURRENCIES, CURRENCY_FIELDS)
+    if (!Array.isArray(parsed.CURRENCIES)) {
+      makeLogEntry("Currencies:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+    } else {
+      list_entries("Currencies:", parsed.CURRENCIES, CURRENCY_FIELDS)
+    }
   }
 }
 
