@@ -24,9 +24,9 @@ For development purposes Ripple recommends running `rippled` as your own user, n
 
         $ brew install git cmake pkg-config protobuf openssl ninja
 
-0. Install Boost 1.67.0 or higher. `rippled` 1.3.0 is compatible with Boost 1.67.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually:
+0. Install Boost 1.70.0 or higher. `rippled` 1.3.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually:
 
-      1. Download [Boost 1.67.0](https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.bz2).
+      1. Download [Boost 1.70.0](https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2).
 
       2. Extract it to a folder. Be sure to note the location.
 
@@ -38,7 +38,7 @@ For development purposes Ripple recommends running `rippled` as your own user, n
 
 0. Ensure that your `BOOST_ROOT` environment variable points to the directory created by the Boost installation. To find your Boost install directory, use `brew info boost`. Put this environment variable in your `.bash_profile` file so it's automatically set when you log in. For example:
 
-        export BOOST_ROOT=/Users/my_user/boost_1_67_0
+        export BOOST_ROOT=/Users/my_user/boost_1_70_0
 
 0. If you updated your `.bash_profile` file in the previous step, be sure to source it. For example:
 
