@@ -1,12 +1,12 @@
 # Ripple Data API v2
 
-The Ripple Data API v2 provides access to information about changes in the XRP Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, which frees `rippled` servers to keep fewer historical ledger versions. The Data API v2 also acts as data source for applications such as [XRP Charts](https://xrpcharts.ripple.com/) and [ripple.com](https://www.ripple.com).
+The Ripple Data API v2 provides access to information about changes in the XRP Ledger, including transaction history and processed analytical data. This information is stored in a dedicated database, with a REST-like interface to present the data in various formats.
 
-Ripple provides a live instance of the Data API with as complete a transaction record as possible at the following address:
+Ripple provides the Data API as a public service at the following address:
 
 [**https://data.ripple.com**](https://data.ripple.com)
 
-You can run a historical database yourself, but we don’t recommend it because of the complexity involved. If your use case requires that you run a historical database, contact [Ripple Technical Services](mailto:support@ripple.com) for information about how to set it up.
+**Legal Disclaimer:** The Data API and the data it serves are provided "as is" and for informational purposes only. Ripple does not guarantee the availability or accuracy of the Data API or the data it provides. RIPPLE MAKES NO REPRESENTATION OR WARRANTY OF ANY KIND, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTIBILITY, FITNESS FOR A PARTICULAR PURPOSE, SUITABILITY, TITLE, NON-INFRINGEMENT OR CLAIM OF RIGHT OR ANY WARRANTIES OR OBLIGATIONS ARISING FROM A COURSE OF DEALING, USAGE OR TRADE PRACTICE, AND ALL SUCH REPRESENTATIONS AND WARRANTIES AND OBLIGATIONS ARE HEREBY DISCLAIMED. RIPPLE FURTHER DOES NOT REPRESENT OR WARRANT THAT OPERATION OF THE DATA API THE DATA IT PROVIDES WILL BE ERROR FREE OR UNINTERRUPTED. You are prohibited from using the Data API or the data it provides, in whole or in part, as a consumer product or in any system considered critical infrastructure.
 
 
 
