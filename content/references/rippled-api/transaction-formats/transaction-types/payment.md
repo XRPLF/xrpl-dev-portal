@@ -1,7 +1,7 @@
 # Payment
 [[Source]<br>](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "Source")
 
-A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, this can involve additional exchanges of value, which occur atomically.)
+A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, this can involve additional exchanges of value, which occur atomically.) This transaction type can be used for several [types of payments](#types-of-payments).
 
 Payments are also the only way to [create accounts](#creating-accounts).
 
@@ -36,6 +36,24 @@ Payments are also the only way to [create accounts](#creating-accounts).
 | Paths          | Array of path arrays | PathSet           | (Optional, auto-fillable) Array of [payment paths](paths.html) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
 | SendMax        | [Currency Amount][]  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](transfer-fees.html), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](transaction-cost.html). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
 | DeliverMin     | [Currency Amount][]  | Amount            | _(Optional)_ Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](partial-payments.html). For non-XRP amounts, the nested field names are lower-case. |
+
+## Types of Payments
+
+The Payment transaction type is a general-purpose tool that can represent several different types of abstract actions. You can identify the transaction type based on the transaction's fields, as described in the table below:
+
+| Payment type                              | `Amount`                        | `SendMax`                       | `Paths`          | `Address` = `Destination`? | Description |
+|:------------------------------------------|:--------------------------------|:--------------------------------|:-----------------|:--|
+| [Direct XRP-to-XRP Payment][]             | String (XRP)                    | Omitted                         | Omitted          | No | Transfers XRP directly from one account to another. Always delivers the exact amount. No fee applies other than the basic [transaction cost](transaction-cost.html). |
+| [Creating or redeeming issued currency][] | Object                          | Object (optional)               | Optional         | No | Increases or decreases the amount of a non-XRP currency or asset tracked in the XRP Ledger. [Transfer fees](transfer-fees.html) and [freezes](freezes.html) do not apply when sending and redeeming directly. |
+| [Cross-currency Payment][]                | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Send issued currency from one holder to another. The `Amount` and `SendMax` cannot _both_ be XRP. These payments [ripple through](rippling.html) the issuer and can take longer [paths](paths.html) through several intermediaries if the transaction specifies a path set. [Transfer fees](transfer-fees.html) set by the issuer(s) apply to this type of transaction. These transactions consume offers in the [decentralized exchange](decentralized-exchange.html) to connect between different currencies, or possibly even between currencies with the same currency code and different issuers. |
+| [Partial payments][]                      | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Sends _up to_ a specific amount of any currency. Uses the [tfPartialPayment flag](#payment-flags). May include a `DeliverMin` amount specifying the minimum that the transaction must deliver to be successful; if the transaction does not specify `DeliverMin`, it can succeed by delivering _any positive amount_. |
+| Currency conversion                       | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Required         | Yes | Consumes offers in the [decentralized exchange](decentralized-exchange.html) to convert one currency to another, possibly taking [arbitrage](https://en.wikipedia.org/wiki/Arbitrage) opportunities. The `Amount` and `SendMax` cannot both be XRP. Also called a _circular payment_ because it delivers money to the sender. The [Data API](data-api.html) tracks this type of transaction as an "exchange" and not a "payment". |
+
+[Direct XRP-to-XRP Payment]: payments.html
+[Creating or redeeming issued currency]: issued-currencies-overview.html
+[Cross-currency Payment]: cross-currency-payments.html
+[Partial payments]: partial-payments.html
+
 
 ## Special issuer Values for SendMax and Amount
 
