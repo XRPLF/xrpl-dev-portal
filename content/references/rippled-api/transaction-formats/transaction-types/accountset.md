@@ -51,8 +51,7 @@ To remove the `Domain` field from an account, send an AccountSet with the Domain
 You can put any domain in your account's `Domain` field. To prove that an account and domain belong to the same person or business, Ripple recommends establishing a "two-way link":
 
 - Accounts you own should have a domain you own in the `Domain` field.
-- On a website at that domain, host a text file listing accounts you own, and optionally other information about how you use the XRP Ledger. Conventionally, this file is named `ripple.txt`. For an example, see <https://ripple.com/ripple.txt>.
-    **Caution:** To prevent man-in-the-middle attacks, serve your website using HTTPS with an up-to-date TLS certificate.
+- On a website at that domain, host an [xrp-ledger.toml file](xrp-ledger-toml.html) listing accounts you own, and optionally other information about how you use the XRP Ledger.
 
 ## AccountSet Flags
 

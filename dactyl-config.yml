@@ -973,8 +973,6 @@ pages:
         targets:
             - local
 
-    # TODO: identify your accounts with ripple.txt (to come later)
-
     -   name: Manage the rippled Server
         html: manage-the-rippled-server.html
         funnel: Docs
@@ -2932,12 +2930,20 @@ pages:
             - local
         template: template-rest-api-tool.html
 
-    -   name: ripple.txt Validator
+    -   name: ripple.txt Validator # Redirect from ripple.txt validator to toml
         funnel: Dev Tools
         html: ripple-txt-validator.html
+        template: template-redirect.html
+        redirect_url: xrp-ledger-toml-checker.html
         targets:
             - local
-        template: template-ripple-txt-validator.html
+
+    -   name: xrp-ledger.toml Checker
+        funnel: Dev Tools
+        html: xrp-ledger-toml-checker.html
+        targets:
+            - local
+        template: template-xrp-ledger-toml-checker.html
 
     -   name: XRP Test Net Faucet
         funnel: Dev Tools

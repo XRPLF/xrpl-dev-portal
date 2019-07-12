@@ -143,7 +143,7 @@ symbol = "😆" # In practical situations, it may be unwise to use emoji
 
 ### Metadata
 
-The metadata section ( `[METADATA]`) provides information about the `xrp-ledger.toml` file itself. You MAY provide any of the following fields (case-sensitive):
+The metadata section provides information about the `xrp-ledger.toml` file itself. If present, this section MUST BE presented as a single table, headed by the line  `[METADATA]`, using _single_ square brackets. (Most other sections of the `xrp-ledger.toml` file use double brackets, for arrays of information, but there is at most one `[METADATA]` section.) You MAY provide any of the following fields (case-sensitive):
 
 | Field      | Type             | Description                                  |
 |:-----------|:-----------------|:---------------------------------------------|
@@ -156,7 +156,7 @@ The specification does not define a `domain` field; the field should be determin
 
 ### Validators
 
-The validators list (`[[VALIDATORS]]`) provides information about validating servers you operate. Each entry describes a separate validating server.
+The validators list provides information about validating servers you operate. If present, the validators list MUST BE presented as an array of tables, with each entry using the header `[[VALIDATORS]]`, including double square brackets. Each entry describes a separate validating server.
 
 The _first_ `[[VALIDATORS]]` entry in the file is treated as your primary validator. If you operate one or more validators for the production XRP Ledger, you should put the one you want others to trust first.
 
@@ -173,7 +173,7 @@ For _each_ `[[VALIDATORS]]` entry, you MAY provide any of the following fields:
 
 ### Accounts
 
-The accounts list (`[[ACCOUNTS]]`) provides information about XRP Ledger accounts you own. Each entry describes a separate account. For _each_ `[[ACCOUNTS]]` entry, you MAY provide any of the following fields:
+The accounts list provides information about XRP Ledger accounts you own. If present, the accounts list MUST BE presented as an array of tables, with each entry using the header `[[ACCOUNTS]]`, including double square brackets. Each entry describes a separate account. For _each_ `[[ACCOUNTS]]` entry, you MAY provide any of the following fields:
 
 | Field     | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
@@ -186,7 +186,7 @@ The accounts list (`[[ACCOUNTS]]`) provides information about XRP Ledger account
 
 ### Principals
 
-The principals list (`[[PRINCIPALS]]`) provides information about the people (or business entities) involved in your XRP Ledger businesses and services. Each entry describes a different point of contact. For _each_ `[[PRINCIPALS]]` entry, you MAY provide any of the following fields:
+The principals list provides information about the people (or business entities) involved in your XRP Ledger businesses and services. If present, the principals list MUST BE presented as an array of tables, with each entry using the header `[[PRINCIPALS]]`, including double square brackets. Each entry describes a different point of contact. For _each_ `[[PRINCIPALS]]` entry, you MAY provide any of the following fields:
 
 | Field   | Type   | Description                                              |
 |:--------|:-------|:---------------------------------------------------------|
@@ -198,7 +198,7 @@ You may provide other contact information as desired. (See [Custom Fields](#cust
 
 ### Servers
 
-The servers list (`[[SERVERS]]`) provides information about XRP Ledger servers (`rippled`) you run with public access. Each entry describes a different server or server cluster. For _each_ `[[SERVERS]]` entry, you MAY provide any of the following fields:
+The servers list provides information about XRP Ledger servers (`rippled`) you run with public access. If present, the servers list MUST BE presented as an array of tables, with each entry using the header `[[SERVERS]]`, including double square brackets. Each entry describes a different server or server cluster. For _each_ `[[SERVERS]]` entry, you MAY provide any of the following fields:
 
 | Field   | Type   | Description                                              |
 |:--------|:-------|:---------------------------------------------------------|
@@ -212,7 +212,7 @@ For all URLs in this section, the trailing slash is RECOMMENDED. If omitted, cli
 
 ### Currencies
 
-If you issue any assets, tokens, or currencies in the XRP Ledger, you can provide information about them in the `[[CURRENCIES]]` list. Each entry describes a separate issued currency or asset. For _each_ `[[CURRENCIES]]` entry, you MAY provide any of the following fields:
+If you issue any assets, tokens, or currencies in the XRP Ledger, you can provide information about them in the `[[CURRENCIES]]` list. If present, the servers list MUST BE presented as an array of tables, with each entry using the header `[[CURRENCIES]]`, including double square brackets. Each entry describes a separate issued currency or asset. For _each_ `[[CURRENCIES]]` entry, you MAY provide any of the following fields:
 
 | Field   | Type   | Description                                           |
 |:--------|:-------|:------------------------------------------------------|

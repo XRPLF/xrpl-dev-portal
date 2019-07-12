@@ -19,11 +19,9 @@ Ripple provides a set of developer tools to help you test, explore, and validate
 
     Use the WebSocket and JSON-RPC Test Net endpoints to test software built on the XRP Ledger without using real funds. Generate Test Net credentials and funds for testing purposes. Test Net ledger and balances are reset on a regular basis.
 
-* **[ripple.txt Validator](ripple-txt-validator.html)**
+* **[xrp-ledger.toml Checker](xrp-ledger-toml-checker.html)**
 
-      Use this tool to verify that your `ripple.txt` is syntactically correct and deployed properly.
-
-      **Warning:** The `ripple.txt` file definition has been deprecated. Use an [xrp-ledger.toml file](xrp-ledger-toml.html) instead.
+      Use this tool to verify that your [xrp-ledger.toml file](xrp-ledger-toml.html) is set up properly.
 
 * **[Transaction Sender](tx-sender.html)**
 

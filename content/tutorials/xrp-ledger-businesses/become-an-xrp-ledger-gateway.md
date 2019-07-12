@@ -48,7 +48,7 @@ The XRP Ledger contains a currency exchange, where any user can place and fulfil
 
 Currency traders who hold a gateway's issuances can provide liquidity to other popular currencies, without the gateway needing to float a large reserve in various destination currencies. The gateway also does not need to take on the risk of financial exchange. However, a gateway may still want to provide liquidity to XRP or other popular currencies at a baseline rate, especially when the gateway is new to the exchange. If you do provide liquidity, use a different address for trading than your issuing address.
 
-Third-party liquidity providers can use the [`rippled` APIs](rippled-api.html), [RippleAPI JavaScript Library](rippleapi-reference.html), or a third-party client application to access the distributed exchange. Some client applications look up the addresses associated with a gateway using [ripple.txt](#rippletxt), so it can be helpful to publish a good ripple.txt.
+Third-party liquidity providers can use the [`rippled` APIs](rippled-api.html), [RippleAPI JavaScript Library](rippleapi-reference.html), or a third-party client application to access the distributed exchange. It may also help client applications to surface information about your gateway to clients if you provide an [`xrp-ledger.toml` file](xrp-ledger-toml.html).
 
 Contact [partners@ripple.com](mailto:partners@ripple.com) for help establishing liquidity between your gateway and others.
 
@@ -246,7 +246,7 @@ There are several prerequisites that ACME must meet for this to happen:
 - ACME must control an address in the XRP Ledger. Ripple's best practices recommend using a separate issuing address and operational address. See [Issuing and Operational Addresses](issuing-and-operational-addresses.html) for details.
     - ACME must enable the [DefaultRipple Flag](#defaultripple) on its issuing address for customers to send and receive its issuances.
 - Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.
-    - ACME should publicize its issuing address on its website where customers can find it. It can also use [ripple.txt](#rippletxt) to publish the issuing address to automated systems.
+    - ACME should publicize its issuing address on its website where customers can find it. It can also use an [`xrp-ledger.toml` file](xrp-ledger-toml.html) to publish the issuing address to automated systems.
 - ACME must create a user interface for Alice to send funds from ACME into the XRP Ledger.
     - ACME needs to know Alice's XRP Ledger address. ACME can have Alice input her XRP Ledger addresss as part of the interface, or ACME can require Alice to input and verify her XRP Ledger address in advance.
 
@@ -839,9 +839,10 @@ To submit transactions reliably, follow these guidelines:
 For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 
-## ripple.txt
+## xrp-ledger.toml File
 
-If you run a `rippled` validator, you can publish the public key of your validating server and other information about what currencies your gateway issues, and which XRP Ledger addresses you control, to protect against impostors or confusion. Conventionally, gateways do this by hosting a file named `ripple.txt` on their website. For an example, see <https://ripple.com/ripple.txt>.
+You can publish information about what currencies your gateway issues, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an [`xrp-ledger.toml` file](xrp-ledger-toml.html). This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.
+
 
 <!-- STYLE_OVERRIDE: gateway, gateways -->
 
