@@ -2,7 +2,7 @@
 
 _Source tags_ and _destination tags_ are a feature of XRP Ledger [payments](payment-types.html) that can indicate specific purposes for payments from and to multi-purpose addresses. Source and destination tags do not have direct on-ledger functionality; source and destination tags merely provide information about how off-ledger systems should process a payment. In transactions, both source and destination tags are formatted as 32-bit unsigned integers.
 
-Destination tags indicate the beneficiary or destination for a payment. For example, a payment to an [exchange](list-xrp-in-your-exchange.html) or [gateway](become-an-xrp-ledger-gateway.html) address can use a destination tag to indicate which customer to credit for the amount of the payment in that business's own systems.
+Destination tags indicate the beneficiary or destination for a payment. For example, a payment to an [exchange](list-xrp-in-your-exchange.html) or [gateway](become-an-xrp-ledger-gateway.html) address can use a destination tag to indicate which customer to credit for the amount of the payment in that business's own systems. A payment to a merchant could indicate what item or cart the payment is buying.
 
 Source tags indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to send a return, or "bounced", payment. When returning an incoming payment, you should use the source tag from the incoming payment as the destination tag of the outgoing (return) payment.
 
@@ -23,7 +23,7 @@ A business may want to use source and destination tags for several purposes:
 - Mapping payments to quotes that expire.
 - Providing disposable tags that customers can generate for specific deposits.
 
-To prevent overlap while protecting privacy, a business can divide the total range of tags available into sections for each purpose, then assign tags in an unpredictable order within the range. For example, use a hash function or a cipher such as [Hasty Pudding](http://en.wikipedia.org/wiki/Hasty_Pudding_cipher). To be safe, check for collisions with old tags before using a new tag.
+To prevent overlap while protecting privacy, a business can divide the total range of tags available into sections for each purpose, then assign tags in an unpredictable order within the range. For example, use a cryptographic hash function like [SHA-256](https://en.wikipedia.org/wiki/SHA-2), then use the [modulo operator](https://en.wikipedia.org/wiki/Modulo_operation) to map the output to the size of the relevant section. To be safe, check for collisions with old tags before using a new tag.
 
 Assigning tags in numerical order provides less privacy to customers. Since all XRP Ledger transactions are public, assigning tags in this way can make it possible to guess which tags correspond to various users' addresses or to derive information about users' accounts based on the tags used.
 

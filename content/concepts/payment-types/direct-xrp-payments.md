@@ -15,11 +15,12 @@ Generally, any address in the XRP Ledger can send XRP directly to any other addr
 }
 ```
 
-These transaction instructions mean: Send a payment from rf1Bi... to ra5nK... delivering exactly 13 XRP. If the transaction is successfully processed, it does exactly that. Since it usually takes about 4 seconds for each new ledger version to become [validated](consensus.html), a successful transaction can be created, submitted, executed, and have a completely final outcome in 8 seconds or less, even if gets queued for the ledger version after the current in-progress one.
+These transaction instructions mean: Send a payment from rf1Bi... to ra5nK... delivering exactly 13 XRP. If the transaction is successfully processed, it does exactly that. Since it usually takes about 4 seconds for each new ledger version to become [validated](consensus.html), a successful transaction can be created, submitted, executed, and have a final outcome in 8 seconds or less, even if gets queued for the ledger version after the current in-progress one.
 
 **Caution:** The [Payment transaction type][Payment] can also be used for some more specialized kinds of payments, including [cross-currency payments](cross-currency-payments.html) and [partial payments](partial-payments.html). In the case of partial payments, it is possible that the `Amount` shows a large amount of XRP even if the transaction only delivered a very small amount. See [partial payments exploit](partial-payments.html#partial-payments-exploit) for how to avoid crediting a customer for the wrong amount.
 
 Direct XRP-to-XRP payments cannot be partial payments, but partial payments can deliver XRP after converting from a different source currency.
+
 
 ## Funding Accounts
 
@@ -27,16 +28,24 @@ Any mathematically-valid address can receive a payment, even if the XRP Ledger h
 
 For more information, see [Accounts](accounts.html#creating-accounts).
 
+
+## Address Reuse
+
+In the XRP Ledger, addresses where you can receive payments are permanent, and have a non-trivial [reserve requirement](reserves.html) of XRP that they cannot spend. This means that, contrary to some other blockchain systems, it is not a good idea to use a different, disposable address for every transaction. The best practice for the XRP Ledger is to reuse the same address for multiple transactions. If you use the address regularly (especially if it's managed by an internet-connected service), you should set a [regular key](cryptographic-keys.html) and proactively change keys on a regular basis to reduce the risk of a key compromise.
+
+As a sender, it is best not to assume that your intended recipient is using the same address from the last time you sent them a payment. Inevitably, sometimes security compromises happen and a person or business has to change addresses. Before sending money, you should ask the recipient for their current receiving address, so you don't accidentally send money to a malicious user who has taken control of a compromised old address.
+
+
 ## How Direct XRP Payments Are Processed
 
 From a relatively high level, the XRP Ledger's transaction processing engine applies a direct XRP payment as follows:
 
 1. It validates the parameters of the [Payment transaction][]. If the transaction is structured to send and deliver XRP, the transaction processing engine recognizes it as a direct XRP-to-XRP payment. Validation checks include:
 
-    - Checking that all fields are formatted correctly.
+    - Checking that all fields are formatted correctly. For example, for direct XRP payments, the `Amount` field must be [drops of XRP][].
     - Checking that the sending address is a funded [account](accounts.html) in the XRP Ledger.
     - Checking that all provided signatures are valid for the sending address.
-    - Confirming that the destination is different than the sender.
+    - Confirming that the destination address is different than the sender address. (It is not sufficient to send to the same address with a different [destination tag](source-and-destination-tags.html).)
     - Confirming that the sender has a high enough XRP balance to send the payment.
 
     If any check fails, the payment fails.
