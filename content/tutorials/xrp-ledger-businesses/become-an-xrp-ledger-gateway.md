@@ -287,10 +287,9 @@ Processing payments to and from the XRP Ledger naturally comes with some risks, 
 - Track your obligations and balances within the XRP Ledger, and compare with the assets in your collateral account. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.
 - Avoid ambiguous situations. We recommend the following:
     - Enable the [`DisallowXRP` flag](#disallowxrp) for the issuing address and all operational addresses, so customers do not accidentally send you XRP. (Private exchanges should *not* set this flag, since they trade XRP normally.)
-    - Enable the [`RequireDest` flag](#requiredest) for the issuing address and all operational addresses, so customers do not accidentally send a payment without the destination tag to indicate who should be credited.
+    - Enable the [`RequireDest` flag](require-destination-tags.html) for the issuing address and all operational addresses, so customers do not accidentally send a payment without the destination tag to indicate who should be credited.
     - Enable the [`RequireAuth` flag](#requireauth) on all operational addresses so they cannot issue currency by accident.
 - Monitor for suspicious or abusive behavior. For example, a user could repeatedly send funds into and out of the XRP Ledger, as a denial of service attack that effectively empties an operational address's balance. Suspend customers whose addresses are involved in suspicious behavior by not processing their XRP Ledger payments.
-
 
 ## Trading on Ripple
 
@@ -322,7 +321,7 @@ For more information, see the [Freeze article](freezes.html).
 
 ## Authorized Trust Lines
 
-The XRP Ledger's Authorized Trust Lines feature (formerly called "Authorized Accounts") enables a gateway to limit who can hold that gateway's issuances, so that unknown XRP Ledger addresses cannot hold the currency the gateway issues. Ripple feels this is *not necessary* in most cases, since gateways have full control over the process of redeeming Ripple balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the XRP Ledger.)
+The XRP Ledger's Authorized Trust Lines feature (formerly called "Authorized Accounts") enables a gateway to limit who can hold that gateway's issuances, so that unknown XRP Ledger addresses cannot hold the currency the gateway issues. Ripple feels this is *not necessary* in most cases, since gateways have full control over the process of redeeming XRP Ledger balances for value in the outside world. (You can collect customer information and impose limits on withdrawals at that stage without worrying about what happens within the XRP Ledger.)
 
 For more information, see [Authorized Trust Lines](authorized-trust-lines.html).
 
@@ -333,14 +332,11 @@ For more information, see [Authorized Trust Lines](authorized-trust-lines.html).
 
 Similarly, *Source Tags* indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to bounce the payment. When you bounce an incoming payment, use the Source Tag from the incoming payment as the Destination Tag of the outgoing (bounce) payment.
 
-We recommend providing several kinds of Destination Tags for different purposes:
+Ripple recommends making a user interface to generate a destination tag on-demand when a customer intends to send money to the gateway. You should consider that destination tag valid only for a payment with the expected amount. Later, bounce any other transactions that reuse the same destination tag.
 
-* Direct mappings to customer accounts
-* Matching the Source Tags on outgoing payments (in case your payments get bounced)
-* Tags for quotes, which expire
-* Other disposable destination tags that customers can generate.
+Enable the [RequireDest](require-destination-tags.html) flag on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should go when they send XRP Ledger payments to your gateway.
 
-See [Generating Source and Destination Tags](#generating-source-and-destination-tags) for recommendations on the technical details of making and using Source Tags and Destination Tags.
+For more information, see [Source and Destination Tags](source-and-destination-tags.html).
 
 
 ## Gateway Bulletins
@@ -446,18 +442,6 @@ Response:
 To confirm that an address has DefaultRipple enabled, look up the address using the [account_info method][], specifying a validated ledger version. Use [a bitwise-AND operator](https://en.wikipedia.org/wiki/Bitwise_operation#AND) to compare the `Flags` field with 0x00800000 (the [ledger flag lsfDefaultRipple](accountroot.html#accountroot-flags)). If the result of the bitwise-AND operation is nonzero, then the address has DefaultRipple enabled.
 
 
-## Generating Source and Destination Tags
-
-You need a scheme to create Source and Destination tags for your customers and payments. (See [Source and Destination Tags](#source-and-destination-tags) for an explanation of what Source and Destination Tags are.)
-
-For greater privacy and security, we recommend *not* using monotonically-incrementing numbers as destination tags that correlate 1:1 with customers. Instead, we recommend using convenient internal IDs, but mapping those to destination tags using a quick hash or cipher function such as [Hasty Pudding](http://en.wikipedia.org/wiki/Hasty_Pudding_cipher). You should set aside ranges of internal numbers for different uses of destination tags.
-
-After passing the internal numbers through your hash function, you can use the result as a destination tag. To be safe, you should check for collisions. Do not reuse destination tags unless they have explicit expiration dates (like quotes and customer-generated tags).
-
-We recommend making a user interface to generate a destination tag on-demand when a customer intends to send money to the gateway. Then, consider that destination tag valid only for a payment with the expected amount. Later, bounce any other transactions that reuse the same destination tag.
-
-Enable the [RequireDest](#requiredest) flag on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should go when they send XRP Ledger payments to your gateway.
-
 
 ## DisallowXRP
 
@@ -516,65 +500,6 @@ Response:
 }
 ```
 
-
-## RequireDest
-
-The `RequireDest` setting (`requireDestinationTag` in RippleAPI) is designed to prevent customers from sending payments to your address while accidentally forgetting the [destination tag](#source-and-destination-tags) that identifies who should be credited for the payment. When enabled, the XRP Ledger rejects any payment to your address that does not specify a destination tag.
-
-We recommend enabling the `RequireDest` flag on all gateway issuing and operational addresses.
-
-The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an AccountSet transaction to enable the `RequireDest` flag:
-
-Request:
-
-```
-POST http://localhost:5005/
-Content-Type: application/json
-{
-    "method": "submit",
-    "params": [
-        {
-            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-            "tx_json": {
-                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "Fee": "15000",
-                "Flags": 0,
-                "SetFlag": 1,
-                "TransactionType": "AccountSet"
-            }
-        }
-    ]
-}
-```
-
-{% include '_snippets/secret-key-warning.md' %}
-<!--{#_ #}-->
-
-Response:
-
-```
-200 OK
-{
-	"result": {
-		"engine_result": "tesSUCCESS",
-		"engine_result_code": 0,
-		"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-		"status": "success",
-		"tx_blob": "12000322000000002400000161202100000003684000000000003A98732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100CD9A87890ADFAC49B8F69EDEC4A0DB99C86667883D7579289B06DAA4B81BF87E02207AC3FEEA518060AB2B538D330614D2594F432901F7C011D7EB92F74383E5340F81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-		"tx_json": {
-			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-			"Fee": "15000",
-			"Flags": 0,
-			"Sequence": 353,
-			"SetFlag": 3,
-			"SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-			"TransactionType": "AccountSet",
-			"TxnSignature": "3045022100CD9A87890ADFAC49B8F69EDEC4A0DB99C86667883D7579289B06DAA4B81BF87E02207AC3FEEA518060AB2B538D330614D2594F432901F7C011D7EB92F74383E5340F",
-			"hash": "59025DD6C9848679BA433448A1DD95833F2F4B64B03E214D074C7A5B6E3E3E70"
-		}
-	}
-}
-```
 
 ## RequireAuth
 
