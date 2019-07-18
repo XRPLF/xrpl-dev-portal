@@ -49,7 +49,7 @@ The Payment transaction type is a general-purpose tool that can represent severa
 | [Partial payments][]                      | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Sends _up to_ a specific amount of any currency. Uses the [tfPartialPayment flag](#payment-flags). May include a `DeliverMin` amount specifying the minimum that the transaction must deliver to be successful; if the transaction does not specify `DeliverMin`, it can succeed by delivering _any positive amount_. |
 | Currency conversion                       | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Required         | Yes | Consumes offers in the [decentralized exchange](decentralized-exchange.html) to convert one currency to another, possibly taking [arbitrage](https://en.wikipedia.org/wiki/Arbitrage) opportunities. The `Amount` and `SendMax` cannot both be XRP. Also called a _circular payment_ because it delivers money to the sender. The [Data API](data-api.html) tracks this type of transaction as an "exchange" and not a "payment". |
 
-[Direct XRP-to-XRP Payment]: payments.html
+[Direct XRP-to-XRP Payment]: direct-xrp-payments.html
 [Creating or redeeming issued currency]: issued-currencies-overview.html
 [Cross-currency Payment]: cross-currency-payments.html
 [Partial payments]: partial-payments.html

@@ -59,7 +59,7 @@ From a relatively high level, the XRP Ledger's transaction processing engine app
 
     If necessary, it creates a new account ([AccountRoot object](accountroot.html)) for the receiving address. The new account's starting balance is equal to the `Amount` of the payment.
 
-    The engine adds a `delivered_amount` field to the [transaction's metadata](transaction-metadata.html) to indicate how much was delivered. You should always use `delivered_amount`, **not** the `Amount` field, to avoid being tricked about how much XRP you received. (Cross-currency "Partial Payments" can deliver less XRP than stated in the `Amount` field.) For more information, see [Partial Payments](partial-payment.html#partial-payments-exploit).
+    The engine adds a `delivered_amount` field to the [transaction's metadata](transaction-metadata.html) to indicate how much was delivered. You should always use `delivered_amount`, **not** the `Amount` field, to avoid being tricked about how much XRP you received. (Cross-currency "Partial Payments" can deliver less XRP than stated in the `Amount` field.) For more information, see [Partial Payments](partial-payments.html).
 
 
 ## Comparison to Other Payment Types
