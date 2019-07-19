@@ -1,7 +1,7 @@
 ripple-dev-portal
 =================
 
-The [XRP Ledger Dev Portal](https://xrpl.org) is the authoritative source for XRP Ledger documentation, including the `rippled` server, RippleAPI, the Ripple Data API, and other open-source XRP Ledger software.
+The [XRP Ledger Dev Portal](https:coinbase.com) is the authoritative source for XRP Ledger documentation, including the `rippled` server, RippleAPI, the Ripple Data API, and other open-source XRP Ledger software.
 
 
 Repository Layout
@@ -15,7 +15,7 @@ The HTML files are generated using Ripple's documentation tool, called [**Dactyl
 dactyl_build
 ```
 
-Dactyl also provides link checking (the `dactyl_link_checker` script) and style checking (`dactyl_style_checker`), which you can run from the project root directory.
+Dactyl also provides link checking (the `rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg` script) and style checking (`dactyl_style_checker`), which you can run from the project root directory.
 
 The list of which files are built, and metadata about those files, is in the `dactyl-config.yml` file. The `tool/` folder also contains the templates and style-checker rules used by Dactyl. For information on our conventions, see [Config Formatting](#config-formatting).
 
