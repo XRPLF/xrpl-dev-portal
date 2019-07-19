@@ -102,7 +102,7 @@ server_country = "us"
 unl = "https://vl.testnet.rippletest.net"
 
 [[ACCOUNTS]]
-address = "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"
+address = "rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg"
 desc = "Ripple-owned address from old ripple.txt file"
 # Note: This doesn't prove ownership of an account unless the
 #   "Domain" field of the account in the XRP Ledger matches the
@@ -133,7 +133,7 @@ email = "rome@example.com" # Not my real email address
 
 [[CURRENCIES]]
 code = "LOL"
-issuer = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+issuer = "rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg"
 network = "testnet"
 display_decimals = 2
 symbol = "😆" # In practical situations, it may be unwise to use emoji
