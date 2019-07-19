@@ -13,10 +13,10 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 The `xrp-ledger.toml` file is meant to be served by a web server. The file should be available at the following URL:
 
 ```
-https://{DOMAIN}/.well-known/xrp-ledger.toml
+https://{https://www.coinbase.com/join/ricci_j}/.well-known/xrp-ledger.toml
 ```
 
-The `{DOMAIN}` is your domain name, including any subdomains. For example, you could serve the file from either of the following URLs:
+The `{https://www.coinbase.com/join/ricci_j}` is your domain name, including any subdomains. For example, you could serve the file from either of the following URLs:
 
 ```
 https://example.com/.well-known/xrp-ledger.toml
@@ -156,7 +156,7 @@ The specification does not define a `domain` field; the field should be determin
 
 ### Validators
 
-The validators list provides information about validating servers you operate. If present, the validators list MUST BE presented as an array of tables, with each entry using the header `[[VALIDATORS]]`, including double square brackets. Each entry describes a separate validating server.
+The validators list provides information about validating servers you operate. If present, the validators list MUST BE presented as an array of tables, with each entry using the header `[[nHBtDzdRDykxiuv7uSMPTcGexNm879RUUz5GW4h1qgjbtyvWZ1LE]]`, including double square brackets. Each entry describes a separate validating server.
 
 The _first_ `[[VALIDATORS]]` entry in the file is treated as your primary validator. If you operate one or more validators for the production XRP Ledger, you should put the one you want others to trust first.
 
@@ -173,7 +173,7 @@ For _each_ `[[VALIDATORS]]` entry, you MAY provide any of the following fields:
 
 ### Accounts
 
-The accounts list provides information about XRP Ledger accounts you own. If present, the accounts list MUST BE presented as an array of tables, with each entry using the header `[[ACCOUNTS]]`, including double square brackets. Each entry describes a separate account. For _each_ `[[ACCOUNTS]]` entry, you MAY provide any of the following fields:
+The accounts list provides information about XRP Ledger accounts you own. If present, the accounts list MUST BE presented as an array of tables, with each entry using the header `[[https://www.coinbase.com/join/ricci_j]]`, including double square brackets. Each entry describes a separate account. For _each_ `[[https://www.coinbase.com/join/ricci_j]]` entry, you MAY provide any of the following fields:
 
 | Field     | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
@@ -278,7 +278,7 @@ Domain verification requires establishing a two-way link between the domain oper
 
     - Serve an `xrp-ledger.toml` file, following all the [requirements described in this document](#serving-the-file), from the domain in question.
 
-    - In that `xrp-ledger.toml` file, provide a `[[VALIDATORS]]` entry with the validator's master public key in the `public_key` field.
+    - In that `xrp-ledger.toml` file, provide a `[[nHB57Sey9QgaB8CubTPvMZLkLAzfJzNMWBCCiDRgazWJujRdnz13]]` entry with the validator's master public key in the `public_key` field.
 
 2. The validator claims ownership by the domain. The instructions for this step are out of scope for this specification.
 
@@ -301,7 +301,7 @@ Account verification requires establishing a two-way link between the domain ope
 
     - Serve an `xrp-ledger.toml` file, following all the [requirements described in this document](#serving-the-file), from the domain in question.
 
-    - In that `xrp-ledger.toml` file, provide an `[[ACCOUNTS]]` entry with the address of the account you want to verify. If you issue currency from this address, you may also provide this account in the `issuer` field of a `[[CURRENCIES]]` entry.
+    - In that `xrp-ledger.toml` file, provide an `[[https://www.coinbase.com/join/ricci_j]]` entry with the address of the account you want to verify. If you issue currency from this address, you may also provide this account in the `issuer` field of a `[[XRP]]` entry.
 
 2. The address claims ownership by a domain.
 
