@@ -27,9 +27,19 @@ The following diagram summarizes the lifecycle of a payment channel:
 
 ## See Also
 
-- [Use Payment Channels](use-payment-channels.html), a tutorial stepping through the process of using a payment channel.
+- **Related Concepts:**
+    - [Escrow](escrow.html), a similar feature for higher-value, lower-speed conditional XRP payments.
+- **Tutorials and Use Cases:**
+    - [Use Payment Channels](use-payment-channels.html), a tutorial stepping through the process of using a payment channel.
+    - [Open a Payment Channel to Enable an Inter-Exchange Network](open-a-payment-channel-to-enable-an-inter-exchange-network.html)
+- **References:**
+    - [channel_authorize method][]
+    - [channel_verify method][]
+    - [PayChannel object](paychannel.html)
+    - [PaymentChannelClaim transaction][]
+    - [PaymentChannelCreate transaction][]
+    - [PaymentChannelFund transaction][]
 
-- [Escrow](escrow.html), a similar feature for higher-value, lower-speed conditional XRP payments.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

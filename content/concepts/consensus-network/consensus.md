@@ -161,12 +161,23 @@ Best practices for applications submitting transactions include:
         - Take care to use a server with a continuous ledger history to detect this case <a href="#footnote_10" id="from_footnote_10"><sup>10</sup></a>.
     - It may be necessary to check the status of a transaction repeatedly until the ledger identified by `LastLedgerSequence` is validated.
 
-## Further Resources
+## See Also
 
-- [Consensus White Paper](https://ripple.com/files/ripple_consensus_whitepaper.pdf)
-- [Ledger Format Reference](ledger-data-formats.html)
-- [Ripple Consensus Video](https://www.youtube.com/watch?v=pj1QVb1vlC0)
-- [Reliable Transaction Submission](reliable-transaction-submission.html)
+- **Concepts:**
+    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus Research](consensus-research.html)
+    - [Ripple Consensus Video](https://www.youtube.com/watch?v=pj1QVb1vlC0)
+- **Tutorials:**
+    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+    - [Run `rippled` as a Validator](run-rippled-as-a-validator.html)
+- **References:**
+    - [Ledger Format Reference](ledger-data-formats.html)
+    - [Transaction Format Reference](transaction-formats.html)
+    - [consensus_info method][]
+    - [validator_list_sites method][]
+    - [validators method][]
+
+
 
 
 

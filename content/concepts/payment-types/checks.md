@@ -81,7 +81,7 @@ Checks require `rippled` v0.90.0 or later. As of 2018-10-11, the Checks amendmen
 To check the status of an amendment on a test net or private XRP Ledger network, use the [feature method][].
 
 
-## Further Reading
+## See Also
 
 For more information about Checks in the XRP Ledger, see:
 

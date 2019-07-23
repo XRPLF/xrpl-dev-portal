@@ -93,6 +93,19 @@ The `type` field, used for the binary serialization of a path set, is actually c
 | 0x10        | 16              | A change of currency: the `currency` field is present. |
 | 0x20        | 32              | A change of issuer: the `issuer` field is present. |
 
+
+## See Also
+
+- **Concepts:**
+    - [Cross-Currency Payments](cross-currency-payments.html)
+    - [Decentralized Exchange](decentralized-exchange.html)
+    - [Partial Payments](partial-payments.html)
+- **References:**
+    - [Payment transaction][]
+    - [path_find method][] (WebSocket only)
+    - [ripple_path_find method][]
+
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
