@@ -179,17 +179,24 @@ Terminating thread rippled: main: unhandled St13runtime_error 'shard path missin
 
 If your config includes a `[shard_db]` stanza, it must contain a `path` field, which points to a directory where `rippled` can write the data for the shard store. This error means the `path` field is missing or located in the wrong place. Check for extra whitespace or typos in your config file, and compare against the [Shard Configuration Example](configure-history-sharding.html#2-edit-rippledcfg).
 
+## Unsupported shard store type: RocksDB
 
-## ShardStore unable to open/create RocksDB
+RocksDB is no longer supported as a backend for [history sharding](history-sharding.html). If you have an existing configuration that defines a RocksDB shard store, the server fails to start. [New in: rippled 1.3.1][]
 
-If you enable [history sharding](history-sharding.html), then later change the configuration to use RocksDB instead of NuDB, the server may try to read the existing NuDB data as RocksDB data and fail to start. In this case, the server writes an error such as the following:
+In this case, the process dies shortly after the log startup command, with a message such as the following appearing earlier in the output log:
 
 ```text
-ShardStore:ERR shard 504 error: Unable to open/create RocksDB: Invalid argument: /var/lib/rippled/db/shards/504: does not exist (create_if_missing is false)
+ShardStore:ERR Unsupported shard store type: RocksDB
 ```
 
-To fix this problem, do one of the following:
 
-- Move or delete the existing shard data from the configured folder
-- Change where the shard store is located on disk by changing the `path` of the `[shard_db]` stanza in the `rippled.cfg` file.
-- Change the shard store back to using NuDB.
+To fix this problem, do one of the following, then restart the server:
+
+- Change your shard store to use NuDB instead.
+- Disable history sharding.
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

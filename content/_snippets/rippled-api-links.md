@@ -122,6 +122,7 @@
   "fix1571",
   "fix1578",
   "fix1623",
+  "fixMasterKeyAsRegularKey",
   "fixTakerDryOfferRemoval",
   "Flow",
   "FlowCross",

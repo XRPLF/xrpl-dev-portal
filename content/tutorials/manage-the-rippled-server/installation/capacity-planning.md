@@ -8,7 +8,7 @@ This section describes configuration, network, and hardware recommendations that
 
 Ripple recommends using these configuration guidelines to optimize resource utilization and performance of your `rippled` server.
 
-You can set the following parameters in the `rippled.cfg` file used for your `rippled` server. You can access an example configuration file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo.
+You can set the following parameters in the `rippled.cfg` file used for your `rippled` server. You can access an example config file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo.
 
 
 ### Node Size

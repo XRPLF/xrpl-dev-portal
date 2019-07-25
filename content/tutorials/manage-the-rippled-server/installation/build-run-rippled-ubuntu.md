@@ -31,7 +31,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 4. Install CMake.
 
-    Version 1.2.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
+    Version 1.3.1 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
 
     If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
 
@@ -44,21 +44,21 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.2.0 of `rippled` requires Boost version 1.67.0 exactly. Because Boost version 1.67.0 isn't available in the Ubuntu 16.04 software repositories, you must compile it yourself.
+    Version 1.3.1 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself.
 
-    If you have previously built Boost 1.67.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
+    If you have previously built Boost 1.70.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
-      1. Download Boost 1.67.0.
+      1. Download Boost 1.70.0.
 
-              wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz
+              wget https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.gz
 
-      2. Extract `boost_1_67_0.tar.gz`.
+      2. Extract `boost_1_70_0.tar.gz`.
 
-              tar xvzf boost_1_67_0.tar.gz
+              tar xvzf boost_1_70_0.tar.gz
 
-      3. Change to the new `boost_1_67_0` directory.
+      3. Change to the new `boost_1_70_0` directory.
 
-              cd boost_1_67_0
+              cd boost_1_70_0
 
       4. Prepare the Boost.Build system for use.
 
@@ -70,9 +70,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
           **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
 
-      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_67_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_70_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-              export BOOST_ROOT=/home/my_user/boost_1_67_0
+              export BOOST_ROOT=/home/my_user/boost_1_70_0
 
       7. Source your updated `.profile` file. For example:
 
@@ -88,11 +88,13 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
         $ git log -1
 
-        commit 7779dcdda00ea61a976cf5f387bc1f3bb4ebbfdd
-        Author: Mike Ellery <mellery451@gmail.com>
-        Date:   Tue Feb 12 16:41:03 2019 -0800
+        commit e1adbd7ddd5dfa9f2a9791aa3c0fcc1fdb4e8236
+        Author: Manoj doshi <mdoshi@ripple.com>
+        Date:   Wed Jul 24 15:21:56 2019 -0700
 
-            Set version to 1.2.0
+            Set version to 1.3.1
+
+
 
 8. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
 

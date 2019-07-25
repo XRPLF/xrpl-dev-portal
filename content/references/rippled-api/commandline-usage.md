@@ -18,7 +18,7 @@ These options apply to most modes:
 
 | Option          | Description                                                |
 |:----------------|:-----------------------------------------------------------|
-| `--conf {FILE}` | Use `{FILE}` as the configuration file instead of looking for config files in the default locations. If not specified, `rippled` first checks the local working directory for a `rippled.cfg` file. On Linux, if that file is not found, `rippled` next checks for `$XDG_CONFIG_HOME/ripple/ripple.cfg`. (Typically, `$XDG_CONFIG_HOME` maps to `$HOME/.config`.) |
+| `--conf {FILE}` | Use `{FILE}` as the config file instead of looking for config files in the default locations. If not specified, `rippled` first checks the local working directory for a `rippled.cfg` file. On Linux, if that file is not found, `rippled` next checks for `$XDG_CONFIG_HOME/ripple/ripple.cfg`. (Typically, `$XDG_CONFIG_HOME` maps to `$HOME/.config`.) |
 
 ### Verbosity Options
 
