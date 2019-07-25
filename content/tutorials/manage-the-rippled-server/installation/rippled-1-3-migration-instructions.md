@@ -1,6 +1,6 @@
-# rippled v1.3.0 Migration Instructions
+# rippled v1.3.x Migration Instructions
 
-This document describes the migration process for upgrading from `rippled` 1.2.4 or earlier to `rippled` v1.3.0 or later. This migration process is necessary because the `rippled` install process has changed as of version 1.3.0.
+This document describes the migration process for upgrading from `rippled` 1.2.4 or earlier to `rippled` v1.3 or later. This migration process is necessary because the `rippled` install process has changed as of version 1.3.
 
 This document provides migration steps for upgrading on supported platforms:
 
@@ -22,7 +22,7 @@ Ripple's official RPM repository and instructions for using it have changed. If 
 
         $ sudo rpm -e ripple-repo
 
-    The `rippled-repo` package is **DEPRECATED** as of `rippled` version 1.3.0. The package has been updated one last time for 1.3.0. In the future, any changes to the repositories will require manual changes to your repos file.
+    The `rippled-repo` package is now **DEPRECATED**. The package has been updated one last time for version 1.3.1. In the future, any changes to the repositories will require manual changes to the `ripple.repo` file.
 
 3. Add Ripple's new yum repository:
 
@@ -40,7 +40,7 @@ Ripple's official RPM repository and instructions for using it have changed. If 
 
         $ sudo yum install rippled
 
-    Version 1.3.0 does not require any changes to your config files (`rippled.cfg` and `validators.txt`). This update procedure leaves your existing config files in place.
+    Version 1.3.1 does not require any changes to your config files (`rippled.cfg` and `validators.txt`). This update procedure leaves your existing config files in place.
 
 5. Reload systemd unit files:
 
@@ -56,9 +56,9 @@ Ripple's official RPM repository and instructions for using it have changed. If 
 
 ## Migration on Ubuntu Linux
 
-Prior to version 1.3.0, the supported way to install `rippled` on Ubuntu Linux was using Alien to install the RPM package. Starting with `rippled` v1.3.0, Ripple provides a native package for Ubuntu and Debian Linux, which is the recommended way of installing it. If you already have the RPM package installed, complete the [installation steps](install-rippled-on-ubuntu.html) to upgrade the package and switch over to the native APT (`.deb`) package.
+Prior to version 1.3, the supported way to install `rippled` on Ubuntu Linux was using Alien to install the RPM package. Starting with `rippled` v1.3.1, Ripple provides a native package for Ubuntu and Debian Linux, which is the recommended way of installing it. If you already have the RPM package installed, complete the [installation steps](install-rippled-on-ubuntu.html) to upgrade the package and switch over to the native APT (`.deb`) package.
 
-If you have made any changes to your config files (`/opt/ripple/etc/rippled.cfg` and `/opt/ripple/etc/validators.txt`), `apt` may prompt you during installation asking if you want to overwrite your config files with the newest versions from the packages. Version 1.3.0 does not require any changes to the config file, so you can safely keep your existing config files unchanged.
+If you have made any changes to your config files (`/opt/ripple/etc/rippled.cfg` and `/opt/ripple/etc/validators.txt`), `apt` may prompt you during installation asking if you want to overwrite your config files with the newest versions from the packages. Version 1.3 does not require any changes to the config file, so you can safely keep your existing config files unchanged.
 
 After installing the new package, if you no longer need Alien for any other packages, you may optionally uninstall it and its dependencies using the following steps:
 
@@ -73,4 +73,4 @@ After installing the new package, if you no longer need Alien for any other pack
 
 ### Automatic Updates
 
-The `rippled` v1.3.0 package includes an updated auto-update script that works on Ubuntu and Debian Linux. For more information, see [Update `rippled` Automatically on Linux](update-rippled-automatically-on-linux.html).
+The `rippled` v1.3 package includes an updated auto-update script that works on Ubuntu and Debian Linux. For more information, see [Update `rippled` Automatically on Linux](update-rippled-automatically-on-linux.html).

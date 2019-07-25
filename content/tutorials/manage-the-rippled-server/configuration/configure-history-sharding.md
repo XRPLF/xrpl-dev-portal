@@ -33,7 +33,7 @@ path=/var/lib/rippled/db/shards/nudb
 max_size_gb=50
 ```
 
-The `type` field can be omitted. If present, it _MUST_ be `NuDB`. [New in: rippled 1.3.0][]
+The `type` field can be omitted. If present, it _MUST_ be `NuDB`. [New in: rippled 1.3.1][]
 
 **Caution:** If `rippled` detects the wrong type of data in the shard store path, it may [fail to start](server-wont-start.html). You should use a new folder for the shard store. If you previously used a RocksDB shard store (`rippled` 1.2.x and lower), use a different path or delete the RocksDB shard data.
 

@@ -9,7 +9,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [OwnerPaysFee][]             | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [SHAMapV2][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixMasterKeyAsRegularKey][] | v1.3.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [fixMasterKeyAsRegularKey][] | v1.3.1     | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Checks][]                   | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]                | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [MultiSignReserve][]         | v1.2.0     | [Enabled: 2019-04-17](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |

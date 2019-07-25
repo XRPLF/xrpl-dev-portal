@@ -31,7 +31,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 4. Install CMake.
 
-    Version 1.3.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
+    Version 1.3.1 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
 
     If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
 
@@ -44,7 +44,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.3.0 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself.
+    Version 1.3.1 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself.
 
     If you have previously built Boost 1.70.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
@@ -88,11 +88,12 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
         $ git log -1
 
-        commit caa5c9e2232ff1eee1d0c61907283649e48e6fbc
-        Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Tue Jul 9 13:56:37 2019 -0700
+        commit e1adbd7ddd5dfa9f2a9791aa3c0fcc1fdb4e8236
+        Author: Manoj doshi <mdoshi@ripple.com>
+        Date:   Wed Jul 24 15:21:56 2019 -0700
 
-            Set version to 1.3.0
+            Set version to 1.3.1
+
 
 
 8. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault).
