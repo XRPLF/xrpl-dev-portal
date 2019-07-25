@@ -1,10 +1,10 @@
 # Paths
 
-In the XRP Ledger, paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Paths also enable complex settlement of offsetting debts.
+In the XRP Ledger, paths define a way for [issued currency](issued-currencies-overview.html) payments to flow through intermediary steps on their way from sender to receiver. Paths enable [cross-currency payments](cross-currency-payments.html) by connecting sender and receiver through orders in the XRP Ledger's [decentralized exchange](decentralized-exchange.html). Paths also enable complex settlement of offsetting debts.
 
 A single Payment transaction in the XRP Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a _path set_, which is a collection of possible paths to take. The paths in a path set must start and end with the same currency.
 
-Since XRP can be sent directly to any address, an XRP-to-XRP transaction does not use any paths.
+Since XRP can be sent directly to any address, an [XRP-to-XRP transaction](direct-xrp-payments.html) does not use any paths.
 
 ## Path Steps
 
