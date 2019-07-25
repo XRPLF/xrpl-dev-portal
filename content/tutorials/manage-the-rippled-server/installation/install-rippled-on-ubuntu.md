@@ -18,7 +18,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 2. Install utilities:
 
-        $ sudo apt -y apt-transport-https ca-certificates wget gnupg
+        $ sudo apt -y install apt-transport-https ca-certificates wget gnupg
 
 3. Add Ripple's package-signing GPG key to your list of trusted keys:
 
