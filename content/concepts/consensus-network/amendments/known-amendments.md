@@ -11,6 +11,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [Tickets][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Checks][]                  | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]               | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [fixMasterKeyAsRegularKey][]| v1.3.0     | [Open for Voting: 2019-07-25]( "BADGE_1DB4FF") |
 | [MultiSignReserve][]        | v1.2.0     | [Enabled: 2019-04-17](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
 | [fixTakerDryOfferRemoval][] | v1.2.0     | [Enabled: 2019-04-02](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
 | [fix1578][]                 | v1.2.0     | [Enabled: 2019-03-23](https://xrpcharts.ripple.com/#/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
@@ -317,6 +318,25 @@ With this amendment enabled, transaction processing adds a `DeliveredAmount` fie
 The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed amount (using the `Amount` field) or any other transaction types.
 
 **Caution:** In `rippled` 1.0.0, if the Checks amendment is enabled before the fix1623 amendment, the `delivered_amount` may display as "0" for variable-amount CheckCash transactions from before this amendment was enabled, even if the transaction delivered a nonzero amount. Ripple plans to enable fix1623 at the same time as the [Checks][] amendment on the production network, but this situation may be possible on [parallel networks](parallel-networks.html).
+
+
+## fixMasterKeyAsRegularKey
+[fixMasterKeyAsRegularKey]: #fixMasterKeyAsRegularKey
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37 | Open for Voting |
+
+Fixes a minor technical flaw which would allow an account holder to specify the master key as the account's new regular key.
+
+The XRP Ledger allows an account to authorize a secondary key pair, called a regular key pair, to sign future transactions.
+
+The regular key pair can be changed as often as desired, without requiring other changes on the account.
+
+The `fixMasterKeyAsRegularKey` amendment, if enabled, will:
+
+1. Prevent specifying an account's master key as the account's regular key.
+2. Prevent the "Disable Master Key" flag from incorrectly affecting regular keys.
 
 
 ## fixTakerDryOfferRemoval
