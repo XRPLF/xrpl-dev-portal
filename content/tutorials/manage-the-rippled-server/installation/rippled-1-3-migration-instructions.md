@@ -60,7 +60,17 @@ Prior to version 1.3, the supported way to install `rippled` on Ubuntu Linux was
 
 If you have made any changes to your config files (`/opt/ripple/etc/rippled.cfg` and `/opt/ripple/etc/validators.txt`), `apt` may prompt you during installation asking if you want to overwrite your config files with the newest versions from the packages. Version 1.3 does not require any changes to the config file, so you can safely keep your existing config files unchanged.
 
-After installing the new package, if you no longer need Alien for any other packages, you may optionally uninstall it and its dependencies using the following steps:
+After installing the native APT package for 1.3, you will need to reload/restart the service:
+
+1. Reload systemd unit files:
+
+        $ sudo systemctl daemon-reload
+
+2. Restart the `rippled` service:
+
+        $ sudo systemctl restart rippled.service
+
+If you no longer need Alien for any other packages, you may optionally uninstall it and its dependencies using the following steps:
 
 1. Uninstall Alien:
 
@@ -69,7 +79,6 @@ After installing the new package, if you no longer need Alien for any other pack
 2. Uninstall unused dependencies:
 
         $ sudo apt -y autoremove
-
 
 ### Automatic Updates
 
