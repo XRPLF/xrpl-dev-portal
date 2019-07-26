@@ -132,7 +132,7 @@ When you subscribe to a particular stream, you receive periodic responses on tha
 
 ## Ledger Stream
 
-The `ledger` stream only sends `ledgerClosed` messages when [the consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) declares a new validated ledger. The message identifies the ledger and provides some information about its contents.
+The `ledger` stream only sends `ledgerClosed` messages when [the consensus process](consensus.html) declares a new validated ledger. The message identifies the ledger and provides some information about its contents.
 
 ```
 {

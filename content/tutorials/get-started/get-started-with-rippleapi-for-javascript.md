@@ -167,7 +167,7 @@ The one argument to the constructor is an options object, which has [a variety o
 
 - The example `server` setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.
 - If you don't include the `server` option, RippleAPI runs in [offline mode](rippleapi-reference.html#offline-functionality) instead, which only provides methods that don't need network connectivity.
-- You can specify a [Ripple Test Net](https://ripple.com/build/ripple-test-net/) server instead to connect to the parallel-world Test Network instead of the production XRP Ledger.
+- You can specify a [XRP Ledger Test Net](xrp-test-net-faucet.html) server instead to connect to the parallel-world Test Network instead of the production XRP Ledger.
 - If you [run your own `rippled`](install-rippled.html), you can instruct it to connect to your local server. For example, you might say `server: 'ws://localhost:5005'` instead.
 
 
@@ -231,7 +231,7 @@ The `catch` method ends this Promise chain. The callback provided here runs if a
 
 # Waiting for Validation
 
-One of the biggest challenges in using the XRP Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you [follow the best practices](reliable-transaction-submission.html) you still have to wait for the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/) to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:
+One of the biggest challenges in using the XRP Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you [follow the best practices](reliable-transaction-submission.html) you still have to wait for the [consensus process](consensus.html) to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:
 
 ```
 {% include '_code-samples/rippleapi_quickstart/submit-and-verify.js' %}

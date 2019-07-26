@@ -19,7 +19,7 @@ The example addresses used in this tutorial are:
 
 Additionally, you'll need a `rippled` server to send transactions to. The examples in this tutorial assume a `rippled` server is running on the test machine (`localhost`) with an unencrypted JSON-RPC API endpoint on port **5005**.
 
-To test without transferring real XRP, you can use [Ripple Test Net](https://ripple.com/build/ripple-test-net/) addresses with Test Net XRP. If you do use the Ripple Test Net, you can use the Test Net servers' JSON-RPC API by connecting to `https://api.altnet.rippletest.net:51234` instead of `http://localhost:5005/`.
+To test without transferring real XRP, you can use [XRP Ledger Test Net](xrp-test-net-faucet.html) addresses with Test Net XRP. If you do use the Test Net, you can use the Test Net servers' JSON-RPC API by connecting to `https://api.altnet.rippletest.net:51234` instead of `http://localhost:5005/`.
 
 You can use any amount of XRP for the payment channels. The example values in this tutorial set aside 100 XRP (`100000000` drops) in a payment channel for at least 1 day.
 

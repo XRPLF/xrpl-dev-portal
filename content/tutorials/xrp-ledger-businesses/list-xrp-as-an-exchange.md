@@ -58,7 +58,7 @@ XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on th
 
 <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet -->
 
-To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](https://ripple.com/build/issuing-operational-addresses/) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
+To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](issuing-and-operational-addresses.html) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 
 * A [_cold wallet_](issuing-and-operational-addresses.html#issuing-address) to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send [deposits](#deposit-xrp-into-exchange).   To provide optimal security, this account's secret key should be offline.
 

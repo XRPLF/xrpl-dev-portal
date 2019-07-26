@@ -1,6 +1,6 @@
 # Connect Your rippled to the XRP Test Net
 
-Ripple has created the [XRP Test Network](https://ripple.com/build/xrp-test-net/) to provide a testing platform for the XRP Ledger. XRP Test Net funds are not real funds and are intended for testing only. You can connect your `rippled` server to the XRP Test Net to test out and understand `rippled` functionality before connecting to the production XRP Ledger Network. You can also use the XRP Test Net to verify that your own code interacts correctly with `rippled`.
+Ripple has created the [XRP Test Network](parallel-networks.html) to provide a testing platform for the XRP Ledger. XRP Test Net funds are not real funds and are intended for testing only. You can connect your `rippled` server to the XRP Test Net to test out and understand `rippled` functionality before connecting to the production XRP Ledger Network. You can also use the XRP Test Net to verify that your own code interacts correctly with `rippled`.
 
 **Note:** The XRP Test Net ledger and balances are reset on a regular basis.
 
@@ -49,6 +49,10 @@ To connect your `rippled` server to the XRP Test Net, set the following configur
         $ ./rippled server_info | grep seq
 
 
+## See Also
+
+- [Parallel Networks](parallel-networks.html)
+- [XRP Test Net Faucet](xrp-test-net-faucet.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

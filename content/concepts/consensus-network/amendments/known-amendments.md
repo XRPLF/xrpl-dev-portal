@@ -481,7 +481,7 @@ Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixe
 |:-----------------------------------------------------------------|:----------|
 | DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | Vetoed    |
 
-This amendment is currently enabled on the [Ripple Test Net](https://ripple.com/build/ripple-test-net/). In production, Ripple expects to enable similar functionality with the [Escrow](escrow-object.html) amendment instead.
+This amendment was replaced by the [Escrow](escrow-object.html) amendment.
 
 
 ## Tickets
