@@ -17,7 +17,7 @@ These types of errors can potentially lead to serious problems.  For example, an
 
 ## Background
 
-The XRP Ledger protocol provides a ledger shared across all servers in the network.  Through a [process of consensus and validation](https://ripple.com/build/ripple-ledger-consensus-process/), the network agrees on the order in which transactions are applied to (or omitted from) the ledger.
+The XRP Ledger protocol provides a ledger shared across all servers in the network.  Through a [process of consensus and validation](consensus.html), the network agrees on the order in which transactions are applied to (or omitted from) the ledger.
 
 Well-formed transactions submitted to trusted XRP Ledger servers are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](transaction-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.
 
