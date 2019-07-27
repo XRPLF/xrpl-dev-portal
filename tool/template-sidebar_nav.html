@@ -1,37 +1,40 @@
+{% if use_page is undefined %}
+  {% set use_page = currentpage %}
+{% endif %}
 <div class="tree_nav">
 
   <!--{############# Parent page link ###############################}-->
-  {% if currentpage.supercategory is defined %}
+  {% if use_page.supercategory is defined %}
     <div class="sidenav_parent">
-      {% if currentpage == (pages|selectattr('supercategory', 'defined_and_equalto', currentpage.supercategory)|first) %}
-      <a  href="{{ currentpage.html }}">{{ currentpage.supercategory }}</a>
+      {% if use_page == (pages|selectattr('supercategory', 'defined_and_equalto', use_page.supercategory)|first) %}
+      <a  href="{{ use_page.html }}">{{ use_page.supercategory }}</a>
       {% else %}
-      <a href="{{ (pages|selectattr('supercategory', 'defined_and_equalto', currentpage.supercategory)|first).html }}"> {{ currentpage.supercategory }}</a>
+      <a href="{{ (pages|selectattr('supercategory', 'defined_and_equalto', use_page.supercategory)|first).html }}"> {{ use_page.supercategory }}</a>
       {% endif %}
     </div>
-  {% elif currentpage.doc_type is defined %}
+  {% elif use_page.doc_type is defined %}
     <div class="sidenav_parent">
-      {% if currentpage == (pages|selectattr('doc_type', 'defined_and_equalto', currentpage.doc_type)|first) %}
-      <a  href="{{ currentpage.html }}">{{ currentpage.doc_type }}</a>
+      {% if use_page == (pages|selectattr('doc_type', 'defined_and_equalto', use_page.doc_type)|first) %}
+      <a  href="{{ use_page.html }}">{{ use_page.doc_type }}</a>
       {% else %}
-      <a href="{{ (pages|selectattr('doc_type', 'defined_and_equalto', currentpage.doc_type)|first).html }}"> {{ currentpage.doc_type }}</a>
+      <a href="{{ (pages|selectattr('doc_type', 'defined_and_equalto', use_page.doc_type)|first).html }}"> {{ use_page.doc_type }}</a>
       {% endif %}
     </div>
-  {% elif currentpage.funnel is defined %}
+  {% elif use_page.funnel is defined %}
     <div class="sidenav_parent">
-      {% if currentpage == (pages|selectattr('funnel', 'defined_and_equalto', currentpage.funnel)|first) %}
-      <a  href="{{ currentpage.html }}">{{ currentpage.funnel }}</a>
+      {% if use_page == (pages|selectattr('funnel', 'defined_and_equalto', use_page.funnel)|first) %}
+      <a  href="{{ use_page.html }}">{{ use_page.funnel }}</a>
       {% else %}
-      <a href="{{ (pages|selectattr('funnel', 'defined_and_equalto', currentpage.funnel)|first).html }}"> {{ currentpage.funnel }}</a>
+      <a href="{{ (pages|selectattr('funnel', 'defined_and_equalto', use_page.funnel)|first).html }}"> {{ use_page.funnel }}</a>
       {% endif %}
     </div>
   {% endif %}
 
   <!--{############# Sidebar links ###############################}-->
 
-  {% if not pages|selectattr("funnel", 'defined_and_equalto', currentpage.funnel)|selectattr("category", "defined")|list|length %}
+  {% if not pages|selectattr("funnel", 'defined_and_equalto', use_page.funnel)|selectattr("category", "defined")|list|length %}
     <!--{##### Case: no funnel categories, simple one-category sidebar ####}-->
-    {% set funnelpages = pages|selectattr("funnel", 'defined_and_equalto', currentpage.funnel)|list %}
+    {% set funnelpages = pages|selectattr("funnel", 'defined_and_equalto', use_page.funnel)|list %}
     <div id="sidenav" aria-multiselectable="true">
       <div class="card active">
         <div class="card-body card-body-single">
@@ -39,13 +42,13 @@
           {% for page in funnelpages %}
             {% if loop.index == 1 %}{# Skip the first element since it's linked by the funnel header #}
             {% elif page.template == "template-redirect.html" %}{# skip redirects #}
-            {% elif page == currentpage %}
+            {% elif page == use_page %}
             <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
             {% else %}
             <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
             {% endif %}
           {% endfor %}
-          {% if currentpage.funnel == "News" %}
+          {% if use_page.funnel == "News" %}
           <li><a class="nosubcat-page" href="/blog/">Ripple Dev Blog</a></li>
           {% endif %}
           </ul>
@@ -53,31 +56,31 @@
       </div><!-- /.card -->
     </div><!-- /#sidenav -->
 
-  {% elif currentpage.supercategory is defined %}
+  {% elif use_page.supercategory is defined %}
     <!--{# Case: in a supercategory, show cards for that supercategory's categories #}-->
     <div id="sidenav" role="tablist" aria-multiselectable="true">
       {% for cat in categories %}
         {% set catpages = pages|selectattr("category", 'defined_and_equalto', cat)|list %}
-        {% if currentpage.funnel is defined %}
-          {% set catpages = catpages|selectattr("funnel", 'defined_and_equalto', currentpage.funnel)|list %}
+        {% if use_page.funnel is defined %}
+          {% set catpages = catpages|selectattr("funnel", 'defined_and_equalto', use_page.funnel)|list %}
         {% endif %}
-        {% if currentpage.doc_type is defined %}
-          {% set catpages = catpages|selectattr("doc_type", 'defined_and_equalto', currentpage.doc_type)|list %}
+        {% if use_page.doc_type is defined %}
+          {% set catpages = catpages|selectattr("doc_type", 'defined_and_equalto', use_page.doc_type)|list %}
         {% endif %}
-        {% set catpages = catpages|selectattr("supercategory", 'defined_and_equalto', currentpage.supercategory)|list %}
+        {% set catpages = catpages|selectattr("supercategory", 'defined_and_equalto', use_page.supercategory)|list %}
         {% if catpages|length %}
           {% set cat_parent = pages|selectattr('category', 'defined_and_equalto', cat)|first %}
-            <div class="card{% if currentpage.category is defined and currentpage.category == cat %} active{% endif %}">
+            <div class="card{% if use_page.category is defined and use_page.category == cat %} active{% endif %}">
               <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
                 {% if catpages|length > 1 %}
-                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></a>
+                <a class="{% if use_page.category is undefined or use_page.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></a>
                 {% endif %}
                 <h5 class="card-title">
-                    <a class="sidenav_cat_title{% if currentpage == (cat_parent) %} active{% elif currentpage.category is defined and currentpage.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
+                    <a class="sidenav_cat_title{% if use_page == (cat_parent) %} active{% elif use_page.category is defined and use_page.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
                 </h5>
               </div><!-- /.card-header -->
 
-              <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category is defined and currentpage.category == cat %} show{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
+              <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if use_page.category is defined and use_page.category == cat %} show{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
                 <div class="card-body">
                   <ul class="sidebar_pagelist">
                   {% set printed_subcategories = [] %}
@@ -85,15 +88,15 @@
                     {% if loop.index != 1 %}{# Skip the first element since it's linked by the category header #}
                       {% if page.template == "template-redirect.html" %}{# skip redirects #}
                       {% elif page.subcategory is undefined %}
-                        {% if page == currentpage %}
+                        {% if page == use_page %}
                           <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                         {% else %}
                         <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                         {% endif %}
                       {% elif page.subcategory not in printed_subcategories %}
-                        {% if page == currentpage %}
+                        {% if page == use_page %}
                         <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                        {% elif currentpage.subcategory is defined and page.subcategory == currentpage.subcategory %}
+                        {% elif use_page.subcategory is defined and page.subcategory == use_page.subcategory %}
                         <li><a class="subcat-title active-parent" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                         {% else %}
                         <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
@@ -101,7 +104,7 @@
 
                         {% for subpage in catpages|selectattr('subcategory', 'defined_and_equalto', page.subcategory) %}
                           {% if subpage != page and subpage.template != "template-redirect.html" %}
-                            {% if subpage == currentpage %}
+                            {% if subpage == use_page %}
                             <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                             {% else %}
                             <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
@@ -125,9 +128,9 @@
 
   {% else %}
     <!--{##### Case: Not in a supercategory, but siblings might be #}-->
-    {% set sidebar_pagelist = pages|selectattr("funnel", 'defined_and_equalto', currentpage.funnel)|list %}
-    {% if currentpage.doc_type is defined %}
-      {% set sidebar_pagelist = sidebar_pagelist|selectattr("doc_type", 'defined_and_equalto', currentpage.doc_type)|list %}
+    {% set sidebar_pagelist = pages|selectattr("funnel", 'defined_and_equalto', use_page.funnel)|list %}
+    {% if use_page.doc_type is defined %}
+      {% set sidebar_pagelist = sidebar_pagelist|selectattr("doc_type", 'defined_and_equalto', use_page.doc_type)|list %}
     {% endif %}
     {% set printed_modules = [] %}
     <div id="sidenav" role="tablist" aria-multiselectable="true">
@@ -191,18 +194,18 @@
         {% set catpages = sidebar_pagelist|selectattr("category", 'defined_and_equalto', page.category)|list %}
         {% if catpages|length %}
           {% set cat_parent = catpages|first %}
-          <div class="card{% if currentpage.category is defined and currentpage.category == cat %} active{% endif %}">
+          <div class="card{% if use_page.category is defined and use_page.category == cat %} active{% endif %}">
             <div class="card-header" role="tab" id="sidenav_cat_head_{{loop.index}}">
               {% if catpages|length > 1 %}
-                <a class="{% if currentpage.category is undefined or currentpage.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></a>
+                <a class="{% if use_page.category is undefined or use_page.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></a>
               {% endif %}
               <h5 class="card-title">
-                  <a class="sidenav_cat_title{% if currentpage == (cat_parent) %} active{% elif currentpage.category is defined and currentpage.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
+                  <a class="sidenav_cat_title{% if use_page == (cat_parent) %} active{% elif use_page.category is defined and use_page.category == cat %} active-parent{% endif %}" href="{{ cat_parent.html }}">{{ cat }}</a>
                 <!-- <a class="sidenav_cat_title" href="{{ cat_parent.html }}">{{ cat }}</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if currentpage.category is defined and currentpage.category == cat %} show{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
+            <div id="sidenav_collapse_{{loop.index}}" class="collapse{% if use_page.category is defined and use_page.category == cat %} show{% endif %}" role="tabpanel" aria-labelledby="sidenav_cat_head_{{loop.index}}">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                 {% set printed_subcategories = [] %}
@@ -210,15 +213,15 @@
                   {% if loop.index != 1 %}{# Skip the first element since it's linked by the category header #}
                     {% if page.template == "template-redirect.html" %}{# skip redirects #}
                     {% elif page.subcategory is undefined %}
-                      {% if page == currentpage %}
+                      {% if page == use_page %}
                       <li><a class="active nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                       {% else %}
                       <li><a class="nosubcat-page" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                       {% endif %}
                     {% elif page.subcategory not in printed_subcategories %}
-                      {% if page == currentpage %}
+                      {% if page == use_page %}
                       <li><a class="subcat-title active" href="#main_content_body">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
-                      {% elif page.subcategory is defined and currentpage.subcategory is defined and page.subcategory == currentpage.subcategory %}
+                      {% elif page.subcategory is defined and use_page.subcategory is defined and page.subcategory == use_page.subcategory %}
                       <li><a class="subcat-title active-parent" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                       {% else %}
                       <li><a class="subcat-title" href="{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
@@ -226,7 +229,7 @@
 
                       {% for subpage in catpages|selectattr('subcategory', 'defined_and_equalto', page.subcategory) %}
                         {% if subpage != page %}
-                          {% if subpage == currentpage %}
+                          {% if subpage == use_page %}
                           <li><a class="active subpage" href="#main_content_body">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
                           {% elif subpage.template != "template-redirect.html" %}
                           <li><a class="subpage" href="{{ subpage.html }}">{{ subpage.name }}{% if subpage.status is defined and subpage.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>

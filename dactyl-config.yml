@@ -3040,6 +3040,12 @@ pages:
             - local
         template: template-tx-sender.html
 
+# Custom 404 page
+    -   name: 404 Not Found
+        html: 404.html
+        template: template-404.html
+        targets:
+            - local
 
 # Special sitemap file (for better Google indexing)
     -   name: Sitemap
