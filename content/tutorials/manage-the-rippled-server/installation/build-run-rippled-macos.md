@@ -38,7 +38,7 @@ For development purposes Ripple recommends running `rippled` as your own user, n
 
 0. Ensure that your `BOOST_ROOT` environment points to the directory created by the Boost installation:
         
-      1. To find your Boost directory, use `pwd` if you installed the Boost manually or use `brew info boost` if you installed the Boost with Homebrew.
+      1. To find your Boost directory, use `pwd` if you installed the Boost manually or use `brew --prefix boost` if you installed the Boost with Homebrew.
 
       2. Edit below code with your Boost directory location and run to add Boost environment variable to your `.bash_profile` file so it's automatically set when you log in.
 
