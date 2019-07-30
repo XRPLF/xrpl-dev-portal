@@ -42,7 +42,7 @@ For development purposes Ripple recommends running `rippled` as your own user, n
 
       2. Edit below code with your Boost directory location and run to add Boost environment variable to your `.bash_profile` file so it's automatically set when you log in.
 
-        $ echo $"export BOOST_ROOT=/Users/my_user/boost_1_70_0" >> ~/.bash_profile
+          $ echo $"export BOOST_ROOT=/Users/my_user/boost_1_70_0" >> ~/.bash_profile
 
 0. If you updated your `.bash_profile` file in the previous step, be sure to source it in a new Terminal window. For example:
 
