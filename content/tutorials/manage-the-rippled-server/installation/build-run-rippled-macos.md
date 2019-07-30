@@ -36,11 +36,15 @@ For development purposes Ripple recommends running `rippled` as your own user, n
             ./bootstrap.sh
             ./b2 cxxflags="-std=c++14"
 
-0. Ensure that your `BOOST_ROOT` environment variable points to the directory created by the Boost installation. To find your Boost install directory, use `brew info boost`. Put this environment variable in your `.bash_profile` file so it's automatically set when you log in. For example:
+0. Ensure that your `BOOST_ROOT` environment points to the directory created by the Boost installation:
+        
+      1. To find your Boost directory, use `pwd` if you installed the Boost manually or use `brew --prefix boost` if you installed the Boost with Homebrew.
 
-        export BOOST_ROOT=/Users/my_user/boost_1_70_0
+      2. Edit below code with your Boost directory location and run to add Boost environment variable to your `.bash_profile` file so it's automatically set when you log in.
 
-0. If you updated your `.bash_profile` file in the previous step, be sure to source it. For example:
+        $ echo $"export BOOST_ROOT=/Users/my_user/boost_1_70_0" >> ~/.bash_profile
+
+0. If you updated your `.bash_profile` file in the previous step, be sure to source it in a new Terminal window. For example:
 
         $ source .bash_profile
 
