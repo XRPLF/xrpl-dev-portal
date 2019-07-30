@@ -108,7 +108,7 @@ The formula for calculating an XRP Ledger address is as follows. For the complet
         assert(crypto.getHashes().includes('sha256'));
         assert(crypto.getHashes().includes('ripemd160'));
 
-2. Start with a 33-byte ECDSA secp256k1 public key, or a 32-byte Ed25119 public key. For Ed25519 keys, prefix the key with the byte `0xED`.
+2. Start with a 33-byte ECDSA secp256k1 public key, or a 32-byte Ed25519 public key. For Ed25519 keys, prefix the key with the byte `0xED`.
 
         const pubkey_hex =
           'ED9434799226374926EDA3B54B1B461B4ABF7237962EAE18528FEA67595397FA32';
