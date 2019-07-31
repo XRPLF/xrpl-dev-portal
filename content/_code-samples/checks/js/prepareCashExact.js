@@ -13,7 +13,7 @@ api.connect().then(() => {
     "maxLedgerVersionOffset": 60
   }
   return api.prepareCheckCash(sender, {
-    "checkID": "84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9",
+    "checkID": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
     "amount": {
       "currency": "XRP",
       "value": "95" // Cash for exactly 95 XRP
