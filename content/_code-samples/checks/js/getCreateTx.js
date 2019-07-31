@@ -8,7 +8,7 @@ const api = new RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
 api.connect().then(() => {
   console.log('Connected')
 
-  const tx_hash = "C0B27D20669BAB837B3CDF4B8148B988F17CE1EF8EDF48C806AE9BF69E16F441"
+  const tx_hash = "09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB"
 
   return api.getTransaction(tx_hash)
 }).then(response => {
