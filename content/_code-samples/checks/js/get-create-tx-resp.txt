@@ -2,7 +2,7 @@ Connected
 Final transaction result: { type: 'checkCreate',
   address: 'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za',
   sequence: 2,
-  id: 'C0B27D20669BAB837B3CDF4B8148B988F17CE1EF8EDF48C806AE9BF69E16F441',
+  id: '09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB',
   specification:
    { destination: 'rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis',
      sendMax: { currency: 'XRP', value: '100' } },
