@@ -440,7 +440,7 @@ Example of [submitting a transaction](submit.html#sign-and-submit-mode) requesti
                 "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
                 "TransactionType": "PaymentChannelClaim",
                 "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Flags": 2147614720
+                "Flags": 131072
             },
             "fee_mult_max": 1000
         }]
@@ -493,7 +493,7 @@ Example of [submitting](submit.html#sign-and-submit-mode) a transaction to close
                 "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
                 "TransactionType": "PaymentChannelClaim",
                 "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Flags": 2147614720
+                "Flags": 131072
             },
             "fee_mult_max": 1000
         }]
@@ -508,7 +508,7 @@ Example response from using the [tx method][] to look up the transaction from th
             "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
             "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
             "Fee": "5606",
-            "Flags": 2147614720,
+            "Flags": 131072,
             "Sequence": 41,
             "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
             "TransactionType": "PaymentChannelClaim",
