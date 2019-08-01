@@ -27,6 +27,21 @@ If your server crashes randomly during operation or as a result of particular co
 If none of the above apply, please report the issue to Ripple as a security-sensitive bug. If Ripple can reproduce the crash, you may be eligible for a bounty. See <https://ripple.com/bug-bounty/> for details.
 
 
+## Already validated sequence at or past
+
+Log messages such as the following indicate that a server received validations for different ledger sequences out of order.
+
+```text
+2018-Aug-28 22:55:58.316094260 Validations:WRN Val for 2137ACEFC0D137EFA1D84C2524A39032802E4B74F93C130A289CD87C9C565011 trusted/full from nHUeUNSn3zce2xQZWNghQvd9WRH6FWEnCBKYVJu2vAizMxnXegfJ signing key n9KcRZYHLU9rhGVwB9e4wEMYsxXvUfgFxtmX25pc1QPNgweqzQf5 already validated sequence at or past 12133663 src=1
+```
+
+Occasional messages of this type do not usually indicate a problem. If this type of message occurs frequently with the same sending validator, it could indicate a problem, including any of the following (roughly in order of most to least likely):
+
+- The server writing the message is having network issues.
+- The validator described in the message is having network issues.
+- The validator described in the message is behaving maliciously.
+
+
 ## Connection reset by peer
 
 The following log message indicates that a peer `rippled` server closed a connection:
@@ -43,15 +58,31 @@ A large number of these messages around the same time may indicate a problem, su
 - Your server may have been overloading the peer with requests, causing it to drop your server.
 
 
-## No hash for fetch pack
-
-Messages such as the following are caused by a bug in `rippled` v1.1.0 and earlier when downloading historical ledgers for [history sharding](history-sharding.html):
+## InboundLedger 11 timeouts for ledger
 
 ```text
-2018-Aug-28 22:56:21.397076850 LedgerMaster:ERR No hash for fetch pack. Missing Index 7159808
+InboundLedger:WRN 11 timeouts for ledger 8265938
 ```
 
-These can be safely ignored.
+This indicates that your server is having trouble requesting specific ledger data from its peers. If the [ledger index](basic-data-types.html#ledger-index) is much lower than the most recent validated ledger's index as reported by the [server_info method][], this probably indicates that your server is downloading a [history shard](history-sharding.html).
+
+This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `rippled` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
+
+```
+[ips_fixed]
+s2.ripple.com 51235
+```
+
+
+## InboundLedger Want hash
+
+Log messages such as the following indicate that the server is requesting ledger data from other servers:
+
+```text
+InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CDD21E019B
+```
+
+This is normal if your server is syncing, backfilling, or downloading [history shards](history-sharding.html).
 
 
 ## LoadMonitor Job
@@ -89,71 +120,15 @@ type=RocksDB
 ```
 
 
-## View of consensus changed during open
+## No hash for fetch pack
 
-Log messages such as the following occur when a server is not in sync with the rest of the network:
-
-```text
-2018-Aug-28 22:56:22.368460130 LedgerConsensus:WRN View of consensus changed during open status=open,  mode=proposing
-2018-Aug-28 22:56:22.368468202 LedgerConsensus:WRN 96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661 to 00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E
-2018-Aug-28 22:56:22.368499966 LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C6A9F2788CC715590E8FA5710F2D10BF5E3C03","close_flags":0,"close_time":588812130,"close_time_human":"2018-Aug-28 22:55:30.000000000","close_time_resolution":30,"closed":true,"hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_index":"3","parent_close_time":588812070,"parent_hash":"5F5CB224644F080BC8E1CC10E126D62E9D7F9BE1C64AD0565881E99E3F64688A","seqNum":"3","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}
-```
-
-{% include '_snippets/unsynced_warning_logs.md' %}
-<!--_ -->
-
-
-## Already validated sequence at or past
-
-Log messages such as the following indicate that a server received validations for different ledger sequences out of order.
+Messages such as the following are caused by a bug in `rippled` v1.1.0 and earlier when downloading historical ledgers for [history sharding](history-sharding.html):
 
 ```text
-2018-Aug-28 22:55:58.316094260 Validations:WRN Val for 2137ACEFC0D137EFA1D84C2524A39032802E4B74F93C130A289CD87C9C565011 trusted/full from nHUeUNSn3zce2xQZWNghQvd9WRH6FWEnCBKYVJu2vAizMxnXegfJ signing key n9KcRZYHLU9rhGVwB9e4wEMYsxXvUfgFxtmX25pc1QPNgweqzQf5 already validated sequence at or past 12133663 src=1
+2018-Aug-28 22:56:21.397076850 LedgerMaster:ERR No hash for fetch pack. Missing Index 7159808
 ```
 
-Occasional messages of this type do not usually indicate a problem. If this type of message occurs frequently with the same sending validator, it could indicate a problem, including any of the following (roughly in order of most to least likely):
-
-- The server writing the message is having network issues.
-- The validator described in the message is having network issues.
-- The validator described in the message is behaving maliciously.
-
-
-## Unable to determine hash of ancestor
-
-Log messages such as the following occur when the server sees a validation message from a peer and it does not know the parent ledger version that server is building on. This is normal when a server is syncing to the network.
-
-```text
-2018-Aug-28 22:56:22.256065549 Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E seq=12133675
-```
-
-If this message occurs frequently outside of the first 5 to 15 minutes after starting the server, it could indicate a problem.
-
-
-## InboundLedger Want hash
-
-Log messages such as the following indicate that the server is requesting ledger data from other servers:
-
-```text
-InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CDD21E019B
-```
-
-This is normal if your server is syncing, backfilling, or downloading [history shards](history-sharding.html).
-
-
-## InboundLedger 11 timeouts for ledger
-
-```text
-InboundLedger:WRN 11 timeouts for ledger 8265938
-```
-
-This indicates that your server is having trouble requesting specific ledger data from its peers. If the [ledger index](basic-data-types.html#ledger-index) is much lower than the most recent validated ledger's index as reported by the [server_info method][], this probably indicates that your server is downloading a [history shard](history-sharding.html).
-
-This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `rippled` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
-
-```
-[ips_fixed]
-s2.ripple.com 51235
-```
+These can be safely ignored.
 
 
 ## Potential Censorship
@@ -195,6 +170,32 @@ Aside from the bug, this error can also occur if `rippled` became unable to writ
 - The shard folder was deleted
 
 **Tip:** It is generally safe to delete `rippled`'s database files when the service is stopped, but you should never delete them while the server is running.
+
+
+## Unable to determine hash of ancestor
+
+Log messages such as the following occur when the server sees a validation message from a peer and it does not know the parent ledger version that server is building on. This can occur when the server is not in sync with the rest of the network:
+
+```text
+2018-Aug-28 22:56:22.256065549 Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E seq=12133675
+```
+
+{% include '_snippets/unsynced_warning_logs.md' %}
+<!--_ -->
+
+
+## View of consensus changed during open
+
+Log messages such as the following occur when a server is not in sync with the rest of the network:
+
+```text
+2018-Aug-28 22:56:22.368460130 LedgerConsensus:WRN View of consensus changed during open status=open,  mode=proposing
+2018-Aug-28 22:56:22.368468202 LedgerConsensus:WRN 96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661 to 00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E
+2018-Aug-28 22:56:22.368499966 LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C6A9F2788CC715590E8FA5710F2D10BF5E3C03","close_flags":0,"close_time":588812130,"close_time_human":"2018-Aug-28 22:55:30.000000000","close_time_resolution":30,"closed":true,"hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_index":"3","parent_close_time":588812070,"parent_hash":"5F5CB224644F080BC8E1CC10E126D62E9D7F9BE1C64AD0565881E99E3F64688A","seqNum":"3","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}
+```
+
+{% include '_snippets/unsynced_warning_logs.md' %}
+<!--_ -->
 
 
 ## We are not running on the consensus ledger
