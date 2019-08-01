@@ -13,3 +13,9 @@ Auto-bridging happens automatically on any [OfferCreate transaction][]. [Payment
 - [Offer Preference](offers.html#offer-preference)
 
 - [Payment Paths](paths.html)
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
