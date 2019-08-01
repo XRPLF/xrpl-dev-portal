@@ -99,7 +99,8 @@ Log messages such as the following occur when a server is not in sync with the r
 2018-Aug-28 22:56:22.368499966 LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C6A9F2788CC715590E8FA5710F2D10BF5E3C03","close_flags":0,"close_time":588812130,"close_time_human":"2018-Aug-28 22:55:30.000000000","close_time_resolution":30,"closed":true,"hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_index":"3","parent_close_time":588812070,"parent_hash":"5F5CB224644F080BC8E1CC10E126D62E9D7F9BE1C64AD0565881E99E3F64688A","seqNum":"3","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}
 ```
 
-During the first 5 to 15 minutes after the server starts up, it is normal for it to be out of sync with the rest of the network and print messages such as these. If the server writes these messages long after starting up, it could indicate a problem. Common causes include unreliable network connections and insufficient hardware specs. This can also happen when other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
+{% include '_snippets/unsynced_warning_logs.md' %}
+<!--_ -->
 
 
 ## Already validated sequence at or past
@@ -170,6 +171,40 @@ LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 ```text
 LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
 ```
+
+
+## Shard: No such file or directory
+
+A bug in `rippled` 1.3.1 can cause it to write log messages such as the following when you have [history sharding](history-sharding.html) enabled:
+
+```text
+ShardStore:ERR shard 1804: No such file or directory
+ShardStore:ERR shard 354: No such file or directory
+ShardStore:ERR shard 408: No such file or directory
+ShardStore:ERR shard 2927: No such file or directory
+ShardStore:ERR shard 2731: No such file or directory
+ShardStore:ERR shard 2236: No such file or directory
+```
+
+This indicates that the server tried to start acquiring a new history shard, but it failed to create a new directory to hold the shard. This bug prevents rippled 1.3.1 from acquiring new shards. [A fix is forthcoming.](https://github.com/ripple/rippled/pull/3014)
+
+Aside from the bug, this error can also occur if `rippled` became unable to write to the underlying file system **after startup**. Possible causes include:
+
+- Hardware failure of storage media
+- The file system became unmounted
+- The shard folder was deleted
+
+**Tip:** It is generally safe to delete `rippled`'s database files when the service is stopped, but you should never delete them while the server is running.
+
+
+## We are not running on the consensus ledger
+
+```text
+NetworkOPs:WRN We are not running on the consensus ledger
+```
+
+{% include '_snippets/unsynced_warning_logs.md' %}
+<!--_ -->
 
 
 <!--{# common link defs #}-->
