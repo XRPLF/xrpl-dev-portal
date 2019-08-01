@@ -68,6 +68,18 @@ You can determine the final disposition of an offer with an `Expiration` as soon
 
 If an OfferCreate transaction has an `Expiration` time that has already passed when the transaction first gets included in a ledger, the transaction does not execute the offer. The result code of such a transaction depends on whether the [Checks amendment][]:not_enabled: is enabled. With the Checks amendment enabled, the transaction has the `tecEXPIRED` result code. Otherwise, the transaction has the `tesSUCCESS` transaction code. In either case, the transaction has no effect except to destroy the XRP paid as a [transaction cost](transaction-cost.html).
 
+## See Also
+
+- **Concepts:**
+    - [Issued Currencies Overview](issued-currencies-overview.html)
+    - [Paths](paths.html)
+- **Tutorials:**
+    - [List Your Exchange on XRP Charts](list-your-exchange-on-xrp-charts.html) - for off-ledger exchanges
+- **References:**
+    - [account_offers method][]
+    - [book_offers method][]
+    - [OfferCreate transaction][]
+    - [Offer object](offer.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
