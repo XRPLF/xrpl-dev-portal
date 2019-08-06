@@ -71,9 +71,9 @@ When you run `rippled` in stand-alone mode, you have to tell it what ledger vers
     - [Configure `rippled`](configure-rippled.html)
         - [Run `rippled` as a Validator](run-rippled-as-a-validator.html)
     - [Use rippled in Stand-Alone Mode](use-stand-alone-mode.html):
-        - [Start a New Genesis Ledger in Stand-Alone Mode](start-a-new-genesis-ledger-in-standalone-mode.html)
-        - [Load a Saved Ledger in Stand-Alone Mode](load-a-saved-ledger-in-standalone-mode.html)
-        - [Advance the Ledger in Stand-Alone Mode](advance-the-ledger-in-standalone-mode.html)
+        - [Start a New Genesis Ledger in Stand-Alone Mode](start-a-new-genesis-ledger-in-stand-alone-mode.html)
+        - [Load a Saved Ledger in Stand-Alone Mode](load-a-saved-ledger-in-stand-alone-mode.html)
+        - [Advance the Ledger in Stand-Alone Mode](advance-the-ledger-in-stand-alone-mode.html)
 
 
 <!--{# common link defs #}-->

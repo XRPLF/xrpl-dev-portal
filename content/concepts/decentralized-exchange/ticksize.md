@@ -16,7 +16,7 @@ When an issuer enables, disables, or changes the `TickSize`, Offers that were pl
 - **References:**
     - [AccountSet transaction][]
     - [book_offers method][]
-    - [CreateOffer transaction][]
+    - [OfferCreate transaction][]
 
 
 

@@ -51,6 +51,7 @@ As with operational addresses, a standby address must have an accounting relatio
 
 If a standby address is compromised, the consequences are like an operational address being compromised. A malicious actor can steal any balances possessed by the standby address, and the financial institution can change to a new standby address with no action from customers and partners.
 
+
 ## See Also
 
 - **Concepts:**
@@ -64,3 +65,9 @@ If a standby address is compromised, the consequences are like an operational ad
     - [account_info method][]
     - [SetRegularKey transaction][]
     - [AccountRoot object](accountroot.html)
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

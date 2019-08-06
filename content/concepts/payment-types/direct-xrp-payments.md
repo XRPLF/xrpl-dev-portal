@@ -77,7 +77,7 @@ From a relatively high level, the XRP Ledger's transaction processing engine app
     - [Payment System Basics](payment-system-basics.html)
 - **Tutorials:**
     - [Send XRP (Interactive Tutorial)](send-xrp.html)
-    - [Monitor Incoming Payments with WebSocket](Monitor Incoming Payments with WebSocket)
+    - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
 - **References:**
     - [Payment transaction][]
     - [Transaction Results](transaction-results.html)
