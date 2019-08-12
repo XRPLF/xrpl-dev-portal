@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>550</x>
+      <y>540</y>
+      <w>200</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>halign=left
+
+rippled server</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>480</y>
+      <w>50</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=()-[WS]</panel_attributes>
+    <additional_attributes>20.0;10.0;20.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>350</x>
+      <y>360</y>
+      <w>170</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>halign=left
+
+ripple-lib (JavaScript)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>480</y>
+      <w>90</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=()-[JSON-RPC]</panel_attributes>
+    <additional_attributes>40.0;10.0;40.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>420</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>180.0;50.0;180.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>90</y>
+      <w>480</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Apps &amp; Services
+(Exchanges, wallets, explorers, etc.)
+bg=white
+style=wordwrap
+transparency=0
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>80</y>
+      <w>480</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>150</y>
+      <w>50</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>20.0;320.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>350</x>
+      <y>240</y>
+      <w>130</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>
+halign=left
+Data API*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>300</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=[RippleAPI]-</panel_attributes>
+    <additional_attributes>70.0;60.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>190</y>
+      <w>90</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=()-[REST-like]</panel_attributes>
+    <additional_attributes>40.0;10.0;40.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>670</x>
+      <y>570</y>
+      <w>50</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+
+
+fontsize=7.5
+Internal
+DBs
+bg=white
+transparency=0
+customelement=
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>70</y>
+      <w>480</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>380</x>
+      <y>150</y>
+      <w>50</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>20.0;30.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>150</y>
+      <w>140</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;210.0;120.0;180.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>150</y>
+      <w>50</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>20.0;320.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>290</x>
+      <y>250</y>
+      <w>50</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+
+
+fontsize=7.5
+Relational
+DBs
+bg=white
+transparency=0
+customelement=
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>600</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=[Peer]-[Peer]</panel_attributes>
+    <additional_attributes>90.0;10.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>300</x>
+      <y>560</y>
+      <w>200</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>rippled servers
+(direct &amp; indirect peers)
+halign=left</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>540</y>
+      <w>220</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>20.0;70.0;10.0;70.0;10.0;10.0;200.0;10.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>530</y>
+      <w>220</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>20.0;70.0;10.0;70.0;10.0;10.0;200.0;10.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>260</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;20.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>80</x>
+      <y>90</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Apps &amp; Services*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>190</y>
+      <w>830</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;810.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>80</x>
+      <y>250</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Middleware APIs*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>320</y>
+      <w>830</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;810.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>80</x>
+      <y>370</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Programming Libraries*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>480</y>
+      <w>830</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;810.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>80</x>
+      <y>510</y>
+      <w>160</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>*Peer-to-Peer Network*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>30</y>
+      <w>30</w>
+      <h>670</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;650.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>510</y>
+      <w>500</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=.
+halign=left
+ XRP Ledger</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>350</x>
+      <y>280</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+fontsize=8
+*Do not use for mission-critical services.</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
