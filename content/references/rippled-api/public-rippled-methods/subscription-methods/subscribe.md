@@ -169,7 +169,7 @@ The fields from a ledger stream message are as follows:
 
 [New in: rippled 0.29.0][]
 
-The validations stream sends messages whenever it receives validation messages, also called validation votes, from validators it trusts. The message looks like the following:
+The validations stream sends messages whenever it receives validation messages, also called validation votes, regardless of whether or not the validation message is from a trusted validator. The message looks like the following:
 
 ```
 {
