@@ -12,7 +12,7 @@ The XRP Ledger is home to a deep, layered ecosystem of software projects powerin
 
 - [_Middleware_](#middleware) provides indirect access to XRP Ledger data. Applications in this layer frequently have their own data storage and processing.
 
-- [_Apps and Services_](#apps-and-services) provide user-level interaction with the
+- [_Apps and Services_](#apps-and-services) provide user-level interaction with the XRP Ledger, or provide a basis for even higher-level apps and services.
 
 
 ### rippled: The Core Server
@@ -21,11 +21,11 @@ The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliab
 
 Every instance of `rippled` syncs to the same network (unless it's configured to follow a [parallel network such as a test net](parallel-networks.html)) and has access to all communications across the network. Every `rippled` server on the network keeps a complete copy of the latest state data for the entire XRP Ledger, along with a slice of recent transactions and a record of the changes those transactions made, and every server processes every transaction independently while verifying that its outcome matches the rest of the network. Servers can be configured to keep more [ledger history](ledger-history.html) and to participate in the consensus process as a [validator](rippled-server-modes.html#reasons-to-run-a-validator).
 
-This server exposes [`rippled` APIs](rippled-apis.html) for users to look up data, administer the server, and submit transactions.
+This server exposes [`rippled` APIs](rippled-api.html) for users to look up data, administer the server, and submit transactions.
 
 ### Programming Libraries
 
-Programming libraries are not strictly required to access XRP Ledger data, since you can use HTTP or WebSocket to connect to the [`rippled` APIs](rippled-apis.html) directly. Libraries simplify some of the common work of accessing the `rippled` APIs, and convert the data into forms that are easier to understand and program with in the programming language of the library.
+Programming libraries are not strictly required to access XRP Ledger data, since you can use HTTP or WebSocket to connect to the [`rippled` APIs](rippled-api.html) directly. Libraries simplify some of the common work of accessing the `rippled` APIs, and convert the data into forms that are easier to understand and program with in the programming language of the library.
 
 [RippleAPI for JavaScript](get-started-with-rippleapi-for-javascript.html) (also called "ripple-lib") is the longest-standing, most well-supported library for accessing the XRP Ledger. Many [middleware services](#middleware) use programming libraries like RippleAPI internally.
 
@@ -33,7 +33,7 @@ Programming libraries are not strictly required to access XRP Ledger data, since
 
 Middleware services are programs that consume the XRP Ledger APIs on one side and provide their own APIs on the other side. They provide a layer of abstraction to make it easier to build higher-level applications by providing some common functionality as a service.
 
-Unlike [programming libraries](#programming-libraries), which are instantiated fresh and shut down with the program that imports them, middleware services typically stay running indefinitely, and may have their own databases (relational SQL databases or otherwise) and configuration files. Middleware services
+Unlike [programming libraries](#programming-libraries), which are instantiated fresh and shut down with the program that imports them, middleware services typically stay running indefinitely, and may have their own databases (relational SQL databases or otherwise) and configuration files.
 
 The [Data API](data-api.html) is an example of a middleware service on top of the XRP Ledger. The Data API collects and transforms XRP Ledger data, so that you can query by time, filter by data type, or perform data analysis.
 
@@ -52,7 +52,7 @@ There are numerous other examples of projects using XRP and adjacent technologie
 ## See Also
 
 - [Xpring Partners](https://xpring.io/#partners)
-- [Technical FAQ](technial-faq.html)
+- [Technical FAQ](technical-faq.html)
 - [XRPChat Links & Resources](https://www.xrpchat.com/links/) - Includes updated lists of gateways and exchanges, wallets and storage, apps, and more.
 
 <!--{# common link defs #}-->
