@@ -24,4 +24,25 @@ Addresses can also [freeze](freezes.html) issued currencies, which may be useful
 
 Issued currencies are designed to be able to represent any kind of currency or asset, including those with very small or very large nominal values. For detailed technical information on the types of currency codes and the numeric limits of issued currency representation, see the [currency format reference](currency-formats.html).
 
-{% include '_snippets/tx-type-links.md' %}
+## See Also
+
+- **Concepts:**
+    - [XRP](xrp.html)
+    - [Cross-Currency Payments](cross-currency-payments.html)
+    - [Decentralized Exchange](decentralized-exchange.html)
+- **Tutorials:**
+    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
+    - [Look Up Transaction Results](look-up-transaction-results.html)
+    - [Use Specialized Payment Types](use-specialized-payment-types.html)
+- **References:**
+    - [Payment transaction][]
+    - [TrustSet transaction][]
+    - [RippleState object](ripplestate.html)
+    - [account_lines method][]
+    - [account_currencies method][]
+    - [gateway_balances method][]
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

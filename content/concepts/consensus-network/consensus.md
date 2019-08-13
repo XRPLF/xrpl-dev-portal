@@ -176,13 +176,12 @@ Best practices for applications submitting transactions include:
     - [consensus_info method][]
     - [validator_list_sites method][]
     - [validators method][]
-    - [consensus_info method][]
 
 
 
 
 
-## End Notes
+## Footnotes
 
 <a href="#from_footnote_1" id="footnote_1"><sup>1</sup></a> – Transactions with **tec** result codes do not perform the requested action, but do have effects on the ledger. To prevent abuse of the network and to pay for the cost of distributing the transaction, they destroy the XRP transaction cost. To not block other transactions submitted by the same sender around the same time, they increment the sender's account sequence number. They sometimes also perform maintenance such as deleting expired objects or unfunded trade offers.
 

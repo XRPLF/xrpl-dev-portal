@@ -4,16 +4,16 @@ The XRP Ledger is a universal payment system enabling users to transfer funds ac
 
 The XRP Ledger's technology enables near real-time settlement (three to six seconds) and contains a decentralized exchange, where payments automatically use the cheapest currency trade orders available to bridge currencies.
 
-# Background
+## Background
 
-## Mechanics
+### Mechanics
 
 At the core, the XRP Ledger is a shared database that records information such as accounts, balances, and offers to trade assets. Signed instructions called "transactions" cause changes such as creating accounts, making payments, and trading assets.
 
 As a cryptographic system, the owners of XRP Ledger accounts are identified by _cryptographic identities_, which correspond to public/private key pairs. Transactions are authorized by cryptographic signatures matching these identities. Every server processes every transaction according to the same deterministic, known rules. Ultimately, the goal is for every server in the network to have a complete copy of the exact same ledger state, without needing a single central authority to arbitrate transactions.
 
 
-## The Double Spend Problem
+### The Double Spend Problem
 
 The "double spend" problem is a fundamental challenge to operating any sort of payment system. The problem comes from the requirement that when money is spent in one place, it can't also be spent in another place. More generally, the problem occurs when you have any two transactions such that either one is valid but not both together.
 
@@ -26,9 +26,9 @@ Conventionally, payment systems solve the double spend problem by having a centr
 Distributed ledger technologies, like the XRP Ledger, have no central authority. They must solve the double spend problem in some other way.
 
 
-# How Consensus Works
+## How Consensus Works
 
-## Simplifying the Problem
+### Simplifying the Problem
 
 Much of the double spend problem can be solved by well-known rules such as prohibiting an account from spending funds it does not have. In fact, the double spend problem can be reduced to putting transactions in order.
 
@@ -42,7 +42,7 @@ If we could collect transactions into groups and agree on those groupings, we co
 
 The XRP Ledger allows multiple conflicting transactions to be in the agreed group. The group of transactions is executed according to deterministic rules, so whichever transaction comes first according to the sorting rules succeeds and whichever conflicting transaction comes second fails.
 
-## Consensus Rules
+### Consensus Rules
 
 The primary role of consensus is for participants in the process to agree on which transactions are to be processed as a group to resolve the double spend problem. There are four reasons this agreement is easier to achieve than might be expected:
 
@@ -53,7 +53,7 @@ The primary role of consensus is for participants in the process to agree on whi
 
 Every participant’s top priority is correctness. They must first enforce the rules to be sure nothing violates the integrity of the shared ledger. For example, a transaction that is not properly signed must never be processed (even if other participants want to be processed). However, every honest participant’s second priority is agreement. A network with possible double spends has no utility at all. Agreement is facilitated by the fact that every honest participant values it above everything but correctness.
 
-## Consensus Rounds
+### Consensus Rounds
 
 A consensus round is an attempt to agree on a group of transactions so they can be processed. A consensus round starts with each participant who wishes to do so taking an initial position. This is the set of valid transactions they have seen.
 
@@ -63,7 +63,7 @@ To prevent consensus from stalling near 50% and to reduce the overlap required f
 
 When a participant sees a supermajority that agrees on the set of transactions to next be processed, it declares a consensus to have been reached.
 
-## Consensus Can Fail
+### Consensus Can Fail
 
 It is not practical to develop a consensus algorithm that never fails to achieve perfect consensus. To understand why, consider how the consensus process finishes. At some point, each participant must declare that a consensus has been reached and that some set of transactions is known to be the result of the process. This declaration commits that participant irrevocably to some particular set of transactions as the result of the consensus process.
 
@@ -75,7 +75,7 @@ Imagine a group of people in a room trying to agree which door they should use t
 
 The probability of this kind of failure can be made very low, but it cannot be reduced to zero. The engineering tradeoffs are such that driving this probability down below about one in a thousand makes consensus significantly slower, and less able to tolerate network and endpoint failures.
 
-## How the XRP Ledger Handles Consensus Failure
+### How the XRP Ledger Handles Consensus Failure
 
 After a consensus round completes, each participant applies the set of transactions that they believe were agreed to. This results in constructing what they believe the next state of the ledger should be.
 
@@ -95,10 +95,27 @@ Case 3 results in the network losing a few seconds in which it could have made f
 
 On rare occasions, the network as a whole fails to make forward progress for a few seconds. In exchange, average transaction confirmation times are low.
 
-# Philosophy
+## Philosophy
 
 One form of reliability is the ability of a system to provide results even under conditions where some components have failed, some participants are malicious, and so on. While this is important, there is another form of reliability that is much more important in cryptographic payment systems — the ability of a system to produce results that can be relied upon. That is, when a system reports a result to us as reliable, we should be able to rely on that result.
 
 Real-world systems, however, face operational conditions in which both kinds of reliability can be compromised. These include hardware failures, communication failures, and even dishonest participants. Part of the XRP Ledger's design philosophy is to detect conditions where the reliability of results are impaired and report them, rather than providing results that must not be relied on.
 
 The XRP Ledger's consensus algorithm provides a robust alternative to proof of work systems, without consuming computational resources needlessly. Byzantine failures are possible, and do happen, but the consequence is only minor delays. In all cases, the XRP Ledger's consensus algorithm reports results as reliable only when they in fact are.
+
+## See Also
+
+- **Concepts:**
+    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus Research](consensus-research.html)
+    - [Ripple Consensus Video](https://www.youtube.com/watch?v=pj1QVb1vlC0)
+- **Tutorials:**
+    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+    - [Run `rippled` as a Validator](run-rippled-as-a-validator.html)
+- **References:**
+    - [Ledger Format Reference](ledger-data-formats.html)
+    - [Transaction Format Reference](transaction-formats.html)
+    - [consensus_info method][]
+    - [validator_list_sites method][]
+    - [validators method][]
+    - [consensus_info method][]

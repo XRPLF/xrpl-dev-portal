@@ -11,3 +11,17 @@ Over time, there may also be smaller, temporary test networks for specific purpo
 ## Parallel Networks and Consensus
 
 There is no `rippled` setting that defines which network it uses. Instead, it uses the consensus of validators it trusts to know which ledger to accept as the truth. When different consensus groups of `rippled` instances only trust other members of the same group, each group continues as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.
+
+- **Tools:**
+    - [XRP Test Net Faucet](xrp-test-net-faucet.html)
+- **Concepts:**
+    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Amendments](amendments.html)
+- **Tutorials:**
+    - [Connect Your `rippled` to the XRP Test Net](connect-your-rippled-to-the-xrp-test-net.html)
+    - [Use rippled in Stand-Alone Mode](use-stand-alone-mode.html)
+- **References:**
+    - [server_info method][]
+    - [consensus_info method][]
+    - [validator_list_sites method][]
+    - [validators method][]
