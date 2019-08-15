@@ -25,3 +25,9 @@ There is no `rippled` setting that defines which network it uses. Instead, it us
     - [consensus_info method][]
     - [validator_list_sites method][]
     - [validators method][]
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

@@ -54,3 +54,10 @@ The maximum possible values for the fees are limited by the internal data types 
     - [server_info method][]
     - [FeeSettings object](feesettings.html)
     - [SetFee pseudo-transaction][]
+
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
