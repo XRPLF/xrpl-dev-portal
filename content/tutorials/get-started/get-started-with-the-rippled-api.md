@@ -24,10 +24,12 @@ The response comes as a JSON object.
 
 Currently Ripple (the company) maintains a set of public WebSocket servers at:
 
-| `Domain`        | Port | Notes                                 |
-|:----------------|:-----|:--------------------------------------|
-| `s1.ripple.com` | 443  | `wss://` only; general purpose server |
-| `s2.ripple.com` | 443  | `wss://` only; full-history server    |
+| URL                                   | [Network](parallel-networks.html) | Notes |
+|:--------------------------------------|:----------------------------------|:--|
+| `wss://s1.ripple.com/`                | Mainnet                           | General purpose server cluster |
+| `wss://s2.ripple.com/`                | Mainnet                           | [Full-history server](ledger-history.html#full-history) cluster |
+| `wss://s.altnet.rippletest.net:51233` | Testnet                           | Testnet public server |
+| ***TBD***                             | Devnet                            | Devnet public server |
 
 These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
 
@@ -55,10 +57,12 @@ The response is also a JSON object.
 
 Currently, Ripple (the company) maintains a set of public JSON-RPC servers at:
 
-| `Domain`        | Port  | Notes                  |
-|:----------------|:------|:-----------------------|
-| `s1.ripple.com` | 51234 | General purpose server |
-| `s2.ripple.com` | 51234 | Full-history server    |
+| URL                                     | [Network](parallel-networks.html) | Notes |
+|:----------------------------------------|:----------------------------------|:--|
+| `https://s1.ripple.com:51234/`          | Mainnet                           | General purpose server cluster |
+| `https://s2.ripple.com:51234/`          | Mainnet                           | [Full-history server](ledger-history.html#full-history) cluster |
+| `https://s.altnet.rippletest.net:51234` | Testnet                           | Testnet public server |
+| ***TBD***                               | Devnet                            | Devnet public server |
 
 These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
 
