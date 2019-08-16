@@ -32,7 +32,9 @@ No. The XRP Ledger network is opt-in. Each participant directly or indirectly ch
 
 #### What is the validator incentive structure for validators not run by Ripple?
 
-If the XRP Ledger becomes successful and is widely used for interbank settlement, there will be an incentive for participants to ensure the reliability and stability of the network. If this happens, institutions will run `rippled` servers to participate in the network. Once you are running a server, the additional cost and effort to operate a validator is essentially zero—it would simply involve flipping a software switch from off to on. It is the validators who decide the evolution of the XRP Ledger, so the primary incentive to run a validator is to preserve and protect the stable operation and sensible evolution of the network.
+The primary incentive to run a validator is to preserve and protect the stable operation and sensible evolution of the network. It is the validators who decide the evolution of the XRP Ledger, so any business that uses or depends on the XRP Ledger has an inherent incentive to ensure the reliability and stability of the network.
+
+If you run an XRP Ledger server to participate in the network, the additional cost and effort to operate a validator is minimal. This means that additional incentives, such as the mining rewards in Bitcoin, are not necessary. Ripple avoids paying XRP as a reward for operating a validator so that such incentives do not warp the behavior of validators.
 
 
 #### Can financial institutions set up transaction validators that will help them meet specific institutional standards and requirements?
@@ -51,7 +53,9 @@ However, there will only be one authoritative ledger version at any given time; 
 
 #### Does the XRP Ledger utilize a formal validator onboarding process?
 
-No, a formal validator onboarding process is not compatible with the XRP Ledger, as it is a system with no central authority. Rather, Ripple provides recommendations and best practices.
+No, a formal validator onboarding process is not compatible with the XRP Ledger, as it is a system with no central authority.
+
+For recommendations and best practices, see [Run `rippled` as a Validator](run-rippled-as-a-validator.html).
 
 
 ## Role of XRP
@@ -91,7 +95,7 @@ You don't need to use Ripple’s version of the XRP Ledger software to interact 
 
 #### Does Ripple offer a secure method to download their software?
 
-`rippled` source code is available at <https://github.com/ripple/rippled>, where the tip of the `master`, `release` and `develop` branches always contains a version-setting commit signed by a `rippled` developer. The XRP Ledger also offers prebuilt RPM packages for CentOS, RedHat Enterprise Linux, Fedora and Ubuntu. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the md5sum of the RPM packages that are published.
+`rippled` source code is available at <https://github.com/ripple/rippled>, where the tip of the `master`, `release` and `develop` branches always contains a version-setting commit signed by a `rippled` developer. The XRP Ledger also offers prebuilt binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published.
 
 
 #### Does Ripple distinguish between the codebase for validation and the one for user software?

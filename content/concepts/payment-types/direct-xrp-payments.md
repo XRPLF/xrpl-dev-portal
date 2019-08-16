@@ -73,10 +73,15 @@ From a relatively high level, the XRP Ledger's transaction processing engine app
 
 ## See Also
 
-- [Payment System Basics](payment-system-basics.html)
-- [Payment transaction type][Payment transaction]
-- [Transaction Results](transaction-results.html)
-- [Send XRP (Interactive Tutorial)](send-xrp.html)
+- **Concepts:**
+    - [Payment System Basics](payment-system-basics.html)
+- **Tutorials:**
+    - [Send XRP (Interactive Tutorial)](send-xrp.html)
+    - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
+- **References:**
+    - [Payment transaction][]
+    - [Transaction Results](transaction-results.html)
+    - [account_info method][] - for checking XRP balances
 
 
 <!--{# common link defs #}-->

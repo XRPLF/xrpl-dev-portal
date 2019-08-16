@@ -26,9 +26,18 @@ The history of all ledgers is shared by servers agreeing to keep particular rang
 
 ## See Also
 
-- [Configure History Sharding](configure-history-sharding.html)
-- [download_shard method][]
-- [crawl_shards method][]
+- **Concepts:**
+    - [Ledgers](ledgers.html)
+    - [Introduction to Consensus](intro-to-consensus.html)
+- **Tutorials:**
+    - [Capacity Planning](capacity-planning.html)
+    - [Configure `rippled`](configure-rippled.html)
+        - [Configure History Sharding](configure-history-sharding.html)
+- **References:**
+    - [crawl_shards method][]
+    - [download_shard method][]
+    - [Peer Crawler](peer-crawler.html)
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

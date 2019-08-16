@@ -161,16 +161,27 @@ Best practices for applications submitting transactions include:
         - Take care to use a server with a continuous ledger history to detect this case <a href="#footnote_10" id="from_footnote_10"><sup>10</sup></a>.
     - It may be necessary to check the status of a transaction repeatedly until the ledger identified by `LastLedgerSequence` is validated.
 
-## Further Resources
+## See Also
 
-- [Consensus White Paper](https://ripple.com/files/ripple_consensus_whitepaper.pdf)
-- [Ledger Format Reference](ledger-data-formats.html)
-- [Ripple Consensus Video](https://www.youtube.com/watch?v=pj1QVb1vlC0)
-- [Reliable Transaction Submission](reliable-transaction-submission.html)
+- **Concepts:**
+    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus Research](consensus-research.html)
+    - [Ripple Consensus Video](https://www.youtube.com/watch?v=pj1QVb1vlC0)
+- **Tutorials:**
+    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+    - [Run `rippled` as a Validator](run-rippled-as-a-validator.html)
+- **References:**
+    - [Ledger Format Reference](ledger-data-formats.html)
+    - [Transaction Format Reference](transaction-formats.html)
+    - [consensus_info method][]
+    - [validator_list_sites method][]
+    - [validators method][]
 
 
 
-## End Notes
+
+
+## Footnotes
 
 <a href="#from_footnote_1" id="footnote_1"><sup>1</sup></a> – Transactions with **tec** result codes do not perform the requested action, but do have effects on the ledger. To prevent abuse of the network and to pay for the cost of distributing the transaction, they destroy the XRP transaction cost. To not block other transactions submitted by the same sender around the same time, they increment the sender's account sequence number. They sometimes also perform maintenance such as deleting expired objects or unfunded trade offers.
 
@@ -191,3 +202,9 @@ Best practices for applications submitting transactions include:
 <a href="#from_footnote_9" id="footnote_9"><sup>9</sup></a> – In practice, the XRP Ledger runs more efficiently by starting a new round of consensus concurrently, before validation has completed.
 
 <a href="#from_footnote_10" id="footnote_10"><sup>10</sup></a> – A `rippled` server can respond to API requests even without a complete ledger history. Interruptions in service or network connectivity can lead to missing ledgers, or gaps, in the server’s ledger history. Over time, if configured to, `rippled` fills in gaps in its history. When testing for missing transactions, it is important to verify against a server with continuous complete ledgers from the time the transaction was submitted until its LastLedgerSequence. Use the RPC server_state to determine which complete_ledgers are available to a particular server.
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

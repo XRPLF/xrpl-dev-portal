@@ -13,8 +13,11 @@ When an issuer enables, disables, or changes the `TickSize`, Offers that were pl
 ## See Also
 
 - [Dev Blog: Introducing the TickSize Amendment](https://xrpl.org/blog/2017/ticksize-voting.html#ticksize-amendment-overview)
+- **References:**
+    - [AccountSet transaction][]
+    - [book_offers method][]
+    - [OfferCreate transaction][]
 
-- [AccountSet transaction][]
 
 
 <!--{# common link defs #}-->

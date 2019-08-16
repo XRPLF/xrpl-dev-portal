@@ -19,6 +19,18 @@ Cross-currency payments that exchange two issued currencies automatically use XR
 
 For more information, see [Autobridging](autobridging.html).
 
+## See Also
+
+- **Concepts:**
+    - [Issued Currencies](issued-currencies.html)
+    - [Decentralized Exchange](decentralized-exchange.html)
+    - [Paths](paths.html)
+- **References:**
+    - [Payment transaction type][Payment transaction]
+    - [path_find method][]
+    - [ripple_path_find method][]
+    - [Interpreting Metadata of Issued Currency Payments](look-up-transaction-results.html#issued-currency-payments)
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			

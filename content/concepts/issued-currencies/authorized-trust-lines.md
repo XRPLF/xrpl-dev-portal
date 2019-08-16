@@ -98,6 +98,22 @@ To see whether a trust line has been authorized, use the [account_lines method][
 
 In the response's `result.lines` array, find the object whose `currency` field indicates that it represents a trust line for the currency you want. If that object has a `peer_authorized` field with the value `true`, then the issuer (the address you used as the request's `peer` field) has authorized the trust line.
 
+
+## See Also
+
+- **Concepts:**
+    - [Deposit Authorization](depositauth.html)
+    - [Freezing Issued Currencies](freezes.html)
+- **Tutorials:**
+    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
+- **References:**
+    - [account_lines method][]
+    - [account_info method][]
+    - [AccountSet transaction][]
+    - [TrustSet transaction][]
+    - [AccountRoot Flags](accountroot.html#accountroot-flags)
+    - [RippleState (trust line) Flags](ripplestate.html#ripplestate-flags)
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			

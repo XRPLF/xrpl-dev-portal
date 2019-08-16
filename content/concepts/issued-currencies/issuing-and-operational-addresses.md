@@ -50,3 +50,24 @@ As with operational addresses, a standby address must have an accounting relatio
 ### Standby Address Compromise
 
 If a standby address is compromised, the consequences are like an operational address being compromised. A malicious actor can steal any balances possessed by the standby address, and the financial institution can change to a new standby address with no action from customers and partners.
+
+
+## See Also
+
+- **Concepts:**
+    - [Accounts](accounts.html)
+    - [Cryptographic Keys](cryptographic-keys.html)
+- **Tutorials:**
+    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
+    - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
+    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
+- **References:**
+    - [account_info method][]
+    - [SetRegularKey transaction][]
+    - [AccountRoot object](accountroot.html)
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

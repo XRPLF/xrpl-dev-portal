@@ -113,7 +113,21 @@ The supported types of key pairs can be used interchangeably throughout the XRP 
 
 ### Future Algorithms
 
-In the future, Ripple expects to add new cryptographic signing algorithms to the XRP Ledger to keep up with developments in cryptography. For example, if it seems that quantum computers using [Shor's algorithm](https://en.wikipedia.org/wiki/Shor's_algorithm) (or something similar) will soon be practical enough to break elliptic curve cryptography, Ripple can add a cryptographic signing algorithm that isn't easily broken. As of early 2018, such "quantum-resistant" signing algorithms are relatively impractical and quantum computers are even more impractical, so Ripple has no immediate plans to add any specific algorithms.
+In the future, it is likely that the XRP Ledger will need new cryptographic signing algorithms to keep up with developments in cryptography. For example, if quantum computers using [Shor's algorithm](https://en.wikipedia.org/wiki/Shor's_algorithm) (or something similar) will soon be practical enough to break elliptic curve cryptography, XRP Ledger developers can add a cryptographic signing algorithm that isn't easily broken. As of mid 2019, there's no clear first choice "quantum-resistant" signing algorithm and quantum computers are not yet practical enough to be a threat, so there are no immediate plans to add any specific algorithms. <!-- STYLE_OVERRIDE: will -->
+
+
+## See Also
+
+- **Concepts:**
+    - [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
+- **Tutorials:**
+    - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
+    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
+- **References:**
+    - [SetRegularKey transaction][]
+    - [AccountRoot ledger object](accountroot.html)
+    - [wallet_propose method][]
+    - [account_info method][]
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

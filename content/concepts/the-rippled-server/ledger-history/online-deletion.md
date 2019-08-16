@@ -109,11 +109,22 @@ When it comes time for online deletion, the server first walks through the oldes
 
 ## See Also
 
-- [Capacity Planning](capacity-planning.html)
-- [can_delete method][] - API reference documentation
-- [Configure Online Deletion](configure-online-deletion.html)
-- [Configure Advisory Deletion](configure-advisory-deletion.html)
-- [Configure Full History](configure-full-history.html)
+- **Concepts:**
+    - [Ledgers](ledgers.html)
+    - [Introduction to Consensus](intro-to-consensus.html)
+- **Tutorials:**
+    - [Capacity Planning](capacity-planning.html)
+    - [Configure `rippled`](configure-rippled.html)
+        - [Configure Online Deletion](configure-online-deletion.html)
+        - [Configure Advisory Deletion](configure-advisory-deletion.html)
+        - [Configure History Sharding](configure-history-sharding.html)
+        - [Configure Full History](configure-full-history.html)
+- **References:**
+    - [ledger method][]
+    - [server_info method][]
+    - [ledger_request method][]
+    - [can_delete method][]
+    - [ledger_cleaner method][]
 
 
 <!--{# common link defs #}-->

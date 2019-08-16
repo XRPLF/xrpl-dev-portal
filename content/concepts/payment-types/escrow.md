@@ -116,7 +116,7 @@ The most fundamental principle of inter-ledger payments is _conditional transfer
 **Solution:** The Escrow feature makes the XRP Ledger ideal for bridging multi-hop payments using the Interledger Protocol, because it natively supports transfers that deliver XRP based on PREIMAGE-SHA-256 crypto-conditions, and it executes those transfers within seconds of being presented with the matching fulfillment.
 
 
-## Further Reading
+## See Also
 
 For more information about Escrow in the XRP Ledger, see the following:
 

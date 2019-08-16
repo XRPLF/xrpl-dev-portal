@@ -2,7 +2,7 @@
 
 In the XRP Ledger, "rippling" describes a process of atomic net settlement between multiple connected parties who have [trust lines](trust-lines-and-issuing.html) for the same currency. Rippling is an essential part of issued currencies, because it allows users who trust the same issuer to send issued balances to each other with the issuer as a passive intermediary. In a sense, rippling is like a passive, two-way [currency exchange order](offers.html) with no limit and a 1:1 exchange rate for two currencies with the same currency code but different issuers.
 
-Rippling only occurs along the [paths](paths.html) of a payment.
+Rippling only occurs along the [paths](paths.html) of a payment. [Direct XRP-to-XRP payments](direct-xrp-payments.html) do not involve rippling.
 
 For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between issuers of the same currency. Thus, the [NoRipple Flag](#the-noripple-flag) disables rippling on incoming trust lines by default, unless the account enables rippling by default by enabling the [DefaultRipple flag](#the-defaultripple-flag).
 
@@ -79,6 +79,21 @@ In the case of two accounts that mutually trust each other, the NoRipple flag is
 In the [`rippled` APIs](rippled-api.html), you can use the [account_lines method][] to look up the trust lines associated with an address. For each trust line, the `no_ripple` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `no_ripple_peer` field shows whether the counterparty has enabled the NoRipple flag.
 
 In [RippleAPI](rippleapi-reference.html), you can use the [getTrustlines](rippleapi-reference.html#gettrustlines) method to look up the trust lines associated with an address. For each trust line, the `ripplingDisabled` field shows whether the current address has enabled the NoRipple flag on that trust line, and the `counterparty.ripplingDisabled` field shows whether the counterparty has enabled the NoRipple flag.
+
+
+## See Also
+
+- **Concepts:**
+    - [Paths](paths.html)
+- **Tutorials:**
+    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
+- **References:**
+    - [account_lines method][]
+    - [account_info method][]
+    - [AccountSet transaction][]
+    - [TrustSet transaction][]
+    - [AccountRoot Flags](accountroot.html#accountroot-flags)
+    - [RippleState (trust line) Flags](ripplestate.html#ripplestate-flags)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

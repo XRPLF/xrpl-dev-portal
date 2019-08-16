@@ -79,7 +79,7 @@ For more information, see [Cryptographic Keys](cryptographic-keys.html) and [Mul
 ## Modern Features for Smart Contracts
 [Modern Features for Smart Contracts]: #modern-features-for-smart-contracts
 
-Besides simple value transfer with XRP payments, the XRP Ledger has several advanced features that provide useful functions for building applications that use the Internet of Value to serve previously unknown or impractical needs. Rather than running applications as "smart contracts" in the network itself, the XRP Ledger provides tools for settling contracts, while letting the applications themselves run anywhere, in whatever environment or container is appropriate. This "keep it simple" approach is flexible, scalable, and powerful.
+Besides simple value transfer with [XRP payments](direct-xrp-payments.html), the XRP Ledger has advanced features specialized for the Internet of Value. This allows applications built on XRP to provide services and functionality that would have been impractical or impossible in the past. Rather than running applications as "smart contracts" in the network itself, the XRP Ledger provides tools for settling contracts, while letting the applications themselves run anywhere, in whatever environment or container is appropriate. This "keep it simple" approach is flexible, scalable, and powerful.
 
 A sample of advanced features in the XRP Ledger:
 

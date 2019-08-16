@@ -141,6 +141,20 @@ The process to exploit a vulnerable system follows a series of steps similar to 
     Worse, the vulnerable system might construct a new transaction to replace the transaction, picking new `Sequence`, `LastLedgerSequence`, and `Fee` parameters based on the current state of the network, but keeping the rest of the transaction the same as the original. If this new transaction is also malleable, the system could be exploited in the same way an indefinite number of times.
 
 
+## See Also
+
+- **Concepts:**
+    - [Transaction Basics](transaction-basics.html)
+    - [Finality of Results](finality-of-results.html)
+- **Tutorials:**
+    - [Look Up Transaction Results](look-up-transaction-results.html)
+    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+- **References:**
+    - [Basic Data Types - Hashes](basic-data-types.html#hashes)
+    - [Transaction Common Fields - Global Flags](transaction-common-fields.html#global-flags)
+    - [Transaction Results](transaction-results.html)
+    - [Serialization Format](serialization.html)
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
