@@ -6,9 +6,6 @@ Ripple provides the Data API as a public service at the following address:
 
 [**https://data.ripple.com**](https://data.ripple.com)
 
-**Legal Disclaimer:** The Data API and the data it serves are provided "as is" and for informational purposes only. Ripple does not guarantee the availability or accuracy of the Data API or the data it provides. RIPPLE MAKES NO REPRESENTATION OR WARRANTY OF ANY KIND, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTIBILITY, FITNESS FOR A PARTICULAR PURPOSE, SUITABILITY, TITLE, NON-INFRINGEMENT OR CLAIM OF RIGHT OR ANY WARRANTIES OR OBLIGATIONS ARISING FROM A COURSE OF DEALING, USAGE OR TRADE PRACTICE, AND ALL SUCH REPRESENTATIONS AND WARRANTIES AND OBLIGATIONS ARE HEREBY DISCLAIMED. RIPPLE FURTHER DOES NOT REPRESENT OR WARRANT THAT OPERATION OF THE DATA API THE DATA IT PROVIDES WILL BE ERROR FREE OR UNINTERRUPTED. You are prohibited from using the Data API or the data it provides, in whole or in part, as a consumer product or in any system considered critical infrastructure.
-
-
 
 ## More Information
 The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](https://github.com/ripple/ripple-data-api/).
@@ -5295,6 +5292,9 @@ A Validation Object has the following fields:
 | `signature`             | String                          | The validator's signature of the validation details, in hexadecimal. |
 | `first_datetime`        | String - [Timestamp][]          | Date and time of the first report of this validation. |
 | `last_datetime`         | String - [Timestamp][]          | Date and time of the last report of this validation. |
+
+
+_**Legal Disclaimer:** The Data API and the data it serves are provided "as is" and for informational purposes only. Ripple does not guarantee the availability or accuracy of the Data API or the data it provides. Ripple makes no representation or warranty of any kind express implied or statutory including but not limited to implied warranties of merchantibility, fitness for a particular purpose, suitability title non-infringement, or claim of right or any warranties or obligations arising from a course of dealing, usage or trade practice and all such representations and warranties and obligations are hereby disclaimed. Ripple further does not represent or warrant that operation of the Data API the data it provides will be error free or uninterrupted. You are prohibited from using the Data API or the data it provides, in whole or in part, as a consumer product or in any system considered critical infrastructure._
 
 
 <!--{# common link defs #}-->
