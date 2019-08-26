@@ -132,6 +132,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/introduction/software-ecosystem.md
+        html: software-ecosystem.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: Get an overview of what XRP Ledger software is out there and how it fits together.
+        targets:
+            - local
+
     -   md: concepts/introduction/technical-faq.md
         html: technical-faq.html
         funnel: Docs
