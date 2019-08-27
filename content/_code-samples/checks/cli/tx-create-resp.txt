@@ -6,16 +6,18 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
       "Account" : "rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
       "Destination" : "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
       "DestinationTag" : 1,
+      "Expiration" : 570113521,
       "Fee" : "12",
       "Flags" : 2147483648,
       "InvoiceID" : "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",
       "SendMax" : "100000000",
-      "Sequence" : 4,
+      "Sequence" : 1,
       "SigningPubKey" : "03B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400",
       "TransactionType" : "CheckCreate",
-      "TxnSignature" : "3044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C40",
+      "TxnSignature" : "3045022100EB5A9001E14FC7304C4C2DF66507F9FC59D17FDCF98B43A4E30356658AB2A7CF02207127187EE0F287665D9552D15BEE6B00D3C6691C6773CE416E8A714B853F44FC",
+      "hash" : "07C3B2878B6941FED97BA647244531B7E2203268B05C71C3A1A014045ADDF408"
+
       "date" : 575516100,
-      "hash" : "09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB",
       "inLedger" : 7841263,
       "ledger_index" : 7841263,
       "meta" : {
@@ -41,7 +43,7 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
                      "DestinationTag" : 1,
                      "InvoiceID" : "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",
                      "SendMax" : "100000000",
-                     "Sequence" : 4
+                     "Sequence" : 1
                   }
                }
             },
@@ -52,14 +54,14 @@ Loading: "/home/mduo13/.config/ripple/rippled.cfg"
                      "Balance" : "9999999952",
                      "Flags" : 0,
                      "OwnerCount" : 2,
-                     "Sequence" : 5
+                     "Sequence" : 2
                   },
                   "LedgerEntryType" : "AccountRoot",
                   "LedgerIndex" : "A9A591BA661F69433D5BEAA49F10BA2B8DEA5183EF414B9130BFE5E0328FE875",
                   "PreviousFields" : {
                      "Balance" : "9999999964",
                      "OwnerCount" : 1,
-                     "Sequence" : 4
+                     "Sequence" : 1
                   },
                   "PreviousTxnID" : "45AF36CF7A810D0054C38C82C898EFC7E4898DF94FA7A3AAF80CB868708F7CE0",
                   "PreviousTxnLgrSeq" : 7841237
