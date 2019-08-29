@@ -209,12 +209,10 @@ Watchdog: Launching child 1
 
 * For information about communicating with your `rippled` server using the `rippled` API, see the [`rippled` API reference](rippled-api.html).
 
-* As a development best practice, you may want to build a `rippled` `.deb` package. The current CMake build has a deb (and rpm) package target defined that can be used to build a package from the source tree. You must have [docker installed](https://docs.docker.com/install/#supported-platforms) on the build machine in order to do this. The steps required to build the package are (*note*: this command can take an hour or more to complete):
+* As a development best practice, you may want to build a `rippled` `.deb` package. You can use the CMake build's deb package target to build a `deb` package directly from the source tree. The build machine must have [Docker installed](https://docs.docker.com/install/#supported-platforms). This process may take more than an hour to complete. To build the `deb` package:
 
-```
-mkdir -p build/pkg && cd build/pkg
-cmake -Dpackages_only=ON ../..
-cmake --build . --target dpkg
-```
+        mkdir -p build/pkg && cd build/pkg
+        cmake -Dpackages_only=ON ../..
+        cmake --build . --target dpkg
 
 * You may also want to install a `systemd` unit. For more information, see [systemd for Upstart Users](https://wiki.ubuntu.com/SystemdForUpstartUsers). You can use the [official `rippled` system unit file](https://github.com/ripple/rippled/blob/master/Builds/containers/shared/rippled.service) or modify it to suit your needs.
