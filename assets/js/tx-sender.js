@@ -87,7 +87,7 @@ const set_up_tx_sender = async function() {
       dataType: 'json',
       success: faucet_response,
       error: function() {
-        errorNotif("There was an error with the XRP Ledger Test Net Faucet. Reload this page to try again.")
+        errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
       }
     })
   })
@@ -104,7 +104,7 @@ const set_up_tx_sender = async function() {
     $("#connection-status-item").text("Not connected")
     $("#connection-status-item").removeClass("active").addClass("disabled")
   })
-  console.log("Connecting to Test Net WebSocket...")
+  console.log("Connecting to Testnet WebSocket...")
   api.connect()
 
   //////////////////////////////////////////////////////////////////////////////

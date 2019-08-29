@@ -3037,10 +3037,18 @@ pages:
 
     -   name: XRP Test Net Faucet
         funnel: Dev Tools
-        html: xrp-test-net-faucet.html
+        html: xrp-testnet-faucet.html
         targets:
             - local
         template: template-test-net.html
+
+    -   name: XRP Test Net Faucet # Redirect from old URL
+        funnel: Dev Tools
+        html: xrp-test-net-faucet.html
+        template: template-redirect.html
+        redirect_url: xrp-testnet-faucet.html
+        targets:
+            - local
 
     -   name: Transaction Sender
         funnel: Dev Tools
