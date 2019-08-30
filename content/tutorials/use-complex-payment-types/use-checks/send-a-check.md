@@ -44,6 +44,12 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 
 <!-- MULTICODE_BLOCK_START -->
 
+*RippleAPI*
+
+```js
+{% include '_code-samples/checks/js/prepareCreate.js' %}
+```
+
 *JSON-RPC, WebSocket, or Commandline*
 
 ```
@@ -54,12 +60,6 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
   "SendMax": "100000000",
   "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"
 }
-```
-
-*RippleAPI*
-
-```js
-{% include '_code-samples/checks/js/prepareCreate.js' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
