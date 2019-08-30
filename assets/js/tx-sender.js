@@ -45,8 +45,23 @@ const set_up_tx_sender = async function() {
   let sending_secret
   let xrp_balance
 
+  function enable_buttons_if_ready() {
+    if ( (typeof sending_address) === "undefined") {
+      console.debug("No sending address yet...")
+      return false
+    }
 
-  console.debug("Getting a sending address from the faucet...")
+    if (!connection_ready) {
+      console.debug("API not connected yet...")
+      return false
+    }
+
+    $(".needs-connection").prop("disabled", false)
+    $(".needs-connection").removeClass("disabled")
+    set_up_for_partial_payments()
+    return true
+  }
+
 
   faucet_response = function(data) {
     sending_address = data.account.address
@@ -57,16 +72,24 @@ const set_up_tx_sender = async function() {
 
     $("#balance-item").text(xrp_balance)
     $(".sending-address-item").text(sending_address)
+    $("#init_button").prop("disabled", "disabled")
+    $("#init_button").addClass("disabled")
+    $("#init_button").attr("title", "Done")
+    $("#init_button").append('&nbsp;<i class="fa fa-check-circle"></i>')
+    enable_buttons_if_ready()
   }
 
-  $.ajax({
-    url: FAUCET_URL,
-    type: 'POST',
-    dataType: 'json',
-    success: faucet_response,
-    error: function() {
-      errorNotif("There was an error with the XRP Ledger Test Net Faucet. Reload this page to try again.")
-    }
+  $("#init_button").click((evt) => {
+    console.debug("Getting a sending address from the faucet...")
+    $.ajax({
+      url: FAUCET_URL,
+      type: 'POST',
+      dataType: 'json',
+      success: faucet_response,
+      error: function() {
+        errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
+      }
+    })
   })
 
   api = new ripple.RippleAPI({server: TESTNET_URL})
@@ -74,13 +97,14 @@ const set_up_tx_sender = async function() {
     connection_ready = true
     $("#connection-status-item").text("Connected")
     $("#connection-status-item").removeClass("disabled").addClass("active")
+    enable_buttons_if_ready()
   })
   api.on('disconnected', (code) => {
     connection_ready = false
     $("#connection-status-item").text("Not connected")
     $("#connection-status-item").removeClass("active").addClass("disabled")
   })
-  console.log("Connecting to Test Net WebSocket...")
+  console.log("Connecting to Testnet WebSocket...")
   api.connect()
 
   //////////////////////////////////////////////////////////////////////////////
@@ -281,7 +305,6 @@ const set_up_tx_sender = async function() {
     $("#send_partial_payment button").prop("disabled",false)
     $("#send_partial_payment button").attr("title", "")
   }
-  set_up_for_partial_payments()
 
   //////////////////////////////////////////////////////////////////////////////
   // Button Handlers
@@ -292,7 +315,7 @@ const set_up_tx_sender = async function() {
     const destination_address = $("#destination_address").val()
     const xrp_drops_input = $("#send_xrp_payment_amount").val()
     $("#send_xrp_payment .loader").show()
-    $("#send_xrp_payment button").attr("disabled","disabled")
+    $("#send_xrp_payment button").prop("disabled","disabled")
     await submit_and_verify({
       TransactionType: "Payment",
       Account: sending_address,
@@ -300,7 +323,7 @@ const set_up_tx_sender = async function() {
       Amount: xrp_drops_input
     })
     $("#send_xrp_payment .loader").hide()
-    $("#send_xrp_payment button").attr("disabled",false)
+    $("#send_xrp_payment button").prop("disabled",false)
 
   }
   $("#send_xrp_payment button").click(on_click_send_xrp_payment)
@@ -309,7 +332,7 @@ const set_up_tx_sender = async function() {
   async function on_click_send_partial_payment(event) {
     const destination_address = $("#destination_address").val()
     $("#send_partial_payment .loader").show()
-    $("#send_partial_payment button").attr("disabled","disabled")
+    $("#send_partial_payment button").prop("disabled","disabled")
 
     // const path_find_result = await api.request("ripple_path_find", {
     //   source_account: sending_address,
@@ -333,7 +356,7 @@ const set_up_tx_sender = async function() {
       Flags: api.txFlags.Payment.PartialPayment | api.txFlags.Universal.FullyCanonicalSig
     })
     $("#send_partial_payment .loader").hide()
-    $("#send_partial_payment button").attr("disabled",false)
+    $("#send_partial_payment button").prop("disabled",false)
   }
   $("#send_partial_payment button").click(on_click_send_partial_payment)
 
@@ -352,7 +375,7 @@ const set_up_tx_sender = async function() {
     const finish_after = api.iso8601ToRippleTime(Date()) + duration_seconds
 
     $("#create_escrow .loader").show()
-    $("#create_escrow button").attr("disabled","disabled")
+    $("#create_escrow button").prop("disabled","disabled")
     const escrowcreate_tx_data = await submit_and_verify({
       TransactionType: "EscrowCreate",
       Account: sending_address,
@@ -398,7 +421,7 @@ const set_up_tx_sender = async function() {
       })
     }
     $("#create_escrow .loader").hide()
-    $("#create_escrow button").attr("disabled",false)
+    $("#create_escrow button").prop("disabled",false)
   }
   $("#create_escrow button").click(on_click_create_escrow)
 
@@ -408,7 +431,7 @@ const set_up_tx_sender = async function() {
     const xrp_drops_input = $("#create_payment_channel_amount").val()
     const pubkey = api.deriveKeypair(sending_secret).publicKey
     $("#create_payment_channel .loader").show()
-    $("#create_payment_channel button").attr("disabled","disabled")
+    $("#create_payment_channel button").prop("disabled","disabled")
     await submit_and_verify({
       TransactionType: "PaymentChannelCreate",
       Account: sending_address,
@@ -418,7 +441,7 @@ const set_up_tx_sender = async function() {
       PublicKey: pubkey
     })
     $("#create_payment_channel .loader").hide()
-    $("#create_payment_channel button").attr("disabled",false)
+    $("#create_payment_channel button").prop("disabled",false)
 
     // Future feature: figure out channel ID and enable a button that creates
     //   valid claims for the given payment channel to help test redeeming
@@ -432,7 +455,7 @@ const set_up_tx_sender = async function() {
     const issue_amount = $("#send_issued_currency_amount").val()
     const issue_code = $("#send_issued_currency_code").text()
     $("#send_issued_currency .loader").show()
-    $("#send_issued_currency button").attr("disabled","disabled")
+    $("#send_issued_currency button").prop("disabled","disabled")
     // Future feature: cross-currency sending with paths?
     await submit_and_verify({
       TransactionType: "Payment",
@@ -445,7 +468,7 @@ const set_up_tx_sender = async function() {
       }
     })
     $("#send_issued_currency .loader").hide()
-    $("#send_issued_currency button").attr("disabled",false)
+    $("#send_issued_currency button").prop("disabled",false)
   }
   $("#send_issued_currency button").click(on_click_send_issued_currency)
 
@@ -455,7 +478,7 @@ const set_up_tx_sender = async function() {
     const trust_limit = $("#trust_for_amount").val()
     const trust_currency_code = $("#trust_for_currency_code").text()
     $("#trust_for .loader").show()
-    $("#trust_for button").attr("disabled","disabled")
+    $("#trust_for button").prop("disabled","disabled")
     await submit_and_verify({
       TransactionType: "TrustSet",
       Account: sending_address,
@@ -466,7 +489,7 @@ const set_up_tx_sender = async function() {
       }
     })
     $("#trust_for .loader").hide()
-    $("#trust_for button").attr("disabled",false)
+    $("#trust_for button").prop("disabled",false)
   }
   $("#trust_for button").click(on_trust_for)
 

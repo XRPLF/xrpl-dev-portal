@@ -5,13 +5,13 @@
 {% block right_sidebar %}
 <div id="test-net-servers" class="card">
   <div class="card-header">
-    <h4>Test Net Servers</h4>
+    <h4>Testnet Servers</h4>
   </div>
   <div class="card-body">
-    <p>Use the following URLs to connect to the XRP Test Net and send transactions, or <a href="connect-your-rippled-to-the-xrp-test-net.html">connect your own <code>rippled</code> server to the Test Net</a>.</p>
-    <h5>Websockets and Ripple API</h4>
+    <p>Use the following URLs to connect to the XRP Testnet and send transactions, or <a href="connect-your-rippled-to-the-xrp-test-net.html">connect your own <code>rippled</code> server to the Testnet</a>.</p>
+    <h5>Websockets and Ripple API</h5>
     <pre><code>wss://s.altnet.rippletest.net:51233</code></pre>
-    <h5>JSON-RPC</h4>
+    <h5>JSON-RPC</h5>
     <pre><code>https://s.altnet.rippletest.net:51234</code></pre>
   </div>
 </div>
@@ -19,11 +19,11 @@
 
 {% block main %}
 <section class="container-fluid pt-3 p-md-3">
-  <h1>XRP Test Net Faucet</h1>
+  <h1>XRP Testnet Faucet</h1>
 
   <div class="content">
-    <p>Ripple has created this alternative XRP Ledger test network with nodes in every region of the world to provide a testing platform for any software products built on the XRP Ledger without using real funds.</p>
-    <p>Test Net funds are intended for <strong>testing</strong> only. The Test Net ledger and balances will be reset on a regular basis.</p>
+    <p>Ripple runs this <a href="parallel-networks.html">parallel XRP Ledger test network</a>, or Testnet, to provide a testing platform for any software products built on the XRP Ledger without using real funds.</p>
+    <p>Testnet funds are intended for <strong>testing</strong> only. The Testnet ledger and balances will be reset approximately every 90 days, or when otherwise necessary.</p>
     <button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
     <div id='your-credentials'></div>
     <div id='loader' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
