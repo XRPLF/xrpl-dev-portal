@@ -2,7 +2,7 @@
 
 ## 1. Generate condition and fulfillment
 
-XRP Ledger escrows require PREIMAGE-SHA-256 [Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03). To calculate a condition and fulfillment in the proper format, you should use a Crypto-Conditions library such as [five-bells-condition](https://github.com/interledgerjs/five-bells-condition). For fulfillments, Ripple recommends using one of the following methods to generate the fulfillment:
+XRP Ledger escrows require PREIMAGE-SHA-256 [crypto-conditions][]. To calculate a condition and fulfillment in the proper format, you should use a crypto-conditions library such as [five-bells-condition](https://github.com/interledgerjs/five-bells-condition). For fulfillments, the following methods are recommended to generate the fulfillment:
 
 - Use a cryptographically secure source of randomness to generate at least 32 random bytes.
 - Follow Interledger Protocol's [PSK specification](https://github.com/interledger/rfcs/blob/master/deprecated/0016-pre-shared-key/0016-pre-shared-key.md) and use an HMAC-SHA-256 of the ILP packet as the fulfillment.
@@ -179,6 +179,27 @@ Response:
 ```json
 {% include '_code-samples/escrow/websocket/tx-response-escrowfinish-condition.json' %}
 ```
+
+
+
+## See Also
+
+- [Crypto-Conditions Specification][]
+- **Concepts:**
+    - [XRP](xrp.html)
+    - [Payment Types](payment-types.html)
+        - [Escrow](escrow.html)
+- **Tutorials:**
+    - [Send XRP](send-xrp.html)
+    - [Look Up Transaction Results](look-up-transaction-results.html)
+    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+- **References:**
+    - [EscrowCancel transaction][]
+    - [EscrowCreate transaction][]
+    - [EscrowFinish transaction][]
+    - [account_objects method][]
+    - [tx method][]
+    - [Escrow ledger object](escrow-object.html)
 
 
 <!--{# common link defs #}-->

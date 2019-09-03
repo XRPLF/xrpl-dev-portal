@@ -1,6 +1,6 @@
 # Configure Online Deletion
 
-In its default configuration, the `rippled` server [deletes history](online-deletion.html) older than the most recent 2000 ledger versions, keeping approximately 15 minutes of ledger history (based on the current rate between ledgers). This page describes how to configure the amount of history your `rippled` server stores before deleting.
+In its default configuration, [the `rippled` server](the-rippled-server.html) [deletes history](online-deletion.html) older than the most recent 2000 [ledger versions](ledgers.html), keeping approximately 15 minutes of [ledger history](ledger-history.html) (based on the current rate between ledgers). This page describes how to configure the amount of history your `rippled` server stores before deleting.
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ This tutorial assumes your server meets the following prerequisites:
 
     If you followed the installation instructions for a recommended platform, online deletion is enabled by default.
 
-- Your server has [enough disk space](capacity-planning.html) to store your chosen amount of history in its ledger store.
+- Your server has [enough disk space](capacity-planning.html#disk-space) to store your chosen amount of history in its ledger store.
 
 
 ## Configuration Steps
@@ -63,10 +63,17 @@ To change the amount of history your server stores, perform the following steps:
 
 ## See Also
 
-- [Online Deletion](online-deletion.html)
-- [Configure Advisory Deletion](configure-advisory-deletion.html)
-- [Configure History Sharding](configure-history-sharding.html)
-- [Configure Full History](configure-full-history.html)
+- **Concepts:**
+    - [Ledger History](ledger-history.html)
+        - [Online Deletion](online-deletion.html)
+- **Tutorials:**
+    - [Configure Advisory Deletion](configure-advisory-deletion.html)
+    - [Configure History Sharding](configure-history-sharding.html)
+    - [Capacity Planning](capacity-planning.html)
+- **References:**
+    - [server_info method][]
+    - [Ledger Data Formats](ledger-data-formats.html)
+
 
 
 <!--{# common link defs #}-->

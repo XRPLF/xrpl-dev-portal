@@ -1,6 +1,6 @@
 # Fix SQLite Transaction Database Page Size Issue
 
-`rippled` servers with full transaction history (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to encounter this problem.
+`rippled` servers with full [ledger history](ledger-history.html) (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to encounter this problem.
 
 This document describes steps to detect and correct this problem if it occurs.
 
@@ -165,6 +165,20 @@ To migrate your transaction database to a larger page size, perform the followin
         rm -r /tmp/rippled_txdb_migration
 
     If you mounted additional storage to hold the temporary copy of the transaction database, you can unmount and remove it now.
+
+
+## See Also
+
+- **Concepts:**
+    - [The `rippled` Server](the-rippled-server.html)
+    - [Ledger History](ledger-history.html)
+- **Tutorials:**
+    - [Understanding Log Messages](understanding-log-messages.html)
+    - [Configure Full History](configure-full-history.html)
+- **References:**
+    - [rippled API Reference](rippled-api.html)
+        - [`rippled` Commandline Usage](commandline-usage.html)
+        - [server_info method][]
 
 
 <!--{# common link defs #}-->

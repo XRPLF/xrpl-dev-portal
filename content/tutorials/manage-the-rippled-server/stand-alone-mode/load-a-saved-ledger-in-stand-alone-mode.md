@@ -1,6 +1,8 @@
 # Load a Saved Ledger in Stand-Alone Mode
 
-You can start with a ledger version that was saved to disk if your `rippled` server was previously synced with the XRP Ledger peer-to-peer network (either the production network or the [Test Net](parallel-networks.html)).
+You can start a `rippled` server in [Stand-Alone Mode](TODO) using a [historical ledger version](TODO) that was previously saved to disk. For example, if your `rippled` server was previously synced with any XRP Ledger peer-to-peer network including [the production Mainnet, the Testnet, or the Devnet](parallel-networks.html), you can load any ledger version your server had available.
+
+Loading a historical ledger version so may be useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different [amendments](amendments.html) enabled. In the unlikely event that [an attack against the XRP Ledger's consensus mechanism](consensus-protections.html) caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a previous, known-good network state starting with this process.
 
 ## 1. Start `rippled` normally.
 
@@ -59,6 +61,21 @@ When you load a ledger with `--ledger` in stand-alone mode, it goes to the curre
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
+
+
+## See Also
+
+- **Concepts:**
+    - [The `rippled` Server](the-rippled-server.html)
+        - [`rippled` Server Modes](rippled-server-modes.html)
+    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Amendments](amendments.html)
+- **References:**
+    - [ledger_accept method][]
+    - [server_info method][]
+    - [`rippled` Commandline Usage](commandline-usage.html)
+- **Use Cases:**
+    - [Contribute Code to `rippled`](contribute-code-to-rippled.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

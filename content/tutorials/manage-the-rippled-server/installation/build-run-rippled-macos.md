@@ -1,10 +1,10 @@
 # Build and Run rippled on macOS
 
-At this time, Ripple doesn't recommend using the macOS platform for `rippled` production use. For production, consider using the [Ubuntu platform](install-rippled-on-ubuntu-with-alien.html), which has received the highest level of quality assurance and testing.
+The macOS platform is not recommended for [`rippled`](the-rippled-server.html) production use. For production, consider using the [Ubuntu platform](install-rippled-on-ubuntu-with-alien.html), which has received the highest level of quality assurance and testing.
 
 That said, macOS is suitable for many development and testing tasks. `rippled` has been tested for use with macOS up to 10.13 High Sierra.
 
-For development purposes Ripple recommends running `rippled` as your own user, not using `sudo`.
+For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 1. Install [Xcode](https://developer.apple.com/download/).
 
@@ -37,7 +37,7 @@ For development purposes Ripple recommends running `rippled` as your own user, n
             ./b2 cxxflags="-std=c++14"
 
 0. Ensure that your `BOOST_ROOT` environment points to the directory created by the Boost installation:
-        
+
       1. To find your Boost directory, use `pwd` if you installed the Boost manually or use `brew --prefix boost` if you installed the Boost with Homebrew.
 
       2. Edit below code with your Boost directory location and run to add Boost environment variable to your `.bash_profile` file so it's automatically set when you log in.
@@ -169,7 +169,21 @@ For information about `rippled` log messages, see [Understanding Log Messages](u
 
 ## See Also
 
-- [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu.html) (Pre-built binary on Ubuntu for production use)
-- [Install rippled on Red Hat Enterprise Linux](install-rippled-on-centos-rhel-with-yum.html) (Pre-built binary on RHEL or CentOS for production use)
-- [Build and Run `rippled` on Ubuntu](build-run-rippled-ubuntu.html) (Compile `rippled` yourself on Ubuntu)
-- [Compilation instructions for other platforms](https://github.com/ripple/rippled/tree/develop/Builds)
+- **Concepts:**
+    - [The `rippled` Server](the-rippled-server.html)
+    - [Introduction to Consensus](intro-to-consensus.html)
+- **Tutorials:**
+    - [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu.html) - Install a pre-built binary on Ubuntu for production use
+    - [Configure rippled](configure-rippled.html)
+    - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
+    - [Get Started with the rippled API](get-started-with-the-rippled-api.html)
+- **References:**
+    - [rippled API Reference](rippled-api.html)
+        - [`rippled` Commandline Usage](commandline-usage.html)
+        - [server_info method][]
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

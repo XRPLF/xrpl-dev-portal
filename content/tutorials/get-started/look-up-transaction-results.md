@@ -1,10 +1,10 @@
 # Look Up Transaction Results
 
-To use the XRP Ledger effectively, you need to be able to understand transaction outcomes: did the transaction succeed? What did it accomplish? If it failed, why?
+To use the XRP Ledger effectively, you need to be able to understand [transaction](transaction-basics.html) outcomes: did the transaction succeed? What did it accomplish? If it failed, why?
 
 The XRP Ledger is a shared system, with all data recorded publicly and carefully, securely updated with each new [ledger version](ledgers.html). Anyone can look up the exact outcome of any transaction and read the [transaction metadata](transaction-metadata.html) to see what it did.
 
-This document describes, at a low level, how to know why a transaction reached the outcome it did. For an end-user, it is easier to look at a processed view of a transaction. For example,  you can [use XRP Charts to get an English-language description of any recorded transaction](https://xrpcharts.ripple.com/#/transactions/).
+This document describes, at a low level, how to know why a transaction reached the outcome it did. For an end-user, it is easier to look at a processed view of a transaction. For example, you can [use XRP Charts to get an English-language description of any recorded transaction](https://xrpcharts.ripple.com/#/transactions/).
 
 ## Prerequisites
 
@@ -427,9 +427,16 @@ Most other transactions create a specific type of ledger entry and [adjust the s
 
 ## See Also
 
-- [Ledger Object Types Reference](ledger-object-types.html) - All possible fields of all types of ledger objects
-- [Transaction Metadata](transaction-metadata.html) - Summary of the metadata format and fields that appear in metadata
-- [Finality of Results](finality-of-results.html) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
+- **Concepts:**
+    - [Finality of Results](finality-of-results.html) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
+- **Tutorials:**
+    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+    - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
+- **References:**
+    - [Ledger Object Types Reference](ledger-object-types.html) - All possible fields of all types of ledger objects
+    - [Transaction Metadata](transaction-metadata.html) - Summary of the metadata format and fields that appear in metadata
+    - [Transaction Results](transaction-results.html) - Tables of all possible result codes for transactions.
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
