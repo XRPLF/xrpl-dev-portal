@@ -6,6 +6,8 @@ Ripple provides the Data API as a public service at the following address:
 
 [**https://data.ripple.com**](https://data.ripple.com)
 
+**Note:** This API and the data it provides are derived from the public, decentralized XRP Ledger. They are provided for free, but also provided “as is,” without any express, implied, or statutory warranties including but not limited to the implied warranties of merchantability or fitness for a particular purpose, and all warranties are disclaimed. The API and data may be unavailable at times, they may change, or they may have errors, so please use them at your own risk and exercise appropriate caution before incorporating them into your infrastructure.
+
 
 ## More Information
 The Ripple Data API v2 replaces the Historical Database v1 and the [Charts API](https://github.com/ripple/ripple-data-api/).
@@ -5294,7 +5296,6 @@ A Validation Object has the following fields:
 | `last_datetime`         | String - [Timestamp][]          | Date and time of the last report of this validation. |
 
 
-_**Legal Disclaimer:** The Data API and the data it serves are provided "as is" and for informational purposes only. Ripple does not guarantee the availability or accuracy of the Data API or the data it provides. Ripple makes no representation or warranty of any kind express implied or statutory including but not limited to implied warranties of merchantibility, fitness for a particular purpose, suitability title non-infringement, or claim of right or any warranties or obligations arising from a course of dealing, usage or trade practice and all such representations and warranties and obligations are hereby disclaimed. Ripple further does not represent or warrant that operation of the Data API the data it provides will be error free or uninterrupted. You are prohibited from using the Data API or the data it provides, in whole or in part, as a consumer product or in any system considered critical infrastructure._
 
 
 <!--{# common link defs #}-->
