@@ -93,9 +93,9 @@ XRP Ledger addresses are encoded using [base58](https://en.wikipedia.org/wiki/Ba
 
 The following diagram shows the relationship between keys and addresses:
 
-![Passphrase → Secret Key → Public Key + Type Prefix → Account ID + Checksum → Address](img/key-address-rels.png)
+![Passphrase → Seed → Private Key → Public Key + Type Prefix → Account ID + Checksum → Address](img/key-address-rels.png)
 
-The formula for calculating an XRP Ledger address is as follows. For the complete example code, see [`encode_address.js`](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/address_encoding/encode_address.js).
+The formula for calculating an XRP Ledger address from a public key is as follows. For the complete example code, see [`encode_address.js`](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/address_encoding/encode_address.js). For the process of deriving a public key from a passphrase or seed value, see [Key Derivation](cryptographic-keys.html#key-derivation).
 
 1. Import required algorithms: SHA-256, RIPEMD160, and base58. Set the dictionary for base58.
 

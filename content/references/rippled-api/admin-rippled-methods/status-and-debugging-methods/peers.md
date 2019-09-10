@@ -377,7 +377,7 @@ The response follows the [standard format][], with a successful result containin
 | `cluster` | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](clustering.html). [New in: rippled 0.30.1][] |
 | `peers`   | Array  | Array of peer objects.                                  |
 
-Each field of the `cluster` object is the public key of that `rippled` server's identifying keypair. (This is the same value that that server returns as `pubkey_node` in the [server_info method][].) The contents of that field are an object with the following fields:
+Each field of the `cluster` object is the public key of that `rippled` server's identifying key pair. (This is the same value that that server returns as `pubkey_node` in the [server_info method][].) The contents of that field are an object with the following fields:
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
