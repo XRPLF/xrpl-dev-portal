@@ -1,12 +1,22 @@
-# Configure History Sharding
+# History Sharding
 
-[History Sharding](history-sharding.html) lets servers contribute to preserving historical XRP Ledger data without each server needing to store the full history. By default, `rippled` servers do not store history shards.
+[History Sharding](history-sharding.html) lets servers contribute to preserving historical XRP Ledger data, without each server needing to store the full history. By default, `rippled` servers do not store history shards. 
+
+You can work with history sharding in two ways:
+
+* [Configure History Sharding](#configure-history-sharding) so that your server syncs to the network and automatically starts downloading history shards.
+* [Programmatically Invoke History Sharding](programmatically-invoke-history-sharding) using the [```crawl_shards```](https://xrpl.org/crawl_shards.html) and [```download_shard```](https://xrpl.org/download_shard.html) methods to retrieve information about shards available on peer servers and to download those shards. Note that you must first [configure history sharding](#configure-history-sharding) before you can use the ```download_shard``` method.
+
+
+## Configure History Sharding
+
+You can configure your server to automatically sync to the network and download history shards.
 
 **Tip:** While both validator and tracking (or stock) `rippled` servers can be configured to store history shards, Ripple recommends _not_ configuring validator `rippled` servers to store shards, to reduce overhead on those servers. If you run a validator and want to contribute to storing XRP Ledger history, Ripple recommends you run a separate `rippled` server with history sharding enabled.
 
-To configure your `rippled` to store shards of ledger history, complete the following steps:
+To configure your `rippled` server to store shards of ledger history, complete the following steps:
 
-## 1. Determine how much space to allocate for the shard store
+### 1. Determine how much space to allocate for the shard store
 
 Before you configure your `rippled` server to store history shards, you must decide how much disk space to allocate to the history shard store. This also affects how much history you keep in the default ledger store. You should consider the following when deciding what size to configure your shard store:
 
@@ -18,7 +28,7 @@ Before you configure your `rippled` server to store history shards, you must dec
 - It is possible but redundant to hold full ledger history in both the ledger store and the history shard store.
 - The time to acquire a shard, number of file handles needed by the `rippled` server, and memory cache usage is directly affected by the size of the shard.
 
-## 2. Edit rippled.cfg
+### 2. Edit rippled.cfg
 
 Edit your `rippled.cfg` file to add a `[shard_db]` stanza.
 
@@ -39,22 +49,200 @@ The `type` field can be omitted. If present, it _MUST_ be `NuDB`. [New in: rippl
 
 For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg).
 
-## 3. Restart the server
+### 3. Restart the server
 
 ```
 systemctl restart rippled
 ```
 
-## 4. Wait for shards to download
+### 4. Wait for shards to download
 
 After your server syncs to the network, it automatically starts downloading history shards to fill the available space in the shard store. You can see which shards are being downloaded by looking at which folders are created in the folder where you configured your shard store. (This is defined by the `path` field of the `[shard_db]` stanza in the `rippled.cfg` file.)
 
 This folder should contain a numbered folder for each shard your server has. At any given time, up to one folder may contain a `control.txt` file, indicating it is incomplete.
-
-<!-- TODO: add download_shard and crawl_shards commands: https://github.com/ripple/ripple-dev-portal/issues/629 -->
 
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
+
+## Programmatically Invoke History Sharding
+
+You can programmatically retrieve information from peer servers to determine which shards of ledger data are available by invoking the [crawl_shards](https://xrpl.org/crawl_shards.html) method, and then download specific shards using the [download_shard](https://xrpl.org/download_shard.html) method.
+
+These methods can be used to manually download shards or to set up a recurring process, such as an operating system service or daemon, to programmatically query and download history shards.
+
+**Notes**: 
+* The methods can only be run by admin users.
+* You must first [configure history sharding](#configure-history-sharding) before you can use the ```download_shard``` method.
+
+
+Follow the steps below to programmatically request information about shards from peer servers and download them:
+
+### 1. Request information from peer servers
+
+In the following example, the ```crawl_shards``` method is invoked with the ```pubkey```parameter set to ```true``` to indicate that node public keys (for peer-to-peer communications) should be returned in the response: 
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "command": "crawl_shards",
+  "pubkey": true,
+  "limit": 0
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "crawl_shards",
+  "params": [
+    {
+      "pubkey": true,
+      "limit": 0
+    }
+  ]
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+### 2. Parse the response
+
+To determine which shards are available in each peer, parse the ```complete_shards``` field in the response. This field lists the shards that are available on the local server (i.e., the server on which the method was run) that are complete. The ```peers``` array lists the peer servers that contain shards, and the ```complete_shards``` field in each element lists the shards available on that peer, as shown in this example response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "result": {
+    "complete_shards": "1-2,5,8-9,584,1973,2358",
+    "peers": [
+      {
+        "complete_shards": "1-2,8,47,371,464,554,653,857,1076,1402,1555,1708,1813,1867",
+        "public_key": "n9LxFZiySnfDSvfh23N94UxsFkCjWyrchTeKHcYE6tJJQL5iejb2"
+      },
+      {
+        "complete_shards": "8-9,584",
+        "ip": "192.168.1.132",
+        "public_key": "n9MN5xwYqbrj64rtfZAXQy7Y3sNxXZJeLt7Lj61a9DYEZ4SE2tQQ"
+      }
+    ]
+  },
+  "status": "success",
+  "type": "response"
+}
+```
+
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+  "result": {
+    "complete_shards": "1-2,5,8-9,584,1973,2358",
+    "peers": [
+      {
+        "complete_shards": "1-2,8,47,371,464,554,653,857,1076,1402,1555,1708,1813,1867",
+        "public_key": "n9LxFZiySnfDSvfh23N94UxsFkCjWyrchTeKHcYE6tJJQL5iejb2"
+      },
+      {
+        "complete_shards": "8-9,584",
+        "ip": "192.168.1.132",
+        "public_key": "n9MN5xwYqbrj64rtfZAXQy7Y3sNxXZJeLt7Lj61a9DYEZ4SE2tQQ"
+      }
+    ],
+    "status": "success"
+  }
+}
+```
+
+
+<!-- MULTICODE_BLOCK_END -->
+
+
+### 3. Download Shards from Peer Servers
+
+Using the information provided in the response returned from ```crawl_shards```, you can now download one or more shards from a known list of peer servers.
+
+In the following example, the ```download_shard``` method is invoked and the ```shards``` array parameter specifies the shards to download from each server. The ```index```parameter specifies which shards to download, and the ```url``` parameter contains the URL of the peer server from which to download them:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "command": "download_shard",
+  "shards": [
+    {"index": 1, "url": "https://example.com/1.tar.lz4"},
+    {"index": 2, "url": "https://example.com/2.tar.lz4"},
+    {"index": 5, "url": "https://example.com/5.tar.lz4"}
+  ]
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "download_shard",
+  "params": [
+    {
+      "shards": [
+        {"index": 1, "url": "https://example.com/1.tar.lz4"},
+        {"index": 2, "url": "https://example.com/2.tar.lz4"},
+        {"index": 5, "url": "https://example.com/5.tar.lz4"}
+      ]
+    }
+  ]
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+
+The ```message``` field in the response indicates that the download process has started:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "result": {
+    "message": "downloading shards 1-2,5"
+  },
+  "status": "success",
+  "type": "response"
+}
+```
+
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+  "result": {
+    "message": "downloading shards 1-2,5",
+    "status": "success"
+  }
+}
+```
+
+
+<!-- MULTICODE_BLOCK_END -->
+
+
+To see which shards have been downloaded to the local server, examine the subfolders in your configured location for the shard store.
