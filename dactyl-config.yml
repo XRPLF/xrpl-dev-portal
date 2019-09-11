@@ -48,11 +48,11 @@ targets:
         display_name: XRP Ledger Dev Portal
         # These github_ fields are used by the template's "Edit on GitHub" link.
         #  Override them with --vars to change which fork/branch to edit.
-        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         recently_updated:
             - html: rippleapi-reference.html
-              date: 2019-06-06
+              date: 2019-09-10
             - html: look-up-transaction-results.html
               date: 2019-05-02
             - html: tx-sender.html
@@ -68,7 +68,7 @@ targets:
     # Intended for use in markdown (--md) mode.
     -   name: data-api-only
         display_name: XRP Ledger Data API
-        github_forkurl: https://github.com/ripple/ripple-dev-portal
+        github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         no_cover: True
         link_re_subs:
@@ -2840,7 +2840,7 @@ pages:
     # --------------- end "rippled API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.3.1/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.3.3/docs/index.md
         html: rippleapi-reference.html
         funnel: Docs
         doc_type: References
