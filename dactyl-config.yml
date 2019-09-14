@@ -2324,7 +2324,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        template: template-landing-children.html #TODO: consider dropping the md since the page children handles this OK
+        template: template-landing-children.html
         blurb: Each ledger's state tree consists of a set of ledger objects, which collectively represent all settings, balances, and relationships in the shared ledger. In the peer protocol that rippled servers use to communicate with each other, ledger objects are represented in their raw binary format. In the rippled API, ledger objects are represented as JSON objects.
         targets:
             - local
@@ -2837,7 +2837,29 @@ pages:
         targets:
             - local
 
-    # --------------- end "rippled API" section --------------------------------
+    # XRP-API docs (auto-generated)---------------------------------------------
+
+    -   name: XRP-API
+        funnel: Docs
+        doc_type: References
+        supercategory: XRP-API
+        targets:
+            -   local
+        md: https://raw.githubusercontent.com/intelliot/xrp-api/master/README.md
+        html: xrp-api.html
+
+        # API reference generator makes multiple files here
+    -   openapi_specification: ../xrp-api/api-doc.yml # OpenAPI 3.0 spec file or URL (YAML/JSON)
+        api_slug: xrp-api # prefix applied to filenames (required)
+        # Other arbitrary fields are inherited by all pages in the reference
+        funnel: Docs
+        doc_type: References
+        supercategory: XRP-API
+        targets:
+            -   local
+
+
+    # --------------- end "XRP-API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
         md: https://raw.githubusercontent.com/ripple/ripple-lib/1.3.3/docs/index.md
