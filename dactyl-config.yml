@@ -50,19 +50,11 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
-        recently_updated:
-            - html: rippleapi-reference.html
-              date: 2019-09-10
-            - html: look-up-transaction-results.html
-              date: 2019-05-02
-            - html: tx-sender.html
-              date: 2019-05-01
-            - html: transaction-metadata.html
-              date: 2019-04-25
-            - html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
-              date: 2019-03-22
-            - html: set-up-secure-signing.html
-              date: 2019-03-13
+
+    -   name: xrp-api-only
+        display_name: XRP API Reference
+        github_forkurl: https://github.com/ripple/xrpl-dev-portal
+        github_branch: master
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
@@ -2840,13 +2832,14 @@ pages:
     # XRP-API docs (auto-generated)---------------------------------------------
 
     -   name: XRP-API
+        md: https://raw.githubusercontent.com/intelliot/xrp-api/master/README.md
+        html: xrp-api.html
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
         targets:
-            -   local
-        md: https://raw.githubusercontent.com/intelliot/xrp-api/master/README.md
-        html: xrp-api.html
+            - local
+            - xrp-api-only
 
         # API reference generator makes multiple files here
     -   openapi_specification: ../xrp-api/api-doc.yml # OpenAPI 3.0 spec file or URL (YAML/JSON)
@@ -2856,7 +2849,8 @@ pages:
         doc_type: References
         supercategory: XRP-API
         targets:
-            -   local
+            - local
+            - xrp-api-only
 
 
     # --------------- end "XRP-API" section --------------------------------
