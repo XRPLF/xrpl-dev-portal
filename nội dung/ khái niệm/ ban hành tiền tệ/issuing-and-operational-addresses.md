@@ -1,4 +1,4 @@
-# Issuing and Operational Addresses
+# Issuing and Operational https://github.com/Nguyentiensy99/xrpl
 
 {% include '_snippets/issuing-and-operational-addresses-intro.md' %}
 <!--{#_ #}-->
