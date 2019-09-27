@@ -55,6 +55,7 @@ targets:
         display_name: XRP API Reference
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
+        no_cover: true
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
