@@ -15,6 +15,18 @@
     <pre><code>https://s.altnet.rippletest.net:51234</code></pre>
   </div>
 </div>
+<div id="devnet-servers" class="card">
+  <div class="card-header">
+    <h4>Devnet Servers</h4>
+  </div>
+  <div class="card-body">
+    <p>Use the following URLs to connect to the XRP Devnet.</p>
+    <h5>Websockets and Ripple API</h5>
+    <pre><code>wss://s.devnet.rippletest.net:51233</code></pre>
+    <h5>JSON-RPC</h5>
+    <pre><code>https://s.devnet.rippletest.net:51234</code></pre>
+  </div>
+</div>
 {% endblock %}
 
 {% block main %}
@@ -22,9 +34,13 @@
   <h1>XRP Testnet Faucet</h1>
 
   <div class="content">
-    <p>Ripple runs this <a href="parallel-networks.html">parallel XRP Ledger test network</a>, or Testnet, to provide a testing platform for any software products built on the XRP Ledger without using real funds.</p>
-    <p>Testnet funds are intended for <strong>testing</strong> only. The Testnet ledger and balances will be reset approximately every 90 days, or when otherwise necessary.</p>
-    <button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
+    <p>Ripple runs these <a href="parallel-networks.html">parallel XRP Ledger test networks</a>, the Testnet and Devnet, to provide a testing platform for any software products built on the XRP Ledger without using real funds.</p>
+    <p>These funds are intended for <strong>testing</strong> only. The Testnet ledger and balances will be reset approximately every 90 days, or when otherwise necessary. Devnet funds may be reset without warning as needed.</p>
+    <p>Testnet and Devnet balances are separate. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.</p>
+    <div class="btn-toolbar" role="toolbar" aria-label="Button">
+      <button id="testnet-creds-button" class="btn btn-primary mr-2">Generate Testnet credentials</button>
+      <button id="devnet-creds-button" class="btn btn-primary">Generate Devnet credentials</button>
+    </div><!--/.btn-toolbar-->
     <div id='your-credentials'></div>
     <div id='loader' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
     <div id='address'></div>

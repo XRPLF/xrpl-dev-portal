@@ -1,4 +1,4 @@
-# Connect Your rippled to the XRP Test Net
+# Connect Your rippled to an XRPL Altnet
 
 Ripple has created the [XRP Test Network](parallel-networks.html) to provide a testing platform for the XRP Ledger. XRP Test Net funds are not real funds and are intended for testing only. You can connect your `rippled` server to the XRP Test Net to test out and understand `rippled` functionality before connecting to the production XRP Ledger Network. You can also use the XRP Test Net to verify that your own code interacts correctly with `rippled`.
 
@@ -52,7 +52,7 @@ To connect your `rippled` server to the XRP Test Net, set the following configur
 ## See Also
 
 - [Parallel Networks](parallel-networks.html)
-- [XRP Test Net Faucet](xrp-test-net-faucet.html)
+- [XRP Testnet Faucet](xrp-test-net-faucet.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

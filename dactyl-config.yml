@@ -3035,16 +3035,16 @@ pages:
             - local
         template: template-xrp-ledger-toml-checker.html
 
-    -   name: XRP Test Net Faucet
-        funnel: Dev Tools
+    -   name: XRPL Testnet Faucet
         html: xrp-testnet-faucet.html
+        funnel: Dev Tools
+        template: template-test-net.html
         targets:
             - local
-        template: template-test-net.html
 
     -   name: XRP Test Net Faucet # Redirect from old URL
-        funnel: Dev Tools
         html: xrp-test-net-faucet.html
+        funnel: Dev Tools
         template: template-redirect.html
         redirect_url: xrp-testnet-faucet.html
         targets:
