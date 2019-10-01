@@ -2843,9 +2843,8 @@ pages:
             - xrp-api-only
 
         # API reference generator makes multiple files here
-    -   openapi_specification: ../xrp-api/api-doc.yml # OpenAPI 3.0 spec file or URL (YAML/JSON)
-        api_slug: xrp-api # prefix applied to filenames (required)
-        # Other arbitrary fields are inherited by all pages in the reference
+    -   openapi_specification: https://raw.githubusercontent.com/ripple/xrp-api/master/api-doc.yml
+        api_slug: xrp-api
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
