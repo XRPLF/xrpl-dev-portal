@@ -22,7 +22,7 @@ function rippleTestNetCredentials(url, altnet_name) {
     success: function(data) {
       //hide the loader and show results
       loader.hide();
-      credentials.hide().html('<h2>Your Credentials</h2>').fadeIn('fast')
+      credentials.hide().html('<h2>Your '+altnet_name+' Credentials</h2>').fadeIn('fast')
       address.hide().html('<h3>Address</h3> ' +
         data.account.address).fadeIn('fast')
       secret.hide().html('<h3>Secret</h3> ' +

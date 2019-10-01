@@ -3035,7 +3035,7 @@ pages:
             - local
         template: template-xrp-ledger-toml-checker.html
 
-    -   name: XRPL Testnet Faucet
+    -   name: XRP Faucets
         html: xrp-testnet-faucet.html
         funnel: Dev Tools
         template: template-test-net.html
