@@ -2844,6 +2844,7 @@ pages:
 
         # API reference generator makes multiple files here
     -   openapi_specification: https://raw.githubusercontent.com/ripple/xrp-api/master/api-doc.yml
+        openapi_md_template_path: tool/openapi_templates_alpha/
         api_slug: xrp-api
         funnel: Docs
         doc_type: References
