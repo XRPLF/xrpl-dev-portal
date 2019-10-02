@@ -50,19 +50,12 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
-        recently_updated:
-            - html: rippleapi-reference.html
-              date: 2019-09-10
-            - html: look-up-transaction-results.html
-              date: 2019-05-02
-            - html: tx-sender.html
-              date: 2019-05-01
-            - html: transaction-metadata.html
-              date: 2019-04-25
-            - html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
-              date: 2019-03-22
-            - html: set-up-secure-signing.html
-              date: 2019-03-13
+
+    -   name: xrp-api-only
+        display_name: XRP API Reference
+        github_forkurl: https://github.com/ripple/xrpl-dev-portal
+        github_branch: master
+        no_cover: true
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
@@ -2324,7 +2317,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        template: template-landing-children.html #TODO: consider dropping the md since the page children handles this OK
+        template: template-landing-children.html
         blurb: Each ledger's state tree consists of a set of ledger objects, which collectively represent all settings, balances, and relationships in the shared ledger. In the peer protocol that rippled servers use to communicate with each other, ledger objects are represented in their raw binary format. In the rippled API, ledger objects are represented as JSON objects.
         targets:
             - local
@@ -2837,7 +2830,31 @@ pages:
         targets:
             - local
 
-    # --------------- end "rippled API" section --------------------------------
+    # XRP-API docs (auto-generated)---------------------------------------------
+
+    -   name: XRP-API
+        md: https://raw.githubusercontent.com/ripple/xrp-api/master/README.md
+        html: xrp-api.html
+        funnel: Docs
+        doc_type: References
+        supercategory: XRP-API
+        targets:
+            - local
+            - xrp-api-only
+
+        # API reference generator makes multiple files here
+    -   openapi_specification: https://raw.githubusercontent.com/ripple/xrp-api/master/api-doc.yml
+        openapi_md_template_path: tool/openapi_templates_alpha/
+        api_slug: xrp-api
+        funnel: Docs
+        doc_type: References
+        supercategory: XRP-API
+        targets:
+            - local
+            - xrp-api-only
+
+
+    # --------------- end "XRP-API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
         md: https://raw.githubusercontent.com/ripple/ripple-lib/1.3.3/docs/index.md
