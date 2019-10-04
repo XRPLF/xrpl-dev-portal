@@ -184,6 +184,14 @@ GET https://api.example.com/v1/orderbook?market=xrp_btc
 
 ## Send an Exchange Listing Request to XRP Charts
 
-Contact <xrpcharts_support@ripple.com> to request that your exchange be listed on XRP Charts.
+Contact <xrpcharts_support@ripple.com> to request that your exchange be listed on XRP Charts. Be sure to include a link to your API documentation.
 
-In the request, be sure to include a link to your API documentation
+
+## See Also
+
+- **Concepts:**
+    - [Software Ecosystem](software-ecosystem.html)
+- **Tutorials:**
+    - [List XRP on Your Exchange](list-xrp-as-an-exchange.html)
+- **References:**
+    - [Ripple Data API Reference](data-api.html)
