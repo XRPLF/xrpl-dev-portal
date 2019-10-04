@@ -343,3 +343,9 @@ For information about how to revoke a master key pair you generated for your val
     - [consensus_info method][]
     - [validator_list_sites method][]
     - [validators method][]
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

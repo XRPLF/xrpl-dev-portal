@@ -617,7 +617,6 @@ Off-Ledger Balances</td>
     - [AccountRoot object](accountroot.html)
 
 
-
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
