@@ -8,15 +8,22 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
 
 1. In your `rippled.cfg` file:
 
-    a. Uncomment the following section and add either the [Testnet or Devnet address](xref: xrp-testnet-faucet.md) (this example uses the Testnet address):
+    a. To connect to the [Testnet](xref: xrp-testnet-faucet.md), uncomment the following section and add:
 
         [ips]
-        r.altnet.rippletest.net 51235
+        s.altnet.rippletest.net 51233
 
-    b. Comment out the following section, as follows:
+    b. To connect to the [Devnet](xref: xrp-testnet-faucet.md), uncomment the following section and add:
+
+        [ips]
+        s.devnet.rippletest.net 51233
+
+    c. Comment out the following section, as follows:
 
         # [ips]
         # r.ripple.com 51235
+
+
 
 2. In your `validators.txt` file:
 
@@ -38,11 +45,15 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
 
 3. Restart `rippled`.
 
-4. To verify that your `rippled` is connected to the XRP Test Net, use the [server_info method][] on your server and compare it to the results from a public server on the Test Net. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
+4. To verify that your `rippled` is connected to the XRP Testnet or Devnet, use the [server_info method][] on your server and compare it to the results from a public server on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
 
-    The following command checks the latest validated ledger of a Test Net server at `s.altnet.rippletest.net`:
+    The following command checks the latest validated ledger of a Testnet server at `s.altnet.rippletest.net`:
 
         $ ./rippled --rpc_ip 34.210.87.206:51234 server_info | grep seq
+
+    The following command checks the latest validated ledger of a Devnet server at `s.devnet.rippletest.net`:
+
+        $ ./rippled --rpc_ip 34.83.125.324:51234 server_info | grep seq
 
     The following command checks your local `rippled`'s latest validated ledger sequence:
 
