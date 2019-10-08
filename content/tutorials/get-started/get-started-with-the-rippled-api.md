@@ -28,7 +28,7 @@ Currently Ripple (the company) maintains a set of public WebSocket servers at:
 |:--------------------------------------|:------------|:-----------------------|
 | `wss://s1.ripple.com/`                | Mainnet     | General purpose server cluster |
 | `wss://s2.ripple.com/`                | Mainnet     | [Full-history server](ledger-history.html#full-history) cluster |
-| `wss://s.altnet.rippletest.net:51233` | Testnet     | Testnet public server  |
+| `wss://s.altnet.rippletest.net`       | Testnet     | Testnet public server  |
 | `wss://s.devnet.rippletest.net`       | Devnet      | Devnet public server   |
 
 [Network]: parallel-networks.html
@@ -59,12 +59,12 @@ The response is also a JSON object.
 
 Currently, Ripple (the company) maintains a set of public JSON-RPC servers at:
 
-| URL                                     | [Network][] | Notes                |
-|:----------------------------------------|:------------|:---------------------|
-| `https://s1.ripple.com:51234/`          | Mainnet     | General purpose server cluster |
-| `https://s2.ripple.com:51234/`          | Mainnet     | [Full-history server](ledger-history.html#full-history) cluster |
-| `https://s.altnet.rippletest.net:51234` | Testnet     | Testnet public server |
-| `https://s.devnet.rippletest.net:51234` | Devnet      | Devnet public server |
+| URL                                      | [Network][] | Notes                |
+|:-----------------------------------------|:------------|:---------------------|
+| `https://s1.ripple.com:51234/`           | Mainnet     | General purpose server cluster |
+| `https://s2.ripple.com:51234/`           | Mainnet     | [Full-history server](ledger-history.html#full-history) cluster |
+| `https://s.altnet.rippletest.net:51234/` | Testnet     | Testnet public server |
+| `https://s.devnet.rippletest.net:51234/` | Devnet      | Devnet public server |
 
 These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
 
