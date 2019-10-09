@@ -8,12 +8,12 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
 
 1. In your `rippled.cfg` file:
 
-    a. To connect to the [Testnet](xref: xrp-testnet-faucet.md), uncomment the following section and add:
+    a. To connect to the [Testnet](xrp-testnet-faucet.html), uncomment the following section and add:
 
         [ips]
         s.altnet.rippletest.net 51235
 
-    b. To connect to the [Devnet](xref: xrp-testnet-faucet.md), uncomment the following section and add:
+    b. To connect to the [Devnet](xrp-testnet-faucet.html), uncomment the following section and add:
 
         [ips]
         s.devnet.rippletest.net 51235
