@@ -109,3 +109,4 @@ All methods can potentially return any of the following values for the `error` c
 * `noCurrent` - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.
 * `noClosed` - The server does not have a closed ledger, typically because it has not finished starting up.
 * `wsTextRequired` - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text.
+* `amendmentBlocked` - The server is [amendment blocked](amendments.html#amendment-blocked) and needs to be updated to the latest version to stay synced with the XRP Ledger network.
