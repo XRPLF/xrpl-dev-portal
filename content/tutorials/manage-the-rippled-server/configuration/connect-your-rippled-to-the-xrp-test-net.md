@@ -1,22 +1,29 @@
 # Connect Your rippled to an XRPL Altnet
 
-Ripple has created the [XRP Test Network](parallel-networks.html) to provide a testing platform for the XRP Ledger. XRP Test Net funds are not real funds and are intended for testing only. You can connect your `rippled` server to the XRP Test Net to test out and understand `rippled` functionality before connecting to the production XRP Ledger Network. You can also use the XRP Test Net to verify that your own code interacts correctly with `rippled`.
+Ripple has created [alternative test and development networks](parallel-networks.html) for developers to test their apps on the latest non-production version of the XRP Ledger (Testnet) or to test and experiment with features on the latest beta version (Devnet). **The funds used on these networks are not real funds and are intended for testing only.** You can connect your `rippled` server to either the Testnet or Devnet.
 
-**Note:** The XRP Test Net ledger and balances are reset on a regular basis.
+**Note:** The XRP Testnet and Devnet ledger and balances are reset on a regular basis.
 
-To connect your `rippled` server to the XRP Test Net, set the following configurations:
+To connect your `rippled` server to the XRP Testnet or Devnet, set the following configurations:
 
 1. In your `rippled.cfg` file:
 
-    a. Uncomment the following section, as follows:
+    a. To connect to the [Testnet](xrp-testnet-faucet.html), uncomment the following section and add:
 
         [ips]
-        r.altnet.rippletest.net 51235
+        s.altnet.rippletest.net 51235
 
-    b. Comment out the following section, as follows:
+    b. To connect to the [Devnet](xrp-testnet-faucet.html), uncomment the following section and add:
+
+        [ips]
+        s.devnet.rippletest.net 51235
+
+    c. Comment out the following section, as follows:
 
         # [ips]
         # r.ripple.com 51235
+
+
 
 2. In your `validators.txt` file:
 
@@ -38,11 +45,15 @@ To connect your `rippled` server to the XRP Test Net, set the following configur
 
 3. Restart `rippled`.
 
-4. To verify that your `rippled` is connected to the XRP Test Net, use the [server_info method][] on your server and compare it to the results from a public server on the Test Net. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
+4. To verify that your `rippled` is connected to the XRP Testnet or Devnet, use the [server_info method][] on your server and compare it to the results from a public server on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
 
-    The following command checks the latest validated ledger of a Test Net server at `s.altnet.rippletest.net`:
+    The following command checks the latest validated ledger of a Testnet server at `s.altnet.rippletest.net`:
 
         $ ./rippled --rpc_ip 34.210.87.206:51234 server_info | grep seq
+
+    The following command checks the latest validated ledger of a Devnet server at `s.devnet.rippletest.net`:
+
+        $ ./rippled --rpc_ip 34.83.125.324:51234 server_info | grep seq
 
     The following command checks your local `rippled`'s latest validated ledger sequence:
 
