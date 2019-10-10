@@ -33,7 +33,8 @@ import RFC1751
 import base58.base58 as base58
 
 XRPL_SEED_PREFIX = b'\x21'
-XRPL_PUBKEY_PREFIX = b'\x23'
+XRPL_ACCT_PUBKEY_PREFIX = b'\x23'
+XRPL_VALIDATOR_PUBKEY_PREFIX = b'\x1c'
 ED_PREFIX = b'\xed'
 SECP_MODULUS = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141
 
@@ -48,7 +49,7 @@ class Seed:
     A 16-byte value used for key derivation.
     """
 
-    def __init__(self, in_string=None):
+    def __init__(self, in_string=None, correct_rfc1751=False):
         """
         Decode a buffer input in one of the formats the XRPL supports and convert
         it to a buffer representing the 16-byte seed to use for key derivation.
@@ -58,6 +59,7 @@ class Seed:
         - hexadecimal
         - passphrase
         """
+        self.correct_rfc1751 = correct_rfc1751
         # Keys are lazy-derived later
         self._secp256k1_pri = None
         self._secp256k1_pub = None
@@ -66,7 +68,8 @@ class Seed:
 
         if in_string is None:
             # Generate a new seed randomly from OS-level RNG.
-            self.bytes = randbits(32*8).to_bytes(32, byteorder="big")
+            self.bytes = randbits(16*8).to_bytes(16, byteorder="big")
+            return
 
         # Is it base58?
         try:
@@ -83,7 +86,11 @@ class Seed:
         try:
             decoded = RFC1751.english_to_key(in_string)
             if len(decoded) == 16:
-                self.bytes = swap_byte_order(decoded)
+                if correct_rfc1751:
+                    self.bytes = decoded
+                else:
+                    self.bytes = swap_byte_order(decoded)
+
                 return
             else:
                 raise ValueError
@@ -119,12 +126,21 @@ class Seed:
         """
         return self.bytes.hex().upper()
 
-    def encode_rfc1751(self):
+    def encode_rfc1751(self, correct_rfc1751=None):
         """
         Returns a string representation of this seed as an RFC-1751 encoded
         passphrase.
         """
-        return RFC1751.key_to_english(swap_byte_order(self.bytes))
+        # Use the default byte order swap this Seed was generated with
+        # unless the method call overrides it.
+        if correct_rfc1751 is None:
+            correct_rfc1751=self.correct_rfc1751
+
+        if correct_rfc1751:
+            buf = self.bytes
+        else:
+            buf = swap_byte_order(self.bytes)
+        return RFC1751.key_to_english(buf)
 
     @property
     def ed25519_private_key(self):
@@ -159,11 +175,21 @@ class Seed:
     @property
     def secp256k1_public_key(self):
         """
-        33-byte secp256k1 public key (bytes)
+        33-byte secp256k1 account public key (bytes)
         """
         if self._secp256k1_pub is None:
             self.derive_secp256k1_master_keys()
         return self._secp256k1_pub
+
+    @property
+    def secp256k1_root_public_key(self):
+        """
+        33-byte secp256k1 root public key (bytes)
+        This is the public key used for validators.
+        """
+        if self._secp256k1_root_pub is None:
+            self.derive_secp256k1_master_keys()
+        return self._secp256k1_root_pub
 
     def derive_secp256k1_master_keys(self):
         """
@@ -186,16 +212,36 @@ class Seed:
 
         self._secp256k1_pri = master_pri_i.to_bytes(32, byteorder="big", signed=False)
         self._secp256k1_pub = compress_secp256k1_public(master_pub_point)
+        self._secp256k1_root_pub = root_pub_b
 
         # Saving the full key to make it easier to sign things later
         self._secp256k1_full = master_pub_point
 
-    def encode_secp256k1_public_base58(self):
+    def encode_secp256k1_public_base58(self, validator=False):
         """
         Return the base58-encoded version of the secp256k1 public key.
         """
-        return base58.b58encode_check(XRPL_PUBKEY_PREFIX +
-                                      self.secp256k1_public_key).decode()
+        if validator:
+            # Validators use the "root" public key
+            key = self.secp256k1_root_public_key
+            prefix = XRPL_VALIDATOR_PUBKEY_PREFIX
+        else:
+            # Accounts use the derived "master" public key
+            key = self.secp256k1_public_key
+            prefix = XRPL_ACCT_PUBKEY_PREFIX
+
+        return base58.b58encode_check(prefix + key).decode()
+
+    def encode_ed25519_public_base58(self):
+        """
+        Return the base58-encoded version of the Ed25519 public key.
+        """
+        # Unlike secp256k1, Ed25519 public keys are the same for
+        # accounts and for validators.
+        prefix = XRPL_ACCT_PUBKEY_PREFIX
+
+        return base58.b58encode_check(prefix +
+                                      self.ed25519_public_key).decode()
 
 def secp256k1_private_key_from(seed):
     """
@@ -242,28 +288,40 @@ def swap_byte_order(buf):
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
-    p.add_argument("secret", help="The seed to derive a key from, in hex, XRPL base58, or RFC-1751; or the passphrase to derive a seed and key from.")
+    p.add_argument("secret", nargs="?", default=None, help="The seed to "+
+        "derive a key from, in hex, XRPL base58, or RFC-1751; or the " + "passphrase to derive a seed and key from. If omitted, generate a "+
+        "random seed.")
+    p.add_argument("--unswap", "-u", default=False, action="store_true",
+        help="If specified, preserve the byte order of RFC-1751 encoding"+
+        "/decoding. Not compatible with rippled's RFC-1751 implementation.")
     args = p.parse_args()
 
-    seed = Seed(args.secret)
+    seed = Seed(args.secret, correct_rfc1751=args.unswap)
     seed.derive_secp256k1_master_keys()
 
     print("""
     Seed (base58): {base58}
     Seed (hex): {hex}
-    Seed (RFC-1751): {rfc1751}
-    Ed25519 Secret Key (hex): {ed25519_secret}
+    Seed (true RFC-1751): {rfc1751_true}
+    Seed (rippled RFC-1751): {rfc1751_rippled}
+    Ed25519 Private Key (hex): {ed25519_secret}
     Ed25519 Public Key (hex): {ed25519_public}
-    secp256k1 Secret Key (hex): {secp256k1_secret}
+    Ed25519 Public Key (base58 - Account): {ed25519_pub_base58}
+    secp256k1 Private Key (hex): {secp256k1_secret}
     secp256k1 Public Key (hex): {secp256k1_public}
-    secp256k1 Public Key (base58): {secp256k1_pub_base58}
+    secp256k1 Public Key (base58 - Account): {secp256k1_pub_base58}
+    secp256k1 Public Key (base58 - Validator): {secp256k1_pub_base58_val}
     """.format(
             base58=seed.encode_base58(),
             hex=seed.encode_hex(),
-            rfc1751=seed.encode_rfc1751(),
+            rfc1751_true=seed.encode_rfc1751(correct_rfc1751=True),
+            rfc1751_rippled=seed.encode_rfc1751(correct_rfc1751=False),
             ed25519_secret=seed.ed25519_private_key.hex().upper(),
             ed25519_public=seed.ed25519_public_key.hex().upper(),
             secp256k1_secret=seed.secp256k1_private_key.hex().upper(),
             secp256k1_public=seed.secp256k1_public_key.hex().upper(),
             secp256k1_pub_base58=seed.encode_secp256k1_public_base58(),
+            secp256k1_pub_base58_val=seed.encode_secp256k1_public_base58(
+                validator=True),
+            ed25519_pub_base58=seed.encode_ed25519_public_base58(),
     ))
