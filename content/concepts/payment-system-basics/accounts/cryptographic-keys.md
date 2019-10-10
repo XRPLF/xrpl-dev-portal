@@ -120,23 +120,47 @@ In the future, it is likely that the XRP Ledger will need new cryptographic sign
 
 The process of deriving a key pair depends on the signing algorithm. In all cases, keys are generated from a _seed_ value that is 16 bytes (128 bits) in length. The seed value can be completely random (recommended) or it can be derived from a specific passphrase by taking the [SHA-512 hash][Hash] and keeping the first 16 bytes (similar to [SHA-512Half][], but keeping only 128 bits instead of 256 bits of the output).
 
+### Sample Code
+
+The key derivation processes described here are implemented in multiple places and programming languages:
+
+- In C++ in the `rippled` code base:
+    - [Seed definition](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/Seed.h)
+    - [General & Ed25519 key derivation](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
+    - [secp256k1 key derivation](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp)
+- In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/key-derivation/key-derivation.py).
+- In JavaScript in the [`ripple-keypairs`](https://github.com/ripple/ripple-keypairs/) package.
+
 ### Ed25519 Key Derivation
 [[Source]](https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
 
+![]
+
 All 32-byte numbers are valid Ed25519 private keys, so Ed25519 private key derivation is a single step:
 
-- Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte private key.
+1. Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte private key.
 
-To calculate an Ed25519 public key, use the standard public key derivation for [Ed25519](https://ed25519.cr.yp.to/software.html) to derive the public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
+2. To calculate an Ed25519 public key, use the standard public key derivation for [Ed25519](https://ed25519.cr.yp.to/software.html) to derive the 32-byte public key.
+
+    **Caution:** As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.
+
+3. Prefix the 32-byte public key with the single byte `0xED` to indicate an Ed25519 public key, resulting in 33 bytes.
+
+    If you are implementing code to sign transactions, remove the `0xED` prefix and use the 32-byte key for the actual signing process.
+
+4. When serializing an account public key to [base58][], use the account public key prefix `0x23`.
+
+    Validator ephemeral keys cannot be Ed25519.
 
 ### secp256k1 Key Derivation
+[[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp "Source")
 
-Key derivation for secp256k1 XRP Ledger keys involves more steps than Ed25519 key derivation for a couple reasons:
+Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:
 
 - Not all 32-byte numbers are valid secp256k1 private keys.
 - The XRP Ledger's reference implementation has an unused, incomplete framework for deriving a family of key pairs from a single seed value.
 
-The steps to derive a valid secp256k1 private key from a seed value are as follows:
+The steps to derive the XRP Ledger's secp256k1 account key pair from a seed value are as follows:
 
 1. Calculate a "root key pair" from the seed value, as follows:
 
@@ -152,10 +176,20 @@ The steps to derive a valid secp256k1 private key from a seed value are as follo
 
     4. With a valid secp256k1 private key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the root public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
 
-2. Derive an intermediate key pair from the root public key you calculated in step 1, as follows:
+    **Tip:** Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58][] serialization for validator public keys uses the prefix `0x1c`.
+
+2. Convert the root public key to its 33-byte compressed form.
+
+    The uncompressed form of any ECDSA public key consists of a pair of 32-byte integers: an X coordinate, and a Y coordinate. The compressed form is just the X coordinate and a one-byte prefix: `0x02` if the Y coordinate is even, or `0x03` if the Y coordinate is odd.
+
+    You can convert an uncompressed public key to the compressed form with the `openssl` commandline tool. For example, if the uncompressed public key is in the file `ec-pub.pem`, you can output the compressed form like this:
+
+        $ openssl ec -in ec-pub.pem -pubin -text -noout -conv_form compressed
+
+3. Derive an "intermediate key pair" from the compressed root public key you, as follows:
 
     1. Concatenate the following in order, for a total of 40 bytes:
-        - The root public key (32 bytes)
+        - The compressed root public key (33 bytes)
         - `0x00000000000000000000000000000000` (4 bytes of zeroes). (This value was intended to be used to derive different members of the same family, but in practice only the value 0 is used.)
         - A "key sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the key sequence.
 
@@ -165,7 +199,19 @@ The steps to derive a valid secp256k1 private key from a seed value are as follo
 
     4. With a valid secp256k1 private key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the intermediate public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
 
-3. Calculate the sum of the root public key and the intermediate public key. The result is the master public key. ***TODO: which private key do you use?***
+4. Derive the master public key pair by adding the intermediate public key to the root public key. Similarly, derive the private key by adding the intermediate private key to the root private key.
+
+    - An ECDSA private key is just a very large integer chosen at random, so you can calculate the sum of two private keys by summing them modulo the secp256k1 modulus.
+
+    - An ECDSA public key is a point on the elliptic curve, so you should use a well-established elliptic curve implementation to sum the points.
+
+    **Tip:** You don't need any private keys to derive the master public key. You can do so using only the root public key.
+
+5. Convert the master public key to its 33-byte compressed form, as before.
+
+6. When serializing an account's public key to its [base58][] format, use the account public key prefix, `0x23`.
+
+    See [Address Encoding](accounts.html#address-encoding) for information and sample code to convert from an account's public key to its address.
 
 
 ## See Also
