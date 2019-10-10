@@ -73,7 +73,7 @@ class Seed:
         try:
             decoded = RFC1751.english_to_key(in_string)
             if len(decoded) == 16:
-                self.bytes = decoded
+                self.bytes = swap_byte_order(decoded)
                 return
             else:
                 raise ValueError
@@ -114,7 +114,7 @@ class Seed:
         Returns a string representation of this seed as an RFC-1751 encoded
         passphrase.
         """
-        return RFC1751.key_to_english(self.bytes)
+        return RFC1751.key_to_english(swap_byte_order(self.bytes))
 
     @property
     def ed25519_private_key(self):
@@ -217,6 +217,18 @@ def compress_secp256k1_public(point):
     else:
         prefix = b'\x02'
     return prefix + point.x.to_bytes(32, byteorder="big", signed=False)
+
+def swap_byte_order(buf):
+    """
+    Swap the byte order of a bytes object.
+    The rippled implementation of RFC-1751 uses the reversed byte order as the
+    examples included in the RFC-1751 spec (which doesn't mention byte order).
+    """
+    size = len(buf)
+    # doesn't actually matter if it's "really" big-endian
+    i = int.from_bytes(buf, byteorder="big", signed=False)
+    revbuf = i.to_bytes(size, byteorder="little", signed=False)
+    return revbuf
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
