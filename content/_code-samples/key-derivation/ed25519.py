@@ -1,5 +1,6 @@
 # Python Implementation from https://ed25519.cr.yp.to/software.html
-# Adjusted to Python 3 syntax by rome@ripple.com
+# Adjusted to Python 3 syntax by rome@ripple.com. The revisions are
+# released to the public domain.
 # Public domain software. This is a reference implementation that
 # does not include recommended speed & security optimizations.
 

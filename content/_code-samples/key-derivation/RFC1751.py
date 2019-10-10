@@ -2,6 +2,7 @@
 # https://github.com/dlitz/pycrypto/blob/master/lib/Crypto/Util/RFC1751.py
 # This version has been adapted to Python 3 using the '2to3' utility
 # and manually adjusted for better Python 3 compatibility.
+# Those revisions are released to the public domain.
 
 # rfc1751.py : Converts between 128-bit strings and a human-readable
 # sequence of words, as defined in RFC1751: "A Convention for
