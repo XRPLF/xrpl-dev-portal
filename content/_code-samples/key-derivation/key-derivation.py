@@ -16,9 +16,6 @@ elif sys.version_info.minor < 6:
 else:
     from secrets import randbits
 
-# import cryptography.hazmat.primitives.asymmetric.ec as ecc
-# import cryptography.hazmat.backends.default_backend as default_backend
-
 from fastecdsa import keys, curve
 
 import ed25519
@@ -166,14 +163,13 @@ class Seed:
         """
 
         root_pri_i = secp256k1_private_key_from(self.bytes)
-        # root_pk_i.to_bytes(32, byteorder="big", signed=False)
         root_pub_point = keys.get_public_key(root_pri_i, curve.secp256k1)
         root_pub_b = compress_secp256k1_public(root_pub_point)
         fam_b = bytes(4) # Account families are unused; just 4 bytes of zeroes
         inter_pk_i = secp256k1_private_key_from(root_pub_b+fam_b)
         inter_pub_point = keys.get_public_key(inter_pk_i, curve.secp256k1)
 
-        # Private keys are just ints, so just add them mod the secp256k1 modulus
+        # Private keys are ints, so just add them mod the secp256k1 modulus
         master_pri_i = (root_pri_i + inter_pk_i) % SECP_MODULUS
         # Public keys are points, so the fastecdsa lib handles adding them
         master_pub_point = root_pub_point + inter_pub_point
