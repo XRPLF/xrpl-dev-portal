@@ -4,76 +4,22 @@
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>60</x>
-      <y>50</y>
-      <w>110</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>Passphrase
---
-(Optional)
-Any string
-lt=.</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLObject</id>
-    <coordinates>
-      <x>320</x>
-      <y>50</y>
-      <w>130</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>Seed
---
-(16 bytes)</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>160</x>
+      <x>40</x>
       <y>70</y>
-      <w>180</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-SHA512, keep
-first 16 bytes</panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLObject</id>
-    <coordinates>
-      <x>60</x>
-      <y>180</y>
       <w>220</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>Public Key
+    <panel_attributes>Master Public Key
 --
 33 bytes (secp256k1)
 0xED + 32 bytes (Ed25519)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>160</x>
-      <y>80</y>
-      <w>600</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Public Key
-Derivation</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;70.0;580.0;70.0;580.0;10.0;550.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>360</x>
-      <y>270</y>
+      <x>340</x>
+      <y>160</y>
       <w>180</w>
       <h>80</h>
     </coordinates>
@@ -85,8 +31,8 @@ Derivation</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>180</y>
+      <x>250</x>
+      <y>70</y>
       <w>220</w>
       <h>160</h>
     </coordinates>
@@ -105,8 +51,8 @@ RIPEMD160 of SHA-256
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>690</x>
-      <y>270</y>
+      <x>670</x>
+      <y>160</y>
       <w>180</w>
       <h>80</h>
     </coordinates>
@@ -119,22 +65,22 @@ Checksum (4 bytes)</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>60</x>
-      <y>270</y>
+      <x>40</x>
+      <y>160</y>
       <w>190</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>Type Prefix
 --
 0x00
-("r" in Ripple's base58)</panel_attributes>
+("r" in XRPL base58)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>310</y>
+      <x>220</x>
+      <y>200</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -144,8 +90,8 @@ Checksum (4 bytes)</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>400</x>
-      <y>400</y>
+      <x>380</x>
+      <y>290</y>
       <w>100</w>
       <h>70</h>
     </coordinates>
@@ -157,8 +103,8 @@ Checksum (4 bytes)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>310</y>
+      <x>470</x>
+      <y>200</y>
       <w>120</w>
       <h>140</h>
     </coordinates>
@@ -168,8 +114,8 @@ Checksum (4 bytes)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>290</y>
+      <x>510</x>
+      <y>180</y>
       <w>80</w>
       <h>30</h>
     </coordinates>
@@ -179,8 +125,8 @@ Checksum (4 bytes)</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>590</x>
-      <y>290</y>
+      <x>570</x>
+      <y>180</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -191,8 +137,8 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>340</y>
+      <x>400</x>
+      <y>230</y>
       <w>130</w>
       <h>80</h>
     </coordinates>
@@ -201,29 +147,15 @@ SHA-256 twice</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>UMLObject</id>
+    <id>Text</id>
     <coordinates>
-      <x>600</x>
-      <y>50</y>
-      <w>110</w>
-      <h>70</h>
+      <x>40</x>
+      <y>30</y>
+      <w>280</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>Private Key
---
-(32 bytes)</panel_attributes>
+    <panel_attributes>*Address Encoding*
+style=wordwrap</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>440</x>
-      <y>70</y>
-      <w>180</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Private Key
-Derivation</panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

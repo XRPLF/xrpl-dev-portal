@@ -134,11 +134,11 @@ The key derivation processes described here are implemented in multiple places a
 ### Ed25519 Key Derivation
 [[Source]](https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
 
-![]
-
-All 32-byte numbers are valid Ed25519 private keys, so Ed25519 private key derivation is a single step:
+[![Passphrase → Seed → Private Key → Prefix + Public Key](img/key-derivation-ed25519.png)](img/key-derivation-ed25519.png)
 
 1. Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte private key.
+
+    **Tip:** All 32-byte numbers are valid Ed25519 private keys. However, only numbers that are chosen randomly enough are secure enough to be used as private keys.
 
 2. To calculate an Ed25519 public key, use the standard public key derivation for [Ed25519](https://ed25519.cr.yp.to/software.html) to derive the 32-byte public key.
 
@@ -154,6 +154,8 @@ All 32-byte numbers are valid Ed25519 private keys, so Ed25519 private key deriv
 
 ### secp256k1 Key Derivation
 [[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp "Source")
+
+[![Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair](img/key-derivation-secp256k1.png)](img/key-derivation-secp256k1.png)
 
 Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:
 
@@ -201,9 +203,9 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
 4. Derive the master public key pair by adding the intermediate public key to the root public key. Similarly, derive the private key by adding the intermediate private key to the root private key.
 
-    - An ECDSA private key is just a very large integer chosen at random, so you can calculate the sum of two private keys by summing them modulo the secp256k1 modulus.
+    - An ECDSA private key is just a very large integer, so you can calculate the sum of two private keys by summing them modulo the secp256k1 modulus.
 
-    - An ECDSA public key is a point on the elliptic curve, so you should use a well-established elliptic curve implementation to sum the points.
+    - An ECDSA public key is a point on the elliptic curve, so you should use elliptic curve math to sum the points.
 
     **Tip:** You don't need any private keys to derive the master public key. You can do so using only the root public key.
 
