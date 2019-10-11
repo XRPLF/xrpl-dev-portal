@@ -61,9 +61,9 @@ class Seed:
         """
         self.correct_rfc1751 = correct_rfc1751
         # Keys are lazy-derived later
-        self._secp256k1_pri = None
+        self._secp256k1_sec = None
         self._secp256k1_pub = None
-        self._ed25519_pri = None
+        self._ed25519_sec = None
         self._ed25519_pub = None
 
         if in_string is None:
@@ -143,14 +143,14 @@ class Seed:
         return RFC1751.key_to_english(buf)
 
     @property
-    def ed25519_private_key(self):
+    def ed25519_secret_key(self):
         """
-        Returns a 32-byte Ed25519 private key (bytes).
+        Returns a 32-byte Ed25519 secret key (bytes).
         Saves the calculation for later calls.
         """
-        if self._ed25519_pri is None:
-            self._ed25519_pri = sha512half(self.bytes)
-        return self._ed25519_pri
+        if self._ed25519_sec is None:
+            self._ed25519_sec = sha512half(self.bytes)
+        return self._ed25519_sec
 
     @property
     def ed25519_public_key(self):
@@ -160,17 +160,17 @@ class Seed:
         """
         if self._ed25519_pub is None:
             self._ed25519_pub = (ED_PREFIX +
-                                 ed25519.publickey(self.ed25519_private_key))
+                                 ed25519.publickey(self.ed25519_secret_key))
         return self._ed25519_pub
 
     @property
-    def secp256k1_private_key(self):
+    def secp256k1_secret_key(self):
         """
-        32-byte secp256k1 private key (bytes)
+        32-byte secp256k1 secret key (bytes)
         """
-        if self._secp256k1_pri is None:
+        if self._secp256k1_sec is None:
             self.derive_secp256k1_master_keys()
-        return self._secp256k1_pri
+        return self._secp256k1_sec
 
     @property
     def secp256k1_public_key(self):
@@ -198,19 +198,19 @@ class Seed:
         Saves the values to the object for later reference.
         """
 
-        root_pri_i = secp256k1_private_key_from(self.bytes)
-        root_pub_point = keys.get_public_key(root_pri_i, curve.secp256k1)
+        root_sec_i = secp256k1_secret_key_from(self.bytes)
+        root_pub_point = keys.get_public_key(root_sec_i, curve.secp256k1)
         root_pub_b = compress_secp256k1_public(root_pub_point)
         fam_b = bytes(4) # Account families are unused; just 4 bytes of zeroes
-        inter_pk_i = secp256k1_private_key_from(root_pub_b+fam_b)
+        inter_pk_i = secp256k1_secret_key_from(root_pub_b+fam_b)
         inter_pub_point = keys.get_public_key(inter_pk_i, curve.secp256k1)
 
-        # Private keys are ints, so just add them mod the secp256k1 modulus
-        master_pri_i = (root_pri_i + inter_pk_i) % SECP_MODULUS
+        # Secret keys are ints, so just add them mod the secp256k1 group order
+        master_sec_i = (root_sec_i + inter_pk_i) % SECP_MODULUS
         # Public keys are points, so the fastecdsa lib handles adding them
         master_pub_point = root_pub_point + inter_pub_point
 
-        self._secp256k1_pri = master_pri_i.to_bytes(32, byteorder="big", signed=False)
+        self._secp256k1_sec = master_sec_i.to_bytes(32, byteorder="big", signed=False)
         self._secp256k1_pub = compress_secp256k1_public(master_pub_point)
         self._secp256k1_root_pub = root_pub_b
 
@@ -243,13 +243,13 @@ class Seed:
         return base58.b58encode_check(prefix +
                                       self.ed25519_public_key).decode()
 
-def secp256k1_private_key_from(seed):
+def secp256k1_secret_key_from(seed):
     """
-    Calculate a valid secp256k1 private key by hashing a seed value;
+    Calculate a valid secp256k1 secret key by hashing a seed value;
     if the result isn't a valid key, increment a seq value and try
     again.
 
-    Returns a private key as a 32-byte integer.
+    Returns a secret key as a 32-byte integer.
     """
     seq = 0
     while True:
@@ -304,10 +304,10 @@ if __name__ == "__main__":
     Seed (hex): {hex}
     Seed (true RFC-1751): {rfc1751_true}
     Seed (rippled RFC-1751): {rfc1751_rippled}
-    Ed25519 Private Key (hex): {ed25519_secret}
+    Ed25519 Secret Key (hex): {ed25519_secret}
     Ed25519 Public Key (hex): {ed25519_public}
     Ed25519 Public Key (base58 - Account): {ed25519_pub_base58}
-    secp256k1 Private Key (hex): {secp256k1_secret}
+    secp256k1 Secret Key (hex): {secp256k1_secret}
     secp256k1 Public Key (hex): {secp256k1_public}
     secp256k1 Public Key (base58 - Account): {secp256k1_pub_base58}
     secp256k1 Public Key (base58 - Validator): {secp256k1_pub_base58_val}
@@ -316,9 +316,9 @@ if __name__ == "__main__":
             hex=seed.encode_hex(),
             rfc1751_true=seed.encode_rfc1751(correct_rfc1751=True),
             rfc1751_rippled=seed.encode_rfc1751(correct_rfc1751=False),
-            ed25519_secret=seed.ed25519_private_key.hex().upper(),
+            ed25519_secret=seed.ed25519_secret_key.hex().upper(),
             ed25519_public=seed.ed25519_public_key.hex().upper(),
-            secp256k1_secret=seed.secp256k1_private_key.hex().upper(),
+            secp256k1_secret=seed.secp256k1_secret_key.hex().upper(),
             secp256k1_public=seed.secp256k1_public_key.hex().upper(),
             secp256k1_pub_base58=seed.encode_secp256k1_public_base58(),
             secp256k1_pub_base58_val=seed.encode_secp256k1_public_base58(

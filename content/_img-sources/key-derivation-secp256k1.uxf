@@ -372,8 +372,8 @@ compressed)</panel_attributes>
       <w>160</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Add, Mod
-Curve Modulus
+    <panel_attributes>Add, Modulo
+Group Order
 type=sender</panel_attributes>
     <additional_attributes/>
   </element>
