@@ -134,7 +134,7 @@ The key derivation processes described here are implemented in multiple places a
     - [Seed definition](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/Seed.h)
     - [General & Ed25519 key derivation](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
     - [secp256k1 key derivation](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp)
-- In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/key-derivation/key-derivation.py).
+- In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/key-derivation/key_derivation.py).
 - In JavaScript in the [`ripple-keypairs`](https://github.com/ripple/ripple-keypairs/) package.
 
 ### Ed25519 Key Derivation

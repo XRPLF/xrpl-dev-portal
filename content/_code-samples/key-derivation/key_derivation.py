@@ -30,13 +30,12 @@ from fastecdsa import keys, curve
 
 import ed25519
 import RFC1751
-import base58.base58 as base58
+from base58 import base58
 
 XRPL_SEED_PREFIX = b'\x21'
 XRPL_ACCT_PUBKEY_PREFIX = b'\x23'
 XRPL_VALIDATOR_PUBKEY_PREFIX = b'\x1c'
 ED_PREFIX = b'\xed'
-SECP_MODULUS = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141
 
 def sha512half(buf):
     """
@@ -63,6 +62,7 @@ class Seed:
         # Keys are lazy-derived later
         self._secp256k1_sec = None
         self._secp256k1_pub = None
+        self._secp256k1_root_pub = None
         self._ed25519_sec = None
         self._ed25519_pub = None
 
@@ -202,11 +202,11 @@ class Seed:
         root_pub_point = keys.get_public_key(root_sec_i, curve.secp256k1)
         root_pub_b = compress_secp256k1_public(root_pub_point)
         fam_b = bytes(4) # Account families are unused; just 4 bytes of zeroes
-        inter_pk_i = secp256k1_secret_key_from(root_pub_b+fam_b)
+        inter_pk_i = secp256k1_secret_key_from( b''.join([root_pub_b, fam_b]) )
         inter_pub_point = keys.get_public_key(inter_pk_i, curve.secp256k1)
 
         # Secret keys are ints, so just add them mod the secp256k1 group order
-        master_sec_i = (root_sec_i + inter_pk_i) % SECP_MODULUS
+        master_sec_i = (root_sec_i + inter_pk_i) % curve.secp256k1.q
         # Public keys are points, so the fastecdsa lib handles adding them
         master_pub_point = root_pub_point + inter_pub_point
 
@@ -256,12 +256,10 @@ def secp256k1_secret_key_from(seed):
         buf = seed + seq.to_bytes(4, byteorder="big", signed=False)
         h = sha512half(buf)
         h_i = int.from_bytes(h, byteorder="big", signed=False)
-        if h_i > SECP_MODULUS or h_i == 0:
-            # Not a valid secp256k1 key
-            seq += 1
-            continue
-        break
-    return h_i
+        if h_i < curve.secp256k1.q and h_i != 0:
+            return h_i
+        # Else, not a valid secp256k1 key; try again with a new sequence value.
+        seq += 1
 
 def compress_secp256k1_public(point):
     """
