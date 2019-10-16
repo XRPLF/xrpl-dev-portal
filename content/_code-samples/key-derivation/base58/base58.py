@@ -1,10 +1,10 @@
 '''Base58 encoding
 
-Implementations of Base58 and Base58Check endcodings that are compatible
+Implementations of Base58 and Base58Check encodings that are compatible
 with the XRP Ledger.
 '''
 
-# This This code is adapted from the module by David Keijser at
+# This code is adapted from the module by David Keijser at
 # <https://github.com/keis/base58>. - rome@ripple.com
 # His notes are preserved below:
 
