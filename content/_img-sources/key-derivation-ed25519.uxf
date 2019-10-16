@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>20</x>
+      <y>60</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Passphrase
+--
+(Optional)
+Any string
+lt=.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>130</x>
+      <y>80</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+SHA-512, keep
+first 16 bytes</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>280</x>
+      <y>60</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Seed
+--
+(16 bytes)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>170</x>
+      <y>200</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Private Key
+--
+(32 bytes)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>120</y>
+      <w>120</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+SHA-512Half</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>170</x>
+      <y>330</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Public Key
+--
+(32 bytes)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>110</x>
+      <y>330</y>
+      <w>60</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>0xED
+Prefix
+--
+(1 byte)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>260</y>
+      <w>180</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+Public Key Derivation</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>100</x>
+      <y>400</y>
+      <w>320</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=..
+
+Master Public Key
+(33 bytes)</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;300.0;30.0;300.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>280</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Ed25519 Key Derivation*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

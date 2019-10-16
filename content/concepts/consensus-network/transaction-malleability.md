@@ -33,11 +33,11 @@ To be "canonical", signatures created with the ECDSA algorithm and secp256k1 cur
 
 - The signature must be properly [DER-encoded data](https://en.wikipedia.org/wiki/X.690#DER_encoding).
 - The signature must not have any padding bytes outside the DER-encoded data.
-- The signature's component integers must not be negative, and they must not be larger than the secp256k1 modulus.
+- The signature's component integers must not be negative, and they must not be larger than the secp256k1 group order.
 
 Generally speaking, any standard ECDSA implementation handles these requirements automatically. However, with secp256k1, those requirements are insufficient to prevent malleability. Thus, the XRP Ledger has a concept of "fully canonical" signatures which do not have the same problem.
 
-An ECDSA signature consists of two integers, called R and S. The secp256k1 modulus, called N, is a constant value for all secp256k1 signatures. Specifically, N is the value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`. For any given signature `(R,S)`, the signature `(R, N-S)` (that is, using N minus S in place of S) is also valid.
+An ECDSA signature consists of two integers, called R and S. The secp256k1 _group order_, called N, is a constant value for all secp256k1 signatures. Specifically, N is the value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`. For any given signature `(R,S)`, the signature `(R, N-S)` (that is, using N minus S in place of S) is also valid.
 
 Thus, to have _fully_ canonical signatures, one must choose which of the two possibilities is preferred and declare the other to be invalid. The creators of the XRP Ledger decided arbitrarily to prefer the _smaller_ of the two possible values, `S` or `N-S`. A transaction is considered _fully canonical_ if it uses the preferred (smaller) value of `S`, and follows all the normal rules for being canonical.
 

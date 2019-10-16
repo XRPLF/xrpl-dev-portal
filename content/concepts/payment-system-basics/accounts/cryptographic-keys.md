@@ -1,10 +1,10 @@
 # Cryptographic Keys
 
-In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. <!-- STYLE_OVERRIDE: is authorized to -->
+In the XRP Ledger, a digital signature proves that a [transaction](transaction-basics.html) is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. <!-- STYLE_OVERRIDE: is authorized to -->
 
 Every digital signature is based on a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](multi-signing.html), regardless of what algorithm was used to generate it.
 
-**Warning:** It is important to maintain proper security over your private keys. Digital signatures are the only way of verifying to the XRP Ledger that you are authorized to send a transaction, and there is no privileged administrator who can undo or reverse any transaction that has been applied to the ledger. If someone else knows the private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.
+**Warning:** It is important to maintain proper security over your secret keys. Digital signatures are the only way of verifying to the XRP Ledger that you are authorized to send a transaction, and there is no privileged administrator who can undo or reverse any transaction that has been applied to the ledger. If someone else knows the secret key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.
 
 ## Generating Keys
 
@@ -26,15 +26,21 @@ You generate a key pair using the [`wallet_propose`](wallet_propose.html) method
 }
 ```
 
-The response contains a key pair (a private key and a public key, in various formats) as well as an `account_id`.
+The response contains a key pair (a seed and a public key, in various formats) as well as an `account_id`.
 
-**Private Key**
+**Seed**
 
-The `master_key`, `master_seed`, and `master_seed_hex` are the private key in various formats, all of which can be used to sign transactions. Despite being prefixed with `master_`, these keys are not necessarily the master keys for an account. In this context, the `master_` prefix refers more to the keys' role as private keys. The `master_seed` is the master seed from which all other information about this account is derived.
+A _seed_ value is a compact value that is used to [derive](#key-derivation) the actual secret key (and public key) for an account. The `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to [sign transactions](transaction-basics.html#signing-and-submitting-transactions) in the [`rippled` APIs](rippled-api.html) and some [other XRPL software](software-ecosystem.html). Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
+
+Because the seed value is the basis for all the other information of an account, you must protect it very carefully. Anyone who has knows an address's seed value effectively has full control over that address.
+
+**Secret Key**
+
+The `wallet_propose` response does not explicitly list the secret key value, also called a _private key_. Software that can sign transactions is expected to [derive the secret key](#key-derivation) from the seed value.
 
 **Public Key**
 
-The `public_key` and `public_key_hex` are the public key in various formats, with the `public_key_hex` being the public key corresponding to the private key that signed the transaction. Both the `public_key` and `public_key_hex` are directly derived from the `master_seed`.
+The `public_key` and `public_key_hex` both represent the same public key value. The public key is derived from the secret key as part of key derivation. The public key makes it possible to verify the authenticity of a transaction signature, but not to create more signatures.
 
 **account_id**
 
@@ -55,7 +61,7 @@ The field `key_type` indicates what [cryptographic signing algorithm](#signing-a
 
 ## Master Key Pair
 
-The master key pair is composed of a private key and a public key. In addition to being able to sign all transactions that a regular key pair can, the master key pair's private key is the only key that can be used to perform the following actions:
+The master key pair is composed of a secret key and a public key. In addition to being able to sign all transactions that a regular key pair can, the master key pair's secret key is the only key that can be used to perform the following actions:
 
 * [Disable the master public key](accountset.html).
 
@@ -63,20 +69,20 @@ The master key pair is composed of a private key and a public key. In addition t
 
 * Send a cost-0 [key reset transaction](transaction-cost.html#key-reset-transaction).
 
-The master key pair for an account is generated in the same [`wallet_propose`](wallet_propose.html) response as the `account_id` of the account the master key pair is authorized to sign transactions for. Because the master key pair is generated in the same response, it is [intrinsically related](accounts.html#address-encoding) to the `account_id`, which is derived from the `public_key_hex`.
+The master key pair for an account is generated in the same [`wallet_propose`](wallet_propose.html) response as the `account_id` of the account the master key pair is authorized to sign transactions for. Because the master key pair is generated in the same response, it is [intrinsically related](accounts.html#address-encoding) to the address, which is derived from the public key.
 
-This is as opposed to a regular key pair, which is also generated using the `wallet_propose` method, but which must be explicitly assigned as a regular key pair to an account. Because a regular key pair is explicitly assigned, it is not intrinsically related to the `account_id` of the account it is authorized to sign transactions for. For more information, see [Regular Key Pair](#regular-key-pair).
+This is as opposed to a regular key pair, which is also generated using the `wallet_propose` method, but which must be explicitly assigned as a regular key pair to an account. Because a regular key pair is explicitly assigned, it is not intrinsically related to the address of the account it is authorized to sign transactions for. For more information, see [Regular Key Pair](#regular-key-pair).
 
-**Caution:** A master key pair cannot be changed, but it can be disabled. This means that if your master private key is compromised, rather than change it, you must [disable it](accountset.html).
+**Caution:** A master key pair cannot be changed, but it can be disabled. This means that if your master seed or secret key is compromised, rather than change it, you must [disable it](accountset.html).
 
 Because a master key pair cannot be changed and can only disabled in the event of a compromise, this is a compelling reason to keep your master key pair offline and set up a regular key pair to sign transactions from your account instead.
 
-Keeping your master key pair offline means not putting your master private key somewhere malicious actors can get access to it. For example, this can mean keeping it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or in general, not within reach of a computer program that interacts with the internet at large. Ideally, a master key pair is used only on the most trusted of devices and for emergencies only, such as to change a regular key pair in the event of a possible or actual compromise.
+Keeping your master key pair offline means not putting your master secret key anywhere that malicious actors can get access to it. For example, this can mean keeping it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or in general, not within reach of a computer program that interacts with the internet at large. Ideally, a master key pair is used only on the most trusted of devices and for emergencies only, such as to change a regular key pair in the event of a possible or actual compromise.
 
 
 ## Regular Key Pair
 
-The XRP Ledger allows an account to authorize a secondary key pair, called a _regular key pair_, to sign future transactions, while keeping your master key pair offline. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your account and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)
+The XRP Ledger allows an account to authorize a secondary key pair, called a _regular key pair_, to sign future transactions, while keeping your master key pair offline. If the seed or secret key of a regular key pair is compromised, you can remove or replace the key pair without changing the rest of your account. This saves the trouble of re-establishing the account's settings and relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)
 
 You generate a key pair to use as a regular key pair using the [`wallet_propose`](wallet_propose.html) method. However, unlike with a [master key pair](#master-key-pair), which is generated alongside and intrinsically related to the `account_id` of an account it supports, you must explicitly create the relationship between a regular key pair and the account you want it to sign transactions for. You use the [`SetRegularKey`](setregularkey.html) method to assign a regular key pair to an account.
 
@@ -84,19 +90,19 @@ For a tutorial on assigning a regular key pair, see [Assign a Regular Key Pair](
 
 After you assign a regular key pair to an account, the account has two key pairs associated with it:
 
-* A master key pair that is intrinsically related to the account's `account_id` and which you keep offline.
+* A master key pair that is intrinsically related to the account's `account_id` and which you should keep offline.
 * A regular key pair that you've explicitly assigned to the account and which you use to sign transactions for the account.
 
 You can assign one regular key pair to an account and use it to sign all transactions, except for the ones reserved for the [master key pair](#master-key-pair).
 
-You can remove or change a regular key pair at any time. This means that if a regular private key is compromised (but the master private key is not), you can regain control of your account by simply removing or changing the regular key pair.
+You can remove or change a regular key pair at any time. This means that if a regular secret key is compromised (but the master secret key is not), you can regain control of your account by simply removing or changing the regular key pair.
 
 For a tutorial on changing or removing a regular key pair, see [Assign a Regular Key Pair](assign-a-regular-key-pair.html).
 
 
 ## Signing Algorithms
 
-Cryptographic key pairs are always tied to a specific signing algorithm, which defines the mathematical relationships between the private key and the public key. Cryptographic signing algorithms have the property that, given the current state of cryptographic techniques, it is "easy" to use a private key to calculate a matching public key, but it is effectively impossible to compute a matching private key by starting from a public key.
+Cryptographic key pairs are always tied to a specific signing algorithm, which defines the mathematical relationships between the secret key and the public key. Cryptographic signing algorithms have the property that, given the current state of cryptographic techniques, it is "easy" to use a secret key to calculate a matching public key, but it is effectively impossible to compute a matching secret key by starting from a public key.
 
 The XRP Ledger supports the following cryptographic signing algorithms:
 
@@ -114,6 +120,104 @@ The supported types of key pairs can be used interchangeably throughout the XRP 
 ### Future Algorithms
 
 In the future, it is likely that the XRP Ledger will need new cryptographic signing algorithms to keep up with developments in cryptography. For example, if quantum computers using [Shor's algorithm](https://en.wikipedia.org/wiki/Shor's_algorithm) (or something similar) will soon be practical enough to break elliptic curve cryptography, XRP Ledger developers can add a cryptographic signing algorithm that isn't easily broken. As of mid 2019, there's no clear first choice "quantum-resistant" signing algorithm and quantum computers are not yet practical enough to be a threat, so there are no immediate plans to add any specific algorithms. <!-- STYLE_OVERRIDE: will -->
+
+
+## Key Derivation
+
+The process of deriving a key pair depends on the signing algorithm. In all cases, keys are generated from a _seed_ value that is 16 bytes (128 bits) in length. The seed value can be completely random (recommended) or it can be derived from a specific passphrase by taking the [SHA-512 hash][Hash] and keeping the first 16 bytes (similar to [SHA-512Half][], but keeping only 128 bits instead of 256 bits of the output).
+
+### Sample Code
+
+The key derivation processes described here are implemented in multiple places and programming languages:
+
+- In C++ in the `rippled` code base:
+    - [Seed definition](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/Seed.h)
+    - [General & Ed25519 key derivation](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
+    - [secp256k1 key derivation](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp)
+- In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/key-derivation/key_derivation.py).
+- In JavaScript in the [`ripple-keypairs`](https://github.com/ripple/ripple-keypairs/) package.
+
+### Ed25519 Key Derivation
+[[Source]](https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
+
+[![Passphrase → Seed → Secret Key → Prefix + Public Key](img/key-derivation-ed25519.png)](img/key-derivation-ed25519.png)
+
+1. Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte secret key.
+
+    **Tip:** All 32-byte numbers are valid Ed25519 secret keys. However, only numbers that are chosen randomly enough are secure enough to be used as secret keys.
+
+2. To calculate an Ed25519 public key, use the standard public key derivation for [Ed25519](https://ed25519.cr.yp.to/software.html) to derive the 32-byte public key.
+
+    **Caution:** As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.
+
+3. Prefix the 32-byte public key with the single byte `0xED` to indicate an Ed25519 public key, resulting in 33 bytes.
+
+    If you are implementing code to sign transactions, remove the `0xED` prefix and use the 32-byte key for the actual signing process.
+
+4. When serializing an account public key to [base58][], use the account public key prefix `0x23`.
+
+    Validator ephemeral keys cannot be Ed25519.
+
+### secp256k1 Key Derivation
+[[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp "Source")
+
+[![Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair](img/key-derivation-secp256k1.png)](img/key-derivation-secp256k1.png)
+
+Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:
+
+- Not all 32-byte numbers are valid secp256k1 secret keys.
+- The XRP Ledger's reference implementation has an unused, incomplete framework for deriving a family of key pairs from a single seed value.
+
+The steps to derive the XRP Ledger's secp256k1 account key pair from a seed value are as follows:
+
+1. Calculate a "root key pair" from the seed value, as follows:
+
+    1. Concatenate the following in order, for a total of 20 bytes:
+        - The seed value (16 bytes)
+        - A "root sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the root sequence.
+
+    2. Calculate the [SHA-512Half][] of the concatenated (seed+root sequence) value.
+
+    3. If the result is not a valid secp265k1 secret key, increment the root sequence by 1 and start over. [[Source]](https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103 "Source")
+
+        A valid secp256k1 key must not be zero, and it must be numerically less than the _secp256k1 group order_. The secp256k1 group order is the constant value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
+
+    4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the root public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
+
+    **Tip:** Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58][] serialization for validator public keys uses the prefix `0x1c`.
+
+2. Convert the root public key to its 33-byte compressed form.
+
+    The uncompressed form of any ECDSA public key consists of a pair of 32-byte integers: an X coordinate, and a Y coordinate. The compressed form is just the X coordinate and a one-byte prefix: `0x02` if the Y coordinate is even, or `0x03` if the Y coordinate is odd.
+
+    You can convert an uncompressed public key to the compressed form with the `openssl` commandline tool. For example, if the uncompressed public key is in the file `ec-pub.pem`, you can output the compressed form like this:
+
+        $ openssl ec -in ec-pub.pem -pubin -text -noout -conv_form compressed
+
+3. Derive an "intermediate key pair" from the compressed root public key you, as follows:
+
+    1. Concatenate the following in order, for a total of 40 bytes:
+        - The compressed root public key (33 bytes)
+        - `0x00000000000000000000000000000000` (4 bytes of zeroes). (This value was intended to be used to derive different members of the same family, but in practice only the value 0 is used.)
+        - A "key sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the key sequence.
+
+    2. Calculate the [SHA-512Half][] of the concatenated value.
+
+    3. If the result is not a valid secp265k1 secret key, increment the key sequence by 1 and restart deriving the account's intermediate key pair.
+
+    4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the intermediate public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
+
+4. Derive the master public key pair by adding the intermediate public key to the root public key. Similarly, derive the secret key by adding the intermediate secret key to the root secret key.
+
+    - An ECDSA secret key is just a very large integer, so you can calculate the sum of two secret keys by summing them modulo the secp256k1 group order.
+
+    - An ECDSA public key is a point on the elliptic curve, so you should use elliptic curve math to sum the points.
+
+5. Convert the master public key to its 33-byte compressed form, as before.
+
+6. When serializing an account's public key to its [base58][] format, use the account public key prefix, `0x23`.
+
+    See [Address Encoding](accounts.html#address-encoding) for information and sample code to convert from an account's public key to its address.
 
 
 ## See Also

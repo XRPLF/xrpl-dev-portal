@@ -1,7 +1,7 @@
 # Serialization Format
 [[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
 
-This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places. The [rippled APIs](rippled-api.html) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
+This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](peer-protocol.html). The [`rippled` APIs](rippled-api.html) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
 The process of serializing a transaction from JSON or any other representation into their canonical binary format can be summarized with these steps:
 
@@ -9,7 +9,7 @@ The process of serializing a transaction from JSON or any other representation i
 
     The [Transaction Formats Reference](transaction-formats.html) defines the required and optional fields for XRP Ledger transactions.
 
-    **Note:** The `SigningPubKey` must also be provided at this step. When signing, you can derive this key from the secret key that is provided for signing.
+    **Note:** The `SigningPubKey` must also be provided at this step. When signing, you can [derive this key](cryptographic-keys.html#key-derivation) from the secret key that is provided for signing.
 
 2. Convert each field's data into its ["internal" binary format](#internal-format).
 
