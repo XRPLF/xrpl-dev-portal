@@ -30,7 +30,7 @@ Originally, the XRP Ledger was called "Ripple" for the way the technology allowe
 | !["X" logo](assets/img/xrp-x-logo.png) | ![Triskelion](img/ripple-triskelion.png) |
 
 
-The smallest, indivisible unit of XRP was named a "drop" [at the suggestion of Ripple forum member ThePiachu](https://forum.ripple.com/viewtopic.php?f=1&t=40&p=228). An early alternative term was a "jed", after Jed McCaleb.
+The smallest, indivisible unit of XRP was named a "drop" at the suggestion of Ripple forum member ThePiachu. An early alternative term was a "jed", after Jed McCaleb.
 
 ## See Also
 
