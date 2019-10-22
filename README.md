@@ -1,23 +1,45 @@
-ripple-dev-portal
+xrpl-dev-portal
 =================
 
 The [XRP Ledger Dev Portal](https://xrpl.org) is the authoritative source for XRP Ledger documentation, including the `rippled` server, RippleAPI, the Ripple Data API, and other open-source XRP Ledger software.
 
+Building
+--------
 
-Repository Layout
------------------
-
-The HTML pages in this portal are generated from the markdown files in the [content/](content/) folder. Always edit the markdown files, not the HTML files. The [assets/](assets/) folder contains static files used by the site's templates. The [img](img/) folder contains images used in the docs.
-
-The HTML files are generated using Ripple's documentation tool, called [**Dactyl**](https://github.com/ripple/dactyl). After you've done the [Dactyl Setup](#dactyl-setup), you can build the docs from the project root directory:
+This repo uses [**Dactyl**](https://github.com/ripple/dactyl) to build HTML display versions of all the documentation. After you've done the [Dactyl Setup](#dactyl-setup), you can build the docs from the project root directory:
 
 ```
 dactyl_build
 ```
 
-Dactyl also provides link checking (the `dactyl_link_checker` script) and style checking (`dactyl_style_checker`), which you can run from the project root directory.
+This outputs the generated contents to the `out/` directory. These contents can be opened in a web browser as files or served as static content by a web server.
 
-The list of which files are built, and metadata about those files, is in the `dactyl-config.yml` file. The `tool/` folder also contains the templates and style-checker rules used by Dactyl. For information on our conventions, see [Config Formatting](#config-formatting).
+You can also run link checking or style checking from the root directory.
+
+Link checking should be run after emptying the output folder and then building:
+
+```
+dactyl_link_checker
+```
+
+Style checking is experimental:
+
+```
+dactyl_style_checker
+```
+
+Repository Layout
+-----------------
+
+- [assets/](assets/) - Static files used by the site's templates.
+- [content/](content/) - Source files used to build the documentation. Mostly in Markdown.
+    - [content/\_code-samples/](content/_code-samples/) - Code samples used or referenced by the documentation. Where possible, these are fully functional / executable scripts.
+    - [content/\_img-sources/](content/_img-sources/) - Source files for images used in the documentation. Any `.uxf` files are diagrams made with [Umlet](https://www.umlet.com/).
+    - [content/\_snippets/](content/_snippets/) - Reusable chunks of Markdown text that are included in other content files, using the Dactyl preprocessor.
+- [img/](img/) - Images used by the documentation contents.
+- [tool/](tool/) - Templates, style-checker rules, and other scripts.
+- [`dactyl-config.yml`](dactyl-config.yml) - Main config file, which contains the metadata for all the docs. For information on our conventions, see [Config Formatting](#config-formatting).
+
 
 
 Dactyl Setup
@@ -25,7 +47,9 @@ Dactyl Setup
 
 Dactyl uses Python 3 and a number of modules. First, make sure you have Python 3 installed in your local operating system, then use [PIP](https://pip.pypa.io/en/stable/) to install the dependencies:
 
-`pip3 install dactyl`
+```
+pip3 install dactyl
+```
 
 
 Contributing
@@ -33,7 +57,7 @@ Contributing
 
 The Dev Portal welcomes outside contributions, especially to the documentation contents. If you have any corrections, improvements, or expansions of the portal, please contribute pull requests to the **master** branch.
 
-Contributions become copyright Ripple and are provided under the MIT [LICENSE](LICENSE).
+Contributions become copyright the XRP Ledger Project and are provided under the MIT [LICENSE](LICENSE).
 
 
 Config Formatting
@@ -59,5 +83,7 @@ By convention, parent pages should have the same names as the hierarchy for whic
 
 For pages that don't have markdown source content, leave out the `md` line and instead provide the following fields:
 
+| Field  | Contents |
+|:-------|:---------|
 | `name` | Human-readable page name. (Plain text only) |
 | `html` | Output filename for the page. Should end in `.html` and be unique within the target. |
