@@ -1,6 +1,6 @@
 # Connect Your rippled to an XRPL Altnet
 
-Ripple has created [alternative test and development networks](parallel-networks.html) for developers to test their apps on the latest non-production version of the XRP Ledger (Testnet) or to test and experiment with features on the latest beta version (Devnet). **The funds used on these networks are not real funds and are intended for testing only.** You can connect your `rippled` server to either the Testnet or Devnet.
+Ripple has created [alternative test and development networks](parallel-networks.html) for developers to test their apps on the latest non-production version of the XRP Ledger (Testnet) or to test and experiment with features on the latest beta version (Devnet). **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](the-rippled-server.html) to either the Testnet or Devnet.
 
 **Note:** The XRP Testnet and Devnet ledger and balances are reset on a regular basis.
 
@@ -62,8 +62,20 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
 
 ## See Also
 
-- [Parallel Networks](parallel-networks.html)
-- [XRP Testnet Faucet](xrp-test-net-faucet.html)
+- **Tools:**
+    - [XRP Faucets](xrp-testnet-faucet.html)
+    - [WebSocket API Tool](websocket-api-tool.html) - Select 'Testnet Public Server' in the connection options.
+- **Concepts:**
+    - [Parallel Networks](parallel-networks.html)
+    - [Introduction to Consensus](intro-to-consensus.html)
+- **Tutorials:**
+    - [Run rippled as a Validator](run-rippled-as-a-validator.html)
+    - [Test `rippled` Offline in Stand-Alone Mode](use-stand-alone-mode.html)
+    - [Troubleshooting `rippled`](troubleshoot-the-rippled-server.html)
+- **References:**
+    - [server_info method][]
+
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

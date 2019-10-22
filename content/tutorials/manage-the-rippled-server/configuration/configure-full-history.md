@@ -83,8 +83,24 @@ To configure your server to acquire and store full history, complete the followi
 
     The range of available ledgers reported in the `complete_ledgers` field should increase over time.
 
-    The earliest available ledger version in the production XRP Ledger's history is ledger index **32570**. The first two weeks or so of ledger history was lost due to a bug in the server at the time. Test nets and other chains generally have history going back to ledger index **1**.
+    The earliest available ledger version in the production XRP Ledger's history is ledger index **32570**. The first two weeks or so of ledger history was lost due to a bug in the server at the time. [Test nets and other chains](parallel-networks.html) generally have history going back to ledger index **1**.
 
+## See Also
+
+- **Concepts:**
+    - [Ledger History](ledger-history.html)
+    - [Consensus Network](consensus-network.html)
+    - [rippled Server Modes](rippled-server-modes.html)
+- **Tutorials:**
+    - [Capacity Planning](capacity-planning.html), particularly [Disk Space](capacity-planning.html#disk-space)
+    - [Configure Online Deletion](configure-online-deletion.html)
+    - [Diagnosing Problems with rippled](diagnosing-problems.html)
+    - [Understanding Log Messages](understanding-log-messages.html)
+- **References:**
+    - [server_info method][]
+    - [can_delete method][]
+    - [Ledger Data Formats](ledger-data-formats.html)
+    - [rippled Commandline Usage Reference](commandline-usage.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

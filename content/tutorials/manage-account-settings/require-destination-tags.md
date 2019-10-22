@@ -1,14 +1,19 @@
 # Require Destination Tags
 
-The `RequireDest` setting (`requireDestinationTag` in RippleAPI) is designed to prevent customers from sending payments to your address if they forgot the [destination tag](source-and-destination-tags.html) that identifies who should be credited for the payment. When enabled, the XRP Ledger rejects any payment to your address that does not specify a destination tag.
+The `RequireDest` setting (`requireDestinationTag` in RippleAPI) is designed to prevent customers from sending [payments](payment-types.html) to your address if they forgot the [destination tag](source-and-destination-tags.html) that identifies whom to credit for the payment. When enabled, the XRP Ledger rejects any payment to your address if it does not specify a destination tag.
 
-The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an AccountSet transaction to enable the `RequireDest` flag:
+The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an [AccountSet transaction][] to enable the `RequireDest` flag:
 
 Request:
 
-```
+<!-- MULTICODE_BLOCK_START -->
+
+*JSON-RPC*
+
+```json
 POST http://localhost:5005/
 Content-Type: application/json
+
 {
     "method": "submit",
     "params": [
@@ -29,9 +34,15 @@ Content-Type: application/json
 {% include '_snippets/secret-key-warning.md' %}
 <!--{#_ #}-->
 
+<!-- MULTICODE_BLOCK_END -->
+
 Response:
 
-```
+<!-- MULTICODE_BLOCK_START -->
+
+*JSON-RPC*
+
+```json
 200 OK
 
 {
@@ -57,11 +68,24 @@ Response:
 }
 ```
 
+<!-- MULTICODE_BLOCK_END -->
+
+
 ## See Also
 
-- [Source and Destination Tags](source-and-destination-tags.html)
-- [XRP Ledger Businesses](xrp-ledger-businesses.html)
-- [Payment Types](payment-types.html)
+- **Concepts:**
+    - [Accounts](accounts.html)
+    - [Source and Destination Tags](source-and-destination-tags.html)
+    - [Transaction Cost](transaction-cost.html)
+    - [Payment Types](payment-types.html)
+- **Tutorials:**
+    - [XRP Ledger Businesses](xrp-ledger-businesses.html)
+- **References:**
+    - [account_info method][]
+    - [AccountSet transaction][]
+    - [AccountRoot Flags](accountroot.html#accountroot-flags)
+
+
 
 
 <!--{# common link defs #}-->

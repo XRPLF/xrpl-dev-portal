@@ -8,7 +8,7 @@ Here are some of our users' most popular use cases:
 
       Learn how to install, run, and maintain a `rippled` server in validator mode.
 
-* **[List XRP in My Exchange](list-xrp-in-your-exchange.html)**
+* **[List XRP in Your Exchange](list-xrp-in-your-exchange.html)**
 
       Integrate with the XRP Ledger to be able to list XRP in your exchange, enabling your users to deposit and withdraw XRP.
 

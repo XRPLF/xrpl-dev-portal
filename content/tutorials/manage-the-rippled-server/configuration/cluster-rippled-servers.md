@@ -1,6 +1,6 @@
 # Cluster rippled Servers
 
-If you run multiple `rippled` servers in the same data center, you can configure them in a [cluster](clustering.html) to maximize efficiency. To configure clustering:
+If you run multiple [`rippled` servers](the-rippled-server.html) in the same data center, you can configure them in a [cluster](clustering.html) to maximize efficiency. To configure clustering:
 
 1. For each of your servers, note the IP address of the server.
 
@@ -79,7 +79,15 @@ If you run multiple `rippled` servers in the same data center, you can configure
           }
         }
 
+## See Also
 
+- **Concepts:**
+    - [Peer Protocol](peer-protocol.html)
+- **Tutorials:**
+    - [Install rippled](install-rippled.html)
+- **References:**
+    - [validation_create method][]
+    - [peers method][]
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

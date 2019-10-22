@@ -5,7 +5,7 @@
 
 ## Funds Lifecycle
 
-All non-XRP currency balances (issuances) in the XRP Ledger are tied to accounting relationships between two XRP Ledger addresses. When a financial institution uses Ripple's recommended separation of roles, funds relating to that institution tend to flow in a cycle.
+All non-XRP balances in the XRP Ledger are _issued currencies_ which are tied to accounting relationships between two XRP Ledger addresses. When a financial institution uses Ripple's recommended separation of roles, funds relating to that institution tend to flow in a cycle.
 
 [![Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.](img/funds_flow_diagram.png)](img/funds_flow_diagram.png)
 

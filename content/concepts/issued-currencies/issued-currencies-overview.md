@@ -14,6 +14,23 @@ There are other use cases for issued currencies in the XRP Ledger. For example, 
 
 Ripple strongly recommends researching the relevant regulations before engaging in any financial service business.
 
+
+## Issued Currency Usage
+
+A trust line represents an explicit statement of willingness to hold gateway debt obligations. (In other words: "I'll allow you to owe me up to this much money outside the XRP Ledger.")
+
+The intended model for issued currency usage is with _gateways_, trusted financial institutions that custody outside-world assets and allow them to be used in the XRP Ledger for [cross-currency payments](cross-currency-payments.html) and trading in the [decentralized exchange](decentralized-exchange.html). The flow looks something like this:
+
+1. A customer sends money to a gateway. This could be fiat money, Bitcoin, or any other assets that aren't native to the XRP Ledger.
+2. The gateway takes custody of the money and records it.
+3. The gateway issues a balance in the XRP Ledger, denominated in the same currency, to an address belonging to the customer.
+4. The customer uses the issued currency in the XRP Ledger however they want, such as by sending [cross-currency payments](cross-currency-payments.html) or by trading in the [decentralized exchange](decentralized-exchange.html).
+5. A customer (not necessarily the one who deposited the money initially) sends the issued currency to the gateway's XRP Ledger address.
+6. The gateway confirms the identity of the customer who sent the balance in the XRP Ledger funds, and gives the corresponding amount of money _outside the XRP Ledger_ to that customer.
+
+The details of the process of sending money "into" and "out of" the XRP Ledger can vary based on the gateway, the jurisdiction, the type of assets involved, and other factors.
+
+
 ## Issued Currency Properties
 
 All issued currencies in the XRP Ledger exist in trust lines, represented in the ledger's data as [RippleState objects](ripplestate.html). To create an issued currency, the issuing address sends a [Payment transaction][] to an address which has a trust line to the issuer with a nonzero limit for that currency. (You can also create issued currency by rippling "through" such a trust line.) You can erase issued currency by sending it back to the issuer.

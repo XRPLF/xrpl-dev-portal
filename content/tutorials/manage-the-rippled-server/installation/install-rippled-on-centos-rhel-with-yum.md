@@ -51,10 +51,23 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 {% include '_snippets/post-rippled-install.md' %}<!--_ -->
 
+
 ## See Also
 
-- [Update Automatically on Linux](update-rippled-automatically-on-linux.html)
-- [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu.html) (Pre-built binary for Ubuntu or Debian)
-- [Build and Run `rippled` on Ubuntu](build-run-rippled-ubuntu.html) (Compile `rippled` yourself on Ubuntu)
-- [Build and Run `rippled` on macOS](build-run-rippled-macos.html) (Compile `rippled` yourself on macOS)
-- [Compilation instructions for other platforms](https://github.com/ripple/rippled/tree/develop/Builds)
+- **Concepts:**
+    - [The `rippled` Server](the-rippled-server.html)
+    - [Introduction to Consensus](intro-to-consensus.html)
+- **Tutorials:**
+    - [Configure rippled](configure-rippled.html)
+    - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
+    - [Get Started with the rippled API](get-started-with-the-rippled-api.html)
+- **References:**
+    - [rippled API Reference](rippled-api.html)
+        - [`rippled` Commandline Usage](commandline-usage.html)
+        - [server_info method][]
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

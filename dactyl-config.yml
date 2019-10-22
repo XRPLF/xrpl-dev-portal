@@ -511,6 +511,15 @@ pages:
         targets:
             - local
 
+    -   md: concepts/consensus-network/about-canceling-a-transaction.md
+        html: about-canceling-a-transaction.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand when and how it's possible to cancel a transaction that has already been sent.
+        targets:
+          - local
+
     -   md: concepts/consensus-network/transaction-malleability.md
         html: transaction-malleability.html
         funnel: Docs
@@ -747,11 +756,14 @@ pages:
         targets:
             - local
 
-    -   md: tutorials/use-simple-xrp-payments/cancel-or-skip-a-transaction.md
+        # Redirect for this page's new home outside of tutorials
+    -   name: Cancel or Skip a Transaction
         html: cancel-or-skip-a-transaction.html
         funnel: Docs
         doc_type: Tutorials
         category: Use Simple XRP Payments
+        template: template-redirect.html
+        redirect_url: about-canceling-a-transaction.html
         blurb: Replace a pending transaction if it gets stuck from paying too low a transaction cost.
         targets:
           - local
@@ -1268,13 +1280,13 @@ pages:
         targets:
             - local
 
-    -   name: Use rippled in Stand-Alone Mode
+    -   name: Test rippled Functionality in Stand-Alone Mode
         html: use-stand-alone-mode.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Stand-Alone Mode
-        blurb: Use rippled's Stand Alone Mode for testing new features or configurations.
+        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
         template: template-landing-children.html
         targets:
             - local

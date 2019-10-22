@@ -1,37 +1,34 @@
 # Set Up Multi-Signing
 
-Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with [regular keys and master keys](cryptographic-keys.html). You can configure your address to allow any combination of the three methods to authorize transactions.
+[Multi-signing](multi-signing.html) is one of three ways to authorize [transactions](transaction-basics.html) for the XRP Ledger, alongside signing with [regular keys and master keys](cryptographic-keys.html). You can configure your [address](accounts.html) to allow any combination of the three methods to authorize transactions.
 
 This tutorial demonstrates how to enable multi-signing for an address.
 
 
 ## Prerequisites
 
-- You must have a funded XRP Ledger address.
+- You must have a funded XRP Ledger [address](accounts.html) with enough spare XRP to send transactions and meet the [reserve requirement](reserves.html) of a new signer list.
+
+    - With the [MultiSignReserve amendment][] enabled, multi-signing requires 5 XRP for the account reserve, regardless of the number of signers and signatures you use. (The MultiSignReserve amendment has been enabled in the production XRP Ledger since **2019-04-07**.)
+
+    - If you are on a test network that does not have the [MultiSignReserve amendment][] enabled, multi-signing requires more than the usual amount of XRP for the [account reserve](reserves.html), increasing with the number of signers in the list.
 
 - You must have access to a tool that can generate key pairs in the XRP Ledger format. If you are using a `rippled` server for this, you must have admin access because the [wallet_propose method][] is admin-only.
 
-- Multi-signing must be available. Multi-signing has been enabled by an [**Amendment**](amendments.html) to the XRP Ledger Consensus Protocol since 2016-06-27.
+    - Alternatively, if you are authorizing others who already have XRP Ledger addresses to be signers for your address, you only need to know the account addresses of those people or entities.
 
+- Multi-signing must be available. (The MultiSign amendment has been enabled in the production XRP Ledger since **2016-06-27**.)
 
-## 1. Prepare a funded address
+## 1. Design Your Configuration
 
-You need an XRP Ledger address that can send transactions, and has enough XRP available.
-
-Without the [MultiSignReserve amendment][], multi-signing requires more than the usual amount of XRP for the [account reserve](reserves.html) and [transaction cost](transaction-cost.html), increasing with the number of signers and signatures you use.
-
-With the [MultiSignReserve amendment][] enabled, multi-signing requires 5 XRP for the account reserve, regardless of the number of signers and signatures you use. The [transaction cost](transaction-cost.html) of a multi-signed transaction is unaffected by this amendment and still increases with the number of signers and signatures you use.
-
-If you started `rippled` in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode) with a new genesis ledger, you must:
-
-1. Generate keys for a new address, or reuse keys you already have.
-2. Submit a Payment transaction to fund the new address from the genesis account. (Send at least 100,000,000 [drops of XRP][].)
-3. Manually close the ledger.
+Decide how many signers you want to include (up to 8). Choose a quorum number for your signer list and weights for your signers based on how many signatures you want to require for a given transaction. For a straightforward "M-of-N" signing setup, assign each signer weight **`1`** and set your list's quorum to be "M", the number of signatures to require.
 
 
 ## 2. Prepare member keys
 
-You need several sets of XRP Ledger keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the [wallet_propose method][]. For example:
+You need one or more validly-formed XRP Ledger addresses to include as members of  your signer list. You or your chosen signers must know the secret keys associated with these addresses. The addresses can be funded accounts that exist in the ledger, but they do not need to be.
+
+You can generate new addresses using the [wallet_propose method][]. For example:
 
     $ rippled wallet_propose
     Loading: "/home/mduo13/.config/ripple/rippled.cfg"
@@ -136,21 +133,9 @@ Make sure that the [Transaction Result](transaction-results.html) is [**tesSUCCE
 **Note:** Without the [MultiSignReserve amendment][], the more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](tec-codes.html). With the [MultiSignReserve amendment][] enabled, the XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves) is 5 XRP, regardless of the number of members in the SignerList. See also: [SignerLists and Reserves](signerlist.html#signerlists-and-reserves).
 
 
-## 4. Close the ledger
+## 4. Wait for validation
 
-On the live network, you can wait 4-7 seconds for the ledger to close automatically.
-
-If you're running `rippled` in stand-alone mode, use the [ledger_accept method][] to manually close the ledger:
-
-    $ rippled ledger_accept
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
-    Connecting to 127.0.0.1:5005
-    {
-       "result" : {
-          "ledger_current_index" : 6,
-          "status" : "success"
-       }
-    }
+{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
 
 
 ## 5. Confirm the new signer list
@@ -211,7 +196,25 @@ If the SignerList is present with the expected contents, then your address is re
 At this point, your address is ready to [send a multi-signed transaction](send-a-multi-signed-transaction.html). You may also want to:
 
 * Disable the address's master key pair by sending an [AccountSet transaction][] using the `asfDisableMaster` flag.
-* Remove the address's regular key pair (if you previously set one) by sending a [SetRegularKey transaction][].
+* [Remove the address's regular key pair](change-or-remove-a-regular-key-pair.html) (if you previously set one) by sending a [SetRegularKey transaction][].
+
+## See Also
+
+- **Concepts:**
+    - [Cryptographic Keys](cryptographic-keys.html)
+    - [Multi-Signing](multi-signing.html)
+- **Tutorials:**
+    - [Install rippled](install-rippled.html)
+    - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
+    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+    - [Enable Public Signing](enable-public-signing.html)
+- **References:**
+    - [wallet_propose method][]
+    - [account_objects method][]
+    - [sign_for method][]
+    - [submit_multisigned method][]
+    - [SignerListSet transaction][]
+    - [SignerList object](signerlist.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

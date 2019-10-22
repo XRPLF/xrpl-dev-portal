@@ -1,10 +1,10 @@
 # Monitor Incoming Payments with WebSocket
 
-This tutorial shows how to monitor for incoming payments using the [WebSocket `rippled` API](rippled-api.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
+This tutorial shows how to monitor for incoming [payments](payment-types.html) using the [WebSocket `rippled` API](rippled-api.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
 
 WebSocket follows a model where the client and server establish one connection, then send messages both ways through the same connection, which remains open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.[¹](#footnote-1)<a id="from-footnote-1"></a>
 
-**Tip:** The examples in this page use JavaScript so that the examples can run natively in a web browser. If you are developing in JavaScript, you can also use the [RippleAPI library for JavaScript](https://xrpl.org/rippleapi-reference.html) to simplify some tasks. This tutorial shows how to monitor for transactions _without_ using RippleAPI so that you can translate the steps to other programming languages that don't have RippleAPI.
+**Tip:** The examples in this page use JavaScript so that the examples can run natively in a web browser. If you are developing in JavaScript, you can also use the [RippleAPI library for JavaScript](rippleapi-reference.html) to simplify some tasks. This tutorial shows how to monitor for transactions _without_ using RippleAPI so that you can translate the steps to other programming languages that don't have RippleAPI.
 
 ## Prerequisites
 
@@ -580,6 +580,18 @@ func main() {
 
 [1.](#from-footnote-1) <a id="footnote-1"></a> In practice, when calling an HTTP-based API multiple times, the client and server may reuse the same connection for several requests and responses. This practice is called [HTTP persistent connection, or keep-alive](https://en.wikipedia.org/wiki/HTTP_persistent_connection). From a development standpoint, the code to use an HTTP-based API is the same regardless of whether the underlying connection is new or reused.
 
+## See Also
+
+- **Concepts:**
+    - [Transaction Basics](transaction-basics.html)
+    - [Finality of Results](finality-of-results.html) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
+- **Tutorials:**
+    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+    - [Look Up Transaction Results](look-up-transaction-results.html)
+- **References:**
+    - [Transaction Types](transaction-types.html)
+    - [Transaction Metadata](transaction-metadata.html) - Summary of the metadata format and fields that appear in metadata
+    - [Transaction Results](transaction-results.html) - Tables of all possible result codes for transactions.
 
 
 <!--{# common link defs #}-->

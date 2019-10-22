@@ -1,6 +1,6 @@
 # Use Payment Channels
 
-Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a [payment channel](payment-channels.html), with examples using the [JSON-RPC API](rippled-api.html) of a local `rippled` server.
+[Payment Channels](payment-channels.html) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](rippled-api.html) of a local [`rippled` server](the-rippled-server.html).
 
 Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
@@ -19,7 +19,7 @@ The example addresses used in this tutorial are:
 
 Additionally, you'll need a `rippled` server to send transactions to. The examples in this tutorial assume a `rippled` server is running on the test machine (`localhost`) with an unencrypted JSON-RPC API endpoint on port **5005**.
 
-To test without transferring real XRP, you can use [XRP Ledger Test Net](xrp-test-net-faucet.html) addresses with Test Net XRP. If you do use the Test Net, you can use the Test Net servers' JSON-RPC API by connecting to `https://api.altnet.rippletest.net:51234` instead of `http://localhost:5005/`.
+To test without transferring real XRP, you can use [XRP Ledger Testnet](xrp-testnet-faucet.html) addresses with Testnet XRP. If you do use the Testnet, you can use the Testnet servers' JSON-RPC API by connecting to `https://api.altnet.rippletest.net:51234` instead of `http://localhost:5005/`.
 
 You can use any amount of XRP for the payment channels. The example values in this tutorial set aside 100 XRP (`100000000` drops) in a payment channel for at least 1 day.
 
@@ -599,6 +599,23 @@ Those fields indicate that the payment channel is closed.
 
 This concludes the tutorial of Payment Channel usage. Ripple encourages users to find unique and interesting use cases to take full advantage of the speed and convenience of payment channels.
 
+## See Also
+
+- **Concepts:**
+    - [XRP](xrp.html)
+    - [Payment Types](payment-types.html)
+        - [Payment Channels](payment-channels.html)
+- **Tutorials:**
+    - [Send XRP](send-xrp.html)
+    - [Look Up Transaction Results](look-up-transaction-results.html)
+    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+- **References:**
+    - [PaymentChannelClaim transaction][]
+    - [PaymentChannelCreate transaction][]
+    - [PaymentChannelFund transaction][]
+    - [channel_authorize method][]
+    - [channel_verify method][]
+    - [PayChannel ledger object](paychannel.html)
 
 
 <!--{# common link defs #}-->

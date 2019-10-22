@@ -51,8 +51,24 @@ After your server syncs to the network, it automatically starts downloading hist
 
 This folder should contain a numbered folder for each shard your server has. At any given time, up to one folder may contain a `control.txt` file, indicating it is incomplete.
 
-<!-- TODO: add download_shard and crawl_shards commands: https://github.com/ripple/ripple-dev-portal/issues/629 -->
+You can instruct your server to download and import a shard from an archive file using the [download_shard method][].
 
+To list the shards your server and its peers have available, you can use the [crawl_shards method][] or the [Peer Crawler](peer-crawler.html).
+
+
+## See Also
+
+- **Concepts:**
+    - [Ledger History](ledger-history.html)
+        - [Online Deletion](online-deletion.html)
+- **Tutorials:**
+    - [Configure Online Deletion](configure-online-deletion.html)
+    - [Configure the Peer Crawler](configure-the-peer-crawler.html)
+    - [Capacity Planning](capacity-planning.html)
+- **References:**
+    - [download_shard method][]
+    - [crawl_shards method][]
+    - [Ledger Data Formats](ledger-data-formats.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

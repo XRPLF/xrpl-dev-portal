@@ -28,8 +28,9 @@
 [AccountRoot object]: accountroot.html
 
 <!--{# Links to external sites #}-->
-[crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
-[crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-03
+[crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
+[crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
+[Crypto-Conditions Specification]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 [Interledger Protocol]: https://interledger.org/
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
