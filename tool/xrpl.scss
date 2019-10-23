@@ -1647,6 +1647,19 @@ a.current {
   text-indent: 0;
 }
 
+/* Language selector -------------------------------------------------------- */
+
+#language_selector {
+  .nav-link {
+    font-size: 16px;
+  }
+  
+  .nav-link.active {
+    color: $black;
+    font-weight: bold;
+  }
+}
+
 /* Responsive design for different viewscreens ------------------------------ */
 
 @media (max-width: 991px) {

@@ -41,6 +41,21 @@
 
   <section class="container-fluid p-5 pl-sm-0">
 
+    <nav role="navigation" id="language_selector" class="d-flex mb-3">
+      <img class="language_selector_icon" src="assets/img/icon-language-selector.svg" width="32" height="40" alt="language selection icon" />
+      <ul class="nav">
+        {% for lang in config.languages %}
+        <li class="nav-item">
+          {% if lang.code == target.name %}
+          <a class="nav-link active" href="{{lang.prefix}}{{currentpage.html}}"><i class="fa fa-check-circle"></i> {{lang.display_name}}</a>
+          {% else %}
+          <a class="nav-link" href="{{lang.prefix}}{{currentpage.html}}">{{lang.display_name}}</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
     <div class="absolute_bottom_footer">
       <span>&copy; XRP Ledger Project 2019</span>
       <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>

@@ -42,16 +42,32 @@ cover_page:
     template: template-home.html
     sidebar: disabled
 
+languages:
+    -   code: en
+        display_name: English
+        prefix: "/"
+    -   code: ja
+        display_name: 日本語
+        prefix: "/ja/"
+
 targets:
     # First member is the default that gets built when target not specified
     -   name: en
+        lang: en
         display_name: XRP Ledger Dev Portal
         # These github_ fields are used by the template's "Edit on GitHub" link.
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
 
+    -   name: ja
+        lang: ja
+        display_name: XRP Ledger Dev Portal (日本語)
+        github_forkurl: https://github.com/ripple/xrpl-dev-portal
+        github_branch: master
+
     -   name: xrp-api-only
+        lang: en
         display_name: XRP API Reference
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
@@ -60,6 +76,7 @@ targets:
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
     -   name: data-api-only
+        lang: en
         display_name: XRP Ledger Data API
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
@@ -76,6 +93,7 @@ pages:
         sidebar: disabled
         targets:
             - en
+            - ja
 
 # Concepts ---------------------------------------------------------------------
 
@@ -87,6 +105,7 @@ pages:
         blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   name: Introduction
         funnel: Docs
@@ -97,6 +116,7 @@ pages:
         blurb: The XRP Ledger is a decentralized cryptographic ledger powered by a network of peer-to-peer rippled servers. This section covers basic concepts that help you learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   md: concepts/introduction/xrp-ledger-overview.md
         html: xrp-ledger-overview.html
@@ -107,6 +127,15 @@ pages:
         targets:
             - en
 
+    -   md: concepts/introduction/xrp-ledger-overview.ja.md
+        html: xrp-ledger-overview.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: Get a quick and concise introduction to key features of the XRP Ledger. #TODO: translate this
+        targets:
+            - ja
+
     -   md: concepts/introduction/intro-to-consensus.md
         html: intro-to-consensus.html
         funnel: Docs
@@ -115,6 +144,15 @@ pages:
         blurb: Develop a basic understanding of the XRP Ledger's consensus mechanism.
         targets:
             - en
+
+    -   md: concepts/introduction/intro-to-consensus.ja.md
+        html: intro-to-consensus.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: Develop a basic understanding of the XRP Ledger's consensus mechanism. #TODO: translate this
+        targets:
+            - ja
 
     -   md: concepts/introduction/xrp.md
         html: xrp.html
@@ -125,6 +163,15 @@ pages:
         targets:
             - en
 
+    -   md: concepts/introduction/xrp.ja.md
+        html: xrp.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: Learn about the uses and properties of XRP, the digital asset for payments. #TODO: translate this
+        targets:
+            - ja
+
     -   md: concepts/introduction/software-ecosystem.md
         html: software-ecosystem.html
         funnel: Docs
@@ -133,6 +180,7 @@ pages:
         blurb: Get an overview of what XRP Ledger software is out there and how it fits together.
         targets:
             - en
+            - ja
 
     -   md: concepts/introduction/technical-faq.md
         html: technical-faq.html
@@ -143,6 +191,15 @@ pages:
         targets:
             - en
 
+    -   md: concepts/introduction/technical-faq.ja.md
+        html: technical-faq.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: Get answers to frequently asked questions, covering topics such as validators, unique node lists, the role of XRP, and security. #TODO: translate this
+        targets:
+            - ja
+
     -   name: Payment System Basics
         html: payment-system-basics.html
         funnel: Docs
@@ -152,6 +209,7 @@ pages:
         blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/accounts/accounts.md
         html: accounts.html
@@ -162,6 +220,7 @@ pages:
         blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/accounts/cryptographic-keys.md
         html: cryptographic-keys.html
@@ -172,6 +231,7 @@ pages:
         blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/accounts/multi-signing.md
         html: multi-signing.html
@@ -182,6 +242,7 @@ pages:
         blurb: Use multi-signing for greater security sending transactions.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/accounts/reserves.md
         html: reserves.html
@@ -192,6 +253,7 @@ pages:
         blurb: XRP Ledger accounts require a reserve of XRP to reduce spam in ledger data.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/accounts/depositauth.md
         html: depositauth.html
@@ -202,6 +264,7 @@ pages:
         blurb: The DepositAuth setting lets an account block incoming payments by default.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/fees.md
         html: fees.html
@@ -211,6 +274,7 @@ pages:
         blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/ledgers.md
         html: ledgers.html
@@ -220,6 +284,7 @@ pages:
         blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
         html: transaction-basics.html
@@ -230,6 +295,7 @@ pages:
         blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
         html: transaction-cost.html
@@ -240,6 +306,7 @@ pages:
         blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.md
         html: finality-of-results.html
@@ -250,6 +317,7 @@ pages:
         blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
         html: source-and-destination-tags.html
@@ -260,6 +328,7 @@ pages:
         blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses
         targets:
             - en
+            - ja
 
     -   name: Payment Types
         html: payment-types.html
@@ -270,6 +339,7 @@ pages:
         blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types.
         targets:
             - en
+            - ja
 
         # Redirect from the old landing name/URL
     -   name: Complex Payment Types
@@ -281,6 +351,7 @@ pages:
         redirect_url: payment-types.html
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-types/direct-xrp-payments.md
         html: direct-xrp-payments.html
@@ -290,6 +361,7 @@ pages:
         blurb: Direct XRP payments are the simplest way to send value in the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-types/cross-currency-payments.md
         html: cross-currency-payments.html
@@ -299,6 +371,7 @@ pages:
         blurb: Cross-currency payments atomically deliver a different currency than they send by converting through paths and order books.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-types/checks.md
         html: checks.html
@@ -309,6 +382,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-types/escrow.md
         html: escrow.html
@@ -318,6 +392,7 @@ pages:
         blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-types/partial-payments.md
         html: partial-payments.html
@@ -327,6 +402,7 @@ pages:
         blurb: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-types/payment-channels.md
         html: payment-channels.html
@@ -336,6 +412,7 @@ pages:
         blurb: Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later.
         targets:
             - en
+            - ja
 
     -   name: Issued Currencies
         html: issued-currencies.html
@@ -346,6 +423,7 @@ pages:
         blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   md: concepts/issued-currencies/issued-currencies-overview.md
         html: issued-currencies-overview.html
@@ -355,6 +433,7 @@ pages:
         blurb: Get an overview of issued currencies and their properties in the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   md: concepts/issued-currencies/trust-lines-and-issuing.md
         html: trust-lines-and-issuing.html
@@ -364,6 +443,7 @@ pages:
         blurb: Learn about the properties and rationale of trust lines.
         targets:
             - en
+            - ja
 
     -   md: concepts/issued-currencies/authorized-trust-lines.md
         html: authorized-trust-lines.html
@@ -373,6 +453,7 @@ pages:
         blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies.
         targets:
             - en
+            - ja
 
     -   md: concepts/issued-currencies/freezes.md
         html: freezes.html
@@ -382,6 +463,7 @@ pages:
         blurb: Freezes can suspend trading of issued currencies for compliance purposes.
         targets:
             - en
+            - ja
 
     -   md: concepts/issued-currencies/rippling.md
         html: rippling.html
@@ -391,6 +473,7 @@ pages:
         blurb: Rippling is automatic multi-party net settlement of issued currency balances.
         targets:
             - en
+            - ja
 
     -   md: concepts/issued-currencies/transfer-fees.md
         html: transfer-fees.html
@@ -400,6 +483,7 @@ pages:
         blurb: Currency issuers can charge a fee for transferring their issued currencies.
         targets:
             - en
+            - ja
 
     -   md: concepts/issued-currencies/issuing-and-operational-addresses.md
         html: issuing-and-operational-addresses.html
@@ -409,6 +493,7 @@ pages:
         blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
         targets:
             - en
+            - ja
 
     -   md: concepts/issued-currencies/paths.md
         html: paths.html
@@ -418,6 +503,7 @@ pages:
         blurb: Payments of issued currencies must traverse paths of connected users and order books.
         targets:
             - en
+            - ja
 
     -   md: concepts/issued-currencies/demurrage.md
         html: demurrage.html
@@ -427,6 +513,7 @@ pages:
         blurb: (Obsolete) Some older XRP Ledger tools used to support currency codes with built-in interest and negative interest rates.
         targets:
             - en
+            - ja
 
     -   name: Decentralized Exchange
         html: decentralized-exchange.html
@@ -437,6 +524,7 @@ pages:
         blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other.
         targets:
             - en
+            - ja
 
     -   md: concepts/decentralized-exchange/offers.md
         html: offers.html
@@ -446,6 +534,7 @@ pages:
         blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
         targets:
             - en
+            - ja
 
     -   md: concepts/decentralized-exchange/autobridging.md
         html: autobridging.html
@@ -455,6 +544,7 @@ pages:
         blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs.
         targets:
             - en
+            - ja
 
     -   md: concepts/decentralized-exchange/ticksize.md
         html: ticksize.html
@@ -464,6 +554,7 @@ pages:
         blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
         targets:
             - en
+            - ja
 
     -   name: Consensus Network
         html: consensus-network.html
@@ -474,6 +565,7 @@ pages:
         blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
         targets:
             - en
+            - ja
 
     -   md: concepts/consensus-network/consensus.md
         html: consensus.html
@@ -484,6 +576,15 @@ pages:
         targets:
             - en
 
+    -   md: concepts/consensus-network/consensus.ja.md
+        html: consensus.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand the role of consensus in the XRP Ledger. #TODO:translate
+        targets:
+            - ja
+
     -   md: concepts/consensus-network/consensus-principles-and-rules.md
         html: consensus-principles-and-rules.html
         funnel: Docs
@@ -491,7 +592,16 @@ pages:
         category: Consensus Network
         blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
         targets:
-          - en
+            - en
+
+    -   md: concepts/consensus-network/consensus-principles-and-rules.ja.md
+        html: consensus-principles-and-rules.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email. #TODO: translate
+        targets:
+            - ja
 
     -   md: concepts/consensus-network/consensus-protections.md
         html: consensus-protections.html
@@ -502,6 +612,15 @@ pages:
         targets:
             - en
 
+    -   md: concepts/consensus-network/consensus-protections.ja.md
+        html: consensus-protections.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system. #TODO: translate
+        targets:
+            - ja
+
     -   md: concepts/consensus-network/transaction-queue.md
         html: transaction-queue.html
         funnel: Docs
@@ -511,6 +630,15 @@ pages:
         targets:
             - en
 
+    -   md: concepts/consensus-network/transaction-queue.ja.md
+        html: transaction-queue.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand how transactions can be queued before reaching consensus. #TODO:translate
+        targets:
+            - ja
+
     -   md: concepts/consensus-network/about-canceling-a-transaction.md
         html: about-canceling-a-transaction.html
         funnel: Docs
@@ -518,7 +646,8 @@ pages:
         category: Consensus Network
         blurb: Understand when and how it's possible to cancel a transaction that has already been sent.
         targets:
-          - en
+            - en
+            - ja
 
     -   md: concepts/consensus-network/transaction-malleability.md
         html: transaction-malleability.html
@@ -528,6 +657,15 @@ pages:
         blurb: Be aware of ways transactions could be changed to have a different hash than expected.
         targets:
             - en
+
+    -   md: concepts/consensus-network/transaction-malleability.ja.md
+        html: transaction-malleability.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Be aware of ways transactions could be changed to have a different hash than expected.
+        targets:
+            - ja
 
     -   md: concepts/consensus-network/amendments/amendments.md
         html: amendments.html
@@ -539,6 +677,16 @@ pages:
         targets:
             - en
 
+    -   md: concepts/consensus-network/amendments/amendments.ja.md
+        html: amendments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        subcategory: Amendments
+        blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion. #TODO:translate
+        targets:
+            - ja
+
     -   md: concepts/consensus-network/amendments/known-amendments.md
         html: known-amendments.html
         funnel: Docs
@@ -548,6 +696,7 @@ pages:
         blurb: List of all known amendments to the XRP Ledger protocol and their status.
         targets:
             - en
+            - ja
 
     -   md: concepts/consensus-network/fee-voting.md
         html: fee-voting.html
@@ -556,7 +705,16 @@ pages:
         category: Consensus Network
         blurb: How validators vote on fees (transaction cost and reserve requirements).
         targets:
-          - en
+            - en
+
+    -   md: concepts/consensus-network/fee-voting.ja.md
+        html: fee-voting.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: How validators vote on fees (transaction cost and reserve requirements). #TODO: translate
+        targets:
+            - ja
 
     -   md: concepts/consensus-network/consensus-research.md
         html: consensus-research.html
@@ -565,7 +723,16 @@ pages:
         category: Consensus Network
         blurb: Scholarly articles on consensus algorithms and related research.
         targets:
-          - en
+            - en
+
+    -   md: concepts/consensus-network/consensus-research.ja.md
+        html: consensus-research.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Scholarly articles on consensus algorithms and related research.
+        targets:
+            - ja
 
     # TODO: add pseudo-transactions concept page
 
@@ -576,7 +743,16 @@ pages:
         category: Consensus Network
         blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
         targets:
-          - en
+            - en
+
+    -   md: concepts/consensus-network/parallel-networks.ja.md
+        html: parallel-networks.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
+        targets:
+            - ja
 
     -   name: The rippled Server
         html: the-rippled-server.html
@@ -587,6 +763,7 @@ pages:
         blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
         targets:
             - en
+            - ja
 
     -   md: concepts/the-rippled-server/rippled-server-modes.md
         html: rippled-server-modes.html
@@ -596,6 +773,7 @@ pages:
         blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
         targets:
             - en
+            - ja
 
     -   md: concepts/the-rippled-server/clustering.md
         html: clustering.html
@@ -605,6 +783,7 @@ pages:
         blurb: Run rippled servers in a cluster to share the load of cryptography between them.
         targets:
             - en
+            - ja
 
     -   md: concepts/the-rippled-server/ledger-history/ledger-history.md
         html: ledger-history.html
@@ -615,6 +794,7 @@ pages:
         blurb: rippled servers store a variable amount of transaction and state history locally.
         targets:
             - en
+            - ja
 
     -   md: concepts/the-rippled-server/ledger-history/online-deletion.md
         html: online-deletion.html
@@ -625,6 +805,7 @@ pages:
         blurb: Online deletion purges outdated transaction and state history.
         targets:
             - en
+            - ja
 
     -   md: concepts/the-rippled-server/ledger-history/history-sharding.md
         html: history-sharding.html
@@ -635,6 +816,7 @@ pages:
         blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
         targets:
             - en
+            - ja
 
     -   md: concepts/the-rippled-server/peer-protocol.md
         html: peer-protocol.html
@@ -644,6 +826,7 @@ pages:
         blurb: The peer protocol specifies the language rippled servers speak to each other.
         targets:
             - en
+            - ja
 
     -   md: concepts/the-rippled-server/transaction-censorship-detection.md
         html: transaction-censorship-detection.html
@@ -653,6 +836,7 @@ pages:
         blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers.
         targets:
             - en
+            - ja
 
 # Tutorials --------------------------------------------------------------------
 
@@ -664,6 +848,7 @@ pages:
         blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   name: Get Started
         html: get-started.html
@@ -674,6 +859,7 @@ pages:
         blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   md: tutorials/get-started/get-started-with-the-rippled-api.md
         html: get-started-with-the-rippled-api.html
@@ -683,6 +869,7 @@ pages:
         blurb: Connect to the rippled API and get data about the shared ledger state.
         targets:
             - en
+            - ja
 
     -   md: tutorials/get-started/set-up-secure-signing.md
         html: set-up-secure-signing.html
@@ -692,6 +879,7 @@ pages:
         blurb: Set up an environment where you can submit transactions securely.
         targets:
             - en
+            - ja
 
     # TODO: Send a Transaction with the rippled API
 
@@ -703,6 +891,7 @@ pages:
         blurb: Build an entry-level JavaScript application for querying the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   md: tutorials/get-started/look-up-transaction-results.md
         html: look-up-transaction-results.html
@@ -711,7 +900,8 @@ pages:
         category: Get Started
         blurb: Find the results of previously-submitted transactions.
         targets:
-          - en
+            - en
+            - ja
 
     -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.md
         html: monitor-incoming-payments-with-websocket.html
@@ -723,6 +913,7 @@ pages:
             - interactive_steps
         targets:
             - en
+            - ja
 
     # TODO: Get Started with API Tools
 
@@ -735,6 +926,7 @@ pages:
         blurb: Direct XRP payments from one account to another are the simplest way to transact in the XRP Ledger. This section includes tutorials for how to use simple transactions proficiently and robustly.
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.md
         html: send-xrp.html
@@ -746,6 +938,7 @@ pages:
             - interactive_steps
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.md
         html: reliable-transaction-submission.html
@@ -755,6 +948,7 @@ pages:
         blurb: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly.
         targets:
             - en
+            - ja
 
         # Redirect for this page's new home outside of tutorials
     -   name: Cancel or Skip a Transaction
@@ -766,7 +960,8 @@ pages:
         redirect_url: about-canceling-a-transaction.html
         blurb: Replace a pending transaction if it gets stuck from paying too low a transaction cost.
         targets:
-          - en
+            - en
+            - ja
 
     -   name: Manage Account Settings
         html: manage-account-settings.html
@@ -777,6 +972,7 @@ pages:
         blurb: Set up your XRP Ledger account to send and receive payments the way you want it to.
         targets:
             - en
+            - ja
 
     # TODO: "Get an Account" (DOC-1554)
     # blurb: Learn how to generate and fund an XRP Ledger address to create an XRP Ledger account.
@@ -789,6 +985,7 @@ pages:
         blurb: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md
         html: change-or-remove-a-regular-key-pair.html
@@ -798,6 +995,7 @@ pages:
         blurb: Remove or update a regular key pair already authorized by your account.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
         html: set-up-multi-signing.html
@@ -807,6 +1005,7 @@ pages:
         blurb: Add a signer list to your account to enable multi-signing.
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.md
         html: send-a-multi-signed-transaction.html
@@ -816,6 +1015,7 @@ pages:
         blurb: Send a transaction authorized with multiple signatures.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-account-settings/require-destination-tags.md
         html: require-destination-tags.html
@@ -825,6 +1025,7 @@ pages:
         blurb: Require users to specify a destination tag when sending to your address.
         targets:
             - en
+            - ja
 
     # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
 
@@ -837,6 +1038,7 @@ pages:
         blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger.
         targets:
             - en
+            - ja
 
         # Redirect from old "complex" payment types URL
     -   name: Use Complex Payment Types
@@ -848,6 +1050,7 @@ pages:
         redirect_url: use-specialized-payment-types.html
         targets:
             - en
+            - ja
 
     -   name: Use Escrows
         html: use-escrows.html
@@ -859,6 +1062,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-time-held-escrow.md
         html: send-a-time-held-escrow.html
@@ -869,6 +1073,7 @@ pages:
         blurb: Create an escrow whose only condition for release is that a specific time has passed.
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.md
         html: send-a-conditionally-held-escrow.html
@@ -879,6 +1084,7 @@ pages:
         blurb: Create an escrow whose release is based on a condition being fulfilled.
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.md
         html: cancel-an-expired-escrow.html
@@ -889,6 +1095,7 @@ pages:
         blurb: Cancel an expired escrow.
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/look-up-escrows.md
         html: look-up-escrows.html
@@ -899,6 +1106,7 @@ pages:
         blurb: Look up pending escrows by sender or destination address.
         targets:
             - en
+            - ja
 
     #TODO: split concept info off of the paychan tutorial
     -   md: tutorials/use-complex-payment-types/use-payment-channels.md
@@ -909,6 +1117,7 @@ pages:
         blurb: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server.
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
         html: use-checks.html
@@ -921,6 +1130,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.md
         html: send-a-check.html
@@ -931,6 +1141,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
         html: cash-a-check-for-an-exact-amount.html
@@ -941,6 +1152,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
         html: cash-a-check-for-a-flexible-amount.html
@@ -951,6 +1163,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/cancel-a-check.md
         html: cancel-a-check.html
@@ -961,6 +1174,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-sender.md
         html: look-up-checks-by-sender.html
@@ -971,6 +1185,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-recipient.md
         html: look-up-checks-by-recipient.html
@@ -981,19 +1196,9 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     # TODO: "Send a Cross-Currency Payment"
-
-    ## This category commented out until DOC-1562 gets done
-    # -   md: tutorials/manage-issued-currencies/manage-issued-currencies.md
-    #     html: manage-issued-currencies.html
-    #     funnel: Docs
-    #     doc_type: Tutorials
-    #     category: Manage Issued Currencies
-    #     blurb: Use issued currencies for cross-currency payments, trading in the decentralized exchange, or as natively digital tokens.
-    #     template: template-landing-children.html
-    #     targets:
-    #         - en
 
     # TODO: Set up issuing/operational addresses, monitor changes to balances,
     # freeze, enable/disable rippling, set transfer fees, use auth'd trust lines
@@ -1007,6 +1212,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
         html: list-xrp-as-an-exchange.html
@@ -1016,6 +1222,7 @@ pages:
         blurb: Using a fictitious business called Alpha Exchange, this tutorial demonstrates the high-level steps required to list XRP.
         targets:
             - en
+            - ja
 
     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
         html: list-your-exchange-on-xrp-charts.html
@@ -1025,6 +1232,7 @@ pages:
         blurb: This tutorial describes how to have your exchange and its XRP trade and order book data listed on XRP Charts.
         targets:
             - en
+            - ja
 
     -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
         html: become-an-xrp-ledger-gateway.html
@@ -1034,6 +1242,7 @@ pages:
         blurb: Gateways are the businesses that link the XRP Ledger to the rest of the world. This tutorial demonstrates how an existing online financial institution can expand to act as a gateway in the the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   name: Manage the rippled Server
         html: manage-the-rippled-server.html
@@ -1044,6 +1253,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   name: Install rippled
         html: install-rippled.html
@@ -1055,6 +1265,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/system-requirements.md
         html: system-requirements.html
@@ -1065,6 +1276,7 @@ pages:
         blurb: Hardware and software requirements for running rippled.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.md
         html: install-rippled-on-centos-rhel-with-yum.html
@@ -1075,6 +1287,7 @@ pages:
         blurb: Install a precompiled rippled binary on CentOS or Red Hat Enterprise Linux.
         targets:
             - en
+            - ja
 
     # Redirect old Alien-based install
     -   name: Install rippled on Ubuntu with Alien
@@ -1087,6 +1300,7 @@ pages:
         subcategory: Installation
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.md
         html: install-rippled-on-ubuntu.html
@@ -1097,6 +1311,7 @@ pages:
         blurb: Install a precompiled rippled binary on Ubuntu Linux.
         targets:
             - en
+            - ja
 
     -   name: Update rippled Automatically on CentOS/RHEL
         html: update-rippled-automatically-on-centos-rhel.html
@@ -1108,6 +1323,7 @@ pages:
         subcategory: Installation
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.md
         html: update-rippled-automatically-on-linux.html
@@ -1118,6 +1334,7 @@ pages:
         blurb: Set up automatic updates for rippled on Linux.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.md
         html: update-rippled-manually-on-centos-rhel.html
@@ -1128,6 +1345,7 @@ pages:
         blurb: Manually update rippled on CentOS or Red Hat Enterprise Linux.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.md
         html: update-rippled-manually-on-ubuntu.html
@@ -1138,6 +1356,7 @@ pages:
         blurb: Manually update rippled on Ubuntu Linux.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md
         html: build-run-rippled-ubuntu.html
@@ -1148,6 +1367,7 @@ pages:
         blurb: Compile rippled yourself on Ubuntu Linux.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md
         html: build-run-rippled-macos.html
@@ -1158,6 +1378,7 @@ pages:
         blurb: Compile rippled yourself on macOS.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
         html: capacity-planning.html
@@ -1168,6 +1389,7 @@ pages:
         blurb: Plan system specs and tune configuration for rippled in production environments.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.md
         html: rippled-1-3-migration-instructions.html
@@ -1178,6 +1400,7 @@ pages:
         blurb: Use these instructions to upgrade rippled packages from 1.2.x or below to 1.3.x or higher.
         targets:
             - en
+            - ja
 
     -   name: Configure rippled
         html: configure-rippled.html
@@ -1189,6 +1412,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.md
         html: run-rippled-as-a-validator.html
@@ -1199,6 +1423,7 @@ pages:
         blurb: Have your server vote on the consensus ledger.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.md
         html: connect-your-rippled-to-the-xrp-test-net.html
@@ -1209,6 +1434,7 @@ pages:
         blurb: Connect your rippled server to the test net to try out new features or test functionality with fake money.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/cluster-rippled-servers.md
         html: cluster-rippled-servers.html
@@ -1219,6 +1445,7 @@ pages:
         blurb: Set up a group of servers that share work for higher efficiency.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
         html: configure-online-deletion.html
@@ -1229,6 +1456,7 @@ pages:
         blurb: Configure how far back your server should store transaction history.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.md
         html: configure-advisory-deletion.html
@@ -1239,6 +1467,7 @@ pages:
         blurb: Use advisory deletion to delete older ledger history on a schedule rather than as new history becomes available.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.md
         html: configure-history-sharding.html
@@ -1249,6 +1478,7 @@ pages:
         blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.md
         html: configure-full-history.html
@@ -1259,6 +1489,7 @@ pages:
         blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-the-peer-crawler.md
         html: configure-the-peer-crawler.html
@@ -1269,6 +1500,7 @@ pages:
         blurb: Configure how much information your server reports publicly about its status and peers.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
         html: enable-public-signing.html
@@ -1279,6 +1511,7 @@ pages:
         blurb: Allow others to use your server to sign transactions. (Not recommended)
         targets:
             - en
+            - ja
 
     -   name: Test rippled Functionality in Stand-Alone Mode
         html: use-stand-alone-mode.html
@@ -1290,6 +1523,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
@@ -1301,6 +1535,7 @@ pages:
         blurb: Start from a fresh genesis ledger in stand-alone mode.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
         html: load-a-saved-ledger-in-stand-alone-mode.html
@@ -1311,6 +1546,7 @@ pages:
         blurb: Start in stand-alone mode from a specific saved ledger to test or replay transactions.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
         html: advance-the-ledger-in-stand-alone-mode.html
@@ -1321,6 +1557,7 @@ pages:
         blurb: Make progress in stand-alone mode by manually closing the ledger.
         targets:
             - en
+            - ja
 
 
     -   name: Troubleshooting rippled
@@ -1333,6 +1570,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.md
         html: diagnosing-problems.html
@@ -1343,6 +1581,7 @@ pages:
         blurb: Collect information to identify the cause of problems.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
         html: understanding-log-messages.html
@@ -1353,6 +1592,7 @@ pages:
         blurb: Interpret and respond to warning and error messages in the debug log.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
         html: server-wont-start.html
@@ -1363,6 +1603,7 @@ pages:
         blurb: A collection of problems that would cause a rippled server not to start, and how to fix them.
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
         html: fix-sqlite-tx-db-page-size-issue.html
@@ -1372,6 +1613,7 @@ pages:
         subcategory: Troubleshooting rippled
         targets:
             - en
+            - ja
 
 # References -------------------------------------------------------------------
 
@@ -1384,6 +1626,7 @@ pages:
         blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
             - en
+            - ja
 
     # rippled API --------------------------------------------------------------
 
@@ -1396,6 +1639,7 @@ pages:
         blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/api-conventions.md
         html: api-conventions.html
@@ -1407,6 +1651,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/basic-data-types.md
         html: basic-data-types.html
@@ -1417,6 +1662,7 @@ pages:
         blurb: Format and meaning of fundamental data types like addresses, ledger index, and currency codes.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/base58-encodings.md
         html: base58-encodings.html
@@ -1427,6 +1673,7 @@ pages:
         blurb: Formats for representing cryptographic keys and related data in base58 format.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/currency-formats.md
         html: currency-formats.html
@@ -1437,6 +1684,7 @@ pages:
         blurb: Precision and range for currency numbers, plus formats of custom currency codes.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/error-formatting.md
         html: error-formatting.html
@@ -1447,6 +1695,7 @@ pages:
         blurb: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/markers-and-pagination.md
         html: markers-and-pagination.html
@@ -1457,6 +1706,7 @@ pages:
         blurb: Convention for paginating large queries into multiple responses.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/modifying-the-ledger.md
         html: modifying-the-ledger.html
@@ -1467,6 +1717,7 @@ pages:
         blurb: Why and how only transactions can modify the ledger.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/request-formatting.md
         html: request-formatting.html
@@ -1477,6 +1728,7 @@ pages:
         blurb: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/response-formatting.md
         html: response-formatting.html
@@ -1487,6 +1739,7 @@ pages:
         blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/rippled-server-states.md
         html: rippled-server-states.html
@@ -1497,6 +1750,7 @@ pages:
         blurb: Definitions of state information reported in some API methods.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/api-conventions/serialization.md
         html: serialization.html
@@ -1507,6 +1761,7 @@ pages:
         blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects.
         targets:
             - en
+            - ja
 
 # rippled Public Methods
 
@@ -1519,6 +1774,7 @@ pages:
         blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
         targets:
             - en
+            - ja
 
     -   name: Account Methods
         html: account-methods.html
@@ -1531,6 +1787,7 @@ pages:
         blurb: An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.md
         html: account_channels.html
@@ -1542,6 +1799,7 @@ pages:
         blurb: Get a list of payment channels where the account is the source of the channel.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.md
         html: account_currencies.html
@@ -1553,6 +1811,7 @@ pages:
         blurb: Get a list of currencies an account can send or receive.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.md
         html: account_info.html
@@ -1564,6 +1823,7 @@ pages:
         blurb: Get basic data about an account.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.md
         html: account_lines.html
@@ -1575,6 +1835,7 @@ pages:
         blurb: Get info about an account's trust lines.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.md
         html: account_objects.html
@@ -1586,6 +1847,7 @@ pages:
         blurb: Get all ledger objects owned by an account.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.md
         html: account_offers.html
@@ -1597,6 +1859,7 @@ pages:
         blurb: Get info about an account's currency exchange offers.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.md
         html: account_tx.html
@@ -1608,6 +1871,7 @@ pages:
         blurb: Get info about an account's transactions.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.md
         html: gateway_balances.html
@@ -1619,6 +1883,7 @@ pages:
         blurb: Calculate total amounts issued by an account.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.md
         html: noripple_check.html
@@ -1630,6 +1895,7 @@ pages:
         blurb: Get recommended changes to an account's DefaultRipple and NoRipple settings.
         targets:
             - en
+            - ja
 
     -   name: Ledger Methods
         html: ledger-methods.html
@@ -1642,6 +1908,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.md
         html: ledger.html # Watch carefully for clashes w/ this filename
@@ -1653,6 +1920,7 @@ pages:
         blurb: Get info about a ledger version.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.md
         html: ledger_closed.html
@@ -1664,6 +1932,7 @@ pages:
         blurb: Get the latest closed ledger version.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.md
         html: ledger_current.html
@@ -1675,6 +1944,7 @@ pages:
         blurb: Get the current working ledger version.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.md
         html: ledger_data.html
@@ -1686,6 +1956,7 @@ pages:
         blurb: Get the raw contents of a ledger version.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.md
         html: ledger_entry.html
@@ -1697,6 +1968,7 @@ pages:
         blurb: Get one element from a ledger version.
         targets:
             - en
+            - ja
 
     -   name: Transaction Methods
         html: transaction-methods.html # watch for clashes w/ this filename
@@ -1709,6 +1981,7 @@ pages:
         blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.md
         html: sign.html # watch for clashes w/ this filename
@@ -1720,6 +1993,7 @@ pages:
         blurb: Cryptographically sign a transaction.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.md
         html: sign_for.html
@@ -1731,6 +2005,7 @@ pages:
         blurb: Contribute to a multi-signature.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.md
         html: submit.html
@@ -1742,6 +2017,7 @@ pages:
         blurb: Send a transaction to the network.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.md
         html: submit_multisigned.html
@@ -1753,6 +2029,7 @@ pages:
         blurb: Send a multi-signed transaction to the network.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.md
         html: transaction_entry.html
@@ -1764,6 +2041,7 @@ pages:
         blurb: Retrieve info about a transaction from a particular ledger version.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.md
         html: tx.html
@@ -1775,6 +2053,7 @@ pages:
         blurb: Retrieve info about a transaction from all the ledgers on hand.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.md
         html: tx_history.html
@@ -1786,6 +2065,7 @@ pages:
         blurb: Retrieve info about all recent transactions.
         targets:
             - en
+            - ja
 
     -   name: Path and Order Book Methods
         html: path-and-order-book-methods.html
@@ -1798,6 +2078,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.md
         html: book_offers.html
@@ -1809,6 +2090,7 @@ pages:
         blurb: Get info about offers to exchange two currencies.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.md
         html: deposit_authorized.html
@@ -1820,6 +2102,7 @@ pages:
         blurb: Check whether an account is authorized to send money directly to another.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md
         html: path_find.html
@@ -1831,6 +2114,7 @@ pages:
         blurb: Find a path for a payment between two accounts and receive updates.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.md
         html: ripple_path_find.html
@@ -1842,6 +2126,7 @@ pages:
         blurb: Find a path for payment between two accounts, once.
         targets:
             - en
+            - ja
 
     -   name: Payment Channel Methods
         html: payment-channel-methods.html
@@ -1854,6 +2139,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_authorize.md
         html: channel_authorize.html
@@ -1865,6 +2151,7 @@ pages:
         blurb: Sign a claim for money from a payment channel.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.md
         html: channel_verify.html
@@ -1876,6 +2163,7 @@ pages:
         blurb: Check a payment channel claim's signature.
         targets:
             - en
+            - ja
 
     -   name: Subscription Methods
         html: subscription-methods.html
@@ -1888,6 +2176,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.md
         html: subscribe.html
@@ -1899,6 +2188,7 @@ pages:
         blurb: Listen for updates about a particular subject.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.md
         html: unsubscribe.html
@@ -1910,6 +2200,7 @@ pages:
         blurb: Stop listening for updates about a particular subject.
         targets:
             - en
+            - ja
 
     -   name: Server Info Methods
         html: server-info-methods.html
@@ -1922,6 +2213,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.md
         html: fee.html
@@ -1933,6 +2225,7 @@ pages:
         blurb: Get information about transaction cost.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
         html: server_info.html
@@ -1944,6 +2237,7 @@ pages:
         blurb: Retrieve status of the server in human-readable format.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.md
         html: server_state.html
@@ -1955,6 +2249,7 @@ pages:
         blurb: Retrieve status of the server in machine-readable format.
         targets:
             - en
+            - ja
 
     -   name: Utility Methods
         html: utility-methods.html
@@ -1967,6 +2262,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/json.md
         html: json.html
@@ -1978,6 +2274,7 @@ pages:
         blurb: Pass JSON through the commandline.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.md
         html: ping.html
@@ -1989,6 +2286,7 @@ pages:
         blurb: Confirm connectivity with the server.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/random.md
         html: random.html
@@ -2000,6 +2298,7 @@ pages:
         blurb: Generate a random number.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
         html: admin-rippled-methods.html
@@ -2010,6 +2309,7 @@ pages:
         blurb: Administer a rippled server with these admin API methods.
         targets:
             - en
+            - ja
 
     -   name: Key Generation Methods
         html: key-generation-methods.html
@@ -2022,6 +2322,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.md
         html: validation_create.html
@@ -2033,6 +2334,7 @@ pages:
         subcategory: Key Generation Methods
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.md
         html: wallet_propose.html
@@ -2043,7 +2345,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Key Generation Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   name: Logging and Data Management Methods
         html: logging-and-data-management-methods.html
@@ -2055,7 +2358,8 @@ pages:
         subcategory: Logging and Data Management Methods
         template: template-landing-children.html
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.md
         html: can_delete.html
@@ -2066,7 +2370,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Logging and Data Management Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.md
         html: crawl_shards.html
@@ -2077,7 +2382,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Logging and Data Management Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.md
         html: download_shard.html
@@ -2088,7 +2394,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Logging and Data Management Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.md
         html: ledger_cleaner.html
@@ -2099,7 +2406,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Logging and Data Management Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md
         html: ledger_request.html
@@ -2110,7 +2418,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Logging and Data Management Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.md
         html: log_level.html
@@ -2121,7 +2430,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Logging and Data Management Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.md
         html: logrotate.html
@@ -2132,7 +2442,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Logging and Data Management Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   name: Server Control Methods
         html: server-control-methods.html
@@ -2144,7 +2455,8 @@ pages:
         subcategory: Server Control Methods
         template: template-landing-children.html
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/connect.md
         html: connect.html
@@ -2155,7 +2467,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Server Control Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.md
         html: ledger_accept.html
@@ -2166,7 +2479,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Server Control Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.md
         html: stop.html
@@ -2177,7 +2491,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Server Control Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.md
         html: validation_seed.html
@@ -2188,7 +2503,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Server Control Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   name: Status and Debugging Methods
         html: status-and-debugging-methods.html
@@ -2200,7 +2516,8 @@ pages:
         subcategory: Status and Debugging Methods
         template: template-landing-children.html
         targets:
-          - en
+            - en
+            - ja
 
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.md
@@ -2212,7 +2529,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.md
         html: feature.html
@@ -2223,7 +2541,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.md
         html: fetch_info.html
@@ -2234,7 +2553,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.md
         html: get_counts.html
@@ -2245,7 +2565,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/peers.md
         html: peers.html
@@ -2256,7 +2577,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
         html: print.html
@@ -2267,7 +2589,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
         html: validator_list_sites.html
@@ -2278,7 +2601,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.md
         html: validators.html
@@ -2289,7 +2613,8 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
-          - en
+            - en
+            - ja
 
     -   name: Ledger Data Formats
         html: ledger-data-formats.html
@@ -2301,6 +2626,7 @@ pages:
         template: template-landing-children.html #TODO: consider using the default template instead for page sidebar?
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-header.md
         html: ledger-header.html
@@ -2311,6 +2637,7 @@ pages:
         blurb: A unique header that describes the contents of a ledger version.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.md
         html: ledger-object-ids.html
@@ -2321,6 +2648,7 @@ pages:
         blurb: All objects in a ledger's state tree have a unique ID.
         targets:
             - en
+            - ja
 
     -   name: Ledger Object Types
         html: ledger-object-types.html
@@ -2333,6 +2661,7 @@ pages:
         blurb: Each ledger's state tree consists of a set of ledger objects, which collectively represent all settings, balances, and relationships in the shared ledger. In the peer protocol that rippled servers use to communicate with each other, ledger objects are represented in their raw binary format. In the rippled API, ledger objects are represented as JSON objects.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.md
         html: accountroot.html
@@ -2344,6 +2673,7 @@ pages:
         blurb: The settings, XRP balance, and other metadata for one account.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/amendments.md
         html: amendments-object.html #amendments.html is taken by the concept page
@@ -2355,6 +2685,7 @@ pages:
         blurb: Singleton object with status of enabled and pending amendments.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/check.md
         html: check.html
@@ -2367,6 +2698,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/depositpreauth.md
         html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
@@ -2378,6 +2710,7 @@ pages:
         blurb: A record of preauthorization for sending payments to an account that requires authorization.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.md
         html: directorynode.html
@@ -2389,6 +2722,7 @@ pages:
         blurb: Contains links to other objects.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/escrow.md
         html: escrow-object.html #escrow.html is taken by the concept page
@@ -2400,6 +2734,7 @@ pages:
         blurb: Contains XRP held for a conditional payment.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/feesettings.md
         html: feesettings.html
@@ -2411,6 +2746,7 @@ pages:
         blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledgerhashes.md
         html: ledgerhashes.html
@@ -2422,6 +2758,7 @@ pages:
         blurb: Lists of prior ledger versions' hashes for history lookup.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.md
         html: offer.html
@@ -2433,6 +2770,7 @@ pages:
         blurb: An order to make a currency trade.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.md
         html: paychannel.html
@@ -2444,6 +2782,7 @@ pages:
         blurb: A channel for asynchronous XRP payments.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.md
         html: ripplestate.html
@@ -2455,6 +2794,7 @@ pages:
         blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.md
         html: signerlist.html
@@ -2466,6 +2806,7 @@ pages:
         blurb: A list of addresses for multi-signing transactions.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-formats.md
         html: transaction-formats.html
@@ -2477,6 +2818,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-common-fields.md
         html: transaction-common-fields.html
@@ -2487,6 +2829,7 @@ pages:
         blurb: These common fields can be provided on any XRP Ledger transaction.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.md
         html: transaction-types.html
@@ -2499,6 +2842,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/accountset.md
         html: accountset.html
@@ -2510,6 +2854,7 @@ pages:
         blurb: Set options on an account.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
         html: checkcancel.html
@@ -2522,6 +2867,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.md
         html: checkcash.html
@@ -2534,6 +2880,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.md
         html: checkcreate.html
@@ -2546,6 +2893,7 @@ pages:
         status: not_enabled
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.md
         html: depositpreauth.html
@@ -2557,6 +2905,7 @@ pages:
         blurb: Preauthorizes an account to send payments to this one.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.md
         html: escrowcancel.html
@@ -2568,6 +2917,7 @@ pages:
         blurb: Reclaim escrowed XRP.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.md
         html: escrowcreate.html
@@ -2579,6 +2929,7 @@ pages:
         blurb:  Create an escrowed XRP payment.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.md
         html: escrowfinish.html
@@ -2590,6 +2941,7 @@ pages:
         blurb: Deliver escrowed XRP to recipient.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.md
         html: offercancel.html
@@ -2601,6 +2953,7 @@ pages:
         blurb: Withdraw a currency-exchange order.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.md
         html: offercreate.html
@@ -2612,6 +2965,7 @@ pages:
         blurb: Submit an order to exchange currency.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/payment.md
         html: payment.html
@@ -2623,6 +2977,7 @@ pages:
         blurb: Send funds from one account to another.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.md
         html: paymentchannelclaim.html
@@ -2634,6 +2989,7 @@ pages:
         blurb: Claim money from a payment channel.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.md
         html: paymentchannelcreate.html
@@ -2645,6 +3001,7 @@ pages:
         blurb: Open a new payment channel.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.md
         html: paymentchannelfund.html
@@ -2656,6 +3013,7 @@ pages:
         blurb: Add more XRP to a payment channel.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.md
         html: setregularkey.html
@@ -2667,6 +3025,7 @@ pages:
         blurb: Add, remove, or modify an account's regular key pair.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.md
         html: signerlistset.html
@@ -2678,6 +3037,7 @@ pages:
         blurb: Add, remove, or modify an account's multi-signing list.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md
         html: trustset.html
@@ -2689,6 +3049,7 @@ pages:
         blurb: Add or modify a trust line.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.md
         html: pseudo-transaction-types.html
@@ -2701,6 +3062,7 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.md
         html: enableamendment.html
@@ -2712,6 +3074,7 @@ pages:
         blurb: Enable a change in transaction processing.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.md
         html: setfee.html
@@ -2723,6 +3086,7 @@ pages:
         blurb: Change global reserve and transaction cost settings.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md
         html: transaction-results.html
@@ -2734,6 +3098,7 @@ pages:
         blurb: Learn how to interpret rippled server transaction results.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.md
         html: tec-codes.html
@@ -2745,6 +3110,7 @@ pages:
         blurb: tec codes indicate that the transaction failed, but it was applied to a ledger to deduct the transaction cost.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.md
         html: tef-codes.html
@@ -2756,6 +3122,7 @@ pages:
         blurb: tef codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.md
         html: tel-codes.html
@@ -2767,6 +3134,7 @@ pages:
         blurb: tel codes indicate an error in the local server processing the transaction.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.md
         html: tem-codes.html
@@ -2778,6 +3146,7 @@ pages:
         blurb: tem codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.md
         html: ter-codes.html
@@ -2789,6 +3158,7 @@ pages:
         blurb: ter codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.md
         html: tes-success.html
@@ -2800,6 +3170,7 @@ pages:
         blurb: tesSUCCESS is the only code that indicates a transaction succeeded. This does not always mean it accomplished what you expected it to do.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-metadata.md
         html: transaction-metadata.html
@@ -2810,6 +3181,7 @@ pages:
         blurb: Transaction metadata describes the outcome of the transaction in detail, regardless of whether the transaction is successful.
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/commandline-usage.md
         html: commandline-usage.html
@@ -2831,6 +3203,7 @@ pages:
               anchor: "#unit-tests"
         targets:
             - en
+            - ja
 
     -   md: references/rippled-api/peer-crawler.md
         html: peer-crawler.html
@@ -2841,6 +3214,7 @@ pages:
         blurb: Special API method for sharing network topology and status metrics.
         targets:
             - en
+            - ja
 
     # XRP-API docs (auto-generated)---------------------------------------------
 
@@ -2852,6 +3226,7 @@ pages:
         supercategory: XRP-API
         targets:
             - en
+            - ja
             - xrp-api-only
 
         # API reference generator makes multiple files here
@@ -2863,6 +3238,7 @@ pages:
         supercategory: XRP-API
         targets:
             - en
+            - ja
             - xrp-api-only
 
 
@@ -2887,6 +3263,7 @@ pages:
             - add_version
         targets:
             - en
+            - ja
 
     -   md: references/data-api.md
         html: data-api.html
@@ -2901,6 +3278,7 @@ pages:
               anchor: "#api-conventions"
         targets:
             - en
+            - ja
             - data-api-only
 
     -   md: references/xrp-ledger-toml.md
@@ -2922,6 +3300,7 @@ pages:
               anchor: "#account-verification"
         targets:
             - en
+            - ja
 
 
 # --------------- end "Docs" section -------------------------------------------
@@ -2931,6 +3310,7 @@ pages:
         funnel: Use Cases
         targets:
             - en
+            - ja
 
     -   md: use-cases/run-a-rippled-validator.md
         html: run-a-rippled-validator.html
@@ -2945,6 +3325,7 @@ pages:
             - use_case
         targets:
             - en
+            - ja
 
     -   md: use-cases/list-xrp-in-your-exchange.md
         html: list-xrp-in-your-exchange.html
@@ -2958,6 +3339,7 @@ pages:
             - use_case
         targets:
             - en
+            - ja
 
     -   md: use-cases/open-a-payment-channel-to-enable-an-inter-exchange-network.md
         html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
@@ -2972,6 +3354,7 @@ pages:
             - use_case
         targets:
             - en
+            - ja
 
     -   md: use-cases/contribute-code-to-rippled.md
         html: contribute-code-to-rippled.html
@@ -2984,6 +3367,7 @@ pages:
             - use_case
         targets:
             - en
+            - ja
 
     -   md: use-cases/contribute-code-to-ripple-lib.md
         html: contribute-code-to-ripple-lib.html
@@ -2996,6 +3380,7 @@ pages:
             - use_case
         targets:
             - en
+            - ja
 
     -   md: use-cases/use-an-escrow-as-a-smart-contract.md
         html: use-an-escrow-as-a-smart-contract.html
@@ -3008,6 +3393,7 @@ pages:
             - use_case
         targets:
             - en
+            - ja
 
 # Dev Tools --------------------------------------------------------------------
     -   md: dev-tools/dev-tools.md
@@ -3015,6 +3401,7 @@ pages:
         funnel: Dev Tools
         targets:
             - en
+            - ja
 
     -   name: Dev Tools # Redirect page for old broken URL
         html: dev-tools-dev-tools.html
@@ -3023,12 +3410,14 @@ pages:
         funnel: Dev Tools
         targets:
             - en
+            - ja
 
     -   name: RPC Tool
         funnel: Dev Tools
         html: xrp-ledger-rpc-tool.html
         targets:
             - en
+            - ja
         template: template-xrp-ledger-rpc-tool.html
 
     -   name: WebSocket API Tool
@@ -3037,6 +3426,7 @@ pages:
         html: websocket-api-tool.html
         targets:
             - en
+            - ja
 
     -   name: Data API v2 Tool
         funnel: Dev Tools
@@ -3047,6 +3437,7 @@ pages:
         sidebar: custom
         targets:
             - en
+            - ja
         template: template-rest-api-tool.html
 
     -   name: ripple.txt Validator # Redirect from ripple.txt validator to toml
@@ -3056,12 +3447,14 @@ pages:
         redirect_url: xrp-ledger-toml-checker.html
         targets:
             - en
+            - ja
 
     -   name: xrp-ledger.toml Checker
         funnel: Dev Tools
         html: xrp-ledger-toml-checker.html
         targets:
             - en
+            - ja
         template: template-xrp-ledger-toml-checker.html
 
     -   name: XRP Faucets
@@ -3070,6 +3463,7 @@ pages:
         template: template-test-net.html
         targets:
             - en
+            - ja
 
     -   name: XRP Test Net Faucet # Redirect from old URL
         html: xrp-test-net-faucet.html
@@ -3078,12 +3472,14 @@ pages:
         redirect_url: xrp-testnet-faucet.html
         targets:
             - en
+            - ja
 
     -   name: Transaction Sender
         funnel: Dev Tools
         html: tx-sender.html
         targets:
             - en
+            - ja
         template: template-tx-sender.html
 
 # Custom 404 page
@@ -3092,6 +3488,7 @@ pages:
         template: template-404.html
         targets:
             - en
+            - ja
 
 # Special sitemap file (for better Google indexing)
     -   name: Sitemap

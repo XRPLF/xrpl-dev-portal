@@ -101,6 +101,9 @@
 {% for method in api_methods %}
 [{{method}} method]: {{method|lower}}.html
 [{{method}} command]: {{method|lower}}.html
+{% if target.lang == "ja" %}
+[{{method}}メソッド]: {{method|lower}}.html
+{% endif %}
 {% endfor %}
 
 <!--{# Amendment links #}-->
