@@ -220,6 +220,15 @@ pages:
         blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/accounts/accounts.ja.md
+        html: accounts.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/cryptographic-keys.md
@@ -231,6 +240,15 @@ pages:
         blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.ja.md
+        html: cryptographic-keys.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/multi-signing.md
@@ -242,6 +260,15 @@ pages:
         blurb: Use multi-signing for greater security sending transactions.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/accounts/multi-signing.ja.md
+        html: multi-signing.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: Use multi-signing for greater security sending transactions. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/reserves.md
@@ -253,6 +280,15 @@ pages:
         blurb: XRP Ledger accounts require a reserve of XRP to reduce spam in ledger data.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/accounts/reserves.ja.md
+        html: reserves.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: XRP Ledger accounts require a reserve of XRP to reduce spam in ledger data. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/depositauth.md
@@ -264,6 +300,15 @@ pages:
         blurb: The DepositAuth setting lets an account block incoming payments by default.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/accounts/depositauth.ja.md
+        html: depositauth.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Accounts
+        blurb: The DepositAuth setting lets an account block incoming payments by default.
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/fees.md
@@ -274,6 +319,14 @@ pages:
         blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/fees.ja.md
+        html: fees.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/ledgers.md
@@ -284,6 +337,14 @@ pages:
         blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/ledgers.ja.md
+        html: ledgers.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers.
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
@@ -295,6 +356,15 @@ pages:
         blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.ja.md
+        html: transaction-basics.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Transaction Basics
+        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
@@ -306,6 +376,15 @@ pages:
         blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.ja.md
+        html: transaction-cost.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Transaction Basics
+        blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.md
@@ -317,6 +396,15 @@ pages:
         blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
         targets:
             - en
+
+    -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.ja.md
+        html: finality-of-results.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Transaction Basics
+        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
@@ -371,6 +459,14 @@ pages:
         blurb: Cross-currency payments atomically deliver a different currency than they send by converting through paths and order books.
         targets:
             - en
+
+    -   md: concepts/payment-types/cross-currency-payments.ja.md
+        html: cross-currency-payments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment Types
+        blurb: Cross-currency payments atomically deliver a different currency than they send by converting through paths and order books. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/payment-types/checks.md
@@ -382,6 +478,15 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: concepts/payment-types/checks.ja.md
+        html: checks.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment Types
+        blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients. #TODO:translate
+        status: not_enabled
+        targets:
             - ja
 
     -   md: concepts/payment-types/escrow.md
@@ -392,6 +497,14 @@ pages:
         blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
         targets:
             - en
+
+    -   md: concepts/payment-types/escrow.ja.md
+        html: escrow.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment Types
+        blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/payment-types/partial-payments.md
@@ -402,6 +515,14 @@ pages:
         blurb: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
         targets:
             - en
+
+    -   md: concepts/payment-types/partial-payments.ja.md
+        html: partial-payments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment Types
+        blurb: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/payment-types/payment-channels.md
@@ -412,6 +533,14 @@ pages:
         blurb: Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later.
         targets:
             - en
+
+    -   md: concepts/payment-types/payment-channels.ja.md
+        html: payment-channels.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment Types
+        blurb: Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later. #TODO:translate
+        targets:
             - ja
 
     -   name: Issued Currencies
@@ -433,6 +562,14 @@ pages:
         blurb: Get an overview of issued currencies and their properties in the XRP Ledger.
         targets:
             - en
+
+    -   md: concepts/issued-currencies/issued-currencies-overview.ja.md
+        html: issued-currencies-overview.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Get an overview of issued currencies and their properties in the XRP Ledger.
+        targets:
             - ja
 
     -   md: concepts/issued-currencies/trust-lines-and-issuing.md
@@ -443,6 +580,14 @@ pages:
         blurb: Learn about the properties and rationale of trust lines.
         targets:
             - en
+
+    -   md: concepts/issued-currencies/trust-lines-and-issuing.ja.md
+        html: trust-lines-and-issuing.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Learn about the properties and rationale of trust lines.
+        targets:
             - ja
 
     -   md: concepts/issued-currencies/authorized-trust-lines.md
@@ -453,6 +598,14 @@ pages:
         blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies.
         targets:
             - en
+
+    -   md: concepts/issued-currencies/authorized-trust-lines.ja.md
+        html: authorized-trust-lines.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies.
+        targets:
             - ja
 
     -   md: concepts/issued-currencies/freezes.md
@@ -463,6 +616,14 @@ pages:
         blurb: Freezes can suspend trading of issued currencies for compliance purposes.
         targets:
             - en
+
+    -   md: concepts/issued-currencies/freezes.ja.md
+        html: freezes.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Freezes can suspend trading of issued currencies for compliance purposes.
+        targets:
             - ja
 
     -   md: concepts/issued-currencies/rippling.md
@@ -473,6 +634,14 @@ pages:
         blurb: Rippling is automatic multi-party net settlement of issued currency balances.
         targets:
             - en
+
+    -   md: concepts/issued-currencies/rippling.ja.md
+        html: rippling.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Rippling is automatic multi-party net settlement of issued currency balances.
+        targets:
             - ja
 
     -   md: concepts/issued-currencies/transfer-fees.md
@@ -483,6 +652,14 @@ pages:
         blurb: Currency issuers can charge a fee for transferring their issued currencies.
         targets:
             - en
+
+    -   md: concepts/issued-currencies/transfer-fees.ja.md
+        html: transfer-fees.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Currency issuers can charge a fee for transferring their issued currencies.
+        targets:
             - ja
 
     -   md: concepts/issued-currencies/issuing-and-operational-addresses.md
@@ -493,6 +670,14 @@ pages:
         blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
         targets:
             - en
+
+    -   md: concepts/issued-currencies/issuing-and-operational-addresses.ja.md
+        html: issuing-and-operational-addresses.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
+        targets:
             - ja
 
     -   md: concepts/issued-currencies/paths.md
@@ -503,6 +688,14 @@ pages:
         blurb: Payments of issued currencies must traverse paths of connected users and order books.
         targets:
             - en
+
+    -   md: concepts/issued-currencies/paths.ja.md
+        html: paths.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        blurb: Payments of issued currencies must traverse paths of connected users and order books.
+        targets:
             - ja
 
     -   md: concepts/issued-currencies/demurrage.md
@@ -534,6 +727,14 @@ pages:
         blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
         targets:
             - en
+
+    -   md: concepts/decentralized-exchange/offers.ja.md
+        html: offers.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Decentralized Exchange
+        blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
+        targets:
             - ja
 
     -   md: concepts/decentralized-exchange/autobridging.md
@@ -544,6 +745,14 @@ pages:
         blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs.
         targets:
             - en
+
+    -   md: concepts/decentralized-exchange/autobridging.ja.md
+        html: autobridging.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Decentralized Exchange
+        blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs.
+        targets:
             - ja
 
     -   md: concepts/decentralized-exchange/ticksize.md
@@ -554,6 +763,14 @@ pages:
         blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
         targets:
             - en
+
+    -   md: concepts/decentralized-exchange/ticksize.ja.md
+        html: ticksize.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Decentralized Exchange
+        blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
+        targets:
             - ja
 
     -   name: Consensus Network
@@ -647,6 +864,14 @@ pages:
         blurb: Understand when and how it's possible to cancel a transaction that has already been sent.
         targets:
             - en
+
+    -   md: concepts/consensus-network/about-canceling-a-transaction.ja.md
+        html: about-canceling-a-transaction.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand when and how it's possible to cancel a transaction that has already been sent. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/consensus-network/transaction-malleability.md
@@ -696,7 +921,7 @@ pages:
         blurb: List of all known amendments to the XRP Ledger protocol and their status.
         targets:
             - en
-            - ja
+            - ja #NOTE: there is a translation of this page, but it's very out of date
 
     -   md: concepts/consensus-network/fee-voting.md
         html: fee-voting.html
@@ -773,6 +998,14 @@ pages:
         blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
         targets:
             - en
+
+    -   md: concepts/the-rippled-server/rippled-server-modes.ja.md
+        html: rippled-server-modes.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
+        targets:
             - ja
 
     -   md: concepts/the-rippled-server/clustering.md
@@ -783,6 +1016,14 @@ pages:
         blurb: Run rippled servers in a cluster to share the load of cryptography between them.
         targets:
             - en
+
+    -   md: concepts/the-rippled-server/clustering.ja.md
+        html: clustering.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: Run rippled servers in a cluster to share the load of cryptography between them.
+        targets:
             - ja
 
     -   md: concepts/the-rippled-server/ledger-history/ledger-history.md
@@ -794,6 +1035,15 @@ pages:
         blurb: rippled servers store a variable amount of transaction and state history locally.
         targets:
             - en
+
+    -   md: concepts/the-rippled-server/ledger-history/ledger-history.ja.md
+        html: ledger-history.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        subcategory: Ledger History
+        blurb: rippled servers store a variable amount of transaction and state history locally.
+        targets:
             - ja
 
     -   md: concepts/the-rippled-server/ledger-history/online-deletion.md
@@ -805,6 +1055,15 @@ pages:
         blurb: Online deletion purges outdated transaction and state history.
         targets:
             - en
+
+    -   md: concepts/the-rippled-server/ledger-history/online-deletion.ja.md
+        html: online-deletion.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        subcategory: Ledger History
+        blurb: Online deletion purges outdated transaction and state history.
+        targets:
             - ja
 
     -   md: concepts/the-rippled-server/ledger-history/history-sharding.md
@@ -816,6 +1075,15 @@ pages:
         blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
         targets:
             - en
+
+    -   md: concepts/the-rippled-server/ledger-history/history-sharding.ja.md
+        html: history-sharding.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        subcategory: Ledger History
+        blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
+        targets:
             - ja
 
     -   md: concepts/the-rippled-server/peer-protocol.md
@@ -826,6 +1094,14 @@ pages:
         blurb: The peer protocol specifies the language rippled servers speak to each other.
         targets:
             - en
+
+    -   md: concepts/the-rippled-server/peer-protocol.ja.md
+        html: peer-protocol.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: The peer protocol specifies the language rippled servers speak to each other.
+        targets:
             - ja
 
     -   md: concepts/the-rippled-server/transaction-censorship-detection.md
