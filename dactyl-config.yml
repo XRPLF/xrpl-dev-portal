@@ -1145,6 +1145,14 @@ pages:
         blurb: Connect to the rippled API and get data about the shared ledger state.
         targets:
             - en
+
+    -   md: tutorials/get-started/get-started-with-the-rippled-api.ja.md
+        html: get-started-with-the-rippled-api.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        blurb: Connect to the rippled API and get data about the shared ledger state. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/get-started/set-up-secure-signing.md
@@ -1167,6 +1175,14 @@ pages:
         blurb: Build an entry-level JavaScript application for querying the XRP Ledger.
         targets:
             - en
+
+    -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.ja.md
+        html: get-started-with-rippleapi-for-javascript.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        blurb: Build an entry-level JavaScript application for querying the XRP Ledger. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/get-started/look-up-transaction-results.md
@@ -1261,6 +1277,14 @@ pages:
         blurb: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later.
         targets:
             - en
+
+    -   md: tutorials/manage-account-settings/assign-a-regular-key-pair.ja.md
+        html: assign-a-regular-key-pair.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md
@@ -1271,6 +1295,14 @@ pages:
         blurb: Remove or update a regular key pair already authorized by your account.
         targets:
             - en
+
+    -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.ja.md
+        html: change-or-remove-a-regular-key-pair.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Remove or update a regular key pair already authorized by your account. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
@@ -1281,6 +1313,14 @@ pages:
         blurb: Add a signer list to your account to enable multi-signing.
         targets:
             - en
+
+    -   md: tutorials/manage-account-settings/set-up-multi-signing.ja.md
+        html: set-up-multi-signing.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Add a signer list to your account to enable multi-signing. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.md
@@ -1699,6 +1739,15 @@ pages:
         blurb: Have your server vote on the consensus ledger.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
+        html: run-rippled-as-a-validator.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Have your server vote on the consensus ledger. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.md
@@ -1710,6 +1759,15 @@ pages:
         blurb: Connect your rippled server to the test net to try out new features or test functionality with fake money.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
+        html: connect-your-rippled-to-the-xrp-test-net.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Connect your rippled server to the test net to try out new features or test functionality with fake money. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/cluster-rippled-servers.md
@@ -1721,6 +1779,15 @@ pages:
         blurb: Set up a group of servers that share work for higher efficiency.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/cluster-rippled-servers.ja.md
+        html: cluster-rippled-servers.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Set up a group of servers that share work for higher efficiency. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
@@ -1732,6 +1799,15 @@ pages:
         blurb: Configure how far back your server should store transaction history.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.ja.md
+        html: configure-online-deletion.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Configure how far back your server should store transaction history. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.md
@@ -1743,6 +1819,15 @@ pages:
         blurb: Use advisory deletion to delete older ledger history on a schedule rather than as new history becomes available.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.ja.md
+        html: configure-advisory-deletion.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Use advisory deletion to delete older ledger history on a schedule rather than as new history becomes available. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.md
@@ -1754,6 +1839,15 @@ pages:
         blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.ja.md
+        html: configure-history-sharding.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.md
@@ -1765,6 +1859,15 @@ pages:
         blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.ja.md
+        html: configure-full-history.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run.
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-the-peer-crawler.md
