@@ -21,6 +21,9 @@
     <script src="assets/vendor/jquery-1.11.1.min.js"></script>
 
     <!-- Stylesheet -->
+    {% if target.lang=="ja" %}
+    <link href="assets/css/fonts-ja.css" rel="stylesheet" />
+    {% endif %}
     <link href="assets/css/devportal.css" rel="stylesheet" />
 
     <!-- Google Analytics -->
@@ -38,7 +41,7 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}{% block bodyclasses %}{% endblock %}">
+<body class="xrp-ledger-dev-portal {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}lang-{{target.lang}} {% block bodyclasses %}{% endblock %}">
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
     <a href="{% if target.no_cover is defined and target.no_cover %}/{% else %}index.html{% endif %}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal" /></a>
@@ -70,7 +73,19 @@
           <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
         </div>
       </form>
-    </div>
+      <div class="nav navbar-nav language-selector">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{(config.languages|selectattr('code', 'eq', target.lang)|first).display_name}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
+            {% for lang in config.languages %}
+            <a class="dropdown-item" href="{{lang.prefix}}{{currentpage.html}}">{{lang.display_name}}</a>
+            {% endfor %}
+          </div><!--/.dropdown-menu-->
+        </div><!--/.dropdown-->
+      </div><!--/.language-selector-->
+    </div><!--/#navbarHolder-->
     <div class="menu-overlay"></div>
   </nav>
 
