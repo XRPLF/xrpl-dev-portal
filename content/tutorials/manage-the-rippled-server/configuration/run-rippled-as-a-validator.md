@@ -114,7 +114,7 @@ On your validator:
 
       - The `server_state` value should be _**proposing**_.
 
-
+**Security Tip:** Change the permissions on your `rippled.cfg` file to be more restrictive. On Linux it is recommended to be `0600`. You can do this with `chmod 0600 rippled.cfg`
 
 ## 4. Connect to the network
 
