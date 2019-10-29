@@ -36,6 +36,17 @@ Request('account_info', {
   }
 })
 
+Request('account_lines', {
+  description: "Retrieves information about an account's trust lines, including balances for all non-XRP currencies and assets.",
+  link: "account_lines.html",
+  body: {
+    "id": 2,
+    "command": "account_lines",
+    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "ledger_index": "validated"
+  }
+})
+
 Request('account_objects', {
   description: "Returns the raw ledger format for all objects owned by an account.",
   link: "account_objects.html",
