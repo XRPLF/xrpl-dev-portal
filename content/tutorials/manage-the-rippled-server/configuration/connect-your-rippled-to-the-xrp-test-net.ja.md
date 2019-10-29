@@ -1,4 +1,4 @@
-﻿# XRP Test Netへのrippledの接続
+# XRP Test Netへのrippledの接続
 
 Rippleは、XRP Ledgerのテストプラットフォームを提供するため[XRP Test Network](https://ripple.com/build/xrp-test-net/)を開発しました。XRP Test Netの資金は実際の資金ではなく、テスト専用の資金です。本番環境のXRP Ledger Networkに接続する前に、`rippled`サーバーをXRP Test Netに接続して、`rippled`の機能をテストして理解できます。また、XRP Test Netを使用して、作成したコードが`rippled`と正しくやり取りすることを検証できます。
 

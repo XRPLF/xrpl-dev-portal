@@ -35,6 +35,15 @@ default_filters:
     - status_badges
 
 callout_class: "devportal-callout"
+callout_types:
+  - "tip"
+  - "ヒント" # equiv. of "Tip" in Japanese (lit. "Hint")
+  - "note"
+  - "注記" # equiv of "Note" in Japanese
+  - "caution"
+  - "注意" # equiv. of "Caution" in Japanese
+  - "warning"
+  - "警告" # equiv. of "Warning" in Japanese
 
 cover_page:
     name: Home
@@ -1389,6 +1398,15 @@ pages:
         blurb: Create an escrow whose only condition for release is that a specific time has passed.
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-escrows/send-a-time-held-escrow.ja.md
+        html: send-a-time-held-escrow.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Escrows
+        blurb: Create an escrow whose only condition for release is that a specific time has passed. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.md
@@ -1400,6 +1418,15 @@ pages:
         blurb: Create an escrow whose release is based on a condition being fulfilled.
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.ja.md
+        html: send-a-conditionally-held-escrow.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Escrows
+        blurb: Create an escrow whose release is based on a condition being fulfilled. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.md
@@ -1411,6 +1438,15 @@ pages:
         blurb: Cancel an expired escrow.
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.ja.md
+        html: cancel-an-expired-escrow.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Escrows
+        blurb: Cancel an expired escrow. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/look-up-escrows.md
@@ -1422,6 +1458,15 @@ pages:
         blurb: Look up pending escrows by sender or destination address.
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-escrows/look-up-escrows.ja.md
+        html: look-up-escrows.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Escrows
+        blurb: Look up pending escrows by sender or destination address. #TODO:translate
+        targets:
             - ja
 
     #TODO: split concept info off of the paychan tutorial
@@ -1433,6 +1478,14 @@ pages:
         blurb: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server.
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-payment-channels.ja.md
+        html: use-payment-channels.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        blurb: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
@@ -1446,6 +1499,17 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
+        html: use-checks.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Checks
+        blurb: Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
+        status: not_enabled
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.md
@@ -1457,6 +1521,15 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.ja.md
+        html: send-a-check.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Checks
+        status: not_enabled
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
@@ -1468,6 +1541,15 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.ja.md
+        html: cash-a-check-for-an-exact-amount.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Checks
+        status: not_enabled
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
@@ -1479,6 +1561,15 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-a-flexible-amount.ja.md
+        html: cash-a-check-for-a-flexible-amount.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Checks
+        status: not_enabled
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/cancel-a-check.md
@@ -1490,6 +1581,15 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-checks/cancel-a-check.ja.md
+        html: cancel-a-check.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Checks
+        status: not_enabled
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-sender.md
@@ -1501,6 +1601,15 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-sender.ja.md
+        html: look-up-checks-by-sender.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Checks
+        status: not_enabled
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-recipient.md
@@ -1512,6 +1621,15 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-recipient.ja.md
+        html: look-up-checks-by-recipient.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Checks
+        status: not_enabled
+        targets:
             - ja
 
     # TODO: "Send a Cross-Currency Payment"
@@ -1592,6 +1710,15 @@ pages:
         blurb: Hardware and software requirements for running rippled.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/system-requirements.ja.md
+        html: system-requirements.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: rippledのハードウェアやソフトウェアのシステム要件 #TODO:check translation
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.md
@@ -1603,6 +1730,15 @@ pages:
         blurb: Install a precompiled rippled binary on CentOS or Red Hat Enterprise Linux.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.ja.md
+        html: install-rippled-on-centos-rhel-with-yum.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: Install a precompiled rippled binary on CentOS or Red Hat Enterprise Linux. #TODO:translate
+        targets:
             - ja
 
     # Redirect old Alien-based install
@@ -1683,6 +1819,15 @@ pages:
         blurb: Compile rippled yourself on Ubuntu Linux.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.ja.md
+        html: build-run-rippled-ubuntu.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: Compile rippled yourself on Ubuntu Linux.
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md
@@ -1694,6 +1839,15 @@ pages:
         blurb: Compile rippled yourself on macOS.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.ja.md
+        html: build-run-rippled-macos.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: Compile rippled yourself on macOS. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
@@ -1705,6 +1859,15 @@ pages:
         blurb: Plan system specs and tune configuration for rippled in production environments.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.ja.md
+        html: capacity-planning.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: Plan system specs and tune configuration for rippled in production environments. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.md
@@ -1904,7 +2067,6 @@ pages:
             - en
             - ja
 
-
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
         html: start-a-new-genesis-ledger-in-stand-alone-mode.html
         funnel: Docs
@@ -1914,6 +2076,15 @@ pages:
         blurb: Start from a fresh genesis ledger in stand-alone mode.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.ja.md
+        html: start-a-new-genesis-ledger-in-stand-alone-mode.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Stand-Alone Mode
+        blurb: Start from a fresh genesis ledger in stand-alone mode. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
@@ -1925,6 +2096,15 @@ pages:
         blurb: Start in stand-alone mode from a specific saved ledger to test or replay transactions.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.ja.md
+        html: load-a-saved-ledger-in-stand-alone-mode.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Stand-Alone Mode
+        blurb: Start in stand-alone mode from a specific saved ledger to test or replay transactions. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
@@ -1936,6 +2116,15 @@ pages:
         blurb: Make progress in stand-alone mode by manually closing the ledger.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
+        html: advance-the-ledger-in-stand-alone-mode.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Stand-Alone Mode
+        blurb: Make progress in stand-alone mode by manually closing the ledger. #TODO:translate
+        targets:
             - ja
 
 
@@ -1960,6 +2149,15 @@ pages:
         blurb: Collect information to identify the cause of problems.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
+        html: diagnosing-problems.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Collect information to identify the cause of problems. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
@@ -1971,6 +2169,15 @@ pages:
         blurb: Interpret and respond to warning and error messages in the debug log.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.ja.md
+        html: understanding-log-messages.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Interpret and respond to warning and error messages in the debug log. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
@@ -1982,6 +2189,15 @@ pages:
         blurb: A collection of problems that would cause a rippled server not to start, and how to fix them.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.ja.md
+        html: server-wont-start.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: A collection of problems that would cause a rippled server not to start, and how to fix them. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
@@ -1990,8 +2206,18 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
+        blurb: Fix a problem with the SQLite page size on full-history servers started on rippled version 0.40.0 or earlier.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
+        html: fix-sqlite-tx-db-page-size-issue.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Fix a problem with the SQLite page size on full-history servers started on rippled version 0.40.0 or earlier. #TODO:translate
+        targets:
             - ja
 
 # References -------------------------------------------------------------------

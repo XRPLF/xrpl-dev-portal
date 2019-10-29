@@ -1,4 +1,4 @@
-﻿# RippleAPI入門ガイド
+# RippleAPI入門ガイド
 
 このチュートリアルでは、[Node.js](http://nodejs.org/)と[RippleAPI](rippleapi-reference.html)（XRP LedgerにアクセスするためのJavaScript API）を使用して、XRP Ledgerに接続されるアプリケーションを開発するための基本事項を説明します。
 
