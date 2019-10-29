@@ -1,6 +1,6 @@
 # Amendments
 
-[Introduced in: rippled 0.31.0][New in: rippled 0.31.0]
+[Introduced in: rippled 0.31.0][]
 
 The Amendments system provides a means of introducing new features to the decentralized XRP Ledger network without causing disruptions. The amendments system works by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect. An amendment normally requires **80% support for two weeks** before it can apply.
 

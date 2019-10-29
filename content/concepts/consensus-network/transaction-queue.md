@@ -31,7 +31,7 @@ The `rippled` server uses a variety of heuristics to estimate which transactions
 - Transactions must be properly-formed and [authorized](transaction-basics.html#authorizing-transactions) with valid signatures.
 - Transactions with an `AccountTxnID` field cannot be queued.
 - A single sending address can have at most 10 transactions queued at the same time.
-- To queue a transaction, the sender must have enough XRP for all of the following: [Updated in: rippled 1.2.0][New in: rippled 1.2.0]
+- To queue a transaction, the sender must have enough XRP for all of the following: [Updated in: rippled 1.2.0][]
     - Destroying the XRP [transaction cost](transaction-cost.html) as specified in the `Fee` fields of all the sender's queued transactions. The total amount among queued transactions cannot be more than the base account reserve (currently 20 XRP). (Transactions paying significantly more than the minimum transaction cost of 0.00001 XRP typically skip the queue and go straight into the open ledger.)
     - Sending the maximum sum of XRP that all the sender's queued transactions could send.
     - Keeping enough XRP to meet the account's [reserve requirements](reserves.html).

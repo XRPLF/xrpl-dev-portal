@@ -3,7 +3,7 @@
 
 The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](transaction-cost.html). This requires the [FeeEscalation amendment][] to be enabled. [New in: rippled 0.31.0][]
 
-This is a public command available to unprivileged users. [Updated in: rippled 0.32.0][New in: rippled 0.32.0]
+This is a public command available to unprivileged users. [Updated in: rippled 0.32.0][]
 
 ## Request Format
 An example of the request format:

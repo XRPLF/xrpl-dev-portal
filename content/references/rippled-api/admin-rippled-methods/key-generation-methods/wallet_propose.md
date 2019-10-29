@@ -5,7 +5,7 @@ Use the `wallet_propose` method to generate a key pair and XRP Ledger address. T
 
 *The `wallet_propose` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users!* (This command is restricted to protect against people sniffing network traffic for account secrets, since admin commands are not usually transmitted over the outside network.)
 
-[Updated in: rippled 0.31.0][New in: rippled 0.31.0]
+[Updated in: rippled 0.31.0][]
 
 ### Request Format
 

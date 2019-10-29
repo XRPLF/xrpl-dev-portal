@@ -1,6 +1,6 @@
 # History Sharding
 
-[Introduced in: rippled 0.90.0][New in: rippled 0.90.0]
+[Introduced in: rippled 0.90.0][]
 
 As servers operate, they naturally produce a database containing data about the ledgers they witnessed or acquired during network runtime. Each `rippled` server stores that ledger data in its ledger store, but the online delete logic rotates these databases when the number of stored ledgers exceeds configured space limitations.
 
