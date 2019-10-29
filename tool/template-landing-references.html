@@ -11,22 +11,24 @@
 
   {% set flag_n = cycler(* range(1,99)) %}
   <section class="container-fluid card-grid card-grid-4xN">
-    {# hardcoded rippled API block first since it's the only one with a supercategory #}
-    {% set page = pages|selectattr("supercategory", 'defined_and_equalto', "rippled API")|first %}
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
-      </div><!--/.card-header-->
-      <div class="card-body">
-        <p class="blurb">{{page.blurb}}</p>
-        {% set depth = 1 %}
-        {% set parent_page = page %}
-        {% include 'template-page-children.html' %}
-      </div><!--/.card-body-->
-      <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
-    </div><!--/.card-->
+    {% for page in pages|selectattr("doc_type", 'defined_and_equalto', "References")|selectattr("supercategory", "defined") %}
+      {% if page == pages|selectattr("supercategory", 'defined_and_equalto', page.supercategory)|first %}
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <p class="blurb">{{page.blurb}}</p>
+            {% set depth = 1 %}
+            {% set parent_page = page %}
+            {% include 'template-page-children.html' %}
+          </div><!--/.card-body-->
+          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
+        </div><!--/.card-->
+      {% endif %}
+    {% endfor %}
 
-    {% for page in pages|selectattr("doc_type", 'defined_and_equalto', "References")|selectattr("supercategory", "undefined_or_ne", "rippled API") %}
+    {% for page in pages|selectattr("doc_type", 'defined_and_equalto', "References")|selectattr("supercategory", "undefined") %}
       {% if loop.index != 1 and page == pages|selectattr("category", 'defined_and_equalto', page.category)|first %}
         <div class="card">
           <div class="card-header">
@@ -51,6 +53,9 @@
           <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
         </div><!--/.card-->
       {% endif %}
+    {% endfor %}
+    {% for filler_n in range((flag_n.current+1) % 4) %}
+      <div class="card">&nbsp;</div>
     {% endfor %}
 
   </section>
