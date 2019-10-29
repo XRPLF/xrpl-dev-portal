@@ -379,6 +379,9 @@ aside a.active-parent {
   padding-left: 33px;
   border-left: 2px solid $primary;
 }
+.sidebar_pagelist li a .fa {
+  display: inline;
+}
 
 .sidenav_cat_toggler {
   background-color: $gray-600;
