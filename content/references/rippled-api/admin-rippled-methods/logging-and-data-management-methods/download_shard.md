@@ -5,7 +5,7 @@ Instructs the server to download a specific [shard of historical ledger data](hi
 
 _The `download_shard` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
-The external source must provide the shard as an [lz4-compressed](https://lz4.github.io/lz4/) [tar archive](https://en.wikipedia.org/wiki/Tar_(computing)) served via HTTPS. The contents of the archive must match the database type used for your shard store (NuDB or RocksDB).
+The external source must provide the shard as an [lz4-compressed](https://lz4.github.io/lz4/) [tar archive](https://en.wikipedia.org/wiki/Tar_(computing)) served via HTTPS. The archive must contain the shard directory and data files in NuDB format.
 
 Downloading and importing shards using this method is usually faster than acquiring the shards individually from the peer-to-peer network. You can also use this method to choose a specific range or set of shards to provide from your server.
 
@@ -103,7 +103,7 @@ The response follows the [standard format][], with a successful result containin
 |:----------|:-------|:--------------------------------------------------------|
 | `message` | String | A message describing the actions taken in response to this request. |
 
-**Tip:** To see which shards your server has available, you can look at the subfolders in your configured location for the shard store (the `path` parameter of `[shard_db]` in your `rippled.cfg`). The folders are named to match the numbers of the shards; up to one of those folders may contain a `control.txt` file indicating that the shard is incomplete. <!-- TODO: Update to recommend the `crawl_shards` command if/when that command becomes available. -->
+**Tip:** To see which shards your server has available, use the [crawl_shards method][]. Alternatively, you can look at the subfolders in your configured location for the shard store (the `path` parameter of `[shard_db]` in your `rippled.cfg`). The folders are named to match the numbers of the shards; up to one of those folders may contain a `control.txt` file indicating that the shard is incomplete.
 
 ### Possible Errors
 
@@ -112,8 +112,6 @@ The response follows the [standard format][], with a successful result containin
 - `tooBusy` - The server is already downloading the shard, either from the peer-to-peer network or as the result of a previous `download_shard` request.
 - `invalidParams` - One or more required fields were omitted from the request, or a provided field was specified as the wrong data type.
 
-<!--{# @mduo13's note: Was unable to reproduce the following feature:
-**Tip:** If you make the request with the WebSocket API, the server can notify you over the same WebSocket connection if the download fails or an error occurs while extracting the archive. TODO: Get an example of what this message looks like. #}-->
 
 
 <!--{# common link defs #}-->

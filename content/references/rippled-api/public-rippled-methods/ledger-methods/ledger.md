@@ -196,8 +196,6 @@ If the request specified `"owner_funds": true` and expanded transactions, the re
 * `noPermission` - If you specified `full` or `accounts` as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).
 
 
-<!-- TODO: we should add this fee levels link to rippled-api-links.md. server_state.md is also including this as a one-off.-->
-[fee levels]: transaction-cost.html#fee-levels
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}

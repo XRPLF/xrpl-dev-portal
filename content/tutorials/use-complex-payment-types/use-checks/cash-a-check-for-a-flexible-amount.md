@@ -160,7 +160,7 @@ If cashing the Check failed with a `tec`-class code, look up the code in the [Fu
 
 ## {{cash_flex_n.next()}}. Confirm delivered amount
 
-If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you can assume that the Check was cashed for at least the `DeliverMin` amount. To get the exact amount delivered, check the transaction metadata. <!--{# TODO: Update if RIPD-1623 adds a delivered_amount field. #}--> The metadata's `AffectedNodes` array contains one or two objects that reflect the change in balances from cashing the Check, depending on the type of currency.
+If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you can assume that the Check was cashed for at least the `DeliverMin` amount. To get the exact amount delivered, check the transaction metadata. The `delivered_amount` field in the metadata shows the exact amount delivered. (This field is only provided if the Check was cashed for a flexible amount. If the check was successfully cashed for a fixed amount, then the delivered amount is equal to the `Amount` of the CheckCash transaction.)
 
 - For XRP, the `AccountRoot` object of the Check's sender has its XRP `Balance` field debited. The `AccountRoot` object of the Check's recipient (the one who sent the CheckCash transaction) has its XRP `Balance` credited for at least the `DeliverMin` of the CheckCash transaction minus the [transaction cost](transaction-cost.html) of sending the transaction.
 

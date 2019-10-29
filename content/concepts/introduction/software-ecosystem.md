@@ -37,7 +37,7 @@ Unlike [programming libraries](#programming-libraries), which are instantiated f
 
 The [Data API](data-api.html) is an example of a middleware service on top of the XRP Ledger. The Data API collects and transforms XRP Ledger data, so that you can query by time, filter by data type, or perform data analysis.
 
-<!--{# TODO: Add XRP-API here when it has more documentation #}-->
+[XRP-API](xrp-api.html) is another middleware service. XRP-API manages secret keys and provides a more convenient RESTful interface to the XRP Ledger for apps in any programming language.
 
 
 ### Apps and Services

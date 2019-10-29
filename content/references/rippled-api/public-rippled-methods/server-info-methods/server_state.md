@@ -290,9 +290,8 @@ The `state` object may have some arrangement of the following fields:
 
 * Any of the [universal error types][].
 
-<!-- TODO: add fee levels and transaction cost to rippled-api-links.md. multiple files are including them one-off, as below -->
-[fee levels]: transaction-cost.html#fee-levels
-[transaction cost]: transaction-cost.html
-{% include '_snippets/rippled_versions.md' %}
+
+<!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
