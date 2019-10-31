@@ -1202,6 +1202,14 @@ pages:
         blurb: Find the results of previously-submitted transactions.
         targets:
             - en
+
+    -   md: tutorials/get-started/look-up-transaction-results.ja.md
+        html: look-up-transaction-results.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        blurb: Find the results of previously-submitted transactions. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.md
@@ -1249,6 +1257,14 @@ pages:
         blurb: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly.
         targets:
             - en
+
+    -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.ja.md
+        html: reliable-transaction-submission.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        blurb: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly. #TODO:translate
+        targets:
             - ja
 
         # Redirect for this page's new home outside of tutorials
@@ -1340,6 +1356,14 @@ pages:
         blurb: Send a transaction authorized with multiple signatures.
         targets:
             - en
+
+    -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.ja.md
+        html: send-a-multi-signed-transaction.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Send a transaction authorized with multiple signatures. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/manage-account-settings/require-destination-tags.md
@@ -1653,9 +1677,17 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: Using a fictitious business called Alpha Exchange, this tutorial demonstrates the high-level steps required to list XRP.
+        blurb: Learn the high-level steps required to list XRP on a digital asset exchange.
         targets:
             - en
+
+    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
+        html: list-xrp-as-an-exchange.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        blurb: Learn the high-level steps required to list XRP on a digital asset exchange. #TODO: translate
+        targets:
             - ja
 
     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
@@ -1663,9 +1695,17 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: This tutorial describes how to have your exchange and its XRP trade and order book data listed on XRP Charts.
+        blurb: Have your exchange and its XRP trade and order book data listed on XRP Charts.
         targets:
             - en
+
+    -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
+        html: list-your-exchange-on-xrp-charts.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        blurb: Have your exchange and its XRP trade and order book data listed on XRP Charts. #TODO:translate
+        targets:
             - ja
 
     -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
@@ -2256,6 +2296,16 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/api-conventions.ja.md
+        html: api-conventions.html
+        blurb: rippled APIのデータ型とフォーマットについて説明します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/basic-data-types.md
@@ -2267,6 +2317,15 @@ pages:
         blurb: Format and meaning of fundamental data types like addresses, ledger index, and currency codes.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/basic-data-types.ja.md
+        html: basic-data-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/base58-encodings.md
@@ -2278,6 +2337,15 @@ pages:
         blurb: Formats for representing cryptographic keys and related data in base58 format.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/base58-encodings.ja.md
+        html: base58-encodings.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Formats for representing cryptographic keys and related data in base58 format. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/currency-formats.md
@@ -2289,6 +2357,15 @@ pages:
         blurb: Precision and range for currency numbers, plus formats of custom currency codes.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/currency-formats.ja.md
+        html: currency-formats.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Precision and range for currency numbers, plus formats of custom currency codes. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/error-formatting.md
@@ -2300,6 +2377,15 @@ pages:
         blurb: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/error-formatting.ja.md
+        html: error-formatting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/markers-and-pagination.md
@@ -2311,6 +2397,15 @@ pages:
         blurb: Convention for paginating large queries into multiple responses.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/markers-and-pagination.ja.md
+        html: markers-and-pagination.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Convention for paginating large queries into multiple responses. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/modifying-the-ledger.md
@@ -2322,6 +2417,15 @@ pages:
         blurb: Why and how only transactions can modify the ledger.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/modifying-the-ledger.ja.md
+        html: modifying-the-ledger.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Why and how only transactions can modify the ledger. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/request-formatting.md
@@ -2333,6 +2437,15 @@ pages:
         blurb: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/request-formatting.ja.md
+        html: request-formatting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/response-formatting.md
@@ -2344,6 +2457,15 @@ pages:
         blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/response-formatting.ja.md
+        html: response-formatting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/rippled-server-states.md
@@ -2355,6 +2477,15 @@ pages:
         blurb: Definitions of state information reported in some API methods.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/rippled-server-states.ja.md
+        html: rippled-server-states.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Definitions of state information reported in some API methods. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/serialization.md
@@ -2366,6 +2497,15 @@ pages:
         blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects.
         targets:
             - en
+
+    -   md: references/rippled-api/api-conventions/serialization.ja.md
+        html: serialization.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects. #TODO:translate
+        targets:
             - ja
 
 # rippled Public Methods
@@ -2379,6 +2519,15 @@ pages:
         blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.ja.md
+        html: public-rippled-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        blurb: パブリックAPIメソッドを使用して、rippledサーバーと直接通信します。
+        targets:
             - ja
 
     -   name: Account Methods
@@ -2404,6 +2553,16 @@ pages:
         blurb: Get a list of payment channels where the account is the source of the channel.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.ja.md
+        html: account_channels.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        blurb: アカウントのPayment Channelに関する情報を返します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.md
@@ -2416,6 +2575,16 @@ pages:
         blurb: Get a list of currencies an account can send or receive.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.ja.md
+        html: account_currencies.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        blurb: アカウントが送金または受領できる通貨のリストを返します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.md
@@ -2428,6 +2597,16 @@ pages:
         blurb: Get basic data about an account.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.ja.md
+        html: account_info.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        blurb: アカウントとそのアクティビティおよびXRP残高についての情報を取得します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.md
@@ -2440,6 +2619,16 @@ pages:
         blurb: Get info about an account's trust lines.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.ja.md
+        html: account_lines.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        blurb: アカウントのトラストラインに関する情報を返します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.md
@@ -2452,6 +2641,16 @@ pages:
         blurb: Get all ledger objects owned by an account.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.ja.md
+        html: account_objects.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        blurb: アカウントが所有するすべてのオブジェクトを返します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.md
@@ -2464,6 +2663,16 @@ pages:
         blurb: Get info about an account's currency exchange offers.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.ja.md
+        html: account_offers.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        blurb: Get info about an account's currency exchange offers.
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.md
@@ -2476,6 +2685,16 @@ pages:
         blurb: Get info about an account's transactions.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.ja.md
+        html: account_tx.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        blurb: 指定したアカウントに関連するトランザクションのリストを取得します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.md
@@ -2488,6 +2707,16 @@ pages:
         blurb: Calculate total amounts issued by an account.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.ja.md
+        html: gateway_balances.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        blurb: 特定のアカウントから発行された残高の合計を計算します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.md
@@ -2500,6 +2729,16 @@ pages:
         blurb: Get recommended changes to an account's DefaultRipple and NoRipple settings.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.ja.md
+        html: noripple_check.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        blurb: アカウントのDefaultRippleフィールドとそのトラストラインのNoRippleフラグの状態を、推奨される設定と比較して迅速にチェックします。
+        targets:
             - ja
 
     -   name: Ledger Methods
@@ -2525,6 +2764,16 @@ pages:
         blurb: Get info about a ledger version.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.ja.md
+        html: ledger.html # Watch carefully for clashes w/ this filename
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        blurb: 公開レジャーに関する情報を取得します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.md
@@ -2537,6 +2786,16 @@ pages:
         blurb: Get the latest closed ledger version.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.ja.md
+        html: ledger_closed.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        blurb: 最新の閉鎖済みレジャーの一意のIDを返します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.md
@@ -2549,6 +2808,16 @@ pages:
         blurb: Get the current working ledger version.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.ja.md
+        html: ledger_current.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        blurb: 現在進行中のレジャーの一意のIDを返します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.md
@@ -2561,6 +2830,16 @@ pages:
         blurb: Get the raw contents of a ledger version.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.ja.md
+        html: ledger_data.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        blurb: 指定されたレジャーの内容を取得します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.md
@@ -2573,6 +2852,16 @@ pages:
         blurb: Get one element from a ledger version.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.ja.md
+        html: ledger_entry.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        blurb: XRP Ledgerの1つのレジャーオブジェクトを生フォーマットで返します。
+        targets:
             - ja
 
     -   name: Transaction Methods
@@ -2598,6 +2887,16 @@ pages:
         blurb: Cryptographically sign a transaction.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.ja.md
+        html: sign.html # watch for clashes w/ this filename
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        blurb: トランザクションの署名済みバイナリー表現を返します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.md
@@ -2610,6 +2909,16 @@ pages:
         blurb: Contribute to a multi-signature.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.ja.md
+        html: sign_for.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        blurb: マルチ署名済みトランザクションの署名を1つ提供します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.md
@@ -2622,6 +2931,16 @@ pages:
         blurb: Send a transaction to the network.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.ja.md
+        html: submit.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        blurb: トランザクションを適用し、トランザクションの確認と将来のレジャーへの記録が行われるように、ネットワークに送信します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.md
@@ -2634,6 +2953,16 @@ pages:
         blurb: Send a multi-signed transaction to the network.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.ja.md
+        html: submit_multisigned.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        blurb: マルチ署名済みトランザクションを適用し、このトランザクションをネットワークに送信します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.md
@@ -2646,6 +2975,16 @@ pages:
         blurb: Retrieve info about a transaction from a particular ledger version.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.ja.md
+        html: transaction_entry.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        blurb: 特定のレジャーバージョンから1つのトランザクションに関する情報を取得します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.md
@@ -2658,6 +2997,16 @@ pages:
         blurb: Retrieve info about a transaction from all the ledgers on hand.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.ja.md
+        html: tx.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        blurb: 1つのトランザクションに関する情報を取得します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.md
@@ -2670,6 +3019,16 @@ pages:
         blurb: Retrieve info about all recent transactions.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.ja.md
+        html: tx_history.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        blurb: 直近に作成されたトランザクションの一部を取得します。
+        targets:
             - ja
 
     -   name: Path and Order Book Methods
@@ -2695,6 +3054,16 @@ pages:
         blurb: Get info about offers to exchange two currencies.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.ja.md
+        html: book_offers.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        blurb: オーダーブックと呼ばれる、2つの通貨間のオファーのリストを取得します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.md
@@ -2707,6 +3076,16 @@ pages:
         blurb: Check whether an account is authorized to send money directly to another.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.ja.md
+        html: deposit_authorized.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        blurb: あるアカウントに別のアカウントへ支払を直接送金する権限があるかどうかを示します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md
@@ -2719,6 +3098,16 @@ pages:
         blurb: Find a path for a payment between two accounts and receive updates.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.ja.md
+        html: path_find.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        blurb: トランザクションが実行される可能性のあるパスを探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.md
@@ -2731,6 +3120,16 @@ pages:
         blurb: Find a path for payment between two accounts, once.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.ja.md
+        html: ripple_path_find.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        blurb: すぐに利用できるペイメントパスを含む1つの応答を返します。
+        targets:
             - ja
 
     -   name: Payment Channel Methods
@@ -2756,6 +3155,16 @@ pages:
         blurb: Sign a claim for money from a payment channel.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_authorize.ja.md
+        html: channel_authorize.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Payment Channel Methods
+        blurb: 特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.md
@@ -2768,6 +3177,16 @@ pages:
         blurb: Check a payment channel claim's signature.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.ja.md
+        html: channel_verify.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Payment Channel Methods
+        blurb: 特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
+        targets:
             - ja
 
     -   name: Subscription Methods
@@ -2793,6 +3212,16 @@ pages:
         blurb: Listen for updates about a particular subject.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.ja.md
+        html: subscribe.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Subscription Methods
+        blurb: 特定のイベントが発生した場合に、定期的に通知するようサーバーに要求します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.md
@@ -2802,9 +3231,19 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Subscription Methods
-        blurb: Stop listening for updates about a particular subject.
+        blurb: 特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.ja.md
+        html: unsubscribe.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Subscription Methods
+        blurb: Stop listening for updates about a particular subject.
+        targets:
             - ja
 
     -   name: Server Info Methods
@@ -2830,6 +3269,16 @@ pages:
         blurb: Get information about transaction cost.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.ja.md
+        html: fee.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        blurb: トランザクションコストに関するオープンレジャーの要件の現在の状態を報告します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
@@ -2842,6 +3291,16 @@ pages:
         blurb: Retrieve status of the server in human-readable format.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.ja.md
+        html: server_info.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        blurb: rippledサーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.md
@@ -2854,6 +3313,16 @@ pages:
         blurb: Retrieve status of the server in machine-readable format.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.ja.md
+        html: server_state.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        blurb: rippledサーバーの現在の状態に関するさまざまな機械可読の情報を問い合わせます。
+        targets:
             - ja
 
     -   name: Utility Methods
@@ -2879,6 +3348,16 @@ pages:
         blurb: Pass JSON through the commandline.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/utility-methods/json.ja.md
+        html: json.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Utility Methods
+        blurb: コマンドのパラメーターをJSON値として受け入れ、他のコマンドを実行します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.md
@@ -2891,6 +3370,16 @@ pages:
         blurb: Confirm connectivity with the server.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.ja.md
+        html: ping.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Utility Methods
+        blurb: 確認応答を返します。これにより、接続のステータスと遅延をテストできます。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/random.md
@@ -2903,6 +3392,16 @@ pages:
         blurb: Generate a random number.
         targets:
             - en
+
+    -   md: references/rippled-api/public-rippled-methods/utility-methods/random.md
+        html: random.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Utility Methods
+        blurb: クライアントが乱数生成のエントロピー生成源として使用する乱数を提供します。
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
@@ -2914,6 +3413,15 @@ pages:
         blurb: Administer a rippled server with these admin API methods.
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.ja.md
+        html: admin-rippled-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        blurb: Administer a rippled server with these admin API methods. #TODO:translate
+        targets:
             - ja
 
     -   name: Key Generation Methods
@@ -2939,6 +3447,16 @@ pages:
         subcategory: Key Generation Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.ja.md
+        html: validation_create.html
+        blurb: rippledサーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵を生成します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Key Generation Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.md
@@ -2951,6 +3469,16 @@ pages:
         subcategory: Key Generation Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.ja.md
+        html: wallet_propose.html
+        blurb: キーペアとXRP Ledgerアドレスを生成します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Key Generation Methods
+        targets:
             - ja
 
     -   name: Logging and Data Management Methods
@@ -2976,6 +3504,16 @@ pages:
         subcategory: Logging and Data Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.ja.md
+        html: can_delete.html
+        blurb: Allow online deletion of ledgers up to a specific ledger. #TODO: translate
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.md
@@ -3000,6 +3538,16 @@ pages:
         subcategory: Logging and Data Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.ja.md
+        html: download_shard.html
+        blurb: Download a specific shard of ledger history. #TODO:translate
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.md
@@ -3012,6 +3560,16 @@ pages:
         subcategory: Logging and Data Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.ja.md
+        html: ledger_cleaner.html
+        blurb: レジャークリーナーを制御し、レジャーデータベースの破損を検出して修復できる非同期メンテナンスをする。 #TODO:translation check
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md
@@ -3024,6 +3582,16 @@ pages:
         subcategory: Logging and Data Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.ja.md
+        html: ledger_request.html
+        blurb: サーバーに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.md
@@ -3036,6 +3604,16 @@ pages:
         subcategory: Logging and Data Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.ja.md
+        html: log_level.html
+        blurb: ログ詳細レベルを変更するか、現在のログレベルを返します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.md
@@ -3048,6 +3626,16 @@ pages:
         subcategory: Logging and Data Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.ja.md
+        html: logrotate.html
+        blurb: ログファイルを閉じて再度開きます。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
             - ja
 
     -   name: Server Control Methods
@@ -3073,6 +3661,16 @@ pages:
         subcategory: Server Control Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/connect.ja.md
+        html: connect.html
+        blurb: 特定のピアrippledサーバーに強制的に接続します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.md
@@ -3085,6 +3683,16 @@ pages:
         subcategory: Server Control Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.ja.md
+        html: ledger_accept.html
+        blurb: スタンドアロンモードでサーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.md
@@ -3097,11 +3705,21 @@ pages:
         subcategory: Server Control Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.ja.md
+        html: stop.html
+        blurb: サーバーのグレースフルシャットダウンを行います。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.md
         html: validation_seed.html
-        blurb: Temporarily set key to be used for validating.
+        blurb: REMOVED. Temporarily set key to be used for validating.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -3109,6 +3727,16 @@ pages:
         subcategory: Server Control Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.ja.md
+        html: validation_seed.html
+        blurb: 無効。rippledが検証の署名に使用するシークレット値を一時的に設定します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Server Control Methods
+        targets:
             - ja
 
     -   name: Status and Debugging Methods
@@ -3124,7 +3752,6 @@ pages:
             - en
             - ja
 
-
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.md
         html: consensus_info.html
         blurb: Get information about the state of consensus as it happens.
@@ -3135,6 +3762,16 @@ pages:
         subcategory: Status and Debugging Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.ja.md
+        html: consensus_info.html
+        blurb: デバッグのためのコンセンサスプロセスに関する情報を返します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.md
@@ -3147,6 +3784,16 @@ pages:
         subcategory: Status and Debugging Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.ja.md
+        html: feature.html
+        blurb: Amendmentに関してこのサーバーが認識している情報を返します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.md
@@ -3159,6 +3806,16 @@ pages:
         subcategory: Status and Debugging Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.ja.md
+        html: fetch_info.html
+        blurb: このサーバーが現在ネットワークからフェッチしているオブジェクトに関する情報を返します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.md
@@ -3171,6 +3828,16 @@ pages:
         subcategory: Status and Debugging Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.ja.md
+        html: get_counts.html
+        blurb: サーバーの健全性に関するさまざまな統計情報を提供します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/peers.md
@@ -3183,6 +3850,16 @@ pages:
         subcategory: Status and Debugging Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/peers.ja.md
+        html: peers.html
+        blurb: ピアプロトコルでこのサーバーに現在接続されているその他のすべてのrippledサーバーのリストを返します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
@@ -3195,6 +3872,16 @@ pages:
         subcategory: Status and Debugging Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.ja.md
+        html: print.html
+        blurb: さまざまな内部サブシステムの現在の状況を返します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
@@ -3207,6 +3894,16 @@ pages:
         subcategory: Status and Debugging Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.ja.md
+        html: validator_list_sites.html
+        blurb: バリデータリストを処理するサイトのステータス情報を返します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.md
@@ -3219,6 +3916,16 @@ pages:
         subcategory: Status and Debugging Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.ja.md
+        html: validators.html
+        blurb: サーバーが使用する公開済みの信頼できるバリデータの最新リストに関する情報を返します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
             - ja
 
     -   name: Ledger Data Formats
@@ -3242,6 +3949,15 @@ pages:
         blurb: A unique header that describes the contents of a ledger version.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-header.ja.md
+        html: ledger-header.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        blurb: A unique header that describes the contents of a ledger version. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.md
@@ -3253,6 +3969,15 @@ pages:
         blurb: All objects in a ledger's state tree have a unique ID.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.ja.md
+        html: ledger-object-ids.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        blurb: All objects in a ledger's state tree have a unique ID. #TODO:translate
+        targets:
             - ja
 
     -   name: Ledger Object Types
@@ -3278,6 +4003,16 @@ pages:
         blurb: The settings, XRP balance, and other metadata for one account.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.ja.md
+        html: accountroot.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: The settings, XRP balance, and other metadata for one account. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/amendments.md
@@ -3290,6 +4025,16 @@ pages:
         blurb: Singleton object with status of enabled and pending amendments.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/amendments.ja.md
+        html: amendments-object.html #amendments.html is taken by the concept page
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Singleton object with status of enabled and pending amendments. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/check.md
@@ -3303,6 +4048,17 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/check.ja.md
+        html: check.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A check that can be redeemed for money by its destination. #TODO:translate
+        status: not_enabled
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/depositpreauth.md
@@ -3315,6 +4071,16 @@ pages:
         blurb: A record of preauthorization for sending payments to an account that requires authorization.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/depositpreauth.ja.md
+        html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A record of preauthorization for sending payments to an account that requires authorization. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.md
@@ -3327,6 +4093,16 @@ pages:
         blurb: Contains links to other objects.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.ja.md
+        html: directorynode.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Contains links to other objects. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/escrow.md
@@ -3339,6 +4115,16 @@ pages:
         blurb: Contains XRP held for a conditional payment.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/escrow.ja.md
+        html: escrow-object.html #escrow.html is taken by the concept page
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Contains XRP held for a conditional payment. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/feesettings.md
@@ -3351,6 +4137,16 @@ pages:
         blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/feesettings.ja.md
+        html: feesettings.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Singleton object with consensus-approved base transaction cost and reserve requirements. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledgerhashes.md
@@ -3363,6 +4159,16 @@ pages:
         blurb: Lists of prior ledger versions' hashes for history lookup.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledgerhashes.ja.md
+        html: ledgerhashes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Lists of prior ledger versions' hashes for history lookup. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.md
@@ -3375,6 +4181,16 @@ pages:
         blurb: An order to make a currency trade.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.ja.md
+        html: offer.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: An order to make a currency trade. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.md
@@ -3387,6 +4203,16 @@ pages:
         blurb: A channel for asynchronous XRP payments.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.ja.md
+        html: paychannel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A channel for asynchronous XRP payments. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.md
@@ -3399,6 +4225,16 @@ pages:
         blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.ja.md
+        html: ripplestate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.md
@@ -3411,6 +4247,16 @@ pages:
         blurb: A list of addresses for multi-signing transactions.
         targets:
             - en
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.ja.md
+        html: signerlist.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        blurb: A list of addresses for multi-signing transactions. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-formats.md
@@ -3423,6 +4269,16 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-formats.ja.md
+        html: transaction-formats.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        blurb: トランザクションは、XRP Ledgerを変更する唯一の方法です。
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-common-fields.md
@@ -3434,6 +4290,15 @@ pages:
         blurb: These common fields can be provided on any XRP Ledger transaction.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-common-fields.ja.md
+        html: transaction-common-fields.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        blurb: どのトランザクションについても、共通する一連のフィールドがあります。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.md
@@ -3447,6 +4312,17 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.ja.md
+        html: transaction-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: トランザクションのタイプは、どういったタイプの操作を実行することが想定されているのかを示します。
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/accountset.md
@@ -3459,6 +4335,16 @@ pages:
         blurb: Set options on an account.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/accountset.ja.md
+        html: accountset.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: XRP Ledgerのアカウントのプロパティーを修正します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
@@ -3472,6 +4358,17 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.ja.md
+        html: checkcancel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
+        status: not_enabled
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.md
@@ -3485,6 +4382,17 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.ja.md
+        html: checkcash.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: レジャーでCheckオブジェクトの清算を試みます。
+        status: not_enabled
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.md
@@ -3498,6 +4406,17 @@ pages:
         status: not_enabled
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.ja.md
+        html: checkcreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: レジャーにCheckオブジェクトを作成します
+        status: not_enabled
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.md
@@ -3510,6 +4429,16 @@ pages:
         blurb: Preauthorizes an account to send payments to this one.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.ja.md
+        html: depositpreauth.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.md
@@ -3522,6 +4451,16 @@ pages:
         blurb: Reclaim escrowed XRP.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.ja.md
+        html: escrowcancel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Escrowに留保されているXRPを送金元に返金します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.md
@@ -3531,9 +4470,19 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Types
-        blurb:  Create an escrowed XRP payment.
+        blurb: Create an escrowed XRP payment.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.ja.md
+        html: escrowcreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Escrowプロセスが終了または取り消されるまでXRPを隔離します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.md
@@ -3546,6 +4495,16 @@ pages:
         blurb: Deliver escrowed XRP to recipient.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.ja.md
+        html: escrowfinish.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: 保留中の支払いから受取人へXRPを送金します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.md
@@ -3558,6 +4517,16 @@ pages:
         blurb: Withdraw a currency-exchange order.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.ja.md
+        html: offercancel.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: XRP LedgerからOfferオブジェクトを削除します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.md
@@ -3570,6 +4539,16 @@ pages:
         blurb: Submit an order to exchange currency.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.ja.md
+        html: offercreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: OfferCreateは通貨の交換を行う意図を定義するもので、配置時に完全に履行されていない場合はOfferオブジェクトを作成します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/payment.md
@@ -3582,6 +4561,16 @@ pages:
         blurb: Send funds from one account to another.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/payment.ja.md
+        html: payment.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: アカウント間での価値の移動します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.md
@@ -3594,6 +4583,16 @@ pages:
         blurb: Claim money from a payment channel.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.ja.md
+        html: paymentchannelclaim.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Payment Channelに対しXRPを請求します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.md
@@ -3606,6 +4605,16 @@ pages:
         blurb: Open a new payment channel.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.ja.md
+        html: paymentchannelcreate.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: 一方向のChannelを作成し、XRPを供給します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.md
@@ -3618,6 +4627,16 @@ pages:
         blurb: Add more XRP to a payment channel.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.ja.md
+        html: paymentchannelfund.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: オープンPayment ChannelにXRPを追加します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.md
@@ -3630,6 +4649,16 @@ pages:
         blurb: Add, remove, or modify an account's regular key pair.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.ja.md
+        html: setregularkey.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.md
@@ -3642,6 +4671,16 @@ pages:
         blurb: Add, remove, or modify an account's multi-signing list.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.ja.md
+        html: signerlistset.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: トランザクションのマルチ署名に使用できる署名者のリストを作成、置換、削除します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md
@@ -3654,6 +4693,16 @@ pages:
         blurb: Add or modify a trust line.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/trustset.ja.md
+        html: trustset.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: 2つのアカウントをリンクするトラストラインを作成または変更します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.md
@@ -3667,6 +4716,17 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.ja.md
+        html: pseudo-transaction-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Pseudo-Transaction Types
+        blurb: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger. #TODO:translate
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.md
@@ -3679,6 +4739,16 @@ pages:
         blurb: Enable a change in transaction processing.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.ja.md
+        html: enableamendment.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Pseudo-Transaction Types
+        blurb: トランザクション処理を変更するAmendmentプロセスの進行状況を追跡します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.md
@@ -3691,6 +4761,16 @@ pages:
         blurb: Change global reserve and transaction cost settings.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.ja.md
+        html: setfee.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Pseudo-Transaction Types
+        blurb: 手数料投票の結果としてトランザクションコストまたはアカウント準備金の要件が変更されます。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md
@@ -3703,6 +4783,16 @@ pages:
         blurb: Learn how to interpret rippled server transaction results.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.ja.md
+        html: transaction-results.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        blurb: Learn how to interpret rippled server transaction results. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.md
@@ -3715,6 +4805,16 @@ pages:
         blurb: tec codes indicate that the transaction failed, but it was applied to a ledger to deduct the transaction cost.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.ja.md
+        html: tec-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        blurb: tecコードは、トランザクションは失敗したものの、トランザクションコストを適用するために、このトランザクションがレジャーに適用されたことを示します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.md
@@ -3727,6 +4827,16 @@ pages:
         blurb: tef codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.ja.md
+        html: tef-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        blurb: tefコードは、トランザクションが失敗してレジャーに記録されなかったが、一部の理論上のレジャーでは正常に完了できた可能性があることを示します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.md
@@ -3739,6 +4849,16 @@ pages:
         blurb: tel codes indicate an error in the local server processing the transaction.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.ja.md
+        html: tel-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        blurb: telコードは、トランザクションを処理するローカルサーバーでのエラーを示します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.md
@@ -3751,6 +4871,16 @@ pages:
         blurb: tem codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.ja.md
+        html: tem-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        blurb: temコードは、トランザクションの形式が正しくないため、XRP Ledgerプロトコルに基づきトランザクションが正常に完了しないことを示します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.md
@@ -3763,6 +4893,16 @@ pages:
         blurb: ter codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.ja.md
+        html: ter-codes.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        blurb: terコードは、トランザクションは失敗したけれども、将来そのトランザクションを正常に適用できる可能性があることを示します。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.md
@@ -3775,6 +4915,16 @@ pages:
         blurb: tesSUCCESS is the only code that indicates a transaction succeeded. This does not always mean it accomplished what you expected it to do.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.ja.md
+        html: tes-success.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Results
+        blurb: tesSUCCESSコードは、トランザクションが成功したことを示す唯一のコードです。
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-metadata.md
@@ -3786,6 +4936,15 @@ pages:
         blurb: Transaction metadata describes the outcome of the transaction in detail, regardless of whether the transaction is successful.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-metadata.ja.md
+        html: transaction-metadata.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        blurb: トランザクションのメタデータは、トランザクションの処理後にトランザクションに追加されるひとまとまりのデータです。
+        targets:
             - ja
 
     -   md: references/rippled-api/commandline-usage.md
@@ -3808,6 +4967,26 @@ pages:
               anchor: "#unit-tests"
         targets:
             - en
+
+    -   md: references/rippled-api/commandline-usage.ja.md
+        html: commandline-usage.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Commandline Usage
+        blurb: Commandline usage options for the rippled server. #TODO:translate
+        curated_anchors:
+            - name: 使用できるモード
+              anchor: "#使用できるモード"
+            - name: デーモンモードのオプション
+              anchor: "#デーモンモードのオプション"
+            - name: スタンドアロンモードのオプション
+              anchor: "#スタンドアロンモードのオプション"
+            - name: クライアントモードのオプション
+              anchor: "#クライアントモードのオプション"
+            - name: 単体テスト
+              anchor: "#単体テスト"
+        targets:
             - ja
 
     -   md: references/rippled-api/peer-crawler.md
@@ -3883,8 +5062,21 @@ pages:
               anchor: "#api-conventions"
         targets:
             - en
-            - ja
             - data-api-only
+
+    -   md: references/data-api.ja.md
+        html: data-api.html
+        funnel: Docs
+        doc_type: References
+        category: Data API
+        blurb: RESTful interface to XRP Ledger analytics and historical data. #TODO:translate
+        curated_anchors:
+            - name: APIメソッドリファレンス
+              anchor: "#apiメソッドリファレンス"
+            - name: APIの規則
+              anchor: "#apiの規則"
+        targets:
+            - ja
 
     -   md: references/xrp-ledger-toml.md
         html: xrp-ledger-toml.html
@@ -3915,6 +5107,11 @@ pages:
         funnel: Use Cases
         targets:
             - en
+
+    -   md: use-cases/use-cases.ja.md
+        html: use-cases.html
+        funnel: Use Cases
+        targets:
             - ja
 
     -   md: use-cases/run-a-rippled-validator.md
@@ -3930,6 +5127,19 @@ pages:
             - use_case
         targets:
             - en
+
+    -   md: use-cases/run-a-rippled-validator.ja.md
+        html: run-a-rippled-validator.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - amendments.html
+            - the-rippled-server.html
+            - fee-voting.html
+            - consensus-principles-and-rules.html
+        filters:
+            - use_case
+        targets:
             - ja
 
     -   md: use-cases/list-xrp-in-your-exchange.md
@@ -3944,6 +5154,18 @@ pages:
             - use_case
         targets:
             - en
+
+    -   md: use-cases/list-xrp-in-your-exchange.ja.md
+        html: list-xrp-in-your-exchange.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - xrp-ledger-overview.html
+            - reliable-transaction-submission.html
+            - xrp.html
+        filters:
+            - use_case
+        targets:
             - ja
 
     -   md: use-cases/open-a-payment-channel-to-enable-an-inter-exchange-network.md
@@ -3972,6 +5194,17 @@ pages:
             - use_case
         targets:
             - en
+
+    -   md: use-cases/contribute-code-to-rippled.ja.md
+        html: contribute-code-to-rippled.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - consensus.html
+            - amendments.html
+        filters:
+            - use_case
+        targets:
             - ja
 
     -   md: use-cases/contribute-code-to-ripple-lib.md
@@ -3985,6 +5218,17 @@ pages:
             - use_case
         targets:
             - en
+
+    -   md: use-cases/contribute-code-to-ripple-lib.ja.md
+        html: contribute-code-to-ripple-lib.html
+        funnel: Use Cases
+        template: template-use-case.html
+        useful_background:
+            - rippleapi-reference.html
+            - get-started-with-rippleapi-for-javascript.html
+        filters:
+            - use_case
+        targets:
             - ja
 
     -   md: use-cases/use-an-escrow-as-a-smart-contract.md
@@ -4006,6 +5250,11 @@ pages:
         funnel: Dev Tools
         targets:
             - en
+
+    -   md: dev-tools/dev-tools.ja.md
+        html: dev-tools.html
+        funnel: Dev Tools
+        targets:
             - ja
 
     -   name: Dev Tools # Redirect page for old broken URL
