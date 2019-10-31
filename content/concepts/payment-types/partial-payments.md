@@ -73,7 +73,7 @@ You can find the `delivered_amount` field in the following places:
 
 If a financial institution's integration with the XRP Ledger assumes that the `Amount` field of a Payment is always the full amount delivered, malicious actors may be able to exploit that assumption to steal money from the institution. This exploit can be used against gateways, exchanges, or merchants as long as those institutions' software does not process partial payments correctly.
 
-**The correct way to process incoming Payment transactions is to use [the `delivered_amount` metadata field](#the-delivered-amount-field),** not the `Amount` field. This way, an institution is never mistaken about how much it _actually_ received.
+**The correct way to process incoming Payment transactions is to use [the `delivered_amount` metadata field](#the-delivered_amount-field),** not the `Amount` field. This way, an institution is never mistaken about how much it _actually_ received.
 
 
 ### Exploit Scenario Steps
@@ -100,7 +100,7 @@ In the case of a merchant, the order of operations is slightly different, but th
 
 ### Further Mitigations
 
-Using [the `delivered_amount` field](#the-delivered-amount-field) when processing incoming transactions is enough to avoid this exploit. Still, additional proactive business practices can also avoid or mitigate the likelihood of this and similar exploits. For example:
+Using [the `delivered_amount` field](#the-delivered_amount-field) when processing incoming transactions is enough to avoid this exploit. Still, additional proactive business practices can also avoid or mitigate the likelihood of this and similar exploits. For example:
 
 - Add additional sanity checks to your business logic for processing withdrawals. Never process a withdrawal if the total balance you hold in the XRP Ledger does not match your expected assets and obligations.
 - Follow "Know Your Customer" guidelines and strictly verify your customers' identities. You may be able to recognize and block malicious users in advance, or pursue legal action against a malicious actor who exploits your system.

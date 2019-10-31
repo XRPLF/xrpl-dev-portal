@@ -32,7 +32,7 @@ To tune your server, it may be useful to start with `tiny` and increase the size
 
 Although `large` is also a legal value for `[node_size]`, in practice it performs worse than `huge` in most circumstances. Ripple recommends always using `huge` instead of `large`.
 
-If you set the `node_size` parameter to an invalid value, the [server fails to start](server-wont-start.html#bad-node-size-value).
+If you set the `node_size` parameter to an invalid value, the [server fails to start](server-wont-start.html#bad-node_size-value).
 
 
 ### Node DB Type

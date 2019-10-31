@@ -100,7 +100,7 @@ A partial payment allows a payment to succeed by reducing the amount received. P
 
 A partial payment is any [Payment transaction][] with the **tfPartialPayment** flag enabled. A partial payment can be successful if it delivers any positive amount greater than or equal to its `DeliverMin` field (or any positive amount at all if `DeliverMin` is not specified) without sending more than the `SendMax` value.
 
-The [`delivered_amount`](transaction-metadata.html#delivered-amount) field of a payment's metadata indicates the amount of currency actually received by the destination account.
+The [`delivered_amount`](transaction-metadata.html#delivered_amount) field of a payment's metadata indicates the amount of currency actually received by the destination account.
 
 For more information, see the full article on [Partial Payments](partial-payments.html).
 

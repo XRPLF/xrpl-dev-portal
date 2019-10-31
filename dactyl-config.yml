@@ -26,7 +26,7 @@ filter_paths:
 
 default_filters:
     - multicode_tabs
-    - standardize_header_ids
+    - unicode_header_ids
     - buttonize
     - callouts
     - badges

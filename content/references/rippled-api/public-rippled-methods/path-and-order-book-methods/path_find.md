@@ -518,7 +518,7 @@ The request includes the following parameters:
 
 ### Response Format
 
-If a pathfinding request was successfully closed, the response follows the same format as the initial response to [`path_find create`](#path-find-create), plus the following field:
+If a pathfinding request was successfully closed, the response follows the same format as the initial response to [`path_find create`](#path_find-create), plus the following field:
 
 | `Field`  | Type    | Description                                             |
 |:---------|:--------|:--------------------------------------------------------|
@@ -563,7 +563,7 @@ The request includes the following parameters:
 
 ### Response Format
 
-If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path-find-create), plus the following field:
+If a pathfinding request is open, the response follows the same format as the initial response to [`path_find create`](#path_find-create), plus the following field:
 
 | `Field`  | Type    | Description                                             |
 |:---------|:--------|:--------------------------------------------------------|

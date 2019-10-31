@@ -32,7 +32,7 @@ Rippleでは、お使いのRAMでサポートできる最大のノードサイ�
 
 `large`も`[node_size]`の値として有効ですが、実際に使用するとほとんどの環境で`huge`よりもパフォーマンスが悪くなります。Rippleでは、`large`の代わりに、常に`huge`を使用することを推奨します。
 
-`node_size`パラメーターを無効な値に設定すると、[サーバーは起動しません](server-wont-start.html#bad-node-size-value)。
+`node_size`パラメーターを無効な値に設定すると、[サーバーは起動しません](server-wont-start.html#bad-node_size-value)。
 
 
 ### ノードDBタイプ
