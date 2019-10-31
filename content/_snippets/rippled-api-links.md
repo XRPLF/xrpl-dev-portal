@@ -6,10 +6,12 @@
 [Currency Amount]: basic-data-types.html#specifying-currency-amounts
 [Currency Code]: currency-formats.html#currency-codes
 [drops of XRP]: basic-data-types.html#specifying-currency-amounts
+[fee levels]: transaction-cost.html#fee-levels
 [Hash]: basic-data-types.html#hashes
 [identifying hash]: transaction-basics.html#identifying-transactions
 [Internal Type]: serialization.html
 [Ledger Index]: basic-data-types.html#ledger-index
+[ledger format]: ledger-data-formats.html
 [Marker]: markers-and-pagination.html
 [result code]: transaction-results.html
 [seconds since the Ripple Epoch]: basic-data-types.html#specifying-time

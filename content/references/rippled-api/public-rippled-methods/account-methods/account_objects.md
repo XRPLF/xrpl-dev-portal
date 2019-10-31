@@ -3,8 +3,6 @@
 
 The `account_objects` command returns the raw [ledger format][] for all objects owned by an account. For a higher-level view of an account's trust lines and balances, see the [account_lines method][] instead.
 
-[ledger format]: ledger-data-formats.html
-
 The types of objects that may appear in the `account_objects` response for an account include:
 
 - [Offer objects](offer.html) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](offers.html#lifecycle-of-an-offer) for more information.)
@@ -619,5 +617,7 @@ The response follows the [standard format][], with a successful result containin
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 
-{% include '_snippets/rippled_versions.md' %}
+<!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

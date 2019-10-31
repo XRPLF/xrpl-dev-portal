@@ -588,7 +588,8 @@ Each transaction object includes the following fields, depending on whether it w
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
 * `actBitcoin` - The [Address][] specified in the `account` field is formatted like a Bitcoin address instead of a XRP Ledger address.
-* `lgrIdxsInvalid` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
+* `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
+* `lgrIdxsInvalid` - Either the request specified a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is not [synced with the network](troubleshoot-the-rippled-server.html). <!-- TODO: link more specific docs when https://github.com/ripple/xrpl-dev-portal/issues/714 is done. -->
 
 
 {% include '_snippets/rippled_versions.md' %}

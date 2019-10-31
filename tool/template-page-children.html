@@ -118,9 +118,9 @@
     {% endif %}
   {% endfor %}
 
-  {# Special case to add Dev Blog to things #}
-  {% if parent.name == "News" %}
-  <li class="level-{{indent_level}}"><a href="/blog/">Ripple Dev Blog</a></li>
+  {# Special case to add XRPL Explorer to Dev Tools #}
+  {% if parent.name == "Dev Tools" %}
+  <li class="level-{{indent_level}}"><a target="_blank" href="https://livenet.xrpl.org/">XRP Ledger Explorer</a> <i class="fa fa-external-link"></i></li>
   {% endif %}
 {% endmacro %}
 

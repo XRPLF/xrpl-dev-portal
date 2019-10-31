@@ -51,8 +51,8 @@
             <li><a class="nosubcat-page" href="{{ link_prefix}}{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
             {% endif %}
           {% endfor %}
-          {% if use_page.funnel == "News" %}
-          <li><a class="nosubcat-page" href="/blog/">Ripple Dev Blog</a></li>
+          {% if use_page.funnel == "Dev Tools" %}
+          <li><a class="nosubcat-page" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger Explorer <i class="fa fa-external-link"></i></a></li>
           {% endif %}
           </ul>
         </div><!-- /.card-body -->

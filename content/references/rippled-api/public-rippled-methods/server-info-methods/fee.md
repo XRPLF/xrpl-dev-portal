@@ -158,7 +158,7 @@ The response follows the [standard format][], with a successful result containin
 * Any of the [universal error types][].
 
 
-<!-- TODO: fee levels link to rippled-api-links.md - it is being used one off in a couple of files -->
-[fee levels]: transaction-cost.html#fee-levels
-{% include '_snippets/rippled_versions.md' %}
+<!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

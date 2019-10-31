@@ -165,7 +165,8 @@ The response follows the [standard format][], with a successful result containin
 * `unknownOption` - The fields provided in the request did not match any of the expected request formats.
 
 
-<!-- TODO: we should add this ledger format link to rippled-api-links.md. account_objects.md is also including this as a one-off.-->
-[ledger format]: ledger-data-formats.html
-{% include '_snippets/rippled_versions.md' %}
+
+<!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
