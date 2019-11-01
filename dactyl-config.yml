@@ -122,7 +122,7 @@ pages:
         category: Introduction
         html: introduction.html
         template: template-landing-children.html
-        blurb: The XRP Ledger is a decentralized cryptographic ledger powered by a network of peer-to-peer rippled servers. This section covers basic concepts that help you learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
+        blurb: Learn the "what" and "why" of the XRP Ledger.  #TODO:translate
         targets:
             - en
             - ja
@@ -141,7 +141,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Get a quick and concise introduction to key features of the XRP Ledger. #TODO: translate this
+        blurb: Get a quick and concise introduction to key features of the XRP Ledger.  #TODO:translate
         targets:
             - ja
 
@@ -159,7 +159,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Develop a basic understanding of the XRP Ledger's consensus mechanism. #TODO: translate this
+        blurb: Develop a basic understanding of the XRP Ledger's consensus mechanism.  #TODO:translate
         targets:
             - ja
 
@@ -177,7 +177,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Learn about the uses and properties of XRP, the digital asset for payments. #TODO: translate this
+        blurb: Learn about the uses and properties of XRP, the digital asset for payments. #TODO:translate
         targets:
             - ja
 
@@ -186,7 +186,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Get an overview of what XRP Ledger software is out there and how it fits together.
+        blurb: Get an overview of what XRP Ledger software is out there and how it fits together. #TODO:translate
         targets:
             - en
             - ja
@@ -205,7 +205,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Get answers to frequently asked questions, covering topics such as validators, unique node lists, the role of XRP, and security. #TODO: translate this
+        blurb: Get answers to frequently asked questions, covering topics such as validators, unique node lists, the role of XRP, and security. #TODO:translate
         targets:
             - ja
 
@@ -215,7 +215,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         template: template-landing-children.html
-        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system.
+        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system. #TODO:translate
         targets:
             - en
             - ja
@@ -316,7 +316,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Accounts
-        blurb: The DepositAuth setting lets an account block incoming payments by default.
+        blurb: The DepositAuth setting lets an account block incoming payments by default. #TODO:translate
         targets:
             - ja
 
@@ -334,7 +334,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment System Basics
-        blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
+        blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other. #TODO:translate
         targets:
             - ja
 
@@ -352,7 +352,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment System Basics
-        blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers.
+        blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers. #TODO:translate
         targets:
             - ja
 
@@ -372,7 +372,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Transaction Basics
-        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
+        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them. #TODO:translate
         targets:
             - ja
 
@@ -392,7 +392,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Transaction Basics
-        blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
+        blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies. #TODO:translate
         targets:
             - ja
 
@@ -402,7 +402,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Transaction Basics
-        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
+        blurb: Learn when the outcome of a transaction is final and immutable.
         targets:
             - en
 
@@ -412,7 +412,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Transaction Basics
-        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
+        blurb: Learn when the outcome of a transaction is final and immutable. #TODO:translate
         targets:
             - ja
 
@@ -422,7 +422,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Transaction Basics
-        blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses
+        blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses. #TODO:translate
         targets:
             - en
             - ja
@@ -433,7 +433,7 @@ pages:
         doc_type: Concepts
         category: Payment Types
         template: template-landing-children.html
-        blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types.
+        blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types. #TODO:translate
         targets:
             - en
             - ja
@@ -455,7 +455,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment Types
-        blurb: Direct XRP payments are the simplest way to send value in the XRP Ledger.
+        blurb: Direct XRP payments are the simplest way to send value in the XRP Ledger. #TODO:translate
         targets:
             - en
             - ja
@@ -558,7 +558,7 @@ pages:
         doc_type: Concepts
         category: Issued Currencies
         template: template-landing-children.html
-        blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger.
+        blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger. #TODO:translate
         targets:
             - en
             - ja
@@ -577,7 +577,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Get an overview of issued currencies and their properties in the XRP Ledger.
+        blurb: Get an overview of issued currencies and their properties in the XRP Ledger. #TODO:translate
         targets:
             - ja
 
@@ -595,7 +595,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Learn about the properties and rationale of trust lines.
+        blurb: Learn about the properties and rationale of trust lines. #TODO:translate
         targets:
             - ja
 
@@ -613,7 +613,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies.
+        blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies. #TODO:translate
         targets:
             - ja
 
@@ -631,7 +631,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Freezes can suspend trading of issued currencies for compliance purposes.
+        blurb: Freezes can suspend trading of issued currencies for compliance purposes. #TODO:translate
         targets:
             - ja
 
@@ -649,7 +649,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Rippling is automatic multi-party net settlement of issued currency balances.
+        blurb: Rippling is automatic multi-party net settlement of issued currency balances. #TODO:translate
         targets:
             - ja
 
@@ -667,7 +667,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Currency issuers can charge a fee for transferring their issued currencies.
+        blurb: Currency issuers can charge a fee for transferring their issued currencies. #TODO:translate
         targets:
             - ja
 
@@ -685,7 +685,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
+        blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk. #TODO:translate
         targets:
             - ja
 
@@ -703,7 +703,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Payments of issued currencies must traverse paths of connected users and order books.
+        blurb: Payments of issued currencies must traverse paths of connected users and order books. #TODO:translate
         targets:
             - ja
 
@@ -723,7 +723,7 @@ pages:
         doc_type: Concepts
         category: Decentralized Exchange
         template: template-landing-children.html
-        blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other.
+        blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other. #TODO:translate
         targets:
             - en
             - ja
@@ -742,7 +742,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Decentralized Exchange
-        blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
+        blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties. #TODO:translate
         targets:
             - ja
 
@@ -760,7 +760,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Decentralized Exchange
-        blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs.
+        blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs. #TODO:translate
         targets:
             - ja
 
@@ -778,7 +778,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Decentralized Exchange
-        blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
+        blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates. #TODO:translate
         targets:
             - ja
 
@@ -788,7 +788,7 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         template: template-landing-children.html
-        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
+        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing. #TODO:translate
         targets:
             - en
             - ja
@@ -897,7 +897,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Be aware of ways transactions could be changed to have a different hash than expected.
+        blurb: Be aware of ways transactions could be changed to have a different hash than expected. #TODO:translate
         targets:
             - ja
 
@@ -964,7 +964,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Scholarly articles on consensus algorithms and related research.
+        blurb: Scholarly articles on consensus algorithms and related research. #TODO:translate
         targets:
             - ja
 
@@ -984,7 +984,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
+        blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger. #TODO:translate
         targets:
             - ja
 
@@ -994,7 +994,7 @@ pages:
         doc_type: Concepts
         category: The rippled Server
         template: template-landing-children.html
-        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
+        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server. #TODO:translate
         targets:
             - en
             - ja
@@ -1013,7 +1013,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
-        blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
+        blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode. #TODO:translate
         targets:
             - ja
 
@@ -1031,7 +1031,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
-        blurb: Run rippled servers in a cluster to share the load of cryptography between them.
+        blurb: Run rippled servers in a cluster to share the load of cryptography between them. #TODO:translate
         targets:
             - ja
 
@@ -1051,7 +1051,7 @@ pages:
         doc_type: Concepts
         category: The rippled Server
         subcategory: Ledger History
-        blurb: rippled servers store a variable amount of transaction and state history locally.
+        blurb: rippled servers store a variable amount of transaction and state history locally. #TODO:translate
         targets:
             - ja
 
@@ -1071,7 +1071,7 @@ pages:
         doc_type: Concepts
         category: The rippled Server
         subcategory: Ledger History
-        blurb: Online deletion purges outdated transaction and state history.
+        blurb: Online deletion purges outdated transaction and state history. #TODO:translate
         targets:
             - ja
 
@@ -1091,7 +1091,7 @@ pages:
         doc_type: Concepts
         category: The rippled Server
         subcategory: Ledger History
-        blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
+        blurb: History sharding divides the work of keeping historical ledger data among rippled servers. #TODO:translate
         targets:
             - ja
 
@@ -1109,7 +1109,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
-        blurb: The peer protocol specifies the language rippled servers speak to each other.
+        blurb: The peer protocol specifies the language rippled servers speak to each other. #TODO:translate
         targets:
             - ja
 
@@ -1118,7 +1118,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
-        blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers.
+        blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers. #TODO:translate
         targets:
             - en
             - ja
@@ -1130,7 +1130,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         template: template-landing-children.html
-        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
+        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger. #TODO:translate
         targets:
             - en
             - ja
@@ -1141,7 +1141,7 @@ pages:
         doc_type: Tutorials
         category: Get Started
         template: template-landing-children.html
-        blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger.
+        blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger. #TODO:translate
         targets:
             - en
             - ja
@@ -1169,7 +1169,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Get Started
-        blurb: Set up an environment where you can submit transactions securely.
+        blurb: Set up an environment where you can submit transactions securely. #TODO:translate
         targets:
             - en
             - ja
@@ -1217,7 +1217,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Get Started
-        blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
+        blurb: Use the WebSocket API to actively monitor for new XRP payments (and more). #TODO:translate
         filters:
             - interactive_steps
         targets:
@@ -1232,7 +1232,7 @@ pages:
         doc_type: Tutorials
         category: Use Simple XRP Payments
         template: template-landing-children.html
-        blurb: Direct XRP payments from one account to another are the simplest way to transact in the XRP Ledger. This section includes tutorials for how to use simple transactions proficiently and robustly.
+        blurb: Direct XRP payments from one account to another are the simplest way to transact in the XRP Ledger. This section includes tutorials for how to use simple transactions proficiently and robustly. #TODO:translate
         targets:
             - en
             - ja
@@ -1242,7 +1242,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Use Simple XRP Payments
-        blurb: Test out sending XRP using the XRP Test Net.
+        blurb: Test out sending XRP using the XRP Test Net. #TODO:translate
         filters:
             - interactive_steps
         targets:
@@ -1275,7 +1275,6 @@ pages:
         category: Use Simple XRP Payments
         template: template-redirect.html
         redirect_url: about-canceling-a-transaction.html
-        blurb: Replace a pending transaction if it gets stuck from paying too low a transaction cost.
         targets:
             - en
             - ja
@@ -1286,7 +1285,7 @@ pages:
         doc_type: Tutorials
         category: Manage Account Settings
         template: template-landing-children.html
-        blurb: Set up your XRP Ledger account to send and receive payments the way you want it to.
+        blurb: Set up your XRP Ledger account to send and receive payments the way you want it to. #TODO:translate
         targets:
             - en
             - ja
@@ -1371,7 +1370,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
-        blurb: Require users to specify a destination tag when sending to your address.
+        blurb: Require users to specify a destination tag when sending to your address. #TODO:translate
         targets:
             - en
             - ja
@@ -1384,7 +1383,7 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         template: template-landing-children.html
-        blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger.
+        blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger. #TODO:translate
         targets:
             - en
             - ja
@@ -1407,7 +1406,7 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Escrows
-        blurb: The XRP Ledger supports held payments, or escrows, that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies. You can use these features to build publicly-provable smart contracts. This sections explains basic tasks relating to held payments.
+        blurb: The XRP Ledger supports escrows that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies.  #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -1524,7 +1523,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
+    -   md: tutorials/use-complex-payment-types/use-checks/use-checks.ja.md
         html: use-checks.html
         funnel: Docs
         doc_type: Tutorials
@@ -1666,7 +1665,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger.
+        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -1686,7 +1685,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: Learn the high-level steps required to list XRP on a digital asset exchange. #TODO: translate
+        blurb: Learn the high-level steps required to list XRP on a digital asset exchange. #TODO:translate
         targets:
             - ja
 
@@ -1723,7 +1722,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        blurb: A system admin's guide to setting up and maintaining the rippled server.
+        blurb: A system admin's guide to setting up and maintaining the rippled server. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -1735,7 +1734,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Set up and update the rippled server.
+        blurb: Install and update the rippled server. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -1800,7 +1799,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Install a precompiled rippled binary on Ubuntu Linux.
+        blurb: Install a precompiled rippled binary on Ubuntu Linux. #TODO:translate
         targets:
             - en
             - ja
@@ -1823,7 +1822,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Set up automatic updates for rippled on Linux.
+        blurb: Set up automatic updates for rippled on Linux. #TODO:translate
         targets:
             - en
             - ja
@@ -1834,7 +1833,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Manually update rippled on CentOS or Red Hat Enterprise Linux.
+        blurb: Manually update rippled on CentOS or Red Hat Enterprise Linux. #TODO:translate
         targets:
             - en
             - ja
@@ -1845,7 +1844,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Manually update rippled on Ubuntu Linux.
+        blurb: Manually update rippled on Ubuntu Linux. #TODO:translate
         targets:
             - en
             - ja
@@ -1866,7 +1865,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Compile rippled yourself on Ubuntu Linux.
+        blurb: Compile rippled yourself on Ubuntu Linux. #TODO:translate
         targets:
             - ja
 
@@ -1927,7 +1926,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Customize your rippled server configuration.
+        blurb: Customize your rippled server configuration. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -1939,7 +1938,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Have your server vote on the consensus ledger.
+        blurb: Have your server vote on the consensus ledger. #TODO:translate
         targets:
             - en
 
@@ -2069,7 +2068,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run.
+        blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run. #TODO:translate
         targets:
             - ja
 
@@ -2079,7 +2078,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Configure how much information your server reports publicly about its status and peers.
+        blurb: Configure how much information your server reports publicly about its status and peers. #TODO:translate
         targets:
             - en
             - ja
@@ -2093,6 +2092,15 @@ pages:
         blurb: Allow others to use your server to sign transactions. (Not recommended)
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.ja.md
+        html: enable-public-signing.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Allow others to use your server to sign transactions. (Not recommended) #TODO:translate
+        targets:
             - ja
 
     -   name: Test rippled Functionality in Stand-Alone Mode
@@ -2101,7 +2109,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Stand-Alone Mode
-        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
+        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -2174,7 +2182,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
-        blurb: Troubleshoot all kinds of problems with the rippled server.
+        blurb: Troubleshoot all kinds of problems with the rippled server. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -2268,7 +2276,7 @@ pages:
         template: template-landing-references.html
         html: references.html
         sidebar: disabled
-        blurb: Complete references for different interfaces to the XRP Ledger.
+        blurb: Complete references for different interfaces to the XRP Ledger. #TODO:translate
         targets:
             - en
             - ja
@@ -2281,7 +2289,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         template: template-landing-children.html
-        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger.
+        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger. #TODO:translate
         targets:
             - en
             - ja
@@ -2538,7 +2546,7 @@ pages:
         category: Public rippled Methods
         subcategory: Account Methods
         template: template-landing-children.html
-        blurb: An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info.
+        blurb: An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info. #TODO:translate
         targets:
             - en
             - ja
@@ -2671,7 +2679,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
-        blurb: Get info about an account's currency exchange offers.
+        blurb: 特定のアカウントから出されたオファーのリストを取得します。
         targets:
             - ja
 
@@ -2748,7 +2756,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
-        blurb: A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info.
+        blurb: A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -2872,7 +2880,7 @@ pages:
         category: Public rippled Methods
         subcategory: Transaction Methods
         template: template-landing-children.html
-        blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions.
+        blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions. #TODO:translate
         targets:
             - en
             - ja
@@ -3038,7 +3046,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Path and Order Book Methods
-        blurb: Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.
+        blurb: Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -3196,7 +3204,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Subscription Methods
-        blurb: Use these methods to enable the server to push updates to your client when various events happen, so that you can know and react right away. WebSocket API only.
+        blurb: Use these methods to enable the server to push updates to your client when various events happen, so that you can know and react right away. WebSocket API only. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -3231,7 +3239,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Subscription Methods
-        blurb: 特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
+        blurb: Stop listening for updates about a particular subject.
         targets:
             - en
 
@@ -3242,7 +3250,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Subscription Methods
-        blurb: Stop listening for updates about a particular subject.
+        blurb: 特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
         targets:
             - ja
 
@@ -3253,7 +3261,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Server Info Methods
-        blurb: Use these methods to retrieve information about the current state of the rippled server.
+        blurb: Use these methods to retrieve information about the current state of the rippled server. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -3426,7 +3434,7 @@ pages:
 
     -   name: Key Generation Methods
         html: key-generation-methods.html
-        blurb: Use these methods to generate and manage keys.
+        blurb: Use these methods to generate and manage keys. #TODO:translate
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -3518,7 +3526,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.md
         html: crawl_shards.html
-        blurb: Request information about which history shards peers have.
+        blurb: Request information about which history shards peers have. #TODO:translate
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -3741,7 +3749,7 @@ pages:
 
     -   name: Status and Debugging Methods
         html: status-and-debugging-methods.html
-        blurb: Use these methods to check the status of the network and server.
+        blurb: Use these methods to check the status of the network and server. #TODO:translate
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -3934,7 +3942,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: Ledger Data Formats
-        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state. #TODO:translate
         template: template-landing-children.html #TODO: consider using the default template instead for page sidebar?
         targets:
             - en
@@ -3988,7 +3996,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         template: template-landing-children.html
-        blurb: Each ledger's state tree consists of a set of ledger objects, which collectively represent all settings, balances, and relationships in the shared ledger. In the peer protocol that rippled servers use to communicate with each other, ledger objects are represented in their raw binary format. In the rippled API, ledger objects are represented as JSON objects.
+        blurb: Each ledger's state tree consists of a set of ledger objects, which collectively represent all settings, balances, and relationships in the shared ledger. In the peer protocol that rippled servers use to communicate with each other, ledger objects are represented in their raw binary format. In the rippled API, ledger objects are represented as JSON objects. #TODO:translate
         targets:
             - en
             - ja
@@ -4995,7 +5003,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: Peer Crawler
-        blurb: Special API method for sharing network topology and status metrics.
+        blurb: Special API method for sharing network topology and status metrics. #TODO:translate
         targets:
             - en
             - ja
@@ -5034,7 +5042,7 @@ pages:
         funnel: Docs
         doc_type: References
         category: RippleAPI for JavaScript
-        blurb: Official client library to the XRP Ledger. Available for JavaScript only.
+        blurb: Official client library to the XRP Ledger. Available for JavaScript only. #TODO:translate
         curated_anchors:
             - name: Transactions
               anchor: "#transaction-overview"
@@ -5083,7 +5091,7 @@ pages:
         funnel: Docs
         doc_type: References
         category: XRP Ledger TOML File
-        blurb: Provide machine-readable information about yourself to other XRP Ledger users.
+        blurb: Provide machine-readable information about yourself to other XRP Ledger users. #TODO:translate
         curated_anchors:
             - name: Serving the File
               anchor: "#serving-the-file"
