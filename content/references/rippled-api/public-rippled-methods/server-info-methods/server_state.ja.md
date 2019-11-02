@@ -288,7 +288,7 @@ rippled server_state
 
 ## 考えられるエラー
 
-* [一般的なエラータイプ][]のすべて。
+* [汎用エラータイプ][]のすべて。
 
 <!-- TODO: add fee levels and transaction cost to rippled-api-links.md. multiple files are including them one-off, as below -->
 [手数料レベル]: transaction-cost.html#手数料レベル

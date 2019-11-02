@@ -85,7 +85,7 @@ rippled ledger_current
 
 ## 考えられるエラー
 
-* [一般的なエラータイプ][]のすべて。
+* [汎用エラータイプ][]のすべて。
 
 
 {% include '_snippets/rippled_versions.md' %}

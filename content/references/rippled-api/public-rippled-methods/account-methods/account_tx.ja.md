@@ -584,7 +584,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 ## 考えられるエラー
 
-* いずれかの[ユニバーサルエラータイプ][]。
+* いずれかの[汎用エラータイプ][]。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actMalformed` - 要求の`account`フィールドに指定した[アドレス][]が、正しいフォーマットではありません。
 * `actBitcoin` - `account`フィールドに指定された[アドレス][]が、XRP LedgerアドレスではなくBitcoinアドレスのようなフォーマットになっています。

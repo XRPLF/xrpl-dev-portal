@@ -75,7 +75,7 @@ rippled ping
 
 ## 考えられるエラー
 
-* [一般的なエラータイプ][]のすべて。
+* [汎用エラータイプ][]のすべて。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

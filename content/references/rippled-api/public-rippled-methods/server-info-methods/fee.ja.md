@@ -155,7 +155,7 @@ Connecting to 127.0.0.1:5005
 
 ## 考えられるエラー
 
-* [一般的なエラータイプ][]のすべて。
+* [汎用エラータイプ][]のすべて。
 
 
 <!-- TODO: fee levels link to rippled-api-links.md - it is being used one off in a couple of files -->

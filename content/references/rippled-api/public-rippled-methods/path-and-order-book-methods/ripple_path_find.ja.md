@@ -330,7 +330,7 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 
 ## 考えられるエラー
 
-* [一般的なエラータイプ][]のすべて。
+* [汎用エラータイプ][]のすべて。
 * `tooBusy` - サーバーの負荷が高すぎるため、パスを計算できません。管理者として接続している場合は、このエラーが返されることはありません。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `srcActMissing` - `source_account`フィールドが要求で省略されています。

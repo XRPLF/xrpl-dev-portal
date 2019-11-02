@@ -55,7 +55,7 @@ rippled ledger_accept
 
 ### 考えられるエラー
 
-* [一般的なエラータイプ][]のすべて。
+* [汎用エラータイプ][]のすべて。
 * `notStandAlone` - `rippled`サーバーが現在スタンドアロンモードで実行されていない場合。
 
 <!--{# common link defs #}-->

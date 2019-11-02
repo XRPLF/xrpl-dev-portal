@@ -202,7 +202,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 
 ## 考えられるエラー
 
-* いずれかの[ユニバーサルエラータイプ][]。
+* いずれかの[汎用エラータイプ][]。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。例えば、要求で`queue`を`true`と指定したが、現在開いているレジャーではない`ledger_index`を指定した場合です。
 * `actNotFound` - 要求の`account`フィールドに指定したアドレスが、レジャー内のアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。

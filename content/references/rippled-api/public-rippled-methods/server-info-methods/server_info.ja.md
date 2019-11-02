@@ -324,7 +324,7 @@ rippled server_info
 
 ## 考えられるエラー
 
-* いずれかの[ユニバーサルエラータイプ][]。
+* いずれかの[汎用エラータイプ][]。
 
 
 {% include '_snippets/rippled_versions.md' %}

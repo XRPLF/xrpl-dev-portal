@@ -22,6 +22,13 @@
 
 {% block main %}
   <article class="pt-3 p-md-3">
+    {% if target.lang != "en" and "en" in currentpage.targets %}
+    {# Add a "sorry this page isn't translated" banner. #}
+    {# TODO: pull from a strings file #}
+    <div class="devportal-callout note mb-5"><strong>Sorry, this page is not available in your language.</strong>
+      <p class="mb-0">We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href="#">please contribute!</a><!--{# TODO: have a real link for contributing translations #}--></p>
+    </div><!--/.devportal-callout-->
+    {% endif %}
     <div class="content">
         {{ content }}
     </div>

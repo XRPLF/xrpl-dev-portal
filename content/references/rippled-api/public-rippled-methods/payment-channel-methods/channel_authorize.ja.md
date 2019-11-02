@@ -109,7 +109,7 @@ rippled channel_authorize s█████████████████�
 
 ## 考えられるエラー
 
-* [一般的なエラータイプ][]のすべて。
+* [汎用エラータイプ][]のすべて。
 * `badSeed` - 要求の`secret`が有効なシークレットキーではありません。
 * `channelAmtMalformed` - 要求の`amount`が有効な[XRPの額][XRP、drop単位]ではありません。
 * `channelMalformed` - 要求の`channel_id`が有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列です。

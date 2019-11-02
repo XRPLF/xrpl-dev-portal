@@ -228,7 +228,7 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* [一般的なエラータイプ][]のすべて。
+* [汎用エラータイプ][]のすべて。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
