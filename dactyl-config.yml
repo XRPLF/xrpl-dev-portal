@@ -68,12 +68,64 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
+        strings:
+            blog: "Blog"
+            search: "Search site with Google..."
+            bc_home: "Home"
+            tl_banner:
+                head: "Sorry, this page is not available in your language."
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"#\">please contribute!</a>" #TODO: have a real link for contributing translations
+            pagetoc: "In this document"
+            footer:
+                ripple:
+                    careers: "Ripple Careers"
+                    github: "Ripple on GitHub"
+                    xrp_resources: "XRP Resources"
+                license: "License"
+            to_top:
+                short: "Top"
+                long: "Jump to top of page"
+            github_edit: "Edit"
+            home:
+                intro:
+                    head: "Powering the Internet of Value."
+                    body1: "The <a href=\"#xrp_ledger_intro\">XRP Ledger</a> is open-source technology that anyone can use."
+                    body2: "Use the tools and information provided here to integrate with and contribute to the open-source platform."
+                    subhead: "Want more?"
+                    sub_body: "Get updates about XRP Ledger webinars, releases, and documentation!"
+                    cta: "Sign up!"
 
     -   name: ja
         lang: ja
         display_name: XRP Ledger Dev Portal (日本語)
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
+        strings:
+            blog: "ブログ"
+            search: "このサイトをGoogleで検索"
+            bc_home: "ホーム"
+            tl_banner:
+                head: "も仕分けありませんがこのページは日本語では入手不可" #TODO: check translation
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"#\">please contribute!</a>" #TODO: translate. & have a real link for contributing translations
+            pagetoc: "目次"
+            footer:
+                ripple:
+                    careers: "Ripple 採用情報"
+                    github: "GitHubでRipple"
+                    xrp_resources: "XRP リソース"
+                license: "ライセンス"
+            to_top:
+                short: "先頭へ"
+                long: "このページの先頭へ"
+            github_edit: "Edit" #TODO:translate? (This is the "Edit" button that takes you to the page on GitHub where you can edit the current file and contribute your changes back.)
+            home: # Text from xrpl.org/index.html
+                intro:
+                    head: "価値のインターネットをパワーする。"
+                    body1: "<a href="#xrp_ledger_intro">XRP Ledger</a>は誰でもが使い得るオープンソース技術。"
+                    body2: "Use the tools and information provided here to integrate with and contribute to the open-source platform." #TODO:translate
+                    subhead: "Want more?" #TODO:translate
+                    sub_body: "Get updates about XRP Ledger webinars, releases, and documentation!" #TODO:translate
+                    cta: "Sign up!" #TODO:translate
 
     -   name: xrp-api-only
         lang: en
@@ -81,6 +133,10 @@ targets:
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         no_cover: true
+        strings:
+            blog: "Blog"
+            search: "Search site with Google..."
+            bc_home: "Home"
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
@@ -102,6 +158,13 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: ドキュメント
+        funnel: Docs
+        template: template-landing-docs.html
+        html: docs.html
+        sidebar: disabled
+        targets:
             - ja
 
 # Concepts ---------------------------------------------------------------------

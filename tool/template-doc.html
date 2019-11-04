@@ -25,8 +25,8 @@
     {% if target.lang != "en" and "en" in currentpage.targets %}
     {# Add a "sorry this page isn't translated" banner. #}
     {# TODO: pull from a strings file #}
-    <div class="devportal-callout note mb-5"><strong>Sorry, this page is not available in your language.</strong>
-      <p class="mb-0">We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href="#">please contribute!</a><!--{# TODO: have a real link for contributing translations #}--></p>
+    <div class="devportal-callout note mb-5"><strong>{{target.strings.tl_banner.head}}</strong>
+      <p class="mb-0">{{target.strings.tl_banner.body}}</p>
     </div><!--/.devportal-callout-->
     {% endif %}
     <div class="content">
@@ -38,7 +38,7 @@
 {% block right_sidebar %}
   <div class="card" id="page-toc-wrapper">
     <div class="card-header">
-      <h4>In this document</h4>
+      <h4>{{target.strings.pagetoc}}</h4>
     </div>
     <ul class="card-body">
       {{ sidebar_content }}
