@@ -37,7 +37,7 @@
 
 ## DepositPreauth IDのフォーマット
 
-`DepositPreauth`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
+`DepositPreauth`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 
 * DepositPreauthスペースキー（`0x0070`）
 * このオブジェクトの所有者（このオブジェクトを作成した[DepositPreauthトランザクション][]の送信者、つまり事前承認を付与したユーザー）のAccountID。

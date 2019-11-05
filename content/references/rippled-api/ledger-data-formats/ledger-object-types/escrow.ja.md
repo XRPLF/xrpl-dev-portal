@@ -56,7 +56,7 @@ _（[Escrow Amendment][]が必要です。）_
 
 ## Escrow IDのフォーマット
 
-`Escrow`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
+`Escrow`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 
 * Escrowスペースキー（`0x0075`）
 * `Escrow`オブジェクトを作成した[EscrowCreateトランザクション][]の送信者のAccountID。

@@ -51,7 +51,7 @@ _（[Checks Amendment][]が必要です :not_enabled:）_
 ## Check IDのフォーマット
 [[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
-`Check`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
+`Check`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 
 * Checkスペースキー（`0x0043`）
 * `Check`オブジェクトを作成した[CheckCreateトランザクション][]の送信者のAccountID。

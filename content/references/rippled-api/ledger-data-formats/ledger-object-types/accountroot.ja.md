@@ -68,7 +68,7 @@ AccountRootオブジェクトには以下のフラグ値を指定できます。
 
 ## AccountRoot IDのフォーマット
 
-AccountRootオブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
+AccountRootオブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 
 * Accountスペースキー（`0x0061`）
 * アカウントのAccountID

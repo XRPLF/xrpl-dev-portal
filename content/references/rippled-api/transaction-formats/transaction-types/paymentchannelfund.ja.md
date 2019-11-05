@@ -20,11 +20,11 @@ PaymentChannelFundの例:
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 
-| フィールド        | JSONの型 | [内部の型][] | 説明                   |
-|:-------------|:----------|:------------------|:------------------------------|
+| フィールド     | JSONの型 | [内部の型][]        | 説明                   |
+|:-------------|:---------|:------------------|:------------------------------|
 | `Channel`    | 文字列    | Hash256           | 資金供給するChannelの一意のID（64文字の16進数文字列）。 |
-| `Amount`     | 文字列    | Amount            | Channelに追加する[XRP、drop単位][Currency Amount]の額。Channelの有効期限を設定し、XRPを追加しない場合は、これを`"0"`に設定します。 |
-| `Expiration` | 数値    | UInt32            | _（省略可）_ Channelに新たに設定する`Expiration`の時刻（Rippleエポック以降の経過秒数）。現行時刻にChannelの`SettleDelay`を加えた時刻よりも後であるか、またはChannelの既存の`Expiration`よりも後である必要があります。`Expiration`時刻の経過後には、トランザクションがそのChannelにアクセスするとChannelが閉鎖し、トランザクションの通常の処理は行われません。Channelの閉鎖時には未使用のXRPはすべて支払元アドレスに返金されます。（`Expiration`は、Channelの不変の`CancelAfter`時刻とは別のものです。）詳細は、[PayChannelレジャーオブジェクトタイプ](paychannel.html)を参照してください。 |
+| `Amount`     | 文字列    | Amount            | Channelに追加する[XRP、drop単位][]の額。Channelの有効期限を設定し、XRPを追加しない場合は、これを`"0"`に設定します。 |
+| `Expiration` | 数値      | UInt32            | _（省略可）_ Channelに新たに設定する`Expiration`の時刻（Rippleエポック以降の経過秒数）。現行時刻にChannelの`SettleDelay`を加えた時刻よりも後であるか、またはChannelの既存の`Expiration`よりも後である必要があります。`Expiration`時刻の経過後には、トランザクションがそのChannelにアクセスするとChannelが閉鎖し、トランザクションの通常の処理は行われません。Channelの閉鎖時には未使用のXRPはすべて支払元アドレスに返金されます。（`Expiration`は、Channelの不変の`CancelAfter`時刻とは別のものです。）詳細は、[PayChannelレジャーオブジェクトタイプ](paychannel.html)を参照してください。 |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

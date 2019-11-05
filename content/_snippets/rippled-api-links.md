@@ -27,6 +27,7 @@
 [Sequence Number]: basic-data-types.html#account-sequence
 [シーケンス番号]: basic-data-types.html#アカウントシーケンス
 [SHA-512Half]: basic-data-types.html#hashes
+[SHA-512ハーフ]: basic-data-types.html#ハッシュ
 [Specifying Currency Amounts]: basic-data-types.html#specifying-currency-amounts
 [Specifying Ledgers]: basic-data-types.html#specifying-ledgers
 [レジャーの指定]: basic-data-types.html#レジャーの指定

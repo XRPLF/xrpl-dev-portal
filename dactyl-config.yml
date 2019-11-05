@@ -207,6 +207,10 @@ targets:
                     decentralized_exchange:
                         head: "台帳上の分散型取引所"
                         url: "xrp-ledger-overview.html#台帳上の分散型取引所"
+        link_subs:
+            # Fix links from untranslated send-xrp.html (2 links):
+            "accounts.html#creating-accounts": "accounts.html#アカウントの作成"
+            "rippled-server-modes.html#reasons-to-run-a-stock-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
 
 
     -   name: xrp-api-only

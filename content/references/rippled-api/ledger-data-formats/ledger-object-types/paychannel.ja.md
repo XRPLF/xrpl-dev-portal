@@ -88,7 +88,7 @@ Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールド�
 
 ## PayChannel IDのフォーマット
 
-`PayChannel`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
+`PayChannel`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 
 * PayChannelスペースキー（`0x0078`）
 * 支払元アカウントのAccountID

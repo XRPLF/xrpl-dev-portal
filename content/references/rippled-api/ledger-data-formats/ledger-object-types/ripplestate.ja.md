@@ -96,7 +96,7 @@ RippleStateオブジェクトには以下のフラグ値を指定できます。
 
 ## RippleState IDのフォーマット
 
-RippleStateオブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
+RippleStateオブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 
 * RippleStateスペースキー（`0x0072`）
 * 低位アカウントのAccountID

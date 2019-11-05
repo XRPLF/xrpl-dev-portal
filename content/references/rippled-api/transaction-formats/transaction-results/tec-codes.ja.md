@@ -17,7 +17,7 @@
 | `tecFROZEN`                | 137   | [OfferCreateトランザクション][]が失敗しました。関係する1つまたは両方の資産が[Global Freeze](freezes.html)の対象となっています。 |
 | `tecINSUF_RESERVE_LINE`    | 122   | 送信側アカウントに、新しいトラストラインを作成するのに十分なXRPがないため、トランザクションが失敗しました。（[準備金](reserves.html)を参照してください）このエラーは、取引相手から同一通貨の送信側アカウントへのトラストラインがデフォルト以外の状態である場合に発生します。（その他のケースについては`tecNO_LINE_INSUF_RESERVE`を参照してください。） |
 | `tecINSUF_RESERVE_OFFER`   | 123   | 送信側アカウントに、新しいオファーを作成するのに十分なXRPがないため、トランザクションが失敗しました。（[準備金](reserves.html)を参照してください。) |
-| `tecINSUFFICIENT_RESERVE`  | 141   | トランザクションによって[必要準備金](reserves.html)が増加し、送信側アカウントの残高を超える可能性があります。[SignerListSet][]、[PaymentChannelCreate][]、[PaymentChannelFund][]、および[EscrowCreate][]からこのエラーコードが返されることがあります。詳細は、[SignerListと準備金](signerlist.html#signerlistsと準備金)を参照してください。 |
+| `tecINSUFFICIENT_RESERVE`  | 141   | トランザクションによって[必要準備金](reserves.html)が増加し、送信側アカウントの残高を超える可能性があります。[SignerListSet][]、[PaymentChannelCreate][]、[PaymentChannelFund][]、および[EscrowCreate][]からこのエラーコードが返されることがあります。詳細は、[SignerListと準備金](signerlist.html#signerlistと準備金)を参照してください。 |
 | `tecINTERNAL`              | 144   | 不明な内部エラーが発生し、トランザクションコストは適用されました。通常はこのエラーは返されません。このエラーを再現できる場合は、[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
 | `tecINVARIANT_FAILED`      | 147   | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]が必要です。このエラーを再現できる場合は、[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
 | `tecNEED_MASTER_KEY`       | 142   | このトランザクションはマスターキーを必要とする変更（[マスターキーの無効化または残高凍結能力の放棄](accountset.html#accountsetのフラグ)など）を試みました。[新規: rippled 0.28.0][] |

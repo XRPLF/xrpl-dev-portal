@@ -43,7 +43,7 @@ DDoS攻撃から本番環境のバリデータを保護するため、ストッ�
 
 <span class="use-case-step-num">{{n.next()}}</span>
 <!-- <span class="use-case-step-length">(1 hour)</span> -->
-## [バリデータを制御するWebドメインと関連付ける](run-rippled-as-a-validator.html#6-provide-domain-verification)
+## [バリデータを制御するWebドメインと関連付ける](run-rippled-as-a-validator.html#6-ドメイン検証の提供)
 
 ネットワークの参加者は、管理者が不明なバリデータを信頼しません。この問題に対応するため、バリデータをご使用のWebドメインと関連付けます。
 また、[XRP Charts Validator Registry](https://xrpcharts.ripple.com/#/validators)のようなバリデータ追跡サービスにバリデータをリストしてもらうのも1つの方法です。
