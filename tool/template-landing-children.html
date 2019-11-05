@@ -3,17 +3,14 @@
 {% block main %}
   {% if content %}
 
-  <article class="pt-3 p-md-3">
-      <div class='content'>
-        {{ content }}
-      </div>
-  </article>
-
   <section class="pt-3 p-md-3">
-    <h2>Children of this page:</h2>
-    {% set show_blurbs = True %}
-    {% set depth= 1 %}
-    {% include 'template-page-children.html' %}
+    <article class="content">
+      {{ content }}
+
+      {% set show_blurbs = True %}
+      {% set depth= 1 %}
+      {% include 'template-page-children.html' %}
+    </article>
   </section>
 
   {% else %}
