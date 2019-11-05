@@ -219,6 +219,20 @@ targets:
             blog: "Blog"
             search: "Search site with Google..."
             bc_home: "Home"
+            tl_banner:
+                head: "Sorry, this page is not available in your language."
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"#\">please contribute!</a>" #TODO: have a real link for contributing translations
+            pagetoc: "In this document"
+            footer:
+                ripple:
+                    careers: "Ripple Careers"
+                    github: "Ripple on GitHub"
+                    xrp_resources: "XRP Resources"
+                license: "License"
+            to_top:
+                short: "Top"
+                long: "Jump to top of page"
+            github_edit: "Edit"
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
@@ -230,6 +244,24 @@ targets:
         no_cover: True
         link_re_subs:
            "([\\w-]+\\.html)": https://xrpl.org/\1
+        strings:
+            blog: "Blog"
+            search: "Search site with Google..."
+            bc_home: "Home"
+            tl_banner:
+                head: "Sorry, this page is not available in your language."
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"#\">please contribute!</a>" #TODO: have a real link for contributing translations
+            pagetoc: "In this document"
+            footer:
+                ripple:
+                    careers: "Ripple Careers"
+                    github: "Ripple on GitHub"
+                    xrp_resources: "XRP Resources"
+                license: "License"
+            to_top:
+                short: "Top"
+                long: "Jump to top of page"
+            github_edit: "Edit"
 
 pages:
 
