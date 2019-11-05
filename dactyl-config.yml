@@ -4125,10 +4125,20 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: Ledger Data Formats
-        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state. #TODO:translate
-        template: template-landing-children.html #TODO: consider using the default template instead for page sidebar?
+        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+        template: template-landing-children.html
         targets:
             - en
+
+    -   name: レジャーのデータ型
+        html: ledger-data-formats.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state. #TODO:translate
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-header.md
