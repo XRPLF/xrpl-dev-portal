@@ -171,7 +171,7 @@ targets:
                     learn:
                         head: "Learn How It Works" #TODO:translate
                         about_xrp: "XRPについて"
-                        cta: "全概念"
+                        cta: "全コンセプト"
                     read_docs:
                         head: "ドキュメントを読む"
                         full_doc_index: "全ドキュメント目次"
@@ -353,7 +353,7 @@ pages:
         targets:
             - en
 
-    -   name: 概念
+    -   name: コンセプト
         funnel: Docs
         doc_type: Concepts
         html: concepts.html
@@ -464,6 +464,15 @@ pages:
         blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system. #TODO:translate
         targets:
             - en
+
+    -   name: 支払いシステムの基本
+        html: payment-system-basics.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        template: template-landing-children.html
+        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/accounts.md
@@ -679,9 +688,18 @@ pages:
         doc_type: Concepts
         category: Payment Types
         template: template-landing-children.html
-        blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types. #TODO:translate
+        blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types.
         targets:
             - en
+
+    -   name: 支払いのタイプ
+        html: payment-types.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment Types
+        template: template-landing-children.html
+        blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types. #TODO:translate
+        targets:
             - ja
 
         # Redirect from the old landing name/URL
@@ -807,6 +825,15 @@ pages:
         blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger. #TODO:translate
         targets:
             - en
+
+    -   name: 発行済み通貨
+        html: issued-currencies.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Issued Currencies
+        template: template-landing-children.html
+        blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/issued-currencies/issued-currencies-overview.md
@@ -972,6 +999,15 @@ pages:
         blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other. #TODO:translate
         targets:
             - en
+
+    -   name: 分散型取引所
+        html: decentralized-exchange.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Decentralized Exchange
+        template: template-landing-children.html
+        blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/decentralized-exchange/offers.md
@@ -1037,6 +1073,15 @@ pages:
         blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing. #TODO:translate
         targets:
             - en
+
+    -   name: コンセンサスネットワーク
+        html: consensus-network.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        template: template-landing-children.html
+        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/consensus-network/consensus.md
@@ -1240,9 +1285,18 @@ pages:
         doc_type: Concepts
         category: The rippled Server
         template: template-landing-children.html
-        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server. #TODO:translate
+        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
         targets:
             - en
+
+    -   name: rippledサーバー
+        html: the-rippled-server.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        template: template-landing-children.html
+        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server. #TODO:translate
+        targets:
             - ja
 
     -   md: concepts/the-rippled-server/rippled-server-modes.md

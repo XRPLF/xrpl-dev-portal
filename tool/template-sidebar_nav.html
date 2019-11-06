@@ -10,25 +10,28 @@
   {% if use_page.supercategory is defined %}
     <div class="sidenav_parent">
       {% if use_page == (pages|selectattr('supercategory', 'defined_and_equalto', use_page.supercategory)|first) %}
-      <a  href="{{ link_prefix}}{{ use_page.html }}">{{ use_page.supercategory }}</a>
+      <a  href="{{ link_prefix}}{{ use_page.html }}">{{ use_page.name }}</a>
       {% else %}
-      <a href="{{ link_prefix}}{{ (pages|selectattr('supercategory', 'defined_and_equalto', use_page.supercategory)|first).html }}"> {{ use_page.supercategory }}</a>
+      {% set parent_page = (pages|selectattr('supercategory', 'defined_and_equalto', use_page.supercategory)|first) %}
+      <a href="{{ link_prefix}}{{ parent_page.html }}"> {{ parent_page.name }}</a>
       {% endif %}
     </div>
   {% elif use_page.doc_type is defined %}
     <div class="sidenav_parent">
       {% if use_page == (pages|selectattr('doc_type', 'defined_and_equalto', use_page.doc_type)|first) %}
-      <a  href="{{ link_prefix}}{{ use_page.html }}">{{ use_page.doc_type }}</a>
+      <a  href="{{ link_prefix}}{{ use_page.html }}">{{ use_page.name }}</a>
       {% else %}
-      <a href="{{ link_prefix}}{{ (pages|selectattr('doc_type', 'defined_and_equalto', use_page.doc_type)|first).html }}"> {{ use_page.doc_type }}</a>
+      {% set parent_page = (pages|selectattr('doc_type', 'defined_and_equalto', use_page.doc_type)|first) %}
+      <a href="{{ link_prefix}}{{ parent_page.html }}"> {{ parent_page.name }}</a>
       {% endif %}
     </div>
   {% elif use_page.funnel is defined %}
     <div class="sidenav_parent">
       {% if use_page == (pages|selectattr('funnel', 'defined_and_equalto', use_page.funnel)|first) %}
-      <a  href="{{ link_prefix}}{{ use_page.html }}">{{ use_page.funnel }}</a>
+      <a  href="{{ link_prefix}}{{ use_page.html }}">{{ use_page.name }}</a>
       {% else %}
-      <a href="{{ link_prefix}}{{ (pages|selectattr('funnel', 'defined_and_equalto', use_page.funnel)|first).html }}"> {{ use_page.funnel }}</a>
+      {% set parent_page = (pages|selectattr('funnel', 'defined_and_equalto', use_page.funnel)|first) %}
+      <a href="{{ link_prefix}}{{ parent_page.html }}"> {{ parent_page.name }}</a>
       {% endif %}
     </div>
   {% endif %}
@@ -79,7 +82,7 @@
                 <a class="{% if use_page.category is undefined or use_page.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></a>
                 {% endif %}
                 <h5 class="card-title">
-                    <a class="sidenav_cat_title{% if use_page == (cat_parent) %} active{% elif use_page.category is defined and use_page.category == cat %} active-parent{% endif %}" href="{{ link_prefix}}{{ cat_parent.html }}">{{ cat }}</a>
+                    <a class="sidenav_cat_title{% if use_page == (cat_parent) %} active{% elif use_page.category is defined and use_page.category == cat %} active-parent{% endif %}" href="{{ link_prefix}}{{ cat_parent.html }}">{{ cat_parent.name }}</a>
                 </h5>
               </div><!-- /.card-header -->
 
@@ -152,7 +155,7 @@
                   <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></a>
                 {% endif %}
                 <h5 class="card-title">
-                  <a class="sidenav_cat_title" href="{{ link_prefix}}{{ supercat_parent.html }}">{{ supercat }}</a>
+                  <a class="sidenav_cat_title" href="{{ link_prefix}}{{ supercat_parent.html }}">{{ supercat_parent.name }}</a>
                 </h5>
               </div><!-- /.card-header -->
 
@@ -203,7 +206,7 @@
                 <a class="{% if use_page.category is undefined or use_page.category != cat %}collapsed {% endif %}sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_{{loop.index}}" aria-expanded="true" aria-controls="sidenav_collapse_{{loop.index}}"></a>
               {% endif %}
               <h5 class="card-title">
-                  <a class="sidenav_cat_title{% if use_page == (cat_parent) %} active{% elif use_page.category is defined and use_page.category == cat %} active-parent{% endif %}" href="{{ link_prefix}}{{ cat_parent.html }}">{{ cat }}</a>
+                  <a class="sidenav_cat_title{% if use_page == (cat_parent) %} active{% elif use_page.category is defined and use_page.category == cat %} active-parent{% endif %}" href="{{ link_prefix}}{{ cat_parent.html }}">{{ cat_parent.name }}</a>
                 <!-- <a class="sidenav_cat_title" href="{{ link_prefix}}{{ cat_parent.html }}">{{ cat }}</a> -->
               </h5>
             </div><!-- /.card-header -->
