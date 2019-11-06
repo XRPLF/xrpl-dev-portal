@@ -45,4 +45,5 @@
 [導入: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_BLUE"
 [新規: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_BLUE"
 [更新: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_BLUE"
+[削除: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_RED"
 {% endfor %}

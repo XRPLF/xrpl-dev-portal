@@ -49,9 +49,9 @@ SignerQuorumを満たせない方法でSignerListを作成することはでき�
 
 トランザクションの署名にマスターキー、レギュラーキー、または現行のSignerListを使用できる場合は、これらを使用してSignerListを作成、更新、削除できます。
 
-トランザクションに署名する最後の方法をアカウントから削除することはできません。アカウントのマスターキーが無効で（[`lsfDisableMaster`フラグ](accountroot.html#accountrootフラグ)が有効な場合）、アカウントで[レギュラーキー](cryptographic-keys.html)が設定されていない場合、アカウントからSignerListを削除できません。その代わりにトランザクションは[`tecNO_ALTERNATIVE_KEY`](tec-codes.html)エラーで失敗します。
+トランザクションに署名する最後の方法をアカウントから削除することはできません。アカウントのマスターキーが無効で（[`lsfDisableMaster`フラグ](accountroot.html#accountrootのフラグ)が有効な場合）、アカウントで[レギュラーキー](cryptographic-keys.html)が設定されていない場合、アカウントからSignerListを削除できません。その代わりにトランザクションは[`tecNO_ALTERNATIVE_KEY`](tec-codes.html)エラーで失敗します。
 
-[MultiSignReserve Amendment][] :not_enabled:が有効な場合、SignerListを作成または置換すると、SignerListオブジェクトでlsfOneOwnerCountフラグが有効になります。このフラグが有効な場合、MultiSignReserve Amendmentに定められているとおり、XRP LedgerはSignerListの[`OwnerCount`](accountroot.html#accountroot-fields)と[所有者準備金](reserves.html#所有者準備金)を減らせます。詳細は、[SignerListのフラグ](signerlist.html#signerlistフラグ)を参照してください。
+[MultiSignReserve Amendment][] :not_enabled:が有効な場合、SignerListを作成または置換すると、SignerListオブジェクトでlsfOneOwnerCountフラグが有効になります。このフラグが有効な場合、MultiSignReserve Amendmentに定められているとおり、XRP LedgerはSignerListの[`OwnerCount`](accountroot.html#accountrootフィールド)と[所有者準備金](reserves.html#所有者準備金)を減らせます。詳細は、[SignerListのフラグ](signerlist.html#signerlistのフラグ)を参照してください。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

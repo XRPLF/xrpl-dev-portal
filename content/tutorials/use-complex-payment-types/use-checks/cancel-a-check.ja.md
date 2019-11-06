@@ -103,7 +103,7 @@ Checkを取り消す例を以下に示します。
 
 ## {{cancel_n.next()}}.署名済みCheckCancelトランザクションの送信
 
-{% set step_1_link = "#1-prepare-the-checkcancel-transaction" %}
+{% set step_1_link = "#1checkcancelトランザクションの準備" %}
 {% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### 要求の例

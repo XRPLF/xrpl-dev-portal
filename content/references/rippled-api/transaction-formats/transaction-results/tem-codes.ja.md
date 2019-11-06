@@ -8,7 +8,7 @@
 |:-----------------------------|:----------------------------------------------|
 | `temBAD_AMOUNT`               | トランザクションにより指定された額（宛先への[Payment][]の`Amount`または`SendMax`の金額など）が無効でした。マイナスの金額が指定された可能性があります。 |
 | `temBAD_AUTH_MASTER`         | このトランザクションの署名に使用されたキーが、トランザクションの送信元アカウントのマスターキーと一致していません。また、アカウントに[レギュラーキー](cryptographic-keys.html)セットがありません。 |
-| `temBAD_CURRENCY`             | トランザクションの通貨フィールドが誤って指定されています。正しいフォーマットについては、[通貨額の指定][Currency Amount]を参照してください。 |
+| `temBAD_CURRENCY`             | トランザクションの通貨フィールドが誤って指定されています。正しいフォーマットについては、[通貨額の指定][通貨額]を参照してください。 |
 | `temBAD_EXPIRATION`           | トランザクションの有効期限の値が誤って指定されています（[OfferCreateトランザクション][]など）。あるいは、トランザクションに必須の有効期限値が指定されていません（例えば、[EscrowCreateトランザクション][]の作成過程などで）。 |
 | `temBAD_FEE`                  | トランザクションで`Fee`の値が誤って指定されています（例えば、XRP以外の通貨やマイナスの額のXRPを指定するなど）。 |
 | `temBAD_ISSUER`               | 要求に指定されている通貨の`issuer`フィールドが、トランザクションにて誤って指定されています。 |
@@ -17,7 +17,7 @@
 | `temBAD_PATH`                 | [Paymentトランザクション][]の1つ以上の[パス](paths.html)が誤って指定されています。例えば、XRPのイシュアーが含まれていたり、アカウントが異なる方法で指定されたりするなど。 |
 | `temBAD_PATH_LOOP`           | [Paymentトランザクション][]で[パス](paths.html)の1つがループとしてマークされているため、限られた時間内に処理できません。 |
 | `temBAD_SEND_XRP_LIMIT`     | [Paymentトランザクション][]で、XRP間の直接支払に[tfLimitQuality](payment.html#クオリティの制限)フラグが使用されましたが、XRP間の支払いでは通貨の取引は行われません。 |
-| `temBAD_SEND_XRP_MAX`       | [Payment トランザクション][]で、XRP間の直接支払に`SendMax`フィールドが指定されていますが、XRPの送金ではSendMaxは不要です。（SendMaxでXRPが有効となるのは、宛先への`Amount`がXRPではない場合のみです。） |
+| `temBAD_SEND_XRP_MAX`       | [Paymentトランザクション][]で、XRP間の直接支払に`SendMax`フィールドが指定されていますが、XRPの送金ではSendMaxは不要です。（SendMaxでXRPが有効となるのは、宛先への`Amount`がXRPではない場合のみです。） |
 | `temBAD_SEND_XRP_NO_DIRECT` | [Paymentトランザクション][]で、XRP間の直接支払に[tfNoDirectRipple](payment.html#paymentのフラグ)フラグが使用されていますが、XRP間の支払いは常に直接行われます。 |
 | `temBAD_SEND_XRP_PARTIAL`   | [Paymentトランザクション][]で、XRP間の直接支払に [tfPartialPayment](partial-payments.html)フラグが使用されていますが、XRP間の直接支払では常に全額が送金されます。 |
 | `temBAD_SEND_XRP_PATHS`     | [Paymentトランザクション][]で、XRP送金時の`Paths`が指定されていますが、XRP間の支払いは常に直接行われます。 |

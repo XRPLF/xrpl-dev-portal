@@ -49,10 +49,10 @@ Payment Channelの使用例については、[Payment Channelのチュートリ�
 | `SettleDelay`       | 数値    | UInt32            | ChannelにXRPがまだある場合に、支払元アドレスがそのChannelを閉鎖するまでに待機する秒数。値が小さい場合、支払元アドレスがChannelの閉鎖を要求した後で、宛先アドレスが未処理のクレームを精算できる時間が短くなります。32ビットの符号なし整数に収まる値（0～2^32-1）であれば任意の値を指定できます。これは、Channelを作成するトランザクションにより設定されます。 |
 | `OwnerNode`         | 文字列    | UInt64            | 支払元アドレスの所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。 |
 | `PreviousTxnID`     | 文字列    | Hash256           | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値    | UInt32            | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーのインデックス][Ledger Index]。 |
+| `PreviousTxnLgrSeq` | 数値    | UInt32            | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
 | `Flags`             | 数値    | UInt32            | このPayment Channelに対して有効になっているブールフラグのビットマップ。現在、プロトコルでは`PayChannel` オブジェクトのフラグは定義されていません。 |
-| `Expiration`        | 数値    | UInt32            | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポックからの経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](ledger-header.html)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)を参照してください。 |
-| `CancelAfter`       | 数値    | UInt32            | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポックからの経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](ledger-header.html)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。 |
+| `Expiration`        | 数値    | UInt32            | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](ledger-header.html)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)を参照してください。 |
+| `CancelAfter`       | 数値    | UInt32            | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](ledger-header.html)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。 |
 | `SourceTag`         | 数値    | UInt32            | _（省略可）_ このPayment Channelの支払元（所有者のアドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 | `DestinationTag`    | 数値    | UInt32            | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 

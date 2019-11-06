@@ -46,7 +46,7 @@ XRP Ledgerではどのアカウントにも権限がないため、`RippleState`
 | `LowLimit`        | オブジェクト    | Amount | 低位アカウントがトラストラインに設定した限度額。`issuer`は、この限度額を設定した低位アカウントのアドレスです。 |
 | `HighLimit`       | オブジェクト    | Amount | 高位アカウントがトラストラインに設定した限度額。`issuer`は、この限度額を設定した高位アカウントのアドレスです。 |
 | `PreviousTxnID`   | 文字列    | Hash256 | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値  | UInt32 | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーのインデックス][Ledger Index]。 |
+| `PreviousTxnLgrSeq` | 数値  | UInt32 | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
 | `LowNode`         | 文字列    | UInt64 | （一部の履歴レジャーでは省略されます）低位アカウントの所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。 |
 | `HighNode`        | 文字列    | UInt64 | （一部の履歴レジャーでは省略されます）高位アカウントの所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。 |
 | `LowQualityIn`    | 数値    | UInt32 | （省略可）暗黙の比率（LowQualityIn:1,000,000,000）で整数として低位アカウントにより設定された着信品質。値が0の場合は10億または額面価格と同等です。 |
@@ -88,7 +88,7 @@ RippleStateオブジェクトには以下のフラグ値を指定できます。
 
 **lsfLowAuth**フラグと**lsfHighAuth**フラグは無効にできないため、デフォルト状態に不利に作用することはありません。
 
-2つのNoRippleフラグのデフォルト状態は、対応するAccountRootオブジェクトの[lsfDefaultRippleフラグ](accountroot.html#accountrootフラグ)の状態によって異なります。DefaultRippleが無効の場合（デフォルト）、アカウントのすべてのトラストラインのlsfNoRippleフラグはデフォルトで _有効_ となります。アカウントがDefaultRippleを有効にすると、アカウントのトラストラインのlsfNoRippleフラグはデフォルトで _無効_ となります（Ripplingが有効になります）。
+2つのNoRippleフラグのデフォルト状態は、対応するAccountRootオブジェクトの[lsfDefaultRippleフラグ](accountroot.html#accountrootのフラグ)の状態によって異なります。DefaultRippleが無効の場合（デフォルト）、アカウントのすべてのトラストラインのlsfNoRippleフラグはデフォルトで _有効_ となります。アカウントがDefaultRippleを有効にすると、アカウントのトラストラインのlsfNoRippleフラグはデフォルトで _無効_ となります（Ripplingが有効になります）。
 
 **注記:** `rippled`バージョン0.27.3（2015年3月10日）にてDefaultRippleフラグが導入される前は、すべてのトラストラインはデフォルトで両方のNoRippleフラグが無効になっていました（Ripplingは有効）。
 

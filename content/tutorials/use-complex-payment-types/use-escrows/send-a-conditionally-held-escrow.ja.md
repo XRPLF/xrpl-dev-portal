@@ -5,7 +5,7 @@
 XRP Ledger EscrowにはPREIMAGE-SHA-256 [Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03)が必要です。条件とフルフィルメントを適切なフォーマットで計算するには、[five-bells-condition](https://github.com/interledgerjs/five-bells-condition)などのCrypto-conditionsライブラリを使用する必要があります。フルフィルメントについては、以下のフルフィルメントを生成するためのメソッドのいずれかを使用することが推奨されます。
 
 - 暗号論的に安全な乱数ソースを使用して、32バイト以上のランダムバイトを生成します。
-- インターレジャープロトコルの[PSK仕様](https://github.com/interledger/rfcs/blob/master/deprecated/0016-pre-shared-key/0016-pre-shared-key.md)に従い、ILPパケットのHMAC-SHA-256をフルフィルメントとして使用します。
+- Interledger Protocolの[PSK仕様](https://github.com/interledger/rfcs/blob/master/deprecated/0016-pre-shared-key/0016-pre-shared-key.md)に従い、ILPパケットのHMAC-SHA-256をフルフィルメントとして使用します。
 
 ランダムなフルフィルメントと条件のJavaScriptコードの例:
 

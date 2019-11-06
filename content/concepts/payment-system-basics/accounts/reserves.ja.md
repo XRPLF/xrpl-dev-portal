@@ -21,7 +21,7 @@ XRP Ledgerでは、スパムや悪意のある使用によって、共有グロ�
 
 - [オファー](offer.html)はそれらを発行したアドレスによって所有されています。すべてが処理済みとなるか、または資金供給のないことが判明したオファーは、取引処理によって自動的に削除されます。または、所有者は、[OfferCancelトランザクション][]を送信するか、`OfferSequence`パラメーターを含む[OfferCreateトランザクション][]を送信することで、オファーを取り消すことができます。
 - [トラストライン](ripplestate.html)は2つのアドレス間で共有されます。所有者準備金は、いずれかまたは両方のアドレスに適用されます。どちらに適用されるかは、アドレスが制御するフィールドがデフォルト状態であるかどうかによって決まります。詳細については、[Contributing to the Owner Reserve](ripplestate.html#所有者の準備金への資金供給)を参照してください。
-- [MultiSignReserve Amendment][]がない場合、1つの[SignerList](signerlist.html)は、メンバーの数に応じて、所有者準備金用に3～10個のオブジェクトとしてカウントされます。[MultiSignReserve Amendment][]が有効になっている場合、1つのSignerListは、メンバーの数に関係なく、所有者準備金用に1つのオブジェクトとしてカウントされます。関連項目: [SignerListと準備金](signerlist.html#signerlistsと準備金)
+- [MultiSignReserve Amendment][]がない場合、1つの[SignerList](signerlist.html)は、メンバーの数に応じて、所有者準備金用に3～10個のオブジェクトとしてカウントされます。[MultiSignReserve Amendment][]が有効になっている場合、1つのSignerListは、メンバーの数に関係なく、所有者準備金用に1つのオブジェクトとしてカウントされます。関連項目: [SignerListと準備金](signerlist.html#signerlistと準備金)
 - [保留中の支払い（Escrow）](escrow-object.html)は、支払元のアドレスが所有します。
 - [Payment Channel](use-payment-channels.html)は、作成したアドレスが所有します。
 - [所有者ディレクトリー](directorynode.html)には、アドレスの所有者の準備金の対象となるすべてのレジャーオブジェクトが一覧表示されます。所有者ディレクトリー自体は準備金としてカウントされません。

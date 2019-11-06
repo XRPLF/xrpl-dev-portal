@@ -17,7 +17,7 @@ XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FA
 このチュートリアルでCheckを送信するには、以下が必要です。
 
 - Checkの送信元である資金供給のあるアカウントの**アドレス**と**シークレットキー**。
-    - [XRP Ledger Test Net Faucet](https://ripple.com/build/xrp-test-net/)を使用して、10,000 Test Net XRPを保有する資金供給のあるアドレスおよびシークレットを取得できます。
+    - [XRP Ledger Test Net Faucet](xrp-test-net-faucet.html)を使用して、10,000 Test Net XRPを保有する資金供給のあるアドレスおよびシークレットを取得できます。
 - Checkを受領する資金供給のあるアカウントの**アドレス**。
 - トランザクションに安全に署名できる手段（[RippleAPI][]や各自の[`rippled`サーバー](install-rippled.html)など）。
 - `rippled`サーバーに接続できるクライアントライブラリ（[RippleAPI][]、HTTPライブラリ、またはWebSocketライブラリなど）。
@@ -119,7 +119,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 ## {{send_n.next()}}.署名済みトランザクションの送信
 
-{% set step_1_link = "#1-prepare-the-checkcreate-transaction" %}
+{% set step_1_link = "#1checkcreateトランザクションの準備" %}
 {% include '_snippets/tutorial-submit-step.md' %}
 <!--{#_ #}-->
 

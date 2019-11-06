@@ -42,7 +42,9 @@ One situation in which this is useful is if you have a primary system for submit
 Some fields can be automatically filled in before a transaction is signed, either by a `rippled` server or by a library used for signing such as [ripple-lib][]. Auto-filling values requires an active connection to the XRP Ledger to get the latest state, so it cannot be done offline. Both [ripple-lib][] and `rippled` can automatically provide the following values:
 
 * `Fee` - Automatically fill in the [Transaction Cost][] based on the network.
+
     **Note:** When using `rippled`'s [sign command][], you can limit the maximum possible auto-filled value, using the `fee_mult_max` and `fee_mult_div` parameters.)
+
 * `Sequence` - Automatically use the next sequence number for the account sending the transaction.
 
 For a production system, we recommend _not_ leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.

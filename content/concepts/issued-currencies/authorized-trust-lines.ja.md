@@ -60,7 +60,7 @@ POST http://localhost:5005/
 
 Authorized Trust Lines機能を使用している場合、他のアカウントからのトラストラインを最初に承認しなければ、これらの他のアカウントはあなたが発行する残高を保有できません。複数の通貨を発行する場合には、各通貨のトラストラインを個別に承認する必要があります。
 
-トラストラインを承認するには、`LimitAmount`の`issuer`として信頼するユーザーを指定して、発行アドレスから[TrustSetトラストライン][]を送信します。`value`（信頼する額）を**0**のままにし、トランザクションの[tfSetfAuth](trustset.html#trustsetのフラグ)フラグを有効にします。
+トラストラインを承認するには、`LimitAmount`の`issuer`として信頼するユーザーを指定して、発行アドレスから[TrustSetトランザクション][]を送信します。`value`（信頼する額）を**0**のままにし、トランザクションの[tfSetfAuth](trustset.html#trustsetのフラグ)フラグを有効にします。
 
 ローカルでホストされている`rippled`の[submitメソッド][]を使用して、顧客アドレス（rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn）が発行アドレス（rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW）からのUSDのイシュアンスを保有することを承認するTrustSetトランザクションを送信する例を以下に示します。
 

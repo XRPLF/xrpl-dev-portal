@@ -19,7 +19,7 @@ Payment Channelは、少額の単位に分割可能な「非同期」のXRPペ�
 
 また、トランザクションの送信先`rippled`サーバーも必要です。このチュートリアルの例では、`rippled`サーバーがテストマシン（`localhost`）で稼働しており、このテストマシンはポート**5005**で非暗号化JSON-RPC APIエンドポイントに接続しています。
 
-実際のXRPを送金せずにテストを実施するには、Test Net XRPを保有する[Ripple Test Net](https://ripple.com/build/ripple-test-net/)のアドレスを使用できます。Ripple Test Netを使用しない場合、`http://localhost:5005/`ではなく`https://api.altnet.rippletest.net:51234`に接続することで、Test NetサーバーのJSON-RPC APIを使用できます。
+実際のXRPを送金せずにテストを実施するには、Test Net XRPを保有する[XRP Ledger Testnet](xrp-testnet-faucet.html)のアドレスを使用できます。XRP Ledger Test Netを使用する場合、`http://localhost:5005/`ではなく`https://api.altnet.rippletest.net:51234`に接続することで、Test NetサーバーのJSON-RPC APIを使用できます。
 
 Payment Channelに使用できるXRPの額に制限はありません。このチュートリアルで使用されているサンプルの値では、Payment Channelで100 XRP（`100000000` drop）が少なくとも1日間は確保されます。
 
@@ -32,16 +32,16 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
 
 この図のステップの番号は、このチュートリアルのステップの番号に対応しています。
 
-1. [支払人: Channelの作成](#1-the-payer-creates-a-payment-channel-to-a-particular-recipient)
-2. [受取人: Channelの確認](#2-the-payee-checks-specifics-of-the-payment-channel)
-3. [支払人: クレームへの署名](#3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel)
-4. [支払人: 受取人へのクレームの送信](#4-the-payer-sends-a-claim-to-the-payee-as-payment-for-goods-or-services)
-5. [受取人: クレームの検証](#5-the-payee-verifies-the-claims)
-6. [受取人: 商品またはサービスの提供](#6-payee-provides-goods-or-services)
-7. [必要に応じてステップ3～6を繰り返す](#7-repeat-steps-3-6-as-desired)
-8. [受取人: クレームの清算](#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount)
-9. [支払人: Channel閉鎖の要求](#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed)
-10. [支払人（またはその他の担当者）: 有効期限切れChannelの閉鎖](#10-anyone-can-close-the-expired-channel)
+1. [支払人: Channelの作成](#1-支払人が特定の受取人へのpayment-channelを作成します)
+2. [受取人: Channelの確認](#2-受取人がpayment-channelの特性を確認します)
+3. [支払人: クレームへの署名](#3-支払人がchannelのxrpに対して1つ以上の署名付き-クレーム-を作成します)
+4. [支払人: 受取人へのクレームの送信](#4-支払人が商品またはサービスに対する支払いとしてクレームを受取人に送信します)
+5. [受取人: クレームの検証](#5-受取人がクレームを検証します)
+6. [受取人: 商品またはサービスの提供](#6-受取人が商品またはサービスを提供します)
+7. [必要に応じてステップ3～6を繰り返す](#7-必要に応じてステップ36を繰り返します)
+8. [受取人: クレームの清算](#8-準備が完了すれば受取人は承認された額のクレームを清算します)
+9. [支払人: Channel閉鎖の要求](#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します)
+10. [支払人（またはその他の担当者）: 有効期限切れChannelの閉鎖](#10-有効期限切れのchannelは誰でも閉鎖できます)
 
 ## 1. 支払人が特定の受取人へのPayment Channelを作成します。
 

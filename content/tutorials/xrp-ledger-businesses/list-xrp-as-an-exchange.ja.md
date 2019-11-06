@@ -34,7 +34,7 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 関連項目:
 
-* [ゲートウェイコンプライアンス](become-an-xrp-ledger-gateway.html#ゲートウェイコンプライアンス) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
+* [ゲートウェイコンプライアンス](become-an-xrp-ledger-gateway.html#gateway-compliance) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
 
 * [Requirements for Sending to XRP Ledger](become-an-xrp-ledger-gateway.html#requirements-for-sending-to-xrp-ledger)
 
@@ -78,7 +78,7 @@ Rippleが推奨するベストプラクティスに従い、Alpha Exchangeは、
 
 * 顧客のXRP出金や入金を管理する、日常業務を遂行するための1つ以上の[ _ホットウォレット_ ](issuing-and-operational-addresses.html#運用アドレス)。例えば、ホットウォレットがあれば、取引所はこの種のXRPの自動送金を安全にサポートできます。出金要求にただちに応じるため、ホットウォレットはオンラインである必要があります。
 
-    不正使用されたホットウォレットによって発生するおそれのある結果についての詳細は、[Operational Account Compromise](issuing-and-operational-addresses.html#operational-address-compromise)を参照してください。
+    不正使用されたホットウォレットによって発生するおそれのある結果についての詳細は、[Operational Account Compromise](issuing-and-operational-addresses.html#運用アドレスの漏えい)を参照してください。
 
 * オプションとして、コールドウォレットとホットウォレットの間で追加のセキュリティ層を提供する、1つ以上のウォームウォレット。ホットウォレットとは異なり、ウォームウォレットのシークレットキーはオンラインである必要はありません。さらに、ウォームウォレットのシークレットキーを複数の人に分散し、[マルチ署名](multi-signing.html)を導入してセキュリティを強化することもできます。
 
@@ -300,7 +300,7 @@ XRP残高</i></b></td>
 
 ### 取引所へのXRPの入金
 
-[台帳外のXRP残高](#on-ledger-and-off-ledger)を追跡するには、取引所は新しい[バランスシート](#バランスシート)（または類似の会計システム）を作成する必要があります。以下の表は、ユーザーがXRPを入金するにつれ、Alpha Exchangeの新しいバランスシートで発生する残高の変化を示すものです。
+[台帳外のXRP残高](#台帳上と台帳外)を追跡するには、取引所は新しい[バランスシート](#バランスシート)（または類似の会計システム）を作成する必要があります。以下の表は、ユーザーがXRPを入金するにつれ、Alpha Exchangeの新しいバランスシートで発生する残高の変化を示すものです。
 
 CharlieというユーザーがAlpha Exchangeに50,000XRPを入金したいと希望しています。これには、以下のステップが伴います。
 

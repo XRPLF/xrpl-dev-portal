@@ -6,6 +6,7 @@
 [common fields]: transaction-common-fields.html
 [Currency Amount]: basic-data-types.html#specifying-currency-amounts
 [通貨額]: basic-data-types.html#通貨額の指定
+[通貨額の指定]: basic-data-types.html#通貨額の指定
 [Currency Code]: currency-formats.html#currency-codes
 [通貨コード]: currency-formats.html#通貨コード
 [drops of XRP]: basic-data-types.html#specifying-currency-amounts
@@ -32,6 +33,7 @@
 [Specifying Ledgers]: basic-data-types.html#specifying-ledgers
 [レジャーの指定]: basic-data-types.html#レジャーの指定
 [Specifying Time]: basic-data-types.html#specifying-time
+[時間の指定]: basic-data-types.html#時間の指定
 [standard format]: response-formatting.html
 [標準フォーマット]: response-formatting.html
 [Transaction Cost]: transaction-cost.html

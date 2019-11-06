@@ -20,7 +20,7 @@
 
 [MultiSignReserve Amendment][]が有効ではない場合、マルチ署名を使用するには[アカウント準備金](reserves.html)および[トランザクションコスト](transaction-cost.html)に通常よりも多くのXRPが必要となります。必要額は、使用する署名および署名者の数に応じて増加します。
 
-[MultiSignReserve Ａmendment][]が有効な場合、マルチ署名を使用するには、使用する署名と署名者の数に関わらず、アカウントの準備金として5 XRPが必要です。マルチ署名済みトランザクションの[トランザクションコスト](transaction-cost.html)は、このAmendmentの影響を受けず、使用する署名と署名者の数に応じて増加します。
+[MultiSignReserve Amendment][]が有効な場合、マルチ署名を使用するには、使用する署名と署名者の数に関わらず、アカウントの準備金として5 XRPが必要です。マルチ署名済みトランザクションの[トランザクションコスト](transaction-cost.html)は、このAmendmentの影響を受けず、使用する署名と署名者の数に応じて増加します。
 
 `rippled`を[スタンドアロンモード](rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由)で新しいジェネシスレジャーで開始した場合は、以下の操作を行う必要があります:
 
@@ -133,7 +133,7 @@
 
 [トランザクションの結果](transaction-results.html)が[**tesSUCCESS**](tes-success.html)であることを確認します。それ以外の場合、トランザクションは失敗しています。スタンドアロンモードまたは本番環境以外のネットワークで問題が発生した場合は、[マルチ署名が有効であること](start-a-new-genesis-ledger-in-stand-alone-mode.html#新しいジェネシスレジャーの設定)を確認してください。
 
-**注記:** [MultiSignReserve Amendment][]が有効ではない場合は、SignerListのメンバーの増加に応じて、アドレスの[所有者準備金](reserves.html#所有者準備金)のXRP額を増加する必要があります。アドレスに十分なXRPがないと、トランザクションは[tecINSUFFICIENT_RESERVE](tec-codes.html)で失敗します。[MultiSignReserve Amendment][]が有効な場合は、SignerListの署名者の数に関係なく[所有者準備金](reserves.html#所有者準備金)として必要なXRPは5 XRPです。関連項目: [SignerListと準備金](signerlist.html#signerlistsと準備金)
+**注記:** [MultiSignReserve Amendment][]が有効ではない場合は、SignerListのメンバーの増加に応じて、アドレスの[所有者準備金](reserves.html#所有者準備金)のXRP額を増加する必要があります。アドレスに十分なXRPがないと、トランザクションは[tecINSUFFICIENT_RESERVE](tec-codes.html)で失敗します。[MultiSignReserve Amendment][]が有効な場合は、SignerListの署名者の数に関係なく[所有者準備金](reserves.html#所有者準備金)として必要なXRPは5 XRPです。関連項目: [SignerListと準備金](signerlist.html#signerlistと準備金)
 
 
 ## 4. レジャーの閉鎖

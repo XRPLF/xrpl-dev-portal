@@ -27,7 +27,7 @@ _[PayChan Amendment][]が必要です。_
 
 | フィールド            | JSONの型 | [内部の型][] | 説明               |
 |:-----------------|:----------|:------------------|:--------------------------|
-| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてこのChannelに留保する[XRP、drop単位][Currency Amount]の額。このChannelのオープン時には、XRPを`Destination`アドレスにのみ移動できます。Channelが閉鎖すると、未請求のXRPは支払元アドレスの残高に戻されます。 |
+| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてこのChannelに留保する[XRP、drop単位][]の額。このChannelのオープン時には、XRPを`Destination`アドレスにのみ移動できます。Channelが閉鎖すると、未請求のXRPは支払元アドレスの残高に戻されます。 |
 | `Destination`    | 文字列    | AccountID         | このChannelに対するXRPクレームを受け取るアドレス。Channelの「宛先アドレス」とも呼ばれます。送金元（`Account`）と同一にはできません。 |
 | `SettleDelay`    | 数値    | UInt32            | Channelに未請求のXRPがある場合に、支払元アドレスがそのChannelを閉鎖するまでに待機する時間。 |
 | `PublicKey`      | 文字列    | Blob              | 支払元がこのChannelに対するクレームに署名するときに使用する公開鍵またはキーペア（16進数）。secp256k1公開鍵またはEd25519公開鍵を指定できます。 <!-- STYLE_OVERRIDE: will --> |

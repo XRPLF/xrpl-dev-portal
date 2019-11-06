@@ -74,7 +74,7 @@ targets:
             bc_home: "Home"
             tl_banner:
                 head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"#\">please contribute!</a>" #TODO: have a real link for contributing translations
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">please contribute!</a>" #TODO: have a real link for contributing translations
             pagetoc: "In this document"
             footer:
                 ripple:
@@ -147,7 +147,7 @@ targets:
             bc_home: "ホーム"
             tl_banner:
                 head: "も仕分けありませんがこのページは日本語では入手不可" #TODO: check translation
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"#\">please contribute!</a>" #TODO: translate. & have a real link for contributing translations
+                body: "XRP Ledger Dev Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべての言語で利用できるわけではありません。助けたいと思うなら、<a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">提供して下さい！</a>" #TODO: check translation & have a real link
             pagetoc: "目次"
             footer:
                 ripple:
@@ -208,9 +208,66 @@ targets:
                         head: "台帳上の分散型取引所"
                         url: "xrp-ledger-overview.html#台帳上の分散型取引所"
         link_subs:
-            # Fix links from untranslated send-xrp.html (2 links):
+            # Fix 2 links from untranslated send-xrp.html:
             "accounts.html#creating-accounts": "accounts.html#アカウントの作成"
             "rippled-server-modes.html#reasons-to-run-a-stock-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
+            # Fix 1 link from untranslated transaction-censorship-detection.html:
+            "xrp-ledger-overview.html#censorship-resistant-transaction-processing": "xrp-ledger-overview.html#耐検閲性のある取引処理"
+            # Fix 1 link from untranslated software-ecosystem.html:
+            "rippled-server-modes.html#reasons-to-run-a-validator": "rippled-server-modes.html#バリデータを運用する理由"
+            # Fix 2 links from untranslated xrp-ledger-toml.html:
+            "currency-formats.html#currency-codes": "currency-formats.html#通貨コード"
+            "run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator": "run-rippled-as-a-validator.html#1-優れたバリデータの特徴の理解"
+            # Fix 1 link from untranslated snippet post-rippled-install.md:
+            "get-started-with-the-rippled-api.html#commandline": "get-started-with-the-rippled-api.html#コマンドライン"
+            # Fix 8 links from untranslated use-an-escrow-as-a-smart-contract.html:
+            "send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment": "send-a-conditionally-held-escrow.html#1条件とフルフィルメントの生成"
+            "send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time": "send-a-conditionally-held-escrow.html#2リリース時刻または取消し時刻の計算"
+            "send-a-conditionally-held-escrow.html#3-submit-escrowcreate-transaction": "send-a-conditionally-held-escrow.html#3escrowcreateトランザクションの送信"
+            "send-a-conditionally-held-escrow.html#4-wait-for-validation": "send-a-conditionally-held-escrow.html#4検証の待機"
+            "send-a-conditionally-held-escrow.html#5-confirm-that-the-escrow-was-created": "send-a-conditionally-held-escrow.html#5escrowが作成されたことの確認"
+            "send-a-conditionally-held-escrow.html#6-submit-escrowfinish-transaction": "send-a-conditionally-held-escrow.html#6escrowfinishトランザクションの送信"
+            "send-a-conditionally-held-escrow.html#7-wait-for-validation": "send-a-conditionally-held-escrow.html#7検証の待機"
+            "send-a-conditionally-held-escrow.html#8-confirm-final-result": "send-a-conditionally-held-escrow.html#8最終結果の確認"
+            # Fix 1 link from untranslated checkcash-prereqs.md snippet:
+            "transaction-cost.html#queued-transactions": "transaction-cost.html#キューに入れられたトランザクション"
+            # Fix 2 links from untranslated crawl_shards.html:
+            "peer-protocol.html#private-peers": "peer-protocol.html#プライベートピア"
+            "error-formatting.html#universal-errors": "error-formatting.html#汎用エラー"
+            # Fix 2 links from untranslated demurrage.html:
+            "currency-formats.html#issued-currency-precision": "currency-formats.html#発行済み通貨の計算"
+            # Fix 9 links from untranslated known-amendments.html:
+            "accounts.html#permanence-of-accounts": "accounts.html#アカウントの永続性"
+            "paths.html#path-specifications": "paths.html#パスの仕様"
+            "rippling.html#the-noripple-flag": "rippling.html#norippleフラグ"
+            "reserves.html#owner-reserves": "reserves.html#所有者準備金"
+            "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
+            "trustset.html#trustset-flags": "trustset.html#trustsetのフラグ"
+            "ripplestate.html#ripplestate-flags": "ripplestate.html#ripplestateのフラグ"
+            "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ" # also used in untranslated require-destination-tags.html, become-an-xrp-ledger-gateway.html
+            "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
+            # Fix 2 links from untranslated data type snippets
+            "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
+            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
+            # Fix 2 links from untranslated direct-xrp-payments.html
+            "basic-data-types.html#specifying-currency-amounts": "basic-data-types.html#通貨額の指定"
+            "partial-payments.html#partial-payments-exploit": "partial-payments.html#partial-paymentの悪用"
+            # Fix 2 links from untranslated become-an-xrp-ledger-gateway.html
+            "paths.html#default-paths": "paths.html#デフォルトパス"
+            "payment.html#payment-flags": "payment.html#paymentのフラグ"
+            # Fix 1 link from untranslated monitor-incoming-payments-with-websocket.html
+            "currency-formats.html#xrp-precision": "currency-formats.html#xrpの精度"
+            # Fix 1 link from untranslated set-up-secure-signing.html
+            "request-formatting.html#commandline-format": "request-formatting.html#コマンドライン形式"
+            # Fix links from untranslated open-a-payment-channel-to-enable-an-inter-exchange-network.html
+            "use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient": "use-payment-channels.html#1-支払人が特定の受取人へのpayment-channelを作成します"
+            "use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel": "use-payment-channels.html#2-受取人がpayment-channelの特性を確認します"
+            "use-payment-channels.html#3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel": "use-payment-channels.html#3-支払人がchannelのxrpに対して1つ以上の署名付き-クレーム-を作成します"
+            "use-payment-channels.html#4-the-payer-sends-a-claim-to-the-payee-as-payment-for-goods-or-services": "use-payment-channels.html#4-支払人が商品またはサービスに対する支払いとしてクレームを受取人に送信します"
+            "use-payment-channels.html#5-the-payee-verifies-the-claims": "use-payment-channels.html#5-受取人がクレームを検証します"
+            "use-payment-channels.html#7-repeat-steps-3-6-as-desired": "use-payment-channels.html#7-必要に応じてステップ36を繰り返します"
+            "use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount": "use-payment-channels.html#8-準備が完了すれば受取人は承認された額のクレームを清算します"
+            "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
 
 
     -   name: xrp-api-only
@@ -225,7 +282,7 @@ targets:
             bc_home: "Home"
             tl_banner:
                 head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"#\">please contribute!</a>" #TODO: have a real link for contributing translations
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">please contribute!</a>" #TODO: have a real link for contributing translations
             pagetoc: "In this document"
             footer:
                 ripple:
@@ -254,7 +311,7 @@ targets:
             bc_home: "Home"
             tl_banner:
                 head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"#\">please contribute!</a>" #TODO: have a real link for contributing translations
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">please contribute!</a>" #TODO: have a real link for contributing translations
             pagetoc: "In this document"
             footer:
                 ripple:
@@ -1888,7 +1945,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
+    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
         html: list-xrp-as-an-exchange.html
         funnel: Docs
         doc_type: Tutorials
@@ -3620,7 +3677,7 @@ pages:
         targets:
             - en
 
-    -   md: references/rippled-api/public-rippled-methods/utility-methods/random.md
+    -   md: references/rippled-api/public-rippled-methods/utility-methods/random.ja.md
         html: random.html
         funnel: Docs
         doc_type: References

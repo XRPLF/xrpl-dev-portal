@@ -177,7 +177,7 @@ Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_c
 Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
 ```
 
-設定に`[shard_db]`スタンザが含まれている場合、このスタンザには`path`フィールドが指定されている必要があります。このフィールドは、`rippled`がシャードストアーのデータを書き込むことができるディレクトリを指しています。このエラーが発生する場合は、`path`フィールドが欠落しているか、誤った位置に指定されています。構成ファイルで余分な空白やスペルミスがないかどうかを確認し、[シャード設定の例](configure-history-sharding.html#2-edit-rippledcfg)と比較してください。
+設定に`[shard_db]`スタンザが含まれている場合、このスタンザには`path`フィールドが指定されている必要があります。このフィールドは、`rippled`がシャードストアーのデータを書き込むことができるディレクトリを指しています。このエラーが発生する場合は、`path`フィールドが欠落しているか、誤った位置に指定されています。構成ファイルで余分な空白やスペルミスがないかどうかを確認し、[シャード設定の例](configure-history-sharding.html#2-rippledcfgの編集)と比較してください。
 
 
 ## ShardStoreがRocksDBを開くかまたは作成することができない

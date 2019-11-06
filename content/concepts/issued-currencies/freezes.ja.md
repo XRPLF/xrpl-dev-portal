@@ -336,8 +336,8 @@ WebSocket応答の例:
 
 [ビット単位AND](https://en.wikipedia.org/wiki/Bitwise_operation#AND)演算子を使用して応答の`account_data.Flags`フィールドの値を確認します:
 
-* `Flags` AND `0x00400000`（[lsfGlobalFreeze](accountroot.html#accountrootフラグ)）が _ゼロ以外_ の場合: Global Freezeが有効です。
-* `Flags` AND `0x00200000`（[lsfNoFreeze](accountroot.html#accountrootフラグ)）が _ゼロ以外_ の場合: No Freezeが有効です。
+* `Flags` AND `0x00400000`（[lsfGlobalFreeze](accountroot.html#accountrootのフラグ)）が _ゼロ以外_ の場合: Global Freezeが有効です。
+* `Flags` AND `0x00200000`（[lsfNoFreeze](accountroot.html#accountrootのフラグ)）が _ゼロ以外_ の場合: No Freezeが有効です。
 
 WebSocket要求の例:
 

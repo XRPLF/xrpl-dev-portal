@@ -197,7 +197,7 @@ rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
 | `auth_change`     | ブール値 | このトランザクションがこのアドレスの[トランザクション承認の方法](transaction-basics.html#取引の承認)を変更するかどうかを示します。 |
 | `fee`             | 文字列  | このトランザクションの[トランザクションコスト](transaction-cost.html)（[XRPのdrop数][]）。 |
 | `fee_level`       | 文字列  | このタイプのトランザクションの最少コストと比較した、このトランザクションのトランザクションコスト（[手数料レベル][]）。 |
-| `max_spend_drops` | 文字列  | このトランザクションで送信または消却できる[XRP（drop）][]の最高額。 |
+| `max_spend_drops` | 文字列  | このトランザクションで送信または消却できる[XRPのdrop数][]の最高額。 |
 | `seq`             | 整数 | このトランザクションの[シーケンス番号][]。   |
 
 ## 考えられるエラー

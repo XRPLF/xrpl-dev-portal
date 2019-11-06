@@ -95,7 +95,7 @@
 
       * `[debug_logfile]`を`rippled`がログ情報を書き込めるパスに設定します。
 
-      `rippled`を正常に起動するために必要な構成はこれだけです。その他の構成はすべて省略可能であり、作業サーバーをセットアップしてから調整することもできます。詳細については、[Additional Configurations](#追加構成)を参照してください。
+      `rippled`を正常に起動するために必要な構成はこれだけです。その他の構成はすべて省略可能であり、作業サーバーをセットアップしてから調整することもできます。詳細については、[追加構成](#additional-configuration)を参照してください。
 
 0. `rippled` は、`validators.txt`ファイルの実行を必要とします。`rippled/cfg/`に、サンプルバリデータファイルの`validators-example.txt`があります。このファイルをコピーし、`rippled.cfg`ファイルと同じフォルダーに`validators.txt`という名前で保存します。`rippled`ディレクトリーにアクセスして、以下を実行します。
 

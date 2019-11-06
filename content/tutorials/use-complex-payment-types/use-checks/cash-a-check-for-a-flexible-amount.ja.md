@@ -83,7 +83,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ## {{cash_flex_n.next()}}.署名済みCheckCashトランザクションの送信
 
-{% set step_1_link = "#1-prepare-the-checkcash-transaction" %}
+{% set step_1_link = "#1checkcashトランザクションの準備" %}
 {% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### 要求の例
