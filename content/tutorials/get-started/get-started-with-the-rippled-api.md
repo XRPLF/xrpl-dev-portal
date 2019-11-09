@@ -1,8 +1,30 @@
-# Get Started with the rippled API
+# Get Started with XRP Ledger APIs
 
-Before you can run any commands against a `rippled` server, you must know which server you are connecting to. Most servers are configured not to accept API requests directly from the outside network.
+The XRP Ledger's core server software is [`rippled`](the-rippled-server.html). You can jump straight into developing on the XRP Ledger by accessing the API of a `rippled` server.
 
-Alternatively, you can [run your own local copy of `rippled`](install-rippled.html). This is required if you want to access any of the [Admin Methods](admin-rippled-methods.html). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`) Additionally, to access admin functionality, you must connect from a port/IP address marked as admin in the config file.
+The quickest way to dive into the API is with the [**WebSocket API Tool**](websocket-api-tool.html), or use the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see watch the progress of the ledger live.
+
+You can also [run your own instance of `rippled`](install-rippled.html) or use a [public server](#public-servers).
+
+## Public Servers
+
+Ripple provides several public servers for the benefit of the XRP Ledger community:
+
+| Operator | [Network][] | JSON-RPC URL | WebSocket URL | Notes                |
+|:---------|:------------|:-------------|:--------------|:---------------------|
+| Ripple   | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | General purpose server cluster |
+| Ripple   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [Full-history server](ledger-history.html#full-history) cluster |
+| Ripple   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net/` | Testnet public server |
+| Ripple   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net/` | Devnet public server |
+
+[Network]: parallel-networks.html
+
+These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
+
+
+## Admin Access
+
+To use a `rippled` server's [Admin Methods](admin-rippled-methods.html). In this case, you should use whatever IP and port you configured the server to bind. (For example, `127.0.0.1:54321`) Additionally, to access admin functionality, you must connect from a port/IP address marked as admin in the config file.
 
 The [example config file](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
@@ -20,22 +42,6 @@ After you open a WebSocket to the `rippled` server, you can send commands as a [
 * Optionally include an `"id"` field with an arbitrary value. The response to this request uses the same `"id"` field. This way, even if responses arrive out of order, you know which request prompted which response.
 
 The response comes as a JSON object.
-
-### Public Servers
-
-Currently Ripple (the company) maintains a set of public WebSocket servers at:
-
-| URL                                   | [Network][] | Notes                  |
-|:--------------------------------------|:------------|:-----------------------|
-| `wss://s1.ripple.com/`                | Mainnet     | General purpose server cluster |
-| `wss://s2.ripple.com/`                | Mainnet     | [Full-history server](ledger-history.html#full-history) cluster |
-| `wss://s.altnet.rippletest.net`       | Testnet     | Testnet public server  |
-| `wss://s.devnet.rippletest.net`       | Devnet      | Devnet public server   |
-
-[Network]: parallel-networks.html
-
-These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
-
 
 ## JSON-RPC
 
@@ -55,19 +61,6 @@ Send request body as a [JSON](https://en.wikipedia.org/wiki/JSON) object with th
 * Include a top-level `"params"` field. The contents of this field should be **a one-item array** containing only a nested JSON object with all the parameters for the command.
 
 The response is also a JSON object.
-
-### Public Servers
-
-Currently, Ripple (the company) maintains a set of public JSON-RPC servers at:
-
-| URL                                      | [Network][] | Notes                |
-|:-----------------------------------------|:------------|:---------------------|
-| `https://s1.ripple.com:51234/`           | Mainnet     | General purpose server cluster |
-| `https://s2.ripple.com:51234/`           | Mainnet     | [Full-history server](ledger-history.html#full-history) cluster |
-| `https://s.altnet.rippletest.net:51234/` | Testnet     | Testnet public server |
-| `https://s.devnet.rippletest.net:51234/` | Devnet      | Devnet public server |
-
-These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
 
 
 ## Commandline

@@ -1,5 +1,6 @@
 #!/bin/bash
 mkdir -p out
+rm -r out
 
 # Pass forward dactyl "vars" arg if provided
 if [ "$1" == "--vars" ] && [ -n "$2" ];
@@ -8,9 +9,41 @@ then
   shift 2
 fi
 
-targets=`dactyl_build -lq | awk '{print $1}'`
 linkerrors=0
 builderrors=0
+
+# Build language-based targets all together first
+langs=(en ja)
+for lang in ${langs[*]}; do
+  echo "======================================="
+  echo "Building language: en"
+
+  if [ "$lang" == "en" ]; then
+    if [ -n "$dactyl_vars" ]; then
+      dactyl_build -q -t "$lang" --vars "$dactyl_vars"
+    else
+      dactyl_build -q -t "$lang"
+    fi
+  else
+    if [ -n "$dactyl_vars" ]; then
+      dactyl_build -q -t "$lang" -o "out/$lang" --vars "$dactyl_vars"
+    else
+      dactyl_build -q -t "$lang" -o "out/$lang"
+    fi
+  fi
+  buildresult=$?
+  if [ $buildresult -ne 0 ]; then
+    builderrors=$(($buildresult + $builderrors))
+    echo "Error building this target; link checker may miss things."
+  fi
+done
+
+# Check language targets all at once
+dactyl_link_checker -q "$@"
+linkerrors=$(($? + $linkerrors))
+
+# Build & check other targets individually afterwords
+other_targets=`dactyl_build -lq | awk '/^(en|ja) / {next;} {print $1}'`
 while read -r line; do
     echo ""
     echo "======================================="
@@ -30,7 +63,7 @@ while read -r line; do
         builderrors=$(($buildresult + $builderrors))
         echo "Error building this target; skipping link checker."
     fi
-done <<< "$targets"
+done <<< "$other_targets"
 
 totalerrors=$(($builderrors + $linkerrors))
 

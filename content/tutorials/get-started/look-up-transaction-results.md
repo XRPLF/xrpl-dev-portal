@@ -208,7 +208,7 @@ A [Payment transaction][] can represent a direct XRP-to-XRP transaction, a [cros
 
 XRP amounts are tracked in the `Balance` field of `AccountRoot` objects. (XRP can also exist in [Escrow objects](escrow-object.html) and [PayChannel objects](paychannel.html), but Payment transactions cannot affect those.)
 
-You should always use [the delivered_amount field](partial-payments.html#the-delivered-amount-field) to see how much a payment delivered.
+You should always use [the delivered_amount field](partial-payments.html#the-delivered_amount-field) to see how much a payment delivered.
 
 If the payment contains a `CreatedNode` of LedgerEntryType `AccountRoot`, that means the payment [funded a new account](accounts.html#creating-accounts) in the ledger.
 

@@ -82,7 +82,6 @@ h1, h2, h3, h4, h5 {
   font-weight: 700;
   color: $black;
 }
-
 .landing section,
 .xrpl-footer .card-grid,
 #main_content_wrapper {
@@ -256,28 +255,36 @@ h3 a:hover,
   background-color: $gray-700;
 }
 
-.devportal-callout.tip {
+.devportal-callout.tip,
+.devportal-callout.ヒント {
   border-color: $success;
 }
-.devportal-callout.tip > strong:first-child:before {
+.devportal-callout.tip > strong:first-child:before,
+.devportal-callout.ヒント > strong:first-child:before {
   color: $success;
 }
-.devportal-callout.note > strong:first-child:before {
+.devportal-callout.note > strong:first-child:before,
+.devportal-callout.注記 > strong:first-child:before {
   color: $info;
 }
-.devportal-callout.note {
+.devportal-callout.note,
+.devportal-callout.注記 {
   border-color: $info;
 }
-.devportal-callout.caution {
+.devportal-callout.caution,
+.devportal-callout.注意 {
   border-color: $warning; /* not a typo */
 }
-.devportal-callout.caution > strong:first-child:before {
+.devportal-callout.caution > strong:first-child:before,
+.devportal-callout.注意 > strong:first-child:before {
   color: $warning; /* not a typo */
 }
-.devportal-callout.warning {
+.devportal-callout.warning,
+.devportal-callout.警告 {
   border-color: $danger;
 }
-.devportal-callout.warning > strong:first-child:before {
+.devportal-callout.warning > strong:first-child:before,
+.devportal-callout.警告 > strong:first-child:before {
   color: $danger;
 }
 
@@ -472,8 +479,8 @@ aside a.active-parent {
 /* Edit on GitHub link ------------------------------------------------------ */
 .github-edit-wrap {
   border: 1px solid $gray-400;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 .github-edit-wrap:hover {
   border-color: $black;
@@ -562,7 +569,7 @@ td:nth-child(1) {
   margin: 0 48px;
 }
 
-@media (max-width: 1090px) {
+@media (max-width: 1105px) {
   .navbar.fixed-top {
     margin: 0 20px;
   }
@@ -579,12 +586,6 @@ td:nth-child(1) {
 }
 .navbar-brand:hover {
   opacity: 0.5;
-}
-
-@media (max-width: 1010px) {
-  .navbar-brand {
-    margin-right: 5px;
-  }
 }
 
 .navbar .navbar-nav .nav-link {
@@ -1138,7 +1139,6 @@ a.current {
   list-style-type: square;
 }
 
-
 @media (max-width: 991px) {
   .landing .card {
     padding-left: 0px;
@@ -1495,7 +1495,7 @@ a.current {
   padding-left: 14px;
 }
 
-.btn:not(.external-link)::after,
+.btn:not(.external-link):not(.dropdown-toggle)::after,
 .landing .card .level-1 a::after,
 .landing .card .level-2 a::after,
 .landing .card .curated-links li a::after,
@@ -1511,7 +1511,7 @@ a.current {
   content: " ↑"
 }
 
-.btn:not(.external-link):hover::after,
+.btn:not(.external-link):not(.dropdown-toggle):hover::after,
 .landing .card .level-1 a:hover::after,
 .landing .card .level-2 a:hover::after,
 .landing .card .curated-links li a:hover::after,
@@ -1647,7 +1647,49 @@ a.current {
   text-indent: 0;
 }
 
+/* Language selector -------------------------------------------------------- */
+
+.language-selector {
+  .nav-link {
+    font-size: 16px;
+  }
+
+  .nav-link.active {
+    color: $black;
+    font-weight: bold;
+  }
+}
+
+#navbarHolder .language-selector .btn {
+  font-size: 0.875rem;
+  padding: .375rem .75rem;
+}
+
+/* Japanese language font override ------------------------------------------ */
+
+.lang-ja {
+  h1, h2, h3, h4, h5,
+  .github-edit-wrap .github-edit,
+  .navbar .navbar-nav .nav-link,
+  .content .children-display li a,
+  .right-sidebar .level-1 a,
+  .right-sidebar .separator,
+  .use-case-step-num {
+    //font-family: 'M PLUS 1p', 'Space Mono', sans-serif;
+    //font-family: '851Gkktt', 'Space Mono', sans-serif;
+    font-family: 'Makinas-4-Flat', 'Makinas-4-Square', 'Space Mono', sans-serif;
+  }
+}
+
 /* Responsive design for different viewscreens ------------------------------ */
+
+@media (max-width: 1010px) {
+  .navbar-brand,
+  .github-edit-wrap,
+  #navbar-search {
+    margin-right: 3px;
+  }
+}
 
 @media (max-width: 991px) {
 

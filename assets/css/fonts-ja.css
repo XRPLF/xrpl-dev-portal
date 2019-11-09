@@ -1,0 +1,58 @@
+/*
+"Makinas" free font by Mojiwaku Kenkyuu.
+もじワク研究からの「マキナス」フォント
+https://moji-waku.com/makinas/index.html
+*/
+@font-face {
+  font-family: 'Makinas-4-Flat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../font/Makinas-4-Flat.otf") format('opentype');
+  unicode-range: U+20, U+3001-303f, U+30A0-30fe, U+4e00-9faf, U+ff00-ffef; /* omit hiragana */
+}
+
+@font-face {
+  font-family: 'Makinas-4-Square';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../font/Makinas-4-Square.otf") format('opentype');
+  unicode-range: U+3040-309F; /* hiragana only */
+}
+
+
+/* Other Japanese fonts unused for now */
+/*
+851ゴチカクット フォント (http://pm85122.onamae.jp/851Gkktt.html　から)
+作成者の8:51:22pmさんに感謝
+
+@font-face {
+  font-family: '851Gkktt';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../font/851Gkktt_005.ttf") format('truetype');
+  unicode-range: U+20, U+3001-30fe, U+4e00-9faf, U+ff00-ffef;
+}
+
+
+/* M+ 1p from Google Fonts (unicode range simplified a bit)
+@font-face {
+  font-family: 'M PLUS 1p';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('M PLUS 1p'), local('MPLUS1p-Regular'), url(https://fonts.gstatic.com/s/mplus1p/v19/e3tjeuShHdiFyPFzBRro_VYUcXm4y4YtjOJGYMp5iAw4B3f5iUc.0.woff2) format('woff2');
+  unicode-range: U+20, U+3001-30fe, U+4e00-9faf, U+ff00-ffef;
+}
+
+@font-face {
+  font-family: 'M PLUS 1p';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('M PLUS 1p Bold'), local('MPLUS1p-Bold'), url(https://fonts.gstatic.com/s/mplus1p/v19/e3tmeuShHdiFyPFzBRrQRBEgfivGoOYmg_dUa_BuiDU9F33s7CtHVU4.0.woff2) format('woff2');
+  unicode-range: U+20, U+3001-30fe, U+4e00-9faf, U+ff00-ffef;
+}
+*/
