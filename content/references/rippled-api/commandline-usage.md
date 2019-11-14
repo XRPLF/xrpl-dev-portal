@@ -55,7 +55,7 @@ Daemon mode is the default mode of operation for `rippled`. In addition to the [
 rippled --standalone [OPTIONS]
 rippled -a [OPTIONS]
 ```
-Run in stand-alone mode. In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.)
+Run in [stand-alone mode](rippled-server-modes.html). In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.)
 
 ### Initial Ledger Options
 
