@@ -163,13 +163,13 @@ targets:
                 intro:
                     head: "価値のインターネットをパワーする。"
                     body1: "<a href=\"#xrp_ledger_intro\">XRP Ledger</a>は誰でもが使い得るオープンソース技術。"
-                    body2: "Use the tools and information provided here to integrate with and contribute to the open-source platform." #TODO:translate
+                    body2: "このツールと情報でXRPのオープンソースプラットフォームを統合して開発を提供します。" #TODO:check translation
                     subhead: "Want more?" #TODO:translate
                     sub_body: "Get updates about XRP Ledger webinars, releases, and documentation!" #TODO:translate
                     cta: "Sign up!" #TODO:translate
                 cards_1:
                     learn:
-                        head: "Learn How It Works" #TODO:translate
+                        head: "XRP技術を理解する"
                         about_xrp: "XRPについて"
                         cta: "全コンセプト"
                     read_docs:
@@ -178,7 +178,7 @@ targets:
                         cta: "全ドキュメント"
                     explore:
                         head: "XRP Ledgerを探る"
-                        blurb: "Use the XRPL Explorer to view a stream of ledger activity and see validator statuses." #TODO:translate
+                        blurb: "XRP Ledger エクスプローラを使ってレジャーの動き、バリデータのステータスを見る。" #TODO:check translation
                         cta: "XRP Ledger エクスプローラへ"
                 what_is_xrpl:
                     head: "XRP Ledgerとは何？"
@@ -1545,7 +1545,17 @@ pages:
 
     # TODO: Get Started with API Tools
 
-    -   name: Use Simple XRP Payments
+    -   name: Use Direct XRP Payments
+        html: use-simple-xrp-payments.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        template: template-landing-children.html
+        blurb: Direct XRP payments from one account to another are the simplest way to transact in the XRP Ledger. This section includes tutorials for how to use simple transactions proficiently and robustly.
+        targets:
+            - en
+
+    -   name: 直接XRP支払いの送信
         html: use-simple-xrp-payments.html
         funnel: Docs
         doc_type: Tutorials
@@ -1553,7 +1563,6 @@ pages:
         template: template-landing-children.html
         blurb: Direct XRP payments from one account to another are the simplest way to transact in the XRP Ledger. This section includes tutorials for how to use simple transactions proficiently and robustly. #TODO:translate
         targets:
-            - en
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.md
@@ -1604,9 +1613,18 @@ pages:
         doc_type: Tutorials
         category: Manage Account Settings
         template: template-landing-children.html
-        blurb: Set up your XRP Ledger account to send and receive payments the way you want it to. #TODO:translate
+        blurb: Set up your XRP Ledger account to send and receive payments the way you want it to.
         targets:
             - en
+
+    -   name: アカウントの設定の利用
+        html: manage-account-settings.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        template: template-landing-children.html
+        blurb: Set up your XRP Ledger account to send and receive payments the way you want it to. #TODO:translate
+        targets:
             - ja
 
     # TODO: "Get an Account" (DOC-1554)
@@ -1702,9 +1720,18 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         template: template-landing-children.html
-        blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger. #TODO:translate
+        blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger.
         targets:
             - en
+
+    -   name: 専門化した支払いタイプの使用
+        html: use-specialized-payment-types.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        template: template-landing-children.html
+        blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger. #TODO:translate
+        targets:
             - ja
 
         # Redirect from old "complex" payment types URL
@@ -1725,10 +1752,20 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Escrows
-        blurb: The XRP Ledger supports escrows that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies.  #TODO:translate
+        blurb: The XRP Ledger supports escrows that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies.
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: Escrowの使用
+        html: use-escrows.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Escrows
+        blurb: The XRP Ledger supports escrows that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies.  #TODO:translate
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-time-held-escrow.md
@@ -1988,6 +2025,15 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: XRP Ledgerが利用する会社について
+        html: xrp-ledger-businesses.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: XRP Ledger Businesses
+        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger. #TODO:translate
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
@@ -2041,10 +2087,19 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        blurb: A system admin's guide to setting up and maintaining the rippled server. #TODO:translate
+        blurb: A system admin's guide to setting up and maintaining the rippled server.
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: rippledサーバの利用
+        html: manage-the-rippled-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        blurb: A system admin's guide to setting up and maintaining the rippled server. #TODO:translate
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   name: Install rippled
@@ -2057,6 +2112,16 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: rippledのインストール
+        html: install-rippled.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: Install and update the rippled server. #TODO:translate
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/system-requirements.md
@@ -2245,10 +2310,20 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Customize your rippled server configuration. #TODO:translate
+        blurb: Customize your rippled server configuration.
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: rippledの設定
+        html: configure-rippled.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Customize your rippled server configuration. #TODO:translate
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.md
@@ -2432,6 +2507,16 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: スタンドアロンモードでrippledをテスト
+        html: use-stand-alone-mode.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Stand-Alone Mode
+        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network. #TODO:translate
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
@@ -2494,8 +2579,18 @@ pages:
         targets:
             - ja
 
-
     -   name: Troubleshooting rippled
+        html: troubleshoot-the-rippled-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Troubleshoot all kinds of problems with the rippled server.
+        template: template-landing-children.html
+        targets:
+            - en
+
+    -   name: rippledのトラブルシューティング
         html: troubleshoot-the-rippled-server.html
         funnel: Docs
         doc_type: Tutorials
@@ -2504,7 +2599,6 @@ pages:
         blurb: Troubleshoot all kinds of problems with the rippled server. #TODO:translate
         template: template-landing-children.html
         targets:
-            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.md
@@ -2622,6 +2716,15 @@ pages:
         blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger. #TODO:translate
         targets:
             - en
+
+    -   name: rippled API リファレンス
+        html: rippled-api.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        template: template-landing-children.html
+        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger. #TODO:translate
+        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/api-conventions.md
