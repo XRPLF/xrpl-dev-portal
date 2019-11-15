@@ -4,7 +4,7 @@ Ripple Data API v2を使用すると、XRP Ledgerの変更に関する情報（�
 
 Rippleは可能な限り完全なトランザクションレコードが含まれているData APIのライブインスタンスを以下のアドレスで公開しています。
 
-[**https://data.ripple.com**](https://data.riｆpple.com)
+[**https://data.ripple.com**](https://data.ripple.com)
 
 
 ## 詳細情報
@@ -2940,10 +2940,10 @@ GET /v2/network/validator/nHDEmQKb2nbcewdQ1fqCTGcPTcePhJ2Rh6MRftsCaf6UNRQLv7pB/m
      "first_datetime": "2018-09-06T20:20:08.353Z",
      "last_datetime": "2018-09-06T20:20:08.353Z",
      "master_public_key": "nHDEmQKb2nbcewdQ1fqCTGcPTcePhJ2Rh6MRftsCaf6UNRQLv7pB",
-     "master_signature": 
+     "master_signature":
        "D8E78AD2C10ADA5A91D673C2EA66045926D3ED3D4C77DE4350AAA076379F69B8D0EC492A626EA9228964F694EED9EC63394D051001BA432EC57F2B6031204806",
      "sequence": "1",
-     "signature": 
+     "signature":
        "C794C3D1159932FF8EE7360074E7D17CB59F6646B227EF35D439892C00832648C46FD1958714E153AF4BD0540A7B27011B7F58D357B68B87DCBF5CA81874480C"
    },
    {
@@ -2952,10 +2952,10 @@ GET /v2/network/validator/nHDEmQKb2nbcewdQ1fqCTGcPTcePhJ2Rh6MRftsCaf6UNRQLv7pB/m
      "first_datetime": "2018-09-06T20:20:08.357Z",
      "last_datetime": "2018-09-06T20:20:08.357Z",
      "master_public_key": "nHDEmQKb2nbcewdQ1fqCTGcPTcePhJ2Rh6MRftsCaf6UNRQLv7pB",
-     "master_signature": 
+     "master_signature":
        "F7ECCB90F84ED3FC5E0DE1A6B0B7E835A8D2A94C8E985A74932DE30CD2EDCB46936FD14C39A5AA1BB3583CF888C869167979FEE068C6C34B9B63AB922850090E",
      "sequence": "2",
-     "signature": 
+     "signature":
        "3044022055ED7EFF1245DE21D3C28C57D19301291F0D617CA3A6D3D4CFDF8692D9E0E68502200276215BA986BA61834E0AC71E8590706C851B8F55F0B80A44EECE868F71415F"
    }
  ]
@@ -5381,7 +5381,7 @@ Live Ledger Importerは、1つ以上のデータストアーを同時にイン�
 使用例:
 
 ```
-// start loading records into HBase: 
+// start loading records into HBase:
 $ node import/live
 ```
 
