@@ -12,7 +12,6 @@ Ripple Data API v2はHistorical Database v1および[Charts API](https://github.
 
 * [APIメソッド](#apiメソッドリファレンス)
 * [APIの規則](#apiの規則)
-* [設定（ローカルインスタンス）](#historical-databaseの実行)
 * [ソースコード（Github）](https://github.com/ripple/rippled-historical-database)
 * [リリースノート](https://github.com/ripple/rippled-historical-database/releases)
 
@@ -5294,113 +5293,6 @@ Data APIでは、ペイメントオブジェクトはアカウント間で価値
 | `last_datetime`         | 文字列 - [タイムスタンプ][]          | この検証の最終報告の日時。 |
 
 
-
-# Historical Databaseの実行
-
-各自のHistorical DatabaseソフトウェアのインスタンスからData API v2を提供し、各自の`rippled`インスタンスからそのData APIにトランザクションを取り込むこともできます。これは、Historical Databaseの運用を無期限にRippleに依存したくない場合や、各自のイントラネットから履歴トランザクションにアクセスしたい場合に有用です。
-
-## インストール
-
-### 依存関係
-
-Historical Databaseを使用するには、最初に以下のソフトウェアをインストールする必要があります。
-
-* [HBase](http://hbase.apache.org/)（v2には必要です）
-* [Node.js](http://nodejs.org/)
-* [npm](https://www.npmjs.org/)
-* [git](http://git-scm.com/)（省略可）インストールおよび更新用。
-
-Historical Databaseバージョン2には[PostgreSQL](http://www.postgresql.org/)の代わりにHBaseが必要です。Postgresのサポートは廃止されました。
-
-### インストールプロセス
-
-Data API v2をインストールするには、以下の手順に従います。
-
-1. HBaseをインストールします。本番環境で使用する場合は、分散モードで構成します。
-2. Historical Database Git Repositoryを複製します。
-
-        git clone https://github.com/ripple/rippled-historical-database.git
-
-    （Zipされているリリースをダウンロードして解凍することもできます。）
-
-3. npmを使用して追加のモジュールをインストールします。
-
-        cd rippled-historical-database
-        npm install
-
-    インストールスクリプトにより必要な構成ファイルが作成されます。`config/api.config.json` and `config/import.config.json`
-
-4. オプションで、構成ファイルを変更します。`api.config.json`から`postgres`セクションを削除します。
-
-レポート、統計情報、および集約された取引データをAPIで利用可能にするには、さらに処理が必要です。この処理ではApache Stormといくつかのカスタムスクリプトが使用されます。詳細は、[Stormの設定](https://github.com/ripple/rippled-historical-database/blob/master/storm/README.md)を参照してください。
-
-これでData APIがインストールされました。実行できる各種コンポーネントについては、[サービス](#サービス)を参照してください。
-
-### テスト
-
-依存関係:
-
-* [Docker Compose](https://docs.docker.com/compose/install/)
-
-```
-$ docker-compose build
-$ docker-compose up -d hbase
-$ docker-compose run --rm webapp npm test
-```
-
-### サービス
-
-`rippled` Historical Databaseは、個別に実行できるさまざまなプロセスで構成されています。
-
-* [Live Ledger Importer](#live-ledger-importer) - 新たに検証されたレジャーについて`rippled`を監視します。
-    コマンド: `node import/live`
-* [Backfiller](#backfiller) - データベースに`rippled`インスタンスから古いレジャーを取り込みます。
-    コマンド: `node import/postgres/backfill`
-* API Server - データへの[REST API アクセス](#apiメソッドリファレンス)を提供します。
-    コマンド: `npm start`（ソースファイルが変更されるとサーバーが自動的に再起動します）
-    または`node api/server.js`（1回だけ起動します）
-
-## データのインポート
-
-データを`rippled` Historical Databaseから取得するには、最初にこのデータベースにデータを取り込む必要があります。通常は、次の2種類の方法で行われます。
-
-* 履歴レジャーを保持する`rippled`サーバーに接続し、履歴レジャーを取得する。（後で`rippled`サーバーを再設定し、Historical Databaseに保持されている履歴よりも古い履歴を保持しないようにできます。）
-    * 検証される新しいレジャーのみを取得するか、または古いレジャーも取得することができます。
-* あるいは、履歴レジャーデータをすでに保持するデータベースからダンプを読み込むこともできます。（現時点では、一般に利用可能な履歴データのデータベースダンプはありません。）データベースの標準プロセスを使用します。
-
-いずれの場合でも、データの整合性を元のソースの整合性と同じ程度にとどめるよう注意してください。公開サーバーからデータを取得する場合は、そのサーバーのオペレーターが信頼できることを前提としています。データベースダンプから読み込む場合は、ダンプのプロバイダーがデータを破損または改ざんしていないことを前提としています。
-
-### Live Ledger Importer
-
-Live Ledger Importerは、WebSocket APIを使用して`rippled`サーバーに接続し、レジャー閉鎖イベントを待機するサービスです。新しいレジャーが閉鎖されるたびに、Importerは最新の検証済みレジャーを要求します。レジャーがスキップされることを防ぐため、このプロセスにはフォールトトレランスが組み込まれていますが、それでもImporterがレジャーをスキップすることがあります。
-
-Live Ledger Importerには、すでにインポートされているデータを検証し、レジャー履歴のギャップを確認するために定期的に実行される2番目のプロセスがあります。
-
-Live Ledger Importerは、1つ以上のデータストアーを同時にインポートできます。別のストレージ方式を使用するように履歴データベースを設定している場合は、`--type`パラメーターを使用して、使用するデータベースタイプを1つ以上指定できます。
-
-使用例:
-
-```
-// start loading records into HBase:
-$ node import/live
-```
-
-### Backfiller
-
-Backfillerは時間をさかのぼって`rippled`インスタンスから古いレジャーを取得します。オプションで、開始インデックスと終了インデックス指定すると、シーケンス番号に基づいて一定範囲のレジャーを取得できます。
-
-`--startIndex`パラメーターは、取得する最新レジャーを定義します。Backfillerは最初にこのレジャーを取得し、その後さらに古いレジャーの取得を続行します。このパラメーターを省略すると、Backfillerは最新の検証済みレジャーから開始します。
-
-`--stopIndex`パラメーターは、取得する最も古いレジャーを定義します。Backfillerはこのレジャーを取得した後に停止します。省略すると、Backfillerは可能な限り古いレジャーの取得を続行します。埋め戻しは最新レジャーから古いレジャーの順に進むため、停止インデックスは開始インデックスよりも小さい値である必要があります。
-
-**注意:** Backfillerは、比較的短いトランザクション履歴を埋めるのに適しています。Backfillerを使ってXRP Ledgerトランザクションの全履歴をインポートする操作には、数週間かかる場合があります。全履歴が必要な場合は、古いトランザクションを含むデータベースダンプを取得して直接インポートすることが推奨されます。公開サーバーの場合、Ripple社はオフライン`rippled`の内部SQLiteデータベースを使用して履歴データベースに古いトランザクションを取り込み、インポート完了後にBackfillerを使用して最新状態にしています。
-
-使用例:
-
-```
-// get ledgers #1,000,000 to #2,000,000 (inclusive) and store in HBase
-node import/hbase/backfill --startIndex 2000000 --stopIndex 1000000
-```
 
 
 <!--{# common link defs #}-->
