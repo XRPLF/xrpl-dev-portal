@@ -62,6 +62,7 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
             # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
         
         b. Add the following trusted validators to the validator.txt file:
+        
             # Hard-coded List of Devnet Validators
             [validators]
             n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c 
