@@ -27,21 +27,52 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
 
 2. In your `validators.txt` file:
 
-    a. Uncomment the following sections, as follows:
+    2a. Changes to connect to the altnet
 
-        [validator_list_sites]
-        https://vl.altnet.rippletest.net
+        a. Uncomment the following sections, as follows to connect to the altnet:
 
-        [validator_list_keys]
-        ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
+            [validator_list_sites]
+            https://vl.altnet.rippletest.net
 
-    b. Comment out the following sections, as follows:
+            [validator_list_keys]
+            ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
 
-        # [validator_list_sites]
-        # https://vl.ripple.com
-        #
-        # [validator_list_keys]
-        # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+        b. Comment out the following sections, as follows:
+
+            # [validator_list_sites]
+            # https://vl.ripple.com
+            #
+            # [validator_list_keys]
+            # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+        
+    2b. Changes to connect to the devnet
+    
+        a. Comment out the following sections as follows: 
+        
+            # [validator_list_sites]
+            # https://vl.altnet.rippletest.net
+
+            # [validator_list_keys]
+            # ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860        
+        
+            # [validator_list_sites]
+            # https://vl.ripple.com
+            #
+            # [validator_list_keys]
+            # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+        
+        b. Add the following trusted validators to the validator.txt file:
+        
+            # Hard-coded List of Devnet Validators
+            [validators]
+            n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c 
+            n9MEwP4LSSikUnhZJNQVQxoMCgoRrGm6GGbG46AumH2KrRrdmr6B 
+            n9M1pogKUmueZ2r3E3JnZyM3g6AxkxWPr8Vr3zWtuRLqB7bHETFD 
+            n9MX7LbfHvPkFYgGrJmCyLh8Reu38wsnnxA4TKhxGTZBuxRz3w1U 
+            n94aw2fof4xxd8g3swN2qJCmooHdGv1ajY8Ae42T77nAQhZeYGdd 
+            n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC 
+            n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
+           
 
 3. Restart `rippled`.
 
