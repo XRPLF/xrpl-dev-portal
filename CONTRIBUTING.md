@@ -130,7 +130,7 @@ languages:
 
 The same `dactyl-config.yml` file contains an entry for each content page in the XRP Ledger Dev Portal. If a page has been translated, there is a separate entry for each translation, linked to the "target" for that translation. If a page has not yet been translated, the English version is used across all targets. For each page, the HTML filename (`html` field) and navigation fields (`funnel`, `doc_type`, `supercategory`, `category`, and `subcategory`, if supplied) should be the same across all language versions of a page. The fields that are different for translated versions of the page should be (in all cases, only if the entry uses the field):
 
-- **`name`** - the title of the page. This is usually only provided on landing pages with no Markdown source file, or special pages using unusual template, such as dev tools. This field is typically omitted from Markdown files, because Dactyl derives the title from the header on the first line of the file.
+- **`name`** - the title of the page. This is usually only provided on landing pages with no Markdown source file, or special pages using unusual templates, such as the [dev tools](https://xrpl.org/dev-tools.html). This field is typically omitted from Markdown files, because Dactyl derives the title from the header on the first line of the file.
 - **`md`** - the Markdown file to use as the source content for the page. By convention, translated Markdown source files should use the same filename as the English-language version except that the file extension should be `.{language code}.md` instead of only `.md` for English. For example, Japanese translated files end in `.ja.md`
 - **`blurb`** - a short summary of the page. This text is mostly used on category landing pages.
 
@@ -179,7 +179,7 @@ Example entry for a page that isn't translated:
 
 If you want to translate the XRP Ledger Dev Portal into your native language of choice, start with the [XRP Ledger Overview file](https://github.com/ripple/xrpl-dev-portal/blob/master/content/concepts/introduction/xrp-ledger-overview.md), which describes the core properties and functions of the XRP Ledger.
 
-Save the file as `xrp-ledger-overview.{language code}.md`, where `{language code}` is the [IETF BCP47](https://tools.ietf.org/html/bcp47) language code. (For example, "es" for Spanish, "ja" for Japanese, "zh-CN" for Simplified Chinese, "zh-TW" for Traditional Chinese as used in Taiwan, and so on.) Then open a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) adding your file to this repository. An official editor can help with the other necessary setup to add the language to the site.
+Save the file as `xrp-ledger-overview.{language code}.md`, where `{language code}` is the [IETF BCP47](https://tools.ietf.org/html/bcp47) language code. (For example, "es" for Spanish, "ja" for Japanese, "zh-CN" for Simplified Chinese, "zh-TW" for Traditional Chinese as used in Taiwan, and so on.) Then open a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) adding your file to this repository. One of the repository's maintainers can help with the other necessary setup to add the language to the site.
 
 For the Markdown content files, please use the following conventions:
 
