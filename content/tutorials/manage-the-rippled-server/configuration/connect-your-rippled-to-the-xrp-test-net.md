@@ -49,11 +49,11 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
     
         a. Comment out the following sections as follows: 
         
-            #[validator_list_sites]
-            #https://vl.altnet.rippletest.net
+            # [validator_list_sites]
+            # https://vl.altnet.rippletest.net
 
-            #[validator_list_keys]
-            ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860        
+            # [validator_list_keys]
+            # ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860        
         
             # [validator_list_sites]
             # https://vl.ripple.com
@@ -62,7 +62,7 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
             # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
         
         b. Add the following trusted validators to the validator.txt file:
-
+            # Hard-coded List of Devnet Validators
             [validators]
             n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c 
             n9MEwP4LSSikUnhZJNQVQxoMCgoRrGm6GGbG46AumH2KrRrdmr6B 
