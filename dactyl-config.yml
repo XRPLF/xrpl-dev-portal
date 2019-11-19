@@ -74,7 +74,7 @@ targets:
             bc_home: "Home"
             tl_banner:
                 head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">please contribute!</a>" #TODO: have a real link for contributing translations
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
             pagetoc: "In this document"
             footer:
                 ripple:
@@ -282,7 +282,7 @@ targets:
             bc_home: "Home"
             tl_banner:
                 head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">please contribute!</a>" #TODO: have a real link for contributing translations
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
             pagetoc: "In this document"
             footer:
                 ripple:
@@ -311,7 +311,7 @@ targets:
             bc_home: "Home"
             tl_banner:
                 head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">please contribute!</a>" #TODO: have a real link for contributing translations
+                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
             pagetoc: "In this document"
             footer:
                 ripple:
