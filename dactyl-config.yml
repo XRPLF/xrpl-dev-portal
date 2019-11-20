@@ -4798,6 +4798,19 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/transaction-formats/transaction-types/accountdelete.md
+        html: accountdelete.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Delete an account.
+        status: not_enabled
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
         html: checkcancel.html
         funnel: Docs

@@ -58,13 +58,24 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 | rrrrrrrrrrrrrrrrrrrn5RM1rHd | NaN Address | Previous versions of [ripple-lib](https://github.com/ripple/ripple-lib) generated this address when encoding the value [NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) using the XRP Ledger's [base58][] string encoding format. | Yes |
 
 
-## Permanence of Accounts
+## Deletion of Accounts
 
-Once created, an account exists in the XRP Ledger's data tree forever. This is because the current sequence number for a transaction must be tracked forever, so that old transactions cannot be processed a second time.
+The [DeletableAccounts amendment](known-amendments.html#deletableaccounts) :not_enabled: makes it possible to delete accounts. If the DeletableAccounts amendment is not enabled, every funded account must remain in the XRP Ledger's data tree forever.
 
-Unlike Bitcoin and many other crypto-currencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, Ripple discourages creating new accounts unless entirely necessary. Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](become-an-xrp-ledger-gateway.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
+To be deleted, an account must meet the following requirements:
 
-You cannot spend or transfer the [reserve requirement](reserves.html) of 20 XRP, so this amount is locked up with each new account. (This XRP _can_ be destroyed to pay for [transaction costs](transaction-cost.html) but cannot be sent to other accounts.) If the reserve requirement were to decrease, some of that XRP could become available again. For more information on how the reserve requirement could change, see [Fee Voting](fee-voting.html).
+- The account's `Sequence` number plus 256 must be less than the current [Ledger Index][].
+- The account must not be linked to any of the following types of [ledger objects](ledger-object-types.html) (as a sender or receiver):
+    - `Escrow`
+    - `PayChannel`
+    - `RippleState`
+    - `Check` :not_enabled:
+- The account must own less than 1000 objects in the ledger.
+- The [AccountDelete transaction][] must pay a special [transaction cost][] equal to at least the [owner reserve](reserves.html) for one item (currently 5 XRP).
+
+Unlike Bitcoin and many other crypto-currencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. It is thus best to avoid creating new accounts unless entirely necessary. Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](become-an-xrp-ledger-gateway.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
+
+
 
 
 ## Transaction History
