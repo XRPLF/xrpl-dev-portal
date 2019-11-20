@@ -344,7 +344,9 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 |:-----------------------------------------------------------------|:----------|
 | 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 | Planned   |
 
-***TODO: Description***
+Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](accounts.html) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](accountroot.html), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
+
+Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
 
 
 ## fixMasterKeyAsRegularKey
