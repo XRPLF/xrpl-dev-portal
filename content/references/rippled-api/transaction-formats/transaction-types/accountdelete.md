@@ -11,8 +11,9 @@ An AccountDelete transaction deletes an [account from the XRP Ledger](accountroo
 ```json
 {
     "TransactionType": "AccountDelete",
-    "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    ... TODO
+    "Account": "rWYkbWkCeg8dP6rXALnjgZSjjLyih5NXm",
+    "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+    "DestinationTag": 13
 }
 ```
 
@@ -23,6 +24,23 @@ An AccountDelete transaction deletes an [account from the XRP Ledger](accountroo
 |:-----------------|:-----------------|:------------------|:-------------------|
 | `Destination`    |  String - [Address][] | Account      | The address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account. |
 | `DestinationTag` | Number           | UInt32            | _(Optional)_ Arbitrary [destination tag](source-and-destination-tags.html) that identifies the a hosted recipient or other information to the recipient of the deleted account's leftover XRP. |
+
+
+## Error Cases
+
+In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+
+| Error Code | Description |
+|:-----------|:------------|
+| `temDISABLED` | Occurs if the [DeletableAccounts amendment](known-amendments.html#deletableaccounts) is not enabled. |
+| `temDST_IS_SRC` | Occurs if the `Destination` matches the sender of the transaction (`Account` field). |
+| `tecDST_TAG_NEEDED` | Occurs if the `Destination` account requires a [destination tag](source-and-destination-tags.html), but the `DestinationTag` field was not provided. |
+| `tecNO_DST` | Occurs if the `Destination` account is not a funded account in the ledger. |
+| `tecNO_PERMISSION` | Occurs if the `Destination` account requires [deposit authorization](depositauth.html) and the sender is not preauthorized. |
+| `tecTOO_SOON` | Occurs if the sender's `Sequence` number is too high. The transaction's `Sequence` number plus 256 must be less than the current [Ledger Index][]. |
+| `tecHAS_OBLIGATIONS` | Occurs if the account to be deleted is connected to objects that cannot be deleted in the ledger. (This includes objects created by other accounts, such as [escrows](escrow.html).) |
+| `tefTOO_BIG` | Occurs if the account to be deleted is connected to over 1000 deletable objects in the ledger. ***TODO: this will probably change to a ter*** |
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
