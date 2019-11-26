@@ -178,9 +178,9 @@ Alternatively, you can look up the status of the transaction using a different `
 To implement the transaction submission and verification best practices, applications need to do the following:
 
 1. Determine the signing account's next sequence number
-    * Each transaction has an account-specific sequence number.  This guarantees the order in which transactions signed by an account are executed and makes it safe to resubmit a transaction without danger of the transaction being applied to the ledger more than once.
+    * Each transaction has an account-specific [sequence number](basic-data-types.html#account-sequence).  This guarantees the order in which transactions signed by an account are executed and makes it safe to resubmit a transaction without danger of the transaction being applied to the ledger more than once.
 3. Decide on a `LastLedgerSequence`
-     * A transaction's `LastLedgerSequence` is calculated from the last validated ledger sequence number.
+     * A transaction's `LastLedgerSequence` is calculated from the last validated ledger index.
 3. Construct and sign the transaction
     * Persist the details of a signed transaction before submission.
 4. Submit the transaction
@@ -291,7 +291,7 @@ Response:
 }
 ```
 
-In this example the last validated ledger sequence number is 10268596 (found under `result.state.validated_ledger` in the response).  Note also this example indicates a gap in ledger history.  The server used here would not be able to provide information about the transactions applied during that gap (ledgers 10256383 through 10256411).  If configured to do so, the server eventually retrieves that part of the ledger history.
+In this example the last validated ledger index is 10268596 (found under `result.state.validated_ledger` in the response).  Note also this example indicates a gap in ledger history.  The server used here would not be able to provide information about the transactions applied during that gap (ledgers 10256383 through 10256411).  If configured to do so, the server eventually retrieves that part of the ledger history.
 
 
 #### Construct the Transaction
@@ -526,7 +526,7 @@ The [server_state method][] (used earlier to determine the last validated ledger
 
 Our example transaction specified `LastLedgerSequence` 10268600, based on the last validated ledger at the time, plus four.  To determine whether our missing transaction has permanently failed, our `rippled` server must have ledgers 10268597 through 10268600.  If the server has those validated ledgers in its history, **and** `tx` returns `txnNotFound`, then the transaction has failed and cannot be included in any future ledger.  In this case, application logic may dictate building and submitting a replacement transaction with the same account sequence and updated `LastLedgerSequence`.
 
-The server may report a last validated ledger sequence number less than the specified `LastLedgerSequence`.  If so, the `txnNotFound` indicates either (a) the submitted transaction has not been distributed to the network, or (b) the transaction has been distributed to the network but has not yet been processed.  To handle the former case, applications may submit again the same signed transaction.  Because the transaction has a unique account sequence number, it can be processed at most once.
+The server may report a last validated ledger index less than the specified `LastLedgerSequence`.  If so, the `txnNotFound` indicates either (a) the submitted transaction has not been distributed to the network, or (b) the transaction has been distributed to the network but has not yet been processed.  To handle the former case, applications may submit again the same signed transaction.  Because the transaction has a unique account sequence number, it can be processed at most once.
 
 Finally the server may show one or more gaps in the transaction history. The `completed_ledgers` field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this rippled instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and `LastLedgerSequence`), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another rippled server (or wait for this one to retrieve the missing ledgers) to determine that a `txnNotFound` result is immutable.
 

@@ -392,7 +392,7 @@ Each member of the `peers` array is a peer object with the following fields:
 | `address`          | String  | The IP address and port where this peer is connected |
 | `cluster`          | Boolean | (May be omitted) If `true`, the current server and the peer server are part of the same `rippled` cluster. |
 | `name`             | String  | (May be omitted) If the peer is part of the same cluster, this is the display name for that server as defined in the config file. |
-| `complete_ledgers` | String  | Range expression indicating the sequence numbers of the ledger versions the peer `rippled` has available |
+| `complete_ledgers` | String  | Range expression indicating the [ledger indexes][ledger index] of the ledger versions the peer `rippled` server has available |
 | `inbound`          | Boolean | (May be omitted) If `true`, the peer is connecting to the local server. |
 | `latency`          | Number  | The network latency to the peer (in milliseconds) |
 | `ledger`           | String  | The hash of the peer's most recently closed ledger |

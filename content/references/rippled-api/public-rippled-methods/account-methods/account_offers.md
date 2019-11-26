@@ -45,14 +45,14 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 
 A request can include the following parameters:
 
-| `Field`        | Type                                       | Description    |
-|:---------------|:-------------------------------------------|:---------------|
-| `account`      | String                                     | A unique identifier for the account, most commonly the account's [Address][]. |
-| `ledger`       | Unsigned integer, or String                | (Deprecated, Optional) A unique identifier for the ledger version to use, such as a ledger sequence number, a hash, or a shortcut such as "validated". |
-| `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string identifying the ledger version to use. |
-| `ledger_index` | [Ledger Index][]                           | (Optional, defaults to `current`) The sequence number of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers][]) |
-| `limit`        | Integer                                    | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
-| `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
+| `Field`        | Type                        | Description                   |
+|:---------------|:----------------------------|:------------------------------|
+| `account`      | String                      | A unique identifier for the account, most commonly the account's [Address][]. |
+| `ledger`       | Unsigned Integer, or String | _(**Deprecated**, Optional)_ A unique identifier for the ledger version to use, such as a ledger index, a hash, or a shortcut such as "validated". |
+| `ledger_hash`  | String - [Hash][]           | _(Optional)_ A 20-byte hex string identifying the ledger version to use. |
+| `ledger_index` | Number - [Ledger Index][]   | (Optional, defaults to `current`) The [ledger index][] of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers][]) |
+| `limit`        | Integer                     | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
+| `marker`       | [Marker][]                  | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 

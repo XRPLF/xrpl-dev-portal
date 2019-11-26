@@ -50,7 +50,7 @@ The request includes the following parameters:
 | `strict`       | Boolean                    | _(Optional)_ If true, only accept an address or public key for the account parameter. Defaults to false. |
 | `hotwallet`    | String or Array            | _(Optional)_ An [operational address](issuing-and-operational-addresses.html) to exclude from the balances issued, or an array of such addresses. |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 ## Response Format
 
@@ -206,7 +206,7 @@ The response follows the [standard format][], with a successful result containin
 | `balances`             | Object | (Omitted if empty) Amounts issued to the `hotwallet` addresses from the request. The keys are addresses and the values are arrays of currency amounts they hold. |
 | `assets`               | Object | (Omitted if empty) Total amounts held that are issued by others. In the recommended configuration, the [issuing address](issuing-and-operational-addresses.html) should have none. |
 | `ledger_hash`          | String | (May be omitted) The identifying hash of the ledger that was used to generate this response. |
-| `ledger_index`         | Number | (May be omitted) The sequence number of the ledger version that was used to generate this response. |
+| `ledger_index`         | Number | _(May be omitted)_ The ledger index of the ledger version that was used to generate this response. |
 | `ledger_current_index` | Number | (May be omitted) The sequence number of the current in-progress ledger version that was used to generate this response. |
 
 ## Possible Errors

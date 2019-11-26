@@ -42,7 +42,7 @@ The request accepts the following paramters:
 |:---------------|:-------------------------------------------|:---------------|
 | `account`      | String                                     | A unique identifier for the account, most commonly the account's [Address][]. |
 | `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `peer`         | String                                     | _(Optional)_ The [Address][] of a second account. If provided, show only lines of trust connecting the two accounts. |
 | `limit`        | Integer                                    | (Optional, default varies) Limit the number of trust lines to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
 | `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
@@ -148,14 +148,14 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the address of the account and an array of trust line objects. Specifically, the result object contains the following fields:
 
-| `Field`                | Type                                       | Description |
-|:-----------------------|:-------------------------------------------|:-------|
-| `account`              | String                                     | Unique [Address][] of the account this request corresponds to. This is the "perspective account" for purpose of the trust lines. |
-| `lines`                | Array                                      | Array of trust line objects, as described below. If the number of trust lines is large, only returns up to the `limit` at a time. |
-| `ledger_current_index` | Integer                                    | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `ledger_index`         | Integer                                    | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `ledger_hash`          | String                                     | (May be omitted) Hex hash, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `marker`               | [Marker][] | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. [New in: rippled 0.26.4][] |
+| `Field`                | Type                       | Description            |
+|:-----------------------|:---------------------------|:-----------------------|
+| `account`              | String                     | Unique [Address][] of the account this request corresponds to. This is the "perspective account" for purpose of the trust lines. |
+| `lines`                | Array                      | Array of trust line objects, as described below. If the number of trust lines is large, only returns up to the `limit` at a time. |
+| `ledger_current_index` | Integer - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current open ledger, which was used when retrieving this information. [New in: rippled 0.26.4-sp1][] |
+| `ledger_index`         | Integer - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| `ledger_hash`          | String - [Hash][]          | _(May be omitted)_ The identifying hash the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| `marker`               | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. [New in: rippled 0.26.4][] |
 
 Each trust line object has some combination of the following fields:
 

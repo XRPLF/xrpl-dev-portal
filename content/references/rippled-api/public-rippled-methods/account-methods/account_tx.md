@@ -560,15 +560,15 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`            | Type                                       | Description |
-|:-------------------|:-------------------------------------------|:-----------|
-| `account`          | String                                     | Unique [Address][] identifying the related account |
-| `ledger_index_min` | Integer                                    | The sequence number of the earliest ledger actually searched for transactions. |
-| `ledger_index_max` | Integer                                    | The sequence number of the most recent ledger actually searched for transactions. |
-| `limit`            | Integer                                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
-| `marker`           | [Marker][] | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
-| `transactions`     | Array                                      | Array of transactions matching the request's criteria, as explained below. |
-| `validated`        | Boolean                                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
+| `Field`            | Type                       | Description                |
+|:-------------------|:---------------------------|:---------------------------|
+| `account`          | String                     | Unique [Address][] identifying the related account |
+| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions. |
+| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
+| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
+| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
+| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
+| `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
 **Note:** The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.
 
@@ -576,7 +576,7 @@ Each transaction object includes the following fields, depending on whether it w
 
 | `Field`        | Type                             | Description              |
 |:---------------|:---------------------------------|:-------------------------|
-| `ledger_index` | Integer                          | The sequence number of the ledger version that included this transaction. |
+| `ledger_index` | Integer                          | The [ledger index][] of the ledger version that included this transaction. |
 | `meta`         | Object (JSON) or String (Binary) | If `binary` is True, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
 | `tx`           | Object                           | (JSON mode only) JSON object defining the transaction |
 | `tx_blob`      | String                           | (Binary mode only) Unique hashed String representing the transaction. |

@@ -123,13 +123,13 @@ Validators each relay their results in the form of a signed message containing t
 
 _Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result — Each server compares its calculated ledger with the hashes received from its chosen validators. If not in agreement, the server must recalculate or retrieve the correct ledger._
 
-Servers in the network recognize a ledger instance as validated when a supermajority of the peers have signed and broadcast the same validation hash <a href="#footnote_7" id="from_footnote_7"><sup>7</sup></a>. Going forward, transactions are applied to this updated and now validated ledger with sequence number N+1.
+Servers in the network recognize a ledger instance as validated when a supermajority of the peers have signed and broadcast the same validation hash <a href="#footnote_7" id="from_footnote_7"><sup>7</sup></a>. Going forward, transactions are applied to this updated and now validated ledger with ledger index N+1.
 
 In cases where a server is in the minority, having computed a ledger that differs from its peers, the server disregards the ledger it computed <a href="#footnote_8" id="from_footnote_8"><sup>8</sup></a>. It recomputes the correct ledger, or retrieves the correct ledger as needed.
 
 If the network fails to achieve supermajority agreement on validations, this implies that transaction volume was too high or network latency too great for the consensus process to produce consistent proposals. In this case, the servers repeat the consensus process. As time passes since consensus began, it becomes increasingly likely that a majority of the servers have received the same set of candidate transactions, as each consensus round reduces disagreement. The XRP Ledger dynamically adjusts [transaction costs](transaction-cost.html) and the time to wait for consensus in response to these conditions.
 
-Once they reach supermajority agreement on validations, the servers work with the new validated ledger, sequence number N+1. The consensus and validation process repeats <a href="#footnote_9" id="from_footnote_9"><sup>9</sup></a>, considering candidate transactions that were not included in the last round along with new transactions submitted in the meantime.
+Once they reach supermajority agreement on validations, the servers work with the new validated ledger, ledger index N+1. The consensus and validation process repeats <a href="#footnote_9" id="from_footnote_9"><sup>9</sup></a>, considering candidate transactions that were not included in the last round along with new transactions submitted in the meantime.
 
 
 ## Key Takeaways
@@ -148,7 +148,7 @@ The lifecycle of a single transaction is as follows:
     - If a consensus round fails, the consensus process repeats until it succeeds.
 - The validated ledger includes the transaction and its effects on the ledger state.
 
-Applications should only rely on information in validated ledgers, not on the provisional results of candidate transactions. Some [`rippled` APIs](rippled-api.html) initially return provisional results for transactions. The results of a transaction become immutable only when that transaction is included in a validated ledger, or the transaction includes `LastLedgerSequence` and does not appear in any validated ledger with that sequence number or lower.
+Applications should only rely on information in validated ledgers, not on the provisional results of candidate transactions. Some [`rippled` APIs](rippled-api.html) initially return provisional results for transactions. The results of a transaction become immutable only when that transaction is included in a validated ledger, or the transaction includes `LastLedgerSequence` and does not appear in any validated ledger with that ledger index or lower.
 
 Best practices for applications submitting transactions include:
 
@@ -183,7 +183,7 @@ Best practices for applications submitting transactions include:
 
 ## Footnotes
 
-<a href="#from_footnote_1" id="footnote_1"><sup>1</sup></a> – Transactions with **tec** result codes do not perform the requested action, but do have effects on the ledger. To prevent abuse of the network and to pay for the cost of distributing the transaction, they destroy the XRP transaction cost. To not block other transactions submitted by the same sender around the same time, they increment the sender's account sequence number. They sometimes also perform maintenance such as deleting expired objects or unfunded trade offers.
+<a href="#from_footnote_1" id="footnote_1"><sup>1</sup></a> – Transactions with [**tec** result codes](tec-codes.html) do not perform the requested action, but do have effects on the ledger. To prevent abuse of the network and to pay for the cost of distributing the transaction, they destroy the XRP [transaction cost](transaction-cost.html). To not block other transactions submitted by the same sender around the same time, they increment the sending account's [sequence number](basic-data-types.html#account-sequence). Transactions with `tec`-class results sometimes also perform maintenance such as deleting expired objects or unfunded trade offers.
 
 <a href="#from_footnote_2" id="footnote_2"><sup>2</sup></a> – For example, consider a scenario where Alice has $100, and sends all of it to Bob. If an application first submits that payment transaction, then immediately after checks Alice’s balance, the API returns $0. This value is based on the provisional result of a candidate transaction. There are circumstances in which the payment fails and Alice’s balance remains $100 (or, due to other transactions, become some other amount). The only way to know with certainty that Alice’s payment to Bob succeeded is to check the status of the transaction until it is both in a validated ledger and has result code **tesSUCCESS**. If the transaction is in a validated ledger with any other result code, the payment has failed.
 

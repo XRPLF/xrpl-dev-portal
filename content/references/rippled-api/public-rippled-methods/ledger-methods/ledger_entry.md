@@ -82,7 +82,7 @@ The full list of parameters recognized by this method is as follows:
 | `ripple_state.currency` | String                     | _(Required if `ripple_state` is specified)_ [Currency Code][] of the [RippleState object](ripplestate.html) to retrieve. |
 | `binary`                | Boolean                    | _(Optional)_ If true, return the requested ledger object's contents as a hex string. Otherwise, return data in JSON format. The default is `false`. [Updated in: rippled 1.2.0][] |
 | `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`          | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
@@ -147,10 +147,10 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `index`        | String           | Unique identifying key for this ledger_entry |
-| `ledger_index` | Unsigned Integer | Unique sequence number of the ledger from which this data was retrieved |
-| `node`         | Object           | (Omitted if `"binary": true` specified.) Object containing the data of this ledger object, according to the [ledger format][]. |
-| `node_binary`  | String           | (Omitted unless `"binary":true` specified) Binary data of the ledger object, as hex. |
+| `index`        | String           | The unique ID of this [ledger object](ledger-object-types.html). |
+| `ledger_index` | Unsigned Integer | The [ledger index][] of the ledger that was used when retrieving this data. |
+| `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger object, according to the [ledger format][]. |
+| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](serialization.html) of the ledger object, as hexadecimal. |
 
 ## Possible Errors
 

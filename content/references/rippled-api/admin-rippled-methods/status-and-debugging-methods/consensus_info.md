@@ -1,7 +1,7 @@
 # consensus_info
 [[Source]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
 
-The `consensus_info` command provides information about the consensus process for debugging purposes.
+The `consensus_info` command provides information about the [consensus process](consensus.html) for debugging purposes.
 
 _The `consensus_info` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
@@ -211,7 +211,7 @@ The following is an incomplete summary of fields that may be contained in the `i
 
 | `Field`          | Type    | Description                                     |
 |:-----------------|:--------|:------------------------------------------------|
-| `ledger_seq`     | Number  | The sequence number of the ledger currently in the consensus process |
+| `ledger_seq`     | Number  | The [ledger index][Ledger Index] of the [ledger](ledgers.html) currently in the consensus process |
 | `our_position`   | Object  | This server's expectation for the ledger in the consensus process. |
 | `peer_positions` | Object  | Map of peers and their proposed versions of the ledger in the consensus process. |
 | `proposers`      | Number  | The number of trusted validators participating in this consensus process. Which validators are trusted depends on this server's configuration. |

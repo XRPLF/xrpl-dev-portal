@@ -1,7 +1,7 @@
 # ledger_current
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")
 
-The `ledger_current` method returns the unique identifiers of the current in-progress ledger. This command is mostly useful for testing, because the ledger returned is still in flux.
+The `ledger_current` method returns the unique identifiers of the current in-progress [ledger](ledgers.html). This command is mostly useful for testing, because the ledger returned is still in flux.
 
 ## Request Format
 
@@ -77,9 +77,9 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the following field:
 
-| `Field`                | Type             | Description                    |
-|:-----------------------|:-----------------|:-------------------------------|
-| `ledger_current_index` | Unsigned Integer | Sequence number of this ledger |
+| `Field`                | Type                                | Description   |
+|:-----------------------|:------------------------------------|:--------------|
+| `ledger_current_index` | Unsigned Integer - [Ledger Index][] | The ledger index of this ledger version. |
 
 A `ledger_hash` field is not provided, because the hash of the current ledger is constantly changing along with its contents.
 

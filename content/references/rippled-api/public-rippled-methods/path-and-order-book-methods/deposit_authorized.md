@@ -51,7 +51,7 @@ The request includes the following parameters:
 | `source_account`      | String - [Address][]       | The sender of a possible payment. |
 | `destination_account` | String - [Address][]       | The recipient of a possible payment. |
 | `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 
 ## Response Format
@@ -122,7 +122,7 @@ The response follows the [standard format][], with a successful result containin
 | `deposit_authorized`   | Boolean              | Whether the specified source account is authorized to send payments directly to the destination account. If `true`, either the destination account does not require [Deposit Authorization](depositauth.html) or the source account is preauthorized. |
 | `destination_account`  | String - [Address][] | The destination account specified in the request. |
 | `ledger_hash`          | String               | _(May be omitted)_ The identifying hash of the ledger that was used to generate this response. |
-| `ledger_index`         | Number               | _(May be omitted)_ The sequence number of the ledger version that was used to generate this response. |
+| `ledger_index`         | Number               | _(May be omitted)_ The [ledger index][] of the ledger version that was used to generate this response. |
 | `ledger_current_index` | Number               | _(May be omitted)_ The sequence number of the current in-progress ledger version that was used to generate this response. |
 | `source_account`       | String - [Address][] | The source account specified in the request. |
 | `validated`            | Boolean              | _(May be omitted)_ If `true`, the information comes from a validated ledger version. |

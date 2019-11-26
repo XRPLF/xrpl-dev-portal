@@ -79,8 +79,8 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `ledger_hash`  | String           | 20-byte hex string with a unique hash of the ledger |
-| `ledger_index` | Unsigned Integer | Sequence number of this ledger           |
+| `ledger_hash`  | String           | The unique [Hash][] of this ledger version, in hexadecimal. |
+| `ledger_index` | Unsigned Integer | The [ledger index][] of this ledger version.           |
 
 ## Possible Errors
 
