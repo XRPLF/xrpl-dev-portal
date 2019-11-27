@@ -123,7 +123,7 @@ This method requires the following URL parameters:
 
 | Field               | Value                                               | Description |
 |:--------------------|:----------------------------------------------------|:--|
-| `ledger_identifier` | Ledger [Hash][], [Ledger Index][], or [Timestamp][] | _(Optional)_ An identifier for the ledger to retrieve: either the full hash in hex, an integer sequence number, or a date-time. If a date-time is provided, retrieve the ledger that was most recently closed at that time. If omitted, retrieve the latest validated ledger. |
+| `ledger_identifier` | Ledger [Hash][], [Ledger Index][], or [Timestamp][] | _(Optional)_ An identifier for the ledger to retrieve: either the full hash in hex, an integer ledger index, or a date-time. If a date-time is provided, retrieve the ledger that was most recently closed at that time. If omitted, retrieve the latest validated ledger. |
 
 Optionally, you can provide the following query parameters:
 
@@ -5024,7 +5024,7 @@ Transactions have two formats - a compact "binary" format where the defining fie
 |:---------------|:--------------------------|:--------------------------------|
 | `hash`         | String - [Hash][]         | An identifying hash value unique to this transaction, as a hex string. |
 | `date`         | String - [Timestamp][]    | The time when this transaction was included in a validated ledger. |
-| `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
+| `ledger_index` | Number - [Ledger Index][] | The ledger index of the ledger that included this transaction. |
 | `tx`           | Object                    | The fields of this transaction object, as defined by the [Transaction Format](transaction-formats.html). |
 | `meta`         | Object                    | Metadata about the results of this transaction. |
 
@@ -5034,7 +5034,7 @@ Transactions have two formats - a compact "binary" format where the defining fie
 |:---------------|:--------------------------|:--------------------------------|
 | `hash`         | String - [Hash][]         | An identifying hash value unique to this transaction, as a hex string. |
 | `date`         | String - [Timestamp][]    | The time when this transaction was included in a validated ledger. |
-| `ledger_index` | Number - [Ledger Index][] | The sequence number of the ledger that included this ledger. |
+| `ledger_index` | Number - [Ledger Index][] | The ledger index of the ledger that included this transaction. |
 | `tx`           | String                    | The binary data that represents this transaction, as a hexadecimal string. |
 | `meta`         | String                    | The binary data that represents this transaction's metadata, as a hex string. |
 
@@ -5045,7 +5045,7 @@ A "ledger" is one version of the shared global ledger. Each ledger object has th
 | Field               | Value                     | Description                |
 |:--------------------|:--------------------------|:---------------------------|
 | `ledger_hash`       | String - [Hash][]         | An identifying hash unique to this ledger, as a hex string. |
-| `ledger_index`      | Number - [Ledger Index][] | The sequence number of the ledger. Each new ledger has a ledger index 1 higher than the ledger that came before it. |
+| `ledger_index`      | Number - [Ledger Index][] | The ledger index of the ledger. Each new ledger has a ledger index 1 higher than the ledger that came before it. |
 | `parent_hash`       | String - [Hash][]         | The identifying hash of the previous ledger. |
 | `total_coins`       | [String - Number][]       | The total number of "drops" of XRP still in existence at the time of the ledger. (Each XRP is 1,000,000 drops.) |
 | `close_time_res`    | Number                    | The ledger close time is rounded to this many seconds. |
@@ -5054,7 +5054,7 @@ A "ledger" is one version of the shared global ledger. Each ledger object has th
 | `close_time`        | Number                    | When this ledger was closed, in UNIX time. |
 | `close_time_human`  | String - [Timestamp][]    | When this ledger was closed. |
 
-**Note:** Ledger close times are approximate, typically rounded to about 10 seconds. Two ledgers could have the same `close_time` values, when their actual close times were several seconds apart. The sequence number (`ledger_index`) of the ledger makes it unambiguous which ledger closed first.
+**Note:** Ledger close times are approximate, typically rounded to about 10 seconds. Two ledgers could have the same `close_time` values, when their actual close times were several seconds apart. The ledger index makes it unambiguous which ledger closed first.
 
 ### Genesis Ledger
 
@@ -5068,7 +5068,7 @@ An account creation object represents the action of creating an account in the X
 |:------------------|:-----------------------------|:--------------------------|
 | `address`         | String - [Address][]         | The identifying address of this account, in base-58. |
 | `inception`       | String - [Timestamp][]       | The UTC timestamp when the address was funded. For genesis accounts, this is the timestamp of ledger 32570. |
-| `ledger_index`    | Number - [Ledger Index][]    | The sequence number of the ledger when the account was created, or 32570 for genesis accounts. |
+| `ledger_index`    | Number - [Ledger Index][]    | The ledger index of the ledger when the account was created, or 32570 for genesis accounts. |
 | `parent`          | String - [Address][]         | (Omitted for genesis accounts) The address that provided the XRP to fund this address. |
 | `tx_hash`         | String - [Hash][]            | (Omitted for genesis accounts) The identifying hash of the transaction that funded this account. |
 | `initial_balance` | [String - Number][]          | (Omitted for genesis accounts) The amount of XRP that funded this account. |
@@ -5097,7 +5097,7 @@ A single transaction can cause several exchanges to occur. In this case, the sen
 | `counter_currency`     | String - [Currency Code][]   | The counter currency. |
 | `counter_issuer`       | String - [Address][]         | (Omitted for XRP) The account that issued the counter currency. |
 | `executed_time`        | String - [Timestamp][]       | The time the exchange occurred. |
-| `ledger_index`         | Number - [Ledger Index][]    | The sequence number of the ledger that included this transaction. |
+| `ledger_index`         | Number - [Ledger Index][]    | The ledger index of the ledger that included this transaction. |
 | `offer_sequence`       | Number - [Sequence Number][] | The sequence number of the `provider`'s existing offer in the ledger. |
 | `provider`             | String - [Address][]         | The account that had an existing Offer in the ledger. |
 | `seller`               | String - [Address][]         | The account that acquired the counter currency. |
@@ -5159,7 +5159,7 @@ Payment objects have the following fields:
 | `currency`                    | String - [Currency Code][] | The currency that the `destination` account received. |
 | `destination`                 | String - [Address][]       | The account that received the payment. |
 | `executed_time`               | String - [Timestamp][]     | The time the ledger that included this payment closed. |
-| `ledger_index`                | Number - [Ledger Index][]  | The sequence number of the ledger that included this payment. |
+| `ledger_index`                | Number - [Ledger Index][]  | The ledger index of the ledger that included this payment. |
 | `source`                      | String - [Address][]       | The account that sent the payment. |
 | `source_currency`             | String - [Currency Code][] | The currency that the `source` account spent. |
 | `tx_hash`                     | String - [Hash][]          | The identifying hash of the transaction that caused the payment. |
@@ -5199,7 +5199,7 @@ Balance Change Descriptors have the following fields:
 | `currency`      | String - [Currency Code][] | The change affected this currency. |
 | `executed_time` | String - [Timestamp][]     | The time the change occurred. (This is based on the close time of the ledger that included the transaction that executed the change. |
 | `counterparty`  | String - [Address][]       | (Omitted for XRP) The `currency` is held in a trust line to or from this account. _(Prior to [v2.0.6][], this field was called `issuer`.)_ |
-| `ledger_index`  | Number - [Ledger Index][]  | The sequence number of the ledger that included the transaction that executed this balance change. |
+| `ledger_index`  | Number - [Ledger Index][]  | The ledger index of the ledger that included the transaction that executed this balance change. |
 | `tx_hash`       | String - [Hash][]          | The identifying hash of the transaction that executed this balance change. |
 
 ### Change Types

@@ -25,11 +25,11 @@ _Figure 1: XRP Ledger Elements_
 
 The XRP Ledger has a new ledger version every several seconds. When the network agrees on the contents of a ledger version, that ledger version is _validated_, and its contents can never change. The validated ledger versions that preceded it form the ledger history. Even the most recent validated ledger is part of history, as it represents the state of the network as of a short time ago. In the present, the network is evaluating transactions which may be applied and finalized in the next ledger version. While this evaluation is happening, the network has candidate ledger versions that are not yet validated.
 
-[![Figure 2: XRP Ledger Sequence and History](img/ledger-history.png)](img/ledger-history.png)
+[![Figure 2: XRP Ledger History](img/ledger-history.png)](img/ledger-history.png)
 
-_Figure 2: XRP Ledger Sequence and History_
+_Figure 2: XRP Ledger History_
 
-A ledger version has two identifiers. One identifier is its _ledger index_, also called a _sequence number_. Ledger versions are numbered incrementally. For example, if the current ledger version has ledger index of 100, the previous has ledger index 99 and the next has ledger index 101. The other identifier is a _ledger hash_, which is a digital fingerprint of the ledger's contents.
+A ledger version has two identifiers. One identifier is its _ledger index_. Ledger versions are numbered incrementally. For example, if the current ledger version has ledger index of 100, the previous has ledger index 99 and the next has ledger index 101. The other identifier is a _ledger hash_, which is a digital fingerprint of the ledger's contents.
 
 As servers propose transactions to apply to the ledger, they may create several candidate ledger versions with slightly different contents. These candidate ledger versions have the same ledger index but different ledger hashes. Of the many candidates, only one can become validated. All the other candidate ledger versions are discarded. Thus, there is exactly one validated ledger hash for each ledger index in history.
 
@@ -61,7 +61,7 @@ The peer-to-peer XRP Ledger network consists of many independent XRP Ledger serv
 
 _Figure 4: Participants in the XRP Ledger Protocol_
 
-The servers that receive, relay and process transactions may be either tracking servers or validators. The major functions of tracking servers include distributing transactions from clients and responding to queries about the ledger. Validating servers perform the same functions as tracking servers and also contribute to advancing the ledger sequence <a href="#footnote_3" id="from_footnote_3"><sup>3</sup></a>.
+The servers that receive, relay and process transactions may be either tracking servers or validators. The major functions of tracking servers include distributing transactions from clients and responding to queries about the ledger. Validating servers perform the same functions as tracking servers and also contribute to advancing the ledger history. <a href="#footnote_3" id="from_footnote_3"><sup>3</sup></a>.
 
 While accepting transactions submitted by client applications, each tracking server uses the last validated ledger as a starting point. The accepted transactions are candidates. The servers relay their candidate transactions to their peers, allowing the candidate transactions to propagate throughout the network. Ideally, each candidate transaction would be known to all servers, allowing each to consider the same set of transactions to apply to the last validated ledger. As transactions take time to propagate however, the servers do not work with the same set of candidate transactions at all times. To account for this, the XRP Ledger uses a process called consensus to ensure that the same transactions are processed and validated ledgers are consistent across the peer-to-peer XRP Ledger network.
 
@@ -123,13 +123,13 @@ Validators each relay their results in the form of a signed message containing t
 
 _Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result — Each server compares its calculated ledger with the hashes received from its chosen validators. If not in agreement, the server must recalculate or retrieve the correct ledger._
 
-Servers in the network recognize a ledger instance as validated when a supermajority of the peers have signed and broadcast the same validation hash <a href="#footnote_7" id="from_footnote_7"><sup>7</sup></a>. Going forward, transactions are applied to this updated and now validated ledger with sequence number N+1.
+Servers in the network recognize a ledger instance as validated when a supermajority of the peers have signed and broadcast the same validation hash <a href="#footnote_7" id="from_footnote_7"><sup>7</sup></a>. Going forward, transactions are applied to this updated and now validated ledger with ledger index N+1.
 
 In cases where a server is in the minority, having computed a ledger that differs from its peers, the server disregards the ledger it computed <a href="#footnote_8" id="from_footnote_8"><sup>8</sup></a>. It recomputes the correct ledger, or retrieves the correct ledger as needed.
 
 If the network fails to achieve supermajority agreement on validations, this implies that transaction volume was too high or network latency too great for the consensus process to produce consistent proposals. In this case, the servers repeat the consensus process. As time passes since consensus began, it becomes increasingly likely that a majority of the servers have received the same set of candidate transactions, as each consensus round reduces disagreement. The XRP Ledger dynamically adjusts [transaction costs](transaction-cost.html) and the time to wait for consensus in response to these conditions.
 
-Once they reach supermajority agreement on validations, the servers work with the new validated ledger, sequence number N+1. The consensus and validation process repeats <a href="#footnote_9" id="from_footnote_9"><sup>9</sup></a>, considering candidate transactions that were not included in the last round along with new transactions submitted in the meantime.
+Once they reach supermajority agreement on validations, the servers work with the new validated ledger, ledger index N+1. The consensus and validation process repeats <a href="#footnote_9" id="from_footnote_9"><sup>9</sup></a>, considering candidate transactions that were not included in the last round along with new transactions submitted in the meantime.
 
 
 ## Key Takeaways
@@ -148,7 +148,7 @@ The lifecycle of a single transaction is as follows:
     - If a consensus round fails, the consensus process repeats until it succeeds.
 - The validated ledger includes the transaction and its effects on the ledger state.
 
-Applications should only rely on information in validated ledgers, not on the provisional results of candidate transactions. Some [`rippled` APIs](rippled-api.html) initially return provisional results for transactions. The results of a transaction become immutable only when that transaction is included in a validated ledger, or the transaction includes `LastLedgerSequence` and does not appear in any validated ledger with that sequence number or lower.
+Applications should only rely on information in validated ledgers, not on the provisional results of candidate transactions. Some [`rippled` APIs](rippled-api.html) initially return provisional results for transactions. The results of a transaction become immutable only when that transaction is included in a validated ledger, or the transaction includes `LastLedgerSequence` and does not appear in any validated ledger with that ledger index or lower.
 
 Best practices for applications submitting transactions include:
 
@@ -183,7 +183,7 @@ Best practices for applications submitting transactions include:
 
 ## Footnotes
 
-<a href="#from_footnote_1" id="footnote_1"><sup>1</sup></a> – Transactions with **tec** result codes do not perform the requested action, but do have effects on the ledger. To prevent abuse of the network and to pay for the cost of distributing the transaction, they destroy the XRP transaction cost. To not block other transactions submitted by the same sender around the same time, they increment the sender's account sequence number. They sometimes also perform maintenance such as deleting expired objects or unfunded trade offers.
+<a href="#from_footnote_1" id="footnote_1"><sup>1</sup></a> – Transactions with [**tec** result codes](tec-codes.html) do not perform the requested action, but do have effects on the ledger. To prevent abuse of the network and to pay for the cost of distributing the transaction, they destroy the XRP [transaction cost](transaction-cost.html). To not block other transactions submitted by the same sender around the same time, they increment the sending account's [sequence number](basic-data-types.html#account-sequence). Transactions with `tec`-class results sometimes also perform maintenance such as deleting expired objects or unfunded trade offers.
 
 <a href="#from_footnote_2" id="footnote_2"><sup>2</sup></a> – For example, consider a scenario where Alice has $100, and sends all of it to Bob. If an application first submits that payment transaction, then immediately after checks Alice’s balance, the API returns $0. This value is based on the provisional result of a candidate transaction. There are circumstances in which the payment fails and Alice’s balance remains $100 (or, due to other transactions, become some other amount). The only way to know with certainty that Alice’s payment to Bob succeeded is to check the status of the transaction until it is both in a validated ledger and has result code **tesSUCCESS**. If the transaction is in a validated ledger with any other result code, the payment has failed.
 

@@ -18,6 +18,7 @@
 [Internal Type]: serialization.html
 [内部の型]: serialization.html
 [Ledger Index]: basic-data-types.html#ledger-index
+[ledger index]: basic-data-types.html#ledger-index
 [レジャーインデックス]: basic-data-types.html#レジャーインデックス
 [ledger format]: ledger-data-formats.html
 [Marker]: markers-and-pagination.html

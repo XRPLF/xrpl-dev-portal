@@ -7,7 +7,7 @@ An "Account" in the XRP Ledger represents a holder of XRP and a sender of [trans
     **Note:** The XRP community has [proposed](https://github.com/xrp-community/standards-drafts/issues/6) (and developed a [codec](https://github.com/xrp-community/xrpl-tagged-address-codec) to support) a new **X**-address format that exchanges and wallets could use instead of [destination tags](https://xrpl.org/source-and-destination-tags.html). These "packed" addresses start with an `X` instead of an `r`. For more information, see the [XRPL 𝗫-address format](https://xrpaddress.info/) site.
 
 - An **XRP balance**. Some of this XRP is set aside for the [Reserve](reserves.html).
-- A **sequence number**, starting at 1 and increasing with each transaction sent from this account. No transaction can be included in a ledger unless the transaction's sequence number matches its sender's next sequence number.
+- A **sequence number**, which helps make sure any transactions this account sends are applied in the correct order and only once each. To execute a transaction, the transaction's sequence number and its sender's sequence number must match. Then, as part of applying the transaction, the account's sequence number increases by 1. (See also: [Basic Data Types: Account Sequence](basic-data-types.html#account-sequence).)
 - A **history of transactions** that affected this account and its balances.
 - One or more ways to [authorize transactions](transaction-basics.html#authorizing-transactions), possibly including:
     - A master key pair intrinsic to the account. (This can be [disabled](accountset.html) but not changed.)

@@ -52,7 +52,7 @@ The request includes the following parameters:
 | `transactions` | Boolean                    | _(Optional)_ If `true`, include an array of suggested [transactions](transaction-formats.html), as JSON objects, that you can sign and submit to fix the problems. Defaults to false. |
 | `limit`        | Unsigned Integer           | _(Optional)_ The maximum number of trust line problems to include in the results. Defaults to 300. |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 ## Response Format
 
@@ -169,7 +169,7 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`                | Type   | Description                                |
 |:-----------------------|:-------|:-------------------------------------------|
-| `ledger_current_index` | Number | The sequence number of the ledger used to calculate these results. |
+| `ledger_current_index` | Number | The [ledger index][] of the ledger used to calculate these results. |
 | `problems`             | Array  | Array of strings with human-readable descriptions of the problems. This includes up to one entry if the account's DefaultRipple setting is not as recommended, plus up to `limit` entries for trust lines whose NoRipple setting is not as recommended. |
 | `transactions`         | Array  | (May be omitted) If the request specified `transactions` as `true`, this is an array of JSON objects, each of which is the JSON form of a [transaction](transaction-formats.html) that should fix one of the described problems. The length of this array is the same as the `problems` array, and each entry is intended to fix the problem described at the same index into that array. |
 

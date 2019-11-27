@@ -67,7 +67,7 @@ Some types of hash appear in API requests and responses. Others are only calcula
 
 Many API methods require you to specify an instance of the ledger, with the data retrieved being considered up-to-date as of that particular version of the shared ledger. The commands that accept a ledger version all work the same way. There are three ways you can specify which ledger you want to use:
 
-1. Specify a ledger by its [Ledger Index][] in the `ledger_index` parameter. Each closed ledger has an identifying sequence number that is 1 higher than the previously-validated ledger. (The Genesis Ledger has sequence number 0)
+1. Specify a ledger by its [Ledger Index][] in the `ledger_index` parameter. Each closed ledger has a ledger index that is 1 higher than the previous ledger. (The very first ledger had ledger index 1.)
 2. Specify a ledger by its [Hash][] value in the `ledger_hash` parameter.
 3. Specify a ledger by one of the following shortcuts, in the `ledger_index` parameter:
     * `validated` for the most recent ledger that has been validated by the whole network

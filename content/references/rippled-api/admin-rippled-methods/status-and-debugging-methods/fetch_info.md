@@ -138,7 +138,7 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
-| `info`  | Object | Map of objects being fetched and the status of that object being fetched. A ledger being fetched may be identified by its sequence number; ledgers and other objects being fetched may also be identified by their hashes. |
+| `info`  | Object | Map of objects being fetched and the status of that object being fetched. A ledger being fetched may be identified by its [ledger index][]; ledgers and other objects being fetched may also be identified by their hashes. |
 
 The fields describing a fetch in progress are subject to change without notice. The following fields may be included:
 

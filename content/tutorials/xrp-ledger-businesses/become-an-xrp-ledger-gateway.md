@@ -757,7 +757,7 @@ To submit transactions reliably, follow these guidelines:
 
 * Persist details of the transaction before submitting it.
 * Use the `LastLedgerSequence` parameter. (RippleAPI does this by default.)
-* Resubmit a transaction if it has not appeared in a validated ledger whose sequence number is less than or equal to the transaction's `LastLedgerSequence` parameter.
+* Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is less than or equal to the transaction's `LastLedgerSequence` parameter.
 
 For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
