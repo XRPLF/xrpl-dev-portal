@@ -23,6 +23,7 @@
 | `tefNO_AUTH_REQUIRED`  | [TrustSetトランザクション][]がトラストラインを承認済みとしてマークしようとしましたが、対応するアカウントに対して`lsfRequireAuth`フラグが有効になっていないため、承認は不要です。 |
 | `tefNOT_MULTI_SIGNING` | トランザクションは[マルチ署名済み](multi-signing.html)トランザクションでしたが、送信側アカウントでSignerListが定義されていません。 |
 | `tefPAST_SEQ`           | トランザクションのシーケンス番号は、トランザクションの送信元アカウントの現在のシーケンス番号よりも小さい番号です。 |
+| `tefTOO_BIG`            | The transaction would affect too many objects in the ledger. For example, this was an [AccountDelete transaction][] but the account to be deleted owns over 1000 objects in the ledger. <!-- TODO: translate --> |
 | `tefWRONG_PRIOR`        | トランザクションに`AccountTxnID`フィールド（または廃止予定の`PreviousTxnID`フィールド）が含まれていますが、このフィールドに指定されているトランザクションはアカウントの前のトランザクションに一致しません。 |
 
 <!--{# common link defs #}-->
