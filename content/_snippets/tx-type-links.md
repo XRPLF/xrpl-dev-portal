@@ -1,4 +1,5 @@
 {% set txtypes = [
+    "AccountDelete",
     "AccountSet",
     "CheckCancel",
     "CheckCash",
