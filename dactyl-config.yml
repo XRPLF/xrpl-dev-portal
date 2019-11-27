@@ -236,7 +236,7 @@ targets:
             "error-formatting.html#universal-errors": "error-formatting.html#汎用エラー"
             # Fix 2 links from untranslated demurrage.html:
             "currency-formats.html#issued-currency-precision": "currency-formats.html#発行済み通貨の計算"
-            # Fix 9 links from untranslated known-amendments.html:
+            # Fix 10 links from untranslated known-amendments.html:
             "accounts.html#permanence-of-accounts": "accounts.html#アカウントの永続性"
             "paths.html#path-specifications": "paths.html#パスの仕様"
             "rippling.html#the-noripple-flag": "rippling.html#norippleフラグ"
@@ -246,6 +246,7 @@ targets:
             "ripplestate.html#ripplestate-flags": "ripplestate.html#ripplestateのフラグ"
             "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ" # also used in untranslated require-destination-tags.html, become-an-xrp-ledger-gateway.html
             "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
+            "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
             # Fix 2 links from untranslated data type snippets
             "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
             "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
@@ -268,6 +269,8 @@ targets:
             "use-payment-channels.html#7-repeat-steps-3-6-as-desired": "use-payment-channels.html#7-必要に応じてステップ36を繰り返します"
             "use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount": "use-payment-channels.html#8-準備が完了すれば受取人は承認された額のクレームを清算します"
             "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
+            # Fix 1 link from untranslated accountdelete.html. REMOVE when accounts.html is updated w/ deletable accounts info.
+            "accounts.html#deletion-of-accounts": "accounts.html#アカウントの永続性"
 
 
     -   name: xrp-api-only

@@ -143,7 +143,7 @@ Examples of invariant checks:
 
 - The total amount of XRP destroyed by a transaction must match the [transaction cost](transaction-cost.html) exactly.
 - XRP cannot be created.
-- [`AccountRoot` objects in the ledger](accountroot.html) cannot be deleted. (See also: [Permanence of Accounts](accounts.html#permanence-of-accounts).)
+- [`AccountRoot` objects in the ledger](accountroot.html) cannot be deleted unless [DeletableAccounts](#deletableaccounts) is enabled. (See also: [Deletion of Accounts](accounts.html#deletion-of-accounts).)
 - [An object in the ledger](ledger-object-types.html) cannot change its type. (The `LedgerEntryType` field is immutable.)
 - There cannot be a trust line for XRP.
 
