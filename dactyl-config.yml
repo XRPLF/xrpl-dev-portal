@@ -250,6 +250,7 @@ targets:
             # Fix 2 links from untranslated data type snippets
             "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
             "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
+            "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
             # Fix 2 links from untranslated direct-xrp-payments.html
             "basic-data-types.html#specifying-currency-amounts": "basic-data-types.html#通貨額の指定"
             "partial-payments.html#partial-payments-exploit": "partial-payments.html#partial-paymentの悪用"
