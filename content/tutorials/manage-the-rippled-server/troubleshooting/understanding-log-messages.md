@@ -29,7 +29,7 @@ If none of the above apply, please report the issue to Ripple as a security-sens
 
 ## Already validated sequence at or past
 
-Log messages such as the following indicate that a server received validations for different ledger sequences out of order.
+Log messages such as the following indicate that a server received validations for different ledger indexes out of order.
 
 ```text
 2018-Aug-28 22:55:58.316094260 Validations:WRN Val for 2137ACEFC0D137EFA1D84C2524A39032802E4B74F93C130A289CD87C9C565011 trusted/full from nHUeUNSn3zce2xQZWNghQvd9WRH6FWEnCBKYVJu2vAizMxnXegfJ signing key n9KcRZYHLU9rhGVwB9e4wEMYsxXvUfgFxtmX25pc1QPNgweqzQf5 already validated sequence at or past 12133663 src=1

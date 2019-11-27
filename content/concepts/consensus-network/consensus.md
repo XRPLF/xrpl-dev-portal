@@ -25,11 +25,11 @@ _Figure 1: XRP Ledger Elements_
 
 The XRP Ledger has a new ledger version every several seconds. When the network agrees on the contents of a ledger version, that ledger version is _validated_, and its contents can never change. The validated ledger versions that preceded it form the ledger history. Even the most recent validated ledger is part of history, as it represents the state of the network as of a short time ago. In the present, the network is evaluating transactions which may be applied and finalized in the next ledger version. While this evaluation is happening, the network has candidate ledger versions that are not yet validated.
 
-[![Figure 2: XRP Ledger Sequence and History](img/ledger-history.png)](img/ledger-history.png)
+[![Figure 2: XRP Ledger History](img/ledger-history.png)](img/ledger-history.png)
 
-_Figure 2: XRP Ledger Sequence and History_
+_Figure 2: XRP Ledger History_
 
-A ledger version has two identifiers. One identifier is its _ledger index_, also called a _sequence number_. Ledger versions are numbered incrementally. For example, if the current ledger version has ledger index of 100, the previous has ledger index 99 and the next has ledger index 101. The other identifier is a _ledger hash_, which is a digital fingerprint of the ledger's contents.
+A ledger version has two identifiers. One identifier is its _ledger index_. Ledger versions are numbered incrementally. For example, if the current ledger version has ledger index of 100, the previous has ledger index 99 and the next has ledger index 101. The other identifier is a _ledger hash_, which is a digital fingerprint of the ledger's contents.
 
 As servers propose transactions to apply to the ledger, they may create several candidate ledger versions with slightly different contents. These candidate ledger versions have the same ledger index but different ledger hashes. Of the many candidates, only one can become validated. All the other candidate ledger versions are discarded. Thus, there is exactly one validated ledger hash for each ledger index in history.
 
@@ -61,7 +61,7 @@ The peer-to-peer XRP Ledger network consists of many independent XRP Ledger serv
 
 _Figure 4: Participants in the XRP Ledger Protocol_
 
-The servers that receive, relay and process transactions may be either tracking servers or validators. The major functions of tracking servers include distributing transactions from clients and responding to queries about the ledger. Validating servers perform the same functions as tracking servers and also contribute to advancing the ledger sequence <a href="#footnote_3" id="from_footnote_3"><sup>3</sup></a>.
+The servers that receive, relay and process transactions may be either tracking servers or validators. The major functions of tracking servers include distributing transactions from clients and responding to queries about the ledger. Validating servers perform the same functions as tracking servers and also contribute to advancing the ledger history. <a href="#footnote_3" id="from_footnote_3"><sup>3</sup></a>.
 
 While accepting transactions submitted by client applications, each tracking server uses the last validated ledger as a starting point. The accepted transactions are candidates. The servers relay their candidate transactions to their peers, allowing the candidate transactions to propagate throughout the network. Ideally, each candidate transaction would be known to all servers, allowing each to consider the same set of transactions to apply to the last validated ledger. As transactions take time to propagate however, the servers do not work with the same set of candidate transactions at all times. To account for this, the XRP Ledger uses a process called consensus to ensure that the same transactions are processed and validated ledgers are consistent across the peer-to-peer XRP Ledger network.
 

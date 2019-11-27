@@ -151,18 +151,18 @@ The `ledger` stream only sends `ledgerClosed` messages when [the consensus proce
 
 The fields from a ledger stream message are as follows:
 
-| `Field`             | Type             | Description                         |
-|:--------------------|:-----------------|:------------------------------------|
-| `type`              | String           | `ledgerClosed` indicates this is from the ledger stream |
-| `fee_base`          | Unsigned Integer | Cost of the 'reference transaction' in drops of XRP. (See [Transaction Cost](transaction-cost.html) If the ledger includes a [SetFee pseudo-transaction](setfee.html) the new transaction cost applies to all transactions after this ledger. |
-| `fee_ref`           | Unsigned Integer | Cost of the 'reference transaction' in 'fee units'. |
-| `ledger_hash`       | String           | Unique hash of the ledger that was closed, as hex |
-| `ledger_index`      | Unsigned Integer | Sequence number of the ledger that was closed |
-| `ledger_time`       | Unsigned Integer | The time this ledger was closed, in [seconds since the Ripple Epoch][] |
-| `reserve_base`      | Unsigned Integer | The minimum reserve, in drops of XRP, that is required for an account. If the ledger includes a [SetFee pseudo-transaction](setfee.html) the new base reserve applies after this ledger. |
-| `reserve_inc`       | Unsigned Integer | The increase in account reserve that is added for each item the account owns, such as offers or trust lines. If the ledger includes a [SetFee pseudo-transaction](setfee.html) the new owner reserve applies after this ledger. |
-| `txn_count`         | Unsigned Integer | Number of new transactions included in this ledger |
-| `validated_ledgers` | String           | (May be omitted) Range of ledgers that the server has available. This may be discontiguous. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network. |
+| `Field`             | Type                      | Description                |
+|:--------------------|:--------------------------|:---------------------------|
+| `type`              | String                    | `ledgerClosed` indicates this is from the ledger stream |
+| `fee_base`          | Number                    | The [reference transaction cost](transaction-cost.html#reference-transaction-cost) as of this ledger version, in [drops of XRP][]. If this ledger version includes a [SetFee pseudo-transaction](setfee.html) the new transaction cost applies starting with the following ledger version. |
+| `fee_ref`           | Number                    | The [reference transaction cost](transaction-cost.html#reference-transaction-cost) in "fee units". |
+| `ledger_hash`       | String - [Hash][]         | The identifying hash of the ledger version that was closed. |
+| `ledger_index`      | Number - [Ledger Index][] | The ledger index of the ledger that was closed. |
+| `ledger_time`       | Number                    | The time this ledger was closed, in [seconds since the Ripple Epoch][] |
+| `reserve_base`      | Number                    | The minimum [reserve](reserves.html), in [drops of XRP][], that is required for an account. If this ledger version includes a [SetFee pseudo-transaction](setfee.html) the new base reserve applies starting with the following ledger version. |
+| `reserve_inc`       | Number                    | The [owner reserve](reserves.html#owner-reserves) for each object an account owns in the ledger, in [drops of XRP][]. If the ledger includes a [SetFee pseudo-transaction](setfee.html) the new owner reserve applies after this ledger. |
+| `txn_count`         | Number                    | Number of new transactions included in this ledger version. |
+| `validated_ledgers` | String                    | _(May be omitted)_ Range of ledgers that the server has available. This may be discontiguous. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network. |
 
 
 ## Validations Stream
@@ -338,18 +338,18 @@ The `accounts_proposed` subscription works the same way, except it also includes
 
 Transaction stream messages have the following fields:
 
-| `Field`                 | Type             | Description                     |
-|:------------------------|:-----------------|:--------------------------------|
-| `type`                  | String           | `transaction` indicates this is the notification of a transaction, which could come from several possible streams. |
-| `engine_result`         | String           | String [Transaction result code](transaction-results.html) |
-| `engine_result_code`    | Number           | Numeric [transaction response code](transaction-results.html), if applicable. |
-| `engine_result_message` | String           | Human-readable explanation for the transaction response |
-| `ledger_current_index`  | Unsigned Integer | (Omitted for validated transactions) Sequence number of the current ledger version for which this transaction is currently proposed |
-| `ledger_hash`           | String           | (Omitted for unvalidated transactions) Unique hash of the ledger version that includes this transaction, as hex |
-| `ledger_index`          | Unsigned Integer | (Omitted for unvalidated transactions) Sequence number of the ledger version that includes this transaction |
-| `meta`                  | Object           | (Omitted for unvalidated transactions) Various metadata about the transaction, including which ledger entries it affected |
-| `transaction`           | Object           | The [definition of the transaction](transaction-formats.html) in JSON format |
-| `validated`             | Boolean          | If true, this transaction is included in a validated ledger. Responses from the `transaction` stream should always be validated. |
+| `Field`                 | Type                      | Description            |
+|:------------------------|:--------------------------|:-----------------------|
+| `type`                  | String                    | `transaction` indicates this is the notification of a transaction, which could come from several possible streams. |
+| `engine_result`         | String                    | String [Transaction result code](transaction-results.html) |
+| `engine_result_code`    | Number                    | Numeric [transaction response code](transaction-results.html), if applicable. |
+| `engine_result_message` | String                    | Human-readable explanation for the transaction response |
+| `ledger_current_index`  | Number - [Ledger Index][] | _(Unvalidated transactions only)_ The ledger index of the current in-progress [ledger version](ledgers.html) for which this transaction is currently proposed. |
+| `ledger_hash`           | String - [Hash][]         | _(Validated transactions only)_ The identifying hash of the ledger version that includes this transaction |
+| `ledger_index`          | Number - [Ledger Index][] | _(Validated transactions only)_ The ledger index of the ledger version that includes this transaction. |
+| `meta`                  | Object                    | _(Validated transactions only)_ The [transaction metadata](transaction-metadata.html), which shows the exact outcome of the transaction in detail. |
+| `transaction`           | Object                    | The [definition of the transaction](transaction-formats.html) in JSON format |
+| `validated`             | Boolean                   | If `true`, this transaction is included in a validated ledger and its outcome is final. Responses from the `transaction` stream should always be validated. |
 
 
 ## Peer Status Stream

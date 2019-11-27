@@ -1,7 +1,7 @@
 # account_offers
 [[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
-The `account_offers` method retrieves a list of offers made by a given account that are outstanding as of a particular ledger version.
+The `account_offers` method retrieves a list of [offers](offers.html) made by a given [account](accounts.html) that are outstanding as of a particular [ledger version](ledgers.html).
 
 ## Request Format
 
@@ -155,14 +155,14 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`                | Type                                       | Description |
-|:-----------------------|:-------------------------------------------|:-------|
-| `account`              | String                                     | Unique [Address][] identifying the account that made the offers |
-| `offers`               | Array                                      | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. If the number of offers is large, only returns up to `limit` at a time. |
-| `ledger_current_index` | Integer                                    | (Omitted if `ledger_hash` or `ledger_index` provided) Sequence number of the ledger version used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `ledger_index`         | Integer                                    | (Omitted if `ledger_current_index` provided instead) Sequence number, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `ledger_hash`          | String                                     | _(May be omitted)_ Hex hash, provided in the request, of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `marker`               | [Marker][] | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
+| `Field`                | Type                      | Description             |
+|:-----------------------|:--------------------------|:------------------------|
+| `account`              | String                    | Unique [Address][] identifying the account that made the offers |
+| `offers`               | Array                     | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. If the number of offers is large, only returns up to `limit` at a time. |
+| `ledger_current_index` | Number - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current in-progress ledger version, which was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| `ledger_index`         | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data, as requested. [New in: rippled 0.26.4-sp1][] |
+| `ledger_hash`          | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
+| `marker`               | [Marker][]                | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
 
 
 Each offer object contains the following fields:

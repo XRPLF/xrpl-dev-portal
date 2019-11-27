@@ -195,12 +195,12 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`        | Type             | Description                              |
-|:---------------|:-----------------|:-----------------------------------------|
-| `ledger_index` | Unsigned Integer | Sequence number of the ledger version the transaction was found in; this is the same as the one from the request. |
-| `ledger_hash`  | String           | (May be omitted) Unique hash of the ledger version the transaction was found in; this is the same as the one from the request. |
-| `metadata`     | Object           | Various metadata about the transaction.  |
-| `tx_json`      | Object           | JSON representation of the [Transaction object](transaction-formats.html) |
+| `Field`        | Type                      | Description                     |
+|:---------------|:--------------------------|:--------------------------------|
+| `ledger_index` | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `ledger_hash`  | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `metadata`     | Object                    | The [transaction metadata](transaction-metadata.html), which shows the exact results of the transaction in detail. |
+| `tx_json`      | Object                    | JSON representation of the [Transaction object](transaction-formats.html) |
 
 There are a couple possible reasons the server may fail to find the transaction:
 
