@@ -154,7 +154,11 @@ Since the `ModifiedNode` entry for rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn's account 
 
 ### General-Purpose Bookkeeping
 
-When a transaction adds an object that counts towards an account's [owner reserve](reserves.html#owner-reserves), it increases the `OwnerCount` of the owner's [AccountRoot object][]. Removing an object decreases the `OwnerCount`. This is how the XRP Ledger tracks how much owner reserve each account owes at any point in time.
+Almost any transaction can result in the following types of changes:
+
+- **Sequence and Transaction Cost changes:** [As mentioned, every transaction (excluding pseudo-transactions) modifies the sender's `AccountRoot` object](#2-interpret-metadata) to increase the sender's sequence number and destroy the XRP used to pay the transaction cost.
+- **Account Threading:** Some transactions that create objects also modify the [AccountRoot object](accountroot.html) of an intended recipient or destination account to indicate that something relating to that account changed. This technique of "tagging" an account changes only that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields. This makes it more efficient to look up an account's transaction history of an account by following the "thread" of transactions mentioned in these fields.
+- **Directory Updates:** Transactions that create or remove ledger objects often make changes to [DirectoryNode objects](directorynode.html) to track which objects exist. Also, when a transaction adds an object that counts towards an account's [owner reserve](reserves.html#owner-reserves), it increases the `OwnerCount` of the owner's [AccountRoot object][]. Removing an object decreases the `OwnerCount`. This is how the XRP Ledger tracks how much owner reserve each account owes at any point in time.
 
 Example of increasing an Account's `OwnerCount`:
 
@@ -348,6 +352,8 @@ In the following excerpt, we see that r9UUEX...'s balance increases by 1 billion
 ### Payment Channels
 
 Look for a `CreatedNode` of LedgerEntryType `PayChannel` when creating a payment channel. You should also find a `ModifiedNode` of LedgerEntryType `AccountRoot` showing the decrease in the sender's balance. Look for an `Account` field in the `FinalFields` to confirm that the address matches the sender, and look at the difference in the `Balance` fields to see the change in XRP balance.
+
+If the [fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir) :not_enabled: is enabled, the metadata should also change the destination account's [owner directory](directorynode.html) to list the newly-created payment channel. This prevents an account from [being deleted](accounts.html#deletion-of-accounts) if it is the receiver of an open payment channel. (If the payment channel was created before the fixPayChanRecipientOwnerDir amendment became enabled, the account can be deleted.)
 
 There are several ways to request to close a payment channel, aside from the immutable `CancelAfter` time of the channel (which is only set on creation). If a transaction schedules a channel to close, there is  a `ModifiedNode` entry of LedgerEntryType `PayChannel` for the channel, with the newly-added close time in the `Expiration` field of the `FinalFields`. The following example shows the changes to a `PayChannel` in a case where the sender requested to close the channel without redeeming a claim:
 
