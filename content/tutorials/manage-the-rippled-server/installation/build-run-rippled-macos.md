@@ -24,9 +24,9 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
         $ brew install git cmake pkg-config protobuf openssl ninja
 
-0. Install Boost 1.70.0 or higher. `rippled` 1.3.1 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually:
+0. Install Boost 1.70.0 or higher. `rippled` 1.4.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually. (The following examples use Boost 1.71.0, which was the newest version at the time of writing.)
 
-      1. Download [Boost 1.70.0](https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2).
+      1. Download [Boost 1.71.0](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2).
 
       2. Extract it to a folder. Be sure to note the location.
 
@@ -42,7 +42,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
       2. Edit below code with your Boost directory location and run to add Boost environment variable to your `.bash_profile` file so it's automatically set when you log in.
 
-          $ echo $"export BOOST_ROOT=/Users/my_user/boost_1_70_0" >> ~/.bash_profile
+          $ echo $"export BOOST_ROOT=/Users/my_user/boost_1_71_0" >> ~/.bash_profile
 
 0. If you updated your `.bash_profile` file in the previous step, be sure to source it in a new Terminal window. For example:
 
@@ -82,7 +82,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
       **Tip:** This example uses a `-j` parameter set to `4`, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use `sysctl -n hw.ncpu` to get your CPU core count.
 
-0. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended) <!--{# ***TODO: We should provide info about what to do if you get failures. What should the user do? PM looking into this.*** #}-->
+0. Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended)
 
         $ ./rippled --unittest
 

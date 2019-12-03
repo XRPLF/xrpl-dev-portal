@@ -24,9 +24,9 @@
 
         $ brew install git cmake pkg-config protobuf openssl ninja
 
-0. Boost 1.70.0をインストールします。 `rippled` 1.3.1はBoost 1.70以上と互換性を持ちます。
+0. Boost 1.71.0をインストールします。 `rippled` 1.4.0はBoost 1.70以上と互換性を持ちます。
 
-      1. [Boost 1.70.0](https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2)をダウンロードします。
+      1. [Boost 1.71.0](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2)をダウンロードします。
 
       2. フォルダに抽出します。場所をメモしておいてください。
 
@@ -38,7 +38,7 @@
 
 0. `BOOST_ROOT`環境変数が、Boostのインストールで作成されたディレクトリーを指すようにします。Boostのインストールディレクトリーを見つけるには、`brew info boost`を使用します。この環境変数を`.bash_profile`ファイルに追加すると、ログイン時に自動的に設定されます。例えば、次のようにします。
 
-        export BOOST_ROOT=/Users/my_user/boost_1_70_0
+        export BOOST_ROOT=/Users/my_user/boost_1_71_0
 
 0. 前のステップで`.bash_profile`ファイルをアップデートした場合には、それを読み込みます。例:
 
@@ -78,7 +78,7 @@
 
       **ヒント:** この例では、`-j`パラメーターが`4`に設定されています。これにより、4つのプロセスを使用し、並行してビルドします。使用する最適なプロセス数は、お使いのハードウェアで使用可能なCPUコア数によって異なります。`sysctl -n hw.ncpu`を使用して、CPUのコア数を調べてください。
 
-0. サーバー実行可能ファイルに組み込まれたユニットテストを実行します。ハードウェアの仕様にもよりますが、これには約5分ほどかかります。（省略可能ですが、推奨します） <!--{# ***TODO: We should provide info about what to do if you get failures. What should the user do? PM looking into this.*** #}-->
+0. サーバー実行可能ファイルに組み込まれたユニットテストを実行します。ハードウェアの仕様にもよりますが、これには約5分ほどかかります。（省略可能ですが、推奨します）
 
         $ ./rippled --unittest
 
