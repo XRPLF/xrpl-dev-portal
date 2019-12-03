@@ -21,6 +21,7 @@ Some transactions have different transaction costs:
 | [Key Reset Transaction](#key-reset-transaction) | 0 |
 | [Multi-signed Transaction](multi-signing.html) | 10 drops × (1 + Number of Signatures Provided) |
 | [EscrowFinish Transaction with Fulfillment](escrowfinish.html) | 10 drops × (33 + (Fulfillment size in bytes ÷ 16)) |
+| [AccountDelete Transaction](accounts.html#deletion-of-accounts) | 5,000,000 drops |
 
 
 ## Beneficiaries of the Transaction Cost

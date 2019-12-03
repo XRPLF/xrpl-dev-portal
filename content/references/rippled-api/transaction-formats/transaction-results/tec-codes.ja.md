@@ -15,6 +15,7 @@
 | `tecEXPIRED`               | 148   | トランザクションがオブジェクト（OfferやCheckなど）を作成しようとしましたが、そのオブジェクトで指定された有効期限がすでに経過しています。 |
 | `tecFAILED_PROCESSING`     | 105   | トランザクションの処理中に不明なエラーが発生しました。 |
 | `tecFROZEN`                | 137   | [OfferCreateトランザクション][]が失敗しました。関係する1つまたは両方の資産が[Global Freeze](freezes.html)の対象となっています。 |
+| `tecHAS_OBLIGATIONS`       | 151   | The [AccountDelete transaction][] failed because the account to be deleted owns objects that cannot be deleted. See [Deletion of Accounts](accounts.html#deletion-of-accounts) for details. <!-- TODO: translate --> |
 | `tecINSUF_RESERVE_LINE`    | 122   | 送信側アカウントに、新しいトラストラインを作成するのに十分なXRPがないため、トランザクションが失敗しました。（[準備金](reserves.html)を参照してください）このエラーは、取引相手から同一通貨の送信側アカウントへのトラストラインがデフォルト以外の状態である場合に発生します。（その他のケースについては`tecNO_LINE_INSUF_RESERVE`を参照してください。） |
 | `tecINSUF_RESERVE_OFFER`   | 123   | 送信側アカウントに、新しいオファーを作成するのに十分なXRPがないため、トランザクションが失敗しました。（[準備金](reserves.html)を参照してください。) |
 | `tecINSUFFICIENT_RESERVE`  | 141   | トランザクションによって[必要準備金](reserves.html)が増加し、送信側アカウントの残高を超える可能性があります。[SignerListSet][]、[PaymentChannelCreate][]、[PaymentChannelFund][]、および[EscrowCreate][]からこのエラーコードが返されることがあります。詳細は、[SignerListと準備金](signerlist.html#signerlistと準備金)を参照してください。 |
@@ -38,6 +39,7 @@
 | `tecOWNERS`                | 132   | トランザクションでは、トランザクションを送信するアカウントの「所有者カウント」はゼロ以外である必要があります。このためトランザクションを正常に完了できません。たとえば、トラストラインや使用可能なオファーがあるアカウントでは、[`lsfRequireAuth`](accountset.html#accountsetのフラグ)フラグを有効にできません。 |
 | `tecPATH_DRY`              | 128   | トランザクションが失敗しました。指定されたパスに、送信の実行に十分な流動性がありませんでした。つまり、支払元アカウントと支払先アカウントはトラストラインにより関連付けされていません。 |
 | `tecPATH_PARTIAL`          | 101   | トランザクションが失敗しました。指定されたパスに、全額を送金するのに十分な流動性がありませんでした。 |
+| `tecTOO_SOON`              | 152   | The [AccountDelete transaction][] failed because the account to be deleted had a `Sequence` number that is too high. The current ledger index must be at least 256 higher than the account's sequence number. <!-- TODO: translate --> |
 | `tecUNFUNDED`              | 129   | トランザクションが失敗しました。アカウントがトランザクションの支払額に十分なXRPを保有しておらず、 _かつ_ このトランザクションを実行するのに追加で必要となる準備金が不足しています。（[準備金](reserves.html)を参照してください。) |
 | `tecUNFUNDED_ADD`          | 102   | **廃止予定。**                         |
 | `tecUNFUNDED_PAYMENT`      | 104   | 送信側アカウントが準備金を考慮せずに、保有するXRPを超える額の送信を試みたため、トランザクションが失敗しました。（[準備金](reserves.html)を参照してください。) |

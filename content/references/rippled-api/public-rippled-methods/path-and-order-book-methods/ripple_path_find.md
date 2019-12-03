@@ -84,7 +84,7 @@ The request includes the following parameters:
 | `send_max`            | String or Object           | _(Optional)_ [Currency Amount][] that would be spent in the transaction. Cannot be used with `source_currencies`. [New in: rippled 0.30.0][] |
 | `source_currencies`   | Array                      | _(Optional)_ Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, like how [currency amounts][Currency Amount] are specified. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
 | `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 ## Response Format
 

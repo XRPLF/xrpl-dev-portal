@@ -12,7 +12,7 @@ For any other result code, it can be difficult to determine if the result is fin
 | Any `tec` code  | Final when included in a validated ledger                  |
 | Any `tem` code  | Final unless the protocol changes to make the transaction valid |
 | `tefPAST_SEQ`   | Final when another transaction with the same sequence number is included in a validated ledger |
-| `tefMAX_LEDGER` | Final when a validated ledger has a sequence number higher than the transaction's `LastLedgerSequence` field, and no validated ledger includes the transaction |
+| `tefMAX_LEDGER` | Final when a validated ledger has a [ledger index][Ledger Index] higher than the transaction's `LastLedgerSequence` field, and no validated ledger includes the transaction |
 
 Any other transaction result is potentially not final. In that case, the transaction could still succeed or fail later, especially if conditions change such that the transaction is no longer prevented from applying. For example, trying to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sends enough XRP to create the destination account. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first.
 

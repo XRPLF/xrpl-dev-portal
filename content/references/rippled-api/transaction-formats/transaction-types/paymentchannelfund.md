@@ -26,6 +26,8 @@ Example PaymentChannelFund:
 | `Amount`     | String    | Amount            | Amount of [XRP, in drops][Currency Amount] to add to the channel. To set the expiration for a channel without adding more XRP, set this to `"0"`. |
 | `Expiration` | Number    | UInt32            | _(Optional)_ New `Expiration` time to set for the channel, in seconds since the Ripple Epoch. This must be later than either the current time plus the `SettleDelay` of the channel, or the existing `Expiration` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) For more information, see the [PayChannel ledger object type](paychannel.html). |
 
+If the destination account has been deleted, the transaction fails with `tecNO_DST`. (This is only possible if the [DeletableAccounts amendment](known-amendments.html#deletableaccounts) :not_enabled: has been enabled _and_ the [fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir) :not_enabled: was not enabled when the payment channel was created.)
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}

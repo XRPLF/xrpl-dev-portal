@@ -59,7 +59,7 @@ The request can contain the following parameters:
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]). |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `full`         | Boolean                    | _(Optional)_ **Admin required** If `true`, return full information on the entire ledger. Ignored if you did not specify a ledger version. Defaults to `false`. (Equivalent to enabling `transactions`, `accounts`, and `expand`.) **Caution:** This is a very large amount of data -- on the order of several hundred megabytes! |
 | `accounts`     | Boolean                    | _(Optional)_ **Admin required.** If `true`, return information on accounts in the ledger. Ignored if you did not specify a ledger version. Defaults to `false`. **Caution:** This returns a very large amount of data! |
 | `transactions` | Boolean                    | _(Optional)_ If `true`, return information on transactions in the specified ledger version. Defaults to `false`. Ignored if you did not specify a ledger version. |

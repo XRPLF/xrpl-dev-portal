@@ -51,7 +51,7 @@ The request includes the following parameters:
 | `account`             | String                                     | The unique identifier of an account, typically the account's [Address][]. The request returns channels where this account is the channel's owner/source. |
 | `destination_account` | String                                     | _(Optional)_ The unique identifier of an account, typically the account's [Address][]. If provided, filter results to payment channels whose destination is this account. |
 | `ledger_hash`         | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`        | String or Unsigned Integer                 | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_index`        | String or Unsigned Integer                 | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`               | Integer                                    | _(Optional)_ Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. Defaults to 200. |
 | `marker`              | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 

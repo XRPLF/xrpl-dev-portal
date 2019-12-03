@@ -192,7 +192,7 @@ The response follows the [standard format][], with a successful result containin
 |:---------------|:-----------------|:-----------------------------------------|
 | `hash`         | String           | The SHA-512 hash of the transaction      |
 | `inLedger`     | Unsigned Integer | (Deprecated) Alias for `ledger_index`.   |
-| `ledger_index` | Unsigned Integer | The sequence number of the ledger that includes this transaction. |
+| `ledger_index` | Unsigned Integer | The [ledger index][] of the ledger that includes this transaction. |
 | `meta`         | Object           | Various metadata about the transaction.  |
 | `validated`    | Boolean          | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 | (Various)      | (Various)        | Other fields from the [Transaction object](transaction-formats.html) |

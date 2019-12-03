@@ -50,7 +50,7 @@ The request includes the following parameters:
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The sequence number of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `tx_hash`      | String                     | Unique hash of the transaction you are looking up |
 
 **Note:** This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`.
@@ -195,12 +195,12 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`        | Type             | Description                              |
-|:---------------|:-----------------|:-----------------------------------------|
-| `ledger_index` | Unsigned Integer | Sequence number of the ledger version the transaction was found in; this is the same as the one from the request. |
-| `ledger_hash`  | String           | (May be omitted) Unique hash of the ledger version the transaction was found in; this is the same as the one from the request. |
-| `metadata`     | Object           | Various metadata about the transaction.  |
-| `tx_json`      | Object           | JSON representation of the [Transaction object](transaction-formats.html) |
+| `Field`        | Type                      | Description                     |
+|:---------------|:--------------------------|:--------------------------------|
+| `ledger_index` | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `ledger_hash`  | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `metadata`     | Object                    | The [transaction metadata](transaction-metadata.html), which shows the exact results of the transaction in detail. |
+| `tx_json`      | Object                    | JSON representation of the [Transaction object](transaction-formats.html) |
 
 There are a couple possible reasons the server may fail to find the transaction:
 

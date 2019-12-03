@@ -382,7 +382,7 @@ Each field of the `cluster` object is the public key of that `rippled` server's 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
 | `tag`   | String | The display name for this cluster member as defined in the config file. |
-| `fee`   | Number | (May be omitted) The load multiplier this cluster member is applying to the [transaction cost](transaction-cost.html) |
+| `fee`   | Number | _(May be omitted)_ The load multiplier this cluster member is applying to the [transaction cost](transaction-cost.html) |
 | `age`   | Number | The number of seconds since the last cluster report from this cluster member. |
 
 Each member of the `peers` array is a peer object with the following fields:
@@ -390,19 +390,19 @@ Each member of the `peers` array is a peer object with the following fields:
 | `Field`            | Type    | Description                                   |
 |:-------------------|:--------|:----------------------------------------------|
 | `address`          | String  | The IP address and port where this peer is connected |
-| `cluster`          | Boolean | (May be omitted) If `true`, the current server and the peer server are part of the same `rippled` cluster. |
-| `name`             | String  | (May be omitted) If the peer is part of the same cluster, this is the display name for that server as defined in the config file. |
-| `complete_ledgers` | String  | Range expression indicating the sequence numbers of the ledger versions the peer `rippled` has available |
-| `inbound`          | Boolean | (May be omitted) If `true`, the peer is connecting to the local server. |
+| `cluster`          | Boolean | _(May be omitted)_ If `true`, the current server and the peer server are part of the same `rippled` cluster. |
+| `name`             | String  | _(May be omitted)_ If the peer is part of the same cluster, this is the display name for that server as defined in the config file. |
+| `complete_ledgers` | String  | Range expression indicating the [ledger indexes][ledger index] of the ledger versions the peer `rippled` server has available |
+| `inbound`          | Boolean | _(May be omitted)_ If `true`, the peer is connecting to the local server. |
 | `latency`          | Number  | The network latency to the peer (in milliseconds) |
-| `ledger`           | String  | The hash of the peer's most recently closed ledger |
+| `ledger`           | String  | The identifying [hash][Hash] of the peer's most recently closed ledger |
 | `load`             | Number  | A measure of the amount of load the peer server is putting on the local server. Larger numbers indicate more load. (The units by which load is measured are not formally defined.) |
-| `protocol`         | String  | (May be omitted) The protocol version that the peer is using, if not the same as the local server. |
-| `public_key`       | String  | (May be omitted) A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
-| `sanity`           | String  | (May be omitted) Whether this peer is following the same rules and ledger sequence as the current server. A value of `insane` probably indicates that the peer is part of a parallel network. The value `unknown` indicates that the current server is unsure whether the peer is compatible. <!-- STYLE_OVERRIDE: insane --> |
-| `status`           | String  | (May be omitted) The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
+| `protocol`         | String  | _(May be omitted)_ The protocol version that the peer is using, if not the same as the local server. |
+| `public_key`       | String  | _(May be omitted)_ A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
+| `sanity`           | String  | _(May be omitted)_ Whether this peer is following the same rules and ledger history as the current server. A value of `insane` probably indicates that the peer is part of a [parallel network](parallel-networks.html). The value `unknown` indicates that the current server is unsure whether the peer is compatible. <!-- STYLE_OVERRIDE: insane --> |
+| `status`           | String  | _(May be omitted)_ The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
 | `uptime`           | Number  | The number of seconds that your `rippled` server has been continuously connected to this peer. [New in: rippled 0.30.1][] |
-| `version`          | string  | (May be omitted) The `rippled` version number of the peer server |
+| `version`          | string  | _(May be omitted)_ The `rippled` version number of the peer server |
 
 ### Possible Errors
 

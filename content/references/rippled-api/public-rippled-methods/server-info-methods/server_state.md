@@ -275,13 +275,13 @@ The `state` object may have some arrangement of the following fields:
 | `state_accounting.*.duration_us` | String           | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) [New in: rippled 0.30.1][] |
 | `state_accounting.*.transitions` | Number           | The number of times the server has transitioned into this state. [New in: rippled 0.30.1][] |
 | `uptime`                         | Number           | Number of consecutive seconds that the server has been operational. [New in: rippled 0.30.1][] |
-| `validated_ledger`               | Object           | (May be omitted) Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
+| `validated_ledger`               | Object           | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validated_ledger.base_fee`      | Unsigned Integer | Base fee, in drops of XRP, for propagating a transaction to the network. |
 | `validated_ledger.close_time`    | Number           | Time this ledger was closed, in [seconds since the Ripple Epoch][] |
 | `validated_ledger.hash`          | String           | Unique hash of this ledger version, as hex |
-| `validated_ledger.reserve_base`  | Unsigned Integer | Minimum amount, in drops of XRP, necessary for every account to keep in reserve |
-| `validated_ledger.reserve_inc`   | Unsigned Integer | Amount, in drops of XRP, that is added to the account reserve for each item the account owns in the ledger. |
-| `validated_ledger.seq`           | Unsigned Integer | Unique sequence number of this ledger |
+| `validated_ledger.reserve_base`  | Unsigned Integer | The minimum [account reserve](reserves.html), as of the most recent validated ledger version. |
+| `validated_ledger.reserve_inc`   | Unsigned Integer | The [owner reserve](reserves.html) for each item an account owns, as of the most recent validated ledger version. |
+| `validated_ledger.seq`           | Unsigned Integer | The [ledger index][] of the most recently validated ledger version. |
 | `validation_quorum`              | Number           | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 | `validator_list_expires`         | Number           | _(Admin only)_ When the current validator list will expire, in [seconds since the Ripple Epoch][], or 0 if the server has yet to load a published validator list. [New in: rippled 0.80.1][] |
 

@@ -44,9 +44,9 @@ The XRP Ledger provides several APIs for submitting transactions, including [`ri
 
 APIs may return provisional results based on the result of applying candidate transactions to the current, in-progress ledger. Applications must not confuse these with the final, *immutable*, results of a transaction.  Immutable results are found only in validated ledgers.  Applications may need to query the status of a transaction repeatedly, until the ledger containing the transaction results is validated.
 
-While applying transactions, `rippled` servers use the *last validated ledger*, a snapshot of the ledger state based on transactions the entire network has validated.  The process of consensus and validation apply a set of new transactions to the last validated ledger in canonical order, resulting in a new validated ledger.  This new validated ledger instance and the ones that preceded it form the ledger history.
+While applying transactions, `rippled` servers use the *last validated ledger*, a snapshot of the ledger state based on transactions the entire network has validated.  The process of consensus and validation apply a set of new transactions to the last validated ledger in canonical order, resulting in a new validated ledger.  This new validated ledger version and the ones that preceded it form the ledger history.
 
-Each validated ledger instance has a sequence number, which is one greater than the sequence number of the preceding instance. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same sequence number but different hash values. Only one version can ever be validated.
+Each validated ledger version has a ledger index, which is 1 greater than the ledger index of the previous ledger version. Each ledger also has an identifying hash value, which is uniquely determined from its contents. There may be many different versions of in-progress ledgers, which have the same ledger index but different hash values. Only one version can ever be validated.
 
 Each validated ledger has a canonical order in which transactions apply. This order is deterministic based on the final transaction set of the ledger. In contrast, each `rippled` server's in-progress ledger is calculated incrementally, as transactions are received. The order in which transactions execute provisionally is usually not the same as the order in which transactions execute to build a new validated ledger. This is one reason why the provisional outcome of a transaction may be different than the final result. For example, a payment may achieve a different final exchange rate depending on whether it executes before or after another payment that would consume the same offer.
 
@@ -54,7 +54,7 @@ Each validated ledger has a canonical order in which transactions apply. This or
 
 ### LastLedgerSequence
 
-`LastLedgerSequence` is an optional [parameter of all transactions](transaction-common-fields.html).  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger instance.  The XRP Ledger never includes a transaction in a ledger instance whose sequence number is higher than the transaction's `LastLedgerSequence` parameter.
+`LastLedgerSequence` is an optional [parameter of all transactions](transaction-common-fields.html).  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger version.  The XRP Ledger never includes a transaction in a ledger version whose ledger index is higher than the transaction's `LastLedgerSequence` parameter.
 
 Use the `LastLedgerSequence` parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger.  You should specify the `LastLedgerSequence` parameter on every transaction.  Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.
 
@@ -178,9 +178,9 @@ Alternatively, you can look up the status of the transaction using a different `
 To implement the transaction submission and verification best practices, applications need to do the following:
 
 1. Determine the signing account's next sequence number
-    * Each transaction has an account-specific sequence number.  This guarantees the order in which transactions signed by an account are executed and makes it safe to resubmit a transaction without danger of the transaction being applied to the ledger more than once.
+    * Each transaction has an account-specific [sequence number](basic-data-types.html#account-sequence).  This guarantees the order in which transactions signed by an account are executed and makes it safe to resubmit a transaction without danger of the transaction being applied to the ledger more than once.
 3. Decide on a `LastLedgerSequence`
-     * A transaction's `LastLedgerSequence` is calculated from the last validated ledger sequence number.
+     * A transaction's `LastLedgerSequence` is calculated from the last validated ledger index.
 3. Construct and sign the transaction
     * Persist the details of a signed transaction before submission.
 4. Submit the transaction
@@ -291,7 +291,7 @@ Response:
 }
 ```
 
-In this example the last validated ledger sequence number is 10268596 (found under `result.state.validated_ledger` in the response).  Note also this example indicates a gap in ledger history.  The server used here would not be able to provide information about the transactions applied during that gap (ledgers 10256383 through 10256411).  If configured to do so, the server eventually retrieves that part of the ledger history.
+In this example the last validated ledger index is 10268596 (found under `result.state.validated_ledger` in the response).  Note also this example indicates a gap in ledger history.  The server used here would not be able to provide information about the transactions applied during that gap (ledgers 10256383 through 10256411).  If configured to do so, the server eventually retrieves that part of the ledger history.
 
 
 #### Construct the Transaction
@@ -327,7 +327,7 @@ Request:
 
 Notice the application specifies the account sequence `"Sequence": 4`, learned from an earlier call to `account_info`, to avoid `tefPAST_SEQ` errors.
 
-Notice also the `LastLedgerSequence` based on the last validated ledger our application learned from `server_state`.  The recommendation for backend applications is to use *(last validated ledger sequence + 4)*. Alternately, use a value of *(current ledger + 3)*.  If `LastLedgerSequence` is miscalculated and less than the last validated ledger, the transaction fails with `tefMAX_LEDGER` error.
+Notice also the `LastLedgerSequence` based on the last validated ledger our application learned from `server_state`.  The recommendation for backend applications is to use *(last validated ledger index + 4)*. Alternately, use a value of *(current ledger + 3)*.  If `LastLedgerSequence` is miscalculated and less than the last validated ledger, the transaction fails with `tefMAX_LEDGER` error.
 
 Response:
 
@@ -466,7 +466,7 @@ Response:
 
 This example response shows `"validated": true`, indicating the transaction has been included in a validated ledger, so the result of the transaction is immutable.  Further, the metadata includes `"TransactionResult": "tesSUCCESS"`, indicating the transaction was applied to the ledger.
 
-If the response does not include `"validated": true`, the result is provisional and subject to change.  To retrieve a final result, applications must invoke the `tx` method again, allowing enough time for the network to validate more ledger instances.  It may be necessary to wait for the ledger specified in `LastLedgerSequence` to be validated, although if the transaction is included in an earlier validated ledger the result becomes immutable at that time.
+If the response does not include `"validated": true`, the result is provisional and subject to change.  To retrieve a final result, applications must invoke the `tx` method again, allowing enough time for the network to validate more ledger versions.  It may be necessary to wait for the ledger specified in `LastLedgerSequence` to be validated, although if the transaction is included in an earlier validated ledger the result becomes immutable at that time.
 
 
 #### Verify Missing Transaction
@@ -526,7 +526,7 @@ The [server_state method][] (used earlier to determine the last validated ledger
 
 Our example transaction specified `LastLedgerSequence` 10268600, based on the last validated ledger at the time, plus four.  To determine whether our missing transaction has permanently failed, our `rippled` server must have ledgers 10268597 through 10268600.  If the server has those validated ledgers in its history, **and** `tx` returns `txnNotFound`, then the transaction has failed and cannot be included in any future ledger.  In this case, application logic may dictate building and submitting a replacement transaction with the same account sequence and updated `LastLedgerSequence`.
 
-The server may report a last validated ledger sequence number less than the specified `LastLedgerSequence`.  If so, the `txnNotFound` indicates either (a) the submitted transaction has not been distributed to the network, or (b) the transaction has been distributed to the network but has not yet been processed.  To handle the former case, applications may submit again the same signed transaction.  Because the transaction has a unique account sequence number, it can be processed at most once.
+The server may report a last validated ledger index less than the specified `LastLedgerSequence`.  If so, the `txnNotFound` indicates either (a) the submitted transaction has not been distributed to the network, or (b) the transaction has been distributed to the network but has not yet been processed.  To handle the former case, applications may submit again the same signed transaction.  Because the transaction has a unique account sequence number, it can be processed at most once.
 
 Finally the server may show one or more gaps in the transaction history. The `completed_ledgers` field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this rippled instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and `LastLedgerSequence`), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another rippled server (or wait for this one to retrieve the missing ledgers) to determine that a `txnNotFound` result is immutable.
 

@@ -22,5 +22,5 @@ set -e
 tool/conflictmarkers.sh
 
 ## Build all languages, then run the link checker once
-tool/build_all_langs.sh
+tool/build_all_langs.sh --vars "$dactyl_vars"
 dactyl_link_checker -q
