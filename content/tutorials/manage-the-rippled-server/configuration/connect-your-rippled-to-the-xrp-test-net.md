@@ -84,7 +84,7 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
 
     The following command checks the latest validated ledger of a Devnet server at `s.devnet.rippletest.net`:
 
-        $ ./rippled --rpc_ip 34.83.125.324:51234 server_info | grep seq
+        $ ./rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
 
     The following command checks your local `rippled`'s latest validated ledger index:
 
