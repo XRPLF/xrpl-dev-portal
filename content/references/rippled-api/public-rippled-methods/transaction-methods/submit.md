@@ -1,5 +1,5 @@
 # submit
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
 
 The `submit` method applies a [transaction](transaction-formats.html) and sends it to the network to be confirmed and included in future ledgers.
 

@@ -1,5 +1,5 @@
 # logrotate
-[[Source]<br>](https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 

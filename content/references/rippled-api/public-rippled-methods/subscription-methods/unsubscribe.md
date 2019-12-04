@@ -1,5 +1,5 @@
 # unsubscribe
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
 
 The `unsubscribe` command tells the server to stop sending messages for a particular subscription or set of subscriptions.
 

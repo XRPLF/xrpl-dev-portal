@@ -1,5 +1,5 @@
 # Check
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
 
 _(Requires the [Checks amendment][] :not_enabled:.)_
 
@@ -49,7 +49,7 @@ A `Check` object has the following fields:
 
 
 ## Check ID Format
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
 The ID of a `Check` object is the [SHA-512Half][] of the following values, concatenated in order:
 

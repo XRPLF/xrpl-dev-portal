@@ -1,5 +1,5 @@
 # AccountRoot
-[[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
+[[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
 
 The `AccountRoot` object type describes a single [account](accounts.html), its settings, and XRP balance.
 

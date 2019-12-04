@@ -1,5 +1,5 @@
 # random
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
 
 The `random` command provides a random number to be used as a source of entropy for random number generation by clients.
 

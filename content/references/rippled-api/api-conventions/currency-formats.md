@@ -27,7 +27,7 @@ Issued currencies in the XRP Ledger are represented with a custom format with th
 * 15 decimal digits of precision
 
 ## Issued Currency Math
-[[Source]<br>](https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
 
 ![Issued Currency Amount Format diagram](img/currency-number-format.png)
 

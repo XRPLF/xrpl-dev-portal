@@ -1,5 +1,5 @@
 # validator_list_sites
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")
 
 The `validator_list_sites` command returns status information of sites serving validator lists. [New in: rippled 0.80.1][]
 

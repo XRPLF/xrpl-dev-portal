@@ -1,6 +1,6 @@
 # AccountSet
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "Source")
 
 An AccountSet transaction modifies the properties of an [account in the XRP Ledger](accountroot.html).
 

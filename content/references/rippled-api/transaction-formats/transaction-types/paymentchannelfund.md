@@ -1,5 +1,5 @@
 # PaymentChannelFund
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
 _Requires the [PayChan amendment][]._
 

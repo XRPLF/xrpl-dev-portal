@@ -1,5 +1,5 @@
 # server_info
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
 
 The `server_info` command asks the server for a human-readable version of various information about the `rippled` server being queried.
 

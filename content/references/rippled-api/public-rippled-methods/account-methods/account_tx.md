@@ -1,5 +1,5 @@
 # account_tx
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
 
 The `account_tx` method retrieves a list of transactions that involved the specified account.
 
@@ -67,7 +67,7 @@ The request includes the following parameters:
 | `limit`            | Integer                                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | `marker`           | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")<br>
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")<br>
 
 While each of these fields is marked as optional, **you must use at least one** in your request: `ledger_index`, `ledger_hash`, `ledger_index_min`, or `ledger_index_max`.
 

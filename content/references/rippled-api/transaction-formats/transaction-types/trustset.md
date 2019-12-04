@@ -1,6 +1,6 @@
 # TrustSet
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
 
 Create or modify a trust line linking two accounts.
 

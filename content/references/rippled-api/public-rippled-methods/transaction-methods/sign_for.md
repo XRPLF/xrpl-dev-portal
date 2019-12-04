@@ -1,5 +1,5 @@
 # sign_for
-[[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
 
 The `sign_for` command provides one signature for a [multi-signed transaction](multi-signing.html).
 

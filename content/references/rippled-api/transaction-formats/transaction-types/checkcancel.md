@@ -1,5 +1,5 @@
 # CheckCancel
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelCheck.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelCheck.cpp "Source")
 
 _(Requires the [Checks amendment][] :not_enabled:.)_
 
