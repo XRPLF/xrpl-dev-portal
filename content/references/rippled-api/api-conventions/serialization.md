@@ -1,5 +1,5 @@
 # Serialization Format
-[[Source]<br>](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
+[[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
 
 This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](peer-protocol.html). The [`rippled` APIs](rippled-api.html) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 

@@ -22,7 +22,7 @@ Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Has
 <!--{#_ #}-->
 
 ### Hash Prefixes
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
 
 In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if their binary formats are the same. The existing 4-byte codes are structured as three alphabetic characters, encoded as ASCII, followed by a zero byte.
 

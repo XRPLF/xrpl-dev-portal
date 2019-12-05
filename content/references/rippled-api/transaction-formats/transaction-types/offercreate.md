@@ -1,6 +1,6 @@
 # OfferCreate
 
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")
 
 An OfferCreate transaction is effectively a [limit order](http://en.wikipedia.org/wiki/limit_order). It defines an intent to exchange currencies, and creates an [Offer object](offer.html) if not completely fulfilled when placed. Offers can be partially fulfilled.
 

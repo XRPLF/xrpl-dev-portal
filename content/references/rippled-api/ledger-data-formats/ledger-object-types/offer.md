@@ -1,5 +1,5 @@
 # Offer
-[[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
+[[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
 
 The `Offer` object type describes an offer to exchange currencies, more traditionally known as an _order_, in the XRP Ledger's distributed exchange. An [OfferCreate transaction][] only creates an `Offer` object in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.
 

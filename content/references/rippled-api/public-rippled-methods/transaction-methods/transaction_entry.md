@@ -1,5 +1,5 @@
 # transaction_entry
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
 
 The `transaction_entry` method retrieves information on a single transaction from a specific ledger version. (The [tx method][], by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.)
 

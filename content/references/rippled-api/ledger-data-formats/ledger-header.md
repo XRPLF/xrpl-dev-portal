@@ -1,5 +1,5 @@
 # Ledger Header
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
 
 Every ledger version has a unique header that describes the contents. You can look up a ledger's header information with the [ledger method][]. The contents of the ledger header are as follows:
 

@@ -1,5 +1,5 @@
 # account_objects
-[[Source]<br>](https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
 The `account_objects` command returns the raw [ledger format][] for all objects owned by an account. For a higher-level view of an account's trust lines and balances, see the [account_lines method][] instead.
 

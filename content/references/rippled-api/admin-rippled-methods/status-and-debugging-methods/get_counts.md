@@ -1,5 +1,5 @@
 # get_counts
-[[Source]<br>](https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp "Source")
 
 The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.
 

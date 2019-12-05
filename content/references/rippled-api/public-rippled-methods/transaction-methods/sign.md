@@ -1,5 +1,5 @@
 # sign
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")
 
 The `sign` method takes a [transaction in JSON format](transaction-formats.html) and a [seed value](cryptographic-keys.html), and returns a signed binary representation of the transaction. To contribute one signature to a [multi-signed transaction](multi-signing.html), use the [sign_for method][] instead.
 

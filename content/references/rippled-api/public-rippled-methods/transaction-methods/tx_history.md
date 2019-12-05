@@ -1,5 +1,5 @@
 # tx_history
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp "Source")
 
 The `tx_history` method retrieves some of the most recent transactions made.
 

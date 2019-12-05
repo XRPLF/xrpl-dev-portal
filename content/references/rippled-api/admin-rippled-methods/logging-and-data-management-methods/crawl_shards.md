@@ -1,5 +1,5 @@
 # crawl_shards
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")
 
 Requests information from peer servers about which [shards of historical ledger data](history-sharding.html) they have available. [New in: rippled 1.2.0][]
 

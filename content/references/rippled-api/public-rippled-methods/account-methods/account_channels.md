@@ -1,5 +1,5 @@
 # account_channels
-[[Source]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
 _(Requires the [PayChan amendment][] to be enabled. [New in: rippled 0.33.0][])_
 

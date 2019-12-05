@@ -1,5 +1,5 @@
 # DirectoryNode
-[[Source]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
+[[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
 
 The `DirectoryNode` object type provides a list of links to other objects in the ledger's state tree. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode objects each containing up to 32 [IDs](ledgers.html#tree-format) of other objects. The first object is called the root of the directory, and all objects other than the root object can be added or deleted as necessary.
 

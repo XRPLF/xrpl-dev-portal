@@ -1,5 +1,5 @@
 # ping
-[[Source]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
 
 The `ping` command returns an acknowledgement, so that clients can test the connection status and latency.
 

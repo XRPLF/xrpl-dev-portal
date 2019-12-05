@@ -1,5 +1,5 @@
 # gateway_balances
-[[Source]<br>](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
 
 The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](issuing-and-operational-addresses.html). [New in: rippled 0.28.2][]
 
