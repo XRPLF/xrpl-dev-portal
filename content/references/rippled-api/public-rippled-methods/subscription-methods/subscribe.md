@@ -75,6 +75,7 @@ The `streams` parameter provides access to the following default streams of info
 * `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation.
     **Note:** [Even some transactions that don't succeed are included](transaction-results.html) in validated ledgers, because they take the anti-spam transaction fee.
 * `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
+* `consensus` - Sends a message whenever the server changes phase in the consensus cycle (open, establish, accepted, and so forth)
 * `peer_status` - **(Admin only)** Information about connected peer `rippled` servers, especially with regards to the consensus process.
 
 Each member of the `books` array, if provided, is an object with the following fields:
@@ -110,7 +111,7 @@ The response follows the [standard format][]. The fields contained in the respon
 
 * `accounts` and `accounts_proposed` - No fields returned
 * *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change.
-* *Stream: transactions*, *Stream: transactions_proposed*, and *Stream: validations* - No fields returned
+* *Stream: transactions*, *Stream: transactions_proposed*, *Stream: validations*, and *Stream: consensus* - No fields returned
 * *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions in XRP), `fee_ref` (current base fee for transactions in fee units), `ledger_hash` (hash of the latest validated ledger), `reserve_base` (minimum reserve for accounts), and more.
 * `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book)
 
@@ -532,6 +533,27 @@ The format of an order book stream message is the same as that of [transaction s
 | `Field`                   | Value  | Description                             |
 |:--------------------------|:-------|:----------------------------------------|
 | `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](freezes.html). |
+
+
+## Consensus Stream
+
+[New in: rippled 1.4.0][]
+
+The `consensus` stream sends `consensusPhase` messages when [the consensus process](consensus.html) changes phase. The message contains the new phase of consensus the server is in.
+
+```
+{
+  "type": "consensusPhase",
+  "consensus": "accepted"
+}
+```
+
+The fields from a consensus stream message are as follows:
+
+| `Field`             | Type                      | Description                |
+|:--------------------|:--------------------------|:---------------------------|
+| `type`              | String                    | `consensusPhase` indicates this is from the consensus stream |
+| `consensus`         | String                    | The new consensus phase the server is in. Possible values are open, establish, and accepted. |
 
 
 {% include '_snippets/rippled_versions.md' %}
