@@ -1716,6 +1716,17 @@ pages:
             - en
             - ja
 
+        # TODO: translate this page
+    -   md: tutorials/manage-account-settings/offline-account-setup.md
+        html: offline-account-setup.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Set up an XRP Ledger account using an air-gapped, offline machine to store its cryptographic keys. #TODO:translate
+        targets:
+            - en
+            - ja
+
     # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
 
     -   name: Use Specialized Payment Types
