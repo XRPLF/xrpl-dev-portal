@@ -79,8 +79,24 @@ You can prepare several transactions in advance this way, then transfer the sign
 
 ### {{n.next()}}. Sign initial setup transactions, if any.
 
-On the offline machine, prepare and sign any transacitons you want to send to configure your account. ***TODO: examples***
+On the offline machine, prepare and sign transactions for configuring your account. The details depend on how you intend to you use your account. Some examples of things you might want to do include:
 
+- [Assign a regular key pair](assign-a-regular-key-pair.html) that you can rotate regularly.
+- [Require destination tags](require-destination-tags.html) so that users can't send you payments without tagging the reason they sent it or the customer it's intended for.
+- [Set Up Multi-Signing](set-up-multi-signing.html) for a higher bar of account security.
+- [Enabling DepositAuth](depositauth.html) so you can only receive payments you've explicitly accepted or from parties you've pre-approved.
+- [Enabling RequireAuth](become-an-xrp-ledger-gateway.html#enabling-requireauth) so that users can't open [trust lines](trust-lines-and-issuing.html) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or issued currency features, you may want to do this as a precaution.
+- Issued currency [Gateways](become-an-xrp-ledger-gateway.html) may have additional setup, such as:
+    - [Setting a TransferRate](become-an-xrp-ledger-gateway.html#transferrate) for users transferring your issued currencies.
+    - [Disallowing XRP payments](become-an-xrp-ledger-gateway.html#disallowxrp) if you plan to use this address for issued currencies only.
+
+At this stage, you are only signing the transactions, not submitting them. For each transaction, you must provide all fields, including fields that are normally auto-fillable such as the `Fee` ([transaction cost](transaction-cost.html)) and `Sequence` ([sequence number][]). If you prepare multiple transactions at the same time, you must use sequentially increasing `Sequence` numbers in the order you want the transactions to execute.
+
+
+
+### {{n.next()}}. Transfer setup transactions to online machine.
+
+***TODO***
 
 ### {{n.next()}}. (online) Submit setup transactions.
 
