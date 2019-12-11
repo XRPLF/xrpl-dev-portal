@@ -75,7 +75,7 @@ This is as opposed to a regular key pair, which is also generated using the `wal
 
 **Caution:** A master key pair cannot be changed, but it can be disabled. This means that if your master seed or secret key is compromised, rather than change it, you must [disable it](accountset.html).
 
-Because a master key pair cannot be changed and can only disabled in the event of a compromise, this is a compelling reason to keep your master key pair offline and set up a regular key pair to sign transactions from your account instead.
+Because a master key pair cannot be changed and can only disabled in the event of a compromise, this is a compelling reason to [keep your master key pair offline](offline-account-setup.html) and set up a regular key pair to sign transactions from your account instead.
 
 Keeping your master key pair offline means not putting your master secret key anywhere that malicious actors can get access to it. For example, this can mean keeping it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or in general, not within reach of a computer program that interacts with the internet at large. Ideally, a master key pair is used only on the most trusted of devices and for emergencies only, such as to change a regular key pair in the event of a possible or actual compromise.
 
