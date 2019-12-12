@@ -38,6 +38,8 @@ Any account may submit an EscrowFinish transaction.
 
 **Note:** The minimum [transaction cost](transaction-cost.html) to submit an EscrowFinish transaction increases if it contains a fulfillment. If the transaction has no fulfillment, the transaction cost is the standard 10 drops. If the transaction contains a fulfillment, the transaction cost is 330 [drops of XRP][] plus another 10 drops for every 16 bytes in size of the preimage.
 
+In [non-production networks](parallel-networks.html), it may be possible that the destination of an escrow has been [deleted](accounts.html#deletion-of-accounts) after the escrow was created. In this case, an attempt to finish the escrow fails with the result `tecNO_TARGET`, but the escrow object remains unless it has expired normally. If another payment re-creates the destination account, the escrow can be finished successfully. This situation is only possible if the escrow was created before the [fix1523 amendment](known-amendments.html#fix1523) became enabled. No such escrows exist in the production XRP Ledger, so this edge case is not possible on the production XRP Ledger.
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}

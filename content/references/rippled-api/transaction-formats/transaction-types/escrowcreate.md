@@ -39,6 +39,7 @@ Either `CancelAfter` or `FinishAfter` must be specified. If both are included, t
 
 With the [fix1571 amendment][] enabled, you must supply `FinishAfter`, `Condition`, or both. [New in: rippled 1.0.0][]
 
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
