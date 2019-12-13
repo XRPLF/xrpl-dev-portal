@@ -6,7 +6,7 @@ A highly secure [signing configuration](set-up-secure-signing.html) involves kee
 
 ## Prerequisites
 
-To use offline signing, you must have the following
+To use offline signing, you must meet the following prerequisites:
 
 - You must have one computer to use as an offline machine. This machine must be set up with a [supported operating system](system-requirements.html). See your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
     - The offline machine needs secure persistent storage (for example, an encrypted disk drive) and a way to [sign transactions](set-up-secure-signing.html) such as [`rippled` running in stand-alone mode](rippled-server-modes.html) or [ripple-lib](rippleapi-reference.html).
@@ -105,6 +105,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 }
 ```
 
+<!-- MULTICODE_BLOCK_END -->
 
 ### {{n.next()}}. Enter the sequence number on the offline machine.
 
