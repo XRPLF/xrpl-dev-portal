@@ -9,7 +9,6 @@ A highly secure [signing configuration](set-up-secure-signing.html) involves kee
 To use offline signing, you must meet the following prerequisites:
 
 - You must have one computer to use as an offline machine. This machine must be set up with a [supported operating system](system-requirements.html). See your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
-    - The offline machine needs secure persistent storage (for example, an encrypted disk drive) and a way to [sign transactions](set-up-secure-signing.html) such as [`rippled` running in stand-alone mode](rippled-server-modes.html) or [ripple-lib](rippleapi-reference.html).
 - You must have a separate computer to use as an online machine. This machine does not need to run `rippled` but it must be able to connect to the XRP Ledger network and receive accurate information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](get-started-with-the-rippled-api.html).
 - You must have a secure way to transfer signed transaction binary data from the offline machine to the online machine.
     - One way to do this is with a QR code generator on the offline machine, and a QR code scanner on the online machine. (In this case, your "online machine" could be a handheld device such as a smartphone.)
@@ -20,6 +19,16 @@ To use offline signing, you must meet the following prerequisites:
 ## Steps
 
 {% set n = cycler(* range(1,99)) %}
+
+### {{n.next()}}. Set up offline machine
+
+The offline machine needs secure persistent storage (for example, an encrypted disk drive) and a way to [sign transactions](set-up-secure-signing.html). For an offline machine, you typically use physical media to transfer any necessary software after downloading it from an online machine. You must be sure that the online machine, the physical media, and the software itself are not infected with malware.
+
+Software options for signing on the XRP Ledger include:
+
+- [Install `rippled`]() from a package (`.deb` or `.rpm` depending on which Linux distribution you use) file, then [run it in stand-alone mode](rippled-server-modes.html).
+- Install [ripple-lib](rippleapi-reference.html) and its dependencies offline. The Yarn package manager, for example, has [recommended instructions for offline usage](https://yarnpkg.com/blog/2016/11/24/offline-mirror/).
+- See also: [Set Up Secure Signing](set-up-secure-signing.html)
 
 ### {{n.next()}}. Generate cryptographic keys
 
