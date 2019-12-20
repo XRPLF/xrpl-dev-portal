@@ -11,6 +11,9 @@ If you run multiple servers in the same datacenter, you may want [to cluster the
 Having 10-11 peers probably means your firewall is blocking incoming connections. Open the peer protocol port (51235 by default) to allow incoming peer connections.
 
 
+## Set Maximum Number of Peers
+`[peers_max]` config setting (restart required)
+
 ## Add a Reserved Peer Slot
 
 [peer_reservations_add method][]
@@ -24,6 +27,11 @@ Having 10-11 peers probably means your firewall is blocking incoming connections
 ## Check Reserved Peer Slots
 
 [peer_reservations_list method][]
+
+
+## Manually Connect to a Specific Peer
+
+[connect method][] (by IP and port)
 
 
 ## Disconnect an Unwanted Peer

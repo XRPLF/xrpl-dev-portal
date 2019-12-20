@@ -34,7 +34,20 @@ When a server first starts up, it generates a _node key pair_ to use to identify
 
 The node key pair is saved in the database and reused when the server restarts. If you delete the server's databases, it creates a new node key pair, effectively coming online with a different identity. To reuse the same key pair even if the databases are deleted, you can configure the server with a `[node_seed]` stanza. To generate a value suitable for use in the `[node_seed]` stanza, use the [validation_create method][].
 
-The node key pair also identifies other servers [clustered](clustering.html) with this one. If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `rippled` Servers](cluster-rippled-servers.html).
+The node key pair also identifies other servers for purposes of [clustering](clustering.html) or [reserving peer slots](#fixed-and-reserved-peers). If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `rippled` Servers](cluster-rippled-servers.html).
+
+
+## Fixed and Reserved Peers
+
+Normally, a `rippled` server attempts to maintain a healthy number of peers, and automatically connects to untrusted peers up to a maximum number. You can configure a `rippled` server to remain connected to specific peer servers in several ways:
+
+- Use **Fixed Peers** to remain always connected to specific other peers based on their IP addresses. This only works if the peers have fixed IP addresses. Use the `[ips_fixed]` config stanza to configure fixed peers. This is a necessary part of [clustering](clustering.html) or [private peers](#private-peers).
+- Use **Peer Reservations** to prioritize specific peers. If your server has a peer reservation for a specific peer, then your server always accepts connection requests from that peer even if your server is already at its maximum number of connected peers. (This can cause your server to go _over_ the maximum number of peers.) For reserved peers, you can identify the other peer by its [node key pair](#node-key-pair), so you can do this even for peers with variable IP addresses. [New in: rippled 1.4.0][]
+
+In the following cases, a `rippled` server does not connect to untrusted peers:
+
+- If the server is configured as a [private peer](#private-peers), it connects _only_ to its fixed peers.
+- If the server is running in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode) it does not connect to _any_ peers.
 
 
 ## Private Peers
