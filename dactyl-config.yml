@@ -2370,26 +2370,6 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/configuration/cluster-rippled-servers.md
-        html: cluster-rippled-servers.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Configuration
-        blurb: Set up a group of servers that share work for higher efficiency.
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/cluster-rippled-servers.ja.md
-        html: cluster-rippled-servers.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Configuration
-        blurb: Set up a group of servers that share work for higher efficiency. #TODO:translate
-        targets:
-            - ja
-
     -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
         html: configure-online-deletion.html
         funnel: Docs
@@ -2470,17 +2450,6 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-the-peer-crawler.md
-        html: configure-the-peer-crawler.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Configuration
-        blurb: Configure how much information your server reports publicly about its status and peers. #TODO:translate
-        targets:
-            - en
-            - ja
-
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
         html: enable-public-signing.html
         funnel: Docs
@@ -2499,6 +2468,93 @@ pages:
         subcategory: Configuration
         blurb: Allow others to use your server to sign transactions. (Not recommended) #TODO:translate
         targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.md
+        html: configure-peering.html
+        template: template-landing-children.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering #TODO:translate
+        blurb: Configure how your server connects to the peer-to-peer network. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.md
+        html: cluster-rippled-servers.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Set up a group of servers that share work for higher efficiency.
+        targets:
+            - en
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.ja.md
+        html: cluster-rippled-servers.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Set up a group of servers that share work for higher efficiency. #TODO:translate
+        targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peer-reservations.md
+        html: configure-peer-reservations.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Configure how much information your rippled server reports publicly about its status and peers. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
+        html: configure-the-peer-crawler.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Configure how much information your rippled server reports publicly about its status and peers. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.md
+        html: forward-ports-for-peering.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Configure your firewall to allow incoming peers to your rippled server. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.md
+        html: manually-connect-to-a-specific-peer.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Connect your rippled server to a specific peer. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.md
+        html: set-max-number-of-peers.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Set the maximum number of peers your rippled server connects to. #TODO:translate
+        targets:
+            - en
             - ja
 
     -   name: Test rippled Functionality in Stand-Alone Mode
@@ -4245,7 +4301,7 @@ pages:
         targets:
             - en
 
-    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods-methods/peers.ja.md
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.ja.md
         html: peers.html
         blurb: ピアプロトコルでこのサーバーに現在接続されているその他のすべてのrippledサーバーのリストを返します。
         funnel: Docs
