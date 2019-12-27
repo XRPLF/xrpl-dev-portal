@@ -156,6 +156,7 @@ The response follows the [standard format][], with a successful result containin
 
 * Any of the [universal error types][].
 * `deprecatedFeature` - The request specified a removed field, such as `generator`.
+* `entryNotFound` - The requested ledger object does not exist in the ledger.
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `malformedAddress` - The request improperly specified an [Address][] field.
