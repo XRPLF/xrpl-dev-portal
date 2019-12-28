@@ -1,9 +1,11 @@
 # peer_reservations_del
-[[Source]](TODO_URL "Source")
+[[Source]](https://github.com/ripple/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
 
-The `{{currentpage.name}}` method removes a reserved peer slot.
+The `{{currentpage.name}}` method removes a specific [peer reservation][], if one exists.
 
 _The `{{currentpage.name}}` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
+
+**Note:** Removing a peer reservation does not automatically disconnect the corresponding peer, if that peer is connected.
 
 ### Request Format
 
@@ -15,7 +17,9 @@ An example of the request format:
 
 ```json
 {
-    TODO
+    "id": "peer_reservations_del_example_1",
+    "command": "{{currentpage.name}}",
+    "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
 }
 ```
 
@@ -24,26 +28,26 @@ An example of the request format:
 ```json
 {
     "method": "{{currentpage.name}}",
-    "params": [
-        TODO
-    ]
+    "params": [{
+      "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+    }]
 }
 ```
 
 *Commandline*
 
 ```sh
-#Syntax: {{currentpage.name}} TODO
-rippled {{currentpage.name}}
+#Syntax: {{currentpage.name}} <public_key>
+rippled {{currentpage.name}} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-The request includes the following parameters:
+The request includes the following parameter:
 
 | `Field`     | Type                      | Description                        |
 |:------------|:--------------------------|:-----------------------------------|
-TODO_request_params
+| `public_key` | String | The [node public key][] of the [peer reservation][] to remove, in [base58][] format. |
 
 
 ### Response Format
@@ -52,11 +56,33 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_START -->
 
+*WebSocket*
+
+```json
+{
+  "id": "peer_reservations_del_example_1",
+  "result": {
+    "previous": {
+      "description": "Ripple s1 server 'WOOL'",
+      "node": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+    }
+  },
+  "status": "success",
+  "type": "response"
+}
+```
+
 *JSON-RPC*
 
 ```json
 {
-  TODO
+   "result" : {
+      "previous" : {
+         "description" : "Ripple s1 server 'WOOL'",
+         "node" : "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+      },
+      "status" : "success"
+   }
 }
 ```
 
@@ -67,7 +93,13 @@ Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 
 {
-  TODO
+   "result" : {
+      "previous" : {
+         "description" : "Ripple s1 server 'WOOL'",
+         "node" : "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+      },
+      "status" : "success"
+   }
 }
 ```
 
@@ -77,14 +109,15 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
-TODO_params
+| `previous` | Object | _(May be omitted)_ A **peer reservation object** with the last state of the peer reservation before deleting it. This field is always provided if a peer reservation was successfully deleted. |
 
+**Note:** If the specified reservation did not exist, this command returns success with an empty result object. In this case, the `previous` field is omitted.
 
 ### Possible Errors
 
 - Any of the [universal error types][].
-- TODO_errors
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+- `publicMalformed` - The `public_key` field of the request is not valid. It must be a valid node public key in [base58][] format.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

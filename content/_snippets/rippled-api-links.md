@@ -23,6 +23,9 @@
 [ledger format]: ledger-data-formats.html
 [Marker]: markers-and-pagination.html
 [マーカー]: markers-and-pagination.html
+[node public key]: peer-protocol.html#node-key-pair
+[peer reservation]: peer-protocol.html#fixed-peers-and-peer-reservations
+[peer reservations]: peer-protocol.html#fixed-peers-and-peer-reservations
 [result code]: transaction-results.html
 [seconds since the Ripple Epoch]: basic-data-types.html#specifying-time
 [Rippleエポック以降の経過秒数]: basic-data-types.html#時間の指定

@@ -25,9 +25,9 @@ An example of the request format:
 ```json
 {
     "method": "{{currentpage.name}}",
-    "params": [
+    "params": [{
         TODO
-    ]
+    }]
 }
 ```
 
@@ -52,6 +52,14 @@ TODO_request_params
 An example of a successful response:
 
 <!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+    TODO
+}
+```
 
 *JSON-RPC*
 

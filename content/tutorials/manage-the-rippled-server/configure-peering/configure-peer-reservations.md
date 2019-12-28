@@ -1,6 +1,6 @@
 # Configure Peer Reservations
 
-A [peer reservation](peer-protocol.html#fixed-and-reserved-peers) is a setting that makes a `rippled` server always accept connections from a peer matching the reservation. 
+A [peer reservation][] is a setting that makes a `rippled` server always accept connections from a peer matching the reservation. 
 ***TODO: steps for the tasks below***
 
 

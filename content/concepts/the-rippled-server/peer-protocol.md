@@ -37,7 +37,7 @@ The node key pair is saved in the database and reused when the server restarts. 
 The node key pair also identifies other servers for purposes of [clustering](clustering.html) or [reserving peer slots](#fixed-and-reserved-peers). If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `rippled` Servers](cluster-rippled-servers.html).
 
 
-## Fixed and Reserved Peers
+## Fixed Peers and Peer Reservations
 
 Normally, a `rippled` server attempts to maintain a healthy number of peers, and automatically connects to untrusted peers up to a maximum number. You can configure a `rippled` server to remain connected to specific peer servers in several ways:
 
