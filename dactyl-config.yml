@@ -2502,8 +2502,8 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peer-reservations.md
-        html: configure-peer-reservations.html
+    -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md
+        html: use-a-peer-reservation.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server

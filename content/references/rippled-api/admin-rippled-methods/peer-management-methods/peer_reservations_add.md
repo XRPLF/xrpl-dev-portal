@@ -49,7 +49,7 @@ The request includes the following parameters:
 | `Field`       | Type   | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|
 | `public_key`  | String | The [node public key][] of the peer reservation to add a reservation for, in [base58][]. |
-| `description` | String | _(Optional)_ A custom description for the peer reservation. There is no specific length limit on this field. |
+| `description` | String | _(Optional)_ A custom description for the peer reservation. The server truncates descriptions longer than 64 characters when it restarts. |
 
 
 
