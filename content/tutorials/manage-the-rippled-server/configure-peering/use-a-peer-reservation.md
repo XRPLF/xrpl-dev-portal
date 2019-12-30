@@ -9,6 +9,7 @@ These steps describe how to connect `rippled` servers using a peer reservation. 
 - You have your own `rippled` [installed](install-rippled.html) and running.
 - You must have the cooperation of the administrator for the peer `rippled` server.
 - The peer `rippled` server must be able to receive incoming peer connections. For instructions on how to configure a firewall to allow this, see [Forward Ports for Peering](forward-ports-for-peering.html).
+- Both servers must be configured to sync with the same [XRP Ledger network](parallel-networks.html) (such as the production XRP Ledger, the testnet, or the devnet)
 
 ## Steps
 
@@ -140,6 +141,23 @@ As the administrator, you can manage the reservations your server has for other 
 
 **Tip:** Although there is no API method to immediately disconnect from an unwanted peer, you can use a software firewall such as `firewalld` to block an unwanted peer from connecting to your server. For examples, see the community-contributed [rbh script](https://github.com/gnanderson/rbh).
 
+
+## See Also
+
+- **Concepts:**
+    - [Consensus](consensus.html)
+    - [Parallel Networks](parallel-networks.html)
+- **Tutorials:**
+    - [Capacity Planning](capacity-planning.html)
+    - [Troubleshooting `rippled`](troubleshoot-the-rippled-server.html)
+- **References:**
+    - [peers method][]
+    - [peer_reservations_add method][]
+    - [peer_reservations_del method][]
+    - [peer_reservations_list method][]
+    - [connect method][]
+    - [fetch_info method][]
+    - [Peer Crawler](peer-crawler.html)
 
 
 <!--{# common link defs #}-->
