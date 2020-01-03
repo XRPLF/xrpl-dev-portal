@@ -1,4 +1,4 @@
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/opt/ripple/rippled.cfg"
 2018-Jan-24 01:17:54 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {

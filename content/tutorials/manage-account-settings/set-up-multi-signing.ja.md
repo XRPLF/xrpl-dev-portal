@@ -34,7 +34,7 @@
 複数のXRP Ledgerキーセット（アドレスとシークレット）をSignerListのメンバーに追加する必要があります。SignerListには、レジャーに既存の資金供給のあるアドレス、または[wallet_proposeメソッド][]で生成した新しいアドレスを追加できます。例:
 
     $ rippled wallet_propose
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
         "result" : {
@@ -88,7 +88,7 @@
     >         }
     >     ]
     > }'
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -143,7 +143,7 @@
 スタンドアロンモードで`rippled`を実行している場合は、[ledger_acceptメソッド][]を使用してレジャーを手動で閉鎖します。
 
     $ rippled ledger_accept
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -160,7 +160,7 @@
 通常、アカウントは異なるタイプのオブジェクト（トラストラインやオファーなど）を複数所有できます。このチュートリアルで新しいアドレスに資金を供給した場合、SignerListが応答の唯一のオブジェクトになります。
 
     $ rippled account_objects rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC validated
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {

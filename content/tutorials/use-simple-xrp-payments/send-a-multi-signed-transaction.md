@@ -54,7 +54,7 @@ Use the [sign_for method][] with the secret key and address of one of the member
     >     "SigningPubKey": "",
     >     "Fee": "30000"
     > }'
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -123,7 +123,7 @@ You can collect additional signatures in parallel or in serial:
     >    "TransactionType" : "TrustSet",
     >    "hash" : "A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
     > }'
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -201,7 +201,7 @@ If you collected the signatures in parallel, you must manually construct a `tx_j
     >              "TransactionType" : "TrustSet",
     >              "hash" : "BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
     >           }'
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
     	"result": {
@@ -251,7 +251,7 @@ If you are using the live network, you can wait 4-7 seconds for the ledger to cl
 If you're running `rippled` in stand-alone mode, use the [ledger_accept method][] to manually close the ledger:
 
     $ rippled ledger_accept
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -270,7 +270,7 @@ On the live network, you must also confirm that the `validated` field is set to 
 In stand-alone mode, the server automatically considers a ledger to be `validated` if it has been manually closed.
 
     $ rippled tx BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
     	"result": {
