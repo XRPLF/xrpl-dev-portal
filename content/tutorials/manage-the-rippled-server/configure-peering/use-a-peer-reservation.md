@@ -17,7 +17,7 @@ To use a peer reservation, complete the following steps:
 
 ### 1. Set up a permanent node key pair
 
-If you have already configured your server with a permanent node key pair value, you can skip ahead to [step 2: Communicate your node public key to the peer's admin](2-communicate-your-node-public-key-to-the-peers-admin). (For example, setting up a permanent node key pair for each server is part of the process of [setting up a server cluster](cluster-rippled-servers.html).)
+If you have already configured your server with a permanent node key pair value, you can skip ahead to [step 2: Communicate your node public key to the peer's admin](#2-communicate-your-node-public-key-to-the-peers-admin). (For example, setting up a permanent node key pair for each server is part of the process of [setting up a server cluster](cluster-rippled-servers.html).)
 
 **Tip:** Setting up a permanent node key pair is optional, but makes it easier to keep the peer reservation set up if you need to erase its databases or move to a new machine. If you don't want to set up a permanent node key pair, you can use your server's automatically-generated node public key as reported in the `pubkey_node` field of the [server_info method][] response.
 
@@ -145,6 +145,7 @@ As the administrator, you can manage the reservations your server has for other 
 ## See Also
 
 - **Concepts:**
+    - [Peer Protocol](peer-protocol.html)
     - [Consensus](consensus.html)
     - [Parallel Networks](parallel-networks.html)
 - **Tutorials:**

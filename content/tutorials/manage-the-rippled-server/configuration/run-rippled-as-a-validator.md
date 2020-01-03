@@ -120,34 +120,18 @@ On your validator:
 
 This section describes three different configurations you can use to connect your validator to the XRP Ledger network. Use the configuration that best suits your use case.
 
-- [Discovered peers](#connect-using-discovered-peers)
+- [Discovered peers](#connect-using-discovered-peers): Connect to any servers in the peer-to-peer network.
 
-- [Proxies](#connect-using-proxies)
+- [Proxies](#connect-using-proxies): Run stock `rippled` servers as proxies between your validator and the rest of the peer-to-peer network.
 
-- [Public hubs](#connect-using-public-hubs)
+- [Public hubs](#connect-using-public-hubs): Connect only to specific public servers with a high reputation.
+
+For a comparison of these approaches, see [Pros and Cons of Peering Configurations](peer-protocol.html#pros-and-cons-of-peering-configurations).
 
 
 ### Connect using discovered peers
 
-This configuration connects your validator to the XRP Ledger network using discovered peers. This is the default behavior for `rippled` servers.
-
-Specifically, it instructs your validator to connect to the [hardcoded public hubs](https://github.com/ripple/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525). Once connected, the public hub suggests other servers that might be looking for peers and provides your validator with contact information it can use to connect to them. Your validator can then connect to these servers and ask them for contact information for other servers until your validator has enough reliable peers that you don't have to worry about one or two of them suddenly dropping offline.
-
-Your validator needs to connect to the public hub once and only for a short amount of time to find other peers. After doing so, your server may or may not remain connected to the hub, depending on how stable your network connection is, how busy the hub is, and how many other high-quality peers your server finds. Your validator saves the addresses of these other peers so it can try reconnecting directly to those peers later, even if you restart your validator.
-
-**Pros:**
-
-  - Increases the chances of your validator finding a peer, probably several, to connect to.
-
-  - Creates the opportunity for a lot of direct peer connections. Having more direct peers comes with several benefits. Your validator can [fetch history](ledger-history.html#fetching-history) from multiple peers in parallel, both when syncing and when backfilling history. Since not all peers maintain full history, having access to more peers can also provide access to a wider selection of historical data.
-
-  - Lowers the possibility of your validator disconnecting from the network because it provides the ability to constantly replace disconnected peers with new ones.
-
-**Cons:**
-
-  - Doesn't allow you to select your validator's peers, which means that you have no idea whether your peers may decide to act maliciously. Your validator is designed to protect itself against malicious peers, but avoiding direct contact with unknown peers is the safest configuration possible.
-
-  - May connect you to peers that disconnect and change frequently, depending on whether you manage to connect to any reliable ones.
+This configuration connects your validator to the XRP Ledger network using [discovered peers](peer-protocol.html#peer-discovery). This is the default behavior for `rippled` servers.
 
 _**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `rippled.cfg` file. The [example rippled.cfg file](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) is delivered with this configuration.
 
@@ -155,24 +139,6 @@ _**To connect your validator to the XRP Ledger network using discovered peers,**
 ### Connect using proxies
 
 This configuration connects your validator to the network through stock `rippled` servers that you run yourself. These proxy servers sit between your validator and inbound and outbound network traffic.
-
-**Note:** While these servers are acting as proxies, they are not web proxies for HTTP(S) traffic.
-
-**Pros:**
-
-  - Guarantees that these servers will try to maintain a connection with your validator.
-
-  - Provides your validator with connections to the network that are as redundant and reliable as you make them.
-
-  - Enables you to trust your validator's peers.
-
-  - Enables you to create as many direct peer connections as you want. Being able to request content from more peers enables your validator to parallelize the process of downloading the current ledger (when syncing) or backfilling history and gives it direct access to a wider selection of history.
-
-**Cons:**
-
-  - While it does allow for high redundancy, doesn't eliminate the possibility of peer connection outages. No matter how many proxies you run, if they all exist on the same server rack, then one network or power outage means they can't deliver messages to and from your validator.
-
-    To mitigate this risk, you can use proxies in different geophysical locations.
 
 _**To connect your validator to the XRP Ledger network using proxies:**_
 
@@ -204,20 +170,6 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 ### Connect using public hubs
 
 This configuration connects your validator to the network using two [public hubs](rippled-server-modes.html#public-hubs). This configuration is similar to [connecting using proxies you run yourself](#connect-using-proxies), but instead you connect through public hubs.
-
-**Pros:**
-
-  - Enables you to trust your validator's peers because you only connect to well-known servers with a high reputation.
-
-  - Provides easy access to safe connections to the network.
-
-  - Compared to [connecting using proxies](#connect-using-proxies), may be less likely to cause your validator to disconnect from the network due to a simultaneous peer outage.
-
-**Cons:**
-
-  - Uses the default (most popular) public hubs, so it's distinctly possible that a public hub may be too busy to provide your validator with a connection to the network. Assuming that you can solely rely on a default public hub to provide your validator with a connection to the network may not be the best idea.
-
-    To help avoid this issue, use more public hubs; the more the better. It can also help to use non-default hubs, which are less likely to be busy helping new servers find other peers.
 
 _**To connect your validator to the network using public hubs:**_
 

@@ -272,6 +272,9 @@ targets:
             "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
             # Fix 1 link from untranslated accountdelete.html. REMOVE when accounts.html is updated w/ deletable accounts info.
             "accounts.html#deletion-of-accounts": "accounts.html#アカウントの永続性"
+            # Fix links from untranslated peer protocol updates
+            "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
+            "run-rippled-as-a-validator.html#connect-using-proxies": "run-rippled-as-a-validator.html#プロキシを使用した接続"
 
 
     -   name: xrp-api-only
@@ -2502,13 +2505,13 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md
-        html: use-a-peer-reservation.html
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.md
+        html: configure-a-private-server.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        subcategory: Configure Peering
-        blurb: Configure how much information your rippled server reports publicly about its status and peers. #TODO:translate
+        subcategory: Configure Peering #TODO:translate
+        blurb: Set up a server to connect only to specific, trusted peers. #TODO:translate
         targets:
             - en
             - ja
@@ -2553,6 +2556,17 @@ pages:
         category: Manage the rippled Server
         subcategory: Configure Peering
         blurb: Set the maximum number of peers your rippled server connects to. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md
+        html: use-a-peer-reservation.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Set up a more reliable connection to a specific peer using a peer reservation. #TODO:translate
         targets:
             - en
             - ja

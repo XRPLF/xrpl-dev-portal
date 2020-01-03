@@ -2,7 +2,7 @@
 
 The `rippled` server has a configurable soft maximum number of [peers](peer-protocol.html) to connect to. The default maximum number of peers is **21**.
 
-**Note:** Internally, the server generates approximate quotas of incoming and outgoing peers. You can potentially go over the soft maximum if you are using [fixed peers, peer reservations](peer-protocol.html#fixed-and-reserved-peers), or if you manually connect to additional peers using the [connect method][].
+**Note:** Internally, the server generates approximate quotas of incoming and outgoing peers. You can potentially go over the soft maximum if you are using [fixed peers, peer reservations](peer-protocol.html#fixed-peers-and-peer-reservations), or if you manually connect to additional peers using the [connect method][].
 
 To change the maximum number of peers your server allows, complete the following steps:
 
