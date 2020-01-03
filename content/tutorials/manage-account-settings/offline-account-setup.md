@@ -26,7 +26,7 @@ The offline machine needs secure persistent storage (for example, an encrypted d
 
 Software options for signing on the XRP Ledger include:
 
-- [Install `rippled`]() from a package (`.deb` or `.rpm` depending on which Linux distribution you use) file, then [run it in stand-alone mode](rippled-server-modes.html).
+- [Install `rippled`](install-rippled.html) from a package (`.deb` or `.rpm` depending on which Linux distribution you use) file, then [run it in stand-alone mode](rippled-server-modes.html).
 - Install [ripple-lib](rippleapi-reference.html) and its dependencies offline. The Yarn package manager, for example, has [recommended instructions for offline usage](https://yarnpkg.com/blog/2016/11/24/offline-mirror/).
 - See also: [Set Up Secure Signing](set-up-secure-signing.html)
 
