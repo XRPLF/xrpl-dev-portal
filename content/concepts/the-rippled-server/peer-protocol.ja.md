@@ -38,8 +38,10 @@ protocol = peer
 
 
 ## Fixed Peers and Peer Reservations
+<a id="pros-and-cons-of-peering-configurations"></a> <!-- TODO: remove this anchor when the corresponding section is translated -->
 
 **注意:** 現在の所はこの部分は日本語では利用できません。[英語版](/{{currentpage.html}})をご覧下さい。
+
 
 ## プライベートピア
 
