@@ -2727,6 +2727,17 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.md
+        html: server-doesnt-sync.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
         html: server-wont-start.html
         funnel: Docs
