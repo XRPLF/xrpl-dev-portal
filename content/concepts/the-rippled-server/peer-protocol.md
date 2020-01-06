@@ -13,9 +13,11 @@ To establish a peer-to-peer connection, one server connects to another via HTTPS
 
 ## Peer Discovery
 
-The XRP Ledger uses a "gossip" protocol to help find servers find others to connect to in the XRP Ledger network. Whenever a server starts up, it connects to any other peers it was previous connected to. As a fallback, it uses the [hardcoded public hubs](https://github.com/ripple/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525). After a server successfully connects to any peers, it asks those peers for the contact information (generally, IP address and port) of other XRP Ledger servers that may also be seeking peers. The server can then connect to those servers, and ask them for the contact information of yet more XRP Ledger servers to peer with. Through this process, the server establishes enough peer connections that it can remain reliably connected to the rest of the network even if it loses a connection to any single peer.
+The XRP Ledger uses a "gossip" protocol to help find servers find others to connect to in the XRP Ledger network. Whenever a server starts up, it reconnects to any other peers it previously connected to. As a fallback, it uses the [hardcoded public hubs](https://github.com/ripple/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525). After a server successfully connects to a peer, it asks that peer for the contact information (generally, IP address and port) of other XRP Ledger servers that may also be seeking peers. The server can then connect to those servers, and ask them for the contact information of yet more XRP Ledger servers to peer with. Through this process, the server establishes enough peer connections that it can remain reliably connected to the rest of the network even if it loses a connection to any single peer.
 
-Typically, a server needs to connect to a public hub once and only for a short amount of time to find other peers. After doing so, the server may or may not remain connected to the hub, depending on how stable its network connection is, how busy the hub is, and how many other high-quality peers the server finds. The server saves the addresses of these other peers so it can try reconnecting directly to those peers later, after a network outage or a restart.
+Typically, a server needs to connect to a public hub only once, for a short amount of time, to find other peers. After doing so, the server may or may not remain connected to the hub, depending on how stable its network connection is, how busy the hub is, and how many other high-quality peers the server finds. The server saves the addresses of these other peers so it can try reconnecting directly to those peers later, after a network outage or a restart.
+
+The [peers method][] shows a list of peers your server is currently connected to.
 
 For certain high-value servers (such as important [validators](rippled-server-modes.html#rippled-server-modes)) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use [private peers](#private-peers) only.
 
@@ -81,7 +83,7 @@ Configuring a server as a private server has several effects:
 
 To be part of the XRP Ledger, a `rippled` server must be connected to the rest of the open peer-to-peer network. Roughly speaking, there are three categories of configurations for how a `rippled` server connects to the network:
 
-- Using **discovered peers**. This is the default configuration, in which a server connects to any untrusted servers it finds and stays connected as long as those servers
+- Using **discovered peers**. The server connects to any untrusted servers it finds and stays connected as long as those servers behave appropriately. (For example, they don't request too much data, their network connections are stable, and they appear to be following the same [network](parallel-networks.html).) This is the default.
 - As a **private server using proxies** run by the same person or organization. The proxies are stock `rippled` servers (also connected to discovered peers) that maintain a fixed peering connection with the private server.
 - As a **private server using public hubs**. This is similar to using proxies, but it relies on specific third parties.
 
@@ -101,7 +103,7 @@ The pros and cons of each configuration are as follows:
   </ul></td>
   <td><ul>
     <li><p>Doesn't allow you to select your server's peers, which means that you have no idea whether your peers may decide to act maliciously. Although `rippled` servers are designed to protect against malicious peers, there is always a risk that malicious peers could exploit software flaws to affect your server.</p></li>
-    <li><p>May connect you to peers that disconnect and change frequently, depending on whether you happen to connect to any reliable ones.</p></li>
+    <li><p>Your server's peers may disconnect or change frequently.</p></li>
   </ul></td>
 </tr>
 <tr><th>Private Server Using Proxies</th>
@@ -109,7 +111,7 @@ The pros and cons of each configuration are as follows:
     <li><p>Most secure and reliable configuration when implemented effectively.</p></li>
     <li><p>As reliable and as redundant as you make it.</p></li>
     <li><p>Can optimize the private server's performance with <a href="clustering.html">clustering</a>.</p></li>
-    <li><p>Enables you to create as many direct peer connections as you want. Being able to request content from more peers enables your server to parallelize the process of downloading the current ledger (when syncing) or backfilling history and gives it direct access to a wider selection of history.</p></li>
+    <li><p>Enables you to create as many direct peer connections as you want. Your private server can <a href="ledger-history.html#fetching-history">fetch history</a> from multiple peers in parallel. Since you run the peers, you also control how much ledger history each peer keeps.</p></li>
   </ul></td>
   <td><ul>
     <li><p>Higher maintenance burden and cost from running multiple servers.</p></li>

@@ -1,6 +1,6 @@
 # Configure a Private Server
 
-A [private server](peer-protocol.html#private-peers) is a `rippled` server that connects through the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for [validators](run-rippled-as-a-validator.html), but it can be useful for other specific purposes.
+A [private server](peer-protocol.html#private-peers) is a `rippled` server that connects to the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for [validators](run-rippled-as-a-validator.html), but it can be useful for other specific purposes.
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ To set up a specific server as a private peer, complete the following steps:
         r.ripple.com 51235
         zaphod.alloy.ee 51235
 
-    If you are connecting using **proxies**, the IP addresses and ports should match the configurations of the `rippled` servers you are using as proxies. For each of those servers, the port number should match the `protocol = peer` port in that server's config file (usually 51235). For example, your configuration might look like this:
+    If your server connects using **proxies**, the IP addresses and ports should match the configurations of the `rippled` servers you are using as proxies. For each of those servers, the port number should match the `protocol = peer` port in that server's config file (usually 51235). For example, your configuration might look like this:
 
           [ips_fixed]
           192.168.0.1 51235
@@ -67,7 +67,7 @@ To set up a specific server as a private peer, complete the following steps:
 
 As an additional precaution, you should configure your firewall to block incoming connections to your private server from servers that are not your specific peers. If you are running proxy servers, [forward peer ports](forward-ports-for-peering.html) through your firewall to the proxies, but **not** to the private peer. The exact details of how to configure this depend on what firewall you use.
 
-Be sure the firewall **does not block** outgoing HTTP connections on port 80. The default configuration uses this to download the latest recommended validator list from **vl.ripple.com**. Without a validator list, the server does not know which validators to trust and cannot recognize when the network reaches a consensus.
+Be sure the firewall **does not block** outgoing HTTP connections on port 80. The default configuration uses this port to download the latest recommended validator list from **vl.ripple.com**. Without a validator list, the server does not know which validators to trust and cannot recognize when the network reaches a consensus.
 
 ## See Also
 
