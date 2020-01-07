@@ -2,7 +2,7 @@
 
 # meant to be run from the root directory of the repo
 
-## Test: show pull request data in build results
+## Show pull request data in build results
 echo "ghprbAuthorRepoGitUrl is: " ${ghprbAuthorRepoGitUrl}
 echo "ghprbSourceBranch is: " ${ghprbSourceBranch}
 echo "ghprbPullId is: " ${ghprbPullId}
@@ -21,6 +21,8 @@ set -e
 
 tool/conflictmarkers.sh
 
+## Remove output directory if it exists (so the build is clean)
+rm -rf out
 ## Build all languages, then run the link checker once
 tool/build_all_langs.sh --vars "$dactyl_vars"
 dactyl_link_checker -q
