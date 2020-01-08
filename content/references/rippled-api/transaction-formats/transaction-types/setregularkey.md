@@ -25,8 +25,6 @@ You can protect your account by assigning a regular key pair to it and using it 
 |:-------------|:----------|:------------------|:------------------------------|
 | `RegularKey` | String    | AccountID         | _(Optional)_ A base-58-encoded [Address][] that indicates the regular key pair to be assigned to the account. If omitted, removes any existing regular key pair from the account. Must not match the master key pair for the address. |
 
-**Warning:** Until the [fixMasterKeyAsRegularKey amendment][] :not_enabled: becomes enabled, it is possible to set your regular key to match your master key. If you then disable the master key, your address cannot send transactions signed with the key even though it matches the enabled regular key. As a result, you cannot send any transactions from the address unless you have [multi-signing](multi-signing.html) enabled and use that. With the amendment enabled, such "blocked" accounts can send transactions again.
-
 ## See Also
 
 For more information about regular and master key pairs, see [Cryptographic Keys](cryptographic-keys.html).
