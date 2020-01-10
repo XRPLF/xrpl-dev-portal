@@ -113,6 +113,13 @@ The response follows the [standard format][], with a successful result containin
 
 **Note:** If the specified reservation did not exist, this command returns success with an empty result object. In this case, the `previous` field is omitted.
 
+#### Peer Reservation Object
+
+If the `previous` field is provided, it shows the previous status of this peer reservation, with the following fields:
+
+{% include '_snippets/peer_reservation_object.md' %}
+<!--_ -->
+
 ### Possible Errors
 
 - Any of the [universal error types][].
