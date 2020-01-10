@@ -10,8 +10,8 @@ The following is a comprehensive list of all known amendments and their status o
 | [SHAMapV2][]                    | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [DeletableAccounts][]           | v1.4.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [fixCheckThreading][]           | v1.4.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [fixCheckThreading][]           | v1.4.0     | [Expected: 2020-01-18](https://xrpl.org/blog/2020/fixcheckthreading-fixpaychanrecipientownerdir-expected.html "BADGE_BLUE") |
+| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Expected: 2020-01-18](https://xrpl.org/blog/2020/fixcheckthreading-fixpaychanrecipientownerdir-expected.html "BADGE_BLUE") |
 | [Checks][]                      | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]                   | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [fixMasterKeyAsRegularKey][]    | v1.3.1     | [Enabled: 2019-10-02](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
@@ -342,7 +342,7 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 | Planned   |
+| 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 | Expected  |
 
 Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](accounts.html) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](accountroot.html), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
 
@@ -368,7 +368,7 @@ With this amendment enabled, a SetRegularKey transaction cannot set the regular 
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8 | Planned   |
+| 621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8 | Expected  |
 
 Changes the [PaymentChannelCreate transaction][] type so that it adds new [payment channels](payment-channels.html) to the recipient's [owner directory](directorynode.html). Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.
 
