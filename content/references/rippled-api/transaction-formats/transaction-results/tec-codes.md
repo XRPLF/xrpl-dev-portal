@@ -19,6 +19,7 @@ For the most part, transactions with `tec` codes take no action other than to de
 | `tecHAS_OBLIGATIONS`       | 151   | The [AccountDelete transaction][] failed because the account to be deleted owns objects that cannot be deleted. See [Deletion of Accounts](accounts.html#deletion-of-accounts) for details. |
 | `tecINSUF_RESERVE_LINE`    | 122   | The transaction failed because the sending account does not have enough XRP to create a new trust line. (See: [Reserves](reserves.html)) This error occurs when the counterparty already has a trust line in a non-default state to the sending account for the same currency. (See `tecNO_LINE_INSUF_RESERVE` for the other case.) |
 | `tecINSUF_RESERVE_OFFER`   | 123   | The transaction failed because the sending account does not have enough XRP to create a new Offer. (See: [Reserves](reserves.html)) |
+| `tecINSUFF_FEE`            | 136   | The transaction failed because the sending account does not have enough XRP to pay the [transaction cost](transaction-cost.html) that it specified. (In this case, the transaction processing destroys all of the sender's XRP even though that amount is lower than the specified transaction cost.) This result only occurs if the account's balance decreases _after_ this transaction has been distributed to enough of the network to be included in a consensus set. Otherwise, the transaction fails with [`terINSUF_FEE_B`](ter-codes.html) before being distributed. |
 | `tecINSUFFICIENT_RESERVE`  | 141   | The transaction would increase the [reserve requirement](reserves.html) higher than the sending account's balance. [SignerListSet][], [PaymentChannelCreate][], [PaymentChannelFund][], and [EscrowCreate][] can return this error code. See [SignerLists and Reserves](signerlist.html#signerlists-and-reserves) for more information. |
 | `tecINTERNAL`              | 144   | Unspecified internal error, with transaction cost applied. This error code should not normally be returned. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues). |
 | `tecINVARIANT_FAILED`      | 147   | An invariant check failed when trying to execute this transaction. Requires the [EnforceInvariants amendment][]. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues). |
@@ -45,7 +46,6 @@ For the most part, transactions with `tec` codes take no action other than to de
 | `tecUNFUNDED_ADD`          | 102   | **DEPRECATED.**                         |
 | `tecUNFUNDED_PAYMENT`      | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: [Reserves](reserves.html)) |
 | `tecUNFUNDED_OFFER`        | 103   | The [OfferCreate transaction][] failed because the account creating the offer does not have any of the `TakerGets` currency. |
-| `tecINSUFF_FEE`            | 136   | Insufficient balance to pay fee. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
