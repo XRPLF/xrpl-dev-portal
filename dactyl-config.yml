@@ -275,6 +275,7 @@ targets:
             # Fix links from untranslated peer protocol updates
             "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
             "run-rippled-as-a-validator.html#connect-using-proxies": "run-rippled-as-a-validator.html#プロキシを使用した接続"
+            "rippled-server-modes.html#public-hubs": "rippled-server-modes.html#公開ハブ"
 
 
     -   name: xrp-api-only
