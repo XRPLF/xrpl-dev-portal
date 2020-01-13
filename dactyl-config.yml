@@ -272,6 +272,10 @@ targets:
             "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
             # Fix 1 link from untranslated accountdelete.html. REMOVE when accounts.html is updated w/ deletable accounts info.
             "accounts.html#deletion-of-accounts": "accounts.html#アカウントの永続性"
+            # Fix links from untranslated peer protocol updates
+            "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
+            "run-rippled-as-a-validator.html#connect-using-proxies": "run-rippled-as-a-validator.html#プロキシを使用した接続"
+            "rippled-server-modes.html#public-hubs": "rippled-server-modes.html#公開ハブ"
 
 
     -   name: xrp-api-only
@@ -2381,26 +2385,6 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/configuration/cluster-rippled-servers.md
-        html: cluster-rippled-servers.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Configuration
-        blurb: Set up a group of servers that share work for higher efficiency.
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/cluster-rippled-servers.ja.md
-        html: cluster-rippled-servers.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Configuration
-        blurb: Set up a group of servers that share work for higher efficiency. #TODO:translate
-        targets:
-            - ja
-
     -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
         html: configure-online-deletion.html
         funnel: Docs
@@ -2481,17 +2465,6 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-the-peer-crawler.md
-        html: configure-the-peer-crawler.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Configuration
-        blurb: Configure how much information your server reports publicly about its status and peers. #TODO:translate
-        targets:
-            - en
-            - ja
-
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
         html: enable-public-signing.html
         funnel: Docs
@@ -2510,6 +2483,104 @@ pages:
         subcategory: Configuration
         blurb: Allow others to use your server to sign transactions. (Not recommended) #TODO:translate
         targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.md
+        html: configure-peering.html
+        template: template-landing-children.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering #TODO:translate
+        blurb: Configure how your server connects to the peer-to-peer network. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.md
+        html: cluster-rippled-servers.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Set up a group of servers that share work for higher efficiency.
+        targets:
+            - en
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.ja.md
+        html: cluster-rippled-servers.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Set up a group of servers that share work for higher efficiency. #TODO:translate
+        targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.md
+        html: configure-a-private-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering #TODO:translate
+        blurb: Set up a server to connect only to specific, trusted peers. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
+        html: configure-the-peer-crawler.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Configure how much information your rippled server reports publicly about its status and peers. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.md
+        html: forward-ports-for-peering.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Configure your firewall to allow incoming peers to your rippled server. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.md
+        html: manually-connect-to-a-specific-peer.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Connect your rippled server to a specific peer. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.md
+        html: set-max-number-of-peers.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Set the maximum number of peers your rippled server connects to. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md
+        html: use-a-peer-reservation.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: Set up a more reliable connection to a specific peer using a peer reservation. #TODO:translate
+        targets:
+            - en
             - ja
 
     -   name: Test rippled Functionality in Stand-Alone Mode
@@ -4107,28 +4178,6 @@ pages:
             - en
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/connect.md
-        html: connect.html
-        blurb: Force the rippled server to connect to a specific peer.
-        funnel: Docs
-        doc_type: References
-        supercategory: rippled API
-        category: Admin rippled Methods
-        subcategory: Server Control Methods
-        targets:
-            - en
-
-    -   md: references/rippled-api/admin-rippled-methods/server-control-methods/connect.ja.md
-        html: connect.html
-        blurb: 特定のピアrippledサーバーに強制的に接続します。
-        funnel: Docs
-        doc_type: References
-        supercategory: rippled API
-        category: Admin rippled Methods
-        subcategory: Server Control Methods
-        targets:
-            - ja
-
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.md
         html: ledger_accept.html
         blurb: Close and advance the ledger in stand-alone mode.
@@ -4192,6 +4241,100 @@ pages:
         supercategory: rippled API
         category: Admin rippled Methods
         subcategory: Server Control Methods
+        targets:
+            - ja
+
+
+    -   name: Peer Management Methods
+        html: peer-management-methods.html
+        blurb: Use these methods to manage your server's peer-to-peer connections. #TODO:translate
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        template: template-landing-children.html
+        targets:
+            - en
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/connect.md
+        html: connect.html
+        blurb: Force the rippled server to connect to a specific peer.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        targets:
+            - en
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/connect.ja.md
+        html: connect.html
+        blurb: 特定のピアrippledサーバーに強制的に接続します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        targets:
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_add.md
+        html: peer_reservations_add.html
+        blurb: Add a reserved slot for a specific peer server. #TODO:translate
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        targets:
+            - en
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_del.md
+        html: peer_reservations_del.html
+        blurb: Remove a reserved slot for a specific peer server. #TODO:translate
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        targets:
+            - en
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_list.md
+        html: peer_reservations_list.html
+        blurb: List reserved slots for specific peer servers. #TODO:translate
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        targets:
+            - en
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.md
+        html: peers.html
+        blurb: Get information about the peer servers connected.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        targets:
+            - en
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.ja.md
+        html: peers.html
+        blurb: ピアプロトコルでこのサーバーに現在接続されているその他のすべてのrippledサーバーのリストを返します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
         targets:
             - ja
 
@@ -4288,28 +4431,6 @@ pages:
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.ja.md
         html: get_counts.html
         blurb: サーバーの健全性に関するさまざまな統計情報を提供します。
-        funnel: Docs
-        doc_type: References
-        supercategory: rippled API
-        category: Admin rippled Methods
-        subcategory: Status and Debugging Methods
-        targets:
-            - ja
-
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/peers.md
-        html: peers.html
-        blurb: Get information about the peer servers connected.
-        funnel: Docs
-        doc_type: References
-        supercategory: rippled API
-        category: Admin rippled Methods
-        subcategory: Status and Debugging Methods
-        targets:
-            - en
-
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/peers.ja.md
-        html: peers.html
-        blurb: ピアプロトコルでこのサーバーに現在接続されているその他のすべてのrippledサーバーのリストを返します。
         funnel: Docs
         doc_type: References
         supercategory: rippled API

@@ -25,6 +25,17 @@
 
 最後に、各自で検証サーバーを運用する場合には、ストックサーバーをパブリックネットワークへのプロキシとして使用し、ストックサーバー経由でのみ外部にアクセス可能なプライベートサブネット上で検証サーバーを維持することができます。これにより、検証サーバーの整合性を危うくすることはさらに難しくなります。
 
+### 公開ハブ
+
+**Note:** この部分は日本語ではまだ利用できません。助けたいと思うなら、[提供して下さい！](https://github.com/ripple/xrpl-dev-portal#contributing)
+
+A public hub is a stock server with lots of [peer protocol connections](peer-protocol.html) to other servers. You can help the XRP Ledger network maintain efficient connectivity by running a stock server as a public hub. Successful public hubs embody the following traits:
+
+- Good bandwidth.
+
+- Connections with a lot of reliable peers.
+
+- Ability to relay messages reliably.
 
 ## バリデータを運用する理由
 
