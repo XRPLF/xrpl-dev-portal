@@ -45,6 +45,7 @@ For the most part, transactions with `tec` codes take no action other than to de
 | `tecUNFUNDED_ADD`          | 102   | **DEPRECATED.**                         |
 | `tecUNFUNDED_PAYMENT`      | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: [Reserves](reserves.html)) |
 | `tecUNFUNDED_OFFER`        | 103   | The [OfferCreate transaction][] failed because the account creating the offer does not have any of the `TakerGets` currency. |
+| `tecINSUFF_FEE`            | 136   | Insufficient balance to pay fee. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
