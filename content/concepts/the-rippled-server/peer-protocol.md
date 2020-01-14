@@ -146,9 +146,18 @@ To configure your server as a private server, set the `[peer_private]` setting t
     - [Consensus](consensus.html)
     - [Parallel Networks](parallel-networks.html)
 - **Tutorials:**
+    - [Cluster rippled Servers](cluster-rippled-servers.html)
+    - [Configure a Private Server](configure-a-private-server.html)
     - [Configure the Peer Crawler](configure-the-peer-crawler.html)
+    - [Forward Ports for Peering](forward-ports-for-peering.html)
+    - [Manually Connect to a Specific Peer](manually-connect-to-a-specific-peer.html)
+    - [Set Maximum Number of Peers](set-max-number-of-peers.html)
+    - [Use a Peer Reservation](use-a-peer-reservation.html)
 - **References:**
     - [peers method][]
+    - [peer_reservations_add method][]
+    - [peer_reservations_del method][]
+    - [peer_reservations_list method][]
     - [connect method][]
     - [fetch_info method][]
     - [Peer Crawler](peer-crawler.html)
