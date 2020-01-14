@@ -24,6 +24,7 @@
 [Marker]: markers-and-pagination.html
 [マーカー]: markers-and-pagination.html
 [node public key]: peer-protocol.html#node-key-pair
+[node key pair]: peer-protocol.html#node-key-pair
 [peer reservation]: peer-protocol.html#fixed-peers-and-peer-reservations
 [peer reservations]: peer-protocol.html#fixed-peers-and-peer-reservations
 [result code]: transaction-results.html
