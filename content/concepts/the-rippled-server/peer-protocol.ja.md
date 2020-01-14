@@ -21,7 +21,7 @@ Typically, a server needs to connect to a public hub only once, for a short amou
 
 The [peers method][] shows a list of peers your server is currently connected to.
 
-For certain high-value servers (such as important [validators](rippled-server-modes.html#rippled-server-modes)) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use [private peers](#private-peers) only.
+For certain high-value servers (such as important [validators](rippled-server-modes.html)) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use [private peers](#プライベートピア) only.
 
 ## ピアプロトコルポート
 
