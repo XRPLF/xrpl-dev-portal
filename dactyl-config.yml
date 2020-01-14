@@ -276,6 +276,8 @@ targets:
             "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
             "run-rippled-as-a-validator.html#connect-using-proxies": "run-rippled-as-a-validator.html#プロキシを使用した接続"
             "rippled-server-modes.html#public-hubs": "rippled-server-modes.html#公開ハブ"
+            "peer-protocol.html#peer-discovery": "peer-protocol.html#ピア発見"
+            "ledgers.html#tree-format": "ledgers.html#ツリーの形式"
 
 
     -   name: xrp-api-only
@@ -2725,6 +2727,17 @@ pages:
         subcategory: Troubleshooting rippled
         blurb: Interpret and respond to warning and error messages in the debug log. #TODO:translate
         targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.md
+        html: server-doesnt-sync.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md

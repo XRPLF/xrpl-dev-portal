@@ -31,7 +31,7 @@ You need one or more validly-formed XRP Ledger addresses to include as members o
 You can generate new addresses using the [wallet_propose method][]. For example:
 
     $ rippled wallet_propose
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
         "result" : {
@@ -85,7 +85,7 @@ In this example, the SignerList has 3 members, with the weights and quorum set u
     >         }
     >     ]
     > }'
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {
@@ -145,7 +145,7 @@ Use the [account_objects method][] to confirm that the SignerList is associated 
 Normally, an account can own many objects of different types (such as trust lines and offers). If you funded a new address for this tutorial, the SignerList is the only object in the response.
 
     $ rippled account_objects rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC validated
-    Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+    Loading: "/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" : {

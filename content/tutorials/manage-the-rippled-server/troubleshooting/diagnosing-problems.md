@@ -21,6 +21,49 @@ For troubleshooting purposes, the most important fields are (from most commonly 
 
     - If your server remains in the `connected` state for hours, or returns to the `connected` state after being in the `full` or `proposing` states, that usually indicates that your server cannot keep up with the rest of the network. The most common bottlenecks are disk I/O, network bandwidth, and RAM.
 
+    - For example, the following server state information shows a healthy server that took less than 3 minutes to sync (split between the `disconnected`, `connected`, and `syncing` states), and is currently in the fully-synced `proposing` state, where it has remained for approximately 90 minutes:
+
+            $ ./rippled server_info
+            Loading: "/etc/opt/ripple/rippled.cfg"
+            2020-Jan-03 22:49:32.834134358 HTTPClient:NFO Connecting to 127.0.0.1:5005
+
+            {
+              "result" : {
+                "info" : {
+                  ... (trimmed) ...
+                  "server_state" : "proposing",
+                  "server_state_duration_us" : "5183282365",
+                  "state_accounting" : {
+                    "connected" : {
+                      "duration_us" : "126164786",
+                      "transitions" : 1
+                    },
+                    "disconnected" : {
+                      "duration_us" : "2111321",
+                      "transitions" : 1
+                    },
+                    "full" : {
+                      "duration_us" : "5183282365",
+                      "transitions" : 1
+                    },
+                    "syncing" : {
+                      "duration_us" : "5545604",
+                      "transitions" : 1
+                    },
+                    "tracking" : {
+                      "duration_us" : "0",
+                      "transitions" : 1
+                    }
+                  },
+                  ... (trimmed) ...
+                }
+              }
+            }
+
+        If your server shows multiple `transitions` between the same states, that indicates that your server was unable to stay synced. If you do not have a `full` or `proposing` state, then your server has not yet synced to the network. Over a long period of time, it's likely your server may occasionally lose sync because internet connections fluctuate, so this is only a problem if the amount of time spent not in sync is a significant portion of your uptime. After about 24 hours of uptime, if less than 99% of your server's total runtime is spent in the `full` or `proposing` states, you may want to investigate possible sources of instability.
+
+    - For help debugging syncing issues, see [Server Doesn't Sync](server-doesnt-sync.html).
+
 - **`complete_ledgers`** - This field shows which [ledger indexes](basic-data-types.html#ledger-index) your server has complete ledger data for. Healthy servers usually have a single range of recent ledgers, such as `"12133424-12133858"`.
 
     - If you have a disjoint set of complete ledgers such as `"11845721-12133420,12133424-12133858"`, that could indicate that your server has had intermittent outages or has temporarily fallen out of sync with the rest of the network. The most common causes for this are insufficient disk I/O or network bandwidth.

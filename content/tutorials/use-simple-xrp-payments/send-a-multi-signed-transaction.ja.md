@@ -54,7 +54,7 @@ SlignerListのメンバーの1人のシークレットキーとアドレスを�
     >     "SigningPubKey":"",
     >     "Fee":"30000"
     > }'
-    Loading:"/home/mduo13/.config/ripple/rippled.cfg"
+    Loading:"/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" :{
@@ -123,7 +123,7 @@ SlignerListのメンバーの1人のシークレットキーとアドレスを�
     >    "TransactionType" :"TrustSet",
     >    "hash" :"A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
     > }'
-    Loading:"/home/mduo13/.config/ripple/rippled.cfg"
+    Loading:"/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" :{
@@ -201,7 +201,7 @@ SlignerListのメンバーの1人のシークレットキーとアドレスを�
     >              "TransactionType" :"TrustSet",
     >              "hash" :"BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6"
     >           }'
-    Loading:"/home/mduo13/.config/ripple/rippled.cfg"
+    Loading:"/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
     	"result":{
@@ -251,7 +251,7 @@ SlignerListのメンバーの1人のシークレットキーとアドレスを�
 スタンドアロンモードで`rippled`を実行している場合は、[ledger_acceptメソッド][]を使用してレジャーを手動で閉鎖します。
 
     $ rippled ledger_accept
-    Loading:"/home/mduo13/.config/ripple/rippled.cfg"
+    Loading:"/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
        "result" :{
@@ -270,7 +270,7 @@ SlignerListのメンバーの1人のシークレットキーとアドレスを�
 スタンドアロンモードでは、サーバーは手動で閉鎖されたレジャーを自動的に`validated`とみなします。
 
     $ rippled tx BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6
-    Loading:"/home/mduo13/.config/ripple/rippled.cfg"
+    Loading:"/etc/opt/ripple/rippled.cfg"
     Connecting to 127.0.0.1:5005
     {
     	"result":{

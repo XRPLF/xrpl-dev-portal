@@ -11,6 +11,18 @@ XRP Ledgerのサーバーは、XRP Ledgerピアプロトコル（RTXP）を使�
 
 ピアツーピア接続を確立するには、サーバーどうしをHTTPSで接続し、一方のサーバーはRTXPへの切り替えのために[HTTPアップグレード](https://tools.ietf.org/html/rfc7230#section-6.7)を要求します。（詳細は、[`rippled`リポジトリ](https://github.com/ripple/rippled)の[Overlay Network](https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake)を参照してください。）
 
+## ピア発見
+
+**Note:** この部分は日本語ではまだ利用できません。助けたいと思うなら、[提供して下さい！](https://github.com/ripple/xrpl-dev-portal#contributing)
+
+The XRP Ledger uses a "gossip" protocol to help find servers find others to connect to in the XRP Ledger network. Whenever a server starts up, it reconnects to any other peers it previously connected to. As a fallback, it uses the [hardcoded public hubs](https://github.com/ripple/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525). After a server successfully connects to a peer, it asks that peer for the contact information (generally, IP address and port) of other XRP Ledger servers that may also be seeking peers. The server can then connect to those servers, and ask them for the contact information of yet more XRP Ledger servers to peer with. Through this process, the server establishes enough peer connections that it can remain reliably connected to the rest of the network even if it loses a connection to any single peer.
+
+Typically, a server needs to connect to a public hub only once, for a short amount of time, to find other peers. After doing so, the server may or may not remain connected to the hub, depending on how stable its network connection is, how busy the hub is, and how many other high-quality peers the server finds. The server saves the addresses of these other peers so it can try reconnecting directly to those peers later, after a network outage or a restart.
+
+The [peers method][] shows a list of peers your server is currently connected to.
+
+For certain high-value servers (such as important [validators](rippled-server-modes.html)) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use [private peers](#プライベートピア) only.
+
 ## ピアプロトコルポート
 
 XRP Ledgerに参加するため、`rippled`サーバーはピアプロトコルを使用して任意のピアに接続します。（すべてのピアは、現行サーバーで[クラスター化されている](clustering.html)場合を除き、信頼できないものとして扱われます。）
