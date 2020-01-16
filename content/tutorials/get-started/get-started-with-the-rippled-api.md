@@ -2,7 +2,7 @@
 
 The XRP Ledger's core server software is [`rippled`](the-rippled-server.html). You can jump straight into developing on the XRP Ledger by accessing the API of a `rippled` server.
 
-The quickest way to dive into the API is with the [**WebSocket API Tool**](websocket-api-tool.html), or use the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see watch the progress of the ledger live.
+The quickest way to dive into the API is with the [**WebSocket API Tool**](websocket-api-tool.html), or use the [XRP Ledger Explorer](https://livenet.xrpl.org/) to watch the progress of the ledger live.
 
 You can also [run your own instance of `rippled`](install-rippled.html) or use a [public server](#public-servers).
 
