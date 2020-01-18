@@ -42,7 +42,7 @@
 | `Domain`                      | 文字列    | VariableLength    | _（省略可）_ このアカウントに関連付けられているドメイン。JSONではこれはドメインのASCII表現の16進数値です。 |
 | `EmailHash`                   | 文字列    | Hash128           | _（省略可）_ メールアドレスのmd5ハッシュ。クライアントはこれを使用してサービス内で[Gravatar](https://en.gravatar.com/)などのアバターを検索できます。 |
 | `MessageKey`                  | 文字列    | VariableLength    | _（省略可）_ 暗号化メッセージをこのアカウントに送信するときに使用できる公開鍵。JSONでは16進数値を使用します。33バイト以下です。 |
-| `RegularKey`                  | 文字列    | AccountID         | _（省略可）_ このアカウントのトランザクションに署名するときにマスターキーの代わりに使用できるキーペアのアドレス。この値を変更するには[SetRegularKeyトランザクション][]を使用してください。 |
+| `RegularKey`                  | 文字列    | AccountID         | _（省略可）_ このアカウントのトランザクションに署名するときにマスターキーの代わりに使用できる[キーペア](cryptographic-keys.html)のアドレス。この値を変更するには[SetRegularKeyトランザクション][]を使用してください。 |
 | `TickSize`                    | 数値    | UInt8             | _（省略可）_ このアドレスが発行した通貨が関わるオファーの為替レートに使用する有効桁数。有効な値は`3`以上`15`以下です。_（[TickSize Amendment][]が必要です。）_ |
 | `TransferRate`                | 数値    | UInt32            | _（省略可）_ このアカウントが発行した通貨を他のユーザーが相互に送金する際に、これらのユーザーに請求する[送金手数料](https://ripple.com/knowledge_center/transfer-fees/)。 |
 | `WalletLocator`               | 文字列    | Hash256           | _（省略可）_ **廃止予定**。使用しないでください。 |
