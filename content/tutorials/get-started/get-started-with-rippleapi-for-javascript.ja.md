@@ -167,7 +167,7 @@ const api = new RippleAPI({
 
 - この`server`設定例では、セキュアなWebSocket接続を使用して、Ripple社が運営している公開サーバーの1つに接続しています。
 - `server`オプションを記述しない場合、RippleAPIは、ネットワーク接続の不要なメソッドのみが提供される[オフラインモード](rippleapi-reference.html#offline-functionality)で実行されます。
-- 代わりに[Rippleテストネット](https://ripple.com/build/ripple-test-net/)サーバーを指定すると、本番環境のXRP Ledgerではなく、別空間のテストネットワークに接続できます。
+- 代わりに[XRP Ledgerテストネット](xrp-testnet-faucet.html)サーバーを指定すると、本番環境のXRP Ledgerではなく、別空間のテストネットワークに接続できます。
 - [独自の`rippled`を運用している](install-rippled.html)場合は、ローカルサーバーに接続するよう指示できます。例えば、代わりに`server: 'ws://localhost:5005'`と記述します。
 
 
@@ -231,7 +231,7 @@ Promiseは、自身の非同期動作を完了すると、渡されたコール�
 
 # 検証の待機
 
-XRP Ledger（または任意の分散されたシステム）を使用する上で最大の課題の1つとなるのが、最終的かつ不変のトランザクション結果を把握することです。[ベストプラクティスに従っている](reliable-transaction-submission.html)場合も、トランザクションが最終的に受け入れられるか拒否されるまで、[コンセンサスプロセス](https://ripple.com/build/ripple-ledger-consensus-process/)を待機しなければならないことに変わりはありません。以下のサンプルコードは、トランザクションの最終的な結果を待機する方法を示しています。
+XRP Ledger（または任意の分散されたシステム）を使用する上で最大の課題の1つとなるのが、最終的かつ不変のトランザクション結果を把握することです。[ベストプラクティスに従っている](reliable-transaction-submission.html)場合も、トランザクションが最終的に受け入れられるか拒否されるまで、[コンセンサスプロセス](consensus.html)を待機しなければならないことに変わりはありません。以下のサンプルコードは、トランザクションの最終的な結果を待機する方法を示しています。
 
 ```
 {% include '_code-samples/rippleapi_quickstart/submit-and-verify.js' %}
