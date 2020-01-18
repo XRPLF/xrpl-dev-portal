@@ -14,7 +14,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](accountro
     "Sequence": 5,
     "Domain": "6578616D706C652E636F6D",
     "SetFlag": 5,
-    "MessageKey": "rQD4SqHJtDxn5DDL7xNnojNa3vxS1Jx5gv"
+    "MessageKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"
 }
 ```
 
