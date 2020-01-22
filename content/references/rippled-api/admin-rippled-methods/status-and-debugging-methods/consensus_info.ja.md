@@ -1,7 +1,7 @@
 # consensus_info
 [[ソース]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
 
-`consensus_info`コマンドは、デバッグのためのコンセンサスプロセスに関する情報を返します。
+`consensus_info`メソッドは、デバッグのための[コンセンサスプロセス](consensus.html)に関する情報を返します。
 
 _`consensus_info`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-rippled-methods.html)です。_
 
