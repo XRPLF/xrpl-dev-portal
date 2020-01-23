@@ -1,4 +1,6 @@
-There are two kinds of currency code in the XRP Ledger:
+The [`rippled` APIs](rippled-api.html) support two formats of currency code for issued currencies:
 
-* Three-character currency code. We recommend using all-uppercase [ISO 4217 Currency Codes](http://www.xe.com/iso4217.php). However, any combination of the following characters is permitted: all uppercase and lowercase letters, digits, as well as the symbols `?`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `<`, `>`, `(`, `)`, `{`, `}`, `[`, `]`, and <code>&#124;</code>. The currency code `XRP` (all-uppercase) is reserved for XRP and cannot be used by issued currencies.
-* 160-bit hexadecimal values, such as `0158415500000000C1F76FF6ECB0BAC600000000`, according to the XRP Ledger's internal [Currency Format](currency-formats.html). This representation is uncommon.
+- **[Standard Currency Codes](currency-formats.html#standard-currency-codes):** As a 3-character string such as `"EUR"` or `"USD"`.
+- **[Nonstandard Currency Codes](currency-formats.html#nonstandard-currency-codes):** As a 160-bit hexadecimal string, such as `"0158415500000000C1F76FF6ECB0BAC600000000"`. This is uncommon.
+
+Currencies with the same code can [ripple](rippling.html) across connected trust lines. Currency codes have no other behavior built into the XRP Ledger.

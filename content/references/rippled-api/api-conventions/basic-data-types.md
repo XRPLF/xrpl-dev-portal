@@ -81,76 +81,27 @@ If you do not specify a ledger, the `current` (in-progress) ledger is chosen by 
 **Note:** Do not rely on this default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.
 
 
-## Currencies
+## Specifying Currency Amounts
 
-There are two kinds of currencies in the XRP Ledger: XRP, and everything else. There are many differences between the two:
+There are two kinds of currencies in the XRP Ledger: XRP, and issued currencies. These two types of currencies are specified in different formats, and they have different amounts of precision and different rounding behavior.
 
-| `XRP`                                                           | Issued Currencies |
-|:----------------------------------------------------------------|:-----------|
-| Has no issuer.                                                  | Always issued by an XRP Ledger account |
-| Specified as a string                                           | Specified as an object |
-| Tracked in [accounts](accountroot.html) | Tracked in [trust lines](ripplestate.html) |
-| Can never be created; can only be destroyed                     | Can be issued or redeemed freely |
-| Maximum value `100000000000` (`1e11`)                           | Maximum value `9999999999999999e80` |
-| Precise to the nearest ["drop"](#xrp) (0.000001 XRP)            | 15 decimal digits of precision, with a minimum nonzero absolute value of `1000000000000000e-96` |
+Some fields, such as the destination `Amount` of a [Payment transaction][], can be either type. Some fields only accept XRP specifically, such as the `Fee` field ([transaction cost](transaction-cost.html)).
 
-**Caution:** The XRP Ledger uses decimal math with different precision than typical floating-point numbers, so currency amounts are always presented as strings.
+XRP is specified as a string containing an integer number of "drops" of XRP, where 1 million drops equals 1 XRP. Issued currencies are instead specified as an object with fields for the decimal amount, currency code, and issuer. For example:
 
-### Specifying Currency Amounts
+- **XRP** - To specify an `Amount` field with a value of 13.1 XRP:
 
-Some API methods require you to specify an amount of currency. Depending on whether you are dealing in the network's native XRP currency or other currency units (called _issuances_), the style for specifying it is very different.
+        "Amount": "13100000"
 
-#### XRP
-[drops of XRP]: #xrp
-[XRP, in drops]: #xrp
+- **Issued Currency** - To specify an `Amount` field with a value of 13.1 FOO issued by or to rf1B...:
 
-Amounts of XRP are represented as strings. (XRP has precision equivalent to a 64-bit integer, but JSON integers are limited to 32 bits, so XRP can overflow if represented in a JSON integer.) XRP is formally specified in "drops", which are equivalent to 0.000001 (one 1-millionth) of an XRP each. Thus, to represent 1.0 XRP in a JSON document, you would write:
+        "Amount": {
+            "value": "13.1",
+            "code": "FOO",
+            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+        }
 
-```
-"1000000"
-```
-
-**Do not specify XRP as an object.**
-
-Unit tests are permitted to submit values of XRP (not drops) with a decimal point - for example, "1.23" meaning 1.23 XRP. All other cases should always specify XRP in drops, with no decimal point: e.g. "1230000" meaning 1.23 XRP.
-
-#### Non-XRP
-
-If you are specifying non-XRP currency (including fiat dollars, precious metals, cryptocurrencies, or other custom currency) you must specify it with a currency specification object. This is a JSON object with three fields:
-
-| `Field`    | Type                       | Description                        |
-|:-----------|:---------------------------|:-----------------------------------|
-| `currency` | String - [Currency Code][] | Arbitrary code for currency to issue. Cannot be `XRP`. |
-| `value`    | String                     | Quoted decimal representation of the amount of currency. This can include scientific notation, such as `1.23e11` meaning 123,000,000,000. Both `e` and `E` may be used. |
-| `issuer`   | String                     | Unique account address of the entity issuing the currency. In other words, the person or business where the currency can be redeemed. |
-
-**Caution:** These field names are case-sensitive.
-
-For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59`, you would specify:
-
-```
-{
-    "currency": "USD",
-    "value": "153.75",
-    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
-}
-```
-
-Unit tests are permitted to submit amounts of non-XRP currencies as a slash-separated string in the format `"amount/currency/issuer"`. All other cases should use the JSON object format above.
-
-#### Specifying Currencies Without Amounts
-
-If you are specifying a non-XRP currency without an amount (typically for defining an order book of currency exchange offers) you should specify it as above, but omit the `value` field.
-
-If you are specifying XRP without an amount (typically for defining an order book) you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
-
-Finally, if the recipient account of the payment trusts multiple issuers for a currency, you can indicate that the payment should be made in any combination of issuers that the recipient accepts. To do this, specify the recipient account's address as the `issuer` value in the JSON object.
-
-### Currency Codes
-[Currency Code]: #currency-codes
-
-{% include '_snippets/data_types/currency_code.md' %}
-<!--{#_ #}-->
+For more information, see [Currency Formats](currency-formats.html).
 
 
 ## Specifying Time
