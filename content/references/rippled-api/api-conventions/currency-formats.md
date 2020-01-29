@@ -8,12 +8,12 @@ The following table summarizes some of the differences between XRP and [issued c
 
 | XRP                                                      | Issued Currencies |
 |:---------------------------------------------------------|:------------------|
-| Has no issuer.                                           | Always issued by an XRP Ledger account |
-| Specified as a string.                                   | Specified as an object |
+| Has no issuer.                                           | Always issued by an XRP Ledger account. |
+| Specified as a string.                                   | Specified as an object. |
 | Tracked in [accounts](accountroot.html).                 | Tracked in [trust lines](ripplestate.html). |
 | Can never be created; can only be destroyed.             | Can be issued or redeemed freely. |
 | Minimum value: `0`. (Cannot be negative.)                | Minimum value: `-9999999999999999e80`. Minimum nonzero absolute value: `1000000000000000e-96`.
-| Maximum value `100000000000` (1<sup>11</sup>) XRP. That's `100000000000000000` (10<sup>17</sup>) "drops". | Maximum value `9999999999999999e80` |
+| Maximum value `100000000000` (1<sup>11</sup>) XRP. That's `100000000000000000` (10<sup>17</sup>) "drops". | Maximum value `9999999999999999e80`. |
 | Precise to the nearest "drop" (0.000001 XRP)     | 15 decimal digits of precision. |
 | Can't be [frozen](freezes.html).                         | The issuer can [freeze](freezes.html) balances. |
 | No transfer fees; XRP-to-XRP payments are always direct. | Can take indirect [paths](paths.html) with each issuer charging a percentage [transfer fee](transfer-fees.html). |
@@ -87,6 +87,8 @@ XRP has the same precision as a 64-bit unsigned integer where each unit is equiv
 The issued currency format can store a wide variety of assets, including those typically measured in very small or very large denominations. This format uses significant digits and a power-of-ten exponent in a similar way to scientific notation. The format supports positive and negative significant digits and exponents within the specified range. Unlike typical floating-point representations of non-whole numbers, this format uses integer math for all calculations, so it always maintains 15 decimal digits of precision. Multiplication and division have adjustments to compensate for over-rounding in the least significant digits.
 
 When sending issued currency amounts in the XRP Ledger's peer-to-peer network, servers [serialize](serialization.html) the amount to a 64-bit binary value.
+
+**Note:** The XRP Ledger does not support issued currencies that are not [fungible](https://en.wikipedia.org/wiki/Fungibility). It also does not support limiting an issued currency to whole number amounts only. All issued currencies in the XRP Ledger are always divisible down to the minimum amount.
 
 ## Currency Codes
 [Currency Code]: #currency-codes

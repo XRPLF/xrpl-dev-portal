@@ -224,12 +224,12 @@ The following diagram shows the serialization formats for both XRP amounts and i
 
 ![Issued Currency Amount Format diagram](img/currency-number-format.png)
 
-The XRP Ledger uses 64 bits to serialize the numeric amount of an issued currency. (This is the `value` field of a currency amount object in JSON format.) This consists of a "not XRP" bit, a sign bit, significant digits, and an exponent, in order:
+The XRP Ledger uses 64 bits to serialize the numeric amount of an issued currency. (In JSON format, the numeric amount is the `value` field of a currency amount object.) In binary format, the numeric amount consists of a "not XRP" bit, a sign bit, significant digits, and an exponent, in order:
 
 1. The first (most significant) bit for an issued currency amount is `1` to indicate that it is not an XRP amount. (XRP amounts always have the most significant bit set to `0` to distinguish them from this format.)
 2. The sign bit indicates whether the amount is positive or negative. Unlike standard [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) integers, `1` indicates **positive** in the XRP Ledger format, and `0` indicates negative.
 3. The next 8 bits represent the exponent as an unsigned integer. The exponent indicates the scale (what power of 10 the significant digits should be multiplied by) in the range -96 to +80 (inclusive). However, when serializing, we add 97 to the exponent to make it possible to serialize as an unsigned integer. Thus, a serialized value of `1` indicates an exponent of `-96`, a serialized value of `177` indicates an exponent of 80, and so on.
-4. The remaining 54 bits represent the significant digits as an unsigned integer. When serializing, this value is normalized to the range 10<sup>15</sup> (`1000000000000000`) to 10<sup>16</sup>-1 (`9999999999999999`) inclusive, except for the special case of the value 0. There is a special case for the value 0. In this case, the sign bit, exponent, and mantissa are all zeroes, so the 64-bit value is serialized as `0x8000000000000000000000000000000000000000`.
+4. The remaining 54 bits represent the significant digits as an unsigned integer. When serializing, this value is normalized to the range 10<sup>15</sup> (`1000000000000000`) to 10<sup>16</sup>-1 (`9999999999999999`) inclusive, except for the special case of the value 0. In the special case for 0, the sign bit, exponent, and mantissa are all zeroes, so the 64-bit value is serialized as `0x8000000000000000000000000000000000000000`.
 
 The numeric amount is serialized alongside the [currency code][] and issuer to form a full [issued currency amount](#amount-fields).
 
@@ -240,7 +240,7 @@ At a protocol level, currency codes in the XRP Ledger are arbitrary 160-bit valu
 - The currency code `0x0000000000000000000000005852500000000000` is **always disallowed**. (This is the "standard format" for an issued currency with code "XRP".)
 - The currency code `0x0000000000000000000000000000000000000000` (all zeroes) is **generally disallowed**. Usually, XRP amounts are not specified with currency codes. However, this code is used to indicate XRP in rare cases where a field must specify a currency code for XRP.
 
-The [`rippled` APIs](rippled-apis.html) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
+The [`rippled` APIs](rippled-api.html) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
 
 ![Standard Currency Code Format](img/currency-code-format.png)
 

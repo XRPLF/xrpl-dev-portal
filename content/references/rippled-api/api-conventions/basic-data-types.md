@@ -83,7 +83,7 @@ If you do not specify a ledger, the `current` (in-progress) ledger is chosen by 
 
 ## Specifying Currency Amounts
 
-There are two kinds of currencies in the XRP Ledger: XRP, and issued currencies. These two types of currencies are specified in different formats, and they have different amounts of precision and different rounding behavior.
+There are two kinds of currencies in the XRP Ledger: XRP, and issued currencies. These two types of currencies are specified in different formats, with different precision and rounding behavior.
 
 Some fields, such as the destination `Amount` of a [Payment transaction][], can be either type. Some fields only accept XRP specifically, such as the `Fee` field ([transaction cost](transaction-cost.html)).
 
