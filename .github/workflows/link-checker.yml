@@ -1,6 +1,12 @@
 name: Link Checker
 
-on: [push]
+on:
+  push:
+    env:
+      IS_PR: false
+  pull_request:
+    env:
+      IS_PR: true
 
 jobs:
   build:
@@ -29,7 +35,7 @@ jobs:
 
     - name: Build docs
       run: |
-        echo '{"github_forkurl": "https://github.com/'"${{ github.repository }}"'", "github_branch": "'"${{ github.head_ref }}"'", "github_pr_id": "TODO", "is_pr_build": true}' > dactyl_vars.json
+        echo '{"github_forkurl": "https://github.com/'"${{ github.repository }}"'", "github_branch": "'"${{ github.head_ref }}"'", "github_pr_id": "'"${{ github.event.number }}"'", "is_pr_build": '"${{ IS_PR }}"'}' > dactyl_vars.json
         tool/build_all_langs.sh --vars dactyl_vars.json
 
     - name: Run Dactyl Link Checker
