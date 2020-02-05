@@ -278,6 +278,9 @@ targets:
             "rippled-server-modes.html#public-hubs": "rippled-server-modes.html#公開ハブ"
             "peer-protocol.html#peer-discovery": "peer-protocol.html#ピア発見"
             "ledgers.html#tree-format": "ledgers.html#ツリーの形式"
+            # Fix links from untranslated currency_codes snippet
+            "currency-formats.html#standard-currency-codes": "currency-formats.html#標準通貨コード"
+            "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
 
 
     -   name: xrp-api-only

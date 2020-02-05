@@ -140,7 +140,7 @@ The _only_ changes made by this [no-op transaction](cancel-or-skip-a-transaction
 
 - The `Sequence` value increases from 376 to 377.
 
-- The XRP `Balance` in this account changes from `396015176` to `396015164` [drops of XRP](basic-data-types.html#xrp). This decrease of exactly 12 drops represents the [transaction cost](transaction-cost.html), as specified in the `Fee` field of the transaction.
+- The XRP `Balance` in this account changes from `396015176` to `396015164` [drops of XRP][]. This decrease of exactly 12 drops represents the [transaction cost](transaction-cost.html), as specified in the `Fee` field of the transaction.
 
 - The [`AccountTxnID`](transaction-common-fields.html#accounttxnid) changes to reflect that this transaction is now the one most recently sent from this address.
 
