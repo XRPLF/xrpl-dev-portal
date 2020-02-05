@@ -2,7 +2,7 @@
 
 In the XRP Ledger, a digital signature proves that a [transaction](transaction-basics.html) is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. <!-- STYLE_OVERRIDE: is authorized to -->
 
-Every digital signature is based on a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](multi-signing.html), regardless of what algorithm was used to generate it.
+Every digital signature is based on a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as a [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](multi-signing.html), regardless of what algorithm was used to generate it.
 
 **Warning:** It is important to maintain proper security over your secret keys. Digital signatures are the only way of verifying to the XRP Ledger that you are authorized to send a transaction, and there is no privileged administrator who can undo or reverse any transaction that has been applied to the ledger. If someone else knows the secret key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.
 
@@ -75,7 +75,7 @@ This is as opposed to a regular key pair, which is also generated using the `wal
 
 **Caution:** A master key pair cannot be changed, but it can be disabled. This means that if your master seed or secret key is compromised, rather than change it, you must [disable it](accountset.html).
 
-Because a master key pair cannot be changed and can only disabled in the event of a compromise, this is a compelling reason to [keep your master key pair offline](offline-account-setup.html) and set up a regular key pair to sign transactions from your account instead.
+Because a master key pair cannot be changed and can only be disabled in the event of a compromise, this is a compelling reason to [keep your master key pair offline](offline-account-setup.html) and set up a regular key pair to sign transactions from your account instead.
 
 Keeping your master key pair offline means not putting your master secret key anywhere that malicious actors can get access to it. For example, this can mean keeping it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or in general, not within reach of a computer program that interacts with the internet at large. Ideally, a master key pair is used only on the most trusted of devices and for emergencies only, such as to change a regular key pair in the event of a possible or actual compromise.
 
@@ -119,7 +119,7 @@ The supported types of key pairs can be used interchangeably throughout the XRP 
 
 ### Future Algorithms
 
-In the future, it is likely that the XRP Ledger will need new cryptographic signing algorithms to keep up with developments in cryptography. For example, if quantum computers using [Shor's algorithm](https://en.wikipedia.org/wiki/Shor's_algorithm) (or something similar) will soon be practical enough to break elliptic curve cryptography, XRP Ledger developers can add a cryptographic signing algorithm that isn't easily broken. As of mid 2019, there's no clear first choice "quantum-resistant" signing algorithm and quantum computers are not yet practical enough to be a threat, so there are no immediate plans to add any specific algorithms. <!-- STYLE_OVERRIDE: will -->
+In the future, it is likely that the XRP Ledger will need new cryptographic signing algorithms to keep up with developments in cryptography. For example, if quantum computers using [Shor's algorithm](https://en.wikipedia.org/wiki/Shor's_algorithm) (or something similar) will soon be practical enough to break elliptic curve cryptography, XRP Ledger developers can add a cryptographic signing algorithm that isn't easily broken. As of early 2020, there's no clear first choice "quantum-resistant" signing algorithm and quantum computers are not yet practical enough to be a threat, so there are no immediate plans to add any specific algorithms. <!-- STYLE_OVERRIDE: will -->
 
 
 ## Key Derivation
