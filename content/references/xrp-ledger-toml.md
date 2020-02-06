@@ -280,16 +280,50 @@ Domain verification requires establishing a two-way link between the domain oper
 
     - In that `xrp-ledger.toml` file, provide a `[[VALIDATORS]]` entry with the validator's master public key in the `public_key` field.
 
-2. The validator claims ownership by the domain. The instructions for this step are out of scope for this specification.
+2. The validator claims ownership of the domain: 
 
-    <!-- TODO: Link documentation when it's available. -->
-    <!-- Aside: the old way of doing this was to set the `Domain` field of the
-         XRP Ledger account whose public key matched the validator's public key.
-         Since only the holder of the corresponding private key could send
-         transactions from this address, doing so effectively proved ownership
-         of the validator's private key.
-    -->
+    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](https://xrpl.org/run-rippled-as-a-validator.html#revoke-validator-keys) and generate new keys. 
 
+        Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**. 
+
+    - **In a location not on your validator**, build the [validator-keys-too1](https://github.com/ripple/validator-keys-tool).  
+
+    - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `rippled.cfg` files:
+
+        ```
+        $./validator-keys set_domain your-domain-here.com
+        ```
+
+Sample Output: 
+
+```
+The domain name has been set to: your-domain-here.com
+
+The domain attestation for validator nHDG5CRUHp17ShsEdRweMc7WsA4csiL7qEjdZbRVTr74wa5QyqoF is:
+
+attestation="A59AB577E14A7BEC053752FBFE78C3DE
+             D6DCEC81A7C41DF1931BC61742BB4FAE
+             AA0D4F1C1EAE5BC74F6D68A3B26C8A22
+             3EA2492A5BD18D51F8AC7F4A97DFBE0C"
+
+You should include it in your xrp-ledger.toml file in the
+section for this validator.
+
+You also need to update the rippled.cfg file to add a new
+validator token and restart rippled:
+
+# validator public key: nHDG5CRUHp17ShsEdRweMc7WsA4csiL7qEjdZbRVTr74wa5QyqoF
+
+[validator_token]
+eyJ2YWxpZGF0aW9uX3NlY3J|dF9rZXkiOiI5ZWQ0NWY4NjYyNDFjYzE4YTI3NDdiNT
+QzODdjMDYyNTkwNzk3MmY0ZTcxOTAyMzFmYWE5Mzc0NTdmYT|kYWY2IiwibWFuaWZl
+c3QiOiJKQUFBQUFGeEllMUZ0d21pbXZHdEgyaUNjTUpxQzlnVkZLaWxHZncxL3ZDeE
+hYWExwbGMyR25NaEFrRTFhZ3FYeEJ3RHdEYklENk9NU1l1TTBGREFscEFnTms4U0tG
+bjdNTzJmZGtjd1JRSWhBT25ndTlzQUtxWFlvdUorbDJWMFcrc0FPa1ZCK1pSUzZQU2
+hsSkFmVXNYZkFpQnNWSkdlc2FhZE9KYy9hQVpva1MxdnltR21WcmxIUEtXWDNZeXd1
+NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
+VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==     
+```
 
 ## Account Verification
 
