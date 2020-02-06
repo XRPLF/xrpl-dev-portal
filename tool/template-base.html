@@ -32,7 +32,11 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
     </script>
 
     {% block head %}
