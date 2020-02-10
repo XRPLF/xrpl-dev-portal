@@ -89,6 +89,7 @@ expires = 2019-03-01T00:00:00.000Z
 
 [[VALIDATORS]]
 public_key = "nHBtDzdRDykxiuv7uSMPTcGexNm879RUUz5GW4h1qgjbtyvWZ1LE"
+attestation="A59AB577E14A7BEC053752ABFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA2492A5BD18D51F8AC7F4A97DFBE0C"
 network = "main"
 owner_country = "us"
 server_country = "us"
@@ -96,10 +97,13 @@ unl = "https://vl.ripple.com"
 
 [[VALIDATORS]]
 public_key = "nHB57Sey9QgaB8CubTPvMZLkLAzfJzNMWBCCiDRgazWJujRdnz13"
+attestation="A59AB577E14A7BEC053752FBFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA249BA5BD18D51F8AC7F4A97DFBE0C"
 network = "testnet"
 owner_country = "us"
 server_country = "us"
 unl = "https://vl.testnet.rippletest.net"
+
+# Note: the attestions above are only examples and are not real. 
 
 [[ACCOUNTS]]
 address = "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"
@@ -282,7 +286,7 @@ Domain verification requires establishing a two-way link between the domain oper
 
 2. The validator claims ownership of the domain: 
 
-    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](https://xrpl.org/run-rippled-as-a-validator.html#revoke-validator-keys) and generate new keys. 
+    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](run-rippled-as-a-validator.html#revoke-validator-keys) and generate new keys. 
 
         Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**. 
 
@@ -290,14 +294,14 @@ Domain verification requires establishing a two-way link between the domain oper
 
     - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `rippled.cfg` files:
 
-        ```
-        $./validator-keys set_domain your-domain-here.com
-        ```
+        
+            $./validator-keys set_domain example.com
+        
 
 Sample Output: 
 
 ```
-The domain name has been set to: your-domain-here.com
+The domain name has been set to: example.com
 
 The domain attestation for validator nHDG5CRUHp17ShsEdRweMc7WsA4csiL7qEjdZbRVTr74wa5QyqoF is:
 
@@ -324,6 +328,13 @@ hsSkFmVXNYZkFpQnNWSkdlc2FhZE9KYy9hQVpva1MxdnltR21WcmxIUEtXWDNZeXd1
 NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
 VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==     
 ```
+
+Update your `xrp-ledger.toml` file as described in the sample output. See [here](xrp-ledger-toml.html#contents) for an example.
+
+
+
+
+**Warning:** Your validator token is meant to be kept secret. Do not share it on your `xrp-ledger.toml` file or anywhere else. 
 
 ## Account Verification
 
