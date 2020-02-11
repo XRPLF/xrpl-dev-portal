@@ -1679,6 +1679,16 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/manage-account-settings/disable-master-key-pair.md
+        html: disable-master-key-pair.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Disable the master key that is mathematically associated with an address.
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
         html: set-up-multi-signing.html
         funnel: Docs

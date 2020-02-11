@@ -394,6 +394,8 @@ Note that the response contains a `hash` of the transaction, which you can use t
 
 ## 3. Verify the Regular Key Pair
 
+At this point, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. However, it is important to verify that you did not make a mistake before you take any additional steps such as [disabling the master key pair](disable-master-key-pair.html).
+
 To verify that your account has the regular key pair set correctly, submit an [AccountSet transaction][] from your account, signing it with the regular private key you assigned to your account in step 2.
 
 As discussed in step 2, transmitting your master private key is dangerous. It is equally risky to transmit your regular private key. Therefore, we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
