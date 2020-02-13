@@ -38,6 +38,8 @@ It is strongly recommended to also provide the `LastLedgerSequence` field so tha
 
 You must use the **master key pair** to sign the transaction.
 
+**Warning:** Do not submit your secret to a server you don't control, and do not transmit it over the network unencrypted. These examples assume you are using a [local `rippled` server](set-up-secure-signing.html#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](set-up-secure-signing.html).
+
 #### Example Request
 
 <!-- MULTICODE_BLOCK_START -->
