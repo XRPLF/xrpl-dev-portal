@@ -4,14 +4,14 @@ This page describes how to disable the [master key pair](cryptographic-keys.html
 
 **Warning:** Disabling the master key pair removes one method of [authorizing transactions](transaction-basics.html#authorizing-transactions). You should be sure you can use one of the other ways of authorizing transactions, such as with a regular key or by multi-signing, before you disable the master key pair. (For example, if you [assigned a regular key pair](assign-a-regular-key-pair.html), make sure that you can successfully submit transactions with that regular key.) Due to the decentralized nature of the XRP Ledger, no one can restore access to your account if you cannot use the remaining ways of authorizing transactions.
 
-**Only the master key pair can be used to disable itself.** However, you can _re-enable_ the master key pair using any other method of authorizing transactions.
+**To disable the master key pair, you must use the master key pair.** However, you can _re-enable_ the master key pair using any other method of authorizing transactions.
 
 ## Prerequisites
 
 To disable the master key pair for an account, you must meet the following prerequisites:
 
 - You must have an XRP Ledger [account](accounts.html) and you must be able to sign and submit transactions from that account using the master key pair. See also: [Set Up Secure Signing](set-up-secure-signing.html).
-    - In most cases, you use your account's master seed value for signing these transactions. Most commonly, this value is represented as a [base58][] value starting with "s", such as `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`.
+    - Generally, you need to know account's master seed value to sign this transaction. A seed value is commonly represented as a [base58][] value starting with "s", such as `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`. A notable exception is that a [dedicated signing device](set-up-secure-signing.html#use-a-dedicated-signing-device) stores the seed value securely so you don't need to know it.
 - Your account must have at least one method of authorizing transactions other than the master key pair. In other words, you must do one or both of the following:
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.html).
     - [Set Up Multi-Signing](set-up-multi-signing.html).
