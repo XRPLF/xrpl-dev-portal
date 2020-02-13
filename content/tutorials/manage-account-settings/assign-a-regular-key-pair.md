@@ -312,7 +312,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
   "result": {
     "engine_result": "tesSUCCESS",
