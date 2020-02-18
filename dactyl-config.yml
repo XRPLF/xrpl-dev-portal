@@ -215,9 +215,10 @@ targets:
             "xrp-ledger-overview.html#censorship-resistant-transaction-processing": "xrp-ledger-overview.html#耐検閲性のある取引処理"
             # Fix 1 link from untranslated software-ecosystem.html:
             "rippled-server-modes.html#reasons-to-run-a-validator": "rippled-server-modes.html#バリデータを運用する理由"
-            # Fix 2 links from untranslated xrp-ledger-toml.html:
+            # Fix 3 links from untranslated xrp-ledger-toml.html:
             "currency-formats.html#currency-codes": "currency-formats.html#通貨コード"
             "run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator": "run-rippled-as-a-validator.html#1-優れたバリデータの特徴の理解"
+            "run-rippled-as-a-validator.html#revoke-validator-keys": "run-rippled-as-a-validator.html#バリデータキーの破棄"
             # Fix 1 link from untranslated snippet post-rippled-install.md:
             "get-started-with-the-rippled-api.html#commandline": "get-started-with-the-rippled-api.html#コマンドライン"
             # Fix 8 links from untranslated use-an-escrow-as-a-smart-contract.html:
