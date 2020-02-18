@@ -89,7 +89,7 @@ expires = 2019-03-01T00:00:00.000Z
 
 [[VALIDATORS]]
 public_key = "nHBtDzdRDykxiuv7uSMPTcGexNm879RUUz5GW4h1qgjbtyvWZ1LE"
-attestation="A59AB577E14A7BEC053752ABFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA2492A5BD18D51F8AC7F4A97DFBE0C"
+attestation = "A59AB577E14A7BEC053752ABFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA2492A5BD18D51F8AC7F4A97DFBE0C"
 network = "main"
 owner_country = "us"
 server_country = "us"
@@ -97,7 +97,7 @@ unl = "https://vl.ripple.com"
 
 [[VALIDATORS]]
 public_key = "nHB57Sey9QgaB8CubTPvMZLkLAzfJzNMWBCCiDRgazWJujRdnz13"
-attestation="A59AB577E14A7BEC053752FBFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA249BA5BD18D51F8AC7F4A97DFBE0C"
+attestation = "A59AB577E14A7BEC053752FBFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA249BA5BD18D51F8AC7F4A97DFBE0C"
 network = "testnet"
 owner_country = "us"
 server_country = "us"
@@ -329,7 +329,7 @@ NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
 VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==     
 ```
 
-Update your `xrp-ledger.toml` file as described in the sample output. See [here](xrp-ledger-toml.html#contents) for an example.
+Update [the contents of your `xrp-ledger.toml` file](#contents) with the `attestation` block, and update the `rippled.cfg` file with the `[validator_token]` block from the sample output.
 
 
 
