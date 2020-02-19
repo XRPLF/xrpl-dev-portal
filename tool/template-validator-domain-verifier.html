@@ -1,0 +1,35 @@
+{% extends "template-base.html" %}
+
+{% block main %}
+<section class="container-fluid p-3">
+  <h1>xrp-ledger.toml Checker</h1>
+
+  <p>Domain Verification <a href="https://developers.ripple.com/xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>.</p>
+
+  <p>This tool allows you to verify that domain verification is properly set up on your validator. </p><br/>
+  <form id="manifest-entry">
+    <div class="input-group">
+      <input id="manifest" type="text" class="form-control" required
+             placeholder="Your Manifest Here"
+             pattern="[0-9A-F]+"><br>
+      <button class="btn btn-primary form-control">Check Domain Verification</button>
+    </div><!--/.input-group-->
+  </form>
+  <div id="result">
+    <h5 class='result-title'>Result</h5>
+      <ul id="log">
+    </ul>
+  </div>
+</section>
+{% endblock %}
+
+{% block endbody %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+  <script type="application/javascript" src="assets/js/ripple-lib-1.4.1-min.js"></script>
+  <script type='text/javascript' src='assets/vendor/iarna-toml-parse.js'></script>
+  <script type='text/javascript' src='assets/js/domain-verifier-bundle.js'></script>
+
+  <script type="application/javascript">
+    gtag('set', {'content_group1': 'API Tools'});
+  </script>
+{% endblock %}
