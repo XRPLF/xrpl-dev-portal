@@ -27,7 +27,7 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
 
 2. In your `validators.txt` file:
 
-    2a. Changes to connect to the altnet
+    2a. Changes to connect to the Testnet
 
         a. Uncomment the following sections, as follows to connect to the altnet:
 
@@ -45,7 +45,7 @@ To connect your `rippled` server to the XRP Testnet or Devnet, set the following
             # [validator_list_keys]
             # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 
-    2b. Changes to connect to the devnet
+    2b. Changes to connect to the Devnet
 
         a. Comment out the following sections as follows:
 
