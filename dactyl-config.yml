@@ -281,6 +281,9 @@ targets:
             # Fix links from untranslated currency_codes snippet
             "currency-formats.html#standard-currency-codes": "currency-formats.html#標準通貨コード"
             "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
+            # Fix links from untranslated disable-master-key-pair.html.
+            "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの承認"
+            "transaction-common-fields.html#自動入力可能なフィールド"
 
 
     -   name: xrp-api-only
