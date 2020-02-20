@@ -18,10 +18,6 @@ Ripple provides a set of developer tools to help you test, explore, and validate
 
       Use this tool to verify that your [xrp-ledger.toml file](xrp-ledger-toml.html) is set up properly.
 
-* **[Domain Verification Checker](validator-domain-verifier.html)**
-
-      Use this tool to check that your validator's domain can be verified.
-
 * **[XRP Faucets](xrp-testnet-faucet.html)**
 
     Get credentials and test-XRP for XRP Ledger Testnet or Devnet, and connect to servers in these parallel networks to test building software on the XRP Ledger without using real funds.
