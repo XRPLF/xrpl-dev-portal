@@ -2360,6 +2360,16 @@ pages:
         targets:
             - en
 
+    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
+        html: run-rippled-as-a-wallet-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: A catch-all configuration for anyone integrating XRP. #TODO:translate
+        targets:
+            - en
+
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
         html: run-rippled-as-a-validator.html
         funnel: Docs
