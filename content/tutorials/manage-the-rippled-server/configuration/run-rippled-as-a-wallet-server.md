@@ -19,6 +19,8 @@ A Wallet Server will:
 For more information, see [Install `rippled`](install-rippled.html).
 
 
+<!--{TODO: Include instructions on how to enable GRPC once rippled v 1.5.0 is released}-->
+
 ## 2. Enable validation on your Wallet Server
 
 Enabling validation on your wallet server means providing a validator token in your server's `rippled.cfg` file. Ripple recommends using the `validator-keys` tool (included in `rippled` RPMs) to securely generate and manage your validator keys and tokens.
