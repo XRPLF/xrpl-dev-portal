@@ -141,7 +141,7 @@ $ rippled sign s█████████████████████�
 *Commandline*
 
 ```sh
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:13:24.783570867 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {
@@ -269,7 +269,7 @@ $ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103A
 *Commandline*
 
 ```sh
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:25:49.361743460 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {
@@ -417,7 +417,7 @@ rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
 *Commandline*
 
 ```sh
-Loading: "/home/mduo13/.config/ripple/rippled.cfg"
+Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:41:38.642710734 HTTPClient:NFO Connecting to 127.0.0.1:5005
 
 {
