@@ -22,7 +22,7 @@
 | `tecINTERNAL`              | 144   | 不明な内部エラーが発生し、トランザクションコストは適用されました。通常はこのエラーは返されません。このエラーを再現できる場合は、[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
 | `tecINVARIANT_FAILED`      | 147   | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]が必要です。このエラーを再現できる場合は、[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
 | `tecNEED_MASTER_KEY`       | 142   | このトランザクションはマスターキーを必要とする変更（[マスターキーの無効化または残高凍結能力の放棄](accountset.html#accountsetのフラグ)など）を試みました。[新規: rippled 0.28.0][] |
-| `tecNO_ALTERNATIVE_KEY`    | 130   | トランザクションが唯一の[トランザクション承認](transaction-basics.html#取引の承認)メソッドを削除しようとしました。これは、レギュラーキーを削除する[SetRegularKeyトランザクション][]、SignerListを削除する[SignerListSetトランザクション][]、またはマスターキーを無効にする[AccountSetトランザクション][]である可能性があります。（`rippled` 0.30.0より前のバージョンでは、このトランザクションは`tecMASTER_DISABLED`と呼ばれていました。） |
+| `tecNO_ALTERNATIVE_KEY`    | 130   | トランザクションが唯一の[トランザクション承認](transaction-basics.html#トランザクションの承認)メソッドを削除しようとしました。これは、レギュラーキーを削除する[SetRegularKeyトランザクション][]、SignerListを削除する[SignerListSetトランザクション][]、またはマスターキーを無効にする[AccountSetトランザクション][]である可能性があります。（`rippled` 0.30.0より前のバージョンでは、このトランザクションは`tecMASTER_DISABLED`と呼ばれていました。） |
 | `tecNO_AUTH`               | 134   | トランザクションはトラストラインの残高を、`lsfRequireAuth`フラグが有効になっているアカウントに追加する必要がありましたが、そのトラストラインが承認されていなかったため、失敗しました。トラストラインが存在しない場合は、代わりに`tecNO_LINE`が発生します。 |
 | `tecNO_DST`                | 124   | トランザクションの受信側のアカウントが存在しません。これには、PaymentトランザクションタイプやTrustSetトランザクションタイプがあります。（XRPを十分に受信した場合に作成される可能性があります。） |
 | `tecNO_DST_INSUF_XRP`      | 125   | トランザクションの受信側のアカウントが存在しません。トランザクションは、アカウントの作成に十分なXRPを送金していません。 |
@@ -33,7 +33,7 @@
 | `tecNO_LINE_INSUF_RESERVE` | 126   | 送信側アカウントに、新しいトラストラインを作成するのに十分なXRPがないため、トランザクションが失敗しました。（[準備金](reserves.html)を参照）このエラーは、取引相手がこのアカウントに対する同一通貨のトラストラインを持っていない場合に発生します。（その他のケースについては`tecINSUF_RESERVE_LINE`を参照してください。） |
 | `tecNO_LINE_REDUNDANT`     | 127   | トランザクションはトラストラインをデフォルト状態に設定しようと試みましましたが、トラストラインが存在していなかったため、失敗しました。 |
 | `tecNO_PERMISSION`         | 139   | 送信者にはこの操作を実行する権限がありません。たとえば[EscrowFinishトランザクション][]が`FinishAfter`時刻に達する前に保留中の支払をリリースしようとしたか、送信者が所有していないChannelで誰かが[PaymentChannelFund][]を使用しようとしたか、または[Payment][]が「DepositAuth」フラグが有効になっているアカウントに資金の送金を試みました。 |
-| `tecNO_REGULAR_KEY`        | 131   | [AccountSetトランザクション][]がマスターキーを無効にしようとしましたが、アカウントにはマスターキー以外で[トランザクションを承認する](transaction-basics.html#取引の承認)方法がありません。[マルチ署名](multi-signing.html)が有効な場合、このコードは廃止予定であり、代わりに`tecNO_ALTERNATIVE_KEY`が使用されます。 |
+| `tecNO_REGULAR_KEY`        | 131   | [AccountSetトランザクション][]がマスターキーを無効にしようとしましたが、アカウントにはマスターキー以外で[トランザクションを承認する](transaction-basics.html#トランザクションの承認)方法がありません。[マルチ署名](multi-signing.html)が有効な場合、このコードは廃止予定であり、代わりに`tecNO_ALTERNATIVE_KEY`が使用されます。 |
 | `tecNO_TARGET`             | 138   | トランザクションが参照するEscrowレジャーオブジェクトまたはPayChannelレジャーオブジェクトが存在していません。これらのオブジェクトは、これまでに存在したことがないか、すでに削除されています。（たとえば、別の[EscrowFinishトランザクション][]で保留中の支払がすでに実行されている場合などです。）あるいは、支払先アカウントで`asfDisallowXRP`が設定されているため、このアカウントは[PaymentChannelCreate][]トランザクションまたは[EscrowCreate][]トランザクションの宛先に指定できません。 |
 | `tecOVERSIZE`              | 145   | サーバーがこのトランザクションの適用時に大量のメタデータを作成したため、このトランザクションを処理できませんでした。[新規: rippled 0.29.0-hf1][] |
 | `tecOWNERS`                | 132   | トランザクションでは、トランザクションを送信するアカウントの「所有者カウント」はゼロ以外である必要があります。このためトランザクションを正常に完了できません。たとえば、トラストラインや使用可能なオファーがあるアカウントでは、[`lsfRequireAuth`](accountset.html#accountsetのフラグ)フラグを有効にできません。 |
