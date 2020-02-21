@@ -282,6 +282,9 @@ targets:
             # Fix links from untranslated currency_codes snippet
             "currency-formats.html#standard-currency-codes": "currency-formats.html#標準通貨コード"
             "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
+            # Fix links from untranslated disable-master-key-pair.html.
+            "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの承認"
+            "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
 
 
     -   name: xrp-api-only
@@ -1678,6 +1681,16 @@ pages:
         category: Manage Account Settings
         blurb: Remove or update a regular key pair already authorized by your account. #TODO:translate
         targets:
+            - ja
+
+    -   md: tutorials/manage-account-settings/disable-master-key-pair.md
+        html: disable-master-key-pair.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Disable the master key that is mathematically associated with an address.
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md

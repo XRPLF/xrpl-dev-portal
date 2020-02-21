@@ -80,7 +80,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](accountro
 | asfRequireAuth   | 2             | lsfRequireAuth            | このアドレスによって発行された残高をユーザーが保持することについて、承認を要求します。アドレスにトラストラインが接続されていない場合のみ有効にできます。 |
 | asfRequireDest   | 1             | lsfRequireDestTag         | トランザクションをこのアカウントに送信するための宛先タグを要求します。 |
 
-`asfDisableMaster`フラグまたは`asfNoFreeze`フラグを有効にするには、マスターキーペアで署名することによって[トランザクションを承認](transaction-basics.html#取引の承認)する必要があります。レギュラーキーペアやマルチ署名を使用することはできません。レギュラーキーペアまたはマルチ署名を使用すると、`asfDisableMaster`を無効にする（つまり、マスターキーペアを再び有効にする）ことができます。[新規: rippled 0.28.0][]
+`asfDisableMaster`フラグまたは`asfNoFreeze`フラグを有効にするには、マスターキーペアで署名することによって[トランザクションを承認](transaction-basics.html#トランザクションの承認)する必要があります。レギュラーキーペアやマルチ署名を使用することはできません。レギュラーキーペアまたはマルチ署名を使用すると、`asfDisableMaster`を無効にする（つまり、マスターキーペアを再び有効にする）ことができます。[新規: rippled 0.28.0][]
 
 以下の[トランザクションフラグ](transaction-common-fields.html#flagsフィールド)はAccountSetタイプのトランザクションに固有のもので、同様の目的を果たしますが、使用することはお勧めしません。
 

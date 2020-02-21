@@ -195,7 +195,7 @@ If the SignerList is present with the expected contents, then your address is re
 
 At this point, your address is ready to [send a multi-signed transaction](send-a-multi-signed-transaction.html). You may also want to:
 
-* Disable the address's master key pair by sending an [AccountSet transaction][] using the `asfDisableMaster` flag.
+* [Disable the address's master key pair](disable-master-key-pair.html).
 * [Remove the address's regular key pair](change-or-remove-a-regular-key-pair.html) (if you previously set one) by sending a [SetRegularKey transaction][].
 
 ## See Also

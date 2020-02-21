@@ -115,7 +115,7 @@ In the next step, you'll use the `account_id` from this response to assign the k
 
 Use a [SetRegularKey transaction][] to assign the key pair you generated in step 1 to your account as a regular key pair.
 
-When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing by your account's master private key (secret). Transmitting your master private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
+When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are [several ways of securely signing transactions](set-up-secure-signing.html), but this tutorial uses a local `rippled` server.
 
 When you send subsequent SetRegularKey transactions, you can sign using the existing regular private key to replace or [remove itself](change-or-remove-a-regular-key-pair.html). Note that you should still not submit your regular private key across the network.
 
@@ -312,7 +312,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
   "result": {
     "engine_result": "tesSUCCESS",
@@ -394,9 +394,9 @@ Note that the response contains a `hash` of the transaction, which you can use t
 
 ## 3. Verify the Regular Key Pair
 
-To verify that your account has the regular key pair set correctly, submit an [AccountSet transaction][] from your account, signing it with the regular private key you assigned to your account in step 2.
+At this point, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. **To avoid losing control of your account,** it is important that you test your regular key before you take any additional steps such as [disabling the master key pair](disable-master-key-pair.html). If you make a mistake and lose access to your account, no one can restore it for you.
 
-As discussed in step 2, transmitting your master private key is dangerous. It is equally risky to transmit your regular private key. Therefore, we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
+To verify that your account has the regular key pair set correctly, submit an [AccountSet transaction][] from your account, signing it with the regular private key you assigned to your account in step 2. As in step 1, this tutorial uses a local `rippled` server as a [way of securely signing transactions](set-up-secure-signing.html).
 
 
 ### Sign Your Transaction
@@ -658,6 +658,13 @@ An example of a successful response:
 ```
 
 <!-- MULTICODE_BLOCK_END -->
+
+If the transaction fails with the following [result codes](transaction-results.html), here are some things to check:
+
+- **`tefBAD_AUTH`**: The regular key you signed your test transaction with doesn't match the regular key you set in the previous step. Check that the secret and address for your regular key pair match and double-check which values you used in each step.
+- **`tefBAD_AUTH_MASTER`** or **`temBAD_AUTH_MASTER`**: Your account doesn't have a regular key assigned. Check that the SetRegularKey transaction executed successfully. You can also use the [account_info method][] to confirm that your regular key is set in the `RegularKey` field as expected.
+
+For possible causes of other result codes, see [Transaction Results](transaction-results.html).
 
 
 ## See Also
