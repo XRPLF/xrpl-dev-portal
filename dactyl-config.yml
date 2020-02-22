@@ -2985,6 +2985,17 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/api-conventions/rate-limiting.md
+        html: rate-limiting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Information on how public APIs limit clients from making too many requests.
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/api-conventions/request-formatting.md
         html: request-formatting.html
         funnel: Docs
