@@ -5,15 +5,32 @@ const codec = require('ripple-binary-codec');
 const addressCodec = require('ripple-address-codec');
 const keyCodec = require('ripple-keypairs');
 
+const TIPS = '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>'
 const TOML_PATH = "/.well-known/xrp-ledger.toml";
+const CLASS_GOOD = "badge badge-success";
+const CLASS_BAD = "badge badge-danger";
+
+function makeLogEntry(text, raw) {
+    let log
+    if (raw) {
+      log = $('<li></li>').appendTo('#log').append(text)
+    } else {
+      log = $('<li></li>').text(text+" ").appendTo('#log')
+    }
+    log.resolve = function(text) {
+      return $('<span></span>').html(text).appendTo(log)
+    }
+    return log
+  }
+
+async function parse_xrpl_toml(data, domain) {
 
 
+}
 
-//Get the domain and public key from the manifest
 function parseManifest(){
+    
     const manhex = $('#manifest').val()
-
-    //TODO: throw errors when manifest is malformed or keys are not present
     let man = codec.decode(manhex);
     let buff = new Buffer(man['PublicKey'], 'hex').toJSON().data  
 
@@ -22,6 +39,37 @@ function parseManifest(){
     let publicKeyHex = man['PublicKey'];
     
     let message = "[domain-attestation-blob:"+domain+":"+publicKey+"]";
+    const url = "http://" + domain + TOML_PATH;
+
+
+    const log = makeLogEntry('Checking ' + url + '...')
+
+    $.ajax({
+        url: url,
+        dataType: 'text',
+        success: function(data) {
+          log.resolve('FOUND').addClass(CLASS_GOOD)
+          parse_xrpl_toml(data, domain)
+        },
+        error: function(jqxhr, status, error) {
+          switch (status) {
+            case 'timeout':
+              err = 'TIMEOUT'
+              break
+            case 'abort':
+              err = 'ABORTED'
+              break
+            case 'error':
+              err = 'ERROR'
+              break
+            default:
+              err = 'UNKNOWN'
+          }
+          log.resolve(err).addClass(CLASS_BAD).after(TIPS)
+        }
+    })
+
+    
     let attestation = "A59AB577E14A7BEC053752FBFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA2492A5BD18D51F8AC7F4A97DFBE0C";
 
     var verify = keyCodec.verify(ascii_to_hexa(message),attestation,publicKeyHex)

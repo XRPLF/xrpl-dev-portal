@@ -6,12 +6,28 @@ const keyCodec = require('ripple-keypairs');
 const TOML_PATH = "/.well-known/xrp-ledger.toml";
 
 
+function makeLogEntry(text, raw) {
+    let log
+    if (raw) {
+      log = $('<li></li>').appendTo('#log').append(text)
+    } else {
+      log = $('<li></li>').text(text+" ").appendTo('#log')
+    }
+    log.resolve = function(text) {
+      return $('<span></span>').html(text).appendTo(log)
+    }
+    return log
+  }
 
-//Get the domain and public key from the manifest
+
+async function parse_xrpl_toml(data, domain) {
+
+
+}
+
 function parseManifest(){
+    
     const manhex = $('#manifest').val()
-
-    //TODO: throw errors when manifest is malformed or keys are not present
     let man = codec.decode(manhex);
     let buff = new Buffer(man['PublicKey'], 'hex').toJSON().data  
 
@@ -20,6 +36,37 @@ function parseManifest(){
     let publicKeyHex = man['PublicKey'];
     
     let message = "[domain-attestation-blob:"+domain+":"+publicKey+"]";
+    const url = "https://" + domain + TOML_PATH;
+
+
+    const log = makeLogEntry('Checking ' + url + '...')
+
+    $.ajax({
+        url: url,
+        dataType: 'text',
+        success: function(data) {
+          log.resolve('FOUND').addClass(CLASS_GOOD)
+          parse_xrpl_toml(data, domain)
+        },
+        error: function(jqxhr, status, error) {
+          switch (status) {
+            case 'timeout':
+              err = 'TIMEOUT'
+              break
+            case 'abort':
+              err = 'ABORTED'
+              break
+            case 'error':
+              err = 'ERROR'
+              break
+            default:
+              err = 'UNKNOWN'
+          }
+          log.resolve(err).addClass(CLASS_BAD).after(TIPS)
+        }
+    })
+
+    
     let attestation = "A59AB577E14A7BEC053752FBFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA2492A5BD18D51F8AC7F4A97DFBE0C";
 
     var verify = keyCodec.verify(ascii_to_hexa(message),attestation,publicKeyHex)
