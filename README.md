@@ -16,5 +16,22 @@ To build the site locally:
 
         dactyl_build -t en
 
-
 For more details, see the [contribution guidelines](CONTRIBUTING.md).
+
+
+If you make changes to the [Domain Verification Checker](https://xrpl.org/validator-domain-verifier.html) tool and edit the domain-verifier-checker.js file, you will need to do the following: 
+
+1. Install [webpack](https://webpack.js.org/) and required libraries via npm:
+
+        npm install webpack webpack-cli --save-dev
+        npm install ripple-binary-codec ripple-address-codec ripple-keypairs
+
+2. From the project root directory (this step may be different depending on how you installed webpack)
+
+        cd assets/js
+        webpack-cli domain-verifier-checker.js --optimize-minimize -o domain-verifier-bundle.js
+
+3. Build the site:
+
+        cd ../..
+        dactyl_build -t en
