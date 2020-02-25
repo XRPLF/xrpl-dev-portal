@@ -29,10 +29,12 @@ If the connection is closed because of rate limiting, the close code is `1008` a
 
 ## JSON-RPC Rate Limited Error
 
-For a JSON-RPC API request, the server rejects a request with a ***TODO*** error when the client is over the rate limit. For example:
+For a JSON-RPC API request, the server responds with the HTTP status code **503 Service Unavailable** when the client is over the rate limit. This response has a text (not JSON) body stating that the server is overloaded:
 
-```json
-TODO
+```text
+503 Service Unavailable
+
+Server is overloaded
 ```
 
 ## Rate Per Request
