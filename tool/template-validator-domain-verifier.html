@@ -2,11 +2,11 @@
 
 {% block main %}
 <section class="container-fluid p-3">
-  <h1>xrp-ledger.toml Checker</h1>
+  <h1>Domain Verification Checker</h1>
 
-  <p>Domain Verification <a href="https://developers.ripple.com/xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>.</p>
+  <p>This tool allows you to verify that <a href="https://xrpl.org/xrp-ledger-toml.html#domain-verification">domain verification</a> is properly configured. </p>
+  <p>Enter the manifest found in your validator-keys.json file. Do not confuse this with your validator's secret key.</p>   
 
-  <p>This tool allows you to verify that domain verification is properly set up on your validator. </p><br/>
   <form id="manifest-entry">
     <div class="input-group">
       <input id="manifest" type="text" class="form-control" required
