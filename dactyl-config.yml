@@ -2366,7 +2366,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: A catch-all configuration for anyone integrating XRP. #TODO:translate
+        blurb: A multipurpose configuration for anyone integrating XRP. #TODO:translate
         targets:
             - en
 

@@ -1,17 +1,17 @@
 # Run rippled as a Wallet Server
 
-A Wallet Server is a catch-all configuration for rippled. With a Wallet Server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](https://xpring.io/) to integrate with XRP.
+A wallet server is a multipurpose configuration for `rippled`. With a wallet server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](https://xpring.io/) to integrate with XRP.
 
 
-A Wallet Server will:
+A wallet server does all of the following:
 
-- Connect to a [network of peers](consensus-network.html)
+- Connects to a [network of peers](consensus-network.html)
 
-- Relay cryptographically signed [transactions](transaction-basics.html)
+- Relays cryptographically signed [transactions](transaction-basics.html)
 
-- Maintain a local copy of the complete shared global [ledger](ledgers.html)
+- Maintains a local copy of the complete shared global [ledger](ledgers.html)
 
-- Behave as a [validator](run-rippled-as-a-validator.html) by issuing [validation](consensus.html#validation) messages
+- Participates in the [consensus process](consensus.html) as a validator
 
 
 ## 1. Install `rippled`
@@ -20,11 +20,12 @@ For more information, see [Install `rippled`](install-rippled.html).
 
 <!--{TODO: Include instructions on how to enable GRPC once rippled v 1.5.0 is released}-->
 
-## 2. Enable validation on your Wallet Server
+## 2. Enable validation on your wallet server
 
 For more information, see [Enable validation on your `rippled` server](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).
 
-
+    **Warning:** Validators should not be accessible to the public. Do not allow public websockets access to your wallet server or any other form of public access. 
+     
 ## 3. Provide domain verification
 
 For more information, see [Provide domain verification](run-rippled-as-a-validator.html#6-provide-domain-verification).
