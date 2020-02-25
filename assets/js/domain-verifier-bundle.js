@@ -1,6 +1,9 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 (function (Buffer){
 
+//Browserify was used so that we can use 'require' in the browser 
+//Start reading code here:
+
 const codec = require('ripple-binary-codec');
 const addressCodec = require('ripple-address-codec');
 const keyCodec = require('ripple-keypairs');
@@ -10,6 +13,7 @@ const TOML_PATH = "/.well-known/xrp-ledger.toml";
 const CLASS_GOOD = "badge badge-success";
 const CLASS_BAD = "badge badge-danger";
 
+//This function makes the lists that output the status.
 function makeLogEntry(text, raw) {
     let log
     if (raw) {
@@ -21,25 +25,80 @@ function makeLogEntry(text, raw) {
       return $('<span></span>').html(text).appendTo(log)
     }
     return log
+}
+//3. 
+//Find the validator entry in the TOML file and verify the signature of the attestation.
+async function parse_xrpl_toml(data, public_key_hex, public_key, message) {
+  let parsed
+  let log1 = makeLogEntry("Parsing TOML data...")
+  try {
+    parsed = TOML(data)
+    log1.resolve("SUCCESS").addClass(CLASS_GOOD)
+  } catch(e) {
+    log1.resolve(e).addClass(CLASS_BAD)
+    return
   }
 
-async function parse_xrpl_toml(data, domain) {
+  console.log(parsed)
 
+  let validator_entries = parsed.VALIDATORS;
 
+  if (validator_entries) {
+    if (!Array.isArray(validator_entries)) {
+      makeLogEntry("Validators:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+    } else {
+      let validator_found = false
+      for (i = 0 ; i < validator_entries.length; i++){
+
+        let pk = validator_entries[i]['public_key']
+
+        if(pk == public_key){
+
+          validator_found = true
+          let attestation = validator_entries[i]['attestation']
+
+          try{
+            var verify = keyCodec.verify(ascii_to_hexa(message),attestation,public_key_hex)
+          }
+          catch (e){
+            makeLogEntry("Domain Verification Failed").resolve(e).addClass(CLASS_BAD)
+          }
+
+          if (verify){
+            makeLogEntry("Domain Verification Succeeded").addClass(CLASS_GOOD)
+          }
+          else{
+            makeLogEntry("Domain Verification Failed").addClass(CLASS_BAD)
+          }
+        }
+      }
+      if (!validator_found){
+        makeLogEntry("The validator key for this manifest was not found in the TOML file").addClass(CLASS_BAD)
+      }
+    }
+  }
+  else{
+    makeLogEntry("No Validators Found").resolve("Failure").addClass(CLASS_BAD)
+  }
 }
 
-function parseManifest(){
+//2.
+//Decompose the manifest to obtain the domain and public key.
+//Use these to create the message that should have been signed by the validator's private key (the attestation).
+//Go to the domain and verify the signature of the attestation field in the appropriate validator entry. 
+function parse_manifest(){
     
     const manhex = $('#manifest').val()
-    let man = codec.decode(manhex);
-    let buff = new Buffer(man['PublicKey'], 'hex').toJSON().data  
+    let man = codec.decode(manhex)
+    let public_key_hex = man['PublicKey']
+    let buff = new Buffer(public_key_hex, 'hex').toJSON().data  
 
-    let domain = hex_to_ascii(man['Domain']);
-    let publicKey = addressCodec.encodeNodePublic(buff);
-    let publicKeyHex = man['PublicKey'];
+    let domain = hex_to_ascii(man['Domain'])
+    let public_key = addressCodec.encodeNodePublic(buff)
     
-    let message = "[domain-attestation-blob:"+domain+":"+publicKey+"]";
-    const url = "http://" + domain + TOML_PATH;
+    //This is the message that was signed by the validator's private key.
+    let message = "[domain-attestation-blob:"+domain+":"+public_key+"]"
+    const url = "https://" + domain + TOML_PATH
 
 
     const log = makeLogEntry('Checking ' + url + '...')
@@ -49,7 +108,7 @@ function parseManifest(){
         dataType: 'text',
         success: function(data) {
           log.resolve('FOUND').addClass(CLASS_GOOD)
-          parse_xrpl_toml(data, domain)
+          parse_xrpl_toml(data, public_key_hex, public_key, message)
         },
         error: function(jqxhr, status, error) {
           switch (status) {
@@ -68,19 +127,11 @@ function parseManifest(){
           log.resolve(err).addClass(CLASS_BAD).after(TIPS)
         }
     })
-
-    
-    let attestation = "A59AB577E14A7BEC053752FBFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA2492A5BD18D51F8AC7F4A97DFBE0C";
-
-    var verify = keyCodec.verify(ascii_to_hexa(message),attestation,publicKeyHex)
-
-    //TODO: Go to the domain, check that this public key is there, and check the attestation. 
-    console.log(domain);
-    console.log(publicKey);
-    console.log(verify);
-
 }
 
+
+// Nifty hex/ascii helpers: 
+//https://www.w3resource.com/javascript-exercises/javascript-string-exercise-28.php
 function hex_to_ascii(str1)
 {
 	var hex  = str1.toString();
@@ -91,7 +142,8 @@ function hex_to_ascii(str1)
 	return str;
 }
 
- function ascii_to_hexa(str)
+//https://www.w3resource.com/javascript-exercises/javascript-string-exercise-27.php
+function ascii_to_hexa(str)
 {
 	var arr1 = [];
 	for (var n = 0, l = str.length; n < l; n ++) 
@@ -102,17 +154,8 @@ function hex_to_ascii(str1)
 	return arr1.join('');
 }
 
-//message: [domain-attestation-blob:mayurbhandary.com]
-
-
-//TODO: Obtain manifest through form submission 
-//attestation="A59AB577E14A7BEC053752FBFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA2492A5BD18D51F8AC7F4A97DFBE0C"
-//manifest: 24000000017121EDFCADB465692E663A6081B8AE60A5CAA7FC9519B6140B9C9FFDE313A7044CEDC3732103A951D1D042B128BC3253E261719277CBEE7966207C55299DDF9DE08ACCF81C67764730450221009AB0D13B5F333BFA75098F5E8C81638E133D9585973E56E22C9202D4F13E12FE02207B48B2C49B734D78E23AD0C51C98E21F78813D711E465C88A4FBEA37263552A477116D617975726268616E646172792E636F6D7012401EB58B0BACE2E8BBE07D9A2A0FA82BAB21B236DE23FB81F44816921730300038598F4144B85A72206065F1F05563A84997F15A345058CCB07B3D63702F2D760C'
-
-//parseManifest('24000000017121EDFCADB465692E663A6081B8AE60A5CAA7FC9519B6140B9C9FFDE313A7044CEDC3732103A951D1D042B128BC3253E261719277CBEE7966207C55299DDF9DE08ACCF81C67764730450221009AB0D13B5F333BFA75098F5E8C81638E133D9585973E56E22C9202D4F13E12FE02207B48B2C49B734D78E23AD0C51C98E21F78813D711E465C88A4FBEA37263552A477116D617975726268616E646172792E636F6D7012401EB58B0BACE2E8BBE07D9A2A0FA82BAB21B236DE23FB81F44816921730300038598F4144B85A72206065F1F05563A84997F15A345058CCB07B3D63702F2D760C');
-
-
-
+//1. 
+//Start the verification process when the user enters a manifest.
 function handle_submit(event) {
     event.preventDefault();
   
@@ -120,8 +163,11 @@ function handle_submit(event) {
     $('#result').show()
     $('#log').empty()
   
-    parseManifest();
+    parse_manifest();
 }
+
+//Stop reading code here...
+
 
 $(document).ready(() => {
     $('#manifest-entry').submit(handle_submit)
