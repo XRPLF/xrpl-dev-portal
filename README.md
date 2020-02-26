@@ -12,11 +12,21 @@ To build the site locally:
 
         git clone git@github.com:ripple/xrpl-dev-portal.git
 
-3. Install [Browserify](http://browserify.org/) using npm:
+3. Build the site:
+
+        dactyl_build -t en
+
+For more details, see the [contribution guidelines](CONTRIBUTING.md).
+
+
+If you make changes to the [Domain Verification Checker](https://xrpl.org/validator-domain-verifier.html) tool and edit the domain-verifier-checker.js file, you will need to do the following: 
+
+1. Install [Browserify](http://browserify.org/) and required libraries via npm:
 
         npm install -g browserify
+        npm install ripple-binary-codec ripple-address-codec ripple-keypairs
 
-4. From the project root directory
+2. From the project root directory
 
         cd assets/js
         browserify domain-verifier-checker.js -o domain-verifier-bundle.js
@@ -25,5 +35,3 @@ To build the site locally:
 
         cd ../..
         dactyl_build -t en
-
-For more details, see the [contribution guidelines](CONTRIBUTING.md).
