@@ -296,7 +296,8 @@ Domain verification requires establishing a two-way link between the domain oper
 
         
             $./validator-keys set_domain example.com
-        
+
+**Warning:** This command will update your validator-keys.json file. Please be sure to store the validator-keys.json file in a safe location. 
 
 Sample Output: 
 
