@@ -290,7 +290,7 @@ Domain verification requires establishing a two-way link between the domain oper
 
         Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**. 
 
-    - **In a location not on your validator**, build the [validator-keys-too1](https://github.com/ripple/validator-keys-tool).  
+    - **In a location not on your validator**, build the [validator-keys-tool](https://github.com/ripple/validator-keys-tool).  
 
     - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `rippled.cfg` files:
 
