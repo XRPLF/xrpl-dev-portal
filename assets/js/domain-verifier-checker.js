@@ -98,11 +98,25 @@ async function parse_xrpl_toml(data, public_key_hex, public_key, message) {
 //Go to the domain and verify the signature of the attestation field in the appropriate validator entry.
 function parse_manifest() {
   const manhex = $("#manifest").val();
-  let man = codec.decode(manhex);
+
+  try{
+    var man = codec.decode(manhex);
+  } catch (e) {
+    makeLogEntry("Error decoding manifest").resolve(e).addClass(CLASS_BAD);
+    return;
+  }
+
   let public_key_hex = man["PublicKey"];
   let buff = new Buffer(public_key_hex, "hex").toJSON().data;
 
-  let domain = hex_to_ascii(man["Domain"]);
+
+  try{
+    var domain = hex_to_ascii(man["Domain"]);
+  } catch{
+    makeLogEntry("Domain not found in manifest").addClass(CLASS_BAD);
+    return;
+  }
+
   let public_key = addressCodec.encodeNodePublic(buff);
 
   //This is the message that was signed by the validator's private key.
