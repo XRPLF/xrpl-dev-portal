@@ -5,7 +5,7 @@ const addressCodec = require("ripple-address-codec");
 const keyCodec = require("ripple-keypairs");
 
 const TIPS =
-  '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>';
+  '<p>Check if the xrp-ledger.toml file is actually hosted in the /.well-known/ location at the domain in your manifest. Check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>';
 const TOML_PATH = "/.well-known/xrp-ledger.toml";
 const CLASS_GOOD = "badge badge-success";
 const CLASS_BAD = "badge badge-danger";
