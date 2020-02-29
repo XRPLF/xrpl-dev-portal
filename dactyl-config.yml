@@ -285,7 +285,8 @@ targets:
             # Fix links from untranslated disable-master-key-pair.html.
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの承認"
             "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
-
+            # Fix link from untranslated rate-limiting.html
+            "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html" # The translated doc hasn't been updated to add the "Admin Access" section, but the details are mentioned near the top of the page
 
     -   name: xrp-api-only
         lang: en
