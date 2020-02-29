@@ -10,6 +10,8 @@ const TOML_PATH = "/.well-known/xrp-ledger.toml";
 const CLASS_GOOD = "badge badge-success";
 const CLASS_BAD = "badge badge-danger";
 
+var query_param = 0;
+
 //This function makes the lists that output the status.
 function makeLogEntry(text, raw) {
   let log;
@@ -58,7 +60,11 @@ async function parse_xrpl_toml(data, public_key_hex, public_key, message) {
 
         if (pk == public_key) {
           validator_found = true;
-          let attestation = validator_entries[i]["attestation"];
+          try {
+            var attestation = validator_entries[i]["attestation"];
+          } catch {
+            makeLogEntry("Attestation Not found").addClass(CLASS_BAD);
+          }
 
           try {
             var verify = keyCodec.verify(
@@ -99,20 +105,21 @@ async function parse_xrpl_toml(data, public_key_hex, public_key, message) {
 function parse_manifest() {
   const manhex = $("#manifest").val();
 
-  try{
+  try {
     var man = codec.decode(manhex);
   } catch (e) {
-    makeLogEntry("Error decoding manifest").resolve(e).addClass(CLASS_BAD);
+    makeLogEntry("Error decoding manifest")
+      .resolve(e)
+      .addClass(CLASS_BAD);
     return;
   }
 
   let public_key_hex = man["PublicKey"];
   let buff = new Buffer(public_key_hex, "hex").toJSON().data;
 
-
-  try{
+  try {
     var domain = hex_to_ascii(man["Domain"]);
-  } catch{
+  } catch {
     makeLogEntry("Domain not found in manifest").addClass(CLASS_BAD);
     return;
   }
@@ -121,8 +128,7 @@ function parse_manifest() {
 
   //This is the message that was signed by the validator's private key.
   let message = "[domain-attestation-blob:" + domain + ":" + public_key + "]";
-  const url = "https://" + domain + TOML_PATH;
-
+  const url = "https://" + domain + TOML_PATH + "?v=" + query_param++;
   const log = makeLogEntry("Checking " + url + "...");
 
   $.ajax({
@@ -175,7 +181,6 @@ function ascii_to_hexa(str) {
   return arr1.join("");
 }
 
-
 function handle_submit(event) {
   event.preventDefault();
 
@@ -189,5 +194,6 @@ function handle_submit(event) {
 //1.
 //Start the verification process when the user enters a manifest.
 $(document).ready(() => {
-    $('#manifest-entry').submit(handle_submit)
-})
+  $("#manifest-entry").submit(handle_submit);
+});
+
