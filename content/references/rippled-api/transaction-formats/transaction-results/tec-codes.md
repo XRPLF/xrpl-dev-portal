@@ -12,7 +12,7 @@ For the most part, transactions with `tec` codes take no action other than to de
 | `tecCRYPTOCONDITION_ERROR` | 146   | This [EscrowCreate][] or [EscrowFinish][] transaction contained a malformed or mismatched crypto-condition. |
 | `tecDIR_FULL`              | 121   | The transaction tried to add an object (such as a trust line, Check, Escrow, or Payment Channel) to an account's owner directory, but that account cannot own any more objects in the ledger. |
 | `tecDUPLICATE`             | 149   | The transaction tried to create an object (such as a [DepositPreauth][] authorization) that already exists. |
-| `tecDST_TAG_NEEDED`        | 143   | The [Payment transaction][] omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. [New in: rippled 0.28.0][] |
+| `tecDST_TAG_NEEDED`        | 143   | The [Payment transaction][] omitted a [destination tag](source-and-destination-tags.html), but the destination account has the `lsfRequireDestTag` flag enabled. [New in: rippled 0.28.0][] |
 | `tecEXPIRED`               | 148   | The transaction tried to create an object (such as an Offer or a Check) whose provided Expiration time has already passed. |
 | `tecFAILED_PROCESSING`     | 105   | An unspecified error occurred when processing the transaction. |
 | `tecFROZEN`                | 137   | The [OfferCreate transaction][] failed because one or both of the assets involved are subject to a [global freeze](freezes.html). |
