@@ -55,8 +55,22 @@ Losing connections from time to time is normal for any peer-to-peer network. **O
 A large number of these messages around the same time may indicate a problem, such as:
 
 - Your internet connection to one or more specific peers was cut off.
-- Your server may have been overloading the peer with requests, causing it to drop your server.
+- Your server may have been overloading the peer with requests, causing the peer to disconnect your server.
 
+
+## Consumer entry dropped with balance at or above drop threshold
+
+The following log message indicates that a client to the server's public API has been dropped as a result of [rate limiting](rate-limiting.html):
+
+```text
+2020-Feb-24 23:05:35.566312806 Resource:WRN Consumer entry 169.55.164.21 dropped with balance 15970 at or above drop threshold 15000
+```
+
+The entry contains the IP address of the client that exceeded its rate limit, and the client's "balance", which is a score estimating the rate at which the client has been using the API. The threshold for dropping a client is [hardcoded to a score of 15000](https://github.com/ripple/rippled/blob/06c371544acc3b488b9d9c057cee4e51f6bef7a2/src/ripple/resource/impl/Tuning.h#L34-L35).
+
+If you see frequent messages from the same IP address, you may want to block those IP addresses from your network to reduce the load on your server's public API. (For example, you may be able to configure your firewall to block those IP addresses.)
+
+To avoid being dropped by rate limiting on your own server, [connect as an admin](get-started-with-the-rippled-api.html#admin-access).
 
 ## InboundLedger 11 timeouts for ledger
 

@@ -285,7 +285,8 @@ targets:
             # Fix links from untranslated disable-master-key-pair.html.
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの承認"
             "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
-
+            # Fix link from untranslated rate-limiting.html
+            "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html" # The translated doc hasn't been updated to add the "Admin Access" section, but the details are mentioned near the top of the page
 
     -   name: xrp-api-only
         lang: en
@@ -2993,6 +2994,17 @@ pages:
         category: API Conventions
         blurb: Why and how only transactions can modify the ledger. #TODO:translate
         targets:
+            - ja
+
+    -   md: references/rippled-api/api-conventions/rate-limiting.md
+        html: rate-limiting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Information on how public APIs limit clients from making too many requests.
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/api-conventions/request-formatting.md
