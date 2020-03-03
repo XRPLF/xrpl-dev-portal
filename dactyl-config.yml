@@ -5951,6 +5951,14 @@ pages:
             - ja
         template: template-xrp-ledger-toml-checker.html
 
+    -   name: Domain Verification Checker
+        funnel: Dev Tools
+        html: validator-domain-verifier.html
+        targets:
+            - en
+            - ja
+        template: template-validator-domain-verifier.html
+
     -   name: XRP Faucets
         html: xrp-testnet-faucet.html
         funnel: Dev Tools
