@@ -6,11 +6,11 @@ The `rippled` server limits the rate at which API clients can make requests on p
 
 When a client is approaching the rate limit, the server adds the field `"warning": "load"` at the top level of an [API response](response-formatting.html). This warning is not added to every response, but the server may send several such warnings before it disconnects a client.
 
-If a client goes past the rate limit, the server disconnects that client and does not serve further requests from the client's API address for a while. The disconnect message is different for the WebSocket and JSON-RPC APIs.
+If a client goes past the rate limit, the server disconnects that client and does not serve further requests from the client's API address for a while. The WebSocket and JSON-RPC APIs use different disconnect messages.
 
 ## WebSocket API Disconnect Message
 
-For a WebSocket API connection, the server closes the connection and provides a close message and code with the close message. The way you access these messages depends on your WebSocket client implementation. For example, using the [Node.js ws library](https://github.com/websockets/ws), the following code prints the close reason when disconnected:
+For the WebSocket API, the server closes the connection and provides a close message and code. The way you access these messages depends on your WebSocket client implementation. For example, using the [Node.js ws library](https://github.com/websockets/ws), the following code prints the close reason when disconnected:
 
 ```js
 const WebSocket = require('ws')
@@ -25,7 +25,7 @@ ws.on('close', (code,reason) => {
 // reason:  threshold exceeded
 ```
 
-If the connection is closed because of rate limiting, the close code is `1008` and the reason is the string `threshold exceeded`.
+If the connection is closed because of rate limiting, the close code is `1008` and the close message is the string `threshold exceeded`.
 
 ## JSON-RPC Rate Limited Error
 
