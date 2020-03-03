@@ -12,7 +12,7 @@ For the most part, transactions with `tec` codes take no action other than to de
 | `tecCRYPTOCONDITION_ERROR` | 146   | This [EscrowCreate][] or [EscrowFinish][] transaction contained a malformed or mismatched crypto-condition. |
 | `tecDIR_FULL`              | 121   | The transaction tried to add an object (such as a trust line, Check, Escrow, or Payment Channel) to an account's owner directory, but that account cannot own any more objects in the ledger. |
 | `tecDUPLICATE`             | 149   | The transaction tried to create an object (such as a [DepositPreauth][] authorization) that already exists. |
-| `tecDST_TAG_NEEDED`        | 143   | The [Payment transaction][] omitted a destination tag, but the destination account has the `lsfRequireDestTag` flag enabled. [New in: rippled 0.28.0][] |
+| `tecDST_TAG_NEEDED`        | 143   | The [Payment transaction][] omitted a [destination tag](source-and-destination-tags.html), but the destination account has the `lsfRequireDestTag` flag enabled. [New in: rippled 0.28.0][] |
 | `tecEXPIRED`               | 148   | The transaction tried to create an object (such as an Offer or a Check) whose provided Expiration time has already passed. |
 | `tecFAILED_PROCESSING`     | 105   | An unspecified error occurred when processing the transaction. |
 | `tecFROZEN`                | 137   | The [OfferCreate transaction][] failed because one or both of the assets involved are subject to a [global freeze](freezes.html). |
@@ -37,14 +37,14 @@ For the most part, transactions with `tec` codes take no action other than to de
 | `tecNO_PERMISSION`         | 139   | The sender does not have permission to do this operation. For example, the [EscrowFinish transaction][] tried to release a held payment before its `FinishAfter` time, someone tried to use [PaymentChannelFund][] on a channel the sender does not own, or a [Payment][] tried to deliver funds to an account with the "DepositAuth" flag enabled. |
 | `tecNO_REGULAR_KEY`        | 131   | The [AccountSet transaction][] tried to disable the master key, but the account does not have another way to [authorize transactions](transaction-basics.html#authorizing-transactions). If [multi-signing](multi-signing.html) is enabled, this code is deprecated and `tecNO_ALTERNATIVE_KEY` is used instead. |
 | `tecNO_TARGET`             | 138   | The transaction referenced an Escrow or PayChannel ledger object that doesn't exist, either because it never existed or it has already been deleted. (For example, another [EscrowFinish transaction][] has already executed the held payment.) Alternatively, the destination account has `asfDisallowXRP` set so it cannot be the destination of this [PaymentChannelCreate][] or [EscrowCreate][] transaction. |
-| `tecOVERSIZE`              | 145   | This transaction could not be processed, because the server created an excessively large amount of metadata when it tried to apply the transaction. [New in: rippled 0.29.0-hf1][] |
+| `tecOVERSIZE`              | 145   | This transaction could not be processed, because the server created an excessively large amount of [metadata](transaction-metadata.html) when it tried to apply the transaction. [New in: rippled 0.29.0-hf1][] |
 | `tecOWNERS`                | 132   | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
-| `tecPATH_DRY`              | 128   | The transaction failed because the provided paths did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by trust lines. |
-| `tecPATH_PARTIAL`          | 101   | The transaction failed because the provided paths did not have enough liquidity to send the full amount. |
+| `tecPATH_DRY`              | 128   | The transaction failed because the provided [paths](paths.html) did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by [trust lines](trust-lines-and-issuing.html). |
+| `tecPATH_PARTIAL`          | 101   | The transaction failed because the provided [paths](paths.html) did not have enough liquidity to send the full amount. |
 | `tecTOO_SOON`              | 152   | The [AccountDelete transaction][] failed because the account to be deleted had a `Sequence` number that is too high. The current ledger index must be at least 256 higher than the account's sequence number. |
-| `tecUNFUNDED`              | 129   | The transaction failed because the account does not hold enough XRP to pay the amount in the transaction _and_ satisfy the additional reserve necessary to execute this transaction. (See: [Reserves](reserves.html)) |
+| `tecUNFUNDED`              | 129   | The transaction failed because the account does not hold enough XRP to pay the amount in the transaction _and_ satisfy the additional [reserve](reserves.html) necessary to execute this transaction. |
 | `tecUNFUNDED_ADD`          | 102   | **DEPRECATED.**                         |
-| `tecUNFUNDED_PAYMENT`      | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the reserve. (See: [Reserves](reserves.html)) |
+| `tecUNFUNDED_PAYMENT`      | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the [reserve](reserves.html). |
 | `tecUNFUNDED_OFFER`        | 103   | The [OfferCreate transaction][] failed because the account creating the offer does not have any of the `TakerGets` currency. |
 
 <!--{# common link defs #}-->
