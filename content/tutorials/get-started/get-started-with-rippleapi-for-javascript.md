@@ -85,7 +85,7 @@ Use the following template, which includes:
 Use Yarn to install RippleAPI and the dependencies defined in the `package.json` file you created for your project.
 
 ```
-yarn
+yarn add ripple-lib
 ```
 
 This installs RippleAPI and the dependencies into the local folder `node_modules/`.
