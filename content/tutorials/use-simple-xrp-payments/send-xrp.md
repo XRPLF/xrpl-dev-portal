@@ -183,7 +183,7 @@ async function doPrepare() {
   console.log("Transaction expires after ledger:", maxLedgerVersion)
   return preparedTx.txJSON
 }
-txJSON = doPrepare()
+txJSON = JSON.stringify(doPrepare())
 ```
 
 {{ start_step("Prepare") }}
