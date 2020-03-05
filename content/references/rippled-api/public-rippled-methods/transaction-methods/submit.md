@@ -261,6 +261,14 @@ The response follows the [standard format][], with a successful result containin
 | `engine_result_message` | String  | Human-readable explanation of the transaction's preliminary result |
 | `tx_blob`               | String  | The complete transaction in hex string format |
 | `tx_json`               | Object  | The complete transaction in JSON format  |
+| `accepted`              | Boolean | _(May be omitted)_ The value `true` indicates that the transaction was applied, queued, broadcast, or kept for later. A value of `false` indicates that none of those happened, so the transaction cannot possibly succeed as long as you do not submit it again. [New in: rippled 1.5.0][] |
+| `account_sequence_available` | Number | _(May be omitted)_ The next [Sequence Number][] available for this account after all pending and queued transactions. ***TODO: queue?*** [New in: rippled 1.5.0][] |
+| `account_sequence_next` | number  | _(May be omitted)_ ***TODO: diff from _available?*** [New in: rippled 1.5.0][] |
+| `applied`               | Boolean | _(May be omitted)_ The value `true` indicates that this transaction was applied to the open ledger. ***TODO: excludes tec?*** [New in: rippled 1.5.0][] |
+| `broadcast`             | Boolean | _(May be omitted)_ The value `true` indicates this transaction was broadcast to other servers in the peer-to-peer XRP Ledger network. The value `false` indicates the transaction was not yet broadcast to any other servers. [New in: rippled 1.5.0][] |
+| `kept`                  | Boolean | _(May be omitted)_ The value `true` indicates that the transaction was kept to be retried later. [New in: rippled 1.5.0][] |
+| `queued`                | Boolean | _(May be omitted)_ The value `true` indicates the transaction was put in the [Transaction Queue](transaction-queue.html), which means it is likely to be included in a future ledger version. [New in: rippled 1.5.0][] |
+| `open_ledger_cost`      | String  | _(May be omitted)_ The current [open ledger cost](transaction-cost.html#open-ledger-cost) after processing this transaction. Transactions with a lower cost are likely to be [queued](transaction-queue.html). [New in: rippled 1.5.0][] |
 
 **Caution:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](transaction-results.html) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
 
