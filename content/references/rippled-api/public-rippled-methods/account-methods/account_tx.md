@@ -45,8 +45,9 @@ An example of the request format:
 *Commandline*
 
 ```
-#Syntax account_tx account ledger_index_min ledger_index_max [offset] [limit] [binary] [count] [forward]
-rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
+# Syntax: account_tx account [ledger_index_min [ledger_index_max]] [limit] [offset] [binary] [count] [descending]
+# For binary/count/descending use the parameter name for true and omit for false.
+rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 0 binary descending
 ```
 
 <!-- MULTICODE_BLOCK_END -->
