@@ -49,199 +49,472 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
-  "id": 2,
-  "status": "success",
-  "type": "response",
+  "id": 1,
   "result": {
     "state": {
-      "build_version": "0.30.1-rc3",
-      "complete_ledgers": "18611104-18615049",
+      "build_version": "1.5.0-rc1",
+      "complete_ledgers": "54300020-54300697",
       "io_latency_ms": 1,
+      "jq_trans_overflow": "0",
       "last_close": {
-        "converge_time": 3003,
-        "proposers": 5
+        "converge_time": 3001,
+        "proposers": 34
       },
       "load": {
         "job_types": [
           {
-            "job_type": "untrustedProposal",
-            "peak_time": 1,
+            "avg_time": 5,
+            "job_type": "untrustedValidation",
+            "peak_time": 21
+          },
+          {
+            "job_type": "ledgerRequest",
+            "peak_time": 9,
             "per_second": 3
           },
           {
-            "in_progress": 1,
-            "job_type": "clientCommand"
+            "job_type": "untrustedProposal",
+            "peak_time": 26,
+            "per_second": 45
           },
           {
-            "avg_time": 12,
-            "job_type": "writeObjects",
-            "peak_time": 345,
-            "per_second": 2
-          },
-          {
-            "job_type": "trustedProposal",
+            "avg_time": 15,
+            "job_type": "ledgerData",
+            "peak_time": 105,
             "per_second": 1
           },
           {
-            "job_type": "peerCommand",
-            "per_second": 64
+            "in_progress": 1,
+            "job_type": "clientCommand",
+            "peak_time": 50,
+            "per_second": 8
           },
           {
-            "avg_time": 33,
-            "job_type": "diskAccess",
-            "peak_time": 526
+            "avg_time": 1,
+            "job_type": "transaction",
+            "peak_time": 35,
+            "per_second": 8
+          },
+          {
+            "job_type": "batch",
+            "peak_time": 5,
+            "per_second": 6
+          },
+          {
+            "avg_time": 4,
+            "job_type": "advanceLedger",
+            "peak_time": 65,
+            "per_second": 2
+          },
+          {
+            "job_type": "fetchTxnData",
+            "per_second": 3
+          },
+          {
+            "avg_time": 7,
+            "job_type": "trustedValidation",
+            "peak_time": 49,
+            "per_second": 6
+          },
+          {
+            "job_type": "trustedProposal",
+            "peak_time": 20,
+            "per_second": 14
+          },
+          {
+            "job_type": "clusterReport",
+            "peak_time": 2
+          },
+          {
+            "job_type": "heartbeat",
+            "peak_time": 1
+          },
+          {
+            "job_type": "peerCommand",
+            "per_second": 1334
+          },
+          {
+            "job_type": "processTransaction",
+            "per_second": 8
+          },
+          {
+            "job_type": "SyncReadNode",
+            "peak_time": 6,
+            "per_second": 35
+          },
+          {
+            "job_type": "AsyncReadNode",
+            "peak_time": 13,
+            "per_second": 1104
           },
           {
             "job_type": "WriteNode",
-            "per_second": 55
+            "peak_time": 12,
+            "per_second": 976
           }
         ],
         "threads": 6
       },
       "load_base": 256,
-      "load_factor": 256000,
-      "peers": 10,
-      "pubkey_node": "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
-      "pubkey_validator": "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+      "load_factor": 256,
+      "load_factor_fee_escalation": 256,
+      "load_factor_fee_queue": 256,
+      "load_factor_fee_reference": 256,
+      "load_factor_server": 256,
+      "peer_disconnects": "55",
+      "peer_disconnects_resources": "1",
+      "peers": 21,
+      "pubkey_node": "n9KUjqxCr5FKThSNXdzb7oqN8rYwScB2dUnNqxQxbEA17JkaWy5x",
+      "pubkey_validator": "nHBk5DPexBjinXV8qHn7SEKzoxh2W92FxSbNTPgGtQYBzEF4msn9",
       "server_state": "proposing",
-      "server_state_duration_us": 92762334,
+      "server_state_duration_us": "1727270915",
       "state_accounting": {
         "connected": {
-          "duration_us": "150510079",
+          "duration_us": "128124609",
           "transitions": 1
         },
         "disconnected": {
-          "duration_us": "1827731",
+          "duration_us": "2290325",
           "transitions": 1
         },
         "full": {
-          "duration_us": "168295542987",
-          "transitions": 1865
+          "duration_us": "1727270915",
+          "transitions": 1
         },
         "syncing": {
-          "duration_us": "6294237352",
-          "transitions": 1866
+          "duration_us": "3083023",
+          "transitions": 1
         },
         "tracking": {
-          "duration_us": "13035524",
-          "transitions": 1866
+          "duration_us": "0",
+          "transitions": 1
         }
       },
-      "uptime": 174748,
+      "time": "2020-Mar-24 01:25:38.448364 UTC",
+      "uptime": 1860,
       "validated_ledger": {
         "base_fee": 10,
-        "close_time": 507693650,
-        "hash": "FEB17B15FB64E3AF8D371E6AAFCFD8B92775BB80AB953803BD73EA8EC75ECA34",
+        "close_time": 638328331,
+        "hash": "A63E850343B9F06CFE637648FF3D46DBAB7B1E41BA6B9A26FA72AA706D82233D",
         "reserve_base": 20000000,
         "reserve_inc": 5000000,
-        "seq": 18615049
+        "seq": 54300697
       },
-      "validation_quorum": 4,
-      "validator_list_expires": 561139596
+      "validation_quorum": 29,
+      "validator_list_expires": 639792000
     }
-  }
+  },
+  "status": "success",
+  "type": "response"
 }
 ```
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
+{
+  "result": {
+    "state": {
+      "build_version": "1.5.0-rc1",
+      "complete_ledgers": "54300020-54300761",
+      "io_latency_ms": 1,
+      "jq_trans_overflow": "0",
+      "last_close": {
+        "converge_time": 3000,
+        "proposers": 34
+      },
+      "load": {
+        "job_types": [
+          {
+            "job_type": "ledgerRequest",
+            "per_second": 2
+          },
+          {
+            "job_type": "untrustedProposal",
+            "peak_time": 1,
+            "per_second": 41
+          },
+          {
+            "avg_time": 5,
+            "job_type": "ledgerData",
+            "peak_time": 42,
+            "per_second": 1
+          },
+          {
+            "in_progress": 1,
+            "job_type": "clientCommand",
+            "per_second": 7
+          },
+          {
+            "job_type": "transaction",
+            "per_second": 9
+          },
+          {
+            "job_type": "batch",
+            "peak_time": 8,
+            "per_second": 7
+          },
+          {
+            "job_type": "advanceLedger",
+            "peak_time": 12,
+            "per_second": 1
+          },
+          {
+            "job_type": "fetchTxnData",
+            "per_second": 5
+          },
+          {
+            "job_type": "trustedValidation",
+            "peak_time": 7,
+            "per_second": 7
+          },
+          {
+            "job_type": "trustedProposal",
+            "per_second": 14
+          },
+          {
+            "job_type": "peerCommand",
+            "per_second": 1461
+          },
+          {
+            "job_type": "processTransaction",
+            "per_second": 9
+          },
+          {
+            "job_type": "SyncReadNode",
+            "per_second": 4
+          },
+          {
+            "job_type": "AsyncReadNode",
+            "peak_time": 21,
+            "per_second": 124
+          },
+          {
+            "job_type": "WriteNode",
+            "peak_time": 7,
+            "per_second": 278
+          }
+        ],
+        "threads": 6
+      },
+      "load_base": 256,
+      "load_factor": 256,
+      "load_factor_fee_escalation": 256,
+      "load_factor_fee_queue": 256,
+      "load_factor_fee_reference": 256,
+      "load_factor_server": 256,
+      "peer_disconnects": "61",
+      "peer_disconnects_resources": "1",
+      "peers": 20,
+      "pubkey_node": "n9KUjqxCr5FKThSNXdzb7oqN8rYwScB2dUnNqxQxbEA17JkaWy5x",
+      "pubkey_validator": "nHBk5DPexBjinXV8qHn7SEKzoxh2W92FxSbNTPgGtQYBzEF4msn9",
+      "server_state": "proposing",
+      "server_state_duration_us": "1974824750",
+      "state_accounting": {
+        "connected": {
+          "duration_us": "128124609",
+          "transitions": 1
+        },
+        "disconnected": {
+          "duration_us": "2290325",
+          "transitions": 1
+        },
+        "full": {
+          "duration_us": "1974824750",
+          "transitions": 1
+        },
+        "syncing": {
+          "duration_us": "3083023",
+          "transitions": 1
+        },
+        "tracking": {
+          "duration_us": "0",
+          "transitions": 1
+        }
+      },
+      "time": "2020-Mar-24 01:29:46.002417 UTC",
+      "uptime": 2108,
+      "validated_ledger": {
+        "base_fee": 10,
+        "close_time": 638328581,
+        "hash": "E262523CB2579D3E1F66DEBBDCC3D7E9E7E3D88B0B45F9D5640C92766934C855",
+        "reserve_base": 20000000,
+        "reserve_inc": 5000000,
+        "seq": 54300761
+      },
+      "validation_quorum": 29,
+      "validator_list_expires": 639792000
+    },
+    "status": "success"
+  }
+}
+```
+
+*Commandline*
+
+```json
+Loading: "/etc/opt/ripple/rippled.cfg"
+2020-Mar-24 01:30:08.646201720 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "state" : {
-         "build_version" : "0.30.1-rc3",
-         "complete_ledgers" : "18611104-18615037",
+         "build_version" : "1.5.0-rc1",
+         "complete_ledgers" : "54300020-54300767",
          "io_latency_ms" : 1,
+         "jq_trans_overflow" : "0",
          "last_close" : {
-            "converge_time" : 2001,
-            "proposers" : 5
+            "converge_time" : 3143,
+            "proposers" : 34
          },
          "load" : {
             "job_types" : [
                {
                   "job_type" : "untrustedProposal",
-                  "per_second" : 2
+                  "peak_time" : 14,
+                  "per_second" : 44
+               },
+               {
+                  "avg_time" : 6,
+                  "job_type" : "ledgerData",
+                  "peak_time" : 252,
+                  "per_second" : 3
                },
                {
                   "in_progress" : 1,
-                  "job_type" : "clientCommand"
-               },
-               {
-                  "job_type" : "writeObjects",
-                  "per_second" : 2
+                  "job_type" : "clientCommand",
+                  "peak_time" : 3,
+                  "per_second" : 10
                },
                {
                   "avg_time" : 2,
+                  "job_type" : "transaction",
+                  "peak_time" : 61,
+                  "per_second" : 10
+               },
+               {
+                  "job_type" : "batch",
+                  "peak_time" : 11,
+                  "per_second" : 7
+               },
+               {
+                  "avg_time" : 4,
+                  "job_type" : "advanceLedger",
+                  "peak_time" : 128,
+                  "per_second" : 10
+               },
+               {
+                  "job_type" : "fetchTxnData",
+                  "per_second" : 4
+               },
+               {
+                  "avg_time" : 11,
+                  "job_type" : "writeAhead",
+                  "peak_time" : 43
+               },
+               {
+                  "avg_time" : 2,
+                  "job_type" : "trustedValidation",
+                  "peak_time" : 107,
+                  "per_second" : 11
+               },
+               {
+                  "avg_time" : 41,
                   "job_type" : "acceptLedger",
-                  "peak_time" : 6
+                  "peak_time" : 112
                },
                {
                   "job_type" : "trustedProposal",
-                  "per_second" : 1
+                  "per_second" : 14
+               },
+               {
+                  "avg_time" : 131,
+                  "job_type" : "sweep",
+                  "peak_time" : 523
+               },
+               {
+                  "avg_time" : 36,
+                  "job_type" : "heartbeat",
+                  "peak_time" : 144
                },
                {
                   "job_type" : "peerCommand",
-                  "per_second" : 80
+                  "per_second" : 1594
                },
                {
-                  "job_type" : "diskAccess",
-                  "per_second" : 1
+                  "job_type" : "processTransaction",
+                  "per_second" : 10
+               },
+               {
+                  "job_type" : "SyncReadNode",
+                  "per_second" : 128
+               },
+               {
+                  "job_type" : "AsyncReadNode",
+                  "per_second" : 3346
                },
                {
                   "job_type" : "WriteNode",
-                  "per_second" : 91
+                  "per_second" : 2275
                }
             ],
             "threads" : 6
          },
          "load_base" : 256,
-         "load_factor" : 256000,
-         "peers" : 10,
-         "pubkey_node" : "n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa",
-         "pubkey_validator" : "n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST",
+         "load_factor" : 256,
+         "load_factor_fee_escalation" : 256,
+         "load_factor_fee_queue" : 256,
+         "load_factor_fee_reference" : 256,
+         "load_factor_server" : 256,
+         "peer_disconnects" : "61",
+         "peer_disconnects_resources" : "1",
+         "peers" : 21,
+         "pubkey_node" : "n9KUjqxCr5FKThSNXdzb7oqN8rYwScB2dUnNqxQxbEA17JkaWy5x",
+         "pubkey_validator" : "nHBk5DPexBjinXV8qHn7SEKzoxh2W92FxSbNTPgGtQYBzEF4msn9",
          "server_state" : "proposing",
-         "server_state_duration_us": 708078257,
+         "server_state_duration_us" : "1997468900",
          "state_accounting" : {
             "connected" : {
-               "duration_us" : "150510079",
+               "duration_us" : "128124609",
                "transitions" : 1
             },
             "disconnected" : {
-               "duration_us" : "1827731",
+               "duration_us" : "2290325",
                "transitions" : 1
             },
             "full" : {
-               "duration_us" : "168241260112",
-               "transitions" : 1865
+               "duration_us" : "1997468900",
+               "transitions" : 1
             },
             "syncing" : {
-               "duration_us" : "6294237352",
-               "transitions" : 1866
+               "duration_us" : "3083023",
+               "transitions" : 1
             },
             "tracking" : {
-               "duration_us" : "13035524",
-               "transitions" : 1866
+               "duration_us" : "0",
+               "transitions" : 1
             }
          },
-         "uptime" : 174693,
+         "time" : "2020-Mar-24 01:30:08.646564 UTC",
+         "uptime" : 2130,
          "validated_ledger" : {
             "base_fee" : 10,
-            "close_time" : 507693592,
-            "hash" : "1C26209AE593C7EB5123363B3152D86514845FBD42CC6B05111D57F62D02B113",
+            "close_time" : 638328602,
+            "hash" : "835B1EDFA0D4B7BDE1F5030D1B5FBE98C122ABB9C34FE8889B77CD635766C1B5",
             "reserve_base" : 20000000,
             "reserve_inc" : 5000000,
-            "seq" : 18615037
+            "seq" : 54300767
          },
-         "validation_quorum" : 4,
-         "validator_list_expires" : 561139596
+         "validation_quorum" : 29,
+         "validator_list_expires" : 639792000
       },
       "status" : "success"
    }
 }
-
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -257,6 +530,7 @@ The `state` object may have some arrangement of the following fields:
 | `complete_ledgers`               | String           | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". If the server does not have any complete ledgers (for example, it just started syncing with the network), this is the string `empty`. |
 | `closed_ledger`                  | Object           | (May be omitted) Information on the most recently closed ledger that has not been validated by consensus. If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. The member fields are the same as the `validated_ledger` field. |
 | `io_latency_ms`                  | Number           | Amount of time spent waiting for I/O operations, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
+| `jq_trans_overflow`              | String - Number  | The number of times this server has had over 250 transactions waiting to be processed at once. A large number here may mean that your server is unable to handle the transaction load of the XRP Ledger network. For detailed recommendations of future-proof server specifications, see [Capacity Planning](capacity-planning.html). [New in: rippled 0.90.0][] |
 | `load`                           | Object           | _(Admin only)_ Detailed information about the current load state of the server |
 | `load.job_types`                 | Array            | _(Admin only)_ Information about the rate of different types of jobs the server is doing and how much time it spends on each. |
 | `load.threads`                   | Number           | _(Admin only)_ The number of threads in the server's main job pool. |
@@ -274,6 +548,7 @@ The `state` object may have some arrangement of the following fields:
 | `state_accounting`               | Object           | A map of various [server states](rippled-server-states.html) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. [New in: rippled 0.30.1][] |
 | `state_accounting.*.duration_us` | String           | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) [New in: rippled 0.30.1][] |
 | `state_accounting.*.transitions` | Number           | The number of times the server has transitioned into this state. [New in: rippled 0.30.1][] |
+| `time`                           | String           | The current time in UTC, according to the server's clock. [Updated in: rippled 1.5.0][] |
 | `uptime`                         | Number           | Number of consecutive seconds that the server has been operational. [New in: rippled 0.30.1][] |
 | `validated_ledger`               | Object           | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validated_ledger.base_fee`      | Unsigned Integer | Base fee, in drops of XRP, for propagating a transaction to the network. |
