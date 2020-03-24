@@ -1,9 +1,8 @@
 # Configure StatsD
 
- The client implementation of [StatsD](https://github.com/statsd/statsd) within rippled can be enabled to export health and behavioral information about the server. Those metrics can be consumed and visualized through [`rippledmon`](https://github.com/ripple/rippledmon) or any other collector that accepts StatsD formatted metrics.
+ The client implementation of [StatsD](https://github.com/statsd/statsd) within rippled can be enabled to export health and behavioral information about the server. Those metrics can be consumed and visualized through [`rippledmon`](https://github.com/ripple/rippledmon) or any other collector that accepts StatsD formatted metrics. 
 
-
- ## Configuration Steps
+## Configuration Steps
 
  To enable StatsD on your rippled server, perform the following steps:
 
@@ -30,7 +29,7 @@ Replace en0 with the appropriate network interface for your machine.
 
 Sample Output:
 
-        00:41:53.066333 IP 10.0.0.203.63409 > 192.0.2.0.8125: UDP, length 196
+        00:41:53.066333 IP 192.0.2.2.63409 > 192.0.2.0.8125: UDP, length 196
 
 If you periodically see the 8125 port suffix on the destination address, you can be confident that your server is properly exporting StatsD metrics.
 
