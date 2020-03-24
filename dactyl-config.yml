@@ -2385,6 +2385,16 @@ pages:
         targets:
             - en
 
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
+        html: configure-statsd.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Monitor your rippled server with StatsD metrics. #TODO:translate
+        targets:
+            - en
+
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
         html: run-rippled-as-a-validator.html
         funnel: Docs
