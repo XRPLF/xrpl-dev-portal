@@ -32,7 +32,6 @@ Use these methods to manage the rippled server.
 * **[`connect`](connect.html)** - Force the rippled server to connect to a specific peer.
 * **[`ledger_accept`](ledger_accept.html)** - Close and advance the ledger in stand-alone mode.
 * **[`stop`](stop.html)** - Shut down the rippled server.
-* **[`validation_seed`](validation_seed.html)** - Temporarily set key to be used for validating.
 
 
 ## [Status and Debugging Methods](status-and-debugging-methods.html)
@@ -43,10 +42,12 @@ Use these methods to check the status of the network and server.
 * **[`feature`](feature.html)** - Get information about protocol amendments.
 * **[`fetch_info`](fetch_info.html)** - Get information about the server's sync with the network.
 * **[`get_counts`](get_counts.html)** - Get statistics about the server's internals and memory usage.
+* **[`manifest`](manifest.html)** - Get the latest public key information about a known validator.
 * **[`peers`](peers.html)** - Get information about the peer servers connected.
 * **[`print`](print.html)** - Get information about internal subsystems.
-* **[`validators`](validators.html)** - Get information about the current validators.
+* **[`validator_info`](validator_info.html)** - Get information about the server's validator settings, if configured as a validator.
 * **[`validator_list_sites`](validator_list_sites.html)** - Get information about sites that publish validator lists.
+* **[`validators`](validators.html)** - Get information about the current validators.
 
 
 ## Deprecated Methods
@@ -56,6 +57,8 @@ The following admin commands are deprecated and may be removed without further n
 * `ledger_header` - Use the [ledger method][] instead.
 * `unl_add`, `unl_delete`, `unl_list`, `unl_load`, `unl_network`, `unl_reset`, `unl_score` - Use the `validators.txt` config file for UNL management instead.
 * `wallet_seed` - Use the [wallet_propose method][] instead.
+
+The [validation_seed method][] has been removed since `rippled` v0.29.1.
 
 
 <!--{# common link defs #}-->
