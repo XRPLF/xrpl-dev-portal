@@ -2394,6 +2394,7 @@ pages:
         blurb: Monitor your rippled server with StatsD metrics. #TODO:translate
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
         html: run-rippled-as-a-validator.html

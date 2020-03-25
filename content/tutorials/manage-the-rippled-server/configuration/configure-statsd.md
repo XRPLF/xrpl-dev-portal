@@ -1,15 +1,20 @@
 # Configure StatsD
 
- The client implementation of [StatsD](https://github.com/statsd/statsd) within rippled can be enabled to export health and behavioral information about the server. Those metrics can be consumed and visualized through [`rippledmon`](https://github.com/ripple/rippledmon) or any other collector that accepts StatsD formatted metrics. 
+ `rippled` can export health and behavioral information about itself in [StatsD](https://github.com/statsd/statsd) format. Those metrics can be consumed and visualized through [`rippledmon`](https://github.com/ripple/rippledmon) or any other collector that accepts StatsD formatted metrics. 
 
 ## Configuration Steps
 
- To enable StatsD on your rippled server, perform the following steps:
+ To enable StatsD on your `rippled` server, perform the following steps:
 
-1. Configure rippledmon on a separate machine. For more information about configuring `rippledmon` see the `rippledmon` [repository](https://github.com/ripple/rippledmon).
+1. Set up a `rippledmon` instance on another machine to receive and aggregate stats. For more information about configuring `rippledmon`, see the [`rippledmon` repository](https://github.com/ripple/rippledmon).
 
+        $ git clone https://github.com/rippled/rippledmon.git
+        $ cd rippledmon
+        $ docker-compose up
 
-0. Add the `[insight]` stanaza to your `rippled`'s config file. The stanza should contain the address that you would like to send StatsD metrics to followed by the port number that `rippledmon` is listneing on.
+    Make sure [Docker](https://docs.docker.com/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your machine when performing the steps above. 
+
+0. Add the `[insight]` stanza to your `rippled`'s config file. For the address, use the IP `address` and port where `rippledmon` is listening. By default, this port is 8125. For the prefix, choose a name that identifies the rippled server you are configuring. The prefix will appear on all of the StatsD metrics exported from this server. With the configuration below, metrics would appear as `my_rippled.metric_name`. The prefix must not include whitespace, colons ":", or the vertical bar "|". 
 
         [insight]
         server=statsd
@@ -21,17 +26,17 @@
 
         $ sudo systemctl restart rippled
 
-For a quick way to check if metrics are being exported, try the following command:
+0. Check that the metrics are being exported by executing the following command.
 
         $ tcpdump -i en0 | grep UDP
 
-Replace en0 with the appropriate network interface for your machine. 
+Replace `en0` with the appropriate network interface for your machine. For a complete list of the interfaces on your machine use `$ tcpdump -D`.
 
 Sample Output:
 
         00:41:53.066333 IP 192.0.2.2.63409 > 192.0.2.0.8125: UDP, length 196
 
-If you periodically see the 8125 port suffix on the destination address, you can be confident that your server is properly exporting StatsD metrics.
+Assuming you are using the default destination port in your config file, you should periodically see the 8125 suffix on the destination address. 
 
 For descriptions of each StatsD metric see the `rippledmon` [repository](https://github.com/ripple/rippledmon)
 
