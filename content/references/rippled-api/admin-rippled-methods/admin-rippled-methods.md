@@ -27,12 +27,20 @@ Use these methods to manage log levels and other data, such as ledgers.
 
 ## [Server Control Methods](server-control-methods.html)
 
-Use these methods to manage the rippled server.
+Use these methods to manage the `rippled` server.
 
-* **[`connect`](connect.html)** - Force the rippled server to connect to a specific peer.
 * **[`ledger_accept`](ledger_accept.html)** - Close and advance the ledger in stand-alone mode.
 * **[`stop`](stop.html)** - Shut down the rippled server.
 
+## [Peer Management Methods](peer-management-methods.html)
+
+Use these methods to manage the server's connections in the peer-to-peer XRP Ledger network.
+
+* **[`connect`](connect.html)** - Force the rippled server to connect to a specific peer.
+* **[`peer_reservations_add`](peer_reservations_add.html)** - Add or update a reserved slot for a specific peer.
+* **[`peer_reservations_del`](peer_reservations_del.html)** - Remove a reserved slot for a specific peer.
+* **[`peer_reservations_list`](peer_reservations_list.html)** - List reserved slots for specific peers.
+* **[`peers`](peers.html)** - Get information about the peer servers connected.
 
 ## [Status and Debugging Methods](status-and-debugging-methods.html)
 
@@ -43,7 +51,6 @@ Use these methods to check the status of the network and server.
 * **[`fetch_info`](fetch_info.html)** - Get information about the server's sync with the network.
 * **[`get_counts`](get_counts.html)** - Get statistics about the server's internals and memory usage.
 * **[`manifest`](manifest.html)** - Get the latest public key information about a known validator.
-* **[`peers`](peers.html)** - Get information about the peer servers connected.
 * **[`print`](print.html)** - Get information about internal subsystems.
 * **[`validator_info`](validator_info.html)** - Get information about the server's validator settings, if configured as a validator.
 * **[`validator_list_sites`](validator_list_sites.html)** - Get information about sites that publish validator lists.
