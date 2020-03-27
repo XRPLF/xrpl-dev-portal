@@ -374,7 +374,7 @@ With this amendment enabled, a SetRegularKey transaction cannot set the regular 
 
 Changes the [PaymentChannelCreate transaction][] type so that it adds new [payment channels](payment-channels.html) to the recipient's [owner directory](directorynode.html). Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.
 
-This change makes it easier to look up payment channels by their recipient and prevents accounts from being deleted if they are the recipient for open payment channels (except those channels created before this amendment).
+This change prevents accounts from being deleted if they are the recipient for open payment channels, except for channels created before this amendment.
 
 
 ## fixQualityUpperBound
