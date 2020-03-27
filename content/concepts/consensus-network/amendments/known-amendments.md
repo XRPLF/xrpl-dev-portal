@@ -7,11 +7,12 @@ The following is a comprehensive list of all known amendments and their status o
 |:--------------------------------|:-----------|:------------------------------------|
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [SHAMapV2][]                    | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fixQualityUpperBound][]        | v1.5.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [RequireFullyCanonicalSig][]    | v1.5.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [DeletableAccounts][]           | v1.4.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [fixCheckThreading][]           | v1.4.0     | [Expected: 2020-01-18](https://xrpl.org/blog/2020/fixcheckthreading-fixpaychanrecipientownerdir-expected.html "BADGE_BLUE") |
-| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Expected: 2020-01-18](https://xrpl.org/blog/2020/fixcheckthreading-fixpaychanrecipientownerdir-expected.html "BADGE_BLUE") |
+| [fixCheckThreading][]           | v1.4.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [Checks][]                      | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]                   | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
 | [fixMasterKeyAsRegularKey][]    | v1.3.1     | [Enabled: 2019-10-02](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
@@ -41,6 +42,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [TrustSetAuth][]                | v0.30.0    | [Enabled: 2016-07-19](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]                   | v0.31.0    | [Enabled: 2016-06-27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]               | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| [SHAMapV2][]                    | v0.32.1    | [Vetoed: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
 | [FlowV2][]                      | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
 | [SusPay][]                      | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
 
@@ -372,7 +374,19 @@ With this amendment enabled, a SetRegularKey transaction cannot set the regular 
 
 Changes the [PaymentChannelCreate transaction][] type so that it adds new [payment channels](payment-channels.html) to the recipient's [owner directory](directorynode.html). Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.
 
-This change makes it easier to look up payment channels by their recipient and prevents accounts from being deleted if they are the recipient for open payment channels (except those channels created before this amendment).
+This change prevents accounts from being deleted if they are the recipient for open payment channels, except for channels created before this amendment.
+
+
+## fixQualityUpperBound
+[fixQualityUpperBound]: #fixqualityupperbound
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | Planned   |
+
+Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
+
+This amendment has no known impact on transaction processing.
 
 
 ## fixTakerDryOfferRemoval
@@ -489,6 +503,22 @@ Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating
 Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](paychannel.html). Defines an off-ledger data structure called a `Claim`, used in the ChannelClaim transaction. Creates new `rippled` API methods: [`channel_authorize`](channel_authorize.html) (creates a signed Claim), [`channel_verify`](channel_verify.html) (verifies a signed Claim), and [`account_channels`](account_channels.html) (lists Channels associated with an account).
 
 For more information, see the [Payment Channels Tutorial](use-payment-channels.html).
+
+
+## RequireFullyCanonicalSig
+[RequireFullyCanonicalSig]: #requirefullycanonicalsig
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | Planned   |
+
+Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of just transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags) enabled.
+
+Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have tfFullyCanonicalSig enabled. Most signing utilities enable tfFullyCanonicalSig by default, but there are exceptions.
+
+With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](transaction-malleability.html#malleability-with-multi-signatures) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the tfFullyCanonicalSig flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
+
+For more information, see [`rippled` issue #3042](https://github.com/ripple/rippled/issues/3042).
 
 
 ## SHAMapV2
