@@ -49,8 +49,8 @@ The request includes the following parameters:
 |:--------------|:--------|:---------------------------------------------------|
 | `transaction` | String  | The 256-bit hash of the transaction, as hex.       |
 | `binary`      | Boolean | _(Optional)_ If `true`, return transaction data and metadata as binary [serialized](serialization.html) to hexadecimal strings. If `false`, return transaction data and metadata as JSON. The default is `false`. |
-| `min_ledger`  | Number  | _(Optional)_ If provided, search for the transaction in ledger versions whose [ledger index][] is this value or higher. If provided, you should also specify `max_ledger`. [New in: rippled 1.5.0][] |
-| `max_ledger`  | Number  | _(Optional)_ If provided, search for the transaction in ledger versions whose [ledger index][] is this value or lower. If provided, you should also specify `min_ledger`. [New in: rippled 1.5.0][] |
+| `min_ledger`  | Number  | _(Optional)_ Use this with `max_ledger` to specify a range of up to 1000 [ledger indexes][ledger index], starting with this ledger (inclusive). If the server [cannot find the transaction](#not-found-response), it confirms whether it was able to search all the ledgers in this range. [New in: rippled 1.5.0][] |
+| `max_ledger`  | Number  | _(Optional)_ Use this with `min_ledger` to specify a range of up to 1000 [ledger indexes][ledger index], ending with this ledger (inclusive). If the server [cannot find the transaction](#not-found-response), it confirms whether it was able to search all the ledgers in the requested range. [New in: rippled 1.5.0][] |
 
 **Caution:** This command may successfully find the transaction even if it is included in a ledger _outside_ the range of `min_ledger` to `max_ledger`.
 
@@ -62,7 +62,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 1,
     "result": {
