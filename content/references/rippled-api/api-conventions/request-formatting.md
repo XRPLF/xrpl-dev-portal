@@ -126,3 +126,8 @@ The following types of changes are **non-breaking changes** and may occur withou
 
 - Adding a new field to a request or response, not including positional parameters.
 - Adding a new API method.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

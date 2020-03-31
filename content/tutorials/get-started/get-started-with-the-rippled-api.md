@@ -102,3 +102,8 @@ For a full list of API methods, see:
 - **References:**
     - [rippled API Reference](rippled-api.html)
     - [Ripple Data API v2](data-api.html)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
