@@ -11,7 +11,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 1,
   "command": "tx",
@@ -21,7 +21,7 @@ An example of the request format:
 ```
 *JSON-RPC*
 
-```
+```json
 {
     "method": "tx",
     "params": [
@@ -34,7 +34,7 @@ An example of the request format:
 ```
 *Commandline*
 
-```
+```sh
 #Syntax: tx transaction [binary]
 rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
@@ -48,7 +48,11 @@ The request includes the following parameters:
 | `Field`       | Type    | Description                                        |
 |:--------------|:--------|:---------------------------------------------------|
 | `transaction` | String  | The 256-bit hash of the transaction, as hex.       |
-| `binary`      | Boolean | (Optional, defaults to false) If true, return transaction data and metadata as hex strings instead of JSON |
+| `binary`      | Boolean | _(Optional)_ If `true`, return transaction data and metadata as binary [serialized](serialization.html) to hexadecimal strings. If `false`, return transaction data and metadata as JSON. The default is `false`. |
+| `min_ledger`  | Number  | _(Optional)_ Use this with `max_ledger` to specify a range of up to 1000 [ledger indexes][ledger index], starting with this ledger (inclusive). If the server [cannot find the transaction](#not-found-response), it confirms whether it was able to search all the ledgers in this range. [New in: rippled 1.5.0][] |
+| `max_ledger`  | Number  | _(Optional)_ Use this with `min_ledger` to specify a range of up to 1000 [ledger indexes][ledger index], ending with this ledger (inclusive). If the server [cannot find the transaction](#not-found-response), it confirms whether it was able to search all the ledgers in the requested range. [New in: rippled 1.5.0][] |
+
+**Caution:** This command may successfully find the transaction even if it is included in a ledger _outside_ the range of `min_ledger` to `max_ledger`.
 
 ## Response Format
 
@@ -58,7 +62,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 1,
     "result": {
@@ -197,11 +201,79 @@ The response follows the [standard format][], with a successful result containin
 | `validated`    | Boolean          | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
 | (Various)      | (Various)        | Other fields from the [Transaction object](transaction-formats.html) |
 
+### Not Found Response
+
+If the server does not find the transaction, it returns a `txnNotFound` error, which could mean two things:
+
+- The transaction has not been included in any ledger version, and has not been executed.
+- The transaction was included in a ledger version that the server does not have available.
+
+This means that a `txnNotFound` on its own is not sufficient to know the [final outcome of a transaction](finality-of-results.html).
+
+To further narrow down the possibilities, you can provide a range of ledgers to search using the `min_ledger` and `max_ledger` fields in the request. If you provide **both** of those fields, the `txnNotFound` response includes the following field:
+
+| `Field`        | Type      | Description                              |
+|:---------------|:----------|:-----------------------------------------|
+| `searched_all` | Boolean   | _(Omitted unless the request provided `min_ledger` and `max_ledger`)_ If `true`, the server was able to search all of the specified ledger versions, and the transaction was in none of them. If `false`, the server did not have all of the specified ledger versions available, so it is not sure if one of them might contain the transaction. [New in: rippled 1.5.0][] |
+
+An example of a `txnNotFound` response that fully searched a requested range of ledgers:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_WebSocket_
+
+```json
+{
+  "error": "txnNotFound",
+  "error_code": 29,
+  "error_message": "Transaction not found.",
+  "id": 1,
+  "request": {
+    "binary": false,
+    "command": "tx",
+    "id": 1,
+    "max_ledger": 54368673,
+    "min_ledger": 54368573,
+    "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7"
+  },
+  "searched_all": true,
+  "status": "error",
+  "type": "response"
+}
+```
+
+_JSON-RPC_
+
+```json
+200 OK
+
+{
+  "result": {
+    "error": "txnNotFound",
+    "error_code": 29,
+    "error_message": "Transaction not found.",
+    "request": {
+      "binary": false,
+      "command": "tx",
+      "max_ledger": 54368673,
+      "min_ledger": 54368573,
+      "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7"
+    },
+    "searched_all": true,
+    "status": "error"
+  }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
 ## Possible Errors
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `txnNotFound` - Either the transaction does not exist, or it was part of an older ledger version that `rippled` does not have available.
+* `excessiveLgrRange` - The `min_ledger` and `max_ledger` fields of the request are more than 1000 apart.
+* `invalidLgrRange` - The specified `min_ledger` is larger than the `max_ledger`, or one of those parameters is not a valid ledger index.
 
 
 {% include '_snippets/rippled_versions.md' %}
