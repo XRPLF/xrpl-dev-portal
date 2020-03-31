@@ -271,7 +271,7 @@ _JSON-RPC_
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `txnNotFound` - Either the transaction does not exist, or it was part of an older ledger version that `rippled` does not have available.
+* `txnNotFound` - Either the transaction does not exist, or it was part of an ledger version that `rippled` does not have available.
 * `excessiveLgrRange` - The `min_ledger` and `max_ledger` fields of the request are more than 1000 apart.
 * `invalidLgrRange` - The specified `min_ledger` is larger than the `max_ledger`, or one of those parameters is not a valid ledger index.
 
