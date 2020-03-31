@@ -2,14 +2,14 @@
 
 Communicate directly with a `rippled` server using these admin API methods. Admin methods are meant only for trusted personnel in charge of keeping the server operational. Admin methods include commands for managing, monitoring, and debugging the server.
 
-Admin commands are available only if you connect to `rippled` on a host and port that the `rippled.cfg` file identifies as admin. By default, the commandline client uses an admin connection. For more information on connecting to `rippled`, see [Getting Started with the rippled API](get-started-with-the-rippled-api.html).
+Admin commands are available only if you connect to `rippled` on a host and port that the `rippled.cfg` file identifies as admin. By default, the commandline client uses an admin connection. For more information on connecting to `rippled`, see [Getting Started with the `rippled` API](get-started-with-the-rippled-api.html).
 
 
 ## [Key Generation Methods](key-generation-methods.html)
 
 Use these methods to generate and manage keys.
 
-* **[`validation_create`](validation_create.html)** - Generate keys for a new rippled validator.
+* **[`validation_create`](validation_create.html)** - Generate keys for a new `rippled` validator.
 * **[`wallet_propose`](wallet_propose.html)** - Generate keys for a new account.
 
 
@@ -30,13 +30,13 @@ Use these methods to manage log levels and other data, such as ledgers.
 Use these methods to manage the `rippled` server.
 
 * **[`ledger_accept`](ledger_accept.html)** - Close and advance the ledger in stand-alone mode.
-* **[`stop`](stop.html)** - Shut down the rippled server.
+* **[`stop`](stop.html)** - Shut down the `rippled` server.
 
 ## [Peer Management Methods](peer-management-methods.html)
 
 Use these methods to manage the server's connections in the peer-to-peer XRP Ledger network.
 
-* **[`connect`](connect.html)** - Force the rippled server to connect to a specific peer.
+* **[`connect`](connect.html)** - Force the `rippled` server to connect to a specific peer.
 * **[`peer_reservations_add`](peer_reservations_add.html)** - Add or update a reserved slot for a specific peer.
 * **[`peer_reservations_del`](peer_reservations_del.html)** - Remove a reserved slot for a specific peer.
 * **[`peer_reservations_list`](peer_reservations_list.html)** - List reserved slots for specific peers.
