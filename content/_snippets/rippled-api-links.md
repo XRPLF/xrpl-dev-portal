@@ -95,6 +95,7 @@
   "ledger_request",
   "log_level",
   "logrotate",
+  "manifest",
   "noripple_check",
   "path_find",
   "peer_reservations_add",
@@ -119,6 +120,7 @@
   "unsubscribe",
   "validation_create",
   "validation_seed",
+  "validator_info",
   "validator_list_sites",
   "validators",
   "wallet_propose"

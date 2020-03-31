@@ -4502,6 +4502,18 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/manifest.md
+        html: manifest.html
+        blurb: Look up the public information about a known validator.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
         html: print.html
         blurb: Get information about internal subsystems.
@@ -4522,6 +4534,18 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_info.md
+        html: validator_info.html
+        blurb: Get the server's validation settings, if configured as a validator.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
