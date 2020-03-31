@@ -11,7 +11,7 @@ Some example errors:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 3,
   "status": "error",
@@ -29,8 +29,9 @@ Some example errors:
 
 *JSON-RPC*
 
-```
+```json
 HTTP Status: 200 OK
+
 {
     "result": {
         "error": "ledgerIndexMalformed",
@@ -47,7 +48,7 @@ HTTP Status: 200 OK
 
 *Commandline*
 
-```
+```json
 {
     "result": {
         "error": "ledgerIndexMalformed",
@@ -73,7 +74,8 @@ HTTP Status: 200 OK
 | `status`  | String   | `"error"` if the request caused an error              |
 | `type`    | String   | Typically `"response"`, which indicates a successful response to a command. |
 | `error`   | String   | A unique code for the type of error that occurred     |
-| `request` | Object   | A copy of the request that prompted this error, in JSON format. **Caution:** If the request contained any account secrets, they are copied here! |
+| `request` | Object   | A copy of the request that prompted this error, in JSON format. **Caution:** If the request contained any secrets, they are copied here! |
+| `api_version` | Number | _(May be omitted)_ The `api_version` specified in the request, if any. |
 
 
 ## JSON-RPC Format
@@ -99,14 +101,15 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 
 All methods can potentially return any of the following values for the `error` code:
 
-* `unknownCmd` - The request does not contain a [command](rippled-api.html) that the `rippled` server recognizes.
+* `amendmentBlocked` - The server is [amendment blocked](amendments.html#amendment-blocked) and needs to be updated to the latest version to stay synced with the XRP Ledger network.
+- `invalid_API_version` - The server does not support the [API version number](request-formatting.html#api-versioning) from the request.
 * `jsonInvalid` - (WebSocket only) The request is not a proper JSON object.
     * JSON-RPC returns a 400 Bad Request HTTP error in this case instead.
 * `missingCommand` - (WebSocket only) The request did not specify a `command` field.
     * JSON-RPC returns a 400 Bad Request HTTP error in this case instead.
-* `tooBusy` - The server is under too much load to do this command right now. Generally not returned if you are connected as an admin.
-* `noNetwork` - The server is having trouble connecting to the rest of the XRP Ledger peer-to-peer network (and is not running in stand-alone mode).
-* `noCurrent` - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.
 * `noClosed` - The server does not have a closed ledger, typically because it has not finished starting up.
+* `noCurrent` - The server does not know what the current ledger is, due to high load, network problems, validator failures, incorrect configuration, or some other problem.
+* `noNetwork` - The server is having trouble connecting to the rest of the XRP Ledger peer-to-peer network (and is not running in stand-alone mode).
+* `tooBusy` - The server is under too much load to do this command right now. Generally not returned if you are connected as an admin.
+* `unknownCmd` - The request does not contain a [command](rippled-api.html) that the `rippled` server recognizes.
 * `wsTextRequired` - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text.
-* `amendmentBlocked` - The server is [amendment blocked](amendments.html#amendment-blocked) and needs to be updated to the latest version to stay synced with the XRP Ledger network.

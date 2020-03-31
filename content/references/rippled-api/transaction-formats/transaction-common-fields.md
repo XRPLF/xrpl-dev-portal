@@ -72,7 +72,7 @@ The only flag that applies globally to all transactions is as follows:
 
 When using the [sign method][] (or [submit method][] in "sign-and-submit" mode), `rippled` adds a `Flags` field with `tfFullyCanonicalSig` enabled unless the `Flags` field is already present. The `tfFullyCanonicalSig` flag ***is not*** automatically enabled if `Flags` is explicitly specified. The flag ***is not*** automatically enabled when using the [sign_for method][] to add a signature to a multi-signed transaction.
 
-**Warning:** If you do not enable `tfFullyCanonicalSig`, it is theoretically possible for a malicious actor to modify your transaction signature so that the transaction may succeed with a different hash than expected. In the worst case, this could trick your integration into submitting the same payment multiple times. To avoid this problem, enable the `tfFullyCanonicalSig` flag on all transactions you sign.
+**Warning:** If you do not enable `tfFullyCanonicalSig`, it is theoretically possible for a malicious actor to modify your transaction signature so that the transaction may succeed with a different hash than expected. In the worst case, this could [trick your integration into submitting the same payment multiple times](transaction-malleability.html#exploit-with-malleable-transactions). To avoid this problem, enable the `tfFullyCanonicalSig` flag on all transactions you sign. If the [RequireFullyCanonicalSig amendment][] :not_enabled: is enabled, all single-signed transactions are protected regardless of the tfFullyCanonicalSig flag.
 
 ### Flag Ranges
 
