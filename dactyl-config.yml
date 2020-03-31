@@ -2495,6 +2495,17 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-grpc.md
+        html: configure-grpc.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Enable and configure the gRPC API.
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
         html: enable-public-signing.html
         funnel: Docs
