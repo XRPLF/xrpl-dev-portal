@@ -120,7 +120,7 @@ Example warning:
 ]
 ```
 
-This warning indicates that the one or more [amendments](amendments.html) to the XRP Ledger protocol are scheduled to become enabled if they maintain support from trusted validators, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](amendments.html#amendment-blocked), so you should [upgrade to the latest `rippled` version](install-rippled.html) as soon as possible.
+This warning indicates that the one or more [amendments](amendments.html) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](amendments.html#amendment-blocked), so you should [upgrade to the latest `rippled` version](install-rippled.html) as soon as possible.
 
 The server only sends this warning if the client is [connected as an admin](get-started-with-the-rippled-api.html#admin-access).
 
@@ -131,7 +131,7 @@ This warning includes a `details` field with the following fields:
 | `expected_date`     | Number | The time that the first unsupported amendment is expected to become enabled, in [seconds since the Ripple Epoch][]. |
 | `expected_date_UTC` | String | The timestamp, in UTC, when the first unsupported amendment is expected to become enabled. |
 
-Due to the variation in ledger close times, these times are approximate. It is also possible that the amendment fails to maintain support from >80% of validators until the specified time, and does not become enabled at the expected time. The server will not become amendment blocked as long as the unsupported amendments do not become enabled.
+Due to the variation in ledger close times, these times are approximate. It is also possible that the amendment fails to maintain support from >80% of validators until the specified time, and does not become enabled at the expected time. The server will not become amendment blocked so long as the unsupported amendments do not become enabled.
 
 
 ### 1002. This server is amendment blocked
