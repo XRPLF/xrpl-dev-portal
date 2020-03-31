@@ -1,14 +1,62 @@
 # Request Formatting
 
+## Example Request
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": 2,
+  "command": "account_info",
+  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "strict": true,
+  "ledger_index": "validated",
+  "api_version": 1
+}
+```
+
+*JSON-RPC*
+
+```json
+POST http://s1.ripple.com:51234/
+Content-Type: application/json
+
+{
+    "method": "account_info",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "strict": true,
+            "ledger_index": "validated",
+            "api_version": 1
+        }
+    ]
+}
+```
+
+*Commandline*
+
+```sh
+rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated strict
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+
 ## WebSocket Format  
 
-After you open a WebSocket to the `rippled` server, you can send commands as a [JSON](https://en.wikipedia.org/wiki/JSON) object, with the following attributes:
+After you open a WebSocket to the `rippled` server, you can send commands as a [JSON](https://en.wikipedia.org/wiki/JSON) object with the following fields:
 
-* Put command name in top-level `"command"` field
-* All the relevant parameters for the command are also in the top level
-* Optionally include an `"id"` field with an arbitrary value. The response to this request uses the same `"id"` field. This way, even if responses arrive out of order, you know which request prompted which response.
+| Field               | Type      | Description                                |
+|:--------------------|:----------|:-------------------------------------------|
+| `command`           | String    | The name of the [API method](public-rippled-methods.html). |
+| `id`                | (Various) | _(Optional)_ A unique value to identify this request. The response to this request uses the same `id` field. This way, even if responses arrive out of order, you know which request prompted which response. |
+| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). [New in: rippled 1.5.0][] |
+| (Method Parameters) | (Various) | Provide any parameters to the method at the top level. |
 
-The response comes as a JSON object.
+See [Response Formatting](response-formatting.html) for the response from the server.
 
 ## JSON-RPC Format
 
@@ -18,53 +66,63 @@ Always include a `Content-Type` header with the value `application/json`.
 
 If you plan on making multiple requests, use [Keep-Alives](http://tools.ietf.org/html/rfc7230#section-6.3) so that you do not have to close and re-open the connection in between requests.
 
-Send request body as a [JSON](https://en.wikipedia.org/wiki/JSON) object with the following attributes:
+Send request body as a [JSON](https://en.wikipedia.org/wiki/JSON) object with the following fields:
 
-* Put the command in the top-level `"method"` field
-* Include a top-level `"params"` field. The contents of this field should be **a one-item array** containing only a nested JSON object with all the parameters for the command.
 
-The response is also a JSON object.
+| Field               | Type      | Description                                |
+|:--------------------|:----------|:-------------------------------------------|
+| `method`            | String    | The name of the [API method](public-rippled-methods.html). |
+| `params`            | Array     | _(Optional)_ A **one-item array** containing a nested JSON object with the parameters to this method. You may omit this field if the method does not require any parameters. |
+
+The object inside the `params` array can contain the following fields:
+
+| Field               | Type      | Description                                |
+|:--------------------|:----------|:-------------------------------------------|
+| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). [New in: rippled 1.5.0][] |
+| (Method Parameters) | (Various) | Provide any parameters to the method here. |
+
+See [Response Formatting](response-formatting.html) for the response from the server.
 
 ## Commandline Format
 
-The commandline puts the command after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. For any parameter values that might contain spaces or other unusual characters, use single-quotes to encapsulate them.
+Put the API method name after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. For any parameter values that might contain spaces or other unusual characters, use single-quotes to encapsulate them. Not all methods have commandline API syntax. For more information, see [Commandline Usage](https://xrpl.org/commandline-usage.html#client-mode-options).
 
-### Example Request
+The commandline calls JSON-RPC, so its responses always match the JSON-RPC [response format](response-formatting.html).
 
-<!-- MULTICODE_BLOCK_START -->
+The commandline always uses the latest [API version](#api-versioning).
 
-*WebSocket*
+**Caution:** The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!
 
-```
-{
-  "id": 2,
-  "command": "account_info",
-  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "strict": true,
-  "ledger_index": "validated"
-}
-```
+## API Versioning
 
-*JSON-RPC*
+The `rippled` server uses a single integer to identify the API version to use. The first API version is `1`; currently, this is the only version of the `rippled` API. (There is no API version 0.) [New in: rippled 1.5.0][]
 
-```
-POST http://s1.ripple.com:51234/
-{
-    "method": "account_info",
-    "params": [
-        {
-            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "strict": true,
-            "ledger_index": "validated"
-        }
-    ]
-}
-```
+Future versions of `rippled` that introduce breaking changes will introduce a new API version number, such as `2`. The server will support a range of API versions, which it reports in the `version` API method. <!-- TODO: add a link when `version` method is documented. -->
 
-*Commandline*
+### Breaking Changes
 
-```
-rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
-```
+The following types of changes are **breaking changes**:
 
-<!-- MULTICODE_BLOCK_END -->
+- Removing or renaming a field of a request or response.
+- Changing the type of a field of a request or response.
+- Changing the meaning of a field of a request or a response.
+- Changing the order of positional parameters, or adding a new field before other positional parameters.
+- Removing or renaming an API method.
+- Changing the behavior of an API function visible to existing clients.
+- The following types of breaking changes only apply to the gRPC API:
+    - Changing a `proto` field number.
+    - Removing or renaming an enum or enum value.
+    - Adding or removing fields from a `oneof`.
+    - Splitting or merging a `oneof`.
+    - Changing whether a message field is `optional`, `repeated`, or `required`.
+    - Changing the stream value of a request or response.
+    - Deleting or renaming a package or service.
+
+Any time a full release introduces a breaking change, it introduces a new API version number. Pre-release, beta, and development versions may introduce breaking changes to the same API version number.
+
+### Non-Breaking Changes
+
+The following types of changes are **non-breaking changes** and may occur without a change of API version number:
+
+- Adding a new field to a request or response, not including positional parameters.
+- Adding a new API method.
