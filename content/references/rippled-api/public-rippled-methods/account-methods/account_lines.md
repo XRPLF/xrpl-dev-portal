@@ -11,7 +11,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 1,
   "command": "account_lines",
@@ -21,7 +21,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "account_lines",
     "params": [
@@ -30,6 +30,13 @@ An example of the request format:
         }
     ]
 }
+```
+
+*Commandline*
+
+```sh
+#Syntax:
+rippled account_lines <account> [<peer>] [<ledger>]
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -57,7 +64,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 1,
     "status": "success",
@@ -102,8 +109,9 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
