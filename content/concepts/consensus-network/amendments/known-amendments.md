@@ -8,13 +8,13 @@ The following is a comprehensive list of all known amendments and their status o
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixQualityUpperBound][]        | v1.5.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [RequireFullyCanonicalSig][]    | v1.5.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [DeletableAccounts][]           | v1.4.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [fixCheckThreading][]           | v1.4.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [Checks][]                      | v0.90.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [FlowCross][]                   | v0.70.0    | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [fixQualityUpperBound][]        | v1.5.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
+| [RequireFullyCanonicalSig][]    | v1.5.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
+| [DeletableAccounts][]           | v1.4.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
+| [fixCheckThreading][]           | v1.4.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
+| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
+| [Checks][]                      | v0.90.0    | [Open for Voting: TBD]( "BADGE_80d0e0") |
+| [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD]( "BADGE_80d0e0") |
 | [fixMasterKeyAsRegularKey][]    | v1.3.1     | [Enabled: 2019-10-02](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
 | [MultiSignReserve][]            | v1.2.0     | [Enabled: 2019-04-17](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
 | [fixTakerDryOfferRemoval][]     | v1.2.0     | [Enabled: 2019-04-02](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
