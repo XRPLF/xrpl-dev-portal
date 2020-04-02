@@ -21,9 +21,9 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
-  "id": 1,
+  "id": 8,
   "command": "account_objects",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "ledger_index": "validated",
@@ -34,7 +34,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "account_objects",
     "params": [
@@ -51,7 +51,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: account_objects <account> [<ledger>]
 rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 ```

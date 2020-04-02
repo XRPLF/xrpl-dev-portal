@@ -11,9 +11,9 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
-  "id": 2,
+  "id": 9,
   "command": "account_offers",
   "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM"
 }
@@ -21,7 +21,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "account_offers",
     "params": [
@@ -34,9 +34,9 @@ An example of the request format:
 
 *Commandline*
 
-```
-#Syntax: account_offers account [ledger_index]
-rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
+```sh
+#Syntax: account_offers account [ledger_index] [strict]
+rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current strict
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -53,6 +53,7 @@ A request can include the following parameters:
 | `ledger_index` | Number - [Ledger Index][]   | (Optional, defaults to `current`) The [ledger index][] of the ledger to use, or "current", "closed", or "validated" to select a ledger dynamically. (See [Specifying Ledgers][]) |
 | `limit`        | Integer                     | (Optional, default varies) Limit the number of transactions to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
 | `marker`       | [Marker][]                  | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
+| `strict`       | Boolean                    | _(Optional)_ If `true`, then the `account` field only accepts a public key or XRP Ledger address. Otherwise, `account` can be a secret or passphrase (not recommended). The default is `false`. |
 
 The following parameter is deprecated and may be removed without further notice: `ledger`.
 
@@ -64,7 +65,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 9,
   "status": "success",
@@ -104,8 +105,9 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",

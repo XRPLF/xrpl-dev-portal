@@ -11,11 +11,11 @@ An example of an account_info request:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 2,
   "command": "account_info",
-  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
   "strict": true,
   "ledger_index": "current",
   "queue": true
@@ -24,7 +24,7 @@ An example of an account_info request:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "account_info",
     "params": [
@@ -40,9 +40,9 @@ An example of an account_info request:
 
 *Commandline*
 
-```
+```sh
 #Syntax: account_info account [ledger_index|ledger_hash] [strict]
-rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 true
+rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated strict
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -54,11 +54,11 @@ The request contains the following parameters:
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
 | `account`      | String                     | A unique identifier for the account, most commonly the account's [Address][]. |
-| `strict`       | Boolean                    | (Optional, defaults to False) If set to True, then the `account` field only accepts a public key or XRP Ledger address. |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `queue`        | Boolean                    | _(Optional)_ If `true`, and the [FeeEscalation amendment][] is enabled, also returns stats about queued transactions associated with this account. Can only be used when querying for the data from the current open ledger. [New in: rippled 0.33.0][] |
 | `signer_lists` | Boolean                    | _(Optional)_ If `true`, and the [MultiSign amendment][] is enabled, also returns any [SignerList objects](signerlist.html) associated with this account. [New in: rippled 0.31.0][] |
+| `strict`       | Boolean                    | _(Optional)_ If `true`, then the `account` field only accepts a public key or XRP Ledger address. Otherwise, `account` can be a secret or passphrase (not recommended). The default is `false`. |
 
 The following fields are deprecated and should not be provided: `ident`, `ledger`.
 
@@ -70,7 +70,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 5,
     "status": "success",
@@ -120,7 +120,7 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 {
     "result": {
         "account_data": {
