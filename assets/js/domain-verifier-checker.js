@@ -101,7 +101,7 @@ async function parse_xrpl_toml(data, public_key_hex, public_key, message) {
 
 function display_manifest(man) {
   for (x in man){
-    log = makeLogEntry(x + ":" +man[x]);
+    log = makeLogEntry(x + ": " +man[x]);
   }
 }
 
@@ -145,7 +145,7 @@ function parse_manifest() {
     makeLogEntry("Domain not found in manifest").addClass(CLASS_BAD);
     display_manifest({"Sequence":seq, 
                     "Master Public Key": public_key,
-                    "Ephemeral Publid Key":ephemeral_public_key});
+                    "Ephemeral Public Key":ephemeral_public_key});
     return;
   }
 
@@ -154,7 +154,7 @@ function parse_manifest() {
   display_manifest({"Sequence":seq, 
                     "Domain":domain,
                     "Master Public Key": public_key,
-                    "Ephemeral Publid Key":ephemeral_public_key})
+                    "Ephemeral Public Key":ephemeral_public_key})
 
 
 
