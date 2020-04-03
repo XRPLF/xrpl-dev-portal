@@ -98,6 +98,14 @@ async function parse_xrpl_toml(data, public_key_hex, public_key, message) {
   }
 }
 
+
+function display_manifest(man) {
+  for (x in man){
+    log = makeLogEntry(x + ":" +man[x]);
+  }
+}
+
+
 //2.
 //Decompose the manifest to obtain the domain and public key.
 //Use these to create the message that should have been signed by the validator's private key (the attestation).
@@ -114,17 +122,42 @@ function parse_manifest() {
     return;
   }
 
+  
+
+  
+  
+  let seq = man ["Sequence"];
+
   let public_key_hex = man["PublicKey"];
-  let buff = new Buffer(public_key_hex, "hex").toJSON().data;
+  let buff_pub = new Buffer(public_key_hex, "hex").toJSON().data;
+  let public_key = addressCodec.encodeNodePublic(buff_pub);
+
+  let ephemeral_public_key_hex = man["SigningPubKey"];
+  let buff_eph_pub = new Buffer(ephemeral_public_key_hex, "hex").toJSON().data;
+  let ephemeral_public_key = addressCodec.encodeNodePublic(buff_eph_pub);
+
+
+
 
   try {
     var domain = hex_to_ascii(man["Domain"]);
   } catch {
     makeLogEntry("Domain not found in manifest").addClass(CLASS_BAD);
+    display_manifest({"Sequence":seq, 
+                    "Master Public Key": public_key,
+                    "Ephemeral Publid Key":ephemeral_public_key});
     return;
   }
 
-  let public_key = addressCodec.encodeNodePublic(buff);
+
+
+  display_manifest({"Sequence":seq, 
+                    "Domain":domain,
+                    "Master Public Key": public_key,
+                    "Ephemeral Publid Key":ephemeral_public_key})
+
+
+
 
   //This is the message that was signed by the validator's private key.
   let message = "[domain-attestation-blob:" + domain + ":" + public_key + "]";
