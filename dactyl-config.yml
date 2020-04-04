@@ -5714,7 +5714,7 @@ pages:
             - xrp-api-only
 
         # API reference generator makes multiple files here
-    -   openapi_specification: https://raw.githubusercontent.com/ripple/xrp-api/master/api-doc.yml
+    -   openapi_specification: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/api-doc.yml
         openapi_md_template_path: tool/openapi_templates_alpha/
         api_slug: xrp-api
         funnel: Docs
