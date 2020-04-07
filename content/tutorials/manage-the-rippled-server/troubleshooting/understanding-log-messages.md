@@ -145,6 +145,19 @@ Messages such as the following are caused by a bug in `rippled` v1.1.0 and earli
 These can be safely ignored.
 
 
+## Not deleting
+
+Messages such as the following occur when [online deletion is interrupted](online-deletion.html#interrupting-online-deletion):
+
+```text
+SHAMapStore:WRN Not deleting. state: syncing. age 25s
+```
+
+The `state` indicates the [server state](rippled-server-states.html) and the `age` indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)
+
+During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the [system requirements](system-requirements.html), especially disk I/O, to run online deletion at the same time as everything else the server is doing.
+
+
 ## Potential Censorship
 
 Log messages such as the following are issued when the XRP Ledger detects potential transaction censorship. For more information about these log messages and the transaction censorship detector, see [Transaction Censorship Detection](transaction-censorship-detection.html).
@@ -160,6 +173,36 @@ LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 ```text
 LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
 ```
+
+
+## rotating validatedSeq
+
+This message indicates that [online deletion](online-deletion.html) has started running:
+
+```text
+SHAMapStore:WRN rotating  validatedSeq 54635511 lastRotated 54635255 deleteInterval 256 canDelete_ 4294967295
+```
+
+This log message is normal and indicates that online deletion is operating as expected.
+
+The log message contains values describing the current online deletion run. Each keyword corresponds to the value immediately following it:
+
+| Keyword          | Value            | Description                            |
+|:-----------------|:-----------------|:---------------------------------------|
+| `validatedSeq`   | [Ledger Index][] | The current validated ledger version.  |
+| `lastRotated`    | [Ledger Index][] | The end of the ledger range in the ["old" (read-only) database](online-deletion.html#how-it-works). Online deletion deletes this ledger version and earlier. |
+| `deleteInterval` | Number           | How many ledger versions to keep after online deletion. The [`online_delete` setting](online-deletion.html#configuration) controls this value. |
+| `canDelete_`     | [Ledger Index][] | The newest ledger version that the server is allowed to delete, if using [advisory deletion](online-deletion.html#advisory-deletion). If not using advisory deletion, this value is ignored. |
+
+When online deletion finishes, it writes the following log message:
+
+```text
+SHAMapStore:WRN finished rotation 54635511
+```
+
+The number at the end of the message is the [ledger index][] of the validated ledger at the time online deletion started, matching the `validatedSeq` value of the "rotating" message. This becomes the `lastRotated` value the next time online deletion runs.
+
+If the server falls out of sync while running online deletion, it interrupts online deletion and writes a ["Not deleting" log message](#not-deleting) instead of a "finished rotation" message.
 
 
 ## Shard: No such file or directory
