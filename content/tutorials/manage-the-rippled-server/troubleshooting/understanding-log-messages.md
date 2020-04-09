@@ -153,7 +153,7 @@ Messages such as the following occur when [online deletion is interrupted](onlin
 SHAMapStore:WRN Not deleting. state: syncing. age 25s
 ```
 
-The `state` indicates the [server state](rippled-server-states.html) and the `age` indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)
+The `state` indicates the [server state](rippled-server-states.html). The `age` indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)
 
 During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the [system requirements](system-requirements.html), especially disk I/O, to run online deletion at the same time as everything else the server is doing.
 
