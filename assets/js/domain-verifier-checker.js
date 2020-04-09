@@ -111,7 +111,7 @@ function display_manifest(man) {
 //Use these to create the message that should have been signed by the validator's private key (the attestation).
 //Go to the domain and verify the signature of the attestation field in the appropriate validator entry.
 function parse_manifest() {
-	const manhex = $("#manifest").val();
+	const manhex = $("#manifest").val().toUpperCase();
 
 	try {
 		var man = codec.decode(manhex);

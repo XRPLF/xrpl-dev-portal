@@ -5,14 +5,14 @@
   <h1>Domain Verification Checker</h1>
 
   <p>This tool allows you to verify that <a href="xrp-ledger-toml.html#domain-verification">domain verification</a> is properly configured. </p>
-  <p>Enter the manifest found in your validator-keys.json file. Do not confuse this with your validator's secret key.</p>   
+  <p>Enter the manifest found in your validator-keys.json file. Do not confuse this with your validator's secret key.</p>
   <p>To do this with the validator-keys-tool use the following command:</p>
   <pre><code>$ validator-keys show_manifest hex</code></pre>
   <form id="manifest-entry">
     <div class="input-group">
       <input id="manifest" type="text" class="form-control" required
              placeholder="Your Manifest Here"
-             pattern="[0-9A-F]+"><br>
+             pattern="[0-9A-Fa-f]+"><br>
       <button class="btn btn-primary form-control">Check Domain Verification</button>
     </div><!--/.input-group-->
   </form>
