@@ -109,11 +109,11 @@ An example of a successful response:
 
 The response follows the [standard format][]. The fields contained in the response vary depending on what subscriptions were included in the request.
 
-* `accounts` and `accounts_proposed` - No fields returned
+* `accounts` and `accounts_proposed` - No fields returned.
 * *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change.
-* *Stream: transactions*, *Stream: transactions_proposed*, *Stream: validations*, and *Stream: consensus* - No fields returned
-* *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions in XRP), `fee_ref` (current base fee for transactions in fee units), `ledger_hash` (hash of the latest validated ledger), `reserve_base` (minimum reserve for accounts), and more.
-* `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book)
+* *Stream: transactions*, *Stream: transactions_proposed*, *Stream: validations*, and *Stream: consensus* - No fields returned.
+* *Stream: ledger* - Information about the ledgers on hand and current fee schedule. Except for `type` and `txn_count`, this includes the same fields as a [ledger stream message](#ledger-stream): `fee_base` (current base fee for transactions in XRP), `fee_ref` (current base fee for transactions in fee units), `ledger_hash` (hash of the latest validated ledger), `ledger_index` (index of the latest validated ledger), `ledger_time` (close time of the latest validated ledger), `reserve_base` (minimum reserve for accounts), `reserve_inc` (owner reserve for each object), and `validated_ledgers` (ranges of ledgers that the server has available).
+* `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book).
 
 ## Possible Errors
 
