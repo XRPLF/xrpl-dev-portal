@@ -111,7 +111,7 @@ function display_manifest(man) {
 //Use these to create the message that should have been signed by the validator's private key (the attestation).
 //Go to the domain and verify the signature of the attestation field in the appropriate validator entry.
 function parse_manifest() {
-  const manhex = $("#manifest").val();
+  const manhex = $("#manifest").val().toUpperCase();;
 
   try {
     var man = codec.decode(manhex);
@@ -122,22 +122,13 @@ function parse_manifest() {
     return;
   }
 
-  
-
-  
-  
   let seq = man ["Sequence"];
-
   let public_key_hex = man["PublicKey"];
   let buff_pub = new Buffer(public_key_hex, "hex").toJSON().data;
   let public_key = addressCodec.encodeNodePublic(buff_pub);
-
   let ephemeral_public_key_hex = man["SigningPubKey"];
   let buff_eph_pub = new Buffer(ephemeral_public_key_hex, "hex").toJSON().data;
   let ephemeral_public_key = addressCodec.encodeNodePublic(buff_eph_pub);
-
-
-
 
   try {
     var domain = hex_to_ascii(man["Domain"]);
@@ -150,13 +141,10 @@ function parse_manifest() {
   }
 
 
-
   display_manifest({"Sequence":seq, 
                     "Domain":domain,
                     "Master Public Key": public_key,
                     "Ephemeral Public Key":ephemeral_public_key})
-
-
 
 
   //This is the message that was signed by the validator's private key.
