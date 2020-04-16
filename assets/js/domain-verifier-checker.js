@@ -1,4 +1,4 @@
-//Browserify was used to create domain-verifier-bundle.js so that we can use 'require' in the browser
+//Webpack was used to create domain-verifier-bundle.js so that we can use 'require' in the browser
 
 const codec = require("ripple-binary-codec");
 const addressCodec = require("ripple-address-codec");
