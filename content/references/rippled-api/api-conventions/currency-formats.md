@@ -13,7 +13,7 @@ The following table summarizes some of the differences between XRP and [issued c
 | Tracked in [accounts](accountroot.html).                 | Tracked in [trust lines](ripplestate.html). |
 | Can never be created; can only be destroyed.             | Can be issued or redeemed freely. |
 | Minimum value: `0`. (Cannot be negative.)                | Minimum value: `-9999999999999999e80`. Minimum nonzero absolute value: `1000000000000000e-96`.
-| Maximum value `100000000000` (1<sup>11</sup>) XRP. That's `100000000000000000` (10<sup>17</sup>) "drops". | Maximum value `9999999999999999e80`. |
+| Maximum value `100000000000` (10<sup>11</sup>) XRP. That's `100000000000000000` (10<sup>17</sup>) "drops". | Maximum value `9999999999999999e80`. |
 | Precise to the nearest "drop" (0.000001 XRP)     | 15 decimal digits of precision. |
 | Can't be [frozen](freezes.html).                         | The issuer can [freeze](freezes.html) balances. |
 | No transfer fees; XRP-to-XRP payments are always direct. | Can take indirect [paths](paths.html) with each issuer charging a percentage [transfer fee](transfer-fees.html). |

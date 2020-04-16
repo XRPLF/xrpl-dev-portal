@@ -237,7 +237,7 @@ targets:
             "error-formatting.html#universal-errors": "error-formatting.html#汎用エラー"
             # Fix 2 links from untranslated demurrage.html:
             "currency-formats.html#issued-currency-precision": "currency-formats.html#発行済み通貨の計算"
-            # Fix 10 links from untranslated known-amendments.html:
+            # Fix links from untranslated known-amendments.html:
             "accounts.html#permanence-of-accounts": "accounts.html#アカウントの永続性"
             "paths.html#path-specifications": "paths.html#パスの仕様"
             "rippling.html#the-noripple-flag": "rippling.html#norippleフラグ"
@@ -248,6 +248,8 @@ targets:
             "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ" # also used in untranslated require-destination-tags.html, become-an-xrp-ledger-gateway.html
             "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
             "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
+            "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
+            "transaction-malleability.html#malleability-with-multi-signatures": "transaction-malleability.html#マルチ署名の展性"
             # Fix 2 links from untranslated data type snippets
             "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
             "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
@@ -2385,6 +2387,17 @@ pages:
         targets:
             - en
 
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
+        html: configure-statsd.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Monitor your rippled server with StatsD metrics. #TODO:translate
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
         html: run-rippled-as-a-validator.html
         funnel: Docs
@@ -2493,6 +2506,17 @@ pages:
         subcategory: Configuration
         blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run. #TODO:translate
         targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-grpc.md
+        html: configure-grpc.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Enable and configure the gRPC API.
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
@@ -4491,6 +4515,18 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/manifest.md
+        html: manifest.html
+        blurb: Look up the public information about a known validator.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
         html: print.html
         blurb: Get information about internal subsystems.
@@ -4511,6 +4547,18 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_info.md
+        html: validator_info.html
+        blurb: Get the server's validation settings, if configured as a validator.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
@@ -5666,7 +5714,7 @@ pages:
             - xrp-api-only
 
         # API reference generator makes multiple files here
-    -   openapi_specification: https://raw.githubusercontent.com/ripple/xrp-api/master/api-doc.yml
+    -   openapi_specification: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/api-doc.yml
         openapi_md_template_path: tool/openapi_templates_alpha/
         api_slug: xrp-api
         funnel: Docs
@@ -6024,6 +6072,10 @@ known_broken_links:
     - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF
     # Dev blog link assumes relationship with xrpl.org
     - /blog/
+    # For some reason the Web Archive links are breaking in the link checker
+    #  even though they still work in browser:
+    - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
+    - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
 
 # Style Checker Config ------------------------------------------------------ #
 

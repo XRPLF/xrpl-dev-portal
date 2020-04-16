@@ -196,7 +196,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
 3. Derive an "intermediate key pair" from the compressed root public key you, as follows:
 
-    1. Concatenate the following in order, for a total of 40 bytes:
+    1. Concatenate the following in order, for a total of 41 bytes:
         - The compressed root public key (33 bytes)
         - `0x00000000000000000000000000000000` (4 bytes of zeroes). (This value was intended to be used to derive different members of the same family, but in practice only the value 0 is used.)
         - A "key sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the key sequence.
