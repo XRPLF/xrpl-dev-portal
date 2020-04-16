@@ -140,12 +140,10 @@ function parse_manifest() {
     return;
   }
 
-
   display_manifest({"Sequence":seq, 
                     "Domain":domain,
                     "Master Public Key": public_key,
                     "Ephemeral Public Key":ephemeral_public_key})
-
 
   //This is the message that was signed by the validator's private key.
   let message = "[domain-attestation-blob:" + domain + ":" + public_key + "]";
