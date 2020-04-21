@@ -3,18 +3,19 @@
 
 The following is a comprehensive list of all known amendments and their status on the production XRP Ledger:
 
-| Name                            | Introduced | Status                              |
-|:--------------------------------|:-----------|:------------------------------------|
+| Name                            | Introduced | Status                        |
+|:--------------------------------|:-----------|:------------------------------|
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixQualityUpperBound][]        | v1.5.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
-| [RequireFullyCanonicalSig][]    | v1.5.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
-| [DeletableAccounts][]           | v1.4.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
-| [fixCheckThreading][]           | v1.4.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
-| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Open for Voting: TBD]( "BADGE_80d0e0") |
-| [Checks][]                      | v0.90.0    | [Open for Voting: TBD]( "BADGE_80d0e0") |
-| [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD]( "BADGE_80d0e0") |
+| [fix1781][]                     | v1.6.0-b2  | [Planned: TBD]( "BADGE_LIGHTGREY") |
+| [RequireFullyCanonicalSig][]    | v1.5.0     | [Open for Voting: TBD]( "BADGE_1DB4FF") |
+| [DeletableAccounts][]           | v1.4.0     | [Open for Voting: TBD]( "BADGE_1DB4FF") |
+| [Checks][]                      | v0.90.0    | [Open for Voting: TBD]( "BADGE_1DB4FF") |
+| [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD]( "BADGE_1DB4FF") |
+| [fixCheckThreading][]           | v1.4.0     | [Expected: 2020-05-01](#TODO_blog_url "BADGE_BLUE") |
+| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Expected: 2020-05-01](#TODO_blog_url "BADGE_BLUE") |
+| [fixQualityUpperBound][]        | v1.5.0     | [Expected: 2020-05-01](#TODO_blog_url "BADGE_BLUE") |
 | [fixMasterKeyAsRegularKey][]    | v1.3.1     | [Enabled: 2019-10-02](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
 | [MultiSignReserve][]            | v1.2.0     | [Enabled: 2019-04-17](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
 | [fixTakerDryOfferRemoval][]     | v1.2.0     | [Enabled: 2019-04-02](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
@@ -42,8 +43,8 @@ The following is a comprehensive list of all known amendments and their status o
 | [TrustSetAuth][]                | v0.30.0    | [Enabled: 2016-07-19](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]                   | v0.31.0    | [Enabled: 2016-06-27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]               | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
-| [SHAMapV2][]                    | v0.32.1    | [Vetoed: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
 | [FlowV2][]                      | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
+| [SHAMapV2][]                    | v0.32.1    | [Vetoed: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
 | [SusPay][]                      | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.
@@ -53,7 +54,7 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | Planned   |
+| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | Open for Voting |
 
 Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.
 
@@ -91,7 +92,7 @@ Implements several types of crypto-conditions from the official [crypto-conditio
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 | Planned   |
+| 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 | Open for Voting |
 
 Makes it possible to delete [accounts](accounts.html).
 
@@ -339,6 +340,16 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 **Caution:** In `rippled` 1.0.0, if the Checks amendment is enabled before the fix1623 amendment, the `delivered_amount` may display as "0" for variable-amount CheckCash transactions from before this amendment was enabled, even if the transaction delivered a nonzero amount. Ripple plans to enable fix1623 at the same time as the [Checks][] amendment on the production network, but this situation may be possible on [parallel networks](parallel-networks.html).
 
 
+## fix1781
+[fix1781]: #fix1781
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | Planned   |
+
+***TODO: Description***
+
+
 ## fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
@@ -382,7 +393,7 @@ This change prevents accounts from being deleted if they are the recipient for o
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | Planned   |
+| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | Expected  |
 
 Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
 
@@ -420,7 +431,7 @@ The Flow Engine also makes it easier to improve and expand the payment engine wi
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC | Planned   |
+| 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC | Open for Voting |
 
 Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange. Uses the updated code from the [Flow](#flow) amendment to power offer crossing, so [OfferCreate transactions][] and [Payment transactions][] share more code. This has subtle differences in how offers are processed:
 
@@ -510,7 +521,7 @@ For more information, see the [Payment Channels Tutorial](use-payment-channels.h
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | Planned   |
+| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | Open for Voting |
 
 Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of just transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags) enabled.
 
@@ -526,7 +537,7 @@ For more information, see [`rippled` issue #3042](https://github.com/ripple/ripp
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | In Development |
+| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | Vetoed    |
 
 Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
 
