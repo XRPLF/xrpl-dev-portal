@@ -170,7 +170,6 @@
                         <li><a class="subcat-title" href="{{ link_prefix}}{{ subpage.html }}">{{ subpage.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
 
                         {% set category_members = supercatpages|selectattr('category', 'defined_and_equalto', subpage.category)|list %}
-                        <!-- DEBUG: category_members is {{ category_members }} -->
                         {% for subsubpage in category_members %}
                           {% if subsubpage != subpage and (subsubpage.subcategory is undefined or
                               subsubpage == category_members|selectattr('subcategory', 'defined_and_equalto', subsubpage.subcategory)|first) and subsubpage.template != "template-redirect.html" %}
