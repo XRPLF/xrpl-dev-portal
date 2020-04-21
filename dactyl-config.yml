@@ -70,7 +70,7 @@ targets:
         github_branch: master
         strings:
             blog: "Blog"
-            search: "Search site with Google..."
+            search: "Search site..."
             bc_home: "Home"
             tl_banner:
                 head: "Sorry, this page is not available in your language."
@@ -143,7 +143,7 @@ targets:
         github_branch: master
         strings:
             blog: "ブログ"
-            search: "サイトをGoogleで検索"
+            search: "サイトを検索"
             bc_home: "ホーム"
             tl_banner:
                 head: "も仕分けありませんがこのページは日本語では入手不可" #TODO: check translation
@@ -298,7 +298,7 @@ targets:
         no_cover: true
         strings:
             blog: "Blog"
-            search: "Search site with Google..."
+            search: "Search site..."
             bc_home: "Home"
             tl_banner:
                 head: "Sorry, this page is not available in your language."
@@ -327,7 +327,7 @@ targets:
            "([\\w-]+\\.html)": https://xrpl.org/\1
         strings:
             blog: "Blog"
-            search: "Search site with Google..."
+            search: "Search site..."
             bc_home: "Home"
             tl_banner:
                 head: "Sorry, this page is not available in your language."

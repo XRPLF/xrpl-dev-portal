@@ -40,6 +40,8 @@
       );
     </script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
     {% block head %}
 
     {% endblock %}
@@ -70,10 +72,9 @@
         </li>
       </ul><!-- /.navbar-nav -->
       {% include 'template-github-edit.html' %}
-      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+      <form class="navbar-form navbar-right" id="navbar-search" role="search">
         <div class="form-inline">
           <label class="sr-only" for="topsearchbar">{{target.strings.search}}</label>
-          <input name="q" value="site:xrpl.org" type="hidden">
           <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="{{target.strings.search}}">
           <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
         </div>
@@ -129,6 +130,17 @@
 <script src="assets/vendor/bootstrap.min.js"></script>
 <!-- fontawesome icons -->
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbar',
+algoliaOptions: { 'facetFilters': ["lang:{{target.lang}}"] },
+debug: false
+});
+</script>
 
 {% block endbody %}{% endblock %}
 </body>
