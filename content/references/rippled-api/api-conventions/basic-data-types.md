@@ -97,7 +97,7 @@ XRP is specified as a string containing an integer number of "drops" of XRP, whe
 
         "Amount": {
             "value": "13.1",
-            "code": "FOO",
+            "currency": "FOO",
             "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
         }
 
