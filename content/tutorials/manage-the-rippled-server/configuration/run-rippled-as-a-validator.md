@@ -173,11 +173,12 @@ This configuration connects your validator to the network using two [public hubs
 
 _**To connect your validator to the network using public hubs:**_
 
-1. In your validator's `rippled.cfg` file, include the following `[ips_fixed]` stanza. The two values, `r.ripple.com 51235` and `zaphod.alloy.ee 51235`, are default public hubs. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs.
+1. In your validator's `rippled.cfg` file, include the following `[ips_fixed]` stanza. The three values, `r.ripple.com 51235`, `zaphod.alloy.ee 51235` and `sahayadri.isrdc.in 51235`, are default public hubs. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs.
 
         [ips_fixed]
         r.ripple.com 51235
         zaphod.alloy.ee 51235
+        sahayadri.isrdc.in 51235
 
     **Caution:** This configuration connects your validator to the network using default public hubs. Because these are the _default_ public hubs, they may sometimes be too busy to provide your validator with a connection to the network. To help avoid this issue, connect to more public hubs and, even better, connect to non-default public hubs.
 
