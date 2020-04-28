@@ -5,17 +5,17 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                            | Introduced | Status                        |
 |:--------------------------------|:-----------|:------------------------------|
+| [fix1781][]                     | v1.6.0-b1  | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fix1781][]                     | v1.6.0-b2  | [Planned: TBD]( "BADGE_LIGHTGREY") |
-| [RequireFullyCanonicalSig][]    | v1.5.0     | [Open for Voting: TBD]( "BADGE_1DB4FF") |
-| [DeletableAccounts][]           | v1.4.0     | [Open for Voting: TBD]( "BADGE_1DB4FF") |
-| [Checks][]                      | v0.90.0    | [Open for Voting: TBD]( "BADGE_1DB4FF") |
-| [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD]( "BADGE_1DB4FF") |
-| [fixCheckThreading][]           | v1.4.0     | [Expected: 2020-05-01](#TODO_blog_url "BADGE_BLUE") |
-| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Expected: 2020-05-01](#TODO_blog_url "BADGE_BLUE") |
-| [fixQualityUpperBound][]        | v1.5.0     | [Expected: 2020-05-01](#TODO_blog_url "BADGE_BLUE") |
+| [fixQualityUpperBound][]        | v1.5.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
+| [RequireFullyCanonicalSig][]    | v1.5.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
+| [Checks][]                      | v0.90.0    | [Open for Voting: TBD](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_80d0e0") |
+| [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
+| [DeletableAccounts][]           | v1.4.0     | [Expected: 2020-05-08]( "BADGE_BLUE") |
+| [fixCheckThreading][]           | v1.4.0     | [Expected: 2020-05-01]( "BADGE_BLUE") |
+| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Expected: 2020-05-01]( "BADGE_BLUE") |
 | [fixMasterKeyAsRegularKey][]    | v1.3.1     | [Enabled: 2019-10-02](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
 | [MultiSignReserve][]            | v1.2.0     | [Enabled: 2019-04-17](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
 | [fixTakerDryOfferRemoval][]     | v1.2.0     | [Enabled: 2019-04-02](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
@@ -43,8 +43,8 @@ The following is a comprehensive list of all known amendments and their status o
 | [TrustSetAuth][]                | v0.30.0    | [Enabled: 2016-07-19](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]                   | v0.31.0    | [Enabled: 2016-06-27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]               | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
-| [FlowV2][]                      | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
 | [SHAMapV2][]                    | v0.32.1    | [Vetoed: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
+| [FlowV2][]                      | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
 | [SusPay][]                      | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.
@@ -92,7 +92,7 @@ Implements several types of crypto-conditions from the official [crypto-conditio
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 | Open for Voting |
+| 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 | Expected  |
 
 Makes it possible to delete [accounts](accounts.html).
 
@@ -345,9 +345,11 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | Planned   |
+| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | In Development |
 
-***TODO: Description***
+Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
+
+Without this amendment, in some circumstances it may be possible to create and execute "circular" payments where the same account sends and receives the same currency. With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](tem-codes.html) instead.
 
 
 ## fixCheckThreading
@@ -393,7 +395,7 @@ This change prevents accounts from being deleted if they are the recipient for o
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | Expected  |
+| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | Open for Voting |
 
 Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
 
