@@ -109,11 +109,11 @@ An example of a successful response:
 
 The response follows the [standard format][]. The fields contained in the response vary depending on what subscriptions were included in the request.
 
-* `accounts` and `accounts_proposed` - No fields returned
+* `accounts` and `accounts_proposed` - No fields returned.
 * *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change.
-* *Stream: transactions*, *Stream: transactions_proposed*, *Stream: validations*, and *Stream: consensus* - No fields returned
-* *Stream: ledger* - Information about the ledgers on hand and current fee schedule, such as `fee_base` (current base fee for transactions in XRP), `fee_ref` (current base fee for transactions in fee units), `ledger_hash` (hash of the latest validated ledger), `reserve_base` (minimum reserve for accounts), and more.
-* `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book)
+* *Stream: transactions*, *Stream: transactions_proposed*, *Stream: validations*, and *Stream: consensus* - No fields returned.
+* *Stream: ledger* - Information about the ledgers on hand and current fee schedule. This includes the same fields as a [ledger stream message](#ledger-stream), except that it omits the `type` and `txn_count` fields.
+* `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book).
 
 ## Possible Errors
 
