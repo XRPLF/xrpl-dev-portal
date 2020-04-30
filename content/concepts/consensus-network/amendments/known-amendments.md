@@ -349,7 +349,9 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
 
-Without this amendment, in some circumstances it may be possible to create and execute "circular" payments where the same account sends and receives the same currency. With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](tem-codes.html) instead.
+Without this amendment, it is possible to have a [payment path](paths.html) where the input to the path is XRP, and an intermediate path step also outputs XRP. This is a "circular" payment, because it could be completed more efficiently with a shorter path that skips everything up to the intermediate step that outputs XRP.
+
+With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](tem-codes.html) instead.
 
 
 ## fixCheckThreading
