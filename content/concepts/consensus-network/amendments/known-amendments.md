@@ -14,8 +14,8 @@ The following is a comprehensive list of all known amendments and their status o
 | [Checks][]                      | v0.90.0    | [Open for Voting: TBD](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_80d0e0") |
 | [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
 | [DeletableAccounts][]           | v1.4.0     | [Expected: 2020-05-08]( "BADGE_BLUE") |
-| [fixCheckThreading][]           | v1.4.0     | [Expected: 2020-05-01]( "BADGE_BLUE") |
-| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Expected: 2020-05-01]( "BADGE_BLUE") |
+| [fixCheckThreading][]           | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
+| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09 "BADGE_GREEN") |
 | [fixMasterKeyAsRegularKey][]    | v1.3.1     | [Enabled: 2019-10-02](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
 | [MultiSignReserve][]            | v1.2.0     | [Enabled: 2019-04-17](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
 | [fixTakerDryOfferRemoval][]     | v1.2.0     | [Enabled: 2019-04-02](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
@@ -359,7 +359,7 @@ With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result cod
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 | Expected  |
+| 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 | Enabled   |
 
 Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](accounts.html) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](accountroot.html), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
 
@@ -385,7 +385,7 @@ With this amendment enabled, a SetRegularKey transaction cannot set the regular 
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8 | Expected  |
+| 621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8 | Enabled   |
 
 Changes the [PaymentChannelCreate transaction][] type so that it adds new [payment channels](payment-channels.html) to the recipient's [owner directory](directorynode.html). Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.
 
