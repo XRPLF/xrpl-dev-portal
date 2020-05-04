@@ -5700,6 +5700,17 @@ pages:
             - en
             - ja
 
+    -   md: references/rippled-api/validator-list.md
+        html: validator-list.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Validator List
+        blurb: Special API method for sharing recommended validator lists. #TODO:translate
+        targets:
+            - en
+            - ja
+
     # XRP-API docs (auto-generated)---------------------------------------------
 
     -   name: XRP-API
