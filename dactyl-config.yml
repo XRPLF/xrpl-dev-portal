@@ -5703,7 +5703,7 @@ pages:
     # XRP-API docs (auto-generated)---------------------------------------------
 
     -   name: XRP-API
-        md: https://raw.githubusercontent.com/ripple/xrp-api/master/README.md
+        md: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/README.md
         html: xrp-api.html
         funnel: Docs
         doc_type: References
