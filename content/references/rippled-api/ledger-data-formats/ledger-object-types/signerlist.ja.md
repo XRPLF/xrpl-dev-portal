@@ -71,7 +71,7 @@ _（[MultiSign Amendment][]が必要です。）_
 
 ## {{currentpage.name}}のフラグ
 
-_（[MultiSignReserve Amendment][]が必要です:not_enabled:.）_
+_（[MultiSignReserve Amendment][]が必要です.）_
 
 SignerListオブジェクトには以下のフラグ値を指定できます。
 
@@ -83,9 +83,9 @@ SignerListオブジェクトには以下のフラグ値を指定できます。
 
 SignerListは、所有者の[必要準備金](reserves.html)の対象となります。
 
-[MultiSignReserve Amendment][]:not_enabled:が有効ではない場合、SignerList自体が2つのオブジェクトとしてカウントされ、リストの各メンバーが1つのオブジェクトとしてカウントされます。その結果、SignerListに関連付けられている所有者準備金の合計は、1つのトラストライン（[RippleState](ripplestate.html)）またはレジャーの[Offer](offer.html)オブジェクトで必要な準備金の3～10倍になります。
+[MultiSignReserve Amendment][]が有効ではない場合、SignerList自体が2つのオブジェクトとしてカウントされ、リストの各メンバーが1つのオブジェクトとしてカウントされます。その結果、SignerListに関連付けられている所有者準備金の合計は、1つのトラストライン（[RippleState](ripplestate.html)）またはレジャーの[Offer](offer.html)オブジェクトで必要な準備金の3～10倍になります。
 
-[MultiSignReserve Amendment][]:not_enabled:が有効となれば、SignerListはそのメンバーの数に関わらず、1つのオブジェクトとしてカウントされます。その結果、SignerListに関連付けられている所有者準備金は、メンバーの数に関わらず5 XRPになります。
+[MultiSignReserve Amendment][]が有効となれば、SignerListはそのメンバーの数に関わらず、1つのオブジェクトとしてカウントされます。その結果、SignerListに関連付けられている所有者準備金は、メンバーの数に関わらず5 XRPになります。
 
 MultiSignReserve Amendmentよりも前に作成されたSignerListの必要準備金は変わりません。新しい準備金を利用するには、[SignerListSetトランザクション][]を送信してSignerListを更新してください。
 

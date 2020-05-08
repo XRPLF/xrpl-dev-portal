@@ -60,7 +60,7 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 
 ## Deletion of Accounts
 
-The [DeletableAccounts amendment](known-amendments.html#deletableaccounts) :not_enabled: makes it possible to delete accounts. If the DeletableAccounts amendment is not enabled, every funded account must remain in the XRP Ledger's data tree forever.
+The [DeletableAccounts amendment](known-amendments.html#deletableaccounts) (enabled 2020-05-08) made it possible to delete accounts.
 
 To be deleted, an account must meet the following requirements:
 

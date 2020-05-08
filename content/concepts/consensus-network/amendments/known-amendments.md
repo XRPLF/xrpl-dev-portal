@@ -13,7 +13,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [RequireFullyCanonicalSig][]    | v1.5.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
 | [Checks][]                      | v0.90.0    | [Open for Voting: TBD](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_80d0e0") |
 | [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
-| [DeletableAccounts][]           | v1.4.0     | [Expected: 2020-05-08]( "BADGE_BLUE") |
+| [DeletableAccounts][]           | v1.4.0     | [Enabled: 2020-05-08](https://xrpcharts.ripple.com/#/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
 | [fixCheckThreading][]           | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
 | [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09 "BADGE_GREEN") |
 | [fixMasterKeyAsRegularKey][]    | v1.3.1     | [Enabled: 2019-10-02](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
@@ -92,7 +92,7 @@ Implements several types of crypto-conditions from the official [crypto-conditio
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 | Expected  |
+| 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 | Enabled   |
 
 Makes it possible to delete [accounts](accounts.html).
 
