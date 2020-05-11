@@ -30,13 +30,33 @@ The JSON object has the following fields:
 
 | `Field`          | Value  | Description                                      |
 |:-----------------|:-------|:-------------------------------------------------|
-| `manifest`       | String | ***TODO*** base64-encoded. |
+| `manifest`       | String | The list publisher's [manifest data](#manifest-data), in either base64 or hexadecimal. |
 | `blob`           | String | Base64-encoded JSON data representing the validator list. |
 | `signature`      | String | The signature of the `blob` data, in hexadecimal. |
 | `version`        | Number | The version of the validator list protocol this object uses. The current version is **1**. A higher version number indicates backwards-incompatible changes with a previous version of the validator list protocol. |
 <!--{# This field isn't included in the rippled response, but should be.
 | `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`. |
 #}-->
+
+### Manifest Data
+[[Source]](https://github.com/ripple/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66 "Source")
+
+A "manifest" contains information uniquely identifying a person or organization involved in the consensus process, either a **validator** or a **list publisher**. A validator's manifest contains the _public_ information from that [validator's token](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server). A list publisher's manifest provides information about the list publisher. Both are typically encoded to binary in the XRP Ledger's standard [binary serialization format](serialization.html). (There is no standard JSON representation of a manifest.)
+
+One of the main purposes of manifests relates to rotating validator keys. When a validator changes its ephemeral key pair, the validator publishes a new manifest with to share its new ephemeral public key, using the validator's master key pair to sign the manifest to prove its authenticity. A validator uses its ephemeral key pair to sign validations as part of the [consensus process](consensus.html) and uses its master key pair only to sign new manifests and similar.
+
+The data encoded in a manifest is as follows:
+
+| Field             | Internal Type | Description                              |
+|:------------------|:--------------|:-----------------------------------------|
+| sfPublicKey       | Blob          | The master public key that uniquely identifies this person or organization. This can be a 33-byte secp256k1 public key, or a 32-byte Ed25519 public key prefixed with the byte `0xED`. |
+| sfMasterSignature | Blob          | A signature of the data in this manifest (***TODO: which data specifically?***) from the master key pair. This proves the authenticity of the manifest. |
+| sfSequence        | UInt32        | A sequence number for this manifest. A higher number indicates a newer manifest that invalidates all older manifests from the same master public key. |
+| sfVersion         | UInt16        | A version number indicating the manifest format used. A higher number indicates a newer manifest format, including breaking changes compared to the previous manifest format. |
+| sfDomain          | Blob          | _(Optional)_ A domain name owned by this person or organization, ASCII-encoded. |
+| sfSigningPubKey   | Blob          | _(Optional)_ The ephemeral public key of the key pair that this person or organization is currently using. This must be a 33-byte secp256k1 public key. |
+| sfSignature       | Blob          | _(Optional)_ A signature (**TODO: of what?**) from the ephemeral key pair. |
+
 
 ### Blob Data
 
@@ -52,10 +72,9 @@ Each member of the `validators` array has the following fields:
 
 | `Field`                 | Value  | Description                               |
 |:------------------------|:-------|:------------------------------------------|
-| `validation_public_key` | String | The ephemeral(***TODO:?***) public key of this validator. |
-| `manifest`              | String | This validator's base64-encoded "manifest" data. |
+| `validation_public_key` | String | The master public key that uniquely identifies this validator. |
+| `manifest`              | String | This validator's [manifest data](#manifest-data), in either base64 or hexadecimal. |
 
-***TODO: describe what's in the manifest data exactly***
 
 #### Example Decoded Blob
 
