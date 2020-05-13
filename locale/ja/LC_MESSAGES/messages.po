@@ -1,0 +1,258 @@
+# Japanese translations for XRPL.org.
+# Copyright (C) 2020 XRP Ledger Project
+# This file is distributed under the same license as the XRPL.org project.
+# Rome Reginelli <rome@ripple.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: XRPL.org v0.0\n"
+"Report-Msgid-Bugs-To: docs@ripple.com\n"
+"POT-Creation-Date: 2020-05-12 16:30-0700\n"
+"PO-Revision-Date: 2020-05-12 15:25-0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: tool/template-base.html:71
+msgid "Blog"
+msgstr "ブログ"
+
+#: tool/template-base.html:77 tool/template-base.html:78
+msgid "Search site..."
+msgstr "サイトを検索"
+
+#: tool/template-breadcrumbs.html:3
+msgid "Home"
+msgstr "ホーム"
+
+#: tool/template-doc.html:27
+msgid "Sorry, this page is not available in your language."
+msgstr "も仕分けありませんがこのページは日本語では入手不可"
+
+#: tool/template-doc.html:28
+msgid ""
+"We are making an effort to offer the XRP Ledger Dev Portal in a variety "
+"of languages, but not all pages are available in all languages. If you'd "
+"like to help, <a href=\"https://github.com/ripple/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
+msgstr ""
+"XRP Ledger Dev Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべて"
+"の言語で利用できるわけではありません。助けたいと思うなら"
+"<a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">"
+"提供して下さい！</a>"
+
+# Table of contents
+#: tool/template-doc.html:40
+msgid "In this document"
+msgstr "目次"
+
+#: tool/template-footer.html:32
+msgid "Ripple Careers"
+msgstr "Ripple 採用情報"
+
+#: tool/template-footer.html:33
+msgid "Ripple on GitHub"
+msgstr "GitHubでRipple"
+
+#: tool/template-footer.html:34
+msgid "XRP Resources"
+msgstr "XRP リソース"
+
+#: tool/template-footer.html:61
+msgid "License"
+msgstr "ライセンス"
+
+#: tool/template-footer.html:68
+msgid "Jump to top of page"
+msgstr "このページの先頭へ"
+
+#: tool/template-footer.html:68
+msgid "Top"
+msgstr "先頭へ"
+
+# Link to edit this page on GitHub
+#: tool/template-github-edit.html:26
+msgid "Edit"
+msgstr "Edit"
+
+#: tool/template-home.html:22
+msgid "Powering the Internet of Value."
+msgstr "価値のインターネットをパワーする。"
+
+#: tool/template-home.html:24
+msgid ""
+"The <a href=\"#xrp_ledger_intro\">XRP Ledger</a> is open-source "
+"technology that anyone can use."
+msgstr ""
+"<a href=\"#xrp_ledger_intro\">XRP Ledger</a>は誰でもが使い得るオープンソース技術。"
+
+#: tool/template-home.html:25
+msgid ""
+"Use the tools and information provided here to integrate with and "
+"contribute to the open-source platform."
+msgstr "このツールと情報でXRPのオープンソースプラットフォームを統合して開発を提供します。"
+
+#: tool/template-home.html:26
+msgid "Want more?"
+msgstr ""#TODO
+
+#: tool/template-home.html:27
+msgid "Get updates about XRP Ledger webinars, releases, and documentation!"
+msgstr ""#TODO
+
+#: tool/template-home.html:29
+msgid "Sign up!"
+msgstr ""#TODO
+
+#: tool/template-home.html:50
+msgid "Learn How It Works"
+msgstr "XRP技術を理解する"
+
+#: tool/template-home.html:56
+msgid "About XRP"
+msgstr "XRPについて"
+
+#: tool/template-home.html:63
+msgid "All Concepts"
+msgstr "全コンセプト"
+
+#: tool/template-home.html:70
+msgid "Read Documentation"
+msgstr "ドキュメントを読む"
+
+#: tool/template-home.html:78
+msgid "Full Doc Index"
+msgstr "全ドキュメント目次"
+
+#: tool/template-home.html:83
+msgid "All Docs"
+msgstr "全ドキュメント"
+
+#: tool/template-home.html:90
+msgid "Explore the XRP Ledger"
+msgstr "XRP Ledgerを探る"
+
+#: tool/template-home.html:93
+msgid ""
+"Use the XRPL Explorer to view a stream of ledger activity and see "
+"validator statuses."
+msgstr "XRP Ledger エクスプローラを使ってレジャーの動き、バリデータのステータスを見る。"
+
+#: tool/template-home.html:97
+msgid "Go to the Explorer"
+msgstr "XRP Ledger エクスプローラへ"
+
+#: tool/template-home.html:125
+msgid "What is the XRP Ledger?"
+msgstr "XRP Ledgerとは何？"
+
+#: tool/template-home.html:128
+msgid ""
+"The XRP Ledger is a decentralized cryptographic ledger, powered by a "
+"network of peer-to-peer servers. It is the home of XRP, a digital asset "
+"designed to bridge the many different currencies in use worldwide."
+msgstr ""
+"XRP Ledgerは、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。"
+"XRP LedgerはXRPの土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために"
+"設計されたデジタル資産です。"
+
+#: tool/template-home.html:132
+msgid "xrp-ledger-overview.html#the-digital-asset-for-payments"
+msgstr "xrp-ledger-overview.html#決済のためのデジタル資産"
+
+#: tool/template-home.html:133
+msgid "(digital asset icon)"
+msgstr "(デジタル資産アイコン)"
+
+#: tool/template-home.html:134
+msgid "The Digital Asset for Payments"
+msgstr "決済のためのデジタル資産"
+
+#: tool/template-home.html:138
+msgid "xrp-ledger-overview.html#censorship-resistant-transaction-processing"
+msgstr "xrp-ledger-overview.html#耐検閲性のある取引処理"
+
+#: tool/template-home.html:139
+msgid "(censorship resistance icon)"
+msgstr "(耐検閲性アイコン)"
+
+#: tool/template-home.html:140
+msgid "Censorship-Resistant Transaction Processing"
+msgstr "耐検閲性のある取引処理"
+
+#: tool/template-home.html:144
+msgid "xrp-ledger-overview.html#fast-efficient-consensus-algorithm"
+msgstr "xrp-ledger-overview.html#高速で効率的なconsensusアルゴリズム"
+
+#: tool/template-home.html:145
+msgid "(consensus algorithm icon)"
+msgstr "(Consensusアルゴリズムアイコン)"
+
+#: tool/template-home.html:146
+msgid "Fast, Efficient Consensus Algorithm"
+msgstr "高速で効率的なConsensusアルゴリズム"
+
+#: tool/template-home.html:150
+msgid "xrp-ledger-overview.html#finite-xrp-supply"
+msgstr "xrp-ledger-overview.html#限定されたxrp供給量"
+
+#: tool/template-home.html:151
+msgid "(xrp supply icon)"
+msgstr "(XRP供給量アイコン)"
+
+#: tool/template-home.html:152
+msgid "Finite XRP Supply"
+msgstr "限定されたXRP供給量"
+
+#: tool/template-home.html:156
+msgid "xrp-ledger-overview.html#responsible-software-governance"
+msgstr "xrp-ledger-overview.html#責任あるソフトウェア管理"
+
+#: tool/template-home.html:157
+msgid "(governance icon)"
+msgstr "(管理アイコン)"
+
+#: tool/template-home.html:158
+msgid "Responsible Software Governance"
+msgstr "責任あるソフトウェア管理"
+
+#: tool/template-home.html:162
+msgid "xrp-ledger-overview.html#secure-adaptable-cryptography"
+msgstr "xrp-ledger-overview.html#安全で適応性のある暗号技術"
+
+#: tool/template-home.html:163
+msgid "(cryptography icon)"
+msgstr "(暗号技術アイコン)"
+
+#: tool/template-home.html:164
+msgid "Secure, Adaptable Cryptography"
+msgstr "安全で適応性のある暗号技術"
+
+#: tool/template-home.html:168
+msgid "xrp-ledger-overview.html#modern-features-for-smart-contracts"
+msgstr "xrp-ledger-overview.html#スマートコントラクト用の最新機能"
+
+#: tool/template-home.html:169
+msgid "(smart contracts icon)"
+msgstr "(スマートコントラクトのアイコン)"
+
+#: tool/template-home.html:170
+msgid "Modern Features for Smart Contracts"
+msgstr "スマートコントラクト用の最新機能"
+
+#: tool/template-home.html:174
+msgid "xrp-ledger-overview.html#on-ledger-decentralized-exchange"
+msgstr "xrp-ledger-overview.html#台帳上の分散型取引所"
+
+#: tool/template-home.html:175
+msgid "(decentralized exchange icon)"
+msgstr "(分散型取引所アイコン)"
+
+#: tool/template-home.html:176
+msgid "On-Ledger Decentralized Exchange"
+msgstr "台帳上の分散型取引所"

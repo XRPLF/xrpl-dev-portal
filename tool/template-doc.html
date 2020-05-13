@@ -24,9 +24,8 @@
   <article class="pt-3 p-md-3">
     {% if target.lang != "en" and "en" in currentpage.targets %}
     {# Add a "sorry this page isn't translated" banner. #}
-    {# TODO: pull from a strings file #}
-    <div class="devportal-callout note mb-5"><strong>{{target.strings.tl_banner.head}}</strong>
-      <p class="mb-0">{{target.strings.tl_banner.body}}</p>
+    <div class="devportal-callout note mb-5"><strong>{% trans %}Sorry, this page is not available in your language.{% endtrans %}</strong>
+      <p class="mb-0">{% trans %}We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a>{% endtrans %}</p>
     </div><!--/.devportal-callout-->
     {% endif %}
     <div class="content">
@@ -38,7 +37,7 @@
 {% block right_sidebar %}
   <div class="card" id="page-toc-wrapper">
     <div class="card-header">
-      <h4>{{target.strings.pagetoc}}</h4>
+      <h4>{% trans %}In this document{% endtrans %}</h4>
     </div>
     <ul class="card-body">
       {{ sidebar_content }}

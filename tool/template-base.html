@@ -68,14 +68,14 @@
           {% endif %}
         {% endfor %}
         <li class="nav-item">
-          <a class="nav-link" href="/blog/">{{target.strings.blog}}</a>
+          <a class="nav-link" href="/blog/">{% trans %}Blog{% endtrans %}</a>
         </li>
       </ul><!-- /.navbar-nav -->
       {% include 'template-github-edit.html' %}
       <form class="navbar-form navbar-right" id="navbar-search" role="search">
         <div class="form-inline">
-          <label class="sr-only" for="topsearchbar">{{target.strings.search}}</label>
-          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="{{target.strings.search}}">
+          <label class="sr-only" for="topsearchbar">{% trans %}Search site...{% endtrans %}</label>
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="{% trans %}Search site...{% endtrans %}">
           <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
         </div>
       </form>
