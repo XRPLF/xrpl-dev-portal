@@ -1,6 +1,6 @@
 # Validator List Method
 
-The validator list method is a special API endpoint for fetching the latest version of a current trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts.
+The validator list method is a special API endpoint for fetching the latest version of a current trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts. [New in: rippled 1.5.0][]
 
 Like the [Peer Crawler](peer-crawler.html), the validator list method is available by default on a non-privileged basis through the [Peer Protocol](peer-protocol.html) port, which is also used for `rippled` servers' peer-to-peer communications.
 
@@ -34,7 +34,7 @@ The JSON object has the following fields:
 | `blob`           | String | Base64-encoded JSON data representing the validator list. |
 | `signature`      | String | The signature of the `blob` data, in hexadecimal. |
 | `version`        | Number | The version of the validator list protocol this object uses. The current version is **1**. A higher version number indicates backwards-incompatible changes with a previous version of the validator list protocol. |
-<!--{# This field isn't included in the rippled response, but should be.
+<!--{# This field isn't included in the rippled response, but should be. https://github.com/ripple/rippled/issues/3392
 | `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`. |
 #}-->
 
@@ -117,3 +117,8 @@ Response:
 
 - [Peer Protocol](peer-protocol.html)
 - [Consensus](consensus.html)
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
