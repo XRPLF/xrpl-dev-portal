@@ -1,6 +1,6 @@
 # Validator List Method
 
-The validator list method is a special API endpoint for fetching the latest version of a current trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts. [New in: rippled 1.5.0][]
+The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts. [New in: rippled 1.5.0][]
 
 Like the [Peer Crawler](peer-crawler.html), the validator list method is available by default on a non-privileged basis through the [Peer Protocol](peer-protocol.html) port, which is also used for `rippled` servers' peer-to-peer communications.
 
@@ -43,7 +43,7 @@ The JSON object has the following fields:
 
 A "manifest" contains information uniquely identifying a person or organization involved in the consensus process, either a **validator** or a **list publisher**. A validator's manifest contains the _public_ information from that [validator's token](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server). A list publisher's manifest provides information about the list publisher. Both are typically encoded to binary in the XRP Ledger's standard [binary serialization format](serialization.html). (There is no standard JSON representation of a manifest.)
 
-One of the main purposes of manifests relates to rotating validator keys. When a validator changes its ephemeral key pair, the validator publishes a new manifest with to share its new ephemeral public key, using the validator's master key pair to sign the manifest to prove its authenticity. A validator uses its ephemeral key pair to sign validations as part of the [consensus process](consensus.html) and uses its master key pair only to sign new manifests and similar.
+One of the main purposes of manifests relates to rotating validator keys. When a validator changes its ephemeral key pair, the validator publishes a new manifest to share its new ephemeral public key, using the validator's master key pair to sign the manifest to prove its authenticity. A validator uses its ephemeral key pair to sign validations as part of the [consensus process](consensus.html) and uses its master key pair only to sign new manifests. (The manifest is incorporated into a validator token, alongside private data, that [the validator administrator adds to the `rippled.cfg` config file](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).)
 
 The data encoded in a manifest is as follows:
 
