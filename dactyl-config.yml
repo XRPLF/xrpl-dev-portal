@@ -289,6 +289,10 @@ targets:
             "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
             # Fix link from untranslated rate-limiting.html
             "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html" # The translated doc hasn't been updated to add the "Admin Access" section, but the details are mentioned near the top of the page
+            # Fix links from untranslated validator-list.html
+            "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"
+            "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
+
 
     -   name: xrp-api-only
         lang: en
