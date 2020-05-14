@@ -68,145 +68,14 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
-        strings:
-            blog: "Blog"
-            search: "Search site..."
-            bc_home: "Home"
-            tl_banner:
-                head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
-            pagetoc: "In this document"
-            footer:
-                ripple:
-                    careers: "Ripple Careers"
-                    github: "Ripple on GitHub"
-                    xrp_resources: "XRP Resources"
-                license: "License"
-            to_top:
-                short: "Top"
-                long: "Jump to top of page"
-            github_edit: "Edit"
-            home:
-                intro:
-                    head: "Powering the Internet of Value."
-                    body1: "The <a href=\"#xrp_ledger_intro\">XRP Ledger</a> is open-source technology that anyone can use."
-                    body2: "Use the tools and information provided here to integrate with and contribute to the open-source platform."
-                    subhead: "Want more?"
-                    sub_body: "Get updates about XRP Ledger webinars, releases, and documentation!"
-                    cta: "Sign up!"
-                cards_1:
-                    learn:
-                        head: "Learn How It Works"
-                        about_xrp: "About XRP"
-                        cta: "All Concepts"
-                    read_docs:
-                        head: "Read Documentation"
-                        full_doc_index: "Full Doc Index"
-                        cta: "All Docs"
-                    explore:
-                        head: "Explore the XRP Ledger"
-                        blurb: "Use the XRPL Explorer to view a stream of ledger activity and see validator statuses."
-                        cta: "Go to the Explorer"
-                what_is_xrpl:
-                    head: "What is the XRP Ledger?"
-                    body_1: "The XRP Ledger is a decentralized cryptographic ledger, powered by a network of peer-to-peer servers. It is the home of XRP, a digital asset designed to bridge the many different currencies in use worldwide."
-                    digital_asset:
-                        head: "The Digital Asset for Payments"
-                        url: "xrp-ledger-overview.html#the-digital-asset-for-payments"
-                    censorship_resistant:
-                        head: "Censorship-Resistant Transaction Processing"
-                        url: "xrp-ledger-overview.html#censorship-resistant-transaction-processing"
-                    fast_algorithm:
-                        head: "Fast, Efficient Consensus Algorithm"
-                        url: "xrp-ledger-overview.html#fast-efficient-consensus-algorithm"
-                    finite_xrp:
-                        head: "Finite XRP Supply"
-                        url: "xrp-ledger-overview.html#finite-xrp-supply"
-                    responsible_governance:
-                        head: "Responsible Software Governance"
-                        url: "xrp-ledger-overview.html#responsible-software-governance"
-                    secure_crypto:
-                        head: "Secure, Adaptable Cryptography"
-                        url: "xrp-ledger-overview.html#secure-adaptable-cryptography"
-                    smart_contracts:
-                        head: "Modern Features for Smart Contracts"
-                        url: "xrp-ledger-overview.html#modern-features-for-smart-contracts"
-                    decentralized_exchange:
-                        head: "On-Ledger Decentralized Exchange"
-                        url: "xrp-ledger-overview.html#on-ledger-decentralized-exchange"
-
+        locale_file: locale/en/LC_MESSAGES/messages.mo
 
     -   name: ja
         lang: ja
         display_name: XRP Ledger Dev Portal (日本語)
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
-        strings:
-            blog: "ブログ"
-            search: "サイトを検索"
-            bc_home: "ホーム"
-            tl_banner:
-                head: "も仕分けありませんがこのページは日本語では入手不可" #TODO: check translation
-                body: "XRP Ledger Dev Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべての言語で利用できるわけではありません。助けたいと思うなら、<a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">提供して下さい！</a>" #TODO: check translation & have a real link
-            pagetoc: "目次"
-            footer:
-                ripple:
-                    careers: "Ripple 採用情報"
-                    github: "GitHubでRipple"
-                    xrp_resources: "XRP リソース"
-                license: "ライセンス"
-            to_top:
-                short: "先頭へ"
-                long: "このページの先頭へ"
-            github_edit: "Edit" #TODO:translate? (This is the "Edit" button that takes you to the page on GitHub where you can edit the current file and contribute your changes back.)
-            home: # Text from xrpl.org/index.html
-                intro:
-                    head: "価値のインターネットをパワーする。"
-                    body1: "<a href=\"#xrp_ledger_intro\">XRP Ledger</a>は誰でもが使い得るオープンソース技術。"
-                    body2: "このツールと情報でXRPのオープンソースプラットフォームを統合して開発を提供します。" #TODO:check translation
-                    subhead: "Want more?" #TODO:translate
-                    sub_body: "Get updates about XRP Ledger webinars, releases, and documentation!" #TODO:translate
-                    cta: "Sign up!" #TODO:translate
-                cards_1:
-                    learn:
-                        head: "XRP技術を理解する"
-                        about_xrp: "XRPについて"
-                        cta: "全コンセプト"
-                    read_docs:
-                        head: "ドキュメントを読む"
-                        full_doc_index: "全ドキュメント目次"
-                        cta: "全ドキュメント"
-                    explore:
-                        head: "XRP Ledgerを探る"
-                        blurb: "XRP Ledger エクスプローラを使ってレジャーの動き、バリデータのステータスを見る。" #TODO:check translation
-                        cta: "XRP Ledger エクスプローラへ"
-                what_is_xrpl:
-                    head: "XRP Ledgerとは何？"
-                    body_1: "XRP Ledgerは、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。XRP LedgerはXRPの土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために設計されたデジタル資産です。"
-                    digital_asset:
-                        head: "決済のためのデジタル資産"
-                        url: "xrp-ledger-overview.html#決済のためのデジタル資産"
-                    censorship_resistant:
-                        head: "耐検閲性のある取引処理"
-                        url: "xrp-ledger-overview.html#耐検閲性のある取引処理"
-                    fast_algorithm:
-                        head: "高速で効率的なConsensusアルゴリズム"
-                        url: "xrp-ledger-overview.html#高速で効率的なconsensusアルゴリズム"
-                    finite_xrp:
-                        head: "限定されたXRP供給量"
-                        url: "xrp-ledger-overview.html#限定されたxrp供給量"
-                    responsible_governance:
-                        head: "責任あるソフトウェア管理"
-                        url: "xrp-ledger-overview.html#責任あるソフトウェア管理"
-                    secure_crypto:
-                        head: "安全で適応性のある暗号技術"
-                        url: "xrp-ledger-overview.html#安全で適応性のある暗号技術"
-                    smart_contracts:
-                        head: "スマートコントラクト用の最新機能"
-                        url: "xrp-ledger-overview.html#スマートコントラクト用の最新機能"
-                    decentralized_exchange:
-                        head: "台帳上の分散型取引所"
-                        url: "xrp-ledger-overview.html#台帳上の分散型取引所"
+        locale_file: locale/ja/LC_MESSAGES/messages.mo
         link_subs:
             # Fix 2 links from untranslated send-xrp.html:
             "accounts.html#creating-accounts": "accounts.html#アカウントの作成"
@@ -300,24 +169,6 @@ targets:
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         no_cover: true
-        strings:
-            blog: "Blog"
-            search: "Search site..."
-            bc_home: "Home"
-            tl_banner:
-                head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
-            pagetoc: "In this document"
-            footer:
-                ripple:
-                    careers: "Ripple Careers"
-                    github: "Ripple on GitHub"
-                    xrp_resources: "XRP Resources"
-                license: "License"
-            to_top:
-                short: "Top"
-                long: "Jump to top of page"
-            github_edit: "Edit"
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
@@ -329,24 +180,6 @@ targets:
         no_cover: True
         link_re_subs:
            "([\\w-]+\\.html)": https://xrpl.org/\1
-        strings:
-            blog: "Blog"
-            search: "Search site..."
-            bc_home: "Home"
-            tl_banner:
-                head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
-            pagetoc: "In this document"
-            footer:
-                ripple:
-                    careers: "Ripple Careers"
-                    github: "Ripple on GitHub"
-                    xrp_resources: "XRP Resources"
-                license: "License"
-            to_top:
-                short: "Top"
-                long: "Jump to top of page"
-            github_edit: "Edit"
 
 pages:
 

@@ -1,0 +1,247 @@
+# Translations template for XRPL.org.
+# Copyright (C) 2020 XRP Ledger Project
+# This file is distributed under the same license as the XRPL.org project.
+# Rome Reginelli <rome@ripple.com>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-05-12 16:30-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: tool/template-base.html:71
+msgid "Blog"
+msgstr ""
+
+#: tool/template-base.html:77 tool/template-base.html:78
+msgid "Search site..."
+msgstr ""
+
+#: tool/template-breadcrumbs.html:3
+msgid "Home"
+msgstr ""
+
+#: tool/template-doc.html:27
+msgid "Sorry, this page is not available in your language."
+msgstr ""
+
+#: tool/template-doc.html:28
+msgid ""
+"We are making an effort to offer the XRP Ledger Dev Portal in a variety "
+"of languages, but not all pages are available in all languages. If you'd "
+"like to help, <a href=\"https://github.com/ripple/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
+msgstr ""
+
+#: tool/template-doc.html:40
+msgid "In this document"
+msgstr ""
+
+#: tool/template-footer.html:32
+msgid "Ripple Careers"
+msgstr ""
+
+#: tool/template-footer.html:33
+msgid "Ripple on GitHub"
+msgstr ""
+
+#: tool/template-footer.html:34
+msgid "XRP Resources"
+msgstr ""
+
+#: tool/template-footer.html:61
+msgid "License"
+msgstr ""
+
+#: tool/template-footer.html:68
+msgid "Jump to top of page"
+msgstr ""
+
+#: tool/template-footer.html:68
+msgid "Top"
+msgstr ""
+
+#: tool/template-github-edit.html:26
+msgid "Edit"
+msgstr ""
+
+#: tool/template-home.html:22
+msgid "Powering the Internet of Value."
+msgstr ""
+
+#: tool/template-home.html:24
+msgid ""
+"The <a href=\"#xrp_ledger_intro\">XRP Ledger</a> is open-source "
+"technology that anyone can use."
+msgstr ""
+
+#: tool/template-home.html:25
+msgid ""
+"Use the tools and information provided here to integrate with and "
+"contribute to the open-source platform."
+msgstr ""
+
+#: tool/template-home.html:26
+msgid "Want more?"
+msgstr ""
+
+#: tool/template-home.html:27
+msgid "Get updates about XRP Ledger webinars, releases, and documentation!"
+msgstr ""
+
+#: tool/template-home.html:29
+msgid "Sign up!"
+msgstr ""
+
+#: tool/template-home.html:50
+msgid "Learn How It Works"
+msgstr ""
+
+#: tool/template-home.html:56
+msgid "About XRP"
+msgstr ""
+
+#: tool/template-home.html:63
+msgid "All Concepts"
+msgstr ""
+
+#: tool/template-home.html:70
+msgid "Read Documentation"
+msgstr ""
+
+#: tool/template-home.html:78
+msgid "Full Doc Index"
+msgstr ""
+
+#: tool/template-home.html:83
+msgid "All Docs"
+msgstr ""
+
+#: tool/template-home.html:90
+msgid "Explore the XRP Ledger"
+msgstr ""
+
+#: tool/template-home.html:93
+msgid ""
+"Use the XRPL Explorer to view a stream of ledger activity and see "
+"validator statuses."
+msgstr ""
+
+#: tool/template-home.html:97
+msgid "Go to the Explorer"
+msgstr ""
+
+#: tool/template-home.html:125
+msgid "What is the XRP Ledger?"
+msgstr ""
+
+#: tool/template-home.html:128
+msgid ""
+"The XRP Ledger is a decentralized cryptographic ledger, powered by a "
+"network of peer-to-peer servers. It is the home of XRP, a digital asset "
+"designed to bridge the many different currencies in use worldwide."
+msgstr ""
+
+#: tool/template-home.html:132
+msgid "xrp-ledger-overview.html#the-digital-asset-for-payments"
+msgstr ""
+
+#: tool/template-home.html:133
+msgid "(digital asset icon)"
+msgstr ""
+
+#: tool/template-home.html:134
+msgid "The Digital Asset for Payments"
+msgstr ""
+
+#: tool/template-home.html:138
+msgid "xrp-ledger-overview.html#censorship-resistant-transaction-processing"
+msgstr ""
+
+#: tool/template-home.html:139
+msgid "(censorship resistance icon)"
+msgstr ""
+
+#: tool/template-home.html:140
+msgid "Censorship-Resistant Transaction Processing"
+msgstr ""
+
+#: tool/template-home.html:144
+msgid "xrp-ledger-overview.html#fast-efficient-consensus-algorithm"
+msgstr ""
+
+#: tool/template-home.html:145
+msgid "(consensus algorithm icon)"
+msgstr ""
+
+#: tool/template-home.html:146
+msgid "Fast, Efficient Consensus Algorithm"
+msgstr ""
+
+#: tool/template-home.html:150
+msgid "xrp-ledger-overview.html#finite-xrp-supply"
+msgstr ""
+
+#: tool/template-home.html:151
+msgid "(xrp supply icon)"
+msgstr ""
+
+#: tool/template-home.html:152
+msgid "Finite XRP Supply"
+msgstr ""
+
+#: tool/template-home.html:156
+msgid "xrp-ledger-overview.html#responsible-software-governance"
+msgstr ""
+
+#: tool/template-home.html:157
+msgid "(governance icon)"
+msgstr ""
+
+#: tool/template-home.html:158
+msgid "Responsible Software Governance"
+msgstr ""
+
+#: tool/template-home.html:162
+msgid "xrp-ledger-overview.html#secure-adaptable-cryptography"
+msgstr ""
+
+#: tool/template-home.html:163
+msgid "(cryptography icon)"
+msgstr ""
+
+#: tool/template-home.html:164
+msgid "Secure, Adaptable Cryptography"
+msgstr ""
+
+#: tool/template-home.html:168
+msgid "xrp-ledger-overview.html#modern-features-for-smart-contracts"
+msgstr ""
+
+#: tool/template-home.html:169
+msgid "(smart contracts icon)"
+msgstr ""
+
+#: tool/template-home.html:170
+msgid "Modern Features for Smart Contracts"
+msgstr ""
+
+#: tool/template-home.html:174
+msgid "xrp-ledger-overview.html#on-ledger-decentralized-exchange"
+msgstr ""
+
+#: tool/template-home.html:175
+msgid "(decentralized exchange icon)"
+msgstr ""
+
+#: tool/template-home.html:176
+msgid "On-Ledger Decentralized Exchange"
+msgstr ""
