@@ -5042,7 +5042,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Delete an account.
-        status: not_enabled
         targets:
             - en
             - ja
