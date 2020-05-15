@@ -42,6 +42,24 @@ Occasional messages of this type do not usually indicate a problem. If this type
 - The validator described in the message is behaving maliciously.
 
 
+## async_send failed
+
+The following log message indicates that [StatsD export](configure-statsd.html) failed:
+
+```text
+2020-Apr-07 16:59:36.299867439 UTC Collector:ERR async_send failed: Connection refused
+```
+
+This could mean:
+
+- Your StatsD configuration has the wrong IP address or port.
+- The StatsD server you were attempting to export to was down or not accessible from your `rippled` server.
+
+Check the `[insight]` stanza in your `rippled`'s config file and confirm that you have network connectivity from your `rippled` server to your StatsD server.
+
+This error has no other impact on the `rippled` server, which should continue to operate as normal except for the sending of StatsD metrics.
+
+
 ## Connection reset by peer
 
 The following log message indicates that a peer `rippled` server closed a connection:
