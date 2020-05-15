@@ -53,7 +53,7 @@ The following log message indicates that [StatsD export](configure-statsd.html) 
 This could mean:
 
 - Your StatsD configuration has the wrong IP address or port.
-- The StatsD server you are exporting to is down or not accessible from your `rippled` server.
+- The StatsD server you were attempting to export to was down or not accessible from your `rippled` server.
 
 Check the `[insight]` stanza in your `rippled`'s config file and confirm that you have network connectivity from your `rippled` server to your StatsD server.
 
