@@ -6,15 +6,19 @@ To build the site locally:
 
 1. Install [**Dactyl**](https://github.com/ripple/dactyl):
 
-        sudo pip3 install dactyl  
+        sudo pip3 install dactyl
 
-2. Clone the repo:
+2. Clone the repo and change into its directory:
 
-        git clone git@github.com:ripple/xrpl-dev-portal.git
+        git clone git@github.com:ripple/xrpl-dev-portal.git && cd xrpl-dev-portal
 
-3. Build the site:
+3. Build the site to the `out/` directory:
 
         dactyl_build -t en
+
+If you get an error, try upgrading Dactyl before building:
+
+      sudo pip3 install --upgrade dactyl
 
 For more details, see the [contribution guidelines](CONTRIBUTING.md).
 
