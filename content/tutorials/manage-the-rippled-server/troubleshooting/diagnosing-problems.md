@@ -143,13 +143,13 @@ To use the script:
 
 2. Look over the output file for sensitive information.
 
-    Although the script attempts to scrub sensitive information from the information it collects, it's important to look it over to be sure before posting the output publicly. For example, the script outputs detailed information about your server hardware, and you may want to remove some sections for privacy reasons. Use a text editor to read the output file and to remove anything you don't want to post.
+    The script attempts to scrub sensitive information from the output, such as validator keys or tokens. However, you should still check the output before posting publicly, as a precaution. For example, the script outputs detailed information about your server hardware, and you may want to remove some sections for privacy reasons. Use a text editor to read the output file and to remove anything you don't want to post.
 
         nano /tmp/ripple_info.Xo8Xr/rippled_info.md
 
 3. Upload the output file where others can see it.
 
-    For example, you can upload a file directly to [GitHub Gist](https://gist.github.com/), [Pastebin](https://pastebin.com/), or a similar service. If you are running `rippled` on a remote server, you may find it easier to first transfer the file to a machine with a web browser, using `scp` or a similar tool.
+    You can upload the file directly to [GitHub Gist](https://gist.github.com/), [Pastebin](https://pastebin.com/), or a similar service. If you are running `rippled` on a remote server, you may find it easier to first transfer the file to a machine with a web browser, using `scp` or a similar tool.
 
 
 ## See Also
