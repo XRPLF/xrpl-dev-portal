@@ -69,6 +69,8 @@ targets:
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         locale_file: locale/en/LC_MESSAGES/messages.mo
+        link_subs:
+            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
 
     -   name: ja
         lang: ja
@@ -169,6 +171,8 @@ targets:
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         no_cover: true
+        link_subs:
+            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
@@ -5555,6 +5559,8 @@ pages:
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
+        filters:
+            - xrpapi_readme
         targets:
             - en
             - ja
