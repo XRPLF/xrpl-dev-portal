@@ -75,6 +75,8 @@ To be deleted, an account must meet the following requirements:
 
 After an account has been deleted, it can be re-created in the ledger through the normal method of [creating accounts](#creating-accounts). An account that has been deleted and re-created is no different than an account that has been created for the first time.
 
+**Warning:** The [AccountDelete transaction][]'s transaction cost applies even if the transaction fails because the account does not meet the requirements to be deleted. To avoid paying 5 XRP in case account deletion fails, [submit the transaction](submit.html) with `fail_hard` enabled so that the transaction is rejected unless it is provisionally successful.
+
 Unlike Bitcoin and many other cryptocurrencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, you should not create new XRP Ledger accounts unless necessary. You can recover some of an account's 20 XRP [reserve](reserves.html) by deleting the account, but you must still destroy at least 5 XRP to do so.
 
 Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](become-an-xrp-ledger-gateway.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
