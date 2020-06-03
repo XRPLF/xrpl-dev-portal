@@ -69,6 +69,8 @@ targets:
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         locale_file: locale/en/LC_MESSAGES/messages.mo
+        link_subs:
+            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
 
     -   name: ja
         lang: ja
@@ -77,6 +79,8 @@ targets:
         github_branch: master
         locale_file: locale/ja/LC_MESSAGES/messages.mo
         link_subs:
+            # Adjust XRP-API readme link to point to the right place in the repo
+            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
             # Fix 2 links from untranslated send-xrp.html:
             "accounts.html#creating-accounts": "accounts.html#アカウントの作成"
             "rippled-server-modes.html#reasons-to-run-a-stock-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
@@ -161,6 +165,8 @@ targets:
             # Fix links from untranslated validator-list.html
             "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"
             "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
+            # Fix link from untranslated run-rippled-as-a-wallet-server.html
+            "run-rippled-as-a-validator.html#6-provide-domain-verification": "run-rippled-as-a-validator.html#6-ドメイン検証の提供"
 
 
     -   name: xrp-api-only
@@ -169,6 +175,8 @@ targets:
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         no_cover: true
+        link_subs:
+            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
@@ -2223,6 +2231,7 @@ pages:
         blurb: A multipurpose configuration for anyone integrating XRP. #TODO:translate
         targets:
             - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
         html: configure-statsd.html
@@ -5555,6 +5564,8 @@ pages:
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
+        filters:
+            - xrpapi_readme
         targets:
             - en
             - ja
@@ -5919,6 +5930,9 @@ known_broken_links:
     - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF
     # Dev blog link assumes relationship with xrpl.org
     - /blog/
+    - /blog/label/rippled-release-notes.html
+    - /blog/label/amendments.html
+    - /blog/label/features.html
     # For some reason the Web Archive links are breaking in the link checker
     #  even though they still work in browser:
     - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
