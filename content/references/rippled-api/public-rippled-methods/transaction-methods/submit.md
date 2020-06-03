@@ -320,6 +320,7 @@ The response follows the [standard format][], with a successful result containin
 * `invalidTransaction` - The transaction is malformed or otherwise invalid.
 * `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
 * `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
+* `notSupported` - Signing is not supported by this server (Sign-and-Submit mode only.) If you are the server admin, you can still access signing when connected [as an admin](admin-rippled-methods.html), or you could [enable public signing](enable-public-signing.html). [New in: rippled 1.1.0][]
 
 
 <!--{# common link defs #}-->
