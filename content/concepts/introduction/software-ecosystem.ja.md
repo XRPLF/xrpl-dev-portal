@@ -4,7 +4,7 @@ XRP Ledgerは、「価値のインターネット」を推進および実現可�
 
 ## スタックレベル
 
-[![4層からなるエコシステムの図: 最下層にはXRP Ledgerのピアツーピアネットワーク、その上にプログラミングライブラリー、次にミドルウェア、そして最上層にアプリとサービスがあります。](img/ecosystem.png)](img/ecosystem.png)
+[![4層からなるエコシステムの図: 最下層にはXRP Ledgerのピアツーピアネットワーク、その上にプログラミングライブラリー、次にミドルウェア、そして最上層にアプリとサービスがあります。](img/ecosystem.ja.png)](img/ecosystem.ja.png)
 
 - [XRP Ledgerの基盤](#rippled-コアサーバー)は、トランザクションを共有し、[コンセンサスプロセス](consensus.html)に関与し、[トランザクション](transaction-basics.html)を処理する常時接続のサーバーのピアツーピアネットワークです。XRP Ledgerエコシステム内の他のすべてのものが、最終的にこのピアツーピアネットワーク上に直接、または間接的に構築されます。
 
@@ -57,5 +57,5 @@ XRPと周辺テクノロジーを使用してユーザーとやり取りする�
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %} 
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

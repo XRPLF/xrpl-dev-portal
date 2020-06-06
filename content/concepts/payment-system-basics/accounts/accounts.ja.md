@@ -3,7 +3,7 @@
 XRP Ledgerの「アカウント」は、XRPの所有者と[トランザクション](transaction-formats.html)の送信者を表します。アカウントの主な要素は次のとおりです。
 
 - 識別用の**アドレス**。例えば、`rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`
-  
+
   **注記:** XRPコミュニティは、取引所およびウォレットで[宛先タグ](https://xrpl.org/source-and-destination-tags.html)の代わりに使用できる新しいフォーマット、**X**アドレスを[提案](https://github.com/xrp-community/standards-drafts/issues/6)（これをサポートする[コーデック](https://github.com/xrp-community/xrpl-tagged-address-codec)も開発）しました。これらの「パック化」したアドレスは、`r`ではなく`X`で開始します。詳細は、[XRPL 𝗫-address format](https://xrpaddress.info/)のサイトを参照してください。
 
 - **XRPの残高**。このXRPの一部は、[準備金](reserves.html)用に確保されています。
@@ -29,14 +29,14 @@ XRP Ledgerでアカウントを取得する一般的な方法は次のとおり�
 1. ランダム性の強いソースからキーペアを生成し、そのキーペアのアドレスを計算します。（例えば、[wallet_proposeメソッド][]を使用して計算することができます。）
 
 2. XRP Ledgerにアカウントをすでに持っているユーザーに、生成したアドレスにXRPを送信してもらいます。
-   
+
    - 例えば、一般の取引所でXRPを購入し、その取引所から、指定したアドレスにXRPを引き出すことができます。
-     
+
      **注意:** 自身のXRP Ledgerアドレスで初めてXRPを受け取る場合は[アカウントの準備金](reserves.html)（現在は20 XRP）を支払う必要があります。この金額のXRPは無期限に使用できなくなります。一方で、一般の取引所では通常、顧客のXRPはすべて、共有されたいくつかのXRP Ledgerアカウントに保有されているため、顧客はその取引所で個々のアカウントの準備金を支払う必要はありません。引き出す前に、XRP Ledgerに直接アカウントを保有することが、金額に見合う価値があるかどうかを検討してください。
 
 ## アドレス
 
-{% include '_snippets/data_types/address.md' %}
+{% include '_snippets/data_types/address.ja.md' %}
 
 有効なアドレスに資金供給することで、そのアドレスを[XRP Ledgerのアカウントにする](#アカウントの作成)ことができます。[レギュラーキー](setregularkey.html)または[署名者リスト](multi-signing.html)のメンバーを表すために資金供給されていないアドレスを使用することもできます。資金供給されたアカウントのみがトランザクションの送信者になることができます。
 
@@ -111,12 +111,12 @@ XRP Ledgerのアドレスは、[base58](https://en.wikipedia.org/wiki/Base58)_�
 
 次の図は、キーとアドレスの関係を示しています。
 
-[![マスター公開鍵 + プレフィクスの種類 → アカウントID + チェックサム → アドレス](img/address-encoding.png)](img/address-encoding.png)
+[![マスター公開鍵 + プレフィクスの種類 → アカウントID + チェックサム → アドレス](img/address-encoding.ja.png)](img/address-encoding.ja.png)
 
 公開鍵からXRP Ledgerアドレスを計算する式は次のとおりです。コード例全体については、[`encode_address.js`](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/address_encoding/encode_address.js)を参照してください。パスフレーズまたはシード値から公開鍵を導出するプロセスについては、[鍵の導出](cryptographic-keys.html#鍵導出)を参照してください。
 
 1. 次の必須アルゴリズムをインポートします。SHA-256、RIPEMD160、base58。base58のディクショナリーを設定します。
-   
+
        'use strict';
         const assert = require('assert');
         const crypto = require('crypto');
@@ -127,35 +127,35 @@ XRP Ledgerのアドレスは、[base58](https://en.wikipedia.org/wiki/Base58)_�
         assert(crypto.getHashes().includes('ripemd160'));
 
 2. 33バイトのECDSA secp256k1公開鍵、または32バイトのEd25519公開鍵で始めます。Ed25519キーの場合は、キーの前にバイト`0xED`を付けます。
-   
+
        const pubkey_hex =
           'ED9434799226374926EDA3B54B1B461B4ABF7237962EAE18528FEA67595397FA32';
         const pubkey = Buffer.from(pubkey_hex, 'hex');
         assert(pubkey.length == 33);
 
 3. 公開鍵のSHA-256ハッシュの[RIPEMD160](https://en.wikipedia.org/wiki/RIPEMD)ハッシュを計算します。この値は「Account ID」です。
-   
+
          const pubkey_inner_hash = crypto.createHash('sha256').update(pubkey);
         const pubkey_outer_hash = crypto.createHash('ripemd160');
         pubkey_outer_hash.update(pubkey_inner_hash.digest());
         const account_id = pubkey_outer_hash.digest();
-        
+
 4. アカウントIDのSHA-256ハッシュのSHA-256ハッシュを計算します。最初の4バイトを使用ます。この値が「チェックサム」です。
-   
+
          const address_type_prefix = Buffer.from([0x00]);
         const payload = Buffer.concat([address_type_prefix, account_id]);
         const chksum_hash1 = crypto.createHash('sha256').update(payload).digest();
         const chksum_hash2 = crypto.createHash('sha256').update(chksum_hash1).digest();
         const checksum =  chksum_hash2.slice(0,4);
-        
+
 5. ペイロードとチェックサムを連結します。連結バッファーのbase58値を計算します。この結果が、該当のアドレスになります。
-   
+
          const dataToEncode = Buffer.concat([payload, checksum]);
         const address = base58.encode(dataToEncode);
         console.log(address);
         // rDTXLQ7ZKZVKz33zJbHjgVShjsBnqMBhmN
-        
-        
+
+
 ## 関連項目
 
 - **コンセプト:**

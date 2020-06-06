@@ -89,7 +89,7 @@ _Websocket_
 
 ## 3.検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## 4.最終結果の確認
 

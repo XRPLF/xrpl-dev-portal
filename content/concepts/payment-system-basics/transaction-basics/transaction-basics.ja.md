@@ -11,7 +11,7 @@ _トランザクション（取引）_ は、XRP Ledgerを変更する唯一の�
 
 だれでも最終的なステータスを確認として[ハッシュによってトランザクションを調べる](look-up-transaction-results.html)ことができるため、トランザクションハッシュは「支払いの証明」として使用することができます。
 
-{% include '_snippets/setfee_uniqueness_note.md' %}
+{% include '_snippets/setfee_uniqueness_note.ja.md' %}
 <!--_ -->
 
 

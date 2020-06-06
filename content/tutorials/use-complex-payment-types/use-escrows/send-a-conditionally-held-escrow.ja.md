@@ -96,7 +96,7 @@ print(cancel_after)
 
 ## 4.検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## 5.Escrowが作成されたことの確認
 
@@ -162,7 +162,7 @@ _Websocket_
 
 ## 7.検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## 8.最終結果の確認
 

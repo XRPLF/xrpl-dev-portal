@@ -70,7 +70,7 @@ print(release_date_ripple)
 
 ## 3.検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## 4.Escrowが作成されたことの確認
 
@@ -169,7 +169,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 
 ## 7.検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## 8.最終結果の確認
 

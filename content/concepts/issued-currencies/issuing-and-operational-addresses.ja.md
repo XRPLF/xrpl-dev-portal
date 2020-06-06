@@ -1,6 +1,6 @@
 # 発行アドレスと運用アドレス
 
-{% include '_snippets/issuing-and-operational-addresses-intro.md' %}
+{% include '_snippets/issuing-and-operational-addresses-intro.ja.md' %}
 <!--{#_ #}-->
 
 ## 資金のライフサイクル

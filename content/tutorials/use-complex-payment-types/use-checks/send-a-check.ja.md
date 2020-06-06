@@ -174,7 +174,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 ## {{send_n.next()}}.検証の待機
 
-{% include '_snippets/wait-for-validation.md' %}
+{% include '_snippets/wait-for-validation.ja.md' %}
 <!--{#_ #}-->
 
 ## {{send_n.next()}}.最終結果の確認

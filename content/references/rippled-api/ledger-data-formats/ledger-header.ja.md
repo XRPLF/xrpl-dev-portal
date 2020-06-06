@@ -18,7 +18,7 @@
 
 
 ## レジャーインデックス
-{% include '_snippets/data_types/ledger_index.md' %}
+{% include '_snippets/data_types/ledger_index.ja.md' %}
 <!--{#_ #}-->
 
 

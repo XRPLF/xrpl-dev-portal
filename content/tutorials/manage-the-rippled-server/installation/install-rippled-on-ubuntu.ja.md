@@ -79,7 +79,7 @@
 
 ## 次のステップ
 
-{% include '_snippets/post-rippled-install.md' %}
+{% include '_snippets/post-rippled-install.ja.md' %}
 <!--_ -->
 
 

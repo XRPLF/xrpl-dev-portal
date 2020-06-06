@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2020-05-12 16:30-0700\n"
+"POT-Creation-Date: 2020-06-05 20:39-0700\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -41,10 +41,10 @@ msgid ""
 "like to help, <a href=\"https://github.com/ripple/xrpl-dev-"
 "portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
 msgstr ""
-"XRP Ledger Dev Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべて"
-"の言語で利用できるわけではありません。助けたいと思うなら"
-"<a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">"
-"提供して下さい！</a>"
+"XRP Ledger Dev "
+"Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべての言語で利用できるわけではありません。助けたいと思うなら<a "
+"href=\"https://github.com/ripple/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.ja.md\">提供して下さい！</a>"
 
 # Table of contents
 #: tool/template-doc.html:40
@@ -88,8 +88,7 @@ msgstr "価値のインターネットをパワーする。"
 msgid ""
 "The <a href=\"#xrp_ledger_intro\">XRP Ledger</a> is open-source "
 "technology that anyone can use."
-msgstr ""
-"<a href=\"#xrp_ledger_intro\">XRP Ledger</a>は誰でもが使い得るオープンソース技術。"
+msgstr "<a href=\"#xrp_ledger_intro\">XRP Ledger</a>は誰でもが使い得るオープンソース技術。"
 
 #: tool/template-home.html:25
 msgid ""
@@ -99,15 +98,15 @@ msgstr "このツールと情報でXRPのオープンソースプラットフォ
 
 #: tool/template-home.html:26
 msgid "Want more?"
-msgstr ""#TODO
+msgstr ""
 
 #: tool/template-home.html:27
 msgid "Get updates about XRP Ledger webinars, releases, and documentation!"
-msgstr ""#TODO
+msgstr ""
 
 #: tool/template-home.html:29
 msgid "Sign up!"
-msgstr ""#TODO
+msgstr ""
 
 #: tool/template-home.html:50
 msgid "Learn How It Works"
@@ -157,9 +156,8 @@ msgid ""
 "network of peer-to-peer servers. It is the home of XRP, a digital asset "
 "designed to bridge the many different currencies in use worldwide."
 msgstr ""
-"XRP Ledgerは、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。"
-"XRP LedgerはXRPの土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために"
-"設計されたデジタル資産です。"
+"XRP Ledgerは、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。XRP "
+"LedgerはXRPの土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために設計されたデジタル資産です。"
 
 #: tool/template-home.html:132
 msgid "xrp-ledger-overview.html#the-digital-asset-for-payments"
@@ -256,3 +254,77 @@ msgstr "(分散型取引所アイコン)"
 #: tool/template-home.html:176
 msgid "On-Ledger Decentralized Exchange"
 msgstr "台帳上の分散型取引所"
+
+#: tool/template-home.html:185
+msgid "Start Building"
+msgstr ""
+
+#: tool/template-home.html:187
+msgid ""
+"Use these tutorials to get step-by-step guidance to perform common tasks "
+"with the XRP Ledger."
+msgstr ""
+
+#: tool/template-home.html:196
+msgid "'list xrp' icon"
+msgstr "「XRPを上場」アイコン"
+
+#: tool/template-home.html:215
+msgid "'send xrp' icon"
+msgstr "「XRPの送金」アイコン"
+
+#: tool/template-home.html:234
+msgid "'run rippled' icon"
+msgstr ""
+
+#: tool/template-home.html:251
+msgid "More Tutorials"
+msgstr "他のチュートリアル"
+
+#: tool/template-home.html:264
+msgid "All Tutorials"
+msgstr "全チュートリアル"
+
+#: tool/template-home.html:273
+msgid "Related Projects"
+msgstr ""
+
+#: tool/template-home.html:275
+msgid ""
+"You're not alone in building the Internet of Value. These projects are "
+"proudly collaborating with the XRP Ledger to make all the world's money "
+"move like information moves today."
+msgstr ""
+
+#: tool/template-home.html:283
+msgid "Interledger logo"
+msgstr "インターレジャーロゴ"
+
+#: tool/template-home.html:284
+msgid "Interledger"
+msgstr "インターレジャー"
+
+#: tool/template-home.html:287
+msgid ""
+"Interledger is an open protocol suite for sending payments across "
+"different ledgers."
+msgstr "インターレジャーは異なるレジャー間でペイメントを送金するためのオープンプロトコルスイートです。"
+
+#: tool/template-home.html:290 tool/template-home.html:304
+msgid "Learn More"
+msgstr ""
+
+#: tool/template-home.html:297
+msgid "Xpring logo"
+msgstr "Xpringロゴ"
+
+#: tool/template-home.html:298
+msgid "Xpring"
+msgstr ""
+
+#: tool/template-home.html:301
+msgid ""
+"Xpring is Ripple’s initiative to create an open developer platform for "
+"money."
+msgstr "Xpring（スプリング)はリップルのイニシアチブであり、開発者向けの通貨のオープンプラットフォームを構築することを目的としています。"
+

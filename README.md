@@ -20,7 +20,7 @@ If you get an error, try upgrading Dactyl before building:
 
       sudo pip3 install --upgrade dactyl
 
-For more details, see the [contribution guidelines](CONTRIBUTING.md).
+For more details, see the [contribution guidelines (EN)](CONTRIBUTING.md) ([日本語](CONTRIBUTING.ja.md)) and the [contributor Code of Conduct (EN)](CODE_OF_CONDUCT.md) ([日本語](CODE_OF_CONDUCT.ja.md)).
 
 ## Domain Verification Checker
 

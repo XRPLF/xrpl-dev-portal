@@ -135,7 +135,7 @@
 
 ## 4. 検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 
 ## 5. 新しい署名者リストの確認
