@@ -13,19 +13,37 @@
 ## インストール手順
 
 1. Ripple RPMリポジトリをインストールします。
+   
+        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        [ripple-stable]
+        name=XRP Ledger Packages
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/stable/
+        enabled=1
+        gpgcheck=0
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
+        repo_gpgcheck=1
+        REPOFILE
 
-        $ sudo rpm -Uvh https://mirrors.ripple.com/ripple-repo-el7.rpm
+2. 最新のrepoのアップデートを取得します。
+   
+        $ sudo yum -y update
 
-2. `rippled`ソフトウェアパッケージをインストールします。
+3. 新しい`rippled`パッケージをインストールします。
+   
+        $ sudo yum install rippled
+   
+   バージョン1.3.1では、構成ファイル（`rippled.cfg`および`validators.txt`）を変更する必要はありません。このアップデート手順では、既存の構成ファイルが現在のまま残ります。
 
-        $ sudo yum install --enablerepo=ripple-stable rippled
+4. systemdユニットファイルを再度読み込みます。
+   
+        $ sudo systemctl daemon-reload
 
-3. システム起動時に開始するように、`rippled`サービスを設定します。
-
+5. 起動時に開始するように、`rippled`サービスを設定します。
+   
         $ sudo systemctl enable rippled.service
 
-4. `rippled`サービスを開始します。
-
+6. `rippled`サービスを開始します。
+   
         $ sudo systemctl start rippled.service
 
 
@@ -33,9 +51,23 @@
 
 {% include '_snippets/post-rippled-install.md' %}<!--_ -->
 
+
 ## 関連項目
 
-- [CentOS/Red Hatでの自動更新](update-rippled-automatically-on-centos-rhel.html)
-- [Ubuntu Linuxでrippledをインストール](install-rippled-on-ubuntu-with-alien.html)（Ubuntu上の事前構築済みバイナリー）
-- [Ubuntuでの'rippled'の構築と実行](build-run-rippled-ubuntu.html)（Ubuntuで`rippled`を自分でコンパイル）
-- [その他のプラットフォーム用のコンパイル手順](https://github.com/ripple/rippled/tree/develop/Builds)
+- **コンセプト:**
+    - [`rippled`サーバー](the-rippled-server.html)
+    - [コンセンサスについて](intro-to-consensus.html)
+- **チュートリアル:**
+    - [rippledの構成](configure-rippled.html)
+    - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
+    - [rippled APIの使用開始](get-started-with-the-rippled-api.html)
+- **リファレンス:**
+    - [rippled APIリファレンス](rippled-api.html)
+      - [`rippled`コマンドラインの使用](commandline-usage.html)
+      - [server_infoメソッド][]
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

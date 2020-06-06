@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>0</x>
+      <y>70</y>
+      <w>220</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>マスター公開鍵
+--
+33バイト (secp256k1)
+0xED + 32バイト (Ed25519)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>300</x>
+      <y>160</y>
+      <w>180</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>アカウントID
+--
+(20バイト)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>70</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+
+
+SHA-256のRIPEMD160
+
+
+
+
+</panel_attributes>
+    <additional_attributes>90.0;110.0;40.0;110.0;40.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>630</x>
+      <y>160</y>
+      <w>180</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>アドレス
+--
+アカウントID (20バイト)
+チェックサム (4バイト)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>0</x>
+      <y>160</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>プレフィックスを入力
+--
+0x00
+(XRPL base58の「r」)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>200</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>340</x>
+      <y>290</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>チェックサム
+--
+(4バイト)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>200</y>
+      <w>120</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;80.0;10.0;80.0;120.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>180</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>530</x>
+      <y>180</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>base58
+type=sender</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>230</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+SHA-256を2回</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>0</x>
+      <y>30</y>
+      <w>280</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*アドレスのエンコード*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

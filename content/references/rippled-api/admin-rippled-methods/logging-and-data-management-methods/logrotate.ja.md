@@ -1,7 +1,35 @@
 # logrotate
-[[ソース]<br>](https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
 
 `logrotate`コマンドは、ログファイルを閉じて再度開きます。これは、Linuxファイルシステムでのログローテーションを促進することを目的としています。
+
+通常、Linuxシステムには、[`logrotate`](https://linux.die.net/man/8/logrotate)プログラムがプリインストールされていますが、このコマンドとは異なります。アプリケーション固有のログローテーションスクリプトは、`/etc/logrotate.d`に配置されています。
+
+次のスクリプトは、`/etc/logrotate.d/rippled`として作成できるサンプルです。
+
+```
+/var/log/rippled/*.log {
+  daily
+  minsize 200M
+  rotate 7
+  nocreate
+  missingok
+  notifempty
+  compress
+  compresscmd /usr/bin/nice
+  compressoptions -n19 ionice -c3 gzip
+  compressext .gz
+  postrotate
+    /opt/ripple/bin/rippled --conf /opt/ripple/etc/rippled.cfg logrotate
+  endscript
+}
+```
+
+保持するログの量に応じて、`minsize`や`rotate`などのパラメーターを構成できます。`rippled.cfg`ファイルの`log_level`設定を使用して、サーバーのログの詳細度を設定します。このサンプルスクリプトは標準の`log_level`に基づいており、約2週間分のログを圧縮形式で保存します。
+
+`rippled` 1.3以降、スクリプト`/etc/logrotate.d/rippled`は、DEBおよびRPMパッケージによって自動的にインストールされます。この設定は、必要に応じて変更できます。パッケージのアップグレード時に変更内容が上書きされることはありません。
+
+**注記:** システムのlogrotateスクリプトは、アプリケーションごとに1つしか持てません。同じディレクトリを処理するログローテーションが他にないことを確認してください。
 
 _`logrotate`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-rippled-methods.html)です。_
 
@@ -14,8 +42,8 @@ _`logrotate`メソッドは、権限のないユーザーは実行できない[�
 
 ```
 {
-   "id": "lr1",
-   "command": "logrotate"
+    "id": "lr1",
+    "command": "logrotate"
 }
 ```
 
@@ -40,10 +68,10 @@ rippled logrotate
 ```
 200 OK
 {
-  "result" : {
-     "message" : "The log file was closed and reopened.",
-     "status" : "success"
-  }
+   "result" : {
+      "message" : "The log file was closed and reopened.",
+      "status" : "success"
+   }
 }
 
 ```
@@ -54,25 +82,25 @@ rippled logrotate
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 {
-  "result" : {
-     "message" : "The log file was closed and reopened.",
-     "status" : "success"
-  }
+   "result" : {
+      "message" : "The log file was closed and reopened.",
+      "status" : "success"
+   }
 }
 
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
+この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
-| `Field`   | 型   | 説明                                             |
+| `Field`   | 型     | 説明                                                    |
 |:----------|:-------|:--------------------------------------------------------|
-| `message` | 文字列 | 正常に完了した場合、次のメッセージが含まれています。 `The log file was closed and reopened.` |
+| `message` | 文字列 | 正常に完了した場合、次のメッセージが含まれています。`The log file was closed and reopened.` |
 
 ### 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
+* いずれかの[一般的なエラータイプ][]。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

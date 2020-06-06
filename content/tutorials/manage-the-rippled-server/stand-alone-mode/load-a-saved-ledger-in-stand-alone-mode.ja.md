@@ -1,8 +1,10 @@
 # スタンドアロンモードでの保存済みレジャーの読み込み
 
-`rippled`サーバーが以前にXRP Ledgerピアツーピアネットワーク（本番環境ネットワークまたは[Test Net](parallel-networks.html)）と同期されている場合は、ディスクに保存されたレジャーバージョンから開始できます。
+以前にディスクに保存していた[履歴レジャーバージョン](ledgers.html)を使用して、`rippled`サーバーを[スタンドアロンモード](rippled-server-modes.html)で起動できます。例えば、以前に`rippled`サーバーをXRP Ledgerのピアツーピアネットワーク（[本番Mainnet、Testnet、Devnetなど](parallel-networks.html)）と同期していた場合は、過去にサーバーで使用できていた任意のレジャーバージョンを読み込むことができます。
 
-## 1.`rippled`を通常の方法で起動します。
+履歴レジャーバージョンを読み込むことにより、レジャーを「リプレイ」して、トランザクションがネットワークのルールに従って処理されていたか検証したり、異なる[Amendment](amendments.html)を有効にした場合のトランザクションセットの処理の結果を比較したりすることができます。万が一、[XRP Ledgerのコンセンサスメカニズムに対する攻撃](consensus-protections.html)が発生して共有レジャーの状態に悪影響が及んでも、このプロセスを始めることで、バリデータのコンセンサスを以前の良好だったネットワークの状態に「ロールバック」できる可能性があります。
+
+## 1. `rippled`を通常の方法で起動します。
 
 既存のレジャーを読み込むには、最初にネットワークから当該のレジャーを取得する必要があります。`rippled`をオンラインモードで通常の方法で起動します。
 
@@ -10,7 +12,7 @@
 rippled --conf=/path/to/rippled.cfg
 ```
 
-## 2.`rippled`が同期されるまで待ちます。
+## 2. `rippled`が同期されるまで待ちます。
 
 [server_infoメソッド][]を使用して、ネットワークに対するサーバーの状態を確認します。`server_state`に以下のいずれかの値が示される場合は、サーバーは同期しています。
 
@@ -20,7 +22,7 @@ rippled --conf=/path/to/rippled.cfg
 
 詳細は、[考えられるサーバーの状態](rippled-server-states.html)を参照してください。
 
-## 3.（省略可）特定のレジャーバージョンを取得します。
+## 3. （省略可）特定のレジャーバージョンを取得します。
 
 最新レジャーのみを必要とする場合は、このステップをスキップできます。
 
@@ -28,7 +30,7 @@ rippled --conf=/path/to/rippled.cfg
 
 特定の履歴レジャーバージョンをリプレイする場合は、リプレイするレジャーバージョンとその直前のレジャーバージョンの両方を取得する必要があります。（前のレジャーバージョンにより、リプレイするレジャーバージョンに記述されている変更を適用する初期状態が設定されます。）
 
-## 4.`rippled`をシャットダウンします。
+## 4. `rippled`をシャットダウンします。
 
 [stopメソッド][]を使用します。
 
@@ -36,7 +38,7 @@ rippled --conf=/path/to/rippled.cfg
 rippled stop --conf=/path/to/rippled.cfg
 ```
 
-## 5.スタンドアロンモードで`rippled`を起動します。
+## 5. スタンドアロンモードで`rippled`を起動します。
 
 最新のレジャーバージョンを読み込むには、`-a`オプションと`--load`オプションを指定してサーバーを起動します。
 
@@ -50,15 +52,29 @@ rippled -a --load --conf=/path/to/rippled.cfg
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 ```
 
-スタンドアロンモードで`rippled`を起動するときに使用できるオプションについての詳細は、[コマンドラインの使用リファレンスの「スタンドアロンモードのオプション」](commandline-usage.html#スタンドアロンモードのオプション)を参照してください。
+スタンドアロンモードで`rippled`を起動するときに使用可能なオプションについての詳細は、[コマンドラインの使用: スタンドアロンモードのオプション ](commandline-usage.html#スタンドアロンモードのオプション)を参照してください。
 
-## 6.レジャーを手動で進めます。
+## 6. レジャーを手動で進めます。
 
 スタンドアロンモードで`--ledger`を使用してレジャーを読み込むと、読み込まれたレジャーが現行のオープンレジャーになるので、[レジャーを手動で進める](advance-the-ledger-in-stand-alone-mode.html)必要があります。
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
+
+## 関連項目
+
+- **コンセプト:**
+    - [`rippled`サーバー](the-rippled-server.html)
+      - [`rippled`サーバーのモード](rippled-server-modes.html)
+    - [コンセンサスについて](intro-to-consensus.html)
+    - [Amendment](amendments.html)
+- **リファレンス:**
+    - [ledger_acceptメソッド][]
+    - [server_infoメソッド][]
+    - [`rippled`コマンドラインの使用](commandline-usage.html)
+- **ユースケース:**
+    - [`rippled`へのコードの提供](contribute-code-to-rippled.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

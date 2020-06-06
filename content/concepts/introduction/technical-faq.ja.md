@@ -7,7 +7,7 @@
 
 バリデータは、トランザクションがプロトコル要件を満たしていて、結果として「有効」であるかどうかを判断します。バリデータが提供する独自の機能は、順序付けされた単位にトランザクションをグループ化し、二重支払いを防ぐことを目的としてその順序に同意することです。
 
-コンセンサスプロセスの詳細については、[Consensus](consensus.html)と[Ripple Labs Tech Talk: Understanding Consensus](https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/)を参照してください。
+コンセンサスプロセスの詳細は、[コンセンサス](consensus.html)と[Ripple Labs Tech Talk: Understanding Consensus](https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/)を参照してください。
 
 
 #### バリデータの実行にはいくらかかりますか?
@@ -32,7 +32,9 @@
 
 #### Rippleによって運用されないバリデータにとってインセンティブとなるものは何ですか?
 
-XRP Ledgerが広まり、銀行間決済に広く使用されると、参加者にとってネットワークの信頼性と安定性を保証するというインセンティブがあります。このような場合、金融機関はネットワークに参加するために`rippled`サーバーを運用します。サーバーの運用開始後、バリデータを運用するための追加のコストと労力は基本的にかかりません。ソフトウェアスイッチをオフからオンに切り替えるだけです。XRP Ledgerの進化を決定するのはバリデータであるため、バリデータを運用することの主なインセンティブは、ネットワークの安定した運用と賢明な進化を維持し保護することです。
+バリデータを運用することの主なインセンティブは、ネットワークの安定した運用と合理的な進化を維持し、保護することです。XRP Ledgerの進化はバリデータによって決定されるため、XRP Ledgerを使用するかこれに依存するビジネスには、ネットワークの信頼性と安定性が確保されるというインセンティブが内在することになります。
+
+XRP Ledgerサーバーを運用してネットワークに参加している場合、バリデータを運用するための費用や労力は最小限に抑えられます。つまり、Bitcoinにおけるマイニング報酬といった、追加のインセンティブは不要であるということです。Rippleでは、バリデータの運用報酬としてXRPを支払うことはしないため、そのようなインセンティブによってバリデータの行動が歪められることはありません。
 
 
 #### 金融機関は、特定の制度上の基準や要件を満たすのに役立つトランザクションバリデータを設定できますか?
@@ -51,7 +53,9 @@ XRP Ledgerが広まり、銀行間決済に広く使用されると、参加者�
 
 #### XRP Ledgerでは正式なバリデータのオンボーディングプロセスを使用していますか?
 
-いいえ。XRP Ledgerは、中央権限のないシステムであるため、正式なバリデータのオンボーディングプロセスのようなものは存在しません。代わりに、Rippleでは推奨事項とベストプラクティスを提供しています。
+いいえ。XRP Ledgerは、中央権限のないシステムであるため、正式なバリデータのオンボーディングプロセスのようなものは存在しません。
+
+推奨事項やベストプラクティスについては、[バリデータとしての`rippled`の実行](run-rippled-as-a-validator.html)を参照してください。
 
 
 ## XRPの役割
@@ -85,13 +89,13 @@ Rippleは、XRP Ledgerネットワーク全体でAML(Anti-Money Laundering)フ�
 
 いいえ、RippleはXRP LedgerとXRP Ledgerネットワークを所有も管理もしていません。
 
-Rippleは、コアとなるXRP Ledgerサーバー（[`rippled`](https://github.com/ripple/rippled)）のリファレンス実装を公開し、オープンソースコードベースに貢献しているエンジニアチームを雇用しています。Rippleはまた、利用可能なソフトウェアのプリコンパイル済みバイナリーパッケージも定期的に発行しています。必要に応じて、誰でも自由に[ソースからソフトウェアをダウンロードしてコンパイル](install-rippled.html)できます。  
+Rippleは、コアとなるXRP Ledgerサーバー（[`rippled`](https://github.com/ripple/rippled)）のリファレンス実装を公開し、オープンソースコードベースに貢献しているエンジニアチームを雇用しています。Rippleはまた、利用可能なソフトウェアのプリコンパイル済みバイナリーパッケージも定期的に発行しています。必要に応じて、誰でも自由に[ソースからソフトウェアをダウンロードしてコンパイル](install-rippled.html)できます。
 
-XRP Ledgerと通信するためにRippleのXRP Ledgerソフトウェアを使用する必要はありません。 `rippled` はオープンソースソフトウェアであり、[ISCライセンス](https://github.com/ripple/rippled/blob/develop/LICENSE)の条件に従う限り、誰でも使用、拡張、および変更できます。ISCライセンスは、ソフトウェアの拡張方法と適応方法を厳密に制限する他のオープンソースライセンスと比較して非常に柔軟です。
+XRP Ledgerと通信するためにRippleのXRP Ledgerソフトウェアを使用する必要はありません。`rippled`はオープンソースソフトウェアであり、[ISCライセンス](https://github.com/ripple/rippled/blob/develop/LICENSE)の条件に従う限り、誰でも使用、拡張、および変更できます。ISCライセンスは、ソフトウェアの拡張方法と適応方法を厳密に制限する他のオープンソースライセンスと比較して非常に柔軟です。
 
 #### Rippleでは、ソフトウェアを安全にダウンロードする方法を提供していますか?
 
-`rippled` ソースコードは<https://github.com/ripple/rippled>から入手できます。ここでは、`master`、`release`、および`develop`の各ブランチのヒントに、`rippled`開発者が署名したバージョン設定コミットが常に含まれています。XRP Ledgerは、CentOS、RedHat Enterprise Linux、Fedora、およびUbuntu用のビルド済みRPMパッケージも提供します。これらのパッケージは不正開封防止が施されており、その真正性を確認できるようにRippleによってデジタル署名されています。最後に、リリースノートは安全なWebサイトで公開されており、リポジトリーのコミットIDと公開されているRPMパッケージのmd5sumが含まれています。
+`rippled`ソースコードは<https://github.com/ripple/rippled>から入手できます。ここでは、`master`、`release`、および`develop`の各ブランチのヒントに、`rippled`開発者が署名したバージョン設定コミットが常に含まれています。XRP Ledgerは、CentOS、RedHat Enterprise Linux、Fedora、Ubuntu、およびDebian Linux用のビルド済みバイナリーパッケージも提供します。これらのパッケージは不正開封防止が施されており、その真正性を確認できるようにRippleによってデジタル署名されています。最後に、リリースノートは安全なWebサイトで公開されており、リポジトリーのコミットIDと公開されているパッケージの暗号ハッシュ値が含まれています。
 
 
 #### Rippleは検証用のコードベースとユーザーソフトウェア用のコードベースを区別していますか?
@@ -101,8 +105,8 @@ XRP Ledgerと通信するためにRippleのXRP Ledgerソフトウェアを使用
 
 ## 関連項目
 
-- [`rippled` コードベース](https://github.com/ripple/rippled)
-- ユーザーソフトウェアのコードベース
+- [`rippled`コードベース](https://github.com/ripple/rippled)
+- ユーザーソフトウェアのコードベース: 
       - [ripple-lib](https://github.com/ripple/ripple-lib)
       - [ripplecharts-frontend](https://github.com/ripple/ripplecharts-frontend)
 - [Ripple GitHub Organization](https://github.com/ripple/)

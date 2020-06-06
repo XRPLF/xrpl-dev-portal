@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>561</x>
+      <y>594</y>
+      <w>220</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>halign=left
+
+rippledサーバー</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>594</x>
+      <y>528</y>
+      <w>55</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=()-[WS]</panel_attributes>
+    <additional_attributes>20.0;10.0;20.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>341</x>
+      <y>396</y>
+      <w>187</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>halign=left
+
+ripple-lib (JavaScript)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>528</y>
+      <w>99</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=()-[JSON-RPC]</panel_attributes>
+    <additional_attributes>40.0;10.0;40.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>418</x>
+      <y>462</y>
+      <w>231</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>180.0;50.0;180.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>275</x>
+      <y>99</y>
+      <w>528</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>アプリとサービス
+(取引所、ウォレット、エクスプローラー、他)
+bg=white
+style=wordwrap
+transparency=0
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>88</y>
+      <w>528</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>594</x>
+      <y>165</y>
+      <w>55</w>
+      <h>385</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>20.0;320.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>341</x>
+      <y>264</y>
+      <w>143</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>
+halign=left
+データAPI*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>352</x>
+      <y>330</y>
+      <w>132</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=[RippleAPI]-</panel_attributes>
+    <additional_attributes>70.0;60.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>352</x>
+      <y>209</y>
+      <w>99</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=()-[REST相当]</panel_attributes>
+    <additional_attributes>40.0;10.0;40.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>693</x>
+      <y>627</y>
+      <w>55</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+
+
+fontsize=7.5
+内部
+DB
+bg=white
+transparency=0
+customelement=
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>253</x>
+      <y>77</y>
+      <w>528</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>374</x>
+      <y>165</y>
+      <w>55</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>20.0;30.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>165</y>
+      <w>154</w>
+      <h>253</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;210.0;120.0;180.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>682</x>
+      <y>165</y>
+      <w>55</w>
+      <h>385</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>20.0;320.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>275</x>
+      <y>275</y>
+      <w>55</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+
+
+fontsize=7.0
+リレーショナル
+DB
+bg=white
+transparency=0
+customelement=
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>473</x>
+      <y>660</y>
+      <w>132</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=[ピア]-[ピア]</panel_attributes>
+    <additional_attributes>90.0;10.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>286</x>
+      <y>616</y>
+      <w>220</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>rippledサーバー
+(直接ピアおよび間接ピア)
+halign=left</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>594</y>
+      <w>242</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>20.0;70.0;10.0;70.0;10.0;10.0;200.0;10.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>253</x>
+      <y>583</y>
+      <w>242</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>20.0;70.0;10.0;70.0;10.0;10.0;200.0;10.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>319</x>
+      <y>286</y>
+      <w>44</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;20.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>44</x>
+      <y>99</y>
+      <w>176</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>*アプリとサービス*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>209</y>
+      <w>913</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;810.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>44</x>
+      <y>275</y>
+      <w>176</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>*ミドルウェアAPI*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>352</y>
+      <w>913</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;810.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>44</x>
+      <y>407</y>
+      <w>176</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>*プログラミング*
+*ライブラリー*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>528</y>
+      <w>913</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;810.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>44</x>
+      <y>561</y>
+      <w>176</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>*ピアツーピア*
+*ネットワーク*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>33</y>
+      <w>33</w>
+      <h>737</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;650.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>253</x>
+      <y>561</y>
+      <w>550</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=.
+halign=left
+ XRP Ledger</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>341</x>
+      <y>308</y>
+      <w>143</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+fontsize=8
+*ミッションクリティカル
+サービスには使用不可。</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

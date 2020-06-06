@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>30</x>
+      <y>60</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>パスフレーズ
+--
+(省略可)
+任意の文字列
+lt=.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>140</x>
+      <y>80</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+SHA-512、最初の
+16バイトを保持</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>290</x>
+      <y>60</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>シード
+--
+(16バイト)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>180</x>
+      <y>200</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>秘密鍵
+--
+(32バイト)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>120</y>
+      <w>110</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+SHA-512Half</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>180</x>
+      <y>330</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>公開鍵
+--
+(32バイト)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>90</x>
+      <y>330</y>
+      <w>90</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>0xED
+プレフィクス
+--
+(1バイト)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>260</y>
+      <w>100</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+公開鍵導出</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>80</x>
+      <y>400</y>
+      <w>350</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=..
+
+マスター公開鍵
+(33バイト)</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;330.0;30.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>30</x>
+      <y>20</y>
+      <w>280</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Ed25519鍵導出*
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
