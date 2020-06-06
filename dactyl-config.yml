@@ -1385,7 +1385,7 @@ pages:
         doc_type: Tutorials
         category: Get Started
         blurb: Get started with the APIs and libraries available for interacting with the XRP Ledger.
-        cta_text: "Get Started"
+        cta_text: Get Started
         targets:
             - en
 
@@ -1395,7 +1395,7 @@ pages:
         doc_type: Tutorials
         category: Get Started
         blurb: XRP Ledgerの操作に使用できるAPIとライブラリを使い始めましょう。
-        cta_text: "開始しよう！"
+        cta_text: 開始しよう
         targets:
             - ja
 
@@ -2011,7 +2011,6 @@ pages:
         doc_type: Tutorials
         category: XRP Ledger Businesses
         blurb: Run a digital asset exchange? Follow these steps to add XRP.
-        cta_text: List XRP!
         targets:
             - en
 
@@ -2021,7 +2020,6 @@ pages:
         doc_type: Tutorials
         category: XRP Ledger Businesses
         blurb: デジタルアセット取引所でXRPを上場するために必要な手順の概要を説明します。
-        cta_text: XRPを上場しよう！
         targets:
             - ja
 
@@ -2059,6 +2057,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         blurb: Install, configure, and manage the core server that powers the XRP Ledger.
+        cta_text: Run rippled
         template: template-landing-children.html
         targets:
             - en
@@ -2069,6 +2068,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         blurb: XRP Ledgerをパワーするサーバーをインストール、設定、管理しよう。
+        cta_text: インストールしよう
         template: template-landing-children.html
         targets:
             - ja
@@ -6103,6 +6103,8 @@ pages:
             - xrp.html
         filters:
             - use_case
+        blurb: Run a digital asset exchange? Follow these steps to add XRP.
+        cta_text: List XRP
         targets:
             - en
 
@@ -6116,6 +6118,8 @@ pages:
             - xrp.html
         filters:
             - use_case
+        blurb: デジタルアセット取引所でXRPを上場するために必要な手順の概要を説明します。
+        cta_text: XRPを上場しよう
         targets:
             - ja
 
