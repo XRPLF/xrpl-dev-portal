@@ -2,9 +2,9 @@
 
 _(Requires the [Checks amendment][] :not_enabled:.)_
 
-The Checks feature in the XRP Ledger allows users to create deferred payments that can be canceled or cashed by the intended recipients. Like personal paper checks, XRP Ledger Checks start with the sender of the funds creating a Check that specifies an amount and receiver. The receiver cashes the check to pull the funds from the sender's account into the receiver's account. No money moves until the receiver cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the receiver tries to cash it, just like traditional checks. If there's a failure cashing the check, the sender can retry until the check expires.
+The Checks feature in the XRP Ledger allows users to create deferred payments that can be canceled or cashed by the intended recipients. Like personal paper checks, XRP Ledger Checks start with the sender of the funds creating a Check that specifies an amount and a recipient. The recipient cashes the check to pull the funds from the sender's account into the recipient's account. No money moves until the recipient cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the recipient tries to cash it, just like traditional checks. If there's a failure cashing the check, the check's recipient can retry until the Check expires.
 
-XRP Ledger Checks have expiration times after which they may no longer be cashed. If the receiver doesn't successfully cash the Check before it expires, the Check object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and receiver can cancel the Check before it expires or is cashed. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
+XRP Ledger Checks have expiration times after which they may no longer be cashed. If the recipient doesn't successfully cash the Check before it expires, the Check object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and recipient can cancel the Check before it expires or is cashed. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
 
 Checks are similar to [Escrow](escrow.html) and [Payment Channels](use-payment-channels.html), but there are some important differences between those features and Checks:
 
@@ -42,18 +42,18 @@ Checks typically have the lifecycle described below.
 
 [![Check flow diagram (successful cashing)](img/checks-happy-path.png)](img/checks-happy-path.png)
 
-**Step 1:** To create a Check, the sender submits a [CheckCreate][] transaction and specifies the receiver (`Destination`), expiration time (`Expiration`), and maximum amount that may be debited from the sender's account (`SendMax`).
+**Step 1:** To create a Check, the sender submits a [CheckCreate][] transaction and specifies the recipient (`Destination`), expiration time (`Expiration`), and maximum amount that may be debited from the sender's account (`SendMax`).
 
 
-**Step 2:** After the CheckCreate transaction is processed, a [Check object](check.html) is created on the XRP Ledger. This object contains the properties of the Check as defined by the transaction that created it. The object can only be modified by the sender (by canceling it with a [CheckCancel][] transaction) or receiver (by canceling it or cashing it) before the expiration time passes. After the expiration time, anyone may cancel the Check.
+**Step 2:** After the CheckCreate transaction is processed, a [Check object](check.html) is created on the XRP Ledger. This object contains the properties of the Check as defined by the transaction that created it. The object can only be modified by the sender (by canceling it with a [CheckCancel][] transaction) or recipient (by canceling it or cashing it) before the expiration time passes. After the expiration time, anyone may cancel the Check.
 
-**Step 3:** To cash the check, the receiver submits a [CheckCash][] transaction. The receiver has two options for cashing the check:
+**Step 3:** To cash the check, the recipient submits a [CheckCash][] transaction. The recipient has two options for cashing the check:
 
-* `Amount` — The receiver can use this option to specify an exact amount to cash. This may be useful for cases where the sender has padded the check to cover possible [transfer fees](transfer-fees.html) and the receiver can only accept the exact amount on an invoice or other contract.
+* `Amount` — The recipient can use this option to specify an exact amount to cash. This may be useful for cases where the sender has padded the check to cover possible [transfer fees](transfer-fees.html) and the recipient wants to accept the exact amount on an invoice or other contract.
 
-* `DeliverMin` — The receiver can use this option to specify the minimum amount they are willing to receive from the Check. If the receiver uses this option, `rippled` attempts to deliver as much as possible and will deliver at least this amount. The transaction fails if the amount that can be credited to the receiver is not at least this amount.
+* `DeliverMin` — The recipient can use this option to specify the minimum amount they are willing to receive from the Check. If the recipient uses this option, the XRP Ledger attempts to deliver as much as possible and will deliver at least this amount. The transaction fails if the amount that can be credited to the recipient is not at least the requested amount.
 
-If the sender has enough funds to cover the Check and the expiration time has not passed, the funds are debited from the sender's account and credited to the receiver's account, and the Check object is is destroyed.
+If the sender has enough funds to cover the Check and the expiration time has not passed, the funds are debited from the sender's account and credited to the recipient's account, and the Check object is is destroyed.
 
 
 
@@ -68,7 +68,7 @@ In the case of expirations, Checks have the lifecycle described below.
 
 All Checks start the same way, so **Steps 1 and 2** are the same.
 
-**Step 3a:** If the Check expires before the receiver can cash it, the Check can no longer be cashed but remains in the ledger.
+**Step 3a:** If the Check expires before the recipient can cash it, the Check can no longer be cashed but the object remains in the ledger.
 
 **Step 4a:** After a Check expires, anyone may cancel it by submitting a [CheckCancel][] transaction. That transaction removes the Check from the ledger.  
 
@@ -76,7 +76,7 @@ All Checks start the same way, so **Steps 1 and 2** are the same.
 
 ## Availability of Checks
 
-Checks require `rippled` v0.90.0 or later. As of 2018-10-11, the Checks amendment has not yet been enabled on the production XRP Ledger. For the latest status of all known amendments, see [Known Amendments](known-amendments.html). For more information about how amendments are enabled and voted on, see [Amendment Process](amendments.html#amendment-process).
+Checks require `rippled` v0.90.0 or later. As of 2020-06-08, the Checks amendment is in voting to become enabled on the production XRP Ledger. For the latest status of all known amendments, see [Known Amendments](known-amendments.html). For more information about how amendments are enabled and voted on, see [Amendment Process](amendments.html#amendment-process).
 
 To check the status of an amendment on a test net or private XRP Ledger network, use the [feature method][].
 
