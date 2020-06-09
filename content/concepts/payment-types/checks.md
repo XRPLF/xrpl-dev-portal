@@ -53,7 +53,7 @@ Checks typically have the lifecycle described below.
 
 * `DeliverMin` — The recipient can use this option to specify the minimum amount they are willing to receive from the Check. If the recipient uses this option, the XRP Ledger attempts to deliver as much as possible and will deliver at least this amount. The transaction fails if the amount that can be credited to the recipient is not at least the requested amount.
 
-If the sender has enough funds to cover the Check and the expiration time has not passed, the funds are debited from the sender's account and credited to the recipient's account, and the Check object is is destroyed.
+If the sender has enough funds to cover the Check and the expiration time has not passed, the funds are debited from the sender's account and credited to the recipient's account, and the Check object is destroyed.
 
 
 
