@@ -16,7 +16,7 @@ An example of the request format:
 ```json
 {
   "command": "crawl_shards",
-  "pubkey": true,
+  "public_key": true,
   "limit": 0
 }
 ```
@@ -28,7 +28,7 @@ An example of the request format:
   "method": "crawl_shards",
   "params": [
     {
-      "pubkey": true,
+      "public_key": true,
       "limit": 0
     }
   ]
@@ -43,7 +43,7 @@ The request includes the following fields:
 
 | `Field`  | Type    | Description                                             |
 |:---------|:--------|:--------------------------------------------------------|
-| `pubkey` | Boolean | _(Optional)_ If `true`, the response includes the node public keys (for peer-to-peer communications) of servers that were crawled. The default is `false`. |
+| `public_key` | Boolean | _(Optional)_ If `true`, the response includes the node public keys (for peer-to-peer communications) of servers that were crawled. The default is `false`. |
 | `limit`  | Number  | _(Optional)_ How many hops deep to search. The default is 0, which searches direct peers only. With a limit of `1`, searches peers' peers also. The maximum value is `3`. |
 
 **Caution:** The number of peers potentially searched grows exponentially as `limit` increases. With a limit of 2 or 3, it can take several seconds for the server to respond to the API request.
@@ -122,7 +122,7 @@ Each member of the `peers` array of the response is an object that describes one
 |:----------|:-------|:--------------------------------------------------------|
 | `complete_shards` | String | The range of history shards this peer has available. This may be disjointed. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. |
 | `ip` | String | _(May be omitted)_ The IP address of the peer this object describes. This may be an IPv4 or IPv6 address. Omitted if this is a [private peer](peer-protocol.html#private-peers). |
-| `public_key` | String | _(Omitted unless the request specified `"pubkey": true`)_ The public key this peer uses for peer-to-peer communications, in the XRP Ledger's [base58 format](base58-encodings.html). |
+| `public_key` | String | _(Omitted unless the request specified `"public_key": true`)_ The public key this peer uses for peer-to-peer communications, in the XRP Ledger's [base58 format](base58-encodings.html). |
 
 
 ### Possible Errors
