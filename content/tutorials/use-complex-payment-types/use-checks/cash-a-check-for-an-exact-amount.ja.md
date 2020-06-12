@@ -52,7 +52,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 ## {{cash_exact_n.next()}}.CheckCashトランザクションの署名
 
-{% include '_snippets/tutorial-sign-step.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/tutorial-sign-step.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### 要求の例
 

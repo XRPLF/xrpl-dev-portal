@@ -10,7 +10,7 @@ APIにアクセスする最も簡単な方法は、[**WebSocket API Tool**](webs
 
 Rippleは、XRP Ledgerコミュニティ向けにいくつかの公開サーバーを提供しています。
 
-| 演算子 | [ネットワーク][ | JSON-RPC URL | WebSocket URL | 注記 |
+| 演算子 | [ネットワーク][] | JSON-RPC URL | WebSocket URL | 注記 |
 |:----------|:----------|:----------|:----------|:----------|
 | Ripple | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | 汎用サーバークラスター |
 | Ripple | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [すべての履歴が記録されるサーバー](ledger-history.html#すべての履歴)クラスター |

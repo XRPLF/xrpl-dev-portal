@@ -31,19 +31,19 @@
 この構成では、トランザクションを生成するマシンで`rippled`を実行します。  秘密鍵はマシンから出ていかないため、マシンへのアクセス権がない人は秘密鍵にアクセスできません。もちろん、マシンのセキュリティ保護に関する業界標準のプラクティスに従ってください。この構成を使用するには、次の手順を実行します。
 
 1. [`rippled`をインストール](install-rippled.html)します。
-   
-   ローカルマシンが[`rippled`の最小システム要件](system-requirements.html)を満たしていることを確認します。
+
+    ローカルマシンが[`rippled`の最小システム要件](system-requirements.html)を満たしていることを確認します。
 
 2. トランザクションに署名する必要がある場合は、`localhost`または`127.0.0.1`のサーバーに接続します。シングル署名の場合は[signメソッド][]、マルチ署名の場合は[sign_forメソッド][]を使用します。
-   
-   [構成ファイルの例](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
-   
-   **注意:** 署名に[コマンドラインAPI](request-formatting.html#コマンドライン形式)を使用する場合は、コマンドラインでないクライアントで[Websocket APIやJSON-RPC APIを使用](get-started-with-the-rippled-api.html)する場合よりもセキュリティが弱くなります。コマンドライン構文を使用すると、秘密鍵がシステムのプロセスリストで他のユーザーに見える可能性があり、シェル履歴にプレーンテキスト形式でキーが保存される可能性があります。
+
+    [構成ファイルの例](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
+
+    **注意:** 署名に[コマンドラインAPI](request-formatting.html#コマンドライン形式)を使用する場合は、コマンドラインでないクライアントで[Websocket APIやJSON-RPC APIを使用](get-started-with-the-rippled-api.html)する場合よりもセキュリティが弱くなります。コマンドライン構文を使用すると、秘密鍵がシステムのプロセスリストで他のユーザーに見える可能性があり、シェル履歴にプレーンテキスト形式でキーが保存される可能性があります。
 
 3. サーバーの使用中は、稼働状態と最新状態を維持して、ネットワークと同期されるようにしておく必要があります。
-   
-   **注記:** トランザクションを送信していないときは`rippled`サーバーをオフにすることが _可能_ ですが、再び起動したときにネットワークとの同期に最大15分かかります。
-   
+
+    **注記:** トランザクションを送信していないときは`rippled`サーバーをオフにすることが _可能_ ですが、再び起動したときにネットワークとの同期に最大15分かかります。
+
 
 ## 同じLAN内でrippledを実行する
 
@@ -65,10 +65,10 @@
 この構成では、トランザクションにローカルで署名するために使用しているプログラミング言語のクライアントライブラリを使用します。使用しているプログラミング言語に対応するクライアントライブラリが必要です。Rippleは、XRP Ledgerのトランザクションにローカルで署名することができる次のクライアントライブラリを公開しています。
 
 - **RippleAPI（ripple-lib）for JavaScript**
-  - [設定](get-started-with-rippleapi-for-javascript.html)
-  - [APIリファレンス](rippleapi-reference.html)
+    - [設定](get-started-with-rippleapi-for-javascript.html)
+    - [APIリファレンス](rippleapi-reference.html)
 - **Signing Library for C++**（`rippled`に付属）
-  - [ドキュメント](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library)
+    - [ドキュメント](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library)
 
 Rippleが公開したものでないクライアントライブラリを使用する場合は、そのライブラリが実装している署名アルゴリズムの実装が適切で安全であることを確認してください。（例えば、クライアントライブラリがデフォルトのECDSAアルゴリズムを使用している場合は、そのライブラリは[RFC6979](https://tools.ietf.org/html/rfc6979)に記載されているとおりに決定論的ノンスを使用している必要があります。)Rippleが公開している上記のすべてのライブラリは、業界のベストプラクティスに従っています。
 
@@ -106,17 +106,17 @@ Rippleが公開したものでないクライアントライブラリを使用�
 ## 関連項目
 
 - **コンセプト:**
-  - [暗号鍵](cryptographic-keys.html)
-  - [マルチ署名](multi-signing.html)
+    - [暗号鍵](cryptographic-keys.html)
+    - [マルチ署名](multi-signing.html)
 - **チュートリアル:**
-  - [rippledのインストール](install-rippled.html)
-  - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)
-  - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
-  - [パブリック署名の有効化](enable-public-signing.html)
+    - [rippledのインストール](install-rippled.html)
+    - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)
+    - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
+    - [パブリック署名の有効化](enable-public-signing.html)
 - **リファレンス:**
-  - [signメソッド][]
-  - [submitメソッド][]
-  - [RippleAPIリファレンス](rippleapi-reference.html)
+    - [signメソッド][]
+    - [submitメソッド][]
+    - [RippleAPIリファレンス](rippleapi-reference.html)
 
 
 

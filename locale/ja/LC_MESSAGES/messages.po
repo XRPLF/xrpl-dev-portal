@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2020-06-05 20:39-0700\n"
+"POT-Creation-Date: 2020-06-12 15:10-0700\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -328,3 +328,31 @@ msgid ""
 "money."
 msgstr "Xpring（スプリング)はリップルのイニシアチブであり、開発者向けの通貨のオープンプラットフォームを構築することを目的としています。"
 
+#: tool/template-validator-domain-verifier.html:5
+msgid "Domain Verification Checker"
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:7
+msgid ""
+"This tool allows you to verify that <a href=\"xrp-ledger-toml.html"
+"#domain-verification\">domain verification</a> is properly configured."
+msgstr "このツールを使用すると、<a href=\"xrp-ledger-toml.html#ドメイン検証\">"
+"ドメイン検証</a>が正しく構成されていることを確認できます。"
+
+#: tool/template-validator-domain-verifier.html:8
+msgid ""
+"Enter the manifest found in your validator-keys.json file. Do not confuse"
+" this with your validator's secret key."
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:9
+msgid "To do this with the validator-keys-tool use the following command:"
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:14
+msgid "Your Manifest Here"
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:20
+msgid "Result"
+msgstr ""

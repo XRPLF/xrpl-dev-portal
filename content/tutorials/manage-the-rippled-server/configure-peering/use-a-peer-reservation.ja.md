@@ -26,16 +26,16 @@
 
 ストックサーバーの管理者が、以下の手順を実行します。
 
-永続ノードキーペア値をすでにサーバーに設定している場合は、[ステップ2: ノード公開鍵をピアの管理者に連絡する](#2-communicate-the-stock-servers-node-public-key)に進んでください。（例えば、各サーバーの永続ノードキーペアは[サーバークラスターの設定](cluster-rippled-servers.html)の一環として設定します。）
+永続ノードキーペア値をすでにサーバーに設定している場合は、[ステップ2: ノード公開鍵をピアの管理者に連絡する](#2ストックサーバーのノード公開鍵を連絡する)に進んでください。（例えば、各サーバーの永続ノードキーペアは[サーバークラスターの設定](cluster-rippled-servers.html)の一環として設定します。）
 
 **ヒント:** 永続ノードキーペアの設定は省略可能ですが、この設定をしておけば、サーバーのデータベースの消去や新規マシンへの移行が必要となった場合にピア接続の設定を容易に維持することができます。永続ノードキーペアを設定しない場合は、[server_infoメソッド][]の応答の`pubkey_node`フィールドに表示される、サーバーが自動生成したノード公開鍵を使用できます。
 
 1. [validation_createメソッド][]を使用して新しいランダムキーペアを生成します。（`secret`値を省略します。）
-   
+
    例:
-   
+
         rippled validation_create
-       
+
         Loading: "/etc/rippled.cfg"
         Connecting to 127.0.0.1:5005
         {
@@ -46,26 +46,26 @@
               "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
            }
         }
-   
+
    `validation_seed`（ノードシード値）と`validation_public_key`値（ノード公開鍵）を保存します。
 
 2. `rippled`の構成ファイルを編集します。
-   
+
         vim /etc/opt/ripple/rippled.cfg
-   
+
    {% include '_snippets/conf-file-location.md' %}<!--_ -->
 
 3. 前のステップで生成した`validation_seed`値を使用して、`[node_seed]`スタンザを追加します。
-   
+
    例:
-   
+
         [node_seed]
         ssZkdwURFMBXenJPbrpE14b6noJSu
-   
+
    **警告:** すべてのサーバーの`[node_seed]`値が一意である必要があります。構成ファイルを別のサーバーにコピーする場合は、`[node_seed]`値を削除するか、変更してください。`[node_seed]`は公開しないようにします。不正使用者がこの値にアクセスできた場合、それを使用してサーバーを偽装し、XRP Ledgerのピアツーピア通信を行う可能性があります。
 
 4. `rippled`サーバーを再起動します。
-   
+
         systemctl restart rippled
 
 ### 2.ストックサーバーのノード公開鍵を連絡する
@@ -124,7 +124,7 @@ Connecting to 127.0.0.1:5005
         {
             "ip": "169.54.2.151",
             "port": 51235
-            
+
         }
     ]
 }

@@ -60,7 +60,7 @@ XRP Ledgerでは、過去の使用という点で、一部のアドレスに特�
 
 ## アカウントの削除
 
-[DeletableAccounts amendment](known-amendments.html#deletableaccounts) :not_enabled: では、アカウントを削除できます。DeletableAccounts Amendmentが有効になっていない場合、資金供給されたアカウントはすべて、XRP Ledgerのデータツリーに永久に残ります。
+[DeletableAccounts amendment](known-amendments.html#deletableaccounts)（有効2020-05-08）では、アカウントの削除は可能になりました。
 
 削除するには、アカウントが次の要件を満たしている必要があります。
 

@@ -79,7 +79,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
 トランザクションメタデータは、以下に示すフィールドをはじめとして、トランザクションがレジャーに適用された方法を _正確に_ 示します。
 
-{% include '_snippets/tx-metadata-field-table.md' %} <!--_ -->
+{% include '_snippets/tx-metadata-field-table.ja.md' %} <!--_ -->
 
 ほとんどのメタデータは、[`AffectedNodes`配列](transaction-metadata.html#affectednodes)に含まれています。この配列で探す対象は、トランザクションのタイプによって異なります。ほぼすべてのトランザクションが、送金元の[AccountRootオブジェクト][]を変更してXRP[トランザクションコスト](transaction-cost.html)を消却し、[アカウントのシーケンス番号](basic-data-types.html#アカウントシーケンス)を増やします。
 
@@ -145,7 +145,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 - このトランザクションが、このアドレスから送信された最新のトランザクションとなったことを反映して[`AccountTxnID`](transaction-common-fields.html#accounttxnid)が変わります。
 
 - このアカウントに影響を及ぼした以前のトランザクションは、レジャーバージョン46447387で実行されたトランザクション`E710CADE7FE9C26C51E8630138322D80926BE91E46D69BF2F36E6E4598D6D0CF`で、`PreviousTxnID`および`PreviousTxnLgrSeq`フィールドに指定されています。（このことは、アカウントのトランザクション履歴をさかのぼる際に役立つ場合があります。）
-  
+
   **注記:** メタデータには明示的に示されませんが、トランザクションがレジャーオブジェクトを変更すると、必ずそのオブジェクトの`PreviousTxnID`および`PreviousTxnLgrSeq`フィールドが現在のトランザクションの情報で更新されます。同じ送金元の複数のトランザクションが1つのレジャーバージョンに含まれている場合、最初のトランザクション以降の各トランザクションは、これらすべてのトランザクションを記録するレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)を値とする`PreviousTxnLgrSeq`を提供します。
 
 rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnのアカウントの`ModifiedNode`エントリーが`AffectedNodes`配列の唯一のオブジェクトであるため、このトランザクションの結果として、このレジャーに対してその他の変更は行われませんでした。

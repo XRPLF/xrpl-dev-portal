@@ -68,7 +68,6 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
-        locale_file: locale/en/LC_MESSAGES/messages.mo
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
 
@@ -81,7 +80,7 @@ targets:
         link_subs:
             # Adjust XRP-API readme link to point to the right place in the repo
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
-            # Fix 8 links from untranslated use-an-escrow-as-a-smart-contract.html:
+            # Fix 9 links from untranslated use-an-escrow-as-a-smart-contract.html:
             "send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment": "send-a-conditionally-held-escrow.html#1条件とフルフィルメントの生成"
             "send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time": "send-a-conditionally-held-escrow.html#2リリース時刻または取消し時刻の計算"
             "send-a-conditionally-held-escrow.html#3-submit-escrowcreate-transaction": "send-a-conditionally-held-escrow.html#3escrowcreateトランザクションの送信"
@@ -90,11 +89,16 @@ targets:
             "send-a-conditionally-held-escrow.html#6-submit-escrowfinish-transaction": "send-a-conditionally-held-escrow.html#6escrowfinishトランザクションの送信"
             "send-a-conditionally-held-escrow.html#7-wait-for-validation": "send-a-conditionally-held-escrow.html#7検証の待機"
             "send-a-conditionally-held-escrow.html#8-confirm-final-result": "send-a-conditionally-held-escrow.html#8最終結果の確認"
+            "accounts.html#creating-accounts": "accounts.html#アカウントの作成"
             # Fix 2 links from untranslated demurrage.html:
             "currency-formats.html#issued-currency-precision": "currency-formats.html#発行済み通貨の計算"
-            # Fix 2 links from untranslated become-an-xrp-ledger-gateway.html
+            "currency-formats.html#currency-codes": "currency-formats.html#通貨コード"
+            # Fix 5 links from untranslated become-an-xrp-ledger-gateway.html
             "paths.html#default-paths": "paths.html#デフォルトパス"
             "payment.html#payment-flags": "payment.html#paymentのフラグ"
+            "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ"
+            "trustset.html#trustset-flags": "trustset.html#trustsetのフラグ"
+            "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
             # Fix links from untranslated open-a-payment-channel-to-enable-an-inter-exchange-network.html
             "use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient": "use-payment-channels.html#1-支払人が特定の受取人へのpayment-channelを作成します"
             "use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel": "use-payment-channels.html#2-受取人がpayment-channelの特性を確認します"
@@ -104,11 +108,12 @@ targets:
             "use-payment-channels.html#7-repeat-steps-3-6-as-desired": "use-payment-channels.html#7-必要に応じてステップ36を繰り返します"
             "use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount": "use-payment-channels.html#8-準備が完了すれば受取人は承認された額のクレームを清算します"
             "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
-            # Fix 1 link from untranslated accountdelete.html. REMOVE when accounts.html is updated w/ deletable accounts info.
-            "accounts.html#deletion-of-accounts": "accounts.html#アカウントの永続性"
+            "reserves.html#owner-reserves": "reserves.html#所有者準備金"
             # Fix links from untranslated disable-master-key-pair.html.
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの承認"
             "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
+            "set-up-secure-signing.html#use-a-dedicated-signing-device": "set-up-secure-signing.html#専用の署名デバイスを使用する"
+            "set-up-secure-signing.html#run-rippled-locally": "set-up-secure-signing.html#ローカルでrippledを実行する"
             # Fix link from untranslated rate-limiting.html
             "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html#管理者アクセス権限"
             # Fix links from untranslated validator-list.html
@@ -116,6 +121,14 @@ targets:
             "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
             # Fix link from untranslated run-rippled-as-a-wallet-server.html
             "run-rippled-as-a-validator.html#6-provide-domain-verification": "run-rippled-as-a-validator.html#6-ドメイン検証の提供"
+            # Fix link from untranslated tutorial-submit-step.md snippet
+            "transaction-cost.html#queued-transactions": "transaction-cost.html#キューに入れられたトランザクション"
+            # Fix links from multiple untranslated API method reference pages:
+            "error-formatting.html#universal-errors": "error-formatting.html#汎用エラー"
+            # Fix link to un-updated transaction-metadata.html. REMOVE when the affected nodes section is updated
+            "transaction-metadata.html#affectednodes": "transaction-metadata.html"
+            # Fix link from untranslated peer-crawler.html:
+            "peer-protocol.html#private-peers": "peer-protocol.html#プライベートピア"
 
 
     -   name: xrp-api-only
@@ -5207,6 +5220,16 @@ pages:
         blurb: Delete an account.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/accountdelete.ja.md
+        html: accountdelete.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Delete an account.
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
@@ -5986,17 +6009,17 @@ pages:
         doc_type: References
         category: XRP Ledger TOML File
         blurb: 機械が読み取れる、あなたに関する情報を他のXRP Ledgerユーザーに提供します。
-        curated_anchors: #TODO: use Japanese anchors
-            - name: Serving the File
-              anchor: "#serving-the-file"
-            - name: Contents
-              anchor: "#contents"
-            - name: CORS Setup
-              anchor: "#cors-setup"
-            - name: Domain Verification
-              anchor: "#domain-verification"
-            - name: Account Verification
-              anchor: "#account-verification"
+        curated_anchors:
+            - name: ファイルの提供方法
+              anchor: "#ファイルの提供方法"
+            - name: 内容
+              anchor: "#内容"
+            - name: CORSの設定
+              anchor: "#corsの設定"
+            - name: ドメイン検証
+              anchor: "#ドメイン検証"
+            - name: アカウント検証
+              anchor: "#アカウント検証"
         targets:
             - ja
 
