@@ -126,7 +126,7 @@ Loading: "/etc/rippled.cfg"
 
 ### 考えられるエラー
 
-- いずれかの[一般的なエラータイプ][]。
+- いずれかの[汎用エラータイプ][]。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

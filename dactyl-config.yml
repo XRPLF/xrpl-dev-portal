@@ -81,19 +81,6 @@ targets:
         link_subs:
             # Adjust XRP-API readme link to point to the right place in the repo
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
-            # Fix 2 links from untranslated send-xrp.html:
-            "accounts.html#creating-accounts": "accounts.html#アカウントの作成"
-            "rippled-server-modes.html#reasons-to-run-a-stock-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
-            # Fix 1 link from untranslated transaction-censorship-detection.html:
-            "xrp-ledger-overview.html#censorship-resistant-transaction-processing": "xrp-ledger-overview.html#耐検閲性のある取引処理"
-            # Fix 1 link from untranslated software-ecosystem.html:
-            "rippled-server-modes.html#reasons-to-run-a-validator": "rippled-server-modes.html#バリデータを運用する理由"
-            # Fix 3 links from untranslated xrp-ledger-toml.html:
-            "currency-formats.html#currency-codes": "currency-formats.html#通貨コード"
-            "run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator": "run-rippled-as-a-validator.html#1-優れたバリデータの特徴の理解"
-            "run-rippled-as-a-validator.html#revoke-validator-keys": "run-rippled-as-a-validator.html#バリデータキーの破棄"
-            # Fix 1 link from untranslated snippet post-rippled-install.md:
-            "get-started-with-the-rippled-api.html#commandline": "get-started-with-the-rippled-api.html#コマンドライン"
             # Fix 8 links from untranslated use-an-escrow-as-a-smart-contract.html:
             "send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment": "send-a-conditionally-held-escrow.html#1条件とフルフィルメントの生成"
             "send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time": "send-a-conditionally-held-escrow.html#2リリース時刻または取消し時刻の計算"
@@ -103,40 +90,11 @@ targets:
             "send-a-conditionally-held-escrow.html#6-submit-escrowfinish-transaction": "send-a-conditionally-held-escrow.html#6escrowfinishトランザクションの送信"
             "send-a-conditionally-held-escrow.html#7-wait-for-validation": "send-a-conditionally-held-escrow.html#7検証の待機"
             "send-a-conditionally-held-escrow.html#8-confirm-final-result": "send-a-conditionally-held-escrow.html#8最終結果の確認"
-            # Fix 1 link from untranslated checkcash-prereqs.md snippet:
-            "transaction-cost.html#queued-transactions": "transaction-cost.html#キューに入れられたトランザクション"
-            # Fix 2 links from untranslated crawl_shards.html:
-            "peer-protocol.html#private-peers": "peer-protocol.html#プライベートピア"
-            "error-formatting.html#universal-errors": "error-formatting.html#汎用エラー"
             # Fix 2 links from untranslated demurrage.html:
             "currency-formats.html#issued-currency-precision": "currency-formats.html#発行済み通貨の計算"
-            # Fix links from untranslated known-amendments.html:
-            "accounts.html#permanence-of-accounts": "accounts.html#アカウントの永続性"
-            "paths.html#path-specifications": "paths.html#パスの仕様"
-            "rippling.html#the-noripple-flag": "rippling.html#norippleフラグ"
-            "reserves.html#owner-reserves": "reserves.html#所有者準備金"
-            "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
-            "trustset.html#trustset-flags": "trustset.html#trustsetのフラグ"
-            "ripplestate.html#ripplestate-flags": "ripplestate.html#ripplestateのフラグ"
-            "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ" # also used in untranslated require-destination-tags.html, become-an-xrp-ledger-gateway.html
-            "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
-            "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
-            "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
-            "transaction-malleability.html#malleability-with-multi-signatures": "transaction-malleability.html#マルチ署名の展性"
-            # Fix 2 links from untranslated data type snippets
-            "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
-            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
-            "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
-            # Fix 2 links from untranslated direct-xrp-payments.html
-            "basic-data-types.html#specifying-currency-amounts": "basic-data-types.html#通貨額の指定"
-            "partial-payments.html#partial-payments-exploit": "partial-payments.html#partial-paymentの悪用"
             # Fix 2 links from untranslated become-an-xrp-ledger-gateway.html
             "paths.html#default-paths": "paths.html#デフォルトパス"
             "payment.html#payment-flags": "payment.html#paymentのフラグ"
-            # Fix 1 link from untranslated monitor-incoming-payments-with-websocket.html
-            "currency-formats.html#xrp-precision": "currency-formats.html#xrpの精度"
-            # Fix 1 link from untranslated set-up-secure-signing.html
-            "request-formatting.html#commandline-format": "request-formatting.html#コマンドライン形式"
             # Fix links from untranslated open-a-payment-channel-to-enable-an-inter-exchange-network.html
             "use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient": "use-payment-channels.html#1-支払人が特定の受取人へのpayment-channelを作成します"
             "use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel": "use-payment-channels.html#2-受取人がpayment-channelの特性を確認します"
@@ -148,20 +106,11 @@ targets:
             "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
             # Fix 1 link from untranslated accountdelete.html. REMOVE when accounts.html is updated w/ deletable accounts info.
             "accounts.html#deletion-of-accounts": "accounts.html#アカウントの永続性"
-            # Fix links from untranslated peer protocol updates
-            "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
-            "run-rippled-as-a-validator.html#connect-using-proxies": "run-rippled-as-a-validator.html#プロキシを使用した接続"
-            "rippled-server-modes.html#public-hubs": "rippled-server-modes.html#公開ハブ"
-            "peer-protocol.html#peer-discovery": "peer-protocol.html#ピア発見"
-            "ledgers.html#tree-format": "ledgers.html#ツリーの形式"
-            # Fix links from untranslated currency_codes snippet
-            "currency-formats.html#standard-currency-codes": "currency-formats.html#標準通貨コード"
-            "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
             # Fix links from untranslated disable-master-key-pair.html.
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの承認"
             "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
             # Fix link from untranslated rate-limiting.html
-            "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html" # The translated doc hasn't been updated to add the "Admin Access" section, but the details are mentioned near the top of the page
+            "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html#管理者アクセス権限"
             # Fix links from untranslated validator-list.html
             "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"
             "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
@@ -484,6 +433,7 @@ pages:
         targets:
             - en
 
+        # TODO: translation needs to be updated based on ledgers.md
     -   md: concepts/payment-system-basics/ledgers.ja.md
         html: ledgers.html
         funnel: Docs

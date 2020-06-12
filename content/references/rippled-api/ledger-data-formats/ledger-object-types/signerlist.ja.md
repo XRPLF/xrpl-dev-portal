@@ -91,7 +91,7 @@ MultiSignReserve Amendmentよりも前に作成されたSignerListの必要準�
 
 ## SignerList IDのフォーマット
 
-SignerListオブジェクトのIDは、以下の値がこの順序で連結されているSHA-512Halfです。
+SignerListオブジェクトのIDは、以下の値がこの順序で連結されているSHA-512ハーフです。
 
 * RippleStateスペースキー（`0x0053`）
 * SignerListの所有者のAccountID

@@ -84,7 +84,7 @@ rippled ledger_closed
 
 ## 考えられるエラー
 
-* いずれかの[一般的なエラータイプ][]。
+* いずれかの[汎用エラータイプ][]。
 
 
 {% include '_snippets/rippled_versions.md' %}

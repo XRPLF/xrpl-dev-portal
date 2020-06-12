@@ -100,7 +100,7 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* いずれかの[一般的なエラータイプ][]。
+* いずれかの[汎用エラータイプ][]。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

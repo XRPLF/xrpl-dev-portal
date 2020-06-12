@@ -15,18 +15,23 @@
 [Hash]: basic-data-types.html#hashes
 [ハッシュ]: basic-data-types.html#ハッシュ
 [identifying hash]: transaction-basics.html#identifying-transactions
+[識別用ハッシュ]: transaction-basics.html#トランザクションの識別
 [Internal Type]: serialization.html
 [内部の型]: serialization.html
 [Ledger Index]: basic-data-types.html#ledger-index
 [ledger index]: basic-data-types.html#ledger-index
 [レジャーインデックス]: basic-data-types.html#レジャーインデックス
 [ledger format]: ledger-data-formats.html
+[レジャーフォーマット]: ledger-data-formats.html
 [Marker]: markers-and-pagination.html
 [マーカー]: markers-and-pagination.html
 [node public key]: peer-protocol.html#node-key-pair
+[ノード公開鍵]: peer-protocol.html#ノードキーペア
 [node key pair]: peer-protocol.html#node-key-pair
+[ノードキーペア]: peer-protocol.html#ノードキーペア
 [peer reservation]: peer-protocol.html#fixed-peers-and-peer-reservations
 [peer reservations]: peer-protocol.html#fixed-peers-and-peer-reservations
+[ピアリザベーション]: peer-protocol.html#固定ピアとピアリザベーション
 [result code]: transaction-results.html
 [seconds since the Ripple Epoch]: basic-data-types.html#specifying-time
 [Rippleエポック以降の経過秒数]: basic-data-types.html#時間の指定
@@ -51,6 +56,7 @@
 
 <!-- API object types -->
 [AccountRoot object]: accountroot.html
+[AccountRootオブジェクト]: accountroot.html
 
 <!--{# Links to external sites #}-->
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04

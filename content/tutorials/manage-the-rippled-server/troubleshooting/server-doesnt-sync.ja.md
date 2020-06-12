@@ -9,7 +9,7 @@
 ネットワークとの同期は、通常はおよそ5分から15分で完了します。その間に、サーバーは次のようなさまざまなことを行います。
 
 - 推奨バリデータリストを読み込み（通常は`vl.ripple.com`から）、信頼できるバリデータを判断します。
-- [ピアサーバーを検出](peer-protocol.html#ピア発見)して接続します。
+- [ピアサーバーを検出](peer-protocol.html#ピアの検出)して接続します。
 - ピアから最新のレジャーの[ヘッダー](ledger-header.html)と完全な[状態情報](ledgers.html#ツリーの形式)をダウンロードし、それを使用してレジャーデータの内部データベースを構築します。
 - 信頼できるバリデータをリッスンして、最近検証されたレジャーハッシュを見つけます。
 - 新たにブロードキャストされたトランザクションを収集し、それを進行中のレジャーに適用します。
@@ -61,29 +61,29 @@
 **注記:** データベースのパスを変更した場合、サーバーはサーバーの現在の[ノードキーペア][]や[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)など、保存されている一部の設定を読み込めません。データベースのパスを変更することでサーバーの同期の問題が解決した場合は、これらの設定の一部を再作成することをお勧めします。
 
 1. `rippled`サーバーが稼働中の場合は停止します。
-   
+
         $ sudo systemctl stop rippled
 
 2. 新しいデータベースを格納するための新しい空のフォルダーを作成します。
-   
+
         $ mkdir /var/lib/rippled/db_new/
         $ mkdir /var/lib/rippled/db_new/nudb
 
 3. 新しいパスを使用するように構成ファイルを編集します。`[node_db]`スタンザの`path`フィールド**と**`[database_path]`スタンザの値を変更します。
-   
+
         [node_db]
         type=NuDB
         path=/var/lib/rippled/db_new/nudb
-       
+
         [database_path]
          /var/lib/rippled/db_new
-   
+
     {% include '_snippets/conf-file-location.md' %}<!--_ -->
 
 4. `rippled`サーバーを再起動します。
-   
+
         $ sudo systemctl start rippled
-   
+
    新しいデータベースを使用してサーバーが同期に成功したら、以前のデータベースを格納していたフォルダーを削除できます。また、ハードウェア障害、特にディスクとRAMの障害を確認することもお勧めします。
 
 
@@ -106,4 +106,3 @@
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
-

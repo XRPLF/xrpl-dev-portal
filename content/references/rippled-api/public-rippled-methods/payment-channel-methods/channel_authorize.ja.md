@@ -117,7 +117,7 @@ rippled channel_authorize s█████████████████�
 
 ## 考えられるエラー
 
-* いずれかの[一般的なエラータイプ][]。
+* いずれかの[汎用エラータイプ][]。
 * `badKeyType` - 要求の`key_type`パラメーターは、有効なキータイプではありません。(有効なタイプは、`secp256k1`または`ed25519`です。)[新規: rippled 1.4.0][]
 * `badSeed` - 要求の`secret`が有効なシークレットキーではありません。
 * `channelAmtMalformed` - 要求の`amount`が有効な[XRPの額][XRP、drop単位]ではありません。
