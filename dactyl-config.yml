@@ -613,7 +613,6 @@ pages:
         doc_type: Concepts
         category: Payment Types
         blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients.
-        status: not_enabled
         targets:
             - en
 
@@ -623,7 +622,6 @@ pages:
         doc_type: Concepts
         category: Payment Types
         blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients. #TODO:translate
-        status: not_enabled
         targets:
             - ja
 
@@ -1760,7 +1758,6 @@ pages:
         category: Use Specialized Payment Types
         subcategory: Use Checks
         blurb: Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
-        status: not_enabled
         template: template-landing-children.html
         targets:
             - en
@@ -1772,7 +1769,6 @@ pages:
         category: Use Specialized Payment Types
         subcategory: Use Checks
         blurb: Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
-        status: not_enabled
         template: template-landing-children.html
         targets:
             - ja
@@ -1783,7 +1779,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1793,7 +1788,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -1803,7 +1797,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1813,7 +1806,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -1823,7 +1815,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1833,7 +1824,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -1843,7 +1833,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1853,7 +1842,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -1863,7 +1851,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1873,7 +1860,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -1883,7 +1869,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1893,7 +1878,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -4578,7 +4562,6 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: A check that can be redeemed for money by its destination.
-        status: not_enabled
         targets:
             - en
 
@@ -4590,7 +4573,6 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: A check that can be redeemed for money by its destination. #TODO:translate
-        status: not_enabled
         targets:
             - ja
 
@@ -4900,7 +4882,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Cancel a check.
-        status: not_enabled
         targets:
             - en
 
@@ -4912,7 +4893,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
-        status: not_enabled
         targets:
             - ja
 
@@ -4924,7 +4904,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Redeem a check.
-        status: not_enabled
         targets:
             - en
 
@@ -4936,7 +4915,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: レジャーでCheckオブジェクトの清算を試みます。
-        status: not_enabled
         targets:
             - ja
 
@@ -4948,7 +4926,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Create a check.
-        status: not_enabled
         targets:
             - en
 
@@ -4960,7 +4937,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: レジャーにCheckオブジェクトを作成します
-        status: not_enabled
         targets:
             - ja
 

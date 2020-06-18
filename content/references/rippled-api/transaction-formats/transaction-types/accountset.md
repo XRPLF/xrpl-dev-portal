@@ -30,7 +30,7 @@ An AccountSet transaction modifies the properties of an [account in the XRP Ledg
 | MessageKey       | String           | Blob              | _(Optional)_ Public key for sending encrypted messages to this account. |
 | [SetFlag][]      | Number           | UInt32            | _(Optional)_ Integer flag to enable for this account. |
 | [TransferRate][] | Unsigned Integer | UInt32            | _(Optional)_ The fee to charge when users transfer this account's issued currencies, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
-| [TickSize][]     | Unsigned Integer | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Requires the [TickSize amendment][].)_ |
+| [TickSize][]     | Unsigned Integer | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Added by the [TickSize amendment][].)_ |
 | WalletLocator    | String           | Hash256           | _(Optional)_ Not used. |
 | WalletSize       | Number           | UInt32            | _(Optional)_ Not used. |
 
@@ -71,7 +71,7 @@ The available AccountSet flags are:
 |:-----------------|:--------------|:--------------------------|:--------------|
 | asfAccountTxnID  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [AccountTxnID](transaction-common-fields.html#accounttxnid) |
 | asfDefaultRipple | 8             | lsfDefaultRipple          | Enable [rippling](rippling.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
-| asfDepositAuth   | 9             | lsfDepositAuth            | Enable [Deposit Authorization](depositauth.html) on this account. _(Requires the [DepositAuth amendment][].)_ |
+| asfDepositAuth   | 9             | lsfDepositAuth            | Enable [Deposit Authorization](depositauth.html) on this account. _(Added by the [DepositAuth amendment][].)_ |
 | asfDisableMaster | 4             | lsfDisableMaster          | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](cryptographic-keys.html) or a [Signer List](multi-signing.html). |
 | asfDisallowXRP   | 3             | lsfDisallowXRP            | XRP should not be sent to this account. (Enforced by client applications, not by `rippled`) |
 | asfGlobalFreeze  | 7             | lsfGlobalFreeze           | [Freeze](freezes.html) all assets issued by this account. |

@@ -1,6 +1,6 @@
 # Checks
 
-_（[Checks Amendment][]が必要です :not_enabled:）_
+_（[Checks Amendment][]が必要です）_
 
 XRP LedgerのChecks機能を使用すると、指定の受取人による取消または換金が可能な後払いの支払いを生成することができます。個人用の紙の小切手と同様に、XRP Ledger Checksでは最初に資金の送金元が金額と受取人を指定するCheckを作成します。受取人はCheckを換金して、送金元のアカウントから受取人のアカウントに資金を移動します。受取人がCheckを換金するまでは、実際の資金移動は発生しません。Checkの作成時には資金は保留されていないことから、受取人が換金する時点で送金元に十分な資金がない場合、従来の小切手同様に換金が失敗します。Checkを換金できなかった場合、送信者はCheckが有効期限切れになるまで再試行できます。
 
@@ -15,7 +15,7 @@ Checksは[Escrow](escrow.html)と[Payment Channel](use-payment-channels.html)に
 * EscrowではXRPを自分自身に送金できます。ChecksとPayment Channelを使用してXRP（Checksの場合は発行済み通貨）を自身に送金することはできません。
 
 
-**注記:** [Checks Amendment][]:not_enabled: により、[OfferCreate][]トランザクションの有効期限が変更されます。詳細は[オファーの有効期限](offers.html#オファーの有効期限)を参照してください。
+**注記:** [Checks Amendment][] により、[OfferCreate][]トランザクションの有効期限が変更されます。詳細は[オファーの有効期限](offers.html#オファーの有効期限)を参照してください。
 
 
 ## Checksを利用する理由

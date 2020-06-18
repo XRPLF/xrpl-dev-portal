@@ -10,7 +10,7 @@ The types of objects that may appear in the `account_objects` response for an ac
 - The account's [SignerList](signerlist.html), if the account has [multi-signing](multi-signing.html) enabled.
 - [Escrow objects](escrow.html) for held payments that have not yet been executed or canceled.
 - [PayChannel objects](paychannel.html) for open payment channels.
-- [Check objects](check.html) :not_enabled: for pending Checks.
+- [Check objects](check.html) for pending Checks.
 - [DepositPreauth objects](depositpreauth-object.html) for deposit preauthorizations. [New in: rippled 1.1.0][]
 - [Ticket objects](known-amendments.html#tickets) :not_enabled: for tickets.
 

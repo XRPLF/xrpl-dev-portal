@@ -69,7 +69,7 @@ To be deleted, an account must meet the following requirements:
     - `Escrow`
     - `PayChannel`
     - `RippleState`
-    - `Check` :not_enabled:
+    - `Check`
 - The account must own fewer than 1000 objects in the ledger.
 - The [AccountDelete transaction][] must pay a special [transaction cost][] equal to at least the [owner reserve](reserves.html) for one item (currently 5 XRP).
 

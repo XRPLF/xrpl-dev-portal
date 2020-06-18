@@ -337,7 +337,7 @@ When you subscribe to an account, you get messages for _all transactions to or f
 
         **Warning:** If you use the `transaction.Amount` field instead, you may be vulnerable to the [partial payments exploit](partial-payments.html#partial-payments-exploit). Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.
 
-    - **[CheckCash transactions][]** :not_enabled: allow an account to receive money authorized by a different account's [CheckCreate transaction][]. Look at the metadata of a **CheckCash transaction** to see how much currency the account received.
+    - **[CheckCash transactions][]** allow an account to receive money authorized by a different account's [CheckCreate transaction][]. Look at the metadata of a **CheckCash transaction** to see how much currency the account received.
 
     - **[EscrowFinish transactions][]** can deliver XRP by finishing an [Escrow](escrow.html) created by a previous [EscrowCreate transaction][]. Look at the metadata of the **EscrowFinish transaction** to see which account received XRP from the escrow and how much.
 

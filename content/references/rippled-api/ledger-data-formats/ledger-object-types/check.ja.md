@@ -1,7 +1,7 @@
 # Check
 [[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
 
-_（[Checks Amendment][]が必要です :not_enabled:）_
+_（[Checks Amendment][]が必要です）_
 
 `Check`オブジェクトはCheckを表します。Checkは紙の個人小切手に似ており、送金先はCheckを換金して送金元からの資金を獲得できます。（予定されている支払いは送金元によりすでに承認されていますが、換金されるまでは資金の移動は発生しません。[Escrow](escrow.html)とは異なり、Checkの資金は預託されず、資金不足が原因でCheckの換金が失敗することがあります。）
 

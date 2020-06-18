@@ -1,7 +1,7 @@
 # SignerList
 [[Source]](https://github.com/ripple/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
 
-_(Requires the [MultiSign amendment][].)_
+_(Added by the [MultiSign amendment][].)_
 
 The `SignerList` object type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a SignerList using a [SignerListSet transaction][].
 
@@ -71,7 +71,7 @@ When processing a multi-signed transaction, the server dereferences the `Account
 
 ## {{currentpage.name}} Flags
 
-_(Requires the [MultiSignReserve amendment][].)_
+_(Added by the [MultiSignReserve amendment][].)_
 
 SignerList objects can have the following flag value:
 

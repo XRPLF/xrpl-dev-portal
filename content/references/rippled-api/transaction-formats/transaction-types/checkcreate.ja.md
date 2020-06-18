@@ -1,7 +1,7 @@
 # CheckCreate
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp "Source")
 
-_（[Checks Amendment][]が必要です :not_enabled:）_
+_（[Checks Amendment][]が必要です）_
 
 レジャーにCheckオブジェクトを作成します。これにより指定の送金先は後日換金することができます。このトランザクションの送信者はCheckの送金元です。
 
