@@ -5,6 +5,7 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                            | Introduced | Status                        |
 |:--------------------------------|:-----------|:------------------------------|
+| [HardenedValidations][]         | v1.6.0-b5  | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fix1781][]                     | v1.6.0-b1  | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
@@ -12,7 +13,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [fixQualityUpperBound][]        | v1.5.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
 | [RequireFullyCanonicalSig][]    | v1.5.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
 | [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
-| [Checks][]                      | v0.90.0    | [Expected: 2020-06-18](https://xrpl.org/blog/2020/checks-expected.html "BADGE_BLUE") |
+| [Checks][]                      | v0.90.0    | [Enabled: 2020-06-18](https://xrpcharts.ripple.com/#/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
 | [DeletableAccounts][]           | v1.4.0     | [Enabled: 2020-05-08](https://xrpcharts.ripple.com/#/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
 | [fixCheckThreading][]           | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
 | [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09 "BADGE_GREEN") |
@@ -54,7 +55,7 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | Expected  |
+| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | Enabled   |
 
 Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.
 
@@ -452,6 +453,17 @@ Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange.
 | 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | Vetoed    |
 
 This is a previous version of the [Flow](#flow) amendment. It was [rejected due to a bug](https://xrpl.org/blog/2016/flowv2-vetoed.html) and removed in version 0.33.0.
+
+
+## HardenedValidations
+[HardenedValidations]: #hardenedvalidations
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | In Development |
+
+Allows validators to include a new optional field in their validations to attest to the hash of
+the latest ledger that that validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
 
 
 ## MultiSign

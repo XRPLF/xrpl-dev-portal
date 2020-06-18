@@ -1,7 +1,7 @@
 # CheckCash
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CashCheck.cpp "Source")
 
-_(Requires the [Checks amendment][] :not_enabled:.)_
+_(Added by the [Checks amendment][].)_
 
 Attempts to redeem a Check object in the ledger to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a Check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
 

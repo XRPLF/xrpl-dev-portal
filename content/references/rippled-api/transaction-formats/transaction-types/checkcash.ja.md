@@ -1,7 +1,7 @@
 # CheckCash
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CashCheck.cpp "Source")
 
-_（[Checks Amendment][]が必要です :not_enabled:）_
+_（[Checks Amendment][]が必要です）_
 
 対応する[CheckCreateトランザクション][]で承認された額まで受領するため、レジャーでCheckオブジェクトの清算を試みます。CheckCashトランザクションでCheckを換金できるのは、Checkの`Destination`アドレスだけです。このCheckの換金方法は、送金先により開始される[Payment][]の実行に似ています。
 

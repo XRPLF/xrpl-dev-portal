@@ -10,7 +10,7 @@ There are two circumstances that could lead to transaction malleability:
 
     **Use the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags)** to guarantee that a transaction is not malleable in this way. Although transactions [signed with Ed25519 keys](cryptographic-keys.html#signing-algorithms) are not vulnerable to this problem, **there is no downside** to using this flag on _all_ transactions.
 
-    If the [RequireFullyCanonicalSig amendment][] :not_enabled: is enabled, all transactions are protected against malleability regardless of the tfFullyCanonicalSig flag.
+    If the [RequireFullyCanonicalSig amendment][] is enabled, all transactions are protected against malleability regardless of the tfFullyCanonicalSig flag.
 
 2. The transaction is [multi-signed](multi-signing.html) and has more signatures than necessary. Even if the transaction originally did not have more signatures than necessary, it could be malleable if an authorized signer provides an additional signature.
 

@@ -199,7 +199,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger.transactions`          | Array   | (Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying [Hash][] strings. If the request specified `expand` as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified `binary` as true. |
 | `ledger_hash`                  | String  | Unique identifying hash of the entire ledger. |
 | `ledger_index`                 | Number  | The [Ledger Index][] of this ledger. |
-| `queue_data`                   | Array   | (Omitted unless requested with the `queue` parameter) Array of objects describing queued transactions, in the same order as the queue. If the request specified `expand` as true, members contain full representations of the transactions, in either JSON or binary depending on whether the request specified `binary` as true. Requires the [FeeEscalation amendment][]. [New in: rippled 0.70.0][] |
+| `queue_data`                   | Array   | (Omitted unless requested with the `queue` parameter) Array of objects describing queued transactions, in the same order as the queue. If the request specified `expand` as true, members contain full representations of the transactions, in either JSON or binary depending on whether the request specified `binary` as true. Added by the [FeeEscalation amendment][]. [New in: rippled 0.70.0][] |
 
 The following fields are deprecated and may be removed without further notice: `accepted`, `hash` (use `ledger_hash` instead), `seqNum` (use `ledger_index` instead), `totalCoins` (use `total_coins` instead).
 
