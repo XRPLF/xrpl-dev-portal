@@ -169,6 +169,20 @@ pages:
         targets:
             - ja
 
+    # TEMP: Explore page (part of relaunch)
+    -   md: explore/explore.md
+        template: template-landing-children.html
+        html: explore.html
+        funnel: Explore
+        targets:
+            - en
+
+    -   md: explore/xrpl-businesses.md
+        html: xrpl-businesses.html
+        funnel: Explore
+        targets:
+            - en
+
 # Concepts ---------------------------------------------------------------------
 
     -   name: Concepts
