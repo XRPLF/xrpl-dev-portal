@@ -107,6 +107,7 @@ unl = "https://vl.testnet.rippletest.net"
 
 [[ACCOUNTS]]
 address = "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"
+payid = "rome$example.com" # Not the real payid address of this account (it's an example)
 desc = "Ripple-owned address from old ripple.txt file"
 # Note: This doesn't prove ownership of an account unless the
 #   "Domain" field of the account in the XRP Ledger matches the
@@ -134,6 +135,7 @@ desc = "Test Net public server cluster"
 [[PRINCIPALS]]
 name = "Rome Reginelli" # Primary spec author
 email = "rome@example.com" # Not my real email address
+payid = "rome$example.com" # Not the real payid address of the primary spec author (it's an example)
 
 [[CURRENCIES]]
 code = "LOL"
@@ -185,6 +187,7 @@ The accounts list provides information about XRP Ledger accounts you own. If pre
 | `address` | String | The public address of the account, encoded in the XRP Ledger's base58 format (typically, this starts with an `r`). |
 | `network` | String | The network chain where this account is primarily used. If omitted, clients SHOULD assume that the account is claimed on the production XRP Ledger _and_ possibly other network chains. Use `main` for the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `desc`    | String | A human-readable description of this account's purpose or how you use it. |
+| `payid`   | String | The public [PayID](https://payid.org) of this account. |
 
 **Caution:** Anyone could claim ownership of any account by hosting an `xrp-ledger.toml` file, so the presence of an account here SHOULD NOT be considered authoritative unless the [`Domain` field for these accounts in the XRP Ledger](accountset.html#domain) also matches the domain that this `xrp-ledger.toml` file was served from. See [Account Verification](#account-verification) for details.
 
@@ -193,10 +196,11 @@ The accounts list provides information about XRP Ledger accounts you own. If pre
 
 The principals list provides information about the people (or business entities) involved in your XRP Ledger businesses and services. If present, the principals list MUST BE presented as an array of tables, with each entry using the header `[[PRINCIPALS]]`, including double square brackets. Each entry describes a different point of contact. For _each_ `[[PRINCIPALS]]` entry, you MAY provide any of the following fields:
 
-| Field   | Type   | Description                                              |
-|:--------|:-------|:---------------------------------------------------------|
-| `name`  | String | The name of this principal.                              |
-| `email` | String | The email address where this principal can be contacted. |
+| Field   | Type   | Description                                               |
+|:--------|:-------|:----------------------------------------------------------|
+| `name`  | String | The name of this principal.                               |
+| `email` | String | The email address where this principal can be contacted.  |
+| `payid` | String | The primary [PayID](https://payid.org) of this principal. |
 
 You may provide other contact information as desired. (See [Custom Fields](#custom-fields) for information about custom fields.)
 
