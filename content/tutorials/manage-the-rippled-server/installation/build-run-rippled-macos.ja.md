@@ -1,113 +1,117 @@
 # macOSでのrippledの構築と実行
 
-現時点において、Rippleでは`rippled`の本番環境にmacOSの使用を推奨していません。本番環境には、最高レベルの品質管理とテストを経た、[Ubuntuプラットフォーム](install-rippled-on-ubuntu-with-alien.html)のご使用をご検討ください。
+[`rippled`](the-rippled-server.html)の本番環境にmacOSプラットフォームを使用することは推奨されていません。本番環境には、最高レベルの品質管理とテストを経た、[Ubuntuプラットフォーム](install-rippled-on-ubuntu-with-alien.html)のご使用をご検討ください。
 
-しかしながら、macOSは多くの開発やテストの作業に適しています。 `rippled` は、10.13 High SierraまでのmacOSでテスト済みです。
+しかしながら、macOSは多くの開発やテストの作業に適しています。`rippled`は、10.13 High SierraまでのmacOSでテスト済みです。
 
-開発目的の場合は、`sudo`を使用するのではなく、自身のユーザーとして`rippled`を実行することをお勧めします。
+開発目的の場合は、`sudo`を使用するのではなく、非管理者ユーザーとして`rippled`を実行します。
 
 1. [Xcode](https://developer.apple.com/download/)をインストールします。
 
 0. Xcodeコマンドラインツールをインストールします。
-
+   
         $ xcode-select --install
 
 0. [Homebrew](https://brew.sh/)をインストールします。
-
+   
         $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 0. Homebrewをアップデートします。
-
+   
         $ brew update
 
 0. Homebrewを使用して依存関係をインストールします。
-
+   
         $ brew install git cmake pkg-config protobuf openssl ninja
 
-0. Boost 1.71.0をインストールします。 `rippled` 1.4.0はBoost 1.70以上と互換性を持ちます。
+0. Boost 1.70.0以降をインストールします。`rippled`1.4.0はBoost 1.70.0以降と互換性があります。HomebrewのリポジトリにあるBoostの最新バージョンでは不十分であるため、Boostを手動でインストールする必要があります。（次の例では、本書執筆時点の最新バージョンであるBoost 1.71.0を使用しています。）
+   
+   1. [Boost 1.71.0](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2)をダウンロードします。
+   
+   2. フォルダに抽出します。場所をメモしておいてください。
+   
+   3. ターミナルで以下を実行します。
+      
+      cd /LOCATION/OF/YOUR/BOOST/DIRECTORY 
+      ./bootstrap.sh 
+      ./b2 cxxflags="-std=c++14"
 
-      1. [Boost 1.71.0](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2)をダウンロードします。
+0. `BOOST_ROOT`環境が、Boostのインストールで作成されたディレクトリーを指すようにします。
+   
+   1. Boostディレクトリーを確認するには、Boostを手動でインストールした場合は`pwd`、Homebrewを使用してインストールした場合は`brew --prefix boost`を使用します。
+   
+   2. 以下のコードをBoostディレクトリーの場所に編集して実行し、Boost環境変数が`.bash_profile`ファイルに追加されるようにします。そうすることで、ログイン時にこの環境変数が自動的に設定されます。
+      
+      $ echo $"export BOOST_ROOT=/Users/my_user/boost_1_71_0" >> ~/.bash_profile
 
-      2. フォルダに抽出します。場所をメモしておいてください。
-
-      3. ターミナルで以下を実行します。
-
-            cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
-            ./bootstrap.sh
-            ./b2 cxxflags="-std=c++14"
-
-0. `BOOST_ROOT`環境変数が、Boostのインストールで作成されたディレクトリーを指すようにします。Boostのインストールディレクトリーを見つけるには、`brew info boost`を使用します。この環境変数を`.bash_profile`ファイルに追加すると、ログイン時に自動的に設定されます。例えば、次のようにします。
-
-        export BOOST_ROOT=/Users/my_user/boost_1_71_0
-
-0. 前のステップで`.bash_profile`ファイルをアップデートした場合には、それを読み込みます。例:
-
+0. 前のステップで`.bash_profile`ファイルをアップデートした場合には、新しいターミナルウィンドウでそれを読み込みます。例:
+   
         $ source .bash_profile
 
 0. 希望の場所に`rippled`ソースコードをクローンし、`rippled`ディレクトリーにアクセスします。これを行うには、Git（Homebrewを使用して前にインストール済み）とGitHubを設定する必要があります。例えば、GitHubアカウントを作成し、SSHキーを設定します。詳細は、[Set up git](https://help.github.com/articles/set-up-git/)を参照してください。
-
+   
         $ git clone git@github.com:ripple/rippled.git
         $ cd rippled
 
 0. デフォルトでは、クローンを実行すると`develop`ブランチに移動します。開発作業をしていて、未テストの機能の最新セットを使用したい場合にはこのブランチを使用します。
-
-      最新の安定したリリースを使用したい場合には、`master`ブランチをチェックアウトします。
-
-        $ git checkout master
-
-      最新のリリース候補をテストしたい場合には、`release`ブランチをチェックアウトします。
-
-        $ git checkout release
-
-      または、[GitHub](https://github.com/ripple/rippled/releases)にリストされたタグ付きのリリースをチェックアウトすることもできます。
+    
+    最新の安定したリリースを使用したい場合には、`master`ブランチをチェックアウトします。
+    
+         $ git checkout master
+    
+    最新のリリース候補をテストしたい場合には、`release`ブランチをチェックアウトします。
+    
+         $ git checkout release
+    
+    または、[GitHub](https://github.com/ripple/rippled/releases)にリストされたタグ付きのリリースをチェックアウトすることもできます。
 
 0. クローンしたばかりの`rippled`ディレクトリー内にビルドディレクトリーを作成し、そこにアクセスします。例:
-
-        $ mkdir my_build
-        $ cd my_build
+    
+         $ mkdir my_build
+         $ cd my_build
 
 0. `rippled`を構築します。ハードウェアの仕様にもよりますが、これには約5分ほどかかります。
-
-        $ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ..
-
-      `CMAKE_BUILD_TYPE`を`Debug`または`Release`ビルドタイプに設定できます。標準的な4つの[`CMAKE_BUILD_TYPE`](https://cmake.org/cmake/help/v3.0/variable/CMAKE_BUILD_TYPE.html)の値がすべてサポートされています。
+    
+         $ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ..
+    
+    `CMAKE_BUILD_TYPE`を`Debug`または`Release`ビルドタイプに設定できます。標準的な4つの[`CMAKE_BUILD_TYPE`](https://cmake.org/cmake/help/v3.0/variable/CMAKE_BUILD_TYPE.html)の値がすべてサポートされています。
 
 0. CMakeを使用してビルドを実行します。ハードウェアの仕様にもよりますが、これには約10分ほどかかります。
-
-        $ cmake --build .-- -j 4
-
-      **ヒント:** この例では、`-j`パラメーターが`4`に設定されています。これにより、4つのプロセスを使用し、並行してビルドします。使用する最適なプロセス数は、お使いのハードウェアで使用可能なCPUコア数によって異なります。`sysctl -n hw.ncpu`を使用して、CPUのコア数を調べてください。
+    
+         $ cmake --build .-- -j 4
+    
+    **ヒント:** この例では、`-j`パラメーターが`4`に設定されています。これにより、4つのプロセスを使用し、並行してビルドします。使用する最適なプロセス数は、お使いのハードウェアで使用可能なCPUコア数によって異なります。`sysctl -n hw.ncpu`を使用して、CPUのコア数を調べてください。
 
 0. サーバー実行可能ファイルに組み込まれたユニットテストを実行します。ハードウェアの仕様にもよりますが、これには約5分ほどかかります。（省略可能ですが、推奨します）
+    
+         $ ./rippled --unittest
 
-        $ ./rippled --unittest
-
-0. `rippled` は、`rippled.cfg`構成ファイルの実行を必要とします。`rippled/cfg`に、サンプル構成ファイルの`rippled-example.cfg`があります。このファイルをコピーし、`rippled`を非ルートユーザーとして実行できる場所に`rippled.cfg`という名前で保存します。`rippled`ディレクトリーにアクセスして、以下を実行します。
-
-        $ mkdir -p $HOME/.config/ripple
-        $ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
+0. `rippled`は、`rippled.cfg`構成ファイルの実行を必要とします。`rippled/cfg`に、サンプル構成ファイルの`rippled-example.cfg`があります。このファイルをコピーし、`rippled`を非ルートユーザーとして実行できる場所に`rippled.cfg`という名前で保存します。`rippled`ディレクトリーにアクセスして、以下を実行します。
+    
+         $ mkdir -p $HOME/.config/ripple
+         $ cp cfg/rippled-example.cfg $HOME/.config/ripple/rippled.cfg
 
 0. `rippled.cfg`を編集し、必要なファイルパスを設定します。`rippled`を実行するユーザーは、ここで指定するすべてのパスへの書き込み権限を持っている必要があります。
+    
+    * `[node_db]`パスを、台帳データベースを保存する場所に設定します。
+    
+    * `[database_path]`パスを、その他のデータベースデータを保存する場所に設定します。（この場所には、構成データを持つSQLiteデータベースも含まれ、通常、`[node_db]`パスフィールドの1つ上のレベルになります。）
+    
+    * `[debug_logfile]`を`rippled`がログ情報を書き込めるパスに設定します。
+    
+    `rippled`を正常に起動するために必要な構成はこれだけです。その他の構成はすべて省略可能であり、作業サーバーをセットアップしてから調整することもできます。詳細は、[Additional Configurations](#その他の構成)を参照してください。
 
-      * `[node_db]`パスを、台帳データベースを保存する場所に設定します。
-
-      * `[database_path]`パスを、その他のデータベースデータを保存する場所に設定します。（この場所には、構成データを持つSQLiteデータベースも含まれ、通常、`[node_db]`パスフィールドの1つ上のレベルになります。）
-
-      * `[debug_logfile]`を`rippled`がログ情報を書き込めるパスに設定します。
-
-      `rippled`を正常に起動するために必要な構成はこれだけです。その他の構成はすべて省略可能であり、作業サーバーをセットアップしてから調整することもできます。詳細については、[追加構成](#additional-configuration)を参照してください。
-
-0. `rippled` は、`validators.txt`ファイルの実行を必要とします。`rippled/cfg/`に、サンプルバリデータファイルの`validators-example.txt`があります。このファイルをコピーし、`rippled.cfg`ファイルと同じフォルダーに`validators.txt`という名前で保存します。`rippled`ディレクトリーにアクセスして、以下を実行します。
-
-        $ cp cfg/validators-example.txt $HOME/.config/ripple/validators.txt
-
-      **警告:** Rippleは、安全を第一に考えて分散プランをデザインしました。特にRippleから勧められない限り、移行中に`validators.txt`ファイルを変更しないでください。小さな変更であっても、バリデータの設定に変更を加えると、サーバーがネットワークから分岐し、古い、不完全、または正しくないデータについて報告する原因となることがあります。そのようなデータを使用すると、経費の無駄になります。
+0. `rippled`は、`validators.txt`ファイルの実行を必要とします。`rippled/cfg/`に、サンプルバリデータファイルの`validators-example.txt`があります。このファイルをコピーし、`rippled.cfg`ファイルと同じフォルダーに`validators.txt`という名前で保存します。`rippled`ディレクトリーにアクセスして、以下を実行します。
+    
+         $ cp cfg/validators-example.txt $HOME/.config/ripple/validators.txt
+    
+    **警告:** Rippleは、安全を第一に考えて分散プランをデザインしました。特にRippleから勧められない限り、移行中に`validators.txt`ファイルを変更しないでください。小さな変更であっても、バリデータの設定に変更を加えると、サーバーがネットワークから分岐し、古い、不完全、または正しくないデータについて報告する原因となることがあります。そのようなデータを使用すると、経費の無駄になります。
 
 0. ビルドディレクトリー（`my_build`など）にアクセスし、`rippled`サービスを開始します。
-
-        $ ./rippled
-
-      以下は、ターミナルに表示される内容の抜粋です。
+    
+         $ ./rippled
+    
+    以下は、ターミナルに表示される内容の抜粋です。
 
 ```
       2018-Oct-26 18:21:39.593738 JobQueue:NFO Auto-tuning to 6 validation/transaction/proposal threads.
@@ -157,14 +161,29 @@
       2018-Oct-26 18:23:03.034750 InboundLedger:WRN Want: 8DFAD21AD3090DE5D6F7592B3821C3DA77A72287705B4CF98DC0F84D5DD2BDF8
 ```
 
-`rippled`ログメッセージの詳細については、[ログメッセージについて](understanding-log-messages.html)を参照してください。
+`rippled`ログメッセージの詳細は、[ログメッセージについて](understanding-log-messages.html)を参照してください。
 
 ## 次のステップ
 
-{% include '_snippets/post-rippled-install.md' %}<!--_ -->
+{% include '_snippets/post-rippled-install.ja.md' %}<!--_ -->
 
 ## 関連項目
 
-- [Ubuntu Linuxでrippledをインストール](install-rippled-on-ubuntu-with-alien.html)（本番環境用の、Ubuntu上の事前構築済みバイナリー）
-- [Ubuntuでの`rippled`の構築と実行](build-run-rippled-ubuntu.html)（Ubuntuで`rippled`を自分でコンパイル）
-- [その他のプラットフォーム用のコンパイル手順](https://github.com/ripple/rippled/tree/develop/Builds)
+- **コンセプト:**
+    - [`rippled`サーバー](the-rippled-server.html)
+    - [コンセンサスについて](intro-to-consensus.html)
+- **チュートリアル:**
+    - [Ubuntu Linuxでrippledをインストール](install-rippled-on-ubuntu.html)（本番環境用の、Ubuntu上の事前構築済みバイナリーをインストール）
+    - [rippledの構成](configure-rippled.html)
+    - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
+    - [rippled APIの使用開始](get-started-with-the-rippled-api.html)
+- **リファレンス:**
+    - [rippled APIリファレンス](rippled-api.html)
+      - [`rippled`コマンドラインの使用](commandline-usage.html)
+      - [server_infoメソッド][]
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

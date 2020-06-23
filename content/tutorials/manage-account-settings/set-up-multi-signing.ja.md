@@ -1,37 +1,34 @@
 # マルチ署名の設定
 
-マルチ署名は、XRP Ledgerのトランザクションを承認する3種類の方法の1つです。マルチ署名の他に[レギュラーキーとマスターキー](cryptographic-keys.html)で署名する方法があります。3種類のトランザクション承認方法を自由に組み合わせて使用できるようにアドレスを設定できます。
+[マルチ署名](multi-signing.html)は、XRP Ledgerの[トランザクション](transaction-basics.html)を承認する3種類の方法の1つです。マルチ署名の他に[レギュラーキーとマスターキー](cryptographic-keys.html)で署名する方法があります。3種類のトランザクション承認方法を自由に組み合わせて使用できるように[アドレス](accounts.html)を設定できます。
 
 このチュートリアルでは、アドレスのマルチ署名を有効にする方法を説明します。
 
 
 ## 前提条件
 
-- 資金供給のあるXRP Ledgerアドレスが必要です。
+- トランザクションを送信するための十分なXRPが供給されていて、新しい署名者リストの[必要準備金](reserves.html)を満たしている資金供給のあるXRP Ledger[アドレス](accounts.html)が必要です。
+
+  - [MultiSignReserve Amendment][]が有効な場合、マルチ署名を使用するには、使用する署名と署名者の数に関わらず、アカウントの準備金として5 XRPが必要です。（MultiSignReserve Amendmentは**2019年4月7日**以降、本番環境のXRP Ledgerで有効になっています。)
+
+  - [MultiSignReserve Amendment][]が有効ではないテストネットワークでは、マルチ署名を使用するには[アカウント準備金](reserves.html)に通常よりも多くのXRPが必要となります。必要額は、リストの署名者の数に応じて増加します。
 
 - XRP Ledgerフォーマットでキーペアを生成するツールを利用できる必要があります。この処理に`rippled`サーバーを使用する場合は、[wallet_proposeメソッド][]が管理者専用であるため、管理者アクセス権限が必要です。
 
-- マルチ署名は使用可能である必要があります。マルチ署名は、2016年6月27日以降、XRP Ledger Consensusプロトコルに対する[**Amendment**](amendments.html)により利用できるようになりました。
+  - あるいは、すでにXRP Ledgerアドレスを持っている人をあなたのアドレスの署名者として承認するには、その人または組織のアカウントアドレスを知っている必要があります。
 
+- マルチ署名は使用可能である必要があります。（MultiSign Amendmentは**2016年6月27日**以降、本番環境のXRP Ledgerで有効になっています。)
 
-## 1. 資金供給のあるアドレスの準備
+## 1. 構成の設計
 
-トランザクションを送信でき、利用可能なXRPを十分に保有するXRP Ledgerアドレスが必要です。
-
-[MultiSignReserve Amendment][]が有効ではない場合、マルチ署名を使用するには[アカウント準備金](reserves.html)および[トランザクションコスト](transaction-cost.html)に通常よりも多くのXRPが必要となります。必要額は、使用する署名および署名者の数に応じて増加します。
-
-[MultiSignReserve Amendment][]が有効な場合、マルチ署名を使用するには、使用する署名と署名者の数に関わらず、アカウントの準備金として5 XRPが必要です。マルチ署名済みトランザクションの[トランザクションコスト](transaction-cost.html)は、このAmendmentの影響を受けず、使用する署名と署名者の数に応じて増加します。
-
-`rippled`を[スタンドアロンモード](rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由)で新しいジェネシスレジャーで開始した場合は、以下の操作を行う必要があります:
-
-1. 新しいアドレスのキーを生成するか、またはすでに所有するキーを再利用します。
-2. ジェネシスアカウントから新しいアドレスに資金を供給するため、Paymentトランザクションを送信します。（[XRPのdrop数][]で100,000,000以上を送信してください。）
-3. 手動でレジャーを閉鎖します。
+含めたい署名者の数を決定します（最大8）。特定のトランザクションに必要な署名の数に基づいて、署名者リストの定数と署名者の重みを選択します。シンプルな「M-of-N」の署名設定では、各署名者に重み **`1`** を割り当て、リストの定数が「M」になるように設定します。これが必要な署名の数です。
 
 
 ## 2. メンバーキーの準備
 
-複数のXRP Ledgerキーセット（アドレスとシークレット）をSignerListのメンバーに追加する必要があります。SignerListには、レジャーに既存の資金供給のあるアドレス、または[wallet_proposeメソッド][]で生成した新しいアドレスを追加できます。例:
+署名者リストにメンバーとして加える有効な形式のXRP Ledgerアドレスが1つ以上必要です。あなた、またはあなたが選択した署名者は、これらのアドレスに関連付けられた秘密鍵を知っておく必要があります。アドレスは、レジャーに存在する資金供給されたアカウントにすることもできますが、必ずしもそうである必要はありません。
+
+[wallet_proposeメソッド][]を使用して新しいアドレスを生成できます。例:
 
     $ rippled wallet_propose
     Loading: "/etc/opt/ripple/rippled.cfg"
@@ -94,7 +91,7 @@
        "result" : {
           "engine_result" : "tesSUCCESS",
           "engine_result_code" : 0,
-          "engine_result_message" : "The transaction was applied.Only final in a validated ledger.",
+          "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
           "status" : "success",
           "tx_blob" : "12000C2200000000240000000120230000000368400000000000271073210303E20EC6B4A39A629815AE02C0A1393B9225E3B890CAE45B59F42FA29BE9668D74473045022100BEDFA12502C66DDCB64521972E5356F4DB965F553853D53D4C69B4897F11B4780220595202D1E080345B65BAF8EBD6CA161C227F1B62C7E72EA5CA282B9434A6F04281142DECAB42CA805119A9BA2FF305C9AFA12F0B86A1F4EB1300028114204288D2E47F8EF6C99BCC457966320D12409711E1EB13000181147908A7F0EDD48EA896C3580A399F0EE78611C8E3E1EB13000181143A4C02EA95AD6AC3BED92FA036E0BBFB712C030CE1F1",
           "tx_json" : {
@@ -136,21 +133,9 @@
 **注記:** [MultiSignReserve Amendment][]が有効ではない場合は、SignerListのメンバーの増加に応じて、アドレスの[所有者準備金](reserves.html#所有者準備金)のXRP額を増加する必要があります。アドレスに十分なXRPがないと、トランザクションは[tecINSUFFICIENT_RESERVE](tec-codes.html)で失敗します。[MultiSignReserve Amendment][]が有効な場合は、SignerListの署名者の数に関係なく[所有者準備金](reserves.html#所有者準備金)として必要なXRPは5 XRPです。関連項目: [SignerListと準備金](signerlist.html#signerlistと準備金)
 
 
-## 4. レジャーの閉鎖
+## 4. 検証の待機
 
-本番環境のネットワークでは、レジャーが自動的に閉鎖するまでに4～7秒かかる場合があります。
-
-スタンドアロンモードで`rippled`を実行している場合は、[ledger_acceptメソッド][]を使用してレジャーを手動で閉鎖します。
-
-    $ rippled ledger_accept
-    Loading: "/etc/opt/ripple/rippled.cfg"
-    Connecting to 127.0.0.1:5005
-    {
-       "result" : {
-          "ledger_current_index" : 6,
-          "status" : "success"
-       }
-    }
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 
 ## 5. 新しい署名者リストの確認
@@ -181,14 +166,14 @@
                    },
                    {
                       "SignerEntry" : {
-                         "Account" : "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
-                         "SignerWeight" : 1
+                         "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                         "SignerWeight" : 2
                       }
                    },
                    {
                       "SignerEntry" : {
-                         "Account" : "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-                         "SignerWeight" : 1
+                         "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                         "SignerWeight" : 2
                       }
                    }
                 ],
@@ -211,7 +196,25 @@ SignerListが予期した内容で存在していれば、アドレスでマル�
 これで、アドレスから[マルチ署名済みトランザクションを送信](send-a-multi-signed-transaction.html)できます。次の操作も実行できます。
 
 * `asfDisableMaster`フラグを使用して[AccountSetトランザクション][]を送信し、アドレスのマスターキーペアを無効化。
-* [SetRegularKeyトランザクション][]を送信してアドレスのレギュラーキーペアを削除（レギュラーキーペアをすでに設定している場合）。
+* [SetRegularKeyトランザクション][]を送信して[アドレスのレギュラーキーペアを削除](change-or-remove-a-regular-key-pair.html)（レギュラーキーペアをすでに設定している場合）。
+
+## 関連項目
+
+- **コンセプト:**
+  - [暗号鍵](cryptographic-keys.html)
+  - [マルチ署名](multi-signing.html)
+- **チュートリアル:**
+  - [rippledのインストール](install-rippled.html)
+  - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)
+  - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
+  - [パブリック署名の有効化](enable-public-signing.html)
+- **リファレンス:**
+  - [wallet_proposeメソッド][]
+  - [account_objectsメソッド][]
+  - [sign_forメソッド][]
+  - [submit_multisignedメソッド][]
+  - [SignerListSetトランザクション][]
+  - [SignerListオブジェクト](signerlist.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

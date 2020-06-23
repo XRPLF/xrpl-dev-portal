@@ -25,7 +25,7 @@ Amendmentは、正常に動作する機能や変更であり、コンセンサ�
 
 各Amendmentには、識別用の一意の16進値および短縮名が付けられています。短縮名は人間が使用するためのものであり、Amendmentプロセスでは使用されません。説明用に異なった名前を使った場合でも、2つのサーバーで同じAmendment IDを使用できます。Amendmentの名前が一意であるという保証はありません。
 
-慣例により、Rippleの開発者は、Amendment名のSHA-512HalfハッシュをAmendment IDとして使用します。
+慣例により、Rippleの開発者は、Amendment名のSHA-512ハーフハッシュをAmendment IDとして使用します。
 
 
 ## Amendmentプロセス

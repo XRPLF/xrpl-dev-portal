@@ -1,14 +1,14 @@
-# Translations template for XRPL.org.
-# Copyright (C) 2020 XRP Ledger Project
-# This file is distributed under the same license as the XRPL.org project.
-# Rome Reginelli <rome@ripple.com>, 2020.
+# Translations template for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-12 16:30-0700\n"
+"POT-Creation-Date: 2020-06-12 15:10-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,3 +245,105 @@ msgstr ""
 #: tool/template-home.html:176
 msgid "On-Ledger Decentralized Exchange"
 msgstr ""
+
+#: tool/template-home.html:185
+msgid "Start Building"
+msgstr ""
+
+#: tool/template-home.html:187
+msgid ""
+"Use these tutorials to get step-by-step guidance to perform common tasks "
+"with the XRP Ledger."
+msgstr ""
+
+#: tool/template-home.html:196
+msgid "'list xrp' icon"
+msgstr ""
+
+#: tool/template-home.html:215
+msgid "'send xrp' icon"
+msgstr ""
+
+#: tool/template-home.html:234
+msgid "'run rippled' icon"
+msgstr ""
+
+#: tool/template-home.html:251
+msgid "More Tutorials"
+msgstr ""
+
+#: tool/template-home.html:264
+msgid "All Tutorials"
+msgstr ""
+
+#: tool/template-home.html:273
+msgid "Related Projects"
+msgstr ""
+
+#: tool/template-home.html:275
+msgid ""
+"You're not alone in building the Internet of Value. These projects are "
+"proudly collaborating with the XRP Ledger to make all the world's money "
+"move like information moves today."
+msgstr ""
+
+#: tool/template-home.html:283
+msgid "Interledger logo"
+msgstr ""
+
+#: tool/template-home.html:284
+msgid "Interledger"
+msgstr ""
+
+#: tool/template-home.html:287
+msgid ""
+"Interledger is an open protocol suite for sending payments across "
+"different ledgers."
+msgstr ""
+
+#: tool/template-home.html:290 tool/template-home.html:304
+msgid "Learn More"
+msgstr ""
+
+#: tool/template-home.html:297
+msgid "Xpring logo"
+msgstr ""
+
+#: tool/template-home.html:298
+msgid "Xpring"
+msgstr ""
+
+#: tool/template-home.html:301
+msgid ""
+"Xpring is Ripple’s initiative to create an open developer platform for "
+"money."
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:5
+msgid "Domain Verification Checker"
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:7
+msgid ""
+"This tool allows you to verify that <a href=\"xrp-ledger-toml.html"
+"#domain-verification\">domain verification</a> is properly configured."
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:8
+msgid ""
+"Enter the manifest found in your validator-keys.json file. Do not confuse"
+" this with your validator's secret key."
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:9
+msgid "To do this with the validator-keys-tool use the following command:"
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:14
+msgid "Your Manifest Here"
+msgstr ""
+
+#: tool/template-validator-domain-verifier.html:20
+msgid "Result"
+msgstr ""
+

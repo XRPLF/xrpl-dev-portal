@@ -11,14 +11,14 @@
 ## アドレス
 [アドレス]: #アドレス
 
-{% include '_snippets/data_types/address.md' %}
+{% include '_snippets/data_types/address.ja.md' %}
 <!--{#_ #}-->
 
 
 ## ハッシュ
 [ハッシュ]: #ハッシュ
 
-{% include '_snippets/data_types/hash.md' %}
+{% include '_snippets/data_types/hash.ja.md' %}
 <!--{#_ #}-->
 
 ### ハッシュプレフィクス
@@ -52,14 +52,14 @@
 ## アカウントシーケンス
 [シーケンス番号]: #アカウントシーケンス
 
-{% include '_snippets/data_types/account_sequence.md' %}
+{% include '_snippets/data_types/account_sequence.ja.md' %}
 <!--{#_ #}-->
 
 
 ## レジャーインデックス
 [レジャーインデックス]: #レジャーインデックス
 
-{% include '_snippets/data_types/ledger_index.md' %}
+{% include '_snippets/data_types/ledger_index.ja.md' %}
 <!--{#_ #}-->
 
 
@@ -149,7 +149,7 @@ XRPを金額なしで指定する場合は（主に、オーダーブックを�
 ### 通貨コード
 [通貨コード]: #通貨コードs
 
-{% include '_snippets/data_types/currency_code.md' %}
+{% include '_snippets/data_types/currency_code.ja.md' %}
 <!--{#_ #}-->
 
 

@@ -182,62 +182,65 @@
 
   <section class="container-fluid card-grid card-grid-2x2">
     <div class="section-hero card pl-0">
-      <h2>Start Building</h2>
+      <h2>{% trans %}Start Building{% endtrans %}</h2>
       <div class="blurb">
-        <p>Use these tutorials to get step-by-step guidance to perform common tasks with the XRP Ledger.</p>
+        <p>{% trans %}Use these tutorials to get step-by-step guidance to perform common tasks with the XRP Ledger.{% endtrans %}</p>
       </div>
     </div><!--/.section-hero-->
 
     {% set flag_n = cycler(* range(1,99)) %}
+    {% set cardpage = pages|selectattr('html', 'defined_and_equalto', 'list-xrp-in-your-exchange.html')|first %}
     <div class="card">
       <div class="card-header">
-          <a href="list-xrp-in-your-exchange.html" class="header-link">
-            <img class="image-icon" src="assets/img/icon-xrp-list-xrp.svg" >
-            <h3 class="card-title">List XRP on Your Exchange</h3>
+          <a href="{{cardpage.html}}" class="header-link">
+            <img class="image-icon" src="assets/img/icon-xrp-list-xrp.svg" alt="{% trans %}'list xrp' icon{% endtrans %}">
+            <h3 class="card-title">{{cardpage.name}}</h3>
         </a>
       </div><!--/.card-header-->
       <div class="card-body">
-        <p>Run a digital asset exchange? Follow these steps to add XRP.</p>
+        <p>{{cardpage.blurb}}</p>
       </div><!--/.card-body-->
       <div class="card-footer">
         <div class="readmore">
-          <a href="list-xrp-in-your-exchange.html" class="btn btn-outline-secondary">List XRP</a>
+          <a href="{{cardpage.html}}" class="btn btn-outline-secondary">{{cardpage.cta_text}}</a>
         </div>
       </div><!--/.card-footer-->
       <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
     </div><!--/.card-->
 
+    {% set cardpage = pages|selectattr('html', 'defined_and_equalto', 'send-xrp.html')|first %}
     <div class="card">
       <div class="card-header">
-        <a href="send-xrp.html" class="header-link">
-          <img class="image-icon" src="assets/img/icon-xrp-send-xrp.svg" >
-          <h3 class="card-title">Send XRP</h3>
+        <a href="{{cardpage.html}}" class="header-link">
+          <img class="image-icon" src="assets/img/icon-xrp-send-xrp.svg" alt="{% trans %}'send xrp' icon{% endtrans %}">
+          <h3 class="card-title">{{cardpage.name}}</h3>
         </a>
       </div><!--/.card-header-->
       <div class="card-body">
-        <p>Learn how to send test payments right from your browser.</p>
+        <p>{{cardpage.blurb}}</p>
       </div><!--/.card-body-->
       <div class="card-footer">
         <div class="readmore">
-          <a href="send-xrp.html" class="btn btn-outline-secondary">Send XRP</a>
+          <a href="{{cardpage.html}}" class="btn btn-outline-secondary">{{cardpage.cta_text}}</a>
         </div>
       </div><!--/.card-footer-->
       <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
     </div><!--/.card-->
 
+    {% set cardpage = pages|selectattr('html', 'defined_and_equalto', 'manage-the-rippled-server.html')|first %}
     <div class="card">
       <div class="card-header">
-        <a href="manage-the-rippled-server.html" class="header-link">
-          <img class="image-icon" src="assets/img/icon-xrp-run-rippled.svg" >
-          <h3 class="card-title">Run a rippled Server</h3>
+        <a href="{{cardpage.html}}" class="header-link">
+          <img class="image-icon" src="assets/img/icon-xrp-run-rippled.svg" alt="{% trans %}'run rippled' icon{% endtrans %}">
+          <h3 class="card-title">{{cardpage.name}}</h3>
         </a>
         </div><!--/.card-header-->
       <div class="card-body">
-        <p>Install, configure, and manage the core server that powers the XRP Ledger.</p>
+        <p>{{cardpage.blurb}}</p>
       </div><!--/.card-body-->
       <div class="card-footer">
         <div class="readmore">
-          <a href="manage-the-rippled-server.html" class="btn btn-outline-secondary">Run rippled</a>
+          <a href="{{cardpage.html}}" class="btn btn-outline-secondary">{{cardpage.cta_text}}</a>
         </div>
       </div><!--/.card-footer-->
       <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
@@ -245,20 +248,20 @@
 
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><a href="tutorials.html">More Tutorials</a></h3>
+        <h3 class="card-title"><a href="tutorials.html">{% trans %}More Tutorials{% endtrans %}</a></h3>
       </div><!--/.card-header-->
       <div class="card-body">
         <div class="curated-links">
           <ul>
-            <li><a href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
-            <li><a href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
-            <li><a href="use-escrows.html">Use Escrows</a></li>
-            <li><a href="use-payment-channels.html">Use Payment Channels</a></li>
+            <li><a href="assign-a-regular-key-pair.html">{{(pages|selectattr('html', 'defined_and_equalto', 'manage-the-rippled-server.html')|first).name}}</a></li>
+            <li><a href="set-up-multi-signing.html">{{(pages|selectattr('html', 'defined_and_equalto', 'set-up-multi-signing.html')|first).name}}</a></li>
+            <li><a href="use-escrows.html">{{(pages|selectattr('html', 'defined_and_equalto', 'use-escrows.html')|first).name}}</a></li>
+            <li><a href="use-payment-channels.html">{{(pages|selectattr('html', 'defined_and_equalto', 'use-payment-channels.html')|first).name}}</a></li>
           </ul>
         </div><!--/.curated-links-->
       </div><!--/.card-body-->
       <div class="card-footer">
-        <a href="tutorials.html" class="btn btn-outline-secondary">All Tutorials</a>
+        <a href="tutorials.html" class="btn btn-outline-secondary">{% trans %}All Tutorials{% endtrans %}</a>
       </div><!--/.card-footer-->
       <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
     </div><!--/.card-->
@@ -267,9 +270,9 @@
 
   <section class="container-fluid related-projects card-grid card-grid-2x1">
     <div class="section-hero card pl-0">
-      <h2>Related Projects</h2>
+      <h2>{% trans %}Related Projects{% endtrans %}</h2>
       <div class="blurb">
-        <p>You're not alone in building the Internet of Value. These projects are proudly collaborating with the XRP Ledger to make all the world's money move like information moves today.</p>
+        <p>{% trans %}You're not alone in building the Internet of Value. These projects are proudly collaborating with the XRP Ledger to make all the world's money move like information moves today.{% endtrans %}</p>
       </div>
     </div><!--/.section-hero-->
 
@@ -277,28 +280,28 @@
 
     <div class="card interledger-link">
       <div class="card-header">
-          <img class="project-icon" src="assets/img/ilp_logo.svg" />
-          <h3 class="card-title">Interledger</h3>
+          <img class="project-icon" src="assets/img/ilp_logo.svg" alt="{% trans %}Interledger logo{% endtrans %}" />
+          <h3 class="card-title">{% trans %}Interledger{% endtrans %}</h3>
       </div><!--/.card-header-->
       <div class="card-body">
-        <p class="project-summary">Interledger is an open protocol suite for sending payments across different ledgers.</p>
+        <p class="project-summary">{% trans %}Interledger is an open protocol suite for sending payments across different ledgers.{% endtrans %}</p>
       </div><!--/.card-body-->
       <div class="card-footer">
-        <a class="btn btn-outline-secondary external-link" href="https://interledger.org/" target="_blank">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>
+        <a class="btn btn-outline-secondary external-link" href="https://interledger.org/" target="_blank">{% trans %}Learn More{% endtrans %} <i class="fa fa-external-link" aria-hidden="true"></i></a>
       </div><!--/.card-footer-->
       <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
     </div><!--/.card-->
 
     <div class="card xpring-link">
         <div class="card-header">
-            <img class="project-icon" src="assets/img/xpring-logo.svg" alt="Xpring" />
-            <h3 class="card-title">Xpring</h3>
+            <img class="project-icon" src="assets/img/xpring-logo.svg" alt="{% trans %}Xpring logo{% endtrans %}" />
+            <h3 class="card-title">{% trans %}Xpring{% endtrans %}</h3>
         </div><!--/.card-header-->
         <div class="card-body">
-          <p class="project-summary">Xpring (pronounced “spring”) is a Ripple initiative that builds infrastructure and helps innovative blockchain projects grow through investments and partnerships.</p>
+          <p class="project-summary">{% trans %}Xpring is Ripple’s initiative to create an open developer platform for money.{% endtrans %}</p>
         </div><!--/.card-body-->
         <div class="card-footer">
-          <a class="btn btn-outline-secondary external-link" href="https://xpring.io/" target="_blank">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>
+          <a class="btn btn-outline-secondary external-link" href="https://xpring.io/" target="_blank">{% trans %}Learn More{% endtrans %} <i class="fa fa-external-link" aria-hidden="true"></i></a>
         </div><!--/.card-footer-->
         <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
       </div><!--/.card-->

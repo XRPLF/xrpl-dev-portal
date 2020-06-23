@@ -4,7 +4,7 @@ An "Account" in the XRP Ledger represents a holder of XRP and a sender of [trans
 
 - An identifying **address**, such as `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`
 
-    **Note:** The XRP community has [proposed](https://github.com/xrp-community/standards-drafts/issues/6) (and developed a [codec](https://github.com/xrp-community/xrpl-tagged-address-codec) to support) a new **X**-address format that exchanges and wallets could use instead of [destination tags](https://xrpl.org/source-and-destination-tags.html). These "packed" addresses start with an `X` instead of an `r`. For more information, see the [XRPL 𝗫-address format](https://xrpaddress.info/) site.
+    **Note:** The XRP community has [proposed](https://github.com/xrp-community/standards-drafts/issues/6) (and developed a [codec](https://github.com/xrp-community/xrpl-tagged-address-codec) to support) a new **X**-address format that exchanges and wallets could use instead of [destination tags](source-and-destination-tags.html). These "packed" addresses start with an `X` instead of an `r`. For more information, see the [XRPL 𝗫-address format](https://xrpaddress.info/) site.
 
 - An **XRP balance**. Some of this XRP is set aside for the [Reserve](reserves.html).
 - A **sequence number**, which helps make sure any transactions this account sends are applied in the correct order and only once each. To execute a transaction, the transaction's sequence number and its sender's sequence number must match. Then, as part of applying the transaction, the account's sequence number increases by 1. (See also: [Basic Data Types: Account Sequence](basic-data-types.html#account-sequence).)
@@ -79,7 +79,7 @@ After an account has been deleted, it can be re-created in the ledger through th
 
 Unlike Bitcoin and many other cryptocurrencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, you should not create new XRP Ledger accounts unless necessary. You can recover some of an account's 20 XRP [reserve](reserves.html) by deleting the account, but you must still destroy at least 5 XRP to do so.
 
-Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](become-an-xrp-ledger-gateway.html#source-and-destination-tags) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
+Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](source-and-destination-tags.html) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
 
 
 
