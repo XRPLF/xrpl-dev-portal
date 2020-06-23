@@ -45,7 +45,6 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     The above example is appropriate for **Ubuntu 20.04 Focal Fossa**. For other operating systems, replace the word `focal` with one of the following:
 
-    - `disco` for **Ubuntu 19.04 Disco Dingo**
     - `bionic` for **Ubuntu 18.04 Bionic Beaver**
     - `xenial` for **Ubuntu 16.04 Xenial Xerus**
     - `stretch` for **Debian 9 Stretch**
