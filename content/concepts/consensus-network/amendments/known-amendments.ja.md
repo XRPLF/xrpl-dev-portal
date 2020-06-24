@@ -1,24 +1,26 @@
 # 既知のAmendment
-
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
 
 以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
 | 名前                            | 導入済み | ステータス                              |
 |:--------------------------------|:-----------|:------------------------------------|
+| [HardenedValidations][]         | v1.6.0-b5  | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fix1781][]                     | v1.6.0-b1  | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [SHAMapV2][]                    | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [DeletableAccounts][]           | v1.4.0     | [計画済み: 未定]( "BADGE_LIGHTGREY") |
-| [fixCheckThreading][]           | v1.4.0     | [予定: 2020/01/18](https://xrpl.org/blog/2020/fixcheckthreading-fixpaychanrecipientownerdir-expected.html "BADGE_BLUE") |
-| [fixPayChanRecipientOwnerDir][] | v1.4.0 | [予定: 2020/01/18](https://xrpl.org/blog/2020/fixcheckthreading-fixpaychanrecipientownerdir-expected.html "BADGE_BLUE") |
-| [Checks][]                      | v0.90.0    | [計画済み: 未定]( "BADGE_LIGHTGREY")  |
-| [FlowCross][]                   | v0.70.0    | [計画済み: 未定]( "BADGE_LIGHTGREY")  |
+| [fixQualityUpperBound][]        | v1.5.0     | [投票中: 未定](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
+| [FlowCross][]                   | v0.70.0    | [投票中: 未定](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
+| [RequireFullyCanonicalSig][]    | v1.5.0     | [予定: 2020/07/03](https://xrpl.org/blog/2020/requirefullycanonicalsig-expected.html "BADGE_BLUE") |
+| [Checks][]                      | v0.90.0    | [有効: 2020/06/18](https://xrpcharts.ripple.com/#/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
+| [DeletableAccounts][]           | v1.4.0     | [有効: 2020/05/08](https://xrpcharts.ripple.com/#/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
+| [fixCheckThreading][]           | v1.4.0     | [有効: 2020/05/01](https://xrpcharts.ripple.com/#/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
+| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [有効: 2020/05/01](https://xrpcharts.ripple.com/#/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09 "BADGE_GREEN") |
 | [fixMasterKeyAsRegularKey][]    | v1.3.1     | [有効: 2019/10/02](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
 | [MultiSignReserve][]            | v1.2.0     | [有効: 2019/04/17](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
 | [fixTakerDryOfferRemoval][]     | v1.2.0     | [有効: 2019/04/02](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
-| [fix1578][]                     | v1.2.0     |  [有効: 2019/03/23](https://xrpcharts.ripple.com/#/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
+| [fix1578][]                     | v1.2.0     | [有効: 2019/03/23](https://xrpcharts.ripple.com/#/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
 | [DepositPreauth][]              | v1.1.0     | [有効: 2018/10/09](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
 | [fix1515][]                     | v1.1.0     | [有効: 2018/10/09](https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
 | [fix1543][]                     | v1.0.0     | [有効: 2018/06/21](https://xrpcharts.ripple.com/#/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
@@ -42,6 +44,7 @@
 | [TrustSetAuth][]                | v0.30.0    | [有効: 2016/07/19](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]                   | v0.31.0    | [有効: 2016/06/27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]               | v0.31.0     | [有効: 2016/05/19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| [SHAMapV2][]                    | v0.32.1    | [禁止: v1.4.0で削除](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
 | [FlowV2][]                      | v0.32.1    | [禁止: v0.33.0で削除](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
 | [SusPay][]                      | v0.31.0    | [禁止: v0.60.0で削除](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
 
@@ -52,7 +55,7 @@
 
 | Amendment ID                                                     | ステータス    |
 |:-----------------------------------------------------------------|:----------|
-| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | 計画済み |
+| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | 有効 |
 
 「Checks」をXRP Ledgerに導入します。Checksは個人用の紙の小切手と同様の機能を持っています。送信者はトランザクションに署名して、具体的な最高額と受取人を入力したCheckを作成します。その後、受取人はCheckを換金して、指定された金額を上限として現金を受け取ることができます。金銭の移動が実際に発生するのはCheckが換金されるときなので、送信者の現在の残高と流動性の状況によっては、Checkを換金できない場合があります。Checkを換金できない場合、Checkオブジェクトはレジャーに残るため、後日換金できるようになる場合があります。
 
@@ -87,7 +90,7 @@
 
 | Amendment ID | ステータス |
 |:----------|:----------|
-| 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 | 計画済み |
+| 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 | 有効 |
 
 [アカウント](accounts.html)を削除できるようになります。
 
@@ -317,12 +320,25 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 
 **注意:** `rippled`1.0.0では、fix1623 Amendmentの前にChecks Amendmentを有効にした場合、fix1623 Amendmentが行われる前の変動金額のCheckCashトランザクションについては、トランザクションがゼロ以外の金額であっても、`delivered_amount`に「0」と表示される場合があります。Rippleでは、fix1623を[Checks][] Amendmentと同時に本番ネットワーク環境で有効にするよう計画していますが、この状況は[並列ネットワーク](parallel-networks.html)上で発生する可能性があります。
 
+## fix1781
+[fix1781]: #fix1781
+
+| Amendment ID                                                     | ステータス    |
+|:-----------------------------------------------------------------|:----------|
+| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | 開発中 |
+
+Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
+
+Without this amendment, it is possible to have a [payment path](paths.html) where the input to the path is XRP, and an intermediate path step also outputs XRP. This is a "loop" payment, and the payment engine disallows such paths because they can have different results when executed forward compared to backwards.
+
+With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](tem-codes.html) instead.
+
 ## fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
 | Amendment ID | ステータス |
 |:----------|:----------|
-| 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 | 予定 |
+| 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 | 有効 |
 
 Checksトランザクションがアカウントのメタデータに影響を及ぼす方法を変更し、Checksが受信アカウントの[アカウント](accounts.html)履歴に適切に追加されるようにします。（具体的には、受信アカウントの[AccountRootオブジェクト](accountroot.html)の`PreviousTxnID`フィールドと`PreviousTxnLedgerSeq`フィールドを更新します。これは、アカウントと、アカウントが所有するオブジェクトに影響を及ぼしたトランザクションの「スレッド」を追跡するために使用できます。）
 
@@ -346,7 +362,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 
 | Amendment ID | ステータス |
 |:----------|:----------|
-| 621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8 | 予定 |
+| 621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8 | 有効 |
 
 [PaymentChannelCreateトランザクション][]タイプを変更し、受取人の[所有者ディレクトリー](directorynode.html)に新しい[Payment Channel](payment-channels.html)が追加されるようにします。この修正を適用しない場合、新しいPayment Channelは送金者の所有者ディレクトリーにのみ追加されます。この修正を有効にする場合、新しく作成したPayment Channelは両者の所有者ディレクトリーに追加されます。既存のPayment Channelは変更されません。
 
@@ -365,6 +381,17 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 
 この修正により、これらのドライオファーがオートブリッジで一致した場合に、XRP Ledgerによって除去されます。
 
+## fixQualityUpperBound
+[fixQualityUpperBound]: #fixqualityupperbound
+
+| Amendment ID                                                     | ステータス  |
+|:-----------------------------------------------------------------|:----------|
+| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | 投票中 |
+
+Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
+
+This amendment has no known impact on transaction processing.
+
 ## Flow
 [Flow]: #flow
 
@@ -381,7 +408,7 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 
 | Amendment ID | ステータス |
 |:----------|:----------|
-| 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC | 計画済み |
+| 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC | 投票中 |
 
 XRP Ledgerの分散型取引所において、オファーの掛け合わせのロジックを合理化します。[Flow](#flow) Amendmentから更新されたコードを使用してオファーの掛け合わせを行うため、[OfferCreateトランザクション][]と[Paymentトランザクション][]は多くのコードを共有します。オファーの処理方法には微妙な違いがあります。
 
@@ -397,6 +424,17 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 | 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | 禁止 |
 
 これは[Flow](#flow) Amendmentの旧バージョンです。[バグが原因で不採用となり](https://xrpl.org/blog/2016/flowv2-vetoed.html)、バージョン0.33.0で除外されました。
+
+## HardenedValidations
+[HardenedValidations]: #hardenedvalidations
+
+| Amendment ID                                                     | ステータス    |
+|:-----------------------------------------------------------------|:----------|
+| 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | 開発中 |
+
+Allows validators to include a new optional field in their validations to attest to the hash of
+the latest ledger that that validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
+
 
 ## MultiSign
 [MultiSign]: #multisign
@@ -460,12 +498,27 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 
 詳細は、[Payment Channelsのチュートリアル](use-payment-channels.html)を参照してください。
 
+## RequireFullyCanonicalSig
+[RequireFullyCanonicalSig]: #requirefullycanonicalsig
+
+| Amendment ID                                                     | ステータス    |
+|:-----------------------------------------------------------------|:----------|
+| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | 予定  |
+
+Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of just transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags) enabled.
+
+Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have tfFullyCanonicalSig enabled. Most signing utilities enable tfFullyCanonicalSig by default, but there are exceptions.
+
+With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](transaction-malleability.html#malleability-with-multi-signatures) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the tfFullyCanonicalSig flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
+
+For more information, see [`rippled` issue #3042](https://github.com/ripple/rippled/issues/3042).
+
 ## SHAMapV2
 [SHAMapV2]: #shamapv2
 
 | Amendment ID | ステータス |
 |:----------|:----------|
-| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | 開発中 |
+| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | 禁止 |
 
 `rippled`がレジャーを表示する際に使用するハッシュツリー構造を変更します。新しい構造は以前のバージョンよりもコンパクトで効率的です。この修正はレジャーハッシュの計算方法が変わりますが、その他にユーザーに与える影響はありません。
 

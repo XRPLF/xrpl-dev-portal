@@ -11,8 +11,8 @@ The following is a comprehensive list of all known amendments and their status o
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixQualityUpperBound][]        | v1.5.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
-| [RequireFullyCanonicalSig][]    | v1.5.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
 | [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
+| [RequireFullyCanonicalSig][]    | v1.5.0     | [Expected: 2020-07-03](https://xrpl.org/blog/2020/requirefullycanonicalsig-expected.html "BADGE_BLUE") |
 | [Checks][]                      | v0.90.0    | [Enabled: 2020-06-18](https://xrpcharts.ripple.com/#/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
 | [DeletableAccounts][]           | v1.4.0     | [Enabled: 2020-05-08](https://xrpcharts.ripple.com/#/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
 | [fixCheckThreading][]           | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
@@ -537,7 +537,7 @@ For more information, see the [Payment Channels Tutorial](use-payment-channels.h
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | Open for Voting |
+| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | Expected  |
 
 Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of just transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags) enabled.
 
