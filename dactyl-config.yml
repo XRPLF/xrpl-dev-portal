@@ -5868,35 +5868,60 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/peer-crawler.md
+    # TODO: translate title & blurb
+    -   name: Peer Port Methods
+        html: peer-port-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Port Methods
+        template: template-landing-children.html
+        blurb: Special API method for sharing network topology and status metrics.
+        targets:
+            - en
+            - ja
+
+    # TODO: translate page & blurb
+    -   md: references/rippled-api/peer-port-methods/health-check.md
+        html: health-check.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Port Methods
+        blurb: Special API method for reporting server health.
+        targets:
+            - en
+            - ja
+
+    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
         html: peer-crawler.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Peer Crawler
+        category: Peer Port Methods
         blurb: Special API method for sharing network topology and status metrics.
         targets:
             - en
 
     # TODO: translate page
-    -   md: references/rippled-api/peer-crawler.md
+    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
         html: peer-crawler.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Peer Crawler
+        category: Peer Port Methods
         blurb: ネットワークトポロジーとステータスメトリックを共有するための特殊なAPIメソッドです。
         untranslated_warning: true
         targets:
             - ja
 
     # TODO: translate page & blurb
-    -   md: references/rippled-api/validator-list.md
+    -   md: references/rippled-api/peer-port-methods/validator-list.md
         html: validator-list.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Validator List
+        category: Peer Port Methods
         blurb: Special API method for sharing recommended validator lists.
         targets:
             - en

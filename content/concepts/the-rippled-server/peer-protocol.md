@@ -39,7 +39,7 @@ ip = 0.0.0.0
 protocol = peer
 ```
 
-The peer protocol port also serves the [special Peer Crawler API method](peer-crawler.html).
+The peer protocol port also serves [special peer port methods](peer-port-methods.html).
 
 ## Node Key Pair
 
