@@ -2758,6 +2758,18 @@ pages:
         targets:
             - en
 
+    # TODO: translate page and blurb
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
+        html: health-check-interventions.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Use the rippled server's health check as part of automated infrastructure monitoring.
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
         html: diagnosing-problems.html
         funnel: Docs
