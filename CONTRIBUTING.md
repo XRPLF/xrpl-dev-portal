@@ -25,6 +25,7 @@ The XRPL Dev Portal provides comprehensive documentation of the the XRP Ledger, 
     - [content/\_snippets/](content/_snippets/) - Reusable chunks of Markdown text that are included in other content files, using the Dactyl preprocessor.
 - [img/](img/) - Images used by the documentation contents.
 - [tool/](tool/) - Templates, style-checker rules, and other scripts.
+- [styles/](styles/) - Source files (SCSS) to generate the CSS files in the assets folder.
 - [`dactyl-config.yml`](dactyl-config.yml) - Main config file, which contains the metadata for all the docs. For information on our conventions, see [Config Formatting](#config-formatting).
 
 ## Requirements for a Successful Pull Request

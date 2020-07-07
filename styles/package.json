@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "bootstrap": "^4.5.0",
+    "node-sass": "^4.14.1"
+  },
+  "scripts": {
+    "build-css": "node-sass --include-path scss xrpl.scss ../assets/css/devportal.css --output-style compressed"
+  }
+}
