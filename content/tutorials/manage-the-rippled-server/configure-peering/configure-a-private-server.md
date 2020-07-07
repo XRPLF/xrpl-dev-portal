@@ -44,7 +44,7 @@ To set up a specific server as a private peer, complete the following steps:
         192.168.0.1 51235
         192.168.0.2 51235
 
-    **Note:** If you omit the port number, the server uses port 2459, the IANA-assigned port for the XRP Ledger protocol. [New in: rippled 1.6.0][]
+    **Note:** If you omit the port number, the server uses port 2459, the IANA-assigned port for the [XRP Ledger protocol](peer-protocol.html). [New in: rippled 1.6.0][]
 
 4. If using proxies, cluster them with your private peer and each other.
 
