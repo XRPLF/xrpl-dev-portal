@@ -1,0 +1,107 @@
+/* Code Tabs ---------------------------------------------------------------- */
+
+.multicode {
+  color: $black;
+}
+
+.multicode a.current {
+  background-color: $gray-200;
+  color: $black;
+}
+
+.multicode a,
+a.current {
+  color: $black;
+}
+
+.multicode li {
+  border-color: $gray-300;
+}
+
+.code_sample pre code {
+  background-color: $gray-200;
+}
+
+.multicode a:hover {
+  color: $black;
+  border-bottom: 1px solid $black;
+  padding-bottom: 7px;
+}
+
+pre {
+  overflow: visible;
+  word-wrap: normal;
+}
+pre code {
+  white-space: pre;
+}
+.code_sample pre {
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+.code_sample pre code {
+  overflow: auto;
+  max-height: 24em;
+  border-radius: 4px;
+  display: block;
+  padding: 24px;
+}
+.code_sample pre code.expanded {
+  overflow: visible;
+  max-height: none;
+  position: absolute;
+}
+.code_sample .code_toggler {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.multicode {
+  margin: 12px 0px 0px 0px;
+  padding: 0 0 0 0;
+  z-index: 1;
+  padding-left: 10px;
+  position: relative;
+}
+.multicode ul {
+  margin: 0 !important;
+  padding: 0;
+}
+.multicode pre {
+  padding-top: 0;
+  clear: both;
+}
+.multicode li {
+  display: block;
+  float: left;
+  list-style-type: none;
+  margin-right: 0px;
+  margin-left: 0px;
+  border-style: none solid;
+  border-width: 0.5px;
+}
+.multicode ul > li:before {
+  background: none;
+  border: none;
+}
+.multicode a,
+a.current {
+  padding-right: 32px;
+  padding-left: 32px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin: 0px;
+  text-decoration: none;
+}
+.multicode a.current:hover {
+  border-bottom: none;
+  padding-bottom: 10px;
+}
+.multicode li:first-child {
+  border-left: none;
+}
+.multicode li:last-child {
+  border-right: none;
+}

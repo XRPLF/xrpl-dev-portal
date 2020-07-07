@@ -1,0 +1,22 @@
+/* Edit on GitHub link ------------------------------------------------------ */
+.github-edit-wrap {
+  border: 1px solid $gray-400;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.github-edit-wrap:hover {
+  border-color: $black;
+}
+.github-edit-wrap .github-edit {
+  background-image: url(../vendor/github-marks/GitHub-Mark-32px.png);
+  background-size: 24px 24px;
+  background-position: left 12px center;
+  background-repeat: no-repeat;
+  padding: 8px 16px 8px 48px;
+  color: $gray-600;
+  text-decoration: none;
+  display: block;
+  line-height: 17px; /* Match search box height */
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}

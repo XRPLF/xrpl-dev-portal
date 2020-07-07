@@ -1,0 +1,81 @@
+/* Callouts ----------------------------------------------------------------- */
+
+.devportal-callout.tip,
+.devportal-callout.ヒント {
+  border-color: $success;
+}
+.devportal-callout.tip > strong:first-child:before,
+.devportal-callout.ヒント > strong:first-child:before {
+  color: $success;
+}
+.devportal-callout.note > strong:first-child:before,
+.devportal-callout.注記 > strong:first-child:before {
+  color: $info;
+}
+.devportal-callout.note,
+.devportal-callout.注記 {
+  border-color: $info;
+}
+.devportal-callout.caution,
+.devportal-callout.注意 {
+  border-color: $warning; /* not a typo */
+}
+.devportal-callout.caution > strong:first-child:before,
+.devportal-callout.注意 > strong:first-child:before {
+  color: $warning; /* not a typo */
+}
+.devportal-callout.warning,
+.devportal-callout.警告 {
+  border-color: $danger;
+}
+.devportal-callout.warning > strong:first-child:before,
+.devportal-callout.警告 > strong:first-child:before {
+  color: $danger;
+}
+
+.devportal-callout {
+  border-style: solid;
+  border-radius: 0;
+  border-width: 1px;
+  border-left-width: 4px;
+  padding: 5px;
+  padding-left: 25px;
+  page-break-inside: avoid;
+}
+
+.devportal-callout > strong:first-child {
+  display: block;
+  page-break-after: avoid;
+}
+
+.devportal-callout.tip > strong:first-child:before {
+  content: "\f058"; /* fontawesome check-circle icon */
+  font-family: FontAwesome;
+  /* color in scss */
+  margin-left: -20px;
+  padding-right: 5px;
+}
+
+.devportal-callout.note > strong:first-child:before {
+  content: "\f05a"; /* fontawesome (i) info-circle icon */
+  font-family: FontAwesome;
+  /* color in scss */
+  margin-left: -20px;
+  padding-right: 5px;
+}
+
+.devportal-callout.caution > strong:first-child:before {
+  content: "\f071"; /* fontawesome /!\ exclamation-triangle icon */
+  font-family: FontAwesome;
+  /* color in scss */
+  margin-left: -20px;
+  padding-right: 5px;
+}
+
+.devportal-callout.warning > strong:first-child:before {
+  content: "\f057"; /* fontawesome (x) times-circle icon */
+  font-family: FontAwesome;
+  /* color in scss */
+  margin-left: -20px;
+  padding-right: 5px;
+}

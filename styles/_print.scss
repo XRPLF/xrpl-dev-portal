@@ -1,0 +1,58 @@
+/* Print styles ------------------------------------------------------------- */
+@media print {
+    /* undo code tabs */
+  .multicode > div {
+    display: block !important;
+  }
+  .multicode > ul {
+    display: none !important;
+  }
+  .multicode > em,
+  .multicode > p > em {
+    display: block !important;
+    page-break-after: avoid;
+  }
+  .multicode > p {
+    display: block !important;
+  }
+  /* wrap code, not scroll */
+  pre {
+    white-space: pre-wrap;
+    max-height: none !important;
+    overflow: visible;
+    page-break-inside: auto;
+    word-wrap: break-word;
+  }
+  pre code {
+    white-space: pre-wrap !important;
+  }
+  .content a[title="Source"] {
+    float: none;
+  }
+  /* Drop header, footer, sidebars */
+  header,
+  footer,
+  aside {
+    display: none;
+  }
+  /* Full-width content body */
+  .content, #main_content_body {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+  }
+  #main_content_wrapper {
+    margin-top: 0;
+  }
+  #main_content_body::before {
+    display: none;
+  }
+  .xrp-ledger-dev-portal.sidebar-primary .main {
+    border: 0;
+  }
+  .sidebar-primary .row {
+    display: block;
+  }
+}
