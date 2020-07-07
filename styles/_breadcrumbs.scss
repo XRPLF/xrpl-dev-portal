@@ -1,0 +1,19 @@
+/* Breadcrumbs -------------------------------------------------------------- */
+
+.breadcrumb-item + .breadcrumb-item:before {
+    content: "\f105"; /* fontawesome angle-right */
+    font-family: FontAwesome;
+    padding-right: 5px;
+}
+.breadcrumbs-wrap .breadcrumb {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 0.833em;
+}
+.breadcrumb-item a {
+  color: hsla(14.999999999999947, 1.98%, 39.61%, 1.00);
+  text-decoration: none;
+}
+.breadcrumb-item a:hover {
+  color: #000;
+}

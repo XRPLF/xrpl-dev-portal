@@ -1,0 +1,12 @@
+/* Status labels ("DEV" etc) for non-enabled features ----------------------- */
+
+.status {
+  cursor: help;
+  padding: 1px 2px;
+  font-weight: normal;
+  text-indent: 0;
+}
+.status.not_enabled {
+  /* flask icon for "not yet enabled" features */
+  color: $warning;
+}

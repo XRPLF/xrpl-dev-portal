@@ -1,0 +1,37 @@
+// Font Settings ===============================================================
+
+body {
+  font-feature-settings: "liga", "kern";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.9375rem;
+}
+
+pre, code {
+  /* Disable ligatures on code-font, so, for example,
+  </ doesn't become a diagonal arrow. */
+  font-feature-settings: "liga" 0;
+  font-variant-ligatures: none;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  color: $black;
+}
+
+/* Japanese language font override ------------------------------------------ */
+
+.lang-ja {
+  h1, h2, h3, h4, h5,
+  .github-edit-wrap .github-edit,
+  .navbar .navbar-nav .nav-link,
+  .content .children-display li a,
+  .right-sidebar .level-1 a,
+  .right-sidebar .separator,
+  .use-case-step-num {
+    //font-family: 'M PLUS 1p', 'Space Mono', sans-serif;
+    //font-family: '851Gkktt', 'Space Mono', sans-serif;
+    font-family: 'Makinas-4-Flat', 'Makinas-4-Square', 'Space Mono', sans-serif;
+  }
+}

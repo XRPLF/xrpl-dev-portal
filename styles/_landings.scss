@@ -1,0 +1,223 @@
+
+.landing .curated-links a,
+.landing .children-display a,
+.landing a.card,
+.xrpl-footer a {
+  color: $gray-600;
+}
+
+.landing .curated-links a:hover,
+.landing .children-display a:hover,
+.xrpl-footer a:hover {
+  color: $black;
+}
+
+.card-grid .section-hero.card {
+  padding-left: 0;
+}
+
+.container-fluid.section-hero {
+  padding: 48px 0;
+}
+
+.content .children-display li a {
+  /* Category landing pages */
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.content .children-display li a:hover {
+  text-decoration: underline;
+}
+
+.landing {
+  padding: 0 2px;
+}
+
+/* Common list modules (children, curated links) ---------------------------- */
+.curated-links ul,
+.curated-links ol,
+.children-display ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.card .curated-links a:hover,
+.card .children-display a:hover {
+  text-decoration: none;
+}
+
+.level-1,
+.curated-links ul li {
+  list-style-type: disc;
+}
+.level-1,
+.curated-links li {
+  margin-top: 12px;
+  margin-left: 16px;
+}
+
+.landing .level-1,
+.landing .level-2,
+.landing .curated-links li {
+  margin-top: 0;
+}
+
+.landing .card .level-1 a,
+.landing .card .curated-links li a {
+  padding: 8px;
+  display: block;
+  margin: 0 -8px 0 -8px;
+}
+
+.landing .card .level-2 {
+  position: relative;
+}
+.landing .card .level-2 a {
+  padding: 8px 8px 8px 28px;
+  display: block;
+  margin: 0 -8px 0 -8px;
+}
+
+.landing .card .blurb + .children-display,
+.landing .card .blurb + .curated-links {
+  margin-top: 1rem;
+}
+
+.section-hero .blurb {
+  font-size: 1.2em;
+  line-height: 1.71em;
+}
+
+.level-2 {
+  list-style-type: circle;
+  margin-left: 30px;
+}
+.level-3 {
+  list-style-type: square;
+  margin-left: 45px;
+}
+.level-4 {
+  margin-left: 60px;
+}
+.level-5 {
+  margin-left: 75px;
+  list-style-type: circle;
+}
+.level-6 {
+  /* Probably not used */
+  margin-left: 90px;
+  list-style-type: square;
+}
+
+@media (max-width: 991px) {
+  .landing .card {
+    padding-left: 0px;
+  }
+}
+
+
+/* Landing Pages ------------------------------------------------------------ */
+
+.landing .display-4 {
+  margin-bottom: 1.5rem;
+}
+
+.landing h3,
+#test-net-servers h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.card-header h3.card-title {
+  margin-bottom: 0;
+}
+
+#test-net-servers pre {
+  overflow-x: auto;
+}
+
+.landing .card li,
+.xrpl-footer .card li {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.landing section:first-of-type {
+  padding-top: 0;
+  border-top-width: 0;
+}
+
+.card-grid .card-body {
+  padding: 8px;
+  padding-bottom: 24px;
+}
+
+.landing .card-header,
+.landing .card-footer,
+.xrpl-footer .card-header {
+  background: none;
+  border-bottom: none;
+  border-top: none;
+}
+
+.landing .card-header,
+.xrpl-footer .card-header {
+  padding: 8px;
+}
+
+.landing .card-footer {
+  padding: 8px;
+}
+
+.landing .card-body > p {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+
+#main_content_wrapper {
+  border-bottom: none;
+}
+
+
+
+
+.landing .card .card-img-top {
+  width: 60px;
+  height: 60px;
+  margin-left: 0;
+  margin-right: auto;
+}
+.image-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 16px;
+}
+
+/* Full-link cards */
+.landing a.card {
+  border: 1px solid transparent;
+}
+.landing a.card:hover {
+  text-decoration: none;
+}
+.landing a.card:hover h3 {
+  text-decoration: underline;
+}
+
+/* "Related Projects" boxes -------------- */
+
+.interledger-link .project-icon {
+  width: 80px;
+}
+
+.xpring-link .project-icon {
+  height: 60px;
+  width: 100px;
+  line-height: 20px;
+  vertical-align: middle;
+  margin: 9px 0;
+}

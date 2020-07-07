@@ -1,0 +1,73 @@
+/* Dev Tool styles stuff ---------------------------------------------------- */
+
+#tx-sender-history .list-group-item {
+  font-size: small;
+  color: $gray-600;
+}
+
+.response-metadata .timestamp {
+  color: $gray-600;
+  position: relative;
+  top: 16px;
+}
+
+/* Progress spinner animation */
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+
+.page-test-net .throbber,
+.page-tx-sender .throbber,
+.interactive-block .throbber {
+  width: 24px;height:24px;
+}
+
+#connection-status-item.active {
+  background-color: #2BCB96; /* TODO: adjust this color */
+  border-color: #2BCB96; /* TODO: adjust this color */
+}
+
+#tx-sender-history ul {
+  overflow: auto;
+  height: 220px;
+  border: 1px solid rgba(0, 0, 0, 0.125)
+}
+
+.page-tx-sender .input-group .form-control {
+  flex: 1 1 20%;
+}
+
+.bootstrap-growl {
+  max-width: 90vw !important;
+  overflow: hidden;
+}
