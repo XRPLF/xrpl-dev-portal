@@ -28,13 +28,13 @@ To participate in the XRP Ledger, `rippled` servers connect to arbitrary peers u
 
 Ideally, the server should be able to send _and_ receive connections on the peer port. You should [forward the port used for the peer protocol through your firewall](forward-ports-for-peering.html) to the `rippled` server.
 
-The [default `rippled` config file](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg) listens for incoming peer protocol connections on port 51235 on all network interfaces. You can change the port used by editing the appropriate stanza in your `rippled.cfg` file.
+IANA [has assigned port **2459**](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=2459) for the XRP Ledger peer protocol, but for compatibility with legacy systems, the [default `rippled` config file](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg) listens for incoming peer protocol connections on **port 51235** on all network interfaces. If you run a server, you can configure which port(s) your server listens on using the `rippled.cfg` file.
 
 Example:
 
 ```
 [port_peer]
-port = 51235
+port = 2459
 ip = 0.0.0.0
 protocol = peer
 ```
