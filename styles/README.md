@@ -33,5 +33,3 @@ You can omit the `-m` (include source map) to reduce the output file size. It pr
 ## Files
 
 `xrpl.scss` is the master file that includes all the other, `_`-prefixed SCSS files. This file also defines common colors and other utilities.
-
-Files prefixed with `_dactyl-` are pulled from the Dactyl built-in styles. You should edit these files as little as possible so that they we can pull in updates from upstream as easily as possible. ***TODO: Publish these files on NPM so they can be imported/installed the same way the Bootstrap styles are.***
