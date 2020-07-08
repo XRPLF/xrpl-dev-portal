@@ -3,14 +3,14 @@
 
 The Health Check is a special [peer port method](peer-port-methods.html) for reporting on the health of an individual `rippled` server. This method is intended for use in automated monitoring to recognize outages and prompt automated or manual interventions such as restarting the server. [New in: rippled 1.6.0][]
 
-This method checks several metrics to see if they are in ranges generally considered healthy. If all metrics are in normal ranges, this method reports that the server is healthy. If any metric is outside normal ranges, this method reports that the server is unhealthy and reports the metric(s) that were unhealthy. Since some metrics may rapidly fluctuate into and out of unhealthy ranges, it is recommended not to raise alerts unless the health check fails multiple times in a row.
+This method checks several metrics to see if they are in ranges generally considered healthy. If all metrics are in normal ranges, this method reports that the server is healthy. If any metric is outside normal ranges, this method reports that the server is unhealthy and reports the metric(s) that are unhealthy. Since some metrics may rapidly fluctuate into and out of unhealthy ranges, you should not raise alerts unless the health check fails multiple times in a row.
 
 **Note:** Since the health check is a [peer port method](peer-port-methods.html), it is not available when testing the server in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode).
 
 
 ## Request Format
 
-To request the Peer Crawler information, make the following HTTP request:
+To request the Health Check information, make the following HTTP request:
 
 - **Protocol:** https
 - **HTTP Method:** GET
@@ -23,6 +23,24 @@ To request the Peer Crawler information, make the following HTTP request:
 
 ## Example Response
 
+<!-- MULTICODE_BLOCK_START -->
+
+*Healthy*
+
+```json
+HTTP/1.1 200 OK
+Server: rippled-1.6.0-b8
+Content-Type: application/json
+Connection: close
+Transfer-Encoding: chunked
+
+{
+  "info": {}
+}
+```
+
+*Warning*
+
 ```json
 HTTP/1.1 503 Service Unavailable
 Server: rippled-1.6.0
@@ -31,19 +49,44 @@ Connection: close
 Transfer-Encoding: chunked
 
 {
-    "info": {
-        "load_factor": 256,
-        "server_state": "connected",
-        "validated_ledger": 2147483647
-    }
+  "info": {
+    "server_state": "connected",
+    "validated_ledger": -1
+  }
 }
 ```
 
+*Critical*
+
+```json
+HTTP/1.1 500 Internal Server Error
+Server: rippled-1.6.0
+Content-Type: application/json
+Connection: close
+Transfer-Encoding: chunked
+
+{
+  "info": {
+    "peers": 0,
+    "server_state": "disconnected",
+    "validated_ledger":-1
+  }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
 ## Response Format
 
-If the server is in a **critical** state, the response has the status code **503 Service Unavailable**. If the server is **healthy** or in a **warning** state, the response has the status code **200 OK**.
+The response's HTTP status code indicates the health of the server:
 
-In either case, the response body is a JSON object with a single `info` object at the top level. The info object contains values for each metric that is in a warning or critical range. The response omits metrics that are in a healthy range, so a fully healthy server has an empty object.
+| Status Code                   | Health Status | Description                  |
+|:------------------------------|:--------------|:-----------------------------|
+| **200 OK**                    | Healthy       | All health metrics are within acceptable ranges. |
+| **503 Service Unavailable**   | Warning       | One or more metric is in the warning range. Manual intervention may or may not be necessary. |
+| **500 Internal Server Error** | Critical      | One or more metric is in the critical range. There is a serious problem that probably needs manual intervention to fix. |
+
+The response body is a JSON object with a single `info` object at the top level. The `info` object contains values for each metric that is in a warning or critical range. The response omits metrics that are in a healthy range, so a fully healthy server has an empty object.
 
 The `info` object may contain the following fields:
 
@@ -53,7 +96,7 @@ The `info` object may contain the following fields:
 | `load_factor`       | Number | _(May be omitted)_ A measure of the overall load the server is under. This reflects I/O, CPU, and memory limitations. This is a warning if the load factor is over 100, or critical if the load factor is 1000 or higher. |
 | `peers`             | Number | _(May be omitted)_ The number of [peer servers](peer-protocol.html) this server is connected to. This is a warning if connected to 7 or fewer peers, and critical if connected to zero peers. |
 | `server_state`      | String | _(May be omitted)_ The current [server state](rippled-server-states.html). This is a warning if the server is in the `tracking`, `syncing`, or `connected` states. This is critical if the server is in the `disconnected` state. |
-| `validated_ledger`  | Number | _(May be omitted)_ The number of seconds since the last time a ledger was validated by consensus. If there is no validated ledger available, this is a very large integer value such as `2147483647` (architecture-dependent). This is a warning if the last validated ledger was at least 7 seconds ago, and critical if the last validated ledger was at least 20 seconds ago. |
+| `validated_ledger`  | Number | _(May be omitted)_ The number of seconds since the last time a ledger was validated by [consensus](intro-to-consensus.html). If there is no validated ledger available ([as during the initial sync period when starting the server](server-doesnt-sync.html#normal-syncing-behavior)), this is the value `-1` and is considered a warning. This metric is also a warning if the last validated ledger was at least 7 seconds ago, or critical if the last validated ledger was at least 20 seconds ago. |
 
 ## See Also
 

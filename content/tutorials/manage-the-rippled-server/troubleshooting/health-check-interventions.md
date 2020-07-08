@@ -6,9 +6,11 @@ Infrastructure monitoring, and reliability engineering more generally, is an adv
 
 ## Momentary Failures
 
-Some metrics in the health check can rapidly fluctuate into unhealthy ranges and then recover automatically shortly afterward. It is unnecessary and undesirable to raise alerts every single time the health check reports an unhealthy status. An automated monitoring system should call the health check method frequently, but only escalate to a higher level of intervention based on the severity and frequency of the problem.
+Some [metrics][] in the health check can rapidly fluctuate into unhealthy ranges and then recover automatically shortly afterward. It is unnecessary and undesirable to raise alerts every single time the health check reports an unhealthy status. An automated monitoring system should call the health check method frequently, but only escalate to a higher level of intervention based on the severity and frequency of the problem.
 
 For example, if you check the health of the server once per second, you might raise an alert if the server reports "warning" status three times in a row, or four times in a five-second span. You might also raise an alert if the server reports "critical" status twice in a five-second span.
+
+**Tip:** The server normally reports a "critical" status for the first few seconds after startup, switches to a "warning" status after it establishes a connection to the network, and finally reports a "healthy" status when it has fully synced to the network. After a restart, you should give a server 5–15 minutes to sync before taking additional interventions.
 
 ## Special Cases
 
@@ -27,9 +29,9 @@ The following sections suggest some common interventions you may want to attempt
 
 - [Redirect traffic](#redirect-traffic) away from the affected server
 - [Restart](#restart) the server software or hardware
+- [Upgrade](#upgrade) the `rippled` software
 - [Investigate network](#investigate-network) in case the problem originates elsewhere
 - [Replace hardware](#replace-hardware)
-- [Upgrade](#upgrade) the `rippled` software
 
 
 ### Redirect Traffic
@@ -41,7 +43,7 @@ Redirecting traffic away from a server that is unhealthy is an appropriate respo
 
 ### Restart
 
-The most straightforward intervention is to restart the server. This can resolve temporary issues with several types of failures, including any of the following metrics:
+The most straightforward intervention is to restart the server. This can resolve temporary issues with several types of failures, including any of the following [metrics][]:
 
 - `load_factor`
 - `peers`
@@ -59,9 +61,18 @@ A stronger intervention is to restart the entire machine.
 **Caution:** After a server starts, it typically needs up to 15 minutes to sync to the network. During this time, the health check is likely to report a critical or warning status. You should be sure your automated systems give servers enough time to sync before restarting them again.
 
 
+### Upgrade
+
+If the server reports `"amendment_blocked": true` in the health check, this indicates that the XRP Ledger has enabled a [protocol amendment](amendments.html) that your server does not understand. As a precaution against misinterpreting the revised rules of the network in a way that causes you to lose money, such servers become "amendment blocked" instead of operating normally.
+
+To resolve being amendment blocked, [update your server](install-rippled.html) to a newer software version that understands the amendment.
+
+Also, software bugs can cause a server to get [stuck not syncing](server-doesnt-sync.html). In this case, the `server_state` metric is likely to be in a warning or critical state. If you are not using the latest stable release, you should upgrade to get the latest fixes for any known issues that could cause this.
+
+
 ### Investigate Network
 
-An unreliable or insufficient network connection can cause a server to report outages. Warning or critical values in the following metrics can indicate network problems:
+An unreliable or insufficient network connection can cause a server to report outages. Warning or critical values in the following [metrics][] can indicate network problems:
 
 - `peers`
 - `server_state`
@@ -77,28 +88,23 @@ In this case, the necessary interventions may involve changes to other systems, 
 
 ### Replace Hardware
 
-If the outage is caused by a hardware failure or by higher load than the hardware is capable of handling, it may be necessary to replace some components or even the entire server.
+If the outage is caused by a hardware failure or by higher load than the hardware is capable of handling, you may need to replace some components or even the entire server.
 
 The amount of load on a server in the XRP Ledger depends in part on transaction volume in the network, which varies organically. Load also depends on your usage pattern. See [Capacity Planning](capacity-planning.html) for how to plan the appropriate hardware and settings for your situation.
 
-Warning or critical values for the following metrics may indicate insufficient hardware:
+Warning or critical values for the following [metrics][] may indicate insufficient hardware:
 
 - `load_factor`
 - `server_state`
 - `validated_ledger`
 
 
-### Upgrade
-
-If the server reports `"amendment_blocked": true` in the health check, this indicates that the XRP Ledger has enabled a [protocol amendment](amendments.html) that your server does not understand. As a precaution against misinterpreting the revised rules of the network in a way that causes you to lose money, such servers become "amendment blocked" instead of operating normally.
-
-The proper way to resolve being amendment blocked is to [update your server](install-rippled.html) to a newer software version that understands the amendment.
-
 
 
 
 
 <!--{# common link defs #}-->
+[metrics]: health-check.html#response-format
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
