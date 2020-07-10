@@ -214,6 +214,7 @@ There are four main steps involved in an exchange's typical flow of funds:
 
 4. [Trade XRP on the Exchange](#trade-xrp-on-the-exchange)
 
+![Flow of Funds](/img/Flow-of-Funds.png)
 
 This list does not include the [prerequisites](#prerequisites-for-supporting-xrp) required of an exchange.
 
