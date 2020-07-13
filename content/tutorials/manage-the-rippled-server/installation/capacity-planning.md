@@ -177,16 +177,18 @@ Memory requirements are mainly a function of the `node_size` configuration setti
 
 #### Network
 
-Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers.
+Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](ledger-history.html)) also affects network use.
+
+During exceptionally high periods of transaction volume, some operators have reported that their `rippled` servers have completely saturated a 100MBit/s network link. Therefore, a gigabit network interface is required for reliable performance.
 
 Here are examples of observed network bandwidth use for common `rippled` tasks:
 
 | Task                                            | Transmit/Receive           |
 |:------------------------------------------------|:---------------------------|
-| Process current transaction volumes             | 2Mbps transmit, 2 Mbps receive |
+| Process average transaction volumes             | 2Mbps transmit, 2 Mbps receive |
+| Process peak transaction volumes                | >100Mbps transmit          |
 | Serve historical ledger and transaction reports | 100Mbps transmit           |
 | Start up `rippled`                              | 20Mbps receive             |
-
 
 ## See Also
 
