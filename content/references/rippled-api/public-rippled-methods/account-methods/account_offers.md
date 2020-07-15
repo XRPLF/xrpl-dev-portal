@@ -152,6 +152,19 @@ An example of a successful response:
     }
 }
 ```
+*Commandline*
+
+```json
+{
+   "result" : {
+      "account" : "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "ledger_current_index" : 56843824,
+      "offers" : [],
+      "status" : "success",
+      "validated" : false
+   }
+}
+```
 
 <!-- MULTICODE_BLOCK_END -->
 
