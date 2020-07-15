@@ -557,6 +557,22 @@ An example of a successful response:
 }
 ```
 
+*Commandline*
+
+```json
+{
+   "result" : {
+      "account" : "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "ledger_index_max" : 56843937,
+      "ledger_index_min" : 56843321,
+      "limit" : 2,
+      "status" : "success",
+      "transactions" : [],
+      "validated" : true
+   }
+}
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format][], with a successful result containing the following fields:
