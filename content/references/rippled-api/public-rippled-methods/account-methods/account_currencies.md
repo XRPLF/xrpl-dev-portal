@@ -39,7 +39,7 @@ An example of the request format:
 
 ```sh
 #Syntax: account_currencies account [ledger_index|ledger_hash] [strict]
-rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated strict
+rippled account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated strict
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -138,20 +138,10 @@ An example of a successful response:
 ```json
 {
    "result" : {
-      "account_data" : {
-         "Account" : "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
-         "Balance" : "9986",
-         "Flags" : 1114112,
-         "LedgerEntryType" : "AccountRoot",
-         "OwnerCount" : 0,
-         "PreviousTxnID" : "0705FE3F52057924C288296EF0EBF668E0C1A3646FBA8FAF9B73DCC0A797B4B2",
-         "PreviousTxnLgrSeq" : 51948740,
-         "RegularKey" : "rhLkGGNZdjSpnHJw4XAFw1Jy7PD8TqxoET",
-         "Sequence" : 192220,
-         "index" : "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
-      },
-      "ledger_hash" : "A18990ECC3FC7C1DCFF4B3ED98B436EA87B63195FE08DA205650FD7DE8445303",
-      "ledger_index" : 56823150,
+      "ledger_hash" : "F43A801ED4562FA744A35755B86BE898D91C5643BF499924EA3C69491B8C28D1",
+      "ledger_index" : 56843649,
+      "receive_currencies" : [ "USD" ],
+      "send_currencies" : [ "NGN", "TRC" ],
       "status" : "success",
       "validated" : true
    }
