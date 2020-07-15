@@ -73,6 +73,18 @@ An example of a successful response:
 }
 ```
 
+*Commandline*
+
+```json
+{
+   "result" : {
+      "ledger_hash" : "6F5D3B97F1CAA8440AFCED3CA10FB9DC6472F64DEBC2EFAE7CAE7FC0123F32DA",
+      "ledger_index" : 56843991,
+      "status" : "success"
+   }
+}
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format][], with a successful result containing the following fields:
