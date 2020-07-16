@@ -40,6 +40,11 @@ An example of the request format:
 }
 ```
 
+*Commandline*
+```
+gateway_balances rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 The request includes the following parameters:
@@ -190,6 +195,58 @@ An example of a successful response:
         "status": "success",
         "validated": true
     }
+}
+```
+
+*Commandline*
+```json
+{
+   "result" : {
+      "account" : "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+      "assets" : {
+         "r9F6wk8HkXrgYWoJ7fsv4VrUBVoqDVtzkH" : [
+            {
+               "currency" : "BTC",
+               "value" : "5444166510000000e-26"
+            }
+         ],
+         "rPU6VbckqCLW4kb51CWqZdxvYyQrQVsnSj" : [
+            {
+               "currency" : "BTC",
+               "value" : "1029900000000000e-26"
+            }
+         ],
+         "rpR95n1iFkTqpoy1e878f4Z1pVHVtWKMNQ" : [
+            {
+               "currency" : "BTC",
+               "value" : "4000000000000000e-30"
+            }
+         ],
+         "rwmUaXsWtXU4Z843xSYwgt1is97bgY8yj6" : [
+            {
+               "currency" : "BTC",
+               "value" : "8700000000000000e-30"
+            }
+         ]
+      },
+      "frozen_balances" : {
+         "r4keXr5myiU4iTLh68ZqZ2CgsJ8dM9FSW6" : [
+            {
+               "currency" : "BTC",
+               "value" : "0.091207822800868"
+            }
+         ]
+      },
+      "ledger_current_index" : 56866688,
+      "obligations" : {
+         "BTC" : "1762.700511879441",
+         "EUR" : "958608.6233004864",
+         "GBP" : "4974.337212333351",
+         "USD" : "6746387.604424974"
+      },
+      "status" : "success",
+      "validated" : false
+   }
 }
 ```
 
