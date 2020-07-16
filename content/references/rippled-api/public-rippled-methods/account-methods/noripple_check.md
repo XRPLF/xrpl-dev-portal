@@ -3,6 +3,8 @@
 
 The `noripple_check` command provides a quick way to check the status of [the DefaultRipple field for an account and the NoRipple flag of its trust lines](rippling.html), compared with the recommended settings.
 
+**Note:** There is no commandline version of this method.
+
 ## Request Format
 An example of the request format:
 
