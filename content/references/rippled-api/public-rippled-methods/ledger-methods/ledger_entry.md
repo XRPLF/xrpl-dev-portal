@@ -3,8 +3,6 @@
 
 The `ledger_entry` method returns a single ledger object from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of objects you can retrieve.
 
-**Note:** There is no commandline version of this method. You can use the [json method][] to access this method from the commandline instead.
-
 ## Request Format
 
 An example of the request format:
@@ -36,6 +34,12 @@ An example of the request format:
         }
     ]
 }
+```
+
+*Commandline*
+
+```
+rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated", "type": "account_root" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -94,7 +98,8 @@ An example of a successful response:
 
 *WebSocket*
 
-```{
+```json
+{
     "id": 3,
     "result": {
         "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
@@ -118,7 +123,7 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
 {
     "result": {
@@ -138,6 +143,30 @@ An example of a successful response:
         "status": "success",
         "validated": true
     }
+}
+```
+
+*Commandline*
+```json
+{
+   "result" : {
+      "index" : "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
+      "ledger_hash" : "F434A8F21E401F84A2CDEDFDF801E6F3FC8B2567C6841818E684BEE019460179",
+      "ledger_index" : 56866309,
+      "node" : {
+         "Account" : "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+         "Balance" : "13315612685",
+         "Flags" : 0,
+         "LedgerEntryType" : "AccountRoot",
+         "OwnerCount" : 17,
+         "PreviousTxnID" : "D2FA1C28EF87E53029327AA832C378674B3ACA0551CF9EA1F65BB8CA34913FAB",
+         "PreviousTxnLgrSeq" : 55180009,
+         "Sequence" : 1406,
+         "index" : "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
+      },
+      "status" : "success",
+      "validated" : true
+   }
 }
 ```
 
