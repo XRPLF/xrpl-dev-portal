@@ -41,13 +41,13 @@ Each ledger version also contains a set of transactions and metadata about those
 
 _Figure 3: Transactions Applied to Ledger Version_
 
-The set of transactions included in a ledger instance are recorded in that ledger and allow auditability of the XRP Ledger history. If an account balance is different in ledger N+1 than it was in ledger N, then ledger N+1 contains the transaction(s) responsible for the change.
+The set of transactions included in a ledger instance are recorded in that ledger and allow audits of the XRP Ledger history. If an account balance is different in ledger N+1 than it was in ledger N, then ledger N+1 contains the transaction(s) responsible for the change.
 
-Transactions that appear in a validated ledger may have succeeded in changing the ledger, or may have been processed without doing the requested action. Successful transactions have the **tesSUCCESS** [result code](transaction-results.html) which indicates the requested changes are applied to the ledger. Failed transactions in the ledger have **tec** class result codes.<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a>
+Transactions that appear in a validated ledger may have succeeded in changing the ledger, or may have been processed without doing the requested action. Successful transactions have the **`tesSUCCESS`** [result code](transaction-results.html) which indicates the requested changes are applied to the ledger. Failed transactions in the ledger have **`tec`** class result codes.<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a>
 
-All transactions included in a ledger destroy some XRP as a [transaction cost](transaction-cost.html), regardless of whether they had a **tes** or **tec** code. The exact amount of XRP to destroy is defined by the signed transaction instructions.
+All transactions included in a ledger destroy some XRP as a [transaction cost](transaction-cost.html), regardless of whether they had a **`tes`** or **`tec`** code. The exact amount of XRP to destroy is defined by the signed transaction instructions.
 
-In addition to the **tes** and **tec** class result codes, there are **ter**, **tef** and **tem** class codes. The latter three indicate provisional failures returned by API calls. Only **tes** and **tec** codes appear in ledgers. Transactions that are not included in ledgers cannot have any effect on the ledger state (including XRP balances), but transitions that provisionally failed may still end up succeeding.
+In addition to the **`tes`** and **`tec`** class result codes, there are **`ter`**, **`tef`** and **`tem`** class codes. The latter three indicate provisional failures returned by API calls. Only **`tes`** and **`tec`** codes appear in ledgers. Transactions that are not included in ledgers cannot have any effect on the ledger state (including XRP balances), but transitions that provisionally failed may still end up succeeding.
 
 When working with [`rippled` APIs](rippled-api.html), applications must distinguish between candidate transactions proposed for inclusion in a ledger versus validated transactions which are included in a validated ledger. Only transaction results found in a validated ledger are immutable. A candidate transaction may or may not ever be included in a validated ledger.
 
@@ -201,7 +201,7 @@ Best practices for applications submitting transactions include:
 
 <a href="#from_footnote_9" id="footnote_9"><sup>9</sup></a> – In practice, the XRP Ledger runs more efficiently by starting a new round of consensus concurrently, before validation has completed.
 
-<a href="#from_footnote_10" id="footnote_10"><sup>10</sup></a> – A `rippled` server can respond to API requests even without a complete ledger history. Interruptions in service or network connectivity can lead to missing ledgers, or gaps, in the server’s ledger history. Over time, if configured to, `rippled` fills in gaps in its history. When testing for missing transactions, it is important to verify against a server with continuous complete ledgers from the time the transaction was submitted until its LastLedgerSequence. Use the RPC server_state to determine which complete_ledgers are available to a particular server.
+<a href="#from_footnote_10" id="footnote_10"><sup>10</sup></a> – A `rippled` server can respond to API requests even without a complete ledger history. Interruptions in service or network connectivity can lead to missing ledgers, or gaps, in the server’s ledger history. Over time, if configured to, `rippled` fills in gaps in its history. When testing for missing transactions, it is important to verify against a server with continuous complete ledgers from the time the transaction was submitted until its `LastLedgerSequence`. Use the [server_info method][] to determine which ledgers are available to a particular server.
 
 
 <!--{# common link defs #}-->

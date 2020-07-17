@@ -13,11 +13,11 @@ By default, cross-currency payments deliver a fixed amount to their destination 
 - There must be at least one [Path](paths.html) between the sender and receiver, and the total liquidity across all paths must be enough to facilitate the payment. Cross-currency payments convert from one currency to another by consuming [Offers](offers.html) in the XRP Ledger's decentralized exchange.
 
 
-## Autobridging
+## Auto-Bridging
 
 Cross-currency payments that exchange two issued currencies automatically use XRP, when it decreases the cost of the payment, by connecting order books to deepen the pool of available liquidity. For example, a payment sending from USD to MXN automatically converts USD to XRP and then XRP to MXN if doing so is cheaper than converting USD to MXN directly.
 
-For more information, see [Autobridging](autobridging.html).
+For more information, see [Auto-Bridging](autobridging.html).
 
 ## See Also
 

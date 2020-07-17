@@ -77,7 +77,7 @@ Response:
 
 - [Peer Protocol](peer-protocol.html)
 - [Configure the Peer Crawler](configure-the-peer-crawler.html)
-- The [XRPL Network Crawler](https://github.com/ripple/rippled-network-crawler) is an example of a tool that uses the peer crawler data to collect and store information about the XRP Ledger network.
+- The [XRP Ledger Network Crawler](https://github.com/ripple/rippled-network-crawler) is an example of a tool that uses the peer crawler data to collect and store information about the XRP Ledger network.
 
 
 <!--{# common link defs #}-->

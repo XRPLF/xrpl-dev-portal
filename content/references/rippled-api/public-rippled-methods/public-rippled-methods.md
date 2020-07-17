@@ -20,7 +20,7 @@ An account in the XRP Ledger represents a holder of XRP and a sender of transact
 
 ## [Ledger Methods](ledger-methods.html)
 
-A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info.
+A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trust lines, balances, transactions, and other data. Use these methods to retrieve ledger info.
 
 * **[`ledger`](ledger.html)** - Get info about a ledger version.
 * **[`ledger_closed`](ledger_closed.html)** - Get the latest closed ledger version.

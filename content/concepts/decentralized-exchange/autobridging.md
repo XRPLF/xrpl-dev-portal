@@ -8,7 +8,7 @@ Auto-bridging happens automatically on any [OfferCreate transaction][]. [Payment
 
 ## See Also
 
-- [Dev Blog: Introducing Autobridging](https://xrpl.org/blog/2014/introducing-offer-autobridging.html)
+- [Dev Blog: Introducing Autobridging](https://xrpl.org/blog/2014/introducing-offer-autobridging.html) <!-- SPELLING_IGNORE: autobridging -->
 
 - [Offer Preference](offers.html#offer-preference)
 

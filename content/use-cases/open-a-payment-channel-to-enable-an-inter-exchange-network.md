@@ -118,11 +118,11 @@ Consider a series of claims prompted by payer exchange customers withdrawing XRP
 
 **Public key**: `023D9BFCC22FB9A997E45ACA0D2D679A6A1AE5589E51546F3EDC4E9B16713FC255`
 
-| Sequence | Signature         | Amount | Destination Tag |
-|:---------|:------------------|:-------|:----------------|
-| 1        | 3045022100CE6E... | 2000   | 12345678        |
-| 2        | 304402200C304A... | 3000   | 23456781        |
-| 3        | 30450221009849... | 4000   | 34567812        |
+| Sequence | Signature           | Amount | Destination Tag |
+|:---------|:--------------------|:-------|:----------------|
+| 1        | `3045022100CE6E...` | 2000   | 12345678        |
+| 2        | `304402200C304A...` | 3000   | 23456781        |
+| 3        | `30450221009849...` | 4000   | 34567812        |
 
 | Claim Information   | Purpose                                                |
 |:--------------------|:-------------------------------------------------------|

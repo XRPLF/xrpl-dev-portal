@@ -106,6 +106,7 @@ As a test, you can temporarily change the paths to your server's databases as lo
         - [server_info method][]
         - [validator_list_sites method][]
 
+<!-- SPELLING_IGNORE: aws -->
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}

@@ -30,7 +30,7 @@ The response contains a key pair (a seed and a public key, in various formats) a
 
 **Seed**
 
-A _seed_ value is a compact value that is used to [derive](#key-derivation) the actual secret key (and public key) for an account. The `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to [sign transactions](transaction-basics.html#signing-and-submitting-transactions) in the [`rippled` APIs](rippled-api.html) and some [other XRPL software](software-ecosystem.html). Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
+A _seed_ value is a compact value that is used to [derive](#key-derivation) the actual secret key (and public key) for an account. The `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to [sign transactions](transaction-basics.html#signing-and-submitting-transactions) in the [`rippled` APIs](rippled-api.html) and some [other XRP Ledger software](software-ecosystem.html). Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
 
 Because the seed value is the basis for all the other information of an account, you must protect it very carefully. Anyone who has knows an address's seed value effectively has full control over that address.
 
@@ -178,7 +178,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     2. Calculate the [SHA-512Half][] of the concatenated (seed+root sequence) value.
 
-    3. If the result is not a valid secp265k1 secret key, increment the root sequence by 1 and start over. [[Source]](https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103 "Source")
+    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. [[Source]](https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103 "Source")
 
         A valid secp256k1 key must not be zero, and it must be numerically less than the _secp256k1 group order_. The secp256k1 group order is the constant value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
 
@@ -203,7 +203,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     2. Calculate the [SHA-512Half][] of the concatenated value.
 
-    3. If the result is not a valid secp265k1 secret key, increment the key sequence by 1 and restart deriving the account's intermediate key pair.
+    3. If the result is not a valid secp256k1 secret key, increment the key sequence by 1 and restart deriving the account's intermediate key pair.
 
     4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the intermediate public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
 

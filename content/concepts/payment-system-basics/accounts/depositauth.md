@@ -24,7 +24,7 @@ To receive money from [Payment transactions][] when you have Deposit Authorizati
 To get the full effect of Deposit Authorization, Ripple recommends also doing the following:
 
 - Always maintain an XRP balance higher than the minimum [reserve requirement](reserves.html).
-- Keep the DefaultRipple flag in its default (disabled) state. Do not enable [rippling](rippling.html) on any trust lines. When sending TrustSet transactions, always use the [`tfSetNoRipple` flag](trustset.html).
+- Keep the `DefaultRipple` flag in its default (disabled) state. Do not enable [rippling](rippling.html) on any trust lines. When sending [TrustSet transactions][], always use the [`tfSetNoRipple` flag](trustset.html).
 - Do not place [Offers](offercreate.html). It is impossible to know in advance which matching offers will be consumed to execute such a trade.
 
 ## Precise Semantics
@@ -63,7 +63,7 @@ An account can enable deposit authorization by sending an [AccountSet transactio
 
 To see whether an account has Deposit Authorization enabled, use the [account_info method][] to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](accountroot.html).
 
-If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (0x01000000) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.
+If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (`0x01000000`) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.
 
 ## Preauthorization
 

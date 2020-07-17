@@ -30,8 +30,8 @@ The response from `submit` contains the following fields:
 
 | Field                   | Value          | Description                       |
 |:------------------------|:---------------|:----------------------------------|
-| `engine_result`          | String         | A code that categorizes the result, such as `tecPATH_DRY` |
-| `engine_result_code`    | Signed Integer | A number that corresponds to the `engine_result`, although exact values are subject to change. |
+| `engine_result`         | String         | A code indicating the outcome of the transaction, such as `tecPATH_DRY`. |
+| `engine_result_code`    | Signed Integer | A number that corresponds to the `engine_result`. The exact values are subject to change without notice. |
 | `engine_result_message` | String         | A human-readable message explaining what happened. This message is intended for developers to diagnose problems, and is subject to change without notice. |
 
 If nothing went wrong when submitting and applying the transaction locally, the response looks like this:

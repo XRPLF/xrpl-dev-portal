@@ -25,7 +25,7 @@ They are the lists of transaction validators a given participant believes will n
 Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, Ripple provides a default and recommended list which we expand based on watching the history of validators operated by Ripple and third parties. Eventually, Ripple intends to remove itself from this process entirely by having network participants select their own lists based on publicly available data about validator quality.
 
 
-#### If Ripple recommends adoption of its UNL, doesn’t that create a centralized system?
+#### If Ripple recommends adoption of its UNL, doesn't that create a centralized system?
 
 No. The XRP Ledger network is opt-in. Each participant directly or indirectly chooses its UNL. Should Ripple stop operating or should Ripple act maliciously, participants could change their UNLs to continue using the XRP Ledger.
 
@@ -51,9 +51,9 @@ In the process of determining the final, authoritative version of the ledger, th
 However, there will only be one authoritative ledger version at any given time; other versions are irrelevant and harmless.
 
 
-#### Does the XRP Ledger utilize a formal validator onboarding process?
+#### Does the XRP Ledger have a formal process for adding validators?
 
-No, a formal validator onboarding process is not compatible with the XRP Ledger, as it is a system with no central authority.
+No, a formal process for adding validators is not compatible with the XRP Ledger, because it is a system with no central authority.
 
 For recommendations and best practices, see [Run `rippled` as a Validator](run-rippled-as-a-validator.html).
 
@@ -79,9 +79,9 @@ Ripple is committed to monitoring and reporting any AML flags across the XRP Led
 ## Security Concerns
 
 
-#### What is Ripple’s process for reviewing third-party code contributions before they go live in the master codebase?
+#### What is Ripple's process for reviewing third-party code contributions?
 
-The code contribution process starts with a developer opening a pull request against Ripple's `rippled` repo. This pull request triggers automated unit and integration tests, as well as code reviews by several developers who, typically, have significant expertise in the area of code that the pull request is changing.
+The code contribution process starts with a developer opening a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) to Ripple's `rippled` repo. This pull request triggers automated unit and integration tests, as well as code reviews by several developers who, typically, have significant expertise in the area of code that the pull request affects.
 
 Once the pull request passes automated tests and receives approvals from reviewers, a trusted [maintainer of the repo](https://opensource.guide/best-practices/) can stage it for inclusion in the next beta.
 
@@ -89,13 +89,13 @@ Once the pull request passes automated tests and receives approvals from reviewe
 
 No, Ripple does not own or control the XRP Ledger or XRP Ledger network.
 
-Ripple does publish a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/ripple/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple also periodically publishes precompiled binary packages of the software as a convenience. Anyone is free to [download and compile the software from source](install-rippled.html), if they prefer.  
+Ripple does publish a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/ripple/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple also periodically publishes pre-compiled binary packages of the software as a convenience. Anyone is free to [download and compile the software from source](install-rippled.html), if they prefer.  
 
 You don't need to use Ripple’s version of the XRP Ledger software to interact with the XRP Ledger. `rippled` is open-source software and Ripple grants anyone the ability to use, extend, and modify it as long as they follow the terms of the [ISC license](https://github.com/ripple/rippled/blob/develop/LICENSE). The ISC License is very permissive compared to some other open-source licenses that strictly limit how you can extend and adapt the software.
 
 #### Does Ripple offer a secure method to download their software?
 
-`rippled` source code is available at <https://github.com/ripple/rippled>, where the tip of the `master`, `release` and `develop` branches always contains a version-setting commit signed by a `rippled` developer. The XRP Ledger also offers prebuilt binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published.
+`rippled` source code is available at <https://github.com/ripple/rippled>, where the tip of the `master`, `release` and `develop` branches always contains a version-setting commit signed by a `rippled` developer. The XRP Ledger also offers pre-built binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published.
 
 
 #### Does Ripple distinguish between the codebase for validation and the one for user software?
@@ -107,6 +107,6 @@ Yes. Client software for the XRP Ledger, including ripple-lib, has a different c
 
 - [`rippled` codebase](https://github.com/ripple/rippled)
 - User software codebase:
-      - [ripple-lib](https://github.com/ripple/ripple-lib)
-      - [ripplecharts-frontend](https://github.com/ripple/ripplecharts-frontend)
+      - [`ripple-lib`](https://github.com/ripple/ripple-lib)
+      - [`ripplecharts-frontend`](https://github.com/ripple/ripplecharts-frontend)
 - [Ripple GitHub Organization](https://github.com/ripple/)

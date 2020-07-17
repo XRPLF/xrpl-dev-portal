@@ -70,6 +70,8 @@ targets:
         github_branch: master
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
+        readability_goals:
+            flesch_reading_ease: 50 # or higher
 
     -   name: ja
         lang: ja
@@ -5910,6 +5912,7 @@ pages:
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
+        skip_spell_checker: true
         filters:
             - xrpapi_readme
         targets:
@@ -5924,6 +5927,7 @@ pages:
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
+        skip_spell_checker: true
         targets:
             - en
             - ja
@@ -5939,6 +5943,7 @@ pages:
         doc_type: References
         category: RippleAPI for JavaScript
         blurb: Official client library to the XRP Ledger. Available for JavaScript only.
+        skip_spell_checker: true
         # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
         curated_anchors:
             - name: Transactions
@@ -6312,3 +6317,4 @@ known_broken_links:
 
 word_substitutions_file: tool/word_substitutions.yaml
 phrase_substitutions_file: tool/phrase_substitutions.yaml
+spelling_file: tool/spelling.txt

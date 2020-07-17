@@ -8,7 +8,7 @@ There are two circumstances that could lead to transaction malleability:
 
 1. The transaction does not specify the tfFullyCanonicalSig flag on a transaction signed using the default signing algorithm (ECDSA with the secp256k1 curve).
 
-    **Use the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags)** to guarantee that a transaction is not malleable in this way. Although transactions [signed with Ed25519 keys](cryptographic-keys.html#signing-algorithms) are not vulnerable to this problem, **there is no downside** to using this flag on _all_ transactions.
+    **Use the [`tfFullyCanonicalSig` flag](transaction-common-fields.html#global-flags)** to guarantee that a transaction is not malleable in this way. Although transactions [signed with Ed25519 keys](cryptographic-keys.html#signing-algorithms) are not vulnerable to this problem, **there is no downside** to using this flag on _all_ transactions.
 
     If the [RequireFullyCanonicalSig amendment][] :not_enabled: is enabled, all transactions are protected against malleability regardless of the tfFullyCanonicalSig flag.
 
