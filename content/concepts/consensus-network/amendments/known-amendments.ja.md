@@ -3,15 +3,17 @@
 
 以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
+**ヒント:** このリストは手動に更新されています。生ステータスを[XRPScan Amendment Dashboard](https://xrpscan.com/amendments)にご覧下さい。
+
 | 名前                            | 導入済み | ステータス                              |
 |:--------------------------------|:-----------|:------------------------------------|
-| [fixAmendmentMajorityCalc][]    | v1.6.0-b8  | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [NegativeUNL][]                 | v1.6.0-b8  | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [HardenedValidations][]         | v1.6.0-b5  | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [fix1781][]                     | v1.6.0-b1  | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [NegativeUNL][]                 | 未定  | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fixAmendmentMajorityCalc][]    | v1.6.0-b8  | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [HardenedValidations][]         | v1.6.0-b5  | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fix1781][]                     | v1.6.0-b1  | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [FlowCross][]                   | v0.70.0    | [投票中: 未定](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
 | [fixQualityUpperBound][]        | v1.5.0     | [有効: 2020/07/09](https://xrpcharts.ripple.com/#/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
 | [RequireFullyCanonicalSig][]    | v1.5.0     | [有効: 2020/07/03](https://xrpcharts.ripple.com/#/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |

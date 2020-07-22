@@ -3,15 +3,17 @@
 
 The following is a comprehensive list of all known amendments and their status on the production XRP Ledger:
 
+**Tip:** This list is updated manually. For a live view of amendment voting, see the [XRPScan Amendments Dashboard](https://xrpscan.com/amendments).
+
 | Name                            | Introduced | Status                        |
 |:--------------------------------|:-----------|:------------------------------|
-| [fixAmendmentMajorityCalc][]    | v1.6.0-b8  | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [NegativeUNL][]                 | v1.6.0-b8  | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [HardenedValidations][]         | v1.6.0-b5  | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fix1781][]                     | v1.6.0-b1  | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [NegativeUNL][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fixAmendmentMajorityCalc][]    | v1.6.0-b8  | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [HardenedValidations][]         | v1.6.0-b5  | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fix1781][]                     | v1.6.0-b1  | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
 | [fixQualityUpperBound][]        | v1.5.0     | [Enabled: 2020-07-09](https://xrpcharts.ripple.com/#/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
 | [RequireFullyCanonicalSig][]    | v1.5.0     | [Enabled: 2020-07-03](https://xrpcharts.ripple.com/#/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
