@@ -69,7 +69,7 @@ The No Freeze setting has two effects:
 * The issuing address can no longer enable Individual Freeze on trust lines to any counterparty.
 * The issuing address can still enable Global Freeze to enact a global freeze, but the address cannot _disable_ Global Freeze.
 
-The XRP Ledger cannot force an issuer to honor the obligations that its issued funds represent, so No Freeze does not protect customers from an issuer defaulting on its obligations. However, No Freeze ensures that the Global Freeze feature is not used unfairly against some customers.
+The XRP Ledger cannot force an issuer to honor the obligations that its issued funds represent, so No Freeze does stop an issuer from defaulting on its obligations. However, No Freeze ensures that an issuer does not use the Global Freeze feature unfairly against specific users.
 
 The No Freeze setting applies to all currencies issued to and from an address. If you want to be able to freeze some currencies but not others, you should use different addresses for each currency.
 
