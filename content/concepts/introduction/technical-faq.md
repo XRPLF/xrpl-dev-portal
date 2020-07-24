@@ -22,7 +22,7 @@ They are the lists of transaction validators a given participant believes will n
 
 #### Which UNL should I select?
 
-Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, Ripple provides a default and recommended list which we expand based on watching the history of validators operated by Ripple and third parties. Eventually, Ripple intends to remove itself from this process entirely by having network participants select their own lists based on publicly available data about validator quality.
+Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, Ripple provides a default and recommended list which we expand based on watching the history of validators run by Ripple and third parties. Eventually, Ripple intends to remove itself from this process entirely by having network participants select their own lists based on publicly available data about validator quality.
 
 
 #### If Ripple recommends adoption of its UNL, doesn't that create a centralized system?
@@ -34,12 +34,12 @@ No. The XRP Ledger network is opt-in. Each participant directly or indirectly ch
 
 The primary incentive to run a validator is to preserve and protect the stable operation and sensible evolution of the network. It is the validators who decide the evolution of the XRP Ledger, so any business that uses or depends on the XRP Ledger has an inherent incentive to ensure the reliability and stability of the network.
 
-If you run an XRP Ledger server to participate in the network, the additional cost and effort to operate a validator is minimal. This means that additional incentives, such as the mining rewards in Bitcoin, are not necessary. Ripple avoids paying XRP as a reward for operating a validator so that such incentives do not warp the behavior of validators.
+If you run an XRP Ledger server to participate in the network, the additional cost and effort to run a validator is minimal. This means that additional incentives, such as the mining rewards in Bitcoin, are not necessary. Ripple avoids paying XRP as a reward for operating a validator so that such incentives do not warp the behavior of validators.
 
 
 #### Can financial institutions set up transaction validators that will help them meet specific institutional standards and requirements?
 
-No, institutions cannot set up customized validator policies for transaction selection. Validators either follow the protocol, or they do not. If software does not follow protocol rules, it will not function. Thus, it is not recommended that institutions seek out custom implementations without in-house expertise.
+No, institutions cannot set up customized validator policies for choosing to allow some transactions and reject others. Validators either follow the protocol, or they do not. If software does not follow protocol rules, it will not function. Thus, it is not recommended that institutions seek out custom implementations without in-house expertise.
 
 
 #### What will happen if more than 20% of nodes within the network do not agree with the majority? How is the final version of the ledger chosen?
@@ -63,7 +63,7 @@ For recommendations and best practices, see [Run `rippled` as a Validator](run-r
 
 #### Why does Ripple use XRP holdings?
 
-Ripple's XRP holdings incentivize the company to make the XRP Ledger as useful as possible. XRP exists as a native asset in the XRP Ledger for anti-spam transaction purposes, and for currency bridging only if beneficial to users. Otherwise, the use of XRP in transactions is completely optional.
+Ripple's XRP holdings incentivize the company to make the XRP Ledger as useful as possible. XRP exists as a native asset in the XRP Ledger for anti-spam transaction purposes, and for currency bridging only if beneficial to users. Otherwise, XRP is completely optional.
 
 
 #### How does the XRP Ledger respond to transaction floods?
@@ -95,7 +95,7 @@ You don't need to use Ripple’s version of the XRP Ledger software to interact 
 
 #### Does Ripple offer a secure method to download their software?
 
-`rippled` source code is available at <https://github.com/ripple/rippled>, where the tip of the `master`, `release` and `develop` branches always contains a version-setting commit signed by a `rippled` developer. The XRP Ledger also offers pre-built binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published.
+`rippled` source code is available at <https://github.com/ripple/rippled>, where the tip of the `master`, `release` and `develop` branches always contains a version-setting commit signed by a `rippled` developer. The XRP Ledger also offers pre-built binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published. <!-- STYLE_OVERRIDE: evident -->
 
 
 #### Does Ripple distinguish between the codebase for validation and the one for user software?

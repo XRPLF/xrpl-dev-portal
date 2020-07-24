@@ -3359,7 +3359,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
-        blurb: Get recommended changes to an account's DefaultRipple and NoRipple settings.
+        blurb: Get recommended changes to an account's Default Ripple and No Ripple settings.
         targets:
             - en
 

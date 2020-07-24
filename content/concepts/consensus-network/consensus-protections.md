@@ -1,6 +1,6 @@
 # Consensus Protections Against Attacks and Failure Modes
 
-The XRP Ledger Consensus Protocol is a _byzantine fault tolerant_ consensus mechanism, which means it's designed to operate even if all kinds of things can go wrong: participants depend on an unreliable open network to communicate, and malicious actors may be attempting to control or interrupt the system at any given time. On top of that, the set of participants in the XRP Ledger Consensus Protocol isn't known in advance and can change over time.
+The XRP Ledger Consensus Protocol is a _byzantine fault tolerant_ consensus mechanism, which means it's designed to work even if all kinds of things can go wrong: participants depend on an unreliable open network to communicate, and malicious actors may be attempting to control or interrupt the system at any given time. On top of that, the set of participants in the XRP Ledger Consensus Protocol isn't known in advance and can change over time.
 
 Confirming transactions in a timely manner while maintaining [the desired properties of the network](intro-to-consensus.html#consensus-protocol-properties) is a complex challenge, and it's impossible to build a perfect system. The XRP Ledger Consensus Protocol is designed to work as well as it can in most situations, and to fail as gracefully as possible in the situations where it can't.
 
@@ -25,7 +25,7 @@ The only way to confirm an invalid transaction would be to get at least 80% of t
 
 ## Software Vulnerabilities
 
-As with any software system, bugs (or intentionally malicious code) in the implementation of the XRP Ledger Consensus Protocol, commonly deployed software packages, or their dependencies, are a problem to be taken seriously. Even bugs that simply cause a server to crash when it sees carefully crafted inputs can be abused to disrupt the progress of the network. Ripple has a number of precautions in place to address this threat, including:
+As with any software system, bugs (or intentionally malicious code) in the implementation of the XRP Ledger Consensus Protocol, commonly deployed software packages, or their dependencies, are a problem to be taken seriously. Even bugs that cause a server to crash when it sees carefully crafted inputs can be abused to disrupt the progress of the network. Ripple has a number of precautions in place to address this threat, including:
 
 - An [open-source code base](https://github.com/ripple/rippled/), so any member of the public can review, compile, and independently test the relevant software.
 - A thorough and robust code review process for all changes to the official XRP Ledger repositories.

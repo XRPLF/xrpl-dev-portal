@@ -1,6 +1,6 @@
 # Open a Payment Channel to Enable an Inter-Exchange Network
 
-A payment channel enables you to send one-way, "asynchronous" XRP payments that can be divided into very small increments and settled later. As a digital asset exchange, if you frequently send XRP to another exchange, you can improve the efficiency of these payments by opening an XRP Ledger [payment channel](payment-channels.html) between your exchange (the _payer_ exchange) and the other exchange (the _payee_ exchange). In the case of a two-way flow with another exchange, you can simply open two payment channels (one for each direction).
+A payment channel enables you to send one-way, "asynchronous" XRP payments that can be divided into very small increments and settled later. As a digital asset exchange, if you send many payments of XRP to another exchange, you can improve the efficiency of these payments by opening an XRP Ledger [payment channel](payment-channels.html) between your exchange (the _payer_ exchange) and the other exchange (the _payee_ exchange). In the case of a two-way flow with another exchange, you can open two payment channels (one for each direction).
 
 
 
@@ -20,7 +20,7 @@ Here are some of the benefits of using a payment channel to send XRP instead of 
 
 - **Connect to the Internet of Value:** One of the key requirements of the [Internet of Value](https://ripple.com/insights/the-internet-of-value-what-it-means-and-how-it-benefits-everyone/) is interoperability. The [Interledger Protocol](https://interledger.org/) (ILP), which plays a large role in driving this interoperability, works best when it [uses payment channels](https://interledger.org/rfcs/0027-interledger-protocol-4) as its method for rebalancing accounts. In effect, when you open a payment channel from your exchange to another, you are connecting to the Internet of Value and helping to create the inter-exchange network that is fundamental to the success of the Internet of Value and the apps that are built on it.
 
-      Connecting your exchange to other exchanges by way of payment channels is another differentiator. For customers who are moving XRP to purchase various currencies across exchanges, knowing that they can move XRP at a moment's notice from your exchange to any number of exchanges in the Internet of Value can make your exchange a preferred place to custody their assets.
+      Connecting your exchange to other exchanges by way of payment channels is another differentiator. For customers who are moving XRP to buy various currencies across exchanges, knowing that they can move XRP at a moment's notice from your exchange to any number of exchanges in the Internet of Value can make your exchange a preferred place to custody their assets.
 
 Here’s a roadmap to the high-level tasks you’ll need to perform to implement this payment channel use case. To go directly to a full payment channels tutorial, see [Use Payment Channels](use-payment-channels.html).
 
@@ -51,7 +51,7 @@ If not, a great way for an exchange to get access to a `rippled` server is to se
 <span class="use-case-step-num">{{n.next()}}</span>
 ## Payer and payee: Fund XRP Ledger accounts with enough XRP
 
-If your exchange processes XRP deposits and withdrawals directly, you probably have existing funded XRP Ledger accounts that you can use for this purpose. Just ensure that they are funded with enough XRP as described here.
+If your exchange processes XRP deposits and withdrawals directly, you probably have existing funded XRP Ledger accounts that you can use for this purpose. Ensure that they are funded with enough XRP as described here.
 
 Along these lines, there's a good chance that you are following industry best practices and have a cold account plus one or more hot accounts. Use the hot accounts for your payment channels.
 

@@ -49,7 +49,7 @@ This is a [PaymentChannelCreate transaction][]. As part of this process, the pay
 
 **Tip:** The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.
 
-The following example shows creation of a payment channel by [submitting](submit.html#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (rN7n7...) to the [example payee](#example-values) (rf1Bi...) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal. <!-- SPELLING_IGNORE: rN7n7, rf1Bi -->
+The following example shows creation of a payment channel by [submitting](submit.html#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (`rN7n7...`) to the [example payee](#example-values) (`rf1Bi...`) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
 
 **Note:** A payment channel counts as one object toward the payer's [owner reserve](reserves.html#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
 

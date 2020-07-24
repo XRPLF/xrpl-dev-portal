@@ -63,7 +63,7 @@ AccountRoot objects can have the following flag values:
 | `lsfGlobalFreeze`   | `0x00400000` | 4194304       | `asfGlobalFreeze`  | All assets issued by this address are frozen. |
 | `lsfNoFreeze`       | `0x00200000` | 2097152       | `asfNoFreeze`      | This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. |
 | `lsfPasswordSpent`  | `0x00010000` | 65536         | (None)             | The account has used its free SetRegularKey transaction. |
-| `lsfRequireAuth`    | `0x00040000` | 262144        | `asfRequireAuth`   | This account must individually approve other users for those users to hold this account's issuances. |
+| `lsfRequireAuth`    | `0x00040000` | 262144        | `asfRequireAuth`   | This account must individually approve other users for those users to hold this account's issued currencies. |
 | `lsfRequireDestTag` | `0x00020000` | 131072        | `asfRequireDest`   | Requires incoming payments to specify a Destination Tag. |
 
 ## AccountRoot ID Format

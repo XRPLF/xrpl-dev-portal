@@ -25,7 +25,7 @@ To enable gRPC on your server, complete the following steps:
     The configurable fields are as follows:
 
     - `port` field defines the port the server listens on for gRPC connections from client applications. The recommended port is `50051`.
-    - `ip` defines which interfaces the server listens on. The value `0.0.0.0` listens on all available network interfaces. To limit connections to just the local loopback network (same machine), use `127.0.0.1` instead.
+    - `ip` defines which interfaces the server listens on. The value `0.0.0.0` listens on all available network interfaces. To limit connections to the local loopback network (same machine), use `127.0.0.1` instead.
 
     {% include '_snippets/conf-file-location.md' %}<!--_ -->
 

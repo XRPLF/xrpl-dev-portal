@@ -48,7 +48,7 @@ The limit values of trust lines (See [TrustSet](trustset.html)) do not affect of
 
 However, holding non-XRP balances still requires a trust line to the address issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](reserves.html), any offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.
 
-A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers are explicit instructions to acquire certain issuances, so they are allowed to go beyond those limits.
+A trust line indicates an issuer you trust enough to accept their issued currencies as payment, within limits. Offers are explicit instructions to acquire certain issued currencies, so they are allowed to go beyond those limits.
 
 
 ## Offer Preference

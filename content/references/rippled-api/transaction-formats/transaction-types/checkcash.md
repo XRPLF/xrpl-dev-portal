@@ -35,7 +35,7 @@ The transaction ***must*** include either `Amount` or `DeliverMin`, but not both
 - If the sender of the CheckCash transaction is not the `Destination` of the check, the transaction fails with the result code `tecNO_PERMISSION`.
 - If the Check identified by the `CheckID` field does not exist, the transaction fails with the result `tecNO_ENTRY`.
 - If the Check identified by the `CheckID` field has already expired, the transaction fails with the result `tecEXPIRED`.
-- If the destination of the Check has the RequireDest flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.
+- If the destination of the Check has the `RequireDest` flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.
 - If the transaction specifies both `Amount` and `DeliverMin`, or omits both, the transaction fails with the result `temMALFORMED`.
 - If the `Amount` or `DeliverMin` does not match the currency (and issuer, if not XRP) of the Check, the transaction fails with the result `temBAD_CURRENCY`.
 

@@ -6,9 +6,9 @@ Sending a Check is like writing permission for an intended recipient to pull a p
 
 In many cases, you want to send a [Payment][] instead of a Check, since that delivers the money directly to the recipient in one step. However, if your intended recipient uses [DepositAuth](depositauth.html), you cannot send them Payments directly, so a Check is a good alternative.
 
-This tutorial uses the example of a fictitious company, BoxSend SG (whose XRP Ledger address is rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za) paying a fictitious cryptocurrency consulting company named Grand Payments (with XRP Ledger address rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis) for some consulting work. Grand Payments prefers be paid in XRP, but to simplify their taxes and regulation, only accepts payments they've explicitly approved.
+This tutorial uses the example of a fictitious company, BoxSend SG (whose XRP Ledger address is `rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za`) paying a fictitious cryptocurrency consulting company named Grand Payments (with XRP Ledger address `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`) for some consulting work. Grand Payments prefers be paid in XRP, but to simplify their taxes and regulation, only accepts payments they've explicitly approved.
 
-Outside of the XRP Ledger, Grand Payments sends an invoice to BoxSend SG with the ID `46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291`, and requests a Check for 100 XRP be sent to Grand Payments' XRP Ledger address of rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis.
+Outside of the XRP Ledger, Grand Payments sends an invoice to BoxSend SG with the ID `46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291`, and requests a Check for 100 XRP be sent to Grand Payments' XRP Ledger address of `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`. <!-- SPELLING_IGNORE: boxsend -->
 
 {% set send_n = cycler(* range(1,99)) %}
 
@@ -40,7 +40,7 @@ If you are using [RippleAPI](rippleapi-reference.html), you can use the `prepare
 
 ### Example CheckCreate Preparation
 
-The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za) to Grand Payments (rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis) for 100 XRP. As additional (optional) metadata, BoxSend SG adds the ID of the invoice from Grand Payments so Grand Payments knows which invoice this Check is intended to pay.
+The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za`) to Grand Payments (`rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`) for 100 XRP. As additional (optional) metadata, BoxSend SG adds the ID of the invoice from Grand Payments so Grand Payments knows which invoice this Check is intended to pay.
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -52,7 +52,7 @@ The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvW
 
 *JSON-RPC, WebSocket, or Commandline*
 
-```
+```json
 {
   "TransactionType": "CheckCreate",
   "Account": "rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
@@ -183,7 +183,7 @@ Use the [tx method][] with the CheckCreate transaction's identifying hash to che
 
 Look for a `CreatedNode` object in the transaction metadata with a `LedgerEntryType` of `"Check"`. This indicates that the transaction created a [Check ledger object](check.html). The `LedgerIndex` of this object is the ID of the Check. In the following example, the Check's ID is `84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9`.
 
-**Note:** RippleAPI does not report the Check's ID when you look up a CheckCreate transaction. You can work around this by calculating the Check's ID from the [Check ID format](check.html#check-id-format), as in the example RippleAPI code below, or you can use the [getAccountObjects() method](rippleapi-reference.html#getaccountobjects) to look up the Check and find its ID.
+**Note:** RippleAPI does not report the Check's ID when you look up a CheckCreate transaction. You can work around this by calculating the Check's ID from the [Check ID format](check.html#check-id-format), as in the example RippleAPI code below, or you can use the [`getAccountObjects()` method](rippleapi-reference.html#getaccountobjects) to look up the Check and find its ID.
 
 ### Example Request
 

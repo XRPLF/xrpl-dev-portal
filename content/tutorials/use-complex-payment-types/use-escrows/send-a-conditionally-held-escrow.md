@@ -5,7 +5,7 @@
 XRP Ledger escrows require PREIMAGE-SHA-256 [crypto-conditions][]. To calculate a condition and fulfillment in the proper format, you should use a crypto-conditions library such as [five-bells-condition](https://github.com/interledgerjs/five-bells-condition). To generate the fulfillment:
 
 - Use a cryptographically secure source of randomness to generate at least 32 random bytes.
-- Follow Interledger Protocol's [PSK specification](https://github.com/interledger/rfcs/blob/master/deprecated/0016-pre-shared-key/0016-pre-shared-key.md) and use an HMAC-SHA-256 of the ILP packet as the fulfillment. <!-- SPELLING_IGNORE: PSK -->
+- Follow Interledger Protocol's [PSK specification](https://github.com/interledger/rfcs/blob/master/deprecated/0016-pre-shared-key/0016-pre-shared-key.md) and use an HMAC-SHA-256 of the ILP packet as the fulfillment. <!-- SPELLING_IGNORE: psk -->
 
 Example JavaScript code for a random fulfillment and condition:
 

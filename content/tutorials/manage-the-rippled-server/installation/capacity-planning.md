@@ -47,7 +47,7 @@ You can set the value to either `RocksDB` or `NuDB`.
 
 - For most cases, use `NuDB` because its performance is constant even with large amounts of data on disk. A fast SSD is required. [Learn more](#more-about-using-nudb)
 
-- If you are using rotational disks (not recommended) or even just a slow SSD, use `RocksDB`. [Learn more](#more-about-using-rocksdb)
+- If you are using rotational disks (not recommended) or an unusually slow SSD, use `RocksDB`. [Learn more](#more-about-using-rocksdb)
 
 The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza set to `RocksDB`.
 
@@ -121,7 +121,7 @@ For best performance in enterprise production environments, Ripple recommends ru
 - CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
 - Disk speed: SSD (7000+ writes/second, 10,000+ reads/second)
 - Disk space: Varies. At least 50 GB recommended.
-- RAM: 32GB
+- RAM: 32 GB
 - Network: Enterprise data center network with a gigabit network interface on the host
 
 #### CPU Utilization and Virtualization

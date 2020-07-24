@@ -65,7 +65,7 @@ Use this command with no parameter to query the existing `can_delete` setting.
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 - `lgrNotFound` - The ledger specified by the `can_delete` field of the request does not exist, or it does exist but the server does not have it.
 - `notEnabled` - If either online deletion or advisory deletion are not enabled in the server's configuration.
-- `notReady` - The server is not ready to run online deletion at the moment. This usually means the server has just started up and has not yet acquired a validated ledger.
+- `notReady` - The server is not ready to run online deletion at the moment. This usually means the server has recently started up and has not yet acquired a validated ledger.
 
 ## See Also
 

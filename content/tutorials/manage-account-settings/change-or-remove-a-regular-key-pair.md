@@ -1,6 +1,6 @@
 # Change or Remove a Regular Key Pair
 
-The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](cryptographic-keys.html)_, to sign future transactions.  If your [account](accounts.html)'s regular key pair is compromised, or if you just want to periodically change the regular key pair as a security measure, use a [SetRegularKey transaction][] to remove or change the regular key pair for your account.
+The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](cryptographic-keys.html)_, to sign future transactions.  If your [account](accounts.html)'s regular key pair is compromised, or if you want to periodically change the regular key pair as a security measure, use a [SetRegularKey transaction][] to remove or change the regular key pair for your account.
 
 For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
 
@@ -14,7 +14,7 @@ For more information about master and regular key pairs, see [Cryptographic Keys
 
 ## Removing a Regular Key Pair
 
-If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](multi-signing.html)).
+If you want to remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](multi-signing.html)).
 
 
 When removing a regular key pair to your account, the `SetRegularKey` transaction requires signing by your account's master private key (secret) or existing regular key pair. Transmitting your master or regular private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.
@@ -353,7 +353,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](transaction-cost.html#key-reset-transaction) without paying the [transaction cost](transaction-cost.html). With the enablement of the FeeEscalation amendment, `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
+In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](transaction-cost.html#key-reset-transaction) without paying the [transaction cost](transaction-cost.html). The XRP Ledger's [transaction queue](transaction-queue.html) prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
 
 - **Concepts:**

@@ -7,7 +7,7 @@ The `RippleState` object type connects two accounts in a single currency. Concep
 
 There can only be one `RippleState` object per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a `RippleState` object sorts account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when [decoded](accounts.html#address-encoding) is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.
 
-The ["issuer"](trust-lines-and-issuing.html) for the balance in a trust line depends on whether the balance is positive or negative. If a `RippleState` object shows a positive balance, the high account is the issuer. If the balance is negative, the low account is the issuer. Frequently, the issuer has its limit set to 0 and the other account has a positive limit, but this is not reliable because limits can change without affecting an existing balance.
+The ["issuer"](trust-lines-and-issuing.html) for the balance in a trust line depends on whether the balance is positive or negative. If a `RippleState` object shows a positive balance, the high account is the issuer. If the balance is negative, the low account is the issuer. Often, the issuer has its limit set to 0 and the other account has a positive limit, but this is not reliable because limits can change without affecting an existing balance.
 
 
 ## Example {{currentpage.name}} JSON
@@ -88,16 +88,16 @@ The values that count towards a trust line's non-default state are as follows:
 | `HighLimit` is not `0` | `LowLimit` is not `0`  |
 | `LowQualityIn` is not `0` and not `1000000000` | `HighQualityIn` is not `0` and not `1000000000` |
 | `LowQualityOut` is not `0` and not `1000000000` | `HighQualityOut` is not `0` and not `1000000000` |
-| **lsfHighNoRipple** flag is not in its default state | **lsfLowNoRipple** flag is not in its default state |
-| **lsfHighFreeze** flag is enabled | **lsfLowFreeze** flag is enabled |
+| `lsfHighNoRipple` flag is not in its default state | `lsfLowNoRipple` flag is not in its default state |
+| `lsfHighFreeze` flag is enabled | `lsfLowFreeze` flag is enabled |
 
-The **lsfLowAuth** and **lsfHighAuth** flags do not count against the default state, because they cannot be disabled.
+The **`lsfLowAuth`** and **`lsfHighAuth`** flags do not count against the default state, because they cannot be disabled.
 
-The default state of the two NoRipple flags depends on the state of the [lsfDefaultRipple flag](accountroot.html#accountroot-flags) in their corresponding AccountRoot objects. If `DefaultRipple` is disabled (the default), then the default state of the `lsfNoRipple` flag is _enabled_ for all of an account's trust lines. If an account enables `DefaultRipple`, then the `lsfNoRipple` flag is _disabled_ (rippling is enabled) for an account's trust lines by default.
+The default state of the two No Ripple flags depends on the state of the [`lsfDefaultRipple` flag](accountroot.html#accountroot-flags) in their corresponding AccountRoot objects. If Default Ripple is disabled (the default), then the default state of the `lsfNoRipple` flag is _enabled_ for all of an account's trust lines. If an account enables Default Ripple, then the `lsfNoRipple` flag is _disabled_ (rippling is enabled) for an account's trust lines by default.
 
-**Note:** Prior to the introduction of the `DefaultRipple` flags in `rippled` version 0.27.3 (March 10, 2015), the default state for all trust lines was with both No Ripple flags disabled (rippling enabled).
+**Note:** Prior to the introduction of the Default Ripple flag in `rippled` version 0.27.3 (March 10, 2015), the default state for all trust lines was with both No Ripple flags disabled (rippling enabled).
 
-Fortunately, `rippled` uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the `DefaultRipple` flag, that account's reserve stays the same initially. If an account modifies a trust line, `rippled` re-evaluates whether that individual trust line is in its default state and should contribute to the owner reserve.
+Fortunately, `rippled` uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the Default Ripple flag, that account's reserve stays the same initially. If an account modifies a trust line, `rippled` re-evaluates whether that individual trust line is in its default state and should contribute to the owner reserve.
 
 ## RippleState ID Format
 

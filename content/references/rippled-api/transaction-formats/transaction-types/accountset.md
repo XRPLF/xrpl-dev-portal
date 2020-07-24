@@ -63,7 +63,7 @@ The available AccountSet flags are:
 
 | Flag Name          | Decimal Value | Corresponding Ledger Flag | Description   |
 |:-------------------|:--------------|:--------------------------|:--------------|
-| `asfAccountTxnID`  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [AccountTxnID](transaction-common-fields.html#accounttxnid) |
+| `asfAccountTxnID`  | 5             | (None)                    | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](transaction-common-fields.html#accounttxnid) |
 | `asfDefaultRipple` | 8             | `lsfDefaultRipple`        | Enable [rippling](rippling.html) on this account's trust lines by default. [New in: rippled 0.27.3][] |
 | `asfDepositAuth`   | 9             | `lsfDepositAuth`          | Enable [Deposit Authorization](depositauth.html) on this account. _(Added by the [DepositAuth amendment][].)_ |
 | `asfDisableMaster` | 4             | `lsfDisableMaster`        | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](cryptographic-keys.html) or a [Signer List](multi-signing.html). |

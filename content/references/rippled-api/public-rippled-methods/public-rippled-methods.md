@@ -15,7 +15,7 @@ An account in the XRP Ledger represents a holder of XRP and a sender of transact
 * **[`account_offers`](account_offers.html)** - Get info about an account's currency exchange offers.
 * **[`account_tx`](account_tx.html)** - Get info about an account's transactions.
 * **[`gateway_balances`](gateway_balances.html)** - Calculate total amounts issued by an account.
-* **[`noripple_check`](noripple_check.html)** - Get recommended changes to an account's `DefaultRipple` and No Ripple settings.
+* **[`noripple_check`](noripple_check.html)** - Get recommended changes to an account's Default Ripple and No Ripple settings.
 
 
 ## [Ledger Methods](ledger-methods.html)

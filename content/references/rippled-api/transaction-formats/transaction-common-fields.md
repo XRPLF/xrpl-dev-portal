@@ -70,7 +70,7 @@ The only flag that applies globally to all transactions is as follows:
 
 When using the [sign method][] (or [submit method][] in "sign-and-submit" mode), `rippled` adds a `Flags` field with `tfFullyCanonicalSig` enabled unless the `Flags` field is already present. The `tfFullyCanonicalSig` flag ***is not*** automatically enabled if `Flags` is explicitly specified. The flag ***is not*** automatically enabled when using the [sign_for method][] to add a signature to a multi-signed transaction.
 
-**Warning:** If you do not enable `tfFullyCanonicalSig`, it is theoretically possible for a malicious actor to modify your transaction signature so that the transaction may succeed with a different hash than expected. In the worst case, this could [trick your integration into submitting the same payment multiple times](transaction-malleability.html#exploit-with-malleable-transactions). To avoid this problem, enable the `tfFullyCanonicalSig` flag on all transactions you sign. If the [RequireFullyCanonicalSig amendment][] :not_enabled: is enabled, all single-signed transactions are protected regardless of the tfFullyCanonicalSig flag.
+**Warning:** If you do not enable `tfFullyCanonicalSig`, it is theoretically possible for a malicious actor to modify your transaction signature so that the transaction may succeed with a different hash than expected. In the worst case, this could [trick your integration into submitting the same payment multiple times](transaction-malleability.html#exploit-with-malleable-transactions). To avoid this problem, enable the `tfFullyCanonicalSig` flag on all transactions you sign. If the [RequireFullyCanonicalSig amendment][] :not_enabled: is enabled, all single-signed transactions are protected regardless of the `tfFullyCanonicalSig` flag.
 
 ### Flag Ranges
 
@@ -95,7 +95,7 @@ The `Memos` field includes arbitrary messaging data with the transaction. It is 
 | `MemoFormat` | String | Blob              | Hex value representing characters allowed in URLs. Conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml). |
 | `MemoType`   | String | Blob              | Hex value representing characters allowed in URLs. Conventionally, a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
 
-The MemoType and MemoFormat fields should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
+The `MemoType` and `MemoFormat` fields should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
 
 The `Memos` field is limited to no more than 1 KB in size (when serialized in binary format).
 
@@ -123,13 +123,13 @@ Example of a transaction with a Memos field:
 
 The `Signers` field contains a [multi-signature](multi-signing.html), which has signatures from up to 8 key pairs, that together should authorize the transaction. The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
 
-| Field         | Type   | [Internal Type][] | Description                     |
-|:--------------|:-------|:------------------|:--------------------------------|
-| Account       | String | AccountID         | The address associated with this signature, as it appears in the SignerList. |
-| TxnSignature  | String | Blob              | A signature for this transaction, verifiable using the `SigningPubKey`. |
-| SigningPubKey | String | Blob              | The public key used to create this signature. |
+| Field           | Type   | [Internal Type][] | Description                     |
+|:----------------|:-------|:------------------|:--------------------------------|
+| `Account`       | String | AccountID         | The address associated with this signature, as it appears in the signer list. |
+| `TxnSignature`  | String | Blob              | A signature for this transaction, verifiable using the `SigningPubKey`. |
+| `SigningPubKey` | String | Blob              | The public key used to create this signature. |
 
-The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the SigningPubKey can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [`lsfDisableMaster`](accountroot.html#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
+The `SigningPubKey` must be a key that is associated with the `Account` address. If the referenced `Account` is a funded account in the ledger, then the `SigningPubKey` can be that account's current Regular Key if one is set. It could also be that account's Master Key, unless the [`lsfDisableMaster`](accountroot.html#accountroot-flags) flag is enabled. If the referenced `Account` address is not a funded account in the ledger, then the `SigningPubKey` must be the master key associated with that address.
 
 Because signature verification is a compute-intensive task, multi-signed transactions cost additional XRP to relay to the network. Each signature included in the multi-signature increases the [transaction cost][] required for the transaction. For example, if the current minimum transaction cost to relay a transaction to the network is `10000` drops, then a multi-signed transaction with 3 entries in the `Signers` array would need a `Fee` value of at least `40000` drops to relay.
 

@@ -46,7 +46,7 @@ As the network progresses, each server listens to its trusted validators[³](#fo
 
 [![Figure 2: Consensus rounds. Validators revise their proposals to match other validators they trust](img/consensus-rounds.png)](img/consensus-rounds.png)
 
-It's OK if a small proportion of validators don't operate properly all the time. As long as fewer than 20% of trusted validators are faulty, consensus can continue unimpeded; and confirming an invalid transaction would require over 80% of trusted validators to collude. If more than 20% but less than 80% of trusted validators are faulty, the network simply stops making progress.
+It's OK if a small proportion of validators don't work properly all the time. As long as fewer than 20% of trusted validators are faulty, consensus can continue unimpeded; and confirming an invalid transaction would require over 80% of trusted validators to collude. If more than 20% but less than 80% of trusted validators are faulty, the network stops making progress.
 
 For a longer exploration of how the XRP Ledger Consensus Protocol responds to various challenges, attacks, and failure cases, see [Consensus Protections Against Attacks and Failure Modes](consensus-protections.html).
 

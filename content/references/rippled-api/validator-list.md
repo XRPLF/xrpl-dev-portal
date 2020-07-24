@@ -20,7 +20,7 @@ To request the Peer Crawler information, make the following HTTP request:
 
     The validator list contents are signed with a separate cryptographic key, so you can verify their integrity regardless of the TLS certificate used.
 
-**Tip:** Since this request uses the GET method, you can test this request using just the URL bar of your web browser. For example, <https://s1.ripple.com:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734> requests Ripple's recommended list from one of Ripple's public servers.
+**Tip:** Since this request uses the GET method, you can test this request using the URL bar of your web browser. For example, <https://s1.ripple.com:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734> requests Ripple's recommended list from one of Ripple's public servers.
 
 ## Response Format
 

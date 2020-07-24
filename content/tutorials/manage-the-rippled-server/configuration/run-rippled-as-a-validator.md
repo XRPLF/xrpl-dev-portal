@@ -34,7 +34,7 @@ Strive to have your validator always embody the following properties. Being a go
 
 - **Identified**
 
-    A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators operated by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
+    A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators.
 
 Ripple (the company) publishes a [validator list](https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt) with a set of recommended validators. Ripple strongly recommends using exactly this list for production servers.
 
@@ -80,7 +80,7 @@ In a location **not** on your validator:
 
         $ validator-keys create_token --keyfile /PATH/TO/YOUR/validator-keys.json
 
-      Sample output:
+    Sample output:
 
         Update rippled.cfg file with these values:
 
@@ -133,7 +133,7 @@ For a comparison of these approaches, see [Pros and Cons of Peering Configuratio
 
 This configuration connects your validator to the XRP Ledger network using [discovered peers](peer-protocol.html#peer-discovery). This is the default behavior for `rippled` servers.
 
-_**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `rippled.cfg` file. The [example rippled.cfg file](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) is delivered with this configuration.
+_**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `rippled.cfg` file. The [example `rippled.cfg` file](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg) is delivered with this configuration.
 
 
 ### Connect using proxies
@@ -225,13 +225,13 @@ Here are some methods you can use to verify that your validator has a healthy co
 
 ## 6. Provide domain verification
 
-To help validation list publishers and other participants in the XRP Ledger network understand who operates your validator, provide domain verification for your validator. At a high level, domain verification is a two-way link:
+To help validation list publishers and other participants in the XRP Ledger network understand who runs your validator, provide domain verification for your validator. At a high level, domain verification is a two-way link:
 
 - Use your domain to claim ownership of a validator key.
 
 - Use your validator key to claim ownership of a domain.
 
-Creating this link establishes strong evidence that you own both the validator key and the domain. Providing this evidence is just one aspect of [being a good validator](#1-understand-the-traits-of-a-good-validator).
+Creating this link establishes strong evidence that you own both the validator key and the domain. Providing this evidence is one aspect of [being a good validator](#1-understand-the-traits-of-a-good-validator).
 
 To provide domain verification:
 

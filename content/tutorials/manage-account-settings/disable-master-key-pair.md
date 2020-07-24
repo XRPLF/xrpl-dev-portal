@@ -451,7 +451,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 <!-- MULTICODE_BLOCK_END -->
 
 
-In the response's `account_data` object, compare the `Flags` field with the lsfDisableMaster flag value (`0x00100000` in hex, or `1048576` in decimal) using bitwise-AND (the `&` operator in most common programming languages).
+In the response's `account_data` object, compare the `Flags` field with the `lsfDisableMaster` flag value (`0x00100000` in hex, or `1048576` in decimal) using bitwise-AND (the `&` operator in most common programming languages).
 
 Example code:
 
@@ -487,7 +487,7 @@ else:
 
 This operation has only two possible outcomes:
 
-- A nonzero result, equal to the lsfDisableMaster value, indicates **the master key has been successfully disabled**.
+- A nonzero result, equal to the `lsfDisableMaster` value, indicates **the master key has been successfully disabled**.
 - A zero result indicates the account's master key is not disabled.
 
 If the result does not match your expectations, check whether the transaction you sent in the previous steps has executed successfully. It should be the most recent entry in the account's transaction history ([account_tx method][]) and it should have the result code `tesSUCCESS`. If you see any other [result code](transaction-results.html), the transaction was not executed successfully. Depending on the cause of the error, you may want to restart these steps from the beginning.

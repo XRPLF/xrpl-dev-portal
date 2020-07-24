@@ -51,7 +51,7 @@ The primary role of consensus is for participants in the process to agree on whi
 3. It is extremely rare for a participant to particularly care how the transactions were grouped. Agreement is easiest when everyone’s priority is reaching agreement and only challenging when there are diverging interests.
 4. Deterministic rules can be used even to form the groupings, leading to disagreement only in edge cases. For example, if there are two conflicting transactions in a round, deterministic rules can be used to determine which is included in the next round.
 
-Every participant’s top priority is correctness. They must first enforce the rules to be sure nothing violates the integrity of the shared ledger. For example, a transaction that is not properly signed must never be processed (even if other participants want to be processed). However, every honest participant’s second priority is agreement. A network with possible double spends has no utility at all. Agreement is facilitated by the fact that every honest participant values it above everything but correctness.
+Every participant’s top priority is correctness. They must first enforce the rules to be sure nothing violates the integrity of the shared ledger. For example, a transaction that is not properly signed must never be processed (even if other participants want it to be processed). However, every honest participant’s second priority is agreement. A network with possible double spends has no utility at all, so every honest participant values agreement above everything but correctness.
 
 ### Consensus Rounds
 

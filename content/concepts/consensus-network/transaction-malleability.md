@@ -6,11 +6,11 @@ If vulnerable software submits malleable transactions and assumes they can only 
 
 There are two circumstances that could lead to transaction malleability:
 
-1. The transaction does not specify the tfFullyCanonicalSig flag on a transaction signed using the default signing algorithm (ECDSA with the secp256k1 curve).
+1. The transaction does not specify the `tfFullyCanonicalSig` flag on a transaction signed using the default signing algorithm (ECDSA with the secp256k1 curve).
 
     **Use the [`tfFullyCanonicalSig` flag](transaction-common-fields.html#global-flags)** to guarantee that a transaction is not malleable in this way. Although transactions [signed with Ed25519 keys](cryptographic-keys.html#signing-algorithms) are not vulnerable to this problem, **there is no downside** to using this flag on _all_ transactions.
 
-    If the [RequireFullyCanonicalSig amendment][] :not_enabled: is enabled, all transactions are protected against malleability regardless of the tfFullyCanonicalSig flag.
+    If the [RequireFullyCanonicalSig amendment][] :not_enabled: is enabled, all transactions are protected against malleability regardless of the `tfFullyCanonicalSig` flag.
 
 2. The transaction is [multi-signed](multi-signing.html) and has more signatures than necessary. Even if the transaction originally did not have more signatures than necessary, it could be malleable if an authorized signer provides an additional signature.
 
@@ -43,16 +43,16 @@ An ECDSA signature consists of two integers, called R and S. The secp256k1 _grou
 
 Thus, to have _fully_ canonical signatures, one must choose which of the two possibilities is preferred and declare the other to be invalid. The creators of the XRP Ledger decided arbitrarily to prefer the _smaller_ of the two possible values, `S` or `N-S`. A transaction is considered _fully canonical_ if it uses the preferred (smaller) value of `S`, and follows all the normal rules for being canonical.
 
-To maintain compatibility with older software that did not always generate fully canonical signatures, the XRP Ledger accepts transactions that are not fully canonical. To protect new users from exploits, the XRP Ledger has a flag on transactions called [**tfFullyCanonicalSig**](transaction-common-fields.html#global-flags), which requires that the transaction use a _fully-canonical_ signature to be valid. If the [RequireFullyCanonicalSig amendment][] :not_enabled: is enabled, all transactions require fully-canonical signatures regardless of the tfFullyCanonicalSig flag, and legacy software that makes non-fully-canonical signatures is no longer compatible.
+To maintain compatibility with older software that did not always generate fully canonical signatures, the XRP Ledger accepts transactions that are not fully canonical. To protect new users from exploits, the XRP Ledger has a flag on transactions called [**`tfFullyCanonicalSig`**](transaction-common-fields.html#global-flags), which requires that the transaction use a _fully-canonical_ signature to be valid. If the [RequireFullyCanonicalSig amendment][] :not_enabled: is enabled, all transactions require fully-canonical signatures regardless of the `tfFullyCanonicalSig` flag, and legacy software that makes non-fully-canonical signatures is no longer compatible.
 
 To calculate a fully-canonical ECDSA signature, one must compare S and N-S to determine which is smaller, then use that value in the `Signature` field of the transaction.
 
-All XRP Ledger software that Ripple publishes (including `rippled`, and ripple-lib/RippleAPI) generates only fully-canonical signatures. To further protect users, Ripple has configured its code to enable the **tfFullyCanonicalSig** flag by default where possible. Ripple strongly encourages third-party implementations of XRP Ledger software to generate only fully-canonical signatures, and enable tfFullyCanonicalSig on transactions by default.
+All XRP Ledger software that Ripple publishes (including `rippled`, and ripple-lib/RippleAPI) generates only fully-canonical signatures. To further protect users, Ripple has configured its code to enable the **`tfFullyCanonicalSig`** flag by default where possible. Ripple strongly encourages third-party implementations of XRP Ledger software to generate only fully-canonical signatures, and enable `tfFullyCanonicalSig` on transactions by default.
 
-There are two cases where Ripple's signing implementations for the XRP Ledger do not automatically enable the tfFullyCanonicalSig flag. Users should take care to set the flag in these situations:
+There are two cases where Ripple's signing implementations for the XRP Ledger do not automatically enable the `tfFullyCanonicalSig` flag. Users should take care to set the flag in these situations:
 
-- When the user explicitly specifies the `Flags` field of the transaction. Use bitwise OR to apply tfFullyCanonicalSig _and_ any other desired flags.
-- When the user provides a multi-signature for a transaction. Since different participants in a multi-signature must sign _exactly_ the same data, the signing code does not pre-process the transaction instructions to add the tfFullyCanonicalSig flag. For multi-signed transactions, always enable the tfFullyCanonicalSig flag explicitly.
+- When the user explicitly specifies the `Flags` field of the transaction. Use bitwise OR to apply `tfFullyCanonicalSig` _and_ any other desired flags.
+- When the user provides a multi-signature for a transaction. Since different participants in a multi-signature must sign _exactly_ the same data, the signing code does not pre-process the transaction instructions to add the `tfFullyCanonicalSig` flag. For multi-signed transactions, always enable the `tfFullyCanonicalSig` flag explicitly.
 
 
 ### Malleability with Multi-Signatures
@@ -77,7 +77,7 @@ Even if your authorized signers are not intentionally malicious, confusion or po
 - Be prepared for the possibility that a transaction executes with a different hash and set of signatures than you expected. Carefully monitor your account's sent transactions (for example, using the [account_tx method][]).
 - Monitor the `Sequence` number of your account (for example, using the [account_info method][]). This number always increases by exactly one when your account sends a transaction successfully, and never any other way. If the number does not match what you expect, you should check your recent transactions to confirm why. (Aside from malleable transactions, there are other ways this could happen, too. Perhaps you configured another application to send transactions for you. Maybe a malicious user gained access to your secret key. Or perhaps your application lost data and forgot about a transaction you sent already.)
 - If you re-create transactions to be multi-signed, _do not_ change the `Sequence` number unless you have manually confirmed that the intended actions have not already executed.
-- Confirm that the tfFullyCanonicalSig flag is enabled before signing.
+- Confirm that the `tfFullyCanonicalSig` flag is enabled before signing.
 
 For greater security, these guidelines provide multiple layers of protection.
 
@@ -86,19 +86,19 @@ For greater security, these guidelines provide multiple layers of protection.
 
 If the software you use to interface with the XRP Ledger sends malleable transactions, a malicious actor may be able to trick your software into losing track of a transaction's final outcome and potentially (in the worst case) sending equivalent payments multiple times.
 
-If you use single-signatures and always enable the tfFullyCanonicalSig flag, you are not vulnerable to this exploit. If you use multi-signatures, you may be vulnerable if you or your signers provide more signatures than necessary.
+If you use single-signatures and always enable the `tfFullyCanonicalSig` flag, you are not vulnerable to this exploit. If you use multi-signatures, you may be vulnerable if you or your signers provide more signatures than necessary.
 
 ### Exploit Scenario Steps
 
 The process to exploit a vulnerable system follows a series of steps similar to the following:
 
-1. The vulnerable system constructs and signs a transaction without enabling tfFullyCanonicalSig.
+1. The vulnerable system constructs and signs a transaction without enabling `tfFullyCanonicalSig`.
 
-    Three ways that a transaction may not enable the tfFullyCanonicalSig flag are:
+    Three ways that a transaction may not enable the `tfFullyCanonicalSig` flag are:
 
-    - The system explicitly specifies a `Flags` field that does not have the tfFullyCanonicalSig bit enabled.
-    - The transaction is multi-signed and does not explicitly enable the tfFullyCanonicalSig flag.
-    - The system omits the `Flags` field from the transaction fields, but uses a non-standard implementation that does not automatically enable tfFullyCanonicalSig when signing.
+    - The system explicitly specifies a `Flags` field that does not have the `tfFullyCanonicalSig` bit enabled.
+    - The transaction is multi-signed and does not explicitly enable the `tfFullyCanonicalSig` flag.
+    - The system omits the `Flags` field from the transaction fields, but uses a non-standard implementation that does not automatically enable `tfFullyCanonicalSig` when signing.
 
     To be vulnerable, the transaction must be signed with an ECDSA key pair. If multi-signed, the transaction must be signed by at least one ECDSA key pair.
 
@@ -138,7 +138,7 @@ The process to exploit a vulnerable system follows a series of steps similar to 
 
 8. The vulnerable system takes action assuming that the transaction has failed.
 
-    For example, it may refund (or simply not debit) a customer's balance in its own system, to account for the funds that it thinks have not been sent in the XRP Ledger.
+    For example, it may refund (or not debit) a customer's balance in its own system, to account for the funds that it thinks have not been sent in the XRP Ledger.
 
     Worse, the vulnerable system might construct a new transaction to replace the transaction, picking new `Sequence`, `LastLedgerSequence`, and `Fee` parameters based on the current state of the network, but keeping the rest of the transaction the same as the original. If this new transaction is also malleable, the system could be exploited in the same way an indefinite number of times.
 

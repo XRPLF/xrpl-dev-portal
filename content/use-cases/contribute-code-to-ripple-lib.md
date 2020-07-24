@@ -9,7 +9,7 @@ Want to contribute code or a bug report to help improve `ripple-lib`, the offici
 <span class="use-case-step-num">{{n.next()}}</span>
 ## Access the `ripple-lib` repo
 
-`ripple-lib` is an open-source project. You can take a look at `ripple-lib` code simply by accessing the `ripple-lib` GitHub repo. Before contributing or reporting bugs, we recommend that you get to know the code and developer experience by performing the following tasks.
+`ripple-lib` is an open-source project. You can take a look at `ripple-lib` code by accessing the `ripple-lib` GitHub repo. Before contributing or reporting bugs, we recommend that you get to know the code and developer experience by performing the following tasks.
 
 <span class="use-case-external-link btn btn-outline-secondary external-link">[Access the `ripple-lib` repo](https://github.com/ripple/ripple-lib)</span>
 

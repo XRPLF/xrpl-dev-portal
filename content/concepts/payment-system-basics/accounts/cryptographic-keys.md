@@ -97,14 +97,14 @@ After you assign a regular key pair to an account, the account has two key pairs
 
 You can assign one regular key pair to an account and use it to sign all transactions, except for the ones reserved for the [master key pair](#master-key-pair).
 
-You can remove or change a regular key pair at any time. This means that if a regular secret key is compromised (but the master secret key is not), you can regain control of your account by simply removing or changing the regular key pair.
+You can remove or change a regular key pair at any time. This means that if a regular secret key is compromised (but the master secret key is not), you can regain control of your account by removing or changing the regular key pair.
 
 For a tutorial on changing or removing a regular key pair, see [Assign a Regular Key Pair](assign-a-regular-key-pair.html).
 
 
 ## Signing Algorithms
 
-Cryptographic key pairs are always tied to a specific signing algorithm, which defines the mathematical relationships between the secret key and the public key. Cryptographic signing algorithms have the property that, given the current state of cryptographic techniques, it is "easy" to use a secret key to calculate a matching public key, but it is effectively impossible to compute a matching secret key by starting from a public key.
+Cryptographic key pairs are always tied to a specific signing algorithm, which defines the mathematical relationships between the secret key and the public key. Cryptographic signing algorithms have the property that, given the current state of cryptographic techniques, it is "easy" to use a secret key to calculate a matching public key, but it is effectively impossible to compute a matching secret key by starting from a public key. <!-- STYLE_OVERRIDE: easy -->
 
 The XRP Ledger supports the following cryptographic signing algorithms:
 
@@ -190,7 +190,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
 2. Convert the root public key to its 33-byte compressed form.
 
-    The uncompressed form of any ECDSA public key consists of a pair of 32-byte integers: an X coordinate, and a Y coordinate. The compressed form is just the X coordinate and a one-byte prefix: `0x02` if the Y coordinate is even, or `0x03` if the Y coordinate is odd.
+    The uncompressed form of any ECDSA public key consists of a pair of 32-byte integers: an X coordinate, and a Y coordinate. The compressed form is the X coordinate and a one-byte prefix: `0x02` if the Y coordinate is even, or `0x03` if the Y coordinate is odd.
 
     You can convert an uncompressed public key to the compressed form with the `openssl` commandline tool. For example, if the uncompressed public key is in the file `ec-pub.pem`, you can output the compressed form like this:
 
@@ -211,7 +211,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
 4. Derive the master public key pair by adding the intermediate public key to the root public key. Similarly, derive the secret key by adding the intermediate secret key to the root secret key.
 
-    - An ECDSA secret key is just a very large integer, so you can calculate the sum of two secret keys by summing them modulo the secp256k1 group order.
+    - An ECDSA secret key is a very large integer, so you can calculate the sum of two secret keys by summing them modulo the secp256k1 group order.
 
     - An ECDSA public key is a point on the elliptic curve, so you should use elliptic curve math to sum the points.
 

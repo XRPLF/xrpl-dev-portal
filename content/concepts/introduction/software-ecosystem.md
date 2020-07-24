@@ -10,7 +10,7 @@ The XRP Ledger is home to a deep, layered ecosystem of software projects powerin
 
 - [_Programming Libraries_](#programming-libraries) exist in higher level software, where they are imported directly into program code, and contain methods to access the XRP Ledger.
 
-- [_Middleware_](#middleware) provides indirect access to XRP Ledger data. Applications in this layer frequently have their own data storage and processing.
+- [_Middleware_](#middleware) provides indirect access to XRP Ledger data. Applications in this layer often have their own data storage and processing.
 
 - [_Apps and Services_](#apps-and-services) provide user-level interaction with the XRP Ledger, or provide a basis for even higher-level apps and services.
 
@@ -42,11 +42,11 @@ The [Data API](data-api.html) is an example of a middleware service on top of th
 
 ### Apps and Services
 
-Atop the stack is where the truly exciting things happen. Apps and services provide a way for users and devices to connect to the XRP Ledger. At this level, [exchanges list XRP](list-xrp-in-your-exchange.html), [gateways issue other currencies](become-an-xrp-ledger-gateway.html) for use in the decentralized exchange, and wallets provide user interfaces for buying, selling, or just <s>HODLing</s> holding XRP. Many other possibilities exist, including additional services layered even higher. <!-- SPELLING_IGNORE: hodling -->
+Atop the stack is where the truly exciting things happen. Apps and services provide a way for users and devices to connect to the XRP Ledger. At this level, [exchanges list XRP](list-xrp-in-your-exchange.html), [gateways issue other currencies](become-an-xrp-ledger-gateway.html) for use in the decentralized exchange, and wallets provide user interfaces for buying, selling, or <s>HODLing</s> holding XRP. Many other possibilities exist, including additional services layered even higher. <!-- SPELLING_IGNORE: hodling -->
 
 A great way to build applications that are compatible with not only XRP but lots of other ways of denominating value is to use the [Interledger Protocol][] with settlement in XRP.
 
-There are numerous other examples of projects using XRP and adjacent technologies to interact with users. Ripple's enterprise customers already have the option to use XRP through [on-demand liquidity services](https://www.ripple.com/ripplenet/on-demand-liquidity/). For more examples of businesses and software built on the XRP Ledger, see [Xpring Partners](https://xpring.io/#partners) or XRPChat's excellent [Links & Resources](https://www.xrpchat.com/links/) listing.
+There are many other examples of projects using XRP and adjacent technologies to interact with users. Ripple's enterprise customers already have the option to use XRP through [on-demand liquidity services](https://www.ripple.com/ripplenet/on-demand-liquidity/). For more examples of businesses and software built on the XRP Ledger, see [Xpring Partners](https://xpring.io/#partners) or XRPChat's excellent [Links & Resources](https://www.xrpchat.com/links/) listing.
 
 
 ## See Also

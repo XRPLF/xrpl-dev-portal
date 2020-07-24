@@ -119,7 +119,7 @@ When an account enables this flag, Payment transactions fail if the account is t
 
 As an exception, accounts with `DepositAuth` enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum [account reserve](reserves.html)) if their current XRP balance is below the account reserve.
 
-Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the DisallowXRP flag, which is meant to be a non-binding advisory flag. (By not enforcing DisallowXRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](reserves.html) and pay [transaction costs](transaction-cost.html).)
+Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the Disallow XRP flag, which is meant to be a non-binding advisory flag. (By not enforcing Disallow XRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](reserves.html) and pay [transaction costs](transaction-cost.html).)
 
 
 ## DepositPreauth
@@ -133,7 +133,7 @@ Provides users of [deposit authorization](depositauth.html) with a way to preaut
 
 Adds a new transaction type, DepositPreauth for adding or removing preauthorization, and a DepositPreauth ledger object type for tracking preauthorizations from one account to another. Adds a JSON-RPC command, `deposit_authorized`, to query whether an account is authorized to send payments directly to another.
 
-Also changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code tecNO_PERMISSION. With this amendment, those payments succeed as they would with Deposit Authorization disabled.
+Also changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code `tecNO_PERMISSION`. With this amendment, those payments succeed as they would with Deposit Authorization disabled.
 
 
 ## EnforceInvariants
@@ -326,7 +326,7 @@ Changes Escrow to fix the following issues:
 Changes the result codes returned by two transaction types:
 
 - Changes the [OfferCreate transaction][] to return a new result code, `tecKILLED`, if the offer used the `tfFillOrKill` flag and was killed. Without this amendment, the offer is killed but the transaction result is `tesSUCCESS`.
-- Changes the [TrustSet transaction][] to fail with `tecNO_PERMISSION` if it tries to enable the [NoRipple flag](rippling.html#the-noripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the NoRipple flag, but the transaction result is `tesSUCCESS` nonetheless.
+- Changes the [TrustSet transaction][] to fail with `tecNO_PERMISSION` if it tries to enable the [No Ripple flag](rippling.html#the-no-ripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the No Ripple flag, but the transaction result is `tesSUCCESS` nonetheless.
 
 
 ## fix1623
@@ -537,7 +537,7 @@ Implements a "Negative UNL" system, where the network can track which validators
 |:-----------------------------------------------------------------|:----------|
 | 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | In Development |
 
-Fixes an inconsistency in the way [transfer fees](transfer-fees.html) are calculated between [OfferCreate](offercreate.html) and [Payment](payment.html) transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
+Fixes an inconsistency in the way [transfer fees](transfer-fees.html) are calculated between [OfferCreate](offercreate.html) and [Payment](payment.html) transaction types. Without this amendment, the holder of the issued currency pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issued currency always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
@@ -553,7 +553,7 @@ This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
 Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. Ripple expects this feature to be useful for the [Interledger Protocol](https://interledger.org/). One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the combined content of many small Claims later, as long as it is within the expiration.
 
-Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](paychannel.html). Defines an off-ledger data structure called a `Claim`, used in the ChannelClaim transaction. Creates new `rippled` API methods: [`channel_authorize`](channel_authorize.html) (creates a signed Claim), [`channel_verify`](channel_verify.html) (verifies a signed Claim), and [`account_channels`](account_channels.html) (lists Channels associated with an account).
+Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](paychannel.html). Defines an off-ledger data structure called a `Claim`; the PaymentChannelClaim uses a signature for this data structure. Creates new `rippled` API methods: [`channel_authorize`](channel_authorize.html) (creates a signed Claim), [`channel_verify`](channel_verify.html) (verifies a signed Claim), and [`account_channels`](account_channels.html) (lists Channels associated with an account).
 
 For more information, see the [Payment Channels Tutorial](use-payment-channels.html).
 
@@ -565,11 +565,11 @@ For more information, see the [Payment Channels Tutorial](use-payment-channels.h
 |:-----------------------------------------------------------------|:----------|
 | 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | Enabled   |
 
-Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of just transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags) enabled.
+Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of only transactions with the [`tfFullyCanonicalSig` flag](transaction-common-fields.html#global-flags) enabled.
 
-Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have tfFullyCanonicalSig enabled. Most signing utilities enable tfFullyCanonicalSig by default, but there are exceptions.
+Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have `tfFullyCanonicalSig` enabled. Most signing utilities enable `tfFullyCanonicalSig` by default, but there are exceptions.
 
-With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](transaction-malleability.html#malleability-with-multi-signatures) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the tfFullyCanonicalSig flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
+With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](transaction-malleability.html#malleability-with-multi-signatures) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the `tfFullyCanonicalSig` flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
 
 For more information, see [`rippled` issue #3042](https://github.com/ripple/rippled/issues/3042).
 
@@ -641,7 +641,7 @@ Introduces a `TickSize` field to accounts, which can be set with the [AccountSet
 
 Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Trust Lines](authorized-trust-lines.html).
 
-With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](trustset.html#trustset-flags) can create a new [`RippleState` ledger object](ripplestate.html) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](ripplestate.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](accountroot.html#accountroot-flags) by sending an [AccountSet transaction](accountset.html) with the [asfRequireAuth flag enabled](accountset.html#accountset-flags).
+With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](trustset.html#trustset-flags) can create a new [`RippleState` ledger object](ripplestate.html) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](ripplestate.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](accountroot.html#accountroot-flags) by sending an [AccountSet transaction](accountset.html) with the [`asfRequireAuth` flag enabled](accountset.html#accountset-flags).
 
 
 <!--{# common link defs #}-->

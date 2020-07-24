@@ -36,7 +36,7 @@ Partial Payments have the following limitations:
 
 - A partial payment cannot provide the XRP to fund an address; this case returns the [result code][] `telNO_DST_PARTIAL`.
 - Direct XRP-to-XRP payments cannot be partial payments; this case returns the [result code][] `temBAD_SEND_XRP_PARTIAL`.
-    - However, issuance-to-XRP payments or XRP-to-issuance payments _can_ be partial payments.
+    - However, cross-currency payments that involve XRP as one of the currencies _can_ be partial payments.
 
 [result code]: transaction-results.html
 
@@ -80,7 +80,7 @@ If a financial institution's integration with the XRP Ledger assumes that the `A
 
 To exploit a vulnerable financial institution, a malicious actor does something like this:
 
-1. The malicious actor sends a Payment transaction to the institution. This transaction has a large `Amount` field and has the **tfPartialPayment** flag enabled.
+1. The malicious actor sends a Payment transaction to the institution. This transaction has a large `Amount` field and has the **`tfPartialPayment`** flag enabled.
 2. The partial payment succeeds (result code `tesSUCCESS`) but actually delivers a very small amount of the currency specified.
 3. The vulnerable institution reads the transaction's `Amount` field without looking at the `Flags` field or `delivered_amount` metadata field.
 4. The vulnerable institution credits the malicious actor in an external system, such as the institution's own ledger, for the full `Amount`, despite only receiving a much smaller `delivered_amount` in the XRP Ledger.
@@ -92,7 +92,7 @@ In the case of a merchant, the order of operations is slightly different, but th
 
 1. The malicious actor requests to buy a large amount of goods or services.
 2. The vulnerable merchant invoices the malicious actor for the price of those goods and services.
-3. The malicious actor sends a Payment transaction to the merchant. This transaction has a large `Amount` field and has the **tfPartialPayment** flag enabled.
+3. The malicious actor sends a Payment transaction to the merchant. This transaction has a large `Amount` field and has the **`tfPartialPayment`** flag enabled.
 4. The partial payment succeeds (result code `tesSUCCESS`) but delivers only a very small amount of the currency specified.
 5. The vulnerable merchant reads the transaction's `Amount` field without looking at the `Flags` field or `delivered_amount` metadata field.
 6. The vulnerable merchant treats the invoice as paid and provides the goods or services to the malicious actor, despite only receiving a much smaller `delivered_amount` in the XRP Ledger.

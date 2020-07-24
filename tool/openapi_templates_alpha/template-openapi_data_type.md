@@ -2,7 +2,7 @@
 
 {{description}}
 
-**Warning:** {{spec.info.title}} is early alpha software. API methods and data formats are likely to change frequently in ways that break backwards compatibility.
+**Warning:** {{spec.info.title}} is early alpha software. API methods and data formats are likely to change often in ways that break backwards compatibility.
 
 {% if type is defined %}- **Type:** {{type|title}}
 {% elif oneOf is defined %}- **Possible Types:**

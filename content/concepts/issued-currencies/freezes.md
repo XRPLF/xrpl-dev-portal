@@ -2,7 +2,7 @@
 
 XRP is not an issued currency. XRP is the only native asset on the XRP Ledger and is required in order to conduct transactions on the XRP Ledger. XRP is counterparty free, meaning that when someone holds XRP, they are not holding a liability, they are holding the actual currency, XRP. Due to this fact, _**<u>XRP CANNOT be frozen by any entity or individual</u>**_.
 
-All non-XRP currencies can be represented in the XRP Ledger as issued currencies. These issued currencies (sometimes called "issuances" or "IOUs") are tracked in accounting relationships, called "trust lines," between addresses. Issued currencies are typically considered as liabilities from one perspective and assets from the other, so the balance of a trust line is negative or positive depending on which side you view it from. Any address may freely issue (non-XRP) currencies, limited only by how much other addresses are willing to hold.
+All non-XRP currencies can be represented in the XRP Ledger as issued currencies. These issued currencies (sometimes called "IOUs") are tracked in accounting relationships, called "trust lines," between addresses. Issued currencies are typically considered as liabilities from one perspective and assets from the other, so the balance of a trust line is negative or positive depending on which side you view it from. Any address may freely issue (non-XRP) currencies, limited only by how much other addresses are willing to hold.
 
 In certain cases, to meet regulatory requirements, or while investigating suspicious activity, an exchange or gateway may want to quickly freeze non-XRP issued currency balances.
 
@@ -24,15 +24,15 @@ All freeze settings can be enacted regardless of whether the balance(s) to be fr
 The **Individual Freeze** feature is a setting on a [trust line](trust-lines-and-issuing.html). When an issuing address enables the Individual Freeze setting, the following rules apply to the currency of that trust line:
 
 * Payments can still occur directly between the two parties of the frozen trust line.
-* The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer. The counterparty can only send the frozen issuances directly to the issuer.
+* The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer. The counterparty can only send the frozen currencies directly to the issuer.
 * The counterparty can still receive payments from others on the frozen trust line.
 * The counterparty's offers to sell the currency issued on the frozen trust line are [considered unfunded](offers.html#lifecycle-of-an-offer).
 
 Reminder: Trust lines do not hold XRP. XRP cannot be frozen.
 
-A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution operates that are connected to the XRP Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)
+A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution uses that are connected to the XRP Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)
 
-An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including [operational addresses](issuing-and-operational-addresses.html), from sending that financial institution's issuances to the individual address. This type of individual freeze has no effect on offers.
+An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including [operational addresses](issuing-and-operational-addresses.html), from sending that financial institution's issued currencies to the individual address. This type of individual freeze has no effect on offers.
 
 The Individual Freeze applies to a single currency only. To freeze multiple currencies with a particular counterparty, the address must enable Individual Freeze on the trust lines for each currency individually.
 
@@ -336,12 +336,12 @@ To see if an address has enabled Global Freeze, No Freeze, or both, use the [acc
 
 Check the value of the `account_data.Flags` field of the response using the [bitwise-AND](https://en.wikipedia.org/wiki/Bitwise_operation#AND) operator:
 
-* If `Flags` AND `0x00400000` ([lsfGlobalFreeze](accountroot.html#accountroot-flags)) is _nonzero_: Global Freeze is enabled.
-* If `Flags` AND `0x00200000` ([lsfNoFreeze](accountroot.html#accountroot-flags)) is _nonzero_: No Freeze is enabled.
+* If `Flags` AND `0x00400000` ([`lsfGlobalFreeze`](accountroot.html#accountroot-flags)) is _nonzero_: Global Freeze is enabled.
+* If `Flags` AND `0x00200000` ([`lsfNoFreeze`](accountroot.html#accountroot-flags)) is _nonzero_: No Freeze is enabled.
 
 Example WebSocket request:
 
-```
+```json
 {
   "id": 1,
   "command": "account_info",
@@ -352,7 +352,7 @@ Example WebSocket request:
 
 WebSocket response:
 
-```
+```json
 {
   "id": 4,
   "status": "success",
@@ -382,7 +382,7 @@ WebSocket response:
 }
 ```
 
-In the above example, the `Flags` value is 12582912. This indicates that has the following flags enabled: lsfGlobalFreeze, lsfDefaultRipple, as demonstrated by the following JavaScript code:
+In the above example, the `Flags` value is 12582912. This indicates that has the following flags enabled: `lsfGlobalFreeze`, `lsfDefaultRipple`, as demonstrated by the following JavaScript code:
 
 ```js
 var lsfGlobalFreeze = 0x00400000;

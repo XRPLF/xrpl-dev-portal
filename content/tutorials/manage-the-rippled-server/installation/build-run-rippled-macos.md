@@ -6,7 +6,7 @@ That said, macOS is suitable for many development and testing tasks. `rippled` h
 
 For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
-1. Install [Xcode](https://developer.apple.com/download/).
+1. Install [Xcode](https://developer.apple.com/download/). <!-- SPELLING_IGNORE: xcode -->
 
 0. Install Xcode command line tools.
 
@@ -65,7 +65,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
       Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
 
-0. In the `rippled` directory you just cloned, create your build directory and access it. For example:
+0. In the `rippled` directory you cloned, create your build directory and access it. For example:
 
         $ mkdir my_build
         $ cd my_build

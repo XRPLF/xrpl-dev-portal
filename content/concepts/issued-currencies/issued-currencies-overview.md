@@ -2,7 +2,7 @@
 
 All currencies other than XRP can be represented in the XRP Ledger as **issued currencies**. These digital assets (sometimes called "IOUs") are tracked in accounting relationships, called "trust lines," between addresses. Issued currencies are typically considered as liabilities from one perspective and assets from the other, so the balance of a trust line is negative or positive depending on which side you view it from. Any address may freely issue (non-XRP) currencies, limited only by how much other addresses are willing to hold.
 
-Issued currencies can "ripple" through multiple issuers and holders if they use the same currency code. This is useful in some cases, but can cause unexpected and undesirable behavior in others. You can use the [NoRipple flag](rippling.html) on trust lines to prevent those trust lines from rippling.
+Issued currencies can "ripple" through multiple issuers and holders if they use the same currency code. This is useful in some cases, but can cause unexpected and undesirable behavior in others. You can use the [No Ripple flag](rippling.html) on trust lines to prevent those trust lines from rippling.
 
 Issued currencies can be traded with XRP or each other in the XRP Ledger's decentralized exchange.
 

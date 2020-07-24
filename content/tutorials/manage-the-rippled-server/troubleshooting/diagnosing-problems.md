@@ -80,7 +80,7 @@ For troubleshooting purposes, the most important fields are (from most commonly 
 
 - **`peers`** - This field indicates how many other servers in the XRP Ledger peer-to-peer network your server is connected to. Healthy servers typically show between 5 and 50 peers, unless explicitly configured to connect only to certain peers.
 
-    - If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an [NTP](http://www.ntp.org/) daemon on all servers to keep their clocks synced.) <!-- SPELLING_IGNORE: NTP -->
+    - If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an [NTP](http://www.ntp.org/) daemon on all servers to keep their clocks synced.)
 
     - If you have exactly 10 peers, that may indicate that your `rippled` is unable to receive incoming connections through a router using [NAT](https://en.wikipedia.org/wiki/Network_address_translation). You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 51235 [by default](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065)).
 
@@ -99,7 +99,7 @@ The `rippled` executable returns the following message if it wasn't able to conn
 
 This generally indicates one of several problems:
 
-- The `rippled` server is just starting up, or is not running at all. Check the status of the service; if it is running, wait a few seconds and try again.
+- The `rippled` server is starting up, or is not running at all. Check the status of the service; if it is running, wait a few seconds and try again.
 - You may need to pass different [parameters to the `rippled` commandline client](commandline-usage.html#client-mode-options) to connect to your server.
 - The `rippled` server may be configured not to accept JSON-RPC connections.
 
@@ -138,7 +138,7 @@ To use the script:
           should verify before posting.
         ####################################################
 
-    The script collects the output of numerous commands and writes them to a temporary file. The filename is randomized with a string of letters and numbers (case-sensitive), for example: `/tmp/ripple_info.Xo8Xr/rippled_info.md`
+    The script collects the output of many commands and writes them to a temporary file. The filename is randomized with a string of letters and numbers (case-sensitive), for example: `/tmp/ripple_info.Xo8Xr/rippled_info.md`
 
 
 2. Look over the output file for sensitive information.
