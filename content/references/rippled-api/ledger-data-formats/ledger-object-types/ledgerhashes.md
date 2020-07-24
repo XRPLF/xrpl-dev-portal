@@ -39,8 +39,8 @@ A `LedgerHashes` object has the following fields:
 | `LedgerEntryType` | String    | UInt16    | The value `0x0068`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
 | `FirstLedgerSequence` | Number | UInt32   | **DEPRECATED** Do not use. (The "recent hashes" object of the production XRP Ledger has the value `2` in this field as a result of a previous `rippled` software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](parallel-networks.html) started with more recent versions of `rippled`.) |
 | `LastLedgerSequence` | Number | UInt32 | The [Ledger Index][] of the last entry in this object's `Hashes` array. |
-| `Hashes` | Array of Strings | STI_VECTOR256 | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
-| `Flags`             | Number    | UInt32    | A bit-map of boolean flags for this object. No flags are defined for this type. |
+| `Hashes`   | Array of Strings | Vector256 | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
+| `Flags`           | Number    | UInt32    | A bit-map of boolean flags for this object. No flags are defined for this type. |
 
 ## Recent History LedgerHashes
 

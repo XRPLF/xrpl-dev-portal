@@ -3,7 +3,7 @@
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 
-Most Linux systems come preinstalled with a [`logrotate`](https://linux.die.net/man/8/logrotate) program, which is separate from this command. Application specific log rotation scripts are placed in `/etc/logrotate.d`
+Most Linux systems come pre-installed with a [`logrotate`](https://linux.die.net/man/8/logrotate) program, which is separate from this command. Application specific log rotation scripts are placed in `/etc/logrotate.d`
 
 The following script is a sample that can be created as `/etc/logrotate.d/rippled`
 

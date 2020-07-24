@@ -10,7 +10,7 @@ To enable XRP Charts to list your exchange, you'll need to make the following da
 
 Then, you'll need to [send an exchange listing request to XRP Charts](#send-an-exchange-listing-request-to-xrp-charts).
 
-If you have any questions about endpoint specifications, contact <xrpcharts_support@ripple.com>.
+If you have any questions about endpoint specifications, contact <xrpcharts_support@ripple.com>. <!-- SPELLING_IGNORE: xrpcharts_support -->
 
 
 ## Provide a Recently Executed Trades Endpoint

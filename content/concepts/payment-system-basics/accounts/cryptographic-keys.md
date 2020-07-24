@@ -42,9 +42,11 @@ The `wallet_propose` response does not explicitly list the secret key value, als
 
 The `public_key` and `public_key_hex` both represent the same public key value. The public key is derived from the secret key as part of key derivation. The public key makes it possible to verify the authenticity of a transaction signature, but not to create more signatures.
 
-**account_id**
+**Account ID**
 
-The `account_id` is [derived from the public key](accounts.html#address-encoding) and designates the *potential* for an account to be created in the XRP Ledger. It is important to know that while an `account_id` exists, no actual account exists in the XRP Ledger until the `account_id` receives its first XRP payment. In addition, the `account_id` can't send any transactions until after it's received a transaction that funds and creates the account.
+The `account_id` is [derived from the public key](accounts.html#address-encoding) and designates the *potential* for an account to be created in the XRP Ledger. Typically, an Account ID is encoded in [base58][] to make a "classic address", but other representations are possible, including hexadecimal. The [X-Address format](accounts.html#addresses) combines an Account ID and a [Destination Tag](source-and-destination-tags.html) into a single address.
+
+It is important to know that while an `account_id` exists, no actual account exists in the XRP Ledger until the `account_id` receives its first XRP payment. In addition, the `account_id` can't send any transactions until after it's received a transaction that funds and creates the account.
 
 The `account_id` (without a funded account) can, however, be used as a [regular key](#regular-key-pair) or a [member of a signer list](multi-signing.html) to authorize transactions for another account that does exist.
 

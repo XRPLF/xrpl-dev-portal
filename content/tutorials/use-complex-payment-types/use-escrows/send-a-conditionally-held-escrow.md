@@ -2,10 +2,10 @@
 
 ## 1. Generate condition and fulfillment
 
-XRP Ledger escrows require PREIMAGE-SHA-256 [crypto-conditions][]. To calculate a condition and fulfillment in the proper format, you should use a crypto-conditions library such as [five-bells-condition](https://github.com/interledgerjs/five-bells-condition). For fulfillments, the following methods are recommended to generate the fulfillment:
+XRP Ledger escrows require PREIMAGE-SHA-256 [crypto-conditions][]. To calculate a condition and fulfillment in the proper format, you should use a crypto-conditions library such as [five-bells-condition](https://github.com/interledgerjs/five-bells-condition). To generate the fulfillment:
 
 - Use a cryptographically secure source of randomness to generate at least 32 random bytes.
-- Follow Interledger Protocol's [PSK specification](https://github.com/interledger/rfcs/blob/master/deprecated/0016-pre-shared-key/0016-pre-shared-key.md) and use an HMAC-SHA-256 of the ILP packet as the fulfillment.
+- Follow Interledger Protocol's [PSK specification](https://github.com/interledger/rfcs/blob/master/deprecated/0016-pre-shared-key/0016-pre-shared-key.md) and use an HMAC-SHA-256 of the ILP packet as the fulfillment. <!-- SPELLING_IGNORE: PSK -->
 
 Example JavaScript code for a random fulfillment and condition:
 
@@ -62,7 +62,7 @@ print(cancel_after)
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Warning:** In the XRP Ledger, you must specify time as **seconds since the Ripple Epoch** (2000-01-01T00:00:00Z). If you use a UNIX time in the `CancelAfter` or `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!
+**Warning:** In the XRP Ledger, you must specify time as **[seconds since the Ripple Epoch][]**. If you use a UNIX time in the `CancelAfter` or `FinishAfter` field without converting it, that sets the unlock time to an extra **30 years** in the future!
 
 ## 3. Submit EscrowCreate transaction
 

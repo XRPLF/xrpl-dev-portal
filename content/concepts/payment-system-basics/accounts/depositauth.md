@@ -43,7 +43,7 @@ An account with Deposit Authorization enabled:
 - **Can** receive XRP or issued currencies by sending a [CheckCash][] transaction. _(Added by the [Checks amendment][].)_
 - **Can** receive XRP or issued currencies by sending [OfferCreate transactions][].
     - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the remainder of the ordered XRP or issued currency later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
-- If the account has created any trust lines without the [NoRipple flag](rippling.html) enabled, or has enabled the DefaultRipple flag and issued any currency, the account **can** receive the issued currencies of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
+- If the account has created any trust lines without the [NoRipple flag](rippling.html) enabled, or has enabled the `DefaultRipple` flag and issued any currency, the account **can** receive the issued currencies of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
 - In general, an account in the XRP Ledger **cannot** receive any non-XRP currencies in the XRP Ledger as long as all of the following are true. (This rule is not specific to the DepositAuth flag.)
     - The account has not created any trust lines with a nonzero limit.
     - The account has not issued currency on trust lines created by others

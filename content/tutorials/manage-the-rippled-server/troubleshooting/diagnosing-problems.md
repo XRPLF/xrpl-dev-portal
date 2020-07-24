@@ -80,7 +80,7 @@ For troubleshooting purposes, the most important fields are (from most commonly 
 
 - **`peers`** - This field indicates how many other servers in the XRP Ledger peer-to-peer network your server is connected to. Healthy servers typically show between 5 and 50 peers, unless explicitly configured to connect only to certain peers.
 
-    - If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an [NTP](http://www.ntp.org/) daemon on all servers to keep their clocks synced.)
+    - If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an [NTP](http://www.ntp.org/) daemon on all servers to keep their clocks synced.) <!-- SPELLING_IGNORE: NTP -->
 
     - If you have exactly 10 peers, that may indicate that your `rippled` is unable to receive incoming connections through a router using [NAT](https://en.wikipedia.org/wiki/Network_address_translation). You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 51235 [by default](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065)).
 
@@ -149,7 +149,7 @@ To use the script:
 
 3. Upload the output file where others can see it.
 
-    You can upload the file directly to [GitHub Gist](https://gist.github.com/), [Pastebin](https://pastebin.com/), or a similar service. If you are running `rippled` on a remote server, you may find it easier to first transfer the file to a machine with a web browser, using `scp` or a similar tool.
+    You can upload the file directly to [GitHub Gist](https://gist.github.com/), [Pastebin](https://pastebin.com/), or a similar service. If you are running `rippled` on a remote server, you may find it easier to first transfer the file to a machine with a web browser, using `scp` or a similar tool. <!-- SPELLING_IGNORE: pastebin -->
 
 
 ## See Also

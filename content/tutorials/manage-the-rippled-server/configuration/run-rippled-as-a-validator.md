@@ -48,7 +48,7 @@ For more information, see [Install `rippled`](install-rippled.html).
 
 ## 3. Enable validation on your `rippled` server
 
-Enabling validation on your `rippled` server means providing a validator token in your server's `rippled.cfg` file. Ripple recommends using the `validator-keys` tool (included in `rippled` RPMs) to securely generate and manage your validator keys and tokens.
+Enabling validation on your `rippled` server means providing a validator token in your server's `rippled.cfg` file. Ripple recommends using the `validator-keys` tool (included in `rippled` packages) to securely generate and manage your validator keys and tokens.
 
 In a location **not** on your validator:
 
@@ -259,7 +259,7 @@ To provide domain verification:
 
         Provide the value returned in the **SSL Signature** field of the Google Form.
 
-      3. Using the [`validator-keys` tool](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md) (included in `rippled` RPMs), sign the domain name.
+      3. Using the [`validator-keys` tool](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md) (included in `rippled` packages), sign the domain name.
 
             $ validator-keys --keyfile /PATH/TO/YOUR/validator-keys.json sign YOUR_DOMAIN_NAME
 

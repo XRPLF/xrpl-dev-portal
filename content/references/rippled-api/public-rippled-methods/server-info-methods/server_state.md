@@ -547,7 +547,7 @@ The `state` object may have some arrangement of the following fields:
 | `server_state_duration_us`       | Number          | The number of consecutive microseconds the server has been in the current state. [New in: rippled 1.2.0][] |
 | `state_accounting`               | Object          | A map of various [server states](rippled-server-states.html) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. [New in: rippled 0.30.1][] |
 | `state_accounting.*.duration_us` | String          | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) [New in: rippled 0.30.1][] |
-| `state_accounting.*.transitions` | Number          | The number of times the server has transitioned into this state. [New in: rippled 0.30.1][] |
+| `state_accounting.*.transitions` | Number          | The number of times the server has changed into this state. [New in: rippled 0.30.1][] |
 | `time`                           | String          | The current time in UTC, according to the server's clock. [Updated in: rippled 1.5.0][] |
 | `uptime`                         | Number          | Number of consecutive seconds that the server has been operational. [New in: rippled 0.30.1][] |
 | `validated_ledger`               | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |

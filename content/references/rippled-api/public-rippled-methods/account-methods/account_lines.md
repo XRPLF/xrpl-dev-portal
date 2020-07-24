@@ -43,7 +43,7 @@ rippled account_lines <account> [<peer>] [<ledger>]
 
 [Try it! >](websocket-api-tool.html#account_lines)
 
-The request accepts the following paramters:
+The request accepts the following parameters:
 
 | `Field`        | Type                                       | Description    |
 |:---------------|:-------------------------------------------|:---------------|

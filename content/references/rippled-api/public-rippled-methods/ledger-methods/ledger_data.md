@@ -97,7 +97,7 @@ An example of a successful response:
 
 *WebSocket (binary:false)*
 
-```
+```json
 {
     "id": 2,
     "result": {
@@ -245,9 +245,9 @@ The format of each object in the `state` array depends on whether `binary` was s
 
 | `Field`             | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `data`              | String    | (Only included if `"binary":true`) Hex representation of the requested data |
-| `LedgerEntryType`   | String    | (Only included if `"binary":false`) String indicating what type of ledger object this object represents. See [ledger data formats](ledger-data-formats.html) for the full list. |
-| (Additional fields) | (Various) | (Only included if `"binary":false`) Additional fields describing this object, depending on which LedgerEntryType it is. |
+| `data`              | String    | _(Only included if `"binary":true`)_ Hex representation of the requested data |
+| `LedgerEntryType`   | String    | _(Only included if `"binary":false`)_ String indicating what type of ledger object this object represents. See [ledger object types](ledger-object-types.html) for the full list. |
+| (Additional fields) | (Various) | _(Only included if `"binary":false`)_ Additional fields describing this object, depending on which [ledger object type](ledger-object-types.html) it is. |
 | `index`             | String    | Unique identifier for this ledger entry, as hex. |
 
 ## Possible Errors

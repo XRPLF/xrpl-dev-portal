@@ -48,7 +48,7 @@ Before integrating, exchanges should be aware of the [partial payments](partial-
 
 #### Partial Payments Warning
 
-When the [tfPartialPayment flag](payment.html#payment-flags) is enabled, the `Amount` field **_is not guaranteed to be the amount received_**. The `delivered_amount` field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the Amount field to determine how much your account received instead.
+When the [`tfPartialPayment` flag](payment.html#payment-flags) is enabled, the `Amount` field **_is not guaranteed to be the amount received_**. The `delivered_amount` field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the Amount field to determine how much your account received instead.
 
 **Warning:** Be aware that malicious actors could exploit this. For more information, see [Partial Payments](partial-payments.html).
 
@@ -74,7 +74,7 @@ To follow Ripple's recommended best practices, Alpha Exchange should create at l
 
         * The malicious actor could issue currency in the XRP Ledger by using the cold wallet, but that currency should not be valued by anyone (unless the exchange explicitly stated it was also a gateway).
 
-        * If a malicious actor sets the asfRequireAuth flag for the account, that cannot be unset, although this only relates to issuing currency and should not affect an exchange that is not also a gateway. Any other settings a malicious actor changes with a master key can be reverted.
+        * If a malicious actor sets the `asfRequireAuth` flag for the account, that cannot be unset, although this only relates to issuing currency and should not affect an exchange that is not also a gateway. Any other settings a malicious actor changes with a master key can be reverted.
 
 * One or more [_hot wallets_](issuing-and-operational-addresses.html#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
 
@@ -119,7 +119,7 @@ XRP Balances</i></b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
     <td></td>
-    <td><b>Acct #</b></td>
+    <td><b>Account #</b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
   </tr>
@@ -235,7 +235,7 @@ XRP Balances</i></b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
     <td></td>
-    <td><b>Acct #</b></td>
+    <td><b>Account #</b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
   </tr>
@@ -306,7 +306,7 @@ A user named Charlie wants to deposit 50,000 XRP to Alpha Exchange. Doing this i
 
 1. Charlie submits a payment of 50,000  XRP (by using [RippleAPI](rippleapi-reference.html) or similar software) to Alpha Exchange's [cold wallet](#accounts).
 
-    a. Charlie adds an identifier (in this case, `789`) to the payment to associate it with his account at Alpha Exchange. This is called a [_destination tag_](become-an-xrp-ledger-gateway.html#source-and-destination-tags). (To use this, Alpha Exchange should have set the asfRequireDest flag on all of its accounts to require all incoming payments to have a destination tag like Charlie's. For more information, see [AccountSet Flags](accountset.html#accountset-flags)).
+    a. Charlie adds an identifier (in this case, `789`) to the payment to associate it with his account at Alpha Exchange. This is called a [_destination tag_](become-an-xrp-ledger-gateway.html#source-and-destination-tags). (To use this, Alpha Exchange should have set the `asfRequireDest` flag on all of its accounts to require all incoming payments to have a destination tag like Charlie's. For more information, see [AccountSet Flags](accountset.html#accountset-flags)).
 
 2. The software at Alpha Exchange detects the incoming payment, and recognizes `789` as the destination tag for Charlie’s account.
 
@@ -329,7 +329,7 @@ XRP Balances</i></b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
     <td></td>
-    <td><b>Acct #</b></td>
+    <td><b>Account #</b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
   </tr>
@@ -428,7 +428,7 @@ Off-Ledger Balances</i></b></td>
     <td></td>
   </tr>
   <tr>
-    <td><b>Acct #</b></td>
+    <td><b>Account #</b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
     <td></td>
@@ -520,7 +520,7 @@ Off-Ledger Balances</td>
     <td><b>User</td>
     <td><b>Balance</td>
     <td></td>
-    <td><b>Acct #</td>
+    <td><b>Account #</td>
     <td><b>User</td>
     <td><b>Balance</td>
     <td></td>

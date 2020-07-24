@@ -35,7 +35,7 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 
 - If the `Destination` is the sender of the transaction, the transaction fails with the result code `temREDUNDANT`.
 - If the `Destination` [account](accounts.html) does not exist in the ledger, the transaction fails with the result code `tecNO_DST`.
-- If the `Destination` account has the RequireDest flag enabled but the transaction does not include a `DestinationTag` field, the transaction fails with the result code `tecDST_TAG_NEEDED`.
+- If the `Destination` account has the `RequireDest` flag enabled but the transaction does not include a `DestinationTag` field, the transaction fails with the result code `tecDST_TAG_NEEDED`.
 - If `SendMax` specifies an issued currency which is [frozen](freezes.html), the transaction fails with the result `tecFROZEN`.
 - If the `Expiration` of the transaction is in the past, the transaction fails with the result `tecEXPIRED`.
 - If the sender does not have enough XRP to meet the [owner reserve](reserves.html#owner-reserves) after adding the Check, the transaction fails with the result `tecINSUFFICIENT_RESERVE`.

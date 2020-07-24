@@ -16,7 +16,7 @@ Trust lines are represented in the ledger's state data as [RippleState objects](
 
 A trust line with settings in the default state is equivalent to no trust line.
 
-The default state of all trust line flags is off, except for the [NoRipple flag](rippling.html), whose default state depends on the DefaultRipple flag.
+The default state of all trust line flags is off, except for the [No Ripple flag](rippling.html), whose default state depends on the `DefaultRipple` flag.
 
 ## See Also
 

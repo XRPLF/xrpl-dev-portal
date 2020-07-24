@@ -30,9 +30,9 @@ The `Amendments` object type contains a list of [Amendments](amendments.html) th
 ## {{currentpage.name}} Fields
 
 | Name              | JSON Type | [Internal Type][] | Description |
-|-------------------|-----------|-------------------|-------------|
-| `Amendments`      | Array     | STI_VECTOR256     | _(Optional)_ Array of 256-bit [amendment IDs](amendments.html#about-amendments) for all currently-enabled amendments. If omitted, there are no enabled amendments. |
-| `Majorities`      | Array     | STI_ARRAY | _(Optional)_ Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
+|-------------------|-----------|-----------|---------------------|
+| `Amendments`      | Array     | Vector256 | _(Optional)_ Array of 256-bit [amendment IDs](amendments.html#about-amendments) for all currently-enabled amendments. If omitted, there are no enabled amendments. |
+| `Majorities`      | Array     | STArray   | _(Optional)_ Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
 | `Flags`           | Number    | UInt32    | A bit-map of boolean flags. No flags are defined for the Amendments object type, so this value is always `0`. |
 | `LedgerEntryType` | String    | UInt16    |  The value `0x0066`, mapped to the string `Amendments`, indicates that this object describes the status of amendments to the XRP Ledger. |
 
