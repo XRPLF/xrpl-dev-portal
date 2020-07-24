@@ -527,7 +527,7 @@ With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, re
 |:-----------------------------------------------------------------|:----------|
 | B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | In Development |
 
-Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the liveness of the network during periods of network instability.
+Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.
 
 
 ## OwnerPaysFee

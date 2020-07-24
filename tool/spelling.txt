@@ -331,6 +331,7 @@ fix1571
 fix1578
 fix1623
 fix1781
+fixamendmentmajoritycalc
 fixcheckthreading
 fixmasterkeyasregularkey
 fixpaychanrecipientownerdir
@@ -362,6 +363,7 @@ micropayments
 multisign
 multisigning
 multisignreserve
+negativeunl
 noripple
 noripple_check
 nudb
@@ -421,3 +423,4 @@ xrpchat
 
 britto
 macbrough
+xrpscan
