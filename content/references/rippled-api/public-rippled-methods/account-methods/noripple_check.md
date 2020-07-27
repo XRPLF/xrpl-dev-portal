@@ -7,7 +7,7 @@ The `noripple_check` command provides a quick way to check the status of [the De
 ## Request Format
 An example of the request format:
 
-**Note:** There is no command-line syntax for this method. Use the [json method][] to access this from the command line.
+{% include '_snippets/no-cli-syntax.md' %}
 
 <!-- MULTICODE_BLOCK_START -->
 
