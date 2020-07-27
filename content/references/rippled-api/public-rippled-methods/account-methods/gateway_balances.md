@@ -6,6 +6,8 @@ The `gateway_balances` command calculates the total balances issued by a given a
 ## Request Format
 An example of the request format:
 
+**Note:** There is no command-line syntax for this method. Use the [json method][] to access this from the command line.
+
 <!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
@@ -42,7 +44,7 @@ An example of the request format:
 
 *Commandline*
 ```
-gateway_balances rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
+rippled json gateway_balances ' {"account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q", "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ", "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],"ledger_index": "validated","strict": true} '
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -229,6 +231,20 @@ An example of a successful response:
             }
          ]
       },
+      "balances" : {
+         "rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ" : [
+            {
+               "currency" : "EUR",
+               "value" : "144816.1965999999"
+            }
+         ],
+         "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt" : [
+            {
+               "currency" : "USD",
+               "value" : "6677.38614"
+            }
+         ]
+      },
       "frozen_balances" : {
          "r4keXr5myiU4iTLh68ZqZ2CgsJ8dM9FSW6" : [
             {
@@ -237,22 +253,21 @@ An example of a successful response:
             }
          ]
       },
-      "ledger_current_index" : 56866688,
+      "ledger_hash" : "6C789EAF25A931565E5936042EED037F287F3348B61A70777649552E0385B0E4",
+      "ledger_index" : 57111383,
       "obligations" : {
          "BTC" : "1762.700511879441",
-         "EUR" : "958608.6233004864",
+         "EUR" : "813792.4267005104",
          "GBP" : "4974.337212333351",
-         "USD" : "6746387.604424974"
+         "USD" : "6739710.218284974"
       },
       "status" : "success",
-      "validated" : false
+      "validated" : true
    }
 }
 ```
 
 <!-- MULTICODE_BLOCK_END -->
-
-**Note:** There is no command-line syntax for this method. Use the [json method][] to access this from the command line.
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
