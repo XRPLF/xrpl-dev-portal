@@ -35,7 +35,7 @@ An example of the request format:
 *Commandline*
 
 ```sh
-#Syntax:
+#Syntax: account_lines <account> [<peer>] [<ledger_index>|<ledger_hash>]
 rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ```
 
