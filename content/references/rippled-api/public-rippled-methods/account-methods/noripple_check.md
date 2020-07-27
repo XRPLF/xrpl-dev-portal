@@ -3,10 +3,11 @@
 
 The `noripple_check` command provides a quick way to check the status of [the DefaultRipple field for an account and the NoRipple flag of its trust lines](rippling.html), compared with the recommended settings.
 
-**Note:** There is no commandline version of this method.
 
 ## Request Format
 An example of the request format:
+
+**Note:** There is no command-line syntax for this method. Use the [json method][] to access this from the command line.
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -43,7 +44,6 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Note:** There is no command-line syntax for this method. Use the [json method][] to access this from the command line.
 
 The request includes the following parameters:
 
