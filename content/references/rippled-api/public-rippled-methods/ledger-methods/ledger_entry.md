@@ -7,7 +7,7 @@ The `ledger_entry` method returns a single ledger object from the XRP Ledger in 
 
 An example of the request format:
 
-**Note:** There is no commandline syntax for `ledger_data`. You can use the [json method][] to access this method from the commandline instead.
+{% include '_snippets/no-cli-syntax.md' %}
 
 <!-- MULTICODE_BLOCK_START -->
 
