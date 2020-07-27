@@ -36,7 +36,7 @@ An example of the request format:
 
 ```sh
 #Syntax: account_offers account [ledger_index] [strict]
-rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current strict
+rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current strict
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -157,9 +157,21 @@ An example of a successful response:
 ```json
 {
    "result" : {
-      "account" : "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-      "ledger_current_index" : 56843824,
-      "offers" : [],
+      "account" : "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM",
+      "ledger_current_index" : 57110969,
+      "offers" : [
+         {
+            "flags" : 0,
+            "quality" : "1499850014.892974",
+            "seq" : 7916201,
+            "taker_gets" : {
+               "currency" : "BCH",
+               "issuer" : "rcyS4CeCZVYvTiKcxj6Sx32ibKwcDHLds",
+               "value" : "0.5268598580881351"
+            },
+            "taker_pays" : "790210766"
+         }
+      ],
       "status" : "success",
       "validated" : false
    }
