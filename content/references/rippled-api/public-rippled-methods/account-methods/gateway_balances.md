@@ -6,7 +6,7 @@ The `gateway_balances` command calculates the total balances issued by a given a
 ## Request Format
 An example of the request format:
 
-**Note:** There is no command-line syntax for this method. Use the [json method][] to access this from the command line.
+{% include '_snippets/no-cli-syntax.md' %}
 
 <!-- MULTICODE_BLOCK_START -->
 
