@@ -18,17 +18,21 @@ The [server_info method][] reports how many ledger versions your server has avai
 
 ## Fetching History
 
-When it starts, a `rippled` server's first priority is to get a complete copy of the latest validated ledger. From there, it keeps up with advances in the ledger progress. If configured to do so, the server also backfills ledger history up to a configured amount, which must be equal to or less than the cutoff beyond which online deletion is configured to delete.
+When an XRP Ledger server starts, its first priority is to get a complete copy of the latest validated ledger. From there, it keeps up with advances in the ledger progress. The server fills in any gaps in its ledger history that occur after syncing, and can backfill history from before it became synced. (Gaps in ledger history can occur if a server temporarily becomes too busy to keep up with the network, loses its network connection, or suffers other temporary issues.) When downloading ledger history, the server requests the missing data from its [peer servers](peer-protocol.html), and verifies the data's integrity using cryptographic [hashes][Hash].
 
-The server can backfill history from before it became synced, as well as filling in any gaps in the history it has collected after syncing. (Gaps in ledger history can occur if a server temporarily becomes too busy to keep up with the network, loses its network connection, or suffers other temporary issues.) To backfill history, the server requests data from its peer `rippled` servers. The amount the server tries to backfill is defined by the `[ledger_history]` setting.
+Backfilling history is one of the server's lowest priorities, so it may take a long time to fill missing history, especially if the server is busy or has less than sufficient hardware and network specs. For recommendations on hardware specs, see [Capacity Planning](capacity-planning.html). Backfilling history also requires that at least one of the server's direct peers has the history in question. For more information on managing your server's peer-to-peer connections, see [Configure Peering](configure-peering.html).
 
 The XRP Ledger identifies data (on several different levels) by a unique hash of its contents. The XRP Ledger's state data contains a short summary of the ledger's history, in the form of the [LedgerHashes object type](ledgerhashes.html). Servers use the LedgerHashes objects to know which ledger versions to fetch, and to confirm that the ledger data they receive is correct and complete.
 
-Backfilling history is one of the server's lowest priorities, so it may take a long time to fill missing history, especially if the server is busy or has less than sufficient hardware and network specs. For recommendations on hardware specs, see [Capacity Planning](capacity-planning.html). Backfilling history also requires that at least one of the server's direct peers has the history in question. <!--{# TODO: link some info for managing your peer connections when that exists #}-->
 
-### With Advisory Deletion
+<a id="with-advisory-deletion"></a><!-- old anchor to this area -->
+### Backfilling
+[Updated in: rippled 1.6.0][]
 
-If [online deletion](online-deletion.html) and advisory deletion are both enabled, the server automatically backfills data up to the oldest ledger it has not been allowed to delete yet. This can fetch data beyond the number of ledger versions configured in the `[ledger_history]` and `online_delete` settings. The [can_delete method][] tells the server what ledger versions it is allowed to delete.
+The amount of history a server attempts to download depends on its configuration. The server automatically tries to fill gaps by downloading history up to **the oldest ledger it already has available**. You can use the `[ledger_history]` setting to make the server backfill history beyond that point. However, the server never downloads ledgers that would be scheduled for [deletion](online-deletion.html).
+
+The `[ledger_history]` setting defines a minimum number of ledgers to accumulate from before the current validated ledger. Use the special value `full` to download the [full history](#full-history) of the network. If you specify a number of ledgers, it must be equal to or more than the `online_deletion` setting; you cannot use `[ledger_history]` to make the server download _less_ history. To reduce the amount of history a server stores, change the [online deletion](online-deletion.html) settings instead.
+
 
 
 ## Full History
