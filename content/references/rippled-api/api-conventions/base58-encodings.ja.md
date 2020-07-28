@@ -1,6 +1,6 @@
 # base58エンコード
 
-`rippled` APIでは、チェックサムを含む[base58](https://en.wikipedia.org/wiki/Base58)エンコード（「Base58Check」とも呼ばれます）を使用して[アカウントアドレス](accounts.html#アドレス)や暗号鍵に関連するその他のタイプの値が表現されることがよくあります。このエンコードは、Bitcoinのアドレスに使用されているエンコードと同じですが、XRP Ledgerでは以下のディクショナリが使用される点が異なります。`rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`。
+`rippled` APIでは、チェックサムを含む**base58**エンコード（「Base58Check」とも呼ばれます）を使用して[アカウントアドレス](accounts.html#アドレス)や暗号鍵に関連するその他のタイプの値が表現されることがよくあります。このエンコードは、[Bitcoinのアドレスに使用されているエンコード](https://en.bitcoin.it/wiki/Base58Check_encoding)と同じですが、XRP Ledgerでは以下のディクショナリが使用される点が異なります。`rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`。
 
 XRP Ledgerにより、さまざまなタイプの値をエンコードする前に、データタイプを区別する固有の8ビット数値が値の前に付加されます。XRP Ledgerのbase58ディクショナリの文字配列と組み合わされた、さまざまなタイプのエンコード値のbase58表現は、タイプごとに固有の文字で始まります。
 

@@ -107,7 +107,7 @@ XRP Ledgerでは、トランザクション（取引）履歴をトランザク�
 
 [[ソース]](https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140 "Source")
 
-XRP Ledgerのアドレスは、[base58](https://en.wikipedia.org/wiki/Base58)_形式のディクショナリ_`rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`を使用してエンコードされています。XRP Ledgerはbase58でいくつかのタイプのキーをエンコードするため、それらを区別するためにエンコードされたデータの前に1バイトの「タイププレフィクス」（「バージョンプレフィクス」とも呼ばれます）を付けます。タイププレフィクスによりアドレスは通常、base58形式の異なる文字で始まります。
+XRP Ledgerのアドレスは、[base58][]_形式のディクショナリ_`rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`を使用してエンコードされています。XRP Ledgerはbase58でいくつかのタイプのキーをエンコードするため、それらを区別するためにエンコードされたデータの前に1バイトの「タイププレフィクス」（「バージョンプレフィクス」とも呼ばれます）を付けます。タイププレフィクスによりアドレスは通常、base58形式の異なる文字で始まります。
 
 次の図は、キーとアドレスの関係を示しています。
 

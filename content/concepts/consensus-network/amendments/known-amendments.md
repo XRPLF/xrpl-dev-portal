@@ -3,16 +3,20 @@
 
 The following is a comprehensive list of all known amendments and their status on the production XRP Ledger:
 
+**Tip:** This list is updated manually. For a live view of amendment voting, see the [XRPScan Amendments Dashboard](https://xrpscan.com/amendments).
+
 | Name                            | Introduced | Status                        |
 |:--------------------------------|:-----------|:------------------------------|
-| [HardenedValidations][]         | v1.6.0-b5  | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fix1781][]                     | v1.6.0-b1  | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [NegativeUNL][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixQualityUpperBound][]        | v1.5.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
+| [fixAmendmentMajorityCalc][]    | v1.6.0-b8  | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [HardenedValidations][]         | v1.6.0-b5  | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fix1781][]                     | v1.6.0-b1  | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
-| [RequireFullyCanonicalSig][]    | v1.5.0     | [Expected: 2020-07-03](https://xrpl.org/blog/2020/requirefullycanonicalsig-expected.html "BADGE_BLUE") |
+| [fixQualityUpperBound][]        | v1.5.0     | [Enabled: 2020-07-09](https://xrpcharts.ripple.com/#/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
+| [RequireFullyCanonicalSig][]    | v1.5.0     | [Enabled: 2020-07-03](https://xrpcharts.ripple.com/#/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
 | [Checks][]                      | v0.90.0    | [Enabled: 2020-06-18](https://xrpcharts.ripple.com/#/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
 | [DeletableAccounts][]           | v1.4.0     | [Enabled: 2020-05-08](https://xrpcharts.ripple.com/#/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
 | [fixCheckThreading][]           | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
@@ -355,6 +359,18 @@ Without this amendment, it is possible to have a [payment path](paths.html) wher
 With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](tem-codes.html) instead.
 
 
+## fixAmendmentMajorityCalc
+[fixAmendmentMajorityCalc]: #fixamendmentmajoritycalc
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 | In Development |
+
+Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.
+
+Without this amendment, the minimum threshold for amendment activation is any value that rounds to 204/256 of trusted validators, which depends on the number of trusted validators at the time. For example, an amendment could activate with exactly 28 out of 36 validators (approximately 77.8%). With this amendment, the actual minimum number of validators needed is never less than 80% of trusted validators.
+
+
 ## fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
@@ -398,7 +414,7 @@ This change prevents accounts from being deleted if they are the recipient for o
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | Open for Voting |
+| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | Enabled   |
 
 Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
 
@@ -504,6 +520,16 @@ Without this amendment, the owner reserve for a SignerList ranges from 15 to 50 
 With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a [SignerListSet transaction](signerlistset.html) to replace the SignerList after this amendment has been enabled. (The replacement can be identical to the previous version.)
 
 
+## NegativeUNL
+[NegativeUNL]: #negativeunl
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | In Development |
+
+Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the liveness of the network during periods of network instability.
+
+
 ## OwnerPaysFee
 [OwnerPaysFee]: #ownerpaysfee
 
@@ -537,7 +563,7 @@ For more information, see the [Payment Channels Tutorial](use-payment-channels.h
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | Expected  |
+| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | Enabled   |
 
 Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of just transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#global-flags) enabled.
 

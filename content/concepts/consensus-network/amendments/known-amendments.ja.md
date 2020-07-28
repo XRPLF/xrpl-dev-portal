@@ -3,16 +3,20 @@
 
 以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
+**ヒント:** このリストは手動に更新されています。生ステータスを[XRPScan Amendment Dashboard](https://xrpscan.com/amendments)にご覧下さい。
+
 | 名前                            | 導入済み | ステータス                              |
 |:--------------------------------|:-----------|:------------------------------------|
-| [HardenedValidations][]         | v1.6.0-b5  | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [fix1781][]                     | v1.6.0-b1  | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [NegativeUNL][]                 | 未定  | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [fixQualityUpperBound][]        | v1.5.0     | [投票中: 未定](https://xrpl.org/blog/2020/rippled-1.5.0.html "BADGE_80d0e0") |
+| [fixAmendmentMajorityCalc][]    | v1.6.0-b8  | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [HardenedValidations][]         | v1.6.0-b5  | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fix1781][]                     | v1.6.0-b1  | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [FlowCross][]                   | v0.70.0    | [投票中: 未定](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
-| [RequireFullyCanonicalSig][]    | v1.5.0     | [予定: 2020/07/03](https://xrpl.org/blog/2020/requirefullycanonicalsig-expected.html "BADGE_BLUE") |
+| [fixQualityUpperBound][]        | v1.5.0     | [有効: 2020/07/09](https://xrpcharts.ripple.com/#/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
+| [RequireFullyCanonicalSig][]    | v1.5.0     | [有効: 2020/07/03](https://xrpcharts.ripple.com/#/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
 | [Checks][]                      | v0.90.0    | [有効: 2020/06/18](https://xrpcharts.ripple.com/#/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
 | [DeletableAccounts][]           | v1.4.0     | [有効: 2020/05/08](https://xrpcharts.ripple.com/#/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
 | [fixCheckThreading][]           | v1.4.0     | [有効: 2020/05/01](https://xrpcharts.ripple.com/#/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
@@ -333,6 +337,19 @@ Without this amendment, it is possible to have a [payment path](paths.html) wher
 
 With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](tem-codes.html) instead.
 
+
+## fixAmendmentMajorityCalc
+[fixAmendmentMajorityCalc]: #fixamendmentmajoritycalc
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 | 開発中 |
+
+Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.
+
+Without this amendment, the minimum threshold for amendment activation is any value that rounds to 204/256 of trusted validators, which depends on the number of trusted validators at the time. For example, an amendment could activate with exactly 28 out of 36 validators (approximately 77.8%). With this amendment, the actual minimum number of validators needed is never less than 80% of trusted validators.
+
+
 ## fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
@@ -386,7 +403,7 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 
 | Amendment ID                                                     | ステータス  |
 |:-----------------------------------------------------------------|:----------|
-| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | 投票中 |
+| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | 有効 |
 
 Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
 
@@ -472,6 +489,17 @@ XRP Ledgerアカウントが[マルチ署名](multi-signing.html) SignerListを�
 
 この修正により、新しいSignerListの所有者準備金は、署名者数に関係なく5 XRPとなります。以前に作成されたSignerListオブジェクトの準備金は、そのまま変更されません。この修正の後に作成されたSignerListオブジェクトの準備金を削減するには、この修正実施後に、[SignerListSetトランザクション](signerlistset.html)を使用してSignerListを置き換えます。（この置き換えは、前のバージョンの場合とまったく同じです。）
 
+
+## NegativeUNL
+[NegativeUNL]: #negativeunl
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | 開発中 |
+
+Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the liveness of the network during periods of network instability.
+
+
 ## OwnerPaysFee
 [OwnerPaysFee]: #ownerpaysfee
 
@@ -503,7 +531,7 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 
 | Amendment ID                                                     | ステータス    |
 |:-----------------------------------------------------------------|:----------|
-| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | 予定  |
+| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | 有効  |
 
 Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of just transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#グローバルフラグ) enabled.
 
