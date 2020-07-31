@@ -4,7 +4,7 @@ In the XRP Ledger, "rippling" describes a process of atomic net settlement betwe
 
 Rippling only occurs along the [paths](paths.html) of a payment. [Direct XRP-to-XRP payments](direct-xrp-payments.html) do not involve rippling.
 
-For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between issuers of the same currency. Thus, the [No Ripple Flag](#the-noripple-flag) disables rippling on incoming trust lines by default, unless the account enables rippling by default by enabling the [Default Ripple flag](#the-default-ripple-flag).
+For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between issuers of the same currency. Thus, the [No Ripple Flag](#the-no-ripple-flag) disables rippling on incoming trust lines by default, unless the account enables rippling by default by enabling the [Default Ripple flag](#the-default-ripple-flag).
 
 **Caution:** If you create a trust line to another address, you must explicitly enable the `tfSetNoRipple` flag to block rippling on your side of that trust line.
 
@@ -57,7 +57,7 @@ The **Default Ripple** flag is an account setting that enables rippling on all i
 
 The Default Ripple setting of your account does not affect trust lines that you create; only trust lines that others open to you. If you change the Default Ripple setting of your account, trust lines that were created before the change keep their existing No Ripple settings. You can use a [TrustSet transaction][] to change the No Ripple setting of a trust line to match your address's new default.
 
-For more information, see [Default Ripple in 'Becoming an XRP Ledger Gateway'](become-an-xrp-ledger-gateway.html#defaultripple).
+For more information, see [Default Ripple in 'Becoming an XRP Ledger Gateway'](become-an-xrp-ledger-gateway.html#default-ripple).
 
 
 ## Using No Ripple

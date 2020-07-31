@@ -250,7 +250,7 @@ There are several prerequisites that ACME must meet for this to happen:
     - ACME can store the funds allocated to the XRP Ledger in a separate bank account.
     - If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof to customers that the gateway is solvent.
 - ACME must control an address in the XRP Ledger. Ripple's best practices recommend using a separate issuing address and operational address. See [Issuing and Operational Addresses](issuing-and-operational-addresses.html) for details.
-    - ACME must enable the [`DefaultRipple` Flag](#default-ripple) on its issuing address for customers to send and receive its issued currencies.
+    - ACME must enable the [Default Ripple Flag](#default-ripple) on its issuing address for customers to send and receive its issued currencies.
 - Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.
     - ACME should publicize its issuing address on its website where customers can find it. It can also use an [`xrp-ledger.toml` file](xrp-ledger-toml.html) to publish the issuing address to automated systems.
 - ACME must create a user interface for Alice to send funds from ACME into the XRP Ledger.
