@@ -5,7 +5,7 @@
 <!--#{ using h4s for questions to keep them out of the right side nav (too cluttered when they display) and to provide appropriate text size for questions. #}-->
 #### What service do transaction validators provide?
 
-Validators determine if transactions meet protocol requirements, and are therefore “valid.” The service validators uniquely provide is grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending.
+Validators determine if transactions meet protocol requirements, and are therefore “valid.” The service validators uniquely provide is grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending. <!-- STYLE_OVERRIDE: therefore -->
 
 See [Consensus](consensus.html) and the [Ripple Labs Tech Talk: Understanding Consensus](https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/) for more information about the consensus process.
 
@@ -17,7 +17,7 @@ Running a validator does not require any fees or XRP. It is comparable in cost t
 
 #### What are Unique Node Lists (UNLs)?
 
-They are the lists of transaction validators a given participant believes will not conspire to defraud them.
+They are the lists of transaction validators a given participant believes will not conspire to defraud them. <!-- STYLE_OVERRIDE: will -->
 
 
 #### Which UNL should I select?
@@ -37,18 +37,18 @@ The primary incentive to run a validator is to preserve and protect the stable o
 If you run an XRP Ledger server to participate in the network, the additional cost and effort to run a validator is minimal. This means that additional incentives, such as the mining rewards in Bitcoin, are not necessary. Ripple avoids paying XRP as a reward for operating a validator so that such incentives do not warp the behavior of validators.
 
 
-#### Can financial institutions set up transaction validators that will help them meet specific institutional standards and requirements?
+#### Can financial institutions set up transaction validators to help them meet specific institutional standards and requirements?
 
-No, institutions cannot set up customized validator policies for choosing to allow some transactions and reject others. Validators either follow the protocol, or they do not. If software does not follow protocol rules, it will not function. Thus, it is not recommended that institutions seek out custom implementations without in-house expertise.
+No, institutions cannot set up customized validator policies for choosing to allow some transactions and reject others. Validators either follow the protocol, or they do not. If software does not follow protocol rules, it does not function. Thus, it is not recommended that institutions seek out custom implementations without in-house expertise.
 
 
-#### What will happen if more than 20% of nodes within the network do not agree with the majority? How is the final version of the ledger chosen?
+#### What happens if more than 20% of nodes within the network do not agree with the majority? How is the final version of the ledger chosen?
 
 The network may temporarily halt to reconfigure itself to continue with the new UNL list based on those that want to reach consensus. This temporary processing delay is desired rather than double spending.
 
-In the process of determining the final, authoritative version of the ledger, there may be multiple temporary internal versions. Such internal versions  will happen in distributed systems because not all nodes will receive transactions in the same order. The analogous behavior in Bitcoin is where two servers each see a different longest chain because two blocks were mined at about the same time.
+In the process of determining the final, authoritative version of the ledger, there may be multiple temporary internal versions. Such internal versions naturally happen in distributed systems because not all nodes receive transactions in the same order. The analogous behavior in Bitcoin is where two servers each see a different longest chain because two blocks were mined at about the same time.
 
-However, there will only be one authoritative ledger version at any given time; other versions are irrelevant and harmless.
+However, there can be only one latest _validated_ ledger version at any given time; other versions are irrelevant and harmless.
 
 
 #### Does the XRP Ledger have a formal process for adding validators?
@@ -72,6 +72,8 @@ The XRP Ledger is designed to set the transaction cost dynamically based on dema
 
 
 #### What is Ripple standard operating procedure regarding money laundering and suspicious economic activity?
+
+<!-- STYLE_OVERRIDE: regarding -->
 
 Ripple is committed to monitoring and reporting any AML flags across the XRP Ledger network, as well as reporting suspicious activity to FinCEN as applicable.
 
