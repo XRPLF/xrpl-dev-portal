@@ -999,6 +999,15 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/consensus-network/invariant-checking.md
+        html: invariant-checking-concept.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active.
+        targets:
+            - en
+
     -   md: concepts/consensus-network/transaction-queue.md
         html: transaction-queue.html
         funnel: Docs
