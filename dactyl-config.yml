@@ -6312,6 +6312,8 @@ known_broken_links:
     #  even though they still work in browser:
     - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
     - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
+    # Another failure that works fine in a browser:
+    - https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/
 
 # Style Checker Config ------------------------------------------------------ #
 
