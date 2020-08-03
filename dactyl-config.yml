@@ -2248,12 +2248,6 @@ pages:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
-        html: capacity-planning.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Installation
-        blurb: Plan system specs and tune configuration for rippled in production environments.
         targets:
             - en
 
@@ -2566,6 +2560,12 @@ pages:
         blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
         untranslated_warning: true
         targets:
+            - ja
+
+    # TODO: translate this page including the blurb in its frontmatter.
+    -   md: tutorials/manage-the-rippled-server/configure-peering/enable-link-compression.md
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.md
