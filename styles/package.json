@@ -5,5 +5,8 @@
   },
   "scripts": {
     "build-css": "node-sass --include-path scss xrpl.scss ../assets/css/devportal.css --output-style compressed"
+  },
+  "dependencies": {
+    "sass": "^1.26.10"
   }
 }

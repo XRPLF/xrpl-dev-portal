@@ -153,6 +153,23 @@ targets:
 
 pages:
 
+# New Marketing Page ---------------------------------------------------------------------
+    -   name: Impact
+        funnel: Impact
+        template: template-marketing-impact.html
+        html: impact.html
+        sidebar: disabled
+        targets: 
+            - en
+
+    -   name: Usage
+        funnel: Impact
+        template: template-marketing-usage.html
+        html: usage.html
+        sidebar: disabled
+        targets: 
+            - en
+
     -   name: Docs
         funnel: Docs
         template: template-landing-docs.html

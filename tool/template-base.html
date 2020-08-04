@@ -50,8 +50,8 @@
 
 <body class="xrp-ledger-dev-portal {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}lang-{{target.lang}} {% block bodyclasses %}{% endblock %}">
 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
-    <a href="{% if target.no_cover is defined and target.no_cover %}/{% else %}index.html{% endif %}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="{{target.display_name}}" /></a>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-black">
+    <a href="{% if target.no_cover is defined and target.no_cover %}/{% else %}index.html{% endif %}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="{{target.display_name}}" /></a>
     <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

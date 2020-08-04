@@ -1,10 +1,15 @@
 // Font Settings ===============================================================
 
 body {
-  font-feature-settings: "liga", "kern";
+  // font-feature-settings: "liga", "kern";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  font-size: 0.9375rem;
+  font-size: 1rem;
+  background: #000;
+  background-color: #000;
+  line-height: 1.5;
+  color: #FFF;
+  font-family: 'Work Sans', sans-serif;
 }
 
 pre, code {
@@ -14,10 +19,40 @@ pre, code {
   font-variant-ligatures: none;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  color: $black;
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: bold;
+}
+h1, .h1 {
+  font-size: 2.625rem;
+}
+h6, .h6 {
+  font-size: 1.125rem;
+}
+p {
+  line-height: 1.5;
+}
+a:hover {
+  text-decoration: none;
+}
+.fs-base {
+  font-size: 1rem;
+}
+.fs-5 {
+  font-size: 1.25rem;
+}
+.fs-5-5 {
+  font-size: 1.375rem;
+}
+.fs-6 {
+  font-size: 1.5rem;
+}
+.normal {
+  font-weight: normal;
+}
+.bold {
+  font-weight: bold;
 }
 
 /* Japanese language font override ------------------------------------------ */
@@ -30,8 +65,8 @@ h1, h2, h3, h4, h5 {
   .right-sidebar .level-1 a,
   .right-sidebar .separator,
   .use-case-step-num {
-    //font-family: 'M PLUS 1p', 'Space Mono', sans-serif;
-    //font-family: '851Gkktt', 'Space Mono', sans-serif;
-    font-family: 'Makinas-4-Flat', 'Makinas-4-Square', 'Space Mono', sans-serif;
+    font-family: 'M PLUS 1p', 'Work Sans', sans-serif;
+    font-family: '851Gkktt', 'Work Sans', sans-serif;
+    // font-family: 'Makinas-4-Flat', 'Makinas-4-Square', 'Space Mono', sans-serif;
   }
 }
