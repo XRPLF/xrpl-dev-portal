@@ -68,9 +68,8 @@ If you decode the `blob` from base64, the result is a JSON object with the follo
 | `Field`      | Value  | Description                                          |
 |:-------------|:-------|:-----------------------------------------------------|
 | `sequence`   | Number | Unique sequence number for this list. A larger sequence number indicates a newer list; only the newest list is valid at a time. |
-| `expiration` | Number | The time this list expires, in [seconds since
-the Ripple Epoch][]. |
-| `validators` | Array  | A list of recommended validators.  |
+| `expiration` | Number | The time this list expires, in [seconds since the Ripple Epoch][]. |
+| `validators` | Array  | A list of recommended validators.                    |
 
 Each member of the `validators` array has the following fields:
 
