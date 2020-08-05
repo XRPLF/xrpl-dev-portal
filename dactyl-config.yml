@@ -166,7 +166,7 @@ pages:
     -   name: Uses
         funnel: Learn
         category: Uses
-        template: template-marketing-usage.html
+        template: template-learn-uses.html
         html: uses.html
         sidebar: disabled
         targets:
@@ -186,7 +186,7 @@ pages:
     -   name: Impact
         funnel: Learn
         category: Impact
-        template: template-marketing-impact.html
+        template: template-learn-impact.html
         html: impact.html
         sidebar: disabled
         targets:
