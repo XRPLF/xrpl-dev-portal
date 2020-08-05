@@ -14,7 +14,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [fixAmendmentMajorityCalc][]    | v1.6.0-b8  | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [HardenedValidations][]         | v1.6.0-b5  | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fix1781][]                     | v1.6.0-b1  | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [FlowCross][]                   | v0.70.0    | [Open for Voting: TBD](https://xrpl.org/blog/2017/rippled-0.70.0.html "BADGE_80d0e0") |
+| [FlowCross][]                   | v0.70.0    | [Enabled: 2020-08-04](https://xrpcharts.ripple.com/#/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F "BADGE_GREEN") |
 | [fixQualityUpperBound][]        | v1.5.0     | [Enabled: 2020-07-09](https://xrpcharts.ripple.com/#/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
 | [RequireFullyCanonicalSig][]    | v1.5.0     | [Enabled: 2020-07-03](https://xrpcharts.ripple.com/#/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
 | [Checks][]                      | v0.90.0    | [Enabled: 2020-06-18](https://xrpcharts.ripple.com/#/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
@@ -452,7 +452,7 @@ The Flow Engine also makes it easier to improve and expand the payment engine wi
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC | Open for Voting |
+| 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC | Enabled   |
 
 Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange. Uses the updated code from the [Flow](#flow) amendment to power offer crossing, so [OfferCreate transactions][] and [Payment transactions][] share more code. This has subtle differences in how offers are processed:
 
