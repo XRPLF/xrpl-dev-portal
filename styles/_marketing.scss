@@ -8,21 +8,18 @@
     margin-left: -15px;
 	}
 }
-:root {
-	--main-green: #19FF83;
-	--white: #FFFFFF;
-}
+
 .va-middle {
 	vertical-align: middle;
 }
 .text-white {
-	color: var(--white);
+	color: $white;
 }
 .text-green {
-	color: var(--main-green);
+	color: $primary;
 }
 .text-green:hover {
-	color: var(--main-green);
+	color: $primary;
 }
 .arrow-link:after {
 	content: url(../img/icon-green-arrow.svg);
@@ -62,7 +59,7 @@
 
 /* COMPONENTS */
 .border-green {
-	border: 1px solid var(--main-green);
+	border: 1px solid $primary;
 }
 .btn {
 	padding: 16px 24px;
@@ -71,11 +68,11 @@
 	line-height: 1.25;
 }
 .btn-clear {
-	color: var(--white);
-	border: 1px solid var(--white);
+	color: $white;
+	border: 1px solid $white;
 }
 .btn-clear:hover {
-	background: var(--white);
+	background: $white;
 	color: #000;
 }
 .card-wrapper {
@@ -85,7 +82,7 @@
 	margin: 0 0.75rem;
 	background: black;
 	padding: 3rem 2rem;
-	color: var(--white);
+	color: $white;
 }
 .card h5 {
 	height: 38px;

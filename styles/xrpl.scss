@@ -2,8 +2,8 @@
 
 // Set theme colors used by Bootstrap styles
 $white:    #FFF;
-$gray-100: #F9F7F7;
-$gray-200: #EBE8E7;
+$gray-100: #F5F7F9;
+$gray-200: #E1E4E8;
 $gray-300: #D3D0CF;
 $gray-400: #B3B0AF;
 $gray-500: #8D8A89;
@@ -11,21 +11,27 @@ $gray-600: #676463;
 $gray-700: #464443;
 $gray-800: #2E2D2C;
 $gray-900: #201F1E;
-$black:    #1B1818;
+$black:    #000;
 
-$primary:       #25A768; // Green
+$primary:       #19FF83; // Primary green
 $secondary:     $gray-600;
 $light:         $gray-200;
 $dark:          $black;
 $success:       #2BCB96; // light green
-$info:          #7699bb; // bluish
-$warning:       #D0DB60; // yellowish -- "caution" callout style
-$danger:        #AA4949; // wine red -- "warning" callout style
+$info:          #5111F4; // deep blue
+$warning:       #FEFF01; // yellow -- "caution" callout style
+$danger:        #FF2D9A; // rose -- "warning" callout style
 
 $code-color:    $gray-800;
 $body-color:    $black;
 $navbar-light-color: $gray-600;
 
+$body-bg:         $light;
+$code-color:      $gray-800;
+$body-color:      $gray-500;
+$headings-color:  $white;
+$text-muted:      $gray-400;
+$breadcrumb-bg:   $black;
 
 $navbar-padding-y: 0;
 $navbar-nav-link-padding-x: 1rem;
@@ -62,4 +68,3 @@ $font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
 @import "_dev-tools.scss";
 @import "_print.scss";
 @import "_marketing.scss";
-
