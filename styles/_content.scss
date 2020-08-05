@@ -2,19 +2,14 @@
 h1 a,
 h2 a,
 h3 a {
-  color: $black;
+  color: $white;
   text-decoration: none;
 }
 h1 a:hover,
 h2 a:hover,
 h3 a:hover,
 .xrpl-footer h5 a:hover {
-  color: $black;
-}
-
-.header-link:hover {
-  //TODO: this class may not do anything useful?
-  color: $black;
+  color: $white;
 }
 
 /* Content text styling ----------------------------------------------------- */

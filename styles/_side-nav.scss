@@ -1,11 +1,11 @@
 /* Left/right nav color scheme ------------------------------- */
 aside li a {
-  color: $gray-600;
+  color: $white;
   text-decoration: none;
   font-size: 1.05rem;
 }
 aside .sidenav_cat_title {
-  color: $black;
+  color: $white;
 }
 aside a:hover,
 aside .sidenav_cat_title:hover {
@@ -18,12 +18,12 @@ aside a.active:hover {
   font-weight: 700;
 }
 aside a.active-parent {
-  color: $gray-700;
+  color: $white;
   font-weight: 700;
 }
 
 .sidebar_pagelist {
-  border-left: 1px solid $gray-200;
+  border-left: 1px solid $white;
 }
 .sidebar_pagelist a,
 .right-sidebar li a {
@@ -47,7 +47,7 @@ aside a.active-parent {
   margin-left: 0;
   margin-top: 0;
   padding-left: 35px;
-  border-left: 1px solid $gray-200;
+  border-left: 1px solid $white;
 }
 .sidebar_pagelist .subpage:hover {
   padding-left: 35px;
@@ -63,18 +63,18 @@ aside a.active-parent {
 }
 
 .sidenav_cat_toggler {
-  background-color: $gray-600;
+  background-color: $white;
 }
 .sidenav_cat_toggler:hover {
   background-color: $primary;
 }
 
 .right-sidebar .card-body {
-  border-left: 1px solid $gray-200;
+  border-left: 1px solid $white;
 }
 
 .sidenav_parent a {
-  color: $black;
+  color: $white;
   display: block;
   font-size: 1.1rem;
   font-weight: 700;
@@ -82,12 +82,12 @@ aside a.active-parent {
 }
 
 .right-sidebar .level-1 a {
-  color: $black;
+  color: $white;
 }
 
 .right-sidebar .level-3 {
   padding-left: 16px;
-  border-left: 1px solid $gray-200;
+  border-left: 1px solid $white;
   margin-bottom: 0;
   padding-bottom: 5px;
 }
@@ -108,7 +108,6 @@ aside a.active-parent {
 .tree_nav {
   top: 48px;
   padding: 44px 24px 48px 0;
-  background-color: white;
 }
 
 .sidebar_pagelist {
@@ -226,7 +225,8 @@ aside a.active-parent {
 
 .right-sidebar .card-header {
   border-bottom: none;
-  background-color: white;
+  font-weight: bold;
+  font-size: 14px;
   padding: 10px 0;
 }
 

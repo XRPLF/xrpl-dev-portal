@@ -1,7 +1,7 @@
 .landing section,
 .xrpl-footer .card-grid,
 #main_content_wrapper {
-  border-bottom: 1px solid $black;
+  border-bottom: 0;
 }
 
 
@@ -11,8 +11,8 @@
 
 /* main content area ----------------------------------- */
 .sidebar-primary .main {
-  border-left: 1px solid $gray-200;
-  border-right: 1px solid $gray-200;
+  border-left: none;
+  border-right: none;
 }
 
 // Card Grid styles ------------------------------------------------------------

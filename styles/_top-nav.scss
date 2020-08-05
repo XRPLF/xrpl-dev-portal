@@ -1,18 +1,19 @@
 /* Top navigation ----------------------------------------------------------- */
 
 .navbar.fixed-top {
-  box-shadow: inset 0 -1px 0 0 $gray-200;
+  background-color: $black; // TODO: unnecessary if top nav is no longer fixed
 }
 
 .navbar .navbar-nav .nav-link {
-  color: $gray-600;
+  color: $white;
 }
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link:active,
 .navbar .navbar-nav .active .nav-link,
 .navbar .active-parent .nav-link {
-  color: $black;
+  color: $white;
+  font-weight: bold;
 }
 
 .navbar.fixed-top {
@@ -72,6 +73,8 @@
 }
 
 #topsearchbar {
+  background-color: $black;
+  color: $white;
   padding-right: 40px;
   width: 100%;
   font-size: 0.875rem;
