@@ -95,14 +95,14 @@ When you combine a field's type code and field code, you get the field's unique 
 |                  | Type Code < 16                                                                | Type Code >= 16 |
 |:-----------------|:------------------------------------------------------------------------------|:--|
 | **Field Code < 16**  | ![1 byte: high 4 bits define type; low 4 bits define field.](img/field-id-common-type-common-field.png) | ![2 bytes: low 4 bits of the first byte define field; next byte defines type.](img/field-id-uncommon-type-common-field.png) |
-| **Field Code >= 16** | ![2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field](img/field-id-common-type-uncommon-field.png) | ![3 bytes: first byte is 0x00, second byte defines type; third byte defines field](img/field-id-uncommon-type-uncommon-field.png) |
+| **Field Code >= 16** | ![2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field](img/field-id-common-type-uncommon-field.png) | ![3 bytes: first byte is `0x00`, second byte defines type; third byte defines field](img/field-id-uncommon-type-uncommon-field.png) |
 
 When decoding, you can tell how many bytes the field ID is by which bits **of the first byte** are zeroes. This corresponds to the cases in the above table:
 
 |                  | High 4 bits are nonzero                                                                | High 4 bits are zero |
 |:-----------------|:------------------------------------------------------------------------------|:--|
 | **Low 4 bits are nonzero**  | 1 byte: high 4 bits define type; low 4 bits define field.                     | 2 bytes: low 4 bits of the first byte define field; next byte defines type |
-| **Low 4 bits are zero** | 2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field | 3 bytes: first byte is 0x00, second byte defines type; third byte defines field |
+| **Low 4 bits are zero** | 2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field | 3 bytes: first byte is `0x00`, second byte defines type; third byte defines field |
 
 **Caution:** Even though the Field ID consists of the two elements that are used to sort fields, you should not sort by the serialized Field ID itself, because the byte structure of the Field ID changes the sort order.
 
@@ -342,6 +342,7 @@ When representing these fields in JSON objects, most are represented as JSON num
 
 Another special case is the `TransactionType` field. In JSON, this field is conventionally represented as a string with the name of the transaction type, but in binary, this field is a UInt16. The `TRANSACTION_TYPES` object in the [definitions file](#definitions-file) maps these strings to specific numeric values.
 
+<!-- SPELLING_IGNORE: pathset, stobject, starray, ledgerentry, vector256, accountids, uint -->
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			

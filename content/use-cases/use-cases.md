@@ -1,6 +1,6 @@
 # Use Cases
 
-Use these roadmaps to walk you, task-by-task, through implementing your use case.
+Use these instructions to walk you, step-by-step, through implementing your use case.
 
 Here are some of our users' most popular use cases:
 

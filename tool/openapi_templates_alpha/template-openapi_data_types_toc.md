@@ -1,6 +1,6 @@
 # {{api_title}} Data Types
 
-**Warning:** {{spec.info.title}} is early alpha software. API methods and data formats are likely to change frequently in ways that break backwards compatibility.
+**Warning:** {{spec.info.title}} is early alpha software. API methods and data formats are likely to change often, in ways that break backwards compatibility.
 
 The following data types are defined for this API:
 

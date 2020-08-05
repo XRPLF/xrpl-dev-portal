@@ -39,15 +39,19 @@ Create or modify a trust line linking two accounts.
 
 Transactions of the TrustSet type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
 
-| Flag Name       | Hex Value  | Decimal Value | Description                   |
-|:----------------|:-----------|:--------------|:------------------------------|
-| tfSetfAuth      | 0x00010000 | 65536         | Authorize the other party to hold issuances from this account. (No effect unless using the [*asfRequireAuth* AccountSet flag](accountset.html#accountset-flags).) Cannot be unset. |
-| tfSetNoRipple   | 0x00020000 | 131072        | Blocks rippling between two trustlines of the same currency, if this flag is set on both. (See [No Ripple](rippling.html) for details.) If the [fix1578 amendment][] is enabled, a transaction that uses this flag and cannot enable NoRipple fails with the result code `tecNO_PERMISSION`. If the amendment is not enabled, the transaction can result in `tesSUCCESS` (making any other changes it can) even if it cannot enable NoRipple on the trust line. |
-| tfClearNoRipple | 0x00040000 | 262144        | Clears the No-Rippling flag. (See [NoRipple](rippling.html) for details.) |
-| tfSetFreeze     | 0x00100000 | 1048576       | [Freeze](freezes.html) the trustline. |
-| tfClearFreeze   | 0x00200000 | 2097152       | [Unfreeze](freezes.html) the trustline. |
+| Flag Name         | Hex Value    | Decimal Value | Description               |
+|:------------------|:-------------|:--------------|:--------------------------|
+| `tfSetfAuth`      | `0x00010000` | 65536         | Authorize the other party to hold [currency issued by this account](issued-currencies.html). (No effect unless using the [`asfRequireAuth` AccountSet flag](accountset.html#accountset-flags).) Cannot be unset. |
+| `tfSetNoRipple`   | `0x00020000` | 131072        | Enable the No Ripple flag, which blocks [rippling](rippling.html) between two trust lines of the same currency if this flag is enabled on both. |
+| `tfClearNoRipple` | `0x00040000` | 262144        | Disable the No Ripple flag, allowing [rippling](rippling.html) on this trust line.) |
+| `tfSetFreeze`     | `0x00100000` | 1048576       | [Freeze](freezes.html) the trust line. |
+| `tfClearFreeze`   | `0x00200000` | 2097152       | [Unfreeze](freezes.html) the trust line. |
+
+If a transaction tries to enable No Ripple but cannot, it fails with the result code `tecNO_PERMISSION`. Before the [fix1578 amendment][] became enabled, such a transaction would result in `tesSUCCESS` (making any other changes it could) instead.
 
 The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. However, an enabled Auth flag prevents the trust line from being in its default state. An authorized trust line can never be deleted. An issuer can pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0.
+
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

@@ -87,7 +87,7 @@ $(document).ready( () => {
 })
 </script>
 
-**Caution:** Ripple operates the XRP Test Net for testing purposes only, and regularly resets the state of the test net along with all balances. As a precaution, Ripple recommends **not** using the same addresses on the test net and production.
+**Caution:** Ripple provides the XRP Test Net for testing purposes only, and regularly resets the state of the test net along with all balances. As a precaution, Ripple recommends **not** using the same addresses on the test net and production.
 
 
 ## Send a Payment on the Test Net
@@ -283,7 +283,7 @@ The signing API also returns the transaction's ID, or identifying hash, which yo
 
 ### {{n.next()}}. Submit the Signed Blob
 
-Use the [submit() method](rippleapi-reference.html#submit) to submit a transaction to the network. It's also a good idea to use the [getLedgerVersion() method](rippleapi-reference.html#getledgerversion) to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it.
+Use the [submit() method](rippleapi-reference.html#submit) to submit a transaction to the network. It's also a good idea to use the [`getLedgerVersion()` method](rippleapi-reference.html#getledgerversion) to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it.
 
 Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)
 
@@ -363,7 +363,7 @@ You use the `ledger` event type in RippleAPI to trigger your code to run wheneve
 
 ```js
 api.on('ledger', ledger => {
-  console.log("Ledger version", ledger.ledgerVersion, "was just validated.")
+  console.log("Ledger version", ledger.ledgerVersion, "was validated.")
   if (ledger.ledgerVersion > maxLedgerVersion) {
     console.log("If the transaction hasn't succeeded by now, it's expired")
   }
@@ -381,7 +381,7 @@ api.on('ledger', ledger => {
       <td id="earliest-ledger-version">(Not submitted)</td>
     </tr>
   <tr>
-    <th>Transaction LastLedgerSequence:</th>
+    <th>Transaction <code>LastLedgerSequence</code>:</th>
     <td id="tx-lls"></td>
   </tr>
 </table>
@@ -402,7 +402,7 @@ api.on('ledger', ledger => {
 
 ### {{n.next()}}. Check Transaction Status
 
-To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version. For example, you can use the [getTransaction() method](rippleapi-reference.html#gettransaction) to check the status of a transaction:
+To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version. For example, you can use the [`getTransaction()` method](rippleapi-reference.html#gettransaction) to check the status of a transaction:
 
 ```js
 // Continues from previous examples.
@@ -464,7 +464,7 @@ To send an XRP payment on the production XRP Ledger, the steps you take are larg
 
 ### Getting a Real XRP Account
 
-This tutorial uses a button to get an address that's already funded with Test Net XRP, which only works because Test Net XRP is not worth anything. For actual XRP, you need to get XRP from someone who already has some. (For example, you might buy it on an exchange.) You can generate an address and secret that'll work on either production or the test net using RippleAPI's [generateAddress() method](rippleapi-reference.html#generateaddress):
+This tutorial uses a button to get an address that's already funded with Test Net XRP, which only works because Test Net XRP is not worth anything. For actual XRP, you need to get XRP from someone who already has some. (For example, you might buy it on an exchange.) You can generate an address and secret that'll work on either production or the test net using RippleAPI's [`generateAddress()` method](rippleapi-reference.html#generateaddress):
 
 ```js
 const generated = api.generateAddress()
@@ -474,7 +474,7 @@ console.log(generated.secret) // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 
 **Warning:** You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the test net and for production, because transactions that you created for use on one network could potentially also be viable on the other network, depending on the parameters you provided.
 
-Generating an address and secret doesn't get you XRP directly; it's just choosing a random number. You must also receive XRP at that address to [fund the account](accounts.html#creating-accounts). A common way to acquire XRP is to buy it from an exchange, then withdraw it to your own address. For more information, see Ripple's [XRP Buying Guide](https://ripple.com/xrp/buy-xrp/).
+Generating an address and secret doesn't get you XRP directly; it's only choosing a random number. You must also receive XRP at that address to [fund the account](accounts.html#creating-accounts). A common way to acquire XRP is to buy it from an exchange, then withdraw it to your own address. For more information, see Ripple's [XRP Buying Guide](https://ripple.com/xrp/buy-xrp/).
 
 ### Connecting to the Production XRP Ledger
 

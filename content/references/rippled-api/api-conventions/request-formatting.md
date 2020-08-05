@@ -60,11 +60,11 @@ See [Response Formatting](response-formatting.html) for the response from the se
 
 ## JSON-RPC Format
 
-To make a JSON-RPC request, send an HTTP **POST** request to the root path (`/`) on the port and IP where the `rippled` server is listening for JSON-RPC connections. You can use HTTP/1.0 or HTTP/1.1. If you use HTTPS, you should use TLS v1.2. For security reasons, `rippled` _does not support_ SSL v3 or earlier.
+To make a JSON-RPC request, send an HTTP **POST** request to the root path (`/`) on the port and IP where the `rippled` server is listening for JSON-RPC connections. You can use HTTP/1.0 or HTTP/1.1. If you use HTTPS, you should use TLS version 1.2. For security reasons, `rippled` _does not support_ SSL version 3 or earlier.
 
 Always include a `Content-Type` header with the value `application/json`.
 
-If you plan on making multiple requests, use [Keep-Alives](http://tools.ietf.org/html/rfc7230#section-6.3) so that you do not have to close and re-open the connection in between requests.
+If you plan on making multiple requests, use [Keep-Alives](http://tools.ietf.org/html/rfc7230#section-6.3) so that you do not have to close and re-open the connection in between requests. <!-- SPELLING_IGNORE: alives -->
 
 Send request body as a [JSON](https://en.wikipedia.org/wiki/JSON) object with the following fields:
 

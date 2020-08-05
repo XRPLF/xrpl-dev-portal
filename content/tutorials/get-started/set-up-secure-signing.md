@@ -2,7 +2,7 @@
 
 To submit [transactions](transaction-basics.html) to the XRP Ledger, you need a way to digitally sign them without compromising the security of your [secret keys](cryptographic-keys.html). (If others gain access to your secret keys, they have as much control over your accounts as you do, and can steal or destroy all your money.) This page summarizes how to set up such an environment so you can sign transactions securely.
 
-**Tip:** If you are not submitting transactions to the network, you can safely use a trustworthy public server, such as the ones run by Ripple, to monitor for incoming transactions or just to read other network activity. All transactions, balances, and data in the XRP Ledger are public.
+**Tip:** If you are not submitting transactions to the network, you can safely use a trustworthy public server, such as the ones run by Ripple, to monitor for incoming transactions or read other network activity. All transactions, balances, and data in the XRP Ledger are public.
 
 There are several configurations with varying levels of security that may be acceptable for your situation. Choose one of the following that best fits your needs:
 
@@ -38,7 +38,7 @@ In this configuration, you run `rippled` on the machine that generates the trans
 
     The [example config file](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
-    **Caution:** Using the [commandline API](request-formatting.html#commandline-format) for signatures is less secure than [using the Websocket or JSON-RPC APIs](get-started-with-the-rippled-api.html) through non-commandline clients. When using the commandline syntax, your secret key may be visible to other users in the system's process listing, and your shell history may save the key in plaintext.
+    **Caution:** Using the [commandline API](request-formatting.html#commandline-format) for signatures is less secure than [using the Websocket or JSON-RPC APIs](get-started-with-the-rippled-api.html) through non-commandline clients. When using the commandline syntax, your secret key may be visible to other users in the system's process listing, and your shell history may save the key in plain text.
 
 3. Maintain the server to keep it running, updated, and in sync with the network while you're using it.
 
@@ -70,7 +70,7 @@ This configuration uses a client library in the programming language you are usi
 - **Signing Library for C++** (included with `rippled`)
     - [Documentation](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library)
 
-If you use a client library not published by Ripple, make sure it uses proper, secure implementations of the signing algorithm(s) it implements. (For example, if it uses the default ECDSA algorithm, it should also use deterministic nonces as described in [RFC6979](https://tools.ietf.org/html/rfc6979).) All of Ripple's published libraries listed above follow industry best practices.
+If you use a client library not published by Ripple, make sure it uses proper, secure implementations of the signing algorithm(s) it implements. (For example, if it uses the default ECDSA algorithm, it should also use deterministic nonces as described in [RFC-6979](https://tools.ietf.org/html/rfc6979).) All of Ripple's published libraries listed above follow industry best practices.
 
 For best security, be sure to keep your client library updated to the latest stable version.
 

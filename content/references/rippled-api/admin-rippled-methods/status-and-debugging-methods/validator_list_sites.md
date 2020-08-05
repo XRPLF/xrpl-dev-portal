@@ -133,7 +133,7 @@ The `last_refresh_status` field can have the following values:
 | `accepted`            | The site provided a valid list, which your server is now using. |
 | `same_sequence`       | The site provided a list with the same sequence number as your existing list, so your server continued using its existing list. |
 | `unsupported_version` | The site provided a list, but your server does not support the list format version number in the list. You might need to [update `rippled`](install-rippled.html) to a newer software version. |
-| `untrusted`           | The site provided a list from the site that is signed by a cryptographic keypair your server is not configured to trust. You may want to check for typos in your `validators.txt` file and check to see if the list publisher changed their cryptographic keys. |
+| `untrusted`           | The site provided a list from the site that is signed by a cryptographic key pair your server is not configured to trust. You may want to check for typos in your `validators.txt` file and check to see if the list publisher changed their cryptographic keys. |
 | `stale`               | The site provided a list with a lower sequence number than the list your server is already using. |
 | `invalid`             | The site provided a list or signature that was not validly formed. |
 

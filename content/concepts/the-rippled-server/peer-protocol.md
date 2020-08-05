@@ -55,7 +55,7 @@ The node key pair also identifies other servers for purposes of [clustering](clu
 Normally, a `rippled` server attempts to maintain a healthy number of peers, and automatically connects to untrusted peers up to a maximum number. You can configure a `rippled` server to remain connected to specific peer servers in several ways:
 
 - Use **Fixed Peers** to remain always connected to specific other peers based on their IP addresses. This only works if the peers have fixed IP addresses. Use the `[ips_fixed]` config stanza to configure fixed peers. This is a necessary part of [clustering](clustering.html) or [private peers](#private-peers). Fixed peers are defined in the config file, so changes only apply after restarting the server. Fixed peers are most useful for keeping servers connected if those servers are run by the same person or organization.
-- Use **Peer Reservations** to prioritize specific peers. If your server has a peer reservation for a specific peer, then your server always accepts connection requests from that peer even if your server is already at its maximum number of connected peers. (This can cause your server to go _over_ the maximum number of peers.) You identify a reserved peer by its [node key pair](#node-key-pair), so you can do this even for peers with variable IP addresses. Peer reservations are configured through admin commands and saved in the server databases, so they can be adjusted while the server is online and are saved across restarts. Peer reservations are most useful for connecting servers operated by different people or organizations. [New in: rippled 1.4.0][]
+- Use **Peer Reservations** to prioritize specific peers. If your server has a peer reservation for a specific peer, then your server always accepts connection requests from that peer even if your server is already at its maximum number of connected peers. (This can cause your server to go _over_ the maximum number of peers.) You identify a reserved peer by its [node key pair](#node-key-pair), so you can do this even for peers with variable IP addresses. Peer reservations are configured through admin commands and saved in the server databases, so they can be adjusted while the server is online and are saved across restarts. Peer reservations are most useful for connecting servers run by different people or organizations. [New in: rippled 1.4.0][]
 
 In the following cases, a `rippled` server does not connect to untrusted peers:
 
@@ -98,12 +98,12 @@ The pros and cons of each configuration are as follows:
 <tr><th>Discovered Peers</th>
   <td><ul>
     <li><p>Simplest configuration, with a low maintenance burden.</p></li>
-    <li><p>Creates the opportunity for a lot of direct peer connections. Having more direct peers comes with several benefits. Your server can <a href="ledger-history.html#fetching-history">fetch history</a> from multiple peers in parallel, both when syncing and when backfilling history. Since not all peers maintain full history, having access to more peers can also provide access to a wider selection of historical data.</p></li>
+    <li><p>Creates the opportunity for a lot of direct peer connections. Having more direct peers comes with several benefits. Your server can <a href="ledger-history.html#fetching-history">fetch history</a> from multiple peers in parallel, both when syncing and when backfilling history. Since not all peers maintain full history, having access to more peers can also provide access to a wider range of historical data.</p></li>
     <li><p>Lowers the possibility of disconnecting from the network because your server can replace disconnected peers with new ones.</p></li>
   </ul></td>
   <td><ul>
     <li><p>Doesn't allow you to select your server's peers, which means that you have no idea whether your peers may decide to act maliciously. Although `rippled` servers are designed to protect against malicious peers, there is always a risk that malicious peers could exploit software flaws to affect your server.</p></li>
-    <li><p>Your server's peers may disconnect or change frequently.</p></li>
+    <li><p>Your server's peers may disconnect or change often.</p></li>
   </ul></td>
 </tr>
 <tr><th>Private Server Using Proxies</th>
@@ -121,7 +121,7 @@ The pros and cons of each configuration are as follows:
 <tr><th>Private Server Using Public Hubs</th>
   <td><ul>
     <li><p>Low maintenance burden with a small amount of configuration.</p></li>
-    <li><p>Provides easy access to safe connections to the network.</p></li>
+    <li><p>Provides access to safe connections to the network.</p></li>
     <li><p>Compared to connecting using proxies, may be less likely to cause your private server to disconnect from the network due to a simultaneous peer outage.</p></li>
   </ul></td>
   <td><ul>

@@ -10,14 +10,14 @@ By default, cross-currency payments deliver a fixed amount to their destination 
 - By definition, a cross-currency payment involves at least two currencies, which means that at least one currency involved must be a non-XRP issued currency.
     - Typically, this means using one or more currencies issued by an [XRP Ledger Gateway](become-an-xrp-ledger-gateway.html). Such currencies are backed by funds outside the XRP Ledger, and can be withdrawn through the gateway.
     - Issued currencies can also be digital tokens that are only issued within the XRP Ledger, with no outside backing. Of course, the parties involved must be willing to send or receive those tokens and treat them as something of value.
-- There must be at least one [Path](paths.html) between the sender and receiver, and the total liquidity across all paths must be enough to facilitate the payment. Cross-currency payments convert from one currency to another by consuming [Offers](offers.html) in the XRP Ledger's decentralized exchange.
+- There must be at least one [Path](paths.html) between the sender and receiver, and the total liquidity across all paths must be enough to execute the payment. Cross-currency payments convert from one currency to another by consuming [Offers](offers.html) in the XRP Ledger's decentralized exchange.
 
 
-## Autobridging
+## Auto-Bridging
 
 Cross-currency payments that exchange two issued currencies automatically use XRP, when it decreases the cost of the payment, by connecting order books to deepen the pool of available liquidity. For example, a payment sending from USD to MXN automatically converts USD to XRP and then XRP to MXN if doing so is cheaper than converting USD to MXN directly.
 
-For more information, see [Autobridging](autobridging.html).
+For more information, see [Auto-Bridging](autobridging.html).
 
 ## See Also
 

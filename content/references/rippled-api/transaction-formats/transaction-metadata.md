@@ -44,7 +44,7 @@ A `DeletedNode` object contains the following fields:
 |:------------------|:------------------|:-------------------------------------|
 | `LedgerEntryType` | String            | The [type of ledger object](ledger-object-types.html) that was deleted. |
 | `LedgerIndex`     | String - [Hash][] | The [ID of this ledger object](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
-| `FinalFields`     | Object            | The content fields of the ledger object just before it was deleted. Which fields are present depends on what type of ledger object was created. |
+| `FinalFields`     | Object            | The content fields of the ledger object immediately before it was deleted. Which fields are present depends on what type of ledger object was created. |
 
 ### ModifiedNode Fields
 
@@ -71,11 +71,14 @@ The `rippled` server provides a `delivered_amount` field in JSON transaction met
 * Is a partial payment
 * Included in a validated ledger before 2014-01-20
 
-If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only figure out the actual delivered amount by reading the AffectedNodes in the transaction's metadata.
+If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only figure out the actual delivered amount by reading the `AffectedNodes` in the transaction's metadata.
 
 **Note:** The `delivered_amount` field is generated on-demand for the request, and is not included in the binary format for transaction metadata, nor is it used when calculating the [hash](basic-data-types.html#hashes) of the transaction metadata. In contrast, the `DeliveredAmount` field _is_ included in the binary format for partial payment transactions after 2014-01-20.
 
 See also: [Partial Payments](partial-payments.html)
+
+<!--{# Spell-check can ignore these field names used in headings #}-->
+<!-- SPELLING_IGNORE: affectednodes, creatednode, deletednode, modifiednode, delivered_amount -->
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

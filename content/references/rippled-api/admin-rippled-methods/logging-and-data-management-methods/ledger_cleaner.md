@@ -30,7 +30,7 @@ The request includes the following parameters:
 | `ledger`      | Number - [Ledger Index][] | _(Optional)_ If provided, check and correct the specified ledger only. |
 | `max_ledger`  | Number - [Ledger Index][] | _(Optional)_ Configure the ledger cleaner to check ledgers with ledger indexes equal or lower than this. |
 | `min_ledger`  | Number - [Ledger Index][] | _(Optional)_ Configure the ledger cleaner to check ledgers with ledger indexes equal or higher than this. |
-| `full`        | Boolean                   | _(Optional)_ If true, fix ledger state objects and transations in the specified ledger(s). Defaults to false. Automatically set to `true` if `ledger` is provided. |
+| `full`        | Boolean                   | _(Optional)_ If true, fix ledger state objects and transactions in the specified ledger(s). Defaults to false. Automatically set to `true` if `ledger` is provided. |
 | `fix_txns`    | Boolean                   | _(Optional)_ If true, correct transaction in the specified ledger(s). Overrides `full` if provided. |
 | `check_nodes` | Boolean                   | _(Optional)_ If true, correct ledger state objects in the specified ledger(s). Overrides `full` if provided. |
 | `stop`        | Boolean                   | _(Optional)_ If true, disable the ledger cleaner. |

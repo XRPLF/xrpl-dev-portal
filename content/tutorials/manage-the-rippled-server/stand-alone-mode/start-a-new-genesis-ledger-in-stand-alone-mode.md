@@ -14,7 +14,7 @@ In a genesis ledger, the [genesis address](accounts.html#special-addresses) hold
 
 **Address:** `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh`
 
-**Secret:** `snoPBrXtMeMyMHUVTgbuqAfg1SUTb` ("masterpassphrase")
+**Secret:** `snoPBrXtMeMyMHUVTgbuqAfg1SUTb` ("`masterpassphrase`")
 
 ## Settings in New Genesis Ledgers
 

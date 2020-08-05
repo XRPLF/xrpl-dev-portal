@@ -41,9 +41,9 @@ It is RECOMMENDED that you serve a human-readable website from the same domain a
 
 ### Path
 
-In compliance with [RFC5785](https://tools.ietf.org/html/rfc5785), the path MUST start with `/.well-known/`. The file MUST be available at the path `/.well-known/xrp-ledger.toml` exactly (case-sensitive, all lower case).
+In compliance with [RFC5785](https://tools.ietf.org/html/rfc5785), the path MUST start with `/.well-known/`. The file MUST be available at the path `/.well-known/xrp-ledger.toml` exactly (case-sensitive, all lower case). <!-- SPELLING_IGNORE: rfc5785 -->
 
-You MAY, if desired, serve the same file from alternate capitalizations of the same file, such as `/.well-known/XRP-Ledger.TOML`. You MUST NOT serve different contents depending on how the path is capitalized.
+You MAY, if desired, serve the same file from paths with different capitalization, such as `/.well-known/XRP-Ledger.TOML`. You MUST NOT serve different contents depending on how the path is capitalized.
 
 
 ### Headers
@@ -103,7 +103,7 @@ owner_country = "us"
 server_country = "us"
 unl = "https://vl.testnet.rippletest.net"
 
-# Note: the attestions above are only examples and are not real. 
+# Note: the attestions above are only examples and are not real.
 
 [[ACCOUNTS]]
 address = "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"
@@ -160,9 +160,9 @@ The specification does not define a `domain` field; the field should be determin
 
 ### Validators
 
-The validators list provides information about validating servers you operate. If present, the validators list MUST BE presented as an array of tables, with each entry using the header `[[VALIDATORS]]`, including double square brackets. Each entry describes a separate validating server.
+The validators list provides information about validating servers you run. If present, the validators list MUST BE presented as an array of tables, with each entry using the header `[[VALIDATORS]]`, including double square brackets. Each entry describes a separate validating server.
 
-The _first_ `[[VALIDATORS]]` entry in the file is treated as your primary validator. If you operate one or more validators for the production XRP Ledger, you should put the one you want others to trust first.
+The _first_ `[[VALIDATORS]]` entry in the file is treated as your primary validator. If you run one or more validators for the production XRP Ledger, you should put the one you want others to trust first.
 
 For _each_ `[[VALIDATORS]]` entry, you MAY provide any of the following fields:
 
@@ -275,7 +275,7 @@ For other web servers, see [I want to add CORS support to my server](https://ena
 
 ## Domain Verification
 
-One use for the `xrp-ledger.toml` file is verifying that the same entity that operates a particular domain also operates a particular validator, as identified by the validator's public key. Verifying that a domain and a validator are owned by the same entity provides greater assurances of the identity of the validator operator and is a recommended step for becoming a trusted validator. (For other recommendations, see [Properties of a Good Validator](run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator).)
+One use for the `xrp-ledger.toml` file is verifying that the same entity that runs a particular domain also runs a particular validator, as identified by the validator's public key. Verifying that a domain and a validator are owned by the same entity provides greater assurances of the identity of the validator operator and is a recommended step for becoming a trusted validator. (For other recommendations, see [Properties of a Good Validator](run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator).)
 
 Domain verification requires establishing a two-way link between the domain operator and the validator:
 
@@ -285,22 +285,22 @@ Domain verification requires establishing a two-way link between the domain oper
 
     - In that `xrp-ledger.toml` file, provide a `[[VALIDATORS]]` entry with the validator's master public key in the `public_key` field.
 
-2. The validator claims ownership of the domain: 
+2. The validator claims ownership of the domain:
 
-    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](run-rippled-as-a-validator.html#revoke-validator-keys) and generate new keys. 
+    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](run-rippled-as-a-validator.html#revoke-validator-keys) and generate new keys.
 
-        Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**. 
+        Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**.
 
     - **In a location not on your validator**, build the [validator-keys-tool](https://github.com/ripple/validator-keys-tool).  
 
     - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `rippled.cfg` files:
 
-        
+
             $./validator-keys set_domain example.com
 
 **Warning:** This command updates your validator-keys.json file. Please be sure to store the `validator-keys.json` file in a secure location.
 
-Sample Output: 
+Sample Output:
 
 ```
 The domain name has been set to: example.com
@@ -336,11 +336,11 @@ Update [the contents of your `xrp-ledger.toml` file](#contents) with the `attest
 
 
 
-**Warning:** Your validator token is meant to be kept secret. Do not share it on your `xrp-ledger.toml` file or anywhere else. 
+**Warning:** Your validator token is meant to be kept secret. Do not share it on your `xrp-ledger.toml` file or anywhere else.
 
 ## Account Verification
 
-Similar to [Domain Verification](#domain-verification), account verification is the idea of proving that the same entity operates a particular domain and a particular XRP Ledger address. Account verification is not necessary for using the XRP Ledger or providing an `xrp-ledger.toml` file, but you may desire to verify your accounts in the name of transparency.
+Similar to [Domain Verification](#domain-verification), account verification is the idea of proving that the same entity controls a particular domain and a particular XRP Ledger address. Account verification is not necessary for using the XRP Ledger or providing an `xrp-ledger.toml` file, but you may desire to verify your accounts in the name of transparency.
 
 Account verification requires establishing a two-way link between the domain operator and the address:
 
@@ -352,13 +352,13 @@ Account verification requires establishing a two-way link between the domain ope
 
 2. The address claims ownership by a domain.
 
-    [Set the account's `Domain` field](accountset.html#domain) to match the domain that this `xrp-ledger.toml` file was served from. The domain value (when decoded from ASCII) MUST match _exactly_, including all subdomains such as `www.`. For internationalized domain names, set the `Domain` value to the Punycode of the domain, as described in [RFC3492](https://tools.ietf.org/html/rfc3492).
+    [Set the account's `Domain` field](accountset.html#domain) to match the domain that this `xrp-ledger.toml` file was served from. The domain value (when decoded from ASCII) MUST match _exactly_, including all subdomains such as `www.`. For internationalized domain names, set the `Domain` value to the Punycode of the domain, as described in [RFC3492](https://tools.ietf.org/html/rfc3492). <!-- SPELLING_IGNORE: punycode, rfc3492 -->
 
     Since setting the `Domain` requires sending a transaction, whoever set the `Domain` value must have possessed the account's secret key when the transaction was sent.
 
-Either of these two links, on their own, SHOULD NOT be considered authoritative. Anyone could host an `xrp-ledger.toml` file claiming ownership of any account, and any account operator could set its `Domain` field to any string it wants. If the two match, it provides strong evidence that the same entity operates both.
+Either of these two links, on their own, SHOULD NOT be considered authoritative. Anyone could host an `xrp-ledger.toml` file claiming ownership of any account, and any account operator could set its `Domain` field to any string it wants. If the two match, it provides strong evidence that the same entity controls both.
 
 
 ## Acknowledgements
 
-This specification is derived from the [original ripple.txt spec](https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt) and draws inspiration from the [stellar.toml file](https://www.stellar.org/developers/guides/walkthroughs/how-to-complete-stellar-toml.html). This specification also incorporates feedback from XRP community members and many past and current Ripple employees.
+This specification is derived from the [original ripple.txt spec](https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt) and draws inspiration from the [stellar.toml file](https://www.stellar.org/developers/guides/walkthroughs/how-to-complete-stellar-toml.html). This specification also incorporates feedback from XRP community members and many past and current Ripple employees. <!-- SPELLING_IGNORE: txt -->

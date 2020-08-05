@@ -35,7 +35,7 @@ Log messages such as the following indicate that a server received validations f
 2018-Aug-28 22:55:58.316094260 Validations:WRN Val for 2137ACEFC0D137EFA1D84C2524A39032802E4B74F93C130A289CD87C9C565011 trusted/full from nHUeUNSn3zce2xQZWNghQvd9WRH6FWEnCBKYVJu2vAizMxnXegfJ signing key n9KcRZYHLU9rhGVwB9e4wEMYsxXvUfgFxtmX25pc1QPNgweqzQf5 already validated sequence at or past 12133663 src=1
 ```
 
-Occasional messages of this type do not usually indicate a problem. If this type of message occurs frequently with the same sending validator, it could indicate a problem, including any of the following (roughly in order of most to least likely):
+Occasional messages of this type do not usually indicate a problem. If this type of message occurs often with the same sending validator, it could indicate a problem, including any of the following (roughly in order of most to least likely):
 
 - The server writing the message is having network issues.
 - The validator described in the message is having network issues.
@@ -57,7 +57,7 @@ This could mean:
 
 Check the `[insight]` stanza in your `rippled`'s config file and confirm that you have network connectivity from your `rippled` server to your StatsD server.
 
-This error has no other impact on the `rippled` server, which should continue to operate as normal except for the sending of StatsD metrics.
+This error has no other impact on the `rippled` server, which should continue to work as normal except for the sending of StatsD metrics.
 
 
 ## Connection reset by peer
@@ -138,7 +138,7 @@ These two types of messages often occur together, when a long-running job causes
 
 It is **normal** to display several messages of these types **during the first few minutes** after starting the server.
 
-If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000ms, that may indicate that **your server does not have sufficient resources, such as disk I/O, RAM, or CPU**. This may be caused by not having sufficiently-powerful hardware or because other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
+If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000 ms, that may indicate that **your server does not have sufficient resources, such as disk I/O, RAM, or CPU**. This may be caused by not having sufficiently-powerful hardware or because other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
 
 Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). Ripple recommends always using SSD storage for `rippled`'s databases, but you _may_ be able to run `rippled` successfully on rotational disks using RocksDB. If you are using rotational disks, make sure both the `[node_db]` and the `[shard_db]` (if you have one) are configured to use RocksDB. For example:
 
@@ -295,6 +295,8 @@ NetworkOPs:WRN We are not running on the consensus ledger
     - [rippled API Reference](rippled-api.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
+
+<!-- SPELLING_IGNORE: oom, async_send, statsd, inboundledger, loadmonitor, validatedseq -->
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
