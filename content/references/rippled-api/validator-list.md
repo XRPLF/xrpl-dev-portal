@@ -6,7 +6,8 @@ Like the [Peer Crawler](peer-crawler.html), the validator list method is availab
 
 ## Request Format
 
-To request the Peer Crawler information, make the following HTTP request:
+To request the Validator List information, make the following HTTP
+request:
 
 - **Protocol:** https
 - **HTTP Method:** GET
@@ -67,8 +68,9 @@ If you decode the `blob` from base64, the result is a JSON object with the follo
 | `Field`      | Value  | Description                                          |
 |:-------------|:-------|:-----------------------------------------------------|
 | `sequence`   | Number | Unique sequence number for this list. A larger sequence number indicates a newer list; only the newest list is valid at a time. |
-| `expiration` | Number | The time this list expires, in [seconds since the Ripple Epoch][]. |
-| `validators  | Array  | A list of recommended validators.                    |
+| `expiration` | Number | The time this list expires, in [seconds since
+the Ripple Epoch][]. |
+| `validators` | Array  | A list of recommended validators.  |
 
 Each member of the `validators` array has the following fields:
 
@@ -99,7 +101,7 @@ GET https://localhost:51235/vl
 *cURL*
 
 ```
-curl --insecure https://localhost:51235/vl
+curl --insecure https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 ```
 
 <!-- MULTICODE_BLOCK_END -->
