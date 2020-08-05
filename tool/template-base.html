@@ -67,9 +67,11 @@
             {% set _ = funnels.append(page.funnel) %}
           {% endif %}
         {% endfor %}
+        <!-- TODO: add dev blog to "Build"
         <li class="nav-item">
           <a class="nav-link" href="/blog/">{% trans %}Blog{% endtrans %}</a>
         </li>
+        -->
       </ul><!-- /.navbar-nav -->
       {% include 'template-github-edit.html' %}
       <form class="navbar-form navbar-right" id="navbar-search" role="search">

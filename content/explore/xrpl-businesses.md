@@ -1,6 +1,10 @@
+---
+html: xrpl-businesses.html
+funnel: Explore
+---
 # XRP Ledger Businesses
 
-[Exchanges](TODO) and [Wallet Providers](TODO) are common types of businesses to use the XRP Ledger, but the internet of value involves many more possibilities. Here are a few more examples of how businesses are using the XRP Ledger to build an internet of value.
+[Exchanges](exchanges.html) and [Wallet Providers](wallets.html) are common types of businesses to use the XRP Ledger, but the internet of value involves many more possibilities. Here are a few more examples of how businesses are using the XRP Ledger to build an internet of value.
 
 ## BitGo - Asset Custody
 
