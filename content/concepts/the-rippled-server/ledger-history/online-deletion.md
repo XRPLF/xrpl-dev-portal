@@ -70,7 +70,7 @@ The following settings relate to online deletion:
 
     The following diagram shows the relationship between `online_delete` and `ledger_history` settings:
 
-    ![Ledgers older than `online_delete` are automatically deleted. Ledgers newer than `ledger_history` are backfilled. Ledgers in between are kept if available but not backfilled](img/online_delete-vs-ledger_history.png)
+    {{ include_svg("img/online_delete-vs-ledger_history.svg", "Ledgers older than `online_delete` are automatically deleted. Ledgers newer than `ledger_history` are backfilled. Ledgers in between are kept if available but not backfilled") }}
 
 - **`advisory_delete`** - If enabled, online deletion is not scheduled automatically. Instead, an administrator must manually trigger online deletion. Use the value `0` for disabled or `1` for enabled.
 
@@ -84,7 +84,7 @@ The following settings relate to online deletion:
 
     The following diagram shows how `fetch_depth` works:
 
-    ![Ledger versions older than `fetch_depth` are not served to peers](img/fetch_depth.png)
+    {{ include_svg("img/fetch_depth.svg", "Ledger versions older than fetch_depth are not served to peers") }}
 
 For estimates of how much disk space is required to store different amounts of history, see [Capacity Planning](capacity-planning.html#disk-space).
 
@@ -105,7 +105,7 @@ Online deletion works by creating two databases: at any given time, there is an 
 
 When it comes time for online deletion, the server first walks through the oldest ledger version to keep, and copies all objects in that ledger version from the read-only "old" database into the "current" database. This guarantees that the "current" database now contains all objects used in the chosen ledger version and all newer versions. Then, the server deletes the "old" database, and changes the existing "current" database to become "old" and read-only. The server starts a new "current" database to contain any newer changes after this point.
 
-![Diagram showing how online deletion uses two databases](img/online-deletion-process.png)
+{{ include_svg('img/online-deletion-process.svg', "Diagram showing how online deletion uses two databases") }}
 
 ## See Also
 

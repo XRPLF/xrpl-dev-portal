@@ -5,7 +5,7 @@
     <id>UMLObject</id>
     <coordinates>
       <x>50</x>
-      <y>70</y>
+      <y>40</y>
       <w>140</w>
       <h>70</h>
     </coordinates>
@@ -20,7 +20,7 @@ lt=.</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>180</x>
-      <y>90</y>
+      <y>60</y>
       <w>180</w>
       <h>50</h>
     </coordinates>
@@ -33,7 +33,7 @@ first 16 bytes</panel_attributes>
     <id>UMLObject</id>
     <coordinates>
       <x>340</x>
-      <y>70</y>
+      <y>40</y>
       <w>140</w>
       <h>70</h>
     </coordinates>
@@ -46,7 +46,7 @@ first 16 bytes</panel_attributes>
     <id>UMLObject</id>
     <coordinates>
       <x>50</x>
-      <y>280</y>
+      <y>250</y>
       <w>150</w>
       <h>70</h>
     </coordinates>
@@ -59,7 +59,7 @@ first 16 bytes</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>110</x>
-      <y>130</y>
+      <y>100</y>
       <w>460</w>
       <h>170</h>
     </coordinates>
@@ -71,7 +71,7 @@ SHA-512Half</panel_attributes>
     <id>UMLObject</id>
     <coordinates>
       <x>330</x>
-      <y>280</y>
+      <y>250</y>
       <w>150</w>
       <h>70</h>
     </coordinates>
@@ -85,7 +85,7 @@ compressed)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>300</y>
+      <y>270</y>
       <w>160</w>
       <h>50</h>
     </coordinates>
@@ -95,22 +95,10 @@ Derivation</panel_attributes>
     <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>Text</id>
-    <coordinates>
-      <x>50</x>
-      <y>30</y>
-      <w>280</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>*secp256k1 Key Derivation*
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLSyncBarVertical</id>
     <coordinates>
       <x>500</x>
-      <y>110</y>
+      <y>80</y>
       <w>20</w>
       <h>70</h>
     </coordinates>
@@ -123,7 +111,7 @@ bg=red</panel_attributes>
     <id>UMLObject</id>
     <coordinates>
       <x>370</x>
-      <y>150</y>
+      <y>120</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
@@ -138,7 +126,7 @@ default 0)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>470</x>
-      <y>120</y>
+      <y>90</y>
       <w>60</w>
       <h>30</h>
     </coordinates>
@@ -149,7 +137,7 @@ default 0)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>470</x>
-      <y>150</y>
+      <y>120</y>
       <w>60</w>
       <h>30</h>
     </coordinates>
@@ -160,7 +148,7 @@ default 0)</panel_attributes>
     <id>UMLObject</id>
     <coordinates>
       <x>370</x>
-      <y>440</y>
+      <y>410</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
@@ -175,7 +163,7 @@ default 0)</panel_attributes>
     <id>UMLObject</id>
     <coordinates>
       <x>370</x>
-      <y>360</y>
+      <y>330</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
@@ -190,35 +178,37 @@ all 0's)</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>140</x>
-      <y>170</y>
+      <y>140</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>Increment the key sequence and try again if the SHA-512Half doesn't make a valid private key.
 bg=yellow
 fontsize=10
-style=wordwrap</panel_attributes>
+style=wordwrap
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
       <x>150</x>
-      <y>460</y>
+      <y>430</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>Increment the key sequence and try again if the SHA-512Half doesn't make a valid private key.
 bg=yellow
 fontsize=10
-style=wordwrap</panel_attributes>
+style=wordwrap
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>140</x>
-      <y>380</y>
+      <y>350</y>
       <w>410</w>
       <h>220</h>
     </coordinates>
@@ -230,7 +220,7 @@ SHA-512Half</panel_attributes>
     <id>UMLSyncBarVertical</id>
     <coordinates>
       <x>500</x>
-      <y>360</y>
+      <y>330</y>
       <w>20</w>
       <h>80</h>
     </coordinates>
@@ -243,7 +233,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>470</x>
-      <y>320</y>
+      <y>290</y>
       <w>60</w>
       <h>80</h>
     </coordinates>
@@ -254,7 +244,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>470</x>
-      <y>390</y>
+      <y>360</y>
       <w>60</w>
       <h>30</h>
     </coordinates>
@@ -265,7 +255,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>470</x>
-      <y>410</y>
+      <y>380</y>
       <w>60</w>
       <h>70</h>
     </coordinates>
@@ -276,7 +266,7 @@ bg=red</panel_attributes>
     <id>UMLObject</id>
     <coordinates>
       <x>80</x>
-      <y>580</y>
+      <y>550</y>
       <w>150</w>
       <h>80</h>
     </coordinates>
@@ -291,7 +281,7 @@ Private Key
     <id>UMLObject</id>
     <coordinates>
       <x>330</x>
-      <y>580</y>
+      <y>550</y>
       <w>150</w>
       <h>80</h>
     </coordinates>
@@ -306,7 +296,7 @@ compressed)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>220</x>
-      <y>610</y>
+      <y>580</y>
       <w>130</w>
       <h>50</h>
     </coordinates>
@@ -319,7 +309,7 @@ Derivation</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>660</x>
-      <y>330</y>
+      <y>300</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -332,7 +322,7 @@ type=sender</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>470</x>
-      <y>290</y>
+      <y>260</y>
       <w>210</w>
       <h>70</h>
     </coordinates>
@@ -343,7 +333,7 @@ type=sender</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>470</x>
-      <y>350</y>
+      <y>320</y>
       <w>210</w>
       <h>280</h>
     </coordinates>
@@ -354,7 +344,7 @@ type=sender</panel_attributes>
     <id>UMLObject</id>
     <coordinates>
       <x>800</x>
-      <y>320</y>
+      <y>290</y>
       <w>150</w>
       <h>70</h>
     </coordinates>
@@ -368,7 +358,7 @@ compressed)</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>150</x>
-      <y>700</y>
+      <y>670</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
@@ -381,7 +371,7 @@ type=sender</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>100</x>
-      <y>650</y>
+      <y>620</y>
       <w>70</w>
       <h>80</h>
     </coordinates>
@@ -392,7 +382,7 @@ type=sender</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>50</x>
-      <y>340</y>
+      <y>310</y>
       <w>120</w>
       <h>410</h>
     </coordinates>
@@ -403,7 +393,7 @@ type=sender</panel_attributes>
     <id>UMLObject</id>
     <coordinates>
       <x>330</x>
-      <y>690</y>
+      <y>660</y>
       <w>150</w>
       <h>70</h>
     </coordinates>
@@ -416,7 +406,7 @@ type=sender</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>300</x>
-      <y>710</y>
+      <y>680</y>
       <w>50</w>
       <h>30</h>
     </coordinates>
@@ -427,7 +417,7 @@ type=sender</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>470</x>
-      <y>380</y>
+      <y>350</y>
       <w>410</w>
       <h>380</h>
     </coordinates>
@@ -440,20 +430,21 @@ yields the same result.)</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>590</x>
-      <y>230</y>
+      <y>200</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>Validators use the root key pair.
 bg=green
-style=wordwrap</panel_attributes>
+style=wordwrap
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>200</x>
-      <y>240</y>
+      <y>210</y>
       <w>410</w>
       <h>60</h>
     </coordinates>
@@ -466,7 +457,7 @@ transparency=0</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>480</x>
-      <y>260</y>
+      <y>230</y>
       <w>130</w>
       <h>50</h>
     </coordinates>
@@ -479,20 +470,21 @@ transparency=0</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>630</x>
-      <y>630</y>
+      <y>600</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>Accounts use the master key pair.
 bg=green
-style=wordwrap</panel_attributes>
+style=wordwrap
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>760</x>
-      <y>380</y>
+      <y>350</y>
       <w>80</w>
       <h>270</h>
     </coordinates>
@@ -505,7 +497,7 @@ transparency=0</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>470</x>
-      <y>660</y>
+      <y>630</y>
       <w>180</w>
       <h>70</h>
     </coordinates>

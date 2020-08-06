@@ -239,6 +239,10 @@ An example flow for a payment into the XRP Ledger:
 
 ![Diagram: ACME issues 3 EUR.ACME to Alice on the XRP Ledger](img/e2g-02.png)
 
+<!--{# Disabled: UMLet version of this diagram.
+{{ include_svg("img/gateway-to-xrpl.svg", "Diagram: ACME issues 3 EUR.ACME to Alice on the XRP Ledger") }}
+#}-->
+
 
 
 ### Requirements for Sending to XRP Ledger

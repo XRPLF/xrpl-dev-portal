@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>680</x>
+      <y>320</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Issuing Address
+(Highest security)
+bg=green
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>980</x>
+      <y>320</y>
+      <w>150</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Standby Address
+(Human-operated)
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>340</x>
+      <y>320</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Partners, 
+Liquidity providers,
+Customers
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>680</x>
+      <y>610</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Operational Address
+(Automated)
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>470</y>
+      <w>30</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>830</x>
+      <y>380</y>
+      <w>170</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>380</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>600</y>
+      <w>300</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Legend
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>350</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+Issue
+fg=blue</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>400</y>
+      <w>230</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+fg=blue</panel_attributes>
+    <additional_attributes>210.0;190.0;210.0;100.0;130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>400</y>
+      <w>210</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+fg=blue</panel_attributes>
+    <additional_attributes>190.0;10.0;90.0;10.0;10.0;100.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>350</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+Redeem
+fg=blue</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>730</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+fg=blue</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1020</x>
+      <y>730</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Transfer / Payment</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>690</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1020</x>
+      <y>680</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Accounting relationship
+(trust line)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>950</x>
+      <y>640</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1020</x>
+      <y>640</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>XRP Ledger address</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>350</x>
+      <y>310</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>360</x>
+      <y>300</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>270</y>
+      <w>70</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=blue</panel_attributes>
+    <additional_attributes>50.0;40.0;50.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>630</x>
+      <y>460</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Credit
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>830</x>
+      <y>460</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Refill
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

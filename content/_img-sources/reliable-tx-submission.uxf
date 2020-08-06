@@ -666,7 +666,7 @@ style=wordwrap</panel_attributes>
       <w>230</w>
       <h>230</h>
     </coordinates>
-    <panel_attributes>bg=#fed74c
+    <panel_attributes>bg=yellow
 transparency=0
 style=wordwrap
 Some reasons an unknown transaction may have been validated:

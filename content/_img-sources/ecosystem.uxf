@@ -154,11 +154,11 @@ bg=white
 transparency=0
 customelement=
 // DB Symbol
-drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,0,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
 drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
 drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
 drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
-drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)</panel_attributes>
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -226,11 +226,11 @@ bg=white
 transparency=0
 customelement=
 // DB Symbol
-drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,0,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
 drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
 drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
 drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
-drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=white //Parameters (x, y, width, height, start, extent, open)</panel_attributes>
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -370,17 +370,6 @@ style=wordwrap</panel_attributes>
     <panel_attributes>*Peer-to-Peer Network*
 style=wordwrap</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>840</x>
-      <y>30</y>
-      <w>30</w>
-      <h>670</h>
-    </coordinates>
-    <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;650.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>

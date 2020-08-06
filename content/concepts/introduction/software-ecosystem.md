@@ -4,7 +4,7 @@ The XRP Ledger is home to a deep, layered ecosystem of software projects powerin
 
 ## Stack Levels
 
-[![Ecosystem diagram with the four layers: XRP Ledger peer-to-peer network on the bottom, Programming Libraries above that, Middleware next, and Apps and Services at the top](img/ecosystem.png)](img/ecosystem.png)
+{{ include_svg("img/ecosystem.svg", "Ecosystem diagram with the four layers: XRP Ledger peer-to-peer network on the bottom, Programming Libraries above that, Middleware next, and Apps and Services at the top") }}
 
 - The [basis of the XRP Ledger](#rippled-the-core-server) is a peer-to-peer network of always-on servers sharing transactions, engaging in the [consensus process](consensus.html) and processing [transactions](transaction-basics.html). Everything else in the XRP Ledger ecosystem is ultimately built on top of this peer-to-peer network, directly or indirectly.
 

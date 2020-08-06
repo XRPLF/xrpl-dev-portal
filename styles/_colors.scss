@@ -22,6 +22,7 @@ $green-600: #00E66A;
 $green-700: #00B352;
 $green-800: #00803B;
 $green-900: #004D23;
+$green: $green-500;
 
 $blue-100: #E6F5FF;
 $blue-200: #B3E1FF;
@@ -32,6 +33,7 @@ $blue-600: #008AE6;
 $blue-700: #006BB3;
 $blue-800: #004D80;
 $blue-900: #002E4D;
+$blue: $blue-500;
 
 $blue-purple-100: #F0E6FF;
 $blue-purple-200: #D2B3FF;
@@ -42,6 +44,7 @@ $blue-purple-600: #5F00E6;
 $blue-purple-700: #4A00B3;
 $blue-purple-800: #350080;
 $blue-purple-900: #20004D;
+$purple: $blue-purple-500;
 
 $red-purple-100: #FBE6FF;
 $red-purple-200: #F2B3FF;
@@ -62,6 +65,8 @@ $magenta-600: #E60071;
 $magenta-700: #B30058;
 $magenta-800: #80003F;
 $magenta-900: #4D0026;
+$magenta: $magenta-500;
+$pink: $magenta-500;
 
 $orange-100: #FFEEE6;
 $orange-200: #FFCCB3;
@@ -72,6 +77,7 @@ $orange-600: #E64D00;
 $orange-700: #B33C00;
 $orange-800: #802B00;
 $orange-900: #4D1A00;
+$orange: $orange-500;
 
 $yellow-100: #FEFFE6;
 $yellow-200: #FDFFB3;
@@ -82,6 +88,7 @@ $yellow-600: #E0E600;
 $yellow-700: #AFB300;
 $yellow-800: #7D8000;
 $yellow-900: #4B4D00;
+$yellow: $yellow-500;
 
 // Common colors & colors used in Bootstrap ------------------------------------
 $primary:       $green-500;

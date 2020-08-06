@@ -10,9 +10,9 @@
       <h>40</h>
     </coordinates>
     <panel_attributes>Ledgers not stored
-bg=#e1e4e8
-fg=#23292f
-lt=..</panel_attributes>
+bg=light_gray
+lt=..
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -40,8 +40,8 @@ m2=newest</panel_attributes>
     </coordinates>
     <panel_attributes>Ledgers available locally but not served to peers
 style=wordwrap
-bg=#999da2
-fg=#f5f7f9
+bg=dark_gray
+fg=white
 transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
@@ -56,9 +56,8 @@ transparency=0</panel_attributes>
     <panel_attributes>Ledgers served to peers 
 when requested
 style=wordwrap
-bg=#1db4ff
-transparency=0
-fg=#f5f7f9</panel_attributes>
+bg=green
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

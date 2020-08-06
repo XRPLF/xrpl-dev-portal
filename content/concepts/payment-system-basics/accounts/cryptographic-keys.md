@@ -156,7 +156,7 @@ The key derivation processes described here are implemented in multiple places a
 ### Ed25519 Key Derivation
 [[Source]](https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
 
-[![Passphrase → Seed → Secret Key → Prefix + Public Key](img/key-derivation-ed25519.png)](img/key-derivation-ed25519.png)
+{{ include_svg("img/key-derivation-ed25519.svg", "Passphrase → Seed → Secret Key → Prefix + Public Key") }}
 
 1. Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte secret key.
 
@@ -177,7 +177,7 @@ The key derivation processes described here are implemented in multiple places a
 ### secp256k1 Key Derivation
 [[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp "Source")
 
-[![Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair](img/key-derivation-secp256k1.png)](img/key-derivation-secp256k1.png)
+{{ include_svg("img/key-derivation-secp256k1.svg", "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair") }}
 
 Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:
 
