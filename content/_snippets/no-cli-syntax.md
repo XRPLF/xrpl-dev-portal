@@ -1,1 +1,1 @@
-**Note:** There is no commandline syntax for `ledger_data`. You can use the [json method][] to access this method from the commandline instead.
+**Note:** There is no commandline syntax for this method. You can use the [json method][] to access this method from the commandline instead.
