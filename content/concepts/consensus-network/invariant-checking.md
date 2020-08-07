@@ -1,19 +1,22 @@
 # Invariant Checking
 
-This article provides a high-level overview of Invariant Checking, why it exist, how it works, and lists active invariant checks.
+This article provides a high-level overview of invariant checking, why it exist, how it works, and lists active invariants.
 
-When building applications on the XRP Ledger, it is crucial to understand the idea of Invariant Checks so as not to be surprised by specific error codes.
+Like many safety features, we all hope that invariant checking never actually needs to do anything. However, it can be useful to understand the XRP Ledger's invariants because they define hard limits on the XRP Ledger's transaction processing, and to recognize the problem in the unlikely event that a transaction fails because it violated an invariant check.
 
 ## Introduction
 
-Invariant checking is a protection enhancement to the XRP Ledger and reinforces the critical properties of the XRP Ledger.
+Invariant checking is a safety feature of the XRP Ledger. It consists of a set of checks, separate from normal transaction processing, that guarantee that certain _invariants_ hold true across all transactions.
 
-Invariant checks should not trigger, but they ensure the XRP Ledger's integrity from bugs yet to be discovered or even created.
+Invariants should not trigger, but they ensure the XRP Ledger's integrity from bugs yet to be discovered or even created.
+
+| Term | Description |
+|-----------|-------------|
+| Invariant | A rule that should always, without exception, be true. For example, "New XRP cannot be created". |
+| Invariant Checking | In the XRP Ledger, a system where code automatically confirms that transaction processing does not break the invariants. If a transaction's execution would break an invariant, the invariant checking system fails the transaction. |
 
 
 ## Why it Exists
-
-Nevertheless, why do we need invariant checks?
 
 - The overarching code for the XRP Ledger is complicated and vast; therefore, there is a high potential for code to execute incorrectly.
 - The cost of incorrectly executing a transaction is high and not acceptable by any standards.
@@ -21,362 +24,106 @@ Nevertheless, why do we need invariant checks?
 
 ## How it Works
 
-A second layer of code runs automatically and in real-time after each transaction completes. It then examines the changes it made for correctness before the results are committed to the ledger. After every transaction runs, the invariant checker runs. Problematic transactions are marked with a **tecINVARIANT_FAILED** result code and are included in the ledger as having done nothing.
+The invariant checker is a second layer of code that runs automatically in real-time after each transaction. Before the transaction's results are committed to the ledger, the invariant checker examines those changes for correctness. If the transaction's results would break one of the XRP Ledger's strict rules, the invariant checker rejects the transaction. Transactions that are rejected this way have the result code `tecINVARIANT_FAILED` and are included in the ledger with no effects.
 
-The invariant checker is then invariantly checked to ensure the invariant checker's failure is not due to a bug. If this second level check fails, transactions are marked with a **tefINVARIANT_FAILED** result code. The transaction is in its final state and is not included in the ledger.
+To include the transaction in the ledger with a `tec`-class code, some minimal processing is necessary. If this minimal processing still breaks an invariant, the transaction fails with the code `tefINVARIANT_FAILED` instead, and is not included in the ledger at all.
 
 
-## Active Invariant Checks
+## Active Invariants
 
-Following is a list of active checks that the invariant checker runs against each transaction on the XRP Ledger.
+The XRP Ledger checks all the following invariants on each transaction:
+
+[[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L92 "Source")
 
 - [Transaction Fee Check](#transaction-fee-check)
+
+[[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L118 "Source")
+
 - [XRP Not Created](#xrp-not-created)
+
+[[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L146 "Source")
+
 - [Account Roots Not Deleted](#account-roots-not-deleted)
+
+[[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L173 "Source")
+
 - [XRP Balance Checks](#xrp-balance-checks)
+
+[[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L197 "Source")
+
 - [Ledger Entry Types Match](#ledger-entry-types-match)
+
+[[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L224 "Source")
+
 - [No XRP Trust Lines](#no-xrp-trust-lines)
+
+[[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L251 "Source")
+
 - [No Bad Offers](#no-bad-offers)
+
+[[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L275 "Source")
+
 - [No Zero Escrow](#no-zero-escrow)
+
+[[Source]](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L300 "Source")
+
 - [Valid New Account Root](#valid-new-account-root)
 
 
-### Transaction Fee Check
-
-- **Condition(s) Checked:**
-
-    - [Trnsaction fees](https://xrpl.org/rippleapi-reference.html#transaction-fees) should never be negative nor larger than the transaction itself.
-
-```
-class TransactionFeeCheck
-{
-public:
-    void
-    visitEntry(
-        bool,
-        std::shared_ptr<SLE const> const&,
-        std::shared_ptr<SLE const> const&);
-
-    bool
-    finalize(
-        STTx const&,
-        TER const,
-        XRPAmount const,
-        ReadView const&,
-        beast::Journal const&);
-};
-```
-
-### XRP Not Created
-
-- **Condition(s) Checked:**
-    
-    - A transaction must not create XRP and should only destroy the XRP [fee](https://xrpl.org/rippleapi-reference.html#transaction-fees)).
-
-```
-class XRPNotCreated
-{
-    std::int64_t drops_ = 0;
-
-public:
-    void
-    visitEntry(
-        bool,
-        std::shared_ptr<SLE const> const&,
-        std::shared_ptr<SLE const> const&);
-
-    bool
-    finalize(
-        STTx const&,
-        TER const,
-        XRPAmount const,
-        ReadView const&,
-        beast::Journal const&);
-};
-```
-
-### Account Roots Not Deleted
-
-- **Condition(s) Checked:**
-    
-    - An account ledger entry cannot be removed.
-
-```
-class AccountRootsNotDeleted
-{
-    std::uint32_t accountsDeleted_ = 0;
-
-public:
-    void
-    visitEntry(
-        bool,
-        std::shared_ptr<SLE const> const&,
-        std::shared_ptr<SLE const> const&);
-
-    bool
-    finalize(
-        STTx const&,
-        TER const,
-        XRPAmount const,
-        ReadView const&,
-        beast::Journal const&);
-};
-```
-
-### XRP Balance Checks
-
-- **Condition(s) Checked:**
-    
-    - An account's XRP balance must be of type XRP and take a value between 0 and INITIAL_XRP drops, inclusive.
-
-```
-/** Number of drops per 1 XRP */
-constexpr XRPAmount DROPS_PER_XRP{1'000'000};
-
-/** Number of drops in the genesis account. */
-constexpr XRPAmount INITIAL_XRP{100'000'000'000 * DROPS_PER_XRP};
-```
-
-```
-class XRPBalanceChecks
-{
-    bool bad_ = false;
-
-public:
-    void
-    visitEntry(
-        bool,
-        std::shared_ptr<SLE const> const&,
-        std::shared_ptr<SLE const> const&);
+### [Transaction Fee Check](#active-invariants)
 
-    bool
-    finalize(
-        STTx const&,
-        TER const,
-        XRPAmount const,
-        ReadView const&,
-        beast::Journal const&);
-};
-```
+- **Invariant Condition(s):**
+    - [Transaction fees](rippleapi-reference.html#transaction-fees) should never be negative nor larger than the transaction itself.
 
-### Ledger Entry Types Match
 
-- **Condition(s) Chceked:**
-    
-    - Corresponding modified ledger entries should match in type and added entries should be a [valid type](https://xrpl.org/transaction-types.html#transaction-types).
+### [XRP Not Created](#active-invariants)
 
-<!-- MULTICODE_BLOCK_START -->
+- **Invariant Condition(s):**
+    - A transaction must not create XRP and should only destroy the XRP [transaction cost](transaction-cost.html).
 
-*LedgerEntryTypesMatch*
 
-```
-class LedgerEntryTypesMatch
-{
-    bool typeMismatch_ = false;
-    bool invalidTypeAdded_ = false;
+### [Account Roots Not Deleted](#active-invariants)
 
-public:
-    void
-    visitEntry(
-        bool,
-        std::shared_ptr<SLE const> const&,
-        std::shared_ptr<SLE const> const&);
-
-    bool
-    finalize(
-        STTx const&,
-        TER const,
-        XRPAmount const,
-        ReadView const&,
-        beast::Journal const&);
-};
-```
-
-*LedgerEntryType*
-
-```
-// Used as the type of a transaction or the type of a ledger entry.
-enum LedgerEntryType {
-    /** Special type, anything
-        This is used when the type in the Keylet is unknown,
-        such as when building metadata.
-    */
-    ltANY = -3,
-
-    /** Special type, anything not a directory
-        This is used when the type in the Keylet is unknown,
-        such as when iterating
-    */
-    ltCHILD = -2,
-
-    ltINVALID = -1,
-
-    //---------------------------------------------------------------------------
-
-    ltACCOUNT_ROOT = 'a',
-
-    /** Directory node.
-        A directory is a vector 256-bit values. Usually they represent
-        hashes of other objects in the ledger.
-        Used in an append-only fashion.
-        (There's a little more information than this, see the template)
-    */
-    ltDIR_NODE = 'd',
-
-    ltRIPPLE_STATE = 'r',
-
-    ltTICKET = 'T',
-
-    ltSIGNER_LIST = 'S',
-
-    ltOFFER = 'o',
-
-    ltLEDGER_HASHES = 'h',
-
-    ltAMENDMENTS = 'f',
-
-    ltFEE_SETTINGS = 's',
-
-    ltESCROW = 'u',
-
-    // Simple unidirection xrp channel
-    ltPAYCHAN = 'x',
-
-    ltCHECK = 'C',
-
-    ltDEPOSIT_PREAUTH = 'p',
-
-    // No longer used or supported. Left here to prevent accidental
-    // reassignment of the ledger type.
-    ltNICKNAME = 'n',
-
-    ltNotUsed01 = 'c',
-};
-```
-<!-- MULTICODE_BLOCK_END -->
-
-### No XRP Trust Lines
-
-- **Condition(s) Checked:**
-    
-    - [Trust lines](https://xrpl.org/trust-lines-and-issuing.html#trust-lines-and-issuing) using XRP are not allowed.
-
-```
-class NoXRPTrustLines
-{
-    bool xrpTrustLine_ = false;
-
-public:
-    void
-    visitEntry(
-        bool,
-        std::shared_ptr<SLE const> const&,
-        std::shared_ptr<SLE const> const&);
-
-    bool
-    finalize(
-        STTx const&,
-        TER const,
-        XRPAmount const,
-        ReadView const&,
-        beast::Journal const&);
-};
-```
-
-### No Bad Offers
-
-- **Condition(s) Checked:**
-    
-    - [Offers](https://xrpl.org/offer.html#offer) should be for non-negative amounts and must not be XRP to XRP.
-
-```
-class NoBadOffers
-{
-    bool bad_ = false;
-
-public:
-    void
-    visitEntry(
-        bool,
-        std::shared_ptr<SLE const> const&,
-        std::shared_ptr<SLE const> const&);
-
-    bool
-    finalize(
-        STTx const&,
-        TER const,
-        XRPAmount const,
-        ReadView const&,
-        beast::Journal const&);
-};
-```
-
-### No Zero Escrow
-
-- **Condition(s) Checked:**
-    
-    - An [escrow](https://xrpl.org/escrow-object.html) entry must take a value between 0 and INITIAL_XRP drops exclusive.
-
-```
-/** Number of drops per 1 XRP */
-constexpr XRPAmount DROPS_PER_XRP{1'000'000};
-
-/** Number of drops in the genesis account. */
-constexpr XRPAmount INITIAL_XRP{100'000'000'000 * DROPS_PER_XRP};
-```
-
-```
-class NoZeroEscrow
-{
-    bool bad_ = false;
-
-public:
-    void
-    visitEntry(
-        bool,
-        std::shared_ptr<SLE const> const&,
-        std::shared_ptr<SLE const> const&);
-
-    bool
-    finalize(
-        STTx const&,
-        TER const,
-        XRPAmount const,
-        ReadView const&,
-        beast::Journal const&);
-};
-```
-
-### Valid New Account Root
-
-- **Condition(s) Checked:**
-    
-    - A new [account root](https://xrpl.org/accountroot.html?_ga=2.259492554.1588022287.1596050513-879263697.1594345179) must be the consequence of a payment.
-    - A new account root must have the right starting [sequence](https://xrpl.org/basic-data-types.html#account-sequence).
-    - A new [account](https://xrpl.org/accounts.html) may not create more than one new account root.
-
-```
-class ValidNewAccountRoot
-{
-    std::uint32_t accountsCreated_ = 0;
-    std::uint32_t accountSeq_ = 0;  // Only meaningful if accountsCreated_ > 0
-
-public:
-    void
-    visitEntry(
-        bool,
-        std::shared_ptr<SLE const> const&,
-        std::shared_ptr<SLE const> const&);
-
-    bool
-    finalize(
-        STTx const&,
-        TER const,
-        XRPAmount const,
-        ReadView const&,
-        beast::Journal const&);
-};
-```
+- **Invariant Condition(s):**
+    - An account ledger entry can be removed by an AccountDelete transaction, but this invariant checks that exactly 1 is deleted by a successful AccountDelete.
+
+
+### [XRP Balance Checks](#active-invariants)
+
+- **Invariant Condition(s):**
+    - An account's XRP balance must be of type XRP, and it cannot be less than 0 or more than 100 billion XRP exactly.
+
+
+### [Ledger Entry Types Match](#active-invariants)
+
+- **Invariant Condition(s):**
+    - Corresponding modified ledger entries should match in type and added entries should be a [valid type](ledger-object-types.html).
+
+
+### [No XRP Trust Lines](#active-invariants)
+
+- **Invariant Condition(s):**
+    - [Trust lines](trust-lines-and-issuing.html#trust-lines-and-issuing) using XRP are not allowed.
+
+
+### [No Bad Offers](#active-invariants)
+
+- **Invariant Condition(s):**
+    - [Offers](offer.html#offer) should be for non-negative amounts and must not be XRP to XRP.
+
+
+### [No Zero Escrow](#active-invariants)
+
+- **Invariant Condition(s):**
+    - An [escrow](escrow-object.html) entry must hold a quantity of XRP between 0 and 99.99 billion.
+
+
+### [Valid New Account Root](#active-invariants)
+
+- **Invariant Condition(s):**
+    - A new [account root](accountroot.html) must be the consequence of a payment.
+    - A new account root must have the right starting [sequence](basic-data-types.html#account-sequence).
+    - A new [account](accounts.html) may not create more than one new account root.
 
 
 ## See Also
@@ -391,9 +138,10 @@ public:
     - [XRP Amount](https://github.com/ripple/rippled/blob/develop/src/ripple/basics/XRPAmount.h#L244)
     - [Ledger Formats](https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/protocol/LedgerFormats.h#L36-L94)
 
+
 - **Other:**
-    - [Authorized Trust Lines](https://xrpl.org/authorized-trust-lines.html#authorized-trust-lines)
-    - [XRP Properties](https://xrpl.org/xrp.html#xrp-properties)
+    - [Authorized Trust Lines](authorized-trust-lines.html)
+    - [XRP Properties](xrp.html#xrp-properties)
     - [Calculating Balance Changes for a Transaction](https://xrpl.org/blog/2015/calculating-balance-changes-for-a-transaction.html#calculating-balance-changes-for-a-transaction)
 
 
