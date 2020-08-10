@@ -7,87 +7,84 @@ Rippleは[代替となるテスト用および開発用ネットワーク](paral
 `rippled`サーバーをXRP TestnetまたはDevnetに接続するには、以下の構成を設定します。
 
 1. `rippled.cfg`ファイルで以下の手順に従います。
-   
+
    a. [Testnet](xrp-testnet-faucet.html)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
-   
+
         [ips]
         s.altnet.rippletest.net 51235
-   
+
    b. [Devnet](xrp-testnet-faucet.html)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
-   
+
         [ips]
         s.devnet.rippletest.net 51235
-   
+
    c. 以下のセクションを次のようにコメントアウトします。
-   
+
         # [ips]
         # r.ripple.com 51235
 
 
 
 2. `validators.txt`ファイルで以下の手順に従います。
-   
+
    2a. Altnetに接続するための変更
-   
+
         a. 以下のセクションのコメントを解除し、Altnetに接続するようにします。
-       
+
             [validator_list_sites]
             https://vl.altnet.rippletest.net
-       
+
             [validator_list_keys]
             ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
-       
+
         b. 以下のセクションを次のようにコメントアウトします。
-       
+
             # [validator_list_sites]
             # https://vl.ripple.com
             #
             # [validator_list_keys]
             # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-   
+
    2b. Devnetに接続するための変更
-   
+
         a. 以下のセクションをコメントアウトします。
-       
+
             # [validator_list_sites]
             # https://vl.altnet.rippletest.net
-       
+
             # [validator_list_keys]
             # ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860        
-       
+
             # [validator_list_sites]
             # https://vl.ripple.com
             #
             # [validator_list_keys]
             # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-       
+
         b. 次の信頼できるバリデータをvalidator.txtファイルに追加します。
-       
-            # Hard-coded List of Devnet Validators
-            [validators]
-            n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c
-            n9MEwP4LSSikUnhZJNQVQxoMCgoRrGm6GGbG46AumH2KrRrdmr6B
-            n9M1pogKUmueZ2r3E3JnZyM3g6AxkxWPr8Vr3zWtuRLqB7bHETFD
-            n9MX7LbfHvPkFYgGrJmCyLh8Reu38wsnnxA4TKhxGTZBuxRz3w1U
-            n94aw2fof4xxd8g3swN2qJCmooHdGv1ajY8Ae42T77nAQhZeYGdd
-            n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
-            n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
+
+            [validator_list_sites]
+            https://vl.devnet.rippletest.net/index.json
+
+            [validator_list_keys]
+            021B0DE76CED20C8B341086D8F4C8AB3D62657C6EDE19395461B197223D6271CA5
+
 
 
 3. `rippled`を再起動します。
 
 4. `rippled`がXRP TestnetまたはDevnetに接続していることを確認するため、サーバーで[server_infoメソッド][]を使用して、その結果をTestnetまたはDevnetの公開サーバーの結果と比較します。両方のサーバーで`validated_ledger`オブジェクトの`seq`フィールドが同一である必要があります（確認中にこの数が変化した場合は、1～2の差が生じる可能性があります）。
-   
+
    以下のコマンドは、`s.altnet.rippletest.net`にあるTestnetサーバーの最新の検証済みレジャーをチェックします。
-   
+
         $ ./rippled --rpc_ip 34.210.87.206:51234 server_info | grep seq
-   
+
    以下のコマンドは、`s.devnet.rippletest.net`にあるDevnetサーバーの最新の検証済みレジャーをチェックします。
-   
+
         $ ./rippled --rpc_ip 34.83.125.234:51234 server_info | grep seq
-   
+
    以下のコマンドは、ローカルの`rippled`の最新検証済みレジャーインデックスをチェックします。
-   
+
         $ ./rippled server_info | grep seq
 
 
