@@ -12,17 +12,17 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temBAD_EXPIRATION`           | The transaction improperly specified an expiration value, for example as part of an [OfferCreate transaction][]. Alternatively, the transaction did not specify a required expiration value, for example as part of an [EscrowCreate transaction][]. |
 | `temBAD_FEE`                  | The transaction improperly specified its `Fee` value, for example by listing a non-XRP currency or some negative amount of XRP. |
 | `temBAD_ISSUER`               | The transaction improperly specified the `issuer` field of some currency included in the request. |
-| `temBAD_LIMIT`                | The [TrustSet transaction][] improperly specified the `LimitAmount` value of a trustline. |
+| `temBAD_LIMIT`                | The [TrustSet transaction][] improperly specified the `LimitAmount` value of a trust line. |
 | `temBAD_OFFER`                | The [OfferCreate transaction][] specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount. |
 | `temBAD_PATH`                 | The [Payment transaction][] specifies one or more [Paths](paths.html) improperly, for example including an issuer for XRP, or specifying an account differently. |
 | `temBAD_PATH_LOOP`           | One of the [Paths](paths.html) in the [Payment transaction][] was flagged as a loop, so it cannot be processed in a bounded amount of time. |
-| `temBAD_SEND_XRP_LIMIT`     | The [Payment transaction][] used the [tfLimitQuality](payment.html#limit-quality) flag in a direct XRP-to-XRP payment, even though XRP-to-XRP payments do not involve any conversions. |
-| `temBAD_SEND_XRP_MAX`       | The [Payment transaction][] included a `SendMax` field in a direct XRP-to-XRP payment, even though sending XRP should never require SendMax. (XRP is only valid in SendMax if the destination `Amount` is not XRP.) |
-| `temBAD_SEND_XRP_NO_DIRECT` | The [Payment transaction][] used the [tfNoDirectRipple](payment.html#payment-flags) flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments are always direct. |
-| `temBAD_SEND_XRP_PARTIAL`   | The [Payment transaction][] used the [tfPartialPayment](partial-payments.html) flag for a direct XRP-to-XRP payment, even though XRP-to-XRP payments should always deliver the full amount. |
+| `temBAD_SEND_XRP_LIMIT`     | The [Payment transaction][] used the [`tfLimitQuality` flag](payment.html#limit-quality) in a direct XRP-to-XRP payment, even though XRP-to-XRP payments do not involve any conversions. |
+| `temBAD_SEND_XRP_MAX`       | The [Payment transaction][] included a `SendMax` field in a direct XRP-to-XRP payment, even though sending XRP should never require `SendMax`. (XRP is only valid in `SendMax` if the destination `Amount` is not XRP.) |
+| `temBAD_SEND_XRP_NO_DIRECT` | The [Payment transaction][] used the [`tfNoDirectRipple` flag](payment.html#payment-flags) for a direct XRP-to-XRP payment, even though XRP-to-XRP payments are always direct. |
+| `temBAD_SEND_XRP_PARTIAL`   | The [Payment transaction][] used the [`tfPartialPayment` flag](partial-payments.html) for a direct XRP-to-XRP payment, even though XRP-to-XRP payments should always deliver the full amount. |
 | `temBAD_SEND_XRP_PATHS`     | The [Payment transaction][] included `Paths` while sending XRP, even though XRP-to-XRP payments should always be direct. |
 | `temBAD_SEQUENCE`             | The transaction is references a sequence number that is higher than its own `Sequence` number, for example trying to cancel an offer that would have to be placed after the transaction that cancels it. |
-| `temBAD_SIGNATURE`            | The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See [tecNO_PERMISSION](tec-codes.html) for the case where the signature is properly formed, but not authorized for this account.) |
+| `temBAD_SIGNATURE`            | The signature to authorize this transaction is either missing, or formed in a way that is not a properly-formed signature. (See [`tecNO_PERMISSION`](tec-codes.html) for the case where the signature is properly formed, but not authorized for this account.) |
 | `temBAD_SRC_ACCOUNT`         | The `Account` on whose behalf this transaction is being sent (the "source account") is not a properly-formed [account](accounts.html) address. |
 | `temBAD_TRANSFER_RATE`       | The [`TransferRate` field of an AccountSet transaction](accountset.html#transferrate) is not properly formatted or out of the acceptable range. |
 | `temCANNOT_PREAUTH_SELF`     | The sender of the [DepositPreauth transaction][] was also specified as the account to preauthorize. You cannot preauthorize yourself. |

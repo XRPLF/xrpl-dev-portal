@@ -70,6 +70,8 @@ targets:
         github_branch: master
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
+        readability_goals:
+            flesch_reading_ease: 50 # or higher
 
     -   name: ja
         lang: ja
@@ -3440,7 +3442,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
-        blurb: Get recommended changes to an account's DefaultRipple and NoRipple settings.
+        blurb: Get recommended changes to an account's Default Ripple and No Ripple settings.
         targets:
             - en
 
@@ -5993,6 +5995,7 @@ pages:
         funnel: Build
         doc_type: References
         supercategory: XRP-API
+        skip_spell_checker: true
         filters:
             - xrpapi_readme
         targets:
@@ -6007,6 +6010,7 @@ pages:
         funnel: Build
         doc_type: References
         supercategory: XRP-API
+        skip_spell_checker: true
         targets:
             - en
             - ja
@@ -6022,6 +6026,7 @@ pages:
         doc_type: References
         category: RippleAPI for JavaScript
         blurb: Official client library to the XRP Ledger. Available for JavaScript only.
+        skip_spell_checker: true
         # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
         curated_anchors:
             - name: Transactions
@@ -6401,8 +6406,11 @@ known_broken_links:
     #  even though they still work in browser:
     - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
     - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
+    # Another failure that works fine in a browser:
+    - https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/
 
 # Style Checker Config ------------------------------------------------------ #
 
 word_substitutions_file: tool/word_substitutions.yaml
 phrase_substitutions_file: tool/phrase_substitutions.yaml
+spelling_file: tool/spelling.txt

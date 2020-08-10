@@ -180,7 +180,7 @@ XRP Ledgerアカウントキーでのsecp256k1鍵導出に、Ed25519鍵導出よ
 
    2. 連結された（シード+ルートシーケンス）値の[SHA-512ハーフ][]を計算します。
 
-   3. 結果が有効なsecp265k1秘密鍵でない場合は、ルートシーケンスを1増やして最初からやり直します。[[ソース]](https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103 "Source")
+   3. 結果が有効なsecp256k1秘密鍵でない場合は、ルートシーケンスを1増やして最初からやり直します。[[ソース]](https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103 "Source")
 
       有効なsecp256k1鍵は0であってはならず、 _secp256k1グループ_ の数値順よりも低くなければなりません。secp256k1グループの順序は、定数`0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`です。
 
@@ -205,7 +205,7 @@ XRP Ledgerアカウントキーでのsecp256k1鍵導出に、Ed25519鍵導出よ
 
    2. 連結された値の[SHA-512ハーフ][]を計算します。
 
-   3. 結果が有効なsecp265k1秘密鍵でない場合は、キーシーケンスを1増やし、アカウントの仲介銀行（機関）キーペアの導出をやり直します。
+   3. 結果が有効なsecp256k1秘密鍵でない場合は、キーシーケンスを1増やし、アカウントの仲介銀行（機関）キーペアの導出をやり直します。
 
    4. 有効なsecp256k1秘密鍵を使用して、secp256k1曲線で標準ECDSA公開鍵を導出し、仲介銀行（機関）公開鍵を導出します。（暗号化アルゴリズムの場合と同様に、可能な場合は必ず、公的に監査された既知の標準実装を使用します。例えば、[OpenSSL](https://www.openssl.org/)には、コア関数であるEd25519およびsecp256k1が実装されています。）
 

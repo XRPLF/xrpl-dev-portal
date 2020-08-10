@@ -45,7 +45,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     The above example is appropriate for **Ubuntu 18.04 Bionic Beaver**. For other operating systems, replace the word `bionic` with one of the following:
 
-    - `xenial` for **Ubuntu 16.04 Xenial Xerus**
+    - `xenial` for **Ubuntu 16.04 Xenial Xerus** <!-- SPELLING_IGNORE: xenial, xerus -->
     - `stretch` for **Debian 9 Stretch**
 
     If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:

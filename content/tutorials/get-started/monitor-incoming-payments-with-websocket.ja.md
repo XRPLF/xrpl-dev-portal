@@ -110,11 +110,11 @@ $("#connect-button").click((event) => {
 WebSocket接続では、複数のメッセージをどちらの方向にも送信することが可能で、要求と応答の間に厳密な1:1の相互関係がないため、各着信メッセージに対応する処理を識別する必要があります。この処理をコーディングする際の優れたモデルとして、「ディスパッチャー」関数の設定が挙げられます。この関数は着信メッセージを読み取り、各メッセージを正しいコードのパスに中継して処理します。メッセージを適切にディスパッチできるように、`rippled`サーバーでは、すべてのWebSocketメッセージで`type`フィールドを使用できます。
 
 - クライアント側からの要求への直接の応答となるメッセージの場合、`type`は文字列の`response`です。この場合、サーバーは以下も提供します。
-  
+
   - この応答に対する要求で指定された`id`に一致する`id`フィールド（応答が順序どおりに到着しない可能性があるため、これは重要です）。
-  
+
   - APIが要求の処理に成功したかどうかを示す`status`フィールド。文字列値`success`は、[成功した応答](response-formatting.html)を示します。文字列値`error`は、[エラー](error-formatting.html)を示します。
-    
+
     **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバーによって要求が理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](look-up-transaction-results.html)を参照してください。
 
 - [サブスクリプション](subscribe.html)からのフォローアップメッセージの場合、`type`は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している[pathfinding要求](path_find.html)のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。
@@ -335,19 +335,19 @@ WS_HANDLERS["transaction"] = log_tx
 - **`transaction.Account`** フィールドはトランザクションの送信元です。他の人が送信したトランザクションのみを探している場合は、このフィールドがあなたのアドレスと一致するトランザクションを無視できます（自身に対する複数通貨間の支払いが _可能である_ 点に注意してください）。
 
 - **`transaction.TransactionType`フィールド**はトランザクションのタイプです。アカウントに通貨を送金できる可能性があるトランザクションのタイプは以下のとおりです。
-  
+
   - **[Paymentトランザクション][]** はXRPまたは[発行済み通貨](issued-currencies.html)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](basic-data-types.html#通貨額の指定)。
-    
+
     **警告:** 代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](partial-payments.html#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。
-  
+
   - **[CheckCashトランザクション][]** :not_enabled: では、アカウントは別のアカウントの[CheckCreateトランザクション][]によって承認された金額を受け取ることができます。**CheckCashトランザクション**のメタデータを確認すると、アカウントが受け取った通貨の額を確認できます。
-  
+
   - **[EscrowFinishトランザクション][]** は、以前の[EscrowCreateトランザクション][]によって作成された[Escrow](escrow.html)を終了することでXRPを送金できます。**EscrowFinishトランザクション**のメタデータを確認すると、escrowからXRPを受け取ったアカウントと、その額を確認できます。
-  
+
   - **[OfferCreateトランザクション][]** はアカウントがXRP Ledgerの[分散型取引所](decentralized-exchange.html)で以前発行したオファーを消費することで、XRPまたは発行済み通貨を送金できます。オファーを発行しないと、この方法で金額を受け取ることはできません。メタデータを確認して、アカウントが受け取った通貨（この情報がある場合）と、金額を確認します。
-  
+
   - **[PaymentChannelClaimトランザクション][]** では、[Payment Channel](payment-channels.html)からXRPを送金できます。メタデータを確認して、トランザクションからXRPを受け取ったアカウント（この情報がある場合）を確認します。
-  
+
   - **[PaymentChannelFundトランザクション][]** は、閉鎖された（期限切れの）Payment Channelから送金元にXRPを返金することができます。
 
 - **`meta`フィールド**には、1つまたは複数の通貨の種類とその正確な金額、その送金先などを示す[トランザクションメタデータ](transaction-metadata.html)が示されています。トランザクションメタデータを理解する方法の詳細は、[トランザクションの結果の確認](look-up-transaction-results.html)を参照してください。
@@ -397,7 +397,7 @@ function CountXRPDifference(affected_nodes, address) {
         }
       }
     } else if ((affected_nodes[i].hasOwnProperty("CreatedNode"))) {
-      // created a ledger entry. maybe the account just got funded?
+      // created a ledger entry. maybe the account got funded?
       let ledger_entry = affected_nodes[i].CreatedNode
       if (ledger_entry.LedgerEntryType === "AccountRoot" &&
           ledger_entry.NewFields.Account === address) {

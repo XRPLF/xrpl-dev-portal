@@ -27,7 +27,7 @@ D = A × ( e ^ (t ÷ τ) )
 - **A** is the pre-demurrage amount as recorded in the global ledger
 - **e** is Euler's number
 - **t** is the number of seconds since the Ripple Epoch (0:00 on January 1, 2000 UTC)
-- **τ** is the e-folding time in seconds. This value is [calculated from the desired interest rate](#calculating-e-folding-time).
+- **τ** is the e-folding time in seconds. This value is [calculated from the desired interest rate](#calculating-e-folding-time). <!-- SPELLING_IGNORE: τ -->
 
 To convert between display amounts and ledger amounts, you can use the following steps:
 

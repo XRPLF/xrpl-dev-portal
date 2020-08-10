@@ -4,10 +4,10 @@ Pseudo-Transactions are never submitted by users, nor propagated through the net
 
 Some of the fields that are mandatory for normal transactions do not make sense for pseudo-transactions. In those cases, the pseudo-transaction has the following default values:
 
-| Field         | Default Value                                            |
-|:--------------|:---------------------------------------------------------|
-| Account       | [ACCOUNT_ZERO](accounts.html#special-addresses) |
-| Sequence      | 0                                                        |
-| Fee           | 0                                                        |
-| SigningPubKey | ""                                                       |
-| Signature     | ""                                                       |
+| Field           | Default Value                                     |
+|:----------------|:--------------------------------------------------|
+| `Account`       | [ACCOUNT_ZERO](accounts.html#special-addresses)   |
+| `Sequence`      | `0`                                               |
+| `Fee`           | `0`                                               |
+| `SigningPubKey` | `""`                                              |
+| `Signature`     | `""`                                              |

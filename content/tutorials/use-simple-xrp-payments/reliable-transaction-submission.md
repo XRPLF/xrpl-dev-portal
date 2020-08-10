@@ -1,6 +1,6 @@
 # Reliable Transaction Submission
 
-Financial institutions and other services using the XRP Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted (locally operated) `rippled` servers.
+Financial institutions and other services using the XRP Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted `rippled` servers.
 
 The best practices detailed in this document allow applications to submit transactions to the XRP Ledger while achieving:
 
@@ -53,6 +53,8 @@ Each validated ledger has a canonical order in which transactions apply. This or
 
 
 ### LastLedgerSequence
+
+<!-- SPELLING_IGNORE: lastledgersequence -->
 
 `LastLedgerSequence` is an optional [parameter of all transactions](transaction-common-fields.html).  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger version.  The XRP Ledger never includes a transaction in a ledger version whose ledger index is higher than the transaction's `LastLedgerSequence` parameter.
 

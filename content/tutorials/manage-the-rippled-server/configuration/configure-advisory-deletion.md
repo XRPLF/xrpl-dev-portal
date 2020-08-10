@@ -88,7 +88,7 @@ To configure advisory deletion with a daily schedule, perform the following step
 If online deletion does not seem to be running after configuring it, try the following:
 
 - Check that the user who configured the `cron` job has permissions to run the `rippled` server as a commandline client.
-- Check the syntax of your cron job and the time when it is supposed to run.
+- Check the syntax of your `cron` job and the time when it is supposed to run.
 - Check that the `rippled` executable is available at the path specified in your `cron` configuration. If necessary, specify the absolute path to the executable, such as `/opt/ripple/bin/rippled`.
 - Check your `rippled` logs for messages that begin with `SHAMapStore::WRN`. This can indicate that [online deletion is being interrupted](online-deletion.html#interrupting-online-deletion) because your server fell out of sync with the network.
 

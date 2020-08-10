@@ -32,14 +32,14 @@ An unfunded offer can stay on the ledger indefinitely, but it does not have any 
 * It becomes fully claimed by a Payment or a matching OfferCreate transaction.
 * An OfferCancel or OfferCreate transaction explicitly cancels the offer.
 * An OfferCreate transaction from the same account crosses the earlier offer. (In this case, the older offer is automatically canceled.)
-* An offer is found to be unfunded during transaction processing, typically because it was at the tip of the orderbook.
+* An offer is found to be unfunded during transaction processing, typically because it was at the tip of the order book.
     * This includes cases where one side or the other of an offer is found to be closer to 0 than `rippled`'s precision supports.
 
 ### Tracking Unfunded Offers
 
 Tracking the funding status of all offers can be computationally taxing. In particular, addresses that are actively trading may have a large number of offers open. A single balance can affect the funding status of many offers to buy different currencies. Because of this, `rippled` does not proactively find and remove offers.
 
-A client application can locally track the funding status of offers. To do this, first retreive an order book using the [book_offers method][] and check the `taker_gets_funded` field of offers. Then, [subscribe](subscribe.html) to the `transactions` stream and watch the transaction metadata to see which offers are modified.
+A client application can locally track the funding status of offers. To do this, first retrieve an order book using the [book_offers method][] and check the `taker_gets_funded` field of offers. Then, [subscribe](subscribe.html) to the `transactions` stream and watch the transaction metadata to see which offers are modified.
 
 
 ## Offers and Trust
@@ -48,7 +48,7 @@ The limit values of trust lines (See [TrustSet](trustset.html)) do not affect of
 
 However, holding non-XRP balances still requires a trust line to the address issuing those balances. When an offer is taken, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](reserves.html), any offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.
 
-A trust line indicates an issuer you trust enough to accept their issuances as payment, within limits. Offers are explicit instructions to acquire certain issuances, so they are allowed to go beyond those limits.
+A trust line indicates an issuer you trust enough to accept their issued currencies as payment, within limits. Offers are explicit instructions to acquire certain issued currencies, so they are allowed to go beyond those limits.
 
 
 ## Offer Preference

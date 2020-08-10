@@ -45,7 +45,7 @@ A</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 $1
-    NoRipple</panel_attributes>
+    No Ripple</panel_attributes>
     <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
@@ -82,7 +82,7 @@ B</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 $100
-NoRipple          .</panel_attributes>
+No Ripple          .</panel_attributes>
     <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -167,7 +167,7 @@ A</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 $1
-    NoRipple</panel_attributes>
+    No Ripple</panel_attributes>
     <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
@@ -392,7 +392,7 @@ A</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 $1
-    NoRipple</panel_attributes>
+    No Ripple</panel_attributes>
     <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
@@ -416,7 +416,7 @@ $1
     </coordinates>
     <panel_attributes>lt=&lt;-
 $100
-     NoRipple</panel_attributes>
+     No Ripple</panel_attributes>
     <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
   </element>
   <element>
@@ -467,7 +467,7 @@ bg=green
       <h>110</h>
     </coordinates>
     <panel_attributes>This path is valid
-because Daniel, but not Emily, has set the NoRipple flag on the trust line between them
+because Daniel, but not Emily, has set the No Ripple flag on the trust line between them
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>

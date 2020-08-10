@@ -6,7 +6,7 @@ The `DirectoryNode` object type provides a list of links to other objects in the
 There are two kinds of Directories:
 
 * **Owner directories** list other objects owned by an account, such as `RippleState` or `Offer` objects.
-* **Offer directories** list the offers available in the distributed exchange. A single Offer directory contains all the offers that have the same exchange rate for the same issuances.
+* **Offer directories** list the offers available in the distributed exchange. A single Offer directory contains all the offers that have the same exchange rate for the same issued currency.
 
 ## Example {{currentpage.name}} JSON
 
@@ -61,10 +61,10 @@ There are two kinds of Directories:
 | `IndexPrevious`     | Number    | UInt64    | (Optional) If this Directory consists of multiple pages, this ID links to the previous object in the chain, wrapping around at the beginning. |
 | `Owner`             | String    | AccountID | (Owner Directories only) The address of the account that owns the objects in this directory. |
 | `ExchangeRate`      | Number    | UInt64    | (Offer Directories only) **DEPRECATED**. Do not use. |
-| `TakerPaysCurrency` | String    | Hash160   | (Offer Directories only) The currency code of the TakerPays amount from the offers in this directory. |
-| `TakerPaysIssuer`   | String    | Hash160   | (Offer Directories only) The issuer of the TakerPays amount from the offers in this directory. |
-| `TakerGetsCurrency` | String    | Hash160   | (Offer Directories only) The currency code of the TakerGets amount from the offers in this directory. |
-| `TakerGetsIssuer`   | String    | Hash160   | (Offer Directories only) The issuer of the TakerGets amount from the offers in this directory. |
+| `TakerPaysCurrency` | String    | Hash160   | (Offer Directories only) The currency code of the `TakerPays` amount from the offers in this directory. |
+| `TakerPaysIssuer`   | String    | Hash160   | (Offer Directories only) The issuer of the `TakerPays` amount from the offers in this directory. |
+| `TakerGetsCurrency` | String    | Hash160   | (Offer Directories only) The currency code of the `TakerGets` amount from the offers in this directory. |
+| `TakerGetsIssuer`   | String    | Hash160   | (Offer Directories only) The issuer of the `TakerGets` amount from the offers in this directory. |
 
 ## Directory ID Formats
 
@@ -87,7 +87,7 @@ There are three different formulas for creating the ID of a DirectoryNode, depen
 * The AccountID from the `TakerPaysIssuer`
 * The AccountID from the `TakerGetsIssuer`
 
-The lower 64 bits of an Offer Directory's ID represent the TakerPays amount divided by TakerGets amount from the offer(s) in that directory as a 64-bit number in the XRP Ledger's internal amount format.
+The lower 64 bits of an Offer Directory's ID represent the `TakerPays` amount divided by `TakerGets` amount from the offer(s) in that directory as a 64-bit number in the XRP Ledger's internal amount format.
 
 **If the DirectoryNode is not the first page in the Directory** (regardless of whether it is an Owner Directory or an Offer Directory), then it has an ID that is the [SHA-512Half][] of the following values, concatenated in order:
 

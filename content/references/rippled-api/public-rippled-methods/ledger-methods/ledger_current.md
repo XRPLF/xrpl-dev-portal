@@ -73,6 +73,17 @@ An example of a successful response:
 }
 ```
 
+*Commandline*
+
+```json
+{
+   "result" : {
+      "ledger_current_index" : 56844050,
+      "status" : "success"
+   }
+}
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format][], with a successful result containing the following field:

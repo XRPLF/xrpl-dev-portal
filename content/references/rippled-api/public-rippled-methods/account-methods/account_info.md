@@ -166,6 +166,31 @@ An example of a successful response:
 }
 ```
 
+*Commandline*
+
+```json
+{
+   "result" : {
+      "account_data" : {
+         "Account" : "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+         "Balance" : "9986",
+         "Flags" : 1114112,
+         "LedgerEntryType" : "AccountRoot",
+         "OwnerCount" : 0,
+         "PreviousTxnID" : "0705FE3F52057924C288296EF0EBF668E0C1A3646FBA8FAF9B73DCC0A797B4B2",
+         "PreviousTxnLgrSeq" : 51948740,
+         "RegularKey" : "rhLkGGNZdjSpnHJw4XAFw1Jy7PD8TqxoET",
+         "Sequence" : 192220,
+         "index" : "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
+      },
+      "ledger_hash" : "8169428EDF7F046F817CE44F5F1DF23AD9FAEFFA2CBA7645C3254D66AA79B46E",
+      "ledger_index" : 56843712,
+      "status" : "success",
+      "validated" : true
+   }
+}
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format][], with the result containing the requested account, its data, and a ledger to which it applies, as the following fields:

@@ -4,7 +4,7 @@ _Added by the [Checks amendment][]._
 
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive a flexible amount by sending a [CheckCash transaction][] with a `DeliverMin` field. When cashing a Check in this way, the receiver gets as much as is possible to deliver, debiting the Check's sender for the Check's full `SendMax` amount or as much as is available. Cashing fails if it doesn't deliver at least the `DeliverMin` amount to the Check's recipient.
 
-You might cash a Check for a flexible amount if you just want to get as much as possible from the Check.
+You might cash a Check for a flexible amount if you want to get as much as possible from the Check.
 
 The specified recipient can also [cash the check for an exact amount](cash-a-check-for-a-flexible-amount.html).
 
@@ -164,7 +164,7 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
 
 - For XRP, the `AccountRoot` object of the Check's sender has its XRP `Balance` field debited. The `AccountRoot` object of the Check's recipient (the one who sent the CheckCash transaction) has its XRP `Balance` credited for at least the `DeliverMin` of the CheckCash transaction minus the [transaction cost](transaction-cost.html) of sending the transaction.
 
-    For example, the following `ModifiedNode` shows that the account rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis, the Check's recipient and the sender of this CheckCash transaction, had its XRP balance change from `9999999970` drops to `10099999960` drops, meaning the recipient was credited a _net_ of 99.99999 XRP as a result of processing the transaction.
+    For example, the following `ModifiedNode` shows that the account `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`, the Check's recipient and the sender of this CheckCash transaction, had its XRP balance change from `9999999970` drops to `10099999960` drops, meaning the recipient was credited a _net_ of 99.99999 XRP as a result of processing the transaction.
 
           {
             "ModifiedNode": {
@@ -186,7 +186,7 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
             }
           }
 
-    The net amount of 99.99999 XRP includes deducting the transaction cost that is destroyed to pay for sending this CheckCash transaction. The following transaction instructions (excerpted) show that the transaction cost (the `Fee` field) was 10 drops of XRP. By adding this to the net balance change, we conclude that the recipient, rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis, was credited a _gross_ amount of exactly 100 XRP for cashing the Check.
+    The net amount of 99.99999 XRP includes deducting the transaction cost that is destroyed to pay for sending this CheckCash transaction. The following part of the transaction instructions shows that the transaction cost (the `Fee` field) was 10 drops of XRP. By adding this to the net balance change, we conclude that the recipient, `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`, was credited a _gross_ amount of exactly 100 XRP for cashing the Check.
 
         "Account" : "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
         "TransactionType" : "CheckCash",

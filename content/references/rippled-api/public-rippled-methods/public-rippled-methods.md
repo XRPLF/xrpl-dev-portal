@@ -15,12 +15,12 @@ An account in the XRP Ledger represents a holder of XRP and a sender of transact
 * **[`account_offers`](account_offers.html)** - Get info about an account's currency exchange offers.
 * **[`account_tx`](account_tx.html)** - Get info about an account's transactions.
 * **[`gateway_balances`](gateway_balances.html)** - Calculate total amounts issued by an account.
-* **[`noripple_check`](noripple_check.html)** - Get recommended changes to an account's DefaultRipple and NoRipple settings.
+* **[`noripple_check`](noripple_check.html)** - Get recommended changes to an account's Default Ripple and No Ripple settings.
 
 
 ## [Ledger Methods](ledger-methods.html)
 
-A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info.
+A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trust lines, balances, transactions, and other data. Use these methods to retrieve ledger info.
 
 * **[`ledger`](ledger.html)** - Get info about a ledger version.
 * **[`ledger_closed`](ledger_closed.html)** - Get the latest closed ledger version.

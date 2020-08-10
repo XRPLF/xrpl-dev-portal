@@ -77,7 +77,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 11,
   "status": "success",
@@ -150,6 +150,78 @@ An example of a successful response:
 }
 ```
 
+*Commandline*
+
+```json
+{
+   "result" : {
+      "ledger_current_index" : 56867201,
+      "offers" : [
+         {
+            "Account" : "rnixnrMHHvR7ejMpJMRCWkaNrq3qREwMDu",
+            "BookDirectory" : "7E5F614417C2D0A7CEFEB73C4AA773ED5B078DE2B5771F6D56038D7EA4C68000",
+            "BookNode" : "0000000000000000",
+            "Flags" : 131072,
+            "LedgerEntryType" : "Offer",
+            "OwnerNode" : "0000000000000000",
+            "PreviousTxnID" : "E43ADD1BD4AC2049E0D9DE6BC279B7FD95A99C8DE2C4694A4A7623F6D9AAAE29",
+            "PreviousTxnLgrSeq" : 47926685,
+            "Sequence" : 219,
+            "TakerGets" : {
+               "currency" : "EUR",
+               "issuer" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+               "value" : "2.459108753792364"
+            },
+            "TakerPays" : {
+               "currency" : "USD",
+               "issuer" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+               "value" : "24.59108753792364"
+            },
+            "index" : "3087B4828C6B5D8595EA325D69C0F396C57452893647799493A38F2C164990AB",
+            "owner_funds" : "2.872409153061363",
+            "quality" : "10"
+         },
+         {
+            "Account" : "rKwjWCKBaASEvtHCxtvReNd2i9n8DxSihk",
+            "BookDirectory" : "7E5F614417C2D0A7CEFEB73C4AA773ED5B078DE2B5771F6D56038D7EA4C68000",
+            "BookNode" : "0000000000000000",
+            "Flags" : 131072,
+            "LedgerEntryType" : "Offer",
+            "OwnerNode" : "0000000000000000",
+            "PreviousTxnID" : "B63B2ECD124FE6B02BC2998929517266BD221A02FEE51DDE4992C1BCB7E86CD3",
+            "PreviousTxnLgrSeq" : 43166305,
+            "Sequence" : 19,
+            "TakerGets" : {
+               "currency" : "EUR",
+               "issuer" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+               "value" : "3.52"
+            },
+            "TakerPays" : {
+               "currency" : "USD",
+               "issuer" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+               "value" : "35.2"
+            },
+            "index" : "89865F2C70D1140796D9D249AC2ED765AE2D007A52DEC6D6D64CCB1A77A6EB7F",
+            "owner_funds" : "3.523192614770459",
+            "quality" : "10",
+            "taker_gets_funded" : {
+               "currency" : "EUR",
+               "issuer" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+               "value" : "3.516160294182094"
+            },
+            "taker_pays_funded" : {
+               "currency" : "USD",
+               "issuer" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+               "value" : "35.16160294182094"
+            }
+         }
+      ],
+      "status" : "success",
+      "validated" : false
+   }
+}
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format][], with a successful result containing the following fields:
@@ -165,7 +237,7 @@ In addition to the standard Offer fields, the following fields may be included i
 
 | `Field`             | Type                             | Description         |
 |:--------------------|:---------------------------------|:--------------------|
-| `owner_funds`       | String                           | Amount of the TakerGets currency the side placing the offer has available to be traded. (XRP is represented as drops; any other currency is represented as a decimal value.) If a trader has multiple offers in the same book, only the highest-ranked offer includes this field. |
+| `owner_funds`       | String                           | Amount of the `TakerGets` currency the side placing the offer has available to be traded. (XRP is represented as drops; any other currency is represented as a decimal value.) If a trader has multiple offers in the same book, only the highest-ranked offer includes this field. |
 | `taker_gets_funded` | String (XRP) or Object (non-XRP) | (Only included in partially-funded offers) The maximum amount of currency that the taker can get, given the funding status of the offer. |
 | `taker_pays_funded` | String (XRP) or Object (non-XRP) | (Only included in partially-funded offers) The maximum amount of currency that the taker would pay, given the funding status of the offer. |
 | `quality`           | String                           | The exchange rate, as the ratio `taker_pays` divided by `taker_gets`. For fairness, offers that have the same quality are automatically taken first-in, first-out. (In other words, if multiple people offer to exchange currency at the same rate, the oldest offer is taken first.) |
