@@ -176,7 +176,7 @@ pages:
     -   name: History
         funnel: Learn
         category: History
-        template: template-doc.html # TODO: change as needed
+        template: template-contact.html # TODO: change as needed
         html: history.html
         sidebar: disabled
         targets:

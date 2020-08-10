@@ -12,15 +12,7 @@
 .va-middle {
 	vertical-align: middle;
 }
-.text-white {
-	color: $white;
-}
-.text-green {
-	color: $primary;
-}
-.text-green:hover {
-	color: $primary;
-}
+
 .arrow-link:after {
 	content: url(../img/icon-green-arrow.svg);
 	width: 28px;
@@ -42,6 +34,10 @@
 .vh100 {
 	height: 100vh;
 	min-height: 100%;
+}
+.vw100 {
+	width: 100vw;
+	min-width: 100%;
 }
 .align-items-stretch {
 	align-items: stretch;
@@ -88,15 +84,14 @@
 	height: 38px;
 	padding-bottom: 5rem;
 }
-section {
-	position: relative;
-}
+
 .section-marker {
 	position: absolute;
 	font-size: 0.875rem;
 	transform: rotate(90deg);
 	font-weight: normal;
-	top: calc(50% - 4px);
-	margin-left: -48px;
+	top: calc(50% - 64px);
+	margin-left: -32px;
+	transform-origin: top left;
 }
 

@@ -3,11 +3,13 @@
 #main_content_wrapper {
   border-bottom: 0;
 }
-
-
 .landing section:last-of-type {
   border-bottom: none;
 }
+section {
+  position: relative;
+}
+
 
 /* main content area ----------------------------------- */
 .sidebar-primary .main {
@@ -174,16 +176,16 @@
 
 @media (max-width: 991px) {
 
-  #main_content_wrapper {
-    padding: 0 24px;
-  }
+  // #main_content_wrapper {
+    // padding: 0 24px;
+  // }
   .navbar-brand img {
     width: 120px;
   }
-  .landing section:first-of-type h1:first-child {
-    font-size: 3em;
-    font-weight: 400;
-  }
+  // .landing section:first-of-type h1:first-child {
+  //   font-size: 3em;
+  //   font-weight: 400;
+  // }
   .section-hero .blurb {
     font-size: 0.95em;
   }
