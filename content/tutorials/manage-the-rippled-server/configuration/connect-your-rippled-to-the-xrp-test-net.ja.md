@@ -67,7 +67,7 @@ Rippleは[代替となるテスト用および開発用ネットワーク](paral
             https://vl.devnet.rippletest.net/index.json
 
             [validator_list_keys]
-            021B0DE76CED20C8B341086D8F4C8AB3D62657C6EDE19395461B197223D6271CA5
+            EDDF2F53DFEC79358F7BE76BC884AC31048CFF6E2A00C628EAE06DB7750A247B12
 
 
 

@@ -68,11 +68,11 @@ Edit your `validators.txt` file. This file is located in the same folder as your
 
     *Mainnet*
 
-      	[validator_list_sites]
-      	https://vl.ripple.com
+        [validator_list_sites]
+        https://vl.ripple.com
 
-      	[validator_list_keys]
-      	ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+        [validator_list_keys]
+        EDDF2F53DFEC79358F7BE76BC884AC31048CFF6E2A00C628EAE06DB7750A247B12
 
     <!-- MULTICODE_BLOCK_END -->
 
