@@ -6,6 +6,8 @@ The `ledger_data` method retrieves contents of the specified ledger. You can ite
 ## Request Format
 An example of the request format:
 
+{% include '_snippets/no-cli-syntax.md' %}
+
 <!-- MULTICODE_BLOCK_START -->
 
 *WebSocket*
@@ -37,7 +39,6 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Note:** There is no commandline syntax for `ledger_data`. You can use the [json method][] to access this method from the commandline instead.
 
 A request can include the following fields:
 

@@ -309,6 +309,108 @@ An example of a successful response:
 }
 ```
 
+*Commandline*
+```json
+{
+   "result" : {
+      "alternatives" : [
+         {
+            "paths_canonical" : [],
+            "paths_computed" : [
+               [
+                  {
+                     "currency" : "USD",
+                     "issuer" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                     "type" : 48,
+                     "type_hex" : "0000000000000030"
+                  }
+               ]
+            ],
+            "source_amount" : "5212"
+         },
+         {
+            "paths_canonical" : [],
+            "paths_computed" : [
+               [
+                  {
+                     "account" : "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X",
+                     "type" : 1,
+                     "type_hex" : "0000000000000001"
+                  },
+                  {
+                     "account" : "rnx1RNE5cJbYzMsJbF3XzyQMxZNBPqdCVd",
+                     "type" : 1,
+                     "type_hex" : "0000000000000001"
+                  }
+               ],
+               [
+                  {
+                     "account" : "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X",
+                     "type" : 1,
+                     "type_hex" : "0000000000000001"
+                  },
+                  {
+                     "account" : "ragizZ31TmpachYAuG3n56XCb1R5vc3cTQ",
+                     "type" : 1,
+                     "type_hex" : "0000000000000001"
+                  }
+               ],
+               [
+                  {
+                     "account" : "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X",
+                     "type" : 1,
+                     "type_hex" : "0000000000000001"
+                  },
+                  {
+                     "account" : "r9JS9fLbtLzgBCdFCnS3LpVPUBJAmg7PnM",
+                     "type" : 1,
+                     "type_hex" : "0000000000000001"
+                  }
+               ],
+               [
+                  {
+                     "account" : "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X",
+                     "type" : 1,
+                     "type_hex" : "0000000000000001"
+                  },
+                  {
+                     "account" : "rDc9zKqfxm43S9LwpNkwV9KgW6PKUPrT5u",
+                     "type" : 1,
+                     "type_hex" : "0000000000000001"
+                  }
+               ]
+            ],
+            "source_amount" : {
+               "currency" : "USD",
+               "issuer" : "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+               "value" : "0.001002"
+            }
+         }
+      ],
+      "destination_account" : "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "destination_amount" : {
+         "currency" : "USD",
+         "issuer" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+         "value" : "0.001"
+      },
+      "destination_currencies" : [
+         "USD",
+         "015841551A748AD2C1F76FF6ECB0CCCD00000000",
+         "BTC",
+         "DYM",
+         "CNY",
+         "EUR",
+         "JOE",
+         "MXN",
+         "XRP"
+      ],
+      "full_reply" : true,
+      "source_account" : "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "status" : "success"
+   }
+}
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format][], with a successful result containing the following fields:
