@@ -60,10 +60,10 @@ Edit your `validators.txt` file. This file is located in the same folder as your
     *Devnet*
 
         [validator_list_sites]
-        https://vl.devnet.rippletest.net/index.json
+        https://vl.devnet.rippletest.net
 
         [validator_list_keys]
-        021B0DE76CED20C8B341086D8F4C8AB3D62657C6EDE19395461B197223D6271CA5
+        EDDF2F53DFEC79358F7BE76BC884AC31048CFF6E2A00C628EAE06DB7750A247B12
 
 
     *Mainnet*
@@ -72,7 +72,7 @@ Edit your `validators.txt` file. This file is located in the same folder as your
         https://vl.ripple.com
 
         [validator_list_keys]
-        EDDF2F53DFEC79358F7BE76BC884AC31048CFF6E2A00C628EAE06DB7750A247B12
+        ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 
     <!-- MULTICODE_BLOCK_END -->
 
