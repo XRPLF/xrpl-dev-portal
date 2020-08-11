@@ -1,0 +1,73 @@
+{% extends "template-base.html" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+  <div class="container my-40 marketing-wrapper">
+
+    <section class="row mt-40 mb-40">
+      <div class="col-sm-4 mb-10">
+        <h3 class="text-primary mb-4 h6">XRP Wallets</h3>
+        <h1 class="mb-18">Options for Storing XRP</h1>
+      </div>
+      <div class="col-sm-6 offset-sm-1">
+        <h2 class="mt-12 mb-10">Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: custodia and non-custodial.</h2>
+        <p>Custodial wallets manage a user's private key, which allows the wallet to withdraw crypto currency on a user's behalf. Non-custodial wallets do not manage a user's private key, which is up to the user to manage, and therefore cannot send crypto currency on the user's behalf.</p>
+      </div>
+    </section>
+
+    <section class="mb-50 row">
+      <h5 class="ml-3 mb-3">XRPL Trusted Exchanges:</h5>
+      <div class="w-100"></div>
+      <div class="d-flex flex-wrap w-100 mb-10">
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/wallets/xpring.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/wallets/xumm.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/wallets/trust-wallet.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/wallets/harbor-wallet.png">
+        </a>
+      </div>
+      <h5 class="ml-3 mb-3">Hardware Exchanges:</h5>
+      <div class="d-flex flex-wrap w-100">
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/wallets/trezor.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/wallets/ledger.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/wallets/secalot.png">
+        </a>
+      </div>
+      <div class="w-100"></div>
+      <p class="col-sm-4 offset-sm-8 mt-16" style="font-size: 10px;">Disclaimer: XRPL.org does not endorse or recommend any wallets or make any representations with respect to wallets or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.</p>
+    </section>
+
+  </div>
+{% endblock %}
+
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}

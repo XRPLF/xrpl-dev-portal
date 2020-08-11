@@ -214,17 +214,32 @@ pages:
             - en
             - ja
 
-    -   md: explore/wallets.md
+    -   name: Wallets
+        funnel: Explore
+        category: Wallets
+        template: template-explore-wallets.html
+        html: wallets.html
+        sidebar: disabled
         targets:
             - en
             - ja
 
-    -   md: explore/exchanges.md
+    -   name: Exchanges
+        funnel: Explore
+        category: Exchanges
+        template: template-explore-exchanges.html
+        html: exchanges.html
+        sidebar: disabled
         targets:
             - en
             - ja
 
-    -   md: explore/xrpl-businesses.md
+    -   name: Businesses
+        funnel: Explore
+        category: Businesses
+        template: template-explore-businesses.html
+        html: businesses.html
+        sidebar: disabled
         targets:
             - en
             - ja

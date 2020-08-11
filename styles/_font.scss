@@ -30,6 +30,10 @@ h1, .h1 {
 h6, .h6 {
   font-size: 1.125rem;
 }
+.h6 {
+  font-size: 1.125rem !important;
+}
+
 p {
   line-height: 1.5;
 }

@@ -1,0 +1,80 @@
+{% extends "template-base.html" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+  <div class="container my-40 marketing-wrapper">
+    <section class="row mt-40 mb-40">
+      <div class="col-sm-4 mb-10">
+        <h3 class="text-primary mb-4 h6">XRP Exchanges</h3>
+        <h1 class="mb-18">XRP Is Traded on More Than 100 Markets and Exchanges Worldwide</h1>
+      </div>
+      <div class="col-sm-6 offset-sm-1">
+        <h2 class="mt-12 mb-10">Exchanges are where people trade currencies.</h2>
+        <p>There are different types of exchanges that vary depending on the type of market (spot, futures, options, swaps), and the type of security model (custodial, non-custodial).</p>
+        <p>Spot exchanges allow people to buy and sell cryptocurrencies at current (spot) market rates. Futures, options and swap exchanges allow people to buy and sell standardized contracts of cryptocurrency market rates in the future.</p>
+        <p>Custodial exchanges manage a user’s private keys, and publish centralized order books of buyers and sellers. Non-custodial exchanges, also known as decentralized exchanges, do not manage a user’s private keys, and publish decentralized order books of buyers and sellers on a blockchain.</p>
+      </div>
+    </section>
+
+    <section class="mb-50 row">
+      <h5 class="ml-3 mb-3">Top Exchanges:</h5>
+      <div class="w-100"></div>
+      <div class="d-flex flex-wrap w-100">
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/coinbase.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/binance.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/bitstamp.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/kraken.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/cex-io.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/bitfinex.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/luno.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/bittrex.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/independent-reserve.png">
+        </a>
+        <a class="square d-flex card-b" href="#">
+          <img class="mw-100" src="./img/exchanges/liquid.png">
+        </a>
+      </div>
+      <div class="w-100"></div>
+      <p class="col-sm-4 offset-sm-8 mt-16" style="font-size: 10px;">Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.</p>
+    </section>
+
+  </div>
+{% endblock %}
+
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}

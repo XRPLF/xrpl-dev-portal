@@ -119,3 +119,31 @@ th, td {
 td:nth-child(1) {
   font-weight: bold;
 }
+
+
+
+/* Cards ------------------------------- */
+.card {
+  background-color: transparent;
+}
+.square {
+  position: relative;
+  flex-basis: calc(25% - 30px);
+  margin: 15px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 768px) { 
+  .square {
+    flex-basis: calc(50% - 30px);
+  }
+}
+
+.square:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+
