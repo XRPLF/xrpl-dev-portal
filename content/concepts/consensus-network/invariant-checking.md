@@ -1,25 +1,21 @@
 # Invariant Checking
 
-This article provides a high-level overview of invariant checking, why it exist, how it works, and lists active invariants.
+Invariant checking is a safety feature of the XRP Ledger. It consists of a set of checks, separate from normal transaction processing, that guarantee that certain _invariants_ hold true across all transactions.
 
 Like many safety features, we all hope that invariant checking never actually needs to do anything. However, it can be useful to understand the XRP Ledger's invariants because they define hard limits on the XRP Ledger's transaction processing, and to recognize the problem in the unlikely event that a transaction fails because it violated an invariant check.
 
-## Introduction
-
-Invariant checking is a safety feature of the XRP Ledger. It consists of a set of checks, separate from normal transaction processing, that guarantee that certain _invariants_ hold true across all transactions.
-
 Invariants should not trigger, but they ensure the XRP Ledger's integrity from bugs yet to be discovered or even created.
-
-| Term | Description |
-|-----------|-------------|
-| Invariant | A rule that should always, without exception, be true. For example, "New XRP cannot be created". |
-| Invariant Checking | In the XRP Ledger, a system where code automatically confirms that transaction processing does not break the invariants. If a transaction's execution would break an invariant, the invariant checking system fails the transaction. |
 
 
 ## Why it Exists
 
-- The overarching code for the XRP Ledger is complicated and vast; therefore, there is a high potential for code to execute incorrectly.
+- The source code for the XRP Ledger is complicated and vast; there is a high potential for code to execute incorrectly.
 - The cost of incorrectly executing a transaction is high and not acceptable by any standards.
+
+Specifically, incorrect transaction executions could create invalid or corrupt data that later consistently crashes servers in the network by sending them into an "impossible" state which could halt the entire network.
+
+The processing of incorrect transaction would undermine the value of trust in the XRP Ledger. Invariant checking provides value to the entire XRP Ledger because it adds the feature of reliability.
+
 
 
 ## How it Works
@@ -70,60 +66,61 @@ The XRP Ledger checks all the following invariants on each transaction:
 - [Valid New Account Root](#valid-new-account-root)
 
 
-### [Transaction Fee Check](#active-invariants)
+### Transaction Fee Check
 
 - **Invariant Condition(s):**
-    - [Transaction fees](rippleapi-reference.html#transaction-fees) should never be negative nor larger than the transaction itself.
+    - The [transaction cost](transaction-cost.html) amount must never be negative, nor larger than the cost specified in the transaction.
 
 
-### [XRP Not Created](#active-invariants)
+### XRP Not Created
 
 - **Invariant Condition(s):**
     - A transaction must not create XRP and should only destroy the XRP [transaction cost](transaction-cost.html).
 
 
-### [Account Roots Not Deleted](#active-invariants)
+### Account Roots Not Deleted
 
 - **Invariant Condition(s):**
-    - An account ledger entry can be removed by an AccountDelete transaction, but this invariant checks that exactly 1 is deleted by a successful AccountDelete.
+    - An [account](accounts.html) cannot be deleted from the ledger except by an [AccountDelete transaction][].
+    - A successful AccountDelete transaction always deletes exactly 1 account.
 
 
-### [XRP Balance Checks](#active-invariants)
+### XRP Balance Checks
 
 - **Invariant Condition(s):**
     - An account's XRP balance must be of type XRP, and it cannot be less than 0 or more than 100 billion XRP exactly.
 
 
-### [Ledger Entry Types Match](#active-invariants)
+### Ledger Entry Types Match
 
 - **Invariant Condition(s):**
     - Corresponding modified ledger entries should match in type and added entries should be a [valid type](ledger-object-types.html).
 
 
-### [No XRP Trust Lines](#active-invariants)
+### No XRP Trust Lines
 
 - **Invariant Condition(s):**
     - [Trust lines](trust-lines-and-issuing.html#trust-lines-and-issuing) using XRP are not allowed.
 
 
-### [No Bad Offers](#active-invariants)
+### No Bad Offers
 
 - **Invariant Condition(s):**
     - [Offers](offer.html#offer) should be for non-negative amounts and must not be XRP to XRP.
 
 
-### [No Zero Escrow](#active-invariants)
+### No Zero Escrow
 
 - **Invariant Condition(s):**
-    - An [escrow](escrow-object.html) entry must hold a quantity of XRP between 0 and 99.99 billion.
+    - An [escrow](escrow-object.html) entry must hold more than 0 XRP and less than 100 billion XRP.
 
 
-### [Valid New Account Root](#active-invariants)
+### Valid New Account Root
 
 - **Invariant Condition(s):**
     - A new [account root](accountroot.html) must be the consequence of a payment.
     - A new account root must have the right starting [sequence](basic-data-types.html#account-sequence).
-    - A new [account](accounts.html) may not create more than one new account root.
+    - A transaction must not create more than one new [account](accounts.html).
 
 
 ## See Also
