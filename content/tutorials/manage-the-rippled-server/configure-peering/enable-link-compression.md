@@ -8,13 +8,13 @@ blurb: Save bandwidth by compressing peer-to-peer communications.
 ---
 # Enable Link Compression
 
-The `rippled` server can save bandwidth by compressing its [peer-to-peer communications](peer-protocol.html), at a cost of greater CPU usage. If you enable link compression, the server automatically compresses communications with peer servers that also have link compression enabled. The server uses uncompressed communications with peers who do not have have link compression enabled or do not support link compression. [New in: rippled 1.6.0][]
+The `rippled` server can save bandwidth by compressing its [peer-to-peer communications](peer-protocol.html), at a cost of greater CPU usage. If you enable link compression, the server automatically compresses communications with peer servers that also have link compression enabled. [New in: rippled 1.6.0][]
 
 ## Steps
 
 To enable link compression on your server, complete the following steps:
 
-### 1. Edit your `rippled`'s config file.
+### 1. Edit your `rippled` server's config file.
 
 ```sh
 $ vim /etc/opt/ripple/rippled.cfg
