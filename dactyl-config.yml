@@ -165,6 +165,16 @@ pages:
             - en
             - ja
 
+    -   name: Overview
+        funnel: Learn
+        category: Uses
+        template: template-learn-overview.html
+        html: overview.html
+        sidebar: disabled
+        targets:
+            - en
+            - ja
+
     -   name: Uses
         funnel: Learn
         category: Uses
@@ -178,7 +188,7 @@ pages:
     -   name: History
         funnel: Learn
         category: History
-        template: template-contact.html # TODO: change as needed
+        template: template-learn-history.html # TODO: change as needed
         html: history.html
         sidebar: disabled
         targets:
@@ -197,8 +207,8 @@ pages:
 
     -   name: Carbon Calculator
         funnel: Learn
-        category: Impact
-        template: template-doc.html # TODO: change as needed
+        category: Carbon Calculator
+        template: template-calculator.html # TODO: change as needed
         html: carbon-calculator.html
         sidebar: disabled
         targets:

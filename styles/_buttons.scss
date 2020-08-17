@@ -95,7 +95,7 @@ a.button {
   padding-left: 14px;
 }
 
-.btn:not(.external-link):not(.dropdown-toggle):not(.jump-to-top)::after,
+// .btn:not(.external-link):not(.dropdown-toggle):not(.jump-to-top)::after,
 .landing .card .level-1 a::after,
 .landing .card .level-2 a::after,
 .landing .card .curated-links li a::after,
@@ -111,7 +111,7 @@ a.button {
   content: " ↑"
 }
 
-.btn:not(.external-link):not(.dropdown-toggle):hover::after,
+// .btn:not(.external-link):not(.dropdown-toggle):hover::after,
 .landing .card .level-1 a:hover::after,
 .landing .card .level-2 a:hover::after,
 .landing .card .curated-links li a:hover::after,

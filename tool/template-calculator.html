@@ -16,43 +16,211 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-  <div class="container my-40 marketing-wrapper">
-    <section class="row mb-50">
-      <div class="col-md-5">
-        <h6 class="text-primary mb-4">{% trans %}Contribute to XRPL.org{% endtrans %}</h6>
-        <h1 class="mb-10">{% trans %}How to Suggest Changes to the Site{% endtrans %}</h1>
-        <p>{% trans %}Thank you for your interest in contributing to XRPL.org.{% endtrans %}</p>
-        <p>{% trans %}This website was created for the community and is meant to be a living, breathing source of truth for XRP resources.{% endtrans %}</p>
-				<p>{% trans %}If you’d like to recommend new content, please fill out the form or submit your changes in GitHub.{% endtrans %}</p>
+  <div class="container my-20 mb-49">
+        <section class="row mb-49">
+          <h6 class="section-marker">Sustainability</h6>
+          <div class="col-sm-4">
+            <img src="../assets/img/green-graphic.png" class="mw-100">
+          </div>
+          <div class="col-sm-8">
+            <h3 class="h1 mb-4 mt-12">How Green Is Your Currency?</h3>
+            <a href="" class="arrow-link text-green bold">Explore the Interactive Tool</a>
+            <h4 class="text-largest mt-16">Energy Consumption for Cash, Credit Cards and Crypto</h4>
+            <div class="d-sm-flex mt-10">
+              <p class="pr-1">Moving money carries cost—and not just the fee on your transaction or the value of your payment.<br/><br/>Whether it’s in cash, on a credit card or with crypto, every transaction you make consumes energy, and therefore, emits pollutants into the environment. </p>
+              <p class="pl-1">The impact of this is startling when you look at the total transactions across an entire year—for any one form of currency.<br/><br/>
+              Find out more about the environmental cost of some of the world’s most popular and innovative currencies, and start making more educated choices about how you transact.</p>
+            </div>
+          </div>
+        </section>
       </div>
-      <div class="col-md-6 offset-md-1">
-        <form id="contact-form" method="post" action="contact-form-handler.php">
-        	<label class="text-primary bold h6" for="name">Name*</label>
-        	<input type="text" name="name" placeholder="Your Name" required>
-        	<label class="text-primary bold h6 mt-4" for="email">Email*</label>
-        	<input type="email" name="email" placeholder="Your Email" required>
-        	<label class="text-primary bold h6 mt-4" for="message">Message*</label>
-        	<textarea name="message" placeholder="Message" required name="message"></textarea>
-        	<input type="submit" class="form-control submit mt-4" value="Submit">
-        </form>
-      </div>
-    </section>
 
-    <section class="row mb-50">
-      <div class="col-md-4 offset-md-1 order-1 order-md-2 mb-10">
-        <img class="mw-100 mb-10" src="./img/marketing/impact-democratizing-payments@2x.png">
+      <div class="container">
+        <div class="col-sm-8 my-20 offset-sm-4">
+          <h3>How Does XRP Compare to Other Currencies?</h3>
+          <a href="#" class="text-green arrow-link bold">Learn more about the methodology</a>
+        </div>
       </div>
-      <div class="col-md-6 offset-md-1 order-2 order-md-1">
-        <h2 class="mb-10 h1">{% trans %}For Developers{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Contributing to the developer portal of XRPL.org is a great way to learn about the XRP Ledger.{% endtrans %}</p>
-        <p>{% trans %}You may also be interested in learning about Interledger Protocol (ILP), which, along with the XRP Ledger, is another part of the Xpring developer ecosystem.{% endtrans %}</p>
-				<p>{% trans %}If you choose to submit your changes to the site through TGitHub, please read and consider the contributing guidelines.{% endtrans %}</p>
-        <a href="#" class="btn btn-clear">{% trans %}Learn About On-Demand Liquidity{% endtrans %}</a>
-      </div>
-    </section>
-    
 
-  </div>
+      <div class="container my-20">
+        <section class="row mb-49">
+          <div class="col-sm-4">
+            <div class="rounded sticky-top top-10 border-green p-3 calc-inputs">
+              <h4>Comparing Transaction Data<h4>
+                <ul class="d-flex align-items-stretch p-0 mt-10">
+                  <li class="ls-none w-100 active"><a class="tab-link fs-base va-middle" href="#d-crypto">Crypto</a></li>
+                  <li class="ls-none w-100"><a class="tab-link fs-base va-middle" href="#d-credit">Credit Cards</a></li>
+                  <li class="ls-none w-100"><a class="tab-link fs-base va-middle" href="#d-cash">Cash</a></li>
+                </ul>
+                <div class="slidecontainer">
+                  <input type="range" min="20" max="100" value="60" class="slider w-100" id="myRange" step="20">
+                  <p id="demo"></p>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm-7 offset-sm-1 scroll-container h-100" id="main">
+            <section class="vh100 section1">
+              <h4>Energy Consumption of Portugal</h4>
+
+              <p>Comparing <span class="slider-amt"></span> Million Transactions in 2019
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+
+              <div class="d-viz d-viz-1">
+                <ul class="d-sm-flex justify-content-between p-0">
+                  <li class="d-output d-crypto active" data-comp="kWh" data-type="btc">
+                    <img src="../assets/img/Portugal.png" class="mw-100">
+                    <div class="dot"></div>
+                    <p>Bitcoin</p>
+                    <h5 id="kWh-btc"></h5>
+                    <p>kWh</p>
+                  </li>
+                  <li class="d-output d-crypto active" data-comp="kWh" data-type="eth">
+                    <img src="../assets/img/Portugal.png" class="mw-100">
+                    <p>Ethereum</p>
+                    <h5 id="kWh-eth"></h5>
+                    <p>kWh</p>
+                  </li>
+                  <li class="d-output d-cash" data-comp="kWh" data-type="pap">
+                    <img src="../assets/img/Portugal.png" class="mw-100">
+                    <p>Cash</p>
+                    <h5 id="kWh-pap"></h5>
+                    <p>kWh</p>
+                  </li>
+                  <li class="d-output d-crypto d-credit d-cash active" data-comp="kWh" data-type="xrp">
+                    <img src="../assets/img/Portugal.png" class="mw-100">
+                    <p>XRP</p>
+                    <h5 id="kWh-xrp"></h5>
+                    <p>kWh</p>
+                  </li>
+                  <li class="d-output d-credit" data-comp="kWh" data-type="vsa">
+                    <img src="../assets/img/Portugal.png" class="mw-100">
+                    <p>Visa</p>
+                    <h5 id="kWh-vsa"></h5>
+                    <p>kWh</p>
+                  </li>
+                  <li class="d-output d-credit" data-comp="kWh" data-type="mst">
+                    <img src="../assets/img/Portugal.png" class="mw-100">
+                    <p>Mastercard</p>
+                    <h5 id="kWh-mst"></h5>
+                    <p>kWh</p>
+                  </li>
+                  
+                </ul>
+              </div>
+            </section>
+            <section class="vh100 section2">
+              <h4>C02 Emissions from Airline Flights</h4>
+
+              <p>Comparing <span class="slider-amt"></span> Million Transactions in 2019
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+
+              <div class="d-viz d-viz-1">
+                <ul class="d-sm-flex justify-content-between">
+                  <li class="d-output d-crypto active" data-comp="miles" data-type="btc">
+                    <p>Bitcoin</p>
+                    <h5 id="miles-btc"></h5>
+                    <p>miles</p>
+                  </li>
+                  <li class="d-output d-crypto active" data-comp="miles" data-type="eth">
+                    <p>Ethereum</p>
+                    <h5 id="miles-eth"></h5>
+                    <p>miles</p>
+                  </li>
+                  <li class="d-output d-cash" data-comp="miles" data-type="pap">
+                    <p>Cash</p>
+                    <h5 id="miles-pap"></h5>
+                    <p>miles</p>
+                  </li>
+                  <li class="d-output d-crypto d-credit d-cash active" data-comp="miles" data-type="xrp">
+                    <p>XRP</p>
+                    <h5 id="miles-xrp"></h5>
+                    <p>miles</p>
+                  </li>
+                  <li class="d-output d-credit" data-comp="miles" data-type="vsa">
+                    <p>Visa</p>
+                    <h5 id="miles-vsa"></h5>
+                    <p>miles</p>
+                  </li>
+                  <li class="d-output d-credit" data-comp="miles" data-type="mst">
+                    <p>Mastercard</p>
+                    <h5 id="miles-mst"></h5>
+                    <p>miles</p>
+                  </li>
+                  
+                </ul>
+              </div>
+            </section>
+            <section class="vh100 section3">
+              <h4>Gas Consumption by the Gallon</h4>
+
+              <p>Comparing <span class="slider-amt"></span> Million Transactions in 2019
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </section>
+          </div> 
+        </section>
+      </div>
+
+      <div class="container my-20">
+        <section class="row mb-49">
+          <div class="col-sm-7 col-sm-offset-5">
+            <h4>Breaking Down Individual Transactions</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+          </div>
+          <div class="col-sm-12 mt-14">
+            <table>
+              <thead>
+                <tr>
+                  <td></td>
+                  <td class="bold ta-right">Kilowatt Hour</td>
+                  <td class="bold ta-right">Gallons of Gas</td>
+                  <td class="bold ta-right">CO2 Emissions</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="../assets/img/Bitcoin@2x.png"></div>Bitcoin</td>
+                  <td class="fs-6 ta-right">700<span class="dblue">.0000</span><span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">700<span class="dblue">.0000</span><span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">700<span class="dblue">.0000</span><span class="ratio"> KWh/tx</span></td>
+                </tr>
+                <tr>
+                  <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="../assets/img/Ethereum@2x.png"></div>Ethereum</td>
+                  <td class="fs-6 ta-right">30<span class="dblue">.0000</span><span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">30<span class="dblue">.0000</span><span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">30<span class="dblue">.0000</span><span class="ratio"> KWh/tx</span></td>
+                </tr>
+                <tr>
+                  <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="../assets/img/XRP-Mark@2x.png"></div>XRP</td>
+                  <td class="fs-6 ta-right">0.0079<span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">0.0079<span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">0.0079<span class="ratio"> KWh/tx</span></td>
+                </tr>
+                <tr>
+                  <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="../assets/img/Visa@2x.png"></div>Visa</td>
+                  <td class="fs-6 ta-right">0.0008<span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">0.0008<span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">0.0008<span class="ratio"> KWh/tx</span></td>
+                </tr>
+                <tr>
+                  <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="../assets/img/MasterCard@2x.png"></div>Mastercard</td>
+                  <td class="fs-6 ta-right">0.0006<span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">0.0006<span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">0.0006<span class="ratio"> KWh/tx</span></td>
+                </tr>
+                <tr>
+                  <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="../assets/img/paper-money@2x.png"></div>Paper</td>
+                  <td class="fs-6 ta-right">0.044<span class="dblue">0</span><span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">0.044<span class="dblue">0</span><span class="ratio"> KWh/tx</span></td>
+                  <td class="fs-6 ta-right">0.044<span class="dblue">0</span><span class="ratio"> KWh/tx</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
 {% endblock %}
 
 

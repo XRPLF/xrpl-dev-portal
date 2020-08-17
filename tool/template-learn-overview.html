@@ -16,78 +16,216 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-  <div class="container my-40 marketing-wrapper">
-    <section class="row mb-50">
-      <div class="col-md-4 d-flex flex-column-reverse justify-content-end">
-        <h1 class="mb-10">{% trans %}The Best Way to Move Money Around the World{% endtrans %}</h1>
-        <h6 class="text-primary mb-4">{% trans %}Using XRP{% endtrans %}</h6>
-      </div>
-      <div class="col-md-6 offset-md-1">
-        <h2 class="mt-12 mb-10">{% trans %}XRP and the XRP Ledger are used to power innovative technology across the payments space.{% endtrans %}</h2>
-        <p>{% trans %}Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas maximus ligula, id tincidunt odio condimentum ac. Pellentesque vulputate felis lacus, id imperdiet elit tristique id. Ut sapien lorem, finibus id auctor eu, volutpat finibus nisi. {% endtrans %}</p>
-      </div>
-    </section>
+<div id="page-overview-bg" class="pt-40">
+  <div class="container marketing-wrapper">
+      <section class="row mb-50">
+        <div class="col-md-6 mb-10">
+          <h6 class="text-primary mb-4">Using XRP</h6>
+          <h1 class="mb-18">Your Questions About XRP, Answered.</h1>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-8">
+          <h2 class="mb-8">What is XRP?</h2>
+          <div class="row">
+            <p class="col">XRP is a digital asset that’s native to the XRP Ledger, an open-source, permissionless and decentralized blockchain technology.</p>
+            <p class="col">Created in 2012 specifically for payments, XRP can settle transactions on the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, cheaper and greener than any other digital asset.</p>
+          </div>
+        </div>
+      </section>
 
-    <section class="row mb-50">
-      <h6 class="section-marker">{% trans %}Cross-Border payments{% endtrans %}</h6>
-      <div class="col-md-4 offset-md-1 order-1 order-md-2 mb-10">
-        <img class="mw-100" src="./img/marketing/impact-democratizing-payments@2x.png">
-      </div>
-      <div class="col-md-6 offset-md-1 order-2 order-md-1">
-        <h2 class="mb-10">{% trans %}Cross-Border Payments{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Through RippleNet, financial institutions can use XRP to bridge two currencies in 3-5 seconds, ensuring payments are quickly sent and received in the local currency on either side of a transaction.{% endtrans %}</p>
-        <a href="#" class="btn btn-clear">{% trans %}Learn About On-Demand Liquidity{% endtrans %}</a>
-      </div>
-    </section>
+      <section class="row mb-50">
+        <h6 class="section-marker">Benefits</h6>
+        <div class="col-sm-12 col-lg-10 mt-14">
+            <table>
+              <thead>
+                <tr>
+                  <td class="bold"></td>
+                  <td class="bold">XRP</td>
+                  <td class="bold">Bitcoin</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="./img/icons/fast.png"></div>Fast</td>
+                  <td class="">3-5 seconds to settle</td>
+                  <td class="">500 seconds to settle</td>
+                </tr>
+                <tr>
+                  <td class="bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="./img/icons/low-cost.png"></div>Low Cost</td>
+                  <td class="">$0.0002/transaction</td>
+                  <td class="">$0.50/transaction</td>
+                </tr>
+                <tr>
+                  <td class="bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="./img/icons/scalable.png"></div>Scalable</td>
+                  <td class="">1500 transaction per second</td>
+                  <td class="">3 transactions per second</td>
+                </tr>
+                <tr>
+                  <td class="bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="./img/icons/sustainable.png"></div>Sustainable</td>
+                  <td class="">Environmentally sustainable (negligible energy consumption)</td>
+                  <td class="">0.3% of global energy consumption</td>
+              </tbody>
+            </table>
+          </div>
+      </section>
     
-    <section class="row mb-50">
-      <h6 class="section-marker">{% trans %}Micropayments{% endtrans %}</h6>
-      <div class="col-md-4 offset-md-1 mb-10">
-        <img class="mw-100" src="./img/marketing/impact-democratizing-payments@2x.png">
-      </div>
-      <div class="col-md-6 offset-md-1">
-        <h2 class="mb-10">{% trans %}Micropayments{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Businesses are leveraging XRP and the XRP Ledger to build innovative products for gaming, content and web monetization, among other applications where money is at the center.{% endtrans %}</p>
-        <a href="#" class="btn btn-clear">{% trans %}Learn About XRPL Businesses{% endtrans %}</a>
-      </div>
-    </section>
 
-    <section class="row mb-50">
-      <h6 class="section-marker">{% trans %}Digital Cryptocurrency{% endtrans %}</h6>
-      <div class="col-md-4 offset-md-1 order-1 order-md-2 mb-10">
-        <img class="mw-100" src="./img/marketing/impact-democratizing-payments@2x.png">
-      </div>
-      <div class="col-md-6 offset-md-1 order-2 order-md-1">
-        <h2 class="mb-10">{% trans %}Digital Cryptocurrency Wallets{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Individuals can use mobile wallets to store private and public passwords and interact with various blockchains to send and receive digital assets, including XRP.{% endtrans %}</p>
-        <a href="#" class="btn btn-clear">{% trans %}Explore Wallets{% endtrans %}</a>
-      </div>
-    </section>
-    
-    <section class="row mb-50">
-      <h6 class="section-marker">{% trans %}Exchanges{% endtrans %}</h6>
-      <div class="col-md-4 offset-md-1 mb-10">
-        <img class="mw-100" src="./img/marketing/impact-democratizing-payments@2x.png">
-      </div>
-      <div class="col-md-4 offset-md-1">
-        <h2 class="mb-10">{% trans %}Exchanges{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Market makers and individuals use exchanges to trade XRP and other digital assets. Exchanges are often also intermediaries in cross-border payments among financial institutions.{% endtrans %}</p>
-        <a href="#" class="btn btn-clear">{% trans %}Explore Exchanges{% endtrans %}</a>
-      </div>
-    </section>
+      <section class="row mb-50">
+        <h6 class="section-marker">Digital Cryptocurrency</h6>
+        <div class="col-lg-8 order-1 order-md-2 mb-10">
+          <img class="mw-100" src="./img/green/green-graphic.png">
+        </div>
+        <div class="col-lg-4 order-2 order-md-1">
+          <p>XRP can be sent directly without needing a central intermediary, making it a convenient instrument in bridging two different currencies quickly and efficiently. It is freely exchanged on the open market and used in the real world for enabling cross-border payments and microtransactions.</p>
+          <p>Unlike Bitcoin, there is a finite amount of XRP. All XRP is already in existence today—100 billion in total.</p>
+          <a href="#" class="btn btn-clear">History of XRP</a>
+        </div>
+      </section>
+      
+      <section class="row mb-50">
+        <h6 class="section-marker">XRP Ledger</h6>
+        <div class="col-md-4">
+          <h2>How Does the XRP Ledger Work?</h2>
+        </div>
+        <div class="col-md-4">
+          <p>The XRP Ledger stands on open-source technologies on which anyone can build. The XRP Ledger is maintained by a global “XRP Community”—a diverse set of participants composed of software engineers, server operators and validators.</p>
+          <p>The XRP Ledger uses a consensus protocol, in which validators come to an agreement on the order of XRP transactions every 3-5 seconds. This agreement serves as the final and irreversible settlement.</p>
+        </div>
+        <div class="col-md-4">
+          <p>Transactions are executed in a deterministic order to prevent double spending and malicious activity. Unlike other blockchains, transaction fees are destroyed as part of transaction execution. The XRP Ledger adjusts fees in near real time to respond to network conditions, with the twin goals of maximizing transaction throughput while keeping transaction fees as low as possible.</p>
+          <p>All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed as soon as validators reach a quorum.</p>
+        </div>
+        <div class="w-100 mb-20"></div>
+        <div class="col-lg-6">
+          <img class="mw-100" src="./img/graphics/validator.png">
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+          <h4 class="mb-10">Anyone can operate a validator; currently, over 150 validators are active on the ledger, operated by  universities, exchanges, businesses and individuals.</h4>
+          <a href="#" class="btn btn-clear">Get Technical</a>
+        </div>
+      </section>
 
-    <section class="row mb-50">
-      <h6 class="section-marker">{% trans %}Trading{% endtrans %}</h6>
-      <div class="col-md-4 offset-md-1 order-1 order-md-2 mb-10">
-        <img class="mw-100" src="./img/marketing/impact-democratizing-payments@2x.png">
-      </div>
-      <div class="col-md-6 offset-md-1 order-2 order-md-1">
-        <h2 class="mb-10">{% trans %}Institutional Trading{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Market participants use XRP as a high-speed, cost-efficient and reliable trading collateral. This means seizing arbitrage opportunities, servicing margin calls and managing general trade inventory in real time.{% endtrans %}</p>
-        <a href="#" class="btn btn-clear">{% trans %}Learn More{% endtrans %}</a>
-      </div>
-    </section>
+      <section class="row mb-50">
+        <h6 class="section-marker">Trading</h6>
+        <div class="col-lg-6">
+          <h2 class="mb-10">Why Is XRP Useful?</h2>
+          <p class="mb-10 normal h4">Market participants use XRP as a high-speed, cost-efficient and reliable trading collateral. This means seizing arbitrage opportunities, servicing margin calls and managing general trade inventory in real time.</p>
+        </div>
+        <div class="w-100 mt-20"></div>
+        <div class="col-md-4">
+          <h4>Businesses</h4>
+          <p class="my-10">Many businesses are building on the XRP Ledger, pursuing powerful use cases in micropayments, gaming, web monetization and more. Additionally, Ripple, the technology company, is focused on building a network and infrastructure that leverages XRP to power faster, more affordable cross-border payments around the world.</p>
+          <a href="#" class="text-white bold arrow-link">More About Businesses</a>
+        </div>
+        <div class="col-md-4">
+          <h4>Individuals</h4>
+          <p class="my-10">Individual consumers can use XRP to move different currencies around the world. For example, through the PayID solution, anyone can use XRP—or any currency, be it fiat or digital assets—to easily make purchases across any payments network.</p>
+          <a href="#" class="text-white bold arrow-link">More About Uses</a>
+        </div>
+        <div class="col-md-4">
+          <h4>Developers</h4>
+          <p class="my-10">By building on the XRP Ledger, developers can easily integrate payments into their products—seamlessly putting money at the center of their applications. Projects like the Xpring developer platform are making it easier for developers to leverage XRP.</p>
+          <a href="#" class="text-white bold arrow-link">More About Developers</a>
+        </div>
+      </section>
 
+      <section class="mb-50">
+        <h6 class="section-marker">Internet of Value</h6>
+        <div class="row mb-40">
+          <div class="col-md-4 offset-md-2 order-1 order-md-2 mb-10">
+            <img class="mw-100" src="./img/overview/fast.png">
+          </div>
+          <div class="col-md-4 offset-md-1 order-2 order-md-1">
+            <h2 class="mb-10">Fast</h2>
+            <p>XRP transactions settle faster than on any other blockchain—in 3-5 seconds.</p>
+          </div>
+        </div>
+        <div class="row mb-30">
+          <div class="col-md-4 offset-md-1 mb-10">
+            <img class="mw-100" src="./img/overview/low-cost.png">
+          </div>
+          <div class="col-md-4 offset-md-2">
+            <h2 class="mb-10">Low Cost</h2>
+            <p>XRP transactions cost a fraction of a penny ($0.0002) – much less than other cryptocurrencies and average fiat payments.</p>
+          </div>
+        </div>
+        <div class="row mb-30">
+          <div class="col-md-4 offset-md-2 order-1 order-md-2 mb-10">
+            <img class="mw-100" src="./img/overview/scalable.png">
+          </div>
+          <div class="col-md-4 offset-md-1  order-2 order-md-1">
+            <h2 class="mb-10">Scalable</h2>
+            <p>The XRP Ledger can handle up to 1,500 transactions per second.</p>
+          </div>
+        </div>
+        <div class="row mb-30">
+          <div class="col-md-4 offset-md-1 mb-10">
+            <img class="mw-100" src="./img/overview/sustainable.png">
+          </div>
+          <div class="col-md-4 offset-md-2">
+            <h2 class="mb-10">Sustainable</h2>
+            <p>XRP transactions settle without the enormous and unsustainable energy costs associated with proof-of-work (or mining).</p>
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-md-4 offset-md-2 order-1 order-md-2 mb-10">
+            <img class="mw-100" src="./img/overview/real.png">
+          </div>
+          <div class="col-md-4 offset-md-1 order-2 order-md-1">
+            <h2 class="mb-10">Real</h2>
+            <p>XRP is one of the only digital assets with a proven, real-world use case: cross-border payments. </p>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="#" class="btn btn-clear">Explore Uses</a>
+        </div>
+      </section>
+
+      <section class="mb-50">
+        <h6 class="section-marker">Trading</h6>
+        <div class="row">
+          <div class="col-md-4 offset-md-2 order-1 order-md-2 mb-10">
+            <img class="mw-100" src="./img/overview/real.png">
+          </div>
+          <div class="col-md-5 order-2 order-md-1">
+            <h2 class="mb-10">How Is XRP Used in Trading?</h2>
+            <p>XRP is traded on more than 140 markets and exchanges worldwide.</p>
+            <p>XRP’s low transaction fees, reliability and high speed enable traders to use the digital asset as high-speed, cost-efficient and reliable collateral across trading venues—seizing arbitrage opportunities, servicing margin calls and managing general trading inventory in real time.</p>
+            <p>Because of the properties inherent to XRP and the ecosystem around it, traders worldwide are able to shift collateral, bridge currencies and switch from one crypto into another nearly instantly, across any exchange on the planet.</p>
+            <a href="#" class="mt-10 btn btn-clear">Find Out More</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-50">
+        <h6 class="section-marker">Ripple vs. XRP</h6>
+        <div class="row">
+          <div class="col-md-4 offset-md-1 mb-10">
+            <img class="mw-100 mt-10" src="./img/overview/xrp-text-logo.png">
+          </div>
+          <div class="col-md-5 offset-md-1">
+            <h2 class="mb-10">What Is the Relationship Between Ripple and XRP?</h2>
+            <p>Ripple is a technology company that makes it easier to build a high-performance, global payments business through its platform, RippleNet. XRP is a digital asset independent of this, and is used in Ripple’s On-Demand Liquidity service to facilitate efficient and cost-effective cross-border transactions. </p>
+            <a href="#" class="mt-10 btn btn-clear">Visit Ripple's Website</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-50">
+        <h6 class="section-marker">XRP Community</h6>
+        <div class="row">
+          <div class="col-md-6 offset-md-1 order-1 order-md-2 mb-10">
+            <img class="mw-100" src="./img/overview/xrp-community.png">
+          </div>
+          <div class="col-md-5 order-2 order-md-1">
+            <h2 class="mb-10">XRPL.org: For the Community, by the Community</h2>
+            <p>XRPL.org is a community-driven resource for all things XRP and XRP Ledger (XRPL). If you’d like to suggest additional information around XRP, you can suggest changes here.</p>
+            <a href="#" class="mt-10 btn btn-clear">Suggest Changes</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
   </div>
 {% endblock %}
 
