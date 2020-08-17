@@ -1,0 +1,64 @@
+<nav class="navbar fixed-top navbar-expand-lg">
+  <a href="{{target.prefix}}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="{{target.display_name}}" /></a>
+  <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+    <ul class="nav navbar-nav">
+      {% macro dropdown(links) %}
+      <li class="nav-item dropdown">
+        {% set funnelhead = links|first %}
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_{{funnelhead.html}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{funnelhead.name}}</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_{{funnelhead.html}}">
+          {% for link in links %}{% if not loop.first %}
+          <a class="dropdown-item{% if currentpage == link %} active{% endif %}" href="{{target.prefix}}{{link.html}}">{{link.name}}</a>
+          {% endif %}{% endfor %}
+        </div>
+      </li>
+      {% endmacro %}
+
+      {{ dropdown(pages|selectattr('funnel', 'defined_and_equalto','Learn')|list) }}
+
+      {% set explore_links = pages|selectattr('funnel', 'defined_and_equalto','Explore')|list + [{"name":"Ledger Explorer", "html": "https://livenet.xrpl.org/"}] %}
+      {{ dropdown(explore_links) }}
+
+      {% set build_links = [
+        {"name": "Build", "html": "docs.html"},
+        {"name": "Get Started", "html":"get-started-with-the-rippled-api.html"},
+        {"name": "Docs", "html": "docs.html"},
+        {"name": "Tools", "html": "dev-tools.html"},
+        {"name": "Dev Blog", "html": "/blog/"}
+      ] %}
+      {{ dropdown(build_links) }}
+
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <div class="dropdown-menu">
+          <form class="navbar-form navbar-right" id="navbar-search" role="search">
+            <div class="form-inline">
+              <label class="sr-only" for="topsearchbar">{% trans %}Search site...{% endtrans %}</label>
+              <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="{% trans %}Search site...{% endtrans %}">
+              <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+            </div>
+          </form>
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+
+    </ul><!-- /.navbar-nav -->
+    {% include 'template-github-edit.html' %}
+
+    <div class="nav navbar-nav language-selector">
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{(config.languages|selectattr('code', 'eq', target.lang)|first).display_name}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
+          {% for lang in config.languages %}
+          <a class="dropdown-item" href="{{lang.prefix}}{{currentpage.html}}">{{lang.display_name}}</a>
+          {% endfor %}
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+  </div><!--/#navbarHolder-->
+  <div class="menu-overlay"></div>
+</nav>
