@@ -117,7 +117,7 @@
       ><path d="M0 0 L0 70 L130 70 L130 0 Z"
       /></clipPath
     ></defs
-    ><g fill="rgb(254,215,76)" transform="translate(1080,700)" stroke="rgb(254,215,76)"
+    ><g fill="yellow" transform="translate(1080,700)" stroke="yellow"
     ><path d="M0.5 0.5 L218.5 0.5 L229 12.5 L229 229 L0.5 229 Z" stroke="none" clip-path="url(#clipPath2)"
       /><path fill="none" d="M0.5 0.5 L218.5 0.5 L229 12.5 L229 229 L0.5 229 Z" clip-path="url(#clipPath2)" stroke="black"
       /><path fill="none" d="M218.5 0.5 L218.5 12.5 L229 12.5" clip-path="url(#clipPath2)" stroke="black"

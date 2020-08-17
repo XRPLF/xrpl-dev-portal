@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>100</x>
+      <y>80</y>
+      <w>210</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Alice
+--
+*Assets:*
+- Cash:
+- ACME:
+
+
+--
+*Liabilities:*
+
+--
+*Equity:*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>210</x>
+      <y>100</y>
+      <w>100</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>halign=right
+*6,00 €*
+1,00 €
+2,00 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>210</x>
+      <y>190</y>
+      <w>100</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*0,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>240</x>
+      <y>220</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*6,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>80</y>
+      <w>240</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>ACME
+--
+*Assets:*
+- Cash:
+--
+*Liabilities:*
+- Bob
+- Charlie
+- Alice
+- XRP Ledger (Subtotal)
+
+
+--
+*Equity:*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>530</x>
+      <y>100</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>halign=right
+*10,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>530</x>
+      <y>140</y>
+      <w>100</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*8,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>560</x>
+      <y>260</y>
+      <w>70</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*2,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>530</x>
+      <y>160</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>halign=right
+1,00 €
+2,00 €
+2,00 €
+3,00 €
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>230</y>
+      <w>240</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>bg=green
+  - Alice (XRPL)
+halign=left
+transparency=0
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>530</x>
+      <y>230</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>halign=right
+3,00 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>100</x>
+      <y>160</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>bg=green
+- ACME (XRPL)
+halign=left
+valign=center
+layer=-1
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>210</x>
+      <y>160</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>halign=right
+3,00 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>140</y>
+      <w>50</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>190</y>
+      <w>50</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;50.0;30.0;50.0;30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

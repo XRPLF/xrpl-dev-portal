@@ -110,7 +110,7 @@ XRP Ledger addresses are encoded using [base58][] with the _dictionary_ `rpshnaf
 
 The following diagram shows the relationship between keys and addresses:
 
-[![Master Public Key + Type Prefix → Account ID + Checksum → Address](img/address-encoding.png)](img/address-encoding.png)
+{{ include_svg("img/address-encoding.svg", "Master Public Key + Type Prefix → Account ID + Checksum → Address") }}
 
 The formula for calculating an XRP Ledger address from a public key is as follows. For the complete example code, see [`encode_address.js`](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/address_encoding/encode_address.js). For the process of deriving a public key from a passphrase or seed value, see [Key Derivation](cryptographic-keys.html#key-derivation).
 

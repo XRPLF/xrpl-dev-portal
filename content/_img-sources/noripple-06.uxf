@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="13.2">
+<diagram program="umlet" version="14.2">
   <zoom_level>10</zoom_level>
   <element>
     <id>UMLUseCase</id>
@@ -119,7 +119,7 @@ $2</panel_attributes>
     <panel_attributes>Invalid path
 (Cannot ripple)
 bg=red
-</panel_attributes>
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -239,6 +239,7 @@ $2</panel_attributes>
     <panel_attributes>Valid path
 (Rippling possible)
 bg=green
+transparency=0
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -441,6 +442,7 @@ $100
     <panel_attributes>Valid path
 (Rippling possible)
 bg=green
+transparency=0
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -455,6 +457,7 @@ bg=green
     <panel_attributes>Valid path
 (Rippling possible)
 bg=green
+transparency=0
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -468,7 +471,9 @@ bg=green
     </coordinates>
     <panel_attributes>This path is valid
 because Daniel, but not Emily, has set the No Ripple flag on the trust line between them
-bg=yellow</panel_attributes>
+bg=yellow
+style=wordwrap
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

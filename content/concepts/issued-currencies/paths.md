@@ -19,7 +19,7 @@ In the case of a currency exchange step, the path step specifies which currency 
 
 In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](transfer-fees.html), trust line quality, or rounding.
 
-[![Diagram of three example paths](img/paths-examples.png)](img/paths-examples.png)
+{{ include_svg("img/paths-examples.svg", "Diagram of three example paths") }}
 
 
 
@@ -59,7 +59,8 @@ The default path could be any of the following:
 * For cross-currency transactions, the default path uses the order book between the source currency (as specified in the `SendMax` field) and the destination currency (as specified in the `Amount` field).
 
 The following diagram enumerates all possible default paths:
-[![Diagram of default paths](img/paths-default_paths.png)](img/paths-default_paths.png)
+
+{{ include_svg("img/default-paths.svg", "Diagram of default paths") }}
 
 You can use the [`tfNoDirectRipple` flag](payment.html#payment-flags) to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.
 

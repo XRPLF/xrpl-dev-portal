@@ -11,15 +11,21 @@ For example, ACME Bank might set the transfer fee to 1%. For the recipient of a 
 
 The following diagram shows an XRP Ledger payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:
 
-![Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger](img/e2g-with_transferrate.png)
+{{ include_svg("img/transfer-fees.svg", "Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger") }}
+
+In accounting terms, Alice's, ACME's, and Charlie's balance sheets may have changed like this:
+
+{{ include_svg("img/transfer-fees-balance-sheets.svg", "Alice's assets are down 2,02€, Charlie's are up 2,00€, and ACME's liabilities are down 0,02€") }}
+
+
 
 ## Transfer Fees in Payment Paths
 
-<!--{# TODO: Update this for OnwerPaysFee amendment when that gets added #}-->
+<!--{# TODO: Update this for OwnerPaysFee amendment when that gets added #}-->
 
 A transfer fee applies whenever an individual transfer would move issued currency from one party to another through the issuing account. In more complex transactions, this can occur multiple times. Transfer fees apply starting from the end and working backwards, so that ultimately the sender of a payment must send enough to account for all fees. For example:
 
-![Diagram of cross-currency payment with transfer fees](img/transfer_fees_example.png)
+{{ include_svg("img/transfer-fees-in-paths.svg", "Diagram of cross-currency payment with transfer fees") }}
 
 In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to deliver 100 USD issued by WayGate to Rosa (the recipient). FXMaker is a currency trader with the best offer in the order book, at a rate of 1 USD.WayGate for every 0.9 EUR.ACME. If there were no transfer fees, Salazar could deliver 100 USD to Rosa by sending 90 EUR. However, ACME has a transfer fee of 1% and WayGate has a transfer fee of 0.2%. This means:
 
