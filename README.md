@@ -4,9 +4,9 @@ The [XRP Ledger Dev Portal](https://xrpl.org) is the authoritative source for XR
 
 To build the site locally:
 
-1. Install [**Dactyl**](https://github.com/ripple/dactyl):
+1. Install [**Dactyl**](https://github.com/ripple/dactyl) and `lxml`:
 
-        sudo pip3 install dactyl
+        sudo pip3 install dactyl lxml
 
 2. Clone the repo and change into its directory:
 
