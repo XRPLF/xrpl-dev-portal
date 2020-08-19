@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2020-05-12 16:30-0700\n"
+"POT-Creation-Date: 2020-06-12 15:10-0700\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -41,10 +41,10 @@ msgid ""
 "like to help, <a href=\"https://github.com/ripple/xrpl-dev-"
 "portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
 msgstr ""
-"XRP Ledger Dev Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべて"
-"の言語で利用できるわけではありません。助けたいと思うなら"
-"<a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">"
-"提供して下さい！</a>"
+"XRP Ledger Dev "
+"Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべての言語で利用できるわけではありません。助けたいと思うなら<a "
+"href=\"https://github.com/ripple/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.ja.md\">提供して下さい！</a>"
 
 # Table of contents
 #: tool/template-doc.html:40
@@ -82,36 +82,35 @@ msgstr "Edit"
 
 #: tool/template-home.html:22
 msgid "Powering the Internet of Value."
-msgstr "価値のインターネットをパワーする。"
+msgstr "価値のインターネットの実現へ"
 
 #: tool/template-home.html:24
 msgid ""
 "The <a href=\"#xrp_ledger_intro\">XRP Ledger</a> is open-source "
 "technology that anyone can use."
-msgstr ""
-"<a href=\"#xrp_ledger_intro\">XRP Ledger</a>は誰でもが使い得るオープンソース技術。"
+msgstr "<a href=\"#xrp_ledger_intro\">XRP Ledger</a>は誰でも自由に使えるオープン技術です。"
 
 #: tool/template-home.html:25
 msgid ""
 "Use the tools and information provided here to integrate with and "
 "contribute to the open-source platform."
-msgstr "このツールと情報でXRPのオープンソースプラットフォームを統合して開発を提供します。"
+msgstr "このサイトで提供されているツールと情報を活用して、XRP Ledgerを開発に統合したり、オープンソース開発に参加しましょう。"
 
 #: tool/template-home.html:26
 msgid "Want more?"
-msgstr ""#TODO
+msgstr ""
 
 #: tool/template-home.html:27
 msgid "Get updates about XRP Ledger webinars, releases, and documentation!"
-msgstr ""#TODO
+msgstr "XRP Ledgerのウェビナー、リリース情報、資料についての最新情報を得る"
 
 #: tool/template-home.html:29
 msgid "Sign up!"
-msgstr ""#TODO
+msgstr "サインアップする"
 
 #: tool/template-home.html:50
 msgid "Learn How It Works"
-msgstr "XRP技術を理解する"
+msgstr "XRP Ledgerの仕組みを理解する"
 
 #: tool/template-home.html:56
 msgid "About XRP"
@@ -119,7 +118,7 @@ msgstr "XRPについて"
 
 #: tool/template-home.html:63
 msgid "All Concepts"
-msgstr "全コンセプト"
+msgstr "全てのコンセプト"
 
 #: tool/template-home.html:70
 msgid "Read Documentation"
@@ -127,7 +126,7 @@ msgstr "ドキュメントを読む"
 
 #: tool/template-home.html:78
 msgid "Full Doc Index"
-msgstr "全ドキュメント目次"
+msgstr "全ドキュメントの目次"
 
 #: tool/template-home.html:83
 msgid "All Docs"
@@ -135,13 +134,13 @@ msgstr "全ドキュメント"
 
 #: tool/template-home.html:90
 msgid "Explore the XRP Ledger"
-msgstr "XRP Ledgerを探る"
+msgstr "XRP Ledgerの動きを観察する"
 
 #: tool/template-home.html:93
 msgid ""
 "Use the XRPL Explorer to view a stream of ledger activity and see "
 "validator statuses."
-msgstr "XRP Ledger エクスプローラを使ってレジャーの動き、バリデータのステータスを見る。"
+msgstr "XRP Ledger エクスプローラを使って、レジャーの動きやバリデータのステータスを見ることができます。"
 
 #: tool/template-home.html:97
 msgid "Go to the Explorer"
@@ -149,7 +148,7 @@ msgstr "XRP Ledger エクスプローラへ"
 
 #: tool/template-home.html:125
 msgid "What is the XRP Ledger?"
-msgstr "XRP Ledgerとは何？"
+msgstr "XRP Ledgerとは？"
 
 #: tool/template-home.html:128
 msgid ""
@@ -157,9 +156,8 @@ msgid ""
 "network of peer-to-peer servers. It is the home of XRP, a digital asset "
 "designed to bridge the many different currencies in use worldwide."
 msgstr ""
-"XRP Ledgerは、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。"
-"XRP LedgerはXRPの土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために"
-"設計されたデジタル資産です。"
+"XRP Ledgerは、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。XRP "
+"LedgerはXRPの土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために設計されたデジタル資産です。"
 
 #: tool/template-home.html:132
 msgid "xrp-ledger-overview.html#the-digital-asset-for-payments"
@@ -211,7 +209,7 @@ msgstr "限定されたXRP供給量"
 
 #: tool/template-home.html:156
 msgid "xrp-ledger-overview.html#responsible-software-governance"
-msgstr "xrp-ledger-overview.html#責任あるソフトウェア管理"
+msgstr "xrp-ledger-overview.html#責任あるソフトウェアガバナンス"
 
 #: tool/template-home.html:157
 msgid "(governance icon)"
@@ -219,7 +217,7 @@ msgstr "(管理アイコン)"
 
 #: tool/template-home.html:158
 msgid "Responsible Software Governance"
-msgstr "責任あるソフトウェア管理"
+msgstr "責任あるソフトウェアガバナンス"
 
 #: tool/template-home.html:162
 msgid "xrp-ledger-overview.html#secure-adaptable-cryptography"
@@ -256,3 +254,107 @@ msgstr "(分散型取引所アイコン)"
 #: tool/template-home.html:176
 msgid "On-Ledger Decentralized Exchange"
 msgstr "台帳上の分散型取引所"
+
+#: tool/template-home.html:185
+msgid "Start Building"
+msgstr "XPR Ledgerを活用する"
+
+#: tool/template-home.html:187
+msgid ""
+"Use these tutorials to get step-by-step guidance to perform common tasks "
+"with the XRP Ledger."
+msgstr "これらのチュートリアルを通して、XRP Ledgerの一般的な活用方法についてステップバイステップで理解することができます。"
+
+#: tool/template-home.html:196
+msgid "'list xrp' icon"
+msgstr "「XRPを取引所にリスティングする」アイコン"
+
+#: tool/template-home.html:215
+msgid "'send xrp' icon"
+msgstr "「XRPを送金する」アイコン"
+
+#: tool/template-home.html:234
+msgid "'run rippled' icon"
+msgstr "「rippledを実行する」アイコン"
+
+#: tool/template-home.html:251
+msgid "More Tutorials"
+msgstr "他のチュートリアル"
+
+#: tool/template-home.html:264
+msgid "All Tutorials"
+msgstr "全チュートリアル"
+
+#: tool/template-home.html:273
+msgid "Related Projects"
+msgstr "関連プロジェクト"
+
+#: tool/template-home.html:275
+msgid ""
+"You're not alone in building the Internet of Value. These projects are "
+"proudly collaborating with the XRP Ledger to make all the world's money "
+"move like information moves today."
+msgstr "価値のインターネットの構築に取り組んでいるプロジェクトは多数存在します。"
+"これらのプロジェクトは、今日情報が自由に行き来できるようにお金も動く世界の実現"
+"のために、XRP Ledgerを活用しています。"
+
+#: tool/template-home.html:283
+msgid "Interledger logo"
+msgstr "インターレジャーロゴ"
+
+#: tool/template-home.html:284
+msgid "Interledger"
+msgstr "インターレジャー"
+
+#: tool/template-home.html:287
+msgid ""
+"Interledger is an open protocol suite for sending payments across "
+"different ledgers."
+msgstr "インターレジャーは異なるレジャー（台帳）間で送金するためのオープンプロトコル・スイートです。"
+
+#: tool/template-home.html:290 tool/template-home.html:304
+msgid "Learn More"
+msgstr "もっと知る"
+
+#: tool/template-home.html:297
+msgid "Xpring logo"
+msgstr "Xpringロゴ"
+
+#: tool/template-home.html:298
+msgid "Xpring"
+msgstr "Xpring"
+
+#: tool/template-home.html:301
+msgid ""
+"Xpring is Ripple’s initiative to create an open developer platform for "
+"money."
+msgstr "Xpring（スプリング)は開発者向けのお金のオープンプラットフォームを構築するためのRippleのイニシアチブです。"
+
+#: tool/template-validator-domain-verifier.html:5
+msgid "Domain Verification Checker"
+msgstr "ドメイン検証チェッカー"
+
+#: tool/template-validator-domain-verifier.html:7
+msgid ""
+"This tool allows you to verify that <a href=\"xrp-ledger-toml.html"
+"#domain-verification\">domain verification</a> is properly configured."
+msgstr "このツールを使用すると、<a href=\"xrp-ledger-toml.html#ドメイン検証\">"
+"ドメイン検証</a>が正しく設定されていることを確認できます。"
+
+#: tool/template-validator-domain-verifier.html:8
+msgid ""
+"Enter the manifest found in your validator-keys.json file. Do not confuse"
+" this with your validator's secret key."
+msgstr "あなたのvalidator-keys.jsonファイルの中にあるマニフェストを入力してください。バリデータの秘密鍵と間違えなようにご注意下さい。"
+
+#: tool/template-validator-domain-verifier.html:9
+msgid "To do this with the validator-keys-tool use the following command:"
+msgstr "validator-keys-toolを使う場合は、以下のコマンドを使ってください:"
+
+#: tool/template-validator-domain-verifier.html:14
+msgid "Your Manifest Here"
+msgstr "マニフェストを入力する"
+
+#: tool/template-validator-domain-verifier.html:20
+msgid "Result"
+msgstr "結果"

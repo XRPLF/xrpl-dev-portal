@@ -68,9 +68,10 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
-        locale_file: locale/en/LC_MESSAGES/messages.mo
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
+        readability_goals:
+            flesch_reading_ease: 50 # or higher
 
     -   name: ja
         lang: ja
@@ -81,20 +82,7 @@ targets:
         link_subs:
             # Adjust XRP-API readme link to point to the right place in the repo
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
-            # Fix 2 links from untranslated send-xrp.html:
-            "accounts.html#creating-accounts": "accounts.html#アカウントの作成"
-            "rippled-server-modes.html#reasons-to-run-a-stock-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
-            # Fix 1 link from untranslated transaction-censorship-detection.html:
-            "xrp-ledger-overview.html#censorship-resistant-transaction-processing": "xrp-ledger-overview.html#耐検閲性のある取引処理"
-            # Fix 1 link from untranslated software-ecosystem.html:
-            "rippled-server-modes.html#reasons-to-run-a-validator": "rippled-server-modes.html#バリデータを運用する理由"
-            # Fix 3 links from untranslated xrp-ledger-toml.html:
-            "currency-formats.html#currency-codes": "currency-formats.html#通貨コード"
-            "run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator": "run-rippled-as-a-validator.html#1-優れたバリデータの特徴の理解"
-            "run-rippled-as-a-validator.html#revoke-validator-keys": "run-rippled-as-a-validator.html#バリデータキーの破棄"
-            # Fix 1 link from untranslated snippet post-rippled-install.md:
-            "get-started-with-the-rippled-api.html#commandline": "get-started-with-the-rippled-api.html#コマンドライン"
-            # Fix 8 links from untranslated use-an-escrow-as-a-smart-contract.html:
+            # Fix 9 links from untranslated use-an-escrow-as-a-smart-contract.html:
             "send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment": "send-a-conditionally-held-escrow.html#1条件とフルフィルメントの生成"
             "send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time": "send-a-conditionally-held-escrow.html#2リリース時刻または取消し時刻の計算"
             "send-a-conditionally-held-escrow.html#3-submit-escrowcreate-transaction": "send-a-conditionally-held-escrow.html#3escrowcreateトランザクションの送信"
@@ -103,40 +91,16 @@ targets:
             "send-a-conditionally-held-escrow.html#6-submit-escrowfinish-transaction": "send-a-conditionally-held-escrow.html#6escrowfinishトランザクションの送信"
             "send-a-conditionally-held-escrow.html#7-wait-for-validation": "send-a-conditionally-held-escrow.html#7検証の待機"
             "send-a-conditionally-held-escrow.html#8-confirm-final-result": "send-a-conditionally-held-escrow.html#8最終結果の確認"
-            # Fix 1 link from untranslated checkcash-prereqs.md snippet:
-            "transaction-cost.html#queued-transactions": "transaction-cost.html#キューに入れられたトランザクション"
-            # Fix 2 links from untranslated crawl_shards.html:
-            "peer-protocol.html#private-peers": "peer-protocol.html#プライベートピア"
-            "error-formatting.html#universal-errors": "error-formatting.html#汎用エラー"
+            "accounts.html#creating-accounts": "accounts.html#アカウントの作成"
             # Fix 2 links from untranslated demurrage.html:
             "currency-formats.html#issued-currency-precision": "currency-formats.html#発行済み通貨の計算"
-            # Fix links from untranslated known-amendments.html:
-            "accounts.html#permanence-of-accounts": "accounts.html#アカウントの永続性"
-            "paths.html#path-specifications": "paths.html#パスの仕様"
-            "rippling.html#the-noripple-flag": "rippling.html#norippleフラグ"
-            "reserves.html#owner-reserves": "reserves.html#所有者準備金"
-            "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
-            "trustset.html#trustset-flags": "trustset.html#trustsetのフラグ"
-            "ripplestate.html#ripplestate-flags": "ripplestate.html#ripplestateのフラグ"
-            "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ" # also used in untranslated require-destination-tags.html, become-an-xrp-ledger-gateway.html
-            "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
-            "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
-            "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
-            "transaction-malleability.html#malleability-with-multi-signatures": "transaction-malleability.html#マルチ署名の展性"
-            # Fix 2 links from untranslated data type snippets
-            "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
-            "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
-            "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
-            # Fix 2 links from untranslated direct-xrp-payments.html
-            "basic-data-types.html#specifying-currency-amounts": "basic-data-types.html#通貨額の指定"
-            "partial-payments.html#partial-payments-exploit": "partial-payments.html#partial-paymentの悪用"
-            # Fix 2 links from untranslated become-an-xrp-ledger-gateway.html
+            "currency-formats.html#currency-codes": "currency-formats.html#通貨コード"
+            # Fix 5 links from untranslated become-an-xrp-ledger-gateway.html
             "paths.html#default-paths": "paths.html#デフォルトパス"
             "payment.html#payment-flags": "payment.html#paymentのフラグ"
-            # Fix 1 link from untranslated monitor-incoming-payments-with-websocket.html
-            "currency-formats.html#xrp-precision": "currency-formats.html#xrpの精度"
-            # Fix 1 link from untranslated set-up-secure-signing.html
-            "request-formatting.html#commandline-format": "request-formatting.html#コマンドライン形式"
+            "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ"
+            "trustset.html#trustset-flags": "trustset.html#trustsetのフラグ"
+            "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
             # Fix links from untranslated open-a-payment-channel-to-enable-an-inter-exchange-network.html
             "use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient": "use-payment-channels.html#1-支払人が特定の受取人へのpayment-channelを作成します"
             "use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel": "use-payment-channels.html#2-受取人がpayment-channelの特性を確認します"
@@ -146,27 +110,31 @@ targets:
             "use-payment-channels.html#7-repeat-steps-3-6-as-desired": "use-payment-channels.html#7-必要に応じてステップ36を繰り返します"
             "use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount": "use-payment-channels.html#8-準備が完了すれば受取人は承認された額のクレームを清算します"
             "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
-            # Fix 1 link from untranslated accountdelete.html. REMOVE when accounts.html is updated w/ deletable accounts info.
-            "accounts.html#deletion-of-accounts": "accounts.html#アカウントの永続性"
-            # Fix links from untranslated peer protocol updates
-            "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
-            "run-rippled-as-a-validator.html#connect-using-proxies": "run-rippled-as-a-validator.html#プロキシを使用した接続"
-            "rippled-server-modes.html#public-hubs": "rippled-server-modes.html#公開ハブ"
-            "peer-protocol.html#peer-discovery": "peer-protocol.html#ピア発見"
-            "ledgers.html#tree-format": "ledgers.html#ツリーの形式"
-            # Fix links from untranslated currency_codes snippet
-            "currency-formats.html#standard-currency-codes": "currency-formats.html#標準通貨コード"
-            "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
+            "reserves.html#owner-reserves": "reserves.html#所有者準備金"
             # Fix links from untranslated disable-master-key-pair.html.
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの承認"
             "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
+            "set-up-secure-signing.html#use-a-dedicated-signing-device": "set-up-secure-signing.html#専用の署名デバイスを使用する"
+            "set-up-secure-signing.html#run-rippled-locally": "set-up-secure-signing.html#ローカルでrippledを実行する"
             # Fix link from untranslated rate-limiting.html
-            "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html" # The translated doc hasn't been updated to add the "Admin Access" section, but the details are mentioned near the top of the page
+            "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html#管理者アクセス権限"
             # Fix links from untranslated validator-list.html
             "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"
             "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
             # Fix link from untranslated run-rippled-as-a-wallet-server.html
             "run-rippled-as-a-validator.html#6-provide-domain-verification": "run-rippled-as-a-validator.html#6-ドメイン検証の提供"
+            # Fix link from untranslated tutorial-submit-step.md snippet
+            "transaction-cost.html#queued-transactions": "transaction-cost.html#キューに入れられたトランザクション"
+            # Fix links from multiple untranslated API method reference pages:
+            "error-formatting.html#universal-errors": "error-formatting.html#汎用エラー"
+            # Fix link to un-updated transaction-metadata.html. REMOVE when the affected nodes section is updated
+            "transaction-metadata.html#affectednodes": "transaction-metadata.html"
+            # Fix link from untranslated peer-crawler.html:
+            "peer-protocol.html#private-peers": "peer-protocol.html#プライベートピア"
+            # Fix links from untranslated health-check.html:
+            "rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
+            "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
+
 
 
     -   name: xrp-api-only
@@ -223,7 +191,7 @@ pages:
         doc_type: Concepts
         html: concepts.html
         template: template-landing-children.html
-        blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger. #TODO:translate
+        blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
         targets:
             - ja
 
@@ -233,9 +201,18 @@ pages:
         category: Introduction
         html: introduction.html
         template: template-landing-children.html
-        blurb: Learn the "what" and "why" of the XRP Ledger.  #TODO:translate
+        blurb: Learn the "what" and "why" of the XRP Ledger.
         targets:
             - en
+
+    -   name: 基本
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        html: introduction.html
+        template: template-landing-children.html
+        blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
+        targets:
             - ja
 
     -   md: concepts/introduction/xrp-ledger-overview.md
@@ -252,7 +229,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Get a quick and concise introduction to key features of the XRP Ledger.  #TODO:translate
+        blurb: XRP Ledgerの基本機能を簡単に紹介します。
         targets:
             - ja
 
@@ -270,7 +247,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Develop a basic understanding of the XRP Ledger's consensus mechanism.  #TODO:translate
+        blurb: XRP Ledgerのコンセンサスメカニズムについて基本的な理解を深めましょう。
         targets:
             - ja
 
@@ -288,7 +265,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Learn about the uses and properties of XRP, the digital asset for payments. #TODO:translate
+        blurb: 送金のためのデジタルアセットである、XRPの使い方と特性について学びましょう。
         targets:
             - ja
 
@@ -300,6 +277,14 @@ pages:
         blurb: Get an overview of what XRP Ledger software is out there and how it fits together. #TODO:translate
         targets:
             - en
+
+    -   md: concepts/introduction/software-ecosystem.ja.md
+        html: software-ecosystem.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Introduction
+        blurb: XRP Ledgerソフトウェアで注目されている特性と、それらがどう組み合わさっているのか大まかに紹介します。
+        targets:
             - ja
 
     -   md: concepts/introduction/technical-faq.md
@@ -316,7 +301,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Introduction
-        blurb: Get answers to frequently asked questions, covering topics such as validators, unique node lists, the role of XRP, and security. #TODO:translate
+        blurb: バリデータ、ユニークノードリスト、XRPの役割、セキュリティなどのトピックに関するよくある質問に対しての答えを見つけてください。
         targets:
             - ja
 
@@ -326,7 +311,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         template: template-landing-children.html
-        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system. #TODO:translate
+        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system.
         targets:
             - en
 
@@ -336,7 +321,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         template: template-landing-children.html
-        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system. #TODO:translate
+        blurb: XRP Ledgerの主な狙いは決済処理です。主要なコンセプトを詳しく学んで、XRP Ledgerの決済システムの理解を深めましょう。
         targets:
             - ja
 
@@ -356,7 +341,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Accounts
-        blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP. #TODO:translate
+        blurb: XRP Ledgerのアカウントについて説明します。アカウントはトランザクションを送信でき、XRPを保有できます。
         targets:
             - ja
 
@@ -376,7 +361,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Accounts
-        blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them. #TODO:translate
+        blurb: 暗号鍵を使用してトランザクションを承認し、XRP Ledgerがトランザクションを実行できるようにします。
         targets:
             - ja
 
@@ -396,7 +381,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Accounts
-        blurb: Use multi-signing for greater security sending transactions. #TODO:translate
+        blurb: マルチ署名を使用することで、トランザクション送信時のセキュリティが強化されます。
         targets:
             - ja
 
@@ -416,7 +401,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Accounts
-        blurb: XRP Ledger accounts require a reserve of XRP to reduce spam in ledger data. #TODO:translate
+        blurb: XRP Ledgerアカウントでは、レジャーデータ内のスパムを減らすためにXRPの準備金が必要です。
         targets:
             - ja
 
@@ -436,7 +421,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Accounts
-        blurb: The DepositAuth setting lets an account block incoming payments by default. #TODO:translate
+        blurb: DepositAuth設定をすると、アカウントは着信ペイメントをデフォルトでブロックします。
         targets:
             - ja
 
@@ -454,7 +439,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment System Basics
-        blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other. #TODO:translate
+        blurb: レジャーを悪用から守る中立的な手数料（誰にも支払われません）や、ユーザーが互いから徴収できる手数料など、XRP Ledgerで許可されている手数料のタイプについて説明します。
         targets:
             - ja
 
@@ -467,12 +452,13 @@ pages:
         targets:
             - en
 
+        # TODO: translation needs to be updated based on ledgers.md
     -   md: concepts/payment-system-basics/ledgers.ja.md
         html: ledgers.html
         funnel: Docs
         doc_type: Concepts
         category: Payment System Basics
-        blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers. #TODO:translate
+        blurb: XRP Ledgerは、rippledによって内部データベースに保持されている一連の個別レジャー（レジャーバージョン）で構成されています。これらのレジャーの構造と内容について説明します。
         targets:
             - ja
 
@@ -492,7 +478,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Transaction Basics
-        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them. #TODO:translate
+        blurb: トランザクションは、XRP Ledgerの変更を可能にする唯一の手段です。トランザクションの形態とその使用方法について説明します。
         targets:
             - ja
 
@@ -512,7 +498,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Transaction Basics
-        blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies. #TODO:translate
+        blurb: トランザクションコストとはトランザクション送信のために償却される少額のXRPで、これによってレジャーがスパムから保護されます。トランザクションコストの適用方法について説明します。
         targets:
             - ja
 
@@ -532,7 +518,7 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Transaction Basics
-        blurb: Learn when the outcome of a transaction is final and immutable. #TODO:translate
+        blurb: トランザクション結果が最終的かつ不変になるタイミングについて説明します。
         targets:
             - ja
 
@@ -542,9 +528,19 @@ pages:
         doc_type: Concepts
         category: Payment System Basics
         subcategory: Transaction Basics
-        blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses. #TODO:translate
+        blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
         targets:
             - en
+
+    # TODO: Somehow this page's blurb got translated into Japanese but the page itself wasn't?
+    -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
+        html: source-and-destination-tags.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment System Basics
+        subcategory: Transaction Basics
+        blurb: 多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。
+        targets:
             - ja
 
     -   name: Payment Types
@@ -563,7 +559,7 @@ pages:
         doc_type: Concepts
         category: Payment Types
         template: template-landing-children.html
-        blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types. #TODO:translate
+        blurb: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門化した支払いタイプをサポートしています。
         targets:
             - ja
 
@@ -584,9 +580,17 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment Types
-        blurb: Direct XRP payments are the simplest way to send value in the XRP Ledger. #TODO:translate
+        blurb: Direct XRP payments are the simplest way to send value in the XRP Ledger.
         targets:
             - en
+
+    -   md: concepts/payment-types/direct-xrp-payments.ja.md
+        html: direct-xrp-payments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Payment Types
+        blurb: XRPによる直接支払いは、XRP Ledgerで資産を送金する最も簡単な方法です。
+        targets:
             - ja
 
     -   md: concepts/payment-types/cross-currency-payments.md
@@ -603,7 +607,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment Types
-        blurb: Cross-currency payments atomically deliver a different currency than they send by converting through paths and order books. #TODO:translate
+        blurb: 複数通貨間の支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。
         targets:
             - ja
 
@@ -621,7 +625,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment Types
-        blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients. #TODO:translate
+        blurb: Checksを使用すると、指定の受取人による取消または換金が可能な後払いの支払いを生成することができます。
         targets:
             - ja
 
@@ -639,7 +643,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment Types
-        blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both. #TODO:translate
+        blurb: XRPはEscrowに預託され、後日特定の条件が満たされた時点で送金されます。Escrowは時間制限、暗号条件、あるいはその両方によって異なる場合があります。
         targets:
             - ja
 
@@ -657,7 +661,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment Types
-        blurb: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs. #TODO:translate
+        blurb: Partial Paymentsは送金額から手数料を差し引き、変動額を送金します。Partial Paymentsは、追加コストなしで不審な支払いを返金したい場合に便利です。
         targets:
             - ja
 
@@ -675,7 +679,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Payment Types
-        blurb: Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later. #TODO:translate
+        blurb: Payment Channelは、少額の単位に分割可能な高速な非同期のXRPペイメントを送信し、後日決済されるようにします。
         targets:
             - ja
 
@@ -685,7 +689,7 @@ pages:
         doc_type: Concepts
         category: Issued Currencies
         template: template-landing-children.html
-        blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger. #TODO:translate
+        blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger.
         targets:
             - en
 
@@ -695,7 +699,7 @@ pages:
         doc_type: Concepts
         category: Issued Currencies
         template: template-landing-children.html
-        blurb: All currencies other than XRP can be represented in the XRP Ledger as issued currencies. Learn more about how issued currencies function in the XRP Ledger. #TODO:translate
+        blurb: XRP Ledgerでは、XRP以外の通貨はすべて発行済み通貨とされます。XRP Ledgerで発行済み通貨がどのように機能するか説明します。
         targets:
             - ja
 
@@ -713,7 +717,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Get an overview of issued currencies and their properties in the XRP Ledger. #TODO:translate
+        blurb: 発行済み通貨の概要と、XRP Ledgerにおけるその特性について説明します。
         targets:
             - ja
 
@@ -731,7 +735,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Learn about the properties and rationale of trust lines. #TODO:translate
+        blurb: トラストラインの特性と根本原理について説明します。
         targets:
             - ja
 
@@ -749,7 +753,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies. #TODO:translate
+        blurb: 通貨発行者が自己の発行済み通貨を保有できる人を制限できる、Authorized Trust Lineについて説明します。
         targets:
             - ja
 
@@ -767,7 +771,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Freezes can suspend trading of issued currencies for compliance purposes. #TODO:translate
+        blurb: 凍結では、コンプライアンス目的で発行済み通貨の取引を停止できます。
         targets:
             - ja
 
@@ -785,7 +789,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Rippling is automatic multi-party net settlement of issued currency balances. #TODO:translate
+        blurb: Ripplingは、複数当事者間での発行済み通貨残高の自動ネット決済です。
         targets:
             - ja
 
@@ -803,7 +807,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Currency issuers can charge a fee for transferring their issued currencies. #TODO:translate
+        blurb: 通貨発行者は、自己の発行済み通貨の送金に手数料を課すことができます。
         targets:
             - ja
 
@@ -821,7 +825,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk. #TODO:translate
+        blurb: XRP Ledgerで自動的にトランザクションを送信するビジネスは、リスクを最小限に抑えるために目的ごとに別のアドレスを設定することをおすすめします。
         targets:
             - ja
 
@@ -839,7 +843,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Issued Currencies
-        blurb: Payments of issued currencies must traverse paths of connected users and order books. #TODO:translate
+        blurb: 発行済み通貨の支払いは、接続されているユーザーのパスとオーダーブックを通す必要があります。
         targets:
             - ja
 
@@ -859,7 +863,7 @@ pages:
         doc_type: Concepts
         category: Decentralized Exchange
         template: template-landing-children.html
-        blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other. #TODO:translate
+        blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other.
         targets:
             - en
 
@@ -869,7 +873,7 @@ pages:
         doc_type: Concepts
         category: Decentralized Exchange
         template: template-landing-children.html
-        blurb: The XRP Ledger contains a fully-functional exchange where users can trade issued currencies for XRP or each other. #TODO:translate
+        blurb: XRP Ledgerには多機能な取引所が含まれており、この取引所を利用してユーザーは発行済み通貨をXRPに、あるいはXRPを発行済み通貨に交換できます。
         targets:
             - ja
 
@@ -887,7 +891,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Decentralized Exchange
-        blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties. #TODO:translate
+        blurb: オファーはXRP Ledgerの通貨取引オーダーの形態です。オファーのライフサイクルと特性について説明します。
         targets:
             - ja
 
@@ -905,7 +909,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Decentralized Exchange
-        blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs. #TODO:translate
+        blurb: オートブリッジングは、コストが下がる場合はXRPを仲介として使用してオーダーブックを自動的に接続します。
         targets:
             - ja
 
@@ -923,7 +927,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Decentralized Exchange
-        blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates. #TODO:translate
+        blurb: 発行者は、為替レートのごくわずかな差を超えて、頻繁な取引を抑制するためにオーダーブックで通貨のカスタムチックサイズを設定することができます。
         targets:
             - ja
 
@@ -933,7 +937,7 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         template: template-landing-children.html
-        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing. #TODO:translate
+        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
         targets:
             - en
 
@@ -943,7 +947,7 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         template: template-landing-children.html
-        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing. #TODO:translate
+        blurb: XRP Ledgerはコンセンサスアルゴリズムを使用して、二重支払いの問題を解決し、どのトランザクションをどのような順番で実行するか選択します。コンセンサスは、トランザクション処理のルールを左右します。
         targets:
             - ja
 
@@ -961,7 +965,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Understand the role of consensus in the XRP Ledger. #TODO:translate
+        blurb: XRP Ledgerにおけるコンセンサスの役割について理解を深めましょう。
         targets:
             - ja
 
@@ -1015,7 +1019,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Understand how transactions can be queued before reaching consensus. #TODO:translate
+        blurb: コンセンサスに至る前にトランザクションをどのようにキューに入れることができるか説明します。
         targets:
             - ja
 
@@ -1033,7 +1037,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Understand when and how it's possible to cancel a transaction that has already been sent. #TODO:translate
+        blurb: 送信済みのトランザクションのキャンセルがいつどのように可能か説明します。
         targets:
             - ja
 
@@ -1051,7 +1055,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Be aware of ways transactions could be changed to have a different hash than expected. #TODO:translate
+        blurb: トランザクションが想定とは異なるハッシュを持つようにどのように変更される可能性があるか注意してください。
         targets:
             - ja
 
@@ -1071,7 +1075,7 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         subcategory: Amendments
-        blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion. #TODO:translate
+        blurb: Amendmentはトランザクション処理の新しい機能やその他の変更を指します。バリデータはコンセンサスを通して連携し、XRP Ledgerにこれらのアップグレードを順序正しく適用します。
         targets:
             - ja
 
@@ -1084,7 +1088,17 @@ pages:
         blurb: List of all known amendments to the XRP Ledger protocol and their status.
         targets:
             - en
-            - ja #NOTE: there is a translation of this page, but it's very out of date
+
+    # TODO: update translated page with latest amendment statuses
+    -   md: concepts/consensus-network/amendments/known-amendments.ja.md
+        html: known-amendments.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        subcategory: Amendments
+        blurb: List of all known amendments to the XRP Ledger protocol and their status. #TODO:translate
+        targets:
+            - ja
 
     -   md: concepts/consensus-network/fee-voting.md
         html: fee-voting.html
@@ -1118,7 +1132,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Scholarly articles on consensus algorithms and related research. #TODO:translate
+        blurb: コンセンサスアルゴリズムに関する学術論文と関連研究。
         targets:
             - ja
 
@@ -1138,7 +1152,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
-        blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger. #TODO:translate
+        blurb: テストネットワークおよび代替レジャーチェーンと本番環境のXRP Ledgerとの関係について説明します。
         targets:
             - ja
 
@@ -1158,7 +1172,7 @@ pages:
         doc_type: Concepts
         category: The rippled Server
         template: template-landing-children.html
-        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server. #TODO:translate
+        blurb: rippledは、XRP Ledgerを管理するコアのピアツーピアサーバーです。このセクションではコンセプトについて説明します。XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学ぶことができます。
         targets:
             - ja
 
@@ -1176,7 +1190,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
-        blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode. #TODO:translate
+        blurb: ストックサーバー、バリデータサーバー、スタンドアロンモードで運用されるrippledサーバーなど、rippledサーバーのモードについて説明します。
         targets:
             - ja
 
@@ -1194,7 +1208,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
-        blurb: Run rippled servers in a cluster to share the load of cryptography between them. #TODO:translate
+        blurb: 暗号処理の負荷を分散させるためにクラスターでrippledサーバーを運用できます。
         targets:
             - ja
 
@@ -1214,7 +1228,7 @@ pages:
         doc_type: Concepts
         category: The rippled Server
         subcategory: Ledger History
-        blurb: rippled servers store a variable amount of transaction and state history locally. #TODO:translate
+        blurb: rippledサーバーはトランザクションの変動金額と状態の履歴をローカルに保管します。
         targets:
             - ja
 
@@ -1234,7 +1248,7 @@ pages:
         doc_type: Concepts
         category: The rippled Server
         subcategory: Ledger History
-        blurb: Online deletion purges outdated transaction and state history. #TODO:translate
+        blurb: オンライン削除は古いトランザクションと状態の履歴を消去します。
         targets:
             - ja
 
@@ -1254,7 +1268,7 @@ pages:
         doc_type: Concepts
         category: The rippled Server
         subcategory: Ledger History
-        blurb: History sharding divides the work of keeping historical ledger data among rippled servers. #TODO:translate
+        blurb: 履歴シャーディングは、履歴レジャーデータを保持する任務をrippledサーバー間で分担するようにします。
         targets:
             - ja
 
@@ -1272,7 +1286,7 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
-        blurb: The peer protocol specifies the language rippled servers speak to each other. #TODO:translate
+        blurb: ピアプロトコルは、rippledサーバーが互いに通信する言語を指定します。
         targets:
             - ja
 
@@ -1281,9 +1295,17 @@ pages:
         funnel: Docs
         doc_type: Concepts
         category: The rippled Server
-        blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers. #TODO:translate
+        blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers.
         targets:
             - en
+
+    -   md: concepts/the-rippled-server/transaction-censorship-detection.ja.md
+        html: transaction-censorship-detection.html
+        funnel: Docs
+        doc_type: Concepts
+        category: The rippled Server
+        blurb: XRP Ledgerでは取引検閲の自動検知機能がすべてのrippledサーバーで有効になっています。
+        targets:
             - ja
 
 # Tutorials --------------------------------------------------------------------
@@ -1302,7 +1324,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         template: template-landing-children.html
-        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger. #TODO:translate
+        blurb: XRP Ledgerで一般的なタスクを実行するためのステップバイステップのガイダンスを紹介します。
         targets:
             - ja
 
@@ -1322,7 +1344,7 @@ pages:
         doc_type: Tutorials
         category: Get Started
         template: template-landing-children.html
-        blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger. #TODO:translate
+        blurb: リソースを活用してXRP Ledgerの使用を開始しましょう。
         targets:
             - ja
 
@@ -1332,7 +1354,7 @@ pages:
         doc_type: Tutorials
         category: Get Started
         blurb: Get started with the APIs and libraries available for interacting with the XRP Ledger.
-        cta_text: "Get Started"
+        cta_text: Get Started
         targets:
             - en
 
@@ -1341,8 +1363,8 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Get Started
-        blurb: Get started with the APIs and libraries available for interacting with the XRP Ledger. #TODO:translate
-        cta_text: "開始しよう！"
+        blurb: XRP Ledgerの操作に使用できるAPIとライブラリを使い始めましょう。
+        cta_text: 開始しよう
         targets:
             - ja
 
@@ -1351,9 +1373,17 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Get Started
-        blurb: Set up an environment where you can submit transactions securely. #TODO:translate
+        blurb: Set up an environment where you can submit transactions securely.
         targets:
             - en
+
+    -   md: tutorials/get-started/set-up-secure-signing.ja.md
+        html: set-up-secure-signing.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        blurb: 安全にトランザクションを送信できる環境を設定します。
+        targets:
             - ja
 
     # TODO: Send a Transaction with the rippled API
@@ -1372,7 +1402,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Get Started
-        blurb: Build an entry-level JavaScript application for querying the XRP Ledger. #TODO:translate
+        blurb: XRP Ledgerに照会するエントリーレベルのJavaScriptアプリケーションを構築します。
         targets:
             - ja
 
@@ -1390,7 +1420,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Get Started
-        blurb: Find the results of previously-submitted transactions. #TODO:translate
+        blurb: 以前に送信したトランザクションの結果を確認します。
         targets:
             - ja
 
@@ -1399,11 +1429,21 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Get Started
-        blurb: Use the WebSocket API to actively monitor for new XRP payments (and more). #TODO:translate
+        blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
         filters:
             - interactive_steps
         targets:
             - en
+
+    -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.ja.md
+        html: monitor-incoming-payments-with-websocket.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Get Started
+        blurb: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
+        filters:
+            - interactive_steps
+        targets:
             - ja
 
     # TODO: Get Started with API Tools
@@ -1424,7 +1464,7 @@ pages:
         doc_type: Tutorials
         category: Use Simple XRP Payments
         template: template-landing-children.html
-        blurb: Direct XRP payments from one account to another are the simplest way to transact in the XRP Ledger. This section includes tutorials for how to use simple transactions proficiently and robustly. #TODO:translate
+        blurb: アカウント間でのXRPによる直接支払いは、XRP Ledgerで取引する最も簡単な方法です。このセクションでは、単純なトランザクションの上手で確実な使い方についてのチュートリアルを提供します。
         targets:
             - ja
 
@@ -1433,11 +1473,23 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Use Simple XRP Payments
-        blurb: Test out sending XRP using the XRP Test Net. #TODO:translate
+        blurb: Learn how to send test payments right from your browser.
+        cta_text: Send XRP
         filters:
             - interactive_steps
         targets:
             - en
+
+    -   md: tutorials/use-simple-xrp-payments/send-xrp.ja.md
+        html: send-xrp.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Use Simple XRP Payments
+        blurb: Test Netを使用してXRPの送金をテストします。
+        cta_text: XRPを送金しよう
+        filters:
+            - interactive_steps
+        targets:
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.md
@@ -1454,7 +1506,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Use Simple XRP Payments
-        blurb: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly. #TODO:translate
+        blurb: XRP Ledgerにトランザクションを送信することができるシステムを構築し、最終結果を素早く安全に受け取ります。
         targets:
             - ja
 
@@ -1486,7 +1538,7 @@ pages:
         doc_type: Tutorials
         category: Manage Account Settings
         template: template-landing-children.html
-        blurb: Set up your XRP Ledger account to send and receive payments the way you want it to. #TODO:translate
+        blurb: 希望する方法で支払いをやり取りできるようにXRP Ledgerアカウントを設定します。
         targets:
             - ja
 
@@ -1507,7 +1559,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
-        blurb: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later. #TODO:translate
+        blurb: アカウントからトランザクションに署名できるように第2キーペアを承認します。このキーペアは後から変更や削除が可能です。
         targets:
             - ja
 
@@ -1525,10 +1577,11 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
-        blurb: Remove or update a regular key pair already authorized by your account. #TODO:translate
+        blurb: アカウントですでに承認されているレギュラーキーペアを削除するか更新します。
         targets:
             - ja
 
+    # TODO: translate this page & blurb
     -   md: tutorials/manage-account-settings/disable-master-key-pair.md
         html: disable-master-key-pair.html
         funnel: Docs
@@ -1553,7 +1606,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
-        blurb: Add a signer list to your account to enable multi-signing. #TODO:translate
+        blurb: アカウントに署名者リストを追加して、マルチ署名を有効にします。
         targets:
             - ja
 
@@ -1580,20 +1633,35 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
-        blurb: Require users to specify a destination tag when sending to your address. #TODO:translate
+        blurb: Require users to specify a destination tag when sending to your address.
         targets:
             - en
+
+    -   md: tutorials/manage-account-settings/require-destination-tags.ja.md
+        html: require-destination-tags.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: ユーザーがあなたのアドレスに送金するときに宛先タグを必ず指定しなければならないようにします。
+        targets:
             - ja
 
-        # TODO: translate this page
     -   md: tutorials/manage-account-settings/offline-account-setup.md
         html: offline-account-setup.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage Account Settings
-        blurb: Set up an XRP Ledger account using an air-gapped, offline machine to store its cryptographic keys. #TODO:translate
+        blurb: Set up an XRP Ledger account using an air-gapped, offline machine to store its cryptographic keys.
         targets:
             - en
+
+    -   md: tutorials/manage-account-settings/offline-account-setup.ja.md
+        html: offline-account-setup.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: 物理的に隔離されたオフラインのマシンを使用して暗号鍵を保管するXRP Ledgerアカウントを設定します。
+        targets:
             - ja
 
     # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
@@ -1614,7 +1682,7 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         template: template-landing-children.html
-        blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger. #TODO:translate
+        blurb: EscrowやPayment Channelなどの高度な機能を使用して、XRP Ledgerでスマートアプリケーションを構築します。
         targets:
             - ja
 
@@ -1647,7 +1715,7 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Escrows
-        blurb: The XRP Ledger supports escrows that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies.  #TODO:translate
+        blurb: XRP Ledgerは、一定時間の経過後か暗号条件が満たされた場合にのみ実行されるEscrowをサポートします。Escrowが送金できるのはXRPのみで、発行済み通貨は送金できません。
         template: template-landing-children.html
         targets:
             - ja
@@ -1668,7 +1736,7 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Escrows
-        blurb: Create an escrow whose only condition for release is that a specific time has passed. #TODO:translate
+        blurb: 指定した時間が経過することがリリースの唯一の条件であるEscrowを作成します。
         targets:
             - ja
 
@@ -1688,7 +1756,7 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Escrows
-        blurb: Create an escrow whose release is based on a condition being fulfilled. #TODO:translate
+        blurb: 満たされた条件に基づいてリリースとなるEscrowを作成します。
         targets:
             - ja
 
@@ -1708,7 +1776,7 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Escrows
-        blurb: Cancel an expired escrow. #TODO:translate
+        blurb: 有効期限切れのEscrowを取り消します。
         targets:
             - ja
 
@@ -1728,7 +1796,7 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Escrows
-        blurb: Look up pending escrows by sender or destination address. #TODO:translate
+        blurb: 送金元または送金先のアドレスを使って保留中のEscrowを検索します。
         targets:
             - ja
 
@@ -1747,7 +1815,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Use Specialized Payment Types
-        blurb: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server. #TODO:translate
+        blurb: Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的なPayment Channelの使用方法を、ローカルのrippledサーバーのJSON-RPC APIを使用する例を使って説明します。
         targets:
             - ja
 
@@ -1891,7 +1959,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger. #TODO:translate
+        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger.
         template: template-landing-children.html
         targets:
             - en
@@ -1901,7 +1969,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger. #TODO:translate
+        blurb: このセクションでは、さまざまなベストプラクティスに従って、XRPを上場する取引所やXRP Ledgerで通貨を発行するゲートウェアなど、XRP Ledgerとインターフェイス接続するビジネスを運営する方法をデモンストレーションします。
         template: template-landing-children.html
         targets:
             - ja
@@ -1911,7 +1979,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: Learn the high-level steps required to list XRP on a digital asset exchange.
+        blurb: Run a digital asset exchange? Follow these steps to add XRP.
         targets:
             - en
 
@@ -1920,7 +1988,7 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: Learn the high-level steps required to list XRP on a digital asset exchange. #TODO:translate
+        blurb: デジタルアセット取引所でXRPを上場するために必要な手順の概要を説明します。
         targets:
             - ja
 
@@ -1933,12 +2001,12 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
+    -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.ja.md
         html: list-your-exchange-on-xrp-charts.html
         funnel: Docs
         doc_type: Tutorials
         category: XRP Ledger Businesses
-        blurb: Have your exchange and its XRP trade and order book data listed on XRP Charts. #TODO:translate
+        blurb: 各自の取引所とそのXRP取引、およびオーダーブックのデータをXRP Chartsに登録します。
         targets:
             - ja
 
@@ -1957,7 +2025,8 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        blurb: A system admin's guide to setting up and maintaining the rippled server.
+        blurb: Install, configure, and manage the core server that powers the XRP Ledger.
+        cta_text: Run rippled
         template: template-landing-children.html
         targets:
             - en
@@ -1967,7 +2036,8 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        blurb: A system admin's guide to setting up and maintaining the rippled server. #TODO:translate
+        blurb: XRP Ledgerをパワーするサーバーをインストール、設定、管理しよう。
+        cta_text: インストールしよう
         template: template-landing-children.html
         targets:
             - ja
@@ -1978,7 +2048,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Install and update the rippled server. #TODO:translate
+        blurb: Install and update the rippled server.
         template: template-landing-children.html
         targets:
             - en
@@ -1989,7 +2059,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Install and update the rippled server. #TODO:translate
+        blurb: rippledサーバーをインストールして更新します。
         template: template-landing-children.html
         targets:
             - ja
@@ -2010,7 +2080,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: rippledのハードウェアやソフトウェアのシステム要件 #TODO:check translation
+        blurb: rippledのハードウェアやソフトウェアのシステム要件
         targets:
             - ja
 
@@ -2030,7 +2100,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Install a precompiled rippled binary on CentOS or Red Hat Enterprise Linux. #TODO:translate
+        blurb: プリコンパイル済みのrippledバイナリーをCentOSまたはRed Hat Enterprise Linuxにインストールします。
         targets:
             - ja
 
@@ -2053,9 +2123,18 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Install a precompiled rippled binary on Ubuntu Linux. #TODO:translate
+        blurb: Install a precompiled rippled binary on Ubuntu Linux.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.ja.md
+        html: install-rippled-on-ubuntu.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: プリコンパイル済みのrippledバイナリーをUbuntu Linuxにインストールします。
+        targets:
             - ja
 
     -   name: Update rippled Automatically on CentOS/RHEL
@@ -2076,9 +2155,18 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Set up automatic updates for rippled on Linux. #TODO:translate
+        blurb: Set up automatic updates for rippled on Linux.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.ja.md
+        html: update-rippled-automatically-on-linux.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: Linuxでrippledの自動更新を設定します。
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.md
@@ -2087,9 +2175,18 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Manually update rippled on CentOS or Red Hat Enterprise Linux. #TODO:translate
+        blurb: Manually update rippled on CentOS or Red Hat Enterprise Linux.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.ja.md
+        html: update-rippled-manually-on-centos-rhel.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: CentOSまたはRed Hat Enterprise Linuxでrippledを手動更新します。
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.md
@@ -2098,9 +2195,18 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Manually update rippled on Ubuntu Linux. #TODO:translate
+        blurb: Manually update rippled on Ubuntu Linux.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.ja.md
+        html: update-rippled-manually-on-ubuntu.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: Ubuntu Linuxでrippledを手動更新します。
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md
@@ -2119,7 +2225,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Compile rippled yourself on Ubuntu Linux. #TODO:translate
+        blurb: Ubuntu Linuxでrippledを自分でコンパイルします。
         targets:
             - ja
 
@@ -2139,17 +2245,11 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Compile rippled yourself on macOS. #TODO:translate
+        blurb: macOSでrippledを自分でコンパイルします。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
-        html: capacity-planning.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Installation
-        blurb: Plan system specs and tune configuration for rippled in production environments.
         targets:
             - en
 
@@ -2159,7 +2259,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Installation
-        blurb: Plan system specs and tune configuration for rippled in production environments. #TODO:translate
+        blurb: 本番環境のシステムスペックを計画して、rippledの構成を調整します。
         targets:
             - ja
 
@@ -2172,6 +2272,15 @@ pages:
         blurb: Use these instructions to upgrade rippled packages from 1.2.x or below to 1.3.x or higher.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.ja.md
+        html: rippled-1-3-migration-instructions.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Installation
+        blurb: rippled 1.2.4以前のバージョンからrippled v1.3以降に移行するプロセスについて説明します。
+        targets:
             - ja
 
     -   name: Configure rippled
@@ -2191,7 +2300,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Customize your rippled server configuration. #TODO:translate
+        blurb: rippledサーバーの構成をカスタマイズします。
         template: template-landing-children.html
         targets:
             - ja
@@ -2202,31 +2311,9 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Have your server vote on the consensus ledger. #TODO:translate
+        blurb: Have your server vote on the consensus ledger.
         targets:
             - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
-        html: run-rippled-as-a-wallet-server.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Configuration
-        blurb: A multipurpose configuration for anyone integrating XRP. #TODO:translate
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
-        html: configure-statsd.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Configuration
-        blurb: Monitor your rippled server with StatsD metrics. #TODO:translate
-        targets:
-            - en
-            - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
         html: run-rippled-as-a-validator.html
@@ -2234,8 +2321,32 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Have your server vote on the consensus ledger. #TODO:translate
+        blurb: サーバーがコンセンサスレジャーで投票できるようにします。
         targets:
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
+        html: run-rippled-as-a-wallet-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: A multipurpose configuration for anyone integrating XRP.
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
+        html: configure-statsd.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Monitor your rippled server with StatsD metrics.
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.md
@@ -2254,7 +2365,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Connect your rippled server to the test net to try out new features or test functionality with fake money. #TODO:translate
+        blurb: rippledサーバーをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
         targets:
             - ja
 
@@ -2274,7 +2385,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Configure how far back your server should store transaction history. #TODO:translate
+        blurb: サーバーでどこまで古いトランザクション履歴を保持するかを設定します。
         targets:
             - ja
 
@@ -2294,7 +2405,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Use advisory deletion to delete older ledger history on a schedule rather than as new history becomes available. #TODO:translate
+        blurb: 指示による削除を使用して、新しい履歴ができたときではなく、スケジュールで古いレジャー履歴を削除します。
         targets:
             - ja
 
@@ -2314,7 +2425,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data. #TODO:translate
+        blurb: 履歴XRPレジャーデータのシャードを保存するようにサーバーを設定します。
         targets:
             - ja
 
@@ -2334,7 +2445,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run. #TODO:translate
+        blurb: 完全履歴サーバーは、運用のコストは高いものの、XRP Ledgerでこれまでに発生したすべてのトランザクションの記録を提供します。
         targets:
             - ja
 
@@ -2365,7 +2476,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configuration
-        blurb: Allow others to use your server to sign transactions. (Not recommended) #TODO:translate
+        blurb: 他の人があなたのサーバーを使ってトランザクションに署名できるようにします。（非推奨）
         targets:
             - ja
 
@@ -2375,10 +2486,20 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        subcategory: Configure Peering #TODO:translate
-        blurb: Configure how your server connects to the peer-to-peer network. #TODO:translate
+        subcategory: Configure Peering
+        blurb: Configure how your server connects to the peer-to-peer network.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.ja.md
+        html: configure-peering.html
+        template: template-landing-children.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: サーバーをピアツーピアネットワークに接続する方法を設定します。
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.md
@@ -2397,7 +2518,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configure Peering
-        blurb: Set up a group of servers that share work for higher efficiency. #TODO:translate
+        blurb: サーバーのグループで処理を分担するように設定して効率化します。
         targets:
             - ja
 
@@ -2406,10 +2527,19 @@ pages:
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
-        subcategory: Configure Peering #TODO:translate
-        blurb: Set up a server to connect only to specific, trusted peers. #TODO:translate
+        subcategory: Configure Peering
+        blurb: Set up a server to connect only to specific, trusted peers.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.ja.md
+        html: configure-a-private-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: サーバーが特定の信頼できるピアのみに接続するように設定します。
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
@@ -2418,7 +2548,24 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configure Peering
-        blurb: Configure how much information your rippled server reports publicly about its status and peers. #TODO:translate
+        blurb: Configure how much information your rippled server reports publicly about its status and peers.
+        targets:
+            - en
+
+    # TODO: translate this page. Only the blurb has been translated?
+    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
+        html: configure-the-peer-crawler.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
+        untranslated_warning: true
+        targets:
+            - ja
+
+    # TODO: translate this page including the blurb in its frontmatter.
+    -   md: tutorials/manage-the-rippled-server/configure-peering/enable-link-compression.md
         targets:
             - en
             - ja
@@ -2429,9 +2576,18 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configure Peering
-        blurb: Configure your firewall to allow incoming peers to your rippled server. #TODO:translate
+        blurb: Configure your firewall to allow incoming peers to your rippled server.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.ja.md
+        html: forward-ports-for-peering.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: 受信ピアがrippledサーバーに接続できるようにファイアウォールを設定します。
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.md
@@ -2440,9 +2596,18 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configure Peering
-        blurb: Connect your rippled server to a specific peer. #TODO:translate
+        blurb: Connect your rippled server to a specific peer.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.ja.md
+        html: manually-connect-to-a-specific-peer.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: rippledサーバーを特定のピアに接続します。
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.md
@@ -2451,9 +2616,18 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configure Peering
-        blurb: Set the maximum number of peers your rippled server connects to. #TODO:translate
+        blurb: Set the maximum number of peers your rippled server connects to.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.ja.md
+        html: set-max-number-of-peers.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: rippledサーバーが接続するピアの最大数を設定します。
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md
@@ -2462,9 +2636,18 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Configure Peering
-        blurb: Set up a more reliable connection to a specific peer using a peer reservation. #TODO:translate
+        blurb: Set up a more reliable connection to a specific peer using a peer reservation.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.ja.md
+        html: use-a-peer-reservation.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configure Peering
+        blurb: ピアリザベーションを使用して特定のピアへのより信頼できる接続を設定します。
+        targets:
             - ja
 
     -   name: Test rippled Functionality in Stand-Alone Mode
@@ -2473,7 +2656,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Stand-Alone Mode
-        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network. #TODO:translate
+        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
         template: template-landing-children.html
         targets:
             - en
@@ -2484,7 +2667,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Stand-Alone Mode
-        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network. #TODO:translate
+        blurb: 新機能や実験用に、スタンドアロンモードを使用してフルネットワークで機能をテストできます。
         template: template-landing-children.html
         targets:
             - ja
@@ -2505,7 +2688,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Stand-Alone Mode
-        blurb: Start from a fresh genesis ledger in stand-alone mode. #TODO:translate
+        blurb: スタンドアロンモードで新しいジェネシスレジャーを開始します。
         targets:
             - ja
 
@@ -2525,7 +2708,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Stand-Alone Mode
-        blurb: Start in stand-alone mode from a specific saved ledger to test or replay transactions. #TODO:translate
+        blurb: 特定の保存済みレジャーからスタンドアロンモードで開始して、トランザクションのテストやリプレイを行います。
         targets:
             - ja
 
@@ -2545,7 +2728,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Stand-Alone Mode
-        blurb: Make progress in stand-alone mode by manually closing the ledger. #TODO:translate
+        blurb: レジャーを手動で閉鎖して、スタンドアロンモードでの処理を進めます。
         targets:
             - ja
 
@@ -2566,7 +2749,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
-        blurb: Troubleshoot all kinds of problems with the rippled server. #TODO:translate
+        blurb: rippledサーバーのあらゆる種類の問題をトラブルシューティングします。
         template: template-landing-children.html
         targets:
             - ja
@@ -2581,13 +2764,25 @@ pages:
         targets:
             - en
 
+    # TODO: translate page and blurb
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
+        html: health-check-interventions.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Use the rippled server's health check as part of automated infrastructure monitoring.
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
         html: diagnosing-problems.html
         funnel: Docs
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
-        blurb: Collect information to identify the cause of problems. #TODO:translate
+        blurb: 情報を収集して問題の原因を特定します。
         targets:
             - ja
 
@@ -2607,7 +2802,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
-        blurb: Interpret and respond to warning and error messages in the debug log. #TODO:translate
+        blurb: デバッグログの警告メッセージとエラーメッセージを解釈して対応します。
         targets:
             - ja
 
@@ -2620,6 +2815,15 @@ pages:
         blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
         targets:
             - en
+
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
+        html: server-doesnt-sync.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger. #TODO: translate
+        targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
@@ -2638,7 +2842,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
-        blurb: A collection of problems that would cause a rippled server not to start, and how to fix them. #TODO:translate
+        blurb: rippledサーバーが起動しない原因となると思われる問題とその解決方法です。
         targets:
             - ja
 
@@ -2658,7 +2862,7 @@ pages:
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
-        blurb: Fix a problem with the SQLite page size on full-history servers started on rippled version 0.40.0 or earlier. #TODO:translate
+        blurb: rippledバージョン0.40.0以前で起動された完全履歴サーバーでのSQLiteのページサイズに関する問題を解決します。
         targets:
             - ja
 
@@ -2671,7 +2875,7 @@ pages:
         template: template-landing-references.html
         html: references.html
         sidebar: disabled
-        blurb: Complete references for different interfaces to the XRP Ledger. #TODO:translate
+        blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
             - en
 
@@ -2682,7 +2886,7 @@ pages:
         template: template-landing-references.html
         html: references.html
         sidebar: disabled
-        blurb: Complete references for different interfaces to the XRP Ledger. #TODO:translate
+        blurb: XRP Ledgerへのさまざまなインターフェイスの包括的なリファレンスです。
         targets:
             - ja
 
@@ -2694,7 +2898,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         template: template-landing-children.html
-        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger. #TODO:translate
+        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger.
         targets:
             - en
 
@@ -2704,7 +2908,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         template: template-landing-children.html
-        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger. #TODO:translate
+        blurb: XRP Ledgerを管理するコアのピアツーピアサーバーであるrippledと直接通信します。
         targets:
             - ja
 
@@ -2766,7 +2970,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: API Conventions
-        blurb: Formats for representing cryptographic keys and related data in base58 format. #TODO:translate
+        blurb: 暗号鍵と関連データをbase58形式で表すフォーマットです。
         targets:
             - ja
 
@@ -2786,7 +2990,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: API Conventions
-        blurb: Precision and range for currency numbers, plus formats of custom currency codes. #TODO:translate
+        blurb: 通貨番号の精度と範囲、カスタム通貨コードのフォーマットです。
         targets:
             - ja
 
@@ -2806,7 +3010,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: API Conventions
-        blurb: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces. #TODO:translate
+        blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスのエラーフォーマットと汎用エラーコードです。
         targets:
             - ja
 
@@ -2826,7 +3030,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: API Conventions
-        blurb: Convention for paginating large queries into multiple responses. #TODO:translate
+        blurb: 大きなクエリを複数の応答にページネーションする際の慣例です。
         targets:
             - ja
 
@@ -2846,10 +3050,11 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: API Conventions
-        blurb: Why and how only transactions can modify the ledger. #TODO:translate
+        blurb: トランザクションだけがレジャーを変更できる理由とその方法です。
         targets:
             - ja
 
+    # TODO: translate page & blurb
     -   md: references/rippled-api/api-conventions/rate-limiting.md
         html: rate-limiting.html
         funnel: Docs
@@ -2877,7 +3082,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: API Conventions
-        blurb: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces. #TODO:translate
+        blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスの標準の要求フォーマットと例です。
         targets:
             - ja
 
@@ -2917,7 +3122,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: API Conventions
-        blurb: Definitions of state information reported in some API methods. #TODO:translate
+        blurb: 一部のAPIメソッドで報告される状態情報の定義です。
         targets:
             - ja
 
@@ -2937,7 +3142,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: API Conventions
-        blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects. #TODO:translate
+        blurb: XRP Ledgerトランザクションやその他のオブジェクトの場合のJSONフォーマットと正規バイナリーフォーマットとの変換です。
         targets:
             - ja
 
@@ -2971,9 +3176,20 @@ pages:
         category: Public rippled Methods
         subcategory: Account Methods
         template: template-landing-children.html
-        blurb: An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info. #TODO:translate
+        blurb: An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info.
         targets:
             - en
+
+    -   name: Account Methods
+        html: account-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Account Methods
+        template: template-landing-children.html
+        blurb: XRP Ledgerのアカウントとは、XRPの保有者とトランザクションの送信者を意味します。以下のメソッドを使用して、アカウント情報を処理します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.md
@@ -3159,7 +3375,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
-        blurb: Get recommended changes to an account's DefaultRipple and NoRipple settings.
+        blurb: Get recommended changes to an account's Default Ripple and No Ripple settings.
         targets:
             - en
 
@@ -3181,10 +3397,21 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Ledger Methods
-        blurb: A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info. #TODO:translate
+        blurb: A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info.
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: Ledger Methods
+        html: ledger-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Ledger Methods
+        blurb: レジャーバージョンには、ヘッダー、トランザクションツリー、状態ツリーが含まれ、さらにその中にアカウント設定、トラストライン、残高、トランザクション、その他のデータが含まれます。以下のメソッドを使用して、レジャー情報を取得します。
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.md
@@ -3308,6 +3535,17 @@ pages:
         blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions. #TODO:translate
         targets:
             - en
+
+    -   name: Transaction Methods
+        html: transaction-methods.html # watch for clashes w/ this filename
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Transaction Methods
+        template: template-landing-children.html
+        blurb: トランザクションだけが、XRP Ledgerの共有されている状態を変更できます。XRP Ledgerに対するすべてのビジネスはトランザクションの形態をとります。以下のメソッドを使用して、トランザクションを処理します。
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.md
@@ -3475,6 +3713,17 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: Path and Order Book Methods
+        html: path-and-order-book-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Path and Order Book Methods
+        blurb: パスは、支払いが送信者から受信者に届くまでに中間ステップでたどる道筋を定義します。パスは、送信者と受信者をオーダーブックを介してつなぐことで、複数通貨間の支払いを可能にします。パスと他のオーダーブックに関しては、以下のメソッドを使用します。
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.md
@@ -3572,7 +3821,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Payment Channel Methods
-        blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels.
+        blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels. #TODO:translate
         template: template-landing-children.html
         targets:
             - en
@@ -3633,6 +3882,17 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: Subscription Methods
+        html: subscription-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Subscription Methods
+        blurb: 以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。WebSocket APIのみ。
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.md
@@ -3686,10 +3946,21 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Server Info Methods
-        blurb: Use these methods to retrieve information about the current state of the rippled server. #TODO:translate
+        blurb: Use these methods to retrieve information about the current state of the rippled server.
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: Server Info Methods
+        html: server-info-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        blurb: 以下のメソッドを使用して、rippledサーバーの現在の状態についての情報を取得します。
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.md
@@ -3853,13 +4124,13 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: Admin rippled Methods
-        blurb: Administer a rippled server with these admin API methods. #TODO:translate
+        blurb: これらの管理APIメソッドを使用してrippledサーバーを管理します。
         targets:
             - ja
 
     -   name: Key Generation Methods
         html: key-generation-methods.html
-        blurb: Use these methods to generate and manage keys. #TODO:translate
+        blurb: Use these methods to generate and manage keys.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -3868,6 +4139,17 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: キー生成のメソッド
+        html: key-generation-methods.html
+        blurb: キーを生成および管理するには、以下のメソッドを使用します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Key Generation Methods
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.md
@@ -3925,6 +4207,17 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: ログとデータ管理のメソッド
+        html: logging-and-data-management-methods.html
+        blurb: Use these methods to manage log levels and other data, such as ledgers. #TODO: translate
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.md
@@ -3940,7 +4233,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.ja.md
         html: can_delete.html
-        blurb: Allow online deletion of ledgers up to a specific ledger. #TODO: translate
+        blurb: 指定したレジャーバージョン以前のレジャー履歴を削除可能にします。
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -3951,7 +4244,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.md
         html: crawl_shards.html
-        blurb: Request information about which history shards peers have. #TODO:translate
+        blurb: Request information about which history shards peers have.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -3959,6 +4252,16 @@ pages:
         subcategory: Logging and Data Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.ja.md
+        html: crawl_shards.html
+        blurb: ピアが持つ履歴シャードについての情報を要求します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Logging and Data Management Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.md
@@ -3974,7 +4277,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.ja.md
         html: download_shard.html
-        blurb: Download a specific shard of ledger history. #TODO:translate
+        blurb: レジャー履歴の特定のシャードをダウンロードします。
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -3996,7 +4299,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.ja.md
         html: ledger_cleaner.html
-        blurb: レジャークリーナーを制御し、レジャーデータベースの破損を検出して修復できる非同期メンテナンスをする。 #TODO:translation check
+        blurb: レジャークリーナーを制御し、レジャーデータベースの破損を検出して修復できる非同期メンテナンスをする。
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -4071,9 +4374,9 @@ pages:
         targets:
             - ja
 
-    -   name: Server Control Methods
+    -   name: Server Control Methods #TODO: translate title
         html: server-control-methods.html
-        blurb: Use these methods to manage the rippled server.
+        blurb: Use these methods to manage the rippled server. #TODO: translate blurb
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -4162,6 +4465,17 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: ピア管理のメソッド
+        html: peer-management-methods.html
+        blurb: サーバーのピアツーピア接続を管理するにはこれらのメソッドを使用します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/connect.md
@@ -4188,7 +4502,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_add.md
         html: peer_reservations_add.html
-        blurb: Add a reserved slot for a specific peer server. #TODO:translate
+        blurb: Add a reserved slot for a specific peer server.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -4196,11 +4510,21 @@ pages:
         subcategory: Peer Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_add.ja.md
+        html: peer_reservations_add.html
+        blurb: 特定のピアサーバー用の予約済みスロットを追加します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_del.md
         html: peer_reservations_del.html
-        blurb: Remove a reserved slot for a specific peer server. #TODO:translate
+        blurb: Remove a reserved slot for a specific peer server.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -4208,11 +4532,21 @@ pages:
         subcategory: Peer Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_del.ja.md
+        html: peer_reservations_del.html
+        blurb: 特定のピアサーバー用の予約済みスロットを削除します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_list.md
         html: peer_reservations_list.html
-        blurb: List reserved slots for specific peer servers. #TODO:translate
+        blurb: List reserved slots for specific peer servers.
         funnel: Docs
         doc_type: References
         supercategory: rippled API
@@ -4220,6 +4554,16 @@ pages:
         subcategory: Peer Management Methods
         targets:
             - en
+
+    -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_list.ja.md
+        html: peer_reservations_list.html
+        blurb: 特定のピアサーバー用の予約済みスロットをリスト表示します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Peer Management Methods
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.md
@@ -4255,6 +4599,17 @@ pages:
         template: template-landing-children.html
         targets:
             - en
+
+    -   name: ステータスとデバッグのメソッド
+        html: status-and-debugging-methods.html
+        blurb: ネットワークとサーバーのステータスを確認するには、以下のメソッドを使用します。
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        template: template-landing-children.html
+        targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.md
@@ -4452,7 +4807,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: Ledger Data Formats
-        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state. #TODO:translate
+        blurb: XRP Ledgerの共有状態を構成する個別のデータオブジェクトについて説明します。
         template: template-landing-children.html
         targets:
             - ja
@@ -4473,7 +4828,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: Ledger Data Formats
-        blurb: A unique header that describes the contents of a ledger version. #TODO:translate
+        blurb: レジャーバージョンの内容を記述する一意のヘッダーです。
         targets:
             - ja
 
@@ -4493,7 +4848,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: Ledger Data Formats
-        blurb: All objects in a ledger's state tree have a unique ID. #TODO:translate
+        blurb: レジャーの状態ツリーのすべてのオブジェクトには一意のIDがあります。
         targets:
             - ja
 
@@ -4508,6 +4863,17 @@ pages:
         blurb: Each ledger's state tree consists of a set of ledger objects, which collectively represent all settings, balances, and relationships in the shared ledger. In the peer protocol that rippled servers use to communicate with each other, ledger objects are represented in their raw binary format. In the rippled API, ledger objects are represented as JSON objects. #TODO:translate
         targets:
             - en
+
+    -   name: レジャーオブジェクトのタイプ
+        html: ledger-object-types.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Ledger Data Formats
+        subcategory: Ledger Object Types
+        template: template-landing-children.html
+        blurb: 各レジャーの状態ツリーはレジャーオブジェクトのセットで構成されており、それらが総合して共有レジャーのすべての設定、残高、関係を表します。rippledサーバーが互いに通信するために使用するピアプロトコルでは、レジャーオブジェクトは生バイナリーフォーマットで表されます。rippled APIでは、レジャーオブジェクトはJSONオブジェクトとして表されます。
+        targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.md
@@ -4528,7 +4894,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: The settings, XRP balance, and other metadata for one account. #TODO:translate
+        blurb: あるアカウントの設定、XRP残高、その他のメタデータです。
         targets:
             - ja
 
@@ -4550,7 +4916,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Singleton object with status of enabled and pending amendments. #TODO:translate
+        blurb: 有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。
         targets:
             - ja
 
@@ -4572,7 +4938,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: A check that can be redeemed for money by its destination. #TODO:translate
+        blurb: 送信先が清算して資金にできるCheckです。
         targets:
             - ja
 
@@ -4594,7 +4960,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: A record of preauthorization for sending payments to an account that requires authorization. #TODO:translate
+        blurb: 承認を必要とするアカウントへの送金ペイメントの事前承認の記録です。
         targets:
             - ja
 
@@ -4616,7 +4982,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Contains links to other objects. #TODO:translate
+        blurb: 他のオブジェクトへのリンクを含みます。
         targets:
             - ja
 
@@ -4638,7 +5004,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Contains XRP held for a conditional payment. #TODO:translate
+        blurb: 条件付き決済のために保有されているXRPを含みます。
         targets:
             - ja
 
@@ -4660,7 +5026,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Singleton object with consensus-approved base transaction cost and reserve requirements. #TODO:translate
+        blurb: コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。
         targets:
             - ja
 
@@ -4682,7 +5048,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Lists of prior ledger versions' hashes for history lookup. #TODO:translate
+        blurb: 履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。
         targets:
             - ja
 
@@ -4704,7 +5070,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: An order to make a currency trade. #TODO:translate
+        blurb: 通貨取引を行うためのオーダーです。
         targets:
             - ja
 
@@ -4726,7 +5092,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: A channel for asynchronous XRP payments. #TODO:translate
+        blurb: 非同期XRP支払い用のチャネルです。
         targets:
             - ja
 
@@ -4748,7 +5114,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type. #TODO:translate
+        blurb: 2つのアカウントをリンクし、それらのアカウント間の特定の通貨の残高を追跡します。トラストラインのコンセプトは、このオブジェクトタイプを抽象化することです。
         targets:
             - ja
 
@@ -4770,7 +5136,7 @@ pages:
         supercategory: rippled API
         category: Ledger Data Formats
         subcategory: Ledger Object Types
-        blurb: A list of addresses for multi-signing transactions. #TODO:translate
+        blurb: マルチ署名トランザクションのアドレスのリストです。
         targets:
             - ja
 
@@ -4872,6 +5238,16 @@ pages:
         blurb: Delete an account.
         targets:
             - en
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/accountdelete.ja.md
+        html: accountdelete.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Transaction Formats
+        subcategory: Transaction Types
+        blurb: Delete an account.
+        targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
@@ -5245,7 +5621,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Pseudo-Transaction Types
-        blurb: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger. #TODO:translate
+        blurb: バリデータがXRP Ledgerに適用する場合がある疑似トランザクションのフォーマットです。
         template: template-landing-children.html
         targets:
             - ja
@@ -5312,7 +5688,7 @@ pages:
         supercategory: rippled API
         category: Transaction Formats
         subcategory: Transaction Results
-        blurb: Learn how to interpret rippled server transaction results. #TODO:translate
+        blurb: rippledサーバーのトランザクション結果の解釈の仕方について説明します。
         targets:
             - ja
 
@@ -5495,7 +5871,7 @@ pages:
         doc_type: References
         supercategory: rippled API
         category: Commandline Usage
-        blurb: Commandline usage options for the rippled server. #TODO:translate
+        blurb: rippledサーバーのコマンドライン使用オプションです。
         curated_anchors:
             - name: 使用できるモード
               anchor: "#使用できるモード"
@@ -5510,24 +5886,61 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/peer-crawler.md
-        html: peer-crawler.html
+    # TODO: translate title & blurb
+    -   name: Peer Port Methods
+        html: peer-port-methods.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Peer Crawler
-        blurb: Special API method for sharing network topology and status metrics. #TODO:translate
+        category: Peer Port Methods
+        template: template-landing-children.html
+        blurb: Special API method for sharing network topology and status metrics.
         targets:
             - en
             - ja
 
-    -   md: references/rippled-api/validator-list.md
+    # TODO: translate page & blurb
+    -   md: references/rippled-api/peer-port-methods/health-check.md
+        html: health-check.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Port Methods
+        blurb: Special API method for reporting server health.
+        targets:
+            - en
+            - ja
+
+    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
+        html: peer-crawler.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Port Methods
+        blurb: Special API method for sharing network topology and status metrics.
+        targets:
+            - en
+
+    # TODO: translate page
+    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
+        html: peer-crawler.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Port Methods
+        blurb: ネットワークトポロジーとステータスメトリックを共有するための特殊なAPIメソッドです。
+        untranslated_warning: true
+        targets:
+            - ja
+
+    # TODO: translate page & blurb
+    -   md: references/rippled-api/peer-port-methods/validator-list.md
         html: validator-list.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Validator List
-        blurb: Special API method for sharing recommended validator lists. #TODO:translate
+        category: Peer Port Methods
+        blurb: Special API method for sharing recommended validator lists.
         targets:
             - en
             - ja
@@ -5540,6 +5953,7 @@ pages:
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
+        skip_spell_checker: true
         filters:
             - xrpapi_readme
         targets:
@@ -5554,6 +5968,7 @@ pages:
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
+        skip_spell_checker: true
         targets:
             - en
             - ja
@@ -5568,7 +5983,9 @@ pages:
         funnel: Docs
         doc_type: References
         category: RippleAPI for JavaScript
-        blurb: Official client library to the XRP Ledger. Available for JavaScript only. #TODO:translate
+        blurb: Official client library to the XRP Ledger. Available for JavaScript only.
+        skip_spell_checker: true
+        # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
         curated_anchors:
             - name: Transactions
               anchor: "#transaction-overview"
@@ -5603,7 +6020,7 @@ pages:
         funnel: Docs
         doc_type: References
         category: Data API
-        blurb: RESTful interface to XRP Ledger analytics and historical data. #TODO:translate
+        blurb: XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。
         curated_anchors:
             - name: APIメソッドリファレンス
               anchor: "#apiメソッドリファレンス"
@@ -5631,6 +6048,25 @@ pages:
               anchor: "#account-verification"
         targets:
             - en
+
+    -   md: references/xrp-ledger-toml.ja.md
+        html: xrp-ledger-toml.html
+        funnel: Docs
+        doc_type: References
+        category: XRP Ledger TOML File
+        blurb: 機械が読み取れる、あなたに関する情報を他のXRP Ledgerユーザーに提供します。
+        curated_anchors:
+            - name: ファイルの提供方法
+              anchor: "#ファイルの提供方法"
+            - name: 内容
+              anchor: "#内容"
+            - name: CORSの設定
+              anchor: "#corsの設定"
+            - name: ドメイン検証
+              anchor: "#ドメイン検証"
+            - name: アカウント検証
+              anchor: "#アカウント検証"
+        targets:
             - ja
 
 
@@ -5686,6 +6122,8 @@ pages:
             - xrp.html
         filters:
             - use_case
+        blurb: Run a digital asset exchange? Follow these steps to add XRP.
+        cta_text: List XRP
         targets:
             - en
 
@@ -5699,6 +6137,8 @@ pages:
             - xrp.html
         filters:
             - use_case
+        blurb: デジタルアセット取引所でXRPを上場するために必要な手順の概要を説明します。
+        cta_text: XRPを上場しよう
         targets:
             - ja
 
@@ -5913,8 +6353,11 @@ known_broken_links:
     #  even though they still work in browser:
     - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
     - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
+    # Another failure that works fine in a browser:
+    - https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/
 
 # Style Checker Config ------------------------------------------------------ #
 
 word_substitutions_file: tool/word_substitutions.yaml
 phrase_substitutions_file: tool/phrase_substitutions.yaml
+spelling_file: tool/spelling.txt

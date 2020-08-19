@@ -30,7 +30,7 @@ Software options for signing on the XRP Ledger include:
 - Install [ripple-lib](rippleapi-reference.html) and its dependencies offline. The Yarn package manager, for example, has [recommended instructions for offline usage](https://yarnpkg.com/blog/2016/11/24/offline-mirror/).
 - See also: [Set Up Secure Signing](set-up-secure-signing.html)
 
-You may want to set up custom software to facilitate the process of constructing transaction instructions on the offline machine. For example, your software may track what [sequence number][] to use next, or contain preset templates for certain types of transactions you expect to send.
+You may want to set up custom software to help construct transaction instructions on the offline machine. For example, your software may track what [sequence number][] to use next, or contain preset templates for certain types of transactions you expect to send.
 
 
 ### {{n.next()}}. Generate cryptographic keys
@@ -65,10 +65,12 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 Take note of the following values:
 
 - **`account_id`**. This is the address associated with the key pair, which will become your **[account](accounts.html) address** in the XRP Ledger after you fund it with XRP (later in this process). It is safe to share your `account_id` publicly.
-- **`master_seed`**. This is the secret seed value for the keypair, which you'll use to sign transactions from the account. For best security, encrypt this value before writing it to disk on the offline machine. As an encryption key, use a secure passphrase that human operators can memorize or write down somewhere physically secure, such as a [diceware passphrase](http://world.std.com/~reinhold/diceware.html) created with properly weighted dice. You may also want to use a physical security key as a second factor. The extent of the precautions to take at this stage is up to you.
+- **`master_seed`**. This is the secret seed value for the key pair, which you'll use to sign transactions from the account. For best security, encrypt this value before writing it to disk on the offline machine. As an encryption key, use a secure passphrase that human operators can memorize or write down somewhere physically secure, such as a [diceware passphrase](http://world.std.com/~reinhold/diceware.html) created with properly weighted dice. You may also want to use a physical security key as a second factor. The extent of the precautions to take at this stage is up to you.
 - **`key_type`**. This is the cryptographic algorithm used for this key pair. You need to know what type of key pair you have in order to sign valid transactions. The default is `secp256k1`.
 
 **Do not** share the `master_key`, `master_seed`, or `master_seed_hex` values anywhere. Any of these can be used to reconstruct the private key associated with this address.
+
+<!-- SPELLING_IGNORE: diceware -->
 
 
 
@@ -137,14 +139,14 @@ On the offline machine, prepare and sign transactions for configuring your accou
 - [Require destination tags](require-destination-tags.html) so that users can't send you payments without tagging the reason they sent it or the customer it's intended for.
 - [Set Up Multi-Signing](set-up-multi-signing.html) for a higher bar of account security.
 - [Enable DepositAuth](depositauth.html) so you can only receive payments you've explicitly accepted or from parties you've pre-approved.
-- [Enable RequireAuth](become-an-xrp-ledger-gateway.html#enabling-requireauth) so that users can't open [trust lines](trust-lines-and-issuing.html) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or issued currency features, you may want to do this as a precaution.
+- [Require Auth](become-an-xrp-ledger-gateway.html#enabling-require-auth) so that users can't open [trust lines](trust-lines-and-issuing.html) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or issued currency features, you may want to do this as a precaution.
 - Issued currency [Gateways](become-an-xrp-ledger-gateway.html) may have additional setup, such as:
-    - [Set a TransferRate](become-an-xrp-ledger-gateway.html#transferrate) for users transferring your issued currencies.
-    - [Disallow XRP payments](become-an-xrp-ledger-gateway.html#disallowxrp) if you plan to use this address for issued currencies only.
+    - [Set a Transfer Fee](become-an-xrp-ledger-gateway.html#transfer-fees) for users transferring your issued currencies.
+    - [Disallow XRP payments](become-an-xrp-ledger-gateway.html#disallow-xrp) if you plan to use this address for issued currencies only.
 
 At this stage, you are only signing the transactions, not submitting them. For each transaction, you must provide all fields, including fields that are normally auto-fillable such as the `Fee` ([transaction cost](transaction-cost.html)) and `Sequence` ([sequence number][]). If you prepare multiple transactions at the same time, you must use sequentially increasing `Sequence` numbers in the order you want the transactions to execute.
 
-Example (enable RequireAuth):
+Example (enable Require Auth):
 
 <!-- MULTICODE_BLOCK_START -->
 

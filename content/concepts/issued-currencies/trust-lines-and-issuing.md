@@ -1,6 +1,6 @@
 # Trust Lines and Issuing
 
-Frequently, [issued currencies](issued-currencies.html) in the XRP Ledger, represent value held by _gateways_ in the world outside the XRP Ledger. The address that issues those funds in the XRP Ledger is expected to pay the balance back, outside of the XRP Ledger, when users redeem their XRP Ledger balances by returning them to the issuer.
+[Issued currencies](issued-currencies.html) in the XRP Ledger often represent value held by _gateways_ in the world outside the XRP Ledger. The address that issues those funds in the XRP Ledger is expected to pay the balance back, outside of the XRP Ledger, when users redeem their XRP Ledger balances by returning them to the issuer.
 
 Since a computer program cannot force a someone to keep a promise in the outside world, trust lines represent a way of configuring how much you trust an issuer to hold on your behalf. Since a large, reputable financial institution is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuer "owe" you in the XRP Ledger. If the issuer defaults or goes out of business, you can lose up to that much money because the balances you hold in the XRP Ledger can no longer be exchanged for equivalent balances elsewhere. (You can still keep or trade the issued currency in the XRP Ledger, but there is probably no longer any reason to consider that issued currency to be worth anything.)
 
@@ -16,7 +16,7 @@ Trust lines are represented in the ledger's state data as [RippleState objects](
 
 A trust line with settings in the default state is equivalent to no trust line.
 
-The default state of all trust line flags is off, except for the [NoRipple flag](rippling.html), whose default state depends on the DefaultRipple flag.
+The default state of all trust line flags is off, except for the [No Ripple flag](rippling.html), whose default state depends on the Default Ripple flag.
 
 ## See Also
 

@@ -45,7 +45,7 @@ A</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 $1
-NoRipple</panel_attributes>
+No Ripple</panel_attributes>
     <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
@@ -82,7 +82,7 @@ B</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 $100
-NoRipple</panel_attributes>
+No Ripple</panel_attributes>
     <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>

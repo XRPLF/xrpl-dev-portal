@@ -70,6 +70,17 @@ An example of a successful response:
 }
 ```
 
+*Commandline*
+
+```json
+{
+   "result" : {
+      "random" : "DB7C23C7F224CD410912E68A997BE0FD0FA7175A4C74B829BE5A80ED0DBAA0C5",
+      "status" : "success"
+   }
+}
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format][], with a successful result containing the following field:

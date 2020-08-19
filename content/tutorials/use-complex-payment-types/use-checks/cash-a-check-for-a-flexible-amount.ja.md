@@ -13,7 +13,7 @@ Checkから可能な限りの額を受領したい場合には、変動金額で
 
 ## 前提条件
 
-{% include '_snippets/checkcash-prereqs.md' %}<!--#{ fix md highlighting_ #}-->
+{% include '_snippets/checkcash-prereqs.ja.md' %}<!--#{ fix md highlighting_ #}-->
 
 ## {{cash_flex_n.next()}}.CheckCashトランザクションの準備
 
@@ -113,7 +113,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ## {{cash_flex_n.next()}}.検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## {{cash_flex_n.next()}}.最終結果の確認
 

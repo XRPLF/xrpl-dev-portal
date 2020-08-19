@@ -31,7 +31,7 @@ Here's an example transaction ready to be multi-signed:
         "Fee": "30000"
     }
 
-(This transaction creates an accounting relationship from rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC to rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh with a maximum balance of 100 USD.)
+(This transaction creates an accounting relationship from `rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC` to `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` with a maximum balance of 100 USD.)
 
 
 ## 2. Get one signature

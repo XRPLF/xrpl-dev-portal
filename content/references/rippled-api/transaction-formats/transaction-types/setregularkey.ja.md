@@ -1,6 +1,6 @@
 # SetRegularKey
 
-[[ソース]<br>](https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")
 
 `SetRegularKey`トランザクションは、アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
 
@@ -10,24 +10,24 @@
 
 ```json
 {
-   "Flags": 0,
-   "TransactionType": "SetRegularKey",
-   "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-   "Fee": "12",
-   "RegularKey": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+    "Flags": 0,
+    "TransactionType": "SetRegularKey",
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Fee": "12",
+    "RegularKey": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
 }
 ```
 
 {% include '_snippets/tx-fields-intro.md' %}
 <!--{# fix md highlighting_ #}-->
 
-| フィールド        | JSONの型 | [内部の型][] | 説明                   |
+| フィールド    | JSONの型  | [内部の型][]       | 説明                          |
 |:-------------|:----------|:------------------|:------------------------------|
-| `RegularKey` | 文字列    | AccountID         | _（省略可）_ アカウントに割り当てるレギュラーキーペアを示すbase-58エンコード[アドレス][]。省略されている場合は、アカウントから既存のレギュラーキーペアが削除されます。 |
+| `RegularKey` | 文字列 | AccountID | _（省略可）_ アカウントに割り当てるレギュラーキーペアを示すbase-58エンコード[アドレス][]。省略されている場合は、アカウントから既存のレギュラーキーペアが削除されます。アドレスのマスターキーペアと一致してはなりません。 |
 
 ## 関連項目
 
-レギュラーキーペアとマスターキーペアの詳細については、[暗号鍵](cryptographic-keys.html)を参照してください。
+レギュラーキーペアとマスターキーペアの詳細は、[暗号鍵](cryptographic-keys.html)を参照してください。
 
 アカウントへのレギュラーキーペアの割り当てについてのチュートリアルは、[レギュラーキーペアの操作](assign-a-regular-key-pair.html)を参照してください。
 

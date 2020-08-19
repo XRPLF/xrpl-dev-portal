@@ -10,7 +10,7 @@ Checkがレジャーに含まれており有効期限切れではない場合は
 
 ## 前提条件
 
-{% include '_snippets/checkcash-prereqs.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/checkcash-prereqs.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## {{cash_exact_n.next()}}.CheckCashトランザクションの準備
 
@@ -52,7 +52,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 ## {{cash_exact_n.next()}}.CheckCashトランザクションの署名
 
-{% include '_snippets/tutorial-sign-step.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/tutorial-sign-step.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ### 要求の例
 
@@ -112,7 +112,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 ## {{cash_exact_n.next()}}.検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## {{cash_exact_n.next()}}.最終結果の確認
 

@@ -4954,19 +4954,19 @@ XRP Ledgerでの**XRP以外の通貨**の額の精度は次のようになりま
 ### アドレス
 [アドレス]: #アドレス
 
-{% include '_snippets/data_types/address.md' %}
+{% include '_snippets/data_types/address.ja.md' %}
 
 
 ### 公開鍵
 [公開鍵]: #公開鍵
 
-{% include '_snippets/data_types/public_key.md' %}
+{% include '_snippets/data_types/public_key.ja.md' %}
 
 
 ### ハッシュ
 [ハッシュ]: #ハッシュ
 
-{% include '_snippets/data_types/hash.md' %}
+{% include '_snippets/data_types/hash.ja.md' %}
 
 
 ### タイムスタンプ
@@ -4989,17 +4989,17 @@ XRP Ledgerでの**XRP以外の通貨**の額の精度は次のようになりま
 ### レジャーインデックス
 [レジャーインデックス]: #レジャーインデックス
 
-{% include '_snippets/data_types/ledger_index.md' %}
+{% include '_snippets/data_types/ledger_index.ja.md' %}
 
 ### アカウントシーケンス
 [シーケンス番号]: #アカウントシーケンス
 
-{% include '_snippets/data_types/account_sequence.md' %}
+{% include '_snippets/data_types/account_sequence.ja.md' %}
 
 ### 通貨コード
 [通貨コード]: #通貨コード
 
-{% include '_snippets/data_types/currency_code.md' %}
+{% include '_snippets/data_types/currency_code.ja.md' %}
 
 ## ページネーション
 

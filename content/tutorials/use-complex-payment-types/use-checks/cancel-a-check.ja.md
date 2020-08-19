@@ -145,7 +145,7 @@ Checkを取り消す例を以下に示します。
 
 ## {{cancel_n.next()}}.検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
 ## {{cancel_n.next()}}.最終結果の確認
 

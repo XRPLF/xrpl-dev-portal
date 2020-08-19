@@ -15,7 +15,7 @@ Generally, any address in the XRP Ledger can send XRP directly to any other addr
 }
 ```
 
-These transaction instructions mean: Send a payment from rf1Bi... to ra5nK... delivering exactly 13 XRP. If the transaction is successfully processed, it does exactly that. Since it usually takes about 4 seconds for each new ledger version to become [validated](consensus.html), a successful transaction can be created, submitted, executed, and have a final outcome in 8 seconds or less, even if gets queued for the ledger version after the current in-progress one.
+These transaction instructions mean: Send a payment from `rf1Bi...` to `ra5nK...` delivering exactly 13 XRP. If the transaction is successfully processed, it does exactly that. Since it usually takes about 4 seconds for each new ledger version to become [validated](consensus.html), a successful transaction can be created, submitted, executed, and have a final outcome in 8 seconds or less, even if gets queued for the ledger version after the current in-progress one.
 
 **Caution:** The [Payment transaction type][Payment] can also be used for some more specialized kinds of payments, including [cross-currency payments](cross-currency-payments.html) and [partial payments](partial-payments.html). In the case of partial payments, it is possible that the `Amount` shows a large amount of XRP even if the transaction only delivered a very small amount. See [partial payments exploit](partial-payments.html#partial-payments-exploit) for how to avoid crediting a customer for the wrong amount.
 
@@ -52,7 +52,7 @@ From a relatively high level, the XRP Ledger's transaction processing engine app
 
 2. It checks whether the receiving address is a funded account.
 
-    - If the receiving address is funded, it checks whether the receiving address has any limitations on receiving payments, such as [DepositAuth](depositauth.html) or [RequireDest](source-and-destination-tags.html#requiring-tags). If the payment does not meet any such limitations, the payment fails.
+    - If the receiving address is funded, it checks whether the receiving address has any limitations on receiving payments, such as [Deposit Authorization](depositauth.html) or [`RequireDest`](source-and-destination-tags.html#requiring-tags). If the payment does not meet any such limitations, the payment fails.
     - If the receiving address is not funded, it checks whether the payment would deliver enough XRP to meet the minimum [account reserve](reserves.html). If not, the payment fails.
 
 3. It debits the sending account by an amount of XRP specified by the `Amount` field plus the XRP to be destroyed for the [transaction cost](transaction-cost.html) and credits the receiving account for the same amount.

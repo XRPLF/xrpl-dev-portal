@@ -51,14 +51,14 @@ An `Offer` object has the following fields:
 
 ## Offer Flags
 
-There are several options which can be either enabled or disabled when an [OfferCreate transaction][] creates an offer object. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with _lsf_.
+There are several options which can be either enabled or disabled when an [OfferCreate transaction][] creates an offer object. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with **`lsf`**.
 
 `Offer` objects can have the following flag values:
 
-| Flag Name | Hex Value | Decimal Value | Description | Corresponding [OfferCreate Flag](offercreate.html#offercreate-flags) |
-|-----------|-----------|---------------|-------------|------------------------|
-| lsfPassive | 0x00010000 | 65536 | The object was placed as a passive offer. This has no effect on the object in the ledger. | tfPassive |
-| lsfSell   | 0x00020000 | 131072 | The object was placed as a sell offer. This has no effect on the object in the ledger (because tfSell only matters if you get a better rate than you asked for, which cannot happen after the object enters the ledger). | tfSell |
+| Flag Name    | Hex Value    | Decimal Value | Corresponding [OfferCreate Flag](offercreate.html#offercreate-flags) | Description |
+|--------------|--------------|---------------|-------------|------------------------|
+| `lsfPassive` | `0x00010000` | 65536         | `tfPassive` | The object was placed as a passive offer. This has no effect on the object in the ledger. |
+| `lsfSell`    | `0x00020000` | 131072        | `tfSell`    | The object was placed as a sell offer. This has no effect on the object in the ledger (because `tfSell` only matters if you get a better rate than you asked for, which cannot happen after the object enters the ledger). |
 
 ## Offer ID Format
 

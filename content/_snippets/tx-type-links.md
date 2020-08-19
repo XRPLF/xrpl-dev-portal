@@ -35,6 +35,7 @@
 
 {% for tx in pstxtypes %}
 [{{tx}}]: {{tx|lower}}.html
-[{{tx}} pseudo-transaction]:  {{tx|lower}}.html
-[{{tx}} pseudo-transactions]:  {{tx|lower}}.html
+[{{tx}} pseudo-transaction]: {{tx|lower}}.html
+[{{tx}} pseudo-transactions]: {{tx|lower}}.html
+[{{tx}}疑似トランザクション]: {{tx|lower}}.html
 {% endfor %}

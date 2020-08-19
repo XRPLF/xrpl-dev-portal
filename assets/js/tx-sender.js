@@ -235,14 +235,14 @@ const set_up_tx_sender = async function() {
     }
     $("#pp_progress .progress-bar").width("20%")
 
-    // 2. Set DefaultRipple on issuer
+    // 2. Set Default Ripple on issuer
     let resp = await submit_and_verify({
       TransactionType: "AccountSet",
       Account: pp_issuer_address,
       SetFlag: 8
     }, pp_issuer_secret, true)
     if (resp === undefined) {
-      console.log("Couldn't set DefaultRipple for partial payment issuer")
+      console.log("Couldn't set Default Ripple for partial payment issuer")
       return
     }
     $("#pp_progress .progress-bar").width("40%")

@@ -48,7 +48,7 @@ Before integrating, exchanges should be aware of the [partial payments](partial-
 
 #### Partial Payments Warning
 
-When the [tfPartialPayment flag](payment.html#payment-flags) is enabled, the `Amount` field **_is not guaranteed to be the amount received_**. The `delivered_amount` field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the Amount field to determine how much your account received instead.
+When the [`tfPartialPayment` flag](payment.html#payment-flags) is enabled, the `Amount` field **_is not guaranteed to be the amount received_**. The `delivered_amount` field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the Amount field to determine how much your account received instead.
 
 **Warning:** Be aware that malicious actors could exploit this. For more information, see [Partial Payments](partial-payments.html).
 
@@ -56,7 +56,7 @@ When the [tfPartialPayment flag](payment.html#payment-flags) is enabled, the `Am
 
 XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are [not easy to delete](accounts.html#deletion-of-accounts). To offset the costs associated with storing accounts, each account must hold a separate [reserve of XRP](reserves.html) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts.
 
-<!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet -->
+<!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy -->
 
 To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](issuing-and-operational-addresses.html) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 
@@ -74,7 +74,7 @@ To follow Ripple's recommended best practices, Alpha Exchange should create at l
 
         * The malicious actor could issue currency in the XRP Ledger by using the cold wallet, but that currency should not be valued by anyone (unless the exchange explicitly stated it was also a gateway).
 
-        * If a malicious actor sets the asfRequireAuth flag for the account, that cannot be unset, although this only relates to issuing currency and should not affect an exchange that is not also a gateway. Any other settings a malicious actor sets or unsets with a master key can be reverted.
+        * If a malicious actor sets the `asfRequireAuth` flag for the account, that cannot be unset, although this only relates to issuing currency and should not affect an exchange that is not also a gateway. Any other settings a malicious actor changes with a master key can be reverted.
 
 * One or more [_hot wallets_](issuing-and-operational-addresses.html#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
 
@@ -119,7 +119,7 @@ XRP Balances</i></b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
     <td></td>
-    <td><b>Acct #</b></td>
+    <td><b>Account #</b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
   </tr>
@@ -235,7 +235,7 @@ XRP Balances</i></b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
     <td></td>
-    <td><b>Acct #</b></td>
+    <td><b>Account #</b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
   </tr>
@@ -306,7 +306,7 @@ A user named Charlie wants to deposit 50,000 XRP to Alpha Exchange. Doing this i
 
 1. Charlie submits a payment of 50,000  XRP (by using [RippleAPI](rippleapi-reference.html) or similar software) to Alpha Exchange's [cold wallet](#accounts).
 
-    a. Charlie adds an identifier (in this case, `789`) to the payment to associate it with his account at Alpha Exchange. This is called a [_destination tag_](become-an-xrp-ledger-gateway.html#source-and-destination-tags). (To use this, Alpha Exchange should have set the asfRequireDest flag on all of its accounts to require all incoming payments to have a destination tag like Charlie's. For more information, see [AccountSet Flags](accountset.html#accountset-flags)).
+    a. Charlie adds an identifier (in this case, `789`) to the payment to associate it with his account at Alpha Exchange. This is called a [_destination tag_](become-an-xrp-ledger-gateway.html#source-and-destination-tags). (To use this, Alpha Exchange should have set the `asfRequireDest` flag on all of its accounts to require all incoming payments to have a destination tag like Charlie's. For more information, see [AccountSet Flags](accountset.html#accountset-flags)).
 
 2. The software at Alpha Exchange detects the incoming payment, and recognizes `789` as the destination tag for Charlie’s account.
 
@@ -329,7 +329,7 @@ XRP Balances</i></b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
     <td></td>
-    <td><b>Acct #</b></td>
+    <td><b>Account #</b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
   </tr>
@@ -428,7 +428,7 @@ Off-Ledger Balances</i></b></td>
     <td></td>
   </tr>
   <tr>
-    <td><b>Acct #</b></td>
+    <td><b>Account #</b></td>
     <td><b>User</b></td>
     <td><b>Balance</b></td>
     <td></td>
@@ -520,7 +520,7 @@ Off-Ledger Balances</td>
     <td><b>User</td>
     <td><b>Balance</td>
     <td></td>
-    <td><b>Acct #</td>
+    <td><b>Account #</td>
     <td><b>User</td>
     <td><b>Balance</td>
     <td></td>

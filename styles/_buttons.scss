@@ -1,0 +1,132 @@
+.content a.button {
+  color: $black;
+  border: 1px solid $gray-300;
+}
+.content a.button:hover {
+  border: 1px solid $black;
+}
+
+.btn-outline-secondary {
+  color: $black;
+  border-color: $gray-300;
+}
+
+#main_content_wrapper .btn-outline-secondary:hover,
+#main_content_wrapper .btn-outline-secondary:active,
+.button:hover, #request_button:hover {
+  /* Undo Bootstrap styling */
+  color: $black;
+  background-color: inherit;
+  border: 1px solid $black;
+}
+
+/* Button styling ----------------------------------------------------------- */
+
+p + .readmore {
+  margin-top: 12px;
+}
+
+.readmore .btn {
+  transition: 0.5s;
+  white-space: normal;
+}
+
+.readmore .btn i,
+.card-header a i {
+  margin: 0 0.2em 0 0.8em;
+}
+
+.btn-primary code,
+.btn-secondary code {
+  color: inherit;
+}
+
+a.button {
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+/* (Jump to) "Top" button */
+
+.jump-to-top {
+  background-color: $gray-700;
+  display: none;
+  position: fixed;
+  bottom: 15px;
+  right: 30px;
+  font-weight: 700;
+  z-index: 1000;
+  color: white;
+}
+@media screen and (max-width: 767px) {
+  .jump-to-top {
+    bottom: 40px;
+    right: 40px;
+  }
+}
+
+.btn-outline-secondary {
+  padding: 9px 16px;
+  transition: box-shadow 200ms ease, background-color 200ms ease, color 200ms ease;
+  background-color: transparent;
+}
+
+.content a.button {
+  /* should match the bootstrap buttons */
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  line-height: 1.5;
+  padding: 9px 16px;
+  transition: 0.5s;
+}
+
+.content a.button::after {
+  content: " ➝";
+  padding-left: 7px;
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.content a.button:hover::after {
+  padding-left: 14px;
+}
+
+.btn:not(.external-link):not(.dropdown-toggle):not(.jump-to-top)::after,
+.landing .card .level-1 a::after,
+.landing .card .level-2 a::after,
+.landing .card .curated-links li a::after,
+.content .children-display li a::after {
+  content: " ➝";
+  padding-left: 7px;
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn.jump-to-top::after {
+  content: " ↑"
+}
+
+.btn:not(.external-link):not(.dropdown-toggle):hover::after,
+.landing .card .level-1 a:hover::after,
+.landing .card .level-2 a:hover::after,
+.landing .card .curated-links li a:hover::after,
+.landing a.card:hover .btn::after,
+.content .children-display li a:hover::after {
+  padding-left: 14px;
+  text-decoration: none;
+}
+
+.btn.fa-search::after,
+.btn.fa-search:hover::after,
+.request-options .btn::after,
+.request-options .btn:hover::after,
+.response-options .btn::after,
+.response-options .btn:hover::after {
+  content: "";
+  padding: 0;
+}

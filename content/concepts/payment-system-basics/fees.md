@@ -1,6 +1,6 @@
 # Fees (Disambiguation)
 
-The XRP Ledger is a decentralized ledger, secured by cryptography and operated by a distributed peer-to-peer network of servers. This means that no one party, not even Ripple, can require a fee for access to the network.
+The XRP Ledger is a decentralized ledger, secured by cryptography and powered by a distributed peer-to-peer network of servers. This means that no one party, not even Ripple, can require a fee for access to the network.
 
 However, the rules of the XRP Ledger include several types of fees, including neutral fees which protect the ledger against abuse. These neutral fees are not paid to anyone. There are also several optional ways that users can collect fees from each other, both inside and outside the XRP Ledger.
 

@@ -1,0 +1,248 @@
+.landing section,
+.xrpl-footer .card-grid,
+#main_content_wrapper {
+  border-bottom: 1px solid $black;
+}
+
+
+.landing section:last-of-type {
+  border-bottom: none;
+}
+
+/* main content area ----------------------------------- */
+.sidebar-primary .main {
+  border-left: 1px solid $gray-200;
+  border-right: 1px solid $gray-200;
+}
+
+// Card Grid styles ------------------------------------------------------------
+
+.card-grid {
+  display: grid;
+  gap: 1px;
+  background-color: $gray-200;
+  padding: 0;
+
+  &.card-grid-2x2 {
+    /* left half is a hero area; right half is a 2x2 grid. */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+
+    .section-hero {
+      grid-row-end: span 2;
+    }
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, auto);
+    }
+  }
+
+  &.card-grid-2x1 {
+    /* left half is a hero area; right half is a 2x1 grid. */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    .section-hero {
+      grid-row-end: span 1;
+    }
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &.card-grid-2x4 {
+    /* left half is a hero area; right half is a 2x4 grid. Total grid is 4x4 */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+
+    .section-hero {
+      grid-row-end: span 4;
+    }
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, auto);
+
+      .section-hero {
+        grid-row-end: span 1;
+      }
+    }
+  }
+
+  &.card-grid-4xN {
+    /* 4 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.card-grid-3xN {
+    /* 3 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.card-grid-Nx1 {
+    /* 1 row of equal sized columns */
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    grid-template-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    padding: 40px;
+    border: 0;
+
+    @include media-breakpoint-down(md) {
+      padding: 20px;
+    }
+  }
+}
+
+/* Grid Box Vertical numbers ------------------------------------------------ */
+.flag-vertical {
+  color: $gray-200;
+  position: absolute;
+  top: 2em;
+  right: 3em;
+  width: 20px;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+  font-size: 0.833em;
+  letter-spacing: 2px;
+}
+
+// Misc. layout styles ---------------------------------------------------------
+.xrp-ledger-dev-portal.sidebar-primary .main {
+  z-index: 5;
+  padding: 44px 24px 48px;
+  min-height: 700px;
+}
+
+.row {
+  margin: 0 -1px;
+}
+
+
+.doc-index {
+  padding: 48px 0;
+}
+
+@media (max-width: 991px) {
+  .landing .card-grid .card,
+  .landing .card-grid .card-body,
+  .landing .card-grid .card-header {
+    padding-left: 0;
+  }
+  .landing .doc-index {
+    padding-left: 0;
+  }
+}
+
+/* Responsive design for different viewscreens ------------------------------ */
+
+@media (max-width: 991px) {
+
+  #main_content_wrapper {
+    padding: 0 24px;
+  }
+  .navbar-brand img {
+    width: 120px;
+  }
+  .landing section:first-of-type h1:first-child {
+    font-size: 3em;
+    font-weight: 400;
+  }
+  .section-hero .blurb {
+    font-size: 0.95em;
+  }
+
+  .sidebar-primary .main {
+    border-left: none;
+    border-right: none;
+  }
+
+  .right-sidebar .card {
+    padding-left: 0;
+  }
+
+  #main_content_body {
+    padding: 0;
+    border: none;
+  }
+  #main_content_body .container-fluid {
+    padding-left: 0;
+  }
+
+  .xrpl-footer {
+    margin: 0 24px;
+  }
+
+  #page-toc-wrapper {
+    position: static;
+    display: block;
+    clear: both;
+    overflow-y: inherit;
+    max-width: 100%;
+    max-height: inherit;
+    word-break: break-all;
+  }
+  .main {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+}
+@media (max-width: 480px) {
+  html {
+    overflow-x: hidden !important;
+  }
+}
+@media (max-width: 400px) {
+  .navbar .navbar-brand .brand-text {
+    margin-right: 0;
+    letter-spacing: -0.08rem;
+  }
+  .navbar .navbar-brand {
+    margin-right: 0;
+  }
+  .navbar .navbar-brand .logo {
+    margin-right: 0;
+    margin-left: -1rem;
+  }
+
+  .btn {
+    white-space: normal;
+  }
+}

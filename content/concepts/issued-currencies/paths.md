@@ -13,7 +13,7 @@ A path is made of steps that connect the sender to the receiver of the payment. 
 * Rippling through another address with the same currency
 * Exchanging currency at an order book
 
-Rippling through another address is the process of moving debt around. In the typical case, this involves reducing an issuer's obligation to one party and increasing the obligation to another party. Rippling can occur between any addresses that are connected by trust lines. See [Understanding the NoRipple Flag](rippling.html) for more examples of rippling.
+Rippling through another address is the process of moving debt around. In the typical case, this involves reducing an issuer's obligation to one party and increasing the obligation to another party. Rippling can occur between any addresses that are connected by trust lines. See [Understanding the No Ripple Flag](rippling.html) for more examples of rippling.
 
 In the case of a currency exchange step, the path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available Offers at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
 
@@ -42,7 +42,7 @@ By convention, several steps of a path are implied by the [fields of the Payment
 
 * The first step of a path is always implied to be the sender of the transaction, as defined by the transaction's `Account` field.
 * If the transaction includes a `SendMax` field with an `issuer` that is not the sender of the transaction, that issuer is implied to be the second step of the path.
-    * If `issuer` of the `SendMax` _is_ the sending address, then the path starts at the sending address, and may use any of that address's trust lines in the given currency. See [special values for SendMax and Amount](payment.html#special-issuer-values-for-sendmax-and-amount) for details.
+    * If `issuer` of the `SendMax` _is_ the sending address, then the path starts at the sending address, and may use any of that address's trust lines in the given currency. See [special values for `SendMax` and `Amount`](payment.html#special-issuer-values-for-sendmax-and-amount) for details.
 * If the `Amount` field of the transaction includes an `issuer` that is not the same as the `Destination` of the transaction, that issuer is implied to be the second-to-last step of the path.
 * Finally, last step of a path is always implied to be the receiver of a transaction, as defined by the transaction's `Destination` field.
 
@@ -89,9 +89,9 @@ The `type` field, used for the binary serialization of a path set, is actually c
 
 | Value (Hex) | Value (Decimal) | Description |
 |-------------|-----------------|-------------|
-| 0x01        | 1               | A change of address (rippling): the `account` field is present. |
-| 0x10        | 16              | A change of currency: the `currency` field is present. |
-| 0x20        | 32              | A change of issuer: the `issuer` field is present. |
+| `0x01`      | 1               | A change of address (rippling): the `account` field is present. |
+| `0x10`      | 16              | A change of currency: the `currency` field is present. |
+| `0x20`      | 32              | A change of issuer: the `issuer` field is present. |
 
 
 ## See Also

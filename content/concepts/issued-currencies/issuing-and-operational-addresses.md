@@ -9,9 +9,9 @@ All non-XRP balances in the XRP Ledger are _issued currencies_ which are tied to
 
 [![Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.](img/funds_flow_diagram.png)](img/funds_flow_diagram.png)
 
-When the issuing address sends payments, it creates balances in the accounting relationships in the XRP Ledger. Within the XRP Ledger, users can exchange balances across different accounting relationships, so we use the term _issuances_ to describe any non-XRP balance. Issuances have negative value from the perspective of the issuing address, since they represent obligations. The same issuances have positive value from the perspective of the issuing address's counterparties. When the issuing address receives a payment, this reduces its obligations, erasing the issuances that were sent.
+When the issuing address sends payments, it creates balances in the accounting relationships in the XRP Ledger. Within the XRP Ledger, users can exchange balances across different accounting relationships, so we use the term _issued currency_ to describe any non-XRP balance. (These can represent any type of value, not only "currencies" in the traditional sense.) Issued currencies have negative value from the perspective of the issuing address, since they represent obligations. The same issued currencies have positive value from the perspective of the issuing address's counterparties. When the issuing address receives a payment, this reduces its obligations, erasing the issued currencies that were sent.
 
-The issuing address sends issuances to a standby address, or directly to an operational address. The standby addresses send those issuances to operational addresses. Operational addresses send payments to other counterparties, such as liquidity providers, partners, and other customers. Because all issuances are tied to accounting relationships with the issuing address, payments and exchanges of issuances "ripple through" the issuing address. The payment debits the sender's balance in its accounting relationship with the issuing address and credits the recipient's balance in the recipient's accounting relationship with the issuing address. The XRP Ledger also supports more complicated [paths](paths.html) that connect multiple issuers through order books and [liquidity providers who allow their funds to ripple](rippling.html).
+The issuing address sends issued currencies to a standby address, or directly to an operational address. The standby addresses send those issued currencies to operational addresses. Operational addresses send payments to other counterparties, such as liquidity providers, partners, and other customers. Because all issued currencies are tied to accounting relationships with the issuing address, payments and exchanges of issued currencies "ripple through" the issuing address. The payment debits the sender's balance in its accounting relationship with the issuing address and credits the recipient's balance in the recipient's accounting relationship with the issuing address. The XRP Ledger also supports more complicated [paths](paths.html) that connect multiple issuers through order books and [liquidity providers who allow their funds to ripple](rippling.html).
 
 ## Issuing Address
 
@@ -21,7 +21,7 @@ Unlike a vault, the issuing address can receive payments directly from customers
 
 ### Issuing Address Compromise
 
-If a malicious actor learns the secret key behind a institution's issuing address, that actor can create new issuances without limit and trade them in the decentralized exchange. This would make it difficult for the financial institution to distinguish legitimately-obtained issuances and redeem them fairly. If a financial institution loses control of its issuing address, the institution must create a new issuing address, and all users who have accounting relationships with the old issuing address must create new accounting relationships with the new address.
+If a malicious actor learns the secret key behind a institution's issuing address, that actor can create new issued currencies without limit and trade them in the decentralized exchange. This would make it difficult for the financial institution to distinguish legitimately-obtained issued currencies and redeem them fairly. If a financial institution loses control of its issuing address, the institution must create a new issuing address, and all users who have accounting relationships with the old issuing address must create new accounting relationships with the new address.
 
 ### Multiple Issuing Addresses
 
@@ -30,9 +30,9 @@ A financial institution can issue more than one currency in the XRP Ledger from 
 
 ## Operational Addresses
 
-An operational address is like a cash register. It makes payments on behalf of the institution by transferring issuances to customers and partners. To sign transactions automatically, the secret key for an operational address must be stored on a server that is connected to the internet. (The secret key can be stored encrypted, but the server must decrypt it to sign transactions.) Customers and partners do not, and should not, create accounting relationships with an operational address.
+An operational address is like a cash register. It makes payments on behalf of the institution by transferring issued currencies to customers and partners. To sign transactions automatically, the secret key for an operational address must be stored on a server that is connected to the internet. (The secret key can be stored encrypted, but the server must decrypt it to sign transactions.) Customers and partners do not, and should not, create accounting relationships with an operational address.
 
-Each operational address has a limited balance of issuances. When the balance of an operational address gets low, the financial institution refills it by sending a payment from the issuing address or a standby address.
+Each operational address has a limited balance of issued currencies. When the balance of an operational address gets low, the financial institution refills it by sending a payment from the issuing address or a standby address.
 
 ### Operational Address Compromise
 

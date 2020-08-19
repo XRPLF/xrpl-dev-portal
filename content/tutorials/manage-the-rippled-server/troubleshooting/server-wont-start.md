@@ -209,6 +209,7 @@ To fix this problem, do one of the following, then restart the server:
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
 
+<!-- SPELLING_IGNORE: cfg, node_size -->
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}

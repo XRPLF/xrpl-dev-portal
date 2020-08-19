@@ -150,7 +150,7 @@ As a server administrator, you can manage the reservations your server has for o
 - Remove one of your reservations using the [peer_reservations_del method][].
 - Check which peers are currently connected and how much bandwidth they have used, using the [peers method][].
 
-**Tip:** Although there is no API method to immediately disconnect from an unwanted peer, you can use a software firewall such as `firewalld` to block an unwanted peer from connecting to your server. For examples, see the community-contributed [rbh script](https://github.com/gnanderson/rbh).
+**Tip:** Although there is no API method to immediately disconnect from an unwanted peer, you can use a software firewall such as `firewalld` to block an unwanted peer from connecting to your server. For examples, see the community-contributed [rbh script](https://github.com/gnanderson/rbh). <!-- SPELLING_IGNORE: rbh -->
 
 
 ## See Also

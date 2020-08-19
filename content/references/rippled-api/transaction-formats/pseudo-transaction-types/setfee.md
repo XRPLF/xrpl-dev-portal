@@ -21,13 +21,13 @@ A change in [transaction cost](transaction-cost.html) or [account reserve](reser
   }
 ```
 
-| Field             | JSON Type        | [Internal Type][] | Description       |
-|:------------------|:-----------------|:------------------|:------------------|
-| BaseFee           | String           | UInt64            | The charge, in drops of XRP, for the reference transaction, as hex. (This is the [transaction cost](transaction-cost.html) before scaling for load.) |
-| ReferenceFeeUnits | Unsigned Integer | UInt32            | The cost, in fee units, of the reference transaction |
-| ReserveBase       | Unsigned Integer | UInt32            | The base reserve, in drops |
-| ReserveIncrement  | Unsigned Integer | UInt32            | The incremental reserve, in drops |
-| LedgerSequence    | Number           | UInt32            | _(Omitted for some historical `SetFee` pseudo-transactions)_ The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
+| Field               | JSON Type        | [Internal Type][] | Description     |
+|:--------------------|:-----------------|:------------------|:----------------|
+| `BaseFee`           | String           | UInt64            | The charge, in drops of XRP, for the reference transaction, as hex. (This is the [transaction cost](transaction-cost.html) before scaling for load.) |
+| `ReferenceFeeUnits` | Unsigned Integer | UInt32            | The cost, in fee units, of the reference transaction |
+| `ReserveBase`       | Unsigned Integer | UInt32            | The base reserve, in drops |
+| `ReserveIncrement`  | Unsigned Integer | UInt32            | The incremental reserve, in drops |
+| `LedgerSequence`    | Number           | UInt32            | _(Omitted for some historical `SetFee` pseudo-transactions)_ The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 {% include '_snippets/setfee_uniqueness_note.md' %}
 

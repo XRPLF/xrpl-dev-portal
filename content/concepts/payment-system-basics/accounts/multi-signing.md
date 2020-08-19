@@ -19,7 +19,7 @@ The [SignerListSet transaction][] defines which addresses can authorize transact
 
 To successfully submit a multi-signed transaction, you must do all of the following:
 
-* The address sending the transaction (specified in the `Account` field) must own a [`SignerList` in the ledger](signerlist.html).
+* The address sending the transaction (specified in the `Account` field) must have a [signer list in the ledger](signerlist.html). For instructions on how to do this, see [Set Up Multi-Signing](set-up-multi-signing.html).
 * The transaction must include the `SigningPubKey` field as an empty string.
 * The transaction must include a [`Signers` field](transaction-common-fields.html#signers-field) containing an array of signatures.
 * The signatures present in the `Signers` array must match signers defined in the SignerList.

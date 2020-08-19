@@ -1,0 +1,259 @@
+/* Left/right nav color scheme ------------------------------- */
+aside li a {
+  color: $gray-600;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+aside .sidenav_cat_title {
+  color: $black;
+}
+aside a:hover,
+aside .sidenav_cat_title:hover {
+  color: $primary;
+}
+
+aside a.active,
+aside a.active:hover {
+  color: $primary;
+  font-weight: 700;
+}
+aside a.active-parent {
+  color: $gray-700;
+  font-weight: 700;
+}
+
+.sidebar_pagelist {
+  border-left: 1px solid $gray-200;
+}
+.sidebar_pagelist a,
+.right-sidebar li a {
+  display: block;
+  margin-top: 5px;
+  margin-left: -17px;
+  padding: 4px 15px 4px 35px;
+  text-indent: -20px;
+  font-size: 0.9rem;
+}
+.sidebar_pagelist a:hover {
+  padding-left: 34px;
+  border-left: 1px solid $primary;
+}
+.sidebar_pagelist .active,
+.sidebar_pagelist .active:hover {
+  padding-left: 33px;
+  border-left: 2px solid $primary;
+}
+.sidebar_pagelist .subpage {
+  margin-left: 0;
+  margin-top: 0;
+  padding-left: 35px;
+  border-left: 1px solid $gray-200;
+}
+.sidebar_pagelist .subpage:hover {
+  padding-left: 35px;
+  border-left: 1px solid $primary;
+}
+.sidebar_pagelist .active.subpage,
+.sidebar_pagelist .active.subpage:hover {
+  padding-left: 33px;
+  border-left: 2px solid $primary;
+}
+.sidebar_pagelist li a .fa {
+  display: inline;
+}
+
+.sidenav_cat_toggler {
+  background-color: $gray-600;
+}
+.sidenav_cat_toggler:hover {
+  background-color: $primary;
+}
+
+.right-sidebar .card-body {
+  border-left: 1px solid $gray-200;
+}
+
+.sidenav_parent a {
+  color: $black;
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 15px 16px 15px 10px;
+}
+
+.right-sidebar .level-1 a {
+  color: $black;
+}
+
+.right-sidebar .level-3 {
+  padding-left: 16px;
+  border-left: 1px solid $gray-200;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+}
+
+.right-sidebar .level-3 a {
+  margin-top: 0;
+  padding-bottom: 5px;
+}
+
+.right-sidebar li a:hover {
+  text-decoration: none;
+  border-left: 1px solid $primary;
+  padding-left: 34px;
+}
+
+/* Left navigation ---------------------------------------------------------- */
+
+.tree_nav {
+  top: 48px;
+  padding: 44px 24px 48px 0;
+  background-color: white;
+}
+
+.sidebar_pagelist {
+  margin-bottom: 12px;
+  margin-left: 24px;
+  padding-left: 16px;
+  list-style-type: none;
+}
+
+#sidenav a,
+.sidenav_parent a {
+  text-decoration: none;
+  line-height: 24px;
+}
+#sidenav a.active-parent {
+  font-weight: 700;
+}
+#sidenav a:hover,
+.sidenav_parent a:hover {
+  text-decoration: none;
+}
+
+#sidenav .card + .card {
+  margin: 0;
+}
+
+#sidenav .card {
+  border-width: 0;
+}
+
+#sidenav .card-body {
+  padding: 0;
+  padding-left: 15px;
+}
+
+#sidenav .card-body-single {
+  margin-left: -25px;
+}
+
+#sidenav .collapse {
+  padding-bottom: 0;
+}
+
+#sidenav .card-header {
+  padding: 0;
+  background-color: transparent;
+  border-bottom: 0;
+}
+
+#sidenav .card {
+  padding: 0;
+  border-radius: 0;
+}
+
+#sidenav .card:only-child {
+  border-top: 0;
+  background: none;
+}
+
+#sidenav .card-header h5 {
+  margin-bottom: 0;
+  text-transform: none;
+  font-size: 1.05rem;
+}
+
+#sidenav .card-header h5 .sidenav_cat_title {
+  display: block;
+  padding: 11px 10px 11px 40px;
+}
+
+#sidenav .card-header .sidenav_cat_toggler {
+  position: absolute;
+  left: 0;
+  padding: 10px 12px 12px 12px;
+  line-height: 0;
+
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  transition-duration: 0.3s;
+}
+
+#sidenav .card-header .sidenav_cat_toggler {
+  width: 24px;
+  height: 24px;
+  display: block;
+  -webkit-mask-image: url(../img/icon-arrow.svg);
+  mask-image: url(../img/icon-arrow.svg);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 24px 24px;
+  mask-size: 24px 24px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  border: 12px solid transparent;
+}
+
+#sidenav .card-header .sidenav_cat_toggler.collapsed {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition-duration: 0.3s;
+}
+
+/* Right navigation --------------------------------------------------------- */
+
+.right-sidebar .card {
+  position: sticky;
+  max-height: 85vh;
+  top: 48px;
+  overflow: auto;
+  padding: 44px 0 48px 24px;
+  border: none;
+}
+
+.right-sidebar .card-header {
+  border-bottom: none;
+  background-color: white;
+  padding: 10px 0;
+}
+
+.right-sidebar .card-header h4 {
+  line-height: 20px;
+  font-size: 1.2em;
+  padding: 0;
+  margin: 0;
+}
+
+.right-sidebar .card-body {
+  padding: 0 0 0 16px;
+  list-style-type: none;
+}
+
+.right-sidebar ul li {
+  list-style-type: none;
+  margin-bottom: 8px;
+  margin-left: 0;
+}
+
+.right-sidebar .level-1 a,
+.right-sidebar .separator {
+  font-weight: 700;
+  font-family: "Space Mono", monospace;
+}
+.right-sidebar .level-2,
+.right-sidebar .method {
+  margin-left: 0;
+}

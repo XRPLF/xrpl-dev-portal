@@ -1,4 +1,5 @@
 # tef Codes
+<!-- SPELLING_IGNORE: tef -->
 
 These codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger. Typically this means that the transaction can no longer succeed in any future ledger. They have numerical values in the range -199 to -100. The exact code for any given error is subject to change, so don't rely on it.
 
@@ -20,7 +21,7 @@ These codes indicate that the transaction failed and was not included in a ledge
 | `tefINVARIANT_FAILED`   | An invariant check failed when trying to claim the [transaction cost](transaction-cost.html). Added by the [EnforceInvariants amendment][]. If you can reproduce this error, please [report an issue](https://github.com/ripple/rippled/issues). |
 | `tefMASTER_DISABLED`    | The transaction was signed with the account's master key, but the account has the `lsfDisableMaster` field set. |
 | `tefMAX_LEDGER`         | The transaction included a [`LastLedgerSequence`](reliable-transaction-submission.html#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
-| `tefNO_AUTH_REQUIRED`  | The [TrustSet transaction][] tried to mark a trustline as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
+| `tefNO_AUTH_REQUIRED`  | The [TrustSet transaction][] tried to mark a trust line as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
 | `tefNOT_MULTI_SIGNING` | The transaction was [multi-signed](multi-signing.html), but the sending account has no SignerList defined. |
 | `tefPAST_SEQ`           | The sequence number of the transaction is lower than the current sequence number of the account sending the transaction. |
 | `tefTOO_BIG`            | The transaction would affect too many objects in the ledger. For example, this was an [AccountDelete transaction][] but the account to be deleted owns over 1000 objects in the ledger. |

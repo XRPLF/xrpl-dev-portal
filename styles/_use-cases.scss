@@ -1,0 +1,75 @@
+/* Use Cases ---------------------------------------------------------------- */
+.related-tasks-links a {
+  color: $gray-600;
+  text-decoration: none;
+}
+.related-tasks-links a:hover {
+  color: $black;
+}
+.use-case-external-link {
+  border: 1px solid $gray-300;
+}
+
+.content .use-case-external-link a {
+  text-decoration: none;
+  color: $black;
+}
+
+.use-case-step-num {
+  margin-top: 64px;
+  margin-bottom: 24px;
+  color: #eae7e6;
+  font-size: 5.16em;
+  font-weight: 400;
+  font-family: 'Space Mono', sans-serif;
+}
+
+.use-case-step-length {
+  float: right;
+  color: #888;
+  font-size: 1rem;
+}
+
+.use-case-steps h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.728em;
+  line-height: 32px;
+  font-weight: 700;
+}
+.use-case-steps h2 a {
+  text-decoration: none;
+}
+
+.use-case-steps h2:first-of-type:before {
+  display: none;
+}
+
+.use-case h1 {
+  font-size: 2.4em;
+  padding-bottom: 10px;
+}
+.use-case-steps h2:before {
+  margin-top: -30px;
+  height: 0;
+}
+.use-case-steps h2:first-of-type {
+  margin-top: -30px;
+}
+
+.related-tasks-links ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.related-tasks-links ul li {
+  margin: 0px;
+  padding-top: 2px;
+}
+.related-tasks-links a:hover::after {
+  padding-left: .5em;
+}
+.related-tasks-links a::after {
+  content: " ➝";
+  padding-left: 0;
+  transition: all .2s ease-in-out;
+}

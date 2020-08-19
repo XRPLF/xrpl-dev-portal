@@ -20,6 +20,8 @@ Before you configure your `rippled` server to store history shards, you must dec
 
 ## 2. Edit rippled.cfg
 
+<!-- SPELLING_IGNORE: cfg -->
+
 Edit your `rippled.cfg` file to add a `[shard_db]` stanza.
 
 {% include '_snippets/conf-file-location.md' %}<!--_ -->

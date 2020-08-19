@@ -18,14 +18,12 @@ A wallet server does all of the following:
 
 For more information, see [Install `rippled`](install-rippled.html).
 
-<!--{TODO: Include instructions on how to enable GRPC once rippled v 1.5.0 is released}-->
-
 ## 2. Enable validation on your wallet server
 
 For more information, see [Enable validation on your `rippled` server](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).
 
-**Warning:** Validators should not be accessible to the public. Do not allow public websockets access to your wallet server or any other form of public access. 
-     
+**Warning:** Validators should not be accessible to the public. Do not allow public WebSocket access to your wallet server or any other form of public access.
+
 ## 3. Provide domain verification
 
 For more information, see [Provide domain verification](run-rippled-as-a-validator.html#6-provide-domain-verification).

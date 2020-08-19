@@ -99,7 +99,7 @@ The `rippled` executable returns the following message if it wasn't able to conn
 
 This generally indicates one of several problems:
 
-- The `rippled` server is just starting up, or is not running at all. Check the status of the service; if it is running, wait a few seconds and try again.
+- The `rippled` server is starting up, or is not running at all. Check the status of the service; if it is running, wait a few seconds and try again.
 - You may need to pass different [parameters to the `rippled` commandline client](commandline-usage.html#client-mode-options) to connect to your server.
 - The `rippled` server may be configured not to accept JSON-RPC connections.
 
@@ -138,7 +138,7 @@ To use the script:
           should verify before posting.
         ####################################################
 
-    The script collects the output of numerous commands and writes them to a temporary file. The filename is randomized with a string of letters and numbers (case-sensitive), for example: `/tmp/ripple_info.Xo8Xr/rippled_info.md`
+    The script collects the output of many commands and writes them to a temporary file. The filename is randomized with a string of letters and numbers (case-sensitive), for example: `/tmp/ripple_info.Xo8Xr/rippled_info.md`
 
 
 2. Look over the output file for sensitive information.
@@ -149,7 +149,7 @@ To use the script:
 
 3. Upload the output file where others can see it.
 
-    You can upload the file directly to [GitHub Gist](https://gist.github.com/), [Pastebin](https://pastebin.com/), or a similar service. If you are running `rippled` on a remote server, you may find it easier to first transfer the file to a machine with a web browser, using `scp` or a similar tool.
+    You can upload the file directly to [GitHub Gist](https://gist.github.com/), [Pastebin](https://pastebin.com/), or a similar service. If you are running `rippled` on a remote server, you may find it easier to first transfer the file to a machine with a web browser, using `scp` or a similar tool. <!-- SPELLING_IGNORE: pastebin -->
 
 
 ## See Also

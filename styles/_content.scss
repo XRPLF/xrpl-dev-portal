@@ -1,0 +1,126 @@
+/* Site-wide header link styles --------------------------------------------- */
+h1 a,
+h2 a,
+h3 a {
+  color: $black;
+  text-decoration: none;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+.xrpl-footer h5 a:hover {
+  color: $black;
+}
+
+.header-link:hover {
+  //TODO: this class may not do anything useful?
+  color: $black;
+}
+
+/* Content text styling ----------------------------------------------------- */
+
+.content {
+  padding-bottom: 50px;
+}
+
+/* Images should not exceed the main column */
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* But badge images shouldn't be resized */
+.content img.dactyl_badge {
+    width: initial;
+}
+
+.content a,
+.blurb a {
+  text-decoration: underline;
+}
+
+
+.content h1 {
+  margin-top: 32px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+.content h1:first-child,
+.landing section:first-of-type h1:first-child {
+  margin-top: 0;
+  line-height: 1.2;
+}
+.content h1:first-child:before {
+  margin-top: -80px;
+}
+.content h2 {
+  margin-top: 72px;
+  margin-bottom: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.content h3 {
+  margin-top: 24px;
+  line-height: 1.2;
+}
+.content h4 {
+  margin-top: 20px;
+  line-height: 1.2;
+}
+.content h5 {
+  margin-top: 16px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.content h6 {
+  margin-top: 12px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* Some list items contain <p> tags, some don't. These styles make sure both
+   kinds are spaced consistently. */
+.content li {
+  margin: 6px;
+  margin-top: 24px;
+}
+.content li p {
+  margin: 0;
+}
+
+/* "Source" links float right */
+.content a[title="Source"] {
+  float: right;
+  padding-left: 20px;
+}
+
+
+
+/* Tables ------------------------------- */
+
+.content table {
+  clear: right;
+  margin-bottom: 48px;
+}
+
+.content table code {
+  word-break: normal;
+  white-space: nowrap;
+}
+
+th {
+  border-bottom: 1px solid $black;
+}
+tr {
+  border-bottom: 1px solid $gray-200;
+}
+
+th, td {
+  padding: 0.2em;
+  vertical-align: text-top;
+  padding: 12px;
+}
+
+td:nth-child(1) {
+  font-weight: bold;
+}

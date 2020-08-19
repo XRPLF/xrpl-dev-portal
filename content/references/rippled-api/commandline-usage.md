@@ -46,7 +46,7 @@ Daemon mode is the default mode of operation for `rippled`. In addition to the [
 | `--import`          | Before fully starting, import ledger data from another `rippled` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
 | `--net`             | **DEPRECATED** Intended for debugging: do not build a local ledger until one can be obtained from the network. |
 | `--nodetoshard`     | Before fully starting, copy any complete [history shards](history-sharding.html) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
-| `--quorum {QUORUM}` | This option is intended for bootstrapping [test networks](parallel-networks.html). Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
+| `--quorum {QUORUM}` | This option is intended for starting [test networks](parallel-networks.html). Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
 | `--validateShards` | Check that the data in the shard store is valid and consistent with the network history. For more information on the shard store, see [History Sharding](history-sharding.html). |
 
 ## Stand-Alone Mode Options
@@ -59,7 +59,7 @@ Run in [stand-alone mode](rippled-server-modes.html). In this mode, `rippled` do
 
 ### Initial Ledger Options
 
-The following options determine which ledger to load first when starting up. These options are intended for replaying historical ledgers or bootstrapping test networks.
+The following options determine which ledger to load first when starting up. These options are intended for replaying historical ledgers or starting test networks.
 
 | Option                | Description                                          |
 |:----------------------|:-----------------------------------------------------|

@@ -51,9 +51,9 @@ Take note of the `account_id` (XRP Ledger Address) and `master_seed` (secret key
 
 ## 3. Send SignerListSet transaction
 
-[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) a [SignerListSet transaction][] in the normal (single-signature) way. This associates a SignerList with your XRP Ledger address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.
+[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) a [SignerListSet transaction][] in the normal (single-signature) way. This associates a signer list with your XRP Ledger address, so that a combination of signatures from the members of that signer list can multi-sign later transactions on your behalf.
 
-In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.
+In this example, the signer list has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW` plus at least one signature from the other two members of the list.
 
 {% include '_snippets/secret-key-warning.md' %}
 <!--{#_ #}-->
@@ -128,9 +128,9 @@ In this example, the SignerList has 3 members, with the weights and quorum set u
        }
     }
 
-Make sure that the [Transaction Result](transaction-results.html) is [**tesSUCCESS**](tes-success.html). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](start-a-new-genesis-ledger-in-stand-alone-mode.html#settings-in-new-genesis-ledgers).
+Make sure that the [Transaction Result](transaction-results.html) is [**`tesSUCCESS`**](tes-success.html). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](start-a-new-genesis-ledger-in-stand-alone-mode.html#settings-in-new-genesis-ledgers).
 
-**Note:** Without the [MultiSignReserve amendment][], the more members in the SignerList, the more XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [tecINSUFFICIENT_RESERVE](tec-codes.html). With the [MultiSignReserve amendment][] enabled, the XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves) is 5 XRP, regardless of the number of members in the SignerList. See also: [SignerLists and Reserves](signerlist.html#signerlists-and-reserves).
+**Note:** Without the [MultiSignReserve amendment][], the more members in the signer list, the more XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves). If your address does not have enough XRP, the transaction fails with [`tecINSUFFICIENT_RESERVE`](tec-codes.html). With the [MultiSignReserve amendment][] enabled, the XRP your address must have for purposes of the [owner reserve](reserves.html#owner-reserves) is 5 XRP, regardless of the number of members in the signer list. See also: [Signer Lists and Reserves](signerlist.html#signer-lists-and-reserves).
 
 
 ## 4. Wait for validation
@@ -140,9 +140,9 @@ Make sure that the [Transaction Result](transaction-results.html) is [**tesSUCCE
 
 ## 5. Confirm the new signer list
 
-Use the [account_objects method][] to confirm that the SignerList is associated with the address in the latest validated ledger.
+Use the [account_objects method][] to confirm that the signer list is associated with the address in the latest validated ledger.
 
-Normally, an account can own many objects of different types (such as trust lines and offers). If you funded a new address for this tutorial, the SignerList is the only object in the response.
+Normally, an account can own many objects of different types (such as trust lines and offers). If you funded a new address for this tutorial, the signer list is the only object in the response.
 
     $ rippled account_objects rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC validated
     Loading: "/etc/opt/ripple/rippled.cfg"
@@ -189,7 +189,7 @@ Normally, an account can own many objects of different types (such as trust line
        }
     }
 
-If the SignerList is present with the expected contents, then your address is ready to multi-sign.
+If the signer list is present with the expected contents, then your address is ready to multi-sign.
 
 ## 6. Further steps
 
