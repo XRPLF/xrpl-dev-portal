@@ -1,6 +1,6 @@
 # Install on Ubuntu or Debian Linux
 
-This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 16.04 or higher** or **Debian 9 (Stretch)**, using the [`apt`](https://help.ubuntu.com/lts/serverguide/apt.html) utility.
+This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 16.04 or higher** or **Debian 9 or higher**, using the [`apt`](https://help.ubuntu.com/lts/serverguide/apt.html) utility.
 
 These instructions install a binary that has been compiled by Ripple.
 
@@ -40,13 +40,15 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 4. Add the appropriate Ripple repository for your operating system version:
 
-        $ echo "deb https://repos.ripple.com/repos/rippled-deb bionic stable" | \
+        $ echo "deb https://repos.ripple.com/repos/rippled-deb focal stable" | \
             sudo tee -a /etc/apt/sources.list.d/ripple.list
 
-    The above example is appropriate for **Ubuntu 18.04 Bionic Beaver**. For other operating systems, replace the word `bionic` with one of the following:
+    The above example is appropriate for **Ubuntu 20.04 Focal Fossa**. For other operating systems, replace the word `focal` with one of the following:
 
+    - `bionic` for **Ubuntu 18.04 Bionic Beaver**
     - `xenial` for **Ubuntu 16.04 Xenial Xerus** <!-- SPELLING_IGNORE: xenial, xerus -->
     - `stretch` for **Debian 9 Stretch**
+    - `buster` for **Debian 10 Buster**
 
     If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:
 
