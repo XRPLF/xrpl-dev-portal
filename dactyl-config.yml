@@ -6132,6 +6132,13 @@ pages:
             - ja
 
 
+    -   name: Contribute
+        funnel: Contribute
+        html: contribute.html
+        template: template-contact.html
+        targets:
+            - en
+            - ja
 # --------------- end "Docs" section -------------------------------------------
 # Use Cases: removing these, to be finished later ------------------------------
     # -   md: use-cases/use-cases.md
