@@ -55,16 +55,7 @@
   min-width: 250px;
 
   .dropdown-item {
-    line-height: 262%;
-    border-bottom: 2px solid $black;
-
-    &:last-child {
-      border-bottom: 0;
-    }
-
-    &.active, &:hover {
-      font-weight: bold;
-    }
+    line-height: 44px;
   }
 }
 
