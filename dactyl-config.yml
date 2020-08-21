@@ -999,6 +999,7 @@ pages:
         targets:
             - ja
 
+        # TODO: translate this page and blurb
     -   md: concepts/consensus-network/invariant-checking.md
         html: invariant-checking-concept.html
         funnel: Docs
@@ -1007,6 +1008,7 @@ pages:
         blurb: Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active.
         targets:
             - en
+            - ja
 
     -   md: concepts/consensus-network/transaction-queue.md
         html: transaction-queue.html
