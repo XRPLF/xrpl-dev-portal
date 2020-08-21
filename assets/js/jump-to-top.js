@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  // Mobile menu.  
+  // Mobile menu.
   $('[data-toggle="slide-collapse"]').on('click', function() {
     $navMenuCont = $($(this).data('target'));
     $navMenuCont.toggleClass('show');
@@ -9,7 +9,7 @@ $(document).ready(function() {
   $(".menu-overlay").click(function(event) {
     $(".navbar-toggler").trigger("click");
   });
-  
+
 
 
 
@@ -26,6 +26,6 @@ $(document).ready(function() {
     }
   });
   $(".jump-to-top").click(function() {
-    $("body").animate({scrollTop: TO_TOP_POS}, TO_TOP_SPEED)
+    $("html").animate({scrollTop: TO_TOP_POS}, TO_TOP_SPEED)
   });
 });
