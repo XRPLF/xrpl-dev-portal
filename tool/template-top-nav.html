@@ -1,7 +1,7 @@
 <div class="container">
-<nav class="navbar navbar-expand-lg row">
+<nav class="top-nav navbar navbar-expand-lg navbar-dark row">
   <a href="{{target.prefix}}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="{{target.display_name}}" /></a>
-  <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-center" id="navbarHolder">
@@ -38,7 +38,7 @@
 
       {% include 'template-github-edit.html' %}
 
-      <div class="nav-item dropdown" id="navbar-search">
+      <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">{% trans %}Open Search{% endtrans %}</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
@@ -53,7 +53,11 @@
             </div>
           </form>
         </div><!--/.dropdown-menu-->
-      </div><!--/.dropdown-->
+      </li><!--/.dropdown-->
+
+      <li class="nav-item wrap-button">
+        <a class="btn btn-outline-secondary nav-link" href="get-started-with-the-rippled-api.html">{% trans %}Get Started{% endtrans %}</a>
+      </li>
 
     </ul><!-- /.navbar-nav -->
 
@@ -70,6 +74,5 @@
       </div><!--/.dropdown-->
     </div><!--/.language-selector-->
   </div><!--/#navbarHolder-->
-  <div class="menu-overlay"></div>
 </nav>
 </div>

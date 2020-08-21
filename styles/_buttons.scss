@@ -3,12 +3,13 @@
   border: 2px solid $white;
 }
 .content a.button:hover {
-  border: 1px solid $black;
+  border: 2px solid $black;
 }
 
 .btn-outline-secondary {
   color: $white;
   border-color: $white;
+  border-width: 2px;
 }
 
 #main_content_wrapper .btn-outline-secondary:hover,
@@ -49,7 +50,6 @@ a.button {
 /* (Jump to) "Top" button */
 
 .jump-to-top {
-  background-color: $gray-700;
   display: none;
   position: fixed;
   bottom: 15px;
