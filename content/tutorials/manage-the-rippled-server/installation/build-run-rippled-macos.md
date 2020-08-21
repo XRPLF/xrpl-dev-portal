@@ -6,7 +6,7 @@ That said, macOS is suitable for many development and testing tasks. `rippled` h
 
 For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
-1. Install [Xcode](https://developer.apple.com/download/).
+1. Install [Xcode](https://developer.apple.com/download/). <!-- SPELLING_IGNORE: xcode -->
 
 0. Install Xcode command line tools.
 
@@ -42,7 +42,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
       2. Edit below code with your Boost directory location and run to add Boost environment variable to your `.bash_profile` file so it's automatically set when you log in.
 
-          $ echo $"export BOOST_ROOT=/Users/my_user/boost_1_71_0" >> ~/.bash_profile
+              $ echo "export BOOST_ROOT=/Users/my_user/boost_1_71_0" >> ~/.bash_profile
 
 0. If you updated your `.bash_profile` file in the previous step, be sure to source it in a new Terminal window. For example:
 
@@ -53,19 +53,23 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
         $ git clone git@github.com:ripple/rippled.git
         $ cd rippled
 
-0. By default, cloning puts you on the `develop` branch. Use this branch if you are doing development work and want the latest set of untested features.
+0. Switch to the appropriate branch for the software version you want:
 
-      If you want the latest stable release, checkout the `master` branch.
+    For the latest stable release, use the `master` branch.
 
         $ git checkout master
 
-      If you want to test out the latest release candidate, checkout the `release` branch:
+    For the latest release candidate, use the `release` branch:
 
         $ git checkout release
 
-      Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
+    For the latest in-progress version, use the `develop` branch:
 
-0. In the `rippled` directory you just cloned, create your build directory and access it. For example:
+        $ git checkout develop
+
+    Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
+
+0. In the `rippled` directory you cloned, create your build directory and access it. For example:
 
         $ mkdir my_build
         $ cd my_build

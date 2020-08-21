@@ -394,7 +394,7 @@ function CountXRPDifference(affected_nodes, address) {
         }
       }
     } else if ((affected_nodes[i].hasOwnProperty("CreatedNode"))) {
-      // created a ledger entry. maybe the account just got funded?
+      // created a ledger entry. maybe the account got funded?
       let ledger_entry = affected_nodes[i].CreatedNode
       if (ledger_entry.LedgerEntryType === "AccountRoot" &&
           ledger_entry.NewFields.Account === address) {

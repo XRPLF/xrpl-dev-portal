@@ -26,6 +26,9 @@ All escrows start the same way, so **Steps 1 and 2** are the same as in the succ
 
 **Step 4a:** The sender, or any other XRP Ledger address, sends an [EscrowCancel transaction][] to cancel the expired escrow. This destroys the [Escrow object](escrow-object.html) in the ledger and returns the XRP to the sender.
 
+<!-- SPELLING_IGNORE: 3a, 4a -->
+
+
 ## Limitations
 
 Escrow is designed as a feature to enable the XRP Ledger to be used in the [Interledger Protocol][] and with other smart contracts. The current version has a modest scope to avoid complexity.
@@ -95,7 +98,7 @@ The Escrow feature takes this idea further by replacing the third party with an 
 
 Fully automated escrow, backed by the integrity of the XRP Ledger itself, solves important problems for Ripple, and we think there are many other use cases that escrow enables. Ripple encourages the industry to find new and unique ways to put escrow to use.
 
-### Use Case: Time-based Lockup
+### Use Case: Time-based Lock-Up
 
 **Background:** Ripple holds a large amount of the total XRP, which it sells methodically as a way to fund and incentivize the healthy development of the XRP Ledger and related technologies. At the same time, owning such a large chunk of XRP causes problems for the company, such as:
 
@@ -133,7 +136,7 @@ For more information about Escrow in the XRP Ledger, see the following:
 
 For more information on Interledger and how conditional transfers enable secure payments across multiple ledgers, see [Interledger Architecture](https://interledger.org/rfcs/0001-interledger-architecture/).
 
-For more information on Ripple's 55-Billion XRP Lockup, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
+For more information on Ripple's 55-billion XRP lock-up, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

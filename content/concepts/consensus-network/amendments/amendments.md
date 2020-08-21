@@ -92,6 +92,8 @@ The amendments that a `rippled` server is configured to vote for or against have
 
 If your server is amendment blocked, you must [upgrade to a new version](install-rippled.html) to sync with the network.
 
+It is also possible to be amendment blocked because you connected your server to a [parallel network](parallel-networks.html) that has different amendments enabled. For example, the XRP Ledger Devnet typically has upcoming and experimental amendments enabled. If you are using the latest production release, your server is likely to be amendment blocked when connecting to Devnet. You could resolve this issue by upgrading to an unstable pre-release or nightly build, or you could [connect to a different network such as Testnet](connect-your-rippled-to-the-xrp-test-net.html) instead.
+
 
 #### How to Tell If Your `rippled` Server Is Amendment Blocked
 

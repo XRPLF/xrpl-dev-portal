@@ -39,7 +39,7 @@ An example of the request format:
 
 ```sh
 #Syntax: account_currencies account [ledger_index|ledger_hash] [strict]
-rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated strict
+rippled account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated strict
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -130,6 +130,21 @@ An example of a successful response:
         "status": "success",
         "validated": true
     }
+}
+```
+
+*Commandline*
+
+```json
+{
+   "result" : {
+      "ledger_hash" : "F43A801ED4562FA744A35755B86BE898D91C5643BF499924EA3C69491B8C28D1",
+      "ledger_index" : 56843649,
+      "receive_currencies" : [ "USD" ],
+      "send_currencies" : [ "NGN", "TRC" ],
+      "status" : "success",
+      "validated" : true
+   }
 }
 ```
 

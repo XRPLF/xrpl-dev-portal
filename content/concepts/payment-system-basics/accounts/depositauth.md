@@ -24,7 +24,7 @@ To receive money from [Payment transactions][] when you have Deposit Authorizati
 To get the full effect of Deposit Authorization, Ripple recommends also doing the following:
 
 - Always maintain an XRP balance higher than the minimum [reserve requirement](reserves.html).
-- Keep the DefaultRipple flag in its default (disabled) state. Do not enable [rippling](rippling.html) on any trust lines. When sending TrustSet transactions, always use the [`tfSetNoRipple` flag](trustset.html).
+- Keep the Default Ripple flag in its default (disabled) state. Do not enable [rippling](rippling.html) on any trust lines. When sending [TrustSet transactions][], always use the [`tfSetNoRipple` flag](trustset.html).
 - Do not place [Offers](offercreate.html). It is impossible to know in advance which matching offers will be consumed to execute such a trade.
 
 ## Precise Semantics
@@ -43,7 +43,7 @@ An account with Deposit Authorization enabled:
 - **Can** receive XRP or issued currencies by sending a [CheckCash][] transaction. _(Added by the [Checks amendment][].)_
 - **Can** receive XRP or issued currencies by sending [OfferCreate transactions][].
     - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the remainder of the ordered XRP or issued currency later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
-- If the account has created any trust lines without the [NoRipple flag](rippling.html) enabled, or has enabled the DefaultRipple flag and issued any currency, the account **can** receive the issued currencies of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
+- If the account has created any trust lines without the [No Ripple flag](rippling.html) enabled, or has enabled the Default Ripple flag and issued any currency, the account **can** receive the issued currencies of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
 - In general, an account in the XRP Ledger **cannot** receive any non-XRP currencies in the XRP Ledger as long as all of the following are true. (This rule is not specific to the DepositAuth flag.)
     - The account has not created any trust lines with a nonzero limit.
     - The account has not issued currency on trust lines created by others
@@ -63,7 +63,7 @@ An account can enable deposit authorization by sending an [AccountSet transactio
 
 To see whether an account has Deposit Authorization enabled, use the [account_info method][] to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](accountroot.html).
 
-If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (0x01000000) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.
+If the result of the `Flags` value bitwise-AND the `lsfDepositAuth` flag value (`0x01000000`) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.
 
 ## Preauthorization
 

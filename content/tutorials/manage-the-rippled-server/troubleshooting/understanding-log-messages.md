@@ -4,6 +4,28 @@ The following sections describe some of the most common types of log messages th
 
 This is an important step in [Diagnosing Problems](diagnosing-problems.html) with `rippled`.
 
+## Log Message Structure
+
+The following shows the format of the log file:
+
+```text
+2020-Jul-08 20:10:17.372178946 UTC Peer:WRN [236] onReadMessage from n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7 at 197.27.127.136:53046: stream truncated
+2020-Jul-08 20:11:13.582438263 UTC PeerFinder:ERR Logic testing     52.196.126.86:13308 with error, Connection timed out
+2020-Jul-08 20:11:57.728448343 UTC Peer:WRN [242] onReadMessage from n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7 at 197.27.127.136:53366: stream truncated
+2020-Jul-08 20:12:12.075081020 UTC LoadMonitor:WRN Job: sweep run: 1172ms wait: 0ms
+```
+
+Each line represents one log entry, with the following parts in order, separated by spaces:
+
+1. The date the log entry was written, such as `2020-Jul-08`.
+2. The time the log entry was written, such as `20:12:12.075081020`.
+3. The time zone indicator `UTC`. (Log dates are always in UTC.) [New in: rippled 1.5.0][]
+4. The log partition and severity, such as `LoadMonitor:WRN`.
+5. The log message, such as `Job: sweep run: 1172ms wait: 0ms`.
+
+For simplicity, the examples in this page omit the date, time, and time zone indicator.
+
+
 ## Crashes
 
 Messages in the log that mention runtime errors can indicate that the server crashed. These messages usually start with a message such as one of the following examples:
@@ -32,10 +54,10 @@ If none of the above apply, please report the issue to Ripple as a security-sens
 Log messages such as the following indicate that a server received validations for different ledger indexes out of order.
 
 ```text
-2018-Aug-28 22:55:58.316094260 Validations:WRN Val for 2137ACEFC0D137EFA1D84C2524A39032802E4B74F93C130A289CD87C9C565011 trusted/full from nHUeUNSn3zce2xQZWNghQvd9WRH6FWEnCBKYVJu2vAizMxnXegfJ signing key n9KcRZYHLU9rhGVwB9e4wEMYsxXvUfgFxtmX25pc1QPNgweqzQf5 already validated sequence at or past 12133663 src=1
+Validations:WRN Val for 2137ACEFC0D137EFA1D84C2524A39032802E4B74F93C130A289CD87C9C565011 trusted/full from nHUeUNSn3zce2xQZWNghQvd9WRH6FWEnCBKYVJu2vAizMxnXegfJ signing key n9KcRZYHLU9rhGVwB9e4wEMYsxXvUfgFxtmX25pc1QPNgweqzQf5 already validated sequence at or past 12133663 src=1
 ```
 
-Occasional messages of this type do not usually indicate a problem. If this type of message occurs frequently with the same sending validator, it could indicate a problem, including any of the following (roughly in order of most to least likely):
+Occasional messages of this type do not usually indicate a problem. If this type of message occurs often with the same sending validator, it could indicate a problem, including any of the following (roughly in order of most to least likely):
 
 - The server writing the message is having network issues.
 - The validator described in the message is having network issues.
@@ -47,7 +69,7 @@ Occasional messages of this type do not usually indicate a problem. If this type
 The following log message indicates that [StatsD export](configure-statsd.html) failed:
 
 ```text
-2020-Apr-07 16:59:36.299867439 UTC Collector:ERR async_send failed: Connection refused
+Collector:ERR async_send failed: Connection refused
 ```
 
 This could mean:
@@ -57,7 +79,18 @@ This could mean:
 
 Check the `[insight]` stanza in your `rippled`'s config file and confirm that you have network connectivity from your `rippled` server to your StatsD server.
 
-This error has no other impact on the `rippled` server, which should continue to operate as normal except for the sending of StatsD metrics.
+This error has no other impact on the `rippled` server, which should continue to work as normal except for the sending of StatsD metrics.
+
+
+## Check for upgrade
+
+The following message indicates that the server has detected that it is running an older software version than at least 60% of its trusted validators:
+
+```text
+LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running a newer version.
+```
+
+This is not strictly a problem, but an old server version is likely to become [amendment blocked](amendments.html#amendment-blocked). You should [update `rippled`](install-rippled.html) to the latest stable version. (If you are connected to [devnet](parallel-networks.html), update to the latest nightly version instead.)
 
 
 ## Connection reset by peer
@@ -65,7 +98,7 @@ This error has no other impact on the `rippled` server, which should continue to
 The following log message indicates that a peer `rippled` server closed a connection:
 
 ```text
-2018-Aug-28 22:55:41.738765510 Peer:WRN [012] onReadMessage: Connection reset by peer
+Peer:WRN [012] onReadMessage: Connection reset by peer
 ```
 
 Losing connections from time to time is normal for any peer-to-peer network. **Occasional messages of this kind do not indicate a problem.**
@@ -81,7 +114,7 @@ A large number of these messages around the same time may indicate a problem, su
 The following log message indicates that a client to the server's public API has been dropped as a result of [rate limiting](rate-limiting.html):
 
 ```text
-2020-Feb-24 23:05:35.566312806 Resource:WRN Consumer entry 169.55.164.21 dropped with balance 15970 at or above drop threshold 15000
+Resource:WRN Consumer entry 169.55.164.21 dropped with balance 15970 at or above drop threshold 15000
 ```
 
 The entry contains the IP address of the client that exceeded its rate limit, and the client's "balance", which is a score estimating the rate at which the client has been using the API. The threshold for dropping a client is [hardcoded to a score of 15000](https://github.com/ripple/rippled/blob/06c371544acc3b488b9d9c057cee4e51f6bef7a2/src/ripple/resource/impl/Tuning.h#L34-L35).
@@ -128,17 +161,17 @@ Messages such as the following occur when a function takes a long time to run (o
 The following similar message occurs when a job spends a long time waiting to run (again, over 11 seconds in this example):
 
 ```text
-2018-Aug-28 22:56:36.180970431 LoadMonitor:WRN Job: processLedgerData run: 0ms wait: 11566ms
-2018-Aug-28 22:56:36.181053831 LoadMonitor:WRN Job: AcquisitionDone run: 0ms wait: 11566ms
-2018-Aug-28 22:56:36.181110594 LoadMonitor:WRN Job: processLedgerData run: 0ms wait: 11566ms
-2018-Aug-28 22:56:36.181169931 LoadMonitor:WRN Job: AcquisitionDone run: 0ms wait: 11566ms
+LoadMonitor:WRN Job: processLedgerData run: 0ms wait: 11566ms
+LoadMonitor:WRN Job: AcquisitionDone run: 0ms wait: 11566ms
+LoadMonitor:WRN Job: processLedgerData run: 0ms wait: 11566ms
+LoadMonitor:WRN Job: AcquisitionDone run: 0ms wait: 11566ms
 ```
 
 These two types of messages often occur together, when a long-running job causes other jobs to wait a long time for it to finish.
 
 It is **normal** to display several messages of these types **during the first few minutes** after starting the server.
 
-If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000ms, that may indicate that **your server does not have sufficient resources, such as disk I/O, RAM, or CPU**. This may be caused by not having sufficiently-powerful hardware or because other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
+If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000 ms, that may indicate that **your server does not have sufficient resources, such as disk I/O, RAM, or CPU**. This may be caused by not having sufficiently-powerful hardware or because other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
 
 Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). Ripple recommends always using SSD storage for `rippled`'s databases, but you _may_ be able to run `rippled` successfully on rotational disks using RocksDB. If you are using rotational disks, make sure both the `[node_db]` and the `[shard_db]` (if you have one) are configured to use RocksDB. For example:
 
@@ -252,7 +285,7 @@ Aside from the bug, this error can also occur if `rippled` became unable to writ
 Log messages such as the following occur when the server sees a validation message from a peer and it does not know the parent ledger version that server is building on. This can occur when the server is not in sync with the rest of the network:
 
 ```text
-2018-Aug-28 22:56:22.256065549 Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E seq=12133675
+Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E seq=12133675
 ```
 
 {% include '_snippets/unsynced_warning_logs.md' %}
@@ -264,9 +297,9 @@ Log messages such as the following occur when the server sees a validation messa
 Log messages such as the following occur when a server is not in sync with the rest of the network:
 
 ```text
-2018-Aug-28 22:56:22.368460130 LedgerConsensus:WRN View of consensus changed during open status=open,  mode=proposing
-2018-Aug-28 22:56:22.368468202 LedgerConsensus:WRN 96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661 to 00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E
-2018-Aug-28 22:56:22.368499966 LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C6A9F2788CC715590E8FA5710F2D10BF5E3C03","close_flags":0,"close_time":588812130,"close_time_human":"2018-Aug-28 22:55:30.000000000","close_time_resolution":30,"closed":true,"hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_index":"3","parent_close_time":588812070,"parent_hash":"5F5CB224644F080BC8E1CC10E126D62E9D7F9BE1C64AD0565881E99E3F64688A","seqNum":"3","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}
+LedgerConsensus:WRN View of consensus changed during open status=open,  mode=proposing
+LedgerConsensus:WRN 96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661 to 00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E
+LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C6A9F2788CC715590E8FA5710F2D10BF5E3C03","close_flags":0,"close_time":588812130,"close_time_human":"2018-Aug-28 22:55:30.000000000","close_time_resolution":30,"closed":true,"hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_index":"3","parent_close_time":588812070,"parent_hash":"5F5CB224644F080BC8E1CC10E126D62E9D7F9BE1C64AD0565881E99E3F64688A","seqNum":"3","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}
 ```
 
 {% include '_snippets/unsynced_warning_logs.md' %}
@@ -295,6 +328,8 @@ NetworkOPs:WRN We are not running on the consensus ledger
     - [rippled API Reference](rippled-api.html)
         - [`rippled` Commandline Usage](commandline-usage.html)
         - [server_info method][]
+
+<!-- SPELLING_IGNORE: oom, async_send, statsd, inboundledger, loadmonitor, validatedseq -->
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

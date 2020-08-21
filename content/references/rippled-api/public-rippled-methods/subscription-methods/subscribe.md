@@ -10,7 +10,7 @@ An example of the request format:
 
 *Subscribe to accounts*
 
-```
+```json
 {
   "id": "Example watch Bitstamp's hot wallet",
   "command": "subscribe",
@@ -20,7 +20,7 @@ An example of the request format:
 
 *Subscribe to order book*
 
-```
+```json
 {
     "id": "Example subscribe to XRP/GateHub USD order book",
     "command": "subscribe",
@@ -41,7 +41,7 @@ An example of the request format:
 
 *Subscribe to ledger stream*
 
-```
+```json
 {
   "id": "Example watch for new validated ledgers",
   "command": "subscribe",
@@ -110,9 +110,9 @@ An example of a successful response:
 The response follows the [standard format][]. The fields contained in the response vary depending on what subscriptions were included in the request.
 
 * `accounts` and `accounts_proposed` - No fields returned.
-* *Stream: server* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change.
-* *Stream: transactions*, *Stream: transactions_proposed*, *Stream: validations*, and *Stream: consensus* - No fields returned.
-* *Stream: ledger* - Information about the ledgers on hand and current fee schedule. This includes the same fields as a [ledger stream message](#ledger-stream), except that it omits the `type` and `txn_count` fields.
+* *Stream: `server`* - Information about the server status, such as `load_base` (the current load level of the server), `random` (a randomly-generated value), and others, subject to change.
+* *Stream: `transactions`*, *Stream: `transactions_proposed`*, *Stream: `validations`*, and *Stream: `consensus`* - No fields returned.
+* *Stream: `ledger`* - Information about the ledgers on hand and current fee schedule. This includes the same fields as a [ledger stream message](#ledger-stream), except that it omits the `type` and `txn_count` fields.
 * `books` - No fields returned by default. If `"snapshot": true` is set in the request, returns `offers` (an array of offer definition objects defining the order book).
 
 ## Possible Errors
@@ -163,7 +163,7 @@ The fields from a ledger stream message are as follows:
 | `reserve_base`      | Number                    | The minimum [reserve](reserves.html), in [drops of XRP][], that is required for an account. If this ledger version includes a [SetFee pseudo-transaction](setfee.html) the new base reserve applies starting with the following ledger version. |
 | `reserve_inc`       | Number                    | The [owner reserve](reserves.html#owner-reserves) for each object an account owns in the ledger, in [drops of XRP][]. If the ledger includes a [SetFee pseudo-transaction](setfee.html) the new owner reserve applies after this ledger. |
 | `txn_count`         | Number                    | Number of new transactions included in this ledger version. |
-| `validated_ledgers` | String                    | _(May be omitted)_ Range of ledgers that the server has available. This may be discontiguous. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network. |
+| `validated_ledgers` | String                    | _(May be omitted)_ Range of ledgers that the server has available. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network. |
 
 
 ## Validations Stream
@@ -204,7 +204,7 @@ The fields from a validations stream message are as follows:
 | `type`                  | String           | The value `validationReceived` indicates this is from the validations stream. |
 | `amendments`            | Array of Strings | (May be omitted) The [amendments](amendments.html) this server wants to be added to the protocol. [New in: rippled 0.32.0][] |
 | `base_fee`              | Integer          | (May be omitted) The unscaled transaction cost (`reference_fee` value) this server wants to set by [Fee Voting](fee-voting.html). [New in: rippled 0.32.0][] |
-| `flags`                 | Number           | Bit-mask of flags added to this validation message. The flag 0x80000000 indicates that the validation signature is fully-canonical. The flag 0x00000001 indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
+| `flags`                 | Number           | Bit-mask of flags added to this validation message. The flag `0x80000000` indicates that the validation signature is fully-canonical. The flag `0x00000001` indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
 | `full`                  | Boolean          | If `true`, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0][] |
 | `ledger_hash`           | String           | The identifying hash of the proposed ledger is being validated. |
 | `ledger_index`          | String - Integer | The [Ledger Index][] of the proposed ledger. [New in: rippled 0.31.0][] |

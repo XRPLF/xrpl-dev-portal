@@ -35,15 +35,15 @@ An example of the request format:
 *Commandline*
 
 ```sh
-#Syntax:
-rippled account_lines <account> [<peer>] [<ledger>]
+#Syntax: account_lines <account> [<peer>] [<ledger_index>|<ledger_hash>]
+rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#account_lines)
 
-The request accepts the following paramters:
+The request accepts the following parameters:
 
 | `Field`        | Type                                       | Description    |
 |:---------------|:-------------------------------------------|:---------------|
@@ -152,6 +152,252 @@ An example of a successful response:
 }
 ```
 
+*Commandline*
+```json
+{
+   "result" : {
+      "account" : "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "ledger_current_index" : 56867265,
+      "lines" : [
+         {
+            "account" : "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+            "balance" : "0",
+            "currency" : "ASP",
+            "limit" : "0",
+            "limit_peer" : "10",
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+            "balance" : "0",
+            "currency" : "XAU",
+            "limit" : "0",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "no_ripple_peer" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+            "balance" : "5",
+            "currency" : "USD",
+            "limit" : "5",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
+            "balance" : "481.992867407479",
+            "currency" : "MXN",
+            "limit" : "1000",
+            "limit_peer" : "0",
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+            "balance" : "0.793598266778297",
+            "currency" : "EUR",
+            "limit" : "1",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+            "balance" : "0",
+            "currency" : "CNY",
+            "limit" : "3",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
+            "balance" : "1.336889190631542",
+            "currency" : "DYM",
+            "limit" : "3",
+            "limit_peer" : "0",
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "balance" : "0.3488146605801446",
+            "currency" : "CHF",
+            "limit" : "0",
+            "limit_peer" : "0",
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "balance" : "0",
+            "currency" : "BTC",
+            "limit" : "3",
+            "limit_peer" : "0",
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "balance" : "11.68225001668339",
+            "currency" : "USD",
+            "limit" : "5000",
+            "limit_peer" : "0",
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rpgKWEmNqSDAGFhy5WDnsyPqfQxbWxKeVd",
+            "balance" : "-0.00111",
+            "currency" : "BTC",
+            "limit" : "0",
+            "limit_peer" : "10",
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rBJ3YjwXi2MGbg7GVLuTXUWQ8DjL7tDXh4",
+            "balance" : "-0.0008744482690504699",
+            "currency" : "BTC",
+            "limit" : "0",
+            "limit_peer" : "10",
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+            "balance" : "0",
+            "currency" : "USD",
+            "limit" : "1",
+            "limit_peer" : "0",
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
+            "balance" : "9.07619790068559",
+            "currency" : "CNY",
+            "limit" : "100",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "balance" : "7.292695098901099",
+            "currency" : "JPY",
+            "limit" : "0",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+            "balance" : "0",
+            "currency" : "AUX",
+            "limit" : "0",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "no_ripple_peer" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X",
+            "balance" : "0.0004557360418801623",
+            "currency" : "USD",
+            "limit" : "1",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+            "balance" : "12.41688780720394",
+            "currency" : "EUR",
+            "limit" : "100",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rfF3PNkwkq1DygW2wum2HK3RGfgkJjdPVD",
+            "balance" : "35",
+            "currency" : "USD",
+            "limit" : "500",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rwUVoVMSURqNyvocPCcvLu3ygJzZyw8qwp",
+            "balance" : "-5",
+            "currency" : "JOE",
+            "limit" : "0",
+            "limit_peer" : "50",
+            "no_ripple_peer" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rE6R3DWF9fBD7CyiQciePF9SqK58Ubp8o2",
+            "balance" : "0",
+            "currency" : "USD",
+            "limit" : "0",
+            "limit_peer" : "100",
+            "no_ripple_peer" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rE6R3DWF9fBD7CyiQciePF9SqK58Ubp8o2",
+            "balance" : "0",
+            "currency" : "JOE",
+            "limit" : "0",
+            "limit_peer" : "100",
+            "no_ripple_peer" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rs9M85karFkCRjvc6KMWn8Coigm9cbcgcx",
+            "balance" : "0",
+            "currency" : "015841551A748AD2C1F76FF6ECB0CCCD00000000",
+            "limit" : "10.01037626125837",
+            "limit_peer" : "0",
+            "no_ripple" : true,
+            "quality_in" : 0,
+            "quality_out" : 0
+         },
+         {
+            "account" : "rEhDDUUNxpXgEHVJtC2cjXAgyx5VCFxdMF",
+            "balance" : "0",
+            "currency" : "USD",
+            "limit" : "0",
+            "limit_peer" : "1",
+            "quality_in" : 0,
+            "quality_out" : 0
+         }
+      ],
+      "status" : "success",
+      "validated" : false
+   }
+}
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 The response follows the [standard format][], with a successful result containing the address of the account and an array of trust line objects. Specifically, the result object contains the following fields:
@@ -176,12 +422,12 @@ Each trust line object has some combination of the following fields:
 | `limit_peer`     | String           | The maximum amount of currency that the counterparty account is willing to owe the perspective account |
 | `quality_in`     | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | `quality_out`    | Unsigned Integer | Rate at which the account values outgoing balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| `no_ripple`      | Boolean          | (May be omitted) `true` if this account has enabled the [NoRipple flag](rippling.html) for this line. If omitted, that is the same as `false`. |
-| `no_ripple_peer` | Boolean          | (May be omitted) `true` if the peer account has enabled the [NoRipple flag](rippling.html). If omitted, that is the same as `false`. |
-| `authorized`     | Boolean          | (May be omitted) `true` if this account has [authorized this trust line](authorized-trust-lines.html). If omitted, that is the same as `false`. |
-| `peer_authorized`| Boolean          | (May be omitted) `true` if the peer account has [authorized this trust line](authorized-trust-lines.html). If omitted, that is the same as `false`. |
-| `freeze`         | Boolean          | (May be omitted) `true` if this account has [frozen](freezes.html) this trust line. If omitted, that is the same as `false`. |
-| `freeze_peer`    | Boolean          | (May be omitted) `true` if the peer account has [frozen](freezes.html) this trust line. If omitted, that is the same as `false`. |
+| `no_ripple`      | Boolean          | _(May be omitted)_ `true` if this account has enabled the [No Ripple flag](rippling.html) for this line. If omitted, that is the same as `false`. |
+| `no_ripple_peer` | Boolean          | _(May be omitted)_ `true` if the peer account has enabled the [No Ripple flag](rippling.html). If omitted, that is the same as `false`. |
+| `authorized`     | Boolean          | _(May be omitted)_ `true` if this account has [authorized this trust line](authorized-trust-lines.html). If omitted, that is the same as `false`. |
+| `peer_authorized`| Boolean          | _(May be omitted)_ `true` if the peer account has [authorized this trust line](authorized-trust-lines.html). If omitted, that is the same as `false`. |
+| `freeze`         | Boolean          | _(May be omitted)_ `true` if this account has [frozen](freezes.html) this trust line. If omitted, that is the same as `false`. |
+| `freeze_peer`    | Boolean          | _(May be omitted)_ `true` if the peer account has [frozen](freezes.html) this trust line. If omitted, that is the same as `false`. |
 
 ## Possible Errors
 

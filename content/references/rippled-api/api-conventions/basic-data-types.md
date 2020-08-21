@@ -41,7 +41,7 @@ Some types of hash appear in API requests and responses. Others are only calcula
 | Unsigned Transaction (Single-signing) | N/A                                  | `0x53545800`      | `STX\0` |
 | Unsigned Transaction (Multi-signing)  | N/A                                  | `0x534D5400`      | `SMT\0` |
 | Validation vote                       | N/A                                  | `0x56414C00`      | `VAL\0` |
-| Validator subkey authorization ("validator manifest") | N/A                  | `0x4D414E00`      | `MAN\0` |
+| Validator manifest                    | N/A                                  | `0x4D414E00`      | `MAN\0` |
 
 [ledger header]: ledger-header.html
 [SHAMapv2]: known-amendments.html#shamapv2
@@ -93,7 +93,7 @@ XRP is specified as a string containing an integer number of "drops" of XRP, whe
 
         "Amount": "13100000"
 
-- **Issued Currency** - To specify an `Amount` field with a value of 13.1 FOO issued by or to rf1B...:
+- **Issued Currency** - To specify an `Amount` field with a value of 13.1 FOO issued by or to `rf1B...`:
 
         "Amount": {
             "value": "13.1",

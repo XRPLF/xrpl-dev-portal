@@ -14,6 +14,16 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 1. Install the Ripple RPM repository:
 
+    Choose the appropriate RPM repository for the stability of releases you want:
+
+    - `stable` for the latest production release (`master` branch)
+    - `unstable` for pre-release builds (`release` branch)
+    - `nightly` for experimental/development builds (`develop` branch)
+
+    <!-- MULTICODE_BLOCK_START -->
+
+    *Stable*
+
         $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-stable]
         name=XRP Ledger Packages
@@ -23,6 +33,33 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
         repo_gpgcheck=1
         REPOFILE
+
+    *Pre-release*
+
+        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        [ripple-unstable]
+        name=XRP Ledger Packages
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/unstable/
+        enabled=1
+        gpgcheck=0
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/unstable/repodata/repomd.xml.key
+        repo_gpgcheck=1
+        REPOFILE
+
+    *Development*
+
+        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        [ripple-nightly]
+        name=XRP Ledger Packages
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/nightly/
+        enabled=1
+        gpgcheck=0
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/nightly/repodata/repomd.xml.key
+        repo_gpgcheck=1
+        REPOFILE
+
+    <!-- MULTICODE_BLOCK_START -->
+
 
 2. Fetch the latest repo updates:
 

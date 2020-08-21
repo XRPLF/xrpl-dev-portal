@@ -70,6 +70,8 @@ targets:
         github_branch: master
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
+        readability_goals:
+            flesch_reading_ease: 50 # or higher
 
     -   name: ja
         lang: ja
@@ -132,6 +134,9 @@ targets:
             # Fix links from untranslated invariant-checking.html
             "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
             "xrp.html#xrp-properties": "xrp.html#xrpの特性"
+            # Fix links from untranslated health-check.html:
+            "rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
+            "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
 
 
     -   name: xrp-api-only
@@ -2258,12 +2263,6 @@ pages:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
-        html: capacity-planning.html
-        funnel: Docs
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Installation
-        blurb: Plan system specs and tune configuration for rippled in production environments.
         targets:
             - en
 
@@ -2578,6 +2577,12 @@ pages:
         targets:
             - ja
 
+    # TODO: translate this page including the blurb in its frontmatter.
+    -   md: tutorials/manage-the-rippled-server/configure-peering/enable-link-compression.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.md
         html: forward-ports-for-peering.html
         funnel: Docs
@@ -2771,6 +2776,18 @@ pages:
         blurb: Collect information to identify the cause of problems.
         targets:
             - en
+
+    # TODO: translate page and blurb
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
+        html: health-check-interventions.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Use the rippled server's health check as part of automated infrastructure monitoring.
+        targets:
+            - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
         html: diagnosing-problems.html
@@ -3371,7 +3388,7 @@ pages:
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Account Methods
-        blurb: Get recommended changes to an account's DefaultRipple and NoRipple settings.
+        blurb: Get recommended changes to an account's Default Ripple and No Ripple settings.
         targets:
             - en
 
@@ -5882,35 +5899,60 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/peer-crawler.md
+    # TODO: translate title & blurb
+    -   name: Peer Port Methods
+        html: peer-port-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Port Methods
+        template: template-landing-children.html
+        blurb: Special API method for sharing network topology and status metrics.
+        targets:
+            - en
+            - ja
+
+    # TODO: translate page & blurb
+    -   md: references/rippled-api/peer-port-methods/health-check.md
+        html: health-check.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Port Methods
+        blurb: Special API method for reporting server health.
+        targets:
+            - en
+            - ja
+
+    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
         html: peer-crawler.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Peer Crawler
+        category: Peer Port Methods
         blurb: Special API method for sharing network topology and status metrics.
         targets:
             - en
 
     # TODO: translate page
-    -   md: references/rippled-api/peer-crawler.md
+    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
         html: peer-crawler.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Peer Crawler
+        category: Peer Port Methods
         blurb: ネットワークトポロジーとステータスメトリックを共有するための特殊なAPIメソッドです。
         untranslated_warning: true
         targets:
             - ja
 
     # TODO: translate page & blurb
-    -   md: references/rippled-api/validator-list.md
+    -   md: references/rippled-api/peer-port-methods/validator-list.md
         html: validator-list.html
         funnel: Docs
         doc_type: References
         supercategory: rippled API
-        category: Validator List
+        category: Peer Port Methods
         blurb: Special API method for sharing recommended validator lists.
         targets:
             - en
@@ -5924,6 +5966,7 @@ pages:
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
+        skip_spell_checker: true
         filters:
             - xrpapi_readme
         targets:
@@ -5938,6 +5981,7 @@ pages:
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
+        skip_spell_checker: true
         targets:
             - en
             - ja
@@ -5953,6 +5997,7 @@ pages:
         doc_type: References
         category: RippleAPI for JavaScript
         blurb: Official client library to the XRP Ledger. Available for JavaScript only.
+        skip_spell_checker: true
         # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
         curated_anchors:
             - name: Transactions
@@ -6321,8 +6366,11 @@ known_broken_links:
     #  even though they still work in browser:
     - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
     - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
+    # Another failure that works fine in a browser:
+    - https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/
 
 # Style Checker Config ------------------------------------------------------ #
 
 word_substitutions_file: tool/word_substitutions.yaml
 phrase_substitutions_file: tool/phrase_substitutions.yaml
+spelling_file: tool/spelling.txt

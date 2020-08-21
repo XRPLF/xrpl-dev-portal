@@ -40,9 +40,11 @@ To set up a specific server as a private peer, complete the following steps:
 
     If your server connects using **proxies**, the IP addresses and ports should match the configurations of the `rippled` servers you are using as proxies. For each of those servers, the port number should match the `protocol = peer` port in that server's config file (usually 51235). For example, your configuration might look like this:
 
-          [ips_fixed]
-          192.168.0.1 51235
-          192.168.0.2 51235
+        [ips_fixed]
+        192.168.0.1 51235
+        192.168.0.2 51235
+
+    **Note:** If you omit the port number, the server uses port 2459, the IANA-assigned port for the [XRP Ledger protocol](peer-protocol.html). [New in: rippled 1.6.0][]
 
 4. If using proxies, cluster them with your private peer and each other.
 

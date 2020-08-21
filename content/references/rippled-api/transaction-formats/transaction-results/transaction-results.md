@@ -4,14 +4,14 @@
 
 The `rippled` server summarizes transaction results with result codes, which appear in fields such as `engine_result` and `meta.TransactionResult`. These codes are grouped into several categories of with different prefixes:
 
-| Category              | Prefix                  | Description                |
-|:----------------------|:------------------------|:---------------------------|
-| Claimed cost only     | [tec](tec-codes.html)   | The transaction did not achieve its intended purpose, but the [transaction cost](transaction-cost.html) was destroyed. This result is only final in a validated ledger. |
-| Failure               | [tef](tef-codes.html)   | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or the condition of the ledger makes it impossible to apply in the future. |
-| Local error           | [tel](tel-codes.html)   | The `rippled` server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
-| Malformed transaction | [tem](tem-codes.html)   | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
-| Retry                 | [ter](ter-codes.html)   | The transaction could not be applied, but it could apply successfully in a future ledger. |
-| Success               | [tes](tes-success.html) | (Not an error) The transaction succeeded. This result only final in a validated ledger. |
+| Category              | Prefix                    | Description              |
+|:----------------------|:--------------------------|:-------------------------|
+| Claimed cost only     | [`tec`](tec-codes.html)   | The transaction did not achieve its intended purpose, but the [transaction cost](transaction-cost.html) was destroyed. This result is only final in a validated ledger. |
+| Failure               | [`tef`](tef-codes.html)   | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or the condition of the ledger makes it impossible to apply in the future. |
+| Local error           | [`tel`](tel-codes.html)   | The `rippled` server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
+| Malformed transaction | [`tem`](tem-codes.html)   | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
+| Retry                 | [`ter`](ter-codes.html)   | The transaction could not be applied, but it could apply successfully in a future ledger. |
+| Success               | [`tes`](tes-success.html) | (Not an error) The transaction succeeded. This result only final in a validated ledger. |
 
 The `rippled` server automatically retries failed transactions. It is important not to assume that a transaction has completely failed based on a tentative failure result. A transaction may later succeed unless its success or failure is [final](finality-of-results.html).
 
@@ -30,8 +30,8 @@ The response from `submit` contains the following fields:
 
 | Field                   | Value          | Description                       |
 |:------------------------|:---------------|:----------------------------------|
-| `engine_result`          | String         | A code that categorizes the result, such as `tecPATH_DRY` |
-| `engine_result_code`    | Signed Integer | A number that corresponds to the `engine_result`, although exact values are subject to change. |
+| `engine_result`         | String         | A code indicating the outcome of the transaction, such as `tecPATH_DRY`. |
+| `engine_result_code`    | Signed Integer | A number that corresponds to the `engine_result`. The exact values are subject to change without notice. |
 | `engine_result_message` | String         | A human-readable message explaining what happened. This message is intended for developers to diagnose problems, and is subject to change without notice. |
 
 If nothing went wrong when submitting and applying the transaction locally, the response looks like this:

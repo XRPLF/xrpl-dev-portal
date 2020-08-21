@@ -6,7 +6,8 @@ Like the [Peer Crawler](peer-crawler.html), the validator list method is availab
 
 ## Request Format
 
-To request the Peer Crawler information, make the following HTTP request:
+To request the Validator List information, make the following HTTP
+request:
 
 - **Protocol:** https
 - **HTTP Method:** GET
@@ -20,7 +21,7 @@ To request the Peer Crawler information, make the following HTTP request:
 
     The validator list contents are signed with a separate cryptographic key, so you can verify their integrity regardless of the TLS certificate used.
 
-**Tip:** Since this request uses the GET method, you can test this request using just the URL bar of your web browser. For example, <https://s1.ripple.com:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734> requests Ripple's recommended list from one of Ripple's public servers.
+**Tip:** Since this request uses the GET method, you can test this request using the URL bar of your web browser. For example, <https://s1.ripple.com:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734> requests Ripple's recommended list from one of Ripple's public servers.
 
 ## Response Format
 
@@ -47,15 +48,15 @@ One of the main purposes of manifests relates to rotating validator keys. When a
 
 The data encoded in a manifest is as follows:
 
-| Field             | Internal Type | Description                              |
-|:------------------|:--------------|:-----------------------------------------|
-| sfPublicKey       | Blob          | The master public key that uniquely identifies this person or organization. This can be a 33-byte secp256k1 public key, or a 32-byte Ed25519 public key prefixed with the byte `0xED`. |
-| sfMasterSignature | Blob          | A signature of this manifest data from the master key pair. This proves the authenticity of the manifest. |
-| sfSequence        | UInt32        | A sequence number for this manifest. A higher number indicates a newer manifest that invalidates all older manifests from the same master public key. |
-| sfVersion         | UInt16        | A version number indicating the manifest format used. A higher number indicates a newer manifest format, including breaking changes compared to the previous manifest format. |
-| sfDomain          | Blob          | _(Optional)_ A domain name owned by this person or organization, ASCII-encoded. |
-| sfSigningPubKey   | Blob          | _(Optional)_ The ephemeral public key of the key pair that this person or organization is currently using. This must be a 33-byte secp256k1 public key. |
-| sfSignature       | Blob          | _(Optional)_ A signature of this manifest data from the ephemeral key pair. |
+| Field               | Internal Type | Description                              |
+|:--------------------|:--------------|:-----------------------------------------|
+| `sfPublicKey`       | Blob          | The master public key that uniquely identifies this person or organization. This can be a 33-byte secp256k1 public key, or a 32-byte Ed25519 public key prefixed with the byte `0xED`. |
+| `sfMasterSignature` | Blob          | A signature of this manifest data from the master key pair. This proves the authenticity of the manifest. |
+| `sfSequence`        | UInt32        | A sequence number for this manifest. A higher number indicates a newer manifest that invalidates all older manifests from the same master public key. |
+| `sfVersion`         | UInt16        | A version number indicating the manifest format used. A higher number indicates a newer manifest format, including breaking changes compared to the previous manifest format. |
+| `sfDomain`          | Blob          | _(Optional)_ A domain name owned by this person or organization, ASCII-encoded. |
+| `sfSigningPubKey`   | Blob          | _(Optional)_ The ephemeral public key of the key pair that this person or organization is currently using. This must be a 33-byte secp256k1 public key. |
+| `sfSignature`       | Blob          | _(Optional)_ A signature of this manifest data from the ephemeral key pair. |
 
 The `sfMasterSignature` and `sfSignature` signatures are created from signing the [serialized](serialization.html) binary data of the manifest, excluding the signature fields (`sfMasterSignature` and `sfSignature`) themselves.
 
@@ -68,7 +69,7 @@ If you decode the `blob` from base64, the result is a JSON object with the follo
 |:-------------|:-------|:-----------------------------------------------------|
 | `sequence`   | Number | Unique sequence number for this list. A larger sequence number indicates a newer list; only the newest list is valid at a time. |
 | `expiration` | Number | The time this list expires, in [seconds since the Ripple Epoch][]. |
-| `validators  | Array  | A list of recommended validators.                    |
+| `validators` | Array  | A list of recommended validators.                    |
 
 Each member of the `validators` array has the following fields:
 
@@ -99,7 +100,7 @@ GET https://localhost:51235/vl
 *cURL*
 
 ```
-curl --insecure https://localhost:51235/vl
+curl --insecure https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 ```
 
 <!-- MULTICODE_BLOCK_END -->

@@ -99,7 +99,7 @@ Request('gateway_balances', {
 })
 
 Request('noripple_check', {
-  description: "Compares an account's DefaultRipple and NoRipple flags to the recommended settings.",
+  description: "Compares an account's Default Ripple and No Ripple flags to the recommended settings.",
   link: "noripple_check.html",
   body: {
     "id": 0,

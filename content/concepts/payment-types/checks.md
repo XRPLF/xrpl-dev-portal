@@ -2,7 +2,7 @@
 
 _(Added by the [Checks amendment][].)_
 
-The Checks feature in the XRP Ledger allows users to create deferred payments that can be canceled or cashed by the intended recipients. Like personal paper checks, XRP Ledger Checks start with the sender of the funds creating a Check that specifies an amount and a recipient. The recipient cashes the check to pull the funds from the sender's account into the recipient's account. No money moves until the recipient cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the recipient tries to cash it, just like traditional checks. If there's a failure cashing the check, the check's recipient can retry until the Check expires.
+The Checks feature in the XRP Ledger allows users to create deferred payments that can be canceled or cashed by the intended recipients. Like personal paper checks, XRP Ledger Checks start with the sender of the funds creating a Check that specifies an amount and a recipient. The recipient cashes the check to pull the funds from the sender's account into the recipient's account. No money moves until the recipient cashes the Check. Because funds are not put on hold when the Check is created, cashing a Check can fail if the sender doesn't have enough funds when the recipient tries to cash it, like traditional checks. If there's a failure cashing the check, the check's recipient can retry until the Check expires.
 
 XRP Ledger Checks have expiration times after which they may no longer be cashed. If the recipient doesn't successfully cash the Check before it expires, the Check object remains in the XRP Ledger until someone cancels it. Anyone may cancel the Check after it expires. Only the sender and recipient can cancel the Check before it expires or is cashed. The Check object is removed from the Ledger when the sender successfully cashes the check or someone cancels it.
 
@@ -29,7 +29,7 @@ Checks potentially enable many other use cases. Ripple encourages the community 
 
 ### Use Case: Payment Authorization
 
-**Problem:** To comply with regulations like [BSA, KYC, AML, and CFT](become-an-xrp-ledger-gateway.html#gateway-compliance), financial institutions must provide documentation about the source of funds they receive. Such regulations seek to prevent the illicit transfer of funds by requiring institutions to disclose the source and destination of all payments processed by the institution. Because of the nature of the XRP Ledger, anyone could potentially send XRP (and, under the right circumstances, issued currencies) to an institution's account on the XRP Ledger. Dealing with such unwanted payments adds significant cost and time delays to these institutions' compliance departments, including potential fines or penalties.
+**Problem:** To comply with regulations like [BSA, KYC, AML, and CFT](become-an-xrp-ledger-gateway.html#gateway-compliance), financial institutions must provide documentation about the source of funds they receive. Such regulations seek to prevent the illicit transfer of funds by requiring institutions to disclose the source and destination of all payments processed by the institution. Because of the nature of the XRP Ledger, anyone could potentially send XRP (and, under the right circumstances, issued currencies) to an institution's account on the XRP Ledger. Dealing with such unwanted payments adds significant cost and time delays to these institutions' compliance departments, including potential fines or penalties. <!-- SPELLING_IGNORE: cft -->
 
 **Solution:** Institutions can enable [Deposit Authorization](depositauth.html) on their XRP Ledger accounts by [setting the `asfDepositAuth` flag in an `AccountSet` transaction](accountset.html). This makes the account unable to receive Payment transactions. Accounts with Deposit Authorization enabled can only receive funds through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds if Deposit Authorization is enabled.
 
@@ -72,6 +72,7 @@ All Checks start the same way, so **Steps 1 and 2** are the same.
 
 **Step 4a:** After a Check expires, anyone may cancel it by submitting a [CheckCancel][] transaction. That transaction removes the Check from the ledger.  
 
+<!-- SPELLING_IGNORE: 3a, 4a -->
 
 
 ## Availability of Checks

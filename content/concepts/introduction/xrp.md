@@ -2,7 +2,7 @@
 
 **XRP** is the native cryptocurrency of the XRP Ledger. All [accounts](accounts.html) in the XRP Ledger can send XRP among one another and must hold a minimum amount of XRP as a [reserve](reserves.html). XRP can be sent directly from any XRP Ledger address to any other, without needing a gateway or liquidity provider. This helps make XRP a convenient bridge currency.
 
-Some advanced features of the XRP Ledger, such as [Escrow](escrow.html) and [Payment Channels](use-payment-channels.html), only work with XRP. Order book [autobridging](https://xrpl.org/blog/2014/introducing-offer-autobridging.html) uses XRP to deepen liquidity in the decentralized exchange by merging order books of two issued currencies with XRP order books to create synthetic combined order books. (For example, autobridging matches USD:XRP and XRP:EUR orders to augment USD:EUR order books.)
+Some advanced features of the XRP Ledger, such as [Escrow](escrow.html) and [Payment Channels](use-payment-channels.html), only work with XRP. Order book [auto-bridging](https://xrpl.org/blog/2014/introducing-offer-autobridging.html) uses XRP to deepen liquidity in the decentralized exchange by merging order books of two issued currencies with XRP order books to create synthetic combined order books. (For example, auto-bridging matches USD:XRP and XRP:EUR orders to augment USD:EUR order books.)
 
 XRP also serves as a protective measure against spamming the network. All XRP Ledger addresses need a small amount of XRP to offset the costs of maintaining the XRP Ledger. The [transaction cost](transaction-cost.html) and [reserve](reserves.html) are neutral fees denominated in XRP and not paid to any party. In the ledger's data format, XRP is stored in [AccountRoot objects](accountroot.html).
 
@@ -19,7 +19,7 @@ In technical contexts, XRP is measured precisely to the nearest 0.000001 XRP, ca
 
 ### XRP Sales
 
-The XRP Ledger was built over 2011 – early 2012 by Jed McCaleb, Arthur Britto and David Schwartz. In September 2012, Jed and Arthur, along with Chris Larsen formed Ripple (the company, called OpenCoin Inc. at the time) and decided to gift 80 billion XRP to Ripple in exchange for Ripple developing on the XRP Ledger. Since then, the company has regularly sold XRP, used it to strengthen XRP markets and improve network liquidity, and incentivized development of the greater ecosystem. In 2017, the company [placed 55 billion XRP in escrow](https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/) to ensure that the amount entering the general supply [grows predictably](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/) for the foreseeable future. Ripple's [XRP Market Performance site](https://ripple.com/xrp/market-performance/) reports how much XRP the company has available and locked in escrow at present.
+The XRP Ledger was built over 2011 – early 2012 by Jed McCaleb, Arthur Britto and David Schwartz. In September 2012, Jed and Arthur, along with Chris Larsen formed Ripple (the company, called OpenCoin Inc. at the time) and decided to gift 80 billion XRP to Ripple in exchange for Ripple developing on the XRP Ledger. Since then, the company has regularly sold XRP, used it to strengthen XRP markets and improve network liquidity, and incentivized development of the greater ecosystem. In 2017, the company [placed 55 billion XRP in escrow](https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/) to ensure that the amount entering the general supply [grows predictably](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/) for the foreseeable future. Ripple's [XRP Market Performance site](https://ripple.com/xrp/market-performance/) reports how much XRP the company has available and locked in escrow at present. <!-- SPELLING_IGNORE: mccaleb, britto, opencoin -->
 
 ### Naming
 
@@ -30,7 +30,7 @@ Originally, the XRP Ledger was called "Ripple" for the way the technology allowe
 | !["X" logo](assets/img/xrp-x-logo.png) | ![Triskelion](img/ripple-triskelion.png) |
 
 
-The smallest, indivisible unit of XRP was named a "drop" at the suggestion of Ripple forum member ThePiachu. An early alternative term was a "jed", after Jed McCaleb.
+The smallest, indivisible unit of XRP was named a "drop" at the suggestion of Ripple forum member ThePiachu. An early alternative term was a "jed", after Jed McCaleb. <!-- SPELLING_IGNORE: thepiachu, mccaleb -->
 
 ## See Also
 

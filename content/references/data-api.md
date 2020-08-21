@@ -772,7 +772,7 @@ Optionally, you can provide the following query parameters:
 | `reduce`      | Boolean                | If `true`, aggregate all individual results. The default is `false`. |
 | `limit`       | Integer                | Maximum results per page. The default is 200. Cannot be more than 20,000 if `reduce` is true. Otherwise cannot be more than 1,000. |
 | `marker`      | String                 | [Pagination](#pagination) key from previously returned response. |
-| `autobridged` | Boolean                | If `true`, filter results to autobridged exchanges only. |
+| `autobridged` | Boolean                | If `true`, filter results to return only exchanges made through [auto-bridging](autobridging.html). |
 | `format`      | String                 | Format of returned results: `csv` or `json`. The default is `json`. |
 
 #### Response Format
@@ -910,7 +910,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `result` | String | The value `success` indicates that this is a successful response. |
 | `rate`   | Number | The requested exchange rate, or `0` if the exchange rate could not be determined. |
 
-All exchange rates are calcuated by converting the base currency and counter currency to XRP.
+All exchange rates are calculated by converting the base currency and counter currency to XRP.
 
 The rate is derived from the volume weighted average over the calendar day specified, averaged with the volume weighted average of the last 50 trades within the last 14 days.
 
@@ -2683,9 +2683,9 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `validation_public_key` | String - Base-58 [Public Key][] | This validator's validator public key. |
 | `domain`                | String                          | (May be omitted) The DNS domain associated with this validator. |
 | `chain`                 | String                          | Ledger hash chain which this validator is currently following. The value `main` indicates the main network and `altnet` indicates the XRP Test Network. Other forks are named `chain.{NUMBER}`, where `{NUMBER}` is a unique number for each fork. |
-| `unl`                   | Bool                            | True if the validator is part of the ledger chain's recommended UNL. |
+| `unl`                   | Boolean                         | True if the validator is part of the ledger chain's recommended UNL. |
 | `current_index`         | Number                          | Ledger index of most recently validated ledger. |
-| `partial`               | Bool                            | True if the most recent validation was a partial one. |
+| `partial`               | Boolean                         | True if the most recent validation was a partial one. |
 | `agreement_1h`          | Agreement Object                | Object containing agreement stats for the most recent hour. |
 | `agreement_24h`         | Agreement Object                | Object containing agreement stats for the most recent 24 hour period. |
 
@@ -2696,7 +2696,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `score`                 | String                          | Score of agreement with the ledger chain being followed. |
 | `missed`                | Integer                         | Number of ledgers not validated during the time period. |
 | `total`                 | Integer                         | Number of ledgers that could have been validated during the time period. |
-| `incomplete`            | Bool                            | True indicates the data does not cover the entire time period. |
+| `incomplete`            | Boolean                         | True indicates the data does not cover the entire time period. |
 
 #### Example
 
@@ -2779,9 +2779,9 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `validation_public_key` | String - Base-58 [Public Key][] | This validator's validator public key. |
 | `domain`                | String                          | (May be omitted) The DNS domain associated with this validator. |
 | `chain`                 | String                          | Ledger hash chain which this validator is currently following. The value `main` indicates the main network and `altnet` indicates the XRP Test Network. Other forks are named `chain.{NUMBER}`, where `{NUMBER}` is a unique number for each fork. |
-| `unl`                   | Bool                            | True if the validator is part of the ledger chain's recommended UNL. |
+| `unl`                   | Boolean                         | True if the validator is part of the ledger chain's recommended UNL. |
 | `current_index`         | Number                          | Ledger index of most recently validated ledger. |
-| `partial`               | Bool                            | True if the most recent validation was a partial one. |
+| `partial`               | Boolean                         | True if the most recent validation was a partial one. |
 | `agreement_1h`          | Agreement Object                | Object containing agreement stats for the most recent hour. |
 | `agreement_24h`        | Agreement Object                | Object containing agreement stats for the most recent 24 hour period. |
 
@@ -2792,7 +2792,7 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 | `score`                 | String                          | Score of agreement with the ledger chain being followed. |
 | `missed`                | Integer                         | Number of ledgers not validated during the time period. |
 | `total`                 | Integer                         | Number of ledgers that could have been validated during the time period. |
-| `incomplete`            | Bool                            | True indicates the data does not cover the entire time period. |
+| `incomplete`            | Boolean                         | True indicates the data does not cover the entire time period. |
 
 #### Example
 
@@ -2861,7 +2861,7 @@ Response:
 ## Get Validator Manifests
 [[Source]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getManifests.js "Source")
 
-Retrieve manifests signed by a specified validator. (Manifests, also called _subkey authorizations_, designate the ephemeral key a validator uses to sign proposals and validations.) _(New in [v2.3.7][])_
+Retrieve manifests signed by a specified validator. (Manifests designate the ephemeral key a validator uses to sign proposals and validations.) _(New in [v2.3.7][])_
 
 **Note:** The Data API does not have a comprehensive record of all manifests. The response only includes data that the Data API has recorded.
 
@@ -2996,7 +2996,7 @@ Optionally, you can provide the following query parameters:
 |:---------|:-----------------------|:-----------------------------------------|
 | `start`      | String - [Timestamp][] | Start date and time for historical query. The default is to start 200 days before the current date. |
 | `end`        | String - [Timestamp][] | End date and time for historical query. The default is to end with the most recent data available. |
-| `descending` | Bool                   | Return results in reverse order. |
+| `descending` | Boolean                | Return results in reverse order. |
 | `format`     | String                 | Format of returned results: `csv` or `json`. The default is `json`. |
 
 #### Response Format
@@ -3022,7 +3022,7 @@ Each Single Validator Report Object describes a validator's performance on a giv
 | `score`              | String                          | Score of agreement with the ledger chain being followed. |
 | `missed`             | Integer                         | Number of ledgers not validated during the time period. |
 | `total`              | Integer                         | Number of ledgers that could have been validated during the time period. |
-| `incomplete`         | Bool                            | True indicates the data does not cover the entire time period. |
+| `incomplete`         | Boolean                         | True indicates the data does not cover the entire time period. |
 
 #### Example
 
@@ -3106,15 +3106,15 @@ A successful response uses the HTTP code **200 OK** and has a JSON body with the
 
 Each member in the `reports` array describes one validator's performance on that day and has the following fields:
 
-| Field                | Value                           | Description                  |
-|:---------------------|:--------------------------------|:-----------------------------|
-| `validation_public_key` | String - Base-58 [Public Key][] | Validator public key. |
-| `date`               | String - [Timestamp][]          | The start time of the date this object describes. |
-| `chain`              | String                          | Ledger hash chain which this validator is currently following. The value `main` indicates the main network and `altnet` indicates the XRP Test Network. Other forks are named `chain.{NUMBER}`, where `{NUMBER}` is a unique number for each fork. |
-| `score`              | String                          | Score of agreement with the ledger chain being followed. |
-| `missed`             | Integer                         | Number of ledgers not validated during the time period. |
-| `total`              | Integer                         | Number of ledgers that could have been validated during the time period. |
-| `incomplete`         | Bool - Optional                 | True indicates the data does not cover the entire time period. |
+| Field                   | Value                   | Description              |
+|:------------------------|:------------------------|:-------------------------|
+| `validation_public_key` | String - [Public Key][] | The validator's public key, in [base58][].    |
+| `date`                  | String - [Timestamp][]  | The start time of the date this object describes. |
+| `chain`                 | String                  | Ledger hash chain which this validator is currently following. The value `main` indicates the main network and `altnet` indicates the XRP Test Network. Other forks are named `chain.{NUMBER}`, where `{NUMBER}` is a unique number for each fork. |
+| `score`                 | String                  | Score of agreement with the ledger chain being followed. |
+| `missed`                | Integer                 | Number of ledgers not validated during the time period. |
+| `total`                 | Integer                 | Number of ledgers that could have been validated during the time period. |
+| `incomplete`            | Boolean                 | _(Optional)_ True indicates the data does not cover the entire time period. |
 
 #### Example
 
@@ -3966,7 +3966,7 @@ Response:
 ## Get Transaction By Account And Sequence
 [[Source]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountTxSeq.js "Source")
 
-Retrieve a specifc transaction originating from a specified account
+Retrieve a specific transaction originating from a specified account
 
 #### Request Format
 
@@ -4932,7 +4932,7 @@ Response:
 
 ## Basic Types
 
-As a REST API, the Data API v2 uses [JSON](http://json.org/)'s native datatypes to represent API fields, with some special cases.
+As a REST API, the Data API v2 uses [JSON](http://json.org/)'s native data types to represent API fields, with some special cases.
 
 ### Numbers and Precision
 [String - Number]: #numbers-and-precision
@@ -5010,7 +5010,7 @@ Many queries may return more data than is reasonable to return in a single HTTP 
 
 The `limit` query parameter to many requests restricts the response to a specific number of results in the response. The types of results and default values vary based on the method. For most methods, the `limit` is **200** by default, and can be set as high as **1000**. If you specify a `limit` larger than the maximum, the API uses the maximum value instead.
 
-When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field `marker` which indicates that you can retrieve additional results. To do so, make more requests with the previous value of the `marker` field as the `marker` query parameter. For each additional request, use the same parameters as the first request (except `marker`). When the response omits the `marker` parameter, that indicates that you have reached the end of the queryable data.
+When a query has additional objects that are not contained in the current response, the JSON response contains a top-level field `marker` which indicates that you can retrieve additional results. To do so, make more requests with the previous value of the `marker` field as the `marker` query parameter. For each additional request, use the same parameters as the first request (except `marker`). When the response omits the `marker` parameter, that indicates that you have reached the end of the data.
 
 When a `marker` is or would be present, the response contains a [`Link` header](https://tools.ietf.org/html/rfc5988#section-5) with `rel="next"`. This is a full URL to the next page of results. You can use this to paginate over results when the response is in `csv` format instead of `json`. _(New in [v2.0.4][])_
 
@@ -5088,8 +5088,8 @@ A single transaction can cause several exchanges to occur. In this case, the sen
 | `base_amount`          | Number                       | The amount of the base currency that was traded. |
 | `counter_amount`       | Number                       | The amount of the counter currency that was traded. |
 | `rate`                 | Number                       | The amount of the counter currency acquired per 1 unit of the base currency. |
-| `autobridged_currency` | String - [Currency Code][]   | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
-| `autobridged_issuer`   | String - [Address][]         | (May be omitted) If the offer was autobridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
+| `autobridged_currency` | String - [Currency Code][]   | (May be omitted) If the offer was auto-bridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
+| `autobridged_issuer`   | String - [Address][]         | (May be omitted) If the offer was auto-bridged (XRP order books were used to bridge two non-XRP currencies), this is the other currency from the offer that executed this exchange. |
 | `base_currency`        | String - [Currency Code][]   | The base currency.   |
 | `base_issuer`          | String - [Address][]         | (Omitted for XRP) The account that issued the base currency. |
 | `buyer`                | String - [Address][]         | The account that acquired the base currency. |
@@ -5193,7 +5193,7 @@ Balance Change Descriptors have the following fields:
 |:----------------|:---------------------------|:------------------------------|
 | `amount_change` | [String - Number][]        | The difference in the amount of currency held before and after this change. _(Prior to [v2.0.6][], this field was called `change`.)_ |
 | `final_balance` | [String - Number][]        | The balance after the change occurred. |
-| `node_index`    | Number (or `null`)         | This balance change is represented by the entry at this index of the ModifiedNodes array within the metadata section of the transaction that executed this balance change. **Note:** When the transaction cost is combined with other changes to XRP balance, the transaction cost has a `node_index` of **null** instead. |
+| `node_index`    | Number (or `null`)         | This balance change is represented by the entry at this index of the `ModifiedNodes` array within the [metadata section](transaction-metadata.html) of the transaction that executed this balance change. **Note:** When the transaction cost is combined with other changes to XRP balance, the transaction cost has a `node_index` of **null** instead. |
 | `tx_index`      | Number                     | The transaction that executed this balance change is at this index in the array of transactions for the ledger that included it. |
 | `change_type`   | String                     | One of several [](#change-types) describing what caused this balance change to occur. |
 | `currency`      | String - [Currency Code][] | The change affected this currency. |
@@ -5233,7 +5233,7 @@ Volume objects represent the total volumes of money moved, in either payments or
 [Server Object]: #server-objects
 [Server Objects]: #server-objects
 
-A "Server Object" describes one `rippled` server in the XRP Ledger peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Toplogy Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](peer-crawler.html).
+A "Server Object" describes one `rippled` server in the XRP Ledger peer-to-peer network. Server objects are returned by the [Get Topology](#get-topology), [Get Topology Nodes](#get-topology-nodes), and [Get Topology Node](#get-topology-node) methods. The Data API collects reported network topology approximately every 30 seconds using the [peer crawler](peer-crawler.html).
 
 Server objects have the following fields, with some only appearing if the request specified a verbose response:
 
@@ -5256,7 +5256,7 @@ Server objects have the following fields, with some only appearing if the reques
 | `region_code`      | String                          | (Verbose only) The ISO code for the region where this server is located, according to IP geolocation. |
 | `country_code`     | String                          | (Verbose only) The ISO code for the country where this server is located, according to IP geolocation. |
 | `postal_code`      | String                          | (Verbose only) The postal code where this server is located, according to IP geolocation. |
-| `timezone`         | String                          | (Verbose only) The ISO timezone where this server is located, according to IP geolocation. |
+| `timezone`         | String                          | (Verbose only) The ISO time zone where this server is located, according to IP geolocation. |
 | `lat`              | String                          | (Verbose only) The latitude where this server is located, according to IP geolocation. |
 | `long`             | String                          | (Verbose only) The longitude where this server is located, according to IP geolocation. |
 | `isp`              | String                          | (Verbose only) The Internet Service Provider hosting this server's public IP address. |

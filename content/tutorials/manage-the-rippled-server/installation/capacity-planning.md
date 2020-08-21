@@ -1,3 +1,11 @@
+---
+html: capacity-planning.html
+funnel: Docs
+doc_type: Tutorials
+category: Manage the rippled Server
+subcategory: Installation
+blurb: Plan system specs and tune configuration for rippled in production environments.
+---
 # Capacity Planning
 
 This section describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of your `rippled` server. Being aware of these considerations can help you ensure that your `rippled` server is ready to handle XRP Ledger network capacity today and in the near future.
@@ -19,16 +27,16 @@ Ripple recommends you always use the largest node size your available RAM can su
 
 #### Recommendation
 
-Each `node_size` has a corresponding requirement for available RAM. For example, if you set `node_size` to `huge`, you should have at least 32GB of available RAM to help ensure that `rippled` can run smoothly.
+Each `node_size` has a corresponding requirement for available RAM. For example, if you set `node_size` to `huge`, you should have at least 32 GB of available RAM to help ensure that `rippled` can run smoothly.
 
 To tune your server, it may be useful to start with `tiny` and increase the size to `small`, `medium`, and so on as you refine the requirements for your use case.
 
 | RAM available for `rippled` | `node_size` value | Notes                      |
 |:----------------------------|:------------------|:---------------------------|
-| < 8GB                       | `tiny`            | Not recommended for testing or production servers. This is the default value if you don't specify a value in `rippled.cfg`. |
-| 8GB                         | `small`           | Recommended for test servers. |
-| 16GB                        | `medium`          | The `rippled-example.cfg` file uses this value. |
-| 32GB                        | `huge`            | Recommended for production servers. |
+| < 8 GB                      | `tiny`            | Not recommended for testing or production servers. This is the default value if you don't specify a value in `rippled.cfg`. |
+| 8 GB                        | `small`           | Recommended for test servers. |
+| 16 GB                       | `medium`          | The `rippled-example.cfg` file uses this value. |
+| 32 GB                       | `huge`            | Recommended for production servers. |
 
 Although `large` is also a legal value for `[node_size]`, in practice it performs worse than `huge` in most circumstances. Ripple recommends always using `huge` instead of `large`.
 
@@ -47,13 +55,13 @@ You can set the value to either `RocksDB` or `NuDB`.
 
 - For most cases, use `NuDB` because its performance is constant even with large amounts of data on disk. A fast SSD is required. [Learn more](#more-about-using-nudb)
 
-- If you are using rotational disks (not recommended) or even just a slow SSD, use `RocksDB`. [Learn more](#more-about-using-rocksdb)
+- If you are using rotational disks (not recommended) or an unusually slow SSD, use `RocksDB`. [Learn more](#more-about-using-rocksdb)
 
 The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza set to `RocksDB`.
 
 #### More About Using RocksDB
 
-[RocksDB](https://rocksdb.org/docs/getting-started.html) is an embeddable persistent key-value store.
+[RocksDB](https://rocksdb.org/docs/getting-started.html) is an persistent key-value store built into `rippled`.
 
 RocksDB works well on solid-state disks. RocksDB performs better than NuDB when used with rotational disks, but you may still encounter performance problems unless you use solid-state disks.
 
@@ -121,7 +129,7 @@ For best performance in enterprise production environments, Ripple recommends ru
 - CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
 - Disk speed: SSD (7000+ writes/second, 10,000+ reads/second)
 - Disk space: Varies. At least 50 GB recommended.
-- RAM: 32GB
+- RAM: 32 GB
 - Network: Enterprise data center network with a gigabit network interface on the host
 
 #### CPU Utilization and Virtualization
@@ -165,7 +173,7 @@ If you want to contribute to storing ledger history but you do not have enough d
 
 ##### Amazon Web Services
 
-Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but Ripple does not recommend using Elastic Block Storage (EBS). Elastic Block Storage's maximum number of IOPS (5,000) is insufficient for `rippled`'s heaviest loads, despite being very expensive.
+Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but Ripple does not recommend using Elastic Block Storage (EBS). Elastic Block Storage's maximum number of IOPS (5,000) is insufficient for `rippled`'s heaviest loads, despite being very expensive. <!-- SPELLING_IGNORE: iops, ebs, aws -->
 
 AWS instance stores (`ephemeral` storage) do not have these constraints. Therefore, Ripple recommends deploying `rippled` servers with host types such as `M3` that have instance storage. The `database_path` and `node_db` path should each reside on instance storage.
 
@@ -177,15 +185,20 @@ Memory requirements are mainly a function of the `node_size` configuration setti
 
 #### Network
 
-Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers.
+Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](ledger-history.html)) also affects network use.
 
-Here are examples of observed network bandwidth use for common `rippled` tasks:
+During exceptionally high periods of transaction volume, some operators have reported that their `rippled` servers have completely saturated a 100 MBit/s network link. Therefore, a gigabit network interface is required for reliable performance.
+
+Here are examples of observed uncompressed network bandwidth use for common `rippled` tasks:
 
 | Task                                            | Transmit/Receive           |
 |:------------------------------------------------|:---------------------------|
-| Process current transaction volumes             | 2Mbps transmit, 2 Mbps receive |
-| Serve historical ledger and transaction reports | 100Mbps transmit           |
-| Start up `rippled`                              | 20Mbps receive             |
+| Process average transaction volumes             | 2 Mbps transmit, 2 Mbps receive |
+| Process peak transaction volumes                | >100 Mbps transmit          |
+| Serve historical ledger and transaction reports | 100 Mbps transmit           |
+| Start up `rippled`                              | 20 Mbps receive             |
+
+You can save bandwidth by [enabling compression on peer-to-peer communications](enable-link-compression.html), at a cost of higher CPU. Many hardware configurations have spare CPU capacity during normal use, so this can be an economical option if your network bandwidth is limited.
 
 
 ## See Also
