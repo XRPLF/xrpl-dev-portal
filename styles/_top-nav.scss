@@ -1,195 +1,250 @@
 /* Top navigation ----------------------------------------------------------- */
+.top-nav {
+  // Logo
 
-.navbar .navbar-nav .nav-link {
-  color: $white;
-}
+  .navbar-brand {
+    text-decoration: none;
+    white-space: pre;
+    -webkit-transition: opacity 200ms ease, color 200ms ease;
+    transition: opacity 200ms ease, color 200ms ease;
+  }
+  .navbar-brand:hover {
+    opacity: 0.5;
+  }
 
-.dropdown-toggle::after {
-  border-width: 0;
-  position: absolute;
-  top: 80%;
-  left: 50%;
-}
+  // Main Links ----------------------------------------------------------------
+  .navbar-nav {
+    .nav-link {
+      color: $white;
+      font-size: 1rem;
+      line-height: 52px;
+      text-decoration: none;
 
-.dropdown-toggle.with-caret::after {
-  position: relative;
-  top: 4px;
-  left: 0;
-  border-top: 8px solid $primary;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  border-bottom: 0;
-  transition: 0.2s;
-}
+      &:hover {
+        background-color: transparent;
+        box-shadow: inset 0 -1px 0 0 #000;
+        text-decoration: none;
+      }
 
-.dropdown.show .dropdown-toggle.with-caret::after {
-  // border-top: 0;
-  // border-right: 5px solid transparent;
-  // border-left: 5px solid transparent;
-  // border-bottom: 8px solid $primary;
-  transform: scaleY(-1);
-}
+      &.active a {
+        font-weight: 700;
+        box-shadow: inset 0 -1px 0 0 #000;
+      }
+      &.active-parent a {
+        font-weight: 700;
+        box-shadow: inset 0 -1px 0 0 #000;
+      }
+    }
+    // Buttons in top nav
+    .btn-outline-secondary {
+      font-size: 14px;
+      line-height: 125%;
+      margin-top: .5rem;
+    }
+    @media(max-width: 991px) {
+      .wrap-button {
+        padding: 1.5rem 0;
 
-.dropdown.show .dropdown-toggle {
-  color: $gray-500;
-  position: relative;
-}
-
-.dropdown.show .dropdown-toggle:not(.with-caret)::after,
-.dropdown-toggle:not(.with-caret):hover::after {
-  content: " ";
-  display: static;
-  border: 3px solid $primary;
-  border-radius: 50%;
-  font-size: 0;
-  height: 0;
-  width: 0;
-}
-
+        .btn {
+          display: inline;
+          padding: 1rem 1.25rem;
+        }
+      }
+    }
+  }
 
 
-.navbar .dropdown-menu {
-  backdrop-filter: blur(8px);
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  min-width: 250px;
+  // Dropdowns -----------------------------------------------------------------
+  // (Mobile first)
+  .dropdown-toggle {
+    position: relative;
+  }
+  .dropdown-toggle::after {
+    position: absolute;
+    border-color: $gray-500 transparent transparent transparent;
+    border-width: 8px 5px 0 5px;
+    top: 40%;
+    left: auto;
+  }
+  .dropdown.show {
+    .dropdown-toggle {
+      color: $gray-500;
+    }
+    .dropdown-toggle::after {
+      border-color: $primary transparent transparent transparent;
+    }
+  }
+  .dropdown-menu {
+    border-width: 0;
 
-  .dropdown-item {
-    line-height: 262%;
-    border-bottom: 2px solid $black;
+    .dropdown-item {
+      line-height: 262%;
+      padding: 0 3rem;
 
-    &:last-child {
-      border-bottom: 0;
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+  // Desktop version
+  @media(min-width: 992px) {
+    .dropdown-toggle::after {
+      border-width: 0;
+      top: 80%;
+      left: 50%;
     }
 
-    &.active, &:hover {
+    .dropdown-toggle.with-caret::after {
+      position: relative;
+      top: 4px;
+      left: 0;
+      border-top: 8px solid $primary;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+      border-bottom: 0;
+      transition: 0.2s;
+    }
+
+    .dropdown.show .dropdown-toggle.with-caret::after {
+      transform: scaleY(-1);
+    }
+
+    .dropdown.show .dropdown-toggle {
+      color: $gray-500;
+      position: relative;
+    }
+
+    .dropdown.show .dropdown-toggle:not(.with-caret)::after,
+    .dropdown-toggle:not(.with-caret):hover::after {
+      content: " ";
+      display: static;
+      border: 3px solid $primary;
+      border-radius: 50%;
+      font-size: 0;
+      height: 0;
+      width: 0;
+    }
+
+    .dropdown-menu {
+      border-width: 1px;
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      min-width: 250px;
+
+      .dropdown-item {
+        line-height: 44px;
+      }
+    }
+  }
+
+  // Search bar & controls -----------------------------------------------------
+  #navbar-search {
+    @media(min-width: 992px) {
+      position: static; // allows search bar to be positioned screen-center
+      .dropdown-toggle {
+        position: relative;
+      }
+
+      .dropdown-menu {
+        padding: 0;
+        border-radius: 8px;
+        width: 640px;
+        left: calc(50% - 320px);
+      }
+
+      .input-group {
+        width: 100%;
+      }
+
+      #topsearchbox,
+      .input-group-text,
+      .input-group > .input-group-append > .btn {
+        color: $white;
+        background-color: transparent;
+        border-width: 0;
+      }
+      #topsearchbox {
+        line-height: 24px;
+        height: 100%;
+        width: 100%;
+      }
+
+      .input-group > .input-group-append > .btn {
+        border-left: 1px solid black;
+      }
+      .algolia-autocomplete {
+        flex-grow: 1;
+      }
+    }
+
+    // Algolia Search results --------------------------------------------------
+    .algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
+      background-color: rgba(0,0,0,0.9);
+      border: 1px solid $gray-900;
+      border-radius: 8px;
+    }
+    .algolia-autocomplete .ds-dropdown-menu::before {
+      background-color: rgba(0,0,0,0.9);
+      border-color: $gray-900;
+    }
+    .algolia-docsearch-suggestion {
+      background-color: rgba(0,0,0,0.9);
+    }
+    .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
+      color: $white;
+      border: 0 solid $secondary;
+      border-bottom-width: 1px;
       font-weight: bold;
     }
-  }
-}
 
-.navbar-brand {
-  text-decoration: none;
-  white-space: pre;
-  -webkit-transition: opacity 200ms ease, color 200ms ease;
-  transition: opacity 200ms ease, color 200ms ease;
-}
-.navbar-brand:hover {
-  opacity: 0.5;
-}
+    .algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
+      color: $white;
+    }
 
-.navbar .navbar-nav .nav-link {
-  font-size: 1rem;
-  line-height: 52px;
-  text-decoration: none;
-}
+    .algolia-autocomplete .algolia-docsearch-suggestion--title {
+      color: $white;
+    }
 
-.navbar .navbar-nav .nav-link:hover {
-  background-color: transparent;
-  box-shadow: inset 0 -1px 0 0 #000;
-  text-decoration: none;
-}
+    .algolia-autocomplete .algolia-docsearch-suggestion--text {
+      font-size: 0.8rem;
+      color: $gray-200;
+    }
 
-.navbar .navbar-nav .active a {
-  font-weight: 700;
-  box-shadow: inset 0 -1px 0 0 #000;
-}
-.navbar .active-parent a {
-  font-weight: 700;
-  box-shadow: inset 0 -1px 0 0 #000;
-}
-
-#navbar-search {
-  position: relative;
-  margin-right: 0.375rem;
-}
-
-#navbar-search .form-inline {
-  min-width: 224px; /* more room for placeholder text */
-}
-
-#topsearchbar {
-  background-color: $black;
-  color: $white;
-  padding-right: 40px;
-  width: 100%;
-  font-size: 0.875rem;
-}
-
-#navbar-search .btn {
-  position: absolute;
-  right: 0;
-}
-
-/* Top navigation Mobile ----------------------------------------------------------- */
-@media (max-width: 991px) {
-
-  .navbar .navbar-nav .nav-link {
-    height: 48px;
-  }
-  .github-edit-wrap {
-    margin: 20px 10px 20px 0;
+    .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+      color: $white;
+      background-color: $green-800;
+    }
   }
 
-  #navbar-search .btn::after {
-    display: none;
+  // Mobile --------------------------------------------------------------------
+  @media (max-width: 991px) {
+    .navbar-brand {
+      padding-left: 15px;
+    }
+    .navbar-toggler {
+      border: 0;
+      padding: 0;
+
+      &:not(.collapsed) {
+        // Hack: turn white hamburger to approximately $green
+        filter: brightness(0.5) sepia(1) saturate(5000%) hue-rotate(114deg) brightness(1.96) saturate(87%);
+      }
+    }
+
+    .navbar-nav .nav-link {
+      line-height: 150%;
+    }
+
+    .github-edit-wrap .github-edit.nav-link {
+      background-image: unset;
+      padding-left: inherit;
+    }
+
   }
 
-  .navbar-collapse {
-    background-color: white;
-    position: absolute;
-    top: 200px;
-    right: 0;
-    overflow: scroll;
-    width: 260px;
-    max-height: 60vh;
-    margin-right: 24px;
-    margin-bottom: 108px;
-    padding: 24px;
-    -webkit-box-flex: 1;
-    z-index: 10;
-
-    transform: translateX(1000px);
-    transition-duration: 1s;
+  // Language toggle -----------------------------------------------------------
+  .language-selector {
+    font-size: 0.875rem;
   }
-
-  .navbar-collapse.show {
-    transform: translateX(0px);
-    transition-duration: 0.5s;
-  }
-
-  .menu-overlay.active {
-    transform: translateX(0px);
-    transition-duration: 0.5s;
-  }
-
-  .menu-overlay {
-    background-color: black;
-    bottom: 0;
-    left: 0;
-    opacity: 0.88;
-    filter: alpha(opacity=80);
-    /* IE7 & 8 */
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 5;
-    transform: translateX(1000px);
-    transition-duration: 0.5s;
-  }
-
-}
-
-
-
-@media (max-width: 1010px) {
-  .navbar-brand,
-  .github-edit-wrap,
-  #navbar-search {
-    margin-right: 3px;
-  }
-}
-
-#navbarHolder .language-selector {
-  font-size: 0.875rem;
 }
