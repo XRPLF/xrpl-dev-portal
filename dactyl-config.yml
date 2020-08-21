@@ -129,6 +129,9 @@ targets:
             "transaction-metadata.html#affectednodes": "transaction-metadata.html"
             # Fix link from untranslated peer-crawler.html:
             "peer-protocol.html#private-peers": "peer-protocol.html#プライベートピア"
+            # Fix links from untranslated invariant-checking.html
+            "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
+            "xrp.html#xrp-properties": "xrp.html#xrpの特性"
 
 
     -   name: xrp-api-only
@@ -1001,7 +1004,7 @@ pages:
 
         # TODO: translate this page and blurb
     -   md: concepts/consensus-network/invariant-checking.md
-        html: invariant-checking-concept.html
+        html: invariant-checking.html
         funnel: Docs
         doc_type: Concepts
         category: Consensus Network
