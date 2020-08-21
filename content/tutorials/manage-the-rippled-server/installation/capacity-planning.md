@@ -1,3 +1,11 @@
+---
+html: capacity-planning.html
+funnel: Docs
+doc_type: Tutorials
+category: Manage the rippled Server
+subcategory: Installation
+blurb: Plan system specs and tune configuration for rippled in production environments.
+---
 # Capacity Planning
 
 This section describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of your `rippled` server. Being aware of these considerations can help you ensure that your `rippled` server is ready to handle XRP Ledger network capacity today and in the near future.
@@ -177,15 +185,20 @@ Memory requirements are mainly a function of the `node_size` configuration setti
 
 #### Network
 
-Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers.
+Any enterprise or carrier-class data center should have substantial network bandwidth to support running `rippled` servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](ledger-history.html)) also affects network use.
 
-Here are examples of observed network bandwidth use for common `rippled` tasks:
+During exceptionally high periods of transaction volume, some operators have reported that their `rippled` servers have completely saturated a 100 MBit/s network link. Therefore, a gigabit network interface is required for reliable performance.
+
+Here are examples of observed uncompressed network bandwidth use for common `rippled` tasks:
 
 | Task                                            | Transmit/Receive           |
 |:------------------------------------------------|:---------------------------|
-| Process current transaction volumes             | 2 Mbps transmit, 2 Mbps receive |
+| Process average transaction volumes             | 2 Mbps transmit, 2 Mbps receive |
+| Process peak transaction volumes                | >100 Mbps transmit          |
 | Serve historical ledger and transaction reports | 100 Mbps transmit           |
 | Start up `rippled`                              | 20 Mbps receive             |
+
+You can save bandwidth by [enabling compression on peer-to-peer communications](enable-link-compression.html), at a cost of higher CPU. Many hardware configurations have spare CPU capacity during normal use, so this can be an economical option if your network bandwidth is limited.
 
 
 ## See Also

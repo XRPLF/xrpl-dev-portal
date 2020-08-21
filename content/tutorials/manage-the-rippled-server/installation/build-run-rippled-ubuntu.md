@@ -87,12 +87,12 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 7. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
 
         $ git log -1
+        commit 01bd5a2646cda78ee09d2067c287c8f89872736d
+        Author: manojsdoshi <mdoshi@ripple.com>
+        Date:   Tue Aug 18 15:32:50 2020 -0700
 
-        commit 06c371544acc3b488b9d9c057cee4e51f6bef7a2
-        Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Mon Nov 25 22:58:03 2019 -0800
+            Set version to 1.6.0
 
-            Set version to 1.4.0
 
 
 
