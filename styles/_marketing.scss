@@ -53,6 +53,7 @@
 	}
 }
 
+
 /* COMPONENTS */
 .border-green {
 	border: 1px solid $primary;
@@ -319,4 +320,14 @@
 	position: absolute;
 	left: 0;
 	top: 302px;
+}
+
+#page-uses-top {
+
+}
+
+#table-overview {
+	td:nth-child(1){
+		width: 40%;
+	}
 }

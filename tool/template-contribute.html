@@ -19,30 +19,35 @@
   <div class="container my-40 marketing-wrapper">
     <section class="row mb-50">
       <div class="col-md-5">
-        <h6 class="text-primary mb-4">{% trans %}Contribute to XRPL.org{% endtrans %}</h6>
-        <h1 class="mb-10">{% trans %}How to Suggest Changes to the Site{% endtrans %}</h1>
+        <div class="d-flex flex-column-reverse justify-content-end">
+          <h1 class="mb-10">{% trans %}Join the Conversation{% endtrans %}</h1>
+          <h6 class="text-primary mb-4">{% trans %}Find Your Voice{% endtrans %}</h6>
+        </div>
         <p>{% trans %}Thank you for your interest in contributing to XRPL.org.{% endtrans %}</p>
         <p>{% trans %}This website was created for the community and is meant to be a living, breathing source of truth for XRP resources.{% endtrans %}</p>
-				<p>{% trans %}If you’d like to recommend new content, please fill out the form or submit your changes in GitHub.{% endtrans %}</p>
+				<p>{% trans %}If you'd like to recommend new content or provide feedback, see these community resources:{% endtrans %}</p>
       </div>
-      <div class="col-md-6 offset-md-1">
-        <form id="contact-form" method="post" action="contact-form-handler.php">
-        	<label class="text-primary bold h6" for="name">Name*</label>
-        	<input type="text" name="name" placeholder="Your Name" required>
-        	<label class="text-primary bold h6 mt-4" for="email">Email*</label>
-        	<input type="email" name="email" placeholder="Your Email" required>
-        	<label class="text-primary bold h6 mt-4" for="message">Message*</label>
-        	<textarea name="message" placeholder="Message" required name="message"></textarea>
-        	<input type="submit" class="form-control submit mt-4" value="Submit">
-        </form>
+      <div class="col-md-6 offset-md-1 mb-10">
+        <div class="d-flex flex-wrap w-100">
+          <a class="square square-50 d-flex card-b" href="#">
+            <img class="mw-100" src="./img/exchanges/coinbase.png">
+          </a>
+          <a class="square square-50 d-flex card-b" href="#">
+            <img class="mw-100" src="./img/exchanges/binance.png">
+          </a>
+        </div>
       </div>
     </section>
 
     <section class="row mb-50">
-      <div class="col-md-4 offset-md-1 order-1 order-md-2 mb-10">
-        <img class="mw-100 mb-10" src="./img/marketing/impact-democratizing-payments@2x.png">
+      <div class="col-md-6 offset-md-1 order-2 mb-10">
+        <div class="d-flex flex-wrap w-100">
+          <a class="square square-50 d-flex card-b" href="#">
+            <img class="mw-100" src="./img/exchanges/coinbase.png">
+          </a>
+        </div>
       </div>
-      <div class="col-md-6 offset-md-1 order-2 order-md-1">
+      <div class="col-md-5 order-1">
         <h2 class="mb-10 h1">{% trans %}For Developers{% endtrans %}</h2>
         <p class="mb-10 normal">{% trans %}Contributing to the developer portal of XRPL.org is a great way to learn about the XRP Ledger.{% endtrans %}</p>
         <p>{% trans %}You may also be interested in learning about Interledger Protocol (ILP), which, along with the XRP Ledger, is another part of the Xpring developer ecosystem.{% endtrans %}</p>
@@ -57,7 +62,6 @@
 
 
 {% block endbody %}
-<script src="https://www.google.com/recaptcha/api.js"></script>
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
 </script>

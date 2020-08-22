@@ -261,6 +261,15 @@ pages:
             - en
             - ja
 
+# "Contribute" page ---------------------------------------------------------------
+    -   name: Contribute
+        html: contribute.html
+        template: template-contribute.html
+        sidebar: disabled
+        targets:
+            - en
+            - ja
+
 # "Build" funnel ---------------------------------------------------------------
     -   name: Build
         funnel: Build
@@ -6179,13 +6188,7 @@ pages:
             - ja
 
 
-    -   name: Contribute
-        funnel: Contribute
-        html: contribute.html
-        template: template-contact.html
-        targets:
-            - en
-            - ja
+    
 # --------------- end "Docs" section -------------------------------------------
 # Use Cases: removing these, to be finished later ------------------------------
     # -   md: use-cases/use-cases.md

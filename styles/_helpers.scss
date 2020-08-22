@@ -1,4 +1,10 @@
 /* HEIGHT AND WIDTH HELPERS */
+.h32 {
+	height: 32px;
+}
+.w32 {
+	width: 32px;
+}
 .h36 {
 	height: 36px;
 }
@@ -7,6 +13,9 @@
 }
 .w40 {
 	width: 40px;
+}
+.w44 {
+	width: 44px;
 }
 .w48 {
 	width: 48px;
@@ -111,4 +120,7 @@
 }
 .ls-none {
 	list-style: none;
+}
+.no-wrap {
+	white-space: nowrap;
 }
