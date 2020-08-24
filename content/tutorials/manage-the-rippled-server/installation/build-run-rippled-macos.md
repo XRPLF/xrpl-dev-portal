@@ -53,17 +53,21 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
         $ git clone git@github.com:ripple/rippled.git
         $ cd rippled
 
-0. By default, cloning puts you on the `develop` branch. Use this branch if you are doing development work and want the latest set of untested features.
+0. Switch to the appropriate branch for the software version you want:
 
-      If you want the latest stable release, checkout the `master` branch.
+    For the latest stable release, use the `master` branch.
 
         $ git checkout master
 
-      If you want to test out the latest release candidate, checkout the `release` branch:
+    For the latest release candidate, use the `release` branch:
 
         $ git checkout release
 
-      Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
+    For the latest in-progress version, use the `develop` branch:
+
+        $ git checkout develop
+
+    Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
 
 0. In the `rippled` directory you cloned, create your build directory and access it. For example:
 

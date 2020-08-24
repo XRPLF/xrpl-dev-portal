@@ -1,7 +1,7 @@
 # download_shard
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp "Source")
 
-Instructs the server to download a specific [shard of historical ledger data](history-sharding.html) from an external source. Your `rippled` server must be [configured to store history shards](configure-history-sharding.html). [New in: rippled 1.1.0][]
+Instructs the server to download a specific [shard of historical ledger data](history-sharding.html) from an external source. Your `rippled` server must be [configured to store history shards](configure-history-sharding.html). [Updated in: rippled 1.6.0][]
 
 _The `download_shard` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 
@@ -45,15 +45,23 @@ An example of the request format:
 }
 ```
 
+*Commandline*
+
+```sh
+# Syntax: download_shard [[<index> <url>]]
+rippled download_shard 1 https://example.com/1.tar.lz4 2 https://example.com/2.tar.lz4 5 https://example.com/5.tar.lz4
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 
-The request includes the following fields:
+The request includes the following field:
 
 | `Field`    | Type    | Description                                           |
 |:-----------|:--------|:------------------------------------------------------|
 | `shards`   | Array   | List of Shard Descriptor objects (see below) describing shards to download and where to download them from. |
-| `validate` | Boolean | _(Optional)_ If `false`, skip validating the downloaded data. The default is `true`, which checks that the shard in the archive contains all the data objects for the shard and the shard is part of the ledger history of the current validated ledger. |
+
+The `validate` field is deprecated and may be removed in a future version. (The server always checks the integrity of shards when it imports them.) [Updated in: rippled 1.6.0][]
 
 Each **Shard Descriptor object** in the `shards` array has the following fields:
 
@@ -94,6 +102,19 @@ An example of a successful response:
 }
 ```
 
+*Commandline*
+
+```json
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+
+{
+  "result": {
+    "message": "downloading shards 1-2,5",
+    "status": "success"
+  }
+}
+```
 
 <!-- MULTICODE_BLOCK_END -->
 

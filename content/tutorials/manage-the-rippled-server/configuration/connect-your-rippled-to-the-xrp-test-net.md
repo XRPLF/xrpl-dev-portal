@@ -1,8 +1,8 @@
-# Connect Your rippled to an XRP Ledger Altnet
+# Connect Your rippled to a Parallel Network
 
 Ripple hosts [alternative test and development networks](parallel-networks.html) for developers to test their apps on the latest non-production version of the XRP Ledger (Testnet) or to test and experiment with features on the latest beta version (Devnet). **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](the-rippled-server.html) to either the Testnet or Devnet.
 
-**Note:** The XRP Testnet and Devnet ledger and balances are reset on a regular basis.
+**Caution:** The Devnet frequently has new and experimental [amendments](amendments.html) enabled, so the latest production release version is likely to be amendment blocked when connecting to Devnet. You should use a pre-release or nightly build when connecting to Devnet.
 
 ## Steps
 
