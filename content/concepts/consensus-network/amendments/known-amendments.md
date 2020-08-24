@@ -479,7 +479,7 @@ This is a previous version of the [Flow](#flow) amendment. It was [rejected due 
 | 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | In Development |
 
 Allows validators to include a new optional field in their validations to attest to the hash of
-the latest ledger that that validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
+the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
 
 
 ## MultiSign
