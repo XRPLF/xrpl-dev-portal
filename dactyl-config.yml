@@ -233,6 +233,16 @@ pages:
             - en
             - ja
 
+    -   name: News
+        funnel: Explore
+        category: News
+        template: template-explore-news.html
+        html: news.html
+        sidebar: disabled
+        targets:
+            - en
+            - ja
+
     -   name: Wallets
         funnel: Explore
         category: Wallets
@@ -6201,7 +6211,7 @@ pages:
             - ja
 
 
-    
+
 # --------------- end "Docs" section -------------------------------------------
 # Use Cases: removing these, to be finished later ------------------------------
     # -   md: use-cases/use-cases.md
