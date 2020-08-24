@@ -134,6 +134,12 @@ targets:
             "transaction-metadata.html#affectednodes": "transaction-metadata.html"
             # Fix link from untranslated peer-crawler.html:
             "peer-protocol.html#private-peers": "peer-protocol.html#プライベートピア"
+            # Fix links from untranslated invariant-checking.html
+            "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
+            "xrp.html#xrp-properties": "xrp.html#xrpの特性"
+            # Fix links from untranslated health-check.html:
+            "rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
+            "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
 
 
     -   name: xrp-api-only
@@ -252,6 +258,15 @@ pages:
         category: Businesses
         template: template-explore-businesses.html
         html: businesses.html
+        sidebar: disabled
+        targets:
+            - en
+            - ja
+
+# "Contribute" page ---------------------------------------------------------------
+    -   name: Contribute
+        html: contribute.html
+        template: template-contribute.html
         sidebar: disabled
         targets:
             - en
@@ -1102,6 +1117,17 @@ pages:
         category: Consensus Network
         blurb: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system. #TODO: translate
         targets:
+            - ja
+
+        # TODO: translate this page and blurb
+    -   md: concepts/consensus-network/invariant-checking.md
+        html: invariant-checking.html
+        funnel: Docs
+        doc_type: Concepts
+        category: Consensus Network
+        blurb: Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active.
+        targets:
+            - en
             - ja
 
     -   md: concepts/consensus-network/transaction-queue.md
@@ -2669,6 +2695,12 @@ pages:
         targets:
             - ja
 
+    # TODO: translate this page including the blurb in its frontmatter.
+    -   md: tutorials/manage-the-rippled-server/configure-peering/enable-link-compression.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.md
         html: forward-ports-for-peering.html
         funnel: Build
@@ -2862,6 +2894,18 @@ pages:
         blurb: Collect information to identify the cause of problems.
         targets:
             - en
+
+    # TODO: translate page and blurb
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
+        html: health-check-interventions.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: Use the rippled server's health check as part of automated infrastructure monitoring.
+        targets:
+            - en
+            - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
         html: diagnosing-problems.html
@@ -5973,35 +6017,60 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/peer-crawler.md
+    # TODO: translate title & blurb
+    -   name: Peer Port Methods
+        html: peer-port-methods.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Port Methods
+        template: template-landing-children.html
+        blurb: Special API method for sharing network topology and status metrics.
+        targets:
+            - en
+            - ja
+
+    # TODO: translate page & blurb
+    -   md: references/rippled-api/peer-port-methods/health-check.md
+        html: health-check.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Peer Port Methods
+        blurb: Special API method for reporting server health.
+        targets:
+            - en
+            - ja
+
+    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
         html: peer-crawler.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
-        category: Peer Crawler
+        category: Peer Port Methods
         blurb: Special API method for sharing network topology and status metrics.
         targets:
             - en
 
     # TODO: translate page
-    -   md: references/rippled-api/peer-crawler.md
+    -   md: references/rippled-api/peer-port-methods/peer-crawler.md
         html: peer-crawler.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
-        category: Peer Crawler
+        category: Peer Port Methods
         blurb: ネットワークトポロジーとステータスメトリックを共有するための特殊なAPIメソッドです。
         untranslated_warning: true
         targets:
             - ja
 
     # TODO: translate page & blurb
-    -   md: references/rippled-api/validator-list.md
+    -   md: references/rippled-api/peer-port-methods/validator-list.md
         html: validator-list.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
-        category: Validator List
+        category: Peer Port Methods
         blurb: Special API method for sharing recommended validator lists.
         targets:
             - en
@@ -6132,13 +6201,7 @@ pages:
             - ja
 
 
-    -   name: Contribute
-        funnel: Contribute
-        html: contribute.html
-        template: template-contact.html
-        targets:
-            - en
-            - ja
+    
 # --------------- end "Docs" section -------------------------------------------
 # Use Cases: removing these, to be finished later ------------------------------
     # -   md: use-cases/use-cases.md

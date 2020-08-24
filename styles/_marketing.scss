@@ -53,6 +53,7 @@
 	}
 }
 
+
 /* COMPONENTS */
 .border-green {
 	border: 1px solid $primary;
@@ -307,4 +308,26 @@
 	background-image: url(../../img/backgrounds/bg-overview-top.png);
 	background-repeat: no-repeat;
 	background-position: right 0;
+}
+
+#page-history-bg {
+	background-image: url(../../img/backgrounds/bg-history-mid.png);
+	background-repeat: no-repeat;
+	background-position: right 60%;
+}
+
+#page-history-top {
+	position: absolute;
+	left: 0;
+	top: 302px;
+}
+
+#page-uses-top {
+
+}
+
+#table-overview {
+	td:nth-child(1){
+		width: 40%;
+	}
 }

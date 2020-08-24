@@ -122,6 +122,10 @@ td:nth-child(1) {
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
+  &-50 {
+    flex-basis: calc(50% - 30px);
+  }
 }
 @media (max-width: 768px) { 
   .square {

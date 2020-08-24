@@ -1,0 +1,75 @@
+{% extends "template-base.html" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+  <div class="marketing-wrapper">
+    <div class="container mt-40 mb-30">
+    <section class="row mb-50">
+      <div class="col-md-5">
+        <div class="d-flex flex-column-reverse justify-content-end">
+          <h1 class="mb-10">{% trans %}Join the Conversation{% endtrans %}</h1>
+          <h6 class="text-primary mb-4">{% trans %}Find Your Voice{% endtrans %}</h6>
+        </div>
+        <p>{% trans %}Thank you for your interest in contributing to XRPL.org.{% endtrans %}</p>
+        <p>{% trans %}This website was created for the community and is meant to be a living, breathing source of truth for XRP resources.{% endtrans %}</p>
+				<p>{% trans %}If you'd like to recommend new content or provide feedback, see these community resources:{% endtrans %}</p>
+      </div>
+      <div class="col-md-6 offset-md-1 mb-10 mt-10">
+        <div class="d-flex flex-wrap w-100">
+          <a class="square square-50 d-flex card-b" href="#">
+            <div class="align-center align-self-end">
+              <img class="mw-100 mx-autod-block" src="./img/logos/xpring.png" style="margin-bottom: 48px;">
+              <p class="btn btn-clear d-block">Xpring Forum</p>
+            </div>
+          </a>
+          <a class="square square-50 d-flex card-b" href="#">
+            <div class="align-center align-self-end">
+              <img class="mw-100 mx-auto d-block" src="./img/overview/real.png" style="height: 83px; margin-bottom: 26px;">
+              <p class="btn btn-clear d-block">XRP Chat Forum</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="row mb-30">
+      <div class="col-md-6 offset-md-1 order-2 mb-10">
+        <div class="d-flex flex-wrap w-100">
+          <a class="square square-50 d-flex card-b" href="#">
+            <img class="mw-100" src="./img/logos/github.png">
+          </a>
+        </div>
+      </div>
+      <div class="col-md-5 order-1">
+        <h2 class="mb-10 h1">{% trans %}For Developers{% endtrans %}</h2>
+        <p class="mb-10 normal">{% trans %}Contributing to XRPL.org is a great way to learn about the XRP Ledger. This portal is open-source and anyone can suggest changes. For more information, please <a href="#">read and consider the contributing guidelines</a>.{% endtrans %}</p>
+        <p>{% trans %}You may also be interested in learning about <a href="#">Interledger</a>, <a href="#">Xpring</a>, and <a href="#">PayID</a>.{% endtrans %}</p>
+      </div>
+    </section>
+    
+
+  </div>
+  <img id="page-contribute-bot" src="./img/backgrounds/bg-contribute.png">
+</div>
+{% endblock %}
+
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}
