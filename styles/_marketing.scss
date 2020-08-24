@@ -69,8 +69,9 @@
 	border: 1px solid $white;
 }
 .btn-clear:hover {
-	background: $primary;
+	background: transparent;
 	color: $primary;
+	border: 1px solid $primary;
 }
 .card-wrapper {
 	width: 100%;
