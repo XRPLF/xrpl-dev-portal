@@ -1,4 +1,4 @@
-<div class="github-edit-wrap">
+<div class="nav-item github-edit-wrap">
   {% if target.github_forkurl is defined %}
     {% set have_edit_link = False %}
     {% if currentpage.md is defined %}
@@ -23,6 +23,6 @@
     {% if not have_edit_link %}
       {% set githuburl = target.github_forkurl %}
     {% endif %}
-    <a href="{{githuburl}}" target="_blank" class="github-edit">{% trans %}Edit{% endtrans %}</a>
+    <a href="{{githuburl}}" target="_blank" class="nav-link github-edit">{% trans %}Edit{% endtrans %}</a>
   {% endif %}
 </div><!-- /.github-edit -->

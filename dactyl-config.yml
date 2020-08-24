@@ -54,7 +54,7 @@ cover_page:
 
 languages:
     -   code: en
-        display_name: English
+        display_name: Eng
         prefix: "/"
     -   code: ja
         display_name: 日本語
@@ -69,6 +69,7 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
+        prefix: "/"
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
         readability_goals:
@@ -79,6 +80,7 @@ targets:
         display_name: XRP Ledger Dev Portal (日本語)
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
+        prefix: "/ja/"
         locale_file: locale/ja/LC_MESSAGES/messages.mo
         link_subs:
             # Adjust XRP-API readme link to point to the right place in the repo
@@ -261,16 +263,17 @@ pages:
             - en
             - ja
 
-# "Build" funnel ---------------------------------------------------------------
-    -   name: Build
-        funnel: Build
-        template: template-landing-children.html #TODO: change?
-        html: build.html
+# "Contribute" page ---------------------------------------------------------------
+    -   name: Contribute
+        html: contribute.html
+        template: template-contribute.html
+        sidebar: disabled
         targets:
             - en
             - ja
 
-    -   name: Docs
+# "Build" funnel ---------------------------------------------------------------
+    -   name: Build
         funnel: Build
         template: template-landing-docs.html
         html: docs.html
@@ -6198,6 +6201,7 @@ pages:
             - ja
 
 
+    
 # --------------- end "Docs" section -------------------------------------------
 # Use Cases: removing these, to be finished later ------------------------------
     # -   md: use-cases/use-cases.md
@@ -6350,7 +6354,7 @@ pages:
     -   md: dev-tools/dev-tools.md
         html: dev-tools.html
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         targets:
             - en
 
@@ -6365,14 +6369,14 @@ pages:
         template: template-redirect.html
         redirect_url: dev-tools.html
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         targets:
             - en
             - ja
 
     -   name: RPC Tool
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         html: xrp-ledger-rpc-tool.html
         targets:
             - en
@@ -6381,7 +6385,7 @@ pages:
 
     -   name: WebSocket API Tool
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         template: template-websocket-api-tool.html
         html: websocket-api-tool.html
         targets:
@@ -6390,7 +6394,7 @@ pages:
 
     -   name: Data API v2 Tool
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         html: data-api-v2-tool.html
         methods_js: js/apitool-methods-data_v2.js
         rest_host: https://data.ripple.com
@@ -6403,7 +6407,7 @@ pages:
 
     -   name: ripple.txt Validator # Redirect from ripple.txt validator to toml
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         html: ripple-txt-validator.html
         template: template-redirect.html
         redirect_url: xrp-ledger-toml-checker.html
@@ -6413,7 +6417,7 @@ pages:
 
     -   name: xrp-ledger.toml Checker
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         html: xrp-ledger-toml-checker.html
         targets:
             - en
@@ -6422,7 +6426,7 @@ pages:
 
     -   name: Domain Verification Checker
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         html: validator-domain-verifier.html
         targets:
             - en
@@ -6432,7 +6436,7 @@ pages:
     -   name: XRP Faucets
         html: xrp-testnet-faucet.html
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         template: template-test-net.html
         targets:
             - en
@@ -6441,7 +6445,7 @@ pages:
     -   name: XRP Test Net Faucet # Redirect from old URL
         html: xrp-test-net-faucet.html
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         template: template-redirect.html
         redirect_url: xrp-testnet-faucet.html
         targets:
@@ -6450,7 +6454,7 @@ pages:
 
     -   name: Transaction Sender
         funnel: Build
-        category: Dev Tools
+        doc_type: Dev Tools
         html: tx-sender.html
         targets:
             - en

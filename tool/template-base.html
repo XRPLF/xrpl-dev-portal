@@ -51,52 +51,7 @@
 
 <body class="xrp-ledger-dev-portal {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}lang-{{target.lang}} {% block bodyclasses %}{% endblock %}">
 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-black">
-    <a href="{% if target.no_cover is defined and target.no_cover %}/{% else %}index.html{% endif %}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="{{target.display_name}}" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
-      <ul class="nav navbar-nav">
-        {% set funnels = [] %}
-        {% for page in pages %}
-          {% if page.funnel is defined and page.funnel not in funnels %}
-            {% set thisfunneltop = pages|selectattr('funnel', 'defined_and_equalto', page.funnel)|first %}
-            <li class="nav-item{% if currentpage == thisfunneltop %} active{% elif currentpage.funnel is defined and currentpage.funnel == thisfunneltop.name %} active-parent{% endif %}">
-              <a class="nav-link" href="{{ thisfunneltop.html }}">{{ thisfunneltop.name }}</a>
-            </li>
-            {% set _ = funnels.append(page.funnel) %}
-          {% endif %}
-        {% endfor %}
-        <!-- TODO: add dev blog to "Build"
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/">{% trans %}Blog{% endtrans %}</a>
-        </li>
-        -->
-      </ul><!-- /.navbar-nav -->
-      {% include 'template-github-edit.html' %}
-      <form class="navbar-form navbar-right" id="navbar-search" role="search">
-        <div class="form-inline">
-          <label class="sr-only" for="topsearchbar">{% trans %}Search site...{% endtrans %}</label>
-          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="{% trans %}Search site...{% endtrans %}">
-          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
-        </div>
-      </form>
-      <div class="nav navbar-nav language-selector">
-        <div class="dropdown">
-          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{(config.languages|selectattr('code', 'eq', target.lang)|first).display_name}}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
-            {% for lang in config.languages %}
-            <a class="dropdown-item" href="{{lang.prefix}}{{currentpage.html}}">{{lang.display_name}}</a>
-            {% endfor %}
-          </div><!--/.dropdown-menu-->
-        </div><!--/.dropdown-->
-      </div><!--/.language-selector-->
-    </div><!--/#navbarHolder-->
-    <div class="menu-overlay"></div>
-  </nav>
+  {% include 'template-top-nav.html' %}
 
   <div class="container-fluid" role="document" id="main_content_wrapper">
     <div class="row">
@@ -139,7 +94,7 @@
 <script type="text/javascript"> docsearch({
 apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
 indexName: 'xrpl',
-inputSelector: '#topsearchbar',
+inputSelector: '#topsearchbox',
 algoliaOptions: { 'facetFilters': ["lang:{{target.lang}}"] },
 debug: false
 });
