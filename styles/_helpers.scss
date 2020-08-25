@@ -20,6 +20,13 @@
 .w48 {
 	width: 48px;
 }
+.min-vh100 {
+	min-height: 100vh;
+}
+.vw100 {
+	width: 100vw;
+	min-width: 100%;
+}
 
 /* SPACING HELPERS */
 /* To create new margin classes, multiply by 4px */
@@ -118,9 +125,29 @@
 	padding-bottom: 12.5rem;
 	padding-top: 12.5rem;
 }
+.top-10 {
+	top: 2.5rem;
+}
+
+/*  TEXT HELPERS */
+.va-middle {
+	vertical-align: middle;
+}
 .ls-none {
 	list-style: none;
 }
 .no-wrap {
 	white-space: nowrap;
 }
+.align-items-stretch {
+	align-items: stretch;
+}
+
+/* COLOR ELEMENTS */
+.border-green {
+	border: 1px solid $primary;
+}
+.grey-400 {
+	color: $gray-400
+}
+

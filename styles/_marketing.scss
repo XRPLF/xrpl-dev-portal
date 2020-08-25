@@ -9,100 +9,6 @@
 	}
 }
 
-.va-middle {
-	vertical-align: middle;
-}
-
-.arrow-link:after {
-	content: url(../img/icon-green-arrow.svg);
-	width: 28px;
-  padding-left: 7px;
-  transition: all .2s ease-in-out;
-  display: inline-block;
-  text-decoration: none;
-}
-.arrow-link:hover:after {
-	padding-left: 14px;
-}
-.text-largest {
-	font-size: 1.5rem;
-	font-weight: normal;
-}
-.top-10 {
-	top: 2.5rem;
-}
-.vh100 {
-	height: 100vh;
-	min-height: 100%;
-}
-.vw100 {
-	width: 100vw;
-	min-width: 100%;
-}
-.align-items-stretch {
-	align-items: stretch;
-}
-
-#hero-impact {
-	width: 100vw;
-	// margin-left: -32px;
-}
-@media only screen and (min-width: 768px) {
-  #hero-impact {
-		margin-top: -120px;
-	}
-}
-
-
-/* COMPONENTS */
-.border-green {
-	border: 1px solid $primary;
-}
-.btn {
-	padding: 16px 24px;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: 1.25;
-}
-.btn-clear {
-	color: $white;
-	border: 1px solid $white;
-}
-.btn-clear:hover {
-	background: transparent;
-	color: $primary;
-	border: 1px solid $primary;
-}
-.card-wrapper {
-	width: 100%;
-}
-.card-b {
-	padding: 2rem;
-	background: rgba(34, 37, 43, 0.5);
-	backdrop-filter: blur(3px);
-}
-
-// change this to be less generic
-// .card {
-// 	margin: 0 0.75rem;
-// 	background: black;
-// 	padding: 3rem 2rem;
-// 	color: $white;
-// }
-// .card h5 {
-// 	height: 38px;
-// 	padding-bottom: 5rem;
-// }
-
-.section-marker {
-	position: absolute;
-	font-size: 0.875rem;
-	transform: rotate(90deg);
-	font-weight: normal;
-	top: calc(50% - 64px);
-	margin-left: -32px;
-	transform-origin: top left;
-}
 
 
 /* HOME STYLINGS */
@@ -130,7 +36,7 @@
 .hc {
 	background: black;
 	padding: 2.25rem 2rem 7.75rem;
-	color: var(--white);
+	color: $white;
 	background-position: bottom;
 	background-repeat: no-repeat;
 	background-size: 100% 70px;
@@ -157,106 +63,23 @@
   100% { padding-left: 7px; }
 }
 
-//  TIMELINE 
-.timeline-wrapper {
-    z-index: 999;
-    position: relative;
+
+
+
+#hero-impact {
+	width: 100vw;
 }
-
-
-.timeline:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 18px;
-    height: 102.5%;
-    width: 4px;
-    background: linear-gradient(180deg, rgba(254, 255, 1, 1) 0%, rgba(255, 45, 154, 1) 33%, rgba(163, 8, 143, 1) 66%, rgba(44, 4, 128, 0.85) 100%);
- }
-
-.timeline-dot {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #000;
-  box-sizing: border-box;
+@media only screen and (min-width: 768px) {
+  #hero-impact {
+		margin-top: -120px;
+	}
 }
-
-.timeline-block:first-child .timeline-dot {
-	border: 3px solid #FAFF1A;
-}
-
-.timeline-block:nth-child(2) .timeline-dot {
-	border: 3px solid #FF884B;
-}
-.timeline-block:nth-child(3) .timeline-dot {
-	border: 3px solid #C000E6;
-}
-
-
-.timeline-block {
-    display: flex;
-    position: relative;
-    z-index: 1;
-    margin-bottom: 8px;
-}
-
-.timeline-content {
-  flex-grow: 1;
-  position: relative;
-  margin-left: 1.25em;
-}
-
-.timeline h4 {
-  margin-top: -4px;
-}
-
-@media (min-width: 767px) {
-	.timeline:before {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
-  .timeline-dot {
-  	-ms-flex-order: 1;
-    order: 1;
-    margin-left: calc(5% - 9px);
-    will-change: transform;
-  }
-  .timeline-block:nth-child(even) {
-  	-ms-flex-direction: row-reverse;
-    flex-direction: row-reverse;
-  }
-  .timeline-dot {
-    margin-right: calc(5% - 9px);
-  }
-  .timeline-content {
-  	 width: 45%;
-    -ms-flex-positive: 0;
-    flex-grow: 0;
-    will-change: transform;
-    margin: 0;
-    --line-height-multiplier: 1.2;
-  }
-}
-
-
 #page-impact-bg {
 	background-image: url(../../img/backgrounds/bg-impact-top.png);
 	background-repeat: no-repeat;
   background-position: center 250px;
   background-size: contain;
 }
-
 #page-business-bg {
 	background-image: url(../../img/backgrounds/bg-business-mid.png);
 	background-repeat: no-repeat;
@@ -272,7 +95,6 @@
 	margin-top: -505px;
   z-index: -1;
 }
-
 #page-exchanges-bg {
 	background-image: url(../../img/backgrounds/bg-exchanges-top.png);
 	background-repeat: no-repeat;
@@ -284,8 +106,6 @@
 	margin-top: -446px;
   z-index: -1;
 }
-
-
 #page-wallets-bg {
 	background-image: url(../../img/backgrounds/bg-wallets-top.png);
 	background-repeat: no-repeat;
@@ -297,14 +117,12 @@
 	margin-top: -778px;
   z-index: -1;
 }
-
 #page-contribute-bot {
 	position: absolute;
 	right: 0;
 	margin-top: -199px;
   z-index: -1;
 }
-
 #page-overview-bg {
 	background-image: url(../../img/backgrounds/bg-overview-top.png);
 	background-repeat: no-repeat;
@@ -322,13 +140,200 @@
 	left: 0;
 	top: 302px;
 }
-
-#page-uses-top {
-
-}
-
 #table-overview {
 	td:nth-child(1){
 		width: 40%;
 	}
+}
+
+
+
+
+/* TABLE STYLING */
+.ta-right {
+	text-align: right;
+}
+.dblue {
+	color: #656E81;
+}
+#calculator-table {
+	width: 100%;
+	thead {
+		border-bottom: 3px solid $white;
+	}
+	td {
+		padding: 0.25rem 0.5rem;
+		line-height: 1;
+		@media only screen and (max-width: 768px) {
+			font-size: $base-size;
+		}
+	}
+	tbody td {
+		padding: 2rem 0.5rem;
+	}
+	tbody tr {
+		border-bottom: 1px solid $white;
+	}
+	td:first-child{
+		width: 40%;
+	}
+	
+	.ratio {
+		font-size: .075rem;
+		color: #656E81;
+	}
+}
+
+
+
+
+/* CALCULATOR STYLING */
+#data-selector li a {
+	background: #22252B;
+	padding: 0.5rem 1.3rem;
+	color: $white;
+	white-space: nowrap;
+	font-weight: normal;
+}
+#data-selector li:nth-child(2) {
+	margin-left: -7px;
+	margin-right: -7px;
+}
+#data-selector li.active a {
+	background: $primary;
+	color: #000;
+}
+.tab-content div {
+	display: none;
+}
+.d-output {
+	display: none;
+	margin: 0 12px;
+	max-width: 188px;
+	width: 33%;
+}
+.d-output.active {
+	display: block;
+	animation-fill-mode: forwards;
+	animation: fadeIn 1s ease-in-out;
+}
+.viz-wrapper {
+	position: relative;
+	height: 204px;
+	width: 184px;
+	overflow: hidden;
+	border-radius: 10px;
+}
+.viz-wrapper img {
+	margin-left: -1px;
+	margin-right: -1px;
+}
+@keyframes fadeIn {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+.dot {
+	height: 2px;
+	width: 2px;
+	border-radius: 50%;
+	background-color: red;
+	position: absolute;
+	z-index: -1;
+	top: 98px;
+	left: 68px;
+	transform-origin: center center;
+}
+#kWh-btc-dot {
+	background-color: #FF671A;
+}
+#kWh-eth-dot {
+	background-color: #4F5664;
+}
+#kWh-xrp-dot {
+	background-color: $primary;
+}
+#kWh-pap-dot {
+}
+
+.dash:before {
+	content: url(../../img/icons/dash-line.png);
+	position: absolute;
+	top: -12px;
+	margin-left: 13px;
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+  z-index: 2;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent; 
+  border-color: transparent;
+  color: transparent;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  box-sizing: content-box;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px; 
+  width: 1px; /* Set a specific slider handle width */
+  height: 1px; /* Slider handle height */
+  background: $primary;
+  padding: 0.125rem;
+  border: 8px solid #000;
+  box-shadow: 0 0 0 2px $primary;
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  box-sizing: content-box;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px; 
+  width: 1px; /* Set a specific slider handle width */
+  height: 1px; /* Slider handle height */
+  background: $primary;
+  padding: 0.125rem;
+  border: 8px solid #000;
+  box-shadow: 0 0 0 2px $primary;
+  cursor: pointer; /* Cursor on hover */
+}
+input[type="range"] {
+	background: $primary;
+	height: 3px;
+}
+
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #43e5f7; 
+}
+input[type="range"]::-moz-range-track {  
+  background-color: #9a905d;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #43e5f7; 
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: #9a905d;
 }

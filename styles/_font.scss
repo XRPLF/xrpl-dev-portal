@@ -1,5 +1,5 @@
+$base-size = 1rem;
 // Font Settings ===============================================================
-
 body {
   // font-feature-settings: "liga", "kern";
   text-rendering: optimizeLegibility;
@@ -18,7 +18,6 @@ pre, code {
   font-feature-settings: "liga" 0;
   font-variant-ligatures: none;
 }
-
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -40,8 +39,9 @@ p {
 a:hover {
   text-decoration: none;
 }
+
 .fs-base {
-  font-size: 1rem;
+  font-size: $base-size;
 }
 .fs-5 {
   font-size: 1.25rem;
@@ -58,11 +58,36 @@ a:hover {
 .bold {
   font-weight: bold;
 }
+
+
+.text-largest {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
 .text-large {
   font-size: 1.125rem;
 }
+.text-small {
+  font-size: 0.875rem;
+}
+.text-smaller {
+  font-size: 0.75rem;
+}
 .text-smallest {
   font-size: 0.625rem;
+}
+
+/* STYLIZED LINKS */
+.arrow-link:after {
+  content: url(../img/icon-green-arrow.svg);
+  width: 28px;
+  padding-left: 7px;
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+}
+.arrow-link:hover:after {
+  padding-left: 14px;
 }
 
 /* Japanese language font override ------------------------------------------ */
