@@ -40,6 +40,9 @@
 	background-position: bottom;
 	background-repeat: no-repeat;
 	background-size: 100% 70px;
+	@media (max-width: 991px) {
+	     padding-left: 2rem; 
+	}
 }
 .hc h5 {
 	height: 38px;
