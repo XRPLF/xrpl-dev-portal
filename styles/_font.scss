@@ -1,10 +1,10 @@
-$base-size = 1rem;
+$base-size: 1rem;
 // Font Settings ===============================================================
 body {
   // font-feature-settings: "liga", "kern";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: $base-size;
   background: #000;
   background-color: #000;
   line-height: 1.5;
