@@ -144,6 +144,10 @@ td:nth-child(1) {
   padding: 2rem;
   background: rgba(34, 37, 43, 0.5);
   backdrop-filter: blur(3px);
+  @media (max-width: 768px) { 
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
 .section-marker {
   position: absolute;
