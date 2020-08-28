@@ -1464,6 +1464,7 @@ pages:
             - ja
 
     -   name: Get Started
+        md: tutorials/get-started/get-started.md
         html: get-started.html
         funnel: Build
         doc_type: Tutorials
