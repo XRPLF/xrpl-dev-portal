@@ -9,7 +9,11 @@ The XRP Ledger is always online and entirely public. You can access it directly 
 
 <pre><code id="step2code">
 const mainnet = new ripple.RippleAPI({
-  server: 'wss://s1.ripple.com' // Public rippled server
+  server: 'wss://s1.ripple.com' // Ripple's public cluster
+  // server: 'wss://s2.ripple.com' // Ripple's full history cluster
+  // server: 'wss://xrpl.ws' // XRPL Labs full history cluster
+  // server: 'wss://s.altnet.rippletest.net/' // Testnet
+  // server: 'wss://s.devnet.rippletest.net/' // Devnet
 });
 
 (async function(api) {
