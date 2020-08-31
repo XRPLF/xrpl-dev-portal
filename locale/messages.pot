@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-12 15:10-0700\n"
+"POT-Creation-Date: 2020-08-24 14:10-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: tool/template-base.html:71
-msgid "Blog"
-msgstr ""
-
-#: tool/template-base.html:77 tool/template-base.html:78
-msgid "Search site..."
-msgstr ""
-
 #: tool/template-breadcrumbs.html:3
 msgid "Home"
+msgstr ""
+
+#: tool/template-contribute.html:24
+msgid "Join the Conversation"
+msgstr ""
+
+#: tool/template-contribute.html:25
+msgid "Find Your Voice"
+msgstr ""
+
+#: tool/template-contribute.html:27
+msgid "Thank you for your interest in contributing to XRPL.org."
+msgstr ""
+
+#: tool/template-contribute.html:28
+msgid ""
+"This website was created for the community and is meant to be a living, "
+"breathing source of truth for XRP resources."
+msgstr ""
+
+#: tool/template-contribute.html:29
+msgid ""
+"If you'd like to recommend new content or provide feedback, see these "
+"community resources:"
+msgstr ""
+
+#: tool/template-contribute.html:58
+msgid "For Developers"
+msgstr ""
+
+#: tool/template-contribute.html:59
+msgid ""
+"Contributing to XRPL.org is a great way to learn about the XRP Ledger. "
+"This portal is open-source and anyone can suggest changes. For more "
+"information, please <a href=\"#\">read and consider the contributing "
+"guidelines</a>."
+msgstr ""
+
+#: tool/template-contribute.html:60
+msgid ""
+"You may also be interested in learning about <a "
+"href=\"#\">Interledger</a>, <a href=\"#\">Xpring</a>, and <a "
+"href=\"#\">PayID</a>."
 msgstr ""
 
 #: tool/template-doc.html:27
@@ -45,27 +80,375 @@ msgstr ""
 msgid "In this document"
 msgstr ""
 
-#: tool/template-footer.html:32
-msgid "Ripple Careers"
+#: tool/template-explore-businesses.html:24
+msgid "Solving Real Problems Across Industries"
 msgstr ""
 
-#: tool/template-footer.html:33
-msgid "Ripple on GitHub"
+#: tool/template-explore-businesses.html:25
+msgid "Businesses Running on the XRP Ledger"
 msgstr ""
 
-#: tool/template-footer.html:34
-msgid "XRP Resources"
+#: tool/template-explore-businesses.html:28
+msgid ""
+"While exchanges and wallet providers are the most common businesses "
+"running on the XRP Ledger, there are many other companies that leverage "
+"the technology to solve interesting problems across myriad industries."
 msgstr ""
 
-#: tool/template-footer.html:61
+#: tool/template-explore-businesses.html:31
+#: tool/template-explore-businesses.html:52
+msgid "Asset Custody"
+msgstr ""
+
+#: tool/template-explore-businesses.html:32
+#: tool/template-explore-businesses.html:57
+msgid "Payment Processing"
+msgstr ""
+
+#: tool/template-explore-businesses.html:33 tool/template-explore-news.html:44
+#: tool/template-explore-news.html:49 tool/template-learn-uses.html:49
+#: tool/template-learn-uses.html:54
+msgid "Micropayments"
+msgstr ""
+
+#: tool/template-explore-businesses.html:34
+msgid "Wallets"
+msgstr ""
+
+#: tool/template-explore-businesses.html:35
+#: tool/template-explore-businesses.html:77
+msgid "Music"
+msgstr ""
+
+#: tool/template-explore-businesses.html:38
+#: tool/template-explore-businesses.html:82
+msgid "On-Demand Liquidity"
+msgstr ""
+
+#: tool/template-explore-businesses.html:39
+msgid "Gaming"
+msgstr ""
+
+#: tool/template-explore-businesses.html:40
+#: tool/template-explore-businesses.html:87
+msgid "Infrastructure"
+msgstr ""
+
+#: tool/template-explore-businesses.html:41
+#: tool/template-explore-businesses.html:92
+msgid "Security"
+msgstr ""
+
+#: tool/template-explore-businesses.html:42
+#: tool/template-explore-businesses.html:97
+msgid "Applications"
+msgstr ""
+
+#: tool/template-explore-businesses.html:49
+msgid "Businesses Using XRP"
+msgstr ""
+
+#: tool/template-explore-businesses.html:53
+msgid ""
+"BitGo provides custodial and non-custodial asset holdings for digital "
+"assets including XRP. BitGo's enterprise-level security empowers "
+"businesses to integrate digital currencies like XRP into new and existing"
+" financial systems."
+msgstr ""
+
+#: tool/template-explore-businesses.html:58
+msgid ""
+"BitPay builds powerful, enterprise-grade tools for accepting and spending"
+" cryptocurrencies, including XRP."
+msgstr ""
+
+#: tool/template-explore-businesses.html:62
+msgid "Web Monetization"
+msgstr ""
+
+#: tool/template-explore-businesses.html:63
+msgid ""
+"Coil provides an alternative to the status quo of paid advertisements "
+"with web monetization. Coil's web monetization uses the interledger "
+"protocol (ILP) to stream micropayments as users consume content. The XRP "
+"Ledger's payment channels provide an ideal system for settling these "
+"micropayments at high speed and low cost."
+msgstr ""
+
+#: tool/template-explore-businesses.html:67
+msgid "Online Gaming"
+msgstr ""
+
+#: tool/template-explore-businesses.html:68
+msgid ""
+"Forte offers an unprecedented set of easy-to-use tools and services for "
+"game developers to integrate blockchain technology into their games, to "
+"unlock new economic and creative opportunities for gamers across the "
+"world."
+msgstr ""
+
+#: tool/template-explore-businesses.html:72
+msgid "Wallets and Apps"
+msgstr ""
+
+#: tool/template-explore-businesses.html:73
+msgid ""
+"Exodus offers wallets and applications for securing, managing and "
+"exchanging crypto."
+msgstr ""
+
+#: tool/template-explore-businesses.html:78
+msgid ""
+"Raised in Space is a music/tech investment group focused on raising the "
+"value of music, innovating across the entire value chain of the music "
+"industry."
+msgstr ""
+
+#: tool/template-explore-businesses.html:83
+msgid ""
+"Ripple powers instant, lower-cost settlement of cross-border payments "
+"using XRP to source liquidity on demand. XRP is ideally suited for global"
+" payments because it's quicker, less costly, and more scalable than any "
+"other digital asset."
+msgstr ""
+
+#: tool/template-explore-businesses.html:88
+msgid ""
+"Towo Labs was founded in 2019, to develop XRP Ledger and Interledger "
+"infrastructures and make non-custodial crypto management easier."
+msgstr ""
+
+#: tool/template-explore-businesses.html:93
+msgid ""
+"Xrplorer offers services and tools that help prevent and combat "
+"fraudulent activity on the XRPL as well as custom APIs and analytics that"
+" supplement the XRPL APIs where they are not enough."
+msgstr ""
+
+#: tool/template-explore-businesses.html:98
+msgid ""
+"From cold storage to apps for signing transactions, XRPL Labs is "
+"dedicated to building software on the XRP Ledger."
+msgstr ""
+
+#: tool/template-explore-businesses.html:103
+msgid ""
+"Disclaimer: XRPL.org does not endorse or recommend any wallets or "
+"exchanges, or make any representations with respect to wallets. It’s "
+"advisable to conduct your own due diligence before relying on any third "
+"party or third-party technology."
+msgstr ""
+
+#: tool/template-explore-exchanges.html:23
+msgid "XRP Is Traded on More Than 100 Markets and Exchanges Worldwide"
+msgstr ""
+
+#: tool/template-explore-exchanges.html:24
+msgid "XRP Exchanges"
+msgstr ""
+
+#: tool/template-explore-exchanges.html:27
+msgid "Exchanges are where people trade currencies."
+msgstr ""
+
+#: tool/template-explore-exchanges.html:28
+msgid ""
+"There are different types of exchanges that vary depending on the type of"
+" market (spot, futures, options, swaps), and the type of security model "
+"(custodial, non-custodial)."
+msgstr ""
+
+#: tool/template-explore-exchanges.html:29
+msgid ""
+"Spot exchanges allow people to buy and sell cryptocurrencies at current "
+"(spot) market rates. Futures, options and swap exchanges allow people to "
+"buy and sell standardized contracts of cryptocurrency market rates in the"
+" future."
+msgstr ""
+
+#: tool/template-explore-exchanges.html:30
+msgid ""
+"Custodial exchanges manage a user’s private keys, and publish centralized"
+" order books of buyers and sellers. Non-custodial exchanges, also known "
+"as decentralized exchanges, do not manage a user’s private keys, and "
+"publish decentralized order books of buyers and sellers on a blockchain."
+msgstr ""
+
+#: tool/template-explore-exchanges.html:35
+msgid "Top Exchanges, according to CryptoCompare (as of August 2020):"
+msgstr ""
+
+#: tool/template-explore-exchanges.html:70
+msgid ""
+"Disclaimer: This information is drawn from other sources on the internet."
+"  XRPL.org does not endorse or recommend any exchanges or make any "
+"representations with respect to exchanges or the purchase or sale of "
+"digital assets more generally. It’s advisable to conduct your own due "
+"diligence before relying on any third party or third-party technology, "
+"and providers may vary significantly in their compliance, data security, "
+"and privacy practices."
+msgstr ""
+
+#: tool/template-explore-news.html:22 tool/template-learn-uses.html:23
+msgid "The Best Way to Move Money Around the World"
+msgstr ""
+
+#: tool/template-explore-news.html:23 tool/template-learn-uses.html:24
+msgid "Using XRP"
+msgstr ""
+
+#: tool/template-explore-news.html:26 tool/template-learn-uses.html:27
+msgid ""
+"XRP and the XRP Ledger are used to power innovative technology across the"
+" payments space."
+msgstr ""
+
+#: tool/template-explore-news.html:27
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas "
+"maximus ligula, id tincidunt odio condimentum ac. Pellentesque vulputate "
+"felis lacus, id imperdiet elit tristique id. Ut sapien lorem, finibus id "
+"auctor eu, volutpat finibus nisi. "
+msgstr ""
+
+#: tool/template-explore-news.html:32 tool/template-learn-uses.html:37
+msgid "Cross-Border payments"
+msgstr ""
+
+#: tool/template-explore-news.html:37 tool/template-learn-uses.html:42
+msgid "Cross-Border Payments"
+msgstr ""
+
+#: tool/template-explore-news.html:38 tool/template-learn-uses.html:43
+msgid ""
+"Through RippleNet, financial institutions can use XRP to bridge two "
+"currencies in 3-5 seconds, ensuring payments are quickly sent and "
+"received in the local currency on either side of a transaction."
+msgstr ""
+
+#: tool/template-explore-news.html:39 tool/template-learn-uses.html:44
+msgid "Learn About On-Demand Liquidity"
+msgstr ""
+
+#: tool/template-explore-news.html:50 tool/template-learn-uses.html:55
+msgid ""
+"Businesses are leveraging XRP and the XRP Ledger to build innovative "
+"products for gaming, content and web monetization, among other "
+"applications where money is at the center."
+msgstr ""
+
+#: tool/template-explore-news.html:51 tool/template-learn-uses.html:56
+msgid "Learn About XRPL Businesses"
+msgstr ""
+
+#: tool/template-explore-news.html:56 tool/template-learn-uses.html:61
+msgid "Digital Cryptocurrency"
+msgstr ""
+
+#: tool/template-explore-news.html:61 tool/template-learn-uses.html:66
+msgid "Digital Cryptocurrency Wallets"
+msgstr ""
+
+#: tool/template-explore-news.html:62 tool/template-learn-uses.html:67
+msgid ""
+"Individuals can use mobile wallets to store private and public passwords "
+"and interact with various blockchains to send and receive digital assets,"
+" including XRP."
+msgstr ""
+
+#: tool/template-explore-news.html:63 tool/template-learn-uses.html:68
+msgid "Explore Wallets"
+msgstr ""
+
+#: tool/template-explore-news.html:68 tool/template-explore-news.html:73
+#: tool/template-learn-uses.html:73 tool/template-learn-uses.html:78
+msgid "Exchanges"
+msgstr ""
+
+#: tool/template-explore-news.html:74 tool/template-learn-uses.html:79
+msgid ""
+"Market makers and individuals use exchanges to trade XRP and other "
+"digital assets. Exchanges are often also intermediaries in cross-border "
+"payments among financial institutions."
+msgstr ""
+
+#: tool/template-explore-news.html:75 tool/template-learn-uses.html:80
+msgid "Explore Exchanges"
+msgstr ""
+
+#: tool/template-explore-news.html:80 tool/template-learn-overview.html:185
+#: tool/template-learn-uses.html:85
+msgid "Trading"
+msgstr ""
+
+#: tool/template-explore-news.html:85 tool/template-learn-uses.html:90
+msgid "Institutional Trading"
+msgstr ""
+
+#: tool/template-explore-news.html:86 tool/template-learn-uses.html:91
+msgid ""
+"Market participants use XRP as a high-speed, cost-efficient and reliable "
+"trading collateral. This means seizing arbitrage opportunities, servicing"
+" margin calls and managing general trade inventory in real time."
+msgstr ""
+
+#: tool/template-explore-news.html:87 tool/template-hom-original.html:290
+#: tool/template-hom-original.html:304 tool/template-home.html:26
+#: tool/template-learn-impact.html:53 tool/template-learn-impact.html:69
+#: tool/template-learn-uses.html:92
+msgid "Learn More"
+msgstr ""
+
+#: tool/template-explore-wallets.html:24
+msgid "Options for Storing XRP"
+msgstr ""
+
+#: tool/template-explore-wallets.html:25
+msgid "XRP Wallets"
+msgstr ""
+
+#: tool/template-explore-wallets.html:28
+msgid ""
+"Digital wallets are pieces of software that allow people to send, receive"
+" and store cryptocurrencies, including XRP. There are two types of "
+"digital wallets: custodial and non-custodial."
+msgstr ""
+
+#: tool/template-explore-wallets.html:29
+msgid ""
+"Custodial wallets manage a user's private key, which allows the wallet to"
+" withdraw cryptocurrency on a user's behalf. Non-custodial wallets do not"
+" manage a user's private key, which is up to the user to manage, and "
+"therefore cannot send cryptocurrency on the user's behalf."
+msgstr ""
+
+#: tool/template-explore-wallets.html:34
+msgid "XRPL Trusted Wallets:"
+msgstr ""
+
+#: tool/template-explore-wallets.html:50
+msgid "Hardware Wallets:"
+msgstr ""
+
+#: tool/template-explore-wallets.html:63
+msgid ""
+"Disclaimer: XRPL.org does not endorse or recommend any wallets or make "
+"any representations with respect to wallets or the purchase or sale of "
+"digital assets more generally. It’s advisable to conduct your own due "
+"diligence before relying on any third party or third-party technology, "
+"and providers may vary significantly in their compliance, data security, "
+"and privacy practices."
+msgstr ""
+
+#: tool/template-footer.html:29
 msgid "License"
 msgstr ""
 
-#: tool/template-footer.html:68
+#: tool/template-footer.html:36
 msgid "Jump to top of page"
 msgstr ""
 
-#: tool/template-footer.html:68
+#: tool/template-footer.html:36
 msgid "Top"
 msgstr ""
 
@@ -73,250 +456,1084 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: tool/template-home.html:22
+#: tool/template-hom-original.html:22
 msgid "Powering the Internet of Value."
 msgstr ""
 
-#: tool/template-home.html:24
+#: tool/template-hom-original.html:24
 msgid ""
 "The <a href=\"#xrp_ledger_intro\">XRP Ledger</a> is open-source "
 "technology that anyone can use."
 msgstr ""
 
-#: tool/template-home.html:25
+#: tool/template-hom-original.html:25
 msgid ""
 "Use the tools and information provided here to integrate with and "
 "contribute to the open-source platform."
 msgstr ""
 
-#: tool/template-home.html:26
+#: tool/template-hom-original.html:26
 msgid "Want more?"
 msgstr ""
 
-#: tool/template-home.html:27
+#: tool/template-hom-original.html:27
 msgid "Get updates about XRP Ledger webinars, releases, and documentation!"
 msgstr ""
 
-#: tool/template-home.html:29
+#: tool/template-hom-original.html:29
 msgid "Sign up!"
 msgstr ""
 
-#: tool/template-home.html:50
+#: tool/template-hom-original.html:50
 msgid "Learn How It Works"
 msgstr ""
 
-#: tool/template-home.html:56
+#: tool/template-hom-original.html:56
 msgid "About XRP"
 msgstr ""
 
-#: tool/template-home.html:63
+#: tool/template-hom-original.html:63
 msgid "All Concepts"
 msgstr ""
 
-#: tool/template-home.html:70
+#: tool/template-hom-original.html:70
 msgid "Read Documentation"
 msgstr ""
 
-#: tool/template-home.html:78
+#: tool/template-hom-original.html:78
 msgid "Full Doc Index"
 msgstr ""
 
-#: tool/template-home.html:83
+#: tool/template-hom-original.html:83
 msgid "All Docs"
 msgstr ""
 
-#: tool/template-home.html:90
+#: tool/template-hom-original.html:90
 msgid "Explore the XRP Ledger"
 msgstr ""
 
-#: tool/template-home.html:93
+#: tool/template-hom-original.html:93
 msgid ""
 "Use the XRPL Explorer to view a stream of ledger activity and see "
 "validator statuses."
 msgstr ""
 
-#: tool/template-home.html:97
+#: tool/template-hom-original.html:97
 msgid "Go to the Explorer"
 msgstr ""
 
-#: tool/template-home.html:125
+#: tool/template-hom-original.html:125
 msgid "What is the XRP Ledger?"
 msgstr ""
 
-#: tool/template-home.html:128
+#: tool/template-hom-original.html:128
 msgid ""
 "The XRP Ledger is a decentralized cryptographic ledger, powered by a "
 "network of peer-to-peer servers. It is the home of XRP, a digital asset "
 "designed to bridge the many different currencies in use worldwide."
 msgstr ""
 
-#: tool/template-home.html:132
+#: tool/template-hom-original.html:132
 msgid "xrp-ledger-overview.html#the-digital-asset-for-payments"
 msgstr ""
 
-#: tool/template-home.html:133
+#: tool/template-hom-original.html:133
 msgid "(digital asset icon)"
 msgstr ""
 
-#: tool/template-home.html:134
+#: tool/template-hom-original.html:134
 msgid "The Digital Asset for Payments"
 msgstr ""
 
-#: tool/template-home.html:138
+#: tool/template-hom-original.html:138
 msgid "xrp-ledger-overview.html#censorship-resistant-transaction-processing"
 msgstr ""
 
-#: tool/template-home.html:139
+#: tool/template-hom-original.html:139
 msgid "(censorship resistance icon)"
 msgstr ""
 
-#: tool/template-home.html:140
+#: tool/template-hom-original.html:140
 msgid "Censorship-Resistant Transaction Processing"
 msgstr ""
 
-#: tool/template-home.html:144
+#: tool/template-hom-original.html:144
 msgid "xrp-ledger-overview.html#fast-efficient-consensus-algorithm"
 msgstr ""
 
-#: tool/template-home.html:145
+#: tool/template-hom-original.html:145
 msgid "(consensus algorithm icon)"
 msgstr ""
 
-#: tool/template-home.html:146
+#: tool/template-hom-original.html:146
 msgid "Fast, Efficient Consensus Algorithm"
 msgstr ""
 
-#: tool/template-home.html:150
+#: tool/template-hom-original.html:150
 msgid "xrp-ledger-overview.html#finite-xrp-supply"
 msgstr ""
 
-#: tool/template-home.html:151
+#: tool/template-hom-original.html:151
 msgid "(xrp supply icon)"
 msgstr ""
 
-#: tool/template-home.html:152
+#: tool/template-hom-original.html:152
 msgid "Finite XRP Supply"
 msgstr ""
 
-#: tool/template-home.html:156
+#: tool/template-hom-original.html:156
 msgid "xrp-ledger-overview.html#responsible-software-governance"
 msgstr ""
 
-#: tool/template-home.html:157
+#: tool/template-hom-original.html:157
 msgid "(governance icon)"
 msgstr ""
 
-#: tool/template-home.html:158
+#: tool/template-hom-original.html:158
 msgid "Responsible Software Governance"
 msgstr ""
 
-#: tool/template-home.html:162
+#: tool/template-hom-original.html:162
 msgid "xrp-ledger-overview.html#secure-adaptable-cryptography"
 msgstr ""
 
-#: tool/template-home.html:163
+#: tool/template-hom-original.html:163
 msgid "(cryptography icon)"
 msgstr ""
 
-#: tool/template-home.html:164
+#: tool/template-hom-original.html:164
 msgid "Secure, Adaptable Cryptography"
 msgstr ""
 
-#: tool/template-home.html:168
+#: tool/template-hom-original.html:168
 msgid "xrp-ledger-overview.html#modern-features-for-smart-contracts"
 msgstr ""
 
-#: tool/template-home.html:169
+#: tool/template-hom-original.html:169
 msgid "(smart contracts icon)"
 msgstr ""
 
-#: tool/template-home.html:170
+#: tool/template-hom-original.html:170
 msgid "Modern Features for Smart Contracts"
 msgstr ""
 
-#: tool/template-home.html:174
+#: tool/template-hom-original.html:174
 msgid "xrp-ledger-overview.html#on-ledger-decentralized-exchange"
 msgstr ""
 
-#: tool/template-home.html:175
+#: tool/template-hom-original.html:175
 msgid "(decentralized exchange icon)"
 msgstr ""
 
-#: tool/template-home.html:176
+#: tool/template-hom-original.html:176
 msgid "On-Ledger Decentralized Exchange"
 msgstr ""
 
-#: tool/template-home.html:185
+#: tool/template-hom-original.html:185
 msgid "Start Building"
 msgstr ""
 
-#: tool/template-home.html:187
+#: tool/template-hom-original.html:187
 msgid ""
 "Use these tutorials to get step-by-step guidance to perform common tasks "
 "with the XRP Ledger."
 msgstr ""
 
-#: tool/template-home.html:196
+#: tool/template-hom-original.html:196
 msgid "'list xrp' icon"
 msgstr ""
 
-#: tool/template-home.html:215
+#: tool/template-hom-original.html:215
 msgid "'send xrp' icon"
 msgstr ""
 
-#: tool/template-home.html:234
+#: tool/template-hom-original.html:234
 msgid "'run rippled' icon"
 msgstr ""
 
-#: tool/template-home.html:251
+#: tool/template-hom-original.html:251
 msgid "More Tutorials"
 msgstr ""
 
-#: tool/template-home.html:264
+#: tool/template-hom-original.html:264
 msgid "All Tutorials"
 msgstr ""
 
-#: tool/template-home.html:273
+#: tool/template-hom-original.html:273
 msgid "Related Projects"
 msgstr ""
 
-#: tool/template-home.html:275
+#: tool/template-hom-original.html:275
 msgid ""
 "You're not alone in building the Internet of Value. These projects are "
 "proudly collaborating with the XRP Ledger to make all the world's money "
 "move like information moves today."
 msgstr ""
 
-#: tool/template-home.html:283
+#: tool/template-hom-original.html:283
 msgid "Interledger logo"
 msgstr ""
 
-#: tool/template-home.html:284
+#: tool/template-hom-original.html:284
 msgid "Interledger"
 msgstr ""
 
-#: tool/template-home.html:287
+#: tool/template-hom-original.html:287
 msgid ""
 "Interledger is an open protocol suite for sending payments across "
 "different ledgers."
 msgstr ""
 
-#: tool/template-home.html:290 tool/template-home.html:304
-msgid "Learn More"
-msgstr ""
-
-#: tool/template-home.html:297
+#: tool/template-hom-original.html:297
 msgid "Xpring logo"
 msgstr ""
 
-#: tool/template-home.html:298
+#: tool/template-hom-original.html:298
 msgid "Xpring"
 msgstr ""
 
-#: tool/template-home.html:301
+#: tool/template-hom-original.html:301
 msgid ""
 "Xpring is Ripple’s initiative to create an open developer platform for "
 "money."
+msgstr ""
+
+#: tool/template-home.html:22
+msgid "Scroll Down"
+msgstr ""
+
+#: tool/template-home.html:25
+msgid "XRP: The Best Digital Asset for Payments"
+msgstr ""
+
+#: tool/template-home.html:27
+msgid "Build with XRP"
+msgstr ""
+
+#: tool/template-home.html:32
+msgid "XRP Ledger"
+msgstr ""
+
+#: tool/template-home.html:36
+msgid "What is XRPL.org?"
+msgstr ""
+
+#: tool/template-home.html:37
+msgid "A Community-Driven Resource for All Things XRP and XRP Ledger"
+msgstr ""
+
+#: tool/template-home.html:38
+msgid ""
+"Whether you’re a developer building on the XRP Ledger (XRPL) or just "
+"getting acquainted with blockchain and digital assets, XRPL.org is your "
+"source for technical information, reference materials, tools and all "
+"things XRP."
+msgstr ""
+
+#: tool/template-home.html:48 tool/template-learn-overview.html:49
+#: tool/template-learn-overview.html:139
+msgid "Fast"
+msgstr ""
+
+#: tool/template-home.html:52 tool/template-learn-overview.html:59
+#: tool/template-learn-overview.html:157
+msgid "Scalable"
+msgstr ""
+
+#: tool/template-home.html:60 tool/template-learn-overview.html:54
+#: tool/template-learn-overview.html:148
+msgid "Low Cost"
+msgstr ""
+
+#: tool/template-home.html:64 tool/template-learn-overview.html:64
+#: tool/template-learn-overview.html:166
+msgid "Sustainable"
+msgstr ""
+
+#: tool/template-home.html:70 tool/template-learn-overview.html:28
+msgid "What is XRP?"
+msgstr ""
+
+#: tool/template-home.html:71
+msgid "A Digital Asset Built for Payments"
+msgstr ""
+
+#: tool/template-home.html:72
+msgid ""
+"XRP is a digital asset built for payments. It is the native digital asset"
+" on the XRP Ledger—an open-source, permissionless and decentralized "
+"blockchain technology that can settle transactions in 3-5 seconds."
+msgstr ""
+
+#: tool/template-home.html:73
+msgid ""
+"It is the best way to move money around the world; the fuel for our "
+"growing digital economy."
+msgstr ""
+
+#: tool/template-home.html:75
+msgid "Learn about XRP"
+msgstr ""
+
+#: tool/template-home.html:76 tool/template-learn-history.html:35
+msgid "XRP History"
+msgstr ""
+
+#: tool/template-home.html:82
+msgid "Use Cases"
+msgstr ""
+
+#: tool/template-home.html:83
+msgid "XRP in the Real World"
+msgstr ""
+
+#: tool/template-home.html:87
+msgid "Uses of XRP"
+msgstr ""
+
+#: tool/template-home.html:88
+msgid ""
+"XRP is helping solve previously unsolvable problems for people and "
+"industries around the world, and is one of the only digital assets with a"
+" commercial use case."
+msgstr ""
+
+#: tool/template-home.html:89 tool/template-learn-overview.html:180
+msgid "Explore Uses"
+msgstr ""
+
+#: tool/template-home.html:94
+msgid "Businesses on the Ledger"
+msgstr ""
+
+#: tool/template-home.html:95
+msgid ""
+"From gaming to web monetization, XRP and the XRP Ledger are powering "
+"innovative new technology across the payments space."
+msgstr ""
+
+#: tool/template-home.html:96
+msgid "Explore Businesses"
+msgstr ""
+
+#: tool/template-home.html:101
+msgid "Real-World Impact"
+msgstr ""
+
+#: tool/template-home.html:102
+msgid ""
+"With its real-world utility and inherently green design, XRP helps ensure"
+" a more sustainable future for our planet and global economy."
+msgstr ""
+
+#: tool/template-home.html:103
+msgid "Explore Impact"
+msgstr ""
+
+#: tool/template-home.html:109
+msgid "Sustainability"
+msgstr ""
+
+#: tool/template-home.html:114
+msgid "Green by Nature"
+msgstr ""
+
+#: tool/template-home.html:115
+msgid ""
+"XRP was designed with sustainability in mind. Contrary to other "
+"blockchains that use proof-of-work, the XRP Ledger confirms transactions "
+"through a unique “consensus” mechanism that consumes negligible energy."
+msgstr ""
+
+#: tool/template-home.html:116
+msgid ""
+"Explore the energy consumption of XRP compared to cash, credit cards and "
+"other popular crypto with the Green Currency Calculator."
+msgstr ""
+
+#: tool/template-home.html:117
+msgid "Go Green"
+msgstr ""
+
+#: tool/template-home.html:118
+msgid "Partners in Sustainability"
+msgstr ""
+
+#: tool/template-learn-history.html:24
+msgid "XRP’s Origin"
+msgstr ""
+
+#: tool/template-learn-history.html:25
+msgid "Build a Better Bitcoin"
+msgstr ""
+
+#: tool/template-learn-history.html:28
+msgid ""
+"In 2011, three engineers—David Schwartz, Jed McCaleb and Arthur "
+"Britto—began developing the XRP Ledger."
+msgstr ""
+
+#: tool/template-learn-history.html:29
+msgid ""
+"Fascinated by Bitcoin, they set out to create a better version that "
+"improved upon its limitations—with the goal of creating a digital asset "
+"that was more sustainable and built specifically for payments."
+msgstr ""
+
+#: tool/template-learn-history.html:30
+msgid ""
+"The XRP Ledger first launched in June 2012. Shortly thereafter, they were"
+" joined by Chris Larsen and the group started the Company OpenCoin in "
+"September 2012 (now named Ripple)."
+msgstr ""
+
+#: tool/template-learn-history.html:31
+msgid ""
+"The founders of the XRP Ledger gifted 80 billion XRP to the company. "
+"Ripple has since sold some of its XRP and put the rest in escrow."
+msgstr ""
+
+#: tool/template-learn-history.html:36
+msgid "Timeline of XRP Evolution"
+msgstr ""
+
+#: tool/template-learn-history.html:42
+msgid "2011 XRP Ledger Development"
+msgstr ""
+
+#: tool/template-learn-history.html:43
+msgid ""
+"The history of the XRP Ledger and its native digital asset XRP dates back"
+" to early 2011 when three developers—David Schwartz, Jed McCaleb and "
+"Arthur Britto—were fascinated with Bitcoin but observed the waste "
+"inherent in mining. They sought to create a better system for sending "
+"value (an idea outlined in a May 2011 forum post: “Bitcoin without "
+"mining”)."
+msgstr ""
+
+#: tool/template-learn-history.html:44
+#, python-format
+msgid ""
+"Their initial observations about the high energy consumption and "
+"scalability issues that would plague Bitcoin proved prescient. (In 2019, "
+"estimates suggest Bitcoin mining used more energy than the entire country"
+" of Portugal!) Moreover, their initial read indicated that significant "
+"problems could arise if any miner obtained (or miners colluded to obtain)"
+" greater than 50% of the mining power—that risk persists with Bitcoin "
+"(and Ethereum) today as mining power has consolidated in China."
+msgstr ""
+
+#: tool/template-learn-history.html:50
+msgid "2012 XRP Launched"
+msgstr ""
+
+#: tool/template-learn-history.html:51
+msgid ""
+"In 2011 and early 2012, the trio of developers started a project to build"
+" a distributed ledger that improved upon these fundamental limitations of"
+" Bitcoin—their first ever code commit was in November 2011."
+msgstr ""
+
+#: tool/template-learn-history.html:52
+msgid ""
+"They wrote code, that when executed, would create a distributed ledger, "
+"which they named Ripple. It included a digital asset that would be called"
+" “ripples” (XRP as the currency code) to follow the same naming "
+"convention as bitcoin (BTC). At the time, Ripple stood for the open-"
+"source project, the unique consensus ledger (Ripple Consensus Ledger), "
+"transaction protocol (Ripple Transaction Protocol or RTXP), the network "
+"(Ripple network) and the digital asset (known as “ripples”)."
+msgstr ""
+
+#: tool/template-learn-history.html:53
+msgid ""
+"In practice, this approach led to many, broad uses of “Ripple.” To "
+"clarify, the community simply started calling the digital asset, “XRP.”"
+msgstr ""
+
+#: tool/template-learn-history.html:54
+msgid ""
+"By June 2012, Schwartz, McCaleb and Britto completed code development and"
+" the XRP Ledger was fully functioning."
+msgstr ""
+
+#: tool/template-learn-history.html:55
+msgid ""
+"At that time, they decided their next move would be to gift 80 billion "
+"XRP to a not-yet-formed private company that would work with the broader "
+"community as well as pursue its own payments mission. The ledger code "
+"itself would be open source and for anyone to use."
+msgstr ""
+
+#: tool/template-learn-history.html:56
+msgid ""
+"They all agreed on how to allocate the XRP among themselves and the "
+"future company, and they eventually created the company along with Chris "
+"Larsen in September 2012."
+msgstr ""
+
+#: tool/template-learn-history.html:57
+#, python-format
+msgid ""
+"While from a developer standpoint the XRP Ledger had already been created"
+" in early 2012, the final ledger stuck in late 2012, due to some "
+"stability issues. Once it stuck, 80% of the XRP was gifted to the "
+"company—initially called NewCoin and renamed quickly to OpenCoin."
+msgstr ""
+
+#: tool/template-learn-history.html:58
+msgid ""
+"Chris Larsen was the CEO of OpenCoin, and at the company's founding, Jed "
+"was co-founder and CTO, David Schwartz was the Chief Cryptography "
+"Officer, and Arthur Britto an advisor."
+msgstr ""
+
+#: tool/template-learn-history.html:64
+msgid "2013 OpenCoin Rebranded to Ripple Labs"
+msgstr ""
+
+#: tool/template-learn-history.html:65
+msgid ""
+"At the outset of the company, OpenCoin set out to revolutionize the "
+"global financial system. Despite the revolutionary ideals of many of "
+"Bitcoin’s early believers, Larsen never thought blockchain technology "
+"should be used to overthrow the existing financial system. He believed "
+"that history’s most transformative innovations have always relied on the "
+"great ideas that came before them—not disrupting them."
+msgstr ""
+
+#: tool/template-learn-history.html:66
+msgid ""
+"In early conversations with potential customers, the team was asked about"
+" the differences between the Ripple project and OpenCoin company."
+msgstr ""
+
+#: tool/template-learn-history.html:67
+msgid ""
+"Today, the company uses XRP and the XRP Ledger for liquidity management "
+"in its cross-border payments business. Ripple also remains a stakeholder "
+"and contributor to the broader XRP community."
+msgstr ""
+
+#: tool/template-learn-history.html:75
+msgid "Podcast"
+msgstr ""
+
+#: tool/template-learn-history.html:80
+msgid "How Digital Assets Will Help Create a  Sustainable Global Economy"
+msgstr ""
+
+#: tool/template-learn-history.html:81
+msgid ""
+"Hear from Ripple co-founder Chris Larsen in the inaugural episode of the "
+"Block Stars podcast."
+msgstr ""
+
+#: tool/template-learn-history.html:82
+msgid "Listen Now"
+msgstr ""
+
+#: tool/template-learn-impact.html:23
+msgid "Faster, Cheaper, Green Money"
+msgstr ""
+
+#: tool/template-learn-impact.html:24
+msgid "Impact"
+msgstr ""
+
+#: tool/template-learn-impact.html:27
+msgid ""
+"The digital asset XRP is a truly global currency—ideally suited to enable"
+" today’s global economy."
+msgstr ""
+
+#: tool/template-learn-impact.html:28
+msgid ""
+"As an optimal medium of exchange, XRP and the XRP Ledger on which it "
+"operates help to move money around the world faster, cheaper and more "
+"sustainably than any other currency available today."
+msgstr ""
+
+#: tool/template-learn-impact.html:29
+msgid ""
+"It was designed this way, and it’s proving its impact in global payments "
+"and beyond."
+msgstr ""
+
+#: tool/template-learn-impact.html:30
+msgid "How Green Is Your Currency?"
+msgstr ""
+
+#: tool/template-learn-impact.html:39
+msgid "Creating Economic Opportunity"
+msgstr ""
+
+#: tool/template-learn-impact.html:44
+msgid "Democratizing Global Payments"
+msgstr ""
+
+#: tool/template-learn-impact.html:45
+msgid ""
+"For the more than <a "
+"href=\"https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf\">272 "
+"million migrants</a> worldwide, sending and receiving money across "
+"borders is expensive, unreliable and complex."
+msgstr ""
+
+#: tool/template-learn-impact.html:48
+msgid "XRP and the XRP Ledger are changing that."
+msgstr ""
+
+#: tool/template-learn-impact.html:49
+msgid ""
+"The technology has been adopted by financial institutions around the "
+"world. They use it to source liquidity for international transactions, "
+"and because of the unprecedented efficiency it offers, they’re able to "
+"both bring down costs and improve services."
+msgstr ""
+
+#: tool/template-learn-impact.html:51
+msgid ""
+"This means hundreds of  millions of people worldwide who need to move "
+"money safely and securely across borders can do so more affordably and "
+"reliably than ever before."
+msgstr ""
+
+#: tool/template-learn-impact.html:58
+msgid "Future of Finance"
+msgstr ""
+
+#: tool/template-learn-impact.html:63
+msgid "Building for the Future"
+msgstr ""
+
+#: tool/template-learn-impact.html:64
+msgid ""
+"Digital assets and blockchain technology are the future of finance. Open "
+"and decentralized, they offer the first-ever global standards for value "
+"exchange broadly—whether it’s money, stocks, loyalty points, intellectual"
+" property or more."
+msgstr ""
+
+#: tool/template-learn-impact.html:66
+msgid ""
+"This has spawned increasing adoption of the technology across the "
+"financial services industry, from retail and institutional investment to "
+"commercial use cases like cross-border payments."
+msgstr ""
+
+#: tool/template-learn-impact.html:67
+msgid ""
+"With usage growing, it’s critical that measures are taken today to ensure"
+" that the technology is environmentally sustainable tomorrow."
+msgstr ""
+
+#: tool/template-learn-impact.html:74 tool/template-learn-impact.html:79
+msgid "Are All Digital Assets Alike?"
+msgstr ""
+
+#: tool/template-learn-impact.html:80
+msgid ""
+"Each digital asset has different strengths that make it ideal for various"
+" use cases today."
+msgstr ""
+
+#: tool/template-learn-impact.html:83
+msgid ""
+"Bitcoin is recognized broadly as a store of value and Ether (ETH) for use"
+" in smart contracts."
+msgstr ""
+
+#: tool/template-learn-impact.html:84
+msgid ""
+"XRP is optimal for transacting—it’s fast, cheap, scalable and energy-"
+"efficient. It was designed for use in global payments."
+msgstr ""
+
+#: tool/template-learn-impact.html:87
+msgid ""
+"And, the same characteristics that make it ideal for payments mean it’s "
+"also better for our environment. XRP is green by nature."
+msgstr ""
+
+#: tool/template-learn-impact.html:93
+msgid "What Makes XRP and the XRP Ledger Green?"
+msgstr ""
+
+#: tool/template-learn-impact.html:98
+msgid ""
+"Most currency today—whether digital or physical—is not environmentally "
+"friendly. The potential for long-term impact on our planet could hold "
+"startling consequences."
+msgstr ""
+
+#: tool/template-learn-impact.html:101
+msgid ""
+"The digital asset XRP was designed with sustainability in mind. The XRP "
+"Ledger processes transactions through a unique “consensus” mechanism that"
+" consumes negligible energy and all XRP currency is already in "
+"circulation."
+msgstr ""
+
+#: tool/template-learn-impact.html:102
+msgid ""
+"Other digital assets, like Bitcoin, rely on a different mechanism to both"
+" validate transactions and create new coins. This “proof-of-work” "
+"algorithm requires “mining.” Mining is an incredibly energy-intensive "
+"process for validating transactions that consumes more energy in a year "
+"than entire countries."
+msgstr ""
+
+#: tool/template-learn-impact.html:105
+msgid ""
+"Cash also leaves a substantial carbon footprint, and the environmental "
+"impact goes beyond energy consumption—eutrophication (due to waste), "
+"photochemical ozone creation, greenhouse gas emissions and more factor "
+"into the equation."
+msgstr ""
+
+#: tool/template-learn-impact.html:106
+msgid ""
+"Adopting XRP more broadly will help limit this waste and ensure a "
+"sustainable future for our planet and global economy."
+msgstr ""
+
+#: tool/template-learn-impact.html:109
+msgid "Discover the Green Currency Calculator"
+msgstr ""
+
+#: tool/template-learn-overview.html:23
+msgid "XRP Overview"
+msgstr ""
+
+#: tool/template-learn-overview.html:24
+msgid "Your Questions About XRP, Answered."
+msgstr ""
+
+#: tool/template-learn-overview.html:30
+msgid ""
+"XRP is a digital asset that’s native to the XRP Ledger, an open-source, "
+"permissionless and decentralized blockchain technology."
+msgstr ""
+
+#: tool/template-learn-overview.html:31
+msgid ""
+"Created in 2012 specifically for payments, XRP can settle transactions on"
+" the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, "
+"cheaper and greener than any other digital asset.  "
+msgstr ""
+
+#: tool/template-learn-overview.html:37 tool/template-learn-overview.html:42
+msgid "Benefits"
+msgstr ""
+
+#: tool/template-learn-overview.html:43
+msgid "XRP"
+msgstr ""
+
+#: tool/template-learn-overview.html:44
+msgid "Bitcoin"
+msgstr ""
+
+#: tool/template-learn-overview.html:50
+msgid "3-5 seconds to settle"
+msgstr ""
+
+#: tool/template-learn-overview.html:51
+msgid "500 seconds to settle"
+msgstr ""
+
+#: tool/template-learn-overview.html:55
+msgid "$0.00002/transaction"
+msgstr ""
+
+#: tool/template-learn-overview.html:56
+msgid "$0.50/transaction"
+msgstr ""
+
+#: tool/template-learn-overview.html:60
+msgid "1500 transaction per second"
+msgstr ""
+
+#: tool/template-learn-overview.html:61
+msgid "3 transactions per second"
+msgstr ""
+
+#: tool/template-learn-overview.html:65
+msgid "Environmentally sustainable (negligible energy consumption)"
+msgstr ""
+
+#: tool/template-learn-overview.html:66
+#, python-format
+msgid "0.3% of global energy consumption"
+msgstr ""
+
+#: tool/template-learn-overview.html:74
+msgid "Finite Supply of XRP "
+msgstr ""
+
+#: tool/template-learn-overview.html:79
+msgid ""
+"XRP can be sent directly without needing a central intermediary, making "
+"it a convenient instrument in bridging two different currencies quickly "
+"and efficiently. It is freely exchanged on the open market and used in "
+"the real world for enabling cross-border payments and microtransactions."
+msgstr ""
+
+#: tool/template-learn-overview.html:80
+msgid ""
+"Unlike Bitcoin, there is a finite amount of XRP. All XRP is already in "
+"existence today—100 billion in total."
+msgstr ""
+
+#: tool/template-learn-overview.html:81
+msgid "History of XRP"
+msgstr ""
+
+#: tool/template-learn-overview.html:86
+msgid "XRP Validators"
+msgstr ""
+
+#: tool/template-learn-overview.html:88
+msgid "How Does the XRP Ledger Work?"
+msgstr ""
+
+#: tool/template-learn-overview.html:91
+msgid ""
+"The XRP Ledger stands on open-source technologies on which anyone can "
+"build. The XRP Ledger is maintained by a global “XRP Community”—a diverse"
+" set of participants composed of software engineers, server operators and"
+" validators."
+msgstr ""
+
+#: tool/template-learn-overview.html:92
+msgid ""
+"The XRP Ledger uses a consensus protocol, in which validators come to an "
+"agreement on the order of XRP transactions every 3-5 seconds. This "
+"agreement serves as the final and irreversible settlement."
+msgstr ""
+
+#: tool/template-learn-overview.html:95
+msgid ""
+"Transactions are executed in a deterministic order to prevent double "
+"spending and malicious activity. Unlike other blockchains, transaction "
+"fees are destroyed as part of transaction execution. The XRP Ledger "
+"adjusts fees in near real time to respond to network conditions, with the"
+" twin goals of maximizing transaction throughput while keeping "
+"transaction fees as low as possible."
+msgstr ""
+
+#: tool/template-learn-overview.html:96
+msgid ""
+"All servers in the network process each transaction according to the same"
+" rules, and any transaction that follows the protocol is confirmed as "
+"soon as validators reach a quorum."
+msgstr ""
+
+#: tool/template-learn-overview.html:103
+msgid ""
+"Anyone can operate a validator; currently, over 150 validators are active"
+" on the ledger, operated by  universities, exchanges, businesses and "
+"individuals."
+msgstr ""
+
+#: tool/template-learn-overview.html:104
+msgid "Get Technical"
+msgstr ""
+
+#: tool/template-learn-overview.html:109 tool/template-learn-overview.html:133
+msgid "Internet of Value"
+msgstr ""
+
+#: tool/template-learn-overview.html:111
+msgid "Why Is XRP Useful?"
+msgstr ""
+
+#: tool/template-learn-overview.html:112
+msgid ""
+"XRP is fast, low-cost, sustainable and scalable. It is the key to fueling"
+" growth and realizing the true potential of our global economy—the "
+"Internet of Value."
+msgstr ""
+
+#: tool/template-learn-overview.html:116
+msgid "Businesses"
+msgstr ""
+
+#: tool/template-learn-overview.html:117
+msgid ""
+"Many businesses are building on the XRP Ledger, pursuing powerful use "
+"cases in micropayments, gaming, web monetization and more. Additionally, "
+"Ripple, the technology company, is focused on building a network and "
+"infrastructure that leverages XRP to power faster, more affordable cross-"
+"border payments around the world."
+msgstr ""
+
+#: tool/template-learn-overview.html:118
+msgid "More About Businesses"
+msgstr ""
+
+#: tool/template-learn-overview.html:121
+msgid "Individuals"
+msgstr ""
+
+#: tool/template-learn-overview.html:122
+msgid ""
+"Individual consumers can use XRP to move different currencies around the "
+"world. For example, through the PayID solution, anyone can use XRP—or any"
+" currency, be it fiat or digital assets—to easily make purchases across "
+"any payments network."
+msgstr ""
+
+#: tool/template-learn-overview.html:123
+msgid "More About Uses"
+msgstr ""
+
+#: tool/template-learn-overview.html:126
+msgid "Developers"
+msgstr ""
+
+#: tool/template-learn-overview.html:127
+msgid ""
+"By building on the XRP Ledger, developers can easily integrate payments "
+"into their products—seamlessly putting money at the center of their "
+"applications. Projects like the <a href=\"https://xpring.io/\">Xpring "
+"developer platform</a> are making it easier for developers to leverage "
+"XRP.  "
+msgstr ""
+
+#: tool/template-learn-overview.html:128
+msgid "More About Developers"
+msgstr ""
+
+#: tool/template-learn-overview.html:140
+msgid ""
+"The XRP Ledger settles transactions faster than any other blockchain—in "
+"3-5 seconds."
+msgstr ""
+
+#: tool/template-learn-overview.html:149
+msgid ""
+"XRP transactions cost a fraction of a penny ($0.0002)—much less than "
+"other cryptocurrencies and average fiat payments."
+msgstr ""
+
+#: tool/template-learn-overview.html:158
+msgid "The XRP Ledger can handle up to 1,500 transactions per second."
+msgstr ""
+
+#: tool/template-learn-overview.html:167
+msgid ""
+"XRP transactions settle without the enormous and unsustainable energy "
+"costs associated with proof-of-work (or mining)."
+msgstr ""
+
+#: tool/template-learn-overview.html:175
+msgid "Real"
+msgstr ""
+
+#: tool/template-learn-overview.html:176
+msgid ""
+"XRP is one of the only digital assets with a proven, real-world use case:"
+" cross-border payments."
+msgstr ""
+
+#: tool/template-learn-overview.html:204
+msgid "How Is XRP Used in Trading?"
+msgstr ""
+
+#: tool/template-learn-overview.html:205
+msgid ""
+"XRP is traded on more than 140 markets and <a "
+"href=\"exchanges.html\">exchanges</a> worldwide."
+msgstr ""
+
+#: tool/template-learn-overview.html:206
+msgid ""
+"XRP’s low transaction fees, reliability and high speed enable traders to "
+"use the digital asset as high-speed, cost-efficient and reliable "
+"collateral across trading venues—seizing arbitrage opportunities, "
+"servicing margin calls and managing general trading inventory in real "
+"time."
+msgstr ""
+
+#: tool/template-learn-overview.html:207
+msgid ""
+"Because of the properties inherent to XRP and the ecosystem around it, "
+"traders worldwide are able to shift collateral, bridge currencies and "
+"switch from one crypto into another nearly instantly, across any exchange"
+" on the planet."
+msgstr ""
+
+#: tool/template-learn-overview.html:208
+msgid "Find Out More"
+msgstr ""
+
+#: tool/template-learn-overview.html:214
+msgid "Ripple vs. XRP"
+msgstr ""
+
+#: tool/template-learn-overview.html:220
+msgid "What Is the Relationship Between Ripple and XRP?"
+msgstr ""
+
+#: tool/template-learn-overview.html:221
+msgid ""
+"Ripple is a technology company that makes it easier to build a high-"
+"performance, global payments business through its platform, RippleNet. "
+"XRP is a digital asset independent of this, and is used in Ripple’s On-"
+"Demand Liquidity service to facilitate efficient and cost-effective "
+"cross-border transactions."
+msgstr ""
+
+#: tool/template-learn-overview.html:222
+msgid "Visit Ripple's Website"
+msgstr ""
+
+#: tool/template-learn-overview.html:228
+msgid "XRP Community"
+msgstr ""
+
+#: tool/template-learn-overview.html:234
+msgid "XRPL.org: For the Community, by the Community"
+msgstr ""
+
+#: tool/template-learn-overview.html:235
+msgid ""
+"XRPL.org is a community-driven resource for all things XRP and XRP Ledger"
+" (XRPL). If you’d like to suggest additional information around XRP, you "
+"can suggest changes here."
+msgstr ""
+
+#: tool/template-learn-overview.html:236
+msgid "Suggest Changes"
+msgstr ""
+
+#: tool/template-learn-uses.html:28
+msgid ""
+"From cross-border payments to web monetization, businesses and developers"
+" around the world are leveraging the XRP Ledger and its native digital "
+"asset, XRP—a faster, cheaper and greener currency."
+msgstr ""
+
+#: tool/template-top-nav.html:36
+msgid "Contribute"
+msgstr ""
+
+#: tool/template-top-nav.html:42
+msgid "Open Search"
+msgstr ""
+
+#: tool/template-top-nav.html:47 tool/template-top-nav.html:48
+msgid "Search site..."
+msgstr ""
+
+#: tool/template-top-nav.html:50
+msgid "Close Search"
+msgstr ""
+
+#: tool/template-top-nav.html:59
+msgid "Get Started"
 msgstr ""
 
 #: tool/template-validator-domain-verifier.html:5

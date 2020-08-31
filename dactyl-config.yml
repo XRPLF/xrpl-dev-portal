@@ -232,6 +232,16 @@ pages:
             - en
             - ja
 
+    -   name: News
+        funnel: Explore
+        category: News
+        template: template-explore-news.html
+        html: news.html
+        sidebar: disabled
+        targets:
+            - en
+            - ja
+
     -   name: Wallets
         funnel: Explore
         category: Wallets
@@ -1121,7 +1131,7 @@ pages:
         # TODO: translate this page and blurb
     -   md: concepts/consensus-network/invariant-checking.md
         html: invariant-checking.html
-        funnel: Docs
+        funnel: Build
         doc_type: Concepts
         category: Consensus Network
         blurb: Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active.
@@ -2897,7 +2907,7 @@ pages:
     # TODO: translate page and blurb
     -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
         html: health-check-interventions.html
-        funnel: Docs
+        funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
         subcategory: Troubleshooting rippled
@@ -6019,7 +6029,7 @@ pages:
     # TODO: translate title & blurb
     -   name: Peer Port Methods
         html: peer-port-methods.html
-        funnel: Docs
+        funnel: Build
         doc_type: References
         supercategory: rippled API
         category: Peer Port Methods
@@ -6032,7 +6042,7 @@ pages:
     # TODO: translate page & blurb
     -   md: references/rippled-api/peer-port-methods/health-check.md
         html: health-check.html
-        funnel: Docs
+        funnel: Build
         doc_type: References
         supercategory: rippled API
         category: Peer Port Methods
@@ -6200,7 +6210,7 @@ pages:
             - ja
 
 
-    
+
 # --------------- end "Docs" section -------------------------------------------
 # Use Cases: removing these, to be finished later ------------------------------
     # -   md: use-cases/use-cases.md
