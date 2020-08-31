@@ -50,14 +50,15 @@
 
   <div class="container my-20">
     <section class="row mb-49">
-      <div class="col-sm-4">
+
+      <div class="col-lg-4">
         <div class="rounded sticky-top top-10">
           <div class="border-green p-3 calc-inputs">
             <h4>{% trans %}Comparing Transaction Data{% endtrans %}</h4>
-              <ul class="p-0 mt-10 ls-none" id="data-selector">
-                <li class="d-inline-flex active"><a class="tab-link fs-base va-middle" href="#d-crypto">{% trans %}Crypto{% endtrans %}</a></li>
-                <li class="d-inline-flex"><a class="tab-link fs-base va-middle" href="#d-credit">{% trans %}Credit Cards{% endtrans %}</a></li>
-                <li class="d-inline-flex"><a class="tab-link fs-base va-middle" href="#d-cash">{% trans %}Cash{% endtrans %}</a></li>
+              <ul class="p-0 mt-10 ls-none d-sm-flex d-lg-block d-xl-flex flex-wrap justify-content-around" id="data-selector">
+                <li class="d-block d-xl-inline-flex text-center active"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#d-crypto">{% trans %}Crypto{% endtrans %}</a></li>
+                <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#d-credit">{% trans %}Credit Cards{% endtrans %}</a></li>
+                <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#d-cash">{% trans %}Cash{% endtrans %}</a></li>
               </ul>
               <div class="slidecontainer">
                 <input type="range" min="20" max="100" value="60" class="slider w-100" id="myRange" step="20">
@@ -72,9 +73,9 @@
           </div>
           <a href="#" class="text-white arrow-link bold mt-4 d-block">{% trans %}Learn more about the methodology{% endtrans %}</a>
         </div>
-        
       </div>
-      <div class="col-sm-7 offset-sm-1 scroll-container h-100" id="main">
+      
+      <div class="col-lg-7 offset-lg-1 scroll-container h-100" id="main">
         <section class="min-vh100 mb-40 section1 clearfix">
           <h4>{% trans %}Energy Consumption of Portugal{% endtrans %}</h4>
 
@@ -92,7 +93,7 @@
                 <img src="./img/icons/bw-bitcoin.png" class="mw-100 mt-3">
                 <p class="h6 mt-2 mb-1">Bitcoin</p>
                 <h5 class="h4 normal mb-0" id="kWh-btc"></h5>
-                <p class="text-small black-90">KWh</p>
+                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
               </li>
               <li class="d-output d-crypto active" data-comp="kWh" data-type="eth">
                 <div class="viz-wrapper">
@@ -102,7 +103,7 @@
                 <img src="./img/icons/bw-ethereum.png" class="mw-100 mt-3">
                 <p class="h6 mt-2 mb-1">Ethereum</p>
                 <h5 class="h4 normal mb-0" id="kWh-eth"></h5>
-                <p class="text-small black-90">KWh</p>
+                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
               </li>
               <li class="d-output d-cash" data-comp="kWh" data-type="pap">
                 <div class="viz-wrapper">
@@ -112,7 +113,7 @@
                 <img src="./img/icons/bw-cash.png" class="mw-100 mt-3">
                 <p class="h6 mt-2 mb-1">Cash</p>
                 <h5 class="h4 normal mb-0" id="kWh-pap"></h5>
-                <p class="text-small black-90">KWh</p>
+                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
               </li>
               <li class="d-output d-crypto d-credit d-cash active" data-comp="kWh" data-type="xrp">
                 <div class="viz-wrapper">
@@ -122,7 +123,7 @@
                 <img src="./img/icons/xrp.png" class="mw-100 mt-3">
                 <p class="h6 mt-2 mb-1">XRP</p>
                 <h5 class="h4 normal mb-0" id="kWh-xrp"></h5>
-                <p class="text-small black-90">KWh</p>
+                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
               </li>
               <li class="d-output d-credit" data-comp="kWh" data-type="vsa">
                 <div class="viz-wrapper">
@@ -132,7 +133,7 @@
                 <img src="./img/icons/bw-visa.png" class="mw-100 mt-3">
                 <p class="h6 mt-2 mb-1">Visa</p>
                 <h5 class="h4 normal mb-0" id="kWh-vsa"></h5>
-                <p class="text-small black-90">KWh</p>
+                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
               </li>
               <li class="d-output d-credit" data-comp="kWh" data-type="mst">
                 <div class="viz-wrapper">
@@ -142,7 +143,7 @@
                 <img src="./img/icons/bw-mastercard.png" class="mw-100 mt-3">
                 <p class="h6 mt-2 mb-1">Mastercard</p>
                 <h5 class="h4 normal mb-0" id="kWh-mst"></h5>
-                <p class="text-small black-90">KWh</p>
+                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
               </li>
               
             </ul>
@@ -161,32 +162,32 @@
             <li class="d-output d-crypto active" data-comp="tons" data-type="btc">
               <p class="h6 mt-3 mb-1">Bitcoin</p>
               <h5 class="h4 normal mb-0" id="tons-btc"></h5>
-              <p class="text-small black-90">metric tons of CO2</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
             </li>
             <li class="d-output d-crypto active" data-comp="tons" data-type="eth">
               <p class="h6 mt-3 mb-1">Ethereum</p>
               <h5 class="h4 normal mb-0" id="tons-eth"></h5>
-              <p class="text-small black-90">metric tons of CO2</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
             </li>
             <li class="d-output d-cash" data-comp="tons" data-type="pap">
               <p class="h6 mt-3 mb-1">Cash</p>
               <h5 class="h4 normal mb-0" id="tons-pap"></h5>
-              <p class="text-small black-90">metric tons of CO2</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
             </li>
             <li class="d-output d-crypto d-credit d-cash active" data-comp="tons" data-type="xrp">
               <p class="h6 mt-3 mb-1">XRP</p>
               <h5 class="h4 normal mb-0" id="tons-xrp"></h5>
-              <p class="text-small black-90">metric tons of CO2</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
             </li>
             <li class="d-output d-credit" data-comp="tons" data-type="vsa">
               <p class="h6 mt-3 mb-1">Visa</p>
               <h5 class="h4 normal mb-0" id="tons-vsa"></h5>
-              <p class="text-small black-90">metric tons of CO2</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
             </li>
             <li class="d-output d-credit" data-comp="tons" data-type="mst">
               <p class="h6 mt-3 mb-1">Mastercard</p>
               <h5 class="h4 normal mb-0" id="tons-mst"></h5>
-              <p class="text-small black-90">metric tons of CO2</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
             </li>
             
           </ul>
@@ -204,32 +205,32 @@
             <li class="d-output d-crypto active" data-comp="gas" data-type="btc">
               <p class="h6 mt-3 mb-1">Bitcoin</p>
               <h5 class="h4 normal mb-0" id="gas-btc"></h5>
-              <p class="text-small black-90">Gallons of Gas</p>
+              <p class="text-small black-90">{% trans %}Gallons of Gas{% endtrans %}</p>
             </li>
             <li class="d-output d-crypto active" data-comp="gas" data-type="eth">
               <p class="h6 mt-3 mb-1">Ethereum</p>
               <h5 class="h4 normal mb-0" id="gas-eth"></h5>
-              <p class="text-small black-90">Gallons of Gas</p>
+              <p class="text-small black-90">{% trans %}Gallons of Gas{% endtrans %}</p>
             </li>
             <li class="d-output d-cash" data-comp="gas" data-type="pap">
               <p class="h6 mt-3 mb-1">Cash</p>
               <h5 class="h4 normal mb-0" id="gas-pap"></h5>
-              <p class="text-small black-90">Gallons of Gas</p>
+              <p class="text-small black-90">{% trans %}Gallons of Gas{% endtrans %}</p>
             </li>
             <li class="d-output d-crypto d-credit d-cash active" data-comp="gas" data-type="xrp">
               <p class="h6 mt-3 mb-1">XRP</p>
               <h5 class="h4 normal mb-0" id="gas-xrp"></h5>
-              <p class="text-small black-90">Gallons of Gas</p>
+              <p class="text-small black-90">{% trans %}Gallons of Gas{% endtrans %}</p>
             </li>
             <li class="d-output d-credit" data-comp="gas" data-type="vsa">
               <p class="h6 mt-3 mb-1">Visa</p>
               <h5 class="h4 normal mb-0" id="gas-vsa"></h5>
-              <p class="text-small black-90">Gallons of Gas</p>
+              <p class="text-small black-90">{% trans %}Gallons of Gas{% endtrans %}</p>
             </li>
             <li class="d-output d-credit" data-comp="gas" data-type="mst">
               <p class="h6 mt-3 mb-1">Mastercard</p>
               <h5 class="h4 normal mb-0" id="gas-mst"></h5>
-              <p class="text-small black-90">Gallons of Gas</p>
+              <p class="text-small black-90">{% trans %}Gallons of Gas{% endtrans %}</p>
             </li>
             
           </ul>
@@ -244,7 +245,7 @@
         <h4>{% trans %}Breaking Down Individual Transactions{% endtrans %}</h4>
         <p>{% trans %}Looking at individual transactions below, compare how a single transaction across each form of currency equates to KWh, gallons of gas and C02 emissions.{% endtrans %}</p>
       </div>
-      <div class="col-sm-12 mt-14">
+      <div class="col-sm-12 mt-14" id="calculator-table-wrapper">
         <table id="calculator-table">
           <thead>
             <tr>
