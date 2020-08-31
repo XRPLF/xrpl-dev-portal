@@ -273,15 +273,6 @@ pages:
             - en
             - ja
 
-# "Contribute" page ---------------------------------------------------------------
-    -   name: Contribute
-        html: contribute.html
-        template: template-contribute.html
-        sidebar: disabled
-        targets:
-            - en
-            - ja
-
 # "Build" funnel ---------------------------------------------------------------
     -   name: Build
         funnel: Build
@@ -6471,6 +6462,16 @@ pages:
             - en
             - ja
         template: template-tx-sender.html
+
+# "Contribute" page ------------------------------------------------------------
+    -   name: Contribute
+        funnel: Contribute
+        html: contribute.html
+        template: template-contribute.html
+        sidebar: disabled
+        targets:
+            - en
+            - ja
 
 # Custom 404 page
     -   name: 404 Not Found

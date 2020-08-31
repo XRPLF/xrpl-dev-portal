@@ -1,6 +1,6 @@
 ---
 html: enable-link-compression.html
-funnel: Docs
+funnel: Build
 doc_type: Tutorials
 category: Manage the rippled Server
 subcategory: Configure Peering
