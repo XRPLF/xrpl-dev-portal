@@ -142,8 +142,11 @@
 .align-items-stretch {
 	align-items: stretch;
 }
-.overflow-xs {
-	overflow: scroll;
+
+@media only screen and (max-width: 576px) {
+	.overflow-xs {
+		overflow: scroll;
+	}
 }
 
 /* COLOR ELEMENTS */

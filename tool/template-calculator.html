@@ -20,7 +20,7 @@
   <div class="container my-20 mb-49">
     <section class="row mb-49">
       <h6 class="section-marker">{% trans %}Sustainability{% endtrans %}</h6>
-      <div class="col-sm-4">
+      <div class="col-sm-4 d-none d-sm-none">
         <img src="./img/green/green-graphic.png" class="mw-100">
       </div>
       <div class="col-sm-8">
@@ -49,10 +49,11 @@
   </div>
 
   <div class="container my-20">
-    <section class="row mb-49">
-
-      <div class="col-lg-4">
-        <div class="rounded sticky-top top-10">
+    <section class="row mb-50">
+      <a href="#" class="btn btn-green-border btn-black d-lg-none" id="calculator-mobile-toggle">Change Inputs</a>
+      <div id="calculator-inputs-offset"></div>
+      <div class="col-lg-4" >
+        <div class="rounded sticky-top top-10 mb-3 mb-lg-0" id="calculator-inputs">
           <div class="border-green p-3 calc-inputs">
             <h4>{% trans %}Comparing Transaction Data{% endtrans %}</h4>
               <ul class="p-0 mt-10 ls-none d-sm-flex d-lg-block d-xl-flex flex-wrap justify-content-around" id="data-selector">
@@ -75,7 +76,7 @@
         </div>
       </div>
       
-      <div class="col-lg-7 offset-lg-1 scroll-container h-100" id="main">
+      <div class="col-lg-7 offset-lg-1 scroll-container h-100" id="calculator-outputs">
         <section class="min-vh100 mb-40 section1 clearfix">
           <h4>{% trans %}Energy Consumption of Portugal{% endtrans %}</h4>
 
@@ -90,60 +91,72 @@
                   <img src="./img/green/Portugal.png" class="mw-100">
                   <div class="dot" id="kWh-btc-dot"></div>
                 </div>
-                <img src="./img/icons/bw-bitcoin.png" class="mw-100 mt-3">
-                <p class="h6 mt-2 mb-1">Bitcoin</p>
-                <h5 class="h4 normal mb-0" id="kWh-btc"></h5>
-                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                <div class="num-wrapper">
+                  <img src="./img/icons/bw-bitcoin.png" class="mw-100 mt-3">
+                  <p class="h6 mt-2 mb-1">Bitcoin</p>
+                  <h5 class="h4 normal mb-0" id="kWh-btc"></h5>
+                  <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                </div>
               </li>
               <li class="d-output d-crypto active" data-comp="kWh" data-type="eth">
                 <div class="viz-wrapper">
                   <img src="./img/green/Portugal.png" class="mw-100">
                   <div class="dot" id="kWh-eth-dot"></div>
                 </div>
-                <img src="./img/icons/bw-ethereum.png" class="mw-100 mt-3">
-                <p class="h6 mt-2 mb-1">Ethereum</p>
-                <h5 class="h4 normal mb-0" id="kWh-eth"></h5>
-                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                <div class="num-wrapper">
+                  <img src="./img/icons/bw-ethereum.png" class="mw-100 mt-3">
+                  <p class="h6 mt-2 mb-1">Ethereum</p>
+                  <h5 class="h4 normal mb-0" id="kWh-eth"></h5>
+                  <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                </div>
               </li>
               <li class="d-output d-cash" data-comp="kWh" data-type="pap">
                 <div class="viz-wrapper">
                   <img src="./img/green/Portugal.png" class="mw-100">
                   <div class="dot" id="kWh-pap-dot"></div>
                 </div>
-                <img src="./img/icons/bw-cash.png" class="mw-100 mt-3">
-                <p class="h6 mt-2 mb-1">Cash</p>
-                <h5 class="h4 normal mb-0" id="kWh-pap"></h5>
-                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                <div class="num-wrapper">
+                  <img src="./img/icons/bw-cash.png" class="mw-100 mt-3">
+                  <p class="h6 mt-2 mb-1">Cash</p>
+                  <h5 class="h4 normal mb-0" id="kWh-pap"></h5>
+                  <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                </div>
               </li>
               <li class="d-output d-crypto d-credit d-cash active" data-comp="kWh" data-type="xrp">
                 <div class="viz-wrapper">
                   <img src="./img/green/Portugal.png" class="mw-100">
                   <div class="dot" id="kWh-xrp-dot"></div>
                 </div>
-                <img src="./img/icons/xrp.png" class="mw-100 mt-3">
-                <p class="h6 mt-2 mb-1">XRP</p>
-                <h5 class="h4 normal mb-0" id="kWh-xrp"></h5>
-                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                <div class="num-wrapper">
+                  <img src="./img/icons/xrp.png" class="mw-100 mt-3">
+                  <p class="h6 mt-2 mb-1">XRP</p>
+                  <h5 class="h4 normal mb-0" id="kWh-xrp"></h5>
+                  <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                </div>
               </li>
               <li class="d-output d-credit" data-comp="kWh" data-type="vsa">
                 <div class="viz-wrapper">
                   <img src="./img/green/Portugal.png" class="mw-100">
                   <div class="dot" id="kWh-vsa-dot"></div>
                 </div>
-                <img src="./img/icons/bw-visa.png" class="mw-100 mt-3">
-                <p class="h6 mt-2 mb-1">Visa</p>
-                <h5 class="h4 normal mb-0" id="kWh-vsa"></h5>
-                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                <div class="num-wrapper">
+                  <img src="./img/icons/bw-visa.png" class="mw-100 mt-3">
+                  <p class="h6 mt-2 mb-1">Visa</p>
+                  <h5 class="h4 normal mb-0" id="kWh-vsa"></h5>
+                  <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                </div>
               </li>
               <li class="d-output d-credit" data-comp="kWh" data-type="mst">
                 <div class="viz-wrapper">
                   <img src="./img/green/Portugal.png" class="mw-100">
                   <div class="dot" id="kWh-mst-dot"></div>
                 </div>
-                <img src="./img/icons/bw-mastercard.png" class="mw-100 mt-3">
-                <p class="h6 mt-2 mb-1">Mastercard</p>
-                <h5 class="h4 normal mb-0" id="kWh-mst"></h5>
-                <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                <div class="num-wrapper">
+                  <img src="./img/icons/bw-mastercard.png" class="mw-100 mt-3">
+                  <p class="h6 mt-2 mb-1">Mastercard</p>
+                  <h5 class="h4 normal mb-0" id="kWh-mst"></h5>
+                  <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
+                </div>
               </li>
               
             </ul>
@@ -245,7 +258,7 @@
         <h4>{% trans %}Breaking Down Individual Transactions{% endtrans %}</h4>
         <p>{% trans %}Looking at individual transactions below, compare how a single transaction across each form of currency equates to KWh, gallons of gas and C02 emissions.{% endtrans %}</p>
       </div>
-      <div class="col-sm-12 mt-14" id="calculator-table-wrapper">
+      <div class="col-sm-12 mt-14 overflow-xs">
         <table id="calculator-table">
           <thead>
             <tr>

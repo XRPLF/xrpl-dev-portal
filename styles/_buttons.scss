@@ -148,3 +148,18 @@ a.button {
   color: $primary;
   border: 1px solid $primary;
 }
+.btn-black {
+  background: $black;
+  color: $white;
+  &:hover {
+    background: $black;
+  }
+}
+.btn-green-border {
+  color: $primary;
+  border: 1px solid $primary;
+}
+.btn-green-border:hover {
+  color: $primary;
+  border: 1px solid $primary;
+}

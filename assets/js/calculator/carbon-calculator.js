@@ -160,4 +160,43 @@ $( document ).ready( function(){
 
 	doCalculations( slider.value );
 	cryptoSelected();
+
+	$(window).on('load resize scroll', function() {
+		if ( $(window).width() < 993 ) {
+			let distance = $('#calculator-outputs').offset().top,
+	    	$window = $(window).scrollTop(),
+	    	data_toggle = $('#calculator-mobile-toggle'),
+	    	inputs = $('#calculator-inputs'),
+	    	inputs_offset = $( '#calculator-inputs-offset');
+
+			if ( distance < $window ){
+				data_toggle.addClass( 'show' ).removeClass( 'hide' );
+			} else {
+				inputs.removeClass( 'sticky' );
+				data_toggle.addClass( 'hide' ).removeClass( 'show' );
+				inputs_offset.removeClass( 'offset' );
+				$('#data-toggle').text('Change Inputs')
+			}
+		}
+	});
+
+	$('#calculator-mobile-toggle').on( 'click', function(e){
+		e.preventDefault();
+		console.log( "working");
+
+		let inputs = $('#calculator-inputs'),
+			inputs_offset = $( '#calculator-inputs-offset');
+
+		$( '#calculator-inputs' ).toggleClass( 'show' );
+
+		if ( inputs.hasClass( 'sticky' ) ) {
+			inputs.removeClass( 'sticky' );
+			inputs_offset.removeClass( 'offset' );
+			$( this ).text('Change Inputs');
+		} else {
+			inputs.addClass( 'sticky show' );
+			inputs_offset.addClass( 'offset' );
+			$( this ).text('Hide Inputs');
+		}
+	})
 });
