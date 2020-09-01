@@ -130,3 +130,36 @@ a.button {
   content: "";
   padding: 0;
 }
+
+
+// NEW STYLING FROM REDESIGN
+.btn {
+  padding: 16px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.25;
+}
+.btn-clear {
+  color: $white;
+  border: 1px solid $white;
+}
+.btn-clear:hover {
+  background: transparent;
+  color: $primary;
+  border: 1px solid $primary;
+}
+.btn-black {
+  background: $black;
+  color: $white;
+  &:hover {
+    background: $black;
+  }
+}
+.btn-green-border {
+  color: $primary;
+  border: 1px solid $primary;
+}
+.btn-green-border:hover {
+  color: $primary;
+  border: 1px solid $primary;
+}

@@ -166,7 +166,6 @@ pages:
 
 # "Learn" funnel ---------------------------------------------------------------
     -   name: Learn
-        # "Overview" page
         funnel: Learn
         template: template-landing-children.html
         html: learn.html
@@ -197,7 +196,7 @@ pages:
     -   name: History
         funnel: Learn
         category: History
-        template: template-learn-history.html # TODO: change as needed
+        template: template-learn-history.html
         html: history.html
         sidebar: disabled
         targets:
@@ -217,7 +216,7 @@ pages:
     -   name: Carbon Calculator
         funnel: Learn
         category: Carbon Calculator
-        template: template-calculator.html # TODO: change as needed
+        template: template-calculator.html
         html: carbon-calculator.html
         sidebar: disabled
         targets:

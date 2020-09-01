@@ -23,7 +23,6 @@ h3 a:hover,
   text-decoration: underline;
 }
 
-
 .content h1 {
   margin-top: 32px;
   line-height: 1.2;
@@ -138,5 +137,25 @@ td:nth-child(1) {
   display: block;
   padding-top: 100%;
 }
-
+.card-wrapper {
+  width: 100%;
+}
+.card-b {
+  padding: 2rem;
+  background: rgba(34, 37, 43, 0.5);
+  backdrop-filter: blur(3px);
+  @media (max-width: 768px) { 
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+.section-marker {
+  position: absolute;
+  font-size: 0.875rem;
+  transform: rotate(90deg);
+  font-weight: normal;
+  top: calc(50% - 64px);
+  margin-left: -32px;
+  transform-origin: top left;
+}
 
