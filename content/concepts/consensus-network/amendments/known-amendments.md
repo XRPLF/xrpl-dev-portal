@@ -11,9 +11,9 @@ The following is a comprehensive list of all known amendments and their status o
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixAmendmentMajorityCalc][]    | v1.6.0-b8  | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [HardenedValidations][]         | v1.6.0-b5  | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fix1781][]                     | v1.6.0-b1  | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fixAmendmentMajorityCalc][]    | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
+| [HardenedValidations][]         | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
+| [fix1781][]                     | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
 | [FlowCross][]                   | v0.70.0    | [Enabled: 2020-08-04](https://xrpcharts.ripple.com/#/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F "BADGE_GREEN") |
 | [fixQualityUpperBound][]        | v1.5.0     | [Enabled: 2020-07-09](https://xrpcharts.ripple.com/#/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
 | [RequireFullyCanonicalSig][]    | v1.5.0     | [Enabled: 2020-07-03](https://xrpcharts.ripple.com/#/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
@@ -350,7 +350,7 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | In Development |
+| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | Open for Voting |
 
 Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
 
@@ -364,7 +364,7 @@ With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result cod
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 | In Development |
+| 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 | Open for Voting |
 
 Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.
 
@@ -476,7 +476,7 @@ This is a previous version of the [Flow](#flow) amendment. It was [rejected due 
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | In Development |
+| 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | Open for Voting |
 
 Allows validators to include a new optional field in their validations to attest to the hash of
 the latest ledger that that validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
