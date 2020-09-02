@@ -1,0 +1,52 @@
+/* TABLE STYLING */
+.dblue {
+	color: #656E81;
+}
+#table-overview {
+	td:nth-child(1){
+		width: 40%;
+	}
+}
+#calculator-table {
+	width: 100%;
+	thead {
+		border-bottom: 3px solid $white;
+	}
+	td {
+		padding: 0.25rem 0.5rem;
+		line-height: 1;
+		@media only screen and (max-width: 768px) {
+			font-size: $base-size;
+		}
+	}
+	tbody td {
+		padding: 2rem 0.5rem;
+	}
+	tbody tr {
+		border-bottom: 1px solid $white;
+	}
+	td:first-child{
+		width: 40%;
+	}
+	.ratio {
+		font-size: .075rem;
+		color: #656E81;
+	}
+	@media only screen and (max-width: 992px) {
+		.ratio {
+			display: block;
+		}
+		table {
+			font-size: 0.875rem;
+		}
+		table .fs-5-5 {
+			font-size: 1rem !important;
+		}
+		table .fs-6 {
+			font-size: 1.125rem;
+		}
+		table td:first-child {
+			width: auto;
+		}
+	}
+}

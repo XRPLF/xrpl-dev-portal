@@ -59,9 +59,7 @@ let slider = document.getElementById( 'myRange' ),
 	dataTypes = document.querySelectorAll( '.d-output' ),
 	dataViz = document.querySelectorAll( '.viz-output' );
 
-
 // Update the current slider value (each time you drag the slider handle)
-
 function doCalculations( val ){
 
 	[].slice.call( dataTypes ).forEach( function( dataType ){
@@ -111,7 +109,6 @@ function creditSelected(){
 }
 
 function changeDataType( type ){
-	
 
 	[].slice.call( dataTypes ).forEach( function( dataType ){
 		if ( dataType.classList.contains( type ) ){
@@ -175,7 +172,7 @@ $( document ).ready( function(){
 				inputs.removeClass( 'sticky' );
 				data_toggle.addClass( 'hide' ).removeClass( 'show' );
 				inputs_offset.removeClass( 'offset' );
-				$('#data-toggle').text('Change Inputs')
+				$('#data-toggle').text('Change Inputs');
 			}
 		}
 	});

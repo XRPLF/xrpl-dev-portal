@@ -36,8 +36,12 @@ h6, .h6 {
 p {
   line-height: 1.5;
 }
-a:hover {
-  text-decoration: none;
+a{
+  text-decoration: underline;
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .fs-base {
@@ -78,6 +82,9 @@ a:hover {
 }
 
 /* STYLIZED LINKS */
+.arrow-link {
+  text-decoration: none;
+}
 .arrow-link:after {
   content: url(../img/icon-green-arrow.svg);
   width: 28px;
