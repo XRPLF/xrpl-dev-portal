@@ -158,4 +158,12 @@ td:nth-child(1) {
   margin-left: -32px;
   transform-origin: top left;
 }
+@media (max-width: 992px) {
+  .card-deck {
+    display: block !important;
+  }
+  .card-deck .card {
+    margin-bottom: 2.5rem !important;
+  }
+}
 
