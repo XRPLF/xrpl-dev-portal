@@ -272,15 +272,6 @@ pages:
             - en
             - ja
 
-# "Contribute" page ---------------------------------------------------------------
-    -   name: Contribute
-        html: contribute.html
-        template: template-contribute.html
-        sidebar: disabled
-        targets:
-            - en
-            - ja
-
 # "Build" funnel ---------------------------------------------------------------
     -   name: Build
         funnel: Build
@@ -1463,6 +1454,7 @@ pages:
             - ja
 
     -   name: Get Started
+        md: tutorials/get-started/get-started.md
         html: get-started.html
         funnel: Build
         doc_type: Tutorials
@@ -1487,7 +1479,7 @@ pages:
         funnel: Build
         doc_type: Tutorials
         category: Get Started
-        blurb: Get started with the APIs and libraries available for interacting with the XRP Ledger.
+        blurb: Unleash the full power of the XRP Ledger's native APIs.
         cta_text: Get Started
         targets:
             - en
@@ -1502,32 +1494,12 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/get-started/set-up-secure-signing.md
-        html: set-up-secure-signing.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Set up an environment where you can submit transactions securely.
-        targets:
-            - en
-
-    -   md: tutorials/get-started/set-up-secure-signing.ja.md
-        html: set-up-secure-signing.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: 安全にトランザクションを送信できる環境を設定します。
-        targets:
-            - ja
-
-    # TODO: Send a Transaction with the rippled API
-
     -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.md
         html: get-started-with-rippleapi-for-javascript.html
         funnel: Build
         doc_type: Tutorials
         category: Get Started
-        blurb: Build an entry-level JavaScript application for querying the XRP Ledger.
+        blurb: Build an entry-level JavaScript application for querying the XRP Ledger in Node.js.
         targets:
             - en
 
@@ -1540,21 +1512,27 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/get-started/look-up-transaction-results.md
-        html: look-up-transaction-results.html
+    -   md: tutorials/use-simple-xrp-payments/send-xrp.md
+        html: send-xrp.html
         funnel: Build
         doc_type: Tutorials
         category: Get Started
-        blurb: Find the results of previously-submitted transactions.
+        blurb: Learn how to send test payments right from your browser.
+        cta_text: Send XRP
+        filters:
+            - interactive_steps
         targets:
             - en
 
-    -   md: tutorials/get-started/look-up-transaction-results.ja.md
-        html: look-up-transaction-results.html
+    -   md: tutorials/use-simple-xrp-payments/send-xrp.ja.md
+        html: send-xrp.html
         funnel: Build
         doc_type: Tutorials
         category: Get Started
-        blurb: 以前に送信したトランザクションの結果を確認します。
+        blurb: Test Netを使用してXRPの送金をテストします。
+        cta_text: XRPを送金しよう
+        filters:
+            - interactive_steps
         targets:
             - ja
 
@@ -1580,49 +1558,63 @@ pages:
         targets:
             - ja
 
-    # TODO: Get Started with API Tools
-
+        # Send old "Use Direct XRP Payments" landing to "Get Started" instead
     -   name: Use Direct XRP Payments
         html: use-simple-xrp-payments.html
         funnel: Build
         doc_type: Tutorials
-        category: Use Simple XRP Payments
+        category: Get Started
+        template: template-redirect.html
+        redirect_url: get-started.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate this page name and blurb
+    -   name: Production Readiness
+        html: production-readiness.html
+        funnel: Build
+        doc_type: Tutorials
+        category: Production Readiness
         template: template-landing-children.html
-        blurb: Direct XRP payments from one account to another are the simplest way to transact in the XRP Ledger. This section includes tutorials for how to use simple transactions proficiently and robustly.
+        blurb: Follow these best practices to build a robust, safe production system for using the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/get-started/set-up-secure-signing.md
+        html: set-up-secure-signing.html
+        funnel: Build
+        doc_type: Tutorials
+        category: Production Readiness
+        blurb: Set up an environment where you can submit transactions securely.
         targets:
             - en
 
-    -   name: 直接XRP支払いの送信
-        html: use-simple-xrp-payments.html
+    -   md: tutorials/get-started/set-up-secure-signing.ja.md
+        html: set-up-secure-signing.html
         funnel: Build
         doc_type: Tutorials
-        category: Use Simple XRP Payments
-        template: template-landing-children.html
-        blurb: アカウント間でのXRPによる直接支払いは、XRP Ledgerで取引する最も簡単な方法です。このセクションでは、単純なトランザクションの上手で確実な使い方についてのチュートリアルを提供します。
+        category: Production Readiness
+        blurb: 安全にトランザクションを送信できる環境を設定します。
         targets:
             - ja
 
-    -   md: tutorials/use-simple-xrp-payments/send-xrp.md
-        html: send-xrp.html
+    -   md: tutorials/get-started/look-up-transaction-results.md
+        html: look-up-transaction-results.html
         funnel: Build
         doc_type: Tutorials
-        category: Use Simple XRP Payments
-        blurb: Learn how to send test payments right from your browser.
-        cta_text: Send XRP
-        filters:
-            - interactive_steps
+        category: Production Readiness
+        blurb: Find the results of previously-submitted transactions.
         targets:
             - en
 
-    -   md: tutorials/use-simple-xrp-payments/send-xrp.ja.md
-        html: send-xrp.html
+    -   md: tutorials/get-started/look-up-transaction-results.ja.md
+        html: look-up-transaction-results.html
         funnel: Build
         doc_type: Tutorials
-        category: Use Simple XRP Payments
-        blurb: Test Netを使用してXRPの送金をテストします。
-        cta_text: XRPを送金しよう
-        filters:
-            - interactive_steps
+        category: Production Readiness
+        blurb: 以前に送信したトランザクションの結果を確認します。
         targets:
             - ja
 
@@ -1630,7 +1622,7 @@ pages:
         html: reliable-transaction-submission.html
         funnel: Build
         doc_type: Tutorials
-        category: Use Simple XRP Payments
+        category: Production Readiness
         blurb: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly.
         targets:
             - en
@@ -1639,7 +1631,7 @@ pages:
         html: reliable-transaction-submission.html
         funnel: Build
         doc_type: Tutorials
-        category: Use Simple XRP Payments
+        category: Production Readiness
         blurb: XRP Ledgerにトランザクションを送信することができるシステムを構築し、最終結果を素早く安全に受け取ります。
         targets:
             - ja
@@ -1649,7 +1641,7 @@ pages:
         html: cancel-or-skip-a-transaction.html
         funnel: Build
         doc_type: Tutorials
-        category: Use Simple XRP Payments
+        category: Production Readiness
         template: template-redirect.html
         redirect_url: about-canceling-a-transaction.html
         targets:
@@ -6469,6 +6461,16 @@ pages:
             - en
             - ja
         template: template-tx-sender.html
+
+# "Contribute" page ------------------------------------------------------------
+    -   name: Contribute
+        funnel: Contribute
+        html: contribute.html
+        template: template-contribute.html
+        sidebar: disabled
+        targets:
+            - en
+            - ja
 
 # Custom 404 page
     -   name: 404 Not Found
