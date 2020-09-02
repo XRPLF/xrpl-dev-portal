@@ -36,12 +36,16 @@ h6, .h6 {
 p {
   line-height: 1.5;
 }
-a{
-  text-decoration: underline;
+a {
+  // text-decoration: underline;
   color: inherit;
   &:hover {
     text-decoration: none;
   }
+}
+p a,
+li a {
+  text-decoration: underline;
 }
 
 .fs-base {
