@@ -36,7 +36,6 @@ END_REPL = """
   <button type="button" class="btn btn-primary run-button">Run</button>
   <button type="reset" class="btn btn-secondary-outline reset-button">Reset</button>
 </p>
-<h3>Output</h3>
 <div class="response"></div>
 </div>"""
 

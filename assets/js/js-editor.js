@@ -21,19 +21,23 @@ $(document).ready(()=> {
     cm.setValue(og_text);
     code_ex0.parent().hide();
 
-    const cm_resp = CodeMirror(wrapper.find(".response").get(0), {
-      mode: 'javascript',
-      json: false,
-      readOnly: true,
-      gutters: ["CodeMirror-lint-markers"]
-    });
-
     wrapper.find(".reset-button").click((evt) => {
       cm.setValue(og_text);
+      wrapper.find(".response").empty();
     });
 
     wrapper.find(".run-button").click((evt) => {
-      cm_resp.setValue("");
+      // Wipe the results area and make a new response CodeMirror
+      const resp = wrapper.find(".response");
+      resp.empty().append("<p><strong>Output</strong></p>");
+      // TODO: make "Response" translatable
+      const cm_resp = CodeMirror(resp.get(0), {
+        mode: 'javascript',
+        json: false,
+        readOnly: true,
+        gutters: ["CodeMirror-lint-markers"]
+      });
+
       const oldconsole = console;
       console = {
         log: (...args) => {

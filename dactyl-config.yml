@@ -1459,8 +1459,7 @@ pages:
         funnel: Build
         doc_type: Tutorials
         category: Get Started
-        # template: template-landing-children.html
-        template: template-doc.html #TEMP
+        template: template-doc.html
         blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger.
         filters:
             - js_editor
