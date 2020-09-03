@@ -10,7 +10,7 @@ $border-radius-sm: 0;
 $dropdown-border-width: 1px;
 
 // @import "_font-face.scss";
-$font-family-monospace: 'Work Sans', monospace;
+$font-family-monospace: 'Space Mono', monospace;
 $font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
 
 // Bootstrap v4
@@ -25,9 +25,9 @@ $font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
 @import "_tables.scss";
 @import "_use-cases.scss";
 @import "_github-edit.scss";
-@import "_code-tabs.scss";
 @import "_top-nav.scss";
 @import "_content.scss";
+@import "_code-tabs.scss";
 @import "_diagrams.scss";
 @import "_external-links.scss";
 @import "_footer.scss";

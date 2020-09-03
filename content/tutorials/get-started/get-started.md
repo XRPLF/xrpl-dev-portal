@@ -25,8 +25,10 @@ The following code gets the latest [ledger version](ledgers.html) and a list of 
 
 **Tip:** If you can, open your browser's Developer Tools by pressing **F12**. The "Console" tab provides a native JavaScript console and can give insight into what code is running on any webpage.
 
-<div id="step2">
-<pre><code id="step2code">
+
+<!-- JS_EDITOR_START step2 -->
+
+```js
 const mainnet = new ripple.RippleAPI({
   server: 'wss://s1.ripple.com'
 });
@@ -40,66 +42,70 @@ const mainnet = new ripple.RippleAPI({
   console.log(response);
 
 })(mainnet);
-</code></pre>
-<p>
-  <button type="button" id="step2button" class="btn btn-primary">Run</button>
-  <button type="reset" id="step2reset" class="btn btn-secondary-outline">Reset</button>
-</p>
-<h3>Output</h3>
-<div id="step2resp"></div>
-<link rel="stylesheet" type="text/css" href="assets/vendor/codemirror.css" />
-<script src="assets/vendor/codemirror-js-json-lint.min.js"></script>
-<script type="application/javascript">
-const code_ex = $("#step2code");
-const code_text = code_ex.text().trim();
-code_ex.text("");
-const cm = CodeMirror(code_ex.get(0), {
-  mode: 'javascript',
-  json: false,
-  smartIndent: false,
+```
+
+```js
+const mainnet = new ripple.RippleAPI({
+  server: 'wss://s.altnet.rippletest.net/'
 });
-cm.setValue(code_text);
-const cm_resp = CodeMirror($("#step2resp").get(0), {
-  mode: 'javascript',
-  json: false,
-  readOnly: true
+
+(async function(api) {
+  await api.connect();
+
+  let response = await api.getLedger({
+      includeTransactions: true
+    });
+  console.log(response);
+
+})(mainnet);
+```
+
+```js
+const mainnet = new ripple.RippleAPI({
+  server: 'wss://s1.ripple.com'
 });
-let ret;
-$("#step2button").click((evt) => {
-  const oldconsole = console;
-  console = {
-    log: (...args) => {
-      oldconsole.log(...args);
-      args.forEach(arg => cm_resp.setValue(JSON.stringify(arg, null, 2)))
-    }
-  }
-  Function(cm.getValue())();
+
+(async function(api) {
+  await api.connect();
+
+  let response = await api.getLedger({
+      includeTransactions: true
+    });
+  let tx_id = response.transactionHashes[0];
+  let response2 = await api.getTransaction(tx_id);
+  console.log(response2);
+
+})(mainnet);
+```
+
+```js
+const mainnet = new ripple.RippleAPI({
+  server: 'wss://s1.ripple.com'
 });
-$("#step2reset").click((evt) => {
-  cm.setValue(code_text);
-});
-function fill_ex_1() {
-  cm.setValue("const mainnet = new ripple.RippleAPI({\n  server: 'wss://s.altnet.rippletest.net/'\n});\n\n(async function(api) {\n  await api.connect();\n\n  let response = await api.getLedger({\n      includeTransactions: true\n    });\n  console.log(response);\n\n})(mainnet);");
-  $("html").animate({scrollTop: $("#step2").offset().top}, 500);
-}
-function fill_ex_2() {
-  cm.setValue("const mainnet = new ripple.RippleAPI({\n  server: 'wss://s1.ripple.com'\n});\n\n(async function(api) {\n  await api.connect();\n\n  let response = await api.getLedger({\n      includeTransactions: true\n    });\n  let tx_id = response.transactionHashes[0];\n  let response2 = await api.getTransaction(tx_id);\n  console.log(response2);\n\n})(mainnet);");
-  $("html").animate({scrollTop: $("#step2").offset().top}, 500);
-}
-function fill_ex_3() {
-  cm.setValue("const mainnet = new ripple.RippleAPI({\n  server: 'wss://s1.ripple.com'\n});\n\n(async function(api) {\n  await api.connect();\n\n  let response = await api.getLedger({\n      includeTransactions: true\n    });\n  console.log('Total XRP: '+api.dropsToXrp(response.totalDrops));\n\n})(mainnet);");
-  $("html").animate({scrollTop: $("#step2").offset().top}, 500);
-}
-</script>
-</div>
+
+(async function(api) {
+  await api.connect();
+
+  let response = await api.getLedger({
+      includeTransactions: true
+    });
+  console.log('Total XRP: '+api.dropsToXrp(response.totalDrops));
+
+})(mainnet);
+```
+
+<!-- JS_EDITOR_END -->
+
+
 
 ## 3. Next Steps
 
 Try editing the code from step 2 to do something different:
 
-- Connect to the [Testnet](parallel-networks.html) public server at `wss://s.altnet.rippletest.net/` instead. [Answer >](javascript:fill_ex_1())
-- Look up the details of a transaction using the [`getTransaction()` method](rippleapi-reference.html#gettransaction). For the `id`, use one of the `transactionHashes` from the `getLedger()` response! [Answer >](javascript:fill_ex_2())
-- Convert the `totalDrops` from the response to decimal XRP. [Answer >](javascript:fill_ex_3())
+- Connect to the [Testnet](parallel-networks.html) public server at `wss://s.altnet.rippletest.net/` instead. [Answer >](javascript:js_interactives.step2.ex_1())
+- Look up the details of a transaction using the [`getTransaction()` method](rippleapi-reference.html#gettransaction). For the `id`, use one of the `transactionHashes` from the `getLedger()` response! [Answer >](javascript:js_interactives.step2.ex_2())
+- Convert the `totalDrops` from the response to decimal XRP. [Answer >](javascript:js_interactives.step2.ex_3())
+
 
 ## Further Reading
 
