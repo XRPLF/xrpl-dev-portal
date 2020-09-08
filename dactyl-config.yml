@@ -6364,6 +6364,7 @@ pages:
     -   md: dev-tools/dev-tools.ja.md
         html: dev-tools.html
         funnel: Build
+        doc_type: Dev Tools
         targets:
             - ja
 
