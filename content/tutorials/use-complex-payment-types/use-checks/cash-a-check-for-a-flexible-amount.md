@@ -34,7 +34,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 *JSON-RPC, WebSocket, or Commandline*
 
-```
+```json
 {
   "Account": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
   "TransactionType": "CheckCash",

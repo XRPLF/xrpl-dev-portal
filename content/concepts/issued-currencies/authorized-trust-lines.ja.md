@@ -28,7 +28,7 @@ Authorized Trust Lines機能を使用するには、イシュアーがその発�
 
 要求:
 
-```
+```json
 POST http://localhost:5005/
 {
    "method": "submit",
@@ -66,7 +66,7 @@ Authorized Trust Lines機能を使用している場合、他のアカウント�
 
 要求:
 
-```
+```json
 POST http://localhost:8088/
 {
    "method": "submit",

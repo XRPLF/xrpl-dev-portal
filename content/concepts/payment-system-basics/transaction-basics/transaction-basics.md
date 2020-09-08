@@ -63,7 +63,7 @@ See [Send XRP](send-xrp.html) for an interactive tutorial in sending XRP payment
 
 Here is an example of an unsigned [Payment transaction][] in JSON:
 
-```
+```json
 {
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -90,7 +90,7 @@ The XRP Ledger only relays and executes a transaction if the transaction object 
 
 Signing a transaction generates a binary blob that can be submitted to the network. This means using `rippled`'s [submit command](submit.html). Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:
 
-```
+```json
 {
   "id": 2,
   "command": "submit",
@@ -106,7 +106,7 @@ After a transaction has been submitted, you can check its status using the API, 
 
 Example response from the `tx` command:
 
-```
+```json
 {
   "id": 6,
   "status": "success",

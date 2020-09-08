@@ -55,100 +55,108 @@ The following example shows creation of a payment channel by [submitting](submit
 
 Request:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```json
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "submit",
-        "params": [{
-            "secret": "s████████████████████████████",
-            "tx_json": {
-                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "TransactionType": "PaymentChannelCreate",
-                "Amount": "100000000",
-                "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "SettleDelay": 86400,
-                "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "DestinationTag": 20170428
-            },
-            "fee_mult_max": 1000
-        }]
-    }
+{
+    "method": "submit",
+    "params": [{
+        "secret": "s████████████████████████████",
+        "tx_json": {
+            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "TransactionType": "PaymentChannelCreate",
+            "Amount": "100000000",
+            "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "SettleDelay": 86400,
+            "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "DestinationTag": 20170428
+        },
+        "fee_mult_max": 1000
+    }]
+}
+```json
 
 Response:
 
-    200 OK
+```json
+200 OK
 
-    {
-        "result": {
-            "engine_result": "tesSUCCESS",
-            "engine_result_code": 0,
-            "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        ...
+        "tx_json": {
             ...
-            "tx_json": {
-                ...
-                "TransactionType": "PaymentChannelCreate",
-                "hash": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D"
-            }
+            "TransactionType": "PaymentChannelCreate",
+            "hash": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D"
         }
     }
+}
+```
 
 
 The immediate response to the `submit` request contains a _provisional_ result with the transaction's identifying `hash` value. The payer should check the transaction's _final_ result in a validated ledger and get the Channel ID from the metadata. This can be done with the `tx` command:
 
 Request:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```json
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "tx",
-        "params": [{
-            "transaction": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D"
-        }]
-    }
+{
+    "method": "tx",
+    "params": [{
+        "transaction": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D"
+    }]
+}
+```
 
 Response:
 
-    200 OK
+```json
+200 OK
 
-    {
-        "result": {
-            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "Amount": "100000000",
-            "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            ...
-            "TransactionType": "PaymentChannelCreate",
-            ...
-            "hash": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D",
-            "inLedger": 29380080,
-            "ledger_index": 29380080,
-            "meta": {
-                "AffectedNodes": [
-                    ...
-                    {
-                        "CreatedNode": {
-                            "LedgerEntryType": "PayChannel",
-                            "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                            "NewFields": {
-                                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                                "Amount": "100000000",
-                                "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                                "DestinationTag": 20170428,
-                                "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                                "SettleDelay": 86400
-                            }
+{
+    "result": {
+        "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "Amount": "100000000",
+        "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        ...
+        "TransactionType": "PaymentChannelCreate",
+        ...
+        "hash": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D",
+        "inLedger": 29380080,
+        "ledger_index": 29380080,
+        "meta": {
+            "AffectedNodes": [
+                ...
+                {
+                    "CreatedNode": {
+                        "LedgerEntryType": "PayChannel",
+                        "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                        "NewFields": {
+                            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                            "Amount": "100000000",
+                            "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                            "DestinationTag": 20170428,
+                            "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                            "SettleDelay": 86400
                         }
-                    },
-                    ...
-                ],
-                "TransactionIndex": 16,
-                "TransactionResult": "tesSUCCESS"
-            },
-            "status": "success",
-            "validated": true
-        }
+                    }
+                },
+                ...
+            ],
+            "TransactionIndex": 16,
+            "TransactionResult": "tesSUCCESS"
+        },
+        "status": "success",
+        "validated": true
     }
+}
+```
 
 In the response from the JSON-RPC, the payer should look for the following:
 
@@ -164,39 +172,43 @@ You can look up payment channels with the [account_channels method][], using the
 
 Request:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```json
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "account_channels",
-        "params": [{
-            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "ledger_index": "validated"
-        }]
-    }
+{
+    "method": "account_channels",
+    "params": [{
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "ledger_index": "validated"
+    }]
+}
+```
 
 Response:
 
-    200 OK
+```json
+200 OK
 
-    {
-        "result": {
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [{
             "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "channels": [{
-                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "amount": "100000000",
-                "balance": "0",
-                "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "destination_tag": 20170428,
-                "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-                "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "settle_delay": 86400
-            }],
-            "status": "success"
-        }
+            "amount": "100000000",
+            "balance": "0",
+            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "destination_tag": 20170428,
+            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "settle_delay": 86400
+        }],
+        "status": "success"
     }
+}
+```
 
 The payee should check that the parameters of the payment channel are suitable for their specific use case, including all of the following:
 
@@ -219,26 +231,30 @@ You can create claims with the [channel_authorize method][]. The following examp
 
 Request:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```json
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "channel_authorize",
-        "params": [{
-            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "secret": "s████████████████████████████",
-            "amount": "1000000"
-        }]
-    }
+{
+    "method": "channel_authorize",
+    "params": [{
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "secret": "s████████████████████████████",
+        "amount": "1000000"
+    }]
+}
+```
 
 Response:
 
-    {
-        "result": {
-            "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
-            "status": "success"
-        }
+```json
+{
+    "result": {
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "status": "success"
     }
+}
+```
 
 
 ## 4. The payer sends a claim to the payee as payment for goods or services.
@@ -263,67 +279,75 @@ Example of using `channel_verify` with the JSON-RPC API:
 
 Request:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```json
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "channel_verify",
-        "params": [{
-            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
-            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-            "amount": "1000000"
-        }]
-    }
+{
+    "method": "channel_verify",
+    "params": [{
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+        "amount": "1000000"
+    }]
+}
+```
 
 Response:
 
-    200 OK
+```json
+200 OK
 
-    {
-        "result": {
-            "signature_verified":true,
-            "status":"success"
-        }
+{
+    "result": {
+        "signature_verified":true,
+        "status":"success"
     }
+}
+```
 
 If the response shows `"signature_verified": true` then the claim's signature is genuine. The payee must **also** confirm that the channel has enough XRP available to honor the claim. To do this, the payee uses the [account_channels method][] to confirm the most recent validated state of the payment channel.
 
 Request:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```json
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "account_channels",
-        "params": [{
-            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "ledger_index": "validated"
-        }]
-    }
+{
+    "method": "account_channels",
+    "params": [{
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "ledger_index": "validated"
+    }]
+}
+```
 
 Response:
 
-    200 OK
+```json
+200 OK
 
-    {
-        "result": {
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [{
             "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "channels": [{
-                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "amount": "100000000",
-                "balance": "0",
-                "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "destination_tag": 20170428,
-                "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-                "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "settle_delay": 86400
-            }],
-            "status": "success"
-        }
+            "amount": "100000000",
+            "balance": "0",
+            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "destination_tag": 20170428,
+            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "settle_delay": 86400
+        }],
+        "status": "success"
     }
+}
+```
 
 The payee should check the following:
 
@@ -369,54 +393,58 @@ Example of claiming XRP from a channel:
 
 Request:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```json
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "submit",
-        "params": [{
-                "secret": "s████████████████████████████",
-                "tx_json": {
-                    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                    "TransactionType": "PaymentChannelClaim",
-                    "Amount": "1000000",
-                    "Balance": "1000000",
-                    "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                    "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                    "Signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064"
-                },
-                "fee_mult_max": 1000
-            }]
-    }
-
-Response:
-
-    200 OK
-
-    {
-        "result": {
-            "engine_result": "tesSUCCESS",
-            "engine_result_code": 0,
-            "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-            "status": "success",
-            "tx_blob": "12000F2280000000240000017450165DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB36140000000000F42406240000000000F424068400000000000000A7121023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210096B933BC24DA77D8C4057B4780B282BA66C668DFE1ACF4EEC063AD6661725797022037C8823669CE91AACA8CC754C9F041359F85B0B32384AEA141EBC3603798A24C7646304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF5029006481144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+{
+    "method": "submit",
+    "params": [{
+            "secret": "s████████████████████████████",
             "tx_json": {
                 "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "TransactionType": "PaymentChannelClaim",
                 "Amount": "1000000",
                 "Balance": "1000000",
                 "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Fee": "10",
-                "Flags": 2147483648,
                 "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "Sequence": 372,
-                "Signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
-                "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-                "TransactionType": "PaymentChannelClaim",
-                "TxnSignature": "304502210096B933BC24DA77D8C4057B4780B282BA66C668DFE1ACF4EEC063AD6661725797022037C8823669CE91AACA8CC754C9F041359F85B0B32384AEA141EBC3603798A24C",
-                "hash": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB"
-            }
+                "Signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064"
+            },
+            "fee_mult_max": 1000
+        }]
+}
+```
+
+Response:
+
+```json
+200 OK
+
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "12000F2280000000240000017450165DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB36140000000000F42406240000000000F424068400000000000000A7121023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210096B933BC24DA77D8C4057B4780B282BA66C668DFE1ACF4EEC063AD6661725797022037C8823669CE91AACA8CC754C9F041359F85B0B32384AEA141EBC3603798A24C7646304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF5029006481144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": "1000000",
+            "Balance": "1000000",
+            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "Sequence": 372,
+            "Signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "PaymentChannelClaim",
+            "TxnSignature": "304502210096B933BC24DA77D8C4057B4780B282BA66C668DFE1ACF4EEC063AD6661725797022037C8823669CE91AACA8CC754C9F041359F85B0B32384AEA141EBC3603798A24C",
+            "hash": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB"
         }
     }
+}
+```
 
 The payee should confirm that this transaction is successful in a validated ledger. For the full details, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
@@ -434,44 +462,48 @@ The payee can also close a payment channel immediately after processing a claim 
 
 Example of [submitting a transaction](submit.html#sign-and-submit-mode) requesting a channel to close:
 
-    {
-        "method": "submit",
-        "params": [{
-            "secret": "s████████████████████████████",
-            "tx_json": {
-                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "TransactionType": "PaymentChannelClaim",
-                "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Flags": 2147614720
-            },
-            "fee_mult_max": 1000
-        }]
-    }
+```json
+{
+    "method": "submit",
+    "params": [{
+        "secret": "s████████████████████████████",
+        "tx_json": {
+            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "TransactionType": "PaymentChannelClaim",
+            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "Flags": 2147614720
+        },
+        "fee_mult_max": 1000
+    }]
+}
+```
 
 After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel using the [account_channels method][]. Be sure to specify `"ledger_index": "validated"` to get data from the latest validated ledger version.
 
 Example `account_channels` response:
 
-    {
-        "result": {
-            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "channels": [
-                {
-                    "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                    "amount": "100000000",
-                    "balance": "1000000",
-                    "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                    "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                    "destination_tag": 20170428,
-                    "expiration": 547073182,
-                    "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-                    "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                    "settle_delay": 86400
-                }
-            ],
-            "status": "success"
-        }
+```json
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [
+            {
+                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                "amount": "100000000",
+                "balance": "1000000",
+                "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "destination_tag": 20170428,
+                "expiration": 547073182,
+                "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+                "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                "settle_delay": 86400
+            }
+        ],
+        "status": "success"
     }
+}
+```
 
 In this example, the `expiration` value 547073182 in [seconds since the Ripple Epoch][] maps to `2017-05-02T20:46:22Z`, so any claims not redeemed by that time are no longer valid.
 
@@ -487,107 +519,111 @@ The command to submit the transaction is the same as the previous example reques
 
 Example of [submitting](submit.html#sign-and-submit-mode) a transaction to close an expired channel:
 
-    {
-        "method": "submit",
-        "params": [{
-            "secret": "s████████████████████████████",
-            "tx_json": {
-                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "TransactionType": "PaymentChannelClaim",
-                "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Flags": 2147614720
-            },
-            "fee_mult_max": 1000
-        }]
-    }
+```json
+{
+    "method": "submit",
+    "params": [{
+        "secret": "s████████████████████████████",
+        "tx_json": {
+            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "TransactionType": "PaymentChannelClaim",
+            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "Flags": 2147614720
+        },
+        "fee_mult_max": 1000
+    }]
+}
+```
 
 When the transaction has been included in a validated ledger, you can look at the metadata of the transaction to confirm that it deleted the channel and returned the XRP to the sender.
 
 Example response from using the [tx method][] to look up the transaction from this step:
 
-    {
-        "result": {
-            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "Fee": "5606",
-            "Flags": 2147614720,
-            "Sequence": 41,
-            "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-            "TransactionType": "PaymentChannelClaim",
-            "TxnSignature": "3044022008922FEB6F7D35D42006685BCBB007103D2A40AFAA69A7CFC10DF529F94BB6A402205D67816F50BBAEE0A2709AA3A93707304EC21133550FD2FF7436AD0C3CA6CE27",
-            "date": 547091262,
-            "hash": "9C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33",
-            "inLedger": 29480670,
-            "ledger_index": 29480670,
-            "meta": {
-                "AffectedNodes": [
-                    {
-                        "ModifiedNode": {
-                            "LedgerEntryType": "AccountRoot",
-                            "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-                            "PreviousTxnID": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB",
-                            "PreviousTxnLgrSeq": 29385089
-                        }
-                    },
-                    {
-                        "DeletedNode": {
-                            "FinalFields": {
-                                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                                "Amount": "100000000",
-                                "Balance": "1000000",
-                                "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                                "DestinationTag": 20170428,
-                                "Expiration": 547073182,
-                                "Flags": 0,
-                                "OwnerNode": "0000000000000000",
-                                "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
-                                "PreviousTxnLgrSeq": 29451256,
-                                "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                                "SettleDelay": 86400
-                            },
-                            "LedgerEntryType": "PayChannel",
-                            "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"
-                        }
-                    },
-                    {
-                        "ModifiedNode": {
-                            "FinalFields": {
-                                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                                "Balance": "1041862844",
-                                "Flags": 0,
-                                "OwnerCount": 2,
-                                "Sequence": 42
-                            },
-                            "LedgerEntryType": "AccountRoot",
-                            "LedgerIndex": "B1CB040A17F9469BC00376EC8719535655824AD16CB5F539DD5765FEA88FDBE3",
-                            "PreviousFields": {
-                                "Balance": "942868450",
-                                "OwnerCount": 3,
-                                "Sequence": 41
-                            },
-                            "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
-                            "PreviousTxnLgrSeq": 29451256
-                        }
-                    },
-                    {
-                        "ModifiedNode": {
-                            "FinalFields": {
-                                "Flags": 0,
-                                "Owner": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                                "RootIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
-                            },
-                            "LedgerEntryType": "DirectoryNode",
-                            "LedgerIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
-                        }
+```json
+{
+    "result": {
+        "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "Fee": "5606",
+        "Flags": 2147614720,
+        "Sequence": 41,
+        "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+        "TransactionType": "PaymentChannelClaim",
+        "TxnSignature": "3044022008922FEB6F7D35D42006685BCBB007103D2A40AFAA69A7CFC10DF529F94BB6A402205D67816F50BBAEE0A2709AA3A93707304EC21133550FD2FF7436AD0C3CA6CE27",
+        "date": 547091262,
+        "hash": "9C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33",
+        "inLedger": 29480670,
+        "ledger_index": 29480670,
+        "meta": {
+            "AffectedNodes": [
+                {
+                    "ModifiedNode": {
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+                        "PreviousTxnID": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB",
+                        "PreviousTxnLgrSeq": 29385089
                     }
-                ],
-                "TransactionIndex": 7,
-                "TransactionResult": "tesSUCCESS"
-            },
-            "status": "success",
-            "validated": true
-        }
+                },
+                {
+                    "DeletedNode": {
+                        "FinalFields": {
+                            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                            "Amount": "100000000",
+                            "Balance": "1000000",
+                            "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                            "DestinationTag": 20170428,
+                            "Expiration": 547073182,
+                            "Flags": 0,
+                            "OwnerNode": "0000000000000000",
+                            "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
+                            "PreviousTxnLgrSeq": 29451256,
+                            "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                            "SettleDelay": 86400
+                        },
+                        "LedgerEntryType": "PayChannel",
+                        "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                            "Balance": "1041862844",
+                            "Flags": 0,
+                            "OwnerCount": 2,
+                            "Sequence": 42
+                        },
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "B1CB040A17F9469BC00376EC8719535655824AD16CB5F539DD5765FEA88FDBE3",
+                        "PreviousFields": {
+                            "Balance": "942868450",
+                            "OwnerCount": 3,
+                            "Sequence": 41
+                        },
+                        "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
+                        "PreviousTxnLgrSeq": 29451256
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Flags": 0,
+                            "Owner": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                            "RootIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
+                        },
+                        "LedgerEntryType": "DirectoryNode",
+                        "LedgerIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
+                    }
+                }
+            ],
+            "TransactionIndex": 7,
+            "TransactionResult": "tesSUCCESS"
+        },
+        "status": "success",
+        "validated": true
     }
+}
+```
 
 In the transaction's metadata, look for the following:
 

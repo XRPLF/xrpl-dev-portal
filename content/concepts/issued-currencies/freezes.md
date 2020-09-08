@@ -98,7 +98,7 @@ Set the `Fee`, `Sequence`, and `LastLedgerSequence` parameters [in the typical w
 
 Example of submitting a TrustSet transaction to enable an individual freeze using the [WebSocket API](get-started-with-the-rippled-api.html#websocket-api):
 
-```
+```json
 {
   "id": 12,
   "command": "submit",
@@ -152,7 +152,7 @@ To enable Global Freeze on an address, send an `AccountSet` transaction with the
 
 Example of submitting an AccountSet transaction to enable Global Freeze using the [WebSocket API](get-started-with-the-rippled-api.html#websocket-api):
 
-```
+```json
 {
   "id": 12,
   "command": "submit",
@@ -202,7 +202,7 @@ Example of submitting an AccountSet transaction to enable No Freeze using the [W
 
 WebSocket request:
 
-```
+```json
 {
   "id": 12,
   "command": "submit",
@@ -273,7 +273,7 @@ Example WebSocket request to check for individual freeze:
 
 Example WebSocket response:
 
-```
+```json
 {
   "id": 15,
   "status": "success",

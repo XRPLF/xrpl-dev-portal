@@ -42,7 +42,7 @@ The following examples demonstrate how to cancel a Check.
 
 *JSON-RPC, WebSocket, or Commandline*
 
-```
+```json
 {
   "TransactionType": "CheckCancel",
   "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",

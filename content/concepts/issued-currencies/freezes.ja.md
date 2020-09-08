@@ -98,7 +98,7 @@ No Freeze設定は、アドレスのマスターキーのシークレットキ�
 
 [WebSocket API](get-started-with-the-rippled-api.html#websocket-api)を使用してIndividual Freezeを有効にするTrustSetトランザクションを送信する例:
 
-```
+```json
 {
  "id": 12,
  "command": "submit",
@@ -152,7 +152,7 @@ No Freeze設定は、アドレスのマスターキーのシークレットキ�
 
 [WebSocket API](get-started-with-the-rippled-api.html#websocket-api)を使用してGlobal Freezeを有効にするAccountSetトランザクションを送信する例:
 
-```
+```json
 {
  "id": 12,
  "command": "submit",
@@ -202,7 +202,7 @@ No Freeze設定は、アドレスのマスターキーのシークレットキ�
 
 WebSocket要求:
 
-```
+```json
 {
  "id": 12,
  "command": "submit",
@@ -261,7 +261,7 @@ WebSocket要求:
 
 Individual Freezeを確認するためのWebSocket要求の例:
 
-```
+```json
 {
  "id": 15,
  "command": "account_lines",
@@ -273,7 +273,7 @@ Individual Freezeを確認するためのWebSocket要求の例:
 
 WebSocket応答の例:
 
-```
+```json
 {
  "id": 15,
  "status": "success",
@@ -341,7 +341,7 @@ WebSocket応答の例:
 
 WebSocket要求の例:
 
-```
+```json
 {
  "id": 1,
  "command": "account_info",
@@ -352,7 +352,7 @@ WebSocket要求の例:
 
 WebSocket応答:
 
-```
+```json
 {
  "id": 4,
  "status": "success",
@@ -385,10 +385,10 @@ WebSocket応答:
 上記の例では`Flags`の値は12582912です。この場合、次のJavaScriptコードのように、lsfGlobalFreezeフラグとlsfDefaultRippleフラグが有効になっています。
 
 ```js
-var lsfGlobalFreeze = 0x00400000; 
-var lsfNoFreeze = 0x00200000; 
+var lsfGlobalFreeze = 0x00400000;
+var lsfNoFreeze = 0x00200000;
 
-var currentFlags = 12582912; 
+var currentFlags = 12582912;
 
 console.log(currentFlags & lsfGlobalFreeze); //4194304
 //therefore, Global Freeze is enabled

@@ -32,7 +32,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 *JSON-RPC、WebSocket、またはコマンドライン*
 
-```
+```json
 {
  "Account": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
  "TransactionType": "CheckCash",
