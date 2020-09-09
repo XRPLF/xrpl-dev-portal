@@ -1,24 +1,30 @@
-.content a.button {
-  color: $white;
-  border: 2px solid $white;
-}
-.content a.button:hover {
-  border: 2px solid $black;
+.btn, .content a.button {
+  padding: 16px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.25;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s;
 }
 
-.btn-outline-secondary {
+.btn-outline-secondary,
+.content a.button,
+.navbar-dark .navbar-nav .nav-link.btn-outline-secondary {
   color: $white;
   border-color: $white;
   border-width: 2px;
+  border-style: solid;
+
+  &:hover, &:active {
+    color: $primary;
+    border-color: $primary;
+    background-color: transparent;
+  }
 }
 
-#main_content_wrapper .btn-outline-secondary:hover,
-#main_content_wrapper .btn-outline-secondary:active,
-.button:hover, #request_button:hover {
-  /* Undo Bootstrap styling */
+.navbar-dark .navbar-nav .nav-link:hover {
   color: $white;
-  background-color: inherit;
-  border: 2px solid $white;
 }
 
 /* Button styling ----------------------------------------------------------- */
@@ -27,12 +33,6 @@ p + .readmore {
   margin-top: 12px;
 }
 
-.readmore .btn {
-  transition: 0.5s;
-  white-space: normal;
-}
-
-.readmore .btn i,
 .card-header a i {
   margin: 0 0.2em 0 0.8em;
 }
@@ -40,11 +40,6 @@ p + .readmore {
 .btn-primary code,
 .btn-secondary code {
   color: inherit;
-}
-
-a.button {
-  cursor: pointer;
-  text-decoration: none !important;
 }
 
 /* (Jump to) "Top" button */
@@ -65,101 +60,7 @@ a.button {
   }
 }
 
-.btn-outline-secondary {
-  padding: 9px 16px;
-  transition: box-shadow 200ms ease, background-color 200ms ease, color 200ms ease;
-  background-color: transparent;
-}
-
-.content a.button {
-  /* should match the bootstrap buttons */
-  display: inline-block;
-  font-weight: 400;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  line-height: 1.5;
-  padding: 9px 16px;
-  transition: 0.5s;
-}
-
-.content a.button::after {
-  content: " ➝";
-  padding-left: 7px;
-  transition: all .2s ease-in-out;
-  display: inline-block;
-  text-decoration: none;
-}
-
-.content a.button:hover::after {
-  padding-left: 14px;
-}
-
-// .btn:not(.external-link):not(.dropdown-toggle):not(.jump-to-top)::after,
-.landing .card .level-1 a::after,
-.landing .card .level-2 a::after,
-.landing .card .curated-links li a::after,
-.content .children-display li a::after {
-  content: " ➝";
-  padding-left: 7px;
-  transition: all .2s ease-in-out;
-  display: inline-block;
-  text-decoration: none;
-}
 
 .btn.jump-to-top::after {
   content: " ↑"
-}
-
-// .btn:not(.external-link):not(.dropdown-toggle):hover::after,
-.landing .card .level-1 a:hover::after,
-.landing .card .level-2 a:hover::after,
-.landing .card .curated-links li a:hover::after,
-.landing a.card:hover .btn::after,
-.content .children-display li a:hover::after {
-  padding-left: 14px;
-  text-decoration: none;
-}
-
-.btn.fa-search::after,
-.btn.fa-search:hover::after,
-.request-options .btn::after,
-.request-options .btn:hover::after,
-.response-options .btn::after,
-.response-options .btn:hover::after {
-  content: "";
-  padding: 0;
-}
-
-
-// NEW STYLING FROM REDESIGN
-.btn {
-  padding: 16px 24px;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 1.25;
-}
-.btn-clear {
-  color: $white;
-  border: 1px solid $white;
-}
-.btn-clear:hover {
-  background: transparent;
-  color: $primary;
-  border: 1px solid $primary;
-}
-.btn-black {
-  background: $black;
-  color: $white;
-  &:hover {
-    background: $black;
-  }
-}
-.btn-green-border {
-  color: $primary;
-  border: 1px solid $primary;
-}
-.btn-green-border:hover {
-  color: $primary;
-  border: 1px solid $primary;
 }

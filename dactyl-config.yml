@@ -167,14 +167,6 @@ pages:
 # "Learn" funnel ---------------------------------------------------------------
     -   name: Learn
         funnel: Learn
-        template: template-landing-children.html
-        html: learn.html
-        targets:
-            - en
-            - ja
-
-    -   name: Overview
-        funnel: Learn
         category: Uses
         template: template-learn-overview.html
         html: overview.html
@@ -224,23 +216,25 @@ pages:
             - ja
 
 # "Explore" funnel -------------------------------------------------------------
-    -   md: explore/explore.md
-        template: template-landing-children.html
+    -   name: Explore
         html: explore.html
+        template: template-redirect.html
+        redirect_url: businesses.html
         funnel: Explore
         targets:
             - en
             - ja
 
-    -   name: News
-        funnel: Explore
-        category: News
-        template: template-explore-news.html
-        html: news.html
-        sidebar: disabled
-        targets:
-            - en
-            - ja
+    # News page isn't ready at the moment
+    # -   name: News
+    #     funnel: Explore
+    #     category: News
+    #     template: template-explore-news.html
+    #     html: news.html
+    #     sidebar: disabled
+    #     targets:
+    #         - en
+    #         - ja
 
     -   name: Wallets
         funnel: Explore

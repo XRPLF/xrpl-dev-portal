@@ -9,7 +9,7 @@ h1 a:hover,
 h2 a:hover,
 h3 a:hover,
 .xrpl-footer h5 a:hover {
-  color: $white;
+  color: $primary;
 }
 
 /* Content text styling ----------------------------------------------------- */
@@ -126,7 +126,7 @@ td:nth-child(1) {
     flex-basis: calc(50% - 30px);
   }
 }
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
   .square {
     flex-basis: calc(50% - 30px);
   }
@@ -144,7 +144,7 @@ td:nth-child(1) {
   padding: 2rem;
   background: rgba(34, 37, 43, 0.5);
   backdrop-filter: blur(3px);
-  @media (max-width: 768px) { 
+  @media (max-width: 768px) {
     margin-left: 15px;
     margin-right: 15px;
   }
@@ -166,4 +166,3 @@ td:nth-child(1) {
     margin-bottom: 2.5rem !important;
   }
 }
-

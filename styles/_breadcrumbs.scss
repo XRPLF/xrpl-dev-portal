@@ -13,7 +13,8 @@
 .breadcrumb-item a {
   color: $gray-200;
   text-decoration: none;
-}
-.breadcrumb-item a:hover {
-  color: #000;
+
+  &:hover {
+    color: $primary
+  }
 }
