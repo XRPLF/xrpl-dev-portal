@@ -13,7 +13,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": 3,
   "command": "ledger_entry",
@@ -25,7 +25,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "ledger_entry",
     "params": [
@@ -94,7 +94,8 @@
 
 *WebSocket*
 
-```{
+```json
+{
     "id": 3,
     "result": {
         "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
@@ -118,8 +119,9 @@
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",

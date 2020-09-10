@@ -12,7 +12,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 2,
     "command": "peers"
@@ -37,7 +37,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
   "id": "peers_example",
   "result": {
@@ -174,7 +174,7 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 {
    "result" : {
       "cluster" : {},
@@ -266,9 +266,10 @@ An example of a successful response:
 
 *Commandline*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "cluster" : {},

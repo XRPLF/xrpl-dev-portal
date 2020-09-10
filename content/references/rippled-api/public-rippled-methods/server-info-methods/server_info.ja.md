@@ -10,7 +10,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": 1,
   "command": "server_info"
@@ -19,7 +19,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "server_info",
     "params": [
@@ -30,7 +30,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: server_info
 rippled server_info
 ```
@@ -49,7 +49,7 @@ rippled server_info
 
 *WebSocket*
 
-```
+```json
 {
   "id": 1,
   "status": "success",
@@ -156,8 +156,9 @@ rippled server_info
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result" : {
       "info" : {

@@ -25,7 +25,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 8,
     "command": "path_find",
@@ -65,7 +65,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 1,
   "status": "success",
@@ -469,7 +469,7 @@ Here is an example of an asynchronous follow-up from a path_find create request:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 1,
     "type": "path_find",
@@ -500,7 +500,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 57,
   "command": "path_find",
@@ -545,7 +545,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 58,
   "command": "path_find",

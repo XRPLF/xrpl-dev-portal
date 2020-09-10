@@ -10,7 +10,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 1,
     "command": "ping"
@@ -19,7 +19,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "ping",
     "params": [
@@ -30,7 +30,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: ping
 rippled ping
 ```
@@ -49,7 +49,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 1,
     "result": {},
@@ -60,8 +60,9 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "status": "success"

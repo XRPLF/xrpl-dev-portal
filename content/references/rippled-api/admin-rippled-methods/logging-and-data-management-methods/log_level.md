@@ -12,7 +12,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": "ll1",
     "command": "log_level",
@@ -23,7 +23,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: log_level [[partition] severity]
 rippled log_level PathRequest debug
 ```
@@ -45,9 +45,10 @@ Examples of successful responses:
 
 *Commandline (set log level)*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "status" : "success"
@@ -57,9 +58,10 @@ Connecting to 127.0.0.1:5005
 
 *Commandline (check log levels)*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "levels" : {

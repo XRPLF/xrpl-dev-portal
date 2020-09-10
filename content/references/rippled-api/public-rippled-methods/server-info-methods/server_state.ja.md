@@ -10,7 +10,7 @@
 
 *WebSocket*
 
-```
+```json
 {
  "id": 2,
  "command": "server_state"
@@ -19,7 +19,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "server_state",
    "params": [
@@ -30,7 +30,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: server_state
 rippled server_state
 ```
@@ -49,7 +49,7 @@ rippled server_state
 
 *WebSocket*
 
-```
+```json
 {
  "id": 2,
  "status": "success",
@@ -147,8 +147,9 @@ rippled server_state
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
   "result" : {
      "state" : {

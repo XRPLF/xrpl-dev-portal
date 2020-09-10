@@ -13,7 +13,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 3,
   "command": "ledger_entry",
@@ -25,7 +25,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "ledger_entry",
     "params": [
@@ -40,7 +40,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated", "type": "account_root" }'
 ```
 
@@ -127,6 +127,7 @@ An example of a successful response:
 
 ```json
 200 OK
+
 {
     "result": {
         "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",

@@ -12,7 +12,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id": 102,
    "command": "ledger_request",
@@ -49,9 +49,10 @@ rippled ledger_request 13800000
 
 *コマンドライン（失敗）*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "acquiring" : {
@@ -74,9 +75,10 @@ Connecting to 127.0.0.1:5005
 
 *コマンドライン（進行中）*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "hash" : "EB68B5B4F6F06BF59B6D7532BCB98BB98E2F10C2435D895217AA0AA7E910FBD5",
@@ -120,9 +122,10 @@ Connecting to 127.0.0.1:5005
 
 *コマンドライン（成功）*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "ledger" : {

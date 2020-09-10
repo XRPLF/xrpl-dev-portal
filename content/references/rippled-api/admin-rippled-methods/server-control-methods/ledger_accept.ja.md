@@ -13,7 +13,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": "Accept my ledger!",
   "command": "ledger_accept"
@@ -22,7 +22,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: ledger_accept
 rippled ledger_accept
 ```

@@ -12,7 +12,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id": "print_req_1",
    "command": "print"
@@ -37,9 +37,10 @@ rippled print
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "app" : {

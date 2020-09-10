@@ -11,7 +11,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": 2,
   "command": "account_tx",
@@ -26,7 +26,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "account_tx",
     "params": [
@@ -44,7 +44,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax account_tx account ledger_index_min ledger_index_max [offset] [limit] [binary] [count] [forward]
 rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 ```
@@ -87,7 +87,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 *WebSocket*
 
-```
+```json
 {
     "id": 2,
     "status": "success",
@@ -323,7 +323,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 *JSON-RPC*
 
-```
+```json
 200 OK
 {
     "result": {

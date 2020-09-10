@@ -12,7 +12,7 @@ _`get_counts`メソッドは、権限のないユーザーは実行できない[
 
 *WebSocket*
 
-```
+```json
 {
    "id": 90,
    "command": "get_counts",
@@ -22,7 +22,7 @@ _`get_counts`メソッドは、権限のないユーザーは実行できない[
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "get_counts",
    "params": [
@@ -35,7 +35,7 @@ _`get_counts`メソッドは、権限のないユーザーは実行できない[
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: get_counts [min_count]
 rippled get_counts 100
 ```
@@ -56,7 +56,7 @@ rippled get_counts 100
 
 *JSON-RPC*
 
-```
+```json
 {
   "result" : {
      "AL_hit_rate" : 48.36725616455078,
@@ -93,9 +93,10 @@ rippled get_counts 100
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "AL_hit_rate" : 48.36725616455078,

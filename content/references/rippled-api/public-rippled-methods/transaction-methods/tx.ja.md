@@ -11,7 +11,7 @@
 
 *WebSocket*
 
-```
+```json
 {
  "id": 1,
  "command": "tx",
@@ -21,7 +21,7 @@
 ```
 *JSON-RPC*
 
-```
+```json
 {
    "method": "tx",
    "params": [
@@ -34,7 +34,7 @@
 ```
 *コマンドライン*
 
-```
+```sh
 #Syntax: tx transaction [binary]
 rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
@@ -58,7 +58,7 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 
 *WebSocket*
 
-```
+```json
 {
    "id": 1,
    "result": {

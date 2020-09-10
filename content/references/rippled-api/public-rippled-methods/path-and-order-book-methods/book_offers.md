@@ -10,7 +10,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 4,
   "command": "book_offers",
@@ -28,7 +28,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "book_offers",
     "params": [
@@ -49,7 +49,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
 rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
@@ -138,8 +138,9 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "ledger_current_index": 8696243,

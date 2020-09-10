@@ -12,7 +12,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id": 1,
    "command": "validators"
@@ -21,7 +21,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "validators",
    "params": [
@@ -32,7 +32,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: validators
 rippled validators
 ```
@@ -49,7 +49,7 @@ rippled validators
 
 *WebSocket*
 
-```
+```json
 {
    "id":5,
    "status":"success",
@@ -83,8 +83,9 @@ rippled validators
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result":{
        "local_static_keys": [],
@@ -116,9 +117,10 @@ rippled validators
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result":{
        "local_static_keys": [],

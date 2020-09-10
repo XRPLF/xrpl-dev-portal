@@ -14,7 +14,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id":8,
    "command":"ripple_path_find",
@@ -38,7 +38,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method":"ripple_path_find",
    "params":[
@@ -65,7 +65,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax ripple_path_find json ledger_index|ledger_hash
 rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies":[ { "currency":"XRP" }, { "currency":"USD" } ], "destination_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount":{ "value":"0.001", "currency":"USD", "issuer":"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
 ```
@@ -94,7 +94,7 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 
 *WebSocket*
 
-```
+```json
 {
    "id":8,
    "status":"success",
@@ -203,8 +203,9 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result":{
        "alternatives":[

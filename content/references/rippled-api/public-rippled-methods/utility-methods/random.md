@@ -10,7 +10,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 1,
     "command": "random"
@@ -19,7 +19,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "random",
     "params": [
@@ -30,7 +30,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: random
 rippled random
 ```
@@ -47,7 +47,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 1,
     "result": {
@@ -60,8 +60,9 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "random": "4E57146AA47BC6E88FDFE8BAA235B900126C916B6CC521550996F590487B837A",

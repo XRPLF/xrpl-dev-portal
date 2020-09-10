@@ -13,7 +13,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 2,
   "command": "can_delete",
@@ -23,7 +23,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "can_delete",
     "params": [
@@ -36,8 +36,8 @@ An example of the request format:
 
 *Commandline*
 
-```
-#Syntax can_delete [<ledger_index>|<ledger_hash>|now|always|never]
+```sh
+#Syntax: can_delete [<ledger_index>|<ledger_hash>|now|always|never]
 rippled can_delete 11320417
 ```
 

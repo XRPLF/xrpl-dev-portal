@@ -13,7 +13,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
    "id": "Accept my ledger!",
    "command": "ledger_accept"
@@ -22,7 +22,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: ledger_accept
 rippled ledger_accept
 ```

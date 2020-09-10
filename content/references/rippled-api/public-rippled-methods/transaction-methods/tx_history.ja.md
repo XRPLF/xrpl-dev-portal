@@ -12,7 +12,7 @@
 
 *WebSocket*
 
-```
+```json
 {
  "id": 5,
  "command": "tx_history",
@@ -22,7 +22,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "tx_history",
    "params": [
@@ -35,7 +35,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: tx_history [start]
 rippled tx_history 0
 ```
@@ -58,7 +58,7 @@ rippled tx_history 0
 
 *WebSocket*
 
-```
+```json
 {
  "id": 2,
  "status": "success",
@@ -511,8 +511,9 @@ rippled tx_history 0
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result": {
        "index": 0,

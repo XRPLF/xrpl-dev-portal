@@ -10,7 +10,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 1,
   "command": "server_info"
@@ -19,7 +19,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "server_info",
     "params": [
@@ -30,7 +30,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: server_info
 rippled server_info
 ```

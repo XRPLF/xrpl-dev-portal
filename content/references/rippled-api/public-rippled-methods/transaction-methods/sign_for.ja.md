@@ -15,7 +15,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id":"sign_for_example",
    "command":"sign_for",
@@ -40,8 +40,7 @@
 
 *JSON-RPC*
 
-```
-POST http://localhost:5005/
+```json
 {
    "method":"sign_for",
    "params":[{
@@ -67,7 +66,7 @@ POST http://localhost:5005/
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: rippled sign_for <signer_address> <signer_secret> [offline]
 rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s████████████████████████████ '{
    "TransactionType":"TrustSet",
@@ -111,7 +110,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 
 *WebSocket*
 
-```
+```json
 {
  "id":"sign_for_example",
  "status":"success",
@@ -182,9 +181,10 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 
 *コマンドライン*
 
-```
+```json
 Loading:"/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" :{
      "status" :"success",

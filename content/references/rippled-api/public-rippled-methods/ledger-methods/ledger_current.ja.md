@@ -11,7 +11,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id":2,
   "command":"ledger_current"
@@ -20,7 +20,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method":"ledger_current",
    "params":[
@@ -31,7 +31,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: ledger_current
 rippled ledger_current
 ```
@@ -50,7 +50,7 @@ rippled ledger_current
 
 *WebSocket*
 
-```
+```json
 {
  "id":2,
  "status":"success",
@@ -63,8 +63,9 @@ rippled ledger_current
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result":{
        "ledger_current_index":8696233,

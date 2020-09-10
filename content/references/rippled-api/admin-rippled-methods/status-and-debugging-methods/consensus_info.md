@@ -12,7 +12,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 99,
     "command": "consensus_info"
@@ -21,7 +21,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "consensus_info",
     "params": [
@@ -32,7 +32,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: consensus_info
 rippled consensus_info
 ```
@@ -49,7 +49,7 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 {
    "result" : {
       "info" : {
@@ -124,9 +124,10 @@ An example of a successful response:
 
 *Commandline*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "info" : {

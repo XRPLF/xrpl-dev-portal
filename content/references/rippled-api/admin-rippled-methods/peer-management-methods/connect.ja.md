@@ -12,7 +12,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "command": "connect",
    "ip": "192.170.145.88",
@@ -22,7 +22,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "connect",
    "params": [
@@ -37,7 +37,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: connect ip [port]
 rippled connect 192.170.145.88 51235
 ```
@@ -59,7 +59,7 @@ rippled connect 192.170.145.88 51235
 
 *JSON-RPC*
 
-```
+```json
 {
   "result" : {
      "message" : "connecting",
@@ -70,9 +70,10 @@ rippled connect 192.170.145.88 51235
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "message" : "connecting",

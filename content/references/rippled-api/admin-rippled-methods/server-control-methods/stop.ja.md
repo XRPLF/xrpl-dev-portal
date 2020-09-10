@@ -12,7 +12,7 @@ _`stop`要求は、権限のないユーザーは実行できない*[管理メ�
 
 *WebSocket*
 
-```
+```json
 {
    "id": 0,
    "command": "stop"
@@ -21,7 +21,7 @@ _`stop`要求は、権限のないユーザーは実行できない*[管理メ�
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "stop",
    "params": [
@@ -48,7 +48,7 @@ rippled stop
 
 *JSON-RPC*
 
-```
+```json
 {
   "result" : {
      "message" : "ripple server stopping",
@@ -59,9 +59,10 @@ rippled stop
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "message" : "ripple server stopping",

@@ -13,7 +13,7 @@ _`can_delete`メソッドは、権限のないユーザーは実行できない[
 
 *WebSocket*
 
-```
+```json
 {
  "id": 2,
  "command": "can_delete",
@@ -23,7 +23,7 @@ _`can_delete`メソッドは、権限のないユーザーは実行できない[
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "can_delete",
    "params": [
@@ -36,8 +36,8 @@ _`can_delete`メソッドは、権限のないユーザーは実行できない[
 
 *コマンドライン*
 
-```
-#Syntax can_delete [<ledger_index>|<ledger_hash>|now|always|never]
+```sh
+#Syntax: can_delete [<ledger_index>|<ledger_hash>|now|always|never]
 rippled can_delete 11320417
 ```
 

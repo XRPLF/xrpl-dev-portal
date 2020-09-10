@@ -15,7 +15,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": 2,
   "command": "sign",
@@ -37,7 +37,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "sign",
     "params": [
@@ -62,7 +62,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: sign secret tx_json [offline]
 rippled sign s████████████████████████████ '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }, "Sequence": 360, "Fee": "10000"}' offline
 ```
@@ -109,7 +109,7 @@ rippled sign s██████████████████████
 
 *WebSocket*
 
-```
+```json
 {
   "id": 2,
   "status": "success",
@@ -138,8 +138,9 @@ rippled sign s██████████████████████
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "status": "success",
@@ -166,9 +167,10 @@ rippled sign s██████████████████████
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "status" : "success",

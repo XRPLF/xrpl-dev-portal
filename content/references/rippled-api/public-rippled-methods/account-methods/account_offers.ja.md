@@ -11,7 +11,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": 2,
   "command": "account_offers",
@@ -21,7 +21,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "account_offers",
     "params": [
@@ -34,7 +34,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: account_offers account [ledger_index]
 rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
@@ -64,7 +64,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 
 *WebSocket*
 
-```
+```json
 {
   "id": 9,
   "status": "success",
@@ -104,7 +104,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 
 *JSON-RPC*
 
-```
+```json
 200 OK
 {
     "result": {

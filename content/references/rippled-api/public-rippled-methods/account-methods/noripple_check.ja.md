@@ -10,7 +10,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id": 0,
    "command": "noripple_check",
@@ -24,7 +24,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "noripple_check",
    "params": [
@@ -62,7 +62,7 @@
 
 *WebSocket*
 
-```
+```json
 {
  "id": 0,
  "status": "success",
@@ -114,7 +114,7 @@
 
 *JSON-RPC*
 
-```
+```json
 200 OK
 {
    "result": {

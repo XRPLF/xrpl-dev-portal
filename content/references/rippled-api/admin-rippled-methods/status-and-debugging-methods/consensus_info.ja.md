@@ -12,7 +12,7 @@ _`consensus_info`メソッドは、権限のないユーザーは実行できな
 
 *WebSocket*
 
-```
+```json
 {
    "id": 99,
    "command": "consensus_info"
@@ -21,7 +21,7 @@ _`consensus_info`メソッドは、権限のないユーザーは実行できな
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "consensus_info",
    "params": [
@@ -32,7 +32,7 @@ _`consensus_info`メソッドは、権限のないユーザーは実行できな
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: consensus_info
 rippled consensus_info
 ```
@@ -49,7 +49,7 @@ rippled consensus_info
 
 *JSON-RPC*
 
-```
+```json
 {
   "result" : {
      "info" : {
@@ -124,9 +124,10 @@ rippled consensus_info
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "info" : {

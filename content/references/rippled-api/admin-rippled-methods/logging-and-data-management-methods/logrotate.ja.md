@@ -7,7 +7,7 @@
 
 次のスクリプトは、`/etc/logrotate.d/rippled`として作成できるサンプルです。
 
-```
+```logrotate
 /var/log/rippled/*.log {
   daily
   minsize 200M
@@ -40,7 +40,7 @@ _`logrotate`メソッドは、権限のないユーザーは実行できない[�
 
 *WebSocket*
 
-```
+```json
 {
     "id": "lr1",
     "command": "logrotate"
@@ -49,7 +49,8 @@ _`logrotate`メソッドは、権限のないユーザーは実行できない[�
 
 *コマンドライン*
 
-```
+```sh
+#Syntax: logrotate
 rippled logrotate
 ```
 
@@ -65,8 +66,9 @@ rippled logrotate
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result" : {
       "message" : "The log file was closed and reopened.",
@@ -78,9 +80,10 @@ rippled logrotate
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "message" : "The log file was closed and reopened.",

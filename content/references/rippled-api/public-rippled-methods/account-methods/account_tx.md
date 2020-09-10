@@ -11,7 +11,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 2,
   "command": "account_tx",
@@ -26,7 +26,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "account_tx",
     "params": [
@@ -44,7 +44,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 # Syntax: account_tx account [ledger_index_min [ledger_index_max]] [limit] [offset] [binary] [count] [descending]
 # For binary/count/descending, use the parameter name for true and omit for false.
 rippled -- account_tx rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w -1 -1 2 0 binary descending

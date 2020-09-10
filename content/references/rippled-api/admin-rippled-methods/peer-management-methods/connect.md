@@ -12,7 +12,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "command": "connect",
     "ip": "192.170.145.88",
@@ -22,7 +22,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "connect",
     "params": [
@@ -37,7 +37,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: connect ip [port]
 rippled connect 192.170.145.88 51235
 ```
@@ -59,7 +59,7 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 {
    "result" : {
       "message" : "connecting",
@@ -70,9 +70,10 @@ An example of a successful response:
 
 *Commandline*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "message" : "connecting",

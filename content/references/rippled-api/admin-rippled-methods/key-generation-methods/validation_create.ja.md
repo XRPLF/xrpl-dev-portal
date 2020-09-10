@@ -17,7 +17,7 @@ _`validation_create`メソッドは、権限のないユーザーは実行でき
 
 *WebSocket*
 
-```
+```json
 {
    "id": 0,
    "command": "validation_create",
@@ -27,7 +27,7 @@ _`validation_create`メソッドは、権限のないユーザーは実行でき
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "validation_create",
    "params": [
@@ -40,7 +40,7 @@ _`validation_create`メソッドは、権限のないユーザーは実行でき
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: validation_create [secret]
 rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 ```
@@ -63,7 +63,7 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
 
 *JSON-RPC*
 
-```
+```json
 {
   "result" : {
      "status" : "success",
@@ -76,9 +76,10 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "status" : "success",
