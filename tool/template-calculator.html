@@ -10,18 +10,19 @@
 
 {% endblock %}
 
-{% block bodyclasses %}no-sidebar{% endblock %}
+{% block bodyclasses %}no-sidebar page-calculator{% endblock %}
 {% block mainclasses %}landing{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-<div class="calculator-wrapper">
-  <div class="container my-20 mb-49">
+<div class="fullwidth-bg">
+  <div class="container">
+
     <section class="row mb-49">
       <h6 class="section-marker">{% trans %}Sustainability{% endtrans %}</h6>
-      <div class="col-sm-4 d-none d-sm-none">
-        <img src="./img/green/green-graphic.png" class="mw-100">
+      <div class="col-sm-4 d-sm-none d-md-block sustainability-bg">
+        &nbsp;
       </div>
       <div class="col-sm-8">
         <h3 class="h1 mb-4 mt-12">{% trans %}How Green Is Your Currency?{% endtrans %}</h3>
@@ -92,7 +93,7 @@
                   <div class="dot" id="kWh-btc-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="./img/icons/bw-bitcoin.png" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-bitcoin.png" class="mw-100 mt-3">
                   <p class="h6 mt-2 mb-1">{% trans %}Bitcoin{% endtrans %}</p>
                   <h5 class="h4 normal mb-0" id="kWh-btc"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -104,7 +105,7 @@
                   <div class="dot" id="kWh-eth-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="./img/icons/bw-ethereum.png" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-ethereum.png" class="mw-100 mt-3">
                   <p class="h6 mt-2 mb-1">{% trans %}Ethereum{% endtrans %}</p>
                   <h5 class="h4 normal mb-0" id="kWh-eth"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -116,7 +117,7 @@
                   <div class="dot" id="kWh-pap-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="./img/icons/bw-cash.png" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-cash.png" class="mw-100 mt-3">
                   <p class="h6 mt-2 mb-1">{% trans %}Cash{% endtrans %}</p>
                   <h5 class="h4 normal mb-0" id="kWh-pap"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -128,7 +129,7 @@
                   <div class="dot" id="kWh-xrp-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="./img/icons/xrp.png" class="mw-100 mt-3">
+                  <img src="assets/img/icons/xrp.png" class="mw-100 mt-3">
                   <p class="h6 mt-2 mb-1">XRP</p>
                   <h5 class="h4 normal mb-0" id="kWh-xrp"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -140,7 +141,7 @@
                   <div class="dot" id="kWh-vsa-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="./img/icons/bw-visa.png" alt="{% trans %}Visa{% endtrans %}" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-visa.png" alt="{% trans %}Visa{% endtrans %}" class="mw-100 mt-3">
                   <p class="h6 mt-2 mb-1">Visa</p>
                   <h5 class="h4 normal mb-0" id="kWh-vsa"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -152,7 +153,7 @@
                   <div class="dot" id="kWh-mst-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="./img/icons/bw-mastercard.png" alt="{% trans %}Mastercard{% endtrans %}" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-mastercard.png" alt="{% trans %}Mastercard{% endtrans %}" class="mw-100 mt-3">
                   <p class="h6 mt-2 mb-1">{% trans %}Mastercard{% endtrans %}</p>
                   <h5 class="h4 normal mb-0" id="kWh-mst"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -270,37 +271,37 @@
           </thead>
           <tbody>
             <tr>
-              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="./img/icons/bitcoin@2x.png"></div>Bitcoin</td>
+              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="assets/img/icons/bitcoin@2x.png"></div>Bitcoin</td>
               <td class="fs-6 text-right">487.3688<span class="ratio"> KWh/tx</span></td>
               <td class="fs-6 text-right">38.7744<span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">0.4103<span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
-              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="./img/icons/ethereum@2x.png"></div>Ethereum</td>
+              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="assets/img/icons/ethereum@2x.png"></div>Ethereum</td>
               <td class="fs-6 text-right">42.8633<span class="ratio"> KWh/tx</span></td>
               <td class="fs-6 text-right">1.1311<span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">0.0273<span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
-              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="./img/icons/xrp@2x.png"></div>XRP</td>
+              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="assets/img/icons/xrp@2x.png"></div>XRP</td>
               <td class="fs-6 text-right">0.0079<span class="ratio"> KWh/tx</span></td>
               <td class="fs-6 text-right">0.0006<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">3.7<sup>-12</sup><span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
-              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="./img/icons/visa@2x.png"></div>Visa</td>
+              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/visa@2x.png"></div>Visa</td>
               <td class="fs-6 text-right">0.0008<span class="ratio"> KWh/tx</span></td>
               <td class="fs-6 text-right">0.00006<span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">5.0<sup>-13</sup><span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
-              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="./img/icons/mastercard@2x.png"></div>Mastercard</td>
+              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/mastercard@2x.png"></div>Mastercard</td>
               <td class="fs-6 text-right">0.0006<span class="ratio"> KWh/tx</span></td>
               <td class="fs-6 text-right">0.00005<span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">5.0<sup>-13</sup><span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
-              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="./img/icons/paper-money@2x.png"></div>Paper</td>
+              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/paper-money@2x.png"></div>Paper</td>
               <td class="fs-6 text-right">0.044<span class="dblue">0</span><span class="ratio"> KWh/tx</span></td>
               <td class="fs-6 text-right">0.0035<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">2.32<sup>-11</sup><span class="ratio"> Mt/tx</span></td>

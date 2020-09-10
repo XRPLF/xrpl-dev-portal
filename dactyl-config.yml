@@ -170,6 +170,7 @@ pages:
         category: Uses
         template: template-learn-overview.html
         html: overview.html
+        name_in_top_nav: Overview
         sidebar: disabled
         targets:
             - en

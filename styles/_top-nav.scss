@@ -7,9 +7,17 @@
     white-space: pre;
     -webkit-transition: opacity 200ms ease, color 200ms ease;
     transition: opacity 200ms ease, color 200ms ease;
+
+    @include media-breakpoint-down(md) {
+      img {
+        width: 120px;
+      }
+    }
   }
   .navbar-brand:hover {
-    opacity: 0.5;
+    opacity: 1.0;
+    // Hack: turn white logo to approximately $green
+    filter: brightness(0.5) sepia(1) saturate(5000%) hue-rotate(114deg) brightness(1.96) saturate(87%);
   }
 
   // Main Links ----------------------------------------------------------------

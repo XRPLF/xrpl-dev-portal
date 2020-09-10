@@ -1,14 +1,3 @@
-// Font Settings ===============================================================
-.marketing-wrapper {
-	section {
-		border-bottom: none;
-	}
-	.row {
-		margin-right: -15px;
-    margin-left: -15px;
-	}
-}
-
 /* HOME STYLINGS */
 #home-hero-marker {
 	top: unset;
@@ -39,7 +28,7 @@
 	background-repeat: no-repeat;
 	background-size: 100% 70px;
 	@media (max-width: 991px) {
-	  padding-left: 2rem !important; 
+	  padding-left: 2rem !important;
 	}
 }
 .hc .h2 {
@@ -76,13 +65,13 @@
 	}
 }
 #page-impact-bg {
-	background-image: url(../../img/backgrounds/bg-impact-top.png);
+	background-image: url(../img/backgrounds/bg-impact-top.png);
 	background-repeat: no-repeat;
   background-position: center 250px;
   background-size: contain;
 }
 #page-business-bg {
-	background-image: url(../../img/backgrounds/bg-business-mid.png);
+	background-image: url(../img/backgrounds/bg-business-mid.png);
 	background-repeat: no-repeat;
 	background-position: right 72.5%;
 }
@@ -97,7 +86,7 @@
   z-index: -1;
 }
 #page-exchanges-bg {
-	background-image: url(../../img/backgrounds/bg-exchanges-top.png);
+	background-image: url(../img/backgrounds/bg-exchanges-top.png);
 	background-repeat: no-repeat;
 	background-position: left 25%;
 }
@@ -107,11 +96,17 @@
 	margin-top: -446px;
   z-index: -1;
 }
-#page-wallets-bg {
-	background-image: url(../../img/backgrounds/bg-wallets-top.png);
-	background-repeat: no-repeat;
-	background-position: left 5%;
+
+.page-wallets {
+  #main_content_body {
+	  background: url(../img/backgrounds/bg-wallets-bot.png) bottom right no-repeat;
+  }
+
+  .fullwidth-bg {
+    background: url(../img/backgrounds/bg-wallets-top.png) left 5% no-repeat;
+  }
 }
+
 #page-wallets-bot {
 	position: absolute;
 	right: 0;
@@ -125,13 +120,13 @@
   z-index: -1;
 }
 #page-overview-bg {
-	background-image: url(../../img/backgrounds/bg-overview-top.png);
+	background-image: url(../img/backgrounds/bg-overview-top.png);
 	background-repeat: no-repeat;
 	background-position: right 0;
 }
 
 #page-history-bg {
-	background-image: url(../../img/backgrounds/bg-history-mid.png);
+	background-image: url(../img/backgrounds/bg-history-mid.png);
 	background-repeat: no-repeat;
 	background-position: right 60%;
 }
@@ -142,229 +137,244 @@
 	top: 302px;
 }
 
-
-
-/* CALCULATOR STYLING */
-#data-selector li a {
-	background: #22252B;
-	padding: 0.5rem 1.3rem;
-	color: $white;
-	white-space: nowrap;
-	font-weight: normal;
-}
-#data-selector li:nth-child(2) {
-	margin-left: -7px;
-	margin-right: -7px;
-}
-#data-selector li.active a {
-	background: $primary;
-	color: $black;
-}
-.tab-content div {
-	display: none;
-}
-.d-output {
-	display: none;
-	margin: 0 12px;
-	max-width: 188px;
-	width: 33%;
-	@media only screen and (max-width: 992px) {
-		width: auto;
-	}
-}
-.d-output.active {
-	display: block;
-	animation-fill-mode: forwards;
-	animation: fadeIn 1s ease-in-out;
-	@media only screen and (max-width: 992px) {
-		display: inline-block;
-	}
-}
-
-@media only screen and (min-width: 576px) and (max-width: 1200px){
-	#data-selector li:nth-child(2) {
-		margin-left: 0;
-		margin-right: 0;
-		border-top: 1px solid $black;
-		border-bottom: 1px solid $black;
-	}
-} 
-@media only screen and (max-width: 576px) {
-	.d-output {
-		display: none;
-		width: auto;
-		max-width: 100%;
-	}
-	.viz-wrapper {
-		margin-bottom: 2.5rem;
-		margin-right: 1rem;
-	}
-	.d-output[data-comp="kWh"].active {
-		display: inline-flex;
-	}
-	#data-selector li:nth-child(2) {
-		margin-left: 0;
-		margin-right: 0;
-		border-top: 1px solid $black;
-		border-bottom: 1px solid $black;
-	}
-}
-@media only screen and (max-width: 992px) {
-	#calculator-inputs-offset.offset {
-		height: 248px;
-		width: 100%;
-	}
-	#calculator-inputs-offset {
-		height: 0;
-		width: 100%;
-	}
-	.d-output {
-		margin: 16px;
-	}
-	#calculator-mobile-toggle.show {
-		position: fixed;
-		top: 15px;
-		right: 15px;
-		z-index: 9999999;
-	}
-	#calculator-mobile-toggle.hide {
-		display: none;
-	}
-	#calculator-inputs.sticky {
-		position: fixed;
-		top: 72px;
-		width: calc(100% - 30px);
-		left: 15px;
-		right: 15px;
-		background: $black;
-		display: none;
-	}
-	#calculator-inputs.sticky.show .calc-inputs-wrapper {
-		display: block;
-		margin-bottom: 1.5rem;
-	}
-	#calculator-inputs.sticky.show {
-		display: block;
-	}
-}
-.viz-wrapper {
-	position: relative;
-	height: 204px;
-	width: 184px;
-	overflow: hidden;
-	border-radius: 10px;
-}
-.viz-wrapper img {
-	margin-left: -1px;
-	margin-right: -1px;
-}
-@keyframes fadeIn {
-  0% { opacity: 0 }
-  100% { opacity: 1 }
-}
-.dot {
-	height: 2px;
-	width: 2px;
-	border-radius: 50%;
-	background-color: red;
-	position: absolute;
-	z-index: -1;
-	top: 98px;
-	left: 68px;
-	transform-origin: center center;
-}
-#kWh-btc-dot {
-	background-color: #FF671A;
-}
-#kWh-eth-dot {
-	background-color: #4F5664;
-}
-#kWh-xrp-dot {
-	background-color: $primary;
-}
-#kWh-pap-dot {
-}
-
-.dash:before {
-	content: url(../../img/icons/dash-line.png);
-	position: absolute;
-	top: -12px;
-	margin-left: 13px;
+.sustainability-bg {
+  background: url(../../img/green/green-graphic.png) 0 3rem no-repeat;
+  background-size: contain;
 }
 
 
-input[type=range] {
-  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  width: 100%; /* Specific width is required for Firefox. */
-  background: transparent; /* Otherwise white in Chrome */
-  z-index: 2;
+.page-docs-index {
+  @include media-breakpoint-up(lg) {
+    background: url(../img/backgrounds/bg-docs.png) no-repeat;
+    background-position-x: left;
+    background-position-y: 300px;
+  }
 }
 
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
 
-input[type=range]:focus {
-  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-}
+.page-calculator {
+  /* CALCULATOR STYLING */
+  #data-selector li a {
+  	background: #22252B;
+  	padding: 0.5rem 1.3rem;
+  	color: $white;
+  	white-space: nowrap;
+  	font-weight: normal;
+  }
+  #data-selector li:nth-child(2) {
+  	margin-left: -7px;
+  	margin-right: -7px;
+  }
+  #data-selector li.active a {
+  	background: $primary;
+  	color: $black;
+  }
+  .tab-content div {
+  	display: none;
+  }
+  .d-output {
+  	display: none;
+  	margin: 0 12px;
+  	max-width: 188px;
+  	width: 33%;
+  	@media only screen and (max-width: 992px) {
+  		width: auto;
+  	}
+  }
+  .d-output.active {
+  	display: block;
+  	animation-fill-mode: forwards;
+  	animation: fadeIn 1s ease-in-out;
+  	@media only screen and (max-width: 992px) {
+  		display: inline-block;
+  	}
+  }
 
-input[type=range]::-ms-track {
-  width: 100%;
-  cursor: pointer;
+  @media only screen and (min-width: 576px) and (max-width: 1200px){
+  	#data-selector li:nth-child(2) {
+  		margin-left: 0;
+  		margin-right: 0;
+  		border-top: 1px solid $black;
+  		border-bottom: 1px solid $black;
+  	}
+  }
+  @media only screen and (max-width: 576px) {
+  	.d-output {
+  		display: none;
+  		width: auto;
+  		max-width: 100%;
+  	}
+  	.viz-wrapper {
+  		margin-bottom: 2.5rem;
+  		margin-right: 1rem;
+  	}
+  	.d-output[data-comp="kWh"].active {
+  		display: inline-flex;
+  	}
+  	#data-selector li:nth-child(2) {
+  		margin-left: 0;
+  		margin-right: 0;
+  		border-top: 1px solid $black;
+  		border-bottom: 1px solid $black;
+  	}
+  }
+  @media only screen and (max-width: 992px) {
+  	#calculator-inputs-offset.offset {
+  		height: 248px;
+  		width: 100%;
+  	}
+  	#calculator-inputs-offset {
+  		height: 0;
+  		width: 100%;
+  	}
+  	.d-output {
+  		margin: 16px;
+  	}
+  	#calculator-mobile-toggle.show {
+  		position: fixed;
+  		top: 15px;
+  		right: 15px;
+  		z-index: 9999999;
+  	}
+  	#calculator-mobile-toggle.hide {
+  		display: none;
+  	}
+  	#calculator-inputs.sticky {
+  		position: fixed;
+  		top: 72px;
+  		width: calc(100% - 30px);
+  		left: 15px;
+  		right: 15px;
+  		background: $black;
+  		display: none;
+  	}
+  	#calculator-inputs.sticky.show .calc-inputs-wrapper {
+  		display: block;
+  		margin-bottom: 1.5rem;
+  	}
+  	#calculator-inputs.sticky.show {
+  		display: block;
+  	}
+  }
+  .viz-wrapper {
+  	position: relative;
+  	height: 204px;
+  	width: 184px;
+  	overflow: hidden;
+  	border-radius: 10px;
+  }
+  .viz-wrapper img {
+  	margin-left: -1px;
+  	margin-right: -1px;
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+  }
+  .dot {
+  	height: 2px;
+  	width: 2px;
+  	border-radius: 50%;
+  	background-color: red;
+  	position: absolute;
+  	z-index: -1;
+  	top: 98px;
+  	left: 68px;
+  	transform-origin: center center;
+  }
+  #kWh-btc-dot {
+  	background-color: #FF671A;
+  }
+  #kWh-eth-dot {
+  	background-color: #4F5664;
+  }
+  #kWh-xrp-dot {
+  	background-color: $primary;
+  }
+  #kWh-pap-dot {
+  }
 
-  /* Hides the slider so custom styles can be added */
-  background: transparent; 
-  border-color: transparent;
-  color: transparent;
-}
+  .dash:before {
+  	content: url(../img/icons/dash-line.png);
+  	position: absolute;
+  	top: -12px;
+  	margin-left: 13px;
+  }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  box-sizing: content-box;
-  border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px; 
-  width: 1px; /* Set a specific slider handle width */
-  height: 1px; /* Slider handle height */
-  background: $primary;
-  padding: 0.125rem;
-  border: 8px solid $black;
-  box-shadow: 0 0 0 2px $primary;
-  cursor: pointer; /* Cursor on hover */
-}
 
-.slider::-moz-range-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  box-sizing: content-box;
-  border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px; 
-  width: 1px; /* Set a specific slider handle width */
-  height: 1px; /* Slider handle height */
-  background: $primary;
-  padding: 0.125rem;
-  border: 8px solid $black;
-  box-shadow: 0 0 0 2px $primary;
-  cursor: pointer; /* Cursor on hover */
-}
-input[type="range"] {
-	background: $primary;
-	height: 3px;
-}
+  input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+    z-index: 2;
+  }
 
-/** FF*/
-input[type="range"]::-moz-range-progress {
-  background-color: $primary; 
-}
-input[type="range"]::-moz-range-track {  
-  background-color: $gray-500;
-}
-/* IE*/
-input[type="range"]::-ms-fill-lower {
-  background-color: $primary; 
-}
-input[type="range"]::-ms-fill-upper {  
-  background-color: $gray-500;
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+
+  input[type=range]:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  }
+
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+
+    /* Hides the slider so custom styles can be added */
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    box-sizing: content-box;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    width: 1px; /* Set a specific slider handle width */
+    height: 1px; /* Slider handle height */
+    background: $primary;
+    padding: 0.125rem;
+    border: 8px solid $black;
+    box-shadow: 0 0 0 2px $primary;
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  .slider::-moz-range-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    box-sizing: content-box;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    width: 1px; /* Set a specific slider handle width */
+    height: 1px; /* Slider handle height */
+    background: $primary;
+    padding: 0.125rem;
+    border: 8px solid $black;
+    box-shadow: 0 0 0 2px $primary;
+    cursor: pointer; /* Cursor on hover */
+  }
+  input[type="range"] {
+  	background: $primary;
+  	height: 3px;
+  }
+
+  /** FF*/
+  input[type="range"]::-moz-range-progress {
+    background-color: $primary;
+  }
+  input[type="range"]::-moz-range-track {
+    background-color: $gray-500;
+  }
+  /* IE*/
+  input[type="range"]::-ms-fill-lower {
+    background-color: $primary;
+  }
+  input[type="range"]::-ms-fill-upper {
+    background-color: $gray-500;
+  }
 }

@@ -4,16 +4,12 @@
 .landing a.card,
 .xrpl-footer a {
   color: $white;
-}
-.xrpl-footer a {
-  text-decoration: none;
+
+  &:hover {
+    color: $primary;
+  }
 }
 
-.landing .curated-links a:hover,
-.landing .children-display a:hover,
-.xrpl-footer a:hover {
-  color: $primary;
-}
 
 .card-grid .section-hero.card {
   padding-left: 0;
@@ -25,7 +21,6 @@
 
 .content .children-display li a {
   /* Category landing pages */
-  font-family: 'Space Mono', monospace;
   font-weight: 700;
   font-size: 1.25rem;
   text-decoration: none;
@@ -35,9 +30,6 @@
   text-decoration: underline;
 }
 
-.landing {
-  padding: 0 2px;
-}
 
 /* Common list modules (children, curated links) ---------------------------- */
 .curated-links ul,

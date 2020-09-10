@@ -1,28 +1,32 @@
-.landing section,
-.xrpl-footer .card-grid,
-#main_content_wrapper {
-  border-bottom: 0;
-}
-.landing section:last-of-type {
-  border-bottom: none;
-}
 section {
   position: relative;
 }
 
-
-/* main content area ----------------------------------- */
-.sidebar-primary .main {
-  border-left: none;
-  border-right: none;
+// Landings can be borderless full-width so bg images can touch the edges
+.landing {
+  padding: 0;
 }
+
+// Normally-padded pages
+.padded-landing,
+.sidebar-primary #main_content_wrapper {
+  /* Mobile first */
+  padding: 0 1rem 1rem 1rem;
+  @include media-breakpoint-up(md) {
+    padding: 0 2rem 2rem 2rem;
+  }
+  @include media-breakpoint-up(lg) {
+    padding: 0 3rem 3rem 3rem;
+  }
+}
+
+
 
 // Card Grid styles ------------------------------------------------------------
 
 .card-grid {
   display: grid;
   gap: 1px;
-  background-color: $black;
   padding: 0;
 
   &.card-grid-2x2 {
@@ -174,41 +178,10 @@ section {
 
 /* Responsive design for different viewscreens ------------------------------ */
 
-@media (max-width: 991px) {
-
-  // #main_content_wrapper {
-    // padding: 0 24px;
-  // }
-  .navbar-brand img {
-    width: 120px;
-  }
-  // .landing section:first-of-type h1:first-child {
-  //   font-size: 3em;
-  //   font-weight: 400;
-  // }
-  .section-hero .blurb {
-    font-size: 0.95em;
-  }
-
-  .sidebar-primary .main {
-    border-left: none;
-    border-right: none;
-  }
+@include media-breakpoint-down(md) {
 
   .right-sidebar .card {
     padding-left: 0;
-  }
-
-  #main_content_body {
-    padding: 0;
-    border: none;
-  }
-  #main_content_body .container-fluid {
-    padding-left: 0;
-  }
-
-  .xrpl-footer {
-    margin: 0 24px;
   }
 
   #page-toc-wrapper {
@@ -277,19 +250,19 @@ section {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #000;
+  background: $black;
   box-sizing: border-box;
 }
 
 .timeline-block:first-child .timeline-dot {
-  border: 3px solid #FAFF1A;
+  border: 3px solid $yellow-500;
 }
 
 .timeline-block:nth-child(2) .timeline-dot {
-  border: 3px solid #FF884B;
+  border: 3px solid $orange-400;
 }
 .timeline-block:nth-child(3) .timeline-dot {
-  border: 3px solid #C000E6;
+  border: 3px solid $red-purple-600;
 }
 .timeline-block {
     display: flex;
@@ -307,7 +280,7 @@ section {
   margin-top: -4px;
 }
 
-@media (min-width: 767px) {
+@include media-breakpoint-up(md) {
   .timeline:before {
     left: 50%;
     -webkit-transform: translateX(-50%);

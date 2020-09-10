@@ -1,9 +1,9 @@
 {% extends "template-base.html" %}
 
-{% block mainclasses %}landing{% endblock %}
+{% block mainclasses %}landing padded-landing{% endblock %}
 
 {% block main %}
-  <section class="container-fluid bg-white section-hero">
+  <section class="container-fluid section-hero">
     <h1 class="main-page-header">References</h1>
     <p class="blurb">{{currentpage.blurb}}</p>
     <p class="blurb">Or, skip ahead to the <a href="#full-reference-index">Full Reference Index</a>.</p>
@@ -23,7 +23,6 @@
             {% set parent_page = page %}
             {% include 'template-page-children.html' %}
           </div><!--/.card-body-->
-          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
         </div><!--/.card-->
       {% endif %}
     {% endfor %}
@@ -50,7 +49,6 @@
             {% set parent_page = page %}
             {% include 'template-page-children.html' %}
           </div><!--/.card-body-->
-          <div class="flag-vertical">{{"%02d"|format(flag_n.next())}}</div>
         </div><!--/.card-->
       {% endif %}
     {% endfor %}

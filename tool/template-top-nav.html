@@ -12,13 +12,14 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_{{funnelhead.html}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{funnelhead.name}}</a>
         <div class="dropdown-menu" aria-labelledby="topnav_{{funnelhead.html}}">
           {% for link in links %}{% if not loop.first %}
-          <a class="dropdown-item{% if currentpage == link %} active{% endif %}" href="{{link.html}}">{{link.name}}</a>
+          <a class="dropdown-item{% if currentpage == link %} active{% endif %}" href="{{link.html}}">{% if link.name_in_top_nav is defined %}{{link.name_in_top_nav}}{% else %}{{link.name}}{% endif %}</a>
           {% endif %}{% endfor %}
         </div>
       </li>
       {% endmacro %}
 
-      {{ dropdown(pages|selectattr('funnel', 'defined_and_equalto','Learn')|list) }}
+      {% set learn_links = [{"name":"Learn", "html": "learn.html"}] + pages|selectattr('funnel', 'defined_and_equalto','Learn')|list %}
+      {{ dropdown(learn_links) }}
 
       {% set explore_links = pages|selectattr('funnel', 'defined_and_equalto','Explore')|list + [{"name":"Ledger Explorer", "html": "https://livenet.xrpl.org/"}] %}
       {{ dropdown(explore_links) }}
