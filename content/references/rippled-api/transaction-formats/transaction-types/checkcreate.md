@@ -25,7 +25,7 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 
 | Field            | JSON Type           | [Internal Type][] | Description     |
 |:-----------------|:--------------------|:------------------|:----------------|
-| `Destination`    | String              | Account           | The unique address of the [account](accounts.html) that can cash the Check. |
+| `Destination`    | String              | AccountID         | The unique address of the [account](accounts.html) that can cash the Check. |
 | `SendMax`        | [Currency Amount][] | Amount            | Maximum amount of source currency the Check is allowed to debit the sender, including [transfer fees](transfer-fees.html) on non-XRP currencies. The Check can only credit the destination with the same currency (from the same issuer, for non-XRP currencies). For non-XRP amounts, the nested field names MUST be lower-case. |
 | `DestinationTag` | Number              | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the Check, or a hosted recipient to pay. |
 | `Expiration`     | Number              | UInt32            | _(Optional)_ Time after which the Check is no longer valid, in [seconds since the Ripple Epoch][]. |
