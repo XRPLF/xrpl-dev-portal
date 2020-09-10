@@ -148,7 +148,17 @@
 
   // Search bar & controls -----------------------------------------------------
   #navbar-search {
-    @include media-breakpoint-up(lg) {
+    .input-group-text,
+    .input-group > .input-group-append > .btn {
+      color: $white;
+      background-color: transparent;
+      border-width: 0;
+    }
+    .algolia-autocomplete {
+      flex-grow: 1;
+    }
+
+    @include media-breakpoint-up(lg) { // Desktop search styling ---------------
       position: static; // allows search bar to be positioned screen-center
       .dropdown-toggle {
         position: relative;
@@ -166,13 +176,6 @@
         width: 100%;
       }
 
-      #topsearchbox,
-      .input-group-text,
-      .input-group > .input-group-append > .btn {
-        color: $white;
-        background-color: transparent;
-        border-width: 0;
-      }
       #topsearchbox {
         line-height: 24px;
         height: 100%;
@@ -182,9 +185,30 @@
       .input-group > .input-group-append > .btn {
         border-left: 1px solid black;
       }
-      .algolia-autocomplete {
-        flex-grow: 1;
+    }
+    @include media-breakpoint-down(lg) { // Mobile search styling --------------
+      .form-inline label {
+        margin-bottom: 0;
+
+        .input-group-text {
+          line-height: 24px;
+        }
       }
+
+      .dropdown-menu { // search box is always expanded
+        display: block;
+        position: static;
+        background-color: transparent;
+        border: 0 none;
+        box-shadow: none;
+        margin-top: 0;
+        width: 100%;
+      }
+
+      .dropdown-toggle { // no dropdown to expand search
+        display: none;
+      }
+
     }
 
     // Algolia Search results --------------------------------------------------
@@ -223,6 +247,12 @@
     .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
       color: $white;
       background-color: $green-800;
+    }
+
+    @include media-breakpoint-down(md) {
+      .algolia-autocomplete .ds-dropdown-menu {
+        min-width: unset;
+      }
     }
   }
 
