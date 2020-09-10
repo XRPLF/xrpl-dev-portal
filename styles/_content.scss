@@ -116,27 +116,28 @@ td:nth-child(1) {
 }
 .square {
   position: relative;
-  flex-basis: calc(25% - 30px);
+  flex-basis: calc(50% - 30px); // Mobile
   margin: 15px;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
   &-50 {
     flex-basis: calc(50% - 30px);
   }
-}
-@media (max-width: 768px) {
-  .square {
-    flex-basis: calc(50% - 30px);
+
+  @include media-breakpoint-up(lg) {
+    flex-basis: calc(25% - 30px);
   }
 }
 
-.square:before {
-  content: '';
-  display: block;
-  padding-top: 100%;
-}
 .card-wrapper {
   width: 100%;
 }
@@ -144,7 +145,7 @@ td:nth-child(1) {
   padding: 2rem;
   background: rgba(34, 37, 43, 0.5);
   backdrop-filter: blur(3px);
-  @media (max-width: 768px) {
+  @include media-breakpoint-down(sm) {
     margin-left: 15px;
     margin-right: 15px;
   }
@@ -158,7 +159,7 @@ td:nth-child(1) {
   margin-left: -32px;
   transform-origin: top left;
 }
-@media (max-width: 992px) {
+@include media-breakpoint-down(md) {
   .card-deck {
     display: block !important;
   }

@@ -165,7 +165,7 @@ section {
   padding: 48px 0;
 }
 
-@media (max-width: 991px) {
+@include media-breakpoint-down(md) {
   .landing .card-grid .card,
   .landing .card-grid .card-body,
   .landing .card-grid .card-header {

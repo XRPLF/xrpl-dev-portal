@@ -107,7 +107,7 @@
   list-style-type: square;
 }
 
-@media (max-width: 991px) {
+@include media-breakpoint-down(md) {
   .landing .card {
     padding-left: 0px;
   }

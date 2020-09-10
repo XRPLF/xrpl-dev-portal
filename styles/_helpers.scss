@@ -1,158 +1,158 @@
 /* HEIGHT AND WIDTH HELPERS */
 .h32 {
-	height: 32px;
+  height: 32px;
 }
 .w32 {
-	width: 32px;
+  width: 32px;
 }
 .h36 {
-	height: 36px;
+  height: 36px;
 }
 .w36 {
-	width: 36px;
+  width: 36px;
 }
 .w40 {
-	width: 40px;
+  width: 40px;
 }
 .w44 {
-	width: 44px;
+  width: 44px;
 }
 .w48 {
-	width: 48px;
+  width: 48px;
 }
 .min-vh100 {
-	min-height: 100vh;
+  min-height: 100vh;
 }
 .vw100 {
-	width: 100vw;
-	min-width: 100%;
+  width: 100vw;
+  min-width: 100%;
 }
 
 /* SPACING HELPERS */
 /* To create new margin classes, multiply by 4px */
 .mt-8 {
-	margin-top: 2rem;
+  margin-top: 2rem;
 }
 .mt-9 {
-	margin-top: 2.25rem;
+  margin-top: 2.25rem;
 }
 .mb-9 {
-	margin-bottom: 2.25rem;
+  margin-bottom: 2.25rem;
 }
 .mt-10 {
-	margin-top: 2.5rem;
+  margin-top: 2.5rem;
 }
 .mb-10 {
-	margin-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 .my-10 {
-	margin-top: 2.5rem;
-	margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 .mt-12 {
-	margin-top: 3rem;
+  margin-top: 3rem;
 }
 .mb-12 {
-	margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 .my-12 {
-	margin-top: 3rem;
-	margin-bottom: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 .mt-13 {
-	margin-top: 3.25rem;
+  margin-top: 3.25rem;
 }
 .mb-13 {
-	margin-bottom: 3.25rem;
+  margin-bottom: 3.25rem;
 }
 .mt-14 {
-	margin-top: 3.5rem;
+  margin-top: 3.5rem;
 }
 .mt-16 {
-	margin-top: 4rem;
+  margin-top: 4rem;
 }
 .mb-16 {
-	margin-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 .mb-18 {
-	margin-bottom: 4.5rem;
+  margin-bottom: 4.5rem;
 }
 .mt-20 {
-	margin-top: 5rem;
+  margin-top: 5rem;
 }
 .mb-20 {
-	margin-bottom: 5rem;
+  margin-bottom: 5rem;
 }
 .my-20 {
-	margin-top: 5rem;
-	margin-bottom: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 .mb-30 {
-	margin-bottom: 7.5rem;
+  margin-bottom: 7.5rem;
 }
 .mt-30 {
-	margin-top: 7.5rem;
+  margin-top: 7.5rem;
 }
 .mt-40 {
-	margin-top: 10rem;
+  margin-top: 10rem;
 }
 .mb-40 {
-	margin-bottom: 10rem;
+  margin-bottom: 10rem;
 }
 .my-40 {
-	margin-top: 10rem;
-	margin-bottom: 10rem;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
 }
 .mb-49 {
-	margin-bottom: 12.25rem;
+  margin-bottom: 12.25rem;
 }
 .mb-50 {
-	margin-bottom: 12.5rem;
+  margin-bottom: 12.5rem;
 }
 .pt-40 {
-	padding-top: 10rem;
+  padding-top: 10rem;
 }
 .pb-40 {
-	padding-bottom: 10rem;
+  padding-bottom: 10rem;
 }
 .pb-50 {
-	padding-bottom: 12.5rem;
+  padding-bottom: 12.5rem;
 }
 .pt-50 {
-	padding-top: 12.5rem;
+  padding-top: 12.5rem;
 }
 .py-50 {
-	padding-bottom: 12.5rem;
-	padding-top: 12.5rem;
+  padding-bottom: 12.5rem;
+  padding-top: 12.5rem;
 }
 .top-10 {
-	top: 2.5rem;
+  top: 2.5rem;
 }
 
 /*  TEXT HELPERS */
 .va-middle {
-	vertical-align: middle;
+  vertical-align: middle;
 }
 .ls-none {
-	list-style: none;
+  list-style: none;
 }
 .no-wrap {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 .align-items-stretch {
-	align-items: stretch;
+  align-items: stretch;
 }
 
-@media only screen and (max-width: 576px) {
-	.overflow-xs {
-		overflow: scroll;
-	}
+@include media-breakpoint-down(xs) {
+  .overflow-xs {
+    overflow: scroll;
+  }
 }
 
 /* COLOR ELEMENTS */
 .border-green {
-	border: 1px solid $primary;
+  border: 1px solid $primary;
 }
 .grey-400 {
-	color: $gray-400
+  color: $gray-400
 }

@@ -1,51 +1,51 @@
 /* HOME STYLINGS */
 #home-hero-marker {
-	top: unset;
-	bottom: 64px;
+  top: unset;
+  bottom: 64px;
 }
 #home-hero-marker:after {
-	position: absolute;
-	content: " ➝";
-	box-sizing: initial;
+  position: absolute;
+  content: " ➝";
+  box-sizing: initial;
   animation: arrowDance 1.2s infinite;
 }
 #bg-home-1 {
-	background-image: url(../../img/graphics/home-bg.png);
-	background-repeat: no-repeat;
+  background-image: url(../../img/graphics/home-bg.png);
+  background-repeat: no-repeat;
   background-size: 90%;
   background-position: 90px -180px;
 }
-@media only screen and (max-width: 992px) {
-	#bg-home-1 {
-		background-size: cover;
-	}
+@include media-breakpoint-down(md) {
+  #bg-home-1 {
+    background-size: cover;
+  }
 }
 .hc {
-	background: black;
-	padding: 2.25rem 1.875rem 7.75rem;
-	color: $white;
-	background-position: bottom;
-	background-repeat: no-repeat;
-	background-size: 100% 70px;
-	@media (max-width: 991px) {
-	  padding-left: 2rem !important;
-	}
+  background: black;
+  padding: 2.25rem 1.875rem 7.75rem;
+  color: $white;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 70px;
+  @include media-breakpoint-down(md) {
+    padding-left: 2rem !important;
+  }
 }
 .hc .h2 {
-	height: 38px;
-	padding-bottom: 5rem;
+  height: 38px;
+  padding-bottom: 5rem;
 }
 #hc-1 {
-	background-image: url(../../img/graphics/hc-1.png);
-	border: 1px solid #FAFF1A;
+  background-image: url(../../img/graphics/hc-1.png);
+  border: 1px solid #FAFF1A;
 }
 #hc-2 {
-	background-image: url(../../img/graphics/hc-2.png);
-	border: 1px solid #FF1A8B;
+  background-image: url(../../img/graphics/hc-2.png);
+  border: 1px solid #FF1A8B;
 }
 #hc-3 {
-	background-image: url(../../img/graphics/hc-3.png);
-	border: 1px solid #974CFF;
+  background-image: url(../../img/graphics/hc-3.png);
+  border: 1px solid #974CFF;
 }
 @keyframes arrowDance {
   0% { padding-left: 7px; }
@@ -57,49 +57,49 @@
 
 
 #hero-impact {
-	width: 100vw;
+  width: 100vw;
 }
-@media only screen and (min-width: 768px) {
+@include media-breakpoint-up(md) {
   #hero-impact {
-		margin-top: -120px;
-	}
+    margin-top: -120px;
+  }
 }
 #page-impact-bg {
-	background-image: url(../img/backgrounds/bg-impact-top.png);
-	background-repeat: no-repeat;
+  background-image: url(../img/backgrounds/bg-impact-top.png);
+  background-repeat: no-repeat;
   background-position: center 250px;
   background-size: contain;
 }
 #page-business-bg {
-	background-image: url(../img/backgrounds/bg-business-mid.png);
-	background-repeat: no-repeat;
-	background-position: right 72.5%;
+  background-image: url(../img/backgrounds/bg-business-mid.png);
+  background-repeat: no-repeat;
+  background-position: right 72.5%;
 }
 #page-business-top {
-	position: absolute;
-	left: 0;
+  position: absolute;
+  left: 0;
 }
 #page-business-bot {
-	position: absolute;
-	left: 0;
-	margin-top: -505px;
+  position: absolute;
+  left: 0;
+  margin-top: -505px;
   z-index: -1;
 }
 #page-exchanges-bg {
-	background-image: url(../img/backgrounds/bg-exchanges-top.png);
-	background-repeat: no-repeat;
-	background-position: left 25%;
+  background-image: url(../img/backgrounds/bg-exchanges-top.png);
+  background-repeat: no-repeat;
+  background-position: left 25%;
 }
 #page-exchanges-bot {
-	position: absolute;
-	right: 0;
-	margin-top: -446px;
+  position: absolute;
+  right: 0;
+  margin-top: -446px;
   z-index: -1;
 }
 
 .page-wallets {
   #main_content_body {
-	  background: url(../img/backgrounds/bg-wallets-bot.png) bottom right no-repeat;
+    background: url(../img/backgrounds/bg-wallets-bot.png) bottom right no-repeat;
   }
 
   .fullwidth-bg {
@@ -108,33 +108,33 @@
 }
 
 #page-wallets-bot {
-	position: absolute;
-	right: 0;
-	margin-top: -778px;
+  position: absolute;
+  right: 0;
+  margin-top: -778px;
   z-index: -1;
 }
 #page-contribute-bot {
-	position: absolute;
-	right: 0;
-	margin-top: -199px;
+  position: absolute;
+  right: 0;
+  margin-top: -199px;
   z-index: -1;
 }
 #page-overview-bg {
-	background-image: url(../img/backgrounds/bg-overview-top.png);
-	background-repeat: no-repeat;
-	background-position: right 0;
+  background-image: url(../img/backgrounds/bg-overview-top.png);
+  background-repeat: no-repeat;
+  background-position: right 0;
 }
 
 #page-history-bg {
-	background-image: url(../img/backgrounds/bg-history-mid.png);
-	background-repeat: no-repeat;
-	background-position: right 60%;
+  background-image: url(../img/backgrounds/bg-history-mid.png);
+  background-repeat: no-repeat;
+  background-position: right 60%;
 }
 
 #page-history-top {
-	position: absolute;
-	left: 0;
-	top: 302px;
+  position: absolute;
+  left: 0;
+  top: 302px;
 }
 
 .sustainability-bg {
@@ -155,150 +155,150 @@
 .page-calculator {
   /* CALCULATOR STYLING */
   #data-selector li a {
-  	background: #22252B;
-  	padding: 0.5rem 1.3rem;
-  	color: $white;
-  	white-space: nowrap;
-  	font-weight: normal;
+    background: #22252B;
+    padding: 0.5rem 1.3rem;
+    color: $white;
+    white-space: nowrap;
+    font-weight: normal;
   }
   #data-selector li:nth-child(2) {
-  	margin-left: -7px;
-  	margin-right: -7px;
+    margin-left: -7px;
+    margin-right: -7px;
   }
   #data-selector li.active a {
-  	background: $primary;
-  	color: $black;
+    background: $primary;
+    color: $black;
   }
   .tab-content div {
-  	display: none;
+    display: none;
   }
   .d-output {
-  	display: none;
-  	margin: 0 12px;
-  	max-width: 188px;
-  	width: 33%;
-  	@media only screen and (max-width: 992px) {
-  		width: auto;
-  	}
+    display: none;
+    margin: 0 12px;
+    max-width: 188px;
+    width: 33%;
+    @include media-breakpoint-down(md) {
+      width: auto;
+    }
   }
   .d-output.active {
-  	display: block;
-  	animation-fill-mode: forwards;
-  	animation: fadeIn 1s ease-in-out;
-  	@media only screen and (max-width: 992px) {
-  		display: inline-block;
-  	}
+    display: block;
+    animation-fill-mode: forwards;
+    animation: fadeIn 1s ease-in-out;
+    @include media-breakpoint-down(md) {
+      display: inline-block;
+    }
   }
 
   @media only screen and (min-width: 576px) and (max-width: 1200px){
-  	#data-selector li:nth-child(2) {
-  		margin-left: 0;
-  		margin-right: 0;
-  		border-top: 1px solid $black;
-  		border-bottom: 1px solid $black;
-  	}
+    #data-selector li:nth-child(2) {
+      margin-left: 0;
+      margin-right: 0;
+      border-top: 1px solid $black;
+      border-bottom: 1px solid $black;
+    }
   }
-  @media only screen and (max-width: 576px) {
-  	.d-output {
-  		display: none;
-  		width: auto;
-  		max-width: 100%;
-  	}
-  	.viz-wrapper {
-  		margin-bottom: 2.5rem;
-  		margin-right: 1rem;
-  	}
-  	.d-output[data-comp="kWh"].active {
-  		display: inline-flex;
-  	}
-  	#data-selector li:nth-child(2) {
-  		margin-left: 0;
-  		margin-right: 0;
-  		border-top: 1px solid $black;
-  		border-bottom: 1px solid $black;
-  	}
+  @include media-breakpoint-down(xs) {
+    .d-output {
+      display: none;
+      width: auto;
+      max-width: 100%;
+    }
+    .viz-wrapper {
+      margin-bottom: 2.5rem;
+      margin-right: 1rem;
+    }
+    .d-output[data-comp="kWh"].active {
+      display: inline-flex;
+    }
+    #data-selector li:nth-child(2) {
+      margin-left: 0;
+      margin-right: 0;
+      border-top: 1px solid $black;
+      border-bottom: 1px solid $black;
+    }
   }
-  @media only screen and (max-width: 992px) {
-  	#calculator-inputs-offset.offset {
-  		height: 248px;
-  		width: 100%;
-  	}
-  	#calculator-inputs-offset {
-  		height: 0;
-  		width: 100%;
-  	}
-  	.d-output {
-  		margin: 16px;
-  	}
-  	#calculator-mobile-toggle.show {
-  		position: fixed;
-  		top: 15px;
-  		right: 15px;
-  		z-index: 9999999;
-  	}
-  	#calculator-mobile-toggle.hide {
-  		display: none;
-  	}
-  	#calculator-inputs.sticky {
-  		position: fixed;
-  		top: 72px;
-  		width: calc(100% - 30px);
-  		left: 15px;
-  		right: 15px;
-  		background: $black;
-  		display: none;
-  	}
-  	#calculator-inputs.sticky.show .calc-inputs-wrapper {
-  		display: block;
-  		margin-bottom: 1.5rem;
-  	}
-  	#calculator-inputs.sticky.show {
-  		display: block;
-  	}
+  @include media-breakpoint-down(md) {
+    #calculator-inputs-offset.offset {
+      height: 248px;
+      width: 100%;
+    }
+    #calculator-inputs-offset {
+      height: 0;
+      width: 100%;
+    }
+    .d-output {
+      margin: 16px;
+    }
+    #calculator-mobile-toggle.show {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999999;
+    }
+    #calculator-mobile-toggle.hide {
+      display: none;
+    }
+    #calculator-inputs.sticky {
+      position: fixed;
+      top: 72px;
+      width: calc(100% - 30px);
+      left: 15px;
+      right: 15px;
+      background: $black;
+      display: none;
+    }
+    #calculator-inputs.sticky.show .calc-inputs-wrapper {
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    #calculator-inputs.sticky.show {
+      display: block;
+    }
   }
   .viz-wrapper {
-  	position: relative;
-  	height: 204px;
-  	width: 184px;
-  	overflow: hidden;
-  	border-radius: 10px;
+    position: relative;
+    height: 204px;
+    width: 184px;
+    overflow: hidden;
+    border-radius: 10px;
   }
   .viz-wrapper img {
-  	margin-left: -1px;
-  	margin-right: -1px;
+    margin-left: -1px;
+    margin-right: -1px;
   }
   @keyframes fadeIn {
     0% { opacity: 0 }
     100% { opacity: 1 }
   }
   .dot {
-  	height: 2px;
-  	width: 2px;
-  	border-radius: 50%;
-  	background-color: red;
-  	position: absolute;
-  	z-index: -1;
-  	top: 98px;
-  	left: 68px;
-  	transform-origin: center center;
+    height: 2px;
+    width: 2px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    z-index: -1;
+    top: 98px;
+    left: 68px;
+    transform-origin: center center;
   }
   #kWh-btc-dot {
-  	background-color: #FF671A;
+    background-color: #FF671A;
   }
   #kWh-eth-dot {
-  	background-color: #4F5664;
+    background-color: #4F5664;
   }
   #kWh-xrp-dot {
-  	background-color: $primary;
+    background-color: $primary;
   }
   #kWh-pap-dot {
   }
 
   .dash:before {
-  	content: url(../img/icons/dash-line.png);
-  	position: absolute;
-  	top: -12px;
-  	margin-left: 13px;
+    content: url(../img/icons/dash-line.png);
+    position: absolute;
+    top: -12px;
+    margin-left: 13px;
   }
 
 
@@ -359,8 +359,8 @@
     cursor: pointer; /* Cursor on hover */
   }
   input[type="range"] {
-  	background: $primary;
-  	height: 3px;
+    background: $primary;
+    height: 3px;
   }
 
   /** FF*/

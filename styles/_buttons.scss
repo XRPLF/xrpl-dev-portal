@@ -52,15 +52,13 @@ p + .readmore {
   font-weight: 700;
   z-index: 1000;
   color: white;
-}
-@media screen and (max-width: 767px) {
-  .jump-to-top {
+
+  &::after {
+    content: " ↑"
+  }
+
+  @include media-breakpoint-down(sm) {
     bottom: 40px;
     right: 40px;
   }
-}
-
-
-.btn.jump-to-top::after {
-  content: " ↑"
 }

@@ -49,7 +49,7 @@
       line-height: 125%;
       margin-top: .5rem;
     }
-    @media(max-width: 991px) {
+    @include media-breakpoint-down(md) {
       .wrap-button {
         padding: 1.5rem 0;
 
@@ -95,7 +95,7 @@
     }
   }
   // Desktop version
-  @media(min-width: 992px) {
+  @include media-breakpoint-up(lg) {
     .dropdown-toggle::after {
       border-width: 0;
       top: 80%;
@@ -148,7 +148,7 @@
 
   // Search bar & controls -----------------------------------------------------
   #navbar-search {
-    @media(min-width: 992px) {
+    @include media-breakpoint-up(lg) {
       position: static; // allows search bar to be positioned screen-center
       .dropdown-toggle {
         position: relative;
@@ -227,7 +227,7 @@
   }
 
   // Mobile --------------------------------------------------------------------
-  @media (max-width: 991px) {
+  @include media-breakpoint-down(md) {
     .navbar-brand {
       padding-left: 15px;
     }
