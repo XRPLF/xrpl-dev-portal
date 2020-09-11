@@ -21,7 +21,7 @@ A cryptographic key pair is a **private key** and a **public key** that are conn
 
 When dealing with the XRP Ledger, you may also use some related values such as a passphrase, seed, account ID, or address.
 
-[![Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address](img/cryptographic-keys.svg)](img/cryptographic-keys.svg)
+{{ include_svg("img/cryptographic-keys.svg", "Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address") }}
 _Figure: A simplified view of the relationship between cryptographic key values._
 
 The passphrase, seed, and private key are **secrets**: if you know any of these values for an account, you can make valid signatures and you have full control over that account. If you own an account, be **very careful** with your account's secret information. If you don't have it, you can't use your account. If someone else can access it, they can take control of your account.

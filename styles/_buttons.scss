@@ -1,3 +1,5 @@
+// Button styling --------------------------------------------------------------
+
 .btn, .content a.button {
   padding: 16px 24px;
   font-size: 14px;
@@ -6,6 +8,18 @@
   cursor: pointer;
   text-decoration: none;
   transition: 0.2s;
+}
+
+.form-group .btn {
+  // Fix spacing issues caused by default padding
+  padding: inherit;
+}
+
+.btn.disabled,
+button.disabled,
+.btn[disabled="disabled"],
+button[disabled="disabled"] {
+  cursor: not-allowed;
 }
 
 .btn-outline-secondary,
@@ -26,8 +40,6 @@
 .navbar-dark .navbar-nav .nav-link:hover {
   color: $white;
 }
-
-/* Button styling ----------------------------------------------------------- */
 
 p + .readmore {
   margin-top: 12px;

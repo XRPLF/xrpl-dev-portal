@@ -89,6 +89,10 @@
     g[fill="rgb(255,255,0)"] { // magenta-500 is our closest shade to pure red
       fill: $magenta-500;
     }
+    g[stroke="red"],
+    g[stroke="rgb(255,255,0)"] {
+      stroke: $magenta-500;
+    }
     g[fill="yellow"] + g text,
     g[fill="rgb(255,255,0)"] + g text { // On yellow notes, use black text
       fill: $black;
