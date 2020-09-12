@@ -1,96 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
+{% extends "template-base.html" %}
 
-    <title>404 Not Found - XRP Ledger Dev Portal</title>
-
-    <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
-    <link rel="manifest" href="/assets/favicons/site.webmanifest">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <meta name="msapplication-TileColor" content="#25A768">
-    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#25A768">
-
-    <!-- jQuery -->
-    <script src="/assets/vendor/jquery-1.11.1.min.js"></script>
-
-    <!-- Custom Stylesheets. -->
-    <link href="/assets/vendor/bootstrap.css" rel="stylesheet" />
-    <link href="/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Bootstrap JS -->
-    <script src="/assets/vendor/bootstrap.min.js"></script>
-
-    <!-- fontawesome icons -->
-    <link rel="stylesheet" href="/assets/vendor/fontawesome/css/font-awesome.min.css" />
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-45576805-2');
-    </script>
-
-</head>
-
-<body class="xrp-ledger-dev-portal {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}{% block bodyclasses %}{% endblock %}">
-
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
-    <a href="/index.html" class="navbar-brand"><img src="/assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
-      <ul class="nav navbar-nav">
-        {% set funnels = [] %}
-        {% for page in pages %}
-          {% if page.funnel is defined and page.funnel not in funnels %}
-            {% set thisfunneltop = pages|selectattr('funnel', 'defined_and_equalto', page.funnel)|first %}
-            <li class="nav-item{% if currentpage == thisfunneltop %} active{% elif currentpage.funnel is defined and currentpage.funnel == thisfunneltop.name %} active-parent{% endif %}">
-              <a class="nav-link" href="/{{ thisfunneltop.html }}">{{ thisfunneltop.name }}</a>
-            </li>
-            {% set _ = funnels.append(page.funnel) %}
-          {% endif %}
-        {% endfor %}
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/">Blog</a>
-        </li>
-      </ul><!-- /.navbar-nav -->
-      {% include 'template-github-edit.html' %}
-      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
-        <div class="form-inline">
-          <label class="sr-only" for="topsearchbar">Search site with Google...</label>
-          <input name="q" value="site:xrpl.org" type="hidden">
-          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search site with Google...">
-          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
-        </div>
-      </form>
-    </div>
-    <div class="menu-overlay"></div>
-  </nav>
-
-  <div class="container-fluid" role="document" id="main_content_wrapper">
-    <div class="row">
-      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
-      {% if currentpage.sidebar is undefined or (currentpage.sidebar != "disabled" and currentpage.sidebar != "left_only") %}
-      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
-          {% block right_sidebar %}{% endblock %}
-      </aside>
-      {% endif %}
-
-      <!-- main column -->
-      <main class="main {% if currentpage.sidebar is defined and currentpage.sidebar == "disabled" %}col-md-12{% else %}col-md-7 col-lg-6{% endif %} order-md-3  {% block mainclasses %}{% endblock %}" role="main" id="main_content_body">
-          {% block breadcrumbs %}
-            {% include 'template-breadcrumbs.html' %}
-          {% endblock %}
+{% block main %}
           <article class="pt-3 p-md-3">
             <h1>Not Found</h1>
             <div class="content">
@@ -105,21 +15,10 @@
                 </form>
             </div>
           </article>
-      </main>
-      {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}
-      <!-- Left sidebar last so it's at the end for mobile -->
-      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
-          {% block left_sidebar %}
-            {% set use_page = pages|selectattr("html", 'defined_and_equalto', "docs.html")|first %}
-            {% set link_prefix = "/" %}{# Links need to be absolute so they work no matter what URL the 404 page is served from #}
-            {% include "template-sidebar_nav.html" %}
-          {% endblock %}
-      </aside>
-      {% endif %}
-    </div><!--/.row (main layout)-->
-  </div>
+{% endblock %}
 
-{% include 'template-footer.html' %}
-
-</body>
-</html>
+{% block left_sidebar %}
+  {% set use_page = pages|selectattr("html", 'defined_and_equalto', "docs.html")|first %}
+  {% set link_prefix = "/" %}{# Links need to be absolute so they work no matter what URL the 404 page is served from #}
+  {% include "template-sidebar_nav.html" %}
+{% endblock %}

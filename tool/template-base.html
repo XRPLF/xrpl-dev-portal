@@ -18,14 +18,14 @@
     <meta name="theme-color" content="#25A768">
 
     <!-- jQuery -->
-    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+    <script src="{{currentpage.prefix}}assets/vendor/jquery-1.11.1.min.js"></script>
 
     <!-- Stylesheet -->
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
     {% if target.lang=="ja" %}
-    <link href="assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="{{currentpage.prefix}}assets/css/fonts-ja.css" rel="stylesheet" />
     {% endif %}
-    <link href="assets/css/devportal.css" rel="stylesheet" />
+    <link href="{{currentpage.prefix}}assets/css/devportal.css" rel="stylesheet" />
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
@@ -64,7 +64,7 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       {% if currentpage.sidebar is undefined or (currentpage.sidebar != "disabled" and currentpage.sidebar != "left_only") %}
-      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
           {% block right_sidebar %}{% endblock %}
       </aside>
       {% endif %}
@@ -78,7 +78,7 @@
       </main>
       {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}
       <!-- Left sidebar last so it's at the end for mobile -->
-      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+      <aside class="sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
           {% block left_sidebar %}
             {% include "template-sidebar_nav.html" %}
           {% endblock %}

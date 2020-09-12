@@ -13,7 +13,9 @@ aside .sidenav_cat_title:hover {
 }
 
 aside a.active,
-aside a.active:hover {
+aside a.active:hover,
+aside .active > a,
+aside .active > a:hover {
   color: $primary;
   font-weight: 700;
 }
@@ -26,7 +28,8 @@ aside a.active-parent {
   border-left: 1px solid $white;
 }
 .sidebar_pagelist a,
-.right-sidebar li a {
+.command-list li a,
+.page-toc li a {
   display: block;
   margin-top: 5px;
   margin-left: -17px;
@@ -69,7 +72,8 @@ aside a.active-parent {
   background-color: $primary;
 }
 
-.right-sidebar .card-body {
+#page-toc-wrapper .card-body,
+.command-list {
   border-left: 1px solid $white;
 }
 
@@ -81,32 +85,40 @@ aside a.active-parent {
   padding: 15px 16px 15px 10px;
 }
 
-.right-sidebar .level-1 a {
+.page-toc .level-1 a {
   color: $white;
 }
 
-.right-sidebar .level-3 {
+.page-toc .level-3 {
   padding-left: 16px;
   border-left: 1px solid $white;
   margin-bottom: 0;
   padding-bottom: 5px;
 }
 
-.right-sidebar .level-3 a {
+.page-toc .level-3 a {
   margin-top: 0;
   padding-bottom: 5px;
 }
 
-.right-sidebar li a:hover {
+.command-list li a:hover,
+.page-toc li a:hover {
   text-decoration: none;
   border-left: 1px solid $primary;
   padding-left: 34px;
 }
+.command-list .active a {
+  border-left: 2px solid $primary;
+  padding-left: 33px;
+}
+
+.right-sidebar {
+  padding: 44px 0 24px 48px;
+}
 
 /* Left navigation ---------------------------------------------------------- */
 
-.tree_nav {
-  top: 48px;
+.sidebar {
   padding: 44px 24px 48px 0;
 }
 
@@ -214,7 +226,7 @@ aside a.active-parent {
 
 /* Right navigation --------------------------------------------------------- */
 
-.right-sidebar .card {
+#page-toc-wrapper .card {
   position: sticky;
   max-height: 85vh;
   top: 48px;
@@ -222,38 +234,42 @@ aside a.active-parent {
   padding: 44px 0 48px 24px;
   border: none;
 }
+.command-list {
+  padding: 16px;
+}
 
-.right-sidebar .card-header {
+#page-toc-wrapper .card-header {
   border-bottom: none;
   font-weight: bold;
   font-size: 14px;
   padding: 10px 0;
 }
 
-.right-sidebar .card-header h4 {
+#page-toc-wrapper .card-header h4 {
   line-height: 20px;
   font-size: 1.2em;
   padding: 0;
   margin: 0;
 }
 
-.right-sidebar .card-body {
+#page-toc-wrapper .card-body {
   padding: 0 0 0 16px;
   list-style-type: none;
 }
 
-.right-sidebar ul li {
+.page-toc li,
+.command-list li {
   list-style-type: none;
   margin-bottom: 8px;
   margin-left: 0;
 }
 
-.right-sidebar .level-1 a,
-.right-sidebar .separator {
+.page-toc .level-1 a,
+.command-list .separator {
   font-weight: 700;
   font-family: "Space Mono", monospace;
 }
-.right-sidebar .level-2,
-.right-sidebar .method {
+.page-toc .level-2,
+.command-list .method {
   margin-left: 0;
 }

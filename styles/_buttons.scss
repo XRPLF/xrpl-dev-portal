@@ -1,18 +1,16 @@
 // Button styling --------------------------------------------------------------
 
 .btn, .content a.button {
-  padding: 16px 24px;
-  font-size: 14px;
   font-weight: bold;
-  line-height: 1.25;
   cursor: pointer;
   text-decoration: none;
   transition: 0.2s;
 }
 
-.form-group .btn {
-  // Fix spacing issues caused by default padding
-  padding: inherit;
+.content a.button {
+  padding: .5rem 1rem;
+  margin: 0 0.5rem;
+  display: inline-block;
 }
 
 .btn.disabled,

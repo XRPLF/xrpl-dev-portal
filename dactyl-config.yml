@@ -69,7 +69,7 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
-        prefix: "/"
+        prefix: ""
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
         readability_goals:
@@ -6474,6 +6474,7 @@ pages:
     -   name: 404 Not Found
         html: 404.html
         template: template-404.html
+        prefix: "/"
         targets:
             - en
             - ja

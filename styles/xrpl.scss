@@ -3,11 +3,20 @@
 @import "_colors.scss";
 
 $navbar-padding-y: 0;
+$nav-link-padding-x: 1.25rem;
+$nav-link-padding-y: 1rem;
 $navbar-nav-link-padding-x: 1.25rem;
+$navbar-nav-link-padding-y: 1rem;
 $border-radius: 0;
 $border-radius-lg: 0;
 $border-radius-sm: 0;
 $dropdown-border-width: 1px;
+
+$input-btn-padding-y: 1rem;
+$input-btn-padding-x: 1.5rem;
+$input-btn-font-size: 14px;
+$input-btn-line-height: 1.25;
+$input-font-size: 1rem;
 
 // @import "_font-face.scss";
 $font-family-monospace: 'Space Mono', monospace;
@@ -40,3 +49,4 @@ $font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
 @import "_dev-tools.scss";
 @import "_print.scss";
 @import "_pages.scss";
+@import "_rpc-tool.scss";

@@ -129,7 +129,7 @@ $input-disabled-bg: $gray-800;
 $input-color: $white;
 $input-border-color: transparent;
 $input-box-shadow: inset 0 1px 1px rgba($primary, .075);
-$input-placeholder-color: $gray-200;
+$input-placeholder-color: $gray-400;
 $input-group-addon-bg: $gray-600;
 $input-group-addon-color: $white;
 
@@ -138,3 +138,7 @@ $list-group-border-color: $gray-800;
 $list-group-disabled-color: $gray-200;
 
 $progress-bg: $gray-900;
+
+$modal-content-bg: $black;
+$modal-content-border-color: $gray-200;
+$close-color: $magenta-500;

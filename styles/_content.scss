@@ -131,10 +131,10 @@ td:nth-child(1) {
 
   &-50 {
     flex-basis: calc(50% - 30px);
-  }
 
-  @include media-breakpoint-up(lg) {
-    flex-basis: calc(25% - 30px);
+    @include media-breakpoint-up(lg) {
+      flex-basis: calc(50% - 30px);
+    }
   }
 }
 
