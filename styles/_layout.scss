@@ -20,6 +20,35 @@ section {
   }
 }
 
+// Square blocks ---------------------------------------------------------------
+
+.square {
+  position: relative;
+  flex-basis: calc(50% - 30px); // Mobile
+  margin: 15px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  @include media-breakpoint-up(lg) {
+    flex-basis: calc(25% - 30px);
+  }
+
+  &-50 {
+    flex-basis: calc(50% - 30px);
+
+    @include media-breakpoint-up(lg) {
+      flex-basis: calc(50% - 30px);
+    }
+  }
+}
 
 
 // Card Grid styles ------------------------------------------------------------
@@ -155,10 +184,6 @@ section {
   padding: 44px 24px 48px;
   min-height: 700px;
 }
-
-// .row {
-//   margin: 0 -1px;
-// }
 
 
 .doc-index {

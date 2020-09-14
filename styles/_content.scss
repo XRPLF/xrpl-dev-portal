@@ -114,29 +114,6 @@ td:nth-child(1) {
 .card {
   background-color: transparent;
 }
-.square {
-  position: relative;
-  flex-basis: calc(50% - 30px); // Mobile
-  margin: 15px;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-
-  &::before {
-    content: '';
-    display: block;
-    padding-top: 100%;
-  }
-
-  &-50 {
-    flex-basis: calc(50% - 30px);
-
-    @include media-breakpoint-up(lg) {
-      flex-basis: calc(50% - 30px);
-    }
-  }
-}
 
 .card-wrapper {
   width: 100%;
