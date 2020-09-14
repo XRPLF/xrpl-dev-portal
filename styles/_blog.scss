@@ -1,0 +1,14 @@
+// These styles are used by the dev-blog pages, which are in another repo.
+
+.dev-blog {
+  .labels-wrap {
+    display: inline-block;
+  }
+
+  a.badge-primary {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

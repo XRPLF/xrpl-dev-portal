@@ -1,6 +1,6 @@
 // Button styling --------------------------------------------------------------
 
-.btn, .content a.button {
+.btn, .content a.button, .content .btn {
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
@@ -28,7 +28,7 @@ button[disabled="disabled"] {
   border-width: 2px;
   border-style: solid;
 
-  &:hover, &:active {
+  &:not(:disabled):not(.disabled):hover, &:not(:disabled):not(.disabled):active {
     color: $primary;
     border-color: $primary;
     background-color: transparent;
