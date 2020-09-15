@@ -162,7 +162,7 @@
       flex-grow: 1;
     }
 
-    #topsearchbox:active {
+    #topsearchbox:focus {
       box-shadow: none;
       border-color: $white;
     }
@@ -189,10 +189,10 @@
         line-height: 24px;
         height: 100%;
         width: 100%;
-      }
 
-      .input-group > .input-group-append > .btn {
-        border-left: 1px solid black;
+        &:not(:focus) {
+          border-right: 1px solid black;
+        }
       }
     }
     @include media-breakpoint-down(md) { // Mobile search styling --------------
