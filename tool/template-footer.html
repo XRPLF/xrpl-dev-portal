@@ -1,5 +1,5 @@
 <footer class="xrpl-footer" role="contentinfo">
-  <section class="container-fluid card-grid card-grid-Nx1">
+  <section class="container card-grid card-grid-Nx1">
     {% set funnels = [] %}
     {% for page in pages %}
       {% if page.funnel is defined and page.funnel not in funnels %}
@@ -21,7 +21,7 @@
     {% endfor %}
   </section>
 
-  <section class="container-fluid p-5 pl-sm-0">
+  <section class="container">
 
     <div class="absolute_bottom_footer">
       <span>&copy; XRP Ledger Project 2020</span>

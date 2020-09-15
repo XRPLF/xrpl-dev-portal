@@ -29,7 +29,7 @@ section {
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: $border-radius-lg;
 
   &::before {
     content: '';
@@ -49,7 +49,6 @@ section {
     }
   }
 }
-
 
 // Card Grid styles ------------------------------------------------------------
 

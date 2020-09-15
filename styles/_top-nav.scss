@@ -1,23 +1,23 @@
 /* Top navigation ----------------------------------------------------------- */
 .top-nav {
-  // Logo
+  margin-top: 20px;
 
+  // Logo
   .navbar-brand {
     text-decoration: none;
     white-space: pre;
     -webkit-transition: opacity 200ms ease, color 200ms ease;
     transition: opacity 200ms ease, color 200ms ease;
 
+    &:hover {
+      opacity: 0.75;
+    }
+
     @include media-breakpoint-down(md) {
       img {
         width: 120px;
       }
     }
-  }
-  .navbar-brand:hover {
-    opacity: 1.0;
-    // Hack: turn white logo to approximately $green
-    filter: brightness(0.5) sepia(1) saturate(5000%) hue-rotate(114deg) brightness(1.96) saturate(87%);
   }
 
   // Main Links ----------------------------------------------------------------
@@ -87,7 +87,7 @@
 
     .dropdown-item {
       line-height: 262%;
-      padding: 0 3rem;
+      padding: 0 .875rem;
 
       &:hover {
         color: $primary;
@@ -136,9 +136,13 @@
     .dropdown-menu {
       border-width: 1px;
       backdrop-filter: blur(8px);
-      border-radius: 8px;
-      padding: 0.5rem 1rem;
+      border-radius: $border-radius-lg;
+      padding: 0.5rem 0.75rem;
       min-width: 250px;
+
+      &.smaller-dropdown {
+        min-width: unset;
+      }
 
       .dropdown-item {
         line-height: 44px;
@@ -158,6 +162,11 @@
       flex-grow: 1;
     }
 
+    #topsearchbox:active {
+      box-shadow: none;
+      border-color: $white;
+    }
+
     @include media-breakpoint-up(lg) { // Desktop search styling ---------------
       position: static; // allows search bar to be positioned screen-center
       .dropdown-toggle {
@@ -166,7 +175,7 @@
 
       .dropdown-menu {
         padding: 0;
-        border-radius: 8px;
+        border-radius: $border-radius-lg;
         width: 640px;
         left: calc(50% - 320px);
         background-color: $gray-900;
@@ -186,7 +195,7 @@
         border-left: 1px solid black;
       }
     }
-    @include media-breakpoint-down(lg) { // Mobile search styling --------------
+    @include media-breakpoint-down(md) { // Mobile search styling --------------
       .form-inline label {
         margin-bottom: 0;
 
@@ -215,7 +224,7 @@
     .algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
       background-color: rgba(0,0,0,0.9);
       border: 1px solid $gray-900;
-      border-radius: 8px;
+      border-radius: $border-radius-lg;
     }
     .algolia-autocomplete .ds-dropdown-menu::before {
       background-color: rgba(0,0,0,0.9);

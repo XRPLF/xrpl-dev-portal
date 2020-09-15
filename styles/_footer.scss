@@ -1,7 +1,11 @@
 /* Footer ------------------------------------------------------------------- */
 
 .xrpl-footer {
-  margin: 0 48px;
+  >:first-child {
+    border-top: 1px solid white;
+    padding: 100px 48px 48px 48px;
+  }
+
   @include media-breakpoint-down(md) {
     margin: 0 24px;
   }
