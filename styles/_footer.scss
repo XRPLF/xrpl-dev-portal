@@ -6,6 +6,10 @@
     padding: 100px 48px 48px 48px;
   }
 
+  .absolute_bottom_footer {
+    padding-bottom: 48px;
+  }
+
   @include media-breakpoint-down(md) {
     margin: 0 24px;
   }
