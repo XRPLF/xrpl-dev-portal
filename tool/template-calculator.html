@@ -16,6 +16,9 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
+<!-- <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="IhVJTgzU"></script> -->
+
 <div class="fullwidth-bg">
   <div class="container mt-30">
 
@@ -73,9 +76,10 @@
                 </ul>
               </div>
               <div class="d-flex mb-3 ml-3">
-                <a href="#" class="mr-3"><img src="./img/logos/Twitter.png" alt="{% trans %}Twitter share{% endtrans %}" class="mw-100"></a>
-                <a href="#" class="mr-3"><img src="./img/logos/LinkedIn.png" alt="{% trans %}LinkedIn share{% endtrans %}" class="mw-100"></a>
-                <a href="#" class="mr-3"><img src="./img/logos/Facebook.png" alt="{% trans %}Facebook share{% endtrans %}" class="mw-100"></a>
+                <a href="https://twitter.com/intent/tweet?url=https://xrpl.org/carbon-calculator.html&text=XRPL Carbon Calculator" target="_blank" class="mr-3"><img src="./img/logos/Twitter.png" alt="{% trans %}Twitter share{% endtrans %}" class="mw-100"></a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://xrpl.org/carbon-calculator.html" target="_blank" class="mr-3"><img src="./img/logos/LinkedIn.png" alt="{% trans %}LinkedIn share{% endtrans %}" class="mw-100"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://xrpl.org/carbon-calculator.html" target="_blank" class="mr-3"><img src="./img/logos/Facebook.png" alt="{% trans %}Facebook share{% endtrans %}" class="mw-100">
+                </a>
               </div>
           </div>
           <a href="#" class="text-white arrow-link bold mt-4 d-block">{% trans %}Learn more about the methodology{% endtrans %}</a>

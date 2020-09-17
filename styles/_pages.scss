@@ -172,14 +172,6 @@
     background: $primary;
     color: $black;
   }
-  #data-selector li:first-child a {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-  #data-selector li:last-child a {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
   .tab-content div {
     display: none;
   }
@@ -265,6 +257,16 @@
     }
     #calculator-inputs.sticky.show {
       display: block;
+    }
+  }
+  @include media-breakpoint-up(md){
+    #data-selector li:first-child a {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+    #data-selector li:last-child a {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
     }
   }
   .viz-wrapper {
