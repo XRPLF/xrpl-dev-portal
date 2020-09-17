@@ -193,14 +193,6 @@
     }
   }
 
-  @media only screen and (min-width: 576px) and (max-width: 1200px){
-    #data-selector li:nth-child(2) {
-      margin-left: 0;
-      margin-right: 0;
-      border-top: 1px solid $black;
-      border-bottom: 1px solid $black;
-    }
-  }
   @include media-breakpoint-down(xs) {
     .d-output {
       display: none;
@@ -259,7 +251,7 @@
       display: block;
     }
   }
-  @include media-breakpoint-up(lg){
+  @include media-breakpoint-up(xl){
     #data-selector li:first-child a {
       border-top-left-radius: 8px;
       border-bottom-left-radius: 8px;
