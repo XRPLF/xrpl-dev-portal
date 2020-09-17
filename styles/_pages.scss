@@ -259,7 +259,7 @@
       display: block;
     }
   }
-  @include media-breakpoint-up(md){
+  @include media-breakpoint-up(lg){
     #data-selector li:first-child a {
       border-top-left-radius: 8px;
       border-bottom-left-radius: 8px;
