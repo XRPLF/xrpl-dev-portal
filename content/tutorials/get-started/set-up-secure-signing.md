@@ -11,7 +11,7 @@ There are several configurations with varying levels of security that may be acc
 - [Use a dedicated signing device](#use-a-dedicated-signing-device) that supports XRP Ledger signatures.
 - [Use a secure VPN to connect to a remote `rippled` machine](#use-a-secure-vpn-with-a-remote-rippled-server) you trust.
 
-<!-- Source for all diagrams in this article: https://docs.google.com/presentation/d/1BfGyWgC0njoPiKUZz3gXHMVSUINE3Q-_lHqY_D0TGwg/ -->
+<!-- Source for all diagrams in this article: https://drive.google.com/drive/u/0/folders/1MFkzxtMYpS8tzdm-TjWbLSVgU0zAG9Vh -->
 
 ## Insecure Configurations
 

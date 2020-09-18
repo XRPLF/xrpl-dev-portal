@@ -241,7 +241,7 @@ TrustSetAuth
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Run rippled as a Validator](run-rippled-as-a-validator.html)
-    - [Contribute Code to rippled](contribute-code-to-rippled.html)
+    - [Contribute Code to the XRP Ledger](contribute-code.html)
 - **References:**
     - [Amendments ledger object](amendments-object.html)
     - [EnableAmendment pseudo-transaction][]
