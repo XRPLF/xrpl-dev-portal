@@ -16,24 +16,27 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
+<!-- <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="IhVJTgzU"></script> -->
+
 <div class="fullwidth-bg">
-  <div class="container">
+  <div class="container mt-30">
 
     <section class="row mb-49">
       <h6 class="section-marker">{% trans %}Sustainability{% endtrans %}</h6>
-      <div class="col-sm-4 d-sm-none d-md-block sustainability-bg">
-        &nbsp;
+      <div class="col-sm-4 d-sm-none d-md-block">
+        <img class="mw-100" src="./img/green/green-graphic.png" alt="{% trans %}Sustainability icon{% endtrans %}">
       </div>
       <div class="col-sm-8">
-        <h3 class="h1 mb-4 mt-12">{% trans %}How Green Is Your Currency?{% endtrans %}</h3>
+        <h3 class="h1 mb-4 mt-4">{% trans %}How Green Is Your Currency?{% endtrans %}</h3>
         <a href="#calculator" class="arrow-link text-green bold">{% trans %}Explore the Interactive Tool{% endtrans %}</a>
         <h2 class="text-largest mt-16 h4">{% trans %}Energy Consumption for Cash, Credit Cards and Crypto{% endtrans %}</h2>
         <div class="d-sm-flex mt-10">
-          <div class="pr-1">
+          <div class="pr-sm-3">
             <p>{% trans %}Moving money carries cost—and not just the fee on your transaction or the value of your payment.{% endtrans %}</p>
             <p>{% trans %}Whether it’s in cash, on a credit card or with crypto, every transaction you make consumes energy, and therefore, emits pollutants into the environment.{% endtrans %}</p>
           </div>
-          <div class="pl-1">
+          <div class="pl-sm-3">
             <p>{% trans %}The impact of this is startling when you look at the total transactions across an entire year—for any one form of currency.{% endtrans %}</p>
             <p>{% trans %}Find out more about the environmental cost of some of the world’s most popular and innovative currencies, and start making more educated choices about how you transact.{% endtrans %}</p>
           </div>
@@ -43,8 +46,8 @@
   </div>
 
   <div class="container" id="calculator">
-    <div class="col-sm-8 mt-20 mb-30 offset-sm-4">
-      <h3>{% trans %}How Does XRP Compare to Other Currencies?{% endtrans %}</h3>
+    <div class="col-sm-5 mt-20 mb-30 offset-sm-4">
+      <h3 class="mb-4">{% trans %}How Does XRP Compare to Other Currencies?{% endtrans %}</h3>
       <a href="#" class="text-green arrow-link bold">{% trans %}Learn more about the methodology{% endtrans %}</a>
     </div>
   </div>
@@ -56,13 +59,13 @@
       <div class="col-lg-4" >
         <div class="rounded sticky-top top-10 mb-3 mb-lg-0" id="calculator-inputs">
           <div class="border-green p-3 calc-inputs">
-            <h4>{% trans %}Comparing Transaction Data{% endtrans %}</h4>
-              <ul class="p-0 mt-10 ls-none d-sm-flex d-lg-block d-xl-flex flex-wrap justify-content-around" id="data-selector">
-                <li class="d-block d-xl-inline-flex text-center active"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#d-crypto">{% trans %}Crypto{% endtrans %}</a></li>
-                <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#d-credit">{% trans %}Credit Cards{% endtrans %}</a></li>
-                <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#d-cash">{% trans %}Cash{% endtrans %}</a></li>
+            <h4>{% trans %}Comparing<br/> Transaction Data{% endtrans %}</h4>
+              <ul class="p-0 mt-10 ls-none d-sm-flex d-lg-block d-xl-flex flex-wrap justify-content-center justify-xl-content-around" id="data-selector">
+                <li class="d-block d-xl-inline-flex text-center active"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-crypto">{% trans %}Crypto{% endtrans %}</a></li>
+                <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-credit">{% trans %}Credit Cards{% endtrans %}</a></li>
+                <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-cash">{% trans %}Cash{% endtrans %}</a></li>
               </ul>
-              <div class="slidecontainer">
+              <div class="slidecontainer mb-10">
                 <input type="range" min="20" max="100" value="60" class="slider w-100" id="myRange" step="20">
                 <ul class="d-flex p-0 ls-none justify-content-between position-relative mr-neg-8 ml-neg-8 mt-1" style="z-index: -1;">
                   <li class="dash text-center text-smaller grey-50">20M</li>
@@ -71,6 +74,12 @@
                   <li class="dash text-center text-smaller grey-50">80M</li>
                   <li class="dash text-center text-smaller grey-50">100M</li>
                 </ul>
+              </div>
+              <div class="d-flex mb-3 ml-3">
+                <a href="https://twitter.com/intent/tweet?url=https://xrpl.org/carbon-calculator.html&text=XRPL Carbon Calculator" target="_blank" class="mr-3"><img src="./img/logos/Twitter.png" alt="{% trans %}Twitter share{% endtrans %}" class="mw-100"></a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://xrpl.org/carbon-calculator.html" target="_blank" class="mr-3"><img src="./img/logos/LinkedIn.png" alt="{% trans %}LinkedIn share{% endtrans %}" class="mw-100"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://xrpl.org/carbon-calculator.html" target="_blank" class="mr-3"><img src="./img/logos/Facebook.png" alt="{% trans %}Facebook share{% endtrans %}" class="mw-100">
+                </a>
               </div>
           </div>
           <a href="#" class="text-white arrow-link bold mt-4 d-block">{% trans %}Learn more about the methodology{% endtrans %}</a>
@@ -83,7 +92,7 @@
 
           <p class="grey-400 text-small my-4">{% trans %}Comparing <span class="slider-amt"></span> Million Transactions in 2019{% endtrans %}</p>
 
-          <p>{% trans %}The country of Portugal consumes ~50twh (1 billion) Kilowatt hours (KWH) of energy annually. Explore how much energy today’s various currencies consume in relation to Portugal.{% endtrans %}</p>
+          <p class="calculator-section-description">{% trans %}The country of Portugal consumes ~50twh (1 billion) Kilowatt hours (KWH) of energy annually. Explore how much energy today’s various currencies consume in relation to Portugal.{% endtrans %}</p>
 
           <div class="d-viz d-viz-1 mt-10">
             <ul class="d-sm-flex  p-0">
@@ -168,7 +177,7 @@
 
           <p class="grey-400 text-small my-4">{% trans %}Comparing <span class="slider-amt"></span> Million Transactions in 2019{% endtrans %}</p>
 
-          <p>{% trans %}A 12-hour flight from London to Hong Kong releases 3 tons of Carbon dioxide (C02). Discover how much C02 different forms of currency release in comparison to emissions from airline flights.{% endtrans %}</p>
+          <p class="calculator-section-description">{% trans %}A 12-hour flight from London to Hong Kong releases 3 tons of Carbon dioxide (C02). Discover how much C02 different forms of currency release in comparison to emissions from airline flights.{% endtrans %}</p>
 
           <div class="mt-10" id="co2Animation"></div>
 
@@ -211,7 +220,7 @@
 
           <p class="grey-400 text-small my-4">{% trans %}Comparing <span class="slider-amt"></span> Million Transactions in 2019{% endtrans %}</p>
 
-          <p>{% trans %}An Ultra Large Crude Carrier (ULCC) carries approximately 120 million gallons of gas. Measure the environmental impact between currencies in relation to the amount of gas they would consume in the real-world.{% endtrans %}</p>
+          <p class="calculator-section-description">{% trans %}An Ultra Large Crude Carrier (ULCC) carries approximately 120 million gallons of gas. Measure the environmental impact between currencies in relation to the amount of gas they would consume in the real-world.{% endtrans %}</p>
 
           <div class="mt-10" id="gasAnimation"></div>
 

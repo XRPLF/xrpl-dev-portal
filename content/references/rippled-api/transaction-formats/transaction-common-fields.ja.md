@@ -4,7 +4,7 @@
 
 | フィールド              | JSONの型        | [内部の型][] | 説明      |
 |:-------------------|:-----------------|:------------------|:-----------------|
-| Account            | 文字列           | Account           | _（必須）_ トランザクションを開始した[アカウント](accounts.html)の一意アドレス。 |
+| Account            | 文字列           | AccountID          | _（必須）_ トランザクションを開始した[アカウント](accounts.html)の一意アドレス。 |
 | TransactionType    | 文字列           | UInt16            | _（必須）_ トランザクションのタイプ。有効なタイプは、`Payment`、`OfferCreate`、`OfferCancel`、`TrustSet`、`AccountSet`、`SetRegularKey`、`SignerListSet`、`EscrowCreate`、`EscrowFinish`、`EscrowCancel`、`PaymentChannelCreate`、`PaymentChannelFund`、`PaymentChannelClaim`、`DepositPreauth`です。 |
 | Fee                | 文字列           | Amount            | _（必須。[自動入力可能][]）_ 整数で表したXRPの額（drop単位）。このトランザクションをネットワークに送信するためのコストとして消却されます。トランザクションのタイプによっては、最小要件が異なります。詳細は、[トランザクションコスト][]を参照してください。 |
 | Sequence           | 符号なし整数 | UInt32            | _（必須。[自動入力可能][]）_ トランザクションを開始したアカウントに関連付けられた、トランザクションのシーケンス番号。トランザクションが有効とみなされるのは、その`Sequence`番号が、同一のアカウントの直前トランザクションよりも1大きい場合のみです。保留中のトランザクションを`Sequence`番号を使用して無効にする方法については、[トランザクションのキャンセルまたはスキップ](cancel-or-skip-a-transaction.html)を参照してください。 |
