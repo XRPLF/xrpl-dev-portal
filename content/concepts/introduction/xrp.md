@@ -35,5 +35,5 @@ The smallest, indivisible unit of XRP was named a "drop" at the suggestion of Ri
 ## See Also
 
 - [Send XRP (Interactive Tutorial)](send-xrp.html)
-- [List XRP In Your Exchange](list-xrp-in-your-exchange.html)
+- [List XRP In Your Exchange](list-xrp-as-an-exchange.html)
 - [Currency Formatting in rippled APIs](currency-formats.html#)

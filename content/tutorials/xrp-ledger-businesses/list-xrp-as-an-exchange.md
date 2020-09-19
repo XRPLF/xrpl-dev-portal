@@ -1,6 +1,6 @@
 # List XRP as an Exchange
 
-This document describes the steps that an exchange needs to take to list XRP.
+This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at _custodial exchanges_ that holds fund on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of assets.
 
 ## Alpha Exchange
 
