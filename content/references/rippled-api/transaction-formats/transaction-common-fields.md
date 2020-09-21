@@ -4,7 +4,7 @@ Every transaction has the same set of common fields, plus additional fields base
 
 | Field                | JSON Type        | [Internal Type][] | Description      |
 |:---------------------|:-----------------|:------------------|:-----------------|
-| `Account`            | String           | Account           | _(Required)_ The unique address of the [account](accounts.html) that initiated the transaction. |
+| `Account`            | String           | AccountID         | _(Required)_ The unique address of the [account](accounts.html) that initiated the transaction. |
 | `TransactionType`    | String           | UInt16            | _(Required)_ The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, `AccountDelete`, `SetRegularKey`, `SignerListSet`, `EscrowCreate`, `EscrowFinish`, `EscrowCancel`, `PaymentChannelCreate`, `PaymentChannelFund`, `PaymentChannelClaim`, and `DepositPreauth`. |
 | `Fee`                | String           | Amount            | _(Required; [auto-fillable][])_ Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. Some transaction types have different minimum requirements. See [Transaction Cost][] for details. |
 | `Sequence`           | Number           | UInt32            | _(Required; [auto-fillable][])_ The [sequence number](basic-data-types.html#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. |

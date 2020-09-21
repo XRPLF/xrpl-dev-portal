@@ -25,14 +25,14 @@ An AccountDelete transaction deletes an [account](accountroot.html) and any obje
 
 | Field            | JSON Type        | [Internal Type][] | Description        |
 |:-----------------|:-----------------|:------------------|:-------------------|
-| `Destination`    |  String - [Address][] | Account      | The address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account. |
+| `Destination`    |  String - [Address][] | AccountID    | The address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account. |
 | `DestinationTag` | Number           | UInt32            | _(Optional)_ Arbitrary [destination tag](source-and-destination-tags.html) that identifies a hosted recipient or other information for the recipient of the deleted account's leftover XRP. |
 
 ## Special Transaction Cost
 
 As an additional deterrent against ledger spam, the AccountDelete transaction requires a much higher than usual [transaction cost](transaction-cost.html): instead of the standard minimum of 0.00001 XRP, AccountDelete must destroy at least the owner reserve amount, currently 5 XRP. This discourages excessive creation of new accounts because the [reserve requirement](reserves.html) cannot be fully recouped by deleting the account.
 
-The transaction cost always applies when a transaction is included in a validated ledger, even if the transaction fails to delete the account. (See [Error Cases](#error-cases).) To greatly reduce the chances of paying the high transaction cost if the account cannot be deleted, [submit the transaction](submit.html) with `fail_hard` enabled. 
+The transaction cost always applies when a transaction is included in a validated ledger, even if the transaction fails to delete the account. (See [Error Cases](#error-cases).) To greatly reduce the chances of paying the high transaction cost if the account cannot be deleted, [submit the transaction](submit.html) with `fail_hard` enabled.
 
 
 ## Error Cases
