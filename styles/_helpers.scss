@@ -11,6 +11,9 @@
 .w36 {
   width: 36px;
 }
+.h40 {
+  height: 40px;
+}
 .w40 {
   width: 40px;
 }
@@ -127,6 +130,9 @@
 .last-section {
   margin-bottom: 100px;
 }
+.bottom-0 {
+  bottom: 0;
+}
 
 /*  TEXT HELPERS */
 .va-middle {
@@ -141,16 +147,27 @@
 .align-items-stretch {
   align-items: stretch;
 }
+.underline {
+  text-decoration: underline;
+}
 
 @include media-breakpoint-down(xs) {
   .overflow-xs {
     overflow: scroll;
   }
 }
+@include media-breakpoint-up(md) {
+  .position-sm-absolute {
+    position: absolute;
+  }
+}
 
 /* COLOR ELEMENTS */
 .border-green {
   border: 1px solid $primary;
+}
+.border-none {
+  border: none !important;
 }
 .grey-400 {
   color: $gray-400

@@ -35,7 +35,7 @@ By default, a new genesis ledger has no [amendments](amendments.html) enabled. I
     - [server_info method][]
     - [`rippled` Commandline Usage](commandline-usage.html)
 - **Use Cases:**
-    - [Contribute Code to `rippled`](contribute-code-to-rippled.html)
+    - [Contribute Code to the XRP Ledger](contribute-code-to-rippled.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

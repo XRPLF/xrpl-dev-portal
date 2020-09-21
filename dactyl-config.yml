@@ -1923,12 +1923,23 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/use-complex-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
+        html: use-an-escrow-as-a-smart-contract.html
+        funnel: Build
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Escrows
+        targets:
+            - en
+            - ja
+
     #TODO: split concept info off of the paychan tutorial
     -   md: tutorials/use-complex-payment-types/use-payment-channels.md
         html: use-payment-channels.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
+        subcategory: Use Payment Channels
         blurb: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server.
         targets:
             - en
@@ -1938,8 +1949,19 @@ pages:
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
+        subcategory: Use Payment Channels
         blurb: Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的なPayment Channelの使用方法を、ローカルのrippledサーバーのJSON-RPC APIを使用する例を使って説明します。
         targets:
+            - ja
+
+    -   md: tutorials/use-complex-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
+        html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
+        funnel: Build
+        doc_type: Tutorials
+        category: Use Specialized Payment Types
+        subcategory: Use Payment Channels
+        targets:
+            - en
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
@@ -6201,152 +6223,77 @@ pages:
 
 
 # --------------- end "Docs" section -------------------------------------------
-# Use Cases: removing these, to be finished later ------------------------------
-    # -   md: use-cases/use-cases.md
-    #     html: use-cases.html
-    #     funnel: Use Cases
-    #     targets:
-    #         - en
-    #
-    # -   md: use-cases/use-cases.ja.md
-    #     html: use-cases.html
-    #     funnel: Use Cases
-    #     targets:
-    #         - ja
-    #
-    # -   md: use-cases/run-a-rippled-validator.md
-    #     html: run-a-rippled-validator.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - amendments.html
-    #         - the-rippled-server.html
-    #         - fee-voting.html
-    #         - consensus-principles-and-rules.html
-    #     filters:
-    #         - use_case
-    #     targets:
-    #         - en
-    #
-    # -   md: use-cases/run-a-rippled-validator.ja.md
-    #     html: run-a-rippled-validator.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - amendments.html
-    #         - the-rippled-server.html
-    #         - fee-voting.html
-    #         - consensus-principles-and-rules.html
-    #     filters:
-    #         - use_case
-    #     targets:
-    #         - ja
-    #
-    # -   md: use-cases/list-xrp-in-your-exchange.md
-    #     html: list-xrp-in-your-exchange.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - xrp-ledger-overview.html
-    #         - reliable-transaction-submission.html
-    #         - xrp.html
-    #     filters:
-    #         - use_case
-    #     blurb: Run a digital asset exchange? Follow these steps to add XRP.
-    #     cta_text: List XRP
-    #     targets:
-    #         - en
-    #
-    # -   md: use-cases/list-xrp-in-your-exchange.ja.md
-    #     html: list-xrp-in-your-exchange.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - xrp-ledger-overview.html
-    #         - reliable-transaction-submission.html
-    #         - xrp.html
-    #     filters:
-    #         - use_case
-    #     blurb: デジタルアセット取引所でXRPを上場するために必要な手順の概要を説明します。
-    #     cta_text: XRPを上場しよう
-    #     targets:
-    #         - ja
-    #
-    # -   md: use-cases/open-a-payment-channel-to-enable-an-inter-exchange-network.md
-    #     html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - xrp-ledger-overview.html
-    #         - payment-channels.html
-    #         - use-payment-channels.html
-    #         - list-xrp-in-your-exchange.html
-    #     filters:
-    #         - use_case
-    #     targets:
-    #         - en
-    #         - ja
-    #
-    # -   md: use-cases/contribute-code-to-rippled.md
-    #     html: contribute-code-to-rippled.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - consensus.html
-    #         - amendments.html #TODO add to useful_background: stand-alone mode, rippled.cfg reference (future feature)
-    #     filters:
-    #         - use_case
-    #     targets:
-    #         - en
-    #
-    # -   md: use-cases/contribute-code-to-rippled.ja.md
-    #     html: contribute-code-to-rippled.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - consensus.html
-    #         - amendments.html
-    #     filters:
-    #         - use_case
-    #     targets:
-    #         - ja
-    #
-    # -   md: use-cases/contribute-code-to-ripple-lib.md
-    #     html: contribute-code-to-ripple-lib.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - rippleapi-reference.html
-    #         - get-started-with-rippleapi-for-javascript.html
-    #     filters:
-    #         - use_case
-    #     targets:
-    #         - en
-    #
-    # -   md: use-cases/contribute-code-to-ripple-lib.ja.md
-    #     html: contribute-code-to-ripple-lib.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - rippleapi-reference.html
-    #         - get-started-with-rippleapi-for-javascript.html
-    #     filters:
-    #         - use_case
-    #     targets:
-    #         - ja
-    #
-    # -   md: use-cases/use-an-escrow-as-a-smart-contract.md
-    #     html: use-an-escrow-as-a-smart-contract.html
-    #     funnel: Use Cases
-    #     template: template-use-case.html
-    #     useful_background:
-    #         - xrp-ledger-overview.html
-    #         - escrow.html
-    #     filters:
-    #         - use_case
-    #     targets:
-    #         - en
-    #         - ja
+# Use Cases: these have been removed. Only redirects remain.
+
+    -   name: Use Cases
+        html: use-cases.html
+        template: template-redirect.html
+        redirect_url: uses.html
+        targets:
+            - en
+
+    -   name: ユースケース
+        html: use-cases.html
+        template: template-redirect.html
+        redirect_url: uses.html
+        targets:
+            - ja
+
+    -   name: Run a rippled Validator
+        html: run-a-rippled-validator.html
+        template: template-redirect.html
+        redirect_url: run-rippled-as-a-validator.html
+        targets:
+            - en
+
+    -   name: rippledバリデータの実行
+        html: run-a-rippled-validator.html
+        template: template-redirect.html
+        redirect_url: run-rippled-as-a-validator.html
+        targets:
+            - ja
+
+    -   name: List XRP In Your Exchange
+        html: list-xrp-in-your-exchange.html
+        template: template-redirect.html
+        redirect_url: list-xrp-as-an-exchange.html
+        targets:
+            - en
+
+    -   name: 取引所でのXRPの上場
+        html: list-xrp-in-your-exchange.html
+        template: template-redirect.html
+        redirect_url: list-xrp-as-an-exchange.html
+        targets:
+            - ja
+
+    -   name: Contribute Code to rippled
+        html: contribute-code-to-rippled.html
+        template: template-redirect.html
+        redirect_url: contribute-code.html
+        targets:
+            - en
+
+    -   name: rippledへのコードの提供
+        html: contribute-code-to-rippled.html
+        template: template-redirect.html
+        redirect_url: contribute-code.html
+        targets:
+            - ja
+
+    -   name: Contribute Code to ripple-lib
+        html: contribute-code-to-ripple-lib.html
+        template: template-redirect.html
+        redirect_url: contribute-code.html
+        targets:
+            - en
+
+    -   name: ripple-libへのコードの提供
+        html: contribute-code-to-ripple-lib.html
+        template: template-redirect.html
+        redirect_url: contribute-code.html
+        targets:
+            - ja
 
 # Dev Tools --------------------------------------------------------------------
     -   md: dev-tools/dev-tools.md
@@ -6460,12 +6407,19 @@ pages:
             - ja
         template: template-tx-sender.html
 
-# "Contribute" page ------------------------------------------------------------
+# "Contribute" pages -----------------------------------------------------------
     -   name: Contribute
         funnel: Contribute
         html: contribute.html
         template: template-contribute.html
         sidebar: disabled
+        targets:
+            - en
+            - ja
+
+    -   md: contributing/contribute-code.md
+        funnel: Contribute
+        html: contribute-code.html
         targets:
             - en
             - ja
@@ -6502,12 +6456,13 @@ known_broken_links:
     - /blog/label/rippled-release-notes.html
     - /blog/label/amendments.html
     - /blog/label/features.html
-    # For some reason the Web Archive links are breaking in the link checker
-    #  even though they still work in browser:
+    # For various reasons these links break from the Python requests client,
+    #  but they work in browser. (Might be a protection against bots.)
     - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
     - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
-    # Another failure that works fine in a browser:
     - https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/
+    - https://www.coinbase.com/
+    - https://www.forte.io/
 
 # Style Checker Config ------------------------------------------------------ #
 

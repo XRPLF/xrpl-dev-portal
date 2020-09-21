@@ -2,11 +2,24 @@
 .dblue {
   color: #656E81;
 }
-#table-overview {
+#overview-table {
   td:nth-child(1){
     width: 40%;
   }
+  td:nth-child(2){
+    width: 30%;
+  }
+  tbody td {
+    padding: 2rem 0.75rem;
+  }
+  @include media-breakpoint-down(md) {
+    font-size: 0.875rem;
+    thead .h4 {
+      font-size: 1.125rem;
+    }
+  }
 }
+
 #calculator-table {
   width: 100%;
   thead {

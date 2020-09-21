@@ -74,7 +74,7 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
     - [server_infoメソッド][]
     - [`rippled`コマンドラインの使用](commandline-usage.html)
 - **ユースケース:**
-    - [`rippled`へのコードの提供](contribute-code-to-rippled.html)
+    - [XRP Ledgerへのコードの提供](contribute-code.html)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

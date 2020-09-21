@@ -17,7 +17,7 @@
 
 {% block main %}
 <div id="page-overview-bg" class="pt-40">
-  <div class="container marketing-wrapper">
+  <div class="container">
       <section class="row mb-50">
         <div class="col-md-6 mb-10">
           <h6 class="text-primary mb-4">{% trans %}XRP Overview{% endtrans %}</h6>
@@ -25,7 +25,7 @@
         </div>
         <div class="w-100"></div>
         <div class="col-md-8">
-          <h2 class="mb-8">{% trans %}What is XRP?{% endtrans %}</h2>
+          <h2 class="mb-10">{% trans %}What is XRP?{% endtrans %}</h2>
           <div class="row">
             <p class="col-sm">{% trans %}XRP is a digital asset that’s native to the XRP Ledger, an open-source, permissionless and decentralized <a href="https://www.distributedagreement.com/2018/09/24/what-is-a-blockchain/" target="_blank">blockchain technology</a>.{% endtrans %}</p>
             <p class="col-sm">{% trans %}Created in 2012 specifically for payments, XRP can settle transactions on the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, cheaper and greener than any other digital asset.  {% endtrans %}</p>
@@ -33,35 +33,35 @@
         </div>
       </section>
 
-      <section class="row mb-50">
+      <section class="row mb-30">
         <h6 class="section-marker">{% trans %}Benefits{% endtrans %}</h6>
-        <div class="col-sm-12 col-lg-10 mt-14 overflow-xs">
-            <table id="table-overview" class="mw-100">
+        <div class="col-sm-12 col-lg-10">
+            <table id="overview-table" class="mw-100">
               <thead>
                 <tr>
                   <td class="bold h4">{% trans %}Benefits{% endtrans %}</td>
-                  <td class="bold text-large"><img class="h36 mr-2" src="assets/img/icons/bw-xrp.png">{% trans %}XRP{% endtrans %}</td>
-                  <td class="bold text-large"><img class="h36 mr-2" src="assets/img/icons/bw-bitcoin.png">{% trans %}Bitcoin{% endtrans %}</td>
+                  <td class="bold text-large"><img class="h40 mr-3 mb-1" src="assets/img/icons/bw-xrp.png">{% trans %}XRP{% endtrans %}</td>
+                  <td class="bold text-large"><img class="h32 mr-3 mb-1" src="assets/img/icons/bw-bitcoin.png">{% trans %}Bitcoin{% endtrans %}</td>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="bold"><div class="w48 mr-3 text-center d-inline-block no-wrap"><img class="h32" src="assets/img/icons/fast.png"></div>{% trans %}Fast{% endtrans %}</td>
+                  <td class="bold"><div class="w48 mr-3 text-center d-sm-inline-block no-wrap"><img class="h32" src="assets/img/icons/fast.png"></div>{% trans %}Fast{% endtrans %}</td>
                   <td class="">{% trans %}3-5 seconds to settle{% endtrans %}</td>
                   <td class="">{% trans %}500 seconds to settle{% endtrans %}</td>
                 </tr>
                 <tr>
-                  <td class="bold"><div class="w48 mr-3 text-center d-inline-block no-wrap"><img class="w32" src="assets/img/icons/low-cost.png"></div>{% trans %}Low Cost{% endtrans %}</td>
+                  <td class="bold"><div class="w48 mr-3 text-center d-sm-inline-block no-wrap"><img class="w32" src="assets/img/icons/low-cost.png"></div>{% trans %}Low Cost{% endtrans %}</td>
                   <td class="">{% trans %}$0.00002/transaction{% endtrans %}</td>
                   <td class="">{% trans %}$0.50/transaction{% endtrans %}</td>
                 </tr>
                 <tr>
-                  <td class="bold"><div class="w48 mr-3 text-center d-inline-block no-wrap"><img class="w44" src="assets/img/icons/scalable.png"></div>{% trans %}Scalable{% endtrans %}</td>
+                  <td class="bold"><div class="w48 mr-3 text-center d-sm-inline-block no-wrap"><img class="w44" src="assets/img/icons/scalable.png"></div>{% trans %}Scalable{% endtrans %}</td>
                   <td class="">{% trans %}1500 transaction per second{% endtrans %}</td>
                   <td class="">{% trans %}3 transactions per second{% endtrans %}</td>
                 </tr>
-                <tr>
-                  <td class="bold"><div class="w48 mr-3 text-center d-inline-block no-wrap"><img class="w48" src="assets/img/icons/sustainable.png"></div>{% trans %}Sustainable{% endtrans %}</td>
+                <tr class="border-none">
+                  <td class="bold"><div class="w48 mr-3 text-center d-sm-inline-block no-wrap"><img class="w48" src="assets/img/icons/sustainable.png"></div>{% trans %}Sustainable{% endtrans %}</td>
                   <td class="">{% trans %}Environmentally sustainable (negligible energy consumption){% endtrans %}</td>
                   <td class="">{% trans %}0.3% of global energy consumption{% endtrans %}</td>
               </tbody>
@@ -71,19 +71,18 @@
 
 
       <section class="row mb-50">
-        <h6 class="section-marker">{% trans %}Finite Supply of XRP {% endtrans %}</h6>
         <div class="col-lg-6 offset-lg-1 order-1 order-lg-2 mb-10">
           <img class="mw-100" src="./img/graphics/overview-supply.png">
         </div>
         <div class="col-lg-4 order-2 order-lg-1">
+          <h2 class="mb-10">{% trans %}Finite Supply of XRP{% endtrans %}</h2>
           <p>{% trans %}XRP can be sent directly without needing a central intermediary, making it a convenient instrument in bridging two different currencies quickly and efficiently. It is freely exchanged on the open market and used in the real world for enabling cross-border payments and microtransactions.{% endtrans %}</p>
           <p>{% trans %}Unlike Bitcoin, there is a finite amount of XRP. All XRP is already in existence today—100 billion in total.{% endtrans %}</p>
-          <a href="history.html" class="btn btn-outline-secondary">{% trans %}History of XRP{% endtrans %}</a>
+          <a href="history.html" class="btn btn-outline-secondary mt-3">{% trans %}History of XRP{% endtrans %}</a>
         </div>
       </section>
 
-      <section class="row mb-50">
-        <h6 class="section-marker">{% trans %}XRP Validators{% endtrans %}</h6>
+      <section class="row mb-20">
         <div class="col-md-4 mb-10">
           <h2>{% trans %}How Does the XRP Ledger Work?{% endtrans %}</h2>
         </div>
@@ -95,21 +94,25 @@
           <p>{% trans %}Transactions are executed in a deterministic order to prevent double spending and malicious activity. Unlike other blockchains, transaction fees are destroyed as part of transaction execution. The XRP Ledger adjusts fees in near real time to respond to network conditions, with the twin goals of maximizing transaction throughput while keeping transaction fees as low as possible.{% endtrans %}</p>
           <p>{% trans %}All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed as soon as validators reach a quorum.{% endtrans %}</p>
         </div>
-        <div class="w-100 mb-20"></div>
-        <div class="col-lg-6">
+      </section>
+
+      <section class="row mb-40">
+        <h6 class="section-marker">{% trans %}XRP Validators{% endtrans %}</h6>
+        <div class="col-lg-6 mb-10">
           <img class="mw-100" src="./img/graphics/validator.png">
         </div>
-        <div class="col-lg-5 offset-lg-1">
-          <h4 class="mb-10">{% trans %}Anyone can operate a validator; currently, over 150 <a href="run-a-rippled-validator.html">validators</a> are active on the ledger, operated by  universities, exchanges, businesses and individuals.{% endtrans %}</h4>
-          <a href="consensus-network.html" class="btn btn-outline-secondary">{% trans %}Get Technical{% endtrans %}</a>
+        <div class="col-lg-5 offset-lg-1 d-flex-sm justify-content-sm-center align-self-sm-center">
+          <div>
+            <h4 class="mb-10">{% trans %}Anyone can operate a validator; currently, over 150 <a href="run-a-rippled-validator.html" class="underline">validators</a> are active on the ledger, operated by  universities, exchanges, businesses and individuals.{% endtrans %}</h4>
+            <a href="consensus-network.html" class="btn btn-outline-secondary">{% trans %}Get Technical{% endtrans %}</a>
+          </div>
         </div>
       </section>
 
       <section class="row mb-50">
-        <h6 class="section-marker">{% trans %}Internet of Value{% endtrans %}</h6>
-        <div class="col-lg-6">
+        <div class="col-lg-7 pr-0">
           <h2 class="mb-10">{% trans %}Why Is XRP Useful?{% endtrans %}</h2>
-          <h5 class="mb-10 normal h4">{% trans %}XRP is fast, low-cost, sustainable and scalable. It is the key to fueling growth and realizing the true potential of our global economy—the <a href="https://ripple.com/insights/the-internet-of-value-what-it-means-and-how-it-benefits-everyone/" target="_blank">Internet of Value</a>.{% endtrans %}</h5>
+          <h5 class="mb-10 normal h4">{% trans %}XRP is fast, low-cost, sustainable and scalable. It is the key to fueling growth and realizing the true potential of our global economy—the <a href="https://ripple.com/insights/the-internet-of-value-what-it-means-and-how-it-benefits-everyone/" target="_blank" class="underline">Internet of Value</a>.{% endtrans %}</h5>
         </div>
         <div class="w-100 mt-20"></div>
         <div class="col-md-4 mb-20">
@@ -120,12 +123,12 @@
         <div class="col-md-4 mb-20">
           <h4>{% trans %}Individuals{% endtrans %}</h4>
           <p class="my-10">{% trans %}Individual consumers can use XRP to move different currencies around the world. For example, through wallets and exchanges that use <a href="https://payid.org/" target="_blank">PayID</a>, anyone can use XRP—or any currency, be it fiat or digital assets—to easily make purchases across any payments network.{% endtrans %}</p>
-          <a href="uses.html" class="text-white bold arrow-link">{% trans %}More About Uses{% endtrans %}</a>
+          <a href="uses.html" class="text-white bold arrow-link position-sm-absolute bottom-0">{% trans %}More About Uses{% endtrans %}</a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-20">
           <h4>{% trans %}Developers{% endtrans %}</h4>
           <p class="my-10">{% trans %}By building on the XRP Ledger, developers can easily integrate payments into their products—seamlessly putting money at the center of their applications. Projects like the <a href="https://xpring.io/">Xpring developer platform</a> are making it easier for developers to leverage XRP.  {% endtrans %}</p>
-          <a href="docs.html" class="text-white bold arrow-link">{% trans %}More About Developers{% endtrans %}</a>
+          <a href="docs.html" class="text-white bold arrow-link position-sm-absolute bottom-0">{% trans %}More About Developers{% endtrans %}</a>
         </div>
       </section>
 
@@ -184,7 +187,7 @@
       <section class="mb-50">
         <h6 class="section-marker">{% trans %}Trading{% endtrans %}</h6>
         <div class="row">
-          <div class="col-md-6 order-1 order-md-2 mb-10">
+          <div class="col-md-6 offset-md-1 order-1 order-md-2 mb-10">
             <div class="d-flex flex-wrap w-100">
               <a class="square square-50 d-flex card-b" href="https://www.coinbase.com/">
                 <img class="mw-100" src="assets/img/exchanges/coinbase.png">
@@ -213,10 +216,10 @@
       <section class="mb-50">
         <h6 class="section-marker">{% trans %}Ripple vs. XRP{% endtrans %}</h6>
         <div class="row">
-          <div class="col-md-4 offset-md-1 mb-10 text-center">
+          <div class="col-md-3 offset-md-1 mb-10 text-center d-flex-md justify-content-md-center align-self-md-center">
             <img class="mw-100 mt-10" src="./img/overview/xrp-text-logo.png">
           </div>
-          <div class="col-md-5 offset-md-1">
+          <div class="col-md-5 offset-md-2">
             <h2 class="mb-10">{% trans %}What Is the Relationship Between Ripple and XRP?{% endtrans %}</h2>
             <p>{% trans %}Ripple is a technology company that makes it easier to build a high-performance, global payments business through its platform, RippleNet. XRP is a digital asset independent of this, and is used in Ripple’s On-Demand Liquidity service to facilitate efficient and cost-effective cross-border transactions. In December of 2017, Ripple placed 55 Billion XRP into a cryptographically secured <a href="https://ripple.com/insights/explanation-ripples-xrp-escrow/" target="_blank">escrow</a> account to support stable and healthy <a href="https://ripple.com/xrp/market-performance" target="_blank">XRP markets</a>.{% endtrans %}</p>
             <a class="mt-10 btn btn-outline-secondary" href="https://ripple.com/" target="_blank">{% trans %}Visit Ripple's Website{% endtrans %}</a>
@@ -228,7 +231,7 @@
         <h6 class="section-marker">{% trans %}XRP Community{% endtrans %}</h6>
         <div class="row">
           <div class="col-md-6 offset-md-1 order-1 order-md-2 mb-10 text-center">
-            <img class="mw-100" src="./img/overview/xrp-community.png">
+            <img class="mw-100 mt-2" src="./img/overview/xrp-community.png">
           </div>
           <div class="col-md-5 order-2 order-md-1">
             <h2 class="mb-10">{% trans %}XRPL.org: For the Community, by the Community{% endtrans %}</h2>
