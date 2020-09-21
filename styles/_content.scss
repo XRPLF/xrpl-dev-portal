@@ -122,9 +122,15 @@ td:nth-child(1) {
   padding: 2rem;
   background: rgba(34, 37, 43, 0.5);
   backdrop-filter: blur(3px);
+  border-radius: 8px;
+  opacity: 1;
+  transition: all 0.35s ease-in-out;
   @include media-breakpoint-down(sm) {
     margin-left: 15px;
     margin-right: 15px;
+  }
+  &.not-hover {
+    opacity: 0.6;
   }
 }
 .section-marker {
