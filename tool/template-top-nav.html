@@ -1,37 +1,35 @@
-<div class="container">
+<div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
   <a href="{% if target.prefix %}{{target.prefix}}{% else %}/{% endif %}" class="navbar-brand"><img src="{{currentpage.prefix}}assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="{{target.display_name}}" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-center" id="navbarHolder">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
     <ul class="nav navbar-nav">
-      {% macro dropdown(links) %}
+      {% macro dropdown(funnel, appendpages=[]) %}
       <li class="nav-item dropdown">
-        {% set funnelhead = links|first %}
-        <a class="nav-link dropdown-toggle" href="#" id="topnav_{{funnelhead.html}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{funnelhead.name}}</a>
-        <div class="dropdown-menu" aria-labelledby="topnav_{{funnelhead.html}}">
-          {% for link in links %}{% if not loop.first %}
-          <a class="dropdown-item{% if currentpage == link %} active{% endif %}" href="{{link.html}}">{% if link.name_in_top_nav is defined %}{{link.name_in_top_nav}}{% else %}{{link.name}}{% endif %}</a>
-          {% endif %}{% endfor %}
+        {% set links = pages|selectattr('funnel','defined_and_equalto',funnel)|
+                             selectattr('top_nav_level', 'defined')|list +
+                             appendpages %}
+        {% set funneltop = pages|selectattr('funnel','defined_and_equalto',funnel)|first %}
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_{{funneltop.html}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{funneltop.name}}</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_{{funneltop.html}}">
+          {% for link in links %}
+          <a class="dropdown-item {% if link.top_nav_level is undefined %}top-level-1{% else %}top-level-{{link.top_nav_level}}{% endif %}{% if currentpage == link %} active{% endif %}" href="{{link.html}}">{% if link.top_nav_name is defined %}{{link.top_nav_name}}{% else %}{{link.name}}{% endif %}</a>
+          {% endfor %}
         </div>
       </li>
       {% endmacro %}
 
-      {% set learn_links = [{"name":"Learn", "html": "learn.html"}] + pages|selectattr('funnel', 'defined_and_equalto','Learn')|list %}
-      {{ dropdown(learn_links) }}
+      {{ dropdown("Learn") }}
 
-      {% set explore_links = pages|selectattr('funnel', 'defined_and_equalto','Explore')|list + [{"name":"Ledger Explorer", "html": "https://livenet.xrpl.org/"}] %}
-      {{ dropdown(explore_links) }}
+      {{ dropdown("Explore", [{"name":"Ledger Explorer", "html": "https://livenet.xrpl.org/"}]) }}
 
-      {% set build_links = [
-        {"name": "Build", "html": "docs.html"},
-        {"name": "Get Started", "html":"get-started.html"},
-        {"name": "Docs", "html": "docs.html"},
-        {"name": "Tools", "html": "dev-tools.html"},
-        {"name": "Dev Blog", "html": "/blog/"}
-      ] %}
-      {{ dropdown(build_links) }}
+      {% if target.lang == "ja" %}
+      {{ dropdown("Build", [{"name": "ブログ", "html": "/blog/"}]) }}
+      {% else %}
+      {{ dropdown("Build", [{"name": "Dev Blog", "html": "/blog/"}]) }}
+      {% endif %}
 
       <li class="nav-item">
         <a class="nav-link" href="contribute.html">{% trans %}Contribute{% endtrans %}</a>

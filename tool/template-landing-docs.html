@@ -5,9 +5,9 @@
 {% block main %}
   <section class="container-fluid card-grid card-grid-2x2">
     <div class="section-hero card">
-      <h1 class="main-page-header">XRP Ledger Documentation</h1>
-      <p class="blurb">Dive into our documentation and start integrating with the XRP Ledger.</p>
-      <p class="blurb">Browse by category, or skip straight to the <a href="#full-doc-index">full documentation index</a>.</p>
+      <h1 class="main-page-header">{% trans %}XRP Ledger Documentation{% endtrans %}</h1>
+      <p class="blurb">{% trans %}Dive into our documentation and start integrating with the XRP Ledger.{% endtrans %}</p>
+      <p class="blurb">{% trans %}Browse by category, or skip straight to the <a href="#full-doc-index">full documentation index</a>.{% endtrans %}</p>
     </div>
 
     {% set doc_types = [] %}
@@ -15,10 +15,10 @@
     {% for page in pages %}
       {% if page.doc_type is defined and page.doc_type not in doc_types %}
         {% set doc_type_top = pages|selectattr('doc_type', 'defined_and_equalto', page.doc_type)|first %}
-
+        {% set doc_type_name = doc_type_top.name %}
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><a href="{{doc_type_top.html}}">{{doc_type_top.name}}</a></h3>
+              <h3 class="card-title"><a href="{{doc_type_top.html}}">{{doc_type_name}}</a></h3>
             </div><!--/.card-header-->
             <div class="card-body">
               {% if page.blurb is defined %}
@@ -30,7 +30,7 @@
             </div><!--/.card-body-->
             <div class="card-footer">
               <div class="readmore">
-                <a class="btn btn-outline-secondary" href="{{doc_type_top.html}}">View All {{doc_type_top.name}}</a>
+                <a class="btn btn-outline-secondary" href="{{doc_type_top.html}}">{% trans %}View All {{doc_type_name}}{% endtrans %}</a>
               </div>
             </div><!--/.card-footer-->
           </div><!--/.card-->
@@ -42,7 +42,7 @@
   </section>
 
   <section class="container-fluid doc-index">
-    <h2 id="full-doc-index">Full Documentation Index</h2>
+    <h2 id="full-doc-index">{% trans %}Full Documentation Index{% endtrans %}</h2>
     <div class="row">
       <div class="col-md-8">
         {% set parent_page = currentpage %}

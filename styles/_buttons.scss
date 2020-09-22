@@ -57,18 +57,13 @@ p + .readmore {
 .jump-to-top {
   display: none;
   position: fixed;
-  bottom: 15px;
-  right: 30px;
+  bottom: 36px;
+  right: 36px;
   font-weight: 700;
   z-index: 1000;
   color: white;
 
   &::after {
     content: " ↑"
-  }
-
-  @include media-breakpoint-down(sm) {
-    bottom: 40px;
-    right: 40px;
   }
 }

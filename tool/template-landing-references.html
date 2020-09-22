@@ -4,9 +4,9 @@
 
 {% block main %}
   <section class="container-fluid section-hero">
-    <h1 class="main-page-header">References</h1>
+    <h1 class="main-page-header">{{currentpage.name}}</h1>
     <p class="blurb">{{currentpage.blurb}}</p>
-    <p class="blurb">Or, skip ahead to the <a href="#full-reference-index">Full Reference Index</a>.</p>
+    <p class="blurb">{% trans %}Or, skip ahead to the <a href="#full-reference-index">Full Reference Index</a>.{% endtrans %}</p>
   </section>
 
   {% set flag_n = cycler(* range(1,99)) %}
@@ -59,7 +59,7 @@
   </section>
 
   <section class="container-fluid doc-index">
-    <h2 id="full-reference-index">Full Reference Index</h2>
+    <h2 id="full-reference-index">{% trans %}Full Reference Index{% endtrans %}</h2>
     <div class="row">
       <div class="col-md-8">
         {% set parent_page = currentpage %}
