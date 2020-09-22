@@ -1,35 +1,29 @@
 # Contribute Code to the XRP Ledger
 
-The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Some repositories you may want to consider include the following:
+The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the [documentation](docs.html) to jump directly into the related source code, or browse the source code on GitHub:
 
-| Repository                      | Language       | Description               |
-|:--------------------------------|:---------------|:--------------------------|
-| [rippled][]                     | C++            | The core XRP Ledger server. |
-| [ripple-lib][]                  | TypeScript     | JavaScript client library. |
-| [ripple-address-codec][]        | TypeScript     | XRP Ledger address encoding/decoding library. |
-| [ripple-binary-codec][]         | TypeScript     | XRP Ledger binary data encoding/decoding library. |
-| [ripple-keypairs][]             | TypeScript     | XRP Ledger elliptic curve cryptography library. |
-| [rippled-historical-database][] | JavaScript     | Data API server and XRPCharts backend. |
-| [standards-drafts][]            | N/A            | Standards and specifications for XRP Ledger software. |
-| [Xpring4j][]                    | Java           | Java SDK for XRP Ledger, Interledger, and PayID. |
-| [XpringKit][]                   | Swift          | Swift SDK for XRP Ledger, Interledger, and PayID. |
-| [Xpring-JS][]                   | TypeScript     | JavaScript SDK for XRP Ledger, Interledger, and PayID.
-| [XRP-API][]                     | TypeScript     | REST API to the XRP Ledger. |
-| [xrpl-dev-portal][]             | HTML, Markdown | This website.             |
-| [XUMM-App][]                    | TypeScript     | Client application and developer platform for XRP Ledger. (Not freely licensed for all purposes.) |
+| XRP Ledger Source Code |                                                     |
+|:-----------------------|:----------------------------------------------------|
+| Repository             | <https://github.com/ripple/rippled/>                |
+| License                | [Multiple; ISC (permissive)](https://github.com/ripple/rippled/blob/develop/LICENSE) |
+| Programming Language   | C++                                                 |
 
-[rippled]: https://github.com/ripple/rippled
-[ripple-lib]: https://github.com/ripple/ripple-lib
-[ripple-address-codec]: https://github.com/ripple/ripple-address-codec
-[ripple-binary-codec]: https://github.com/ripple/ripple-binary-codec
-[ripple-keypairs]: https://github.com/ripple/ripple-keypairs
-[rippled-historical-database]: https://github.com/ripple/rippled-historical-database
-[standards-drafts]: https://github.com/xrp-community/standards-drafts
-[Xpring4j]: https://github.com/xpring-eng/xpring4j
-[XpringKit]: https://github.com/xpring-eng/xpringkit
-[Xpring-JS]: https://github.com/xpring-eng/xpring-js
-[XRP-API]: https://github.com/xpring-eng/xrp-api
-[xrpl-dev-portal]: https://github.com/ripple/xrpl-dev-portal
-[XUMM-App]: https://github.com/XRPL-Labs/XUMM-App
+If you're not sure where to start, Dev Null Productions provides a detailed and thorough [**Source Code Guide**](https://xrpintel.com/source) that describes the structure and functions of the `rippled` XRP Ledger server implementation.
+
+## Standards Drafts
+
+When developing amendments to the XRP Ledger protocol or interoperability between XRP Ledger applications, it's best to discuss the proposed changes with the community.
+
+The [**Community Standards Drafts**](https://github.com/xrp-community/standards-drafts/) project is a great place to share your plans and collect suggestions on a proposed standard. This feedback can help to balance trade-offs, design for greater efficiency, and address potential security implications before you share your actual source code with others.
+
+
+## Related Repositories
+
+You can find various XRP Ledger-related projects under these and other GitHub organizations:
+
+- [Ripple](https://github.com/ripple/)
+- [Xpring](https://github.com/xpring-eng/)
+- [XRP Community](https://github.com/xrp-community/)
+- [XRPL Labs](https://github.com/XRPL-Labs/)
 
 Be sure to look at each repository's license and contributing guidelines before contributing to that repository.
