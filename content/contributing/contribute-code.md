@@ -10,6 +10,12 @@ The software that powers the XRP Ledger is open-source, so anyone can download, 
 
 If you're not sure where to start, Dev Null Productions provides a detailed and thorough [**Source Code Guide**](https://xrpintel.com/source) that describes the structure and functions of the `rippled` XRP Ledger server implementation.
 
+## Standards Drafts
+
+When developing amendments to the XRP Ledger protocol or interoperability between XRP Ledger applications, it's best to discuss the proposed changes with the community.
+
+The [**Community Standards Drafts**](https://github.com/xrp-community/standards-drafts/) project is a great place to share your plans and collect suggestions on a proposed standard. This feedback can help to balance trade-offs, design for greater efficiency, and address potential security implications before you share your actual source code with others.
+
 
 ## Related Repositories
 
