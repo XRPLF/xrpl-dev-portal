@@ -97,6 +97,10 @@
       line-height: 262%;
       padding: 0 .875rem;
 
+      &.top-level-2 {
+        padding-left: 2rem
+      }
+
       &:hover {
         color: $primary;
       }
