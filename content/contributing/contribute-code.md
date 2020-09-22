@@ -1,6 +1,6 @@
 # Contribute Code to the XRP Ledger
 
-The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Look for "[Source]" links in the [documentation](docs.html) to jump directly into the related source code, or browse the source code on GitHub:
+The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the [documentation](docs.html) to jump directly into the related source code, or browse the source code on GitHub:
 
 | XRP Ledger Source Code |                                                     |
 |:-----------------------|:----------------------------------------------------|
