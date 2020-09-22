@@ -173,11 +173,11 @@
           </div>
         </section>
         <section class="min-vh100 mb-40 section2 clearfix">
-          <h4>{% trans %}C02 Emissions from Airline Flights{% endtrans %}</h4>
+          <h4>{% trans %}CO<sub>2</sub> Emissions from Airline Flights{% endtrans %}</h4>
 
           <p class="grey-400 text-small my-4">{% trans %}Comparing <span class="slider-amt"></span> Million Transactions in 2019{% endtrans %}</p>
 
-          <p class="calculator-section-description">{% trans %}A 12-hour flight from London to Hong Kong releases 3 tons of Carbon dioxide (C02). Discover how much C02 different forms of currency release in comparison to emissions from airline flights.{% endtrans %}</p>
+          <p class="calculator-section-description">{% trans %}A 12-hour flight from London to Hong Kong releases 3 tons of carbon dioxide (CO<sub>2</sub>). Discover how much CO<sub>2</sub> different forms of currency release in comparison to emissions from airline flights.{% endtrans %}</p>
 
           <div class="mt-10" id="co2Animation"></div>
 
@@ -185,32 +185,32 @@
             <li class="d-output d-crypto active" data-comp="tons" data-type="btc">
               <p class="h6 mt-3 mb-1">Bitcoin</p>
               <h5 class="h4 normal mb-0" id="tons-btc"></h5>
-              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO<sub>2</sub>{% endtrans %}</p>
             </li>
             <li class="d-output d-crypto active" data-comp="tons" data-type="eth">
               <p class="h6 mt-3 mb-1">Ethereum</p>
               <h5 class="h4 normal mb-0" id="tons-eth"></h5>
-              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO<sub>2</sub>{% endtrans %}</p>
             </li>
             <li class="d-output d-cash" data-comp="tons" data-type="pap">
               <p class="h6 mt-3 mb-1">Cash</p>
               <h5 class="h4 normal mb-0" id="tons-pap"></h5>
-              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO<sub>2</sub>{% endtrans %}</p>
             </li>
             <li class="d-output d-crypto d-credit d-cash active" data-comp="tons" data-type="xrp">
               <p class="h6 mt-3 mb-1">XRP</p>
               <h5 class="h4 normal mb-0" id="tons-xrp"></h5>
-              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO<sub>2</sub>{% endtrans %}</p>
             </li>
             <li class="d-output d-credit" data-comp="tons" data-type="vsa">
               <p class="h6 mt-3 mb-1">Visa</p>
               <h5 class="h4 normal mb-0" id="tons-vsa"></h5>
-              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO<sub>2</sub>{% endtrans %}</p>
             </li>
             <li class="d-output d-credit" data-comp="tons" data-type="mst">
               <p class="h6 mt-3 mb-1">Mastercard</p>
               <h5 class="h4 normal mb-0" id="tons-mst"></h5>
-              <p class="text-small black-90">{% trans %}metric tons of CO2{% endtrans %}</p>
+              <p class="text-small black-90">{% trans %}metric tons of CO<sub>2</sub>{% endtrans %}</p>
             </li>
 
           </ul>
@@ -266,7 +266,7 @@
     <section class="row last-section">
       <div class="col-sm-7 col-sm-offset-5">
         <h4>{% trans %}Breaking Down Individual Transactions{% endtrans %}</h4>
-        <p>{% trans %}Looking at individual transactions below, compare how a single transaction across each form of currency equates to KWh, gallons of gas and C02 emissions.{% endtrans %}</p>
+        <p>{% trans %}Looking at individual transactions below, compare how a single transaction across each form of currency equates to KWh, gallons of gas and CO<sub>2</sub> emissions.{% endtrans %}</p>
       </div>
       <div class="col-sm-12 mt-14 overflow-xs">
         <table id="calculator-table">
@@ -275,7 +275,7 @@
               <td></td>
               <td class="bold text-right">{% trans %}Kilowatt Hour{% endtrans %}</td>
               <td class="bold text-right">{% trans %}Gallons of Gas{% endtrans %}</td>
-              <td class="bold text-right">{% trans %}CO2 Emissions*{% endtrans %}</td>
+              <td class="bold text-right">{% trans %}CO<sub>2</sub> Emissions*{% endtrans %}</td>
             </tr>
           </thead>
           <tbody>
@@ -310,14 +310,14 @@
               <td class="fs-6 text-right">5.0<sup>-13</sup><span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
-              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/paper-money@2x.png"></div>Paper</td>
+              <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/paper-money@2x.png"></div>{% trans %}Paper Currency{% endtrans %}</td>
               <td class="fs-6 text-right">0.044<span class="dblue">0</span><span class="ratio"> KWh/tx</span></td>
               <td class="fs-6 text-right">0.0035<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">2.32<sup>-11</sup><span class="ratio"> Mt/tx</span></td>
             </tr>
           </tbody>
         </table>
-        <p class="text-smallest mt-10">*Calculations in million tonne (Mt)</p>
+        <p class="text-smallest mt-10">{% trans %}*Calculations in million tonne (Mt){% endtrans %}</p>
       </div>
     </section>
   </div>
