@@ -24,8 +24,8 @@
 
     <section class="row mb-49">
       <h6 class="section-marker">{% trans %}Sustainability{% endtrans %}</h6>
-      <div class="col-sm-4 d-sm-none d-md-block">
-        <img class="mw-100" src="./img/green/green-graphic.png" alt="{% trans %}Sustainability icon{% endtrans %}">
+      <div class="col-sm-4 d-block text-center">
+        <img class="mw-100 green-graphic" src="./img/green/green-graphic.png" alt="{% trans %}Sustainability icon{% endtrans %}">
       </div>
       <div class="col-sm-8">
         <h3 class="h1 mb-4 mt-4">{% trans %}How Green Is Your Currency?{% endtrans %}</h3>
@@ -65,6 +65,7 @@
                 <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-credit">{% trans %}Credit Cards{% endtrans %}</a></li>
                 <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-cash">{% trans %}Cash{% endtrans %}</a></li>
               </ul>
+              <p class="grey-400 mb-0">Number of Transactions</p>
               <div class="slidecontainer mb-10">
                 <input type="range" min="20" max="100" value="60" class="slider w-100" id="myRange" step="20">
                 <ul class="d-flex p-0 ls-none justify-content-between position-relative mr-neg-8 ml-neg-8 mt-1" style="z-index: -1;">
@@ -268,52 +269,52 @@
         <h4>{% trans %}Breaking Down Individual Transactions{% endtrans %}</h4>
         <p>{% trans %}Looking at individual transactions below, compare how a single transaction across each form of currency equates to KWh, gallons of gas and C02 emissions.{% endtrans %}</p>
       </div>
-      <div class="col-sm-12 mt-14 overflow-xs">
+      <div class="col-sm-12 mt-14 overflow-x-xs">
         <table id="calculator-table">
           <thead>
             <tr>
               <td></td>
               <td class="bold text-right">{% trans %}Kilowatt Hour{% endtrans %}</td>
+              <td class="bold text-right">{% trans %}CO<sub>2</sub> Emissions*{% endtrans %}</td>
               <td class="bold text-right">{% trans %}Gallons of Gas{% endtrans %}</td>
-              <td class="bold text-right">{% trans %}CO2 Emissions*{% endtrans %}</td>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="assets/img/icons/bitcoin@2x.png"></div>Bitcoin</td>
               <td class="fs-6 text-right">487.3688<span class="ratio"> KWh/tx</span></td>
+              <td class="fs-6 text-right">4.1<sup>-7</sup><span class="ratio"> Mt/tx</span></td>
               <td class="fs-6 text-right">38.7744<span class="ratio"> gal/tx</span></td>
-              <td class="fs-6 text-right">0.4103<span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="assets/img/icons/ethereum@2x.png"></div>Ethereum</td>
               <td class="fs-6 text-right">42.8633<span class="ratio"> KWh/tx</span></td>
+              <td class="fs-6 text-right">2.73<sup>-8</sup><span class="ratio"> Mt/tx</span></td>
               <td class="fs-6 text-right">1.1311<span class="ratio"> gal/tx</span></td>
-              <td class="fs-6 text-right">0.0273<span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="assets/img/icons/xrp@2x.png"></div>XRP</td>
               <td class="fs-6 text-right">0.0079<span class="ratio"> KWh/tx</span></td>
-              <td class="fs-6 text-right">0.0006<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">3.7<sup>-12</sup><span class="ratio"> Mt/tx</span></td>
+              <td class="fs-6 text-right">0.0006<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/visa@2x.png"></div>Visa</td>
               <td class="fs-6 text-right">0.0008<span class="ratio"> KWh/tx</span></td>
-              <td class="fs-6 text-right">0.00006<span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">5.0<sup>-13</sup><span class="ratio"> Mt/tx</span></td>
+              <td class="fs-6 text-right">0.00006<span class="ratio"> gal/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/mastercard@2x.png"></div>Mastercard</td>
               <td class="fs-6 text-right">0.0006<span class="ratio"> KWh/tx</span></td>
-              <td class="fs-6 text-right">0.00005<span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">5.0<sup>-13</sup><span class="ratio"> Mt/tx</span></td>
+              <td class="fs-6 text-right">0.00005<span class="ratio"> gal/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/paper-money@2x.png"></div>Paper</td>
               <td class="fs-6 text-right">0.044<span class="dblue">0</span><span class="ratio"> KWh/tx</span></td>
-              <td class="fs-6 text-right">0.0035<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">2.32<sup>-11</sup><span class="ratio"> Mt/tx</span></td>
+              <td class="fs-6 text-right">0.0035<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
             </tr>
           </tbody>
         </table>

@@ -148,6 +148,13 @@
   }
 }
 
+.green-graphic {
+  @include media-breakpoint-down(xs) {
+    width: 184px;
+    margin-bottom: 32px;
+  }
+}
+
 
 .page-calculator {
   .calculator-section-description {
@@ -190,6 +197,10 @@
     animation: fadeIn 1s ease-in-out;
     @include media-breakpoint-down(md) {
       display: inline-block;
+      margin-bottom: 32px;
+    }
+    @include media-breakpoint-down(xs) {
+      display: block
     }
   }
 
@@ -200,7 +211,7 @@
       max-width: 100%;
     }
     .viz-wrapper {
-      margin-bottom: 2.5rem;
+    //   margin-bottom: 2.5rem;
       margin-right: 1rem;
     }
     .d-output[data-comp="kWh"].active {
@@ -230,6 +241,7 @@
       top: 15px;
       right: 15px;
       z-index: 9999999;
+      background: $black;
     }
     #calculator-mobile-toggle.hide {
       display: none;
