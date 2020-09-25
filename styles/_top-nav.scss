@@ -1,6 +1,6 @@
 /* Top navigation ----------------------------------------------------------- */
 .top-nav {
-  margin-top: 20px;
+  margin: 20px 4px 0 4px;
 
   // Logo
   .navbar-brand {
@@ -96,6 +96,10 @@
     .dropdown-item {
       line-height: 262%;
       padding: 0 .875rem;
+
+      &.top-level-2 {
+        padding-left: 2rem
+      }
 
       &:hover {
         color: $primary;

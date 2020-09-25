@@ -170,10 +170,21 @@ pages:
         category: Uses
         template: template-learn-overview.html
         html: overview.html
-        name_in_top_nav: Overview
+        top_nav_level: 1
+        top_nav_name: Overview
         sidebar: disabled
         targets:
             - en
+
+    -   name: 学ぶ
+        funnel: Learn
+        category: Uses
+        template: template-learn-overview.html
+        html: overview.html
+        top_nav_level: 1
+        top_nav_name: オーバービュー
+        sidebar: disabled
+        targets:
             - ja
 
     -   name: Uses
@@ -181,6 +192,7 @@ pages:
         category: Uses
         template: template-learn-uses.html
         html: uses.html
+        top_nav_level: 1
         sidebar: disabled
         targets:
             - en
@@ -191,6 +203,7 @@ pages:
         category: History
         template: template-learn-history.html
         html: history.html
+        top_nav_level: 1
         sidebar: disabled
         targets:
             - en
@@ -201,6 +214,7 @@ pages:
         category: Impact
         template: template-learn-impact.html
         html: impact.html
+        top_nav_level: 1
         sidebar: disabled
         targets:
             - en
@@ -211,6 +225,7 @@ pages:
         category: Carbon Calculator
         template: template-calculator.html
         html: carbon-calculator.html
+        top_nav_level: 1
         sidebar: disabled
         targets:
             - en
@@ -224,24 +239,21 @@ pages:
         funnel: Explore
         targets:
             - en
-            - ja
 
-    # News page isn't ready at the moment
-    # -   name: News
-    #     funnel: Explore
-    #     category: News
-    #     template: template-explore-news.html
-    #     html: news.html
-    #     sidebar: disabled
-    #     targets:
-    #         - en
-    #         - ja
+    -   name: 探る
+        html: explore.html
+        template: template-redirect.html
+        redirect_url: businesses.html
+        funnel: Explore
+        targets:
+            - ja
 
     -   name: Wallets
         funnel: Explore
         category: Wallets
         template: template-explore-wallets.html
         html: wallets.html
+        top_nav_level: 1
         sidebar: disabled
         targets:
             - en
@@ -252,6 +264,7 @@ pages:
         category: Exchanges
         template: template-explore-exchanges.html
         html: exchanges.html
+        top_nav_level: 1
         sidebar: disabled
         targets:
             - en
@@ -262,6 +275,7 @@ pages:
         category: Businesses
         template: template-explore-businesses.html
         html: businesses.html
+        top_nav_level: 1
         sidebar: disabled
         targets:
             - en
@@ -273,13 +287,17 @@ pages:
         template: template-landing-docs.html
         html: docs.html
         sidebar: disabled
+        top_nav_level: 1
+        top_nav_name: Docs
         targets:
             - en
 
-    -   name: ドキュメント
+    -   name: 作る
         funnel: Build
         template: template-landing-docs.html
         html: docs.html
+        top_nav_level: 1
+        top_nav_name: ドキュメント
         sidebar: disabled
         targets:
             - ja
@@ -290,6 +308,7 @@ pages:
         funnel: Build
         doc_type: Concepts
         html: concepts.html
+        top_nav_level: 2
         template: template-landing-children.html
         blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
         targets:
@@ -299,6 +318,7 @@ pages:
         funnel: Build
         doc_type: Concepts
         html: concepts.html
+        top_nav_level: 2
         template: template-landing-children.html
         blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
         targets:
@@ -1434,6 +1454,7 @@ pages:
         html: tutorials.html
         funnel: Build
         doc_type: Tutorials
+        top_nav_level: 2
         template: template-landing-children.html
         blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
         targets:
@@ -1443,6 +1464,7 @@ pages:
         html: tutorials.html
         funnel: Build
         doc_type: Tutorials
+        top_nav_level: 2
         template: template-landing-children.html
         blurb: XRP Ledgerで一般的なタスクを実行するためのステップバイステップのガイダンスを紹介します。
         targets:
@@ -3025,6 +3047,7 @@ pages:
         doc_type: References
         template: template-landing-references.html
         html: references.html
+        top_nav_level: 2
         sidebar: disabled
         blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
@@ -3036,6 +3059,7 @@ pages:
         doc_type: References
         template: template-landing-references.html
         html: references.html
+        top_nav_level: 2
         sidebar: disabled
         blurb: XRP Ledgerへのさまざまなインターフェイスの包括的なリファレンスです。
         targets:
@@ -6300,6 +6324,7 @@ pages:
         html: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
+        top_nav_level: 1
         targets:
             - en
 
@@ -6307,6 +6332,7 @@ pages:
         html: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
+        top_nav_level: 1
         targets:
             - ja
 
@@ -6314,8 +6340,6 @@ pages:
         html: dev-tools-dev-tools.html
         template: template-redirect.html
         redirect_url: dev-tools.html
-        funnel: Build
-        doc_type: Dev Tools
         targets:
             - en
             - ja
@@ -6463,6 +6487,7 @@ known_broken_links:
     - https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/
     - https://www.coinbase.com/
     - https://www.forte.io/
+    - https://www.kraken.com/
 
 # Style Checker Config ------------------------------------------------------ #
 
