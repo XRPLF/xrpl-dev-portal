@@ -69,6 +69,16 @@
 
 
 {% block endbody %}
+<script type="text/javascript">
+  $( '.card-b' )
+  .mouseover( function(e){
+    $( '.card-b' ).addClass( 'not-hover' );
+    $( this ).removeClass( 'not-hover' );
+  })
+  .mouseout( function(e){
+    $( '.card-b' ).removeClass( 'not-hover' );
+  });
+</script>
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
 </script>

@@ -24,8 +24,8 @@
 
     <section class="row mb-49">
       <h6 class="section-marker">{% trans %}Sustainability{% endtrans %}</h6>
-      <div class="col-sm-4 d-sm-none d-md-block">
-        <img class="mw-100" src="./img/green/green-graphic.png" alt="{% trans %}Sustainability icon{% endtrans %}">
+      <div class="col-sm-4 d-block text-center">
+        <img class="mw-100 green-graphic" src="./img/green/green-graphic.png" alt="{% trans %}Sustainability icon{% endtrans %}">
       </div>
       <div class="col-sm-8">
         <h3 class="h1 mb-4 mt-4">{% trans %}How Green Is Your Currency?{% endtrans %}</h3>
@@ -48,7 +48,7 @@
   <div class="container" id="calculator">
     <div class="col-sm-5 mt-20 mb-30 offset-sm-4">
       <h3 class="mb-4">{% trans %}How Does XRP Compare to Other Currencies?{% endtrans %}</h3>
-      <a href="#" class="text-green arrow-link bold">{% trans %}Learn more about the methodology{% endtrans %}</a>
+      <a href="./assets/pdf/xrpl-sustainability-methodology-2020.pdf" target="_blank" class="text-green arrow-link bold">{% trans %}Learn more about the methodology{% endtrans %}</a>
     </div>
   </div>
 
@@ -65,14 +65,15 @@
                 <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-credit">{% trans %}Credit Cards{% endtrans %}</a></li>
                 <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-cash">{% trans %}Cash{% endtrans %}</a></li>
               </ul>
+              <p class="grey-500 mb-0 mt-4 text-smaller">Number of Transactions:</p>
               <div class="slidecontainer mb-10">
                 <input type="range" min="20" max="100" value="60" class="slider w-100" id="myRange" step="20">
                 <ul class="d-flex p-0 ls-none justify-content-between position-relative mr-neg-8 ml-neg-8 mt-1" style="z-index: -1;">
-                  <li class="dash text-center text-smaller grey-50">20M</li>
-                  <li class="dash text-center text-smaller grey-50">40M</li>
-                  <li class="dash text-center text-smaller grey-50">60M</li>
-                  <li class="dash text-center text-smaller grey-50">80M</li>
-                  <li class="dash text-center text-smaller grey-50">100M</li>
+                  <li class="dash text-center text-smaller grey-500" data-num="20">20M</li>
+                  <li class="dash text-center text-smaller grey-500" data-num="40">40M</li>
+                  <li class="dash text-center text-smaller grey-500 active" data-num="60">60M</li>
+                  <li class="dash text-center text-smaller grey-500" data-num="80">80M</li>
+                  <li class="dash text-center text-smaller grey-500" data-num="100">100M</li>
                 </ul>
               </div>
               <div class="d-flex mb-3 ml-3">
@@ -82,7 +83,7 @@
                 </a>
               </div>
           </div>
-          <a href="#" class="text-white arrow-link bold mt-4 d-block">{% trans %}Learn more about the methodology{% endtrans %}</a>
+          <a href="./assets/pdf/xrpl-sustainability-methodology-2020.pdf" target="_blank" class="text-white arrow-link bold mt-4 d-block">{% trans %}Learn more about the methodology{% endtrans %}</a>
         </div>
       </div>
 
@@ -126,7 +127,7 @@
                   <div class="dot" id="kWh-pap-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="assets/img/icons/bw-cash.png" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-cash.png" class="mw-100 mt-3 mb-2">
                   <p class="h6 mt-2 mb-1">{% trans %}Cash{% endtrans %}</p>
                   <h5 class="h4 normal mb-0" id="kWh-pap"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -150,7 +151,7 @@
                   <div class="dot" id="kWh-vsa-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="assets/img/icons/bw-visa.png" alt="{% trans %}Visa{% endtrans %}" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-visa.png" alt="{% trans %}Visa{% endtrans %}" class="mw-100 mb-2" style="margin-top: 1.85rem;">
                   <p class="h6 mt-2 mb-1">Visa</p>
                   <h5 class="h4 normal mb-0" id="kWh-vsa"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -162,7 +163,7 @@
                   <div class="dot" id="kWh-mst-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="assets/img/icons/bw-mastercard.png" alt="{% trans %}Mastercard{% endtrans %}" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-mastercard.png" alt="{% trans %}Mastercard{% endtrans %}" class="mw-100 mb-1" style="margin-top: 1.65rem;">
                   <p class="h6 mt-2 mb-1">{% trans %}Mastercard{% endtrans %}</p>
                   <h5 class="h4 normal mb-0" id="kWh-mst"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -215,7 +216,7 @@
 
           </ul>
         </section>
-        <section class="min-vh100 mb-40 section3 clearfix">
+        <section class="min-vh100 section3 clearfix">
           <h4>{% trans %}Gas Consumption by the Gallon{% endtrans %}</h4>
 
           <p class="grey-400 text-small my-4">{% trans %}Comparing <span class="slider-amt"></span> Million Transactions in 2019{% endtrans %}</p>
@@ -268,52 +269,52 @@
         <h4>{% trans %}Breaking Down Individual Transactions{% endtrans %}</h4>
         <p>{% trans %}Looking at individual transactions below, compare how a single transaction across each form of currency equates to KWh, gallons of gas and CO<sub>2</sub> emissions.{% endtrans %}</p>
       </div>
-      <div class="col-sm-12 mt-14 overflow-xs">
+      <div class="col-sm-12 mt-14 overflow-x-xs">
         <table id="calculator-table">
           <thead>
             <tr>
               <td></td>
               <td class="bold text-right">{% trans %}Kilowatt Hour{% endtrans %}</td>
-              <td class="bold text-right">{% trans %}Gallons of Gas{% endtrans %}</td>
               <td class="bold text-right">{% trans %}CO<sub>2</sub> Emissions*{% endtrans %}</td>
+              <td class="bold text-right">{% trans %}Gallons of Gas{% endtrans %}</td>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="assets/img/icons/bitcoin@2x.png"></div>Bitcoin</td>
               <td class="fs-6 text-right">487.3688<span class="ratio"> KWh/tx</span></td>
+              <td class="fs-6 text-right">4.1<sup>-7</sup><span class="ratio"> Mt/tx</span></td>
               <td class="fs-6 text-right">38.7744<span class="ratio"> gal/tx</span></td>
-              <td class="fs-6 text-right">0.4103<span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="assets/img/icons/ethereum@2x.png"></div>Ethereum</td>
               <td class="fs-6 text-right">42.8633<span class="ratio"> KWh/tx</span></td>
+              <td class="fs-6 text-right">2.73<sup>-8</sup><span class="ratio"> Mt/tx</span></td>
               <td class="fs-6 text-right">1.1311<span class="ratio"> gal/tx</span></td>
-              <td class="fs-6 text-right">0.0273<span class="ratio"> Mt/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="h36" src="assets/img/icons/xrp@2x.png"></div>XRP</td>
               <td class="fs-6 text-right">0.0079<span class="ratio"> KWh/tx</span></td>
-              <td class="fs-6 text-right">0.0006<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">3.7<sup>-12</sup><span class="ratio"> Mt/tx</span></td>
+              <td class="fs-6 text-right">0.0006<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/visa@2x.png"></div>Visa</td>
               <td class="fs-6 text-right">0.0008<span class="ratio"> KWh/tx</span></td>
-              <td class="fs-6 text-right">0.00006<span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">5.0<sup>-13</sup><span class="ratio"> Mt/tx</span></td>
+              <td class="fs-6 text-right">0.00006<span class="ratio"> gal/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/mastercard@2x.png"></div>Mastercard</td>
               <td class="fs-6 text-right">0.0006<span class="ratio"> KWh/tx</span></td>
-              <td class="fs-6 text-right">0.00005<span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">5.0<sup>-13</sup><span class="ratio"> Mt/tx</span></td>
+              <td class="fs-6 text-right">0.00005<span class="ratio"> gal/tx</span></td>
             </tr>
             <tr>
               <td class="fs-5-5 bold"><div class="w48 mr-3 text-center d-inline-block"><img class="w40" src="assets/img/icons/paper-money@2x.png"></div>{% trans %}Paper Currency{% endtrans %}</td>
               <td class="fs-6 text-right">0.044<span class="dblue">0</span><span class="ratio"> KWh/tx</span></td>
-              <td class="fs-6 text-right">0.0035<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
               <td class="fs-6 text-right">2.32<sup>-11</sup><span class="ratio"> Mt/tx</span></td>
+              <td class="fs-6 text-right">0.0035<span class="dblue">0</span><span class="ratio"> gal/tx</span></td>
             </tr>
           </tbody>
         </table>

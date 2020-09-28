@@ -1,12 +1,12 @@
 let arr = {
   'btc': {
     'kWh': 487.368757765725,
-    'tons': 0.41034833,
+    'tons': 0.0000004103449,
     'gas': 38.7744
   },
   'eth': {
     'kWh': 42.8633,
-    'tons': 0.02734399,
+    'tons': 0.0000000273454,
     'gas': 2.38677
   },
   'pap': {
@@ -57,14 +57,15 @@ String.prototype.commarize = commarize
 let slider = document.getElementById( 'myRange' ),
   txns = document.querySelectorAll( '.slider-amt' ),
   dataTypes = document.querySelectorAll( '.d-output' ),
+  dataTxns = document.querySelectorAll( '.dash' ),
   dataViz = document.querySelectorAll( '.viz-output' );
 
 // Update the current slider value (each time you drag the slider handle)
-function doCalculations( val ){
+function doCalculations(val){
 
-  [].slice.call( dataTypes ).forEach( function( dataType ){
+  [].slice.call(dataTypes).forEach( function( dataType ){
 
-    if ( dataType.classList.contains( 'active' ) ){
+    if (dataType.classList.contains('active')){
 
       let data_type = dataType.getAttribute( 'data-type' ),
         data_comp = dataType.getAttribute( 'data-comp' ),
@@ -73,28 +74,37 @@ function doCalculations( val ){
         // comp = the number of kWh Portugal used in 2019
         kwhComp = ( total / 50340000000 ).toFixed( 2 );
 
-      if ( data_comp === 'tons' ) {
-        total = total * 1000000;
+      if (data_comp === 'tons') {
+        total = parseInt(total * 1000000);
       }
 
       num.innerHTML = total.commarize();
       num.style.transition = "all .2s ease-in-out";
 
-      if ( data_comp === 'kWh' && kwhComp > .02 ){
-        let dot = document.getElementById( data_comp + '-' + data_type + '-dot' );
+      if (data_comp === 'kWh' && kwhComp > .02){
+        let dot = document.getElementById(data_comp + '-' + data_type + '-dot');
         dot.style.transition = "all .2s ease-in-out";
         dot.style.transform = "scale(" + kwhComp * 100 + ")";
         dot.style.webkitTransform = "scale(" + kwhComp * 100 + ")";
         dot.style.msTransform = "scale(" + kwhComp * 100 + ")";
       }
-
     }
   })
 }
 
+function highlightNum(val){
+  [].slice.call(dataTxns).forEach(function(dataTxn){
+    dataTxn.classList.remove('active');
+    if (dataTxn.dataset.num === val){
+      dataTxn.classList.add('active')
+    }
+  });
+  // $('#myRange .dash').removeClass('active');
+  // $('#myRange .dash[data-num="' + val + '"]').addClass('active');
+}
 
 function cryptoSelected(){
-  gasCryptoAnimation( );
+  gasCryptoAnimation();
   co2CryptoAnimation();
 }
 
@@ -110,69 +120,70 @@ function creditSelected(){
 
 function changeDataType( type ){
 
-  [].slice.call( dataTypes ).forEach( function( dataType ){
-    if ( dataType.classList.contains( type ) ){
+  [].slice.call(dataTypes).forEach( function(dataType){
+    if (dataType.classList.contains(type)){
       let dType = type.substring(2);
-      dataType.classList.add( 'active' );
+      dataType.classList.add('active');
       document.getElementById('gasAnimation').innerHTML = '';
       document.getElementById('co2Animation').innerHTML = '';
 
-      if ( dType === 'cash' ){
+      if (dType === 'cash'){
         cashSelected();
-      } else if ( dType === 'credit' ){
+      } else if (dType === 'credit'){
         creditSelected()
       } else {
         cryptoSelected();
       }
     } else {
-      dataType.classList.remove( 'active' );
+      dataType.classList.remove('active');
     }
   });
 
-  doCalculations( slider.value );
+  doCalculations(slider.value);
 
 }
 
 $('.tab-link').on('click', function(e){
-  $( '#data-selector li' ).removeClass( 'active' );
-  $( this ).parent( 'li' ).addClass( 'active' );
+  $('#data-selector li').removeClass('active');
+  $(this).parent('li').addClass('active');
 
-  let type = $( this ).data("currencytype");
+  let type = $(this).data("currencytype");
 
-  changeDataType( type );
+  changeDataType(type);
   e.preventDefault();
 })
 
-$( document ).ready( function(){
-   [].slice.call( txns ).forEach( function( txn ){
+$(document).ready(function(){
+   [].slice.call(txns).forEach(function(txn){
     txn.innerHTML = slider.value;
   })
 
   slider.oninput = function() {
     var val = this.value;
-    [].slice.call( txns ).forEach( function( txn ){
+    [].slice.call(txns).forEach(function(txn){
       txn.innerHTML = val;
-    })
-    doCalculations( val );
+    });
+    highlightNum(val);
+    doCalculations(val);
   }
 
-  doCalculations( slider.value );
+  doCalculations(slider.value);
   cryptoSelected();
 
   $(window).on('load resize scroll', function() {
-    if ( $(window).width() < 993 ) {
+    if ($(window).width() < 993) {
       let distance = $('#calculator-outputs').offset().top,
         $window = $(window).scrollTop(),
         data_toggle = $('#calculator-mobile-toggle'),
         inputs = $('#calculator-inputs'),
-        inputs_offset = $( '#calculator-inputs-offset');
+        inputs_offset = $('#calculator-inputs-offset');
 
-      if ( distance < $window ){
-        data_toggle.addClass( 'show' ).removeClass( 'hide' );
+      if (distance < $window){
+        data_toggle.addClass('show').removeClass('hide');
       } else {
-        inputs.removeClass( 'sticky' );
-        data_toggle.addClass( 'hide' ).removeClass( 'show' );
-        inputs_offset.removeClass( 'offset' );
+        inputs.removeClass('sticky');
+        data_toggle.addClass('hide').removeClass('show');
+        inputs_offset.removeClass('offset' );
         $('#data-toggle').text('Change Inputs');
       }
     }
@@ -180,21 +191,29 @@ $( document ).ready( function(){
 
   $('#calculator-mobile-toggle').on( 'click', function(e){
     e.preventDefault();
-    console.log( "working");
 
     let inputs = $('#calculator-inputs'),
-      inputs_offset = $( '#calculator-inputs-offset');
+      inputs_offset = $('#calculator-inputs-offset');
 
-    $( '#calculator-inputs' ).toggleClass( 'show' );
+    $('#calculator-inputs' ).toggleClass('show');
 
-    if ( inputs.hasClass( 'sticky' ) ) {
-      inputs.removeClass( 'sticky' );
-      inputs_offset.removeClass( 'offset' );
-      $( this ).text('Change Inputs');
+    if (inputs.hasClass('sticky')) {
+      inputs.removeClass('sticky');
+      inputs_offset.removeClass('offset');
+      $(this).text('Change Inputs');
     } else {
-      inputs.addClass( 'sticky show' );
-      inputs_offset.addClass( 'offset' );
-      $( this ).text('Hide Inputs');
+      inputs.addClass('sticky show');
+      inputs_offset.addClass('offset');
+      $(this).text('Hide Inputs');
     }
-  })
+  });
+
+  $(document).on('click', 'a[href^="#"]', function(event) {
+    event.preventDefault();
+
+    $('html, body').animate({
+      scrollTop: $($.attr(this, 'href')).offset().top - 80
+    }, 800);
+  });
+  
 });

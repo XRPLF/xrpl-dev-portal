@@ -155,6 +155,10 @@
   .overflow-xs {
     overflow: scroll;
   }
+  .overflow-x-xs {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
 }
 @include media-breakpoint-up(md) {
   .position-sm-absolute {
@@ -172,3 +176,7 @@
 .grey-400 {
   color: $gray-400
 }
+.grey-500 {
+  color: $gray-500
+}
+
