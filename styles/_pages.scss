@@ -222,11 +222,11 @@
       margin-right: 0;
       border-top: 1px solid $black;
       border-bottom: 1px solid $black;
-    }
+    }    
   }
   @include media-breakpoint-down(md) {
     #calculator-inputs-offset.offset {
-      height: 248px;
+      height: 404px;
       width: 100%;
     }
     #calculator-inputs-offset {
@@ -261,6 +261,12 @@
     }
     #calculator-inputs.sticky.show {
       display: block;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    #calculator-inputs-offset.offset {
+      height: 486px;
+      width: 100%;
     }
   }
   @include media-breakpoint-up(xl){
@@ -311,10 +317,21 @@
   #kWh-pap-dot {
   }
 
+  .dash {
+    &.active {
+      font-weight: bold;
+      color: $primary;
+    }
+  }
+
   .dash:before {
-    content: url(../img/icons/dash-line.png);
+    // content: url(../img/icons/dash-line.png);
+    content: '|';
+    font-size: 7px;
+    font-weight: bold;
+    color: $gray-500;
     position: absolute;
-    top: -12px;
+    top: -10px;
     margin-left: 13px;
   }
 

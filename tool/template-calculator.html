@@ -65,15 +65,15 @@
                 <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-credit">{% trans %}Credit Cards{% endtrans %}</a></li>
                 <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-cash">{% trans %}Cash{% endtrans %}</a></li>
               </ul>
-              <p class="grey-400 mb-0">Number of Transactions</p>
+              <p class="grey-500 mb-0 mt-4 text-smaller">Number of Transactions:</p>
               <div class="slidecontainer mb-10">
                 <input type="range" min="20" max="100" value="60" class="slider w-100" id="myRange" step="20">
                 <ul class="d-flex p-0 ls-none justify-content-between position-relative mr-neg-8 ml-neg-8 mt-1" style="z-index: -1;">
-                  <li class="dash text-center text-smaller grey-50">20M</li>
-                  <li class="dash text-center text-smaller grey-50">40M</li>
-                  <li class="dash text-center text-smaller grey-50">60M</li>
-                  <li class="dash text-center text-smaller grey-50">80M</li>
-                  <li class="dash text-center text-smaller grey-50">100M</li>
+                  <li class="dash text-center text-smaller grey-500" data-num="20">20M</li>
+                  <li class="dash text-center text-smaller grey-500" data-num="40">40M</li>
+                  <li class="dash text-center text-smaller grey-500 active" data-num="60">60M</li>
+                  <li class="dash text-center text-smaller grey-500" data-num="80">80M</li>
+                  <li class="dash text-center text-smaller grey-500" data-num="100">100M</li>
                 </ul>
               </div>
               <div class="d-flex mb-3 ml-3">
@@ -127,7 +127,7 @@
                   <div class="dot" id="kWh-pap-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="assets/img/icons/bw-cash.png" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-cash.png" class="mw-100 mt-3 mb-2">
                   <p class="h6 mt-2 mb-1">{% trans %}Cash{% endtrans %}</p>
                   <h5 class="h4 normal mb-0" id="kWh-pap"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -151,7 +151,7 @@
                   <div class="dot" id="kWh-vsa-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="assets/img/icons/bw-visa.png" alt="{% trans %}Visa{% endtrans %}" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-visa.png" alt="{% trans %}Visa{% endtrans %}" class="mw-100 mb-2" style="margin-top: 1.85rem;">
                   <p class="h6 mt-2 mb-1">Visa</p>
                   <h5 class="h4 normal mb-0" id="kWh-vsa"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -163,7 +163,7 @@
                   <div class="dot" id="kWh-mst-dot"></div>
                 </div>
                 <div class="num-wrapper">
-                  <img src="assets/img/icons/bw-mastercard.png" alt="{% trans %}Mastercard{% endtrans %}" class="mw-100 mt-3">
+                  <img src="assets/img/icons/bw-mastercard.png" alt="{% trans %}Mastercard{% endtrans %}" class="mw-100 mb-1" style="margin-top: 1.65rem;">
                   <p class="h6 mt-2 mb-1">{% trans %}Mastercard{% endtrans %}</p>
                   <h5 class="h4 normal mb-0" id="kWh-mst"></h5>
                   <p class="text-small black-90">{% trans %}KWh{% endtrans %}</p>
@@ -216,7 +216,7 @@
 
           </ul>
         </section>
-        <section class="min-vh100 mb-40 section3 clearfix">
+        <section class="min-vh100 section3 clearfix">
           <h4>{% trans %}Gas Consumption by the Gallon{% endtrans %}</h4>
 
           <p class="grey-400 text-small my-4">{% trans %}Comparing <span class="slider-amt"></span> Million Transactions in 2019{% endtrans %}</p>
