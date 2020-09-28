@@ -206,5 +206,14 @@ $(document).ready(function(){
       inputs_offset.addClass('offset');
       $(this).text('Hide Inputs');
     }
-  })
+  });
+
+  $(document).on('click', 'a[href^="#"]', function(event) {
+    event.preventDefault();
+
+    $('html, body').animate({
+      scrollTop: $($.attr(this, 'href')).offset().top - 80
+    }, 800);
+  });
+  
 });
