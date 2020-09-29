@@ -1216,6 +1216,12 @@ pages:
             - en
             - ja
 
+        # TODO: translate this page and blurb
+    -   md: concepts/consensus-network/negative-unl.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/consensus-network/transaction-queue.md
         html: transaction-queue.html
         funnel: Build
