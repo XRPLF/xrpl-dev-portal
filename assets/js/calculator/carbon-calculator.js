@@ -1,11 +1,11 @@
 let arr = {
   'btc': {
-    'kWh': 487.368757765725,
-    'tons': 0.0000004103449,
+    'kWh': 487.3687578,
+    'tons': 0.0000002426743,
     'gas': 38.7744
   },
   'eth': {
-    'kWh': 42.8633,
+    'kWh': 42.86334969,
     'tons': 0.0000000273454,
     'gas': 2.38677
   },
@@ -16,17 +16,17 @@ let arr = {
   },
   'xrp': {
     'kWh': 0.0079,
-    'tons': 0.000000000003688,
+    'tons': 0.0000000000045,
     'gas': 0.00063
   },
   'vsa': {
     'kWh': 0.0008,
-    'tons': 0.0000000000005,
+    'tons': 0.00000000000046,
     'gas': 0.00006
   },
   'mst': {
     'kWh': 0.0006,
-    'tons': 0.0000000000005,
+    'tons': 0.00000000000051,
     'gas': 0.00005
   },
 }
@@ -75,7 +75,7 @@ function doCalculations(val){
         kwhComp = ( total / 50340000000 ).toFixed( 2 );
 
       if (data_comp === 'tons') {
-        total = parseInt(total * 1000000);
+        total = total * 1000000;
       }
 
       num.innerHTML = total.commarize();
