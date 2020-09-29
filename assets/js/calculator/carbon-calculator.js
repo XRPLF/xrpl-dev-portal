@@ -1,8 +1,8 @@
-let arr = {
+let calculator_data = {
   'btc': {
     'kWh': 487.3687578,
     'tons': 0.0000002426743,
-    'gas': 38.7744
+    'gas': 38.77453
   },
   'eth': {
     'kWh': 42.86334969,
@@ -12,7 +12,7 @@ let arr = {
   'pap': {
     'kWh': 0.044,
     'tons': 0.0000000000232,
-    'gas': 0.00350
+    'gas': 0.0035
   },
   'xrp': {
     'kWh': 0.0079,
@@ -63,16 +63,20 @@ let slider = document.getElementById( 'myRange' ),
 // Update the current slider value (each time you drag the slider handle)
 function doCalculations(val){
 
+  // This loops through all the dataTypes returning the calculations for the selected one
   [].slice.call(dataTypes).forEach( function( dataType ){
 
+    // if 'active', do calculations
     if (dataType.classList.contains('active')){
 
+      // looping through the calculator data
       let data_type = dataType.getAttribute( 'data-type' ),
         data_comp = dataType.getAttribute( 'data-comp' ),
-        total =  val * 1000000 * arr[ data_type ][ data_comp ],
+        total =  val * 1000000 * calculator_data[ data_type ][ data_comp ],
         num = document.getElementById( data_comp + '-' + data_type ),
-        // comp = the number of kWh Portugal used in 2019
-        kwhComp = ( total / 50340000000 ).toFixed( 2 );
+
+        // kWhcomp = the number of kWh Portugal used in 2019
+        kWhComp = ( total / 50340000000 ).toFixed( 2 );
 
       if (data_comp === 'tons') {
         total = total * 1000000;
@@ -81,17 +85,19 @@ function doCalculations(val){
       num.innerHTML = total.commarize();
       num.style.transition = "all .2s ease-in-out";
 
-      if (data_comp === 'kWh' && kwhComp > .02){
+      // This is for the kWh comparison, it animates the transition/selection
+      if (data_comp === 'kWh' && kWhComp > .02){
         let dot = document.getElementById(data_comp + '-' + data_type + '-dot');
         dot.style.transition = "all .2s ease-in-out";
-        dot.style.transform = "scale(" + kwhComp * 100 + ")";
-        dot.style.webkitTransform = "scale(" + kwhComp * 100 + ")";
-        dot.style.msTransform = "scale(" + kwhComp * 100 + ")";
+        dot.style.transform = "scale(" + kWhComp * 100 + ")";
+        dot.style.webkitTransform = "scale(" + kWhComp * 100 + ")";
+        dot.style.msTransform = "scale(" + kWhComp * 100 + ")";
       }
     }
   })
 }
 
+// This function is for the slider to highlight the selected number
 function highlightNum(val){
   [].slice.call(dataTxns).forEach(function(dataTxn){
     dataTxn.classList.remove('active');
@@ -99,25 +105,25 @@ function highlightNum(val){
       dataTxn.classList.add('active')
     }
   });
-  // $('#myRange .dash').removeClass('active');
-  // $('#myRange .dash[data-num="' + val + '"]').addClass('active');
 }
 
+// Run animations if crypto is selected
 function cryptoSelected(){
   gasCryptoAnimation();
   co2CryptoAnimation();
 }
-
+// Run animations if cash is selected
 function cashSelected(){
   gasCashAnimation();
   co2CashAnimation();
 }
-
+// Run animations if credit is selected
 function creditSelected(){
   gasCreditAnimation();
   co2CreditAnimation();
 }
 
+// This is function to select the data type
 function changeDataType( type ){
 
   [].slice.call(dataTypes).forEach( function(dataType){
@@ -139,25 +145,30 @@ function changeDataType( type ){
     }
   });
 
+  // based on toggle, then to calculations + slider value
   doCalculations(slider.value);
 
 }
 
 $('.tab-link').on('click', function(e){
+  e.preventDefault();
   $('#data-selector li').removeClass('active');
   $(this).parent('li').addClass('active');
 
+  // Pass the type to the Change Data function
   let type = $(this).data("currencytype");
-
   changeDataType(type);
-  e.preventDefault();
+  // ga( 'send', 'event', 'Carbon Calculator', 'Toggle Data Type', type );
 })
 
+// This is main section that will run the functions once the page is ready
 $(document).ready(function(){
-   [].slice.call(txns).forEach(function(txn){
+  // gets the slider value
+  [].slice.call(txns).forEach(function(txn){
     txn.innerHTML = slider.value;
   })
 
+  // On the slider change, run the Calculator functions
   slider.oninput = function() {
     var val = this.value;
     [].slice.call(txns).forEach(function(txn){
@@ -165,11 +176,14 @@ $(document).ready(function(){
     });
     highlightNum(val);
     doCalculations(val);
+    // ga( 'send', 'event', 'Carbon Calculator', 'Slider Data Amount', val );
   }
 
+  // On page load, run default functions
   doCalculations(slider.value);
   cryptoSelected();
 
+  // For mobile, show or hide the button
   $(window).on('load resize scroll', function() {
     if ($(window).width() < 993) {
       let distance = $('#calculator-outputs').offset().top,
@@ -189,6 +203,7 @@ $(document).ready(function(){
     }
   });
 
+  // This is the mobile button
   $('#calculator-mobile-toggle').on( 'click', function(e){
     e.preventDefault();
 
@@ -201,14 +216,16 @@ $(document).ready(function(){
       inputs.removeClass('sticky');
       inputs_offset.removeClass('offset');
       $(this).text('Change Inputs');
+      // ga( 'send', 'event', 'Carbon Calculator', 'Mobile Toggle', 'Change Inputs' );
     } else {
       inputs.addClass('sticky show');
       inputs_offset.addClass('offset');
       $(this).text('Hide Inputs');
+      // ga( 'send', 'event', 'Carbon Calculator', 'Mobile Toggle', 'Hide Inputs' );
     }
   });
 
-  $(document).on('click', 'a[href^="#"]', function(event) {
+  $(document).on('click', 'a[href^="#calculator"]', function(event) {
     event.preventDefault();
 
     $('html, body').animate({
