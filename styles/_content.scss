@@ -126,8 +126,7 @@ td:nth-child(1) {
   opacity: 1;
   transition: all 0.35s ease-in-out;
   @include media-breakpoint-down(sm) {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 10px;
   }
   &.not-hover {
     opacity: 0.6;

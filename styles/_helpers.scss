@@ -82,9 +82,24 @@
 }
 .mt-20 {
   margin-top: 5rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-top: 5rem;
+    }
+  }
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-top: 5rem;
+    }
+  }
 }
 .mb-20 {
   margin-bottom: 5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 5rem;
+    }
+  }
 }
 .my-20 {
   margin-top: 5rem;
@@ -95,21 +110,53 @@
 }
 .mt-30 {
   margin-top: 7.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-top: 7.5rem;
+    }
+  }
 }
 .mt-40 {
   margin-top: 10rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-top: 10rem;
+    }
+  }
 }
 .mb-40 {
   margin-bottom: 10rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 10rem;
+    }
+  }
 }
 .mb-49 {
   margin-bottom: 12.25rem;
 }
 .mb-50 {
   margin-bottom: 12.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 12.5rem;
+    }
+  }
+}
+.py-20 {
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+}
+.pt-20 {
+  padding-top: 5rem;
 }
 .pt-40 {
   padding-top: 10rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      padding-top: 10rem;
+    }
+  }
 }
 .pb-40 {
   padding-bottom: 10rem;
@@ -123,6 +170,12 @@
 .py-50 {
   padding-bottom: 12.5rem;
   padding-top: 12.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      padding-bottom: 12.5rem;
+      padding-top: 12.5rem;
+    }
+  }
 }
 .top-10 {
   top: 2.5rem;
@@ -132,6 +185,14 @@
 }
 .bottom-0 {
   bottom: 0;
+}
+.justify-center {
+  justify-content: center;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      justify-content: center;
+    }
+  }
 }
 
 /*  TEXT HELPERS */

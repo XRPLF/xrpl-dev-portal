@@ -179,6 +179,9 @@
 .marketing-wrapper {
   margin-top: 10rem;
   margin-bottom: 6rem;
+  @include media-breakpoint-down(sm) {
+    margin-top: 6rem;
+  }
 }
 
 
