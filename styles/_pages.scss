@@ -8,6 +8,7 @@
   @include media-breakpoint-down(sm) {
     width: 200%;
     margin-left: -50%;
+    margin-right: -50%;
     max-width: none;
   }
 }
@@ -244,7 +245,7 @@
       margin-right: 0;
       border-top: 1px solid $black;
       border-bottom: 1px solid $black;
-    }    
+    }
   }
   @include media-breakpoint-down(md) {
     #calculator-inputs-offset.offset {
@@ -305,7 +306,7 @@
     #data-selector li:nth-child(2) {
       margin-left: 0;
       margin-right: 0;
-    } 
+    }
   }
   .viz-wrapper {
     position: relative;
