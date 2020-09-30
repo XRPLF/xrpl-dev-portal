@@ -1,107 +1,544 @@
-/* Code Tabs ---------------------------------------------------------------- */
+$code-bg: $gray-900;
+$code-padding: 2rem;
 
-.multicode {
-  color: $black;
-}
-
-.multicode a.current {
-  background-color: $gray-200;
-  color: $black;
-}
-
-.multicode a,
-a.current {
-  color: $black;
-}
-
-.multicode li {
-  border-color: $gray-300;
-}
-
-.code_sample pre code {
-  background-color: $gray-200;
-}
-
-.multicode a:hover {
-  color: $black;
-  border-bottom: 1px solid $black;
-  padding-bottom: 7px;
-}
+// Code Tabs -------------------------------------------------------------------
 
 pre {
-  overflow: visible;
+  color: $white;
+  background-color: $code-bg;
   word-wrap: normal;
-}
-pre code {
-  white-space: pre;
-}
-.code_sample pre {
-  background: none;
-  border: none;
-  border-radius: 0;
-}
-.code_sample pre code {
-  overflow: auto;
-  max-height: 24em;
+  padding: $code-padding;
   border-radius: 4px;
-  display: block;
-  padding: 24px;
-}
-.code_sample pre code.expanded {
-  overflow: visible;
-  max-height: none;
-  position: absolute;
-}
-.code_sample .code_toggler {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  code {
+    white-space: pre;
+    color: $white;
+    background-color: $code-bg;
+  }
 }
 
 .multicode {
-  margin: 12px 0px 0px 0px;
-  padding: 0 0 0 0;
+  padding: 0;
   z-index: 1;
-  padding-left: 10px;
+  position: relative;
+
+  pre {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    clear: both;
+
+    code {
+      overflow: auto;
+      max-height: 24em;
+      border-radius: 0 4px 4px 4px;
+      display: block;
+      padding: $code-padding;
+
+      &.expanded {
+        overflow: visible;
+        max-height: none;
+        position: absolute;
+        min-width: 100%; // don't shrink horizontally when expanded
+      }
+    }
+  }
+
+  ul { // code tabs
+    margin: 0 !important;
+    padding: 0;
+
+    li {
+      display: block;
+      float: left;
+      list-style-type: none;
+      margin-right: 0px;
+      margin-left: 0px;
+      border: 0;
+    }
+  }
+
+  a { // clickable part of the tabs
+    text-decoration: none;
+    color: $white;
+    background-color: transparent;
+    padding: .75rem 2rem;
+    margin: 0;
+    border-radius: 4px 4px 0 0;
+
+    &.current {
+      background-color: $code-bg;
+    }
+    &:hover {
+      text-decoration: none;
+      background-color: $gray-900;
+      color: $primary;
+    }
+  }
+
+  .code_toggler { // expand/collapse button
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+// Syntax highlighting via Codehilite ------------------------------------------
+
+.codehilite {
+  background: $code-bg;
+  color: $white;
+
+  .c, // comment
+  .ch, // comment, hashbang
+  .cm, // comment, multiline
+  .cp, // comment, preproc
+  .cpf, // comment, preproc file
+  .c1, // comment, single
+  .cs // comment, special
+  {
+    color: $gray-500;
+  }
+
+  .err { // error
+
+  }
+  .esc { // escape
+
+  }
+  .g, // generic
+  .gd, // generic, deleted
+  .ge, // generic, emphasis
+  .gr, // generic, error
+  .gh, // generic, heading
+  .gi, // generic, inserted
+  .go, // generic, output
+  .gp, // generic, prompt
+  .gs, // generic, strong
+  .gu, // generic, underline / subheading
+  .gt // generic, traceback
+  {
+
+  }
+  .k, // keyword
+  .kc, // keyword, constant
+  .kd, // keyword, declaration
+  .kn, // keyword, namespace
+  .kp, // keyword, pseudo
+  .kr, // keyword, reserved
+  .kt // keyword, type
+  {
+    color: $orange-500;
+  }
+  .l, // literal
+  .ld // literal, date
+  {
+
+  }
+  .m, // literal, number
+  .mb, // number, bin
+  .mh, // number, hex
+  .mi, // number, integer
+  .mo, // number, oct
+  .il // number, integer, long
+  {
+    color: $blue-500;
+  }
+  .n, // name
+  .na, // name, attribute
+  .nb, // name, builtin
+  .nc, // name, class
+  .nd, // name, decorator
+  .ne, // name, exception
+  .nf, // name, function
+  .ni,  // name, entity
+  .nl, // name, label
+  .nn, // name, namespace
+  .nt, // name, tag
+  .nv, // name, variable
+  .nx, // name, other
+  .bp, // name, builtin, pseudo
+  .fm, // name, function, magic
+  .py // name, property
+  {
+    color: $white;
+  }
+  .o, // operator
+  .ow // operator, word
+  {
+
+  }
+  .p { // punctuation
+    color: $gray-200;
+  }
+  .s, // literal, string
+  .s1, // string, single
+  .s2, // string, double
+  .sa, // string, affix
+  .sb, // string, backtick
+  .sc, // string, char
+  .dl, // string, delimiter
+  .sd, // string, docstring
+  .se, // string, escape
+  .sh, // string, heredoc
+  .si, // string, interpol
+  .sr, // string, regex
+  .ss, // string, symbol
+  .sx, // string, other
+  {
+    color: $green-700;
+  }
+
+  .vc, // variable, class
+  .vg, // variable, global
+  .vi, // variable, instance
+  .vm // variable, magic
+  {
+
+  }
+
+
+  .w { // whitespace
+
+  }
+
+  .x { // "other"
+
+  }
+}
+
+.multicode .codehilite {
+  background: transparent;
+}
+
+
+// CodeMirror (editable code blocks) -------------------------------------------
+
+.CodeMirror {
+  font-family: $font-family-monospace;
+  height: 300px;
+  background-color: $code-bg;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+.CodeMirror-scroll {
+  overflow: auto;
+}
+
+.CodeMirror-lines {
+  padding: 2rem 0; /* Vertical padding around content */
+}
+.CodeMirror pre {
+  padding: 0 2rem 0 1rem; /* Horizontal padding of content w/ room for 1rem gutter */
+}
+
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  background-color: $black; /* The little square between H and V scrollbars */
+}
+
+/* GUTTER */
+
+.CodeMirror-gutters {
+  background-color: $code-bg;
+  white-space: nowrap;
+}
+
+/* CURSOR */
+
+.CodeMirror div.CodeMirror-cursor {
+  border-left: 1px solid $white;
+  z-index: 3;
+}
+/* Shown when moving in bi-directional text */
+.CodeMirror div.CodeMirror-secondarycursor {
+  border-left: 1px solid $gray-500;
+}
+.CodeMirror.cm-keymap-fat-cursor div.CodeMirror-cursor {
+  width: auto;
+  border: 0;
+  background: $gray-500;
+  z-index: 1;
+}
+/* Can style cursor different in overwrite (non-insert) mode */
+.CodeMirror div.CodeMirror-cursor.CodeMirror-overwrite {}
+
+.cm-tab { display: inline-block; }
+
+/* DEFAULT THEME - modified for XRPL.org */
+
+.cm-s-default .cm-keyword {color: $orange-500;}
+.cm-s-default .cm-atom {color: $orange-500;}
+.cm-s-default .cm-number {color: $blue-500;}
+.cm-s-default .cm-def {color: $blue-500;}
+.cm-s-default .cm-variable {color: $white;}
+.cm-s-default .cm-variable-2 {color: $white;}
+.cm-s-default .cm-variable-3 {color: $white;}
+.cm-s-default .cm-property {color: $white;}
+.cm-s-default .cm-operator {color: $white;}
+.cm-s-default .cm-comment {color: $gray-500;}
+.cm-s-default .cm-string {color: $green-700;}
+.cm-s-default .cm-string-2 {color: $green-700;}
+.cm-s-default .cm-meta {color: $gray-500;}
+.cm-s-default .cm-qualifier {color: $gray-500;}
+.cm-s-default .cm-builtin {color: $green-700;}
+.cm-s-default .cm-bracket {color: $white;}
+.cm-s-default .cm-tag {color: $white;}
+.cm-s-default .cm-attribute {color: $white;}
+.cm-s-default .cm-header {color: $blue-500;}
+.cm-s-default .cm-quote {color: $green-700;}
+.cm-s-default .cm-hr {color: $gray-500;}
+.cm-s-default .cm-link {color: $blue-200;}
+
+.cm-negative {color: $white;}
+.cm-positive {color: $white;}
+.cm-header, .cm-strong {font-weight: bold;}
+.cm-em {font-style: italic;}
+.cm-link {text-decoration: underline;}
+
+.cm-s-default .cm-error {color: $danger;}
+.cm-invalidchar {color: $danger;}
+
+div.CodeMirror span.CodeMirror-matchingbracket {color: $blue-purple-500;}
+div.CodeMirror span.CodeMirror-nonmatchingbracket {color: $warning;}
+.CodeMirror-activeline-background {background: $gray-800;}
+
+/* STOP */
+
+/* The rest of this file contains styles related to the mechanics of
+   the editor. You probably shouldn't touch them. */
+
+.CodeMirror {
+  line-height: 1;
+  position: relative;
+  overflow: hidden;
+  background: $code-bg;
+  color: $white;
+}
+
+.CodeMirror-scroll {
+  /* 30px is the magic margin used to hide the element's real scrollbars */
+  /* See overflow: hidden in .CodeMirror */
+  margin-bottom: -30px; margin-right: -30px;
+  padding-bottom: 30px; padding-right: 30px;
+  height: 100%;
+  outline: none; /* Prevent dragging from highlighting the element */
+  position: relative;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.CodeMirror-sizer {
   position: relative;
 }
-.multicode ul {
-  margin: 0 !important;
-  padding: 0;
+
+/* The fake, visible scrollbars. Used to force redraw during scrolling
+   before actuall scrolling happens, thus preventing shaking and
+   flickering artifacts. */
+.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  position: absolute;
+  z-index: 6;
+  display: none;
 }
-.multicode pre {
-  padding-top: 0;
-  clear: both;
+.CodeMirror-vscrollbar {
+  right: 0; top: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
-.multicode li {
-  display: block;
-  float: left;
-  list-style-type: none;
-  margin-right: 0px;
-  margin-left: 0px;
-  border-style: none solid;
-  border-width: 0.5px;
+.CodeMirror-hscrollbar {
+  bottom: 0; left: 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
-.multicode ul > li:before {
-  background: none;
-  border: none;
+.CodeMirror-scrollbar-filler {
+  right: 0; bottom: 0;
 }
-.multicode a,
-a.current {
-  padding-right: 32px;
-  padding-left: 32px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  margin: 0px;
-  text-decoration: none;
+.CodeMirror-gutter-filler {
+  left: 0; bottom: 0;
 }
-.multicode a.current:hover {
-  border-bottom: none;
-  padding-bottom: 10px;
+
+.CodeMirror-gutters {
+  position: absolute; left: 0; top: 0;
+  padding-bottom: 30px;
+  z-index: 3;
 }
-.multicode li:first-child {
-  border-left: none;
+.CodeMirror-gutter {
+  white-space: normal;
+  height: 100%;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding-bottom: 30px;
+  margin-bottom: -32px;
+  display: inline-block;
+  /* Hack to make IE7 behave */
+  *zoom:1;
+  *display:inline;
 }
-.multicode li:last-child {
+.CodeMirror-gutter-elt {
+  position: absolute;
+  cursor: default;
+  z-index: 4;
+}
+
+.CodeMirror-lines {
+  cursor: text;
+}
+.CodeMirror pre {
+  /* Reset some styles that the rest of the page might have set */
+  -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
+  border-width: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+  line-height: inherit;
+  color: inherit;
+  z-index: 2;
+  position: relative;
+  overflow: visible;
+}
+.CodeMirror-wrap pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+.CodeMirror-code pre {
+  border-right: 30px solid transparent;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.CodeMirror-wrap .CodeMirror-code pre {
   border-right: none;
+  width: auto;
+}
+.CodeMirror-linebackground {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  z-index: 0;
+}
+
+.CodeMirror-linewidget {
+  position: relative;
+  z-index: 2;
+  overflow: auto;
+}
+
+.CodeMirror-widget {}
+
+.CodeMirror-wrap .CodeMirror-scroll {
+  overflow-x: hidden;
+}
+
+.CodeMirror-measure {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+.CodeMirror-measure pre { position: static; }
+
+.CodeMirror div.CodeMirror-cursor {
+  position: absolute;
+  visibility: hidden;
+  border-right: none;
+  width: 0;
+}
+.CodeMirror-focused div.CodeMirror-cursor {
+  visibility: visible;
+}
+
+.CodeMirror-selected { background: #d9d9d9; }
+.CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }
+
+.cm-searching {
+  background: #ffa;
+  background: rgba(255, 255, 0, .4);
+}
+
+/* IE7 hack to prevent it from returning funny offsetTops on the spans */
+.CodeMirror span { *vertical-align: text-bottom; }
+
+@media print {
+  /* Hide the cursor when printing */
+  .CodeMirror div.CodeMirror-cursor {
+    visibility: hidden;
+  }
+}
+
+/* ADDON: lint.css ---------------------------------------------------------- */
+
+/* The lint marker gutter */
+.CodeMirror-lint-markers {
+  width: 16px;
+}
+
+.CodeMirror-lint-tooltip {
+  background-color: #ffd;
+  border: 1px solid black;
+  border-radius: 4px 4px 4px 4px;
+  color: black;
+  font-family: monospace;
+  font-size: 10pt;
+  overflow: hidden;
+  padding: 2px 5px;
+  position: fixed;
+  white-space: pre;
+  white-space: pre-wrap;
+  z-index: 100;
+  max-width: 600px;
+  opacity: 0;
+  transition: opacity .4s;
+  -moz-transition: opacity .4s;
+  -webkit-transition: opacity .4s;
+  -o-transition: opacity .4s;
+  -ms-transition: opacity .4s;
+}
+
+.CodeMirror-lint-mark-error, .CodeMirror-lint-mark-warning {
+  background-position: left bottom;
+  background-repeat: repeat-x;
+}
+
+.CodeMirror-lint-mark-error {
+  background-image:
+  url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sJDw4cOCW1/KIAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAHElEQVQI12NggIL/DAz/GdA5/xkY/qPKMDAwAADLZwf5rvm+LQAAAABJRU5ErkJggg==")
+  ;
+}
+
+.CodeMirror-lint-mark-warning {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sJFhQXEbhTg7YAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAMklEQVQI12NkgIIvJ3QXMjAwdDN+OaEbysDA4MPAwNDNwMCwiOHLCd1zX07o6kBVGQEAKBANtobskNMAAAAASUVORK5CYII=");
+}
+
+.CodeMirror-lint-marker-error, .CodeMirror-lint-marker-warning {
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+  position: relative;
+}
+
+.CodeMirror-lint-message-error, .CodeMirror-lint-message-warning {
+  padding-left: 18px;
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+
+.CodeMirror-lint-marker-error, .CodeMirror-lint-message-error {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAHlBMVEW7AAC7AACxAAC7AAC7AAAAAAC4AAC5AAD///+7AAAUdclpAAAABnRSTlMXnORSiwCK0ZKSAAAATUlEQVR42mWPOQ7AQAgDuQLx/z8csYRmPRIFIwRGnosRrpamvkKi0FTIiMASR3hhKW+hAN6/tIWhu9PDWiTGNEkTtIOucA5Oyr9ckPgAWm0GPBog6v4AAAAASUVORK5CYII=");
+}
+
+.CodeMirror-lint-marker-warning, .CodeMirror-lint-message-warning {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAANlBMVEX/uwDvrwD/uwD/uwD/uwD/uwD/uwD/uwD/uwD6twD/uwAAAADurwD2tQD7uAD+ugAAAAD/uwDhmeTRAAAADHRSTlMJ8mN1EYcbmiixgACm7WbuAAAAVklEQVR42n3PUQqAIBBFUU1LLc3u/jdbOJoW1P08DA9Gba8+YWJ6gNJoNYIBzAA2chBth5kLmG9YUoG0NHAUwFXwO9LuBQL1giCQb8gC9Oro2vp5rncCIY8L8uEx5ZkAAAAASUVORK5CYII=");
+}
+
+.CodeMirror-lint-marker-multiple {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAMAAADzjKfhAAAACVBMVEUAAAAAAAC/v7914kyHAAAAAXRSTlMAQObYZgAAACNJREFUeNo1ioEJAAAIwmz/H90iFFSGJgFMe3gaLZ0od+9/AQZ0ADosbYraAAAAAElFTkSuQmCC");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  width: 100%; height: 100%;
 }

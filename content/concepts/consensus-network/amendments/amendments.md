@@ -99,7 +99,7 @@ It is also possible to be amendment blocked because you connected your server to
 
 One of the first signs that your `rippled` server is amendment blocked is an `amendmentBlocked` error that is returned [when you submit a transaction](submit.html). Here's an example `amendmentBlocked` error:
 
-```
+```json
 {
    "result":{
       "error":"amendmentBlocked",
@@ -124,7 +124,7 @@ If you are on `rippled` version 0.80.0+, you can verify that your `rippled` serv
 
 **Example JSON-RPC Response:**
 
-```
+```json
 {
     "result": {
         "info": {
@@ -163,7 +163,7 @@ To find out which features are blocking your `rippled` server, use the [`feature
 
 **Example JSON-RPC Response:**
 
-```
+```json
 {
     "result": {
         "features": {
@@ -241,7 +241,7 @@ TrustSetAuth
     - [Introduction to Consensus](intro-to-consensus.html)
 - **Tutorials:**
     - [Run rippled as a Validator](run-rippled-as-a-validator.html)
-    - [Contribute Code to rippled](contribute-code-to-rippled.html)
+    - [Contribute Code to the XRP Ledger](contribute-code.html)
 - **References:**
     - [Amendments ledger object](amendments-object.html)
     - [EnableAmendment pseudo-transaction][]

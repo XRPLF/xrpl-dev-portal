@@ -10,7 +10,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id":1,
    "command":"ping"
@@ -19,7 +19,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method":"ping",
    "params":[
@@ -30,7 +30,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: ping
 rippled ping
 ```
@@ -49,7 +49,7 @@ rippled ping
 
 *WebSocket*
 
-```
+```json
 {
    "id":1,
    "result":{},
@@ -60,8 +60,9 @@ rippled ping
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result":{
        "status":"success"

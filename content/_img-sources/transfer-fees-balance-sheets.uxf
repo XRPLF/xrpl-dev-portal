@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>50</y>
+      <w>210</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Alice
+--
+*Assets:*
+- Cash:
+- ACME:
+
+
+--
+*Liabilities:*
+
+--
+*Equity:*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>150</x>
+      <y>70</y>
+      <w>100</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>halign=right
+*3,98 €*
+1,00 €
+2,00 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>150</x>
+      <y>160</y>
+      <w>100</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*0,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>180</x>
+      <y>190</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*3,98 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>50</y>
+      <w>230</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>ACME
+--
+*Assets:*
+- Cash:
+--
+*Liabilities:*
+
+
+
+
+
+
+
+
+--
+*Equity:*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>490</x>
+      <y>70</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>halign=right
+*10,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>490</x>
+      <y>110</y>
+      <w>100</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*8,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>520</x>
+      <y>270</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*2,02 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>490</x>
+      <y>130</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>halign=right
+1,00 €
+2,00 €
+2,00 €
+4,98 €
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>200</y>
+      <w>230</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>bg=green
+  - Alice (XRPL)
+  - Charlie (XRPL)
+halign=left
+transparency=0
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>490</x>
+      <y>200</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>halign=right
+0,98 €
+4,00 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>130</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>bg=green
+- ACME (XRPL)
+halign=left
+valign=center
+layer=-1
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>150</x>
+      <y>130</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>halign=right
+0,98 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>250</x>
+      <y>130</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>fg=blue
+- 2,02 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>50</y>
+      <w>210</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Charlie
+--
+*Assets:*
+- Cash:
+- ACME:
+
+
+--
+*Liabilities:*
+
+--
+*Equity:*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>810</x>
+      <y>70</y>
+      <w>100</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>halign=right
+*4,00 €*
+8,00 €
+2,00 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>810</x>
+      <y>160</y>
+      <w>100</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*0,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>840</x>
+      <y>190</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>halign=right
+valign=center
+*14,00 €*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>130</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>bg=green
+- ACME (XRPL)
+halign=left
+valign=center
+layer=-1
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>810</x>
+      <y>130</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>halign=right
+4,00 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>910</x>
+      <y>130</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>fg=blue
++2,00 €</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>360</x>
+      <y>130</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>halign=left
+- Bob
+- Charlie
+- Alice
+- XRP Ledger (Subtotal)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>590</x>
+      <y>180</y>
+      <w>70</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>fg=blue
+- 0,02 €
+valign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>590</x>
+      <y>270</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>fg=blue
++0,02 €
+valign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

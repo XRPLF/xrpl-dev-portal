@@ -4,7 +4,7 @@ The XRP Ledger is home to a deep, layered ecosystem of software projects powerin
 
 ## Stack Levels
 
-[![Ecosystem diagram with the four layers: XRP Ledger peer-to-peer network on the bottom, Programming Libraries above that, Middleware next, and Apps and Services at the top](img/ecosystem.png)](img/ecosystem.png)
+{{ include_svg("img/ecosystem.svg", "Ecosystem diagram with the four layers: XRP Ledger peer-to-peer network on the bottom, Programming Libraries above that, Middleware next, and Apps and Services at the top") }}
 
 - The [basis of the XRP Ledger](#rippled-the-core-server) is a peer-to-peer network of always-on servers sharing transactions, engaging in the [consensus process](consensus.html) and processing [transactions](transaction-basics.html). Everything else in the XRP Ledger ecosystem is ultimately built on top of this peer-to-peer network, directly or indirectly.
 
@@ -42,7 +42,7 @@ The [Data API](data-api.html) is an example of a middleware service on top of th
 
 ### Apps and Services
 
-Atop the stack is where the truly exciting things happen. Apps and services provide a way for users and devices to connect to the XRP Ledger. At this level, [exchanges list XRP](list-xrp-in-your-exchange.html), [gateways issue other currencies](become-an-xrp-ledger-gateway.html) for use in the decentralized exchange, and wallets provide user interfaces for buying, selling, or <s>HODLing</s> holding XRP. Many other possibilities exist, including additional services layered even higher. <!-- SPELLING_IGNORE: hodling -->
+Atop the stack is where the truly exciting things happen. Apps and services provide a way for users and devices to connect to the XRP Ledger. At this level, [exchanges list XRP](list-xrp-as-an-exchange.html), [gateways issue other currencies](become-an-xrp-ledger-gateway.html) for use in the decentralized exchange, and wallets provide user interfaces for buying, selling, or <s>HODLing</s> holding XRP. Many other possibilities exist, including additional services layered even higher. <!-- SPELLING_IGNORE: hodling -->
 
 A great way to build applications that are compatible with not only XRP but lots of other ways of denominating value is to use the [Interledger Protocol][] with settlement in XRP.
 

@@ -1,0 +1,96 @@
+// Styles for the legacy XRP Ledger RPC Tool. Minimally maintained.
+
+.rpc-tool {
+
+  #result {
+    display: none;
+  }
+
+  #log {
+    font-weight: 700;
+  }
+
+  .content .json li {
+    margin-top: 0;
+  }
+
+  .json .name {
+    color: $white;
+  }
+
+  .json ul {
+    margin: 0;
+    display: none;
+  }
+
+  .json li {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .json .type-string .val {
+    color: $green-700;
+  }
+
+  .json .type-number .val {
+    color: $blue-500;
+  }
+
+  .json a.toggle:hover {
+    text-decoration: none;
+  }
+
+  .json > a.toggle {
+    display: none;
+  }
+
+  .json a.toggle:after {
+    content: " +\0000a0";
+    cursor: pointer;
+  }
+
+  .json > ul,
+  .json .expanded > ul {
+    display: block;
+  }
+
+  .json .ellipsis {
+    color: $gray-500;
+  }
+
+  .json > .ellipsis,
+  .json .expanded > .ellipsis {
+    display: none;
+  }
+
+  .json .expanded > a.toggle:after {
+    content: " \2212\0000a0";
+  }
+
+  .json .indentafter {
+    display: none;
+  }
+
+  .json .expanded > .indentafter {
+    display: inline;
+  }
+
+  .tools {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    margin: 0 0 10px;
+  }
+
+  .tools>li>a {
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 6px 9px;
+  }
+}

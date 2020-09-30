@@ -7,7 +7,7 @@ Most Linux systems come pre-installed with a [`logrotate`](https://linux.die.net
 
 The following script is a sample that can be created as `/etc/logrotate.d/rippled`
 
-```
+```logrotate
 /var/log/rippled/*.log {
   daily
   minsize 200M
@@ -40,7 +40,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": "lr1",
     "command": "logrotate"
@@ -49,7 +49,8 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
+#Syntax: logrotate
 rippled logrotate
 ```
 
@@ -65,8 +66,9 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result" : {
       "message" : "The log file was closed and reopened.",
@@ -78,9 +80,10 @@ An example of a successful response:
 
 *Commandline*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "message" : "The log file was closed and reopened.",

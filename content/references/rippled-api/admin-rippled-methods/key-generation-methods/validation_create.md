@@ -17,7 +17,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 0,
     "command": "validation_create",
@@ -27,7 +27,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "validation_create",
     "params": [
@@ -40,7 +40,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: validation_create [secret]
 rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 ```
@@ -63,7 +63,7 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 {
    "result" : {
       "status" : "success",
@@ -76,9 +76,10 @@ An example of a successful response:
 
 *Commandline*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "status" : "success",

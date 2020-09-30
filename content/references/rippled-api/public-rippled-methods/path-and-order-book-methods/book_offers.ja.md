@@ -10,7 +10,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": 4,
   "command": "book_offers",
@@ -28,7 +28,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "book_offers",
     "params": [
@@ -49,7 +49,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
 rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
@@ -78,7 +78,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 *WebSocket*
 
-```
+```json
 {
   "id": 11,
   "status": "success",
@@ -139,8 +139,9 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "ledger_current_index": 8696243,

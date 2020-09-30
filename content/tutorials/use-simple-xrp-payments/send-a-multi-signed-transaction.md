@@ -17,19 +17,21 @@ Keep in mind that the `Fee` for multi-signed transactions is significantly highe
 
 Here's an example transaction ready to be multi-signed:
 
-    {
-        "TransactionType": "TrustSet",
-        "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-        "Flags": 262144,
-        "LimitAmount": {
-            "currency": "USD",
-            "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-            "value": "100"
-        },
-        "Sequence": 2,
-        "SigningPubKey": "",
-        "Fee": "30000"
-    }
+```json
+{
+    "TransactionType": "TrustSet",
+    "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    "Flags": 262144,
+    "LimitAmount": {
+        "currency": "USD",
+        "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "value": "100"
+    },
+    "Sequence": 2,
+    "SigningPubKey": "",
+    "Fee": "30000"
+}
+```
 
 (This transaction creates an accounting relationship from `rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC` to `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` with a maximum balance of 100 USD.)
 

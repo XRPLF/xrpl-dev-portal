@@ -12,9 +12,9 @@
 
 *WebSocket*
 
-```
+```json
 {
-   "id": "submit_multisigned_example"
+   "id": "submit_multisigned_example",
    "command": "submit_multisigned",
    "tx_json": {
        "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -48,7 +48,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "submit_multisigned",
    "params": [
@@ -90,7 +90,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: submit_multisigned <tx_json>
 rippled submit_multisigned '{
    "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -141,7 +141,7 @@ rippled submit_multisigned '{
 
 *WebSocket*
 
-```
+```json
 {
  "id": "submit_multisigned_example",
  "status": "success",
@@ -187,8 +187,9 @@ rippled submit_multisigned '{
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result": {
        "engine_result": "tesSUCCESS",

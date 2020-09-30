@@ -10,9 +10,9 @@
       <h>40</h>
     </coordinates>
     <panel_attributes>Delete automatically
-bg=#e1e4e8
-fg=#23292f
-lt=..</panel_attributes>
+bg=light_gray
+lt=..
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -39,8 +39,8 @@ m2=newest</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>Keep if available
-bg=#999da2
-fg=#f5f7f9
+bg=dark_gray
+fg=white
 transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
@@ -53,9 +53,8 @@ transparency=0</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>Backfill if possible
-bg=#1db4ff
-transparency=0
-fg=#f5f7f9</panel_attributes>
+bg=green
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -140,9 +139,9 @@ style=wordwrap</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>Delete automatically
-bg=#e1e4e8
-fg=#23292f
-lt=..</panel_attributes>
+bg=light_gray
+lt=..
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -165,9 +164,8 @@ lt=..</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>Backfill if possible
-bg=#1db4ff
-transparency=0
-fg=#f5f7f9</panel_attributes>
+bg=green
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

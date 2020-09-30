@@ -10,7 +10,7 @@
 
 *アカウントのサブスクライブ*
 
-```
+```json
 {
   "id": "Example watch Bitstamp's hot wallet",
   "command": "subscribe",
@@ -20,7 +20,7 @@
 
 *オーダーブックのサブスクライブ*
 
-```
+```json
 {
     "id": "Example subscribe to XRP/GateHub USD order book",
     "command": "subscribe",
@@ -41,7 +41,7 @@
 
 *レジャーストリームのサブスクライブ*
 
-```
+```json
 {
   "id": "Example watch for new validated ledgers",
   "command": "subscribe",
@@ -95,7 +95,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": "Example watch Bitstamp's hot wallet",
   "status": "success",
@@ -134,7 +134,7 @@
 
 `ledger`ストリームは、[コンセンサスプロセス](consensus.html)で新しい検証済みレジャーが宣言されたときにのみ`ledgerClosed`メッセージを送信します。このメッセージはレジャーを識別し、そのレジャーの内容について何らかの情報を伝えます。
 
-```
+```json
 {
   "type": "ledgerClosed",
   "fee_base": 10,
@@ -171,7 +171,7 @@
 
 検証ストリームは、検証メッセージ（検証投票とも呼ばれる）を受信するたびにメッセージを送信します。検証メッセージが信頼できるバリデータからのものであるかどうかは関係ありません。次のようなメッセージを送信します。
 
-```
+```json
 {
     "type": "validationReceived",
     "amendments":[
@@ -238,7 +238,7 @@
 
 `accounts_proposed`サブスクリプションも同様に機能しますが、このサブスクリプションには、`transactions_proposed`ストリームと同様、監視中のアカウントの未確定トランザクションも記録される点が異なります。
 
-```
+```json
 {
   "status": "closed",
   "type": "transaction",
@@ -360,7 +360,7 @@
 
 ピアステータスストリームメッセージの例:
 
-```
+```json
 {
     "action": "CLOSING_LEDGER",
     "date": 508546525,
@@ -402,7 +402,7 @@
 
 オーダーブックストリームメッセージの例:
 
-```
+```json
 {
     "engine_result": "tesSUCCESS",
     "engine_result_code": 0,
@@ -540,7 +540,7 @@
 
 `consensus`ストリームは、[コンセンサスプロセス](consensus.html)でフェーズが変更されると、`consensusPhase`メッセージを送信します。このメッセージには、サーバーで実行されているコンセンサスの新しいフェーズが含まれます。
 
-```
+```json
 {
   "type": "consensusPhase",
   "consensus": "accepted"

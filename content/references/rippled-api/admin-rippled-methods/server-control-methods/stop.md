@@ -12,7 +12,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 0,
     "command": "stop"
@@ -21,7 +21,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "stop",
     "params": [
@@ -32,7 +32,8 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
+#Syntax: stop
 rippled stop
 ```
 
@@ -48,7 +49,7 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 {
    "result" : {
       "message" : "ripple server stopping",
@@ -59,9 +60,10 @@ An example of a successful response:
 
 *Commandline*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "message" : "ripple server stopping",

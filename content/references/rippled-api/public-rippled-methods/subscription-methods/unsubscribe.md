@@ -10,7 +10,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": "Unsubscribe a lot of stuff",
     "command": "unsubscribe",
@@ -63,7 +63,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
     "id": "Unsubscribe a lot of stuff",
     "result": {},

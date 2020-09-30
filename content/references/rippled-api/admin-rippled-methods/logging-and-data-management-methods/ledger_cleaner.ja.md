@@ -12,7 +12,7 @@ _`ledger_cleaner`メソッドは、権限のないユーザーは実行できな
 
 *WebSocket*
 
-```
+```json
 {
     "command": "ledger_cleaner",
     "max_ledger": 13818756,
@@ -43,8 +43,9 @@ _`ledger_cleaner`メソッドは、権限のないユーザーは実行できな
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result" : {
       "message" : "Cleaner configured",

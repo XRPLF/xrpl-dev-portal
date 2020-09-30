@@ -12,7 +12,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "command": "ledger_cleaner",
     "max_ledger": 13818756,
@@ -43,8 +43,9 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result" : {
       "message" : "Cleaner configured",

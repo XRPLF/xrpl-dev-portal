@@ -96,7 +96,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
   "id": "Example watch Bitstamp's hot wallet",
   "status": "success",
@@ -135,7 +135,7 @@ When you subscribe to a particular stream, you receive periodic responses on tha
 
 The `ledger` stream only sends `ledgerClosed` messages when [the consensus process](consensus.html) declares a new validated ledger. The message identifies the ledger and provides some information about its contents.
 
-```
+```json
 {
   "type": "ledgerClosed",
   "fee_base": 10,
@@ -172,7 +172,7 @@ The fields from a ledger stream message are as follows:
 
 The validations stream sends messages whenever it receives validation messages, also called validation votes, regardless of whether or not the validation message is from a trusted validator. The message looks like the following:
 
-```
+```json
 {
     "type": "validationReceived",
     "amendments":[
@@ -239,7 +239,7 @@ Since the only thing that can modify an account or an order book is a transactio
 
 The `accounts_proposed` subscription works the same way, except it also includes unconfirmed transactions, like the `transactions_proposed` stream, for the accounts you're watching.
 
-```
+```json
 {
   "status": "closed",
   "type": "transaction",
@@ -361,7 +361,7 @@ The admin-only `peer_status` stream reports a large amount of information on the
 
 Example of a Peer Status stream message:
 
-```
+```json
 {
     "action": "CLOSING_LEDGER",
     "date": 508546525,
@@ -403,7 +403,7 @@ When you subscribe to one or more order books with the `books` field, you get ba
 
 Example order book stream message:
 
-```
+```json
 {
     "engine_result": "tesSUCCESS",
     "engine_result_code": 0,
@@ -541,7 +541,7 @@ The format of an order book stream message is the same as that of [transaction s
 
 The `consensus` stream sends `consensusPhase` messages when [the consensus process](consensus.html) changes phase. The message contains the new phase of consensus the server is in.
 
-```
+```json
 {
   "type": "consensusPhase",
   "consensus": "accepted"

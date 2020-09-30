@@ -10,7 +10,7 @@
 
 *WebSocket*
 
-```
+```json
 {
     "id": "example_gateway_balances_1",
     "command": "gateway_balances",
@@ -23,7 +23,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "gateway_balances",
     "params": [
@@ -60,7 +60,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": 3,
   "status": "success",
@@ -128,7 +128,7 @@
 
 *JSON-RPC*
 
-```
+```json
 200 OK
 {
     "result": {

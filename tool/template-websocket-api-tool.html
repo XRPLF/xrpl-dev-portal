@@ -5,7 +5,7 @@
       <div class="card-header">
         <h4>API Methods</h4>
       </div>
-      <ul class="card-body" id="command_list"></ul>
+      <ul class="card-body command-list" id="command_list"></ul>
   </div>
 {% endblock %}
 
@@ -51,7 +51,7 @@
           <div class="input-group-prepend">
             <div class="input-group-text" id="wstool-1-keep-last-label">Keep last:</div>
           </div><!--/.input-group-prepend-->
-          <input type="number" value="50" aria-label="Number of responses to keep at once" aria-describedby="wstool-1-keep-last-label" class="keep-last">
+          <input type="number" value="50" aria-label="Number of responses to keep at once" aria-describedby="wstool-1-keep-last-label" class="form-control keep-last">
         </div><!--/.input-group-->
 
         <div class="btn-group" role="group">
@@ -176,7 +176,7 @@
   </div><!--/.modal-->
 
   <script type="text/javascript" src="assets/vendor/jsonlint.js"></script>
-  <link rel="stylesheet" type="text/css" href="assets/vendor/codemirror.css"/>
+  <!-- <link rel="stylesheet" type="text/css" href="assets/vendor/codemirror.css"/> -->
   <script type="text/javascript" src="assets/vendor/codemirror-js-json-lint.min.js"></script>
   <script type="text/javascript" src="assets/js/apitool-websocket.js"></script>
   <script type="text/javascript" src="assets/js/apitool-methods-ws.js"></script>

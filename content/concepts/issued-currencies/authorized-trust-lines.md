@@ -30,13 +30,13 @@ The following is an example of using a locally-hosted `rippled`'s [submit method
 
 Request:
 
-```
+```json
 POST http://localhost:5005/
 {
     "method": "submit",
     "params": [
         {
-            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "secret": "s████████████████████████████",
             "tx_json": {
                 "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
                 "Fee": "15000",
@@ -75,7 +75,7 @@ POST http://localhost:8088/
     "method": "submit",
     "params": [
         {
-            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "secret": "s████████████████████████████",
             "tx_json": {
                 "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
                 "Fee": "15000",

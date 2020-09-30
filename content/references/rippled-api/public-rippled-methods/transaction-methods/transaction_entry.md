@@ -11,7 +11,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 4,
   "command": "transaction_entry",
@@ -22,7 +22,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "transaction_entry",
     "params": [
@@ -36,7 +36,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 56865245
 ```

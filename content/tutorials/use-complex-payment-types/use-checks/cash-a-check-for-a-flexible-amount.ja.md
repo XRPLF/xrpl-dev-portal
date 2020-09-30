@@ -34,7 +34,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 *JSON-RPC、WebSocket、またはコマンドライン*
 
-```
+```json
 {
  "Account": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
  "TransactionType": "CheckCash",

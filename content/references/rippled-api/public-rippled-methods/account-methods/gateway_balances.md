@@ -12,7 +12,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": "example_gateway_balances_1",
     "command": "gateway_balances",
@@ -25,7 +25,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "gateway_balances",
     "params": [
@@ -43,7 +43,7 @@ An example of the request format:
 ```
 
 *Commandline*
-```
+```sh
 rippled json gateway_balances ' {"account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q", "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ", "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],"ledger_index": "validated","strict": true} '
 ```
 
@@ -67,7 +67,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 3,
   "status": "success",
@@ -135,7 +135,7 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
 {
     "result": {

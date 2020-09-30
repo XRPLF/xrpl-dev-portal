@@ -10,21 +10,21 @@
   <p>This is a debug tool for printing raw information about an account, a transaction (by hash) or a ledger (by sequence number).</p>
 
   <form id="account-entry">
-  <fieldset><input id="target" class="input-xxlarge" required="" type="text" placeholder="XRPL classic address or transaction ID" />
+  <fieldset><input id="target" class="form-control" required="" type="text" placeholder="XRP Ledger classic address or transaction ID" />
   <span class="help-block"><small>Try an account like <em>r9kiSEUEw6iSCNksDVKf9k3AyxjW3r1qPf</em>.</small></span>
   <button class="btn btn-primary">Get info</button></fieldset>
   </form>
   <div id="result">
     <h2>Result</h2>
     <div id="progress" class="progress">
-    <div class="bar"></div>
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"></div>
     </div>
-    <div id="error" class="alert alert-error"></div>
+    <div id="error" class="devportal-callout warning"></div>
     <ul id="links" class="nav nav-pills">
      	<li><a id="permalink" href="#" target="_blank" rel="noopener">Permalink</a></li>
      	<li><a id="graphlink" href="#" target="_blank" rel="noopener">Graph</a></li>
     </ul>
-    <div class="alert alert-info"><strong>Tip:</strong> This page features intelligent copy/paste. Any
+    <div class="devportal-callout tip"><strong>Tip:</strong> This page features intelligent copy/paste. Any
     nodes you expand will be copied, any that you don't expand will show up
     as a little <code>/* */</code> comment in your copy/pasted text.</div>
     <div class="group group-tx">
@@ -102,7 +102,6 @@
 {% endblock %}
 
 {% block endbody %}
-  <link rel='stylesheet' type='text/css' href='assets/css/rpc-tool.css'/>
   <script type='text/javascript' src='assets/js/es5-shim.js'></script>
   <script type='text/javascript' src='assets/js/ripple-0.11.0-min.js'></script>
   <script type='text/javascript' src='assets/vendor/async.min.js'></script>

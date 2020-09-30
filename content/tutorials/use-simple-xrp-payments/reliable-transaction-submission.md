@@ -70,7 +70,7 @@ RippleAPI uses the `maxLedgerVersion` field of [Transaction Instructions](ripple
 
 The following diagram summarizes the recommended flow for submitting a transaction and determining its outcome:
 
-[![Reliable transaction submission flowchart](img/reliable-tx-submission.svg)](img/reliable-tx-submission.svg)
+{{ include_svg("img/reliable-tx-submission.svg", "Reliable transaction submission flowchart") }}
 
 
 ### Reliable Transactions Submission
@@ -205,7 +205,7 @@ How the application does these actions depends on the API the application uses. 
 
 JSON-RPC Request:
 
-```
+```json
 {
   "method": "account_info",
   "params": [
@@ -219,7 +219,7 @@ JSON-RPC Request:
 
 Response body:
 
-```
+```json
 {
     "result": {
         "validated": true,
@@ -251,7 +251,7 @@ The [server_state method][] returns the ledger index of the last validated ledge
 
 Request:
 
-```
+```json
 {
   "id": "client id 1",
   "method": "server_state"
@@ -260,7 +260,7 @@ Request:
 
 Response:
 
-```
+```json
 {
     "result": {
         "status": "success",
@@ -302,13 +302,13 @@ In this example the last validated ledger index is 10268596 (found under `result
 
 Request:
 
-```
+```json
 {
     "method": "sign",
     "params": [
         {
             "offline": true,
-            "secret": "sssssssssssssssssssssssssssss",
+            "secret": "s████████████████████████████",
             "tx_json": {
                "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
                 "Sequence": 4,
@@ -333,7 +333,7 @@ Notice also the `LastLedgerSequence` based on the last validated ledger our appl
 
 Response:
 
-```
+```json
 {
     "result": {
         "tx_json": {
@@ -369,7 +369,7 @@ Applications should persist the transaction's hash before submitting.  The resul
 
 Request:
 
-```
+```json
 {
     "method": "submit",
     "params": [
@@ -382,7 +382,7 @@ Request:
 
 Response:
 
-```
+```json
 {
     "result": {
         "tx_json": {
@@ -420,7 +420,7 @@ The transaction hash, generated when the transaction was signed, is passed to th
 
 Request:
 
-```
+```json
 {
     "method": "tx",
     "params": [
@@ -434,7 +434,7 @@ Request:
 
 Response:
 
-```
+```json
 {
     "result": {
         "validated": true,
@@ -475,7 +475,7 @@ If the response does not include `"validated": true`, the result is provisional 
 
 Applications must handle cases where a call to the [tx method][] returns a `txnNotFound` error.
 
-```
+```json
 {
     "result": {
         "status": "error",
@@ -495,7 +495,7 @@ The `txnNotFound` result code occurs in cases where the transaction is not inclu
 
 The [server_state method][] (used earlier to determine the last validated ledger) indicates how complete the ledger history is, under `result.state.complete_ledgers`.
 
-```
+```json
 {
     "result": {
         "status": "success",

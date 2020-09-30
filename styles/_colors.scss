@@ -1,0 +1,144 @@
+// XRP Visual Guidelines 2020 palette
+
+// Full color palette first ----------------------------------------------------
+$white:    #FFFFFF;
+$gray-100: #F1F2F4;
+$gray-200: #D4D7DD;
+$gray-300: #B8BDC7;
+$gray-400: #9BA2B0;
+$gray-500: #7E889A;
+$gray-600: #656E81;
+$gray-700: #4F5664;
+$gray-800: #383D47;
+$gray-900: #22252B;
+$black:    #000000;
+
+$green-100: #E6FFF1;
+$green-200: #B3FFD6;
+$green-300: #80FFBA;
+$green-400: #4DFF9F;
+$green-500: #19FF83;
+$green-600: #00E66A;
+$green-700: #00B352;
+$green-800: #00803B;
+$green-900: #004D23;
+$green: $green-500;
+
+$blue-100: #E6F5FF;
+$blue-200: #B3E1FF;
+$blue-300: #80CCFF;
+$blue-400: #4BB7FF;
+$blue-500: #1AA4FF;
+$blue-600: #008AE6;
+$blue-700: #006BB3;
+$blue-800: #004D80;
+$blue-900: #002E4D;
+$blue: $blue-500;
+
+$blue-purple-100: #F0E6FF;
+$blue-purple-200: #D2B3FF;
+$blue-purple-300: #B480FF;
+$blue-purple-400: #974CFF;
+$blue-purple-500: #791AFF;
+$blue-purple-600: #5F00E6;
+$blue-purple-700: #4A00B3;
+$blue-purple-800: #350080;
+$blue-purple-900: #20004D;
+$purple: $blue-purple-500;
+
+$red-purple-100: #FBE6FF;
+$red-purple-200: #F2B3FF;
+$red-purple-300: #EA80FF;
+$red-purple-400: #E24CFF;
+$red-purple-500: #D91AFF;
+$red-purple-600: #C000E6;
+$red-purple-700: #9500B3;
+$red-purple-800: #6B0080;
+$red-purple-900: #40004D;
+
+$magenta-100: #FFE6F2;
+$magenta-200: #FFB3D8;
+$magenta-300: #FF80BF;
+$magenta-400: #FF4BA4;
+$magenta-500: #FF1A8B;
+$magenta-600: #E60071;
+$magenta-700: #B30058;
+$magenta-800: #80003F;
+$magenta-900: #4D0026;
+$magenta: $magenta-500;
+$pink: $magenta-500;
+
+$orange-100: #FFEEE6;
+$orange-200: #FFCCB3;
+$orange-300: #FFAA80;
+$orange-400: #FF884B;
+$orange-500: #FF671A;
+$orange-600: #E64D00;
+$orange-700: #B33C00;
+$orange-800: #802B00;
+$orange-900: #4D1A00;
+$orange: $orange-500;
+
+$yellow-100: #FEFFE6;
+$yellow-200: #FDFFB3;
+$yellow-300: #FCFF80;
+$yellow-400: #FBFF4C;
+$yellow-500: #FAFF1A;
+$yellow-600: #E0E600;
+$yellow-700: #AFB300;
+$yellow-800: #7D8000;
+$yellow-900: #4B4D00;
+$yellow: $yellow-500;
+
+// Common colors & colors used in Bootstrap ------------------------------------
+$primary:       $green-500;
+$secondary:     $gray-200;
+$light:         $white;
+$dark:          $black;
+$success:       $green-500;
+$info:          $blue-500;
+$warning:       $yellow-500; // "caution" callout style
+$danger:        $magenta-500; // "warning" callout style
+
+// Bootstrap elements
+$body-bg:         $black;
+$navbar-light-color: $gray-600;
+$code-color:      $secondary;
+$body-color:      $white;
+$headings-color:  $white;
+$text-muted:      $gray-200;
+
+$breadcrumb-bg:   $black;
+$breadcrumb-active-color: $gray-400;
+
+$dropdown-bg:     rgba(0,0,0,0.9);
+$dropdown-divider-bg: $black;
+$dropdown-border-color: $gray-900;
+$dropdown-color:  $secondary;
+$dropdown-link-color: $white;
+$dropdown-link-hover-color: $primary;
+$dropdown-link-hover-bg: $gray-900;
+$dropdown-link-active-bg: transparent;
+
+$navbar-dark-color: $white;
+$navbar-dark-hover-color: $secondary;
+$navbar-dark-active-color: $primary;
+
+$input-bg: $gray-900;
+$input-disabled-bg: $gray-800;
+$input-color: $white;
+$input-border-color: transparent;
+$input-box-shadow: inset 0 1px 1px rgba($primary, .075);
+$input-placeholder-color: $gray-400;
+$input-group-addon-bg: $gray-600;
+$input-group-addon-color: $white;
+
+$list-group-bg: $gray-900;
+$list-group-border-color: $gray-800;
+$list-group-disabled-color: $gray-200;
+
+$progress-bg: $gray-900;
+
+$modal-content-bg: $black;
+$modal-content-border-color: $gray-200;
+$close-color: $magenta-500;

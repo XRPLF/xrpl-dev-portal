@@ -1,18 +1,52 @@
-.landing section,
-.xrpl-footer .card-grid,
-#main_content_wrapper {
-  border-bottom: 1px solid $black;
+section {
+  position: relative;
 }
 
-
-.landing section:last-of-type {
-  border-bottom: none;
+// Landings can be borderless full-width so bg images can touch the edges
+.landing {
+  padding: 0;
 }
 
-/* main content area ----------------------------------- */
-.sidebar-primary .main {
-  border-left: 1px solid $gray-200;
-  border-right: 1px solid $gray-200;
+// Normally-padded pages
+.padded-landing,
+.sidebar-primary #main_content_wrapper {
+  /* Mobile first */
+  padding: 0 1rem 1rem 1rem;
+  @include media-breakpoint-up(md) {
+    padding: 0 2rem 2rem 2rem;
+  }
+  @include media-breakpoint-up(lg) {
+    padding: 0 3rem 3rem 3rem;
+  }
+}
+
+// Square blocks ---------------------------------------------------------------
+
+.square {
+  position: relative;
+  flex-basis: calc(50% - 30px); // Mobile
+  margin: 15px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  border-radius: $border-radius-lg;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  @include media-breakpoint-up(lg) {
+    flex-basis: calc(25% - 30px);
+  }
+
+  &-50 {
+    flex-basis: calc(50% - 30px);
+    @include media-breakpoint-down(sm) {
+      flex-basis: calc(50% - 20px);
+    }
+  }
 }
 
 // Card Grid styles ------------------------------------------------------------
@@ -20,7 +54,6 @@
 .card-grid {
   display: grid;
   gap: 1px;
-  background-color: $gray-200;
   padding: 0;
 
   &.card-grid-2x2 {
@@ -150,16 +183,12 @@
   min-height: 700px;
 }
 
-.row {
-  margin: 0 -1px;
-}
-
 
 .doc-index {
   padding: 48px 0;
 }
 
-@media (max-width: 991px) {
+@include media-breakpoint-down(md) {
   .landing .card-grid .card,
   .landing .card-grid .card-body,
   .landing .card-grid .card-header {
@@ -172,41 +201,10 @@
 
 /* Responsive design for different viewscreens ------------------------------ */
 
-@media (max-width: 991px) {
-
-  #main_content_wrapper {
-    padding: 0 24px;
-  }
-  .navbar-brand img {
-    width: 120px;
-  }
-  .landing section:first-of-type h1:first-child {
-    font-size: 3em;
-    font-weight: 400;
-  }
-  .section-hero .blurb {
-    font-size: 0.95em;
-  }
-
-  .sidebar-primary .main {
-    border-left: none;
-    border-right: none;
-  }
+@include media-breakpoint-down(md) {
 
   .right-sidebar .card {
     padding-left: 0;
-  }
-
-  #main_content_body {
-    padding: 0;
-    border: none;
-  }
-  #main_content_body .container-fluid {
-    padding-left: 0;
-  }
-
-  .xrpl-footer {
-    margin: 0 24px;
   }
 
   #page-toc-wrapper {
@@ -244,5 +242,93 @@
 
   .btn {
     white-space: normal;
+  }
+}
+
+
+/* TIMELINE */
+.timeline-wrapper {
+    z-index: 999;
+    position: relative;
+}
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 102.5%;
+    width: 4px;
+    background: linear-gradient(180deg, rgba(254, 255, 1, 1) 0%, rgba(255, 45, 154, 1) 33%, rgba(163, 8, 143, 1) 66%, rgba(44, 4, 128, 0.85) 100%);
+ }
+
+.timeline-dot {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: $black;
+  box-sizing: border-box;
+}
+
+.timeline-block:first-child .timeline-dot {
+  border: 3px solid $yellow-500;
+}
+
+.timeline-block:nth-child(2) .timeline-dot {
+  border: 3px solid $orange-400;
+}
+.timeline-block:nth-child(3) .timeline-dot {
+  border: 3px solid $red-purple-600;
+}
+.timeline-block {
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-content {
+  flex-grow: 1;
+  position: relative;
+  margin-left: 1.25em;
+}
+
+.timeline h4 {
+  margin-top: -4px;
+}
+
+@include media-breakpoint-up(md) {
+  .timeline:before {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  .timeline-dot {
+    -ms-flex-order: 1;
+    order: 1;
+    margin-left: calc(5% - 9px);
+    will-change: transform;
+  }
+  .timeline-block:nth-child(even) {
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+  }
+  .timeline-dot {
+    margin-right: calc(5% - 9px);
+  }
+  .timeline-content {
+     width: 45%;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    will-change: transform;
+    margin: 0;
+    --line-height-multiplier: 1.2;
   }
 }

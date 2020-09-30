@@ -12,7 +12,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
    "id": 2,
    "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
@@ -24,7 +24,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "ledger_data",
     "params": [
@@ -61,7 +61,7 @@ An example of a successful response:
 
 *WebSocket (binary:true)*
 
-```
+```json
 {
     "id": 2,
     "result": {
@@ -197,8 +197,9 @@ An example of a successful response:
 
 *JSON-RPC (binary:true)*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",

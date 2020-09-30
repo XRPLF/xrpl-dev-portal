@@ -10,7 +10,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id":"Unsubscribe a lot of stuff",
    "command":"unsubscribe",
@@ -63,7 +63,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id":"Unsubscribe a lot of stuff",
    "result":{},

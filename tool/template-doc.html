@@ -1,9 +1,6 @@
 {% extends "template-base.html" %}
 {% block head %}
 
-    <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
-    <script src="assets/vendor/highlight.min.js"></script>
 
     <!-- expandable code samples -->
     <script src="assets/js/expandcode.js"></script>
@@ -12,11 +9,9 @@
     <script>
         $(document).ready(function() {
             $(".multicode").minitabs();
-            hljs.initHighlighting();
             make_code_expandable();
         });
     </script>
-
 
 {% endblock %}
 
@@ -39,7 +34,7 @@
     <div class="card-header">
       <h4>{% trans %}In this document{% endtrans %}</h4>
     </div>
-    <ul class="card-body">
+    <ul class="card-body page-toc">
       {{ sidebar_content }}
     </ul>
   </div>

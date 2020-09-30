@@ -18,13 +18,21 @@
     <meta name="theme-color" content="#25A768">
 
     <!-- jQuery -->
-    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+    <script src="{{currentpage.prefix}}assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
 
     <!-- Stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
     {% if target.lang=="ja" %}
-    <link href="assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="{{currentpage.prefix}}assets/css/fonts-ja.css" rel="stylesheet" />
     {% endif %}
-    <link href="assets/css/devportal.css" rel="stylesheet" />
+    <link href="{{currentpage.prefix}}assets/css/devportal.css" rel="stylesheet" />
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
@@ -42,6 +50,13 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
+    {% if "js_editor" in currentpage.filters %}
+    <script src="assets/vendor/jshint.js"></script>
+    <script src="assets/vendor/codemirror-js-json-lint.min.js"></script>
+    <script src="assets/vendor/cm-javascript-lint.js"></script>
+    <script src="assets/js/js-editor.js"></script>
+    {% endif %}
+
     {% block head %}
 
     {% endblock %}
@@ -50,56 +65,18 @@
 
 <body class="xrp-ledger-dev-portal {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}lang-{{target.lang}} {% block bodyclasses %}{% endblock %}">
 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
-    <a href="{% if target.no_cover is defined and target.no_cover %}/{% else %}index.html{% endif %}" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="{{target.display_name}}" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
-      <ul class="nav navbar-nav">
-        {% set funnels = [] %}
-        {% for page in pages %}
-          {% if page.funnel is defined and page.funnel not in funnels %}
-            {% set thisfunneltop = pages|selectattr('funnel', 'defined_and_equalto', page.funnel)|first %}
-            <li class="nav-item{% if currentpage == thisfunneltop %} active{% elif currentpage.funnel is defined and currentpage.funnel == thisfunneltop.name %} active-parent{% endif %}">
-              <a class="nav-link" href="{{ thisfunneltop.html }}">{{ thisfunneltop.name }}</a>
-            </li>
-            {% set _ = funnels.append(page.funnel) %}
-          {% endif %}
-        {% endfor %}
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/">{% trans %}Blog{% endtrans %}</a>
-        </li>
-      </ul><!-- /.navbar-nav -->
-      {% include 'template-github-edit.html' %}
-      <form class="navbar-form navbar-right" id="navbar-search" role="search">
-        <div class="form-inline">
-          <label class="sr-only" for="topsearchbar">{% trans %}Search site...{% endtrans %}</label>
-          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="{% trans %}Search site...{% endtrans %}">
-          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
-        </div>
-      </form>
-      <div class="nav navbar-nav language-selector">
-        <div class="dropdown">
-          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{(config.languages|selectattr('code', 'eq', target.lang)|first).display_name}}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
-            {% for lang in config.languages %}
-            <a class="dropdown-item" href="{{lang.prefix}}{{currentpage.html}}">{{lang.display_name}}</a>
-            {% endfor %}
-          </div><!--/.dropdown-menu-->
-        </div><!--/.dropdown-->
-      </div><!--/.language-selector-->
-    </div><!--/#navbarHolder-->
-    <div class="menu-overlay"></div>
-  </nav>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  {% include 'template-top-nav.html' %}
 
   <div class="container-fluid" role="document" id="main_content_wrapper">
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       {% if currentpage.sidebar is undefined or (currentpage.sidebar != "disabled" and currentpage.sidebar != "left_only") %}
-      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
           {% block right_sidebar %}{% endblock %}
       </aside>
       {% endif %}
@@ -113,7 +90,7 @@
       </main>
       {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}
       <!-- Left sidebar last so it's at the end for mobile -->
-      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+      <aside class="sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
           {% block left_sidebar %}
             {% include "template-sidebar_nav.html" %}
           {% endblock %}
@@ -136,7 +113,7 @@
 <script type="text/javascript"> docsearch({
 apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
 indexName: 'xrpl',
-inputSelector: '#topsearchbar',
+inputSelector: '#topsearchbox',
 algoliaOptions: { 'facetFilters': ["lang:{{target.lang}}"] },
 debug: false
 });

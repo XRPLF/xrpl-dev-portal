@@ -12,7 +12,7 @@ _`log_level`メソッドは、権限のないユーザーは実行できない[�
 
 *WebSocket*
 
-```
+```json
 {
    "id": "ll1",
    "command": "log_level",
@@ -23,7 +23,7 @@ _`log_level`メソッドは、権限のないユーザーは実行できない[�
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: log_level [[partition] severity]
 rippled log_level PathRequest debug
 ```
@@ -45,9 +45,10 @@ rippled log_level PathRequest debug
 
 *コマンドライン（ログレベルの設定）*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "status" : "success"
@@ -57,9 +58,10 @@ Connecting to 127.0.0.1:5005
 
 *コマンドライン（ログレベルの確認）*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "levels" : {

@@ -217,12 +217,12 @@ You can tell which of the two sub-types it is based on the first bit: `0` for XR
 
 The following diagram shows the serialization formats for both XRP amounts and issued currency amounts:
 
-![XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Issued currency amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), mantissa (54 bits), currency code (160 bits), and issuer (160 bits).](img/serialization-amount.png)
+{{ include_svg("img/serialization-amount.svg", 'XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Issued currency amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), mantissa (54 bits), currency code (160 bits), and issuer (160 bits).') }}
 
 #### Issued Currency Amount Format
 [[Source]](https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
 
-![Issued Currency Amount Format diagram](img/currency-number-format.png)
+{{ include_svg("img/currency-number-format.svg", "Issued Currency Amount Format diagram") }}
 
 The XRP Ledger uses 64 bits to serialize the numeric amount of an issued currency. (In JSON format, the numeric amount is the `value` field of a currency amount object.) In binary format, the numeric amount consists of a "not XRP" bit, a sign bit, significant digits, and an exponent, in order:
 
@@ -242,7 +242,7 @@ At a protocol level, currency codes in the XRP Ledger are arbitrary 160-bit valu
 
 The [`rippled` APIs](rippled-api.html) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
 
-![Standard Currency Code Format](img/currency-code-format.png)
+{{ include_svg("img/currency-code-format.svg", "Standard Currency Code Format") }}
 
 1. The first 8 bits must be `0x00`.
 2. The next 88 bits are reserved, and should be all `0`'s.
@@ -264,7 +264,7 @@ In the binary format, each member of the array has a Field ID prefix (based on t
 
 The following example shows the serialization format for an array (the `SignerEntries` field):
 
-![Array field ID, followed by the Field ID and contents of each array element, followed by the "Array end" field ID](img/serialization-array.png)
+{{ include_svg("img/serialization-array.svg", 'Array field ID, followed by the Field ID and contents of each array element, followed by the "Array end" field ID') }}
 
 
 ### Blob Fields
@@ -294,7 +294,7 @@ The [canonical field order](#canonical-field-order) of object fields is the same
 
 The following example shows the serialization format for an object (a single `Memo` object in the `Memos` array).
 
-![Object field ID, followed by the Object ID and contents of each object member in canonical order, followed by the "Object end" field ID](img/serialization-object.png)
+{{ include_svg("img/serialization-object.svg", 'Object field ID, followed by the Object ID and contents of each object member in canonical order, followed by the "Object end" field ID') }}
 
 
 ### PathSet Fields
@@ -327,7 +327,7 @@ Each step is followed directly by the next step of the path. As described above,
 
 The following example shows the serialization format for a PathSet:
 
-![PathSet is several paths each followed by a continue or end byte; each path is several path steps consisting of a type byte and one or more 160-bit fields based on the type byte](img/serialization-pathset.png)
+{{ include_svg("img/serialization-pathset.svg", "PathSet is several paths each followed by a continue or end byte; each path is several path steps consisting of a type byte and one or more 160-bit fields based on the type byte") }}
 
 
 ### UInt Fields

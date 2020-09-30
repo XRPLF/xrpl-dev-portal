@@ -1,6 +1,6 @@
-# Get Started with RippleAPI for JavaScript
+# Get Started with RippleAPI for Node.js
 
-This tutorial guides you through the basics of building an XRP Ledger-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](rippleapi-reference.html), a JavaScript API for accessing the XRP Ledger.
+This tutorial guides you through the basics of building an XRP Ledger-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](rippleapi-reference.html), a JavaScript API for accessing the XRP Ledger. You can also use RippleAPI [straight from your browser](get-started.html).
 
 The scripts and config files used in this guide are [available in the Ripple Dev Portal GitHub Repository](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart).
 
@@ -250,14 +250,34 @@ See [Reliable Transaction Submission](reliable-transaction-submission.html) for 
 
 # RippleAPI in Web Browsers
 
-RippleAPI can also be used in a web browser if you compile a browser-compatible version and include [lodash](https://www.npmjs.com/package/lodash) as a dependency before the RippleAPI script.
+RippleAPI can also be used in a web browser. To access it, load [Lodash](https://lodash.com/) and [RippleAPI for JavaScript (ripple-lib)](rippleapi-reference.html) in your site's HTML. For example:
+
+<!-- MULTICODE_BLOCK_START -->
+
+_unpkg_
+
+```html
+<script src="https://unpkg.com/lodash@4.17.20/lodash.min.js"></script>
+<script src="https://unpkg.com/ripple-lib@1.8.0/build/ripple-latest-min.js"></script>
+```
+
+_jsDelivr_
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ripple-lib@1.8.0/build/ripple-latest-min.js"></script>
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+Instead of using Node.js's "require" syntax, the browser version creates a global variable named `ripple`, which contains the `RippleAPI` class.
 
 <!-- SPELLING_IGNORE: lodash -->
 
 
 ## Build a Browser-Compatible Version of RippleAPI
 
-To use RippleAPI in a browser, you need to build a browser-compatible version. The following process compiles RippleAPI into a single JavaScript file you can include in a webpage.
+You can also build a browser-compatible version of the code yourself. Use the following steps to build it from the source code.
 
 
 ### 1. Download a copy of the RippleAPI git repository
@@ -285,50 +305,45 @@ yarn
 ```
 
 
-### 4. Use Gulp to build a single JavaScript output
+### 4. Build with Yarn
 
-RippleAPI comes with code to use the [gulp](http://gulpjs.com/) package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it, such as with following command:
+RippleAPI comes with the necessary dependencies and code to build it for the browser. Trigger the build script as follows:
 
-```
+```sh
 yarn run build
 ```
 
 Output:
 
-```
-> ripple-lib@0.16.5 build /home/username/ripple-lib
-> gulp
-
-[14:11:02] Using gulpfile /home/username/ripple-lib/gulpfile.js
-[14:11:02] Starting 'build'...
-[14:11:03] Starting 'build-debug'...
-[14:11:03] Starting 'build-min'...
-[14:11:18] Finished 'build-debug' after 15 s
-[14:11:18] Finished 'build' after 16 s
-[14:11:18] Finished 'build-min' after 15 s
-[14:11:18] Starting 'default'...
-[14:11:18] Finished 'default' after 19 μs
+```text
+yarn run v1.22.4
+$ yarn build:schemas && yarn build:lib && yarn build:web
+$ mkdir -p dist/npm/common && cp -r src/common/schemas dist/npm/common/
+$ tsc --build
+$ webpack
+Done in 10.29s.
 ```
 
 This may take a while. At the end, the build process creates a new `build/` folder, which contains the files you want.
 
-The file `build/ripple-<VERSION NUMBER>.js` is a straight export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in `-min.js` is the same thing, but with the content [minified](https://en.wikipedia.org/wiki/Minification_%28programming%29) for faster loading. <!-- SPELLING_IGNORE: minified -->
+The file `build/ripple-latest.js` is a direct export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in `build/ripple-latest-min.js` is the same thing, but with the content [minified](https://en.wikipedia.org/wiki/Minification_%28programming%29) for faster loading. <!-- SPELLING_IGNORE: minified -->
 
 
 
 ## Demo RippleAPI in a Browser
 
-The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public `rippled` server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named `ripple`, which contains the `RippleAPI` class.
+The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public `rippled` server and report information about that server.
 
-To use this example, you must first [build a browser-compatible version of RippleAPI](#build-a-browser-compatible-version-of-rippleapi) and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Change the second `<script>` tag in this example to use the correct file name for the version of RippleAPI you built.
-
-[**browser-demo.html:**](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/rippleapi_quickstart/browser-demo.html "Source on GitHub")
+[**`browser-demo.html`**](https://github.com/ripple/ripple-dev-portal/blob/master/content/_code-samples/rippleapi_quickstart/browser-demo.html "Source on GitHub")
 
 ```
 {% include '_code-samples/rippleapi_quickstart/browser-demo.html' %}
 ```
 
-This demo HTML loads Lodash v4.17.11 from CDNJS on Cloudflare and then loads ripple-lib v1.1.2, but you could also download and load a variant of Lodash locally. <!--#{ no specific recommended or required version at this time. Update this once we have some guidance to provide here. }#--> <!-- SPELLING_IGNORE: cdnjs -->
+<!-- SPELLING_IGNORE: cdnjs -->
+
+You can also see and edit a similar, live browser demo on the [Get Started](get-started.html) page.
+
 
 ## See Also
 

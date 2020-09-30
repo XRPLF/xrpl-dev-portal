@@ -11,7 +11,7 @@
 
 *WebSocket*
 
-```
+```json
 {
   "id": 4,
   "command": "transaction_entry",
@@ -22,7 +22,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "transaction_entry",
     "params": [
@@ -36,7 +36,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
@@ -63,7 +63,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 
 *WebSocket*
 
-```
+```json
 {
     "id": 4,
     "result": {

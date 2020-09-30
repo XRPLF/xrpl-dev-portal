@@ -60,14 +60,14 @@ jQuery(function ($) {
 
       $("#result > .group-account").show();
 
-      $("#progress .bar").css("width", "10%");
+      $("#progress .progress-bar").css("width", "10%");
       $("#datalink").attr("href", null).parent().addClass("disabled");
 
       async.waterfall([
         function (callback) {
           remote.request_account_info({account:account})
             .on('success', function (result) {
-              $("#progress .bar").css("width", "20%");
+              $("#progress .progress-bar").css("width", "20%");
               console.log('account_info', result);
               format(result, $("#account_info"));
               callback();
@@ -78,7 +78,7 @@ jQuery(function ($) {
         function (callback) {
           remote.request_account_lines({account:account})
             .on('success', function (result) {
-              $("#progress .bar").css("width", "40%");
+              $("#progress .progress-bar").css("width", "40%");
               console.log('account_lines', result);
               format(result, $("#account_lines"));
               callback();
@@ -89,14 +89,14 @@ jQuery(function ($) {
         function (callback) {
           requestTx(account, function (err) {
             if (err) return callback(err);
-            $("#progress .bar").css("width", "60%");
+            $("#progress .progress-bar").css("width", "60%");
             callback();
           });
         },
         function (callback) {
           remote.request_account_offers({account:account})
             .on('success', function (result) {
-              $("#progress .bar").css("width", "80%");
+              $("#progress .progress-bar").css("width", "80%");
               console.log('account_offers', result);
               format(result, $("#account_offers"));
               callback();
@@ -106,18 +106,18 @@ jQuery(function ($) {
         }
       ], function (err) {
         if (err) handleError(err);
-        $("#progress .bar").css("width", "100%");
+        $("#progress .progress-bar").css("width", "100%");
         $("#progress").fadeOut();
       });
     } else if (reLedgerSeq.exec(target)) {
       $("#result > .group-ledger").show();
 
       // Ledger
-      $("#progress .bar").css("width", "10%");
+      $("#progress .progress-bar").css("width", "10%");
       remote.request_ledger(undefined, { transactions: true, expand: true })
         .ledger_index(+target)
         .on('success', function (result) {
-          $("#progress .bar").css("width", "100%");
+          $("#progress .progress-bar").css("width", "100%");
           $("#progress").fadeOut();
           console.log('ledger', result.ledger);
           format(result.ledger, $("#ledger_info"));
@@ -125,7 +125,7 @@ jQuery(function ($) {
         .on('error', function (err) {
           console.log(err);
           handleError(err);
-          $("#progress .bar").css("width", "100%");
+          $("#progress .progress-bar").css("width", "100%");
           $("#progress").fadeOut();
         })
         .request();
@@ -135,17 +135,17 @@ jQuery(function ($) {
       $("#datalink").attr("href", "https://ripple.com/client/#/tx/?id=" + target);
 
       // Transaction
-      $("#progress .bar").css("width", "10%");
+      $("#progress .progress-bar").css("width", "10%");
       remote.requestTransaction({"hash": target, "binary": false})
         .on('success', function (result) {
-          $("#progress .bar").css("width", "100%");
+          $("#progress .progress-bar").css("width", "100%");
           $("#progress").fadeOut();
           console.log('tx', result);
           format(result, $("#tx_info"));
         })
         .on('error', function (err) {
           handleError(err);
-          $("#progress .bar").css("width", "100%");
+          $("#progress .progress-bar").css("width", "100%");
           $("#progress").fadeOut();
         })
         .request();

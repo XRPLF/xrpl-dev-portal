@@ -12,7 +12,7 @@ _（[PayChan Amendment][]が有効になっている必要があります。[新
 
 *WebSocket*
 
-```
+```json
 {
     "id": "channel_authorize_example_id1",
     "command": "channel_authorize",
@@ -42,7 +42,7 @@ Content-Type: application/json
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: channel_authorize <private_key> [<key_type>] <channel_id> <drops>
 rippled channel_authorize s████████████████████████████ secp256k1 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000
 ```
@@ -73,10 +73,10 @@ rippled channel_authorize s█████████████████�
 
 *WebSocket*
 
-```
+```json
 {
     "id": "channel_authorize_example_id1",
-    "status": "success"
+    "status": "success",
     "result": {
         "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
     }
@@ -98,7 +98,7 @@ rippled channel_authorize s█████████████████�
 
 *コマンドライン*
 
-```
+```json
 {
     "result": {
         "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",

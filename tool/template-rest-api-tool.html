@@ -6,7 +6,7 @@
       <h4>API Methods</h4>
     </div>
 
-    <ul class="dev_nav_sidebar card-body" id='command_list'>
+    <ul class="command-list card-body" id='command_list'>
     </ul>
   </div>
 {% endblock %}
@@ -18,26 +18,29 @@
             <div id='io_wrapper'>
                 <div id='input' class='io'>
                     <h2>REST Request</h2>
-                    <div id='test_warning' class='alert alert-danger' style='display:none;'>
-                        <h4>Test accounts only!</h4>
+                    <div id='test_warning' class='devportal-callout warning d-none'>
+                        <strong>Test accounts only!</strong>
                         <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
                     </div>
                     <div style="clear:both;"></div>
                     <h3 id='selected_command' title='Reference information'></h3>
                     <p id='description'></p>
-                    <div id='invalid'>Invalid JSON</div>
+                    <div id="invalid" class="devportal-callout warning d-none">
+                      <strong>Error</strong>
+                      Invalid JSON
+                    </div>
                     <div id='rest_url_wrapper'>
                         <p><span id='rest_host'>{{ currentpage.rest_host }}</span><span id='rest_url'></span></p>
                     </div>
                     <div id='request_body'></div>
                     <div id='request_options'>
-                        <a class="btn btn-outline-secondary api" id='request_button'>Send request</a>
+                        <a class="btn btn-primary api my-2" id='request_button'>Send request</a>
                     </div>
                 </div>
                 <div id='output' class='io'>
                     <h2>Response</h2>
                     <div>
-                        <img class="loader" src="assets/img/xrp-loader-96.png" style="vertical-align: middle; display:none;"/>
+                        <img class="throbber d-none" src="assets/img/xrp-loader-96.png" />
                         <span id='rest_responsecode'></span>
                     </div>
                     <div id='response_body'></div>
@@ -54,8 +57,6 @@
     var URL_BASE = '{{ currentpage.rest_host }}';
     var DOC_BASE = '{{ currentpage.doc_page }}';
     </script>
-    <link rel='stylesheet' type='text/css' href='assets/css/api-tools.css'/>
-    <link rel='stylesheet' type='text/css' href='assets/vendor/codemirror.css'/>
     <script type='text/javascript' src='assets/js/es5-shim.js'></script>
     <script type='text/javascript' src='assets/vendor/codemirror-js-json-lint.min.js'></script>
     <script type='text/javascript' src='assets/vendor/cm-javascript.min.js'></script>

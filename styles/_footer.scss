@@ -1,52 +1,53 @@
 /* Footer ------------------------------------------------------------------- */
 
 .xrpl-footer {
-  border-top: 1px solid $black;
-  border-bottom: 1px solid $black;
-}
-.xrpl-footer .container-fluid {
-  border-bottom: 1px solid $gray-200;
-}
+  >:first-child {
+    border-top: 1px solid white;
+    padding: 54px 48px 48px 48px;
+  }
 
-.xrpl-footer h5 a {
-  color: $black;
-}
+  .absolute_bottom_footer {
+    padding-bottom: 48px;
+  }
 
-.xrpl-footer {
-  margin: 0 48px;
-}
+  @include media-breakpoint-down(md) {
+    margin: 0 24px;
+  }
 
-.xrpl-footer .card-body {
-  margin-top: -15px;
-}
+  a {
+    text-decoration: none;
+  }
 
-.xrpl-footer .card {
-  padding-top: 24px;
-}
+  h5 {
+    font-size: 1rem;
+  }
 
-.xrpl-footer h5 {
-  font-size: 1rem;
-}
-.xrpl-footer li {
-  font-size: 0.75rem;
-}
+  li {
+    font-size: 0.75rem;
+  }
 
-.absolute_bottom_footer span {
-  margin-right: 25px;
-  font-size: 0.75rem;
-}
-.xrpl-footer .card-header h5 i {
-  margin-left: 0.2em;
-}
+  .card-body {
+    margin-top: -15px;
+  }
 
-.xrpl-footer .card-grid .card {
-  padding: 24px 48px 48px 48px;
-}
-.xrpl-footer .card-grid .card:first-child {
-  padding-left: 0;
-}
-@media (max-width: 991px) {
-  .xrpl-footer .card-grid .card {
-    padding-left: 0;
+  .card-header h5 i {
+    margin-left: 0.2em;
+  }
+
+  .card-grid .card {
+    padding: 24px 48px 48px 48px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    @include media-breakpoint-down(lg) {
+      padding-left: 0;
+    }
+  }
+
+  .absolute_bottom_footer span {
+    margin-right: 25px;
+    font-size: 0.75rem;
   }
 }

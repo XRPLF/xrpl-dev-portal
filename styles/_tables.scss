@@ -1,0 +1,65 @@
+/* TABLE STYLING */
+.dblue {
+  color: #656E81;
+}
+#overview-table {
+  td:nth-child(1){
+    width: 40%;
+  }
+  td:nth-child(2){
+    width: 30%;
+  }
+  tbody td {
+    padding: 2rem 0.75rem;
+  }
+  @include media-breakpoint-down(md) {
+    font-size: 0.875rem;
+    thead .h4 {
+      font-size: 1.125rem;
+    }
+  }
+}
+
+#calculator-table {
+  width: 100%;
+  thead {
+    border-bottom: 3px solid $white;
+  }
+  td {
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+    @include media-breakpoint-down(sm) {
+      font-size: $base-size;
+    }
+  }
+  tbody td {
+    padding: 2rem 0.5rem;
+  }
+  tbody tr {
+    border-bottom: 1px solid $white;
+  }
+  td:first-child{
+    width: 40%;
+  }
+  .ratio {
+    font-size: .075rem;
+    color: #656E81;
+  }
+  @include media-breakpoint-down(md) {
+    .ratio {
+      display: block;
+    }
+    table {
+      font-size: 0.875rem;
+    }
+    table .fs-5-5 {
+      font-size: 1rem !important;
+    }
+    table .fs-6 {
+      font-size: 1.125rem;
+    }
+    table td:first-child {
+      width: auto;
+    }
+  }
+}

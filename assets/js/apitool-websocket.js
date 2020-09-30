@@ -65,8 +65,8 @@ function make_commands_clickable() {
     select_request(cmd);
     window.location.hash = cmd;
 
-    $(this).siblings().removeClass('selected');
-    $(this).addClass('selected');
+    $(this).siblings().removeClass('active');
+    $(this).addClass('active');
   });
 }
 
@@ -86,8 +86,8 @@ function select_request(request) {
   } else {
     el = commandlist.find("li a[href='#"+request+"']").parent()
   }
-  $(el).siblings().removeClass('selected');
-  $(el).addClass('selected');
+  $(el).siblings().removeClass('active');
+  $(el).addClass('active');
 
   const command = requests[request];
   if (command === undefined) {

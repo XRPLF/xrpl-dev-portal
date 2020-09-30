@@ -14,7 +14,7 @@ An example of the request format:
 
 *WebSocket - list all*
 
-```
+```json
 {
   "id": "list_all_features",
   "command": "feature"
@@ -23,7 +23,7 @@ An example of the request format:
 
 *WebSocket - reject*
 
-```
+```json
 {
   "id": "reject_multi_sign",
   "command": "feature",
@@ -34,7 +34,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "feature",
     "params": [
@@ -48,7 +48,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: feature [<feature_id> [accept|reject]]
 rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 accept
 ```
@@ -72,7 +72,7 @@ An example of a successful response:
 
 *WebSocket - list all*
 
-```
+```json
 {
   "id": "list_all_features",
   "status": "success",
@@ -116,7 +116,7 @@ An example of a successful response:
 
 *WebSocket - reject*
 
-```
+```json
 {
     "id": "reject_multi_sign",
     "status": "success",
@@ -136,8 +136,9 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
@@ -153,9 +154,10 @@ An example of a successful response:
 
 *Commandline*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
     "result": {
         "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {

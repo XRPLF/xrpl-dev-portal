@@ -10,7 +10,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id":14,
    "command":"ledger",
@@ -25,7 +25,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method":"ledger",
    "params":[
@@ -43,7 +43,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: ledger ledger_index|ledger_hash [full|tx]
 # "full" is equivalent to "full": true
 # "tx" is equivalent to "transactions": true
@@ -78,7 +78,7 @@ rippled ledger current
 
 *WebSocket*
 
-```
+```json
 {
  "id":4,
  "status":"success",
@@ -111,8 +111,9 @@ rippled ledger current
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result":{
        "ledger":{

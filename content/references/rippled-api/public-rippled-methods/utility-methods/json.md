@@ -9,7 +9,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 # Syntax: json method json_stanza
 rippled -q json ledger_closed '{}'
 ```
@@ -24,7 +24,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
    "result" : {
       "ledger_hash" : "8047C3ECF1FA66326C1E57694F6814A1C32867C04D3D68A851367EE2F89BBEF3",

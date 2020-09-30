@@ -22,7 +22,7 @@ Payment Channels do not intrinsically specify anything about what you can buy an
 
 The following diagram summarizes the lifecycle of a payment channel:
 
-[![Payment Channel Flow Diagram](img/paychan-flow.png)](img/paychan-flow.png)
+{{ include_svg("img/paychan-flow.svg", "Payment Channel Flow Diagram") }}
 
 
 ## See Also

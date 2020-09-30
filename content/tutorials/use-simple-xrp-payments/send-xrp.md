@@ -6,7 +6,7 @@ This tutorial explains how to send a simple XRP Payment using RippleAPI for Java
 
 <!-- Interactive example use ripple-lib and its prerequisites -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
-<script type="application/javascript" src="assets/js/ripple-lib-1.4.1-min.js"></script>
+<script type="application/javascript" src="assets/js/ripple-lib-1.8.0-min.js"></script>
 <!-- Helper for interactive tutorial breadcrumbs -->
 <script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
 

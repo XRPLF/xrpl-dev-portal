@@ -21,13 +21,17 @@ const set_up_tx_sender = async function() {
   }
 
   function logTx(txtype, hash, result) {
-    let li = "wtf"
-    // Future feature: link hash to a testnet txsplainer
+    let classes
+    let icon
+    const txlink = "https://testnet.xrpl.org/transactions/" + hash
     if (result === "tesSUCCESS") {
-      li = '<li class="list-group-item fade-in p-1 text-muted"><i class="fa fa-check-circle"></i> '+txtype+": "+hash+'</li>'
+      classes = "text-muted"
+      icon = '<i class="fa fa-check-circle"></i>'
     } else {
-      li = '<li class="list-group-item fade-in p-1 list-group-item-danger"><i class="fa fa-times-circle"></i> '+txtype+": "+hash+'</li>'
+      classes = "list-group-item-danger"
+      icon = '<i class="fa fa-times-circle"></i>'
     }
+    const li = `<li class="list-group-item fade-in p-1 ${classes}">${icon} ${txtype}: <a href="${txlink}" target="_blank" class="external-link">${hash}</a></li>`
 
     $("#tx-sender-history ul").prepend(li)
   }

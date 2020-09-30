@@ -3,14 +3,13 @@
 .landing .children-display a,
 .landing a.card,
 .xrpl-footer a {
-  color: $gray-600;
+  color: $white;
+
+  &:hover {
+    color: $primary;
+  }
 }
 
-.landing .curated-links a:hover,
-.landing .children-display a:hover,
-.xrpl-footer a:hover {
-  color: $black;
-}
 
 .card-grid .section-hero.card {
   padding-left: 0;
@@ -22,7 +21,6 @@
 
 .content .children-display li a {
   /* Category landing pages */
-  font-family: 'Space Mono', monospace;
   font-weight: 700;
   font-size: 1.25rem;
   text-decoration: none;
@@ -32,9 +30,6 @@
   text-decoration: underline;
 }
 
-.landing {
-  padding: 0 2px;
-}
 
 /* Common list modules (children, curated links) ---------------------------- */
 .curated-links ul,
@@ -112,7 +107,7 @@
   list-style-type: square;
 }
 
-@media (max-width: 991px) {
+@include media-breakpoint-down(md) {
   .landing .card {
     padding-left: 0px;
   }
@@ -125,7 +120,6 @@
   margin-bottom: 1.5rem;
 }
 
-.landing h3,
 #test-net-servers h3 {
   font-size: 1.4rem;
   font-weight: 700;
@@ -182,7 +176,13 @@
   border-bottom: none;
 }
 
-
+.marketing-wrapper {
+  margin-top: 10rem;
+  margin-bottom: 6rem;
+  @include media-breakpoint-down(sm) {
+    margin-top: 6rem;
+  }
+}
 
 
 .landing .card .card-img-top {
@@ -206,18 +206,4 @@
 }
 .landing a.card:hover h3 {
   text-decoration: underline;
-}
-
-/* "Related Projects" boxes -------------- */
-
-.interledger-link .project-icon {
-  width: 80px;
-}
-
-.xpring-link .project-icon {
-  height: 60px;
-  width: 100px;
-  line-height: 20px;
-  vertical-align: middle;
-  margin: 9px 0;
 }

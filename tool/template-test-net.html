@@ -3,28 +3,38 @@
 {% block bodyclasses %}page-test-net{% endblock %}
 
 {% block right_sidebar %}
-<div id="test-net-servers" class="card">
+<div class="card">
   <div class="card-header">
     <h4>Testnet Servers</h4>
   </div>
   <div class="card-body">
-    <p>Use the following URLs to connect to the XRP Testnet and send transactions, or <a href="connect-your-rippled-to-the-xrp-test-net.html">connect your own <code>rippled</code> server to the Testnet</a>.</p>
-    <h5>Websockets and Ripple API</h5>
-    <pre><code>wss://s.altnet.rippletest.net:51233</code></pre>
-    <h5>JSON-RPC</h5>
-    <pre><code>https://s.altnet.rippletest.net:51234</code></pre>
-  </div>
-</div>
-<div id="devnet-servers" class="card">
-  <div class="card-header">
-    <h4>Devnet Servers</h4>
-  </div>
-  <div class="card-body">
-    <p>Use the following URLs to connect to the XRP Devnet.</p>
-    <h5>Websockets and Ripple API</h5>
-    <pre><code>wss://s.devnet.rippletest.net:51233</code></pre>
-    <h5>JSON-RPC</h5>
-    <pre><code>https://s.devnet.rippletest.net:51234</code></pre>
+    <h4>WebSocket and RippleAPI</h4>
+    <div class="multicode" id="code-0">
+      <ul class="codetabs">
+        <li><a href="#code-0-0">Testnet</a></li>
+        <li><a href="#code-0-1">Devnet</a></li>
+      </ul>
+      <div class="code_sample" id="code-0-0">
+        <pre><code>wss://s.altnet.rippletest.net:51233</code></pre>
+      </div>
+      <div class="code_sample" id="code-0-1">
+        <pre><code>wss://s.devnet.rippletest.net:51233</code></pre>
+      </div>
+    </div>
+
+    <h4 id="json-rpc">JSON-RPC</h4>
+    <div class="multicode" id="code-1">
+      <ul class="codetabs">
+        <li><a href="#code-1-0">Testnet</a></li>
+        <li><a href="#code-1-1">Devnet</a></li>
+      </ul>
+      <div class="code_sample" id="code-1-0">
+        <pre><code>https://s.altnet.rippletest.net:51234</code></pre>
+      </div>
+      <div class="code_sample" id="code-1-1">
+        <pre><code>https://s.devnet.rippletest.net:51234</code></pre>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
@@ -52,6 +62,12 @@
 
 {% block endbody %}
   <script type='text/javascript' src='assets/js/test-net.js'></script>
+  <script src="assets/js/multicodetab.js"></script>
+  <script type="application/javascript">
+    $(document).ready(function() {
+      $(".multicode").minitabs();
+    });
+  </script>
 
   <script type="application/javascript">
     gtag('config', 'UA-157720658-3', {'content_group1': 'API Tools'});

@@ -63,7 +63,7 @@ XRP決済の送信に関する対話型チュートリアルについては、[S
 
 JSON形式の未署名の[Paymentトランザクション][]の例を次に示します。
 
-```
+```json
 {
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -90,7 +90,7 @@ XRP Ledgerは、トランザクションオブジェクトが送信元アドレ�
 
 トランザクションに署名すると、ネットワークに送信できるバイナリーブロブが生成されます。この場合、`rippled`の[submitコマンド](submit.html)を使用します。署名付きブロブと同じトランザクションの例を示します。このトランザクションは、WebSocket APIを使用して送信されています。
 
-```
+```json
 {
   "id": 2,
   "command": "submit",
@@ -106,7 +106,7 @@ XRP Ledgerは、トランザクションオブジェクトが送信元アドレ�
 
 `tx`コマンドの応答の例:
 
-```
+```json
 {
   "id": 6,
   "status": "success",

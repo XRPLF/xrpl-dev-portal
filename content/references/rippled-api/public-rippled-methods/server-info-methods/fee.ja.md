@@ -12,7 +12,7 @@
 
 *WebSocket*
 
-```
+```json
 {
  "id":"fee_websocket_example",
  "command":"fee"
@@ -21,7 +21,7 @@
 
 *JSON-RPC*
 
-```
+```json
 {
    "method":"fee",
    "params":[{}]
@@ -30,7 +30,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: fee
 rippled fee
 ```
@@ -47,7 +47,7 @@ rippled fee
 
 *WebSocket*
 
-```
+```json
 {
  "id":"fee_websocket_example",
  "status":"success",
@@ -76,8 +76,9 @@ rippled fee
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
    "result":{
        "current_ledger_size":"56",
@@ -104,9 +105,10 @@ rippled fee
 
 *コマンドライン*
 
-```
+```json
 Loading:"/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" :{
      "current_ledger_size" :"16",

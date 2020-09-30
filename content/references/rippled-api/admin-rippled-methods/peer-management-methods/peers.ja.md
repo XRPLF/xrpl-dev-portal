@@ -12,7 +12,7 @@
 
 *WebSocket*
 
-```
+```json
 {
    "id": 2,
    "command": "peers"
@@ -37,7 +37,7 @@ rippled peers
 
 *WebSocket*
 
-```
+```json
 {
  "id": 2,
  "status": "success",
@@ -152,7 +152,7 @@ rippled peers
 
 *JSON-RPC*
 
-```
+```json
 {
   "result" : {
      "cluster" : {},
@@ -265,9 +265,10 @@ rippled peers
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "cluster" : {},

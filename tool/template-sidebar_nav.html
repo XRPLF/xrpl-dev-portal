@@ -4,7 +4,7 @@
 {% if link_prefix is undefined %}
   {% set link_prefix = "" %}
 {% endif %}
-<div class="tree_nav">
+<div class="tree-nav">
 
   <!--{############# Parent page link ###############################}-->
   {% if use_page.supercategory is defined %}
@@ -38,14 +38,18 @@
 
   <!--{############# Sidebar links ###############################}-->
 
-  {% if not pages|selectattr("funnel", 'defined_and_equalto', use_page.funnel)|selectattr("category", "defined")|list|length %}
-    <!--{##### Case: no funnel categories, simple one-category sidebar ####}-->
-    {% set funnelpages = pages|selectattr("funnel", 'defined_and_equalto', use_page.funnel)|list %}
+  {% if ( not pages|selectattr("funnel", 'defined_and_equalto', use_page.funnel)|selectattr("category", "defined")|list|length ) or ( not pages|selectattr("funnel", 'defined_and_equalto', use_page.funnel)|selectattr("doc_type", 'defined_and_equalto', use_page.doc_type)|selectattr("category", "defined")|list|length ) %}
+    <!--{##### Case: no funnel/doc_type categories, simple one-category sidebar ####}-->
+    {% if use_page.doc_type is defined %}
+      {% set sidebarpages = pages|selectattr("doc_type", 'defined_and_equalto', use_page.doc_type)|list %}
+    {% else %}
+      {% set sidebarpages = pages|selectattr("funnel", 'defined_and_equalto', use_page.funnel)|list %}
+    {% endif %}
     <div id="sidenav" aria-multiselectable="true">
       <div class="card active">
         <div class="card-body card-body-single">
           <ul class="sidebar_pagelist">
-          {% for page in funnelpages %}
+          {% for page in sidebarpages %}
             {% if loop.index == 1 %}{# Skip the first element since it's linked by the funnel header #}
             {% elif page.template == "template-redirect.html" %}{# skip redirects #}
             {% elif page == use_page %}
@@ -54,7 +58,7 @@
             <li><a class="nosubcat-page" href="{{ link_prefix}}{{ page.html }}">{{ page.name }}{% if page.status is defined and page.status == "not_enabled" %} {% include 'template-status_not_enabled.html' %}{% endif %}</a></li>
             {% endif %}
           {% endfor %}
-          {% if use_page.funnel == "Dev Tools" %}
+          {% if use_page.doc_type == "Dev Tools" %}
           <li><a class="nosubcat-page" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger Explorer <i class="fa fa-external-link"></i></a></li>
           {% endif %}
           </ul>

@@ -7,7 +7,7 @@
 
 All non-XRP balances in the XRP Ledger are _issued currencies_ which are tied to accounting relationships between two XRP Ledger addresses. When a financial institution uses Ripple's recommended separation of roles, funds relating to that institution tend to flow in a cycle.
 
-[![Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.](img/funds_flow_diagram.png)](img/funds_flow_diagram.png)
+{{ include_svg("img/issued-currency-funds-flow.svg", "Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.")}}
 
 When the issuing address sends payments, it creates balances in the accounting relationships in the XRP Ledger. Within the XRP Ledger, users can exchange balances across different accounting relationships, so we use the term _issued currency_ to describe any non-XRP balance. (These can represent any type of value, not only "currencies" in the traditional sense.) Issued currencies have negative value from the perspective of the issuing address, since they represent obligations. The same issued currencies have positive value from the perspective of the issuing address's counterparties. When the issuing address receives a payment, this reduces its obligations, erasing the issued currencies that were sent.
 

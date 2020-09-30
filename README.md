@@ -4,9 +4,9 @@ The [XRP Ledger Dev Portal](https://xrpl.org) is the authoritative source for XR
 
 To build the site locally:
 
-1. Install [**Dactyl**](https://github.com/ripple/dactyl):
+1. Install [**Dactyl**](https://github.com/ripple/dactyl) and `lxml`:
 
-        sudo pip3 install dactyl
+        sudo pip3 install dactyl lxml
 
 2. Clone the repo and change into its directory:
 
@@ -81,10 +81,10 @@ $ pybabel extract -F ./locale/babel.cfg -o ./locale/messages.pot ./
 Then, update _every_ language's `.po` files with the list of strings, as follows:
 
 ```sh
-$ pybabel update -l en -d ./locale/ -i ./locale/messages.pot
+$ pybabel update -l ja -d ./locale/ -i ./locale/messages.pot
 ```
 
-The above example is for English (`-l en`). **Repeat for each language code.**
+The above example is for Japanese (`-l ja`). **Repeat for each language code.**
 
 Now edit the PO files (for example, `locale/ja/LC_MESSAGES/messages.po`) to add translations for each newly-added string. Again, **repeat for each language.**
 

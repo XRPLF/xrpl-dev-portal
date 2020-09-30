@@ -12,7 +12,7 @@ _`fetch_info`メソッドは、権限のないユーザーは実行できない[
 
 *WebSocket*
 
-```
+```json
 {
    "id": 91,
    "command": "fetch_info",
@@ -22,7 +22,7 @@ _`fetch_info`メソッドは、権限のないユーザーは実行できない[
 
 *JSON-RPC*
 
-```
+```json
 {
    "method": "fetch_info",
    "params": [
@@ -35,7 +35,7 @@ _`fetch_info`メソッドは、権限のないユーザーは実行できない[
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: fetch_info [clear]
 rippled fetch_info
 ```
@@ -56,7 +56,7 @@ rippled fetch_info
 
 *JSON-RPC*
 
-```
+```json
 {
   "result" : {
      "info" : {
@@ -94,9 +94,10 @@ rippled fetch_info
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
   "result" : {
      "info" : {

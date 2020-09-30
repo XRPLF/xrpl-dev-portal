@@ -10,7 +10,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
    "id": 2,
    "command": "ledger_closed"
@@ -19,7 +19,7 @@ An example of the request format:
 
 *JSON-RPC*
 
-```
+```json
 {
     "method": "ledger_closed",
     "params": [
@@ -30,7 +30,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: ledger_closed
 rippled ledger_closed
 ```
@@ -48,7 +48,7 @@ An example of a successful response:
 
 *WebSocket*
 
-```
+```json
 {
   "id": 1,
   "status": "success",
@@ -62,8 +62,9 @@ An example of a successful response:
 
 *JSON-RPC*
 
-```
+```json
 200 OK
+
 {
     "result": {
         "ledger_hash": "8B5A0C5F6B198254A6E411AF55C29EE40AA86251D2E78DD0BB17647047FA9C24",

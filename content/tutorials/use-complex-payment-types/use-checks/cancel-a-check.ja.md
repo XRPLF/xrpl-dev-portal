@@ -42,7 +42,7 @@ Checkを取り消す例を以下に示します。
 
 *JSON-RPC、WebSocket、またはコマンドライン*
 
-```
+```json
 {
  "TransactionType": "CheckCancel",
  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",

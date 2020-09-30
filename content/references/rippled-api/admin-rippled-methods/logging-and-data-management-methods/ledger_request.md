@@ -12,7 +12,7 @@ An example of the request format:
 
 *WebSocket*
 
-```
+```json
 {
     "id": 102,
     "command": "ledger_request",
@@ -49,9 +49,10 @@ A failure response indicates the status of fetching the ledger. A successful res
 
 *Commandline (failure)*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "acquiring" : {
@@ -74,9 +75,10 @@ Connecting to 127.0.0.1:5005
 
 *Commandline (in-progress)*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "hash" : "EB68B5B4F6F06BF59B6D7532BCB98BB98E2F10C2435D895217AA0AA7E910FBD5",
@@ -120,9 +122,10 @@ Connecting to 127.0.0.1:5005
 
 *Commandline (success)*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "ledger" : {

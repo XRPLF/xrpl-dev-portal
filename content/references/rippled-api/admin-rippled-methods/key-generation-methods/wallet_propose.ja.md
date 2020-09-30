@@ -15,7 +15,7 @@
 
 *WebSocket（キータイプあり）*
 
-```
+```json
 {
     "command": "wallet_propose",
     "seed": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
@@ -25,7 +25,7 @@
 
 *WebSocket（キータイプなし）*
 
-```
+```json
 {
     "command": "wallet_propose",
     "passphrase": "masterpassphrase"
@@ -34,7 +34,7 @@
 
 *JSON-RPC（キータイプあり）*
 
-```
+```json
 {
     "method": "wallet_propose",
     "params": [
@@ -48,7 +48,7 @@
 
 *JSON-RPC（キータイプなし）*
 
-```
+```json
 {
     "method": "wallet_propose",
     "params": [
@@ -61,7 +61,7 @@
 
 *コマンドライン*
 
-```
+```sh
 #Syntax: wallet_propose [passphrase]
 rippled wallet_propose masterpassphrase
 ```
@@ -108,7 +108,7 @@ rippled wallet_propose masterpassphrase
 
 *WebSocket*
 
-```
+```json
 {
   "id": 2,
   "status": "success",
@@ -127,7 +127,7 @@ rippled wallet_propose masterpassphrase
 
 *JSON-RPC*
 
-```
+```json
 {
     "result": {
         "account_id": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
@@ -144,9 +144,10 @@ rippled wallet_propose masterpassphrase
 
 *コマンドライン*
 
-```
+```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
+
 {
    "result" : {
       "account_id" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
