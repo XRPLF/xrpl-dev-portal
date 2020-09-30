@@ -158,7 +158,7 @@ $('.tab-link').on('click', function(e){
   // Pass the type to the Change Data function
   let type = $(this).data("currencytype");
   changeDataType(type);
-  // ga( 'send', 'event', 'Carbon Calculator', 'Toggle Data Type', type );
+  ga( 'send', 'event', 'Carbon Calculator', 'Toggle Data Type', type );
 })
 
 // This is main section that will run the functions once the page is ready
@@ -176,7 +176,7 @@ $(document).ready(function(){
     });
     highlightNum(val);
     doCalculations(val);
-    // ga( 'send', 'event', 'Carbon Calculator', 'Slider Data Amount', val );
+    ga( 'send', 'event', 'Carbon Calculator', 'Slider Data Amount', val );
   }
 
   // On page load, run default functions
@@ -216,12 +216,12 @@ $(document).ready(function(){
       inputs.removeClass('sticky');
       inputs_offset.removeClass('offset');
       $(this).text('Change Inputs');
-      // ga( 'send', 'event', 'Carbon Calculator', 'Mobile Toggle', 'Change Inputs' );
+      ga( 'send', 'event', 'Carbon Calculator', 'Mobile Toggle', 'Change Inputs' );
     } else {
       inputs.addClass('sticky show');
       inputs_offset.addClass('offset');
       $(this).text('Hide Inputs');
-      // ga( 'send', 'event', 'Carbon Calculator', 'Mobile Toggle', 'Hide Inputs' );
+      ga( 'send', 'event', 'Carbon Calculator', 'Mobile Toggle', 'Hide Inputs' );
     }
   });
 

@@ -33,6 +33,9 @@
 
 /* SPACING HELPERS */
 /* To create new margin classes, multiply by 4px */
+.mb-8 {
+  margin-bottom: 2rem;
+}
 .mt-8 {
   margin-top: 2rem;
 }
@@ -150,6 +153,15 @@
 .pt-20 {
   padding-top: 5rem;
 }
+.pb-20 {
+  padding-bottom: 5rem;
+}
+.pt-30 {
+  padding-top: 7.5rem;
+}
+.pb-30 {
+  padding-bottom: 7.5rem;
+}
 .pt-40 {
   padding-top: 10rem;
   &-until-sm {
@@ -194,6 +206,20 @@
     }
   }
 }
+@include media-breakpoint-down(xs) {
+  .overflow-xs {
+    overflow: scroll;
+  }
+  .overflow-x-xs {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+@include media-breakpoint-up(md) {
+  .position-sm-absolute {
+    position: absolute;
+  }
+}
 
 /*  TEXT HELPERS */
 .va-middle {
@@ -212,18 +238,15 @@
   text-decoration: underline;
 }
 
-@include media-breakpoint-down(xs) {
-  .overflow-xs {
-    overflow: scroll;
-  }
-  .overflow-x-xs {
-    overflow-x: scroll;
-    overflow-y: hidden;
+/*  DISPLAY HELPERS */
+.d-none-xs {
+  @include media-breakpoint-down(xs) {
+    display: none;
   }
 }
-@include media-breakpoint-up(md) {
-  .position-sm-absolute {
-    position: absolute;
+.d-none-sm {
+  @include media-breakpoint-down(sm) {
+    display: none;
   }
 }
 
@@ -235,9 +258,11 @@
   border: none !important;
 }
 .grey-400 {
-  color: $gray-400
+  color: $gray-400;
 }
 .grey-500 {
-  color: $gray-500
+  color: $gray-500;
 }
-
+.grey-700 {
+  color: $gray-700;
+}

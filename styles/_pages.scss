@@ -1,7 +1,15 @@
 /* HOME STYLINGS */
 #home-hero-marker {
   top: unset;
-  bottom: 64px;
+  bottom: 88px;
+}
+#home-hero-graphic {
+  max-width: 100%;
+  @include media-breakpoint-down(sm) {
+    width: 200%;
+    margin-left: -50%;
+    max-width: none;
+  }
 }
 #home-hero-marker:after {
   position: absolute;
