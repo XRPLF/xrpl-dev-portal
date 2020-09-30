@@ -33,16 +33,6 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    {% if target.lang=="ja" %}
-    <link href="{{currentpage.prefix}}assets/css/fonts-ja.css" rel="stylesheet" />
-    {% endif %}
-    <link href="{{currentpage.prefix}}assets/css/devportal2020.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -54,6 +44,13 @@
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+    {% if target.lang=="ja" %}
+    <link href="{{currentpage.prefix}}assets/css/fonts-ja.css" rel="stylesheet" />
+    {% endif %}
+    <link href="{{currentpage.prefix}}assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
