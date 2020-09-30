@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="{{ currentpage.name|escape }}">
+    <meta property="og:title" content="{{ currentpage.name|escape }} | {{ target.display_name }}">
     <meta property="og:url" content="https://xrpl.org/{% if currentpage.html != 'index.html' %}{{currentpage.html}}{% endif %}" />
     <meta property="og:description" content="{% if currentpage.html == 'index.html' %}{{ target.blurb|escape}}{% else %}{{ currentpage.blurb|escape }}{% endif %}" />
     <meta property="og:image" content="https://xrpl.org/assets/img/{% if currentpage.fb_card %}{{currentpage.fb_card}}{% else %}xrpl-fb-li-card.png{% endif %}" />
