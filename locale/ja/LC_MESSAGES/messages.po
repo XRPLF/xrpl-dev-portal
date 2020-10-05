@@ -74,7 +74,7 @@ msgstr "XRPを他の通貨と比較すると?"
 
 #: tool/template-calculator.html:51 tool/template-calculator.html:86
 msgid "Learn more about the methodology"
-msgstr "測定方法について詳しく知る"
+msgstr "測定方法について詳しく知る【英語】"
 
 #: tool/template-calculator.html:57
 msgid "Change Inputs"

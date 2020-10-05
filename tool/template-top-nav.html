@@ -23,10 +23,14 @@
 
       {{ dropdown("Learn") }}
 
+      {% if target.lang == "ja" %}
+      {{ dropdown("Explore", [{"name":"XRP Ledger エクスプローラ", "html": "https://livenet.xrpl.org/"}]) }}
+      {% else %}
       {{ dropdown("Explore", [{"name":"Ledger Explorer", "html": "https://livenet.xrpl.org/"}]) }}
+      {% endif %}
 
       {% if target.lang == "ja" %}
-      {{ dropdown("Build", [{"name": "ブログ", "html": "/blog/"}]) }}
+      {{ dropdown("Build", [{"name": "開発者ブログ", "html": "/blog/"}]) }}
       {% else %}
       {{ dropdown("Build", [{"name": "Dev Blog", "html": "/blog/"}]) }}
       {% endif %}
