@@ -6444,6 +6444,13 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: 貢献する
+        funnel: Contribute
+        html: contribute.html
+        template: template-contribute.html
+        sidebar: disabled
+        targets:
             - ja
 
     -   md: contributing/contribute-code.md
