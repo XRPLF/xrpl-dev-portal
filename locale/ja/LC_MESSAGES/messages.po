@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2020-09-21 12:36-0700\n"
+"POT-Creation-Date: 2020-10-05 13:05-0700\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -24,214 +24,223 @@ msgstr "ホーム"
 
 #: tool/template-calculator.html:26 tool/template-home.html:109
 msgid "Sustainability"
-msgstr ""
+msgstr "サステナビリティ"
 
-#: tool/template-calculator.html:28
+#: tool/template-calculator.html:28 tool/template-home.html:111
 msgid "Sustainability icon"
-msgstr ""
+msgstr "サステナビリティアイコン"
 
 #: tool/template-calculator.html:31 tool/template-learn-impact.html:30
 msgid "How Green Is Your Currency?"
-msgstr ""
+msgstr "お使いの通貨はどのくらい環境にやさしいですか?"
 
 #: tool/template-calculator.html:32
 msgid "Explore the Interactive Tool"
-msgstr ""
+msgstr "インタラクティブツールを見る"
 
 #: tool/template-calculator.html:33
 msgid "Energy Consumption for Cash, Credit Cards and Crypto"
-msgstr ""
+msgstr "現金、クレジットカード、暗号資産のエネルギー消費量"
 
 #: tool/template-calculator.html:36
 msgid ""
 "Moving money carries cost—and not just the fee on your transaction or the"
 " value of your payment."
-msgstr ""
+msgstr "資金を移動させるにはコストがかかります。これは取引手数料や支払額だけの話ではありません。"
 
 #: tool/template-calculator.html:37
 msgid ""
 "Whether it’s in cash, on a credit card or with crypto, every transaction "
 "you make consumes energy, and therefore, emits pollutants into the "
 "environment."
-msgstr ""
+msgstr "現金、クレジットカード、暗号資産での取引は、いずれもエネルギーを消費しています。その結果、汚染物質が環境に排出されているのです。"
 
 #: tool/template-calculator.html:40
 msgid ""
 "The impact of this is startling when you look at the total transactions "
 "across an entire year—for any one form of currency."
-msgstr ""
+msgstr "1年間で行われる総取引量を考えてみれば、1つの通貨形態だけでも、驚くほどの影響があります。"
 
 #: tool/template-calculator.html:41
 msgid ""
 "Find out more about the environmental cost of some of the world’s most "
 "popular and innovative currencies, and start making more educated choices"
 " about how you transact."
-msgstr ""
+msgstr "世界中で特によく利用されている革新的な通貨の環境コストを詳しく確認することで、知識に基づいて取引方法を選べるようになります。"
 
 #: tool/template-calculator.html:50
 msgid "How Does XRP Compare to Other Currencies?"
-msgstr ""
+msgstr "XRPを他の通貨と比較すると?"
 
-#: tool/template-calculator.html:51 tool/template-calculator.html:85
+#: tool/template-calculator.html:51 tool/template-calculator.html:86
 msgid "Learn more about the methodology"
-msgstr ""
+msgstr "測定方法について詳しく知る【英語】"
 
 #: tool/template-calculator.html:57
 msgid "Change Inputs"
-msgstr ""
+msgstr "入力の変更"
 
 #: tool/template-calculator.html:62
 msgid "Comparing<br/> Transaction Data"
-msgstr ""
+msgstr "取引データの<br/>比較"
 
 #: tool/template-calculator.html:64
 msgid "Crypto"
-msgstr ""
+msgstr "暗号資産"
 
 #: tool/template-calculator.html:65
 msgid "Credit Cards"
-msgstr ""
+msgstr "クレジットカード"
 
-#: tool/template-calculator.html:66 tool/template-calculator.html:130
+#: tool/template-calculator.html:66 tool/template-calculator.html:131
 msgid "Cash"
-msgstr ""
-
-#: tool/template-calculator.html:79
-msgid "Twitter share"
-msgstr ""
+msgstr "現金"
 
 #: tool/template-calculator.html:80
-msgid "LinkedIn share"
-msgstr ""
+msgid "Twitter share"
+msgstr "Twitterでシェア"
 
 #: tool/template-calculator.html:81
+msgid "LinkedIn share"
+msgstr "LinkedInでシェア"
+
+#: tool/template-calculator.html:82
 msgid "Facebook share"
-msgstr ""
+msgstr "Facebookでシェア"
 
-#: tool/template-calculator.html:91
+#: tool/template-calculator.html:92
 msgid "Energy Consumption of Portugal"
-msgstr ""
+msgstr "ポルトガルのエネルギー消費量"
 
-#: tool/template-calculator.html:93 tool/template-calculator.html:178
-#: tool/template-calculator.html:221
+#: tool/template-calculator.html:94 tool/template-calculator.html:179
+#: tool/template-calculator.html:222
 msgid "Comparing <span class=\"slider-amt\"></span> Million Transactions in 2019"
-msgstr ""
+msgstr "2019年の取引額<span class=\"slider-amt\"></span>百万を比較"
 
-#: tool/template-calculator.html:95
+#: tool/template-calculator.html:96
 msgid ""
-"The country of Portugal consumes ~50twh (1 billion) Kilowatt hours (KWH) "
+"The country of Portugal consumes ~50twh (1 billion) Kilowatt hours (kWh) "
 "of energy annually. Explore how much energy today’s various currencies "
 "consume in relation to Portugal."
-msgstr ""
+msgstr "ポルトガルの国全体では年間でおよそ50TWh（10億）キロワット時（kWh）のエネルギーを消費しています。ポルトガルと比較して、現代のさまざまな通貨のエネルギー消費量をご覧ください。"
 
-#: tool/template-calculator.html:101 tool/template-calculator.html:149
-#: tool/template-calculator.html:161
+#: tool/template-calculator.html:102 tool/template-calculator.html:150
+#: tool/template-calculator.html:162
 msgid "Portugal"
-msgstr ""
+msgstr "ポルトガル"
 
-#: tool/template-calculator.html:106 tool/template-learn-overview.html:44
+#: tool/template-calculator.html:107 tool/template-learn-overview.html:44
 msgid "Bitcoin"
-msgstr ""
+msgstr "Bitcoin"
 
-#: tool/template-calculator.html:108 tool/template-calculator.html:120
-#: tool/template-calculator.html:132 tool/template-calculator.html:144
-#: tool/template-calculator.html:156 tool/template-calculator.html:168
-msgid "KWh"
-msgstr ""
+#: tool/template-calculator.html:109 tool/template-calculator.html:121
+#: tool/template-calculator.html:133 tool/template-calculator.html:145
+#: tool/template-calculator.html:157 tool/template-calculator.html:169
+msgid "kWh"
+msgstr "kWh"
 
-#: tool/template-calculator.html:118
+#: tool/template-calculator.html:119
 msgid "Ethereum"
-msgstr ""
+msgstr "Ethereum"
 
-#: tool/template-calculator.html:153
+#: tool/template-calculator.html:154
 msgid "Visa"
-msgstr ""
+msgstr "Visa"
 
-#: tool/template-calculator.html:165 tool/template-calculator.html:166
+#: tool/template-calculator.html:166 tool/template-calculator.html:167
 msgid "Mastercard"
-msgstr ""
+msgstr "Mastercard"
 
-#: tool/template-calculator.html:176
-msgid "C02 Emissions from Airline Flights"
-msgstr ""
+#: tool/template-calculator.html:177
+msgid "CO<sub>2</sub> Emissions from Airline Flights"
+msgstr "航空便によるCO<sub>2</sub>排出量"
 
-#: tool/template-calculator.html:180
+#: tool/template-calculator.html:181
 msgid ""
-"A 12-hour flight from London to Hong Kong releases 3 tons of Carbon "
-"dioxide (C02). Discover how much C02 different forms of currency release "
-"in comparison to emissions from airline flights."
-msgstr ""
+"A 12-hour flight from London to Hong Kong releases 3 tons of carbon "
+"dioxide (CO<sub>2</sub>). Discover how much CO<sub>2</sub> different "
+"forms of currency release in comparison to emissions from airline "
+"flights."
+msgstr "ロンドンから香港までの所要12時間の1回のフライトで、二酸化炭素（CO<sub>2</sub>）が3トン排出されます。航空便による排出量と比較して、さまざまな通貨形態でどれほどのCO<sub>2</sub>が排出されるかご確認ください。"
 
-#: tool/template-calculator.html:188 tool/template-calculator.html:193
-#: tool/template-calculator.html:198 tool/template-calculator.html:203
-#: tool/template-calculator.html:208 tool/template-calculator.html:213
-msgid "metric tons of CO2"
-msgstr ""
+#: tool/template-calculator.html:189 tool/template-calculator.html:194
+#: tool/template-calculator.html:199 tool/template-calculator.html:204
+#: tool/template-calculator.html:209 tool/template-calculator.html:214
+msgid "metric tons of CO<sub>2</sub>"
+msgstr "CO<sub>2</sub>のメトリックトン"
 
-#: tool/template-calculator.html:219
+#: tool/template-calculator.html:220
 msgid "Gas Consumption by the Gallon"
-msgstr ""
+msgstr "ガス消費量（ガロン）"
 
-#: tool/template-calculator.html:223
+#: tool/template-calculator.html:224
 msgid ""
 "An Ultra Large Crude Carrier (ULCC) carries approximately 120 million "
 "gallons of gas. Measure the environmental impact between currencies in "
 "relation to the amount of gas they would consume in the real-world."
-msgstr ""
+msgstr "超大型原油タンカー（ULCC）は約1億2,000万ガロンのガスを運ぶことができます。それぞれの通貨が実際に消費するガスの量を比較して、環境への影響を測定してみましょう。"
 
-#: tool/template-calculator.html:231 tool/template-calculator.html:236
-#: tool/template-calculator.html:241 tool/template-calculator.html:246
-#: tool/template-calculator.html:251 tool/template-calculator.html:256
-#: tool/template-calculator.html:277
+#: tool/template-calculator.html:232 tool/template-calculator.html:237
+#: tool/template-calculator.html:242 tool/template-calculator.html:247
+#: tool/template-calculator.html:252 tool/template-calculator.html:257
+#: tool/template-calculator.html:279
 msgid "Gallons of Gas"
-msgstr ""
-
-#: tool/template-calculator.html:268
-msgid "Breaking Down Individual Transactions"
-msgstr ""
+msgstr "ガロン"
 
 #: tool/template-calculator.html:269
+msgid "Breaking Down Individual Transactions"
+msgstr "取引1回分の内訳"
+
+#: tool/template-calculator.html:270
 msgid ""
 "Looking at individual transactions below, compare how a single "
-"transaction across each form of currency equates to KWh, gallons of gas "
-"and C02 emissions."
-msgstr ""
+"transaction across each form of currency equates to kWh, CO<sub>2</sub> "
+"emissions, and gallons of gas."
+msgstr "各通貨形態の取引1回分がどのくらいのエネルギー消費量（kWh）、ガス消費量（ガロン）、CO<sub>2</sub>排出量に相当するか比較しました。以下の表をご覧ください。"
 
-#: tool/template-calculator.html:276
+#: tool/template-calculator.html:277
 msgid "Kilowatt Hour"
-msgstr ""
+msgstr "キロワット時"
 
 #: tool/template-calculator.html:278
-msgid "CO2 Emissions*"
+msgid "CO<sub>2</sub> Emissions*"
+msgstr "CO<sub>2</sub>排出量*"
+
+#: tool/template-calculator.html:314
+msgid "Paper Currency"
+msgstr ""
+
+#: tool/template-calculator.html:321
+msgid "*Calculations in million tonne (Mt)"
 msgstr ""
 
 #: tool/template-contribute.html:24
 msgid "Join the Conversation"
-msgstr ""
+msgstr "議論に参加しましょう"
 
 #: tool/template-contribute.html:25
 msgid "Find Your Voice"
-msgstr ""
+msgstr "ご意見をお寄せください"
 
 #: tool/template-contribute.html:27
 msgid "Thank you for your interest in contributing to XRPL.org."
-msgstr ""
+msgstr "XRPL.orgへの貢献に関心をお寄せいただきありがとうございます。"
 
 #: tool/template-contribute.html:28
 msgid ""
 "This website was created for the community and is meant to be a living, "
 "breathing source of truth for XRP resources."
-msgstr ""
+msgstr "このウェブサイトはコミュニティのために作成されました。XRPリソースに関する生きた情報をお届けします。"
 
 #: tool/template-contribute.html:29
 msgid ""
-"If you'd like to recommend new content or provide feedback, see these "
-"community resources:"
-msgstr ""
+"If you'd like to recommend new content or provide feedback, visit the "
+"community resources at the RippleX forum or XRP Chat."
+msgstr "新しいコンテンツの提案やフィードバックをお寄せいただける場合は、このコミュニティリソースをご覧ください。"
 
 #: tool/template-contribute.html:58
 msgid "For Developers"
-msgstr ""
+msgstr "開発者の方"
 
 #: tool/template-contribute.html:59
 msgid ""
@@ -241,18 +250,27 @@ msgid ""
 "portal/blob/master/CONTRIBUTING.md\" target=\"_blank\">read and consider "
 "the contributing guidelines</a>."
 msgstr ""
+"XRP "
+"Ledgerについて学ぶには、XRPL.orgに貢献するのが最適です。このポータルはオープンソースであり、誰でも変更を提案できます。詳細については、<a"
+" href=\"https://github.com/ripple/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.md\" "
+"target=\"_blank\">貢献に関するガイドライン</a>をご覧ください。"
 
 #: tool/template-contribute.html:60
 msgid ""
 "You may also be interested in learning about <a "
 "href=\"https://interledger.org/\" target=\"_blank\">Interledger</a>, <a "
-"href=\"https://xpring.io/\" target=\"_blank\">Xpring</a>, and <a "
+"href=\"https://ripplex.io/\" target=\"_blank\">RippleX</a>, and <a "
 "href=\"https://payid.org/\" target=\"_blank\">PayID</a>."
 msgstr ""
+"<a href=\"https://interledger.org/\" target=\"_blank\">Interledger</a>、<a"
+" href=\"https://ripplex.io/\" target=\"_blank\">RippleX</a>、<a "
+"href=\"https://payid.org/\" "
+"target=\"_blank\">PayID</a>についても興味を持っていただけることでしょう。"
 
 #: tool/template-doc.html:22
 msgid "Sorry, this page is not available in your language."
-msgstr "も仕分けありませんがこのページは日本語では入手不可"
+msgstr "申し訳ありませんが、このページはお使いの言語では提供されていません。"
 
 #: tool/template-doc.html:23
 msgid ""
@@ -262,9 +280,9 @@ msgid ""
 "portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
 msgstr ""
 "XRP Ledger Dev "
-"Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべての言語で利用できるわけではありません。助けたいと思うなら<a "
-"href=\"https://github.com/ripple/xrpl-dev-"
-"portal/blob/master/CONTRIBUTING.ja.md\">提供して下さい！</a>"
+"Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a"
+" href=\"https://github.com/ripple/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.md\">ぜひ貢献をお願いいたします</a>"
 
 # Table of contents
 #: tool/template-doc.html:35
@@ -273,11 +291,11 @@ msgstr "目次"
 
 #: tool/template-explore-businesses.html:24
 msgid "Solving Real Problems Across Industries"
-msgstr ""
+msgstr "さまざまな業界の実際の問題を解決しています"
 
 #: tool/template-explore-businesses.html:25
 msgid "Businesses Running on the XRP Ledger"
-msgstr ""
+msgstr "XRP Ledgerを利用している企業"
 
 #: tool/template-explore-businesses.html:28
 msgid ""
@@ -285,58 +303,60 @@ msgid ""
 "running on the XRP Ledger, there are many other companies that leverage "
 "the technology to solve interesting problems across myriad industries."
 msgstr ""
+"XRP "
+"Ledgerは取引所やウォレットプロバイダーで特によくご利用いただいていますが、その他にも多種多様な業界で、数々の企業がこのテクノロジーを利用して、注目すべき問題を解決しています。"
 
 #: tool/template-explore-businesses.html:31
 #: tool/template-explore-businesses.html:52
 msgid "Asset Custody"
-msgstr ""
+msgstr "アセットカストディ"
 
 #: tool/template-explore-businesses.html:32
 #: tool/template-explore-businesses.html:57
 msgid "Payment Processing"
-msgstr ""
+msgstr "決済処理"
 
 #: tool/template-explore-businesses.html:33 tool/template-learn-uses.html:50
 #: tool/template-learn-uses.html:55
 msgid "Micropayments"
-msgstr ""
+msgstr "マイクロペイメント"
 
 #: tool/template-explore-businesses.html:34
 msgid "Wallets"
-msgstr ""
+msgstr "ウォレット"
 
 #: tool/template-explore-businesses.html:35
 #: tool/template-explore-businesses.html:77
 msgid "Music"
-msgstr ""
+msgstr "音楽"
 
 #: tool/template-explore-businesses.html:38
 #: tool/template-explore-businesses.html:82
 msgid "On-Demand Liquidity"
-msgstr ""
+msgstr "On-Demand Liquidity"
 
 #: tool/template-explore-businesses.html:39
 msgid "Gaming"
-msgstr ""
+msgstr "ゲーム"
 
 #: tool/template-explore-businesses.html:40
 #: tool/template-explore-businesses.html:87
 msgid "Infrastructure"
-msgstr ""
+msgstr "インフラストラクチャ"
 
 #: tool/template-explore-businesses.html:41
 #: tool/template-explore-businesses.html:92
 msgid "Security"
-msgstr ""
+msgstr "セキュリティ"
 
 #: tool/template-explore-businesses.html:42
 #: tool/template-explore-businesses.html:97
 msgid "Applications"
-msgstr ""
+msgstr "アプリケーション"
 
 #: tool/template-explore-businesses.html:49
 msgid "Businesses Using XRP"
-msgstr ""
+msgstr "XRPを利用している企業"
 
 #: tool/template-explore-businesses.html:53
 msgid ""
@@ -344,17 +364,17 @@ msgid ""
 "assets including XRP. BitGo's enterprise-level security empowers "
 "businesses to integrate digital currencies like XRP into new and existing"
 " financial systems."
-msgstr ""
+msgstr "BitGoは、XRPなどのデジタルアセット向けのカストディ型および非カストディ型アセット保有サービスを提供しています。BitGoのエンタープライズレベルのセキュリティを活用して、さまざまな企業がXRPなどのデジタル通貨を新規や既存の金融システムに統合しています。"
 
 #: tool/template-explore-businesses.html:58
 msgid ""
 "BitPay builds powerful, enterprise-grade tools for accepting and spending"
 " cryptocurrencies, including XRP."
-msgstr ""
+msgstr "BitPayは、XRPなどの暗号資産の受け入れや支払いが可能になる、強力なエンタープライズグレードのツールを構築しています。"
 
 #: tool/template-explore-businesses.html:62
 msgid "Web Monetization"
-msgstr ""
+msgstr "ウェブ収益化"
 
 #: tool/template-explore-businesses.html:63
 msgid ""
@@ -364,10 +384,13 @@ msgid ""
 "Ledger's payment channels provide an ideal system for settling these "
 "micropayments at high speed and low cost."
 msgstr ""
+"Coilは、現在の有料広告に代わる新たなウェブ収益化の方法を提供しています。Coilのウェブ収益化では、Interledger Protocol "
+"(ILP)を使用して、ユーザーがコンテンツを視聴するときにマイクロペイメントをストリーミングします。そのようなマイクロペイメントを高速かつ低コストで決済する理想的なシステムを、XRP"
+" LedgerのPayment Channelで実現しています。"
 
 #: tool/template-explore-businesses.html:67
 msgid "Online Gaming"
-msgstr ""
+msgstr "オンラインゲーム"
 
 #: tool/template-explore-businesses.html:68
 msgid ""
@@ -375,17 +398,17 @@ msgid ""
 "game developers to integrate blockchain technology into their games, to "
 "unlock new economic and creative opportunities for gamers across the "
 "world."
-msgstr ""
+msgstr "Forteはゲーム開発者向けに、ゲームにブロックチェーン技術を組み込むことができる、今までになかったような使いやすいツールとサービスを提供しています。これらを活用することで、世界中のゲーマーに新たな収益化と創造の機会をもたらすことができます。"
 
 #: tool/template-explore-businesses.html:72
 msgid "Wallets and Apps"
-msgstr ""
+msgstr "ウォレットとアプリケーション"
 
 #: tool/template-explore-businesses.html:73
 msgid ""
 "Exodus offers wallets and applications for securing, managing and "
 "exchanging crypto."
-msgstr ""
+msgstr "Exodusは、暗号資産の保護、管理、交換を行うためのウォレットとアプリケーションを提供しています。"
 
 #: tool/template-explore-businesses.html:78
 msgid ""
@@ -393,6 +416,8 @@ msgid ""
 "value of music, innovating across the entire value chain of the music "
 "industry."
 msgstr ""
+"Raised in "
+"Spaceは、音楽の価値を高め、音楽業界のバリューチェーンのあらゆる部分でイノベーションを実現するために取り組んでいる、音楽/テクノロジー専門投資グループです。"
 
 #: tool/template-explore-businesses.html:83
 msgid ""
@@ -400,13 +425,15 @@ msgid ""
 "using XRP to source liquidity on demand. XRP is ideally suited for global"
 " payments because it's quicker, less costly, and more scalable than any "
 "other digital asset."
-msgstr ""
+msgstr "eRippleは、XRPを使用した国際送金の即時決済を低コストに実現して、流動性をオンデマンドで供給しています。XRPは他のどのデジタルアセットよりも、スピード、コスト、拡張性に優れているため、グローバルな決済に最適です。"
 
 #: tool/template-explore-businesses.html:88
 msgid ""
 "Towo Labs was founded in 2019, to develop XRP Ledger and Interledger "
 "infrastructures and make non-custodial crypto management easier."
 msgstr ""
+"Towo Labsは2019年に設立された会社です。XRP "
+"LedgerおよびInterledgerのインフラストラクチャの開発を手がけ、より簡単な非カストディ型暗号資産管理を実現するために取り組んでいます。"
 
 #: tool/template-explore-businesses.html:93
 msgid ""
@@ -414,12 +441,14 @@ msgid ""
 "fraudulent activity on the XRP Ledger as well as custom APIs and "
 "analytics that supplement the XRP Ledger APIs where they are not enough."
 msgstr ""
+"Xrplorerは、XRP Ledger上での不正行為の防止と撲滅を支援するサービスとツールのほか、XRP Ledger "
+"APIの機能を補うカスタムAPIや分析を提供しています。"
 
 #: tool/template-explore-businesses.html:98
 msgid ""
 "From cold storage to apps for signing transactions, XRPL Labs is "
 "dedicated to building software on the XRP Ledger."
-msgstr ""
+msgstr "コールドストレージからトランザクション署名アプリケーションまで、XRPL LabsはXRP Ledgerでのソフトウェアの構築を専門としています。"
 
 #: tool/template-explore-businesses.html:103
 msgid ""
@@ -428,25 +457,27 @@ msgid ""
 "advisable to conduct your own due diligence before relying on any third "
 "party or third-party technology."
 msgstr ""
+"免責事項: "
+"XRPL.orgは、いかなるウォレットおよび取引所の支持、推奨も、ウォレットに関するいかなる表明も行いません。サードパーティやサードパーティ技術を利用する前に、ご自身でデューデリジェンスを実施することをお勧めします。"
 
 #: tool/template-explore-exchanges.html:23
 msgid "XRP Is Traded on More Than 100 Markets and Exchanges Worldwide"
-msgstr ""
+msgstr "XRPは世界中の100以上の市場と取引所で取引されています"
 
 #: tool/template-explore-exchanges.html:24
 msgid "XRP Exchanges"
-msgstr ""
+msgstr "XRPが取り扱われている取引所"
 
 #: tool/template-explore-exchanges.html:27
 msgid "Exchanges are where people trade currencies."
-msgstr ""
+msgstr "取引所とは、通貨の取引を行う場所です。"
 
 #: tool/template-explore-exchanges.html:28
 msgid ""
 "There are different types of exchanges that vary depending on the type of"
 " market (spot, futures, options, swaps), and the type of security model "
 "(custodial, non-custodial)."
-msgstr ""
+msgstr "市場のタイプ（スポット、先物、オプション、スワップ）とセキュリティモデルのタイプ（カストディ、非カストディ）に応じて、さまざまなタイプの取引所があります。"
 
 #: tool/template-explore-exchanges.html:29
 msgid ""
@@ -454,7 +485,7 @@ msgid ""
 "(spot) market rates. Futures, options and swap exchanges allow people to "
 "buy and sell standardized contracts of cryptocurrency market rates in the"
 " future."
-msgstr ""
+msgstr "スポット取引所では、暗号資産を現在の（スポット）市場価格で売買できます。先物、オプション、スワップ取引所では、将来の暗号資産市場価格の標準契約を売買できます。"
 
 #: tool/template-explore-exchanges.html:30
 msgid ""
@@ -462,11 +493,11 @@ msgid ""
 " order books of buyers and sellers. Non-custodial exchanges, also known "
 "as decentralized exchanges, do not manage a user’s private keys, and "
 "publish decentralized order books of buyers and sellers on a blockchain."
-msgstr ""
+msgstr "カストディ型取引所は、ユーザーの秘密鍵を管理し、一元化された買い手と売り手のオーダーブックを公開します。非カストディ型取引所は、分散型取引所とも呼ばれ、ユーザーの秘密鍵は管理せず、ブロックチェーンに分散された売り手と買い手のオーダーブックを公開します。"
 
 #: tool/template-explore-exchanges.html:35
 msgid "Top Exchanges, according to CryptoCompare (as of August 2020):"
-msgstr ""
+msgstr "主要な取引所（2020年8月時点でのCryptoCompareの調査による）"
 
 #: tool/template-explore-exchanges.html:70
 msgid ""
@@ -478,21 +509,23 @@ msgid ""
 "and providers may vary significantly in their compliance, data security, "
 "and privacy practices."
 msgstr ""
+"免責事項: "
+"この情報はインターネット上の他の情報源から取得したものです。XRPL.orgは、いかなる取引所の支持、推奨も、取引所やデジタル資産の購入および販売に関するいかなる表明も一般的には行いません。サードパーティやサードパーティ技術を利用する前に、ご自身でデューデリジェンスを実施することをお勧めします。コンプライアンス、データセキュリティ、プライバシー慣習はプロバイダーによって大きく異なる場合があります。"
 
 #: tool/template-explore-wallets.html:24
 msgid "Options for Storing XRP"
-msgstr ""
+msgstr "XRPを保管する際の選択肢"
 
 #: tool/template-explore-wallets.html:25
 msgid "XRP Wallets"
-msgstr ""
+msgstr "XRPウォレット"
 
 #: tool/template-explore-wallets.html:28
 msgid ""
 "Digital wallets are pieces of software that allow people to send, receive"
 " and store cryptocurrencies, including XRP. There are two types of "
 "digital wallets: custodial and non-custodial."
-msgstr ""
+msgstr "デジタルウォレットとは、XRPなどの暗号資産の送金、受け取り、保管を行えるソフトウェアです。デジタルウォレットには、カストディ型と非カストディ型という2つのタイプがあります。"
 
 #: tool/template-explore-wallets.html:29
 msgid ""
@@ -500,15 +533,15 @@ msgid ""
 " withdraw cryptocurrency on a user's behalf. Non-custodial wallets do not"
 " manage a user's private key, which is up to the user to manage, and "
 "therefore cannot send cryptocurrency on the user's behalf."
-msgstr ""
+msgstr "カストディ型ウォレットは、ユーザーの秘密鍵を管理しているため、ユーザーの代わりにウォレットが暗号資産を引き出すことができます。非カストディ型ウォレットは秘密鍵を管理せず、秘密鍵の管理はユーザー自身が行います。そのため、ユーザーの代わりにウォレットが暗号資産を送金することはできません。"
 
 #: tool/template-explore-wallets.html:34
 msgid "XRP Ledger Software Wallets:"
-msgstr ""
+msgstr "XRP Ledgerソフトウェアウォレット:"
 
 #: tool/template-explore-wallets.html:50
 msgid "Hardware Wallets:"
-msgstr ""
+msgstr "ハードウェアウォレット:"
 
 #: tool/template-explore-wallets.html:63
 msgid ""
@@ -519,6 +552,8 @@ msgid ""
 "and providers may vary significantly in their compliance, data security, "
 "and privacy practices."
 msgstr ""
+"免責事項: "
+"XRPL.orgは、いかなるウォレットの支持、推奨も、ウォレットやデジタル資産の購入および販売に関するいかなる表明も一般的には行いません。サードパーティやサードパーティ技術を利用する前に、ご自身でデューデリジェンスを実施することをお勧めします。コンプライアンス、データセキュリティ、プライバシー慣習はプロバイダーによって大きく異なる場合があります。"
 
 #: tool/template-footer.html:28
 msgid "License"
@@ -535,36 +570,35 @@ msgstr "先頭へ"
 # Link to edit this page on GitHub
 #: tool/template-github-edit.html:26
 msgid "Edit"
-msgstr "Edit"
+msgstr "編集"
 
 #: tool/template-home.html:22
 msgid "Scroll Down"
-msgstr ""
+msgstr "下にスクロール"
 
 #: tool/template-home.html:25
 msgid "XRP: The Best Digital Asset for Payments"
-msgstr ""
+msgstr "XRP: 送金に最適なデジタルアセット"
 
-#: tool/template-home.html:26 tool/template-learn-impact.html:68
-#: tool/template-learn-uses.html:93
+#: tool/template-home.html:26 tool/template-learn-uses.html:93
 msgid "Learn More"
-msgstr "もっと知る"
+msgstr "もっと詳しく知る"
 
 #: tool/template-home.html:27
 msgid "Build with XRP"
-msgstr ""
+msgstr "XRPを組み込む"
 
 #: tool/template-home.html:32
 msgid "XRP Ledger"
-msgstr ""
+msgstr "XRP Ledger"
 
 #: tool/template-home.html:36
 msgid "What is XRPL.org?"
-msgstr ""
+msgstr "XRPL.orgとは何ですか?"
 
 #: tool/template-home.html:37
 msgid "A Community-Driven Resource for All Things XRP and XRP Ledger"
-msgstr ""
+msgstr "XRPとXRP Ledgerのあらゆるものを提供する、コミュニティ主体のリソース"
 
 #: tool/template-home.html:38
 msgid ""
@@ -573,34 +607,36 @@ msgid ""
 "source for technical information, reference materials, tools and all "
 "things XRP."
 msgstr ""
+"XRP "
+"Ledger（XRPL）で開発している開発者の方も、ただブロックチェーンやデジタルアセットについて知りたいだけだという方も、XRPL.orgでは役立つ技術情報、リファレンス資料、ツールなど、XRPのあらゆるものを見つけることができます。"
 
 #: tool/template-home.html:48 tool/template-learn-overview.html:49
 #: tool/template-learn-overview.html:142
 msgid "Fast"
-msgstr ""
+msgstr "高速性"
 
 #: tool/template-home.html:52 tool/template-learn-overview.html:59
 #: tool/template-learn-overview.html:160
 msgid "Scalable"
-msgstr ""
+msgstr "スケーラブル"
 
 #: tool/template-home.html:60 tool/template-learn-overview.html:54
 #: tool/template-learn-overview.html:151
-msgid "Low Cost"
-msgstr ""
+msgid "Low-Cost"
+msgstr "低価格"
 
 #: tool/template-home.html:64 tool/template-learn-overview.html:64
 #: tool/template-learn-overview.html:169
 msgid "Sustainable"
-msgstr ""
+msgstr "持続可能性"
 
 #: tool/template-home.html:70 tool/template-learn-overview.html:28
 msgid "What is XRP?"
-msgstr ""
+msgstr "XRPとは何ですか?"
 
 #: tool/template-home.html:71
 msgid "A Digital Asset Built for Payments"
-msgstr ""
+msgstr "送金のために設計されたデジタルアセット"
 
 #: tool/template-home.html:72
 msgid ""
@@ -608,75 +644,77 @@ msgid ""
 " on the XRP Ledger—an open-source, permissionless and decentralized "
 "blockchain technology that can settle transactions in 3-5 seconds."
 msgstr ""
+"XRPは、送金のために設計されたデジタルアセットであり、XRP Ledger固有のデジタルアセットです。XRP "
+"Ledgerは、パーミッションを必要としない、オープンソースの分散型ブロックチェーン技術であり、3秒から5秒で取引を決済できます。"
 
 #: tool/template-home.html:73
 msgid ""
 "It is the best way to move money around the world; the fuel for our "
 "growing digital economy."
-msgstr ""
+msgstr "XRPは国際送金に最適です。拡大するデジタル経済をさらに活性化する原動力になります。"
 
 #: tool/template-home.html:75
 msgid "Learn about XRP"
-msgstr ""
+msgstr "XRPの詳細"
 
 #: tool/template-home.html:76 tool/template-learn-history.html:35
 msgid "XRP History"
-msgstr ""
+msgstr "XRPの沿革"
 
 #: tool/template-home.html:83
 msgid "Use Cases"
-msgstr ""
+msgstr "ユースケース"
 
 #: tool/template-home.html:84
 msgid "XRP in the Real World"
-msgstr ""
+msgstr "XRPの実際の利用例"
 
 #: tool/template-home.html:89
 msgid "Uses of XRP"
-msgstr ""
+msgstr "XRPの利用例"
 
 #: tool/template-home.html:90
 msgid ""
 "XRP is helping solve previously unsolvable problems for people and "
 "industries around the world, and is one of the only digital assets with a"
 " commercial use case."
-msgstr ""
+msgstr "XRPは、世界中の人々や業界が抱える、今まで解決できなかった問題を解決する一助を担っています。また、商用で利用されている数少ないデジタルアセットの1つでもあります。"
 
 #: tool/template-home.html:91 tool/template-learn-overview.html:183
 msgid "Explore Uses"
-msgstr ""
+msgstr "利用例を見る"
 
 #: tool/template-home.html:94
 msgid "Businesses on the Ledger"
-msgstr ""
+msgstr "Ledgerを利用している企業"
 
 #: tool/template-home.html:95
 msgid ""
 "From gaming to web monetization, XRP and the XRP Ledger are powering "
 "innovative new technology across the payments space."
-msgstr ""
+msgstr "XRPとXRP Ledgerは、ゲームからウェブ収益化まで、決済のさまざまな分野で革新的な新技術を支えています。"
 
 #: tool/template-home.html:96
 msgid "Explore Businesses"
-msgstr ""
+msgstr "企業を見る"
 
 #: tool/template-home.html:99
 msgid "Real-World Impact"
-msgstr ""
+msgstr "実社会へのインパクト"
 
 #: tool/template-home.html:100
 msgid ""
 "With its real-world utility and inherently green design, XRP helps ensure"
 " a more sustainable future for our planet and global economy."
-msgstr ""
+msgstr "XRPは実社会のインフラであり、その本質からして環境にやさしい設計です。XRPは私たちの地球と国際経済の持続可能な未来をサポートします。"
 
 #: tool/template-home.html:101
 msgid "Explore Impact"
-msgstr ""
+msgstr "インパクトを見る"
 
 #: tool/template-home.html:114
 msgid "Green by Nature"
-msgstr ""
+msgstr "本質的に環境にやさしい"
 
 #: tool/template-home.html:115
 msgid ""
@@ -685,6 +723,9 @@ msgid ""
 "through a unique “<a href=\"intro-to-consensus.html\">consensus</a>” "
 "mechanism that consumes negligible energy."
 msgstr ""
+"XRPはサステナビリティを念頭に置いて設計されました。プルーフオブワークを使用する他のブロックチェーンとは異なり、XRP "
+"Ledgerは独自の「<a href=\"intro-to-"
+"consensus.html\">コンセンサス</a>」メカニズムを通して取引を確認するため、エネルギーをごくわずかしか消費しません。"
 
 #: tool/template-home.html:116
 msgid ""
@@ -692,35 +733,72 @@ msgid ""
 "other popular crypto with the <a href=\"carbon-calculator.html\">Green "
 "Currency Calculator</a>."
 msgstr ""
+"現金、クレジットカード、他の主要な暗号資産と比べてXRPのエネルギー消費量がどのくらいか、<a href=\"carbon-"
+"calculator.html\">Green Currency Calculator</a>でご覧ください。"
 
 #: tool/template-home.html:117
 msgid "Go Green"
-msgstr ""
+msgstr "環境を大切にする"
 
 #: tool/template-home.html:118
 msgid "Partners in Sustainability"
+msgstr "サステナビリティのパートナー"
+
+#: tool/template-landing-docs.html:8
+msgid "XRP Ledger Documentation"
 msgstr ""
+
+#: tool/template-landing-docs.html:9
+msgid "Dive into our documentation and start integrating with the XRP Ledger."
+msgstr ""
+
+#: tool/template-landing-docs.html:10
+msgid ""
+"Browse by category, or skip straight to the <a href=\"#full-doc-"
+"index\">full documentation index</a>."
+msgstr ""
+
+#: tool/template-landing-docs.html:33
+#, python-format
+msgid "View All %(doc_type_name)s"
+msgstr "全ての%(doc_type_name)s"
+
+#: tool/template-landing-docs.html:45
+msgid "Full Documentation Index"
+msgstr "全ドキュメントの目次"
+
+#: tool/template-landing-references.html:9
+msgid ""
+"Or, skip ahead to the <a href=\"#full-reference-index\">Full Reference "
+"Index</a>."
+msgstr "<a href=\"#full-reference-index\">全リファレンス目次</a>にジャンプ。"
+
+#: tool/template-landing-references.html:62
+msgid "Full Reference Index"
+msgstr "全リファレンス目次"
 
 #: tool/template-learn-history.html:24
-msgid "XRP’s Origin"
-msgstr ""
+msgid "Build a Better Bitcoin"
+msgstr "もっと優れたBitcoinをつくる"
 
 #: tool/template-learn-history.html:25
-msgid "Build a Better Bitcoin"
-msgstr ""
+msgid "XRP’s Origin"
+msgstr "XRPの原点"
 
 #: tool/template-learn-history.html:28
 msgid ""
 "In 2011, three engineers—David Schwartz, Jed McCaleb and Arthur "
 "Britto—began developing the XRP Ledger."
 msgstr ""
+"2011年に、David Schwartz、Jed McCaleb、Arthur Brittoという3人のエンジニアがXRP "
+"Ledgerの開発に着手しました。"
 
 #: tool/template-learn-history.html:29
 msgid ""
 "Fascinated by Bitcoin, they set out to create a better version that "
 "improved upon its limitations—with the goal of creating a digital asset "
 "that was more sustainable and built specifically for payments."
-msgstr ""
+msgstr "Bitcoinに魅了されていた3人は、Bitcoinが持つ制約を改善したより優れたバージョンを作ることを目指し、さらに持続可能で決済に特化したデジタルアセットを構築するという目標を掲げました。"
 
 #: tool/template-learn-history.html:30
 msgid ""
@@ -728,6 +806,8 @@ msgid ""
 " joined by Chris Larsen and the group started the Company OpenCoin in "
 "September 2012 (now named Ripple)."
 msgstr ""
+"XRP Ledgerが初めてローンチされたのは2012年6月のことです。そのすぐ後にChris "
+"Larsenが加わり、2012年9月にOpenCoinという会社を創設しました（現在はRippleという名前になっています）。"
 
 #: tool/template-learn-history.html:31
 msgid ""
@@ -736,14 +816,17 @@ msgid ""
 "href=\"https://ripple.com/insights/explanation-ripples-xrp-escrow/\" "
 "target=\"_blank\">escrow</a>."
 msgstr ""
+"XRP Ledgerの創始者から800億XRPを贈与されたRippleは、それ以来、保有するXRPの一部を販売し、残りを<a "
+"href=\"https://ripple.com/insights/explanation-ripples-xrp-escrow/\" "
+"target=\"_blank\">Escrow</a>に預託しています。"
 
 #: tool/template-learn-history.html:36
 msgid "Timeline of XRP Evolution"
-msgstr ""
+msgstr "XRPの進化のタイムライン"
 
 #: tool/template-learn-history.html:42
 msgid "2011 XRP Ledger Development"
-msgstr ""
+msgstr "2011年、XRP Ledgerの開発"
 
 #: tool/template-learn-history.html:43
 msgid ""
@@ -755,53 +838,67 @@ msgid ""
 "href=\"https://bitcointalk.org/index.php?topic=10193.0\" "
 "target=\"_blank\">May 2011 forum post: “Bitcoin without mining”</a>)."
 msgstr ""
+"XRP Ledgerとその固有のデジタルアセットであるXRPの歴史は、2011年初頭にまでさかのぼります。David Schwartz、Jed "
+"McCaleb、Arthur Brittoという3人の開発者はBitcoinに魅了されていましたが、<a href=\"carbon-"
+"calculator.html\">マイニングには本質的に無駄が潜んでいる</a>と感じていました。そこで3人は、送金のためのより優れたシステムを構築することを目指しました（このアイデアは<a"
+" href=\"https://bitcointalk.org/index.php?topic=10193.0\" "
+"target=\"_blank\">2011年5月のフォーラム投稿「Bitcoin without mining」</a>で述べられています）。"
 
 #: tool/template-learn-history.html:44
-#, python-format
 msgid ""
 "Their initial observations about the high energy consumption and "
 "scalability issues that would plague Bitcoin proved prescient. (In 2019, "
 "estimates suggest <a href=\"carbon-calculator.html\">Bitcoin mining "
 "used</a> more energy than the entire country of Portugal!) Moreover, "
 "their initial read indicated that significant problems could arise if any"
-" miner obtained (or miners colluded to obtain) greater than 50% of the "
-"mining power—that risk persists with Bitcoin (and Ethereum) today as "
+" miner obtained (or miners colluded to obtain) greater than 50&#37; of "
+"the mining power—that risk persists with Bitcoin (and Ethereum) today as "
 "mining power has consolidated in China."
 msgstr ""
+"莫大なエネルギー消費量とスケーラビリティの問題が将来的にBitcoinを悩ませるだろうという最初の"
+"気付きには先見の明があったことが実証されました（2019年には、<a href=\"carbon-"
+"calculator.html\">Bitcoinのマイニングに使用されたエネルギー量</a>はポルトガルの国全体の"
+"エネルギー消費量を上回ったと推定されています）。また、3人は当初から、もしいずれかのマイナー"
+"（または共謀したマイナー集団）がマイニングパワーの50&#37;以上を獲得した場合、深刻な問題が"
+"発生するであろうと考えていました。Bitcoin（とEthereum）のマイニングパワーは中国に"
+"集中しているため、現在もなおそのリスクを抱えています。"
 
 #: tool/template-learn-history.html:50
 msgid "2012 XRP Launched"
-msgstr ""
+msgstr "2012年、XRPをローンチ"
 
 #: tool/template-learn-history.html:51
 msgid ""
 "In 2011 and early 2012, the trio of developers started a project to build"
 " a distributed ledger that improved upon these fundamental limitations of"
 " Bitcoin—their first ever code commit was in November 2011."
-msgstr ""
+msgstr "2011年から2012年の初頭に、3人はBitcoinが持つこのような根本的な制約を改善する、分散型のレジャーを構築するためのプロジェクトを開始しました。初めてコードをコミットしたのは2011年11月のことでした。"
 
 #: tool/template-learn-history.html:52
 msgid ""
 "They wrote code, that when executed, would create a distributed ledger, "
 "which they named Ripple. It included a digital asset that would be called"
 " “ripples” (XRP as the currency code) to follow the same naming "
-"convention as bitcoin (BTC). At the time, Ripple stood for the open-"
+"convention as Bitcoin (BTC). At the time, Ripple stood for the open-"
 "source project, the unique consensus ledger (Ripple Consensus Ledger), "
 "transaction protocol (Ripple Transaction Protocol or RTXP), the network "
 "(Ripple network) and the digital asset (known as “ripples”)."
 msgstr ""
+"実行されると分散型レジャーが作られるコードを作成し、それをRippleと名付けました。そのコードには、Bitcoin（BTC）の命名規則にならって、のちに「Ripple」（通貨コードはXRP）と呼ばれるようになるデジタルアセットが含まれていました。当時から、Rippleはオープンソースプロジェクト、独自のコンセンサスレジャー（Ripple"
+" Consensus Ledger）、取引プロトコル（Ripple Transaction "
+"Protocol（RTXP））、ネットワーク（Ripple Network）、デジタルアセット（「Ripple」）という考えに根ざしていました。"
 
 #: tool/template-learn-history.html:53
 msgid ""
 "In practice, this approach led to many, broad uses of “Ripple.” To "
 "clarify, the community simply started calling the digital asset, “XRP.”"
-msgstr ""
+msgstr "このアプローチでは「Ripple」という言葉が幅広い意味でよく使われるため、コミュニティでは明確にするためにデジタルアセットを「XRP」と呼び始めました。"
 
 #: tool/template-learn-history.html:54
 msgid ""
 "By June 2012, Schwartz, McCaleb and Britto completed code development and"
 " the XRP Ledger was fully functioning."
-msgstr ""
+msgstr "2012年6月には、Schwartz、McCaleb、Brittoがコードの開発を完了し、XRP Ledgerが完全に機能するようになっていました。"
 
 #: tool/template-learn-history.html:55
 msgid ""
@@ -809,7 +906,7 @@ msgid ""
 "XRP to a not-yet-formed private company that would work with the broader "
 "community as well as pursue its own payments mission. The ledger code "
 "itself would be open source and for anyone to use."
-msgstr ""
+msgstr "その時点で、3人は次の動きとして、まだ設立されていなかった非公開企業に800億XRPを贈与することを決めました。この会社がのちに幅広いコミュニティと連携しながら、独自に掲げた決済のミッションに取り組むことになります。レジャーのコード自体はオープンソースで、誰でも使用できるようになります。"
 
 #: tool/template-learn-history.html:56
 msgid ""
@@ -817,35 +914,31 @@ msgid ""
 "future company, and they eventually created the company along with Chris "
 "Larsen in September 2012."
 msgstr ""
+"3人とこれから設立される会社との間でXRPをどのように分配するか話し合って合意し、最終的に、Chris "
+"Larsenが合流して2012年9月に会社を設立しました。"
 
 #: tool/template-learn-history.html:57
-#, python-format
 msgid ""
-"While from a developer standpoint the XRP Ledger had already been created"
-" in early 2012, the final ledger stuck in late 2012, due to some "
-"stability issues. Once it stuck, 80% of the XRP was gifted to the "
-"company—initially called NewCoin and renamed quickly to OpenCoin."
+"Once the XRP Ledger was fully functioning, 80&#37; of the XRP was gifted "
+"to the company—initially called NewCoin and renamed quickly to OpenCoin."
 msgstr ""
+"XRP Ledgerが完全に機能するようになると、XRPの80&#37;がこの会社に贈与されました。"
+"当初の名前はNewCoinでしたが、すぐにOpenCoinという名前に変更されました。"
 
 #: tool/template-learn-history.html:58
-#, python-format
-msgid ""
-"Once the XRP Ledger was fully functioning, 80% of the XRP was gifted to "
-"the company—initially called NewCoin and renamed quickly to OpenCoin."
-msgstr ""
-
-#: tool/template-learn-history.html:59
 msgid ""
 "Chris Larsen was the CEO of OpenCoin, and at the company's founding, Jed "
 "was co-founder and CTO, David Schwartz was the Chief Cryptography "
 "Officer, and Arthur Britto an advisor."
 msgstr ""
+"Chris LarsenがOpenCoinのCEOになり、創業時点では、Jed McCalebが共同創業者兼CTO、David "
+"Schwartzが最高暗号技術責任者、Arthur Brittoが相談役でした。"
+
+#: tool/template-learn-history.html:64
+msgid "2013 OpenCoin Rebranded To Ripple Labs"
+msgstr "2013年、OpenCoinからRipple Labsにブランド変更"
 
 #: tool/template-learn-history.html:65
-msgid "2013 OpenCoin Rebranded to Ripple Labs"
-msgstr ""
-
-#: tool/template-learn-history.html:66
 msgid ""
 "At the outset of the company, OpenCoin set out to revolutionize the "
 "global financial system. Despite the revolutionary ideals of many of "
@@ -853,9 +946,9 @@ msgid ""
 "should be used to overthrow the existing financial system. He believed "
 "that history’s most transformative innovations have always relied on the "
 "great ideas that came before them—not disrupting them."
-msgstr ""
+msgstr "会社の創立時点では、OpenCoinはグローバル金融システムを変革することを目指していました。Bitcoinの初期の信奉者の多くも革新という理想を掲げていましたが、それらとは異なり、Larsenは既存の金融システムを覆すためにブロックチェーン技術を使用するべきだとは考えていませんでした。歴史上で大きな変革を起こしてきたイノベーションはどれも、以前からあった優れたアイデアを活用したものであって、破壊してきたわけではないと考えていました。"
 
-#: tool/template-learn-history.html:67
+#: tool/template-learn-history.html:66
 msgid ""
 "In early conversations with potential customers, the team was asked about"
 " the differences between the Ripple project and OpenCoin company. With "
@@ -863,45 +956,49 @@ msgid ""
 "\"XRP\" more widely, company leaders decided to rebrand the company to "
 "Ripple Labs, which has been shortened over time to \"Ripple.\""
 msgstr ""
+"創立して間もないころ、見込み顧客との商談のなかで、Rippleプロジェクトと会社であるOpenCoinとの違いについて尋ねられました。コミュニティではデジタルアセットを通貨コードである「XRP」と広く呼ぶようになっていたことから、経営陣は会社をRipple"
+" Labsというブランドに変更することを決めました。それが次第に短縮して「Ripple」と呼ばれるようになりました。"
 
-#: tool/template-learn-history.html:68
+#: tool/template-learn-history.html:67
 msgid ""
 "Today, the company uses XRP and the XRP Ledger for liquidity management "
 "in its cross-border payments business. Ripple also remains a stakeholder "
 "and contributor to the broader XRP community."
 msgstr ""
+"現在、この会社は自社の国際送金事業でXRPとXRP "
+"Ledgerを流動性管理に使用しています。Rippleは今でも、広範なXRPコミュニティのステークホルダーでありコントリビューターです。"
 
-#: tool/template-learn-history.html:76
+#: tool/template-learn-history.html:75
 msgid "Podcast"
-msgstr ""
+msgstr "ポッドキャスト"
+
+#: tool/template-learn-history.html:80
+msgid "How Digital Assets Will Help Create a Sustainable Global Economy"
+msgstr "デジタルアセットが持続可能な国際経済の構築に役立つ仕組み"
 
 #: tool/template-learn-history.html:81
-msgid "How Digital Assets Will Help Create a  Sustainable Global Economy"
-msgstr ""
-
-#: tool/template-learn-history.html:82
 msgid ""
 "Hear from Ripple co-founder Chris Larsen in the inaugural episode of the "
 "Block Stars podcast."
-msgstr ""
+msgstr "Block Starsポッドキャストの第1回目のエピソードで、Rippleの共同創業者であるChris Larsenの話をお楽しみください。"
 
-#: tool/template-learn-history.html:83
+#: tool/template-learn-history.html:82
 msgid "Listen Now"
-msgstr ""
+msgstr "今すぐ聞く"
 
 #: tool/template-learn-impact.html:23
 msgid "Faster, Cheaper, Green Money"
-msgstr ""
+msgstr "より速く、低コストで、環境にやさしい送金"
 
 #: tool/template-learn-impact.html:24
 msgid "Impact"
-msgstr ""
+msgstr "インパクト"
 
 #: tool/template-learn-impact.html:27
 msgid ""
 "The digital asset XRP is a truly global currency—ideally suited to enable"
-" today’s global economy."
-msgstr ""
+" today’s growing digital economy."
+msgstr "デジタルアセットのXRPは真にグローバルな通貨であり、今日の国際経済を実現するのに最適です。"
 
 #: tool/template-learn-impact.html:28
 msgid ""
@@ -909,20 +1006,22 @@ msgid ""
 "operates help to move money around the world faster, cheaper and more "
 "sustainably than any other currency available today."
 msgstr ""
+"両替に最適な手段であるXRPとその基盤となるXRP "
+"Ledgerは、現在利用できる他のどの通貨よりも速く、低コストで持続可能な国際送金をサポートします。"
 
 #: tool/template-learn-impact.html:29
 msgid ""
 "It was designed this way, and it’s proving its impact in global payments "
 "and beyond."
-msgstr ""
+msgstr "このように設計されていることで、国際送金だけにとどまらず、さまざまなところでそのインパクトが実証されています。"
 
 #: tool/template-learn-impact.html:39
 msgid "Global Payments"
-msgstr ""
+msgstr "国際送金"
 
 #: tool/template-learn-impact.html:44
 msgid "Creating Economic Opportunity"
-msgstr ""
+msgstr "経済的機会の創出"
 
 #: tool/template-learn-impact.html:45
 msgid ""
@@ -931,10 +1030,12 @@ msgid ""
 "million migrants</a> worldwide, sending and receiving money across "
 "borders is expensive, unreliable and complex."
 msgstr ""
+"世界中の<a "
+"href=\"https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf\">2億7,200万人を超える移民</a>にとって、国際送金は高額なコストがかかり、信頼性が低くて複雑なのが現状です。"
 
 #: tool/template-learn-impact.html:48
 msgid "XRP and the XRP Ledger are changing that."
-msgstr ""
+msgstr "XRPとXRP Ledgerがそれを変革します。"
 
 #: tool/template-learn-impact.html:49
 msgid ""
@@ -942,86 +1043,86 @@ msgid ""
 "world. They use it to source liquidity for international transactions, "
 "and because of the unprecedented efficiency it offers, they’re able to "
 "both bring down costs and improve services."
-msgstr ""
+msgstr "この技術は世界中の金融機関で採用されています。国際取引の流動性を供給する際に使用されているほか、これまでにない効率性を実現できるため、コスト削減とサービス向上を同時に達成できます。"
 
 #: tool/template-learn-impact.html:51
 msgid ""
 "This means hundreds of  millions of people worldwide who need to move "
 "money safely and securely across borders can do so more affordably and "
 "reliably than ever before."
-msgstr ""
+msgstr "つまり、安心かつ安全な国際送金を求める何億人もの人々が、かつてないほどの低コストと高い信頼性で送金できるようになるということです。"
 
 #: tool/template-learn-impact.html:57 tool/template-learn-impact.html:92
 msgid "Future of Finance"
-msgstr ""
-
-#: tool/template-learn-impact.html:62
-msgid "Building for the Future"
-msgstr ""
+msgstr "未来の金融"
 
 #: tool/template-learn-impact.html:63
+msgid "Building for the Future"
+msgstr "未来を見据えて構築されています"
+
+#: tool/template-learn-impact.html:64
 msgid ""
 "Digital assets and blockchain technology are the future of finance. Open "
 "and decentralized, they offer the first-ever global standards for value "
 "exchange broadly—whether it’s money, stocks, loyalty points, intellectual"
 " property or more."
-msgstr ""
+msgstr "デジタルアセットとブロックチェーン技術は未来の金融です。オープンで分散化されており、資金、株式、ロイヤルティポイント、知的財産などさまざまな価値を交換するための史上初の国際標準を提供します。"
 
-#: tool/template-learn-impact.html:65
+#: tool/template-learn-impact.html:66
 msgid ""
 "This has spawned increasing adoption of the technology across the "
 "financial services industry, from retail and institutional investment to "
 "commercial use cases like cross-border payments."
-msgstr ""
+msgstr "そのため、金融サービス業界でこの技術を採用する事例が増えています。その用途は、リテール、機関投資から、国際送金など商用の用途まで幅広いものです。"
 
-#: tool/template-learn-impact.html:66
+#: tool/template-learn-impact.html:67
 msgid ""
 "With usage growing, it’s critical that measures are taken today to ensure"
 " that the technology is environmentally sustainable tomorrow."
-msgstr ""
+msgstr "利用が広がるなか、この技術が将来的にも環境の観点から持続可能となるような対策を現時点で取っていくことが重要になります。"
 
 #: tool/template-learn-impact.html:73
 msgid "Digital Assets"
-msgstr ""
+msgstr "デジタルアセット"
 
 #: tool/template-learn-impact.html:78
 msgid "Are All Digital Assets Alike?"
-msgstr ""
+msgstr "どのデジタルアセットも似たようなものでしょうか?"
 
 #: tool/template-learn-impact.html:79
 msgid ""
 "Each digital asset has different strengths that make it ideal for various"
 " use cases today."
-msgstr ""
+msgstr "デジタルアセットにはそれぞれ独自の強みがあり、現代のさまざまな用途に適しています。"
 
 #: tool/template-learn-impact.html:82
 msgid ""
 "Bitcoin is recognized broadly as a store of value and ether (ETH) for use"
 " in smart contracts."
-msgstr ""
+msgstr "Bitcoinは価値の貯蔵場所として広く認識されており、Ethereum（ETH）はスマートコントラクトでの使用に適しています。"
 
 #: tool/template-learn-impact.html:83
 msgid ""
 "XRP is optimal for transacting—it’s fast, cheap, scalable and energy-"
 "efficient. It was designed for use in global payments."
-msgstr ""
+msgstr "XRPは処理が速く、低コストで、スケーラブルであり、省エネルギーであるため、取引に最適です。XRPは国際送金での使用を念頭に置いて設計されています。"
 
 #: tool/template-learn-impact.html:86
 msgid ""
 "And, the same characteristics that make it ideal for payments mean it’s "
 "also better for our environment. XRP is green by nature."
-msgstr ""
+msgstr "また、送金に最適なこの特徴は、環境にもよい効果をもたらします。XRPは本質的に環境にやさしいデジタルアセットです。"
 
 #: tool/template-learn-impact.html:97
 msgid "What Makes XRP and the XRP Ledger Green?"
-msgstr ""
+msgstr "XRPとXRP Ledgerはなぜ環境にやさしいのでしょうか?"
 
 #: tool/template-learn-impact.html:98
 msgid ""
 "Most currency today—whether digital or physical—is not environmentally "
-"friendly. The potential for long-term impact on our planet could hold "
+"friendly. The potential long-term impact on our planet could hold "
 "startling consequences."
-msgstr ""
+msgstr "デジタル通貨でも物理的な通貨でも、現在利用されているほとんどの通貨は環境にやさしくありません。地球に長期的な影響を及ぼす可能性があり、深刻な結果が解消されないおそれがあります。"
 
 #: tool/template-learn-impact.html:101
 msgid ""
@@ -1030,6 +1131,8 @@ msgid ""
 " consumes negligible energy and all XRP currency is already in "
 "circulation."
 msgstr ""
+"デジタルアセットであるXRPは、サステナビリティを念頭に置いて設計されています。XRP "
+"Ledgerは独自の「コンセンサス」メカニズムを通して取引を処理するため、エネルギーをごくわずかしか消費しません。また、XRP通貨はすべて、市場に出回っています。"
 
 #: tool/template-learn-impact.html:102
 msgid ""
@@ -1038,7 +1141,7 @@ msgid ""
 "algorithm requires “mining.” Mining is an incredibly energy-intensive "
 "process for validating transactions that consumes more energy in a year "
 "than entire countries."
-msgstr ""
+msgstr "Bitcoinなど他のデジタルアセットは、取引の確認と新規コインの創出に、XRPとは異なる技術を使用しています。この「プルーフオブワーク」アルゴリズムでは「マイニング」が必要です。マイニングとは、取引の検証を行うために驚くほどのエネルギーを集中的に使用するプロセスです。その年間のエネルギー消費量は国全体の消費量を上回ります。"
 
 #: tool/template-learn-impact.html:105
 msgid ""
@@ -1046,25 +1149,25 @@ msgid ""
 "impact goes beyond energy consumption—eutrophication (due to waste), "
 "photochemical ozone creation, greenhouse gas emissions and more factor "
 "into the equation."
-msgstr ""
+msgstr "現金も相当の二酸化炭素排出量があります。その環境への影響は、エネルギー消費量だけでなく、廃棄による富栄養化、光化学オゾンの発生、温室効果ガスの排出など、さまざまな要素がかかわってきます。"
 
 #: tool/template-learn-impact.html:106
 msgid ""
 "Adopting XRP more broadly will help limit this waste and ensure a "
 "sustainable future for our planet and global economy."
-msgstr ""
+msgstr "XRPを幅広く採用すれば、この無駄を抑制して、私たちの地球と国際経済の持続可能な未来を実現できます。"
 
 #: tool/template-learn-impact.html:109
 msgid "Discover the Green Currency Calculator"
-msgstr ""
+msgstr "Green Currency Calculatorを見る"
 
 #: tool/template-learn-overview.html:23
 msgid "XRP Overview"
-msgstr ""
+msgstr "XRPの概要"
 
 #: tool/template-learn-overview.html:24
 msgid "Your Questions About XRP, Answered."
-msgstr ""
+msgstr "XRPに関する質問にお答えします"
 
 #: tool/template-learn-overview.html:30
 msgid ""
@@ -1073,58 +1176,60 @@ msgid ""
 "href=\"https://www.distributedagreement.com/2018/09/24/what-"
 "is-a-blockchain/\" target=\"_blank\">blockchain technology</a>."
 msgstr ""
+"XRPとは、XRP Ledger（パーミッションを必要としない、オープンソースで分散型の<a "
+"href=\"https://www.distributedagreement.com/2018/09/24/what-"
+"is-a-blockchain/\" target=\"_blank\">ブロックチェーン技術</a>）に固有のデジタルアセットです。"
 
 #: tool/template-learn-overview.html:31
 msgid ""
 "Created in 2012 specifically for payments, XRP can settle transactions on"
 " the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, "
 "cheaper and greener than any other digital asset.  "
-msgstr ""
+msgstr "送金に特化したデジタルアセットとして2012年に作成されたXRPは、レジャーの取引を3秒から5秒で決済できます。より優れたBitcoinをつくることを目指して設計されており、他のどのデジタルアセットよりも速く、低コストで、環境にやさしいのが特徴です。"
 
 #: tool/template-learn-overview.html:37 tool/template-learn-overview.html:42
 msgid "Benefits"
-msgstr ""
+msgstr "メリット"
 
 #: tool/template-learn-overview.html:43
 msgid "XRP"
-msgstr ""
+msgstr "XRP"
 
 #: tool/template-learn-overview.html:50
 msgid "3-5 seconds to settle"
-msgstr ""
+msgstr "3秒から5秒で決済完了"
 
 #: tool/template-learn-overview.html:51
 msgid "500 seconds to settle"
-msgstr ""
+msgstr "500秒で決済完了"
 
 #: tool/template-learn-overview.html:55
-msgid "$0.00002/transaction"
-msgstr ""
+msgid "$0.0002/transaction"
+msgstr "$0.0002（1取引あたり）"
 
 #: tool/template-learn-overview.html:56
 msgid "$0.50/transaction"
-msgstr ""
+msgstr "$0.50（1取引あたり）"
 
 #: tool/template-learn-overview.html:60
-msgid "1500 transaction per second"
-msgstr ""
+msgid "1,500 transactions per second"
+msgstr "1秒あたり1,500取引"
 
 #: tool/template-learn-overview.html:61
 msgid "3 transactions per second"
-msgstr ""
+msgstr "1秒あたり3取引"
 
 #: tool/template-learn-overview.html:65
 msgid "Environmentally sustainable (negligible energy consumption)"
-msgstr ""
+msgstr "環境の観点から持続可能（エネルギーをごくわずかしか消費しない）"
 
 #: tool/template-learn-overview.html:66
-#, python-format
-msgid "0.3% of global energy consumption"
-msgstr ""
+msgid "0.3&#37; of global energy consumption"
+msgstr "世界のエネルギー消費量の0.3&#37;を占める"
 
 #: tool/template-learn-overview.html:78
 msgid "Finite Supply of XRP"
-msgstr ""
+msgstr "XRPの供給量は有限です"
 
 #: tool/template-learn-overview.html:79
 msgid ""
@@ -1132,21 +1237,21 @@ msgid ""
 "it a convenient instrument in bridging two different currencies quickly "
 "and efficiently. It is freely exchanged on the open market and used in "
 "the real world for enabling cross-border payments and microtransactions."
-msgstr ""
+msgstr "XRPは中央の仲介機関を必要とせずに直接送金できるため、2つの通貨間で迅速に効率よく取引できる便利な手段です。オープンな市場で自由に取引されており、実社会で国際送金や少額取引に使用されています。"
 
 #: tool/template-learn-overview.html:80
 msgid ""
 "Unlike Bitcoin, there is a finite amount of XRP. All XRP is already in "
 "existence today—100 billion in total."
-msgstr ""
+msgstr "Bitcoinとは異なり、XRPの供給量は有限です。XRPの総額は1,000億XRPであり、そのすべてが市場に出回っています。"
 
 #: tool/template-learn-overview.html:81
 msgid "History of XRP"
-msgstr ""
+msgstr "XRPの沿革"
 
 #: tool/template-learn-overview.html:87
 msgid "How Does the XRP Ledger Work?"
-msgstr ""
+msgstr "XRP Ledgerはどのような仕組みですか?"
 
 #: tool/template-learn-overview.html:90
 msgid ""
@@ -1155,6 +1260,9 @@ msgid ""
 "participants composed of software engineers, server operators and <a "
 "href=\"run-a-rippled-validator.html\">validators</a>."
 msgstr ""
+"XRP Ledgerは、誰でも構築が可能なオープンソース技術です。ソフトウェアエンジニア、サーバーオペレーター、<a href=\"run-a"
+"-rippled-validator.html\">バリデータ</a>など多様な参加者で構成されるグローバルな「XRPコミュニティ」が、XRP "
+"Ledgerを管理しています。"
 
 #: tool/template-learn-overview.html:91
 msgid ""
@@ -1162,6 +1270,8 @@ msgid ""
 "agreement on the order of XRP transactions every 3-5 seconds. This "
 "agreement serves as the final and irreversible settlement."
 msgstr ""
+"XRP "
+"Ledgerはコンセンサスプロトコルを使用します。このプロトコルでは、バリデータが3秒から5秒ごとにXRP取引のオーダーについて合意に至ります。この合意が、最終的な取り消し不可の決済として機能します。"
 
 #: tool/template-learn-overview.html:94
 msgid ""
@@ -1172,17 +1282,20 @@ msgid ""
 " twin goals of maximizing transaction throughput while keeping "
 "transaction fees as low as possible."
 msgstr ""
+"取引は、決定論的な順序で実行されるため、二重支払や不正行為を防ぐことができます。他のブロックチェーンとは異なり、取引手数料は取引実行の一環として消却されます。XRP"
+" "
+"Ledgerは、取引スループットを最大化しながら取引手数料をできるだけ低く抑えるという2つの目標の下、手数料をほぼリアルタイムで調整して、ネットワークの状況に対応します。"
 
 #: tool/template-learn-overview.html:95
 msgid ""
 "All servers in the network process each transaction according to the same"
 " rules, and any transaction that follows the protocol is confirmed as "
 "soon as validators reach a quorum."
-msgstr ""
+msgstr "ネットワーク内のすべてのサーバーが、同じルールに従って各取引を処理します。このプロトコルに従っている取引はすべて、バリデータが定数に達した時点ですぐに確認されます。"
 
 #: tool/template-learn-overview.html:100
 msgid "XRP Validators"
-msgstr ""
+msgstr "XRPのバリデータ"
 
 #: tool/template-learn-overview.html:106
 msgid ""
@@ -1191,14 +1304,16 @@ msgid ""
 "on the ledger, operated by  universities, exchanges, businesses and "
 "individuals."
 msgstr ""
+"バリデータは誰でも運営できます。現在、レジャーでは、大学、取引所、企業、個人が運営している150以上の<a href=\"run-a"
+"-rippled-validator.html\" class=\"underline\">バリデータ</a>がアクティブです。"
 
 #: tool/template-learn-overview.html:107
 msgid "Get Technical"
-msgstr ""
+msgstr "技術を知る"
 
 #: tool/template-learn-overview.html:114
 msgid "Why Is XRP Useful?"
-msgstr ""
+msgstr "XRPはなぜ便利なのですか?"
 
 #: tool/template-learn-overview.html:115
 msgid ""
@@ -1208,27 +1323,33 @@ msgid ""
 "and-how-it-benefits-everyone/\" target=\"_blank\" "
 "class=\"underline\">Internet of Value</a>."
 msgstr ""
+"XRPは、スピード、コスト、持続可能性、スケーラビリティに優れています。これは、成長を促進して国際経済の真の可能性、つまり<a "
+"href=\"https://ripple.com/insights/the-internet-of-value-what-it-means-"
+"and-how-it-benefits-everyone/\" target=\"_blank\" "
+"class=\"underline\">価値のインターネット</a>を実現するための鍵となる要素です。"
 
 #: tool/template-learn-overview.html:119
 msgid "Businesses"
-msgstr ""
+msgstr "企業"
 
 #: tool/template-learn-overview.html:120
 msgid ""
 "Many businesses are building on the XRP Ledger, pursuing powerful use "
-"cases in decentralized finance micropayments, gaming, web monetization "
+"cases in decentralized finance, micropayments, gaming, web monetization "
 "and more. Additionally, Ripple, the technology company, is focused on "
 "building a network and infrastructure that leverages XRP to power faster,"
 " more affordable cross-border payments around the world."
 msgstr ""
+"多くの企業が、分散型金融マイクロペイメント、ゲーム、ウェブ収益化など、大きな効果をもたらす用途を実現するために、XRP "
+"Ledgerを基盤として開発しています。また、テクノロジー企業であるRippleも、XRPを活用したネットワークとインフラストラクチャを構築し、より速くて低コストな国際送金を実現するために取り組んでいます。"
 
 #: tool/template-learn-overview.html:121
 msgid "More About Businesses"
-msgstr ""
+msgstr "企業について詳しく見る"
 
 #: tool/template-learn-overview.html:124
 msgid "Individuals"
-msgstr ""
+msgstr "個人"
 
 #: tool/template-learn-overview.html:125
 msgid ""
@@ -1238,88 +1359,97 @@ msgid ""
 "XRP—or any currency, be it fiat or digital assets—to easily make "
 "purchases across any payments network."
 msgstr ""
+"個人の消費者は、XRPを利用することで、さまざまな通貨での国際送金が可能になります。例えば、<a "
+"href=\"https://payid.org/\" "
+"target=\"_blank\">PayID</a>を使用しているウォレットや取引所を通して、XRPはもちろん、法定通貨でもデジタルアセットでも任意の通貨を使って、誰もが任意の決済ネットワークで簡単に購入できます。"
 
 #: tool/template-learn-overview.html:126
 msgid "More About Uses"
-msgstr ""
+msgstr "使用について詳しく見る"
 
 #: tool/template-learn-overview.html:129
 msgid "Developers"
-msgstr ""
+msgstr "開発者"
 
 #: tool/template-learn-overview.html:130
 msgid ""
 "By building on the XRP Ledger, developers can easily integrate payments "
 "into their products—seamlessly putting money at the center of their "
-"applications. Projects like the <a href=\"https://xpring.io/\">Xpring "
-"developer platform</a> are making it easier for developers to leverage "
-"XRP.  "
+"applications. Projects like the <a href=\"https://ripplex.io/\" "
+"target=\"_blank\">RippleX developer platform</a> are making it easier for"
+" developers to leverage XRP."
 msgstr ""
+"XRP Ledgerを基盤として開発すると、自社製品に決済を簡単に組み込めるので、決済を中心としたアプリケーションをシームレスに実現できます。<a"
+" href=\"https://ripplex.io/\" "
+"target=\"_blank\">RippleX開発者向けプラットフォーム</a>などのプロジェクトを利用すれば、XRPを活用するのがさらに簡単になります。"
 
 #: tool/template-learn-overview.html:131
 msgid "More About Developers"
-msgstr ""
+msgstr "開発者についてもっと見る"
 
 #: tool/template-learn-overview.html:136
 msgid "Internet of Value"
-msgstr ""
+msgstr "価値のインターネット"
 
 #: tool/template-learn-overview.html:143
 msgid ""
 "The XRP Ledger settles transactions faster than any other blockchain—in "
 "3-5 seconds."
-msgstr ""
+msgstr "XRP Ledgerは、他のどのブロックチェーンよりも速く、3秒から5秒で取引を決済します。"
 
 #: tool/template-learn-overview.html:152
 msgid ""
 "XRP transactions cost a fraction of a penny ($0.0002)—much less than "
 "other cryptocurrencies and average fiat payments."
-msgstr ""
+msgstr "XRP取引のコストはほんのわずか（$0.0002）で、他の暗号資産や一般的な法定の決済方法よりもはるかに低コストです。"
 
 #: tool/template-learn-overview.html:161
 msgid "The XRP Ledger can handle up to 1,500 transactions per second."
-msgstr ""
+msgstr "XRP Ledgerは1秒あたりに最大で1,500件の取引を処理できます。"
 
 #: tool/template-learn-overview.html:170
 msgid ""
 "XRP transactions settle without the enormous and unsustainable energy "
 "costs associated with proof-of-work (or mining)."
-msgstr ""
+msgstr "XRP取引の決済では、プルーフオブワーク（マイニング）に関連する、とても持続可能とはいえない莫大なエネルギーコストはかかりません。"
 
 #: tool/template-learn-overview.html:178
 msgid "Real"
-msgstr ""
+msgstr "使用実績がある"
 
 #: tool/template-learn-overview.html:179
 msgid ""
 "XRP is one of the only digital assets with a proven, real-world use case:"
 " cross-border payments."
-msgstr ""
+msgstr "XRPは、国際送金という実際のユースケースでの使用実績のある、数少ないデジタルアセットの1つです。"
 
 #: tool/template-learn-overview.html:188 tool/template-learn-uses.html:86
 msgid "Trading"
-msgstr ""
+msgstr "取引"
 
 #: tool/template-learn-overview.html:207
 msgid "How Is XRP Used in Trading?"
-msgstr ""
+msgstr "取引でXRPを使用するにはどうすればいいですか?"
 
 #: tool/template-learn-overview.html:208
 msgid ""
 "XRP is traded on more than 140 markets and <a "
 "href=\"exchanges.html\">exchanges</a> worldwide."
-msgstr ""
+msgstr "XRPは世界中の140以上の市場と<a href=\"exchanges.html\">取引所</a>で取引されています。"
 
 #: tool/template-learn-overview.html:209
 msgid ""
 "XRP’s low transaction fees, reliability and high speed enable traders to "
-"use the digital asset as high-speed, cost-efficient and reliable "
-"collateral across trading venues—<a "
-"href=\"https://ripple.com/insights/xrp-a-preferred-base-currency-for-"
-"arbitrage-trading/\" target=\"_blank\">seizing arbitrage "
-"opportunities</a>, servicing margin calls and managing general trading "
-"inventory in real time."
+"use the digital asset as fast, cost-efficient and reliable collateral "
+"across trading venues—<a href=\"https://ripple.com/insights/xrp-a"
+"-preferred-base-currency-for-arbitrage-trading/\" "
+"target=\"_blank\">seizing arbitrage opportunities</a>, servicing margin "
+"calls and managing general trading inventory in real time."
 msgstr ""
+"XRPは取引手数料が低額で、信頼性が高く、高速であるため、トレーダーが取引所間で、高速かつコスト効率が高く信頼できる担保としてこのデジタルアセットを使用し、<a"
+" href=\"https://ripple.com/insights/xrp-a-preferred-base-currency-for-"
+"arbitrage-trading/\" "
+"target=\"_blank\">裁定取引の好機をとらえたり</a>、マージンコールを支払ったり、全般的な取引インベントリを管理したりといったことをリアルタイムで行えるようになります。"
 
 #: tool/template-learn-overview.html:210
 msgid ""
@@ -1327,19 +1457,19 @@ msgid ""
 "traders worldwide are able to shift collateral, bridge currencies and "
 "switch from one crypto into another nearly instantly, across any exchange"
 " on the planet."
-msgstr ""
+msgstr "XRPとそのエコシステムが本質的に持つ特性により、トレーダーが世界中の任意の取引所で担保の移動、通貨間の取引、ある暗号資産から別の暗号資産への切り替えをほぼ瞬時に実行できます。"
 
 #: tool/template-learn-overview.html:211
 msgid "Find Out More"
-msgstr ""
+msgstr "詳細を見る"
 
 #: tool/template-learn-overview.html:217
 msgid "Ripple vs. XRP"
-msgstr ""
+msgstr "RippleとXRPの違い"
 
 #: tool/template-learn-overview.html:223
 msgid "What Is the Relationship Between Ripple and XRP?"
-msgstr ""
+msgstr "RippleとXRPはどのような関係があるのですか?"
 
 #: tool/template-learn-overview.html:224
 msgid ""
@@ -1354,43 +1484,52 @@ msgid ""
 "href=\"https://ripple.com/xrp/market-performance\" target=\"_blank\">XRP "
 "markets</a>."
 msgstr ""
+"Rippleは、自社が提供するプラットフォームであるRippleNetを通して、効果の高いグローバル決済事業を手軽に構築できるようにしているテクノロジー企業です。XRPはそれとは独立したデジタルアセットであり"
+"、効率的でコストパフォーマンスのよい国際送金を実現するRippleのOn-Demand "
+"Liquidityサービスで使用されています。2017年12月に、Rippleは安定した健全な<a "
+"href=\"https://ripple.com/xrp/market-performance\" "
+"target=\"_blank\">XRP市場</a>を支援するために、暗号で保護された<a "
+"href=\"https://ripple.com/insights/explanation-ripples-xrp-escrow/\" "
+"target=\"_blank\">Escrow</a>口座に550億XRPを預託しました。"
 
 #: tool/template-learn-overview.html:225
 msgid "Visit Ripple's Website"
-msgstr ""
+msgstr "Rippleのウェブサイトを見る"
 
 #: tool/template-learn-overview.html:231
 msgid "XRP Community"
-msgstr ""
+msgstr "XRPコミュニティ"
 
 #: tool/template-learn-overview.html:237
 msgid "XRPL.org: For the Community, by the Community"
-msgstr ""
+msgstr "XRPL.org: コミュニティのために、コミュニティの力で"
 
 #: tool/template-learn-overview.html:238
 msgid ""
 "XRPL.org is a community-driven resource for all things XRP and XRP Ledger"
 " (XRPL). If you’d like to suggest additional information around XRP, you "
-"can suggest changes here."
+"can suggest changes <a href=\"contribute.html\">here</a>."
 msgstr ""
+"XRPL.orgは、XRPとXRP "
+"Ledger（XRPL）のあらゆるものを提供する、コミュニティ主体のリソースです。XRPに関して提案したい追加の情報があれば、こちらから変更を提案できます。"
 
 #: tool/template-learn-overview.html:239
 msgid "Suggest Changes"
-msgstr ""
+msgstr "変更を提案する"
 
 #: tool/template-learn-uses.html:23
-msgid "The Best Way to Move Money Around the World"
-msgstr ""
+msgid "The Best Way To Move Money Around the World"
+msgstr "国際送金に最適な手段"
 
 #: tool/template-learn-uses.html:24
 msgid "Using XRP"
-msgstr ""
+msgstr "XRPの使用"
 
 #: tool/template-learn-uses.html:27
 msgid ""
 "XRP and the XRP Ledger are used to power innovative technology across the"
 " payments space."
-msgstr ""
+msgstr "XRPとXRP Ledgerは、決済のさまざまな分野で革新的な技術を支えています。"
 
 #: tool/template-learn-uses.html:28
 msgid ""
@@ -1398,25 +1537,23 @@ msgid ""
 "developers around the world are leveraging the XRP Ledger and its native "
 "digital asset, XRP—a faster, cheaper and greener currency."
 msgstr ""
+"国際送金から分散型金融まで、世界中の企業や開発者がXRP "
+"Ledgerとその固有のデジタルアセットであるXRPを活用しています。XRPは、高速・低コストで環境にやさしい通貨です。"
 
-#: tool/template-learn-uses.html:37
-msgid "Cross-Border payments"
-msgstr ""
-
-#: tool/template-learn-uses.html:42
+#: tool/template-learn-uses.html:37 tool/template-learn-uses.html:42
 msgid "Cross-Border Payments"
-msgstr ""
+msgstr "国際送金"
 
 #: tool/template-learn-uses.html:43
 msgid ""
 "Through RippleNet, financial institutions can use XRP to bridge two "
 "currencies in 3-5 seconds, ensuring payments are quickly sent and "
 "received in the local currency on either side of a transaction."
-msgstr ""
+msgstr "RippleNetを通じて、金融機関はXRPを利用し、2つの通貨の取引をわずか3秒から5秒で完了でき、取引の両側の現地通貨で資金の送金と着金を迅速に行えます。"
 
 #: tool/template-learn-uses.html:45
 msgid "Learn About On-Demand Liquidity"
-msgstr ""
+msgstr "On-Demand Liquidityについて"
 
 #: tool/template-learn-uses.html:56
 msgid ""
@@ -1424,77 +1561,79 @@ msgid ""
 "products for gaming, content and web monetization, among other "
 "applications where money is at the center."
 msgstr ""
+"企業はXRPとXRP "
+"Ledgerを活用して、決済を中心としたアプリケーションの中でも特に、ゲーム、コンテンツやウェブの収益化を実現する革新的な製品を構築しています。"
 
 #: tool/template-learn-uses.html:57
 msgid "Learn About XRP Ledger Businesses"
-msgstr ""
+msgstr "XRP Ledgerを利用している企業について見る"
 
 #: tool/template-learn-uses.html:62
 msgid "Digital Cryptocurrency"
-msgstr ""
+msgstr "デジタル暗号資産"
 
 #: tool/template-learn-uses.html:67
 msgid "Digital Cryptocurrency Wallets"
-msgstr ""
+msgstr "デジタル暗号資産ウォレット"
 
 #: tool/template-learn-uses.html:68
 msgid ""
 "Individuals can use mobile wallets to store private and public passwords "
 "and interact with various blockchains to send and receive digital assets,"
 " including XRP."
-msgstr ""
+msgstr "個人の消費者は、モバイルウォレットを使って秘密パスワードと公開パスワードを保管し、さまざまなブロックチェーンとの間でXRPなどのデジタルアセットを送受金できます。"
 
 #: tool/template-learn-uses.html:69
 msgid "Explore Wallets"
-msgstr ""
+msgstr "ウォレットについて見る"
 
 #: tool/template-learn-uses.html:74 tool/template-learn-uses.html:79
 msgid "Exchanges"
-msgstr ""
+msgstr "取引所"
 
 #: tool/template-learn-uses.html:80
 msgid ""
 "Market makers and individuals use exchanges to trade XRP and other "
 "digital assets. Exchanges are often also intermediaries in cross-border "
 "payments among financial institutions."
-msgstr ""
+msgstr "マーケットメーカーや個人は、取引所を利用してXRPや他のデジタルアセットを取引します。取引所は金融機関同士の国際送金の仲介機関ともなります。"
 
 #: tool/template-learn-uses.html:81
 msgid "Explore Exchanges"
-msgstr ""
+msgstr "取引所について見る"
 
 #: tool/template-learn-uses.html:91
 msgid "Institutional Trading"
-msgstr ""
+msgstr "機関投資"
 
 #: tool/template-learn-uses.html:92
 msgid ""
 "Market participants use XRP as a high-speed, cost-efficient and reliable "
 "trading collateral. This means seizing arbitrage opportunities, servicing"
 " margin calls and managing general trade inventory in real time."
-msgstr ""
+msgstr "市場参加者は、高速かつコスト効率が高く信頼できる取引担保としてXRPを使用し、裁定取引の好機をとらえたり、マージンコールを支払ったり、全般的な取引インベントリを管理したりといったことをリアルタイムで行っています。"
 
-#: tool/template-top-nav.html:37
+#: tool/template-top-nav.html:35
 msgid "Contribute"
-msgstr ""
+msgstr "貢献する"
 
 # Tooltip on the button to open the search box
-#: tool/template-top-nav.html:43
+#: tool/template-top-nav.html:41
 msgid "Open Search"
-msgstr ""
+msgstr "検索を開く"
 
-#: tool/template-top-nav.html:48 tool/template-top-nav.html:49
+#: tool/template-top-nav.html:46 tool/template-top-nav.html:47
 msgid "Search site..."
 msgstr "サイトを検索"
 
 # Tooltip on the button to close the search box
-#: tool/template-top-nav.html:51
+#: tool/template-top-nav.html:49
 msgid "Close Search"
-msgstr ""
+msgstr "検索を閉じる"
 
-#: tool/template-top-nav.html:60
+#: tool/template-top-nav.html:58
 msgid "Get Started"
-msgstr ""
+msgstr "始める"
 
 #: tool/template-validator-domain-verifier.html:5
 msgid "Domain Verification Checker"
@@ -1505,77 +1644,29 @@ msgid ""
 "This tool allows you to verify that <a href=\"xrp-ledger-toml.html"
 "#domain-verification\">domain verification</a> is properly configured."
 msgstr ""
-"このツールを使用すると、<a href=\"xrp-ledger-"
-"toml.html#ドメイン検証\">ドメイン検証</a>が正しく設定されていることを確認できます。"
+"このツールを使用すると、<a href=\"xrp-ledger-toml.html#ドメイン検証\">ドメイン検証</a>"
+"が正しく設定されていることを確認できます。"
 
 #: tool/template-validator-domain-verifier.html:8
 msgid ""
 "Enter the manifest found in your validator-keys.json file. Do not confuse"
 " this with your validator's secret key."
-msgstr "あなたのvalidator-keys.jsonファイルの中にあるマニフェストを入力してください。バリデータの秘密鍵と間違えなようにご注意下さい。"
+msgstr "validator-keys.jsonファイルに記載されているマニフェストを入力してください。バリデータの秘密鍵と間違えないようにご注意ください。"
 
 #: tool/template-validator-domain-verifier.html:9
 msgid "To do this with the validator-keys-tool use the following command:"
-msgstr "validator-keys-toolを使う場合は、以下のコマンドを使ってください:"
+msgstr "validator-keys-toolを使う場合は、以下のコマンドを使ってください。"
 
 #: tool/template-validator-domain-verifier.html:14
 msgid "Your Manifest Here"
-msgstr "マニフェストを入力する"
+msgstr "マニフェストをこちらに入力してください"
 
 #: tool/template-validator-domain-verifier.html:20
 msgid "Result"
 msgstr "結果"
 
-#~ msgid "Blog"
-#~ msgstr "ブログ"
-
-#~ msgid "Ripple Careers"
-#~ msgstr "Ripple 採用情報"
-
-#~ msgid "Ripple on GitHub"
-#~ msgstr "GitHubでRipple"
-
-#~ msgid "XRP Resources"
-#~ msgstr "XRP リソース"
-
-#~ msgid "Powering the Internet of Value."
-#~ msgstr "価値のインターネットの実現へ"
-
-#~ msgid ""
-#~ "The <a href=\"#xrp_ledger_intro\">XRP Ledger</a> "
-#~ "is open-source technology that anyone"
-#~ " can use."
-#~ msgstr "<a href=\"#xrp_ledger_intro\">XRP Ledger</a>は誰でも自由に使えるオープン技術です。"
-
-#~ msgid ""
-#~ "Use the tools and information provided"
-#~ " here to integrate with and "
-#~ "contribute to the open-source platform."
-#~ msgstr "このサイトで提供されているツールと情報を活用して、XRP Ledgerを開発に統合したり、オープンソース開発に参加しましょう。"
-
-#~ msgid "Want more?"
-#~ msgstr ""
-
-#~ msgid "Get updates about XRP Ledger webinars, releases, and documentation!"
-#~ msgstr "XRP Ledgerのウェビナー、リリース情報、資料についての最新情報を得る"
-
-#~ msgid "Sign up!"
-#~ msgstr "サインアップする"
-
-#~ msgid "Learn How It Works"
-#~ msgstr "XRP Ledgerの仕組みを理解する"
-
-#~ msgid "About XRP"
-#~ msgstr "XRPについて"
-
-#~ msgid "All Concepts"
-#~ msgstr "全てのコンセプト"
-
 #~ msgid "Read Documentation"
 #~ msgstr "ドキュメントを読む"
-
-#~ msgid "Full Doc Index"
-#~ msgstr "全ドキュメントの目次"
 
 #~ msgid "All Docs"
 #~ msgstr "全ドキュメント"
@@ -1595,90 +1686,6 @@ msgstr "結果"
 #~ msgid "What is the XRP Ledger?"
 #~ msgstr "XRP Ledgerとは？"
 
-#~ msgid ""
-#~ "The XRP Ledger is a decentralized "
-#~ "cryptographic ledger, powered by a "
-#~ "network of peer-to-peer servers. "
-#~ "It is the home of XRP, a "
-#~ "digital asset designed to bridge the "
-#~ "many different currencies in use "
-#~ "worldwide."
-#~ msgstr ""
-#~ "XRP Ledgerは、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。XRP "
-#~ "LedgerはXRPの土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために設計されたデジタル資産です。"
-
-#~ msgid "xrp-ledger-overview.html#the-digital-asset-for-payments"
-#~ msgstr "xrp-ledger-overview.html#決済のためのデジタル資産"
-
-#~ msgid "(digital asset icon)"
-#~ msgstr "(デジタル資産アイコン)"
-
-#~ msgid "The Digital Asset for Payments"
-#~ msgstr "決済のためのデジタル資産"
-
-#~ msgid "xrp-ledger-overview.html#censorship-resistant-transaction-processing"
-#~ msgstr "xrp-ledger-overview.html#耐検閲性のある取引処理"
-
-#~ msgid "(censorship resistance icon)"
-#~ msgstr "(耐検閲性アイコン)"
-
-#~ msgid "Censorship-Resistant Transaction Processing"
-#~ msgstr "耐検閲性のある取引処理"
-
-#~ msgid "xrp-ledger-overview.html#fast-efficient-consensus-algorithm"
-#~ msgstr "xrp-ledger-overview.html#高速で効率的なconsensusアルゴリズム"
-
-#~ msgid "(consensus algorithm icon)"
-#~ msgstr "(Consensusアルゴリズムアイコン)"
-
-#~ msgid "Fast, Efficient Consensus Algorithm"
-#~ msgstr "高速で効率的なConsensusアルゴリズム"
-
-#~ msgid "xrp-ledger-overview.html#finite-xrp-supply"
-#~ msgstr "xrp-ledger-overview.html#限定されたxrp供給量"
-
-#~ msgid "(xrp supply icon)"
-#~ msgstr "(XRP供給量アイコン)"
-
-#~ msgid "Finite XRP Supply"
-#~ msgstr "限定されたXRP供給量"
-
-#~ msgid "xrp-ledger-overview.html#responsible-software-governance"
-#~ msgstr "xrp-ledger-overview.html#責任あるソフトウェアガバナンス"
-
-#~ msgid "(governance icon)"
-#~ msgstr "(管理アイコン)"
-
-#~ msgid "Responsible Software Governance"
-#~ msgstr "責任あるソフトウェアガバナンス"
-
-#~ msgid "xrp-ledger-overview.html#secure-adaptable-cryptography"
-#~ msgstr "xrp-ledger-overview.html#安全で適応性のある暗号技術"
-
-#~ msgid "(cryptography icon)"
-#~ msgstr "(暗号技術アイコン)"
-
-#~ msgid "Secure, Adaptable Cryptography"
-#~ msgstr "安全で適応性のある暗号技術"
-
-#~ msgid "xrp-ledger-overview.html#modern-features-for-smart-contracts"
-#~ msgstr "xrp-ledger-overview.html#スマートコントラクト用の最新機能"
-
-#~ msgid "(smart contracts icon)"
-#~ msgstr "(スマートコントラクトのアイコン)"
-
-#~ msgid "Modern Features for Smart Contracts"
-#~ msgstr "スマートコントラクト用の最新機能"
-
-#~ msgid "xrp-ledger-overview.html#on-ledger-decentralized-exchange"
-#~ msgstr "xrp-ledger-overview.html#台帳上の分散型取引所"
-
-#~ msgid "(decentralized exchange icon)"
-#~ msgstr "(分散型取引所アイコン)"
-
-#~ msgid "On-Ledger Decentralized Exchange"
-#~ msgstr "台帳上の分散型取引所"
-
 #~ msgid "Start Building"
 #~ msgstr "XPR Ledgerを活用する"
 
@@ -1688,94 +1695,8 @@ msgstr "結果"
 #~ "tasks with the XRP Ledger."
 #~ msgstr "これらのチュートリアルを通して、XRP Ledgerの一般的な活用方法についてステップバイステップで理解することができます。"
 
-#~ msgid "'list xrp' icon"
-#~ msgstr "「XRPを取引所にリスティングする」アイコン"
-
-#~ msgid "'send xrp' icon"
-#~ msgstr "「XRPを送金する」アイコン"
-
-#~ msgid "'run rippled' icon"
-#~ msgstr "「rippledを実行する」アイコン"
-
 #~ msgid "More Tutorials"
 #~ msgstr "他のチュートリアル"
 
 #~ msgid "All Tutorials"
 #~ msgstr "全チュートリアル"
-
-#~ msgid "Related Projects"
-#~ msgstr "関連プロジェクト"
-
-#~ msgid ""
-#~ "You're not alone in building the "
-#~ "Internet of Value. These projects are"
-#~ " proudly collaborating with the XRP "
-#~ "Ledger to make all the world's "
-#~ "money move like information moves today."
-#~ msgstr ""
-#~ "価値のインターネットの構築に取り組んでいるプロジェクトは多数存在します。これらのプロジェクトは、今日情報が自由に行き来できるようにお金も動く世界の実現のために、XRP"
-#~ " Ledgerを活用しています。"
-
-#~ msgid "Interledger logo"
-#~ msgstr "インターレジャーロゴ"
-
-#~ msgid "Interledger"
-#~ msgstr "インターレジャー"
-
-#~ msgid ""
-#~ "Interledger is an open protocol suite"
-#~ " for sending payments across different "
-#~ "ledgers."
-#~ msgstr "インターレジャーは異なるレジャー（台帳）間で送金するためのオープンプロトコル・スイートです。"
-
-#~ msgid "Xpring logo"
-#~ msgstr "Xpringロゴ"
-
-#~ msgid "Xpring"
-#~ msgstr "Xpring"
-
-#~ msgid ""
-#~ "Xpring is Ripple’s initiative to create"
-#~ " an open developer platform for "
-#~ "money."
-#~ msgstr "Xpring（スプリング)は開発者向けのお金のオープンプラットフォームを構築するためのRippleのイニシアチブです。"
-
-#~ msgid "Comparing Transaction Data"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "XRP was designed with sustainability in"
-#~ " mind. Contrary to other blockchains "
-#~ "that use proof-of-work, the XRP"
-#~ " Ledger confirms transactions through a "
-#~ "unique <a href=\"intro-to-"
-#~ "consensus.html\">“consensus”</a> mechanism that "
-#~ "consumes negligible energy."
-#~ msgstr ""
-
-#~ msgid "Democratizing Global Payments"
-#~ msgstr ""
-
-#~ msgid "Finite Supply of XRP "
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Anyone can operate a validator; "
-#~ "currently, over 150 <a href=\"run-a"
-#~ "-rippled-validator.html\">validators</a> are active "
-#~ "on the ledger, operated by  "
-#~ "universities, exchanges, businesses and "
-#~ "individuals."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "XRP is fast, low-cost, sustainable "
-#~ "and scalable. It is the key to "
-#~ "fueling growth and realizing the true"
-#~ " potential of our global economy—the "
-#~ "<a href=\"https://ripple.com/insights/the-internet-"
-#~ "of-value-what-it-means-and-how-"
-#~ "it-benefits-everyone/\" target=\"_blank\">Internet "
-#~ "of Value</a>."
-#~ msgstr ""
-

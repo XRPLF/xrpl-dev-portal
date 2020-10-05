@@ -92,8 +92,6 @@ If you only want to change an existing translation for a given string that hasn'
 
 After you've edited all the PO files, be sure to [compile them](#compile-strings).
 
-***TODO: I don't know what happens if you skip a language or don't translate the new strings.***
-
 ### Compile Strings
 
 Whether you added a language, added new strings, or tweaked an existing translation, you must compile the PO files (text) to MO files (binary) to get Dactyl to use them.

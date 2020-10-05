@@ -198,6 +198,15 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: 使用
+        funnel: Learn
+        category: Uses
+        template: template-learn-uses.html
+        html: uses.html
+        top_nav_level: 1
+        sidebar: disabled
+        targets:
             - ja
 
     -   name: History
@@ -209,6 +218,15 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: 沿革
+        funnel: Learn
+        category: History
+        template: template-learn-history.html
+        html: history.html
+        top_nav_level: 1
+        sidebar: disabled
+        targets:
             - ja
 
     -   name: Impact
@@ -220,6 +238,15 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: インパクト
+        funnel: Learn
+        category: Impact
+        template: template-learn-impact.html
+        html: impact.html
+        top_nav_level: 1
+        sidebar: disabled
+        targets:
             - ja
 
     -   name: Carbon Calculator
@@ -234,6 +261,18 @@ pages:
         twitter_card: currency-calculator-card-tw.png
         targets:
             - en
+
+    -   name: 二酸化炭素電卓
+        funnel: Learn
+        category: Carbon Calculator
+        template: template-calculator.html
+        html: carbon-calculator.html
+        top_nav_level: 1
+        sidebar: disabled
+        blurb: 現金、クレジットカード、暗号資産でもエネルギー消費する。インタラクティブツールで消費量を比較しましょう。
+        fb_card: currency-calculator-card-fb.png
+        twitter_card: currency-calculator-card-tw.png
+        targets:
             - ja
 
 # "Explore" funnel -------------------------------------------------------------
@@ -262,6 +301,15 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: ウォレット
+        funnel: Explore
+        category: Wallets
+        template: template-explore-wallets.html
+        html: wallets.html
+        top_nav_level: 1
+        sidebar: disabled
+        targets:
             - ja
 
     -   name: Exchanges
@@ -273,6 +321,15 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: 取引所
+        funnel: Explore
+        category: Exchanges
+        template: template-explore-exchanges.html
+        html: exchanges.html
+        top_nav_level: 1
+        sidebar: disabled
+        targets:
             - ja
 
     -   name: Businesses
@@ -284,6 +341,15 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: 企業
+        funnel: Explore
+        category: Businesses
+        template: template-explore-businesses.html
+        html: businesses.html
+        top_nav_level: 1
+        sidebar: disabled
+        targets:
             - ja
 
 # "Build" funnel ---------------------------------------------------------------
@@ -6444,6 +6510,13 @@ pages:
         sidebar: disabled
         targets:
             - en
+
+    -   name: 貢献する
+        funnel: Contribute
+        html: contribute.html
+        template: template-contribute.html
+        sidebar: disabled
+        targets:
             - ja
 
     -   md: contributing/contribute-code.md

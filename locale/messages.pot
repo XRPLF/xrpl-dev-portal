@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-09-21 12:36-0700\n"
+"POT-Creation-Date: 2020-10-05 13:05-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Sustainability"
 msgstr ""
 
-#: tool/template-calculator.html:28
+#: tool/template-calculator.html:28 tool/template-home.html:111
 msgid "Sustainability icon"
 msgstr ""
 
@@ -71,7 +71,7 @@ msgstr ""
 msgid "How Does XRP Compare to Other Currencies?"
 msgstr ""
 
-#: tool/template-calculator.html:51 tool/template-calculator.html:85
+#: tool/template-calculator.html:51 tool/template-calculator.html:86
 msgid "Learn more about the methodology"
 msgstr ""
 
@@ -91,117 +91,126 @@ msgstr ""
 msgid "Credit Cards"
 msgstr ""
 
-#: tool/template-calculator.html:66 tool/template-calculator.html:130
+#: tool/template-calculator.html:66 tool/template-calculator.html:131
 msgid "Cash"
 msgstr ""
 
-#: tool/template-calculator.html:79
+#: tool/template-calculator.html:80
 msgid "Twitter share"
 msgstr ""
 
-#: tool/template-calculator.html:80
+#: tool/template-calculator.html:81
 msgid "LinkedIn share"
 msgstr ""
 
-#: tool/template-calculator.html:81
+#: tool/template-calculator.html:82
 msgid "Facebook share"
 msgstr ""
 
-#: tool/template-calculator.html:91
+#: tool/template-calculator.html:92
 msgid "Energy Consumption of Portugal"
 msgstr ""
 
-#: tool/template-calculator.html:93 tool/template-calculator.html:178
-#: tool/template-calculator.html:221
+#: tool/template-calculator.html:94 tool/template-calculator.html:179
+#: tool/template-calculator.html:222
 msgid "Comparing <span class=\"slider-amt\"></span> Million Transactions in 2019"
 msgstr ""
 
-#: tool/template-calculator.html:95
+#: tool/template-calculator.html:96
 msgid ""
-"The country of Portugal consumes ~50twh (1 billion) Kilowatt hours (KWH) "
+"The country of Portugal consumes ~50twh (1 billion) Kilowatt hours (kWh) "
 "of energy annually. Explore how much energy today’s various currencies "
 "consume in relation to Portugal."
 msgstr ""
 
-#: tool/template-calculator.html:101 tool/template-calculator.html:149
-#: tool/template-calculator.html:161
+#: tool/template-calculator.html:102 tool/template-calculator.html:150
+#: tool/template-calculator.html:162
 msgid "Portugal"
 msgstr ""
 
-#: tool/template-calculator.html:106 tool/template-learn-overview.html:44
+#: tool/template-calculator.html:107 tool/template-learn-overview.html:44
 msgid "Bitcoin"
 msgstr ""
 
-#: tool/template-calculator.html:108 tool/template-calculator.html:120
-#: tool/template-calculator.html:132 tool/template-calculator.html:144
-#: tool/template-calculator.html:156 tool/template-calculator.html:168
-msgid "KWh"
+#: tool/template-calculator.html:109 tool/template-calculator.html:121
+#: tool/template-calculator.html:133 tool/template-calculator.html:145
+#: tool/template-calculator.html:157 tool/template-calculator.html:169
+msgid "kWh"
 msgstr ""
 
-#: tool/template-calculator.html:118
+#: tool/template-calculator.html:119
 msgid "Ethereum"
 msgstr ""
 
-#: tool/template-calculator.html:153
+#: tool/template-calculator.html:154
 msgid "Visa"
 msgstr ""
 
-#: tool/template-calculator.html:165 tool/template-calculator.html:166
+#: tool/template-calculator.html:166 tool/template-calculator.html:167
 msgid "Mastercard"
 msgstr ""
 
-#: tool/template-calculator.html:176
-msgid "C02 Emissions from Airline Flights"
+#: tool/template-calculator.html:177
+msgid "CO<sub>2</sub> Emissions from Airline Flights"
 msgstr ""
 
-#: tool/template-calculator.html:180
+#: tool/template-calculator.html:181
 msgid ""
-"A 12-hour flight from London to Hong Kong releases 3 tons of Carbon "
-"dioxide (C02). Discover how much C02 different forms of currency release "
-"in comparison to emissions from airline flights."
+"A 12-hour flight from London to Hong Kong releases 3 tons of carbon "
+"dioxide (CO<sub>2</sub>). Discover how much CO<sub>2</sub> different "
+"forms of currency release in comparison to emissions from airline "
+"flights."
 msgstr ""
 
-#: tool/template-calculator.html:188 tool/template-calculator.html:193
-#: tool/template-calculator.html:198 tool/template-calculator.html:203
-#: tool/template-calculator.html:208 tool/template-calculator.html:213
-msgid "metric tons of CO2"
+#: tool/template-calculator.html:189 tool/template-calculator.html:194
+#: tool/template-calculator.html:199 tool/template-calculator.html:204
+#: tool/template-calculator.html:209 tool/template-calculator.html:214
+msgid "metric tons of CO<sub>2</sub>"
 msgstr ""
 
-#: tool/template-calculator.html:219
+#: tool/template-calculator.html:220
 msgid "Gas Consumption by the Gallon"
 msgstr ""
 
-#: tool/template-calculator.html:223
+#: tool/template-calculator.html:224
 msgid ""
 "An Ultra Large Crude Carrier (ULCC) carries approximately 120 million "
 "gallons of gas. Measure the environmental impact between currencies in "
 "relation to the amount of gas they would consume in the real-world."
 msgstr ""
 
-#: tool/template-calculator.html:231 tool/template-calculator.html:236
-#: tool/template-calculator.html:241 tool/template-calculator.html:246
-#: tool/template-calculator.html:251 tool/template-calculator.html:256
-#: tool/template-calculator.html:277
+#: tool/template-calculator.html:232 tool/template-calculator.html:237
+#: tool/template-calculator.html:242 tool/template-calculator.html:247
+#: tool/template-calculator.html:252 tool/template-calculator.html:257
+#: tool/template-calculator.html:279
 msgid "Gallons of Gas"
 msgstr ""
 
-#: tool/template-calculator.html:268
+#: tool/template-calculator.html:269
 msgid "Breaking Down Individual Transactions"
 msgstr ""
 
-#: tool/template-calculator.html:269
+#: tool/template-calculator.html:270
 msgid ""
 "Looking at individual transactions below, compare how a single "
-"transaction across each form of currency equates to KWh, gallons of gas "
-"and C02 emissions."
+"transaction across each form of currency equates to kWh, CO<sub>2</sub> "
+"emissions, and gallons of gas."
 msgstr ""
 
-#: tool/template-calculator.html:276
+#: tool/template-calculator.html:277
 msgid "Kilowatt Hour"
 msgstr ""
 
 #: tool/template-calculator.html:278
-msgid "CO2 Emissions*"
+msgid "CO<sub>2</sub> Emissions*"
+msgstr ""
+
+#: tool/template-calculator.html:314
+msgid "Paper Currency"
+msgstr ""
+
+#: tool/template-calculator.html:321
+msgid "*Calculations in million tonne (Mt)"
 msgstr ""
 
 #: tool/template-contribute.html:24
@@ -224,8 +233,8 @@ msgstr ""
 
 #: tool/template-contribute.html:29
 msgid ""
-"If you'd like to recommend new content or provide feedback, see these "
-"community resources:"
+"If you'd like to recommend new content or provide feedback, visit the "
+"community resources at the RippleX forum or XRP Chat."
 msgstr ""
 
 #: tool/template-contribute.html:58
@@ -245,7 +254,7 @@ msgstr ""
 msgid ""
 "You may also be interested in learning about <a "
 "href=\"https://interledger.org/\" target=\"_blank\">Interledger</a>, <a "
-"href=\"https://xpring.io/\" target=\"_blank\">Xpring</a>, and <a "
+"href=\"https://ripplex.io/\" target=\"_blank\">RippleX</a>, and <a "
 "href=\"https://payid.org/\" target=\"_blank\">PayID</a>."
 msgstr ""
 
@@ -538,8 +547,7 @@ msgstr ""
 msgid "XRP: The Best Digital Asset for Payments"
 msgstr ""
 
-#: tool/template-home.html:26 tool/template-learn-impact.html:68
-#: tool/template-learn-uses.html:93
+#: tool/template-home.html:26 tool/template-learn-uses.html:93
 msgid "Learn More"
 msgstr ""
 
@@ -579,7 +587,7 @@ msgstr ""
 
 #: tool/template-home.html:60 tool/template-learn-overview.html:54
 #: tool/template-learn-overview.html:151
-msgid "Low Cost"
+msgid "Low-Cost"
 msgstr ""
 
 #: tool/template-home.html:64 tool/template-learn-overview.html:64
@@ -694,12 +702,45 @@ msgstr ""
 msgid "Partners in Sustainability"
 msgstr ""
 
+#: tool/template-landing-docs.html:8
+msgid "XRP Ledger Documentation"
+msgstr ""
+
+#: tool/template-landing-docs.html:9
+msgid "Dive into our documentation and start integrating with the XRP Ledger."
+msgstr ""
+
+#: tool/template-landing-docs.html:10
+msgid ""
+"Browse by category, or skip straight to the <a href=\"#full-doc-"
+"index\">full documentation index</a>."
+msgstr ""
+
+#: tool/template-landing-docs.html:33
+#, python-format
+msgid "View All %(doc_type_name)s"
+msgstr ""
+
+#: tool/template-landing-docs.html:45
+msgid "Full Documentation Index"
+msgstr ""
+
+#: tool/template-landing-references.html:9
+msgid ""
+"Or, skip ahead to the <a href=\"#full-reference-index\">Full Reference "
+"Index</a>."
+msgstr ""
+
+#: tool/template-landing-references.html:62
+msgid "Full Reference Index"
+msgstr ""
+
 #: tool/template-learn-history.html:24
-msgid "XRP’s Origin"
+msgid "Build a Better Bitcoin"
 msgstr ""
 
 #: tool/template-learn-history.html:25
-msgid "Build a Better Bitcoin"
+msgid "XRP’s Origin"
 msgstr ""
 
 #: tool/template-learn-history.html:28
@@ -750,15 +791,14 @@ msgid ""
 msgstr ""
 
 #: tool/template-learn-history.html:44
-#, python-format
 msgid ""
 "Their initial observations about the high energy consumption and "
 "scalability issues that would plague Bitcoin proved prescient. (In 2019, "
 "estimates suggest <a href=\"carbon-calculator.html\">Bitcoin mining "
 "used</a> more energy than the entire country of Portugal!) Moreover, "
 "their initial read indicated that significant problems could arise if any"
-" miner obtained (or miners colluded to obtain) greater than 50% of the "
-"mining power—that risk persists with Bitcoin (and Ethereum) today as "
+" miner obtained (or miners colluded to obtain) greater than 50&#37; of "
+"the mining power—that risk persists with Bitcoin (and Ethereum) today as "
 "mining power has consolidated in China."
 msgstr ""
 
@@ -778,7 +818,7 @@ msgid ""
 "They wrote code, that when executed, would create a distributed ledger, "
 "which they named Ripple. It included a digital asset that would be called"
 " “ripples” (XRP as the currency code) to follow the same naming "
-"convention as bitcoin (BTC). At the time, Ripple stood for the open-"
+"convention as Bitcoin (BTC). At the time, Ripple stood for the open-"
 "source project, the unique consensus ledger (Ripple Consensus Ledger), "
 "transaction protocol (Ripple Transaction Protocol or RTXP), the network "
 "(Ripple network) and the digital asset (known as “ripples”)."
@@ -812,33 +852,23 @@ msgid ""
 msgstr ""
 
 #: tool/template-learn-history.html:57
-#, python-format
 msgid ""
-"While from a developer standpoint the XRP Ledger had already been created"
-" in early 2012, the final ledger stuck in late 2012, due to some "
-"stability issues. Once it stuck, 80% of the XRP was gifted to the "
-"company—initially called NewCoin and renamed quickly to OpenCoin."
+"Once the XRP Ledger was fully functioning, 80&#37; of the XRP was gifted "
+"to the company—initially called NewCoin and renamed quickly to OpenCoin."
 msgstr ""
 
 #: tool/template-learn-history.html:58
-#, python-format
-msgid ""
-"Once the XRP Ledger was fully functioning, 80% of the XRP was gifted to "
-"the company—initially called NewCoin and renamed quickly to OpenCoin."
-msgstr ""
-
-#: tool/template-learn-history.html:59
 msgid ""
 "Chris Larsen was the CEO of OpenCoin, and at the company's founding, Jed "
 "was co-founder and CTO, David Schwartz was the Chief Cryptography "
 "Officer, and Arthur Britto an advisor."
 msgstr ""
 
-#: tool/template-learn-history.html:65
-msgid "2013 OpenCoin Rebranded to Ripple Labs"
+#: tool/template-learn-history.html:64
+msgid "2013 OpenCoin Rebranded To Ripple Labs"
 msgstr ""
 
-#: tool/template-learn-history.html:66
+#: tool/template-learn-history.html:65
 msgid ""
 "At the outset of the company, OpenCoin set out to revolutionize the "
 "global financial system. Despite the revolutionary ideals of many of "
@@ -848,7 +878,7 @@ msgid ""
 "great ideas that came before them—not disrupting them."
 msgstr ""
 
-#: tool/template-learn-history.html:67
+#: tool/template-learn-history.html:66
 msgid ""
 "In early conversations with potential customers, the team was asked about"
 " the differences between the Ripple project and OpenCoin company. With "
@@ -857,28 +887,28 @@ msgid ""
 "Ripple Labs, which has been shortened over time to \"Ripple.\""
 msgstr ""
 
-#: tool/template-learn-history.html:68
+#: tool/template-learn-history.html:67
 msgid ""
 "Today, the company uses XRP and the XRP Ledger for liquidity management "
 "in its cross-border payments business. Ripple also remains a stakeholder "
 "and contributor to the broader XRP community."
 msgstr ""
 
-#: tool/template-learn-history.html:76
+#: tool/template-learn-history.html:75
 msgid "Podcast"
 msgstr ""
 
-#: tool/template-learn-history.html:81
-msgid "How Digital Assets Will Help Create a  Sustainable Global Economy"
+#: tool/template-learn-history.html:80
+msgid "How Digital Assets Will Help Create a Sustainable Global Economy"
 msgstr ""
 
-#: tool/template-learn-history.html:82
+#: tool/template-learn-history.html:81
 msgid ""
 "Hear from Ripple co-founder Chris Larsen in the inaugural episode of the "
 "Block Stars podcast."
 msgstr ""
 
-#: tool/template-learn-history.html:83
+#: tool/template-learn-history.html:82
 msgid "Listen Now"
 msgstr ""
 
@@ -893,7 +923,7 @@ msgstr ""
 #: tool/template-learn-impact.html:27
 msgid ""
 "The digital asset XRP is a truly global currency—ideally suited to enable"
-" today’s global economy."
+" today’s growing digital economy."
 msgstr ""
 
 #: tool/template-learn-impact.html:28
@@ -948,11 +978,11 @@ msgstr ""
 msgid "Future of Finance"
 msgstr ""
 
-#: tool/template-learn-impact.html:62
+#: tool/template-learn-impact.html:63
 msgid "Building for the Future"
 msgstr ""
 
-#: tool/template-learn-impact.html:63
+#: tool/template-learn-impact.html:64
 msgid ""
 "Digital assets and blockchain technology are the future of finance. Open "
 "and decentralized, they offer the first-ever global standards for value "
@@ -960,14 +990,14 @@ msgid ""
 " property or more."
 msgstr ""
 
-#: tool/template-learn-impact.html:65
+#: tool/template-learn-impact.html:66
 msgid ""
 "This has spawned increasing adoption of the technology across the "
 "financial services industry, from retail and institutional investment to "
 "commercial use cases like cross-border payments."
 msgstr ""
 
-#: tool/template-learn-impact.html:66
+#: tool/template-learn-impact.html:67
 msgid ""
 "With usage growing, it’s critical that measures are taken today to ensure"
 " that the technology is environmentally sustainable tomorrow."
@@ -1012,7 +1042,7 @@ msgstr ""
 #: tool/template-learn-impact.html:98
 msgid ""
 "Most currency today—whether digital or physical—is not environmentally "
-"friendly. The potential for long-term impact on our planet could hold "
+"friendly. The potential long-term impact on our planet could hold "
 "startling consequences."
 msgstr ""
 
@@ -1091,7 +1121,7 @@ msgid "500 seconds to settle"
 msgstr ""
 
 #: tool/template-learn-overview.html:55
-msgid "$0.00002/transaction"
+msgid "$0.0002/transaction"
 msgstr ""
 
 #: tool/template-learn-overview.html:56
@@ -1099,7 +1129,7 @@ msgid "$0.50/transaction"
 msgstr ""
 
 #: tool/template-learn-overview.html:60
-msgid "1500 transaction per second"
+msgid "1,500 transactions per second"
 msgstr ""
 
 #: tool/template-learn-overview.html:61
@@ -1111,8 +1141,7 @@ msgid "Environmentally sustainable (negligible energy consumption)"
 msgstr ""
 
 #: tool/template-learn-overview.html:66
-#, python-format
-msgid "0.3% of global energy consumption"
+msgid "0.3&#37; of global energy consumption"
 msgstr ""
 
 #: tool/template-learn-overview.html:78
@@ -1209,7 +1238,7 @@ msgstr ""
 #: tool/template-learn-overview.html:120
 msgid ""
 "Many businesses are building on the XRP Ledger, pursuing powerful use "
-"cases in decentralized finance micropayments, gaming, web monetization "
+"cases in decentralized finance, micropayments, gaming, web monetization "
 "and more. Additionally, Ripple, the technology company, is focused on "
 "building a network and infrastructure that leverages XRP to power faster,"
 " more affordable cross-border payments around the world."
@@ -1244,9 +1273,9 @@ msgstr ""
 msgid ""
 "By building on the XRP Ledger, developers can easily integrate payments "
 "into their products—seamlessly putting money at the center of their "
-"applications. Projects like the <a href=\"https://xpring.io/\">Xpring "
-"developer platform</a> are making it easier for developers to leverage "
-"XRP.  "
+"applications. Projects like the <a href=\"https://ripplex.io/\" "
+"target=\"_blank\">RippleX developer platform</a> are making it easier for"
+" developers to leverage XRP."
 msgstr ""
 
 #: tool/template-learn-overview.html:131
@@ -1306,12 +1335,11 @@ msgstr ""
 #: tool/template-learn-overview.html:209
 msgid ""
 "XRP’s low transaction fees, reliability and high speed enable traders to "
-"use the digital asset as high-speed, cost-efficient and reliable "
-"collateral across trading venues—<a "
-"href=\"https://ripple.com/insights/xrp-a-preferred-base-currency-for-"
-"arbitrage-trading/\" target=\"_blank\">seizing arbitrage "
-"opportunities</a>, servicing margin calls and managing general trading "
-"inventory in real time."
+"use the digital asset as fast, cost-efficient and reliable collateral "
+"across trading venues—<a href=\"https://ripple.com/insights/xrp-a"
+"-preferred-base-currency-for-arbitrage-trading/\" "
+"target=\"_blank\">seizing arbitrage opportunities</a>, servicing margin "
+"calls and managing general trading inventory in real time."
 msgstr ""
 
 #: tool/template-learn-overview.html:210
@@ -1364,7 +1392,7 @@ msgstr ""
 msgid ""
 "XRPL.org is a community-driven resource for all things XRP and XRP Ledger"
 " (XRPL). If you’d like to suggest additional information around XRP, you "
-"can suggest changes here."
+"can suggest changes <a href=\"contribute.html\">here</a>."
 msgstr ""
 
 #: tool/template-learn-overview.html:239
@@ -1372,7 +1400,7 @@ msgid "Suggest Changes"
 msgstr ""
 
 #: tool/template-learn-uses.html:23
-msgid "The Best Way to Move Money Around the World"
+msgid "The Best Way To Move Money Around the World"
 msgstr ""
 
 #: tool/template-learn-uses.html:24
@@ -1392,11 +1420,7 @@ msgid ""
 "digital asset, XRP—a faster, cheaper and greener currency."
 msgstr ""
 
-#: tool/template-learn-uses.html:37
-msgid "Cross-Border payments"
-msgstr ""
-
-#: tool/template-learn-uses.html:42
+#: tool/template-learn-uses.html:37 tool/template-learn-uses.html:42
 msgid "Cross-Border Payments"
 msgstr ""
 
@@ -1467,23 +1491,23 @@ msgid ""
 " margin calls and managing general trade inventory in real time."
 msgstr ""
 
-#: tool/template-top-nav.html:37
+#: tool/template-top-nav.html:35
 msgid "Contribute"
 msgstr ""
 
-#: tool/template-top-nav.html:43
+#: tool/template-top-nav.html:41
 msgid "Open Search"
 msgstr ""
 
-#: tool/template-top-nav.html:48 tool/template-top-nav.html:49
+#: tool/template-top-nav.html:46 tool/template-top-nav.html:47
 msgid "Search site..."
 msgstr ""
 
-#: tool/template-top-nav.html:51
+#: tool/template-top-nav.html:49
 msgid "Close Search"
 msgstr ""
 
-#: tool/template-top-nav.html:60
+#: tool/template-top-nav.html:58
 msgid "Get Started"
 msgstr ""
 
