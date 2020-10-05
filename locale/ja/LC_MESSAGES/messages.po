@@ -1644,8 +1644,8 @@ msgid ""
 "This tool allows you to verify that <a href=\"xrp-ledger-toml.html"
 "#domain-verification\">domain verification</a> is properly configured."
 msgstr ""
-"このツールを使用すると、<a href=\"xrp-ledger-toml.html#domain-"
-"verification\">ドメイン検証</a>が正しく設定されていることを確認できます。"
+"このツールを使用すると、<a href=\"xrp-ledger-toml.html#ドメイン検証\">ドメイン検証</a>"
+"が正しく設定されていることを確認できます。"
 
 #: tool/template-validator-domain-verifier.html:8
 msgid ""
