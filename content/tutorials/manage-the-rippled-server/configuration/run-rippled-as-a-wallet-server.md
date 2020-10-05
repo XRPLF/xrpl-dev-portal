@@ -1,6 +1,6 @@
 # Run rippled as a Wallet Server
 
-A wallet server is a multipurpose configuration for `rippled`. With a wallet server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](https://xpring.io/) to integrate with XRP.
+A wallet server is a multipurpose configuration for `rippled`. With a wallet server, you can submit transactions to the XRP Ledger, access ledger history, and use the latest [tools](software-ecosystem.html) to integrate with XRP.
 
 
 A wallet server does all of the following:

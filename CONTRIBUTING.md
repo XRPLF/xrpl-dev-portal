@@ -5,7 +5,7 @@ Thanks for considering a contribution to the XRP Ledger Developer Portal!
 
 We're thrilled you're interested and your help is greatly appreciated. Contributing is a great way to learn about the XRP Ledger (XRPL).
 
-You may also be interested in learning about [Interledger Protocol (ILP)](https://interledger.org/), which, along with XRPL, is another part of the [Xpring developer ecosystem](https://xpring.io).
+You may also be interested in learning about [Interledger Protocol (ILP)](https://interledger.org/), which, along with XRPL, is another part of the [RippleX developer ecosystem](https://ripplex.io).
 
 We are happy to review your pull requests. To make the process as smooth as possible, please read this document and follow the stated guidelines.
 

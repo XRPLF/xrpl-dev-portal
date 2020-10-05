@@ -46,12 +46,12 @@ XRP Ledger上のミドルウェアサービスの例として、[Data API](data-
 
 XRPだけでなく、通貨価値を表す他のさまざまな方法と互換性のあるアプリケーションを構築するには、XRPでの決済に[Interledger Protocol][]を使用するのが最適です。
 
-XRPと周辺テクノロジーを使用してユーザーとやり取りするプロジェクトには、他にも多くの例があります。Rippleエンタープライズのお客様であれば、すでに[オンデマンド流動性サービス](https://www.ripple.com/ripplenet/on-demand-liquidity/)経由でXRPをご利用いただけます。XRP Ledger上にビルドされているビジネスとソフトウェアのその他の例については、[Xpring Partners](https://xpring.io/#partners)か、XRPChatのエクセレント[Links & Resources](https://www.xrpchat.com/links/)のリストを参照してください。
+XRPと周辺テクノロジーを使用してユーザーとやり取りするプロジェクトには、他にも多くの例があります。 例については[XRP Ledger ビジネス](businesses.html)か、[エキスチェンジ](exchanges.html)か、[ウォレット](wallets.html)を参照してください。
 
 
 ## 関連項目
 
-- [Xpring Partners](https://xpring.io/#partners)
+- [RippleX](https://ripplex.io/)
 - [技術に関するよくある質問](technical-faq.html)
 - [XRPChat Links & Resources](https://www.xrpchat.com/links/) - ゲートウェイと取引所、ウォレットとストレージ、アプリなどの最新のリストが記載されています。
 

@@ -22,7 +22,7 @@ The [**Community Standards Drafts**](https://github.com/xrp-community/standards-
 You can find various XRP Ledger-related projects under these and other GitHub organizations:
 
 - [Ripple](https://github.com/ripple/)
-- [Xpring](https://github.com/xpring-eng/)
+- [RippleX (formerly Xpring)](https://github.com/xpring-eng/)
 - [XRP Community](https://github.com/xrp-community/)
 - [XRPL Labs](https://github.com/XRPL-Labs/)
 

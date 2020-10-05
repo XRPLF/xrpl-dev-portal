@@ -46,12 +46,12 @@ Atop the stack is where the truly exciting things happen. Apps and services prov
 
 A great way to build applications that are compatible with not only XRP but lots of other ways of denominating value is to use the [Interledger Protocol][] with settlement in XRP.
 
-There are many other examples of projects using XRP and adjacent technologies to interact with users. Ripple's enterprise customers already have the option to use XRP through [on-demand liquidity services](https://www.ripple.com/ripplenet/on-demand-liquidity/). For more examples of businesses and software built on the XRP Ledger, see [Xpring Partners](https://xpring.io/#partners) or XRPChat's excellent [Links & Resources](https://www.xrpchat.com/links/) listing.
+There are many other examples of projects using XRP and adjacent technologies to interact with users. For some examples, see [Businesses](businesses.html), [Exchanges](exchanges.html), and [Wallets](wallets.html).
 
 
 ## See Also
 
-- [Xpring Partners](https://xpring.io/#partners)
+- [RippleX](https://ripplex.io/)
 - [Technical FAQ](technical-faq.html)
 - [XRPChat Links & Resources](https://www.xrpchat.com/links/) - Includes updated lists of gateways and exchanges, wallets and storage, apps, and more.
 
