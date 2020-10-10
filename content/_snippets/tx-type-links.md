@@ -20,7 +20,8 @@
 ] %}
 {% set pstxtypes = [
   "EnableAmendment",
-  "SetFee"
+  "SetFee",
+  "UNLModify"
 ] %}
 
 
