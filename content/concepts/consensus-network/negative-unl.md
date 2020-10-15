@@ -68,7 +68,7 @@ A ledger version is considered a _flag ledger_ if its ledger index is evenly div
 
 Each flag ledger, all of the following changes apply:
 
-1. Changes to the Negative UNL that were scheduled in the previous flag ledger go into effect.
+1. Changes to the Negative UNL that were scheduled in the previous flag ledger go into effect for the following ledger version. The consensus process for validating this flag ledger itself does not use the scheduled change.
 
     **Note:** This is one of the only times a ledger's state data is modified without a [transaction](transaction-basics.html) or [pseudo-transaction](pseudo-transaction-types.html).
 
@@ -76,7 +76,7 @@ Each flag ledger, all of the following changes apply:
 3. If the Negative UNL is not empty, each server proposes removing **up to 1** validator from the Negative UNL. A server can propose removing a validator from the Negative UNL for two reasons:
     - It scores that validator with > 80% reliability.
     - It does not have that validator in its UNL. (If a validator goes down permanently, this rule ensures that it gets removed from the on-ledger Negative UNL after it has been removed from servers' configured UNLs.)
-4. If a proposed change to the Negative UNL achieve a consensus, the change is scheduled to go into effect in the following flag ledger. Up to one addition and one removal can be scheduled this way.
+4. If a proposed change to the Negative UNL achieves a consensus, the change is scheduled to go into effect in the following flag ledger. Up to one addition and one removal can be scheduled this way.
 
 The proposals to add and remove validators from the Negative UNL take the form of [UNLModify pseudo-transactions][]. The consensus process determines whether each pseudo-transaction achieves a consensus or gets thrown out, in the same way as other [pseudo-transactions](pseudo-transaction-types.html). In other words, for a particular validator to be added or removed from the Negative UNL, a consensus of servers must propose the same change.
 
@@ -85,15 +85,15 @@ Scheduled and effective changes to the Negative UNL are tracked in the [Negative
 
 ### Negative UNL Limits
 
-To prevent the network from fragmenting into two two or more sub-networks, the Negative UNL cannot reduce the quorum requirement to less than 60% of the _total_ UNL entries. To enforce this, a server considers the Negative UNL to be "full" if the number of validators on the Negative UNL is 25% (rounded down) of the number of validators in the server's configured UNL. (The 25% is based on the calculation that if 25% of validators are removed, an 80% consensus of the remaining 75% equals 60% of the original number.)
+To prevent the network from fragmenting into two two or more sub-networks, the Negative UNL cannot reduce the quorum requirement to less than 60% of the _total_ UNL entries. To enforce this, a server considers the Negative UNL to be "full" if the number of validators on the Negative UNL is 25% (rounded down) of the number of validators in the server's configured UNL. (The 25% is based on the calculation that if 25% of validators are removed, an 80% consensus of the remaining 75% equals 60% of the original number.) If a server considers the Negative UNL to be full, it won't propose new additions to the Negative UNL; but, as usual, the final outcome depends on what a consensus of trusted validators do.
 
 
 ### Choosing From Multiple Candidate Validators
 
-It is possible that multiple validators may be candidates to be added to the Negative UNL. Since at most one validator can be added to the Negative UNL at a time, servers must choose which validator to propose adding. If there are multiple candidates, the server chooses which one to propose with the following mechanism:
+It is possible that multiple validators may be candidates to be added to the Negative UNL, based on the reliability threshold. Since at most one validator can be added to the Negative UNL at a time, servers must choose which validator to propose adding. If there are multiple candidates, the server chooses which one to propose with the following mechanism:
 
 1. Start with the ledger hash of the parent ledger version.
-0. Take the public key of each candidate validator that is past the reliability threshold.
+0. Take the public key of each candidate validator.
 0. Calculate the exclusive-or value (XOR) of the candidate validator and the parent ledger's hash.
 0. Propose the validator the numerically lowest result of the XOR operation.
 
@@ -108,7 +108,7 @@ This mechanism has several useful properties:
 
 ### Filtering Validations
 
-During the consensus process, validators in the parent ledger's Negative UNL (**TODO: parent ledger? validation status?**) are disabled. Each server calculates an "effective UNL" consisting of its configured UNL with the disabled validators removed, and recalculates its quorum accordingly. If a disabled validator sends validation votes, other servers listen to those for purposes of calculating its reliability measurement, but they do not use those votes towards determining whether a ledger version has achieved a consensus.
+During the consensus process, validators in the parent ledger's Negative UNL are disabled. Each server calculates an "effective UNL" consisting of its configured UNL with the disabled validators removed, and recalculates its quorum accordingly. (The quorum is always at least 80% of the effective UNL and at least 60% of the configured UNL.) If a disabled validator sends validation votes, servers track those votes for purposes of calculating the disabled validator's reliability measurement, but they do not use those votes towards determining whether a ledger version has achieved a consensus.
 
 **Note:** The Negative UNL adjusts the _total_ trusted validators that the quorum is calculated from, not the quorum directly. The quorum is a percentage but the number of votes is a whole number, so in some cases, reducing the total trusted validators may not change the number of votes required to reach a quorum. For example, if there are 15 total validators, 80% is 12 validators exactly. If you reduce the total to 14 validators, 80% is 11.2 validators, which means that it still requires 12 validators to reach a quorum.
 
