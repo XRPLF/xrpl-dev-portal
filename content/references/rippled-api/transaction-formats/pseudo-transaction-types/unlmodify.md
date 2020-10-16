@@ -1,3 +1,13 @@
+---
+html: unlmodify.html
+funnel: Build
+doc_type: References
+supercategory: rippled API
+category: Transaction Formats
+subcategory: Pseudo-Transaction Types
+status: not_enabled
+blurb: Change the list of trusted validators currently considered offline.
+---
 # UNLModify
 
 A `UNLModify` [pseudo-transaction](pseudo-transaction-types.html) marks a change to the [Negative UNL](negative-unl.html), indicating that a trusted validator has gone offline or come back online.

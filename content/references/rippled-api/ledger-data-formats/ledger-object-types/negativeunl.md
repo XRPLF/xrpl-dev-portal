@@ -5,6 +5,7 @@ doc_type: References
 supercategory: rippled API
 category: Ledger Data Formats
 subcategory: Ledger Object Types
+status: not_enabled
 blurb: List of validators currently believed to be offline.
 ---
 # NegativeUNL

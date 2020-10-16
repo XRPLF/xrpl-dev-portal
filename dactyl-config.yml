@@ -5304,6 +5304,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/negativeunl.md
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.md
         html: offer.html
         funnel: Build
@@ -5920,6 +5925,11 @@ pages:
         subcategory: Pseudo-Transaction Types
         blurb: 手数料投票の結果としてトランザクションコストまたはアカウント準備金の要件が変更されます。
         targets:
+            - ja
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/unlmodify.md
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md
