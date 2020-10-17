@@ -1,3 +1,11 @@
+---
+html: connect-your-rippled-to-the-xrp-test-net.html
+funnel: Build
+doc_type: Tutorials
+category: Manage the rippled Server
+subcategory: Configuration
+blurb: Connect your rippled server to the test net to try out new features or test functionality with fake money.
+---
 # Connect Your rippled to a Parallel Network
 
 Ripple hosts [alternative test and development networks](parallel-networks.html) for developers to test their apps on the latest non-production version of the XRP Ledger (Testnet) or to test and experiment with features on the latest beta version (Devnet). **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](the-rippled-server.html) to either the Testnet or Devnet.
@@ -96,13 +104,24 @@ Edit your `validators.txt` file. This file is located in the same folder as your
             # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
             # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
 
-## 3. Restart the server.
+## 3. (Devnet Only) Enable Features
+
+To connect to Devnet, you must also forcefully enable any experimental features that are currently in testing on Devnet. Add or modify the `[features]` stanza of your config file as follows:
 
 ```
+[features]
+NegativeUNL
+```
+
+**Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
+
+## 4. Restart the server.
+
+```sh
 $ sudo systemctl restart rippled
 ```
 
-## 4. Verify that your server syncs.
+## 5. Verify that your server syncs.
 
 It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the [server_info method][] shows the a `validated_ledger` object based on the network you are connected to.
 

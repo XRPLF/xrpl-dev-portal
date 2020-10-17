@@ -22,6 +22,10 @@ Therefore, if more than 20% of trusted validators go offline or become unable to
 
 However, this means that the network could stop making forward progress if a few widely-trusted validators went offline. As of 2020-10-06, there are 34 validators in Ripple's recommended UNL, so the network would stop making forward progress if 7 or more of them were offline. Furthermore, if one or two validators are out for an extended period of time, the network has less room for disagreement between the remaining validators, which can make it take longer to achieve a consensus.
 
+## Enabling the Negative UNL for Testing
+
+Negative UNL functionality is currently available for testing on [Devnet](parallel-networks.html). You can test the Negative UNL feature by adding or modifying a `[features]` stanza in your `rippled.cfg` file, as described in [Connect Your rippled to a Parallel Network](connect-your-rippled-to-the-xrp-test-net.html).
+
 
 ## Summary
 
@@ -34,6 +38,8 @@ When a validator that is on the Negative UNL comes back online and sends consist
 In cases where validators go offline one or two at a time, the remaining validators can use the Negative UNL to gradually adjust their effective UNLs, so that the network only ever needs 80% of the _online_ validators to achieve a quorum. To prevent the network from fragmenting, the quorum has a hard minimum of 60% of _total_ validators.
 
 The Negative UNL does not help against situations where greater than 20% of trusted validators suddenly go offline all at once. In that case, the remaining validators would not be able to reach the consensus necessary to adjust the Negative UNL.
+
+Negative UNL has no effect on [stand-alone mode](rippled-server-modes.html) since the server does not use consensus in stand-alone mode.
 
 
 ## How It Works
