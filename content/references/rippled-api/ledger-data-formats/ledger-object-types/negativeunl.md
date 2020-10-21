@@ -10,6 +10,8 @@ blurb: List of validators currently believed to be offline.
 ---
 # NegativeUNL
 
+_(Requires the [NegativeUNL amendment]() :not_enabled:)_
+
 The `NegativeUNL` object type contains the current status of the [Negative UNL](negative-unl.html), a list of trusted validators currently believed to be offline.
 
 Each ledger version contains **at most one** `NegativeUNL` object. If no validators are currently disabled or scheduled to be disabled, there is no `NegativeUNL` object in the ledger.
