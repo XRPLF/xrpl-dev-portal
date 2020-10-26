@@ -62,3 +62,8 @@ The `NegativeUNL` object ID is the hash of the `NegativeUNL` space key (`0x004E`
 ```
 2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244
 ```
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

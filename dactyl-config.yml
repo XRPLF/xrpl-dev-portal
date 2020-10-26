@@ -142,6 +142,8 @@ targets:
             # Fix links from untranslated health-check.html:
             "rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
             "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
+            # Fix link from untranslated negativeunl.html:
+            "consensus.html#validation": "consensus.html#検証"
 
 
     -   name: xrp-api-only

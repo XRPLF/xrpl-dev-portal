@@ -23,3 +23,8 @@ Pseudo-transactions use the following common fields as normal:
 |:------------------|:----------|:------------------|:-------------------------|
 | `TransactionType` | String    | UInt16            | _(Required)_ The type of transaction. |
 | `Flags`           | Number    | UInt32            | _(Optional)_ A set of bit-flags for this transaction. The meaning of specific flags varies based on the transaction type. |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
