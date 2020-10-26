@@ -46,7 +46,7 @@ A `NegativeUNL` object has the following fields:
 
 ## DisabledValidator Objects
 
-Each DisabledValidator Object represents one disabled validator. In JSON, a DisabledValidator object has one field, `DisabledValidator`, which in turn contains another object with the following fields:
+Each `DisabledValidator` object represents one disabled validator. In JSON, a `DisabledValidator` object has one field, `DisabledValidator`, which in turn contains another object with the following fields:
 
 | Name                  | JSON Type | [Internal Type][] | Description          |
 |:----------------------|:----------|:------------------|:---------------------|
