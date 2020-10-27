@@ -1,10 +1,12 @@
 # SetFee
 
-A change in [transaction cost](transaction-cost.html) or [account reserve](reserves.html) requirements as a result of [Fee Voting](fee-voting.html).
+A `SetFee` [pseudo-transaction](pseudo-transaction-types.html) marks a change in [transaction cost](transaction-cost.html) or [reserve requirements](reserves.html) as a result of [Fee Voting](fee-voting.html).
 
 **Note:** You cannot send a pseudo-transaction, but you may find one when processing ledgers.
 
-```
+## Example {{currentpage.name}} JSON
+
+```json
 {
     "Account": "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
     "BaseFee": "000000000000000A",
@@ -18,8 +20,11 @@ A change in [transaction cost](transaction-cost.html) or [account reserve](reser
     "date": 439578860,
     "hash": "1C15FEA3E1D50F96B6598607FC773FF1F6E0125F30160144BE0C5CBC52F5151B",
     "ledger_index": 3721729,
-  }
+}
 ```
+
+{% include '_snippets/pseudo-tx-fields-intro.md' %}
+<!--{# fix md highlighting_ #}-->
 
 | Field               | JSON Type        | [Internal Type][] | Description     |
 |:--------------------|:-----------------|:------------------|:----------------|

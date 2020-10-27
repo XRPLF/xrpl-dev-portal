@@ -142,6 +142,8 @@ targets:
             # Fix links from untranslated health-check.html:
             "rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
             "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
+            # Fix link from untranslated negativeunl.html:
+            "consensus.html#validation": "consensus.html#検証"
 
 
     -   name: xrp-api-only
@@ -1212,6 +1214,12 @@ pages:
         doc_type: Concepts
         category: Consensus Network
         blurb: Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active.
+        targets:
+            - en
+            - ja
+
+        # TODO: translate this page and blurb
+    -   md: concepts/consensus-network/negative-unl.md
         targets:
             - en
             - ja
@@ -2594,12 +2602,6 @@ pages:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.md
-        html: connect-your-rippled-to-the-xrp-test-net.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Configuration
-        blurb: Connect your rippled server to the test net to try out new features or test functionality with fake money.
         targets:
             - en
 
@@ -5298,6 +5300,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/negativeunl.md
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.md
         html: offer.html
         funnel: Build
@@ -5914,6 +5921,11 @@ pages:
         subcategory: Pseudo-Transaction Types
         blurb: 手数料投票の結果としてトランザクションコストまたはアカウント準備金の要件が変更されます。
         targets:
+            - ja
+
+    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/unlmodify.md
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md

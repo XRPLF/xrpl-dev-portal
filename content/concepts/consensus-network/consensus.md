@@ -88,6 +88,9 @@ Validation can be broken up into roughly two parts:
 - Calculating the resulting ledger version from an agreed-upon transaction set.
 - Comparing results and declaring the ledger version validated if enough trusted validators agree.
 
+Each server in the network performs validation separately and locally; the consensus process can proceed to tentatively confirm transactions even if no ledger is validated from a given round.
+
+
 #### Calculate and Share Validations
 
 When the consensus process completes, each server independently computes a new ledger from the agreed-upon set of transactions. Each server calculates the results by following the same rules, which can be summarized as follows:
@@ -126,7 +129,7 @@ Servers in the network recognize a ledger instance as validated when a supermajo
 
 In cases where a server is in the minority, having computed a ledger that differs from its peers, the server disregards the ledger it computed <a href="#footnote_8" id="from_footnote_8"><sup>8</sup></a>. It recomputes the correct ledger, or retrieves the correct ledger as needed.
 
-If the network fails to achieve supermajority agreement on validations, this implies that transaction volume was too high or network latency too great for the consensus process to produce consistent proposals. In this case, the servers repeat the consensus process. As time passes since consensus began, it becomes increasingly likely that a majority of the servers have received the same set of candidate transactions, as each consensus round reduces disagreement. The XRP Ledger dynamically adjusts [transaction costs](transaction-cost.html) and the time to wait for consensus in response to these conditions.
+If the network fails to achieve supermajority agreement on validations, this implies that transaction volume was too high or network latency too great for the consensus process to produce consistent proposals. In this case, the servers repeat the consensus process for a new ledger version. As time passes since consensus began, it becomes increasingly likely that a majority of the servers have received the same set of candidate transactions, as each consensus round reduces disagreement. The XRP Ledger dynamically adjusts [transaction costs](transaction-cost.html) and the time to wait for consensus in response to these conditions.
 
 Once they reach supermajority agreement on validations, the servers work with the new validated ledger, ledger index N+1. The consensus and validation process repeats <a href="#footnote_9" id="from_footnote_9"><sup>9</sup></a>, considering candidate transactions that were not included in the last round along with new transactions submitted in the meantime.
 

@@ -159,6 +159,7 @@ trustset
 trustsetauth
 tx_history
 unl
+UNLModify
 unls
 wallet_propose
 v0

@@ -173,6 +173,7 @@
   "FlowV2",
   "MultiSign",
   "MultiSignReserve",
+  "NegativeUNL",
   "OwnerPaysFee",
   "PayChan",
   "RequireFullyCanonicalSig",
