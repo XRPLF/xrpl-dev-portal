@@ -10,16 +10,17 @@ You can also [run your own instance of `rippled`](install-rippled.html) or use a
 
 Ripple provides several public servers for the benefit of the XRP Ledger community:
 
-| Operator | [Network][] | JSON-RPC URL | WebSocket URL | Notes                |
-|:---------|:------------|:-------------|:--------------|:---------------------|
-| Ripple   | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | General purpose server cluster |
-| Ripple   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [Full-history server](ledger-history.html#full-history) cluster |
-| Ripple   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net/` | Testnet public server |
-| Ripple   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net/` | Devnet public server |
+| Operator  | [Network][] | JSON-RPC URL | WebSocket URL | Notes                |
+|:----------|:------------|:-------------|:--------------|:---------------------|
+| XRP Ledger Foundation | **Mainnet** | `https://xrpl.ws/` | `wss://xrpl.ws/` | Full history server cluster. |
+| Ripple¹   | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | General purpose server cluster |
+| Ripple¹   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [Full-history server](ledger-history.html#full-history) cluster |
+| Ripple¹   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net/` | Testnet public server |
+| Ripple¹   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net/` | Devnet public server |
 
 [Network]: parallel-networks.html
 
-These public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
+¹Ripple's public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
 
 
 ## Admin Access
