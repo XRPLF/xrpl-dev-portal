@@ -5042,14 +5042,7 @@ pages:
         targets:
             - en
 
-    -   name: レジャーのデータ型
-        html: ledger-data-formats.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        blurb: XRP Ledgerの共有状態を構成する個別のデータオブジェクトについて説明します。
-        template: template-landing-children.html
+    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.ja.md
         targets:
             - ja
 
@@ -5093,27 +5086,11 @@ pages:
         targets:
             - ja
 
-    -   name: Ledger Object Types
-        html: ledger-object-types.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        template: template-landing-children.html
-        blurb: Each ledger's state tree consists of a set of ledger objects, which collectively represent all settings, balances, and relationships in the shared ledger. In the peer protocol that rippled servers use to communicate with each other, ledger objects are represented in their raw binary format. In the rippled API, ledger objects are represented as JSON objects. #TODO:translate
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledger-object-types.md
         targets:
             - en
 
-    -   name: レジャーオブジェクトのタイプ
-        html: ledger-object-types.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        template: template-landing-children.html
-        blurb: 各レジャーの状態ツリーはレジャーオブジェクトのセットで構成されており、それらが総合して共有レジャーのすべての設定、残高、関係を表します。rippledサーバーが互いに通信するために使用するピアプロトコルでは、レジャーオブジェクトは生バイナリーフォーマットで表されます。rippled APIでは、レジャーオブジェクトはJSONオブジェクトとして表されます。
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledger-object-types.ja.md
         targets:
             - ja
 

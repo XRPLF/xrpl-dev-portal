@@ -16,9 +16,7 @@ Each [ledger version](ledgers.html) in the XRP Ledger is made up of three parts:
 
 ## State Data
 
-The ledger's state data consists of objects, or _ledger entries_, stored in a trie format. To store or retrieve an object in the state data, the protocol uses that object's unique **[Ledger Object ID](ledger-object-ids.html)**.
-
-A ledger object's data fields depend on the type of object; the XRP Ledger supports the following types:
+{% include '_snippets/ledger-objects-intro.md' %}
 
 {% from '_snippets/macros/page-children.md' import page_children with context %}
 {{ page_children(pages|selectattr("html", "eq", "ledger-object-types.html")|first, 1, 1, True) }}
