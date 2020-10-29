@@ -6,6 +6,7 @@ supercategory: rippled API
 category: Ledger Data Formats
 subcategory: Ledger Object Types
 status: not_enabled
+parent: ledger-object-types.html
 blurb: List of validators currently believed to be offline.
 ---
 # NegativeUNL

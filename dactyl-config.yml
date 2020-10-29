@@ -5038,14 +5038,7 @@ pages:
         targets:
             - ja
 
-    -   name: Ledger Data Formats
-        html: ledger-data-formats.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
-        template: template-landing-children.html
+    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.md
         targets:
             - en
 
@@ -5132,6 +5125,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: The settings, XRP balance, and other metadata for one account.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5143,6 +5137,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: あるアカウントの設定、XRP残高、その他のメタデータです。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5154,6 +5149,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: Singleton object with status of enabled and pending amendments.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5165,6 +5161,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: 有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5176,6 +5173,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: A check that can be redeemed for money by its destination.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5187,6 +5185,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: 送信先が清算して資金にできるCheckです。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5198,6 +5197,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: A record of preauthorization for sending payments to an account that requires authorization.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5209,6 +5209,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: 承認を必要とするアカウントへの送金ペイメントの事前承認の記録です。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5220,6 +5221,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: Contains links to other objects.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5231,6 +5233,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: 他のオブジェクトへのリンクを含みます。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5242,6 +5245,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: Contains XRP held for a conditional payment.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5253,6 +5257,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: 条件付き決済のために保有されているXRPを含みます。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5264,6 +5269,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5275,6 +5281,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5286,6 +5293,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: Lists of prior ledger versions' hashes for history lookup.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5297,6 +5305,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: 履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5313,6 +5322,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: An order to make a currency trade.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5324,6 +5334,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: 通貨取引を行うためのオーダーです。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5335,6 +5346,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: A channel for asynchronous XRP payments.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5346,6 +5358,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: 非同期XRP支払い用のチャネルです。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5357,6 +5370,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5368,6 +5382,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: 2つのアカウントをリンクし、それらのアカウント間の特定の通貨の残高を追跡します。トラストラインのコンセプトは、このオブジェクトタイプを抽象化することです。
+        parent: ledger-object-types.html
         targets:
             - ja
 
@@ -5379,6 +5394,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: A list of addresses for multi-signing transactions.
+        parent: ledger-object-types.html
         targets:
             - en
 
@@ -5390,6 +5406,7 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: マルチ署名トランザクションのアドレスのリストです。
+        parent: ledger-object-types.html
         targets:
             - ja
 
