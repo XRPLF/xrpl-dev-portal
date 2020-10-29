@@ -1,3 +1,13 @@
+---
+html: feesettings.html
+funnel: Build
+doc_type: References
+supercategory: rippled API
+category: Ledger Data Formats
+subcategory: Ledger Object Types
+blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
+parent: ledger-object-types.html
+---
 # FeeSettings
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")
 

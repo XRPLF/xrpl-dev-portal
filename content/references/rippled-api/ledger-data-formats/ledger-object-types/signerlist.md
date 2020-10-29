@@ -1,3 +1,13 @@
+---
+html: signerlist.html
+funnel: Build
+doc_type: References
+supercategory: rippled API
+category: Ledger Data Formats
+subcategory: Ledger Object Types
+blurb: A list of addresses for multi-signing transactions.
+parent: ledger-object-types.html
+---
 # SignerList
 [[Source]](https://github.com/ripple/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
 
