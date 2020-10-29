@@ -7,7 +7,7 @@ Generally, a ledger object's ID is returned as the `index` field in JSON, at the
 
 **Tip:** The `index` or `LedgerIndex` field of an object in the ledger is the ledger object ID. This is not the same as a [ledger index][].
 
-![Diagram: rippled uses SHA-512Half to generate IDs for ledger objects. The space key prevents IDs for different object types from colliding.](img/ledger-indexes.png)
+{{ include_svg("img/ledger-object-ids.svg", "Diagram: rippled uses SHA-512Half to generate IDs for ledger objects. The space key prevents IDs for different object types from colliding.") }}
 
 
 ## See Also
