@@ -29,7 +29,7 @@
 | `tecNO_AUTH` | 134 | トランザクションはトラストラインの残高を、`lsfRequireAuth`フラグが有効になっているアカウントに追加する必要がありましたが、そのトラストラインが承認されていなかったため、失敗しました。トラストラインが存在しない場合は、代わりに`tecNO_LINE`が発生します。 |
 | `tecNO_DST` | 124 | トランザクションの受信側のアカウントが存在しません。これには、PaymentトランザクションタイプやTrustSetトランザクションタイプがあります。（XRPを十分に受信した場合に作成される可能性があります。） |
 | `tecNO_DST_INSUF_XRP` | 125 | トランザクションの受信側のアカウントが存在しません。トランザクションは、アカウントの作成に十分なXRPを送金していません。 |
-| `tecNO_ENTRY` | 140 | トランザクションは[Check](checks.html)か[Payment Channel](payment-channels.html)か[Deposit Preauth事前承認]()などの[レジャーオブジェクト](depositpreauth-object.html)の変更を試みましたが、そのオブジェクトは存在しません。すでに削除されましたか、あるいはそのトランザクションに正しくないIDフィールド（`CheckID`か`Channel`か`Unauthorize`など）があります。 |
+| `tecNO_ENTRY` | 140 | トランザクションは[Check](checks.html)か[Payment Channel](payment-channels.html)か[Deposit Preauth事前承認](depositpreauth-object.html)などの[レジャーオブジェクト](ledger-object-types.html)の変更を試みましたが、そのオブジェクトは存在しません。以前のトランザクションで削除されましたか、あるいはこのトランザクションに正しくないIDフィールド（`CheckID`か`Channel`か`Unauthorize`など）があります。 |
 | `tecNO_ISSUER` | 133 | 通貨額の`issuer`フィールドに指定されたアカウントが存在しません。 |
 | `tecNO_LINE` | 135 | [OfferCreateトランザクション][]の`TakerPays`フィールドに、`lsfRequireAuth`を有効にしているイシュアーの資産が指定されており、このオファーを行っているアカウントはその資産に関してトラストラインを確立していません。（通常、オファーを暗黙に行うと必要に応じてトラストラインが作成されますが、この場合は承認なしでは資産を保有できないので問題にはなりません。）トラストラインは存在しているが承認されていない場合は、代わりに`tecNO_AUTH`が発生します。 |
 | `tecNO_LINE_INSUF_RESERVE` | 126 | 送信側アカウントに、新しいトラストラインを作成するのに十分なXRPがないため、トランザクションが失敗しました。（[準備金](reserves.html)を参照）このエラーは、取引相手がこのアカウントに対する同一通貨のトラストラインを持っていない場合に発生します。（その他のケースについては`tecINSUF_RESERVE_LINE`を参照してください。） |
