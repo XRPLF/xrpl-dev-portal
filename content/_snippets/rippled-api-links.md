@@ -21,7 +21,7 @@
 [Ledger Index]: basic-data-types.html#ledger-index
 [ledger index]: basic-data-types.html#ledger-index
 [レジャーインデックス]: basic-data-types.html#レジャーインデックス
-[ledger format]: ledger-data-formats.html
+[ledger format]: ledger-object-types.html
 [レジャーフォーマット]: ledger-data-formats.html
 [Marker]: markers-and-pagination.html
 [マーカー]: markers-and-pagination.html

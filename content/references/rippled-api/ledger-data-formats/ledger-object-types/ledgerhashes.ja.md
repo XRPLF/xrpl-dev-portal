@@ -1,3 +1,13 @@
+---
+html: ledgerhashes.html
+funnel: Build
+doc_type: References
+supercategory: rippled API
+category: Ledger Data Formats
+subcategory: Ledger Object Types
+blurb: 履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。
+parent: ledger-object-types.html
+---
 # LedgerHashes
 [[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108 "Source")
 

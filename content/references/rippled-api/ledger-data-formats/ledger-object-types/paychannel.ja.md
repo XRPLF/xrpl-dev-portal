@@ -1,3 +1,13 @@
+---
+html: paychannel.html
+funnel: Build
+doc_type: References
+supercategory: rippled API
+category: Ledger Data Formats
+subcategory: Ledger Object Types
+blurb: 非同期XRP支払い用のチャネルです。
+parent: ledger-object-types.html
+---
 # PayChannel
 [[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L141-L155 "Source")
 

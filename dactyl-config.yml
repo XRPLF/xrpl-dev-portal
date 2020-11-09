@@ -5038,25 +5038,11 @@ pages:
         targets:
             - ja
 
-    -   name: Ledger Data Formats
-        html: ledger-data-formats.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
-        template: template-landing-children.html
+    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.md
         targets:
             - en
 
-    -   name: レジャーのデータ型
-        html: ledger-data-formats.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        blurb: XRP Ledgerの共有状態を構成する個別のデータオブジェクトについて説明します。
-        template: template-landing-children.html
+    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.ja.md
         targets:
             - ja
 
@@ -5100,203 +5086,75 @@ pages:
         targets:
             - ja
 
-    -   name: Ledger Object Types
-        html: ledger-object-types.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        template: template-landing-children.html
-        blurb: Each ledger's state tree consists of a set of ledger objects, which collectively represent all settings, balances, and relationships in the shared ledger. In the peer protocol that rippled servers use to communicate with each other, ledger objects are represented in their raw binary format. In the rippled API, ledger objects are represented as JSON objects. #TODO:translate
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledger-object-types.md
         targets:
             - en
 
-    -   name: レジャーオブジェクトのタイプ
-        html: ledger-object-types.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        template: template-landing-children.html
-        blurb: 各レジャーの状態ツリーはレジャーオブジェクトのセットで構成されており、それらが総合して共有レジャーのすべての設定、残高、関係を表します。rippledサーバーが互いに通信するために使用するピアプロトコルでは、レジャーオブジェクトは生バイナリーフォーマットで表されます。rippled APIでは、レジャーオブジェクトはJSONオブジェクトとして表されます。
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledger-object-types.ja.md
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.md
-        html: accountroot.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: The settings, XRP balance, and other metadata for one account.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.ja.md
-        html: accountroot.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: あるアカウントの設定、XRP残高、その他のメタデータです。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/amendments.md
-        html: amendments-object.html #amendments.html is taken by the concept page
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: Singleton object with status of enabled and pending amendments.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/amendments.ja.md
-        html: amendments-object.html #amendments.html is taken by the concept page
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: 有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/check.md
-        html: check.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: A check that can be redeemed for money by its destination.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/check.ja.md
-        html: check.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: 送信先が清算して資金にできるCheckです。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/depositpreauth.md
-        html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: A record of preauthorization for sending payments to an account that requires authorization.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/depositpreauth.ja.md
-        html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: 承認を必要とするアカウントへの送金ペイメントの事前承認の記録です。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.md
-        html: directorynode.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: Contains links to other objects.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.ja.md
-        html: directorynode.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: 他のオブジェクトへのリンクを含みます。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/escrow.md
-        html: escrow-object.html #escrow.html is taken by the concept page
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: Contains XRP held for a conditional payment.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/escrow.ja.md
-        html: escrow-object.html #escrow.html is taken by the concept page
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: 条件付き決済のために保有されているXRPを含みます。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/feesettings.md
-        html: feesettings.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/feesettings.ja.md
-        html: feesettings.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledgerhashes.md
-        html: ledgerhashes.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: Lists of prior ledger versions' hashes for history lookup.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledgerhashes.ja.md
-        html: ledgerhashes.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: 履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。
         targets:
             - ja
 
@@ -5306,90 +5164,34 @@ pages:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.md
-        html: offer.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: An order to make a currency trade.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.ja.md
-        html: offer.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: 通貨取引を行うためのオーダーです。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.md
-        html: paychannel.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: A channel for asynchronous XRP payments.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.ja.md
-        html: paychannel.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: 非同期XRP支払い用のチャネルです。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.md
-        html: ripplestate.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.ja.md
-        html: ripplestate.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: 2つのアカウントをリンクし、それらのアカウント間の特定の通貨の残高を追跡します。トラストラインのコンセプトは、このオブジェクトタイプを抽象化することです。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.md
-        html: signerlist.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: A list of addresses for multi-signing transactions.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.ja.md
-        html: signerlist.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Ledger Data Formats
-        subcategory: Ledger Object Types
-        blurb: マルチ署名トランザクションのアドレスのリストです。
         targets:
             - ja
 

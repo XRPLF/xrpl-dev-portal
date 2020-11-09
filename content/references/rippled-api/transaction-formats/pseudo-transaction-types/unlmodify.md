@@ -10,7 +10,7 @@ blurb: Change the list of trusted validators currently considered offline.
 ---
 # UNLModify
 
-_(Requires the [NegativeUNL amendment]() :not_enabled:)_
+_(Requires the [NegativeUNL amendment][] :not_enabled:)_
 
 A `UNLModify` [pseudo-transaction](pseudo-transaction-types.html) marks a change to the [Negative UNL](negative-unl.html), indicating that a trusted validator has gone offline or come back online.
 
