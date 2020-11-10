@@ -23,14 +23,14 @@
 | `tecINSUFFICIENT_RESERVE` | 141 | トランザクションによって[必要準備金](reserves.html)が増加し、送信側アカウントの残高を超える可能性があります。[SignerListSet][]、[PaymentChannelCreate][]、[PaymentChannelFund][]、および[EscrowCreate][]からこのエラーコードが返されることがあります。詳細は、[SignerListと準備金](signerlist.html#signerlistと準備金)を参照してください。 |
 | `tecINTERNAL` | 144 | 不明な内部エラーが発生し、トランザクションコストは適用されました。通常はこのエラーは返されません。このエラーを再現できる場合は、[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
 | `tecINVARIANT_FAILED` | 147 | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]が必要です。このエラーを再現できる場合は、[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
+| `tecKILLED` | 150 | [OfferCreateトランザクション][]がtfFillOrKillフラグを指定しましたが、トランザクションを確定できなかったため、このトランザクションは取り消されました。_（[fix1578 Amendment][]が必要です。）_ |
 | `tecNEED_MASTER_KEY` | 142 | このトランザクションはマスターキーを必要とする変更（[マスターキーの無効化または残高凍結能力の放棄](accountset.html#accountsetのフラグ)など）を試みました。[新規: rippled 0.28.0][] |
 | `tecNO_ALTERNATIVE_KEY` | 130 | トランザクションが唯一の[トランザクション承認](transaction-basics.html#トランザクションの承認)メソッドを削除しようとしました。これは、レギュラーキーを削除する[SetRegularKeyトランザクション][]、SignerListを削除する[SignerListSetトランザクション][]、またはマスターキーを無効にする[AccountSetトランザクション][]である可能性があります。（`rippled` 0.30.0より前のバージョンでは、このトランザクションは`tecMASTER_DISABLED`と呼ばれていました。） |
 | `tecNO_AUTH` | 134 | トランザクションはトラストラインの残高を、`lsfRequireAuth`フラグが有効になっているアカウントに追加する必要がありましたが、そのトラストラインが承認されていなかったため、失敗しました。トラストラインが存在しない場合は、代わりに`tecNO_LINE`が発生します。 |
 | `tecNO_DST` | 124 | トランザクションの受信側のアカウントが存在しません。これには、PaymentトランザクションタイプやTrustSetトランザクションタイプがあります。（XRPを十分に受信した場合に作成される可能性があります。） |
 | `tecNO_DST_INSUF_XRP` | 125 | トランザクションの受信側のアカウントが存在しません。トランザクションは、アカウントの作成に十分なXRPを送金していません。 |
-| `tecNO_ENTRY` | 140 | 将来の使用のために予約されています。 |
+| `tecNO_ENTRY` | 140 | トランザクションは[Check](checks.html)か[Payment Channel](payment-channels.html)か[Deposit Preauth事前承認](depositpreauth-object.html)などの[レジャーオブジェクト](ledger-object-types.html)の変更を試みましたが、そのオブジェクトは存在しません。以前のトランザクションで削除されましたか、あるいはこのトランザクションに正しくないIDフィールド（`CheckID`か`Channel`か`Unauthorize`など）があります。 |
 | `tecNO_ISSUER` | 133 | 通貨額の`issuer`フィールドに指定されたアカウントが存在しません。 |
-| `tecKILLED` | 150 | [OfferCreateトランザクション][]がtfFillOrKillフラグを指定しましたが、トランザクションを確定できなかったため、このトランザクションは取り消されました。_（[fix1578 Amendment][]が必要です。）_ |
 | `tecNO_LINE` | 135 | [OfferCreateトランザクション][]の`TakerPays`フィールドに、`lsfRequireAuth`を有効にしているイシュアーの資産が指定されており、このオファーを行っているアカウントはその資産に関してトラストラインを確立していません。（通常、オファーを暗黙に行うと必要に応じてトラストラインが作成されますが、この場合は承認なしでは資産を保有できないので問題にはなりません。）トラストラインは存在しているが承認されていない場合は、代わりに`tecNO_AUTH`が発生します。 |
 | `tecNO_LINE_INSUF_RESERVE` | 126 | 送信側アカウントに、新しいトラストラインを作成するのに十分なXRPがないため、トランザクションが失敗しました。（[準備金](reserves.html)を参照）このエラーは、取引相手がこのアカウントに対する同一通貨のトラストラインを持っていない場合に発生します。（その他のケースについては`tecINSUF_RESERVE_LINE`を参照してください。） |
 | `tecNO_LINE_REDUNDANT` | 127 | トランザクションはトラストラインをデフォルト状態に設定しようと試みましたが、トラストラインが存在していなかったため、失敗しました。 |
