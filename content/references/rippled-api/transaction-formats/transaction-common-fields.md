@@ -91,9 +91,9 @@ The `Memos` field includes arbitrary messaging data with the transaction. It is 
 
 | Field        | Type   | [Internal Type][] | Description                      |
 |:-------------|:-------|:------------------|:---------------------------------|
-| `MemoData`   | String | Blob              | Arbitrary hex value, conventionally containing the content of the memo. |
-| `MemoFormat` | String | Blob              | Hex value representing characters allowed in URLs. Conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml). |
-| `MemoType`   | String | Blob              | Hex value representing characters allowed in URLs. Conventionally, a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
+| `MemoData`   | String | Blob              | Arbitrary uppercase hex value, conventionally containing the content of the memo. |
+| `MemoFormat` | String | Blob              | Uppercase hex value representing characters allowed in URLs. Conventionally containing information on how the memo is encoded, for example as a [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml). |
+| `MemoType`   | String | Blob              | Uppercase hex value representing characters allowed in URLs. Conventionally, a unique relation (according to [RFC 5988](http://tools.ietf.org/html/rfc5988#section-4)) that defines the format of this memo. |
 
 The `MemoType` and `MemoFormat` fields should only consist of the following characters: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=%`
 
@@ -109,8 +109,8 @@ Example of a transaction with a Memos field:
     "Memos": [
         {
             "Memo": {
-                "MemoType": "687474703a2f2f6578616d706c652e636f6d2f6d656d6f2f67656e65726963",
-                "MemoData": "72656e74"
+                "MemoType": "687474703A2F2F6578616D706C652E636F6D2F6D656D6F2F67656E65726963",
+                "MemoData": "72656E74"
             }
         }
     ],
