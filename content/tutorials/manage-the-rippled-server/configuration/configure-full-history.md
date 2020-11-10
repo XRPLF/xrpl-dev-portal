@@ -4,7 +4,7 @@ In its default configuration, the `rippled` server automatically deletes outdate
 
 ## Warnings
 
-Storing full history is expensive. As of 2018-12-11, the full history of the XRP Ledger occupies approximately **9 terabytes** of disk space, which must be entirely stored on fast solid state disk drives for proper server performance. Such a large amount of solid state storage is not cheap, and the total amount of history you must store increases by approximately 12 GB per day.
+Storing full history is expensive. As of 2020-11-10, the full history of the XRP Ledger occupies approximately **14 terabytes** of disk space, which must be entirely stored on fast solid state disk drives for proper server performance. Such a large amount of solid state storage is not cheap, and the total amount of history you must store increases by approximately 12 GB per day.
 
 Acquiring full history from the peer-to-peer network takes a long time (several months) and requires that your server has sufficient system and network resources to acquire older history while keeping up with new ledger progress. To get a faster start on acquiring ledger history, you may want to find another server operator who has a large amount of history already downloaded, who can give you a database dump or at least allow your server to explicitly peer with theirs for a long time to acquire history. The server can load ledger history from a file and verify the integrity of the historical ledgers it imports.
 
