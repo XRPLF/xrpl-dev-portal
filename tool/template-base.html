@@ -3,16 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{ currentpage.name }} - {{target.display_name}}</title>
+
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="{{ currentpage.name|escape }} | {{ target.display_name }}">
     <meta property="og:url" content="https://xrpl.org/{% if currentpage.html != 'index.html' %}{{currentpage.html}}{% endif %}" />
     <meta property="og:description" content="{% if currentpage.html == 'index.html' %}{{ target.blurb|escape}}{% else %}{{ currentpage.blurb|escape }}{% endif %}" />
+    <meta name="description" content="{% if currentpage.html == 'index.html' %}{{ target.blurb|escape}}{% else %}{{ currentpage.blurb|escape }}{% endif %}" />
     <meta property="og:image" content="https://xrpl.org/assets/img/{% if currentpage.fb_card %}{{currentpage.fb_card}}{% else %}xrpl-fb-li-card.png{% endif %}" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/{% if currentpage.twitter_card %}{{currentpage.twitter_card}}{% else %}xrpl-twitter-card.png{% endif %}" />
+    {% if currentpage.canonical_url %}<link rel="canonical" href="{{currentpage.canonical_url}}" />{% endif %}
+    <meta name="robots" content="index, follow" />
 
+    {% for lang in config.languages %}
+    <link rel="alternate" href="https://xrpl.org{{lang.prefix}}{{currentpage.html}}" hreflang="{{lang.code}}" />
+    {% endfor %}
+    <link rel="alternate" href="https://xrpl.org/{{currentpage.html}}" hreflang="x-default" /><!-- Default: US english -->
 
-    <title>{{ currentpage.name }} - {{target.display_name}}</title>
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
