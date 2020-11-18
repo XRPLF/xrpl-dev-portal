@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2020-10-05 13:05-0700\n"
+"POT-Creation-Date: 2020-11-18 13:40-0800\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -119,10 +119,10 @@ msgstr "2019年の取引額<span class=\"slider-amt\"></span>百万を比較"
 
 #: tool/template-calculator.html:96
 msgid ""
-"The country of Portugal consumes ~50twh (1 billion) Kilowatt hours (kWh) "
+"The country of Portugal consumes ~50twh (1 billion Kilowatt hours [kWh]) "
 "of energy annually. Explore how much energy today’s various currencies "
 "consume in relation to Portugal."
-msgstr "ポルトガルの国全体では年間でおよそ50TWh（10億）キロワット時（kWh）のエネルギーを消費しています。ポルトガルと比較して、現代のさまざまな通貨のエネルギー消費量をご覧ください。"
+msgstr "ポルトガルの国全体では年間でおよそ50TWh（10億キロワット時【kWh】）のエネルギーを消費しています。ポルトガルと比較して、現代のさまざまな通貨のエネルギー消費量をご覧ください。"
 
 #: tool/template-calculator.html:102 tool/template-calculator.html:150
 #: tool/template-calculator.html:162
@@ -1613,25 +1613,25 @@ msgid ""
 " margin calls and managing general trade inventory in real time."
 msgstr "市場参加者は、高速かつコスト効率が高く信頼できる取引担保としてXRPを使用し、裁定取引の好機をとらえたり、マージンコールを支払ったり、全般的な取引インベントリを管理したりといったことをリアルタイムで行っています。"
 
-#: tool/template-top-nav.html:35
+#: tool/template-top-nav.html:39
 msgid "Contribute"
 msgstr "貢献する"
 
 # Tooltip on the button to open the search box
-#: tool/template-top-nav.html:41
+#: tool/template-top-nav.html:45
 msgid "Open Search"
 msgstr "検索を開く"
 
-#: tool/template-top-nav.html:46 tool/template-top-nav.html:47
+#: tool/template-top-nav.html:50 tool/template-top-nav.html:51
 msgid "Search site..."
 msgstr "サイトを検索"
 
 # Tooltip on the button to close the search box
-#: tool/template-top-nav.html:49
+#: tool/template-top-nav.html:53
 msgid "Close Search"
 msgstr "検索を閉じる"
 
-#: tool/template-top-nav.html:58
+#: tool/template-top-nav.html:62
 msgid "Get Started"
 msgstr "始める"
 
