@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-10-05 13:05-0700\n"
+"POT-Creation-Date: 2020-11-18 13:40-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +118,7 @@ msgstr ""
 
 #: tool/template-calculator.html:96
 msgid ""
-"The country of Portugal consumes ~50twh (1 billion) Kilowatt hours (kWh) "
+"The country of Portugal consumes ~50twh (1 billion Kilowatt hours [kWh]) "
 "of energy annually. Explore how much energy today’s various currencies "
 "consume in relation to Portugal."
 msgstr ""
@@ -1491,23 +1491,23 @@ msgid ""
 " margin calls and managing general trade inventory in real time."
 msgstr ""
 
-#: tool/template-top-nav.html:35
+#: tool/template-top-nav.html:39
 msgid "Contribute"
 msgstr ""
 
-#: tool/template-top-nav.html:41
+#: tool/template-top-nav.html:45
 msgid "Open Search"
 msgstr ""
 
-#: tool/template-top-nav.html:46 tool/template-top-nav.html:47
+#: tool/template-top-nav.html:50 tool/template-top-nav.html:51
 msgid "Search site..."
 msgstr ""
 
-#: tool/template-top-nav.html:49
+#: tool/template-top-nav.html:53
 msgid "Close Search"
 msgstr ""
 
-#: tool/template-top-nav.html:58
+#: tool/template-top-nav.html:62
 msgid "Get Started"
 msgstr ""
 
