@@ -27,7 +27,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 3. Install dependencies.
 
-        sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget
+        sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget build-essential
 
 4. Install CMake.
 
