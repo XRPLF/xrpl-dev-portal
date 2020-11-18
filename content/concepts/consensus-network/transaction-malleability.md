@@ -86,11 +86,11 @@ The process to exploit a vulnerable system follows a series of steps similar to 
 
 3. A malicious actor sees the transaction propagating through the network before it becomes confirmed.
 
-4. The malicious actor calculates removes an extra signature from the vulnerable transaction.
+4. The malicious actor removes an extra signature from the vulnerable transaction.
 
     Unlike creating a signature for different transaction instructions, this does not require a large amount of computational work. It can be done in much less time than it takes to generate a signature in the first place.
 
-    Alternatively, an authorized signer whose signature is not already part of the transaction could add their signature to the vulnerable transaction's list of signatures. Depending on the sender's multi-signing settings, this can be in addition to removing other signatures from the transaction.
+    Alternatively, an authorized signer whose signature is not already part of the transaction could add their signature to the vulnerable transaction's list of signatures. Depending on the sender's multi-signing settings, this can be instead of or in addition to removing other signatures from the transaction.
 
     The modified list of signatures results in a different identifying hash. (You do not have to calculate the hash before you submit to the network, but knowing the hash makes it easier to check the transaction's status later.)
 
