@@ -608,6 +608,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/payment-system-basics/accounts/tickets.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/payment-system-basics/accounts/depositauth.md
         html: depositauth.html
         funnel: Build

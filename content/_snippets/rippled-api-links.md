@@ -180,6 +180,7 @@
   "SHAMapV2",
   "SortedDirectories",
   "SusPay",
+  "TicketBatch",
   "Tickets",
   "TickSize",
   "TrustSetAuth"
