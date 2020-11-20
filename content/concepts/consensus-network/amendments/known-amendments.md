@@ -14,40 +14,40 @@ The following is a comprehensive list of all known amendments and their status o
 | [fixAmendmentMajorityCalc][]    | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
 | [HardenedValidations][]         | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
 | [fix1781][]                     | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
-| [FlowCross][]                   | v0.70.0    | [Enabled: 2020-08-04](https://xrpcharts.ripple.com/#/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F "BADGE_GREEN") |
-| [fixQualityUpperBound][]        | v1.5.0     | [Enabled: 2020-07-09](https://xrpcharts.ripple.com/#/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
-| [RequireFullyCanonicalSig][]    | v1.5.0     | [Enabled: 2020-07-03](https://xrpcharts.ripple.com/#/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
-| [Checks][]                      | v0.90.0    | [Enabled: 2020-06-18](https://xrpcharts.ripple.com/#/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
-| [DeletableAccounts][]           | v1.4.0     | [Enabled: 2020-05-08](https://xrpcharts.ripple.com/#/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
-| [fixCheckThreading][]           | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
-| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Enabled: 2020-05-01](https://xrpcharts.ripple.com/#/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09 "BADGE_GREEN") |
-| [fixMasterKeyAsRegularKey][]    | v1.3.1     | [Enabled: 2019-10-02](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
-| [MultiSignReserve][]            | v1.2.0     | [Enabled: 2019-04-17](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
-| [fixTakerDryOfferRemoval][]     | v1.2.0     | [Enabled: 2019-04-02](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
-| [fix1578][]                     | v1.2.0     | [Enabled: 2019-03-23](https://xrpcharts.ripple.com/#/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
-| [DepositPreauth][]              | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
-| [fix1515][]                     | v1.1.0     | [Enabled: 2018-10-09](https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
-| [fix1543][]                     | v1.0.0     | [Enabled: 2018-06-21](https://xrpcharts.ripple.com/#/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
-| [fix1623][]                     | v1.0.0     | [Enabled: 2018-06-20](https://xrpcharts.ripple.com/#/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB "BADGE_GREEN") |
-| [fix1571][]                     | v1.0.0     | [Enabled: 2018-06-19](https://xrpcharts.ripple.com/#/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC "BADGE_GREEN") |
-| [DepositAuth][]                 | v0.90.0    | [Enabled: 2018-04-06](https://xrpcharts.ripple.com/#/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25 "BADGE_GREEN") |
-| [fix1513][]                     | v0.90.0    | [Enabled: 2018-04-06](https://xrpcharts.ripple.com/#/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B "BADGE_GREEN") |
-| [fix1201][]                     | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E "BADGE_GREEN") |
-| [fix1512][]                     | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647 "BADGE_GREEN") |
-| [fix1523][]                     | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469 "BADGE_GREEN") |
-| [fix1528][]                     | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E "BADGE_GREEN") |
-| [SortedDirectories][]           | v0.80.0    | [Enabled: 2017-11-14](https://xrpcharts.ripple.com/#/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29 "BADGE_GREEN") |
-| [EnforceInvariants][]           | v0.70.0    | [Enabled: 2017-07-07](https://xrpcharts.ripple.com/#/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6 "BADGE_GREEN") |
-| [fix1373][]                     | v0.70.0    | [Enabled: 2017-07-07](https://xrpcharts.ripple.com/#/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399 "BADGE_GREEN") |
-| [Escrow][]                      | v0.60.0    | [Enabled: 2017-03-31](https://xrpcharts.ripple.com/#/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515 "BADGE_GREEN") |
-| [fix1368][]                     | v0.60.0    | [Enabled: 2017-03-31](https://xrpcharts.ripple.com/#/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F "BADGE_GREEN") |
-| [PayChan][]                     | v0.33.0    | [Enabled: 2017-03-31](https://xrpcharts.ripple.com/#/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E "BADGE_GREEN") |
-| [TickSize][]                    | v0.50.0    | [Enabled: 2017-02-21](https://xrpcharts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_GREEN") |
-| [CryptoConditions][]            | v0.50.0    | [Enabled: 2017-01-03](https://xrpcharts.ripple.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
-| [Flow][]                        | v0.33.0    | [Enabled: 2016-10-21](https://xrpcharts.ripple.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
-| [TrustSetAuth][]                | v0.30.0    | [Enabled: 2016-07-19](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
-| [MultiSign][]                   | v0.31.0    | [Enabled: 2016-06-27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
-| [FeeEscalation][]               | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| [FlowCross][]                   | v0.70.0    | [Enabled: 2020-08-04](https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F "BADGE_GREEN") |
+| [fixQualityUpperBound][]        | v1.5.0     | [Enabled: 2020-07-09](https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
+| [RequireFullyCanonicalSig][]    | v1.5.0     | [Enabled: 2020-07-03](https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
+| [Checks][]                      | v0.90.0    | [Enabled: 2020-06-18](https://livenet.xrpl.org/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
+| [DeletableAccounts][]           | v1.4.0     | [Enabled: 2020-05-08](https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
+| [fixCheckThreading][]           | v1.4.0     | [Enabled: 2020-05-01](https://livenet.xrpl.org/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
+| [fixPayChanRecipientOwnerDir][] | v1.4.0     | [Enabled: 2020-05-01](https://livenet.xrpl.org/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09 "BADGE_GREEN") |
+| [fixMasterKeyAsRegularKey][]    | v1.3.1     | [Enabled: 2019-10-02](https://livenet.xrpl.org/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
+| [MultiSignReserve][]            | v1.2.0     | [Enabled: 2019-04-17](https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
+| [fixTakerDryOfferRemoval][]     | v1.2.0     | [Enabled: 2019-04-02](https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
+| [fix1578][]                     | v1.2.0     | [Enabled: 2019-03-23](https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
+| [DepositPreauth][]              | v1.1.0     | [Enabled: 2018-10-09](https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
+| [fix1515][]                     | v1.1.0     | [Enabled: 2018-10-09](https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
+| [fix1543][]                     | v1.0.0     | [Enabled: 2018-06-21](https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
+| [fix1623][]                     | v1.0.0     | [Enabled: 2018-06-20](https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB "BADGE_GREEN") |
+| [fix1571][]                     | v1.0.0     | [Enabled: 2018-06-19](https://livenet.xrpl.org/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC "BADGE_GREEN") |
+| [DepositAuth][]                 | v0.90.0    | [Enabled: 2018-04-06](https://livenet.xrpl.org/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25 "BADGE_GREEN") |
+| [fix1513][]                     | v0.90.0    | [Enabled: 2018-04-06](https://livenet.xrpl.org/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B "BADGE_GREEN") |
+| [fix1201][]                     | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E "BADGE_GREEN") |
+| [fix1512][]                     | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647 "BADGE_GREEN") |
+| [fix1523][]                     | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469 "BADGE_GREEN") |
+| [fix1528][]                     | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E "BADGE_GREEN") |
+| [SortedDirectories][]           | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29 "BADGE_GREEN") |
+| [EnforceInvariants][]           | v0.70.0    | [Enabled: 2017-07-07](https://livenet.xrpl.org/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6 "BADGE_GREEN") |
+| [fix1373][]                     | v0.70.0    | [Enabled: 2017-07-07](https://livenet.xrpl.org/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399 "BADGE_GREEN") |
+| [Escrow][]                      | v0.60.0    | [Enabled: 2017-03-31](https://livenet.xrpl.org/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515 "BADGE_GREEN") |
+| [fix1368][]                     | v0.60.0    | [Enabled: 2017-03-31](https://livenet.xrpl.org/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F "BADGE_GREEN") |
+| [PayChan][]                     | v0.33.0    | [Enabled: 2017-03-31](https://livenet.xrpl.org/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E "BADGE_GREEN") |
+| [TickSize][]                    | v0.50.0    | [Enabled: 2017-02-21](https://livenet.xrpl.org/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_GREEN") |
+| [CryptoConditions][]            | v0.50.0    | [Enabled: 2017-01-03](https://livenet.xrpl.org/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
+| [Flow][]                        | v0.33.0    | [Enabled: 2016-10-21](https://livenet.xrpl.org/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
+| [TrustSetAuth][]                | v0.30.0    | [Enabled: 2016-07-19](https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
+| [MultiSign][]                   | v0.31.0    | [Enabled: 2016-06-27](https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
+| [FeeEscalation][]               | v0.31.0    | [Enabled: 2016-05-19](https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
 | [SHAMapV2][]                    | v0.32.1    | [Vetoed: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
 | [FlowV2][]                      | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
 | [SusPay][]                      | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
