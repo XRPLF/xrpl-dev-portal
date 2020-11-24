@@ -15,6 +15,7 @@ These codes indicate that the transaction failed, but it could apply successfull
 | `terNO_RIPPLE`    | Used internally only. This code should never be returned. |
 | `terOWNERS`        | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
 | `terPRE_SEQ`      | The `Sequence` number of the current transaction is higher than the current sequence number of the account sending the transaction. |
+| `terPRE_TICKET`   | The transaction attempted to use a [Ticket](tickets.html), but the specified `TicketSequence` number does not exist in the ledger. However, the Ticket could still be created by another transaction. |
 | `terRETRY`         | Unspecified retriable error.                              |
 | `terQUEUED`        | The transaction met the load-scaled [transaction cost](transaction-cost.html) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |
 

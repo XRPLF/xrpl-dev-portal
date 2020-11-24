@@ -5201,6 +5201,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ticket.md
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/transaction-formats/transaction-formats.md
         html: transaction-formats.html
         funnel: Build

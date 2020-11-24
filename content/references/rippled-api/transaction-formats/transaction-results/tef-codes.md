@@ -22,6 +22,7 @@ These codes indicate that the transaction failed and was not included in a ledge
 | `tefMASTER_DISABLED`    | The transaction was signed with the account's master key, but the account has the `lsfDisableMaster` field set. |
 | `tefMAX_LEDGER`         | The transaction included a [`LastLedgerSequence`](reliable-transaction-submission.html#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
 | `tefNO_AUTH_REQUIRED`  | The [TrustSet transaction][] tried to mark a trust line as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
+| `tefNO_TICKET`         | The transaction attempted to use a [Ticket](tickets.html), but the specified `TicketSequence` number does not exist in the ledger, and cannot be created in the future because it is earlier than the sender's current sequence number. |
 | `tefNOT_MULTI_SIGNING` | The transaction was [multi-signed](multi-signing.html), but the sending account has no SignerList defined. |
 | `tefPAST_SEQ`           | The sequence number of the transaction is lower than the current sequence number of the account sending the transaction. |
 | `tefTOO_BIG`            | The transaction would affect too many objects in the ledger. For example, this was an [AccountDelete transaction][] but the account to be deleted owns over 1000 objects in the ledger. |
