@@ -5646,6 +5646,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/transaction-formats/transaction-types/ticketcreate.md
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md
         html: trustset.html
         funnel: Build
