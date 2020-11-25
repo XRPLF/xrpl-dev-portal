@@ -71,6 +71,7 @@ The ID of an `Escrow` object is the [SHA-512Half][] of the following values, con
 * The Escrow space key (`0x0075`)
 * The AccountID of the sender of the [EscrowCreate transaction][] that created the `Escrow` object
 * The Sequence number of the [EscrowCreate transaction][] that created the `Escrow` object
+    If the EscrowCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

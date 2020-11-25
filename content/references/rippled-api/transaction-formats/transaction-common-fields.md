@@ -7,7 +7,7 @@ Every transaction has the same set of common fields, plus additional fields base
 | `Account`            | String           | AccountID         | _(Required)_ The unique address of the [account](accounts.html) that initiated the transaction. |
 | `TransactionType`    | String           | UInt16            | _(Required)_ The type of transaction. Valid types include: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, `AccountDelete`, `SetRegularKey`, `SignerListSet`, `EscrowCreate`, `EscrowFinish`, `EscrowCancel`, `PaymentChannelCreate`, `PaymentChannelFund`, `PaymentChannelClaim`, and `DepositPreauth`. |
 | `Fee`                | String           | Amount            | _(Required; [auto-fillable][])_ Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. Some transaction types have different minimum requirements. See [Transaction Cost][] for details. |
-| `Sequence`           | Number           | UInt32            | _(Required; [auto-fillable][])_ The [sequence number](basic-data-types.html#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. The special case `0` means the transaction is using a [Ticket](tickets.html) instead. _(Requires the [TicketBatch amendment][] :not_enabled:)_ |
+| `Sequence`           | Number           | UInt32            | _(Required; [auto-fillable][])_ The [sequence number](basic-data-types.html#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. The special case `0` means the transaction is using a [Ticket](tickets.html) instead _(Requires the [TicketBatch amendment][] :not_enabled:)_. |
 | [`AccountTxnID`](#accounttxnid) | String | Hash256          | _(Optional)_ Hash value identifying another transaction. If provided, this transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
 | [`Flags`](#flags-field) | Number        | UInt32            | _(Optional)_ Set of bit-flags for this transaction. |
 | `LastLedgerSequence` | Number           | UInt32            | _(Optional; strongly recommended)_ Highest ledger index this transaction can appear in. Specifying this field places a strict upper limit on how long the transaction can wait to be validated or rejected. See [Reliable Transaction Submission](reliable-transaction-submission.html) for more details. |
@@ -15,7 +15,7 @@ Every transaction has the same set of common fields, plus additional fields base
 | [`Signers`](#signers-field) | Array     | Array             | _(Optional)_ Array of objects that represent a [multi-signature](multi-signing.html) which authorizes this transaction. |
 | `SourceTag`        | Number             | UInt32            | _(Optional)_ Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
 | `SigningPubKey`    | String           | Blob              | _(Automatically added when signing)_ Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
-| `TicketSequence`   | Number           | UInt32            | _(Optional)_ The sequence number of the [ticket](tickets.html) to use in place of a `Sequence` number. If this is provided, `Sequence` must be `0`. |
+| `TicketSequence`   | Number           | UInt32            | _(Optional)_ The sequence number of the [ticket](tickets.html) to use in place of a `Sequence` number. If this is provided, `Sequence` must be `0`. Cannot be used with `AccountTxnID`. |
 | `TxnSignature`     | String           | Blob              | _(Automatically added when signing)_ The signature that verifies this transaction as originating from the account it says it is from. |
 
 [auto-fillable]: #auto-fillable-fields
@@ -27,12 +27,13 @@ Every transaction has the same set of common fields, plus additional fields base
 
 <!-- SPELLING_IGNORE: AccountTxnID -->
 
-The `AccountTxnID` field lets you chain your transactions together, so that a current transaction is not valid unless the previous one (by Sequence Number) is also valid and matches the transaction you expected.
+The `AccountTxnID` field lets you chain your transactions together, so that a current transaction is not valid unless the previous transaction sent from the same account has a specific [transaction hash][identifying hash].
 
-Unlike the `PreviousTxnID` field, which tracks the last transaction to _modify_ an account (regardless of sender), the `AccountTxnID` tracks the last transaction _sent by_ an account. To use `AccountTxnID`, you must first set the [`asfAccountTxnID`](accountset.html#accountset-flags) flag, so that the ledger keeps track of the ID for the account's previous transaction. (`PreviousTxnID`, by comparison, is always tracked.)
+Unlike the `PreviousTxnID` field, which tracks the last transaction to _modify_ an account (regardless of sender), the `AccountTxnID` tracks the last transaction _sent by_ an account. To use `AccountTxnID`, you must first enable the [`asfAccountTxnID`](accountset.html#accountset-flags) flag, so that the ledger keeps track of the ID for the account's previous transaction. (`PreviousTxnID`, by comparison, is always tracked.)
 
 One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially have serious problems like some transactions sending twice and others not at all. Chaining your transactions together with `AccountTxnID` ensures that, even if both systems are active, only one of them can submit valid transactions at a time.
 
+The `AccountTxnID` field cannot be used on transactions that use [Tickets](tickets.html) :not_enabled:. Transactions that use `AccountTxnID` cannot be placed in the [transaction queue](transaction-queue.html).
 
 
 

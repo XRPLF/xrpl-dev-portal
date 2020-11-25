@@ -65,7 +65,8 @@ The ID of a `Check` object is the [SHA-512Half][] of the following values, conca
 
 * The Check space key (`0x0043`)
 * The AccountID of the sender of the [CheckCreate transaction][] that created the `Check` object
-* The Sequence number of the [CheckCreate transaction][] that created the `Check` object
+* The `Sequence` number of the [CheckCreate transaction][] that created the `Check` object.
+    If the CheckCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

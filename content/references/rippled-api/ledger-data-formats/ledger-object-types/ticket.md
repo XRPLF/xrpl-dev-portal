@@ -14,13 +14,21 @@ parent: ledger-object-types.html
 
 _(Requires the [TicketBatch amendment][] :not_enabled:)_
 
-The `Ticket` object type represents a [Ticket](tickets.html), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][].
+The `Ticket` object type represents a [Ticket](tickets.html), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][]. [New in: rippled 1.7.0][]
 
 ## Example {{currentpage.name}} JSON
 
+<!-- TODO: this example is synthetic. Replace with a real example when possible -->
+
 ```json
 {
-  TODO
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Flags": 0,
+  "LedgerEntryType": "Ticket",
+  "OwnerNode": "0000000000000000",
+  "PreviousTxnID": "F0AB71E777B2DA54B86231E19B82554EF1F8211F92ECA473121C655BFC5329BF",
+  "PreviousTxnLgrSeq": 14524914,
+  "TicketSequence": 381
 }
 ```
 
@@ -32,7 +40,7 @@ A `Ticket` object has the following fields:
 |:--------------------|:----------|:--------------|:---------------------------|
 | `LedgerEntryType`   | String    | UInt16        | The value `0x0054`, mapped to the string `Ticket`, indicates that this object is a {{currentpage.name}} object. |
 | `Account`           | String    | AccountID     | The [account](accounts.html) that owns this Ticket. |
-| `Flags`             | Number    | UInt32        | A bit-map of Boolean flags enabled for this signer list. For more information, see [SignerList Flags](#signerlist-flags). |
+| `Flags`             | Number    | UInt32        | A bit-map of Boolean flags enabled for this Ticket. Currently, there are no flags defined for Tickets. |
 | `OwnerNode`         | String    | UInt64        | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | `PreviousTxnID`     | String    | Hash256       | The identifying hash of the [transaction](transaction-basics.html) that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |

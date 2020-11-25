@@ -21,7 +21,10 @@ A TicketCreate transaction sets aside one or more [sequence numbers][Sequence Nu
 ```json
 {
     "TransactionType": "TicketCreate",
-    TODO
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Fee": "10",
+    "Sequence": 381,
+    "TicketCount": 10
 }
 ```
 
@@ -32,16 +35,18 @@ A TicketCreate transaction sets aside one or more [sequence numbers][Sequence Nu
 |:-----------------|:-----------------|:------------------|:-------------------|
 | `TicketCount`    | Number           | UInt32            | How many Tickets to create. This must be a positive number, and cannot cause the account to own more than 250 Tickets after executing this transaction. |
 
+**Caution:** Each Ticket counts as a separate item for the [owner reserve](reserves.html), so you must set aside 5 XRP for each Ticket. (The XRP becomes available again after you use the Ticket.) This cost can add up quickly if you create a large number of Tickets at once.
+
 **Tip:** This transaction increases the sending account's [sequence number][Sequence Number] by the number of tickets created (`TicketCount`). This is the only transaction that increases an account's sequence number by more than 1.
 
 ## Error Cases
 
 In addition to errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
 
-| Error Code | Description |
-|:-----------|:------------|
-| `temINVALID_COUNT` | The `TicketCount` field is invalid. It must be an integer from 1 to 250. |
-| `tecDIR_FULL` | This transaction would cause the account to own more than the limit of 250 Tickets at a time, or more than the maximum number of ledger objects in general. |
+| Error Code                | Description                                      |
+|:--------------------------|:-------------------------------------------------|
+| `temINVALID_COUNT`        | The `TicketCount` field is invalid. It must be an integer from 1 to 250. |
+| `tecDIR_FULL`             | This transaction would cause the account to own more than the limit of 250 Tickets at a time, or more than the maximum number of ledger objects in general. |
 | `tecINSUFFICIENT_RESERVE` | The sending account does not have enough XRP to meet the [owner reserve](reserves.html) of all the requested Tickets. |
 
 <!--{# common link defs #}-->
