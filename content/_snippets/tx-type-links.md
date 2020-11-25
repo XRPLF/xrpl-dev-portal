@@ -16,6 +16,7 @@
     "PaymentChannelFund",
     "SetRegularKey",
     "SignerListSet",
+    "TicketCreate",
     "TrustSet"
 ] %}
 {% set pstxtypes = [

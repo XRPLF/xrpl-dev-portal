@@ -1,5 +1,5 @@
 ---
-html: reserves.html
+html: tickets.html
 funnel: Build
 doc_type: Concepts
 category: Payment System Basics
@@ -17,7 +17,7 @@ A Ticket in the XRP Ledger is a way of setting aside a [sequence number][Sequenc
 
 [Transactions](transaction-basics.html) have sequence numbers so that any given transaction can execute no more than once. Sequence numbers also make sure any given transaction is unique: if you send the exact same amount of money to the same person multiple times, the Sequence Number is one detail that is guaranteed to be different each time. Finally, Sequence Numbers provide an elegant way to put transactions in a consistent order, even if some of them to arrive out of order when sent throughout the network.
 
-However, there are some situations where sequence numbers are too limiting. Some possible situations include:
+However, there are some situations where sequence numbers are too limiting. For example:
 
 - Two or more users share access to an account, each with the ability to send transactions independently. If these users try to send transactions around the same time without coordinating first, they may each try to use the same Sequence number for different transactions, and only one can succeed.
 - You may want to prepare and sign a transaction in advance, then save it in some secure storage so that it can be executed at any future point if certain events occur. However, if you want to continue using your account as normal in the meantime, you don't know what Sequence number the set-aside transaction will need.
@@ -28,17 +28,46 @@ Tickets provide a solution to all of these problems by setting aside sequence nu
 
 ## Tickets Are Reserved Sequence Numbers
 
-A Ticket is a record that a sequence number has been set aside to be used later. An account first sends a [TicketCreate transaction][] to set aside one or more sequence numbers as Tickets; this puts a record in the ledger's state data, in the form of a [Ticket object][], for each sequence number reserved. Later, the account can use a specific Ticket instead of a sequence number; doing so removes the corresponding Ticket from the ledger's state data.
+A Ticket is a record that a sequence number has been set aside to be used later. An account first sends a [TicketCreate transaction][] to set aside one or more sequence numbers as Tickets; this puts a record in the [ledger's state data](ledgers.html), in the form of a [Ticket object][], for each sequence number reserved.
 
-Tickets are numbered using the sequence numbers that were set aside to create them. For example, if your account's current sequence number is 101 and you create 3 Tickets, those Tickets have Ticket Sequence numbers 101, 102, and 103. Doing so increases your account's sequence number to 104. After this point, you can send a transaction normally using sequence number 104, or you can send a transaction using any of the three Tickets you just created. Suppose you send a transaction using Ticket 102; doing so deletes Ticket 102 from the ledger. Your next transaction after that can use sequence number 104, Ticket 101, or Ticket 103.
+Tickets are numbered using the sequence numbers that were set aside to create them. For example, if your account's current sequence number is 101 and you create 3 Tickets, those Tickets have Ticket Sequence numbers 101, 102, and 103. Doing so increases your account's sequence number to 104.
 
-**Tip:** When you create Tickets, your account's sequence number increases by the number of Tickets you created. When you use a Ticket, your account's sequence number does not change, but the ledger deletes the Ticket you used.
+{{ include_svg("img/ticket-creation.svg", "Diagram: Creating three Tickets") }}
+
+Later, you can send a transaction using a specific Ticket instead of a sequence number; doing so removes the corresponding Ticket from the ledger's state data and does not change your account's normal sequence number. You can also still send transactions using normal sequence numbers without using Tickets. You can use any of your available Tickets in any order at any time, but each Ticket can only be used once.
+
+{{ include_svg("img/ticket-usage.svg", "Diagram: Using Ticket 102.") }}
+
+Continuing the above example, you can send a transaction using sequence number 104 or any of the three Tickets you created. If you send a transaction using Ticket 102, doing so deletes Ticket 102 from the ledger. Your next transaction after that can use sequence number 104, Ticket 101, or Ticket 103.
+
+**Caution:** Each Ticket counts as a separate item for the [owner reserve](reserves.html), so you must set aside 5 XRP for each Ticket. (The XRP becomes available again after you use the Ticket.) This cost can add up quickly if you create a large number of Tickets at once.
 
 As with sequence numbers, sending a transaction uses up the Ticket _if and only if_ the transaction is confirmed by [consensus](consensus.html). However, transactions that fail to do what they were intended to do can still be confirmed by consensus with [`tec`-class result codes](tec-codes.html).
 
-***TODO: diagram depicting creating and using Tickets***
+To look up what Tickets an account has available, use the [account_objects method][].
 
+## Limitations
 
+Any account can create and use Tickets on any type of transaction. However, some restrictions apply:
+
+- Each Ticket can only be used once. It is possible to have multiple different candidate transactions
+- Each account cannot have more than 250 Tickets in the ledger at a time. Therefore, you cannot create more than 250 Tickets at a time, either.
+- You _can_ use a Ticket to create more Tickets. If you do, the Ticket you used does not count towards the total number of Tickets you can have at once.
+- Each Ticket counts toward the [owner reserve](reserves.html), so you must set aside 5 XRP for each Ticket you have not used yet. The XRP becomes available for you to use again after the Ticket is used.
+- Within an individual ledger, transactions that use Tickets execute after other transactions from the same sender. If an account has multiple transactions using Tickets in the same ledger version, those Tickets execute in order from lowest Ticket Sequence to highest. (For more information, see the documentation on consensus's [canonical order](consensus.html#calculate-and-share-validations).)
+- To "cancel" a Ticket, use the Ticket to [perform a no-op](about-canceling-a-transaction.html) [AccountSet transaction][]. This deletes the Ticket so that you don't have to meet its reserve requirement.
+
+## See Also
+
+<!-- TODO: add a tutorial for creating & using a Ticket -->
+
+- **Concepts:**
+    - [Multi-Signing](multi-signing.html)
+- **References:**
+    - [TicketCreate transaction][]
+    - [Transaction Common Fields](transaction-common-fields.html)
+    - [Ticket object](ticket.html)
+    - [account_objects method][]
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
