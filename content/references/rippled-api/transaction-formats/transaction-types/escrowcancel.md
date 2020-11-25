@@ -24,7 +24,7 @@ Return escrowed XRP to the sender.
 | Field           | JSON Type | [Internal Type][] | Description                |
 |:----------------|:----------|:------------------|:---------------------------|
 | `Owner`         | String    | AccountID         | Address of the source account that funded the escrow payment. |
-| `OfferSequence` | Number    | UInt32            | Transaction sequence of [EscrowCreate transaction][] that created the escrow to cancel. |
+| `OfferSequence` | Number    | UInt32            | Transaction sequence (or [Ticket](tickets.html) :not_enabled: number) of [EscrowCreate transaction][] that created the escrow to cancel. |
 
 Any account may submit an EscrowCancel transaction.
 
