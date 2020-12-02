@@ -33,7 +33,9 @@ A TicketCreate transaction sets aside one or more [sequence numbers][Sequence Nu
 
 | Field            | JSON Type        | [Internal Type][] | Description        |
 |:-----------------|:-----------------|:------------------|:-------------------|
-| `TicketCount`    | Number           | UInt32            | How many Tickets to create. This must be a positive number, and cannot cause the account to own more than 250 Tickets after executing this transaction. |
+| `TicketCount`    | Number           | UInt32            | How many Tickets to create. This must be a positive number and cannot cause the account to own more than 250 Tickets after executing this transaction. |
+
+If the transaction cannot create _all_ of the requested Tickets (either due to the 250-Ticket limit or the [owner reserve](reserves.html)), it fails and creates no Tickets. To look up how many Tickets an account currently owns, use the [account_info method][] and check the `account_data.TicketCount` field.
 
 **Tip:** This transaction increases the sending account's [sequence number][Sequence Number] by the number of tickets created (`TicketCount`). This is the only transaction that increases an account's sequence number by more than 1.
 

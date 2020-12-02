@@ -50,7 +50,7 @@ To look up what Tickets an account has available, use the [account_objects metho
 
 Any account can create and use Tickets on any type of transaction. However, some restrictions apply:
 
-- Each Ticket can only be used once. It is possible to have multiple different candidate transactions
+- Each Ticket can only be used once. It is possible to have multiple different candidate transactions that would use the same Ticket Sequence, but only one of those candidates can be validated by consensus.
 - Each account cannot have more than 250 Tickets in the ledger at a time. Therefore, you cannot create more than 250 Tickets at a time, either.
 - You _can_ use a Ticket to create more Tickets. If you do, the Ticket you used does not count towards the total number of Tickets you can have at once.
 - Each Ticket counts toward the [owner reserve](reserves.html), so you must set aside 5 XRP for each Ticket you have not used yet. The XRP becomes available for you to use again after the Ticket is used.
