@@ -18,17 +18,15 @@ The `Ticket` object type represents a [Ticket](tickets.html), which tracks an ac
 
 ## Example {{currentpage.name}} JSON
 
-<!-- TODO: this example is synthetic. Replace with a real example when possible -->
-
 ```json
 {
-  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "Flags": 0,
-  "LedgerEntryType": "Ticket",
-  "OwnerNode": "0000000000000000",
-  "PreviousTxnID": "F0AB71E777B2DA54B86231E19B82554EF1F8211F92ECA473121C655BFC5329BF",
-  "PreviousTxnLgrSeq": 14524914,
-  "TicketSequence": 381
+  "Account" : "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
+  "Flags" : 0,
+  "LedgerEntryType" : "Ticket",
+  "OwnerNode" : "0000000000000000",
+  "PreviousTxnID" : "F19AD4577212D3BEACA0F75FE1BA1644F2E854D46E8D62E9C95D18E9708CBFB1",
+  "PreviousTxnLgrSeq" : 4,
+  "TicketSequence" : 3
 }
 ```
 
@@ -53,3 +51,8 @@ The ID of a Ticket object is the SHA-512Half of the following values, concatenat
 * The Ticket space key (`0x0054`)
 * The AccountID of the owner of the Ticket
 * The `TicketSequence` number of the Ticket
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
