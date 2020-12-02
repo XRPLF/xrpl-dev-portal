@@ -5571,24 +5571,10 @@ pages:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.md
-        html: paymentchannelfund.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Transaction Formats
-        subcategory: Transaction Types
-        blurb: Add more XRP to a payment channel.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.ja.md
-        html: paymentchannelfund.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Transaction Formats
-        subcategory: Transaction Types
-        blurb: オープンPayment ChannelにXRPを追加します。
         targets:
             - ja
 
