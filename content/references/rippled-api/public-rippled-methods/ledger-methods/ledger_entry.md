@@ -59,6 +59,7 @@ This method can retrieve several different types of data. You can select which t
 7. `escrow` - Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specific time or condition is met. [New in: rippled 1.0.0][]
 8. `payment_channel` - Retrieve a [PayChannel object](paychannel.html), which holds XRP for asynchronous payments. [New in: rippled 1.0.0][]
 9. `deposit_preauth` - Retrieve a [DepositPreauth object](depositpreauth-object.html), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](depositauth.html). [New in: rippled 1.1.0][]
+10. `ticket` - Retrieve a [Ticket object](ticket.html), which records a [sequence number][] set aside for future use. _(Requires the [TicketBatch amendment][])_
 
 If you specify more than one of the above items, the server retrieves only one of them; it is undefined which it chooses.
 
@@ -86,6 +87,9 @@ The full list of parameters recognized by this method is as follows:
 | `ripple_state`          | Object                     | _(Optional)_ Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
 | `ripple_state.accounts` | Array                      | _(Required if `ripple_state` is specified)_ 2-length array of account [Address][]es, defining the two accounts linked by this [RippleState object](ripplestate.html). |
 | `ripple_state.currency` | String                     | _(Required if `ripple_state` is specified)_ [Currency Code][] of the [RippleState object](ripplestate.html) to retrieve. |
+| `ticket`                | Object or String           | _(Optional)_ Object specifying the [Ticket object](ticket.html) to retrieve. If a string, the must be the [object ID](ledger-object-ids.html) of the Ticket, as hexadecimal. If an object, the `owner` and `ticket_sequence` sub-fields are required to uniquely specify the Ticket entry to retrieve. |
+| `ticket.owner`          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
+| `ticket.ticket_sequence` | Unsigned Integer          | _(Required if `ticket` is specified as an object)_ The Ticket Sequence number of the Ticket entry to retrieve. |
 | `binary`                | Boolean                    | _(Optional)_ If true, return the requested ledger object's contents as a hex string. Otherwise, return data in JSON format. The default is `false`. [Updated in: rippled 1.2.0][] |
 | `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |

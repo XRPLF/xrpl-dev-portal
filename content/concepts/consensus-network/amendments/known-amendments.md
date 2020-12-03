@@ -10,7 +10,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [NegativeUNL][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [TicketBatch][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixAmendmentMajorityCalc][]    | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
 | [HardenedValidations][]         | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
 | [fix1781][]                     | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
@@ -48,6 +48,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [TrustSetAuth][]                | v0.30.0    | [Enabled: 2016-07-19](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]                   | v0.31.0    | [Enabled: 2016-06-27](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]               | v0.31.0    | [Enabled: 2016-05-19](https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| [Tickets][]                     | v0.30.1    | [Vetoed: Removed in v0.90.0]( "BADGE_RED") |
 | [SHAMapV2][]                    | v0.32.1    | [Vetoed: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
 | [FlowV2][]                      | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
 | [SusPay][]                      | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
@@ -608,17 +609,25 @@ Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixe
 This amendment was replaced by the [Escrow](escrow-object.html) amendment.
 
 
+## TicketBatch
+[TicketBatch]: #ticketbatch
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C | Open for Voting |
+
+This amendment adds Tickets as a way of sending transactions out of the typical sequence number order.
+
+Standards Draft: [XLS-13d](https://github.com/xrp-community/standards-drafts/issues/16).
+
 ## Tickets
 [Tickets]: #tickets
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | In Development |
+| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | Vetoed    |
 
-Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the `Ticket` ledger object type and the transaction types `TicketCreate` and `TicketCancel`.
-
-**Caution:** This amendment is still in development.
-
+This amendment was replaced by the [TicketBatch][] amendment.
 
 ## TickSize
 [TickSize]: #ticksize

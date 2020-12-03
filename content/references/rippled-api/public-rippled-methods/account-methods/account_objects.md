@@ -12,7 +12,7 @@ The types of objects that may appear in the `account_objects` response for an ac
 - [PayChannel objects](paychannel.html) for open payment channels.
 - [Check objects](check.html) for pending Checks.
 - [DepositPreauth objects](depositpreauth-object.html) for deposit preauthorizations. [New in: rippled 1.1.0][]
-- [Ticket objects](known-amendments.html#tickets) :not_enabled: for tickets.
+- [Ticket objects](known-amendments.html#tickets) :not_enabled: for Tickets.
 
 
 ## Request Format

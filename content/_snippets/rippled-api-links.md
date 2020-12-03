@@ -57,6 +57,7 @@
 <!-- API object types -->
 [AccountRoot object]: accountroot.html
 [AccountRootオブジェクト]: accountroot.html
+[Ticket object]: ticket.html
 
 <!--{# Links to external sites #}-->
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
@@ -180,6 +181,7 @@
   "SHAMapV2",
   "SortedDirectories",
   "SusPay",
+  "TicketBatch",
   "Tickets",
   "TickSize",
   "TrustSetAuth"

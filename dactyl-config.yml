@@ -608,6 +608,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/payment-system-basics/accounts/tickets.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/payment-system-basics/accounts/depositauth.md
         html: depositauth.html
         funnel: Build
@@ -5196,6 +5201,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ticket.md
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/transaction-formats/transaction-formats.md
         html: transaction-formats.html
         funnel: Build
@@ -5634,6 +5644,11 @@ pages:
         subcategory: Transaction Types
         blurb: トランザクションのマルチ署名に使用できる署名者のリストを作成、置換、削除します。
         targets:
+            - ja
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/ticketcreate.md
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md
