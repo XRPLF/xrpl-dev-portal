@@ -71,6 +71,7 @@ targets:
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         prefix: ""
+        ripple_lib_url: assets/js/ripple-lib-1.8.2-min.js
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
         readability_goals:
@@ -84,6 +85,7 @@ targets:
         github_branch: master
         prefix: "/ja/"
         locale_file: locale/ja/LC_MESSAGES/messages.mo
+        ripple_lib_url: assets/js/ripple-lib-1.8.2-min.js
         blurb: XRPとXRP Ledgerの全てに対してのコミュニティーリーソース
         link_subs:
             # Adjust XRP-API readme link to point to the right place in the repo
@@ -1617,26 +1619,10 @@ pages:
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.md
-        html: send-xrp.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Learn how to send test payments right from your browser.
-        cta_text: Send XRP
-        filters:
-            - interactive_steps
         targets:
             - en
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.ja.md
-        html: send-xrp.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Test Netを使用してXRPの送金をテストします。
-        cta_text: XRPを送金しよう
-        filters:
-            - interactive_steps
         targets:
             - ja
 
@@ -1892,6 +1878,11 @@ pages:
         category: Manage Account Settings
         blurb: 物理的に隔離されたオフラインのマシンを使用して暗号鍵を保管するXRP Ledgerアカウントを設定します。
         targets:
+            - ja
+
+    -   md: tutorials/manage-account-settings/use-tickets.md
+        targets:
+            - en
             - ja
 
     # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)

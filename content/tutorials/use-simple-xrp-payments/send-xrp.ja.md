@@ -1,3 +1,13 @@
+---
+html: send-xrp.html
+funnel: Build
+doc_type: Tutorials
+category: Get Started
+blurb: Test Netを使用してXRPの送金をテストします。
+cta_text: XRPを送金しよう
+filters:
+    - interactive_steps
+---
 # XRPの送金
 
 このチュートリアルでは、RippleAPI for JavaScriptを使用してシンプルなXRP送金を行う方法について説明します。まずは、XRP Test Netを使用してプロセスを順に進めます。次に、そのプロセスと、本番で同様の処理を行う場合に発生する追加要件とを比較します。
@@ -6,88 +16,15 @@
 
 <!-- Interactive example use ripple-lib and its prerequisites -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
-<script type="application/javascript" src="assets/js/ripple-lib-1.8.0-min.js"></script>
+<script type="application/javascript" src="{{target.ripple_lib_url}}"></script>
 <!-- Helper for interactive tutorial breadcrumbs -->
 <script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
 
-- このページでは、ripple-lib（RippleAPI）ライブラリーバージョン1.1.2を使用するJavaScriptの例を紹介します。[RippleAPI入門ガイド](get-started-with-rippleapi-for-javascript.html)に、RippleAPIを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
+- このページでは、ripple-lib（RippleAPI）ライブラリーバージョン1.8.2を使用するJavaScriptの例を紹介します。[RippleAPI入門ガイド](get-started-with-rippleapi-for-javascript.html)に、RippleAPIを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
 
 - XRP Ledgerでトランザクションを送信するには、まずアドレスと秘密鍵、そしていくらかのXRPが必要となります。次のインターフェイスを使用して、XRP Test NetにあるアドレスとTest Net XRPを入手できます。
 
-{{ start_step("Generate") }}
-<button id="generate-creds-button" class="btn btn-primary">資格情報を作成する</button>
-<div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
-<div id='address'></div>
-<div id='secret'></div>
-<div id='balance'></div>
-<div id="populate-creds-status"></div>
-{{ end_step() }}
-<script type="application/javascript">
-$(document).ready( () => {
-
-  $("#generate-creds-button").click( () => {
-    // Wipe existing results
-    $("#address").html("")
-    $("#secret").html("")
-    $("#balance").html("")
-    $("#populate-creds-status").html("")
-
-    $("#loader-0").show()
-
-    $.ajax({
-      url: "https://faucet.altnet.rippletest.net/accounts",
-      type: 'POST',
-      dataType: 'json',
-      success: function(data) {
-        $("#loader-0").hide()
-        $("#address").hide().html("<strong>Address:</strong> " +
-          '<span id="test-net-faucet-address">' +
-          data.account.address
-          + "</span>").show()
-        $("#secret").hide().html('<strong>Secret:</strong> ' +
-          '<span id="test-net-faucet-secret">' +
-          data.account.secret +
-          "</span>").show()
-        $("#balance").hide().html('<strong>Balance:</strong> ' +
-          Number(data.balance).toLocaleString('en') +
-          ' XRP').show()
-
-        // Automatically populate examples with these credentials...
-        // Set sender address
-        let generated_addr = ""
-        $("code span:contains('"+EXAMPLE_ADDR+"')").each( function() {
-          let eltext = $(this).text()
-          $(this).text( eltext.replace(EXAMPLE_ADDR, data.account.address) )
-        })
-
-        // Set sender secret
-        $("code span:contains('"+EXAMPLE_SECRET+"')").each( function() {
-          let eltext = $(this).text()
-          $(this).text( eltext.replace(EXAMPLE_SECRET, data.account.secret) )
-        })
-
-        $("#populate-creds-status").text("Populated this page's examples with these credentials.")
-
-        complete_step("Generate")
-
-      },
-      error: function() {
-        $("#loader-0").hide();
-        alert("There was an error with the Ripple Test Net, please try again.");
-      }
-    })
-  })
-
-  const EXAMPLE_ADDR = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-  const EXAMPLE_SECRET = "s████████████████████████████"
-  $("#populate-creds-button").click( () => {
-
-  })
-
-})
-</script>
-
-**注意:** RippleはXRP Test Netをテストの目的でのみ運用しており、Test Netの状態とすべての残高を定期的にリセットしています。予防措置として、Test Netと本番で同じアドレスを使用**しない**ことをお勧めします。
+{% include '_snippets/generate-step.ja.md' %}
 
 ## Test Netでの送金
 {% set n = cycler(* range(1,99)) %}
