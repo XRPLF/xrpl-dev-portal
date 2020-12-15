@@ -3717,7 +3717,7 @@ Get orders in the order books, placed by a specific account. This does not retur
 *REST*
 
 ```
-GET /v2/account/{address}/orders
+GET /v2/accounts/{address}/orders
 ```
 
 <!-- MULTICODE_BLOCK_END -->
