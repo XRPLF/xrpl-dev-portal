@@ -39,9 +39,18 @@ The following code sample instantiates a new RippleAPI instance and connects to 
 
 ```js
 ripple = require('ripple-lib')
-api = new ripple.RippleAPI({server: 'wss://s.devnet.rippletest.net:51233'})
-api.connect()
+
+async function main() {
+  api = new ripple.RippleAPI({server: 'wss://s.devnet.rippletest.net:51233'})
+  await api.connect()
+
+  // Code in the following examples continues here...
+}
+
+main()
 ```
+
+**Note:** The code samples in this tutorial use JavaScript's [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
 
 For this tutorial, you can connect directly from your browser by pressing the following button:
 
@@ -153,21 +162,18 @@ If you already have at least one Ticket available in the ledger, you can skip th
 Construct a [TicketCreate transaction][] the sequence number you determined in the previous step. Use the `TicketCount` field to set how many Tickets to create. For example, this example [prepares a transaction](rippleapi-reference.html#preparetransaction) that would make 10 Tickets:
 
 ```js
-async function prepareAndSign(txo) {
-  const response = await api.prepareTransaction(txo)
-  console.log("Prepared transaction:", response.txJSON)
-
-  const response2 = await api.sign(response.txJSON, "s████████████████████████████")
-  console.log("Transaction hash:", response2.id)
-  return response2.signedTransaction
-};
-
-let tx_blob = prepareAndSign({
+let prepared = await api.prepareTransaction({
   "TransactionType": "TicketCreate",
   "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
   "TicketCount": 10,
   "Sequence": current_sequence
 })
+console.log("Prepared transaction:", prepared.txJSON)
+
+let signed = await api.sign(prepared.txJSON, "s████████████████████████████")
+console.log("Transaction hash:", signed.id)
+
+let tx_blob = signed.signedTransaction
 ```
 
 ### {{n.next()}}. Submit TicketCreate
@@ -175,6 +181,11 @@ let tx_blob = prepareAndSign({
 If you already have at least one Ticket available in the ledger, you can skip this step. Otherwise, you need to send a transaction to create some Tickets.
 
 Submit the signed transaction blob that you created in the previous step. For example:
+
+```js
+let prelim_result = await api.submit(tx_blob)
+
+```
 
 ### {{n.next()}}. Wait for Validation
 
@@ -185,9 +196,6 @@ You use the `ledger` event type in RippleAPI to trigger your code to run wheneve
 ```js
 api.on('ledger', ledger => {
   console.log("Ledger version", ledger.ledgerVersion, "was validated.")
-  if (ledger.ledgerVersion > maxLedgerVersion) {
-    console.log("If the transaction hasn't succeeded by now, it's expired")
-  }
 })
 ```
 
@@ -218,12 +226,63 @@ api.on('ledger', ledger => {
 })
 </script>
 
+### (Optional) Intermission
+
+The power of Tickets is that you can send other transactions during this time, and generally carry on with your account's normal business during this time. If you are planning on using a given Ticket, then as long as you don't use that Ticket for something else, you're free to continue using your account as normal. When you want to send the transaction using a Ticket, you can do that in parallel with other transactions using regular sequence numbers or different Tickets, and submit any of them in any order when you're ready.
+
+***TODO: Maybe insert a mini-tx-sender-like board of buttons here?***
+
+### {{n.next()}}. Check Available Tickets
+
+When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the [account_objects method][] (or [`getAccountObjects()`](rippleapi-reference.html#getaccountobjects)) to look up your available tickets. For example:
+
+```js
+let response = await api.getAccountObjects(
+    "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+    {type:"ticket"} // TODO: confirm this works, maybe check needed ripple-lib version number
+)
+
+console.log("Available Tickets:", response.account_objects)
+```
+
+
 ### {{n.next()}}. Prepare Ticketed Transaction
 
 Now that you have a Ticket available, you can prepare a transaction that uses it.
 
-This can be any [type of transaction](transaction-types.html) you like. For this example, we use an [AccountSet transaction][] to set a `MessageKey`
+This can be any [type of transaction](transaction-types.html) you like. The following example uses an [AccountSet transaction][] to set a `MessageKey` since that doesn't require any other setup in the ledger. Set the `Sequence` field to `0` and include a `TicketSequence` field with the Ticket Sequence number of one of your available Tickets.
 
+```js
+let prepared_t = await api.prepareTransaction({
+  "TransactionType": "AccountSet",
+  "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+  "MessageKey": "DEADBEEF",
+  "TicketSequence": use_ticket,
+  "Sequence": 0
+})
+console.log("Prepared JSON:", prepared_t.txJSON)
+
+let signed_t = await api.sign(prepared_t.txJSON,
+                                   "s████████████████████████████")
+console.log("Transaction hash:", signed_t.id)
+let tx_blob_t = signed.signedTransaction
+console.log("Signed transaction blob:", tx_blob_t)
+```
+
+
+### {{n.next()}}. Submit Ticketed Transaction
+
+Submit the signed transaction blob that you created in the previous step. For example:
+
+```js
+TODO
+```
+
+### {{n.next()}}. Wait for Validation
+
+```js
+TODO
+```
 
 
 ## See Also
