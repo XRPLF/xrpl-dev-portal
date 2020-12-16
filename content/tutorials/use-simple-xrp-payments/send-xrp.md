@@ -5,8 +5,6 @@ doc_type: Tutorials
 category: Get Started
 blurb: Learn how to send test payments right from your browser.
 cta_text: Send XRP
-filters:
-    - interactive_steps
 ---
 # Send XRP
 

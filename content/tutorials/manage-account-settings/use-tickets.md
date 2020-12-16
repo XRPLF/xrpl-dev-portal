@@ -4,8 +4,6 @@ funnel: Build
 doc_type: Tutorials
 category: Manage Account Settings
 blurb: Use Tickets to send a transaction outside of normal Sequence order.
-filters:
-    - interactive_steps
 ---
 # Use Tickets
 
@@ -64,7 +62,7 @@ For this tutorial, you can connect directly from your browser by pressing the fo
 {{ end_step() }}
 
 <script type="application/javascript">
-api = new ripple.RippleAPI({server: 'wss://localhost:'}) //TODO: change to Devnet when possible
+api = new ripple.RippleAPI({server: 'ws://localhost:6006'}) //TODO: change to Devnet when possible
 api.on('connected', async function() {
   $("#connection-status").text("Connected")
   $("#connect-button").prop("disabled", true)
@@ -72,8 +70,8 @@ api.on('connected', async function() {
 
   // Update breadcrumbs & active next step
   complete_step("Connect")
-  $("#interactive-prepare button").prop("disabled", false)//TODO: change ID
-  $("#interactive-prepare button").prop("title", "")
+  $("#interactive-check_sequence button").prop("disabled", false)//TODO: change ID
+  $("#interactive-check_sequence button").prop("title", "")
 
   // TODO: remove this standalone mode "faucet" code
   resp = await api.request('wallet_propose')
@@ -143,15 +141,15 @@ let current_sequence = get_sequence()
 {{ end_step() }}
 
 <script type="application/javascript">
-  $("#check-sequence-button").click( async function() {
+  $("#check-sequence").click( async function() {
     const address = $("#use-address").text()
     // Wipe previous output
     $("#check-sequence-output").html("")
     const account_info = await api.request("account_info", {account: address})
 
-    $("#check-sequence").append("Current sequence: "+account_info.account_data.Sequence)
+    $("#check-sequence-output").append("Current sequence: "+account_info.account_data.Sequence)
     // TODO: populate Sequence number in next example
-  }
+  })
 </script>
 
 
@@ -184,7 +182,7 @@ Submit the signed transaction blob that you created in the previous step. For ex
 
 ```js
 let prelim_result = await api.submit(tx_blob)
-
+console.log("Preliminary result:", prelim_result)
 ```
 
 ### {{n.next()}}. Wait for Validation
@@ -216,14 +214,14 @@ api.on('ledger', ledger => {
 
 <script type="application/javascript">
 // TODO: change this to wait for a specific tx
-api.on('ledger', ledger => {
-  $("#current-ledger-version").text(ledger.ledgerVersion)
-
-  if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
-    complete_step("Wait")
-    //TODO
-  }
-})
+//api.on('ledger', ledger => {
+//  $("#current-ledger-version").text(ledger.ledgerVersion)
+//
+//  if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
+//    complete_step("Wait")
+//    //TODO
+//  }
+//})
 </script>
 
 ### (Optional) Intermission
@@ -259,6 +257,10 @@ let prepared_t = await api.prepareTransaction({
   "MessageKey": "DEADBEEF",
   "TicketSequence": use_ticket,
   "Sequence": 0
+}, {
+  // Adjust instructions to allow more time before submitting the transaction
+  maxLedgerVersionOffset: 20
+  //maxLedgerVersion: null // or, let the transaction remain valid indefinitely
 })
 console.log("Prepared JSON:", prepared_t.txJSON)
 
@@ -269,13 +271,16 @@ let tx_blob_t = signed.signedTransaction
 console.log("Signed transaction blob:", tx_blob_t)
 ```
 
+**Tip:** If you don't plan to submit the TicketCreate transaction right away, you should explicitly set the [instructions'](rippleapi-reference.html#transaction-instructions) `maxLedgerVersionOffset` to a larger number of ledgers. To create a transaction that could remain valid indefinitely, set the `maxLedgerVersion` to `null`.
+
 
 ### {{n.next()}}. Submit Ticketed Transaction
 
 Submit the signed transaction blob that you created in the previous step. For example:
 
 ```js
-TODO
+let prelim_result_t = await api.submit(tx_blob_t)
+console.log("Preliminary result:", prelim_result_t)
 ```
 
 ### {{n.next()}}. Wait for Validation

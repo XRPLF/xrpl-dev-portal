@@ -71,7 +71,7 @@ targets:
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         prefix: ""
-        ripple_lib_url: assets/js/ripple-lib-1.8.2-min.js
+        ripple_lib_url: assets/js/ripple-lib-1.8.2.min.js
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
         readability_goals:
@@ -1619,10 +1619,14 @@ pages:
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.md
+        filters:
+            - interactive_steps
         targets:
             - en
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.ja.md
+        filters:
+            - interactive_steps
         targets:
             - ja
 
@@ -1881,6 +1885,8 @@ pages:
             - ja
 
     -   md: tutorials/manage-account-settings/use-tickets.md
+        filters:
+            - interactive_steps
         targets:
             - en
             - ja

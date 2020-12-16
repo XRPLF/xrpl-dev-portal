@@ -5,8 +5,6 @@ doc_type: Tutorials
 category: Get Started
 blurb: Test Netを使用してXRPの送金をテストします。
 cta_text: XRPを送金しよう
-filters:
-    - interactive_steps
 ---
 # XRPの送金
 
