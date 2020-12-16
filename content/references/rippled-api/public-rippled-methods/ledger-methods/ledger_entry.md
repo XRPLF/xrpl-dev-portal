@@ -187,7 +187,9 @@ rippled json ledger_entry '{ "directory": { "owner": "rQ3fNyLjbvcDaPNS4EAJY8aT9z
 
 
 #### {{n.next()}}. Specify Offer Object
-4. `offer` - Retrieve an [Offer object](offer.html), which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.
+
+Retrieve an [Offer object](offer.html), which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.
+
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
 | `offer`                 | Object or String           | _(Required if `type` is "offer")_ Specify an [Offer object](offer.html) to retrieve. If a string, interpret as the [unique index](ledgers.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
