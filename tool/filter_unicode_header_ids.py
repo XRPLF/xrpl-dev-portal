@@ -37,6 +37,8 @@ import re
 ##     Markdown in almost all cases. (The exceptions are cases where GFM makes
 ##     invalid empty IDs, for example with emoji headers...)
 
+HOVERANCHOR_FIELD = "hover_anchors"
+
 def idify(utext):
     """Make a string ID-friendly (but more unicode-friendly)"""
     utext = re.sub(r'[^\w\s-]', '', utext).strip().lower()
@@ -46,7 +48,7 @@ def idify(utext):
         return '_'
     return utext
 
-def filter_soup(soup, **kwargs):
+def filter_soup(soup, currentpage={}, **kwargs):
     """Generate new IDs for all headers"""
     uniqIDs = {}
     headers = soup.find_all(name=re.compile("h[0-9]"))
@@ -60,3 +62,12 @@ def filter_soup(soup, **kwargs):
             new_id = "{id}-{n}".format(id=new_id, n=uniqIDs[new_id])
 
         h["id"] = new_id
+
+        hoveranchor_contents = currentpage.get("hover_anchors", False)
+        if hoveranchor_contents:
+            hoverlink = soup.new_tag("a", attrs={
+                        "href": "#"+new_id,
+                        "class": "hover_anchor",
+                        "aria-hidden": "true"})
+            hoverlink.append(hoveranchor_contents)
+            h.append(hoverlink)

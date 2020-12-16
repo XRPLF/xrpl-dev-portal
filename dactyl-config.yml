@@ -77,6 +77,7 @@ targets:
         display_name: XRPL.org
         <<: *defaults
         prefix: ""
+        hover_anchors: "¶"
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
         readability_goals:
