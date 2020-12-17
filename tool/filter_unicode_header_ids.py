@@ -10,6 +10,8 @@
 ################################################################################
 import re
 
+from bs4 import BeautifulSoup
+
 ## HTML5's 'id' attribute requirements are:
 ## - Must be at least one character in length.
 ## - Must not contain ASCII whitespace.
@@ -69,5 +71,5 @@ def filter_soup(soup, currentpage={}, **kwargs):
                         "href": "#"+new_id,
                         "class": "hover_anchor",
                         "aria-hidden": "true"})
-            hoverlink.append(hoveranchor_contents)
+            hoverlink.append(BeautifulSoup(hoveranchor_contents, "html.parser"))
             h.append(hoverlink)
