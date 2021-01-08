@@ -61,15 +61,18 @@ languages:
         display_name: 日本語
         prefix: "/ja/"
 
+default_keys: &defaults
+    # These github_ fields are used by the template's "Edit on GitHub" link.
+    #  Override them with --vars to change which fork/branch to edit.
+    github_forkurl: https://github.com/ripple/xrpl-dev-portal
+    github_branch: master
+
 targets:
     # First member is the default that gets built when target not specified
     -   name: en
         lang: en
         display_name: XRPL.org
-        # These github_ fields are used by the template's "Edit on GitHub" link.
-        #  Override them with --vars to change which fork/branch to edit.
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         prefix: ""
         ripple_lib_url: assets/js/ripple-lib-1.8.2.min.js
         link_subs:
@@ -81,8 +84,7 @@ targets:
     -   name: ja
         lang: ja
         display_name: XRPL.org (日本語)
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         prefix: "/ja/"
         locale_file: locale/ja/LC_MESSAGES/messages.mo
         ripple_lib_url: assets/js/ripple-lib-1.8.2-min.js
@@ -152,8 +154,7 @@ targets:
     -   name: xrp-api-only
         lang: en
         display_name: XRP API Reference
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         no_cover: true
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
@@ -163,8 +164,7 @@ targets:
     -   name: data-api-only
         lang: en
         display_name: XRP Ledger Data API
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         no_cover: True
         link_re_subs:
            "([\\w-]+\\.html)": https://xrpl.org/\1
