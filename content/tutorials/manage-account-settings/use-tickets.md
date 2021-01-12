@@ -4,6 +4,8 @@ funnel: Build
 doc_type: Tutorials
 category: Manage Account Settings
 blurb: Use Tickets to send a transaction outside of normal Sequence order.
+filters:
+    - interactive_steps
 ---
 # Use Tickets
 
@@ -147,8 +149,8 @@ let current_sequence = get_sequence()
     $("#check-sequence-output").html("")
     const account_info = await api.request("account_info", {account: address})
 
-    $("#check-sequence-output").append("Current sequence: "+account_info.account_data.Sequence)
-    // TODO: populate Sequence number in next example
+    $("#check-sequence-output").append(
+      `<p>Current sequence: <code id="current_sequence">${account_info.account_data.Sequence}</code></p>`)
   })
 </script>
 
@@ -174,6 +176,44 @@ console.log("Transaction hash:", signed.id)
 let tx_blob = signed.signedTransaction
 ```
 
+
+{{ start_step("Prepare & Sign") }}
+<button id="prepare-and-sign" class="btn btn-primary connection-required"
+  title="Complete all previous steps first" disabled>Prepare & Sign</button>
+<div id="prepare-and-sign-output"></div>
+{{ end_step() }}
+
+
+<script type="application/javascript">
+  $("#prepare-and-sign").click( async function() {
+    const address = $("#use-address").text()
+    const current_sequence = $("#current_sequence").text()
+    // TODO: error checking for if those aren't set properly
+    // Wipe previous output
+    $("#prepare-and-sign-output").html("")
+
+    let prepared = await api.prepareTransaction({
+      "TransactionType": "TicketCreate",
+      "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+      "TicketCount": 10,
+      "Sequence": current_sequence
+    })
+
+    $("#prepare-and-sign-output").append(
+      `<p>Prepared transaction:</p><pre><code>${prepared.txJSON}</code></pre>`)
+
+    let signed = await api.sign(prepared.txJSON, "s████████████████████████████")
+    $("#prepare-and-sign-output").append(
+      `<p>Transaction hash: <code>${signed.id}</code></p>`)
+
+    let tx_blob = signed.signedTransaction
+    $("#prepare-and-sign-output").append(
+      `<pre style="visibility: none"><code id="tx_blob">${tx_blob}</code></pre>`)
+
+  })
+</script>
+
+
 ### {{n.next()}}. Submit TicketCreate
 
 If you already have at least one Ticket available in the ledger, you can skip this step. Otherwise, you need to send a transaction to create some Tickets.
@@ -184,6 +224,25 @@ Submit the signed transaction blob that you created in the previous step. For ex
 let prelim_result = await api.submit(tx_blob)
 console.log("Preliminary result:", prelim_result)
 ```
+
+{{ start_step("Submit") }}
+<button id="ticketcreate-submit" class="btn btn-primary connection-required"
+  title="Complete all previous steps first" disabled>Submit</button>
+<div id="ticketcreate-submit-output"></div>
+{{ end_step() }}
+
+
+<script type="application/javascript">
+  $("#ticketcreate-submit").click( async function() {
+    const tx_blob = $("#tx_blob").text()
+    // Wipe previous output
+    $("#ticketcreate-submit-output").html("")
+
+    let prelim_result = await api.submit(tx_blob)
+    $("#ticketcreate-submit-output").append(
+      `<p>Preliminary result:</p><pre><code>prelim_result</code></pre>`)
+  })
+</script>
 
 ### {{n.next()}}. Wait for Validation
 
