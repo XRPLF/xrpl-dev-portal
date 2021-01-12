@@ -1,3 +1,12 @@
+---
+html: monitor-incoming-payments-with-websocket.html
+funnel: Build
+doc_type: Tutorials
+category: Get Started
+blurb: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
+filters:
+    - interactive_steps
+---
 # WebSocketを使用した着信ペイメントの監視
 
 このチュートリアルでは、[WebSocket `rippled` API](rippled-api.html)を使用して、着信[ペイメント](payment-types.html)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。

@@ -66,6 +66,7 @@ default_keys: &defaults
     #  Override them with --vars to change which fork/branch to edit.
     github_forkurl: https://github.com/ripple/xrpl-dev-portal
     github_branch: master
+    ripple_lib_url: assets/js/ripple-lib-1.8.2.min.js
 
 targets:
     # First member is the default that gets built when target not specified
@@ -74,7 +75,6 @@ targets:
         display_name: XRPL.org
         <<: *defaults
         prefix: ""
-        ripple_lib_url: assets/js/ripple-lib-1.8.2.min.js
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
         readability_goals:
@@ -87,7 +87,6 @@ targets:
         <<: *defaults
         prefix: "/ja/"
         locale_file: locale/ja/LC_MESSAGES/messages.mo
-        ripple_lib_url: assets/js/ripple-lib-1.8.2-min.js
         blurb: XRPとXRP Ledgerの全てに対してのコミュニティーリーソース
         link_subs:
             # Adjust XRP-API readme link to point to the right place in the repo
@@ -1619,36 +1618,18 @@ pages:
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.md
-        filters:
-            - interactive_steps
         targets:
             - en
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.ja.md
-        filters:
-            - interactive_steps
         targets:
             - ja
 
     -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.md
-        html: monitor-incoming-payments-with-websocket.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
-        filters:
-            - interactive_steps
         targets:
             - en
 
     -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.ja.md
-        html: monitor-incoming-payments-with-websocket.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
-        filters:
-            - interactive_steps
         targets:
             - ja
 
@@ -1885,8 +1866,6 @@ pages:
             - ja
 
     -   md: tutorials/manage-account-settings/use-tickets.md
-        filters:
-            - interactive_steps
         targets:
             - en
             - ja
