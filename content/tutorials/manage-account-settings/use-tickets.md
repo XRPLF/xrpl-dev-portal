@@ -28,6 +28,8 @@ _(Requires the [TicketBatch amendment][] :not_enabled:)_
 {% include '_snippets/generate-step.md' %}
 
 
+
+
 ## Steps
 {% set n = cycler(* range(1,99)) %}
 
@@ -72,27 +74,28 @@ api.on('connected', async function() {
 
   // Update breadcrumbs & active next step
   complete_step("Connect")
-  $("#interactive-check_sequence button").prop("disabled", false)//TODO: change ID
-  $("#interactive-check_sequence button").prop("title", "")
+  $("#check-sequence").prop("disabled", false)
+  $("#check-sequence").prop("title", "")
 
   // TODO: remove this standalone mode "faucet" code
   resp = await api.request('wallet_propose')
   await api.request("submit", {secret: "masterpassphrase", tx_json: {
       "TransactionType": "Payment", "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "Amount": "100000000000", "Destination": resp.account_id
     }})
+  await api.request("ledger_accept")
 
   // Populate creds
   const EXAMPLE_ADDR = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
   const EXAMPLE_SECRET = "s████████████████████████████"
   $("#address").hide().html("<strong>Address:</strong> " +
     '<span id="use-address">' +
-    resp.account_id
-    + "</span>").show()
+    resp.account_id +
+    "</span>").show()
   $("code span:contains('"+EXAMPLE_ADDR+"')").each( function() {
     let eltext = $(this).text()
     $(this).text( eltext.replace(EXAMPLE_ADDR, resp.account_id) )
   })
-  $("#address").hide().html("<strong>Secret:</strong> " +
+  $("#secret").hide().html("<strong>Secret:</strong> " +
     '<span id="use-secret">' +
     resp.master_seed
     + "</span>").show()
@@ -151,6 +154,12 @@ let current_sequence = get_sequence()
 
     $("#check-sequence-output").append(
       `<p>Current sequence: <code id="current_sequence">${account_info.account_data.Sequence}</code></p>`)
+
+
+    // Update breadcrumbs & active next step
+    complete_step("Check Sequence")
+    $("#prepare-and-sign").prop("disabled", false)
+    $("#prepare-and-sign").prop("title", "")
   })
 </script>
 
@@ -187,28 +196,34 @@ let tx_blob = signed.signedTransaction
 <script type="application/javascript">
   $("#prepare-and-sign").click( async function() {
     const address = $("#use-address").text()
-    const current_sequence = $("#current_sequence").text()
+    const secret = $("#use-secret").text()
+    const current_sequence = parseInt($("#current_sequence").text())
     // TODO: error checking for if those aren't set properly
     // Wipe previous output
     $("#prepare-and-sign-output").html("")
 
     let prepared = await api.prepareTransaction({
       "TransactionType": "TicketCreate",
-      "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+      "Account": address,
       "TicketCount": 10,
       "Sequence": current_sequence
     })
 
     $("#prepare-and-sign-output").append(
-      `<p>Prepared transaction:</p><pre><code>${prepared.txJSON}</code></pre>`)
+      `<p>Prepared transaction:</p><pre><code>${JSON.stringify(JSON.parse(prepared.txJSON),null,2)}</code></pre>`)
 
-    let signed = await api.sign(prepared.txJSON, "s████████████████████████████")
+    let signed = await api.sign(prepared.txJSON, secret)
     $("#prepare-and-sign-output").append(
       `<p>Transaction hash: <code>${signed.id}</code></p>`)
 
     let tx_blob = signed.signedTransaction
     $("#prepare-and-sign-output").append(
       `<pre style="visibility: none"><code id="tx_blob">${tx_blob}</code></pre>`)
+
+    // Update breadcrumbs & active next step
+    complete_step("Prepare & Sign")
+    $("#ticketcreate-submit").prop("disabled", false)
+    $("#ticketcreate-submit").prop("title", "")
 
   })
 </script>
@@ -240,7 +255,13 @@ console.log("Preliminary result:", prelim_result)
 
     let prelim_result = await api.submit(tx_blob)
     $("#ticketcreate-submit-output").append(
-      `<p>Preliminary result:</p><pre><code>prelim_result</code></pre>`)
+      `<p>Preliminary result:</p><pre><code>${JSON.stringify(prelim_result,null,2)}</code></pre>`)
+
+    // TODO: remove for devnet/testnet
+    await api.request("ledger_accept")
+
+    // Update breadcrumbs & active next step
+    complete_step("Submit")
   })
 </script>
 
