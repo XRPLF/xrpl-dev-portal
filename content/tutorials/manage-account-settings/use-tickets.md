@@ -178,12 +178,15 @@ let prepared = await api.prepareTransaction({
   "Sequence": current_sequence
 })
 console.log("Prepared transaction:", prepared.txJSON)
+let lastledgersequence = prepared.instructions.maxLedgerVersion
 
 let signed = await api.sign(prepared.txJSON, "s████████████████████████████")
 console.log("Transaction hash:", signed.id)
 
 let tx_blob = signed.signedTransaction
 ```
+
+Take note of the transaction's `LastLedgerSequence` value so you can [be sure whether or not it got validated](reliable-transaction-submission.html) later.
 
 
 {{ start_step("Prepare & Sign") }}
@@ -211,10 +214,12 @@ let tx_blob = signed.signedTransaction
 
     $("#prepare-and-sign-output").append(
       `<p>Prepared transaction:</p><pre><code>${JSON.stringify(JSON.parse(prepared.txJSON),null,2)}</code></pre>`)
+    $("#lastledgersequence").html(
+      `<code>${prepared.instructions.maxLedgerVersion}</code>`)
 
     let signed = await api.sign(prepared.txJSON, secret)
     $("#prepare-and-sign-output").append(
-      `<p>Transaction hash: <code>${signed.id}</code></p>`)
+      `<p>Transaction hash: <code id="tx_id">${signed.id}</code></p>`)
 
     let tx_blob = signed.signedTransaction
     $("#prepare-and-sign-output").append(
@@ -253,6 +258,12 @@ console.log("Preliminary result:", prelim_result)
     // Wipe previous output
     $("#ticketcreate-submit-output").html("")
 
+    // In theory prelim_result.validated_ledger_index should have this but I'm
+    // having trouble getting that. TODO: figure out why & switch over.
+    const earliestLedgerVersion = await api.getLedgerVersion()
+    $("#earliest-ledger-version").text(earliestLedgerVersion)
+
+    waiting_for_tx = $("#tx_id").text() // next step uses this
     let prelim_result = await api.submit(tx_blob)
     $("#ticketcreate-submit-output").append(
       `<p>Preliminary result:</p><pre><code>${JSON.stringify(prelim_result,null,2)}</code></pre>`)
@@ -283,25 +294,47 @@ api.on('ledger', ledger => {
     <th>Latest Validated Ledger Version:</th>
     <td id="current-ledger-version">(Not connected)</td>
   </tr>
-    <tr>
-      <th>Ledger Version at Time of Submission:</th>
-      <td id="earliest-ledger-version">(Not submitted)</td>
-    </tr>
+  <tr>
+    <th>Ledger Version at Time of Submission:</th>
+    <td id="earliest-ledger-version">(Not submitted)</td>
+  </tr>
+  <tr>
+    <th><code>LastLedgerSequence</code>:</th>
+    <td id="lastledgersequence">(Not prepared)</td>
+  </tr>
   <tr id="tx-validation-status">
   </tr>
 </table>
 {{ end_step() }}
 
 <script type="application/javascript">
-// TODO: change this to wait for a specific tx
-//api.on('ledger', ledger => {
-//  $("#current-ledger-version").text(ledger.ledgerVersion)
-//
-//  if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
-//    complete_step("Wait")
-//    //TODO
-//  }
-//})
+let waiting_for_tx = null;
+api.on('ledger', async (ledger) => {
+  $("#current-ledger-version").text(ledger.ledgerVersion)
+
+  if (waiting_for_tx) {
+    try {
+      tx_result = await api.request("tx", {
+          transaction: waiting_for_tx,
+          min_ledger: parseInt($("#earliest-ledger-version").text()),
+          max_ledger: parseInt(ledger.ledgerVersion)
+      })
+      console.log(tx_result)
+      if (tx_result.validated) {
+        $("#tx-validation-status").html(
+          `<th>Final Result:</th><td>${tx_result.meta.TransactionResult} (Validated)</td>`)
+      }
+    } catch(error) {
+      console.error(error);
+      // TODO: catch final failures here if possible
+    }
+  }
+
+  // TODO: have this happen only if the tx gets validated
+  if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
+    complete_step("Wait")
+  }
+})
 </script>
 
 ### (Optional) Intermission
