@@ -5,7 +5,7 @@
    So the visual styles go on this inner div.
 */
 .interactive-block-inner {
-  border: 1px dashed #25A768;
+  border: 1px dashed $purple;
   padding: 10px;
   margin: 5px;
 }
@@ -14,8 +14,12 @@
   margin: 10px 0;
 }
 
-.interactive-block .breadcrumb-wrap {
-  margin-bottom: 5px;
+.interactive-block .breadcrumbs-wrap {
+  margin-bottom: 11px;
+}
+
+.interactive-block .breadcrumb-item {
+  margin-top: 6px;
 }
 
 .interactive-block .breadcrumb-item a {
@@ -27,17 +31,17 @@
 }
 
 .interactive-block .breadcrumb-item.active a {
-  color: #43bded; /* TODO: adjust this color */
+  color: $primary; /* TODO: adjust this color */
 }
 
 .interactive-block .breadcrumb-item.disabled a {
-  color: #6B7075; /* TODO: adjust this color */
+  color: $gray-600;
 }
 
 .interactive-block .breadcrumb-item.done a:after {
   content: "\f058"; /* fontawesome check-circle icon */
   font-family: FontAwesome;
-  color: #6B7075; /* TODO: adjust this color */
+  color: $secondary;
   padding-right: 5px;
   padding-left: 5px;
 }

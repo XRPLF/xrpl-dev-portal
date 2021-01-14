@@ -72,14 +72,14 @@ api.on('connected', async function() {
   $("#connect-button").prop("disabled", true)
   $("#loader-{{n.current}}").hide()
 
-  // Update breadcrumbs & active next step
+  // Update breadcrumbs & activate next step
   complete_step("Connect")
   $("#check-sequence").prop("disabled", false)
   $("#check-sequence").prop("title", "")
 
   // TODO: remove this standalone mode "faucet" code
   resp = await api.request('wallet_propose')
-  await api.request("submit", {secret: "masterpassphrase", tx_json: {
+  await api.request("submit", {"secret": "masterpassphrase", "tx_json": {
       "TransactionType": "Payment", "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "Amount": "100000000000", "Destination": resp.account_id
     }})
   await api.request("ledger_accept")
@@ -129,11 +129,10 @@ Before you create any Tickets, you should check what [Sequence Number][] your ac
 ```js
 async function get_sequence() {
   const account_info = await api.request("account_info", {
-      account: "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-    }
-  );
+      "account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+  })
   console.log("Current sequence:", account_info.account_data.Sequence)
-  return account_info.account_data.Sequence;
+  return account_info.account_data.Sequence
 }
 
 let current_sequence = get_sequence()
@@ -150,13 +149,13 @@ let current_sequence = get_sequence()
     const address = $("#use-address").text()
     // Wipe previous output
     $("#check-sequence-output").html("")
-    const account_info = await api.request("account_info", {account: address})
+    const account_info = await api.request("account_info", {"account": address})
 
     $("#check-sequence-output").append(
       `<p>Current sequence: <code id="current_sequence">${account_info.account_data.Sequence}</code></p>`)
 
 
-    // Update breadcrumbs & active next step
+    // Update breadcrumbs & activate next step
     complete_step("Check Sequence")
     $("#prepare-and-sign").prop("disabled", false)
     $("#prepare-and-sign").prop("title", "")
@@ -213,7 +212,7 @@ Take note of the transaction's `LastLedgerSequence` value so you can [be sure wh
     })
 
     $("#prepare-and-sign-output").append(
-      `<p>Prepared transaction:</p><pre><code>${JSON.stringify(JSON.parse(prepared.txJSON),null,2)}</code></pre>`)
+      `<p>Prepared transaction:</p><pre><code>${pretty_print(prepared.txJSON)}</code></pre>`)
     $("#lastledgersequence").html(
       `<code>${prepared.instructions.maxLedgerVersion}</code>`)
 
@@ -225,7 +224,7 @@ Take note of the transaction's `LastLedgerSequence` value so you can [be sure wh
     $("#prepare-and-sign-output").append(
       `<pre style="visibility: none"><code id="tx_blob">${tx_blob}</code></pre>`)
 
-    // Update breadcrumbs & active next step
+    // Update breadcrumbs & activate next step
     complete_step("Prepare & Sign")
     $("#ticketcreate-submit").prop("disabled", false)
     $("#ticketcreate-submit").prop("title", "")
@@ -241,7 +240,7 @@ If you already have at least one Ticket available in the ledger, you can skip th
 Submit the signed transaction blob that you created in the previous step. For example:
 
 ```js
-let prelim_result = await api.submit(tx_blob)
+let prelim_result = await api.request("submit", {"tx_blob": tx_blob})
 console.log("Preliminary result:", prelim_result)
 ```
 
@@ -258,20 +257,16 @@ console.log("Preliminary result:", prelim_result)
     // Wipe previous output
     $("#ticketcreate-submit-output").html("")
 
-    // In theory prelim_result.validated_ledger_index should have this but I'm
-    // having trouble getting that. TODO: figure out why & switch over.
-    const earliestLedgerVersion = await api.getLedgerVersion()
-    $("#earliest-ledger-version").text(earliestLedgerVersion)
-
     waiting_for_tx = $("#tx_id").text() // next step uses this
-    let prelim_result = await api.submit(tx_blob)
+    let prelim_result = await api.request("submit", {"tx_blob": tx_blob})
     $("#ticketcreate-submit-output").append(
-      `<p>Preliminary result:</p><pre><code>${JSON.stringify(prelim_result,null,2)}</code></pre>`)
+      `<p>Preliminary result:</p><pre><code>${pretty_print(prelim_result)}</code></pre>`)
+    $("#earliest-ledger-version").text(prelim_result.validated_ledger_index)
 
     // TODO: remove for devnet/testnet
     await api.request("ledger_accept")
 
-    // Update breadcrumbs & active next step
+    // Update breadcrumbs
     complete_step("Submit")
   })
 </script>
@@ -315,14 +310,20 @@ api.on('ledger', async (ledger) => {
   if (waiting_for_tx) {
     try {
       tx_result = await api.request("tx", {
-          transaction: waiting_for_tx,
-          min_ledger: parseInt($("#earliest-ledger-version").text()),
-          max_ledger: parseInt(ledger.ledgerVersion)
+          "transaction": waiting_for_tx,
+          "min_ledger": parseInt($("#earliest-ledger-version").text()),
+          "max_ledger": parseInt(ledger.ledgerVersion)
       })
       console.log(tx_result)
       if (tx_result.validated) {
         $("#tx-validation-status").html(
           `<th>Final Result:</th><td>${tx_result.meta.TransactionResult} (Validated)</td>`)
+
+        if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
+          complete_step("Wait")
+          $("#check-tickets").prop("disabled", false)
+          $("#check-tickets").prop("title", "")
+        }
       }
     } catch(error) {
       console.error(error);
@@ -330,10 +331,6 @@ api.on('ledger', async (ledger) => {
     }
   }
 
-  // TODO: have this happen only if the tx gets validated
-  if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
-    complete_step("Wait")
-  }
 })
 </script>
 
@@ -348,14 +345,40 @@ The power of Tickets is that you can send other transactions during this time, a
 When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the [account_objects method][] (or [`getAccountObjects()`](rippleapi-reference.html#getaccountobjects)) to look up your available tickets. For example:
 
 ```js
-let response = await api.getAccountObjects(
-    "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-    {type:"ticket"} // TODO: confirm this works, maybe check needed ripple-lib version number
-)
+let response = await api.request("account_objects", {
+    "account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+    "type": "ticket"
+  })
 
 console.log("Available Tickets:", response.account_objects)
 ```
 
+
+{{ start_step("Check Tickets") }}
+<button id="check-tickets" class="btn btn-primary connection-required"
+  title="Complete all previous steps first" disabled>Submit</button>
+<div id="check-tickets-output"></div>
+{{ end_step() }}
+
+
+<script type="application/javascript">
+  $("#check-tickets").click( async function() {
+    const address = $("#use-address").text()
+    // Wipe previous output
+    $("#check-tickets-output").html("")
+
+    let response = await api.request("account_objects", {
+        "account": address,
+        "type": "ticket"
+      })
+    $("#check-tickets-output").html(`<pre><code>${pretty_print(response)}</code></pre>`)
+
+    // Update breadcrumbs & activate next step
+    complete_step("Check Tickets")
+    $("#prepare-ticketed-tx").prop("disabled", false)
+    $("#prepare-ticketed-tx").prop("title", "")
+  })
+</script>
 
 ### {{n.next()}}. Prepare Ticketed Transaction
 
@@ -386,6 +409,17 @@ console.log("Signed transaction blob:", tx_blob_t)
 
 **Tip:** If you don't plan to submit the TicketCreate transaction right away, you should explicitly set the [instructions'](rippleapi-reference.html#transaction-instructions) `maxLedgerVersionOffset` to a larger number of ledgers. To create a transaction that could remain valid indefinitely, set the `maxLedgerVersion` to `null`.
 
+{{ start_step("Prepare Ticketed Tx") }}
+<button id="prepare-ticketed-tx" class="btn btn-primary connection-required"
+  title="Complete all previous steps first" disabled>Prepare Ticketed Transaction</button>
+<div id="prepare-ticketed-tx-output"></div>
+{{ end_step() }}
+
+<script type="application/javascript">
+  $("#prepare-ticketed-tx").click(async function() {
+    // TODO
+  })
+</script>
 
 ### {{n.next()}}. Submit Ticketed Transaction
 
