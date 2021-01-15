@@ -1,8 +1,8 @@
 // Helper functions for interactive tutorials
 
 function slugify(s) {
-  const unacceptable_chars = /[^A-Za-z0-9._ ]+/
-  const whitespace_regex = /\s+/
+  const unacceptable_chars = /[^A-Za-z0-9._ ]+/g
+  const whitespace_regex = /\s+/g
   s = s.replace(unacceptable_chars, "")
   s = s.replace(whitespace_regex, "_")
   s = s.toLowerCase()
