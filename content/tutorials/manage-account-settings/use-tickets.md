@@ -312,12 +312,13 @@ api.on('ledger', async (ledger) => {
       tx_result = await api.request("tx", {
           "transaction": waiting_for_tx,
           "min_ledger": parseInt($("#earliest-ledger-version").text()),
-          "max_ledger": parseInt(ledger.ledgerVersion)
+          "max_ledger": parseInt($("#lastledgersequence").text())
       })
       console.log(tx_result)
       if (tx_result.validated) {
         $("#tx-validation-status").html(
           `<th>Final Result:</th><td>${tx_result.meta.TransactionResult} (Validated)</td>`)
+        waiting_for_tx = null;
 
         if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
           complete_step("Wait")
@@ -325,9 +326,16 @@ api.on('ledger', async (ledger) => {
           $("#check-tickets").prop("title", "")
         }
       }
-    } catch(error) {
-      console.error(error);
-      // TODO: catch final failures here if possible
+      // TODO: handle the case described in https://github.com/ripple/rippled/issues/3727
+    } catch(e) {
+      if (e.data.error == "txnNotFound" && e.data.searched_all) {
+        $("#tx-validation-status").html(
+          `<th>Final Result:</th><td>Failed to achieve consensus (final)</td>`)
+        waiting_for_tx = null;
+      } else {
+        $("#tx-validation-status").html(
+          `<th>Final Result:</th><td>Unknown</td>`)
+      }
     }
   }
 
