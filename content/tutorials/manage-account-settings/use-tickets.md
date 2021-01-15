@@ -307,6 +307,7 @@ let waiting_for_tx = null;
 api.on('ledger', async (ledger) => {
   $("#current-ledger-version").text(ledger.ledgerVersion)
 
+  let tx_result;
   if (waiting_for_tx) {
     try {
       tx_result = await api.request("tx", {
@@ -314,7 +315,6 @@ api.on('ledger', async (ledger) => {
           "min_ledger": parseInt($("#earliest-ledger-version").text()),
           "max_ledger": parseInt($("#lastledgersequence").text())
       })
-      console.log(tx_result)
       if (tx_result.validated) {
         $("#tx-validation-status").html(
           `<th>Final Result:</th><td>${tx_result.meta.TransactionResult} (Validated)</td>`)
@@ -359,6 +359,7 @@ let response = await api.request("account_objects", {
   })
 
 console.log("Available Tickets:", response.account_objects)
+let use_ticket = response.account_objects[0].TicketSequence
 ```
 
 
@@ -381,6 +382,13 @@ console.log("Available Tickets:", response.account_objects)
       })
     $("#check-tickets-output").html(`<pre><code>${pretty_print(response)}</code></pre>`)
 
+    // Reset the next step's form & add these tickets
+    $("#ticket-selector .form-area").html("")
+    response.account_objects.forEach((ticket, i) => {
+        $("#ticket-selector .form-area").append(`<div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="ticket${i}" name="ticket-radio-set" value="${ticket.TicketSequence}"><label class="form-check-label" for="ticket${i}">${ticket.TicketSequence}</label></div>`)
+      })
+
+
     // Update breadcrumbs & activate next step
     complete_step("Check Tickets")
     $("#prepare-ticketed-tx").prop("disabled", false)
@@ -392,13 +400,12 @@ console.log("Available Tickets:", response.account_objects)
 
 Now that you have a Ticket available, you can prepare a transaction that uses it.
 
-This can be any [type of transaction](transaction-types.html) you like. The following example uses an [AccountSet transaction][] to set a `MessageKey` since that doesn't require any other setup in the ledger. Set the `Sequence` field to `0` and include a `TicketSequence` field with the Ticket Sequence number of one of your available Tickets.
+This can be any [type of transaction](transaction-types.html) you like. The following example uses a no-op [AccountSet transaction][] since that doesn't require any other setup in the ledger. Set the `Sequence` field to `0` and include a `TicketSequence` field with the Ticket Sequence number of one of your available Tickets.
 
 ```js
 let prepared_t = await api.prepareTransaction({
   "TransactionType": "AccountSet",
   "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-  "MessageKey": "DEADBEEF",
   "TicketSequence": use_ticket,
   "Sequence": 0
 }, {
@@ -418,6 +425,10 @@ console.log("Signed transaction blob:", tx_blob_t)
 **Tip:** If you don't plan to submit the TicketCreate transaction right away, you should explicitly set the [instructions'](rippleapi-reference.html#transaction-instructions) `maxLedgerVersionOffset` to a larger number of ledgers. To create a transaction that could remain valid indefinitely, set the `maxLedgerVersion` to `null`.
 
 {{ start_step("Prepare Ticketed Tx") }}
+<div id="ticket-selector">
+  <h4>Select a Ticket:</h4>
+  <div class="form-area"></div>
+</div>
 <button id="prepare-ticketed-tx" class="btn btn-primary connection-required"
   title="Complete all previous steps first" disabled>Prepare Ticketed Transaction</button>
 <div id="prepare-ticketed-tx-output"></div>
@@ -425,7 +436,42 @@ console.log("Signed transaction blob:", tx_blob_t)
 
 <script type="application/javascript">
   $("#prepare-ticketed-tx").click(async function() {
-    // TODO
+    const use_ticket = parseInt($('input[name="ticket-radio-set"]:checked').val())
+    if (!use_ticket) {
+      $("#prepare-ticketed-tx-output").append('<p class="devportal-callout warning"><strong>Error</strong> You must choose a ticket first.</p>')
+      return
+    }
+
+    const address = $("#use-address").text()
+    const secret = $("#use-secret").text()
+
+    let prepared_t = await api.prepareTransaction({
+      "TransactionType": "AccountSet",
+      "Account": address,
+      "TicketSequence": use_ticket,
+      "Sequence": 0
+    }, {
+      maxLedgerVersionOffset: 20
+    })
+    $("#prepare-ticketed-tx-output").html("")
+
+    $("#prepare-ticketed-tx-output").append(
+      `<p>Prepared transaction:</p><pre><code>${pretty_print(prepared_t.txJSON)}</code></pre>`)
+    $("#lastledgersequence_t").html( //REMEMBER
+      `<code>${prepared_t.instructions.maxLedgerVersion}</code>`)
+
+    let signed_t = await api.sign(prepared_t.txJSON, secret)
+    $("#prepare-ticketed-tx-output").append(
+      `<p>Transaction hash: <code id="tx_id_t">${signed_t.id}</code></p>`)
+
+    let tx_blob_t = signed_t.signedTransaction
+    $("#prepare-ticketed-tx-output").append(
+      `<pre style="visibility: none"><code id="tx_blob_t">${tx_blob_t}</code></pre>`)
+
+    // Update breadcrumbs & activate next step
+    complete_step("Prepare Ticketed Tx")
+    $("#ticketedtx-submit").prop("disabled", false)
+    $("#ticketedtx-submit").prop("title", "")
   })
 </script>
 
@@ -438,12 +484,94 @@ let prelim_result_t = await api.submit(tx_blob_t)
 console.log("Preliminary result:", prelim_result_t)
 ```
 
+{{ start_step("Submit Ticketed Tx") }}
+<button id="ticketedtx-submit" class="btn btn-primary connection-required"
+  title="Complete all previous steps first" disabled>Submit</button>
+<div id="ticketedtx-submit-output"></div>
+{{ end_step() }}
+
+
+<script type="application/javascript">
+  $("#ticketedtx-submit").click( async function() {
+    const tx_blob = $("#tx_blob_t").text()
+    // Wipe previous output
+    $("#ticketedtx-submit-output").html("")
+
+    waiting_for_tx_t = $("#tx_id_t").text() // next step uses this
+    let prelim_result = await api.request("submit", {"tx_blob": tx_blob})
+    $("#ticketedtx-submit-output").append(
+      `<p>Preliminary result:</p><pre><code>${pretty_print(prelim_result)}</code></pre>`)
+    $("#earliest-ledger-version_t").text(prelim_result.validated_ledger_index)
+
+    // TODO: remove for devnet/testnet
+    await api.request("ledger_accept")
+
+    // Update breadcrumbs
+    complete_step("Submit Ticketed Tx")
+  })
+</script>
+
 ### {{n.next()}}. Wait for Validation
 
-```js
-TODO
-```
+Ticketed transactions go through the consensus process the same way that Sequenced transactions do.
 
+{{ start_step("Wait Again") }}
+<table>
+  <tr>
+    <th>Latest Validated Ledger Version:</th>
+    <td id="current-ledger-version_t">(Not connected)</td>
+  </tr>
+  <tr>
+    <th>Ledger Version at Time of Submission:</th>
+    <td id="earliest-ledger-version_t">(Not submitted)</td>
+  </tr>
+  <tr>
+    <th>Ticketed Transaction <code>LastLedgerSequence</code>:</th>
+    <td id="lastledgersequence_t">(Not prepared)</td>
+  </tr>
+  <tr id="tx-validation-status_t">
+  </tr>
+</table>
+{{ end_step() }}
+
+<script type="application/javascript">
+let waiting_for_tx_t = null;
+api.on('ledger', async (ledger) => {
+  $("#current-ledger-version_t").text(ledger.ledgerVersion)
+
+  let tx_result;
+  if (waiting_for_tx_t) {
+    try {
+      tx_result = await api.request("tx", {
+          "transaction": waiting_for_tx_t,
+          "min_ledger": parseInt($("#earliest-ledger-version_t").text()),
+          "max_ledger": parseInt($("#lastledgersequence_t").text())
+      })
+      console.log(tx_result)
+      if (tx_result.validated) {
+        $("#tx-validation-status_t").html(
+          `<th>Final Result:</th><td>${tx_result.meta.TransactionResult} (Validated)</td>`)
+        waiting_for_tx_t = null;
+
+        if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
+          complete_step("Wait Again")
+        }
+      }
+      // TODO: handle the case described in https://github.com/ripple/rippled/issues/3727
+    } catch(e) {
+      if (e.data.error == "txnNotFound" && e.data.searched_all) {
+        $("#tx-validation-status_t").html(
+          `<th>Final Result:</th><td>Failed to achieve consensus (final)</td>`)
+        waiting_for_tx_t = null;
+      } else {
+        $("#tx-validation-status_t").html(
+          `<th>Final Result:</th><td>Unknown</td>`)
+      }
+    }
+  }
+
+})
+</script>
 
 ## See Also
 
