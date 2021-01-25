@@ -24,7 +24,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
         $ brew install git cmake pkg-config protobuf openssl ninja
 
-0. Install Boost 1.70.0 or higher. `rippled` 1.4.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually. (The following examples use Boost 1.71.0, which was the newest version at the time of writing.)
+0. Install a compatible version of Boost. `rippled` 1.6.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually. (The following examples use Boost 1.71.0, which was the newest version at the time of writing.)
 
       1. Download [Boost 1.71.0](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2).
 
@@ -32,9 +32,9 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
       3. In a terminal, run:
 
-            cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
-            ./bootstrap.sh
-            ./b2 cxxflags="-std=c++14"
+            $ cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
+            $ ./bootstrap.sh
+            $ ./b2 cxxflags="-std=c++14"
 
 0. Ensure that your `BOOST_ROOT` environment points to the directory created by the Boost installation:
 
@@ -46,7 +46,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. If you updated your `.bash_profile` file in the previous step, be sure to source it in a new Terminal window. For example:
 
-        $ source .bash_profile
+        $ source ~/.bash_profile
 
 0. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://help.github.com/articles/set-up-git/).
 
