@@ -5,36 +5,43 @@ The `ledger_entry` method returns a single ledger object from the XRP Ledger in 
 
 ## Request Format
 
-This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters, comprised of the general and type-specific fields listed below. Please also keep in mind standard [request formatting](request-formatting.html) (e.g. including an optional `id` with WebSocket calls or the `method` field to name the API method with JSON-RPC calls).
-
-For WebSocket calls `command` will be set to "ledger_entry", and for JSON-RPC calls `method` will be set to "ledger_entry".
+This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters, comprised of the general and type-specific fields listed below, and following the standard [request formatting](request-formatting.html). (For example, a WebSocket request always has the `command` field and optionally an `id` field, and a JSON-RPC request uses the `method` and `params` fields.)
 
 {% include '_snippets/no-cli-syntax.md' %}
 
-### General Fields 
+### General Fields
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `type`                  | String                     | _(Optional)_ The type of ledger entry to be retrieved. Refer to  [Type Specific Fields](ledger_entry.html#type-specific-fields) below for more details. |
-| `binary`                | Boolean                    | _(Optional)_ If true, return the requested ledger object's contents as a hex string. Otherwise, return data in JSON format. The default is `false`. [Updated in: rippled 1.2.0][] |
+| `binary`                | Boolean                    | _(Optional)_ If `true`, return the requested ledger object's contents as a hex string in the XRP Ledger's [binary format](serialization.html). Otherwise, return data in JSON format. The default is `false`. [Updated in: rippled 1.2.0][] |
 | `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
+The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
+
+In addition to the general fields above, you must specify *exactly 1* of the following fields to indicate what type of object to retrieve, along with its sub-fields as appropriate. The valid fields are:
+
+- [`index`](#get-ledger-object-by-id)
+- [`account_root`](#get-accountroot-object)
+- [`directory`](#get-directorynode-object)
+- [`offer`](#get-offer-object)
+- [`ripple_state`](#get-ripplestate-object)
+- [`check`](#get-check-object)
+- [`escrow`](#get-escrow-object)
+- [`payment_channel`](#get-paychannel-object)
+- [`deposit_preauth`](#get-depositpreauth-object)
+- [`ticket`](#get-ticket-object)
+
+**Caution:** If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.
 
 
-### Type Specific Fields
-
-In addition to the general fields above, you must specify *exactly 1* of the following fields (and associated sub-fields as appropriate). The field name should match the value of the optional `type` field specified above for WebSocket calls. If you specify more than 1 of these type-specific fields (e.g. in `params` of JSON-RPC call), the server will retrieve results for only 1 of them. This is unwanted behavior and should be avoided as the results will not be predictable. 
-
-{% set n = cycler(* range(1,99)) %}
-
-#### {{n.next()}}. Specify Ledger Object
+### Get Ledger Object by ID
 
 Retrieve any type of ledger object by its unique ID.
 
-| `Field`                 | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `index`                 | String                     | _(Required if `type` is "index")_ Specify the [object ID](ledger-object-ids.html) of a single object to retrieve from the ledger. |
+| `Field` | Type   | Description                                               |
+|:--------|:-------|:----------------------------------------------------------|
+| `index` | String | The [object ID](ledger-object-ids.html) of a single object to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string. |
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -44,7 +51,6 @@ Retrieve any type of ledger object by its unique ID.
 {
   "id": 3,
   "command": "ledger_entry",
-  "type": "index",
   "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
   "ledger_index": "validated"
 }
@@ -57,8 +63,7 @@ Retrieve any type of ledger object by its unique ID.
     "method": "ledger_entry",
     "params": [
         {
-            "type": "index",
-            "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
+            "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4",
             "ledger_index": "validated"
         }
     ]
@@ -68,24 +73,29 @@ Retrieve any type of ledger object by its unique ID.
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05", "ledger_index": "validated", "type": "index" }'
+rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4", "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
+[Try it! >](websocket-api-tool.html#ledger_entry-by-object-id)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. 
+> **Tip:** You can use this type of request to get any singleton object, if it exists in the ledger data, because its ID is always the same. For example:
+>
+> - [`Amendments`](amendments-object.html) - `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`
+> - [`FeeSettings`](feesettings.html) - `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`
+> - [Recent History `LedgerHashes`](ledgerhashes.html) - `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`
+> - [`NegativeUNL`](negativeunl.html) :not_enabled: - `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`
 
 
 
-#### {{n.next()}}. Specify Account Root Object
+### Get AccountRoot Object
 
 Retrieve an [AccountRoot object](accountroot.html) by its address. This is roughly equivalent to the [account_info method][].
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `account_root`          | String - [Address][]       | _(Required if `type` is "ticket")_ Specify an [AccountRoot object](accountroot.html) to retrieve. |
+| `account_root`          | String - [Address][]       | The classic address of the [AccountRoot object](accountroot.html) to retrieve. |
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -95,7 +105,6 @@ Retrieve an [AccountRoot object](accountroot.html) by its address. This is rough
 {
   "id": 3,
   "command": "ledger_entry",
-  "type": "account_root",
   "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
   "ledger_index": "validated"
 }
@@ -119,27 +128,27 @@ Retrieve an [AccountRoot object](accountroot.html) by its address. This is rough
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated", "type": "account_root" }'
+rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#ledger_entry)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. 
+**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
 
-#### {{n.next()}}. Specify Directory Object
+### Get DirectoryNode Object
 
 Retrieve a [DirectoryNode](directorynode.html), which contains a list of other ledger objects. Can be provided as string (object ID of the Directory) or as an object.
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `directory`             | Object or String           | _(Required if `type` is "ticket")_ Specify a [DirectoryNode](directorynode.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| `directory`             | Object or String           | The [DirectoryNode](directorynode.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
 | `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [DirectoryNode](directorynode.html). |
-| `directory.dir_root`    | String                     | _(Required if `directory` is specified as an object and `directory.owner` is not provided)_ Unique index identifying the directory to retrieve, as a hex string. |
-| `directory.owner`       | String                     | _(Required if `directory` is specified as an object and `directory.dir_root` is not provided)_ Unique address of the account associated with this directory. |
+| `directory.dir_root`    | String                     | _(Optional)_ Unique index identifying the directory to retrieve, as a hex string. |
+| `directory.owner`       | String                     | _(Optional)_ Unique address of the account associated with this directory. |
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -166,8 +175,7 @@ Retrieve a [DirectoryNode](directorynode.html), which contains a list of other l
             "directory": {
               "owner": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c"
             },
-            "ledger_index": "validated",
-            "type": "directory"
+            "ledger_index": "validated"
         }
     ]
 }
@@ -176,25 +184,25 @@ Retrieve a [DirectoryNode](directorynode.html), which contains a list of other l
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "directory": { "owner": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c"}, "ledger_index": "validated", "type": "directory" }'
+rippled json ledger_entry '{ "directory": { "owner": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c"}, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#ledger_entry)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. 
+**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
-#### {{n.next()}}. Specify Offer Object
+### Get Offer Object
 
 Retrieve an [Offer object](offer.html), which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `offer`                 | Object or String           | _(Required if `type` is "offer")_ Specify an [Offer object](offer.html) to retrieve. If a string, interpret as the [unique index](ledgers.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
-| `offer.account`         | String - [Address][]       | _(Required if `offer` is specified)_ The account that placed the offer. |
-| `offer.seq`             | Unsigned Integer           | _(Required if `offer` is specified)_ The sequence number of the transaction that created the Offer object. |
+| `offer`                 | Object or String           | The [Offer object](offer.html) to retrieve. If a string, interpret as the [unique object ID](ledgers.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| `offer.account`         | String - [Address][]       | _(Required if `offer` is specified as an object)_ The account that placed the offer. |
+| `offer.seq`             | Unsigned Integer           | _(Required if `offer` is specified as an object)_ The [Sequence Number][] of the transaction that created the Offer object. |
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -232,23 +240,23 @@ Retrieve an [Offer object](offer.html), which defines an offer to exchange curre
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "offer": { "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu", "seq": 6134107}, "ledger_index": "validated", "type": "offer" }'
+rippled json ledger_entry '{ "offer": { "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu", "seq": 6134107}, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#ledger_entry)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. 
+**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
-#### {{n.next()}}. Specify RippleState Object
+### Get RippleState Object
 
 Retrieve a [RippleState object](ripplestate.html), which tracks a (non-XRP) currency balance between two accounts.
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `ripple_state`          | Object                     | _(Required if `type` is "ticket")_ Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
+| `ripple_state`          | Object                     | Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
 | `ripple_state.accounts` | Array                      | _(Required if `ripple_state` is specified)_ 2-length array of account [Address][]es, defining the two accounts linked by this [RippleState object](ripplestate.html). |
 | `ripple_state.currency` | String                     | _(Required if `ripple_state` is specified)_ [Currency Code][] of the [RippleState object](ripplestate.html) to retrieve. |
 
@@ -279,8 +287,7 @@ Retrieve a [RippleState object](ripplestate.html), which tracks a (non-XRP) curr
               "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"],
               "currency": "USD"
             },
-            "ledger_index": "validated",
-            "type": "ripple_state"
+            "ledger_index": "validated"
         }
     ]
 }
@@ -289,23 +296,23 @@ Retrieve a [RippleState object](ripplestate.html), which tracks a (non-XRP) curr
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated", "type": "ripple_state" }'
+rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#ledger_entry)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. 
+**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
-#### {{n.next()}}. Specify Check Object
+### Get Check Object
 
 Retrieve a [Check object](check.html), which is a potential payment that can be cashed by its recipient. [New in: rippled 1.0.0][]
 
-| `Field`                 | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `check`                 | String                     | _(Required if `type` is "check")_ Specify the [object ID](ledger-object-ids.html) of a [Check object](check.html) to retrieve. |
+| `Field` | Type   | Description                                               |
+|:--------|:-------|:----------------------------------------------------------|
+| `check` | String | The [object ID](ledger-object-ids.html) of a [Check object](check.html) to retrieve. |
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -315,8 +322,7 @@ Retrieve a [Check object](check.html), which is a potential payment that can be 
 {
   "id": 3,
   "command": "ledger_entry",
-  "type": "check",
-  "check": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
+  "check": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
   "ledger_index": "validated"
 }
 ```
@@ -328,8 +334,7 @@ Retrieve a [Check object](check.html), which is a potential payment that can be 
     "method": "ledger_entry",
     "params": [
         {
-            "type": "check",
-            "check": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
+            "check": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
             "ledger_index": "validated"
         }
     ]
@@ -339,25 +344,25 @@ Retrieve a [Check object](check.html), which is a potential payment that can be 
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "check": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo", "ledger_index": "validated", "type": "check" }'
+rippled json ledger_entry '{ "check": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334", "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#ledger_entry)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. 
+**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
-#### {{n.next()}}. Specify Escrow Object
+### Get Escrow Object
 
 Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object. [New in: rippled 1.0.0][]
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `escrow`                | Object or String           | _(Required if `type` is "ticket")_ Specify an [Escrow object](escrow-object.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
+| `escrow`                | Object or String           | The [Escrow object](escrow-object.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
 | `escrow.owner`          | String - [Address][]       | _(Required if `escrow` is specified as an object)_ The owner (sender) of the Escrow object. |
-| `escrow.seq`            | Unsigned Integer           | _(Required if `escrow` is specified as an object)_ The sequence number of the transaction that created the Escrow object. |
+| `escrow.seq`            | Unsigned Integer           | _(Required if `escrow` is specified as an object)_ The [Sequence Number][] of the transaction that created the Escrow object. |
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -367,7 +372,6 @@ Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specifi
 {
   "id": 3,
   "command": "ledger_entry",
-  "type": "escrow",
   "escrow": {
     "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu",
     "seq": 6134107
@@ -387,8 +391,7 @@ Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specifi
               "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu",
               "seq": 6134107
             },
-            "ledger_index": "validated",
-            "type": "escrow"
+            "ledger_index": "validated"
         }
     ]
 }
@@ -397,23 +400,23 @@ Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specifi
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "escrow": { "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu", "seq": 6134107 }, "ledger_index": "validated", "type": "escrow" }'
+rippled json ledger_entry '{ "escrow": { "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu", "seq": 6134107 }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#ledger_entry)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. 
+**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
-#### {{n.next()}}. Specify PayChannel Object
+### Get PayChannel Object
 
 Retrieve a [PayChannel object](paychannel.html), which holds XRP for asynchronous payments. [New in: rippled 1.0.0][]
 
-| `Field`                 | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `payment_channel`       | String                     | _(Required if `type` is "payment_channel")_ Specify the [object ID](ledger-object-ids.html) of a [PayChannel object](paychannel.html) to retrieve. |
+| `Field`           | Type   | Description                                     |
+|:------------------|:-------|:------------------------------------------------|
+| `payment_channel` | String | The [object ID](ledger-object-ids.html) of a [PayChannel object](paychannel.html) to retrieve. |
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -423,8 +426,7 @@ Retrieve a [PayChannel object](paychannel.html), which holds XRP for asynchronou
 {
   "id": 3,
   "command": "ledger_entry",
-  "type": "payment_channel",
-  "payment_channel": "rJ8x2MTstFJRWfMXyatcXYuB1TXQMeHtP2",
+  "payment_channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
   "ledger_index": "validated"
 }
 ```
@@ -436,9 +438,8 @@ Retrieve a [PayChannel object](paychannel.html), which holds XRP for asynchronou
     "method": "ledger_entry",
     "params": [
         {
-            "payment_channel": "rJ8x2MTstFJRWfMXyatcXYuB1TXQMeHtP2",
-            "ledger_index": "validated",
-            "type": "payment_channel"
+            "payment_channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "ledger_index": "validated"
         }
     ]
 }
@@ -447,25 +448,23 @@ Retrieve a [PayChannel object](paychannel.html), which holds XRP for asynchronou
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "payment_channel": "rJ8x2MTstFJRWfMXyatcXYuB1TXQMeHtP2", "ledger_index": "validated", "type": "payment_channel" }'
+rippled json ledger_entry '{ "payment_channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3", "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#ledger_entry)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. ALSO PLEASE NOTE THAT YOU WILL NEED TO CHANGE CONNECTION SETTINGS TO "TESTNET PUBLIC CLUSTER"  
 
-
-#### {{n.next()}}. Specify DepositPreauth Object
+### Get DepositPreauth Object
 
 Retrieve a [DepositPreauth object](depositpreauth-object.html), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](depositauth.html). Can be provided as string (object ID of the DepositPreauth) or as an object. [New in: rippled 1.1.0][]
 
-| `Field`                 | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `deposit_preauth`       | Object or String           | _(Required if `type` is "ticket")_ Specify a [DepositPreauth object](depositpreauth-object.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the DepositPreauth object, as hexadecimal. If an object, requires `owner` and `authorized` sub-fields. |
-| `deposit_preauth.owner` | String - [Address][]       | _(Required if `deposit_preauth` is specified as an object)_ The account that provided the preauthorization. |
-| `deposit_preauth.authorized` | String - [Address][]  | _(Required if `deposit_preauth` is specified as an object)_ The account that received the preauthorization. |
+| `Field`                      | Type                 | Description            |
+|:-----------------------------|:---------------------|:-----------------------|
+| `deposit_preauth`            | Object or String     | Specify a [DepositPreauth object](depositpreauth-object.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the DepositPreauth object, as hexadecimal. If an object, requires `owner` and `authorized` sub-fields. |
+| `deposit_preauth.owner`      | String - [Address][] | _(Required if `deposit_preauth` is specified as an object)_ The account that provided the preauthorization. |
+| `deposit_preauth.authorized` | String - [Address][] | _(Required if `deposit_preauth` is specified as an object)_ The account that received the preauthorization. |
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -475,7 +474,6 @@ Retrieve a [DepositPreauth object](depositpreauth-object.html), which tracks pre
 {
   "id": 3,
   "command": "ledger_entry",
-  "type": "deposit_preauth",
   "deposit_preauth": {
     "owner": "rPRVdmDUwV4q5FTpwPijLQuzJ4WjDbgNrE",
     "authorized": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
@@ -495,8 +493,7 @@ Retrieve a [DepositPreauth object](depositpreauth-object.html), which tracks pre
               "owner": "rPRVdmDUwV4q5FTpwPijLQuzJ4WjDbgNrE",
               "authorized": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
             },
-            "ledger_index": "validated",
-            "type": "deposit_preauth"
+            "ledger_index": "validated"
         }
     ]
 }
@@ -505,7 +502,7 @@ Retrieve a [DepositPreauth object](depositpreauth-object.html), which tracks pre
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "deposit_preauth": { "owner": "rPRVdmDUwV4q5FTpwPijLQuzJ4WjDbgNrE", "authorized": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" }, "ledger_index": "validated", "type": "deposit_preauth" }'
+rippled json ledger_entry '{ "deposit_preauth": { "owner": "rPRVdmDUwV4q5FTpwPijLQuzJ4WjDbgNrE", "authorized": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -515,13 +512,13 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rPRVdmDUwV4q5FTpwPij
 **Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. ALSO PLEASE NOTE THAT YOU WILL NEED TO CHANGE CONNECTION SETTINGS TO "TESTNET PUBLIC CLUSTER"  
 
 
-#### {{n.next()}}. Specify Ticket Object
+### Get Ticket Object
 
-Retrieve a [Ticket object](ticket.html), which records a [sequence number][] set aside for future use. Can be provided as string (object ID of the Ticket) or as an object. _(Requires the [TicketBatch amendment][])_
+Retrieve a [Ticket object](ticket.html), which represents a [sequence number][] set aside for future use. Can be provided as string (object ID of the Ticket) or as an object. _(Requires the [TicketBatch amendment][])_ :not_enabled:
 
 | `Field`                 | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `ticket`                | Object or String           | _(Required if `type` is "ticket")_ The [Ticket object](ticket.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the Ticket, as hexadecimal. If an object, the `owner` and `ticket_sequence` sub-fields are required to uniquely specify the Ticket entry. |
+| `ticket`                | Object or String           | The [Ticket object](ticket.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the Ticket, as hexadecimal. If an object, the `owner` and `ticket_sequence` sub-fields are required to uniquely specify the Ticket entry. |
 | `ticket.owner`          | String - [Address][]       | _(Required if `ticket` is specified as an object)_ The owner of the Ticket object. |
 | `ticket.ticket_sequence` | Unsigned Integer          | _(Required if `ticket` is specified as an object)_ The Ticket Sequence number of the Ticket entry to retrieve. |
 
@@ -533,10 +530,9 @@ Retrieve a [Ticket object](ticket.html), which records a [sequence number][] set
 {
   "id": 3,
   "command": "ledger_entry",
-  "type": "ticket",
   "ticket": {
     "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-    "ticket_sequence: 23
+    "ticket_sequence": 23
   },
   "ledger_index": "validated"
 }
@@ -549,10 +545,9 @@ Retrieve a [Ticket object](ticket.html), which records a [sequence number][] set
     "method": "ledger_entry",
     "params": [
         {
-          "type": "ticket",
           "ticket": {
             "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "ticket_sequence: 23
+            "ticket_sequence": 23
           },
           "ledger_index": "validated"
         }
@@ -563,19 +558,15 @@ Retrieve a [Ticket object](ticket.html), which records a [sequence number][] set
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "ticket": { "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ticket_sequence: 23 }, "ledger_index": "validated", "type": "ticket" }'
+rippled json ledger_entry '{ "ticket": { "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ticket_sequence: 23 }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#ledger_entry)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. 
+**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
-
-#### Deprecated Parameters
-
-**Note:** The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
 
 ## Response Format
