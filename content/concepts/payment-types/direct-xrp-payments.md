@@ -52,7 +52,7 @@ From a relatively high level, the XRP Ledger's transaction processing engine app
 
 2. It checks whether the receiving address is a funded account.
 
-    - If the receiving address is funded, it checks whether the receiving address has any limitations on receiving payments, such as [Deposit Authorization](depositauth.html) or [`RequireDest`](source-and-destination-tags.html#requiring-tags). If the payment does not meet any such limitations, the payment fails.
+    - If the receiving address is funded, it checks whether the receiving address has any limitations on receiving payments, such as [Deposit Authorization](depositauth.html) or [`RequireDest`](source-and-destination-tags.html#requiring-tags). If the payment meets any such limitations, the payment fails.
     - If the receiving address is not funded, it checks whether the payment would deliver enough XRP to meet the minimum [account reserve](reserves.html). If not, the payment fails.
 
 3. It debits the sending account by an amount of XRP specified by the `Amount` field plus the XRP to be destroyed for the [transaction cost](transaction-cost.html) and credits the receiving account for the same amount.
