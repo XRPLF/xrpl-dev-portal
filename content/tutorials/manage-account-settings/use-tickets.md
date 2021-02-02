@@ -20,22 +20,33 @@ _(Requires the [TicketBatch amendment][] :not_enabled:)_
 <script type="application/javascript" src="{{target.ripple_lib_url}}"></script>
 <!-- Helper for interactive tutorial breadcrumbs -->
 <script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+<!-- Source for this specific tutorial's interactive bits: -->
+<script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
 
-- This page provides JavaScript examples that use the ripple-lib (RippleAPI) library. The [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.
+This page provides JavaScript examples that use the ripple-lib (RippleAPI) library. The [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.
 
-- To use Tickets, you need a address and secret key, and some XRP. You can get all of these on the [Testnet](parallel-networks.html) using the following interface:
+Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
 
-{% include '_snippets/generate-step.md' %}
-
+Tickets must be enabled. At this time, the [TicketBatch amendment][] :not_enabled: is only available on Devnet.
 
 
 
 ## Steps
 {% set n = cycler(* range(1,99)) %}
 
-### {{n.next()}}. Connect to a Testnet Server
+### {{n.next() }}. Get Credentials
 
-You must be connected to the network to submit transactions to it. Currently, Tickets are only available on ***TODO: Devnet -- starting 1/26ish*** stand-alone mode.
+To interact with the XRP Ledger, you need a address and secret key, and some XRP. You can get all of these on the [Devnet](parallel-networks.html) using the following interface: <!--TODO: change to Testnet eventually -->
+
+{% set faucet_url = "https://faucet.devnet.rippletest.net/accounts" %}
+{% include '_snippets/generate-step.md' %}
+
+When you're [building actual production-ready software](production-readiness.html), you'll instead use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+
+
+### {{n.next()}}. Connect to Network
+
+You must be connected to the network to submit transactions to it.
 
 The following code sample instantiates a new RippleAPI instance and connects to one of the public XRP Devnet servers that Ripple runs:
 
@@ -57,67 +68,13 @@ main()
 For this tutorial, you can connect directly from your browser by pressing the following button:
 
 {{ start_step("Connect") }}
-<button id="connect-button" class="btn btn-primary">Connect to TestNet</button>
+<button id="connect-button" class="btn btn-primary">Connect to Devnet</button> <!-- TODO: Testnet -->
 <div>
   <strong>Connection status:</strong>
   <span id="connection-status">Not connected</span>
-  <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
+  <div id='loader-connect' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
 </div>
 {{ end_step() }}
-
-<script type="application/javascript">
-api = new ripple.RippleAPI({server: 'ws://localhost:6006'}) //TODO: change to Devnet when possible
-api.on('connected', async function() {
-  $("#connection-status").text("Connected")
-  $("#connect-button").prop("disabled", true)
-  $("#loader-{{n.current}}").hide()
-
-  // Update breadcrumbs & activate next step
-  complete_step("Connect")
-  $("#check-sequence").prop("disabled", false)
-  $("#check-sequence").prop("title", "")
-
-  // TODO: remove this standalone mode "faucet" code
-  resp = await api.request('wallet_propose')
-  await api.request("submit", {"secret": "masterpassphrase", "tx_json": {
-      "TransactionType": "Payment", "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "Amount": "10000000000", "Destination": resp.account_id
-    }})
-  await api.request("ledger_accept")
-
-  // Populate creds
-  const EXAMPLE_ADDR = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-  const EXAMPLE_SECRET = "s████████████████████████████"
-  $("#address").hide().html("<strong>Address:</strong> " +
-    '<span id="use-address">' +
-    resp.account_id +
-    "</span>").show()
-  $("code span:contains('"+EXAMPLE_ADDR+"')").each( function() {
-    let eltext = $(this).text()
-    $(this).text( eltext.replace(EXAMPLE_ADDR, resp.account_id) )
-  })
-  $("#secret").hide().html("<strong>Secret:</strong> " +
-    '<span id="use-secret">' +
-    resp.master_seed
-    + "</span>").show()
-  $("code span:contains('"+EXAMPLE_SECRET+"')").each( function() {
-    let eltext = $(this).text()
-    $(this).text( eltext.replace(EXAMPLE_SECRET, resp.master_seed) )
-  })
-
-  // END temp standalone faucet code
-})
-api.on('disconnected', (code) => {
-  $("#connection-status").text( "Disconnected ("+code+")" )
-  $("#connect-button").prop("disabled", false)
-  $(".connection-required").prop("disabled", true)
-  $(".connection-required").prop("title", "Connection to Test Net required")
-})
-$("#connect-button").click(() => {
-  $("#connection-status").text( "Connecting..." )
-  $("#loader-{{n.current}}").show()
-  api.connect()
-})
-</script>
 
 
 ### {{n.next()}}. Check Sequence Number
@@ -144,23 +101,6 @@ let current_sequence = get_sequence()
 <div id="check-sequence-output"></div>
 {{ end_step() }}
 
-<script type="application/javascript">
-  $("#check-sequence").click( async function() {
-    const address = $("#use-address").text()
-    // Wipe previous output
-    $("#check-sequence-output").html("")
-    const account_info = await api.request("account_info", {"account": address})
-
-    $("#check-sequence-output").append(
-      `<p>Current sequence: <code id="current_sequence">${account_info.account_data.Sequence}</code></p>`)
-
-
-    // Update breadcrumbs & activate next step
-    complete_step("Check Sequence")
-    $("#prepare-and-sign").prop("disabled", false)
-    $("#prepare-and-sign").prop("title", "")
-  })
-</script>
 
 
 ### {{n.next()}}. Prepare and Sign TicketCreate
@@ -177,7 +117,7 @@ let prepared = await api.prepareTransaction({
   "Sequence": current_sequence
 })
 console.log("Prepared transaction:", prepared.txJSON)
-let lastledgersequence = prepared.instructions.maxLedgerVersion
+let max_ledger = prepared.instructions.maxLedgerVersion
 
 let signed = api.sign(prepared.txJSON, "s████████████████████████████")
 console.log("Transaction hash:", signed.id)
@@ -185,7 +125,7 @@ console.log("Transaction hash:", signed.id)
 let tx_blob = signed.signedTransaction
 ```
 
-Take note of the transaction's `LastLedgerSequence` value so you can [be sure whether or not it got validated](reliable-transaction-submission.html) later.
+Take note of the transaction's hash and `LastLedgerSequence` value so you can [be sure whether or not it got validated](reliable-transaction-submission.html) later.
 
 
 {{ start_step("Prepare & Sign") }}
@@ -195,65 +135,20 @@ Take note of the transaction's `LastLedgerSequence` value so you can [be sure wh
 {{ end_step() }}
 
 
-<script type="application/javascript">
-  $("#prepare-and-sign").click( async function() {
-    const address = $("#use-address").text()
-    const secret = $("#use-secret").text()
-    let current_sequence;
-    try {
-      current_sequence = parseInt($("#current_sequence").text())
-    } catch (e) {
-      current_sequence = null
-    }
-
-    // Wipe previous output
-    $("#prepare-and-sign-output").html("")
-
-    if (!address || !secret || !current_sequence) {
-      $("#prepare-and-sign-output").html(
-        `<p class="devportal-callout warning"><strong>Error:</strong> Couldn't get a valid address/secret/sequence value. Check that the previous steps were completed successfully.</p>`)
-      return;
-    }
-
-    let prepared = await api.prepareTransaction({
-      "TransactionType": "TicketCreate",
-      "Account": address,
-      "TicketCount": 10,
-      "Sequence": current_sequence
-    })
-
-    $("#prepare-and-sign-output").append(
-      `<p>Prepared transaction:</p><pre><code>${pretty_print(prepared.txJSON)}</code></pre>`)
-    $("#lastledgersequence").html(
-      `<code>${prepared.instructions.maxLedgerVersion}</code>`)
-
-    let signed = api.sign(prepared.txJSON, secret)
-    $("#prepare-and-sign-output").append(
-      `<p>Transaction hash: <code id="tx_id">${signed.id}</code></p>`)
-
-    let tx_blob = signed.signedTransaction
-    $("#prepare-and-sign-output").append(
-      `<pre style="visibility: none"><code id="tx_blob">${tx_blob}</code></pre>`)
-
-    // Update breadcrumbs & activate next step
-    complete_step("Prepare & Sign")
-    $("#ticketcreate-submit").prop("disabled", false)
-    $("#ticketcreate-submit").prop("title", "")
-
-  })
-</script>
-
 
 ### {{n.next()}}. Submit TicketCreate
 
 If you already have at least one Ticket available in the ledger, you can skip this step. Otherwise, you need to send a transaction to create some Tickets.
 
-Submit the signed transaction blob that you created in the previous step. For example:
+Submit the signed transaction blob that you created in the previous step. Take note of the latest validated ledger index at the time of submission, so you can set a lower bound on what ledger versions the transaction could be validated in. For example:
 
 ```js
 let prelim_result = await api.request("submit", {"tx_blob": tx_blob})
 console.log("Preliminary result:", prelim_result)
+const min_ledger = prelim_result.validated_ledger_index
 ```
+
+**Warning:** Be sure that you **DO NOT UPDATE** the `min_ledger` value. It is safe to submit a signed transaction blob multiple times (the transaction can only execute at most once), but when you look up the status of the transaction you should use the earliest possible ledger index the transaction could be in, _not_ the validated ledger index at the time of the most recent submission. Using the wrong minimum ledger value could cause you to incorrectly conclude that the transaction did not execute. For best practices, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 {{ start_step("Submit") }}
 <button id="ticketcreate-submit" class="btn btn-primary connection-required"
@@ -262,26 +157,6 @@ console.log("Preliminary result:", prelim_result)
 {{ end_step() }}
 
 
-<script type="application/javascript">
-  $("#ticketcreate-submit").click( async function() {
-    const tx_blob = $("#tx_blob").text()
-    // Wipe previous output
-    $("#ticketcreate-submit-output").html("")
-
-    waiting_for_tx = $("#tx_id").text() // next step uses this
-    let prelim_result = await api.request("submit", {"tx_blob": tx_blob})
-    $("#ticketcreate-submit-output").append(
-      `<p>Preliminary result:</p><pre><code>${pretty_print(prelim_result)}</code></pre>`)
-    $("#earliest-ledger-version").text(prelim_result.validated_ledger_index)
-
-    // TODO: remove for devnet/testnet
-    await api.request("ledger_accept")
-
-    // Update breadcrumbs
-    complete_step("Submit")
-  })
-</script>
-
 ### {{n.next()}}. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
@@ -289,13 +164,55 @@ Most transactions are accepted into the next ledger version after they're submit
 You use the `ledger` event type in RippleAPI to trigger your code to run whenever there is a new validated ledger version. For example:
 
 ```js
-api.on('ledger', ledger => {
+// signed.id is the hash we're waiting for
+// min_ledger is the validated ledger index at time of first submission
+// max_ledger is the transaction's LastLedgerSequence value
+let tx_status = ""
+api.on('ledger', async (ledger) => {
   console.log("Ledger version", ledger.ledgerVersion, "was validated.")
+  if (!tx_status) {
+    try {
+      tx_result = await api.request("tx", {
+          "transaction": signed.id,
+          "min_ledger": min_ledger,
+          "max_ledger": max_ledger
+      })
+
+      if (tx_result.validated) {
+        console.log("Got validated result:", tx_result.meta.TransactionResult)
+        tx_status = "validated"
+      } else {
+        // Transaction found, but not yet validated. No change.
+      }
+    } catch(e) {
+      if (e.data.error == "txnNotFound") {
+        if (e.data.searched_all) {
+          console.log(`Tx not found in ledgers ${min_ledger}-${max_ledger}`)
+          tx_status = "rejected"
+          // This result is final if min_ledger and max_ledger are correct
+        } else {
+          if (max_ledger > ledger.ledgerVersion) {
+            // Transaction may yet be confirmed. Keep waiting.
+          } else {
+            console.log("Can't get final result. Check a full history server.")
+            tx_result = "unknown - check full history"
+          }
+        }
+      } else {
+        // Unknown error; pass it back up
+        throw e
+      }
+    }
+  }
 })
 ```
 
 {{ start_step("Wait") }}
 <table>
+  <tr>
+    <th>Transaction Hash:</th>
+    <td id="waiting-for-tx"></td>
+  </tr>
   <tr>
     <th>Latest Validated Ledger Version:</th>
     <td id="current-ledger-version">(Not connected)</td>
@@ -313,59 +230,12 @@ api.on('ledger', ledger => {
 </table>
 {{ end_step() }}
 
-<script type="application/javascript">
-let waiting_for_tx = null;
-api.on('ledger', async (ledger) => {
-  $("#current-ledger-version").text(ledger.ledgerVersion)
-
-  let tx_result;
-  if (waiting_for_tx) {
-    try {
-      tx_result = await api.request("tx", {
-          "transaction": waiting_for_tx,
-          "min_ledger": parseInt($("#earliest-ledger-version").text()),
-          "max_ledger": parseInt($("#lastledgersequence").text())
-      })
-      if (tx_result.validated) {
-        // TODO: when devnet, link explorer
-        $("#tx-validation-status").html(
-          `<th>Final Result:</th><td>${tx_result.meta.TransactionResult} (Validated)</td>`)
-        waiting_for_tx = null;
-
-        if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
-          complete_step("Wait")
-          $("#check-tickets").prop("disabled", false)
-          $("#check-tickets").prop("title", "")
-          $("#intermission-payment").prop("disabled", false)
-          $("#intermission-payment").prop("title", "")
-          $("#intermission-escrowcreate").prop("disabled", false)
-          $("#intermission-escrowcreate").prop("title", "")
-          $("#intermission-accountset").prop("disabled", false)
-          $("#intermission-accountset").prop("title", "")
-        }
-      }
-    } catch(e) {
-      if (e.data.error == "txnNotFound" && e.data.searched_all) {
-        $("#tx-validation-status").html(
-          // TODO: when devnet, link explorer
-          `<th>Final Result:</th><td>Failed to achieve consensus (final)</td>`)
-        waiting_for_tx = null;
-      } else {
-        $("#tx-validation-status").html(
-          `<th>Final Result:</th><td>Unknown</td>`)
-      }
-    }
-  }
-
-})
-</script>
 
 ### (Optional) Intermission
 
 The power of Tickets is that you can send other transactions during this time, and generally carry on with your account's normal business during this time. If you are planning on using a given Ticket, then as long as you don't use that Ticket for something else, you're free to continue using your account as normal. When you want to send the transaction using a Ticket, you can do that in parallel with other transactions using regular sequence numbers or different Tickets, and submit any of them in any order when you're ready.
 
 **Tip:** You can come back here to send Sequenced transactions between or during any of the following steps, without interfering with the success of your Ticketed transaction.
-
 
 {{ start_step("Intermission") }}
 <button id="intermission-payment" class="btn btn-primary connection-required"
@@ -378,62 +248,6 @@ The power of Tickets is that you can send other transactions during this time, a
 {{ end_step() }}
 
 
-<script type="application/javascript">
-async function intermission_submit(tx_json) {
-  const secret = $("#use-secret").text()
-  let prepared = await api.prepareTransaction(tx_json)
-  let signed = api.sign(prepared.txJSON, secret)
-  let prelim_result = await api.request("submit", {"tx_blob": signed.signedTransaction})
-
-  // TODO: when devnet, link to https://devnet.xrpl.org/transactions/${signed.id}
-  $("#intermission-output").append(`<p>${tx_json.TransactionType} ${prepared.instructions.sequence}: ${prelim_result.engine_result}</p>`)
-}
-
-$("#intermission-payment").click( async function() {
-  const address = $("#use-address").text()
-
-  intermission_submit({
-    "TransactionType": "Payment",
-    "Account": address,
-    "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe", // TestNet Faucet
-    "Amount": api.xrpToDrops("201") // enough to fund the account even on the higher default reserve in stand-alone mode
-  })
-
-  // Update breadcrumbs; though this step is optional,
-  // so the previous step already enabled the step after this.
-  complete_step("Intermission")
-})
-
-$("#intermission-escrowcreate").click( async function() {
-  const address = $("#use-address").text()
-
-  intermission_submit({
-    "TransactionType": "EscrowCreate",
-    "Account": address,
-    "Destination": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", // Genesis acct
-    "Amount": api.xrpToDrops("0.13"), // Arbitrary amount
-    "FinishAfter": api.iso8601ToRippleTime(Date()) + 30 // 30 seconds from now
-  })
-
-  // Update breadcrumbs; though this step is optional,
-  // so the previous step already enabled the step after this.
-  complete_step("Intermission")
-})
-
-
-$("#intermission-accountset").click( async function() {
-  const address = $("#use-address").text()
-
-  intermission_submit({
-    "TransactionType": "AccountSet",
-    "Account": address
-  })
-
-  // Update breadcrumbs; though this step is optional,
-  // so the previous step already enabled the step after this.
-  complete_step("Intermission")
-})
-</script>
 
 ### {{n.next()}}. Check Available Tickets
 
@@ -456,32 +270,6 @@ let use_ticket = response.account_objects[0].TicketSequence
 <div id="check-tickets-output"></div>
 {{ end_step() }}
 
-
-<script type="application/javascript">
-  $("#check-tickets").click( async function() {
-    const address = $("#use-address").text()
-    // Wipe previous output
-    $("#check-tickets-output").html("")
-
-    let response = await api.request("account_objects", {
-        "account": address,
-        "type": "ticket"
-      })
-    $("#check-tickets-output").html(`<pre><code>${pretty_print(response)}</code></pre>`)
-
-    // Reset the next step's form & add these tickets
-    $("#ticket-selector .form-area").html("")
-    response.account_objects.forEach((ticket, i) => {
-        $("#ticket-selector .form-area").append(`<div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="ticket${i}" name="ticket-radio-set" value="${ticket.TicketSequence}"><label class="form-check-label" for="ticket${i}">${ticket.TicketSequence}</label></div>`)
-      })
-
-
-    // Update breadcrumbs & activate next step
-    complete_step("Check Tickets")
-    $("#prepare-ticketed-tx").prop("disabled", false)
-    $("#prepare-ticketed-tx").prop("title", "")
-  })
-</script>
 
 ### {{n.next()}}. Prepare Ticketed Transaction
 
@@ -521,46 +309,6 @@ console.log("Signed transaction blob:", tx_blob_t)
 <div id="prepare-ticketed-tx-output"></div>
 {{ end_step() }}
 
-<script type="application/javascript">
-  $("#prepare-ticketed-tx").click(async function() {
-    const use_ticket = parseInt($('input[name="ticket-radio-set"]:checked').val())
-    if (!use_ticket) {
-      $("#prepare-ticketed-tx-output").append('<p class="devportal-callout warning"><strong>Error</strong> You must choose a ticket first.</p>')
-      return
-    }
-
-    const address = $("#use-address").text()
-    const secret = $("#use-secret").text()
-
-    let prepared_t = await api.prepareTransaction({
-      "TransactionType": "AccountSet",
-      "Account": address,
-      "TicketSequence": use_ticket,
-      "Sequence": 0
-    }, {
-      maxLedgerVersionOffset: 20
-    })
-    $("#prepare-ticketed-tx-output").html("")
-
-    $("#prepare-ticketed-tx-output").append(
-      `<p>Prepared transaction:</p><pre><code>${pretty_print(prepared_t.txJSON)}</code></pre>`)
-    $("#lastledgersequence_t").html( //REMEMBER
-      `<code>${prepared_t.instructions.maxLedgerVersion}</code>`)
-
-    let signed_t = api.sign(prepared_t.txJSON, secret)
-    $("#prepare-ticketed-tx-output").append(
-      `<p>Transaction hash: <code id="tx_id_t">${signed_t.id}</code></p>`)
-
-    let tx_blob_t = signed_t.signedTransaction
-    $("#prepare-ticketed-tx-output").append(
-      `<pre style="visibility: none"><code id="tx_blob_t">${tx_blob_t}</code></pre>`)
-
-    // Update breadcrumbs & activate next step
-    complete_step("Prepare Ticketed Tx")
-    $("#ticketedtx-submit").prop("disabled", false)
-    $("#ticketedtx-submit").prop("title", "")
-  })
-</script>
 
 ### {{n.next()}}. Submit Ticketed Transaction
 
@@ -578,25 +326,6 @@ console.log("Preliminary result:", prelim_result_t)
 {{ end_step() }}
 
 
-<script type="application/javascript">
-  $("#ticketedtx-submit").click( async function() {
-    const tx_blob = $("#tx_blob_t").text()
-    // Wipe previous output
-    $("#ticketedtx-submit-output").html("")
-
-    waiting_for_tx_t = $("#tx_id_t").text() // next step uses this
-    let prelim_result = await api.request("submit", {"tx_blob": tx_blob})
-    $("#ticketedtx-submit-output").append(
-      `<p>Preliminary result:</p><pre><code>${pretty_print(prelim_result)}</code></pre>`)
-    $("#earliest-ledger-version_t").text(prelim_result.validated_ledger_index)
-
-    // TODO: remove for devnet/testnet
-    await api.request("ledger_accept")
-
-    // Update breadcrumbs
-    complete_step("Submit Ticketed Tx")
-  })
-</script>
 
 ### {{n.next()}}. Wait for Validation
 
@@ -621,43 +350,6 @@ Ticketed transactions go through the consensus process the same way that Sequenc
 </table>
 {{ end_step() }}
 
-<script type="application/javascript">
-let waiting_for_tx_t = null;
-api.on('ledger', async (ledger) => {
-  $("#current-ledger-version_t").text(ledger.ledgerVersion)
-
-  let tx_result;
-  if (waiting_for_tx_t) {
-    try {
-      tx_result = await api.request("tx", {
-          "transaction": waiting_for_tx_t,
-          "min_ledger": parseInt($("#earliest-ledger-version_t").text()),
-          "max_ledger": parseInt($("#lastledgersequence_t").text())
-      })
-      console.log(tx_result)
-      if (tx_result.validated) {
-        $("#tx-validation-status_t").html(
-          `<th>Final Result:</th><td>${tx_result.meta.TransactionResult} (Validated)</td>`)
-        waiting_for_tx_t = null;
-
-        if ( $(".breadcrumb-item.bc-wait_again").hasClass("active") ) {
-          complete_step("Wait Again")
-        }
-      }
-    } catch(e) {
-      if (e.data.error == "txnNotFound" && e.data.searched_all) {
-        $("#tx-validation-status_t").html(
-          `<th>Final Result:</th><td>Failed to achieve consensus (final)</td>`)
-        waiting_for_tx_t = null;
-      } else {
-        $("#tx-validation-status_t").html(
-          `<th>Final Result:</th><td>Unknown</td>`)
-      }
-    }
-  }
-
-})
-</script>
 
 ## See Also
 

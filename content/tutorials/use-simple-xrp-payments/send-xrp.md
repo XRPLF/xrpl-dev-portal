@@ -135,7 +135,7 @@ txJSON = JSON.stringify(doPrepare())
     // Wipe existing results
     $("#prepare-output").html("")
 
-    const sender = $("#test-net-faucet-address").text() || "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+    const sender = $("#use-address").text() || "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
     const preparedTx = await api.prepareTransaction({
       "TransactionType": "Payment",
       "Account": sender,
@@ -195,7 +195,7 @@ The signing API also returns the transaction's ID, or identifying hash, which yo
     $("#sign-output").html("")
 
     const preparedTxJSON = $("#prepared-tx-json").text()
-    const secret = $("#test-net-faucet-secret").text()
+    const secret = $("#use-secret").text()
 
     if (!secret) {
       alert("Can't sign transaction without a real secret. Generate credentials first.")

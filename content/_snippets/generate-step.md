@@ -1,6 +1,10 @@
+{% if faucet_url is undefined %}
+  {% set faucet_url = "https://faucet.altnet.rippletest.net/accounts" %}
+{% endif %}
+
 {{ start_step("Generate") }}
 <button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
-<div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
+<div id='loader-generate' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
 <div id='address'></div>
 <div id='secret'></div>
 <div id='balance'></div>
@@ -16,20 +20,20 @@ $(document).ready( () => {
     $("#balance").html("")
     $("#populate-creds-status").html("")
 
-    $("#loader-0").show()
+    $("#loader-generate").show()
 
     $.ajax({
-      url: "https://faucet.altnet.rippletest.net/accounts",
+      url: "{{faucet_url}}",
       type: 'POST',
       dataType: 'json',
       success: function(data) {
-        $("#loader-0").hide()
+        $("#loader-generate").hide()
         $("#address").hide().html("<strong>Address:</strong> " +
-          '<span id="test-net-faucet-address">' +
+          '<span id="use-address">' +
           data.account.address
           + "</span>").show()
         $("#secret").hide().html('<strong>Secret:</strong> ' +
-          '<span id="test-net-faucet-secret">' +
+          '<span id="use-secret">' +
           data.account.secret +
           "</span>").show()
         $("#balance").hide().html('<strong>Balance:</strong> ' +
@@ -55,7 +59,7 @@ $(document).ready( () => {
 
       },
       error: function() {
-        $("#loader-0").hide();
+        $("#loader-generate").hide();
         alert("There was an error with the Testnet. Please try again.");
       }
     })
