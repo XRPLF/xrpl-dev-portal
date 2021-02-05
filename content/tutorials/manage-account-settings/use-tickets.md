@@ -34,9 +34,9 @@ Tickets must be enabled. At this time, the [TicketBatch amendment][] :not_enable
 ## Steps
 {% set n = cycler(* range(1,99)) %}
 
-### {{n.next() }}. Get Credentials
+### {{n.next()}}. Get Credentials
 
-To interact with the XRP Ledger, you need a address and secret key, and some XRP. You can get all of these on the [Devnet](parallel-networks.html) using the following interface: <!--TODO: change to Testnet eventually -->
+To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the [Devnet](parallel-networks.html) using the following interface: <!--TODO: change to Testnet eventually -->
 
 {% set faucet_url = "https://faucet.devnet.rippletest.net/accounts" %}
 {% include '_snippets/generate-step.md' %}
@@ -48,7 +48,7 @@ When you're [building actual production-ready software](production-readiness.htm
 
 You must be connected to the network to submit transactions to it.
 
-The following code sample instantiates a new RippleAPI instance and connects to one of the public XRP Devnet servers that Ripple runs:
+The following code uses a RippleAPI instance to connect to a public XRP Devnet server:
 
 ```js
 ripple = require('ripple-lib')
@@ -79,7 +79,7 @@ For this tutorial, you can connect directly from your browser by pressing the fo
 
 ### {{n.next()}}. Check Sequence Number
 
-If you already have at least one Ticket available in the ledger, you can skip this step. Otherwise, you need to get ready to create some Tickets for your other transactions to use.
+(If you already have at least one Ticket available in the ledger, you can skip this step.) You need to get ready to create some Tickets for your other transactions to use.
 
 Before you create any Tickets, you should check what [Sequence Number][] your account is at. You want the current Sequence number for the next step, and the Ticket Sequence numbers it sets aside start from this number.
 
@@ -105,9 +105,9 @@ let current_sequence = get_sequence()
 
 ### {{n.next()}}. Prepare and Sign TicketCreate
 
-If you already have at least one Ticket available in the ledger, you can skip this step. Otherwise, you need to prepare the transaction to create some Tickets.
+(If you already have at least one Ticket available in the ledger, you can skip this step.) You need to prepare the transaction that will create some Tickets.
 
-Construct a [TicketCreate transaction][] the sequence number you determined in the previous step. Use the `TicketCount` field to set how many Tickets to create. For example, this example [prepares a transaction](rippleapi-reference.html#preparetransaction) that would make 10 Tickets:
+Construct a [TicketCreate transaction][] using the sequence number you determined in the previous step. Use the `TicketCount` field to specify how many Tickets to create. For example, this example [prepares a transaction](rippleapi-reference.html#preparetransaction) that would make 10 Tickets:
 
 ```js
 let prepared = await api.prepareTransaction({
@@ -138,7 +138,7 @@ Take note of the transaction's hash and `LastLedgerSequence` value so you can [b
 
 ### {{n.next()}}. Submit TicketCreate
 
-If you already have at least one Ticket available in the ledger, you can skip this step. Otherwise, you need to send a transaction to create some Tickets.
+(If you already have at least one Ticket available in the ledger, you can skip this step.) You need to send the transaction to create some Tickets.
 
 Submit the signed transaction blob that you created in the previous step. Take note of the latest validated ledger index at the time of submission, so you can set a lower bound on what ledger versions the transaction could be validated in. For example:
 
@@ -148,7 +148,7 @@ console.log("Preliminary result:", prelim_result)
 const min_ledger = prelim_result.validated_ledger_index
 ```
 
-**Warning:** Be sure that you **DO NOT UPDATE** the `min_ledger` value. It is safe to submit a signed transaction blob multiple times (the transaction can only execute at most once), but when you look up the status of the transaction you should use the earliest possible ledger index the transaction could be in, _not_ the validated ledger index at the time of the most recent submission. Using the wrong minimum ledger value could cause you to incorrectly conclude that the transaction did not execute. For best practices, see [Reliable Transaction Submission](reliable-transaction-submission.html).
+**Warning:** Be sure that you **DO NOT UPDATE** the `min_ledger` value. It is safe to submit a signed transaction blob multiple times (the transaction can only execute at most once), but when you look up the status of the transaction you should use the earliest possible ledger index that the transaction could be in, _not_ the validated ledger index at the time of the most recent submission. Using the wrong minimum ledger value could cause you to incorrectly conclude that the transaction did not execute. For best practices, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 {{ start_step("Submit") }}
 <button id="ticketcreate-submit" class="btn btn-primary connection-required"
