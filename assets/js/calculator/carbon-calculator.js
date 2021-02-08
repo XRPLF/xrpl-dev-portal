@@ -1,8 +1,8 @@
 let calculator_data = {
   'btc': {
-    'kWh': 487.3687578,
-    'tons': 0.0000002426743,
-    'gas': 38.77453
+    'kWh': 951.58,
+    'tons': 0.000000466,
+    'gas': 75.7
   },
   'eth': {
     'kWh': 42.86334969,
@@ -87,6 +87,7 @@ function doCalculations(val){
 
       // This is for the kWh comparison, it animates the transition/selection
       if (data_comp === 'kWh' && kWhComp > .02){
+        if ( kWhComp > 1.1 ) { kWhComp = 1.03 };
         let dot = document.getElementById(data_comp + '-' + data_type + '-dot');
         dot.style.transition = "all .2s ease-in-out";
         dot.style.transform = "scale(" + kWhComp * 100 + ")";
