@@ -141,7 +141,7 @@ targets:
             "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
             "xrp.html#xrp-properties": "xrp.html#xrpの特性"
             # Fix links from untranslated health-check.html:
-            "rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
+            "rippled-server-modes.htmlstand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
             "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
             # Fix link from untranslated negativeunl.html:
             "consensus.html#validation": "consensus.html#検証"
@@ -1381,13 +1381,7 @@ pages:
         targets:
             - ja
 
-    -   name: The rippled Server
-        html: the-rippled-server.html
-        funnel: Build
-        doc_type: Concepts
-        category: The rippled Server
-        template: template-landing-children.html
-        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
+    -   md: concepts/the-rippled-server/the-rippled-server.md
         targets:
             - en
 
