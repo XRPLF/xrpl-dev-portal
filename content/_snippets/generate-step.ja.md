@@ -1,6 +1,10 @@
+{% if faucet_url is undefined %}
+  {% set faucet_url = "https://faucet.altnet.rippletest.net/accounts" %}
+{% endif %}
+
 {{ start_step("Generate") }}
-<button id="generate-creds-button" class="btn btn-primary">資格情報を作成する</button>
-<div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
+<button id="generate-creds-button" class="btn btn-primary">暗号鍵を作成する</button>
+<div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png">暗号鍵を作成しています…</div>
 <div id='address'></div>
 <div id='secret'></div>
 <div id='balance'></div>
@@ -16,29 +20,28 @@ $(document).ready( () => {
     $("#balance").html("")
     $("#populate-creds-status").html("")
 
-    $("#loader-0").show()
+    $("#loader-generate").show()
 
     $.ajax({
-      url: "https://faucet.altnet.rippletest.net/accounts",
+      url: "{{faucet_url}}",
       type: 'POST',
       dataType: 'json',
       success: function(data) {
-        $("#loader-0").hide()
-        $("#address").hide().html("<strong>Address:</strong> " +
-          '<span id="test-net-faucet-address">' +
+        $("#loader-generate").hide()
+        $("#address").hide().html("<strong>アドレス:</strong> " +
+          '<span id="use-address">' +
           data.account.address
           + "</span>").show()
-        $("#secret").hide().html('<strong>Secret:</strong> ' +
-          '<span id="test-net-faucet-secret">' +
+        $("#secret").hide().html('<strong>シード:</strong> ' +
+          '<span id="use-secret">' +
           data.account.secret +
           "</span>").show()
-        $("#balance").hide().html('<strong>Balance:</strong> ' +
+        $("#balance").hide().html('<strong>残高:</strong> ' +
           Number(data.balance).toLocaleString('en') +
           ' XRP').show()
 
         // Automatically populate examples with these credentials...
         // Set sender address
-        let generated_addr = ""
         $("code span:contains('"+EXAMPLE_ADDR+"')").each( function() {
           let eltext = $(this).text()
           $(this).text( eltext.replace(EXAMPLE_ADDR, data.account.address) )
@@ -50,25 +53,22 @@ $(document).ready( () => {
           $(this).text( eltext.replace(EXAMPLE_SECRET, data.account.secret) )
         })
 
-        $("#populate-creds-status").text("Populated this page's examples with these credentials.")
+        $("#populate-creds-status").text("このページの例にこのアドレスとシードを入力しました。")
 
         complete_step("Generate")
 
       },
       error: function() {
-        $("#loader-0").hide();
-        alert("There was an error with the Ripple Test Net, please try again.");
+        $("#loader-generate").hide();
+        alert("Testnet Faucetにエラーが発生しました。もう一度試してください。");
       }
     })
   })
 
   const EXAMPLE_ADDR = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
   const EXAMPLE_SECRET = "s████████████████████████████"
-  $("#populate-creds-button").click( () => {
-
-  })
 
 })
 </script>
 
-**注意:** Rippleは[XRP Ledger Testnet](parallel-networks.html)をテストの目的でのみ運用しており、Test Netの状態とすべての残高を定期的にリセットしています。予防措置として、Test Netと本番で同じアドレスを使用**しない**ことをお勧めします。
+**注意:** Rippleは[TestnetとDevnet](parallel-networks.html)をテストの目的でのみ運用しており、その状態とすべての残高を定期的にリセットしています。予防措置として、Testnet、DevnetとMainnetで同じアドレスを使用**しない**ことをお勧めします。
