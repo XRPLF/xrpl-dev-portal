@@ -71,4 +71,4 @@ $(document).ready( () => {
 })
 </script>
 
-**Caution:** Ripple provides the [XRP Ledger Testnet](parallel-networks.html) for testing purposes only, and regularly resets the state of the test net along with all balances. As a precaution, Ripple recommends **not** using the same addresses on Testnet and Mainnet.
+**Caution:** Ripple provides the [Testnet and Devnet](parallel-networks.html) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, Ripple recommends **not** using the same addresses on Testnet/Devnet and Mainnet.

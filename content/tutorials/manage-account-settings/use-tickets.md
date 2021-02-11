@@ -34,6 +34,13 @@ Tickets must be enabled. At this time, the [TicketBatch amendment][] :not_enable
 ## Steps
 {% set n = cycler(* range(1,99)) %}
 
+This tutorial is divided into a few phases:
+
+- (Steps 1-2) **Setup:** You need an XRP Ledger address and secret. For production, you can use the same address and secret consistently. For this tutorial, you can generate new test credentials as needed. You also need to be connected to the network.
+- (Steps 3-6) **Create Tickets:** Send a transaction to set aside some Tickets.
+- (Optional) **Intermission:** After creating Tickets, you can send various other transactions at any time before, during, and after the following steps.
+- (Steps 7-10) **Use Ticket:** Use one of your set-aside Tickets to send a transaction. You can repeat these steps while skipping the previous parts as long as you have at least one Ticket remaining to use.
+
 ### {{n.next()}}. Get Credentials
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the [Devnet](parallel-networks.html) using the following interface: <!--TODO: change to Testnet eventually -->
@@ -79,8 +86,6 @@ For this tutorial, you can connect directly from your browser by pressing the fo
 
 ### {{n.next()}}. Check Sequence Number
 
-(If you already have at least one Ticket available in the ledger, you can skip this step.) You need to get ready to create some Tickets for your other transactions to use.
-
 Before you create any Tickets, you should check what [Sequence Number][] your account is at. You want the current Sequence number for the next step, and the Ticket Sequence numbers it sets aside start from this number.
 
 ```js
@@ -105,9 +110,7 @@ let current_sequence = get_sequence()
 
 ### {{n.next()}}. Prepare and Sign TicketCreate
 
-(If you already have at least one Ticket available in the ledger, you can skip this step.) You need to prepare the transaction that will create some Tickets.
-
-Construct a [TicketCreate transaction][] using the sequence number you determined in the previous step. Use the `TicketCount` field to specify how many Tickets to create. For example, this example [prepares a transaction](rippleapi-reference.html#preparetransaction) that would make 10 Tickets:
+Construct a [TicketCreate transaction][] using the sequence number you determined in the previous step. Use the `TicketCount` field to specify how many Tickets to create. For example, to [prepare a transaction](rippleapi-reference.html#preparetransaction) that would make 10 Tickets:
 
 ```js
 let prepared = await api.prepareTransaction({
@@ -125,7 +128,7 @@ console.log("Transaction hash:", signed.id)
 let tx_blob = signed.signedTransaction
 ```
 
-Take note of the transaction's hash and `LastLedgerSequence` value so you can [be sure whether or not it got validated](reliable-transaction-submission.html) later.
+Record the transaction's hash and `LastLedgerSequence` value so you can [be sure whether or not it got validated](reliable-transaction-submission.html) later.
 
 
 {{ start_step("Prepare & Sign") }}
@@ -138,9 +141,7 @@ Take note of the transaction's hash and `LastLedgerSequence` value so you can [b
 
 ### {{n.next()}}. Submit TicketCreate
 
-(If you already have at least one Ticket available in the ledger, you can skip this step.) You need to send the transaction to create some Tickets.
-
-Submit the signed transaction blob that you created in the previous step. Take note of the latest validated ledger index at the time of submission, so you can set a lower bound on what ledger versions the transaction could be validated in. For example:
+Submit the signed transaction blob that you created in the previous step. Record the latest validated ledger index at the time of submission, so you can set a lower bound on what ledger versions the transaction could be validated in. For example:
 
 ```js
 let prelim_result = await api.request("submit", {"tx_blob": tx_blob})
@@ -233,7 +234,7 @@ api.on('ledger', async (ledger) => {
 
 ### (Optional) Intermission
 
-The power of Tickets is that you can send other transactions during this time, and generally carry on with your account's normal business during this time. If you are planning on using a given Ticket, then as long as you don't use that Ticket for something else, you're free to continue using your account as normal. When you want to send the transaction using a Ticket, you can do that in parallel with other transactions using regular sequence numbers or different Tickets, and submit any of them in any order when you're ready.
+The power of Tickets is that you can carry on with your account's business as usual while you are getting Ticketed transactions ready. When you want to send a transaction using a Ticket, you can do that in parallel with other sending transactions, including ones using different Tickets, and submit a Ticketed transaction at any time. The only constraint is that each Ticket can only be used once.
 
 **Tip:** You can come back here to send Sequenced transactions between or during any of the following steps, without interfering with the success of your Ticketed transaction.
 
@@ -270,6 +271,7 @@ let use_ticket = response.account_objects[0].TicketSequence
 <div id="check-tickets-output"></div>
 {{ end_step() }}
 
+**Tip:** You can repeat the steps from here through the end as long as you have Tickets left to be used!
 
 ### {{n.next()}}. Prepare Ticketed Transaction
 
@@ -349,6 +351,14 @@ Ticketed transactions go through the consensus process the same way that Sequenc
   </tr>
 </table>
 {{ end_step() }}
+
+## With Multi-Signing
+
+One of the main use cases for Tickets is to be able to collect signatures for several [multi-signed transactions](multi-signing.html) in parallel. By using a Ticket, you can send a multi-signed transaction as soon as it is fully signed and ready to go, without worrying about which one will be ready first.
+
+In this scenario, [step 8, "Prepare Ticketed Transaction"](#8-prepare-ticketed-transaction) is slightly different. Instead of preparing and signing all at once, you would follow the steps for [sending any multi-signed transaction](send-a-multi-signed-transaction.html): first prepare the transaction, then circulate it among trusted signers to collect their signatures, and finally combine the signatures into the final multi-signed transaction.
+
+You could do this in parallel for several different potential transactions as long as each one uses a different Ticket.
 
 
 ## See Also
