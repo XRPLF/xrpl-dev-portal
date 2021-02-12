@@ -60,7 +60,9 @@ $(document).ready( () => {
       },
       error: function() {
         $("#loader-generate").hide();
-        alert("Testnet Faucetにエラーが発生しました。もう一度試してください。");
+        $("#populate-creds-status").html(
+          `<p class="devportal-callout warning"><strong>エラー:</strong>
+          テストネットワークFaucetにエラーが発生しました。もう一度試してください。`);
       }
     })
   })

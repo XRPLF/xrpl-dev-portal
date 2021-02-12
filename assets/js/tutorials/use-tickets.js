@@ -30,6 +30,14 @@ $("#connect-button").click(() => {
 // 3. Check Sequence Number
 $("#check-sequence").click( async function() {
   const address = $("#use-address").text()
+
+  if (!address) {
+    $("#check-sequence-output").html(
+      `<p class="devportal-callout warning"><strong>Error:</strong>
+      No address. Make sure you <a href="#1-get-credentials">Get Credentials</a> first.</p>`)
+    return;
+  }
+
   // Wipe previous output
   $("#check-sequence-output").html("")
   const account_info = await api.request("account_info", {"account": address})

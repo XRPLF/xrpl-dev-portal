@@ -60,7 +60,11 @@ $(document).ready( () => {
       },
       error: function() {
         $("#loader-generate").hide();
-        alert("There was an error with the Testnet. Please try again.");
+        $("#populate-creds-status").html(
+          `<p class="devportal-callout warning"><strong>Error:</strong>
+          There was an error connecting to the test network Faucet. Please
+          try again.</p>`)
+        return;
       }
     })
   })
