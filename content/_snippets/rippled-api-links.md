@@ -34,6 +34,7 @@
 [ピアリザベーション]: peer-protocol.html#固定ピアとピアリザベーション
 [result code]: transaction-results.html
 [seconds since the Ripple Epoch]: basic-data-types.html#specifying-time
+[Reporting Mode]: rippled-server-modes.html#reporting-mode
 [Rippleエポック以降の経過秒数]: basic-data-types.html#時間の指定
 [Sequence Number]: basic-data-types.html#account-sequence
 [シーケンス番号]: basic-data-types.html#アカウントシーケンス

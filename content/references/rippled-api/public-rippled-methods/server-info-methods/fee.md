@@ -157,7 +157,8 @@ The response follows the [standard format][], with a successful result containin
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+- Any of the [universal error types][].
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 
 <!--{# common link defs #}-->
