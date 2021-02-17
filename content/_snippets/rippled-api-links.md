@@ -44,6 +44,7 @@
 [レジャーの指定]: basic-data-types.html#レジャーの指定
 [Specifying Time]: basic-data-types.html#specifying-time
 [時間の指定]: basic-data-types.html#時間の指定
+[stand-alone mode]: rippled-server-modes.html#stand-alone-mode
 [standard format]: response-formatting.html
 [標準フォーマット]: response-formatting.html
 [Transaction Cost]: transaction-cost.html
