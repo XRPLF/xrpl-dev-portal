@@ -13,7 +13,7 @@ The fields of a successful response include:
 | `result`        | Object   | The result of the query; contents vary depending on the command. |
 | `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.html) threshold where the server will disconnect this client. |
 | `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). [New in: rippled 1.5.0][] |
-| `forwarded`     | Boolean  | _(May be omitted)_ If `true`, this request has been forwarded from a [Reporting Mode][] server to a Network Mode server because the request requires data that is not available in Reporting Mode. The default is `false`. |
+| `forwarded`     | Boolean  | _(May be omitted)_ If `true`, this request and response have been forwarded from a [Reporting Mode][] server to a P2P Mode server (and back) because the request requires data that is not available in Reporting Mode. The default is `false`. |
 
 
 ## Example Successful Response
