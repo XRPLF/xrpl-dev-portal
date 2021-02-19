@@ -143,6 +143,7 @@ If provided, the `details` object contains the following fields:
 
 - Any of the [universal error types][].
 - `invalidParams` - The `public_key` field was missing or specified incorrectly.
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

@@ -157,7 +157,7 @@ The response follows the [standard format][], with a successful result containin
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+- Any of the [universal error types][].
 
 
 <!--{# common link defs #}-->

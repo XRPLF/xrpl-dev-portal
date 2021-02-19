@@ -68,17 +68,30 @@ Some types of hash appear in API requests and responses. Others are only calcula
 Many API methods require you to specify an instance of the ledger, with the data retrieved being considered up-to-date as of that particular version of the shared ledger. The commands that accept a ledger version all work the same way. There are three ways you can specify which ledger you want to use:
 
 1. Specify a ledger by its [Ledger Index][] in the `ledger_index` parameter. Each closed ledger has a ledger index that is 1 higher than the previous ledger. (The very first ledger had ledger index 1.)
+
+        "ledger_index": 61546724
+
 2. Specify a ledger by its [Hash][] value in the `ledger_hash` parameter.
+
+        "ledger_hash": "8BB204CE37CFA7A021A16B5F6143400831C4D1779E6FE538D9AC561ABBF4A929"
+
 3. Specify a ledger by one of the following shortcuts, in the `ledger_index` parameter:
-    * `validated` for the most recent ledger that has been validated by the whole network
+
+    * `validated` for the most recent ledger that has been [validated by consensus](consensus.html#validation)
+
+            "ledger_index": "validated"
+
     * `closed` for the most recent ledger that has been closed for modifications and proposed for validation
+
     * `current` for the server's current working version of the ledger.
 
 There is also a deprecated `ledger` parameter which accepts any of the above three formats. *Do not* use this parameter; it may be removed without further notice.
 
-If you do not specify a ledger, the `current` (in-progress) ledger is chosen by default. If you provide more than one field specifying ledgers, the deprecated `ledger` field is used first if it exists, falling back to `ledger_hash`. The `ledger_index` field is ignored unless neither of the other two are present.
+If you do not specify a ledger, the server decides which ledger to use to serve the request. By default, the server chooses the `current` (in-progress) ledger. In [Reporting Mode](rippled-server-modes.html#reporting-mode), the server uses the most recent validated ledger instead. Do not provide more than one field specifying ledgers.
 
-**Note:** Do not rely on this default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.
+**Note:** Do not rely on the default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.
+
+Reporting Mode does not record ledger data until it has been validated. If you make a request to a Reporting Mode server for the `current` or `closed` ledger, the server forwards the request to a P2P Mode server. If you request a ledger index or hash that is not validated, a Reporting Mode server responds with a `lgrNotFound` error.
 
 
 ## Specifying Currency Amounts

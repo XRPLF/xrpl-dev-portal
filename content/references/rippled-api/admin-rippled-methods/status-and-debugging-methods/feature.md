@@ -186,8 +186,9 @@ The response follows the [standard format][], with a successful result containin
 
 ### Possible Errors
 
-* Any of the [universal error types][].
-* `badFeature` - The `feature` specified was invalidly formatted, or the server does not know an amendment with that name.
+- Any of the [universal error types][].
+- `badFeature` - The `feature` specified was invalidly formatted, or the server does not know an amendment with that name.
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
