@@ -35,9 +35,7 @@ The JSON object has the following fields:
 | `blob`           | String | Base64-encoded JSON data representing the validator list. |
 | `signature`      | String | The signature of the `blob` data, in hexadecimal. |
 | `version`        | Number | The version of the validator list protocol this object uses. The current version is **1**. A higher version number indicates backwards-incompatible changes with a previous version of the validator list protocol. |
-<!--{# This field isn't included in the rippled response, but should be. https://github.com/ripple/rippled/issues/3392
-| `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`. |
-#}-->
+| `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`. [New in: rippled 1.7.0][] |
 
 ### Manifest Data
 [[Source]](https://github.com/ripple/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66 "Source")
