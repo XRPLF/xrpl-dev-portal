@@ -431,7 +431,7 @@ This amendment has no known impact on transaction processing.
 |:-----------------------------------------------------------------|:----------|
 | 452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB | Open for Voting |
 
-Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly to eliminate the problematic corner cases.
+Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
 
 
 ## fixTakerDryOfferRemoval
