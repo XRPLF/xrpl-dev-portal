@@ -1,9 +1,7 @@
 # manifest
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "Source")
 
-The `{{currentpage.name}}` method reports the current "manifest" information for a given validator public key. The "manifest" is the public portion of that validator's configured token.
-
-_The `{{currentpage.name}}` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
+The `{{currentpage.name}}` method reports the current "manifest" information for a given validator public key. The "manifest" is the public portion of that validator's configured token. [Updated in: rippled 1.7.0][]
 
 
 ### Request Format

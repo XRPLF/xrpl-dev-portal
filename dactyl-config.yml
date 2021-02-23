@@ -4209,6 +4209,18 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/public-rippled-methods/server-info-methods/manifest.md
+        html: manifest.html
+        blurb: Look up the public information about a known validator.
+        funnel: Build
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
         html: server_info.html
         funnel: Build
@@ -4922,18 +4934,6 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
-            - ja
-
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/manifest.md
-        html: manifest.html
-        blurb: Look up the public information about a known validator.
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Admin rippled Methods
-        subcategory: Status and Debugging Methods
-        targets:
-            - en
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md

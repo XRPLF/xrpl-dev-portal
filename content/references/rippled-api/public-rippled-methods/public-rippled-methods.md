@@ -75,7 +75,7 @@ Use these methods to retrieve information about the current state of the `ripple
 * **[`fee`](fee.html)** - Get information about transaction cost.
 * **[`server_info`](server_info.html)** - Retrieve status of the server in human-readable format.
 * **[`server_state`](server_state.html)** - Retrieve status of the server in machine-readable format.
-
+- **[`manifest`](manifest.html)** - Retrieve the latest ephemeral public key information about a known validator.
 
 ## [Utility Methods](utility-methods.html)
 
