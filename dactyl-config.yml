@@ -144,10 +144,14 @@ targets:
             "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
             "xrp.html#xrp-properties": "xrp.html#xrpの特性"
             # Fix links from untranslated health-check.html:
-            "rippled-server-modes.htmlstand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
+            "rippled-server-modes.html#stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
             "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
             # Fix link from untranslated negativeunl.html:
             "consensus.html#validation": "consensus.html#検証"
+            # Fix link from untranslated tickets.html:
+            "consensus.html#calculate-and-share-validations": "consensus.html#検証の計算と共有"
+            # Fix link from untranslated manifest.html:
+            "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポーティングモード"
 
 
     -   name: xrp-api-only

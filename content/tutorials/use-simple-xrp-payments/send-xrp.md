@@ -423,7 +423,7 @@ api = new ripple.RippleAPI({server: 'wss://s1.ripple.com:51233'})
 api.connect()
 ```
 
-If you [install `rippled`](install-rippled.html) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](connect-your-rippled-to-the-xrp-test-net.html) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect RippleAPI to it locally, which has [various benefits](rippled-server-modes.html#reasons-to-run-a-stock-server). The following example shows how to connect RippleAPI to a server running the default configuration:
+If you [install `rippled`](install-rippled.html) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](connect-your-rippled-to-the-xrp-test-net.html) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect RippleAPI to it locally, which has [various benefits](the-rippled-server.html). The following example shows how to connect RippleAPI to a server running the default configuration:
 
 ```js
 ripple = require('ripple-lib')
