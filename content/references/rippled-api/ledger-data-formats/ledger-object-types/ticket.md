@@ -7,6 +7,7 @@ category: Ledger Data Formats
 subcategory: Ledger Object Types
 blurb: A Ticket tracks an account sequence number that has been set aside for future use.
 parent: ledger-object-types.html
+status: not_enabled
 ---
 # Ticket
 

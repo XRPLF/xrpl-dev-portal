@@ -7,6 +7,7 @@ category: Transaction Formats
 subcategory: Transaction Types
 blurb: Set aside one or more sequence numbers as Tickets.
 parent: transaction-types.html
+status: not_enabled
 ---
 # TicketCreate
 
