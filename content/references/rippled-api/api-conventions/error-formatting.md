@@ -114,3 +114,9 @@ All methods can potentially return any of the following values for the `error` c
 - `tooBusy` - The server is under too much load to do this command right now. Generally not returned if you are connected as an admin.
 - `unknownCmd` - The request does not contain a [command](rippled-api.html) that the `rippled` server recognizes.
 - `wsTextRequired` - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text. <!-- SPELLING_IGNORE: opcode -->
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}
