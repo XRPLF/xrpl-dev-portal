@@ -61,15 +61,19 @@ languages:
         display_name: 日本語
         prefix: "/ja/"
 
+default_keys: &defaults
+    # These github_ fields are used by the template's "Edit on GitHub" link.
+    #  Override them with --vars to change which fork/branch to edit.
+    github_forkurl: https://github.com/ripple/xrpl-dev-portal
+    github_branch: master
+    ripple_lib_url: assets/js/ripple-lib-1.9.0.min.js
+
 targets:
     # First member is the default that gets built when target not specified
     -   name: en
         lang: en
         display_name: XRPL.org
-        # These github_ fields are used by the template's "Edit on GitHub" link.
-        #  Override them with --vars to change which fork/branch to edit.
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         prefix: ""
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
@@ -80,8 +84,7 @@ targets:
     -   name: ja
         lang: ja
         display_name: XRPL.org (日本語)
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         prefix: "/ja/"
         locale_file: locale/ja/LC_MESSAGES/messages.mo
         blurb: XRPとXRP Ledgerの全てに対してのコミュニティーリーソース
@@ -141,17 +144,20 @@ targets:
             "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
             "xrp.html#xrp-properties": "xrp.html#xrpの特性"
             # Fix links from untranslated health-check.html:
-            "rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
+            "rippled-server-modes.html#stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
             "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
             # Fix link from untranslated negativeunl.html:
             "consensus.html#validation": "consensus.html#検証"
+            # Fix link from untranslated tickets.html:
+            "consensus.html#calculate-and-share-validations": "consensus.html#検証の計算と共有"
+            # Fix link from untranslated manifest.html:
+            "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポーティングモード"
 
 
     -   name: xrp-api-only
         lang: en
         display_name: XRP API Reference
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         no_cover: true
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
@@ -161,8 +167,7 @@ targets:
     -   name: data-api-only
         lang: en
         display_name: XRP Ledger Data API
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         no_cover: True
         link_re_subs:
            "([\\w-]+\\.html)": https://xrpl.org/\1
@@ -606,6 +611,11 @@ pages:
         subcategory: Accounts
         blurb: XRP Ledgerアカウントでは、レジャーデータ内のスパムを減らすためにXRPの準備金が必要です。
         targets:
+            - ja
+
+    -   md: concepts/payment-system-basics/accounts/tickets.md
+        targets:
+            - en
             - ja
 
     -   md: concepts/payment-system-basics/accounts/depositauth.md
@@ -1376,13 +1386,7 @@ pages:
         targets:
             - ja
 
-    -   name: The rippled Server
-        html: the-rippled-server.html
-        funnel: Build
-        doc_type: Concepts
-        category: The rippled Server
-        template: template-landing-children.html
-        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
+    -   md: concepts/the-rippled-server/the-rippled-server.md
         targets:
             - en
 
@@ -1612,48 +1616,18 @@ pages:
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.md
-        html: send-xrp.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Learn how to send test payments right from your browser.
-        cta_text: Send XRP
-        filters:
-            - interactive_steps
         targets:
             - en
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.ja.md
-        html: send-xrp.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Test Netを使用してXRPの送金をテストします。
-        cta_text: XRPを送金しよう
-        filters:
-            - interactive_steps
         targets:
             - ja
 
     -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.md
-        html: monitor-incoming-payments-with-websocket.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
-        filters:
-            - interactive_steps
         targets:
             - en
 
     -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.ja.md
-        html: monitor-incoming-payments-with-websocket.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
-        filters:
-            - interactive_steps
         targets:
             - ja
 
@@ -1887,6 +1861,11 @@ pages:
         category: Manage Account Settings
         blurb: 物理的に隔離されたオフラインのマシンを使用して暗号鍵を保管するXRP Ledgerアカウントを設定します。
         targets:
+            - ja
+
+    -   md: tutorials/manage-account-settings/use-tickets.md
+        targets:
+            - en
             - ja
 
     # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
@@ -4234,6 +4213,18 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/public-rippled-methods/server-info-methods/manifest.md
+        html: manifest.html
+        blurb: Look up the public information about a known validator.
+        funnel: Build
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
         html: server_info.html
         funnel: Build
@@ -4949,18 +4940,6 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/manifest.md
-        html: manifest.html
-        blurb: Look up the public information about a known validator.
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Admin rippled Methods
-        subcategory: Status and Debugging Methods
-        targets:
-            - en
-            - ja
-
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
         html: print.html
         blurb: Get information about internal subsystems.
@@ -5194,6 +5173,11 @@ pages:
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.ja.md
         targets:
+            - ja
+
+    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ticket.md
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-formats.md
@@ -5620,6 +5604,11 @@ pages:
         subcategory: Transaction Types
         blurb: トランザクションのマルチ署名に使用できる署名者のリストを作成、置換、削除します。
         targets:
+            - ja
+
+    -   md: references/rippled-api/transaction-formats/transaction-types/ticketcreate.md
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md

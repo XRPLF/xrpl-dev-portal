@@ -77,6 +77,7 @@ The ID of an `Offer` object is the [SHA-512Half][] of the following values, conc
 * The Offer space key (`0x006F`)
 * The AccountID of the account placing the offer
 * The Sequence number of the [OfferCreate transaction][] that created the offer
+    If the OfferCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

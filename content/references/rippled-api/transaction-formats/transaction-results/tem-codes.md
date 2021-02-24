@@ -29,6 +29,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temDST_IS_SRC`              | The transaction improperly specified a destination address as the `Account` sending the transaction. This includes trust lines (where the destination address is the `issuer` field of `LimitAmount`) and payment channels (where the destination address is the `Destination` field). |
 | `temDST_NEEDED`               | The transaction improperly omitted a destination. This could be the `Destination` field of a [Payment transaction][], or the `issuer` sub-field of the `LimitAmount` field fo a `TrustSet` transaction. |
 | `temINVALID`                   | The transaction is otherwise invalid. For example, the transaction ID may not be the right format, the signature may not be formed properly, or something else went wrong in understanding the transaction. |
+| `temINVALID_COUNT`            | The transaction includes a `TicketCount` field, but the number of Tickets specified is invalid. |
 | `temINVALID_FLAG`             | The transaction includes a [Flag](transaction-common-fields.html#flags-field) that does not exist, or includes a contradictory combination of flags. |
 | `temMALFORMED`                 | Unspecified problem with the format of the transaction. |
 | `temREDUNDANT`                 | The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |

@@ -66,7 +66,7 @@ The diagram shows three different cases for three possible combinations of the e
 
 Conditional payments have been enabled by the ["Escrow" Amendment](known-amendments.html#escrow) to the XRP Ledger Consensus Protocol since 2017-03-31. A previous version of the same functionality was available on the [XRP Ledger Test Net](xrp-test-net-faucet.html) by the name "Suspended Payments" (SusPay) in 2016.
 
-When testing in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode), you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your `rippled.cfg`:
+When testing in [stand-alone mode][], you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your `rippled.cfg`:
 
     [features]
     Escrow

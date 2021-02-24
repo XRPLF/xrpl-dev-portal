@@ -24,7 +24,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
         $ brew install git cmake pkg-config protobuf openssl ninja
 
-0. Install a compatible version of Boost. `rippled` 1.6.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually. (The following examples use Boost 1.71.0, which was the newest version at the time of writing.)
+0. Install a compatible version of Boost. `rippled` 1.7.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually. (The following examples use Boost 1.71.0, which was the newest version at the time of writing.)
 
       1. Download [Boost 1.71.0](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2).
 
@@ -74,6 +74,10 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
         $ git checkout develop
 
     Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
+
+0. Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. The [release announcements for `rippled`](https://xrpl.org/blog/label/rippled-release-notes.html) generally show the exact commit to expect for that release.
+
+        $ git log -1
 
 0. In the `rippled` directory you cloned, create your build directory and access it. For example:
 

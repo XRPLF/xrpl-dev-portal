@@ -103,7 +103,8 @@ The ID of a `PayChannel` object is the [SHA-512Half][] of the following values, 
 * The PayChannel space key (`0x0078`)
 * The AccountID of the source account
 * The AccountID of the destination account
-* The Sequence number of the transaction that created the channel
+* The Sequence number of the [PaymentChannelCreate transaction][] that created the channel
+    If the PaymentChannelCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

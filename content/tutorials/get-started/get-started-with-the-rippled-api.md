@@ -20,7 +20,7 @@ Ripple provides several public servers for the benefit of the XRP Ledger communi
 
 [Network]: parallel-networks.html
 
-¹Ripple's public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so.
+¹Ripple's public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so. Ripple includes [Reporting Mode][] servers in its public clusters.
 
 
 ## Admin Access

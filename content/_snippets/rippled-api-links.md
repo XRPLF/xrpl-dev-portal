@@ -34,6 +34,7 @@
 [ピアリザベーション]: peer-protocol.html#固定ピアとピアリザベーション
 [result code]: transaction-results.html
 [seconds since the Ripple Epoch]: basic-data-types.html#specifying-time
+[Reporting Mode]: rippled-server-modes.html#reporting-mode
 [Rippleエポック以降の経過秒数]: basic-data-types.html#時間の指定
 [Sequence Number]: basic-data-types.html#account-sequence
 [シーケンス番号]: basic-data-types.html#アカウントシーケンス
@@ -44,6 +45,7 @@
 [レジャーの指定]: basic-data-types.html#レジャーの指定
 [Specifying Time]: basic-data-types.html#specifying-time
 [時間の指定]: basic-data-types.html#時間の指定
+[stand-alone mode]: rippled-server-modes.html#stand-alone-mode
 [standard format]: response-formatting.html
 [標準フォーマット]: response-formatting.html
 [Transaction Cost]: transaction-cost.html
@@ -57,6 +59,7 @@
 <!-- API object types -->
 [AccountRoot object]: accountroot.html
 [AccountRootオブジェクト]: accountroot.html
+[Ticket object]: ticket.html
 
 <!--{# Links to external sites #}-->
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
@@ -180,6 +183,7 @@
   "SHAMapV2",
   "SortedDirectories",
   "SusPay",
+  "TicketBatch",
   "Tickets",
   "TickSize",
   "TrustSetAuth"

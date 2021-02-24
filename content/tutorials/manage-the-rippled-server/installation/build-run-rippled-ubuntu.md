@@ -44,7 +44,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.4.0 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself. The following examples use Boost 1.71.0, which was the newest version at the time of writing.
+    Version 1.7.0 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself. The following examples use Boost 1.71.0, which was the newest version at the time of writing.
 
     If you have previously built Boost 1.71.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
@@ -84,18 +84,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
         cd rippled
         git checkout master
 
-7. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
+7. Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. The [release announcements for `rippled`](https://xrpl.org/blog/label/rippled-release-notes.html) generally show the exact commit to expect for that release.
 
-        $ git log -1
-        commit 01bd5a2646cda78ee09d2067c287c8f89872736d
-        Author: manojsdoshi <mdoshi@ripple.com>
-        Date:   Tue Aug 18 15:32:50 2020 -0700
-
-            Set version to 1.6.0
-
-
-
-
+    $ git log -1
 
 8. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault). <!-- SPELLING_IGNORE: segfault -->
 

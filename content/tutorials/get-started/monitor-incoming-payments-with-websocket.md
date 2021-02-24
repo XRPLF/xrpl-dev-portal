@@ -1,3 +1,12 @@
+---
+html: monitor-incoming-payments-with-websocket.html
+funnel: Build
+doc_type: Tutorials
+category: Get Started
+blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
+filters:
+    - interactive_steps
+---
 # Monitor Incoming Payments with WebSocket
 
 This tutorial shows how to monitor for incoming [payments](payment-types.html) using the [WebSocket `rippled` API](rippled-api.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.

@@ -127,6 +127,7 @@ Each member of the `reservations` array is a JSON object describing one [peer re
 ### Possible Errors
 
 - Any of the [universal error types][].
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
