@@ -10,9 +10,9 @@
 | [CryptoConditionsSuite][]       | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [NegativeUNL][]                 | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [fixSTAmountCanonicalize][]     | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2020/rippled-1.7.0.html "BADGE_80d0e0") |
-| [FlowSortStrands][]             | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2020/rippled-1.7.0.html "BADGE_80d0e0") |
-| [TicketBatch][]                 | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2020/rippled-1.7.0.html "BADGE_80d0e0") |
+| [fixSTAmountCanonicalize][]     | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
+| [FlowSortStrands][]             | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
+| [TicketBatch][]                 | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
 | [fix1781][]                     | v1.6.0     | [投票中: 未定](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
 | [fixAmendmentMajorityCalc][]    | v1.6.0     | [投票中: 未定](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
 | [HardenedValidations][]         | v1.6.0     | [投票中: 未定](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
