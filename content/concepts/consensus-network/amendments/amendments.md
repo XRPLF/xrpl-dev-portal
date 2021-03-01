@@ -58,23 +58,54 @@ As with all aspects of the consensus process, amendment votes are only taken int
 
 ### Configuring Amendment Voting
 
-You can temporarily configure an amendment using the [feature method][]. To make a persistent change to your server's support for an amendment, change your server's `rippled.cfg` file.
+[Updated in: rippled 1.7.0][]
 
-Use the `[veto_amendments]` stanza to list amendments you do not want the server to vote for. Each line should contain one amendment's unique ID, optionally followed by the short name for the amendment. For example:
+You can set your server's vote on an amendment using the [feature method][]. For example, to vote against the "SHAMapV2" amendment, you could run the following command:
 
-```
-[veto_amendments]
-C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 Tickets
-DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 SusPay
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": "any_id_here",
+  "command": "feature",
+  "feature": "SHAMapV2",
+  "vetoed": true
+}
 ```
 
-Use the `[amendments]` stanza to list amendments you want to vote for. (Even if you do not list them here, by default a server votes for all the amendments it knows how to apply.) Each line should contain one amendment's unique ID, optionally followed by the short name for the amendment. For example:
+*JSON-RPC*
 
+```json
+{
+    "method": "feature",
+    "params": [
+        {
+            "feature": "SHAMapV2",
+            "vetoed": true
+        }
+    ]
+}
 ```
-[amendments]
-4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 MultiSign
-42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE FeeEscalation
+
+*Commandline*
+
+```sh
+rippled feature SHAMapV2 reject
 ```
+
+<!-- MULTICODE_BLOCK_END -->
+
+**Note:** The short name of the amendment is case-sensitive. You can also use an amendment's ID as hexadecimal, which is not case sensitive.
+
+The `[veto_amendments]` and `[amendments]` stanzas of the config file are deprecated. If you have such a stanza in your config file, the server loads the results one time. On later server restarts, the server ignores the contents of these stanzas and prints a warning to the log.
+
+> **Tip:** If you still want to use the config file to configure amendment voting, you can add a line to the `[rpc_startup]` stanza for each explicit vote. For example:
+>
+>     [rpc_startup]
+>     { "command": "feature", "feature": "SHAMapV2", "vetoed": true }
+
 
 
 ### Amendment Blocked
