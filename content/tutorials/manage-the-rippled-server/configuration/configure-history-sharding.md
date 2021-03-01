@@ -6,9 +6,9 @@
 
 To configure your `rippled` to store shards of ledger history, complete the following steps:
 
-## 1. Determine how much many shards to maintain
+## 1. Determine how many shards to maintain
 
-Before you configure your `rippled` server to store history shards, you must decide how many history shards you want to keep, which is mostly determined by how much disk space have available for use in the shard store. This also affects how much history you keep in the default ledger store. You should consider the following when deciding what size to configure your shard store:
+Before you configure your `rippled` server to store history shards, you must decide how many history shards you want to keep, which is mostly determined by how much disk space is available for the shard store. This also affects how much history you keep in the default ledger store. You should consider the following when deciding what size to configure your shard store:
 
 - The ledger store (defined by the `[node_db]` stanza) is separate from the history shard store. The ledger store is required for all servers, and always contains a range of recent history, defined by how many ledgers to keep available in the `online_delete` parameter. (The default configuration stores the most recent 2000 ledgers.)
     - If you keep at least 2<sup>15</sup> ledgers (32768) in the ledger store, you can efficiently import chunks of recent history from the ledger store into the shard store.
