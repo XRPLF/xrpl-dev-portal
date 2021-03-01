@@ -66,7 +66,7 @@ default_keys: &defaults
     #  Override them with --vars to change which fork/branch to edit.
     github_forkurl: https://github.com/ripple/xrpl-dev-portal
     github_branch: master
-    ripple_lib_url: assets/js/ripple-lib-1.9.0.min.js
+    ripple_lib_url: assets/js/ripple-lib-1.9.1.min.js
 
 targets:
     # First member is the default that gets built when target not specified
@@ -6014,12 +6014,12 @@ pages:
     # --------------- end "XRP-API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.0/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.1/docs/index.md
         html: rippleapi-reference.html
         funnel: Build
         doc_type: References
         category: RippleAPI for JavaScript
-        blurb: Official client library to the XRP Ledger. Available for JavaScript/TypeScript.
+        blurb: JavaScript/TypeScript client library to the XRP Ledger.
         skip_spell_checker: true
         # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
         curated_anchors:
