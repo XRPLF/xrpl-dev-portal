@@ -88,7 +88,7 @@ The issued currency format can store a wide variety of assets, including those t
 
 When sending issued currency amounts in the XRP Ledger's peer-to-peer network, servers [serialize](serialization.html) the amount to a 64-bit binary value.
 
-**Note:** The XRP Ledger does not support issued currencies that are not [fungible](https://en.wikipedia.org/wiki/Fungibility). It also does not support limiting an issued currency to whole number amounts only. All issued currencies in the XRP Ledger are always divisible down to the minimum amount.
+**Note:** The XRP Ledger does not **natively** support issued currencies that are not [fungible](https://en.wikipedia.org/wiki/Fungibility), while non-fungible issued currencies can be implemented by clients implementing a proposed standard like [XLS-14d](https://github.com/XRPLF/XRPL-Standards/discussions/30). It also does not support limiting an issued currency to whole number amounts only. All issued currencies in the XRP Ledger are always divisible down to the minimum amount.
 
 ## Currency Codes
 [Currency Code]: #currency-codes
