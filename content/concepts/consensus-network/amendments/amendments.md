@@ -56,56 +56,7 @@ To become enabled, an amendment must be supported by at least 80% of trusted val
 
 As with all aspects of the consensus process, amendment votes are only taken into account by servers that trust the validators sending those votes. At this time, Ripple (the company) recommends only trusting the validators on the validator list that Ripple publishes at <https://vl.ripple.com>. For now, trusting only those validators is enough to coordinate with Ripple on releasing new features.
 
-### Configuring Amendment Voting
-
-[Updated in: rippled 1.7.0][]
-
-You can set your server's vote on an amendment using the [feature method][]. For example, to vote against the "SHAMapV2" amendment, you could run the following command:
-
-<!-- MULTICODE_BLOCK_START -->
-
-*WebSocket*
-
-```json
-{
-  "id": "any_id_here",
-  "command": "feature",
-  "feature": "SHAMapV2",
-  "vetoed": true
-}
-```
-
-*JSON-RPC*
-
-```json
-{
-    "method": "feature",
-    "params": [
-        {
-            "feature": "SHAMapV2",
-            "vetoed": true
-        }
-    ]
-}
-```
-
-*Commandline*
-
-```sh
-rippled feature SHAMapV2 reject
-```
-
-<!-- MULTICODE_BLOCK_END -->
-
-**Note:** The short name of the amendment is case-sensitive. You can also use an amendment's ID as hexadecimal, which is not case sensitive.
-
-The `[veto_amendments]` and `[amendments]` stanzas of the config file are deprecated. If you have such a stanza in your config file, the server loads the results one time. On later server restarts, the server ignores the contents of these stanzas and prints a warning to the log.
-
-> **Tip:** If you still want to use the config file to configure amendment voting, you can add a line to the `[rpc_startup]` stanza for each explicit vote. For example:
->
->     [rpc_startup]
->     { "command": "feature", "feature": "SHAMapV2", "vetoed": true }
-
+For information on how to configure your server's amendment votes, see [Configure Amendment Voting](configure-amendment-voting.html). [Updated in: rippled 1.7.0][]
 
 
 ### Amendment Blocked

@@ -2570,6 +2570,11 @@ pages:
             - ja
 
     # TODO: translate this page & blurb
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.md
+        targets:
+            - en
+
+    # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
         html: configure-statsd.html
         funnel: Build
