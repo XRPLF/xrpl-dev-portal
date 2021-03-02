@@ -3,7 +3,7 @@
 
 The `feature` command returns information about [amendments](amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](amendments.html#amendment-process). [New in: rippled 0.31.0][]
 
-You can use the `feature` command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the `rippled.cfg` file. See [Configuring Amendment Voting](amendments.html#configuring-amendment-voting) for more information.
+You can use the `feature` command to configure the server to vote against or in favor of an amendment. This change persists even if you restart the server. [Updated in: rippled 1.7.0][]
 
 _The `feature` method is an [admin method](admin-rippled-methods.html) that cannot be run by unprivileged users._
 

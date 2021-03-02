@@ -292,6 +292,17 @@ Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1
 <!--_ -->
 
 
+## [veto_amendments] section in config file ignored
+
+Log messages such as the following occur when  your `rippled.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
+
+```text
+Amendments:WRN [veto_amendments] section in config file ignored in favor of data in db/wallet.db.
+```
+
+To resolve this error, remove the `[amendments]` and `[veto_amendments]` stanzas from your config file. For more information, see [Amendment Voting](amendments.html#amendment-voting).
+
+
 ## View of consensus changed during open
 
 Log messages such as the following occur when a server is not in sync with the rest of the network:
