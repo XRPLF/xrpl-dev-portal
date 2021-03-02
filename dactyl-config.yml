@@ -2573,6 +2573,7 @@ pages:
     -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.md
         targets:
             - en
+            - ja
 
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
