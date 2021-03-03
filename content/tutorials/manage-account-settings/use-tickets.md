@@ -97,7 +97,7 @@ async function get_sequence() {
   return account_info.account_data.Sequence
 }
 
-let current_sequence = get_sequence()
+let current_sequence = await get_sequence()
 ```
 
 {{ start_step("Check Sequence") }}
