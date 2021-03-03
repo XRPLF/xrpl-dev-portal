@@ -258,14 +258,14 @@ _unpkg_
 
 ```html
 <script src="https://unpkg.com/lodash@4.17.20/lodash.min.js"></script>
-<script src="https://unpkg.com/ripple-lib@1.8.0/build/ripple-latest-min.js"></script>
+<script src="https://unpkg.com/ripple-lib@1.9.1/build/ripple-latest-min.js"></script>
 ```
 
 _jsDelivr_
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/ripple-lib@1.8.0/build/ripple-latest-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ripple-lib@1.9.1/build/ripple-latest-min.js"></script>
 ```
 
 <!-- MULTICODE_BLOCK_END -->

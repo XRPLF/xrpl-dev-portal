@@ -15,9 +15,9 @@ _(Requires the [TicketBatch amendment][] :not_enabled:)_
 
 ## Prerequisites
 
-<!-- Interactive example use ripple-lib and its prerequisites -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
-<script type="application/javascript" src="{{target.ripple_lib_url}}"></script>
+<!-- ripple-lib & prerequisites -->
+{{currentpage.lodash_tag}}
+{{currentpage.ripple_lib_tag}}
 <!-- Helper for interactive tutorial breadcrumbs -->
 <script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
 <!-- Source for this specific tutorial's interactive bits: -->
