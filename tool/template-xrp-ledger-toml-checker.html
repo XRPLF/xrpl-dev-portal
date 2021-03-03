@@ -25,10 +25,10 @@
 {% endblock %}
 
 {% block endbody %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
-  <script type="application/javascript" src="assets/js/ripple-lib-1.8.0-min.js"></script>
-  <script type='text/javascript' src='assets/vendor/iarna-toml-parse.js'></script>
-  <script type='text/javascript' src='assets/js/xrp-ledger-toml-checker.js'></script>
+  {{currentpage.lodash_tag}}
+  {{currentpage.ripple_lib_tag}}
+  <script type="application/javascript" src="assets/vendor/iarna-toml-parse.js"></script>
+  <script type="application/javascript" src="assets/js/xrp-ledger-toml-checker.js"></script>
 
   <script type="application/javascript">
     gtag('config', 'UA-157720658-3', {'content_group1': 'API Tools'});
