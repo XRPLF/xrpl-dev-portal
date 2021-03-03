@@ -67,11 +67,9 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 | `limit` | 整数 | _（省略可能）_ デフォルトは変化します。取得するトランザクションの数を制限します。サーバーはこの値を受け入れる必要はありません。 |
 | `marker` | [マーカー][] | 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。サーバーが使用できるレジャーの範囲に変更があっても、この値は変わりません。 |
 
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")<br>
-
 次の各フィールドは省略可能とされていますが、要求内で**1つ以上は使用する必要があります**: `ledger_index`、`ledger_hash`、`ledger_index_min`、または`ledger_index_max`。
 
-**注記:** WebSocketとJSON-RPCについては、廃止予定の`account_tx`メソッドの従来版もあります。このため、*次のすべてのフィールドの使用を控える*ことをお勧めします: `offset`、`count`、`descending`、`ledger_max`、`ledger_min`。これらの廃止予定のフィールドを使用した場合、メソッドでページネーションはサポートされません。
+次のフィールドは廃止されました： `offset`、`count`、`descending`、`ledger_max`、`ledger_min`。 [削除: rippled 1.7.0][]
 
 ### 照会されたデータの繰り返し
 
