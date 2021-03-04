@@ -1,4 +1,5 @@
 DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
 
 Request("Account Methods")
 
@@ -8,8 +9,8 @@ Request('account_channels', {
     body: {
       "id": 1,
       "command": "account_channels",
-      "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH", //TODO: different address
-      "destination_account": DEFAULT_ADDRESS_1,
+      "account": DEFAULT_ADDRESS_1,
+      "destination_account": DEFAULT_ADDRESS_2,
       "ledger_index": "validated"
     }
 })
@@ -166,7 +167,7 @@ Request('ledger_data', {
 
 Request('ledger_entry - by object ID', {
   description: "Returns an object by its unique ID.",
-  link: "ledger_entry.html#TODO",
+  link: "ledger_entry.html#get-ledger-object-by-id",
   body: {
     "command": "ledger_entry",
     "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4",
@@ -176,9 +177,9 @@ Request('ledger_entry - by object ID', {
 
 Request('ledger_entry - AccountRoot', {
   description: "Returns a single account in its raw ledger format.",
-  link: "ledger_entry.html#TODO",
+  link: "ledger_entry.html#get-accountroot-object",
   body: {
-    "id": 3,
+    "id": "example_get_accountroot",
     "command": "ledger_entry",
     "account_root": DEFAULT_ADDRESS_1,
     "ledger_index": "validated"
@@ -189,11 +190,11 @@ Request('ledger_entry - DirectoryNode', {
   description: "Returns a directory object in its raw ledger format.",
   link: "ledger_entry.html#get-directorynode-object",
   body: {
-    "id": 3,
+    "id": "example_get_directorynode",
     "command": "ledger_entry",
     "directory": {
       "owner": DEFAULT_ADDRESS_1,
-      "sub_index": 1
+      "sub_index": 0
     },
     "ledger_index": "validated"
   }
@@ -203,7 +204,7 @@ Request('ledger_entry - Offer', {
   description: "Returns an Offer object in its raw ledger format.",
   link: "ledger_entry.html#get-offer-object",
   body: {
-    "id": 3,
+    "id": "example_get_offer",
     "command": "ledger_entry",
     "offer": {
       "account": DEFAULT_ADDRESS_1,
@@ -217,7 +218,7 @@ Request('ledger_entry - RippleState', {
   description: "Returns a RippleState object in its raw ledger format.",
   link: "ledger_entry.html#get-ripplestate-object",
   body: {
-    "id": 3,
+    "id": "example_get_ripplestate",
     "command": "ledger_entry",
     "ripple_state": {
       "accounts": [
@@ -234,9 +235,9 @@ Request('ledger_entry - Check', {
   description: "Returns a Check object in its raw ledger format.",
   link: "ledger_entry.html#get-check-object",
   body: {
-    "id": 3,
+    "id": "example_get_check",
     "command": "ledger_entry",
-    "check": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
+    "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB",
     "ledger_index": "validated"
   }
 })
@@ -245,9 +246,12 @@ Request('ledger_entry - Escrow', {
   description: "Returns an Escrow object in its raw ledger format.",
   link: "ledger_entry.html#get-escrow-object",
   body: {
-    "id": 3,
+    "id": "example_get_escrow",
     "command": "ledger_entry",
-    "escrow": ""//todo: make an escrow
+    "escrow": { // This is a long-lasting Escrow found in public data
+      "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
+      "seq": 126
+    },
     "ledger_index": "validated"
   }
 })
@@ -256,9 +260,9 @@ Request('ledger_entry - PayChannel', {
   description: "Returns a PayChannel object in its raw ledger format.",
   link: "ledger_entry.html#get-paychannel-object",
   body: {
-    "id": 3,
+    "id": "example_get_paychannel",
     "command": "ledger_entry",
-    "channel": ""//todo: make a paychannel
+    "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
     "ledger_index": "validated"
   }
 })
@@ -267,21 +271,27 @@ Request('ledger_entry - DepositPreauth', {
   description: "Returns a DepositPreauth object in its raw ledger format.",
   link: "ledger_entry.html#get-depositpreauth-object",
   body: {
-    "id": 3,
+    "id": "example_get_deposit_preauth",
     "command": "ledger_entry",
-    "deposit_preauth": ""//todo: find a real example
+    "deposit_preauth": {
+      "owner": DEFAULT_ADDRESS_1,
+      "authorized": DEFAULT_ADDRESS_2
+    },
     "ledger_index": "validated"
   }
 })
 
-// Waiting for TicketBatch amendment
+// Waiting for TicketBatch amendment on Mainnet
 // Request('ledger_entry - Ticket', {
 //   description: "Returns a Ticket object in its raw ledger format.",
 //   link: "ledger_entry.html#get-ticket-object",
 //   body: {
-//     "id": 3,
+//     "id": "example_get_ticket",
 //     "command": "ledger_entry",
-//     "ticket": ""//TODO
+//     "ticket": {
+//       "owner": DEFAULT_ADDRESS_1,
+//       "ticket_sequence": 0 // TODO: make a real ticket, fill in the seq
+//     },
 //     "ledger_index": "validated"
 //   }
 // })
@@ -296,7 +306,7 @@ Request('submit', {
   description: "Submits a transaction to the network to be confirmed and included in future ledgers.",
   link: "submit.html",
   body: {
-    "id": 3,
+    "id": "example_submit",
     "command": "submit",
     "tx_blob": "1200002280000000240000001E61D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000B732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210095D23D8AF107DF50651F266259CC7139D0CD0C64ABBA3A958156352A0D95A21E02207FCF9B77D7510380E49FF250C21B57169E14E9B4ACFD314CEDC79DDD0A38B8A681144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
   }
@@ -386,8 +396,8 @@ Request('deposit_authorized', {
   body: {
     "id": 1,
     "command": "deposit_authorized",
-    "source_account": "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
-    "destination_account": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+    "source_account": DEFAULT_ADDRESS_1,
+    "destination_account": DEFAULT_ADDRESS_2,
     "ledger_index": "validated"
   }
 })

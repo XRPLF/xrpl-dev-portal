@@ -49,9 +49,8 @@ Retrieve any type of ledger object by its unique ID.
 
 ```json
 {
-  "id": 3,
   "command": "ledger_entry",
-  "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
+  "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4",
   "ledger_index": "validated"
 }
 ```
@@ -103,9 +102,9 @@ Retrieve an [AccountRoot object](accountroot.html) by its address. This is rough
 
 ```json
 {
-  "id": 3,
+  "id": "example_get_accountroot",
   "command": "ledger_entry",
-  "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "account_root": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
   "ledger_index": "validated"
 }
 ```
@@ -117,9 +116,8 @@ Retrieve an [AccountRoot object](accountroot.html) by its address. This is rough
     "method": "ledger_entry",
     "params": [
         {
-            "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "ledger_index": "validated",
-            "type": "account_root"
+            "account_root": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "ledger_index": "validated"
         }
     ]
 }
@@ -133,9 +131,8 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
+[Try it! >](websocket-api-tool.html#ledger_entry-accountroot)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
 
@@ -159,7 +156,8 @@ Retrieve a [DirectoryNode](directorynode.html), which contains a list of other l
   "id": 3,
   "command": "ledger_entry",
   "directory": {
-    "owner": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c"
+    "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "sub_index": 0
   },
   "ledger_index": "validated"
 }
@@ -173,7 +171,8 @@ Retrieve a [DirectoryNode](directorynode.html), which contains a list of other l
     "params": [
         {
             "directory": {
-              "owner": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c"
+              "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+              "sub_index": 0
             },
             "ledger_index": "validated"
         }
@@ -184,14 +183,13 @@ Retrieve a [DirectoryNode](directorynode.html), which contains a list of other l
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "directory": { "owner": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c"}, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "sub_index": 0 }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
+[Try it! >](websocket-api-tool.html#ledger_entry-directorynode)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
 ### Get Offer Object
@@ -210,11 +208,11 @@ Retrieve an [Offer object](offer.html), which defines an offer to exchange curre
 
 ```json
 {
-  "id": 3,
+  "id": "example_get_offer",
   "command": "ledger_entry",
   "offer": {
-    "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu",
-    "seq": 6134107
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "seq": 359
   },
   "ledger_index": "validated"
 }
@@ -224,15 +222,15 @@ Retrieve an [Offer object](offer.html), which defines an offer to exchange curre
 
 ```json
 {
-    "method": "ledger_entry",
-    "params": [
-      {
-        "offer": {
-          "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu",
-          "seq": 6134107
-        },
-        "ledger_index": "validated"
-      }
+  "method": "ledger_entry",
+  "params": [
+    {
+      "offer": {
+        "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "seq": 359
+      },
+      "ledger_index": "validated"
+    }
   ]
 }
 ```
@@ -240,14 +238,13 @@ Retrieve an [Offer object](offer.html), which defines an offer to exchange curre
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "offer": { "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu", "seq": 6134107}, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "seq": 359}, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
+[Try it! >](websocket-api-tool.html#ledger_entry-offer)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
 ### Get RippleState Object
@@ -266,10 +263,13 @@ Retrieve a [RippleState object](ripplestate.html), which tracks a (non-XRP) curr
 
 ```json
 {
-  "id": 3,
+  "id": "example_get_ripplestate",
   "command": "ledger_entry",
   "ripple_state": {
-    "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"],
+    "accounts": [
+      "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
+    ],
     "currency": "USD"
   },
   "ledger_index": "validated"
@@ -280,16 +280,17 @@ Retrieve a [RippleState object](ripplestate.html), which tracks a (non-XRP) curr
 
 ```json
 {
-    "method": "ledger_entry",
-    "params": [
-        {
-            "ripple_state": {
-              "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"],
-              "currency": "USD"
-            },
-            "ledger_index": "validated"
-        }
-    ]
+  "method": "ledger_entry",
+  "params": [{
+    "ripple_state": {
+      "accounts": [
+        "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
+      ],
+      "currency": "USD"
+    },
+    "ledger_index": "validated"
+  }]
 }
 ```
 
@@ -301,9 +302,8 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
+[Try it! >](websocket-api-tool.html#ledger_entry-ripplestate)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
 ### Get Check Object
@@ -320,9 +320,9 @@ Retrieve a [Check object](check.html), which is a potential payment that can be 
 
 ```json
 {
-  "id": 3,
+  "id": "example_get_check",
   "command": "ledger_entry",
-  "check": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
+  "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB",
   "ledger_index": "validated"
 }
 ```
@@ -331,27 +331,24 @@ Retrieve a [Check object](check.html), which is a potential payment that can be 
 
 ```json
 {
-    "method": "ledger_entry",
-    "params": [
-        {
-            "check": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
-            "ledger_index": "validated"
-        }
-    ]
+  "method": "ledger_entry",
+  "params": [{
+    "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB",
+    "ledger_index": "validated"
+  }]
 }
 ```
 
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "check": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334", "ledger_index": "validated" }'
+rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
+[Try it! >](websocket-api-tool.html#ledger_entry-check)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
 ### Get Escrow Object
@@ -370,11 +367,11 @@ Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specifi
 
 ```json
 {
-  "id": 3,
+  "id": "example_get_escrow",
   "command": "ledger_entry",
   "escrow": {
-    "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu",
-    "seq": 6134107
+    "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
+    "seq": 126
   },
   "ledger_index": "validated"
 }
@@ -384,30 +381,27 @@ Retrieve an [Escrow object](escrow-object.html), which holds XRP until a specifi
 
 ```json
 {
-    "method": "ledger_entry",
-    "params": [
-        {
-            "escrow": {
-              "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu",
-              "seq": 6134107
-            },
-            "ledger_index": "validated"
-        }
-    ]
+  "method": "ledger_entry",
+  "params": [{
+    "escrow": {
+      "account": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
+      "seq": 126
+    },
+    "ledger_index": "validated"
+  }]
 }
 ```
 
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "escrow": { "account": "rH2k8SkwoWgwry9J89jgFP9NbSWu13jnsu", "seq": 6134107 }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "escrow": { "account": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
+[Try it! >](websocket-api-tool.html#ledger_entry-escrow)
 
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
 
 
 ### Get PayChannel Object
@@ -424,9 +418,9 @@ Retrieve a [PayChannel object](paychannel.html), which holds XRP for asynchronou
 
 ```json
 {
-  "id": 3,
+  "id": "example_get_paychannel",
   "command": "ledger_entry",
-  "payment_channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+  "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
   "ledger_index": "validated"
 }
 ```
@@ -435,25 +429,23 @@ Retrieve a [PayChannel object](paychannel.html), which holds XRP for asynchronou
 
 ```json
 {
-    "method": "ledger_entry",
-    "params": [
-        {
-            "payment_channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "ledger_index": "validated"
-        }
-    ]
+  "method": "ledger_entry",
+  "params": [{
+    "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
+    "ledger_index": "validated"
+  }]
 }
 ```
 
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "payment_channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3", "ledger_index": "validated" }'
+rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
+[Try it! >](websocket-api-tool.html#ledger_entry-paychannel)
 
 
 ### Get DepositPreauth Object
@@ -472,11 +464,11 @@ Retrieve a [DepositPreauth object](depositpreauth-object.html), which tracks pre
 
 ```json
 {
-  "id": 3,
+  "id": "example_get_deposit_preauth",
   "command": "ledger_entry",
   "deposit_preauth": {
-    "owner": "rPRVdmDUwV4q5FTpwPijLQuzJ4WjDbgNrE",
-    "authorized": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+    "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
   },
   "ledger_index": "validated"
 }
@@ -486,30 +478,26 @@ Retrieve a [DepositPreauth object](depositpreauth-object.html), which tracks pre
 
 ```json
 {
-    "method": "ledger_entry",
-    "params": [
-        {
-            "deposit_preauth": {
-              "owner": "rPRVdmDUwV4q5FTpwPijLQuzJ4WjDbgNrE",
-              "authorized": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-            },
-            "ledger_index": "validated"
-        }
-    ]
+  "method": "ledger_entry",
+  "params": [{
+    "deposit_preauth": {
+      "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+    },
+    "ledger_index": "validated"
+  }]
 }
 ```
 
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "deposit_preauth": { "owner": "rPRVdmDUwV4q5FTpwPijLQuzJ4WjDbgNrE", "authorized": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
-
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button. ALSO PLEASE NOTE THAT YOU WILL NEED TO CHANGE CONNECTION SETTINGS TO "TESTNET PUBLIC CLUSTER"  
+[Try it! >](websocket-api-tool.html#ledger_entry-depositpreauth)
 
 
 ### Get Ticket Object
@@ -528,10 +516,10 @@ Retrieve a [Ticket object](ticket.html), which represents a [sequence number][] 
 
 ```json
 {
-  "id": 3,
+  "id": "example_get_ticket",
   "command": "ledger_entry",
   "ticket": {
-    "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
     "ticket_sequence": 23
   },
   "ledger_index": "validated"
@@ -542,30 +530,28 @@ Retrieve a [Ticket object](ticket.html), which represents a [sequence number][] 
 
 ```json
 {
-    "method": "ledger_entry",
-    "params": [
-        {
-          "ticket": {
-            "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "ticket_sequence": 23
-          },
-          "ledger_index": "validated"
-        }
-    ]
+  "method": "ledger_entry",
+  "params": [{
+    "ticket": {
+      "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "ticket_sequence": 23
+    },
+    "ledger_index": "validated"
+  }]
 }
 ```
 
 *Commandline*
 
 ```sh
-rippled json ledger_entry '{ "ticket": { "owner": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ticket_sequence: 23 }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "ticket": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_sequence: 23 }, "ledger_index": "validated" }'
 ```
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html#ledger_entry)
-
-**Tip:** Copy the WebSocket example request above before clicking on the "Try It!" button.
+<!-- TODO: enable if/when Tickets are available on Mainnet
+[Try it! >](websocket-api-tool.html#ledger_entry-ticket)
+-->
 
 
 
@@ -588,24 +574,32 @@ An example of a successful response:
 
 ```json
 {
-    "id": 3,
-    "result": {
-        "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
-        "ledger_index": 6889347,
-        "node": {
-            "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "Balance": "27389517749",
-            "Flags": 0,
-            "LedgerEntryType": "AccountRoot",
-            "OwnerCount": 18,
-            "PreviousTxnID": "B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932",
-            "PreviousTxnLgrSeq": 6592159,
-            "Sequence": 1400,
-            "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
-        }
+  "id": "example_get_accountroot",
+  "result": {
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+    "ledger_hash": "31850E8E48E76D1064651DF39DF4E9542E8C90A9A9B629F4DE339EB3FA74F726",
+    "ledger_index": 61966146,
+    "node": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "Balance": "424021949",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 9568256,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 12,
+      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "PreviousTxnLgrSeq": 61965653,
+      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+      "Sequence": 385,
+      "TransferRate": 4294967295,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
     },
-    "status": "success",
-    "type": "response"
+    "validated": true
+  },
+  "status": "success",
+  "type": "response"
 }
 ```
 
@@ -615,47 +609,61 @@ An example of a successful response:
 200 OK
 
 {
-    "result": {
-        "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
-        "ledger_index": 8696234,
-        "node": {
-            "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "Balance": "13176802787",
-            "Flags": 0,
-            "LedgerEntryType": "AccountRoot",
-            "OwnerCount": 17,
-            "PreviousTxnID": "E5D0235A236F7CD162C1AB87A0325056AE61CFC63D92D1494AB5D826AAD0CDCA",
-            "PreviousTxnLgrSeq": 8554742,
-            "Sequence": 1406,
-            "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
-        },
-        "status": "success",
-        "validated": true
-    }
+  "result": {
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+    "ledger_hash": "395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E",
+    "ledger_index": 61966165,
+    "node": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "Balance": "424021949",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 9568256,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 12,
+      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "PreviousTxnLgrSeq": 61965653,
+      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+      "Sequence": 385,
+      "TransferRate": 4294967295,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+    },
+    "status": "success",
+    "validated": true
+  }
 }
 ```
 
 *Commandline*
+
 ```json
 {
-   "result" : {
-      "index" : "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05",
-      "ledger_hash" : "F434A8F21E401F84A2CDEDFDF801E6F3FC8B2567C6841818E684BEE019460179",
-      "ledger_index" : 56866309,
-      "node" : {
-         "Account" : "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-         "Balance" : "13315612685",
-         "Flags" : 0,
-         "LedgerEntryType" : "AccountRoot",
-         "OwnerCount" : 17,
-         "PreviousTxnID" : "D2FA1C28EF87E53029327AA832C378674B3ACA0551CF9EA1F65BB8CA34913FAB",
-         "PreviousTxnLgrSeq" : 55180009,
-         "Sequence" : 1406,
-         "index" : "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
-      },
-      "status" : "success",
-      "validated" : true
-   }
+  "result": {
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+    "ledger_hash": "395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E",
+    "ledger_index": 61966165,
+    "node": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "Balance": "424021949",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 9568256,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 12,
+      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "PreviousTxnLgrSeq": 61965653,
+      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+      "Sequence": 385,
+      "TransferRate": 4294967295,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+    },
+    "status": "success",
+    "validated": true
+  }
 }
 ```
 
