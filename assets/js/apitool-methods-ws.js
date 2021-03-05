@@ -299,8 +299,9 @@ Request('ledger_entry - DepositPreauth', {
 
 Request("Transaction Methods")
 
-// Signing methods are not provided here because it's a terrible idea to send
-// your secret to another server over the internet.
+// Signing methods are not provided here because they're admin-only by default.
+// (Sending your secret to another server is extremely insecure and could cause
+// someone else to take over your account, steal all your money, etc.)
 
 Request('submit', {
   description: "Submits a transaction to the network to be confirmed and included in future ledgers.",
