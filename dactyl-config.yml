@@ -26,7 +26,6 @@ filter_paths:
 
 default_filters:
     - multicode_tabs
-    - unicode_header_ids
     - buttonize
     - callouts
     - badges
@@ -66,6 +65,8 @@ default_keys: &defaults
     #  Override them with --vars to change which fork/branch to edit.
     github_forkurl: https://github.com/ripple/xrpl-dev-portal
     github_branch: master
+    # Hover icon markup for permalinking headers
+    hover_anchors: <i class="fa fa-link"></i>
     # Script tags used in a variety of tools & examples.
     lodash_tag: '<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>'
     ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.9.1.min.js"></script>'
@@ -77,7 +78,6 @@ targets:
         display_name: XRPL.org
         <<: *defaults
         prefix: ""
-        hover_anchors: <i class="fa fa-link"></i>
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
         readability_goals:
