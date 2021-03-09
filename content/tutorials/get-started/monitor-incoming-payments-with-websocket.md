@@ -142,7 +142,7 @@ const handleResponse = function(data) {
   if (AWAITING.hasOwnProperty(data.id)) {
     AWAITING[data.id].resolve(data)
   } else {
-    console.error("Response to un-awaited request w/ ID " + data.id)
+    console.warn("Response to un-awaited request w/ ID " + data.id)
   }
 }
 
@@ -188,7 +188,7 @@ async function pingpong() {
   const response = await api_request({command: "ping"})
   console.log("Pong!", response)
 }
-pingpong()
+// Add pingpong() to the 'open' listener for socket
 ```
 
 {{ start_step("Dispatch Messages") }}
@@ -272,7 +272,7 @@ The following code sample subscribes to the Test Net Faucet's sending address. I
 async function do_subscribe() {
   const sub_response = await api_request({
     command:"subscribe",
-    accounts: ["rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"]
+    accounts: ["rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"]
   })
   if (sub_response.status === "success") {
     console.log("Successfully subscribed!")
@@ -280,7 +280,7 @@ async function do_subscribe() {
     console.error("Error subscribing: ", sub_response)
   }
 }
-do_subscribe()
+// Add do_subscribe() to the 'open' listener for socket
 
 const log_tx = function(tx) {
   console.log(tx.transaction.TransactionType + " transaction sent by " +
