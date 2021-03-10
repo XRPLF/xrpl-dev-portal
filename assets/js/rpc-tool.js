@@ -1,40 +1,33 @@
 jQuery(function ($) {
-  var reTxId = /^[0-9A-Fa-f]{64}$/,
-      reLedgerSeq = /^[0-9]+$/;
+  const FULL_HISTORY_SERVER = "wss://s2.ripple.com"
+  const reTxId = /^[0-9A-Fa-f]{64}$/
+  const reLedgerSeq = /^[0-9]+$/
+  let currentTarget = null
+  let previousMarkers = []
+  let currentMarker
+  let nextMarker
 
-  var txOffset = 0,
-      txCount = 0,
-      currentTarget = null;
+  const api = new ripple.RippleAPI({server: FULL_HISTORY_SERVER})
 
-  var remote = ripple.Remote.from_config({
-    "trace" : true,
-    "websocket_ip" : "s2.ripple.com",
-    "websocket_port" : 443,
-    "websocket_ssl" : true
-  });
-  remote.connect();
-
-  remote.once('connected', function () {
-    var target = location.hash.slice(1);
-    if (ripple.UInt160.from_json(target).is_valid() ||
+  api.on('connected', () => {
+    const target = location.hash.slice(1);
+    if (api.isValidAddress(target) ||
         reTxId.exec(target) ||
         reLedgerSeq.exec(target)) {
       $('#target').val(target);
       fetchTarget(target);
     }
-  });
+  })
+  api.connect();
 
   $('#account-entry').submit(function (e) {
-    e.preventDefault();
+    e.preventDefault()
+    fetchTarget( $('#target').val() )
+  })
 
-    var target = $('#target').val();
-
-    fetchTarget(target);
-  });
-
-  function fetchTarget(target)
+  async function fetchTarget(target)
   {
-    if (!remote.state === "online") return;
+    if (!api.isConnected()) return;
 
     // Reset
     $("#links").show();
@@ -43,114 +36,100 @@ jQuery(function ($) {
     $("#error").hide();
     $("#progress").show();
     $(".json").html("");
-    $("#datalink").parent().removeClass("disabled");
     $(".account-tx-more").parent().hide();
     $(".account-tx-back").parent().hide();
-    txOffset = 0;
 
     currentTarget = target;
 
-    var locationWithoutHash = location.protocol+'//'+location.hostname+(location.port?":"+location.port:"")+location.pathname+(location.search?location.search:"");
+    let locationWithoutHash = location.protocol+'//'+location.hostname+(location.port?":"+location.port:"")+location.pathname+(location.search?location.search:"");
     $("#permalink").attr("href", locationWithoutHash + "#" + target);
-    $("#graphlink").attr("href", "https://www.ripplecharts.com/#/graph/" + target);
+    $("#explorerlink").attr("href", ""); // Reset
 
-    if (ripple.UInt160.from_json(target).is_valid()) {
-      // Account
-      var account = target;
+    if (api.isValidAddress(target)) { // Account -------------------------------
+      let account = target;
+      previousMarkers = []
+      nextMarker = undefined
+      currentMarker = undefined
+      $("#explorerlink").attr("href", `https://livenet.xrpl.org/accounts/${account}`)
 
       $("#result > .group-account").show();
 
       $("#progress .progress-bar").css("width", "10%");
-      $("#datalink").attr("href", null).parent().addClass("disabled");
 
-      async.waterfall([
-        function (callback) {
-          remote.request_account_info({account:account})
-            .on('success', function (result) {
-              $("#progress .progress-bar").css("width", "20%");
-              console.log('account_info', result);
-              format(result, $("#account_info"));
-              callback();
-            })
-            .on('error', callback)
-            .request();
-        },
-        function (callback) {
-          remote.request_account_lines({account:account})
-            .on('success', function (result) {
-              $("#progress .progress-bar").css("width", "40%");
-              console.log('account_lines', result);
-              format(result, $("#account_lines"));
-              callback();
-            })
-            .on('error', callback)
-            .request();
-        },
-        function (callback) {
-          requestTx(account, function (err) {
-            if (err) return callback(err);
-            $("#progress .progress-bar").css("width", "60%");
-            callback();
-          });
-        },
-        function (callback) {
-          remote.request_account_offers({account:account})
-            .on('success', function (result) {
-              $("#progress .progress-bar").css("width", "80%");
-              console.log('account_offers', result);
-              format(result, $("#account_offers"));
-              callback();
-            })
-            .on('error', callback)
-            .request();
-        }
-      ], function (err) {
-        if (err) handleError(err);
+      try {
+        let result = await api.request("account_info", {account})
+        $("#progress .progress-bar").css("width", "20%");
+        console.log('account_info', result);
+        format(result, $("#account_info"));
+
+        result = await api.request("account_lines", {account})
+        $("#progress .progress-bar").css("width", "40%");
+        console.log('account_lines', result);
+        format(result, $("#account_lines"));
+
+        result = await pagedAccountTx(account);
+        $("#progress .progress-bar").css("width", "60%");
+
+        result = await api.request("account_objects", {account})
+        $("#progress .progress-bar").css("width", "80%");
+        console.log('account_objects', result);
+        format(result, $("#account_objects"));
+
         $("#progress .progress-bar").css("width", "100%");
         $("#progress").fadeOut();
-      });
-    } else if (reLedgerSeq.exec(target)) {
+
+      } catch(err) {
+        handleError(err)
+        $("#progress .progress-bar").css("width", "100%");
+        $("#progress").fadeOut();
+      }
+
+
+
+    } else if (reLedgerSeq.exec(target)) { // Ledger ---------------------------
       $("#result > .group-ledger").show();
+      $("#explorerlink").attr("href", `https://livenet.xrpl.org/ledgers/${target}`)
 
-      // Ledger
       $("#progress .progress-bar").css("width", "10%");
-      remote.request_ledger(undefined, { transactions: true, expand: true })
-        .ledger_index(+target)
-        .on('success', function (result) {
-          $("#progress .progress-bar").css("width", "100%");
-          $("#progress").fadeOut();
-          console.log('ledger', result.ledger);
-          format(result.ledger, $("#ledger_info"));
+      try {
+        let result = await api.request("ledger", {
+          ledger_index: target,
+          transactions: true,
+          expand: true
         })
-        .on('error', function (err) {
-          console.log(err);
-          handleError(err);
-          $("#progress .progress-bar").css("width", "100%");
-          $("#progress").fadeOut();
-        })
-        .request();
-    } else if (reTxId.exec(target)) {
+        console.log('ledger', result.ledger);
+        format(result.ledger, $("#ledger_info"));
+        $("#progress .progress-bar").css("width", "100%");
+        $("#progress").fadeOut();
+
+      } catch(err) {
+        handleErr(err)
+        $("#progress .progress-bar").css("width", "100%");
+        $("#progress").fadeOut();
+      }
+
+    } else if (reTxId.exec(target)) { // Transaction ---------------------------
       $("#result > .group-tx").show();
+      $("#explorerlink").attr("href", `https://livenet.xrpl.org/transactions/${target}`)
 
-      $("#datalink").attr("href", "https://ripple.com/client/#/tx/?id=" + target);
+      try {
+        $("#progress .progress-bar").css("width", "10%");
+        let result = await api.request("tx", {
+          transaction: target,
+          binary: false
+        })
+        $("#progress .progress-bar").css("width", "100%");
+        $("#progress").fadeOut();
+        console.log('tx', result);
+        format(result, $("#tx_info"));
 
-      // Transaction
-      $("#progress .progress-bar").css("width", "10%");
-      remote.requestTransaction({"hash": target, "binary": false})
-        .on('success', function (result) {
-          $("#progress .progress-bar").css("width", "100%");
-          $("#progress").fadeOut();
-          console.log('tx', result);
-          format(result, $("#tx_info"));
-        })
-        .on('error', function (err) {
-          handleError(err);
-          $("#progress .progress-bar").css("width", "100%");
-          $("#progress").fadeOut();
-        })
-        .request();
-    } else {
-      // Unknown/Invalid
+      } catch (err) {
+        handleError(err);
+        $("#progress .progress-bar").css("width", "100%");
+        $("#progress").fadeOut();
+      }
+
+    } else { // Unknown/Invalid ------------------------------------------------
       $("#links").hide();
       $("#progress").hide();
       handleError("Input is not a valid address or transaction hash");
@@ -190,27 +169,23 @@ jQuery(function ($) {
   });
 
   $('.account-tx-more').click(function () {
-    $(".account-tx-back").parent().show();
-    txOffset += 20;
     $("#account_tx").text("... loading ...");
-    requestTx(currentTarget, function (err) {});
-    updateTxOffsetNav();
+    pagedAccountTx(currentTarget, "next");
   });
 
   $('.account-tx-back').click(function () {
-    txOffset -= 20;
     $("#account_tx").text("... loading ...");
-    requestTx(currentTarget, function (err) {});
-    updateTxOffsetNav();
+    let previous_markers = $(".account-tx-back").data("marker")
+    pagedAccountTx(currentTarget, "prev");
   });
 
-  $('.account-offers-expand').click(function () {
-    $("#account_offers .expanded").removeClass("expanded");
-    $("#account_offers").find("ul > li").addClass("expanded");
+  $('.account-objects-expand').click(function () {
+    $("#account_objects .expanded").removeClass("expanded");
+    $("#account_objects").find("ul > li").addClass("expanded");
   });
 
-  $('.account-offers-collapse').click(function () {
-    $("#account_offers .expanded").removeClass("expanded");
+  $('.account-objects-collapse').click(function () {
+    $("#account_objects .expanded").removeClass("expanded");
   });
 
   $('.ledger-expand-tx').click(function () {
@@ -228,7 +203,6 @@ jQuery(function ($) {
   });
 
   $('pre.json').delegate(".toggle", "click", function (evt) {
-    console.log(this);
     $(this).parent().toggleClass("expanded");
   });
 
@@ -240,6 +214,7 @@ jQuery(function ($) {
       if (err.error === "remoteError" &&
           "object" === typeof err.remote)
       {
+        // TODO: is this "remoteError" thing still valid with ripple-lib 1.x+?
         err = err.remote;
       }
 
@@ -253,37 +228,49 @@ jQuery(function ($) {
     }
   }
 
-  function requestTx(account, callback) {
-    remote.request_account_tx({
-      'account': account,
-      'ledger_index_min': -1,
-      'descending': true,
-      'limit': 20,
-      'offset' : txOffset,
-      'count': true,
-      'binary': false
-    })
-      .on('success', function (result) {
-        txCount = result.count;
-        console.log('account_tx', result);
-        format(result, $("#account_tx").empty());
-        callback();
-        updateTxOffsetNav();
-      })
-      .on('error', callback)
-      .request();
+  async function pagedAccountTx(account, page) {
+    let opts = {
+      "account": account,
+      "ledger_index_min": -1,
+      "ledger_index_max": -1,
+      "binary": false,
+      "limit": 20,
+      "forward": false
+    }
+
+    if (page === "prev") {
+      let prev_marker = previousMarkers.pop()
+      if (prev_marker) {
+        opts["marker"] = prev_marker
+      } // omit to ask for page 1
+    } else if (page === "next") {
+      opts["marker"] = nextMarker
+      if (currentMarker) {
+        previousMarkers.push(currentMarker)
+      }
+      currentMarker = opts["marker"]
+    }
+
+    let result = await api.request("account_tx", opts)
+    console.log('account_tx', result)
+    format(result, $("#account_tx").empty())
+    updateTxMarkerNav(result)
+
   }
 
-  function updateTxOffsetNav()
-  {
-    $(".account-tx-back").parent().hide();
-    $(".account-tx-more").parent().hide();
+  function updateTxMarkerNav(result) {
+    if (previousMarkers.length) {
+      $(".account-tx-back").parent().show()
+    } else {
+      $(".account-tx-back").parent().hide()
+    }
 
-    if (txOffset > 0)
-      $(".account-tx-back").parent().show();
-
-    if (txCount > (txOffset + 20))
-      $(".account-tx-more").parent().show();
+    if (result.marker) {
+      nextMarker = result.marker
+      $(".account-tx-more").parent().show()
+    } else {
+      $(".account-tx-more").parent().hide()
+    }
   }
 
   String.prototype.repeat = function(times) {
@@ -295,15 +282,15 @@ jQuery(function ($) {
 
     switch (typeof v) {
     case "object":
-      var el, sub = null, count;
+      let el = null
+      let sub = null
       if (Array.isArray(v)) {
         ct.append("[");
-        count = v.length;
-        for (var i = 0; i < count; i++) {
+        for (var i = 0; i < v.length; i++) {
           if (!sub) {
             $('<a class="toggle"></a>').appendTo(ct);
             $('<span class="ellipsis"></span>')
-              .text(getEllipText(count)).appendTo(ct);
+              .text(getEllipText(v.length)).appendTo(ct);
             el = $("<ul></ul>");
           } else sub.append(",");
           sub = $("<li></li>").addClass("type-" + typeof v[i]);
@@ -318,12 +305,11 @@ jQuery(function ($) {
         ct.append("]");
       } else {
         ct.append("{");
-        count = Object.keys(v).length;
         for (var i in v) {
           if (!sub) {
             $('<a class="toggle"></a>').appendTo(ct);
             $('<span class="ellipsis"></span>')
-              .text(getEllipText(Object.keys(v))).appendTo(ct);
+              .text(getEllipText(v)).appendTo(ct);
             el = $("<ul></ul>");
           } else sub.append(",");
           sub = $("<li></li>").addClass("type-" + typeof v[i]);
@@ -351,18 +337,45 @@ jQuery(function ($) {
       break;
     }
   }
-  function getEllipText(count) {
+
+  const TYPE_IDENTIFYING_KEYS = [
+    "TransactionType",
+    "LedgerEntryType"
+  ]
+  function getEllipText(contents) {
     var label = "...";
-    if (Array.isArray(count)) {
+    if ("number" === typeof contents) {
+      // Array - just list how many items
+      label = "" + contents + " items";
+    } else {
+      // Object - list keys intelligently
       label = "";
-      while (label.length < 15) {
-        if (!count.length) break;
-        if (label.length) label += ", ";
-        label += count.shift();
+      let i = 0
+      // Look for type-identifying keys first:
+      for (const key of TYPE_IDENTIFYING_KEYS) {
+        if (key in contents) {
+          label += contents[key]+": "
+          i++
+          break; // Only one type-identifying key per object
+        }
       }
-      if (count.length) label += ", ...";
-    } else if ("number" === typeof count) {
-      label = "" + count + " items";
+      // Now list other keys as space permits
+      for (k in contents) {
+        if (label.length >= 19) {
+          break
+        }
+        if (TYPE_IDENTIFYING_KEYS.includes(k)) {
+          // Skip type-identifying keys already printed
+          continue
+        }
+        label += k + ", "
+        i++
+      }
+      if (i < Object.keys(contents).length) {
+        label += "..."
+      } else {
+        label = label.slice(0,-2) // Remove the last ", "
+      }
     }
     return "\u00A0/* "+label+" */\u00A0";
   }
