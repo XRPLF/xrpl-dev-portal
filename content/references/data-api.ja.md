@@ -1,6 +1,6 @@
 # Ripple Data API v2
 
-**Warning:** The Ripple Data API v2 is deprecated with no ongoing support. Please use the [rippled API](https://xrpl.org/rippled-api.html) instead.
+**警告:** Ripple Data API v2は廃止されました。代わりに[`rippled` API](https://xrpl.org/rippled-api.html)を使って下さい。
 
 Ripple Data API v2を使用すると、XRP Ledgerの変更に関する情報（トランザクション履歴や処理済みの分析データなど）にアクセスできます。このような情報は専用データベースに保管されるので、`rippled`サーバーで保持する必要のある履歴レジャーバージョンの数が少なくなります。Data API v2は[XRP Charts](https://xrpcharts.ripple.com/)や[ripple.com](https://www.ripple.com)などのアプリケーションのデータソースとしても機能します。
 
