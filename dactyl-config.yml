@@ -1581,14 +1581,6 @@ pages:
             - ja
 
     -   md: tutorials/get-started/get-started-build-apps.md
-        html: get-started-build-apps.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        template: template-doc.html
-        blurb: Learn the patterns to use when building apps on the XRP Ledger.
-        filters:
-            - js_editor
         targets:
             - en
 
