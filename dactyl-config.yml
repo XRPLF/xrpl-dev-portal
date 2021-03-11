@@ -1831,11 +1831,6 @@ pages:
             - ja
 
     -   md: tutorials/manage-account-settings/require-destination-tags.md
-        html: require-destination-tags.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Manage Account Settings
-        blurb: Require users to specify a destination tag when sending to your address.
         targets:
             - en
 
@@ -6260,6 +6255,7 @@ pages:
         funnel: Build
         doc_type: Dev Tools
         html: xrp-ledger-toml-checker.html
+        embed_ripple_lib: true
         targets:
             - en
             - ja
@@ -6297,6 +6293,7 @@ pages:
         funnel: Build
         doc_type: Dev Tools
         html: tx-sender.html
+        embed_ripple_lib: true
         targets:
             - en
             - ja

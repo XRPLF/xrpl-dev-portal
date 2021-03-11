@@ -133,6 +133,17 @@ debug: false
 });
 </script>
 
+{% if currentpage.embed_ripple_lib %}
+<!-- ripple-lib & prerequisites -->
+{{currentpage.lodash_tag}}
+{{currentpage.ripple_lib_tag}}
+{% endif %}
+
+{% if "interactive_steps" in currentpage.filters %}
+<!-- Helper for interactive tutorials -->
+<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+{% endif %}
+
 <!-- Feedback Widget -->
 <script src="assets/vendor/custom-widget.js"></script>
 <div id="feedback-content"></div>

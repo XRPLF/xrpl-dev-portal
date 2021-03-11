@@ -5,6 +5,7 @@ doc_type: Tutorials
 category: Get Started
 blurb: Test Netを使用してXRPの送金をテストします。
 cta_text: XRPを送金しよう
+embed_ripple_lib: true
 filters:
     - interactive_steps
 ---
@@ -14,17 +15,15 @@ filters:
 
 ## 前提条件
 
-<!-- ripple-lib & prerequisites -->
-{{currentpage.lodash_tag}}
-{{currentpage.ripple_lib_tag}}
-<!-- Helper for interactive tutorial breadcrumbs -->
-<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+<!-- このチュートリアルのインタラクティブ部分のソースコード： -->
+<script type="application/javascript" src="assets/js/tutorials/send-xrp.js"></script>
+{% set use_network = "Testnet" %}
 
 - このページでは、ripple-lib（RippleAPI）ライブラリーバージョン1.8.2を使用するJavaScriptの例を紹介します。[RippleAPI入門ガイド](get-started-with-rippleapi-for-javascript.html)に、RippleAPIを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
 
 - XRP Ledgerでトランザクションを送信するには、まずアドレスと秘密鍵、そしていくらかのXRPが必要となります。次のインターフェイスを使用して、XRP Test NetにあるアドレスとTest Net XRPを入手できます。
 
-{% include '_snippets/generate-step.ja.md' %}
+{% include '_snippets/interactive-tutorials/generate-step.ja.md' %}
 
 ## Test Netでの送金
 {% set n = cycler(* range(1,99)) %}
@@ -43,39 +42,7 @@ api.connect()
 
 このチュートリアルでは、以下のボタンをクリックすることでブラウザーから直接接続できます。
 
-{{ start_step("Connect") }}
-<button id="connect-button" class="btn btn-primary">TestNetに接続する</button>
-<div>
-  <strong>Connection status:</strong>
-  <span id="connection-status">Not connected</span>
-  <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
-</div>
-{{ end_step() }}
-
-<script type="application/javascript">
-api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
-api.on('connected', () => {
-  $("#connection-status").text("Connected")
-  $("#connect-button").prop("disabled", true)
-  $("#loader-{{n.current}}").hide()
-
-  // Update breadcrumbs & active next step
-  complete_step("Connect")
-  $("#interactive-prepare button").prop("disabled", false)
-  $("#interactive-prepare button").prop("title", "")
-})
-api.on('disconnected', (code) => {
-  $("#connection-status").text( "Disconnected ("+code+")" )
-  $("#connect-button").prop("disabled", false)
-  $(".connection-required").prop("disabled", true)
-  $(".connection-required").prop("title", "Connection to Test Net required")
-})
-$("#connect-button").click(() => {
-  $("#connection-status").text( "Connecting..." )
-  $("#loader-{{n.current}}").show()
-  api.connect()
-})
-</script>
+{% include '_snippets/interactive-tutorials/connect-step.ja.md' %}
 
 
 ### {{n.next()}}. トランザクションの準備
@@ -114,53 +81,29 @@ async function doPrepare() {
     "maxLedgerVersionOffset": 75
   })
   const maxLedgerVersion = preparedTx.instructions.maxLedgerVersion
-  console.log("Prepared transaction instructions:", preparedTx.txJSON)
-  console.log("Transaction cost:", preparedTx.instructions.fee, "XRP")
-  console.log("Transaction expires after ledger:", maxLedgerVersion)
+  console.log("準備されたトランザクション指示：", preparedTx.txJSON)
+  console.log("トランザクションコスト：", preparedTx.instructions.fee, "XRP")
+  console.log("トランザクションの有効期限はこのレジャー後：", maxLedgerVersion)
   return preparedTx.txJSON
 }
 txJSON = doPrepare()
 ```
 
 {{ start_step("Prepare") }}
-<button id="prepare-button" class="btn btn-primary connection-required"
-    title="Connect to Test Net first" disabled>サンプルトランザクションを準備する</button>
-  <div id="prepare-output"></div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">送金する額：</span>
+  </div>
+  <input type="number" class="form-control" value="22" id="xrp-amount"
+  aria-label="XRPの額（小数）" aria-describedby="xrp-amount-label"
+  min=".000001" max="100000000000" step="any">
+  <div class="input-group-append">
+    <span class="input-group-text" id="xrp-amount-label"> XRP</span>
+  </div>
+</div>
+<button id="prepare-button" class="btn btn-primary previous-steps-required">サンプルトランザクションを準備する</button>
+<div class="output-area"></div>
 {{ end_step() }}
-
-<script type="application/javascript">
-  $("#prepare-button").click( async function() {
-    // Wipe existing results
-    $("#prepare-output").html("")
-
-    const sender = $("#use-address").text() || "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-    const preparedTx = await api.prepareTransaction({
-      "TransactionType": "Payment",
-      "Account": sender,
-      "Amount": api.xrpToDrops("22"), // Same as "Amount": "22000000"
-      "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
-    }, {
-      // Expire this transaction if it doesn't execute within ~5 minutes:
-      "maxLedgerVersionOffset": 75
-    })
-    const maxLedgerVersion = preparedTx.instructions.maxLedgerVersion
-    $("#tx-lls").text(maxLedgerVersion) //for the table in the later step
-
-    $("#prepare-output").html(
-      "<div><strong>Prepared transaction instructions:</strong> <pre><code id='prepared-tx-json'>" +
-      JSON.stringify(JSON.parse(preparedTx.txJSON), null, 2) + "</code></pre></div>" +
-      "<div><strong>Transaction cost:</strong> " +
-      preparedTx.instructions.fee + " XRP</div>" +
-      "<div><strong>Transaction expires after ledger:</strong> " +
-      maxLedgerVersion + "</div>"
-    )
-
-    // Update breadcrumbs & active next step
-    complete_step("Prepare")
-    $("#interactive-sign button").prop("disabled", false)
-    $("#interactive-sign button").prop("title", "")
-  })
-</script>
 
 ### {{n.next()}}. トランザクションの指示への署名
 
@@ -180,38 +123,9 @@ console.log("Signed blob:", txBlob)
 署名APIは、トランザクションのID、つまり識別用ハッシュを返します。この識別用ハッシュは、後でトランザクションを検索する際に使用します。識別用ハッシュは、このトランザクションに固有の64文字の16進文字列です。
 
 {{ start_step("Sign") }}
-<button id="sign-button" class="btn btn-primary connection-required"
-title="Complete all previous steps first" disabled>サンプルトランザクションに署名する</button>
-<div id="sign-output"></div>
+<button id="sign-button" class="btn btn-primary previous-steps-required">サンプルトランザクションに署名する</button>
+<div class="output-area"></div>
 {{ end_step() }}
-
-<script type="application/javascript">
-  $("#sign-button").click( function() {
-    // Wipe previous output
-    $("#sign-output").html("")
-
-    const preparedTxJSON = $("#prepared-tx-json").text()
-    const secret = $("#use-secret").text()
-
-    if (!secret) {
-      alert("Can't sign transaction without a real secret. Generate credentials first.")
-      return
-    }
-
-    signResponse = api.sign(preparedTxJSON, secret)
-
-    $("#sign-output").html(
-      "<div><strong>Signed Transaction blob:</strong> <code id='signed-tx-blob' style='overflow-wrap: anywhere; word-wrap: anywhere'>" +
-      signResponse.signedTransaction + "</code></div>" +
-      "<div><strong>Identifying hash:</strong> <span id='signed-tx-hash'>" +
-      signResponse.id + "</span></div>"
-    )
-
-    // Update all breadcrumbs & activate next step
-    complete_step("Sign")
-    $("#interactive-submit button").prop("disabled", false)
-  })
-</script>
 
 
 ### {{n.next()}}. 署名済みブロブの送信
@@ -227,8 +141,8 @@ async function doSubmit(txBlob) {
 
   const result = await api.submit(txBlob)
 
-  console.log("Tentative result code:", result.resultCode)
-  console.log("Tentative result message:", result.resultMessage)
+  console.log("予備結果コード：", result.resultCode)
+  console.log("予備結果メッセージ", result.resultMessage)
 
   // Return the earliest ledger index this transaction could appear in
   // as a result of this submission, which is the first one after the
@@ -250,41 +164,10 @@ const earliestLedgerVersion = doSubmit(txBlob)
 他の可能性については、[トランザクション結果](transaction-results.html)の完全なリストを参照してください。
 
 {{ start_step("Submit") }}
-  <button id="submit-button" class="btn btn-primary connection-required"
-    title="Connection to Test Net required" disabled>サンプルトランザクションを送信する</button>
-    <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
-    <div id="submit-output"></div>
+<button id="submit-button" class="btn btn-primary previous-steps-required" data-tx-blob-from="#signed-tx-blob" data-wait-step-name="Wait">サンプルトランザクションを送信する</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"> 送信中...</div>
+<div class="output-area"></div>
 {{ end_step() }}
-
-<script type="application/javascript">
-  $("#submit-button").click( async function() {
-    $("#submit-output").html("") // Wipe previous output
-    $("#loader-{{n.current}}").show()
-
-    const txBlob = $("#signed-tx-blob").text()
-    const earliestLedgerVersion = await api.getLedgerVersion()
-    $("#earliest-ledger-version").text(earliestLedgerVersion)
-
-    try {
-      const result = await api.submit(txBlob)
-      $("#loader-{{n.current}}").hide()
-      $("#submit-output").html(
-        "<div><strong>Tentative result:</strong> " +
-        result.resultCode + " - " +
-        result.resultMessage +
-        "</div>"
-      )
-
-      // Update breadcrumbs & active next step
-      complete_step("Submit")
-    }
-    catch(error) {
-      $("#loader-{{n.current}}").hide()
-      $("#submit-output").text("Error: "+error)
-    }
-
-  })
-</script>
 
 ### {{n.next()}}. 検証の待機
 
@@ -294,41 +177,16 @@ RippleAPIの`ledger`イベントタイプを使用して、新しい検証済み
 
 ```js
 api.on('ledger', ledger => {
-  console.log("Ledger version", ledger.ledgerVersion, "was validated.")
+  console.log("レジャーインデックス", ledger.ledgerVersion, "は検証されました。")
   if (ledger.ledgerVersion > maxLedgerVersion) {
-    console.log("If the transaction hasn't succeeded by now, it's expired")
+    console.log("トランザクションはまだ検証されていませんなら、有効期限が切れています。")
   }
 })
 ```
 
 {{ start_step("Wait") }}
-<table>
-  <tr>
-    <th>Latest Validated Ledger Version:</th>
-    <td id="current-ledger-version">(Not connected)</td>
-  </tr>
-    <tr>
-      <th>Ledger Version at Time of Submission:</th>
-      <td id="earliest-ledger-version">(Not submitted)</td>
-    </tr>
-  <tr>
-    <th>Transaction LastLedgerSequence:</th>
-    <td id="tx-lls"></td>
-  </tr>
-</table>
+{% include '_snippets/interactive-tutorials/wait-step.ja.md' %}
 {{ end_step() }}
-
-<script type="application/javascript">
-api.on('ledger', ledger => {
-  $("#current-ledger-version").text(ledger.ledgerVersion)
-
-  if ( $(".breadcrumb-item.bc-wait").hasClass("active") ) {
-    // Advance to "Check" as soon as we see a ledger close
-    complete_step("Wait")
-    $("#get-tx-button").prop("disabled", false)
-  }
-})
-</script>
 
 
 ### {{n.next()}}. トランザクションステータスの確認
@@ -341,10 +199,10 @@ api.on('ledger', ledger => {
 // txID was noted when the transaction was signed.
 try {
   tx = await api.getTransaction(txID, {minLedgerVersion: earliestLedgerVersion})
-  console.log("Transaction result:", tx.outcome.result)
-  console.log("Balance changes:", JSON.stringify(tx.outcome.balanceChanges))
+  console.log("トランザクションの結果：", tx.outcome.result)
+  console.log("残高変化：", JSON.stringify(tx.outcome.balanceChanges))
 } catch(error) {
-  console.log("Couldn't get transaction outcome:", error)
+  console.log("トランザクションの結果を取得出来ませんでした。エラー：", error)
 }
 
 ```
@@ -354,37 +212,10 @@ RippleAPIの`getTransaction()`メソッドは、トランザクションが検�
 **注意:** 他のAPIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`rippled` APIの[txメソッド][]を使用した場合は、応答内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](finality-of-results.html)を参照してください。
 
 {{ start_step("Check") }}
-<button id="get-tx-button" class="btn btn-primary connection-required"
-  title="Connection to Test Net required" disabled>トランザクションステータスを確認する</button>
-<div id="get-tx-output"></div>
+<button id="get-tx-button" class="btn btn-primary previous-steps-required">トランザクションステータスを確認する</button>
+<div class="output-area"></div>
 {{ end_step() }}
 
-<script type="application/javascript">
-  $("#get-tx-button").click( async function() {
-    // Wipe previous output
-    $("#get-tx-output").html("")
-
-    const txID = $("#signed-tx-hash").text()
-    const earliestLedgerVersion = parseInt($("#earliest-ledger-version").text(), 10)
-
-    try {
-      const tx = await api.getTransaction(txID, {minLedgerVersion: earliestLedgerVersion})
-
-      $("#get-tx-output").html(
-        "<div><strong>Transaction result:</strong> " +
-        tx.outcome.result + "</div>" +
-        "<div><strong>Balance changes:</strong> <pre><code>" +
-        JSON.stringify(tx.outcome.balanceChanges, null, 2) +
-        "</pre></code></div>"
-      )
-
-      complete_step("Check")
-    } catch(error) {
-      $("#get-tx-output").text("Couldn't get transaction outcome:" + error)
-    }
-
-  })
-</script>
 
 ## 本番環境の場合の相違点
 
@@ -399,8 +230,8 @@ RippleAPIの`getTransaction()`メソッドは、トランザクションが検�
 
 ```js
 const generated = api.generateAddress()
-console.log(generated.address) // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
-console.log(generated.secret) // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
+console.log(generated.address) // 例: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
+console.log(generated.secret) // 例: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
 
 **警告:** ローカルマシンで安全な方法で生成したアドレスとシークレットのみを使用してください。別のコンピューターでアドレスとシークレットを生成して、ネットワーク経由でそれらを自分に送信した場合は、ネットワーク上の他の人がその情報を見ることができる可能性があります。その情報見ることができる人は、あなたと同じようにあなたのXRPを操作できます。また、Test Netと本番で同じアドレスを使用しないことも推奨します。指定したパラメーターによっては、一方のネットワークに向けて作成したトランザクションが、もう一方のネットワークでも実行可能になるおそれがあるためです。
