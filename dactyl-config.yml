@@ -1584,6 +1584,10 @@ pages:
         targets:
             - en
 
+    -   md: tutorials/get-started/get-started-with-python-sdk.md
+        targets:
+            - en
+
     -   md: tutorials/get-started/get-started-with-the-rippled-api.md
         html: get-started-with-the-rippled-api.html
         funnel: Build
