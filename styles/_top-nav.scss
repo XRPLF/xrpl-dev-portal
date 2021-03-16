@@ -43,6 +43,10 @@
         box-shadow: inset 0 -1px 0 0 #000;
       }
 
+      &:focus {
+        outline: none;
+      }
+
       @include media-breakpoint-only(lg) {
         padding: 1rem 1.15rem;
 
