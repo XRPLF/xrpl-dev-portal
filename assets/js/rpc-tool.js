@@ -175,7 +175,6 @@ jQuery(function ($) {
 
   $('.account-tx-back').click(function () {
     $("#account_tx").text("... loading ...");
-    let previous_markers = $(".account-tx-back").data("marker")
     pagedAccountTx(currentTarget, "prev");
   });
 
@@ -243,6 +242,7 @@ jQuery(function ($) {
       if (prev_marker) {
         opts["marker"] = prev_marker
       } // omit to ask for page 1
+      currentMarker = prev_marker
     } else if (page === "next") {
       opts["marker"] = nextMarker
       if (currentMarker) {
@@ -259,7 +259,7 @@ jQuery(function ($) {
   }
 
   function updateTxMarkerNav(result) {
-    if (previousMarkers.length) {
+    if (currentMarker) {
       $(".account-tx-back").parent().show()
     } else {
       $(".account-tx-back").parent().hide()
