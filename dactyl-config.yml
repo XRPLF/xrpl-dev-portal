@@ -1580,11 +1580,11 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/get-started/get-started-build-apps.md
+    -   md: tutorials/get-started/get-started-with-python-sdk.md
         targets:
             - en
 
-    -   md: tutorials/get-started/get-started-with-python-sdk.md
+    -   md: tutorials/get-started/python-env-setup.md
         targets:
             - en
 
