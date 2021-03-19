@@ -119,7 +119,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
         $ cp cfg/validators-example.txt $HOME/.config/ripple/validators.txt
 
-      **Warning:** Ripple has designed a decentralization plan with maximum safety in mind. During the transition, you should not modify the `validators.txt` file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
+      **Warning:** The `validators.txt` file contains settings that determine how your server declares a ledger to be validated. If you are not careful, changes to this file could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
 0. Access your build directory, `my_build` for example, and start the `rippled` service.
 

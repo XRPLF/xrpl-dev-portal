@@ -31,7 +31,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 4. Install CMake.
 
-    Version 1.4.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
+    Version 1.7.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
 
     If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
 
@@ -132,7 +132,7 @@ Complete the following configurations that are required for `rippled` to start u
 
         cp cfg/validators-example.txt ~/.config/ripple/validators.txt
 
-    **Warning:** Ripple has designed a [decentralization plan](https://xrpl.org/blog/2017/decent-strategy-update.html) with maximum safety in mind. During the transition, you *should not* modify the `validators.txt` file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
+    **Warning:** The `validators.txt` file contains settings that determine how your server declares a ledger to be validated. If you are not careful, changes to this file could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
 
 ## 3. Run `rippled`
