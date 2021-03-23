@@ -8,7 +8,7 @@ blurb: Build a simple Python app that interacts with the XRP Ledger.
 cta_text: Build Apps
 ---
 
-# Get started using Python
+# Get Started Using Python
 
 This tutorial walks you through the basics of building an XRP Ledger-connected application using [xrpl-py](https://github.com/xpring-eng/xrpl-py), a [Python](https://www.python.org) library that makes it easy to integrate XRP Ledger functionality into your apps.  
 
@@ -17,7 +17,7 @@ This tutorial walks you through the basics of building an XRP Ledger-connected a
 
 In this tutorial, you'll learn: 
 
-* How to set up your environment for Python development. See [](xref:python-env-setup.md).
+* How to set up your environment for Python development. See [](python-env-setup.html).
 * The basic building blocks of XRP Ledger-based applications.
 * How to generate keys.
 * How to connect to the XRP Ledger.
