@@ -4,6 +4,7 @@ funnel: Build
 doc_type: Tutorials
 category: Manage Account Settings
 blurb: Use Tickets to send a transaction outside of normal Sequence order.
+embed_ripple_lib: true
 filters:
     - interactive_steps
 ---
@@ -15,13 +16,9 @@ _(Requires the [TicketBatch amendment][] :not_enabled:)_
 
 ## Prerequisites
 
-<!-- ripple-lib & prerequisites -->
-{{currentpage.lodash_tag}}
-{{currentpage.ripple_lib_tag}}
-<!-- Helper for interactive tutorial breadcrumbs -->
-<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
+{% set use_network = "Devnet" %}<!--TODO: change to Testnet eventually -->
 
 This page provides JavaScript examples that use the ripple-lib (RippleAPI) library. The [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.
 
@@ -43,10 +40,9 @@ This tutorial is divided into a few phases:
 
 ### {{n.next()}}. Get Credentials
 
-To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the [Devnet](parallel-networks.html) using the following interface: <!--TODO: change to Testnet eventually -->
+To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the [{{use_network}}](parallel-networks.html) using the following interface:
 
-{% set faucet_url = "https://faucet.devnet.rippletest.net/accounts" %}
-{% include '_snippets/generate-step.md' %}
+{% include '_snippets/interactive-tutorials/generate-step.md' %}
 
 When you're [building actual production-ready software](production-readiness.html), you'll instead use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
 
@@ -74,14 +70,7 @@ main()
 
 For this tutorial, you can connect directly from your browser by pressing the following button:
 
-{{ start_step("Connect") }}
-<button id="connect-button" class="btn btn-primary">Connect to Devnet</button> <!-- TODO: Testnet -->
-<div>
-  <strong>Connection status:</strong>
-  <span id="connection-status">Not connected</span>
-  <div id='loader-connect' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
-</div>
-{{ end_step() }}
+{% include '_snippets/interactive-tutorials/connect-step.md' %}
 
 
 ### {{n.next()}}. Check Sequence Number
@@ -101,9 +90,9 @@ let current_sequence = await get_sequence()
 ```
 
 {{ start_step("Check Sequence") }}
-<button id="check-sequence" class="btn btn-primary connection-required"
-  title="Complete all previous steps first" disabled>Check Sequence Number</button>
-<div id="check-sequence-output"></div>
+<button id="check-sequence" class="btn btn-primary previous-steps-required">Check Sequence Number</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Querying...</div>
+<div class="output-area"></div>
 {{ end_step() }}
 
 
@@ -132,9 +121,8 @@ Record the transaction's hash and `LastLedgerSequence` value so you can [be sure
 
 
 {{ start_step("Prepare & Sign") }}
-<button id="prepare-and-sign" class="btn btn-primary connection-required"
-  title="Complete all previous steps first" disabled>Prepare & Sign</button>
-<div id="prepare-and-sign-output"></div>
+<button id="prepare-and-sign" class="btn btn-primary previous-steps-required">Prepare & Sign</button>
+<div class="output-area"></div>
 {{ end_step() }}
 
 
@@ -152,9 +140,9 @@ const min_ledger = prelim_result.validated_ledger_index
 **Warning:** Be sure that you **DO NOT UPDATE** the `min_ledger` value. It is safe to submit a signed transaction blob multiple times (the transaction can only execute at most once), but when you look up the status of the transaction you should use the earliest possible ledger index that the transaction could be in, _not_ the validated ledger index at the time of the most recent submission. Using the wrong minimum ledger value could cause you to incorrectly conclude that the transaction did not execute. For best practices, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 {{ start_step("Submit") }}
-<button id="ticketcreate-submit" class="btn btn-primary connection-required"
-  title="Complete all previous steps first" disabled>Submit</button>
-<div id="ticketcreate-submit-output"></div>
+<button id="ticketcreate-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob" data-wait-step-name="Wait">Submit</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="output-area"></div>
 {{ end_step() }}
 
 
@@ -209,26 +197,7 @@ api.on('ledger', async (ledger) => {
 ```
 
 {{ start_step("Wait") }}
-<table>
-  <tr>
-    <th>Transaction Hash:</th>
-    <td id="waiting-for-tx"></td>
-  </tr>
-  <tr>
-    <th>Latest Validated Ledger Version:</th>
-    <td id="current-ledger-version">(Not connected)</td>
-  </tr>
-  <tr>
-    <th>Ledger Version at Time of Submission:</th>
-    <td id="earliest-ledger-version">(Not submitted)</td>
-  </tr>
-  <tr>
-    <th><code>LastLedgerSequence</code>:</th>
-    <td id="lastledgersequence">(Not prepared)</td>
-  </tr>
-  <tr id="tx-validation-status">
-  </tr>
-</table>
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
 {{ end_step() }}
 
 
@@ -239,13 +208,10 @@ The power of Tickets is that you can carry on with your account's business as us
 **Tip:** You can come back here to send Sequenced transactions between or during any of the following steps, without interfering with the success of your Ticketed transaction.
 
 {{ start_step("Intermission") }}
-<button id="intermission-payment" class="btn btn-primary connection-required"
-  title="Complete all previous steps first" disabled>Payment</button>
-<button id="intermission-escrowcreate" class="btn btn-primary connection-required"
-  title="Complete all previous steps first" disabled>EscrowCreate</button>
-<button id="intermission-accountset" class="btn btn-primary connection-required"
-  title="Complete all previous steps first" disabled>AccountSet</button>
-<div id="intermission-output"></div>
+<button id="intermission-payment" class="btn btn-primary previous-steps-required">Payment</button>
+<button id="intermission-escrowcreate" class="btn btn-primary previous-steps-required">EscrowCreate</button>
+<button id="intermission-accountset" class="btn btn-primary previous-steps-required">AccountSet</button>
+<div class="output-area"></div>
 {{ end_step() }}
 
 
@@ -266,9 +232,8 @@ let use_ticket = response.account_objects[0].TicketSequence
 
 
 {{ start_step("Check Tickets") }}
-<button id="check-tickets" class="btn btn-primary connection-required"
-  title="Complete all previous steps first" disabled>Submit</button>
-<div id="check-tickets-output"></div>
+<button id="check-tickets" class="btn btn-primary previous-steps-required">Check Tickets</button>
+<div class="output-area"></div>
 {{ end_step() }}
 
 **Tip:** You can repeat the steps from here through the end as long as you have Tickets left to be used!
@@ -306,9 +271,8 @@ console.log("Signed transaction blob:", tx_blob_t)
   <h4>Select a Ticket:</h4>
   <div class="form-area"></div>
 </div>
-<button id="prepare-ticketed-tx" class="btn btn-primary connection-required"
-  title="Complete all previous steps first" disabled>Prepare Ticketed Transaction</button>
-<div id="prepare-ticketed-tx-output"></div>
+<button id="prepare-ticketed-tx" class="btn btn-primary previous-steps-required">Prepare Ticketed Transaction</button>
+<div class="output-area"></div>
 {{ end_step() }}
 
 
@@ -322,11 +286,9 @@ console.log("Preliminary result:", prelim_result_t)
 ```
 
 {{ start_step("Submit Ticketed Tx") }}
-<button id="ticketedtx-submit" class="btn btn-primary connection-required"
-  title="Complete all previous steps first" disabled>Submit</button>
-<div id="ticketedtx-submit-output"></div>
+<button id="ticketedtx-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob_t" data-wait-step-name="Wait Again">Submit</button>
+<div class="output-area"></div>
 {{ end_step() }}
-
 
 
 ### {{n.next()}}. Wait for Validation
@@ -334,22 +296,7 @@ console.log("Preliminary result:", prelim_result_t)
 Ticketed transactions go through the consensus process the same way that Sequenced transactions do.
 
 {{ start_step("Wait Again") }}
-<table>
-  <tr>
-    <th>Latest Validated Ledger Version:</th>
-    <td id="current-ledger-version_t">(Not connected)</td>
-  </tr>
-  <tr>
-    <th>Ledger Version at Time of Submission:</th>
-    <td id="earliest-ledger-version_t">(Not submitted)</td>
-  </tr>
-  <tr>
-    <th>Ticketed Transaction <code>LastLedgerSequence</code>:</th>
-    <td id="lastledgersequence_t">(Not prepared)</td>
-  </tr>
-  <tr id="tx-validation-status_t">
-  </tr>
-</table>
+{% include '_snippets/interactive-tutorials/wait-step.md' %}
 {{ end_step() }}
 
 ## With Multi-Signing

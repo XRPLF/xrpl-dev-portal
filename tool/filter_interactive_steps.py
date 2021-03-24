@@ -40,7 +40,7 @@ def start_step(step_label):
     return out_html
 
 def end_step():
-    """Generates the HTML for the end of a step, including breadcrumbs"""
+    """Generates the HTML for the end of a step"""
     return "    </div><!--/.interactive-block-ui-->\n  </div><!--/.interactive-block-inner-->\n</div><!--/.interactive-block-->"
 
 def filter_soup(soup, **kwargs):

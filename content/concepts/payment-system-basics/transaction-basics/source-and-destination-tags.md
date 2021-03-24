@@ -8,6 +8,8 @@ Source tags indicate the originator or source of a payment. Most commonly, a Sou
 
 The practice of giving customers the ability to send and receive transactions from your XRP Ledger address using another interface is called providing _hosted accounts_. Hosted accounts typically use source and destination tags for each customer.
 
+**Tip:** An [X-address](https://xrpaddress.info/) combines a classic address with a tag into a single address that encodes both. If you are showing a deposit address to customers, it may be easier for your customers to use an X-address rather than making them keep track of two pieces of information. (The tag in an X-address acts as a source tag when sending and a destination tag when receiving.)
+
 ## Rationale
 
 In other distributed ledgers, it is common to use different deposit addresses for each customer. In the XRP Ledger, an address must be a funded, permanent [account](accounts.html) to receive payments. Using this approach in the XRP Ledger wastefully consumes resources of all servers in the network, and is costly because the [reserve](reserves.html) amount must be set aside indefinitely for each address.

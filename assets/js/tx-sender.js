@@ -239,6 +239,17 @@ const set_up_tx_sender = async function() {
     }
     $("#pp_progress .progress-bar").width("20%")
 
+    // Wait for the address's funding to be validated so we don't get the wrong
+    // starting sequence number.
+    while (true) {
+      try {
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        await api.request("account_info", {account: pp_issuer_address,
+          ledger_index: "validated"})
+        break
+      } catch(e) {}
+    }
+
     // 2. Set Default Ripple on issuer
     let resp = await submit_and_verify({
       TransactionType: "AccountSet",
@@ -311,8 +322,31 @@ const set_up_tx_sender = async function() {
   }
 
   //////////////////////////////////////////////////////////////////////////////
-  // Button Handlers
+  // Button/UI Handlers
   //////////////////////////////////////////////////////////////////////////////
+
+  // Destination Address box -----------------------------------------------
+  async function on_dest_address_update(event) {
+    const d_a = $("#destination_address").val()
+    if (api.isValidAddress(d_a)) {
+      $("#destination_address").addClass("is-valid").removeClass("is-invalid")
+      if (d_a[0] == "X") {
+        $("#x-address-warning").show()
+      } else {
+        $("#x-address-warning").hide()
+      }
+    } else {
+      $("#destination_address").addClass("is-invalid").removeClass("is-valid")
+      $("#x-address-warning").hide()
+    }
+  }
+  $("#destination_address").change(on_dest_address_update)
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("destination")) {
+    const d_a = search_params.get("destination")
+    $("#destination_address").val(d_a)
+    on_dest_address_update()
+  }
 
   // 1. Send XRP Payment Handler -------------------------------------------
   async function on_click_send_xrp_payment(event) {

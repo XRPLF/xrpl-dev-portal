@@ -1,8 +1,8 @@
-# 取引の結果
+# トランザクションの結果
 
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/TER.h "ソース")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/TER.h "Source")
 
-`rippled`サーバーは、取引結果の要約を結果コードで示し、結果コードは`engine_result`や`meta.TransactionResult`などのフィールドに記述されます。これらのコードは、それぞれ異なるプレフィクスを付加した複数のカテゴリーに分類されます。
+`rippled`サーバーは、トランザクション結果の要約を結果コードで示し、結果コードは`engine_result`や`meta.TransactionResult`などのフィールドに記述されます。これらのコードは、それぞれ異なるプレフィクスを付加した複数のカテゴリーに分類されます。
 
 | カテゴリー              | プレフィクス                  | 説明                |
 |:----------------------|:------------------------|:---------------------------|

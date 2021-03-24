@@ -46,6 +46,10 @@
   padding-left: 5px;
 }
 
+.interactive-block .waiting-for-tx {
+  word-break: break-word;
+}
+
 .ws-console {
   height: 200px;
   overflow: auto;

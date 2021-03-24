@@ -79,7 +79,6 @@ const socket = new WebSocket('ws://localhost:6006')
 <button id="connect-button" class="btn btn-primary">Connect</button>
 <strong>Connection status:</strong>
 <span id="connection-status">Not connected</span>
-<div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
 <h5>Console:</h5>
 <div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
 {{ end_step() }}
