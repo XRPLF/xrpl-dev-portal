@@ -2,7 +2,7 @@
 let address = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
 let secret = "s████████████████████████████"
 
-// Connect -------------------------------------------------------------------
+// Connect ---------------------------------------------------------------------
 // ripple = require('ripple-lib') // For Node.js. In browsers, use <script>.
 api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
 api.connect()
