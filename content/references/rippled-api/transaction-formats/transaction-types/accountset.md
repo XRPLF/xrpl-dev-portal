@@ -42,7 +42,7 @@ The `Domain` field is represented as the hex string of the lowercase ASCII of th
 
 To remove the `Domain` field from an account, send an AccountSet with the Domain set to an empty string.
 
-You can put any domain in your account's `Domain` field. To prove that an account and domain belong to the same person or business, Ripple recommends establishing a "two-way link":
+You can put any domain in your account's `Domain` field. To prove that an account and domain belong to the same person or business, establish a "two-way link":
 
 - Accounts you own should have a domain you own in the `Domain` field.
 - On a website at that domain, host an [xrp-ledger.toml file](xrp-ledger-toml.html) listing accounts you own, and optionally other information about how you use the XRP Ledger.
