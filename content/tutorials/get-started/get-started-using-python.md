@@ -1,5 +1,5 @@
 ---
-html: get-started-python.html
+html: get-started-using-python.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started
@@ -10,36 +10,57 @@ cta_text: Build Apps
 
 # Get Started Using Python
 
-This tutorial walks you through the basics of building an XRP Ledger-connected application using [xrpl-py](https://github.com/xpring-eng/xrpl-py), a [Python](https://www.python.org) library that makes it easy to integrate XRP Ledger functionality into your apps.  
+This tutorial walks you through the basics of building a very simple XRP Ledger-connected application using [`xrpl-py`](https://github.com/XRPLF/xrpl-py), a pure[Python](https://www.python.org) library that makes it easy to interact with the XRP Ledger using native Python models and methods.
 
 
 ## Learning goals
 
 In this tutorial, you'll learn: 
 
-* How to set up your environment for Python development. See [](python-env-setup.html).
 * The basic building blocks of XRP Ledger-based applications.
-* How to generate keys.
 * How to connect to the XRP Ledger.
-* How to submit a transaction, including preparing and signing it. 
+* How to generate a wallet on the [Testnet](xrp-testnet-faucet.html).
+* How to use the `xrpl-py` library to look up information about an account on the XRP Ledger. 
 * How to put these steps together to create a simple app that submits a transaction to the XRP Ledger Testnet. 
 
 ## Requirements
 
-For information about setting up your environment for Python development, see [](xref:python-env-setup.md). 
+The `xrpl-py` library supports [Python 3.7](https://www.python.org/downloads/) and later.
+
+### Requirements for contributing to the library
+
+If you want to contribute code to the library itself, install these dependencies to set up your development environment:
+
+* [`pyenv`](~https://github.com/pyenv/pyenv)
+* [`poetry`](~https://python-poetry.org/docs/)
+* [`pre-commit`](~https://pre-commit.com/)
+
+
+For more detailed information about setting up your environment and contributing, see [CONTRIBUTING](https://github.com/XRPLF/xrpl-py/blob/master/CONTRIBUTING.md) in the project repo. 
+
+
+## Installation
+
+<!--{# TODO: update link to go directly to package when it's available  #}-->
+
+The [`xrpl-py` library](https://github.com/XRPLF/xrpl-py) is available on [PyPI](https://pypi.org/). Install with `pip`:
+
+
+```py
+pip3 install xrpl-py
+```
 
 ## Start building
 {% set n = cycler(* range(1,99)) %}
 
-When you're working with the XRP Ledger, there are a few things you'll need to manage with your app or integration, whether you're adding XRP into your [wallet](xref: wallets.md), integrating with the [decentralized exchange](xref: decentralized-exchange.md), or [issuing and managing tokens](xref:issued-currencies.md). This tutorial walks you through the patterns common to all of these use cases and provides sample code for implementing them. 
+When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your [wallet](wallets.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](issued-currencies.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them. 
 
 Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
-1. [Generate keys.](#generate-keys)
-2. [Connect to the XRP Ledger.](#connect)
-3. [Query the XRP Ledger.](#query)
-4. [Submit a transaction.](#submit-transaction) 
-5. [Verify results.](#verify-results) 
+1. [Connect to the XRP Ledger.](#connect)
+1. [Generate a wallet.](#generate-wallet)
+1. [Query the XRP Ledger.](#query)
+
 
 ### {{n.next()}}.  Generate keys
 
@@ -84,19 +105,40 @@ def createWallet():
 
 ### {{n.next()}}. Connect
 
-To make queries that you can use in your app and submit transactions, you need to establish a connection to the XRP Ledger. There are a few ways to do this. The following sections describe each option in more detail. 
-
-**Warning:**  Never use publicly available servers to sign transactions. For more information about security and signing, see [](xref: set-up-secure-signing.md).
-
-**Caution:** Ripple provides the [Testnet and Devnet](parallel-networks.html) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, Ripple recommends **not** using the same addresses on Testnet/Devnet and Mainnet.
-
-
-If you only want to explore the XRP Ledger, you can  use the [Ledger Explorer](https://livenet.xrpl.org/) to see the Ledger progress in real-time and dig into specific accounts or transactions. 
+To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html):
 
 
 ```py
-# Define the URL of the server you want to use
-JSON_RPC_URL = "http://s1.ripple.com:51234/"
+from xrpl.clients.json_rpc_client import JsonRpcClient
+JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
+client = JsonRpcClient(JSON_RPC_URL)
+```
+
+
+### {{n.next()}}. Generate wallet
+
+You need [keys](https://xrpl.org/cryptographic-keys.html) to sign transactions that you submit to the XRP Ledger. 
+
+For testing and development purposes, you can get keys (and XRP balances) from [XRP Faucets](https://xrpl.org/xrp-testnet-faucet.html).
+
+Otherwise, you should take care to store your keys and set up a [secure signing method](https://xrpl.org/set-up-secure-signing.html). 
+
+To make it easy to create a wallet on the Testnet , `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method:
+
+
+```py
+from xrpl.wallet import generate_faucet_wallet
+test_wallet = generate_faucet_wallet(client)
+```
+
+This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.Wallet) that you can use to sign and submit transactions:
+
+
+```py
+seed: shtrT9cYoQNGDs2uvAnK1g459SEXX
+pub_key: 033911717E99D025CB3BBE8A10E92263F7F94216D7AE3078A7FF1264B1C46F94FB
+priv_key: 00CC00FB2F861EC00CC2282475AB8BF9687A06635499737F329784658978FF87E8
+classic_address: rKm826nMCh25RK5zWmKgMp6EbGbkDoQN39
 ```
 
 ### {{n.next()}}. Query

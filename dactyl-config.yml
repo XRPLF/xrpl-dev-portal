@@ -1580,11 +1580,7 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/get-started/get-started-with-python-sdk.md
-        targets:
-            - en
-
-    -   md: tutorials/get-started/python-env-setup.md
+    -   md: tutorials/get-started/get-started-using-python.md
         targets:
             - en
 
