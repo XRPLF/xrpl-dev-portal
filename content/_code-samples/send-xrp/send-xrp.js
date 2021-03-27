@@ -1,6 +1,6 @@
 // Example credentials
-let address = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-let secret = "s████████████████████████████"
+let address = "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
+let secret = "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"
 
 // Connect ---------------------------------------------------------------------
 // ripple = require('ripple-lib') // For Node.js. In browsers, use <script>.

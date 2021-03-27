@@ -1,9 +1,15 @@
+# Example Credentials ----------------------------------------------------------
+from xrpl.wallet import Wallet
+test_wallet = Wallet(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9")
+print(test_wallet.classic_address) # "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
+
 # Connect ----------------------------------------------------------------------
 from xrpl.clients import JsonRpcClient
 testnet_url = "https://s.altnet.rippletest.net:51234"
 client = JsonRpcClient(testnet_url)
 
 # Get credentials from the Testnet Faucet -----------------------------------
+# For production, instead create a Wallet instance as above
 faucet_url = "https://faucet.altnet.rippletest.net/accounts"
 print("Getting a new account from the Testnet faucet...")
 from xrpl.wallet import generate_faucet_wallet
@@ -16,9 +22,10 @@ min_ledger = current_validated_ledger + 1
 max_ledger = min_ledger + 20
 
 from xrpl.models.transactions import Payment
+from xrpl.utils import xrp_to_drops
 my_payment = Payment(
     account=test_wallet.classic_address,
-    amount="22000000",
+    amount=xrp_to_drops(22),
     destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
     last_ledger_sequence=max_ledger,
     sequence=test_wallet.next_sequence_num,
@@ -48,11 +55,20 @@ while True:
     if tx_response.is_successful():
         if tx_response.result.get("validated"):
             print("Got validated result!")
-            print(tx_response)
-            print(f"Explorer link: https://testnet.xrpl.org/transactions/{tx_id}")
             break
         else:
             print(f"Results not yet validated... "
                   f"({current_validated_ledger}/{max_ledger})")
     if current_validated_ledger > max_ledger:
         print("max_ledger has passed. Last tx response:", tx_response)
+
+# Check transaction results ----------------------------------------------------
+import json
+print(json.dumps(tx_response.result, indent=4, sort_keys=True))
+print(f"Explorer link: https://testnet.xrpl.org/transactions/{tx_id}")
+metadata = tx_response.result.get("meta", {})
+if metadata.get("TransactionResult"):
+    print("Result code:", metadata["TransactionResult"])
+if metadata.get("delivered_amount"):
+    from xrpl.utils import drops_to_xrp
+    print("XRP delivered:", drops_to_xrp(metadata["delivered_amount"]))
