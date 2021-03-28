@@ -8,6 +8,7 @@ blurb: Build a simple Python app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app 
 filters:
     - interactive_steps
+    - include_code
 ---
 
 # Get Started Using Python
@@ -64,7 +65,7 @@ To make queries and submit transactions, you need to establish a connection to t
 
 
 ```py
-{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Define the network client", end_before="# Create a wallet using the testnet faucet:")}}
+{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Define the network client", end_before="# Create a wallet using the testnet faucet:", language="py") }}
 ```
 
 
@@ -80,7 +81,7 @@ To make it easy to create a wallet on the Testnet, `xrpl-py` provides the [`gene
 
 
 ```py
-{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Create a wallet using the testnet faucet", end_before="# Create an account str from the wallet") }}
+{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Create a wallet using the testnet faucet", end_before="# Create an account str from the wallet", language="py") }}
 ```
 
 This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.Wallet):
