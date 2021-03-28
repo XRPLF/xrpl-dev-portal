@@ -5,23 +5,26 @@ doc_type: Tutorials
 category: Get Started
 subcategory: Get Started Using Python
 blurb: Build a simple Python app that interacts with the XRP Ledger.
-cta_text: Build Apps
+cta_text: Build an XRP Ledger-connected app 
+filters:
+    - interactive_steps
 ---
 
 # Get Started Using Python
 
-This tutorial walks you through the basics of building a very simple XRP Ledger-connected application using [`xrpl-py`](https://github.com/XRPLF/xrpl-py), a pure[Python](https://www.python.org) library that makes it easy to interact with the XRP Ledger using native Python models and methods.
+This tutorial walks you through the basics of building a very simple XRP Ledger-connected application using [`xrpl-py`](https://github.com/XRPLF/xrpl-py), a pure [Python](https://www.python.org) library that makes it easy to interact with the XRP Ledger using native Python models and methods.
 
+This tutorial is intended for beginners and should take no longer than 30 minutes to complete. 
 
 ## Learning goals
 
 In this tutorial, you'll learn: 
 
 * The basic building blocks of XRP Ledger-based applications.
-* How to connect to the XRP Ledger.
-* How to generate a wallet on the [Testnet](xrp-testnet-faucet.html).
+* How to connect to the XRP Ledger using `xrpl-py`.
+* How to generate a wallet on the [Testnet](xrp-testnet-faucet.html) using `xrpl-py`.
 * How to use the `xrpl-py` library to look up information about an account on the XRP Ledger. 
-* How to put these steps together to create a simple app that submits a transaction to the XRP Ledger Testnet. 
+* How to put these steps together to create a simple Python app. 
 
 ## Requirements
 
@@ -29,19 +32,12 @@ The `xrpl-py` library supports [Python 3.7](https://www.python.org/downloads/) a
 
 ### Requirements for contributing to the library
 
-If you want to contribute code to the library itself, install these dependencies to set up your development environment:
-
-* [`pyenv`](~https://github.com/pyenv/pyenv)
-* [`poetry`](~https://python-poetry.org/docs/)
-* [`pre-commit`](~https://pre-commit.com/)
-
-
-For more detailed information about setting up your environment and contributing, see [CONTRIBUTING](https://github.com/XRPLF/xrpl-py/blob/master/CONTRIBUTING.md) in the project repo. 
+If you want to contribute code to the library itself, see [CONTRIBUTING](https://github.com/XRPLF/xrpl-py/blob/master/CONTRIBUTING.md) in the project repo. 
 
 
 ## Installation
 
-<!--{# TODO: update link to go directly to package when it's available  #}-->
+<!--{# TODO: update link to go directly to package on PyPI when it's available  #}-->
 
 The [`xrpl-py` library](https://github.com/XRPLF/xrpl-py) is available on [PyPI](https://pypi.org/). Install with `pip`:
 
@@ -62,183 +58,162 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 1. [Query the XRP Ledger.](#query)
 
 
-### {{n.next()}}.  Generate keys
-
-
-You need [keys](https://xrpl.org/cryptographic-keys.html) to sign transactions that you submit to the XRP Ledger. 
-
-For testing and development purposes, you can get keys (and XRP balances) from [XRP Faucets](https://xrpl.org/xrp-testnet-faucet.html).
-
-Otherwise, you should take care to store your keys and set up a [secure signing method](https://xrpl.org/set-up-secure-signing.html). 
-
-<!-- MULTICODE_BLOCK_START -->
-
-*Generate keypairs (xrpl-py)*
-
-```py
-# Generate private and public keys
-# to manage your XRP Ledger account
-def generateKeys():
-    seed = keypairs.generate_seed()
-    public, private = keypairs.derive_keypair(seed)
-    CLASSIC_ACCOUNT = keypairs.derive_classic_address(public)
-    print("Here's the public key: ", public)
-    print("Here's the private key: ", private)
-```
-*Generate wallet (xrpl-py)*
-
-```py
-# Create an XRP Ledger wallet
-# And create an x-address for the address
-def createWallet():
-    wallet = Wallet.generate_seed_and_wallet()
-    address = wallet.classic_address
-    xaddress = addresscodec.classic_address_to_xaddress(
-                classic_address, tag, True
-            )
-    print("Classic address:", address)
-    print("X-address:", xaddress)
-```
-
-
-<!-- MULTICODE_BLOCK_END -->
-
 ### {{n.next()}}. Connect
 
 To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html):
 
 
 ```py
-from xrpl.clients.json_rpc_client import JsonRpcClient
-JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
-client = JsonRpcClient(JSON_RPC_URL)
+{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Define the network client", end_before="# Create a wallet using the testnet faucet:")}}
 ```
 
 
 ### {{n.next()}}. Generate wallet
 
-You need [keys](https://xrpl.org/cryptographic-keys.html) to sign transactions that you submit to the XRP Ledger. 
-
-For testing and development purposes, you can get keys (and XRP balances) from [XRP Faucets](https://xrpl.org/xrp-testnet-faucet.html).
-
-Otherwise, you should take care to store your keys and set up a [secure signing method](https://xrpl.org/set-up-secure-signing.html). 
-
-To make it easy to create a wallet on the Testnet , `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method:
+To store value and execute transactions on the XRP Ledger, you need to create a wallet: a [set of keys](cryptographic-keys.html#key-components) and an [address](accounts.html#addresses) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html#reserves). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger. 
 
 
-```py
-from xrpl.wallet import generate_faucet_wallet
-test_wallet = generate_faucet_wallet(client)
-```
+For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-faucet.html) to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a [secure signing method](set-up-secure-signing.html). 
 
-This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.Wallet) that you can use to sign and submit transactions:
+
+To make it easy to create a wallet on the Testnet, `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method:
 
 
 ```py
-seed: shtrT9cYoQNGDs2uvAnK1g459SEXX
-pub_key: 033911717E99D025CB3BBE8A10E92263F7F94216D7AE3078A7FF1264B1C46F94FB
-priv_key: 00CC00FB2F861EC00CC2282475AB8BF9687A06635499737F329784658978FF87E8
-classic_address: rKm826nMCh25RK5zWmKgMp6EbGbkDoQN39
+{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Create a wallet using the testnet faucet", end_before="# Create an account str from the wallet") }}
 ```
+
+This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.Wallet):
+
+
+```py
+print(test_wallet)
+
+# print output
+seed: shrPSF6vV3v3yoND9J3NeKks6M3xd
+pub_key: 022FA613294CD13FFEA759D0185007DBE763331910509EF8F1635B4F84FA08AEE3
+priv_key: 00D46D49A1A260C24964E6CFD5C85308ACE958E200C14B4DCA73AA5C87288C8F6C
+classic_address: raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q
+```
+
+#### Using the wallet
+
+In this tutorial we only query details about the generated account from the XRP Ledger, but you can use the values in the `Wallet` instance to prepare, sign, and submit transactions with `xrpl-py`.   
+
+##### Prepare
+
+To prepare the transaction:
+
+```py
+from xrpl.models.transactions import Payment
+
+my_tx_payment = Payment(
+    account=test_wallet.classic_address,
+    amount="2200", # in drops: https://xrpl.org/basic-data-types.html#specifying-currency-amounts
+    destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+    sequence=test_wallet.next_sequence_num,
+)
+```
+
+##### Sign
+
+To sign the transaction:
+
+```py
+from xrpl.transaction import send_reliable_submission
+
+my_tx_payment_signed = safe_sign_transaction(my_tx_payment,test_wallet)
+```
+##### Send 
+
+To send the transaction:
+
+```py
+from xrpl.transaction import send_reliable_submission
+
+tx_response = send_reliable_submission(my_tx_payment, test_wallet, client)
+```
+
+##### Derive an X-address
+
+You can use `xrpl-py`'s [`xrpl.core.addresscodec`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.core.addresscodec.html) module to derive an [X-address](https://xrpaddress.info/) from the `Wallet.classic_address` field:
+
+```py
+{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Derive an x-address from the classic address:", end_before="# Look up info about your account") }}
+```
+
+The X-address format [packs the address and destination tag](https://github.com/xrp-community/standards-drafts/issues/6) into one more user-friendly value. 
 
 ### {{n.next()}}. Query
 
-Before you submit a transaction to the XRP Ledger, you should query it to check your account status and balances to make sure that the transaction will succeed. 
+You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exhange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).  
+
+Here, we'll use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the [wallet we generated](#generate-wallet) in the previous step. 
 
 
 ```py
-# Look up information about your account
-def getAcctInfo():
-    client = JsonRpcClient(JSON_RPC_URL)
-    acct_info = AccountInfo(
-        account=address,
-        ledger_index="current",
-        queue=True,
-        strict=True,
-    )
-    response = client.request(acct_info)
-    print("response.status: ", response.status)
-    print("response.result: ", response.result)
-    print("response.id: ", response.id)
-    print("response.type: ", response.type)
+{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Look up info about your account")  }}
 ```
-
-
-### {{n.next()}}. Submit transaction
-
-Submitting a transaction to the XRP inolves three distinct steps:
-
-* Preparing the transaction.
-* Signing the transaction.
-* Submitting the transaction to an XRP Ledger node. 
-
-With `xrpl-py`, you can combine the these steps by using the `tx.to_dict` function and the `Sign` model. 
-
-
-```python
- # Prepare the tx by formatting it into
-# the shape expected by the XRP Ledger
-# and signing it
-def prepareSignSubmitTx():
-    CLASSIC_ACCOUNT.next_sequence_num = get_next_valid_seq_number(CLASSIC_ACCOUNT, JSON_RPC_CLIENT)
-    tx = Transaction(
-        account=_ACCOUNT,
-        fee=_FEE,
-        sequence=CLASSIC_ACCOUNT.next_seuqnece_num + 10,
-        transaction_type=TransactionType.
-    )
-    value = tx.to_dict()["payment_trannsaction"]
-    signed_tx = Sign(
-        transaction=value,
-        seed=_SEED,
-        seed_hex=_SEED_HEX,
-    )
-    print("Signed transaction: ", signed_tx)
-    payment_transaction = Payment.from_dict(value)
-    response = send_reliable_submission(
-        payment_transaction, CLASSIC_ACCOUNT, JSON_RPC_URL
-        )
-    print("response.result.validated: ", response["validated"])
-    print("response.result.meta: ", response.result["meta"]["TransactionResult"], "tesSUCCESS")
-```
-
-
-### {{n.next()}}. Verify results
-
-To ensure that your transaction has succeeded in a validated ledger, which means that the results are final, you can add simple logic to your submit function:
-
-
-```python
-if response.result["meta"]["TransactionResult"] != "tesSUCCESS":
-    print("Transaction not yet validated")
-else:
-    print("Validated!")  
-```
-
 
 
 ### {{n.next()}}. Putting it all together
 
-Using these building blocks, we can create a simple app that:
+Using these building blocks, we can create a simple Python app that:
 
-1. Generates a wallet.
+1. Generates a wallet on the Testnet.
 2. Connects to the XRP Ledger. 
-3. Looks up information about your account. 
-4. Sends XRP from one account to another.
-5. Verifies the transaction in a validated ledger. 
+3. Looks up and prints information about the account you created. 
 
 
 ```python
-{% include '_code-samples/xrpl-py/simple-python-app.py' %}
+{% include '_code-samples/xrpl-py/get-acct_info.py' %}
+```
+
+To run the app, you can copy and paste the code into an editor or IDE and run it from there. Or you could download the file from the [XRP Ledger Dev Portal repo](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/xrpl-py) and run it locally:
+
+
+```sh
+git clone git@github.com:ripple/xrpl-dev-portal.git
+cd path/to/xrpl-dev-portal/content/_code-samples/xrpl-py/get-acct-info.py
+python3 get-acct-info.py 
+```
+
+You should see output similar to this example:
+
+```sh
+Classic address:
+
+ rnQLnSEA1YFMABnCMrkMWFKxnqW6sQ8EWk
+X-address:
+
+ T7dRN2ktZGYSTyEPWa9SyDevrwS5yDca4m7xfXTGM3bqff8
+response.status:  ResponseStatus.SUCCESS
+{
+    "account_data": {
+        "Account": "rnQLnSEA1YFMABnCMrkMWFKxnqW6sQ8EWk",
+        "Balance": "1000000000",
+        "Flags": 0,
+        "LedgerEntryType": "AccountRoot",
+        "OwnerCount": 0,
+        "PreviousTxnID": "5A5203AFF41503539D11ADC41BE4185761C5B78B7ED382E6D001ADE83A59B8DC",
+        "PreviousTxnLgrSeq": 16126889,
+        "Sequence": 16126889,
+        "index": "CAD0F7EF3AB91DA7A952E09D4AF62C943FC1EEE41BE926D632DDB34CAA2E0E8F"
+    },
+    "ledger_current_index": 16126890,
+    "queue_data": {
+        "txn_count": 0
+    },
+    "validated": false
+}
 ```
 
 
-## Next steps
+## Keep on building
 
-<<TODO: Flesh out these steps>>
+Use `xrpl-py` to:
 
-Try using `xrpl-py` to:
-
-* Set Account Flags
-* Issue a token on the Devnet
-* Set up an escrow
+* [Send XRP](send-xrp.html).
+* [Set up secure signing](set-up-secure-signing.html) for your account.
+* Set an [account flag](accountset.html#accountset-flags).
+* [Create an escrow](use-escrows.html).
