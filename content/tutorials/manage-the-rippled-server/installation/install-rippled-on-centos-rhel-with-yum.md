@@ -27,11 +27,11 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-stable]
         name=XRP Ledger Packages
-        baseurl=https://repos.ripple.com/repos/rippled-rpm/stable/
         enabled=1
         gpgcheck=0
-        gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
         repo_gpgcheck=1
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/stable/
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
         REPOFILE
 
     *Pre-release*
@@ -39,11 +39,11 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-unstable]
         name=XRP Ledger Packages
-        baseurl=https://repos.ripple.com/repos/rippled-rpm/unstable/
         enabled=1
         gpgcheck=0
-        gpgkey=https://repos.ripple.com/repos/rippled-rpm/unstable/repodata/repomd.xml.key
         repo_gpgcheck=1
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/unstable/
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/unstable/repodata/repomd.xml.key
         REPOFILE
 
     *Development*
@@ -51,11 +51,11 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-nightly]
         name=XRP Ledger Packages
-        baseurl=https://repos.ripple.com/repos/rippled-rpm/nightly/
         enabled=1
         gpgcheck=0
-        gpgkey=https://repos.ripple.com/repos/rippled-rpm/nightly/repodata/repomd.xml.key
         repo_gpgcheck=1
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/nightly/
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/nightly/repodata/repomd.xml.key
         REPOFILE
 
     <!-- MULTICODE_BLOCK_START -->
