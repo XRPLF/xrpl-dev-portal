@@ -3,7 +3,6 @@ html: get-started-using-python.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started
-subcategory: Get Started Using Python
 blurb: Build a simple Python app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app 
 filters:
@@ -64,9 +63,7 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html):
 
 
-```py
 {{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Define the network client", end_before="# Create a wallet using the testnet faucet:", language="py") }}
-```
 
 
 ### {{n.next()}}. Generate wallet
@@ -80,9 +77,9 @@ For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-
 To make it easy to create a wallet on the Testnet, `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method:
 
 
-```py
-{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Create a wallet using the testnet faucet", end_before="# Create an account str from the wallet", language="py") }}
-```
+
+{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Create a wallet using the testnet faucet:", end_before="# Create an account str from the wallet", language="py") }}
+
 
 This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.Wallet):
 
@@ -139,9 +136,8 @@ tx_response = send_reliable_submission(my_tx_payment, test_wallet, client)
 
 You can use `xrpl-py`'s [`xrpl.core.addresscodec`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.core.addresscodec.html) module to derive an [X-address](https://xrpaddress.info/) from the `Wallet.classic_address` field:
 
-```py
-{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Derive an x-address from the classic address:", end_before="# Look up info about your account") }}
-```
+
+{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Derive an x-address from the classic address:", end_before="# Look up info about your account", language="py") }}
 
 The X-address format [packs the address and destination tag](https://github.com/xrp-community/standards-drafts/issues/6) into one more user-friendly value. 
 
@@ -152,9 +148,8 @@ You can query the XRP Ledger to get information about [a specific account](accou
 Here, we'll use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the [wallet we generated](#generate-wallet) in the previous step. 
 
 
-```py
-{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Look up info about your account")  }}
-```
+{{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Look up info about your account", language="py")  }}
+
 
 
 ### {{n.next()}}. Putting it all together
@@ -167,7 +162,7 @@ Using these building blocks, we can create a simple Python app that:
 
 
 ```python
-{% include '_code-samples/xrpl-py/get-acct_info.py' %}
+{% include '_code-samples/xrpl-py/get-acct-info.py' %}
 ```
 
 To run the app, you can copy and paste the code into an editor or IDE and run it from there. Or you could download the file from the [XRP Ledger Dev Portal repo](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/xrpl-py) and run it locally:
