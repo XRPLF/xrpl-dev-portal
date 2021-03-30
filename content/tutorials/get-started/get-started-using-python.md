@@ -224,7 +224,9 @@ The response fields that you want to inspect in most cases are:
 
 * `account_data.Sequence` — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions. With `xrpl-py`, you can use the [`get_next_valid_seq_number`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html#xrpl.account.get_next_valid_seq_number) to get this automatically from the XRP Ledger. See an example of this usage in the project [README](https://github.com/XRPLF/xrpl-py#serialize-and-sign-transactions).
 
-* `account_data.Balance` — This is the account's XRP balance, [in drops](basic-data-types.html#specifying-currency-amounts). You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](transaction-cost.html#current-transaction-cost) for a given transaction. 
+* `account_data.Balance` — This is the account's XRP balance, [in drops](basic-data-types.html#specifying-currency-amounts). You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](transaction-cost.html#current-transaction-cost) for a given transaction.
+
+* `validated` — Indicates whether the returned data is from a [validated ledger](ledgers.html#open-closed-and-validated-ledgers). When sending transactions, it's important to ensure that the results are in a [final](finality-of-results.html) state in a validated ledger before further processing the transaction. For more information about best practices for transaction processing, see [Reliable Transaction Submission](reliable-transaction-submission.html). 
 
 For a detailed description of every response field, see [account_info](account_info.html#response-format).
 
