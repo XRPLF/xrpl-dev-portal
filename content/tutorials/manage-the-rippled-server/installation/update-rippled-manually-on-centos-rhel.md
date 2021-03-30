@@ -8,6 +8,18 @@ These instructions assume you have already [installed `rippled` from the `yum` r
 
 To update manually, complete the following steps:
 
+1. If you are upgrading to `rippled` 1.7.0 from an earlier version, re-add the repository to get Ripple's updated GPG key. Otherwise, skip this step:
+
+        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        [ripple-stable]
+        name=XRP Ledger Packages
+        enabled=1
+        gpgcheck=0
+        repo_gpgcheck=1
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/stable
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
+        REPOFILE
+
 1. Download and install the latest `rippled` package:
 
         $ sudo yum update rippled
