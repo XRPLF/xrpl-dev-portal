@@ -350,7 +350,7 @@ After completing this tutorial, you may want to try the following:
 - Consult [RippleAPI JavaScript Reference](rippleapi-reference.html) or [xrpl-py Python Reference](https://xrpl-py.readthedocs.io/) for the full range of XRP Ledger functionality.
 - Customize your [Account Settings](manage-account-settings.html).
 - Learn how [Transaction Metadata](transaction-metadata.html) describes the outcome of a transaction in detail.
-- Explore [Specialized Payment Types](specialized-payment-types.html) like Escrows and Payment Channels.
+- Explore more [Payment Types](payment-types.html) such as Escrows and Payment Channels.
 - Read best practices for [XRP Ledger Businesses](xrp-ledger-businesses.html).
 
 
