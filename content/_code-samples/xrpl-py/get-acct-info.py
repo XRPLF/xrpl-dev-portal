@@ -15,7 +15,7 @@ test_account = test_wallet.classic_address
 # Derive an x-address from the classic address:
 # https://xrpaddress.info/
 from xrpl.core import addresscodec
-test_xaddress = addresscodec.classic_address_to_xaddress(test_account, tag=0, is_test_network=True)
+test_xaddress = addresscodec.classic_address_to_xaddress(test_account, tag=12345, is_test_network=True)
 print("\nClassic address:\n\n", test_account)
 print("X-address:\n\n", test_xaddress)
 

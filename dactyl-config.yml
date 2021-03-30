@@ -1583,6 +1583,7 @@ pages:
     -   md: tutorials/get-started/get-started-using-python.md
         targets:
             - en
+            - ja
 
     -   md: tutorials/get-started/get-started-with-the-rippled-api.md
         html: get-started-with-the-rippled-api.html

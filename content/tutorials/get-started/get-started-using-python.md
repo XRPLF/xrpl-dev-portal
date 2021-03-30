@@ -30,10 +30,6 @@ In this tutorial, you'll learn:
 
 The `xrpl-py` library supports [Python 3.7](https://www.python.org/downloads/) and later.
 
-### Requirements for contributing to the library
-
-If you want to contribute code to the library itself, see [CONTRIBUTING](https://github.com/XRPLF/xrpl-py/blob/master/CONTRIBUTING.md) in the project repo. 
-
 
 ## Installation
 
@@ -53,17 +49,35 @@ When you're working with the XRP Ledger, there are a few things you'll need to m
 
 Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
-1. [Connect to the XRP Ledger.](#connect)
-1. [Generate a wallet.](#generate-wallet)
-1. [Query the XRP Ledger.](#query)
+1. [Connect to the XRP Ledger.](#1-connect-to-the-xrp-ledger)
+1. [Generate a wallet.](#2-generate-wallet)
+1. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
 
 
-### {{n.next()}}. Connect
+### {{n.next()}}. Connect to the XRP Ledger
 
 To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html):
 
 
 {{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Define the network client", end_before="# Create a wallet using the testnet faucet:", language="py") }}
+
+#### Connect to the production XRP Ledger
+
+The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](parallel-networks.html). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways: 
+
+* By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself (the core server connects to the Mainnet by default and you can [change the configuration to use an altnet](connect-your-rippled-to-the-xrp-test-net.html) ). [There are good reasons to run your own core server](the-rippled-server.html#reasons-to-run-your-own-server). If you run your own server, you can coconnect to it like so:
+        
+        from xrpl.clients import JsonRpcClient
+        JSON_RPC_URL = "http://localhost:5005/"
+        client = JsonRpcClient(JSON_RPC_URL)
+
+    See the example [core server config file](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values. 
+
+* By using one of the [available public servers](get-started-with-the-rippled-api.html#public-servers):
+
+        from xrpl.clients import JsonRpcClient
+        JSON_RPC_URL = "https://s2.ripple.com:51234/"
+        client = JsonRpcClient(JSON_RPC_URL) 
 
 
 ### {{n.next()}}. Generate wallet
@@ -88,9 +102,8 @@ This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/late
 print(test_wallet)
 
 # print output
-seed: shrPSF6vV3v3yoND9J3NeKks6M3xd
-pub_key: 022FA613294CD13FFEA759D0185007DBE763331910509EF8F1635B4F84FA08AEE3
-priv_key: 00D46D49A1A260C24964E6CFD5C85308ACE958E200C14B4DCA73AA5C87288C8F6C
+public_key:: 022FA613294CD13FFEA759D0185007DBE763331910509EF8F1635B4F84FA08AEE3
+private_key:: -HIDDEN-
 classic_address: raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q
 ```
 
@@ -104,10 +117,11 @@ To prepare the transaction:
 
 ```py
 from xrpl.models.transactions import Payment
+from xrpl.utils import xrp_to_drops
 
 my_tx_payment = Payment(
     account=test_wallet.classic_address,
-    amount="2200", # in drops: https://xrpl.org/basic-data-types.html#specifying-currency-amounts
+    amount=xrp_to_drops(22),
     destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
     sequence=test_wallet.next_sequence_num,
 )
@@ -139,13 +153,13 @@ You can use `xrpl-py`'s [`xrpl.core.addresscodec`](https://xrpl-py.readthedocs.i
 
 {{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Derive an x-address from the classic address:", end_before="# Look up info about your account", language="py") }}
 
-The X-address format [packs the address and destination tag](https://github.com/xrp-community/standards-drafts/issues/6) into one more user-friendly value. 
+The X-address format [packs the address and destination tag](https://github.com/xrp-community/standards-drafts/issues/6) into a more user-friendly value. 
 
-### {{n.next()}}. Query
+### {{n.next()}}. Query the XRP Ledger
 
 You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exhange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).  
 
-Here, we'll use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the [wallet we generated](#generate-wallet) in the previous step. 
+Here, we'll use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the [wallet we generated](#2-generate-wallet) in the previous step. 
 
 
 {{ include_code("_code-samples/xrpl-py/get-acct-info.py", start_with="# Look up info about your account", language="py")  }}
@@ -204,6 +218,16 @@ response.status:  ResponseStatus.SUCCESS
 }
 ```
 
+#### Interpreting the response
+
+The response fields that you want to inspect in most cases are:
+
+* `account_data.Sequence` — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions. With `xrpl-py`, you can use the [`get_next_valid_seq_number`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html#xrpl.account.get_next_valid_seq_number) to get this automatically from the XRP Ledger. See an example of this usage in the project [README](https://github.com/XRPLF/xrpl-py#serialize-and-sign-transactions).
+
+* `account_data.Balance` — This is the account's XRP balance, [in drops](basic-data-types.html#specifying-currency-amounts). You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](transaction-cost.html#current-transaction-cost) for a given transaction. 
+
+For a detailed description of every response field, see [account_info](account_info.html#response-format).
+
 
 ## Keep on building
 
@@ -211,5 +235,4 @@ Use `xrpl-py` to:
 
 * [Send XRP](send-xrp.html).
 * [Set up secure signing](set-up-secure-signing.html) for your account.
-* Set an [account flag](accountset.html#accountset-flags).
 * [Create an escrow](use-escrows.html).
