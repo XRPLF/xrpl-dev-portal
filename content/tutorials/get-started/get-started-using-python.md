@@ -233,8 +233,12 @@ For a detailed description of every response field, see [account_info](account_i
 
 ## Keep on building
 
-Use `xrpl-py` to:
+Now that you know how to use `xrpl-py` to connect to the XRP Ledger, generate a wallet, and look up information about an account, you can also use `xrpl-py` to:
 
 * [Send XRP](send-xrp.html).
 * [Set up secure signing](set-up-secure-signing.html) for your account.
-* [Create an escrow](use-escrows.html).
+
+
+
+
+

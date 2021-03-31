@@ -24,7 +24,7 @@ print("X-address:\n\n", test_xaddress)
 from xrpl.models.requests.account_info import AccountInfo
 acct_info = AccountInfo(
     account=test_account,
-    ledger_index="validated",
+    ledger_index="current",
     queue=True,
     strict=True,
 )
