@@ -10,9 +10,9 @@ from xrpl.utils import xrp_to_drops
 my_payment = Payment(
     account=test_wallet_1.classic_address,
     amount=xrp_to_drops(22),
-    fee=xrp_to_drops(10),
+    fee="10",
     destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-    sequence="16126889",
+    sequence=16126889,
 )
 print("Payment object:", my_payment)
 
