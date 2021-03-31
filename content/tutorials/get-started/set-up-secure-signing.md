@@ -74,13 +74,26 @@ If you use a client library not published by Ripple, make sure it uses proper, s
 
 For best security, be sure to keep your client library updated to the latest stable version.
 
-### Example Local Signing with RippleAPI
+### Local Signing Example
 
-The following code sample shows how to sign transaction instructions locally with RippleAPI for JavaScript:
+The following code sample shows how to sign transaction instructions locally with [`ripple-lib`](https://github.com/ripple/ripple-lib) for JavaScript and [`xrpl-py`](https://github.com/XRPLF/xrpl-py) for Python:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*JavaScript*
 
 ```js
 {% include '_code-samples/secure-signing/js/signPayment.js' %}
 ```
+
+*Python*
+
+```py
+{% include '_code-samples/secure-signing/py/sign-payment.py' %}
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
 
 For greater security, you can load your secret keys from a management tool such as [Vault](https://www.vaultproject.io/).
 
@@ -117,6 +130,7 @@ To use this configuration, follow the steps for [running `rippled` on a private 
     - [sign method][]
     - [submit method][]
     - [RippleAPI Reference](rippleapi-reference.html)
+    - [xrpl-py Reference](https://xrpl-py.readthedocs.io/en/latest/index.html)
 
 
 
