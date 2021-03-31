@@ -33,9 +33,7 @@ The `xrpl-py` library supports [Python 3.7](https://www.python.org/downloads/) a
 
 ## Installation
 
-<!--{# TODO: update link to go directly to package on PyPI when it's available  #}-->
-
-The [`xrpl-py` library](https://github.com/XRPLF/xrpl-py) is available on [PyPI](https://pypi.org/). Install with `pip`:
+The [`xrpl-py` library](https://github.com/XRPLF/xrpl-py) is available on [PyPI](https://pypi.org/project/xrpl-py/). Install with `pip`:
 
 
 ```py
@@ -115,36 +113,23 @@ In this tutorial we only query details about the generated account from the XRP 
 
 To prepare the transaction:
 
-```py
-from xrpl.models.transactions import Payment
-from xrpl.utils import xrp_to_drops
+{{ include_code("_code-samples/xrpl-py/prepare-payment.py", start_with="# Prepare payment", end_before="# print prepared payment", language="py") }}
 
-my_tx_payment = Payment(
-    account=test_wallet.classic_address,
-    amount=xrp_to_drops(22),
-    destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-    sequence=test_wallet.next_sequence_num,
-)
-```
+
 
 ##### Sign
 
 To sign the transaction:
 
-```py
-from xrpl.transaction import send_reliable_submission
+{{ include_code("_code-samples/xrpl-py/prepare-payment.py", start_with="# Sign the transaction", end_before="# Print signed tx", language="py") }}
 
-my_tx_payment_signed = safe_sign_transaction(my_tx_payment,test_wallet)
-```
+
 ##### Send 
 
 To send the transaction:
 
-```py
-from xrpl.transaction import send_reliable_submission
+{{ include_code("_code-samples/xrpl-py/prepare-payment.py", start_with="# Submit and send the transaction", end_before="# Print tx response", language="py") }}
 
-tx_response = send_reliable_submission(my_tx_payment, test_wallet, client)
-```
 
 ##### Derive an X-address
 
