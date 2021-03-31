@@ -169,7 +169,7 @@ To run the app, you can copy and paste the code into an editor or IDE and run it
 
 ```sh
 git clone git@github.com:ripple/xrpl-dev-portal.git
-cd path/to/xrpl-dev-portal/content/_code-samples/xrpl-py/get-acct-info.py
+cd xrpl-dev-portal/content/_code-samples/xrpl-py/get-acct-info.py
 python3 get-acct-info.py 
 ```
 
