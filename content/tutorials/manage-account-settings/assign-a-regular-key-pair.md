@@ -83,7 +83,7 @@ An example of a successful response:
         "master_seed": "sh8i92YRnEjJy3fpFkL8txQSCVo79",
         "master_seed_hex": "966C0F68643EFBA50D58D191D4CA8AA7",
         "public_key": "aBRNH5wUurfhZcoyR6nRwDSa95gMBkovBJ8V4cp1C1pM28H7EPL1",
-        "public_key_hex": "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E"
+        "public_key_hex": "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
         "status": "success"
     }
 }

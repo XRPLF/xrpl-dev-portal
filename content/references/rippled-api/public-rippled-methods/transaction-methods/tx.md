@@ -1,7 +1,7 @@
 # tx
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
 
-The `tx` method retrieves information on a single transaction.
+The `tx` method retrieves information on a single [transaction](transaction-formats.html), by its [identifying hash][].
 
 ## Request Format
 
@@ -432,14 +432,16 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the fields of the [Transaction object](transaction-formats.html) as well as the following additional fields:
 
-| `Field`        | Type             | Description                              |
-|:---------------|:-----------------|:-----------------------------------------|
-| `hash`         | String           | The SHA-512 hash of the transaction      |
-| `inLedger`     | Unsigned Integer | (Deprecated) Alias for `ledger_index`.   |
-| `ledger_index` | Unsigned Integer | The [ledger index][] of the ledger that includes this transaction. |
-| `meta`         | Object           | Various metadata about the transaction.  |
-| `validated`    | Boolean          | True if this data is from a validated ledger version; if omitted or set to false, this data is not final. |
-| (Various)      | (Various)        | Other fields from the [Transaction object](transaction-formats.html) |
+| `Field`        | Type                             | Description              |
+|:---------------|:---------------------------------|:-------------------------|
+| `hash`         | String                           | The SHA-512 hash of the transaction |
+| `inLedger`     | Number                           | _(Deprecated)_ Alias for `ledger_index`. |
+| `ledger_index` | Number                           | The [ledger index][] of the ledger that includes this transaction. |
+| `meta`         | Object (JSON) or String (binary) | [Transaction metadata](transaction-metadata.html), which describes the results of the transaction. |
+| `validated`    | Boolean                          | If `true`, this data comes from a validated ledger version; if omitted or set to `false`, this data is not final. |
+| (Various)      | (Various)                        | Other fields from the [Transaction object](transaction-formats.html) |
+
+**Note:** `rippled` 1.7.0 has a known issue where the `meta` field contains JSON even if the request asked for binary. ([#3791](https://github.com/ripple/rippled/pull/3791))
 
 ### Not Found Response
 
