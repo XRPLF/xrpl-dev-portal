@@ -155,6 +155,16 @@ targets:
             "consensus.html#calculate-and-share-validations": "consensus.html#検証の計算と共有"
             # Fix link from untranslated manifest.html:
             "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポーティングモード"
+            # Fix links for untranslated get-started-using-python.html:
+            "the-rippled-server.html#reasons-to-run-your-own-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
+            "get-started-with-the-rippled-api.html#public-servers": "get-started-with-the-rippled-api.html#公開サーバー"
+            "cryptographic-keys.html#key-components": "cryptographic-keys.html#キーの生成"
+            "accounts.html#addresses": "accounts.html#アドレス"
+            "cryptographic-keys.html#private-key": "cryptographic-keys.html#キーの生成"
+            "basic-data-types.html#specifying-currency-amounts": "basic-data-types.html#通貨額の指定"
+            "transaction-cost.html#current-transaction-cost": "transaction-cost.html#現在のトランザクションコスト"
+            "ledgers.html#open-closed-and-validated-ledgers": "ledgers.html#ツリーの形式"
+            "account_info.html#response-format": "account_info.html#応答フォーマット"
 
 
     -   name: xrp-api-only
