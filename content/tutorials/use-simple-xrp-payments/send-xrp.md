@@ -172,7 +172,7 @@ The result of the signing operation is a transaction object containing a signatu
 Now that you have a signed transaction, you can submit it to an XRP Ledger server, and that server will relay it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)
 
 - **JavaScript:** Use the [submit() method](rippleapi-reference.html#submit) to submit a transaction to the network. Use the [`getLedgerVersion()` method](rippleapi-reference.html#getledgerversion) to get the latest validated ledger index.
-- **Python:** Use the [xrpl.transaction.submit_transaction_blob() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.submit_transaction_blob) to submit a transaction to the network. Use the [xrpl.ledger.get_latest_validated_ledger_sequence() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.ledger.html#xrpl.ledger.get_latest_validated_ledger_sequence) to get the latest validated ledger index.
+- **Python:** Use the [xrpl.transaction.submit_transaction() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.submit_transaction) to submit a transaction to the network. Use the [xrpl.ledger.get_latest_validated_ledger_sequence() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.ledger.html#xrpl.ledger.get_latest_validated_ledger_sequence) to get the latest validated ledger index.
 
 
 <!-- MULTICODE_BLOCK_START -->
@@ -212,6 +212,8 @@ Most transactions are accepted into the next ledger version after they're submit
 
 - **JavaScript:** Use an account [subscription](rippleapi-reference.html#listening-to-streams) to listen for an event when the transaction is confirmed. Use the `ledger` event type to trigger your code to run whenever there is a new validated ledger version so that you can know if the transaction can no longer be confirmed.
 - **Python:** Poll the [xrpl.transaction.get_transaction_from_hash() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash) to see if your transaction has a final result. Periodically use the [xrpl.ledger.get_latest_validated_ledger_sequence() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.ledger.html#xrpl.ledger.get_latest_validated_ledger_sequence) so you can know if the transaction can no longer be confirmed.
+
+    **Tip:** The [xrpl.transaction.send_reliable_submission() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission) handles this process all in one call. You can use this instead of `submit_transaction()` wherever it's appropriate for your code to stop and wait for a transaction's [final result](finality-of-results.html) to be confirmed.
 
 <!-- MULTICODE_BLOCK_START -->
 
