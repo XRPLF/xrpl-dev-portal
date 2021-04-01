@@ -25,7 +25,7 @@ This tutorial explains how to send a simple XRP Payment using ripple-lib for Jav
 To interact with the XRP Ledger, you need to set up a dev environment with the necessary tools. This tutorial provides examples using the following options:
 
 - **JavaScript** with the [ripple-lib (RippleAPI) library](https://github.com/ripple/ripple-lib/). See the [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) for detailed instructions on getting started.
-- **Python** with the [xrpl-py library](https://xrpl-py.readthedocs.io/). <!--{# TODO: add "get started" link here #}-->
+- **Python** with the [xrpl-py library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
 
 
 ## Send a Payment on the Test Net
@@ -283,9 +283,10 @@ console.log(generated.secret) // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 _Python_
 
 ```py
-from xrpl.core.keypairs import generate_seed
 from xrpl.wallet import Wallet
-my_wallet = Wallet(generate_seed()) #TODO: update this with any changes from https://github.com/XRPLF/xrpl-py/pull/194
+my_wallet = Wallet.create()
+print(my_wallet.classic_address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
+print(my_wallet.seed)            # Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
 
 <!-- MULTICODE_BLOCK_END -->
