@@ -1590,6 +1590,26 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/get-started/build-apps/get-started-building-apps.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/get-started/build-apps/connect-to-ledger.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/get-started/build-apps/connect-to-ledger.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/get-started/build-apps/generate-a-wallet.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/get-started/get-started-using-python.md
         targets:
             - en
