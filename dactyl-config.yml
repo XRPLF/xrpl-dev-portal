@@ -1605,6 +1605,41 @@ pages:
             - en
             - ja
 
+    -  md: tutorials/get-started/build-apps/query-the-ledger.md
+       targets:
+            - en
+            - ja
+
+    -  md: tutorials/get-started/build-apps/submit-transaction.md
+       targets:
+            - en
+            - ja
+
+    -  md: tutorials/get-started/build-apps/verify-results.md
+       targets:
+            - en
+            - ja
+
+    -  md: tutorials/get-started/build-apps/process-transactions.md
+       targets:
+            - en
+            - ja
+
+    -  md: tutorials/get-started/build-apps/configure-accounts.md
+       targets:
+            - en
+            - ja
+
+    -  md: tutorials/get-started/build-apps/use-the-dex.md
+       targets:
+            - en
+            - ja
+
+    -  md: tutorials/get-started/build-apps/get-ready-for-prod.md
+       targets:
+            - en
+            - ja
+
     -   md: tutorials/get-started/get-started-using-python.md
         targets:
             - en
