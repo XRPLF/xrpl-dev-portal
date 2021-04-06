@@ -1,5 +1,5 @@
 ---
-html: submit-a-transaction.html
+html: submit-transaction.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started

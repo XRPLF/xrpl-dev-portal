@@ -39,6 +39,8 @@ Here are the basic steps you’ll need to cover for almost any XRP Ledger projec
 
 
 ## Learning Goals
+{% set n = cycler(* range(1,99)) %}
+
 
 In this tutorial, you’ll learn: 
 
@@ -49,8 +51,7 @@ In this tutorial, you’ll learn:
 * How to put these steps together to create a simple app that submits a transaction to the XRP Ledger Testnet. 
 
 
-## Set up your environment
-{% set n = cycler(* range(1,99)) %}
+## {{n.next()}}. Set up your environment
 
 
 Requirements for setting up your environment vary depending on the programming lanuage and tools you choose to use in your project; see the docs for the tools and libaries for details specific to the framework you want to work with. 
