@@ -64,19 +64,13 @@ As always, follow industry-standard practices for securing your machines, such a
 
 This configuration uses a client library in the programming language you are using to sign transactions locally. You need a client library for the programming language you use. The following client libraries can sign transactions for the XRP Ledger locally:
 
-- **Python**
-    - `xrpl-py`
-        - [Repo](https://github.com/XRPLF/xrpl-py)
-        - [Get Started](get-started-using-python.html)
-        - [API Reference](https://xrpl-py.readthedocs.io/en/latest/)
-- **JavaScript**
-    - `ripple-lib`
-        - [Repo](https://github.com/ripple/ripple-lib)
-        - [Get Started](get-started-with-rippleapi-for-javascript.html)
-        - [API Reference](rippleapi-reference.html)
-- **C++** (included with `rippled`)
-    - `rippled` Signing Library
-        - [Get Started](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library)
+| Language | Library Name | Get Started | API Reference | Source Code |
+|----------|--------------|-------------|---------------|-------------|
+| **Python**   | `xrpl-py`      | [Get Started](get-started-using-python.html) | [API Reference](https://xrpl-py.readthedocs.io/) | [Repo](https://github.com/XRPLF/xrpl-py) |
+| **JavaScript** / **TypeScript** | `ripple-lib` | [Get Started](get-started-with-rippleapi-for-javascript.html) |  [API Reference](rippleapi-reference.html) | [Repo](https://github.com/ripple/ripple-lib) |
+| **C++**      | `rippled` Signing Library | [Get Started](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library) |  | (Part of [`rippled`](https://github.com/ripple/rippled/)) |
+| **Java** | `xrpl4j` | [README](https://github.com/XRPLF/xrpl4j#readme) | [API Reference](https://github.com/XRPLF/xrpl4j/tree/main/xrpl4j-integration-tests)  | [Repo](https://github.com/XRPLF/xrpl4j) |
+
 
 
 ### Security Best Practices for Signing Libraries
@@ -95,15 +89,11 @@ To optimize the security of your signing library:
 
 ### Local Signing Example
 
-Here are examples of how to sign transaction instructions locally using the following languages: 
+Here are examples of how to sign transaction instructions locally using the following languages and libraries: 
 
-* JavaScript
+* **JavaScript** / **TypeScript** - [`ripple-lib`](https://github.com/ripple/ripple-lib)  
 
-    [`ripple-lib`](https://github.com/ripple/ripple-lib)  
-
-* Python
-
-    [`xrpl-py`](https://github.com/XRPLF/xrpl-py)
+* **Python** - [`xrpl-py`](https://github.com/XRPLF/xrpl-py)
 
 <!-- MULTICODE_BLOCK_START -->
 
