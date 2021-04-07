@@ -1,17 +1,17 @@
 ---
-html: use-the-dex.html
+html: explore-advanced-use-cases.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started
 subcategory: Build Apps
-blurb: Learn how to use the decentralized exchange.
+blurb: Find out what else you can do on the XRP Ledger.
 cta_text: Build Apps
 filters:
     - interactive_steps
     - include_code
 ---
 
-# Use the DEX
+# Explore Advanced Use Cases
 
 Floof tum, tickle bum, jellybean footies curly toes. Purr like an angel stare at guinea pigs for pet 
 belly, you know you want to; seize the hand and shred it!. Have my breakfast spaghetti yarn purrr pur

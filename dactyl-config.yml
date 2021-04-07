@@ -1630,7 +1630,7 @@ pages:
             - en
             - ja
 
-    -  md: tutorials/get-started/build-apps/use-the-dex.md
+    -  md: tutorials/get-started/build-apps/explore-advanced-use-cases.md
        targets:
             - en
             - ja
