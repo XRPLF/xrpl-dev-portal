@@ -12,7 +12,7 @@ Some of the required [common fields][] for normal transactions do not make sense
 | `Fee`           | String    | Amount            | `0`                        |
 | `Sequence`      | Number    | UInt32            | `0`                        |
 | `SigningPubKey` | String    | Blob              | `""` (Empty string)        |
-| `SigningPubKey` | String    | Blob              | `""` (Empty string)        |
+| `TxnSignature`  | String    | Blob              | `""` (Empty string)        |
 
 Pseudo-transactions use the following common fields as normal:
 
