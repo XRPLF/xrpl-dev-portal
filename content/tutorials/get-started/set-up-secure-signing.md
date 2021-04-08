@@ -62,21 +62,38 @@ As always, follow industry-standard practices for securing your machines, such a
 
 {{ include_svg("img/secure-signing-client-library.svg", "Diagram of using a client library with local signing") }}
 
-This configuration uses a client library in the programming language you are using to sign transactions locally. You need a client library for the programming language you use. Ripple publishes the following client libraries that can sign transactions for the XRP Ledger locally:
+This configuration uses a client library in the programming language you are using to sign transactions locally. You need a client library for the programming language you use. The following client libraries can sign transactions for the XRP Ledger locally:
 
-- **RippleAPI (ripple-lib) for JavaScript**
-    - [Setup](get-started-with-rippleapi-for-javascript.html)
-    - [API Reference](rippleapi-reference.html)
-- **Signing Library for C++** (included with `rippled`)
-    - [Documentation](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library)
+| Language | Library Name | Get Started | API Reference | Source Code |
+|----------|--------------|-------------|---------------|-------------|
+| **Python**   | `xrpl-py`      | [Get Started](get-started-using-python.html) | [API Reference](https://xrpl-py.readthedocs.io/) | [Repo](https://github.com/XRPLF/xrpl-py) |
+| **JavaScript** / **TypeScript** | `ripple-lib` | [Get Started](get-started-with-rippleapi-for-javascript.html) |  [API Reference](rippleapi-reference.html) | [Repo](https://github.com/ripple/ripple-lib) |
+| **C++**      | `rippled` Signing Library | [Get Started](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library) |  | (Part of [`rippled`](https://github.com/ripple/rippled/)) |
+| **Java** | `xrpl4j` | [README](https://github.com/XRPLF/xrpl4j#readme) | [API Reference](https://github.com/XRPLF/xrpl4j/tree/main/xrpl4j-integration-tests)  | [Repo](https://github.com/XRPLF/xrpl4j) |
 
-If you use a client library not published by Ripple, make sure it uses proper, secure implementations of the signing algorithm(s) it implements. (For example, if it uses the default ECDSA algorithm, it should also use deterministic nonces as described in [RFC-6979](https://tools.ietf.org/html/rfc6979).) All of Ripple's published libraries listed above follow industry best practices.
 
-For best security, be sure to keep your client library updated to the latest stable version.
+
+### Security Best Practices for Signing Libraries
+
+To optimize the security of your signing library: 
+
+* Make sure the signing library you use has properly and securely implemented its signing algorithm(s). For example, if the library uses the default ECDSA algorithm, it should also use deterministic nonces as described in [RFC-6979](https://tools.ietf.org/html/rfc6979). 
+
+    All of the published libraries listed above follow industry best practices.
+
+
+* Keep your client library updated to the latest stable version.
+
+* For enhanced security, you can load your secret keys from a management tool such as [Vault](https://www.vaultproject.io/).
+
 
 ### Local Signing Example
 
-The following code sample shows how to sign transaction instructions locally with [`ripple-lib`](https://github.com/ripple/ripple-lib) for JavaScript and [`xrpl-py`](https://github.com/XRPLF/xrpl-py) for Python:
+Here are examples of how to sign transaction instructions locally using the following languages and libraries: 
+
+* **JavaScript** / **TypeScript** - [`ripple-lib`](https://github.com/ripple/ripple-lib)  
+
+* **Python** - [`xrpl-py`](https://github.com/XRPLF/xrpl-py)
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -93,9 +110,6 @@ The following code sample shows how to sign transaction instructions locally wit
 ```
 
 <!-- MULTICODE_BLOCK_END -->
-
-
-For greater security, you can load your secret keys from a management tool such as [Vault](https://www.vaultproject.io/).
 
 
 ## Use a Dedicated Signing Device
