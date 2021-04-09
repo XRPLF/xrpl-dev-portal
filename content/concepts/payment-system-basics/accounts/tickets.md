@@ -1,5 +1,6 @@
 ---
 html: tickets.html
+parent: accounts.html
 funnel: Build
 doc_type: Concepts
 category: Payment System Basics

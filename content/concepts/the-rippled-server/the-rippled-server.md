@@ -1,5 +1,6 @@
 ---
 html: the-rippled-server.html
+parent: concepts.html
 funnel: Build
 doc_type: Concepts
 category: The rippled Server

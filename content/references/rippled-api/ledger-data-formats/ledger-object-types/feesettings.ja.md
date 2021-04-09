@@ -1,12 +1,12 @@
 ---
 html: feesettings.html
+parent: ledger-object-types.html
 funnel: Build
 doc_type: References
 supercategory: rippled API
 category: Ledger Data Formats
 subcategory: Ledger Object Types
 blurb: コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。
-parent: ledger-object-types.html
 ---
 # FeeSettings
 [[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")

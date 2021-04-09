@@ -98,7 +98,7 @@
       <!-- main column -->
       <main class="main {% if currentpage.sidebar is defined and currentpage.sidebar == "disabled" %}col-md-12{% else %}col-md-7 col-lg-6{% endif %} order-md-3  {% block mainclasses %}{% endblock %}" role="main" id="main_content_body">
           {% block breadcrumbs %}
-            {% include 'template-breadcrumbs.html' %}
+            {% include 'breadcrumbs.html' %}
           {% endblock %}
           {% block main %}{% endblock %}
       </main>
@@ -106,7 +106,11 @@
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
           {% block left_sidebar %}
-            {% include "template-sidebar_nav.html" %}
+            {% set docs_top = pages|selectattr('html', 'defined_and_equalto', 'docs.html')|list|first %}
+            {% if docs_top.is_ancestor_of(currentpage.html) %}
+              {% set tree_top = docs_top %}
+            {% endif %}
+            {% include "tree-nav.html" %}
           {% endblock %}
       </aside>
       {% endif %}

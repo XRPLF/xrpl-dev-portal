@@ -1,5 +1,6 @@
 ---
 html: ledger-object-types.html
+parent: ledger-data-formats.html
 funnel: Build
 doc_type: References
 supercategory: rippled API

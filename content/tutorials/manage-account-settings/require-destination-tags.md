@@ -1,5 +1,6 @@
 ---
 html: require-destination-tags.html
+parent: manage-account-settings.html
 funnel: Build
 doc_type: Tutorials
 category: Manage Account Settings

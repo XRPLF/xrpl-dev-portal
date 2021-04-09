@@ -193,6 +193,7 @@ pages:
         category: Uses
         template: template-learn-overview.html
         html: overview.html
+        parent: index.html
         top_nav_level: 1
         top_nav_name: Overview
         sidebar: disabled
@@ -204,6 +205,7 @@ pages:
         category: Uses
         template: template-learn-overview.html
         html: overview.html
+        parent: index.html
         top_nav_level: 1
         top_nav_name: オーバービュー
         sidebar: disabled
@@ -215,6 +217,7 @@ pages:
         category: Uses
         template: template-learn-uses.html
         html: uses.html
+        parent: overview.html # "Learn"
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -225,6 +228,7 @@ pages:
         category: Uses
         template: template-learn-uses.html
         html: uses.html
+        parent: overview.html # "Learn"
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -235,6 +239,7 @@ pages:
         category: History
         template: template-learn-history.html
         html: history.html
+        parent: overview.html # "Learn"
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -245,6 +250,7 @@ pages:
         category: History
         template: template-learn-history.html
         html: history.html
+        parent: overview.html # "Learn"
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -255,6 +261,7 @@ pages:
         category: Impact
         template: template-learn-impact.html
         html: impact.html
+        parent: overview.html # "Learn"
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -265,6 +272,7 @@ pages:
         category: Impact
         template: template-learn-impact.html
         html: impact.html
+        parent: overview.html # "Learn"
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -275,6 +283,7 @@ pages:
         category: Carbon Calculator
         template: template-calculator.html
         html: carbon-calculator.html
+        parent: impact.html
         top_nav_level: 1
         sidebar: disabled
         blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the green currency calculator to compare.
@@ -288,6 +297,7 @@ pages:
         category: Carbon Calculator
         template: template-calculator.html
         html: carbon-calculator.html
+        parent: impact.html
         top_nav_level: 1
         sidebar: disabled
         blurb: 現金、クレジットカード、暗号資産でもエネルギー消費する。インタラクティブツールで消費量を比較しましょう。
@@ -299,6 +309,7 @@ pages:
 # "Explore" funnel -------------------------------------------------------------
     -   name: Explore
         html: explore.html
+        parent: index.html
         template: template-redirect.html
         redirect_url: businesses.html
         funnel: Explore
@@ -307,6 +318,7 @@ pages:
 
     -   name: 探る
         html: explore.html
+        parent: index.html
         template: template-redirect.html
         redirect_url: businesses.html
         funnel: Explore
@@ -318,6 +330,7 @@ pages:
         category: Wallets
         template: template-explore-wallets.html
         html: wallets.html
+        parent: explore.html
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -328,6 +341,7 @@ pages:
         category: Wallets
         template: template-explore-wallets.html
         html: wallets.html
+        parent: explore.html
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -338,6 +352,7 @@ pages:
         category: Exchanges
         template: template-explore-exchanges.html
         html: exchanges.html
+        parent: explore.html
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -348,6 +363,7 @@ pages:
         category: Exchanges
         template: template-explore-exchanges.html
         html: exchanges.html
+        parent: explore.html
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -358,6 +374,7 @@ pages:
         category: Businesses
         template: template-explore-businesses.html
         html: businesses.html
+        parent: explore.html
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -368,6 +385,7 @@ pages:
         category: Businesses
         template: template-explore-businesses.html
         html: businesses.html
+        parent: explore.html
         top_nav_level: 1
         sidebar: disabled
         targets:
@@ -378,6 +396,7 @@ pages:
         funnel: Build
         template: template-landing-docs.html
         html: docs.html
+        parent: index.html
         sidebar: disabled
         top_nav_level: 1
         top_nav_name: Docs
@@ -388,6 +407,7 @@ pages:
         funnel: Build
         template: template-landing-docs.html
         html: docs.html
+        parent: index.html
         top_nav_level: 1
         top_nav_name: ドキュメント
         sidebar: disabled
@@ -400,6 +420,7 @@ pages:
         funnel: Build
         doc_type: Concepts
         html: concepts.html
+        parent: docs.html
         top_nav_level: 2
         template: template-landing-children.html
         blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
@@ -410,6 +431,7 @@ pages:
         funnel: Build
         doc_type: Concepts
         html: concepts.html
+        parent: docs.html
         top_nav_level: 2
         template: template-landing-children.html
         blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
@@ -421,6 +443,7 @@ pages:
         doc_type: Concepts
         category: Introduction
         html: introduction.html
+        parent: concepts.html
         template: template-landing-children.html
         blurb: Learn the "what" and "why" of the XRP Ledger.
         targets:
@@ -431,6 +454,7 @@ pages:
         doc_type: Concepts
         category: Introduction
         html: introduction.html
+        parent: concepts.html
         template: template-landing-children.html
         blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
         targets:
@@ -441,6 +465,7 @@ pages:
         funnel: Build
         doc_type: Concepts
         category: Introduction
+        parent: introduction.html
         blurb: Get a quick and concise introduction to key features of the XRP Ledger.
         targets:
             - en
@@ -450,6 +475,7 @@ pages:
         funnel: Build
         doc_type: Concepts
         category: Introduction
+        parent: introduction.html
         blurb: XRP Ledgerの基本機能を簡単に紹介します。
         targets:
             - ja
@@ -459,12 +485,14 @@ pages:
         funnel: Build
         doc_type: Concepts
         category: Introduction
+        parent: introduction.html
         blurb: Develop a basic understanding of the XRP Ledger's consensus mechanism.
         targets:
             - en
 
     -   md: concepts/introduction/intro-to-consensus.ja.md
         html: intro-to-consensus.html
+        parent: introduction.html
         funnel: Build
         doc_type: Concepts
         category: Introduction
@@ -474,6 +502,7 @@ pages:
 
     -   md: concepts/introduction/xrp.md
         html: xrp.html
+        parent: introduction.html
         funnel: Build
         doc_type: Concepts
         category: Introduction
@@ -483,6 +512,7 @@ pages:
 
     -   md: concepts/introduction/xrp.ja.md
         html: xrp.html
+        parent: introduction.html
         funnel: Build
         doc_type: Concepts
         category: Introduction
@@ -492,6 +522,7 @@ pages:
 
     -   md: concepts/introduction/software-ecosystem.md
         html: software-ecosystem.html
+        parent: introduction.html
         funnel: Build
         doc_type: Concepts
         category: Introduction
@@ -501,6 +532,7 @@ pages:
 
     -   md: concepts/introduction/software-ecosystem.ja.md
         html: software-ecosystem.html
+        parent: introduction.html
         funnel: Build
         doc_type: Concepts
         category: Introduction
@@ -510,6 +542,7 @@ pages:
 
     -   md: concepts/introduction/technical-faq.md
         html: technical-faq.html
+        parent: introduction.html
         funnel: Build
         doc_type: Concepts
         category: Introduction
@@ -519,6 +552,7 @@ pages:
 
     -   md: concepts/introduction/technical-faq.ja.md
         html: technical-faq.html
+        parent: introduction.html
         funnel: Build
         doc_type: Concepts
         category: Introduction
@@ -528,6 +562,7 @@ pages:
 
     -   name: Payment System Basics
         html: payment-system-basics.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -538,6 +573,7 @@ pages:
 
     -   name: 支払いシステムの基本
         html: payment-system-basics.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -548,6 +584,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/accounts.md
         html: accounts.html
+        parent: payment-system-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -558,6 +595,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/accounts.ja.md
         html: accounts.html
+        parent: payment-system-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -568,6 +606,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/cryptographic-keys.md
         html: cryptographic-keys.html
+        parent: accounts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -578,6 +617,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/cryptographic-keys.ja.md
         html: cryptographic-keys.html
+        parent: accounts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -588,6 +628,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/multi-signing.md
         html: multi-signing.html
+        parent: accounts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -598,6 +639,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/multi-signing.ja.md
         html: multi-signing.html
+        parent: accounts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -608,6 +650,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/reserves.md
         html: reserves.html
+        parent: accounts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -618,6 +661,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/reserves.ja.md
         html: reserves.html
+        parent: accounts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -633,6 +677,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/depositauth.md
         html: depositauth.html
+        parent: accounts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -643,6 +688,7 @@ pages:
 
     -   md: concepts/payment-system-basics/accounts/depositauth.ja.md
         html: depositauth.html
+        parent: accounts.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -653,6 +699,7 @@ pages:
 
     -   md: concepts/payment-system-basics/fees.md
         html: fees.html
+        parent: payment-system-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -662,6 +709,7 @@ pages:
 
     -   md: concepts/payment-system-basics/fees.ja.md
         html: fees.html
+        parent: payment-system-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -671,6 +719,7 @@ pages:
 
     -   md: concepts/payment-system-basics/ledgers.md
         html: ledgers.html
+        parent: payment-system-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -681,6 +730,7 @@ pages:
         # TODO: translation needs to be updated based on ledgers.md
     -   md: concepts/payment-system-basics/ledgers.ja.md
         html: ledgers.html
+        parent: payment-system-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -690,6 +740,7 @@ pages:
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
         html: transaction-basics.html
+        parent: payment-system-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -700,6 +751,7 @@ pages:
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.ja.md
         html: transaction-basics.html
+        parent: payment-system-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -710,6 +762,7 @@ pages:
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
         html: transaction-cost.html
+        parent: transaction-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -720,6 +773,7 @@ pages:
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.ja.md
         html: transaction-cost.html
+        parent: transaction-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -730,6 +784,7 @@ pages:
 
     -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.md
         html: finality-of-results.html
+        parent: transaction-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -740,6 +795,7 @@ pages:
 
     -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.ja.md
         html: finality-of-results.html
+        parent: transaction-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -750,6 +806,7 @@ pages:
 
     -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
         html: source-and-destination-tags.html
+        parent: transaction-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -761,6 +818,7 @@ pages:
     # TODO: Somehow this page's blurb got translated into Japanese but the page itself wasn't?
     -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
         html: source-and-destination-tags.html
+        parent: transaction-basics.html
         funnel: Build
         doc_type: Concepts
         category: Payment System Basics
@@ -771,6 +829,7 @@ pages:
 
     -   name: Payment Types
         html: payment-types.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -781,6 +840,7 @@ pages:
 
     -   name: 支払いのタイプ
         html: payment-types.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -796,6 +856,7 @@ pages:
         doc_type: Concepts
         category: Payment Types
         template: template-redirect.html
+        nav_omit: true
         redirect_url: payment-types.html
         targets:
             - en
@@ -803,6 +864,7 @@ pages:
 
     -   md: concepts/payment-types/direct-xrp-payments.md
         html: direct-xrp-payments.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -812,6 +874,7 @@ pages:
 
     -   md: concepts/payment-types/direct-xrp-payments.ja.md
         html: direct-xrp-payments.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -821,6 +884,7 @@ pages:
 
     -   md: concepts/payment-types/cross-currency-payments.md
         html: cross-currency-payments.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -830,6 +894,7 @@ pages:
 
     -   md: concepts/payment-types/cross-currency-payments.ja.md
         html: cross-currency-payments.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -839,6 +904,7 @@ pages:
 
     -   md: concepts/payment-types/checks.md
         html: checks.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -848,6 +914,7 @@ pages:
 
     -   md: concepts/payment-types/checks.ja.md
         html: checks.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -857,6 +924,7 @@ pages:
 
     -   md: concepts/payment-types/escrow.md
         html: escrow.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -866,6 +934,7 @@ pages:
 
     -   md: concepts/payment-types/escrow.ja.md
         html: escrow.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -875,6 +944,7 @@ pages:
 
     -   md: concepts/payment-types/partial-payments.md
         html: partial-payments.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -884,6 +954,7 @@ pages:
 
     -   md: concepts/payment-types/partial-payments.ja.md
         html: partial-payments.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -893,6 +964,7 @@ pages:
 
     -   md: concepts/payment-types/payment-channels.md
         html: payment-channels.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -902,6 +974,7 @@ pages:
 
     -   md: concepts/payment-types/payment-channels.ja.md
         html: payment-channels.html
+        parent: payment-types.html
         funnel: Build
         doc_type: Concepts
         category: Payment Types
@@ -911,6 +984,7 @@ pages:
 
     -   name: Issued Currencies
         html: issued-currencies.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -921,6 +995,7 @@ pages:
 
     -   name: 発行済み通貨
         html: issued-currencies.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -931,6 +1006,7 @@ pages:
 
     -   md: concepts/issued-currencies/issued-currencies-overview.md
         html: issued-currencies-overview.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -940,6 +1016,7 @@ pages:
 
     -   md: concepts/issued-currencies/issued-currencies-overview.ja.md
         html: issued-currencies-overview.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -949,6 +1026,7 @@ pages:
 
     -   md: concepts/issued-currencies/trust-lines-and-issuing.md
         html: trust-lines-and-issuing.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -958,6 +1036,7 @@ pages:
 
     -   md: concepts/issued-currencies/trust-lines-and-issuing.ja.md
         html: trust-lines-and-issuing.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -967,6 +1046,7 @@ pages:
 
     -   md: concepts/issued-currencies/authorized-trust-lines.md
         html: authorized-trust-lines.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -976,6 +1056,7 @@ pages:
 
     -   md: concepts/issued-currencies/authorized-trust-lines.ja.md
         html: authorized-trust-lines.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -985,6 +1066,7 @@ pages:
 
     -   md: concepts/issued-currencies/freezes.md
         html: freezes.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -994,6 +1076,7 @@ pages:
 
     -   md: concepts/issued-currencies/freezes.ja.md
         html: freezes.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1003,6 +1086,7 @@ pages:
 
     -   md: concepts/issued-currencies/rippling.md
         html: rippling.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1012,6 +1096,7 @@ pages:
 
     -   md: concepts/issued-currencies/rippling.ja.md
         html: rippling.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1021,6 +1106,7 @@ pages:
 
     -   md: concepts/issued-currencies/transfer-fees.md
         html: transfer-fees.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1030,6 +1116,7 @@ pages:
 
     -   md: concepts/issued-currencies/transfer-fees.ja.md
         html: transfer-fees.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1039,6 +1126,7 @@ pages:
 
     -   md: concepts/issued-currencies/issuing-and-operational-addresses.md
         html: issuing-and-operational-addresses.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1048,6 +1136,7 @@ pages:
 
     -   md: concepts/issued-currencies/issuing-and-operational-addresses.ja.md
         html: issuing-and-operational-addresses.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1057,6 +1146,7 @@ pages:
 
     -   md: concepts/issued-currencies/paths.md
         html: paths.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1066,6 +1156,7 @@ pages:
 
     -   md: concepts/issued-currencies/paths.ja.md
         html: paths.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1075,6 +1166,7 @@ pages:
 
     -   md: concepts/issued-currencies/demurrage.md
         html: demurrage.html
+        parent: issued-currencies.html
         funnel: Build
         doc_type: Concepts
         category: Issued Currencies
@@ -1085,6 +1177,7 @@ pages:
 
     -   name: Decentralized Exchange
         html: decentralized-exchange.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Decentralized Exchange
@@ -1095,6 +1188,7 @@ pages:
 
     -   name: 分散型取引所
         html: decentralized-exchange.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Decentralized Exchange
@@ -1105,6 +1199,7 @@ pages:
 
     -   md: concepts/decentralized-exchange/offers.md
         html: offers.html
+        parent: decentralized-exchange.html
         funnel: Build
         doc_type: Concepts
         category: Decentralized Exchange
@@ -1114,6 +1209,7 @@ pages:
 
     -   md: concepts/decentralized-exchange/offers.ja.md
         html: offers.html
+        parent: decentralized-exchange.html
         funnel: Build
         doc_type: Concepts
         category: Decentralized Exchange
@@ -1123,6 +1219,7 @@ pages:
 
     -   md: concepts/decentralized-exchange/autobridging.md
         html: autobridging.html
+        parent: decentralized-exchange.html
         funnel: Build
         doc_type: Concepts
         category: Decentralized Exchange
@@ -1132,6 +1229,7 @@ pages:
 
     -   md: concepts/decentralized-exchange/autobridging.ja.md
         html: autobridging.html
+        parent: decentralized-exchange.html
         funnel: Build
         doc_type: Concepts
         category: Decentralized Exchange
@@ -1141,6 +1239,7 @@ pages:
 
     -   md: concepts/decentralized-exchange/ticksize.md
         html: ticksize.html
+        parent: decentralized-exchange.html
         funnel: Build
         doc_type: Concepts
         category: Decentralized Exchange
@@ -1150,6 +1249,7 @@ pages:
 
     -   md: concepts/decentralized-exchange/ticksize.ja.md
         html: ticksize.html
+        parent: decentralized-exchange.html
         funnel: Build
         doc_type: Concepts
         category: Decentralized Exchange
@@ -1159,6 +1259,7 @@ pages:
 
     -   name: Consensus Network
         html: consensus-network.html
+        parent: decentralized-exchange.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1169,6 +1270,7 @@ pages:
 
     -   name: コンセンサスネットワーク
         html: consensus-network.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1179,6 +1281,7 @@ pages:
 
     -   md: concepts/consensus-network/consensus.md
         html: consensus.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1188,6 +1291,7 @@ pages:
 
     -   md: concepts/consensus-network/consensus.ja.md
         html: consensus.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1197,6 +1301,7 @@ pages:
 
     -   md: concepts/consensus-network/consensus-principles-and-rules.md
         html: consensus-principles-and-rules.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1206,6 +1311,7 @@ pages:
 
     -   md: concepts/consensus-network/consensus-principles-and-rules.ja.md
         html: consensus-principles-and-rules.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1215,6 +1321,7 @@ pages:
 
     -   md: concepts/consensus-network/consensus-protections.md
         html: consensus-protections.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1224,6 +1331,7 @@ pages:
 
     -   md: concepts/consensus-network/consensus-protections.ja.md
         html: consensus-protections.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1234,6 +1342,7 @@ pages:
         # TODO: translate this page and blurb
     -   md: concepts/consensus-network/invariant-checking.md
         html: invariant-checking.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1250,6 +1359,7 @@ pages:
 
     -   md: concepts/consensus-network/transaction-queue.md
         html: transaction-queue.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1259,6 +1369,7 @@ pages:
 
     -   md: concepts/consensus-network/transaction-queue.ja.md
         html: transaction-queue.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1268,6 +1379,7 @@ pages:
 
     -   md: concepts/consensus-network/about-canceling-a-transaction.md
         html: about-canceling-a-transaction.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1277,6 +1389,7 @@ pages:
 
     -   md: concepts/consensus-network/about-canceling-a-transaction.ja.md
         html: about-canceling-a-transaction.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1286,6 +1399,7 @@ pages:
 
     -   md: concepts/consensus-network/transaction-malleability.md
         html: transaction-malleability.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1295,6 +1409,7 @@ pages:
 
     -   md: concepts/consensus-network/transaction-malleability.ja.md
         html: transaction-malleability.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1304,6 +1419,7 @@ pages:
 
     -   md: concepts/consensus-network/amendments/amendments.md
         html: amendments.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1314,6 +1430,7 @@ pages:
 
     -   md: concepts/consensus-network/amendments/amendments.ja.md
         html: amendments.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1324,6 +1441,7 @@ pages:
 
     -   md: concepts/consensus-network/amendments/known-amendments.md
         html: known-amendments.html
+        parent: amendments.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1335,6 +1453,7 @@ pages:
     # TODO: update translated page with latest amendment statuses
     -   md: concepts/consensus-network/amendments/known-amendments.ja.md
         html: known-amendments.html
+        parent: amendments.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1345,6 +1464,7 @@ pages:
 
     -   md: concepts/consensus-network/fee-voting.md
         html: fee-voting.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1354,6 +1474,7 @@ pages:
 
     -   md: concepts/consensus-network/fee-voting.ja.md
         html: fee-voting.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1363,6 +1484,7 @@ pages:
 
     -   md: concepts/consensus-network/consensus-research.md
         html: consensus-research.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1372,6 +1494,7 @@ pages:
 
     -   md: concepts/consensus-network/consensus-research.ja.md
         html: consensus-research.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1383,6 +1506,7 @@ pages:
 
     -   md: concepts/consensus-network/parallel-networks.md
         html: parallel-networks.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1392,6 +1516,7 @@ pages:
 
     -   md: concepts/consensus-network/parallel-networks.ja.md
         html: parallel-networks.html
+        parent: consensus-network.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
@@ -1405,6 +1530,7 @@ pages:
 
     -   name: rippledサーバー
         html: the-rippled-server.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1415,6 +1541,7 @@ pages:
 
     -   md: concepts/the-rippled-server/rippled-server-modes.md
         html: rippled-server-modes.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1424,6 +1551,7 @@ pages:
 
     -   md: concepts/the-rippled-server/rippled-server-modes.ja.md
         html: rippled-server-modes.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1433,6 +1561,7 @@ pages:
 
     -   md: concepts/the-rippled-server/clustering.md
         html: clustering.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1442,6 +1571,7 @@ pages:
 
     -   md: concepts/the-rippled-server/clustering.ja.md
         html: clustering.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1451,6 +1581,7 @@ pages:
 
     -   md: concepts/the-rippled-server/ledger-history/ledger-history.md
         html: ledger-history.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1461,6 +1592,7 @@ pages:
 
     -   md: concepts/the-rippled-server/ledger-history/ledger-history.ja.md
         html: ledger-history.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1471,6 +1603,7 @@ pages:
 
     -   md: concepts/the-rippled-server/ledger-history/online-deletion.md
         html: online-deletion.html
+        parent: ledger-history.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1481,6 +1614,7 @@ pages:
 
     -   md: concepts/the-rippled-server/ledger-history/online-deletion.ja.md
         html: online-deletion.html
+        parent: ledger-history.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1491,6 +1625,7 @@ pages:
 
     -   md: concepts/the-rippled-server/ledger-history/history-sharding.md
         html: history-sharding.html
+        parent: ledger-history.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1501,6 +1636,7 @@ pages:
 
     -   md: concepts/the-rippled-server/ledger-history/history-sharding.ja.md
         html: history-sharding.html
+        parent: ledger-history.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1511,6 +1647,7 @@ pages:
 
     -   md: concepts/the-rippled-server/peer-protocol.md
         html: peer-protocol.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1520,6 +1657,7 @@ pages:
 
     -   md: concepts/the-rippled-server/peer-protocol.ja.md
         html: peer-protocol.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1529,6 +1667,7 @@ pages:
 
     -   md: concepts/the-rippled-server/transaction-censorship-detection.md
         html: transaction-censorship-detection.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1538,6 +1677,7 @@ pages:
 
     -   md: concepts/the-rippled-server/transaction-censorship-detection.ja.md
         html: transaction-censorship-detection.html
+        parent: the-rippled-server.html
         funnel: Build
         doc_type: Concepts
         category: The rippled Server
@@ -1549,6 +1689,7 @@ pages:
 
     -   name: Tutorials
         html: tutorials.html
+        parent: docs.html
         funnel: Build
         doc_type: Tutorials
         top_nav_level: 2
@@ -1559,6 +1700,7 @@ pages:
 
     -   name: チュートリアル
         html: tutorials.html
+        parent: docs.html
         funnel: Build
         doc_type: Tutorials
         top_nav_level: 2
@@ -1570,6 +1712,7 @@ pages:
     -   name: Get Started
         md: tutorials/get-started/get-started.md
         html: get-started.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: Get Started
@@ -1582,6 +1725,7 @@ pages:
 
     -   name: 使用開始
         html: get-started.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: Get Started
@@ -1597,6 +1741,7 @@ pages:
 
     -   md: tutorials/get-started/get-started-with-the-rippled-api.md
         html: get-started-with-the-rippled-api.html
+        parent: get-started.html
         funnel: Build
         doc_type: Tutorials
         category: Get Started
@@ -1607,6 +1752,7 @@ pages:
 
     -   md: tutorials/get-started/get-started-with-the-rippled-api.ja.md
         html: get-started-with-the-rippled-api.html
+        parent: get-started.html
         funnel: Build
         doc_type: Tutorials
         category: Get Started
@@ -1617,6 +1763,7 @@ pages:
 
     -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.md
         html: get-started-with-rippleapi-for-javascript.html
+        parent: get-started.html
         funnel: Build
         doc_type: Tutorials
         category: Get Started
@@ -1626,6 +1773,7 @@ pages:
 
     -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.ja.md
         html: get-started-with-rippleapi-for-javascript.html
+        parent: get-started.html
         funnel: Build
         doc_type: Tutorials
         category: Get Started
@@ -1656,6 +1804,7 @@ pages:
         doc_type: Tutorials
         category: Get Started
         template: template-redirect.html
+        nav_omit: true
         redirect_url: get-started.html
         targets:
             - en
@@ -1664,6 +1813,7 @@ pages:
         # TODO: translate this page name and blurb
     -   name: Production Readiness
         html: production-readiness.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: Production Readiness
@@ -1675,6 +1825,7 @@ pages:
 
     -   md: tutorials/get-started/set-up-secure-signing.md
         html: set-up-secure-signing.html
+        parent: production-readiness.html
         funnel: Build
         doc_type: Tutorials
         category: Production Readiness
@@ -1684,6 +1835,7 @@ pages:
 
     -   md: tutorials/get-started/set-up-secure-signing.ja.md
         html: set-up-secure-signing.html
+        parent: production-readiness.html
         funnel: Build
         doc_type: Tutorials
         category: Production Readiness
@@ -1693,6 +1845,7 @@ pages:
 
     -   md: tutorials/get-started/look-up-transaction-results.md
         html: look-up-transaction-results.html
+        parent: production-readiness.html
         funnel: Build
         doc_type: Tutorials
         category: Production Readiness
@@ -1702,6 +1855,7 @@ pages:
 
     -   md: tutorials/get-started/look-up-transaction-results.ja.md
         html: look-up-transaction-results.html
+        parent: production-readiness.html
         funnel: Build
         doc_type: Tutorials
         category: Production Readiness
@@ -1711,6 +1865,7 @@ pages:
 
     -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.md
         html: reliable-transaction-submission.html
+        parent: production-readiness.html
         funnel: Build
         doc_type: Tutorials
         category: Production Readiness
@@ -1720,6 +1875,7 @@ pages:
 
     -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.ja.md
         html: reliable-transaction-submission.html
+        parent: production-readiness.html
         funnel: Build
         doc_type: Tutorials
         category: Production Readiness
@@ -1734,6 +1890,7 @@ pages:
         doc_type: Tutorials
         category: Production Readiness
         template: template-redirect.html
+        nav_omit: true
         redirect_url: about-canceling-a-transaction.html
         targets:
             - en
@@ -1741,6 +1898,7 @@ pages:
 
     -   name: Manage Account Settings
         html: manage-account-settings.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1751,6 +1909,7 @@ pages:
 
     -   name: アカウントの設定の利用
         html: manage-account-settings.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1764,6 +1923,7 @@ pages:
 
     -   md: tutorials/manage-account-settings/assign-a-regular-key-pair.md
         html: assign-a-regular-key-pair.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1773,6 +1933,7 @@ pages:
 
     -   md: tutorials/manage-account-settings/assign-a-regular-key-pair.ja.md
         html: assign-a-regular-key-pair.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1782,6 +1943,7 @@ pages:
 
     -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md
         html: change-or-remove-a-regular-key-pair.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1791,6 +1953,7 @@ pages:
 
     -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.ja.md
         html: change-or-remove-a-regular-key-pair.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1801,6 +1964,7 @@ pages:
     # TODO: translate this page & blurb
     -   md: tutorials/manage-account-settings/disable-master-key-pair.md
         html: disable-master-key-pair.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1811,6 +1975,7 @@ pages:
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
         html: set-up-multi-signing.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1820,6 +1985,7 @@ pages:
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.ja.md
         html: set-up-multi-signing.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1829,6 +1995,7 @@ pages:
 
     -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.md
         html: send-a-multi-signed-transaction.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1838,6 +2005,7 @@ pages:
 
     -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.ja.md
         html: send-a-multi-signed-transaction.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1851,6 +2019,7 @@ pages:
 
     -   md: tutorials/manage-account-settings/require-destination-tags.ja.md
         html: require-destination-tags.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1860,6 +2029,7 @@ pages:
 
     -   md: tutorials/manage-account-settings/offline-account-setup.md
         html: offline-account-setup.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1869,6 +2039,7 @@ pages:
 
     -   md: tutorials/manage-account-settings/offline-account-setup.ja.md
         html: offline-account-setup.html
+        parent: manage-account-settings.html
         funnel: Build
         doc_type: Tutorials
         category: Manage Account Settings
@@ -1885,6 +2056,7 @@ pages:
 
     -   name: Use Specialized Payment Types
         html: use-specialized-payment-types.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1895,6 +2067,7 @@ pages:
 
     -   name: 専門化した支払いタイプの使用
         html: use-specialized-payment-types.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1910,6 +2083,7 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         template: template-redirect.html
+        nav_omit: true
         redirect_url: use-specialized-payment-types.html
         targets:
             - en
@@ -1917,6 +2091,7 @@ pages:
 
     -   name: Use Escrows
         html: use-escrows.html
+        parent: use-specialized-payment-types.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1928,6 +2103,7 @@ pages:
 
     -   name: Escrowの使用
         html: use-escrows.html
+        parent: use-specialized-payment-types.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1939,6 +2115,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-time-held-escrow.md
         html: send-a-time-held-escrow.html
+        parent: use-escrows.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1949,6 +2126,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-time-held-escrow.ja.md
         html: send-a-time-held-escrow.html
+        parent: use-escrows.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1959,6 +2137,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.md
         html: send-a-conditionally-held-escrow.html
+        parent: use-escrows.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1969,6 +2148,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.ja.md
         html: send-a-conditionally-held-escrow.html
+        parent: use-escrows.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1979,6 +2159,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.md
         html: cancel-an-expired-escrow.html
+        parent: use-escrows.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1989,6 +2170,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.ja.md
         html: cancel-an-expired-escrow.html
+        parent: use-escrows.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -1999,6 +2181,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-escrows/look-up-escrows.md
         html: look-up-escrows.html
+        parent: use-escrows.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2009,6 +2192,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-escrows/look-up-escrows.ja.md
         html: look-up-escrows.html
+        parent: use-escrows.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2019,6 +2203,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
         html: use-an-escrow-as-a-smart-contract.html
+        parent: use-escrows.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2030,6 +2215,7 @@ pages:
     #TODO: split concept info off of the paychan tutorial
     -   md: tutorials/use-complex-payment-types/use-payment-channels.md
         html: use-payment-channels.html
+        parent: use-specialized-payment-types.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2040,6 +2226,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-payment-channels.ja.md
         html: use-payment-channels.html
+        parent: use-specialized-payment-types.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2050,6 +2237,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
         html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
+        parent: use-payment-channels.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2060,6 +2248,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
         html: use-checks.html
+        parent: use-specialized-payment-types.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2071,6 +2260,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/use-checks.ja.md
         html: use-checks.html
+        parent: use-specialized-payment-types.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2082,6 +2272,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.md
         html: send-a-check.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2091,6 +2282,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.ja.md
         html: send-a-check.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2100,6 +2292,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
         html: cash-a-check-for-an-exact-amount.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2109,6 +2302,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.ja.md
         html: cash-a-check-for-an-exact-amount.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2118,6 +2312,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
         html: cash-a-check-for-a-flexible-amount.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2127,6 +2322,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-a-flexible-amount.ja.md
         html: cash-a-check-for-a-flexible-amount.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2136,6 +2332,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/cancel-a-check.md
         html: cancel-a-check.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2145,6 +2342,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/cancel-a-check.ja.md
         html: cancel-a-check.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2154,6 +2352,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-sender.md
         html: look-up-checks-by-sender.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2163,6 +2362,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-sender.ja.md
         html: look-up-checks-by-sender.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2172,6 +2372,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-recipient.md
         html: look-up-checks-by-recipient.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2181,6 +2382,7 @@ pages:
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-recipient.ja.md
         html: look-up-checks-by-recipient.html
+        parent: use-checks.html
         funnel: Build
         doc_type: Tutorials
         category: Use Specialized Payment Types
@@ -2195,6 +2397,7 @@ pages:
 
     -   name: XRP Ledger Businesses
         html: xrp-ledger-businesses.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: XRP Ledger Businesses
@@ -2205,6 +2408,7 @@ pages:
 
     -   name: XRP Ledgerが利用する会社について
         html: xrp-ledger-businesses.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: XRP Ledger Businesses
@@ -2215,6 +2419,7 @@ pages:
 
     -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
         html: list-xrp-as-an-exchange.html
+        parent: xrp-ledger-businesses.html
         funnel: Build
         doc_type: Tutorials
         category: XRP Ledger Businesses
@@ -2224,6 +2429,7 @@ pages:
 
     -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
         html: list-xrp-as-an-exchange.html
+        parent: xrp-ledger-businesses.html
         funnel: Build
         doc_type: Tutorials
         category: XRP Ledger Businesses
@@ -2233,6 +2439,7 @@ pages:
 
     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
         html: list-your-exchange-on-xrp-charts.html
+        parent: xrp-ledger-businesses.html
         funnel: Build
         doc_type: Tutorials
         category: XRP Ledger Businesses
@@ -2242,6 +2449,7 @@ pages:
 
     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.ja.md
         html: list-your-exchange-on-xrp-charts.html
+        parent: xrp-ledger-businesses.html
         funnel: Build
         doc_type: Tutorials
         category: XRP Ledger Businesses
@@ -2251,6 +2459,7 @@ pages:
 
     -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
         html: become-an-xrp-ledger-gateway.html
+        parent: xrp-ledger-businesses.html
         funnel: Build
         doc_type: Tutorials
         category: XRP Ledger Businesses
@@ -2261,6 +2470,7 @@ pages:
 
     -   name: Manage the rippled Server
         html: manage-the-rippled-server.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2272,6 +2482,7 @@ pages:
 
     -   name: rippledサーバの利用
         html: manage-the-rippled-server.html
+        parent: tutorials.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2283,6 +2494,7 @@ pages:
 
     -   name: Install rippled
         html: install-rippled.html
+        parent: manage-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2294,6 +2506,7 @@ pages:
 
     -   name: rippledのインストール
         html: install-rippled.html
+        parent: manage-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2305,6 +2518,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/system-requirements.md
         html: system-requirements.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2315,6 +2529,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/system-requirements.ja.md
         html: system-requirements.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2325,6 +2540,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.md
         html: install-rippled-on-centos-rhel-with-yum.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2335,6 +2551,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.ja.md
         html: install-rippled-on-centos-rhel-with-yum.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2346,7 +2563,9 @@ pages:
     # Redirect old Alien-based install
     -   name: Install rippled on Ubuntu with Alien
         html: install-rippled-on-ubuntu-with-alien.html
+        parent: install-rippled.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: install-rippled-on-ubuntu.html
         funnel: Build
         doc_type: Tutorials
@@ -2358,6 +2577,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.md
         html: install-rippled-on-ubuntu.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2368,6 +2588,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.ja.md
         html: install-rippled-on-ubuntu.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2379,6 +2600,7 @@ pages:
     -   name: Update rippled Automatically on CentOS/RHEL
         html: update-rippled-automatically-on-centos-rhel.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: update-rippled-automatically-on-linux.html
         funnel: Build
         doc_type: Tutorials
@@ -2390,6 +2612,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.md
         html: update-rippled-automatically-on-linux.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2400,6 +2623,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.ja.md
         html: update-rippled-automatically-on-linux.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2410,6 +2634,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.md
         html: update-rippled-manually-on-centos-rhel.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2420,6 +2645,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.ja.md
         html: update-rippled-manually-on-centos-rhel.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2430,6 +2656,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.md
         html: update-rippled-manually-on-ubuntu.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2440,6 +2667,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.ja.md
         html: update-rippled-manually-on-ubuntu.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2450,6 +2678,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md
         html: build-run-rippled-ubuntu.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2460,6 +2689,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.ja.md
         html: build-run-rippled-ubuntu.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2470,6 +2700,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md
         html: build-run-rippled-macos.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2480,6 +2711,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.ja.md
         html: build-run-rippled-macos.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2490,6 +2722,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
         html: capacity-planning.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2500,6 +2733,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.ja.md
         html: capacity-planning.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2510,6 +2744,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.md
         html: rippled-1-3-migration-instructions.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2520,6 +2755,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.ja.md
         html: rippled-1-3-migration-instructions.html
+        parent: install-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2530,6 +2766,7 @@ pages:
 
     -   name: Configure rippled
         html: configure-rippled.html
+        parent: manage-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2541,6 +2778,7 @@ pages:
 
     -   name: rippledの設定
         html: configure-rippled.html
+        parent: manage-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2552,6 +2790,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.md
         html: run-rippled-as-a-validator.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2562,6 +2801,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
         html: run-rippled-as-a-validator.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2573,6 +2813,7 @@ pages:
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
         html: run-rippled-as-a-wallet-server.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2591,6 +2832,7 @@ pages:
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
         html: configure-statsd.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2606,6 +2848,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
         html: connect-your-rippled-to-the-xrp-test-net.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2616,6 +2859,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
         html: configure-online-deletion.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2626,6 +2870,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.ja.md
         html: configure-online-deletion.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2636,6 +2881,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.md
         html: configure-advisory-deletion.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2646,6 +2892,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.ja.md
         html: configure-advisory-deletion.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2656,6 +2903,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.md
         html: configure-history-sharding.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2666,6 +2914,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.ja.md
         html: configure-history-sharding.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2676,6 +2925,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.md
         html: configure-full-history.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2686,6 +2936,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.ja.md
         html: configure-full-history.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2696,6 +2947,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-grpc.md
         html: configure-grpc.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2707,6 +2959,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
         html: enable-public-signing.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2717,6 +2970,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.ja.md
         html: enable-public-signing.html
+        parent: configure-rippled.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2727,6 +2981,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.md
         html: configure-peering.html
+        parent: manage-the-rippled-server.html
         template: template-landing-children.html
         funnel: Build
         doc_type: Tutorials
@@ -2738,6 +2993,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.ja.md
         html: configure-peering.html
+        parent: manage-the-rippled-server.html
         template: template-landing-children.html
         funnel: Build
         doc_type: Tutorials
@@ -2749,6 +3005,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.md
         html: cluster-rippled-servers.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2759,6 +3016,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.ja.md
         html: cluster-rippled-servers.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2769,6 +3027,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.md
         html: configure-a-private-server.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2779,6 +3038,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.ja.md
         html: configure-a-private-server.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2789,6 +3049,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
         html: configure-the-peer-crawler.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2800,6 +3061,7 @@ pages:
     # TODO: translate this page. Only the blurb has been translated?
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
         html: configure-the-peer-crawler.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2817,6 +3079,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.md
         html: forward-ports-for-peering.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2827,6 +3090,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.ja.md
         html: forward-ports-for-peering.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2837,6 +3101,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.md
         html: manually-connect-to-a-specific-peer.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2847,6 +3112,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.ja.md
         html: manually-connect-to-a-specific-peer.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2857,6 +3123,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.md
         html: set-max-number-of-peers.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2867,6 +3134,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.ja.md
         html: set-max-number-of-peers.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2877,6 +3145,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md
         html: use-a-peer-reservation.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2887,6 +3156,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.ja.md
         html: use-a-peer-reservation.html
+        parent: configure-peering.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2897,6 +3167,7 @@ pages:
 
     -   name: Test rippled Functionality in Stand-Alone Mode
         html: use-stand-alone-mode.html
+        parent: manage-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2908,6 +3179,7 @@ pages:
 
     -   name: スタンドアロンモードでrippledをテスト
         html: use-stand-alone-mode.html
+        parent: manage-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2919,6 +3191,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
         html: start-a-new-genesis-ledger-in-stand-alone-mode.html
+        parent: use-stand-alone-mode.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2929,6 +3202,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.ja.md
         html: start-a-new-genesis-ledger-in-stand-alone-mode.html
+        parent: use-stand-alone-mode.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2939,6 +3213,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
         html: load-a-saved-ledger-in-stand-alone-mode.html
+        parent: use-stand-alone-mode.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2949,6 +3224,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.ja.md
         html: load-a-saved-ledger-in-stand-alone-mode.html
+        parent: use-stand-alone-mode.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2959,6 +3235,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
         html: advance-the-ledger-in-stand-alone-mode.html
+        parent: use-stand-alone-mode.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2969,6 +3246,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
         html: advance-the-ledger-in-stand-alone-mode.html
+        parent: use-stand-alone-mode.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2979,6 +3257,7 @@ pages:
 
     -   name: Troubleshooting rippled
         html: troubleshoot-the-rippled-server.html
+        parent: manage-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -2990,6 +3269,7 @@ pages:
 
     -   name: rippledのトラブルシューティング
         html: troubleshoot-the-rippled-server.html
+        parent: manage-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3001,6 +3281,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.md
         html: diagnosing-problems.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3009,9 +3290,21 @@ pages:
         targets:
             - en
 
+    -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
+        html: diagnosing-problems.html
+        parent: troubleshoot-the-rippled-server.html
+        funnel: Build
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Troubleshooting rippled
+        blurb: 情報を収集して問題の原因を特定します。
+        targets:
+            - ja
+
     # TODO: translate page and blurb
     -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
         html: health-check-interventions.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3021,18 +3314,9 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
-        html: diagnosing-problems.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Manage the rippled Server
-        subcategory: Troubleshooting rippled
-        blurb: 情報を収集して問題の原因を特定します。
-        targets:
-            - ja
-
     -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
         html: understanding-log-messages.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3043,6 +3327,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.ja.md
         html: understanding-log-messages.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3053,6 +3338,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.md
         html: server-doesnt-sync.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3063,6 +3349,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
         html: server-doesnt-sync.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3073,6 +3360,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
         html: server-wont-start.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3083,6 +3371,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.ja.md
         html: server-wont-start.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3093,6 +3382,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
         html: fix-sqlite-tx-db-page-size-issue.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3103,6 +3393,7 @@ pages:
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
         html: fix-sqlite-tx-db-page-size-issue.html
+        parent: troubleshoot-the-rippled-server.html
         funnel: Build
         doc_type: Tutorials
         category: Manage the rippled Server
@@ -3119,6 +3410,7 @@ pages:
         doc_type: References
         template: template-landing-references.html
         html: references.html
+        parent: docs.html
         top_nav_level: 2
         sidebar: disabled
         blurb: Complete references for different interfaces to the XRP Ledger.
@@ -3131,6 +3423,7 @@ pages:
         doc_type: References
         template: template-landing-references.html
         html: references.html
+        parent: docs.html
         top_nav_level: 2
         sidebar: disabled
         blurb: XRP Ledgerへのさまざまなインターフェイスの包括的なリファレンスです。
@@ -3141,6 +3434,7 @@ pages:
 
     -   name: rippled API Reference
         html: rippled-api.html
+        parent: references.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3151,6 +3445,7 @@ pages:
 
     -   name: rippled API リファレンス
         html: rippled-api.html
+        parent: references.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3161,6 +3456,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/api-conventions.md
         html: api-conventions.html
+        parent: rippled-api.html
         blurb: Common conventions used across the rippled API.
         funnel: Build
         doc_type: References
@@ -3172,6 +3468,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/api-conventions.ja.md
         html: api-conventions.html
+        parent: rippled-api.html
         blurb: rippled APIのデータ型とフォーマットについて説明します。
         funnel: Build
         doc_type: References
@@ -3183,6 +3480,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/basic-data-types.md
         html: basic-data-types.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3193,6 +3491,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/basic-data-types.ja.md
         html: basic-data-types.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3203,6 +3502,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/base58-encodings.md
         html: base58-encodings.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3213,6 +3513,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/base58-encodings.ja.md
         html: base58-encodings.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3223,6 +3524,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/currency-formats.md
         html: currency-formats.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3233,6 +3535,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/currency-formats.ja.md
         html: currency-formats.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3243,6 +3546,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/error-formatting.md
         html: error-formatting.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3253,6 +3557,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/error-formatting.ja.md
         html: error-formatting.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3263,6 +3568,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/markers-and-pagination.md
         html: markers-and-pagination.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3273,6 +3579,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/markers-and-pagination.ja.md
         html: markers-and-pagination.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3283,6 +3590,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/modifying-the-ledger.md
         html: modifying-the-ledger.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3293,6 +3601,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/modifying-the-ledger.ja.md
         html: modifying-the-ledger.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3304,6 +3613,7 @@ pages:
     # TODO: translate page & blurb
     -   md: references/rippled-api/api-conventions/rate-limiting.md
         html: rate-limiting.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3315,6 +3625,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/request-formatting.md
         html: request-formatting.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3325,6 +3636,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/request-formatting.ja.md
         html: request-formatting.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3335,6 +3647,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/response-formatting.md
         html: response-formatting.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3345,6 +3658,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/response-formatting.ja.md
         html: response-formatting.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3355,6 +3669,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/rippled-server-states.md
         html: rippled-server-states.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3365,6 +3680,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/rippled-server-states.ja.md
         html: rippled-server-states.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3375,6 +3691,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/serialization.md
         html: serialization.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3385,6 +3702,7 @@ pages:
 
     -   md: references/rippled-api/api-conventions/serialization.ja.md
         html: serialization.html
+        parent: api-conventions.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3397,6 +3715,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.md
         html: public-rippled-methods.html
+        parent: rippled-api.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3407,6 +3726,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.ja.md
         html: public-rippled-methods.html
+        parent: rippled-api.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3417,6 +3737,7 @@ pages:
 
     -   name: Account Methods
         html: account-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3429,6 +3750,7 @@ pages:
 
     -   name: Account Methods
         html: account-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3441,6 +3763,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.md
         html: account_channels.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3452,6 +3775,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.ja.md
         html: account_channels.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3463,6 +3787,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.md
         html: account_currencies.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3474,6 +3799,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.ja.md
         html: account_currencies.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3485,6 +3811,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.md
         html: account_info.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3496,6 +3823,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.ja.md
         html: account_info.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3507,6 +3835,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.md
         html: account_lines.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3518,6 +3847,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.ja.md
         html: account_lines.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3529,6 +3859,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.md
         html: account_objects.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3540,6 +3871,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.ja.md
         html: account_objects.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3551,6 +3883,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.md
         html: account_offers.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3562,6 +3895,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.ja.md
         html: account_offers.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3573,6 +3907,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.md
         html: account_tx.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3584,6 +3919,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.ja.md
         html: account_tx.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3595,6 +3931,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.md
         html: gateway_balances.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3606,6 +3943,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.ja.md
         html: gateway_balances.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3617,6 +3955,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.md
         html: noripple_check.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3628,6 +3967,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.ja.md
         html: noripple_check.html
+        parent: account-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3639,6 +3979,7 @@ pages:
 
     -   name: Ledger Methods
         html: ledger-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3651,6 +3992,7 @@ pages:
 
     -   name: Ledger Methods
         html: ledger-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3663,6 +4005,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.md
         html: ledger.html # Watch carefully for clashes w/ this filename
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3674,6 +4017,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.ja.md
         html: ledger.html # Watch carefully for clashes w/ this filename
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3685,6 +4029,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.md
         html: ledger_closed.html
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3696,6 +4041,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.ja.md
         html: ledger_closed.html
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3707,6 +4053,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.md
         html: ledger_current.html
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3718,6 +4065,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.ja.md
         html: ledger_current.html
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3729,6 +4077,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.md
         html: ledger_data.html
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3740,6 +4089,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.ja.md
         html: ledger_data.html
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3751,6 +4101,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.md
         html: ledger_entry.html
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3762,6 +4113,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.ja.md
         html: ledger_entry.html
+        parent: ledger-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3773,6 +4125,7 @@ pages:
 
     -   name: Transaction Methods
         html: transaction-methods.html # watch for clashes w/ this filename
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3785,6 +4138,7 @@ pages:
 
     -   name: Transaction Methods
         html: transaction-methods.html # watch for clashes w/ this filename
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3797,6 +4151,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.md
         html: sign.html # watch for clashes w/ this filename
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3808,6 +4163,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.ja.md
         html: sign.html # watch for clashes w/ this filename
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3819,6 +4175,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.md
         html: sign_for.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3830,6 +4187,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.ja.md
         html: sign_for.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3841,6 +4199,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.md
         html: submit.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3852,6 +4211,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.ja.md
         html: submit.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3863,6 +4223,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.md
         html: submit_multisigned.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3874,6 +4235,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.ja.md
         html: submit_multisigned.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3885,6 +4247,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.md
         html: transaction_entry.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3896,6 +4259,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.ja.md
         html: transaction_entry.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3907,6 +4271,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.md
         html: tx.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3918,6 +4283,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.ja.md
         html: tx.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3929,6 +4295,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.md
         html: tx_history.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3940,6 +4307,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.ja.md
         html: tx_history.html
+        parent: transaction-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3951,18 +4319,20 @@ pages:
 
     -   name: Path and Order Book Methods
         html: path-and-order-book-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
         category: Public rippled Methods
         subcategory: Path and Order Book Methods
-        blurb: Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books. #TODO:translate
+        blurb: Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.
         template: template-landing-children.html
         targets:
             - en
 
     -   name: Path and Order Book Methods
         html: path-and-order-book-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3975,6 +4345,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.md
         html: book_offers.html
+        parent: path-and-order-book-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3986,6 +4357,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.ja.md
         html: book_offers.html
+        parent: path-and-order-book-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -3997,6 +4369,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.md
         html: deposit_authorized.html
+        parent: path-and-order-book-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4008,6 +4381,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.ja.md
         html: deposit_authorized.html
+        parent: path-and-order-book-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4019,6 +4393,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md
         html: path_find.html
+        parent: path-and-order-book-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4030,6 +4405,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.ja.md
         html: path_find.html
+        parent: path-and-order-book-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4041,6 +4417,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.md
         html: ripple_path_find.html
+        parent: path-and-order-book-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4052,6 +4429,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.ja.md
         html: ripple_path_find.html
+        parent: path-and-order-book-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4063,6 +4441,7 @@ pages:
 
     -   name: Payment Channel Methods
         html: payment-channel-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4076,6 +4455,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_authorize.md
         html: channel_authorize.html
+        parent: payment-channel-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4087,6 +4467,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_authorize.ja.md
         html: channel_authorize.html
+        parent: payment-channel-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4098,6 +4479,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.md
         html: channel_verify.html
+        parent: payment-channel-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4109,6 +4491,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.ja.md
         html: channel_verify.html
+        parent: payment-channel-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4120,6 +4503,7 @@ pages:
 
     -   name: Subscription Methods
         html: subscription-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4132,6 +4516,7 @@ pages:
 
     -   name: Subscription Methods
         html: subscription-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4144,6 +4529,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.md
         html: subscribe.html
+        parent: subscription-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4155,6 +4541,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.ja.md
         html: subscribe.html
+        parent: subscription-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4166,6 +4553,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.md
         html: unsubscribe.html
+        parent: subscription-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4177,6 +4565,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.ja.md
         html: unsubscribe.html
+        parent: subscription-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4188,6 +4577,7 @@ pages:
 
     -   name: Server Info Methods
         html: server-info-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4200,6 +4590,7 @@ pages:
 
     -   name: Server Info Methods
         html: server-info-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4212,6 +4603,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.md
         html: fee.html
+        parent: server-info-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4223,6 +4615,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.ja.md
         html: fee.html
+        parent: server-info-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4234,6 +4627,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/manifest.md
         html: manifest.html
+        parent: server-info-methods.html
         blurb: Look up the public information about a known validator.
         funnel: Build
         doc_type: References
@@ -4246,6 +4640,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
         html: server_info.html
+        parent: server-info-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4257,6 +4652,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.ja.md
         html: server_info.html
+        parent: server-info-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4268,6 +4664,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.md
         html: server_state.html
+        parent: server-info-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4279,6 +4676,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.ja.md
         html: server_state.html
+        parent: server-info-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4290,6 +4688,7 @@ pages:
 
     -   name: Utility Methods
         html: utility-methods.html
+        parent: public-rippled-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4303,6 +4702,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/json.md
         html: json.html
+        parent: utility-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4314,6 +4714,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/json.ja.md
         html: json.html
+        parent: utility-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4325,6 +4726,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.md
         html: ping.html
+        parent: utility-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4336,6 +4738,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.ja.md
         html: ping.html
+        parent: utility-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4347,6 +4750,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/random.md
         html: random.html
+        parent: utility-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4358,6 +4762,7 @@ pages:
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/random.ja.md
         html: random.html
+        parent: utility-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4369,6 +4774,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
         html: admin-rippled-methods.html
+        parent: rippled-api.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4379,6 +4785,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.ja.md
         html: admin-rippled-methods.html
+        parent: rippled-api.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4389,6 +4796,7 @@ pages:
 
     -   name: Key Generation Methods
         html: key-generation-methods.html
+        parent: admin-rippled-methods.html
         blurb: Use these methods to generate and manage keys.
         funnel: Build
         doc_type: References
@@ -4401,6 +4809,7 @@ pages:
 
     -   name: キー生成のメソッド
         html: key-generation-methods.html
+        parent: admin-rippled-methods.html
         blurb: キーを生成および管理するには、以下のメソッドを使用します。
         funnel: Build
         doc_type: References
@@ -4413,6 +4822,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.md
         html: validation_create.html
+        parent: key-generation-methods.html
         blurb: Generate keys for a new rippled validator.
         funnel: Build
         doc_type: References
@@ -4424,6 +4834,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.ja.md
         html: validation_create.html
+        parent: key-generation-methods.html
         blurb: rippledサーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵を生成します。
         funnel: Build
         doc_type: References
@@ -4435,6 +4846,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.md
         html: wallet_propose.html
+        parent: key-generation-methods.html
         blurb: Generate keys for a new account.
         funnel: Build
         doc_type: References
@@ -4446,6 +4858,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.ja.md
         html: wallet_propose.html
+        parent: key-generation-methods.html
         blurb: キーペアとXRP Ledgerアドレスを生成します。
         funnel: Build
         doc_type: References
@@ -4457,6 +4870,7 @@ pages:
 
     -   name: Logging and Data Management Methods
         html: logging-and-data-management-methods.html
+        parent: admin-rippled-methods.html
         blurb: Use these methods to manage log levels and other data, such as ledgers.
         funnel: Build
         doc_type: References
@@ -4469,6 +4883,7 @@ pages:
 
     -   name: ログとデータ管理のメソッド
         html: logging-and-data-management-methods.html
+        parent: admin-rippled-methods.html
         blurb: Use these methods to manage log levels and other data, such as ledgers. #TODO: translate
         funnel: Build
         doc_type: References
@@ -4481,6 +4896,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.md
         html: can_delete.html
+        parent: logging-and-data-management-methods.html
         blurb: Allow online deletion of ledgers up to a specific ledger.
         funnel: Build
         doc_type: References
@@ -4492,6 +4908,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.ja.md
         html: can_delete.html
+        parent: logging-and-data-management-methods.html
         blurb: 指定したレジャーバージョン以前のレジャー履歴を削除可能にします。
         funnel: Build
         doc_type: References
@@ -4503,6 +4920,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.md
         html: crawl_shards.html
+        parent: logging-and-data-management-methods.html
         blurb: Request information about which history shards peers have.
         funnel: Build
         doc_type: References
@@ -4514,6 +4932,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.ja.md
         html: crawl_shards.html
+        parent: logging-and-data-management-methods.html
         blurb: ピアが持つ履歴シャードについての情報を要求します。
         funnel: Build
         doc_type: References
@@ -4525,6 +4944,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.md
         html: download_shard.html
+        parent: logging-and-data-management-methods.html
         blurb: Download a specific shard of ledger history.
         funnel: Build
         doc_type: References
@@ -4536,6 +4956,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.ja.md
         html: download_shard.html
+        parent: logging-and-data-management-methods.html
         blurb: レジャー履歴の特定のシャードをダウンロードします。
         funnel: Build
         doc_type: References
@@ -4547,6 +4968,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.md
         html: ledger_cleaner.html
+        parent: logging-and-data-management-methods.html
         blurb: Configure the ledger cleaner service to check for corrupted data.
         funnel: Build
         doc_type: References
@@ -4558,6 +4980,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.ja.md
         html: ledger_cleaner.html
+        parent: logging-and-data-management-methods.html
         blurb: レジャークリーナーを制御し、レジャーデータベースの破損を検出して修復できる非同期メンテナンスをする。
         funnel: Build
         doc_type: References
@@ -4569,6 +4992,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md
         html: ledger_request.html
+        parent: logging-and-data-management-methods.html
         blurb: Query peer servers for a specific ledger version.
         funnel: Build
         doc_type: References
@@ -4580,6 +5004,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.ja.md
         html: ledger_request.html
+        parent: logging-and-data-management-methods.html
         blurb: サーバーに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。
         funnel: Build
         doc_type: References
@@ -4591,6 +5016,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.md
         html: log_level.html
+        parent: logging-and-data-management-methods.html
         blurb: Get or modify log verbosity.
         funnel: Build
         doc_type: References
@@ -4602,6 +5028,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.ja.md
         html: log_level.html
+        parent: logging-and-data-management-methods.html
         blurb: ログ詳細レベルを変更するか、現在のログレベルを返します。
         funnel: Build
         doc_type: References
@@ -4613,6 +5040,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.md
         html: logrotate.html
+        parent: logging-and-data-management-methods.html
         blurb: Reopen the log file.
         funnel: Build
         doc_type: References
@@ -4624,6 +5052,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.ja.md
         html: logrotate.html
+        parent: logging-and-data-management-methods.html
         blurb: ログファイルを閉じて再度開きます。
         funnel: Build
         doc_type: References
@@ -4635,6 +5064,7 @@ pages:
 
     -   name: Server Control Methods #TODO: translate title
         html: server-control-methods.html
+        parent: admin-rippled-methods.html
         blurb: Use these methods to manage the rippled server. #TODO: translate blurb
         funnel: Build
         doc_type: References
@@ -4648,6 +5078,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.md
         html: ledger_accept.html
+        parent: server-control-methods.html
         blurb: Close and advance the ledger in stand-alone mode.
         funnel: Build
         doc_type: References
@@ -4659,6 +5090,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.ja.md
         html: ledger_accept.html
+        parent: server-control-methods.html
         blurb: スタンドアロンモードでサーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。
         funnel: Build
         doc_type: References
@@ -4670,6 +5102,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.md
         html: stop.html
+        parent: server-control-methods.html
         blurb: Shut down the rippled server.
         funnel: Build
         doc_type: References
@@ -4681,6 +5114,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.ja.md
         html: stop.html
+        parent: server-control-methods.html
         blurb: サーバーのグレースフルシャットダウンを行います。
         funnel: Build
         doc_type: References
@@ -4692,6 +5126,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.md
         html: validation_seed.html
+        parent: server-control-methods.html
         blurb: REMOVED. Temporarily set key to be used for validating.
         funnel: Build
         doc_type: References
@@ -4703,6 +5138,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.ja.md
         html: validation_seed.html
+        parent: server-control-methods.html
         blurb: 無効。rippledが検証の署名に使用するシークレット値を一時的に設定します。
         funnel: Build
         doc_type: References
@@ -4715,6 +5151,7 @@ pages:
 
     -   name: Peer Management Methods
         html: peer-management-methods.html
+        parent: admin-rippled-methods.html
         blurb: Use these methods to manage your server's peer-to-peer connections. #TODO:translate
         funnel: Build
         doc_type: References
@@ -4727,6 +5164,7 @@ pages:
 
     -   name: ピア管理のメソッド
         html: peer-management-methods.html
+        parent: admin-rippled-methods.html
         blurb: サーバーのピアツーピア接続を管理するにはこれらのメソッドを使用します。
         funnel: Build
         doc_type: References
@@ -4739,6 +5177,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/connect.md
         html: connect.html
+        parent: peer-management-methods.html
         blurb: Force the rippled server to connect to a specific peer.
         funnel: Build
         doc_type: References
@@ -4750,6 +5189,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/connect.ja.md
         html: connect.html
+        parent: peer-management-methods.html
         blurb: 特定のピアrippledサーバーに強制的に接続します。
         funnel: Build
         doc_type: References
@@ -4761,6 +5201,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_add.md
         html: peer_reservations_add.html
+        parent: peer-management-methods.html
         blurb: Add a reserved slot for a specific peer server.
         funnel: Build
         doc_type: References
@@ -4772,6 +5213,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_add.ja.md
         html: peer_reservations_add.html
+        parent: peer-management-methods.html
         blurb: 特定のピアサーバー用の予約済みスロットを追加します。
         funnel: Build
         doc_type: References
@@ -4783,6 +5225,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_del.md
         html: peer_reservations_del.html
+        parent: peer-management-methods.html
         blurb: Remove a reserved slot for a specific peer server.
         funnel: Build
         doc_type: References
@@ -4794,6 +5237,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_del.ja.md
         html: peer_reservations_del.html
+        parent: peer-management-methods.html
         blurb: 特定のピアサーバー用の予約済みスロットを削除します。
         funnel: Build
         doc_type: References
@@ -4805,6 +5249,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_list.md
         html: peer_reservations_list.html
+        parent: peer-management-methods.html
         blurb: List reserved slots for specific peer servers.
         funnel: Build
         doc_type: References
@@ -4816,6 +5261,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_list.ja.md
         html: peer_reservations_list.html
+        parent: peer-management-methods.html
         blurb: 特定のピアサーバー用の予約済みスロットをリスト表示します。
         funnel: Build
         doc_type: References
@@ -4827,6 +5273,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.md
         html: peers.html
+        parent: peer-management-methods.html
         blurb: Get information about the peer servers connected.
         funnel: Build
         doc_type: References
@@ -4838,6 +5285,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.ja.md
         html: peers.html
+        parent: peer-management-methods.html
         blurb: ピアプロトコルでこのサーバーに現在接続されているその他のすべてのrippledサーバーのリストを返します。
         funnel: Build
         doc_type: References
@@ -4849,7 +5297,8 @@ pages:
 
     -   name: Status and Debugging Methods
         html: status-and-debugging-methods.html
-        blurb: Use these methods to check the status of the network and server. #TODO:translate
+        parent: admin-rippled-methods.html
+        blurb: Use these methods to check the status of the network and server.
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -4861,6 +5310,7 @@ pages:
 
     -   name: ステータスとデバッグのメソッド
         html: status-and-debugging-methods.html
+        parent: admin-rippled-methods.html
         blurb: ネットワークとサーバーのステータスを確認するには、以下のメソッドを使用します。
         funnel: Build
         doc_type: References
@@ -4873,6 +5323,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.md
         html: consensus_info.html
+        parent: status-and-debugging-methods.html
         blurb: Get information about the state of consensus as it happens.
         funnel: Build
         doc_type: References
@@ -4884,6 +5335,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.ja.md
         html: consensus_info.html
+        parent: status-and-debugging-methods.html
         blurb: デバッグのためのコンセンサスプロセスに関する情報を返します。
         funnel: Build
         doc_type: References
@@ -4895,6 +5347,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.md
         html: feature.html
+        parent: status-and-debugging-methods.html
         blurb: Get information about protocol amendments.
         funnel: Build
         doc_type: References
@@ -4906,6 +5359,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.ja.md
         html: feature.html
+        parent: status-and-debugging-methods.html
         blurb: Amendmentに関してこのサーバーが認識している情報を返します。
         funnel: Build
         doc_type: References
@@ -4917,6 +5371,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.md
         html: fetch_info.html
+        parent: status-and-debugging-methods.html
         blurb: Get information about the server's sync with the network.
         funnel: Build
         doc_type: References
@@ -4928,6 +5383,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.ja.md
         html: fetch_info.html
+        parent: status-and-debugging-methods.html
         blurb: このサーバーが現在ネットワークからフェッチしているオブジェクトに関する情報を返します。
         funnel: Build
         doc_type: References
@@ -4939,6 +5395,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.md
         html: get_counts.html
+        parent: status-and-debugging-methods.html
         blurb: Get statistics about the server's internals and memory usage.
         funnel: Build
         doc_type: References
@@ -4950,6 +5407,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.ja.md
         html: get_counts.html
+        parent: status-and-debugging-methods.html
         blurb: サーバーの健全性に関するさまざまな統計情報を提供します。
         funnel: Build
         doc_type: References
@@ -4961,6 +5419,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
         html: print.html
+        parent: status-and-debugging-methods.html
         blurb: Get information about internal subsystems.
         funnel: Build
         doc_type: References
@@ -4972,6 +5431,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.ja.md
         html: print.html
+        parent: status-and-debugging-methods.html
         blurb: さまざまな内部サブシステムの現在の状況を返します。
         funnel: Build
         doc_type: References
@@ -4983,6 +5443,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_info.md
         html: validator_info.html
+        parent: status-and-debugging-methods.html
         blurb: Get the server's validation settings, if configured as a validator.
         funnel: Build
         doc_type: References
@@ -4995,6 +5456,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
         html: validator_list_sites.html
+        parent: status-and-debugging-methods.html
         blurb: Get information about sites that publish validator lists.
         funnel: Build
         doc_type: References
@@ -5006,6 +5468,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.ja.md
         html: validator_list_sites.html
+        parent: status-and-debugging-methods.html
         blurb: バリデータリストを処理するサイトのステータス情報を返します。
         funnel: Build
         doc_type: References
@@ -5017,6 +5480,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.md
         html: validators.html
+        parent: status-and-debugging-methods.html
         blurb: Get information about the current validators.
         funnel: Build
         doc_type: References
@@ -5028,6 +5492,7 @@ pages:
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.ja.md
         html: validators.html
+        parent: status-and-debugging-methods.html
         blurb: サーバーが使用する公開済みの信頼できるバリデータの最新リストに関する情報を返します。
         funnel: Build
         doc_type: References
@@ -5047,6 +5512,7 @@ pages:
 
     -   md: references/rippled-api/ledger-data-formats/ledger-header.md
         html: ledger-header.html
+        parent: ledger-data-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5057,6 +5523,7 @@ pages:
 
     -   md: references/rippled-api/ledger-data-formats/ledger-header.ja.md
         html: ledger-header.html
+        parent: ledger-data-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5067,6 +5534,7 @@ pages:
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.md
         html: ledger-object-ids.html
+        parent: ledger-data-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5077,6 +5545,7 @@ pages:
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.ja.md
         html: ledger-object-ids.html
+        parent: ledger-data-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5201,6 +5670,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-formats.md
         html: transaction-formats.html
+        parent: rippled-api.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5212,6 +5682,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-formats.ja.md
         html: transaction-formats.html
+        parent: rippled-api.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5223,6 +5694,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-common-fields.md
         html: transaction-common-fields.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5233,6 +5705,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-common-fields.ja.md
         html: transaction-common-fields.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5243,6 +5716,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.md
         html: transaction-types.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5255,6 +5729,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.ja.md
         html: transaction-types.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5267,6 +5742,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/accountset.md
         html: accountset.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5278,6 +5754,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/accountset.ja.md
         html: accountset.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5289,6 +5766,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/accountdelete.md
         html: accountdelete.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5300,6 +5778,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/accountdelete.ja.md
         html: accountdelete.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5311,6 +5790,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
         html: checkcancel.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5322,6 +5802,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.ja.md
         html: checkcancel.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5333,6 +5814,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.md
         html: checkcash.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5344,6 +5826,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.ja.md
         html: checkcash.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5355,6 +5838,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.md
         html: checkcreate.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5366,6 +5850,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.ja.md
         html: checkcreate.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5377,6 +5862,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.md
         html: depositpreauth.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5388,6 +5874,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.ja.md
         html: depositpreauth.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5399,6 +5886,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.md
         html: escrowcancel.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5410,6 +5898,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.ja.md
         html: escrowcancel.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5421,6 +5910,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.md
         html: escrowcreate.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5432,6 +5922,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.ja.md
         html: escrowcreate.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5443,6 +5934,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.md
         html: escrowfinish.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5454,6 +5946,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.ja.md
         html: escrowfinish.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5465,6 +5958,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.md
         html: offercancel.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5476,6 +5970,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.ja.md
         html: offercancel.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5487,6 +5982,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.md
         html: offercreate.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5498,6 +5994,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.ja.md
         html: offercreate.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5509,6 +6006,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/payment.md
         html: payment.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5520,6 +6018,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/payment.ja.md
         html: payment.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5531,6 +6030,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.md
         html: paymentchannelclaim.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5542,6 +6042,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.ja.md
         html: paymentchannelclaim.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5553,6 +6054,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.md
         html: paymentchannelcreate.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5564,6 +6066,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.ja.md
         html: paymentchannelcreate.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5583,6 +6086,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.md
         html: setregularkey.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5594,6 +6098,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.ja.md
         html: setregularkey.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5605,6 +6110,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.md
         html: signerlistset.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5616,6 +6122,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.ja.md
         html: signerlistset.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5632,6 +6139,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md
         html: trustset.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5643,6 +6151,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-types/trustset.ja.md
         html: trustset.html
+        parent: transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5654,6 +6163,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.md
         html: pseudo-transaction-types.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5666,6 +6176,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.ja.md
         html: pseudo-transaction-types.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5678,6 +6189,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.md
         html: enableamendment.html
+        parent: pseudo-transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5689,6 +6201,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.ja.md
         html: enableamendment.html
+        parent: pseudo-transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5700,6 +6213,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.md
         html: setfee.html
+        parent: pseudo-transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5711,6 +6225,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.ja.md
         html: setfee.html
+        parent: pseudo-transaction-types.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5727,6 +6242,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md
         html: transaction-results.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5738,6 +6254,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.ja.md
         html: transaction-results.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5749,6 +6266,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.md
         html: tec-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5760,6 +6278,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.ja.md
         html: tec-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5771,6 +6290,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.md
         html: tef-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5782,6 +6302,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.ja.md
         html: tef-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5793,6 +6314,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.md
         html: tel-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5804,6 +6326,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.ja.md
         html: tel-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5815,6 +6338,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.md
         html: tem-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5826,6 +6350,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.ja.md
         html: tem-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5837,6 +6362,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.md
         html: ter-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5848,6 +6374,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.ja.md
         html: ter-codes.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5859,6 +6386,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.md
         html: tes-success.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5870,6 +6398,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.ja.md
         html: tes-success.html
+        parent: transaction-results.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5881,6 +6410,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-metadata.md
         html: transaction-metadata.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5891,6 +6421,7 @@ pages:
 
     -   md: references/rippled-api/transaction-formats/transaction-metadata.ja.md
         html: transaction-metadata.html
+        parent: transaction-formats.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5901,6 +6432,7 @@ pages:
 
     -   md: references/rippled-api/commandline-usage.md
         html: commandline-usage.html
+        parent: rippled-api.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5922,6 +6454,7 @@ pages:
 
     -   md: references/rippled-api/commandline-usage.ja.md
         html: commandline-usage.html
+        parent: rippled-api.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5944,6 +6477,7 @@ pages:
     # TODO: translate title & blurb
     -   name: Peer Port Methods
         html: peer-port-methods.html
+        parent: rippled-api.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5957,6 +6491,7 @@ pages:
     # TODO: translate page & blurb
     -   md: references/rippled-api/peer-port-methods/health-check.md
         html: health-check.html
+        parent: peer-port-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5968,6 +6503,7 @@ pages:
 
     -   md: references/rippled-api/peer-port-methods/peer-crawler.md
         html: peer-crawler.html
+        parent: peer-port-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5979,6 +6515,7 @@ pages:
     # TODO: translate page
     -   md: references/rippled-api/peer-port-methods/peer-crawler.md
         html: peer-crawler.html
+        parent: peer-port-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -5991,6 +6528,7 @@ pages:
     # TODO: translate page & blurb
     -   md: references/rippled-api/peer-port-methods/validator-list.md
         html: validator-list.html
+        parent: peer-port-methods.html
         funnel: Build
         doc_type: References
         supercategory: rippled API
@@ -6005,6 +6543,7 @@ pages:
     -   name: XRP-API
         md: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/README.md
         html: xrp-api.html
+        parent: references.html
         funnel: Build
         doc_type: References
         supercategory: XRP-API
@@ -6019,6 +6558,7 @@ pages:
         # API reference generator makes multiple files here
     -   openapi_specification: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/api-doc.yml
         openapi_md_template_path: tool/openapi_templates_alpha/
+        parent: xrp-api.html
         api_slug: xrp-api
         funnel: Build
         doc_type: References
@@ -6035,6 +6575,7 @@ pages:
     -   name: RippleAPI Reference # name is required for remote-sourced files
         md: https://raw.githubusercontent.com/ripple/ripple-lib/32718d583b882b58f152511e152e9dae1da2d671/docs/index.md #TEMP: use commit instead of release tag since broken link fixes aren't in a release yet
         html: rippleapi-reference.html
+        parent: references.html
         funnel: Build
         doc_type: References
         category: RippleAPI for JavaScript
@@ -6057,6 +6598,7 @@ pages:
 
     -   md: references/data-api.md
         html: data-api.html
+        parent: references.html
         funnel: Build
         doc_type: References
         category: Data API
@@ -6072,6 +6614,7 @@ pages:
 
     -   md: references/data-api.ja.md
         html: data-api.html
+        parent: references.html
         funnel: Build
         doc_type: References
         category: Data API
@@ -6086,6 +6629,7 @@ pages:
 
     -   md: references/xrp-ledger-toml.md
         html: xrp-ledger-toml.html
+        parent: references.html
         funnel: Build
         doc_type: References
         category: XRP Ledger TOML File
@@ -6106,6 +6650,7 @@ pages:
 
     -   md: references/xrp-ledger-toml.ja.md
         html: xrp-ledger-toml.html
+        parent: references.html
         funnel: Build
         doc_type: References
         category: XRP Ledger TOML File
@@ -6132,6 +6677,7 @@ pages:
     -   name: Use Cases
         html: use-cases.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: uses.html
         targets:
             - en
@@ -6139,6 +6685,7 @@ pages:
     -   name: ユースケース
         html: use-cases.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: uses.html
         targets:
             - ja
@@ -6146,6 +6693,7 @@ pages:
     -   name: Run a rippled Validator
         html: run-a-rippled-validator.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: run-rippled-as-a-validator.html
         targets:
             - en
@@ -6153,6 +6701,7 @@ pages:
     -   name: rippledバリデータの実行
         html: run-a-rippled-validator.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: run-rippled-as-a-validator.html
         targets:
             - ja
@@ -6160,6 +6709,7 @@ pages:
     -   name: List XRP In Your Exchange
         html: list-xrp-in-your-exchange.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: list-xrp-as-an-exchange.html
         targets:
             - en
@@ -6167,6 +6717,7 @@ pages:
     -   name: 取引所でのXRPの上場
         html: list-xrp-in-your-exchange.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: list-xrp-as-an-exchange.html
         targets:
             - ja
@@ -6174,6 +6725,7 @@ pages:
     -   name: Contribute Code to rippled
         html: contribute-code-to-rippled.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: contribute-code.html
         targets:
             - en
@@ -6181,6 +6733,7 @@ pages:
     -   name: rippledへのコードの提供
         html: contribute-code-to-rippled.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: contribute-code.html
         targets:
             - ja
@@ -6188,6 +6741,7 @@ pages:
     -   name: Contribute Code to ripple-lib
         html: contribute-code-to-ripple-lib.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: contribute-code.html
         targets:
             - en
@@ -6195,6 +6749,7 @@ pages:
     -   name: ripple-libへのコードの提供
         html: contribute-code-to-ripple-lib.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: contribute-code.html
         targets:
             - ja
@@ -6202,6 +6757,7 @@ pages:
 # Dev Tools --------------------------------------------------------------------
     -   md: dev-tools/dev-tools.md
         html: dev-tools.html
+        parent: docs.html
         funnel: Build
         doc_type: Dev Tools
         top_nav_level: 1
@@ -6210,6 +6766,7 @@ pages:
 
     -   md: dev-tools/dev-tools.ja.md
         html: dev-tools.html
+        parent: docs.html
         funnel: Build
         doc_type: Dev Tools
         top_nav_level: 1
@@ -6219,34 +6776,38 @@ pages:
     -   name: Dev Tools # Redirect page for old broken URL
         html: dev-tools-dev-tools.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: dev-tools.html
         targets:
             - en
             - ja
 
     -   name: RPC Tool
+        html: xrp-ledger-rpc-tool.html
+        parent: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
-        html: xrp-ledger-rpc-tool.html
         targets:
             - en
             - ja
         template: template-xrp-ledger-rpc-tool.html
 
     -   name: WebSocket API Tool
+        html: websocket-api-tool.html
+        parent: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
         template: template-websocket-api-tool.html
-        html: websocket-api-tool.html
         canonical_url: https://xrpl.org/websocket-api-tool.html
         targets:
             - en
             - ja
 
     -   name: Data API v2 Tool
+        html: data-api-v2-tool.html
+        parent: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
-        html: data-api-v2-tool.html
         methods_js: js/apitool-methods-data_v2.js
         rest_host: https://data.ripple.com
         doc_page: data-api.html
@@ -6257,19 +6818,22 @@ pages:
         template: template-rest-api-tool.html
 
     -   name: ripple.txt Validator # Redirect from ripple.txt validator to toml
+        html: ripple-txt-validator.html
+        parent: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
-        html: ripple-txt-validator.html
         template: template-redirect.html
+        nav_omit: true
         redirect_url: xrp-ledger-toml-checker.html
         targets:
             - en
             - ja
 
     -   name: xrp-ledger.toml Checker
+        html: xrp-ledger-toml-checker.html
+        parent: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
-        html: xrp-ledger-toml-checker.html
         embed_ripple_lib: true
         targets:
             - en
@@ -6277,9 +6841,10 @@ pages:
         template: template-xrp-ledger-toml-checker.html
 
     -   name: Domain Verification Checker
+        html: validator-domain-verifier.html
+        parent: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
-        html: validator-domain-verifier.html
         targets:
             - en
             - ja
@@ -6287,6 +6852,7 @@ pages:
 
     -   name: XRP Faucets
         html: xrp-testnet-faucet.html
+        parent: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
         template: template-test-net.html
@@ -6299,15 +6865,17 @@ pages:
         funnel: Build
         doc_type: Dev Tools
         template: template-redirect.html
+        nav_omit: true
         redirect_url: xrp-testnet-faucet.html
         targets:
             - en
             - ja
 
     -   name: Transaction Sender
+        html: tx-sender.html
+        parent: dev-tools.html
         funnel: Build
         doc_type: Dev Tools
-        html: tx-sender.html
         embed_ripple_lib: true
         targets:
             - en
@@ -6318,6 +6886,7 @@ pages:
     -   name: Contribute
         funnel: Contribute
         html: contribute.html
+        parent: index.html
         template: template-contribute.html
         sidebar: disabled
         targets:
@@ -6326,6 +6895,7 @@ pages:
     -   name: 貢献する
         funnel: Contribute
         html: contribute.html
+        parent: index.html
         template: template-contribute.html
         sidebar: disabled
         targets:
@@ -6334,6 +6904,7 @@ pages:
     -   md: contributing/contribute-code.md
         funnel: Contribute
         html: contribute-code.html
+        parent: contribute.html
         targets:
             - en
             - ja
@@ -6342,6 +6913,7 @@ pages:
     -   name: 404 Not Found
         html: 404.html
         template: template-404.html
+        nav_omit: true
         prefix: "/"
         targets:
             - en
@@ -6351,6 +6923,7 @@ pages:
     -   name: Sitemap
         html: sitemap.txt
         template: template-sitemap.txt
+        nav_omit: true
         targets:
             - en
 

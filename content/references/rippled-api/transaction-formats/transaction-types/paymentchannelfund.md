@@ -1,5 +1,6 @@
 ---
 html: paymentchannelfund.html
+parent: transaction-types.html
 funnel: Build
 doc_type: References
 supercategory: rippled API

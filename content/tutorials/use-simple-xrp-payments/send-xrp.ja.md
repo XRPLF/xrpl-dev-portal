@@ -1,5 +1,6 @@
 ---
 html: send-xrp.html
+parent: get-started.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started
