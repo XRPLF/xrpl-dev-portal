@@ -20,69 +20,21 @@ aside .active > a:hover {
   font-weight: 700;
 }
 aside a.active-parent {
-  color: $white;
   font-weight: 700;
 }
 
-.sidebar_pagelist {
-  border-left: 1px solid $white;
-}
-.sidebar_pagelist a,
 .command-list li a,
 .page-toc li a {
   display: block;
   margin-top: 5px;
-  margin-left: -17px;
   padding: 4px 15px 4px 35px;
   text-indent: -20px;
   font-size: 0.9rem;
-}
-.sidebar_pagelist a:hover {
-  padding-left: 34px;
-  border-left: 1px solid $primary;
-}
-.sidebar_pagelist .active,
-.sidebar_pagelist .active:hover {
-  padding-left: 33px;
-  border-left: 2px solid $primary;
-}
-.sidebar_pagelist .subpage {
-  margin-left: 0;
-  margin-top: 0;
-  padding-left: 35px;
-  border-left: 1px solid $white;
-}
-.sidebar_pagelist .subpage:hover {
-  padding-left: 35px;
-  border-left: 1px solid $primary;
-}
-.sidebar_pagelist .active.subpage,
-.sidebar_pagelist .active.subpage:hover {
-  padding-left: 33px;
-  border-left: 2px solid $primary;
-}
-.sidebar_pagelist li a .fa {
-  display: inline;
-}
-
-.sidenav_cat_toggler {
-  background-color: $white;
-}
-.sidenav_cat_toggler:hover {
-  background-color: $primary;
 }
 
 #page-toc-wrapper .card-body,
 .command-list {
   border-left: 1px solid $white;
-}
-
-.sidenav_parent a {
-  color: $white;
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  padding: 15px 16px 15px 10px;
 }
 
 .page-toc .level-1 a {
@@ -116,113 +68,80 @@ aside a.active-parent {
   padding: 44px 0 24px 48px;
 }
 
-/* Left navigation ---------------------------------------------------------- */
+/* Left navigation -----------------------------------------------------------*/
 
-.sidebar {
-  padding: 44px 24px 48px 0;
-}
-
-.sidebar_pagelist {
-  margin-bottom: 12px;
-  margin-left: 24px;
-  padding-left: 16px;
-  list-style-type: none;
-}
-
-#sidenav a,
-.sidenav_parent a {
-  text-decoration: none;
-  line-height: 24px;
-}
-#sidenav a.active-parent {
-  font-weight: 700;
-}
-#sidenav a:hover,
-.sidenav_parent a:hover {
-  text-decoration: none;
-}
-
-#sidenav .card + .card {
-  margin: 0;
-}
-
-#sidenav .card {
-  border-width: 0;
-}
-
-#sidenav .card-body {
-  padding: 0;
-  padding-left: 15px;
-}
-
-#sidenav .card-body-single {
-  margin-left: -25px;
-}
-
-#sidenav .collapse {
-  padding-bottom: 0;
-}
-
-#sidenav .card-header {
-  padding: 0;
-  background-color: transparent;
-  border-bottom: 0;
-}
-
-#sidenav .card {
-  padding: 0;
-  border-radius: 0;
-}
-
-#sidenav .card:only-child {
-  border-top: 0;
-  background: none;
-}
-
-#sidenav .card-header h5 {
-  margin-bottom: 0;
-  text-transform: none;
-  font-size: 1.05rem;
-}
-
-#sidenav .card-header h5 .sidenav_cat_title {
-  display: block;
-  padding: 11px 10px 11px 40px;
-}
-
-#sidenav .card-header .sidenav_cat_toggler {
+.nav-toggler {
   position: absolute;
-  left: 0;
-  padding: 10px 12px 12px 12px;
+  @include caret(down);
+  width: 1.75em;
+  height: 1.75em;
   line-height: 0;
+  display: grid;
+  justify-content: center;
+  align-content: center;
 
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  transition-duration: 0.3s;
+  &::after {
+    transition-duration: 0.3s;
+  }
+  &.collapsed::after {
+    transform: rotate(-90deg);
+  }
 }
 
-#sidenav .card-header .sidenav_cat_toggler {
-  width: 24px;
-  height: 24px;
-  display: block;
-  -webkit-mask-image: url(../img/icon-arrow.svg);
-  mask-image: url(../img/icon-arrow.svg);
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: 24px 24px;
-  mask-size: 24px 24px;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  border: 12px solid transparent;
+.dactyl-tree-nav {
+  padding: 44px 24px 48px 0;
+  position: relative;
+
+  nav {
+    margin-left: 1rem;
+    padding-left: 0;
+    border-left: 1px solid $white;
+
+    .nav-link:hover,
+    .nav-link:active {
+      border-left: 1px solid $primary;
+      margin-left: -1px;
+    }
+
+    .active > .nav-link, {
+      border-left: 2px solid $primary;
+      margin-left: -1px;
+      padding-left: calc(1rem - 1px);
+    }
+  }
+
+  .nav-item {
+    position: relative;
+
+    .nav-link {
+      padding: 0.25rem 1rem;
+      font-size: 0.9rem;
+    }
+    &.nav-parent .nav-link {
+      padding-left: 0;
+      font-size: 1.125rem;
+    }
+
+    .nav-toggler + .nav-link {
+      padding-left: 2rem;
+    }
+  }
+
+  > .nav-item {
+    padding: .5rem 0;
+    font-size: 1.125rem;
+
+    > .nav-link {
+      font-weight: bold;
+    }
+  }
+
+  .collapsing.nav {
+    // Fix for weird folding behavior in collapse animation.
+    flex-wrap: unset;
+  }
 }
 
-#sidenav .card-header .sidenav_cat_toggler.collapsed {
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  transition-duration: 0.3s;
-}
 
 /* Right navigation --------------------------------------------------------- */
 
