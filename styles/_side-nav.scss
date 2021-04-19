@@ -1,4 +1,4 @@
-/* Left/right nav color scheme ------------------------------- */
+/* Left/right nav fonts & colors scheme ------------------------------------- */
 aside li a {
   color: $white;
   text-decoration: none;
@@ -19,53 +19,16 @@ aside .active > a:hover {
   color: $primary;
   font-weight: 700;
 }
-aside a.active-parent {
+aside a.active-parent,
+aside .active-parent > a {
   font-weight: 700;
 }
 
-.command-list li a,
-.page-toc li a {
-  display: block;
-  margin-top: 5px;
-  padding: 4px 15px 4px 35px;
-  text-indent: -20px;
-  font-size: 0.9rem;
-}
-
-#page-toc-wrapper .card-body,
-.command-list {
-  border-left: 1px solid $white;
-}
-
-.page-toc .level-1 a {
+.page-toc .level-1 a,
+.command-list .separator {
+  font-weight: 700;
+  font-family: "Space Mono", monospace;
   color: $white;
-}
-
-.page-toc .level-3 {
-  padding-left: 16px;
-  border-left: 1px solid $white;
-  margin-bottom: 0;
-  padding-bottom: 5px;
-}
-
-.page-toc .level-3 a {
-  margin-top: 0;
-  padding-bottom: 5px;
-}
-
-.command-list li a:hover,
-.page-toc li a:hover {
-  text-decoration: none;
-  border-left: 1px solid $primary;
-  padding-left: 34px;
-}
-.command-list .active a {
-  border-left: 2px solid $primary;
-  padding-left: 33px;
-}
-
-.right-sidebar {
-  padding: 44px 0 24px 48px;
 }
 
 /* Left navigation -----------------------------------------------------------*/
@@ -145,50 +108,82 @@ aside a.active-parent {
 
 /* Right navigation --------------------------------------------------------- */
 
-#page-toc-wrapper .card {
+.right-sidebar {
+  padding: 44px 0 24px 48px;
+
+  .toc-header {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 1rem 0;
+
+    h4 {
+      line-height: 20px;
+      font-size: 1.2em;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+#page-toc-wrapper {
   position: sticky;
   max-height: 85vh;
   top: 48px;
   overflow: auto;
-  padding: 44px 0 48px 24px;
-  border: none;
-}
-.command-list {
-  padding: 16px;
-}
-
-#page-toc-wrapper .card-header {
-  border-bottom: none;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 10px 0;
-}
-
-#page-toc-wrapper .card-header h4 {
-  line-height: 20px;
-  font-size: 1.2em;
   padding: 0;
-  margin: 0;
+  border: none;
+
+  .card-body {
+    padding: 0;
+    list-style-type: none;
+  }
 }
 
-#page-toc-wrapper .card-body {
-  padding: 0 0 0 16px;
-  list-style-type: none;
-}
+.page-toc,
+.command-list {
+  padding-left: 0;
+  border-left: 1px solid $white;
 
-.page-toc li,
-.command-list li {
-  list-style-type: none;
-  margin-bottom: 8px;
-  margin-left: 0;
-}
+  li {
+    list-style-type: none;
+    padding: 0;
 
-.page-toc .level-1 a,
-.command-list .separator {
-  font-weight: 700;
-  font-family: "Space Mono", monospace;
-}
-.page-toc .level-2,
-.command-list .method {
-  margin-left: 0;
+    &.separator {
+      padding: .25rem 1rem;
+    }
+
+    a {
+      display: block;
+      margin-top: 5px;
+      padding: .25rem 1rem;
+      font-size: 0.9rem;
+
+      &:hover,
+      .active {
+        text-decoration: none;
+        border-left: 1px solid $primary;
+        margin-left: -1px;
+      }
+    }
+
+    &.active a,
+    &.active a:hover {
+      border-left: 2px solid $primary;
+      padding-left: calc(1rem - 1px);
+      margin-left: -1px;
+    }
+  }
+
+  .level-3 {
+    margin-left: 16px;
+    border-left: 1px solid $white;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+
+    a {
+      margin-top: 0;
+      padding-bottom: 5px;
+    }
+  }
+
 }

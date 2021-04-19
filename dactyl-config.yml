@@ -1259,7 +1259,7 @@ pages:
 
     -   name: Consensus Network
         html: consensus-network.html
-        parent: decentralized-exchange.html
+        parent: concepts.html
         funnel: Build
         doc_type: Concepts
         category: Consensus Network
