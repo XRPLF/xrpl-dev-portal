@@ -18,6 +18,12 @@
 
 
   /* Common list modules (children, curated links) -------------------------- */
+
+  .level-1,
+  .level-2{
+    margin-top: 0;
+  }
+
   .curated-links ul,
   .curated-links ol,
   .children-display ul {
@@ -28,22 +34,6 @@
   .card .curated-links a:hover,
   .card .children-display a:hover {
     text-decoration: none;
-  }
-
-  .level-1,
-  .curated-links ul li {
-    list-style-type: disc;
-  }
-  .level-1,
-  .curated-links li {
-    margin-top: 12px;
-    margin-left: 16px;
-  }
-
-  .level-1,
-  .level-2,
-  .curated-links li {
-    margin-top: 0;
   }
 
   .card .level-1 a,
@@ -72,26 +62,33 @@
     line-height: 1.71em;
   }
 
-  .level-2 {
-    list-style-type: circle;
-    margin-left: 30px;
+  .doc-index { // "All Pages" listings
+    .level-1 {
+      list-style-type: disc;
+      margin-left: 1rem;
+    }
+    .level-2 {
+      list-style-type: circle;
+      margin-left: 2rem;
+    }
+    .level-3 {
+      list-style-type: square;
+      margin-left: 3rem;
+    }
+    .level-4 {
+      list-style-type: disc;
+      margin-left: 4rem;
+    }
+    .level-5 {
+      margin-left: 5rem;
+      list-style-type: circle;
+    }
+    .level-6 {
+      margin-left: 6rem;
+      list-style-type: square;
+    }
   }
-  .level-3 {
-    list-style-type: square;
-    margin-left: 45px;
-  }
-  .level-4 {
-    margin-left: 60px;
-  }
-  .level-5 {
-    margin-left: 75px;
-    list-style-type: circle;
-  }
-  .level-6 {
-    /* Probably not used */
-    margin-left: 90px;
-    list-style-type: square;
-  }
+
 
   /* Misc. ------------------------------------------------------------------ */
 
