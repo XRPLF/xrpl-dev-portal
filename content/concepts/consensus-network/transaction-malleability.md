@@ -1,3 +1,8 @@
+---
+html: transaction-malleability.html
+parent: consensus-network.html
+blurb: Be aware of ways transactions could be changed to have a different hash than expected.
+---
 # Transaction Malleability
 
 A transaction is "malleable" if it can be changed in any way after being signed, without the keys to sign it. In the XRP Ledger, the **functionality** of a signed transaction cannot change, but in some circumstances a third party _could_ change the signature and identifying hash of a transaction.

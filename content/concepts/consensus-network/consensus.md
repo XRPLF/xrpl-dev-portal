@@ -1,3 +1,8 @@
+---
+html: consensus.html
+parent: consensus-network.html
+blurb: Understand the role of consensus in the XRP Ledger.
+---
 # Consensus
 
 _Written by Dave Cohen, David Schwartz, and Arthur Britto._

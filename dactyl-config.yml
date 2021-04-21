@@ -994,52 +994,31 @@ pages:
             - ja
 
     -   md: concepts/consensus-network/consensus.md
-        html: consensus.html
-        parent: consensus-network.html
-        blurb: Understand the role of consensus in the XRP Ledger.
         targets:
             - en
 
     -   md: concepts/consensus-network/consensus.ja.md
-        html: consensus.html
-        parent: consensus-network.html
-        blurb: XRP Ledgerにおけるコンセンサスの役割について理解を深めましょう。
         targets:
             - ja
 
     -   md: concepts/consensus-network/consensus-principles-and-rules.md
-        html: consensus-principles-and-rules.html
-        parent: consensus-network.html
-        blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
         targets:
             - en
 
     -   md: concepts/consensus-network/consensus-principles-and-rules.ja.md
-        html: consensus-principles-and-rules.html
-        parent: consensus-network.html
-        blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email. #TODO: translate
         targets:
             - ja
 
     -   md: concepts/consensus-network/consensus-protections.md
-        html: consensus-protections.html
-        parent: consensus-network.html
-        blurb: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system.
         targets:
             - en
 
     -   md: concepts/consensus-network/consensus-protections.ja.md
-        html: consensus-protections.html
-        parent: consensus-network.html
-        blurb: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system. #TODO: translate
         targets:
             - ja
 
         # TODO: translate this page and blurb
     -   md: concepts/consensus-network/invariant-checking.md
-        html: invariant-checking.html
-        parent: consensus-network.html
-        blurb: Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active.
         targets:
             - en
             - ja
@@ -1051,116 +1030,68 @@ pages:
             - ja
 
     -   md: concepts/consensus-network/transaction-queue.md
-        html: transaction-queue.html
-        parent: consensus-network.html
-        blurb: Understand how transactions can be queued before reaching consensus.
         targets:
             - en
 
     -   md: concepts/consensus-network/transaction-queue.ja.md
-        html: transaction-queue.html
-        parent: consensus-network.html
-        blurb: コンセンサスに至る前にトランザクションをどのようにキューに入れることができるか説明します。
         targets:
             - ja
 
     -   md: concepts/consensus-network/about-canceling-a-transaction.md
-        html: about-canceling-a-transaction.html
-        parent: consensus-network.html
-        blurb: Understand when and how it's possible to cancel a transaction that has already been sent.
         targets:
             - en
 
     -   md: concepts/consensus-network/about-canceling-a-transaction.ja.md
-        html: about-canceling-a-transaction.html
-        parent: consensus-network.html
-        blurb: 送信済みのトランザクションのキャンセルがいつどのように可能か説明します。
         targets:
             - ja
 
     -   md: concepts/consensus-network/transaction-malleability.md
-        html: transaction-malleability.html
-        parent: consensus-network.html
-        blurb: Be aware of ways transactions could be changed to have a different hash than expected.
         targets:
             - en
 
     -   md: concepts/consensus-network/transaction-malleability.ja.md
-        html: transaction-malleability.html
-        parent: consensus-network.html
-        blurb: トランザクションが想定とは異なるハッシュを持つようにどのように変更される可能性があるか注意してください。
         targets:
             - ja
 
     -   md: concepts/consensus-network/amendments/amendments.md
-        html: amendments.html
-        parent: consensus-network.html
-        blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
         targets:
             - en
 
     -   md: concepts/consensus-network/amendments/amendments.ja.md
-        html: amendments.html
-        parent: consensus-network.html
-        blurb: Amendmentはトランザクション処理の新しい機能やその他の変更を指します。バリデータはコンセンサスを通して連携し、XRP Ledgerにこれらのアップグレードを順序正しく適用します。
         targets:
             - ja
 
     -   md: concepts/consensus-network/amendments/known-amendments.md
-        html: known-amendments.html
-        parent: amendments.html
-        blurb: List of all known amendments to the XRP Ledger protocol and their status.
         targets:
             - en
 
     -   md: concepts/consensus-network/amendments/known-amendments.ja.md
-        html: known-amendments.html
-        parent: amendments.html
-        blurb: List of all known amendments to the XRP Ledger protocol and their status. #TODO:translate
         targets:
             - ja
 
     -   md: concepts/consensus-network/fee-voting.md
-        html: fee-voting.html
-        parent: consensus-network.html
-        blurb: How validators vote on fees (transaction cost and reserve requirements).
         targets:
             - en
 
     -   md: concepts/consensus-network/fee-voting.ja.md
-        html: fee-voting.html
-        parent: consensus-network.html
-        blurb: How validators vote on fees (transaction cost and reserve requirements). #TODO: translate
         targets:
             - ja
 
     -   md: concepts/consensus-network/consensus-research.md
-        html: consensus-research.html
-        parent: consensus-network.html
-        blurb: Scholarly articles on consensus algorithms and related research.
         targets:
             - en
 
     -   md: concepts/consensus-network/consensus-research.ja.md
-        html: consensus-research.html
-        parent: consensus-network.html
-        blurb: コンセンサスアルゴリズムに関する学術論文と関連研究。
         targets:
             - ja
 
     # TODO: add pseudo-transactions concept page
 
     -   md: concepts/consensus-network/parallel-networks.md
-        html: parallel-networks.html
-        parent: consensus-network.html
-        blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
         targets:
             - en
 
     -   md: concepts/consensus-network/parallel-networks.ja.md
-        html: parallel-networks.html
-        parent: consensus-network.html
-        blurb: テストネットワークおよび代替レジャーチェーンと本番環境のXRP Ledgerとの関係について説明します。
         targets:
             - ja
 
@@ -4397,6 +4328,7 @@ pages:
         md: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/README.md
         html: xrp-api.html
         parent: references.html
+        blurb: An API server that provides a REST-like interface to the XRP Ledger.
         skip_spell_checker: true
         filters:
             - xrpapi_readme
@@ -4409,6 +4341,7 @@ pages:
     -   openapi_specification: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/api-doc.yml
         openapi_md_template_path: tool/openapi_templates_alpha/
         parent: xrp-api.html
+        blurb: An API server that provides a REST-like interface to the XRP Ledger. #TODO: translate blurb
         api_slug: xrp-api
         skip_spell_checker: true
         targets:

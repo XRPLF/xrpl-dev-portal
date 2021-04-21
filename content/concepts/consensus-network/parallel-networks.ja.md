@@ -1,3 +1,8 @@
+---
+html: parallel-networks.html
+parent: consensus-network.html
+blurb: テストネットワークおよび代替レジャーチェーンと本番環境のXRP Ledgerとの関係について説明します。
+---
 # 並列ネットワーク
 
 XRP Ledgerにはピアツーピアの本番環境のネットワークが1つ存在し、XRP Ledger上で行われるすべての取引はその本番環境のネットワーク、すなわちMainnet内で発生します。

@@ -1,3 +1,8 @@
+---
+html: fee-voting.html
+parent: consensus-network.html
+blurb: How validators vote on fees (transaction cost and reserve requirements).
+---
 # Fee Voting
 
 Validators can vote for changes to basic [transaction cost](transaction-cost.html) as well as [reserve requirements](reserves.html). If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to adjust to long-term changes in the value of XRP.
