@@ -41,9 +41,9 @@
     <h2 id="full-reference-index">{% trans %}Full Reference Index{% endtrans %}</h2>
     <div class="row">
       <div class="col-md-8">
-        {% set parent_page = currentpage %}
-        {% set depth = 5 %}
-        {% include 'template-page-children.html' %}
+        {% set parent_html = currentpage.html %}
+        {% set depth = 99 %}
+        {% include 'children.html' %}
       </div>
     </div>
   </section>
