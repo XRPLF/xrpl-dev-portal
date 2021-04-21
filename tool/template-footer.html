@@ -1,9 +1,7 @@
 <footer class="xrpl-footer" role="contentinfo">
   <section class="container card-grid card-grid-Nx1">
-    {% set funnels = [] %}
-    {% for page in pages %}
-      {% if page.funnel is defined and page.funnel not in funnels %}
-        {% set parent_page = pages|selectattr('funnel', 'defined_and_equalto', page.funnel)|first %}
+    {% for parent_page in (pages|first).children %}
+      {% set parent_html = parent_page.html %}
 
         <div class="card">
           <div class="card-header">
@@ -12,12 +10,10 @@
           <div class="card-body">
             {% set depth = 1 %}
             {% set count = 5 %}
-            {% include 'template-page-children.html' %}
+            {% include 'children.html' %}
           </div><!--/.card-body-->
         </div><!--/.card -->
 
-        {% set _ = funnels.append(page.funnel) %}
-      {% endif %}
     {% endfor %}
   </section>
 
