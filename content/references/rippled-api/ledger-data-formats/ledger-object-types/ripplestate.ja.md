@@ -1,11 +1,6 @@
 ---
 html: ripplestate.html
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: 2つのアカウントをリンクし、それらのアカウント間の特定の通貨の残高を追跡します。トラストラインのコンセプトは、このオブジェクトタイプを抽象化することです。
 ---
 # RippleState

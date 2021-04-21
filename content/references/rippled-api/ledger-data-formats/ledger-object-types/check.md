@@ -1,11 +1,6 @@
 ---
 html: check.html
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: A check that can be redeemed for money by its destination.
 ---
 # Check

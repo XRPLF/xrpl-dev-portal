@@ -1,3 +1,8 @@
+---
+html: direct-xrp-payments.html
+parent: payment-types.html
+blurb: XRPによる直接支払いは、XRP Ledgerで資産を送金する最も簡単な方法です。
+---
 # XRPによる直接支払
 
 金融システムの基本は、 _価値の移動_ です。一言で言えば、決済です。XRP Ledgerでの最も簡単な支払いタイプは、XRP間の直接支払で、XRP Ledgerのあるアカウントから別のアカウントにXRPを直接移動します。
@@ -41,24 +46,24 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 大まかに言えば、XRP Ledgerのトランザクション処理エンジンでは、XRPによる直接支払を次のように適用します。
 
 1. [Paymentトランザクション][]のパラメータを検証します。トランザクションがXRPを送信、送金するように構成されている場合、トランザクション処理エンジンはそのトランザクションをXRP間の直接支払として認識します。検証チェックは次のように行います。
-   
+
    - すべてのフィールドが正しいフォーマットであることを確認します。たとえば、XRPによる直接支払の場合、`Amount`フィールドは[XRPのdrop数][]でなければなりません。
    - 送信元アドレスがXRP Ledgerの資金供給された[アカウント](accounts.html)であることを確認します。
    - 指定された署名がすべて、送信元アドレスに対して有効であることを確認します。
    - 宛先アドレスと送金元アドレスが異なることを確認します。（[宛先タグ](source-and-destination-tags.html)が異なる同一アドレスに送金するだけでは不十分です。）
    - Paymentを送信するのに十分なXRP残高が送金元にあることを確認します。
-   
+
    いずれかのチェックに失敗すると、支払いは失敗します。
 
 2. 受取アドレスが、資金供給されたアカウントかどうかを確認します。
-   
+
    - 受取アドレスに資金が供給されている場合は、[DepositAuth](depositauth.html)や[RequireDest](source-and-destination-tags.html#requiring-tags)など、支払いの受け取りに関する制限が受取アドレスにあるかどうかを確認します。そのような制限を支払いが満たしていない場合、支払いは失敗します。
    - 受取アドレスに資金が供給されていない場合は、[必要準備金](reserves.html)の最低額を満たすのに十分なXRPが支払いで送金されるかどうかを確認します。十分でない場合、支払いは失敗します。
 
 3. `Amount`フィールドで指定されたXRPの金額と、[トランザクションコスト](transaction-cost.html)用に消却されるXRPの金額の合計を送金元アカウントから引き落とし、受取アカウントに同じ金額を送金します。
-   
+
    必要に応じて、受取アドレス用に新規アカウント([AccountRootオブジェクト](accountroot.html)) を作成します。新規アカウントの開始残高は、支払いの`Amount`と同額になります。
-   
+
    エンジンは、[トランザクションのメタデータ](transaction-metadata.html)に`delivered_amount`フィールドを追加して、送金金額を示します。正しい金額のXRPを受け取ったことを確認できるように、必ず`delivered_amount`を使用する必要があります。`Amount`フィールドでは**ありません**。（通貨間の支払「Partial Payment」では、`Amount`フィールドに記載されているよりも少額のXRPが送金される場合があります。）詳細は、[Partial Payments](partial-payments.html)を参照してください。
 
 
@@ -85,6 +90,6 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %} 
-{% include '_snippets/tx-type-links.md' %} 
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

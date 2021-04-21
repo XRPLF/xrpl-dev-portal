@@ -1,11 +1,6 @@
 ---
 html: ticket.html
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: A Ticket tracks an account sequence number that has been set aside for future use.
 status: not_enabled
 ---

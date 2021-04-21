@@ -1,11 +1,6 @@
 ---
 html: directorynode.html
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: 他のオブジェクトへのリンクを含みます。
 ---
 # DirectoryNode

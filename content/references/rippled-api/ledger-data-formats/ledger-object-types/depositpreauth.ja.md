@@ -1,11 +1,6 @@
 ---
 html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: 承認を必要とするアカウントへの送金ペイメントの事前承認の記録です。
 ---
 # DepositPreauth

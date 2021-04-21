@@ -1,11 +1,6 @@
 ---
 html: unlmodify.html
 parent: pseudo-transaction-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Transaction Formats
-subcategory: Pseudo-Transaction Types
 status: not_enabled
 blurb: Change the list of trusted validators currently considered offline.
 ---

@@ -1,3 +1,8 @@
+---
+html: demurrage.html
+parent: issued-currencies.html
+blurb: (Obsolete) Some older XRP Ledger tools used to support currency codes with built-in interest and negative interest rates.
+---
 # Demurrage
 
 **Warning:** Demurrage is a deprecated feature with no ongoing support. This page describes historical behavior of older versions of XRP Ledger software.

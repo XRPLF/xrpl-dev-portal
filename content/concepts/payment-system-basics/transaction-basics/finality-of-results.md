@@ -1,3 +1,8 @@
+---
+html: finality-of-results.html
+parent: transaction-basics.html
+blurb: Learn when the outcome of a transaction is final and immutable.
+---
 # Finality of Results
 
 The order in which transactions apply to the consensus [ledger](ledgers.html) is not final until a ledger is closed and the exact transaction set is approved by the [consensus process](intro-to-consensus.html). A transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a later round.

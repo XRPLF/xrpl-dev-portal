@@ -1,3 +1,8 @@
+---
+html: authorized-trust-lines.html
+parent: issued-currencies.html
+blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies.
+---
 # Authorized Trust Lines
 
 The XRP Ledger's Authorized Trust Lines feature enables a currency issuer to limit who can hold its issued (non-XRP) currencies, so that unknown XRP Ledger addresses cannot hold those currencies. The Authorized Trust Lines feature only applies to issued currencies and has no effect on XRP.

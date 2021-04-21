@@ -1,11 +1,6 @@
 ---
 html: feesettings.html
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
 ---
 # FeeSettings

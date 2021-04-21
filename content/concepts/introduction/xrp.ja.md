@@ -1,3 +1,8 @@
+---
+html: xrp.html
+parent: introduction.html
+blurb: 送金のためのデジタルアセットである、XRPの使い方と特性について学びましょう。
+---
 # XRP
 
 **XRP**は、XRP Ledgerのネイティブ暗号資産です。XRP Ledgerのすべての[アカウント](accounts.html)間で相互にXRPを送金できます。アカウントは、最小限度額のXRPを[準備金](reserves.html)として保有する必要があります。XRP Ledgerアドレス間にてXRPの直接送金が可能で、ゲートウェイや流動性プロバイダーを必要としません。このため、XRPは便利なブリッジ通貨となりました。

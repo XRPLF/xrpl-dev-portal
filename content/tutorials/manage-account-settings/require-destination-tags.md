@@ -1,9 +1,6 @@
 ---
 html: require-destination-tags.html
 parent: manage-account-settings.html
-funnel: Build
-doc_type: Tutorials
-category: Manage Account Settings
 blurb: Require users to specify a destination tag when sending to your address.
 embed_ripple_lib: true
 filters:

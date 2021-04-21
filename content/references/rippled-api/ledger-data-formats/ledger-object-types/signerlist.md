@@ -1,11 +1,6 @@
 ---
 html: signerlist.html
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: A list of addresses for multi-signing transactions.
 ---
 # SignerList

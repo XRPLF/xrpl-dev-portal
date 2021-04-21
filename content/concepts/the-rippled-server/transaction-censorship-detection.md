@@ -1,3 +1,8 @@
+---
+html: transaction-censorship-detection.html
+parent: the-rippled-server.html
+blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers.
+---
 # Transaction Censorship Detection
 
 [New in: rippled 1.2.0][]

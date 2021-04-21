@@ -1,3 +1,8 @@
+---
+html: history-sharding.html
+parent: ledger-history.html
+blurb: 履歴シャーディングは、履歴レジャーデータを保持する任務をrippledサーバー間で分担するようにします。
+---
 # 履歴シャーディング
 
 [導入: rippled 0.90.0][]

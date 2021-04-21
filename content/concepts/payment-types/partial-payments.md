@@ -1,3 +1,8 @@
+---
+html: partial-payments.html
+parent: payment-types.html
+blurb: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
+---
 # Partial Payments
 
 In the default case, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the exact amount to deliver, after charging for exchange rates and [transfer fees](transfer-fees.html). The "Partial Payment" flag ([`tfPartialPayment`](payment.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](become-an-xrp-ledger-gateway.html#bouncing-payments) without incurring additional costs to oneself.

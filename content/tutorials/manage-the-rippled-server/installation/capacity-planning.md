@@ -1,9 +1,6 @@
 ---
 html: capacity-planning.html
-funnel: Docs
-doc_type: Tutorials
-category: Manage the rippled Server
-subcategory: Installation
+parent: install-rippled.html
 blurb: Plan system specs and tune configuration for rippled in production environments.
 ---
 # Capacity Planning

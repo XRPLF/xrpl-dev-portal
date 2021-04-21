@@ -1,3 +1,8 @@
+---
+html: partial-payments.html
+parent: payment-types.html
+blurb: Partial Paymentsは送金額から手数料を差し引き、変動額を送金します。Partial Paymentsは、追加コストなしで不審な支払いを返金したい場合に便利です。
+---
 # Partial Payment
 
 デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](transfer-fees.html)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](payment.html#paymentのフラグ)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](become-an-xrp-ledger-gateway.html#bouncing-payments)したい場合に便利です。

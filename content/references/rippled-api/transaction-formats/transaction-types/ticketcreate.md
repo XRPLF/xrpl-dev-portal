@@ -1,11 +1,6 @@
 ---
 html: ticketcreate.html
 parent: transaction-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Transaction Formats
-subcategory: Transaction Types
 blurb: Set aside one or more sequence numbers as Tickets.
 status: not_enabled
 ---

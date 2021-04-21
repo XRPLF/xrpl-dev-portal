@@ -1,10 +1,6 @@
 ---
 html: configure-amendment-voting.html
 parent: configure-rippled.html
-funnel: Build
-doc_type: Tutorials
-category: Manage the rippled Server
-subcategory: Configuration
 blurb: Set your server's votes on protocol amendments.
 ---
 # Configure Amendment Voting

@@ -1,9 +1,6 @@
 ---
 html: monitor-incoming-payments-with-websocket.html
 parent: get-started.html
-funnel: Build
-doc_type: Tutorials
-category: Get Started
 blurb: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
 filters:
     - interactive_steps

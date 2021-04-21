@@ -1,9 +1,6 @@
 ---
 html: use-tickets.html
 parent: manage-account-settings.html
-funnel: Build
-doc_type: Tutorials
-category: Manage Account Settings
 blurb: Use Tickets to send a transaction outside of normal Sequence order.
 embed_ripple_lib: true
 filters:

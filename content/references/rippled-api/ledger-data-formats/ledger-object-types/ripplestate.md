@@ -1,11 +1,6 @@
 ---
 html: ripplestate.html
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.
 ---
 # RippleState

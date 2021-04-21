@@ -1,3 +1,8 @@
+---
+html: ticksize.html
+parent: decentralized-exchange.html
+blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
+---
 # Tick Size
 
 _(Added by the [TickSize amendment][].)_

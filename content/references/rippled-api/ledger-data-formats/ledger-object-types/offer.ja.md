@@ -1,11 +1,6 @@
 ---
 html: offer.html
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: 通貨取引を行うためのオーダーです。
 ---
 # Offer

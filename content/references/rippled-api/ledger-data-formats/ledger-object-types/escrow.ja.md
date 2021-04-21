@@ -1,11 +1,6 @@
 ---
 html: escrow-object.html #escrow.html is taken by the concept page
 parent: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
 blurb: 条件付き決済のために保有されているXRPを含みます。
 ---
 # Escrow

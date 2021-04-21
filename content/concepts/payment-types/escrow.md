@@ -1,3 +1,8 @@
+---
+html: escrow.html
+parent: payment-types.html
+blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
+---
 # Escrow
 
 Escrow is a feature of the XRP Ledger that allows you to send conditional XRP payments. These conditional payments, called _escrows_, set aside XRP and deliver it later when certain conditions are met. Conditions to successfully finish an escrow include time-based unlocks and [crypto-conditions][]. Escrows can also be set to expire if not finished in time.

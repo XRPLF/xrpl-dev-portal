@@ -1,3 +1,8 @@
+---
+html: issuing-and-operational-addresses.html
+parent: issued-currencies.html
+blurb: XRP Ledgerで自動的にトランザクションを送信するビジネスは、リスクを最小限に抑えるために目的ごとに別のアドレスを設定することをおすすめします。
+---
 # 発行アドレスと運用アドレス
 
 {% include '_snippets/issuing-and-operational-addresses-intro.ja.md' %}

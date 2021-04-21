@@ -1,3 +1,8 @@
+---
+html: cross-currency-payments.html
+parent: payment-types.html
+blurb: 複数通貨間の支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。
+---
 # 複数通貨間の支払い
 
 XRP Ledgerでは、1つ以上の発行済み通貨、XRP、またはその両方を交換して、複数通貨間で支払いを送金できます。[XRPによる直接支払](use-simple-xrp-payments.html)と同様に、このような支払いでは[Paymentトランザクションタイプ][Payment]が使用されます。XRP Ledgerでの複数通貨間の支払いは完全に非可分です。つまり、支払いを全額実行するか、またはまったく実行しないかのいずれかになります。

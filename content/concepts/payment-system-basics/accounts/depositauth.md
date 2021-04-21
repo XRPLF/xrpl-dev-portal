@@ -1,3 +1,8 @@
+---
+html: depositauth.html
+parent: accounts.html
+blurb: The DepositAuth setting lets an account block incoming payments by default.
+---
 # Deposit Authorization
 
 _(Added by the [DepositAuth amendment][].)_

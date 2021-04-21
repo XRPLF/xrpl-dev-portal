@@ -1,3 +1,8 @@
+---
+html: rippled-server-modes.html
+parent: the-rippled-server.html
+blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
+---
 # rippled Server Modes
 
 The `rippled` server software can run in several modes depending on its configuration, including:

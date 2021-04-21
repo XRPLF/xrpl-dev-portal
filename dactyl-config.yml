@@ -429,70 +429,42 @@ pages:
             - ja
 
     -   md: concepts/introduction/xrp-ledger-overview.md
-        html: xrp-ledger-overview.html
-        parent: introduction.html
-        blurb: Get a quick and concise introduction to key features of the XRP Ledger.
         targets:
             - en
 
     -   md: concepts/introduction/xrp-ledger-overview.ja.md
-        html: xrp-ledger-overview.html
-        parent: introduction.html
-        blurb: XRP Ledgerの基本機能を簡単に紹介します。
         targets:
             - ja
 
     -   md: concepts/introduction/intro-to-consensus.md
-        html: intro-to-consensus.html
-        parent: introduction.html
-        blurb: Develop a basic understanding of the XRP Ledger's consensus mechanism.
         targets:
             - en
 
     -   md: concepts/introduction/intro-to-consensus.ja.md
-        html: intro-to-consensus.html
-        blurb: XRP Ledgerのコンセンサスメカニズムについて基本的な理解を深めましょう。
         targets:
             - ja
 
     -   md: concepts/introduction/xrp.md
-        html: xrp.html
-        blurb: Learn about the uses and properties of XRP, the digital asset for payments.
         targets:
             - en
 
     -   md: concepts/introduction/xrp.ja.md
-        html: xrp.html
-        parent: introduction.html
-        blurb: 送金のためのデジタルアセットである、XRPの使い方と特性について学びましょう。
         targets:
             - ja
 
     -   md: concepts/introduction/software-ecosystem.md
-        html: software-ecosystem.html
-        parent: introduction.html
-        blurb: Get an overview of what XRP Ledger software is out there and how it fits together.
         targets:
             - en
 
     -   md: concepts/introduction/software-ecosystem.ja.md
-        html: software-ecosystem.html
-        parent: introduction.html
-        blurb: XRP Ledgerソフトウェアで注目されている特性と、それらがどう組み合わさっているのか大まかに紹介します。
         targets:
             - ja
 
     -   md: concepts/introduction/technical-faq.md
-        html: technical-faq.html
-        parent: introduction.html
-        blurb: Get answers to frequently asked questions, covering topics such as validators, unique node lists, the role of XRP, and security.
         targets:
             - en
 
     -   md: concepts/introduction/technical-faq.ja.md
-        html: technical-faq.html
-        parent: introduction.html
-        blurb: バリデータ、ユニークノードリスト、XRPの役割、セキュリティなどのトピックに関するよくある質問に対しての答えを見つけてください。
         targets:
             - ja
 
@@ -513,58 +485,34 @@ pages:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/accounts.md
-        html: accounts.html
-        parent: payment-system-basics.html
-        blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP.
         targets:
             - en
 
     -   md: concepts/payment-system-basics/accounts/accounts.ja.md
-        html: accounts.html
-        parent: payment-system-basics.html
-        blurb: XRP Ledgerのアカウントについて説明します。アカウントはトランザクションを送信でき、XRPを保有できます。
         targets:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/cryptographic-keys.md
-        html: cryptographic-keys.html
-        parent: accounts.html
-        blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
         targets:
             - en
 
     -   md: concepts/payment-system-basics/accounts/cryptographic-keys.ja.md
-        html: cryptographic-keys.html
-        parent: accounts.html
-        blurb: 暗号鍵を使用してトランザクションを承認し、XRP Ledgerがトランザクションを実行できるようにします。
         targets:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/multi-signing.md
-        html: multi-signing.html
-        parent: accounts.html
-        blurb: Use multi-signing for greater security sending transactions.
         targets:
             - en
 
     -   md: concepts/payment-system-basics/accounts/multi-signing.ja.md
-        html: multi-signing.html
-        parent: accounts.html
-        blurb: マルチ署名を使用することで、トランザクション送信時のセキュリティが強化されます。
         targets:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/reserves.md
-        html: reserves.html
-        parent: accounts.html
-        blurb: XRP Ledger accounts require a reserve of XRP to reduce spam in ledger data.
         targets:
             - en
 
     -   md: concepts/payment-system-basics/accounts/reserves.ja.md
-        html: reserves.html
-        parent: accounts.html
-        blurb: XRP Ledgerアカウントでは、レジャーデータ内のスパムを減らすためにXRPの準備金が必要です。
         targets:
             - ja
 
@@ -574,101 +522,61 @@ pages:
             - ja
 
     -   md: concepts/payment-system-basics/accounts/depositauth.md
-        html: depositauth.html
-        parent: accounts.html
-        blurb: The DepositAuth setting lets an account block incoming payments by default.
         targets:
             - en
 
     -   md: concepts/payment-system-basics/accounts/depositauth.ja.md
-        html: depositauth.html
-        parent: accounts.html
-        blurb: DepositAuth設定をすると、アカウントは着信ペイメントをデフォルトでブロックします。
         targets:
             - ja
 
     -   md: concepts/payment-system-basics/fees.md
-        html: fees.html
-        parent: payment-system-basics.html
-        blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
         targets:
             - en
 
     -   md: concepts/payment-system-basics/fees.ja.md
-        html: fees.html
-        parent: payment-system-basics.html
-        blurb: レジャーを悪用から守る中立的な手数料（誰にも支払われません）や、ユーザーが互いから徴収できる手数料など、XRP Ledgerで許可されている手数料のタイプについて説明します。
         targets:
             - ja
 
     -   md: concepts/payment-system-basics/ledgers.md
-        html: ledgers.html
-        parent: payment-system-basics.html
-        blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers.
         targets:
             - en
 
         # TODO: translation needs to be updated based on ledgers.md
     -   md: concepts/payment-system-basics/ledgers.ja.md
-        html: ledgers.html
-        parent: payment-system-basics.html
-        blurb: XRP Ledgerは、rippledによって内部データベースに保持されている一連の個別レジャー（レジャーバージョン）で構成されています。これらのレジャーの構造と内容について説明します。
         targets:
             - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
-        html: transaction-basics.html
-        parent: payment-system-basics.html
-        blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
         targets:
             - en
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.ja.md
-        html: transaction-basics.html
-        parent: payment-system-basics.html
-        blurb: トランザクションは、XRP Ledgerの変更を可能にする唯一の手段です。トランザクションの形態とその使用方法について説明します。
         targets:
             - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
-        html: transaction-cost.html
-        parent: transaction-basics.html
-        blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
         targets:
             - en
 
     -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.ja.md
-        html: transaction-cost.html
-        parent: transaction-basics.html
-        blurb: トランザクションコストとはトランザクション送信のために償却される少額のXRPで、これによってレジャーがスパムから保護されます。トランザクションコストの適用方法について説明します。
         targets:
             - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.md
-        html: finality-of-results.html
-        parent: transaction-basics.html
-        blurb: Learn when the outcome of a transaction is final and immutable.
         targets:
             - en
 
     -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.ja.md
-        html: finality-of-results.html
-        parent: transaction-basics.html
-        blurb: トランザクション結果が最終的かつ不変になるタイミングについて説明します。
         targets:
             - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
-        html: source-and-destination-tags.html
-        parent: transaction-basics.html
-        blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
         targets:
             - en
 
     # TODO: Somehow this page's blurb got translated into Japanese but the page itself wasn't?
+    # For now we overwrite the blurb but use the page otherwise as-is.
     -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
-        html: source-and-destination-tags.html
-        parent: transaction-basics.html
         blurb: 多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。
         targets:
             - ja
@@ -700,86 +608,50 @@ pages:
             - ja
 
     -   md: concepts/payment-types/direct-xrp-payments.md
-        html: direct-xrp-payments.html
-        parent: payment-types.html
-        blurb: Direct XRP payments are the simplest way to send value in the XRP Ledger.
         targets:
             - en
 
     -   md: concepts/payment-types/direct-xrp-payments.ja.md
-        html: direct-xrp-payments.html
-        parent: payment-types.html
-        blurb: XRPによる直接支払いは、XRP Ledgerで資産を送金する最も簡単な方法です。
         targets:
             - ja
 
     -   md: concepts/payment-types/cross-currency-payments.md
-        html: cross-currency-payments.html
-        parent: payment-types.html
-        blurb: Cross-currency payments atomically deliver a different currency than they send by converting through paths and order books.
         targets:
             - en
 
     -   md: concepts/payment-types/cross-currency-payments.ja.md
-        html: cross-currency-payments.html
-        parent: payment-types.html
-        blurb: 複数通貨間の支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。
         targets:
             - ja
 
     -   md: concepts/payment-types/checks.md
-        html: checks.html
-        parent: payment-types.html
-        blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients.
         targets:
             - en
 
     -   md: concepts/payment-types/checks.ja.md
-        html: checks.html
-        parent: payment-types.html
-        blurb: Checksを使用すると、指定の受取人による取消または換金が可能な後払いの支払いを生成することができます。
         targets:
             - ja
 
     -   md: concepts/payment-types/escrow.md
-        html: escrow.html
-        parent: payment-types.html
-        blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
         targets:
             - en
 
     -   md: concepts/payment-types/escrow.ja.md
-        html: escrow.html
-        parent: payment-types.html
-        blurb: XRPはEscrowに預託され、後日特定の条件が満たされた時点で送金されます。Escrowは時間制限、暗号条件、あるいはその両方によって異なる場合があります。
         targets:
             - ja
 
     -   md: concepts/payment-types/partial-payments.md
-        html: partial-payments.html
-        parent: payment-types.html
-        blurb: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
         targets:
             - en
 
     -   md: concepts/payment-types/partial-payments.ja.md
-        html: partial-payments.html
-        parent: payment-types.html
-        blurb: Partial Paymentsは送金額から手数料を差し引き、変動額を送金します。Partial Paymentsは、追加コストなしで不審な支払いを返金したい場合に便利です。
         targets:
             - ja
 
     -   md: concepts/payment-types/payment-channels.md
-        html: payment-channels.html
-        parent: payment-types.html
-        blurb: Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later.
         targets:
             - en
 
     -   md: concepts/payment-types/payment-channels.ja.md
-        html: payment-channels.html
-        parent: payment-types.html
-        blurb: Payment Channelは、少額の単位に分割可能な高速な非同期のXRPペイメントを送信し、後日決済されるようにします。
         targets:
             - ja
 
@@ -800,121 +672,70 @@ pages:
             - ja
 
     -   md: concepts/issued-currencies/issued-currencies-overview.md
-        html: issued-currencies-overview.html
-        parent: issued-currencies.html
-        blurb: Get an overview of issued currencies and their properties in the XRP Ledger.
         targets:
             - en
 
     -   md: concepts/issued-currencies/issued-currencies-overview.ja.md
-        html: issued-currencies-overview.html
-        parent: issued-currencies.html
-        blurb: 発行済み通貨の概要と、XRP Ledgerにおけるその特性について説明します。
         targets:
             - ja
 
     -   md: concepts/issued-currencies/trust-lines-and-issuing.md
-        html: trust-lines-and-issuing.html
-        parent: issued-currencies.html
-        blurb: Learn about the properties and rationale of trust lines.
         targets:
             - en
 
     -   md: concepts/issued-currencies/trust-lines-and-issuing.ja.md
-        html: trust-lines-and-issuing.html
-        parent: issued-currencies.html
-        blurb: トラストラインの特性と根本原理について説明します。
         targets:
             - ja
 
     -   md: concepts/issued-currencies/authorized-trust-lines.md
-        html: authorized-trust-lines.html
-        parent: issued-currencies.html
-        blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies.
         targets:
             - en
 
     -   md: concepts/issued-currencies/authorized-trust-lines.ja.md
-        html: authorized-trust-lines.html
-        parent: issued-currencies.html
-        blurb: 通貨発行者が自己の発行済み通貨を保有できる人を制限できる、Authorized Trust Lineについて説明します。
         targets:
             - ja
 
     -   md: concepts/issued-currencies/freezes.md
-        html: freezes.html
-        parent: issued-currencies.html
-        blurb: Freezes can suspend trading of issued currencies for compliance purposes.
         targets:
             - en
 
     -   md: concepts/issued-currencies/freezes.ja.md
-        html: freezes.html
-        parent: issued-currencies.html
-        blurb: 凍結では、コンプライアンス目的で発行済み通貨の取引を停止できます。
         targets:
             - ja
 
     -   md: concepts/issued-currencies/rippling.md
-        html: rippling.html
-        parent: issued-currencies.html
-        blurb: Rippling is automatic multi-party net settlement of issued currency balances.
         targets:
             - en
 
     -   md: concepts/issued-currencies/rippling.ja.md
-        html: rippling.html
-        parent: issued-currencies.html
-        blurb: Ripplingは、複数当事者間での発行済み通貨残高の自動ネット決済です。
         targets:
             - ja
 
     -   md: concepts/issued-currencies/transfer-fees.md
-        html: transfer-fees.html
-        parent: issued-currencies.html
-        blurb: Currency issuers can charge a fee for transferring their issued currencies.
         targets:
             - en
 
     -   md: concepts/issued-currencies/transfer-fees.ja.md
-        html: transfer-fees.html
-        parent: issued-currencies.html
-        blurb: 通貨発行者は、自己の発行済み通貨の送金に手数料を課すことができます。
         targets:
             - ja
 
     -   md: concepts/issued-currencies/issuing-and-operational-addresses.md
-        html: issuing-and-operational-addresses.html
-        parent: issued-currencies.html
-        blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
         targets:
             - en
 
     -   md: concepts/issued-currencies/issuing-and-operational-addresses.ja.md
-        html: issuing-and-operational-addresses.html
-        parent: issued-currencies.html
-        blurb: XRP Ledgerで自動的にトランザクションを送信するビジネスは、リスクを最小限に抑えるために目的ごとに別のアドレスを設定することをおすすめします。
         targets:
             - ja
 
     -   md: concepts/issued-currencies/paths.md
-        html: paths.html
-        parent: issued-currencies.html
-        blurb: Payments of issued currencies must traverse paths of connected users and order books.
         targets:
             - en
 
     -   md: concepts/issued-currencies/paths.ja.md
-        html: paths.html
-        parent: issued-currencies.html
-        blurb: 発行済み通貨の支払いは、接続されているユーザーのパスとオーダーブックを通す必要があります。
         targets:
             - ja
 
     -   md: concepts/issued-currencies/demurrage.md
-        html: demurrage.html
-        parent: issued-currencies.html
-        blurb: (Obsolete) Some older XRP Ledger tools used to support currency codes with built-in interest and negative interest rates.
         targets:
             - en
             - ja
@@ -936,44 +757,26 @@ pages:
             - ja
 
     -   md: concepts/decentralized-exchange/offers.md
-        html: offers.html
-        parent: decentralized-exchange.html
-        blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
         targets:
             - en
 
     -   md: concepts/decentralized-exchange/offers.ja.md
-        html: offers.html
-        parent: decentralized-exchange.html
-        blurb: オファーはXRP Ledgerの通貨取引オーダーの形態です。オファーのライフサイクルと特性について説明します。
         targets:
             - ja
 
     -   md: concepts/decentralized-exchange/autobridging.md
-        html: autobridging.html
-        parent: decentralized-exchange.html
-        blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs.
         targets:
             - en
 
     -   md: concepts/decentralized-exchange/autobridging.ja.md
-        html: autobridging.html
-        parent: decentralized-exchange.html
-        blurb: オートブリッジングは、コストが下がる場合はXRPを仲介として使用してオーダーブックを自動的に接続します。
         targets:
             - ja
 
     -   md: concepts/decentralized-exchange/ticksize.md
-        html: ticksize.html
-        parent: decentralized-exchange.html
-        blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
         targets:
             - en
 
     -   md: concepts/decentralized-exchange/ticksize.ja.md
-        html: ticksize.html
-        parent: decentralized-exchange.html
-        blurb: 発行者は、為替レートのごくわずかな差を超えて、頻繁な取引を抑制するためにオーダーブックで通貨のカスタムチックサイズを設定することができます。
         targets:
             - ja
 
@@ -1108,100 +911,58 @@ pages:
             - ja
 
     -   md: concepts/the-rippled-server/rippled-server-modes.md
-        html: rippled-server-modes.html
-        parent: the-rippled-server.html
-        blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
         targets:
             - en
 
     -   md: concepts/the-rippled-server/rippled-server-modes.ja.md
-        html: rippled-server-modes.html
-        parent: the-rippled-server.html
-        blurb: ストックサーバー、バリデータサーバー、スタンドアロンモードで運用されるrippledサーバーなど、rippledサーバーのモードについて説明します。
         targets:
             - ja
 
     -   md: concepts/the-rippled-server/clustering.md
-        html: clustering.html
-        parent: the-rippled-server.html
-        blurb: Run rippled servers in a cluster to share the load of cryptography between them.
         targets:
             - en
 
     -   md: concepts/the-rippled-server/clustering.ja.md
-        html: clustering.html
-        parent: the-rippled-server.html
-        blurb: 暗号処理の負荷を分散させるためにクラスターでrippledサーバーを運用できます。
         targets:
             - ja
 
     -   md: concepts/the-rippled-server/ledger-history/ledger-history.md
-        html: ledger-history.html
-        parent: the-rippled-server.html
-        blurb: rippled servers store a variable amount of transaction and state history locally.
         targets:
             - en
 
     -   md: concepts/the-rippled-server/ledger-history/ledger-history.ja.md
-        html: ledger-history.html
-        parent: the-rippled-server.html
-        blurb: rippledサーバーはトランザクションの変動金額と状態の履歴をローカルに保管します。
         targets:
             - ja
 
     -   md: concepts/the-rippled-server/ledger-history/online-deletion.md
-        html: online-deletion.html
-        parent: ledger-history.html
-        blurb: Online deletion purges outdated transaction and state history.
         targets:
             - en
 
     -   md: concepts/the-rippled-server/ledger-history/online-deletion.ja.md
-        html: online-deletion.html
-        parent: ledger-history.html
-        blurb: オンライン削除は古いトランザクションと状態の履歴を消去します。
         targets:
             - ja
 
     -   md: concepts/the-rippled-server/ledger-history/history-sharding.md
-        html: history-sharding.html
-        parent: ledger-history.html
-        blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
         targets:
             - en
 
     -   md: concepts/the-rippled-server/ledger-history/history-sharding.ja.md
-        html: history-sharding.html
-        parent: ledger-history.html
-        blurb: 履歴シャーディングは、履歴レジャーデータを保持する任務をrippledサーバー間で分担するようにします。
         targets:
             - ja
 
     -   md: concepts/the-rippled-server/peer-protocol.md
-        html: peer-protocol.html
-        parent: the-rippled-server.html
-        blurb: The peer protocol specifies the language rippled servers speak to each other.
         targets:
             - en
 
     -   md: concepts/the-rippled-server/peer-protocol.ja.md
-        html: peer-protocol.html
-        parent: the-rippled-server.html
-        blurb: ピアプロトコルは、rippledサーバーが互いに通信する言語を指定します。
         targets:
             - ja
 
     -   md: concepts/the-rippled-server/transaction-censorship-detection.md
-        html: transaction-censorship-detection.html
-        parent: the-rippled-server.html
-        blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers.
         targets:
             - en
 
     -   md: concepts/the-rippled-server/transaction-censorship-detection.ja.md
-        html: transaction-censorship-detection.html
-        parent: the-rippled-server.html
-        blurb: XRP Ledgerでは取引検閲の自動検知機能がすべてのrippledサーバーで有効になっています。
         targets:
             - ja
 

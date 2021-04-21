@@ -1,3 +1,8 @@
+---
+html: accounts.html
+parent: payment-system-basics.html
+blurb: XRP Ledgerのアカウントについて説明します。アカウントはトランザクションを送信でき、XRPを保有できます。
+---
 # アカウント
 
 XRP Ledgerの「アカウント」は、XRPの所有者と[トランザクション](transaction-formats.html)の送信者を表します。アカウントの主な要素は次のとおりです。

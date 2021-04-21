@@ -1,8 +1,5 @@
 ---
 html: get-started-using-python.html
-funnel: Build
-doc_type: Tutorials
-category: Get Started
 blurb: Build a simple Python app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 filters:

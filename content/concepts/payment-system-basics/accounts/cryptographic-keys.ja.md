@@ -1,3 +1,8 @@
+---
+html: cryptographic-keys.html
+parent: accounts.html
+blurb: 暗号鍵を使用してトランザクションを承認し、XRP Ledgerがトランザクションを実行できるようにします。
+---
 # 暗号鍵
 
 XRP Ledgerでは、[トランザクション](transaction-basics.html)による一連の具体的なアクションの実行が承認されていることを、デジタル署名によって証明します。署名されたトランザクションのみがネットワークに送信され、検証済みレジャーに含まれます。 <!-- STYLE_OVERRIDE: is authorized to -->

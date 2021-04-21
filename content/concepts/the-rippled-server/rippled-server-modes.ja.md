@@ -1,3 +1,8 @@
+---
+html: rippled-server-modes.html
+parent: the-rippled-server.html
+blurb: ストックサーバー、バリデータサーバー、スタンドアロンモードで運用されるrippledサーバーなど、rippledサーバーのモードについて説明します。
+---
 # rippledサーバーのモード
 
 `rippled`サーバーソフトウェアは、その設定に応じて以下のようなさまざまなモードで実行できます。

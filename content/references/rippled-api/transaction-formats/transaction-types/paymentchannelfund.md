@@ -1,11 +1,6 @@
 ---
 html: paymentchannelfund.html
 parent: transaction-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Transaction Formats
-subcategory: Transaction Types
 blurb: Add more XRP to a payment channel.
 ---
 # PaymentChannelFund

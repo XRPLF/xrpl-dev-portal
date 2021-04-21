@@ -1,3 +1,8 @@
+---
+html: clustering.html
+parent: the-rippled-server.html
+blurb: Run rippled servers in a cluster to share the load of cryptography between them.
+---
 # Clustering
 
 If you are running multiple `rippled` servers in a single datacenter, you can configure those servers into a cluster to maximize efficiency. Running your `rippled` servers in a cluster provides the following benefits:
