@@ -49,15 +49,15 @@
       /></clipPath
     ></defs
     ><g font-family="sans-serif" font-size="14px" transform="translate(660,370)"
-    ><text x="213" xml:space="preserve" y="18.1094" clip-path="url(#clipPath2)" stroke="none"
+    ><text x="212" xml:space="preserve" y="17.9844" clip-path="url(#clipPath2)" stroke="none"
       >...</text
     ></g
     ><g font-family="sans-serif" font-size="14px" transform="translate(80,370)"
-    ><text x="113" xml:space="preserve" y="18.1094" clip-path="url(#clipPath3)" stroke="none"
+    ><text x="112" xml:space="preserve" y="17.9844" clip-path="url(#clipPath3)" stroke="none"
       >...</text
     ></g
     ><g font-family="sans-serif" font-size="14px" transform="translate(540,280)"
-    ><text x="5" xml:space="preserve" y="18.1094" clip-path="url(#clipPath4)" stroke="none"
+    ><text x="5" xml:space="preserve" y="17.9844" clip-path="url(#clipPath4)" stroke="none"
       >creates</text
     ></g
     ><g fill="rgb(255,255,255)" fill-opacity="0" transform="translate(130,130)" stroke-opacity="0" stroke="rgb(255,255,255)"
@@ -65,12 +65,12 @@
     /></g
     ><g transform="translate(130,130)"
     ><rect fill="none" x="0.5" width="128.5" height="108.5" y="0.5" clip-path="url(#clipPath5)"
-      /><text x="36" font-size="14px" y="18.1094" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      /><text x="37" font-size="14px" y="17.9844" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Account</text
-      ><path fill="none" d="M1 24.1094 L129 24.1094" clip-path="url(#clipPath5)"
-      /><text x="5" font-size="14px" y="39.2188" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><path fill="none" d="M1 23.9844 L129 23.9844" clip-path="url(#clipPath5)"
+      /><text x="5" font-size="14px" y="38.9688" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >ID: rf1Bi...</text
-      ><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><text x="5" font-size="14px" y="54.9531" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Sequence: 101</text
     ></g
     ><g fill="rgb(255,255,255)" fill-opacity="0" transform="translate(80,70)" stroke-opacity="0" stroke="rgb(255,255,255)"
@@ -78,7 +78,7 @@
     /></g
     ><g stroke-dasharray="8,5" stroke-miterlimit="5" transform="translate(80,70)" stroke-linecap="butt"
     ><rect fill="none" x="0.5" width="238.5" height="338.5" y="0.5" clip-path="url(#clipPath6)"
-      /><text x="25" font-size="14px" y="18.1094" clip-path="url(#clipPath6)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      /><text x="24" font-size="14px" y="17.9844" clip-path="url(#clipPath6)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Ledger State Data (Before)</text
     ></g
     ><g fill="rgb(255,255,255)" fill-opacity="0" transform="translate(950,270)" stroke-opacity="0" stroke="rgb(255,255,255)"
@@ -86,59 +86,59 @@
     /></g
     ><g transform="translate(950,270)"
     ><rect fill="none" x="0.5" width="118.5" height="68.5" y="0.5" clip-path="url(#clipPath7)"
-      /><text x="38" font-size="14px" y="18.1094" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      /><text x="39" font-size="14px" y="17.9844" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Ticket</text
-      ><path fill="none" d="M1 24.1094 L119 24.1094" clip-path="url(#clipPath7)"
-      /><text x="5" font-size="14px" y="39.2188" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><path fill="none" d="M1 23.9844 L119 23.9844" clip-path="url(#clipPath7)"
+      /><text x="5" font-size="14px" y="38.9688" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Account: rf1Bi...</text
-      ><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >Sequence: 103</text
+      ><text x="5" font-size="14px" y="54.9531" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      >Sequence: 104</text
     ></g
     ><g fill="rgb(255,255,255)" fill-opacity="0" transform="translate(820,270)" stroke-opacity="0" stroke="rgb(255,255,255)"
     ><rect x="0.5" width="118.5" height="68.5" y="0.5" clip-path="url(#clipPath7)" stroke="none"
     /></g
     ><g transform="translate(820,270)"
     ><rect fill="none" x="0.5" width="118.5" height="68.5" y="0.5" clip-path="url(#clipPath7)"
-      /><text x="38" font-size="14px" y="18.1094" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      /><text x="39" font-size="14px" y="17.9844" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Ticket</text
-      ><path fill="none" d="M1 24.1094 L119 24.1094" clip-path="url(#clipPath7)"
-      /><text x="5" font-size="14px" y="39.2188" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><path fill="none" d="M1 23.9844 L119 23.9844" clip-path="url(#clipPath7)"
+      /><text x="5" font-size="14px" y="38.9688" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Account: rf1Bi...</text
-      ><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >Sequence: 102</text
+      ><text x="5" font-size="14px" y="54.9531" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      >Sequence: 103</text
     ></g
     ><g fill="rgb(255,255,255)" fill-opacity="0" transform="translate(690,270)" stroke-opacity="0" stroke="rgb(255,255,255)"
     ><rect x="0.5" width="118.5" height="68.5" y="0.5" clip-path="url(#clipPath7)" stroke="none"
     /></g
     ><g transform="translate(690,270)"
     ><rect fill="none" x="0.5" width="118.5" height="68.5" y="0.5" clip-path="url(#clipPath7)"
-      /><text x="38" font-size="14px" y="18.1094" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      /><text x="39" font-size="14px" y="17.9844" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Ticket</text
-      ><path fill="none" d="M1 24.1094 L119 24.1094" clip-path="url(#clipPath7)"
-      /><text x="5" font-size="14px" y="39.2188" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><path fill="none" d="M1 23.9844 L119 23.9844" clip-path="url(#clipPath7)"
+      /><text x="5" font-size="14px" y="38.9688" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Account: rf1Bi...</text
-      ><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >Sequence: 101</text
+      ><text x="5" font-size="14px" y="54.9531" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      >Sequence: 102</text
     ></g
     ><g fill="rgb(255,255,255)" fill-opacity="0" transform="translate(690,130)" stroke-opacity="0" stroke="rgb(255,255,255)"
     ><rect x="0.5" width="128.5" height="108.5" y="0.5" clip-path="url(#clipPath5)" stroke="none"
     /></g
     ><g transform="translate(690,130)"
     ><rect fill="none" x="0.5" width="128.5" height="108.5" y="0.5" clip-path="url(#clipPath5)"
-      /><text x="36" font-size="14px" y="18.1094" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      /><text x="37" font-size="14px" y="17.9844" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Account</text
-      ><path fill="none" d="M1 24.1094 L129 24.1094" clip-path="url(#clipPath5)"
-      /><text x="5" font-size="14px" y="39.2188" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><path fill="none" d="M1 23.9844 L129 23.9844" clip-path="url(#clipPath5)"
+      /><text x="5" font-size="14px" y="38.9688" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >ID: rf1Bi...</text
-      ><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >Sequence: 104</text
+      ><text x="5" font-size="14px" y="54.9531" clip-path="url(#clipPath5)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+      >Sequence: 105</text
     ></g
     ><g fill="rgb(255,255,255)" fill-opacity="0" transform="translate(660,80)" stroke-opacity="0" stroke="rgb(255,255,255)"
     ><rect x="0.5" width="438.5" height="328.5" y="0.5" clip-path="url(#clipPath8)" stroke="none"
     /></g
     ><g stroke-dasharray="8,5" stroke-miterlimit="5" transform="translate(660,80)" stroke-linecap="butt"
     ><rect fill="none" x="0.5" width="438.5" height="328.5" y="0.5" clip-path="url(#clipPath8)"
-      /><text x="131" font-size="14px" y="18.1094" clip-path="url(#clipPath8)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      /><text x="129" font-size="14px" y="17.9844" clip-path="url(#clipPath8)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Ledger State Data (After)</text
     ></g
     ><g fill="rgb(255,255,255)" fill-opacity="0" transform="translate(420,150)" stroke-opacity="0" stroke="rgb(255,255,255)"
@@ -146,16 +146,16 @@
     /></g
     ><g transform="translate(420,150)"
     ><rect fill="none" x="0.5" width="128.5" height="98.5" y="0.5" clip-path="url(#clipPath9)"
-      /><text x="20" font-size="14px" y="18.1094" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      /><text x="20" font-size="14px" y="17.9844" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >TicketCreate</text
-      ><text x="25" font-size="14px" y="34.2188" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><text x="25" font-size="14px" y="33.9688" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >transaction</text
-      ><path fill="none" d="M1 40.2188 L129 40.2188" clip-path="url(#clipPath9)"
-      /><text x="5" font-size="14px" y="55.3281" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><path fill="none" d="M1 39.9688 L129 39.9688" clip-path="url(#clipPath9)"
+      /><text x="5" font-size="14px" y="54.9531" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Account: rf1Bi...</text
-      ><text x="5" font-size="14px" y="71.4375" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><text x="5" font-size="14px" y="70.9375" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >TicketCount: 3</text
-      ><text x="5" font-size="14px" y="87.5469" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><text x="5" font-size="14px" y="86.9219" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >Sequence: 101</text
     ></g
     ><g transform="translate(540,210)"
@@ -180,7 +180,7 @@
     ><path fill="none" d="M149.5 20.5 L10.5 20.5" clip-path="url(#clipPath13)"
       /><path d="M138.7417 14 L150 20.5 L138.7417 27 Z" clip-path="url(#clipPath13)" stroke="none"
       /><path fill="none" d="M138.7417 14 L150 20.5 L138.7417 27 Z" clip-path="url(#clipPath13)"
-      /><text x="52.625" font-size="14px" y="32.1094" clip-path="url(#clipPath13)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      /><text x="52.5903" font-size="14px" y="31.9844" clip-path="url(#clipPath13)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >updates</text
     ></g
     ><g transform="translate(250,170)"
