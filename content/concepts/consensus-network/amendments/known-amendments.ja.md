@@ -13,9 +13,9 @@
 | [fixSTAmountCanonicalize][]     | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
 | [FlowSortStrands][]             | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
 | [TicketBatch][]                 | v1.7.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
-| [fix1781][]                     | v1.6.0     | [予定: 2021/04/08](https://xrpl.org/blog/2021/three-amendments-expected.html "BADGE_BLUE") |
-| [fixAmendmentMajorityCalc][]    | v1.6.0     | [予定: 2021/04/08](https://xrpl.org/blog/2021/three-amendments-expected.html "BADGE_BLUE") |
-| [HardenedValidations][]         | v1.6.0     | [予定: 2021/04/08](https://xrpl.org/blog/2021/three-amendments-expected.html "BADGE_BLUE") |
+| [fix1781][]                     | v1.6.0     | [有効: 2021/04/08](https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB "BADGE_GREEN") |
+| [fixAmendmentMajorityCalc][]    | v1.6.0     | [有効: 2021/04/08](https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF "BADGE_GREEN") |
+| [HardenedValidations][]         | v1.6.0     | [有効: 2021/04/08](https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF "BADGE_GREEN") |
 | [FlowCross][]                   | v0.70.0    | [有効: 2020/08/04](https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F "BADGE_GREEN") |
 | [fixQualityUpperBound][]        | v1.5.0     | [有効: 2020/07/09](https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
 | [RequireFullyCanonicalSig][]    | v1.5.0     | [有効: 2020/07/03](https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
@@ -332,7 +332,7 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 
 | Amendment ID                                                     | ステータス    |
 |:-----------------------------------------------------------------|:----------|
-| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | 予定 |
+| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | 有効 |
 
 Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
 
@@ -346,7 +346,7 @@ With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result cod
 
 | Amendment ID                                                     | ステータス    |
 |:-----------------------------------------------------------------|:----------|
-| 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 | 予定 |
+| 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 | 有効 |
 
 Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.
 
@@ -473,7 +473,7 @@ Without this change, the engine simulates a payment through each possible path t
 
 | Amendment ID                                                     | ステータス    |
 |:-----------------------------------------------------------------|:----------|
-| 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | 予定 |
+| 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | 有効 |
 
 Allows validators to include a new optional field in their validations to attest to the hash of
 the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
