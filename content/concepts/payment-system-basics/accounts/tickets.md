@@ -30,15 +30,15 @@ Tickets provide a solution to all of these problems by setting aside sequence nu
 
 A Ticket is a record that a sequence number has been set aside to be used later. An account first sends a [TicketCreate transaction][] to set aside one or more sequence numbers as Tickets; this puts a record in the [ledger's state data](ledgers.html), in the form of a [Ticket object][], for each sequence number reserved.
 
-Tickets are numbered using the sequence numbers that were set aside to create them. For example, if your account's current sequence number is 101 and you create 3 Tickets, those Tickets have Ticket Sequence numbers 101, 102, and 103. Doing so increases your account's sequence number to 104.
+Tickets are numbered using the sequence numbers that were set aside to create them. For example, if your account's current sequence number is 101 and you create 3 Tickets, those Tickets have Ticket Sequence numbers 102, 103, and 104. Doing so increases your account's sequence number to 105.
 
 {{ include_svg("img/ticket-creation.svg", "Diagram: Creating three Tickets") }}
 
 Later, you can send a transaction using a specific Ticket instead of a sequence number; doing so removes the corresponding Ticket from the ledger's state data and does not change your account's normal sequence number. You can also still send transactions using normal sequence numbers without using Tickets. You can use any of your available Tickets in any order at any time, but each Ticket can only be used once.
 
-{{ include_svg("img/ticket-usage.svg", "Diagram: Using Ticket 102.") }}
+{{ include_svg("img/ticket-usage.svg", "Diagram: Using Ticket 103.") }}
 
-Continuing the above example, you can send a transaction using sequence number 104 or any of the three Tickets you created. If you send a transaction using Ticket 102, doing so deletes Ticket 102 from the ledger. Your next transaction after that can use sequence number 104, Ticket 101, or Ticket 103.
+Continuing the above example, you can send a transaction using sequence number 105 or any of the three Tickets you created. If you send a transaction using Ticket 103, doing so deletes Ticket 103 from the ledger. Your next transaction after that can use sequence number 105, Ticket 102, or Ticket 104.
 
 **Caution:** Each Ticket counts as a separate item for the [owner reserve](reserves.html), so you must set aside 5 XRP for each Ticket. (The XRP becomes available again after you use the Ticket.) This cost can add up quickly if you create a large number of Tickets at once.
 

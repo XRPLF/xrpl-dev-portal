@@ -24,7 +24,7 @@ lt=.</panel_attributes>
     <panel_attributes>Account
 --
 ID: rf1Bi...
-Sequence: 104</panel_attributes>
+Sequence: 105</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -38,7 +38,7 @@ Sequence: 104</panel_attributes>
     <panel_attributes>Ticket
 --
 Account: rf1Bi...
-Sequence: 101</panel_attributes>
+Sequence: 102</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -52,7 +52,7 @@ Sequence: 101</panel_attributes>
     <panel_attributes>Ticket
 --
 Account: rf1Bi...
-Sequence: 102</panel_attributes>
+Sequence: 103</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -66,7 +66,7 @@ Sequence: 102</panel_attributes>
     <panel_attributes>Ticket
 --
 Account: rf1Bi...
-Sequence: 103</panel_attributes>
+Sequence: 104</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -82,7 +82,7 @@ transaction)
 --
 Account: rf1Bi...
 Sequence: 0
-TicketSequence: 102
+TicketSequence: 103
 ...</panel_attributes>
     <additional_attributes/>
   </element>
@@ -121,7 +121,7 @@ used</panel_attributes>
     <panel_attributes>Account
 --
 ID: rf1Bi...
-Sequence: 104</panel_attributes>
+Sequence: 105</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -157,7 +157,7 @@ Sequence: 104</panel_attributes>
     <panel_attributes>Ticket
 --
 Account: rf1Bi...
-Sequence: 101</panel_attributes>
+Sequence: 102</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -171,7 +171,7 @@ Sequence: 101</panel_attributes>
     <panel_attributes>Ticket
 --
 Account: rf1Bi...
-Sequence: 103</panel_attributes>
+Sequence: 104</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -195,7 +195,7 @@ Sequence: 103</panel_attributes>
       <w>90</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>Ticket 102 deleted
+    <panel_attributes>Ticket 103 deleted
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
