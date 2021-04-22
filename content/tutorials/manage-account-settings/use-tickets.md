@@ -3,6 +3,7 @@ html: use-tickets.html
 parent: manage-account-settings.html
 blurb: Use Tickets to send a transaction outside of normal Sequence order.
 embed_ripple_lib: true
+status: not_enabled
 filters:
     - interactive_steps
 ---
