@@ -10,3 +10,7 @@
   /* flask icon for "not yet enabled" features */
   color: $warning;
 }
+.status.removed {
+  /* trash icon for removed features */
+  color: $danger;
+}

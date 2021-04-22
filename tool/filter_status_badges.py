@@ -13,6 +13,7 @@ import os.path
 STATUSES = {
     ":not_enabled:": "template-status_not_enabled.html",
     ":enabled:": "template-status_enabled.html",
+    ":removed:": "template-status_removed.html",
 }
 
 
