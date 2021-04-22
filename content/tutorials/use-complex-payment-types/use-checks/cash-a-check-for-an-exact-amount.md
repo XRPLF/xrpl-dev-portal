@@ -1,3 +1,8 @@
+---
+html: cash-a-check-for-an-exact-amount.html
+parent: use-checks.html
+blurb: Cash a Check in the ledger for any exact amount up to the amount it specifies.
+---
 # Cash a Check for an Exact Amount
 
 _Added by the [Checks amendment][]._

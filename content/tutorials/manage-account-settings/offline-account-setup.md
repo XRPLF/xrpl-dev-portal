@@ -1,3 +1,8 @@
+---
+html: offline-account-setup.html
+parent: manage-account-settings.html
+blurb: Set up an XRP Ledger account using an air-gapped, offline machine to store its cryptographic keys.
+---
 # Offline Account Setup Tutorial
 
 A highly secure [signing configuration](set-up-secure-signing.html) involves keeping an XRP Ledger [account](accounts.html)'s [cryptographic keys](cryptographic-keys.html) securely on an offline, air-gapped machine. After setting up this configuration, you can sign a variety of transactions, transfer only the signed transactions to an online computer, and submit them to the XRP Ledger network without ever exposing your secret key to malicious actors online.

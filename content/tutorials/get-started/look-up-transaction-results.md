@@ -1,3 +1,8 @@
+---
+html: look-up-transaction-results.html
+parent: production-readiness.html
+blurb: Find the results of previously-submitted transactions.
+---
 # Look Up Transaction Results
 
 To use the XRP Ledger effectively, you need to be able to understand [transaction](transaction-basics.html) outcomes: did the transaction succeed? What did it accomplish? If it failed, why?

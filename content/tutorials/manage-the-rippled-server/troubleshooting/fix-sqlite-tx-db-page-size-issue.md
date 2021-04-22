@@ -1,3 +1,8 @@
+---
+html: fix-sqlite-tx-db-page-size-issue.html
+parent: troubleshoot-the-rippled-server.html
+blurb: Fix a problem with the SQLite page size on full-history servers started on rippled version 0.40.0 or earlier.
+---
 # Fix SQLite Transaction Database Page Size Issue
 
 `rippled` servers with full [ledger history](ledger-history.html) (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to encounter this problem.

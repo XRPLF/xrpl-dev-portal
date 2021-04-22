@@ -1,3 +1,8 @@
+---
+html: update-rippled-automatically-on-linux.html
+parent: install-rippled.html
+blurb: Set up automatic updates for rippled on Linux.
+---
 # Update Automatically on Linux
 
 On Linux, you can set up `rippled` to automatically upgrade to the latest version with a one-time `cron` configuration. Ripple recommends enabling automatic updates if possible.

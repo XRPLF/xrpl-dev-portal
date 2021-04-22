@@ -578,6 +578,7 @@ pages:
     # For now we overwrite the blurb but use the page otherwise as-is.
     -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
         blurb: 多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。
+        untranslated_warning: true
         targets:
             - ja
 
@@ -986,14 +987,8 @@ pages:
         targets:
             - ja
 
-    -   name: Get Started
-        md: tutorials/get-started/get-started.md
-        html: get-started.html
-        parent: tutorials.html
-        template: template-doc.html
-        blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger.
-        filters:
-            - js_editor
+        # TODO: translate
+    -   md: tutorials/get-started/get-started.md
         targets:
             - en
 
@@ -1011,32 +1006,18 @@ pages:
             - ja
 
     -   md: tutorials/get-started/get-started-with-the-rippled-api.md
-        html: get-started-with-the-rippled-api.html
-        parent: get-started.html
-        blurb: Unleash the full power of the XRP Ledger's native APIs.
-        cta_text: Get Started
         targets:
             - en
 
     -   md: tutorials/get-started/get-started-with-the-rippled-api.ja.md
-        html: get-started-with-the-rippled-api.html
-        parent: get-started.html
-        blurb: XRP Ledgerの操作に使用できるAPIとライブラリを使い始めましょう。
-        cta_text: 開始しよう
         targets:
             - ja
 
     -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.md
-        html: get-started-with-rippleapi-for-javascript.html
-        parent: get-started.html
-        blurb: Build an entry-level JavaScript application for querying the XRP Ledger in Node.js.
         targets:
             - en
 
     -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.ja.md
-        html: get-started-with-rippleapi-for-javascript.html
-        parent: get-started.html
-        blurb: XRP Ledgerに照会するエントリーレベルのJavaScriptアプリケーションを構築します。
         targets:
             - ja
 
@@ -1077,44 +1058,26 @@ pages:
             - ja
 
     -   md: tutorials/get-started/set-up-secure-signing.md
-        html: set-up-secure-signing.html
-        parent: production-readiness.html
-        blurb: Set up an environment where you can submit transactions securely.
         targets:
             - en
 
     -   md: tutorials/get-started/set-up-secure-signing.ja.md
-        html: set-up-secure-signing.html
-        parent: production-readiness.html
-        blurb: 安全にトランザクションを送信できる環境を設定します。
         targets:
             - ja
 
     -   md: tutorials/get-started/look-up-transaction-results.md
-        html: look-up-transaction-results.html
-        parent: production-readiness.html
-        blurb: Find the results of previously-submitted transactions.
         targets:
             - en
 
     -   md: tutorials/get-started/look-up-transaction-results.ja.md
-        html: look-up-transaction-results.html
-        parent: production-readiness.html
-        blurb: 以前に送信したトランザクションの結果を確認します。
         targets:
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.md
-        html: reliable-transaction-submission.html
-        parent: production-readiness.html
-        blurb: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly.
         targets:
             - en
 
     -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.ja.md
-        html: reliable-transaction-submission.html
-        parent: production-readiness.html
-        blurb: XRP Ledgerにトランザクションを送信することができるシステムを構築し、最終結果を素早く安全に受け取ります。
         targets:
             - ja
 
@@ -1148,67 +1111,40 @@ pages:
     # blurb: Learn how to generate and fund an XRP Ledger address to create an XRP Ledger account.
 
     -   md: tutorials/manage-account-settings/assign-a-regular-key-pair.md
-        html: assign-a-regular-key-pair.html
-        parent: manage-account-settings.html
-        blurb: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later.
         targets:
             - en
 
     -   md: tutorials/manage-account-settings/assign-a-regular-key-pair.ja.md
-        html: assign-a-regular-key-pair.html
-        parent: manage-account-settings.html
-        blurb: アカウントからトランザクションに署名できるように第2キーペアを承認します。このキーペアは後から変更や削除が可能です。
         targets:
             - ja
 
     -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md
-        html: change-or-remove-a-regular-key-pair.html
-        parent: manage-account-settings.html
-        blurb: Remove or update a regular key pair already authorized by your account.
         targets:
             - en
 
     -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.ja.md
-        html: change-or-remove-a-regular-key-pair.html
-        parent: manage-account-settings.html
-        blurb: アカウントですでに承認されているレギュラーキーペアを削除するか更新します。
         targets:
             - ja
 
     # TODO: translate this page & blurb
     -   md: tutorials/manage-account-settings/disable-master-key-pair.md
-        html: disable-master-key-pair.html
-        parent: manage-account-settings.html
-        blurb: Disable the master key that is mathematically associated with an address.
         targets:
             - en
             - ja
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
-        html: set-up-multi-signing.html
-        parent: manage-account-settings.html
-        blurb: Add a signer list to your account to enable multi-signing.
         targets:
             - en
 
     -   md: tutorials/manage-account-settings/set-up-multi-signing.ja.md
-        html: set-up-multi-signing.html
-        parent: manage-account-settings.html
-        blurb: アカウントに署名者リストを追加して、マルチ署名を有効にします。
         targets:
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.md
-        html: send-a-multi-signed-transaction.html
-        parent: manage-account-settings.html
-        blurb: Send a transaction authorized with multiple signatures.
         targets:
             - en
 
     -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.ja.md
-        html: send-a-multi-signed-transaction.html
-        parent: manage-account-settings.html
-        blurb: Send a transaction authorized with multiple signatures. #TODO:translate
         targets:
             - ja
 
@@ -1217,23 +1153,14 @@ pages:
             - en
 
     -   md: tutorials/manage-account-settings/require-destination-tags.ja.md
-        html: require-destination-tags.html
-        parent: manage-account-settings.html
-        blurb: ユーザーがあなたのアドレスに送金するときに宛先タグを必ず指定しなければならないようにします。
         targets:
             - ja
 
     -   md: tutorials/manage-account-settings/offline-account-setup.md
-        html: offline-account-setup.html
-        parent: manage-account-settings.html
-        blurb: Set up an XRP Ledger account using an air-gapped, offline machine to store its cryptographic keys.
         targets:
             - en
 
     -   md: tutorials/manage-account-settings/offline-account-setup.ja.md
-        html: offline-account-setup.html
-        parent: manage-account-settings.html
-        blurb: 物理的に隔離されたオフラインのマシンを使用して暗号鍵を保管するXRP Ledgerアカウントを設定します。
         targets:
             - ja
 
@@ -1287,175 +1214,109 @@ pages:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-time-held-escrow.md
-        html: send-a-time-held-escrow.html
-        parent: use-escrows.html
-        blurb: Create an escrow whose only condition for release is that a specific time has passed.
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-time-held-escrow.ja.md
-        html: send-a-time-held-escrow.html
-        parent: use-escrows.html
-        blurb: 指定した時間が経過することがリリースの唯一の条件であるEscrowを作成します。
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.md
-        html: send-a-conditionally-held-escrow.html
-        parent: use-escrows.html
-        blurb: Create an escrow whose release is based on a condition being fulfilled.
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.ja.md
-        html: send-a-conditionally-held-escrow.html
-        parent: use-escrows.html
-        blurb: 満たされた条件に基づいてリリースとなるEscrowを作成します。
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.md
-        html: cancel-an-expired-escrow.html
-        parent: use-escrows.html
-        blurb: Cancel an expired escrow.
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.ja.md
-        html: cancel-an-expired-escrow.html
-        parent: use-escrows.html
-        blurb: 有効期限切れのEscrowを取り消します。
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/look-up-escrows.md
-        html: look-up-escrows.html
-        parent: use-escrows.html
-        blurb: Look up pending escrows by sender or destination address.
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-escrows/look-up-escrows.ja.md
-        html: look-up-escrows.html
-        parent: use-escrows.html
-        blurb: 送金元または送金先のアドレスを使って保留中のEscrowを検索します。
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
-        html: use-an-escrow-as-a-smart-contract.html
-        parent: use-escrows.html
         targets:
             - en
             - ja
 
     #TODO: split concept info off of the paychan tutorial
     -   md: tutorials/use-complex-payment-types/use-payment-channels.md
-        html: use-payment-channels.html
-        parent: use-specialized-payment-types.html
-        blurb: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server.
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-payment-channels.ja.md
-        html: use-payment-channels.html
-        parent: use-specialized-payment-types.html
-        blurb: Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的なPayment Channelの使用方法を、ローカルのrippledサーバーのJSON-RPC APIを使用する例を使って説明します。
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
-        html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
-        parent: use-payment-channels.html
         targets:
             - en
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
-        html: use-checks.html
-        parent: use-specialized-payment-types.html
-        blurb: Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
-        template: template-landing-children.html
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-checks/use-checks.ja.md
-        html: use-checks.html
-        parent: use-specialized-payment-types.html
-        blurb: Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
-        template: template-landing-children.html
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.md
-        html: send-a-check.html
-        parent: use-checks.html
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.ja.md
-        html: send-a-check.html
-        parent: use-checks.html
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
-        html: cash-a-check-for-an-exact-amount.html
-        parent: use-checks.html
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.ja.md
-        html: cash-a-check-for-an-exact-amount.html
-        parent: use-checks.html
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
-        html: cash-a-check-for-a-flexible-amount.html
-        parent: use-checks.html
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-a-flexible-amount.ja.md
-        html: cash-a-check-for-a-flexible-amount.html
-        parent: use-checks.html
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/cancel-a-check.md
-        html: cancel-a-check.html
-        parent: use-checks.html
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-checks/cancel-a-check.ja.md
-        html: cancel-a-check.html
-        parent: use-checks.html
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-sender.md
-        html: look-up-checks-by-sender.html
-        parent: use-checks.html
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-sender.ja.md
-        html: look-up-checks-by-sender.html
-        parent: use-checks.html
         targets:
             - ja
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-recipient.md
-        html: look-up-checks-by-recipient.html
-        parent: use-checks.html
         targets:
             - en
 
     -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-recipient.ja.md
-        html: look-up-checks-by-recipient.html
-        parent: use-checks.html
         targets:
             - ja
 
@@ -1481,37 +1342,22 @@ pages:
             - ja
 
     -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
-        html: list-xrp-as-an-exchange.html
-        parent: xrp-ledger-businesses.html
-        blurb: Run a digital asset exchange? Follow these steps to add XRP.
         targets:
             - en
 
     -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
-        html: list-xrp-as-an-exchange.html
-        parent: xrp-ledger-businesses.html
-        blurb: デジタルアセット取引所でXRPを上場するために必要な手順の概要を説明します。
         targets:
             - ja
 
     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
-        html: list-your-exchange-on-xrp-charts.html
-        parent: xrp-ledger-businesses.html
-        blurb: Have your exchange and its XRP trade and order book data listed on XRP Charts.
         targets:
             - en
 
     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.ja.md
-        html: list-your-exchange-on-xrp-charts.html
-        parent: xrp-ledger-businesses.html
-        blurb: 各自の取引所とそのXRP取引、およびオーダーブックのデータをXRP Chartsに登録します。
         targets:
             - ja
 
     -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
-        html: become-an-xrp-ledger-gateway.html
-        parent: xrp-ledger-businesses.html
-        blurb: Gateways are the businesses that link the XRP Ledger to the rest of the world. This tutorial demonstrates how an existing online financial institution can expand to act as a gateway in the the XRP Ledger.
         targets:
             - en
             - ja
@@ -1551,30 +1397,18 @@ pages:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/system-requirements.md
-        html: system-requirements.html
-        parent: install-rippled.html
-        blurb: Hardware and software requirements for running rippled.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/system-requirements.ja.md
-        html: system-requirements.html
-        parent: install-rippled.html
-        blurb: rippledのハードウェアやソフトウェアのシステム要件
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.md
-        html: install-rippled-on-centos-rhel-with-yum.html
-        parent: install-rippled.html
-        blurb: Install a precompiled rippled binary on CentOS or Red Hat Enterprise Linux.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.ja.md
-        html: install-rippled-on-centos-rhel-with-yum.html
-        parent: install-rippled.html
-        blurb: プリコンパイル済みのrippledバイナリーをCentOSまたはRed Hat Enterprise Linuxにインストールします。
         targets:
             - ja
 
@@ -1590,16 +1424,10 @@ pages:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.md
-        html: install-rippled-on-ubuntu.html
-        parent: install-rippled.html
-        blurb: Install a precompiled rippled binary on Ubuntu Linux.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.ja.md
-        html: install-rippled-on-ubuntu.html
-        parent: install-rippled.html
-        blurb: プリコンパイル済みのrippledバイナリーをUbuntu Linuxにインストールします。
         targets:
             - ja
 
@@ -1613,100 +1441,58 @@ pages:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.md
-        html: update-rippled-automatically-on-linux.html
-        parent: install-rippled.html
-        blurb: Set up automatic updates for rippled on Linux.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.ja.md
-        html: update-rippled-automatically-on-linux.html
-        parent: install-rippled.html
-        blurb: Linuxでrippledの自動更新を設定します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.md
-        html: update-rippled-manually-on-centos-rhel.html
-        parent: install-rippled.html
-        blurb: Manually update rippled on CentOS or Red Hat Enterprise Linux.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.ja.md
-        html: update-rippled-manually-on-centos-rhel.html
-        parent: install-rippled.html
-        blurb: CentOSまたはRed Hat Enterprise Linuxでrippledを手動更新します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.md
-        html: update-rippled-manually-on-ubuntu.html
-        parent: install-rippled.html
-        blurb: Manually update rippled on Ubuntu Linux.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.ja.md
-        html: update-rippled-manually-on-ubuntu.html
-        parent: install-rippled.html
-        blurb: Ubuntu Linuxでrippledを手動更新します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md
-        html: build-run-rippled-ubuntu.html
-        parent: install-rippled.html
-        blurb: Compile rippled yourself on Ubuntu Linux.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.ja.md
-        html: build-run-rippled-ubuntu.html
-        parent: install-rippled.html
-        blurb: Ubuntu Linuxでrippledを自分でコンパイルします。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md
-        html: build-run-rippled-macos.html
-        parent: install-rippled.html
-        blurb: Compile rippled yourself on macOS.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.ja.md
-        html: build-run-rippled-macos.html
-        parent: install-rippled.html
-        blurb: macOSでrippledを自分でコンパイルします。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
-        html: capacity-planning.html
-        parent: install-rippled.html
-        blurb: Plan system specs and tune configuration for rippled in production environments.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.ja.md
-        html: capacity-planning.html
-        parent: install-rippled.html
-        blurb: 本番環境のシステムスペックを計画して、rippledの構成を調整します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.md
-        html: rippled-1-3-migration-instructions.html
-        parent: install-rippled.html
-        blurb: Use these instructions to upgrade rippled packages from 1.2.x or below to 1.3.x or higher.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.ja.md
-        html: rippled-1-3-migration-instructions.html
-        parent: install-rippled.html
-        blurb: rippled 1.2.4以前のバージョンからrippled v1.3以降に移行するプロセスについて説明します。
         targets:
             - ja
 
@@ -1727,24 +1513,15 @@ pages:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.md
-        html: run-rippled-as-a-validator.html
-        parent: configure-rippled.html
-        blurb: Have your server vote on the consensus ledger.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
-        html: run-rippled-as-a-validator.html
-        parent: configure-rippled.html
-        blurb: サーバーがコンセンサスレジャーで投票できるようにします。
         targets:
             - ja
 
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
-        html: run-rippled-as-a-wallet-server.html
-        parent: configure-rippled.html
-        blurb: A multipurpose configuration for anyone integrating XRP.
         targets:
             - en
             - ja
@@ -1757,9 +1534,6 @@ pages:
 
     # TODO: translate this page & blurb
     -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
-        html: configure-statsd.html
-        parent: configure-rippled.html
-        blurb: Monitor your rippled server with StatsD metrics.
         targets:
             - en
             - ja
@@ -1769,209 +1543,125 @@ pages:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
-        html: connect-your-rippled-to-the-xrp-test-net.html
-        parent: configure-rippled.html
-        blurb: rippledサーバーをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
-        html: configure-online-deletion.html
-        parent: configure-rippled.html
-        blurb: Configure how far back your server should store transaction history.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.ja.md
-        html: configure-online-deletion.html
-        parent: configure-rippled.html
-        blurb: サーバーでどこまで古いトランザクション履歴を保持するかを設定します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.md
-        html: configure-advisory-deletion.html
-        parent: configure-rippled.html
-        blurb: Use advisory deletion to delete older ledger history on a schedule rather than as new history becomes available.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.ja.md
-        html: configure-advisory-deletion.html
-        parent: configure-rippled.html
-        blurb: 指示による削除を使用して、新しい履歴ができたときではなく、スケジュールで古いレジャー履歴を削除します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.md
-        html: configure-history-sharding.html
-        parent: configure-rippled.html
-        blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.ja.md
-        html: configure-history-sharding.html
-        parent: configure-rippled.html
-        blurb: 履歴XRPレジャーデータのシャードを保存するようにサーバーを設定します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.md
-        html: configure-full-history.html
-        parent: configure-rippled.html
-        blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.ja.md
-        html: configure-full-history.html
-        parent: configure-rippled.html
-        blurb: 完全履歴サーバーは、運用のコストは高いものの、XRP Ledgerでこれまでに発生したすべてのトランザクションの記録を提供します。
         targets:
             - ja
 
+        # TODO: translate page
     -   md: tutorials/manage-the-rippled-server/configuration/configure-grpc.md
-        html: configure-grpc.html
-        parent: configure-rippled.html
-        blurb: Enable and configure the gRPC API.
         targets:
             - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
-        html: enable-public-signing.html
-        parent: configure-rippled.html
-        blurb: Allow others to use your server to sign transactions. (Not recommended)
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.ja.md
-        html: enable-public-signing.html
-        parent: configure-rippled.html
-        blurb: 他の人があなたのサーバーを使ってトランザクションに署名できるようにします。（非推奨）
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.md
-        html: configure-peering.html
-        parent: manage-the-rippled-server.html
-        template: template-landing-children.html
-        blurb: Configure how your server connects to the peer-to-peer network.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.ja.md
-        html: configure-peering.html
-        parent: manage-the-rippled-server.html
-        template: template-landing-children.html
-        blurb: サーバーをピアツーピアネットワークに接続する方法を設定します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.md
-        html: cluster-rippled-servers.html
-        parent: configure-peering.html
-        blurb: Set up a group of servers that share work for higher efficiency.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.ja.md
-        html: cluster-rippled-servers.html
-        parent: configure-peering.html
-        blurb: サーバーのグループで処理を分担するように設定して効率化します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.md
-        html: configure-a-private-server.html
-        parent: configure-peering.html
-        blurb: Set up a server to connect only to specific, trusted peers.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.ja.md
-        html: configure-a-private-server.html
-        parent: configure-peering.html
-        blurb: サーバーが特定の信頼できるピアのみに接続するように設定します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
-        html: configure-the-peer-crawler.html
-        parent: configure-peering.html
-        blurb: Configure how much information your rippled server reports publicly about its status and peers.
         targets:
             - en
 
-    # TODO: translate this page. Only the blurb has been translated?
+    # TODO: translate this page. # For now we just have a translated blurb.
     -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
-        html: configure-the-peer-crawler.html
-        parent: configure-peering.html
         blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
         untranslated_warning: true
         targets:
             - ja
 
-    # TODO: translate this page including the blurb in its frontmatter.
+    # TODO: translate this page
     -   md: tutorials/manage-the-rippled-server/configure-peering/enable-link-compression.md
         targets:
             - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.md
-        html: forward-ports-for-peering.html
-        parent: configure-peering.html
-        blurb: Configure your firewall to allow incoming peers to your rippled server.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.ja.md
-        html: forward-ports-for-peering.html
-        parent: configure-peering.html
-        blurb: 受信ピアがrippledサーバーに接続できるようにファイアウォールを設定します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.md
-        html: manually-connect-to-a-specific-peer.html
-        parent: configure-peering.html
-        blurb: Connect your rippled server to a specific peer.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.ja.md
-        html: manually-connect-to-a-specific-peer.html
-        parent: configure-peering.html
-        blurb: rippledサーバーを特定のピアに接続します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.md
-        html: set-max-number-of-peers.html
-        parent: configure-peering.html
-        blurb: Set the maximum number of peers your rippled server connects to.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.ja.md
-        html: set-max-number-of-peers.html
-        parent: configure-peering.html
-        blurb: rippledサーバーが接続するピアの最大数を設定します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md
-        html: use-a-peer-reservation.html
-        parent: configure-peering.html
-        blurb: Set up a more reliable connection to a specific peer using a peer reservation.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.ja.md
-        html: use-a-peer-reservation.html
-        parent: configure-peering.html
-        blurb: ピアリザベーションを使用して特定のピアへのより信頼できる接続を設定します。
         targets:
             - ja
 
@@ -1992,48 +1682,30 @@ pages:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
-        html: start-a-new-genesis-ledger-in-stand-alone-mode.html
-        parent: use-stand-alone-mode.html
-        blurb: Start from a fresh genesis ledger in stand-alone mode.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.ja.md
-        html: start-a-new-genesis-ledger-in-stand-alone-mode.html
-        parent: use-stand-alone-mode.html
-        blurb: スタンドアロンモードで新しいジェネシスレジャーを開始します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
-        html: load-a-saved-ledger-in-stand-alone-mode.html
-        parent: use-stand-alone-mode.html
-        blurb: Start in stand-alone mode from a specific saved ledger to test or replay transactions.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.ja.md
-        html: load-a-saved-ledger-in-stand-alone-mode.html
-        parent: use-stand-alone-mode.html
-        blurb: 特定の保存済みレジャーからスタンドアロンモードで開始して、トランザクションのテストやリプレイを行います。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
-        html: advance-the-ledger-in-stand-alone-mode.html
-        parent: use-stand-alone-mode.html
-        blurb: Make progress in stand-alone mode by manually closing the ledger.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
-        html: advance-the-ledger-in-stand-alone-mode.html
-        parent: use-stand-alone-mode.html
-        blurb: レジャーを手動で閉鎖して、スタンドアロンモードでの処理を進めます。
         targets:
             - ja
 
-    -   name: Troubleshooting rippled
+    -   name: Troubleshoot the rippled server
         html: troubleshoot-the-rippled-server.html
         parent: manage-the-rippled-server.html
         blurb: Troubleshoot all kinds of problems with the rippled server.
@@ -2050,81 +1722,49 @@ pages:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.md
-        html: diagnosing-problems.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: Collect information to identify the cause of problems.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
-        html: diagnosing-problems.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: 情報を収集して問題の原因を特定します。
         targets:
             - ja
 
-    # TODO: translate page and blurb
+        # TODO: translate page and blurb
     -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
-        html: health-check-interventions.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: Use the rippled server's health check as part of automated infrastructure monitoring.
         targets:
             - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
-        html: understanding-log-messages.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: Interpret and respond to warning and error messages in the debug log.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.ja.md
-        html: understanding-log-messages.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: デバッグログの警告メッセージとエラーメッセージを解釈して対応します。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.md
-        html: server-doesnt-sync.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
         targets:
             - en
 
+        #TODO: translate the blurb in this page's frontmatter
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
-        html: server-doesnt-sync.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger. #TODO: translate
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
-        html: server-wont-start.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: A collection of problems that would cause a rippled server not to start, and how to fix them.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.ja.md
-        html: server-wont-start.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: rippledサーバーが起動しない原因となると思われる問題とその解決方法です。
         targets:
             - ja
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
-        html: fix-sqlite-tx-db-page-size-issue.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: Fix a problem with the SQLite page size on full-history servers started on rippled version 0.40.0 or earlier.
         targets:
             - en
 
     -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
-        html: fix-sqlite-tx-db-page-size-issue.html
-        parent: troubleshoot-the-rippled-server.html
-        blurb: rippledバージョン0.40.0以前で起動された完全履歴サーバーでのSQLiteのページサイズに関する問題を解決します。
         targets:
             - ja
 

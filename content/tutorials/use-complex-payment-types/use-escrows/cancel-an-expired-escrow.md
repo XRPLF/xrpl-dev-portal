@@ -1,3 +1,8 @@
+---
+html: cancel-an-expired-escrow.html
+parent: use-escrows.html
+blurb: Cancel an expired escrow.
+---
 # Cancel an Expired Escrow
 
 ## 1. Confirm the expired escrow

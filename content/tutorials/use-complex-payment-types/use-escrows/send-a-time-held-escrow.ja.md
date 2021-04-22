@@ -1,3 +1,8 @@
+---
+html: send-a-time-held-escrow.html
+parent: use-escrows.html
+blurb: 指定した時間が経過することがリリースの唯一の条件であるEscrowを作成します。
+---
 # 時間に基づくEscrowの送信
 
 [EscrowCreateトランザクション][]タイプでは、リリースの唯一の条件が特定時刻を経過することであるEscrowを作成できます。このためには、`FinishAfter`フィールドを使用し、`Condition`フィールドを省略します。

@@ -1,3 +1,8 @@
+---
+html: configure-online-deletion.html
+parent: configure-rippled.html
+blurb: サーバーでどこまで古いトランザクション履歴を保持するかを設定します。
+---
 # オンライン削除の設定
 
 `rippled`サーバーのデフォルトの構成では、最新2000個のレジャーバージョンよりも古い[履歴が削除され](online-deletion.html)、レジャー履歴は約15分間維持されます（現行のレジャー毎の間隔に基づく）。このページでは、削除までに`rippled`サーバーに保管される履歴の量を設定する方法を説明します。

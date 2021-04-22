@@ -1,3 +1,8 @@
+---
+html: manually-connect-to-a-specific-peer.html
+parent: configure-peering.html
+blurb: rippledサーバーを特定のピアに接続します。
+---
 # 特定のピアへの手動接続
 
 サーバーをXRP Ledgerネットワーク内の特定の[ピア](peer-protocol.html)に手動で接続するには、次の手順を実行します。

@@ -1,3 +1,8 @@
+---
+html: understanding-log-messages.html
+parent: troubleshoot-the-rippled-server.html
+blurb: Interpret and respond to warning and error messages in the debug log.
+---
 # Understanding Log Messages
 
 The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](the-rippled-server.html) debug log and how to interpret them.

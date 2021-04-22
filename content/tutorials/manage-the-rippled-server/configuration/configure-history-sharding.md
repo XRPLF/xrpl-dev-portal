@@ -1,3 +1,8 @@
+---
+html: configure-history-sharding.html
+parent: configure-rippled.html
+blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data.
+---
 # Configure History Sharding
 
 [History Sharding](history-sharding.html) lets servers contribute to preserving historical XRP Ledger data without each server needing to store the full history. By default, `rippled` servers do not store history shards.

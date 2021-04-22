@@ -1,3 +1,8 @@
+---
+html: server-wont-start.html
+parent: troubleshoot-the-rippled-server.html
+blurb: rippledサーバーが起動しない原因となると思われる問題とその解決方法です。
+---
 # rippledサーバーが起動しない
 
 このページでは、[`rippled`サーバー](the-rippled-server.html)が起動しない際に考えられる原因とその修正方法を説明します。
@@ -16,24 +21,24 @@ limit the number of simultaneous connections.
 これは、セキュリティの点からシステムで1つのプロセスが開くことができるファイルの数に制限があるが、その制限が`rippled`にとっては少なすぎる場合に発生します。この問題を修正するには、**ルートアクセス権限が必要です**。以下の手順に従い、`rippled`が開くことができるファイルの数を増やします。
 
 1. 次の行を`/etc/security/limits.conf`ファイルの終わりに追加します。
-   
+
         *                soft    nofile          65536
         *                hard    nofile          65536
 
 2. [開くことができるファイルの数のハード制限](https://ss64.com/bash/ulimit.html)が現在`65536`であることを確認します。
-   
+
         ulimit -Hn
-   
+
    このコマンドの出力は`65536`になるはずです。
 
 3. `rippled`をもう一度起動します。
-   
+
         systemctl start rippled
 
 4. それでも`rippled`が起動しない場合は、`/etc/sysctl.conf`を開き、以下のカーネルレベル設定を付加します。
-   
+
         fs.file-max = 65536
-        
+
 
 ## /etc/opt/ripple/rippled.cfgを開くことができない
 
@@ -51,7 +56,7 @@ Aborted (core dumped)
 - 構成ファイル（デフォルトのロケーションは`/etc/opt/ripple/rippled.cfg`）が存在しており、`rippled`プロセスを実行するユーザー（通常は`rippled`）にこのファイルの読み取り権限があることを確認します。
 
 - `rippled`ユーザーが読み取ることができる構成ファイルを`$HOME/.config/ripple/rippled.cfg`に作成します（`$HOME`は`rippled`ユーザーのホームディレクトリを指しています）。
-  
+
     **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
 
 - `--conf`[コマンドラインオプション](commandline-usage.html)を使用して、使用する構成ファイルのパスを指定します。
@@ -69,19 +74,19 @@ Aborted (core dumped)
 考えられる解決策:
 
 - `[validators.txt]`ファイルが存在し、`rippled`ユーザーにこのファイルの読み取り権限があることを確認します。
-  
+
     **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/ripple/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
 
 - `rippled.cfg`ファイルを編集し、`[validators_file]`設定を変更して、`validators.txt`ファイル（またはこれに相当するファイル）の正しいパスを指定します。ファイル名の前後に余分な空白があるかどうかを確認します。
 
 - `rippled.cfg`ファイルを編集し、`[validators_file]`設定を削除します。バリデータ設定を`rippled.cfg`ファイルに直接追加します。例:
-  
+
         [validator_list_sites]
         https://vl.ripple.com
-      
+
         [validator_list_keys]
         ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-        
+
 
 ## データベースパスを作成できない
 

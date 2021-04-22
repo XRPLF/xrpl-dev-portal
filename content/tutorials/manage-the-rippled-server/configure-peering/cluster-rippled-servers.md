@@ -1,3 +1,8 @@
+---
+html: cluster-rippled-servers.html
+parent: configure-peering.html
+blurb: Set up a group of servers that share work for higher efficiency.
+---
 # Cluster rippled Servers
 
 If you run multiple [`rippled` servers](the-rippled-server.html) in the same data center, you can configure them in a [cluster](clustering.html) to maximize efficiency. To configure clustering:

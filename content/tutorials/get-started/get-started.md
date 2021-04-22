@@ -1,3 +1,11 @@
+---
+html: get-started.html
+parent: tutorials.html
+template: template-doc.html
+blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger.
+filters:
+    - js_editor
+---
 # Get Started
 
 The XRP Ledger is always online and entirely public. Anyone can access it **directly from a web browser** with source code like what's on this page.

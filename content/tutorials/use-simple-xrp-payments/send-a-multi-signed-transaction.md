@@ -1,3 +1,8 @@
+---
+html: send-a-multi-signed-transaction.html
+parent: manage-account-settings.html
+blurb: Send a transaction authorized with multiple signatures.
+---
 # Send a Multi-Signed Transaction
 
 The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.

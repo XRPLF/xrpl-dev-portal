@@ -1,3 +1,9 @@
+---
+html: configure-peering.html
+parent: manage-the-rippled-server.html
+template: template-landing-children.html
+blurb: サーバーをピアツーピアネットワークに接続する方法を設定します。
+---
 # ピアリングの設定
 
 XRP Ledgerのピアツーピアプロトコルは、ほとんどの場合、ピア接続を自動的に管理します。場合によっては、サーバーが接続するピアを手動で調整して、サーバーの可用性とネットワークの他の部分との接続性を最大限に高めたいというケースがあります。

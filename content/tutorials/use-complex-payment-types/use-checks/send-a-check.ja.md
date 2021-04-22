@@ -1,3 +1,8 @@
+---
+html: send-a-check.html
+parent: use-checks.html
+blurb: 受取人が後で現金化できるCheckオブジェクトが作成されます。
+---
 # Checkの送信
 
 _[Checks Amendment][]が必要です。_

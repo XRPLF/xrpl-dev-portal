@@ -1,3 +1,8 @@
+---
+html: install-rippled-on-ubuntu.html
+parent: install-rippled.html
+blurb: Install a precompiled rippled binary on Ubuntu Linux.
+---
 # Install on Ubuntu or Debian Linux
 
 This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 16.04 or higher** or **Debian 9 or higher**, using the [`apt`](https://help.ubuntu.com/lts/serverguide/apt.html) utility.

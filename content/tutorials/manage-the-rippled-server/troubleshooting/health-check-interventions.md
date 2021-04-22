@@ -1,3 +1,8 @@
+---
+html: health-check-interventions.html
+parent: troubleshoot-the-rippled-server.html
+blurb: Use the rippled server's health check as part of automated infrastructure monitoring.
+---
 # Health Check Interventions
 
 The [Health Check method](health-check.html) can be used by automated monitoring to recognize when a `rippled` server is not healthy and prompt interventions such as restarting the server or alerting a human administrator.

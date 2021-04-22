@@ -1,3 +1,8 @@
+---
+html: send-a-check.html
+parent: use-checks.html
+blurb: Put a Check in the ledger so its intended recipient can cash it later.
+---
 # Send a Check
 
 _Added by the [Checks amendment][]._

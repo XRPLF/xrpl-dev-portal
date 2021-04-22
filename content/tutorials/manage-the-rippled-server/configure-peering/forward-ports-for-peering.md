@@ -1,3 +1,8 @@
+---
+html: forward-ports-for-peering.html
+parent: configure-peering.html
+blurb: Configure your firewall to allow incoming peers to your rippled server.
+---
 # Forward Ports for Peering
 
 Servers in the XRP Ledger peer-to-peer network communicate over the [peer protocol](peer-protocol.html). For the best combination of security and connectivity to the rest of the network, you should use a firewall to protect your server from most ports, but open or forward the peer protocol port.

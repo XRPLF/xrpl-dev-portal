@@ -1,3 +1,8 @@
+---
+html: update-rippled-manually-on-centos-rhel.html
+parent: install-rippled.html
+blurb: Manually update rippled on CentOS or Red Hat Enterprise Linux.
+---
 # Update Manually on CentOS/Red Hat
 
 This page describes how to update manually to the latest release of `rippled` on CentOS or Red Hat Enterprise Linux. Ripple recommends setting up [automatic updates](update-rippled-automatically-on-linux.html) instead, where possible.

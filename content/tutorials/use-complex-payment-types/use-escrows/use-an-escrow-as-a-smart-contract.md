@@ -1,3 +1,8 @@
+---
+html: use-an-escrow-as-a-smart-contract.html
+parent: use-escrows.html
+blurb: Use a cryptographic escrow as a smart contract to ensure a recipient gets paid only if they successfully perform a service.
+---
 # Use an Escrow as a Smart Contract
 
 A smart contract is a blockchain-based program that encodes the conditions and fulfillment of an agreement between two or more parties and automatically fulfills the terms of the agreement once conditions are met. A smart contract can help you exchange anything of value in a transparent, traceable, tamper-resistant, and irreversible way.

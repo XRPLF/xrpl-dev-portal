@@ -1,3 +1,9 @@
+---
+html: get-started-with-the-rippled-api.html
+parent: get-started.html
+blurb: Unleash the full power of the XRP Ledger's native APIs.
+cta_text: Get Started
+---
 # Get Started with XRP Ledger APIs
 
 The XRP Ledger's core server software is [`rippled`](the-rippled-server.html). You can jump straight into developing on the XRP Ledger by accessing the API of a `rippled` server.

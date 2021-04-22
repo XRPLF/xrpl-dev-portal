@@ -1,3 +1,8 @@
+---
+html: look-up-escrows.html
+parent: use-escrows.html
+blurb: 送金元または送金先のアドレスを使って保留中のEscrowを検索します。
+---
 # Escrowの検索
 
 保留中のEscrowはすべて[Escrowオブジェクト](escrow.html)としてレジャーに保管されます。

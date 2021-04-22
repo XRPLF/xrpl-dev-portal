@@ -1,3 +1,8 @@
+---
+html: cancel-a-check.html
+parent: use-checks.html
+blurb: Cancel a Check object without sending money.
+---
 # Cancel a Check
 
 _Added by the [Checks amendment][]._

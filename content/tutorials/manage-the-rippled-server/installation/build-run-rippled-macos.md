@@ -1,3 +1,8 @@
+---
+html: build-run-rippled-macos.html
+parent: install-rippled.html
+blurb: Compile rippled yourself on macOS.
+---
 # Build and Run rippled on macOS
 
 The macOS platform is not recommended for [`rippled`](the-rippled-server.html) production use. For production, consider using the [Ubuntu platform](install-rippled-on-ubuntu-with-alien.html), which has received the highest level of quality assurance and testing.

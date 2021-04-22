@@ -1,3 +1,8 @@
+---
+html: look-up-escrows.html
+parent: use-escrows.html
+blurb: Look up pending escrows by sender or destination address.
+---
 # Look up escrows
 
 All pending escrows are stored in the ledger as [Escrow objects](escrow.html).

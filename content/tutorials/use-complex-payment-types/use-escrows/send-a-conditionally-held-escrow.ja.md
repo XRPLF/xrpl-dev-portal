@@ -1,3 +1,8 @@
+---
+html: send-a-conditionally-held-escrow.html
+parent: use-escrows.html
+blurb: 満たされた条件に基づいてリリースとなるEscrowを作成します。
+---
 # 条件に基づくEscrowの送信
 
 ## 1.条件とフルフィルメントの生成

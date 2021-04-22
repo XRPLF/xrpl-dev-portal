@@ -1,3 +1,8 @@
+---
+html: send-a-time-held-escrow.html
+parent: use-escrows.html
+blurb: Create an escrow whose only condition for release is that a specific time has passed.
+---
 # Send a Time-Held Escrow
 
 The [EscrowCreate transaction][] type can create an escrow whose only condition for release is that a specific time has passed. To do this, use the `FinishAfter` field and omit the `Condition` field.

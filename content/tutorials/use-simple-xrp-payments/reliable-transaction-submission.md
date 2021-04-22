@@ -1,3 +1,8 @@
+---
+html: reliable-transaction-submission.html
+parent: production-readiness.html
+blurb: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly.
+---
 # Reliable Transaction Submission
 
 Financial institutions and other services using the XRP Ledger should use the best practices described here to make sure that transactions are validated or rejected in a verifiable and prompt way.  You should submit transactions to trusted `rippled` servers.

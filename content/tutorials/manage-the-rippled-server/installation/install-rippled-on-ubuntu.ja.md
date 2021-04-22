@@ -1,3 +1,8 @@
+---
+html: install-rippled-on-ubuntu.html
+parent: install-rippled.html
+blurb: プリコンパイル済みのrippledバイナリーをUbuntu Linuxにインストールします。
+---
 # UbuntuまたはDebian Linuxへのインストール
 
 このページでは、[`apt`](https://help.ubuntu.com/lts/serverguide/apt.html)ユーティリティを使用して、**Ubuntu Linux 16.04以降**または**Debian 9（Stretch）** に`rippled`の安定した最新バージョンをインストールする場合の推奨手順を説明します。

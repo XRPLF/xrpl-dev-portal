@@ -1,3 +1,8 @@
+---
+html: set-max-number-of-peers.html
+parent: configure-peering.html
+blurb: Set the maximum number of peers your rippled server connects to.
+---
 # Set Maximum Number of Peers
 
 The `rippled` server has a configurable soft maximum number of [peers](peer-protocol.html) to connect to. The default maximum number of peers is **21**.

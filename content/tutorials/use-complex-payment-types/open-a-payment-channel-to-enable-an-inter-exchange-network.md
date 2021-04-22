@@ -1,3 +1,8 @@
+---
+html: open-a-payment-channel-to-enable-an-inter-exchange-network.html
+parent: use-payment-channels.html
+blurb: As a digital asset exchange, use a payment channel to make more payments faster with fewer fees.
+---
 # Open a Payment Channel to Enable an Inter-Exchange Network
 
 A payment channel enables you to send one-way, "asynchronous" XRP payments that can be divided into very small increments and settled later. As a digital asset exchange, if you send many payments of XRP to another exchange, you can improve the efficiency of these payments by opening an XRP Ledger [payment channel](payment-channels.html) between your exchange (the _payer_ exchange) and the other exchange (the _payee_ exchange). In the case of a two-way flow with another exchange, you can open two payment channels (one for each direction).

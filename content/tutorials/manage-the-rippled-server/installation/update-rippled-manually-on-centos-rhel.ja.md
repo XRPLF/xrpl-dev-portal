@@ -1,3 +1,8 @@
+---
+html: update-rippled-manually-on-centos-rhel.html
+parent: install-rippled.html
+blurb: CentOSまたはRed Hat Enterprise Linuxでrippledを手動更新します。
+---
 # CentOS/Red Hatでの手動更新
 
 このページでは、CentOSまたはRed Hat Enterprise Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。可能であれば手動更新ではなく[自動更新](update-rippled-automatically-on-linux.html)を設定することが推奨されます。

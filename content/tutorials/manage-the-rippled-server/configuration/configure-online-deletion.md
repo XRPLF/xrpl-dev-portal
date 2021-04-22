@@ -1,3 +1,8 @@
+---
+html: configure-online-deletion.html
+parent: configure-rippled.html
+blurb: Configure how far back your server should store transaction history.
+---
 # Configure Online Deletion
 
 In its default configuration, [the `rippled` server](the-rippled-server.html) [deletes history](online-deletion.html) older than the most recent 2000 [ledger versions](ledgers.html), keeping approximately 15 minutes of [ledger history](ledger-history.html) (based on the current rate between ledgers). This page describes how to configure the amount of history your `rippled` server stores before deleting.

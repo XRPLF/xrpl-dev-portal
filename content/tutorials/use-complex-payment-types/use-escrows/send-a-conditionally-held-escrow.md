@@ -1,3 +1,8 @@
+---
+html: send-a-conditionally-held-escrow.html
+parent: use-escrows.html
+blurb: Create an escrow whose release is based on a condition being fulfilled.
+---
 # Send a Conditionally-Held Escrow
 
 ## 1. Generate condition and fulfillment

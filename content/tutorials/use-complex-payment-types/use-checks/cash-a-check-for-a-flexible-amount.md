@@ -1,3 +1,8 @@
+---
+html: cash-a-check-for-a-flexible-amount.html
+parent: use-checks.html
+blurb: Cash a Check for as much as possible.
+---
 # Cash a Check for a Flexible Amount
 
 _Added by the [Checks amendment][]._

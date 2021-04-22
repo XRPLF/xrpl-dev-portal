@@ -1,3 +1,8 @@
+---
+html: system-requirements.html
+parent: install-rippled.html
+blurb: rippledのハードウェアやソフトウェアのシステム要件
+---
 # システム要件
 
 ## 最小仕様

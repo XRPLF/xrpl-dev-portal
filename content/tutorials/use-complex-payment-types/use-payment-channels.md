@@ -1,3 +1,8 @@
+---
+html: use-payment-channels.html
+parent: use-specialized-payment-types.html
+blurb: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server.
+---
 # Use Payment Channels
 
 [Payment Channels](payment-channels.html) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](rippled-api.html) of a local [`rippled` server](the-rippled-server.html).

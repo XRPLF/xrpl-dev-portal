@@ -1,3 +1,8 @@
+---
+html: cancel-an-expired-escrow.html
+parent: use-escrows.html
+blurb: 有効期限切れのEscrowを取り消します。
+---
 # 有効期限切れEscrowの取消し
 
 ## 1.有効期限切れEscrowの確認
@@ -29,7 +34,7 @@ _Websocket_
 <!-- MULTICODE_BLOCK_END -->
 
 
-[account_objectsメソッド][]を使用してEscrowを検索し、`CancelAfter`の時刻と比較できます。 
+[account_objectsメソッド][]を使用してEscrowを検索し、`CancelAfter`の時刻と比較できます。
 
 要求:
 
