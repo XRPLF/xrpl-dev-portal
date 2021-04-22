@@ -1,3 +1,8 @@
+---
+html: transaction-common-fields.html
+parent: transaction-formats.html
+blurb: These common fields can be provided on any XRP Ledger transaction.
+---
 # Transaction Common Fields
 
 Every transaction has the same set of common fields, plus additional fields based on the [transaction type](transaction-types.html). Field names are case-sensitive. The common fields for all transactions are:

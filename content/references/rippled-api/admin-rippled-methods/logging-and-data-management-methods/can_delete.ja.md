@@ -1,5 +1,10 @@
+---
+html: can_delete.html
+parent: logging-and-data-management-methods.html
+blurb: 指定したレジャーバージョン以前のレジャー履歴を削除可能にします。
+---
 # can_delete
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
 `can_delete`メソッドは[指示による削除が有効なオンライン削除](online-deletion.html#指示による削除)を使用する`rippled`サーバーに削除が可能のレジャーバージョンを通知します。指定したレジャーバージョン以前が削除可能になります。指示による削除が有効ではない場合、このメソッドは何も行いません。
 

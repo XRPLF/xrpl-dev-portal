@@ -1,3 +1,8 @@
+---
+html: paymentchannelcreate.html
+parent: transaction-types.html
+blurb: Open a new payment channel.
+---
 # PaymentChannelCreate
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
 

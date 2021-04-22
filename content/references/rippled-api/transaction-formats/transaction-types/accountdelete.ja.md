@@ -1,3 +1,8 @@
+---
+html: accountdelete.html
+parent: transaction-types.html
+blurb: Delete an account.
+---
 # AccountDelete
 
 [[ソース]](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/DeleteAccount.cpp "Source")

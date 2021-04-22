@@ -1,3 +1,8 @@
+---
+html: base58-encodings.html
+parent: api-conventions.html
+blurb: 暗号鍵と関連データをbase58形式で表すフォーマットです。
+---
 # base58エンコード
 
 `rippled` APIでは、チェックサムを含む**base58**エンコード（「Base58Check」とも呼ばれます）を使用して[アカウントアドレス](accounts.html#アドレス)や暗号鍵に関連するその他のタイプの値が表現されることがよくあります。このエンコードは、[Bitcoinのアドレスに使用されているエンコード](https://en.bitcoin.it/wiki/Base58Check_encoding)と同じですが、XRP Ledgerでは以下のディクショナリが使用される点が異なります。`rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`。

@@ -1,3 +1,8 @@
+---
+html: validator-list.html
+parent: peer-port-methods.html
+blurb: Special API method for sharing recommended validator lists.
+---
 # Validator List Method
 
 The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts. [New in: rippled 1.5.0][]

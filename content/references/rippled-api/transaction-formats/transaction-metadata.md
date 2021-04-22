@@ -1,3 +1,8 @@
+---
+html: transaction-metadata.html
+parent: transaction-formats.html
+blurb: Transaction metadata describes the outcome of the transaction in detail, regardless of whether the transaction is successful.
+---
 # Transaction Metadata
 
 Transaction metadata is a section of data that gets added to a transaction after it is processed. Any transaction that gets included in a ledger has metadata, regardless of whether it is successful. The transaction metadata describes the outcome of the transaction in detail.

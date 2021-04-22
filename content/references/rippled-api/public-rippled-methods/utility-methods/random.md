@@ -1,3 +1,8 @@
+---
+html: random.html
+parent: utility-methods.html
+blurb: Generate a random number.
+---
 # random
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
 

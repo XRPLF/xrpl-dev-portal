@@ -1,3 +1,8 @@
+---
+html: ter-codes.html
+parent: transaction-results.html
+blurb: ter codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first.
+---
 # ter Codes
 
 These codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.

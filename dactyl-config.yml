@@ -1811,183 +1811,106 @@ pages:
             - ja
 
     -   md: references/rippled-api/api-conventions/api-conventions.md
-        html: api-conventions.html
-        parent: rippled-api.html
-        blurb: Common conventions used across the rippled API.
-        template: template-landing-children.html
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/api-conventions.ja.md
-        html: api-conventions.html
-        parent: rippled-api.html
-        blurb: rippled APIのデータ型とフォーマットについて説明します。
-        template: template-landing-children.html
         targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/basic-data-types.md
-        html: basic-data-types.html
-        parent: api-conventions.html
-        blurb: Format and meaning of fundamental data types like addresses, ledger index, and currency codes.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/basic-data-types.ja.md
-        html: basic-data-types.html
-        parent: api-conventions.html
-        blurb: さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。
         targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/base58-encodings.md
-        html: base58-encodings.html
-        parent: api-conventions.html
-        blurb: Formats for representing cryptographic keys and related data in base58 format.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/base58-encodings.ja.md
-        html: base58-encodings.html
-        parent: api-conventions.html
-        blurb: 暗号鍵と関連データをbase58形式で表すフォーマットです。
         targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/currency-formats.md
-        html: currency-formats.html
-        parent: api-conventions.html
-        blurb: Precision and range for currency numbers, plus formats of custom currency codes.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/currency-formats.ja.md
-        html: currency-formats.html
-        parent: api-conventions.html
-        blurb: 通貨番号の精度と範囲、カスタム通貨コードのフォーマットです。
         targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/error-formatting.md
-        html: error-formatting.html
-        parent: api-conventions.html
-        blurb: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/error-formatting.ja.md
-        html: error-formatting.html
-        parent: api-conventions.html
-        blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスのエラーフォーマットと汎用エラーコードです。
         targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/markers-and-pagination.md
-        html: markers-and-pagination.html
-        parent: api-conventions.html
-        blurb: Convention for paginating large queries into multiple responses.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/markers-and-pagination.ja.md
-        html: markers-and-pagination.html
-        parent: api-conventions.html
-        blurb: 大きなクエリを複数の応答にページネーションする際の慣例です。
         targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/modifying-the-ledger.md
-        html: modifying-the-ledger.html
-        parent: api-conventions.html
-        blurb: Why and how only transactions can modify the ledger.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/modifying-the-ledger.ja.md
-        html: modifying-the-ledger.html
-        parent: api-conventions.html
-        blurb: トランザクションだけがレジャーを変更できる理由とその方法です。
         targets:
             - ja
 
     # TODO: translate page & blurb
     -   md: references/rippled-api/api-conventions/rate-limiting.md
-        html: rate-limiting.html
-        parent: api-conventions.html
-        blurb: Information on how public APIs limit clients from making too many requests.
         targets:
             - en
             - ja
 
     -   md: references/rippled-api/api-conventions/request-formatting.md
-        html: request-formatting.html
-        parent: api-conventions.html
-        blurb: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/request-formatting.ja.md
-        html: request-formatting.html
-        parent: api-conventions.html
-        blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスの標準の要求フォーマットと例です。
         targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/response-formatting.md
-        html: response-formatting.html
-        parent: api-conventions.html
-        blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/response-formatting.ja.md
-        html: response-formatting.html
-        parent: api-conventions.html
-        blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces. #TODO:translate
         targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/rippled-server-states.md
-        html: rippled-server-states.html
-        parent: api-conventions.html
-        blurb: Definitions of state information reported in some API methods.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/rippled-server-states.ja.md
-        html: rippled-server-states.html
-        parent: api-conventions.html
-        blurb: 一部のAPIメソッドで報告される状態情報の定義です。
         targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/serialization.md
-        html: serialization.html
-        parent: api-conventions.html
-        blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects.
         targets:
             - en
 
     -   md: references/rippled-api/api-conventions/serialization.ja.md
-        html: serialization.html
-        parent: api-conventions.html
-        blurb: XRP Ledgerトランザクションやその他のオブジェクトの場合のJSONフォーマットと正規バイナリーフォーマットとの変換です。
         targets:
             - ja
 
 # rippled Public Methods
 
     -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.md
-        html: public-rippled-methods.html
-        parent: rippled-api.html
-        blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/public-rippled-methods.ja.md
-        html: public-rippled-methods.html
-        parent: rippled-api.html
-        blurb: パブリックAPIメソッドを使用して、rippledサーバーと直接通信します。
         targets:
             - ja
 
@@ -2008,128 +1931,74 @@ pages:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.md
-        html: account_channels.html
-        parent: account-methods.html
-        blurb: Get a list of payment channels where the account is the source of the channel.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_channels.ja.md
-        html: account_channels.html
-        parent: account-methods.html
-        blurb: アカウントのPayment Channelに関する情報を返します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.md
-        html: account_currencies.html
-        parent: account-methods.html
-        blurb: Get a list of currencies an account can send or receive.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_currencies.ja.md
-        html: account_currencies.html
-        parent: account-methods.html
-        blurb: アカウントが送金または受領できる通貨のリストを返します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.md
-        html: account_info.html
-        parent: account-methods.html
-        blurb: Get basic data about an account.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_info.ja.md
-        html: account_info.html
-        parent: account-methods.html
-        blurb: アカウントとそのアクティビティおよびXRP残高についての情報を取得します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.md
-        html: account_lines.html
-        parent: account-methods.html
-        blurb: Get info about an account's trust lines.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_lines.ja.md
-        html: account_lines.html
-        parent: account-methods.html
-        blurb: アカウントのトラストラインに関する情報を返します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.md
-        html: account_objects.html
-        parent: account-methods.html
-        blurb: Get all ledger objects owned by an account.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_objects.ja.md
-        html: account_objects.html
-        parent: account-methods.html
-        blurb: アカウントが所有するすべてのオブジェクトを返します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.md
-        html: account_offers.html
-        parent: account-methods.html
-        blurb: Get info about an account's currency exchange offers.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_offers.ja.md
-        html: account_offers.html
-        parent: account-methods.html
-        blurb: 特定のアカウントから出されたオファーのリストを取得します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.md
-        html: account_tx.html
-        parent: account-methods.html
-        blurb: Get info about an account's transactions.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/account_tx.ja.md
-        html: account_tx.html
-        parent: account-methods.html
-        blurb: 指定したアカウントに関連するトランザクションのリストを取得します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.md
-        html: gateway_balances.html
-        parent: account-methods.html
-        blurb: Calculate total amounts issued by an account.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/gateway_balances.ja.md
-        html: gateway_balances.html
-        parent: account-methods.html
-        blurb: 特定のアカウントから発行された残高の合計を計算します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.md
-        html: noripple_check.html
-        parent: account-methods.html
-        blurb: Get recommended changes to an account's Default Ripple and No Ripple settings.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/account-methods/noripple_check.ja.md
-        html: noripple_check.html
-        parent: account-methods.html
-        blurb: アカウントのDefaultRippleフィールドとそのトラストラインのNoRippleフラグの状態を、推奨される設定と比較して迅速にチェックします。
         targets:
             - ja
 
@@ -2150,72 +2019,43 @@ pages:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.md
-        html: ledger.html # Watch carefully for clashes w/ this filename
-        parent: ledger-methods.html
-        blurb: Get info about a ledger version.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger.ja.md
-        html: ledger.html # Watch carefully for clashes w/ this filename
-        parent: ledger-methods.html
-        blurb: 公開レジャーに関する情報を取得します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.md
-        html: ledger_closed.html
-        parent: ledger-methods.html
-        blurb: Get the latest closed ledger version.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_closed.ja.md
-        html: ledger_closed.html
-        parent: ledger-methods.html
-        blurb: 最新の閉鎖済みレジャーの一意のIDを返します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.md
-        html: ledger_current.html
-        parent: ledger-methods.html
-        blurb: Get the current working ledger version.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_current.ja.md
-        html: ledger_current.html
-        parent: ledger-methods.html
-        blurb: 現在進行中のレジャーの一意のIDを返します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.md
-        html: ledger_data.html
-        parent: ledger-methods.html
-        blurb: Get the raw contents of a ledger version.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_data.ja.md
-        html: ledger_data.html
-        parent: ledger-methods.html
-        blurb: 指定されたレジャーの内容を取得します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.md
-        html: ledger_entry.html
-        parent: ledger-methods.html
-        blurb: Get one element from a ledger version.
         targets:
             - en
 
+        # TODO: update the translation of this page
     -   md: references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.ja.md
-        html: ledger_entry.html
-        parent: ledger-methods.html
-        blurb: XRP Ledgerの1つのレジャーオブジェクトを生フォーマットで返します。
         targets:
             - ja
 
@@ -2236,100 +2076,58 @@ pages:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.md
-        html: sign.html # watch for clashes w/ this filename
-        parent: transaction-methods.html
-        blurb: Cryptographically sign a transaction.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign.ja.md
-        html: sign.html # watch for clashes w/ this filename
-        parent: transaction-methods.html
-        blurb: トランザクションの署名済みバイナリー表現を返します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.md
-        html: sign_for.html
-        parent: transaction-methods.html
-        blurb: Contribute to a multi-signature.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/sign_for.ja.md
-        html: sign_for.html
-        parent: transaction-methods.html
-        blurb: マルチ署名済みトランザクションの署名を1つ提供します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.md
-        html: submit.html
-        parent: transaction-methods.html
-        blurb: Send a transaction to the network.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit.ja.md
-        html: submit.html
-        parent: transaction-methods.html
-        blurb: トランザクションを適用し、トランザクションの確認と将来のレジャーへの記録が行われるように、ネットワークに送信します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.md
-        html: submit_multisigned.html
-        parent: transaction-methods.html
-        blurb: Send a multi-signed transaction to the network.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/submit_multisigned.ja.md
-        html: submit_multisigned.html
-        parent: transaction-methods.html
-        blurb: マルチ署名済みトランザクションを適用し、このトランザクションをネットワークに送信します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.md
-        html: transaction_entry.html
-        parent: transaction-methods.html
-        blurb: Retrieve info about a transaction from a particular ledger version.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/transaction_entry.ja.md
-        html: transaction_entry.html
-        parent: transaction-methods.html
-        blurb: 特定のレジャーバージョンから1つのトランザクションに関する情報を取得します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.md
-        html: tx.html
-        parent: transaction-methods.html
-        blurb: Retrieve info about a transaction from all the ledgers on hand.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx.ja.md
-        html: tx.html
-        parent: transaction-methods.html
-        blurb: 1つのトランザクションに関する情報を取得します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.md
-        html: tx_history.html
-        parent: transaction-methods.html
-        blurb: Retrieve info about all recent transactions.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/transaction-methods/tx_history.ja.md
-        html: tx_history.html
-        parent: transaction-methods.html
-        blurb: 直近に作成されたトランザクションの一部を取得します。
         targets:
             - ja
 
@@ -2350,58 +2148,34 @@ pages:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.md
-        html: book_offers.html
-        parent: path-and-order-book-methods.html
-        blurb: Get info about offers to exchange two currencies.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/book_offers.ja.md
-        html: book_offers.html
-        parent: path-and-order-book-methods.html
-        blurb: オーダーブックと呼ばれる、2つの通貨間のオファーのリストを取得します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.md
-        html: deposit_authorized.html
-        parent: path-and-order-book-methods.html
-        blurb: Check whether an account is authorized to send money directly to another.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/deposit_authorized.ja.md
-        html: deposit_authorized.html
-        parent: path-and-order-book-methods.html
-        blurb: あるアカウントに別のアカウントへ支払を直接送金する権限があるかどうかを示します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md
-        html: path_find.html
-        parent: path-and-order-book-methods.html
-        blurb: Find a path for a payment between two accounts and receive updates.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.ja.md
-        html: path_find.html
-        parent: path-and-order-book-methods.html
-        blurb: トランザクションが実行される可能性のあるパスを探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.md
-        html: ripple_path_find.html
-        parent: path-and-order-book-methods.html
-        blurb: Find a path for payment between two accounts, once.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/path-and-order-book-methods/ripple_path_find.ja.md
-        html: ripple_path_find.html
-        parent: path-and-order-book-methods.html
-        blurb: すぐに利用できるペイメントパスを含む1つの応答を返します。
         targets:
             - ja
 
@@ -2415,30 +2189,18 @@ pages:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_authorize.md
-        html: channel_authorize.html
-        parent: payment-channel-methods.html
-        blurb: Sign a claim for money from a payment channel.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_authorize.ja.md
-        html: channel_authorize.html
-        parent: payment-channel-methods.html
-        blurb: 特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.md
-        html: channel_verify.html
-        parent: payment-channel-methods.html
-        blurb: Check a payment channel claim's signature.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/payment-channel-methods/channel_verify.ja.md
-        html: channel_verify.html
-        parent: payment-channel-methods.html
-        blurb: 特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
         targets:
             - ja
 
@@ -2459,30 +2221,18 @@ pages:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.md
-        html: subscribe.html
-        parent: subscription-methods.html
-        blurb: Listen for updates about a particular subject.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/subscribe.ja.md
-        html: subscribe.html
-        parent: subscription-methods.html
-        blurb: 特定のイベントが発生した場合に、定期的に通知するようサーバーに要求します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.md
-        html: unsubscribe.html
-        parent: subscription-methods.html
-        blurb: Stop listening for updates about a particular subject.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/subscription-methods/unsubscribe.ja.md
-        html: unsubscribe.html
-        parent: subscription-methods.html
-        blurb: 特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
         targets:
             - ja
 
@@ -2503,52 +2253,32 @@ pages:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.md
-        html: fee.html
-        parent: server-info-methods.html
-        blurb: Get information about transaction cost.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/fee.ja.md
-        html: fee.html
-        parent: server-info-methods.html
-        blurb: トランザクションコストに関するオープンレジャーの要件の現在の状態を報告します。
         targets:
             - ja
 
+        # TODO: translate
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/manifest.md
-        html: manifest.html
-        parent: server-info-methods.html
-        blurb: Look up the public information about a known validator.
         targets:
             - en
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
-        html: server_info.html
-        parent: server-info-methods.html
-        blurb: Retrieve status of the server in human-readable format.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.ja.md
-        html: server_info.html
-        parent: server-info-methods.html
-        blurb: rippledサーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.md
-        html: server_state.html
-        parent: server-info-methods.html
-        blurb: Retrieve status of the server in machine-readable format.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_state.ja.md
-        html: server_state.html
-        parent: server-info-methods.html
-        blurb: rippledサーバーの現在の状態に関するさまざまな機械可読の情報を問い合わせます。
         targets:
             - ja
 
@@ -2562,58 +2292,34 @@ pages:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/json.md
-        html: json.html
-        parent: utility-methods.html
-        blurb: Pass JSON through the commandline.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/json.ja.md
-        html: json.html
-        parent: utility-methods.html
-        blurb: コマンドのパラメーターをJSON値として受け入れ、他のコマンドを実行します。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.md
-        html: ping.html
-        parent: utility-methods.html
-        blurb: Confirm connectivity with the server.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/ping.ja.md
-        html: ping.html
-        parent: utility-methods.html
-        blurb: 確認応答を返します。これにより、接続のステータスと遅延をテストできます。
         targets:
             - ja
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/random.md
-        html: random.html
-        parent: utility-methods.html
-        blurb: Generate a random number.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/utility-methods/random.ja.md
-        html: random.html
-        parent: utility-methods.html
-        blurb: クライアントが乱数生成のエントロピー生成源として使用する乱数を提供します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.md
-        html: admin-rippled-methods.html
-        parent: rippled-api.html
-        blurb: Administer a rippled server with these admin API methods.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/admin-rippled-methods.ja.md
-        html: admin-rippled-methods.html
-        parent: rippled-api.html
-        blurb: これらの管理APIメソッドを使用してrippledサーバーを管理します。
         targets:
             - ja
 
@@ -2634,30 +2340,18 @@ pages:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.md
-        html: validation_create.html
-        parent: key-generation-methods.html
-        blurb: Generate keys for a new rippled validator.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/validation_create.ja.md
-        html: validation_create.html
-        parent: key-generation-methods.html
-        blurb: rippledサーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵を生成します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.md
-        html: wallet_propose.html
-        parent: key-generation-methods.html
-        blurb: Generate keys for a new account.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/key-generation-methods/wallet_propose.ja.md
-        html: wallet_propose.html
-        parent: key-generation-methods.html
-        blurb: キーペアとXRP Ledgerアドレスを生成します。
         targets:
             - ja
 
@@ -2678,151 +2372,92 @@ pages:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.md
-        html: can_delete.html
-        parent: logging-and-data-management-methods.html
-        blurb: Allow online deletion of ledgers up to a specific ledger.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/can_delete.ja.md
-        html: can_delete.html
-        parent: logging-and-data-management-methods.html
-        blurb: 指定したレジャーバージョン以前のレジャー履歴を削除可能にします。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.md
-        html: crawl_shards.html
-        parent: logging-and-data-management-methods.html
-        blurb: Request information about which history shards peers have.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/crawl_shards.ja.md
-        html: crawl_shards.html
-        parent: logging-and-data-management-methods.html
-        blurb: ピアが持つ履歴シャードについての情報を要求します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.md
-        html: download_shard.html
-        parent: logging-and-data-management-methods.html
-        blurb: Download a specific shard of ledger history.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/download_shard.ja.md
-        html: download_shard.html
-        parent: logging-and-data-management-methods.html
-        blurb: レジャー履歴の特定のシャードをダウンロードします。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.md
-        html: ledger_cleaner.html
-        parent: logging-and-data-management-methods.html
-        blurb: Configure the ledger cleaner service to check for corrupted data.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_cleaner.ja.md
-        html: ledger_cleaner.html
-        parent: logging-and-data-management-methods.html
-        blurb: レジャークリーナーを制御し、レジャーデータベースの破損を検出して修復できる非同期メンテナンスをする。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.md
-        html: ledger_request.html
-        parent: logging-and-data-management-methods.html
-        blurb: Query peer servers for a specific ledger version.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/ledger_request.ja.md
-        html: ledger_request.html
-        parent: logging-and-data-management-methods.html
-        blurb: サーバーに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.md
-        html: log_level.html
-        parent: logging-and-data-management-methods.html
-        blurb: Get or modify log verbosity.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/log_level.ja.md
-        html: log_level.html
-        parent: logging-and-data-management-methods.html
-        blurb: ログ詳細レベルを変更するか、現在のログレベルを返します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.md
-        html: logrotate.html
-        parent: logging-and-data-management-methods.html
-        blurb: Reopen the log file.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/logging-and-data-management-methods/logrotate.ja.md
-        html: logrotate.html
-        parent: logging-and-data-management-methods.html
-        blurb: ログファイルを閉じて再度開きます。
         targets:
             - ja
 
-    -   name: Server Control Methods #TODO: translate title
+        #TODO: translate title and blurb
+    -   name: Server Control Methods
         html: server-control-methods.html
         parent: admin-rippled-methods.html
-        blurb: Use these methods to manage the rippled server. #TODO: translate blurb
+        blurb: Use these methods to manage the rippled server.
         template: template-landing-children.html
         targets:
             - en
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.md
-        html: ledger_accept.html
-        parent: server-control-methods.html
-        blurb: Close and advance the ledger in stand-alone mode.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/ledger_accept.ja.md
-        html: ledger_accept.html
-        parent: server-control-methods.html
-        blurb: スタンドアロンモードでサーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.md
-        html: stop.html
-        parent: server-control-methods.html
-        blurb: Shut down the rippled server.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/stop.ja.md
-        html: stop.html
-        parent: server-control-methods.html
-        blurb: サーバーのグレースフルシャットダウンを行います。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.md
-        html: validation_seed.html
-        parent: server-control-methods.html
-        blurb: REMOVED. Temporarily set key to be used for validating.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/server-control-methods/validation_seed.ja.md
-        html: validation_seed.html
-        parent: server-control-methods.html
-        blurb: 無効。rippledが検証の署名に使用するシークレット値を一時的に設定します。
         targets:
             - ja
 
@@ -2830,7 +2465,7 @@ pages:
     -   name: Peer Management Methods
         html: peer-management-methods.html
         parent: admin-rippled-methods.html
-        blurb: Use these methods to manage your server's peer-to-peer connections. #TODO:translate
+        blurb: Use these methods to manage your server's peer-to-peer connections.
         template: template-landing-children.html
         targets:
             - en
@@ -2844,72 +2479,42 @@ pages:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/connect.md
-        html: connect.html
-        parent: peer-management-methods.html
-        blurb: Force the rippled server to connect to a specific peer.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/connect.ja.md
-        html: connect.html
-        parent: peer-management-methods.html
-        blurb: 特定のピアrippledサーバーに強制的に接続します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_add.md
-        html: peer_reservations_add.html
-        parent: peer-management-methods.html
-        blurb: Add a reserved slot for a specific peer server.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_add.ja.md
-        html: peer_reservations_add.html
-        parent: peer-management-methods.html
-        blurb: 特定のピアサーバー用の予約済みスロットを追加します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_del.md
-        html: peer_reservations_del.html
-        parent: peer-management-methods.html
-        blurb: Remove a reserved slot for a specific peer server.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_del.ja.md
-        html: peer_reservations_del.html
-        parent: peer-management-methods.html
-        blurb: 特定のピアサーバー用の予約済みスロットを削除します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_list.md
-        html: peer_reservations_list.html
-        parent: peer-management-methods.html
-        blurb: List reserved slots for specific peer servers.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peer_reservations_list.ja.md
-        html: peer_reservations_list.html
-        parent: peer-management-methods.html
-        blurb: 特定のピアサーバー用の予約済みスロットをリスト表示します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.md
-        html: peers.html
-        parent: peer-management-methods.html
-        blurb: Get information about the peer servers connected.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/peer-management-methods/peers.ja.md
-        html: peers.html
-        parent: peer-management-methods.html
-        blurb: ピアプロトコルでこのサーバーに現在接続されているその他のすべてのrippledサーバーのリストを返します。
         targets:
             - ja
 
@@ -2930,108 +2535,64 @@ pages:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.md
-        html: consensus_info.html
-        parent: status-and-debugging-methods.html
-        blurb: Get information about the state of consensus as it happens.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/consensus_info.ja.md
-        html: consensus_info.html
-        parent: status-and-debugging-methods.html
-        blurb: デバッグのためのコンセンサスプロセスに関する情報を返します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.md
-        html: feature.html
-        parent: status-and-debugging-methods.html
-        blurb: Get information about protocol amendments.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.ja.md
-        html: feature.html
-        parent: status-and-debugging-methods.html
-        blurb: Amendmentに関してこのサーバーが認識している情報を返します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.md
-        html: fetch_info.html
-        parent: status-and-debugging-methods.html
-        blurb: Get information about the server's sync with the network.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/fetch_info.ja.md
-        html: fetch_info.html
-        parent: status-and-debugging-methods.html
-        blurb: このサーバーが現在ネットワークからフェッチしているオブジェクトに関する情報を返します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.md
-        html: get_counts.html
-        parent: status-and-debugging-methods.html
-        blurb: Get statistics about the server's internals and memory usage.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/get_counts.ja.md
-        html: get_counts.html
-        parent: status-and-debugging-methods.html
-        blurb: サーバーの健全性に関するさまざまな統計情報を提供します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
-        html: print.html
-        parent: status-and-debugging-methods.html
-        blurb: Get information about internal subsystems.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.ja.md
-        html: print.html
-        parent: status-and-debugging-methods.html
-        blurb: さまざまな内部サブシステムの現在の状況を返します。
         targets:
             - ja
 
+        # TODO: translate
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_info.md
-        html: validator_info.html
-        parent: status-and-debugging-methods.html
-        blurb: Get the server's validation settings, if configured as a validator.
         targets:
             - en
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
-        html: validator_list_sites.html
-        parent: status-and-debugging-methods.html
-        blurb: Get information about sites that publish validator lists.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.ja.md
-        html: validator_list_sites.html
-        parent: status-and-debugging-methods.html
-        blurb: バリデータリストを処理するサイトのステータス情報を返します。
         targets:
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.md
-        html: validators.html
-        parent: status-and-debugging-methods.html
-        blurb: Get information about the current validators.
         targets:
             - en
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validators.ja.md
-        html: validators.html
-        parent: status-and-debugging-methods.html
-        blurb: サーバーが使用する公開済みの信頼できるバリデータの最新リストに関する情報を返します。
         targets:
             - ja
 
@@ -3044,30 +2605,18 @@ pages:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-header.md
-        html: ledger-header.html
-        parent: ledger-data-formats.html
-        blurb: A unique header that describes the contents of a ledger version.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-header.ja.md
-        html: ledger-header.html
-        parent: ledger-data-formats.html
-        blurb: レジャーバージョンの内容を記述する一意のヘッダーです。
         targets:
             - ja
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.md
-        html: ledger-object-ids.html
-        parent: ledger-data-formats.html
-        blurb: All objects in a ledger's state tree have a unique ID.
         targets:
             - en
 
     -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.ja.md
-        html: ledger-object-ids.html
-        parent: ledger-data-formats.html
-        blurb: レジャーの状態ツリーのすべてのオブジェクトには一意のIDがあります。
         targets:
             - ja
 
@@ -3186,244 +2735,140 @@ pages:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-formats.md
-        html: transaction-formats.html
-        parent: rippled-api.html
-        blurb: Transactions are the only way to modify the XRP Ledger. Get details about their required format.
-        template: template-landing-children.html
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-formats.ja.md
-        html: transaction-formats.html
-        parent: rippled-api.html
-        blurb: トランザクションは、XRP Ledgerを変更する唯一の方法です。
-        template: template-landing-children.html
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-common-fields.md
-        html: transaction-common-fields.html
-        parent: transaction-formats.html
-        blurb: These common fields can be provided on any XRP Ledger transaction.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-common-fields.ja.md
-        html: transaction-common-fields.html
-        parent: transaction-formats.html
-        blurb: どのトランザクションについても、共通する一連のフィールドがあります。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.md
-        html: transaction-types.html
-        parent: transaction-formats.html
-        blurb: All the different types of transactions that the XRP Ledger can process.
-        template: template-landing-children.html
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.ja.md
-        html: transaction-types.html
-        parent: transaction-formats.html
-        blurb: トランザクションのタイプは、どういったタイプの操作を実行することが想定されているのかを示します。
-        template: template-landing-children.html
         targets:
             - ja
 
+    # TODO: translate _snippets/tx-fields-intro.md
+
     -   md: references/rippled-api/transaction-formats/transaction-types/accountset.md
-        html: accountset.html
-        parent: transaction-types.html
-        blurb: Set options on an account.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/accountset.ja.md
-        html: accountset.html
-        parent: transaction-types.html
-        blurb: XRP Ledgerのアカウントのプロパティーを修正します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/accountdelete.md
-        html: accountdelete.html
-        parent: transaction-types.html
-        blurb: Delete an account.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/accountdelete.ja.md
-        html: accountdelete.html
-        parent: transaction-types.html
-        blurb: Delete an account.
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
-        html: checkcancel.html
-        parent: transaction-types.html
-        blurb: Cancel a check.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.ja.md
-        html: checkcancel.html
-        parent: transaction-types.html
-        blurb: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.md
-        html: checkcash.html
-        parent: transaction-types.html
-        blurb: Redeem a check.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.ja.md
-        html: checkcash.html
-        parent: transaction-types.html
-        blurb: レジャーでCheckオブジェクトの清算を試みます。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.md
-        html: checkcreate.html
-        parent: transaction-types.html
-        blurb: Create a check.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.ja.md
-        html: checkcreate.html
-        parent: transaction-types.html
-        blurb: レジャーにCheckオブジェクトを作成します
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.md
-        html: depositpreauth.html
-        parent: transaction-types.html
-        blurb: Preauthorizes an account to send payments to this one.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.ja.md
-        html: depositpreauth.html
-        parent: transaction-types.html
-        blurb: DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.md
-        html: escrowcancel.html
-        parent: transaction-types.html
-        blurb: Reclaim escrowed XRP.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.ja.md
-        html: escrowcancel.html
-        parent: transaction-types.html
-        blurb: Escrowに留保されているXRPを送金元に返金します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.md
-        html: escrowcreate.html
-        parent: transaction-types.html
-        blurb: Create an escrowed XRP payment.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.ja.md
-        html: escrowcreate.html
-        parent: transaction-types.html
-        blurb: Escrowプロセスが終了または取り消されるまでXRPを隔離します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.md
-        html: escrowfinish.html
-        parent: transaction-types.html
-        blurb: Deliver escrowed XRP to recipient.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.ja.md
-        html: escrowfinish.html
-        parent: transaction-types.html
-        blurb: 保留中の支払いから受取人へXRPを送金します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.md
-        html: offercancel.html
-        parent: transaction-types.html
-        blurb: Withdraw a currency-exchange order.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.ja.md
-        html: offercancel.html
-        parent: transaction-types.html
-        blurb: XRP LedgerからOfferオブジェクトを削除します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.md
-        html: offercreate.html
-        parent: transaction-types.html
-        blurb: Submit an order to exchange currency.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.ja.md
-        html: offercreate.html
-        parent: transaction-types.html
-        blurb: OfferCreateは通貨の交換を行う意図を定義するもので、配置時に完全に履行されていない場合はOfferオブジェクトを作成します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/payment.md
-        html: payment.html
-        parent: transaction-types.html
-        blurb: Send funds from one account to another.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/payment.ja.md
-        html: payment.html
-        parent: transaction-types.html
-        blurb: アカウント間での価値の移動します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.md
-        html: paymentchannelclaim.html
-        parent: transaction-types.html
-        blurb: Claim money from a payment channel.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.ja.md
-        html: paymentchannelclaim.html
-        parent: transaction-types.html
-        blurb: Payment Channelに対しXRPを請求します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.md
-        html: paymentchannelcreate.html
-        parent: transaction-types.html
-        blurb: Open a new payment channel.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.ja.md
-        html: paymentchannelcreate.html
-        parent: transaction-types.html
-        blurb: 一方向のChannelを作成し、XRPを供給します。
         targets:
             - ja
 
@@ -3436,246 +2881,134 @@ pages:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.md
-        html: setregularkey.html
-        parent: transaction-types.html
-        blurb: Add, remove, or modify an account's regular key pair.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.ja.md
-        html: setregularkey.html
-        parent: transaction-types.html
-        blurb: アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.md
-        html: signerlistset.html
-        parent: transaction-types.html
-        blurb: Add, remove, or modify an account's multi-signing list.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.ja.md
-        html: signerlistset.html
-        parent: transaction-types.html
-        blurb: トランザクションのマルチ署名に使用できる署名者のリストを作成、置換、削除します。
         targets:
             - ja
 
+        # TODO: translate
     -   md: references/rippled-api/transaction-formats/transaction-types/ticketcreate.md
         targets:
             - en
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md
-        html: trustset.html
-        parent: transaction-types.html
-        blurb: Add or modify a trust line.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/trustset.ja.md
-        html: trustset.html
-        parent: transaction-types.html
-        blurb: 2つのアカウントをリンクするトラストラインを作成または変更します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.md
-        html: pseudo-transaction-types.html
-        parent: transaction-formats.html
-        blurb: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger.
-        template: template-landing-children.html
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.ja.md
-        html: pseudo-transaction-types.html
-        parent: transaction-formats.html
-        blurb: バリデータがXRP Ledgerに適用する場合がある疑似トランザクションのフォーマットです。
-        template: template-landing-children.html
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.md
-        html: enableamendment.html
-        parent: pseudo-transaction-types.html
-        blurb: Enable a change in transaction processing.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.ja.md
-        html: enableamendment.html
-        parent: pseudo-transaction-types.html
-        blurb: トランザクション処理を変更するAmendmentプロセスの進行状況を追跡します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.md
-        html: setfee.html
-        parent: pseudo-transaction-types.html
-        blurb: Change global reserve and transaction cost settings.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.ja.md
-        html: setfee.html
-        parent: pseudo-transaction-types.html
-        blurb: 手数料投票の結果としてトランザクションコストまたはアカウント準備金の要件が変更されます。
         targets:
             - ja
 
+        # TODO: translate
     -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/unlmodify.md
         targets:
             - en
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md
-        html: transaction-results.html
-        parent: transaction-formats.html
-        blurb: Learn how to interpret rippled server transaction results.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.ja.md
-        html: transaction-results.html
-        parent: transaction-formats.html
-        blurb: rippledサーバーのトランザクション結果の解釈の仕方について説明します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.md
-        html: tec-codes.html
-        parent: transaction-results.html
-        blurb: tec codes indicate that the transaction failed, but it was applied to a ledger to deduct the transaction cost.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.ja.md
-        html: tec-codes.html
-        parent: transaction-results.html
-        blurb: tecコードは、トランザクションは失敗したものの、トランザクションコストを適用するために、このトランザクションがレジャーに適用されたことを示します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.md
-        html: tef-codes.html
-        parent: transaction-results.html
-        blurb: tef codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.ja.md
-        html: tef-codes.html
-        parent: transaction-results.html
-        blurb: tefコードは、トランザクションが失敗してレジャーに記録されなかったが、一部の理論上のレジャーでは正常に完了できた可能性があることを示します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.md
-        html: tel-codes.html
-        parent: transaction-results.html
-        blurb: tel codes indicate an error in the local server processing the transaction.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.ja.md
-        html: tel-codes.html
-        parent: transaction-results.html
-        blurb: telコードは、トランザクションを処理するローカルサーバーでのエラーを示します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.md
-        html: tem-codes.html
-        parent: transaction-results.html
-        blurb: tem codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.ja.md
-        html: tem-codes.html
-        parent: transaction-results.html
-        blurb: temコードは、トランザクションの形式が正しくないため、XRP Ledgerプロトコルに基づきトランザクションが正常に完了しないことを示します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.md
-        html: ter-codes.html
-        parent: transaction-results.html
-        blurb: ter codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.ja.md
-        html: ter-codes.html
-        parent: transaction-results.html
-        blurb: terコードは、トランザクションは失敗したけれども、将来そのトランザクションを正常に適用できる可能性があることを示します。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.md
-        html: tes-success.html
-        parent: transaction-results.html
-        blurb: tesSUCCESS is the only code that indicates a transaction succeeded. This does not always mean it accomplished what you expected it to do.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.ja.md
-        html: tes-success.html
-        parent: transaction-results.html
-        blurb: tesSUCCESSコードは、トランザクションが成功したことを示す唯一のコードです。
         targets:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-metadata.md
-        html: transaction-metadata.html
-        parent: transaction-formats.html
-        blurb: Transaction metadata describes the outcome of the transaction in detail, regardless of whether the transaction is successful.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-metadata.ja.md
-        html: transaction-metadata.html
-        parent: transaction-formats.html
-        blurb: トランザクションのメタデータは、トランザクションの処理後にトランザクションに追加されるひとまとまりのデータです。
         targets:
             - ja
 
     -   md: references/rippled-api/commandline-usage.md
-        html: commandline-usage.html
-        parent: rippled-api.html
-        blurb: Commandline usage options for the rippled server.
-        curated_anchors:
-            - name: Available Modes
-              anchor: "#available-modes"
-            - name: Daemon Mode Options
-              anchor: "#daemon-mode-options"
-            - name: Stand-Alone Mode Options
-              anchor: "#stand-alone-mode-options"
-            - name: Client Mode Options
-              anchor: "#client-mode-options"
-            - name: Unit Tests
-              anchor: "#unit-tests"
         targets:
             - en
 
     -   md: references/rippled-api/commandline-usage.ja.md
-        html: commandline-usage.html
-        parent: rippled-api.html
-        blurb: rippledサーバーのコマンドライン使用オプションです。
-        curated_anchors:
-            - name: 使用できるモード
-              anchor: "#使用できるモード"
-            - name: デーモンモードのオプション
-              anchor: "#デーモンモードのオプション"
-            - name: スタンドアロンモードのオプション
-              anchor: "#スタンドアロンモードのオプション"
-            - name: クライアントモードのオプション
-              anchor: "#クライアントモードのオプション"
-            - name: 単体テスト
-              anchor: "#単体テスト"
         targets:
             - ja
 
@@ -3691,24 +3024,16 @@ pages:
 
     # TODO: translate page & blurb
     -   md: references/rippled-api/peer-port-methods/health-check.md
-        html: health-check.html
-        parent: peer-port-methods.html
-        blurb: Special API method for reporting server health.
         targets:
             - en
             - ja
 
     -   md: references/rippled-api/peer-port-methods/peer-crawler.md
-        html: peer-crawler.html
-        parent: peer-port-methods.html
-        blurb: Special API method for sharing network topology and status metrics.
         targets:
             - en
 
-    # TODO: translate page
+    # TODO: translate page (currently only the blurb is translated)
     -   md: references/rippled-api/peer-port-methods/peer-crawler.md
-        html: peer-crawler.html
-        parent: peer-port-methods.html
         blurb: ネットワークトポロジーとステータスメトリックを共有するための特殊なAPIメソッドです。
         untranslated_warning: true
         targets:
@@ -3716,9 +3041,6 @@ pages:
 
     # TODO: translate page & blurb
     -   md: references/rippled-api/peer-port-methods/validator-list.md
-        html: validator-list.html
-        parent: peer-port-methods.html
-        blurb: Special API method for sharing recommended validator lists.
         targets:
             - en
             - ja
@@ -3775,63 +3097,19 @@ pages:
             - ja
 
     -   md: references/data-api.md
-        html: data-api.html
-        parent: references.html
-        blurb: RESTful interface to XRP Ledger analytics and historical data.
-        curated_anchors:
-            - name: Methods
-              anchor: "#api-method-reference"
-            - name: API Conventions
-              anchor: "#api-conventions"
         targets:
             - en
             - data-api-only
 
     -   md: references/data-api.ja.md
-        html: data-api.html
-        parent: references.html
-        blurb: XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。
-        curated_anchors:
-            - name: APIメソッドリファレンス
-              anchor: "#apiメソッドリファレンス"
-            - name: APIの規則
-              anchor: "#apiの規則"
         targets:
             - ja
 
     -   md: references/xrp-ledger-toml.md
-        html: xrp-ledger-toml.html
-        parent: references.html
-        blurb: Provide machine-readable information about yourself to other XRP Ledger users. #TODO:translate
-        curated_anchors:
-            - name: Serving the File
-              anchor: "#serving-the-file"
-            - name: Contents
-              anchor: "#contents"
-            - name: CORS Setup
-              anchor: "#cors-setup"
-            - name: Domain Verification
-              anchor: "#domain-verification"
-            - name: Account Verification
-              anchor: "#account-verification"
         targets:
             - en
 
     -   md: references/xrp-ledger-toml.ja.md
-        html: xrp-ledger-toml.html
-        parent: references.html
-        blurb: 機械が読み取れる、あなたに関する情報を他のXRP Ledgerユーザーに提供します。
-        curated_anchors:
-            - name: ファイルの提供方法
-              anchor: "#ファイルの提供方法"
-            - name: 内容
-              anchor: "#内容"
-            - name: CORSの設定
-              anchor: "#corsの設定"
-            - name: ドメイン検証
-              anchor: "#ドメイン検証"
-            - name: アカウント検証
-              anchor: "#アカウント検証"
         targets:
             - ja
 

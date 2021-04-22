@@ -1,3 +1,8 @@
+---
+html: tx.html
+parent: transaction-methods.html
+blurb: Retrieve info about a transaction from all the ledgers on hand.
+---
 # tx
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
 

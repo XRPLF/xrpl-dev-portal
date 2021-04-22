@@ -1,3 +1,8 @@
+---
+html: rate-limiting.html
+parent: api-conventions.html
+blurb: Information on how public APIs limit clients from making too many requests.
+---
 # Rate Limiting
 
 The `rippled` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.

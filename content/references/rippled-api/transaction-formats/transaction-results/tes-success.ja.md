@@ -1,3 +1,8 @@
+---
+html: tes-success.html
+parent: transaction-results.html
+blurb: tesSUCCESSコードは、トランザクションが成功したことを示す唯一のコードです。
+---
 # tes Success
 
 `tesSUCCESS`コードは、トランザクションが成功したことを示す唯一のコードです。このコードは、必ずしも処理が期待どおりに終了したことを示すものではありません。（たとえば[OfferCancel][]は、キャンセルするオファーがない場合でも「正常に終了」できます。）`tesSUCCESS`の結果には数値0が使用されます。

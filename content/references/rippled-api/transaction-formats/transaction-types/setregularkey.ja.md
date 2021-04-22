@@ -1,3 +1,8 @@
+---
+html: setregularkey.html
+parent: transaction-types.html
+blurb: アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
+---
 # SetRegularKey
 
 [[ソース]](https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")

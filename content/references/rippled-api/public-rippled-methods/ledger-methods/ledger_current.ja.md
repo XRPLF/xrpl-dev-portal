@@ -1,5 +1,10 @@
+---
+html: ledger_current.html
+parent: ledger-methods.html
+blurb: 現在進行中のレジャーの一意のIDを返します。
+---
 # ledger_current
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")
 
 `ledger_current`メソッドは、現在進行中のレジャーの一意のIDを返します。このコマンドで返されるレジャーは確定されたものではないため、このコマンドは主にテストに有用です。
 

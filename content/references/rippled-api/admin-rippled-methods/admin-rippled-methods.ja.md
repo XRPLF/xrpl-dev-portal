@@ -1,3 +1,8 @@
+---
+html: admin-rippled-methods.html
+parent: rippled-api.html
+blurb: これらの管理APIメソッドを使用してrippledサーバーを管理します。
+---
 # 管理rippledメソッド
 
 `rippled`サーバーと直接通信する際には管理APIメソッドを使用します。管理メソッドは、信頼できるサーバー運用担当者のみを対象としています。管理メソッドには、サーバーの管理、監視、デバッグのためのコマンドが含まれています。

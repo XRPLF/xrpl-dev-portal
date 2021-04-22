@@ -1,3 +1,8 @@
+---
+html: transaction-results.html
+parent: transaction-formats.html
+blurb: Learn how to interpret rippled server transaction results.
+---
 # Transaction Results
 
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/TER.h "Source")

@@ -4,7 +4,7 @@ parent: ledger-object-types.html
 blurb: 2つのアカウントをリンクし、それらのアカウント間の特定の通貨の残高を追跡します。トラストラインのコンセプトは、このオブジェクトタイプを抽象化することです。
 ---
 # RippleState
-[[ソース]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
 
 `RippleState`オブジェクトタイプは、1つの通貨で2つのアカウントを接続します。概念的には`RippleState`オブジェクトは、アカウント間の2つの _トラストライン_ を表し、各アカウント側から1つずつ確立されます。各アカウントの`RippleState`オブジェクト設定は、各アカウント側で変更できますが、残高については単一の値を両アカウント間で共有します。完全にデフォルト状態のトラストラインは、存在しないトラストラインと同様に見なされます。このため`rippled` は、プロパティがすべてデフォルトである`RippleState`オブジェクトを削除します。
 

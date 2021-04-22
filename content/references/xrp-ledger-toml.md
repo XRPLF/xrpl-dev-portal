@@ -1,3 +1,19 @@
+---
+html: xrp-ledger-toml.html
+parent: references.html
+blurb: Provide machine-readable information about yourself to other XRP Ledger users. #TODO:translate
+curated_anchors:
+    - name: Serving the File
+      anchor: "#serving-the-file"
+    - name: Contents
+      anchor: "#contents"
+    - name: CORS Setup
+      anchor: "#cors-setup"
+    - name: Domain Verification
+      anchor: "#domain-verification"
+    - name: Account Verification
+      anchor: "#account-verification"
+---
 # xrp-ledger.toml File
 
 If you run an XRP Ledger validator or use the XRP Ledger for your business, you can provide information about your usage of the XRP Ledger to the world in a machine-readable **`xrp-ledger.toml`** file. Scripts and applications can use the information contained in your `xrp-ledger.toml` file to better understand and represent you in the XRP Ledger. In some cases, humans may also find it useful to read the same file.

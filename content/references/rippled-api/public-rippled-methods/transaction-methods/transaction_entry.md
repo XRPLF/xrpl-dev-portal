@@ -1,3 +1,8 @@
+---
+html: transaction_entry.html
+parent: transaction-methods.html
+blurb: Retrieve info about a transaction from a particular ledger version.
+---
 # transaction_entry
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
 

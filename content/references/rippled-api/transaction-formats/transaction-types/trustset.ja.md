@@ -1,6 +1,11 @@
+---
+html: trustset.html
+parent: transaction-types.html
+blurb: 2つのアカウントをリンクするトラストラインを作成または変更します。
+---
 # TrustSet
 
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
 
 2つのアカウントをリンクするトラストラインを作成または変更します。
 

@@ -1,3 +1,8 @@
+---
+html: setfee.html
+parent: pseudo-transaction-types.html
+blurb: Change global reserve and transaction cost settings.
+---
 # SetFee
 
 A `SetFee` [pseudo-transaction](pseudo-transaction-types.html) marks a change in [transaction cost](transaction-cost.html) or [reserve requirements](reserves.html) as a result of [Fee Voting](fee-voting.html).

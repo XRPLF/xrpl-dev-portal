@@ -1,3 +1,8 @@
+---
+html: path_find.html
+parent: path-and-order-book-methods.html
+blurb: Find a path for a payment between two accounts and receive updates.
+---
 # path_find
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
 

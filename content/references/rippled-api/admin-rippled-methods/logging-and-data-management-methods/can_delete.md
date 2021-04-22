@@ -1,3 +1,8 @@
+---
+html: can_delete.html
+parent: logging-and-data-management-methods.html
+blurb: Allow online deletion of ledgers up to a specific ledger.
+---
 # can_delete
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 

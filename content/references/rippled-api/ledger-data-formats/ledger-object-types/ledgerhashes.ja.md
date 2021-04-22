@@ -4,7 +4,7 @@ parent: ledger-object-types.html
 blurb: 履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。
 ---
 # LedgerHashes
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108 "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108 "Source")
 
 （レジャーバージョンを一意に示す[「ledger hash」文字列データ型][ハッシュ]と混同しないでください。このセクションでは、`LedgerHashes`レジャーオブジェクトタイプについて説明します。）
 
@@ -62,7 +62,7 @@ blurb: 履歴検索用に以前のレジャーバージョンのハッシュを�
 「過去の履歴」`LedgerHashes`オブジェクトは[スキップリスト](https://en.wikipedia.org/wiki/Skip_list)として機能するので、任意の履歴フラッグレジャーのハッシュをそのインデックスから取得できます。さらに、フラッグレジャーの「最近の履歴」オブジェクトを使用してその他のレジャーのハッシュを取得できます。
 
 ## LedgerHashes IDのフォーマット
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42)
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42)
 
 `LedgerHashes`オブジェクトIDには2種類のフォーマットがあります。これは、オブジェクトのサブタイプが「最近の履歴」と「過去の履歴」のいずれであるかに応じて決まります。
 

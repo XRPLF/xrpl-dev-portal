@@ -1,3 +1,8 @@
+---
+html: transaction-results.html
+parent: transaction-formats.html
+blurb: rippledサーバーのトランザクション結果の解釈の仕方について説明します。
+---
 # トランザクションの結果
 
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/TER.h "Source")

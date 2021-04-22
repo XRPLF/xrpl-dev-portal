@@ -1,3 +1,8 @@
+---
+html: response-formatting.html
+parent: api-conventions.html
+blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
+---
 # Response Formatting
 
 Responses from the `rippled` APIs is formatted slightly differently based on whether the method is called with the WebSocket, JSON-RPC, or Commandline interfaces. The Commandline and JSON-RPC interfaces use the same format because the Commandline interface calls JSON-RPC.

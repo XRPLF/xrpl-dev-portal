@@ -1,3 +1,8 @@
+---
+html: trustset.html
+parent: transaction-types.html
+blurb: Add or modify a trust line.
+---
 # TrustSet
 
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")

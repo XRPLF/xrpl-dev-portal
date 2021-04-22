@@ -1,6 +1,11 @@
+---
+html: escrowcancel.html
+parent: transaction-types.html
+blurb: Escrowに留保されているXRPを送金元に返金します。
+---
 # EscrowCancel
 
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
 _[Escrow Amendment][]が必要です。_
 

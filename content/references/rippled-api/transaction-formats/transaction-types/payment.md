@@ -1,3 +1,8 @@
+---
+html: payment.html
+parent: transaction-types.html
+blurb: Send funds from one account to another.
+---
 # Payment
 [[Source]](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "Source")
 

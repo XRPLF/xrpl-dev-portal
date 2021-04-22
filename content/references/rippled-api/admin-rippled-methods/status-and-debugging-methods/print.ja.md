@@ -1,5 +1,10 @@
+---
+html: print.html
+parent: status-and-debugging-methods.html
+blurb: さまざまな内部サブシステムの現在の状況を返します。
+---
 # print
-[[ソース]<br>](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
 
 `print`コマンドは、さまざまな内部サブシステム（ピア、レジャークリーナー、リソースマネージャーなど）の現在の状況を返します。
 

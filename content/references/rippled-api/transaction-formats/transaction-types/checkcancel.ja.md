@@ -1,5 +1,10 @@
+---
+html: checkcancel.html
+parent: transaction-types.html
+blurb: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
+---
 # CheckCancel
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelCheck.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelCheck.cpp "Source")
 
 _（[Checks Amendment][]が必要です）_
 

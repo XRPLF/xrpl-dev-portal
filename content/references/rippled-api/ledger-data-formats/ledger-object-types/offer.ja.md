@@ -4,7 +4,7 @@ parent: ledger-object-types.html
 blurb: 通貨取引を行うためのオーダーです。
 ---
 # Offer
-[[ソース]<br>](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
 
 `Offer`オブジェクトタイプは、XRP Ledgerの分散型取引所での（従来は _オーダー_ と呼ばれていた）通貨取引オファーを記述します。[OfferCreateトランザクション][]は、レジャーにすでに含まれている他のオファーを消費することでは完全にオファーを実行できない場合に、レジャーに`Offer`オブジェクトを作成します。
 

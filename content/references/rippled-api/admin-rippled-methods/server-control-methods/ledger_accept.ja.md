@@ -1,5 +1,10 @@
+---
+html: ledger_accept.html
+parent: server-control-methods.html
+blurb: スタンドアロンモードでサーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。
+---
 # ledger_accept
-[[ソース]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp "Source")
 
 `ledger_accept`メソッドは、サーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。このメソッドはテスト専用であり、`rippled`サーバーがスタンドアロンモードで実行されている場合にのみ使用できます。
 

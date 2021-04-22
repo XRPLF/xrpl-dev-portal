@@ -4,7 +4,7 @@ parent: ledger-object-types.html
 blurb: 承認を必要とするアカウントへの送金ペイメントの事前承認の記録です。
 ---
 # DepositPreauth
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
 
 `DepositPreauth`オブジェクトはアカウント間の事前承認を追跡します。[DepositPreauthトランザクション][]によりこれらのオブジェクトが作成されます。
 

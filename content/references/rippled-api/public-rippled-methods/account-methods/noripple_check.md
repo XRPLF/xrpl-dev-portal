@@ -1,3 +1,8 @@
+---
+html: noripple_check.html
+parent: account-methods.html
+blurb: Get recommended changes to an account's Default Ripple and No Ripple settings.
+---
 # noripple_check
 [[Source]](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/NoRippleCheck.cpp "Source")
 

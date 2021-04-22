@@ -1,3 +1,8 @@
+---
+html: public-rippled-methods.html
+parent: rippled-api.html
+blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
+---
 # Public rippled Methods
 
 Communicate directly with a `rippled` server using the following public API methods. Public methods are not necessarily meant for the general public, but they are used by any client attached to the server. Think of public methods as being for members or customers of the organization running the server.

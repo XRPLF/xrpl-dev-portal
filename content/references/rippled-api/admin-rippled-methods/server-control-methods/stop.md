@@ -1,3 +1,8 @@
+---
+html: stop.html
+parent: server-control-methods.html
+blurb: Shut down the rippled server.
+---
 # stop
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")
 

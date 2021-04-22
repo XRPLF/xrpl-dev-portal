@@ -1,3 +1,8 @@
+---
+html: account_info.html
+parent: account-methods.html
+blurb: Get basic data about an account.
+---
 # account_info
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp "Source")
 

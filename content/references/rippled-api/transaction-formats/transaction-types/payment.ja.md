@@ -1,5 +1,10 @@
+---
+html: payment.html
+parent: transaction-types.html
+blurb: アカウント間での価値の移動します。
+---
 # Payment
-[[ソース]<br>](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "ソース")
+[[ソース]](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "ソース")
 
 Paymentトランザクションは、アカウント間での価値の移動を表現するものです（通過するパスによっては、非可分的に発生する追加的な価値交換を伴うことがあります）。
 

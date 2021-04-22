@@ -1,5 +1,10 @@
+---
+html: account_channels.html
+parent: account-methods.html
+blurb: アカウントのPayment Channelに関する情報を返します。
+---
 # account_channels
-[[ソース]<br>](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
 _（[PayChan Amendment][]が有効になっている必要があります。[新規: rippled 0.33.0][]）_
 

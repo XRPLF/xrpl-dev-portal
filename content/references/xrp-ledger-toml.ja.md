@@ -1,3 +1,19 @@
+---
+html: xrp-ledger-toml.html
+parent: references.html
+blurb: 機械が読み取れる、あなたに関する情報を他のXRP Ledgerユーザーに提供します。
+curated_anchors:
+    - name: ファイルの提供方法
+      anchor: "#ファイルの提供方法"
+    - name: 内容
+      anchor: "#内容"
+    - name: CORSの設定
+      anchor: "#corsの設定"
+    - name: ドメイン検証
+      anchor: "#ドメイン検証"
+    - name: アカウント検証
+      anchor: "#アカウント検証"
+---
 # xrp-ledger.tomlファイル
 
 XRP Ledgerバリデータを実行するか、ビジネスにXRP Ledgerを使用する場合、機械が読み取れる形式の **`xrp-ledger.toml`** ファイルで自分のXRP Ledgerの使用状況に関する情報を世界中に提供することができます。スクリプトとアプリケーションで`xrp-ledger.toml`ファイルの情報を使用して、XRP Ledgerでの自分の情報を分かりやすく示すことができます。また、同じファイルを人間が読むことが便利な場合もあります。
@@ -262,13 +278,13 @@ location /.well-known/xrp-ledger.toml {
 ドメイン検証では、ドメインオペレーターとバリデータの間に双方向リンクを確立する必要があります。
 
 1. ドメインはバリデータの所有権を主張します。
-   
+
    - [本書に記載されているすべての要件](#ファイルの提供方法)に従って、当該ドメインから`xrp-ledger.toml`ファイルを提供します。
-   
+
    - その`xrp-ledger.toml`ファイルで、`[[VALIDATORS]]`エントリの`public_key`フィールドにバリデータのマスター公開鍵を入力します。
 
 2. バリデータは、ドメイン別に所有権を主張します。このステップの手順は、本仕様書の範囲外です。
-   
+
     <!-- TODO: Link documentation when it's available. -->
     <!-- Aside: the old way of doing this was to set the `Domain` field of the
          XRP Ledger account whose public key matched the validator's public key.
@@ -284,15 +300,15 @@ location /.well-known/xrp-ledger.toml {
 アカウント検証では、ドメインオペレーターとアドレスの間に双方向リンクを確立する必要があります。
 
 1. ドメインはアドレスの所有権を主張します。
-   
+
    - [本書に記載されているすべての要件](#ファイルの提供方法)に従って、当該ドメインから`xrp-ledger.toml`ファイルを提供します。
-   
+
    - その`xrp-ledger.toml`ファイルで、検証するアカウントのアドレスを`[[ACCOUNTS]]`エントリに入力します。このアドレスから通貨を発行する場合は、`[[CURRENCIES]]`エントリの`issuer`フィールドでこのアカウントを指定することもできます。
 
 2. アドレスは、ドメイン別に所有権を主張します。
-   
+
    この`xrp-ledger.toml`ファイルの提供元のドメインに一致するように、[アカウントの`Domain`フィールドを設定](accountset.html#domain)します。ドメイン値（ASCIIからデコードされた場合）は、`www.`などのすべてのサブドメインを含め、 _正確に_ 一致する必要があります。国際化ドメイン名の場合は、[RFC3492](https://tools.ietf.org/html/rfc3492)の説明に従って、`Domain`値をドメインのPunycodeに設定します。
-   
+
    `Domain`を設定するにはトランザクションを送信する必要があるため、`Domain`値を設定する場合は必ずトランザクションを送信した時のアカウントの秘密鍵を所有している必要があります。
 
 これらの2つのリンクのどちらも、それ自体で、権限があると見なされるべきではありません。誰でも任意のアカウントの所有権を主張する`xrp-ledger.toml`ファイルをホストでき、任意のアカウントオペレーターはその`Domain`フィールドを任意の文字列に設定できます。両者が一致したら、いずれも同じエンティティが操作しているという強力な証拠になります。
