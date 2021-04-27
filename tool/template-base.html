@@ -24,13 +24,13 @@
 
 
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
-    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{currentpage.prefix}}assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{currentpage.prefix}}assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{currentpage.prefix}}assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="{{currentpage.prefix}}assets/favicons/site.webmanifest">
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="msapplication-TileColor" content="#25A768">
-    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="msapplication-config" content="{{currentpage.prefix}}assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#25A768">
 
     <!-- jQuery -->
@@ -122,9 +122,9 @@
 
 <!-- Non-blocking resources -->
 <!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap.min.js"></script>
+<script src="{{currentpage.prefix}}assets/vendor/bootstrap.min.js"></script>
 <!-- fontawesome icons -->
-<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="{{currentpage.prefix}}assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
@@ -145,11 +145,11 @@ debug: false
 
 {% if "interactive_steps" in currentpage.filters %}
 <!-- Helper for interactive tutorials -->
-<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="{{currentpage.prefix}}assets/js/interactive-tutorial.js"></script>
 {% endif %}
 
 <!-- Feedback Widget -->
-<script src="assets/vendor/custom-widget.js"></script>
+<script src="{{currentpage.prefix}}assets/vendor/custom-widget.js"></script>
 <div id="feedback-content"></div>
     <script>
       const widget = new EmbeddableWidget.default({
