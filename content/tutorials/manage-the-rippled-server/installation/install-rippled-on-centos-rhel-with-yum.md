@@ -1,3 +1,8 @@
+---
+html: install-rippled-on-centos-rhel-with-yum.html
+parent: install-rippled.html
+blurb: Install a precompiled rippled binary on CentOS or Red Hat Enterprise Linux.
+---
 # Install on CentOS/Red Hat with yum
 
 This page describes the recommended instructions for installing the latest stable version of `rippled` on **CentOS 7** or **Red Hat Enterprise Linux 7**, using Ripple's [yum](https://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified) repository.

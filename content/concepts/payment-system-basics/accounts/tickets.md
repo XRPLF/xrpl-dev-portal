@@ -1,9 +1,6 @@
 ---
 html: tickets.html
-funnel: Build
-doc_type: Concepts
-category: Payment System Basics
-subcategory: Accounts
+parent: accounts.html
 blurb: Send transactions in non-sequential order.
 status: not_enabled
 ---

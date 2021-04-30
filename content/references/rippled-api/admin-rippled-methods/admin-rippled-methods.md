@@ -1,3 +1,8 @@
+---
+html: admin-rippled-methods.html
+parent: rippled-api.html
+blurb: Administer a rippled server with these admin API methods.
+---
 # Admin rippled Methods
 
 Communicate directly with a `rippled` server using these admin API methods. Admin methods are meant only for trusted personnel in charge of keeping the server operational. Admin methods include commands for managing, monitoring, and debugging the server.

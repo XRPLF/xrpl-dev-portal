@@ -1,3 +1,8 @@
+---
+html: base58-encodings.html
+parent: api-conventions.html
+blurb: Formats for representing cryptographic keys and related data in base58 format.
+---
 # base58 Encodings
 
 The `rippled` APIs often use a "base58" encoding with a checksum (sometimes called "Base58Check") to represent [account addresses](accounts.html#addresses) and other types of values related to cryptographic keys. This encoding is the same as [the one used for Bitcoin addresses](https://en.bitcoin.it/wiki/Base58Check_encoding), except that the XRP Ledger uses the following dictionary: `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`.

@@ -1,3 +1,8 @@
+---
+html: load-a-saved-ledger-in-stand-alone-mode.html
+parent: use-stand-alone-mode.html
+blurb: 特定の保存済みレジャーからスタンドアロンモードで開始して、トランザクションのテストやリプレイを行います。
+---
 # スタンドアロンモードでの保存済みレジャーの読み込み
 
 以前にディスクに保存していた[履歴レジャーバージョン](ledgers.html)を使用して、`rippled`サーバーを[スタンドアロンモード](rippled-server-modes.html)で起動できます。例えば、以前に`rippled`サーバーをXRP Ledgerのピアツーピアネットワーク（[本番Mainnet、Testnet、Devnetなど](parallel-networks.html)）と同期していた場合は、過去にサーバーで使用できていた任意のレジャーバージョンを読み込むことができます。

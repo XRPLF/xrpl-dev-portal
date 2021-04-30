@@ -1,3 +1,8 @@
+---
+html: ledger-history.html
+parent: the-rippled-server.html
+blurb: rippled servers store a variable amount of transaction and state history locally.
+---
 # Ledger History
 
 The [consensus process](intro-to-consensus.html) creates a chain of [validated ledger versions](ledgers.html), each derived from the previous one by applying a set of [transactions](transaction-basics.html). Every [`rippled` server](the-rippled-server.html) stores ledger versions and transaction history locally. The amount of transaction history a server stores depends on how long that server has been online and how much history it is configured to fetch and keep.

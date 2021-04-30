@@ -1,3 +1,8 @@
+---
+html: currency-formats.html
+parent: api-conventions.html
+blurb: Precision and range for currency numbers, plus formats of custom currency codes.
+---
 # Currency Formats
 
 The XRP Ledger has two kinds of money: [XRP](xrp.html), and [issued currencies](issued-currencies.html). Both types have high precision, although their formats are different.

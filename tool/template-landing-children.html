@@ -1,6 +1,6 @@
 {% extends "template-base.html" %}
 
-{% block mainclasses %}landing-children padded-main{% endblock %}
+{% block mainclasses %}landing landing-children padded-main{% endblock %}
 
 {% block main %}
   {% if content %}
@@ -11,7 +11,7 @@
 
       {% set show_blurbs = True %}
       {% set depth= 1 %}
-      {% include 'template-page-children.html' %}
+      {% include 'children.html' %}
     </article>
   </section>
 
@@ -19,10 +19,10 @@
   <section class="pt-3 p-md-3">
     <article class="content">
       <h1 id="main-page-header">{{ currentpage.name }}</h1>
-      <p class="blurb">{{ currentpage.blurb }}</p>
+      {% if currentpage.blurb != target.blurb %}<p class="blurb">{{ currentpage.blurb }}</p>{% endif %}
       {% set show_blurbs = True %}
       {% set depth= 1 %}
-      {% include 'template-page-children.html' %}
+      {% include 'children.html' %}
     </article>
   </section>
   {% endif %}

@@ -1,5 +1,10 @@
+---
+html: ledger_request.html
+parent: logging-and-data-management-methods.html
+blurb: サーバーに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。
+---
 # ledger_request
-[[ソース]<br>](https://github.com/ripple/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp "Source")
 
 `ledger_request`コマンドは、サーバーに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。これは、サーバーが直接接続しているピアの1つにそのレジャーが存在している場合にのみ機能します。場合によっては、レジャーを完全に取得するにはこのコマンドを繰り返し実行する必要があります。
 

@@ -1,3 +1,8 @@
+---
+html: offercreate.html
+parent: transaction-types.html
+blurb: Submit an order to exchange currency.
+---
 # OfferCreate
 
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")

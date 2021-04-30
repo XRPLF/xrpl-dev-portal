@@ -1,3 +1,8 @@
+---
+html: xrp-ledger-overview.html
+parent: introduction.html
+blurb: Get a quick and concise introduction to key features of the XRP Ledger.
+---
 # XRP Ledger Overview
 
 The **XRP Ledger** is an online system for payments, powered by a community without a central leader. Anyone can connect their computer to the peer-to-peer network that manages the ledger. The XRP Ledger is the home of **XRP**, a digital asset designed to bridge the world's many currencies. The XRP Ledger is one part of the developing _Internet of Value_: a world in which money moves the way information does today.

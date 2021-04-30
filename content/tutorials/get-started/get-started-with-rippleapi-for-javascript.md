@@ -1,3 +1,8 @@
+---
+html: get-started-with-rippleapi-for-javascript.html
+parent: get-started.html
+blurb: Build an entry-level JavaScript application for querying the XRP Ledger in Node.js.
+---
 # Get Started with RippleAPI for Node.js
 
 This tutorial guides you through the basics of building an XRP Ledger-connected application using [Node.js](http://nodejs.org/) and [RippleAPI](rippleapi-reference.html), a JavaScript API for accessing the XRP Ledger. You can also use RippleAPI [straight from your browser](get-started.html).

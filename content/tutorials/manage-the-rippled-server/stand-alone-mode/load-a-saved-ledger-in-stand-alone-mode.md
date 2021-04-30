@@ -1,3 +1,8 @@
+---
+html: load-a-saved-ledger-in-stand-alone-mode.html
+parent: use-stand-alone-mode.html
+blurb: Start in stand-alone mode from a specific saved ledger to test or replay transactions.
+---
 # Load a Saved Ledger in Stand-Alone Mode
 
 You can start a `rippled` server in [Stand-Alone Mode](rippled-server-modes.html) using a [historical ledger version](ledgers.html) that was previously saved to disk. For example, if your `rippled` server was previously synced with any XRP Ledger peer-to-peer network including [the production Mainnet, the Testnet, or the Devnet](parallel-networks.html), you can load any ledger version your server had available.

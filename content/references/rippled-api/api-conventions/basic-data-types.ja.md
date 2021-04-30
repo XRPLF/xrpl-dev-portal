@@ -1,3 +1,8 @@
+---
+html: basic-data-types.html
+parent: api-conventions.html
+blurb: さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。
+---
 # 基本的なデータ型
 
 さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。
@@ -22,7 +27,7 @@
 <!--{#_ #}-->
 
 ### ハッシュプレフィクス
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
 
 多くの場合、XRP Ledgerではオブジェクトのバイナリデータに4バイトのプレフィクスを付けてからハッシュを計算するため、異なるタイプのオブジェクトが同じバイナリフォーマットである場合でも、異なるハッシュが設定されます。既存の4バイトコードは、ASCIIでエンコードされた英字3文字の後に0バイトが続く構成となっています。
 

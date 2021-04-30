@@ -1,3 +1,9 @@
+---
+html: configure-peering.html
+parent: manage-the-rippled-server.html
+template: template-landing-children.html
+blurb: Configure how your server connects to the peer-to-peer network.
+---
 # Configure Peering
 
 The XRP Ledger's peer-to-peer protocol automatically manages peer connections in most cases. In some cases, you may want to manually adjust which peers your server connects to, to maximize your server's availability and connectivity with the rest of the network.

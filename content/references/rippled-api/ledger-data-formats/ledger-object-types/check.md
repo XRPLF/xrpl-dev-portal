@@ -1,12 +1,7 @@
 ---
 html: check.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
-blurb: A check that can be redeemed for money by its destination.
 parent: ledger-object-types.html
+blurb: A check that can be redeemed for money by its destination.
 ---
 # Check
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")

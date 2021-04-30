@@ -1,12 +1,7 @@
 ---
 html: amendments-object.html #amendments.html is taken by the concept page
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
-blurb: Singleton object with status of enabled and pending amendments.
 parent: ledger-object-types.html
+blurb: Singleton object with status of enabled and pending amendments.
 ---
 # Amendments
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")

@@ -1,3 +1,8 @@
+---
+html: peer-crawler.html
+parent: peer-port-methods.html
+blurb: Special API method for sharing network topology and status metrics.
+---
 # Peer Crawler
 
 The Peer Crawler is a special [peer port method](peer-port-methods.html) for reporting on the health and topology of the peer-to-peer network. This API method is available by default on a non-privileged basis through the [Peer Protocol](peer-protocol.html) port, which is also used for `rippled` servers' peer-to-peer communications about consensus, ledger history, and other necessary information.

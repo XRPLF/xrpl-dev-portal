@@ -1,3 +1,8 @@
+---
+html: escrowfinish.html
+parent: transaction-types.html
+blurb: Deliver escrowed XRP to recipient.
+---
 # EscrowFinish
 
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")

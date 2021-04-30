@@ -1,12 +1,7 @@
 ---
 html: ledgerhashes.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
-blurb: Lists of prior ledger versions' hashes for history lookup.
 parent: ledger-object-types.html
+blurb: Lists of prior ledger versions' hashes for history lookup.
 ---
 # LedgerHashes
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108 "Source")

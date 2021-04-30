@@ -1,3 +1,8 @@
+---
+html: xrp-ledger-overview.html
+parent: introduction.html
+blurb: XRP Ledgerの基本機能を簡単に紹介します。
+---
 # XRP Ledgerの概要
 
 **XRP Ledger**は、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。XRP Ledgerは**XRP**の土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために設計されたデジタル資産です。RippleはXRP Ledgerの開発を主導し、_「価値のインターネット」_（情報が移動するようにお金が移動する世界）の実現に向けて鍵となる役割を果たすと期待されるXRPを推進しています。

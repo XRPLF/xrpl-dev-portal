@@ -1,3 +1,8 @@
+---
+html: consensus_info.html
+parent: status-and-debugging-methods.html
+blurb: Get information about the state of consensus as it happens.
+---
 # consensus_info
 [[Source]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
 

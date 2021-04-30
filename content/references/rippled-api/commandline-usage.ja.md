@@ -1,3 +1,19 @@
+---
+html: commandline-usage.html
+parent: rippled-api.html
+blurb: rippledサーバーのコマンドライン使用オプションです。
+curated_anchors:
+    - name: 使用できるモード
+      anchor: "#使用できるモード"
+    - name: デーモンモードのオプション
+      anchor: "#デーモンモードのオプション"
+    - name: スタンドアロンモードのオプション
+      anchor: "#スタンドアロンモードのオプション"
+    - name: クライアントモードのオプション
+      anchor: "#クライアントモードのオプション"
+    - name: 単体テスト
+      anchor: "#単体テスト"
+---
 # rippledコマンドライン使用リファレンス
 
 `rippled`実行可能ファイルは、通常はXRP Ledgerを処理するデーモンとして実行されますが、他のモードでも実行できます。このページでは、コマンドラインから実行する場合に`rippled`に渡すことができるすべてのオプションを説明します。

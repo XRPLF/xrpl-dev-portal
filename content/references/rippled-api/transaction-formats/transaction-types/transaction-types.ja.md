@@ -1,3 +1,9 @@
+---
+html: transaction-types.html
+parent: transaction-formats.html
+blurb: トランザクションのタイプは、どういったタイプの操作を実行することが想定されているのかを示します。
+template: template-landing-children.html
+---
 # トランザクションのタイプ
 
 トランザクションのタイプ（`TransactionType`フィールド）は、トランザクションに関する最も基本的な情報です。トランザクションで、どういったタイプの操作を実行することが想定されているのかを示します。

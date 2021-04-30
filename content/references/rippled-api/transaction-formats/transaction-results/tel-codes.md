@@ -1,3 +1,8 @@
+---
+html: tel-codes.html
+parent: transaction-results.html
+blurb: tel codes indicate an error in the local server processing the transaction.
+---
 # tel Codes
 
 These codes indicate an error in the local server processing the transaction; it is possible that another server with a different configuration or load level could process the transaction successfully. They have numerical values in the range -399 to -300. The exact code for any given error is subject to change, so don't rely on it.

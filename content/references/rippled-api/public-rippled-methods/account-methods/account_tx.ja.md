@@ -1,3 +1,8 @@
+---
+html: account_tx.html
+parent: account-methods.html
+blurb: 指定したアカウントに関連するトランザクションのリストを取得します。
+---
 # account_tx
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
 

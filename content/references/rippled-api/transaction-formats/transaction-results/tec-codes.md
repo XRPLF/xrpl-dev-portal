@@ -1,3 +1,8 @@
+---
+html: tec-codes.html
+parent: transaction-results.html
+blurb: tec codes indicate that the transaction failed, but it was applied to a ledger to deduct the transaction cost.
+---
 # tec Codes
 
 These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](transaction-cost.html). They have numerical values in the range 100 to 199. Ripple recommends using the text code, not the numeric value.

@@ -1,3 +1,8 @@
+---
+html: online-deletion.html
+parent: ledger-history.html
+blurb: オンライン削除は古いトランザクションと状態の履歴を消去します。
+---
 # オンライン削除
 [[ソース]<br/>](https://github.com/ripple/rippled/blob/master/src/ripple/app/misc/SHAMapStoreImp.cpp "Source")
 

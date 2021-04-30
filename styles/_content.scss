@@ -12,6 +12,17 @@ h3 a:hover,
   color: $primary;
 }
 
+.curated-links a,
+.children-display a,
+a.card,
+.xrpl-footer a {
+  color: $white;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
 /* Content text styling ----------------------------------------------------- */
 
 .content {
@@ -75,6 +86,10 @@ h3 a:hover,
 .content a[title="Source"] {
   float: right;
   padding-left: 20px;
+}
+
+.content .children-display > ul > li {
+  margin-top: 24px;
 }
 
 

@@ -1,3 +1,8 @@
+---
+html: look-up-transaction-results.html
+parent: production-readiness.html
+blurb: 以前に送信したトランザクションの結果を確認します。
+---
 # トランザクションの結果の確認
 
 XRP Ledgerを効果的に使用するには、[トランザクション](transaction-basics.html)の結果を次のように把握することが重要です。トランザクションは成功したか？トランザクションは何を遂行したか？失敗した場合は、なぜか？

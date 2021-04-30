@@ -1,3 +1,8 @@
+---
+html: look-up-checks-by-recipient.html
+parent: use-checks.html
+blurb: Get a list of pending checks sent to an account.
+---
 # Look Up Checks by Recipient
 
 _Added by the [Checks amendment][]._

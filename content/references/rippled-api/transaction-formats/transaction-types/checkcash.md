@@ -1,3 +1,8 @@
+---
+html: checkcash.html
+parent: transaction-types.html
+blurb: Redeem a check.
+---
 # CheckCash
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CashCheck.cpp "Source")
 

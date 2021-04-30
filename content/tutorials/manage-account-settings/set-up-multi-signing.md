@@ -1,3 +1,8 @@
+---
+html: set-up-multi-signing.html
+parent: manage-account-settings.html
+blurb: Add a signer list to your account to enable multi-signing.
+---
 # Set Up Multi-Signing
 
 [Multi-signing](multi-signing.html) is one of three ways to authorize [transactions](transaction-basics.html) for the XRP Ledger, alongside signing with [regular keys and master keys](cryptographic-keys.html). You can configure your [address](accounts.html) to allow any combination of the three methods to authorize transactions.

@@ -1,3 +1,8 @@
+---
+html: configure-full-history.html
+parent: configure-rippled.html
+blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run.
+---
 # Configure Full History
 
 In its default configuration, the `rippled` server automatically deletes outdated history of XRP Ledger state and transactions as new ledger versions become available. This is sufficient for most servers, which do not need older history to know the current state and process transactions. However, it can be useful for the network if some servers provide as much history of the XRP Ledger as possible.

@@ -1,3 +1,13 @@
+---
+html: data-api.html
+parent: references.html
+blurb: RESTful interface to XRP Ledger analytics and historical data.
+curated_anchors:
+    - name: Methods
+      anchor: "#api-method-reference"
+    - name: API Conventions
+      anchor: "#api-conventions"
+---
 # Ripple Data API v2
 
 **Warning:** The Ripple Data API v2 is deprecated with no ongoing support. Please use the [`rippled` API](https://xrpl.org/rippled-api.html) instead.

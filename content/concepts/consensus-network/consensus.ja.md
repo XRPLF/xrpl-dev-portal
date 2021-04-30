@@ -1,3 +1,8 @@
+---
+html: consensus.html
+parent: consensus-network.html
+blurb: XRP Ledgerにおけるコンセンサスの役割について理解を深めましょう。
+---
 # コンセンサス
 
 _著者: Dave Cohen、David Schwartz、Arthur Britto_

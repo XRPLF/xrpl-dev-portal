@@ -1,9 +1,6 @@
 ---
 html: connect-your-rippled-to-the-xrp-test-net.html
-funnel: Build
-doc_type: Tutorials
-category: Manage the rippled Server
-subcategory: Configuration
+parent: configure-rippled.html
 blurb: Connect your rippled server to the test net to try out new features or test functionality with fake money.
 ---
 # Connect Your rippled to a Parallel Network

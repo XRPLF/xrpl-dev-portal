@@ -1,3 +1,8 @@
+---
+html: offline-account-setup.html
+parent: manage-account-settings.html
+blurb: 物理的に隔離されたオフラインのマシンを使用して暗号鍵を保管するXRP Ledgerアカウントを設定します。
+---
 # オフラインでのアカウント設定のチュートリアル
 
 きわめて安全な[署名構成](set-up-secure-signing.html)では、XRP Ledger[アカウント](accounts.html)の[暗号鍵](cryptographic-keys.html)をオフラインの物理的に隔離されたマシンに安全に保管します。この構成を設定すると、さまざまなトランザクションに署名して、署名済みトランザクションのみをオンラインコンピューターに転送し、秘密鍵をオンラインにいる不正使用者に見せることなくそれらのトランザクションをXRP Ledgerネットワークに送信できます。

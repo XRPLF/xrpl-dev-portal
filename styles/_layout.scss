@@ -1,3 +1,7 @@
+body {
+  position: relative; // Makes scrollspy work better
+}
+
 section {
   position: relative;
 }
@@ -156,7 +160,17 @@ section {
     @include media-breakpoint-down(md) {
       padding: 20px;
     }
+
+    .card-body {
+      padding: 8px;
+      padding-bottom: 24px;
+    }
   }
+
+  &.section-hero {
+    padding-left: 0;
+  }
+
 }
 
 /* Grid Box Vertical numbers ------------------------------------------------ */

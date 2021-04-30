@@ -1,5 +1,10 @@
+---
+html: consensus_info.html
+parent: status-and-debugging-methods.html
+blurb: デバッグのためのコンセンサスプロセスに関する情報を返します。
+---
 # consensus_info
-[[ソース]<br>](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
 
 `consensus_info`メソッドは、デバッグのための[コンセンサスプロセス](consensus.html)に関する情報を返します。
 

@@ -1,3 +1,8 @@
+---
+html: configure-statsd.html
+parent: configure-rippled.html
+blurb: Monitor your rippled server with StatsD metrics.
+---
 # Configure StatsD
 
 `rippled` can export health and behavioral information about itself in [StatsD](https://github.com/statsd/statsd) format. Those metrics can be consumed and visualized through [`rippledmon`](https://github.com/ripple/rippledmon) or any other collector that accepts StatsD formatted metrics.

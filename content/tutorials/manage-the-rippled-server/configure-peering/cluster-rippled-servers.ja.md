@@ -1,3 +1,8 @@
+---
+html: cluster-rippled-servers.html
+parent: configure-peering.html
+blurb: サーバーのグループで処理を分担するように設定して効率化します。
+---
 # rippledサーバーのクラスター化
 
 1つのデータセンターで複数の`rippled`サーバーを稼働している場合は、これらのサーバーを[クラスター](clustering.html)に構成して、効率を最大化できます。クラスター構成の設定は次のとおりです。

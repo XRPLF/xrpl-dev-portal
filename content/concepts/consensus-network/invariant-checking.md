@@ -1,3 +1,8 @@
+---
+html: invariant-checking.html
+parent: consensus-network.html
+blurb: Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active.
+---
 # Invariant Checking
 
 Invariant checking is a safety feature of the XRP Ledger. It consists of a set of checks, separate from normal transaction processing, that guarantee that certain _invariants_ hold true across all transactions.

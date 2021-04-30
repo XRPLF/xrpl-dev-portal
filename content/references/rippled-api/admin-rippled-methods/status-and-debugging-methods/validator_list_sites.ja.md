@@ -1,5 +1,10 @@
+---
+html: validator_list_sites.html
+parent: status-and-debugging-methods.html
+blurb: バリデータリストを処理するサイトのステータス情報を返します。
+---
 # validator_list_sites
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")
 
 `validator_list_sites`コマンドは、バリデータリストを処理するサイトのステータス情報を返します。[新規: rippled 0.80.1][]
 

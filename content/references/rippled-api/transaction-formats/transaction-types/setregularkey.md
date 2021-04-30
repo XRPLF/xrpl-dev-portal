@@ -1,3 +1,8 @@
+---
+html: setregularkey.html
+parent: transaction-types.html
+blurb: Add, remove, or modify an account's regular key pair.
+---
 # SetRegularKey
 
 [[Source]](https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")

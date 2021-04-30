@@ -1,3 +1,8 @@
+---
+html: run-rippled-as-a-validator.html
+parent: configure-rippled.html
+blurb: Have your server vote on the consensus ledger.
+---
 # Run rippled as a Validator
 
 A [`rippled` server](the-rippled-server.html) running in [validator mode](rippled-server-modes.html) does everything a stock server does:
@@ -237,7 +242,7 @@ To provide domain verification:
 
 1. Choose a domain name you own that you want to be publicly associated with your validator. As a precaution against DDoS attempts, your domain name should not resolve to the ip address of your validator.
 
-2. Serve an [`xrp-ledger.toml`](xrp-ledger-toml.html) file at your domain, and complete the [domain verification](xrp-ledger-toml.html#domain-verification) steps. Once you have completed these steps, your validator should be visible to the livenet [explorer](https://livenet.xrpl.org/network/validators) or any other site that monitors the validator network and supports decetralized domain verification. 
+2. Serve an [`xrp-ledger.toml`](xrp-ledger-toml.html) file at your domain, and complete the [domain verification](xrp-ledger-toml.html#domain-verification) steps. Once you have completed these steps, your validator should be visible to the livenet [explorer](https://livenet.xrpl.org/network/validators) or any other site that monitors the validator network and supports decetralized domain verification.
 
 3. Share your validator's public key with the public, especially other `rippled` operators. For example, you can share your validator's public key on your website, on social media, in the [XRPChat community forum](https://www.xrpchat.com/), or in a press release.
 

@@ -1,12 +1,7 @@
 ---
 html: paychannel.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
-blurb: A channel for asynchronous XRP payments.
 parent: ledger-object-types.html
+blurb: A channel for asynchronous XRP payments.
 ---
 # PayChannel
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L141-L155 "Source")

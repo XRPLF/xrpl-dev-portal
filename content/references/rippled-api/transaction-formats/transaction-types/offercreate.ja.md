@@ -1,6 +1,11 @@
+---
+html: offercreate.html
+parent: transaction-types.html
+blurb: OfferCreateは通貨の交換を行う意図を定義するもので、配置時に完全に履行されていない場合はOfferオブジェクトを作成します。
+---
 # OfferCreate
 
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")
 
 OfferCreateトランザクションは、効果的な[指値注文](http://en.wikipedia.org/wiki/limit_order)です。OfferCreateは通貨の交換を行う意図を定義するもので、配置時に完全に履行されていない場合は[Offerオブジェクト](offer.html)を作成します。オファーは部分的に履行することもできます。
 

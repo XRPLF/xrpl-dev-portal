@@ -1,10 +1,6 @@
 ---
 html: paymentchannelfund.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Transaction Formats
-subcategory: Transaction Types
+parent: transaction-types.html
 blurb: Payment ChannelにXRPを追加します。
 ---
 # PaymentChannelFund

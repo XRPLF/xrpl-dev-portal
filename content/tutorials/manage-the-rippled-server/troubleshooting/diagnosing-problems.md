@@ -1,3 +1,8 @@
+---
+html: diagnosing-problems.html
+parent: troubleshoot-the-rippled-server.html
+blurb: Collect information to identify the cause of problems.
+---
 # Diagnosing Problems with rippled
 
 If you are having problems with `rippled`, the first step is to collect more information to accurately characterize the problem. From there, it can be easier to figure out a root cause and a fix.

@@ -1,3 +1,8 @@
+---
+html: understanding-log-messages.html
+parent: troubleshoot-the-rippled-server.html
+blurb: デバッグログの警告メッセージとエラーメッセージを解釈して対応します。
+---
 # ログメッセージについて
 
 以下のセクションでは、[`rippled`サーバー](the-rippled-server.html)のデバッグログに出力される最も一般的なログメッセージタイプとその解釈を説明します。

@@ -1,3 +1,8 @@
+---
+html: consensus-research.html
+parent: consensus-network.html
+blurb: Scholarly articles on consensus algorithms and related research.
+---
 # Consensus Research
 
 Ripple researches both the theoretical and the practical limits of the XRP Ledger's consensus protocols, and explores other ideas in the same space. The following table lists scholarly articles published by Ripple:

@@ -1,10 +1,15 @@
+---
+html: setfee.html
+parent: pseudo-transaction-types.html
+blurb: 手数料投票の結果としてトランザクションコストまたはアカウント準備金の要件が変更されます。
+---
 # SetFee
 
 [手数料投票](fee-voting.html)の結果として[トランザクションコスト](transaction-cost.html)または[アカウント準備金](reserves.html)の要件が変更されます。
 
 **注記:** 疑似トランザクションは送信できませんが、レジャーの処理時に疑似トランザクションが見つかることがあります。
 
-```
+```json
 {
     "Account": "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
     "BaseFee": "000000000000000A",

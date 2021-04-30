@@ -1,3 +1,8 @@
+---
+html: basic-data-types.html
+parent: api-conventions.html
+blurb: Format and meaning of fundamental data types like addresses, ledger index, and currency codes.
+---
 # Basic Data Types
 
 Different types of objects are uniquely identified in different ways:

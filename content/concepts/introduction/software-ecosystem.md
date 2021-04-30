@@ -1,3 +1,8 @@
+---
+html: software-ecosystem.html
+parent: introduction.html
+blurb: Get an overview of what XRP Ledger software is out there and how it fits together.
+---
 # Software Ecosystem
 
 The XRP Ledger is home to a deep, layered ecosystem of software projects powering and enabling an Internet of Value. It's impossible to list every project, tool, and business that interacts with the XRP Ledger, so this page only lists a few categories and highlights some central projects that are documented here on [xrpl.org](https://xrpl.org). <!-- SPELLING_IGNORE: xrpl -->

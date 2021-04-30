@@ -1,3 +1,8 @@
+---
+html: depositpreauth.html
+parent: transaction-types.html
+blurb: Preauthorizes an account to send payments to this one.
+---
 # DepositPreauth
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/DepositPreauth.cpp "Source")
 

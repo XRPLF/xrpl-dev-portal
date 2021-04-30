@@ -1,3 +1,8 @@
+---
+html: download_shard.html
+parent: logging-and-data-management-methods.html
+blurb: Download a specific shard of ledger history.
+---
 # download_shard
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp "Source")
 

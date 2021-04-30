@@ -1,3 +1,8 @@
+---
+html: set-up-secure-signing.html
+parent: production-readiness.html
+blurb: Set up an environment where you can submit transactions securely.
+---
 # Set Up Secure Signing
 
 To submit [transactions](transaction-basics.html) to the XRP Ledger, you need a way to digitally sign them without compromising the security of your [secret keys](cryptographic-keys.html). (If others gain access to your secret keys, they have as much control over your accounts as you do, and can steal or destroy all your money.) This page summarizes how to set up such an environment so you can sign transactions securely.
@@ -75,9 +80,9 @@ This configuration uses a client library in the programming language you are usi
 
 ### Security Best Practices for Signing Libraries
 
-To optimize the security of your signing library: 
+To optimize the security of your signing library:
 
-* Make sure the signing library you use has properly and securely implemented its signing algorithm(s). For example, if the library uses the default ECDSA algorithm, it should also use deterministic nonces as described in [RFC-6979](https://tools.ietf.org/html/rfc6979). 
+* Make sure the signing library you use has properly and securely implemented its signing algorithm(s). For example, if the library uses the default ECDSA algorithm, it should also use deterministic nonces as described in [RFC-6979](https://tools.ietf.org/html/rfc6979).
 
     All of the published libraries listed above follow industry best practices.
 
@@ -89,7 +94,7 @@ To optimize the security of your signing library:
 
 ### Local Signing Example
 
-Here are examples of how to sign transaction instructions locally using the following languages and libraries: 
+Here are examples of how to sign transaction instructions locally using the following languages and libraries:
 
 * **JavaScript** / **TypeScript** - [`ripple-lib`](https://github.com/ripple/ripple-lib)  
 

@@ -1,3 +1,8 @@
+---
+html: trust-lines-and-issuing.html
+parent: issued-currencies.html
+blurb: Learn about the properties and rationale of trust lines.
+---
 # Trust Lines and Issuing
 
 [Issued currencies](issued-currencies.html) in the XRP Ledger often represent value held by _gateways_ in the world outside the XRP Ledger. The address that issues those funds in the XRP Ledger is expected to pay the balance back, outside of the XRP Ledger, when users redeem their XRP Ledger balances by returning them to the issuer.

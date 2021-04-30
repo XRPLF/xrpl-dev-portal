@@ -1,3 +1,8 @@
+---
+html: become-an-xrp-ledger-gateway.html
+parent: xrp-ledger-businesses.html
+blurb: Gateways are the businesses that link the XRP Ledger to the rest of the world. This tutorial demonstrates how an existing online financial institution can expand to act as a gateway in the the XRP Ledger.
+---
 # Become an XRP Ledger Gateway
 
 **Gateways** are the businesses that link the XRP Ledger to the rest of the world. An existing online financial institution can expand to act as a gateway in the the XRP Ledger. By becoming an XRP Ledger gateway, a financial services business can gain several advantages:

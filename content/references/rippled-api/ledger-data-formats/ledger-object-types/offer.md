@@ -1,12 +1,7 @@
 ---
 html: offer.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
-blurb: An order to make a currency trade.
 parent: ledger-object-types.html
+blurb: An order to make a currency trade.
 ---
 # Offer
 [[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")

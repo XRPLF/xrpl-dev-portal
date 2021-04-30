@@ -1,3 +1,8 @@
+---
+html: get-started-with-rippleapi-for-javascript.html
+parent: get-started.html
+blurb: XRP Ledgerに照会するエントリーレベルのJavaScriptアプリケーションを構築します。
+---
 # RippleAPI入門ガイド
 
 このチュートリアルでは、[Node.js](http://nodejs.org/)と[RippleAPI](rippleapi-reference.html)（XRP LedgerにアクセスするためのJavaScript API）を使用して、XRP Ledgerに接続されるアプリケーションを開発するための基本事項を説明します。
@@ -95,7 +100,7 @@ yarn
 ```
 warning eslint > file-entry-cache > flat-cache > circular-json@0.3.3: CircularJSON is in maintenance only, flatted is its successor.
 
-npm WARN optional Skipping failed optional dependency /chokidar/fsevents: 
+npm WARN optional Skipping failed optional dependency /chokidar/fsevents:
 
 npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.6
 ```
@@ -144,7 +149,7 @@ done and disconnected.
 ### スクリプトの冒頭
 
 ```
-'use strict'; 
+'use strict';
 const RippleAPI = require('ripple-lib').RippleAPI;
 ```
 
@@ -190,14 +195,14 @@ Promiseは、自身の非同期動作を完了すると、渡されたコール�
 
 ```
   /* begin custom code ------------------------------------ */
-  const myAddress = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'; 
+  const myAddress = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn';
 
-  console.log('getting account info for', myAddress); 
-  return api.getAccountInfo(myAddress); 
+  console.log('getting account info for', myAddress);
+  return api.getAccountInfo(myAddress);
 
 }).then(info => {
-  console.log(info); 
-  console.log('getAccountInfo done'); 
+  console.log(info);
+  console.log('getAccountInfo done');
 
   /* end custom code -------------------------------------- */
 ```
@@ -217,9 +222,9 @@ Promiseは、自身の非同期動作を完了すると、渡されたコール�
 
 ```
 }).then(() => {
-  return api.disconnect(); 
+  return api.disconnect();
 }).then(() => {
-  console.log('done and disconnected.'); 
+  console.log('done and disconnected.');
 }).catch(console.error);
 ```
 

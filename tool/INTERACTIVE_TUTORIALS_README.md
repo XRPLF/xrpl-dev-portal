@@ -25,9 +25,7 @@ An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page
 1. Set page properties, either in the config file or the page's frontmatter. The `interactive_steps` Dactyl filter gives you access to the functions you use to demarcate the interactive bits in your markdown file. The `include_code` filter is optional, but can be useful for pulling code samples out of another file. Most of the time, you'll also want to include ripple-lib and its dependencies as well; you can have the templates handle that for you by setting the field `embed_ripple_lib: true`. For example:
 
         html: use-tickets.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Manage Account Settings
+        parent: manage-account-settings.html
         blurb: Use Tickets to send a transaction outside of normal Sequence order.
         embed_ripple_lib: true
         filters:

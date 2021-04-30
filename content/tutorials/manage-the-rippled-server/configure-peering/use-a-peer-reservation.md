@@ -1,3 +1,8 @@
+---
+html: use-a-peer-reservation.html
+parent: configure-peering.html
+blurb: Set up a more reliable connection to a specific peer using a peer reservation.
+---
 # Use a Peer Reservation
 
 A [peer reservation][] is a setting that makes a `rippled` server always accept connections from a peer matching the reservation. This page describes how to use peer reservations to keep a consistent peer-to-peer connection between two servers, with the cooperation of the administrators of both servers.

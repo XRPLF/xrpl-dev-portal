@@ -1,3 +1,8 @@
+---
+html: payment-channels.html
+parent: payment-types.html
+blurb: Payment Channelは、少額の単位に分割可能な高速な非同期のXRPペイメントを送信し、後日決済されるようにします。
+---
 # Payment Channel
 
 Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。

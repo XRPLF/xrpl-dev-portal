@@ -1,3 +1,8 @@
+---
+html: freezes.html
+parent: issued-currencies.html
+blurb: Freezes can suspend trading of issued currencies for compliance purposes.
+---
 # Freezing Issued Currencies
 
 XRP is not an issued currency. XRP is the only native asset on the XRP Ledger and is required in order to conduct transactions on the XRP Ledger. XRP is counterparty free, meaning that when someone holds XRP, they are not holding a liability, they are holding the actual currency, XRP. Due to this fact, _**<u>XRP CANNOT be frozen by any entity or individual</u>**_.

@@ -1,3 +1,8 @@
+---
+html: paths.html
+parent: issued-currencies.html
+blurb: Payments of issued currencies must traverse paths of connected users and order books.
+---
 # Paths
 
 In the XRP Ledger, paths define a way for [issued currency](issued-currencies-overview.html) payments to flow through intermediary steps on their way from sender to receiver. Paths enable [cross-currency payments](cross-currency-payments.html) by connecting sender and receiver through orders in the XRP Ledger's [decentralized exchange](decentralized-exchange.html). Paths also enable complex settlement of offsetting debts.

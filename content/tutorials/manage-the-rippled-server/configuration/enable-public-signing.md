@@ -1,3 +1,8 @@
+---
+html: enable-public-signing.html
+parent: configure-rippled.html
+blurb: Allow others to use your server to sign transactions. (Not recommended)
+---
 # Enable Public Signing
 
 By default, the signing methods for [`rippled`](the-rippled-server.html) are limited to [administrative connections](admin-rippled-methods.html). If you want to allow signing methods to be used as public API methods (like with versions of `rippled` before v1.1.0), you can enable it with a configuration change. [New in: rippled 1.1.0][]

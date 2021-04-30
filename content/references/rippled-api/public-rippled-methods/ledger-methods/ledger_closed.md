@@ -1,3 +1,8 @@
+---
+html: ledger_closed.html
+parent: ledger-methods.html
+blurb: Get the latest closed ledger version.
+---
 # ledger_closed
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerClosed.cpp "Source")
 

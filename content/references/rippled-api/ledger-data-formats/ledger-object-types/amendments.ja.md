@@ -1,15 +1,10 @@
 ---
 html: amendments-object.html #amendments.html is taken by the concept page
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
-blurb: 有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。
 parent: ledger-object-types.html
+blurb: 有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。
 ---
 # Amendments
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
 
 `Amendments`オブジェクトタイプには、現在アクティブな[Amendment](amendments.html)のリストが含まれています。各レジャーバージョンには**最大で1つの** `Amendments`オブジェクトが含まれています。
 

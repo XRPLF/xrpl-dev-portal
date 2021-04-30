@@ -1,3 +1,8 @@
+---
+html: enableamendment.html
+parent: pseudo-transaction-types.html
+blurb: Enable a change in transaction processing.
+---
 # EnableAmendment
 
 An `EnableAmendment` [pseudo-transaction](pseudo-transaction-types.html) marks a change in status of an [amendment](amendments.html) to the XRP Ledger protocol, including:

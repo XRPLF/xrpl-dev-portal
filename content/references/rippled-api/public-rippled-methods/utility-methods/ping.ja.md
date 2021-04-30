@@ -1,5 +1,10 @@
+---
+html: ping.html
+parent: utility-methods.html
+blurb: 確認応答を返します。これにより、接続のステータスと遅延をテストできます。
+---
 # ping
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
 
 `ping`コマンドは確認応答を返します。これにより、クライアントは接続のステータスと遅延をテストできます。
 

@@ -1,3 +1,8 @@
+---
+html: build-run-rippled-macos.html
+parent: install-rippled.html
+blurb: macOSでrippledを自分でコンパイルします。
+---
 # macOSでのrippledの構築と実行
 
 [`rippled`](the-rippled-server.html)の本番環境にmacOSプラットフォームを使用することは推奨されていません。本番環境には、最高レベルの品質管理とテストを経た、[Ubuntuプラットフォーム](install-rippled-on-ubuntu-with-alien.html)のご使用をご検討ください。

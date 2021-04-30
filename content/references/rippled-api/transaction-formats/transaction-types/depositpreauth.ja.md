@@ -1,5 +1,10 @@
+---
+html: depositpreauth.html
+parent: transaction-types.html
+blurb: DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。
+---
 # DepositPreauth
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/DepositPreauth.cpp "Source") <!--{# TODO: change from develop to master when 1.1.0 is released #}-->
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/DepositPreauth.cpp "Source")
 
 _[DepositPreauth Amendment][]が必要です。_
 

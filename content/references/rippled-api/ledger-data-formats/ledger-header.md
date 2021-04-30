@@ -1,3 +1,8 @@
+---
+html: ledger-header.html
+parent: ledger-data-formats.html
+blurb: A unique header that describes the contents of a ledger version.
+---
 # Ledger Header
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
 

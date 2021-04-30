@@ -1,8 +1,6 @@
 ---
 html: monitor-incoming-payments-with-websocket.html
-funnel: Build
-doc_type: Tutorials
-category: Get Started
+parent: get-started.html
 blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
 filters:
     - interactive_steps

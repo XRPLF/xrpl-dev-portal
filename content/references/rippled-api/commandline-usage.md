@@ -1,3 +1,19 @@
+---
+html: commandline-usage.html
+parent: rippled-api.html
+blurb: Commandline usage options for the rippled server.
+curated_anchors:
+    - name: Available Modes
+      anchor: "#available-modes"
+    - name: Daemon Mode Options
+      anchor: "#daemon-mode-options"
+    - name: Stand-Alone Mode Options
+      anchor: "#stand-alone-mode-options"
+    - name: Client Mode Options
+      anchor: "#client-mode-options"
+    - name: Unit Tests
+      anchor: "#unit-tests"
+---
 # rippled Commandline Usage Reference
 
 The `rippled` executable usually runs as a daemon that powers the XRP Ledger, although it can also run in other modes. This page describes all the options you can pass to `rippled` when running it from the command line.

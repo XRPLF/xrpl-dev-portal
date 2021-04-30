@@ -12,31 +12,26 @@
 
     {% set doc_types = [] %}
     {% set flag_n = cycler(* range(1,99)) %}
-    {% for page in pages %}
-      {% if page.doc_type is defined and page.doc_type not in doc_types %}
-        {% set doc_type_top = pages|selectattr('doc_type', 'defined_and_equalto', page.doc_type)|first %}
-        {% set doc_type_name = doc_type_top.name %}
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title"><a href="{{doc_type_top.html}}">{{doc_type_name}}</a></h3>
-            </div><!--/.card-header-->
-            <div class="card-body">
-              {% if page.blurb is defined %}
-                <p class="blurb">{{page.blurb}}</p>
-              {% endif %}
-              {% set parent_page = doc_type_top %}
-              {% set depth = 1.5 %}
-              {% include 'template-page-children.html' %}
-            </div><!--/.card-body-->
-            <div class="card-footer">
-              <div class="readmore">
-                <a class="btn btn-outline-secondary" href="{{doc_type_top.html}}">{% trans %}View All {{doc_type_name}}{% endtrans %}</a>
-              </div>
-            </div><!--/.card-footer-->
-          </div><!--/.card-->
-
-        {% set _ = doc_types.append(page.doc_type) %}
-      {% endif %}
+    {% for page in currentpage.children %}
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          {% if page.blurb is defined %}
+            <p class="blurb">{{page.blurb}}</p>
+          {% endif %}
+          {% set parent_html = page.html %}
+          {% set parent_name = page.name %}
+          {% set depth = 1 %}
+          {% include 'children.html' %}
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <div class="readmore">
+            <a class="btn btn-outline-secondary" href="{{page.html}}">{% if page.cta_text %}{{page.cta_text}}{% else %}{% trans %}View All {{parent_name}}{% endtrans %}{% endif %}</a>
+          </div>
+        </div><!--/.card-footer-->
+      </div><!--/.card-->
     {% endfor %}
 
   </section>
@@ -45,9 +40,9 @@
     <h2 id="full-doc-index">{% trans %}Full Documentation Index{% endtrans %}</h2>
     <div class="row">
       <div class="col-md-8">
-        {% set parent_page = currentpage %}
+        {% set parent_html = currentpage.html %}
         {% set depth = 5 %}
-        {% include 'template-page-children.html' %}
+        {% include 'children.html' %}
       </div>
     </div>
   </section>

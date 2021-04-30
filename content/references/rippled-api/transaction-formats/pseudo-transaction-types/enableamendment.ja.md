@@ -1,3 +1,8 @@
+---
+html: enableamendment.html
+parent: pseudo-transaction-types.html
+blurb: トランザクション処理を変更するAmendmentプロセスの進行状況を追跡します。
+---
 # EnableAmendment
 
 トランザクション処理を変更する[Amendmentプロセス](amendments.html#amendmentプロセス)の進行状況を追跡します。この疑似トランザクションは、提案されたAmendmentが多数の承認を獲得したか否かや、Amendmentの有効化の状況を示します。

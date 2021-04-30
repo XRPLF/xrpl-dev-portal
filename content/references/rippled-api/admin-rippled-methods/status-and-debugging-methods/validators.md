@@ -1,3 +1,8 @@
+---
+html: validators.html
+parent: status-and-debugging-methods.html
+blurb: Get information about the current validators.
+---
 # validators
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
 

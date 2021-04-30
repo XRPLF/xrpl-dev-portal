@@ -1,3 +1,8 @@
+---
+html: account_objects.html
+parent: account-methods.html
+blurb: アカウントが所有するすべてのオブジェクトを返します。
+---
 # account_objects
 [[ソース]](https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 

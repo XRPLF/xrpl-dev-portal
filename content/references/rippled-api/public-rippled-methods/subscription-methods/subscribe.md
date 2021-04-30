@@ -1,3 +1,8 @@
+---
+html: subscribe.html
+parent: subscription-methods.html
+blurb: Listen for updates about a particular subject.
+---
 # subscribe
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp "Source")
 

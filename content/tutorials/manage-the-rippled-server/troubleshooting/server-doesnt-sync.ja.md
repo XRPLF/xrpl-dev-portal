@@ -1,3 +1,8 @@
+---
+html: server-doesnt-sync.html
+parent: troubleshoot-the-rippled-server.html
+blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
+---
 # rippledサーバーが同期しない
 
 このページでは、[`rippled`サーバー](the-rippled-server.html)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](rippled-server-states.html)のままになっている場合の原因について説明します。（サーバーが起動中または起動直後にクラッシュした場合は、[サーバーが起動しない](server-wont-start.html)を参照してください。）

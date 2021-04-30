@@ -1,3 +1,8 @@
+---
+html: configure-history-sharding.html
+parent: configure-rippled.html
+blurb: 履歴XRPレジャーデータのシャードを保存するようにサーバーを設定します。
+---
 # 履歴シャーディングの設定
 
 [履歴シャーディング](history-sharding.html)では、各サーバーで完全な履歴を保管することなく、履歴XRP Ledgerデータを保存できます。デフォルトでは`rippled`サーバーは履歴シャードを保管しません。

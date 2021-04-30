@@ -1,3 +1,8 @@
+---
+html: ledger_cleaner.html
+parent: logging-and-data-management-methods.html
+blurb: Configure the ledger cleaner service to check for corrupted data.
+---
 # ledger_cleaner
 [[Source]](https://github.com/ripple/rippled/blob/df54b47cd0957a31837493cd69e4d9aade0b5055/src/ripple/rpc/handlers/LedgerCleaner.cpp "Source")
 

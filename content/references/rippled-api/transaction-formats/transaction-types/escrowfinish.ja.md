@@ -1,3 +1,8 @@
+---
+html: escrowfinish.html
+parent: transaction-types.html
+blurb: 保留中の支払いから受取人へXRPを送金します。
+---
 # EscrowFinish
 
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")

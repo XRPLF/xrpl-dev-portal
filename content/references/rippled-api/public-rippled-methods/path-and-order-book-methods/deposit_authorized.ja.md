@@ -1,3 +1,8 @@
+---
+html: deposit_authorized.html
+parent: path-and-order-book-methods.html
+blurb: あるアカウントに別のアカウントへ支払を直接送金する権限があるかどうかを示します。
+---
 # deposit_authorized
 [[ソース]](https://github.com/ripple/rippled/blob/817d2339b8632cb2f97d3edd6f7af33aa7631744/src/ripple/rpc/handlers/DepositAuthorized.cpp "Source")
 

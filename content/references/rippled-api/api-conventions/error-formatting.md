@@ -1,3 +1,8 @@
+---
+html: error-formatting.html
+parent: api-conventions.html
+blurb: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces.
+---
 # Error Formatting
 
 It is impossible to list all the possible ways an error can occur. Some may occur in the transport layer (for example, loss of network connectivity), in which case the results vary depending on what client and transport you are using. However, if the `rippled` server successfully receives your request, it tries to respond in a standardized error format.

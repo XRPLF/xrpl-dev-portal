@@ -1,5 +1,10 @@
+---
+html: feature.html
+parent: status-and-debugging-methods.html
+blurb: Amendmentに関してこのサーバーが認識している情報を返します。
+---
 # feature
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
 `feature`コマンドは、[Amendment](amendments.html)に関してこのサーバーが認識している情報（Amendmentが有効であるかどうか、サーバーが[Amendmentプロセス](amendments.html#amendmentプロセス)でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。[新規: rippled 0.31.0][]
 

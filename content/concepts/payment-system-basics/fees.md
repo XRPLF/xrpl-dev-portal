@@ -1,3 +1,8 @@
+---
+html: fees.html
+parent: payment-system-basics.html
+blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
+---
 # Fees (Disambiguation)
 
 The XRP Ledger is a decentralized ledger, secured by cryptography and powered by a distributed peer-to-peer network of servers. This means that no one party, not even Ripple, can require a fee for access to the network.

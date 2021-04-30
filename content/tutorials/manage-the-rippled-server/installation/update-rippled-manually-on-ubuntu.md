@@ -1,3 +1,8 @@
+---
+html: update-rippled-manually-on-ubuntu.html
+parent: install-rippled.html
+blurb: Manually update rippled on Ubuntu Linux.
+---
 # Update Manually on Ubuntu or Debian
 
 This page describes how to update manually to the latest release of `rippled` on Ubuntu Linux. These instructions assume you have already [installed `rippled` using the native package](install-rippled-on-ubuntu.html). Ripple recommends setting up [automatic updates](update-rippled-automatically-on-linux.html) instead, where possible.

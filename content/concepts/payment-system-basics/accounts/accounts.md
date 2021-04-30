@@ -1,3 +1,8 @@
+---
+html: accounts.html
+parent: payment-system-basics.html
+blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP.
+---
 # Accounts
 
 An "Account" in the XRP Ledger represents a holder of XRP and a sender of [transactions](transaction-formats.html). The core elements of an account are:

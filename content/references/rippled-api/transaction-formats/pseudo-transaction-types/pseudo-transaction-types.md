@@ -1,3 +1,9 @@
+---
+html: pseudo-transaction-types.html
+parent: transaction-formats.html
+blurb: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger.
+template: template-landing-children.html
+---
 # Pseudo-Transactions
 
 Pseudo-transactions are never submitted by users, nor [propagated through the network](peer-protocol.html). Instead, a server may choose to inject pseudo-transactions in a proposed ledger directly according to specific protocol rules. If enough servers inject an identical pseudo-transaction for it to be approved by the [consensus process](consensus.html), then the pseudo-transaction becomes included in the ledger, and appears in ledger data thereafter.

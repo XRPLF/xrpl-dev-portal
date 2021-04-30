@@ -1,3 +1,8 @@
+---
+html: checkcancel.html
+parent: transaction-types.html
+blurb: Cancel a check.
+---
 # CheckCancel
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelCheck.cpp "Source")
 

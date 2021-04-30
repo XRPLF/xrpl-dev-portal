@@ -1,3 +1,8 @@
+---
+html: trust-lines-and-issuing.html
+parent: issued-currencies.html
+blurb: トラストラインの特性と根本原理について説明します。
+---
 # トラストラインと発行
 
 XRP Ledgerの[発行済み通貨](issued-currencies.html)は、XRP Ledger外部で _ゲートウェイ_ が保有する価値をしばしば表します。ユーザーがXRP Ledgerの残高をイシュアーに返却して清算するときには、XRP Ledger内でこれらの資金を発行するアドレスが、XRP Ledger外部で残高を払い戻すことが期待されます。

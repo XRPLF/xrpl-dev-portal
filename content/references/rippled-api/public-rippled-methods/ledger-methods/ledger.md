@@ -1,3 +1,8 @@
+---
+html: ledger.html # Watch carefully for clashes w/ this filename
+parent: ledger-methods.html
+blurb: Get info about a ledger version.
+---
 # ledger
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
 

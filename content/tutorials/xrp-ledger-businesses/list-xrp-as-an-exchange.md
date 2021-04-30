@@ -1,3 +1,8 @@
+---
+html: list-xrp-as-an-exchange.html
+parent: xrp-ledger-businesses.html
+blurb: Run a digital asset exchange? Follow these steps to add XRP.
+---
 # List XRP as an Exchange
 
 This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at _custodial exchanges_ that holds fund on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of assets.

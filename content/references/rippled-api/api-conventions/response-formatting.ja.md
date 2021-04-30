@@ -1,3 +1,8 @@
+---
+html: response-formatting.html
+parent: api-conventions.html
+blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスの応答のフォーマットとその応答に含まれるフィールド。
+---
 # 応答フォーマット
 
 `rippled` APIからの応答のフォーマットは、メソッドが呼び出されたインターフェイス（WebSocket、JSON-RPC、コマンドライン）に応じて多少異なります。コマンドラインインターフェイスがJSON-RPCを呼び出すため、コマンドラインインターフェイスとJSON-RPCインターフェイスは同じフォーマットを使用します。

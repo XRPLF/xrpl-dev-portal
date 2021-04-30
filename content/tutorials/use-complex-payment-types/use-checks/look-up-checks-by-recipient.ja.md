@@ -1,3 +1,8 @@
+---
+html: look-up-checks-by-recipient.html
+parent: use-checks.html
+blurb: 特定のアドレスで受信されるすべてのCheckのリストを取得する。
+---
 # 受取人に基づくCheckの検索
 
 _[Checks Amendment][]が必要です。_

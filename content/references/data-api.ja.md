@@ -1,3 +1,13 @@
+---
+html: data-api.html
+parent: references.html
+blurb: XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。
+curated_anchors:
+    - name: APIメソッドリファレンス
+      anchor: "#apiメソッドリファレンス"
+    - name: APIの規則
+      anchor: "#apiの規則"
+---
 # Ripple Data API v2
 
 **警告:** Ripple Data API v2は廃止されました。代わりに[`rippled` API](https://xrpl.org/rippled-api.html)を使って下さい。
@@ -101,7 +111,7 @@ Data API v2は、以下のメソッドを備えたREST APIです。
 
 
 ## Get Ledger
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getLedger.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getLedger.js "Source")
 
 ハッシュ、インデックス、または日付を指定して特定のレジャーを取得するか、または最新の検証済みレジャーを取得します。
 
@@ -173,7 +183,7 @@ GET /v2/ledgers/3170DA37CE2B7F045F889594CBC323D88686D2E90E8FFD2BBCD9BAD12E416DB5
 
 
 ## Get Ledger Validations
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getLedger.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getLedger.js "Source")
 
 特定のレジャーハッシュについて記録されたすべての検証を取得します。このデータセットには、検証済みレジャーチェーン外部のレジャーバージョンが含まれます。_（新規: [v2.2.0][]）_
 
@@ -263,7 +273,7 @@ GET /v2/ledgers/A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7
 
 
 ## Get Ledger Validation
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getLedger.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getLedger.js "Source")
 
 特定のバリデータの特定のレジャーハッシュについて記録された検証投票を取得します。このデータセットには、検証済みレジャーチェーン外部のレジャーバージョンが含まれます。_（新規: [v2.2.0][]）_
 
@@ -327,7 +337,7 @@ GET /v2/ledgers/A10E9E338BA365D2B768814EC8B0A9A2D8322C0040735E20624AF711C5A593E7
 
 
 ## Get Transaction
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getTransactions.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getTransactions.js "Source")
 
 識別用ハッシュに基づいて特定のトランザクションを取得します。
 
@@ -437,7 +447,7 @@ GET /v2/transactions/03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE25960
 
 
 ## Get Transactions
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getTransactions.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getTransactions.js "Source")
 
 時刻に基づいて複数のトランザクションを取得します。
 
@@ -596,7 +606,7 @@ GET /v2/transactions/?result=tecPATH_DRY&limit=2&type=Payment
 
 
 ## Get Payments
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getPayments.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getPayments.js "Source")
 
 Paymentを経時的に取得します。Paymentは、トランザクションの送金元が同時に送金先ではない`Payment`タイプのトランザクションと定義されます。_（新規: [v2.0.4][]）_
 
@@ -736,7 +746,7 @@ GET /v2/payments/BTC+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q?limit=2
 
 
 ## Get Exchanges
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getExchanges.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getExchanges.js "Source")
 
 特定の通貨ペアの取引を経時的に取得します。結果は取引ごとに個別に返されるか、または特定の間隔でリストにまとめられます。
 
@@ -868,7 +878,7 @@ GET /v2/exchanges/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/XRP?descending=true&lim
 
 
 ## Get Exchange Rates
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getExchangeRate.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getExchangeRate.js "Source")
 
 指定された通貨ペアの特定の時点での為替レートを取得します。
 
@@ -936,7 +946,7 @@ GET /v2/exchange_rates/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/XRP?date=2015-11-1
 
 
 ## Normalize
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/normalize.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/normalize.js "Source")
 
 ネットワークの為替レートを使用して、ある通貨とイシュアーからの額を別の通貨とイシュアーの額へ交換します。
 
@@ -1003,7 +1013,7 @@ GET /v2/normalize?amount=100&currency=XRP&exchange_currency=USD&exchange_issuer=
 
 
 ## Get Daily Reports
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/reports.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/reports.js "Source")
 
 1日あたりのアカウント別に集計されたペイメントのサマリーを取得します。
 
@@ -1167,7 +1177,7 @@ GET /v2/reports/2015-08-19T00:00:00Z?accounts=true&payments=true
 
 
 ## Get Stats
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/stats.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/stats.js "Source")
 
 XRP Ledgerでのトランザクションアクティビティの統計情報を、さまざまな時間間隔で取得します。
 
@@ -1271,7 +1281,7 @@ GET /v2/stats/?start=2015-08-30&end=2015-08-31&interval=day&family=metric&metric
 
 
 ## Get Active Accounts
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/activeAccounts.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/activeAccounts.js "Source")
 
 特定の通貨ペアの取引を実際に行っているアカウントに関する情報を取得します。_（新規: [v2.0.4][]）_
 
@@ -1423,7 +1433,7 @@ GET /v2/active_accounts/XRP/USD+rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q
 
 
 ## Get Exchange Volume
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getMetric.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getMetric.js "Source")
 
 指定された期間における取引量の合計を取得します。_（新規: [v2.0.4][]）_
 
@@ -1570,7 +1580,7 @@ GET /v2/network/exchange_volume?exchange_currency=USD&exchange_issuer=rvYAfWj5gh
 
 
 ## Get Payment Volume
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getMetric.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getMetric.js "Source")
 
 指定された期間のペイメントの合計取引量を取得します。_（新規: [v2.0.4][]）_
 
@@ -1698,7 +1708,7 @@ GET /v2/network/payment_volume
 
 
 ## Get External Markets
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/externalMarkets.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/externalMarkets.js "Source")
 
 指定のローリング間隔におけるレジャー外の取引のリストから、取引量の合計を取得します。
 
@@ -1821,7 +1831,7 @@ GET /v2/network/external_markets
 
 
 ## Get XRP Distribution
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/xrpDistribution.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/xrpDistribution.js "Source")
 
 現存し、流通しているXRPの合計額に関する情報を週単位で取得します。_（新規: [v2.2.0][]）_
 
@@ -1899,7 +1909,7 @@ GET /v2/network/xrp_distribution
 
 
 ## Get Top Currencies
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/topCurrencies.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/topCurrencies.js "Source")
 
 XRP Ledgerの上位通貨を、ランクが高いものから順に返します。このランクは、トランザクションの額と件数、および一意の取引相手の数に基づいて決定します。デフォルトでは、現在の日付で終了する30日間ローリングウィンドウの結果が返されます。結果を取得する30日間ローリングウィンドウの最終日の日付を指定できます。_（新規: [v2.1.0][]）_
 
@@ -2002,7 +2012,7 @@ GET /v2/network/top_currencies/2016-04-14?limit=2
 
 
 ## Get Top Markets
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/topMarkets.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/topMarkets.js "Source")
 
 XRP Ledgerの上位マーケットを、ランクが高いものから順に返します。このランクは、取引の数と量、および参加取引相手の数に基づいて決定します。デフォルトでは、現在の日付で終わる30日間ローリングウィンドウにおける上位のマーケットが返されます。結果を取得する30日間ローリングウィンドウの最終日の日付を指定できます。_（新規: [v2.1.0][]）_
 
@@ -2106,7 +2116,7 @@ GET /v2/network/top_markets/2015-12-31
 
 
 ## Get Transaction Costs
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getFees.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getFees.js "Source")
 
 レジャー、時間、または日ごとに[トランザクションコスト](transaction-cost.html)の統計情報を返します。このデータは、特定の間隔またはレジャーで支払われたトランザクションコストの最小値、最大値、および合計を示します。_（新規: [v2.2.0][]）_
 
@@ -2208,7 +2218,7 @@ GET /v2/network/fees?interval=day&limit=3&descending=true
 
 
 ## Get Fee Stats
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getFeeStats.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getFeeStats.js "Source")
 
 `rippled`の[`fee`コマンド](fee.html)から導出されたメトリクスのスナップショットを返します。_（新規: [v2.3.2][]）_
 
@@ -2308,7 +2318,7 @@ GET /v2/network/fee_stats
 
 
 ## Get Topology
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getTopology.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getTopology.js "Source")
 
 既知の`rippled`サーバーと、これらのサーバー間のピアツーピア接続を取得します。_（新規: [v2.2.0][]）_
 
@@ -2413,7 +2423,7 @@ GET /v2/network/topology
 
 
 ## Get Topology Nodes
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getNodes.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getNodes.js "Source")
 
 既知の`rippled`ノードを取得します。（これは[Get Topologyメソッド](#get-topology)で返されるデータのサブセットです。）_（新規: [v2.2.0][]）_
 
@@ -2504,7 +2514,7 @@ GET /v2/network/topology/nodes
 
 
 ## Get Topology Node
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getNodes.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getNodes.js "Source")
 
 1つの`rippled`サーバーに関する情報を、そのバリデータの公開鍵ではなく[ノードの公開鍵](#公開鍵)に基づいて取得します。_（新規: [v2.2.0][]）_
 
@@ -2576,7 +2586,7 @@ GET /v2/network/topology/nodes/n94h5KNspwUGLaGcdHGxruYNmExWHjPkLcMvwsNrivR9czRp6
 
 
 ## Get Topology Links
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getLinks.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getLinks.js "Source")
 
 `rippled`サーバー間のピアツーピア接続に関する情報を取得します。（これは[Get Topologyメソッド](#get-topology)で返されるデータのサブセットです。）_（新規: [v2.2.0][]）_
 
@@ -2641,7 +2651,7 @@ GET /v2/network/topology/links
 
 
 ## Get Validator
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidators.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidators.js "Source")
 
 [コンセンサスネットワーク](consensus.html)内の1つのバリデータに関する詳細を取得します。_（更新: [v2.4.0][]）_
 
@@ -2735,7 +2745,7 @@ GET /v2/network/validators/nHBidG3pZK11zQD6kpNDoAhDxH6WLGui6ZxSbUx7LSqLHsgzMPec
 
 
 ## Get Validators
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidators.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidators.js "Source")
 
 直近24時間にアクティブであった既知のバリデータのリストを取得します。_（更新: [v2.4.0][]）_
 
@@ -2858,7 +2868,7 @@ GET /v2/network/validators/
 
 
 ## Get Validator Manifests
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getManifests.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getManifests.js "Source")
 
 指定されたバリデータにより署名されたマニフェストを取得します。（マニフェストは _サブキー認証_ とも呼ばれ、バリデータが提案と検証の署名に使用する一時的なキーを指します。）_（新規: [v2.3.7][]）_
 
@@ -2965,7 +2975,7 @@ GET /v2/network/validator/nHDEmQKb2nbcewdQ1fqCTGcPTcePhJ2Rh6MRftsCaf6UNRQLv7pB/m
 
 
 ## Get Single Validator Reports
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidatorReports.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidatorReports.js "Source")
 
 24時間間隔で1つのバリデータの検証投票の状況を取得します。_（更新: [v2.4.0][]）_
 
@@ -3065,7 +3075,7 @@ GET /v2/network/validators/n949f75evCHwgyP4fPVgaHqNHxUVN15PsJEZ3B3HnXPcPjcZAoy7/
 
 
 ## Get Daily Validator Reports
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidatorReports.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getValidatorReports.js "Source")
 
 24時間ですべての既知のバリデータの検証投票の状況とバリデータ情報を取得します。
 
@@ -3145,7 +3155,7 @@ GET /v2/network/validator_reports
 
 
 ## Get rippled Versions
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getVersions.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/network/getVersions.js "Source")
 
 公式Ripple Yumリポジトリから入手可能な`rippled`の最新バージョンを報告します。_（新規: [v2.3.0][]）_
 
@@ -3220,7 +3230,7 @@ GET /v2/network/rippled_versions
 
 
 ## Get All Gateways
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/gateways.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/gateways.js "Source")
 
 [既知のゲートウェイ](https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json)に関する情報を取得します。_（新規: [v2.0.4][]）_
 
@@ -3316,7 +3326,7 @@ GET /v2/gateways/
 
 
 ## Get Gateway
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/gateways.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/gateways.js "Source")
 
 <!-- STYLE_OVERRIDE: gateway, gateways -->
 [Data APIの既知のゲートウェイのリスト](https://github.com/ripple/rippled-historical-database/blob/v2.0.4/api/gateways/gateways.json)から、特定のゲートウェイに関する情報を取得します。_（新規: [v2.0.4][]）_
@@ -3409,7 +3419,7 @@ GET /v2/gateways/Gatehub
 
 ## Get Currency Image
 
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/gateways.js#L199 "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/gateways.js#L199 "Source")
 
 各種通貨のベクターアイコンを取得します。_（新規: [v2.0.4][]）_
 
@@ -3470,7 +3480,7 @@ Content-Type: image/svg+xml
 
 
 ## Get Accounts
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accounts.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accounts.js "Source")
 
 XRP Ledgerでの新しいアカウントの作成に関する情報を取得します。
 
@@ -3558,7 +3568,7 @@ GET /v1/accounts?parent=rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 
 
 ## Get Account
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getAccount.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/getAccount.js "Source")
 
 特定のrippleアカウントの作成に関する情報を取得します。
 
@@ -3620,7 +3630,7 @@ GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 
 
 ## Get Account Balances
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountBalances.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountBalances.js "Source")
 
 特定のXRP Ledgerアカウントが保有または支払い義務のあるすべての残高を取得します。
 
@@ -3705,7 +3715,7 @@ GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balances?currency=USD&date=2
 
 
 ## Get Account Orders
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountOrders.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountOrders.js "Source")
 
 オーダーブックで特定のアカウントが発注したオーダーを取得します。すでに処理されたオーダーは返されません。
 
@@ -3831,7 +3841,7 @@ GET /v2/accounts/rK5j9n8baXfL4gzUoZsfxBvvsv97P5swaV/orders?limit=2&date=2015-11-
 
 
 ## Get Account Transaction History
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountTransactions.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountTransactions.js "Source")
 
 特定のアカウントに影響を及ぼしたトランザクションの履歴を取得します。これには、そのアカウントから送信されたすべてのトランザクション、アカウントが受領したペイメント、アカウントを通じてRipplingされたペイメントが含まれます。
 
@@ -3963,7 +3973,7 @@ GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/transactions?type=Payment&re
 
 
 ## Get Transaction By Account And Sequence
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountTxSeq.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountTxSeq.js "Source")
 
 指定されたアカウントから送信された特定のトランザクションを取得します。
 
@@ -4032,7 +4042,7 @@ GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/transactions/10?binary=true
 
 
 ## Get Account Payments
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountPayments.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountPayments.js "Source")
 
 指定されたアカウントのペイメントを取得します。
 
@@ -4137,7 +4147,7 @@ GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/payments?currency=USD&limit=
 
 
 ## Get Account Exchanges
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountExchanges.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountExchanges.js "Source")
 
 指定されたアカウントの取引を経時的に取得します。
 
@@ -4257,7 +4267,7 @@ GET /v2/accounts/rsyDrDi9Emy6vPU78qdxovmNpmj5Qh4NKw/exchanges/KRW+rUkMKjQitpgAM5
 
 
 ## Get Account Balance Changes
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountBalanceChanges.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountBalanceChanges.js "Source")
 
 指定されたアカウントの残高変更を経時的に取得します。
 
@@ -4362,7 +4372,7 @@ GET /v2/accounts/rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn/balance_changes?descending=t
 
 
 ## Get Account Reports
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountReports.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountReports.js "Source")
 
 アカウントのペイメントアクティビティの日次サマリーを取得します。
 
@@ -4475,7 +4485,7 @@ GET /v2/accounts/rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q/reports?start=2015-08-28T00:
 
 
 ## Get Account Transaction Stats
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountStats.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountStats.js "Source")
 
 アカウントのトランザクションアクティビティの日次サマリーを取得します。_（新規: [v2.1.0][]）_
 
@@ -4574,7 +4584,7 @@ GET /v2/accounts/rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX/stats/transactions?start=201
 
 
 ## Get Account Value Stats
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountStats.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/accountStats.js "Source")
 
 アカウントのトランザクションアクティビティの日次サマリーを取得します。_（新規: [v2.1.0][]）_
 
@@ -4661,7 +4671,7 @@ GET /v2/accounts/rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX/stats/value?limit=2&descendi
 
 
 ## Health Check - API
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
 
 APIサービスの健全性をチェックします。
 
@@ -4724,7 +4734,7 @@ GET /v2/health/api?verbose=true
 
 
 ## Health Check - Ledger Importer
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
 
 Ledger Importer Serviceの健全性をチェックします。
 
@@ -4796,7 +4806,7 @@ GET /v2/health/importer?verbose=true
 
 
 ## Health Check - Nodes ETL
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
 
 Topology Nodes Extract, Transform, Load（ETL）Serviceの健全性をチェックします。
 
@@ -4862,7 +4872,7 @@ GET /v2/health/nodes_etl?verbose=true
 
 
 ## Health Check - Validations ETL
-[[ソース]<br>](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
+[[ソース]](https://github.com/ripple/rippled-historical-database/blob/master/api/routes/checkHealth.js "Source")
 
 Validations Extract, Transform, Load（ETL）Serviceの健全性をチェックします。
 

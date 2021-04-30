@@ -1,3 +1,8 @@
+---
+html: tem-codes.html
+parent: transaction-results.html
+blurb: tem codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol.
+---
 # tem Codes
 
 These codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.

@@ -1,3 +1,8 @@
+---
+html: checkcreate.html
+parent: transaction-types.html
+blurb: レジャーにCheckオブジェクトを作成します
+---
 # CheckCreate
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp "Source")
 

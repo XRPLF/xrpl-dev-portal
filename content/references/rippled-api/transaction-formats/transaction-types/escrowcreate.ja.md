@@ -1,6 +1,11 @@
+---
+html: escrowcreate.html
+parent: transaction-types.html
+blurb: Escrowプロセスが終了または取り消されるまでXRPを隔離します。
+---
 # EscrowCreate
 
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
 _[Escrow Amendment][]が必要です。_
 

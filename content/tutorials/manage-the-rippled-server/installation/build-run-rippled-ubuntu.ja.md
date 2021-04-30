@@ -1,3 +1,8 @@
+---
+html: build-run-rippled-ubuntu.html
+parent: install-rippled.html
+blurb: Ubuntu Linuxでrippledを自分でコンパイルします。
+---
 # Ubuntuでのrippledの構築と実行
 
 `rippled`は、XRP Ledgerを管理するコアのピアツーピアサーバーです。`rippled`サーバーは、ピアのネットワークに接続し、暗号で署名された取引を中継し、共有のグローバル台帳の完全なローカルコピーを維持します。

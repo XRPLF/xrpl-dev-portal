@@ -1,12 +1,7 @@
 ---
 html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
-blurb: A record of preauthorization for sending payments to an account that requires authorization.
 parent: ledger-object-types.html
+blurb: A record of preauthorization for sending payments to an account that requires authorization.
 ---
 # DepositPreauth
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")

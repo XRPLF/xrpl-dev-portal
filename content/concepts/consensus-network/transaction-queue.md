@@ -1,3 +1,8 @@
+---
+html: transaction-queue.html
+parent: consensus-network.html
+blurb: Understand how transactions can be queued before reaching consensus.
+---
 # Transaction Queue
 
 The `rippled` server uses a transaction queue to help enforce the [open ledger cost](transaction-cost.html#open-ledger-cost). The open ledger cost sets a target number of transactions in a given ledger, and escalates the required transaction cost very quickly when the open ledger surpasses this size. Rather than discarding transactions that cannot pay the escalated transaction cost, `rippled` tries to put them in a transaction queue, which it uses to build the next ledger.

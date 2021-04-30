@@ -1,3 +1,8 @@
+---
+html: peer-protocol.html
+parent: the-rippled-server.html
+blurb: The peer protocol specifies the language rippled servers speak to each other.
+---
 # Peer Protocol
 
 Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol, also known as RTXP.

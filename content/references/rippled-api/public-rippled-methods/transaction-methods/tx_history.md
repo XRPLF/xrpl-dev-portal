@@ -1,3 +1,8 @@
+---
+html: tx_history.html
+parent: transaction-methods.html
+blurb: Retrieve info about all recent transactions.
+---
 # tx_history
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp "Source")
 

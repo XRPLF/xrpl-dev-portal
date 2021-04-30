@@ -1,3 +1,8 @@
+---
+html: offers.html
+parent: decentralized-exchange.html
+blurb: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
+---
 # Offers
 
 In the XRP Ledger's decentralized exchange, orders to trade currency are called "Offers". Offers can trade XRP with issued currencies, or issued currencies with each other, including issued currencies with the same currency code but different issuers. (Currencies with the same code but different issuers can also sometimes be exchanged through [rippling](rippling.html).)

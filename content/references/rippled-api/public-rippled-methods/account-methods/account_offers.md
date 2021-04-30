@@ -1,3 +1,8 @@
+---
+html: account_offers.html
+parent: account-methods.html
+blurb: Get info about an account's currency exchange offers.
+---
 # account_offers
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 

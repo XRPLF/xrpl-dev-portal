@@ -1,3 +1,8 @@
+---
+html: look-up-checks-by-sender.html
+parent: use-checks.html
+blurb: 特定のアドレスで送信されるすべてのCheckのリストを取得する。
+---
 # 送金元に基づくCheckの検索
 
 _[Checks Amendment][]が必要です。_

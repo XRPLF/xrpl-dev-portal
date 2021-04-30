@@ -1,3 +1,8 @@
+---
+html: manifest.html
+parent: server-info-methods.html
+blurb: Look up the public information about a known validator.
+---
 # manifest
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "Source")
 

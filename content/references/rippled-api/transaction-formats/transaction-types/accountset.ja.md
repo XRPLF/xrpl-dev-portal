@@ -1,6 +1,11 @@
+---
+html: accountset.html
+parent: transaction-types.html
+blurb: XRP Ledgerのアカウントのプロパティーを修正します。
+---
 # AccountSet
 
-[[ソース]<br>](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "ソース")
+[[ソース]](https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "ソース")
 
 AccountSetトランザクションは、[XRP Ledgerのアカウント](accountroot.html)のプロパティーを修正します。
 

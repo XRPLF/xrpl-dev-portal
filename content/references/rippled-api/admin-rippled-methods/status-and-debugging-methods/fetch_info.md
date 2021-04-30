@@ -1,3 +1,8 @@
+---
+html: fetch_info.html
+parent: status-and-debugging-methods.html
+blurb: Get information about the server's sync with the network.
+---
 # fetch_info
 [[Source]](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/FetchInfo.cpp "Source")
 

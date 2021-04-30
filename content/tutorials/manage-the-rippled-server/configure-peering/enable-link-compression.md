@@ -1,9 +1,6 @@
 ---
 html: enable-link-compression.html
-funnel: Build
-doc_type: Tutorials
-category: Manage the rippled Server
-subcategory: Configure Peering
+parent: configure-peering.html
 blurb: Save bandwidth by compressing peer-to-peer communications.
 ---
 # Enable Link Compression

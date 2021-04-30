@@ -1,10 +1,6 @@
 ---
 html: ledger-object-types.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
+parent: ledger-data-formats.html
 template: template-landing-children.html
 ---
 # レジャーオブジェクトのタイプ

@@ -1,3 +1,8 @@
+---
+html: multi-signing.html
+parent: accounts.html
+blurb: マルチ署名を使用することで、トランザクション送信時のセキュリティが強化されます。
+---
 # マルチ署名
 
 マルチ署名は、複数のシークレットキーを組み合わせて使用してXRP Ledgerの[トランザクションを承認する](transaction-basics.html#トランザクションの承認)手法です。アドレスで有効な承認手法（マルチ署名、[マスターキーペア](cryptographic-keys.html#マスターキーペア)、[レギュラーキーペア](cryptographic-keys.html#レギュラーキーペア)など）を自由に組み合わせて使用できます。（唯一の要件は、 _少なくとも1つの_ 手法を有効にする必要があることです。）

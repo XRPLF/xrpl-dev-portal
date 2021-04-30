@@ -1,3 +1,8 @@
+---
+html: source-and-destination-tags.html
+parent: transaction-basics.html
+blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
+---
 # Source and Destination Tags
 
 _Source tags_ and _destination tags_ are a feature of XRP Ledger [payments](payment-types.html) that can indicate specific purposes for payments from and to multi-purpose addresses. Source and destination tags do not have direct on-ledger functionality; source and destination tags merely provide information about how off-ledger systems should process a payment. In transactions, both source and destination tags are formatted as 32-bit unsigned integers.

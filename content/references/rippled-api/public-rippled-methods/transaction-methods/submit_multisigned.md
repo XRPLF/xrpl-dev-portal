@@ -1,3 +1,8 @@
+---
+html: submit_multisigned.html
+parent: transaction-methods.html
+blurb: Send a multi-signed transaction to the network.
+---
 # submit_multisigned
 [[Source]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 

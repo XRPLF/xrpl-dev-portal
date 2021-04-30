@@ -1,3 +1,8 @@
+---
+html: ledger_request.html
+parent: logging-and-data-management-methods.html
+blurb: Query peer servers for a specific ledger version.
+---
 # ledger_request
 [[Source]](https://github.com/ripple/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp "Source")
 

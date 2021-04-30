@@ -1,9 +1,6 @@
 ---
 html: ledger-data-formats.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
+parent: rippled-api.html
 blurb: XRP Ledgerの共有状態を構成する個別のデータオブジェクトについて説明します。
 ---
 # レジャーのデータ型

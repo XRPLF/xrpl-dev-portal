@@ -1,15 +1,10 @@
 ---
 html: check.html
-funnel: Build
-doc_type: References
-supercategory: rippled API
-category: Ledger Data Formats
-subcategory: Ledger Object Types
-blurb: 送信先が清算して資金にできるCheckです。
 parent: ledger-object-types.html
+blurb: 送信先が清算して資金にできるCheckです。
 ---
 # Check
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
 
 _（[Checks Amendment][]が必要です）_
 
@@ -59,7 +54,7 @@ _（[Checks Amendment][]が必要です）_
 
 
 ## Check IDのフォーマット
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
 `Check`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 

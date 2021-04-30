@@ -16,9 +16,3 @@
             </div>
           </article>
 {% endblock %}
-
-{% block left_sidebar %}
-  {% set use_page = pages|selectattr("html", 'defined_and_equalto', "docs.html")|first %}
-  {% set link_prefix = "/" %}{# Links need to be absolute so they work no matter what URL the 404 page is served from #}
-  {% include "template-sidebar_nav.html" %}
-{% endblock %}

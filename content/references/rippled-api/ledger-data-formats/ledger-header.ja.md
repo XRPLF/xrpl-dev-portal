@@ -1,3 +1,8 @@
+---
+html: ledger-header.html
+parent: ledger-data-formats.html
+blurb: レジャーバージョンの内容を記述する一意のヘッダーです。
+---
 # レジャーヘッダー
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
 

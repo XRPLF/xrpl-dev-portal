@@ -1,3 +1,8 @@
+---
+html: cryptographic-keys.html
+parent: accounts.html
+blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
+---
 # Cryptographic Keys
 
 In the XRP Ledger, a digital signature _authorizes_ a [transaction](transaction-basics.html) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.

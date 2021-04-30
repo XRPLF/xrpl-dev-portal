@@ -1,3 +1,8 @@
+---
+html: transfer-fees.html
+parent: issued-currencies.html
+blurb: Currency issuers can charge a fee for transferring their issued currencies.
+---
 # Transfer Fees
 
 The `TransferRate` setting in the XRP Ledger allows [financial institutions that issue currency in the XRP Ledger](become-an-xrp-ledger-gateway.html) to charge users a _transfer fee_ for sending the currencies issued by that financial institution. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee, which becomes the property of the issuing address, and is no longer tracked in the XRP Ledger. The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address][] to another user.
