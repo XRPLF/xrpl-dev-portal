@@ -184,6 +184,13 @@ targets:
         no_cover: True
         link_re_subs:
            "([\\w-]+\\.html)": https://xrpl.org/\1
+    -   name: data-api-ja
+        lang: ja
+        display_name: XRP Ledger Data API
+        <<: *defaults
+        no_cover: True
+        link_re_subs:
+           "([\\w-]+\\.html)": https://xrpl.org/ja/\1
 
 pages:
 
@@ -1792,9 +1799,513 @@ pages:
         targets:
             - ja
 
-    # rippled API --------------------------------------------------------------
 
-    -   name: rippled API Reference
+    -   name: XRP Ledger Protocol Reference
+        html: protocol-reference.html
+        parent: references.html
+        template: template-landing-children.html
+        blurb: Features and rules of the XRP Ledger protocol, regardless of how you access it.
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/basic-data-types.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/basic-data-types.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/base58-encodings.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/base58-encodings.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/currency-formats.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/currency-formats.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-data-formats.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-data-formats.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-header.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-header.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-ids.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-ids.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledger-object-types.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledger-object-types.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amendments.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amendments.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/check.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/depositpreauth.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/depositpreauth.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/directorynode.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/directorynode.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/escrow.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/escrow.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/feesettings.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/feesettings.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledgerhashes.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledgerhashes.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/paychannel.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/paychannel.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/ripplestate.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/ripplestate.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/signerlist.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/signerlist.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/ticket.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-formats.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-formats.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-common-fields.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-common-fields.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/transaction-types.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/transaction-types.ja.md
+        targets:
+            - ja
+
+    # TODO: translate _snippets/tx-fields-intro.md
+
+    -   md: references/protocol-reference/transactions/transaction-types/accountset.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/accountset.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/accountdelete.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/accountdelete.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/checkcancel.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/checkcash.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/checkcash.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/checkcreate.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/checkcreate.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/depositpreauth.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/depositpreauth.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/escrowcancel.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/escrowcancel.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/escrowcreate.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/escrowcreate.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/escrowfinish.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/escrowfinish.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/offercancel.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/offercancel.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/offercreate.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/offercreate.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/payment.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/payment.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelclaim.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelclaim.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelcreate.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelcreate.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelfund.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelfund.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/setregularkey.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/setregularkey.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/signerlistset.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/signerlistset.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: references/protocol-reference/transactions/transaction-types/ticketcreate.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/trustset.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/trustset.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/enableamendment.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/enableamendment.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/setfee.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/setfee.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-results/transaction-results.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-results/transaction-results.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-results/tec-codes.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-results/tec-codes.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-results/tef-codes.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-results/tef-codes.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-results/tel-codes.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-results/tel-codes.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-results/tem-codes.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-results/tem-codes.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-results/ter-codes.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-results/ter-codes.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-results/tes-success.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-results/tes-success.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-metadata.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-metadata.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/modifying-the-ledger.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/modifying-the-ledger.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/serialization.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/serialization.ja.md
+        targets:
+            - ja
+
+    # Client Libraries ---------------------------------------------------------
+
+        # TODO: translate page & blurb
+    -   md: references/client-libraries.md
+        targets:
+            - en
+            - ja
+
+    -   name: JavaScript / TypeScript Client Library
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.4/docs/index.md
+        html: rippleapi-reference.html
+        parent: client-libraries.html
+        blurb: JavaScript/TypeScript client library to the XRP Ledger.
+        skip_spell_checker: true
+        # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
+        curated_anchors:
+            - name: Transactions
+              anchor: "#transaction-overview"
+            - name: Basic Types
+              anchor: "#basic-types"
+            - name: Methods
+              anchor: "#api-methods"
+        filters:
+            - remove_doctoc
+            - add_version
+        targets:
+            - en
+            - ja
+
+    -   name: Python Client Library
+        html: https://xrpl-py.readthedocs.io/
+        parent: client-libraries.html
+        blurb: Python client library to the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+    -   name: Java Client Library
+        html: https://javadoc.io/doc/org.xrpl/
+        parent: client-libraries.html
+        blurb: Java client library to the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+
+    # HTTP / Websocket APIs ----------------------------------------------------
+
+    -   name: HTTP / WebSocket APIs
         html: rippled-api.html
         parent: references.html
         template: template-landing-children.html
@@ -1802,7 +2313,7 @@ pages:
         targets:
             - en
 
-    -   name: rippled API リファレンス
+    -   name: HTTP / WebSocket API リファレンス
         html: rippled-api.html
         parent: references.html
         template: template-landing-children.html
@@ -1818,27 +2329,19 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/api-conventions/basic-data-types.md
+    -   md: references/rippled-api/api-conventions/request-formatting.md
         targets:
             - en
 
-    -   md: references/rippled-api/api-conventions/basic-data-types.ja.md
+    -   md: references/rippled-api/api-conventions/request-formatting.ja.md
         targets:
             - ja
 
-    -   md: references/rippled-api/api-conventions/base58-encodings.md
+    -   md: references/rippled-api/api-conventions/response-formatting.md
         targets:
             - en
 
-    -   md: references/rippled-api/api-conventions/base58-encodings.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/api-conventions/currency-formats.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/api-conventions/currency-formats.ja.md
+    -   md: references/rippled-api/api-conventions/response-formatting.ja.md
         targets:
             - ja
 
@@ -1858,34 +2361,10 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/api-conventions/modifying-the-ledger.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/api-conventions/modifying-the-ledger.ja.md
-        targets:
-            - ja
-
     # TODO: translate page & blurb
     -   md: references/rippled-api/api-conventions/rate-limiting.md
         targets:
             - en
-            - ja
-
-    -   md: references/rippled-api/api-conventions/request-formatting.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/api-conventions/request-formatting.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/api-conventions/response-formatting.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/api-conventions/response-formatting.ja.md
-        targets:
             - ja
 
     -   md: references/rippled-api/api-conventions/rippled-server-states.md
@@ -1893,14 +2372,6 @@ pages:
             - en
 
     -   md: references/rippled-api/api-conventions/rippled-server-states.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/api-conventions/serialization.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/api-conventions/serialization.ja.md
         targets:
             - ja
 
@@ -2596,414 +3067,6 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-data-formats.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-header.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-header.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-ids.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledger-object-types.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledger-object-types.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/amendments.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/amendments.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/check.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/check.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/depositpreauth.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/depositpreauth.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/directorynode.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/escrow.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/escrow.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/feesettings.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/feesettings.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledgerhashes.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ledgerhashes.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/negativeunl.md
-        targets:
-            - en
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/offer.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/signerlist.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/ledger-data-formats/ledger-object-types/ticket.md
-        targets:
-            - en
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-formats.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-formats.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-common-fields.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-common-fields.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/transaction-types.ja.md
-        targets:
-            - ja
-
-    # TODO: translate _snippets/tx-fields-intro.md
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/accountset.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/accountset.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/accountdelete.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/accountdelete.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/checkcancel.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/checkcash.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/checkcreate.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/depositpreauth.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcancel.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/escrowcreate.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/escrowfinish.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/offercancel.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/offercreate.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/payment.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/payment.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelclaim.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelcreate.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/setregularkey.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/signerlistset.ja.md
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: references/rippled-api/transaction-formats/transaction-types/ticketcreate.md
-        targets:
-            - en
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/trustset.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-types/trustset.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/pseudo-transaction-types.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/setfee.ja.md
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: references/rippled-api/transaction-formats/pseudo-transaction-types/unlmodify.md
-        targets:
-            - en
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/transaction-results.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tec-codes.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tef-codes.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tel-codes.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tem-codes.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/ter-codes.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-results/tes-success.ja.md
-        targets:
-            - ja
-
-    -   md: references/rippled-api/transaction-formats/transaction-metadata.md
-        targets:
-            - en
-
-    -   md: references/rippled-api/transaction-formats/transaction-metadata.ja.md
-        targets:
-            - ja
-
     -   md: references/rippled-api/commandline-usage.md
         targets:
             - en
@@ -3045,53 +3108,8 @@ pages:
             - en
             - ja
 
-    # XRP-API docs (auto-generated)---------------------------------------------
-
-    -   name: XRP-API
-        md: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/README.md
-        html: xrp-api.html
-        parent: references.html
-        blurb: An API server that provides a REST-like interface to the XRP Ledger.
-        skip_spell_checker: true
-        filters:
-            - xrpapi_readme
-        targets:
-            - en
-            - ja
-            - xrp-api-only
-
-        # API reference generator makes multiple files here
-    -   openapi_specification: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/api-doc.yml
-        openapi_md_template_path: tool/openapi_templates_alpha/
-        parent: xrp-api.html
-        blurb: An API server that provides a REST-like interface to the XRP Ledger. #TODO: translate blurb
-        api_slug: xrp-api
-        skip_spell_checker: true
-        targets:
-            - en
-            - ja
-            - xrp-api-only
-
-
-    # --------------- end "XRP-API" section --------------------------------
-
-    -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/32718d583b882b58f152511e152e9dae1da2d671/docs/index.md #TEMP: use commit instead of release tag since broken link fixes aren't in a release yet
-        html: rippleapi-reference.html
-        parent: references.html
-        blurb: JavaScript/TypeScript client library to the XRP Ledger.
-        skip_spell_checker: true
-        # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
-        curated_anchors:
-            - name: Transactions
-              anchor: "#transaction-overview"
-            - name: Basic Types
-              anchor: "#basic-types"
-            - name: Methods
-              anchor: "#api-methods"
-        filters:
-            - remove_doctoc
-            - add_version
+        # Placeholder / redirect for XRP-API docs.
+    -   md: references/xrp-api.md
         targets:
             - en
             - ja
@@ -3099,11 +3117,11 @@ pages:
     -   md: references/data-api.md
         targets:
             - en
-            - data-api-only
 
     -   md: references/data-api.ja.md
         targets:
             - ja
+            - data-api-ja
 
     -   md: references/xrp-ledger-toml.md
         targets:

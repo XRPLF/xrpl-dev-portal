@@ -67,15 +67,7 @@ As always, follow industry-standard practices for securing your machines, such a
 
 {{ include_svg("img/secure-signing-client-library.svg", "Diagram of using a client library with local signing") }}
 
-This configuration uses a client library in the programming language you are using to sign transactions locally. You need a client library for the programming language you use. The following client libraries can sign transactions for the XRP Ledger locally:
-
-| Language | Library Name | Get Started | API Reference | Source Code |
-|----------|--------------|-------------|---------------|-------------|
-| **Python**   | `xrpl-py`      | [Get Started](get-started-using-python.html) | [API Reference](https://xrpl-py.readthedocs.io/) | [Repo](https://github.com/XRPLF/xrpl-py) |
-| **JavaScript** / **TypeScript** | `ripple-lib` | [Get Started](get-started-with-rippleapi-for-javascript.html) |  [API Reference](rippleapi-reference.html) | [Repo](https://github.com/ripple/ripple-lib) |
-| **C++**      | `rippled` Signing Library | [Get Started](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library) |  | (Part of [`rippled`](https://github.com/ripple/rippled/)) |
-| **Java** | `xrpl4j` | [README](https://github.com/XRPLF/xrpl4j#readme) | [API Reference](https://github.com/XRPLF/xrpl4j/tree/main/xrpl4j-integration-tests)  | [Repo](https://github.com/XRPLF/xrpl4j) |
-
+This configuration uses a client library with built-in signing, in the programming language you use. For a list of libraries that can perform local signing, see [Client Libraries](client-libraries.html).
 
 
 ### Security Best Practices for Signing Libraries

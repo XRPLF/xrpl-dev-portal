@@ -1,6 +1,6 @@
 ---
 html: currency-formats.html
-parent: api-conventions.html
+parent: protocol-reference.html
 blurb: 通貨番号の精度と範囲、カスタム通貨コードのフォーマットです。
 ---
 # 通貨フォーマット

@@ -1,6 +1,6 @@
 ---
 html: modifying-the-ledger.html
-parent: api-conventions.html
+parent: protocol-reference.html
 blurb: トランザクションだけがレジャーを変更できる理由とその方法です。
 ---
 # レジャーの変更
