@@ -203,7 +203,7 @@ AccountInfoResult{
 
 The response fields contained in `AccountInfoResult` that you want to inspect in most cases are:
 
-* `accountData.sequence` — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions. With `xrpl-py`, you can use the [`get_next_valid_seq_number`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html#xrpl.account.get_next_valid_seq_number) to get this automatically from the XRP Ledger. See an example of this usage in the project [README](https://github.com/XRPLF/xrpl-py#serialize-and-sign-transactions).
+* `accountData.sequence` — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions.
 
 * `accountData.balance` — This is the account's balance of XRP, in drops. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](transaction-cost.html#current-transaction-cost) for a given transaction.
 
