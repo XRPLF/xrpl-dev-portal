@@ -1,5 +1,6 @@
 ---
 html: get-started-using-java.html
+parent: get-started.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started
