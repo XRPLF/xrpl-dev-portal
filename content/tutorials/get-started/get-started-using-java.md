@@ -39,8 +39,7 @@ The [`xrpl4j` library](https://github.com/XRPLF/xrpl4j) is available on [Maven C
 
 In this tutorial, you will need the [xrpl4j-client](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html), 
 [xrpl4j-address-codec](https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html), 
-[xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), 
-[xrpl4j-crypto-bouncycastle](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/index.html), and 
+[xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), and 
 [xrpl4j-model](https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html)  modules. 
 
 Install with Maven:
@@ -59,11 +58,6 @@ Install with Maven:
     <dependency>
       <groupId>org.xrpl</groupId>
       <artifactId>xrpl4j-keypairs</artifactId>
-      <version>2.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.xrpl</groupId>
-      <artifactId>xrpl4j-crypto-bouncycastle</artifactId>
       <version>2.0.0</version>
     </dependency>
     <dependency>
@@ -144,43 +138,6 @@ Wallet {
 In order to fund the account on the XRP Ledger, you can use a `FaucetClient` connected to the XRPL Testnet:
 
 {{ include_code("_code-samples/xrpl4j/GetAccountInfo.java", start_with="// Fund the account using the testnet Faucet", end_before="// Look up your Account Info", language="java") }}
-
-#### Using the wallet
-
-In this tutorial we only query details about the generated account from the XRP Ledger, but you can use the values in the `Wallet` instance to prepare, sign, and submit transactions with `xrpl4j`.   
-
-##### Prepare
-
-To prepare the transaction, first you'll need your account sequence:
-
-{{ include_code("_code-samples/xrpl4j/SendPayment.java", start_with="// Look up your Account Info", end_before="// Request current fee information from rippled", language="java") }}
-
-Next, you'll need up-to-date network fee information:
-
-{{ include_code("_code-samples/xrpl4j/SendPayment.java", start_with="// Request current fee information from rippled", end_before="// Construct a Payment", language="java") }}
-
-Finally, construct a `Payment` with that information:
-
-{{ include_code("_code-samples/xrpl4j/SendPayment.java", start_with="// Construct a Payment", end_before="// Print the Payment", language="java") }}
-
-
-##### Sign
-
-To sign the transaction, you'll need an instance of [`SignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html).
-In this case, you can construct a [`SingleKeySignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html) 
-using the private key from `testWallet`: 
-
-{{ include_code("_code-samples/xrpl4j/SendPayment.java", start_with="// Construct a SignatureService to sign the Payment", end_before="// Sign the Payment", language="java") }}
-
-Then, sign the `Payment` using the `SignatureService`:
-
-{{ include_code("_code-samples/xrpl4j/SendPayment.java", start_with="// Sign the Payment", end_before="// Print the signed transaction", language="java") }}
-
-##### Submit
-
-To submit the transaction:
-
-{{ include_code("_code-samples/xrpl4j/SendPayment.java", start_with="// Submit the Payment", end_before="// Print the response", language="java") }}
 
 ### {{n.next()}}. Query the XRP Ledger
 

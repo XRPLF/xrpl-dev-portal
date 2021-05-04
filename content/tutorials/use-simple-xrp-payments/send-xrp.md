@@ -26,6 +26,7 @@ To interact with the XRP Ledger, you need to set up a dev environment with the n
 
 - **JavaScript** with the [ripple-lib (RippleAPI) library](https://github.com/ripple/ripple-lib/). See the [RippleAPI Beginners Guide](get-started-with-rippleapi-for-javascript.html) for detailed instructions on getting started.
 - **Python** with the [xrpl-py library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
+- **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](get-started-using-java.html) for setup steps.
 
 
 ## Send a Payment on the Test Net
@@ -42,6 +43,10 @@ _JavaScript_
 {{ include_code("_code-samples/send-xrp/send-xrp.js", end_before="// Connect", language="js") }}
 
 _Python_
+
+{{ include_code("_code-samples/send-xrp/send-xrp.py", end_before="# Connect", language="py") }}
+
+_Java_
 
 {{ include_code("_code-samples/send-xrp/send-xrp.py", end_before="# Connect", language="py") }}
 
