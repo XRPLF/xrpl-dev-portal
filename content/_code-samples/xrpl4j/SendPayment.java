@@ -12,7 +12,8 @@ final Address classicAddress = testWallet.classicAddress();
 System.out.println("Classic Address: " + classicAddress);
 
 // Fund the account using the testnet Faucet
-final FaucetClient faucetClient = FaucetClient.construct(HttpUrl.get("https://faucet.altnet.rippletest.net"));
+final FaucetClient faucetClient = FaucetClient
+  .construct(HttpUrl.get("https://faucet.altnet.rippletest.net"));
 faucetClient.fundAccount(FundAccountRequest.of(classicAddress));
 System.out.println("Funded the account using the Testnet faucet.");
 

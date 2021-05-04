@@ -182,7 +182,7 @@ You can query the XRP Ledger to get information about [a specific account](accou
 
 Here, we'll use the [`XrplClient` we constructed](#1-connect-to-the-xrp-ledger) to look up information about the [wallet we generated](#2-generate-wallet) in the previous step.
 
-{{ include_code("_code-samples/xrpl4j/GetAccountInfo.java", start_with="// Look up your Account Info", language="java") }}
+{{ include_code("_code-samples/xrpl4j/GetAccountInfo.java", start_with="// Look up your Account Info", end_before="// Print the result", language="java") }}
 
 
 ### {{n.next()}}. Putting it all together
