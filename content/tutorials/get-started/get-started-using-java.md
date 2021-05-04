@@ -39,7 +39,8 @@ The [`xrpl4j` library](https://github.com/XRPLF/xrpl4j) is available on [Maven C
 
 In this tutorial, you will need the [xrpl4j-client](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html), 
 [xrpl4j-address-codec](https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html), 
-[xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), and 
+[xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), 
+[xrpl4j-crypto-bouncycastle](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/index.html), and 
 [xrpl4j-model](https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html)  modules. 
 
 Install with Maven:
@@ -58,6 +59,11 @@ Install with Maven:
     <dependency>
       <groupId>org.xrpl</groupId>
       <artifactId>xrpl4j-keypairs</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.xrpl</groupId>
+      <artifactId>xrpl4j-crypto-bouncycastle</artifactId>
       <version>2.0.0</version>
     </dependency>
     <dependency>
