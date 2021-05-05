@@ -270,7 +270,7 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
 - **JavaScript:** Use the [`getTransaction()` method](rippleapi-reference.html#gettransaction) to check the status of a transaction.
 - **Python:** The response of [xrpl.transaction.get_transaction_from_hash() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash) contains the results if the transaction has been validated by consensus. (See [tx result](https://xrpl.org/tx.html#response-format) for a detailed reference of the fields this can contain.)
-- **Java:** Use the `XrplClient.transaction()` method to check the status of a transaction.
+- **Java:** Use the [`XrplClient.transaction()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) method to check the status of a transaction.
 
 <!-- MULTICODE_BLOCK_START -->
 
