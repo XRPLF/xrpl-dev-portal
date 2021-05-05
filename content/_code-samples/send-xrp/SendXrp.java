@@ -66,8 +66,8 @@ SignedTransaction<Payment> signedPayment = signatureService.sign(
 System.out.println("Signed Payment: " + signedPayment.signedTransaction());
 
 // Submit transaction ---------------------------------------------------------
-SubmitResult<Transaction> submitResult = xrplClient.submit(signedPayment);
-System.out.println(submitResult);
+SubmitResult<Transaction> prelimResult = xrplClient.submit(signedPayment);
+System.out.println(prelimResult);
 
 // Wait for validation --------------------------------------------------------
 boolean transactionValidated = false;
@@ -96,7 +96,9 @@ while (!transactionValidated && !transactionExpired) {
       is(latestValidatedLedgerIndex.unsignedLongValue())
       .greaterThan(UnsignedLong.valueOf(lastLedgerSequence.intValue()));
     if (lastLedgerSequenceHasPassed) {
-      System.out.println("Payment was never validated and has expired.");
+      System.out.println("LastLedgerSequence has passed. Last tx response: "
+        transactionResult);
+    );
       transactionExpired = true;
     } else {
       System.out.println("Payment not yet validated.");
