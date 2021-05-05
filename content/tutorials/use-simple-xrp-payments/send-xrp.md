@@ -196,7 +196,7 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 
 - **JavaScript:** Use the [submit() method](rippleapi-reference.html#submit) to submit a transaction to the network. Use the [`getLedgerVersion()` method](rippleapi-reference.html#getledgerversion) to get the latest validated ledger index.
 - **Python:** Use the [xrpl.transaction.submit_transaction() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.submit_transaction) to submit a transaction to the network. Use the [xrpl.ledger.get_latest_validated_ledger_sequence() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.ledger.html#xrpl.ledger.get_latest_validated_ledger_sequence) to get the latest validated ledger index.
-- **Java:** Use the [XrplClient.submit(SignedTransaction>) method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html) to submit a transaction to the network. Use the `XrplClient.ledger()` method to get the latest validated ledger index.
+- **Java:** Use the [XrplClient.submit(SignedTransaction) method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)) to submit a transaction to the network. Use the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method to get the latest validated ledger index.
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -241,7 +241,7 @@ Most transactions are accepted into the next ledger version after they're submit
 
     **Tip:** The [xrpl.transaction.send_reliable_submission() method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission) handles this process all in one call. You can use this instead of `submit_transaction()` wherever it's appropriate for your code to stop and wait for a transaction's [final result](finality-of-results.html) to be confirmed.
     
-- **Java** Poll the [XrplClient.transaction() method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html) to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the `LastLedgerIndex` of the transaction using the `XrplClient.ledger()` method.
+- **Java** Poll the [XrplClient.transaction() method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the `LastLedgerIndex` of the transaction using the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method.
 
 <!-- MULTICODE_BLOCK_START -->
 
