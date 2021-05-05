@@ -43,7 +43,8 @@ In this tutorial, you will need the [xrpl4j-client](https://javadoc.io/doc/org.x
 [xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), and 
 [xrpl4j-model](https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html)  modules. 
 
-Install with Maven:
+To install with Maven, add the following to your project's `pom.xml` file and then run `mvn install`:
+
 ```xml
 <dependencies>
     <dependency>
@@ -68,6 +69,8 @@ Install with Maven:
     </dependency>
 </dependencies>
 ```
+
+Check out the [xrpl4j sample project](https://github.com/XRPLF/xrpl4j-sample) for a full maven project containing the code from this tutorial.
 
 ## Start building
 {% set n = cycler(* range(1,99)) %}
