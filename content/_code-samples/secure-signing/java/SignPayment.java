@@ -11,8 +11,11 @@ WalletFactory walletFactory = DefaultWalletFactory.getInstance();
 Wallet wallet = walletFactory.randomWallet(true).wallet();
 
 // Construct a SingleKeySignatureService from the Wallet private key
-PrivateKey privateKey = PrivateKey.fromBase16EncodedPrivateKey(wallet.privateKey().get());
-SingleKeySignatureService signatureService = new SingleKeySignatureService(privateKey);
+PrivateKey privateKey = PrivateKey.fromBase16EncodedPrivateKey(
+  wallet.privateKey().get()
+);
+SingleKeySignatureService signatureService =
+  new SingleKeySignatureService(privateKey);
 
 // Construct and sign the Payment
 Payment payment = Payment.builder()
@@ -23,8 +26,10 @@ Payment payment = Payment.builder()
   .sequence(UnsignedInteger.valueOf(16126889))
   .signingPublicKey(signatureService.getPublicKey(KeyMetadata.EMPTY))
   .build();
-Payment payment = constructPayment(wallet.classicAddress(), signatureService.getPublicKey(KeyMetadata.EMPTY));
-SignedTransaction<Payment> signedPayment = signatureService.sign(KeyMetadata.EMPTY, payment);
+SignedTransaction<Payment> signedPayment = signatureService.sign(
+  KeyMetadata.EMPTY,
+  payment
+);
 System.out.println("Signed Payment: " + signedPayment.signedTransaction());
 
 
@@ -38,11 +43,14 @@ System.out.println("Signed Payment: " + signedPayment.signedTransaction());
 //
 // Though this implementation is more secure than SingleKeySignatureService
 // and better suited for server-side applications, keys are still held
-// in memory. For the best security, we suggest using a HSM-based implementation.
+// in memory. For the best security, we suggest using a HSM-based
+// implementation.
 ////////////////////////////////////////////////////////////////////////////
 
-// Construct a DerivedKeysSignatureService with a server secret (in this case "shh")
-DerivedKeysSignatureService signatureService = new DerivedKeysSignatureService("shh"::getBytes, VersionType.ED25519);
+// Construct a DerivedKeysSignatureService with a server secret
+// (in this case "shh")
+DerivedKeysSignatureService signatureService =
+  new DerivedKeysSignatureService("shh"::getBytes, VersionType.ED25519);
 
 // Choose a walletId. This can be anything as long as it is unique to your system.
 String walletId = "sample-wallet";
@@ -56,7 +64,8 @@ KeyMetadata keyMetadata = KeyMetadata.builder()
 
 // Get the public key and classic address for the given walletId
 PublicKey publicKey = signatureService.getPublicKey(keyMetadata);
-Address classicAddress = DefaultKeyPairService.getInstance().deriveAddress(publicKey.value());
+Address classicAddress = DefaultKeyPairService.getInstance()
+  .deriveAddress(publicKey.value());
 
 // Construct and sign the Payment
 Payment payment = Payment.builder()
@@ -68,5 +77,6 @@ Payment payment = Payment.builder()
   .signingPublicKey(publicKey.base16Encoded())
   .build();
 
-SignedTransaction<Payment> signedPayment = signatureService.sign(keyMetadata, payment);
+SignedTransaction<Payment> signedPayment = signatureService
+  .sign(keyMetadata, payment);
 System.out.println("Signed Payment: " + signedPayment.signedTransaction());
