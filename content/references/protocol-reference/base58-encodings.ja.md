@@ -1,6 +1,6 @@
 ---
 html: base58-encodings.html
-parent: api-conventions.html
+parent: protocol-reference.html
 blurb: 暗号鍵と関連データをbase58形式で表すフォーマットです。
 ---
 # base58エンコード

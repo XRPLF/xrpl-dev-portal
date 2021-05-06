@@ -1,6 +1,6 @@
 ---
 html: ledger-data-formats.html
-parent: rippled-api.html
+parent: protocol-reference.html
 blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
 ---
 # Ledger Data Formats

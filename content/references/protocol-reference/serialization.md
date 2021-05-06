@@ -1,6 +1,6 @@
 ---
 html: serialization.html
-parent: api-conventions.html
+parent: protocol-reference.html
 blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects.
 ---
 # Serialization Format

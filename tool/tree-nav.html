@@ -3,6 +3,7 @@
 {% endif %}
 
 {% macro page_w_children(pg, n) %}
+  {% if not (pg.nav_omit and pg != currentpage) %}
   {% if pg.is_ancestor_of(currentpage.html) %}
     {% set active_parent=True %}
   {% else %}
@@ -11,11 +12,20 @@
 
   <div class="nav-item {% if currentpage == pg %}active{% elif active_parent%}active-parent{% endif %}">
     {% if not pg.children %}
+      {% if "//" in pg.html %}
+    <a class="nav-link nav-leaf external-link" target="_blank" href="{% if "//" not in pg.html %}{{currentpage.prefix}}{% endif %}{{pg.html}}">{{ pg.name }}{% if pg.status is defined %} {% include 'template-status_'+pg.status+'.html' %}{% endif %} <i aria-hidden="true" class="fa fa-external-link"></i></a>
+      {% else %}
     <a class="nav-link nav-leaf" href="{% if "//" not in pg.html %}{{currentpage.prefix}}{% endif %}{{pg.html}}">{{ pg.name }}{% if pg.status is defined %} {% include 'template-status_'+pg.status+'.html' %}{% endif %}</a>
+      {% endif %}
     {% else %}
 
       <a class="nav-toggler {% if not active_parent and currentpage != pg %}collapsed{% endif %}" role="button" data-toggle="collapse" href="#tree_nav_group_{{n}}" aria-expanded="{% if active_parent or currentpage == pg %}true{% else %}false{% endif %}" aria-controls="tree_nav_group_{{n}}"></a>
-    <a class="nav-link" href="{% if "//" not in pg.html %}{{currentpage.prefix}}{% endif %}{{pg.html}}">{{ pg.name }}{% if pg.status is defined %} {% include 'template-status_'~pg.status~'.html' %}{% endif %}</a>
+
+      {% if "//" in pg.html %}
+        <a class="nav-link external-link" target="_blank" href="{% if "//" not in pg.html %}{{currentpage.prefix}}{% endif %}{{pg.html}}">{{ pg.name }}{% if pg.status is defined %} {% include 'template-status_'+pg.status+'.html' %}{% endif %} <i aria-hidden="true" class="fa fa-external-link"></i></a>
+      {% else %}
+        <a class="nav-link" href="{% if "//" not in pg.html %}{{currentpage.prefix}}{% endif %}{{pg.html}}">{{ pg.name }}{% if pg.status is defined %} {% include 'template-status_'+pg.status+'.html' %}{% endif %}</a>
+      {% endif %}
 
     <nav class="nav flex-column {% if active_parent or pg == currentpage %}show {% else %}collapse{% endif %}" id="tree_nav_group_{{n}}">
     {% for child in pg.children %}
@@ -25,6 +35,7 @@
 
     {% endif %}
   </div>
+  {% endif %}
 {% endmacro %}
 
 <nav class="nav flex-column dactyl-tree-nav">

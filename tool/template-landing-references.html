@@ -11,7 +11,7 @@
 
   {% set flag_n = cycler(* range(1,99)) %}
   <section class="container-fluid card-grid card-grid-4xN">
-    {% for page in currentpage.children %}
+    {% for page in currentpage.children if not page.nav_omit %}
       <div class="card">
         <div class="card-header">
           <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>

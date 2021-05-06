@@ -1,6 +1,6 @@
 ---
 html: basic-data-types.html
-parent: api-conventions.html
+parent: protocol-reference.html
 blurb: さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。
 ---
 # 基本的なデータ型
