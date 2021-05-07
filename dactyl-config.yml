@@ -1011,6 +1011,10 @@ pages:
         targets:
             - en
             - ja
+    -   md: tutorials/get-started/get-started-using-java.md
+        targets:
+            - en
+            - ja
 
     -   md: tutorials/get-started/get-started-with-the-rippled-api.md
         targets:
