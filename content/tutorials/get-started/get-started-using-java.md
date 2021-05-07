@@ -70,7 +70,7 @@ To install with Maven, add the following to your project's `pom.xml` file and th
 </dependencies>
 ```
 
-Check out the [xrpl4j sample project](https://github.com/XRPLF/xrpl4j-sample) for a full maven project containing the code from this tutorial.
+Check out the [xrpl4j sample project](https://github.com/XRPLF/xrpl4j-sample) for a full Maven project containing the code from this tutorial.
 
 ## Start building
 {% set n = cycler(* range(1,99)) %}
@@ -95,7 +95,7 @@ you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/late
 
 The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](parallel-networks.html). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
 
-* By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself (the core server connects to the Mainnet by default and you can [change the configuration to use an altnet](connect-your-rippled-to-the-xrp-test-net.html) ). [There are good reasons to run your own core server](the-rippled-server.html#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
+* By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](connect-your-rippled-to-the-xrp-test-net.html). [There are good reasons to run your own core server](the-rippled-server.html#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
         final HttpUrl rippledUrl = HttpUrl.get("http://localhost:5005/");
         XrplClient xrplClient = new XrplClient(rippledUrl);
