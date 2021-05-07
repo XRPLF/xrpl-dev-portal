@@ -61,7 +61,7 @@ To make queries and submit transactions, you need to establish a connection to t
 
 The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](parallel-networks.html). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
 
-* By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself (the core server connects to the Mainnet by default and you can [change the configuration to use an altnet](connect-your-rippled-to-the-xrp-test-net.html) ). [There are good reasons to run your own core server](the-rippled-server.html#reasons-to-run-your-own-server). If you run your own server, you can coconnect to it like so:
+* By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](connect-your-rippled-to-the-xrp-test-net.html). [There are good reasons to run your own core server](the-rippled-server.html#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
         from xrpl.clients import JsonRpcClient
         JSON_RPC_URL = "http://localhost:5005/"
@@ -210,7 +210,7 @@ The response fields that you want to inspect in most cases are:
 
 * `account_data.Balance` — This is the account's balance of [XRP, in drops][]. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](transaction-cost.html#current-transaction-cost) for a given transaction.
 
-* `validated` — Indicates whether the returned data is from a [validated ledger](ledgers.html#open-closed-and-validated-ledgers). When sending transactions, it's important to ensure that the results are in a [final](finality-of-results.html) state in a validated ledger before further processing the transaction. For more information about best practices for transaction processing, see [Reliable Transaction Submission](reliable-transaction-submission.html).
+* `validated` — Indicates whether the returned data is from a [validated ledger](ledgers.html#open-closed-and-validated-ledgers). When inspecting transactions, it's important to confirm that [the results are final](finality-of-results.html) before further processing the transaction. If `validated` is `true` then you know for sure the results won't change. For more information about best practices for transaction processing, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 For a detailed description of every response field, see [account_info](account_info.html#response-format).
 
