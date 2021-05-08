@@ -65,7 +65,9 @@ Content-Type: application/json
 }
 ```
 
-The response to this command shows you the current status of the server. For more information, see the [server_info method][].
+The response to shows you the current status of the server.
+
+Read more: [Request Formatting >](request-formatting.html#json-rpc-format) [Response Formatting >](response-formatting.html) [About the server_info method >][server_info method]
 
 ## Commandline
 
@@ -77,7 +79,7 @@ Example commandline request:
 rippled --conf=/etc/opt/ripple/rippled.cfg server_info
 ```
 
-For more information on `rippled`'s commandline usage, see [Commandline Usage Reference](https://xrpl.org/commandline-usage.html).
+Read more: [Commandline Usage Reference >](commandline-usage.html)
 
 **Caution:** The commandline interface is intended for administrative purposes only and is _not a supported API_.  New versions of `rippled` may introduce breaking changes to the commandline API without warning!
 
