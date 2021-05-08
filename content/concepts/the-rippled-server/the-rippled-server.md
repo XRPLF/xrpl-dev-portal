@@ -10,7 +10,7 @@ blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This
 
 ## Reasons to Run Your Own Server
 
-For lighter use cases and individual servers, you can often rely on free [public servers](https://xrpl.org/get-started-with-the-rippled-api.html#public-servers). However, the more serious your use of the XRP Ledger becomes, the more important it becomes to have your own infrastructure.
+For lighter use cases and individual servers, you can often rely on free [public servers][]. However, the more serious your use of the XRP Ledger becomes, the more important it becomes to have your own infrastructure.
 
 There are lots of reasons you might want to run your own `rippled` server, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it. Of course, you must practice good network security to protect your server from malicious hackers.
 

@@ -69,7 +69,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
     See the example [core server config file](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
 
-* By using one of the [available public servers](get-started-with-the-rippled-api.html#public-servers):
+* By using one of the available [public servers][]:
 
         from xrpl.clients import JsonRpcClient
         JSON_RPC_URL = "https://s2.ripple.com:51234/"

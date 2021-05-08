@@ -1,44 +1,35 @@
 ---
-html: get-started-with-the-rippled-api.html
+html: get-started-using-http-websocket-apis.html
 parent: get-started.html
 blurb: Unleash the full power of the XRP Ledger's native APIs.
 cta_text: Get Started
 ---
-# Get Started with XRP Ledger APIs
+# Get Started Using HTTP / WebSocket APIs
 
-The XRP Ledger's core server software is [`rippled`](the-rippled-server.html). You can jump straight into developing on the XRP Ledger by accessing the API of a `rippled` server.
+If you don't have or don't want to use a [client library](client-libraries.html) in your preferred programming language, you can access the XRP Ledger directly through the APIs of its core server software, [`rippled`](the-rippled-server.html). The server provides APIs over JSON-RPC and WebSocket protocols. If you don't [run your own instance of `rippled`](install-rippled.html) you can still use a [public server][public servers].
 
-The quickest way to dive into the API is with the [**WebSocket API Tool**](websocket-api-tool.html), or use the [XRP Ledger Explorer](https://livenet.xrpl.org/) to watch the progress of the ledger live.
+**Tip:** You can dive right into the API is with the [**WebSocket API Tool**](websocket-api-tool.html), or use the [XRP Ledger Explorer](https://livenet.xrpl.org/) to watch the progress of the ledger live.
 
-You can also [run your own instance of `rippled`](install-rippled.html) or use a [public server](#public-servers).
+## Differences Between JSON-RPC and WebSocket
 
-## Public Servers
+Both JSON-RPC and WebSocket are HTTP-based protocols, and for the most part the data provided over both protocols is the same. The major differences are as follows:
 
-Ripple provides several public servers for the benefit of the XRP Ledger community:
+- JSON-RPC uses individual HTTP requests and responses for each call, similar to a RESTful API. You can use any common HTTP client such as [curl](https://curl.haxx.se/), [Postman](https://www.postman.com/downloads/), or [Requests](https://docs.python-requests.org/) to access this API.
+- WebSocket uses a persistent connection that allows the server to push data to the client. Functions that require push messages, like [event subscriptions](subscribe.html), are only available using WebSocket.
 
-| Operator  | [Network][] | JSON-RPC URL | WebSocket URL | Notes                |
-|:----------|:------------|:-------------|:--------------|:---------------------|
-| XRP Ledger Foundation | **Mainnet** | `https://xrpl.ws/` | `wss://xrpl.ws/` | Full history server cluster. |
-| Ripple¹   | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | General purpose server cluster |
-| Ripple¹   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [Full-history server](ledger-history.html#full-history) cluster |
-| Ripple¹   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net/` | Testnet public server |
-| Ripple¹   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net/` | Devnet public server |
-
-[Network]: parallel-networks.html
-
-¹Ripple's public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so. Ripple includes [Reporting Mode][] servers in its public clusters.
+Both APIs can be served unencrypted (`http://` and `ws://`) or encrypted using TLS (`https://` and `wss://`). Unencrypted connections should not be served over open networks, but can be used when the client is on the same machine as the server.
 
 
 ## Admin Access
 
-`rippled` API methods are divided into [Public Methods](public-rippled-methods.html) and [Admin Methods](admin-rippled-methods.html) so that organizations can offer public servers for the benefit of the community. To access admin methods, or admin functionality of public methods, you must connect to the API on a **port and IP address marked as admin** in the server's config file.
+The API methods are divided into [Public Methods](public-rippled-methods.html) and [Admin Methods](admin-rippled-methods.html) so that organizations can offer public servers for the benefit of the community. To access admin methods, or admin functionality of public methods, you must connect to the API on a **port and IP address marked as admin** in the server's config file.
 
 The [example config file](https://github.com/ripple/rippled/blob/f00f263852c472938bf8e993e26c7f96f435935c/cfg/rippled-example.cfg#L1154-L1179) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
 
 ## WebSocket API
 
-If you are looking to try out some methods on the XRP Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [Ripple WebSocket API Tool](websocket-api-tool.html). Later on, when you want to connect to your own `rippled` server, you can [build your own client in the browser](monitor-incoming-payments-with-websocket.html) or [in Node.js](https://www.npmjs.com/package/ws).
+If you are looking to try out some methods on the XRP Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [WebSocket API Tool](websocket-api-tool.html). Later on, when you want to connect to your own `rippled` server, you can [build your own client](monitor-incoming-payments-with-websocket.html) or use a [client library](client-libraries.html) with WebSocket support.
 
 Example WebSocket API request:
 
@@ -50,7 +41,9 @@ Example WebSocket API request:
 }
 ```
 
-The response to [this command][server_info method] shows you the current status of the server. Or, read more about [Request Formatting](request-formatting.html) and [Response Formatting](response-formatting.html).
+The response to shows you the current status of the server.
+
+Read more: [Request Formatting >](request-formatting.html) [Response Formatting >](response-formatting.html) [About the server_info method >][server_info method]
 
 ## JSON-RPC
 

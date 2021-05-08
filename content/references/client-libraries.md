@@ -11,9 +11,9 @@ For other programming languages, you can access the XRP Ledger through the [HTTP
 
 | Language | Library Name | Get Started | API Reference | Source Code |
 |----------|--------------|-------------|---------------|-------------|
-| **Python**   | `xrpl-py`      | [Get Started](get-started-using-python.html) | [API Reference](https://xrpl-py.readthedocs.io/) | [Repo](https://github.com/XRPLF/xrpl-py) |
-| **JavaScript** / **TypeScript** | `ripple-lib` | [Get Started](get-started-with-rippleapi-for-javascript.html) |  [API Reference](rippleapi-reference.html) | [Repo](https://github.com/ripple/ripple-lib) |
+| **Python**   | `xrpl-py`      | [Get Started Using Python](get-started-using-python.html) | [API Reference](https://xrpl-py.readthedocs.io/) | [Repo](https://github.com/XRPLF/xrpl-py) |
+| **JavaScript** / **TypeScript** | `ripple-lib` | [Get Started](get-started-using-node-js.html) |  [API Reference](rippleapi-reference.html) | [Repo](https://github.com/ripple/ripple-lib) |
 | **C++**      | `rippled` Signing Library | [Get Started](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library) |  | (Part of [`rippled`](https://github.com/ripple/rippled/)) |
-| **Java** | `xrpl4j` | [README](https://github.com/XRPLF/xrpl4j#readme) | [API Reference](https://github.com/XRPLF/xrpl4j/tree/main/xrpl4j-integration-tests)  | [Repo](https://github.com/XRPLF/xrpl4j) |
+| **Java** | `xrpl4j` | [Get Started Using Java](get-started-using-java.html) | [API Reference](https://javadoc.io/doc/org.xrpl/)  | [Repo](https://github.com/XRPLF/xrpl4j) |
 
 **Tip:** To add a client library not listed here, please [suggest changes to this page]({{target.github_forkurl}}/edit/{{target.github_branch}}/content/{{currentpage.md}})!

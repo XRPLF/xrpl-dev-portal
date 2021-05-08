@@ -1,5 +1,5 @@
 ---
-html: get-started-with-rippleapi-for-javascript.html
+html: get-started-using-node-js.html
 parent: get-started.html
 blurb: XRP Ledgerに照会するエントリーレベルのJavaScriptアプリケーションを構築します。
 ---
@@ -7,7 +7,7 @@ blurb: XRP Ledgerに照会するエントリーレベルのJavaScriptアプリ�
 
 このチュートリアルでは、[Node.js](http://nodejs.org/)と[RippleAPI](rippleapi-reference.html)（XRP LedgerにアクセスするためのJavaScript API）を使用して、XRP Ledgerに接続されるアプリケーションを開発するための基本事項を説明します。
 
-このガイドで使用しているスクリプトと構成ファイルは、[Ripple開発者ポータルのGitHubリポジトリで入手できます](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart)。
+このガイドで使用しているスクリプトと構成ファイルは、[このサイトのGitHubリポジトリで入手できます](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/rippleapi_quickstart)。
 
 
 <!--#{ keep multiple H1s so that all steps are surfaced in sidebar. Do not change H1 titles unless they provide a clear improvement bc they are linked to on external sites. }# -->

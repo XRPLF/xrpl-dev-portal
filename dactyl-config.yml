@@ -157,7 +157,6 @@ targets:
             "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポーティングモード"
             # Fix links for untranslated get-started-using-python.html:
             "the-rippled-server.html#reasons-to-run-your-own-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
-            "get-started-with-the-rippled-api.html#public-servers": "get-started-with-the-rippled-api.html#公開サーバー"
             "cryptographic-keys.html#key-components": "cryptographic-keys.html#キーの生成"
             "accounts.html#addresses": "accounts.html#アドレス"
             "cryptographic-keys.html#private-key": "cryptographic-keys.html#キーの生成"
@@ -1007,29 +1006,55 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/get-started/public-servers.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/get-started/get-started-using-python.md
         targets:
             - en
             - ja
+
     -   md: tutorials/get-started/get-started-using-java.md
         targets:
             - en
             - ja
 
-    -   md: tutorials/get-started/get-started-with-the-rippled-api.md
+    -   md: tutorials/get-started/get-started-using-node-js.md
         targets:
             - en
 
-    -   md: tutorials/get-started/get-started-with-the-rippled-api.ja.md
+    -   md: tutorials/get-started/get-started-using-node-js.ja.md
         targets:
             - ja
 
-    -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.md
+        # Redirect for old JS Client Library URL
+    -   name: Get Started Using Node.js
+        html: get-started-with-rippleapi-for-javascript.html
+        template: template-redirect.html
+        redirect_url: get-started-using-node-js.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/get-started/get-started-using-http-websocket-apis.md
         targets:
             - en
 
-    -   md: tutorials/get-started/get-started-with-rippleapi-for-javascript.ja.md
+    -   md: tutorials/get-started/get-started-using-http-websocket-apis.ja.md
         targets:
+            - ja
+
+        # Redirect for old HTTP/WebSocket APIs URL
+    -   name: Get Started Using HTTP / WebSocket APIs
+        html: get-started-with-the-rippled-api.html
+        template: template-redirect.html
+        redirect_url: get-started-using-http-websocket-apis.html
+        nav_omit: true
+        targets:
+            - en
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.md
