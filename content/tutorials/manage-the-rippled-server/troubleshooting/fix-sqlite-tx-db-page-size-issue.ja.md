@@ -153,7 +153,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
 11. `rippled`サービスが正常に起動したかどうかを確認します。
 
-    [コマンドラインインターフェイス](get-started-with-the-rippled-api.html#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPC要求を受け入れないように設定している場合を除く）。次に例を示します。
+    [コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPC要求を受け入れないように設定している場合を除く）。次に例を示します。
 
         /opt/ripple/bin/rippled server_info
 

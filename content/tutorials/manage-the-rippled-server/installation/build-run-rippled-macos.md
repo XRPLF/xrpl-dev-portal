@@ -195,7 +195,7 @@ For information about `rippled` log messages, see [Understanding Log Messages](u
     - [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu.html) - Install a pre-built binary on Ubuntu for production use
     - [Configure rippled](configure-rippled.html)
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
-    - [Get Started with the rippled API](get-started-with-the-rippled-api.html)
+    - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
 - **References:**
     - [rippled API Reference](rippled-api.html)
         - [`rippled` Commandline Usage](commandline-usage.html)

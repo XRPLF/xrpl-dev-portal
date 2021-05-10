@@ -9,7 +9,7 @@ The `rippled` server software can run in several modes depending on its configur
 
 - [**P2P Mode**](#p2p-mode) - This is the main mode of the server: it follows the peer-to-peer network, processes transactions, and maintains some amount of [ledger history](ledger-history.html). This mode can be configured to do any or all of the following roles:
     - [**Validator**](#validators) - Helps secure the network by participating in consensus
-    - [**API Server**](#api-servers) - Provides [API access](get-started-with-the-rippled-api.html) to read data from the shared ledger, submit transactions, and watch activity in the ledger. Optionally, this can be a [**Full History Server**](#full-history-servers), which keeps a complete record of transaction and ledger history.
+    - [**API Server**](#api-servers) - Provides [API access](get-started-using-http-websocket-apis.html) to read data from the shared ledger, submit transactions, and watch activity in the ledger. Optionally, this can be a [**Full History Server**](#full-history-servers), which keeps a complete record of transaction and ledger history.
     - [**Hub Server**](#public-hubs) - Relays messages between many other members of the peer-to-peer network.
 - [**Reporting mode**](#reporting-mode) - A specialized mode for serving API requests from a relational database. Since it does not participate in the peer-to-peer network, it requires a connection to a P2P Mode server. [New in: rippled 1.7.0][]
 - [**Stand-alone mode**](#stand-alone-mode) - An offline mode for testing. Does not connect to the peer-to-peer network or use consensus.
@@ -104,6 +104,6 @@ In stand-alone mode, the server operates without attempting to connect to the pe
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

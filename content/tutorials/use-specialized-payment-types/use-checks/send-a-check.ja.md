@@ -26,7 +26,7 @@ XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FA
 - Checkを受領する資金供給のあるアカウントの**アドレス**。
 - トランザクションに安全に署名できる手段（[RippleAPI][]や各自の[`rippled`サーバー](install-rippled.html)など）。
 - `rippled`サーバーに接続できるクライアントライブラリ（[RippleAPI][]、HTTPライブラリ、またはWebSocketライブラリなど）。
-    - 詳細は、[`rippled` APIの使用開始](get-started-with-the-rippled-api.html)を参照してください。
+    - 詳細は、[`rippled` APIの使用開始](get-started-using-http-websocket-apis.html)を参照してください。
 
 ## {{send_n.next()}}.CheckCreateトランザクションの準備
 

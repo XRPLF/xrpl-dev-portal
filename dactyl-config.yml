@@ -164,6 +164,8 @@ targets:
             "transaction-cost.html#current-transaction-cost": "transaction-cost.html#現在のトランザクションコスト"
             "ledgers.html#open-closed-and-validated-ledgers": "ledgers.html#ツリーの形式"
             "account_info.html#response-format": "account_info.html#応答フォーマット"
+            # Fix link from untranslated public-servers.html:
+            "ledger-history.html#full-history": "ledger-history.html#すべての履歴"
 
 
     -   name: xrp-api-only

@@ -181,7 +181,7 @@ blurb: macOSでrippledを自分でコンパイルします。
     - [Ubuntu Linuxでrippledをインストール](install-rippled-on-ubuntu.html)（本番環境用の、Ubuntu上の事前構築済みバイナリーをインストール）
     - [rippledの構成](configure-rippled.html)
     - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
-    - [rippled APIの使用開始](get-started-with-the-rippled-api.html)
+    - [rippled APIの使用開始](get-started-using-http-websocket-apis.html)
 - **リファレンス:**
     - [rippled APIリファレンス](rippled-api.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)

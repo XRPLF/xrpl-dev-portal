@@ -98,7 +98,7 @@ The `rippled` v1.3 package includes an updated auto-update script that works on 
 - **Tutorials:**
     - [Update Automatically on Linux](update-rippled-automatically-on-linux.html)
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
-    - [Get Started with the rippled API](get-started-with-the-rippled-api.html)
+    - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
 - **References:**
     - [rippled API Reference](rippled-api.html)
         - [`rippled` Commandline Usage](commandline-usage.html)

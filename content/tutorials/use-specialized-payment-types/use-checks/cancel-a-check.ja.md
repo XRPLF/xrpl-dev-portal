@@ -22,7 +22,7 @@ _[Checks Amendment][]が必要です。_
 - CheckCancelトランザクションを送信する資金供給のあるアカウントの**アドレス**と**シークレットキー**。Checkが有効期限切れでない限り、このアドレスは、Checkの送金元または受取人のいずれかでなければなりません。
 - トランザクションに安全に署名できる手段（[RippleAPI][]や各自の[`rippled`サーバー](install-rippled.html)など）。
 - `rippled`サーバーに接続できるクライアントライブラリ（[RippleAPI][]、HTTPライブラリ、またはWebSocketライブラリなど）。
-    - 詳細は、[`rippled` APIの使用開始](get-started-with-the-rippled-api.html)を参照してください。
+    - 詳細は、[`rippled` APIの使用開始](get-started-using-http-websocket-apis.html)を参照してください。
 
 
 ## {{cancel_n.next()}}.CheckCancelトランザクションの準備
