@@ -1057,11 +1057,11 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/use-simple-xrp-payments/send-xrp.md
+    -   md: tutorials/get-started/send-xrp.md
         targets:
             - en
 
-    -   md: tutorials/use-simple-xrp-payments/send-xrp.ja.md
+    -   md: tutorials/get-started/send-xrp.ja.md
         targets:
             - ja
 
@@ -1093,27 +1093,27 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/get-started/set-up-secure-signing.md
+    -   md: tutorials/production-readiness/set-up-secure-signing.md
         targets:
             - en
 
-    -   md: tutorials/get-started/set-up-secure-signing.ja.md
+    -   md: tutorials/production-readiness/set-up-secure-signing.ja.md
         targets:
             - ja
 
-    -   md: tutorials/get-started/look-up-transaction-results.md
+    -   md: tutorials/production-readiness/look-up-transaction-results.md
         targets:
             - en
 
-    -   md: tutorials/get-started/look-up-transaction-results.ja.md
+    -   md: tutorials/production-readiness/look-up-transaction-results.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.md
+    -   md: tutorials/production-readiness/reliable-transaction-submission.md
         targets:
             - en
 
-    -   md: tutorials/use-simple-xrp-payments/reliable-transaction-submission.ja.md
+    -   md: tutorials/production-readiness/reliable-transaction-submission.ja.md
         targets:
             - ja
 
@@ -1176,11 +1176,11 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.md
+    -   md: tutorials/manage-account-settings/send-a-multi-signed-transaction.md
         targets:
             - en
 
-    -   md: tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.ja.md
+    -   md: tutorials/manage-account-settings/send-a-multi-signed-transaction.ja.md
         targets:
             - ja
 
@@ -1249,110 +1249,110 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/send-a-time-held-escrow.md
+    -   md: tutorials/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/send-a-time-held-escrow.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.md
+    -   md: tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.md
+    -   md: tutorials/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/look-up-escrows.md
+    -   md: tutorials/use-specialized-payment-types/use-escrows/look-up-escrows.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/look-up-escrows.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-escrows/look-up-escrows.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
+    -   md: tutorials/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
         targets:
             - en
             - ja
 
     #TODO: split concept info off of the paychan tutorial
-    -   md: tutorials/use-complex-payment-types/use-payment-channels.md
+    -   md: tutorials/use-specialized-payment-types/use-payment-channels.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-payment-channels.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-payment-channels.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
+    -   md: tutorials/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
         targets:
             - en
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-checks/use-checks.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/use-checks.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-checks/use-checks.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/use-checks.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/send-a-check.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-checks/send-a-check.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/send-a-check.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-checks/cash-a-check-for-a-flexible-amount.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-checks/cancel-a-check.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/cancel-a-check.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-checks/cancel-a-check.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/cancel-a-check.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-sender.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-sender.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender.ja.md
         targets:
             - ja
 
-    -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-recipient.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md
         targets:
             - en
 
-    -   md: tutorials/use-complex-payment-types/use-checks/look-up-checks-by-recipient.ja.md
+    -   md: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.ja.md
         targets:
             - ja
 
