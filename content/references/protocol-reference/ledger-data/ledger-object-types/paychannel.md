@@ -4,7 +4,7 @@ parent: ledger-object-types.html
 blurb: A channel for asynchronous XRP payments.
 ---
 # PayChannel
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L141-L155 "Source")
+[[Source]](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
 
 _(Added by the [PayChan amendment][].)_
 
@@ -60,6 +60,8 @@ A `PayChannel` object has the following fields:
 | `CancelAfter`       | Number    | UInt32            | _(Optional)_ The immutable expiration time for this payment channel, in [seconds since the Ripple Epoch][]. This channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](ledger-header.html). This is optionally set by the transaction that created the channel, and cannot be changed. |
 | `SourceTag`         | Number    | UInt32            | _(Optional)_ An arbitrary tag to further specify the source for this payment channel, such as a hosted recipient at the owner's address. |
 | `DestinationTag`    | Number    | UInt32            | _(Optional)_ An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
+| `DestinationNode`   | String    | UInt64    | _(Optional)_ A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on payment channels created before enabling the [fixPayChanRecipientOwnerDir amendment][]. |
+
 
 
 ## Setting Channel Expiration

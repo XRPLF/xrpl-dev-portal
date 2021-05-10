@@ -4,7 +4,7 @@ parent: ledger-object-types.html
 blurb: 非同期XRP支払い用のチャネルです。
 ---
 # PayChannel
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L141-L155 "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
 
 _（[PayChan Amendment][]が必要です。）_
 
@@ -60,6 +60,7 @@ Payment Channelの使用例については、[Payment Channelのチュートリ�
 | `CancelAfter`       | 数値    | UInt32            | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](ledger-header.html)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。 |
 | `SourceTag`         | 数値    | UInt32            | _（省略可）_ このPayment Channelの支払元（所有者のアドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 | `DestinationTag`    | 数値    | UInt32            | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
+| `DestinationNode`   | 文字列    | UInt64    | _（省略可）_ 宛先の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。[fixPayChanRecipientOwnerDir Amendment][]を有効にする前に作成されたPayment Channelでは省略されています。 |
 
 
 ## Channel有効期限の設定
