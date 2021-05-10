@@ -1,4 +1,104 @@
 /* TABLE STYLING */
+
+.content table {
+  clear: right;
+  margin-bottom: 48px;
+}
+
+.content table code {
+  word-break: normal;
+  white-space: nowrap;
+}
+
+th {
+  border-bottom: 2px solid $gray-200;
+}
+tr {
+  border-bottom: 1px solid $gray-200;
+}
+
+th, td {
+  padding: 0.2em;
+  vertical-align: text-top;
+  padding: 12px;
+}
+
+td:nth-child(1) {
+  font-weight: bold;
+}
+
+
+// Tables on mobile
+@include media-breakpoint-down(md) {
+  
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    margin: 0 0 1rem 0;
+  }
+    
+  tr:nth-child(odd) {
+    background: #151515;
+  }
+  
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    // padding-left: 25%;
+  }
+
+  td:before {
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 12px;
+    left: 6px;
+    width: 25%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  // display headers inline. 
+  #table_accounts + table {
+
+    td {
+      padding-left: 25%;
+    }
+
+    td:nth-of-type(1):before { content: "Address"; }
+		td:nth-of-type(2):before { content: "Name"; }
+		td:nth-of-type(3):before { content: "Meaning"; }
+		td:nth-of-type(4):before { content: "Black Hole?"; }
+  }
+  #table_ledgers + table {
+    td {
+      padding-left: 25%;
+    }
+    td:nth-of-type(1):before { content: "Ledger Type:"; }
+		td:nth-of-type(2):before { content: "Open"; }
+		td:nth-of-type(3):before { content: "Closed"; }
+		td:nth-of-type(4):before { content: "Validated"; }
+  }
+
+
+
+
+}
+
+
+
 .dblue {
   color: #656E81;
 }
