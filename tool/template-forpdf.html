@@ -11,22 +11,8 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <!-- jQuery -->
-    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
-
-    <!-- Stylesheet -->
-    <link href="assets/css/devportal.css" rel="stylesheet" />
-    <link href="assets/css/pdf.css" rel="stylesheet" />
-
-
-    <!-- syntax highlighting -->
-    <link rel="stylesheet" href="assets/vendor/docco.min.css">
-    <script src="assets/vendor/highlight.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            hljs.initHighlighting();
-        });
-    </script>
+    <script src="assets/vendor/jquery-3.6.0.min.js"></script>
+    <link href="{{currentpage.prefix}}assets/css/devportal2020.css" rel="stylesheet" />
 
     {% block head %}
 
@@ -48,9 +34,10 @@
 
 <!-- Non-blocking resources -->
 <!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap.min.js"></script>
+<script src="{{currentpage.prefix}}assets/vendor/bootstrap.min.js"></script>
 <!-- fontawesome icons -->
-<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="{{currentpage.prefix}}assets/vendor/fontawesome/css/font-awesome.min.css" />
+
 
 </body>
 </html>
