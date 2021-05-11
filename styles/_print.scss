@@ -33,7 +33,10 @@
   header,
   footer,
   aside {
-    display: none;
+    display: none !important;
+  }
+  .navbar {
+    display: none !important;
   }
   /* Full-width content body */
   .content, #main_content_body {
@@ -41,8 +44,14 @@
     display: block;
     width: auto;
     height: auto;
+    color:black;
     max-width: 100%;
   }
+
+  .container {
+    margin-top: 1rem !important;
+    }
+
   #main_content_wrapper {
     margin-top: 0;
   }
@@ -54,5 +63,12 @@
   }
   .sidebar-primary .row {
     display: block;
+  }
+
+  #feedback-content{
+    display:none !important;
+  }
+  .jump-to-top {
+    display: none !important;
   }
 }
