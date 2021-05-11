@@ -32,6 +32,8 @@
 [peer reservation]: peer-protocol.html#fixed-peers-and-peer-reservations
 [peer reservations]: peer-protocol.html#fixed-peers-and-peer-reservations
 [ピアリザベーション]: peer-protocol.html#固定ピアとピアリザベーション
+[public servers]: public-servers.html
+[公開サーバー]: public-servers.html
 [result code]: transaction-results.html
 [seconds since the Ripple Epoch]: basic-data-types.html#specifying-time
 [Reporting Mode]: rippled-server-modes.html#reporting-mode

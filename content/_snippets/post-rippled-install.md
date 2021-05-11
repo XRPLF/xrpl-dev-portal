@@ -2,7 +2,7 @@ It can take several minutes for `rippled` to sync with the rest of the network, 
 
 For information about `rippled` log messages, see [Understanding Log Messages](understanding-log-messages.html).
 
-After your `rippled` has synchronized with the rest of the network, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger. Use [`rippled` server states](rippled-server-states.html) to tell whether your `rippled` server has synchronized with the network. You can use the [`rippled` commandline interface](get-started-with-the-rippled-api.html#commandline) to test this quickly:
+After your `rippled` has synchronized with the rest of the network, you have a fully functional stock `rippled` server that you can use for local signing and API access to the XRP Ledger. Use [`rippled` server states](rippled-server-states.html) to tell whether your `rippled` server has synchronized with the network. You can use the [`rippled` commandline interface](get-started-using-http-websocket-apis.html#commandline) to test this quickly:
 
 {% if currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md" or
       currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md" %}

@@ -26,7 +26,7 @@ To send a Check with this tutorial, you need the following:
 - The **address** of a funded account to receive the Check.
 - A secure way to sign transactions, such as [RippleAPI][] or your own [`rippled` server](install-rippled.html).
 - A client library that can connect to a `rippled` server, such as [RippleAPI][] or any HTTP or WebSocket library.
-    - For more information, see [Get Started with the `rippled` API](get-started-with-the-rippled-api.html).
+    - For more information, see [Get Started with the `rippled` API](get-started-using-http-websocket-apis.html).
 
 ## {{send_n.next()}}. Prepare the CheckCreate transaction
 

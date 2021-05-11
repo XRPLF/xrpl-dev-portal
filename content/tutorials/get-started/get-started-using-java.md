@@ -7,7 +7,6 @@ category: Get Started
 blurb: Build a simple Java app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 filters:
-    - interactive_steps
     - include_code
 ---
 
@@ -38,10 +37,10 @@ In this tutorial, you'll learn:
 The [`xrpl4j` library](https://github.com/XRPLF/xrpl4j) is available on [Maven Central](https://search.maven.org/artifact/org.xrpl/xrpl4j-parent).
 `xrpl4j` is split into multiple artifacts, which can be imported as needed.
 
-In this tutorial, you will need the [xrpl4j-client](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html), 
-[xrpl4j-address-codec](https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html), 
-[xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), and 
-[xrpl4j-model](https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html)  modules. 
+In this tutorial, you will need the [xrpl4j-client](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html),
+[xrpl4j-address-codec](https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html),
+[xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), and
+[xrpl4j-model](https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html) modules.
 
 To install with Maven, add the following to your project's `pom.xml` file and then run `mvn install`:
 
@@ -86,7 +85,7 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
 ### {{n.next()}}. Connect to the XRP Ledger
 
-To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl4j`, 
+To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with `xrpl4j`,
 you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html):
 
 {{ include_code("_code-samples/xrpl4j/GetAccountInfo.java", start_with="// Construct a network client", end_before="// Create a Wallet using a WalletFactory", language="java") }}
@@ -102,21 +101,21 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
     See the example [core server config file](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
 
-* By using one of the [available public servers](get-started-with-the-rippled-api.html#public-servers):
+* By using one of the available [public servers][]:
 
         final HttpUrl rippledUrl = HttpUrl.get("https://s2.ripple.com:51234/");
         XrplClient xrplClient = new XrplClient(rippledUrl);
 
 ### {{n.next()}}. Generate wallet
 
-To store value and execute transactions on the XRP Ledger, you need to create a wallet: 
-a [set of keys](cryptographic-keys.html#key-components) and an [address](accounts.html#addresses) that's 
-been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). 
-The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to 
-sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up 
+To store value and execute transactions on the XRP Ledger, you need to create a wallet:
+a [set of keys](cryptographic-keys.html#key-components) and an [address](accounts.html#addresses) that's
+been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html).
+The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to
+sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up
 a [secure signing method](set-up-secure-signing.html).
 
-For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-faucet.html) to fund 
+For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-faucet.html) to fund
 an account on the Testnet or Devnet.
 
 To make it easy to generate a new, random Wallet, `xrpl4j` provides the [`DefaultWalletFactory`](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html).
@@ -131,10 +130,10 @@ System.out.println(testWallet);
 
 // print output
 Wallet {
-    privateKey= -HIDDEN-, 
-    publicKey=ED90635A6F2A5905D3D5CD2C14905FFB2D838185993576CA4CEE24A920D0D6BD6B, 
-    classicAddress=raj5eirfEpbN9YzG9FzB8ZPNyjpFvH6ycV, 
-    xAddress=T76mQFr9zLGi2LCjVDgJ7mEQCk4767SdEL32mZFygpdGcFf, 
+    privateKey= -HIDDEN-,
+    publicKey=ED90635A6F2A5905D3D5CD2C14905FFB2D838185993576CA4CEE24A920D0D6BD6B,
+    classicAddress=raj5eirfEpbN9YzG9FzB8ZPNyjpFvH6ycV,
+    xAddress=T76mQFr9zLGi2LCjVDgJ7mEQCk4767SdEL32mZFygpdGcFf,
     isTest=true
 }
 ```
@@ -145,7 +144,7 @@ In order to fund the account on the XRP Ledger, you can use a `FaucetClient` con
 
 ### {{n.next()}}. Query the XRP Ledger
 
-You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exhange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).  
+You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exhange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).
 
 Here, we'll use the [`XrplClient` we constructed](#1-connect-to-the-xrp-ledger) to look up information about the [wallet we generated](#2-generate-wallet) in the previous step.
 
@@ -184,20 +183,20 @@ Classic Address: rBXHGshqXu3Smy9FUsQTmo49bGpQUQEm3X
 X-Address: T7yMiiJJCmgY2yg5WB2davUedDeBFAG5B8r9KHjKCxDdvv3
 Funded the account using the Testnet faucet.
 AccountInfoResult{
-    status=success, 
+    status=success,
     accountData=AccountRootObject{
-        ledgerEntryType=ACCOUNT_ROOT, 
-        account=rBXHGshqXu3Smy9FUsQTmo49bGpQUQEm3X, 
-        balance=1000000000, 
-        flags=0, 
-        ownerCount=0, 
-        previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, 
-        previousTransactionLedgerSequence=0, 
-        sequence=17178149, 
-        signerLists=[], 
+        ledgerEntryType=ACCOUNT_ROOT,
+        account=rBXHGshqXu3Smy9FUsQTmo49bGpQUQEm3X,
+        balance=1000000000,
+        flags=0,
+        ownerCount=0,
+        previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000,
+        previousTransactionLedgerSequence=0,
+        sequence=17178149,
+        signerLists=[],
         index=0DC1B13C73A7F3D2D82446526D0C5D08E88F89BA442D54291117F1A08E447685
-    }, 
-    ledgerCurrentIndex=17178149, 
+    },
+    ledgerCurrentIndex=17178149,
     validated=false
 }
 ```

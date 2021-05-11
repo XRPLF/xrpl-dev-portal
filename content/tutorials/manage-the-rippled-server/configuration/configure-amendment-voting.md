@@ -5,7 +5,7 @@ blurb: Set your server's votes on protocol amendments.
 ---
 # Configure Amendment Voting
 
-Servers configured as validators can vote on [amendments](amendments.html) to the XRP Ledger protocol using the [feature method][]. (This method requires [admin access](get-started-with-the-rippled-api.html#admin-access).)
+Servers configured as validators can vote on [amendments](amendments.html) to the XRP Ledger protocol using the [feature method][]. (This method requires [admin access](get-started-using-http-websocket-apis.html#admin-access).)
 
 For example, to vote against the "SHAMapV2" amendment, run the following command:
 

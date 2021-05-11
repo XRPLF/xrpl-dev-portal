@@ -101,7 +101,7 @@ To enable or disable Individual Freeze on a specific trust line, send a `TrustSe
 
 Set the `Fee`, `Sequence`, and `LastLedgerSequence` parameters [in the typical way](transaction-basics.html#signing-and-submitting-transactions).
 
-Example of submitting a TrustSet transaction to enable an individual freeze using the [WebSocket API](get-started-with-the-rippled-api.html#websocket-api):
+Example of submitting a TrustSet transaction to enable an individual freeze using the [WebSocket API](get-started-using-http-websocket-apis.html#websocket-api):
 
 ```json
 {
@@ -155,7 +155,7 @@ Example JavaScript (ECMAScript 6) code to enable Individual Freeze on a trust li
 
 To enable Global Freeze on an address, send an `AccountSet` transaction with the [`asfGlobalFreeze` flag value](accountset.html#accountset-flags) in the `SetFlag` field. To disable Global Freeze, put the `asfGlobalFreeze` flag value in the `ClearFlag` field instead.
 
-Example of submitting an AccountSet transaction to enable Global Freeze using the [WebSocket API](get-started-with-the-rippled-api.html#websocket-api):
+Example of submitting an AccountSet transaction to enable Global Freeze using the [WebSocket API](get-started-using-http-websocket-apis.html#websocket-api):
 
 ```json
 {
@@ -203,7 +203,7 @@ Example JavaScript (ECMAScript 6) code to enable Global Freeze on an address:
 
 To enable No Freeze on an address, send an `AccountSet` transaction with the [`asfNoFreeze` flag value](accountset.html#accountset-flags) in the `SetFlag` field. You must sign this transaction using the master key. Once enabled, you cannot disable No Freeze.
 
-Example of submitting an AccountSet transaction to enable No Freeze using the [WebSocket API](get-started-with-the-rippled-api.html#websocket-api):
+Example of submitting an AccountSet transaction to enable No Freeze using the [WebSocket API](get-started-using-http-websocket-apis.html#websocket-api):
 
 WebSocket request:
 

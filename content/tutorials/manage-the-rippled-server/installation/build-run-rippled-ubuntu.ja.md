@@ -223,7 +223,7 @@ Watchdog: Launching child 1
 - **チュートリアル:**
     - [rippledの構成](configure-rippled.html)
     - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
-    - [rippled APIの使用開始](get-started-with-the-rippled-api.html)
+    - [rippled APIの使用開始](get-started-using-http-websocket-apis.html)
 - **リファレンス:**
     - [rippled APIリファレンス](rippled-api.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)

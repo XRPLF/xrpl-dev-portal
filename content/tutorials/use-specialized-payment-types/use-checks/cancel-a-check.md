@@ -22,7 +22,7 @@ To cancel a Check with this tutorial, you need the following:
 - The **address** and **secret key** of a funded account to send the CheckCancel transaction. This address must be either the sender or the recipient of the Check, unless the Check is expired.
 - A secure way to sign transactions, such as [RippleAPI][] or your own [`rippled` server](install-rippled.html).
 - A client library that can connect to a `rippled` server, such as [RippleAPI][] or any HTTP or WebSocket library.
-    - For more information, see [Get Started with the `rippled` API](get-started-with-the-rippled-api.html).
+    - For more information, see [Get Started with the `rippled` API](get-started-using-http-websocket-apis.html).
 
 
 ## {{cancel_n.next()}}. Prepare the CheckCancel transaction

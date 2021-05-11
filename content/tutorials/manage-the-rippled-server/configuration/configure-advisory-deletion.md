@@ -49,7 +49,7 @@ To configure advisory deletion with a daily schedule, perform the following step
 
 2. Test running the [can_delete method][] to prompt the server to run online deletion.
 
-    You can use the [`rippled` commandline interface](get-started-with-the-rippled-api.html#commandline) to run this command. For example:
+    You can use the [`rippled` commandline interface](get-started-using-http-websocket-apis.html#commandline) to run this command. For example:
 
         $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
 

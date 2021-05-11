@@ -49,7 +49,7 @@ blurb: 指示による削除を使用して、新しい履歴ができたとき�
 
 2. サーバーに対してオンライン削除を指示する[can_deleteメソッド][]の実行をテストします。
 
-    このコマンドの実行には[`rippled`コマンドラインインターフェイス](get-started-with-the-rippled-api.html#コマンドライン)を使用できます。例:
+    このコマンドの実行には[`rippled`コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用できます。例:
 
         $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
 

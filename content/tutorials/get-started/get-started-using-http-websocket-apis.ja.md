@@ -1,10 +1,10 @@
 ---
-html: get-started-with-the-rippled-api.html
+html: get-started-using-http-websocket-apis.html
 parent: get-started.html
 blurb: XRP Ledgerの操作に使用できるAPIとライブラリを使い始めましょう。
 cta_text: 開始しよう
 ---
-# XRP Ledger APIの使用開始
+# HTTP / WebSocket APIの使用開始
 
 XRP Ledgerのコアサーバーソフトウェアは[`rippled`](the-rippled-server.html)です。XRP Ledgerでの開発に進むには、`rippled`サーバーのAPIにアクセスします。
 

@@ -122,7 +122,7 @@ $ sudo systemctl restart rippled
 
 It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the [server_info method][] shows the a `validated_ledger` object based on the network you are connected to.
 
-To verify that your `rippled` is connected to the XRP Testnet or Devnet, compare the results from your server to [a public server](get-started-with-the-rippled-api.html#public-servers) on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
+To verify that your `rippled` is connected to the XRP Testnet or Devnet, compare the results from your server to [a public server][public servers] on the Testnet or Devnet. The `seq` field of the `validated_ledger` object should be the same on both servers (possibly off by one or two, if it changed as you were checking).
 
 The following example shows how to check the latest validated ledger from the commandline:
 
@@ -158,7 +158,7 @@ $ rippled --rpc_ip 34.201.59.230:51234 server_info | grep seq
 
 <!-- MULTICODE_BLOCK_END -->
 
-**Note:** The IP addresses in these examples are for public servers, and may change periodically. If you get no response, look up the IP address of a [public server](get-started-with-the-rippled-api.html#public-servers), for example using the `dig` command.
+**Note:** The IP addresses in these examples are for public servers, and may change periodically. If you get no response, look up the IP address of a [public server][public servers], for example using the `dig` command.
 
 
 
