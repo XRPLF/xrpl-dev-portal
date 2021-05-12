@@ -27,20 +27,22 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. Use Homebrew to install dependencies.
 
-        $ brew install git cmake pkg-config protobuf openssl ninja
+        $ brew install git cmake pkg-config protobuf openssl ninja boost@1.75
 
-0. Install a compatible version of Boost. `rippled` 1.7.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually. (The following examples use Boost 1.71.0, which was the newest version at the time of writing.)
+{#<!-- Currently unnecessary: instructions for building Boost yourself. Note, the syntax for this comment needs the {# on the outside so that it doesn't interrupt the bulleted list.
 
-      1. Download [Boost 1.71.0](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2).
+0. Install a compatible version of Boost. `rippled` 1.7.0 is compatible with Boost 1.70.0 and higher. To compile Boost yourself, complete the following steps:
 
-      2. Extract it to a folder. Be sure to note the location.
+    1. [Download an appropriate version of Boost](https://www.boost.org/users/history/).
 
-      3. In a terminal, run:
+    2. Extract it to a folder. Be sure to note the location.
+
+    3. In a terminal, run:
 
             $ cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
             $ ./bootstrap.sh
             $ ./b2 cxxflags="-std=c++14"
-
+-->#}
 0. Ensure that your `BOOST_ROOT` environment points to the directory created by the Boost installation:
 
       1. To find your Boost directory, use `pwd` if you installed the Boost manually or use `brew --prefix boost` if you installed the Boost with Homebrew.
