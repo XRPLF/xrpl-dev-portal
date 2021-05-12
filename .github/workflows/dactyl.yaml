@@ -19,11 +19,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install Jinja2==2.11.3
           pip install dactyl lxml
-          pip install --upgrade dactyl
-      # - name: Run Dactyl Link Checker
-      #   run: |
-      #     dactyl_link_checker -p /blog/
-      #
       - name: PR Branch Name
         uses: mdecoleman/pr-branch-name@1.0.0
         id: branchname
@@ -52,15 +47,7 @@ jobs:
         id: slug7
         env:
           PRSHA: ${{ steps.prsha7.outputs.substring }}
-        run: echo "::set-output name=sha7::$(echo ${PRSHA} | cut -c1-7)"
-      # TODO: Figure out how to prefix assets when not running at the root of the domain
-      # - name: Modify Docusaurus prefix in docusaurus.config.js
-      #   env:
-      #     SHA: ${{ steps.slug.outputs.sha6 }}
-      #     BRANCH: ${{ steps.branchname.outputs.branch }}
-      #     SLUG: ${{ env.GITHUB_REPOSITORY_NAME }}
-      #   run: |
-      #     sed -i "s@baseUrl: '/'@baseUrl: '/${SLUG}/review-apps/${BRANCH}/${SHA}/'@g" docusaurus.config.js
+        run: echo "::set-output name=sha7::$(echo ${PRSHA} | cut -c1-
       - name: Build and deploy to gh-pages
         uses: sauloxd/review-apps@v1.3.3
         with:
