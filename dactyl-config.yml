@@ -78,8 +78,6 @@ targets:
         display_name: XRPL.org
         <<: *defaults
         prefix: ""
-        link_subs:
-            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
         readability_goals:
             flesch_reading_ease: 50 # or higher
         blurb: XRPL.org is a community-driven resource for all things XRP and the XRP Ledger—your source for technical information, reference materials and tools.
@@ -92,8 +90,6 @@ targets:
         locale_file: locale/ja/LC_MESSAGES/messages.mo
         blurb: XRPとXRP Ledgerの全てに対してのコミュニティーリーソース
         link_subs:
-            # Adjust XRP-API readme link to point to the right place in the repo
-            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
             # Fix 9 links from untranslated use-an-escrow-as-a-smart-contract.html:
             "send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment": "send-a-conditionally-held-escrow.html#1条件とフルフィルメントの生成"
             "send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time": "send-a-conditionally-held-escrow.html#2リリース時刻または取消し時刻の計算"
