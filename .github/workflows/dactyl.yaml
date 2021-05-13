@@ -47,7 +47,7 @@ jobs:
         id: slug7
         env:
           PRSHA: ${{ steps.prsha7.outputs.substring }}
-        run: echo "::set-output name=sha7::$(echo ${PRSHA} | cut -c1-
+        run: echo "::set-output name=sha7::$(echo ${PRSHA} | cut -c1-7)"
       - name: Build and deploy to gh-pages
         uses: sauloxd/review-apps@v1.3.3
         with:
