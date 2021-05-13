@@ -1,160 +1,156 @@
 # Translations template for PROJECT.
-# Copyright (C) 2020 ORGANIZATION
+# Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-18 13:40-0800\n"
+"POT-Creation-Date: 2021-05-12 17:00-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.1\n"
 
-#: tool/template-breadcrumbs.html:3
-msgid "Home"
-msgstr ""
-
-#: tool/template-calculator.html:26 tool/template-home.html:109
+#: tool/template-calculator.html:24 tool/template-home.html:109
 msgid "Sustainability"
 msgstr ""
 
-#: tool/template-calculator.html:28 tool/template-home.html:111
+#: tool/template-calculator.html:26 tool/template-home.html:111
 msgid "Sustainability icon"
 msgstr ""
 
-#: tool/template-calculator.html:31 tool/template-learn-impact.html:30
+#: tool/template-calculator.html:29 tool/template-learn-impact.html:30
 msgid "How Green Is Your Currency?"
 msgstr ""
 
-#: tool/template-calculator.html:32
+#: tool/template-calculator.html:30
 msgid "Explore the Interactive Tool"
 msgstr ""
 
-#: tool/template-calculator.html:33
+#: tool/template-calculator.html:31
 msgid "Energy Consumption for Cash, Credit Cards and Crypto"
 msgstr ""
 
-#: tool/template-calculator.html:36
+#: tool/template-calculator.html:34
 msgid ""
 "Moving money carries cost—and not just the fee on your transaction or the"
 " value of your payment."
 msgstr ""
 
-#: tool/template-calculator.html:37
+#: tool/template-calculator.html:35
 msgid ""
 "Whether it’s in cash, on a credit card or with crypto, every transaction "
 "you make consumes energy, and therefore, emits pollutants into the "
 "environment."
 msgstr ""
 
-#: tool/template-calculator.html:40
+#: tool/template-calculator.html:38
 msgid ""
 "The impact of this is startling when you look at the total transactions "
 "across an entire year—for any one form of currency."
 msgstr ""
 
-#: tool/template-calculator.html:41
+#: tool/template-calculator.html:39
 msgid ""
 "Find out more about the environmental cost of some of the world’s most "
 "popular and innovative currencies, and start making more educated choices"
 " about how you transact."
 msgstr ""
 
-#: tool/template-calculator.html:50
+#: tool/template-calculator.html:48
 msgid "How Does XRP Compare to Other Currencies?"
 msgstr ""
 
-#: tool/template-calculator.html:51 tool/template-calculator.html:86
+#: tool/template-calculator.html:49 tool/template-calculator.html:84
 msgid "Learn more about the methodology"
 msgstr ""
 
-#: tool/template-calculator.html:57
+#: tool/template-calculator.html:55
 msgid "Change Inputs"
 msgstr ""
 
-#: tool/template-calculator.html:62
+#: tool/template-calculator.html:60
 msgid "Comparing<br/> Transaction Data"
 msgstr ""
 
-#: tool/template-calculator.html:64
+#: tool/template-calculator.html:62
 msgid "Crypto"
 msgstr ""
 
-#: tool/template-calculator.html:65
+#: tool/template-calculator.html:63
 msgid "Credit Cards"
 msgstr ""
 
-#: tool/template-calculator.html:66 tool/template-calculator.html:131
+#: tool/template-calculator.html:64 tool/template-calculator.html:129
 msgid "Cash"
 msgstr ""
 
-#: tool/template-calculator.html:80
+#: tool/template-calculator.html:78
 msgid "Twitter share"
 msgstr ""
 
-#: tool/template-calculator.html:81
+#: tool/template-calculator.html:79
 msgid "LinkedIn share"
 msgstr ""
 
-#: tool/template-calculator.html:82
+#: tool/template-calculator.html:80
 msgid "Facebook share"
 msgstr ""
 
-#: tool/template-calculator.html:92
+#: tool/template-calculator.html:90
 msgid "Energy Consumption of Portugal"
 msgstr ""
 
-#: tool/template-calculator.html:94 tool/template-calculator.html:179
-#: tool/template-calculator.html:222
+#: tool/template-calculator.html:92 tool/template-calculator.html:177
+#: tool/template-calculator.html:220
 msgid "Comparing <span class=\"slider-amt\"></span> Million Transactions in 2019"
 msgstr ""
 
-#: tool/template-calculator.html:96
+#: tool/template-calculator.html:94
 msgid ""
-"The country of Portugal consumes ~50twh (1 billion Kilowatt hours [kWh]) "
-"of energy annually. Explore how much energy today’s various currencies "
+"The country of Portugal consumes 46.94 billion Kilowatt hours (kWh) of "
+"energy annually. Explore how much energy today’s various currencies "
 "consume in relation to Portugal."
 msgstr ""
 
-#: tool/template-calculator.html:102 tool/template-calculator.html:150
-#: tool/template-calculator.html:162
+#: tool/template-calculator.html:100 tool/template-calculator.html:148
+#: tool/template-calculator.html:160
 msgid "Portugal"
 msgstr ""
 
-#: tool/template-calculator.html:107 tool/template-learn-overview.html:44
+#: tool/template-calculator.html:105 tool/template-learn-overview.html:44
 msgid "Bitcoin"
 msgstr ""
 
-#: tool/template-calculator.html:109 tool/template-calculator.html:121
-#: tool/template-calculator.html:133 tool/template-calculator.html:145
-#: tool/template-calculator.html:157 tool/template-calculator.html:169
+#: tool/template-calculator.html:107 tool/template-calculator.html:119
+#: tool/template-calculator.html:131 tool/template-calculator.html:143
+#: tool/template-calculator.html:155 tool/template-calculator.html:167
 msgid "kWh"
 msgstr ""
 
-#: tool/template-calculator.html:119
+#: tool/template-calculator.html:117
 msgid "Ethereum"
 msgstr ""
 
-#: tool/template-calculator.html:154
+#: tool/template-calculator.html:152
 msgid "Visa"
 msgstr ""
 
-#: tool/template-calculator.html:166 tool/template-calculator.html:167
+#: tool/template-calculator.html:164 tool/template-calculator.html:165
 msgid "Mastercard"
 msgstr ""
 
-#: tool/template-calculator.html:177
+#: tool/template-calculator.html:175
 msgid "CO<sub>2</sub> Emissions from Airline Flights"
 msgstr ""
 
-#: tool/template-calculator.html:181
+#: tool/template-calculator.html:179
 msgid ""
 "A 12-hour flight from London to Hong Kong releases 3 tons of carbon "
 "dioxide (CO<sub>2</sub>). Discover how much CO<sub>2</sub> different "
@@ -162,86 +158,69 @@ msgid ""
 "flights."
 msgstr ""
 
-#: tool/template-calculator.html:189 tool/template-calculator.html:194
-#: tool/template-calculator.html:199 tool/template-calculator.html:204
-#: tool/template-calculator.html:209 tool/template-calculator.html:214
+#: tool/template-calculator.html:187 tool/template-calculator.html:192
+#: tool/template-calculator.html:197 tool/template-calculator.html:202
+#: tool/template-calculator.html:207 tool/template-calculator.html:212
 msgid "metric tons of CO<sub>2</sub>"
 msgstr ""
 
-#: tool/template-calculator.html:220
+#: tool/template-calculator.html:218
 msgid "Gas Consumption by the Gallon"
 msgstr ""
 
-#: tool/template-calculator.html:224
+#: tool/template-calculator.html:222
 msgid ""
 "An Ultra Large Crude Carrier (ULCC) carries approximately 120 million "
 "gallons of gas. Measure the environmental impact between currencies in "
 "relation to the amount of gas they would consume in the real-world."
 msgstr ""
 
-#: tool/template-calculator.html:232 tool/template-calculator.html:237
-#: tool/template-calculator.html:242 tool/template-calculator.html:247
-#: tool/template-calculator.html:252 tool/template-calculator.html:257
-#: tool/template-calculator.html:279
+#: tool/template-calculator.html:230 tool/template-calculator.html:235
+#: tool/template-calculator.html:240 tool/template-calculator.html:245
+#: tool/template-calculator.html:250 tool/template-calculator.html:255
+#: tool/template-calculator.html:277
 msgid "Gallons of Gas"
 msgstr ""
 
-#: tool/template-calculator.html:269
+#: tool/template-calculator.html:267
 msgid "Breaking Down Individual Transactions"
 msgstr ""
 
-#: tool/template-calculator.html:270
+#: tool/template-calculator.html:268
 msgid ""
 "Looking at individual transactions below, compare how a single "
 "transaction across each form of currency equates to kWh, CO<sub>2</sub> "
 "emissions, and gallons of gas."
 msgstr ""
 
-#: tool/template-calculator.html:277
+#: tool/template-calculator.html:275
 msgid "Kilowatt Hour"
 msgstr ""
 
-#: tool/template-calculator.html:278
+#: tool/template-calculator.html:276
 msgid "CO<sub>2</sub> Emissions*"
 msgstr ""
 
-#: tool/template-calculator.html:314
+#: tool/template-calculator.html:312
 msgid "Paper Currency"
 msgstr ""
 
-#: tool/template-calculator.html:321
+#: tool/template-calculator.html:319
 msgid "*Calculations in million tonne (Mt)"
 msgstr ""
 
-#: tool/template-contribute.html:24
-msgid "Join the Conversation"
-msgstr ""
-
-#: tool/template-contribute.html:25
-msgid "Find Your Voice"
-msgstr ""
-
-#: tool/template-contribute.html:27
-msgid "Thank you for your interest in contributing to XRPL.org."
-msgstr ""
-
-#: tool/template-contribute.html:28
-msgid ""
-"This website was created for the community and is meant to be a living, "
-"breathing source of truth for XRP resources."
-msgstr ""
-
-#: tool/template-contribute.html:29
-msgid ""
-"If you'd like to recommend new content or provide feedback, visit the "
-"community resources at the RippleX forum or XRP Chat."
-msgstr ""
-
-#: tool/template-contribute.html:58
+#: tool/template-contribute.html:21
 msgid "For Developers"
 msgstr ""
 
-#: tool/template-contribute.html:59
+#: tool/template-contribute.html:34
+msgid ""
+"Thank you for your interest in contributing to XRPL.org. This website was"
+" created for the community and is meant to be a living, breathing source "
+"of truth for XRP and XRP Ledger resources."
+msgstr ""
+
+#: tool/template-contribute.html:35
 msgid ""
 "Contributing to XRPL.org is a great way to learn about the XRP Ledger. "
 "This portal is open-source and anyone can suggest changes. For more "
@@ -250,12 +229,12 @@ msgid ""
 "the contributing guidelines</a>."
 msgstr ""
 
-#: tool/template-contribute.html:60
+#: tool/template-contribute.html:36
 msgid ""
 "You may also be interested in learning about <a "
 "href=\"https://interledger.org/\" target=\"_blank\">Interledger</a>, <a "
 "href=\"https://ripplex.io/\" target=\"_blank\">RippleX</a>, and <a "
-"href=\"https://payid.org/\" target=\"_blank\">PayID</a>."
+"href=\"https://paystring.org/\" target=\"_blank\">PayString</a>."
 msgstr ""
 
 #: tool/template-doc.html:22
@@ -309,12 +288,12 @@ msgid "Wallets"
 msgstr ""
 
 #: tool/template-explore-businesses.html:35
-#: tool/template-explore-businesses.html:77
+#: tool/template-explore-businesses.html:82
 msgid "Music"
 msgstr ""
 
 #: tool/template-explore-businesses.html:38
-#: tool/template-explore-businesses.html:82
+#: tool/template-explore-businesses.html:87
 msgid "On-Demand Liquidity"
 msgstr ""
 
@@ -323,17 +302,17 @@ msgid "Gaming"
 msgstr ""
 
 #: tool/template-explore-businesses.html:40
-#: tool/template-explore-businesses.html:87
+#: tool/template-explore-businesses.html:92
 msgid "Infrastructure"
 msgstr ""
 
 #: tool/template-explore-businesses.html:41
-#: tool/template-explore-businesses.html:92
+#: tool/template-explore-businesses.html:97
 msgid "Security"
 msgstr ""
 
 #: tool/template-explore-businesses.html:42
-#: tool/template-explore-businesses.html:97
+#: tool/template-explore-businesses.html:102
 msgid "Applications"
 msgstr ""
 
@@ -381,23 +360,34 @@ msgid ""
 msgstr ""
 
 #: tool/template-explore-businesses.html:72
-msgid "Wallets and Apps"
+msgid "Wallet and Platform"
 msgstr ""
 
 #: tool/template-explore-businesses.html:73
+msgid ""
+"GateHub is a platform for the Internet of Value, built on XRP Ledger "
+"protocol. It allows everyone to send, receive, trade and manage any type "
+"of assets."
+msgstr ""
+
+#: tool/template-explore-businesses.html:77
+msgid "Wallets and Apps"
+msgstr ""
+
+#: tool/template-explore-businesses.html:78
 msgid ""
 "Exodus offers wallets and applications for securing, managing and "
 "exchanging crypto."
 msgstr ""
 
-#: tool/template-explore-businesses.html:78
+#: tool/template-explore-businesses.html:83
 msgid ""
 "Raised in Space is a music/tech investment group focused on raising the "
 "value of music, innovating across the entire value chain of the music "
 "industry."
 msgstr ""
 
-#: tool/template-explore-businesses.html:83
+#: tool/template-explore-businesses.html:88
 msgid ""
 "Ripple powers instant, lower-cost settlement of cross-border payments "
 "using XRP to source liquidity on demand. XRP is ideally suited for global"
@@ -405,26 +395,26 @@ msgid ""
 "other digital asset."
 msgstr ""
 
-#: tool/template-explore-businesses.html:88
+#: tool/template-explore-businesses.html:93
 msgid ""
 "Towo Labs was founded in 2019, to develop XRP Ledger and Interledger "
 "infrastructures and make non-custodial crypto management easier."
 msgstr ""
 
-#: tool/template-explore-businesses.html:93
+#: tool/template-explore-businesses.html:98
 msgid ""
 "Xrplorer offers services and tools that help prevent and combat "
 "fraudulent activity on the XRP Ledger as well as custom APIs and "
 "analytics that supplement the XRP Ledger APIs where they are not enough."
 msgstr ""
 
-#: tool/template-explore-businesses.html:98
+#: tool/template-explore-businesses.html:103
 msgid ""
 "From cold storage to apps for signing transactions, XRPL Labs is "
 "dedicated to building software on the XRP Ledger."
 msgstr ""
 
-#: tool/template-explore-businesses.html:103
+#: tool/template-explore-businesses.html:107
 msgid ""
 "Disclaimer: XRPL.org does not endorse or recommend any wallets or "
 "exchanges, or make any representations with respect to wallets. It’s "
@@ -523,15 +513,15 @@ msgid ""
 "and privacy practices."
 msgstr ""
 
-#: tool/template-footer.html:28
+#: tool/template-footer.html:24
 msgid "License"
 msgstr ""
 
-#: tool/template-footer.html:35
+#: tool/template-footer.html:31
 msgid "Jump to top of page"
 msgstr ""
 
-#: tool/template-footer.html:35
+#: tool/template-footer.html:31
 msgid "Top"
 msgstr ""
 
@@ -552,7 +542,7 @@ msgid "Learn More"
 msgstr ""
 
 #: tool/template-home.html:27
-msgid "Build with XRP"
+msgid "Build with the XRP Ledger"
 msgstr ""
 
 #: tool/template-home.html:32
@@ -684,7 +674,9 @@ msgid ""
 "XRP was designed with sustainability in mind. Contrary to other "
 "blockchains that use proof-of-work, the XRP Ledger confirms transactions "
 "through a unique “<a href=\"intro-to-consensus.html\">consensus</a>” "
-"mechanism that consumes negligible energy."
+"mechanism and is one of the first truly <a href=\"https://ripple.com"
+"/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-"
+"neutrality-by-2030/\" target=\"_blank\">carbon neutral blockchains</a>."
 msgstr ""
 
 #: tool/template-home.html:116
@@ -716,12 +708,12 @@ msgid ""
 "index\">full documentation index</a>."
 msgstr ""
 
-#: tool/template-landing-docs.html:33
+#: tool/template-landing-docs.html:31
 #, python-format
-msgid "View All %(doc_type_name)s"
+msgid "View All %(parent_name)s"
 msgstr ""
 
-#: tool/template-landing-docs.html:45
+#: tool/template-landing-docs.html:40
 msgid "Full Documentation Index"
 msgstr ""
 
@@ -731,7 +723,7 @@ msgid ""
 "Index</a>."
 msgstr ""
 
-#: tool/template-landing-references.html:62
+#: tool/template-landing-references.html:41
 msgid "Full Reference Index"
 msgstr ""
 
@@ -898,17 +890,17 @@ msgstr ""
 msgid "Podcast"
 msgstr ""
 
-#: tool/template-learn-history.html:80
+#: tool/template-learn-history.html:77
 msgid "How Digital Assets Will Help Create a Sustainable Global Economy"
 msgstr ""
 
-#: tool/template-learn-history.html:81
+#: tool/template-learn-history.html:78
 msgid ""
 "Hear from Ripple co-founder Chris Larsen in the inaugural episode of the "
 "Block Stars podcast."
 msgstr ""
 
-#: tool/template-learn-history.html:82
+#: tool/template-learn-history.html:79
 msgid "Listen Now"
 msgstr ""
 
@@ -950,9 +942,9 @@ msgstr ""
 #: tool/template-learn-impact.html:45
 msgid ""
 "For the more than <a "
-"href=\"https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf\">272 "
-"million migrants</a> worldwide, sending and receiving money across "
-"borders is expensive, unreliable and complex."
+"href=\"https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf\" "
+"target=\"_blank\">272 million migrants</a> worldwide, sending and "
+"receiving money across borders is expensive, unreliable and complex."
 msgstr ""
 
 #: tool/template-learn-impact.html:48
@@ -1051,7 +1043,10 @@ msgid ""
 "The digital asset XRP was designed with sustainability in mind. The XRP "
 "Ledger processes transactions through a unique “consensus” mechanism that"
 " consumes negligible energy and all XRP currency is already in "
-"circulation."
+"circulation. It is the first major blockchain network to be <a "
+"href=\"https://ripple.com/ripple-press/ripple-leads-sustainability-"
+"agenda-to-achieve-carbon-neutrality-by-2030/\" target=\"_blank\">fully "
+"carbon neutral</a>."
 msgstr ""
 
 #: tool/template-learn-impact.html:102
@@ -1137,7 +1132,7 @@ msgid "3 transactions per second"
 msgstr ""
 
 #: tool/template-learn-overview.html:65
-msgid "Environmentally sustainable (negligible energy consumption)"
+msgid "Environmentally sustainable and carbon neutral"
 msgstr ""
 
 #: tool/template-learn-overview.html:66
@@ -1256,8 +1251,8 @@ msgstr ""
 msgid ""
 "Individual consumers can use XRP to move different currencies around the "
 "world. For example, through wallets and exchanges that use <a "
-"href=\"https://payid.org/\" target=\"_blank\">PayID</a>, anyone can use "
-"XRP—or any currency, be it fiat or digital assets—to easily make "
+"href=\"https://paystring.org/\" target=\"_blank\">PayID</a>, anyone can "
+"use XRP—or any currency, be it fiat or digital assets—to easily make "
 "purchases across any payments network."
 msgstr ""
 
@@ -1273,9 +1268,9 @@ msgstr ""
 msgid ""
 "By building on the XRP Ledger, developers can easily integrate payments "
 "into their products—seamlessly putting money at the center of their "
-"applications. Projects like the <a href=\"https://ripplex.io/\" "
-"target=\"_blank\">RippleX developer platform</a> are making it easier for"
-" developers to leverage XRP."
+"applications. Projects like <a href=\"https://github.com/XRPLF/xrpl-py\" "
+"target=\"_blank\">xrpl-py</a> are making it easier for developers to "
+"leverage XRP."
 msgstr ""
 
 #: tool/template-learn-overview.html:131
@@ -1491,24 +1486,170 @@ msgid ""
 " margin calls and managing general trade inventory in real time."
 msgstr ""
 
-#: tool/template-top-nav.html:39
-msgid "Contribute"
-msgstr ""
-
-#: tool/template-top-nav.html:45
+#: tool/template-top-nav.html:36
 msgid "Open Search"
 msgstr ""
 
-#: tool/template-top-nav.html:50 tool/template-top-nav.html:51
+#: tool/template-top-nav.html:41 tool/template-top-nav.html:42
 msgid "Search site..."
 msgstr ""
 
-#: tool/template-top-nav.html:53
+#: tool/template-top-nav.html:44
 msgid "Close Search"
 msgstr ""
 
-#: tool/template-top-nav.html:62
+#: tool/template-top-nav.html:53
 msgid "Get Started"
+msgstr ""
+
+#: tool/template-tx-sender.html:8
+msgid "Status"
+msgstr ""
+
+#: tool/template-tx-sender.html:12
+msgid "XRP Testnet:"
+msgstr ""
+
+#: tool/template-tx-sender.html:13
+msgid "Not Connected"
+msgstr ""
+
+#: tool/template-tx-sender.html:14
+msgid "Sending Address:"
+msgstr ""
+
+#: tool/template-tx-sender.html:15 tool/template-tx-sender.html:17
+msgid "(None)"
+msgstr ""
+
+#: tool/template-tx-sender.html:16
+msgid "Testnet XRP Available:"
+msgstr ""
+
+#: tool/template-tx-sender.html:20
+msgid "Transaction History"
+msgstr ""
+
+#: tool/template-tx-sender.html:30
+msgid "Transaction Sender"
+msgstr ""
+
+#: tool/template-tx-sender.html:33
+msgid ""
+"This tool sends transactions to the <a href=\"xrp-test-net-"
+"faucet.html\">XRP Testnet</a> address of your choice so you can test how "
+"you monitor and respond to incoming transactions."
+msgstr ""
+
+#: tool/template-tx-sender.html:37
+msgid "Initialize"
+msgstr ""
+
+#: tool/template-tx-sender.html:38
+msgid "Set up the necessary Testnet XRP addresses to send test payments."
+msgstr ""
+
+#: tool/template-tx-sender.html:42
+msgid "Destination Address"
+msgstr ""
+
+#: tool/template-tx-sender.html:44
+msgid "Send transactions to this XRP Testnet address"
+msgstr ""
+
+#: tool/template-tx-sender.html:46
+msgid ""
+"<strong>Caution:</strong> This X-address is intended for use on Mainnet. "
+"Testnet addresses have a \"T\" prefix instead."
+msgstr ""
+
+#: tool/template-tx-sender.html:48
+msgid "Send Transaction"
+msgstr ""
+
+#: tool/template-tx-sender.html:53
+msgid "(loading)"
+msgstr ""
+
+#: tool/template-tx-sender.html:55
+msgid "Send XRP Payment"
+msgstr ""
+
+#: tool/template-tx-sender.html:58 tool/template-tx-sender.html:116
+msgid "drops of XRP"
+msgstr ""
+
+#: tool/template-tx-sender.html:62
+msgid "Send a <a href=\"send-xrp.html\">simple XRP-to-XRP payment</a>."
+msgstr ""
+
+#: tool/template-tx-sender.html:70
+msgid "(Getting ready to send partial payments)"
+msgstr ""
+
+#: tool/template-tx-sender.html:76
+msgid "Send Partial Payment"
+msgstr ""
+
+#: tool/template-tx-sender.html:78
+msgid ""
+"Deliver a small amount of XRP with a large <code>Amount</code> value, to "
+"test your handling of <a href=\"partial-payments.html\">partial "
+"payments</a>."
+msgstr ""
+
+#: tool/template-tx-sender.html:88
+msgid "Create Escrow"
+msgstr ""
+
+#: tool/template-tx-sender.html:91
+msgid "seconds"
+msgstr ""
+
+#: tool/template-tx-sender.html:96
+msgid "Finish automatically"
+msgstr ""
+
+#: tool/template-tx-sender.html:99
+msgid ""
+"Create a <a href=\"escrow.html\">time-based escrow</a> of 1 XRP for the "
+"specified number of seconds."
+msgstr ""
+
+#: tool/template-tx-sender.html:102
+msgid "(Waiting to release Escrow when it's ready)"
+msgstr ""
+
+#: tool/template-tx-sender.html:113
+msgid "Create Payment Channel"
+msgstr ""
+
+#: tool/template-tx-sender.html:119
+msgid ""
+"Create a <a href=\"payment-channels.html\">payment channel</a> and fund "
+"it with the specified amount of XRP."
+msgstr ""
+
+#: tool/template-tx-sender.html:129
+msgid "Send Issued Currency"
+msgstr ""
+
+#: tool/template-tx-sender.html:135
+msgid ""
+"Your destination address needs a <a href=\"trust-lines-and-"
+"issuing.html\">trust line</a> to <span class=\"sending-address-"
+"item\">(the test sender)</span> for the currency in question. Otherwise, "
+"you'll get tecPATH_DRY."
+msgstr ""
+
+#: tool/template-tx-sender.html:145
+msgid "Trust for"
+msgstr ""
+
+#: tool/template-tx-sender.html:151
+msgid ""
+"The test sender creates a <a href=\"trust-lines-and-issuing.html\">trust "
+"line</a> to your account for the given currency."
 msgstr ""
 
 #: tool/template-validator-domain-verifier.html:5
@@ -1536,6 +1677,66 @@ msgid "Your Manifest Here"
 msgstr ""
 
 #: tool/template-validator-domain-verifier.html:20
+#: tool/template-xrp-ledger-rpc-tool.html:18
 msgid "Result"
+msgstr ""
+
+#: tool/template-xrp-ledger-rpc-tool.html:14
+msgid "Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>."
+msgstr ""
+
+#: tool/template-xrp-ledger-rpc-tool.html:15
+msgid "Get info"
+msgstr ""
+
+#: tool/template-xrp-ledger-rpc-tool.html:24
+msgid "Permalink"
+msgstr ""
+
+#: tool/template-xrp-ledger-rpc-tool.html:25
+msgid "Explorer"
+msgstr ""
+
+#: tool/template-xrp-ledger-rpc-tool.html:30
+#: tool/template-xrp-ledger-rpc-tool.html:35
+#: tool/template-xrp-ledger-rpc-tool.html:45
+#: tool/template-xrp-ledger-rpc-tool.html:50
+#: tool/template-xrp-ledger-rpc-tool.html:56
+#: tool/template-xrp-ledger-rpc-tool.html:64
+#: tool/template-xrp-ledger-rpc-tool.html:71
+#: tool/template-xrp-ledger-rpc-tool.html:76
+#: tool/template-xrp-ledger-rpc-tool.html:85
+#: tool/template-xrp-ledger-rpc-tool.html:91
+msgid "expand all"
+msgstr ""
+
+#: tool/template-xrp-ledger-rpc-tool.html:31
+#: tool/template-xrp-ledger-rpc-tool.html:36
+#: tool/template-xrp-ledger-rpc-tool.html:46
+#: tool/template-xrp-ledger-rpc-tool.html:51
+#: tool/template-xrp-ledger-rpc-tool.html:57
+#: tool/template-xrp-ledger-rpc-tool.html:65
+#: tool/template-xrp-ledger-rpc-tool.html:72
+#: tool/template-xrp-ledger-rpc-tool.html:77
+#: tool/template-xrp-ledger-rpc-tool.html:86
+#: tool/template-xrp-ledger-rpc-tool.html:92
+msgid "collapse all"
+msgstr ""
+
+#: tool/template-xrp-ledger-rpc-tool.html:55
+#: tool/template-xrp-ledger-rpc-tool.html:63
+#: tool/template-xrp-ledger-rpc-tool.html:84
+#: tool/template-xrp-ledger-rpc-tool.html:90
+msgid "expand tx"
+msgstr ""
+
+#: tool/template-xrp-ledger-rpc-tool.html:58
+#: tool/template-xrp-ledger-rpc-tool.html:66
+msgid "next 20"
+msgstr ""
+
+#: tool/template-xrp-ledger-rpc-tool.html:59
+#: tool/template-xrp-ledger-rpc-tool.html:67
+msgid "prev 20"
 msgstr ""
 
