@@ -19,7 +19,7 @@ You can protect your account by assigning a regular key pair to it and using it 
     "TransactionType": "SetRegularKey",
     "Account": "rDxoj2YtjDkn9nLdotpZcMzupJvmk3wNNF ",
     "Fee": "12",
-    "RegularKey": "r4iKhWgGGUH1VYLXcnGExre1LJEoVUK2Jx"
+    "RegularKey":  "rsrf6VSSMujZw5d5moNd7fYezXi31auoX2"
 }
 ```
 
