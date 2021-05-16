@@ -33,6 +33,7 @@ default_filters:
     - external_links
     - status_badges
     - include_svg
+    - css_tables
 
 callout_class: "devportal-callout"
 callout_types:
