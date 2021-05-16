@@ -17,9 +17,9 @@ You can protect your account by assigning a regular key pair to it and using it 
 {
     "Flags": 0,
     "TransactionType": "SetRegularKey",
-    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Account": "rDxoj2YtjDkn9nLdotpZcMzupJvmk3wNNF ",
     "Fee": "12",
-    "RegularKey": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+    "RegularKey": "r4iKhWgGGUH1VYLXcnGExre1LJEoVUK2Jx"
 }
 ```
 
