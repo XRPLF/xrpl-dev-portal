@@ -1,6 +1,6 @@
 ################################################
 ## Add class to tables
-## Author: Rome Reginelli
+## Author: Jake Bonham
 ## Copyright: Ripple Labs, 2021
 ##
 ## Finds tables and adds bootstrap class 
