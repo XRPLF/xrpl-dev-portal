@@ -163,6 +163,8 @@ targets:
             "account_info.html#response-format": "account_info.html#応答フォーマット"
             # Fix link from untranslated public-servers.html:
             "ledger-history.html#full-history": "ledger-history.html#すべての履歴"
+            # Fix link from untranslated amendment-voting.html and rate-limiting.html:
+            "get-started-using-http-websocket-apis.html#admin-access": "get-started-using-http-websocket-apis.html#管理者アクセス権限"
 
 
 pages:
