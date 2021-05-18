@@ -1,4 +1,34 @@
 /* TABLE STYLING */
+
+.content table {
+  clear: right;
+  margin-bottom: 48px;
+}
+
+.content table code {
+  word-break: normal;
+  white-space: nowrap;
+}
+
+th {
+  border-bottom: 2px solid $gray-200;
+}
+tr {
+  border-bottom: 1px solid $gray-200;
+}
+
+th, td {
+  padding: 0.2em;
+  vertical-align: text-top;
+  padding: 12px;
+}
+
+td:nth-child(1) {
+  font-weight: bold;
+}
+
+
+
 .dblue {
   color: #656E81;
 }

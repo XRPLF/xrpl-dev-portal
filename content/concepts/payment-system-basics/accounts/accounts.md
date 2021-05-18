@@ -51,6 +51,7 @@ For more technical details of how to calculate an XRP Ledger address, see [Addre
 
 Some addresses have special meaning, or historical uses, in the XRP Ledger. In many cases, these are "black hole" addresses, meaning the address is not derived from a known secret key. Since it is effectively impossible to guess a secret key from only an address, any XRP possessed by black hole addresses is lost forever.
 
+
 | Address                       | Name | Meaning | Black Hole? |
 |-------------------------------|------|---------|-------------|
 | `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | An address that is the XRP Ledger's [base58][] encoding of the value `0`. In peer-to-peer communications, `rippled` uses this address as the issuer for XRP. | Yes |
