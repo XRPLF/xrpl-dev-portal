@@ -4,9 +4,6 @@
   .multicode > div {
     display: block !important;
   }
-  .multicode > ul {
-    display: none !important;
-  }
   .multicode > em,
   .multicode > p > em {
     display: block !important;
@@ -15,6 +12,11 @@
   .multicode > p {
     display: block !important;
   }
+
+  .code_toggler {
+    display: none;
+  }
+
   /* wrap code, not scroll */
   pre {
     white-space: pre-wrap;
@@ -25,7 +27,18 @@
   }
   pre code {
     white-space: pre-wrap !important;
+    color: #22252B !important;
   }
+  code {
+    white-space: pre-wrap !important;
+    color: #22252B !important;
+  }
+
+  .codehilite .n, .codehilite .na, .codehilite .nb, .codehilite .nc, .codehilite .nd, .codehilite .ne, .codehilite .nf, .codehilite .ni, .codehilite .nl, .codehilite .nn, .codehilite .nt, .codehilite .nv, .codehilite .nx, .codehilite .bp, .codehilite .fm, .codehilite .py {
+    color: #22252B;
+}
+
+
   .content a[title="Source"] {
     float: none;
   }
@@ -33,7 +46,10 @@
   header,
   footer,
   aside {
-    display: none;
+    display: none !important;
+  }
+  .navbar {
+    display: none !important;
   }
   /* Full-width content body */
   .content, #main_content_body {
@@ -41,8 +57,27 @@
     display: block;
     width: auto;
     height: auto;
+    color:black !important;
     max-width: 100%;
+    overflow: visible !important;
   }
+
+  body {  
+    overflow: visible; 
+    background: #fff;
+  }
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: black;
+  }
+
+  .interactive-block {
+    display:none;
+  }
+
+  .container {
+    margin-top: 1rem !important;
+  }
+
   #main_content_wrapper {
     margin-top: 0;
   }
@@ -54,5 +89,12 @@
   }
   .sidebar-primary .row {
     display: block;
+  }
+
+  #feedback-content{
+    display:none !important;
+  }
+  .jump-to-top {
+    display: none !important;
   }
 }
