@@ -16,10 +16,10 @@ For more information about how Offers work, see [Offers](offers.html).
 ```json
 {
     "TransactionType": "OfferCreate",
-    "Account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Account": "razLtrbzXVXYvViLqUKLh8YenGLJid9ZTW",
     "Fee": "12",
     "Flags": 0,
-    "LastLedgerSequence": 7108682,
+    "LastLedgerSequence": 64717817,
     "Sequence": 8,
     "TakerGets": "6000000",
     "TakerPays": {
@@ -34,7 +34,7 @@ For more information about how Offers work, see [Offers](offers.html).
 <!--{# fix md highlighting_ #}-->
 
 
-| Field          | JSON Type           | [Internal Type][] | Description       |
+| Field          | yonat Type           | [Internal Type][] | Description       |
 |:---------------|:--------------------|:------------------|:------------------|
 | [`Expiration`](offers.html#offer-expiration) | Number | UInt32 | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. |
 | `OfferSequence`  | Number              | UInt32            | _(Optional)_ An offer to delete first, specified in the same way as [OfferCancel][]. |
