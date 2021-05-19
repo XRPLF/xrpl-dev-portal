@@ -28,7 +28,7 @@ jobs:
 
     - name: Build docs
       run: |
-        echo '{"github_forkurl": "https://github.com/'"${{ github.repository }}"'", "github_branch": "'"${{ github.head_ref }}"'", "github_pr_id": "'"${{ github.event.number }}"'", "is_pr_build": true}' > dactyl_vars.json
+        echo '{"github_forkurl": "https://github.com/'"${{ github.event.pull_request.head.repo.full_name }}"'", "github_branch": "'"${{ github.head_ref }}"'", "github_pr_id": "'"${{ github.event.number }}"'", "is_pr_build": true}' > dactyl_vars.json
         tool/build_all_langs.sh --vars dactyl_vars.json
 
     - name: Run Dactyl Link Checker
@@ -40,6 +40,7 @@ jobs:
 
     - name: Comment Broken Links
       uses: unsplash/comment-on-pr@master
+      if: always()
       with:
         msg: ${{steps.checker.outputs.linkreport}}
         check_for_duplicate_msg: false
