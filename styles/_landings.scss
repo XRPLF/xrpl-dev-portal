@@ -182,3 +182,11 @@
     text-decoration: underline;
   }
 }
+
+// ad-hoc callout for NFT standards
+.highlight-subcard {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 2px solid $white;
+  background: $dropdown-bg;
+}
