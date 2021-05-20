@@ -40,7 +40,9 @@ jobs:
       if: always()
       run: |
         sed -i '1,/---------------------------------------/d' linkreport.txt
-        echo "::set-output name=linkreport::$(cat linkreport.txt)"
+
+      # old way of setting the link report to an env var
+      #  echo "::set-output name=linkreport::$(cat linkreport.txt)"
 
     - name: Comment Broken Links
       uses: unsplash/comment-on-pr@master
@@ -48,5 +50,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: always()
       with:
-        msg: ${{steps.checker.outputs.linkreport}}
+        # msg: ${{steps.checker.outputs.linkreport}}
+        msg: $(cat linkreport.txt)
         check_for_duplicate_msg: false
