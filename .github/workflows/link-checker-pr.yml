@@ -33,16 +33,23 @@ jobs:
 
     - name: Run Dactyl Link Checker
       run: |
-        dactyl_link_checker -q > linkreport.txt
+        dactyl_link_checker -o -q > linkreport.txt
 
     - name: Set Link Report
       id: checker
       if: always()
       run: |
         sed -i '1,/---------------------------------------/d' linkreport.txt
+        echo 'LINKREPORT<<EOF' >> $GITHUB_ENV
+        cat linkreport.txt >> $GITHUB_ENV
+        echo 'EOF' >> $GITHUB_ENV
 
-      # old way of setting the link report to an env var
-      #  echo "::set-output name=linkreport::$(cat linkreport.txt)"
+      # potential alternative approach:
+        # REPORT="$(cat linkreport.txt)"
+        # REPORT="${REPORT//'%'/'%25'}"
+        # REPORT="${REPORT//$'\n'/'%0A'}"
+        # REPORT="${REPORT//$'\r'/'%0D'}"
+        # echo "::set-output name=linkreport::$REPORT"
 
     - name: Comment Broken Links
       uses: unsplash/comment-on-pr@master
@@ -51,5 +58,5 @@ jobs:
       if: always()
       with:
         # msg: ${{steps.checker.outputs.linkreport}}
-        msg: $(cat linkreport.txt)
+        msg: ${{ $LINKREPORT }}
         check_for_duplicate_msg: false
