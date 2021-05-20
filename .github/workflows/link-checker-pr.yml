@@ -35,8 +35,7 @@ jobs:
       run: |
         dactyl_link_checker -o -q > linkreport.txt
 
-    - name: Set Link Report
-      id: checker
+    - name: Assemble Link Report
       if: always()
       run: |
         sed -i '1,/---------------------------------------/d' linkreport.txt
@@ -44,19 +43,12 @@ jobs:
         cat linkreport.txt >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
 
-      # potential alternative approach:
-        # REPORT="$(cat linkreport.txt)"
-        # REPORT="${REPORT//'%'/'%25'}"
-        # REPORT="${REPORT//$'\n'/'%0A'}"
-        # REPORT="${REPORT//$'\r'/'%0D'}"
-        # echo "::set-output name=linkreport::$REPORT"
-
-    - name: Comment Broken Links
-      uses: unsplash/comment-on-pr@master
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: always()
-      with:
-        # msg: ${{steps.checker.outputs.linkreport}}
-        msg: ${{ env.LINKREPORT }}
-        check_for_duplicate_msg: false
+    # # Disabled because the ripple GitHub org doesn't allow the GITHUB_TOKEN to do this
+    # - name: Comment Broken Links
+    #   uses: unsplash/comment-on-pr@master
+    #   env:
+    #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   if: always()
+    #   with:
+    #     msg: ${{ env.LINKREPORT }}
+    #     check_for_duplicate_msg: false
