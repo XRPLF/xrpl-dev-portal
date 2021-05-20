@@ -58,5 +58,5 @@ jobs:
       if: always()
       with:
         # msg: ${{steps.checker.outputs.linkreport}}
-        msg: ${{ $LINKREPORT }}
+        msg: ${{ env.LINKREPORT }}
         check_for_duplicate_msg: false
