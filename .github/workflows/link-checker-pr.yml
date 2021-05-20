@@ -32,14 +32,20 @@ jobs:
         tool/build_all_langs.sh --vars dactyl_vars.json
 
     - name: Run Dactyl Link Checker
-      id: checker
       run: |
         dactyl_link_checker -q > linkreport.txt
+
+    - name: Set Link Report
+      id: checker
+      if: always()
+      run: |
         sed -i '1,/---------------------------------------/d' linkreport.txt
         echo "::set-output name=linkreport::$(cat linkreport.txt)"
 
     - name: Comment Broken Links
       uses: unsplash/comment-on-pr@master
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: always()
       with:
         msg: ${{steps.checker.outputs.linkreport}}
