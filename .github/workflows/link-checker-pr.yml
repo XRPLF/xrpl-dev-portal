@@ -42,6 +42,7 @@ jobs:
         echo 'LINKREPORT<<EOF' >> $GITHUB_ENV
         cat linkreport.txt >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
+        cat linkreport.txt
 
     # # Disabled because the ripple GitHub org doesn't allow the GITHUB_TOKEN to do this
     # - name: Comment Broken Links
