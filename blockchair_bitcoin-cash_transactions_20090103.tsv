@@ -1,0 +1,2 @@
+block_id	hash	time	size	version	lock_time	is_coinbase	input_count	output_count	input_total	input_total_usd	output_total	output_total_usd	fee	fee_usd	fee_per_kb	fee_per_kb_usd	cdd_total
+0	4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b	2009-01-03 18:15:05	204	1	0	1	1	1	0	0	5000000000	0	0	0	0	0	0
