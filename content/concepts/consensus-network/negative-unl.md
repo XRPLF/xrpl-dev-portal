@@ -1,8 +1,6 @@
 ---
 html: negative-unl.html
-funnel: Build
-doc_type: Concepts
-category: Consensus Network
+parent: consensus-network.html
 status: not_enabled
 blurb: Understand how Negative UNL improves the ledger's resilience during partial outages.
 ---

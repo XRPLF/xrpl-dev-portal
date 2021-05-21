@@ -1,5 +1,10 @@
+---
+html: validators.html
+parent: status-and-debugging-methods.html
+blurb: サーバーが使用する公開済みの信頼できるバリデータの最新リストに関する情報を返します。
+---
 # validators
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
 
 `validators`コマンドは、サーバーが使用する公開済みの信頼できるバリデータの最新リストに関する情報を、人間が読み取れる形式で返します。[新規: rippled 0.80.1][]
 

@@ -1,3 +1,8 @@
+---
+html: list-your-exchange-on-xrp-charts.html
+parent: xrp-ledger-businesses.html
+blurb: 各自の取引所とそのXRP取引、およびオーダーブックのデータをXRP Chartsに登録します。
+---
 # XRP Chartsへの取引所の登録
 
 XRP Chartsは、XRP Ledgerネットワークとそのアカウントおよびトランザクションに関するデータの他に、外部取引所の[XRPマーケットデータ](https://xrpcharts.ripple.com/#/xrp-markets)も提供します。このチュートリアルでは、各自の取引所とそのXRP取引、およびオーダーブックのデータをXRP Chartsに登録する方法を説明します。

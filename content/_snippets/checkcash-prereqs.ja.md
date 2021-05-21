@@ -7,4 +7,4 @@ Checkを換金するための前提条件は、正確な金額を換金する場
   - トラストラインと限度額について詳しくは、[発行済み通貨](issued-currencies.html)および[トラストラインと発行](trust-lines-and-issuing.html)を参照してください。
 - トランザクションに安全に署名できる手段（[RippleAPI][]や各自の[`rippled`サーバー](install-rippled.html)など）。
 - `rippled`サーバーに接続できるクライアントライブラリ（[RippleAPI][]、HTTPライブラリ、WebSocketライブラリなど）。
-  - 詳細は、[`rippled` APIの使用開始](get-started-with-the-rippled-api.html)を参照してください。
+  - 詳細は、[`rippled` APIの使用開始](get-started-using-http-websocket-apis.html)を参照してください。

@@ -1,3 +1,8 @@
+---
+html: freezes.html
+parent: issued-currencies.html
+blurb: Freezes can suspend trading of issued currencies for compliance purposes.
+---
 # Freezing Issued Currencies
 
 XRP is not an issued currency. XRP is the only native asset on the XRP Ledger and is required in order to conduct transactions on the XRP Ledger. XRP is counterparty free, meaning that when someone holds XRP, they are not holding a liability, they are holding the actual currency, XRP. Due to this fact, _**<u>XRP CANNOT be frozen by any entity or individual</u>**_.
@@ -14,7 +19,7 @@ There are three settings related to freezes:
 * [**Global Freeze**](#global-freeze) - Freeze all counterparties.
 * [**No Freeze**](#no-freeze) - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.
 
-The freeze feature only applies to issued currencies. Because no party has a privileged place in the XRP Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one, not even Ripple, can freeze XRP.
+The freeze feature only applies to issued currencies. Because no party has a privileged place in the XRP Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.
 
 All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the currency issuer or the currency holder can freeze a trust line; however, the effect of a currency holder freezing an issuer is minimal.
 
@@ -96,7 +101,7 @@ To enable or disable Individual Freeze on a specific trust line, send a `TrustSe
 
 Set the `Fee`, `Sequence`, and `LastLedgerSequence` parameters [in the typical way](transaction-basics.html#signing-and-submitting-transactions).
 
-Example of submitting a TrustSet transaction to enable an individual freeze using the [WebSocket API](get-started-with-the-rippled-api.html#websocket-api):
+Example of submitting a TrustSet transaction to enable an individual freeze using the [WebSocket API](get-started-using-http-websocket-apis.html#websocket-api):
 
 ```json
 {
@@ -150,7 +155,7 @@ Example JavaScript (ECMAScript 6) code to enable Individual Freeze on a trust li
 
 To enable Global Freeze on an address, send an `AccountSet` transaction with the [`asfGlobalFreeze` flag value](accountset.html#accountset-flags) in the `SetFlag` field. To disable Global Freeze, put the `asfGlobalFreeze` flag value in the `ClearFlag` field instead.
 
-Example of submitting an AccountSet transaction to enable Global Freeze using the [WebSocket API](get-started-with-the-rippled-api.html#websocket-api):
+Example of submitting an AccountSet transaction to enable Global Freeze using the [WebSocket API](get-started-using-http-websocket-apis.html#websocket-api):
 
 ```json
 {
@@ -198,7 +203,7 @@ Example JavaScript (ECMAScript 6) code to enable Global Freeze on an address:
 
 To enable No Freeze on an address, send an `AccountSet` transaction with the [`asfNoFreeze` flag value](accountset.html#accountset-flags) in the `SetFlag` field. You must sign this transaction using the master key. Once enabled, you cannot disable No Freeze.
 
-Example of submitting an AccountSet transaction to enable No Freeze using the [WebSocket API](get-started-with-the-rippled-api.html#websocket-api):
+Example of submitting an AccountSet transaction to enable No Freeze using the [WebSocket API](get-started-using-http-websocket-apis.html#websocket-api):
 
 WebSocket request:
 

@@ -1,3 +1,8 @@
+---
+html: server-wont-start.html
+parent: troubleshoot-the-rippled-server.html
+blurb: A collection of problems that would cause a rippled server not to start, and how to fix them.
+---
 # rippled Server Won't Start
 
 This page explains possible reasons [the `rippled` server](the-rippled-server.html) does not start and how to fix them.

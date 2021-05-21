@@ -1,3 +1,8 @@
+---
+html: ledger-history.html
+parent: the-rippled-server.html
+blurb: rippledサーバーはトランザクションの変動金額と状態の履歴をローカルに保管します。
+---
 # レジャー履歴
 
 [コンセンサスプロセス](intro-to-consensus.html)により、[検証済みレジャーバージョン](ledgers.html)のチェーンが作成されます。各バージョンは、以前のバージョンに[トランザクション](transaction-basics.html)のセットを適用して生成されます。各[`rippled`サーバー](the-rippled-server.html)には、レジャーバージョンとトランザクション履歴がローカルに保管されます。サーバーに保管されるトランザクション履歴の量は、サーバーがオンラインであった期間と、サーバーが取得し、保持する履歴量の設定に応じて異なります。

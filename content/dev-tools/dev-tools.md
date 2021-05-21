@@ -1,6 +1,6 @@
 # Dev Tools
 
-Ripple provides a set of developer tools to help you test, explore, and validate XRP Ledger API requests and behavior.
+Use these developer tools to help you test, explore, and validate XRP Ledger API requests and behavior. All of the following tools are part of this website:
 
 * **[XRP Ledger RPC Tool](xrp-ledger-rpc-tool.html)**
 
@@ -34,5 +34,36 @@ Ripple provides a set of developer tools to help you test, explore, and validate
 
     View validations of new ledger versions in real-time, chart the geographic location of servers in the XRP Ledger network, and explore the state of the ledger. [Testnet Explorer](https://testnet.xrpl.org/) also available!
 
+## More Tools
 
-Have an idea for a tool not provided here? [Contact us >](mailto:docs@ripple.com)
+The following tools are maintained by the XRP Ledger community:
+
+- **[Binary Visualizer](https://richardah.github.io/xrpl-binary-visualizer/)**
+
+    Parse the XRP Ledger's [native binary format](serialization.html) with a visual representation breaking down the raw structure into its component parts.
+
+- **[Bithomp Explorer](https://bithomp.com/)**
+
+    Explore public ledger data including accounts' transaction history and known names.
+
+- **[Ledger Stream](https://ledger-stream-beta.xrplf.org/)**
+
+    Watch the [consensus process](consensus.html) occur in real time.
+
+- **[Token List](https://xumm.community/tokens)**
+
+    See all [tokens issued](issued-currencies.html) in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.
+
+- **[XRP Stats](https://ledger.exposed/)**
+
+    View lists of who has the most XRP in their possession or locked up in [escrow](escrow.html).
+
+- **[XRPCharts](https://xrpcharts.ripple.com/)**
+
+    View current and historical price data for various currency pairs involving XRP, including transactions at major exchanges and on-ledger activity in the [decentralized exchange](decentralized-exchange.html).
+
+- **[XRPScan](https://xrpscan.com/)**
+
+    Explore ledger activity, view [amendment voting](amendments.html) in real-time, and get account information. [API access](https://docs.xrpscan.com/) also available.
+
+Have an idea for a tool not provided here? [Contact us >](mailto:docs@ripple.com) or [Open a pull request >]({{target.github_forkurl}}/edit/{{target.github_branch}}/content/{{currentpage.md}})

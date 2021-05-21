@@ -1,3 +1,8 @@
+---
+html: consensus-principles-and-rules.html
+parent: consensus-network.html
+blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
+---
 # Consensus Principles and Rules
 
 The XRP Ledger is a universal payment system enabling users to transfer funds across national boundaries as seamlessly as sending an email. Like other peer-to-peer payment networks such as Bitcoin, the XRP Ledger enables peer-to-peer transaction settlement across a decentralized network of computers. Unlike other digital currency protocols, the XRP Ledger allows users to denominate their transactions with any currency they prefer, including fiat currencies, digital currencies and other forms of value, in addition to XRP (the native asset of the XRP Ledger).

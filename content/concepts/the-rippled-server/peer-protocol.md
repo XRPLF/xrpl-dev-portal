@@ -1,3 +1,8 @@
+---
+html: peer-protocol.html
+parent: the-rippled-server.html
+blurb: The peer protocol specifies the language rippled servers speak to each other.
+---
 # Peer Protocol
 
 Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol, also known as RTXP.
@@ -60,7 +65,7 @@ Normally, a `rippled` server attempts to maintain a healthy number of peers, and
 In the following cases, a `rippled` server does not connect to untrusted peers:
 
 - If the server is configured as a [private peer](#private-peers), it connects _only_ to its fixed peers.
-- If the server is running in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode) it does not connect to _any_ peers.
+- If the server is running in [stand-alone mode][] it does not connect to _any_ peers.
 
 
 ## Private Peers

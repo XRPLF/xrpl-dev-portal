@@ -1,3 +1,8 @@
+---
+html: ticksize.html
+parent: decentralized-exchange.html
+blurb: 発行者は、為替レートのごくわずかな差を超えて、頻繁な取引を抑制するためにオーダーブックで通貨のカスタムチックサイズを設定することができます。
+---
 # ティックサイズ
 
 _（[TickSize Amendment][]が必要です。）_

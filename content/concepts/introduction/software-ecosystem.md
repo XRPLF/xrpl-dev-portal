@@ -1,3 +1,8 @@
+---
+html: software-ecosystem.html
+parent: introduction.html
+blurb: Get an overview of what XRP Ledger software is out there and how it fits together.
+---
 # Software Ecosystem
 
 The XRP Ledger is home to a deep, layered ecosystem of software projects powering and enabling an Internet of Value. It's impossible to list every project, tool, and business that interacts with the XRP Ledger, so this page only lists a few categories and highlights some central projects that are documented here on [xrpl.org](https://xrpl.org). <!-- SPELLING_IGNORE: xrpl -->
@@ -19,7 +24,7 @@ The XRP Ledger is home to a deep, layered ecosystem of software projects powerin
 
 The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. Ripple manages and publishes a reference implementation of this server software, called [**`rippled`**](the-rippled-server.html) (pronounced "ripple-dee"). The server is available under [a permissive open-source license](https://github.com/ripple/rippled/blob/develop/LICENSE), so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.
 
-Every instance of `rippled` syncs to the same network (unless it's configured to follow a [parallel network such as a test net](parallel-networks.html)) and has access to all communications across the network. Every `rippled` server on the network keeps a complete copy of the latest state data for the entire XRP Ledger, along with a slice of recent transactions and a record of the changes those transactions made, and every server processes every transaction independently while verifying that its outcome matches the rest of the network. Servers can be configured to keep more [ledger history](ledger-history.html) and to participate in the consensus process as a [validator](rippled-server-modes.html#reasons-to-run-a-validator).
+Every instance of `rippled` syncs to the same network (unless it's configured to follow a [parallel network such as a test net](parallel-networks.html)) and has access to all communications across the network. Every `rippled` server on the network keeps a complete copy of the latest state data for the entire XRP Ledger, along with a slice of recent transactions and a record of the changes those transactions made, and every server processes every transaction independently while verifying that its outcome matches the rest of the network. Servers can be configured to keep more [ledger history](ledger-history.html) and to participate in the consensus process as a [validator](rippled-server-modes.html#validators).
 
 This server exposes [`rippled` APIs](rippled-api.html) for users to look up data, administer the server, and submit transactions.
 

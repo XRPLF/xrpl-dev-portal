@@ -1,6 +1,11 @@
+---
+html: advance-the-ledger-in-stand-alone-mode.html
+parent: use-stand-alone-mode.html
+blurb: Make progress in stand-alone mode by manually closing the ledger.
+---
 # Advance the Ledger in Stand-Alone Mode
 
-In [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode), `rippled` does not communicate to other members of the peer-to-peer network or participate in a consensus process. Since there is no consensus process in this mode, you must manually advance the ledger index using the [ledger_accept method][]:
+In [stand-alone mode][], `rippled` does not communicate to other members of the peer-to-peer network or participate in a consensus process. Since there is no consensus process in this mode, you must manually advance the ledger index using the [ledger_accept method][]:
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg

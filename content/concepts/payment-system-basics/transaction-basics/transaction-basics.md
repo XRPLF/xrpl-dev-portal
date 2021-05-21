@@ -1,3 +1,8 @@
+---
+html: transaction-basics.html
+parent: payment-system-basics.html
+blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
+---
 # Transaction Basics
 
 A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only final if signed, submitted, and accepted into a validated ledger version following the [consensus process](consensus.html). Some ledger rules also generate _[pseudo-transactions](pseudo-transaction-types.html)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost][].
@@ -54,7 +59,7 @@ Sending a transaction to the XRP Ledger involves several steps:
 3. Submit a transaction to a `rippled` server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
 4. The [consensus process](consensus.html) determines which provisional transactions get included in the next validated ledger.
 5. The `rippled` servers apply those transactions to the previous ledger in a canonical order and share their results.
-6. If enough [trusted validators](rippled-server-modes.html#reasons-to-run-a-validator) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](transaction-results.html) in that ledger are immutable.
+6. If enough [trusted validators](rippled-server-modes.html#validators) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](transaction-results.html) in that ledger are immutable.
 
 See [Send XRP](send-xrp.html) for an interactive tutorial in sending XRP payments.
 

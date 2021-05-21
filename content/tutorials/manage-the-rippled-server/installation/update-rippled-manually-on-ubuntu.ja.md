@@ -1,3 +1,8 @@
+---
+html: update-rippled-manually-on-ubuntu.html
+parent: install-rippled.html
+blurb: Ubuntu Linuxでrippledを手動更新します。
+---
 # UbuntuまたはDebianでの手動更新
 
 このページでは、Ubuntu Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。以下の手順は、[`rippled`がすでにネイティブパッケージを使用してインストール](install-rippled-on-ubuntu.html)されていることを前提としています。可能であれば手動更新ではなく[自動更新](update-rippled-automatically-on-linux.html)を設定することが推奨されます。
@@ -9,19 +14,19 @@
 手動で更新するには、以下の手順を実行します。
 
 1. リポジトリを更新します。
-   
+
         $ sudo apt -y update
 
 2. `rippled`パッケージをアップグレードします。
-   
+
         $ sudo apt -y upgrade rippled
 
 3. `systemd`ユニットファイルを再度読み込みます。
-   
+
         $ sudo systemctl daemon-reload
 
 4. `rippled`サービスを再起動します。
-   
+
         $ sudo service rippled restart
 
 

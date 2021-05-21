@@ -1,3 +1,8 @@
+---
+html: rippling.html
+parent: issued-currencies.html
+blurb: Rippling is automatic multi-party net settlement of issued currency balances.
+---
 # Rippling
 
 In the XRP Ledger, "rippling" describes a process of atomic net settlement between multiple connected parties who have [trust lines](trust-lines-and-issuing.html) for the same currency. Rippling is an essential part of issued currencies, because it allows users who trust the same issuer to send issued balances to each other with the issuer as a passive intermediary. In a sense, rippling is like a passive, two-way [currency exchange order](offers.html) with no limit and a 1:1 exchange rate for two currencies with the same currency code but different issuers.

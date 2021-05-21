@@ -1,3 +1,8 @@
+---
+html: response-formatting.html
+parent: api-conventions.html
+blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
+---
 # Response Formatting
 
 Responses from the `rippled` APIs is formatted slightly differently based on whether the method is called with the WebSocket, JSON-RPC, or Commandline interfaces. The Commandline and JSON-RPC interfaces use the same format because the Commandline interface calls JSON-RPC.
@@ -13,6 +18,7 @@ The fields of a successful response include:
 | `result`        | Object   | The result of the query; contents vary depending on the command. |
 | `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.html) threshold where the server will disconnect this client. |
 | `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). [New in: rippled 1.5.0][] |
+| `forwarded`     | Boolean  | _(May be omitted)_ If `true`, this request and response have been forwarded from a [Reporting Mode][] server to a P2P Mode server (and back) because the request requires data that is not available in Reporting Mode. The default is `false`. |
 
 
 ## Example Successful Response
@@ -122,7 +128,7 @@ Example warning:
 
 This warning indicates that the one or more [amendments](amendments.html) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](amendments.html#amendment-blocked), so you should [upgrade to the latest `rippled` version](install-rippled.html) as soon as possible.
 
-The server only sends this warning if the client is [connected as an admin](get-started-with-the-rippled-api.html#admin-access).
+The server only sends this warning if the client is [connected as an admin](get-started-using-http-websocket-apis.html#admin-access).
 
 This warning includes a `details` field with the following fields:
 
@@ -151,6 +157,27 @@ This warning indicates that the server is [amendment blocked](amendments.html#am
 
 The server administrator must [upgrade `rippled`](install-rippled.html) to a version that supports the activated amendments.
 
+### 1003. This is a reporting server
+[New in: rippled 1.7.0][]
+
+Example warning:
+
+```json
+"warnings" : [
+  {
+    "id" : 1003,
+    "message" : "This is a reporting server. The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+  }
+]
+```
+
+This warning indicates that the server answering the request is running [Reporting Mode][]. Certain API methods are not available or behave differently because Reporting Mode does not connect to the peer-to-peer network and does not track ledger data that has not yet been validated.
+
+It is generally safe to ignore this warning.
+
+**Caution:** If you request ledger data without explicitly [specifying a ledger version][Specifying Ledgers], Reporting Mode uses the latest validated ledger by default instead of the current in-progress ledger.
+
+
 ## See Also
 
 - **Concepts:**
@@ -159,7 +186,7 @@ The server administrator must [upgrade `rippled`](install-rippled.html) to a ver
     - [Amendments](amendments.html)
         - [Known Amendments](known-amendments.html)
 - **Tutorials:**
-    - [Get Started with XRP Ledger APIs](get-started-with-the-rippled-api.html)
+    - [Get Started with XRP Ledger APIs](get-started-using-http-websocket-apis.html)
     - [Install and Update `rippled`](install-rippled.html)
 - **References:**
     - [feature method][]

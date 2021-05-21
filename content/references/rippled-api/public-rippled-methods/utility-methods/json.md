@@ -1,3 +1,8 @@
+---
+html: json.html
+parent: utility-methods.html
+blurb: Pass JSON through the commandline.
+---
 # json
 
 The `json` method is a proxy to running other commands, and accepts the parameters for the command as a JSON value. It is *exclusive to the Commandline client*, and intended for cases where the commandline syntax for specifying parameters is inadequate or undesirable.

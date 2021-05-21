@@ -7,4 +7,4 @@ The prerequisites for cashing a check are the same whether you are cashing it fo
     - For more information on trust lines and limits, see [Issued Currencies](issued-currencies.html) and [Trust Lines and Issuing](trust-lines-and-issuing.html).
 - A secure way to sign transactions, such as [RippleAPI][] or your own [`rippled` server](install-rippled.html).
 - A client library that can connect to a `rippled` server, such as [RippleAPI][] or any HTTP or WebSocket library.
-    - For more information, see [Get Started with the `rippled` API](get-started-with-the-rippled-api.html).
+    - For more information, see [Get Started with the `rippled` API](get-started-using-http-websocket-apis.html).

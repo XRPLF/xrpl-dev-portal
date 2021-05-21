@@ -1,3 +1,8 @@
+---
+html: system-requirements.html
+parent: install-rippled.html
+blurb: Hardware and software requirements for running rippled.
+---
 # System Requirements
 
 ## Minimum Specifications
@@ -5,7 +10,7 @@
 A `rippled` server should run comfortably on commodity hardware, to make it inexpensive to participate in the network. At present, Ripple recommends the following minimum requirements:
 
 - Operating System:
-    - Production: CentOS or RedHat Enterprise Linux (latest release), Ubuntu (16.04+), or Debian (9.x) supported
+    - Production: CentOS or RedHat Enterprise Linux (latest release), Ubuntu (16.04+), or Debian (9.x, 10.x) supported
     - Development: Mac OS X, Windows (64-bit), or most Linux distributions
 - CPU: 64-bit x86_64, 2+ cores
 - Disk: Minimum 50 GB for the database partition. SSD strongly recommended (minimum 1000 IOPS, more is better)
@@ -20,12 +25,10 @@ Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A
 
 For best performance in enterprise production environments, Ripple recommends running `rippled` on bare metal with the following characteristics:
 
-- Operating System: Ubuntu 16.04+
+- Operating System: Ubuntu (LTS) or CentOS or RedHat Enterprise Linux (latest release)
 - CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
-- Disk: SSD (7000+ writes/second, 10,000+ reads/second)
-- RAM:
-  	- For testing: 8 GB+
-  	- For production: 32 GB
+- Disk: SSD (10,000 IOPS or better)
+- RAM: 32 GB
 - Network: Enterprise data center network with a gigabit network interface on the host
 
 ## System Time

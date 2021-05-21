@@ -1,3 +1,8 @@
+---
+html: peer_reservations_list.html
+parent: peer-management-methods.html
+blurb: List reserved slots for specific peer servers.
+---
 # peer_reservations_list
 [[Source]](https://github.com/ripple/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
 
@@ -127,6 +132,7 @@ Each member of the `reservations` array is a JSON object describing one [peer re
 ### Possible Errors
 
 - Any of the [universal error types][].
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

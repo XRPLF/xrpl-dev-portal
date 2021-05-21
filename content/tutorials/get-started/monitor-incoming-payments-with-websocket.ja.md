@@ -1,3 +1,10 @@
+---
+html: monitor-incoming-payments-with-websocket.html
+parent: get-started.html
+blurb: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
+filters:
+    - interactive_steps
+---
 # WebSocketを使用した着信ペイメントの監視
 
 このチュートリアルでは、[WebSocket `rippled` API](rippled-api.html)を使用して、着信[ペイメント](payment-types.html)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
@@ -70,7 +77,6 @@ const socket = new WebSocket('ws://localhost:6006')
 <button id="connect-button" class="btn btn-primary">Connect</button>
 <strong>Connection status:</strong>
 <span id="connection-status">Not connected</span>
-<div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
 <h5>Console:</h5>
 <div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
 {{ end_step() }}

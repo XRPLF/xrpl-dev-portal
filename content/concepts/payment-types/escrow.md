@@ -1,3 +1,8 @@
+---
+html: escrow.html
+parent: payment-types.html
+blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
+---
 # Escrow
 
 Escrow is a feature of the XRP Ledger that allows you to send conditional XRP payments. These conditional payments, called _escrows_, set aside XRP and deliver it later when certain conditions are met. Conditions to successfully finish an escrow include time-based unlocks and [crypto-conditions][]. Escrows can also be set to expire if not finished in time.
@@ -66,7 +71,7 @@ The diagram shows three different cases for three possible combinations of the e
 
 Conditional payments have been enabled by the ["Escrow" Amendment](known-amendments.html#escrow) to the XRP Ledger Consensus Protocol since 2017-03-31. A previous version of the same functionality was available on the [XRP Ledger Test Net](xrp-test-net-faucet.html) by the name "Suspended Payments" (SusPay) in 2016.
 
-When testing in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode), you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your `rippled.cfg`:
+When testing in [stand-alone mode][], you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your `rippled.cfg`:
 
     [features]
     Escrow

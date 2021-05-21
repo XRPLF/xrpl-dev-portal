@@ -1,5 +1,10 @@
+---
+html: stop.html
+parent: server-control-methods.html
+blurb: サーバーのグレースフルシャットダウンを行います。
+---
 # stop
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")
 
 サーバーのグレースフルシャットダウンを行います。
 

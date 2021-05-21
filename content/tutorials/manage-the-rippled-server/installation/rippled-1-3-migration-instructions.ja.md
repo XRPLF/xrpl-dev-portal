@@ -1,3 +1,8 @@
+---
+html: rippled-1-3-migration-instructions.html
+parent: install-rippled.html
+blurb: rippled 1.2.4以前のバージョンからrippled v1.3以降に移行するプロセスについて説明します。
+---
 # rippled v1.3.xへの移行手順
 
 このドキュメントでは、`rippled` 1.2.4以前のバージョンから`rippled` v1.3以降に移行するプロセスについて説明します。`rippled`のインストールプロセスがバージョン1.3では変更されたため、この移行プロセスは必須です。
@@ -15,17 +20,17 @@
 Rippleの公式RPMリポジトリとそれを使用するための手順が変更されました。[自動更新](update-rippled-automatically-on-linux.html)を有効にしている場合は、システムで移行が自動的に実行されます。以前のリポジトリから新しいリポジトリに手動で移行するには、以下の手順を実行します。
 
 1. `rippled`サーバーを停止します。
-   
+
         $ sudo systemctl stop rippled.service
 
 2. 以前のRippleリポジトリパッケージを削除します。
-   
+
         $ sudo rpm -e ripple-repo
-   
+
    `rippled-repo`パッケージは、現在**廃止予定**です。このパッケージはバージョン1.3.1に対応するために、最後にもう一度だけ更新されました。今後は、リポジトリに変更があれば、`ripple.repo`ファイルに手動で変更を加える必要があります。
 
 3. Rippleの新しいyumリポジトリを追加します。
-   
+
         $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-stable]
         name=XRP Ledger Packages
@@ -37,17 +42,17 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
         REPOFILE
 
 4. 新しい`rippled`パッケージをインストールします。
-   
+
         $ sudo yum install rippled
-   
+
    バージョン1.3.1では、構成ファイル（`rippled.cfg`および`validators.txt`）を変更する必要はありません。このアップデート手順では、既存の構成ファイルが現在のまま残ります。
 
 5. systemdユニットファイルを再度読み込みます。
-   
+
         $ sudo systemctl daemon-reload
 
 6. `rippled`サービスを開始します。
-   
+
         $ sudo systemctl start rippled.service
 
 
@@ -63,21 +68,21 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
 1.3用のネイティブAPTパッケージをインストールした後で、サービスを再読み込み/再起動する必要があります。
 
 1. systemdユニットファイルを再度読み込みます。
-   
+
         $ sudo systemctl daemon-reload
 
 2. `rippled`サービスを再起動します。
-   
+
         $ sudo systemctl restart rippled.service
 
 他のパッケージ用にAlienを使用する必要がなくなった場合は、必要に応じて、次の手順でAlienとその依存関係をアンインストールできます。
 
 1. Alienをアンインストールします。
-   
+
         $ sudo apt -y remove alien
 
 2. 使用していない依存関係をアンインストールします。
-   
+
         $ sudo apt -y autoremove
 
 ### 自動更新
@@ -93,7 +98,7 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
 - **チュートリアル:**
   - [Linuxでの自動更新](update-rippled-automatically-on-linux.html)
   - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
-  - [rippled APIの使用開始](get-started-with-the-rippled-api.html)
+  - [rippled APIの使用開始](get-started-using-http-websocket-apis.html)
 - **リファレンス:**
     - [rippled APIリファレンス](rippled-api.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)

@@ -1,3 +1,8 @@
+---
+html: get_counts.html
+parent: status-and-debugging-methods.html
+blurb: Get statistics about the server's internals and memory usage.
+---
 # get_counts
 [[Source]](https://github.com/ripple/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp "Source")
 

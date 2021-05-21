@@ -1,3 +1,8 @@
+---
+html: account_tx.html
+parent: account-methods.html
+blurb: Get info about an account's transactions.
+---
 # account_tx
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
 
@@ -68,11 +73,10 @@ The request includes the following parameters:
 | `limit`            | Integer                                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | `marker`           | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
 
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTxSwitch.cpp "Source")<br>
+**You must use at least one of the following fields** in your request: `ledger_index`, `ledger_hash`, `ledger_index_min`, or `ledger_index_max`.
 
-While each of these fields is marked as optional, **you must use at least one** in your request: `ledger_index`, `ledger_hash`, `ledger_index_min`, or `ledger_index_max`.
+The following legacy fields are no longer supported: `offset`, `count`, `ledger_min`, `ledger_max`. [Removed in: rippled 1.7.0][]
 
-**Note:** For WebSocket and JSON-RPC, there is also a deprecated legacy variation of the `account_tx` method. For that reason, Ripple recommends *not using any of the following fields*: `offset`, `count`, `descending`, `ledger_max`, and `ledger_min`. If you use any of these deprecated fields, the method does not support pagination.
 
 ### Iterating over queried data
 
@@ -450,7 +454,6 @@ Each transaction object includes the following fields, depending on whether it w
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
-* `actBitcoin` - The [Address][] specified in the `account` field is formatted like a Bitcoin address instead of a XRP Ledger address.
 * `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
 * `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](server-doesnt-sync.html).
 

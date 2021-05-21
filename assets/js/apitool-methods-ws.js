@@ -1,3 +1,6 @@
+DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+
 Request("Account Methods")
 
 Request('account_channels', {
@@ -6,8 +9,8 @@ Request('account_channels', {
     body: {
       "id": 1,
       "command": "account_channels",
-      "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-      "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "account": DEFAULT_ADDRESS_1,
+      "destination_account": DEFAULT_ADDRESS_2,
       "ledger_index": "validated"
     }
 })
@@ -17,7 +20,7 @@ Request('account_currencies', {
   link: "account_currencies.html",
   body: {
     "command": "account_currencies",
-    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "account": DEFAULT_ADDRESS_1,
     "strict": true,
     "ledger_index": "validated"
   }
@@ -29,7 +32,7 @@ Request('account_info', {
   body: {
     "id": 2,
     "command": "account_info",
-    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "account": DEFAULT_ADDRESS_1,
     "strict": true,
     "ledger_index": "current",
     "queue": true
@@ -42,7 +45,7 @@ Request('account_lines', {
   body: {
     "id": 2,
     "command": "account_lines",
-    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "account": DEFAULT_ADDRESS_1,
     "ledger_index": "validated"
   }
 })
@@ -53,7 +56,7 @@ Request('account_objects', {
   body: {
     "id": 1,
     "command": "account_objects",
-    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "account": DEFAULT_ADDRESS_1,
     "ledger_index": "validated",
     "type": "state",
     "limit": 10
@@ -66,7 +69,7 @@ Request('account_offers', {
   body: {
     "id": 2,
     "command": "account_offers",
-    "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM"
+    "account": DEFAULT_ADDRESS_1
   }
 })
 
@@ -76,7 +79,7 @@ Request('account_tx', {
   body: {
     "id": 2,
     "command": "account_tx",
-    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "account": DEFAULT_ADDRESS_1,
     "ledger_index_min": -1,
     "ledger_index_max": -1,
     "binary": false,
@@ -91,9 +94,12 @@ Request('gateway_balances', {
   body: {
     "id": "example_gateway_balances_1",
     "command": "gateway_balances",
-    "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+    "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q", // btc2ripple
     "strict": true,
-    "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ","ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],
+    "hotwallet": [
+      "rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ",
+      "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"
+    ],
     "ledger_index": "validated"
   }
 })
@@ -104,7 +110,7 @@ Request('noripple_check', {
   body: {
     "id": 0,
     "command": "noripple_check",
-    "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "account": DEFAULT_ADDRESS_1,
     "role": "gateway",
     "ledger_index": "current",
     "limit": 2,
@@ -159,28 +165,149 @@ Request('ledger_data', {
  }
 })
 
-Request('ledger_entry', {
-  description: "Returns a single ledger object in its raw format.",
-  link: "ledger_entry.html",
+Request('ledger_entry - by object ID', {
+  description: "Returns an object by its unique ID.",
+  link: "ledger_entry.html#get-ledger-object-by-id",
   body: {
-    "id": 3,
     "command": "ledger_entry",
-    "type": "account_root",
-    "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4",
     "ledger_index": "validated"
   }
 })
 
+Request('ledger_entry - AccountRoot', {
+  description: "Returns a single account in its raw ledger format.",
+  link: "ledger_entry.html#get-accountroot-object",
+  body: {
+    "id": "example_get_accountroot",
+    "command": "ledger_entry",
+    "account_root": DEFAULT_ADDRESS_1,
+    "ledger_index": "validated"
+  }
+})
+
+Request('ledger_entry - DirectoryNode', {
+  description: "Returns a directory object in its raw ledger format.",
+  link: "ledger_entry.html#get-directorynode-object",
+  body: {
+    "id": "example_get_directorynode",
+    "command": "ledger_entry",
+    "directory": {
+      "owner": DEFAULT_ADDRESS_1,
+      "sub_index": 0
+    },
+    "ledger_index": "validated"
+  }
+})
+
+Request('ledger_entry - Offer', {
+  description: "Returns an Offer object in its raw ledger format.",
+  link: "ledger_entry.html#get-offer-object",
+  body: {
+    "id": "example_get_offer",
+    "command": "ledger_entry",
+    "offer": {
+      "account": DEFAULT_ADDRESS_1,
+      "seq": 359
+    },
+    "ledger_index": "validated"
+  }
+})
+
+Request('ledger_entry - RippleState', {
+  description: "Returns a RippleState object in its raw ledger format.",
+  link: "ledger_entry.html#get-ripplestate-object",
+  body: {
+    "id": "example_get_ripplestate",
+    "command": "ledger_entry",
+    "ripple_state": {
+      "accounts": [
+        DEFAULT_ADDRESS_1,
+        "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
+      ],
+      "currency": "USD"
+    },
+    "ledger_index": "validated"
+  }
+})
+
+Request('ledger_entry - Check', {
+  description: "Returns a Check object in its raw ledger format.",
+  link: "ledger_entry.html#get-check-object",
+  body: {
+    "id": "example_get_check",
+    "command": "ledger_entry",
+    "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB",
+    "ledger_index": "validated"
+  }
+})
+
+Request('ledger_entry - Escrow', {
+  description: "Returns an Escrow object in its raw ledger format.",
+  link: "ledger_entry.html#get-escrow-object",
+  body: {
+    "id": "example_get_escrow",
+    "command": "ledger_entry",
+    "escrow": { // This is a long-lasting Escrow found in public data
+      "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
+      "seq": 126
+    },
+    "ledger_index": "validated"
+  }
+})
+
+Request('ledger_entry - PayChannel', {
+  description: "Returns a PayChannel object in its raw ledger format.",
+  link: "ledger_entry.html#get-paychannel-object",
+  body: {
+    "id": "example_get_paychannel",
+    "command": "ledger_entry",
+    "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
+    "ledger_index": "validated"
+  }
+})
+
+Request('ledger_entry - DepositPreauth', {
+  description: "Returns a DepositPreauth object in its raw ledger format.",
+  link: "ledger_entry.html#get-depositpreauth-object",
+  body: {
+    "id": "example_get_deposit_preauth",
+    "command": "ledger_entry",
+    "deposit_preauth": {
+      "owner": DEFAULT_ADDRESS_1,
+      "authorized": DEFAULT_ADDRESS_2
+    },
+    "ledger_index": "validated"
+  }
+})
+
+// Waiting for TicketBatch amendment on Mainnet
+// Request('ledger_entry - Ticket', {
+//   description: "Returns a Ticket object in its raw ledger format.",
+//   link: "ledger_entry.html#get-ticket-object",
+//   body: {
+//     "id": "example_get_ticket",
+//     "command": "ledger_entry",
+//     "ticket": {
+//       "owner": DEFAULT_ADDRESS_1,
+//       "ticket_sequence": 0 // TODO: make a real ticket, fill in the seq
+//     },
+//     "ledger_index": "validated"
+//   }
+// })
+
+
 Request("Transaction Methods")
 
-// Future feature: special case sign/sign_for so you can use those if you're
-// connected to a local server (with big warning)
+// Signing methods are not provided here because they're admin-only by default.
+// (Sending your secret to another server is extremely insecure and could cause
+// someone else to take over your account, steal all your money, etc.)
 
 Request('submit', {
   description: "Submits a transaction to the network to be confirmed and included in future ledgers.",
   link: "submit.html",
   body: {
-    "id": 3,
+    "id": "example_submit",
     "command": "submit",
     "tx_blob": "1200002280000000240000001E61D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000B732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210095D23D8AF107DF50651F266259CC7139D0CD0C64ABBA3A958156352A0D95A21E02207FCF9B77D7510380E49FF250C21B57169E14E9B4ACFD314CEDC79DDD0A38B8A681144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
   }
@@ -244,16 +371,6 @@ Request('tx', {
   }
 })
 
-Request('tx_history', {
-  description: "Retrieves some of the most recent transactions made. (DEPRECATED)",
-  link: "tx_history.html",
-  body: {
-    "id": 5,
-    "command": "tx_history",
-    "start": 0
-  }
-})
-
 Request("Path and Order Book Methods")
 
 Request('book_offers', {
@@ -262,7 +379,7 @@ Request('book_offers', {
   body: {
     "id": 4,
     "command": "book_offers",
-    "taker": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "taker": DEFAULT_ADDRESS_1,
     "taker_gets": {
       "currency": "XRP"
     },
@@ -280,8 +397,8 @@ Request('deposit_authorized', {
   body: {
     "id": 1,
     "command": "deposit_authorized",
-    "source_account": "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
-    "destination_account": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+    "source_account": DEFAULT_ADDRESS_1,
+    "destination_account": DEFAULT_ADDRESS_2,
     "ledger_index": "validated"
   }
 })
@@ -294,8 +411,8 @@ Request('path_find', {
     "id": 8,
     "command": "path_find",
     "subcommand": "create",
-    "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "source_account": DEFAULT_ADDRESS_1,
+    "destination_account": DEFAULT_ADDRESS_1,
     "destination_amount": {
         "value": "0.001",
         "currency": "USD",
@@ -310,7 +427,7 @@ Request('ripple_path_find', {
   body: {
     "id": 8,
     "command": "ripple_path_find",
-    "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "source_account": DEFAULT_ADDRESS_1,
     "source_currencies": [
         {
             "currency": "XRP"
@@ -319,7 +436,7 @@ Request('ripple_path_find', {
             "currency": "USD"
         }
     ],
-    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "destination_account": DEFAULT_ADDRESS_1,
     "destination_amount": {
         "value": "0.001",
         "currency": "USD",

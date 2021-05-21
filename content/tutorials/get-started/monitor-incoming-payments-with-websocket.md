@@ -1,3 +1,10 @@
+---
+html: monitor-incoming-payments-with-websocket.html
+parent: get-started.html
+blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
+filters:
+    - interactive_steps
+---
 # Monitor Incoming Payments with WebSocket
 
 This tutorial shows how to monitor for incoming [payments](payment-types.html) using the [WebSocket `rippled` API](rippled-api.html). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
@@ -70,7 +77,6 @@ Example:
 <button id="connect-button" class="btn btn-primary">Connect</button>
 <strong>Connection status:</strong>
 <span id="connection-status">Not connected</span>
-<div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
 <h5>Console:</h5>
 <div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
 {{ end_step() }}
@@ -133,7 +139,7 @@ const handleResponse = function(data) {
   if (AWAITING.hasOwnProperty(data.id)) {
     AWAITING[data.id].resolve(data)
   } else {
-    console.error("Response to un-awaited request w/ ID " + data.id)
+    console.warn("Response to un-awaited request w/ ID " + data.id)
   }
 }
 
@@ -179,7 +185,7 @@ async function pingpong() {
   const response = await api_request({command: "ping"})
   console.log("Pong!", response)
 }
-pingpong()
+// Add pingpong() to the 'open' listener for socket
 ```
 
 {{ start_step("Dispatch Messages") }}
@@ -263,7 +269,7 @@ The following code sample subscribes to the Test Net Faucet's sending address. I
 async function do_subscribe() {
   const sub_response = await api_request({
     command:"subscribe",
-    accounts: ["rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"]
+    accounts: ["rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"]
   })
   if (sub_response.status === "success") {
     console.log("Successfully subscribed!")
@@ -271,7 +277,7 @@ async function do_subscribe() {
     console.error("Error subscribing: ", sub_response)
   }
 }
-do_subscribe()
+// Add do_subscribe() to the 'open' listener for socket
 
 const log_tx = function(tx) {
   console.log(tx.transaction.TransactionType + " transaction sent by " +

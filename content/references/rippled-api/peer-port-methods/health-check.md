@@ -1,3 +1,8 @@
+---
+html: health-check.html
+parent: peer-port-methods.html
+blurb: Special API method for reporting server health.
+---
 # Health Check
 [[Source]](https://github.com/ripple/rippled/blob/de0c52738785de8bf837f9124da65c7905e7bb5a/src/ripple/overlay/impl/OverlayImpl.cpp#L1084-L1168 "Source")
 
@@ -5,7 +10,7 @@ The Health Check is a special [peer port method](peer-port-methods.html) for rep
 
 This method checks several metrics to see if they are in ranges generally considered healthy. If all metrics are in normal ranges, this method reports that the server is healthy. If any metric is outside normal ranges, this method reports that the server is unhealthy and reports the metric(s) that are unhealthy. Since some metrics may rapidly fluctuate into and out of unhealthy ranges, you should not raise alerts unless the health check fails multiple times in a row.
 
-**Note:** Since the health check is a [peer port method](peer-port-methods.html), it is not available when testing the server in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode).
+**Note:** Since the health check is a [peer port method](peer-port-methods.html), it is not available when testing the server in [stand-alone mode][].
 
 
 ## Request Format

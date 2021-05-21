@@ -1,3 +1,8 @@
+---
+html: peers.html
+parent: peer-management-methods.html
+blurb: Get information about the peer servers connected.
+---
 # peers
 [[Source]](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
 
@@ -408,7 +413,8 @@ The `metrics` object contains the following fields:
 
 ### Possible Errors
 
-* Any of the [universal error types][].
+- Any of the [universal error types][].
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

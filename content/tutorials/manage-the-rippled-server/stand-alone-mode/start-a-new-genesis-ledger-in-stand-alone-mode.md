@@ -1,3 +1,8 @@
+---
+html: start-a-new-genesis-ledger-in-stand-alone-mode.html
+parent: use-stand-alone-mode.html
+blurb: Start from a fresh genesis ledger in stand-alone mode.
+---
 # Start a New Genesis Ledger in Stand-Alone Mode
 
 In stand-alone mode, you can have `rippled` create a new genesis ledger. This provides a known state, with none of the ledger history from the production XRP Ledger. (This is very useful for unit tests, among other things.)

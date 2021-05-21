@@ -1,3 +1,8 @@
+---
+html: configure-advisory-deletion.html
+parent: configure-rippled.html
+blurb: 指示による削除を使用して、新しい履歴ができたときではなく、スケジュールで古いレジャー履歴を削除します。
+---
 # 指示による削除の設定
 
 デフォルトの構成ファイルは、新しいレジャーバージョンが利用可能になると`rippled`が古いXRP Ledgerの履歴を自動的に削除するように設定されています。サーバーがピーク時にハードウェアリソースの大部分を使用する場合は、オフピーク時に実行するようスケジュールされたコマンドからの指示があった場合にのみ、レジャーを削除するようにサーバーを設定できます。これにより、オンライン削除がサーバーのパフォーマンスに及ぼす影響はほとんどなくなります。
@@ -44,7 +49,7 @@
 
 2. サーバーに対してオンライン削除を指示する[can_deleteメソッド][]の実行をテストします。
 
-    このコマンドの実行には[`rippled`コマンドラインインターフェイス](get-started-with-the-rippled-api.html#コマンドライン)を使用できます。例:
+    このコマンドの実行には[`rippled`コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用できます。例:
 
         $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
 

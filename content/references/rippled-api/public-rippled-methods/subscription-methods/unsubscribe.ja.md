@@ -1,5 +1,10 @@
+---
+html: unsubscribe.html
+parent: subscription-methods.html
+blurb: 特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
+---
 # unsubscribe
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
 
 `unsubscribe`コマンドはサーバーに対して、特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
 

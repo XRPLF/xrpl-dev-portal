@@ -1,3 +1,8 @@
+---
+html: configure-statsd.html
+parent: configure-rippled.html
+blurb: Monitor your rippled server with StatsD metrics.
+---
 # Configure StatsD
 
 `rippled` can export health and behavioral information about itself in [StatsD](https://github.com/statsd/statsd) format. Those metrics can be consumed and visualized through [`rippledmon`](https://github.com/ripple/rippledmon) or any other collector that accepts StatsD formatted metrics.
@@ -8,7 +13,7 @@ To enable StatsD on your `rippled` server, perform the following steps:
 
 1. Set up a `rippledmon` instance on another machine to receive and aggregate stats.
 
-        $ git clone https://github.com/rippled/rippledmon.git
+        $ git clone https://github.com/ripple/rippledmon.git
         $ cd rippledmon
         $ docker-compose up
 

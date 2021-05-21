@@ -1,3 +1,8 @@
+---
+html: update-rippled-manually-on-centos-rhel.html
+parent: install-rippled.html
+blurb: Manually update rippled on CentOS or Red Hat Enterprise Linux.
+---
 # Update Manually on CentOS/Red Hat
 
 This page describes how to update manually to the latest release of `rippled` on CentOS or Red Hat Enterprise Linux. Ripple recommends setting up [automatic updates](update-rippled-automatically-on-linux.html) instead, where possible.
@@ -7,6 +12,18 @@ These instructions assume you have already [installed `rippled` from the `yum` r
 **Tip:** To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package. This script should be run as a `sudo` user.
 
 To update manually, complete the following steps:
+
+1. If you are upgrading to `rippled` 1.7.0 from an earlier version, re-add the repository to get Ripple's updated GPG key. Otherwise, skip this step:
+
+        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        [ripple-stable]
+        name=XRP Ledger Packages
+        enabled=1
+        gpgcheck=0
+        repo_gpgcheck=1
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/stable
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
+        REPOFILE
 
 1. Download and install the latest `rippled` package:
 

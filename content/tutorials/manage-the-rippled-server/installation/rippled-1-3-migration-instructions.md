@@ -1,3 +1,8 @@
+---
+html: rippled-1-3-migration-instructions.html
+parent: install-rippled.html
+blurb: Use these instructions to upgrade rippled packages from 1.2.x or below to 1.3.x or higher.
+---
 # rippled v1.3.x Migration Instructions
 
 This document describes the migration process for upgrading from `rippled` 1.2.4 or earlier to `rippled` v1.3 or later. This migration process is necessary because the `rippled` install process has changed as of version 1.3.
@@ -93,7 +98,7 @@ The `rippled` v1.3 package includes an updated auto-update script that works on 
 - **Tutorials:**
     - [Update Automatically on Linux](update-rippled-automatically-on-linux.html)
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
-    - [Get Started with the rippled API](get-started-with-the-rippled-api.html)
+    - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
 - **References:**
     - [rippled API Reference](rippled-api.html)
         - [`rippled` Commandline Usage](commandline-usage.html)

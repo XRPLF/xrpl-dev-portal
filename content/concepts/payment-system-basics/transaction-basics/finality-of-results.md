@@ -1,3 +1,8 @@
+---
+html: finality-of-results.html
+parent: transaction-basics.html
+blurb: Learn when the outcome of a transaction is final and immutable.
+---
 # Finality of Results
 
 The order in which transactions apply to the consensus [ledger](ledgers.html) is not final until a ledger is closed and the exact transaction set is approved by the [consensus process](intro-to-consensus.html). A transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a later round.
@@ -40,7 +45,7 @@ When you initially submit a transaction, the `rippled` server tentatively applie
 
     - A [Payment transaction][] that tentatively failed because the sender did not have enough funds may later succeed because another transaction delivering the necessary funds came first in the canonical order. The reverse is also possible: a transaction that tentatively succeeded may fail because a transaction delivering the necessary funds did not come first after being put into canonical order.
 
-    **Tip:** For this reason, when running tests against the XRP Ledger, be sure to wait for a ledger close in between transactions if you have several accounts affecting the same data. If you are testing against a server in [stand-alone-mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode), you must [manually close the ledger](advance-the-ledger-in-stand-alone-mode.html) in such cases.
+    **Tip:** For this reason, when running tests against the XRP Ledger, be sure to wait for a ledger close in between transactions if you have several accounts affecting the same data. If you are testing against a server in [stand-alone mode][], you must [manually close the ledger](advance-the-ledger-in-stand-alone-mode.html) in such cases.
 
 
 ## See Also

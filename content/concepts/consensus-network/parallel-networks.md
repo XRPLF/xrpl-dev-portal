@@ -1,3 +1,8 @@
+---
+html: parallel-networks.html
+parent: consensus-network.html
+blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
+---
 # Parallel Networks
 
 There is one production XRP Ledger peer-to-peer network, and all business that takes place on the XRP Ledger occurs within the production network—the Mainnet.

@@ -1,3 +1,8 @@
+---
+html: issuing-and-operational-addresses.html
+parent: issued-currencies.html
+blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
+---
 # Issuing and Operational Addresses
 
 {% include '_snippets/issuing-and-operational-addresses-intro.md' %}

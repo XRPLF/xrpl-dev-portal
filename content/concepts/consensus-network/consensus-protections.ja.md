@@ -1,3 +1,8 @@
+---
+html: consensus-protections.html
+parent: consensus-network.html
+blurb: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system. #TODO: translate
+---
 # 攻撃および障害モードに対するコンセンサスの保護
 
 XRP Ledgerコンセンサスプロトコルは、 _ビザンチンフォールトトレラント性_ のあるコンセンサスメカニズムです。つまり、あらゆる不適切な状況（参加者が信頼できないオープンネットワークを利用して通信している場合や、不正使用者が常にシステムを乗っ取ろうとしているかまたは中断しようとしている場合など）が発生しても動作するように設計されています。さらに、XRP Ledgerコンセンサスプロトコルの参加者が事前に判明していない場合や、時間の経過とともに変わる場合があります。

@@ -1,3 +1,8 @@
+---
+html: disable-master-key-pair.html
+parent: manage-account-settings.html
+blurb: Disable the master key that is mathematically associated with an address.
+---
 # Disable Master Key Pair
 
 This page describes how to disable the [master key pair](cryptographic-keys.html) that is mathematically associated with an [account](accounts.html)'s address. You should do this if your account's master key pair may have been compromised, or if you want to make [multi-signing](multi-signing.html) the _only_ way to submit transactions from your account.

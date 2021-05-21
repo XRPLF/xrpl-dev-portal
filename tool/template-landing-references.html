@@ -11,49 +11,28 @@
 
   {% set flag_n = cycler(* range(1,99)) %}
   <section class="container-fluid card-grid card-grid-4xN">
-    {% for page in pages|selectattr("doc_type", 'defined_and_equalto', "References")|selectattr("supercategory", "defined") %}
-      {% if page == pages|selectattr("supercategory", 'defined_and_equalto', page.supercategory)|first %}
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
-          </div><!--/.card-header-->
-          <div class="card-body">
-            <p class="blurb">{{page.blurb}}</p>
-            {% set depth = 1 %}
-            {% set parent_page = page %}
-            {% include 'template-page-children.html' %}
-          </div><!--/.card-body-->
-        </div><!--/.card-->
-      {% endif %}
-    {% endfor %}
+    {% for page in currentpage.children if not page.nav_omit %}
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <p class="blurb">{{page.blurb}}</p>
+          {% if page.curated_anchors is defined %}
+            <div class="curated-links">
+              <ul>
+                {% for link in page.curated_anchors %}
+                <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
+                {% endfor %}
+              </ul>
+            </div><!--/.curated-links-->
+          {% endif %}
 
-    {% for page in pages|selectattr("doc_type", 'defined_and_equalto', "References")|selectattr("supercategory", "undefined") %}
-      {% if loop.index != 1 and page == pages|selectattr("category", 'defined_and_equalto', page.category)|first %}
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
-          </div><!--/.card-header-->
-          <div class="card-body">
-            <p class="blurb">{{page.blurb}}</p>
-            {% if page.curated_anchors is defined %}
-              <div class="curated-links">
-                <ul>
-                  {% for link in page.curated_anchors %}
-                  <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
-                  {% endfor %}
-                </ul>
-              </div><!--/.curated-links-->
-            {% endif %}
-
-            {% set depth = 1 %}
-            {% set parent_page = page %}
-            {% include 'template-page-children.html' %}
-          </div><!--/.card-body-->
-        </div><!--/.card-->
-      {% endif %}
-    {% endfor %}
-    {% for filler_n in range((flag_n.current+1) % 4) %}
-      <div class="card">&nbsp;</div>
+          {% set depth = 1 %}
+          {% set parent_html = page.html %}
+          {% include 'children.html' %}
+        </div><!--/.card-body-->
+      </div><!--/.card-->
     {% endfor %}
 
   </section>
@@ -62,9 +41,9 @@
     <h2 id="full-reference-index">{% trans %}Full Reference Index{% endtrans %}</h2>
     <div class="row">
       <div class="col-md-8">
-        {% set parent_page = currentpage %}
-        {% set depth = 5 %}
-        {% include 'template-page-children.html' %}
+        {% set parent_html = currentpage.html %}
+        {% set depth = 99 %}
+        {% include 'children.html' %}
       </div>
     </div>
   </section>

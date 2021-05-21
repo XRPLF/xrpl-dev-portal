@@ -1,3 +1,8 @@
+---
+html: install-rippled-on-ubuntu.html
+parent: install-rippled.html
+blurb: Install a precompiled rippled binary on Ubuntu Linux.
+---
 # Install on Ubuntu or Debian Linux
 
 This page describes the recommended instructions for installing the latest stable version of `rippled` on **Ubuntu Linux 16.04 or higher** or **Debian 9 or higher**, using the [`apt`](https://help.ubuntu.com/lts/serverguide/apt.html) utility.
@@ -31,10 +36,10 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     The output should include an entry for Ripple such as the following:
 
-        pub   rsa3072 2019-02-14 [SC] [expires: 2021-02-13]
+        pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
               C001 0EC2 05B3 5A33 10DC 90DE 395F 97FF CCAF D9A2
         uid           [ unknown] TechOps Team at Ripple <techops+rippled@ripple.com>
-        sub   rsa3072 2019-02-14 [E] [expires: 2021-02-13]
+        sub   rsa3072 2019-02-14 [E] [expires: 2026-02-17]
 
     In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with `C001`.)
 
@@ -93,7 +98,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 - **Tutorials:**
     - [Configure rippled](configure-rippled.html)
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
-    - [Get Started with the rippled API](get-started-with-the-rippled-api.html)
+    - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
 - **References:**
     - [rippled API Reference](rippled-api.html)
         - [`rippled` Commandline Usage](commandline-usage.html)

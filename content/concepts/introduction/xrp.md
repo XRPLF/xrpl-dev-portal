@@ -1,3 +1,8 @@
+---
+html: xrp.html
+parent: introduction.html
+blurb: Learn about the uses and properties of XRP, the digital asset for payments.
+---
 # XRP
 
 **XRP** is the native cryptocurrency of the XRP Ledger. All [accounts](accounts.html) in the XRP Ledger can send XRP among one another and must hold a minimum amount of XRP as a [reserve](reserves.html). XRP can be sent directly from any XRP Ledger address to any other, without needing a gateway or liquidity provider. This helps make XRP a convenient bridge currency.

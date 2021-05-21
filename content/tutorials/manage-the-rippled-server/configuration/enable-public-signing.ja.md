@@ -1,8 +1,13 @@
+---
+html: enable-public-signing.html
+parent: configure-rippled.html
+blurb: 他の人があなたのサーバーを使ってトランザクションに署名できるようにします。（非推奨）
+---
 # パブリック署名の有効化
 
 [新規: rippled 1.1.0][]デフォルトでは、`rippled`の署名メソッドは管理者接続に限定されています。v1.1.0以前のバージョンの`rippled`のように、署名メソッドをパブリックAPIメソッドとして使用できるようにするには、構成を変更することで、これを使用できるようにします。
 
-これにより、サーバーが「パブリック」[JSON-RPC接続およびWebSocket接続](get-started-with-the-rippled-api.html)を受け入れる場合は、これらのパブリック接続で以下のメソッドが使用できるようになります。
+これにより、サーバーが「パブリック」[JSON-RPC接続およびWebSocket接続](get-started-using-http-websocket-apis.html)を受け入れる場合は、これらのパブリック接続で以下のメソッドが使用できるようになります。
 
 - [sign][signメソッド]
 - [sign_for][sign_forメソッド]

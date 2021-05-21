@@ -12,6 +12,17 @@ h3 a:hover,
   color: $primary;
 }
 
+.curated-links a,
+.children-display a,
+a.card,
+.xrpl-footer a {
+  color: $white;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
 /* Content text styling ----------------------------------------------------- */
 
 .content {
@@ -77,37 +88,9 @@ h3 a:hover,
   padding-left: 20px;
 }
 
-
-
-/* Tables ------------------------------- */
-
-.content table {
-  clear: right;
-  margin-bottom: 48px;
+.content .children-display > ul > li {
+  margin-top: 24px;
 }
-
-.content table code {
-  word-break: normal;
-  white-space: nowrap;
-}
-
-th {
-  border-bottom: 2px solid $gray-200;
-}
-tr {
-  border-bottom: 1px solid $gray-200;
-}
-
-th, td {
-  padding: 0.2em;
-  vertical-align: text-top;
-  padding: 12px;
-}
-
-td:nth-child(1) {
-  font-weight: bold;
-}
-
 
 
 /* Cards ------------------------------- */
@@ -147,5 +130,19 @@ td:nth-child(1) {
   }
   .card-deck .card {
     margin-bottom: 2.5rem !important;
+  }
+}
+
+// Hover anchors ---------------
+.hover_anchor {
+  visibility: hidden;
+  padding-left: 1rem;
+  font-size: 1.25rem;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  &:hover .hover_anchor {
+    visibility: visible;
+    text-decoration: none;
   }
 }

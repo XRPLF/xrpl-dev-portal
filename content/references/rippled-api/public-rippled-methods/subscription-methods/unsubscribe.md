@@ -1,3 +1,8 @@
+---
+html: unsubscribe.html
+parent: subscription-methods.html
+blurb: Stop listening for updates about a particular subject.
+---
 # unsubscribe
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
 

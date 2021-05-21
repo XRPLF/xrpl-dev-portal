@@ -1,3 +1,8 @@
+---
+html: cryptographic-keys.html
+parent: accounts.html
+blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
+---
 # Cryptographic Keys
 
 In the XRP Ledger, a digital signature _authorizes_ a [transaction](transaction-basics.html) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
@@ -149,7 +154,7 @@ The key derivation processes described here are implemented in multiple places a
 - In C++ in the `rippled` code base:
     - [Seed definition](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/Seed.h)
     - [General & Ed25519 key derivation](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-    - [secp256k1 key derivation](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp)
+    - [secp256k1 key derivation](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
 - In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/key-derivation/key_derivation.py).
 - In JavaScript in the [`ripple-keypairs`](https://github.com/ripple/ripple-keypairs/) package.
 
@@ -175,7 +180,7 @@ The key derivation processes described here are implemented in multiple places a
     Validator ephemeral keys cannot be Ed25519.
 
 ### secp256k1 Key Derivation
-[[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Source")
 
 {{ include_svg("img/key-derivation-secp256k1.svg", "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair") }}
 

@@ -1,3 +1,8 @@
+---
+html: configure-the-peer-crawler.html
+parent: configure-peering.html
+blurb: Configure how much information your rippled server reports publicly about its status and peers.
+---
 # Configure the Peer Crawler
 
 By default, [`rippled` servers](the-rippled-server.html) provide statistics publicly to anyone who asks using the [peer crawler API](peer-crawler.html), to make it easier to track the health and topology of [the XRP Ledger's peer-to-peer network](consensus-network.html). You can configure your server to provide more or less information, or to reject peer crawler requests entirely. [New in: rippled 1.2.0][]

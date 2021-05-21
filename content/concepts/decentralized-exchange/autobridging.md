@@ -1,3 +1,8 @@
+---
+html: autobridging.html
+parent: decentralized-exchange.html
+blurb: Autobriding automatically connects order books using XRP as an intermediary when it reduces costs.
+---
 # Auto-Bridging
 
 Any [Offer](offers.html) in the XRP Ledger's [decentralized exchange](decentralized-exchange.html) that would exchange two non-XRP currencies could potentially use [XRP](xrp.html) as an intermediary currency in a synthetic order book. This is because of _auto-bridging_, which serves to improve liquidity across all currency pairs by using XRP when doing so is cheaper than trading those currencies directly. This works because of XRP's nature as a native cryptocurrency to the XRP Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.

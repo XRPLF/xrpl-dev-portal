@@ -86,12 +86,13 @@ function select_request(request) {
   } else {
     el = commandlist.find("li a[href='#"+request+"']").parent()
   }
-  $(el).siblings().removeClass('active');
-  $(el).addClass('active');
+  $(el).siblings().removeClass('active')
+  $(el).addClass('active')
 
   const command = requests[request];
   if (command === undefined) {
-    console.log("request:", request, "requests:", requests)
+    console.warning("Unknown request identifier from # anchor.")
+    return false
   }
 
   if (command.description) {
@@ -121,6 +122,7 @@ function select_request(request) {
       cm_request.setValue("")
   }
   cm_request.refresh()
+  return true
 };
 
 function send_request() {
@@ -329,7 +331,11 @@ $(document).ready(function() {
 
     if (window.location.hash) {
       var cmd   = window.location.hash.slice(1).toLowerCase();
-      select_request(cmd);
+      if (!select_request(cmd)) {
+        // Didn't find a definition for the request from the hash. Use the
+        // default instead.
+        select_request()
+      }
     } else if (search_params.has("server") || search_params.has("req")) {
       load_from_permalink(search_params)
     } else {

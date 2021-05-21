@@ -1,3 +1,8 @@
+---
+html: configure-a-private-server.html
+parent: configure-peering.html
+blurb: Set up a server to connect only to specific, trusted peers.
+---
 # Configure a Private Server
 
 A [private server](peer-protocol.html#private-peers) is a `rippled` server that connects to the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for [validators](run-rippled-as-a-validator.html), but it can be useful for other specific purposes.

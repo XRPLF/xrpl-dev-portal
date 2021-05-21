@@ -1,3 +1,8 @@
+---
+html: understanding-log-messages.html
+parent: troubleshoot-the-rippled-server.html
+blurb: Interpret and respond to warning and error messages in the debug log.
+---
 # Understanding Log Messages
 
 The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](the-rippled-server.html) debug log and how to interpret them.
@@ -121,7 +126,7 @@ The entry contains the IP address of the client that exceeded its rate limit, an
 
 If you see frequent messages from the same IP address, you may want to block those IP addresses from your network to reduce the load on your server's public API. (For example, you may be able to configure your firewall to block those IP addresses.)
 
-To avoid being dropped by rate limiting on your own server, [connect as an admin](get-started-with-the-rippled-api.html#admin-access).
+To avoid being dropped by rate limiting on your own server, [connect as an admin](get-started-using-http-websocket-apis.html#admin-access).
 
 ## InboundLedger 11 timeouts for ledger
 
@@ -290,6 +295,17 @@ Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1
 
 {% include '_snippets/unsynced_warning_logs.md' %}
 <!--_ -->
+
+
+## [veto_amendments] section in config file ignored
+
+Log messages such as the following occur when  your `rippled.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
+
+```text
+Amendments:WRN [veto_amendments] section in config file ignored in favor of data in db/wallet.db.
+```
+
+To resolve this error, remove the `[amendments]` and `[veto_amendments]` stanzas from your config file. For more information, see [Amendment Voting](amendments.html#amendment-voting).
 
 
 ## View of consensus changed during open

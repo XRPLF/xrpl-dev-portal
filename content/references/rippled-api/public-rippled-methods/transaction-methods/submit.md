@@ -1,3 +1,8 @@
+---
+html: submit.html
+parent: transaction-methods.html
+blurb: Send a transaction to the network.
+---
 # submit
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
 
@@ -293,7 +298,7 @@ The response follows the [standard format][], with a successful result containin
 | `account_sequence_available` | Number | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] available for the sending account after all pending and [queued](transaction-queue.html) transactions. [New in: rippled 1.5.0][] |
 | `account_sequence_next` | number  | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] for the sending account after all transactions that have been provisionally applied, but not transactions in the [queue](transaction-queue.html). [New in: rippled 1.5.0][] |
 | `applied`               | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that this transaction was applied to the open ledger. In this case, the transaction is likely, but not guaranteed, to be validated in the next ledger version. [New in: rippled 1.5.0][] |
-| `broadcast`             | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates this transaction was broadcast to peer servers in the peer-to-peer XRP Ledger network. (Note: if the server has no peers, such as in [stand-alone mode](rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode), the server uses the value `true` for cases where it _would_ have broadcast the transaction.) The value `false` indicates the transaction was not broadcast to any other servers. [New in: rippled 1.5.0][] |
+| `broadcast`             | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates this transaction was broadcast to peer servers in the peer-to-peer XRP Ledger network. (Note: if the server has no peers, such as in [stand-alone mode][], the server uses the value `true` for cases where it _would_ have broadcast the transaction.) The value `false` indicates the transaction was not broadcast to any other servers. [New in: rippled 1.5.0][] |
 | `kept`                  | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that the transaction was kept to be retried later. [New in: rippled 1.5.0][] |
 | `queued`                | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates the transaction was put in the [Transaction Queue](transaction-queue.html), which means it is likely to be included in a future ledger version. [New in: rippled 1.5.0][] |
 | `open_ledger_cost`      | String  | _(Omitted in sign-and-submit mode)_ The current [open ledger cost](transaction-cost.html#open-ledger-cost) before processing this transaction. Transactions with a lower cost are likely to be [queued](transaction-queue.html). [New in: rippled 1.5.0][] |

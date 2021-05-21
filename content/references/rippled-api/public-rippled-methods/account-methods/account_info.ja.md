@@ -1,5 +1,10 @@
+---
+html: account_info.html
+parent: account-methods.html
+blurb: アカウントとそのアクティビティおよびXRP残高についての情報を取得します。
+---
 # account_info
-[[ソース]<br>](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp "Source")
 
 `account_info`コマンドは、アカウントとそのアクティビティおよびXRP残高についての情報を取得します。取得されたすべての情報は、特定バージョンのレジャーに関連付けられています。
 

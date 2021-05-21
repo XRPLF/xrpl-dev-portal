@@ -1,3 +1,8 @@
+---
+html: technical-faq.html
+parent: introduction.html
+blurb: バリデータ、ユニークノードリスト、XRPの役割、セキュリティなどのトピックに関するよくある質問に対しての答えを見つけてください。
+---
 # 技術に関するよくある質問
 
 ## バリデータ（検証者）とユニークノードリスト
@@ -106,7 +111,7 @@ XRP Ledgerと通信するためにRippleのXRP Ledgerソフトウェアを使用
 ## 関連項目
 
 - [`rippled`コードベース](https://github.com/ripple/rippled)
-- ユーザーソフトウェアのコードベース: 
+- ユーザーソフトウェアのコードベース:
       - [ripple-lib](https://github.com/ripple/ripple-lib)
       - [ripplecharts-frontend](https://github.com/ripple/ripplecharts-frontend)
 - [Ripple GitHub Organization](https://github.com/ripple/)

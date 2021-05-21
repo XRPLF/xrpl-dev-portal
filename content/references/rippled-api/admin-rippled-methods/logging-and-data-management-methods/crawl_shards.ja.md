@@ -1,3 +1,8 @@
+---
+html: crawl_shards.html
+parent: logging-and-data-management-methods.html
+blurb: ピアが持つ履歴シャードについての情報を要求します。
+---
 # crawl_shards
 
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")

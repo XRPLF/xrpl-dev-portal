@@ -1,3 +1,8 @@
+---
+html: consensus-research.html
+parent: consensus-network.html
+blurb: コンセンサスアルゴリズムに関する学術論文と関連研究。
+---
 # コンセンサスの研究
 
 Rippleでは、XRP Ledgerのコンセンサスプロトコルの理論上の制限と実際の制限の両方についての研究を進め、この分野にてさまざまなアイデアを探究しています。以下の表に、Rippleが発表した学術論文の一覧を示します。

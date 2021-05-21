@@ -1,3 +1,8 @@
+---
+html: account_currencies.html
+parent: account-methods.html
+blurb: Get a list of currencies an account can send or receive.
+---
 # account_currencies
 [[Source]](https://github.com/ripple/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp "Source")
 

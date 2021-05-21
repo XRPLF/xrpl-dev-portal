@@ -1,3 +1,19 @@
+---
+html: commandline-usage.html
+parent: rippled-api.html
+blurb: Commandline usage options for the rippled server.
+curated_anchors:
+    - name: Available Modes
+      anchor: "#available-modes"
+    - name: Daemon Mode Options
+      anchor: "#daemon-mode-options"
+    - name: Stand-Alone Mode Options
+      anchor: "#stand-alone-mode-options"
+    - name: Client Mode Options
+      anchor: "#client-mode-options"
+    - name: Unit Tests
+      anchor: "#unit-tests"
+---
 # rippled Commandline Usage Reference
 
 The `rippled` executable usually runs as a daemon that powers the XRP Ledger, although it can also run in other modes. This page describes all the options you can pass to `rippled` when running it from the command line.
@@ -47,7 +63,8 @@ Daemon mode is the default mode of operation for `rippled`. In addition to the [
 | `--net`             | **DEPRECATED** Intended for debugging: do not build a local ledger until one can be obtained from the network. |
 | `--nodetoshard`     | Before fully starting, copy any complete [history shards](history-sharding.html) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
 | `--quorum {QUORUM}` | This option is intended for starting [test networks](parallel-networks.html). Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
-| `--validateShards` | Check that the data in the shard store is valid and consistent with the network history. For more information on the shard store, see [History Sharding](history-sharding.html). |
+
+The following option has been removed: `--validateShards`. [Removed in: rippled 1.7.0][]
 
 ## Stand-Alone Mode Options
 

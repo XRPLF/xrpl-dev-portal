@@ -1,3 +1,8 @@
+---
+html: validators.html
+parent: status-and-debugging-methods.html
+blurb: Get information about the current validators.
+---
 # validators
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
 
@@ -176,7 +181,8 @@ Each member of the `publisher_lists` array is an object with the following field
 
 ### Possible Errors
 
-* Any of the [universal error types][].
+- Any of the [universal error types][].
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

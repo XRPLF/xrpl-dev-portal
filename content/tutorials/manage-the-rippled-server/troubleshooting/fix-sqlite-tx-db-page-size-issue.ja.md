@@ -1,3 +1,8 @@
+---
+html: fix-sqlite-tx-db-page-size-issue.html
+parent: troubleshoot-the-rippled-server.html
+blurb: rippledバージョン0.40.0以前で起動された完全履歴サーバーでのSQLiteのページサイズに関する問題を解決します。
+---
 # SQLiteトランザクションデータベースのページサイズの問題の解決
 
 全トランザクション履歴（または極めて大量のトランザクション履歴）が記録されている`rippled`サーバーと、0.40.0（2017年1月リリース）よりも古いバージョンの`rippled`で最初に作成されたデータベースでは、SQLiteデータベースのページサイズが原因でサーバーが適切に稼働しなくなる問題が発生する可能性があります。最近のトランザクション履歴のみが保管されているサーバー（デフォルト構成）と、バージョン0.40.0以降の`rippled`でデータベースファイルが作成されているサーバーでは、この問題が発生する可能性はそれほどありません。
@@ -148,7 +153,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
 11. `rippled`サービスが正常に起動したかどうかを確認します。
 
-    [コマンドラインインターフェイス](get-started-with-the-rippled-api.html#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPC要求を受け入れないように設定している場合を除く）。次に例を示します。
+    [コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPC要求を受け入れないように設定している場合を除く）。次に例を示します。
 
         /opt/ripple/bin/rippled server_info
 

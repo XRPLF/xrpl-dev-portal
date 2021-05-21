@@ -1,3 +1,8 @@
+---
+html: multi-signing.html
+parent: accounts.html
+blurb: Use multi-signing for greater security sending transactions.
+---
 # Multi-Signing
 
 Multi-signing in the XRP Ledger is a method of [authorizing transactions](transaction-basics.html#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](cryptographic-keys.html#master-key-pair), and a [regular key pair](cryptographic-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)

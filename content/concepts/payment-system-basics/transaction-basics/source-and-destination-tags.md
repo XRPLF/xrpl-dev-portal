@@ -1,3 +1,8 @@
+---
+html: source-and-destination-tags.html
+parent: transaction-basics.html
+blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
+---
 # Source and Destination Tags
 
 _Source tags_ and _destination tags_ are a feature of XRP Ledger [payments](payment-types.html) that can indicate specific purposes for payments from and to multi-purpose addresses. Source and destination tags do not have direct on-ledger functionality; source and destination tags merely provide information about how off-ledger systems should process a payment. In transactions, both source and destination tags are formatted as 32-bit unsigned integers.
@@ -7,6 +12,8 @@ Destination tags indicate the beneficiary or destination for a payment. For exam
 Source tags indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to send a return, or "bounced", payment. When returning an incoming payment, you should use the source tag from the incoming payment as the destination tag of the outgoing (return) payment.
 
 The practice of giving customers the ability to send and receive transactions from your XRP Ledger address using another interface is called providing _hosted accounts_. Hosted accounts typically use source and destination tags for each customer.
+
+**Tip:** An [X-address](https://xrpaddress.info/) combines a classic address with a tag into a single address that encodes both. If you are showing a deposit address to customers, it may be easier for your customers to use an X-address rather than making them keep track of two pieces of information. (The tag in an X-address acts as a source tag when sending and a destination tag when receiving.)
 
 ## Rationale
 

@@ -1,5 +1,10 @@
+---
+html: log_level.html
+parent: logging-and-data-management-methods.html
+blurb: ログ詳細レベルを変更するか、現在のログレベルを返します。
+---
 # log_level
-[[ソース]<br>](https://github.com/ripple/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp "Source")
 
 `log_level`コマンドは`rippled`サーバーのログ詳細レベルを変更するか、各ログメッセージカテゴリー（_パーティション_）の現在のログレベルを返します。
 

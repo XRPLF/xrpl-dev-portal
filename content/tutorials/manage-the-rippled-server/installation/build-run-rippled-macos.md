@@ -1,3 +1,8 @@
+---
+html: build-run-rippled-macos.html
+parent: install-rippled.html
+blurb: Compile rippled yourself on macOS.
+---
 # Build and Run rippled on macOS
 
 The macOS platform is not recommended for [`rippled`](the-rippled-server.html) production use. For production, consider using the [Ubuntu platform](install-rippled-on-ubuntu-with-alien.html), which has received the highest level of quality assurance and testing.
@@ -22,20 +27,22 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. Use Homebrew to install dependencies.
 
-        $ brew install git cmake pkg-config protobuf openssl ninja
+        $ brew install git cmake pkg-config protobuf openssl ninja boost@1.75
 
-0. Install a compatible version of Boost. `rippled` 1.6.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually. (The following examples use Boost 1.71.0, which was the newest version at the time of writing.)
+{#<!-- Currently unnecessary: instructions for building Boost yourself. Note, the syntax for this comment needs the {# on the outside so that it doesn't interrupt the bulleted list.
 
-      1. Download [Boost 1.71.0](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2).
+0. Install a compatible version of Boost. `rippled` 1.7.0 is compatible with Boost 1.70.0 and higher. To compile Boost yourself, complete the following steps:
 
-      2. Extract it to a folder. Be sure to note the location.
+    1. [Download an appropriate version of Boost](https://www.boost.org/users/history/).
 
-      3. In a terminal, run:
+    2. Extract it to a folder. Be sure to note the location.
+
+    3. In a terminal, run:
 
             $ cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
             $ ./bootstrap.sh
             $ ./b2 cxxflags="-std=c++14"
-
+-->#}
 0. Ensure that your `BOOST_ROOT` environment points to the directory created by the Boost installation:
 
       1. To find your Boost directory, use `pwd` if you installed the Boost manually or use `brew --prefix boost` if you installed the Boost with Homebrew.
@@ -74,6 +81,10 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
         $ git checkout develop
 
     Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
+
+0. Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. The [release announcements for `rippled`](https://xrpl.org/blog/label/rippled-release-notes.html) generally show the exact commit to expect for that release.
+
+        $ git log -1
 
 0. In the `rippled` directory you cloned, create your build directory and access it. For example:
 
@@ -115,7 +126,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
         $ cp cfg/validators-example.txt $HOME/.config/ripple/validators.txt
 
-      **Warning:** Ripple has designed a decentralization plan with maximum safety in mind. During the transition, you should not modify the `validators.txt` file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
+      **Warning:** The `validators.txt` file contains settings that determine how your server declares a ledger to be validated. If you are not careful, changes to this file could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
 0. Access your build directory, `my_build` for example, and start the `rippled` service.
 
@@ -186,7 +197,7 @@ For information about `rippled` log messages, see [Understanding Log Messages](u
     - [Install rippled on Ubuntu Linux](install-rippled-on-ubuntu.html) - Install a pre-built binary on Ubuntu for production use
     - [Configure rippled](configure-rippled.html)
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
-    - [Get Started with the rippled API](get-started-with-the-rippled-api.html)
+    - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
 - **References:**
     - [rippled API Reference](rippled-api.html)
         - [`rippled` Commandline Usage](commandline-usage.html)

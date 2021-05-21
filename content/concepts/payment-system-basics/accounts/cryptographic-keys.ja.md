@@ -1,3 +1,8 @@
+---
+html: cryptographic-keys.html
+parent: accounts.html
+blurb: 暗号鍵を使用してトランザクションを承認し、XRP Ledgerがトランザクションを実行できるようにします。
+---
 # 暗号鍵
 
 XRP Ledgerでは、[トランザクション](transaction-basics.html)による一連の具体的なアクションの実行が承認されていることを、デジタル署名によって証明します。署名されたトランザクションのみがネットワークに送信され、検証済みレジャーに含まれます。 <!-- STYLE_OVERRIDE: is authorized to -->
@@ -133,7 +138,7 @@ XRP Ledgerでは、サポートされているさまざまなタイプのキー�
 - C++: `rippled`コードベース:
   - [シード定義](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/Seed.h)
   - [汎用キー & Ed25519鍵導出](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-  - [secp256k1鍵導出](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp)
+  - [secp256k1鍵導出](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
 - Python 3: [このリポジトリのコードサンプルセクション]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/key-derivation/key_derivation.py)。
 - JavaScript: [`ripple-keypairs`](https://github.com/ripple/ripple-keypairs/)パッケージ。
 
@@ -160,7 +165,7 @@ XRP Ledgerでは、サポートされているさまざまなタイプのキー�
 
 ### secp256k1鍵導出
 
-[[ソース]](https://github.com/ripple/rippled/blob/develop/src/ripple/crypto/impl/GenerateDeterministicKey.cpp "Source")
+[[ソース]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Source")
 
 [![パスフレーズ → シード → ルートキーペア → 仲介銀行（機関）キーペア → マスターキーペア](img/key-derivation-secp256k1.ja.png)](img/key-derivation-secp256k1.ja.png)
 

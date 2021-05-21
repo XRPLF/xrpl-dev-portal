@@ -1,3 +1,8 @@
+---
+html: request-formatting.html
+parent: api-conventions.html
+blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスの標準の要求フォーマットと例です。
+---
 # 要求フォーマット
 
 ## WebSocketフォーマット  

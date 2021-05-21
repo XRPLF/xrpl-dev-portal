@@ -1,3 +1,8 @@
+---
+html: configure-grpc.html
+parent: configure-rippled.html
+blurb: Enable and configure the gRPC API.
+---
 # Configure gRPC
 
 The `rippled` server has an experimental [gRPC API](https://grpc.io/). Currently, this API provides a subset of the full [`rippled` API](rippled-api.html). You can enable the gRPC API on your server with a new configuration stanza. [New in: rippled 1.5.0][]

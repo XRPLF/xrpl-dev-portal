@@ -1,3 +1,8 @@
+---
+html: configure-history-sharding.html
+parent: configure-rippled.html
+blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data.
+---
 # Configure History Sharding
 
 [History Sharding](history-sharding.html) lets servers contribute to preserving historical XRP Ledger data without each server needing to store the full history. By default, `rippled` servers do not store history shards.
@@ -6,23 +11,24 @@
 
 To configure your `rippled` to store shards of ledger history, complete the following steps:
 
-## 1. Determine how much space to allocate for the shard store
+## 1. Determine how many shards to maintain
 
-Before you configure your `rippled` server to store history shards, you must decide how much disk space to allocate to the history shard store. This also affects how much history you keep in the default ledger store. You should consider the following when deciding what size to configure your shard store:
+Before you configure your `rippled` server to store history shards, you must decide how many history shards you want to keep, which is mostly determined by how much disk space is available for the shard store. This also affects how much history you keep in the default ledger store. You should consider the following when deciding what size to configure your shard store:
 
 - The ledger store (defined by the `[node_db]` stanza) is separate from the history shard store. The ledger store is required for all servers, and always contains a range of recent history, defined by how many ledgers to keep available in the `online_delete` parameter. (The default configuration stores the most recent 2000 ledgers.)
     - If you keep at least 2<sup>15</sup> ledgers (32768) in the ledger store, you can efficiently import chunks of recent history from the ledger store into the shard store.
-- The history shard store (defined by the `[shard_db]` stanza) is only required for storing history shards. The configuration stanza should be omitted from servers that do not store history shards. The size of the history shard store is defined in gigabytes in the `max_size_gb` parameter; the server attempts to use as much of this space as possible to store complete shards. The history shard store _MUST_ be stored on a solid-state disk or similar fast media. Traditional spinning hard disks are insufficient.
+- The history shard store (defined by the `[shard_db]` stanza) is only required for storing history shards. The configuration stanza should be omitted from servers that do not store history shards. The total number of shards stored is defined by the `max_historical_shards` parameter; the server attempts to store no more than this many complete shards. The history shard store _MUST_ be stored on a solid-state disk or similar fast media. Traditional spinning hard disks are insufficient.
 - A shard consists of 2<sup>14</sup> ledgers (16384) and occupies approximately 200 MB to 4 GB based on the age of the shard. Older shards are smaller because there was less activity in the XRP Ledger at the time.
 - The history shard store and the ledger store _MUST_ be stored at different file paths. You can configure the ledger store and history store to be on different disks or partitions if desired.
 - It is possible but redundant to hold full ledger history in both the ledger store and the history shard store.
 - The time to acquire a shard, number of file handles needed by the `rippled` server, and memory cache usage is directly affected by the size of the shard.
+- You can specify additional paths to store older history shards by providing a `[historical_shard_paths]` stanza. These paths may be on different, slower disks because they hold data that is used less often. The most recent two shards (the ones with the largest ledger indexes) are always stored in the path specified in the `[shard_db]` stanza. [New in: rippled 1.7.0][]
 
 ## 2. Edit rippled.cfg
 
 <!-- SPELLING_IGNORE: cfg -->
 
-Edit your `rippled.cfg` file to add a `[shard_db]` stanza.
+Edit your `rippled.cfg` file to add a `[shard_db]` stanza and optionally a `[historical_shard_paths]` stanza.
 
 {% include '_snippets/conf-file-location.md' %}<!--_ -->
 
@@ -30,12 +36,16 @@ The following snippet shows an example of a `[shard_db]` stanza:
 
 ```
 [shard_db]
-type=NuDB
 path=/var/lib/rippled/db/shards/nudb
-max_size_gb=50
+max_historical_shards=12
+
+# Optional paths for shards other than the newest 2
+[historical_shard_paths]
+/mnt/disk1
+/mnt/disk2
 ```
 
-The `type` field can be omitted. If present, it _MUST_ be `NuDB`. [New in: rippled 1.3.1][]
+The `type` field of `[shard_db]` can be omitted. If present, it _MUST_ be `NuDB`. [New in: rippled 1.3.1][]
 
 **Caution:** If `rippled` detects the wrong type of data in the shard store path, it may [fail to start](server-wont-start.html). You should use a new folder for the shard store. If you previously used a RocksDB shard store (`rippled` 1.2.x and lower), use a different path or delete the RocksDB shard data.
 

@@ -1,3 +1,8 @@
+---
+html: known-amendments.html
+parent: amendments.html
+blurb: List of all known amendments to the XRP Ledger protocol and their status.
+---
 # Known Amendments
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
 
@@ -7,13 +12,15 @@ The following is a comprehensive list of all known amendments and their status o
 
 | Name                            | Introduced | Status                        |
 |:--------------------------------|:-----------|:------------------------------|
-| [NegativeUNL][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [NegativeUNL][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [Tickets][]                     | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixAmendmentMajorityCalc][]    | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
-| [HardenedValidations][]         | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
-| [fix1781][]                     | v1.6.0     | [Open for Voting: TBD](https://xrpl.org/blog/2020/rippled-1.6.0.html "BADGE_80d0e0") |
+| [fixSTAmountCanonicalize][]     | v1.7.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
+| [FlowSortStrands][]             | v1.7.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
+| [TicketBatch][]                 | v1.7.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
+| [fix1781][]                     | v1.6.0     | [Enabled: 2021-04-08](https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB "BADGE_GREEN") |
+| [fixAmendmentMajorityCalc][]    | v1.6.0     | [Enabled: 2021-04-08](https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF "BADGE_GREEN") |
+| [HardenedValidations][]         | v1.6.0     | [Enabled: 2021-04-08](https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF "BADGE_GREEN") |
 | [FlowCross][]                   | v0.70.0    | [Enabled: 2020-08-04](https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F "BADGE_GREEN") |
 | [fixQualityUpperBound][]        | v1.5.0     | [Enabled: 2020-07-09](https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
 | [RequireFullyCanonicalSig][]    | v1.5.0     | [Enabled: 2020-07-03](https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
@@ -51,6 +58,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [SHAMapV2][]                    | v0.32.1    | [Vetoed: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
 | [FlowV2][]                      | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
 | [SusPay][]                      | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
+| [Tickets][]                     | v0.30.1    | [Vetoed: Removed in v0.90.0]( "BADGE_RED") |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.
 
@@ -350,7 +358,7 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | Open for Voting |
+| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | Enabled   |
 
 Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
 
@@ -364,7 +372,7 @@ With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result cod
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 | Open for Voting |
+| 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 | Enabled   |
 
 Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.
 
@@ -421,6 +429,16 @@ Fixes a bug in unused code for estimating the ratio of input to output of indivi
 This amendment has no known impact on transaction processing.
 
 
+## fixSTAmountCanonicalize
+[fixSTAmountCanonicalize]: #fixstamountcanonicalize
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB | Open for Voting |
+
+Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
+
+
 ## fixTakerDryOfferRemoval
 [fixTakerDryOfferRemoval]: #fixtakerdryofferremoval
 
@@ -461,6 +479,18 @@ Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange.
 - The new logic may delete more or fewer offers than the old logic. (This includes cases caused by differences in rounding and offers that were incorrectly removed as unfunded by the old logic.)
 
 
+## FlowSortStrands
+[FlowSortStrands]: #flowsortstrands
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422 | Open for Voting |
+
+Improves the payment engine's calculations for finding the most cost-efficient way to execute a cross-currency transaction.
+
+Without this change, the engine simulates a payment through each possible path to calculate the quality (ratio of input to output) of each path. With this change, the engine calculates the theoretical quality of each path without simulating a full payment. With this amendment, the payment engine executes some cross-currency payments much faster, is able to find the most cost-efficient path in more cases, and can enable some payments to succeed in certain conditions where the old payment engine would fail to find enough liquidity.
+
+
 ## FlowV2
 [FlowV2]: #flowv2
 
@@ -476,7 +506,7 @@ This is a previous version of the [Flow](#flow) amendment. It was [rejected due 
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | Open for Voting |
+| 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | Enabled   |
 
 Allows validators to include a new optional field in their validations to attest to the hash of
 the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
@@ -608,16 +638,26 @@ Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixe
 This amendment was replaced by the [Escrow](escrow-object.html) amendment.
 
 
+## TicketBatch
+[TicketBatch]: #ticketbatch
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| 955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C | Open for Voting |
+
+This amendment adds [Tickets](tickets.html) as a way of sending transactions out of the typical sequence number order.
+
+Standards Draft: [XLS-13d](https://github.com/xrp-community/standards-drafts/issues/16).
+
+
 ## Tickets
 [Tickets]: #tickets
 
 | Amendment ID                                                     | Status    |
 |:-----------------------------------------------------------------|:----------|
-| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | In Development |
+| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | Vetoed    |
 
-Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the `Ticket` ledger object type and the transaction types `TicketCreate` and `TicketCancel`.
-
-**Caution:** This amendment is still in development.
+This amendment was replaced by the [TicketBatch][] amendment.
 
 
 ## TickSize

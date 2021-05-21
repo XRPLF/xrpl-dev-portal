@@ -1,3 +1,8 @@
+---
+html: crawl_shards.html
+parent: logging-and-data-management-methods.html
+blurb: Request information about which history shards peers have.
+---
 # crawl_shards
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")
 
@@ -129,6 +134,7 @@ Each member of the `peers` array of the response is an object that describes one
 
 - Any of the [universal error types][].
 - `invalidParams` - One or more required fields were omitted from the request, or a provided field was specified as the wrong data type.
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 
 <!--{# common link defs #}-->

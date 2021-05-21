@@ -1,3 +1,8 @@
+---
+html: update-rippled-manually-on-centos-rhel.html
+parent: install-rippled.html
+blurb: CentOSまたはRed Hat Enterprise Linuxでrippledを手動更新します。
+---
 # CentOS/Red Hatでの手動更新
 
 このページでは、CentOSまたはRed Hat Enterprise Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。可能であれば手動更新ではなく[自動更新](update-rippled-automatically-on-linux.html)を設定することが推奨されます。
@@ -8,16 +13,28 @@
 
 手動で更新するには、以下の手順を実行します。
 
+1. `rippled` 1.7.0にその以前のバージョンから更新する場合は、リポジトリを再度追加して、Rippleの更新されたGPGキーを取得します。それ以外の場合は、この手順をスキップしてください。
+
+        $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+        [ripple-stable]
+        name=XRP Ledger Packages
+        enabled=1
+        gpgcheck=0
+        repo_gpgcheck=1
+        baseurl=https://repos.ripple.com/repos/rippled-rpm/stable
+        gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
+        REPOFILE
+
 1. 最新の`rippled`パッケージをダウンロードしてインストールします。
-   
+
         $ sudo yum update rippled
 
 2. `systemd`ユニットファイルを再度読み込みます。
-   
+
         $ sudo systemctl daemon-reload
 
 3. `rippled`サービスを再起動します。
-   
+
         $ sudo service rippled restart
 
 

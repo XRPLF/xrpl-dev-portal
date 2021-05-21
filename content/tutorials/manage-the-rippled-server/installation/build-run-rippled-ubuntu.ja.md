@@ -1,3 +1,8 @@
+---
+html: build-run-rippled-ubuntu.html
+parent: install-rippled.html
+blurb: Ubuntu Linuxでrippledを自分でコンパイルします。
+---
 # Ubuntuでのrippledの構築と実行
 
 `rippled`は、XRP Ledgerを管理するコアのピアツーピアサーバーです。`rippled`サーバーは、ピアのネットワークに接続し、暗号で署名された取引を中継し、共有のグローバル台帳の完全なローカルコピーを維持します。
@@ -18,105 +23,97 @@
 次の手順では、UbuntuのAPT（Advanced Packaging Tool）を使用し、`rippled`の構築と実行に必要なソフトウェアをインストールします。
 
 1. `apt-get`でインストールまたはアップグレードできるパッケージのリストを更新します。
-   
+
         sudo apt-get update
 
 2. 現在インストールされているパッケージをアップグレードします。
-   
+
         sudo apt-get -y upgrade
 
 3. 依存関係をインストールします。
-   
+
         sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget
 
 4. CMakeをインストールします。
-   
-   `rippled`のバージョン1.4.0は、CMake 3.9.0以降を必要とします。このチュートリアルでは、執筆時の最新バージョンだったCMake 3.13.3を使用しました。
-   
+
+   `rippled`のバージョン1.7.0は、CMake 3.9.0以降を必要とします。このチュートリアルでは、執筆時の最新バージョンだったCMake 3.13.3を使用しました。
+
    CMake 3.9.0以降をすでにインストールしてある場合には、このステップはスキップできます。
-   
+
    CMake 3.13.3をインストールするには、以下を実行します。
-   
+
         wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3-Linux-x86_64.sh
         sudo sh cmake-3.13.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
-   
+
    `cmake --version`を使用し、正常にインストールされたことを確認します。
 
 5. Boostをコンパイルします。
-   
-   `rippled`のバージョン1.4.0は、Boostバージョン1.70.0以降を必要とします。Ubuntu 18.04（または16.04）ソフトウェアリポジトリにBoostバージョン1.70.0以降がないため、自分でコンパイルする必要があります。（次の例では、執筆時点の最新バージョンであるBoost 1.71.0を使用しています。）
-   
+
+   `rippled`のバージョン1.7.0は、Boostバージョン1.70.0以降を必要とします。Ubuntu 18.04（または16.04）ソフトウェアリポジトリにBoostバージョン1.70.0以降がないため、自分でコンパイルする必要があります。（次の例では、執筆時点の最新バージョンであるBoost 1.71.0を使用しています。）
+
    以前に`rippled`用にBoost 1.71.0をインストールしていて、`BOOST_ROOT`環境変数を構成した場合には、このステップはスキップできます。
-   
+
    1. Boost 1.71.0をダウンロードします。
-      
+
            wget https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
-   
+
    2. `boost_1_71_0.tar.gz`を抽出します。
-      
+
            tar xvzf boost_1_71_0.tar.gz
-   
+
    3. 新しい`boost_1_71_0`ディレクトリーに移動します。
-      
+
            cd boost_1_71_0
-   
+
    4. 使用するBoost.Buildシステムを準備します。
-      
+
            ./bootstrap.sh
-   
+
    5. 個別にコンパイルされたBoostライブラリを構築します。ハードウェアの仕様にもよりますが、これには約10分かかります。
-      
+
            ./b2 -j 4
-      
+
       **ヒント:** この例では、4つのプロセスを並行して構築します。使用する最適なプロセス数は、お使いのハードウェアで使用可能なCPUコア数によって異なります。`cat /proc/cpuinfo`を使用して、ハードウェアプロセッサーに関する情報を取得できます。
-   
+
    6. `BOOST_ROOT`環境変数を、新しい`boost_1_71_0`ディレクトリーを参照するように設定します。ログイン時に自動的に設定されるようにするため、この環境変数を、シェル用の`.profile`またはそれに相当するファイルに入れることをお勧めします。ファイルに次の行を追加します。
-      
+
            export BOOST_ROOT=/home/my_user/boost_1_71_0
-   
+
    7. 更新した`.profile`ファイルを読み込みます。例:
-      
+
            source ~/.profile
 
 6. 作業ディレクトリーから、`rippled`ソースコードを取得します。`master`ブランチに最新のリリースバージョンがあります。
-   
+
         git clone https://github.com/ripple/rippled.git
         cd rippled
         git checkout master
 
-7. コミットログを調べ、正しいバージョンをコンパイルしていることを確認します。最新のコミットは、よく知られるRipple開発者によって署名され、バージョン番号が最新のリリースバージョンに設定されています。例:
-   
+7. コミットログを調べ、正しいバージョンをコンパイルしていることを確認します。最新のコミットは、よく知られるRipple開発者によって署名され、バージョン番号が最新のリリースバージョンに設定されています。[`rippled`のリリースアナウンスは](https://xrpl.org/blog/label/rippled-release-notes.html)そのリリースの最新のコミットを示す。
+
         $ git log -1
-       
-        commit 06c371544acc3b488b9d9c057cee4e51f6bef7a2
-        Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Mon Nov 25 22:58:03 2019 -0800
-       
-            Set version to 1.4.0
-
-
 
 
 8. 以前に`rippled`を構築したことがある場合、または（そしてもっと重要なのは）構築しようとして失敗したことがある場合には、クリーンな状態から開始するために、次のステップに移る前に`my_build/`ディレクトリー（またはユーザーが付けた名前）を削除する必要があります。このディレクトリーを削除しないと、セグメンテーションエラー（segfault）が原因で`rippled`実行可能ファイルがクラッシュするなど、予期しない動作が発生することがあります。
-   
+
    `rippled` 1.0.0以上を構築するのが初めての場合には、`my_build/`ディレクトリーはないため、次のステップに進むことができます。
 
 9. CMakeを使用して、ソースコードから`rippled`バイナリー実行可能ファイルを構築します。その結果、`my_build`ディレクトリーに`rippled`バイナリー実行可能ファイルが構築されます。
-   
+
    1. ビルドシステムを生成します。ビルドは、ソースツリールートとは別のディレクトリーで実行します。この例では、`rippled`のサブディレクトリーである`my_build`ディレクトリーを使用します。
-      
+
            mkdir my_build
            cd my_build
            cmake ..
-      
+
       **ヒント:** デフォルトのビルドには、本番環境では有用ではないものの、開発環境に便利なデバッグ記号が含まれています。`rippled`を本番環境用サーバーで使用するには、`cmake`コマンドの実行時に`-DCMAKE_BUILD_TYPE=Release`フラグを追加します。
-   
+
    2. `rippled`のバイナリー実行可能ファイルを構築します。ハードウェアの仕様にもよりますが、これには約30分かかります。
-      
+
            cmake --build .
 
 10. _（省略可能）_`rippled`ユニットテストを実行します。テストエラーがない場合には、`rippled`実行可能ファイルがほぼ確実に正しくコンパイルされています。
-    
+
         ./rippled -u
 
 
@@ -125,23 +122,23 @@
 `rippled`を正常に起動させるために必要な以下の構成を行います。その他の構成はすべて省略可能であり、作業サーバーをセットアップしてから調整することもできます。
 
 1. `rippled`フォルダーに移動して、サンプル構成ファイルのコピーを作成します。構成ファイルをこの場所に保存すると、`rippled`を非ルートユーザーとして実行できます（推奨）。
-   
+
         mkdir -p ~/.config/ripple
         cp cfg/rippled-example.cfg ~/.config/ripple/rippled.cfg
 
 2. 構成ファイルを編集し、必要なファイルパスを設定します。`rippled`を実行するユーザーは、ここで指定するすべてのパスへの書き込み権限を持っている必要があります。
-   
+
    1. `[node_db]`のパスを、台帳データベースを保存する場所に設定します。
-   
+
    2. `[database_path]`を、その他のデータベースデータを保存する場所に設定します。（この場所には、構成データを持つSQLiteデータベースも含まれ、通常、`[node_db]`パスフィールドの1つ上のレベルになります。）
-   
+
    3. `[debug_logfile]`を`rippled`がログ情報を書き込めるパスに設定します。
 
 3. サンプルの`validators.txt`ファイルを`rippled.cfg`と同じフォルダーに保存します。
-   
+
         cp cfg/validators-example.txt ~/.config/ripple/validators.txt
-   
-   **警告:** Rippleは、安全を第一に考えて[分散プラン](https://xrpl.org/blog/2017/decent-strategy-update.html)をデザインしました。特にRippleから勧められない限り、移行中に`validators.txt`ファイルを変更*しない*でください。小さな変更であっても、バリデータの設定に変更を加えると、サーバーがネットワークから分岐し、古い、不完全、または正しくないデータについて報告する原因となることがあります。そのようなデータを使用すると、経費の無駄になります。
+
+   **警告:** `validators.txt`のファイルはあなたのサーバーがレジャーを検証する判断の為の設定を含まれています。　バリデータの設定に注意しない変更を加えると、サーバーがネットワークから分岐し、古い、不完全、または正しくないデータについて報告する原因となることがあります。そのようなデータを使用すると、経費の無駄になります。
 
 
 ## 3. `rippled`の実行
@@ -211,7 +208,7 @@ Watchdog: Launching child 1
 * `rippled` APIを使用して`rippled`サーバーと通信する方法については、[`rippled` APIリファレンス](rippled-api.html)を参照してください。
 
 * 開発のベストプラクティスとして、`rippled` `.deb`パッケージをビルドすることをお勧めします。CMakeビルドのdebパッケージターゲットを使用して、ソースツリーから直接`deb`パッケージをビルドできます。ビルドマシンには[Dockerをインストール](https://docs.docker.com/install/#supported-platforms)している必要があります。このプロセスを完了するのに1時間以上かかる場合があります。`deb`パッケージをビルドするには、以下の手順に従います。
-  
+
         mkdir -p build/pkg && cd build/pkg
         cmake -Dpackages_only=ON ../..
         cmake --build . --target dpkg
@@ -226,7 +223,7 @@ Watchdog: Launching child 1
 - **チュートリアル:**
     - [rippledの構成](configure-rippled.html)
     - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
-    - [rippled APIの使用開始](get-started-with-the-rippled-api.html)
+    - [rippled APIの使用開始](get-started-using-http-websocket-apis.html)
 - **リファレンス:**
     - [rippled APIリファレンス](rippled-api.html)
       - [`rippled`コマンドラインの使用](commandline-usage.html)

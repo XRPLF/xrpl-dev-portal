@@ -1,3 +1,8 @@
+---
+html: set-up-multi-signing.html
+parent: manage-account-settings.html
+blurb: アカウントに署名者リストを追加して、マルチ署名を有効にします。
+---
 # マルチ署名の設定
 
 [マルチ署名](multi-signing.html)は、XRP Ledgerの[トランザクション](transaction-basics.html)を承認する3種類の方法の1つです。マルチ署名の他に[レギュラーキーとマスターキー](cryptographic-keys.html)で署名する方法があります。3種類のトランザクション承認方法を自由に組み合わせて使用できるように[アドレス](accounts.html)を設定できます。

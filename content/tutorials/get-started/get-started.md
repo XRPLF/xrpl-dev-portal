@@ -1,3 +1,11 @@
+---
+html: get-started.html
+parent: tutorials.html
+template: template-doc.html
+blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger.
+filters:
+    - js_editor
+---
 # Get Started
 
 The XRP Ledger is always online and entirely public. Anyone can access it **directly from a web browser** with source code like what's on this page.
@@ -6,8 +14,9 @@ The following example gets the latest [ledger version](ledgers.html) and a list 
 
 **Tip:** If you can, open your browser's Developer Tools by pressing **F12**. The "Console" tab provides a native JavaScript console and can give insight into what code is running on any webpage.
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js"></script>
-<script src="https://unpkg.com/ripple-lib@1.8.0/build/ripple-latest-min.js"></script>
+<!-- ripple-lib & prerequisites -->
+{{currentpage.lodash_tag}}
+{{currentpage.ripple_lib_tag}}
 
 <!-- JS_EDITOR_START step2 -->
 
@@ -94,8 +103,8 @@ Try editing the code above to do something different:
 This page has the necessary prerequisites already loaded, but you can access the XRP Ledger from **any webpage** if you load [Lodash](https://lodash.com/) and [RippleAPI for JavaScript (ripple-lib)](rippleapi-reference.html) in that page's HTML. For example:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js"></script>
-<script src="https://unpkg.com/ripple-lib@1.8.0/build/ripple-latest-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script src="https://unpkg.com/ripple-lib@1.9.1/build/ripple-latest-min.js"></script>
 ```
 
 <!-- SPELLING_IGNORE: lodash -->

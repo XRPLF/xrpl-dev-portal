@@ -1,3 +1,8 @@
+---
+html: public-rippled-methods.html
+parent: rippled-api.html
+blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
+---
 # Public rippled Methods
 
 Communicate directly with a `rippled` server using the following public API methods. Public methods are not necessarily meant for the general public, but they are used by any client attached to the server. Think of public methods as being for members or customers of the organization running the server.
@@ -75,7 +80,7 @@ Use these methods to retrieve information about the current state of the `ripple
 * **[`fee`](fee.html)** - Get information about transaction cost.
 * **[`server_info`](server_info.html)** - Retrieve status of the server in human-readable format.
 * **[`server_state`](server_state.html)** - Retrieve status of the server in machine-readable format.
-
+- **[`manifest`](manifest.html)** - Retrieve the latest ephemeral public key information about a known validator.
 
 ## [Utility Methods](utility-methods.html)
 

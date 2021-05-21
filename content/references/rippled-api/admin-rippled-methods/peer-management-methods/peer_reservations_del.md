@@ -1,3 +1,8 @@
+---
+html: peer_reservations_del.html
+parent: peer-management-methods.html
+blurb: Remove a reserved slot for a specific peer server.
+---
 # peer_reservations_del
 [[Source]](https://github.com/ripple/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
 
@@ -125,6 +130,7 @@ If the `previous` field is provided, it shows the previous status of this peer r
 - Any of the [universal error types][].
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 - `publicMalformed` - The `public_key` field of the request is not valid. It must be a valid node public key in [base58][] format.
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

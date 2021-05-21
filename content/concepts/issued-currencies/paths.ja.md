@@ -1,3 +1,8 @@
+---
+html: paths.html
+parent: issued-currencies.html
+blurb: 発行済み通貨の支払いは、接続されているユーザーのパスとオーダーブックを通す必要があります。
+---
 # パス
 
 XRP Ledgerでは、[発行済み通貨](issued-currencies-overview.html)の支払いが送金元から受取人に届くまでにたどる中間ステップの道筋をパスによって定義します。パスは、XRP Ledgerの[分散型取引所](decentralized-exchange.html)のオーダーを介して送金元と受取人を結び付けることで、[複数通貨間の支払い](cross-currency-payments.html)を可能にします。また、負債を相殺するような複雑な決済もパスにより可能になります。

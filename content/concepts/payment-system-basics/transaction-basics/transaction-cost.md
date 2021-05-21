@@ -1,3 +1,8 @@
+---
+html: transaction-cost.html
+parent: transaction-basics.html
+blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
+---
 # Transaction Cost
 
 To protect the XRP Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](xrp.html). This _transaction cost_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
@@ -45,7 +50,7 @@ This divides transactions into roughly three categories:
 
 ## Local Load Cost
 
-Each `rippled` server maintains a cost threshold based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server neither applies nor relays the transaction. (**Note:** If you submit a transaction through an [admin connection](get-started-with-the-rippled-api.html), the server applies and relays the transaction as long as the transaction meets the un-scaled minimum transaction cost.) A transaction is very unlikely to survive [the consensus process](consensus.html) unless its `Fee` value meets the requirements of a majority of servers.
+Each `rippled` server maintains a cost threshold based on its current load. If you submit a transaction with a `Fee` value that is lower than current load-based transaction cost of the `rippled` server, that server neither applies nor relays the transaction. (**Note:** If you submit a transaction through an [admin connection](get-started-using-http-websocket-apis.html), the server applies and relays the transaction as long as the transaction meets the un-scaled minimum transaction cost.) A transaction is very unlikely to survive [the consensus process](consensus.html) unless its `Fee` value meets the requirements of a majority of servers.
 
 ## Open Ledger Cost
 

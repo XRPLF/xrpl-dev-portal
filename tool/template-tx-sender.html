@@ -43,6 +43,7 @@
         <input type="text" class="form-control" id="destination_address" aria-describedby="destination_address_help" value="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" />
         <small id="destination_address_help" class="form-text text-muted">Send transactions to this XRP Testnet address</small>
       </div>
+      <p class="devportal-callout caution collapse" id="x-address-warning"><strong>Caution:</strong> This X-address is intended for use on Mainnet. Testnet addresses have a "T" prefix instead.</p>
 
       <h3>Send Transaction</h3>
 
@@ -156,10 +157,8 @@
 {% endblock %}
 
 {% block endbody %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
-  <script type="application/javascript" src="assets/js/ripple-lib-1.8.0-min.js"></script>
   <script type="application/javascript" src="assets/vendor/bootstrap-growl.jquery.js"></script>
-  <script type='application/javascript' src='assets/js/tx-sender.js'></script>
+  <script type="application/javascript" src="assets/js/tx-sender.js"></script>
 
   <script type="application/javascript">
     gtag('config', 'UA-157720658-3', {'content_group1': 'API Tools'});

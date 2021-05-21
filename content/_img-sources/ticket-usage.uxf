@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>80</y>
+      <w>440</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>Ledger State Data (After)
+lt=.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>120</y>
+      <w>130</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Account
+--
+ID: rf1Bi...
+Sequence: 105</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>260</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Ticket
+--
+Account: rf1Bi...
+Sequence: 102</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>260</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Ticket
+--
+Account: rf1Bi...
+Sequence: 103</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>260</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Ticket
+--
+Account: rf1Bi...
+Sequence: 104</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>530</x>
+      <y>120</y>
+      <w>170</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>(Any type of
+transaction)
+--
+Account: rf1Bi...
+Sequence: 0
+TicketSequence: 103
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>80</y>
+      <w>440</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>Ledger State Data (Before)
+lt=.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>200</y>
+      <w>270</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+used</panel_attributes>
+    <additional_attributes>250.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>130</y>
+      <w>130</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Account
+--
+ID: rf1Bi...
+Sequence: 105</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>950</x>
+      <y>140</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Doesn't change</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>150</y>
+      <w>90</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;30.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>270</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Ticket
+--
+Account: rf1Bi...
+Sequence: 102</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>270</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Ticket
+--
+Account: rf1Bi...
+Sequence: 104</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>200</y>
+      <w>280</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+
+</panel_attributes>
+    <additional_attributes>260.0;80.0;220.0;60.0;60.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>930</x>
+      <y>290</y>
+      <w>90</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Ticket 103 deleted
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>40</x>
+      <y>370</y>
+      <w>440</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>...
+style=wordwrap
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>750</x>
+      <y>370</y>
+      <w>440</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>...
+style=wordwrap
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

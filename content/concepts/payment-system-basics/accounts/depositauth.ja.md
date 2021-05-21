@@ -1,3 +1,8 @@
+---
+html: depositauth.html
+parent: accounts.html
+blurb: DepositAuth設定をすると、アカウントは着信ペイメントをデフォルトでブロックします。
+---
 # Deposit Authorization
 
 _（[DepositAuth Amendment][]が必要です。）_

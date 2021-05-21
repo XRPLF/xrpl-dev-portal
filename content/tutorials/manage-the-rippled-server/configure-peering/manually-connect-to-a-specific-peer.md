@@ -1,3 +1,8 @@
+---
+html: manually-connect-to-a-specific-peer.html
+parent: configure-peering.html
+blurb: Connect your rippled server to a specific peer.
+---
 # Manually Connect to a Specific Peer
 
 Use these steps to manually connect your server to a specific [peer](peer-protocol.html) in the XRP Ledger network.

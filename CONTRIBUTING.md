@@ -5,7 +5,7 @@ Thanks for considering a contribution to the XRP Ledger Developer Portal!
 
 We're thrilled you're interested and your help is greatly appreciated. Contributing is a great way to learn about the XRP Ledger (XRPL).
 
-You may also be interested in learning about [Interledger Protocol (ILP)](https://interledger.org/), which, along with XRPL, is another part of the [RippleX developer ecosystem](https://ripplex.io).
+You may also be interested in learning about [Interledger Protocol (ILP)](https://interledger.org/), which, along with XRPL, is another part of the RippleX developer ecosystem.
 
 We are happy to review your pull requests. To make the process as smooth as possible, please read this document and follow the stated guidelines.
 
@@ -70,30 +70,63 @@ dactyl_style_checker
 
 ## Config Formatting
 
-The templates in this repository use metadata from the `dactyl-config.yml` file to generate a hierarchy of pages when navigating the generated site. To generate the appropriate navigation, you must include the proper fields in the page definitions. The following example shows a page with all fields provided:
+The templates in this repository use metadata from the `dactyl-config.yml` file as well as the pages' [frontmatter](https://dactyl.link/frontmatter.html) to generate navigation elements in the site, including header, footer, sidebars, and breadcrumbs.
 
+If you add a new page, you must add it to the appropriate page in the pages array of the `dactyl-config.yml` file. An example entry looks like this:
+
+```yaml
+    -   md: concepts/the-rippled-server/the-rippled-server.md
+        targets:
+            - en
+            - ja # Include in all targets unless you have a translation
 ```
--   md: concept-authorized-trust-lines.md
-    funnel: Docs
-    doc_type: Concepts
-    category: Payment System
-    subcategory: Accounts
-    targets:
-        - local
+
+The Markdown file itself should start with a frontmatter stanza such as the following:
+
+```yaml
+---
+html: the-rippled-server.html
+parent: concepts.html
+template: template-landing-children.html
+blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
+---
 ```
 
-Navigation uses the fields `funnel`, `doc_type`, `category`, and `subcategory`, in that order (from broadest to most specific). At each level, the first page to have a new value is the parent or landing of that level. (For example, the parent of the "Accounts" subcategory should have the `subcategory: Accounts` field and must appear before any of its children.) For landing pages, omit the lower level fields. (For example, the "Concepts" doc_type landing should have a `doc_type` field but not a `category` field.)
+At a minimum, most pages should have `html`, `parent` and `blurb` fields (plus the `md` and `targets` fields in the config file). You can put any key-value pairs here or in the config file entry for the page, but the following ones are relevant:
 
-**Warning:** If you make a typo in one of these fields, your page may not show up in navigation or may appear in the wrong place.
 
-By convention, parent pages should have the same names as the hierarchy for which they are parents. (For example, the landing page for the `Payment System` category should be named `Payment System`.) The name of `md`-sourced files is automatically determined by the header in the first line of the file.
+| Field                | Type             | Contents                           |
+|:---------------------|:-----------------|:-----------------------------------|
+| `html`               | String           | Output filename for the page. Should end in `.html` and MUST be unique within the target. For translated pages, leave the filename the same as the English version page. |
+| `parent`             | String           | The exact, unique `html` value of this page's "parent" page. Indicates where this page should appear in the navigation. |
+| `blurb`              | String           | Human-readable summary of the page. (Plain text only.) Should be about 1 sentence long. This appears in various places, including landing pages and metadata used in unfurling links on social media. |
+| `name`               | String           | Human-readable page name. (Plain text only.) For files with Markdown content, you should omit this so that Dactyl can automatically detect it from a header on the first line of the contents instead. This is usually only provided on landing pages or other special pages with no Markdown source file. |
+| `template`           | String           | The filename of a template file to use (in the `tool/` directory) for this page. Most pages should use the default template. The `template-landing-children.html` page shows a list of child pages at the end. Pages with special or particularly unique layouts may need custom templates. |
+| `status`             | String           | Use the value `not_enabled` on pages relating to an amendment that is not yet enabled on the XRP Ledger mainnet. This displays a "flask" badge with a tooltip next to the page in the navigation. |
+| `nav_omit`           | Boolean          | Use `true` to cause this page not to appear in any navigation elements. |
+| `top_nav_omit`       | Boolean          | Use `true` to cause this page not to appear in the page top dropdown navigation. |
+| `top_nav_level`      | Number           | Adjust the indentation level for the page in the top nav dropdowns. Level `2` is indented to appear like a child of the page above it in the dropdown. |
+| `sidebar`            | String           | Use `disabled` to hide the left and right sidebars (if the page uses a template derived from the base template) |
+| `fb_card`            | String           | Filename of an image (in `assets/img/`) to use when unfurling links to this page on Facebook. |
+| `twitter_card`       | String           | Filename of an image (in `assets/img/`) to use when unfurling links to this page on Twitter. |
+| `redirect_url`       | String           | Use with `template: template-redirect.html` only. Automatically redirect the user to the provided URL when they navigate to this page. |
+| `cta_text`           | String           | Text to appear in "call to action" buttons that link to this page (on special landings). |
+| `curated_anchors`    | Array of Objects | A set of anchors in this page to show, similar to child pages, in landings. Each object in the array should have a human-readable `name` field (such as `"Available Modes"`) and an `anchor` field with the HTML ID to link to (such as `"#available-modes"`). |
+| `skip_spell_checker` | Boolean          | Use `true` to make the Dactyl's style checker skip spell-checking this page. |
+| `filters`            | Array of Strings | A list of additional filters to use on this page. [Filters](https://github.com/ripple/dactyl/blob/master/README.md#filters) are Python scripts that provide additional pre- or post-processing of page contents. |
+| `canonical_url`      | String           | Provides the canonical URL for a page that takes query parameters. Search engines and other tools may use this when linking to the page. |
+| `embed_ripple_lib`   | Boolean          | Use `true` to have the latest version of ripple-lib and its dependencies loaded on the page. |
 
-For pages that don't have markdown source content, leave out the `md` line and instead provide the following fields:
+### Conventions
 
-| Field  | Contents |
-|:-------|:---------|
-| `name` | Human-readable page name. (Plain text only) |
-| `html` | Output filename for the page. Should end in `.html` and be unique within the target. |
+Use the following conventions when creating a page:
+
+- The HTML filename and MD filename should match exactly except for the file extension.
+- The filenames should closely match the title of the page, including words like "and" and "the", but should be in all lowercase with hyphens instead of spaces and punctuation. For example, `cash-a-check-for-an-exact-amount.md`. If you change the title of a page, change the filename too. (If it has already been published at another URL, leave a redirect from the old URL.)
+- Always start a page with a h1 header.
+- Don't use any formatting (like _italics_ or `code font`) in the title of the page
+- When in doubt, follow [Ciro Santilli's Markdown Style Guide (Writability Profile)](https://cirosantilli.com/markdown-style-guide/).
+- Landing pages should be in subfolders and should have the same filename as the folder. For example, the landing page of the "Accounts" page group should be `accounts/accounts.md` with the HTML filename `accounts.html`. **Don't** use `index.md`.
 
 
 ## Translations
@@ -129,34 +162,19 @@ languages:
         prefix: "/ja/"
 ```
 
-The same `dactyl-config.yml` file contains an entry for each content page in the XRP Ledger Dev Portal. If a page has been translated, there is a separate entry for each translation, linked to the "target" for that translation. If a page has not yet been translated, the English version is used across all targets. For each page, the HTML filename (`html` field) and navigation fields (`funnel`, `doc_type`, `supercategory`, `category`, and `subcategory`, if supplied) should be the same across all language versions of a page. The fields that are different for translated versions of the page should be (in all cases, only if the entry uses the field):
+The same `dactyl-config.yml` file contains an entry for each content page in the XRP Ledger Dev Portal. If a page has been translated, there is a separate entry for each translation, linked to the "target" for that translation. If a page has not yet been translated, the English version is used across all targets.
 
-- **`name`** - the title of the page. This is usually only provided on landing pages with no Markdown source file, or special pages using unusual templates, such as the [dev tools](https://xrpl.org/dev-tools.html). This field is typically omitted from Markdown files, because Dactyl derives the title from the header on the first line of the file.
-- **`md`** - the Markdown file to use as the source content for the page. By convention, translated Markdown source files should use the same filename as the English-language version except that the file extension should be `.{language code}.md` instead of only `.md` for English. For example, Japanese translated files end in `.ja.md`
+By convention, a page's the HTML filename (`html` field) should be the same across all language versions of a page. Translated Markdown source files should use the same filename as the English-language version except that the file extension should be `.{language code}.md` instead of only `.md` for English. For example, Japanese translated files end in `.ja.md`
 - **`blurb`** - a short summary of the page. This text is mostly used on category landing pages.
 
 Example of English and Japanese entries for the `server_info` method page:
 
 ```yaml
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
-        html: server_info.html
-        funnel: Docs
-        doc_type: References
-        supercategory: rippled API
-        category: Public rippled Methods
-        subcategory: Server Info Methods
-        blurb: Retrieve status of the server in human-readable format.
         targets:
             - en
 
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.ja.md
-        html: server_info.html
-        funnel: Docs
-        doc_type: References
-        supercategory: rippled API
-        category: Public rippled Methods
-        subcategory: Server Info Methods
-        blurb: rippledサーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。
         targets:
             - ja
 ```
@@ -165,12 +183,6 @@ Example entry for a page that isn't translated:
 
 ```yaml
     -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
-        html: source-and-destination-tags.html
-        funnel: Docs
-        doc_type: Concepts
-        category: Payment System Basics
-        subcategory: Transaction Basics
-        blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
         targets:
             - en
             - ja

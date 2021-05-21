@@ -1,10 +1,20 @@
+---
+html: update-rippled-manually-on-ubuntu.html
+parent: install-rippled.html
+blurb: Manually update rippled on Ubuntu Linux.
+---
 # Update Manually on Ubuntu or Debian
 
 This page describes how to update manually to the latest release of `rippled` on Ubuntu Linux. These instructions assume you have already [installed `rippled` using the native package](install-rippled-on-ubuntu.html). Ripple recommends setting up [automatic updates](update-rippled-automatically-on-linux.html) instead, where possible.
 
-**Caution:** To upgrade from `rippled` 1.2.x to 1.3.1 or higher on Ubuntu Linux, you should follow the [1.3.1 migration instructions](rippled-1-3-migration-instructions.html). The following instructions assume you have already installed the native APT package provided with versions 1.3.1 and up.
+> **Caution:** Ripple renewed the GPG key used to sign binary packages shortly before the release of v1.7.0. If you are upgrading to v1.7.0 from an earlier package, you must first download and manually trust the updated public key as follows:
+>
+>     wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | \
+>       sudo apt-key add -
+>
+> For more information, see the [`rippled` 1.7.0 release notes](https://xrpl.org/blog/2021/rippled-1.7.0.html#upgrading-special-action-required).
 
-**Tip:** To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package and is compatible with Ubuntu and Debian starting with `rippled` version 1.3.1. This script should be run as a `sudo` user.
+**Tip:** To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package and is compatible with Ubuntu and Debian. This script should be run as a `sudo` user.
 
 To update manually, complete the following steps:
 

@@ -1,8 +1,13 @@
+---
+html: enable-public-signing.html
+parent: configure-rippled.html
+blurb: Allow others to use your server to sign transactions. (Not recommended)
+---
 # Enable Public Signing
 
 By default, the signing methods for [`rippled`](the-rippled-server.html) are limited to [administrative connections](admin-rippled-methods.html). If you want to allow signing methods to be used as public API methods (like with versions of `rippled` before v1.1.0), you can enable it with a configuration change. [New in: rippled 1.1.0][]
 
-This enables the following methods to be used on "public" [JSON-RPC and WebSocket connections](get-started-with-the-rippled-api.html), if your server accepts them:
+This enables the following methods to be used on "public" [JSON-RPC and WebSocket connections](get-started-using-http-websocket-apis.html), if your server accepts them:
 
 - [sign][sign method]
 - [sign_for][sign_for method]
@@ -36,7 +41,7 @@ To enable public signing, perform the following steps:
     - [Cryptographic Keys](cryptographic-keys.html)
 - **Tutorials:**
     - [Set Up Secure Signing](set-up-secure-signing.html)
-    - [Get Started with the rippled API](get-started-with-the-rippled-api.html)
+    - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
     - [Get Started with RippleAPI for JavaScript](get-started-with-rippleapi-for-javascript.html)
 - **References:**
     - [sign method][]

@@ -1,3 +1,8 @@
+---
+html: build-run-rippled-ubuntu.html
+parent: install-rippled.html
+blurb: Compile rippled yourself on Ubuntu Linux.
+---
 # Build and Run rippled on Ubuntu
 
 `rippled` is the core peer-to-peer server that manages the XRP Ledger. A `rippled` server can connect to a network of peers, relay cryptographically signed transactions, and maintain a local copy of the complete shared global ledger.
@@ -31,7 +36,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 4. Install CMake.
 
-    Version 1.4.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
+    Version 1.7.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
 
     If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
 
@@ -44,7 +49,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.4.0 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself. The following examples use Boost 1.71.0, which was the newest version at the time of writing.
+    Version 1.7.0 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself. The following examples use Boost 1.71.0, which was the newest version at the time of writing.
 
     If you have previously built Boost 1.71.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
@@ -84,18 +89,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
         cd rippled
         git checkout master
 
-7. Check the commit log to be sure you're compiling the version you intend to. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. For example:
+7. Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. The [release announcements for `rippled`](https://xrpl.org/blog/label/rippled-release-notes.html) generally show the exact commit to expect for that release.
 
-        $ git log -1
-        commit 01bd5a2646cda78ee09d2067c287c8f89872736d
-        Author: manojsdoshi <mdoshi@ripple.com>
-        Date:   Tue Aug 18 15:32:50 2020 -0700
-
-            Set version to 1.6.0
-
-
-
-
+    $ git log -1
 
 8. If you previously built, or (more importantly) tried and failed to build `rippled`, you should delete the `my_build/` directory (or whatever you named it) to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a `rippled` executable that crashes due to a segmentation fault (segfault). <!-- SPELLING_IGNORE: segfault -->
 
@@ -141,7 +137,7 @@ Complete the following configurations that are required for `rippled` to start u
 
         cp cfg/validators-example.txt ~/.config/ripple/validators.txt
 
-    **Warning:** Ripple has designed a [decentralization plan](https://xrpl.org/blog/2017/decent-strategy-update.html) with maximum safety in mind. During the transition, you *should not* modify the `validators.txt` file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
+    **Warning:** The `validators.txt` file contains settings that determine how your server declares a ledger to be validated. If you are not careful, changes to this file could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
 
 ## 3. Run `rippled`
@@ -226,7 +222,7 @@ Watchdog: Launching child 1
 - **Tutorials:**
     - [Configure rippled](configure-rippled.html)
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
-    - [Get Started with the rippled API](get-started-with-the-rippled-api.html)
+    - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
 - **References:**
     - [rippled API Reference](rippled-api.html)
         - [`rippled` Commandline Usage](commandline-usage.html)

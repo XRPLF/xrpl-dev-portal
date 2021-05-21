@@ -6,21 +6,5 @@
 
 .external-link .fa-external-link,
 .related-projects a .fa-external-link {
-  transition: all .2s ease-in-out;
-  display: inline-block;
-  padding-left: 7px;
-}
-.external-link:hover .fa-external-link,
-.related-projects a:hover .fa-external-link  {
-  padding-left: 14px;
-}
-
-/* Avoid shifting other text over */
-.content .external-link .fa-external-link {
-  padding-left: 1px;
-  padding-right: 7px;
-}
-.content .external-link:hover .fa-external-link {
-  padding-left: 7px;
-  padding-right: 1px;
+  padding-left: 3px;
 }

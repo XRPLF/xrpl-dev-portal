@@ -1,3 +1,8 @@
+---
+html: can_delete.html
+parent: logging-and-data-management-methods.html
+blurb: Allow online deletion of ledgers up to a specific ledger.
+---
 # can_delete
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
@@ -66,6 +71,7 @@ Use this command with no parameter to query the existing `can_delete` setting.
 - `lgrNotFound` - The ledger specified by the `can_delete` field of the request does not exist, or it does exist but the server does not have it.
 - `notEnabled` - If either online deletion or advisory deletion are not enabled in the server's configuration.
 - `notReady` - The server is not ready to run online deletion at the moment. This usually means the server has recently started up and has not yet acquired a validated ledger.
+- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 ## See Also
 
