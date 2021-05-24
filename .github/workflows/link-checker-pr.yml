@@ -44,12 +44,19 @@ jobs:
         echo 'EOF' >> $GITHUB_ENV
         cat linkreport.txt
 
-    # # Disabled because the ripple GitHub org doesn't allow the GITHUB_TOKEN to do this
-    # - name: Comment Broken Links
-    #   uses: unsplash/comment-on-pr@master
-    #   env:
-    #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   if: always()
-    #   with:
-    #     msg: ${{ env.LINKREPORT }}
-    #     check_for_duplicate_msg: false
+    - name: Comment Broken Links
+      uses: unsplash/comment-on-pr@master
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      if: always()
+      with:
+        msg: ${{ env.LINKREPORT }}
+        check_for_duplicate_msg: false
+
+    - name: Deploy preview to gh-pages
+      uses: sauloxd/review-apps@v1.3.3
+      with:
+        build-cmd: "echo 'Using existing build'"
+        branch: "gh-pages"
+        dist: "out"
+        slug: "pr-preview"
