@@ -1,6 +1,6 @@
 name: "Preview PR builds in the gh-pages branch"
 
-# Temporarily disabled: Requires permissions the ripple org doesn't allow
+# Temporarily disabled: attempting to roll this into the link-checker-pr job
 # on:
 #   pull_request:
 #     types: [opened, edited, synchronize]

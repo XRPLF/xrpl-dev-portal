@@ -60,3 +60,6 @@ jobs:
         branch: "gh-pages"
         dist: "out"
         slug: "pr-preview"
+
+    - name: Run Style Checker
+      run: dactyl_style_checker -q
