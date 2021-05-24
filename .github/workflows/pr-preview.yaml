@@ -1,8 +1,9 @@
-name: "Dactyl build only on PR"
+name: "Preview PR builds in the gh-pages branch"
 
-on:
-  pull_request:
-    types: [opened, edited, synchronize]
+# Temporarily disabled: Requires permissions the ripple org doesn't allow
+# on:
+#   pull_request:
+#     types: [opened, edited, synchronize]
 
 jobs:
   build:
