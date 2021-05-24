@@ -49,21 +49,21 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.7.0 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself. The following examples use Boost 1.71.0, which was the newest version at the time of writing.
+    Version 1.7.0 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself. The following examples use Boost 1.76.0, which was the newest version at the time of writing.
 
-    If you have previously built Boost 1.71.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
+    If you have previously built Boost 1.76.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
-      1. Download Boost 1.71.0.
+      1. Download Boost 1.76.0.
+              
+	      wget https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz
 
-              wget https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
+      2. Extract `boost_1_76_0.tar.gz`.
 
-      2. Extract `boost_1_71_0.tar.gz`.
+              tar xvzf boost_1_76_0.tar.gz
 
-              tar xvzf boost_1_71_0.tar.gz
+      3. Change to the new `boost_1_76_0` directory.
 
-      3. Change to the new `boost_1_71_0` directory.
-
-              cd boost_1_71_0
+              cd boost_1_76_0
 
       4. Prepare the Boost.Build system for use.
 
@@ -75,9 +75,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
           **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
 
-      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_71_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_76_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-              export BOOST_ROOT=/home/my_user/boost_1_71_0
+              export BOOST_ROOT=/home/my_user/boost_1_76_0
 
       7. Source your updated `.profile` file. For example:
 
