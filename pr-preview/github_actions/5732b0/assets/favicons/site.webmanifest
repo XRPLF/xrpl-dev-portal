@@ -1,0 +1,19 @@
+{
+    "name": "XRP Ledger Dev Portal",
+    "short_name": "XRP Ledger Dev Portal",
+    "icons": [
+        {
+            "src": "android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#25A768",
+    "background_color": "#25A768",
+    "start_url": "https://xrpl.org/"
+}
