@@ -15,6 +15,7 @@ The following is a comprehensive list of all known amendments and their status o
 | [CryptoConditionsSuite][]       | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [NegativeUNL][]                 | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fixRmSmallIncreasedQOffers][]  | v1.7.2     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.2.html "BADGE_80d0e0") |
 | [fixSTAmountCanonicalize][]     | v1.7.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
 | [FlowSortStrands][]             | v1.7.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
 | [TicketBatch][]                 | v1.7.0     | [Open for Voting: TBD](https://xrpl.org/blog/2021/rippled-1.7.0.html "BADGE_80d0e0") |
@@ -427,6 +428,20 @@ This change prevents accounts from being deleted if they are the recipient for o
 Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
 
 This amendment has no known impact on transaction processing.
+
+
+## fixRmSmallIncreasedQOffers
+[fixRmSmallIncreasedQOffers]: #fixrmsmallincreasedqoffers
+
+| Amendment ID                                                     | Status    |
+|:-----------------------------------------------------------------|:----------|
+| B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2 | Open for Voting |
+
+This amendment fixes an issue where certain Offers, when almost completely consumed, have a much lower exchange rate than when they were first placed. This occurs when the remaining amounts of one or both assets are so small that they cannot be rounded to a similar ratio as when the Offer was placed.
+
+Without this amendment, an Offer in this state blocks Offers with better rates deeper in the order book and causes some payments and Offers to fail when they could have succeeded.
+
+With this amendment, payments and trades can remove these types of Offers the same way that transactions normally remove fully consumed or unfunded Offers.
 
 
 ## fixSTAmountCanonicalize
