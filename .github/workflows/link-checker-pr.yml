@@ -65,4 +65,4 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        msg: ${{ env.LINKREPORT }}\n\nPreview: https://${{env.GITHUB_REPOSITORY_OWNER_SLUG}}.github.io/${{env.GITHUB_REPOSITORY_NAME}}/pr-preview/${{steps.branchname.outputs.branch}}/${{steps.slug.outputs.sha6}}
+        msg: "${{ env.LINKREPORT }}\n\nPreview: https://${{env.GITHUB_REPOSITORY_OWNER_SLUG}}.github.io/${{env.GITHUB_REPOSITORY_NAME}}/pr-preview/${{steps.branchname.outputs.branch}}/${{steps.slug.outputs.sha6}}"
