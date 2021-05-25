@@ -181,6 +181,22 @@
   a.card:hover h3 {
     text-decoration: underline;
   }
+
+  // Alert banners
+  .alert-info {
+    color: white;
+    background-color: $blue-700;
+    border-width: 0;
+
+    a {
+      text-decoration: underline;
+      color: white;
+
+      &:hover {
+        color: $gray-200;
+      }
+    }
+  }
 }
 
 // ad-hoc callout for NFT standards
