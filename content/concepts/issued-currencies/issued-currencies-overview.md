@@ -15,9 +15,9 @@ In the typical model, an issued currency is tied to holdings of currency or othe
 
 There are other use cases for issued currencies in the XRP Ledger. For example, you can create an "Initial Coin Offering" (ICO) by issuing a fixed amount of currency to a secondary address, then "throwing away the key" to the issuer.
 
-**Warning:** ICOs may be [regulated as securities](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings) in the USA. <!-- SPELLING_IGNORE: icos -->
+**Warning:** ICOs may be [regulated as securities](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings) in the USA. <!-- SPELLING_IGNORE: ico, icos -->
 
-Ripple strongly recommends researching the relevant regulations before engaging in any financial service business.
+Be sure to research the relevant regulations before engaging in any financial service business.
 
 
 ## Issued Currency Usage

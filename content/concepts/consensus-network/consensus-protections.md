@@ -30,7 +30,7 @@ The only way to confirm an invalid transaction would be to get at least 80% of t
 
 ## Software Vulnerabilities
 
-As with any software system, bugs (or intentionally malicious code) in the implementation of the XRP Ledger Consensus Protocol, commonly deployed software packages, or their dependencies, are a problem to be taken seriously. Even bugs that cause a server to crash when it sees carefully crafted inputs can be abused to disrupt the progress of the network. Ripple has a number of precautions in place to address this threat, including:
+As with any software system, bugs (or intentionally malicious code) in the implementation of the XRP Ledger Consensus Protocol, commonly deployed software packages, or their dependencies, are a problem to be taken seriously. Even bugs that cause a server to crash when it sees carefully crafted inputs can be abused to disrupt the progress of the network. Ripple takes precautions to address this threat in its reference implementations of XRP Ledger software, including:
 
 - An [open-source code base](https://github.com/ripple/rippled/), so any member of the public can review, compile, and independently test the relevant software.
 - A thorough and robust code review process for all changes to the official XRP Ledger repositories.
