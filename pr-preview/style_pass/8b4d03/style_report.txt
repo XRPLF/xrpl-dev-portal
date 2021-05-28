@@ -1,0 +1,541 @@
+-------------
+Spell Checker
+-------------
+Found 4 possible spelling errors:
+<Page 'Send XRP' (send-xrp.html)> Unknown Words:
+  xrpl: xrp, xrplf
+
+<Page 'Update Manually on Ubuntu or Debian' (update-rippled-manually-on-ubuntu.html)> Unknown Words:
+  gpg: gpe, pg, gps
+
+<Page 'Payment' (payment.html)> Unknown Words:
+  gbp: gbh, kbp, gup
+
+<Page 'Validator List Method' (validator-list.html)> Unknown Words:
+  s1: sj, sd, sk
+
+-----------------------------
+Discouraged Words and Phrases
+-----------------------------
+Found 367 discouraged words/phrases:
+Page: <Page 'Technical FAQ' (technical-faq.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'Cryptographic Keys' (cryptographic-keys.html)>
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Tickets' (tickets.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+Page: <Page 'Deposit Authorization' (depositauth.html)>
+   Discouraged phrase: comply with (1 instances); suggest 'follow' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
+   Discouraged word: accordingly (1 instances); suggest 'so' instead.
+   Discouraged phrase: is authorized to (1 instances); suggest 'may' instead.
+Page: <Page 'Ledgers' (ledgers.html)>
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+Page: <Page 'Transaction Basics' (transaction-basics.html)>
+   Discouraged phrase: in the process of (1 instances); suggest '(omit)' instead.
+Page: <Page 'Checks' (checks.html)>
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+   Discouraged word: disclose (1 instances); suggest 'show' instead.
+   Discouraged phrase: comply with (1 instances); suggest 'follow' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Payment Channels' (payment-channels.html)>
+   Discouraged phrase: time period (1 instances); suggest '(either one)' instead.
+Page: <Page 'Issued Currencies Overview' (issued-currencies-overview.html)>
+   Discouraged word: ious (1 instances); suggest 'issuances' instead.
+   Discouraged phrase: comply with (1 instances); suggest 'follow' instead.
+Page: <Page 'Freezing Issued Currencies' (freezes.html)>
+   Discouraged phrase: in order to (1 instances); suggest 'to' instead.
+   Discouraged word: ious (1 instances); suggest 'issuances' instead.
+Page: <Page 'Demurrage' (demurrage.html)>
+   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'Consensus' (consensus.html)>
+   Discouraged word: accordingly (1 instances); suggest 'so' instead.
+   Discouraged word: proceed (1 instances); suggest 'do, go ahead, try' instead.
+Page: <Page 'Consensus Principles and Rules' (consensus-principles-and-rules.html)>
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'Consensus Protections Against Attacks and Failure Modes' (consensus-protections.html)>
+   Discouraged word: timely (1 instances); suggest 'prompt' instead.
+   Discouraged phrase: in a timely manner (1 instances); suggest 'on time, promptly' instead.
+   Discouraged word: disclose (1 instances); suggest 'show' instead.
+   Discouraged word: accomplish (2 instances); suggest 'carry out, do' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Negative UNL' (negative-unl.html)>
+   Discouraged word: therefore (4 instances); suggest 'so' instead.
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: accordingly (1 instances); suggest 'so' instead.
+Page: <Page 'About Canceling a Transaction' (about-canceling-a-transaction.html)>
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+Page: <Page 'Transaction Malleability' (transaction-malleability.html)>
+   Discouraged word: component (1 instances); suggest 'part' instead.
+   Discouraged word: render (1 instances); suggest 'give, make' instead.
+   Discouraged word: designate (2 instances); suggest 'appoint, choose, name' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Known Amendments' (known-amendments.html)>
+   Discouraged phrase: comply with (1 instances); suggest 'follow' instead.
+   Discouraged phrase: is authorized to (1 instances); suggest 'may' instead.
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged word: encounter (2 instances); suggest 'meet' instead.
+   Discouraged word: identical (1 instances); suggest 'same' instead.
+Page: <Page 'rippled Server Modes' (rippled-server-modes.html)>
+   Discouraged word: inception (1 instances); suggest 'start' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Ledger History' (ledger-history.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'Online Deletion' (online-deletion.html)>
+   Discouraged word: feasible (1 instances); suggest 'can be done, workable' instead.
+   Discouraged phrase: a number of (2 instances); suggest 'some' instead.
+Page: <Page 'History Sharding' (history-sharding.html)>
+   Discouraged word: witnessed (1 instances); suggest 'saw' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'Peer Protocol' (peer-protocol.html)>
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged word: prioritize (1 instances); suggest 'rank' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+   Discouraged word: eliminate (1 instances); suggest 'cut, drop, end' instead.
+Page: <Page 'Transaction Censorship Detection' (transaction-censorship-detection.html)>
+   Discouraged word: impacted (1 instances); suggest 'affected, changed' instead.
+Page: <Page 'Get Started Using Python' (get-started-using-python.html)>
+   Discouraged word: simple (3 instances); suggest '(omit)' instead.
+   Discouraged word: easy (2 instances); suggest '(omit)' instead.
+   Discouraged word: wallet (8 instances); suggest 'address, client application, account' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Get Started Using Java' (get-started-using-java.html)>
+   Discouraged word: simple (3 instances); suggest '(omit)' instead.
+   Discouraged word: easy (2 instances); suggest '(omit)' instead.
+   Discouraged word: wallet (7 instances); suggest 'address, client application, account' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Get Started Using HTTP / WebSocket APIs' (get-started-using-http-websocket-apis.html)>
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Send XRP' (send-xrp.html)>
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+   Discouraged word: viable (2 instances); suggest 'practical, workable' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: consult (1 instances); suggest 'see' instead.
+Page: <Page 'Monitor Incoming Payments with WebSocket' (monitor-incoming-payments-with-websocket.html)>
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'Set Up Secure Signing' (set-up-secure-signing.html)>
+   Discouraged word: transmit (1 instances); suggest 'send' instead.
+Page: <Page 'Look Up Transaction Results' (look-up-transaction-results.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'Reliable Transaction Submission' (reliable-transaction-submission.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+Page: <Page 'Assign a Regular Key Pair' (assign-a-regular-key-pair.html)>
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+   Discouraged word: transmit (2 instances); suggest 'send' instead.
+Page: <Page 'Change or Remove a Regular Key Pair' (change-or-remove-a-regular-key-pair.html)>
+   Discouraged word: whereas (1 instances); suggest 'because, since' instead.
+   Discouraged word: transmit (1 instances); suggest 'send' instead.
+Page: <Page 'Disable Master Key Pair' (disable-master-key-pair.html)>
+   Discouraged word: transmit (1 instances); suggest 'send' instead.
+Page: <Page 'Require Destination Tags' (require-destination-tags.html)>
+   Discouraged word: accordingly (1 instances); suggest 'so' instead.
+Page: <Page 'Offline Account Setup Tutorial' (offline-account-setup.html)>
+   Discouraged word: accurate (2 instances); suggest 'correct, exact, right' instead.
+   Discouraged word: simple (2 instances); suggest '(omit)' instead.
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+   Discouraged phrase: in order to (1 instances); suggest 'to' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged word: viable (1 instances); suggest 'practical, workable' instead.
+Page: <Page 'Use Tickets' (use-tickets.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Use an Escrow as a Smart Contract' (use-an-escrow-as-a-smart-contract.html)>
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+Page: <Page 'Open a Payment Channel to Enable an Inter-Exchange Network' (open-a-payment-channel-to-enable-an-inter-exchange-network.html)>
+   Discouraged word: wallet (4 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: cold wallet (1 instances); suggest 'issuing address' instead.
+   Discouraged phrase: hot wallet (1 instances); suggest 'operational address' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+   Discouraged word: designate (1 instances); suggest 'appoint, choose, name' instead.
+   Discouraged word: viable (1 instances); suggest 'practical, workable' instead.
+Page: <Page 'Use Checks' (use-checks.html)>
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Cash a Check for a Flexible Amount' (cash-a-check-for-a-flexible-amount.html)>
+   Discouraged word: accordingly (1 instances); suggest 'so' instead.
+Page: <Page 'Cancel a Check' (cancel-a-check.html)>
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+Page: <Page 'List XRP as an Exchange' (list-xrp-as-an-exchange.html)>
+   Discouraged word: easy (1 instances); suggest '(omit)' instead.
+   Discouraged phrase: warm wallet (2 instances); suggest 'standby address' instead.
+   Discouraged word: wallet (21 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: cold wallet (4 instances); suggest 'issuing address' instead.
+   Discouraged phrase: hot wallet (2 instances); suggest 'operational address' instead.
+Page: <Page 'List Your Exchange on XRP Charts' (list-your-exchange-on-xrp-charts.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)>
+   Discouraged word: feasible (1 instances); suggest 'can be done, workable' instead.
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+Page: <Page 'System Requirements' (system-requirements.html)>
+   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'Capacity Planning' (capacity-planning.html)>
+   Discouraged phrase: in the near future (1 instances); suggest 'shortly, soon' instead.
+   Discouraged word: utilization (2 instances); suggest 'use' instead.
+   Discouraged word: encounter (1 instances); suggest 'meet' instead.
+   Discouraged word: therefore (3 instances); suggest 'so' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+   Discouraged word: reside (1 instances); suggest 'live' instead.
+   Discouraged phrase: in the event of (1 instances); suggest 'if' instead.
+   Discouraged word: substantial (1 instances); suggest 'large, much' instead.
+   Discouraged word: transmit (4 instances); suggest 'send' instead.
+Page: <Page 'rippled v1.3.x Migration Instructions' (rippled-1-3-migration-instructions.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Run rippled as a Validator' (run-rippled-as-a-validator.html)>
+   Discouraged word: timely (2 instances); suggest 'prompt' instead.
+   Discouraged word: clearly (1 instances); suggest '(omit)' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Run rippled as a Wallet Server' (run-rippled-as-a-wallet-server.html)>
+   Discouraged word: wallet (6 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Connect Your rippled to a Parallel Network' (connect-your-rippled-to-the-xrp-test-net.html)>
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+Page: <Page 'Configure Full History' (configure-full-history.html)>
+   Discouraged word: sufficient (2 instances); suggest 'enough' instead.
+Page: <Page 'Diagnosing Problems with rippled' (diagnosing-problems.html)>
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'Health Check Interventions' (health-check-interventions.html)>
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Understanding Log Messages' (understanding-log-messages.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
+Page: <Page 'rippled Server Doesn't Sync' (server-doesnt-sync.html)>
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
+   Discouraged word: impacted (1 instances); suggest 'affected, changed' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Fix SQLite Transaction Database Page Size Issue' (fix-sqlite-tx-db-page-size-issue.html)>
+   Discouraged word: encounter (3 instances); suggest 'meet' instead.
+   Discouraged word: easily (1 instances); suggest '(omit)' instead.
+Page: <Page 'Currency Formats' (currency-formats.html)>
+   Discouraged word: encounter (1 instances); suggest 'meet' instead.
+Page: <Page 'Check' (check.html)>
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'LedgerHashes' (ledgerhashes.html)>
+   Discouraged phrase: in the process of (1 instances); suggest '(omit)' instead.
+Page: <Page 'Transaction Common Fields' (transaction-common-fields.html)>
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+Page: <Page 'AccountSet' (accountset.html)>
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'CheckCash' (checkcash.html)>
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Pseudo-Transactions' (pseudo-transaction-types.html)>
+   Discouraged word: identical (1 instances); suggest 'same' instead.
+Page: <Page 'Serialization Format' (serialization.html)>
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)>
+   Discouraged phrase: in order to (3 instances); suggest 'to' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+   Discouraged phrase: similar to (3 instances); suggest 'like' instead.
+   Discouraged word: retain (1 instances); suggest 'keep' instead.
+   Discouraged word: facilitate (1 instances); suggest 'ease, help' instead.
+   Discouraged word: will (50 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: wallet (7 instances); suggest 'address, client application, account' instead.
+   Discouraged word: proceed (1 instances); suggest 'do, go ahead, try' instead.
+   Discouraged phrase: hot wallet (2 instances); suggest 'operational address' instead.
+   Discouraged phrase: in order for (2 instances); suggest 'for' instead.
+   Discouraged word: identical (2 instances); suggest 'same' instead.
+   Discouraged word: performed (2 instances); suggest 'done' instead.
+   Discouraged word: just (3 instances); suggest '(omit)' instead.
+   Discouraged phrase: is responsible for (1 instances); suggest '(omit) handles' instead.
+   Discouraged phrase: and/or (2 instances); suggest '__ or __ or both' instead.
+   Discouraged word: regarding (3 instances); suggest 'about, of, on' instead.
+   Discouraged word: subsequently (18 instances); suggest 'after, later, then' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+Page: <Page 'API Conventions' (api-conventions.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'Request Formatting' (request-formatting.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Response Formatting' (response-formatting.html)>
+   Discouraged word: will (3 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Public rippled Methods' (public-rippled-methods.html)>
+   Discouraged phrase: is authorized to (1 instances); suggest 'may' instead.
+Page: <Page 'ledger' (ledger.html)>
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'tx' (tx.html)>
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'deposit_authorized' (deposit_authorized.html)>
+   Discouraged phrase: is authorized to (2 instances); suggest 'may' instead.
+   Discouraged word: sufficient (1 instances); suggest 'enough' instead.
+Page: <Page 'subscribe' (subscribe.html)>
+   Discouraged word: establish (2 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'manifest' (manifest.html)>
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'server_info' (server_info.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'server_state' (server_state.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'wallet_propose' (wallet_propose.html)>
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+Page: <Page 'logrotate' (logrotate.html)>
+   Discouraged word: will (3 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'validators' (validators.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'rippled Commandline Usage Reference' (commandline-usage.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+Page: <Page 'Peer Crawler' (peer-crawler.html)>
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'Validator List Method' (validator-list.html)>
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+Page: <Page 'xrp-ledger.toml File' (xrp-ledger-toml.html)>
+   Discouraged phrase: similar to (1 instances); suggest 'like' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: consult (1 instances); suggest 'see' instead.
+   Discouraged word: desire (1 instances); suggest 'want, wish' instead.
+Page: <Page 'Dev Tools' (dev-tools.html)>
+   Discouraged word: component (1 instances); suggest 'part' instead.
+------------------
+Readability Scores
+------------------
+Average Page Readability Scores:
+  Flesch Reading Ease Score: 47.2 (Difficult)
+  Dale-Chall Readability Score: 7.3 (average 9th or 10th-grade student)
+  SMOG Index: Grade level 12.9
+  Gunning FOG Index: Grade level 11.2
+  Automated Readability Index: Grade level 13.9
+  Coleman-Liau Index: Grade level 12.8
+  Linsear Write Formula: Grade level 9.4
+
+
+Most difficult pages by Flesch Reading Ease:
+<Page 'tem Codes' (tem-codes.html)> Readability Scores:
+  Flesch Reading Ease Score: 13.8 (Very Confusing)
+  Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
+  SMOG Index: Grade level 20.0
+  Gunning FOG Index: Grade level 21.8
+  Automated Readability Index: Grade level 28.5
+  Coleman-Liau Index: Grade level 14.2
+  Linsear Write Formula: Grade level 12.0
+
+<Page 'Consensus Research' (consensus-research.html)> Readability Scores:
+  Flesch Reading Ease Score: 19.0 (Very Confusing)
+  Dale-Chall Readability Score: 9.7 (average college student)
+  SMOG Index: Grade level 20.9
+  Gunning FOG Index: Grade level 20.1
+  Automated Readability Index: Grade level 25.8
+  Coleman-Liau Index: Grade level 18.9
+  Linsear Write Formula: Grade level 26.0
+
+<Page 'XRP-API' (xrp-api.html)> Readability Scores:
+  Flesch Reading Ease Score: 20.7 (Very Confusing)
+  Dale-Chall Readability Score: 10.6 (higher than average college level)
+  SMOG Index: Grade level 0.0
+  Gunning FOG Index: Grade level 19.6
+  Automated Readability Index: Grade level 18.2
+  Coleman-Liau Index: Grade level 14.8
+  Linsear Write Formula: Grade level 20.5
+
+------------------
+Readability Goals:
+------------------
+106 passed out of 254 total goals (41.7%)
+
+Failing pages:
+<Page 'XRP Ledger Overview' (xrp-ledger-overview.html)> (Flesch Reading Ease Score)
+<Page 'Introduction to Consensus' (intro-to-consensus.html)> (Flesch Reading Ease Score)
+<Page 'Software Ecosystem' (software-ecosystem.html)> (Flesch Reading Ease Score)
+<Page 'Technical FAQ' (technical-faq.html)> (Flesch Reading Ease Score)
+<Page 'Accounts' (accounts.html)> (Flesch Reading Ease Score)
+<Page 'Multi-Signing' (multi-signing.html)> (Flesch Reading Ease Score)
+<Page 'Deposit Authorization' (depositauth.html)> (Flesch Reading Ease Score)
+<Page 'Transaction Basics' (transaction-basics.html)> (Flesch Reading Ease Score)
+<Page 'Finality of Results' (finality-of-results.html)> (Flesch Reading Ease Score)
+<Page 'Source and Destination Tags' (source-and-destination-tags.html)> (Flesch Reading Ease Score)
+<Page 'Cross-Currency Payments' (cross-currency-payments.html)> (Flesch Reading Ease Score)
+<Page 'Partial Payments' (partial-payments.html)> (Flesch Reading Ease Score)
+<Page 'Payment Channels' (payment-channels.html)> (Flesch Reading Ease Score)
+<Page 'Issuing and Operational Addresses' (issuing-and-operational-addresses.html)> (Flesch Reading Ease Score)
+<Page 'Demurrage' (demurrage.html)> (Flesch Reading Ease Score)
+<Page 'Auto-Bridging' (autobridging.html)> (Flesch Reading Ease Score)
+<Page 'Tick Size' (ticksize.html)> (Flesch Reading Ease Score)
+<Page 'Consensus' (consensus.html)> (Flesch Reading Ease Score)
+<Page 'Consensus Protections Against Attacks and Failure Modes' (consensus-protections.html)> (Flesch Reading Ease Score)
+<Page 'Negative UNL' (negative-unl.html)> (Flesch Reading Ease Score)
+<Page 'Transaction Queue' (transaction-queue.html)> (Flesch Reading Ease Score)
+<Page 'About Canceling a Transaction' (about-canceling-a-transaction.html)> (Flesch Reading Ease Score)
+<Page 'Transaction Malleability' (transaction-malleability.html)> (Flesch Reading Ease Score)
+<Page 'Known Amendments' (known-amendments.html)> (Flesch Reading Ease Score)
+<Page 'Fee Voting' (fee-voting.html)> (Flesch Reading Ease Score)
+<Page 'Parallel Networks' (parallel-networks.html)> (Flesch Reading Ease Score)
+<Page 'rippled Server Modes' (rippled-server-modes.html)> (Flesch Reading Ease Score)
+<Page 'Clustering' (clustering.html)> (Flesch Reading Ease Score)
+<Page 'Peer Protocol' (peer-protocol.html)> (Flesch Reading Ease Score)
+<Page 'Transaction Censorship Detection' (transaction-censorship-detection.html)> (Flesch Reading Ease Score)
+<Page 'Public Servers' (public-servers.html)> (Flesch Reading Ease Score)
+<Page 'Set Up Secure Signing' (set-up-secure-signing.html)> (Flesch Reading Ease Score)
+<Page 'Look Up Transaction Results' (look-up-transaction-results.html)> (Flesch Reading Ease Score)
+<Page 'Reliable Transaction Submission' (reliable-transaction-submission.html)> (Flesch Reading Ease Score)
+<Page 'Assign a Regular Key Pair' (assign-a-regular-key-pair.html)> (Flesch Reading Ease Score)
+<Page 'Change or Remove a Regular Key Pair' (change-or-remove-a-regular-key-pair.html)> (Flesch Reading Ease Score)
+<Page 'Send a Conditionally-Held Escrow' (send-a-conditionally-held-escrow.html)> (Flesch Reading Ease Score)
+<Page 'Look up escrows' (look-up-escrows.html)> (Flesch Reading Ease Score)
+<Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> (Flesch Reading Ease Score)
+<Page 'System Requirements' (system-requirements.html)> (Flesch Reading Ease Score)
+<Page 'Install on CentOS/Red Hat with yum' (install-rippled-on-centos-rhel-with-yum.html)> (Flesch Reading Ease Score)
+<Page 'Install on Ubuntu or Debian Linux' (install-rippled-on-ubuntu.html)> (Flesch Reading Ease Score)
+<Page 'Update Automatically on Linux' (update-rippled-automatically-on-linux.html)> (Flesch Reading Ease Score)
+<Page 'Update Manually on CentOS/Red Hat' (update-rippled-manually-on-centos-rhel.html)> (Flesch Reading Ease Score)
+<Page 'Update Manually on Ubuntu or Debian' (update-rippled-manually-on-ubuntu.html)> (Flesch Reading Ease Score)
+<Page 'Build and Run rippled on macOS' (build-run-rippled-macos.html)> (Flesch Reading Ease Score)
+<Page 'rippled v1.3.x Migration Instructions' (rippled-1-3-migration-instructions.html)> (Flesch Reading Ease Score)
+<Page 'Run rippled as a Validator' (run-rippled-as-a-validator.html)> (Flesch Reading Ease Score)
+<Page 'Run rippled as a Wallet Server' (run-rippled-as-a-wallet-server.html)> (Flesch Reading Ease Score)
+<Page 'Configure Online Deletion' (configure-online-deletion.html)> (Flesch Reading Ease Score)
+<Page 'Configure Advisory Deletion' (configure-advisory-deletion.html)> (Flesch Reading Ease Score)
+<Page 'Configure Full History' (configure-full-history.html)> (Flesch Reading Ease Score)
+<Page 'Configure gRPC' (configure-grpc.html)> (Flesch Reading Ease Score)
+<Page 'Enable Public Signing' (enable-public-signing.html)> (Flesch Reading Ease Score)
+<Page 'Enable Link Compression' (enable-link-compression.html)> (Flesch Reading Ease Score)
+<Page 'Use a Peer Reservation' (use-a-peer-reservation.html)> (Flesch Reading Ease Score)
+<Page 'Advance the Ledger in Stand-Alone Mode' (advance-the-ledger-in-stand-alone-mode.html)> (Flesch Reading Ease Score)
+<Page 'Health Check Interventions' (health-check-interventions.html)> (Flesch Reading Ease Score)
+<Page 'Fix SQLite Transaction Database Page Size Issue' (fix-sqlite-tx-db-page-size-issue.html)> (Flesch Reading Ease Score)
+<Page 'base58 Encodings' (base58-encodings.html)> (Flesch Reading Ease Score)
+<Page 'Currency Formats' (currency-formats.html)> (Flesch Reading Ease Score)
+<Page 'Ledger Data Formats' (ledger-data-formats.html)> (Flesch Reading Ease Score)
+<Page 'AccountRoot' (accountroot.html)> (Flesch Reading Ease Score)
+<Page 'Check' (check.html)> (Flesch Reading Ease Score)
+<Page 'DepositPreauth' (depositpreauth-object.html)> (Flesch Reading Ease Score)
+<Page 'DirectoryNode' (directorynode.html)> (Flesch Reading Ease Score)
+<Page 'Escrow' (escrow-object.html)> (Flesch Reading Ease Score)
+<Page 'Offer' (offer.html)> (Flesch Reading Ease Score)
+<Page 'RippleState' (ripplestate.html)> (Flesch Reading Ease Score)
+<Page 'Transaction Common Fields' (transaction-common-fields.html)> (Flesch Reading Ease Score)
+<Page 'AccountDelete' (accountdelete.html)> (Flesch Reading Ease Score)
+<Page 'CheckCreate' (checkcreate.html)> (Flesch Reading Ease Score)
+<Page 'DepositPreauth' (depositpreauth.html)> (Flesch Reading Ease Score)
+<Page 'EscrowCancel' (escrowcancel.html)> (Flesch Reading Ease Score)
+<Page 'EscrowFinish' (escrowfinish.html)> (Flesch Reading Ease Score)
+<Page 'OfferCancel' (offercancel.html)> (Flesch Reading Ease Score)
+<Page 'OfferCreate' (offercreate.html)> (Flesch Reading Ease Score)
+<Page 'PaymentChannelFund' (paymentchannelfund.html)> (Flesch Reading Ease Score)
+<Page 'SetRegularKey' (setregularkey.html)> (Flesch Reading Ease Score)
+<Page 'TrustSet' (trustset.html)> (Flesch Reading Ease Score)
+<Page 'Pseudo-Transactions' (pseudo-transaction-types.html)> (Flesch Reading Ease Score)
+<Page 'EnableAmendment' (enableamendment.html)> (Flesch Reading Ease Score)
+<Page 'SetFee' (setfee.html)> (Flesch Reading Ease Score)
+<Page 'UNLModify' (unlmodify.html)> (Flesch Reading Ease Score)
+<Page 'Transaction Results' (transaction-results.html)> (Flesch Reading Ease Score)
+<Page 'tec Codes' (tec-codes.html)> (Flesch Reading Ease Score)
+<Page 'tef Codes' (tef-codes.html)> (Flesch Reading Ease Score)
+<Page 'tel Codes' (tel-codes.html)> (Flesch Reading Ease Score)
+<Page 'tem Codes' (tem-codes.html)> (Flesch Reading Ease Score)
+<Page 'ter Codes' (ter-codes.html)> (Flesch Reading Ease Score)
+<Page 'Transaction Metadata' (transaction-metadata.html)> (Flesch Reading Ease Score)
+<Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)> (Flesch Reading Ease Score)
+<Page 'Response Formatting' (response-formatting.html)> (Flesch Reading Ease Score)
+<Page 'Error Formatting' (error-formatting.html)> (Flesch Reading Ease Score)
+<Page 'rippled Server States' (rippled-server-states.html)> (Flesch Reading Ease Score)
+<Page 'Public rippled Methods' (public-rippled-methods.html)> (Flesch Reading Ease Score)
+<Page 'account_channels' (account_channels.html)> (Flesch Reading Ease Score)
+<Page 'account_currencies' (account_currencies.html)> (Flesch Reading Ease Score)
+<Page 'account_info' (account_info.html)> (Flesch Reading Ease Score)
+<Page 'account_lines' (account_lines.html)> (Flesch Reading Ease Score)
+<Page 'account_objects' (account_objects.html)> (Flesch Reading Ease Score)
+<Page 'account_offers' (account_offers.html)> (Flesch Reading Ease Score)
+<Page 'account_tx' (account_tx.html)> (Flesch Reading Ease Score)
+<Page 'gateway_balances' (gateway_balances.html)> (Flesch Reading Ease Score)
+<Page 'noripple_check' (noripple_check.html)> (Flesch Reading Ease Score)
+<Page 'ledger' (ledger.html)> (Flesch Reading Ease Score)
+<Page 'ledger_closed' (ledger_closed.html)> (Flesch Reading Ease Score)
+<Page 'ledger_data' (ledger_data.html)> (Flesch Reading Ease Score)
+<Page 'ledger_entry' (ledger_entry.html)> (Flesch Reading Ease Score)
+<Page 'sign' (sign.html)> (Flesch Reading Ease Score)
+<Page 'sign_for' (sign_for.html)> (Flesch Reading Ease Score)
+<Page 'submit' (submit.html)> (Flesch Reading Ease Score)
+<Page 'submit_multisigned' (submit_multisigned.html)> (Flesch Reading Ease Score)
+<Page 'transaction_entry' (transaction_entry.html)> (Flesch Reading Ease Score)
+<Page 'tx' (tx.html)> (Flesch Reading Ease Score)
+<Page 'tx_history' (tx_history.html)> (Flesch Reading Ease Score)
+<Page 'book_offers' (book_offers.html)> (Flesch Reading Ease Score)
+<Page 'deposit_authorized' (deposit_authorized.html)> (Flesch Reading Ease Score)
+<Page 'path_find' (path_find.html)> (Flesch Reading Ease Score)
+<Page 'ripple_path_find' (ripple_path_find.html)> (Flesch Reading Ease Score)
+<Page 'subscribe' (subscribe.html)> (Flesch Reading Ease Score)
+<Page 'unsubscribe' (unsubscribe.html)> (Flesch Reading Ease Score)
+<Page 'fee' (fee.html)> (Flesch Reading Ease Score)
+<Page 'manifest' (manifest.html)> (Flesch Reading Ease Score)
+<Page 'server_info' (server_info.html)> (Flesch Reading Ease Score)
+<Page 'server_state' (server_state.html)> (Flesch Reading Ease Score)
+<Page 'json' (json.html)> (Flesch Reading Ease Score)
+<Page 'ping' (ping.html)> (Flesch Reading Ease Score)
+<Page 'random' (random.html)> (Flesch Reading Ease Score)
+<Page 'Admin rippled Methods' (admin-rippled-methods.html)> (Flesch Reading Ease Score)
+<Page 'validation_create' (validation_create.html)> (Flesch Reading Ease Score)
+<Page 'can_delete' (can_delete.html)> (Flesch Reading Ease Score)
+<Page 'ledger_cleaner' (ledger_cleaner.html)> (Flesch Reading Ease Score)
+<Page 'ledger_accept' (ledger_accept.html)> (Flesch Reading Ease Score)
+<Page 'stop' (stop.html)> (Flesch Reading Ease Score)
+<Page 'validation_seed' (validation_seed.html)> (Flesch Reading Ease Score)
+<Page 'connect' (connect.html)> (Flesch Reading Ease Score)
+<Page 'peer_reservations_del' (peer_reservations_del.html)> (Flesch Reading Ease Score)
+<Page 'peers' (peers.html)> (Flesch Reading Ease Score)
+<Page 'consensus_info' (consensus_info.html)> (Flesch Reading Ease Score)
+<Page 'get_counts' (get_counts.html)> (Flesch Reading Ease Score)
+<Page 'print' (print.html)> (Flesch Reading Ease Score)
+<Page 'validator_info' (validator_info.html)> (Flesch Reading Ease Score)
+<Page 'validators' (validators.html)> (Flesch Reading Ease Score)
+<Page 'Peer Crawler' (peer-crawler.html)> (Flesch Reading Ease Score)
+<Page 'Validator List Method' (validator-list.html)> (Flesch Reading Ease Score)
+<Page 'Dev Tools' (dev-tools.html)> (Flesch Reading Ease Score)
+<Page 'Contribute Code to the XRP Ledger' (contribute-code.html)> (Flesch Reading Ease Score)
+-------------------
+Page Length Metrics
+-------------------
+Average Page Length Metrics:
+  Sentences: 61
+  Words: 808
+  Characters: 5,084
+
+Longest pages by character count:
+<Page 'JavaScript / TypeScript Client Library' (rippleapi-reference.html)> Length Metrics:
+  Sentences: 2,022
+  Words: 19,209
+  Characters: 130,145
+
+<Page 'Become an XRP Ledger Gateway' (become-an-xrp-ledger-gateway.html)> Length Metrics:
+  Sentences: 417
+  Words: 6,490
+  Characters: 40,895
+
+<Page 'Known Amendments' (known-amendments.html)> Length Metrics:
+  Sentences: 364
+  Words: 5,130
+  Characters: 36,488
+
+Shortest pages by character count:
+<Page 'Ripple Data API v2' (data-api.html)> Length Metrics:
+  Sentences: 5
+  Words: 39
+  Characters: 231
+
+<Page 'XRP-API' (xrp-api.html)> Length Metrics:
+  Sentences: 3
+  Words: 29
+  Characters: 169
+
+<Page 'Use Checks' (use-checks.html)> Length Metrics:
+  Sentences: 3
+  Words: 22
+  Characters: 129
+

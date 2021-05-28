@@ -9,5 +9,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/3"
       }
     ]
+  },
+  "style_pass": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "8b4d03b16c168e6b64f677976a2035295997078c",
+        "updatedAt": "2021-05-28T01:38:20.309Z",
+        "href": "pr-preview/style_pass/8b4d03",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/4"
+      }
+    ]
   }
 }
