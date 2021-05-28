@@ -51,7 +51,7 @@ No, institutions cannot set up customized validator policies for choosing to all
 
 The network may temporarily halt to reconfigure itself to continue with the new UNL list based on those that want to reach consensus. This temporary processing delay is desired rather than double spending.
 
-In the process of determining the final, authoritative version of the ledger, there may be multiple temporary internal versions. Such internal versions naturally happen in distributed systems because not all nodes receive transactions in the same order. The analogous behavior in Bitcoin is where two servers each see a different longest chain because two blocks were mined at about the same time.
+While determining the final, authoritative version of the ledger, there may be multiple temporary internal versions. Such internal versions naturally happen in distributed systems because not all nodes receive transactions in the same order. The analogous behavior in Bitcoin is where two servers each see a different longest chain because two blocks were mined at about the same time.
 
 However, there can be only one latest _validated_ ledger version at any given time; other versions are irrelevant and harmless.
 
