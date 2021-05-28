@@ -38,6 +38,7 @@ eddsa
 etl
 fincen
 gravatar
+GPG
 grpc
 hmac
 interledger

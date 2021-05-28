@@ -13,7 +13,7 @@ These instructions assume you have already [installed `rippled` from the `yum` r
 
 To update manually, complete the following steps:
 
-1. If you are upgrading to `rippled` 1.7.0 from an earlier version, re-add the repository to get Ripple's updated GPG key. Otherwise, skip this step: <!-- SPELLING_IGNORE: gpg -->
+1. If you are upgrading to `rippled` 1.7.0 from an earlier version, re-add the repository to get Ripple's updated GPG key. Otherwise, skip this step:
 
         $ cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
         [ripple-stable]
