@@ -67,3 +67,20 @@ $line-height-base: 1.5;
 @import "_rpc-tool.scss";
 @import "_blog.scss";
 @import "_feedback.scss";
+
+// Light/Dark theme settings ---------------------------------------------------
+// Option to only change theme on user system settings.  No toggle.
+
+//Mixin to conditionaly include other themes
+// @import "light/_mixins.scss";
+
+// Default to dark theme with light being alt
+// $color-scheme-alt: light;
+
+// @include prefers-color-scheme($color-scheme-alt) {
+//     @import "light/_light-theme.scss";
+// }
+
+html.light {
+    @import "light/_light-theme.scss";
+}

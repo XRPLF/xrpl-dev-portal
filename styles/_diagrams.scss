@@ -3,7 +3,6 @@
 // These styles control the display of diagrams in page contents.
 
 .content {
-
   // Shrink images that would overflow the main column.
   img {
     max-width: 100%;
@@ -19,6 +18,9 @@
   svg {
     max-width: 100%;
   }
+}
+
+.dark .content {
 
   // Recolor UMLet diagrams for dark theme -------------------------------------
   svg[fill="black"] {
