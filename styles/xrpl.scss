@@ -53,3 +53,19 @@ $font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
 @import "_pages.scss";
 @import "_rpc-tool.scss";
 @import "_blog.scss";
+
+// Option to only change theme on user system settings.  No toggle.
+
+//Mixin to conditionaly include other themes
+// @import "light/_mixins.scss";
+
+// Default to dark theme with light being alt
+// $color-scheme-alt: light;
+
+// @include prefers-color-scheme($color-scheme-alt) {
+//     @import "light/_light-theme.scss";
+// }
+
+html.light {
+    @import "light/_light-theme.scss";
+}
