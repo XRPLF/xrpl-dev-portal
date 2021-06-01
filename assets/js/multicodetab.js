@@ -47,31 +47,74 @@ all copies or substantial portions of the Software.
 */
 
 jQuery.fn.minitabs = function(speed,effect) {
-  this.each(function() {
-      var id = "#" + $(this).attr('id')
+
+  function saveToLocal(lang){
+    console.log("saving language > " + lang);
+    window.localStorage.setItem('user-preferred-devlanguage', lang);
+  }
+
+  function showSelectedTabFromSaved(id){
+    // get any data from local stores. 
+    $savedValue = window.localStorage.getItem('user-preferred-devlanguage');
+  // show all tabs if value present
+    if($savedValue !== null) {
+      showSlectedTab($savedValue);
+    }else {
       $(id + ">DIV:gt(0)").hide();
       $(id + ">UL>LI>A:first").addClass("current");
+    }
+  }
+
+  function showSlectedTab(lang) {
+    // Hide all. 
+    // Tab heads
+    $(".multicode>UL>LI>A").removeClass("current");
+    // Tab contents
+    $(".multicode>DIV").hide(speed);
+
+    $(this).blur();
+    //show selcted. 
+    $(".multicode>UL>LI>."+lang).addClass("current");
+    $(".multicode>DIV."+lang).show(speed);
+
+    // TODO: Only add/remove on samples that DO contain that value. 
+    // Example
+    // if javascript is lang. 
+    // only add current if the UL has javascript in the tabs.  
+    // Otherwise this will hide all tabs and not show anything. 
+
+    // save in localstorage. 
+    saveToLocal(lang);
+  }
+
+  this.each(function() {
+      var id = "#" + $(this).attr('id')
+      //Use saved value or set to first tab
+      showSelectedTabFromSaved(id);
+
+      //Add click on each tab
       $(id + ">UL>LI>A").click(
         function(){
-          $(id + ">UL>LI>A").removeClass("current");
-          $(this).addClass("current");
-          $(this).blur();
-          var re = /([_\-\w]+$)/i;
-          var target = $('#' + re.exec(this.href)[1]);
-          var old = $(id + ">DIV");
-          switch (effect) {
-            case 'fade':
-              old.fadeOut(speed).fadeOut(speed);
-              target.fadeIn(speed);
-              break;
-            case 'slide':
-              old.slideUp(speed);
-              target.fadeOut(speed).fadeIn(speed);
-              break;
-            default :
-              old.hide(speed);
-              target.show(speed)
-          }
+          showSlectedTab($(this).attr('class'))
+
+          //Old 
+
+          // var re = /([_\-\w]+$)/i;
+          // var target = $('#' + re.exec(this.href)[1]);
+          // var old = $(id + ">DIV");
+          // switch (effect) {
+          //   case 'fade':
+          //     old.fadeOut(speed).fadeOut(speed);
+          //     target.fadeIn(speed);
+          //     break;
+          //   case 'slide':
+          //     old.slideUp(speed);
+          //     target.fadeOut(speed).fadeIn(speed);
+          //     break;
+          //   default :
+          //     old.hide(speed);
+          //     target.show(speed)
+          // }
           return false;
         }
      );
