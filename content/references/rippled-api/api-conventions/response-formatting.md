@@ -16,7 +16,7 @@ The fields of a successful response include:
 | `result.status` | String   | (JSON-RPC and Commandline) The value `success` indicates the request was successfully received and understood by the server. |
 | `type`          | String   | (WebSocket only) The value `response` indicates a successful response to a command. [Asynchronous notifications](subscribe.html) use a different value such as `ledgerClosed` or `transaction`. |
 | `result`        | Object   | The result of the query; contents vary depending on the command. |
-| `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.html) threshold where the server will disconnect this client. |
+| `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.html) threshold where the server will disconnect this client. <!-- STYLE_OVERRIDE: will --> |
 | `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). [New in: rippled 1.5.0][] |
 | `forwarded`     | Boolean  | _(May be omitted)_ If `true`, this request and response have been forwarded from a [Reporting Mode][] server to a P2P Mode server (and back) because the request requires data that is not available in Reporting Mode. The default is `false`. |
 
@@ -126,7 +126,7 @@ Example warning:
 ]
 ```
 
-This warning indicates that the one or more [amendments](amendments.html) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](amendments.html#amendment-blocked), so you should [upgrade to the latest `rippled` version](install-rippled.html) as soon as possible.
+This warning indicates that the one or more [amendments](amendments.html) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](amendments.html#amendment-blocked), so you should [upgrade to the latest `rippled` version](install-rippled.html) as soon as possible. <!-- STYLE_OVERRIDE: will -->
 
 The server only sends this warning if the client is [connected as an admin](get-started-using-http-websocket-apis.html#admin-access).
 

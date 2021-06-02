@@ -56,7 +56,7 @@ Additionally, the following libraries also provide serialization support:
 
 {% include '_snippets/libs-snippet.md' %}
 
-These implementations are all provided with permissive open-source licenses, so you can import, use, or adapt the code for your needs in addition to using it alongside these documents for learning purposes.
+These implementations are all provided with permissive open-source licenses, so you can import, use, or adapt the code for your needs.
 
 
 

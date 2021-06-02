@@ -33,7 +33,7 @@ To be "canonical", signatures created with the ECDSA algorithm and secp256k1 cur
 
 - The signature must be properly [DER-encoded data](https://en.wikipedia.org/wiki/X.690#DER_encoding).
 - The signature must not have any padding bytes outside the DER-encoded data.
-- The signature's component integers must not be negative, and they must not be larger than the secp256k1 group order.
+- The signature's component integers must not be negative, and they must not be larger than the secp256k1 group order. <!-- STYLE_OVERRIDE: component -->
 
 Generally speaking, any standard ECDSA implementation handles these requirements automatically. However, with secp256k1, those requirements are insufficient to prevent malleability. Thus, the XRP Ledger has a concept of "fully canonical" signatures which do not have the same problem.
 
@@ -48,7 +48,7 @@ Between 2014 and 2020, the XRP Ledger was compatible with legacy software that d
 
 ### Malleability with Multi-Signatures
 
-An important, explicit feature of multi-signing is that multiple different possible configurations can render a transaction valid. For example, an account can be configured so that signatures from any three of five signers could authorize a transaction. However, this inherently means that there can be several different variations of a valid transaction, each with a different identifying hash.
+An important, explicit feature of multi-signing is that multiple different possible configurations can make a transaction valid. For example, an account can be configured so that signatures from any three of five signers could authorize a transaction. However, this inherently means that there can be several different variations of a valid transaction, each with a different identifying hash.
 
 All of the following cases can lead to transaction malleability:
 
@@ -63,7 +63,7 @@ Even if your authorized signers are not intentionally malicious, confusion or po
 **Good operational security can protect against these problems.** Generally, you can avoid transaction malleability problems when multi-signing if you follow good operational security practices, including the following:
 
 - Do not collect more signatures than necessary.
-- Either designate one party to assemble a transaction after collecting the necessary number of signatures, or designate a "chain" where signers pass the transaction instructions forward to be signed in a predefined order.
+- Either appoint one party to assemble a transaction after collecting the necessary number of signatures, or instruct signers pass the transaction instructions forward to be signed in a set order.
 - Do not add unnecessary or untrusted signers to your multi-signing lists, even if the `weight` values associated with their keys are insufficient to authorize a transaction.
 - Be prepared for the possibility that a transaction executes with a different hash and set of signatures than you expected. Carefully monitor your account's sent transactions (for example, using the [account_tx method][]).
 - Monitor the `Sequence` number of your account (for example, using the [account_info method][]). This number always increases by exactly one when your account sends a transaction successfully, and never any other way. If the number does not match what you expect, you should check your recent transactions to confirm why. (Aside from malleable transactions, there are other ways this could happen, too. Perhaps you configured another application to send transactions for you. Maybe a malicious user gained access to your secret key. Or perhaps your application lost data and forgot about a transaction you sent already.)
@@ -81,7 +81,7 @@ If you use single-signatures only, you are not vulnerable to this exploit. If yo
 
 ### Exploit Scenario Steps
 
-The process to exploit a vulnerable system follows a series of steps similar to the following:
+The process to exploit a vulnerable system follows a series of steps like the following:
 
 1. The vulnerable system constructs a multi-signed transaction and collects more than the necessary number of signatures.
 

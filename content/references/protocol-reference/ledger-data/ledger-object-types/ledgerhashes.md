@@ -8,12 +8,12 @@ blurb: Lists of prior ledger versions' hashes for history lookup.
 
 (Not to be confused with the ["ledger hash" string data type][Hash], which uniquely identifies a ledger version. This section describes the `LedgerHashes` ledger object type.)
 
-The `LedgerHashes` object type contains a history of prior ledgers that led up to this ledger version, in the form of their hashes. Objects of this ledger type are modified automatically in the process of closing a ledger. (This is one of the only times a ledger's state data is modified without a [transaction](transaction-basics.html) or [pseudo-transaction](pseudo-transaction-types.html).) The `LedgerHashes` objects exist to make it possible to look up a previous ledger's hash with only the current ledger version and at most one lookup of a previous ledger version.
+The `LedgerHashes` object type contains a history of prior ledgers that led up to this ledger version, in the form of their hashes. Objects of this ledger type are modified automatically when closing a ledger. (This is one of the only times a ledger's state data is modified without a [transaction](transaction-basics.html) or [pseudo-transaction](pseudo-transaction-types.html).) The `LedgerHashes` objects exist to make it possible to look up a previous ledger's hash with only the current ledger version and at most one lookup of a previous ledger version.
 
 There are two kinds of `LedgerHashes` object. Both types have the same fields. Each ledger version contains:
 
 - Exactly one "recent history" `LedgerHashes` object
-- A number of "previous history" `LedgerHashes` objects based on the current ledger index (that is, the length of the ledger history). Specifically, the XRP Ledger adds a new "previous history" object every 65536 ledger versions.
+- A number of "previous history" `LedgerHashes` objects based on the current ledger index (that is, the length of the ledger history). Specifically, the XRP Ledger adds a new "previous history" object every 65536 ledger versions. <!-- STYLE_OVERRIDE: a number of -->
 
 **Note:** As an exception, a new genesis ledger has no `LedgerHashes` objects at all, because it has no ledger history.
 

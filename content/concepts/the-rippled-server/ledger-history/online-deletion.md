@@ -35,7 +35,7 @@ The online deletion settings configure how many ledger versions the `rippled` se
 
     The amount of data the server stores depends on how often you call [can_delete][can_delete method] and how big an interval of time your `online_delete` setting represents:
 
-    - If you call `can_delete` _more often_ than your `online_delete` interval, the server stores at most a number of ledger versions approximately equal to **twice the `online_delete` value**. (After deletion, this is reduced to approximately the `online_delete` value.)
+    - If you call `can_delete` _more often_ than your `online_delete` interval, the server stores at most a number of ledger versions approximately equal to **twice the `online_delete` value**. (After deletion, this is reduced to approximately the `online_delete` value.) <!-- STYLE_OVERRIDE: a number of -->
 
         For example, if you call `can_delete` with a value of `now` once per day and an `online_delete` value of 50,000, the server typically stores up to 100,000 ledger versions before running deletion. After running deletion, the server keeps at least 50,000 ledger versions (about two days' worth). With this configuration, approximately every other `can_delete` call results in no change because the server does not have enough ledger versions to delete.
 

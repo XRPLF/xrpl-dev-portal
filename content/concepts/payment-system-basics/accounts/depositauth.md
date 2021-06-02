@@ -30,7 +30,7 @@ To get the full effect of Deposit Authorization, Ripple recommends also doing th
 
 - Always maintain an XRP balance higher than the minimum [reserve requirement](reserves.html).
 - Keep the Default Ripple flag in its default (disabled) state. Do not enable [rippling](rippling.html) on any trust lines. When sending [TrustSet transactions][], always use the [`tfSetNoRipple` flag](trustset.html).
-- Do not place [Offers](offercreate.html). It is impossible to know in advance which matching offers will be consumed to execute such a trade.
+- Do not place [Offers](offercreate.html). It is impossible to know in advance which matching offers will be consumed to execute such a trade. <!-- STYLE_OVERRIDE: will -->
 
 ## Precise Semantics
 
@@ -47,7 +47,7 @@ An account with Deposit Authorization enabled:
     - The destination of the EscrowFinish transaction has [preauthorized](#preauthorization) the sender of the EscrowFinish. _(Added by the [DepositPreauth amendment][])_
 - **Can** receive XRP or issued currencies by sending a [CheckCash][] transaction. _(Added by the [Checks amendment][].)_
 - **Can** receive XRP or issued currencies by sending [OfferCreate transactions][].
-    - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the remainder of the ordered XRP or issued currency later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
+    - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the rest of the ordered XRP or issued currency later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
 - If the account has created any trust lines without the [No Ripple flag](rippling.html) enabled, or has enabled the Default Ripple flag and issued any currency, the account **can** receive the issued currencies of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
 - In general, an account in the XRP Ledger **cannot** receive any non-XRP currencies in the XRP Ledger as long as all of the following are true. (This rule is not specific to the DepositAuth flag.)
     - The account has not created any trust lines with a nonzero limit.
@@ -80,7 +80,7 @@ Preauthorization is currency-agnostic. You cannot preauthorize accounts for spec
 
 To preauthorize a particular sender, send a [DepositPreauth transaction][] with the address of another account to preauthorize in the `Authorize` field. To revoke preauthorization, provide the other account's address in the `Unauthorize` field instead. Specify your own address in the `Account` field as usual. You can preauthorize or unauthorize accounts even if you do not currently have DepositAuth enabled; the preauthorization status you set for other accounts is saved, but has no effect unless you enable DepositAuth. An account cannot preauthorize itself. Preauthorizations are one-directional, and have no effect on payments going the opposite direction.
 
-Preauthorizing another account adds a [DepositPreauth object](depositpreauth-object.html) to the ledger, which increases the [owner reserve](reserves.html#owner-reserves) of the account providing the authorization. If the account revokes this preauthorization, doing so removes the object and the reserve decreases accordingly.
+Preauthorizing another account adds a [DepositPreauth object](depositpreauth-object.html) to the ledger, which increases the [owner reserve](reserves.html#owner-reserves) of the account providing the authorization. If the account revokes this preauthorization, doing so removes the object and decreases the owner reserve.
 
 After the DepositPreauth transaction has been processed, the authorized account can send funds to your account, even if you have DepositAuth enabled, using any of the following transaction types:
 
@@ -92,7 +92,7 @@ Preauthorization has no effect on the other ways to send money to an account wit
 
 ### Checking for Authorization
 
-You can use the [deposit_authorized method][] to see if an account is authorized to deposit to another account. This method checks two things:
+You can use the [deposit_authorized method][] to see if an account is authorized to deposit to another account. This method checks two things: <!-- STYLE_OVERRIDE: is authorized to -->
 
 - Whether the destination account requires Deposit Authorization. (If it does not require authorization, then all source accounts are considered authorized.)
 - Whether the source account is preauthorized to send money to the destination.

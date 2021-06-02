@@ -41,6 +41,7 @@ A `NegativeUNL` object has the following fields:
 | `ValidatorToReEnable` | String    | Blob              | _(May be omitted)_ The public key of a trusted validator in the Negative UNL that is scheduled to be re-enabled in the next flag ledger. |
 
 ## DisabledValidator Objects
+<!-- SPELLING_IGNORE: DisabledValidator -->
 
 Each `DisabledValidator` object represents one disabled validator. In JSON, a `DisabledValidator` object has one field, `DisabledValidator`, which in turn contains another object with the following fields:
 

@@ -277,7 +277,7 @@ _jsDelivr_
 
 Instead of using Node.js's "require" syntax, the browser version creates a global variable named `ripple`, which contains the `RippleAPI` class.
 
-<!-- SPELLING_IGNORE: lodash -->
+<!-- SPELLING_IGNORE: lodash, unpkg, jsdelivr -->
 
 
 ## Build a Browser-Compatible Version of RippleAPI

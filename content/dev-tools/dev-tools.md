@@ -10,10 +10,6 @@ Use these developer tools to help you test, explore, and validate XRP Ledger API
 
     Use this tool to send sample requests and get responses from the `rippled` API. No setup required.
 
-* **[Data API v2 Tool](data-api-v2-tool.html)**
-
-    Try the Data API with example requests and get real responses. No setup required.
-
 * **[xrp-ledger.toml Checker](xrp-ledger-toml-checker.html)**
 
       Use this tool to verify that your [xrp-ledger.toml file](xrp-ledger-toml.html) is set up properly.

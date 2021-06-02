@@ -148,7 +148,7 @@ To use this configuration, follow the steps for [running `rippled` on a private 
     - [sign method][]
     - [submit method][]
     - [RippleAPI Reference](rippleapi-reference.html)
-    - [xrpl-py Reference](https://xrpl-py.readthedocs.io/en/latest/index.html)
+    - [`xrpl-py` Reference](https://xrpl-py.readthedocs.io/en/latest/index.html)
 
 
 

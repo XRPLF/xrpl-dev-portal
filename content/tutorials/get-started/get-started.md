@@ -12,7 +12,7 @@ The XRP Ledger is always online and entirely public. Anyone can access it **dire
 
 The following example gets the latest [ledger version](ledgers.html) and a list of transactions that were newly-validated in that ledger version, using the [`getLedger()` method](rippleapi-reference.html#getledger). Try running it as-is, or change the code and see what happens.
 
-**Tip:** If you can, open your browser's Developer Tools by pressing **F12**. The "Console" tab provides a native JavaScript console and can give insight into what code is running on any webpage.
+**Tip:** If you can, open your browser's Developer Tools by pressing **F12**. The "Console" tab provides a native JavaScript console and can give insight into what code is running on any webpage. <!-- SPELLING_IGNORE: f12 -->
 
 <!-- ripple-lib & prerequisites -->
 {{currentpage.lodash_tag}}

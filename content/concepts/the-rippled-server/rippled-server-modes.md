@@ -38,7 +38,7 @@ All P2P Mode servers provide [APIs](rippled-api.html) for purposes like submitti
 
 #### Full History Servers
 
-Unlike some other blockchains, the XRP Ledger does not require servers to have a complete transaction history to know the current state and process new transactions. As a server operator, you decide how much [ledger history](ledger-history.html) to store at a time. However, a P2P Mode server can only answer API requests using the ledger history it has locally available. For example, if you keep six months of history, your server can't describe the outcome of a transaction from a year ago. API servers with [full history](ledger-history.html#full-history) can report all transactions and balances since the inception of the XRP Ledger.
+Unlike some other blockchains, the XRP Ledger does not require servers to have a complete transaction history to know the current state and process new transactions. As a server operator, you decide how much [ledger history](ledger-history.html) to store at a time. However, a P2P Mode server can only answer API requests using the ledger history it has locally available. For example, if you keep six months of history, your server can't describe the outcome of a transaction from a year ago. API servers with [full history](ledger-history.html#full-history) can report all transactions and balances since the start of the XRP Ledger.
 
 
 ### Public Hubs
@@ -56,7 +56,7 @@ To configure your server as a hub, increase the maximum number of peers allowed 
 
 ### Validators
 
-The robustness of the XRP Ledger depends on an interconnected web of _validators_ who each trust some other validators _not to collude_. In addition to processing each transaction and calculating ledger state just like other P2P Mode servers, validators participate actively in the [consensus protocol](consensus.html). If you or your organization relies on the XRP Ledger, it is in your interest to contribute to the consensus process by running _one_ server as a validator.
+The robustness of the XRP Ledger depends on an interconnected web of _validators_ who each trust some other validators _not to collude_. In addition to processing each transaction and calculating ledger state exactly like other P2P Mode servers, validators participate actively in the [consensus protocol](consensus.html). If you or your organization relies on the XRP Ledger, it is in your interest to contribute to the consensus process by running _one_ server as a validator.
 
 Validation uses only a small amount of computing resources, but there is not much benefit to a single entity or organization running multiple validators because doing so does not provide more protections against collusion. Each validator identifies itself with a unique cryptographic key pair that must be carefully managed; multiple validators must not share a key pair. For these reasons, validation is disabled by default.
 
