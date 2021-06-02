@@ -592,7 +592,7 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 | 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | 有効 |
 
 <!-- TODO: translate amendment description -->
-Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of just transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#グローバルフラグ) enabled.
+Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of only protecting transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#グローバルフラグ) enabled.
 
 Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have tfFullyCanonicalSig enabled. Most signing utilities enable tfFullyCanonicalSig by default, but there are exceptions.
 

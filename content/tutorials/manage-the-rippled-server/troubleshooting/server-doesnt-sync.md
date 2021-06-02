@@ -40,7 +40,7 @@ The most common cause of syncing issues is not meeting the [system requirements]
 - **Insufficient RAM.** The memory requirements vary depending on several factors including ones that are hard to predict like network load and how people use the XRP Ledger, so it's good to have more than the minimum system requirements.
 - **Poor network connection.** Network requirements vary the most based on how people use the XRP Ledger, but a slow or unstable connection can make it impossible to keep up with new transactions and data added to the XRP Ledger.
 
-If you are having trouble remaining synced, double-check that your server meets the system requirements. Depending on how you use your server, you may need to meet the higher "Recommended" requirements instead of just the "Minimum" requirements. If you meet the "Recommended" requirements and still cannot sync, try the other possibilities on this page.
+If you are having trouble remaining synced, double-check that your server meets the system requirements. Depending on how you use your server, you may need to meet the higher "Recommended" requirements. If you meet the "Recommended" requirements and still cannot sync, try the other possibilities on this page.
 
 
 ## Couldn't Load Validator List

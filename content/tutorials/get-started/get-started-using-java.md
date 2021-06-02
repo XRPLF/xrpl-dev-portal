@@ -29,7 +29,7 @@ In this tutorial, you'll learn:
 ## Requirements
 
 * The `xrpl4j` library supports Java 1.8 and later.
-* A project management tool such as [Maven](https://maven.apache.org/) or [Gradle](https://gradle.org/).
+* A project management tool such as [Maven](https://maven.apache.org/) or [Gradle](https://gradle.org/). <!-- SPELLING_IGNORE: gradle -->
 
 
 ## Installation
@@ -37,10 +37,7 @@ In this tutorial, you'll learn:
 The [`xrpl4j` library](https://github.com/XRPLF/xrpl4j) is available on [Maven Central](https://search.maven.org/artifact/org.xrpl/xrpl4j-parent).
 `xrpl4j` is split into multiple artifacts, which can be imported as needed.
 
-In this tutorial, you will need the [xrpl4j-client](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html),
-[xrpl4j-address-codec](https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html),
-[xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), and
-[xrpl4j-model](https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html) modules.
+In this tutorial, you will need the [xrpl4j-client](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html), [xrpl4j-address-codec](https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html), [xrpl4j-keypairs](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html), and [xrpl4j-model](https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html) modules. <!-- SPELLING_IGNORE: keypairs -->
 
 To install with Maven, add the following to your project's `pom.xml` file and then run `mvn install`:
 
@@ -138,13 +135,13 @@ Wallet {
 }
 ```
 
-In order to fund the account on the XRP Ledger, you can use a `FaucetClient` connected to the XRPL Testnet:
+In order to fund the account on the XRP Ledger, you can use a `FaucetClient` connected to the XRP Ledger Testnet:
 
 {{ include_code("_code-samples/xrpl4j/GetAccountInfo.java", start_with="// Fund the account using the testnet Faucet", end_before="// Look up your Account Info", language="java") }}
 
 ### {{n.next()}}. Query the XRP Ledger
 
-You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exhange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).
+You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exchange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).
 
 Here, we'll use the [`XrplClient` we constructed](#1-connect-to-the-xrp-ledger) to look up information about the [wallet we generated](#2-generate-wallet) in the previous step.
 

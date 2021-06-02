@@ -16,7 +16,7 @@ The Negative UNL has no impact on how the network processes transactions or what
 
 Each server in the XRP Ledger protocol has its own UNL (Unique Node List), a list of validators it trusts not to collude, and each server independently decides when a ledger version is validated based on the consensus when enough of its trusted validators agree on a new ledger version. (The default configuration uses a recommended UNL, signed by Ripple, consisting of validators Ripple considers to be sufficiently unique, reliable, and independent.) The standard quorum requirement is at least 80% of trusted validators must agree.
 
-Therefore, if more than 20% of trusted validators go offline or become unable to communicate with the rest of the network, the network stops validating new ledgers because it cannot reach a quorum. This is a design choice to ensure that no transactions' outcomes can be changed after they are declared final. During such a situation, the remaining servers would still be online and could provide past and tentative transaction data, but could not confirm the final, immutable outcome of new transactions.
+If more than 20% of trusted validators go offline or become unable to communicate with the rest of the network, the network stops validating new ledgers because it cannot reach a quorum. This is a design choice to ensure that no transactions' outcomes can be changed after they are declared final. During such a situation, the remaining servers would still be online and could provide past and tentative transaction data, but could not confirm the final, immutable outcome of new transactions.
 
 However, this means that the network could stop making forward progress if a few widely-trusted validators went offline. As of 2020-10-06, there are 34 validators in Ripple's recommended UNL, so the network would stop making forward progress if 7 or more of them were offline. Furthermore, if one or two validators are out for an extended period of time, the network has less room for disagreement between the remaining validators, which can make it take longer to achieve a consensus.
 
@@ -50,11 +50,11 @@ The Negative UNL is intentionally designed to change at a slow rate, to avoid an
 
 ### Reliability Measurement
 
-Each server in the network has a UNL, the list of validators it trusts not to collude. (By default, a server's exact UNL is configured implicitly based on the recommended validator list Ripple publishes.) Each server tracks the _reliability_ of its trusted validators using a simple metric: the percentage of the last 256 ledgers where the validator's validation vote matched the server's view of consensus. In other words:
+Each server in the network has a UNL, the list of validators it trusts not to collude. (By default, a server's exact UNL is configured implicitly based on the recommended validator list Ripple publishes.) Each server tracks the _reliability_ of its trusted validators using a single metric: the percentage of the last 256 ledgers where the validator's validation vote matched the server's view of consensus. In other words:
 
 > Reliability = V<sub>a</sub> ÷ 256
 
-V<sub>a</sub> is the total number of validation votes received for the last 256 ledgers that matched the server's own view of consensus.
+V<sub>a</sub> is the total number of validation votes received from one validator for the last 256 ledgers that matched the server's own view of consensus.
 
 This metric of reliability measures the availability of a validator _and_ the behavior of that validator. A validator should have a high reliability score if it is in sync with the rest of the network and following the same protocol rules as the server scoring it. A validator's reliability score can suffer for any of the following reasons:
 
@@ -110,17 +110,17 @@ If there are multiple candidates to be removed from the Negative UNL in a given 
 This mechanism has several useful properties:
 
 - It uses information that is readily available to all servers and can be calculated quickly.
-- Most servers will chose the same result even if they calculated slightly different scores for their trusted validators. This holds even if those servers disagree on which validator is _least_ or _most_ reliable. This even holds in many cases where the servers disagree on whether some validators are above or below the reliability thresholds. Therefore, the network is likely to achieve a consensus on which validator to add or remove.
-- It does not always give the same results each ledger version. Therefore, if one proposed change to the Negative UNL fails to achieve a consensus, the network does not get stuck with some servers trying and failing to add or remove that one validator every time. The network can attempt to add or remove a different candidate to the Negative UNL in a later flag ledger.
+- Most servers choose the same candidate even if they calculated slightly different scores for their trusted validators. This holds even if those servers disagree on which validator is _least_ or _most_ reliable. This even holds in many cases where the servers disagree on whether some validators are above or below the reliability thresholds. So, the network is likely to achieve a consensus on which validator to add or remove.
+- It does not always give the same results each ledger version. If one proposed change to the Negative UNL fails to achieve a consensus, the network does not get stuck with some servers trying and failing to add or remove that one validator every time. The network can attempt to add or remove a different candidate to the Negative UNL in a later flag ledger.
 
 
 ### Filtering Validations
 
-During [the validation step of the consensus process](consensus.html#validation), validators in the parent ledger's Negative UNL are disabled. Each server calculates an "effective UNL" consisting of its configured UNL with the disabled validators removed, and recalculates its quorum accordingly. (The quorum is always at least 80% of the effective UNL and at least 60% of the configured UNL.) If a disabled validator sends validation votes, servers track those votes for purposes of calculating the disabled validator's reliability measurement, but they do not use those votes towards determining whether a ledger version has achieved a consensus.
+During [the validation step of the consensus process](consensus.html#validation), validators in the parent ledger's Negative UNL are disabled. Each server calculates an "effective UNL" consisting of its configured UNL with the disabled validators removed, and recalculates its quorum. (The quorum is always at least 80% of the effective UNL and at least 60% of the configured UNL.) If a disabled validator sends validation votes, servers track those votes for purposes of calculating the disabled validator's reliability measurement, but they do not use those votes towards determining whether a ledger version has achieved a consensus.
 
-**Note:** The Negative UNL adjusts the _total_ trusted validators that the quorum is calculated from, not the quorum directly. The quorum is a percentage but the number of votes is a whole number, so in some cases, reducing the total trusted validators may not change the number of votes required to reach a quorum. For example, if there are 15 total validators, 80% is 12 validators exactly. If you reduce the total to 14 validators, 80% is 11.2 validators, which means that it still requires 12 validators to reach a quorum.
+**Note:** The Negative UNL adjusts the _total_ trusted validators that the quorum is calculated from, not the quorum directly. The quorum is a percentage but the number of votes is a whole number, so reducing the total trusted validators does not always change the number of votes required to reach a quorum. For example, if there are 15 total validators, 80% is 12 validators exactly. If you reduce the total to 14 validators, 80% is 11.2 validators, which means that it still requires 12 validators to reach a quorum.
 
-The Negative UNL has no impact on the other parts of the consensus process, such as choosing which transactions to include in the proposed transaction set. Those steps always rely on configured UNL, and the thresholds are based on how many trusted validators are actively participating in the consensus round. Therefore, even a validator that is in the Negative UNL can participate in the consensus process.
+The Negative UNL has no impact on the other parts of the consensus process, such as choosing which transactions to include in the proposed transaction set. Those steps always rely on the configured UNL, and the thresholds are based on how many trusted validators are actively participating in the consensus round. Even a validator that is in the Negative UNL can participate in the consensus process.
 
 ### Example
 

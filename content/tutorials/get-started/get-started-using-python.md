@@ -30,7 +30,7 @@ The `xrpl-py` library supports [Python 3.7](https://www.python.org/downloads/) a
 
 ## Installation
 
-The [`xrpl-py` library](https://github.com/XRPLF/xrpl-py) is available on [PyPI](https://pypi.org/project/xrpl-py/). Install with `pip`:
+The [`xrpl-py` library](https://github.com/XRPLF/xrpl-py) is available on [PyPI](https://pypi.org/project/xrpl-py/). Install with `pip`: <!-- SPELLING_IGNORE: pypi -->
 
 
 ```py
@@ -140,7 +140,7 @@ The X-address format [packs the address and destination tag](https://github.com/
 
 ### {{n.next()}}. Query the XRP Ledger
 
-You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exhange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).  
+You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exchange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).  
 
 Here, we'll use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the [wallet we generated](#2-generate-wallet) in the previous step.
 
