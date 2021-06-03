@@ -16,7 +16,6 @@ from xrpl.wallet import generate_faucet_wallet
 test_wallet = generate_faucet_wallet(client, debug=True)
 
 # Prepare transaction ----------------------------------------------------------
-import xrpl.utils # workaround for https://github.com/XRPLF/xrpl-py/issues/222
 my_payment = xrpl.models.transactions.Payment(
     account=test_wallet.classic_address,
     amount=xrpl.utils.xrp_to_drops(22),
@@ -28,9 +27,11 @@ print("Payment object:", my_payment)
 signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
         my_payment, test_wallet, client)
 max_ledger = signed_tx.last_ledger_sequence
+tx_id = signed_tx.get_hash()
 print("Signed transaction:", signed_tx)
 print("Transaction cost:", xrpl.utils.drops_to_xrp(signed_tx.fee), "XRP")
 print("Transaction expires after ledger:", max_ledger)
+print("Identifying hash:", tx_id)
 
 # Submit transaction -----------------------------------------------------------
 validated_index = xrpl.ledger.get_latest_validated_ledger_sequence(client)
@@ -41,10 +42,9 @@ print(f"Can be validated in ledger range: {min_ledger} - {max_ledger}")
 #  to send the transaction and wait for the results to be validated.
 try:
     prelim_result = xrpl.transaction.submit_transaction(signed_tx, client)
-except xrpl.transaction.XRPLReliableSubmissionException as e:
+except xrpl.clients.XRPLRequestFailureException as e:
     exit(f"Submit failed: {e}")
 print("Preliminary transaction result:", prelim_result)
-tx_id = prelim_result.result["tx_json"]["hash"]
 
 # Wait for validation ----------------------------------------------------------
 # Note: If you used xrpl.transaction.send_reliable_submission, you can skip this
