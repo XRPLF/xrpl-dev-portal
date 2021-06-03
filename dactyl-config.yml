@@ -3132,6 +3132,46 @@ pages:
         targets:
             - ja
 
+    # Landing pages for labels
+    -   name: Escrow
+        html: label-escrow.html
+        parent: by-label.html
+        landing_for: Escrow
+        template: template-landing-label.html
+        blurb: All pages relating to the Escrow feature.
+        targets:
+            - en
+            - ja
+
+    -   name: Smart Contracts
+        html: label-smart-contracts.html
+        parent: by-label.html
+        landing_for: Smart Contracts
+        template: template-landing-label.html
+        blurb: Build smart contracts using these advanced on-ledger features.
+        targets:
+            - en
+            - ja
+
+    -   name: Security
+        html: label-security.html
+        parent: by-label.html
+        landing_for: Security
+        template: template-landing-label.html
+        blurb: Protect your digital assets with powerful security.
+        targets:
+            - en
+            - ja
+
+    -   name: Topics By Label
+        html: by-label.html
+        parent: docs.html
+        template: template-all-labels.html
+        blurb: Browse by topic.
+        targets:
+            - en
+            - ja
+
 
 
 # --------------- end "Docs" section -------------------------------------------

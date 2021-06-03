@@ -2,6 +2,9 @@
 html: multi-signing.html
 parent: accounts.html
 blurb: Use multi-signing for greater security sending transactions.
+labels:
+  - Smart Contracts
+  - Security
 ---
 # Multi-Signing
 

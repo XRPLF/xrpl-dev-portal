@@ -1,0 +1,24 @@
+{% extends "template-base.html" %}
+
+{% block main %}
+  <section class="content">
+    {% if content %}
+      {{ content}}
+    {% else %}
+      <h1 id="main-page-header">Label: {{ currentpage.name }}</h1>
+      {% if currentpage.blurb %}<p class="blurb">{{currentpage.blurb}}</p>{% endif %}
+    {% endif %}
+
+    <div class="curated-links">
+      <ul>
+      {% for page in pages %}
+      {% if page.labels is defined and currentpage.landing_for in page.labels %}
+        <li class="level1"><a href="{% if "//" not in page.html %}{{currentpage.prefix}}{% endif %}{{page.html}}">{{page.name}}</a>
+          <p class="blurb child-blurb">{{page.blurb}}</p>
+        </li>
+      {% endif %}
+      {% endfor %}
+      <ul>
+    </div>
+  </section>
+{% endblock %}
