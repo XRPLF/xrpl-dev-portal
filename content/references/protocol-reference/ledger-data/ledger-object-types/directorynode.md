@@ -2,6 +2,8 @@
 html: directorynode.html
 parent: ledger-object-types.html
 blurb: Contains links to other objects.
+labels:
+  - Decentralized Exchange
 ---
 # DirectoryNode
 [[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
@@ -10,8 +12,8 @@ The `DirectoryNode` object type provides a list of links to other objects in the
 
 There are two kinds of Directories:
 
-* **Owner directories** list other objects owned by an account, such as `RippleState` or `Offer` objects.
-* **Offer directories** list the offers available in the distributed exchange. A single Offer directory contains all the offers that have the same exchange rate for the same issued currency.
+* **Owner directories** list other objects owned by an account, such as [`RippleState` (trust line)](ripplestate.html) or [`Offer`](offer.html) objects.
+* **Offer directories** list the offers available in the [decentralized exchange](decentralized-exchange.html). A single Offer directory contains all the offers that have the same exchange rate for the same issued currency.
 
 ## Example {{currentpage.name}} JSON
 

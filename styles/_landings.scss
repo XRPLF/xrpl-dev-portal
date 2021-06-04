@@ -5,15 +5,30 @@
     padding: 48px 0;
   }
 
-  .content .children-display li a {
-    /* Category landing pages */
-    font-weight: 700;
-    font-size: 1.25rem;
-    text-decoration: none;
+  .content .children-display,
+  .content .curated-links {
+    > ul > li {
+      margin-top: 24px;
+    }
+
+    li a {
+      /* Category landing pages */
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
-  .content .children-display li a:hover {
-    text-decoration: underline;
+
+.content .children-display > ul > li {
+}
+
+  .content .label-links {
+
   }
 
 

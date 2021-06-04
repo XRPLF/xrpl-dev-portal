@@ -2,6 +2,8 @@
 html: trust-lines-and-issuing.html
 parent: issued-currencies.html
 blurb: Learn about the properties and rationale of trust lines.
+labels:
+  - Tokens
 ---
 # Trust Lines and Issuing
 

@@ -4,10 +4,16 @@
   <section class="content">
     <h1 id="main-page-header">{{ currentpage.name }}</h1>
 
-    <ul class="tag-cloud">
+    <ul class="tag-cloud list-inline">
+    {% set lblsize = label_sizes(pages) %}
     {% for page in pages %}
       {% if page.landing_for is defined %}
-          <li><a href="{% if "//" not in page.html %}{{target.prefix}}{% endif %}{{page.html}}" class="badge badge-primary">{{page.name}}</a></li>
+          <li class="list-inline-item">
+            <a class="btn btn-primary size-{{lblsize[page.landing_for]}}" href="{% if "//" not in page.html %}{{target.prefix}}{% endif %}{{page.html}}">
+            {{page.name}}
+              <span class="badge badge-secondary">{{label_count(pages, page.landing_for)}}</span>
+            </a>
+          </li>
       {% endif %}
     {% endfor %}
   </ul>

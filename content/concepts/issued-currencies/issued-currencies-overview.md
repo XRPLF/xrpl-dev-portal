@@ -2,6 +2,8 @@
 html: issued-currencies-overview.html
 parent: issued-currencies.html
 blurb: Get an overview of issued currencies and their properties in the XRP Ledger.
+labels:
+  - Tokens
 ---
 # Issued Currencies Overview
 

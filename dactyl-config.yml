@@ -3133,12 +3133,86 @@ pages:
             - ja
 
     # Landing pages for labels
+    -   name: Checks
+        html: label-checks.html
+        parent: by-label.html
+        landing_for: Checks
+        template: template-landing-label.html
+        blurb: All pages relating to the Checks feature.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
+    -   name: Cross-Currency
+        html: label-cross-currency.html
+        parent: by-label.html
+        landing_for: Cross-Currency
+        template: template-landing-label.html
+        blurb: Swap different tokens and XRP in payments or the decentralized exchange.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
+    -   name: Decentralized Exchange
+        html: label-decentralized-exchange.html
+        parent: by-label.html
+        landing_for: Decentralized Exchange
+        template: template-landing-label.html
+        blurb: Topics relating to the Decentralized Exchange built into the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
     -   name: Escrow
         html: label-escrow.html
         parent: by-label.html
         landing_for: Escrow
         template: template-landing-label.html
         blurb: All pages relating to the Escrow feature.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
+    -   name: Fees
+        html: label-fees.html
+        parent: by-label.html
+        landing_for: Fees
+        template: template-landing-label.html
+        blurb: All about fees and related costs of transacting in the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
+    -   name: Payment Channels
+        html: label-payment-channels.html
+        parent: by-label.html
+        landing_for: Payment Channels
+        template: template-landing-label.html
+        blurb: Pages relating to the Payment Channels feature, which enables rapid off-ledger payments secured by XRP.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
+    -   name: Payments
+        html: label-payments.html
+        parent: by-label.html
+        landing_for: Payments
+        template: template-landing-label.html
+        blurb: About sending payments (of XRP or tokens) in the XRP Ledger.
+        filters:
+            - labels
         targets:
             - en
             - ja
@@ -3149,6 +3223,8 @@ pages:
         landing_for: Smart Contracts
         template: template-landing-label.html
         blurb: Build smart contracts using these advanced on-ledger features.
+        filters:
+            - labels
         targets:
             - en
             - ja
@@ -3159,6 +3235,32 @@ pages:
         landing_for: Security
         template: template-landing-label.html
         blurb: Protect your digital assets with powerful security.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
+    -   name: Tokens
+        html: label-tokens.html
+        parent: by-label.html
+        landing_for: Tokens
+        template: template-landing-label.html
+        blurb: Issue any type of token in the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
+    -   name: XRP
+        html: label-xrp.html
+        parent: by-label.html
+        landing_for: XRP
+        template: template-landing-label.html
+        blurb: The native digital asset built into the XRP Ledger.
+        filters:
+            - labels
         targets:
             - en
             - ja
@@ -3168,6 +3270,9 @@ pages:
         parent: docs.html
         template: template-all-labels.html
         blurb: Browse by topic.
+        nav_omit: true
+        filters:
+            - labels
         targets:
             - en
             - ja

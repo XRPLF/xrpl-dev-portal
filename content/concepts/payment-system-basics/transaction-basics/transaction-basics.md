@@ -2,6 +2,8 @@
 html: transaction-basics.html
 parent: payment-system-basics.html
 blurb: Transactions are the only way to change the XRP Ledger. Understand what forms they take and how to use them.
+labels:
+  - Payments
 ---
 # Transaction Basics
 

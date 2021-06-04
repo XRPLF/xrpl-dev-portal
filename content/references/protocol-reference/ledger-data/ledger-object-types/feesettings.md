@@ -2,6 +2,8 @@
 html: feesettings.html
 parent: ledger-object-types.html
 blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
+labels:
+  - Fees
 ---
 # FeeSettings
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")

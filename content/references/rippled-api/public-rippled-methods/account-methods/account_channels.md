@@ -2,6 +2,8 @@
 html: account_channels.html
 parent: account-methods.html
 blurb: Get a list of payment channels where the account is the source of the channel.
+labels:
+  - Payment Channels
 ---
 # account_channels
 [[Source]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")

@@ -2,6 +2,9 @@
 html: transfer-fees.html
 parent: issued-currencies.html
 blurb: Currency issuers can charge a fee for transferring their issued currencies.
+labels:
+  - Fees
+  - Tokens
 ---
 # Transfer Fees
 

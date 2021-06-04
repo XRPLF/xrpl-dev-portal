@@ -2,6 +2,9 @@
 html: cross-currency-payments.html
 parent: payment-types.html
 blurb: Cross-currency payments atomically deliver a different currency than they send by converting through paths and order books.
+labels:
+  - Cross-Currency
+  - Payments
 ---
 # Cross-Currency Payments
 

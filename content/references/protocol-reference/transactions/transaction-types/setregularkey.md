@@ -2,6 +2,8 @@
 html: setregularkey.html
 parent: transaction-types.html
 blurb: Add, remove, or modify an account's regular key pair.
+labels:
+  - Security
 ---
 # SetRegularKey
 
