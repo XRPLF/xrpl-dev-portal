@@ -2,6 +2,8 @@
 html: set-up-multi-signing.html
 parent: manage-account-settings.html
 blurb: Add a signer list to your account to enable multi-signing.
+labels:
+  - Security
 ---
 # Set Up Multi-Signing
 

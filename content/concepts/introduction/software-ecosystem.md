@@ -2,6 +2,8 @@
 html: software-ecosystem.html
 parent: introduction.html
 blurb: Get an overview of what XRP Ledger software is out there and how it fits together.
+labels:
+  - rippled
 ---
 # Software Ecosystem
 

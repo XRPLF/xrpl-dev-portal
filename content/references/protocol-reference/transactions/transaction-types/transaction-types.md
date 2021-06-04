@@ -3,6 +3,8 @@ html: transaction-types.html
 parent: transaction-formats.html
 blurb: All the different types of transactions that the XRP Ledger can process.
 template: template-landing-children.html
+labels:
+  - Blockchain
 ---
 # Transaction Types
 

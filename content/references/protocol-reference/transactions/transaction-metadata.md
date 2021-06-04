@@ -2,6 +2,8 @@
 html: transaction-metadata.html
 parent: transaction-formats.html
 blurb: Transaction metadata describes the outcome of the transaction in detail, regardless of whether the transaction is successful.
+labels:
+  - Blockchain
 ---
 # Transaction Metadata
 

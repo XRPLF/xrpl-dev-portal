@@ -2,6 +2,8 @@
 html: use-a-peer-reservation.html
 parent: configure-peering.html
 blurb: Set up a more reliable connection to a specific peer using a peer reservation.
+labels:
+  - rippled
 ---
 # Use a Peer Reservation
 

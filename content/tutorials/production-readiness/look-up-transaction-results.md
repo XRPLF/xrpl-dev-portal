@@ -2,6 +2,8 @@
 html: look-up-transaction-results.html
 parent: production-readiness.html
 blurb: Find the results of previously-submitted transactions.
+labels:
+  - Payments
 ---
 # Look Up Transaction Results
 

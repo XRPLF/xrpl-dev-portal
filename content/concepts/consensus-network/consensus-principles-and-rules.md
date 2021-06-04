@@ -2,6 +2,8 @@
 html: consensus-principles-and-rules.html
 parent: consensus-network.html
 blurb: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
+labels:
+  - Blockchain
 ---
 # Consensus Principles and Rules
 

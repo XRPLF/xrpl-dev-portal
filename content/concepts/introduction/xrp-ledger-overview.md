@@ -2,6 +2,8 @@
 html: xrp-ledger-overview.html
 parent: introduction.html
 blurb: Get a quick and concise introduction to key features of the XRP Ledger.
+labels:
+  - Blockchain
 ---
 # XRP Ledger Overview
 

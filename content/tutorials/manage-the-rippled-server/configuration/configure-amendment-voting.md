@@ -2,6 +2,9 @@
 html: configure-amendment-voting.html
 parent: configure-rippled.html
 blurb: Set your server's votes on protocol amendments.
+labels:
+  - rippled
+  - Blockchain
 ---
 # Configure Amendment Voting
 

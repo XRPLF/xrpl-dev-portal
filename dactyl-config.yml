@@ -3133,6 +3133,30 @@ pages:
             - ja
 
     # Landing pages for labels
+    -   name: Accounts
+        html: label-accounts.html
+        parent: by-label.html
+        landing_for: Accounts
+        template: template-landing-label.html
+        blurb: Pages relating to accounts in the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
+    -   name: Blockchain
+        html: label-blockchain.html
+        parent: by-label.html
+        landing_for: Blockchain
+        template: template-landing-label.html
+        blurb: Pages relating to how the XRP Ledger functions as a blockchain.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
     -   name: Checks
         html: label-checks.html
         parent: by-label.html
@@ -3217,6 +3241,18 @@ pages:
             - en
             - ja
 
+    -   name: rippled
+        html: label-rippled.html
+        parent: by-label.html
+        landing_for: rippled
+        template: template-landing-label.html
+        blurb: Pages relating to the XRP Ledger's core server implementation, rippled.
+        filters:
+            - labels
+        targets:
+            - en
+            - ja
+
     -   name: Smart Contracts
         html: label-smart-contracts.html
         parent: by-label.html
@@ -3270,7 +3306,7 @@ pages:
         parent: docs.html
         template: template-all-labels.html
         blurb: Browse by topic.
-        nav_omit: true
+        top_nav_omit: true
         filters:
             - labels
         targets:

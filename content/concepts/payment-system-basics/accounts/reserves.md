@@ -4,6 +4,7 @@ parent: accounts.html
 blurb: XRP Ledger accounts require a reserve of XRP to reduce spam in ledger data.
 labels:
   - Fees
+  - Accounts
 ---
 # Reserves
 

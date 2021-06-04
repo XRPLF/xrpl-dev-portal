@@ -2,6 +2,9 @@
 html: account_tx.html
 parent: account-methods.html
 blurb: Get info about an account's transactions.
+labels:
+  - Payments
+  - Accounts
 ---
 # account_tx
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")

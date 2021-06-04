@@ -3,7 +3,7 @@ html: accountroot.html
 parent: ledger-object-types.html
 blurb: The settings, XRP balance, and other metadata for one account.
 labels:
-  - Payments
+  - Accounts
   - XRP
 ---
 # AccountRoot

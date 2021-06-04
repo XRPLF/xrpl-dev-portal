@@ -3,6 +3,7 @@ html: account_info.html
 parent: account-methods.html
 blurb: Get basic data about an account.
 labels:
+  - Accounts
   - XRP
 ---
 # account_info

@@ -2,6 +2,8 @@
 html: ledger_entry.html
 parent: ledger-methods.html
 blurb: Get one element from a ledger version.
+labels:
+  - Blockchain
 ---
 # ledger_entry
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")

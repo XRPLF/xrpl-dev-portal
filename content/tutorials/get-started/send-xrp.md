@@ -5,8 +5,11 @@ blurb: Learn how to send test payments right from your browser.
 cta_text: Send XRP
 embed_ripple_lib: true
 filters:
-    - interactive_steps
-    - include_code
+  - interactive_steps
+  - include_code
+labels:
+  - XRP
+  - Payments
 ---
 # Send XRP
 

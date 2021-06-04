@@ -3,6 +3,8 @@ html: pseudo-transaction-types.html
 parent: transaction-formats.html
 blurb: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger.
 template: template-landing-children.html
+labels:
+  - Blockchain
 ---
 # Pseudo-Transactions
 

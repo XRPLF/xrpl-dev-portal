@@ -2,6 +2,8 @@
 html: run-rippled-as-a-validator.html
 parent: configure-rippled.html
 blurb: Have your server vote on the consensus ledger.
+labels:
+  - rippled
 ---
 # Run rippled as a Validator
 

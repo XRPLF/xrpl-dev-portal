@@ -2,6 +2,8 @@
 html: forward-ports-for-peering.html
 parent: configure-peering.html
 blurb: Configure your firewall to allow incoming peers to your rippled server.
+labels:
+  - rippled
 ---
 # Forward Ports for Peering
 

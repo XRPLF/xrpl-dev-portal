@@ -2,6 +2,7 @@
 html: fix-sqlite-tx-db-page-size-issue.html
 parent: troubleshoot-the-rippled-server.html
 blurb: Fix a problem with the SQLite page size on full-history servers started on rippled version 0.40.0 or earlier.
+status: removed
 ---
 # Fix SQLite Transaction Database Page Size Issue
 

@@ -4,6 +4,7 @@ parent: xrp-ledger-businesses.html
 blurb: Gateways are the businesses that link the XRP Ledger to the rest of the world. This tutorial demonstrates how an existing online financial institution can expand to act as a gateway in the the XRP Ledger.
 labels:
   - Tokens
+  - Security
 ---
 # Become an XRP Ledger Gateway
 
