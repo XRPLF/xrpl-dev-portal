@@ -17,11 +17,16 @@
 
 /* "Topic by Label" browsing ------------------------------------------------ */
 
-.labels-wrap ul::before {
-  content: "\f02c";
-  font-family: FontAwesome;
+.labels-wrap {
+  ul::before {
+    content: "\f02c";
+    font-family: FontAwesome;
+    font-size: 1.5rem;
+  }
+  .list-inline-item {
+    margin-top: 0.5rem;
+  }
 }
-
 .pg-category {
   color: $gray-400;
 
@@ -32,8 +37,104 @@
   }
 }
 
+.label {
+  border-radius: 1rem / 50%;
+  border-width: 0;
+  padding: .4rem .8rem;
+  font-weight: bold;
+  text-decoration: none !important;
+  text-align: center;
+  white-space: nowrap;
+
+  background-color: $gray-800;
+  color: $gray-100;
+  &:hover {
+    color: $gray-200;
+    background-color: $gray-700;
+  }
+
+  &.label-accounts,
+  &.label-payment-channels {
+    background-color: $blue-purple-800;
+    color: $blue-purple-100;
+    &:hover {
+      background-color: $blue-purple-700;
+      color: $blue-purple-200;
+    }
+  }
+
+  &.label-blockchain,
+  &.label-xrp {
+    background-color: $green-800;
+    color: $green-100;
+    &:hover {
+      background-color: $green-700;
+      color: $green-200;
+    }
+  }
+
+  &.label-checks,
+  &.label-rippled  {
+    background-color: $red-purple-800;
+    color: $red-purple-100;
+    &:hover {
+      background-color: $red-purple-700;
+      color: $red-purple-200;
+    }
+  }
+
+  &.label-cross-currency,
+  &.label-security {
+    background-color: $yellow-800;
+    color: $yellow-100;
+    &:hover {
+      background-color: $yellow-700;
+      color: $yellow-200;
+    }
+  }
+
+  &.label-decentralized-exchange,
+  &.label-smart-contracts {
+    background-color: $blue-800;
+    color: $blue-100;
+    &:hover {
+      background-color: $blue-700;
+      color: $blue-200;
+    }
+  }
+
+  &.label-escrow,
+  &.label-tokens {
+    background-color: $orange-800;
+    color: $orange-100;
+    &:hover {
+      background-color: $orange-700;
+      color: $orange-200;
+    }
+  }
+
+  &.label-fees,
+  &.label-payments{
+    background-color: $magenta-800;
+    color: $magenta-100;
+    &:hover {
+      background-color: $magenta-700;
+      color: $magenta-200;
+    }
+  }
+}
+
 .tag-cloud {
 
+  // display: grid;
+  // grid-auto-flow: row;
+  // grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  //
+  // .list-inline-item {
+  //   a {
+  //     display: block;
+  //   }
+  // }
   // .size-5 {
   //   font-size: 2.5rem;
   // }

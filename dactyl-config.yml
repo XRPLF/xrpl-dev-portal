@@ -34,6 +34,7 @@ default_filters:
     - status_badges
     - include_svg
     - css_tables
+    - slug
 
 callout_class: "devportal-callout"
 callout_types:
@@ -3305,6 +3306,7 @@ pages:
         html: by-label.html
         parent: docs.html
         template: template-all-labels.html
+        sidebar: left_only
         blurb: Browse by topic.
         top_nav_omit: true
         filters:

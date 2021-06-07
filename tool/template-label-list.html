@@ -6,11 +6,11 @@
   {% set label_landing = pages|selectattr("landing_for", "defined_and_equalto", label)|first %}
   {% if label_landing %}
     <li class="list-inline-item">
-      <a href="{% if "//" not in label_landing.html %}{{target.prefix}}{% endif %}{{label_landing.html}}" class="badge badge-primary">{{label}}</a>
+      <a href="{% if "//" not in label_landing.html %}{{target.prefix}}{% endif %}{{label_landing.html}}" class="label label-{{slug(label)}}">{{label}}</a>
     </li>
   {% else %}
     <li class="list-inline-item">
-      <span class="badge badge-secondary">{{label}}</span>
+      <span class="label label-{{slug(label)}}">{{label}}</span>
       <!-- TEMPLATE WARNING: no label landing found for "{{label}}" -->
     </li>
   {% endif %}
