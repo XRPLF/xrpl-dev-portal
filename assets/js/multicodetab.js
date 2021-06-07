@@ -49,72 +49,69 @@ all copies or substantial portions of the Software.
 jQuery.fn.minitabs = function(speed,effect) {
 
   function saveToLocal(lang){
-    console.log("saving language > " + lang);
     window.localStorage.setItem('user-preferred-devlanguage', lang);
   }
 
+  function setTabsToFirst(id){
+    console.log("Setting tabs "+id+" toFirst ")
+    $(".multicode[id='"+id+"']" + ">DIV").hide();   
+    $(".multicode[id='"+id+"']" + ">UL>LI>A").removeClass("current"); 
+    // 
+    $(".multicode[id='"+id+"']" + ">DIV:first").show(); 
+    $(".multicode[id='"+id+"']" + ">UL>LI>A:first").addClass("current");
+  }
+
+  function setTabsToLang(id, lang){
+    console.log("Setting tabs "+id+" TO LANG >>  " + lang)
+    $(".multicode[id='"+id+"']" + ">DIV").hide();   
+    $(".multicode[id='"+id+"']" + ">UL>LI>A").removeClass("current"); 
+    //
+    $(".multicode[id='"+id+"']" + ">UL>LI>A[class="+lang+"]").addClass("current");
+    $(".multicode[id='"+id+"']" + ">DIV."+lang).show();
+  }
+
   function showSelectedTabFromSaved(id){
-    // get any data from local stores. 
-    $savedValue = window.localStorage.getItem('user-preferred-devlanguage');
-  // show all tabs if value present
-    if($savedValue !== null) {
-      showSlectedTab($savedValue);
+    var savedValue = window.localStorage.getItem('user-preferred-devlanguage');
+
+    if(savedValue !== null) {
+      showSlectedTab(savedValue);
     }else {
-      $(id + ">DIV:gt(0)").hide();
-      $(id + ">UL>LI>A:first").addClass("current");
+      setTabsToFirst(id);
     }
   }
 
   function showSlectedTab(lang) {
-    // Hide all. 
-    // Tab heads
-    $(".multicode>UL>LI>A").removeClass("current");
-    // Tab contents
-    $(".multicode>DIV").hide(speed);
+    $('.multicode').each(function() {
+      var hasLang = false;
+      $(this).find(">UL>LI>A").each(function() {
+        if ($(this).attr('class') == lang ) { 
+          hasLang = true;
+        }
+      })
 
-    $(this).blur();
-    //show selcted. 
-    $(".multicode>UL>LI>."+lang).addClass("current");
-    $(".multicode>DIV."+lang).show(speed);
+      if(hasLang) {
+        console.log("LANG VALUE> > " + lang)
+        setTabsToLang($(this).attr('id'), lang);
+      } else {
+        setTabsToFirst($(this).attr('id'));
+      }
+    })
 
-    // TODO: Only add/remove on samples that DO contain that value. 
-    // Example
-    // if javascript is lang. 
-    // only add current if the UL has javascript in the tabs.  
-    // Otherwise this will hide all tabs and not show anything. 
-
-    // save in localstorage. 
+    // save in localstorage.
     saveToLocal(lang);
   }
 
   this.each(function() {
       var id = "#" + $(this).attr('id')
       //Use saved value or set to first tab
-      showSelectedTabFromSaved(id);
+      showSelectedTabFromSaved($(this).attr('id'));
 
       //Add click on each tab
       $(id + ">UL>LI>A").click(
         function(){
-          showSlectedTab($(this).attr('class'))
-
-          //Old 
-
-          // var re = /([_\-\w]+$)/i;
-          // var target = $('#' + re.exec(this.href)[1]);
-          // var old = $(id + ">DIV");
-          // switch (effect) {
-          //   case 'fade':
-          //     old.fadeOut(speed).fadeOut(speed);
-          //     target.fadeIn(speed);
-          //     break;
-          //   case 'slide':
-          //     old.slideUp(speed);
-          //     target.fadeOut(speed).fadeIn(speed);
-          //     break;
-          //   default :
-          //     old.hide(speed);
-          //     target.show(speed)
-          // }
+          if(!$(this).hasClass("current") ){
+            showSlectedTab($(this).attr('class'))
+          }
           return false;
         }
      );
