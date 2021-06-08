@@ -1,7 +1,7 @@
 // Check user prefers color, toggle light/dark, save state
 // Based partly on https://github.com/vinorodrigues/bootstrap-dark
 
-$(document).ready(function() {
+
 
 //////// NOTES
 // On mac the system will be either light, dark or auto.  Auto will return either light or dark and NOT no preference. 
@@ -48,6 +48,8 @@ $(document).ready(function() {
 
     // update every time it changes
     if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addListener( update_color_scheme_css );
+    
+  $(document).ready(function() {
 
     // toggle button click code
     $("#css-toggle-btn").bind("click", function() {
