@@ -12,7 +12,7 @@ my_payment = Payment(
     amount=xrp_to_drops(22),
     fee="10",
     destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-    sequence=16237283,
+    sequence=wallet.sequence, # this needs to be incremented upon every successful transaction
 )
 print("Payment object:", my_payment)
 
