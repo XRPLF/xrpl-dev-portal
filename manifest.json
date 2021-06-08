@@ -20,5 +20,16 @@
         "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1092"
       }
     ]
+  },
+  "sgramkumar-rephrase-1": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "08964fa9c77bbd2c067173e9b6aca68486930742",
+        "updatedAt": "2021-06-08T00:58:08.021Z",
+        "href": "pr-preview/sgramkumar-rephrase-1/08964f",
+        "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1094"
+      }
+    ]
   }
 }
