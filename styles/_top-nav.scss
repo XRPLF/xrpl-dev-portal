@@ -9,6 +9,13 @@
     -webkit-transition: opacity 200ms ease, color 200ms ease;
     transition: opacity 200ms ease, color 200ms ease;
 
+    .logo {
+      content: url(/assets/img/XRPLedger_DevPortal-white.svg);
+      width: 177px;
+      height: 44px;
+      display: block;
+    }
+
     &:hover {
       opacity: 0.75;
     }

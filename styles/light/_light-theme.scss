@@ -15,11 +15,6 @@ $navbar-light-color: $dark;
 $navbar-light-hover-color: $secondary;
 $navbar-light-active-color: $primary;
 
-// Nav logo. 
-
-.logo {
-  content: url(/assets/img/XRPLedger_DevPortal-black.svg);
-}
 
 // Content
 /* Site-wide header link styles --------------------------------------------- */
@@ -97,6 +92,14 @@ a.card,
 
 // Top Nav
 .top-nav {
+
+// Logo
+  .navbar-brand {
+    .logo {
+      content: url(/assets/img/XRPLedger_DevPortal-black.svg);
+    }
+  }
+
   .navbar-nav {
     .nav-link {
       color: $black;
