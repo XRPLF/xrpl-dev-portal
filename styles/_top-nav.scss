@@ -16,6 +16,13 @@
       margin-left: 0;
     }
 
+    .logo {
+      content: url(/assets/img/XRPLedger_DevPortal-white.svg);
+      width: 177px;
+      height: 44px;
+      display: block;
+    }
+
     &:hover {
       opacity: 0.75;
     }
