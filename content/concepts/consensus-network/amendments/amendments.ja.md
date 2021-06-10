@@ -2,6 +2,8 @@
 html: amendments.html
 parent: consensus-network.html
 blurb: Amendmentはトランザクション処理の新しい機能やその他の変更を指します。バリデータはコンセンサスを通して連携し、XRP Ledgerにこれらのアップグレードを順序正しく適用します。
+labels:
+  - ブロックチェーン
 ---
 # Amendment
 

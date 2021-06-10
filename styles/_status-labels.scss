@@ -94,7 +94,8 @@
   }
 
   &.label-decentralized-exchange,
-  &.label-smart-contracts {
+  &.label-smart-contracts,
+  &.label-transaction-sending {
     background-color: $blue-800;
     color: $blue-100;
     &:hover {

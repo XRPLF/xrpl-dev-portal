@@ -3133,7 +3133,7 @@ pages:
         targets:
             - ja
 
-    # Landing pages for labels
+    # Landing pages for labels -------------------------------------------------
     -   name: Accounts
         html: label-accounts.html
         parent: by-label.html
@@ -3151,11 +3151,21 @@ pages:
         parent: by-label.html
         landing_for: Blockchain
         template: template-landing-label.html
-        blurb: Pages relating to how the XRP Ledger functions as a blockchain.
+        blurb: Pages about how the XRP Ledger functions as a blockchain.
         filters:
             - labels
         targets:
             - en
+
+    -   name: ブロックチェーン
+        html: label-blockchain.html
+        parent: by-label.html
+        landing_for: ブロックチェーン
+        template: template-landing-label.html
+        blurb: XRP Ledgerがブロックチェーンとして機能するに関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Checks
@@ -3163,11 +3173,21 @@ pages:
         parent: by-label.html
         landing_for: Checks
         template: template-landing-label.html
-        blurb: All pages relating to the Checks feature.
+        blurb: Pages about the Checks feature.
         filters:
             - labels
         targets:
             - en
+
+    -   name: Checks
+        html: label-checks.html
+        parent: by-label.html
+        landing_for: Checks
+        template: template-landing-label.html
+        blurb: Checks機能に関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Cross-Currency
@@ -3175,11 +3195,21 @@ pages:
         parent: by-label.html
         landing_for: Cross-Currency
         template: template-landing-label.html
-        blurb: Swap different tokens and XRP in payments or the decentralized exchange.
+        blurb: Pages about exchanging currencies, tokens, and XRP in payments or the decentralized exchange.
         filters:
             - labels
         targets:
             - en
+
+    -   name: 複数通貨間
+        html: label-cross-currency.html
+        parent: by-label.html
+        landing_for: 複数通貨間
+        template: template-landing-label.html
+        blurb: XRPと通貨とトークンを支払いと分散型取引所で交換ついての全ページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Decentralized Exchange
@@ -3187,11 +3217,21 @@ pages:
         parent: by-label.html
         landing_for: Decentralized Exchange
         template: template-landing-label.html
-        blurb: Topics relating to the Decentralized Exchange built into the XRP Ledger.
+        blurb: Pages about the Decentralized Exchange built into the XRP Ledger.
         filters:
             - labels
         targets:
             - en
+
+    -   name: 分散型取引所
+        html: label-decentralized-exchange.html
+        parent: by-label.html
+        landing_for: 分散型取引所
+        template: template-landing-label.html
+        blurb: XRP Ledgerの分散型取引所に関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Escrow
@@ -3199,11 +3239,21 @@ pages:
         parent: by-label.html
         landing_for: Escrow
         template: template-landing-label.html
-        blurb: All pages relating to the Escrow feature.
+        blurb: Pages about the Escrow feature.
         filters:
             - labels
         targets:
             - en
+
+    -   name: Escrow
+        html: label-escrow.html
+        parent: by-label.html
+        landing_for: Escrow
+        template: template-landing-label.html
+        blurb: Escrow機能に関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Fees
@@ -3211,11 +3261,21 @@ pages:
         parent: by-label.html
         landing_for: Fees
         template: template-landing-label.html
-        blurb: All about fees and related costs of transacting in the XRP Ledger.
+        blurb: Pages about fees and related costs of transacting in the XRP Ledger.
         filters:
             - labels
         targets:
             - en
+
+    -   name: 手数料
+        html: label-fees.html
+        parent: by-label.html
+        landing_for: 手数料
+        template: template-landing-label.html
+        blurb: XRP Ledgerの手数料とコストに関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Payment Channels
@@ -3223,11 +3283,21 @@ pages:
         parent: by-label.html
         landing_for: Payment Channels
         template: template-landing-label.html
-        blurb: Pages relating to the Payment Channels feature, which enables rapid off-ledger payments secured by XRP.
+        blurb: Pages about the Payment Channels feature.
         filters:
             - labels
         targets:
             - en
+
+    -   name: Payment Channel
+        html: label-payment-channels.html
+        parent: by-label.html
+        landing_for: Payment Channel
+        template: template-landing-label.html
+        blurb: Payment Channel機能に関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Payments
@@ -3240,6 +3310,16 @@ pages:
             - labels
         targets:
             - en
+
+    -   name: 支払い
+        html: label-payments.html
+        parent: by-label.html
+        landing_for: 支払い
+        template: template-landing-label.html
+        blurb: XRP Ledgerでの支払い二ついての全ページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: rippled
@@ -3247,11 +3327,21 @@ pages:
         parent: by-label.html
         landing_for: rippled
         template: template-landing-label.html
-        blurb: Pages relating to the XRP Ledger's core server implementation, rippled.
+        blurb: Pages about the XRP Ledger's core server implementation, rippled.
         filters:
             - labels
         targets:
             - en
+
+    -   name: rippled
+        html: label-rippled.html
+        parent: by-label.html
+        landing_for: rippled
+        template: template-landing-label.html
+        blurb: XRP Ledgerのコアサーバー「rippled」に関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Smart Contracts
@@ -3259,11 +3349,21 @@ pages:
         parent: by-label.html
         landing_for: Smart Contracts
         template: template-landing-label.html
-        blurb: Build smart contracts using these advanced on-ledger features.
+        blurb: Pages about XRP Ledger features that can be used to build smart contracts.
         filters:
             - labels
         targets:
             - en
+
+    -   name: スマートコントラクト
+        html: label-smart-contracts.html
+        parent: by-label.html
+        landing_for: スマートコントラクト
+        template: template-landing-label.html
+        blurb: スマートコントラクトを開発の役に立つ機能に関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Security
@@ -3271,11 +3371,21 @@ pages:
         parent: by-label.html
         landing_for: Security
         template: template-landing-label.html
-        blurb: Protect your digital assets with powerful security.
+        blurb: Pages about security issues and precautions.
         filters:
             - labels
         targets:
             - en
+
+    -   name: セキュリティ
+        html: label-security.html
+        parent: by-label.html
+        landing_for: セキュリティ
+        template: template-landing-label.html
+        blurb: セキュリティ問題と予防措置に関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Tokens
@@ -3283,11 +3393,43 @@ pages:
         parent: by-label.html
         landing_for: Tokens
         template: template-landing-label.html
-        blurb: Issue any type of token in the XRP Ledger.
+        blurb: Pages about issuing tokens in the XRP Ledger.
         filters:
             - labels
         targets:
             - en
+
+    -   name: Tokens
+        html: label-tokens.html
+        parent: by-label.html
+        landing_for: Tokens
+        template: template-landing-label.html
+        blurb: XRP Ledgerでのトークンや通貨を発行済みに関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
+    -   name: Transaction Sending
+        html: label-transaction-sending.html
+        parent: by-label.html
+        landing_for: Transaction Sending
+        template: template-landing-label.html
+        blurb: Pages about sending transactions in the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: トランザクション送信
+        html: label-transaction-sending.html
+        parent: by-label.html
+        landing_for: トランザクション送信
+        template: template-landing-label.html
+        blurb: XRP Ledgerでのトランザクションを送信に関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: XRP
@@ -3295,24 +3437,45 @@ pages:
         parent: by-label.html
         landing_for: XRP
         template: template-landing-label.html
-        blurb: The native digital asset built into the XRP Ledger.
+        blurb: Pages about XRP, the native digital asset built into the XRP Ledger.
         filters:
             - labels
         targets:
             - en
+
+    -   name: XRP
+        html: label-xrp.html
+        parent: by-label.html
+        landing_for: XRP
+        template: template-landing-label.html
+        blurb: XRP Ledgerのネイティブ暗号資産「XRP」に関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
-    -   name: Topics By Label
+    -   name: Browse By Label
         html: by-label.html
         parent: docs.html
         template: template-all-labels.html
         sidebar: left_only
-        blurb: Browse by topic.
+        blurb: See all pages labeled with a specific topic or idea.
         top_nav_omit: true
         filters:
             - labels
         targets:
             - en
+
+    -   name: ラベル別に閲覧
+        html: by-label.html
+        parent: docs.html
+        template: template-all-labels.html
+        sidebar: left_only
+        blurb: 特定のトピックでラベル付けされたページを表示します。
+        top_nav_omit: true
+        filters:
+            - labels
+        targets:
             - ja
 
 
