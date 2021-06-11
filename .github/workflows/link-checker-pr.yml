@@ -32,23 +32,37 @@ jobs:
         tool/build_all_langs.sh --vars dactyl_vars.json
 
     - name: Run Dactyl Link Checker
+      continue-on-error: true
       run: |
         dactyl_link_checker -o -q > linkreport.txt
 
     - name: Assemble Link Report
-      if: always()
       run: |
         sed -i '1,/---------------------------------------/d' linkreport.txt
         echo 'LINKREPORT<<EOF' >> $GITHUB_ENV
         cat linkreport.txt >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
+        cat linkreport.txt
 
-    # # Disabled because the ripple GitHub org doesn't allow the GITHUB_TOKEN to do this
-    # - name: Comment Broken Links
-    #   uses: unsplash/comment-on-pr@master
-    #   env:
-    #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   if: always()
-    #   with:
-    #     msg: ${{ env.LINKREPORT }}
-    #     check_for_duplicate_msg: false
+    - name: Run Style Checker
+      continue-on-error: true
+      run: dactyl_style_checker -q > out/style_report.txt
+
+    - name: Deploy preview to gh-pages
+      uses: sauloxd/review-apps@v1.3.3
+      with:
+        build-cmd: "echo 'Using existing build'"
+        branch: "gh-pages"
+        dist: "out"
+        slug: "pr-preview"
+
+    - name: Get short SHA6
+      id: slug
+      run: echo "::set-output name=sha6::$(echo ${{ github.event.pull_request.head.sha }} | cut -c1-6)"
+
+    - name: Summarize Output
+      uses: unsplash/comment-on-pr@master
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        msg: "${{ env.LINKREPORT }}\n\nPreview: https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/${{steps.slug.outputs.sha6}}\n\n[Style Report](https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/${{steps.slug.outputs.sha6}}/style_report.txt)"

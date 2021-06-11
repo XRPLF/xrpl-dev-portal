@@ -79,8 +79,6 @@ targets:
         display_name: XRPL.org
         <<: *defaults
         prefix: ""
-        readability_goals:
-            flesch_reading_ease: 50 # or higher
         blurb: XRPL.org is a community-driven resource for all things XRP and the XRP Ledger—your source for technical information, reference materials and tools.
 
     -   name: ja

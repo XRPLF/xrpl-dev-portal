@@ -17,7 +17,7 @@ A Ticket in the XRP Ledger is a way of setting aside a [sequence number][Sequenc
 However, there are some situations where sequence numbers are too limiting. For example:
 
 - Two or more users share access to an account, each with the ability to send transactions independently. If these users try to send transactions around the same time without coordinating first, they may each try to use the same Sequence number for different transactions, and only one can succeed.
-- You may want to prepare and sign a transaction in advance, then save it in some secure storage so that it can be executed at any future point if certain events occur. However, if you want to continue using your account as normal in the meantime, you don't know what Sequence number the set-aside transaction will need.
+- You may want to prepare and sign a transaction in advance, then save it in some secure storage so that it can be executed at any future point if certain events occur. However, if you want to continue using your account as normal in the meantime, you don't know what Sequence number the set-aside transaction will need. <!-- STYLE_OVERRIDE: will -->
 - When [multiple people must sign a transaction](multi-signing.html) to make it valid, it can be difficult to plan more than one transaction at a time. If you number the transactions with separate sequence numbers, you can't send the later-numbered transactions until everyone has signed the previous transactions; but if you use the same sequence number for each pending transactions, only one of them can succeed.
 
 Tickets provide a solution to all of these problems by setting aside sequence numbers that can be used later, outside of their usual order, but still no more than once each.
@@ -48,7 +48,7 @@ To look up what Tickets an account has available, use the [account_objects metho
 Any account can create and use Tickets on any type of transaction. However, some restrictions apply:
 
 - Each Ticket can only be used once. It is possible to have multiple different candidate transactions that would use the same Ticket Sequence, but only one of those candidates can be validated by consensus.
-- Each account cannot have more than 250 Tickets in the ledger at a time. Therefore, you cannot create more than 250 Tickets at a time, either.
+- Each account cannot have more than 250 Tickets in the ledger at a time. You cannot create more than 250 Tickets at a time, either.
 - You _can_ use a Ticket to create more Tickets. If you do, the Ticket you used does not count towards the total number of Tickets you can have at once.
 - Each Ticket counts toward the [owner reserve](reserves.html), so you must set aside 5 XRP for each Ticket you have not used yet. The XRP becomes available for you to use again after the Ticket is used.
 - Within an individual ledger, transactions that use Tickets execute after other transactions from the same sender. If an account has multiple transactions using Tickets in the same ledger version, those Tickets execute in order from lowest Ticket Sequence to highest. (For more information, see the documentation on consensus's [canonical order](consensus.html#calculate-and-share-validations).)
