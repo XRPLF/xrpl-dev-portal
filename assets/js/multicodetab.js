@@ -53,7 +53,6 @@ jQuery.fn.minitabs = function(speed,effect) {
   }
 
   function setTabsToFirst(id){
-    console.log("Setting tabs "+id+" toFirst ")
     $(".multicode[id='"+id+"']" + ">DIV").hide();   
     $(".multicode[id='"+id+"']" + ">UL>LI>A").removeClass("current"); 
     // 
@@ -62,7 +61,6 @@ jQuery.fn.minitabs = function(speed,effect) {
   }
 
   function setTabsToLang(id, lang){
-    console.log("Setting tabs "+id+" TO LANG >>  " + lang)
     $(".multicode[id='"+id+"']" + ">DIV").hide();   
     $(".multicode[id='"+id+"']" + ">UL>LI>A").removeClass("current"); 
     //
@@ -90,7 +88,6 @@ jQuery.fn.minitabs = function(speed,effect) {
       })
 
       if(hasLang) {
-        console.log("LANG VALUE> > " + lang)
         setTabsToLang($(this).attr('id'), lang);
       } else {
         setTabsToFirst($(this).attr('id'));
