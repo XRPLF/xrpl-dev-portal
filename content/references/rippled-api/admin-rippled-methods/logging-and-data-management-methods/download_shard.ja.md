@@ -2,6 +2,8 @@
 html: download_shard.html
 parent: logging-and-data-management-methods.html
 blurb: レジャー履歴の特定のシャードをダウンロードします。
+labels:
+  - データ保持
 ---
 # download_shard
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp "Source")

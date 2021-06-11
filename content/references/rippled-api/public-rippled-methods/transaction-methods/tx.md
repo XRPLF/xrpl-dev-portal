@@ -3,6 +3,7 @@ html: tx.html
 parent: transaction-methods.html
 blurb: Retrieve info about a transaction from all the ledgers on hand.
 labels:
+  - Transaction Sending
   - Payments
 ---
 # tx

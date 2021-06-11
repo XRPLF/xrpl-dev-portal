@@ -4,7 +4,7 @@ parent: manage-the-rippled-server.html
 template: template-landing-children.html
 blurb: Configure how your server connects to the peer-to-peer network.
 labels:
-  - rippled
+  - Core Server
 ---
 # Configure Peering
 

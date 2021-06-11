@@ -3,6 +3,7 @@ html: finality-of-results.html
 parent: transaction-basics.html
 blurb: Learn when the outcome of a transaction is final and immutable.
 labels:
+  - Transaction Sending
   - Blockchain
 ---
 # Finality of Results

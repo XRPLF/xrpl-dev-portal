@@ -2,6 +2,8 @@
 html: account_lines.html
 parent: account-methods.html
 blurb: アカウントのトラストラインに関する情報を返します。
+labels:
+  - トークン
 ---
 # account_lines
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp "Source")

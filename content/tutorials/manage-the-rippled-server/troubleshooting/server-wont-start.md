@@ -3,7 +3,7 @@ html: server-wont-start.html
 parent: troubleshoot-the-rippled-server.html
 blurb: A collection of problems that would cause a rippled server not to start, and how to fix them.
 labels:
-  - rippled
+  - Core Server
 ---
 # rippled Server Won't Start
 

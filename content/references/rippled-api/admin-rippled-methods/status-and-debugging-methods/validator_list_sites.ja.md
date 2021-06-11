@@ -2,6 +2,9 @@
 html: validator_list_sites.html
 parent: status-and-debugging-methods.html
 blurb: バリデータリストを処理するサイトのステータス情報を返します。
+labels:
+  - ブロックチェーン
+  - コアサーバー
 ---
 # validator_list_sites
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")

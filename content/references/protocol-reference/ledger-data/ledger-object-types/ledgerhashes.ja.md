@@ -2,6 +2,8 @@
 html: ledgerhashes.html
 parent: ledger-object-types.html
 blurb: 履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。
+labels:
+  - ブロックチェーン
 ---
 # LedgerHashes
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108 "Source")

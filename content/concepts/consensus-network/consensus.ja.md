@@ -2,6 +2,8 @@
 html: consensus.html
 parent: consensus-network.html
 blurb: XRP Ledgerにおけるコンセンサスの役割について理解を深めましょう。
+labels:
+  - ブロックチェーン
 ---
 # コンセンサス
 

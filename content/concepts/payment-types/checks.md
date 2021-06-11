@@ -3,9 +3,9 @@ html: checks.html
 parent: payment-types.html
 blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients.
 labels:
+  - Checks
   - Payments
   - Tokens
-  - Checks
 ---
 # Checks
 

@@ -4,6 +4,7 @@ parent: payment-system-basics.html
 blurb: The XRP Ledger is composed of a series of individual ledgers, or ledger versions, which rippled keeps in its internal database. Learn about the structure and contents of these ledgers.
 labels:
   - Blockchain
+  - Data Retention
 ---
 # Ledgers
 

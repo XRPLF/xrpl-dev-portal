@@ -2,6 +2,8 @@
 html: ledger_request.html
 parent: logging-and-data-management-methods.html
 blurb: サーバーに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。
+labels:
+  - データ保持
 ---
 # ledger_request
 [[ソース]](https://github.com/ripple/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp "Source")

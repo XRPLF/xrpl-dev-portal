@@ -2,6 +2,9 @@
 html: feature.html
 parent: status-and-debugging-methods.html
 blurb: Amendmentに関してこのサーバーが認識している情報を返します。
+labels:
+  - ブロックチェーン
+  - コアサーバー
 ---
 # feature
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")

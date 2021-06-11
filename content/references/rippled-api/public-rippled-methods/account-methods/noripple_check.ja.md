@@ -2,6 +2,8 @@
 html: noripple_check.html
 parent: account-methods.html
 blurb: アカウントのDefaultRippleフィールドとそのトラストラインのNoRippleフラグの状態を、推奨される設定と比較して迅速にチェックします。
+labels:
+  - トークン
 ---
 # noripple_check
 [[ソース]](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/NoRippleCheck.cpp "Source")

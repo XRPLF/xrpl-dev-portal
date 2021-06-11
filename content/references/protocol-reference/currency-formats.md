@@ -3,6 +3,7 @@ html: currency-formats.html
 parent: protocol-reference.html
 blurb: Precision and range for currency numbers, plus formats of custom currency codes.
 label:
+  - XRP
   - Tokens
 ---
 # Currency Formats

@@ -2,6 +2,9 @@
 html: submit.html
 parent: transaction-methods.html
 blurb: トランザクションを適用し、トランザクションの確認と将来のレジャーへの記録が行われるように、ネットワークに送信します。
+labels:
+  - トランザクション送信
+  - 支払い
 ---
 # submit
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "ソース")

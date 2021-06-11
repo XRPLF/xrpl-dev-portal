@@ -2,6 +2,8 @@
 html: intro-to-consensus.html
 parent: introduction.html
 blurb: XRP Ledgerのコンセンサスメカニズムについて基本的な理解を深めましょう。
+labels:
+  - ブロックチェーン
 ---
 # コンセンサスについて
 

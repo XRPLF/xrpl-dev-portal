@@ -2,6 +2,8 @@
 html: crawl_shards.html
 parent: logging-and-data-management-methods.html
 blurb: Request information about which history shards peers have.
+labels:
+  - Data Retention
 ---
 # crawl_shards
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")

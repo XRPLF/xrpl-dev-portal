@@ -2,6 +2,8 @@
 html: tec-codes.html
 parent: transaction-results.html
 blurb: tecコードは、トランザクションは失敗したものの、トランザクションコストを適用するために、このトランザクションがレジャーに適用されたことを示します。
+labels:
+  - トランザクション送信
 ---
 # tecコード
 

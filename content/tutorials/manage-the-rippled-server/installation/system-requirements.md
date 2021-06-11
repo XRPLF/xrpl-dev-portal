@@ -3,7 +3,7 @@ html: system-requirements.html
 parent: install-rippled.html
 blurb: Hardware and software requirements for running rippled.
 labels:
-  - rippled
+  - Core Server
 ---
 # System Requirements
 

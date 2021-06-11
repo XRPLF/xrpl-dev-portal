@@ -4,6 +4,7 @@ parent: transaction-basics.html
 blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
 labels:
   - Fees
+  - Transaction Sending
 ---
 # Transaction Cost
 

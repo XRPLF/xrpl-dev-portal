@@ -4,6 +4,7 @@ parent: account-methods.html
 blurb: Get all ledger objects owned by an account.
 labels:
   - Accounts
+  - Data Retention
 ---
 # account_objects
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")

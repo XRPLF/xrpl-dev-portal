@@ -2,6 +2,9 @@
 html: ledger_data.html
 parent: ledger-methods.html
 blurb: 指定されたレジャーの内容を取得します。
+label:
+  - ブロックチェーン
+  - データ保持
 ---
 # ledger_data
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerData.cpp "Source")

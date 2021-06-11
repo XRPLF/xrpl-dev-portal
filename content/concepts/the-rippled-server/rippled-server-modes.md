@@ -3,7 +3,7 @@ html: rippled-server-modes.html
 parent: the-rippled-server.html
 blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
 labels:
-  - rippled
+  - Core Server
 ---
 # rippled Server Modes
 

@@ -2,6 +2,8 @@
 html: admin-rippled-methods.html
 parent: rippled-api.html
 blurb: これらの管理APIメソッドを使用してrippledサーバーを管理します。
+labels:
+  - コアサーバー
 ---
 # 管理rippledメソッド
 

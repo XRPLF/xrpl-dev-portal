@@ -2,6 +2,9 @@
 html: reserves.html
 parent: accounts.html
 blurb: XRP Ledgerアカウントでは、レジャーデータ内のスパムを減らすためにXRPの準備金が必要です。
+labels:
+  - 手数料
+  - アカウント
 ---
 # 準備金
 

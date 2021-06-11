@@ -1,7 +1,10 @@
 ---
 html: validation_create.html
 parent: key-generation-methods.html
-blurb: Generate keys for a new rippled validator.
+blurb: Generate keys for a rippled server to identify itself to the network.
+labels:
+  - Security
+  - Core Server
 ---
 # validation_create
 [[Source]](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")

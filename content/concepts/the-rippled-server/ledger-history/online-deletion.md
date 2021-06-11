@@ -3,7 +3,8 @@ html: online-deletion.html
 parent: ledger-history.html
 blurb: Online deletion purges outdated transaction and state history.
 labels:
-  - rippled
+  - Data Retention
+  - Core Server
 ---
 # Online Deletion
 [[Source]<br/>](https://github.com/ripple/rippled/blob/master/src/ripple/app/misc/SHAMapStoreImp.cpp "Source")

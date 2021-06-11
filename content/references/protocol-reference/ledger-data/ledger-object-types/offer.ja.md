@@ -2,6 +2,8 @@
 html: offer.html
 parent: ledger-object-types.html
 blurb: 通貨取引を行うためのオーダーです。
+labels:
+  - 分散型取引所
 ---
 # Offer
 [[ソース]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")

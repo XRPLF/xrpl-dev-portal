@@ -2,6 +2,8 @@
 html: transaction-metadata.html
 parent: transaction-formats.html
 blurb: トランザクションのメタデータは、トランザクションの処理後にトランザクションに追加されるひとまとまりのデータです。
+labels:
+  - ブロックチェーン
 ---
 # トランザクションのメタデータ
 

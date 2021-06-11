@@ -3144,6 +3144,16 @@ pages:
             - labels
         targets:
             - en
+
+    -   name: アカウント
+        html: label-accounts.html
+        parent: by-label.html
+        landing_for: アカウント
+        template: template-landing-label.html
+        blurb: XRP Ledgerのアカウントに関するページ。
+        filters:
+            - labels
+        targets:
             - ja
 
     -   name: Blockchain
@@ -3211,6 +3221,27 @@ pages:
             - labels
         targets:
             - ja
+
+    -   name: Data Retention
+        html: label-data-retention.html
+        parent: by-label.html
+        landing_for: Data Retention
+        template: template-landing-label.html
+        blurb: Pages about how and for how long XRP Ledger software stores data.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: データ保持
+        html: label-data-retention.html
+        parent: by-label.html
+        landing_for: データ保持
+        template: template-landing-label.html
+        blurb: XRP Ledgerのソフトウェアがデータを保存する方法と期間に関するページ。
+        filters:
+            - labels
+        targets:
 
     -   name: Decentralized Exchange
         html: label-decentralized-exchange.html
@@ -3399,10 +3430,10 @@ pages:
         targets:
             - en
 
-    -   name: Tokens
+    -   name: トークン
         html: label-tokens.html
         parent: by-label.html
-        landing_for: Tokens
+        landing_for: トークン
         template: template-landing-label.html
         blurb: XRP Ledgerでのトークンや通貨を発行済みに関するページ。
         filters:

@@ -2,6 +2,8 @@
 html: xrp.html
 parent: introduction.html
 blurb: 送金のためのデジタルアセットである、XRPの使い方と特性について学びましょう。
+labels:
+  - XRP
 ---
 # XRP
 

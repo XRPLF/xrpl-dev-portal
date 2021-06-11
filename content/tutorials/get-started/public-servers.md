@@ -3,7 +3,7 @@ html: public-servers.html
 parent: get-started.html
 blurb: Use these public servers to access the XRP Ledger without needing your own infrastructure.
 labels:
-  - rippled
+  - Core Server
 ---
 # Public Servers
 

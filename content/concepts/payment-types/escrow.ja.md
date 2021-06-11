@@ -2,6 +2,9 @@
 html: escrow.html
 parent: payment-types.html
 blurb: XRPはEscrowに預託され、後日特定の条件が満たされた時点で送金されます。Escrowは時間制限、暗号条件、あるいはその両方によって異なる場合があります。
+labels:
+  - Escrow
+  - スマートコントラクト
 ---
 # Escrow
 

@@ -3,7 +3,7 @@ html: health-check-interventions.html
 parent: troubleshoot-the-rippled-server.html
 blurb: Use the rippled server's health check as part of automated infrastructure monitoring.
 labels:
-  - rippled
+  - Core Server
 ---
 # Health Check Interventions
 

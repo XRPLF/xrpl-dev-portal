@@ -2,6 +2,9 @@
 html: submit.html
 parent: transaction-methods.html
 blurb: Send a transaction to the network.
+labels:
+  - Transaction Sending
+  - Payments
 ---
 # submit
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")

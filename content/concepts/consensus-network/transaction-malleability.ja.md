@@ -2,6 +2,9 @@
 html: transaction-malleability.html
 parent: consensus-network.html
 blurb: トランザクションが想定とは異なるハッシュを持つようにどのように変更される可能性があるか注意してください。
+labels:
+  - セキュリティ
+  - トランザクション送信
 ---
 # トランザクション展性
 

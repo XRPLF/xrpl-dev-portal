@@ -2,6 +2,8 @@
 html: account_currencies.html
 parent: account-methods.html
 blurb: アカウントが送金または受領できる通貨のリストを返します。
+labels:
+  - トークン
 ---
 # account_currencies
 [[ソース]](https://github.com/ripple/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp "Source")

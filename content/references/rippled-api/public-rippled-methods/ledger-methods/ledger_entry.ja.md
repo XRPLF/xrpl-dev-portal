@@ -2,6 +2,9 @@
 html: ledger_entry.html
 parent: ledger-methods.html
 blurb: XRP Ledgerの1つのレジャーオブジェクトを生フォーマットで返します。
+label:
+  - ブロックチェーン
+  - データ保持
 ---
 # ledger_entry
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")

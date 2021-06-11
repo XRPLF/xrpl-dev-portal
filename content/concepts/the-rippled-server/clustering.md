@@ -3,7 +3,7 @@ html: clustering.html
 parent: the-rippled-server.html
 blurb: Run rippled servers in a cluster to share the load of cryptography between them.
 labels:
-  - rippled
+  - Core Server
 ---
 # Clustering
 

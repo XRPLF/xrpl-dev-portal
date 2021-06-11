@@ -2,6 +2,8 @@
 html: ledger-object-types.html
 parent: ledger-data-formats.html
 template: template-landing-children.html
+labels:
+  - Data Retention
 ---
 # Ledger Object Types
 

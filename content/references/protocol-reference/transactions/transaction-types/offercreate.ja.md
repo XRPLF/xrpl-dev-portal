@@ -2,6 +2,8 @@
 html: offercreate.html
 parent: transaction-types.html
 blurb: OfferCreateは通貨の交換を行う意図を定義するもので、配置時に完全に履行されていない場合はOfferオブジェクトを作成します。
+labels:
+  - 分散型取引所
 ---
 # OfferCreate
 

@@ -2,6 +2,8 @@
 html: tem-codes.html
 parent: transaction-results.html
 blurb: tem codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol.
+labels:
+  - Transaction Sending
 ---
 # tem Codes
 

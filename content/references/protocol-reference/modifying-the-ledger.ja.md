@@ -2,6 +2,8 @@
 html: modifying-the-ledger.html
 parent: protocol-reference.html
 blurb: トランザクションだけがレジャーを変更できる理由とその方法です。
+labels:
+  - ブロックチェーン
 ---
 # レジャーの変更
 

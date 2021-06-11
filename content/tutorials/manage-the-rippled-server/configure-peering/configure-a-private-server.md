@@ -3,7 +3,7 @@ html: configure-a-private-server.html
 parent: configure-peering.html
 blurb: Set up a server to connect only to specific, trusted peers.
 labels:
-  - rippled
+  - Core Server
   - Security
 ---
 # Configure a Private Server

@@ -2,6 +2,8 @@
 html: peers.html
 parent: peer-management-methods.html
 blurb: ピアプロトコルでこのサーバーに現在接続されているその他のすべてのrippledサーバーのリストを返します。
+labels:
+  - コアサーバー
 ---
 # peers
 [[ソース]](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")

@@ -2,6 +2,8 @@
 html: ledger-object-ids.html
 parent: ledger-data-formats.html
 blurb: レジャーの状態ツリーのすべてのオブジェクトには一意のIDがあります。
+labels:
+  - データ保持
 ---
 # レジャーオブジェクトID
 <a id="sha512half"></a>

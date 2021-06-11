@@ -3,6 +3,8 @@ html: ticketcreate.html
 parent: transaction-types.html
 blurb: Set aside one or more sequence numbers as Tickets.
 status: not_enabled
+labels:
+  - Transaction Sending
 ---
 # TicketCreate
 

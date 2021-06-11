@@ -2,6 +2,9 @@
 html: validator_info.html
 parent: status-and-debugging-methods.html
 blurb: Get the server's validation settings, if configured as a validator.
+labels:
+  - コアサーバー
+  - ブロックチェーン
 ---
 # validator_info
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorInfo.cpp "Source")

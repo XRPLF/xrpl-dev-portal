@@ -3,7 +3,7 @@ html: update-rippled-manually-on-ubuntu.html
 parent: install-rippled.html
 blurb: Manually update rippled on Ubuntu Linux.
 labels:
-  - rippled
+  - Core Server
 ---
 # Update Manually on Ubuntu or Debian
 

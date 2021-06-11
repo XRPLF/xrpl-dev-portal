@@ -2,6 +2,8 @@
 html: connect.html
 parent: peer-management-methods.html
 blurb: Force the rippled server to connect to a specific peer.
+labels:
+  - Core Server
 ---
 # connect
 [[Source]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp "Source")

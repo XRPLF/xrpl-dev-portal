@@ -2,6 +2,9 @@
 html: transaction-cost.html
 parent: transaction-basics.html
 blurb: トランザクションコストとはトランザクション送信のために償却される少額のXRPで、これによってレジャーがスパムから保護されます。トランザクションコストの適用方法について説明します。
+labels:
+  - 手数料
+  - トランザクション送信
 ---
 # トランザクションコスト
 

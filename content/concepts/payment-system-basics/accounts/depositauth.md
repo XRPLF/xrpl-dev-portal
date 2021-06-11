@@ -4,6 +4,7 @@ parent: accounts.html
 blurb: The DepositAuth setting lets an account block incoming payments by default.
 labels:
   - Payments
+  - Security
 ---
 # Deposit Authorization
 

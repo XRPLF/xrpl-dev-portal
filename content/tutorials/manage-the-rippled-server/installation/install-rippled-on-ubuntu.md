@@ -3,7 +3,7 @@ html: install-rippled-on-ubuntu.html
 parent: install-rippled.html
 blurb: Install a precompiled rippled binary on Ubuntu Linux.
 labels:
-  - rippled
+  - Core Server
 ---
 # Install on Ubuntu or Debian Linux
 

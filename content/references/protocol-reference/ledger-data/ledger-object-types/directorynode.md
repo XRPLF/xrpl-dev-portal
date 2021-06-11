@@ -3,6 +3,7 @@ html: directorynode.html
 parent: ledger-object-types.html
 blurb: Contains links to other objects.
 labels:
+  - Data Retention
   - Decentralized Exchange
 ---
 # DirectoryNode

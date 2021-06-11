@@ -2,6 +2,9 @@
 html: serialization.html
 parent: protocol-reference.html
 blurb: XRP Ledgerトランザクションやその他のオブジェクトの場合のJSONフォーマットと正規バイナリーフォーマットとの変換です。
+labels:
+  - アカウント
+  - トランザクション送信
 ---
 # シリアル化フォーマット
 [[ソース]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")

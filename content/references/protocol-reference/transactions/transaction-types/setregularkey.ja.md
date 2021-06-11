@@ -2,6 +2,8 @@
 html: setregularkey.html
 parent: transaction-types.html
 blurb: アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
+labels:
+  - セキュリティ
 ---
 # SetRegularKey
 

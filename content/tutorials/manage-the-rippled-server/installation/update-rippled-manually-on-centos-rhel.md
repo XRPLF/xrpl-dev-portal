@@ -3,7 +3,7 @@ html: update-rippled-manually-on-centos-rhel.html
 parent: install-rippled.html
 blurb: Manually update rippled on CentOS or Red Hat Enterprise Linux.
 labels:
-  - rippled
+  - Core Server
 ---
 # Update Manually on CentOS/Red Hat
 
