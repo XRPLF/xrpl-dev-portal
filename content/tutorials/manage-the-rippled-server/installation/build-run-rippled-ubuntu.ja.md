@@ -2,6 +2,8 @@
 html: build-run-rippled-ubuntu.html
 parent: install-rippled.html
 blurb: Ubuntu Linuxでrippledを自分でコンパイルします。
+labels:
+  - コアサーバー
 ---
 # Ubuntuでのrippledの構築と実行
 

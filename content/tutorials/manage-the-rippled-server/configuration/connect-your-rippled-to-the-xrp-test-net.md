@@ -2,6 +2,10 @@
 html: connect-your-rippled-to-the-xrp-test-net.html
 parent: configure-rippled.html
 blurb: Connect your rippled server to the test net to try out new features or test functionality with fake money.
+labels:
+  - Core Server
+  - Blockchain
+  - Development
 ---
 # Connect Your rippled to a Parallel Network
 

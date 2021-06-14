@@ -11,7 +11,7 @@
           <li class="list-inline-item">
             <a class="label label-{{slug(page.landing_for)}}" href="{% if "//" not in page.html %}{{target.prefix}}{% endif %}{{page.html}}" title="{{page.blurb}}">
             {{page.name}}
-              <span class="badge badge-pill badge-dark ml-1">{{label_count(pages, page.landing_for)}}</span>
+              <span class="badge badge-pill">{{label_count(pages, page.landing_for)}}</span>
             </a>
           </li>
       {% endif %}

@@ -4,7 +4,9 @@ parent: get-started.html
 blurb: Build a simple Python app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 filters:
-    - include_code
+  - include_code
+labels:
+  - Development
 ---
 
 # Get Started Using Python

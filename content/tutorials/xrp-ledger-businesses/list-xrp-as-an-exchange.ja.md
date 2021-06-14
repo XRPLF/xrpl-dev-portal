@@ -2,6 +2,8 @@
 html: list-xrp-as-an-exchange.html
 parent: xrp-ledger-businesses.html
 blurb: デジタルアセット取引所でXRPを上場するために必要な手順の概要を説明します。
+labels:
+  - XRP
 ---
 # 取引所としてのXRPの上場
 

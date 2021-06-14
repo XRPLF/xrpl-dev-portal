@@ -2,6 +2,9 @@
 html: configure-full-history.html
 parent: configure-rippled.html
 blurb: 完全履歴サーバーは、運用のコストは高いものの、XRP Ledgerでこれまでに発生したすべてのトランザクションの記録を提供します。
+labels:
+  - コアサーバー
+  - データ保持
 ---
 # 全履歴の設定
 

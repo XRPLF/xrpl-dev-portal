@@ -3200,6 +3200,28 @@ pages:
         targets:
             - ja
 
+    -   name: Core Server
+        html: label-rippled.html
+        parent: by-label.html
+        landing_for: Core Server
+        template: template-landing-label.html
+        blurb: Pages about the XRP Ledger's core server implementation, rippled.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: コアサーバー
+        html: label-rippled.html
+        parent: by-label.html
+        landing_for: コアサーバー
+        template: template-landing-label.html
+        blurb: XRP Ledgerのコアサーバー「rippled」に関するページ。
+        filters:
+            - labels
+        targets:
+            - ja
+
     -   name: Cross-Currency
         html: label-cross-currency.html
         parent: by-label.html
@@ -3242,6 +3264,7 @@ pages:
         filters:
             - labels
         targets:
+            - ja
 
     -   name: Decentralized Exchange
         html: label-decentralized-exchange.html
@@ -3264,6 +3287,28 @@ pages:
             - labels
         targets:
             - ja
+
+    -   name: Development
+        html: label-development.html
+        parent: by-label.html
+        landing_for: Development
+        template: template-landing-label.html
+        blurb: Pages about developing apps that use the XRP Ledger.
+        filters:
+            - labels
+        targets:
+            - en
+
+    -   name: 開発
+        html: label-development.html
+        parent: by-label.html
+        landing_for: 開発
+        template: template-landing-label.html
+        blurb: XRP Ledgerを使うアプリの開発に関するページ。
+        filters:
+            - labels
+        targets:
+             - ja
 
     -   name: Escrow
         html: label-escrow.html
@@ -3348,28 +3393,6 @@ pages:
         landing_for: 支払い
         template: template-landing-label.html
         blurb: XRP Ledgerでの支払い二ついての全ページ。
-        filters:
-            - labels
-        targets:
-            - ja
-
-    -   name: rippled
-        html: label-rippled.html
-        parent: by-label.html
-        landing_for: rippled
-        template: template-landing-label.html
-        blurb: Pages about the XRP Ledger's core server implementation, rippled.
-        filters:
-            - labels
-        targets:
-            - en
-
-    -   name: rippled
-        html: label-rippled.html
-        parent: by-label.html
-        landing_for: rippled
-        template: template-landing-label.html
-        blurb: XRP Ledgerのコアサーバー「rippled」に関するページ。
         filters:
             - labels
         targets:

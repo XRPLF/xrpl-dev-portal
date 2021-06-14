@@ -5,7 +5,9 @@ blurb: Use Tickets to send a transaction outside of normal Sequence order.
 embed_ripple_lib: true
 status: not_enabled
 filters:
-    - interactive_steps
+  - interactive_steps
+labels:
+  - Accounts
 ---
 # Use Tickets
 

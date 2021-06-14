@@ -38,117 +38,183 @@
 }
 
 .label {
-  border-radius: 1rem / 50%;
+  border-radius: 100px;
   border-width: 0;
-  padding: .4rem .8rem;
+  padding: .5rem 1rem;
   font-weight: bold;
   text-decoration: none !important;
   text-align: center;
   white-space: nowrap;
 
-  background-color: $gray-800;
-  color: $gray-100;
+  .badge-pill {
+    width: 24px;
+    height: 24px;
+    border-radius: 50px;
+    margin-left: 0.5rem;
+    font-weight: 400;
+    line-height: 22px;
+    font-size: 16px;
+    padding: 0;
+    margin-top: -2px;
+  }
+
+  background-color: $gray-900;
+  color: $gray-300;
+
+  .badge-pill {
+    color: $gray-900;
+    background-color: $gray-300;
+  }
+
   &:hover {
     color: $gray-200;
-    background-color: $gray-700;
+    background-color: $gray-800;
+
+    .badge-pill {
+      color: $gray-800;
+      background-color: $gray-200;
+    }
   }
 
   &.label-accounts,
-  &.label-payment-channels {
-    background-color: $blue-purple-800;
-    color: $blue-purple-100;
+  &.label-payment-channels,
+  &.label-アカウント {
+    background-color: $blue-purple-900;
+    color: $blue-purple-300;
+    .badge-pill {
+      color: $blue-purple-900;
+      background-color: $blue-purple-300;
+    }
     &:hover {
-      background-color: $blue-purple-700;
+      background-color: $blue-purple-800;
       color: $blue-purple-200;
+      .badge-pill {
+        color: $blue-purple-800;
+        background-color: $blue-purple-200;
+      }
     }
   }
 
   &.label-blockchain,
-  &.label-xrp {
-    background-color: $green-800;
-    color: $green-100;
+  &.label-xrp,
+  &.label-ブロックチェーン {
+    background-color: $green-900;
+    color: $green-300;
+    .badge-pill {
+      background-color: $green-300;
+      color: $green-900;
+    }
     &:hover {
-      background-color: $green-700;
+      background-color: $green-800;
       color: $green-200;
+      .badge-pill {
+        background-color: $green-200;
+        color: $green-800;
+      }
     }
   }
 
   &.label-checks,
-  &.label-rippled  {
-    background-color: $red-purple-800;
-    color: $red-purple-100;
+  &.label-core-server,
+  &.label-コアサーバー  {
+    background-color: $red-purple-900;
+    color: $red-purple-300;
+    .badge-pill {
+      background-color: $red-purple-300;
+      color: $red-purple-900;
+    }
     &:hover {
-      background-color: $red-purple-700;
+      background-color: $red-purple-800;
       color: $red-purple-200;
+      .badge-pill {
+        background-color: $red-purple-200;
+        color: $red-purple-800;
+      }
     }
   }
 
   &.label-cross-currency,
-  &.label-security {
-    background-color: $yellow-800;
-    color: $yellow-100;
+  &.label-security,
+  &.label-複数通貨間,
+  &.label-セキュリティ {
+    background-color: $yellow-900;
+    color: $yellow-300;
+    .badge-pill {
+      background-color: $yellow-300;
+      color: $yellow-900;
+    }
     &:hover {
-      background-color: $yellow-700;
+      background-color: $yellow-800;
       color: $yellow-200;
+      .badge-pill {
+        background-color: $yellow-200;
+        color: $yellow-800;
+      }
     }
   }
 
   &.label-decentralized-exchange,
   &.label-smart-contracts,
-  &.label-transaction-sending {
-    background-color: $blue-800;
-    color: $blue-100;
+  &.label-transaction-sending,
+  &.label-分散型取引所,
+  &.label-スマートコントラクト,
+  &.label-トランザクション送信 {
+    background-color: $blue-900;
+    color: $blue-300;
+    .badge-pill {
+      background-color: $blue-300;
+      color: $blue-900;
+    }
     &:hover {
-      background-color: $blue-700;
+      background-color: $blue-800;
       color: $blue-200;
+      .badge-pill {
+        background-color: $blue-200;
+        color: $blue-800;
+      }
     }
   }
 
   &.label-escrow,
-  &.label-tokens {
-    background-color: $orange-800;
-    color: $orange-100;
+  &.label-tokens,
+  &.label-development,
+  &.label-トークン,
+  &.label-開発 {
+    background-color: $orange-900;
+    color: $orange-300;
+    .badge-pill {
+      background-color: $orange-300;
+      color: $orange-900;
+    }
     &:hover {
-      background-color: $orange-700;
+      background-color: $orange-800;
       color: $orange-200;
+      .badge-pill {
+        background-color: $orange-200;
+        color: $orange-800;
+      }
     }
   }
 
   &.label-fees,
-  &.label-payments{
-    background-color: $magenta-800;
-    color: $magenta-100;
+  &.label-payments,
+  &.label-data-retention,
+  &.label-手数料,
+  &.label-支払い,
+  &.label-データ保持 {
+    background-color: $magenta-900;
+    color: $magenta-300;
+    .badge-pill {
+      background-color: $magenta-300;
+      color: $magenta-900;
+    }
     &:hover {
-      background-color: $magenta-700;
+      background-color: $magenta-800;
       color: $magenta-200;
+      .badge-pill {
+        background-color: $magenta-200;
+        color: $magenta-800;
+      }
     }
   }
-}
-
-.tag-cloud {
-
-  // display: grid;
-  // grid-auto-flow: row;
-  // grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-  //
-  // .list-inline-item {
-  //   a {
-  //     display: block;
-  //   }
-  // }
-  // .size-5 {
-  //   font-size: 2.5rem;
-  // }
-  // .size-4 {
-  //   font-size: 1.9rem;
-  // }
-  // .size-3 {
-  //   font-size: 1.4rem;
-  // }
-  // .size-2 {
-  //   font-size: 1.1rem;
-  // }
-  // .size-1 {
-  //   font-size: 0.8rem;
-  // }
 }

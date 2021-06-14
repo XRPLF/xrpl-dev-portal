@@ -2,6 +2,8 @@
 html: advance-the-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
 blurb: レジャーを手動で閉鎖して、スタンドアロンモードでの処理を進めます。
+labels:
+  - コアサーバー
 ---
 # スタンドアロンモードでレジャーを進める
 

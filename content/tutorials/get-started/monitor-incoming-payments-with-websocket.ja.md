@@ -3,7 +3,9 @@ html: monitor-incoming-payments-with-websocket.html
 parent: get-started.html
 blurb: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
 filters:
-    - interactive_steps
+  - interactive_steps
+labels:
+  - 支払い
 ---
 # WebSocketを使用した着信ペイメントの監視
 

@@ -2,6 +2,9 @@
 html: update-rippled-manually-on-ubuntu.html
 parent: install-rippled.html
 blurb: Ubuntu Linuxでrippledを手動更新します。
+labels:
+  - コアサーバー
+  - セキュリティ
 ---
 # UbuntuまたはDebianでの手動更新
 

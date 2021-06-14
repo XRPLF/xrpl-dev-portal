@@ -2,6 +2,9 @@
 html: configure-history-sharding.html
 parent: configure-rippled.html
 blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data.
+labels:
+  - Data Retention
+  - Core Server
 ---
 # Configure History Sharding
 

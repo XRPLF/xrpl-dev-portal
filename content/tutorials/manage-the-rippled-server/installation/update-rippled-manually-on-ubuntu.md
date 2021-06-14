@@ -4,6 +4,7 @@ parent: install-rippled.html
 blurb: Manually update rippled on Ubuntu Linux.
 labels:
   - Core Server
+  - Security
 ---
 # Update Manually on Ubuntu or Debian
 

@@ -4,6 +4,7 @@ parent: install-rippled.html
 blurb: Set up automatic updates for rippled on Linux.
 labels:
   - Core Server
+  - Security
 ---
 # Update Automatically on Linux
 
