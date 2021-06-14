@@ -78,7 +78,8 @@
 
   &.label-accounts,
   &.label-payment-channels,
-  &.label-アカウント {
+  &.label-アカウント,
+  &.label-payment-channel {
     background-color: $blue-purple-900;
     color: $blue-purple-300;
     .badge-pill {
