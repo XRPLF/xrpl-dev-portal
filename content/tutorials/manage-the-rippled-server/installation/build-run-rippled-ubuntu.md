@@ -49,21 +49,21 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.7.0 of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself. The following examples use Boost 1.76.0, which was the newest version at the time of writing.
+    Version 1.7.0 and higher of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself. The following examples use Boost 1.75.0, which was the newest version compatible with `rippled` at the time of writing.
 
-    If you have previously built Boost 1.76.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
+    If you have previously built Boost 1.75.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
-      1. Download Boost 1.76.0.
+      1. Download Boost 1.75.0.
               
-	      wget https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz
+	      wget https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz
 
-      2. Extract `boost_1_76_0.tar.gz`.
+      2. Extract `boost_1_75_0.tar.gz`.
 
-              tar xvzf boost_1_76_0.tar.gz
+              tar xvzf boost_1_75_0.tar.gz
 
-      3. Change to the new `boost_1_76_0` directory.
+      3. Change to the new `boost_1_75_0` directory.
 
-              cd boost_1_76_0
+              cd boost_1_75_0
 
       4. Prepare the Boost.Build system for use.
 
