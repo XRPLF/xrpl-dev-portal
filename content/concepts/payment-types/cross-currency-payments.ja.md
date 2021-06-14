@@ -2,6 +2,9 @@
 html: cross-currency-payments.html
 parent: payment-types.html
 blurb: 複数通貨間の支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。
+labels:
+  - 複数通貨間
+  - 支払い
 ---
 # 複数通貨間の支払い
 

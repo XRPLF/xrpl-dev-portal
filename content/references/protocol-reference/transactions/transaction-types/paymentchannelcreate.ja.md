@@ -2,6 +2,8 @@
 html: paymentchannelcreate.html
 parent: transaction-types.html
 blurb: 一方向のChannelを作成し、XRPを供給します。
+labels:
+  - Payment Channel
 ---
 # PaymentChannelCreate
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")

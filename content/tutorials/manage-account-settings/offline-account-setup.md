@@ -2,6 +2,9 @@
 html: offline-account-setup.html
 parent: manage-account-settings.html
 blurb: Set up an XRP Ledger account using an air-gapped, offline machine to store its cryptographic keys.
+labels:
+  - Accounts
+  - Security
 ---
 # Offline Account Setup Tutorial
 

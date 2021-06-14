@@ -2,6 +2,9 @@
 html: tx.html
 parent: transaction-methods.html
 blurb: 1つのトランザクションに関する情報を取得します。
+labels:
+  - トランザクション送信
+  - 支払い
 ---
 # tx
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")

@@ -2,6 +2,8 @@
 html: get-started-using-node-js.html
 parent: get-started.html
 blurb: Build an entry-level JavaScript application for querying the XRP Ledger in Node.js.
+labels:
+  - Development
 ---
 # Get Started Using Node.js
 

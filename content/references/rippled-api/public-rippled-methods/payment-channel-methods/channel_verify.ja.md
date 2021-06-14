@@ -2,6 +2,8 @@
 html: channel_verify.html
 parent: payment-channel-methods.html
 blurb: 特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
+labels:
+  - Payment Channel
 ---
 # channel_verify
 [[ソース]](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")

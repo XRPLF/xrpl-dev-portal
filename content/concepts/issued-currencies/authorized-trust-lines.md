@@ -2,6 +2,9 @@
 html: authorized-trust-lines.html
 parent: issued-currencies.html
 blurb: Learn about authorized trust lines, which enable a currency issuer to limit who can hold its issued (non-XRP) currencies.
+labels:
+  - Tokens
+  - Security
 ---
 # Authorized Trust Lines
 

@@ -2,6 +2,8 @@
 html: escrow-object.html #escrow.html is taken by the concept page
 parent: ledger-object-types.html
 blurb: 条件付き決済のために保有されているXRPを含みます。
+labels:
+  - Escrow
 ---
 # Escrow
 [[ソース]](https://github.com/ripple/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")

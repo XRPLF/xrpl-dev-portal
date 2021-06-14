@@ -2,6 +2,8 @@
 html: json.html
 parent: utility-methods.html
 blurb: Pass JSON through the commandline.
+labels:
+  - Core Server
 ---
 # json
 

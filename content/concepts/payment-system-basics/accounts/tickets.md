@@ -3,6 +3,9 @@ html: tickets.html
 parent: accounts.html
 blurb: Send transactions in non-sequential order.
 status: not_enabled
+labels:
+  - Accounts
+  - Transaction Sending
 ---
 # Tickets
 

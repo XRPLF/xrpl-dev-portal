@@ -2,6 +2,8 @@
 html: ledger_accept.html
 parent: server-control-methods.html
 blurb: Close and advance the ledger in stand-alone mode.
+labels:
+  - Core Server
 ---
 # ledger_accept
 [[Source]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp "Source")

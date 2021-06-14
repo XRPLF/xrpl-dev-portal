@@ -2,6 +2,8 @@
 html: sign.html # watch for clashes w/ this filename
 parent: transaction-methods.html
 blurb: Cryptographically sign a transaction.
+labels:
+  - Transaction Sending
 ---
 # sign
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")

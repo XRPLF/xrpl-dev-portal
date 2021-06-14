@@ -2,6 +2,8 @@
 html: known-amendments.html
 parent: amendments.html
 blurb: List of all known amendments to the XRP Ledger protocol and their status.
+labels:
+  - Blockchain
 ---
 # Known Amendments
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")

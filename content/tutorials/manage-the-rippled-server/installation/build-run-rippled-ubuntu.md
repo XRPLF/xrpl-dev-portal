@@ -2,6 +2,8 @@
 html: build-run-rippled-ubuntu.html
 parent: install-rippled.html
 blurb: Compile rippled yourself on Ubuntu Linux.
+labels:
+  - Core Server
 ---
 # Build and Run rippled on Ubuntu
 

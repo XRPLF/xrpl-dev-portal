@@ -2,6 +2,9 @@
 html: finality-of-results.html
 parent: transaction-basics.html
 blurb: トランザクション結果が最終的かつ不変になるタイミングについて説明します。
+labels:
+  - トランザクション送信
+  - ブロックチェーン
 ---
 # 結果のファイナリティー
 

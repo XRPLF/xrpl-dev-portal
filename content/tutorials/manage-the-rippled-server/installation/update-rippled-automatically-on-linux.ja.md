@@ -2,6 +2,9 @@
 html: update-rippled-automatically-on-linux.html
 parent: install-rippled.html
 blurb: Linuxでrippledの自動更新を設定します。
+labels:
+  - コアサーバー
+  - セキュリティ
 ---
 # Linuxでの自動更新
 

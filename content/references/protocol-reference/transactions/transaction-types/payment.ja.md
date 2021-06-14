@@ -2,6 +2,11 @@
 html: payment.html
 parent: transaction-types.html
 blurb: アカウント間での価値の移動します。
+labels:
+  - 支払い
+  - XRP
+  - 複数通貨間
+  - トークン
 ---
 # Payment
 [[ソース]](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "ソース")

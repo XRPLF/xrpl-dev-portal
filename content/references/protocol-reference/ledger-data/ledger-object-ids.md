@@ -2,6 +2,8 @@
 html: ledger-object-ids.html
 parent: ledger-data-formats.html
 blurb: All objects in a ledger's state tree have a unique ID.
+labels:
+  - Data Retention
 ---
 # Ledger Object IDs
 <a id="sha512half"></a>

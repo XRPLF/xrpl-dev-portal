@@ -2,6 +2,8 @@
 html: paychannel.html
 parent: ledger-object-types.html
 blurb: 非同期XRP支払い用のチャネルです。
+labels:
+  - Payment Channel
 ---
 # PayChannel
 [[ソース]](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")

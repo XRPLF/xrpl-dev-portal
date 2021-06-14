@@ -2,6 +2,8 @@
 html: escrowcancel.html
 parent: transaction-types.html
 blurb: Escrowに留保されているXRPを送金元に返金します。
+labels:
+  - Escrow
 ---
 # EscrowCancel
 

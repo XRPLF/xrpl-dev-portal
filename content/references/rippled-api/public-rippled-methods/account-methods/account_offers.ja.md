@@ -2,6 +2,8 @@
 html: account_offers.html
 parent: account-methods.html
 blurb: 特定のアカウントから出されたオファーのリストを取得します。
+labels:
+  - 分散型取引所
 ---
 # account_offers
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")

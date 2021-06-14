@@ -2,6 +2,9 @@
 html: ticksize.html
 parent: decentralized-exchange.html
 blurb: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
+labels:
+  - Decentralized Exchange
+  - Tokens
 ---
 # Tick Size
 

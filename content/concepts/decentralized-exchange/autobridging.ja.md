@@ -2,6 +2,9 @@
 html: autobridging.html
 parent: decentralized-exchange.html
 blurb: オートブリッジングは、コストが下がる場合はXRPを仲介として使用してオーダーブックを自動的に接続します。
+labels:
+  - XRP
+  - 分散型取引所
 ---
 # オートブリッジング
 

@@ -2,6 +2,8 @@
 html: server_info.html
 parent: server-info-methods.html
 blurb: Retrieve status of the server in human-readable format.
+labels:
+  - Core Server
 ---
 # server_info
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")

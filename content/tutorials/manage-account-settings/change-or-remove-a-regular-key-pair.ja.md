@@ -2,6 +2,9 @@
 html: change-or-remove-a-regular-key-pair.html
 parent: manage-account-settings.html
 blurb: アカウントですでに承認されているレギュラーキーペアを削除するか更新します。
+labels:
+  - セキュリティ
+  - アカウント
 ---
 # レギュラーキーペアの変更または削除
 

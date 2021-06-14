@@ -2,6 +2,9 @@
 html: fee-voting.html
 parent: consensus-network.html
 blurb: How validators vote on fees (transaction cost and reserve requirements).
+labels:
+  - Fees
+  - XRP
 ---
 # Fee Voting
 

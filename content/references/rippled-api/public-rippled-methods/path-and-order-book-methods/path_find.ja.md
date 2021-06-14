@@ -2,6 +2,9 @@
 html: path_find.html
 parent: path-and-order-book-methods.html
 blurb: トランザクションが実行される可能性のあるパスを探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。
+labels:
+  - 複数通貨間
+  - トークン
 ---
 # path_find
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")

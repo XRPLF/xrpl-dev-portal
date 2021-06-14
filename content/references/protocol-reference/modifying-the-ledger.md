@@ -2,6 +2,8 @@
 html: modifying-the-ledger.html
 parent: protocol-reference.html
 blurb: Why and how only transactions can modify the ledger.
+labels:
+  - Blockchain
 ---
 # Modifying the Ledger
 

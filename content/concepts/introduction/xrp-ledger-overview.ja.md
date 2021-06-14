@@ -2,6 +2,9 @@
 html: xrp-ledger-overview.html
 parent: introduction.html
 blurb: XRP Ledgerの基本機能を簡単に紹介します。
+labels:
+  - ブロックチェーン
+  - XRP
 ---
 # XRP Ledgerの概要
 

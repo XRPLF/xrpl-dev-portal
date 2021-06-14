@@ -2,6 +2,8 @@
 html: stop.html
 parent: server-control-methods.html
 blurb: サーバーのグレースフルシャットダウンを行います。
+labels:
+  - コアサーバー
 ---
 # stop
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")

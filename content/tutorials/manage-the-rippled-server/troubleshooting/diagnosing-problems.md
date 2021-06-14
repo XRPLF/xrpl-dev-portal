@@ -2,6 +2,8 @@
 html: diagnosing-problems.html
 parent: troubleshoot-the-rippled-server.html
 blurb: Collect information to identify the cause of problems.
+labels:
+  - Core Server
 ---
 # Diagnosing Problems with rippled
 

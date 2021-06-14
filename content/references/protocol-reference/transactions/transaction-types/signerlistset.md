@@ -2,6 +2,8 @@
 html: signerlistset.html
 parent: transaction-types.html
 blurb: Add, remove, or modify an account's multi-signing list.
+labels:
+  - Security
 ---
 # SignerListSet
 [[Source]](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")

@@ -2,6 +2,9 @@
 html: book_offers.html
 parent: path-and-order-book-methods.html
 blurb: オーダーブックと呼ばれる、2つの通貨間のオファーのリストを取得します。
+labels:
+  - 分散型取引所
+  - 複数通貨間
 ---
 # book_offers
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")

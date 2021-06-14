@@ -2,6 +2,8 @@
 html: trustset.html
 parent: transaction-types.html
 blurb: 2つのアカウントをリンクするトラストラインを作成または変更します。
+labels:
+  - トークン
 ---
 # TrustSet
 

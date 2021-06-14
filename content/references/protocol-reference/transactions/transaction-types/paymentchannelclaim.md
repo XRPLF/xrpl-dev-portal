@@ -2,6 +2,8 @@
 html: paymentchannelclaim.html
 parent: transaction-types.html
 blurb: Claim money from a payment channel.
+labels:
+  - Payment Channels
 ---
 # PaymentChannelClaim
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")

@@ -2,6 +2,9 @@
 html: transfer-fees.html
 parent: issued-currencies.html
 blurb: 通貨発行者は、自己の発行済み通貨の送金に手数料を課すことができます。
+labels:
+  - 手数料
+  - トークン
 ---
 # 送金手数料
 

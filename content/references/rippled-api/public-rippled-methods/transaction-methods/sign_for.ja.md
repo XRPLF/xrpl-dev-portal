@@ -2,6 +2,8 @@
 html: sign_for.html
 parent: transaction-methods.html
 blurb: マルチ署名済みトランザクションの署名を1つ提供します。
+labels:
+  - トランザクション送信
 ---
 # sign_for
 [[ソース]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")

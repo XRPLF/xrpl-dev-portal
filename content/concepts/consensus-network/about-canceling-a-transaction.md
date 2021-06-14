@@ -2,6 +2,8 @@
 html: about-canceling-a-transaction.html
 parent: consensus-network.html
 blurb: Understand when and how it's possible to cancel a transaction that has already been sent.
+labels:
+  - Transaction Sending
 ---
 # About Canceling a Transaction
 

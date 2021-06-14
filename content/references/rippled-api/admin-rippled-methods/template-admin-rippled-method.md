@@ -1,3 +1,10 @@
+---
+html: TODO_PAGE_NAME.html
+parent: TODO_CATEGORY_FILENAME.html
+blurb: TODO BLURB
+labels:
+  # TODO At least one label
+---
 # TODO_method_name
 [[Source]](TODO_URL "Source")
 

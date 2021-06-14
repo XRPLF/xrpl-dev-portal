@@ -2,6 +2,9 @@
 html: serialization.html
 parent: protocol-reference.html
 blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects.
+labels:
+  - Blockchain
+  - Transaction Sending
 ---
 # Serialization Format
 [[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")

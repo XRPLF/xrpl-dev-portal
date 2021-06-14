@@ -2,6 +2,9 @@
 html: escrow.html
 parent: payment-types.html
 blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
+labels:
+  - Escrow
+  - Smart Contracts
 ---
 # Escrow
 

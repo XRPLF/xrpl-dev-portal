@@ -2,6 +2,9 @@
 html: run-rippled-as-a-validator.html
 parent: configure-rippled.html
 blurb: サーバーがコンセンサスレジャーで投票できるようにします。
+labels:
+  - コアサーバー
+  - ブロックチェーン
 ---
 # バリデータとしてのrippledの実行
 

@@ -2,6 +2,9 @@
 html: multi-signing.html
 parent: accounts.html
 blurb: マルチ署名を使用することで、トランザクション送信時のセキュリティが強化されます。
+labels:
+  - スマートコントラクト
+  - セキュリティ
 ---
 # マルチ署名
 

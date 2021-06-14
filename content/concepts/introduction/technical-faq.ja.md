@@ -2,6 +2,8 @@
 html: technical-faq.html
 parent: introduction.html
 blurb: バリデータ、ユニークノードリスト、XRPの役割、セキュリティなどのトピックに関するよくある質問に対しての答えを見つけてください。
+labels:
+  - ブロックチェーン
 ---
 # 技術に関するよくある質問
 

@@ -2,6 +2,9 @@
 html: rippling.html
 parent: issued-currencies.html
 blurb: Rippling is automatic multi-party net settlement of issued currency balances.
+labels:
+  - Tokens
+  - Cross-Currency
 ---
 # Rippling
 

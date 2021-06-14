@@ -4,7 +4,9 @@ parent: manage-account-settings.html
 blurb: Require users to specify a destination tag when sending to your address.
 embed_ripple_lib: true
 filters:
-    - interactive_steps
+  - interactive_steps
+labels:
+  - Accounts
 ---
 # Require Destination Tags
 

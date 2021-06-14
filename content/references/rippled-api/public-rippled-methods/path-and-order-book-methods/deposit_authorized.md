@@ -2,6 +2,9 @@
 html: deposit_authorized.html
 parent: path-and-order-book-methods.html
 blurb: Check whether an account is authorized to send money directly to another.
+labels:
+  - Accounts
+  - Security
 ---
 # deposit_authorized
 [[Source]](https://github.com/ripple/rippled/blob/817d2339b8632cb2f97d3edd6f7af33aa7631744/src/ripple/rpc/handlers/DepositAuthorized.cpp "Source")

@@ -2,6 +2,8 @@
 html: freezes.html
 parent: issued-currencies.html
 blurb: 凍結では、コンプライアンス目的で発行済み通貨の取引を停止できます。
+labels:
+  - トークン
 ---
 # 発行済み通貨の凍結
 

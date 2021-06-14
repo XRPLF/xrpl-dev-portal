@@ -2,6 +2,8 @@
 html: trustset.html
 parent: transaction-types.html
 blurb: Add or modify a trust line.
+labels:
+  - Tokens
 ---
 # TrustSet
 

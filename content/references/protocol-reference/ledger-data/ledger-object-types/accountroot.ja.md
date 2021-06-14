@@ -2,6 +2,9 @@
 html: accountroot.html
 parent: ledger-object-types.html
 blurb: あるアカウントの設定、XRP残高、その他のメタデータです。
+labels:
+  - アカウント
+  - XRP
 ---
 # AccountRoot
 [[ソース]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")

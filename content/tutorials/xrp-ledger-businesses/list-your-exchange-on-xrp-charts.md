@@ -2,6 +2,7 @@
 html: list-your-exchange-on-xrp-charts.html
 parent: xrp-ledger-businesses.html
 blurb: Have your exchange and its XRP trade and order book data listed on XRP Charts.
+status: removed
 ---
 # List Your Exchange on XRP Charts
 

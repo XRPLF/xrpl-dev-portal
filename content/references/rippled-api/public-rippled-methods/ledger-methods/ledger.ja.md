@@ -2,6 +2,8 @@
 html: ledger.html # Watch carefully for clashes w/ this filename
 parent: ledger-methods.html
 blurb: 公開レジャーに関する情報を取得します。
+label:
+  - ブロックチェーン
 ---
 # ledger
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")

@@ -2,6 +2,9 @@
 html: validator_list_sites.html
 parent: status-and-debugging-methods.html
 blurb: Get information about sites that publish validator lists.
+labels:
+  - Core Server
+  - Blockchain
 ---
 # validator_list_sites
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")

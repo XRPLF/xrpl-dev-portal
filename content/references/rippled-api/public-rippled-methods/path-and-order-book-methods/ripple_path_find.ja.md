@@ -2,6 +2,9 @@
 html: ripple_path_find.html
 parent: path-and-order-book-methods.html
 blurb: すぐに利用できるペイメントパスを含む1つの応答を返します。
+labels:
+  - 複数通貨間
+  - トークン
 ---
 # ripple_path_find
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")

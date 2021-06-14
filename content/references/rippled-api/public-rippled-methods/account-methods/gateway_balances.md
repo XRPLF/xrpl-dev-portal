@@ -2,6 +2,9 @@
 html: gateway_balances.html
 parent: account-methods.html
 blurb: Calculate total amounts issued by an account.
+labels:
+  - Tokens
+  - Accounts
 ---
 # gateway_balances
 [[Source]](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")

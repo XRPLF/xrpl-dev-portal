@@ -2,6 +2,8 @@
 html: transaction-common-fields.html
 parent: transaction-formats.html
 blurb: どのトランザクションについても、共通する一連のフィールドがあります。
+labels:
+  - トランザクション送信
 ---
 # トランザクションの共通フィールド
 

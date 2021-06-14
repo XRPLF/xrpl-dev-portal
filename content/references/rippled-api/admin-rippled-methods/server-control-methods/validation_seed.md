@@ -3,6 +3,8 @@ html: validation_seed.html
 parent: server-control-methods.html
 blurb: (Obsolete) Temporarily set key to be used for validating.
 status: removed
+labels:
+  - Core Server
 ---
 # validation_seed
 [[Source]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")

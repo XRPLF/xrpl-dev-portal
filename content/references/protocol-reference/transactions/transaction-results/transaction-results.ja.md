@@ -2,6 +2,8 @@
 html: transaction-results.html
 parent: transaction-formats.html
 blurb: rippledサーバーのトランザクション結果の解釈の仕方について説明します。
+labels:
+  - トランザクション送信
 ---
 # トランザクションの結果
 

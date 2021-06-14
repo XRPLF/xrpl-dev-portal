@@ -2,6 +2,8 @@
 html: paymentchannelclaim.html
 parent: transaction-types.html
 blurb: Payment Channelに対しXRPを請求します。
+labels:
+  - Payment Channel
 ---
 # PaymentChannelClaim
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")

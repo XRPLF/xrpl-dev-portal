@@ -2,6 +2,8 @@
 html: rate-limiting.html
 parent: api-conventions.html
 blurb: Information on how public APIs limit clients from making too many requests.
+labels:
+  - Core Server
 ---
 # Rate Limiting
 

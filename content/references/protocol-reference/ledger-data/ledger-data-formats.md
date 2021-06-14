@@ -2,6 +2,8 @@
 html: ledger-data-formats.html
 parent: protocol-reference.html
 blurb: Learn about individual data objects that comprise the XRP Ledger's shared state.
+labels:
+  - Data Retention
 ---
 # Ledger Data Formats
 

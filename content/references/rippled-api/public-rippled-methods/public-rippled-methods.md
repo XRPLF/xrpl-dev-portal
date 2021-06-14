@@ -2,6 +2,8 @@
 html: public-rippled-methods.html
 parent: rippled-api.html
 blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
+labels:
+  - Core Server
 ---
 # Public rippled Methods
 

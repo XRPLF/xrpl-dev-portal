@@ -2,6 +2,8 @@
 html: install-rippled-on-centos-rhel-with-yum.html
 parent: install-rippled.html
 blurb: プリコンパイル済みのrippledバイナリーをCentOSまたはRed Hat Enterprise Linuxにインストールします。
+labels:
+  - コアサーバー
 ---
 # yumを使用したCentOS/Red Hatへのインストール
 

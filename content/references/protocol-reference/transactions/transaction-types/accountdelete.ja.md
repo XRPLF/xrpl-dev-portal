@@ -2,6 +2,8 @@
 html: accountdelete.html
 parent: transaction-types.html
 blurb: Delete an account.
+labels:
+  - アカウント
 ---
 # AccountDelete
 

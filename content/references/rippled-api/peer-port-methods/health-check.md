@@ -2,6 +2,8 @@
 html: health-check.html
 parent: peer-port-methods.html
 blurb: Special API method for reporting server health.
+labels:
+  - Core Server
 ---
 # Health Check
 [[Source]](https://github.com/ripple/rippled/blob/de0c52738785de8bf837f9124da65c7905e7bb5a/src/ripple/overlay/impl/OverlayImpl.cpp#L1084-L1168 "Source")

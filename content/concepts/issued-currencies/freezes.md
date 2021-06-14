@@ -2,6 +2,8 @@
 html: freezes.html
 parent: issued-currencies.html
 blurb: Freezes can suspend trading of issued currencies for compliance purposes.
+labels:
+  - Tokens
 ---
 # Freezing Issued Currencies
 
