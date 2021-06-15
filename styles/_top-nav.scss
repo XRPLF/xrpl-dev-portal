@@ -20,6 +20,11 @@
     }
   }
 
+  // Fancy dropdown behavior ---------------------------------------------------
+  .top-nav-dropdown {
+    max-width: 840px;
+  }
+
   // Main Links ----------------------------------------------------------------
   .navbar-nav {
     .nav-link {
@@ -27,12 +32,6 @@
       font-size: 1rem;
       line-height: 52px;
       text-decoration: none;
-
-      &:hover {
-        background-color: transparent;
-        box-shadow: inset 0 -1px 0 0 #000;
-        text-decoration: none;
-      }
 
       &.active a {
         font-weight: 700;
@@ -90,9 +89,6 @@
     .dropdown-toggle {
       color: $gray-500;
     }
-    .dropdown-toggle::after {
-      border-color: $primary transparent transparent transparent;
-    }
   }
   .dropdown-menu {
     border-width: 0;
@@ -112,11 +108,6 @@
   }
   // Desktop version
   @include media-breakpoint-up(lg) {
-    .dropdown-toggle::after {
-      border-width: 0;
-      top: 80%;
-      left: 50%;
-    }
 
     .dropdown-toggle.with-caret::after {
       position: relative;
@@ -138,17 +129,6 @@
       position: relative;
     }
 
-    .dropdown.show .dropdown-toggle:not(.with-caret)::after,
-    .dropdown-toggle:not(.with-caret):hover::after {
-      content: " ";
-      display: static;
-      border: 3px solid $primary;
-      border-radius: 50%;
-      font-size: 0;
-      height: 0;
-      width: 0;
-    }
-
     .dropdown-menu {
       border-width: 1px;
       backdrop-filter: blur(8px);
@@ -168,6 +148,10 @@
 
   // Search bar & controls -----------------------------------------------------
   #navbar-search {
+    .navbar-form {
+      padding: 1rem;
+    }
+
     .input-group-text,
     .input-group > .input-group-append > .btn {
       color: $white;
@@ -181,59 +165,6 @@
     #topsearchbox:focus {
       box-shadow: none;
       border-color: $white;
-    }
-
-    @include media-breakpoint-up(lg) { // Desktop search styling ---------------
-      position: static; // allows search bar to be positioned screen-center
-      .dropdown-toggle {
-        position: relative;
-      }
-
-      .dropdown-menu {
-        padding: 0;
-        border-radius: $border-radius-lg;
-        width: 640px;
-        left: calc(50% - 320px);
-        background-color: $gray-900;
-      }
-
-      .input-group {
-        width: 100%;
-      }
-
-      #topsearchbox {
-        line-height: 24px;
-        height: 100%;
-        width: 100%;
-
-        &:not(:focus) {
-          border-right: 1px solid black;
-        }
-      }
-    }
-    @include media-breakpoint-down(md) { // Mobile search styling --------------
-      .form-inline label {
-        margin-bottom: 0;
-
-        .input-group-text {
-          line-height: 24px;
-        }
-      }
-
-      .dropdown-menu { // search box is always expanded
-        display: block;
-        position: static;
-        background-color: transparent;
-        border: 0 none;
-        box-shadow: none;
-        margin-top: 0;
-        width: 100%;
-      }
-
-      .dropdown-toggle { // no dropdown to expand search
-        display: none;
-      }
-
     }
 
     // Algolia Search results --------------------------------------------------
