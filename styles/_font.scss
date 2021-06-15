@@ -5,10 +5,10 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-size: $base-size;
-  background: #000;
-  background-color: #000;
+  background: $gray-900;
+  background-color: $gray-900;
   line-height: 1.5;
-  color: #FFF;
+  color: $white;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -23,19 +23,73 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: bold;
 }
+// h1, .h1 {
+//   font-size: 2.625rem;
+// }
+// h6, .h6 {
+//   font-size: 1.125rem;
+// }
+// .h6 {
+//   font-size: 1.125rem !important;
+// }
+// p {
+//   line-height: 1.5;
+// }
 h1, .h1 {
-  font-size: 2.625rem;
+  font-size: 3.875rem;
+  line-height: 70px;
+  @media (max-width: 480px) {
+    font-size: 2.625rem;
+    line-height: 48px;
+  }
+}
+h2, .h2 {
+  font-size: 3.5rem;
+  line-height: 62px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.75rem;
+    line-height: 34px;
+  }
+}
+h3, .h3 {
+  font-size: 3.5rem;
+  line-height: 52px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.25rem;
+    line-height: 28px;
+  }
+}
+h4, .h4 {
+  font-size: 2rem;
+  line-height: 38px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.125rem;
+    line-height: 26px;
+  }
+}
+h5, .h5 {
+  font-size: 1.5rem;
+  line-height: 32px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.125rem;
+    line-height: 26px;
+  }
 }
 h6, .h6 {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
+  line-height: 26px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1rem;
+    line-height: 24px;
+  }
 }
-.h6 {
-  font-size: 1.125rem !important;
+p {
+  font-size: 1rem;
+  line-height: 24px;
 }
 
-p {
-  line-height: 1.5;
-}
+
+
 a {
   // text-decoration: underline;
   color: inherit;
