@@ -1,0 +1,18 @@
+{% extends "base.html.jinja" %}
+
+{% block main %}
+          <article class="pt-3 p-md-3">
+            <h1>Not Found</h1>
+            <div class="content">
+                <p>Sorry, this page does not exist. Try looking in the <a href="/docs.html#full-doc-index">Full Documentation Index</a>, or you can search the site with Google:</p>
+                <form role="search" method="get" action="https://www.google.com/search">
+                  <div class="form-inline">
+                    <label class="sr-only" for="centersearch">Search site with Google...</label>
+                    <input name="q" value="site:xrpl.org" type="hidden">
+                    <input id="centersearch" name="q" type="text" class="form-control" placeholder="Search site with Google...">
+                    <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+                  </div>
+                </form>
+            </div>
+          </article>
+{% endblock %}

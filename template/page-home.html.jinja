@@ -1,0 +1,135 @@
+{% extends "base.html.jinja" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block main %}
+  <div class="container marketing-wrapper">
+
+    <section class="row">
+      <h6 class="section-marker" id="home-hero-marker">{% trans %}Scroll Down{% endtrans %}</h6>
+      <img id="home-hero-graphic" src="./img/graphics/home-hero-graphic.svg">
+      <div class="col-md-6 mx-auto text-center my-5">
+        <h1 class="mb-18">{% trans %}XRP: The Best Digital Asset for Payments{% endtrans %}</h1>
+        <a href="overview.html" class="btn btn-outline-secondary inline-block mr-4 mb-4">{% trans %}Learn More{% endtrans %}</a>
+        <a href="docs.html" class="btn btn-outline-secondary inline-block mb-4">{% trans %}Build with the XRP Ledger{% endtrans %}</a>
+      </div>
+    </section>
+
+    <section class="row pt-20 pb-30 py-50-until-sm" id="bg-home-1">
+      <h6 class="section-marker">{% trans %}XRP Ledger{% endtrans %}</h6>
+
+      <div class="row mb-10 mb-20-until-sm ml-0 mr-0">
+        <div class="col-lg-4 offset-lg-2">
+          <p class="text-primary bold">{% trans %}What is XRPL.org?{% endtrans %}</p>
+          <h2 class="mb-10">{% trans %}A Community-Driven Resource for All Things XRP and XRP Ledger{% endtrans %}</h2>
+          <p>{% trans %}Whether you’re a developer building on the XRP Ledger (XRPL) or just getting acquainted with blockchain and digital assets, XRPL.org is your source for technical information, reference materials, tools and all things XRP.{% endtrans %}</p>
+        </div>
+      </div>
+
+      <div class="row ml-0 mr-0">
+        <div class="col-lg-4 offset-lg-2">
+          <div class="mt-16 mb-16">
+            <div class="row mb-16">
+              <div class="col text-center">
+                <img class="mw-100 mt-1" src="assets/img/icons/fast.png">
+                <h6 class="mt-8">{% trans %}Fast{% endtrans %}</h6>
+              </div>
+              <div class="col text-center">
+                <img class="mw-100 mt-3" src="assets/img/icons/scalable.png">
+                <h6 class="mt-8">{% trans %}Scalable{% endtrans %}</h6>
+              </div>
+              <div class="col text-center d-none-xs"></div>
+            </div>
+            <div class="row">
+              <div class="col text-center d-none-xs"></div>
+              <div class="col text-center">
+                <img class="mw-100 mt-3" src="assets/img/icons/low-cost.png">
+                <h6 class="mt-8">{% trans %}Low-Cost{% endtrans %}</h6>
+              </div>
+              <div class="col text-center" style="width: 33%;">
+                <img class="mw-100" src="assets/img/icons/sustainable.png">
+                <h6 class="mt-8">{% trans %}Sustainable{% endtrans %}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 offset-lg-1">
+          <p class="text-primary bold">{% trans %}What is XRP?{% endtrans %}</p>
+          <h2 class="mb-10">{% trans %}A Digital Asset Built for Payments{% endtrans %}</h2>
+          <p class="mb-4">{% trans %}XRP is a digital asset built for payments. It is the native digital asset on the XRP Ledger—an open-source, permissionless and decentralized blockchain technology that can settle transactions in 3-5 seconds.{% endtrans %}</p>
+          <p class="mb-4">{% trans %}It is the best way to move money around the world; the fuel for our growing digital economy.{% endtrans %}</p>
+
+          <a href="overview.html" class="btn btn-outline-secondary mr-4">{% trans %}Learn about XRP{% endtrans %}</a>
+          <a href="history.html" class="arrow-link mt-4 text-primary d-block"><span class="text-white">{% trans %}XRP History{% endtrans %}</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="row mb-30 mb-50-until-sm">
+      <div class="col-12">
+        <h6 class="section-marker">{% trans %}Use Cases{% endtrans %}</h6>
+        <h2 class="h1">{% trans %}XRP in the Real World{% endtrans %}</h2>
+        <div class="w-100 mt-10 mt-20-until-sm"></div>
+
+        <div class="card-deck">
+            <div class="card rounded-lg hc mb-10" id="hc-1">
+              <h3 class="mb-12 h2">{% trans %}Uses of XRP{% endtrans %}</h3>
+              <p>{% trans %}XRP is helping solve previously unsolvable problems for people and industries around the world, and is one of the only digital assets with a commercial use case.{% endtrans %}</p>
+              <a href="uses.html" class="arrow-link mt-12 text-white">{% trans %}Explore Uses{% endtrans %}</a>
+            </div>
+            <div class="card rounded-lg hc mb-10" id="hc-2">
+              <h3 class="mb-12 h2">{% trans %}Businesses on the Ledger{% endtrans %}</h3>
+              <p class="pb-lg-4">{% trans %}From gaming to web monetization, XRP and the XRP Ledger are powering innovative new technology across the payments space.{% endtrans %}</p>
+              <a href="businesses.html" class="arrow-link mt-12 text-white">{% trans %}Explore Businesses{% endtrans %}</a>
+            </div>
+            <div class="card rounded-lg hc mb-10" id="hc-3">
+              <h3 class="mb-12 h2">{% trans %}Real-World Impact{% endtrans %}</h3>
+              <p class="pb-lg-4">{% trans %}With its real-world utility and inherently green design, XRP helps ensure a more sustainable future for our planet and global economy.{% endtrans %}</p>
+              <a href="impact.html" class="arrow-link mt-12 text-white">{% trans %}Explore Impact{% endtrans %}</a>
+            </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="row last-section">
+      <h6 class="section-marker">{% trans %}Sustainability{% endtrans %}</h6>
+      <div class="col-sm-4 offset-sm-1 text-center">
+        <img class="mw-100 green-graphic" src="./img/green/green-graphic.png" alt="{% trans %}Sustainability icon{% endtrans %}">
+      </div>
+      <div class="col-sm-6 offset-sm-1">
+        <h3 class="h1 mb-9">{% trans %}Green by Nature{% endtrans %}</h3>
+        <p class="mr-sm-5">{% trans %}XRP was designed with sustainability in mind. Contrary to other blockchains that use proof-of-work, the XRP Ledger confirms transactions through a unique “<a href="intro-to-consensus.html">consensus</a>” mechanism and is one of the first truly <a href="https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/" target="_blank">carbon neutral blockchains</a>.{% endtrans %}</p>
+        <p class="mb-10 mr-sm-5">{% trans %}Explore the energy consumption of XRP compared to cash, credit cards and other popular crypto with the <a href="carbon-calculator.html">Green Currency Calculator</a>.{% endtrans %}</p>
+        <a href="carbon-calculator.html" class="btn btn-outline-secondary">{% trans %}Go Green{% endtrans %}</a>
+        <h4 class="mt-20 mb-10">{% trans %}Partners in Sustainability{% endtrans %}</h4>
+        <div class="d-flex align-items-center flex-wrap justify-content-between">
+          <img class="mw-100 mb-4 mr-2" src="./img/green/energy-web.png">
+          <img class="mw-100 mb-4 mr-2 ml-2" src="./img/green/rocky-mountain-inst.png">
+          <img class="mw-100 mb-4 mr-2" src="./img/green/reba.png">
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
+
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}

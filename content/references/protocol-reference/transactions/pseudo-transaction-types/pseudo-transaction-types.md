@@ -2,7 +2,7 @@
 html: pseudo-transaction-types.html
 parent: transaction-formats.html
 blurb: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger.
-template: template-landing-children.html
+template: pagetype-category.html.jinja
 labels:
   - Blockchain
 ---

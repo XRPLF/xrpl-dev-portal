@@ -1,0 +1,57 @@
+{% extends "base.html.jinja" %}
+
+{% block mainclasses %}landing padded-landing{% endblock %}
+
+{% block main %}
+  <section class="container-fluid section-hero">
+    <h1 class="main-page-header">{{currentpage.name}}</h1>
+    <p class="blurb">{{currentpage.blurb}}</p>
+    <p class="blurb">{% trans %}Or, skip ahead to the <a href="#full-reference-index">Full Reference Index</a>.{% endtrans %}</p>
+  </section>
+
+  {% set flag_n = cycler(* range(1,99)) %}
+  <section class="container-fluid card-grid card-grid-4xN">
+    {% for page in currentpage.children if not page.nav_omit %}
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="{{page.html}}">{{page.name}}</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <p class="blurb">{{page.blurb}}</p>
+          {% if page.curated_anchors is defined %}
+            <div class="curated-links">
+              <ul>
+                {% for link in page.curated_anchors %}
+                <li class="level-1"><a href="{{page.html}}{{link.anchor}}">{{link.name}}</a></li>
+                {% endfor %}
+              </ul>
+            </div><!--/.curated-links-->
+          {% endif %}
+
+          {% set depth = 1 %}
+          {% set parent_html = page.html %}
+          {% include 'children.html' %}
+        </div><!--/.card-body-->
+      </div><!--/.card-->
+    {% endfor %}
+
+  </section>
+
+  <section class="container-fluid doc-index">
+    <h2 id="full-reference-index">{% trans %}Full Reference Index{% endtrans %}</h2>
+    <div class="row">
+      <div class="col-md-8">
+        {% set parent_html = currentpage.html %}
+        {% set depth = 99 %}
+        {% include 'children.html' %}
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block endbody %}
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}
