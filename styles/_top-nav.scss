@@ -1,6 +1,6 @@
 /* Top navigation ----------------------------------------------------------- */
 .top-nav {
-  margin: 20px 4px 0 4px;
+  background-color: $gray-900;
 
   // Logo
   .navbar-brand {
@@ -20,18 +20,14 @@
     }
   }
 
-  // Fancy dropdown behavior ---------------------------------------------------
-  .top-nav-dropdown {
-    max-width: 840px;
-  }
-
   // Main Links ----------------------------------------------------------------
   .navbar-nav {
     .nav-link {
-      color: $white;
+      color: $white; // TODO: change to black-050
       font-size: 1rem;
-      line-height: 52px;
+      line-height: 1.25rem;
       text-decoration: none;
+      font-weight: 600;
 
       &.active a {
         font-weight: 700;
@@ -47,7 +43,6 @@
       }
 
       @include media-breakpoint-only(lg) {
-        padding: 1rem 1.15rem;
 
         &.github-edit {
           padding-left: 40px;
@@ -78,13 +73,6 @@
   .dropdown-toggle {
     position: relative;
   }
-  .dropdown-toggle::after {
-    position: absolute;
-    border-color: $gray-500 transparent transparent transparent;
-    border-width: 8px 5px 0 5px;
-    top: 40%;
-    left: auto;
-  }
   .dropdown.show {
     .dropdown-toggle {
       color: $gray-500;
@@ -93,64 +81,113 @@
   .dropdown-menu {
     border-width: 0;
 
-    .dropdown-item {
-      line-height: 262%;
-      padding: 0 .875rem;
+    h5 {
+      font-weight: 400;
+      font-size: 12px;
+      color: $gray-400;
+      margin-bottom: 0;
+    }
 
-      &.top-level-2 {
-        padding-left: 2rem
+    .dropdown-hero {
+      width: 100%;
+      display: flex;
+
+      > img {
+        width: 68px;
+        height: 68px;
+        background-color: $gray-800;
+        border-radius: $border-radius-sm;
+        flex-grow: 0;
+        padding: .75rem;
+        margin-right: 2rem;
       }
 
-      &:hover {
-        color: $primary;
+      p {
+        font-size: 14px;
+        color: $gray-300;
+        margin: 0;
       }
     }
   }
   // Desktop version
   @include media-breakpoint-up(lg) {
+    padding: 0 7.5rem;
 
-    .dropdown-toggle.with-caret::after {
-      position: relative;
-      top: 4px;
-      left: 0;
-      border-top: 8px solid $primary;
-      border-right: 5px solid transparent;
-      border-left: 5px solid transparent;
-      border-bottom: 0;
-      transition: 0.2s;
+    .dropdown-toggle {
+      &::after {
+        display: none;
+      }
+      span {
+        border-bottom: 2px solid transparent;
+      }
     }
 
-    .dropdown.show .dropdown-toggle.with-caret::after {
-      transform: scaleY(-1);
-    }
-
-    .dropdown.show .dropdown-toggle {
-      color: $gray-500;
-      position: relative;
+    .dropdown:hover .dropdown-toggle span,
+    .dropdown:active .dropdown-toggle span {
+      border-bottom: 2px solid $blue-purple-400;
     }
 
     .dropdown-menu {
-      border-width: 1px;
-      backdrop-filter: blur(8px);
-      border-radius: $border-radius-lg;
-      padding: 0.5rem 0.75rem;
-      min-width: 250px;
+      border-radius: 0 0 $border-radius-lg $border-radius-lg;
+      padding: 2.5rem;
+
+      &.show {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px;
+
+        .dropdown-hero {
+          grid-row: 1;
+          grid-column: 1 / 4;
+        }
+
+        // "About" dropdown placement
+        .col-for-xrp-ledger {
+          grid-row: 1 / 3;
+          grid-column: 1;
+        }
+        .col-for-xrp {
+          grid-column: 2;
+        }
+        .col-for-sustainability {
+          grid-column: 2;
+        }
+        .col-for-about {
+          grid-row: 1;
+          grid-column: 3;
+        }
+
+        // "Docs" dropdown placement
+        .col-for-article-types {
+          grid-column: 1;
+          grid-row: 2;
+        }
+        .col-for-online-tools {
+          grid-column: 1;
+          grid-row: 3;
+        }
+        .col-for-get-started {
+          grid-column: 2;
+          grid-row: 2 / 4;
+        }
+
+        // "Community" dropdown placement
+        // TODO
+      }
 
       &.smaller-dropdown {
         min-width: unset;
       }
 
       .dropdown-item {
-        line-height: 44px;
+        line-height: 2rem;
+        padding: 0;
       }
     }
   }
 
   // Search bar & controls -----------------------------------------------------
   #navbar-search {
-    .navbar-form {
-      padding: 1rem;
-    }
 
     .input-group-text,
     .input-group > .input-group-append > .btn {

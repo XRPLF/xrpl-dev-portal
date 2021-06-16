@@ -48,7 +48,7 @@ cover_page:
 
 languages:
     -   code: en
-        display_name: Eng
+        display_name: English
         prefix: "/"
     -   code: ja
         display_name: 日本語
@@ -311,6 +311,8 @@ pages:
             - get-started-using-node-js.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
+        top_nav_hero_image: assets/img/icons/docs.svg
+        blurb: Dive into XRP Ledger technology and start integrating.
         targets:
             - en
 
@@ -326,6 +328,8 @@ pages:
             - get-started-using-node-js.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
+        top_nav_hero_image: assets/img/icons/docs.svg
+        blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
         targets:
             - ja
 
@@ -3679,7 +3683,8 @@ pages:
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        blurb: The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.
+        blurb: Contribute to XRPL.org
+        top_nav_hero_image: assets/img/icons/contribute.svg
         targets:
             - en
 
@@ -3690,6 +3695,7 @@ pages:
         template: page-community.html.jinja
         sidebar: disabled
         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.
+        top_nav_hero_image: assets/img/icons/contribute.svg
         targets:
             - ja
 
