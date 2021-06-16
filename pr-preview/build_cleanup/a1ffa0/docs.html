@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Build - XRPL.org</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Build | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/docs.html" />
+    <meta property="og:description" content="XRPL.org is a community-driven resource for all things XRP and the XRP Ledger—your source for technical information, reference materials and tools." />
+    <meta name="description" content="XRPL.org is a community-driven resource for all things XRP and the XRP Ledger—your source for technical information, reference materials and tools." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/docs.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/docs.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/docs.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal2020.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<div class="container-fluid">
+<nav class="top-nav navbar navbar-expand-lg navbar-dark row">
+  <a href="/" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+    <ul class="nav navbar-nav">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
+<a class="dropdown-item top-level-1" href="overview.html">Overview</a>          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
+          <a class="dropdown-item top-level-1" href="history.html">History</a>
+          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+        </div>
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
+          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+        </div>
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_docs.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Build</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docs.html">
+<a class="dropdown-item top-level-1 active" href="docs.html">Docs</a>          <a class="dropdown-item top-level-2" href="concepts.html">Concepts</a>
+          <a class="dropdown-item top-level-2" href="tutorials.html">Tutorials</a>
+          <a class="dropdown-item top-level-2" href="references.html">References</a>
+          <a class="dropdown-item top-level-1" href="dev-tools.html">Dev Tools</a>
+          <a class="dropdown-item top-level-1" href="https://xrpl.org/blog/">Dev Blog</a>
+        </div>
+      </li>
+
+            <li class="nav-item">
+	        <a class="nav-link" href="contribute.html">Contribute</a>
+      </li>
+
+
+<div class="nav-item github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/build_cleanup/tool/template-landing-docs.html?pr=/ripple/xrpl-dev-portal/pull/1100" target="_blank" class="nav-link github-edit">Edit</a>
+</div><!-- /.github-edit -->
+      <li class="nav-item dropdown" id="navbar-search">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <div class="dropdown-menu">
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-inline">
+              <div class="input-group">
+                <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search site...</span></label>
+                <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="Search site...">
+                <div class="input-group-append d-none d-lg-flex">
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                </div>
+              </div><!--/.input-group-->
+            </div>
+          </form>
+        </div><!--/.dropdown-menu-->
+      </li><!--/.dropdown-->
+
+      <li class="nav-item wrap-button">
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav navbar-nav language-selector">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Eng
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <a class="dropdown-item" href="/docs.html">Eng</a>
+          <a class="dropdown-item" href="/ja/docs.html">日本語</a>
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+  </div><!--/#navbarHolder-->
+</nav>
+</div>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+
+      <!-- main column -->
+      <main class="main col-md-12 order-md-3  landing padded-landing page-docs-index" role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap  px-0 pt-5 pb-3 " aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+    <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item">Build</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <section class="container-fluid card-grid card-grid-2x2">
+    <div class="section-hero card">
+      <h1 class="main-page-header">XRP Ledger Documentation</h1>
+      <p class="blurb">Dive into our documentation and start integrating with the XRP Ledger.</p>
+      <p class="blurb">Browse by category, or skip straight to the <a href="#full-doc-index">full documentation index</a>.</p>
+
+      <div class="highlight-subcard">
+        <h3>Hot Topic: NFTs</h3>
+        <p class="blurb">Interested in non-fungible tokens, but concerned about their <a href="impact.html">large carbon footprint</a>? Check out these proposed standards for issuing NFTs on the XRP Ledger:</p>
+        <ul>
+          <li class="level-1"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/30" class="external-link" target="_blank">XLS-14d: Non fungible tokens (indivisible NFT's) on the XRPL<i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+          <li class="level-1"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/40" class="external-link" target="_blank">XLS-19d: Wallet based Proof of Digital Asset Property and Rights (NFT)<i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+          <li class="level-1"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/46" class="external-link" target="_blank">XLS-20d: Non-Fungible Token Support<i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+        </ul>
+      </div><!--/.highlight-card-->
+    </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="concepts.html">Concepts</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+            <p class="blurb">Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.</p>
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="introduction.html">Introduction</a></li>
+      <li class="level-1"><a href="payment-system-basics.html">Payment System Basics</a></li>
+      <li class="level-1"><a href="payment-types.html">Payment Types</a></li>
+      <li class="level-1"><a href="issued-currencies.html">Issued Currencies</a></li>
+      <li class="level-1"><a href="decentralized-exchange.html">Decentralized Exchange</a></li>
+      <li class="level-1"><a href="consensus-network.html">Consensus Network</a></li>
+      <li class="level-1"><a href="the-rippled-server.html">The rippled Server</a></li>
+
+  </ul>
+</div>        </div><!--/.card-body-->
+        <div class="card-footer">
+          <div class="readmore">
+            <a class="btn btn-outline-secondary" href="concepts.html">View All Concepts</a>
+          </div>
+        </div><!--/.card-footer-->
+      </div><!--/.card-->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="tutorials.html">Tutorials</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+            <p class="blurb">Get step-by-step guidance to perform common tasks with the XRP Ledger.</p>
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="get-started.html">Get Started</a></li>
+      <li class="level-1"><a href="production-readiness.html">Production Readiness</a></li>
+      <li class="level-1"><a href="manage-account-settings.html">Manage Account Settings</a></li>
+      <li class="level-1"><a href="use-specialized-payment-types.html">Use Specialized Payment Types</a></li>
+      <li class="level-1"><a href="xrp-ledger-businesses.html">XRP Ledger Businesses</a></li>
+      <li class="level-1"><a href="manage-the-rippled-server.html">Manage the rippled Server</a></li>
+
+  </ul>
+</div>        </div><!--/.card-body-->
+        <div class="card-footer">
+          <div class="readmore">
+            <a class="btn btn-outline-secondary" href="tutorials.html">View All Tutorials</a>
+          </div>
+        </div><!--/.card-footer-->
+      </div><!--/.card-->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="references.html">References</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+            <p class="blurb">Complete references for different interfaces to the XRP Ledger.</p>
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
+      <li class="level-1"><a href="client-libraries.html">Client Libraries</a></li>
+      <li class="level-1"><a href="rippled-api.html">HTTP / WebSocket APIs</a></li>
+      <li class="level-1"><a href="xrp-ledger-toml.html">xrp-ledger.toml File</a></li>
+
+  </ul>
+</div>        </div><!--/.card-body-->
+        <div class="card-footer">
+          <div class="readmore">
+            <a class="btn btn-outline-secondary" href="references.html">View All References</a>
+          </div>
+        </div><!--/.card-footer-->
+      </div><!--/.card-->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="dev-tools.html">Dev Tools</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+            <p class="blurb">Use these web-based tools to interact with the ledger and test your software.</p>
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+      <li class="level-1"><a href="xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a></li>
+      <li class="level-1"><a href="validator-domain-verifier.html">Domain Verification Checker</a></li>
+      <li class="level-1"><a href="xrp-testnet-faucet.html">XRP Faucets</a></li>
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+  </ul>
+</div>        </div><!--/.card-body-->
+        <div class="card-footer">
+          <div class="readmore">
+            <a class="btn btn-outline-secondary" href="dev-tools.html">View All Dev Tools</a>
+          </div>
+        </div><!--/.card-footer-->
+      </div><!--/.card-->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="https://xrpl.org/blog/">Dev Blog</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+            <p class="blurb">Get news about the latest changes to the XRP Ledger protocol and tools.</p>
+
+
+
+<div class="children-display">
+  <ul>
+    
+  </ul>
+</div>        </div><!--/.card-body-->
+        <div class="card-footer">
+          <div class="readmore">
+            <a class="btn btn-outline-secondary" href="https://xrpl.org/blog/">Read the Blog</a>
+          </div>
+        </div><!--/.card-footer-->
+      </div><!--/.card-->
+
+  </section>
+
+  <section class="container-fluid doc-index">
+    <h2 id="full-doc-index">Full Documentation Index</h2>
+    <div class="row">
+      <div class="col-md-8">
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="concepts.html">Concepts</a></li>
+              <li class="level-2"><a href="introduction.html">Introduction</a></li>
+              <li class="level-3"><a href="xrp-ledger-overview.html">XRP Ledger Overview</a></li>
+        
+      <li class="level-3"><a href="intro-to-consensus.html">Introduction to Consensus</a></li>
+        
+      <li class="level-3"><a href="xrp.html">XRP</a></li>
+        
+      <li class="level-3"><a href="software-ecosystem.html">Software Ecosystem</a></li>
+        
+      <li class="level-3"><a href="technical-faq.html">Technical FAQ</a></li>
+        
+
+      <li class="level-2"><a href="payment-system-basics.html">Payment System Basics</a></li>
+              <li class="level-3"><a href="accounts.html">Accounts</a></li>
+              <li class="level-4"><a href="cryptographic-keys.html">Cryptographic Keys</a></li>
+        
+      <li class="level-4"><a href="multi-signing.html">Multi-Signing</a></li>
+        
+      <li class="level-4"><a href="reserves.html">Reserves</a></li>
+        
+      <li class="level-4"><a href="tickets.html">Tickets</a></li>
+        
+      <li class="level-4"><a href="depositauth.html">Deposit Authorization</a></li>
+        
+
+      <li class="level-3"><a href="fees.html">Fees (Disambiguation)</a></li>
+        
+      <li class="level-3"><a href="ledgers.html">Ledgers</a></li>
+        
+      <li class="level-3"><a href="transaction-basics.html">Transaction Basics</a></li>
+              <li class="level-4"><a href="transaction-cost.html">Transaction Cost</a></li>
+        
+      <li class="level-4"><a href="finality-of-results.html">Finality of Results</a></li>
+        
+      <li class="level-4"><a href="source-and-destination-tags.html">Source and Destination Tags</a></li>
+        
+
+
+      <li class="level-2"><a href="payment-types.html">Payment Types</a></li>
+              <li class="level-3"><a href="direct-xrp-payments.html">Direct XRP Payments</a></li>
+        
+      <li class="level-3"><a href="cross-currency-payments.html">Cross-Currency Payments</a></li>
+        
+      <li class="level-3"><a href="checks.html">Checks</a></li>
+        
+      <li class="level-3"><a href="escrow.html">Escrow</a></li>
+        
+      <li class="level-3"><a href="partial-payments.html">Partial Payments</a></li>
+        
+      <li class="level-3"><a href="payment-channels.html">Payment Channels</a></li>
+        
+
+      <li class="level-2"><a href="issued-currencies.html">Issued Currencies</a></li>
+              <li class="level-3"><a href="issued-currencies-overview.html">Issued Currencies Overview</a></li>
+        
+      <li class="level-3"><a href="trust-lines-and-issuing.html">Trust Lines and Issuing</a></li>
+        
+      <li class="level-3"><a href="authorized-trust-lines.html">Authorized Trust Lines</a></li>
+        
+      <li class="level-3"><a href="freezes.html">Freezing Issued Currencies</a></li>
+        
+      <li class="level-3"><a href="rippling.html">Rippling</a></li>
+        
+      <li class="level-3"><a href="transfer-fees.html">Transfer Fees</a></li>
+        
+      <li class="level-3"><a href="issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+        
+      <li class="level-3"><a href="paths.html">Paths</a></li>
+        
+      <li class="level-3"><a href="demurrage.html">Demurrage</a></li>
+        
+
+      <li class="level-2"><a href="decentralized-exchange.html">Decentralized Exchange</a></li>
+              <li class="level-3"><a href="offers.html">Offers</a></li>
+        
+      <li class="level-3"><a href="autobridging.html">Auto-Bridging</a></li>
+        
+      <li class="level-3"><a href="ticksize.html">Tick Size</a></li>
+        
+
+      <li class="level-2"><a href="consensus-network.html">Consensus Network</a></li>
+              <li class="level-3"><a href="consensus.html">Consensus</a></li>
+        
+      <li class="level-3"><a href="consensus-principles-and-rules.html">Consensus Principles and Rules</a></li>
+        
+      <li class="level-3"><a href="consensus-protections.html">Consensus Protections Against Attacks and Failure Modes</a></li>
+        
+      <li class="level-3"><a href="invariant-checking.html">Invariant Checking</a></li>
+        
+      <li class="level-3"><a href="negative-unl.html">Negative UNL</a></li>
+        
+      <li class="level-3"><a href="transaction-queue.html">Transaction Queue</a></li>
+        
+      <li class="level-3"><a href="about-canceling-a-transaction.html">About Canceling a Transaction</a></li>
+        
+      <li class="level-3"><a href="transaction-malleability.html">Transaction Malleability</a></li>
+        
+      <li class="level-3"><a href="amendments.html">Amendments</a></li>
+              <li class="level-4"><a href="known-amendments.html">Known Amendments</a></li>
+        
+
+      <li class="level-3"><a href="fee-voting.html">Fee Voting</a></li>
+        
+      <li class="level-3"><a href="consensus-research.html">Consensus Research</a></li>
+        
+      <li class="level-3"><a href="parallel-networks.html">Parallel Networks</a></li>
+        
+
+      <li class="level-2"><a href="the-rippled-server.html">The rippled Server</a></li>
+              <li class="level-3"><a href="rippled-server-modes.html">rippled Server Modes</a></li>
+        
+      <li class="level-3"><a href="clustering.html">Clustering</a></li>
+        
+      <li class="level-3"><a href="ledger-history.html">Ledger History</a></li>
+              <li class="level-4"><a href="online-deletion.html">Online Deletion</a></li>
+        
+      <li class="level-4"><a href="history-sharding.html">History Sharding</a></li>
+        
+
+      <li class="level-3"><a href="peer-protocol.html">Peer Protocol</a></li>
+        
+      <li class="level-3"><a href="transaction-censorship-detection.html">Transaction Censorship Detection</a></li>
+        
+
+
+      <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+              <li class="level-2"><a href="get-started.html">Get Started</a></li>
+              <li class="level-3"><a href="public-servers.html">Public Servers</a></li>
+        
+      <li class="level-3"><a href="get-started-using-python.html">Get Started Using Python</a></li>
+        
+      <li class="level-3"><a href="get-started-using-java.html">Get Started Using Java</a></li>
+        
+      <li class="level-3"><a href="get-started-using-node-js.html">Get Started Using Node.js</a></li>
+        
+      <li class="level-3"><a href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a></li>
+        
+      <li class="level-3"><a href="send-xrp.html">Send XRP</a></li>
+        
+      <li class="level-3"><a href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a></li>
+        
+
+      <li class="level-2"><a href="production-readiness.html">Production Readiness</a></li>
+              <li class="level-3"><a href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
+        
+      <li class="level-3"><a href="look-up-transaction-results.html">Look Up Transaction Results</a></li>
+        
+      <li class="level-3"><a href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+        
+
+      <li class="level-2"><a href="manage-account-settings.html">Manage Account Settings</a></li>
+              <li class="level-3"><a href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
+        
+      <li class="level-3"><a href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a></li>
+        
+      <li class="level-3"><a href="disable-master-key-pair.html">Disable Master Key Pair</a></li>
+        
+      <li class="level-3"><a href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
+        
+      <li class="level-3"><a href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
+        
+      <li class="level-3"><a href="require-destination-tags.html">Require Destination Tags</a></li>
+        
+      <li class="level-3"><a href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+        
+      <li class="level-3"><a href="use-tickets.html">Use Tickets</a></li>
+        
+
+      <li class="level-2"><a href="use-specialized-payment-types.html">Use Specialized Payment Types</a></li>
+              <li class="level-3"><a href="use-escrows.html">Use Escrows</a></li>
+              <li class="level-4"><a href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a></li>
+        
+      <li class="level-4"><a href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a></li>
+        
+      <li class="level-4"><a href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a></li>
+        
+      <li class="level-4"><a href="look-up-escrows.html">Look up escrows</a></li>
+        
+      <li class="level-4"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+        
+
+      <li class="level-3"><a href="use-payment-channels.html">Use Payment Channels</a></li>
+              <li class="level-4"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+        
+
+      <li class="level-3"><a href="use-checks.html">Use Checks</a></li>
+              <li class="level-4"><a href="send-a-check.html">Send a Check</a></li>
+        
+      <li class="level-4"><a href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount</a></li>
+        
+      <li class="level-4"><a href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount</a></li>
+        
+      <li class="level-4"><a href="cancel-a-check.html">Cancel a Check</a></li>
+        
+      <li class="level-4"><a href="look-up-checks-by-sender.html">Look Up Checks by Sender</a></li>
+        
+      <li class="level-4"><a href="look-up-checks-by-recipient.html">Look Up Checks by Recipient</a></li>
+        
+
+
+      <li class="level-2"><a href="xrp-ledger-businesses.html">XRP Ledger Businesses</a></li>
+              <li class="level-3"><a href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
+        
+      <li class="level-3"><a href="list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts</a></li>
+        
+      <li class="level-3"><a href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a></li>
+        
+
+      <li class="level-2"><a href="manage-the-rippled-server.html">Manage the rippled Server</a></li>
+              <li class="level-3"><a href="install-rippled.html">Install rippled</a></li>
+              <li class="level-4"><a href="system-requirements.html">System Requirements</a></li>
+        
+      <li class="level-4"><a href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a></li>
+        
+      <li class="level-4"><a href="install-rippled-on-ubuntu.html">Install on Ubuntu or Debian Linux</a></li>
+        
+      <li class="level-4"><a href="update-rippled-automatically-on-linux.html">Update Automatically on Linux</a></li>
+        
+      <li class="level-4"><a href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a></li>
+        
+      <li class="level-4"><a href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a></li>
+        
+      <li class="level-4"><a href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+        
+      <li class="level-4"><a href="build-run-rippled-macos.html">Build and Run rippled on macOS</a></li>
+        
+      <li class="level-4"><a href="capacity-planning.html">Capacity Planning</a></li>
+        
+      <li class="level-4"><a href="rippled-1-3-migration-instructions.html">rippled v1.3.x Migration Instructions</a></li>
+        
+
+      <li class="level-3"><a href="configure-rippled.html">Configure rippled</a></li>
+              <li class="level-4"><a href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
+        
+      <li class="level-4"><a href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+        
+      <li class="level-4"><a href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
+        
+      <li class="level-4"><a href="configure-statsd.html">Configure StatsD</a></li>
+        
+      <li class="level-4"><a href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
+        
+      <li class="level-4"><a href="configure-online-deletion.html">Configure Online Deletion</a></li>
+        
+      <li class="level-4"><a href="configure-advisory-deletion.html">Configure Advisory Deletion</a></li>
+        
+      <li class="level-4"><a href="configure-history-sharding.html">Configure History Sharding</a></li>
+        
+      <li class="level-4"><a href="configure-full-history.html">Configure Full History</a></li>
+        
+      <li class="level-4"><a href="configure-grpc.html">Configure gRPC</a></li>
+        
+      <li class="level-4"><a href="enable-public-signing.html">Enable Public Signing</a></li>
+        
+
+      <li class="level-3"><a href="configure-peering.html">Configure Peering</a></li>
+              <li class="level-4"><a href="cluster-rippled-servers.html">Cluster rippled Servers</a></li>
+        
+      <li class="level-4"><a href="configure-a-private-server.html">Configure a Private Server</a></li>
+        
+      <li class="level-4"><a href="configure-the-peer-crawler.html">Configure the Peer Crawler</a></li>
+        
+      <li class="level-4"><a href="enable-link-compression.html">Enable Link Compression</a></li>
+        
+      <li class="level-4"><a href="forward-ports-for-peering.html">Forward Ports for Peering</a></li>
+        
+      <li class="level-4"><a href="manually-connect-to-a-specific-peer.html">Manually Connect to a Specific Peer</a></li>
+        
+      <li class="level-4"><a href="set-max-number-of-peers.html">Set Maximum Number of Peers</a></li>
+        
+      <li class="level-4"><a href="use-a-peer-reservation.html">Use a Peer Reservation</a></li>
+        
+
+      <li class="level-3"><a href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a></li>
+              <li class="level-4"><a href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a></li>
+        
+      <li class="level-4"><a href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a></li>
+        
+      <li class="level-4"><a href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a></li>
+        
+
+      <li class="level-3"><a href="troubleshoot-the-rippled-server.html">Troubleshoot the rippled server</a></li>
+              <li class="level-4"><a href="diagnosing-problems.html">Diagnosing Problems with rippled</a></li>
+        
+      <li class="level-4"><a href="health-check-interventions.html">Health Check Interventions</a></li>
+        
+      <li class="level-4"><a href="understanding-log-messages.html">Understanding Log Messages</a></li>
+        
+      <li class="level-4"><a href="server-doesnt-sync.html">rippled Server Doesn't Sync</a></li>
+        
+      <li class="level-4"><a href="server-wont-start.html">rippled Server Won't Start</a></li>
+        
+      <li class="level-4"><a href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue</a></li>
+        
+
+
+
+      <li class="level-1"><a href="references.html">References</a></li>
+              <li class="level-2"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
+              <li class="level-3"><a href="basic-data-types.html">Basic Data Types</a></li>
+        
+      <li class="level-3"><a href="base58-encodings.html">base58 Encodings</a></li>
+        
+      <li class="level-3"><a href="currency-formats.html">Currency Formats</a></li>
+        
+      <li class="level-3"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
+              <li class="level-4"><a href="ledger-header.html">Ledger Header</a></li>
+        
+      <li class="level-4"><a href="ledger-object-ids.html">Ledger Object IDs</a></li>
+        
+      <li class="level-4"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+              <li class="level-5"><a href="accountroot.html">AccountRoot</a></li>
+      <li class="level-5"><a href="amendments-object.html">Amendments</a></li>
+      <li class="level-5"><a href="check.html">Check</a></li>
+      <li class="level-5"><a href="depositpreauth-object.html">DepositPreauth</a></li>
+      <li class="level-5"><a href="directorynode.html">DirectoryNode</a></li>
+      <li class="level-5"><a href="escrow-object.html">Escrow</a></li>
+      <li class="level-5"><a href="feesettings.html">FeeSettings</a></li>
+      <li class="level-5"><a href="ledgerhashes.html">LedgerHashes</a></li>
+      <li class="level-5"><a href="negativeunl.html">NegativeUNL</a></li>
+      <li class="level-5"><a href="offer.html">Offer</a></li>
+      <li class="level-5"><a href="paychannel.html">PayChannel</a></li>
+      <li class="level-5"><a href="ripplestate.html">RippleState</a></li>
+      <li class="level-5"><a href="signerlist.html">SignerList</a></li>
+      <li class="level-5"><a href="ticket.html">Ticket</a></li>
+
+
+      <li class="level-3"><a href="transaction-formats.html">Transaction Reference</a></li>
+              <li class="level-4"><a href="transaction-common-fields.html">Transaction Common Fields</a></li>
+        
+      <li class="level-4"><a href="transaction-types.html">Transaction Types</a></li>
+              <li class="level-5"><a href="accountset.html">AccountSet</a></li>
+      <li class="level-5"><a href="accountdelete.html">AccountDelete</a></li>
+      <li class="level-5"><a href="checkcancel.html">CheckCancel</a></li>
+      <li class="level-5"><a href="checkcash.html">CheckCash</a></li>
+      <li class="level-5"><a href="checkcreate.html">CheckCreate</a></li>
+      <li class="level-5"><a href="depositpreauth.html">DepositPreauth</a></li>
+      <li class="level-5"><a href="escrowcancel.html">EscrowCancel</a></li>
+      <li class="level-5"><a href="escrowcreate.html">EscrowCreate</a></li>
+      <li class="level-5"><a href="escrowfinish.html">EscrowFinish</a></li>
+      <li class="level-5"><a href="offercancel.html">OfferCancel</a></li>
+      <li class="level-5"><a href="offercreate.html">OfferCreate</a></li>
+      <li class="level-5"><a href="payment.html">Payment</a></li>
+      <li class="level-5"><a href="paymentchannelclaim.html">PaymentChannelClaim</a></li>
+      <li class="level-5"><a href="paymentchannelcreate.html">PaymentChannelCreate</a></li>
+      <li class="level-5"><a href="paymentchannelfund.html">PaymentChannelFund</a></li>
+      <li class="level-5"><a href="setregularkey.html">SetRegularKey</a></li>
+      <li class="level-5"><a href="signerlistset.html">SignerListSet</a></li>
+      <li class="level-5"><a href="ticketcreate.html">TicketCreate</a></li>
+      <li class="level-5"><a href="trustset.html">TrustSet</a></li>
+
+      <li class="level-4"><a href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
+              <li class="level-5"><a href="enableamendment.html">EnableAmendment</a></li>
+      <li class="level-5"><a href="setfee.html">SetFee</a></li>
+      <li class="level-5"><a href="unlmodify.html">UNLModify</a></li>
+
+      <li class="level-4"><a href="transaction-results.html">Transaction Results</a></li>
+              <li class="level-5"><a href="tec-codes.html">tec Codes</a></li>
+      <li class="level-5"><a href="tef-codes.html">tef Codes</a></li>
+      <li class="level-5"><a href="tel-codes.html">tel Codes</a></li>
+      <li class="level-5"><a href="tem-codes.html">tem Codes</a></li>
+      <li class="level-5"><a href="ter-codes.html">ter Codes</a></li>
+      <li class="level-5"><a href="tes-success.html">tes Success</a></li>
+
+      <li class="level-4"><a href="transaction-metadata.html">Transaction Metadata</a></li>
+        
+
+      <li class="level-3"><a href="modifying-the-ledger.html">Modifying the Ledger</a></li>
+        
+      <li class="level-3"><a href="serialization.html">Serialization Format</a></li>
+        
+
+      <li class="level-2"><a href="client-libraries.html">Client Libraries</a></li>
+              <li class="level-3"><a href="rippleapi-reference.html">JavaScript / TypeScript Client Library</a></li>
+        
+      <li class="level-3"><a href="https://xrpl-py.readthedocs.io/">Python Client Library</a></li>
+        
+      <li class="level-3"><a href="https://javadoc.io/doc/org.xrpl/">Java Client Library</a></li>
+        
+
+      <li class="level-2"><a href="rippled-api.html">HTTP / WebSocket APIs</a></li>
+              <li class="level-3"><a href="api-conventions.html">API Conventions</a></li>
+              <li class="level-4"><a href="request-formatting.html">Request Formatting</a></li>
+        
+      <li class="level-4"><a href="response-formatting.html">Response Formatting</a></li>
+        
+      <li class="level-4"><a href="error-formatting.html">Error Formatting</a></li>
+        
+      <li class="level-4"><a href="markers-and-pagination.html">Markers and Pagination</a></li>
+        
+      <li class="level-4"><a href="rate-limiting.html">Rate Limiting</a></li>
+        
+      <li class="level-4"><a href="rippled-server-states.html">rippled Server States</a></li>
+        
+
+      <li class="level-3"><a href="public-rippled-methods.html">Public rippled Methods</a></li>
+              <li class="level-4"><a href="account-methods.html">Account Methods</a></li>
+              <li class="level-5"><a href="account_channels.html">account_channels</a></li>
+      <li class="level-5"><a href="account_currencies.html">account_currencies</a></li>
+      <li class="level-5"><a href="account_info.html">account_info</a></li>
+      <li class="level-5"><a href="account_lines.html">account_lines</a></li>
+      <li class="level-5"><a href="account_objects.html">account_objects</a></li>
+      <li class="level-5"><a href="account_offers.html">account_offers</a></li>
+      <li class="level-5"><a href="account_tx.html">account_tx</a></li>
+      <li class="level-5"><a href="gateway_balances.html">gateway_balances</a></li>
+      <li class="level-5"><a href="noripple_check.html">noripple_check</a></li>
+
+      <li class="level-4"><a href="ledger-methods.html">Ledger Methods</a></li>
+              <li class="level-5"><a href="ledger.html">ledger</a></li>
+      <li class="level-5"><a href="ledger_closed.html">ledger_closed</a></li>
+      <li class="level-5"><a href="ledger_current.html">ledger_current</a></li>
+      <li class="level-5"><a href="ledger_data.html">ledger_data</a></li>
+      <li class="level-5"><a href="ledger_entry.html">ledger_entry</a></li>
+
+      <li class="level-4"><a href="transaction-methods.html">Transaction Methods</a></li>
+              <li class="level-5"><a href="sign.html">sign</a></li>
+      <li class="level-5"><a href="sign_for.html">sign_for</a></li>
+      <li class="level-5"><a href="submit.html">submit</a></li>
+      <li class="level-5"><a href="submit_multisigned.html">submit_multisigned</a></li>
+      <li class="level-5"><a href="transaction_entry.html">transaction_entry</a></li>
+      <li class="level-5"><a href="tx.html">tx</a></li>
+      <li class="level-5"><a href="tx_history.html">tx_history</a></li>
+
+      <li class="level-4"><a href="path-and-order-book-methods.html">Path and Order Book Methods</a></li>
+              <li class="level-5"><a href="book_offers.html">book_offers</a></li>
+      <li class="level-5"><a href="deposit_authorized.html">deposit_authorized</a></li>
+      <li class="level-5"><a href="path_find.html">path_find</a></li>
+      <li class="level-5"><a href="ripple_path_find.html">ripple_path_find</a></li>
+
+      <li class="level-4"><a href="payment-channel-methods.html">Payment Channel Methods</a></li>
+              <li class="level-5"><a href="channel_authorize.html">channel_authorize</a></li>
+      <li class="level-5"><a href="channel_verify.html">channel_verify</a></li>
+
+      <li class="level-4"><a href="subscription-methods.html">Subscription Methods</a></li>
+              <li class="level-5"><a href="subscribe.html">subscribe</a></li>
+      <li class="level-5"><a href="unsubscribe.html">unsubscribe</a></li>
+
+      <li class="level-4"><a href="server-info-methods.html">Server Info Methods</a></li>
+              <li class="level-5"><a href="fee.html">fee</a></li>
+      <li class="level-5"><a href="manifest.html">manifest</a></li>
+      <li class="level-5"><a href="server_info.html">server_info</a></li>
+      <li class="level-5"><a href="server_state.html">server_state</a></li>
+
+      <li class="level-4"><a href="utility-methods.html">Utility Methods</a></li>
+              <li class="level-5"><a href="json.html">json</a></li>
+      <li class="level-5"><a href="ping.html">ping</a></li>
+      <li class="level-5"><a href="random.html">random</a></li>
+
+
+      <li class="level-3"><a href="admin-rippled-methods.html">Admin rippled Methods</a></li>
+              <li class="level-4"><a href="key-generation-methods.html">Key Generation Methods</a></li>
+              <li class="level-5"><a href="validation_create.html">validation_create</a></li>
+      <li class="level-5"><a href="wallet_propose.html">wallet_propose</a></li>
+
+      <li class="level-4"><a href="logging-and-data-management-methods.html">Logging and Data Management Methods</a></li>
+              <li class="level-5"><a href="can_delete.html">can_delete</a></li>
+      <li class="level-5"><a href="crawl_shards.html">crawl_shards</a></li>
+      <li class="level-5"><a href="download_shard.html">download_shard</a></li>
+      <li class="level-5"><a href="ledger_cleaner.html">ledger_cleaner</a></li>
+      <li class="level-5"><a href="ledger_request.html">ledger_request</a></li>
+      <li class="level-5"><a href="log_level.html">log_level</a></li>
+      <li class="level-5"><a href="logrotate.html">logrotate</a></li>
+
+      <li class="level-4"><a href="server-control-methods.html">Server Control Methods</a></li>
+              <li class="level-5"><a href="ledger_accept.html">ledger_accept</a></li>
+      <li class="level-5"><a href="stop.html">stop</a></li>
+      <li class="level-5"><a href="validation_seed.html">validation_seed</a></li>
+
+      <li class="level-4"><a href="peer-management-methods.html">Peer Management Methods</a></li>
+              <li class="level-5"><a href="connect.html">connect</a></li>
+      <li class="level-5"><a href="peer_reservations_add.html">peer_reservations_add</a></li>
+      <li class="level-5"><a href="peer_reservations_del.html">peer_reservations_del</a></li>
+      <li class="level-5"><a href="peer_reservations_list.html">peer_reservations_list</a></li>
+      <li class="level-5"><a href="peers.html">peers</a></li>
+
+      <li class="level-4"><a href="status-and-debugging-methods.html">Status and Debugging Methods</a></li>
+              <li class="level-5"><a href="consensus_info.html">consensus_info</a></li>
+      <li class="level-5"><a href="feature.html">feature</a></li>
+      <li class="level-5"><a href="fetch_info.html">fetch_info</a></li>
+      <li class="level-5"><a href="get_counts.html">get_counts</a></li>
+      <li class="level-5"><a href="print.html">print</a></li>
+      <li class="level-5"><a href="validator_info.html">validator_info</a></li>
+      <li class="level-5"><a href="validator_list_sites.html">validator_list_sites</a></li>
+      <li class="level-5"><a href="validators.html">validators</a></li>
+
+
+      <li class="level-3"><a href="commandline-usage.html">rippled Commandline Usage Reference</a></li>
+        
+      <li class="level-3"><a href="peer-port-methods.html">Peer Port Methods</a></li>
+              <li class="level-4"><a href="health-check.html">Health Check</a></li>
+        
+      <li class="level-4"><a href="peer-crawler.html">Peer Crawler</a></li>
+        
+      <li class="level-4"><a href="validator-list.html">Validator List Method</a></li>
+        
+
+
+      <li class="level-2"><a href="xrp-ledger-toml.html">xrp-ledger.toml File</a></li>
+        
+
+      <li class="level-1"><a href="dev-tools.html">Dev Tools</a></li>
+              <li class="level-2"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+        
+      <li class="level-2"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+        
+      <li class="level-2"><a href="xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a></li>
+        
+      <li class="level-2"><a href="validator-domain-verifier.html">Domain Verification Checker</a></li>
+        
+      <li class="level-2"><a href="xrp-testnet-faucet.html">XRP Faucets</a></li>
+        
+      <li class="level-2"><a href="tx-sender.html">Transaction Sender</a></li>
+        
+
+      <li class="level-1"><a href="https://xrpl.org/blog/">Dev Blog</a></li>
+        
+
+  </ul>
+</div>      </div>
+    </div>
+  </section>
+      </main>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container card-grid card-grid-Nx1">
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="overview.html">Learn</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="uses.html">Uses</a></li>
+      <li class="level-1"><a href="history.html">History</a></li>
+      <li class="level-1"><a href="impact.html">Impact</a></li>
+      <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="explore.html">Explore</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="wallets.html">Wallets</a></li>
+      <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+      <li class="level-1"><a href="businesses.html">Businesses</a></li>
+      <li class="level-1"><a href="https://livenet.xrpl.org/">Ledger Explorer</a></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="docs.html">Build</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="concepts.html">Concepts</a></li>
+      <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+      <li class="level-1"><a href="references.html">References</a></li>
+      <li class="level-1"><a href="dev-tools.html">Dev Tools</a></li>
+      <li class="level-1"><a href="https://xrpl.org/blog/">Dev Blog</a></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="contribute.html">Contribute</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="contribute-code.html">Contribute Code to the XRP Ledger</a></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+  </section>
+
+  <section class="container">
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2020</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbox',
+algoliaOptions: { 'facetFilters': ["lang:en"] },
+debug: false
+});
+</script>
+<style>
+  #algolia-autocomplete-listbox-0 {
+      z-index: 1100 !important;
+  }
+</style>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+</body>
+</html>
