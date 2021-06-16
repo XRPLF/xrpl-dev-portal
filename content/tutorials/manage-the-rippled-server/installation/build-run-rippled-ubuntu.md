@@ -9,7 +9,7 @@ blurb: Compile rippled yourself on Ubuntu Linux.
 
 For an overview of `rippled`, see [Operating rippled Servers](install-rippled.html).
 
-Use these instructions to build a `rippled` executable from source version 1.2.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.
+Use these instructions to build a `rippled` executable from source. These instructions were tested on Ubuntu 18.04 LTS.
 
 For information about building `rippled` for other platforms, see [Builds](https://github.com/ripple/rippled/tree/develop/Builds) in the `rippled` GitHub repository.
 
@@ -20,7 +20,7 @@ Before you compile or install `rippled`, you must meet the [System Requirements]
 
 ## 1. Build `rippled`
 
-These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the software prerequisites you need to build and run `rippled`.
+These instructions use Ubuntu's APT (Advanced Packaging Tool) to install `rippled`'s build dependencies.
 
 1. Update the list of packages that are available for `apt-get` to install or upgrade.
 
@@ -36,7 +36,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 4. Install CMake.
 
-    Version 1.7.0 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3, which was the latest version available at the time of writing.
+    Version 1.7.2 of `rippled` requires CMake 3.9.0 or higher. For the purposes of this tutorial, we used CMake 3.13.3.
 
     If you have previously installed CMake 3.9.0 or higher, you can skip these steps.
 
@@ -49,12 +49,12 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.7.0 of `rippled` requires the Boost library and is compatible with Boost versions 1.70.0 to 1.75.0. The Ubuntu 18.04 (or 16.04) software repositories don't have a compatible Boost version, so you must compile it yourself. The following examples use Boost 1.75.0.
+    Version 1.7.2 of `rippled` requires the Boost library and is compatible with Boost versions 1.70.0 to 1.75.0. The Ubuntu 18.04 (or 20.04) software repositories don't have a compatible Boost version, so you must compile it yourself. The following examples use Boost 1.75.0.
 
     If you have previously built Boost 1.75.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
       1. Download Boost 1.75.0.
-              
+
 	      wget https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz
 
       2. Extract `boost_1_75_0.tar.gz`.
@@ -142,9 +142,9 @@ Complete the following configurations that are required for `rippled` to start u
 
 ## 3. Run `rippled`
 
-To run your stock `rippled` server from the executable you built, using the configurations you defined:
-```
-cd my_build
+To run your `rippled` server from the executable you built:
+
+```sh
 ./rippled
 ```
 
@@ -153,7 +153,7 @@ cd my_build
 
 Once you've run `rippled`, here are excerpts of what you can expect to see in your terminal.
 
-```
+```text
 Loading: "/home/ubuntu/.config/ripple/rippled.cfg"
 Watchdog: Launching child 1
 2018-Jun-06 00:51:35.094331139 JobQueue:NFO Auto-tuning to 4 validation/transaction/proposal threads.
