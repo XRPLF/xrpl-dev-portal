@@ -7,7 +7,7 @@ blurb: macOSでrippledを自分でコンパイルします。
 
 [`rippled`](the-rippled-server.html)の本番環境にmacOSプラットフォームを使用することは推奨されていません。本番環境には、最高レベルの品質管理とテストを経た、[Ubuntuプラットフォーム](install-rippled-on-ubuntu-with-alien.html)のご使用をご検討ください。
 
-しかしながら、macOSは多くの開発やテストの作業に適しています。`rippled`は、10.13 High SierraまでのmacOSでテスト済みです。
+しかしながら、macOSは多くの開発やテストの作業に適しています。`rippled`は、10.15.7 CatalinaまでのmacOSでテスト済みです。
 
 開発目的の場合は、`sudo`を使用するのではなく、非管理者ユーザーとして`rippled`を実行します。
 

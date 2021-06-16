@@ -7,7 +7,7 @@ blurb: Compile rippled yourself on macOS.
 
 The macOS platform is not recommended for [`rippled`](the-rippled-server.html) production use. For production, consider using the [Ubuntu platform](install-rippled-on-ubuntu-with-alien.html), which has received the highest level of quality assurance and testing.
 
-That said, macOS is suitable for many development and testing tasks. `rippled` has been tested for use with macOS up to 10.13 High Sierra.
+That said, macOS is suitable for many development and testing tasks. `rippled` has been tested for use with macOS up to 10.15.7 Catalina.
 
 For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
