@@ -1,10 +1,36 @@
+.external-link{
+  &::after {
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: 1em;
+    padding: 0 .5em;
+    background-position: left 0 bottom .2em;
+    transition: background-position 100ms ease-in-out;
 
-/* Reduce external link icon size */
-.fa.fa-external-link:before {
-  font-size: 80%;
+    // TODO: the background position is based on the padding, so it might
+    // need adjustments for elements with more padding to make it line up
+    // with the text. I thought background-origin: content-box might fix this
+    // but it doesn't seem to.
+  }
+
+  &:hover::after {
+    background-position: left .2em bottom .4em;
+  }
+
+  .fa-external-link {
+    display: none;
+  }
 }
 
-.external-link .fa-external-link,
-.related-projects a .fa-external-link {
-  padding-left: 3px;
-}
+
+// /* Reduce external link icon size */
+// .fa.fa-external-link:before {
+//   font-size: 80%;
+// }
+//
+// .external-link .fa-external-link,
+// .related-projects a .fa-external-link {
+//   padding-left: 3px;
+// }

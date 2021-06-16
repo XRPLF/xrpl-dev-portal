@@ -8,11 +8,13 @@ $nav-link-padding-x: 1.25rem;
 $nav-link-padding-y: 1rem;
 $navbar-brand-padding-y: 1rem;
 $navbar-nav-link-padding-x: 2rem;
-$navbar-nav-link-padding-y: 1rem;
+$navbar-nav-link-padding-y: .75rem;
 $border-radius: 0;
 $border-radius-lg: 8px;
 $border-radius-sm: 4px;
 $dropdown-border-width: 1px;
+$enable-shadows: true;
+$dropdown-box-shadow: 0px 5px 40px $gray-900;
 $caret-width: .4em;
 
 $input-btn-padding-y: 1rem;

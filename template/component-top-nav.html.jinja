@@ -39,14 +39,14 @@
             <h5 class="dropdown-item">{{link.top_nav_grouping}}</h5>
             {% set _ = printed_groupings.append(link.top_nav_grouping) %}
             {% endif %}
-            <a class="dropdown-item {% if currentpage == link %} active{% endif %}" href="{{link.html}}">{% if link.top_nav_name is defined %}{{link.top_nav_name}}{% else %}{{link.name}}{% endif %}</a>
+            <a class="dropdown-item{% if currentpage == link %} active{% endif %}{% if "//" in link.html %} external-link{% endif %}" href="{{link.html}}">{% if link.top_nav_name is defined %}{{link.top_nav_name}}{% else %}{{link.name}}{% endif %}</a>
           {% endfor %}
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
       {% elif not top_page.top_nav_omit %}
       <li class="nav-item">
-	        <a class="nav-link" href="{{top_page.html}}"><span>{{top_page.name}}</span></a>
+	        <a class="nav-link{% if "//" in link.html %} external-link{% endif %}" href="{{top_page.html}}"><span>{{top_page.name}}</span></a>
       </li>
       {% endif %}
       {% endmacro %}
