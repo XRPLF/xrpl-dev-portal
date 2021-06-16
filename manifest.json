@@ -42,5 +42,16 @@
         "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1095"
       }
     ]
+  },
+  "macos_boost_fix": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "85fd5b10a2e0573fb2bfcafe89ce1f19bbd3019b",
+        "updatedAt": "2021-06-16T05:25:31.764Z",
+        "href": "pr-preview/macos_boost_fix/85fd5b",
+        "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1099"
+      }
+    ]
   }
 }

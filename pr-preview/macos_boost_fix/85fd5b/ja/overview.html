@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>学ぶ - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="学ぶ | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/overview.html" />
+    <meta property="og:description" content="XRPとXRP Ledgerの全てに対してのコミュニティーリーソース" />
+    <meta name="description" content="XRPとXRP Ledgerの全てに対してのコミュニティーリーソース" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/overview.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/overview.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/overview.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/ja/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ja/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/ja/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="/ja/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="/ja/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <!-- Stylesheet -->
+    <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2020.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal lang-ja no-sidebar" data-spy="scroll" data-target=".page-toc" data-offset="0">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<div class="container-fluid">
+<nav class="top-nav navbar navbar-expand-lg navbar-dark row">
+  <a href="/ja/" class="navbar-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+    <ul class="nav navbar-nav">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
+<a class="dropdown-item top-level-1 active" href="overview.html">オーバービュー</a>          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
+        </div>
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
+        </div>
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_docs.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">作る</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docs.html">
+<a class="dropdown-item top-level-1" href="docs.html">ドキュメント</a>          <a class="dropdown-item top-level-2" href="concepts.html">コンセプト</a>
+          <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
+          <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
+          <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
+          <a class="dropdown-item top-level-1" href="https://xrpl.org/blog/">開発者ブログ</a>
+        </div>
+      </li>
+
+            <li class="nav-item">
+	        <a class="nav-link" href="contribute.html">貢献する</a>
+      </li>
+
+
+<div class="nav-item github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/macos_boost_fix/tool/template-learn-overview.html?pr=/ripple/xrpl-dev-portal/pull/1099" target="_blank" class="nav-link github-edit">編集</a>
+</div><!-- /.github-edit -->
+      <li class="nav-item dropdown" id="navbar-search">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
+        <div class="dropdown-menu">
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-inline">
+              <div class="input-group">
+                <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
+                <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
+                <div class="input-group-append d-none d-lg-flex">
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
+                </div>
+              </div><!--/.input-group-->
+            </div>
+          </form>
+        </div><!--/.dropdown-menu-->
+      </li><!--/.dropdown-->
+
+      <li class="nav-item wrap-button">
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav navbar-nav language-selector">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <a class="dropdown-item" href="/overview.html">Eng</a>
+          <a class="dropdown-item" href="/ja/overview.html">日本語</a>
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+  </div><!--/#navbarHolder-->
+</nav>
+</div>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+
+      <!-- main column -->
+      <main class="main col-md-12 order-md-3  landing" role="main" id="main_content_body">
+<div id="page-overview-bg" class="pt-40-until-sm">
+  <div class="container">
+      <section class="row mt-20 mb-50-until-sm mb-20">
+        <div class="col-md-6 mb-10">
+          <h6 class="text-primary mb-4">XRPの概要</h6>
+          <h1 class="mb-18">XRPに関する質問にお答えします</h1>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-8">
+          <h2 class="mb-10">XRPとは何ですか?</h2>
+          <div class="row">
+            <p class="col-sm">XRPとは、XRP Ledger（パーミッションを必要としない、オープンソースで分散型の<a href="https://www.distributedagreement.com/2018/09/24/what-is-a-blockchain/" target="_blank">ブロックチェーン技術</a>）に固有のデジタルアセットです。</p>
+            <p class="col-sm">送金に特化したデジタルアセットとして2012年に作成されたXRPは、レジャーの取引を3秒から5秒で決済できます。より優れたBitcoinをつくることを目指して設計されており、他のどのデジタルアセットよりも速く、低コストで、環境にやさしいのが特徴です。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="row mb-30">
+        <h6 class="section-marker">メリット</h6>
+        <div class="col-sm-12 col-lg-10 overflow-x-xs">
+            <table id="overview-table" class="mw-100">
+              <thead>
+                <tr>
+                  <td class="bold h4">メリット</td>
+                  <td class="bold text-large"><img class="h40 mr-3 mb-1" src="assets/img/icons/bw-xrp.png">XRP</td>
+                  <td class="bold text-large"><img class="h32 mr-3 mb-1" src="assets/img/icons/bw-bitcoin.png">Bitcoin</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="bold"><div class="w48 mr-3 text-center d-sm-inline-block no-wrap"><img class="h32" src="assets/img/icons/fast.png"></div>高速性</td>
+                  <td class="">3秒から5秒で決済完了</td>
+                  <td class="">500秒で決済完了</td>
+                </tr>
+                <tr>
+                  <td class="bold"><div class="w48 mr-3 text-center d-sm-inline-block no-wrap"><img class="w32" src="assets/img/icons/low-cost.png"></div>低価格</td>
+                  <td class="">$0.0002（1取引あたり）</td>
+                  <td class="">$0.50（1取引あたり）</td>
+                </tr>
+                <tr>
+                  <td class="bold"><div class="w48 mr-3 text-center d-sm-inline-block no-wrap"><img class="w44" src="assets/img/icons/scalable.png"></div>スケーラブル</td>
+                  <td class="">1秒あたり1,500取引</td>
+                  <td class="">1秒あたり3取引</td>
+                </tr>
+                <tr class="border-none">
+                  <td class="bold"><div class="w48 mr-3 text-center d-sm-inline-block no-wrap"><img class="w48" src="assets/img/icons/sustainable.png"></div>持続可能性</td>
+                  <td class="">Environmentally sustainable and carbon neutral</td>
+                  <td class="">世界のエネルギー消費量の0.3&#37;を占める</td>
+              </tbody>
+            </table>
+          </div>
+      </section>
+
+
+      <section class="row mb-30 mb-50-until-sm">
+        <div class="col-lg-6 offset-lg-1 order-1 order-lg-2 mb-10">
+          <img class="mw-100" src="./img/graphics/overview-supply.png">
+        </div>
+        <div class="col-lg-4 order-2 order-lg-1">
+          <h2 class="mb-10">XRPの供給量は有限です</h2>
+          <p>XRPは中央の仲介機関を必要とせずに直接送金できるため、2つの通貨間で迅速に効率よく取引できる便利な手段です。オープンな市場で自由に取引されており、実社会で国際送金や少額取引に使用されています。</p>
+          <p>Bitcoinとは異なり、XRPの供給量は有限です。XRPの総額は1,000億XRPであり、そのすべてが市場に出回っています。</p>
+          <a href="history.html" class="btn btn-outline-secondary mt-3">XRPの沿革</a>
+        </div>
+      </section>
+
+      <section class="row mb-20">
+        <div class="col-md-4 mb-10">
+          <h2>XRP Ledgerはどのような仕組みですか?</h2>
+        </div>
+        <div class="col-md-4">
+          <p>XRP Ledgerは、誰でも構築が可能なオープンソース技術です。ソフトウェアエンジニア、サーバーオペレーター、<a href="run-a-rippled-validator.html">バリデータ</a>など多様な参加者で構成されるグローバルな「XRPコミュニティ」が、XRP Ledgerを管理しています。</p>
+          <p>XRP Ledgerはコンセンサスプロトコルを使用します。このプロトコルでは、バリデータが3秒から5秒ごとにXRP取引のオーダーについて合意に至ります。この合意が、最終的な取り消し不可の決済として機能します。</p>
+        </div>
+        <div class="col-md-4">
+          <p>取引は、決定論的な順序で実行されるため、二重支払や不正行為を防ぐことができます。他のブロックチェーンとは異なり、取引手数料は取引実行の一環として消却されます。XRP Ledgerは、取引スループットを最大化しながら取引手数料をできるだけ低く抑えるという2つの目標の下、手数料をほぼリアルタイムで調整して、ネットワークの状況に対応します。</p>
+          <p>ネットワーク内のすべてのサーバーが、同じルールに従って各取引を処理します。このプロトコルに従っている取引はすべて、バリデータが定数に達した時点ですぐに確認されます。</p>
+        </div>
+      </section>
+
+      <section class="row mb-30 mb-40-until-sm">
+        <h6 class="section-marker">XRPのバリデータ</h6>
+        <div class="col-lg-6 mb-10">
+          <img class="mw-100" src="./img/graphics/validator.png">
+        </div>
+        <div class="col-lg-5 offset-lg-1 d-flex-sm justify-content-sm-center align-self-sm-center">
+          <div>
+            <h4 class="mb-10">バリデータは誰でも運営できます。現在、レジャーでは、大学、取引所、企業、個人が運営している150以上の<a href="run-a-rippled-validator.html" class="underline">バリデータ</a>がアクティブです。</h4>
+            <a href="consensus-network.html" class="btn btn-outline-secondary">技術を知る</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="row mb-30 mb-50-until-sm">
+        <div class="col-lg-7 pr-0">
+          <h2 class="mb-10">XRPはなぜ便利なのですか?</h2>
+          <h5 class="mb-10 normal h4">XRPは、スピード、コスト、持続可能性、スケーラビリティに優れています。これは、成長を促進して国際経済の真の可能性、つまり<a href="https://ripple.com/insights/the-internet-of-value-what-it-means-and-how-it-benefits-everyone/" target="_blank" class="underline">価値のインターネット</a>を実現するための鍵となる要素です。</h5>
+        </div>
+        <div class="w-100 mt-20"></div>
+        <div class="col-md-4 mb-20">
+          <h4>企業</h4>
+          <p class="my-10">多くの企業が、分散型金融マイクロペイメント、ゲーム、ウェブ収益化など、大きな効果をもたらす用途を実現するために、XRP Ledgerを基盤として開発しています。また、テクノロジー企業であるRippleも、XRPを活用したネットワークとインフラストラクチャを構築し、より速くて低コストな国際送金を実現するために取り組んでいます。</p>
+          <a href="businesses.html" class="text-white bold arrow-link">企業について詳しく見る</a>
+        </div>
+        <div class="col-md-4 mb-20">
+          <h4>個人</h4>
+          <p class="my-10">個人の消費者は、XRPを利用することで、さまざまな通貨での国際送金が可能になります。例えば、<a href="https://payid.org/" target="_blank">PayID</a>を使用しているウォレットや取引所を通して、XRPはもちろん、法定通貨でもデジタルアセットでも任意の通貨を使って、誰もが任意の決済ネットワークで簡単に購入できます。</p>
+          <a href="uses.html" class="text-white bold arrow-link position-sm-absolute bottom-0">使用について詳しく見る</a>
+        </div>
+        <div class="col-md-4 mb-20">
+          <h4>開発者</h4>
+          <p class="my-10">XRP Ledgerを基盤として開発すると、自社製品に決済を簡単に組み込めるので、決済を中心としたアプリケーションをシームレスに実現できます。<a href="https://ripplex.io/" target="_blank">RippleX開発者向けプラットフォーム</a>などのプロジェクトを利用すれば、XRPを活用するのがさらに簡単になります。</p>
+          <a href="docs.html" class="text-white bold arrow-link position-sm-absolute bottom-0">開発者についてもっと見る</a>
+        </div>
+      </section>
+
+      <section class="mb-30 mb-50-until-sm">
+        <h6 class="section-marker">価値のインターネット</h6>
+        <div class="row mb-20 mb-40-until-sm">
+          <div class="col-md-4 offset-md-2 order-1 order-md-2 mb-10 text-center">
+            <img class="mw-100" src="./img/overview/fast.png">
+          </div>
+          <div class="col-md-4 offset-md-1 order-2 order-md-1 justify-content-sm-center align-self-sm-center">
+            <h2 class="mb-10">高速性</h2>
+            <p>XRP Ledgerは、他のどのブロックチェーンよりも速く、3秒から5秒で取引を決済します。</p>
+          </div>
+        </div>
+        <div class="row mb-30">
+          <div class="col-md-4 offset-md-1 mb-10 text-center">
+            <img class="mw-100" src="./img/overview/low-cost.png">
+          </div>
+          <div class="col-md-4 offset-md-2 justify-content-sm-center align-self-sm-center">
+            <h2 class="mb-10">低価格</h2>
+            <p>XRP取引のコストはほんのわずか（$0.0002）で、他の暗号資産や一般的な法定の決済方法よりもはるかに低コストです。</p>
+          </div>
+        </div>
+        <div class="row mb-30">
+          <div class="col-md-4 offset-md-2 order-1 order-md-2 mb-10 text-center">
+            <img class="mw-100" src="./img/overview/scalable.png">
+          </div>
+          <div class="col-md-4 offset-md-1  order-2 order-md-1 justify-content-sm-center align-self-sm-center">
+            <h2 class="mb-10">スケーラブル</h2>
+            <p>XRP Ledgerは1秒あたりに最大で1,500件の取引を処理できます。</p>
+          </div>
+        </div>
+        <div class="row mb-30">
+          <div class="col-md-4 offset-md-1 mb-10 text-center">
+            <img class="mw-100" src="./img/overview/sustainable.png">
+          </div>
+          <div class="col-md-4 offset-md-2 justify-content-sm-center align-self-sm-center">
+            <h2 class="mb-10">持続可能性</h2>
+            <p>XRP取引の決済では、プルーフオブワーク（マイニング）に関連する、とても持続可能とはいえない莫大なエネルギーコストはかかりません。</p>
+          </div>
+        </div>
+        <div class="row mb-20">
+          <div class="col-md-4 offset-md-2 order-1 order-md-2 mb-10 text-center">
+            <img class="mw-100" src="./img/overview/real.png">
+          </div>
+          <div class="col-md-4 offset-md-1 order-2 order-md-1 justify-content-sm-center align-self-sm-center">
+            <h2 class="mb-10">使用実績がある</h2>
+            <p>XRPは、国際送金という実際のユースケースでの使用実績のある、数少ないデジタルアセットの1つです。</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="uses.html" class="btn btn-outline-secondary">利用例を見る</a>
+        </div>
+      </section>
+
+      <section class="mb-30 mb-50-until-sm">
+        <h6 class="section-marker">取引</h6>
+        <div class="row">
+          <div class="col-md-6 offset-md-1 order-1 order-md-2 mb-10">
+            <div class="d-flex flex-wrap w-100">
+              <a class="square square-50 d-flex card-b" href="https://www.coinbase.com/" target="_blank">
+                <img class="mw-100" src="assets/img/exchanges/coinbase.png">
+              </a>
+              <a class="square square-50 d-flex card-b" href="https://www.binance.com/" target="_blank">
+                <img class="mw-100" src="assets/img/exchanges/binance.png">
+              </a>
+              <a class="square square-50 d-flex card-b" href="https://www.bitstamp.net/" target="_blank">
+                <img class="mw-100" src="assets/img/exchanges/bitstamp.png">
+              </a>
+              <a class="square square-50 d-flex card-b" href="https://www.kraken.com/" target="_blank">
+                <img class="mw-100" src="assets/img/exchanges/kraken.png">
+              </a>
+            </div>
+          </div>
+          <div class="col-md-5 order-2 order-md-1">
+            <h2 class="mb-10">取引でXRPを使用するにはどうすればいいですか?</h2>
+            <p>XRPは世界中の140以上の市場と<a href="exchanges.html">取引所</a>で取引されています。</p>
+            <p>XRPは取引手数料が低額で、信頼性が高く、高速であるため、トレーダーが取引所間で、高速かつコスト効率が高く信頼できる担保としてこのデジタルアセットを使用し、<a href="https://ripple.com/insights/xrp-a-preferred-base-currency-for-arbitrage-trading/" target="_blank">裁定取引の好機をとらえたり</a>、マージンコールを支払ったり、全般的な取引インベントリを管理したりといったことをリアルタイムで行えるようになります。</p>
+            <p>XRPとそのエコシステムが本質的に持つ特性により、トレーダーが世界中の任意の取引所で担保の移動、通貨間の取引、ある暗号資産から別の暗号資産への切り替えをほぼ瞬時に実行できます。</p>
+            <a href="exchanges.html" class="mt-10 btn btn-outline-secondary">詳細を見る</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-30 mb-50-until-sm">
+        <h6 class="section-marker">RippleとXRPの違い</h6>
+        <div class="row">
+          <div class="col-md-3 offset-md-1 mb-10 text-center d-flex-md justify-content-md-center align-self-md-center">
+            <img class="mw-100 mt-10" src="./img/overview/xrp-text-logo.png">
+          </div>
+          <div class="col-md-5 offset-md-2">
+            <h2 class="mb-10">RippleとXRPはどのような関係があるのですか?</h2>
+            <p>Rippleは、自社が提供するプラットフォームであるRippleNetを通して、効果の高いグローバル決済事業を手軽に構築できるようにしているテクノロジー企業です。XRPはそれとは独立したデジタルアセットであり、効率的でコストパフォーマンスのよい国際送金を実現するRippleのOn-Demand Liquidityサービスで使用されています。2017年12月に、Rippleは安定した健全な<a href="https://ripple.com/xrp/market-performance" target="_blank">XRP市場</a>を支援するために、暗号で保護された<a href="https://ripple.com/insights/explanation-ripples-xrp-escrow/" target="_blank">Escrow</a>口座に550億XRPを預託しました。</p>
+            <a class="mt-10 btn btn-outline-secondary" href="https://ripple.com/" target="_blank">Rippleのウェブサイトを見る</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="last-section">
+        <h6 class="section-marker">XRPコミュニティ</h6>
+        <div class="row">
+          <div class="col-md-6 offset-md-1 order-1 order-md-2 mb-10 text-center">
+            <img class="mw-100 mt-2" src="./img/overview/xrp-community.png">
+          </div>
+          <div class="col-md-5 order-2 order-md-1">
+            <h2 class="mb-10">XRPL.org: コミュニティのために、コミュニティの力で</h2>
+            <p>XRPL.orgは、XRPとXRP Ledger（XRPL）のあらゆるものを提供する、コミュニティ主体のリソースです。XRPに関して提案したい追加の情報があれば、こちらから変更を提案できます。</p>
+            <a href="contribute.html" class="mt-10 btn btn-outline-secondary">変更を提案する</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+      </main>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container card-grid card-grid-Nx1">
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="overview.html">学ぶ</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="/ja/uses.html">使用</a></li>
+      <li class="level-1"><a href="/ja/history.html">沿革</a></li>
+      <li class="level-1"><a href="/ja/impact.html">インパクト</a></li>
+      <li class="level-1"><a href="/ja/carbon-calculator.html">二酸化炭素電卓</a></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="explore.html">探る</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="/ja/wallets.html">ウォレット</a></li>
+      <li class="level-1"><a href="/ja/exchanges.html">取引所</a></li>
+      <li class="level-1"><a href="/ja/businesses.html">企業</a></li>
+      <li class="level-1"><a href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="docs.html">作る</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="/ja/concepts.html">コンセプト</a></li>
+      <li class="level-1"><a href="/ja/tutorials.html">チュートリアル</a></li>
+      <li class="level-1"><a href="/ja/references.html">リファレンス</a></li>
+      <li class="level-1"><a href="/ja/dev-tools.html">開発者用ツール</a></li>
+      <li class="level-1"><a href="https://xrpl.org/blog/">開発者ブログ</a></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="contribute.html">貢献する</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="/ja/contribute-code.html">Contribute Code to the XRP Ledger</a></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+  </section>
+
+  <section class="container">
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2020</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">ライセンス</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ">先頭へ</a>
+<script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="/ja/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbox',
+algoliaOptions: { 'facetFilters': ["lang:ja"] },
+debug: false
+});
+</script>
+<style>
+  #algolia-autocomplete-listbox-0 {
+      z-index: 1100 !important;
+  }
+</style>
+
+
+
+<!-- Feedback Widget -->
+<script src="/ja/assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
+
+<script type="text/javascript">
+  $( '.card-b' )
+  .mouseover( function(e){
+    $( '.card-b' ).addClass( 'not-hover' );
+    $( this ).removeClass( 'not-hover' );
+  })
+  .mouseout( function(e){
+    $( '.card-b' ).removeClass( 'not-hover' );
+  });
+</script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+</body>
+</html>
