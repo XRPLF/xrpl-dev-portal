@@ -27,13 +27,11 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
 0. Use Homebrew to install dependencies.
 
-        $ brew install git cmake pkg-config protobuf openssl ninja boost@1.75
+        $ brew install git cmake pkg-config protobuf openssl ninja
 
-{#<!-- Currently unnecessary: instructions for building Boost yourself. Note, the syntax for this comment needs the {# on the outside so that it doesn't interrupt the bulleted list.
+0. Install a compatible version of Boost. `rippled` 1.7.2 is compatible with Boost 1.75.0. To compile Boost yourself, complete the following steps:
 
-0. Install a compatible version of Boost. `rippled` 1.7.0 is compatible with Boost 1.70.0 and higher. To compile Boost yourself, complete the following steps:
-
-    1. [Download an appropriate version of Boost](https://www.boost.org/users/history/).
+    1. [Download version 1.75.0 of Boost](https://www.boost.org/users/history/version_1_75_0.html).
 
     2. Extract it to a folder. Be sure to note the location.
 
@@ -42,7 +40,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
             $ cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
             $ ./bootstrap.sh
             $ ./b2 cxxflags="-std=c++14"
--->#}
+
 0. Ensure that your `BOOST_ROOT` environment points to the directory created by the Boost installation:
 
       1. To find your Boost directory, use `pwd` if you installed the Boost manually or use `brew --prefix boost` if you installed the Boost with Homebrew.
@@ -50,9 +48,9 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
       2. Edit the code below with your Boost directory location and run it to add Boost environment variable to your `.zshrc` or `.bash_profile` file so it's automatically set when you log in.
 
               # for zsh
-              $ echo "export BOOST_ROOT=/Users/my_user/boost_1_71_0" >> ~/.zshrc
+              $ echo "export BOOST_ROOT=/Users/my_user/boost_1_75_0" >> ~/.zshrc
               # for bash
-              $ echo "export BOOST_ROOT=/Users/my_user/boost_1_71_0" >> ~/.bash_profile
+              $ echo "export BOOST_ROOT=/Users/my_user/boost_1_75_0" >> ~/.bash_profile
 
 0. If you updated your `.bash_profile` file in the previous step, be sure to source it in a new Terminal window. For example:
 
