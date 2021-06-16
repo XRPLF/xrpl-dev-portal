@@ -49,7 +49,7 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
 5. Compile Boost.
 
-    Version 1.7.0 and higher of `rippled` requires Boost version 1.70.0 or higher. Because Boost version 1.70.0 or higher isn't available in the Ubuntu 18.04 (or 16.04) software repositories, you must compile it yourself. The following examples use Boost 1.75.0, which was the newest version compatible with `rippled` at the time of writing.
+    Version 1.7.0 of `rippled` requires the Boost library and is compatible with Boost versions 1.70.0 to 1.75.0. The Ubuntu 18.04 (or 16.04) software repositories don't have a compatible Boost version, so you must compile it yourself. The following examples use Boost 1.75.0.
 
     If you have previously built Boost 1.75.0 for `rippled` and configured the `BOOST_ROOT` environment variable, you can skip these steps.
 
@@ -75,9 +75,9 @@ These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the sof
 
           **Tip:** This example uses 4 processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. You can use `cat /proc/cpuinfo` to get information about your hardware's processor.
 
-      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_76_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
+      6. Set the environment variable `BOOST_ROOT` to point to the new `boost_1_75_0` directory. It's best to put this environment variable in your `.profile`, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:
 
-              export BOOST_ROOT=/home/my_user/boost_1_76_0
+              export BOOST_ROOT=/home/my_user/boost_1_75_0
 
       7. Source your updated `.profile` file. For example:
 
