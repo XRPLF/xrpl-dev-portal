@@ -33,6 +33,12 @@
 
 /* SPACING HELPERS */
 /* To create new margin classes, multiply by 4px */
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
+}
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -51,9 +57,19 @@
 .mb-10 {
   margin-bottom: 2.5rem;
 }
+.ml-10 {
+  margin-left: 2.5rem;
+}
+.mr-10 {
+  margin-right: 2.5rem;
+}
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+}
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
 }
 .mt-12 {
   margin-top: 3rem;
@@ -107,6 +123,10 @@
 .my-20 {
   margin-top: 5rem;
   margin-bottom: 5rem;
+}
+.my-26 {
+  margin-top: 6.5rem;
+  margin-bottom: 6.5rem;
 }
 .mb-30 {
   margin-bottom: 7.5rem;
@@ -266,3 +286,15 @@
 .grey-700 {
   color: $gray-700;
 }
+.bg-grey-800 {
+  background-color: $gray-800;
+}
+.green-500 {
+  color: $green-500;
+}
+
+/* ETC */
+.br-8 {
+  border-radius: 8px;
+}
+

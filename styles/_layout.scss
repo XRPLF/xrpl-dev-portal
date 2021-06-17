@@ -173,6 +173,69 @@ section {
 
 }
 
+// New Page Layouts ---------------------------------------------------------------
+$columns: 12; // Number of columns in the grid system
+
+
+.container-new {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 960px;
+  @include media-breakpoint-down(xxl) {
+    max-width: 1280px;
+  }
+  @include media-breakpoint-down(xl) {
+    max-width: 1040px;
+  }
+  @include media-breakpoint-down(lg) {
+    max-width: 832px;
+  }
+  @include media-breakpoint-down(md) {
+    max-width: 608px;
+  }
+  @include media-breakpoint-down(sm) {
+    max-width: 416px;
+  }
+  // create columns
+  @for $width from 1 through $columns {
+    .col-#{$width} {
+      flex-basis: $width / $columns * 100%;
+    }  
+  }
+  .col-new {
+    --width: 4;
+    @include media-breakpoint-up(lg) {
+      margin: 40px;
+    }
+    @include media-breakpoint-down(lg) {
+      margin: 24px;
+    }
+    // &:nth-child(3n+1){
+    //   margin-left: -40px;
+    // }
+    // &:nth-child(3n+3){
+    //   margin-right: -40px;
+    // }
+    background-position: bottom;
+    background-repeat: no-repeat;
+    &#pink {
+      background-image: url(../../img/cards/pink.svg);
+    }
+    .card-new {
+      // border-radius: 8px;
+      padding: 32px;
+      
+    }
+  }
+  .card-new {
+    --width: 4;
+  }
+}
+
+
+
+
 /* Grid Box Vertical numbers ------------------------------------------------ */
 .flag-vertical {
   color: $gray-200;
@@ -191,6 +254,7 @@ section {
 }
 
 // Misc. layout styles ---------------------------------------------------------
+
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
   padding: 44px 24px 48px;

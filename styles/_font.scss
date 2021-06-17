@@ -52,7 +52,7 @@ h2, .h2 {
   }
 }
 h3, .h3 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   line-height: 52px;
   @include media-breakpoint-down(sm) {
     font-size: 1.25rem;
@@ -71,8 +71,8 @@ h5, .h5 {
   font-size: 1.5rem;
   line-height: 32px;
   @include media-breakpoint-down(sm) {
-    font-size: 1.125rem;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 24px;
   }
 }
 h6, .h6 {
@@ -98,7 +98,7 @@ a {
   }
 }
 p a {
-  text-decoration: underline;
+  color: $blue-purple-400;
 }
 
 .fs-base {
@@ -167,11 +167,11 @@ p a {
     font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
   }
 
-  .section-marker {
-    transform: unset;
-    writing-mode: vertical-rl;
-    font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
-  }
+  // .section-marker {
+  //   transform: unset;
+  //   writing-mode: vertical-rl;
+  //   font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
+  // }
 
   &.page-calculator #data-selector li a {
     padding: 0.5rem 1.1rem;
