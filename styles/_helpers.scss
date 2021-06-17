@@ -70,6 +70,12 @@
 .mx-10 {
   margin-left: 2.5rem;
   margin-right: 2.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-left: 2.5rem;
+      margin-right: 2.5rem;
+    }
+  }
 }
 .mt-12 {
   margin-top: 3rem;

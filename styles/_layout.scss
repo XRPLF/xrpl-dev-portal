@@ -211,21 +211,27 @@ $columns: 12; // Number of columns in the grid system
     @include media-breakpoint-down(lg) {
       margin: 24px;
     }
-    // &:nth-child(3n+1){
-    //   margin-left: -40px;
-    // }
-    // &:nth-child(3n+3){
-    //   margin-right: -40px;
-    // }
     background-position: bottom;
     background-repeat: no-repeat;
-    &#pink {
-      background-image: url(../../img/cards/pink.svg);
+    &#pink-purple {
+      background-image: url(../../img/cards/pink-purple.svg);
+    }
+    &#neutral-blue {
+      background-image: url(../../img/cards/neutral-blue.svg);
+    }
+    &#light-green {
+      background-image: url(../../img/cards/light-green.svg);
+    }
+    &#orange {
+      background-image: url(../../img/cards/orange.svg);
     }
     .card-new {
       // border-radius: 8px;
       padding: 32px;
-      
+      min-height: 264px;
+      @include media-breakpoint-up(md) {
+        min-height: 347px;
+      }
     }
   }
   .card-new {
