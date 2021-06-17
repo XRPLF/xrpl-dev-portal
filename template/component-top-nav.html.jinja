@@ -10,10 +10,10 @@
       {% set printed_groupings = [] %}
       {% if top_page.children|selectattr('top_nav_omit', 'undefined_or_ne', True)|list|length %}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="topnav_{{top_page.html}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>{% if top_page.top_nav_name is defined %}{{top_page.top_nav_name}}{% else %}{{top_page.name}}{% endif %}</span></a>
-        <div class="dropdown-menu" aria-labelledby="topnav_{{top_page.html}}">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_{{slug(top_page.html)}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>{% if top_page.top_nav_name is defined %}{{top_page.top_nav_name}}{% else %}{{top_page.name}}{% endif %}</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_{{slug(top_page.html)}}" id="topnav_dd_{{slug(top_page.html)}}">
           {% if top_page.top_nav_hero_image is defined %}
-          <a class="dropdown-item dropdown-hero" href="{{top_page.html}}">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-{{slug(top_page.name)}}" href="{{top_page.html}}">
             <img src="{{top_page.top_nav_hero_image}}" alt="{{top_page.name}} icon" />
             <div class="dropdown-hero-text">
               <h4>{{top_page.name}}</h4>
@@ -31,11 +31,15 @@
             {% set _ = dropdownchildren.append(pages|selectattr("html", "defined_and_equalto", linkhtml)|first) %}
           {% endfor %}
           {% for link in dropdownchildren if not link.top_nav_omit %}
-            {% if link.top_nav_grouping is defined and link.top_nav_grouping not in printed_groupings %}
+            {% if link.top_nav_grouping not in printed_groupings %}
             {% if printed_groupings %}
           </div><!--./col-->
             {% endif %}
+            {% if link.top_nav_grouping is defined %}
           <div class="navcol col-for-{{slug(link.top_nav_grouping)}}">
+            {% else %}
+          <div class="navcol col-for-ungrouped">
+            {% endif %}
             <h5 class="dropdown-item">{{link.top_nav_grouping}}</h5>
             {% set _ = printed_groupings.append(link.top_nav_grouping) %}
             {% endif %}
@@ -54,8 +58,6 @@
       {% for page in (pages|first).children %}
       {{ dropdown(page) }}
       {% endfor %}
-
-      {% include 'component-github-edit.html.jinja' %}
 
       <li class="nav-item" id="navbar-search">
         <form class="navbar-form navbar-right" role="search">

@@ -307,10 +307,19 @@ pages:
         sidebar: disabled
         top_nav_name: Docs
         top_nav_shortcuts:
+            # Programming Languages
             - get-started-using-python.html
             - get-started-using-node-js.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
+            # Popular pages
+            - send-xrp.html
+            - reserves.html
+            - xrp-testnet-faucet.html
+            - run-rippled-as-a-validator.html
+            - intro-to-consensus.html
+            # Questions
+            - technical-faq.html
         top_nav_hero_image: assets/img/icons/docs.svg
         blurb: Dive into XRP Ledger technology and start integrating.
         targets:
@@ -3654,6 +3663,7 @@ pages:
         html: xrp-testnet-faucet.html
         parent: dev-tools.html
         template: page-xrp-faucets.html.jinja
+        top_nav_grouping: Popular Pages
         targets:
             - en
             - ja
@@ -3727,6 +3737,14 @@ pages:
         html: https://xrplgrants.org/
         parent: contribute.html
         blurb: The XRPL Grants program provides developer grants for XRPL projects.
+        targets:
+            - en
+            - ja
+
+    -   name: GitHub
+        html: https://github.com/ripple/xrpl-dev-portal/
+        parent: contribute.html
+        blurb: View and propose changes to this site's source code on GitHub.
         targets:
             - en
             - ja
