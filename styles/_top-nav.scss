@@ -1,6 +1,7 @@
 /* Top navigation ----------------------------------------------------------- */
 .top-nav {
   background-color: $gray-900;
+  height: 80px;
 
   // Logo
   .navbar-brand {
@@ -22,18 +23,18 @@
 
   // Main Links ----------------------------------------------------------------
   .navbar-nav {
+    @include media-breakpoint-up(lg) {
+      flex-grow: 1;
+    }
     .nav-link {
-      color: $white; // TODO: change to black-050
+      color: $gray-100;
       font-size: 1rem;
       line-height: 1.25rem;
       text-decoration: none;
       font-weight: 600;
 
-      @include media-breakpoint-only(lg) {
-
-        &.github-edit {
-          padding-left: 40px;
-        }
+      @include media-breakpoint-up(lg) {
+        padding: .5rem 2rem;
       }
     }
     // Buttons in top nav
@@ -99,7 +100,7 @@
   }
   // Desktop version
   @include media-breakpoint-up(lg) {
-    padding: 0 7.5rem;
+    padding: 0 3rem;
 
     .dropdown-toggle {
       &::after {
@@ -110,9 +111,10 @@
       }
     }
 
-    .dropdown:hover .dropdown-toggle span,
-    .dropdown:active .dropdown-toggle span {
+    .dropdown:hover .dropdown-toggle span {
+      padding-bottom: 8px;
       border-bottom: 2px solid $blue-purple-400;
+      margin-bottom: -8px;
     }
 
     .dropdown-menu {
@@ -124,10 +126,6 @@
         grid-template-columns: repeat(3, 180px);
         gap: 40px;
         left: -200px;
-
-        // &#topnav_dd_docshtml {
-        //   grid-template-columns: 180px 180px 300px;
-        // }
 
         &#topnav_dd_contributehtml {
           grid-template-columns: 200px;
@@ -207,24 +205,55 @@
         }
       }
     }
+
+    #navbar-search {
+      flex-grow: 1;
+      .input-group {
+        flex-grow: 1;
+      }
+    }
+
+    #topsearchbox {
+      width: 100%;
+    }
+
+    .language-selector {
+      flex-grow: 0;
+
+      #language_selector_header_btn {
+        padding-right: 0;
+        // TODO: caret
+      }
+    }
   }
 
   // Search bar & controls -----------------------------------------------------
   #navbar-search {
 
-    .input-group-text,
-    .input-group > .input-group-append > .btn {
-      color: $white;
-      background-color: transparent;
+    .input-group-text {
       border-width: 0;
+      color: $white;
+      background-color: $gray-800;
+      border-radius: $border-radius-sm 0 0 $border-radius-sm;
+      height: 40px;
+      padding: .5rem .5rem .5rem 1rem;
+      line-height: 1.5;
     }
     .algolia-autocomplete {
       flex-grow: 1;
     }
 
-    #topsearchbox:focus {
-      box-shadow: none;
-      border-color: $white;
+    #topsearchbox {
+      background-color: $gray-800;
+      border-radius: 0 $border-radius-sm $border-radius-sm 0;
+      padding: .75rem 1rem .75rem .5rem;
+      height: 40px;
+      border: 1px solid $gray-800;
+
+      &:focus {
+        box-shadow: none;
+        border-color: $white;
+      }
     }
 
     // Algolia Search results --------------------------------------------------
