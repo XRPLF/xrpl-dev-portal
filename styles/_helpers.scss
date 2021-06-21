@@ -76,6 +76,12 @@
       margin-right: 2.5rem;
     }
   }
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-left: 2.5rem;
+      margin-right: 2.5rem;
+    }
+  }
 }
 .mt-12 {
   margin-top: 3rem;
@@ -101,6 +107,11 @@
 }
 .mb-16 {
   margin-bottom: 4rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 4rem;
+    }
+  }
 }
 .mb-18 {
   margin-bottom: 4.5rem;
@@ -172,6 +183,9 @@
     }
   }
 }
+.p-40 {
+  padding: 40px;
+}
 .py-20 {
   padding-bottom: 5rem;
   padding-top: 5rem;
@@ -181,6 +195,10 @@
 }
 .pb-20 {
   padding-bottom: 5rem;
+}
+.py-26 {
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 .pt-30 {
   padding-top: 7.5rem;

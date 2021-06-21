@@ -83,7 +83,18 @@ h6, .h6 {
     line-height: 24px;
   }
 }
+.longform {
+  font-size: 1.5rem;
+  line-height: 32px;
+  color: $gray-100;
+  font-weight: normal;
+  @include media-breakpoint-down(sm) {
+    font-size: 1rem;
+    line-height: 24px;
+  }
+}
 p {
+  color: $gray-200;
   font-size: 1rem;
   line-height: 24px;
 }

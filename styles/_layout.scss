@@ -176,7 +176,6 @@ section {
 // New Page Layouts ---------------------------------------------------------------
 $columns: 12; // Number of columns in the grid system
 
-
 .container-new {
   display: flex;
   flex-wrap: wrap;
@@ -199,20 +198,26 @@ $columns: 12; // Number of columns in the grid system
   }
   // create columns
   @for $width from 1 through $columns {
-    .col-#{$width} {
+    .col-new-#{$width} {
       flex-basis: $width / $columns * 100%;
     }  
   }
   .col-new {
     --width: 4;
-    @include media-breakpoint-up(lg) {
-      margin: 40px;
-    }
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+
     @include media-breakpoint-down(lg) {
       margin: 24px;
     }
-    background-position: bottom;
-    background-repeat: no-repeat;
+    @include media-breakpoint-down(sm) {
+      margin: 0 0 40px;
+    }
+    @include media-breakpoint-up(lg) {
+      margin: 40px;
+    }
+    
     &#pink-purple {
       background-image: url(../../img/cards/pink-purple.svg);
     }
@@ -226,7 +231,6 @@ $columns: 12; // Number of columns in the grid system
       background-image: url(../../img/cards/orange.svg);
     }
     .card-new {
-      // border-radius: 8px;
       padding: 32px;
       min-height: 264px;
       @include media-breakpoint-up(md) {
@@ -234,8 +238,16 @@ $columns: 12; // Number of columns in the grid system
       }
     }
   }
+
   .card-new {
     --width: 4;
+  }
+  .col-new-card {
+    transition: all 0.35s ease-out;
+    &:hover {
+      margin-top: 24px;
+      margin-bottom: 56px;
+    }
   }
 }
 
