@@ -332,3 +332,20 @@
     font-size: 0.875rem;
   }
 }
+
+
+// Fix so anchors don't jump under the fixed header ----------------------------
+.main h1:before,
+.main h2:before,
+.main h3:before,
+.main h4:before,
+.main h5:before,
+.main h6:before,
+#main_content_wrapper:before,
+.interactive-block:before {
+  display: block;
+  content: " ";
+  margin-top: -80px;
+  height: 80px;
+  visibility: hidden;
+}
