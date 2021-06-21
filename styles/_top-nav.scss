@@ -96,6 +96,15 @@
         margin: 0;
         white-space: normal;
       }
+
+      &:hover {
+        h4 {
+          color: $blue-purple-400;
+        }
+        p {
+          font-weight: 400;
+        }
+      }
     }
   }
   // Desktop version
@@ -106,12 +115,23 @@
       &::after {
         display: none;
       }
-      span {
+      > span {
         border-bottom: 2px solid transparent;
       }
+
+      // Disabled: non-animated caret style
+      // &.with-caret::after {
+      //   display: inline;
+      //   content:"\f107";
+      //   font-family: FontAwesome;
+      //   margin-left: 0.5rem;
+      //   border-width: 0 0 0 0;
+      //   color: $blue-purple-400;
+      //   vertical-align: bottom;
+      // }
     }
 
-    .dropdown:hover .dropdown-toggle span {
+    .dropdown .dropdown-toggle:hover > span:not(.chevron) {
       padding-bottom: 8px;
       border-bottom: 2px solid $blue-purple-400;
       margin-bottom: -8px;
@@ -123,9 +143,16 @@
 
       &.show {
         display: grid;
-        grid-template-columns: repeat(3, 180px);
         gap: 40px;
-        left: -200px;
+
+        &#topnav_dd_xrp-ledger-overviewhtml {
+          grid-template-columns: 180px 180px 180px;
+        }
+
+        &#topnav_dd_docshtml {
+          grid-template-columns: 180px 180px 260px;
+          left: -200px;
+        }
 
         &#topnav_dd_contributehtml {
           grid-template-columns: 200px;
@@ -203,6 +230,16 @@
         &:last-child {
           padding-bottom: 0;
         }
+      }
+
+      h5:hover {
+        background-color: inherit;
+      }
+
+      a:hover {
+        color: $blue-purple-400;
+        font-weight: 700; // TODO: confirm weight for semibold
+        background-color: inherit;
       }
     }
 
@@ -348,4 +385,51 @@
   margin-top: -80px;
   height: 80px;
   visibility: hidden;
+}
+
+// Animated chevron (e.g. for language dropdown) -------------------------------
+
+.chevron {
+  position: relative;
+  display: inline-block;
+  width: .75rem;
+  height: .5625rem;
+
+  span {
+    position: absolute;
+    top: .25rem;
+    display: inline-block;
+    width: .5rem;
+    height: .15rem;
+    background-color: $blue-purple-400;
+    transition: all .2s ease;
+    border: none;
+
+    &:first-of-type {
+      left: 0;
+      transform: rotate(45deg);
+    }
+    &:last-of-type {
+      right: 0;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &.active {
+    span:first-of-type {
+      transform: rotate(-45deg);
+    }
+    span:first-of-type {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.dropdown.show .chevron {
+  span:first-of-type {
+    transform: rotate(-45deg);
+  }
+  span:last-of-type {
+    transform: rotate(45deg);
+  }
 }

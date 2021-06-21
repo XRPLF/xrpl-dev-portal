@@ -77,6 +77,7 @@
       <div class="dropdown">
         <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{(config.languages|selectattr('code', 'eq', target.lang)|first).display_name}}
+          <span class="chevron"><span></span><span></span></span>
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           {% for lang in config.languages %}

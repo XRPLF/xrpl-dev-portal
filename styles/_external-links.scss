@@ -1,4 +1,4 @@
-.external-link{
+.external-link {
   &::after {
     content: "\00a0";
     background-image: url(../img/icons/arrow-up-right.svg);
@@ -24,6 +24,15 @@
   }
 }
 
+.top-nav .dropdown .external-link {
+  &::after {
+    background-position: left 0 bottom -.1em;
+  }
+
+  &:hover::after {
+    background-position: left .2em bottom .1em;
+  }
+}
 
 // /* Reduce external link icon size */
 // .fa.fa-external-link:before {
