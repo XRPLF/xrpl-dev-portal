@@ -16,85 +16,148 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-  <div class="marketing-wrapper">
-    <div class="container">
-      <section class="row mb-20">
-        <div class="col-md-4 d-flex flex-column-reverse justify-content-end">
-          <h1 class="mb-10">{% trans %}The Best Way To Move Money Around the World{% endtrans %}</h1>
-          <h6 class="text-primary mb-4">{% trans %}Using XRP{% endtrans %}</h6>
-        </div>
-        <div class="col-md-6 offset-md-1">
-          <h2 class="mt-12 mb-10">{% trans %}XRP and the XRP Ledger are used to power innovative technology across the payments space.{% endtrans %}</h2>
-          <p>{% trans %}From cross-border payments to decentralized finance, businesses and developers around the world are leveraging the XRP Ledger and its native digital asset, XRP—a faster, cheaper and greener currency.{% endtrans %}</p>
-        </div>
-      </section>
+  {# <div class="marketing-wrapper"> #}
+   <section class="py-26 text-center">
+    <div class="col-md-4 mx-auto text-center">
+      <div class="d-flex flex-column-reverse">
+        <h1 class="">{% trans %}XRPL Powers Innovative Technology{% endtrans %}</h1>
+        <h6 class="green-500 mb-3">{% trans %}XRPL Use Cases{% endtrans %}</h6>
+      </div>
     </div>
+  </section>
 
-    <img class="mb-40" src="assets/img/backgrounds/bg-uses-top.png" id="page-uses-top" />
 
-    <div class="container mb-20">
-    <section class="row mb-30 mb-50-until-sm">
-      <h6 class="section-marker">{% trans %}Cross-Border Payments{% endtrans %}</h6>
-      <div class="col-md-4 offset-md-2 order-1 order-md-2 mb-10 text-center text-md-left">
-        <img class="mw-100" src="./img/uses/xb-payment.png">
-      </div>
-      <div class="col-md-4 offset-md-1 order-2 order-md-1">
-        <h2 class="mb-10">{% trans %}Cross-Border Payments{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Through RippleNet, financial institutions can use XRP to bridge two currencies in 3-5 seconds, ensuring payments are quickly sent and received in the local currency on either side of a transaction.{% endtrans %}</p>
-        <a href="https://ripple.com/ripplenet/on-demand-liquidity" class="btn btn-outline-secondary" target=
-        "_blank">{% trans %}Learn About On-Demand Liquidity{% endtrans %}</a>
-      </div>
-    </section>
+  <section class="container-new py-26">
+    <div class="mt-10 card-grid card-grid-3xN">
+      <a class="col-new ls-none mb-16-sm">
+        <img src="./img/icons/micropayments.svg">
+        <h4 class="mt-3 mb-0 h5">{% trans %}Micropayments{% endtrans %}</h4>
+        <p class="mt-8 mb-0">{% trans %}Developers are using the XRP Ledger to build innovative products for gaming, content, and web monetization, among other applications where currency is at the center.{% endtrans %}</p>
+      </a>
+      <a class="col-new ls-none mb-16-sm">
+        <img src="./img/icons/wallets.svg">
+        <h4 class="mt-3 mb-0 h5">{% trans %}Cryptocurrency Wallets{% endtrans %}</h4>
+        <p class="mt-8 mb-0">{% trans %}Use the Ledger to build digital wallets to store private and public passwords and interact with various blockchains to send and receive digital assets, including XRP.{% endtrans %}</p>
+      </a>
+      <a class="col-new ls-none mb-16-sm">
+        <img src="./img/icons/exchanges.svg">
+        <h4 class="mt-3 mb-0 h5">{% trans %}Exchanges{% endtrans %}</h4>
+        <p class="mt-8 mb-0">{% trans %}Build sophisticated exchanges where users can invest and trade crypto and non-blockchain assets such as stocks, ETFs, and commodities.{% endtrans %}</p>
+      </a>
+      <a class="col-new ls-none mb-16-sm">
+        <img src="./img/icons/stablecoins.svg">
+        <h4 class="mt-3 mb-0 h5">{% trans %}Stablecoins{% endtrans %}</h4>
+        <p class="mt-8 mb-0">{% trans %}Financial institutions can use Issued Currencies to issue stablecoins on the XRP Ledger. XRPL’s integrated decentralized exchange (DEX) allows neutral, counterparty-free digital assets to be seamlessly exchanged to and from “issued assets,” including stablecoins.{% endtrans %}</p>
+      </a>
+      <a class="col-new ls-none mb-16-sm">
+        <img src="./img/icons/nft.svg">
+        <h4 class="mt-3 mb-0 h5">{% trans %}NFTs{% endtrans %}</h4>
+        <p class="mt-8 mb-0">{% trans %}XRPL allows issuance of IOUs which can represent a currency of any value, which can be extended to the issuance of non-fungible tokens (NFTs).{% endtrans %}</p>
+      </a>
+      <a class="col-new ls-none mb-16-sm">
+        <img src="./img/icons/defi.svg">
+        <h4 class="mt-3 mb-0 h5">{% trans %}DeFi{% endtrans %}</h4>
+        <p class="mt-8 mb-0">{% trans %}Provide access to financial products and services online in a decentralized and borderless manner on XRPL, with decentralized smart contract protocols replacing the traditional role of financial institutions.{% endtrans %}</p>
+      </a>
+      <a class="col-new ls-none mb-16-sm">
+        <img src="./img/icons/cbdc.svg">
+        <h4 class="mt-3 mb-0 h5">{% trans %}CBDCs{% endtrans %}</h4>
+        <p class="mt-8 mb-0">{% trans %}The CBDC Private Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage digital currencies (CBDCs).{% endtrans %}</p>
+      </a>
+    </div>
+  </section>
 
-    <section class="row mb-30 mb-50-until-sm">
-      <h6 class="section-marker">{% trans %}Micropayments{% endtrans %}</h6>
-      <div class="col-md-4 offset-md-1 mb-10 text-center text-md-left">
-        <img class="mw-100" src="./img/uses/micropayments.png">
+  <section class="container-new py-26">
+    <div class="col-8 p-0 col-8 p-0 mx-10-until-sm">
+      <div class="d-flex flex-column-reverse">
+        <h3 class="h4">{% trans %}Businesses and Projects Running  on the XRP Ledger{% endtrans %}</h3>
+        <h6 class="green-500 mb-3">{% trans %}Solving Real Problems Across Industries{% endtrans %}</h6>
       </div>
-      <div class="col-md-4 offset-md-2">
-        <h2 class="mb-10">{% trans %}Micropayments{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Businesses are leveraging XRP and the XRP Ledger to build innovative products for gaming, content and web monetization, among other applications where money is at the center.{% endtrans %}</p>
-        <a href="businesses.html" class="btn btn-outline-secondary">{% trans %}Learn About XRP Ledger Businesses{% endtrans %}</a>
-      </div>
-    </section>
+      <p class="mb-0">{% trans %}There are companies and developer projects around the world that leverage the XRP Ledger to solve interesting problems across a variety of industries and use cases.{% endtrans %}</p>
+    </div>
+    <div class="mt-10 card-grid card-grid-3xN">
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="magenta-orange">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/bitgo.svg">
+          <h4 class="h5">{% trans %}Asset Custody{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}BitGo provides custodial and non-custodial asset holdings for digital assets including XRP. BitGo's enterprise-level security empowers businesses to integrate digital currencies like XRP into new and existing financial systems.{% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="blue-green">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/bitpay.svg">
+          <h4 class="h5">{% trans %}Payment Processing{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}BitPay builds powerful, enterprise-grade tools for accepting and spending cryptocurrencies, including XRP.{% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="purple-blue">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/coil.svg">
+          <h4 class="h5">{% trans %}Web Monetization{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}Coil provides web monetization as an alternative to traditional paid advertising. Coil uses the interledger protocol (ILP) to stream micropayments as users consume content. The XRPL’s payment channels provide an ideal system for settling these micropayments at high speed and low cost.{% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="light-blue">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/forte.svg">
+          <h4 class="h5">{% trans %}Online Gaming{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}Forte offers an unprecedented set of easy-to-use tools and services for game developers to integrate blockchain technology into their games, to unlock new economic and creative opportunities for gamers across the world.{% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="pink-purple">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/gatehub.svg">
+          <h4 class="h5">{% trans %}Wallet and Platformy{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}GateHub is a platform for the Internet of Value, built on the XRP Ledger protocol. It allows everyone to send, receive, trade and manage any type of assets. {% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="green-blue">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/exodus.svg">
+          <h4 class="h5">{% trans %}Wallets and Apps{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}Exodus offers wallets and applications for securing, managing and exchanging crypto.{% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="blue-light-blue">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/ripple.svg">
+          <h4 class="h5">{% trans %}On-Demand Liquidity{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}Ripple powers instant, lower-cost settlement of cross-border payments using XRP to source liquidity on demand. XRP is ideally suited for global payments because it's quicker, less costly, and more scalable than any other digital asset.{% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="purple-blue">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/towo.svg">
+          <h4 class="h5">{% trans %}Infrastructure{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}Towo Labs was founded in 2019, to develop XRP Ledger and Interledger infrastructures and make non-custodial crypto management easier.{% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="orange-yellow">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/raised.svg">
+          <h4 class="h5">{% trans %}Music{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}Raised in Space is a music/tech investment group focused on raising the value of music, innovating across the entire value chain of the music industry.{% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="magenta-orange">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/xrpl-labs.svg">
+          <h4 class="h5">{% trans %}Applications{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}From cold storage to apps for signing transactions, XRPL Labs is dedicated to building software on the XRP Ledger.{% endtrans %}</p>
+        </span>
+      </a>
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="green-purple">
+        <span class="card-new d-block">
+          <img class="mw-100 mb-3" src="./img/uses/xplorer.svg">
+          <h4 class="h5">{% trans %}Security{% endtrans %}</h4>
+          <p class="mt-6 mb-8">{% trans %}Xrplorer offers services and tools that help prevent and combat fraudulent activity on the XRPL as well as custom APIs and analytics that supplement the XRPL APIs where they are not enough.{% endtrans %}</p>
+        </span>
+      </a>
+    </div>
+  </section>
 
-    <section class="row mb-30 mb-50-until-sm">
-      <h6 class="section-marker">{% trans %}Digital Cryptocurrency{% endtrans %}</h6>
-      <div class="col-md-4 offset-md-2 order-1 order-md-2 mb-10 text-center text-md-left">
-        <img class="mw-100" src="./img/uses/digital-wallets.png">
-      </div>
-      <div class="col-md-4 offset-md-1 order-2 order-md-1">
-        <h2 class="mb-10">{% trans %}Digital Cryptocurrency Wallets{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Individuals can use mobile wallets to store private and public passwords and interact with various blockchains to send and receive digital assets, including XRP.{% endtrans %}</p>
-        <a href="wallets.html" class="btn btn-outline-secondary">{% trans %}Explore Wallets{% endtrans %}</a>
-      </div>
-    </section>
+   
 
-    <section class="row mb-30 mb-50-until-sm">
-      <h6 class="section-marker">{% trans %}Exchanges{% endtrans %}</h6>
-      <div class="col-md-4 offset-md-1 mb-10 text-center text-md-left">
-        <img class="mw-100" src="./img/uses/exchanges.png">
-      </div>
-      <div class="col-md-4 offset-md-2">
-        <h2 class="mb-10">{% trans %}Exchanges{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Market makers and individuals use exchanges to trade XRP and other digital assets. Exchanges are often also intermediaries in cross-border payments among financial institutions.{% endtrans %}</p>
-        <a href="exchanges.html" class="btn btn-outline-secondary">{% trans %}Explore Exchanges{% endtrans %}</a>
-      </div>
-    </section>
-
-    <section class="row last-section">
-      <h6 class="section-marker">{% trans %}Trading{% endtrans %}</h6>
-      <div class="col-md-5 offset-md-1 order-1 order-md-2 mb-10 text-center text-md-left">
-        <img class="mw-100" src="./img/uses/inst-trading.png">
-      </div>
-      <div class="col-md-4 offset-md-1 order-2 order-md-1">
-        <h2 class="mb-10">{% trans %}Institutional Trading{% endtrans %}</h2>
-        <p class="mb-10 normal">{% trans %}Market participants use XRP as a high-speed, cost-efficient and reliable trading collateral. This means seizing arbitrage opportunities, servicing margin calls and managing general trade inventory in real time.{% endtrans %}</p>
-        <a href="https://blog.ripplex.io/how-xrp-enables-faster-low-cost-cross-exchange-transfers/" class="btn btn-outline-secondary" target="_blank">{% trans %}Learn More{% endtrans %}</a>
-      </div>
-    </section>
-
-  </div>
 {% endblock %}
 
 

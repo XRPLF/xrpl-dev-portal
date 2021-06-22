@@ -138,6 +138,19 @@ section {
     }
   }
 
+  &.card-grid-2xN {
+    /* 2 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+    }
+  }
+
   &.card-grid-Nx1 {
     /* 1 row of equal sized columns */
     grid-auto-flow: column;
@@ -203,7 +216,6 @@ $columns: 12; // Number of columns in the grid system
     }  
   }
   .col-new {
-    --width: 4;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
@@ -230,6 +242,33 @@ $columns: 12; // Number of columns in the grid system
     &#orange {
       background-image: url(../../img/cards/orange.svg);
     }
+    &#orange-yellow {
+      background-image: url(../../img/cards/orange-yellow.svg);
+    }
+    &#orange-yellow-2 {
+      background-image: url(../../img/cards/orange-yellow-2.svg);
+    }
+    &#magenta-orange {
+      background-image: url(../../img/cards/magenta-orange.svg);
+    }
+    &#blue-green {
+      background-image: url(../../img/cards/blue-green.svg);
+    }
+    &#light-blue {
+      background-image: url(../../img/cards/light-blue.svg);
+    }
+    &#green-blue {
+      background-image: url(../../img/cards/green-blue.svg);
+    }
+    &#green-purple {
+      background-image: url(../../img/cards/green-purple.svg);
+    }
+    &#purple-blue {
+      background-image: url(../../img/cards/purple-blue.svg);
+    }
+    &#blue-light-blue {
+      background-image: url(../../img/cards/blue-light-blue.svg);
+    }
     .card-new {
       padding: 32px;
       min-height: 264px;
@@ -244,9 +283,13 @@ $columns: 12; // Number of columns in the grid system
   }
   .col-new-card {
     transition: all 0.35s ease-out;
+    cursor: pointer;
     &:hover {
-      margin-top: 24px;
-      margin-bottom: 56px;
+      -webkit-transform: translateY(-16px);
+      -moz-transform: translateY(-16px);
+      -ms-transform: translateY(-16px);
+      -o-transform: translateY(-16px);
+      transform: translateY(-16px);
     }
   }
 }

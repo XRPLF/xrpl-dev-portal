@@ -16,41 +16,78 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-<div id="page-overview-bg" class="pt-40-until-sm">
-  <div class="container">
-      <section class="row mt-20 mb-50-until-sm mb-20">
-        <div class="col-md-6 mb-10 offset-md-3 text-center">
-          <h6 class="text-primary mb-4">{% trans %}XRP Overview{% endtrans %}</h6>
-          <h1 class="mb-18">{% trans %}Your Questions About XRP, Answered.{% endtrans %}</h1>
-        </div>
-        <div class="w-100"></div>
-        <div class="col-md-8">
-          <h2 class="mb-10">{% trans %}What is XRP?{% endtrans %}</h2>
-          <div class="row">
-            <p class="col-sm">{% trans %}XRP is a digital asset that’s native to the XRP Ledger, an open-source, permissionless and decentralized <a href="https://www.distributedagreement.com/2018/09/24/what-is-a-blockchain/" target="_blank">blockchain technology</a>.{% endtrans %}</p>
-            <p class="col-sm">{% trans %}Created in 2012 specifically for payments, XRP can settle transactions on the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, cheaper and greener than any other digital asset.  {% endtrans %}</p>
-          </div>
-        </div>
-      </section>
+{# <div id="page-overview-bg" class="pt-40-until-sm"> #}
+  <section class="py-26 text-center">
+    <div class="col-md-4 mx-auto text-center">
+      <div class="d-flex flex-column-reverse">
+        <h1 class="mb-18">{% trans %}XRPL Today and The Vision for Tomorrow{% endtrans %}</h1>
+        <h6 class="green-500 mb-3">{% trans %}XRPL | XRPL Ledger Overview{% endtrans %}</h6>
+      </div>
     </div>
-    <div class="new-container">
-      <h2>Why Developers</h2>
-      <section class="mt-10 card-grid card-grid-3xN">
-        <div class="card-new">
-          <h5>{% trans %}Micropayments{% endtrans %}</h5>
-          <p class="my-10">{% trans %}Many businesses are building on the XRP Ledger, pursuing powerful use cases in decentralized finance, micropayments, gaming, web monetization and more. Additionally, Ripple, the technology company, is focused on building a network and infrastructure that leverages XRP to power faster, more affordable cross-border payments around the world.{% endtrans %}</p>
-        </div>
-        <div class="card-new">
-          <h5>{% trans %}Cryptocurrency Wallets{% endtrans %}</h5>
-          <p class="my-10">{% trans %}Individual consumers can use XRP to move different currencies around the world. For example, through wallets and exchanges that use <a href="https://paystring.org/" target="_blank">PayID</a>, anyone can use XRP—or any currency, be it fiat or digital assets—to easily make purchases across any payments network.{% endtrans %}</p>
-        </div>
-        <div class="card-new">
-          <h5>{% trans %}Exchanges{% endtrans %}</h5>
-          <p class="my-10">{% trans %}By building on the XRP Ledger, developers can easily integrate payments into their products—seamlessly putting money at the center of their applications. Projects like <a href="https://github.com/XRPLF/xrpl-py" target="_blank">xrpl-py</a> are making it easier for developers to leverage XRP.{% endtrans %}</p>
-        </div>
-      </section>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="col-md-6 offset-md-3 p-40">
+      <h6 class="green-500 mb-3">{% trans %}XRP Ledger Basics{% endtrans %}</h6>
+      <h2 class="h4 mb-8">{% trans %}How the XRPL works{% endtrans %}</h2>
+      <h5 class="longform mb-10">{% trans %}The XRP Ledger is a decentralized public blockchain. {% endtrans %}</h5>
+      <p class="mb-10">{% trans %}Anyone can connect their computer to the peer-to-peer network that manages the ledger. The global XRP Ledger community—a diverse set of software engineers, server operators, users, and businesses—maintains the ledger.{% endtrans %}</p>
+      <a class="btn btn-primary">{% trans %}Get Technical{% endtrans %}</a>
     </div>
-  </div>
+  </section>
+
+  <section class="container-new py-26">
+    <div class="mt-10 card-grid card-grid-2xN">
+      <div class="col-new ls-none mb-16-sm">
+        <h2 class="h4 mb-8">{% trans %}How The Consensus Protocol Works{% endtrans %}</h2>
+        <h5 class="longform mb-10">{% trans %}XRPL uses a consensus protocol, in which designated servers called validators come to an agreement on the order and outcome of XRP transactions every 3-5 seconds.{% endtrans %}</h5>
+        <p class="mb-6">{% trans %}All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed right away. All transactions are public, with strong cryptography to guarantee the integrity of the system.{% endtrans %}</p>
+        <p class="mb-0">{% trans %}Anyone can operate a validator; currently, over 150 validators are active on the ledger, operated by universities, exchanges, businesses, and individuals. Additionally, the consensus protocol ensures the blockchain becomes more decentralized over time as the validator pool grows.{% endtrans %}</p>
+      </div>
+      <div class="col-new ls-none mb-16-sm">
+        <img src="./img/graphics/validator.svg">
+      </div>
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+      <div class="col-md-6 offset-md-3 p-40 br-8 bg-grey-800 text-center">
+        <h2 class="h4 mb-8">{% trans %}A Greener Blockchain{% endtrans %}</h2>
+        <p class="mb-10">{% trans %}Unlike most other blockchains, the XRP Ledger does not need mining, so no energy is wasted in the transaction process. Learn how this compares to other platforms with our Green Currency Calculator.{% endtrans %}</p>
+        <a class="btn btn-primary">Get Technical</a>
+      </div>
+    </section>
+
+  <section class="container-new py-26">
+    <div class="mt-10 card-grid card-grid-2xN">
+      <div class="col-new ls-none mb-16-sm">
+        <div class="d-flex flex-column-reverse">
+          <h2 class="h4 mb-8">{% trans %}XRPL provides powerful utility across the blockchain space{% endtrans %}</h2>
+          <h6 class="green-500 mb-3">{% trans %}XRPL Today{% endtrans %}</h6>
+        </div>
+        <h5 class="longform mb-10">{% trans %}The ledger’s unique properties, such as its fast and efficient consensus algorithm and censorship-resistant transaction processing, are leveraged by thousands of developers.{% endtrans %}</h5>
+        <p class="mb-10">{% trans %}With the XRPL, these developers are building innovative projects and applications across blockchain use cases including tokenization of assets, online gaming, asset custody, NFTs, and DeFi.{% endtrans %}</p>
+        <a class="btn btn-primary">{% trans %}Explore More{% endtrans %}</a>
+      </div>
+      <div class="col-new ls-none mb-16-sm">
+        <div class="d-flex flex-column-reverse">
+          <h2 class="h4 mb-8">{% trans %}Fulfilling the vision of the XRPL community{% endtrans %}</h2>
+          <h6 class="green-500 mb-3">{% trans %}XRPL Tomorrow{% endtrans %}</h6>
+        </div>
+        <h5 class="longform mb-10">{% trans %}While XRPL is the choice of developers who don’t want to sacrifice security or performance and who want to build on the greenest blockchain, that’s only the beginning.{% endtrans %}</h5>
+        <p class="mb-6">{% trans %}As a community-led blockchain, XRPL’s vision is also a community effort. The XRPL Foundation is currently collaborating with community members to define a shared vision statement. Stay tuned for more on this effort—we can’t wait to share it with you.{% endtrans %}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-new py-26">
+      <div class="col-md-6 offset-md-3 p-40 br-8 bg-grey-800 text-center">
+        <h2 class="h4 mb-8">{% trans %}Tomorrow’s Blockchain Starts With You{% endtrans %}</h2>
+        <p class="mb-10">{% trans %}XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for an  XRPL Grant.{% endtrans %}</p>
+        <a class="btn btn-primary">{% trans %}XRPL Grants{% endtrans %}</a>
+      </div>
+    </section>
+
 {% endblock %}
 
 
