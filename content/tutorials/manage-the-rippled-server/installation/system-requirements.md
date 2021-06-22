@@ -16,7 +16,7 @@ A `rippled` server should run comfortably on commodity hardware, to make it inex
 - Disk: Minimum 50 GB for the database partition. SSD strongly recommended (minimum 1000 IOPS, more is better)
 - RAM: 8 GB+
 
-<!-- SPELLING_IGNORE: iops, ntp, x86_64 -->
+<!-- SPELLING_IGNORE: iops, ntp, x86_64, ec2 -->
 
 Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.
 

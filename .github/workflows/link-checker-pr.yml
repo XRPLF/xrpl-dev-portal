@@ -1,0 +1,68 @@
+name: Link Checker (PR Build)
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  build:
+    name: "Build and Check Links"
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: "3.7"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install Jinja2==2.11.3
+        pip install dactyl lxml
+
+    - name: Check for Conflict Markers
+      run: |
+        tool/conflictmarkers.sh
+
+    - name: Build docs
+      run: |
+        echo '{"github_forkurl": "https://github.com/'"${{ github.event.pull_request.head.repo.full_name }}"'", "github_branch": "'"${{ github.head_ref }}"'", "github_pr_id": "'"${{ github.event.number }}"'", "is_pr_build": true}' > dactyl_vars.json
+        tool/build_all_langs.sh --vars dactyl_vars.json
+
+    - name: Run Dactyl Link Checker
+      continue-on-error: true
+      run: |
+        dactyl_link_checker -o -q > linkreport.txt
+
+    - name: Assemble Link Report
+      run: |
+        sed -i '1,/---------------------------------------/d' linkreport.txt
+        echo 'LINKREPORT<<EOF' >> $GITHUB_ENV
+        cat linkreport.txt >> $GITHUB_ENV
+        echo 'EOF' >> $GITHUB_ENV
+        cat linkreport.txt
+
+    - name: Run Style Checker
+      continue-on-error: true
+      run: dactyl_style_checker -q > out/style_report.txt
+
+    - name: Deploy preview to gh-pages
+      uses: sauloxd/review-apps@v1.3.3
+      with:
+        build-cmd: "echo 'Using existing build'"
+        branch: "gh-pages"
+        dist: "out"
+        slug: "pr-preview"
+
+    - name: Get short SHA6
+      id: slug
+      run: echo "::set-output name=sha6::$(echo ${{ github.event.pull_request.head.sha }} | cut -c1-6)"
+
+    - name: Summarize Output
+      uses: unsplash/comment-on-pr@master
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        msg: "${{ env.LINKREPORT }}\n\nPreview: https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/${{steps.slug.outputs.sha6}}\n\n[Style Report](https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/${{steps.slug.outputs.sha6}}/style_report.txt)"

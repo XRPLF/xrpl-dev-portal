@@ -9,7 +9,7 @@ An important and intentional feature of the XRP Ledger is that a [transaction](t
 
 If a transaction has _not_ yet been included in a validated ledger, it may be possible to effectively cancel it by sending another transaction from the same sending address with the same `Sequence` value. If you do not want the replacement transaction to do anything, send an [AccountSet transaction][] with no options.
 
-**Caution:** There is no guaranteed way to cancel a valid transaction after it has been distributed to the network. The process described here may or may not work depending on a number of factors including how busy the network is, the network topology, and the [transaction cost](transaction-cost.html) of the proposed transaction.
+**Caution:** There is no guaranteed way to cancel a valid transaction after it has been distributed to the network. The process described here may or may not work depending on factors including how busy the network is, the network topology, and the [transaction cost](transaction-cost.html) of the proposed transaction.
 
 If the transaction has already been distributed to the network and proposed as a [candidate transaction](consensus.html#consensus-1) in servers' consensus proposals, it may be too late to cancel. It is more likely that you can successfully cancel a transaction that is [queued](transaction-queue.html) or is stuck "in limbo" because its [transaction cost](transaction-cost.html) is not high enough to meet the network's current requirements. In this case, the replacement transaction can either do nothing, or do the same thing as the transaction to be canceled. The replacement transaction is more likely to succeed if its transaction cost is higher.
 

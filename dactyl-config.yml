@@ -79,10 +79,6 @@ targets:
         display_name: XRPL.org
         <<: *defaults
         prefix: ""
-        link_subs:
-            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
-        readability_goals:
-            flesch_reading_ease: 50 # or higher
         blurb: XRPL.org is a community-driven resource for all things XRP and the XRP Ledger—your source for technical information, reference materials and tools.
 
     -   name: ja
@@ -93,8 +89,6 @@ targets:
         locale_file: locale/ja/LC_MESSAGES/messages.mo
         blurb: XRPとXRP Ledgerの全てに対してのコミュニティーリーソース
         link_subs:
-            # Adjust XRP-API readme link to point to the right place in the repo
-            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
             # Fix 9 links from untranslated use-an-escrow-as-a-smart-contract.html:
             "send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment": "send-a-conditionally-held-escrow.html#1条件とフルフィルメントの生成"
             "send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time": "send-a-conditionally-held-escrow.html#2リリース時刻または取消し時刻の計算"
@@ -129,8 +123,6 @@ targets:
             "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
             "set-up-secure-signing.html#use-a-dedicated-signing-device": "set-up-secure-signing.html#専用の署名デバイスを使用する"
             "set-up-secure-signing.html#run-rippled-locally": "set-up-secure-signing.html#ローカルでrippledを実行する"
-            # Fix link from untranslated rate-limiting.html
-            "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html#管理者アクセス権限"
             # Fix links from untranslated validator-list.html
             "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"
             "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
@@ -167,32 +159,9 @@ targets:
             "account_info.html#response-format": "account_info.html#応答フォーマット"
             # Fix link from untranslated public-servers.html:
             "ledger-history.html#full-history": "ledger-history.html#すべての履歴"
+            # Fix link from untranslated amendment-voting.html and rate-limiting.html:
+            "get-started-using-http-websocket-apis.html#admin-access": "get-started-using-http-websocket-apis.html#管理者アクセス権限"
 
-
-    -   name: xrp-api-only
-        lang: en
-        display_name: XRP API Reference
-        <<: *defaults
-        no_cover: true
-        link_subs:
-            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
-
-    # Data API target for porting changes to the README in the upstream repo
-    # Intended for use in markdown (--md) mode.
-    -   name: data-api-only
-        lang: en
-        display_name: XRP Ledger Data API
-        <<: *defaults
-        no_cover: True
-        link_re_subs:
-           "([\\w-]+\\.html)": https://xrpl.org/\1
-    -   name: data-api-ja
-        lang: ja
-        display_name: XRP Ledger Data API
-        <<: *defaults
-        no_cover: True
-        link_re_subs:
-           "([\\w-]+\\.html)": https://xrpl.org/ja/\1
 
 pages:
 
@@ -3146,6 +3115,7 @@ pages:
             - en
             - ja
 
+        # Deprecation warnings for old Data API docs
     -   md: references/data-api.md
         targets:
             - en
@@ -3153,7 +3123,6 @@ pages:
     -   md: references/data-api.ja.md
         targets:
             - ja
-            - data-api-ja
 
     -   md: references/xrp-ledger-toml.md
         targets:
@@ -3290,17 +3259,17 @@ pages:
             - en
             - ja
 
-    -   name: Data API v2 Tool
-        html: data-api-v2-tool.html
-        parent: dev-tools.html
-        methods_js: js/apitool-methods-data_v2.js
-        rest_host: https://data.ripple.com
-        doc_page: data-api.html
-        sidebar: custom
-        targets:
-            - en
-            - ja
-        template: template-rest-api-tool.html
+    # -   name: Data API v2 Tool
+    #     html: data-api-v2-tool.html
+    #     parent: dev-tools.html
+    #     methods_js: js/apitool-methods-data_v2.js
+    #     rest_host: https://data.ripple.com
+    #     doc_page: data-api.html
+    #     sidebar: custom
+    #     targets:
+    #         - en
+    #         - ja
+    #     template: template-rest-api-tool.html
 
     -   name: ripple.txt Validator # Redirect from ripple.txt validator to toml
         html: ripple-txt-validator.html
