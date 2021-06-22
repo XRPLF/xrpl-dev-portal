@@ -2,6 +2,7 @@
 .top-nav {
   background-color: $gray-900;
   height: 80px;
+  padding: 0;
 
   // Logo
   .navbar-brand {
@@ -10,11 +11,18 @@
     -webkit-transition: opacity 200ms ease, color 200ms ease;
     transition: opacity 200ms ease, color 200ms ease;
 
+
+    .logo {
+      margin-left: 0;
+    }
+
     &:hover {
       opacity: 0.75;
     }
 
     @include media-breakpoint-down(md) {
+      padding-left: 2rem;
+
       img {
         width: 120px;
       }
@@ -110,6 +118,10 @@
   // Desktop version
   @include media-breakpoint-up(lg) {
     padding: 0 3rem;
+
+    .navbar-brand {
+      margin-left: 0;
+    }
 
     .dropdown-toggle {
       &::after {
@@ -243,29 +255,38 @@
       }
     }
 
-    #navbar-search {
-      flex-grow: 1;
-      .input-group {
-        flex-grow: 1;
-      }
+    #topnav-pages {
+      flex-grow: 0;
     }
 
-    #topsearchbox {
-      width: 100%;
-    }
-
-    .language-selector {
+    #topnav-language {
       flex-grow: 0;
 
       #language_selector_header_btn {
         padding-right: 0;
-        // TODO: caret
+      }
+    }
+
+    @include media-breakpoint-up(xl) {
+      #topnav-search {
+        margin-left: 3.75rem;
+        margin-right: 1.25rem;
+      }
+    }
+    @media (min-width: 992px) and (max-width: 1020px) {
+      // Fix for top nav overflow in this range
+      .navbar-nav .nav-link {
+        padding: .5rem 1.6rem;
       }
     }
   }
 
   // Search bar & controls -----------------------------------------------------
-  #navbar-search {
+  #topnav-search {
+    flex-grow: 1;
+    .input-group {
+      flex-grow: 1;
+    }
 
     .input-group-text {
       border-width: 0;
@@ -285,6 +306,7 @@
       border-radius: 0 $border-radius-sm $border-radius-sm 0;
       padding: .75rem 1rem .75rem .5rem;
       height: 40px;
+      width: 100%;
       border: 1px solid $gray-800;
 
       &:focus {
@@ -345,21 +367,47 @@
     }
     .navbar-toggler {
       border: 0;
-      padding: 0;
+
+      .navbar-toggler-icon {
+        background: none;
+
+        &::after,
+        &::before,
+        div {
+          content: " ";
+          background-color: $gray-100;
+          display: block;
+          height: 3px;
+          transition: all .3s ease-in-out;
+        }
+        &::before {
+          margin-bottom: 7px;
+        }
+        &::after {
+          margin-top: 7px;
+        }
+      }
 
       &:not(.collapsed) {
-        // Hack: turn white hamburger to approximately $green
-        filter: brightness(0.5) sepia(1) saturate(5000%) hue-rotate(114deg) brightness(1.96) saturate(87%);
+        .navbar-toggler-icon {
+          &::before {
+            transform: translateY(14px) rotate(135deg);
+          }
+          &::after {
+            transform: translateY(-6px) rotate(-135deg);
+          }
+          div {
+            transform: scale(0);
+          }
+        }
       }
     }
 
-    .navbar-nav .nav-link {
+    .navbar-nav .nav-link,
+    .navbar-collapse > .nav-item {
       line-height: 150%;
-    }
-
-    .github-edit-wrap .github-edit.nav-link {
-      background-image: unset;
-      padding-left: inherit;
+      background: $gray-900;
+      padding: 1rem 2rem;
     }
 
   }

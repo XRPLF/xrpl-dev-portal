@@ -1,11 +1,10 @@
-<div class="container-fluid">
-<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top row">
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="{% if target.prefix %}{{target.prefix}}{% else %}/{% endif %}" class="navbar-brand"><img src="{{currentpage.prefix}}assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="40" alt="{{target.display_name}}" /></a>
-  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-between" id="navbarHolder">
-    <ul class="nav navbar-nav">
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
       {% macro dropdown(top_page) %}
       {% set printed_groupings = [] %}
       {% if top_page.children|selectattr('top_nav_omit', 'undefined_or_ne', True)|list|length %}
@@ -58,22 +57,20 @@
       {% for page in (pages|first).children %}
       {{ dropdown(page) }}
       {% endfor %}
-
-      <li class="nav-item" id="navbar-search">
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-inline">
-            <div class="input-group">
-              <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">{% trans %}Search{% endtrans %}</span></label>
-              <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="{% trans %}Search site...{% endtrans %}">
-            </div><!--/.input-group-->
-          </div>
-        </form>
-      </li><!--/#navbar-search-->
-
-
     </ul><!-- /.navbar-nav -->
 
-    <div class="nav navbar-nav language-selector">
+    <div class="nav-item" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">{% trans %}Search{% endtrans %}</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="{% trans %}Search site...{% endtrans %}">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+    <div class="nav-item" id="topnav-language">
       <div class="dropdown">
         <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{(config.languages|selectattr('code', 'eq', target.lang)|first).display_name}}
@@ -86,6 +83,5 @@
         </div><!--/.dropdown-menu-->
       </div><!--/.dropdown-->
     </div><!--/.language-selector-->
-  </div><!--/#navbarHolder-->
+  </div><!--/#top-main-nav-->
 </nav>
-</div>
