@@ -393,14 +393,15 @@ $columns: 12; // Number of columns in the grid system
 .timeline:before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -40px;
     left: 18px;
-    height: 102.5%;
+    height: 97.5%;
     width: 4px;
     background: linear-gradient(180deg, rgba(254, 255, 1, 1) 0%, rgba(255, 45, 154, 1) 33%, rgba(163, 8, 143, 1) 66%, rgba(44, 4, 128, 0.85) 100%);
  }
 
 .timeline-dot {
+  margin-top: 80px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -425,6 +426,9 @@ $columns: 12; // Number of columns in the grid system
 }
 .timeline-block:nth-child(3) .timeline-dot {
   border: 3px solid $red-purple-600;
+}
+.timeline-block:nth-child(4) .timeline-dot {
+  border: 3px solid $red-purple-900;
 }
 .timeline-block {
     display: flex;
@@ -452,7 +456,7 @@ $columns: 12; // Number of columns in the grid system
   .timeline-dot {
     -ms-flex-order: 1;
     order: 1;
-    margin-left: calc(5% - 9px);
+    margin-left: calc(5% - 8.5px);
     will-change: transform;
   }
   .timeline-block:nth-child(even) {
@@ -460,7 +464,7 @@ $columns: 12; // Number of columns in the grid system
     flex-direction: row-reverse;
   }
   .timeline-dot {
-    margin-right: calc(5% - 9px);
+    margin-right: calc(5% - 8.5px);
   }
   .timeline-content {
      width: 45%;

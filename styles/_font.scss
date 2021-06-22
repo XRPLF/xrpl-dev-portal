@@ -93,6 +93,16 @@ h6, .h6 {
     line-height: 24px;
   }
 }
+.numbers {
+  font-size: 6rem;
+  line-height: 104px;
+  font-weight: bold;
+  color: $white;
+  @include media-breakpoint-down(sm) {
+    font-size: 3.875rem;
+    line-height: 70px;
+  }
+}
 p {
   color: $gray-200;
   font-size: 1rem;
