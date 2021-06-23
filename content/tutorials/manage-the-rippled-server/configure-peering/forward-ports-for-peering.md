@@ -35,13 +35,31 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 }
 ```
 
-To allow incoming connections, configure your firewall to forward the peer protocol port, which is served on **port 51235** in the default config file. The instructions to forward a port depend on your firewall. For example, if you use the `firewalld` software firewall on Red Hat Enterprise Linux, you can [use the `firewall-cmd` tool](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-port_forwarding) to forward TCP traffic as follows:
+To allow incoming connections, configure your firewall to allow incoming traffic on the peer protocol port, which is served on **port 51235** in the default config file. The instructions to open a port depend on your firewall. If your server is behind a router that performs Network Address Translation (NAT), you must configure your router to forward the port to your server.
+
+If you use the `firewalld` software firewall on Red Hat Enterprise Linux, you can [use the `firewall-cmd` tool](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-using_zones_to_manage_incoming_traffic_depending_on_source) to open **port 51235** to all incoming traffic.
+
+_Assuming `--zone=public` is your public [zone](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-working_with_zones#sec-Listing_Zones)._
 
 ```sh
-$ sudo firewall-cmd --add-forward-port=port=51235:proto=tcp:toport=51235
+$ sudo firewall-cmd --zone=public --add-port=51235/tcp
+```
+
+Then, restart the `rippled` server:
+
+```sh
+$ sudo systemctl restart rippled.service
+```
+
+To make it permanent:
+
+```sh
+$ sudo firewall-cmd --zone=public --permanent --add-port=51235/tcp
 ```
 
 For other software and hardware firewalls, see the manufacturer's official documentation.
+
+If your using a hosting provider includes a virtual firewall, you do not need to use `firewalld`, but will still need to allow the peer port, and ensure your host is attached. e.g., AWS Security Groups with a rule for the peer port open to the public internet.
 
 
 ## See Also
