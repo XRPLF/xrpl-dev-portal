@@ -292,9 +292,10 @@ pages:
 
     -   name: XRPL Foundation
         html: xrpl-foundation.html
-        #template: some custom template TODO
+        template: page-xrpl-foundation.html.jinja
         parent: xrp-ledger-overview.html
         top_nav_grouping: About
+        sidebar: disabled
         targets:
             - en
             - ja
@@ -3674,24 +3675,24 @@ pages:
 #             - ja
 
 # # "Community" tab --------------------------------------------------------------
-#     -   name: Community
-#         html: contribute.html
-#         parent: index.html
-#         template: page-community.html.jinja
-#         sidebar: disabled
-#         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.
-#         targets:
-#             - en
+    -   name: Community
+        html: contribute.html
+        parent: index.html
+        template: page-community.html.jinja
+        sidebar: disabled
+        blurb: The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.
+        targets:
+            - en
 
-#         # TODO: translate blurb & contents
-#     -   name: コミュニティー
-#         html: contribute.html
-#         parent: index.html
-#         template: page-community.html.jinja
-#         sidebar: disabled
-#         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.
-#         targets:
-#             - ja
+        # TODO: translate blurb & contents
+    -   name: コミュニティー
+        html: contribute.html
+        parent: index.html
+        template: page-community.html.jinja
+        sidebar: disabled
+        blurb: The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.
+        targets:
+            - ja
 
 #     -   md: contributing/contribute-code.md
 #         html: contribute-code.html

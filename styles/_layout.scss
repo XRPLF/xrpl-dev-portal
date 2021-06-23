@@ -123,6 +123,9 @@ section {
       /* Switch to 1-column layout on smaller widths */
       grid-template-columns: 1fr;
     }
+    .col-new {
+      margin: 20px;
+    }
   }
 
   &.card-grid-3xN {
@@ -135,6 +138,12 @@ section {
     @include media-breakpoint-down(md) {
       /* Switch to 1-column layout on smaller widths */
       grid-template-columns: 1fr;
+    }
+    .card-new {
+      min-height: 264px;
+      @include media-breakpoint-up(md) {
+        min-height: 347px;
+      }
     }
   }
 
@@ -269,16 +278,11 @@ $columns: 12; // Number of columns in the grid system
     &#blue-light-blue {
       background-image: url(../../img/cards/blue-light-blue.svg);
     }
-    .card-new {
-      padding: 32px;
-      min-height: 264px;
-      @include media-breakpoint-up(md) {
-        min-height: 347px;
-      }
-    }
+    
   }
 
   .card-new {
+    padding: 32px;
     --width: 4;
   }
   .col-new-card {
