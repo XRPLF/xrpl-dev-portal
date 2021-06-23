@@ -13,4 +13,17 @@ $(document).ready(function() {
   $(".jump-to-top").click(function() {
     $("html").animate({scrollTop: TO_TOP_POS}, TO_TOP_SPEED)
   });
+
+  // TODO: put this somewhere better.
+  // Code to make other menu items hide on mobile when we expand one
+  $("#topnav-pages .dropdown").on("show.bs.dropdown", (evt) => {
+    $("#top-main-nav").addClass("submenu-expanded")
+    // $("#topnav-pages .dropdown:not(.show) .dropdown-toggle").hide()
+    // $("#topnav-search").hide()
+  })
+  $("#topnav-pages .dropdown").on("hidden.bs.dropdown", (evt) => {
+    $("#top-main-nav").removeClass("submenu-expanded")
+    // $("#topnav-pages .dropdown .dropdown-toggle").show()
+    // $("#topnav-search").show()
+  })
 });

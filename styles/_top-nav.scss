@@ -28,6 +28,9 @@
       }
     }
   }
+  .nav-item {
+    font-weight: 600;
+  }
 
   // Main Links ----------------------------------------------------------------
   .navbar-nav {
@@ -45,6 +48,7 @@
         padding: .5rem 2rem;
       }
     }
+
     // Buttons in top nav
     .btn-outline-secondary {
       font-size: 14px;
@@ -60,6 +64,9 @@
           padding: 1rem 1.25rem;
         }
       }
+    }
+    #topnav-language {
+      font-weight: 600;
     }
   }
 
@@ -87,6 +94,7 @@
     .dropdown-hero {
       width: 100%;
       display: flex;
+      padding: 1rem 2rem;
 
       > img {
         width: 68px;
@@ -112,6 +120,23 @@
         p {
           font-weight: 400;
         }
+      }
+    }
+
+    .dropdown-item {
+      line-height: 1rem;
+      padding: .75rem 0;
+      white-space: normal;
+
+      &.dropdown-hero {
+        padding: .75rem 2rem 1rem;
+      }
+
+      &:first-child {
+        padding-top: 0;
+      }
+      &:last-child {
+        padding-bottom: 0;
       }
     }
   }
@@ -152,6 +177,10 @@
     .dropdown-menu {
       border-radius: 0 0 $border-radius-lg $border-radius-lg;
       padding: 2.5rem;
+
+      .dropdown-hero {
+        padding: 0;
+      }
 
       &.show {
         display: grid;
@@ -225,23 +254,6 @@
 
       &.smaller-dropdown {
         min-width: unset;
-      }
-
-      .dropdown-item {
-        line-height: 1rem;
-        padding: .75rem 0;
-        white-space: normal;
-
-        &.dropdown-hero {
-          padding: 0;
-        }
-
-        &:first-child {
-          padding-top: 0;
-        }
-        &:last-child {
-          padding-bottom: 0;
-        }
       }
 
       h5:hover {
@@ -402,7 +414,7 @@
       &:not(.collapsed) {
         .navbar-toggler-icon {
           &::before {
-            transform: translateY(14px) rotate(135deg);
+            transform: translateY(8px) rotate(135deg);
           }
           &::after {
             transform: translateY(-9px) rotate(-135deg);
@@ -419,14 +431,105 @@
       line-height: 150%;
       background: $gray-900;
       padding: 1rem 2rem;
+
+      .nav-link {
+        padding: 0;
+      }
+
+      label {
+        margin-bottom: 0;
+      }
     }
 
-  }
+    .dropdown-menu {
+      margin: 0;
+      width: 100%;
+      overflow: auto;
+      transition: height ease .2s;
+      height: 0;
+      display: block;
+      padding: 0;
+      &.show {
+        // 80px = height of top nav element (with x)
+        // 57px = height of dropdown toggle (with <)
+        height: calc(100vh - 80px - 57px);
+      }
 
-  // Language toggle -----------------------------------------------------------
-  .language-selector {
-    font-size: 0.875rem;
-  }
+      .navcol {
+        padding: 1rem 2rem;
+      }
+    }
+
+    .dropdown-toggle:not(.with-caret) {
+      &::before,
+      &::after {
+        border: 0;
+        font-family: FontAwesome;
+        color: $blue-purple-400;
+        font-size: .75rem;
+        transition: all 0.2s ease;
+        overflow: clip;
+        width: 1rem;
+      }
+
+      &::before {
+        content:"\f053"; // < chevron
+        display: inline-block;
+      }
+      &::after {
+        content:"\f054"; // > chevron
+        position: absolute;
+        right: 2rem;
+      }
+    }
+    .dropdown.show .dropdown-toggle::after {
+      text-indent: 1rem;
+    }
+    .dropdown:not(.show) .dropdown-toggle::before {
+      width: 0;
+      height: 0;
+      text-indent: -1rem;
+    }
+
+    .dropdown-toggle.with-caret {
+      &::after {
+        border: 0;
+      }
+    }
+
+    // Move search to top of mobile menu ---------------------------------------
+    #top-main-nav {
+      padding-top: 72px;
+      position: relative;
+      transition: padding-top ease 0.2s;
+
+      // Hide search and other sub-menus when one sub-menu is expanded
+      // (js required to add the class on the dropdown event)
+      &.submenu-expanded {
+        padding-top: 0;
+
+        .dropdown:not(.show) .dropdown-toggle {
+          display: none;
+        }
+
+        #topnav-search {
+          // display: none;
+          height: 0;
+          overflow: clip;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+    #topnav-search {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 72px;
+      transition: all ease .2s;
+    }
+
+  } // end mobile specific styles ----------------------------------------------
 }
 
 
