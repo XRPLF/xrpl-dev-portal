@@ -1,0 +1,38 @@
+.card {
+  background-color: transparent;
+}
+
+.card-wrapper {
+  width: 100%;
+}
+.card-b {
+  padding: 2rem;
+  border-radius: 8px;
+  opacity: 1;
+  // background: rgba(34, 37, 43, 0.5);
+  // backdrop-filter: blur(3px);
+  transition: all 0.35s ease-in-out;
+  @include media-breakpoint-down(sm) {
+    margin: 10px;
+  }
+  &.not-hover {
+    opacity: 0.6;
+  }
+}
+// .section-marker {
+//   position: absolute;
+//   font-size: 0.875rem;
+//   transform: rotate(90deg);
+//   font-weight: normal;
+//   top: calc(50% - 64px);
+//   margin-left: -32px;
+//   transform-origin: top left;
+// }
+@include media-breakpoint-down(md) {
+  .card-deck {
+    display: block !important;
+  }
+  .card-deck .card {
+    margin-bottom: 2.5rem !important;
+  }
+}

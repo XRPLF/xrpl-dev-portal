@@ -16,29 +16,87 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-  <div class="marketing-wrapper">
-    <div class="container mt-40 mb-30">
-      <h1 class="mb-10">{% trans %}For Developers{% endtrans %}</h1>
-      <section class="row mb-30">
-        <div class="col-md-6 offset-md-1 order-2 mb-10">
-          <div class="d-flex flex-wrap w-100">
-            <a class="square square-50 d-flex card-b" href="https://github.com/ripple/xrpl-dev-portal" target="_blank">
-              <h3>XRPL.org on <img class="mt-2" src="assets/img/logos/github.png" alt="GitHub"></h3>
-            </a>
-            <a class="square square-50 d-flex card-b" href="https://github.com/XRPLF/XRPL-Standards" target="_blank">
-              <h3><i class="fa fa-comments-o mw-100 mr-2"></i> XRP Ledger Standards</h3>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-5 order-1">
-          <p>{% trans %}Thank you for your interest in contributing to XRPL.org. This website was created for the community and is meant to be a living, breathing source of truth for XRP and XRP Ledger resources.{% endtrans %}</p>
-          <p>{% trans %}Contributing to XRPL.org is a great way to learn about the XRP Ledger. This portal is open-source and anyone can suggest changes. For more information, please <a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md" target="_blank">read and consider the contributing guidelines</a>.{% endtrans %}</p>
-          <p>{% trans %}You may also be interested in learning about <a href="https://interledger.org/" target="_blank">Interledger</a>, <a href="https://ripplex.io/" target="_blank">RippleX</a>, and <a href="https://paystring.org/" target="_blank">PayString</a>.{% endtrans %}</p>
-        </div>
-      </section>
+
+<section class="py-26 text-center">
+  <div class="col-md-4 mx-auto text-center">
+    <div class="d-flex flex-column-reverse">
+      <h1 class="mb-18">{% trans %}Faster, Cheaper, Green Money{% endtrans %}</h1>
+      <h6 class="green-500 mb-3">{% trans %}Impact{% endtrans %}</h6>
     </div>
-    <img id="page-contribute-bot" src="assets/img/backgrounds/bg-contribute.png">
   </div>
+</section>
+
+<section class="container-new py-26">
+  <div class="col-8 p-0 mx-10-until-sm">
+    <h3 class="h4 mb-6">{% trans %}Run an XRP Ledger Network Node{% endtrans %}</h3>
+    <p class="longform">{% trans %}Experience the true power of decentralization —  by participating directly in the XRP Ledger consensus protocol.{% endtrans %}</h6>
+  </div>
+  <div class="mt-10 card-grid card-grid-4xN ml-5-until-md mr-5-until-md">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="pink-purple">
+      <span class="card-new d-block">
+        <h4 class="h5">{% trans %}About the Server{% endtrans %}</h4>
+        <p class="mt-6 mb-8">{% trans %}rippled is the core peer-to-peer server that manages the XRP Ledger.{% endtrans %}</p>
+      </span>
+    </a>
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="neutral-blue">
+      <span class="card-new d-block">
+        <h4 class="h5">{% trans %}Install & Configure{% endtrans %}</h4>
+        <p class="mt-6 mb-8">{% trans %}Install and update the rippled server.{% endtrans %}</p>
+      </span>
+    </a>
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="light-green">
+      <span class="card-new d-block">
+        <h4 class="h5">{% trans %}Join UNL{% endtrans %}</h4>
+        <p class="mt-6 mb-8">{% trans %}Run a rippled server in validator mode. {% endtrans %}</p>
+      </span>
+    </a>
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="orange">
+      <span class="card-new d-block">
+        <h4 class="h5">{% trans %}Troubleshooting{% endtrans %}</h4>
+        <p class="mt-6 mb-8">{% trans %}Troubleshoot all kinds of problems with the rippled server.{% endtrans %}</p>
+      </span>
+    </a>
+  </div>
+</section>
+<section class="container-new py-26">
+  <div class="d-flex flex-column-reverse col-8 p-0 mx-10-until-sm">
+    <h3 class="h4">{% trans %}Join the Conversation{% endtrans %}</h3>
+    <h6 class="green-500 mb-3">{% trans %}Find us on the platforms below{% endtrans %}</h6>
+  </div>
+  <div class="mt-10 card-grid card-grid-4xN ml-5-until-md mr-5-until-md">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="pink-purple">
+      <span class="card-new d-block">
+        <h4 class="h5">{% trans %}Decentralized Exchange{% endtrans %}</h4>
+        <p class="mt-6 mb-8">{% trans %}A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain{% endtrans %}</p>
+      </span>
+    </a>
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="neutral-blue">
+      <span class="card-new d-block">
+        <h4 class="h5">{% trans %}Cross-Currency Payments{% endtrans %}</h4>
+        <p class="mt-6 mb-8">{% trans %}Atomically settle multi-hop payments that cross currency or national boundaries with ease.{% endtrans %}</p>
+      </span>
+    </a>
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="light-green">
+      <span class="card-new d-block">
+        <h4 class="h5">{% trans %}Payment <br/>Channels{% endtrans %}</h4>
+        <p class="mt-6 mb-8">{% trans %}Batched micropayments with unlimited speed, secured with XRP.{% endtrans %}</p>
+      </span>
+    </a>
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="orange">
+      <span class="card-new d-block">
+        <h4 class="h5">{% trans %}Multi-Signing{% endtrans %}</h4>
+        <p class="mt-6 mb-8">{% trans %}Flexible options for custody and security of on-ledger accounts.{% endtrans %}</p>
+      </span>
+    </a>
+  </div>
+</section>
+<section class="container-new py-26">
+  <div class="col-md-6 offset-md-3 p-40 br-8 bg-grey-800 text-center">
+    <h2 class="h4 mb-8">{% trans %}Our Shared Vision for  XRPL’s Future{% endtrans %}</h2>
+    <p class="mb-10">{% trans %}Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life.{% endtrans %}</p>
+    <a class="btn btn-primary">Learn More</a>
+  </div>
+</section>
 {% endblock %}
 
 
