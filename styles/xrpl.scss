@@ -4,11 +4,11 @@
 @import "_font-face.scss";
 
 $navbar-padding-y: 0;
-$nav-link-padding-x: 1.25rem;
+$nav-link-padding-x: 2rem;
 $nav-link-padding-y: 1rem;
 $navbar-brand-padding-y: 1.25rem;
-$navbar-nav-link-padding-x: 2rem;
-$navbar-nav-link-padding-y: .75rem;
+$navbar-nav-link-padding-x: $nav-link-padding-x;
+$navbar-nav-link-padding-y: $nav-link-padding-y;
 $border-radius: 0;
 $border-radius-lg: 8px;
 $border-radius-sm: 4px;

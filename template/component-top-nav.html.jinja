@@ -36,10 +36,10 @@
             {% endif %}
             {% if link.top_nav_grouping is defined %}
           <div class="navcol col-for-{{slug(link.top_nav_grouping)}}">
+            <h5 class="dropdown-item">{{link.top_nav_grouping}}</h5>
             {% else %}
           <div class="navcol col-for-ungrouped">
             {% endif %}
-            <h5 class="dropdown-item">{{link.top_nav_grouping}}</h5>
             {% set _ = printed_groupings.append(link.top_nav_grouping) %}
             {% endif %}
             <a class="dropdown-item{% if currentpage == link %} active{% endif %}{% if "//" in link.html %} external-link{% endif %}" href="{{link.html}}">{% if link.top_nav_name is defined %}{{link.top_nav_name}}{% else %}{{link.name}}{% endif %}</a>
@@ -77,8 +77,12 @@
           <span class="chevron"><span></span><span></span></span>
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
-          {% for lang in config.languages %}
-          <a class="dropdown-item" href="{{lang.prefix}}{{currentpage.html}}">{{lang.display_name}}</a>
+          <hr />
+          {% for lang in config.languages if lang.code != target.lang %}
+          <a class="dropdown-item" href="{{lang.prefix}}{{currentpage.html}}">
+            {{lang.display_name}}
+          </a>
+          <hr />
           {% endfor %}
         </div><!--/.dropdown-menu-->
       </div><!--/.dropdown-->
