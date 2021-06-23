@@ -75,5 +75,16 @@
         "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1102"
       }
     ]
+  },
+  "refresh_2021": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "8bd3a34a370568f9480de72b7f429f40898233e8",
+        "updatedAt": "2021-06-23T20:24:55.636Z",
+        "href": "pr-preview/refresh_2021/8bd3a3",
+        "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1104"
+      }
+    ]
   }
 }
