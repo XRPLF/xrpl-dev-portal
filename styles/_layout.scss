@@ -11,6 +11,10 @@ section {
   padding: 0;
 }
 
+#main_content_wrapper { // Push below fixed nav
+  margin-top: 80px;
+}
+
 // Normally-padded pages
 .padded-landing,
 .sidebar-primary #main_content_wrapper {

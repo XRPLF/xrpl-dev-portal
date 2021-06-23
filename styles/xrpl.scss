@@ -4,14 +4,17 @@
 @import "_font-face.scss";
 
 $navbar-padding-y: 0;
-$nav-link-padding-x: 1.25rem;
+$nav-link-padding-x: 2rem;
 $nav-link-padding-y: 1rem;
-$navbar-nav-link-padding-x: 1.25rem;
-$navbar-nav-link-padding-y: 1rem;
+$navbar-brand-padding-y: 1.25rem;
+$navbar-nav-link-padding-x: $nav-link-padding-x;
+$navbar-nav-link-padding-y: $nav-link-padding-y;
 $border-radius: 0;
 $border-radius-lg: 8px;
 $border-radius-sm: 4px;
 $dropdown-border-width: 1px;
+$enable-shadows: true;
+$dropdown-box-shadow: 0px 5px 40px $gray-900;
 $caret-width: .4em;
 
 $input-btn-padding-y: 1rem;
@@ -47,7 +50,6 @@ $font-family-sans-serif: -apple-system, system-ui, 'Roboto', sans-serif;
 @import "_landings.scss";
 @import "_interactive-tutorials.scss";
 @import "_status-labels.scss";
-@import "_lang-selector.scss";
 @import "_dev-tools.scss";
 @import "_print.scss";
 @import "_pages.scss";

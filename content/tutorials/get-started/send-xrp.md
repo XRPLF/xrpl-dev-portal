@@ -10,6 +10,7 @@ filters:
 labels:
   - XRP
   - Payments
+top_nav_grouping: Popular Pages
 ---
 # Send XRP
 

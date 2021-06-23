@@ -5,6 +5,7 @@ blurb: Have your server vote on the consensus ledger.
 labels:
   - Core Server
   - Blockchain
+top_nav_grouping: Popular Pages
 ---
 # Run rippled as a Validator
 
