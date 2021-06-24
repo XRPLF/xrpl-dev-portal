@@ -89,8 +89,8 @@ h6, .h6 {
   color: $gray-100;
   font-weight: normal;
   @include media-breakpoint-down(sm) {
-    font-size: 1rem;
-    line-height: 24px;
+    font-size: 1.125rem;
+    line-height: 26px;
   }
 }
 .numbers {

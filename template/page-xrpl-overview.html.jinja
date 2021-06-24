@@ -18,7 +18,7 @@
 {% block main %}
 {# <div id="page-overview-bg" class="pt-40-until-sm"> #}
   <section class="py-26 text-center">
-    <div class="col-md-4 mx-auto text-center">
+    <div class="col-lg-6 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
         <h1 class="mb-18">{% trans %}XRPL Today and The Vision for Tomorrow{% endtrans %}</h1>
         <h6 class="green-500 mb-3">{% trans %}XRPL | XRPL Ledger Overview{% endtrans %}</h6>
@@ -27,7 +27,7 @@
   </section>
 
   <section class="container-new py-26">
-    <div class="col-md-6 offset-md-3 p-40">
+    <div class="col-md-6 offset-md-3 p-10">
       <h6 class="green-500 mb-3">{% trans %}XRP Ledger Basics{% endtrans %}</h6>
       <h2 class="h4 mb-8">{% trans %}How the XRPL works{% endtrans %}</h2>
       <h5 class="longform mb-10">{% trans %}The XRP Ledger is a decentralized public blockchain. {% endtrans %}</h5>
@@ -45,14 +45,14 @@
         <p class="mb-0">{% trans %}Anyone can operate a validator; currently, over 150 validators are active on the ledger, operated by universities, exchanges, businesses, and individuals. Additionally, the consensus protocol ensures the blockchain becomes more decentralized over time as the validator pool grows.{% endtrans %}</p>
       </div>
       <div class="col-new ls-none mb-16-sm">
-        <img src="./img/graphics/validator.svg">
+        <img class="mw-100" src="./img/graphics/validator.svg">
       </div>
     </div>
   </section>
 
   <section class="container-new py-26">
-      <div class="col-md-6 offset-md-3 p-40 br-8 bg-grey-800 text-center">
-        <h2 class="h4 mb-8">{% trans %}A Greener Blockchain{% endtrans %}</h2>
+      <div class="col-md-6 offset-md-3 p-10 br-8 bg-grey-800 text-center">
+        <h2 class="h4 mb-10">{% trans %}A Greener Blockchain{% endtrans %}</h2>
         <p class="mb-10">{% trans %}Unlike most other blockchains, the XRP Ledger does not need mining, so no energy is wasted in the transaction process. Learn how this compares to other platforms with our Green Currency Calculator.{% endtrans %}</p>
         <a class="btn btn-primary">Get Technical</a>
       </div>
@@ -80,13 +80,35 @@
     </div>
   </section>
 
-  <section class="container-new py-26">
-      <div class="col-md-6 offset-md-3 p-40 br-8 bg-grey-800 text-center">
-        <h2 class="h4 mb-8">{% trans %}Tomorrow’s Blockchain Starts With You{% endtrans %}</h2>
-        <p class="mb-10">{% trans %}XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for an  XRPL Grant.{% endtrans %}</p>
-        <a class="btn btn-primary">{% trans %}XRPL Grants{% endtrans %}</a>
-      </div>
-    </section>
+<section class="container-new py-26">
+  <div class="col-md-6 offset-md-3 p-10 br-8 bg-grey-800 text-center">
+    <h2 class="h4 mb-10">{% trans %}Tomorrow’s Blockchain Starts With You{% endtrans %}</h2>
+    <p class="mb-10">{% trans %}XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for an  XRPL Grant.{% endtrans %}</p>
+    <a class="btn btn-primary">{% trans %}XRPL Grants{% endtrans %}</a>
+  </div>
+</section>
+
+<section class="container-new py-26">
+  <div class="col-md-6 offset-md-3 w-100 pl-0 pr-0" id="accordion">
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="headingOne">
+        <a href="#" class="white collapsed w-100 d-block" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Is XRPL a private blockchain, owned by Ripple?</a>
+      </h5>
+      <p id="collapseOne" class="collapse mt-3 mb-0" aria-labelledby="headingOne" data-parent="#accordion">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="headingTwo">
+        <a href="#" class="white collapsed w-100 d-block" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Isn’t Proof of Work the best validation mechanism?</a>
+      </h5>
+      <p id="collapseTwo" class="collapse mt-3 mb-0" aria-labelledby="headingTwo" data-parent="#accordion">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </p>
+    </div>
+  </div>
+</section>
+
 
 {% endblock %}
 

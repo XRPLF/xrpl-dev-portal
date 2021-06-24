@@ -125,6 +125,9 @@ section {
     }
     .col-new {
       margin: 20px;
+      @include media-breakpoint-down(md) {
+        margin: 20px 0;
+      }
     }
   }
 
@@ -230,7 +233,7 @@ $columns: 12; // Number of columns in the grid system
     background-size: contain;
 
     @include media-breakpoint-down(lg) {
-      margin: 24px;
+      margin: 24px 0;
     }
     @include media-breakpoint-down(sm) {
       margin: 0 0 40px;
