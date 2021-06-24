@@ -581,6 +581,12 @@
   margin-top: -80px;
   height: 80px;
   visibility: hidden;
+  z-index: -1;
+}
+
+// Fix so links aren't unclickable underneath the header anchor-fix
+a {
+  z-index: 1;
 }
 
 // Animated chevron (e.g. for language dropdown) -------------------------------

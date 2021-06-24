@@ -226,7 +226,7 @@ $columns: 12; // Number of columns in the grid system
   @for $width from 1 through $columns {
     .col-new-#{$width} {
       flex-basis: $width / $columns * 100%;
-    }  
+    }
   }
   .col-new {
     background-position: bottom;
@@ -242,7 +242,7 @@ $columns: 12; // Number of columns in the grid system
     @include media-breakpoint-up(lg) {
       margin: 40px;
     }
-    
+
     &#pink-purple {
       background-image: url(../../img/cards/pink-purple.svg);
     }
@@ -251,6 +251,9 @@ $columns: 12; // Number of columns in the grid system
     }
     &#light-green {
       background-image: url(../../img/cards/light-green.svg);
+    }
+    &#green {
+      background-image: url(../../img/cards/green.svg);
     }
     &#orange {
       background-image: url(../../img/cards/orange.svg);
@@ -282,7 +285,7 @@ $columns: 12; // Number of columns in the grid system
     &#blue-light-blue {
       background-image: url(../../img/cards/blue-light-blue.svg);
     }
-    
+
   }
 
   .card-new {
@@ -305,22 +308,10 @@ $columns: 12; // Number of columns in the grid system
 
 
 
-/* Grid Box Vertical numbers ------------------------------------------------ */
-.flag-vertical {
-  color: $gray-200;
-  position: absolute;
-  top: 2em;
-  right: 3em;
-  width: 20px;
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  -webkit-transform-origin: 100% 100%;
-  -ms-transform-origin: 100% 100%;
-  transform-origin: 100% 100%;
-  font-size: 0.833em;
-  letter-spacing: 2px;
-}
+// 4-column layout used in docs.html -------------------------------------------
+// #doc-types .card-columns {
+//   column-count: 3;
+// }
 
 // Misc. layout styles ---------------------------------------------------------
 
