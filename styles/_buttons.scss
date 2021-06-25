@@ -110,6 +110,7 @@ p + .readmore {
     width: calc(100% - 32px);
   }
   a {
+    position: relative;
     &:hover {
       color: $white;
     }
@@ -121,7 +122,9 @@ p + .readmore {
       transition: transform 0.3s ease-out;
       transform: rotate(180deg);
       position: absolute;
-      right: 32px;
+      right: -32px;
+      top: calc(50% - 12px);
+      display: inline-flex;
       content: url(../../img/icons/purple-arrow.svg);
     }
     &.collapsed {
