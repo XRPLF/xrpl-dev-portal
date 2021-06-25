@@ -9,7 +9,7 @@ blurb: Ubuntu Linuxでrippledを自分でコンパイルします。
 
 `rippled`の概要については、[Operating rippled Servers](install-rippled.html)を参照してください。
 
-次の手順を使用し、16.04以降のUbuntu Linux上で、ソースバージョン1.2.0以上から、`rippled`実行可能ファイルを構築します。これらの手順は、Ubuntu 16.04 LTSでテスト済みです。
+次の手順を使用し、Ubuntu Linux上で、`rippled`実行可能ファイルを構築します。これらの手順は、Ubuntu 18.04 LTSでテスト済みです。
 
 その他のプラットフォームでの`rippled`の構築については、`rippled` GitHubリポジトリの[Builds](https://github.com/ripple/rippled/tree/develop/Builds)を参照してください。
 
@@ -49,21 +49,21 @@ blurb: Ubuntu Linuxでrippledを自分でコンパイルします。
 
 5. Boostをコンパイルします。
 
-   `rippled`のバージョン1.7.0は、Boostバージョン1.70.0以降を必要とします。Ubuntu 18.04（または16.04）ソフトウェアリポジトリにBoostバージョン1.70.0以降がないため、自分でコンパイルする必要があります。（次の例では、執筆時点の最新バージョンであるBoost 1.71.0を使用しています。）
+   `rippled`のバージョン1.7.2は、Boostバージョン1.70.0ライブラリを必要とします、Boostバージョン1.70.0から1.75.0と互換性があります。 Ubuntu 18.04（または20.04）ソフトウェアリポジトリに互換性なBoostバージョンがないため、自分でコンパイルする必要があります。（次の例では、執筆時点の最新バージョンであるBoost 1.75.0を使用しています。）
 
-   以前に`rippled`用にBoost 1.71.0をインストールしていて、`BOOST_ROOT`環境変数を構成した場合には、このステップはスキップできます。
+   以前に`rippled`用にBoost 1.75.0をインストールしていて、`BOOST_ROOT`環境変数を構成した場合には、このステップはスキップできます。
 
-   1. Boost 1.71.0をダウンロードします。
+   1. Boost 1.75.0をダウンロードします。
 
-           wget https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
+           wget https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz
 
-   2. `boost_1_71_0.tar.gz`を抽出します。
+   2. `boost_1_75_0.tar.gz`を抽出します。
 
-           tar xvzf boost_1_71_0.tar.gz
+           tar xvzf boost_1_75_0.tar.gz
 
-   3. 新しい`boost_1_71_0`ディレクトリーに移動します。
+   3. 新しい`boost_1_75_0`ディレクトリーに移動します。
 
-           cd boost_1_71_0
+           cd boost_1_75_0
 
    4. 使用するBoost.Buildシステムを準備します。
 
@@ -75,9 +75,9 @@ blurb: Ubuntu Linuxでrippledを自分でコンパイルします。
 
       **ヒント:** この例では、4つのプロセスを並行して構築します。使用する最適なプロセス数は、お使いのハードウェアで使用可能なCPUコア数によって異なります。`cat /proc/cpuinfo`を使用して、ハードウェアプロセッサーに関する情報を取得できます。
 
-   6. `BOOST_ROOT`環境変数を、新しい`boost_1_71_0`ディレクトリーを参照するように設定します。ログイン時に自動的に設定されるようにするため、この環境変数を、シェル用の`.profile`またはそれに相当するファイルに入れることをお勧めします。ファイルに次の行を追加します。
+   6. `BOOST_ROOT`環境変数を、新しい`boost_1_75_0`ディレクトリーを参照するように設定します。ログイン時に自動的に設定されるようにするため、この環境変数を、シェル用の`.profile`またはそれに相当するファイルに入れることをお勧めします。ファイルに次の行を追加します。
 
-           export BOOST_ROOT=/home/my_user/boost_1_71_0
+           export BOOST_ROOT=/home/my_user/boost_1_75_0
 
    7. 更新した`.profile`ファイルを読み込みます。例:
 
@@ -144,8 +144,8 @@ blurb: Ubuntu Linuxでrippledを自分でコンパイルします。
 ## 3. `rippled`の実行
 
 定義した構成を使用し、構築した実行可能ファイルからストック`rippled`サーバーを実行するには、以下を実行します。
-```
-cd my_build
+
+```sh
 ./rippled
 ```
 
@@ -154,7 +154,7 @@ cd my_build
 
 `rippled`を実行するとターミナルに表示される内容の抜粋を以下に示します。
 
-```
+```text
 Loading: "/home/ubuntu/.config/ripple/rippled.cfg"
 Watchdog: Launching child 1
 2018-Jun-06 00:51:35.094331139 JobQueue:NFO Auto-tuning to 4 validation/transaction/proposal threads.

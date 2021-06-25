@@ -105,7 +105,7 @@ Signing a transaction generates a binary blob that can be submitted to the netwo
 
 ## Example Executed Transaction with Metadata
 
-After a transaction has been submitted, you can check its status using the API, for example using the [tx command](tx.html). This shows the transaction instructions, its outcome, and the [metadata](transaction-metadata.html) of all changes that were made in the process of executing it.
+After a transaction has been submitted, you can check its status using the API, for example using the [tx command](tx.html). This shows the transaction instructions, its outcome, and the [metadata](transaction-metadata.html) of all changes that were made by executing it.
 
 **Caution:** The success of a transaction is not final unless the transaction appears in a **validated** ledger with the result code `tesSUCCESS`. See also: [Finality of Results](finality-of-results.html).
 

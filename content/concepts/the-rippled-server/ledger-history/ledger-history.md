@@ -36,7 +36,7 @@ The XRP Ledger identifies data (on several different levels) by a unique hash of
 
 The amount of history a server attempts to download depends on its configuration. The server automatically tries to fill gaps by downloading history up to **the oldest ledger it already has available**. You can use the `[ledger_history]` setting to make the server backfill history beyond that point. However, the server never downloads ledgers that would be scheduled for [deletion](online-deletion.html).
 
-The `[ledger_history]` setting defines a minimum number of ledgers to accumulate from before the current validated ledger. Use the special value `full` to download the [full history](#full-history) of the network. If you specify a number of ledgers, it must be equal to or more than the `online_deletion` setting; you cannot use `[ledger_history]` to make the server download _less_ history. To reduce the amount of history a server stores, change the [online deletion](online-deletion.html) settings instead.
+The `[ledger_history]` setting defines a minimum number of ledgers to accumulate from before the current validated ledger. Use the special value `full` to download the [full history](#full-history) of the network. If you specify a number of ledgers, it must be equal to or more than the `online_deletion` setting; you cannot use `[ledger_history]` to make the server download _less_ history. To reduce the amount of history a server stores, change the [online deletion](online-deletion.html) settings instead. <!-- STYLE_OVERRIDE: a number of -->
 
 
 

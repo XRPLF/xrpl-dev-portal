@@ -27,7 +27,6 @@ my_tx_payment = Payment(
     account=test_account,
     amount=xrp_to_drops(22),
     destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-    sequence=test_wallet.sequence,
 )
 
 # print prepared payment

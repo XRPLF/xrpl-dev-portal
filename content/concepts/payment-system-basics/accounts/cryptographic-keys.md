@@ -17,7 +17,7 @@ There are several ways to create a key pair:
 
 - The [wallet_propose method][] in [the `rippled` server](the-rippled-server.html).
 - The [`generateAddress()` method of ripple-lib](rippleapi-reference.html#generateaddress).
-- Other [tools or wallet applications](software-ecosystem.html). <!-- TODO: link a "wallets" page when that gets added -->
+- Other [tools or wallet applications](software-ecosystem.html). <!-- STYLE_OVERRIDE: wallet -->
 
 
 ## Key Components
@@ -37,7 +37,7 @@ For more technical details of how key derivation works, see [Key Derivation](#ke
 
 ### Passphrase
 
-You can, optionally, use a passphrase or some other input as a way of choosing a seed or private key. This is less secure than choosing the seed or private key completely at random, but there are some rare cases where you want to do this. (For example, in 2018 "XRPuzzler" gave away XRP to the first person [to solve a puzzle](https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/); he used the puzzle's solution as the passphrase to an account holding the prize XRP.)
+You can, optionally, use a passphrase or some other input as a way of choosing a seed or private key. This is less secure than choosing the seed or private key completely at random, but there are some rare cases where you want to do this. (For example, in 2018 "XRPuzzler" gave away XRP to the first person [to solve a puzzle](https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/); he used the puzzle's solution as the passphrase to an account holding the prize XRP.)  <!-- SPELLING_IGNORE: xrpuzzler -->
 
 The passphrase is secret information, so you must protect it very carefully. Anyone who knows an address's passphrase has effectively full control over the address.
 
@@ -51,7 +51,7 @@ The seed value is secret information, so you must protect it very carefully. Any
 
 The _private key_ is the value that is used to create a digital signature. Most XRP Ledger software does not explicitly show the private key, and [derives the private key](#key-derivation) from the seed value when necessary. It is technically possible to save the private key instead of the seed and use that to sign transactions directly, but this usage is rare.
 
-Just like the seed, the private key is secret information, so you must protect it very carefully. Anyone who has knows an address's private key has effectively full control over that address.
+Like the seed, the private key is secret information, so you must protect it very carefully. Anyone who has knows an address's private key has effectively full control over that address.
 
 ### Public Key
 
@@ -145,7 +145,7 @@ In the future, it is likely that the XRP Ledger will need new cryptographic sign
 
 ## Key Derivation
 
-The process of deriving a key pair depends on the signing algorithm. In all cases, keys are generated from a _seed_ value that is 16 bytes (128 bits) in length. The seed value can be completely random (recommended) or it can be derived from a specific passphrase by taking the [SHA-512 hash][Hash] and keeping the first 16 bytes (similar to [SHA-512Half][], but keeping only 128 bits instead of 256 bits of the output).
+The process of deriving a key pair depends on the signing algorithm. In all cases, keys are generated from a _seed_ value that is 16 bytes (128 bits) in length. The seed value can be completely random (recommended) or it can be derived from a specific passphrase by taking the [SHA-512 hash][Hash] and keeping the first 16 bytes (like [SHA-512Half][], but keeping only 128 bits instead of 256 bits of the output).
 
 ### Sample Code
 
