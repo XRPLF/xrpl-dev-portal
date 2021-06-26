@@ -208,6 +208,10 @@
   padding-bottom: 5rem;
   padding-top: 5rem;
 }
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
 .pt-20 {
   padding-top: 5rem;
 }
@@ -343,3 +347,16 @@
   border-radius: 8px;
 }
 
+// Arrow bouncing animation
+@keyframes arrowDance {
+  0% { padding-left: 7px; }
+  50% { padding-left: 14px; }
+  100% { padding-left: 7px; }
+}
+
+// Alt version for elements absolute-positioned to the right
+@keyframes arrowDance2 {
+  0% { right: 0; }
+  50% { right: 7px; }
+  100% { right: 0; }
+}

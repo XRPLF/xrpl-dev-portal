@@ -305,36 +305,12 @@ $columns: 12; // Number of columns in the grid system
   }
 }
 
-
-
-
-// 4-column layout used in docs.html -------------------------------------------
-// #doc-types .card-columns {
-//   column-count: 3;
-// }
-
 // Misc. layout styles ---------------------------------------------------------
 
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
   padding: 44px 24px 48px;
   min-height: 700px;
-}
-
-
-.doc-index {
-  padding: 48px 0;
-}
-
-@include media-breakpoint-down(md) {
-  .landing .card-grid .card,
-  .landing .card-grid .card-body,
-  .landing .card-grid .card-header {
-    padding-left: 0;
-  }
-  .landing .doc-index {
-    padding-left: 0;
-  }
 }
 
 /* Responsive design for different viewscreens ------------------------------ */

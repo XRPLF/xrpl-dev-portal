@@ -56,11 +56,6 @@
   background-image: url(../../img/graphics/hc-3.png);
   border: 1px solid #974CFF;
 }
-@keyframes arrowDance {
-  0% { padding-left: 7px; }
-  50% { padding-left: 14px; }
-  100% { padding-left: 7px; }
-}
 
 
 #hero-impact {
@@ -152,16 +147,79 @@
   top: 302px;
 }
 
-// .sustainability-bg {
-//   background: url(../../img/green/green-graphic.png) 0 3rem no-repeat;
-//   background-size: contain;
-// }
-
 .page-docs-index {
-  @include media-breakpoint-up(lg) {
-    background: url(../img/backgrounds/bg-docs.png) no-repeat;
+  background: url(../img/backgrounds/bg-docs.png) no-repeat;
+  background-position-x: left -20vw;
+  background-position-y: top;
+  @include media-breakpoint-up(md) {
     background-position-x: left;
-    background-position-y: 300px;
+  }
+
+  .center-search {
+    .input-group-text {
+      height: 56px;
+      padding: .75rem .75rem .75rem 1rem;
+      line-height: 2rem;
+    }
+    .ds-input {
+      height: 56px;
+      padding: .75rem 1rem .75rem .5rem;
+    }
+  }
+
+  #docs-browse-by {
+    @include media-breakpoint-up(lg) {
+      .col:not(:first-child) {
+        padding-left: 2.5rem;
+      }
+      .col:not(:last-child) {
+        padding-right: 2.5rem;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      .col:not(:first-child) {
+        padding-top: 4rem;
+      }
+    }
+  }
+
+  #software-and-sdks {
+    .card-deck .card:nth-child(1) {
+      background-image: url(../../img/cards/green.svg);
+    }
+    .card-deck .card:nth-child(2) {
+      background-image: url(../../img/cards/neutral-blue.svg);
+    }
+    .card-deck .card:nth-child(3) {
+      background-image: url(../../img/cards/magenta-orange.svg);
+    }
+    .card-deck .card:nth-child(4) {
+      background-image: url(../../img/cards/orange-yellow.svg);
+    }
+  }
+
+  .circled-logo {
+    background-color: $gray-600;
+    border-radius: 50%;
+    padding: .75rem;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.75rem;
+  }
+
+  #doc-types {
+    .card-deck .card:nth-child(1) {
+      background-image: url(../../img/cards/orange-yellow-2.svg);
+    }
+    .card-deck .card:nth-child(2) {
+      background-image: url(../../img/cards/pink-purple.svg);
+    }
+    .card-deck .card:nth-child(3) {
+      background-image: url(../../img/cards/blue-green.svg);
+    }
+    .card-deck .card:nth-child(4) {
+      background-image: url(../../img/cards/green-purple.svg);
+    }
   }
 }
 
