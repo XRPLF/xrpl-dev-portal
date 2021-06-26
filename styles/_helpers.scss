@@ -41,7 +41,6 @@
   &-until-md {
     @include media-breakpoint-up(md) {
       margin-left: 1.25rem;
-      margin-right: 1.25rem;
     }
   }
 }
@@ -49,7 +48,6 @@
   margin-right: 1.25rem;
   &-until-md {
     @include media-breakpoint-up(md) {
-      margin-left: 1.25rem;
       margin-right: 1.25rem;
     }
   }
@@ -300,6 +298,9 @@
 }
 .top-10 {
   top: 2.5rem;
+}
+.top-20 {
+  top: 5rem;
 }
 .last-section {
   margin-bottom: 100px;

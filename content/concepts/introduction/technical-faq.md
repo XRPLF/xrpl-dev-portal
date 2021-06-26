@@ -4,6 +4,7 @@ parent: introduction.html
 blurb: Get answers to frequently asked questions, covering topics such as validators, unique node lists, the role of XRP, and security.
 labels:
   - Blockchain
+top_nav_grouping: Questions
 ---
 # Technical FAQ
 

@@ -4,6 +4,7 @@ parent: introduction.html
 blurb: Develop a basic understanding of the XRP Ledger's consensus mechanism.
 labels:
   - Blockchain
+top_nav_grouping: Popular Pages
 ---
 # Introduction to Consensus
 

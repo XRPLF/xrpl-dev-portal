@@ -120,7 +120,7 @@ p + .readmore {
       -ms-transition: transform 0.3s ease-out;
       -o-transition: transform 0.3s ease-out;
       transition: transform 0.3s ease-out;
-      transform: rotate(180deg);
+      transform: rotateX(180deg);
       position: absolute;
       right: -32px;
       top: calc(50% - 12px);
@@ -129,7 +129,7 @@ p + .readmore {
     }
     &.collapsed {
       &::after {
-        transform: rotate(360deg);
+        transform: rotateX(360deg);
       }
     }
   }

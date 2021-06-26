@@ -11,6 +11,10 @@ section {
   padding: 0;
 }
 
+#main_content_wrapper { // Push below fixed nav
+  margin-top: 80px;
+}
+
 // Normally-padded pages
 .padded-landing,
 .sidebar-primary #main_content_wrapper {
@@ -153,6 +157,19 @@ section {
   &.card-grid-2xN {
     /* 2 equal columns and any number of auto-sized rows. */
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.card-grid-1x2 {
+    /* 1 left columns and right 2x the size. */
+    grid-template-columns: 1fr 2fr;
     grid-auto-rows: auto;
 
     /* No "hero" blocks expected here. */

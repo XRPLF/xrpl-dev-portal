@@ -48,7 +48,7 @@ cover_page:
 
 languages:
     -   code: en
-        display_name: Eng
+        display_name: English
         prefix: "/"
     -   code: ja
         display_name: 日本語
@@ -241,9 +241,11 @@ pages:
             - ja
 
     -   name: XRP
+        template: page-xrp-overview.html.jinja
         html: xrp-overview.html
         parent: xrp-ledger-overview.html
         top_nav_grouping: XRP
+        sidebar: disabled
         targets:
             - en
             - ja
@@ -308,10 +310,21 @@ pages:
         sidebar: disabled
         top_nav_name: Docs
         top_nav_shortcuts:
+            # Programming Languages
             - get-started-using-python.html
             - get-started-using-node-js.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
+            # Popular pages
+            - send-xrp.html
+            - reserves.html
+            - xrp-testnet-faucet.html
+            - run-rippled-as-a-validator.html
+            - intro-to-consensus.html
+            # Questions
+            - technical-faq.html
+        top_nav_hero_image: assets/img/icons/docs.svg
+        blurb: Dive into XRP Ledger technology and start integrating.
         targets:
             - en
 
@@ -327,6 +340,8 @@ pages:
             - get-started-using-node-js.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
+        top_nav_hero_image: assets/img/icons/docs.svg
+        blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
         targets:
             - ja
 
@@ -2088,9 +2103,18 @@ pages:
 #         targets:
 #             - ja
 
+
 #     -   md: references/protocol-reference/transactions/transaction-types/signerlistset.md
 #         targets:
 #             - en
+    # -   name: XRP Faucets
+    #     html: xrp-testnet-faucet.html
+    #     parent: dev-tools.html
+    #     template: page-xrp-faucets.html.jinja
+    #     top_nav_grouping: Popular Pages
+    #     targets:
+    #         - en
+    #         - ja
 
 #     -   md: references/protocol-reference/transactions/transaction-types/signerlistset.ja.md
 #         targets:
@@ -3680,7 +3704,8 @@ pages:
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        blurb: The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.
+        blurb: Contribute to XRPL.org
+        top_nav_hero_image: assets/img/icons/contribute.svg
         targets:
             - en
 
@@ -3691,6 +3716,7 @@ pages:
         template: page-community.html.jinja
         sidebar: disabled
         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.
+        top_nav_hero_image: assets/img/icons/contribute.svg
         targets:
             - ja
 
@@ -3725,6 +3751,14 @@ pages:
 #         targets:
 #             - en
 #             - ja
+
+    -   name: GitHub
+        html: https://github.com/ripple/xrpl-dev-portal/
+        parent: contribute.html
+        blurb: View and propose changes to this site's source code on GitHub.
+        targets:
+            - en
+            - ja
 
 # Redirects from deprecated "Explore" pages ------------------------------------
     -   name: Explore

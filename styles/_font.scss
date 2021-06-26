@@ -112,7 +112,6 @@ p {
 
 
 a {
-  // text-decoration: underline;
   color: inherit;
   &:hover {
     text-decoration: none;
@@ -120,10 +119,21 @@ a {
 }
 p a {
   color: $blue-purple-400;
+  &:hover {
+    color: $blue-purple-400;
+    text-decoration: none;
+  }
 }
 
 .fs-base {
   font-size: $base-size;
+}
+.fs-3 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.fs-4-5 {
+  font-size: 1.125rem;
 }
 .fs-5 {
   font-size: 1.25rem;

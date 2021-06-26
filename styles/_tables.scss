@@ -20,13 +20,30 @@ tr {
 th, td {
   padding: 0.2em;
   vertical-align: text-top;
-  padding: 12px;
 }
 
 td:nth-child(1) {
   font-weight: bold;
 }
 
+.landing-table {
+  th, tr {
+    border-bottom: 2px solid $gray-600;
+  }
+  td {
+    width: 33.33%;
+    padding: 16px 40px 16px 0;
+    &:nth-child(1){
+      font-weight: normal;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 0.875rem;
+    }
+  }
+  tr:last-child {
+    border-bottom: none;
+  }
+}
 
 
 .dblue {
