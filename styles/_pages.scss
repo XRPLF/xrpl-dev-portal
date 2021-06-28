@@ -1,7 +1,13 @@
 /* HOME STYLINGS */
-#home-hero-marker {
-  top: unset;
-  bottom: 88px;
+#home-purple {
+  position: absolute;
+  left: 0;
+  top: -360px;
+}
+#home-green {
+  position: absolute;
+  right: -3px;
+  top: 60px;
 }
 #home-hero-graphic {
   max-width: 100%;
@@ -12,150 +18,119 @@
     max-width: none;
   }
 }
-#home-hero-marker:after {
+
+.sidelinks {
+  &:hover {
+    color: $blue-purple-400;
+  }
+  &.active {
+    color: $blue-purple-400;
+    font-weight: bold;
+  }
+}
+
+// XRP Overview Page
+#xrp-overview-blue {
   position: absolute;
-  content: " ➝";
-  box-sizing: initial;
-  animation: arrowDance 1.2s infinite;
-}
-#bg-home-1 {
-  background-image: url(../../img/graphics/home-bg.png);
-  background-repeat: no-repeat;
-  background-size: 90%;
-  background-position: 90px -180px;
-}
-@include media-breakpoint-down(md) {
-  #bg-home-1 {
-    background-size: cover;
-  }
-}
-.hc {
-  background: black;
-  padding: 2.25rem 1.875rem 7.75rem;
-  color: $white;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: 100% 70px;
-  @include media-breakpoint-down(md) {
-    padding-left: 2rem !important;
-  }
-}
-.hc .h2 {
-  height: 38px;
-  padding-bottom: 5rem;
-}
-#hc-1 {
-  background-image: url(../../img/graphics/hc-1.png);
-  border: 1px solid #FAFF1A;
-}
-#hc-2 {
-  background-image: url(../../img/graphics/hc-2.png);
-  border: 1px solid #FF1A8B;
-}
-#hc-3 {
-  background-image: url(../../img/graphics/hc-3.png);
-  border: 1px solid #974CFF;
-}
-@keyframes arrowDance {
-  0% { padding-left: 7px; }
-  50% { padding-left: 14px; }
-  100% { padding-left: 7px; }
-}
-
-
-#hero-impact {
-  width: calc(100vw - 16px);
-  @include media-breakpoint-up(md) {
-    margin-top: -120px;
-  }
-  @include media-breakpoint-down(sm) {
-    width: calc(200vw);
-    margin-left: -30vw;
-  }
-}
-
-#page-uses-top {
-  @include media-breakpoint-down(sm) {
-    margin-left: -5rem;
-  }
-}
-#page-impact-bg {
-  background-image: url(../img/backgrounds/bg-impact-top.png);
-  background-repeat: no-repeat;
-  background-position: center 250px;
-  background-size: contain;
-}
-#page-business-bg {
-  background-image: url(../img/backgrounds/bg-business-mid.png);
-  background-repeat: no-repeat;
-  background-position: right 72.5%;
-}
-#page-business-top {
-  position: absolute;
+  top: 0;
   left: 0;
 }
-#page-business-bot {
+
+// XRPL Overview Page
+#xrpl-overview-purple {
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+#xrpl-overview-orange {
+  position: absolute;
+  top: 80px;
+  right: -4px;
+}
+
+// Use Cases Page
+#use-cases-blue {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#use-cases-orange {
+  position: absolute;
+  top: -480px;
+  right: -4px;
+}
+
+// History Page
+#history-orange {
+  position: absolute;
+  top: 0;
+  right: -4px;
+}
+#history-purple {
+  position: absolute;
+  top: -480px;
+  left: -4px;
+}
+.hidden-section {
+  overflow: hidden;
+  visibility: none;
+  height: 0;
+  &.show {
+    overflow: auto;
+    visibility: visible;
+    height: auto;
+  }
+}
+
+// Impact
+#impact-green {
+  position: absolute;
+  top: 0;
+  right: -4px;
+}
+#impact-orange {
+  position: absolute;
+  top: 100px;
+  left: -4px;
+}
+#impact-magenta {
+  position: absolute;
+  top: 100px;
+  right: -4px;
+}
+
+// Calculator
+#calculator-purple {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#calculator-green {
+  position: absolute;
+  top: 160px;
+  right: 0px;
+}
+
+// Foundation Page
+#foundation-magenta {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#foundation-orange {
+  position: absolute;
+  top: 40px;
+  right: -4px;
+}
+
+
+// FAQ Page
+#faq-background {
   position: absolute;
   left: 0;
-  margin-top: -505px;
-  z-index: -1;
-}
-#page-exchanges-bg {
-  background-image: url(../img/backgrounds/bg-exchanges-top.png);
-  background-repeat: no-repeat;
-  background-position: left 25%;
-}
-#page-exchanges-bot {
-  position: absolute;
   right: 0;
-  margin-top: -446px;
-  z-index: -1;
+  width: 100%;
 }
-
-.page-wallets {
-  #main_content_body {
-    background: url(../img/backgrounds/bg-wallets-bot.png) bottom right no-repeat;
-  }
-
-  .fullwidth-bg {
-    background: url(../img/backgrounds/bg-wallets-top.png) left 5% no-repeat;
-  }
-}
-
-#page-wallets-bot {
-  position: absolute;
-  right: 0;
-  margin-top: -778px;
-  z-index: -1;
-}
-#page-contribute-bot {
-  position: absolute;
-  right: 0;
-  margin-top: -256px;
-  z-index: -1;
-}
-#page-overview-bg {
-  background-image: url(../img/backgrounds/bg-overview-top.png);
-  background-repeat: no-repeat;
-  background-position: right 80px;
-}
-
-#page-history-bg {
-  background-image: url(../img/backgrounds/bg-history-mid.png);
-  background-repeat: no-repeat;
-  background-position: right 60%;
-}
-
-#page-history-top {
-  position: absolute;
-  left: 0;
-  top: 302px;
-}
-
-// .sustainability-bg {
-//   background: url(../../img/green/green-graphic.png) 0 3rem no-repeat;
-//   background-size: contain;
-// }
 
 .page-docs-index {
   @include media-breakpoint-up(lg) {
@@ -165,15 +140,8 @@
   }
 }
 
-.green-graphic {
-  @include media-breakpoint-down(xs) {
-    width: 184px;
-    margin-bottom: 32px;
-  }
-}
-
-
 .page-calculator {
+
   .calculator-section-description {
     max-width: 458px;
   }

@@ -302,6 +302,7 @@ pages:
             - en
             - ja
 
+
 # "Documentation" section ------------------------------------------------------
     -   name: Documentation
         html: docs.html
@@ -343,6 +344,15 @@ pages:
         top_nav_hero_image: assets/img/icons/docs.svg
         blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
         targets:
+            - ja
+
+    -   name: FAQ
+        html: faq.html
+        template: page-faq.html.jinja
+        parent: docs.html
+        sidebar: disabled
+        targets:
+            - en
             - ja
 
 # Concepts ---------------------------------------------------------------------

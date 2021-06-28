@@ -77,13 +77,17 @@
 }
 .mt-10 {
   margin-top: 2.5rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-top: 2.5rem;
+    }
+  }
 }
 .mb-10 {
   margin-bottom: 2.5rem;
   &-until-sm {
     @include media-breakpoint-up(sm) {
-      margin-left: 2.5rem;
-      margin-right: 2.5rem;
+      margin-bottom: 2.5rem;
     }
   }
 }
@@ -301,6 +305,9 @@
 }
 .top-20 {
   top: 5rem;
+}
+.top-24 {
+  top: 6rem;
 }
 .last-section {
   margin-bottom: 100px;

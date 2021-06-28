@@ -61,6 +61,9 @@ p + .readmore {
   border-radius: 4px;
   padding: 0.5rem 1rem;
   line-height: 16px;
+}
+
+.btn-arrow {
   &::after {
     display: inline-block;
     content: url(../../img/icons/arrow-right.svg);
