@@ -19,15 +19,8 @@
     opacity: 0.6;
   }
 }
-// .section-marker {
-//   position: absolute;
-//   font-size: 0.875rem;
-//   transform: rotate(90deg);
-//   font-weight: normal;
-//   top: calc(50% - 64px);
-//   margin-left: -32px;
-//   transform-origin: top left;
-// }
+
+
 @include media-breakpoint-down(md) {
   .card-deck {
     display: block !important;

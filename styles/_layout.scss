@@ -63,6 +63,7 @@ section {
   display: grid;
   gap: 1px;
   padding: 0;
+  width: 100%;
 
   &.card-grid-2x2 {
     /* left half is a hero area; right half is a 2x2 grid. */
@@ -302,7 +303,45 @@ $columns: 12; // Number of columns in the grid system
     &#blue-light-blue {
       background-image: url(../../img/cards/blue-light-blue.svg);
     }
-    
+    &#sm-yellow {
+      background-image: url(../../img/cards/sm-yellow.svg);
+    }
+    &#sm-yellow-2 {
+      background-image: url(../../img/cards/sm-yellow-2.svg);
+    }
+    &#sm-purple {
+      background-image: url(../../img/cards/sm-purple.svg);
+    }
+    &#sm-magenta {
+      background-image: url(../../img/cards/sm-magenta.svg);
+    }
+    &#sm-blue-green {
+      background-image: url(../../img/cards/sm-blue-green.svg);
+    }
+    &#sm-green {
+      background-image: url(../../img/cards/sm-green.svg);
+    }
+    &#sm-green-2 {
+      background-image: url(../../img/cards/sm-green-2.svg);
+    }
+    &#sm-light-blue {
+      background-image: url(../../img/cards/sm-light-blue.svg);
+    }
+    &#sm-light-blue-3 {
+      background-image: url(../../img/cards/sm-light-blue-3.svg);
+    }
+    &#sm-magenta-2 {
+      background-image: url(../../img/cards/sm-magenta-2.svg);
+    }
+    &#sm-magenta-3 {
+      background-image: url(../../img/cards/sm-magenta-3.svg);
+    }
+    &#sm-orange {
+      background-image: url(../../img/cards/sm-orange.svg);
+    }
+    &#sm-orange-2 {
+      background-image: url(../../img/cards/sm-orange-2.svg);
+    }
   }
 
   .card-new {

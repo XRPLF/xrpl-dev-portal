@@ -17,6 +17,10 @@
 
 {% block main %}
 
+<div class="position-relative">
+  <img src="./img/backgrounds/community-magenta.svg" id="community-magenta">
+</div>
+
 <section class="py-26 text-center">
   <div class="col-md-4 mx-auto text-center">
     <div class="d-flex flex-column-reverse">
@@ -26,31 +30,35 @@
   </div>
 </section>
 
+<div class="position-relative">
+  <img src="./img/backgrounds/community-purple.svg" id="community-purple">
+</div>
+
 <section class="container-new py-26">
   <div class="col-8 p-0 mx-10-until-sm">
     <h3 class="h4 mb-6">{% trans %}Run an XRP Ledger Network Node{% endtrans %}</h3>
     <p class="longform">{% trans %}Experience the true power of decentralization —  by participating directly in the XRP Ledger consensus protocol.{% endtrans %}</h6>
   </div>
   <div class="mt-10 card-grid card-grid-4xN ml-5-until-md mr-5-until-md">
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="pink-purple">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="sm-yellow-2">
       <span class="card-new d-block">
         <h4 class="h5">{% trans %}About the Server{% endtrans %}</h4>
         <p class="mt-6 mb-8">{% trans %}rippled is the core peer-to-peer server that manages the XRP Ledger.{% endtrans %}</p>
       </span>
     </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="neutral-blue">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="sm-purple">
       <span class="card-new d-block">
         <h4 class="h5">{% trans %}Install & Configure{% endtrans %}</h4>
         <p class="mt-6 mb-8">{% trans %}Install and update the rippled server.{% endtrans %}</p>
       </span>
     </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="light-green">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="sm-magenta-2">
       <span class="card-new d-block">
         <h4 class="h5">{% trans %}Join UNL{% endtrans %}</h4>
         <p class="mt-6 mb-8">{% trans %}Run a rippled server in validator mode. {% endtrans %}</p>
       </span>
     </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="orange">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="sm-green-2">
       <span class="card-new d-block">
         <h4 class="h5">{% trans %}Troubleshooting{% endtrans %}</h4>
         <p class="mt-6 mb-8">{% trans %}Troubleshoot all kinds of problems with the rippled server.{% endtrans %}</p>
@@ -64,40 +72,44 @@
     <h6 class="green-500 mb-3">{% trans %}Find us on the platforms below{% endtrans %}</h6>
   </div>
   <div class="mt-10 card-grid card-grid-4xN ml-5-until-md mr-5-until-md">
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="magenta-orange">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="sm-green">
       <span class="card-new d-block">
         <img class="mw-100 mb-3" src="./img/logos/github.svg">
-        <h4 class="h5">{% trans %}Github{% endtrans %}</h4>
+        <h4 class="h5 mb-8">{% trans %}Github{% endtrans %}</h4>
       </span>
     </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="magenta-orange">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="sm-light-blue-3">
       <span class="card-new d-block">
         <img class="mw-100 mb-3" src="./img/logos/twitch.svg">
-        <h4 class="h5">{% trans %}Twitch{% endtrans %}</h4>
+        <h4 class="h5 mb-8">{% trans %}Twitch{% endtrans %}</h4>
       </span>
     </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="magenta-orange">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="sm-magenta-3">
       <span class="card-new d-block">
         <img class="mw-100 mb-3" src="./img/logos/twitter.svg">
-        <h4 class="h5">{% trans %}Twitter{% endtrans %}</h4>
+        <h4 class="h5 mb-8">{% trans %}Twitter{% endtrans %}</h4>
       </span>
     </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="magenta-orange">
+    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="sm-orange-2">
       <span class="card-new d-block">
         <img class="mw-100 mb-3" src="./img/logos/stack-overflow.svg">
-        <h4 class="h5">{% trans %}Stack Overflow{% endtrans %}</h4>
+        <h4 class="h5 mb-8">{% trans %}Stack Overflow{% endtrans %}</h4>
       </span>
     </a>
   </div>
 </section>
 <section class="container-new py-26">
   <div class="col-md-6 offset-md-3 p-10 br-8 bg-grey-800 text-center">
-    <div class="d-flex flex-column-reverse">
-      <h2 class="h4 mb-10">{% trans %}A Community-Driven Resource for All Things XRPL.org{% endtrans %}</h2>
-      <h5 class="green-500 mb-3">{% trans %}Contribute to XRPL.org{% endtrans %}</h5>
+    <img src="./img/backgrounds/cta-community-purple.svg" class="cta cta-top-left">
+    <img src="./img/backgrounds/cta-community-green.svg" class="cta cta-bottom-right">
+    <div class="z-index-1 position-relative">
+      <div class="d-flex flex-column-reverse">
+        <h2 class="h4 mb-10">{% trans %}A Community-Driven Resource for All Things XRPL.org{% endtrans %}</h2>
+        <h5 class="green-500 mb-3">{% trans %}Contribute to XRPL.org{% endtrans %}</h5>
+      </div>
+      <p class="mb-10">{% trans %}Thank you for your interest in contributing to XRPL.org. This website was created as an XRPL community resource and is meant to be a living, breathing source of truth for XRP Ledger resources. This portal is open-source and anyone can suggest changes.{% endtrans %}</p>
+      <a class="btn btn-primary">Contribute to the Guidelines</a>
     </div>
-    <p class="mb-10">{% trans %}Thank you for your interest in contributing to XRPL.org. This website was created as an XRPL community resource and is meant to be a living, breathing source of truth for XRP Ledger resources. This portal is open-source and anyone can suggest changes.{% endtrans %}</p>
-    <a class="btn btn-primary">Contribute to the Guidelines</a>
   </div>
 </section>
 {% endblock %}

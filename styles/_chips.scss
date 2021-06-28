@@ -4,6 +4,9 @@
 	font-weight: bold;
 	padding: 0.5rem 1rem;
 	border-radius: 100px;
+	&::before {
+		content: none !important;
+	}
 	&-red-purple {
 		color: $red-purple-300;
 		background-color: $red-purple-900;
@@ -31,5 +34,8 @@
 	&-yellow {
 		color: $yellow-300;
 		background-color: $yellow-900;
+	}
+	&::after {
+		
 	}
 }

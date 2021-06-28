@@ -87,24 +87,18 @@ td:nth-child(1) {
     }
   }
   tbody td {
-    padding: 2.5rem 0;
+    padding: 2rem 0;
   }
   tbody tr {
     border-bottom: 1px solid $gray-600;
   }
-  td:first-child{
-    width: 40%;
-  }
   .ratio {
     font-size: 1rem;
     display: block;
-    margin-top: 4px;
+    margin-top: -8px;
     color: $gray-500;
   }
   @include media-breakpoint-down(md) {
-    .ratio {
-      display: block;
-    }
     table {
       font-size: 0.875rem;
     }

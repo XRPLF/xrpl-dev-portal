@@ -29,6 +29,18 @@
   }
 }
 
+.cta {
+  position: absolute;
+  &-top-left {
+    top: 0;
+    left: 0;
+  }
+  &-bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+}
+
 // XRP Overview Page
 #xrp-overview-blue {
   position: absolute;
@@ -121,6 +133,18 @@
   position: absolute;
   top: 40px;
   right: -4px;
+}
+
+// Community Page
+#community-magenta {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#community-purple {
+  position: absolute;
+  top: 160px;
+  right: 0px;
 }
 
 
