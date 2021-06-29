@@ -34,6 +34,16 @@
   }
 }
 
+.xrpl-footer .external-link {
+  &::after {
+    background-position: left 0 bottom 0;
+  }
+
+  &:hover::after {
+    background-position: left .2em bottom .2em;
+  }
+}
+
 // /* Reduce external link icon size */
 // .fa.fa-external-link:before {
 //   font-size: 80%;
