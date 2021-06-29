@@ -20,7 +20,7 @@ button[disabled="disabled"] {
   cursor: not-allowed;
 }
 
-.btn-outline-secondary,
+// .btn-outline-secondary,
 .content a.button,
 .navbar-dark .navbar-nav .nav-link.btn-outline-secondary {
   color: $white;
@@ -52,6 +52,42 @@ p + .readmore {
   color: inherit;
 }
 
+.btn-primary {
+  background: $blue-purple-500;
+  font-weight: bold;
+  color: $white;
+  border: none;
+  border-color: transparent;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  line-height: 16px;
+}
+
+.btn-arrow {
+  &::after {
+    display: inline-block;
+    content: url(../../img/icons/arrow-right.svg);
+    vertical-align: middle;
+    padding-left: 8px;
+    -webkit-transition: transform 0.3s ease-out;
+    -moz-transition: transform 0.3s ease-out;
+    -ms-transition: transform 0.3s ease-out;
+    -o-transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+  }
+  &:hover {
+    background: $blue-purple-500 !important;
+    border: none;
+    &::after {
+      -webkit-transform: translateX(4px);
+      -moz-transform: translateX(4px);
+      -ms-transform: translateX(4px);
+      -o-transform: translateX(4px);
+      transform: translateX(4px);
+    }
+  }
+}
+
 /* (Jump to) "Top" button */
 
 .jump-to-top {
@@ -68,3 +104,37 @@ p + .readmore {
     content: " ↑"
   }
 }
+
+.accordian-row {
+  background: $gray-800;
+  border-radius: 5px;
+  padding: 32px;
+  h3 {
+    width: calc(100% - 32px);
+  }
+  a {
+    position: relative;
+    &:hover {
+      color: $white;
+    }
+    &::after {
+      -webkit-transition: transform 0.3s ease-out;
+      -moz-transition: transform 0.3s ease-out;
+      -ms-transition: transform 0.3s ease-out;
+      -o-transition: transform 0.3s ease-out;
+      transition: transform 0.3s ease-out;
+      transform: rotateX(180deg);
+      position: absolute;
+      right: -32px;
+      top: calc(50% - 12px);
+      display: inline-flex;
+      content: url(../../img/icons/purple-arrow.svg);
+    }
+    &.collapsed {
+      &::after {
+        transform: rotateX(360deg);
+      }
+    }
+  }
+}
+

@@ -63,6 +63,7 @@ section {
   display: grid;
   gap: 1px;
   padding: 0;
+  width: 100%;
 
   &.card-grid-2x2 {
     /* left half is a hero area; right half is a 2x2 grid. */
@@ -127,11 +128,49 @@ section {
       /* Switch to 1-column layout on smaller widths */
       grid-template-columns: 1fr;
     }
+    .col-new {
+      margin: 20px;
+      @include media-breakpoint-down(md) {
+        margin: 20px 0;
+      }
+    }
   }
 
   &.card-grid-3xN {
     /* 3 equal columns and any number of auto-sized rows. */
     grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+    }
+    .card-new {
+      min-height: 264px;
+      @include media-breakpoint-up(md) {
+        min-height: 347px;
+      }
+    }
+  }
+
+  &.card-grid-2xN {
+    /* 2 equal columns and any number of auto-sized rows. */
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+
+    /* No "hero" blocks expected here. */
+
+    @include media-breakpoint-down(md) {
+      /* Switch to 1-column layout on smaller widths */
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.card-grid-1x2 {
+    /* 1 left columns and right 2x the size. */
+    grid-template-columns: 1fr 2fr;
     grid-auto-rows: auto;
 
     /* No "hero" blocks expected here. */
@@ -177,6 +216,154 @@ section {
 
 }
 
+// New Page Layouts ---------------------------------------------------------------
+$columns: 12; // Number of columns in the grid system
+
+.container-new {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 960px;
+  z-index: 1;
+  @include media-breakpoint-down(xxl) {
+    max-width: 1280px;
+  }
+  @include media-breakpoint-down(xl) {
+    max-width: 1040px;
+  }
+  @include media-breakpoint-down(lg) {
+    max-width: 832px;
+  }
+  @include media-breakpoint-down(md) {
+    max-width: 608px;
+  }
+  @include media-breakpoint-down(sm) {
+    // max-width: 416px;
+    max-width: 100%;
+    margin: 0 32px;
+
+  }
+  // create columns
+  @for $width from 1 through $columns {
+    .col-new-#{$width} {
+      flex-basis: $width / $columns * 100%;
+    }  
+  }
+  .col-new {
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include media-breakpoint-down(lg) {
+      margin: 24px 0;
+    }
+    @include media-breakpoint-down(sm) {
+      margin: 0 0 40px;
+    }
+    @include media-breakpoint-up(lg) {
+      margin: 40px;
+    }
+    
+    &#pink-purple {
+      background-image: url(../../img/cards/pink-purple.svg);
+    }
+    &#neutral-blue {
+      background-image: url(../../img/cards/neutral-blue.svg);
+    }
+    &#light-green {
+      background-image: url(../../img/cards/light-green.svg);
+    }
+    &#orange {
+      background-image: url(../../img/cards/orange.svg);
+    }
+    &#orange-yellow {
+      background-image: url(../../img/cards/orange-yellow.svg);
+    }
+    &#orange-yellow-2 {
+      background-image: url(../../img/cards/orange-yellow-2.svg);
+    }
+    &#magenta-orange {
+      background-image: url(../../img/cards/magenta-orange.svg);
+    }
+    &#blue-green {
+      background-image: url(../../img/cards/blue-green.svg);
+    }
+    &#light-blue {
+      background-image: url(../../img/cards/light-blue.svg);
+    }
+    &#green-blue {
+      background-image: url(../../img/cards/green-blue.svg);
+    }
+    &#green-purple {
+      background-image: url(../../img/cards/green-purple.svg);
+    }
+    &#purple-blue {
+      background-image: url(../../img/cards/purple-blue.svg);
+    }
+    &#blue-light-blue {
+      background-image: url(../../img/cards/blue-light-blue.svg);
+    }
+    &#sm-yellow {
+      background-image: url(../../img/cards/sm-yellow.svg);
+    }
+    &#sm-yellow-2 {
+      background-image: url(../../img/cards/sm-yellow-2.svg);
+    }
+    &#sm-purple {
+      background-image: url(../../img/cards/sm-purple.svg);
+    }
+    &#sm-magenta {
+      background-image: url(../../img/cards/sm-magenta.svg);
+    }
+    &#sm-blue-green {
+      background-image: url(../../img/cards/sm-blue-green.svg);
+    }
+    &#sm-green {
+      background-image: url(../../img/cards/sm-green.svg);
+    }
+    &#sm-green-2 {
+      background-image: url(../../img/cards/sm-green-2.svg);
+    }
+    &#sm-light-blue {
+      background-image: url(../../img/cards/sm-light-blue.svg);
+    }
+    &#sm-light-blue-3 {
+      background-image: url(../../img/cards/sm-light-blue-3.svg);
+    }
+    &#sm-magenta-2 {
+      background-image: url(../../img/cards/sm-magenta-2.svg);
+    }
+    &#sm-magenta-3 {
+      background-image: url(../../img/cards/sm-magenta-3.svg);
+    }
+    &#sm-orange {
+      background-image: url(../../img/cards/sm-orange.svg);
+    }
+    &#sm-orange-2 {
+      background-image: url(../../img/cards/sm-orange-2.svg);
+    }
+  }
+
+  .card-new {
+    padding: 32px;
+    --width: 4;
+  }
+  .col-new-card {
+    transition: all 0.35s ease-out;
+    cursor: pointer;
+    &:hover {
+      -webkit-transform: translateY(-16px);
+      -moz-transform: translateY(-16px);
+      -ms-transform: translateY(-16px);
+      -o-transform: translateY(-16px);
+      transform: translateY(-16px);
+    }
+  }
+}
+
+
+
+
 /* Grid Box Vertical numbers ------------------------------------------------ */
 .flag-vertical {
   color: $gray-200;
@@ -195,6 +382,7 @@ section {
 }
 
 // Misc. layout styles ---------------------------------------------------------
+
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
   padding: 44px 24px 48px;
@@ -272,14 +460,15 @@ section {
 .timeline:before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -40px;
     left: 18px;
-    height: 102.5%;
+    height: 95%;
     width: 4px;
     background: linear-gradient(180deg, rgba(254, 255, 1, 1) 0%, rgba(255, 45, 154, 1) 33%, rgba(163, 8, 143, 1) 66%, rgba(44, 4, 128, 0.85) 100%);
  }
 
 .timeline-dot {
+  margin-top: 85px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -304,6 +493,9 @@ section {
 }
 .timeline-block:nth-child(3) .timeline-dot {
   border: 3px solid $red-purple-600;
+}
+.timeline-block:nth-child(4) .timeline-dot {
+  border: 3px solid $red-purple-900;
 }
 .timeline-block {
     display: flex;

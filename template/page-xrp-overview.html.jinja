@@ -1,0 +1,270 @@
+{% extends "base.html.jinja" %}
+{% block head %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock %}
+
+{% block bodyclasses %}no-sidebar{% endblock %}
+{% block mainclasses %}landing{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block main %}
+<div class="position-relative">
+  <img src="./img/backgrounds/xrp-overview-blue.svg" id="xrp-overview-blue">
+</div>
+
+<section class="py-26 text-center">
+  <div class="col-lg-4 mx-auto text-center">
+    <div class="d-flex flex-column-reverse">
+      <h1 class="mb-18">{% trans %}Your Questions About XRP, Answered{% endtrans %}</h1>
+      <h6 class="green-500 mb-3">{% trans %}XRP Overview{% endtrans %}</h6>
+    </div>
+  </div>
+</section>
+
+<section class="container-new my-20">
+	<div class="card-grid card-grid-1x2">
+    <div class="col-new">
+    	<ul class="p-0 sticky-top top-24">
+    		<li class="ls-none"><a class="sidelinks" href="#about-xrp">About XRP</a></li>
+    		<li class="ls-none"><a class="sidelinks" href="#xrp-trading">XRP in Trading</a></li>
+    		<li class="ls-none"><a class="sidelinks" href="#ripple">Ripple vs. XRP</a></li>
+    		<li class="ls-none"><a class="sidelinks" href="#wallets">XRP Wallets</a></li>
+    		<li class="ls-none"><a class="sidelinks" href="#exchanges">XRP Exchanges</a></li>
+    	</ul>
+    </div>
+
+    <div class="col-new">
+    	<div class="link-section" id="about-xrp">
+        <h2 class="h4 mb-8">{% trans %}What Is XRP?{% endtrans %}</h2>
+        <h5 class="longform mb-10">{% trans %}XRP is a digital asset that’s native to the XRP Ledger—an open-source, permissionless and decentralized blockchain technology.{% endtrans %}</h5>
+        <p class="mb-6">{% trans %}Created in 2012 specifically for payments, XRP can settle transactions on the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, cheaper and greener than any other digital asset.{% endtrans %}</p>
+
+        <table class="mb-10 landing-table">
+          <thead>
+            <tr>
+              <th><h6>{% trans %}Benefits{% endtrans %}</h6></th>
+              <th><h6>{% trans %}XRP{% endtrans %}</h6></th>
+              <th><h6>{% trans %}Bitcoin{% endtrans %}</h6></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{% trans %}Fast{% endtrans %}</td>
+              <td>{% trans %}3-5 seconds to settle{% endtrans %}</td>
+              <td>{% trans %}500 seconds to settle{% endtrans %}</td>
+            </tr>
+            <tr>
+              <td>{% trans %}Low-Cost{% endtrans %}</td>
+              <td>{% trans %}$0.0002/tx{% endtrans %}</td>
+              <td>{% trans %}$0.50/tx{% endtrans %}</td>
+            </tr>
+            <tr>
+            	<td>{% trans %}Scalable{% endtrans %}</td>
+            	<td>{% trans %}1,500 tx per second{% endtrans %}</td>
+             	<td>{% trans %}3 tx per second{% endtrans %}</td>
+            </tr>
+            <tr>
+            	<td>{% trans %}Sustainable{% endtrans %}</td>
+            	<td>{% trans %}Environmentally sustainable (negligible energy consumption){% endtrans %}</td>
+              <td>{% trans %}0.3% of global energy consumption{% endtrans %}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="mb-10">{% trans %}XRP can be sent directly without needing a central intermediary, making it a convenient instrument in bridging two different currencies quickly and efficiently. It is freely exchanged on the open market and used in the real world for enabling cross-border payments and microtransactions.{% endtrans %}</p>
+        <div class="card-grid card-grid-2xN mb-10">
+        	<div class="mr-5-until-md">
+        		<img class="mw-100 mb-1" src="./img/icons/briefcase.svg">
+        		<h6 class="fs-4-5">{% trans %}Financial Institutions{% endtrans %}</h6>
+        		<p class="">{% trans %}Leverage XRP as a bridge currency to facilitate faster, more affordable cross-border payments around the world.{% endtrans %}</p>
+        	</div>
+        	<div class="ml-5-until-md">
+        		<img class="mw-100 mb-1" src="./img/icons/user.svg">
+        		<h6 class="fs-4-5">{% trans %}Individual Consumers{% endtrans %}</h6>
+        		<p>{% trans %}Use XRP to move different currencies around the world. {% endtrans %}</p>
+        	</div>
+        </div>
+        <div class="mt-10 p-10 br-8 bg-grey-800 text-center position-relative">
+        	<img src="./img/backgrounds/cta-xrp-overview-orange.svg" class="cta cta-top-left">
+        	<img src="./img/backgrounds/cta-xrp-overview-magenta.svg" class="cta cta-bottom-right">
+        	<div class="z-index-1 position-relative">
+	          <h2 class="h4 mb-10">{% trans %}XRP was designed with sustinability in mind.{% endtrans %}</h2>
+	          <p class="mb-10">{% trans %}Explore how the energy consumption of XRP compares to other currencies.{% endtrans %}</p>
+	          <a class="btn btn-primary btn-arrow">Green Currency Calculator</a>
+	        </div>
+        </div>
+      </div>
+
+      <div class="py-26 link-section" id="xrp-trading">
+        <h2 class="h4 mb-8">{% trans %}How Is XRP Used in Trading?{% endtrans %}</h2>
+        <h5 class="longform mb-10">{% trans %}XRP is traded on more than 100 markets and exchanges worldwide.{% endtrans %}</h5>
+        <p class="mb-6">{% trans %}XRP’s low transaction fees, reliability and high speed enable traders to use the digital asset as high-speed, cost-efficient and reliable collateral across trading venues—seizing arbitrage opportunities, servicing margin calls and managing general trading inventory in real time.{% endtrans %}</p>
+        <p>{% trans %}Because of the properties inherent to XRP and the ecosystem around it, traders worldwide are able to shift collateral, bridge currencies and switch from one crypto into another nearly instantly, across any exchange on the planet.{% endtrans %}</p>
+      </div>
+
+      <div class="py-26 link-section" id="ripple">
+        <h2 class="h4 mb-8">{% trans %}What Is the Relationship Between Ripple and XRP?{% endtrans %}</h2>
+        <h5 class="longform mb-10">{% trans %}Ripple is a technology company that makes it easier to build a high-performance, global payments business through its platform, RippleNet. XRP is a digital asset independent of this, and is used in Ripple’s On-Demand Liquidity service to facilitate efficient and cost-effective cross-border transactions. {% endtrans %}</h5>
+        <p class="mb-6">{% trans %}In December of 2017, Ripple placed 55 Billion XRP into a cryptographically secured escrow account to support stable and healthy XRP markets.{% endtrans %}</p>
+        <p>{% trans %}Ripple is a technology company that makes it easier to build a high-performance, global payments business through its platform, RippleNet. XRP is a digital asset independent of this, and is used in Ripple’s On-Demand Liquidity service to facilitate efficient and cost-effective cross-border transactions. In December of 2017, Ripple placed 55 Billion XRP into a cryptographically secured escrow account to support stable and healthy XRP markets.{% endtrans %}</p>
+        <div class="mt-10 p-10 br-8 bg-grey-800 text-center position-relative">
+        	<img src="./img/backgrounds/cta-xrp-overview-green.svg" class="cta cta-top-left">
+        	<img src="./img/backgrounds/cta-xrp-overview-green-2.svg" class="cta cta-bottom-right">
+        	<div class="z-index-1 position-relative">
+	          <h3 class="h4 mb-10">{% trans %}As of <span class="green-500">December 2017</span> <br/>
+	          <span class="d-inline-flex"><img class="mw-100 mr-2" src="./img/logos/xrp-mark.svg"> <span class="numbers green-500">55B</span></span><br/>
+	          	XRP remains in escrow{% endtrans %}</h3>
+	        </div>
+        </div>
+      </div>
+
+	      <div class="link-section py-26" id="wallets">
+	        <h2 class="h4 mb-8">{% trans %}What Wallets Support XRP?{% endtrans %}</h2>
+	        <h5 class="longform mb-10">{% trans %}Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: custodial and non-custodial.{% endtrans %}</h5>
+	        <div class="card-grid card-grid-2xN mb-10">
+	        	<div class="mr-5-until-md">
+	        		<h6 class="fs-4-5">{% trans %}Custodial Wallets{% endtrans %}</h6>
+	        		<p class="">{% trans %}Custodial wallets manage a user's private key, which allows the wallet to withdraw crypto currency on a user's behalf.{% endtrans %}</p>
+	        		<ul class="ls-none p-0">
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><img class="mw-100" src="./img/wallets/ledger.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><img class="mw-100" src="./img/wallets/secalot.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><img class="mw-100" src="./img/wallets/trezor.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><img class="mw-100" src="./img/wallets/gatehub.svg"></a>
+	        			</li>
+	        		</ul>
+	        	</div>
+	        	<div class="ml-5-until-md mt-10-sm">
+	        		<h6 class="fs-4-5">{% trans %}Non-Custodial Wallets{% endtrans %}</h6>
+	        		<p>{% trans %}Non-custodial wallets do not manage a user's private key, which is up to the user to manage, and therefore cannot send crypto currency on the user's behalf.{% endtrans %}</p>
+	        		<ul class="ls-none p-0">
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><img class="mw-100" src="./img/wallets/xumm.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><img class="mw-100" src="./img/wallets/trust.svg"></a>
+	        			</li>
+	        		</ul>
+	        	</div>
+	        </div>
+	       	<p class="fs-3 mt-10">{% trans %}Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.{% endtrans %}</p>
+	      </div>
+
+	      <div class="py-26 link-section" id="exchanges">
+	        <h2 class="h4 mb-8">{% trans %}What Exchanges Support XRP?{% endtrans %}</h2>
+	        <h5 class="longform mb-10">{% trans %}Exchanges are where people trade currencies. XRP is traded on more than 100 markets and exchanges worldwide.{% endtrans %}</h5>
+	        <p class="mb-10">{% trans %}There are different types of exchanges that vary depending on the type of market (spot, futures, options, swaps), and the type of security model (custodial, non-custodial).{% endtrans %}</p>
+	        <div class="card-grid card-grid-2xN mb-10">
+	        	<div class="mr-5-until-md">
+	        		<h6 class="fs-4-5">{% trans %}Spot Exchanges{% endtrans %}</h6>
+	        		<p class="mb-0">{% trans %}Spot exchanges allow people to buy and sell cryptocurrencies at current (spot) market rates. {% endtrans %}</p>
+	        	</div>
+	        	<div class="ml-5-until-md">
+	        		<h6 class="fs-4-5">{% trans %}Futures, Options and Swap Exchanges{% endtrans %}</h6>
+	        		<p class="mb-0">{% trans %}Futures, options and swap exchanges allow people to buy and sell standardized contracts of cryptocurrency market rates in the future.{% endtrans %}</p>
+	        	</div>
+	        </div>
+	        <div class="card-grid card-grid-2xN mb-10">
+	        	<div class="mr-5-until-md">
+	        		<h6 class="fs-4-5">{% trans %}Custodial Exchanges{% endtrans %}</h6>
+	        		<p class="mb-0">{% trans %}Custodial exchanges manage a user’s private keys, and publish centralized order books of buyers and sellers. {% endtrans %}</p>
+	        	</div>
+	        	<div class="ml-5-until-md">
+	        		<h6 class="fs-4-5">{% trans %}Non-Custodial Exchanges{% endtrans %}</h6>
+	        		<p class="mb-0">{% trans %}Non-custodial exchanges, also known as decentralized exchanges, do not manage a user’s private keys, and publish decentralized order books of buyers and sellers on a blockchain.{% endtrans %}</p>
+	        	</div>
+	        </div>
+	        <h6>{% trans %}Top Exchanges, according to CryptoCompare{% endtrans %}</h6>
+	        <div class="card-grid card-grid-2xN mb-10">
+	        	<div class="mr-5-until-md">
+	        		<ul class="ls-none p-0 mb-0">
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">1</span><img class="mw-100" src="./img/exchanges/bitstamp.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">2</span><img class="mw-100" src="./img/exchanges/kraken.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">3</span><img class="mw-100" src="./img/exchanges/cex-io.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">4</span><img class="mw-100" src="./img/exchanges/liquid.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">5</span><img class="mw-100" src="./img/exchanges/lmax.svg"></a>
+	        			</li>
+	        		</ul>
+	        	</div>
+	        	<div class="ml-5-until-md">
+	        		<ul class="ls-none p-0">
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">6</span><img class="mw-100" src="./img/exchanges/bitfinex.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">7</span><img class="mw-100" src="./img/exchanges/etoro.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">8</span><img class="mw-100" src="./img/exchanges/currency.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">9</span><img class="mw-100" src="./img/exchanges/bittrex.svg"></a>
+	        			</li>
+	        			<li class="li-links">
+	        				<a class="align-items-center d-flex" href=""><span class="longform mr-3">10</span><img class="mw-100" src="./img/exchanges/ftx.svg"></a>
+	        			</li>
+	        		</ul>
+	        	</div>
+	        </div>
+	        <p class="fs-3 mt-10">{% trans %}Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.{% endtrans %}</p>
+	      </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+{% endblock %}
+
+
+{% block endbody %}
+<script type="text/javascript">
+	$(window).scroll(function() {
+	    var position = $(this).scrollTop();
+
+	    $('.link-section').each(function() {
+	        var target = $(this).offset().top;
+	        var id = $(this).attr('id');
+
+	        if (position >= target) {
+            $('.sidelinks').removeClass('active');
+            $('a[href="#' + id + '"]').addClass('active');
+          }
+	    });
+	});
+
+	$('.sidelinks').on('click', function() {  
+	    $('html, body').animate({scrollTop: $(this.hash).offset().top + 5}, 1000);
+	    return false;
+	});
+</script>
+
+<script type="application/javascript">
+	
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+{% endblock %}
