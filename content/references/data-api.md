@@ -13,7 +13,6 @@ For information on the old Data API, see the [rippled-historical-database reposi
 
 ## Alternatives
 
-Most common operations like requesting account information and balances, transaction history, etc. 
-can be sent to self hosted or public XRP Ledger nodes. Data can be retrieved using a [WebSocket connection](get-started-using-http-websocket-apis.html#websocket-api) or [JSON RPC (HTTP POST)](.org/get-started-using-http-websocket-apis.html#json-rpc).
+For most common operations, like requesting account balances or transaction history, you can query a self-hosted or [public XRP Ledger server](public-servers.html) using a [WebSocket connection](get-started-using-http-websocket-apis.html#websocket-api) or [JSON-RPC (HTTP POST)](get-started-using-http-websocket-apis.html#json-rpc).
 
 See the [Get Started Using HTTP / WebSocket APIs](get-started-using-http-websocket-apis.html) page for more information.
