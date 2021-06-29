@@ -322,8 +322,6 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - intro-to-consensus.html
-            # Questions
-            - faq.html
         top_nav_hero_image: assets/img/icons/docs.svg
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
@@ -3714,6 +3712,7 @@ pages:
         html: faq.html
         template: page-faq.html.jinja
         parent: docs.html
+        top_nav_grouping: Questions
         sidebar: disabled
         targets:
             - en
