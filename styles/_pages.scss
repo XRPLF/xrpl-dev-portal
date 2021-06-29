@@ -183,18 +183,18 @@
     }
   }
 
-  #software-and-sdks {
-    .card-deck .card:nth-child(1) {
-      background-image: url(../../img/cards/green.svg);
+  #software-and-sdks .card-deck {
+    .card:nth-child(1) {
+      background-image: url(../img/cards/4col-green.svg);
     }
-    .card-deck .card:nth-child(2) {
-      background-image: url(../../img/cards/neutral-blue.svg);
+    .card:nth-child(2) {
+      background-image: url(../img/cards/4col-light-blue.svg);
     }
-    .card-deck .card:nth-child(3) {
-      background-image: url(../../img/cards/magenta-orange.svg);
+    .card:nth-child(3) {
+      background-image: url(../img/cards/4col-orange.svg);
     }
-    .card-deck .card:nth-child(4) {
-      background-image: url(../../img/cards/orange-yellow.svg);
+    .card:nth-child(4) {
+      background-image: url(../img/cards/4col-yellow.svg);
     }
   }
 
@@ -207,18 +207,36 @@
     margin-bottom: 0.75rem;
   }
 
-  #doc-types {
-    .card-deck .card:nth-child(1) {
-      background-image: url(../../img/cards/orange-yellow-2.svg);
+  #doc-types .card-deck {
+    .card:nth-child(1) {
+      background-image: url(../img/cards/4col-orange-yellow.svg);
     }
-    .card-deck .card:nth-child(2) {
-      background-image: url(../../img/cards/pink-purple.svg);
+    .card:nth-child(2) {
+      background-image: url(../img/cards/4col-magenta.svg);
     }
-    .card-deck .card:nth-child(3) {
-      background-image: url(../../img/cards/blue-green.svg);
+    .card:nth-child(3) {
+      background-image: url(../img/cards/4col-blue-green.svg);
     }
-    .card-deck .card:nth-child(4) {
-      background-image: url(../../img/cards/green-purple.svg);
+    .card:nth-child(4) {
+      background-image: url(../img/cards/4col-light-blue-2.svg);
+    }
+  }
+}
+
+.page-docs-index,
+.page-community {
+  #run-a-network-node .card-deck {
+    .card:nth-child(1) {
+      background-image: url(../img/cards/4col-yellow-2.svg);
+    }
+    .card:nth-child(2) {
+      background-image: url(../img/cards/4col-purple.svg);
+    }
+    .card:nth-child(3) {
+      background-image: url(../img/cards/4col-magenta-2.svg);
+    }
+    .card:nth-child(4) {
+      background-image: url(../img/cards/4col-light-green.svg);
     }
   }
 }

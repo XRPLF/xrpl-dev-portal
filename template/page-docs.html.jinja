@@ -55,7 +55,7 @@
 
   <section class="container-fluid mb-50" id="software-and-sdks">
     {% set get_started = pages|selectattr("html", "defined_and_equalto", "get-started.html")|first %}
-      <h2>{% trans %}Software and SDKs{% endtrans %}</h2>
+      <h2 class="h4">{% trans %}Software and SDKs{% endtrans %}</h2>
       <div class="row row-cols-2 row-cols-lg-4 card-deck">
 
       {% for page in get_started.children if page.showcase_icon is defined %}
@@ -71,18 +71,21 @@
 
   <section class="container-fluid mb-50" id="doc-types">
     <h2 class="h4">{% trans %}Article Types{% endtrans %}</h2>
-    <div class="row row-cols-1 row-cols-lg-4 card-deck">
-    {% set doc_types = [] %}
-    {% for page in currentpage.children if page.html != "by-label.html" %}
-      <a class="card" href="{{target.prefix}}{{page.html}}">
-        <div class="card-body">
-          <h4 class="card-title h5">{{page.name}}</h4>
-          <p class="card-text">{{page.blurb}}</p>
-        </div>
-      </a>
-    {% endfor %}
-    </div>
+    {% set curated_cards = currentpage.children|selectattr("html","ne","by-label.html")|map(attribute="html")|list %}
+    {% set mobile_cols = 1 %}
+    {% include 'component-curated-cards.html.jinja' %}
   </section><!--/#doc-types-->
+
+  <section class="container-fluid mb-50" id="run-a-network-node">
+    <h2 class="h4">{% trans %}Run an XRP Ledger Network Node{% endtrans %}</h2>
+    {% set curated_cards = [
+      "the-rippled-server.html",
+      "install-rippled.html",
+      "run-rippled-as-a-validator.html",
+      "troubleshoot-the-rippled-server.html"
+    ] %}
+    {% include 'component-curated-cards.html.jinja' %}
+  </section><!--/#run-a-network-node-->
 
   <section class="container-fluid mb-50 doc-index">
     <h2 id="full-doc-index" class="h4">{% trans %}Full Documentation Index{% endtrans %}</h2>

@@ -174,8 +174,10 @@
       border-radius: 0 0 $border-radius-lg $border-radius-lg;
       padding: 2.5rem;
 
-      .dropdown-hero {
-        padding: 0;
+      .dropdown-item{
+        &.dropdown-hero {
+          padding: 0;
+        }
       }
 
       &.show {

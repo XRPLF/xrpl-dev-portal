@@ -20,10 +20,7 @@ a.card:hover h3 {
   .card {
     background-position: bottom;
     background-repeat: no-repeat;
-
-    @include media-breakpoint-up(xl) {
-      background-size: contain;
-    }
+    background-size: contain;
   }
 
   a.card {
@@ -40,7 +37,7 @@ a.card:hover h3 {
 
   @include media-breakpoint-down(md) {
     margin-top: 2rem;
-    
+
     .card-body {
       padding: 1rem;
     }

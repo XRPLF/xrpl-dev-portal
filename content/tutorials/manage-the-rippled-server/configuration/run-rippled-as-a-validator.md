@@ -6,6 +6,7 @@ labels:
   - Core Server
   - Blockchain
 top_nav_grouping: Popular Pages
+top_nav_name: Join UNL
 ---
 # Run rippled as a Validator
 

@@ -1382,6 +1382,7 @@ pages:
     -   name: Install rippled
         html: install-rippled.html
         parent: manage-the-rippled-server.html
+        top_nav_name: Install & Configure
         blurb: Install and update the rippled server.
         template: pagetype-category.html.jinja
         targets:
