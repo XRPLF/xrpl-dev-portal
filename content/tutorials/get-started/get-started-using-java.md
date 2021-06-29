@@ -12,6 +12,7 @@ filters:
   - include_code
 labels:
   - Development
+showcase_icon: assets/img/logos/java.svg
 ---
 
 # Get Started Using Java

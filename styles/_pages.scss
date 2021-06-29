@@ -28,6 +28,23 @@
     font-weight: bold;
   }
 }
+.hc .h2 {
+  height: 38px;
+  padding-bottom: 5rem;
+}
+#hc-1 {
+  background-image: url(../../img/graphics/hc-1.png);
+  border: 1px solid #FAFF1A;
+}
+#hc-2 {
+  background-image: url(../../img/graphics/hc-2.png);
+  border: 1px solid #FF1A8B;
+}
+#hc-3 {
+  background-image: url(../../img/graphics/hc-3.png);
+  border: 1px solid #974CFF;
+}
+
 
 .cta {
   position: absolute;
@@ -157,10 +174,100 @@
 }
 
 .page-docs-index {
-  @include media-breakpoint-up(lg) {
-    background: url(../img/backgrounds/bg-docs.png) no-repeat;
+  background: url(../img/backgrounds/bg-docs.png) no-repeat;
+  background-position-x: left -20vw;
+  background-position-y: top;
+  @include media-breakpoint-up(md) {
     background-position-x: left;
-    background-position-y: 300px;
+  }
+
+  .center-search {
+    .input-group-text {
+      height: 56px;
+      padding: .75rem .75rem .75rem 1rem;
+      line-height: 2rem;
+    }
+    .ds-input {
+      height: 56px;
+      padding: .75rem 1rem .75rem .5rem;
+    }
+  }
+
+  #docs-browse-by {
+    @include media-breakpoint-up(lg) {
+      .col:not(:first-child) {
+        padding-left: 2.5rem;
+      }
+      .col:not(:last-child) {
+        padding-right: 2.5rem;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      .col:not(:first-child) {
+        padding-top: 4rem;
+      }
+    }
+  }
+
+  #software-and-sdks .card-deck {
+    .card:nth-child(1) {
+      background-image: url(../img/cards/4col-green.svg);
+    }
+    .card:nth-child(2) {
+      background-image: url(../img/cards/4col-light-blue.svg);
+    }
+    .card:nth-child(3) {
+      background-image: url(../img/cards/4col-orange.svg);
+    }
+    .card:nth-child(4) {
+      background-image: url(../img/cards/4col-yellow.svg);
+    }
+  }
+
+  .circled-logo {
+    background-color: $gray-600;
+    border-radius: 50%;
+    padding: .75rem;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.75rem;
+  }
+
+  #doc-types .card-deck {
+    .card:nth-child(1) {
+      background-image: url(../img/cards/4col-orange-yellow.svg);
+    }
+    .card:nth-child(2) {
+      background-image: url(../img/cards/4col-magenta.svg);
+    }
+    .card:nth-child(3) {
+      background-image: url(../img/cards/4col-blue-green.svg);
+    }
+    .card:nth-child(4) {
+      background-image: url(../img/cards/4col-light-blue-2.svg);
+    }
+  }
+
+  #docs-hot-topic .longform {
+    margin-top: 2.5rem;
+  }
+}
+
+.page-docs-index,
+.page-community {
+  #run-a-network-node .card-deck {
+    .card:nth-child(1) {
+      background-image: url(../img/cards/4col-yellow-2.svg);
+    }
+    .card:nth-child(2) {
+      background-image: url(../img/cards/4col-purple.svg);
+    }
+    .card:nth-child(3) {
+      background-image: url(../img/cards/4col-magenta-2.svg);
+    }
+    .card:nth-child(4) {
+      background-image: url(../img/cards/4col-light-green.svg);
+    }
   }
 }
 

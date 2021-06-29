@@ -1,31 +1,49 @@
-.card {
-  background-color: transparent;
+.card-body > p,
+.card-body > p:last-child {
+  padding: 0;
+  margin-bottom: 2rem;
 }
 
-.card-wrapper {
-  width: 100%;
+/* Full-link cards */
+a.card {
+  border: 0;
 }
-.card-b {
-  padding: 2rem;
-  border-radius: 8px;
-  opacity: 1;
-  // background: rgba(34, 37, 43, 0.5);
-  // backdrop-filter: blur(3px);
-  transition: all 0.35s ease-in-out;
-  @include media-breakpoint-down(sm) {
-    margin: 10px;
-  }
-  &.not-hover {
-    opacity: 0.6;
-  }
+a.card:hover {
+  text-decoration: none;
+}
+a.card:hover h3 {
+  text-decoration: underline;
 }
 
-
-@include media-breakpoint-down(md) {
-  .card-deck {
-    display: block !important;
+.card-deck {
+  margin-top: 2.5rem;
+  .card {
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
   }
-  .card-deck .card {
-    margin-bottom: 2.5rem !important;
+
+  a.card {
+    transition: all 0.35s ease-out;
+    cursor: pointer;
+    &:hover {
+      -webkit-transform: translateY(-16px);
+      -moz-transform: translateY(-16px);
+      -ms-transform: translateY(-16px);
+      -o-transform: translateY(-16px);
+      transform: translateY(-16px);
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-top: 2rem;
+
+    .card-body {
+      padding: 1rem;
+    }
+    &.row-cols-2 .card {
+      margin: .75rem;
+      max-width: calc(50% - 1.5rem);
+    }
   }
 }

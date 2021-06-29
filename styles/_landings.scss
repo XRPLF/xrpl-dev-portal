@@ -23,17 +23,6 @@
     }
   }
 
-
-.content .children-display > ul > li {
-}
-
-  .content .label-links {
-
-  }
-
-
-  /* Common list modules (children, curated links) -------------------------- */
-
   .level-1,
   .level-2{
     margin-top: 0;
@@ -44,32 +33,6 @@
   .children-display ul {
     padding-left: 0;
     margin-bottom: 0;
-  }
-
-  .card .curated-links a:hover,
-  .card .children-display a:hover {
-    text-decoration: none;
-  }
-
-  .card .level-1 a,
-  .card .curated-links li a {
-    padding: 8px;
-    display: block;
-    margin: 0 -8px 0 -8px;
-  }
-
-  .card .level-2 {
-    position: relative;
-  }
-  .card .level-2 a {
-    padding: 8px 8px 8px 28px;
-    display: block;
-    margin: 0 -8px 0 -8px;
-  }
-
-  .card .blurb + .children-display,
-  .card .blurb + .curated-links {
-    margin-top: 1rem;
   }
 
   .section-hero .blurb {
@@ -107,12 +70,6 @@
 
   /* Misc. ------------------------------------------------------------------ */
 
-  @include media-breakpoint-down(md) {
-    .card {
-      padding-left: 0px;
-    }
-  }
-
   .display-4 {
     margin-bottom: 1.5rem;
   }
@@ -122,43 +79,26 @@
     font-weight: 700;
   }
 
-  .card-header h3.card-title {
-    margin-bottom: 0;
-  }
-
   #test-net-servers pre {
     overflow-x: auto;
   }
 
-  .card li {
-    list-style-type: none;
-    margin-left: 0;
-  }
+  // .card li {
+  //   list-style-type: none;
+  //   margin-left: 0;
+  // }
 
   section:first-of-type {
     // padding-top: 0;
     border-top-width: 0;
   }
 
-  .card-header,
-  .card-footer {
-    background: none;
-    border-bottom: none;
-    border-top: none;
-  }
-
-  .card-header {
-    padding: 8px;
-  }
-
-  .card-footer {
-    padding: 8px;
-  }
-
-  .card-body > p {
-    padding: 0;
-    margin-bottom: 0;
-  }
+  // .card-header,
+  // .card-footer {
+  //   background: none;
+  //   border-bottom: none;
+  //   border-top: none;
+  // }
 
 
   #main_content_wrapper {
@@ -173,29 +113,50 @@
     }
   }
 
+  // In-body nav blocks - show as a table with → arrows
+  .nav {
+    .nav-link {
+      padding: 1rem 0;
+      color: $gray-200;
+      border-bottom: 1px solid $gray-800;
+      position: relative;
 
-  .card .card-img-top {
-    width: 60px;
-    height: 60px;
-    margin-left: 0;
-    margin-right: auto;
-  }
-  .image-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 16px;
+      &:hover {
+        color: $purple;
+      }
+
+      &:not(.external-link)::after {
+        content: " ";
+        background-image: url(../img/icons/arrow-right-purple.svg);
+        background-size: cover;
+        position: absolute;
+        right: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        transition: all .2s ease;
+      }
+      &:not(.external-link):hover::after {
+        animation: arrowDance2 1.2s infinite;
+      }
+
+      &.external-link::after {
+        content: " ";
+        background-image: url(../img/icons/arrow-up-right.svg);
+        background-size: cover;
+        position: absolute;
+        // right: .5rem;
+        right: 7px;
+        width: 1.5rem;
+        height: 1.5rem;
+        transition: all .2s ease;
+      }
+
+      &.external-link:hover::after {
+        animation: arrowDanceDiag 1.2s infinite;
+      }
+    }
   }
 
-  /* Full-link cards */
-  a.card {
-    border: 1px solid transparent;
-  }
-  a.card:hover {
-    text-decoration: none;
-  }
-  a.card:hover h3 {
-    text-decoration: underline;
-  }
 
 }
 

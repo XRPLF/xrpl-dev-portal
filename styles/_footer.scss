@@ -1,71 +1,25 @@
 /* Footer ------------------------------------------------------------------- */
 
 .xrpl-footer {
-  >:first-child {
-    border-top: 1px solid white;
-    padding: 54px 48px 48px 48px;
-  }
-
-  .absolute_bottom_footer {
-    padding-bottom: 48px;
-  }
-
-  @include media-breakpoint-down(md) {
-    margin: 0 24px;
-  }
-
-  a {
-    text-decoration: none;
-  }
+  padding: 7.5rem 3rem;
+  background-image: url(../img/backgrounds/footer.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom right;
 
   h5 {
     font-size: 1rem;
+    font-weight: 600;
+    color: $gray-400;
   }
 
-  ul {
-    padding-left: 0;
-    margin-bottom: 0;
+  .nav-link {
+    padding: .75rem 0;
+    line-height: 1;
   }
 
-  li {
-    font-size: 0.75rem;
-    list-style-type: none;
-    margin-left: 0;
-  }
-
-  .card-body {
-    margin-top: -15px;
-  }
-
-  .card-header {
-    background: none;
-    border-bottom: none;
-    border-top: none;
-    padding: 8px;
-
-    h5 i {
-      margin-left: 0.2em;
-    }
-  }
-
-  .card-grid .card {
-    padding: 24px 48px 48px 48px;
-
-    &:first-child {
-      padding-left: 0;
-    }
-
-    @include media-breakpoint-down(lg) {
-      padding-left: 0;
-    }
-  }
-
-  .curated-links li, .level-1 {
-    margin-top: 12px;
-  }
-
-  .absolute_bottom_footer span {
-    margin-right: 25px;
-    font-size: 0.75rem;
+  .absolute-bottom-footer {
+    font-size: 10px;
+    line-height: 1rem;
   }
 }

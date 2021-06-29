@@ -127,6 +127,26 @@
     }
   }
 
+  #topnav-search {
+    flex-grow: 1;
+    .input-group {
+      flex-grow: 1;
+    }
+
+    @include media-breakpoint-down(md) {
+      .form-inline {
+        padding: $nav-link-padding-y $nav-link-padding-x;
+      }
+    }
+
+    .input-group-text {
+      height: 40px;
+    }
+    .ds-input {
+      height: 40px;
+    }
+  }
+
   // Desktop only styles -------------------------------------------------------
   @include media-breakpoint-up(lg) {
     padding: 0 3rem;
@@ -154,8 +174,10 @@
       border-radius: 0 0 $border-radius-lg $border-radius-lg;
       padding: 2.5rem;
 
-      .dropdown-hero {
-        padding: 0;
+      .dropdown-item{
+        &.dropdown-hero {
+          padding: 0;
+        }
       }
 
       &.show {
@@ -260,92 +282,6 @@
       }
     }
   } // End desktop styles
-
-  // Search bar & controls -----------------------------------------------------
-  #topnav-search {
-    flex-grow: 1;
-    .input-group {
-      flex-grow: 1;
-    }
-
-    @include media-breakpoint-down(md) {
-      .form-inline {
-        padding: $nav-link-padding-y $nav-link-padding-x;
-      }
-    }
-
-
-    .input-group-text {
-      border-width: 0;
-      color: $white;
-      background-color: $gray-800;
-      border-radius: $border-radius-sm 0 0 $border-radius-sm;
-      height: 40px;
-      padding: .5rem .5rem .5rem 1rem;
-      line-height: 1.5;
-    }
-    .algolia-autocomplete {
-      flex-grow: 1;
-    }
-
-    #topsearchbox {
-      background-color: $gray-800;
-      border-radius: 0 $border-radius-sm $border-radius-sm 0;
-      padding: .75rem 1rem .75rem .5rem;
-      height: 40px;
-      width: 100%;
-      border: 1px solid $gray-800;
-
-      &:focus {
-        box-shadow: none;
-        border-color: $white;
-      }
-    }
-
-    // Algolia Search results --------------------------------------------------
-    .algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
-      background-color: rgba(0,0,0,0.9);
-      border: 1px solid $gray-900;
-      border-radius: $border-radius-lg;
-    }
-    .algolia-autocomplete .ds-dropdown-menu::before {
-      background-color: rgba(0,0,0,0.9);
-      border-color: $gray-900;
-    }
-    .algolia-docsearch-suggestion {
-      background-color: rgba(0,0,0,0.9);
-    }
-    .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
-      color: $white;
-      border: 0 solid $secondary;
-      border-bottom-width: 1px;
-      font-weight: bold;
-    }
-
-    .algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
-      color: $white;
-    }
-
-    .algolia-autocomplete .algolia-docsearch-suggestion--title {
-      color: $white;
-    }
-
-    .algolia-autocomplete .algolia-docsearch-suggestion--text {
-      font-size: 0.8rem;
-      color: $gray-200;
-    }
-
-    .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
-      color: $white;
-      background-color: $green-800;
-    }
-
-    @include media-breakpoint-down(md) {
-      .algolia-autocomplete .ds-dropdown-menu {
-        min-width: unset;
-      }
-    }
-  }
 
   // Mobile only styles --------------------------------------------------------
   @include media-breakpoint-down(md) {
@@ -581,6 +517,12 @@
   margin-top: -80px;
   height: 80px;
   visibility: hidden;
+  z-index: -1;
+}
+
+// Fix so links aren't unclickable underneath the header anchor-fix
+a {
+  z-index: 1;
 }
 
 // Animated chevron (e.g. for language dropdown) -------------------------------

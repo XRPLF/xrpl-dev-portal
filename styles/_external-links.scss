@@ -9,7 +9,7 @@
     background-position: left 0 bottom .2em;
     transition: background-position 100ms ease-in-out;
 
-    // TODO: the background position is based on the padding, so it might
+    // Note: the background position is based on the padding, so it might
     // need adjustments for elements with more padding to make it line up
     // with the text. I thought background-origin: content-box might fix this
     // but it doesn't seem to.
@@ -58,12 +58,12 @@
   }
 }
 
-// /* Reduce external link icon size */
-// .fa.fa-external-link:before {
-//   font-size: 80%;
-// }
-//
-// .external-link .fa-external-link,
-// .related-projects a .fa-external-link {
-//   padding-left: 3px;
-// }
+.xrpl-footer .external-link {
+  &::after {
+    background-position: left 0 bottom 0;
+  }
+
+  &:hover::after {
+    background-position: left .2em bottom .2em;
+  }
+}

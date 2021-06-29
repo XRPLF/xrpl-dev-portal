@@ -101,7 +101,7 @@ p + .readmore {
   background-color: transparent;
 
   &::after {
-    content: " ↑"
+    display: none;
   }
 }
 
@@ -137,4 +137,3 @@ p + .readmore {
     }
   }
 }
-
