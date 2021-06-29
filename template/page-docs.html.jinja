@@ -61,7 +61,7 @@
 
   <section class="container-fluid mb-50" id="doc-types">
     <h2 class="h4">{% trans %}Article Types{% endtrans %}</h2>
-    {% set curated_cards = currentpage.children|selectattr("html","ne","by-label.html")|map(attribute="html")|list %}
+    {% set curated_cards = currentpage.children|selectattr("html","ne","by-label.html")|selectattr("html","ne","faq.html")|map(attribute="html")|list %}
     {% set mobile_cols = 1 %}
     {% include 'component-curated-cards.html.jinja' %}
   </section><!--/#doc-types-->
@@ -96,7 +96,7 @@
 <section class="container-fluid mb-50 doc-index">
   <h2 id="full-doc-index" class="h4">{% trans %}Full Documentation Index{% endtrans %}</h2>
   <div class="row">
-    {% for page in currentpage.children if page.html != "by-label.html" %}
+    {% for page in currentpage.children if page.html not in ("by-label.html", "faq.html") %}
     {% set parent_html = page.html %}
     {% set depth = 6 %}
     <div class="col-md-6 mt-20">
