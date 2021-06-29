@@ -130,16 +130,29 @@
         background-image: url(../img/icons/arrow-right-purple.svg);
         background-size: cover;
         position: absolute;
-        // right: .5rem;
         right: 0;
         width: 1.5rem;
         height: 1.5rem;
         transition: all .2s ease;
       }
-
-      &:hover::after {
-        // right: 0;
+      &:not(.external-link):hover::after {
         animation: arrowDance2 1.2s infinite;
+      }
+
+      &.external-link::after {
+        content: " ";
+        background-image: url(../img/icons/arrow-up-right.svg);
+        background-size: cover;
+        position: absolute;
+        // right: .5rem;
+        right: 7px;
+        width: 1.5rem;
+        height: 1.5rem;
+        transition: all .2s ease;
+      }
+
+      &.external-link:hover::after {
+        animation: arrowDanceDiag 1.2s infinite;
       }
     }
   }

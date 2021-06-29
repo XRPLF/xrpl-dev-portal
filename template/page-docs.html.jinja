@@ -22,16 +22,6 @@
         </form>
       </div><!--/.center-search-->
     </div>
-
-    {#<div class="highlight-subcard">
-      <h3>Hot Topic: NFTs</h3>
-      <p class="blurb">{% trans %}Interested in non-fungible tokens, but concerned about their <a href="impact.html">large carbon footprint</a>? Check out these proposed standards for issuing NFTs on the XRP Ledger:{% endtrans %}</p>
-      <ul>
-        <li class="level-1"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/30" class="external-link" target="_blank">XLS-14d: Non fungible tokens (indivisible NFT's) on the XRPL<i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-        <li class="level-1"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/40" class="external-link" target="_blank">XLS-19d: Wallet based Proof of Digital Asset Property and Rights (NFT)<i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-        <li class="level-1"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/46" class="external-link" target="_blank">XLS-20d: Non-Fungible Token Support<i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-      </ul>
-    </div><!--/.highlight-card-->#}
   </section>
 
   <section class="container-fluid mb-50" id="docs-browse-by">
@@ -87,19 +77,35 @@
     {% include 'component-curated-cards.html.jinja' %}
   </section><!--/#run-a-network-node-->
 
-  <section class="container-fluid mb-50 doc-index">
-    <h2 id="full-doc-index" class="h4">{% trans %}Full Documentation Index{% endtrans %}</h2>
-    <div class="row">
-      {% for page in currentpage.children if page.html != "by-label.html" %}
-      {% set parent_html = page.html %}
-      {% set depth = 6 %}
-      <div class="col-md-6 mt-20">
-        <a href="{{target.prefix}}{{page.html}}"><h5 class="mb-3">{{page.name}}</h5></a>
-        {% include 'children.html' %}
-      </div>
-      {% endfor %}
+<section class="container-fluid mb-50" id="docs-hot-topic">
+  <h2 class="h4">{% trans %}Hot Topic: NFTs{% endtrans %}</h2>
+  <div class="row">
+    <div class="col col-lg-6">
+      <p class="longform">{% trans %}Interested in non-fungible tokens, but concerned about their <a href="impact.html">large carbon footprint</a>? Check out these proposed standards for issuing NFTs on the XRP Ledger:{% endtrans %}</p>
     </div>
-  </section><!--/.doc-index-->
+    <div class="col col-lg-6">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/30" class="nav-link external-link" target="_blank">XLS-14d: Non fungible tokens (indivisible NFT's) on the XRPL</a></li>
+        <li class="nav-item"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/40" class="nav-link external-link" target="_blank">XLS-19d: Wallet based Proof of Digital Asset Property and Rights (NFT)</a></li>
+        <li class="nav-item"><a href="https://github.com/XRPLF/XRPL-Standards/discussions/46" class="nav-link external-link" target="_blank">XLS-20d: Non-Fungible Token Support</a></li>
+      </ul>
+    </div>
+  </div>
+</section><!--/#docs-hot-topic-->
+
+<section class="container-fluid mb-50 doc-index">
+  <h2 id="full-doc-index" class="h4">{% trans %}Full Documentation Index{% endtrans %}</h2>
+  <div class="row">
+    {% for page in currentpage.children if page.html != "by-label.html" %}
+    {% set parent_html = page.html %}
+    {% set depth = 6 %}
+    <div class="col-md-6 mt-20">
+      <a href="{{target.prefix}}{{page.html}}"><h5 class="mb-3">{{page.name}}</h5></a>
+      {% include 'children.html' %}
+    </div>
+    {% endfor %}
+  </div>
+</section><!--/.doc-index-->
 {% endblock %}
 
 {% block endbody %}
