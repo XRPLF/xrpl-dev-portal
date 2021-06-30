@@ -247,6 +247,17 @@ $columns: 12; // Number of columns in the grid system
       flex-basis: $width / $columns * 100%;
     }
   }
+  .margin-col {
+    @include media-breakpoint-down(lg) {
+      margin: 24px 0;
+    }
+    @include media-breakpoint-down(sm) {
+      margin: 0 0 40px;
+    }
+    @include media-breakpoint-up(lg) {
+      margin: 40px;
+    }
+  }
   .col-new {
     background-position: bottom;
     background-repeat: no-repeat;
@@ -357,6 +368,7 @@ $columns: 12; // Number of columns in the grid system
   .col-new-card {
     transition: all 0.35s ease-out;
     cursor: pointer;
+    text-decoration: none;
     &:hover {
       -webkit-transform: translateY(-16px);
       -moz-transform: translateY(-16px);
