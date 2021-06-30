@@ -257,27 +257,27 @@
   // TODO: unique card footer images (these ones are reused at random)
   #refs-types .card-deck {
     .card:nth-child(1) .card-footer {
-      background-image: url(../img/cards/3col-light-green.svg);
+      background-image: url(../img/cards/3col-orange-2.svg);
     }
     .card:nth-child(2) .card-footer {
-      background-image: url(../img/cards/3col-orange-yellow.svg);
+      background-image: url(../img/cards/3col-green-2.svg);
     }
     .card:nth-child(3) .card-footer {
-      background-image: url(../img/cards/3col-blue-green.svg);
+      background-image: url(../img/cards/3col-magenta.svg);
     }
   }
   #xrpl-protocol .card-deck {
     .card:nth-child(1) .card-footer {
-      background-image: url(../img/cards/4col-yellow.svg);
+      background-image: url(../img/cards/4col-light-blue-4.svg);
     }
     .card:nth-child(2) .card-footer {
-      background-image: url(../img/cards/4col-magenta.svg);
+      background-image: url(../img/cards/4col-blue-green-2.svg);
     }
     .card:nth-child(3) .card-footer {
-      background-image: url(../img/cards/4col-light-green.svg);
+      background-image: url(../img/cards/4col-yellow-3.svg);
     }
     .card:nth-child(4) .card-footer {
-      background-image: url(../img/cards/4col-orange.svg);
+      background-image: url(../img/cards/4col-purple-blue.svg);
     }
   }
 }
