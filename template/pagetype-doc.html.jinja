@@ -37,10 +37,10 @@
       <h4>{% trans %}In this document{% endtrans %}</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-	    {% for h in headers %}{% if h.level < 4 %}
-	    <li class="nav-item level-{{h.level}}"><a class="nav-link" href="#{{h.id}}">{{h.text}}</a></li>
-	    {% endif %}{% endfor %}
-	  </ul>
+        {% for h in headers %}{% if h.level < 4 %}
+        <li class="nav-item level-{{h.level}}"><a class="nav-link" href="#{{h.id}}">{{h.text}}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
   </div>
 {% endblock %}
 

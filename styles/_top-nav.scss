@@ -53,11 +53,6 @@
   .dropdown-toggle {
     position: relative;
   }
-  .dropdown.show {
-    .dropdown-toggle {
-      color: $gray-500;
-    }
-  }
   .dropdown-menu {
     border-width: 0;
 
@@ -92,6 +87,10 @@
           color: $gray-300;
           margin: 0;
           white-space: normal;
+        }
+
+        h4 {
+          font-size: 1.25rem;
         }
 
         &:hover {
@@ -166,7 +165,7 @@
 
     .dropdown .dropdown-toggle:hover > span:not(.chevron) {
       padding-bottom: 8px;
-      border-bottom: 2px solid $blue-purple-400;
+      border-bottom: 2px solid $blue-purple-500;
       margin-bottom: -8px;
     }
 
