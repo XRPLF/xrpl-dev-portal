@@ -223,9 +223,9 @@ $columns: 12; // Number of columns in the grid system
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 100%;
   z-index: 1;
-  @include media-breakpoint-down(xxl) {
+  @include media-breakpoint-up(xl) {
     max-width: 1280px;
   }
   @include media-breakpoint-down(xl) {
@@ -238,10 +238,8 @@ $columns: 12; // Number of columns in the grid system
     max-width: 608px;
   }
   @include media-breakpoint-down(sm) {
-    // max-width: 416px;
     max-width: 100%;
     margin: 0 32px;
-
   }
   // create columns
   @for $width from 1 through $columns {
