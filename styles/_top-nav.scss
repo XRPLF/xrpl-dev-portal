@@ -572,3 +572,12 @@ a {
     transform: rotate(45deg);
   }
 }
+
+// Fix dropdown box-shadows on mobile (language selector's shadow overlaps the
+// rest of the menu, so it's offset more with a negative spread)
+@include media-breakpoint-down(md) {
+  .navbar-collapse,
+  .dropdown-menu {
+    box-shadow: 0px 25px 40px -20px $black;
+  }
+}
