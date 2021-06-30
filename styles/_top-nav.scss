@@ -541,7 +541,8 @@ a {
     background-color: $blue-purple-400;
     transition: all .2s ease;
     border: none;
-
+  }
+  &:not(.expander) span {
     &:first-of-type {
       left: 0;
       transform: rotate(45deg);
@@ -562,7 +563,8 @@ a {
   }
 }
 
-.dropdown.show .chevron {
+.dropdown.show .chevron,
+.expander:not(.collapsed) .chevron {
   span:first-of-type {
     transform: rotate(-45deg);
   }

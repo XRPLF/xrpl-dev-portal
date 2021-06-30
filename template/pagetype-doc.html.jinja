@@ -31,8 +31,12 @@
 {% endblock %}
 
 {% block right_sidebar %}
-  {% include 'component-github-edit.html.jinja' %}
-  <div id="page-toc-wrapper">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+    {% include 'component-github-edit.html.jinja' %}
     {% include 'component-label-list.html.jinja' %}
     <div class="toc-header">
       <h4>{% trans %}In this document{% endtrans %}</h4>
