@@ -4,9 +4,10 @@
     background-image: url(../img/icons/arrow-up-right.svg);
     background-repeat: no-repeat;
     display: inline-block;
-    background-size: 1em;
-    padding: 0 .5em;
-    background-position: left 0 bottom .2em;
+    background-size: 10px;
+    padding: 0 4px 0 8px;
+    width: 14px;
+    background-position: left 0 bottom 4px;
     transition: background-position 100ms ease-in-out;
 
     // Note: the background position is based on the padding, so it might
@@ -16,7 +17,7 @@
   }
 
   &:hover::after {
-    background-position: left .2em bottom .4em;
+    background-position: left 4px bottom 8px;
   }
 
   .fa-external-link {
@@ -24,13 +25,15 @@
   }
 }
 
-.top-nav .dropdown .external-link {
+.top-nav .dropdown .external-link,
+.xrpl-footer .external-link {
   &::after {
-    background-position: left 0 bottom -.1em;
+    background-position: left 8px bottom 2px;
+    width: 2rem;
   }
 
   &:hover::after {
-    background-position: left .2em bottom .1em;
+    background-position: left 12px bottom 6px;
   }
 }
 
@@ -55,15 +58,5 @@
     &:hover::after {
       background-position: left .2rem bottom .1rem;
     }
-  }
-}
-
-.xrpl-footer .external-link {
-  &::after {
-    background-position: left 0 bottom 0;
-  }
-
-  &:hover::after {
-    background-position: left .2em bottom .2em;
   }
 }

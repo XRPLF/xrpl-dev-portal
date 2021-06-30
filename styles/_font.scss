@@ -5,10 +5,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-size: $base-size;
-  background: $gray-900;
-  background-color: $gray-900;
   line-height: 1.5;
-  color: $white;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -104,21 +101,19 @@ p {
   line-height: 24px;
 }
 
-
-
-a {
-  color: inherit;
-  &:hover {
-    text-decoration: none;
-  }
-}
-p a {
-  color: $blue-purple-400;
-  &:hover {
-    color: $blue-purple-400;
-    text-decoration: none;
-  }
-}
+// a {
+//   color: inherit;
+//   &:hover {
+//     text-decoration: none;
+//   }
+// }
+// p a {
+//   color: $blue-purple-400;
+//   &:hover {
+//     color: $blue-purple-400;
+//     text-decoration: none;
+//   }
+// }
 
 .fs-base {
   font-size: $base-size;
