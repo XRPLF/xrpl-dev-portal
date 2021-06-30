@@ -27,7 +27,7 @@
       <h1 class="mb-10">{% trans %}Green Currency Interactive Tool{% endtrans %}</h1>
       <h6 class="green-500 mb-3">{% trans %}How Green Is Your Currency?{% endtrans %}</h6>
     </div>
-    <a class="btn btn-primary">Explore</a>
+    <a class="btn btn-primary" href="#carbon-calculator-section">Explore</a>
   </div>
 </section>
 
@@ -56,8 +56,8 @@
 </section>
 
 
-<div class="container-new my-20">
-  <section class="row mb-30 mb-50-until-sm">
+<div class="container-new py-26" id="carbon-calculator-section">
+  <section class="row mb-30">
     <a href="#" class="btn btn-outline-primary d-lg-none" id="calculator-mobile-toggle">{% trans %}Change Inputs{% endtrans %}</a>
     <div id="calculator-inputs-offset"></div>
     <div class="col-lg-4" >
@@ -267,9 +267,9 @@
   </section>
 </div>
 
-<div class="container my-20">
+<div class="container-new py-26">
   <section class="row last-section">
-    <div class="col-sm-7 col-sm-offset-5">
+    <div class="col-sm-8 col-sm-offset-4">
       <h4>{% trans %}Breaking Down Individual Transactions{% endtrans %}</h4>
       <p>{% trans %}Looking at individual transactions below, compare how a single transaction across each form of currency equates to kWh, CO<sub>2</sub> emissions, and gallons of gas.{% endtrans %}</p>
     </div>
