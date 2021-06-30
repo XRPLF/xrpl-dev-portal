@@ -245,7 +245,7 @@ pages:
         html: xrp-overview.html
         parent: xrp-ledger-overview.html
         top_nav_grouping: XRP
-        top_nav_name: About XRP
+        top_nav_name: XRP Overview
         sidebar: disabled
         targets:
             - en
@@ -3720,12 +3720,13 @@ pages:
             - ja
 
 # "Community" tab --------------------------------------------------------------
-    -   name: Community
+    -   name: Contribute
         html: contribute.html
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
         blurb: Join the conversation
+        top_nav_name: Community
         top_nav_hero_image: assets/img/icons/contribute.svg
         targets:
             - en
