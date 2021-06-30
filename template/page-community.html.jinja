@@ -34,43 +34,53 @@
   <img src="./img/backgrounds/community-purple.svg" id="community-purple">
 </div>
 
-<section class="container-new py-26">
-  <div class="d-flex flex-column-reverse col-sm-8 p-0 mx-10-until-sm">
+
+<section class="container-new py-26" id="run-a-network-node">
+  <div class="d-flex flex-column-reverse col-sm-8 p-0">
     <h3 class="h4">{% trans %}Run an XRP Ledger Network Node{% endtrans %}</h3>
     <h6 class="green-500 mb-3">{% trans %}Contribute to Consensus{% endtrans %}</h6>
   </div>
-  <div class="mt-10 card-grid card-grid-4xN ml-5-until-md mr-5-until-md">
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="/the-rippled-server.html" id="sm-yellow-2">
-      <span class="card-new d-block">
-        <h4 class="h5">{% trans %}About the Server{% endtrans %}</h4>
-        <p class="mt-6 mb-8">{% trans %}rippled is the core peer-to-peer server that manages the XRP Ledger.{% endtrans %}</p>
-      </span>
-    </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="/install-rippled.html" id="sm-purple">
-      <span class="card-new d-block">
-        <h4 class="h5">{% trans %}Install & Configure{% endtrans %}</h4>
-        <p class="mt-6 mb-8">{% trans %}Install and update the rippled server.{% endtrans %}</p>
-      </span>
-    </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="/run-rippled-as-a-validator.html" id="sm-magenta-2">
-      <span class="card-new d-block">
-        <h4 class="h5">{% trans %}Join UNL{% endtrans %}</h4>
-        <p class="mt-6 mb-8">{% trans %}Run a rippled server in validator mode. {% endtrans %}</p>
-      </span>
-    </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="/troubleshoot-the-rippled-server.html" id="sm-green-2">
-      <span class="card-new d-block">
-        <h4 class="h5">{% trans %}Troubleshooting{% endtrans %}</h4>
-        <p class="mt-6 mb-8">{% trans %}Troubleshoot all kinds of problems with the rippled server.{% endtrans %}</p>
-      </span>
-    </a>
-  </div>
-</section>
-<section class="container-new py-26">
-  <div class="d-flex flex-column-reverse col-sm-8 p-0 mx-10-until-sm">
+  {% set curated_cards = [
+    "the-rippled-server.html",
+    "install-rippled.html",
+    "run-rippled-as-a-validator.html",
+    "troubleshoot-the-rippled-server.html"
+  ] %}
+  {% include 'component-curated-cards.html.jinja' %}
+</section><!--/#run-a-network-node-->
+
+<section class="container-new py-26" id="find-us-on-platforms">
+  <div class="d-flex flex-column-reverse col-sm-8 p-0">
     <h3 class="h4">{% trans %}Find us on the platforms below{% endtrans %}</h3>
     <h6 class="green-500 mb-3">{% trans %}Join the Conversation{% endtrans %}</h6>
   </div>
+
+  {% set platforms = [
+    { "name": "GitHub",
+      "img": "assets/img/logos/github.svg",
+      "link": "https://github.com/ripple/xrpl-dev-portal"},
+    { "name": "Twitch",
+      "img": "assets/img/logos/twitch.svg",
+      "link": "https://www.twitch.tv/ripplexdev"},
+    { "name": "Twitter",
+      "img": "assets/img/logos/twitter.svg",
+      "link": "https://twitter.com/XRPLF/"},
+    { "name": "Stack Overflow",
+      "img": "assets/img/logos/stack-overflow.svg",
+      "link": "https://stackoverflow.com/questions/tagged/xrp"}
+  ] %}
+  <div class="row row-cols-2 row-cols-lg-4 card-deck">
+  {% for plat in platforms %}
+    <a class="card" href="{{plat.link}}">
+      <div class="card-body">
+        <div class="circled-logo"><img src="{{plat.img}}" alt="(logo)" /></div>
+        <h4 class="card-title h5">{{plat.name}}</h4>
+      </div>
+      <div class="card-footer">&nbsp;</div>
+    </a>
+  {% endfor %}
+  </div>
+{#
   <div class="mt-10 card-grid card-grid-4xN ml-5-until-md mr-5-until-md">
     <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="https://github.com/ripple/xrpl-dev-portal" target="_blank" id="sm-green">
       <span class="card-new d-block">
@@ -96,7 +106,7 @@
         <h4 class="h5 mb-8">{% trans %}Stack Overflow{% endtrans %}</h4>
       </span>
     </a>
-  </div>
+  </div>#}
 </section>
 <section class="container-new py-26">
   <div class="col-md-6 offset-md-3 p-10 br-8 bg-grey-800 text-center">
