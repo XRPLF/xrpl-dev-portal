@@ -243,6 +243,11 @@
     padding-right: 0 !important;
   }
 }
+.pt-3-sm {
+  @include media-breakpoint-down(sm) {
+    padding-top: 1rem !important;
+  }
+}
 .p-8 {
   padding: 2rem;
   &-sm {
