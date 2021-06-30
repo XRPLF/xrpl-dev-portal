@@ -41,12 +41,12 @@ h3, .h3 {
   font-size: 3rem;
   line-height: 52px;
   @include media-breakpoint-down(sm) {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     line-height: 28px;
   }
   &-sm {
     @include media-breakpoint-down(sm) {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       line-height: 28px;
     }
   }
@@ -55,7 +55,7 @@ h4, .h4 {
   font-size: 2rem;
   line-height: 38px;
   @include media-breakpoint-down(sm) {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     line-height: 26px;
   }
 }
