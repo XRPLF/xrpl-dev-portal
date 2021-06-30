@@ -1,6 +1,6 @@
 ---
 html: currency-formats.html
-parent: protocol-reference.html
+parent: basic-data-types.html
 blurb: 通貨番号の精度と範囲、カスタム通貨コードのフォーマットです。
 labels:
   - XRP

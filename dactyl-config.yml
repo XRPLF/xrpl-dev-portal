@@ -1804,27 +1804,27 @@ pages:
             - en
             - ja
 
-    -   md: references/protocol-reference/basic-data-types.md
+    -   md: references/protocol-reference/data-types/basic-data-types.md
         targets:
             - en
 
-    -   md: references/protocol-reference/basic-data-types.ja.md
+    -   md: references/protocol-reference/data-types/basic-data-types.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/base58-encodings.md
+    -   md: references/protocol-reference/data-types/base58-encodings.md
         targets:
             - en
 
-    -   md: references/protocol-reference/base58-encodings.ja.md
+    -   md: references/protocol-reference/data-types/base58-encodings.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/currency-formats.md
+    -   md: references/protocol-reference/data-types/currency-formats.md
         targets:
             - en
 
-    -   md: references/protocol-reference/currency-formats.ja.md
+    -   md: references/protocol-reference/data-types/currency-formats.ja.md
         targets:
             - ja
 
@@ -1970,6 +1970,7 @@ pages:
         targets:
             - en
 
+        # TODO: update blurb translation based on English version
     -   md: references/protocol-reference/transactions/transaction-formats.ja.md
         targets:
             - ja
@@ -2236,12 +2237,12 @@ pages:
         targets:
             - ja
 
-    -   md: references/protocol-reference/modifying-the-ledger.md
+    -   name: Modifying the Ledger
+        html: modifying-the-ledger.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: transaction-formats.html
         targets:
             - en
-
-    -   md: references/protocol-reference/modifying-the-ledger.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/serialization.md

@@ -253,6 +253,36 @@
   }
 }
 
+.page-references {
+  // TODO: unique card footer images (these ones are reused at random)
+  #refs-types .card-deck {
+    .card:nth-child(1) .card-footer {
+      background-image: url(../img/cards/3col-light-green.svg);
+    }
+    .card:nth-child(2) .card-footer {
+      background-image: url(../img/cards/3col-orange-yellow.svg);
+    }
+    .card:nth-child(3) .card-footer {
+      background-image: url(../img/cards/3col-blue-green.svg);
+    }
+  }
+  #xrpl-protocol .card-deck {
+    .card:nth-child(1) .card-footer {
+      background-image: url(../img/cards/4col-yellow.svg);
+    }
+    .card:nth-child(2) .card-footer {
+      background-image: url(../img/cards/4col-magenta.svg);
+    }
+    .card:nth-child(3) .card-footer {
+      background-image: url(../img/cards/4col-light-green.svg);
+    }
+    .card:nth-child(4) .card-footer {
+      background-image: url(../img/cards/4col-orange.svg);
+    }
+  }
+}
+
+
 .page-calculator {
 
   .calculator-section-description {

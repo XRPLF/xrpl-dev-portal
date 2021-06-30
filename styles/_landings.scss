@@ -164,7 +164,11 @@
     }
   }
 
-
+  .card-body .nav .nav-link {
+    // These already have a background of $gray-800, so the border needs to be
+    // lighter.
+    border-bottom: 1px solid $gray-600;
+  }
 }
 
 // Alert banners

@@ -1,6 +1,6 @@
 ---
 html: currency-formats.html
-parent: protocol-reference.html
+parent: basic-data-types.html
 blurb: Precision and range for currency numbers, plus formats of custom currency codes.
 label:
   - XRP

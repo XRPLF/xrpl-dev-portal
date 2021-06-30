@@ -1,6 +1,6 @@
 ---
 html: base58-encodings.html
-parent: protocol-reference.html
+parent: basic-data-types.html
 blurb: Formats for representing cryptographic keys and related data in base58 format.
 ---
 # base58 Encodings

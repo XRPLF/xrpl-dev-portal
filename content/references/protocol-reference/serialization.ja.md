@@ -5,6 +5,13 @@ blurb: XRP Ledgerトランザクションやその他のオブジェクトの場
 labels:
   - アカウント
   - トランザクション送信
+curated_anchors:
+  - name: サンプルコード
+    anchor: "#サンプルコード"
+  - name: フィールドの正規順序
+    anchor: "#フィールドの正規順序"
+  - name: タイプリスト
+    anchor: "#タイプリスト"
 ---
 # シリアル化フォーマット
 [[ソース]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
