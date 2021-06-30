@@ -186,4 +186,14 @@ aside .active-parent > a {
     }
   }
 
+
+  &.no-sideline {
+    border-left: 0;
+
+    a:hover, a.active {
+      border-left: 0;
+      margin-left: 0;
+    }
+  }
+
 }
