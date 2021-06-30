@@ -27,6 +27,7 @@
         {{ content }}
     </div>
   </article>
+  {% include 'component-feedback-widget.html.jinja' %}
 {% endblock %}
 
 {% block right_sidebar %}
@@ -49,5 +50,4 @@
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});
 </script>
 
-{% include 'component-feedback-widget.html.jinja' %}
 {% endblock %}

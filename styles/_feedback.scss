@@ -1,0 +1,24 @@
+// TEMPORARY: overriding the feedback widget styles here
+#feedback-content {
+  .docked-widget {
+    position: static !important;
+    box-shadow: none !important;
+    display: block;
+    background-color: $body-bg !important;
+    border-width: 0 !important;
+    padding: 2rem;
+
+    .widget-header {
+      background: none !important;
+
+      .widget-header-title {
+        flex-grow: 0 !important;
+        padding-right: 1rem !important;
+      }
+    }
+
+    #closeFeedback {
+      display: none;
+    }
+  }
+}
