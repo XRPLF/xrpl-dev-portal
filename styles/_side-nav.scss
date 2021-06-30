@@ -111,6 +111,11 @@ aside .active-parent > a {
 .right-sidebar {
   padding: 44px 0 24px 48px;
 
+  @include media-breakpoint-down(md) {
+    padding: 1.5rem;
+    border: 1px solid $gray-600;
+  }
+
   .toc-header {
     font-weight: bold;
     font-size: 14px;
