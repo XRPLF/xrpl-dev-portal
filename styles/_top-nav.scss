@@ -146,6 +146,12 @@
     }
   }
 
+  #topnav-language {
+    .dropdown-item {
+      font-weight: 600;
+    }
+  }
+
   // Desktop only styles -------------------------------------------------------
   @include media-breakpoint-up(lg) {
     padding: 0 3rem;
