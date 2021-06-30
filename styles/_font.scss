@@ -23,18 +23,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: bold;
 }
-// h1, .h1 {
-//   font-size: 2.625rem;
-// }
-// h6, .h6 {
-//   font-size: 1.125rem;
-// }
-// .h6 {
-//   font-size: 1.125rem !important;
-// }
-// p {
-//   line-height: 1.5;
-// }
+
 h1, .h1 {
   font-size: 3.875rem;
   line-height: 70px;
@@ -57,6 +46,12 @@ h3, .h3 {
   @include media-breakpoint-down(sm) {
     font-size: 1.25rem;
     line-height: 28px;
+  }
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      font-size: 1.25rem;
+      line-height: 28px;
+    }
   }
 }
 h4, .h4 {

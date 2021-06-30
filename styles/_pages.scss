@@ -2,7 +2,7 @@
 #home-purple {
   position: absolute;
   left: 0;
-  top: -360px;
+  top: -400px;
 }
 #home-green {
   position: absolute;
@@ -10,13 +10,11 @@
   top: 60px;
 }
 #home-hero-graphic {
+  margin-left: auto;
+  width: 855px;
+  margin-right: auto;
+  margin-bottom: 24px;
   max-width: 100%;
-  @include media-breakpoint-down(sm) {
-    width: 200%;
-    margin-left: -50%;
-    margin-right: -50%;
-    max-width: none;
-  }
 }
 
 .sidelinks {
@@ -27,22 +25,6 @@
     color: $blue-purple-400;
     font-weight: bold;
   }
-}
-.hc .h2 {
-  height: 38px;
-  padding-bottom: 5rem;
-}
-#hc-1 {
-  background-image: url(../../img/graphics/hc-1.png);
-  border: 1px solid #FAFF1A;
-}
-#hc-2 {
-  background-image: url(../../img/graphics/hc-2.png);
-  border: 1px solid #FF1A8B;
-}
-#hc-3 {
-  background-image: url(../../img/graphics/hc-3.png);
-  border: 1px solid #974CFF;
 }
 
 
@@ -70,6 +52,10 @@
   position: absolute;
   top: 40px;
   left: 0;
+  @include media-breakpoint-down(sm) {
+    top: 0;
+    left: -120px;
+  }
 }
 #xrpl-overview-orange {
   position: absolute;
@@ -278,7 +264,7 @@
   }
   /* CALCULATOR STYLING */
   .calc-inputs {
-    border-radius: 8px;
+    margin-right: 1px;
   }
   #data-selector li a {
     background: #22252B;
@@ -360,7 +346,7 @@
     }
     #calculator-mobile-toggle.show {
       position: fixed;
-      top: 15px;
+      top: 84px;
       right: 15px;
       z-index: 9999999;
       background: $black;
@@ -370,7 +356,7 @@
     }
     #calculator-inputs.sticky {
       position: fixed;
-      top: 72px;
+      top: 84px;
       width: calc(100% - 30px);
       left: 15px;
       right: 15px;

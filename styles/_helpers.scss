@@ -144,6 +144,11 @@
 }
 .mt-16 {
   margin-top: 4rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-top: 4rem;
+    }
+  }
 }
 .mb-16 {
   margin-bottom: 4rem;
@@ -171,6 +176,11 @@
 }
 .mb-20 {
   margin-bottom: 5rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 5rem;
+    }
+  }
   &-until-sm {
     @include media-breakpoint-up(sm) {
       margin-bottom: 5rem;
@@ -405,12 +415,17 @@
   border-radius: 8px;
 }
 br {
-  &.until-sm {
-    content: '';
+  @include media-breakpoint-down(sm) {
+    &.until-sm {
+      content: '';
+    }
   }
 }
 .z-index-1 {
   z-index: 1;
+}
+.bb-gray {
+  border-bottom: 1px solid $gray-600;
 }
 
 // Arrow bouncing animation

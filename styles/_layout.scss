@@ -223,7 +223,7 @@ $columns: 12; // Number of columns in the grid system
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1280px;
   z-index: 1;
   @include media-breakpoint-down(xxl) {
     max-width: 1280px;
@@ -253,6 +253,8 @@ $columns: 12; // Number of columns in the grid system
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
+    overflow: hidden;
+    max-width: 100%;
 
     @include media-breakpoint-down(lg) {
       margin: 24px 0;
@@ -302,6 +304,9 @@ $columns: 12; // Number of columns in the grid system
     }
     &#purple-blue {
       background-image: url(../../img/cards/purple-blue.svg);
+    }
+    &#purple-blue-2 {
+      background-image: url(../../img/cards/purple-blue-2.svg);
     }
     &#blue-light-blue {
       background-image: url(../../img/cards/blue-light-blue.svg);
@@ -432,10 +437,13 @@ $columns: 12; // Number of columns in the grid system
     height: 95%;
     width: 4px;
     background: linear-gradient(180deg, rgba(254, 255, 1, 1) 0%, rgba(255, 45, 154, 1) 33%, rgba(163, 8, 143, 1) 66%, rgba(44, 4, 128, 0.85) 100%);
+    @include media-breakpoint-down(md) {
+      left: 8px;
+    }
  }
 
 .timeline-dot {
-  margin-top: 85px;
+  margin-top: 94px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -447,7 +455,7 @@ $columns: 12; // Number of columns in the grid system
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: $black;
+  background: $gray-900;
   box-sizing: border-box;
 }
 

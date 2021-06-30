@@ -22,7 +22,7 @@
 </div>
 
 <section class="py-26 text-center">
-  <div class="col-lg-4 mx-auto text-center">
+  <div class="col-lg-6 mx-auto text-center">
     <div class="d-flex flex-column-reverse">
       <h1 class="mb-10">{% trans %}Green Currency Interactive Tool{% endtrans %}</h1>
       <h6 class="green-500 mb-3">{% trans %}How Green Is Your Currency?{% endtrans %}</h6>
@@ -31,12 +31,12 @@
   </div>
 </section>
 
-<div class="position-relative">
+<div class="position-relative d-none-sm">
   <img src="./img/backgrounds/calculator-green.svg" id="calculator-green">
 </div>
 
 <section class="container-new py-26">
-  <div class="col-md-6 offset-md-3 p-10">
+  <div class="col-lg-6 offset-lg-3 p-10-until-sm pl-0-sm pr-0-sm">
     <h2 class="h4 mb-8">{% trans %}Energy Consumption for Cash, Credit Cards and Crypto{% endtrans %}</h2>
     <h5 class="longform mb-10">{% trans %}Moving money carries cost—and not just the fee on your transaction or the value of your payment.{% endtrans %}</h5>
     <p class="mb-6">{% trans %}Whether it’s in cash, on a credit card or with crypto, every transaction you make consumes energy, and therefore, emits pollutants into the environment.{% endtrans %}</p>
@@ -56,14 +56,14 @@
 </section>
 
 
-<div class="container my-20">
+<div class="container-new my-20">
   <section class="row mb-30 mb-50-until-sm">
     <a href="#" class="btn btn-outline-primary d-lg-none" id="calculator-mobile-toggle">{% trans %}Change Inputs{% endtrans %}</a>
     <div id="calculator-inputs-offset"></div>
     <div class="col-lg-4" >
       <div class="rounded sticky-top top-24 mb-3 mb-lg-0" id="calculator-inputs">
-        <div class="border-green p-3 calc-inputs">
-          <h4 class="h5">{% trans %}Comparing<br/> Transaction Data{% endtrans %}</h4>
+        <div class="border-green p-3 br-8 calc-inputs">
+          <h4 class="h5">{% trans %}Comparing<br class="until-sm"/> Transaction Data{% endtrans %}</h4>
             <ul class="p-0 mt-10 ls-none d-sm-flex d-lg-block d-xl-flex flex-wrap justify-content-center justify-xl-content-around" id="data-selector">
               <li class="d-block d-xl-inline-flex text-center active"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-crypto">{% trans %}Crypto{% endtrans %}</a></li>
               <li class="d-block d-xl-inline-flex text-center"><a class="tab-link d-block d-xl-flex fs-base va-middle" href="#" data-currencytype="d-credit">{% trans %}Credit Cards{% endtrans %}</a></li>
@@ -92,7 +92,7 @@
     </div>
 
     <div class="col-lg-7 offset-lg-1 scroll-container h-100 mt-20-sm" id="calculator-outputs">
-      <section class="min-vh100 mb-40 section1 clearfix">
+      <section class="min-vh100 bb-gray mb-40 section1 clearfix">
         <h4 class="h5">{% trans %}Energy Consumption of Portugal{% endtrans %}</h4>
 
         <p class="grey-400 text-small my-4">{% trans %}Comparing <span class="slider-amt"></span> Million Transactions in 2019{% endtrans %}</p>
@@ -177,7 +177,7 @@
           </ul>
         </div>
       </section>
-      <section class="min-vh100 mb-40 section2 clearfix">
+      <section class="min-vh100 bb-gray mb-40 section2 clearfix">
         <h4 class="h5">{% trans %}CO<sub>2</sub> Emissions from Airline Flights{% endtrans %}</h4>
 
         <p class="grey-400 text-small my-4">{% trans %}Comparing <span class="slider-amt"></span> Million Transactions in 2019{% endtrans %}</p>
@@ -220,7 +220,7 @@
 
         </ul>
       </section>
-      <section class="min-vh100 section3 clearfix">
+      <section class="min-vh100 bb-gray section3 clearfix">
         <h4 class="h5">{% trans %}Gas Consumption by the Gallon{% endtrans %}</h4>
 
         <p class="grey-400 text-small my-4">{% trans %}Comparing <span class="slider-amt"></span> Million Transactions in 2019{% endtrans %}</p>
@@ -279,7 +279,7 @@
           <tr>
             <td></td>
             <td class="text-right h6 mb-10">{% trans %}Kilowatt Hour{% endtrans %}</td>
-            <td class="text-right h6 mb-10">{% trans %}CO<sub>2</sub> Emissions*{% endtrans %}</td>
+            <td class="text-right h6 mb-10">{% trans %}CO<sub>2</sub> Emissions{% endtrans %}</td>
             <td class="text-right h6 mb-10">{% trans %}Gallons of Gas{% endtrans %}</td>
           </tr>
         </thead>
@@ -322,7 +322,6 @@
           </tr>
         </tbody>
       </table>
-      <p class="text-smallest mt-10">{% trans %}*Calculations in million tonne (Mt){% endtrans %}</p>
     </div>
   </section>
 </div>

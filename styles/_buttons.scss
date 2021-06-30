@@ -61,9 +61,16 @@ p + .readmore {
   border-radius: 4px;
   padding: 0.5rem 1rem;
   line-height: 16px;
+  &:hover {
+    background: $blue-purple-600;
+  }
 }
 
 .btn-arrow {
+  @include media-breakpoint-down(sm) {
+    display: block;
+    width: 100%;
+  }
   &::after {
     display: inline-block;
     content: url(../../img/icons/arrow-right.svg);
@@ -111,29 +118,30 @@ p + .readmore {
   padding: 32px;
   h3 {
     width: calc(100% - 32px);
-  }
-  a {
-    position: relative;
-    &:hover {
-      color: $white;
-    }
-    &::after {
-      -webkit-transition: transform 0.3s ease-out;
-      -moz-transition: transform 0.3s ease-out;
-      -ms-transition: transform 0.3s ease-out;
-      -o-transition: transform 0.3s ease-out;
-      transition: transform 0.3s ease-out;
-      transform: rotateX(180deg);
-      position: absolute;
-      right: -32px;
-      top: calc(50% - 12px);
-      display: inline-flex;
-      content: url(../../img/icons/purple-arrow.svg);
-    }
-    &.collapsed {
+    a {
+      position: relative;
+      &:hover {
+        color: $white;
+      }
       &::after {
-        transform: rotateX(360deg);
+        -webkit-transition: transform 0.3s ease-out;
+        -moz-transition: transform 0.3s ease-out;
+        -ms-transition: transform 0.3s ease-out;
+        -o-transition: transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
+        transform: rotateX(180deg);
+        position: absolute;
+        right: -32px;
+        top: calc(50% - 12px);
+        display: inline-flex;
+        content: url(../../img/icons/purple-arrow.svg);
+      }
+      &.collapsed {
+        &::after {
+          transform: rotateX(360deg);
+        }
       }
     }
   }
+  
 }
