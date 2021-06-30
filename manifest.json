@@ -108,5 +108,16 @@
         "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1114"
       }
     ]
+  },
+  "mtrippled-patch-1": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "0757227b8f1df90e41a025de0b2c2c19efa1545e",
+        "updatedAt": "2021-06-30T20:04:44.431Z",
+        "href": "pr-preview/mtrippled-patch-1/075722",
+        "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1116"
+      }
+    ]
   }
 }
