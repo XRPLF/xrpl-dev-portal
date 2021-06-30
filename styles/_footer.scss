@@ -1,11 +1,20 @@
 /* Footer ------------------------------------------------------------------- */
 
 .xrpl-footer {
-  padding: 7.5rem 3rem;
-  background-image: url(../img/backgrounds/footer.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom right;
+  padding: 7.5rem 2.5rem;
+
+  @include media-breakpoint-up(lg) {
+    background-image: url(../img/backgrounds/footer.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+
+  @include media-breakpoint-down(md) {
+    .col-lg:not(:first-child) {
+      margin-top: 4rem;
+    }
+  }
 
   h5 {
     font-size: 1rem;
@@ -21,5 +30,11 @@
   .absolute-bottom-footer {
     font-size: 10px;
     line-height: 1rem;
+
+    @include media-breakpoint-down(md) {
+      .copyright-license {
+        margin-top: 3rem;
+      }
+    }
   }
 }
