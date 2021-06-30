@@ -128,7 +128,9 @@
       &:not(.external-link)::after {
         content: " ";
         background-image: url(../img/icons/arrow-right-purple.svg);
-        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 1rem;
         position: absolute;
         right: 0;
         width: 1.5rem;
@@ -142,9 +144,10 @@
       &.external-link::after {
         content: " ";
         background-image: url(../img/icons/arrow-up-right.svg);
-        background-size: cover;
+        background-repeat: no-repeat;
         position: absolute;
-        // right: .5rem;
+        background-position: center;
+        background-size: .75rem;
         right: 7px;
         width: 1.5rem;
         height: 1.5rem;

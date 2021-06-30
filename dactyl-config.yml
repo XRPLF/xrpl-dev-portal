@@ -245,6 +245,7 @@ pages:
         html: xrp-overview.html
         parent: xrp-ledger-overview.html
         top_nav_grouping: XRP
+        top_nav_name: About XRP
         sidebar: disabled
         targets:
             - en
@@ -3724,7 +3725,7 @@ pages:
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        blurb: Contribute to XRPL.org
+        blurb: Join the conversation
         top_nav_hero_image: assets/img/icons/contribute.svg
         targets:
             - en
