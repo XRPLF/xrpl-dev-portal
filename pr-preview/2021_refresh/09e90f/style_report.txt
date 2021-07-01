@@ -1,0 +1,72 @@
+-------------
+Spell Checker
+-------------
+No spelling mistakes found in 2 pages!
+-----------------------------
+Discouraged Words and Phrases
+-----------------------------
+Found 1 discouraged words/phrases:
+Page: <Page 'Dev Tools' (dev-tools.html)>
+   Discouraged word: component (1 instances); suggest 'part' instead.
+------------------
+Readability Scores
+------------------
+Average Page Readability Scores:
+  Flesch Reading Ease Score: 37.0 (Difficult)
+  Dale-Chall Readability Score: 8.9 (average 11th or 12-grade student)
+  SMOG Index: Grade level 14.6
+  Gunning FOG Index: Grade level 15.1
+  Automated Readability Index: Grade level 18.1
+  Coleman-Liau Index: Grade level 14.7
+  Linsear Write Formula: Grade level 8.3
+
+
+Most difficult pages by Flesch Reading Ease:
+<Page 'Dev Tools' (dev-tools.html)> Readability Scores:
+  Flesch Reading Ease Score: 36.8 (Difficult)
+  Dale-Chall Readability Score: 8.9 (average 11th or 12-grade student)
+  SMOG Index: Grade level 16.0
+  Gunning FOG Index: Grade level 17.7
+  Automated Readability Index: Grade level 20.9
+  Coleman-Liau Index: Grade level 13.5
+  Linsear Write Formula: Grade level 8.3
+
+<Page 'Contribute Code to the XRP Ledger' (contribute-code.html)> Readability Scores:
+  Flesch Reading Ease Score: 37.3 (Difficult)
+  Dale-Chall Readability Score: 8.9 (average 11th or 12-grade student)
+  SMOG Index: Grade level 13.2
+  Gunning FOG Index: Grade level 12.5
+  Automated Readability Index: Grade level 15.4
+  Coleman-Liau Index: Grade level 15.8
+  Linsear Write Formula: Grade level 8.3
+
+-------------------
+Page Length Metrics
+-------------------
+Average Page Length Metrics:
+  Sentences: 20
+  Words: 284
+  Characters: 1,806
+
+Longest pages by character count:
+<Page 'Dev Tools' (dev-tools.html)> Length Metrics:
+  Sentences: 25
+  Words: 353
+  Characters: 2,171
+
+<Page 'Contribute Code to the XRP Ledger' (contribute-code.html)> Length Metrics:
+  Sentences: 15
+  Words: 215
+  Characters: 1,442
+
+Shortest pages by character count:
+<Page 'Dev Tools' (dev-tools.html)> Length Metrics:
+  Sentences: 25
+  Words: 353
+  Characters: 2,171
+
+<Page 'Contribute Code to the XRP Ledger' (contribute-code.html)> Length Metrics:
+  Sentences: 15
+  Words: 215
+  Characters: 1,442
+

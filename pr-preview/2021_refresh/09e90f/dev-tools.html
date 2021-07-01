@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Dev Tools - XRPL.org</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Dev Tools | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/dev-tools.html" />
+    <meta property="og:description" content="Use these web-based tools to interact with the ledger and test your software." />
+    <meta name="description" content="Use these web-based tools to interact with the ledger and test your software." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/dev-tools.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/dev-tools.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/dev-tools.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <!-- Stylesheet -->
+    <link href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/css/devportal2020.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/" class="navbar-brand"><img src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="40" alt="XRPL.org" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>About</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
+            <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
+            <a class="dropdown-item" href="history.html">History</a>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">Impact</a>
+            <a class="dropdown-item" href="carbon-calculator.html">Carbon Calculator</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Docs</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-documentation" href="docs.html">
+            <img src="assets/img/icons/docs.svg" alt="Documentation icon" />
+            <div class="dropdown-hero-text">
+              <h4>Documentation</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-online-tools">
+            <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item active" href="dev-tools.html">Dev Tools</a>
+          </div><!--./col-->
+          <div class="navcol col-for-questions">
+            <h5 class="dropdown-item">Questions</h5>
+            <a class="dropdown-item" href="faq.html">FAQ</a>
+          </div><!--./col-->
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href=""></a>
+            <a class="dropdown-item" href=""></a>
+            <a class="dropdown-item" href=""></a>
+            <a class="dropdown-item" href=""></a>
+            <a class="dropdown-item" href=""></a>
+            <a class="dropdown-item" href=""></a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href=""></a>
+            <a class="dropdown-item" href=""></a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
+            <img src="assets/img/icons/contribute.svg" alt="Contribute icon" />
+            <div class="dropdown-hero-text">
+              <h4>Contribute</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/">Dev Blog</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/ripple/xrpl-dev-portal/">GitHub</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/dev-tools.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2021_refresh/content/dev-tools/dev-tools.md?pr=/ripple/xrpl-dev-portal/pull/1114" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit -->    <div class="toc-header">
+      <h4>In this document</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#dev-tools">Dev Tools</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#more-tools">More Tools</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/docs.html">Documentation</a></li>
+    <li class="active breadcrumb-item">Dev Tools</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="content">
+        <h1 id="dev-tools">Dev Tools<a aria-hidden="true" class="hover_anchor" href="#dev-tools"><i class="fa fa-link"></i></a></h1>
+<p>Use these developer tools to help you test, explore, and validate XRP Ledger API requests and behavior. All of the following tools are part of this website:</p>
+<ul>
+<li>
+<p><strong><a href="xrp-ledger-rpc-tool.html">XRP Ledger RPC Tool</a></strong></p>
+<p>Use this tool to print raw information about a XRP Ledger account, transaction, or ledger.</p>
+</li>
+<li>
+<p><strong><a href="websocket-api-tool.html">WebSocket API Tool</a></strong></p>
+<p>Use this tool to send sample requests and get responses from the <code>rippled</code> API. No setup required.</p>
+</li>
+<li>
+<p><strong><a href="xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a></strong></p>
+<p>Use this tool to verify that your <a href="xrp-ledger-toml.html">xrp-ledger.toml file</a> is set up properly.</p>
+</li>
+<li>
+<p><strong><a href="validator-domain-verifier.html">Domain Verification Checker</a></strong></p>
+<p>Use this tool to check that your validator's domain can be verified.</p>
+</li>
+<li>
+<p><strong><a href="xrp-testnet-faucet.html">XRP Faucets</a></strong></p>
+<p>Get credentials and test-XRP for XRP Ledger Testnet or Devnet, and connect to servers in these parallel networks to test building software on the XRP Ledger without using real funds.</p>
+</li>
+<li>
+<p><strong><a href="tx-sender.html">Transaction Sender</a></strong></p>
+<p>Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address of your choice.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>View validations of new ledger versions in real-time, chart the geographic location of servers in the XRP Ledger network, and explore the state of the ledger. <a class="external-link" href="https://testnet.xrpl.org/" target="_blank">Testnet Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a> also available!</p>
+</li>
+</ul>
+<h2 id="more-tools">More Tools<a aria-hidden="true" class="hover_anchor" href="#more-tools"><i class="fa fa-link"></i></a></h2>
+<p>The following tools are maintained by the XRP Ledger community:</p>
+<ul>
+<li>
+<p><strong><a class="external-link" href="https://richardah.github.io/xrpl-binary-visualizer/" target="_blank">Binary Visualizer <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>Parse the XRP Ledger's <a href="serialization.html">native binary format</a> with a visual representation breaking down the raw structure into its component parts.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://bithomp.com/" target="_blank">Bithomp Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>Explore public ledger data including accounts' transaction history and known names.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://ledger-stream-beta.xrplf.org/" target="_blank">Ledger Stream <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>Watch the <a href="consensus.html">consensus process</a> occur in real time.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://xumm.community/tokens" target="_blank">Token List <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>See all <a href="issued-currencies.html">tokens issued</a> in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://ledger.exposed/" target="_blank">XRP Stats <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>View lists of who has the most XRP in their possession or locked up in <a href="escrow.html">escrow</a>.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://xrpcharts.ripple.com/" target="_blank">XRPCharts <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>View current and historical price data for various currency pairs involving XRP, including transactions at major exchanges and on-ledger activity in the <a href="decentralized-exchange.html">decentralized exchange</a>.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://xrpscan.com/" target="_blank">XRPScan <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>Explore ledger activity, view <a href="amendments.html">amendment voting</a> in real-time, and get account information. <a class="external-link" href="https://docs.xrpscan.com/" target="_blank">API access <i aria-hidden="true" class="fa fa-external-link"></i></a> also available.</p>
+</li>
+</ul>
+<p>Have an idea for a tool not provided here? <a class="btn btn-primary" href="mailto:docs@ripple.com">Contact us</a> or <a class="btn btn-primary external-link" href="https://github.com/ripple/xrpl-dev-portal/edit/2021_refresh/content/dev-tools/dev-tools.md" target="_blank">Open a pull request <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+<script>
+  const widget = new EmbeddableWidget.default({
+    theme: 'xrpl',
+    opened: false,
+    parentElement: '#feedback-content',
+    currentPath: window.location.pathname,
+    adapter: 'ga',
+    app:'Feedback Widget',
+    adapterConfig:{
+      containerId:"GTM-THHW334",
+      trackingId:"UA-45576805-2"
+    }
+  });
+  setTimeout(() => {
+    widget.open();
+    // EmbeddableWidget.default.unmount();
+  }, 2000);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/docs.html">Documentation</a>
+  </div>
+    
+  <div class="nav-item active">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="true" aria-controls="tree_nav_group_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/dev-tools.html">Dev Tools</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/xrp-ledger-rpc-tool.html">RPC Tool</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/websocket-api-tool.html">WebSocket API Tool</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/validator-domain-verifier.html">Domain Verification Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/xrp-testnet-faucet.html">XRP Faucets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/tx-sender.html">Transaction Sender</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/faq.html">FAQ</a>
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>About</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/history.html" class="nav-link">History</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/impact.html" class="nav-link">Impact</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Docs</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/docs.html" class="nav-link">Documentation</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/faq.html" class="nav-link">FAQ</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Community</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/ripple/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex">
+      <a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/" class="footer-brand"><img src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="Jump to top of page"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/09e90f/assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbox',
+algoliaOptions: { 'facetFilters': ["lang:en"] },
+debug: false
+});
+</script>
+
+
+
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});
+</script>
+
+</body>
+</html>
