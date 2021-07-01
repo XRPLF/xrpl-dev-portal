@@ -128,13 +128,22 @@
 
 <!-- Algolia DocSearch -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script type="text/javascript"> docsearch({
-apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
-indexName: 'xrpl',
-inputSelector: '#topsearchbox',
-algoliaOptions: { 'facetFilters': ["lang:{{target.lang}}"] },
-debug: false
-});
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  indexName: 'xrpl',
+  inputSelector: '#topsearchbox',
+  algoliaOptions: { 'facetFilters': ["lang:{{target.lang}}"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
 </script>
 
 {% if currentpage.embed_ripple_lib %}
