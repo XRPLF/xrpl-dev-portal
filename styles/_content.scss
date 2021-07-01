@@ -35,9 +35,10 @@ a.card,
 }
 
 .content h1 {
+  font-size: 3rem;
   margin-top: 32px;
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: 700;
 }
 .content h1:first-child,
 .landing section:first-of-type h1:first-child {
@@ -48,26 +49,33 @@ a.card,
   margin-top: -80px;
 }
 .content h2 {
-  margin-top: 72px;
-  margin-bottom: 24px;
-  font-weight: 400;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
   line-height: 1.2;
 }
 .content h3 {
-  margin-top: 24px;
+  font-size: 2.125rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   line-height: 1.2;
 }
 .content h4 {
-  margin-top: 20px;
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
   line-height: 1.2;
 }
 .content h5 {
-  margin-top: 16px;
+  font-size: 1.25rem;
+  margin-top: 1.25rem;
   line-height: 1.2;
   font-weight: 700;
 }
 .content h6 {
-  margin-top: 12px;
+  font-size: 1rem;
+  margin-top: 1rem;
   line-height: 1.2;
   font-weight: 700;
 }
