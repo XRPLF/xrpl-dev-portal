@@ -38,13 +38,13 @@
   <section class="container-new py-26">
     <div class="col-lg-6 offset-lg-3 p-10-util-sm pl-0-sm pr-0-sm">
       <h4 class="mb-8">{% trans %}The Vision{% endtrans %}</h4>
-      <h6 class="longform mb-10">{% trans %}The Foundation’s vision is to support the development of a diverse XRP Ledger community by focusing on governance, amendments to the core code, and an evolving list of robust validators — all key to creating a dynamic ecosystem that supports a growing and innovative Ledger. {% endtrans %}</h6>
+      <h6 class="longform">{% trans %}The Foundation’s vision is to support the development of a diverse XRP Ledger community by focusing on governance, amendments to the core code, and an evolving list of robust validators — all key to creating a dynamic ecosystem that supports a growing and innovative Ledger. {% endtrans %}</h6>
     </div>
   </section>
 
   <section class="container-new py-26">
      <h3 class="h4 mx-10-until-md">{% trans %}Key Areas of Focus{% endtrans %}</h3>
-    <ul class="mt-10 card-grid card-grid-3xN">
+    <ul class="mt-10 card-grid card-grid-3xN mb-0">
       {% set features = [
         { "title":  _("Core Technology"),
           "description":  _("Enhance and develop infrastructure including high capacity hubs, full history servers, and monitoring systems.") },
@@ -59,7 +59,7 @@
       ] %}
       {% for feat in features %}
       <li class="col-new ls-none">
-        <h4 class="mt-3 mb-0 h5">{{feat.title}}</h4>
+        <h4 class="mb-0 h5">{{feat.title}}</h4>
         <p class="mt-8-until-sm mt-3 mb-0">{{feat.description}}</p>
       </li>
       {% endfor %}
@@ -68,8 +68,8 @@
 
   <section class="container-new py-26">
       <div class="mx-10-until-md">
-        <h3 class="h4 mb-20">{% trans %}XRP Ledger Foundation Values and Beliefs{% endtrans %}</h3>
-        <h4 class="h5">{% trans %}We Value:{% endtrans %}</h4>
+        <h3 class="h4 mb-20-until-sm">{% trans %}XRP Ledger Foundation Values and Beliefs{% endtrans %}</h3>
+        <h4 class="h5 mb-0 mt-10">{% trans %}We Value:{% endtrans %}</h4>
       </div>
     <ul class="card-grid card-grid-3xN mb-10">
       {% set values = [

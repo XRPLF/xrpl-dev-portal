@@ -83,7 +83,7 @@ p + .readmore {
     transition: transform 0.3s ease-out;
   }
   &:hover {
-    background: $blue-purple-500 !important;
+    background: $blue-purple-600 !important;
     border: none;
     &::after {
       -webkit-transform: translateX(4px);

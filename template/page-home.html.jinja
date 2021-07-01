@@ -25,9 +25,9 @@
     <div class="col-lg-5 mx-auto text-center pl-0 pr-0">
       <div class="d-flex flex-column-reverse">
         <h1 class="mb-10">{% trans %}Community<br class="until-sm"/> Powered Utility{% endtrans %}</h1>
-        <h6 class="green-500 mb-3">{% trans %}XRPL | XRPL Ledger{% endtrans %}</h6>
+        <h6 class="green-500 mb-3">{% trans %}XRPL | XRP Ledger{% endtrans %}</h6>
       </div>
-      <a href="overview.html" class="btn btn-primary btn-arrow mr-4 mb-4">{% trans %}Start Building{% endtrans %}</a>
+      <a href="docs.html" class="btn btn-primary btn-arrow mr-4 mb-4">{% trans %}Start Building{% endtrans %}</a>
     </div>
   </section>
 
@@ -72,7 +72,7 @@
       ] %}
       {% for card in cards %}
       <li class="col-new ls-none">
-        <img src="{{card.icon}}">
+        <img src="{{card.icon}}" alt="{{card.title}} Icon">
         <h4 class="mt-3 mb-0 h5">{{card.title}}</h4>
         <p class="mt-8-until-sm mt-3 mb-0">{{card.description}}</p>
       </li>

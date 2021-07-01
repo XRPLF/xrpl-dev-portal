@@ -11,7 +11,7 @@
 }
 #home-hero-graphic {
   margin-left: auto;
-  width: 608px;
+  width: 856px;
   margin-right: auto;
   margin-bottom: 24px;
   max-width: 100%;
@@ -43,7 +43,7 @@
 // Page backgrounds 
 .landing-bg {
   @include media-breakpoint-down(sm) {
-    opacity: .5;
+    opacity: .6;
   }
 }
 

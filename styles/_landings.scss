@@ -70,6 +70,10 @@
   p a,
   h5 a {
     color: $blue-purple-400;
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   /* Misc. ------------------------------------------------------------------ */

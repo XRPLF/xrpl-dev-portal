@@ -25,7 +25,7 @@
   <div class="col-lg-5 mx-auto text-center">
     <div class="d-flex flex-column-reverse">
       <h1 class="mb-0">{% trans %}Your Questions About XRPL, Answered{% endtrans %}</h1>
-      <h6 class="green-500 mb-3">{% trans %}XRPL Overview{% endtrans %}</h6>
+      <h6 class="green-500 mb-3">{% trans %}FAQ{% endtrans %}</h6>
     </div>
   </div>
 </section>
@@ -35,19 +35,19 @@
     {% set faqs = [
       { "number": "1",
         "question": _("Is XRPL a private blockchain, owned by Ripple?"),
-        "answer": _("No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 38 validators, with Ripple running six of the 38.") },
+        "answer": _("No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the Unique Node List (see “What are Unique Node Lists (UNLs)?” below) — Ripple runs 6 of these nodes.") },
       { "number": "2",
         "question": _("Isn’t Proof of Work the best validation mechanism?"),
         "answer": _("Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. However the XRP Ledger’s consensus mechanism solves the same problem in a far faster, cheaper and more energy efficient way.") },
       { "number": "3",
         "question": _("How can a blockchain be sustainable?"),
-        "answer": _("It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “<a href='intro-to-consensus.html'>consensus</a>” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be one of the first truly <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>carbon neutral blockchains</a>. Explore the energy consumption of XRP compared to cash, credit cards and other popular cryptocurrencies with the <a href='carbon-calculator.html'>Green Currency Calculator</a>.") },
+        "answer": _("It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “<a href='intro-to-consensus.html'>consensus</a>” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>. Explore the energy consumption of XRP compared to cash, credit cards and other popular cryptocurrencies with the <a href='carbon-calculator.html'>Green Currency Calculator</a>.") },
       { "number": "4",
         "question": _("Can currencies other than XRP be traded through XRPL?"),
         "answer": _("Yes, the XRP Ledger was built specifically to be able to tokenize arbitrary assets, e.g. USD, EUR, Oil, Gold, reward points, etc. Any currency can be issued on the XRP Ledger. This is illustrated by XRPL’s growing community that backs a variety of fiat and crypto tokens.") },
       { "number": "5",
         "question": _("Isn’t XRPL only for payments?"),
-        "answer": _("While XRPL was initially developed for payment use cases, both the currency and the ledger are increasingly popular for a range of innovative blockchain use cases. New standards proposals for issuing NFTs, XRPL Labs’ hooks amendment for smart contract functionality, and federated sidechains are all currently works in progress.") },
+        "answer": _("While XRPL was initially developed for payment use cases, both the ledger and its native digital asset XRP are increasingly popular for a range of innovative blockchain use cases. New standards proposals for issuing NFTs, XRPL Labs’ hooks amendment for smart contract functionality, and federated sidechains are all currently works in progress.") },
     ] %}
     {% for faq in faqs %}
     <div class="w-100 accordian-row mb-6">

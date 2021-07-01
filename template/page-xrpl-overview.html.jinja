@@ -26,7 +26,7 @@
     <div class="col-lg-5 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
         <h1 class="mb-0">{% trans %}XRPL Today and the Vision for Tomorrow{% endtrans %}</h1>
-        <h6 class="green-500 mb-3">{% trans %}XRP | XRPL Ledger Overview{% endtrans %}</h6>
+        <h6 class="green-500 mb-3">{% trans %}XRPL | XRP Ledger Overview{% endtrans %}</h6>
       </div>
     </div>
   </section>
@@ -37,8 +37,10 @@
 
   <section class="container-new py-26">
     <div class="col-lg-6 offset-lg-3 pl-0-sm pr-0-sm p-8-sm p-10-until-sm">
-      <h6 class="green-500 mb-3">{% trans %}XRP Ledger Basics{% endtrans %}</h6>
-      <h2 class="h4 mb-8">{% trans %}How the XRP Ledger works{% endtrans %}</h2>
+      <div class="d-flex flex-column-reverse">
+        <h2 class="h4 mb-8">{% trans %}How the XRP Ledger works{% endtrans %}</h2>
+        <h6 class="green-500 mb-3">{% trans %}XRP Ledger Basics{% endtrans %}</h6>
+      </div>
       <h5 class="longform mb-10">{% trans %}The XRP Ledger is a decentralized public blockchain. {% endtrans %}</h5>
       <p class="mb-10">{% trans %}Anyone can connect their computer to the peer-to-peer network that manages the ledger. The global XRP Ledger community—a diverse set of software engineers, server operators, users, and businesses—maintains the ledger.{% endtrans %}</p>
       <a class="btn btn-primary btn-arrow" href="docs.html">{% trans %}Get Technical{% endtrans %}</a>
@@ -50,7 +52,10 @@
   <section class="container-new py-26">
     <div class="mt-10 card-grid card-grid-2xN">
       <div class="col-new">
-        <h2 class="h4 mb-8">{% trans %}How the Consensus Protocol Works{% endtrans %}</h2>
+        <div class="d-flex flex-column-reverse">
+          <h2 class="h4 mb-8">{% trans %}How the Consensus Protocol works{% endtrans %}</h2>
+          <h6 class="green-500 mb-3">{% trans %}Consensus{% endtrans %}</h6>
+        </div>
         <h5 class="longform mb-10">{% trans %}XRPL uses a consensus protocol, in which designated servers called <a href="run-a-rippled-validator.html">validators</a> come to an agreement on the order and outcome of XRP transactions every 3-5 seconds.{% endtrans %}</h5>
         <p class="mb-6">{% trans %}All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed right away. All transactions are public, with strong cryptography to guarantee the integrity of the system.{% endtrans %}</p>
         <p class="mb-0">{% trans %}Anyone can operate a validator; currently, over 150 <a href="https://livenet.xrpl.org/network/validators" target="_blank">validators</a> are active on the ledger, operated by universities, exchanges, businesses, and individuals. Additionally, the consensus protocol ensures the blockchain becomes more decentralized over time as the validator pool grows.{% endtrans %}</p>
@@ -67,7 +72,7 @@
       <div class="z-index-1 position-relative">
         <h2 class="h4 mb-10">{% trans %}A Greener Blockchain{% endtrans %}</h2>
         <p class="mb-10">{% trans %}Unlike most other blockchains, the XRP Ledger does not need mining, so <a href="impact.html">no energy is wasted</a> in the transaction process. Learn how this compares to other platforms with our <a href="carbon-calculator.html">Green Currency Calculator</a>.{% endtrans %}</p>
-        <a class="btn btn-primary btn-arrow" href="impact.html">Get Technical</a>
+        <a class="btn btn-primary btn-arrow" href="impact.html">Learn More</a>
       </div>
     </div>
   </section>
@@ -76,7 +81,7 @@
     <div class="mt-10 card-grid card-grid-2xN">
       <div class="col-new mb-16-sm">
         <div class="d-flex flex-column-reverse">
-          <h2 class="h4 mb-8">{% trans %}XRPL provides powerful utility across the blockchain space{% endtrans %}</h2>
+          <h4 class="h4 mb-8">{% trans %}XRPL provides powerful utility across the blockchain space{% endtrans %}</h4>
           <h6 class="green-500 mb-3">{% trans %}XRPL Today{% endtrans %}</h6>
         </div>
         <h5 class="longform mb-10">{% trans %}The ledger’s unique properties, such as its fast and efficient consensus algorithm and censorship-resistant transaction processing, are leveraged by thousands of developers.{% endtrans %}</h5>
@@ -85,7 +90,7 @@
       </div>
       <div class="col-new">
         <div class="d-flex flex-column-reverse">
-          <h2 class="h4 mb-8">{% trans %}Fulfilling the vision of the XRPL community{% endtrans %}</h2>
+          <h4 class="h4 mb-8">{% trans %}Fulfilling the vision of the XRPL community{% endtrans %}</h4>
           <h6 class="green-500 mb-3">{% trans %}XRPL Tomorrow{% endtrans %}</h6>
         </div>
         <h5 class="longform mb-10">{% trans %}While XRPL is the choice of developers who don’t want to sacrifice security or performance and who want to build on the greenest blockchain, that’s only the beginning.{% endtrans %}</h5>
@@ -98,7 +103,7 @@
     <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 bg-grey-800 text-center">
       <img src="./img/backgrounds/cta-xrpl-overview-orange.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
-        <h2 class="h4 mb-10">{% trans %}Tomorrow’s Blockchain Starts With You{% endtrans %}</h2>
+        <h4 class="h4 mb-10">{% trans %}Tomorrow’s Blockchain Starts With You{% endtrans %}</h4>
         <p class="mb-10">{% trans %}XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for an XRPL Grant.{% endtrans %}</p>
         <a class="btn btn-primary btn-arrow" href="https://xrplgrants.org/" target="_blank">{% trans %}XRPL Grants{% endtrans %}</a>
       </div>
@@ -110,13 +115,13 @@
       {% set faqs = [
         { "number": "1",
           "question": _("Is XRPL a private blockchain, owned by Ripple?"),
-          "answer": _("No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 38 validators, with Ripple running six of the 38.") },
+          "answer": _("No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the Unique Node List (see “What are Unique Node Lists (UNLs)?” below) — Ripple runs 6 of these nodes.") },
         { "number": "2",
           "question": _("Isn’t Proof of Work the best validation mechanism?"),
           "answer": _("Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. However the XRP Ledger’s consensus mechanism solves the same problem in a far faster, cheaper and more energy efficient way.") },
         { "number": "3",
           "question": _("How can a blockchain be sustainable?"),
-          "answer": _("It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be one of the first truly carbon neutral blockchains. Explore the energy consumption of XRP compared to cash, credit cards and other popular cryptocurrencies with the <a href='/carbon-calculator.html'>Green Currency Calculator</a>.") },
+          "answer": _("It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>. Explore the energy consumption of XRP compared to cash, credit cards and other popular cryptocurrencies with the <a href='carbon-calculator.html'>Green Currency Calculator</a>.") },
       ] %}
       {% for faq in faqs %}
       <div class="w-100 accordian-row mb-6">
