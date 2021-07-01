@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>manifest - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="manifest | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/manifest.html" />
+    <meta property="og:description" content="Look up the public information about a known validator." />
+    <meta name="description" content="Look up the public information about a known validator." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/manifest.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/manifest.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/manifest.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <!-- Stylesheet -->
+    <link href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/css/devportal2020.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/" class="navbar-brand"><img src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item" href="uses.html">ユースケースと注目プロジェクト</a>
+            <a class="dropdown-item" href="history.html">沿革</a>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">インパクト</a>
+            <a class="dropdown-item" href="carbon-calculator.html">二酸化炭素電卓</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="docs.html">
+            <img src="assets/img/icons/docs.svg" alt="ドキュメント icon" />
+            <div class="dropdown-hero-text">
+              <h4>ドキュメント</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="concepts.html">コンセプト</a>
+            <a class="dropdown-item" href="tutorials.html">チュートリアル</a>
+            <a class="dropdown-item" href="references.html">リファレンス</a>
+          </div><!--./col-->
+          <div class="navcol col-for-online-tools">
+            <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="dev-tools.html">開発者用ツール</a>
+          </div><!--./col-->
+          <div class="navcol col-for-questions">
+            <h5 class="dropdown-item">Questions</h5>
+            <a class="dropdown-item" href="faq.html">FAQ</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+          </div><!--./col-->
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="get-started-using-node-js.html">RippleAPI入門ガイド</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-コミュニティー" href="contribute.html">
+            <img src="assets/img/icons/contribute.svg" alt="コミュニティー icon" />
+            <div class="dropdown-hero-text">
+              <h4>コミュニティー</h4>
+              <p>The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/">開発者ブログ</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/ripple/xrpl-dev-portal/">GitHub</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+<!---->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2021_refresh/content/references/rippled-api/public-rippled-methods/server-info-methods/manifest.md?pr=/ripple/xrpl-dev-portal/pull/1114" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-blockchain">Blockchain</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>目次</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#manifest">manifest</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#request-format">Request Format</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#response-format">Response Format</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/docs.html">ドキュメント</a></li>
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/references.html">リファレンス</a></li>
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a></li>
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/public-rippled-methods.html">rippledのパブリックメソッド</a></li>
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/server-info-methods.html">Server Info Methods</a></li>
+    <li class="active breadcrumb-item">manifest</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="devportal-callout note mb-5"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+    </div><!--/.devportal-callout-->
+    <div class="content">
+        <h1 id="manifest">manifest<a aria-hidden="true" class="hover_anchor" href="#manifest"><i class="fa fa-link"></i></a></h1>
+<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>manifest</code> method reports the current "manifest" information for a given validator public key. The "manifest" is the public portion of that validator's configured token. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"manifest"</span><span class="p">,</span>
+    <span class="nt">"public_key"</span><span class="p">:</span> <span class="s2">"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"manifest"</span><span class="p">,</span>
+    <span class="nt">"params"</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="nt">"public_key"</span><span class="p">:</span><span class="s2">"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-0-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="c1">#Syntax: manifest public_key</span>
+rippled manifest nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p
+</code></pre></div></div>
+</div>
+<p>The request includes the following parameters:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>public_key</code></td>
+<td align="left">String</td>
+<td align="left">The <a href="base58-encodings.html">base58</a>-encoded public key of the validator to look up. This can be the master public key or ephemeral public key.</td>
+</tr>
+</tbody>
+</table>
+<p class="devportal-callout note"><strong>Note:</strong> The commandline format for this method does not work in rippled v1.5.0. See <a class="external-link" href="https://github.com/ripple/rippled/issues/3317" target="_blank">issue #3317 <i aria-hidden="true" class="fa fa-external-link"></i></a> for details.</p>
+<h3 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h3>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"details"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"domain"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+      <span class="nt">"ephemeral_key"</span><span class="p">:</span> <span class="s2">"n9J67zk4B7GpbQV5jRQntbgdKf7TW6894QuG7qq1rE5gvjCu6snA"</span><span class="p">,</span>
+      <span class="nt">"master_key"</span><span class="p">:</span> <span class="s2">"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"</span><span class="p">,</span>
+      <span class="nt">"seq"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="nt">"manifest"</span><span class="p">:</span> <span class="s2">"JAAAAAFxIe3AkJgOyqs3y+UuiAI27Ff3Mrfbt8e7mjdo06bnGEp5XnMhAhRmvCZmWZXlwShVE9qXs2AVCvhVuA/WGYkTX/vVGBGwdkYwRAIgGnYpIGufURojN2cTXakAM7Vwa0GR7o3osdVlZShroXQCIH9R/Lx1v9rdb4YY2n5nrxdnhSSof3U6V/wIHJmeao5ucBJA9D1iAMo7YFCpb245N3Czc0L1R2Xac0YwQ6XdGT+cZ7yw2n8JbdC3hH8Xu9OUqc867Ee6JmlXtyDHzBdY/hdJCQ=="</span><span class="p">,</span>
+    <span class="nt">"requested"</span><span class="p">:</span> <span class="s2">"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"</span>
+  <span class="p">},</span>
+  <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+  <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"response"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="mi">200</span> <span class="err">OK</span>
+
+<span class="p">{</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"details"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"domain"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+      <span class="nt">"ephemeral_key"</span><span class="p">:</span> <span class="s2">"n9J67zk4B7GpbQV5jRQntbgdKf7TW6894QuG7qq1rE5gvjCu6snA"</span><span class="p">,</span>
+      <span class="nt">"master_key"</span><span class="p">:</span> <span class="s2">"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"</span><span class="p">,</span>
+      <span class="nt">"seq"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="nt">"manifest"</span><span class="p">:</span> <span class="s2">"JAAAAAFxIe3AkJgOyqs3y+UuiAI27Ff3Mrfbt8e7mjdo06bnGEp5XnMhAhRmvCZmWZXlwShVE9qXs2AVCvhVuA/WGYkTX/vVGBGwdkYwRAIgGnYpIGufURojN2cTXakAM7Vwa0GR7o3osdVlZShroXQCIH9R/Lx1v9rdb4YY2n5nrxdnhSSof3U6V/wIHJmeao5ucBJA9D1iAMo7YFCpb245N3Czc0L1R2Xac0YwQ6XdGT+cZ7yw2n8JbdC3hH8Xu9OUqc867Ee6JmlXtyDHzBdY/hdJCQ=="</span><span class="p">,</span>
+    <span class="nt">"requested"</span><span class="p">:</span> <span class="s2">"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"</span><span class="p">,</span>
+    <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/rippled.cfg"</span>
+<span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
+
+<span class="p">{</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"details"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"domain"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+      <span class="nt">"ephemeral_key"</span><span class="p">:</span> <span class="s2">"n9J67zk4B7GpbQV5jRQntbgdKf7TW6894QuG7qq1rE5gvjCu6snA"</span><span class="p">,</span>
+      <span class="nt">"master_key"</span><span class="p">:</span> <span class="s2">"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"</span><span class="p">,</span>
+      <span class="nt">"seq"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="nt">"manifest"</span><span class="p">:</span> <span class="s2">"JAAAAAFxIe3AkJgOyqs3y+UuiAI27Ff3Mrfbt8e7mjdo06bnGEp5XnMhAhRmvCZmWZXlwShVE9qXs2AVCvhVuA/WGYkTX/vVGBGwdkYwRAIgGnYpIGufURojN2cTXakAM7Vwa0GR7o3osdVlZShroXQCIH9R/Lx1v9rdb4YY2n5nrxdnhSSof3U6V/wIHJmeao5ucBJA9D1iAMo7YFCpb245N3Czc0L1R2Xac0YwQ6XdGT+cZ7yw2n8JbdC3hH8Xu9OUqc867Ee6JmlXtyDHzBdY/hdJCQ=="</span><span class="p">,</span>
+    <span class="nt">"requested"</span><span class="p">:</span> <span class="s2">"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"</span><span class="p">,</span>
+    <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+<!-- Note, the CLI response above is mocked up to compensate for https://github.com/ripple/rippled/issues/3317 -->
+<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>details</code></td>
+<td align="left">Object</td>
+<td align="left"><em>(May be omitted)</em> The data contained in this manifest. Omitted if the server does not have a manifest for the <code>public_key</code> from the request. See <strong>Details Object</strong> below for a full description of its contents.</td>
+</tr>
+<tr>
+<td align="left"><code>manifest</code></td>
+<td align="left">String</td>
+<td align="left"><em>(May be omitted)</em> The full manifest data in base64 format. This data is <a href="serialization.html">serialized</a> to binary before being base64-encoded. Omitted if the server does not have a manifest for the <code>public_key</code> from the request.</td>
+</tr>
+<tr>
+<td align="left"><code>requested</code></td>
+<td align="left">String</td>
+<td align="left">The <code>public_key</code> from the request.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="details-object">Details Object<a aria-hidden="true" class="hover_anchor" href="#details-object"><i class="fa fa-link"></i></a></h4>
+<p>If provided, the <code>details</code> object contains the following fields:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>domain</code></td>
+<td align="left">String</td>
+<td align="left">The domain name this validator claims to be associated with. If the manifest does not contain a domain, this is an empty string.</td>
+</tr>
+<tr>
+<td align="left"><code>ephemeral_key</code></td>
+<td align="left">String</td>
+<td align="left">The ephemeral public key for this validator, in <a href="base58-encodings.html">base58</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>master_key</code></td>
+<td align="left">String</td>
+<td align="left">The master public key for this validator, in <a href="base58-encodings.html">base58</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>seq</code></td>
+<td align="left">Number</td>
+<td align="left">The sequence number of this manifest. This number increases whenever the validator operator updates the validator's token to rotate ephemeral keys or change settings.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h3>
+<ul>
+<li>Any of the <a href="error-formatting.html#汎用エラー">universal error types</a>.</li>
+<li><code>invalidParams</code> - The <code>public_key</code> field was missing or specified incorrectly.</li>
+<li><code>reportingUnsupported</code> - (<a href="rippled-server-modes.html#レポーティングモード">Reporting Mode</a> servers only) This method is not available in Reporting Mode.</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+<script>
+  const widget = new EmbeddableWidget.default({
+    theme: 'xrpl',
+    opened: false,
+    parentElement: '#feedback-content',
+    currentPath: window.location.pathname,
+    adapter: 'ga',
+    app:'Feedback Widget',
+    adapterConfig:{
+      containerId:"GTM-THHW334",
+      trackingId:"UA-45576805-2"
+    }
+  });
+  setTimeout(() => {
+    widget.open();
+    // EmbeddableWidget.default.unmount();
+  }, 2000);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/docs.html">ドキュメント</a>
+  </div>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/concepts.html">コンセプト</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_1" aria-expanded="false" aria-controls="tree_nav_group_1_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/introduction.html">基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/intro-to-consensus.html">コンセンサスについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/xrp.html">XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/software-ecosystem.html">ソフトウェアエコシステム</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/technical-faq.html">技術に関するよくある質問</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2" aria-expanded="false" aria-controls="tree_nav_group_1_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/payment-system-basics.html">支払いシステムの基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_1_2_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/accounts.html">アカウント</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/cryptographic-keys.html">暗号鍵</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/multi-signing.html">マルチ署名</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/reserves.html">準備金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/fees.html">手数料（曖昧さの回避）</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledgers.html">レジャー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_1_2_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-basics.html">トランザクションの基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-cost.html">トランザクションコスト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/finality-of-results.html">結果のファイナリティー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/source-and-destination-tags.html">Source and Destination Tags</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_3" aria-expanded="false" aria-controls="tree_nav_group_1_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/payment-types.html">支払いのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/partial-payments.html">Partial Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/payment-channels.html">Payment Channel</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/issued-currencies.html">発行済み通貨</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/issued-currencies-overview.html">発行済み通貨の概要</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/freezes.html">発行済み通貨の凍結</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transfer-fees.html">送金手数料</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/issuing-and-operational-addresses.html">発行アドレスと運用アドレス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/paths.html">パス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_5" aria-expanded="false" aria-controls="tree_nav_group_1_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/decentralized-exchange.html">分散型取引所</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/offers.html">オファー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/autobridging.html">オートブリッジング</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ticksize.html">ティックサイズ</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6" aria-expanded="false" aria-controls="tree_nav_group_1_6"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/consensus-network.html">コンセンサスネットワーク</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/consensus.html">コンセンサス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/consensus-principles-and-rules.html">コンセンサスの原理とルール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/invariant-checking.html">Invariant Checking</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-queue.html">トランザクションキュー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/about-canceling-a-transaction.html">トランザクションの取消しについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-malleability.html">トランザクション展性</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_1_6_9"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/amendments.html">Amendment</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_6_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/known-amendments.html">既知のAmendment</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/fee-voting.html">手数料投票</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/consensus-research.html">コンセンサスの研究</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/parallel-networks.html">並列ネットワーク</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/the-rippled-server.html">rippledサーバー</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/rippled-server-modes.html">rippledサーバーのモード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/clustering.html">クラスター化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_1_7_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger-history.html">レジャー履歴</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_7_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/online-deletion.html">オンライン削除</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/history-sharding.html">履歴シャーディング</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/peer-protocol.html">ピアプロトコル</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-censorship-detection.html">取引検閲の検知</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tutorials.html">チュートリアル</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/get-started.html">使用開始</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/public-servers.html">Public Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/get-started-using-python.html">Get Started Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/get-started-using-java.html">Get Started Using Java</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/send-xrp.html">XRPの送金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/monitor-incoming-payments-with-websocket.html">WebSocketを使用した着信ペイメントの監視</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/production-readiness.html">Production Readiness</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/set-up-secure-signing.html">安全な署名の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/look-up-transaction-results.html">トランザクションの結果の確認</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/reliable-transaction-submission.html">信頼できるトランザクションの送信</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/manage-account-settings.html">アカウントの設定の利用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/change-or-remove-a-regular-key-pair.html">レギュラーキーペアの変更または削除</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/disable-master-key-pair.html">Disable Master Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/require-destination-tags.html">宛先タグの要求</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/offline-account-setup.html">オフラインでのアカウント設定のチュートリアル</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/use-escrows.html">Escrowの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/send-a-conditionally-held-escrow.html">条件に基づくEscrowの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/cancel-an-expired-escrow.html">有効期限切れEscrowの取消し</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/look-up-escrows.html">Escrowの検索</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_2" aria-expanded="false" aria-controls="tree_nav_group_2_4_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/use-payment-channels.html">Payment Channelの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/use-checks.html">Checksの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/send-a-check.html">Checkの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/cash-a-check-for-an-exact-amount.html">Checkの正確な金額での換金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/cash-a-check-for-a-flexible-amount.html">Checkの変動金額での換金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/cancel-a-check.html">Checkの取消し</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/look-up-checks-by-sender.html">送金元に基づくCheckの検索</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/look-up-checks-by-recipient.html">受取人に基づくCheckの検索</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/install-rippled.html">rippledのインストール</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/system-requirements.html">システム要件</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/install-rippled-on-centos-rhel-with-yum.html">yumを使用したCentOS/Red Hatへのインストール</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/install-rippled-on-ubuntu.html">UbuntuまたはDebian Linuxへのインストール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/update-rippled-automatically-on-linux.html">Linuxでの自動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/update-rippled-manually-on-centos-rhel.html">CentOS/Red Hatでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/build-run-rippled-ubuntu.html">Ubuntuでのrippledの構築と実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/build-run-rippled-macos.html">macOSでのrippledの構築と実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/capacity-planning.html">容量の計画</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/rippled-1-3-migration-instructions.html">rippled v1.3.xへの移行手順</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-rippled.html">rippledの設定</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-online-deletion.html">オンライン削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-advisory-deletion.html">指示による削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-history-sharding.html">履歴シャーディングの設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-full-history.html">全履歴の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/enable-public-signing.html">パブリック署名の有効化</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-peering.html">ピアリングの設定</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-a-private-server.html">プライベートサーバーの設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/forward-ports-for-peering.html">ピアリングのポート転送</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/manually-connect-to-a-specific-peer.html">特定のピアへの手動接続</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/set-max-number-of-peers.html">ピアの最大数の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/use-a-peer-reservation.html">ピアリザベーションの使用</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/load-a-saved-ledger-in-stand-alone-mode.html">スタンドアロンモードでの保存済みレジャーの読み込み</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/advance-the-ledger-in-stand-alone-mode.html">スタンドアロンモードでレジャーを進める</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_5" aria-expanded="false" aria-controls="tree_nav_group_2_6_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/diagnosing-problems.html">rippledの問題の診断</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/health-check-interventions.html">Health Check Interventions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/understanding-log-messages.html">ログメッセージについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/server-doesnt-sync.html">rippledサーバーが同期しない</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/server-wont-start.html">rippledサーバーが起動しない</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/fix-sqlite-tx-db-page-size-issue.html">SQLiteトランザクションデータベースのページサイズの問題の解決</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/references.html">リファレンス</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/basic-data-types.html">基本的なデータ型</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/base58-encodings.html">base58エンコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/currency-formats.html">通貨フォーマット</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger-data-formats.html">レジャーのデータ型</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger-header.html">レジャーヘッダー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_2_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/accountroot.html">AccountRoot</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/amendments-object.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/check.html">Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/depositpreauth-object.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/directorynode.html">DirectoryNode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/escrow-object.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/feesettings.html">FeeSettings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledgerhashes.html">LedgerHashes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/offer.html">Offer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/paychannel.html">PayChannel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ripplestate.html">RippleState</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/signerlist.html">SignerList</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-formats.html">トランザクションのフォーマット</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-common-fields.html">トランザクションの共通フィールド</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-types.html">トランザクションのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/accountset.html">AccountSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/checkcancel.html">CheckCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/checkcash.html">CheckCash</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/depositpreauth.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/escrowcancel.html">EscrowCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/escrowcreate.html">EscrowCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/offercancel.html">OfferCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/offercreate.html">OfferCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/payment.html">Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/paymentchannelclaim.html">PaymentChannelClaim</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/paymentchannelcreate.html">PaymentChannelCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/paymentchannelfund.html">PaymentChannelFund</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/setregularkey.html">SetRegularKey</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/signerlistset.html">SignerListSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/trustset.html">TrustSet</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/pseudo-transaction-types.html">疑似トランザクション</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/enableamendment.html">EnableAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/setfee.html">SetFee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-results.html">トランザクションの結果</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tec-codes.html">tecコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tef-codes.html">tefコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tel-codes.html">telコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tem-codes.html">temコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ter-codes.html">terコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tes-success.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-metadata.html">トランザクションのメタデータ</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/serialization.html">シリアル化フォーマット</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/client-libraries.html">Client Libraries</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="true" aria-controls="tree_nav_group_3_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/api-conventions.html">APIの規則</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/request-formatting.html">要求フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/response-formatting.html">応答フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/error-formatting.html">エラーのフォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/markers-and-pagination.html">マーカーとページネーション</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/rate-limiting.html">Rate Limiting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/rippled-server-states.html">rippledサーバーの状態</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="true" aria-controls="tree_nav_group_3_3_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/account-methods.html">Account Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/account_channels.html">account_channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/account_currencies.html">account_currencies</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/account_info.html">account_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/account_objects.html">account_objects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/account_offers.html">account_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/account_tx.html">account_tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/gateway_balances.html">gateway_balances</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/noripple_check.html">noripple_check</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger-methods.html">Ledger Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger_closed.html">ledger_closed</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger_current.html">ledger_current</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger_data.html">ledger_data</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger_entry.html">ledger_entry</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction-methods.html">Transaction Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/sign_for.html">sign_for</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/submit.html">submit</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/submit_multisigned.html">submit_multisigned</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/transaction_entry.html">transaction_entry</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tx.html">tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tx_history.html">tx_history</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/path-and-order-book-methods.html">Path and Order Book Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/book_offers.html">book_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/path_find.html">path_find</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ripple_path_find.html">ripple_path_find</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/payment-channel-methods.html">Payment Channel Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/channel_authorize.html">channel_authorize</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/channel_verify.html">channel_verify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_6"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/subscription-methods.html">Subscription Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/subscribe.html">subscribe</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/unsubscribe.html">unsubscribe</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_7" aria-expanded="true" aria-controls="tree_nav_group_3_3_2_7"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/server-info-methods.html">Server Info Methods</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3_3_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/fee.html">fee</a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/server_info.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/server_state.html">server_state</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/json.html">json</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ping.html">ping</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/random.html">random</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/admin-rippled-methods.html">管理rippledメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/key-generation-methods.html">キー生成のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/validation_create.html">validation_create</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/wallet_propose.html">wallet_propose</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/logging-and-data-management-methods.html">ログとデータ管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/can_delete.html">can_delete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/crawl_shards.html">crawl_shards</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/download_shard.html">download_shard</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger_cleaner.html">ledger_cleaner</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger_request.html">ledger_request</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/log_level.html">log_level</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/logrotate.html">logrotate</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/server-control-methods.html">Server Control Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/ledger_accept.html">ledger_accept</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/stop.html">stop</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/validation_seed.html">validation_seed <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/peer-management-methods.html">ピア管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/connect.html">connect</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/peer_reservations_add.html">peer_reservations_add</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/peer_reservations_del.html">peer_reservations_del</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/peer_reservations_list.html">peer_reservations_list</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/peers.html">peers</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/consensus_info.html">consensus_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/feature.html">feature</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/fetch_info.html">fetch_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/get_counts.html">get_counts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/print.html">print</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/validator_info.html">validator_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/validator_list_sites.html">validator_list_sites</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/validators.html">validators</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/commandline-usage.html">rippledコマンドライン使用リファレンス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/peer-port-methods.html">Peer Port Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/health-check.html">Health Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/peer-crawler.html">Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/validator-list.html">Validator List Method</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/xrp-ledger-toml.html">xrp-ledger.tomlファイル</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/by-label.html">ラベル別に閲覧</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-accounts.html">アカウント</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-blockchain.html">ブロックチェーン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-rippled.html">コアサーバー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-cross-currency.html">複数通貨間</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-data-retention.html">データ保持</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-decentralized-exchange.html">分散型取引所</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-development.html">開発</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-fees.html">手数料</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-payment-channels.html">Payment Channel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-payments.html">支払い</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-smart-contracts.html">スマートコントラクト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-security.html">セキュリティ</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-tokens.html">トークン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-transaction-sending.html">トランザクション送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/label-xrp.html">XRP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/dev-tools.html">開発者用ツール</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/websocket-api-tool.html">WebSocket API Tool</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/validator-domain-verifier.html">Domain Verification Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/xrp-testnet-faucet.html">XRP Faucets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tx-sender.html">Transaction Sender</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/faq.html">FAQ</a>
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>アバウト</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/history.html" class="nav-link">沿革</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/impact.html" class="nav-link">インパクト</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>ドキュメント</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/docs.html" class="nav-link">ドキュメント</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/concepts.html" class="nav-link">コンセプト</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/references.html" class="nav-link">リファレンス</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/faq.html" class="nav-link">FAQ</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>コミュニティー</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/contribute.html" class="nav-link">コミュニティー</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/ripple/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex">
+      <a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/" class="footer-brand"><img src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/76061a/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbox',
+algoliaOptions: { 'facetFilters': ["lang:ja"] },
+debug: false
+});
+</script>
+
+
+
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});
+</script>
+
+</body>
+</html>
