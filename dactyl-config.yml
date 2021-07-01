@@ -323,6 +323,7 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - intro-to-consensus.html
+            - public-rippled-methods.html
         top_nav_hero_image: assets/img/icons/docs.svg
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
@@ -330,6 +331,7 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - intro-to-consensus.html
+            - public-rippled-methods.html
         blurb: Dive into XRP Ledger technology and start integrating.
         filters:
             - labels
@@ -344,10 +346,18 @@ pages:
         top_nav_level: 1
         top_nav_name: ドキュメント
         top_nav_shortcuts:
+            # Programming Languages
             - get-started-using-python.html
             - get-started-using-node-js.html
             - get-started-using-java.html
             - get-started-using-http-websocket-apis.html
+            # Popular pages
+            - send-xrp.html
+            - reserves.html
+            - xrp-testnet-faucet.html
+            - run-rippled-as-a-validator.html
+            - intro-to-consensus.html
+            - public-rippled-methods.html
         top_nav_hero_image: assets/img/icons/docs.svg
         popular_pages: #TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
             - send-xrp.html
@@ -3687,6 +3697,13 @@ pages:
         top_nav_grouping: Popular Pages
         targets:
             - en
+
+    -   name: XRP Faucets
+        html: xrp-testnet-faucet.html
+        parent: dev-tools.html
+        template: page-xrp-faucets.html.jinja
+        top_nav_grouping: 人気ページ
+        targets:
             - ja
 
         # Redirect from old URL
@@ -3733,12 +3750,13 @@ pages:
             - en
 
         # TODO: translate blurb & contents
-    -   name: コミュニティー
+    -   name: 貢献する
         html: contribute.html
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        blurb: The XRP Ledger (XRPL) is a community-driven public blockchain ledger. Here’s how you can get involved.
+        blurb: Join the conversation
+        top_nav_name: コミュニティー
         top_nav_hero_image: assets/img/icons/contribute.svg
         targets:
             - ja

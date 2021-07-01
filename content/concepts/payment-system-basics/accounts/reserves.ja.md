@@ -5,6 +5,7 @@ blurb: XRP Ledgerアカウントでは、レジャーデータ内のスパムを
 labels:
   - 手数料
   - アカウント
+top_nav_grouping: 人気ページ
 ---
 # 準備金
 

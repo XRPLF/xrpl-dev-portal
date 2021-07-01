@@ -9,6 +9,7 @@ filters:
 labels:
   - 支払い
   - XRP
+top_nav_grouping: 人気ページ
 ---
 # XRPの送金
 

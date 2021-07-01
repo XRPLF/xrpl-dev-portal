@@ -5,6 +5,8 @@ blurb: サーバーがコンセンサスレジャーで投票できるように�
 labels:
   - コアサーバー
   - ブロックチェーン
+top_nav_grouping: 人気ページ
+top_nav_name: UNLに参加しよう
 ---
 # バリデータとしてのrippledの実行
 
