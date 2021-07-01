@@ -69,7 +69,7 @@
 
   p a,
   h5 a {
-    color: $blue-purple-500;
+    color: $blue-purple-400;
   }
 
   /* Misc. ------------------------------------------------------------------ */
@@ -164,7 +164,11 @@
     }
   }
 
-
+  .card-body .nav .nav-link {
+    // These already have a background of $gray-800, so the border needs to be
+    // lighter.
+    border-bottom: 1px solid $gray-600;
+  }
 }
 
 // Alert banners

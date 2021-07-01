@@ -43,6 +43,9 @@ td:nth-child(1) {
   tr:last-child {
     border-bottom: none;
   }
+  tbody td {
+    color: $gray-200;
+  }
 }
 
 

@@ -541,7 +541,8 @@ a {
     background-color: $blue-purple-400;
     transition: all .2s ease;
     border: none;
-
+  }
+  &:not(.expander) span {
     &:first-of-type {
       left: 0;
       transform: rotate(45deg);
@@ -562,11 +563,21 @@ a {
   }
 }
 
-.dropdown.show .chevron {
+.dropdown.show .chevron,
+.expander:not(.collapsed) .chevron {
   span:first-of-type {
     transform: rotate(-45deg);
   }
   span:last-of-type {
     transform: rotate(45deg);
+  }
+}
+
+// Fix dropdown box-shadows on mobile (language selector's shadow overlaps the
+// rest of the menu, so it's offset more with a negative spread)
+@include media-breakpoint-down(md) {
+  .navbar-collapse,
+  .dropdown-menu {
+    box-shadow: 0px 25px 40px -20px $black;
   }
 }

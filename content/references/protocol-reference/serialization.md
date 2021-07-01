@@ -5,6 +5,13 @@ blurb: Conversion between JSON and canonical binary format for XRP Ledger transa
 labels:
   - Blockchain
   - Transaction Sending
+curated_anchors:
+  - name: Sample Code
+    anchor: "#sample-code"
+  - name: Canonical Field Order
+    anchor: "#canonical-field-order"
+  - name: Type List
+    anchor: "#type-list"
 ---
 # Serialization Format
 [[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")

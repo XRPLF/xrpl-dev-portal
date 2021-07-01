@@ -35,7 +35,13 @@
 }
 
 /* SPACING HELPERS */
-/* To create new margin classes, multiply by 4px */
+/* To create new margin classes, multiply by 4px then divide by 16 */
+/* Exceptions with 1 - 5 since those are stock with Bootstrap */
+.mb-3-sm-i {
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 1rem !important;
+  }
+}
 .ml-5 {
   margin-left: 1.25rem;
   &-until-md {
@@ -68,6 +74,11 @@
 }
 .mt-8 {
   margin-top: 2rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-top: 2rem !important;
+    }
+  }
 }
 .mt-9 {
   margin-top: 2.25rem;
@@ -86,6 +97,11 @@
 .mb-10 {
   margin-bottom: 2.5rem;
   &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 2.5rem;
+    }
+  }
+  &-sm {
     @include media-breakpoint-up(sm) {
       margin-bottom: 2.5rem;
     }
@@ -284,6 +300,14 @@
   @include media-breakpoint-down(sm) {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+  }
+}
+.pb-26 {
+  padding-bottom: 6.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      padding-bottom: 6.5rem;
+    }
   }
 }
 .pt-30 {

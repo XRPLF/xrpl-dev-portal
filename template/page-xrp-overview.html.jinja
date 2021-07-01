@@ -17,7 +17,7 @@
 
 {% block main %}
 <div class="position-relative">
-  <img src="./img/backgrounds/xrp-overview-blue.svg" id="xrp-overview-blue">
+  <img src="./img/backgrounds/xrp-overview-blue.svg" class="landing-bg" id="xrp-overview-blue">
 </div>
 
 <section class="py-26 text-center">
@@ -33,16 +33,26 @@
     <div class="card-grid card-grid-1x2">
     	<div class="margin-col d-none-sm">
         <ul class="page-toc no-sideline p-0 sticky-top top-24">
-          <li class="nav-item"><a class="sidelinks nav-link" href="#about-xrp">About XRP</a></li>
-          <li class="nav-item"><a class="sidelinks nav-link" href="#xrp-trading">XRP in Trading</a></li>
-          <li class="nav-item"><a class="sidelinks nav-link" href="#ripple">Ripple vs. XRP</a></li>
-          <li class="nav-item"><a class="sidelinks nav-link" href="#wallets">XRP Wallets</a></li>
-          <li class="nav-item"><a class="sidelinks nav-link" href="#exchanges">XRP Exchanges</a></li>
+          {% set links = [
+            { "hash": _("#about-xrp"),
+              "text":  _("About XRP") },
+            { "hash": _("#xrp-trading"),
+              "text":  _("XRP in Trading") },
+            { "hash": _("#ripple"),
+              "text":  _("Ripple vs. XRP") },
+            { "hash": _("#wallets"),
+              "text":  _("XRP Wallets") },
+            { "hash": _("#exchanges"),
+              "text":  _("XRP Exchanges") },
+          ] %}
+          {% for link in links %}
+          <li class="nav-item"><a class="sidelinks nav-link" href="{{link.hash}}">{{link.text}}</a></li>
+          {% endfor %}
         </ul>
     </div>
 
     <div class="col-new">
-      <div class="link-section py-26" id="about-xrp">
+      <div class="link-section pb-26" id="about-xrp">
         <h2 class="h4 mb-8">{% trans %}What Is XRP?{% endtrans %}</h2>
         <h5 class="longform mb-10">{% trans %}XRP is a digital asset that’s native to the XRP Ledger—an open-source, permissionless and decentralized <a href="https://www.distributedagreement.com/2018/09/24/what-is-a-blockchain/" target="_blank">blockchain technology.</a>{% endtrans %}</h5>
         <p class="mb-6">{% trans %}Created in 2012 specifically for payments, XRP can settle transactions on the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, cheaper and greener than any other digital asset.{% endtrans %}</p>
@@ -134,30 +144,44 @@
             <h6 class="fs-4-5">{% trans %}Custodial Wallets{% endtrans %}</h6>
             <p class="">{% trans %}Custodial wallets manage a user's private key, which allows the wallet to withdraw crypto currency on a user's behalf.{% endtrans %}</p>
             <ul class="nav flex-column">
+              {% set wallets = [
+                { "href": _("https://www.ledger.com/"),
+                  "img":  _("./img/wallets/ledger.svg"),
+                  "alt": _("Ledger") },
+                { "href": _("https://www.secalot.com/"),
+                  "img":  _("./img/wallets/secalot.svg"),
+                  "alt": _("Secalot") },
+                { "href": _("https://trezor.io/"),
+                  "img":  _("./img/wallets/trezor.svg"),
+                  "alt": _("Trezor") },
+                { "href": _("https://gatehub.net/"),
+                  "img":  _("./img/wallets/gatehub.svg"),
+                  "alt": _("Gatehub") },
+              ] %}
+              {% for wallet in wallets %}
               <li class="nav-item">
-                <a class="nav-link external-link" href="https://www.ledger.com/" target="_blank"><img class="mw-100" src="./img/wallets/ledger.svg" alt="Ledger"></a>
+                <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100" src="{{wallet.img}}" alt="{{wallet.alt}} Logo"></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://www.secalot.com/" target="_blank"><img class="mw-100" src="./img/wallets/secalot.svg" alt="Secalot"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://trezor.io/" target="_blank"><img class="mw-100" src="./img/wallets/trezor.svg" alt="Trezor"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://gatehub.net/" target="_blank"><img class="mw-100" src="./img/wallets/gatehub.svg" alt="Gatehub"></a>
-              </li>
+              {% endfor %}
             </ul>
           </div>
           <div class="ml-5-until-md mt-10-sm">
             <h6 class="fs-4-5">{% trans %}Non-Custodial Wallets{% endtrans %}</h6>
             <p>{% trans %}Non-custodial wallets do not manage a user's private key, which is up to the user to manage, and therefore cannot send crypto currency on the user's behalf.{% endtrans %}</p>
             <ul class="nav flex-column">
+              {% set custodials = [
+                { "href": _("https://xumm.app/"),
+                  "img":  _("./img/wallets/xumm.svg"),
+                  "alt": _("Xumm") },
+                { "href": _("https://trustwallet.com/"),
+                  "img":  _("./img/wallets/trust.svg"),
+                  "alt": _("Trust Wallet") },
+              ] %}
+              {% for cust in custodials %}
               <li class="nav-item">
-                <a class="nav-link external-link" href="https://xumm.app/" target="_blank"><img class="mw-100" src="./img/wallets/xumm.svg" alt="Xumm"></a>
+                <a class="nav-link external-link" href="{{cust.href}}" target="_blank"><img class="mw-100" src="{{cust.img}}" alt="{{cust.alt}} Logo"></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://trustwallet.com/" target="_blank"><img class="mw-100" src="./img/wallets/trust.svg" alt="Trust Wallet"></a>
-              </li>
+              {% endfor %}
             </ul>
           </div>
         </div>
@@ -192,40 +216,64 @@
         <div class="card-grid card-grid-2xN mb-10">
           <div class="mr-5-until-md">
             <ul class="nav flex-column">
+              {% set exchanges1 = [
+                { "href": _("https://www.bitstamp.com/"),
+                  "number": "1",
+                  "img":  _("./img/exchanges/bitstamp.svg"),
+                  "alt": _("Bitstamp") },
+                { "href": _("https://www.kraken.com/"),
+                  "number": "2",
+                  "img":  _("./img/exchanges/kraken.svg"),
+                  "alt": _("Kraken") },
+                { "href": _("https://cex.io/"),
+                  "number": "3",
+                  "img":  _("./img/exchanges/cex-io.svg"),
+                  "alt": _("Cex.io") },
+                { "href": _("https://www.liquid.com/"),
+                  "number": "4",
+                  "img":  _("./img/exchanges/liquid.svg"),
+                  "alt": _("Liquid") },
+                { "href": _("https://www.lmax.com/"),
+                  "number": "5",
+                  "img":  _("./img/exchanges/lmax.svg"),
+                  "alt": _("LMAX") },
+              ] %}
+              {% for exch in exchanges1 %}
               <li class="nav-item">
-                <a class="nav-link external-link" href="https://www.bitstamp.com/" target="_blank"><span class="longform mr-3">1</span><img class="mw-100" src="./img/exchanges/bitstamp.svg" alt="Bitstamp"></a>
+                <a class="nav-link external-link" href="{{exch.href}}" target="_blank"><span class="longform mr-3">{{exch.number}}</span><img class="mw-100" src="{{exch.img}}" alt="{{exch.alt}} Logo"></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://www.kraken.com/" target="_blank"><span class="longform mr-3">2</span><img class="mw-100" src="./img/exchanges/kraken.svg" alt="Kraken"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://cex.io/" target="_blank"><span class="longform mr-3">3</span><img class="mw-100" src="./img/exchanges/cex-io.svg" alt="Cex.io"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://www.liquid.com/" target="_blank"><span class="longform mr-3">4</span><img class="mw-100" src="./img/exchanges/liquid.svg" alt="Liquid"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://www.lmax.com/" target="_blank"><span class="longform mr-3">5</span><img class="mw-100" src="./img/exchanges/lmax.svg" alt="LMAX"></a>
-              </li>
+              {% endfor %}
             </ul>
           </div>
           <div class="ml-5-until-md">
             <ul class="nav flex-column">
+              {% set exchanges1 = [
+                { "href": _("https://www.bitfinex.com/"),
+                  "number": "6",
+                  "img":  _("./img/exchanges/bitfinex.svg"),
+                  "alt": _("Bitfinex") },
+                { "href": _("https://www.etoro.com/crypto/exchange/"),
+                  "number": "7",
+                  "img":  _("./img/exchanges/etoro.svg"),
+                  "alt": _("eToro") },
+                { "href": _("https://currency.com"),
+                  "number": "8",
+                  "img":  _("./img/exchanges/currency.svg"),
+                  "alt": _("Currency.com") },
+                { "href": _("https://bittrex.com/"),
+                  "number": "9",
+                  "img":  _("./img/exchanges/bittrex.svg"),
+                  "alt": _("Bittrex") },
+                { "href": _("https://ftx.com/"),
+                  "number": "10",
+                  "img":  _("./img/exchanges/ftx.svg"),
+                  "alt": _("FTX") },
+              ] %}
+              {% for exch in exchanges1 %}
               <li class="nav-item">
-                <a class="nav-link external-link" href="https://www.bitfinex.com/" target="_blank"><span class="longform mr-3">6</span><img class="mw-100" src="./img/exchanges/bitfinex.svg" alt="Bitfinex"></a>
+                <a class="nav-link external-link" href="{{exch.href}}" target="_blank"><span class="longform mr-3">{{exch.number}}</span><img class="mw-100" src="{{exch.img}}" alt="{{exch.alt}} Logo"></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://www.etoro.com/crypto/exchange/" target="_blank"><span class="longform mr-3">7</span><img class="mw-100" src="./img/exchanges/etoro.svg" alt="eToro"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://currency.com" target="_blank"><span class="longform mr-3">8</span><img class="mw-100" src="./img/exchanges/currency.svg" alt="Currency.com"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://bittrex.com/" target="_blank"><span class="longform mr-3">9</span><img class="mw-100" src="./img/exchanges/bittrex.svg" alt="Bittrex"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link external-link" href="https://ftx.com/" target="_blank"><span class="longform mr-3">10</span><img class="mw-100" src="./img/exchanges/ftx.svg" alt="FTX"></a>
-              </li>
+              {% endfor %}
           </ul>
         </div>
         </div>

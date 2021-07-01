@@ -18,7 +18,7 @@
 {% block main %}
 
 <div class="position-relative">
-  <img src="./img/backgrounds/calculator-purple.svg" id="calculator-purple">
+  <img src="./img/backgrounds/calculator-purple.svg" class="landing-bg" id="calculator-purple">
 </div>
 
 <section class="py-26 text-center">
@@ -73,11 +73,16 @@
             <div class="slidecontainer mb-10">
               <input type="range" min="20" max="100" value="60" class="slider w-100" id="myRange" step="20">
               <ul class="d-flex p-0 ls-none justify-content-between position-relative mr-neg-8 ml-neg-8 mt-1" style="z-index: -1;">
-                <li class="dash text-center text-smaller grey-500" data-num="20">20M</li>
-                <li class="dash text-center text-smaller grey-500" data-num="40">40M</li>
-                <li class="dash text-center text-smaller grey-500 active" data-num="60">60M</li>
-                <li class="dash text-center text-smaller grey-500" data-num="80">80M</li>
-                <li class="dash text-center text-smaller grey-500" data-num="100">100M</li>
+                {% set numbers = [
+                  { "num": "20" },
+                  { "num": "40" },
+                  { "num": "60" },
+                  { "num": "80" },
+                  { "num": "100" },
+                ] %}
+                {% for number in numbers %}
+                  <li class="dash text-center text-smaller grey-500" data-num="{{number.num}}">{{number.num}}M</li>
+                {% endfor %}
               </ul>
             </div>
             <div class="d-flex mb-3 ml-3">

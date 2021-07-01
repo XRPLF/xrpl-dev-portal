@@ -1,7 +1,7 @@
 ---
 html: transaction-formats.html
 parent: protocol-reference.html
-blurb: Transactions are the only way to modify the XRP Ledger. Get details about their required format.
+blurb: Definitions for all the protocol's transaction types and their results.
 template: pagetype-category.html.jinja
 ---
 # Transaction Reference
