@@ -25,7 +25,7 @@
    <section class="py-26 text-center">
     <div class="col-lg-5 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
-        <h1 class="">{% trans %}Powering Innovative Technology{% endtrans %}</h1>
+        <h1 class="mb-0">{% trans %}Powering Innovative Technology{% endtrans %}</h1>
         <h6 class="green-500 mb-3">{% trans %}XRPL Use Cases{% endtrans %}</h6>
       </div>
     </div>
@@ -33,7 +33,7 @@
 
 
   <section class="container-new py-26">
-    <ul class="mt-10 card-grid card-grid-3xN ls-none">
+    <ul class="card-grid card-grid-3xN ls-none" id="use-case-card-grid">
       {% set uses = [
         { "icon": "./img/icons/micropayments.svg",
           "title": _("Micropayments"),
@@ -149,7 +149,7 @@
       {% endfor %}
     </div>
   </section>
-</div>   
+</div>
 
 {% endblock %}
 

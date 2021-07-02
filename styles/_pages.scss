@@ -44,6 +44,7 @@
 .landing-bg {
   @include media-breakpoint-down(sm) {
     opacity: .6;
+    margin-right: -20vw;//CURSOR
   }
 }
 
@@ -80,6 +81,12 @@
   position: absolute;
   top: -480px;
   right: -4px;
+}
+
+#use-case-card-grid {
+  @include media-breakpoint-up(lg) {
+    margin-top: -40px; // offset the 40px margin of the cols
+  }
 }
 
 // History Page
