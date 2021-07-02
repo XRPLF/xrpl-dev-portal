@@ -445,6 +445,7 @@
       &::before {
         content:"\f053"; // < chevron
         display: inline-block;
+        margin-bottom: -5px; // fix weird placement on Chrome
       }
       &::after {
         content:"\f054"; // > chevron
