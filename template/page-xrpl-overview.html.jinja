@@ -126,7 +126,10 @@
       {% for faq in faqs %}
       <div class="w-100 accordian-row mb-6">
         <h3 class="mb-0 h6" id="heading{{faq.number}}">
-          <a href="#" class="white collapsed w-100 d-block" data-toggle="collapse" data-target="#collapse{{faq.number}}" aria-expanded="false" aria-controls="collapse{{faq.number}}">{{faq.question}}</a>
+          <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#collapse{{faq.number}}" aria-expanded="false" aria-controls="collapse{{faq.number}}">
+            {{faq.question}}
+            <span class="chevron"><span></span><span></span></span>
+          </a>
         </h3>
         <p id="collapse{{faq.number}}" class="collapse mt-3 mb-0" aria-labelledby="heading{{faq.number}}" data-parent="#accordion">{{faq.answer}}</p>
       </div>
