@@ -102,9 +102,9 @@
     "apps": [
       {
         "name": "pr-preview",
-        "headCommitId": "999627fade727aa17ccbe6d1a8e71e64dfd6ae99",
-        "updatedAt": "2021-07-02T00:04:54.418Z",
-        "href": "pr-preview/2021_refresh/999627",
+        "headCommitId": "47796f6ea2c374a1d9dadb6db3c900bc4faec920",
+        "updatedAt": "2021-07-02T00:17:15.665Z",
+        "href": "pr-preview/2021_refresh/47796f",
         "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1114"
       }
     ]
