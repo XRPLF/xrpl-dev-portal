@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>FAQ - XRPL.org</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="FAQ | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/faq.html" />
+    <meta property="og:description" content="Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community." />
+    <meta name="description" content="Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/faq.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/faq.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/faq.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <!-- Stylesheet -->
+    <link href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/css/devportal2021.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal lang-en no-sidebar" data-spy="scroll" data-target=".page-toc" data-offset="0">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/" class="navbar-brand"><img src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="40" alt="XRPL.org" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>About</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
+            <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
+            <a class="dropdown-item" href="history.html">History</a>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">Impact</a>
+            <a class="dropdown-item" href="carbon-calculator.html">Carbon Calculator</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Docs</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-documentation" href="docs.html">
+            <img src="assets/img/icons/docs.svg" alt="Documentation icon" />
+            <div class="dropdown-hero-text">
+              <h4>Documentation</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="concepts.html">Concepts</a>
+            <a class="dropdown-item" href="tutorials.html">Tutorials</a>
+            <a class="dropdown-item" href="references.html">References</a>
+          </div><!--./col-->
+          <div class="navcol col-for-online-tools">
+            <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+          </div><!--./col-->
+          <div class="navcol col-for-questions">
+            <h5 class="dropdown-item">Questions</h5>
+            <a class="dropdown-item active" href="faq.html">FAQ</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item" href="send-xrp.html">Send XRP</a>
+            <a class="dropdown-item" href="reserves.html">Reserves</a>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
+            <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
+            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
+            <img src="assets/img/icons/contribute.svg" alt="Contribute icon" />
+            <div class="dropdown-hero-text">
+              <h4>Contribute</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/">Dev Blog</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/ripple/xrpl-dev-portal/">GitHub</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+<!---->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+
+      <!-- main column -->
+      <main class="main col-md-12 order-md-3  landing" role="main" id="main_content_body">
+
+<div class="position-relative">
+  <img src="./img/backgrounds/faq-bg.svg" class="landing-bg" id="faq-background">
+</div>
+
+<section class="py-26 text-center">
+  <div class="col-lg-5 mx-auto text-center">
+    <div class="d-flex flex-column-reverse">
+      <h1 class="mb-0">Your Questions About XRPL, Answered</h1>
+      <h6 class="green-500 mb-3">FAQ</h6>
+    </div>
+  </div>
+</section>
+
+<section class="container-new py-26">
+  <div class="col-md-6 offset-md-3 w-100 pl-0 pr-0" id="faqs-accordian">
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="a1-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#a1" aria-expanded="false" aria-controls="a1">
+          Is XRPL a private blockchain, owned by Ripple?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="a1" class="collapse mt-3 mb-0" aria-labelledby="a1" data-parent="#faqs-accordian">No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the Unique Node List (see “What are Unique Node Lists (UNLs)?” below) — Ripple runs 6 of these nodes.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="a2-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#a2" aria-expanded="false" aria-controls="a2">
+          Isn’t Proof of Work the best validation mechanism?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="a2" class="collapse mt-3 mb-0" aria-labelledby="a2" data-parent="#faqs-accordian">Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. However the XRP Ledger’s consensus mechanism solves the same problem in a far faster, cheaper and more energy efficient way.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="a3-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#a3" aria-expanded="false" aria-controls="a3">
+          How can a blockchain be sustainable?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="a3" class="collapse mt-3 mb-0" aria-labelledby="a3" data-parent="#faqs-accordian">It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “<a href='intro-to-consensus.html'>consensus</a>” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>. Explore the energy consumption of XRP compared to cash, credit cards and other popular cryptocurrencies with the <a href='carbon-calculator.html'>Green Currency Calculator</a>.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="a4-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#a4" aria-expanded="false" aria-controls="a4">
+          Can currencies other than XRP be traded through XRPL?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="a4" class="collapse mt-3 mb-0" aria-labelledby="a4" data-parent="#faqs-accordian">Yes, the XRP Ledger was built specifically to be able to tokenize arbitrary assets, e.g. USD, EUR, Oil, Gold, reward points, etc. Any currency can be issued on the XRP Ledger. This is illustrated by XRPL’s growing community that backs a variety of fiat and crypto tokens.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="a5-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#a5" aria-expanded="false" aria-controls="a5">
+          Isn’t XRPL only for payments?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="a5" class="collapse mt-3 mb-0" aria-labelledby="a5" data-parent="#faqs-accordian">While XRPL was initially developed for payment use cases, both the ledger and its native digital asset XRP are increasingly popular for a range of innovative blockchain use cases. New standards proposals for issuing NFTs, XRPL Labs’ hooks amendment for smart contract functionality, and federated sidechains are all currently works in progress.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container-new py-26">
+  <div class="col-md-6 offset-md-3 w-100 pl-0 pr-0" id="faqs-accordian-2">
+    <center><h2 class="h4 mb-10">Validators and Unique Node Lists</h2></center>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="b1-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b1" aria-expanded="false" aria-controls="b1">
+          What service do transaction validators provide?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="b1" class="collapse mt-3 mb-0" aria-labelledby="b1" data-parent="#faqs-accordian-2">Validators determine if transactions meet protocol requirements, and are therefore “valid.” The service validators uniquely provide is administratively grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending. See <a href='https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/' target='_blank'>Consensus and the Ripple Labs Tech Talk: Understanding Consensus</a> for more information about the consensus process.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="b2-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b2" aria-expanded="false" aria-controls="b2">
+          How much does it cost to run a validator?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="b2" class="collapse mt-3 mb-0" aria-labelledby="b2" data-parent="#faqs-accordian-2">Running a validator does not require any fees or XRP. It is comparable in cost to running an email server in terms of its electricity use.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="b3-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b3" aria-expanded="false" aria-controls="b3">
+          What are Unique Node Lists (UNLs)?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="b3" class="collapse mt-3 mb-0" aria-labelledby="b3" data-parent="#faqs-accordian-2">They are the lists of validators a given participant believes will not conspire to defraud them. Each server operator can choose their own UNL, usually based on a default set provided by a trusted publisher.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="b4-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b4" aria-expanded="false" aria-controls="b4">
+          Which UNL should I select?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="b4" class="collapse mt-3 mb-0" aria-labelledby="b4" data-parent="#faqs-accordian-2">Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, three publishers (Ripple, the XRP Ledger Foundation, and Coil) are known to publish recommended default lists of high quality validators, based on past performance, proven identities, and responsible IT policies.  However, every network participant can choose which validators it chooses as reliable and need not follow one of the three publishers noted above.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="b5-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b5" aria-expanded="false" aria-controls="b5">
+          If Ripple recommends adoption of its UNL, doesn't that create a centralized system?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="b5" class="collapse mt-3 mb-0" aria-labelledby="b5" data-parent="#faqs-accordian-2">No. The XRP Ledger network is opt-in. Each participant directly or indirectly chooses its UNL. If Ripple stops operating or acts maliciously, participants can change their UNLs to use a list from a different publisher.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="b6-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b6" aria-expanded="false" aria-controls="b6">
+          What is the validator incentive structure for validators not run by Ripple?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="b6" class="collapse mt-3 mb-0" aria-labelledby="b6" data-parent="#faqs-accordian-2">The primary incentive to run a validator is to preserve and protect the stable operation and sensible evolution of the network. It is the validators who decide the evolution of the XRP Ledger, so any business that uses or depends on the XRP Ledger has an inherent incentive to ensure the reliability, and stability of the network. Validators also earn the respect and goodwill of the community by contributing this way.<br/><br/>If you run an XRP Ledger server to participate in the network, the additional cost and effort to run a validator is minimal. This means that additional incentives, such as the mining rewards in Bitcoin, are not necessary. Ripple avoids paying XRP as a reward for operating a validator so that such incentives do not warp the behavior of validators.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="b7-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b7" aria-expanded="false" aria-controls="b7">
+          Can financial institutions set up transaction validators to help them meet specific institutional standards and requirements?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="b7" class="collapse mt-3 mb-0" aria-labelledby="b7" data-parent="#faqs-accordian-2">No, institutions cannot set up customized validator policies for choosing to allow some transactions and reject others. Validators either follow the protocol, or they do not. If software does not follow protocol rules, it does not function. Thus, it is not recommended that institutions seek out custom implementations without in-house expertise.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="b8-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b8" aria-expanded="false" aria-controls="b8">
+          What happens if more than 20% of nodes within the network do not agree with the majority? How is the final version of the ledger chosen?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="b8" class="collapse mt-3 mb-0" aria-labelledby="b8" data-parent="#faqs-accordian-2">Normally, if there is a dispute about the validity of one transaction, that transaction gets pushed back until the majority can come to an agreement. But if more than 20% of the network did not follow the same protocol rules as the majority, the network would temporarily halt. It could resume when participants reconfigure their UNLs based on those who want to reach consensus with each other. This temporary processing delay is desired rather than double spending.
+        <br/><br/>
+        In the process of determining the authoritative version of a ledger, there may be multiple temporary internal versions. Such internal versions naturally happen in distributed systems because not all nodes receive transactions in the same order. The analogous behavior in Bitcoin is where two servers each see a different longest chain because two blocks were mined at about the same time.
+        <br/><br/>
+        However, there can be only one latest validated ledger version at any given time; other versions are irrelevant and harmless.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="b9-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b9" aria-expanded="false" aria-controls="b9">
+          Does the XRP Ledger have a formal process for adding validators?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="b9" class="collapse mt-3 mb-0" aria-labelledby="b9" data-parent="#faqs-accordian-2">No, a formal process for adding validators is not compatible with the XRP Ledger, because it is a system with no central authority.
+        <br/><br/>
+        For recommendations and best practices, see Run rippled as a Validator.</p>
+    </div>
+
+
+</section>
+
+<section class="container-new py-26">
+  <div class="col-md-6 offset-md-3 w-100 pl-0 pr-0" id="faqs-accordian-3">
+    <center><h2 class="h4 mb-10">Role of XRP</h2></center>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="c1-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#c1" aria-expanded="false" aria-controls="c1">
+          Why does Ripple use XRP holdings?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="c1" class="collapse mt-3 mb-0" aria-labelledby="c1" data-parent="#faqs-accordian-3">Ripple's XRP holdings incentivize the company to make the XRP Ledger as useful as possible. XRP exists as a native asset in the XRP Ledger for anti-spam transaction purposes, and for currency bridging only if beneficial to users. Otherwise, XRP is completely optional.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="c2-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#c2" aria-expanded="false" aria-controls="c2">
+          How does the XRP Ledger respond to transaction floods?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="c2" class="collapse mt-3 mb-0" aria-labelledby="c2" data-parent="#faqs-accordian-3">The XRP Ledger is designed to set the transaction cost dynamically based on demand as an anti-spam measure. The impact of any potential XRP manipulation is minimized by increases in network size as the market cap and transaction volume increase.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="c3-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#c3" aria-expanded="false" aria-controls="c3">
+          What is Ripple standard operating procedure regarding money laundering and suspicious economic activity?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="c3" class="collapse mt-3 mb-0" aria-labelledby="c3" data-parent="#faqs-accordian-3">Ripple is committed to monitoring and reporting any AML flags across the XRP Ledger network, as well as reporting suspicious activity to FinCEN as applicable.</p>
+    </div>
+</section>
+
+<section class="container-new py-26">
+  <div class="col-md-6 offset-md-3 w-100 pl-0 pr-0" id="faqs-accordian-4">
+    <center><h2 class="h4 mb-10">Security Concerns</h2></center>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="d1-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#d1" aria-expanded="false" aria-controls="d1">
+          What is Ripple's process for reviewing third-party code contributions?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="d1" class="collapse mt-3 mb-0" aria-labelledby="d1" data-parent="#faqs-accordian-4">The code contribution process starts with a developer opening a pull request to Ripple's rippled repo. This pull request triggers automated unit and integration tests, as well as code reviews by several developers who, typically, have significant expertise in the area of code that the pull request affects.
+        <br/><br/>
+        Once the pull request passes automated tests and receives approvals from reviewers, a trusted maintainer of the repo can stage it for inclusion in the next beta.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="d2-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#d2" aria-expanded="false" aria-controls="d2">
+          Does Ripple own or control the XRP Ledger or XRP Ledger network?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="d2" class="collapse mt-3 mb-0" aria-labelledby="d2" data-parent="#faqs-accordian-4">No, Ripple does not own or control the XRP Ledger or XRP Ledger network.
+        <br/><br/>
+        Ripple does publish a reference implementation of the core XRP Ledger server (rippled) and employs a team of engineers who contribute to the open-source codebase. Ripple also periodically publishes pre-compiled binary packages of the software as a convenience. Anyone is free to download and compile the software from source, if they prefer.
+        <br/><br/>
+        That being said, you don't need to use Ripple’s version of the XRP Ledger software to interact with the XRP Ledger. rippled is open-source software and Ripple grants anyone the ability to use, extend, and modify it as long as they follow the terms of the ISC license. The ISC License is very permissive compared to some other open-source licenses that strictly limit how you can extend and adapt the software.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="d3-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#d3" aria-expanded="false" aria-controls="d3">
+          Does Ripple offer a secure method to download their software?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="d3" class="collapse mt-3 mb-0" aria-labelledby="d3" data-parent="#faqs-accordian-4">rippled source code is available at <a href='https://github.com/ripple/rippled' target='_blank'>https://github.com/ripple/rippled</a>, where the tip of the master, release and develop branches always contains a version-setting commit signed by a rippled developer. The XRP Ledger also offers pre-built binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published.</p>
+    </div>
+    <div class="w-100 accordian-row mb-6">
+      <h3 class="mb-0 h6" id="d4-q">
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#d4" aria-expanded="false" aria-controls="d4">
+          Does Ripple distinguish between the codebase for validation and the one for user software?
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+      </h3>
+      <p id="d4" class="collapse mt-3 mb-0" aria-labelledby="d4" data-parent="#faqs-accordian-4">Yes. Client software for the XRP Ledger, including ripple-lib, has a different codebase and repositories from rippled (validation).</p>
+    </div>
+</section>
+      </main>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>About</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/history.html" class="nav-link">History</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/impact.html" class="nav-link">Impact</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Docs</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/docs.html" class="nav-link">Documentation</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/concepts.html" class="nav-link">Concepts</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/tutorials.html" class="nav-link">Tutorials</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/references.html" class="nav-link">References</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/faq.html" class="nav-link">FAQ</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Community</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/ripple/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex">
+      <a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/" class="footer-brand"><img src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="Jump to top of page"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/92bcdc/assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  indexName: 'xrpl',
+  inputSelector: '#topsearchbox',
+  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+
+
+
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+</body>
+</html>
