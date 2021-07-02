@@ -52,7 +52,10 @@
     {% for faq in faqs %}
     <div class="w-100 accordian-row mb-6">
       <h3 class="mb-0 h6" id="a{{faq.number}}-q">
-        <a href="#" class="white collapsed w-100 d-block" data-toggle="collapse" data-target="#a{{faq.number}}" aria-expanded="false" aria-controls="a{{faq.number}}">{{faq.question}}</a>
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#a{{faq.number}}" aria-expanded="false" aria-controls="a{{faq.number}}">
+          {{faq.question}}
+          <span class="chevron"><span></span><span></span></span>
+        </a>
       </h3>
       <p id="a{{faq.number}}" class="collapse mt-3 mb-0" aria-labelledby="a{{faq.number}}" data-parent="#faqs-accordian">{{faq.answer}}</p>
     </div>
@@ -101,13 +104,16 @@
     {% for faq in faqs2 %}
     <div class="w-100 accordian-row mb-6">
       <h3 class="mb-0 h6" id="b{{faq.number }}-q">
-        <a href="#" class="white collapsed w-100 d-block" data-toggle="collapse" data-target="#b{{faq.number}}" aria-expanded="false" aria-controls="b{{faq.number}}">{{faq.question}}</a>
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#b{{faq.number}}" aria-expanded="false" aria-controls="b{{faq.number}}">
+          {{faq.question}}
+          <span class="chevron"><span></span><span></span></span>
+        </a>
       </h3>
       <p id="b{{faq.number}}" class="collapse mt-3 mb-0" aria-labelledby="b{{faq.number}}" data-parent="#faqs-accordian-2">{{faq.answer}}</p>
     </div>
     {% endfor %}
 
-    
+
 </section>
 
 <section class="container-new py-26">
@@ -127,7 +133,10 @@
     {% for faq in faqs3 %}
     <div class="w-100 accordian-row mb-6">
       <h3 class="mb-0 h6" id="c{{faq.number}}-q">
-        <a href="#" class="white collapsed w-100 d-block" data-toggle="collapse" data-target="#c{{faq.number}}" aria-expanded="false" aria-controls="c{{faq.number}}">{{faq.question}}</a>
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#c{{faq.number}}" aria-expanded="false" aria-controls="c{{faq.number}}">
+          {{faq.question}}
+          <span class="chevron"><span></span><span></span></span>
+        </a>
       </h3>
       <p id="c{{faq.number}}" class="collapse mt-3 mb-0" aria-labelledby="c{{faq.number}}" data-parent="#faqs-accordian-3">{{faq.answer}}</p>
     </div>
@@ -160,7 +169,10 @@
     {% for faq in faqs %}
     <div class="w-100 accordian-row mb-6">
       <h3 class="mb-0 h6" id="d{{faq.number}}-q">
-        <a href="#" class="white collapsed w-100 d-block" data-toggle="collapse" data-target="#d{{faq.number}}" aria-expanded="false" aria-controls="d{{faq.number}}">{{faq.question}}</a>
+        <a href="#" class="white collapsed w-100 d-block expander" data-toggle="collapse" data-target="#d{{faq.number}}" aria-expanded="false" aria-controls="d{{faq.number}}">
+          {{faq.question}}
+          <span class="chevron"><span></span><span></span></span>
+        </a>
       </h3>
       <p id="d{{faq.number}}" class="collapse mt-3 mb-0" aria-labelledby="d{{faq.number}}" data-parent="#faqs-accordian-4">{{faq.answer}}</p>
     </div>
