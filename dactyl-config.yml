@@ -1724,7 +1724,7 @@ pages:
         targets:
             - ja
 
-    -   name: Troubleshoot the rippled server
+    -   name: Troubleshooting
         html: troubleshoot-the-rippled-server.html
         parent: manage-the-rippled-server.html
         blurb: Troubleshoot all kinds of problems with the rippled server.
