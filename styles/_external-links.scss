@@ -28,8 +28,16 @@
 .top-nav .dropdown .external-link,
 .xrpl-footer .external-link {
   &::after {
-    background-position: left 8px bottom 2px;
+    background-position: left 8px bottom 3px;
     width: 2rem;
+
+    @-moz-document url-prefix() {
+      @supports (animation: calc(0s)) {
+        // Firefox's alignment of the SVG is 1 pixel lower than Chrome's,
+        // so this rule fixes that.
+        background-position: left 8px bottom 2px;
+      }
+    }
   }
 
   &:hover::after {
