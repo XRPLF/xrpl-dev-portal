@@ -37,6 +37,14 @@ a.card:hover h3 {
     background-size: contain;
   }
 
+  &.row-cols-1 .card {
+    // Give cards some breathing room (but not in the 2×2 ones)
+    min-height: 264px;
+    @include media-breakpoint-up(md) {
+      min-height: 347px;
+    }
+  }
+
   a.card {
     transition: all 0.35s ease-out;
     cursor: pointer;
