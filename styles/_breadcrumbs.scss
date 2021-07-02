@@ -1,5 +1,10 @@
 /* Breadcrumbs -------------------------------------------------------------- */
 
+.breadcrumbs-wrap {
+  position: relative;
+  z-index: 11;
+}
+
 .breadcrumb-item + .breadcrumb-item:before {
     content: "\f105"; /* fontawesome angle-right */
     font-family: FontAwesome;
