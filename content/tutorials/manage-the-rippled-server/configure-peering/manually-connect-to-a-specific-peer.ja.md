@@ -2,6 +2,8 @@
 html: manually-connect-to-a-specific-peer.html
 parent: configure-peering.html
 blurb: rippledサーバーを特定のピアに接続します。
+labels:
+  - コアサーバー
 ---
 # 特定のピアへの手動接続
 

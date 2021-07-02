@@ -2,6 +2,8 @@
 html: send-a-check.html
 parent: use-checks.html
 blurb: 受取人が後で現金化できるCheckオブジェクトが作成されます。
+labels:
+  - Checks
 ---
 # Checkの送信
 

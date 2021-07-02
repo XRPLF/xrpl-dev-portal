@@ -2,6 +2,9 @@
 html: capacity-planning.html
 parent: install-rippled.html
 blurb: 本番環境のシステムスペックを計画して、rippledの構成を調整します。
+labels:
+  - コアサーバー
+  - データ保持
 ---
 # 容量の計画
 

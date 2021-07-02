@@ -2,6 +2,8 @@
 html: peers.html
 parent: peer-management-methods.html
 blurb: Get information about the peer servers connected.
+labels:
+  - Core Server
 ---
 # peers
 [[Source]](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")

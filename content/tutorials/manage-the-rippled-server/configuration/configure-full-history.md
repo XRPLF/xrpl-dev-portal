@@ -2,6 +2,9 @@
 html: configure-full-history.html
 parent: configure-rippled.html
 blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run.
+labels:
+  - Core Server
+  - Data Retention
 ---
 # Configure Full History
 

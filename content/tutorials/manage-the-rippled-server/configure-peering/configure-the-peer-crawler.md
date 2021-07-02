@@ -2,6 +2,9 @@
 html: configure-the-peer-crawler.html
 parent: configure-peering.html
 blurb: Configure how much information your rippled server reports publicly about its status and peers.
+labels:
+  - Core Server
+  - Security
 ---
 # Configure the Peer Crawler
 

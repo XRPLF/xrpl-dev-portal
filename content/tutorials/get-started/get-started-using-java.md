@@ -6,8 +6,13 @@ doc_type: Tutorials
 category: Get Started
 blurb: Build a simple Java app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
+top_nav_name: Java
+top_nav_grouping: Get Started
 filters:
-    - include_code
+  - include_code
+labels:
+  - Development
+showcase_icon: assets/img/logos/java.svg
 ---
 
 # Get Started Using Java

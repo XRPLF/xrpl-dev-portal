@@ -3,6 +3,8 @@ html: validation_seed.html
 parent: server-control-methods.html
 blurb: 無効。rippledが検証の署名に使用するシークレット値を一時的に設定します。
 status: removed
+labels:
+  - コアサーバー
 ---
 # validation_seed
 [[ソース]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")

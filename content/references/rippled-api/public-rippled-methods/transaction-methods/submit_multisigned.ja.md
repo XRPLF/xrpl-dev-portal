@@ -2,6 +2,8 @@
 html: submit_multisigned.html
 parent: transaction-methods.html
 blurb: マルチ署名済みトランザクションを適用し、このトランザクションをネットワークに送信します。
+labels:
+  - トランザクション送信
 ---
 # submit_multisigned
 [[ソース]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")

@@ -2,6 +2,9 @@
 html: configure-history-sharding.html
 parent: configure-rippled.html
 blurb: 履歴XRPレジャーデータのシャードを保存するようにサーバーを設定します。
+labels:
+  - データ保持
+  - コアサーバー
 ---
 # 履歴シャーディングの設定
 

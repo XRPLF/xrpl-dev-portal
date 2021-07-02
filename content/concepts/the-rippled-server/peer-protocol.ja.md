@@ -2,6 +2,9 @@
 html: peer-protocol.html
 parent: the-rippled-server.html
 blurb: ピアプロトコルは、rippledサーバーが互いに通信する言語を指定します。
+labels:
+  - コアサーバー
+  - ブロックチェーン
 ---
 # ピアプロトコル
 

@@ -6,6 +6,10 @@ cta_text: XRPを送金しよう
 embed_ripple_lib: true
 filters:
     - interactive_steps
+labels:
+  - 支払い
+  - XRP
+top_nav_grouping: 人気ページ
 ---
 # XRPの送金
 

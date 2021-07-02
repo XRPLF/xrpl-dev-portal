@@ -3,16 +3,18 @@ html: commandline-usage.html
 parent: rippled-api.html
 blurb: Commandline usage options for the rippled server.
 curated_anchors:
-    - name: Available Modes
-      anchor: "#available-modes"
-    - name: Daemon Mode Options
-      anchor: "#daemon-mode-options"
-    - name: Stand-Alone Mode Options
-      anchor: "#stand-alone-mode-options"
-    - name: Client Mode Options
-      anchor: "#client-mode-options"
-    - name: Unit Tests
-      anchor: "#unit-tests"
+  - name: Available Modes
+    anchor: "#available-modes"
+  - name: Daemon Mode Options
+    anchor: "#daemon-mode-options"
+  - name: Stand-Alone Mode Options
+    anchor: "#stand-alone-mode-options"
+  - name: Client Mode Options
+    anchor: "#client-mode-options"
+  - name: Unit Tests
+    anchor: "#unit-tests"
+labels:
+  - Core Server
 ---
 # rippled Commandline Usage Reference
 

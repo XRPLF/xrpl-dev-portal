@@ -2,6 +2,9 @@
 html: set-up-secure-signing.html
 parent: production-readiness.html
 blurb: 安全にトランザクションを送信できる環境を設定します。
+labels:
+  - セキュリティ
+  - 開発
 ---
 # 安全な署名の設定
 

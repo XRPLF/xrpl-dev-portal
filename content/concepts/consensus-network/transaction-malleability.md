@@ -2,6 +2,9 @@
 html: transaction-malleability.html
 parent: consensus-network.html
 blurb: Be aware of ways transactions could be changed to have a different hash than expected.
+labels:
+  - Security
+  - Transaction Sending
 ---
 # Transaction Malleability
 

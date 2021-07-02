@@ -2,6 +2,8 @@
 html: sign.html # watch for clashes w/ this filename
 parent: transaction-methods.html
 blurb: トランザクションの署名済みバイナリー表現を返します。
+labels:
+  - トランザクション送信
 ---
 # sign
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "ソース")

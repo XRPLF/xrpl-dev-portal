@@ -2,6 +2,8 @@
 html: known-amendments.html
 parent: amendments.html
 blurb: 本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
+labels:
+  - ブロックチェーン
 ---
 # 既知のAmendment
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")

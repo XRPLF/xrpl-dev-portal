@@ -2,6 +2,8 @@
 html: escrowcreate.html
 parent: transaction-types.html
 blurb: Escrowプロセスが終了または取り消されるまでXRPを隔離します。
+labels:
+  - Escrow
 ---
 # EscrowCreate
 

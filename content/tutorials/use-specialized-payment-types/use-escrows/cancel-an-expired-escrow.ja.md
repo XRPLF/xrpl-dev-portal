@@ -2,6 +2,9 @@
 html: cancel-an-expired-escrow.html
 parent: use-escrows.html
 blurb: 有効期限切れのEscrowを取り消します。
+labels:
+  - Escrow
+  - スマートコントラクト
 ---
 # 有効期限切れEscrowの取消し
 

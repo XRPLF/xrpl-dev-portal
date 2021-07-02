@@ -5,19 +5,23 @@
     padding: 48px 0;
   }
 
-  .content .children-display li a {
-    /* Category landing pages */
-    font-weight: 700;
-    font-size: 1.25rem;
-    text-decoration: none;
+  .content .children-display,
+  .content .curated-links {
+    > ul > li {
+      margin-top: 24px;
+    }
+
+    li a {
+      /* Category landing pages */
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
-
-  .content .children-display li a:hover {
-    text-decoration: underline;
-  }
-
-
-  /* Common list modules (children, curated links) -------------------------- */
 
   .level-1,
   .level-2{
@@ -29,32 +33,6 @@
   .children-display ul {
     padding-left: 0;
     margin-bottom: 0;
-  }
-
-  .card .curated-links a:hover,
-  .card .children-display a:hover {
-    text-decoration: none;
-  }
-
-  .card .level-1 a,
-  .card .curated-links li a {
-    padding: 8px;
-    display: block;
-    margin: 0 -8px 0 -8px;
-  }
-
-  .card .level-2 {
-    position: relative;
-  }
-  .card .level-2 a {
-    padding: 8px 8px 8px 28px;
-    display: block;
-    margin: 0 -8px 0 -8px;
-  }
-
-  .card .blurb + .children-display,
-  .card .blurb + .curated-links {
-    margin-top: 1rem;
   }
 
   .section-hero .blurb {
@@ -89,14 +67,16 @@
     }
   }
 
-
-  /* Misc. ------------------------------------------------------------------ */
-
-  @include media-breakpoint-down(md) {
-    .card {
-      padding-left: 0px;
+  p a,
+  h5 a {
+    color: $blue-purple-400;
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
     }
   }
+
+  /* Misc. ------------------------------------------------------------------ */
 
   .display-4 {
     margin-bottom: 1.5rem;
@@ -107,43 +87,26 @@
     font-weight: 700;
   }
 
-  .card-header h3.card-title {
-    margin-bottom: 0;
-  }
-
   #test-net-servers pre {
     overflow-x: auto;
   }
 
-  .card li {
-    list-style-type: none;
-    margin-left: 0;
-  }
+  // .card li {
+  //   list-style-type: none;
+  //   margin-left: 0;
+  // }
 
   section:first-of-type {
-    padding-top: 0;
+    // padding-top: 0;
     border-top-width: 0;
   }
 
-  .card-header,
-  .card-footer {
-    background: none;
-    border-bottom: none;
-    border-top: none;
-  }
-
-  .card-header {
-    padding: 8px;
-  }
-
-  .card-footer {
-    padding: 8px;
-  }
-
-  .card-body > p {
-    padding: 0;
-    margin-bottom: 0;
-  }
+  // .card-header,
+  // .card-footer {
+  //   background: none;
+  //   border-bottom: none;
+  //   border-top: none;
+  // }
 
 
   #main_content_wrapper {
@@ -158,30 +121,58 @@
     }
   }
 
+  // In-body nav blocks - show as a table with → arrows
+  .nav {
+    .nav-link {
+      padding: 1rem 2rem 1rem 0;
+      color: $gray-200;
+      border-bottom: 1px solid $gray-800;
+      position: relative;
 
-  .card .card-img-top {
-    width: 60px;
-    height: 60px;
-    margin-left: 0;
-    margin-right: auto;
-  }
-  .image-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 16px;
+      &:hover {
+        color: $purple;
+      }
+
+      &:not(.external-link)::after {
+        content: " ";
+        background-image: url(../img/icons/arrow-right-purple.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 1rem;
+        position: absolute;
+        right: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        transition: all .2s ease;
+      }
+      &:not(.external-link):hover::after {
+        animation: arrowDance2 1.2s infinite;
+      }
+
+      &.external-link::after {
+        content: " ";
+        background-image: url(../img/icons/arrow-up-right.svg);
+        background-repeat: no-repeat;
+        position: absolute;
+        background-position: center;
+        background-size: .75rem;
+        right: 7px;
+        width: 1.5rem;
+        height: 1.5rem;
+        transition: all .2s ease;
+      }
+
+      &.external-link:hover::after {
+        animation: arrowDanceDiag 1.2s infinite;
+      }
+    }
   }
 
-  /* Full-link cards */
-  a.card {
-    border: 1px solid transparent;
+  .card-body .nav .nav-link {
+    // These already have a background of $gray-800, so the border needs to be
+    // lighter.
+    border-bottom: 1px solid $gray-600;
   }
-  a.card:hover {
-    text-decoration: none;
-  }
-  a.card:hover h3 {
-    text-decoration: underline;
-  }
-
 }
 
 // Alert banners
@@ -204,5 +195,5 @@
   margin: 1.5rem 0;
   padding: 1rem;
   border: 2px solid $white;
-  background: $dropdown-bg;
+  background: $dark;
 }

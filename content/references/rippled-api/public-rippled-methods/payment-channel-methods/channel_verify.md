@@ -2,6 +2,8 @@
 html: channel_verify.html
 parent: payment-channel-methods.html
 blurb: Check a payment channel claim's signature.
+labels:
+  - Payment Channels
 ---
 # channel_verify
 [[Source]](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")

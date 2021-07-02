@@ -2,6 +2,8 @@
 html: peer_reservations_add.html
 parent: peer-management-methods.html
 blurb: 特定のピアサーバー用の予約済みスロットを追加します。
+labels:
+  - コアサーバー
 ---
 # peer_reservations_add
 [[ソース]](https://github.com/ripple/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L36 "Source")

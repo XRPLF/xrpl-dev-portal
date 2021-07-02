@@ -2,6 +2,8 @@
 html: offers.html
 parent: decentralized-exchange.html
 blurb: オファーはXRP Ledgerの通貨取引オーダーの形態です。オファーのライフサイクルと特性について説明します。
+labels:
+  - 分散型取引所
 ---
 # オファー
 

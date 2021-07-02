@@ -2,6 +2,8 @@
 html: check.html
 parent: ledger-object-types.html
 blurb: A check that can be redeemed for money by its destination.
+labels:
+  - Checks
 ---
 # Check
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")

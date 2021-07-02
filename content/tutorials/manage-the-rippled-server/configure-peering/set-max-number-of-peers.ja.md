@@ -2,6 +2,8 @@
 html: set-max-number-of-peers.html
 parent: configure-peering.html
 blurb: rippledサーバーが接続するピアの最大数を設定します。
+labels:
+  - コアサーバー
 ---
 # ピアの最大数の設定
 

@@ -2,6 +2,9 @@
 html: look-up-transaction-results.html
 parent: production-readiness.html
 blurb: 以前に送信したトランザクションの結果を確認します。
+labels:
+  - 支払い
+  - 開発
 ---
 # トランザクションの結果の確認
 

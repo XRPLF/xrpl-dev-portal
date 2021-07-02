@@ -2,6 +2,9 @@
 html: book_offers.html
 parent: path-and-order-book-methods.html
 blurb: Get info about offers to exchange two currencies.
+labels:
+  - Decentralized Exchange
+  - Cross-Currency
 ---
 # book_offers
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")

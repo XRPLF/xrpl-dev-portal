@@ -2,6 +2,8 @@
 html: amendments-object.html #amendments.html is taken by the concept page
 parent: ledger-object-types.html
 blurb: 有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。
+labels:
+  - ブロックチェーン
 ---
 # Amendments
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")

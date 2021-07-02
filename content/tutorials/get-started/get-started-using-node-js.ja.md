@@ -2,6 +2,11 @@
 html: get-started-using-node-js.html
 parent: get-started.html
 blurb: XRP Ledgerに照会するエントリーレベルのJavaScriptアプリケーションを構築します。
+top_nav_name: JavaScript
+top_nav_grouping: Get Started
+labels:
+  - 開発
+showcase_icon: assets/img/logos/javascript.svg
 ---
 # RippleAPI入門ガイド
 

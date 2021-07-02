@@ -1,8 +1,8 @@
 ---
 html: api-conventions.html
 parent: rippled-api.html
-blurb: Common conventions used across the rippled API.
-template: template-landing-children.html
+blurb: Common conventions used across the XRP Ledger's HTTP APIs.
+template: pagetype-category.html.jinja
 ---
 # API Conventions
 

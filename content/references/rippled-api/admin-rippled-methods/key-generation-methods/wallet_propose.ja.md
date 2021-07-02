@@ -2,6 +2,9 @@
 html: wallet_propose.html
 parent: key-generation-methods.html
 blurb: キーペアとXRP Ledgerアドレスを生成します。
+labels:
+  - セキュリティ
+  - アカウント
 ---
 # wallet_propose
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")

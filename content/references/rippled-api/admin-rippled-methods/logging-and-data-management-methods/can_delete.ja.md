@@ -2,6 +2,8 @@
 html: can_delete.html
 parent: logging-and-data-management-methods.html
 blurb: 指定したレジャーバージョン以前のレジャー履歴を削除可能にします。
+labels:
+  - データ保持
 ---
 # can_delete
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")

@@ -2,6 +2,8 @@
 html: tef-codes.html
 parent: transaction-results.html
 blurb: tefコードは、トランザクションが失敗してレジャーに記録されなかったが、一部の理論上のレジャーでは正常に完了できた可能性があることを示します。
+labels:
+  - トランザクション送信
 ---
 # tefコード
 

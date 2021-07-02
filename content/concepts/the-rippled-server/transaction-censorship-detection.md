@@ -2,12 +2,14 @@
 html: transaction-censorship-detection.html
 parent: the-rippled-server.html
 blurb: XRP Ledger provides an automated transaction censorship detector that is available on all rippled servers.
+labels:
+  - Blockchain
 ---
 # Transaction Censorship Detection
 
 [New in: rippled 1.2.0][]
 
-The XRP Ledger is designed to be [censorship resistant](xrp-ledger-overview.html#censorship-resistant-transaction-processing). In support of this design, the XRP Ledger provides an automated transaction censorship detector that is available on all `rippled` servers, enabling all participants to see if censorship is affecting the network.
+The XRP Ledger is designed to be censorship resistant. In support of this design, the XRP Ledger provides an automated transaction censorship detector that is available on all `rippled` servers, enabling all participants to see if censorship is affecting the network.
 
 While a `rippled` server is in sync with the network, the detector tracks all transactions that, in the view of the `rippled` server, should have been accepted in the last round of [consensus](intro-to-consensus.html) and included in the last validated ledger. The detector issues log messages of increasing severity for transactions that have not been included in a validated ledger after several rounds of consensus.
 

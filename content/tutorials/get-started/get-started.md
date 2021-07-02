@@ -1,10 +1,11 @@
 ---
 html: get-started.html
 parent: tutorials.html
-template: template-doc.html
 blurb: Get up and running with some of the resources you'll use to work with the XRP Ledger.
 filters:
-    - js_editor
+  - js_editor
+labels:
+  - Development
 ---
 # Get Started
 

@@ -1,4 +1,4 @@
-$code-bg: $gray-900;
+$code-bg: $gray-800;
 $code-padding: 2rem;
 
 // Code Tabs -------------------------------------------------------------------
@@ -71,8 +71,9 @@ pre {
     }
     &:hover {
       text-decoration: none;
-      background-color: $gray-900;
+      background-color: $code-bg;
       color: $primary;
+      padding-bottom: 0.625rem;
     }
   }
 

@@ -3,6 +3,8 @@ html: negativeunl.html
 parent: ledger-object-types.html
 status: not_enabled
 blurb: List of validators currently believed to be offline.
+labels:
+  - Blockchain
 ---
 # NegativeUNL
 

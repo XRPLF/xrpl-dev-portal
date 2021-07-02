@@ -1,8 +1,10 @@
 ---
 html: configure-peering.html
 parent: manage-the-rippled-server.html
-template: template-landing-children.html
+template: pagetype-category.html.jinja
 blurb: サーバーをピアツーピアネットワークに接続する方法を設定します。
+labels:
+  - コアサーバー
 ---
 # ピアリングの設定
 

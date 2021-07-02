@@ -2,6 +2,8 @@
 html: build-run-rippled-macos.html
 parent: install-rippled.html
 blurb: macOSでrippledを自分でコンパイルします。
+labels:
+  - コアサーバー
 ---
 # macOSでのrippledの構築と実行
 

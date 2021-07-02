@@ -23,6 +23,9 @@
 .w48 {
   width: 48px;
 }
+.w-100 {
+  width: 100%;
+}
 .min-vh100 {
   min-height: 100vh;
 }
@@ -32,12 +35,60 @@
 }
 
 /* SPACING HELPERS */
-/* To create new margin classes, multiply by 4px */
+/* To create new margin classes, multiply by 4px then divide by 16 */
+/* Exceptions with 1 - 5 since those are stock with Bootstrap */
+.mb-3-sm-i {
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 1rem !important;
+  }
+}
+.ml-5 {
+  margin-left: 1.25rem;
+  &-until-md {
+    @include media-breakpoint-up(md) {
+      margin-left: 1.25rem;
+    }
+  }
+}
+.mr-5 {
+  margin-right: 1.25rem;
+  &-until-md {
+    @include media-breakpoint-up(md) {
+      margin-right: 1.25rem;
+    }
+  }
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+.mt-6 {
+  margin-top: 1.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-top: 1.5rem !important;
+    }
+  }
+}
 .mb-8 {
   margin-bottom: 2rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 2rem;
+    }
+  }
 }
 .mt-8 {
   margin-top: 2rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-top: 2rem !important;
+    }
+  }
 }
 .mt-9 {
   margin-top: 2.25rem;
@@ -47,13 +98,56 @@
 }
 .mt-10 {
   margin-top: 2.5rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-top: 2.5rem;
+    }
+  }
 }
 .mb-10 {
   margin-bottom: 2.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 2.5rem;
+    }
+  }
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 2.5rem;
+    }
+  }
+}
+.ml-10 {
+  margin-left: 2.5rem;
+}
+.mr-10 {
+  margin-right: 2.5rem;
 }
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+}
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-left: 2.5rem;
+      margin-right: 2.5rem;
+    }
+  }
+  &-until-md {
+    @include media-breakpoint-up(md) {
+      margin-left: 2.5rem;
+      margin-right: 2.5rem;
+    }
+  }
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-left: 2.5rem;
+      margin-right: 2.5rem;
+    }
+  }
 }
 .mt-12 {
   margin-top: 3rem;
@@ -76,9 +170,19 @@
 }
 .mt-16 {
   margin-top: 4rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-top: 4rem;
+    }
+  }
 }
 .mb-16 {
   margin-bottom: 4rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 4rem;
+    }
+  }
 }
 .mb-18 {
   margin-bottom: 4.5rem;
@@ -98,6 +202,11 @@
 }
 .mb-20 {
   margin-bottom: 5rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 5rem;
+    }
+  }
   &-until-sm {
     @include media-breakpoint-up(sm) {
       margin-bottom: 5rem;
@@ -107,6 +216,10 @@
 .my-20 {
   margin-top: 5rem;
   margin-bottom: 5rem;
+}
+.my-26 {
+  margin-top: 6.5rem;
+  margin-bottom: 6.5rem;
 }
 .mb-30 {
   margin-bottom: 7.5rem;
@@ -146,15 +259,74 @@
     }
   }
 }
+.pl-0-sm {
+  @include media-breakpoint-down(sm) {
+    padding-left: 0 !important;
+  }
+}
+.pr-0-sm {
+  @include media-breakpoint-down(sm) {
+    padding-right: 0 !important;
+  }
+}
+.pt-3-sm {
+  @include media-breakpoint-down(sm) {
+    padding-top: 1rem !important;
+  }
+}
+.p-6 {
+  padding: 1.5rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      padding: 1.5rem;
+    }
+  }
+}
+.p-8 {
+  padding: 2rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      padding: 2rem;
+    }
+  }
+}
+.p-10 {
+  padding: 2.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      padding: 2.5rem;
+    }
+  }
+}
 .py-20 {
   padding-bottom: 5rem;
   padding-top: 5rem;
+}
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 .pt-20 {
   padding-top: 5rem;
 }
 .pb-20 {
   padding-bottom: 5rem;
+}
+.py-26 {
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
+  @include media-breakpoint-down(sm) {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+.pb-26 {
+  padding-bottom: 6.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      padding-bottom: 6.5rem;
+    }
+  }
 }
 .pt-30 {
   padding-top: 7.5rem;
@@ -191,6 +363,12 @@
 }
 .top-10 {
   top: 2.5rem;
+}
+.top-20 {
+  top: 5rem;
+}
+.top-24 {
+  top: 6rem;
 }
 .last-section {
   margin-bottom: 100px;
@@ -249,6 +427,9 @@
     display: none;
   }
 }
+.d-block {
+  display: block;
+}
 
 /* COLOR ELEMENTS */
 .border-green {
@@ -265,4 +446,52 @@
 }
 .grey-700 {
   color: $gray-700;
+}
+.bg-grey-800 {
+  background-color: $gray-800;
+}
+.green-500 {
+  color: $green-500;
+}
+.white {
+  color: $white;
+}
+
+/* ETC */
+.br-8 {
+  border-radius: 8px;
+}
+br {
+  @include media-breakpoint-down(sm) {
+    &.until-sm {
+      content: '';
+    }
+  }
+}
+.z-index-1 {
+  z-index: 1;
+}
+.bb-gray {
+  border-bottom: 1px solid $gray-600;
+}
+
+// Arrow bouncing animation
+@keyframes arrowDance {
+  0% { padding-left: 7px; }
+  50% { padding-left: 14px; }
+  100% { padding-left: 7px; }
+}
+
+// Alt version for elements absolute-positioned to the right
+@keyframes arrowDance2 {
+  0% { right: 0; }
+  50% { right: 7px; }
+  100% { right: 0; }
+}
+
+// Diagonal up-right arrow bouncing (also for absolute-positioned to the right)
+@keyframes arrowDanceDiag {
+  0% { right: 7px; margin-top: 0; }
+  50% { right: 0; margin-top: -7px; }
+  100% { right: 7px; margin-top: 0; }
 }

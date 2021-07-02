@@ -2,6 +2,9 @@
 html: send-a-time-held-escrow.html
 parent: use-escrows.html
 blurb: 指定した時間が経過することがリリースの唯一の条件であるEscrowを作成します。
+labels:
+  - Escrow
+  - スマートコントラクト
 ---
 # 時間に基づくEscrowの送信
 

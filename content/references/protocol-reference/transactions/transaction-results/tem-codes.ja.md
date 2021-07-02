@@ -2,6 +2,8 @@
 html: tem-codes.html
 parent: transaction-results.html
 blurb: temコードは、トランザクションの形式が正しくないため、XRP Ledgerプロトコルに基づきトランザクションが正常に完了しないことを示します。
+labels:
+  - トランザクション送信
 ---
 # temコード
 

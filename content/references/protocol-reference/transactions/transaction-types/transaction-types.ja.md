@@ -2,7 +2,9 @@
 html: transaction-types.html
 parent: transaction-formats.html
 blurb: トランザクションのタイプは、どういったタイプの操作を実行することが想定されているのかを示します。
-template: template-landing-children.html
+template: pagetype-category.html.jinja
+labels:
+  - ブロックチェーン
 ---
 # トランザクションのタイプ
 

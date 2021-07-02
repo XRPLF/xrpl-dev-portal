@@ -2,6 +2,8 @@
 html: escrowcancel.html
 parent: transaction-types.html
 blurb: Reclaim escrowed XRP.
+labels:
+  - Escrow
 ---
 # EscrowCancel
 

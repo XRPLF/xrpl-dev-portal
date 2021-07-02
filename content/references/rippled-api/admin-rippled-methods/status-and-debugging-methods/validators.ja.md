@@ -2,6 +2,9 @@
 html: validators.html
 parent: status-and-debugging-methods.html
 blurb: サーバーが使用する公開済みの信頼できるバリデータの最新リストに関する情報を返します。
+labels:
+  - ブロックチェーン
+  - コアサーバー
 ---
 # validators
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")

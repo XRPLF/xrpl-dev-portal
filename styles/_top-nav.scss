@@ -1,314 +1,599 @@
 /* Top navigation ----------------------------------------------------------- */
 .top-nav {
-  margin: 20px 4px 0 4px;
+  background-color: $gray-900;
+  height: 80px;
+  padding: 0;
 
   // Logo
   .navbar-brand {
     text-decoration: none;
     white-space: pre;
-    -webkit-transition: opacity 200ms ease, color 200ms ease;
-    transition: opacity 200ms ease, color 200ms ease;
+    -webkit-transition: opacity .2s ease, color .2s ease;
+    transition: opacity .2s ease, color .2s ease;
+
+
+    .logo {
+      margin-left: 0;
+    }
 
     &:hover {
       opacity: 0.75;
     }
 
     @include media-breakpoint-down(md) {
+      padding-left: 2rem;
+
       img {
         width: 120px;
       }
     }
   }
+  .nav-item {
+    font-weight: 600;
+  }
 
   // Main Links ----------------------------------------------------------------
-  .navbar-nav {
+  #topnav-pages {
+    @include media-breakpoint-up(lg) {
+      flex-grow: 1;
+    }
     .nav-link {
-      color: $white;
+      color: $gray-100;
       font-size: 1rem;
-      line-height: 52px;
+      line-height: 1.25rem;
       text-decoration: none;
-
-      &:hover {
-        background-color: transparent;
-        box-shadow: inset 0 -1px 0 0 #000;
-        text-decoration: none;
-      }
-
-      &.active a {
-        font-weight: 700;
-        box-shadow: inset 0 -1px 0 0 #000;
-      }
-      &.active-parent a {
-        font-weight: 700;
-        box-shadow: inset 0 -1px 0 0 #000;
-      }
-
-      &:focus {
-        outline: none;
-      }
-
-      @include media-breakpoint-only(lg) {
-        padding: 1rem 1.15rem;
-
-        &.github-edit {
-          padding-left: 40px;
-        }
-      }
-    }
-    // Buttons in top nav
-    .btn-outline-secondary {
-      font-size: 14px;
-      line-height: 125%;
-      margin-top: 1rem;
-    }
-    @include media-breakpoint-down(md) {
-      .wrap-button {
-        padding: 1.5rem 0;
-
-        .btn {
-          display: inline;
-          padding: 1rem 1.25rem;
-        }
-      }
+      font-weight: 600;
+      // padding: .5rem 2rem;//TODO:checkme
     }
   }
 
 
   // Dropdowns -----------------------------------------------------------------
-  // (Mobile first)
+  // Shared styles
   .dropdown-toggle {
     position: relative;
-  }
-  .dropdown-toggle::after {
-    position: absolute;
-    border-color: $gray-500 transparent transparent transparent;
-    border-width: 8px 5px 0 5px;
-    top: 40%;
-    left: auto;
-  }
-  .dropdown.show {
-    .dropdown-toggle {
-      color: $gray-500;
-    }
-    .dropdown-toggle::after {
-      border-color: $primary transparent transparent transparent;
-    }
   }
   .dropdown-menu {
     border-width: 0;
 
+    h5 {
+      font-weight: 400;
+      font-size: 12px;
+      color: $gray-400;
+      margin-bottom: 0;
+    }
     .dropdown-item {
-      line-height: 262%;
-      padding: 0 .875rem;
+      line-height: 1rem;
+      padding: .75rem 0;
+      white-space: normal;
 
-      &.top-level-2 {
-        padding-left: 2rem
+      &.dropdown-hero {
+        width: 100%;
+        display: flex;
+        padding: 1rem 2rem;
+
+        > img {
+          width: 68px;
+          height: 68px;
+          background-color: $gray-800;
+          border-radius: $border-radius-sm;
+          flex-grow: 0;
+          padding: .75rem;
+          margin-right: 2rem;
+          margin-top: auto;
+          margin-bottom: auto;
+        }
+
+        p {
+          font-size: 14px;
+          color: $gray-300;
+          margin: 0;
+          white-space: normal;
+        }
+
+        h4 {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 0;
+          line-height: 2rem;
+        }
+
+        &:hover {
+          h4 {
+            color: $blue-purple-400;
+          }
+          p {
+            font-weight: 400;
+          }
+        }
       }
 
-      &:hover {
-        color: $primary;
+      &:last-child {
+        padding-bottom: 0;
       }
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    .col-for-popular-pages,
+    .col-for-人気ページ,
+    .col-for-questions {
+      background-color: $gray-800;
+    }
+
+    a:hover {
+      color: $blue-purple-400;
+      background-color: inherit;
+    }
+
+    h5:hover {
+      background-color: inherit;
     }
   }
-  // Desktop version
-  @include media-breakpoint-up(lg) {
-    .dropdown-toggle::after {
-      border-width: 0;
-      top: 80%;
-      left: 50%;
-    }
 
-    .dropdown-toggle.with-caret::after {
-      position: relative;
-      top: 4px;
-      left: 0;
-      border-top: 8px solid $primary;
-      border-right: 5px solid transparent;
-      border-left: 5px solid transparent;
-      border-bottom: 0;
-      transition: 0.2s;
-    }
-
-    .dropdown.show .dropdown-toggle.with-caret::after {
-      transform: scaleY(-1);
-    }
-
-    .dropdown.show .dropdown-toggle {
-      color: $gray-500;
-      position: relative;
-    }
-
-    .dropdown.show .dropdown-toggle:not(.with-caret)::after,
-    .dropdown-toggle:not(.with-caret):hover::after {
-      content: " ";
-      display: static;
-      border: 3px solid $primary;
-      border-radius: 50%;
-      font-size: 0;
-      height: 0;
-      width: 0;
-    }
-
-    .dropdown-menu {
-      border-width: 1px;
-      backdrop-filter: blur(8px);
-      border-radius: $border-radius-lg;
-      padding: 0.5rem 0.75rem;
-      min-width: 250px;
-
-      &.smaller-dropdown {
-        min-width: unset;
-      }
-
-      .dropdown-item {
-        line-height: 44px;
-      }
-    }
-  }
-
-  // Search bar & controls -----------------------------------------------------
-  #navbar-search {
-    .input-group-text,
-    .input-group > .input-group-append > .btn {
-      color: $white;
-      background-color: transparent;
-      border-width: 0;
-    }
-    .algolia-autocomplete {
+  #topnav-search {
+    flex-grow: 1;
+    .input-group {
       flex-grow: 1;
     }
 
-    #topsearchbox:focus {
-      box-shadow: none;
-      border-color: $white;
-    }
-
-    @include media-breakpoint-up(lg) { // Desktop search styling ---------------
-      position: static; // allows search bar to be positioned screen-center
-      .dropdown-toggle {
-        position: relative;
-      }
-
-      .dropdown-menu {
-        padding: 0;
-        border-radius: $border-radius-lg;
-        width: 640px;
-        left: calc(50% - 320px);
-        background-color: $gray-900;
-      }
-
-      .input-group {
-        width: 100%;
-      }
-
-      #topsearchbox {
-        line-height: 24px;
-        height: 100%;
-        width: 100%;
-
-        &:not(:focus) {
-          border-right: 1px solid black;
-        }
-      }
-    }
-    @include media-breakpoint-down(md) { // Mobile search styling --------------
-      .form-inline label {
-        margin-bottom: 0;
-
-        .input-group-text {
-          line-height: 24px;
-        }
-      }
-
-      .dropdown-menu { // search box is always expanded
-        display: block;
-        position: static;
-        background-color: transparent;
-        border: 0 none;
-        box-shadow: none;
-        margin-top: 0;
-        width: 100%;
-      }
-
-      .dropdown-toggle { // no dropdown to expand search
-        display: none;
-      }
-
-    }
-
-    // Algolia Search results --------------------------------------------------
-    .algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
-      background-color: rgba(0,0,0,0.9);
-      border: 1px solid $gray-900;
-      border-radius: $border-radius-lg;
-    }
-    .algolia-autocomplete .ds-dropdown-menu::before {
-      background-color: rgba(0,0,0,0.9);
-      border-color: $gray-900;
-    }
-    .algolia-docsearch-suggestion {
-      background-color: rgba(0,0,0,0.9);
-    }
-    .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
-      color: $white;
-      border: 0 solid $secondary;
-      border-bottom-width: 1px;
-      font-weight: bold;
-    }
-
-    .algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
-      color: $white;
-    }
-
-    .algolia-autocomplete .algolia-docsearch-suggestion--title {
-      color: $white;
-    }
-
-    .algolia-autocomplete .algolia-docsearch-suggestion--text {
-      font-size: 0.8rem;
-      color: $gray-200;
-    }
-
-    .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
-      color: $white;
-      background-color: $green-800;
-    }
-
     @include media-breakpoint-down(md) {
-      .algolia-autocomplete .ds-dropdown-menu {
-        min-width: unset;
+      .form-inline {
+        padding: $nav-link-padding-y $nav-link-padding-x;
       }
+    }
+
+    .input-group-text {
+      height: 40px;
+    }
+    .ds-input {
+      height: 40px;
     }
   }
 
-  // Mobile --------------------------------------------------------------------
+  #topnav-language {
+    .dropdown-item {
+      font-weight: 600;
+    }
+  }
+
+  // Desktop only styles -------------------------------------------------------
+  @include media-breakpoint-up(lg) {
+    padding: 0 3rem;
+
+    .navbar-brand {
+      margin-left: 0;
+    }
+
+    .dropdown-toggle {
+      &::after {
+        display: none;
+      }
+      > span {
+        border-bottom: 2px solid transparent;
+      }
+    }
+
+    .dropdown .dropdown-toggle:hover > span:not(.chevron) {
+      padding-bottom: 8px;
+      border-bottom: 2px solid $purple;
+      margin-bottom: -8px;
+    }
+
+    .dropdown-menu {
+      border-radius: 0 0 $border-radius-lg $border-radius-lg;
+      padding: 2.5rem;
+
+      .dropdown-item{
+        &.dropdown-hero {
+          padding: 0;
+        }
+      }
+
+      &.show {
+        display: grid;
+        gap: 40px;
+
+        &#topnav_dd_xrp-ledger-overviewhtml {
+          grid-template-columns: 180px 180px 180px;
+        }
+
+        &#topnav_dd_docshtml {
+          grid-template-columns: 180px 180px 260px;
+          left: -200px;
+        }
+
+        &#topnav_dd_contributehtml {
+          grid-template-columns: 200px;
+        }
+
+        .dropdown-hero {
+          grid-row: 1;
+          grid-column: 1 / 4;
+        }
+        #dropdown-hero-for-documentation,
+        #dropdown-hero-for-ドキュメント {
+          grid-column: 1 / 3;
+        }
+
+        // "About" dropdown placement
+        .col-for-xrp-ledger {
+          grid-row: 1 / 3;
+          grid-column: 1;
+        }
+        .col-for-xrp {
+          grid-column: 2;
+        }
+        .col-for-sustainability {
+          grid-column: 2;
+        }
+        .col-for-about {
+          grid-row: 1;
+          grid-column: 3;
+        }
+
+        // "Docs" dropdown placement
+        .col-for-article-types {
+          grid-column: 1;
+          grid-row: 2;
+        }
+        .col-for-online-tools {
+          grid-column: 1;
+          grid-row: 3;
+        }
+        .col-for-get-started {
+          grid-column: 2;
+          grid-row: 2 / 4;
+        }
+        .col-for-popular-pages,
+        .col-for-人気ページ {
+          grid-column: 3;
+          grid-row: 1 / 3;
+          margin: -40px -40px -40px 0;
+          padding: 40px;
+        }
+        .col-for-questions {
+          grid-column: 3;
+          grid-row: 3;
+          margin:  0 -40px -40px 0px;
+          padding: 0  40px  40px  40px;
+        }
+      }
+
+      &.smaller-dropdown {
+        min-width: 180px;
+      }
+    }
+
+    #topnav-pages {
+      flex-grow: 0;
+      @media (min-width: 992px) and (max-width: 1030px) {
+        // Fix for top nav overflow in this range
+        .nav-link {
+          padding: $nav-link-padding-y 1.6rem;//TODO:checkme
+        }
+      }
+    }
+
+    #topnav-language {
+      flex-grow: 0;
+
+      hr {
+        display: none;
+      }
+
+      #language_selector_header_btn {
+        padding-right: 0;
+      }
+    }
+
+    @include media-breakpoint-up(xl) {
+      #topnav-search {
+        margin-left: 4rem;
+        margin-right: .5rem;
+      }
+    }
+  } // End desktop styles
+
+  // Mobile only styles --------------------------------------------------------
   @include media-breakpoint-down(md) {
     .navbar-brand {
       padding-left: 15px;
     }
     .navbar-toggler {
       border: 0;
-      padding: 0;
+      padding: 30px;
+      font-size: 1rem;
+      display: inline-block;
+
+      .navbar-toggler-icon {
+        background: none;
+        height: 20px;
+        width: 20px;
+        position: relative;
+
+        &::after,
+        &::before,
+        div {
+          position: absolute;
+          content: " ";
+          background-color: $gray-100;
+          display: block;
+          width: 100%;
+          height: 3px;
+          transition: all .2s ease;
+        }
+        &::before {
+          top: 0;
+        }
+        &::after {
+          bottom: 0;
+        }
+        div {
+          top: calc(50% - 1.5px);
+        }
+      }
 
       &:not(.collapsed) {
-        // Hack: turn white hamburger to approximately $green
-        filter: brightness(0.5) sepia(1) saturate(5000%) hue-rotate(114deg) brightness(1.96) saturate(87%);
+        .navbar-toggler-icon {
+          &::before {
+            transform: translateY(8px) rotate(135deg);
+          }
+          &::after {
+            transform: translateY(-9px) rotate(-135deg);
+          }
+          div {
+            transform: scale(0);
+          }
+        }
+      }
+    }
+
+    .navbar-nav .nav-link,
+    .navbar-collapse > .nav-item {
+      line-height: 150%;
+      background: $gray-900;
+
+      label {
+        margin-bottom: 0;
       }
     }
 
     .navbar-nav .nav-link {
-      line-height: 150%;
+      padding: $nav-link-padding-y $nav-link-padding-x;
     }
 
-    .github-edit-wrap .github-edit.nav-link {
-      background-image: unset;
-      padding-left: inherit;
+    .dropdown-menu {
+      margin: 0;
+      width: 100%;
+      overflow: auto;
+      transition: all .2s ease;
+      height: 0;
+      display: block;
+      padding: 0;
+      &.show {
+        // 80px = height of top nav element (with x)
+        // 52px = height of dropdown toggle (with <)
+        height: calc(100vh - 80px - 52px);
+
+        &#topnav_dd_docshtml {
+          display: grid;
+          grid-template-columns: 187px 187px;
+          gap: 1px;
+          left: -200px;
+
+          .dropdown-hero {
+            grid-column: 1 / 3;
+            grid-row: 1;
+          }
+
+          // "Docs" dropdown placement
+          .col-for-article-types {
+            grid-column: 1;
+            grid-row: 2;
+          }
+          .col-for-online-tools {
+            grid-column: 1;
+            grid-row: 3;
+            padding-bottom: 32px;
+          }
+          .col-for-get-started {
+            grid-column: 2;
+            grid-row: 2 / 4;
+            padding-bottom: 32px;
+          }
+          .col-for-popular-pages,
+          .col-for-人気ページ {
+            grid-column: 1 / 3;
+            grid-row: 4;
+            margin: -1px;
+            padding-top: 33px;
+          }
+          .col-for-questions {
+            grid-column: 1 / 3;
+            grid-row: 5;
+            margin: -1px;
+            padding-bottom: 32px;
+          }
+        }
+      }
+
+      .navcol {
+        padding: 1rem 2rem;
+      }
+      &.smaller-dropdown {
+        padding: 0 2rem;
+        &.show {
+          padding: 1rem 2rem;
+          height: auto;
+        }
+      }
+
+      .dropdown-hero:first-child {
+        padding-top: 1rem;
+      }
     }
 
+    .dropdown-toggle:not(.with-caret) {
+      &::before,
+      &::after {
+        border: 0;
+        font-family: FontAwesome;
+        color: $blue-purple-400;
+        font-size: .75rem;
+        transition: all .2s ease;
+        overflow: clip;
+        width: 1rem;
+      }
+
+      &::before {
+        content:"\f053"; // < chevron
+        display: inline-block;
+        margin-bottom: -5px; // fix weird placement on Chrome
+      }
+      &::after {
+        content:"\f054"; // > chevron
+        position: absolute;
+        right: 2rem;
+      }
+    }
+    .dropdown.show .dropdown-toggle::after {
+      text-indent: 5rem;
+    }
+    .dropdown:not(.show) .dropdown-toggle::before {
+      width: 0;
+      height: 0;
+      text-indent: -5rem;
+    }
+
+    .dropdown-toggle.with-caret {
+      &::after {
+        border: 0;
+      }
+    }
+
+    // Move search to top of mobile menu ---------------------------------------
+    #top-main-nav {
+      padding-top: 72px;
+      position: relative;
+      transition: padding-top .2s ease;
+
+      // Hide search and other sub-menus when one sub-menu is expanded
+      // (js required to add the class on the dropdown event)
+      &.submenu-expanded {
+        padding-top: 0;
+
+        .dropdown:not(.show) .dropdown-toggle {
+          display: none;
+        }
+
+        #topnav-search {
+          // display: none;
+          height: 0;
+          overflow: clip;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+    #topnav-search {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 72px;
+      transition: all .2s ease;
+    }
+
+    #topnav-language {
+      hr {
+        border-top: 1px solid $gray-800;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        display: static;
+      }
+    }
+
+  } // end mobile specific styles ----------------------------------------------
+}
+
+
+// Fix so anchors don't jump under the fixed header ----------------------------
+.main h1:before,
+.main h2:before,
+.main h3:before,
+.main h4:before,
+.main h5:before,
+.main h6:before,
+#main_content_wrapper:before,
+.interactive-block:before {
+  display: block;
+  content: " ";
+  margin-top: -80px;
+  height: 80px;
+  visibility: hidden;
+  z-index: -1;
+}
+
+// Fix so links aren't unclickable underneath the header anchor-fix
+a {
+  z-index: 1;
+}
+
+// Animated chevron (e.g. for language dropdown) -------------------------------
+
+.chevron {
+  position: relative;
+  display: inline-block;
+  width: .75rem;
+  height: .5625rem;
+
+  span {
+    position: absolute;
+    top: .25rem;
+    display: inline-block;
+    width: .5rem;
+    height: .15rem;
+    background-color: $blue-purple-400;
+    transition: all .2s ease;
+    border: none;
+  }
+  &:not(.expander) span {
+    &:first-of-type {
+      left: 0;
+      transform: rotate(45deg);
+    }
+    &:last-of-type {
+      right: 0;
+      transform: rotate(-45deg);
+    }
   }
 
-  // Language toggle -----------------------------------------------------------
-  .language-selector {
-    font-size: 0.875rem;
+  &.active {
+    span:first-of-type {
+      transform: rotate(-45deg);
+    }
+    span:first-of-type {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.dropdown.show .chevron,
+.expander:not(.collapsed) .chevron {
+  span:first-of-type {
+    transform: rotate(-45deg);
+  }
+  span:last-of-type {
+    transform: rotate(45deg);
+  }
+}
+
+// Fix dropdown box-shadows on mobile (language selector's shadow overlaps the
+// rest of the menu, so it's offset more with a negative spread)
+@include media-breakpoint-down(md) {
+  .navbar-collapse,
+  .dropdown-menu {
+    box-shadow: 0px 25px 40px -20px $black;
   }
 }

@@ -2,6 +2,7 @@
 html: list-your-exchange-on-xrp-charts.html
 parent: xrp-ledger-businesses.html
 blurb: 各自の取引所とそのXRP取引、およびオーダーブックのデータをXRP Chartsに登録します。
+status: removed
 ---
 # XRP Chartsへの取引所の登録
 

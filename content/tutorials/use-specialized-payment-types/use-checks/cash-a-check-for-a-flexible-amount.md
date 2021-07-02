@@ -2,6 +2,8 @@
 html: cash-a-check-for-a-flexible-amount.html
 parent: use-checks.html
 blurb: Cash a Check for as much as possible.
+labels:
+  - Checks
 ---
 # Cash a Check for a Flexible Amount
 

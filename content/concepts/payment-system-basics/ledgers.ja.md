@@ -2,6 +2,9 @@
 html: ledgers.html
 parent: payment-system-basics.html
 blurb: XRP Ledgerは、rippledによって内部データベースに保持されている一連の個別レジャー（レジャーバージョン）で構成されています。これらのレジャーの構造と内容について説明します。
+labels:
+  - ブロックチェーン
+  - データ保持
 ---
 # レジャー
 

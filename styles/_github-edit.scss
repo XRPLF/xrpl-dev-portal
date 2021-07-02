@@ -1,10 +1,11 @@
 /* Edit on GitHub link ------------------------------------------------------ */
-.github-edit-wrap .github-edit.nav-link {
+.github-edit-wrap .github-edit {
   background-image: url(../vendor/github-marks/GitHub-Mark-Light-32px.png);
   background-size: 24px 24px;
   background-position: left 12px center;
   background-repeat: no-repeat;
   padding-left: 48px;
   text-decoration: none;
-  display: block;
+  margin-bottom: 1rem;
+  margin-top: .75rem;
 }

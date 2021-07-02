@@ -2,6 +2,8 @@
 html: ter-codes.html
 parent: transaction-results.html
 blurb: ter codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first.
+labels:
+  - Transaction Sending
 ---
 # ter Codes
 

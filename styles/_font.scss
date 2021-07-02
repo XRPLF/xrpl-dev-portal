@@ -4,12 +4,6 @@ body {
   // font-feature-settings: "liga", "kern";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  font-size: $base-size;
-  background: #000;
-  background-color: #000;
-  line-height: 1.5;
-  color: #FFF;
-  font-family: 'Work Sans', sans-serif;
 }
 
 pre, code {
@@ -23,32 +17,116 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: bold;
 }
-h1, .h1 {
-  font-size: 2.625rem;
-}
-h6, .h6 {
-  font-size: 1.125rem;
-}
-.h6 {
-  font-size: 1.125rem !important;
-}
 
-p {
-  line-height: 1.5;
-}
-a {
-  // text-decoration: underline;
-  color: inherit;
-  &:hover {
-    text-decoration: none;
+h1, .h1 {
+  font-size: 3.875rem;
+  line-height: 70px;
+  @media (max-width: 480px) {
+    font-size: 2.625rem;
+    line-height: 48px;
   }
 }
-p a {
-  text-decoration: underline;
+h2, .h2 {
+  font-size: 3.5rem;
+  line-height: 62px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.75rem;
+    line-height: 34px;
+  }
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      font-size: 1.75rem !important;
+      line-height: 34px !important;
+    }
+  }
 }
+h3, .h3 {
+  font-size: 3rem;
+  line-height: 52px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.5rem;
+    line-height: 28px;
+  }
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      font-size: 1.5rem;
+      line-height: 28px;
+    }
+  }
+}
+h4, .h4 {
+  font-size: 2rem;
+  line-height: 38px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.25rem;
+    line-height: 26px;
+  }
+}
+h5, .h5 {
+  font-size: 1.5rem;
+  line-height: 32px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.125rem;
+    line-height: 26px;
+  }
+}
+h6, .h6 {
+  font-size: 1.25rem;
+  line-height: 26px;
+  @include media-breakpoint-down(sm) {
+    font-size: 1rem;
+    line-height: 24px;
+  }
+}
+.longform {
+  font-size: 1.5rem;
+  line-height: 32px;
+  color: $gray-100;
+  font-weight: 500;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.25rem;
+    line-height: 26px;
+  }
+}
+.numbers {
+  font-size: 6rem;
+  line-height: 104px;
+  font-weight: bold;
+  color: $white;
+  @include media-breakpoint-down(sm) {
+    font-size: 3.875rem;
+    line-height: 70px;
+  }
+}
+p {
+  color: $gray-200;
+  font-size: 1rem;
+  line-height: 24px;
+}
+
+// a {
+//   color: inherit;
+//   &:hover {
+//     text-decoration: none;
+//   }
+// }
+// p a {
+//   color: $blue-purple-400;
+//   &:hover {
+//     color: $blue-purple-400;
+//     text-decoration: none;
+//   }
+// }
 
 .fs-base {
   font-size: $base-size;
+}
+.fs-3 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.fs-4-5 {
+  font-size: 1.125rem;
 }
 .fs-5 {
   font-size: 1.25rem;
@@ -113,11 +191,11 @@ p a {
     font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
   }
 
-  .section-marker {
-    transform: unset;
-    writing-mode: vertical-rl;
-    font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
-  }
+  // .section-marker {
+  //   transform: unset;
+  //   writing-mode: vertical-rl;
+  //   font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
+  // }
 
   &.page-calculator #data-selector li a {
     padding: 0.5rem 1.1rem;

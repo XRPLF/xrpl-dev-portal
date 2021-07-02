@@ -2,6 +2,8 @@
 html: about-canceling-a-transaction.html
 parent: consensus-network.html
 blurb: 送信済みのトランザクションのキャンセルがいつどのように可能か説明します。
+labels:
+  - トランザクション送信
 ---
 # トランザクションの取消しについて
 

@@ -2,6 +2,9 @@
 html: configure-online-deletion.html
 parent: configure-rippled.html
 blurb: サーバーでどこまで古いトランザクション履歴を保持するかを設定します。
+labels:
+  - データ保持
+  - コアサーバー
 ---
 # オンライン削除の設定
 

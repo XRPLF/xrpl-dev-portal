@@ -2,6 +2,8 @@
 html: checkcash.html
 parent: transaction-types.html
 blurb: レジャーでCheckオブジェクトの清算を試みます。
+labels:
+  - Checks
 ---
 # CheckCash
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CashCheck.cpp "Source")

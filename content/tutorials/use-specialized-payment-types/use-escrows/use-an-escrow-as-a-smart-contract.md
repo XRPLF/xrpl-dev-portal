@@ -2,6 +2,9 @@
 html: use-an-escrow-as-a-smart-contract.html
 parent: use-escrows.html
 blurb: Use a cryptographic escrow as a smart contract to ensure a recipient gets paid only if they successfully perform a service.
+labels:
+  - Escrow
+  - Smart Contracts
 ---
 # Use an Escrow as a Smart Contract
 

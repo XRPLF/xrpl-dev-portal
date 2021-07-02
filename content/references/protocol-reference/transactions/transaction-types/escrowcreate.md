@@ -2,6 +2,8 @@
 html: escrowcreate.html
 parent: transaction-types.html
 blurb: Create an escrowed XRP payment.
+labels:
+  - Escrow
 ---
 # EscrowCreate
 

@@ -2,6 +2,8 @@
 html: feesettings.html
 parent: ledger-object-types.html
 blurb: コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。
+labels:
+  - 手数料
 ---
 # FeeSettings
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")

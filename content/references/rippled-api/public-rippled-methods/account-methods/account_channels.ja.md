@@ -2,6 +2,8 @@
 html: account_channels.html
 parent: account-methods.html
 blurb: アカウントのPayment Channelに関する情報を返します。
+labels:
+  - Payment Channel
 ---
 # account_channels
 [[ソース]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")

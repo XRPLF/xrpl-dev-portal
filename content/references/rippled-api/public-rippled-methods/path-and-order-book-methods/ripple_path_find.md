@@ -2,6 +2,9 @@
 html: ripple_path_find.html
 parent: path-and-order-book-methods.html
 blurb: Find a path for payment between two accounts, once.
+labels:
+  - Cross-Currency
+  - Tokens
 ---
 # ripple_path_find
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")

@@ -2,6 +2,8 @@
 html: paymentchannelfund.html
 parent: transaction-types.html
 blurb: Payment ChannelにXRPを追加します。
+labels:
+  - Payment Channel
 ---
 # PaymentChannelFund
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")

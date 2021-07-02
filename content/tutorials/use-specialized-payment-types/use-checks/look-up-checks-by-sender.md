@@ -2,6 +2,8 @@
 html: look-up-checks-by-sender.html
 parent: use-checks.html
 blurb: Get a list of pending Checks sent by an account.
+labels:
+  - Checks
 ---
 # Look Up Checks by Sender
 

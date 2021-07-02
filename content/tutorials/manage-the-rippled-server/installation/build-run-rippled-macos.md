@@ -2,6 +2,8 @@
 html: build-run-rippled-macos.html
 parent: install-rippled.html
 blurb: Compile rippled yourself on macOS.
+labels:
+  - Core Server
 ---
 # Build and Run rippled on macOS
 

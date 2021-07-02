@@ -1,0 +1,8 @@
+{% extends "base.html.jinja" %}
+
+{% block main %}
+  <section class="content">
+    <h1 id="main-page-header">{{ currentpage.name }}</h1>
+    {% include 'component-tag-cloud.html.jinja' %}
+  </section>
+{% endblock %}

@@ -2,6 +2,9 @@
 html: capacity-planning.html
 parent: install-rippled.html
 blurb: Plan system specs and tune configuration for rippled in production environments.
+labels:
+  - Core Server
+  - Data Retention
 ---
 # Capacity Planning
 
