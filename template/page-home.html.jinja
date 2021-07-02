@@ -68,13 +68,13 @@
           "description": _("Developers, validators, users, and businesses make the XRP Ledger better every day")},
         { "icon": "./img/icons/reliability.svg",
           "title": _("Proven Reliability"),
-          "description": _("9+ years of consistent performance over more than 63 million ledgers")},
+          "description": _("8+ years of consistent performance over more than 63 million ledgers")},
       ] %}
       {% for card in cards %}
       <li class="col-new ls-none">
         <img src="{{card.icon}}" alt="{{card.title}} Icon">
         <h4 class="mt-3 mb-0 h5">{{card.title}}</h4>
-        <p class="mt-8-until-sm mt-3 mb-0">{{card.description}}</p>
+        <p class="mt-6-until-sm mt-3 mb-0">{{card.description}}</p>
       </li>
       {% endfor %}
     </ul>
@@ -191,7 +191,7 @@
       <li class="col-new ls-none pt-3-sm">
         <h5 class="chip chip-green">{{feat.chip}}</h5>
         <h4 class="mt-3 mb-0 h5">{{feat.title}}</h4>
-        <p class="mt-8-until-sm mt-3 mb-0">{{feat.description}}</p>
+        <p class="mt-6-until-sm mt-3 mb-0">{{feat.description}}</p>
       </li>
       {% endfor %}
     </ul>

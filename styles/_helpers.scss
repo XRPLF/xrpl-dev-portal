@@ -63,6 +63,11 @@
 }
 .mt-6 {
   margin-top: 1.5rem;
+  &-until-sm {
+    @include media-breakpoint-up(sm) {
+      margin-top: 1.5rem !important;
+    }
+  }
 }
 .mb-8 {
   margin-bottom: 2rem;

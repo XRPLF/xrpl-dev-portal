@@ -62,12 +62,12 @@
     { "name": "Twitch",
       "img": "assets/img/logos/twitch.svg",
       "link": "https://www.twitch.tv/ripplexdev"},
+    { "name": "Stack Overflow",
+      "img": "assets/img/logos/stack-overflow.svg",
+      "link": "https://stackoverflow.com/questions/tagged/xrp"},
     { "name": "Twitter",
       "img": "assets/img/logos/twitter.svg",
       "link": "https://twitter.com/XRPLF/"},
-    { "name": "Stack Overflow",
-      "img": "assets/img/logos/stack-overflow.svg",
-      "link": "https://stackoverflow.com/questions/tagged/xrp"}
   ] %}
   <div class="row row-cols-2 row-cols-lg-4 card-deck">
   {% for plat in platforms %}
@@ -80,33 +80,6 @@
     </a>
   {% endfor %}
   </div>
-{#
-  <div class="mt-10 card-grid card-grid-4xN ml-5-until-md mr-5-until-md">
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="https://github.com/ripple/xrpl-dev-portal" target="_blank" id="sm-green">
-      <span class="card-new d-block">
-        <img class="mw-100 mb-3" src="./img/logos/github.svg">
-        <h4 class="h5 mb-8">{% trans %}Github{% endtrans %}</h4>
-      </span>
-    </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="" target="_blank" id="sm-light-blue-3">
-      <span class="card-new d-block">
-        <img class="mw-100 mb-3" src="./img/logos/twitch.svg">
-        <h4 class="h5 mb-8">{% trans %}Twitch{% endtrans %}</h4>
-      </span>
-    </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="" target="_blank" id="sm-magenta-3">
-      <span class="card-new d-block">
-        <img class="mw-100 mb-3" src="./img/logos/twitter.svg">
-        <h4 class="h5 mb-8">{% trans %}Twitter{% endtrans %}</h4>
-      </span>
-    </a>
-    <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="" target="_blank" id="sm-orange-2">
-      <span class="card-new d-block">
-        <img class="mw-100 mb-3" src="./img/logos/stack-overflow.svg">
-        <h4 class="h5 mb-8">{% trans %}Stack Overflow{% endtrans %}</h4>
-      </span>
-    </a>
-  </div>#}
 </section>
 <section class="container-new py-26">
   <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 bg-grey-800 text-center">
@@ -114,11 +87,11 @@
     <img src="./img/backgrounds/cta-community-green.svg" class="cta cta-bottom-right">
     <div class="z-index-1 position-relative">
       <div class="d-flex flex-column-reverse">
-        <h2 class="h4 mb-10">{% trans %}A Community-Driven Resource for All Things XRPL.org{% endtrans %}</h2>
+        <h2 class="h4 mb-10">{% trans %}A community-driven resource for all things XRPL.org{% endtrans %}</h2>
         <h5 class="green-500 mb-3">{% trans %}Contribute to XRPL.org{% endtrans %}</h5>
       </div>
       <p class="mb-10">{% trans %}Thank you for your interest in contributing to XRPL.org. This website was created as an XRPL community resource and is meant to be a living, breathing source of truth for XRP Ledger resources. This portal is open-source and anyone can suggest changes.{% endtrans %}</p>
-      <a class="btn btn-primary btn-arrow" href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md" target="_blank">{% trans %}Contribute to the Guidelines{% endtrans %}</a>
+      <a class="btn btn-primary btn-arrow" href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md" target="_blank">{% trans %}Read Contributor Guidelines{% endtrans %}</a>
     </div>
   </div>
 </section>
