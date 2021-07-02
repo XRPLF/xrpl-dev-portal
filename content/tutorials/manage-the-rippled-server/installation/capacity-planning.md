@@ -36,9 +36,9 @@ To tune your server, it may be useful to start with `tiny` and increase the size
 | < 8 GB                      | `tiny`            | Not recommended for testing or production servers. This is the default value if you don't specify a value in `rippled.cfg`. |
 | 8 GB                        | `small`           | Recommended for test servers. |
 | 16 GB                       | `medium`          | The `rippled-example.cfg` file uses this value. |
-| 32 GB                       | `huge`            | Recommended for production servers. |
+| 64 GB                       | `huge`            | Recommended for production servers. |
 
-Although `large` is also a legal value for `[node_size]`, in practice it performs worse than `huge` in most circumstances. Ripple recommends always using `huge` instead of `large`.
+Although `large` is also a legal value for `[node_size]`, in practice it performs worse than `huge` in most circumstances. Ripple recommends always using `huge` instead of `large`. Always use `huge` if you want stability.
 
 If you set the `node_size` parameter to an invalid value, the [server fails to start](server-wont-start.html#bad-node_size-value).
 
@@ -127,9 +127,9 @@ For best performance in enterprise production environments, Ripple recommends ru
 
 - Operating System: Ubuntu 16.04+
 - CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled
-- Disk speed: SSD (7000+ writes/second, 10,000+ reads/second)
+- Disk speed: SSD (10,000 IOPS)
 - Disk space: Varies. At least 50 GB recommended.
-- RAM: 32 GB
+- RAM: 64 GB
 - Network: Enterprise data center network with a gigabit network interface on the host
 
 #### CPU Utilization and Virtualization
@@ -173,9 +173,9 @@ If you want to contribute to storing ledger history but you do not have enough d
 
 ##### Amazon Web Services
 
-Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but Ripple does not recommend using Elastic Block Storage (EBS). Elastic Block Storage's maximum number of IOPS (5,000) is insufficient for `rippled`'s heaviest loads, despite being very expensive. <!-- SPELLING_IGNORE: iops, ebs, aws -->
-
-AWS instance stores (`ephemeral` storage) do not have these constraints. Therefore, Ripple recommends deploying `rippled` servers with host types such as `M3` that have instance storage. The `database_path` and `node_db` path should each reside on instance storage.
+Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but if using Elastic Block Storage (EBS), only use either the io1 or io2 types, and configure them for at least 10,000 IOPS. <!-- SPELLING_IGNORE: iops, ebs, aws -->
+Alternately, AWS instance stores (`ephemeral` storage) also has suitable performance. However, that is not durable, so data loss is to be expected under some circumstances.
+The `database_path` and `node_db` path should each reside on either EBS io1 or io2, or on instance storage.
 
 **Caution:** AWS instance storage is not guaranteed to provide durability in the event of hard drive failure. You also lose data when you stop/start or reboot the instance. The latter type of data loss can be acceptable for a `rippled` server because an individual server can usually re-acquire the lost data from its peer servers.
 
