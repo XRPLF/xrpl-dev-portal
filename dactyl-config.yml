@@ -1817,6 +1817,7 @@ pages:
         parent: references.html
         template: pagetype-category.html.jinja
         blurb: Features and rules of the XRP Ledger protocol, regardless of how you access it.
+        eyebrow_text: Features and Rules
         targets:
             - en
             - ja

@@ -50,7 +50,7 @@
     {% set protocolref = pages|selectattr("html", "defined_and_equalto", "protocol-reference.html")|first %}
     <div class="d-flex flex-column-reverse col-sm-8 p-0">
       <h2 class="h4">{{protocolref.name}}</h2>
-      <h6 class="green-500 mb-3">{{protocolref.blurb}}</h6>
+      <h6 class="green-500 mb-3">{{protocolref.eyebrow_text}}</h6>
     </div>
     {% for row in protocolref.children|batch(4) %}
     <div class="row row-cols-1 row-cols-lg-4 card-deck">
