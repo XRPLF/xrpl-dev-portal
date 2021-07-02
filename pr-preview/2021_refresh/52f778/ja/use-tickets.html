@@ -1,0 +1,2798 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Use Tickets - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Use Tickets | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/use-tickets.html" />
+    <meta property="og:description" content="Use Tickets to send a transaction outside of normal Sequence order." />
+    <meta name="description" content="Use Tickets to send a transaction outside of normal Sequence order." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/use-tickets.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/use-tickets.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/use-tickets.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <!-- Stylesheet -->
+    <link href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/css/devportal2020.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/" class="navbar-brand"><img src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item" href="uses.html">ユースケースと注目プロジェクト</a>
+            <a class="dropdown-item" href="history.html">沿革</a>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">インパクト</a>
+            <a class="dropdown-item" href="carbon-calculator.html">二酸化炭素電卓</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="docs.html">
+            <img src="assets/img/icons/docs.svg" alt="ドキュメント icon" />
+            <div class="dropdown-hero-text">
+              <h4>ドキュメント</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="concepts.html">コンセプト</a>
+            <a class="dropdown-item" href="tutorials.html">チュートリアル</a>
+            <a class="dropdown-item" href="references.html">リファレンス</a>
+          </div><!--./col-->
+          <div class="navcol col-for-online-tools">
+            <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="dev-tools.html">開発者用ツール</a>
+          </div><!--./col-->
+          <div class="navcol col-for-questions">
+            <h5 class="dropdown-item">Questions</h5>
+            <a class="dropdown-item" href="faq.html">FAQ</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="get-started-using-node-js.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-人気ページ">
+            <h5 class="dropdown-item">人気ページ</h5>
+            <a class="dropdown-item" href="send-xrp.html">XRPの送金</a>
+            <a class="dropdown-item" href="reserves.html">準備金</a>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="run-rippled-as-a-validator.html">UNLに参加しよう</a>
+            <a class="dropdown-item" href="intro-to-consensus.html">コンセンサスについて</a>
+            <a class="dropdown-item" href="public-rippled-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="contribute.html">
+            <img src="assets/img/icons/contribute.svg" alt="貢献する icon" />
+            <div class="dropdown-hero-text">
+              <h4>貢献する</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/">開発者ブログ</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/ripple/xrpl-dev-portal/">GitHub</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+<!---->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2021_refresh/content/tutorials/manage-account-settings/use-tickets.md?pr=/ripple/xrpl-dev-portal/pull/1114" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-accounts">Accounts</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Accounts" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>目次</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#use-tickets">Use Tickets</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#steps">Steps</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#1-get-credentials">1. Get Credentials</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#2-connect-to-network">2. Connect to Network</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#3-check-sequence-number">3. Check Sequence Number</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#4-prepare-and-sign-ticketcreate">4. Prepare and Sign TicketCreate</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#5-submit-ticketcreate">5. Submit TicketCreate</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#6-wait-for-validation">6. Wait for Validation</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#optional-intermission">(Optional) Intermission</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#7-check-available-tickets">7. Check Available Tickets</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#8-prepare-ticketed-transaction">8. Prepare Ticketed Transaction</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#9-submit-ticketed-transaction">9. Submit Ticketed Transaction</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#10-wait-for-validation">10. Wait for Validation</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#with-multi-signing">With Multi-Signing</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/docs.html">ドキュメント</a></li>
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tutorials.html">チュートリアル</a></li>
+    <li class="active breadcrumb-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/manage-account-settings.html">アカウントの設定の利用</a></li>
+    <li class="active breadcrumb-item">Use Tickets</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="devportal-callout note mb-5"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+    </div><!--/.devportal-callout-->
+    <div class="content">
+        <h1 id="use-tickets">Use Tickets<a aria-hidden="true" class="hover_anchor" href="#use-tickets"><i class="fa fa-link"></i></a></h1>
+<p><em>(Requires the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
+<p><a href="tickets.html">Tickets</a> provide a way to send transactions out of the normal order. This tutorial walks through the steps of creating a Ticket, then using it to send another transaction.</p>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
+<!-- Source for this specific tutorial's interactive bits: -->
+<script src="assets/js/tutorials/use-tickets.js" type="application/javascript"></script>
+<!--TODO: change to Testnet eventually -->
+<p>This page provides JavaScript examples that use the ripple-lib (RippleAPI) library. The <a href="get-started-with-rippleapi-for-javascript.html">RippleAPI Beginners Guide</a> describes how to get started using RippleAPI to access XRP Ledger data from JavaScript.</p>
+<p>Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.</p>
+<p>Tickets must be enabled. At this time, the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is only available on Devnet.</p>
+<h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
+<p>This tutorial is divided into a few phases:</p>
+<ul>
+<li>(Steps 1-2) <strong>Setup:</strong> You need an XRP Ledger address and secret. For production, you can use the same address and secret consistently. For this tutorial, you can generate new test credentials as needed. You also need to be connected to the network.</li>
+<li>(Steps 3-6) <strong>Create Tickets:</strong> Send a transaction to set aside some Tickets.</li>
+<li>(Optional) <strong>Intermission:</strong> After creating Tickets, you can send various other transactions at any time before, during, and after the following steps.</li>
+<li>(Steps 7-10) <strong>Use Ticket:</strong> Use one of your set-aside Tickets to send a transaction. You can repeat these steps while skipping the previous parts as long as you have at least one Ticket remaining to use.</li>
+</ul>
+<h3 id="1-get-credentials">1. Get Credentials<a aria-hidden="true" class="hover_anchor" href="#1-get-credentials"><i class="fa fa-link"></i></a></h3>
+<p>To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the <a href="parallel-networks.html">Devnet</a> using the following interface:</p>
+<div class="interactive-block" id="interactive-generate">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="generate" data-steplabel="Generate" id="bc-ul-generate">
+<li class="breadcrumb-item bc-generate current"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary" data-fauceturl="https://faucet.devnet.rippletest.net/accounts" id="generate-creds-button">Get Devnet credentials</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/>Generating Keys...</div>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<p class="devportal-callout caution"><strong>Caution:</strong> Ripple provides the <a href="parallel-networks.html">Testnet and Devnet</a> for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, <strong>do not</strong> use the same addresses on Testnet/Devnet and Mainnet.</p>
+<p>When you're <a href="production-readiness.html">building actual production-ready software</a>, you'll instead use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
+<h3 id="2-connect-to-network">2. Connect to Network<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-network"><i class="fa fa-link"></i></a></h3>
+<p>You must be connected to the network to submit transactions to it.</p>
+<p>The following code uses a RippleAPI instance to connect to a public XRP Devnet server:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">ripple</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.devnet.rippletest.net:51233'</span><span class="p">})</span>
+  <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+
+  <span class="c1">// Code in the following examples continues here...</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">()</span>
+</code></pre></div>
+<p class="devportal-callout note"><strong>Note:</strong> The code samples in this tutorial use JavaScript's <a class="external-link" href="https://javascript.info/async-await" target="_blank"><code>async</code>/<code>await</code> pattern <i aria-hidden="true" class="fa fa-external-link"></i></a>. Since <code>await</code> needs to be used from within an <code>async</code> function, the remaining code samples are written to continue inside the <code>main()</code> function started here. You can also use Promise methods <code>.then()</code> and <code>.catch()</code> instead of <code>async</code>/<code>await</code> if you prefer.</p>
+<p>For this tutorial, you can connect directly from your browser by pressing the following button:</p>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-connect">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="connect" data-steplabel="Connect" id="bc-ul-connect">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled current"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary" data-wsurl="wss://s.devnet.rippletest.net:51233" id="connect-button">Connect to Devnet</button>
+<div>
+<strong>Connection status:</strong>
+<span id="connection-status">Not connected</span>
+<div class="loader collapse" id="loader-connect"><img class="throbber" src="assets/img/xrp-loader-96.png"/></div>
+</div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="3-check-sequence-number">3. Check Sequence Number<a aria-hidden="true" class="hover_anchor" href="#3-check-sequence-number"><i class="fa fa-link"></i></a></h3>
+<p>Before you create any Tickets, you should check what <a href="basic-data-types.html#アカウントシーケンス">Sequence Number</a> your account is at. You want the current Sequence number for the next step, and the Ticket Sequence numbers it sets aside start from this number.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">get_sequence</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">account_info</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">"account_info"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="s2">"account"</span><span class="o">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span>
+  <span class="p">})</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Current sequence:"</span><span class="p">,</span> <span class="nx">account_info</span><span class="p">.</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Sequence</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">account_info</span><span class="p">.</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Sequence</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">current_sequence</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">get_sequence</span><span class="p">()</span>
+</code></pre></div>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-check_sequence">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="check_sequence" data-steplabel="Check Sequence" id="bc-ul-check_sequence">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled current"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" id="check-sequence">Check Sequence Number</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/>Querying...</div>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="4-prepare-and-sign-ticketcreate">4. Prepare and Sign TicketCreate<a aria-hidden="true" class="hover_anchor" href="#4-prepare-and-sign-ticketcreate"><i class="fa fa-link"></i></a></h3>
+<p>Construct a <a href="ticketcreate.html">TicketCreate transaction</a> using the sequence number you determined in the previous step. Use the <code>TicketCount</code> field to specify how many Tickets to create. For example, to <a href="rippleapi-reference.html#preparetransaction">prepare a transaction</a> that would make 10 Tickets:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nx">prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareTransaction</span><span class="p">({</span>
+  <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"TicketCreate"</span><span class="p">,</span>
+  <span class="s2">"Account"</span><span class="o">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+  <span class="s2">"TicketCount"</span><span class="o">:</span> <span class="mf">10</span><span class="p">,</span>
+  <span class="s2">"Sequence"</span><span class="o">:</span> <span class="nx">current_sequence</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Prepared transaction:"</span><span class="p">,</span> <span class="nx">prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nx">max_ledger</span> <span class="o">=</span> <span class="nx">prepared</span><span class="p">.</span><span class="nx">instructions</span><span class="p">.</span><span class="nx">maxLedgerVersion</span>
+
+<span class="kd">let</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="s2">"s████████████████████████████"</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction hash:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nx">tx_blob</span> <span class="o">=</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">signedTransaction</span>
+</code></pre></div>
+<p>Record the transaction's hash and <code>LastLedgerSequence</code> value so you can <a href="reliable-transaction-submission.html">be sure whether or not it got validated</a> later.</p>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-prepare_sign">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="prepare_sign" data-steplabel="Prepare &amp; Sign" id="bc-ul-prepare_sign">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled current"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" id="prepare-and-sign">Prepare &amp; Sign</button>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="5-submit-ticketcreate">5. Submit TicketCreate<a aria-hidden="true" class="hover_anchor" href="#5-submit-ticketcreate"><i class="fa fa-link"></i></a></h3>
+<p>Submit the signed transaction blob that you created in the previous step. Record the latest validated ledger index at the time of submission, so you can set a lower bound on what ledger versions the transaction could be validated in. For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nx">prelim_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">"submit"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"tx_blob"</span><span class="o">:</span> <span class="nx">tx_blob</span><span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Preliminary result:"</span><span class="p">,</span> <span class="nx">prelim_result</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">min_ledger</span> <span class="o">=</span> <span class="nx">prelim_result</span><span class="p">.</span><span class="nx">validated_ledger_index</span>
+</code></pre></div>
+<p class="devportal-callout warning"><strong>Warning:</strong> Be sure that you <strong>DO NOT UPDATE</strong> the <code>min_ledger</code> value. It is safe to submit a signed transaction blob multiple times (the transaction can only execute at most once), but when you look up the status of the transaction you should use the earliest possible ledger index that the transaction could be in, <em>not</em> the validated ledger index at the time of the most recent submission. Using the wrong minimum ledger value could cause you to incorrectly conclude that the transaction did not execute. For best practices, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-submit">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="submit" data-steplabel="Submit" id="bc-ul-submit">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled current"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob" data-wait-step-name="Wait" id="ticketcreate-submit">Submit</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/>Sending...</div>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="6-wait-for-validation">6. Wait for Validation<a aria-hidden="true" class="hover_anchor" href="#6-wait-for-validation"><i class="fa fa-link"></i></a></h3>
+<p>Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.)</p>
+<p>You use the <code>ledger</code> event type in RippleAPI to trigger your code to run whenever there is a new validated ledger version. For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// signed.id is the hash we're waiting for</span>
+<span class="c1">// min_ledger is the validated ledger index at time of first submission</span>
+<span class="c1">// max_ledger is the transaction's LastLedgerSequence value</span>
+<span class="kd">let</span> <span class="nx">tx_status</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ledger'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">ledger</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Ledger version"</span><span class="p">,</span> <span class="nx">ledger</span><span class="p">.</span><span class="nx">ledgerVersion</span><span class="p">,</span> <span class="s2">"was validated."</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">tx_status</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nx">tx_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">"tx"</span><span class="p">,</span> <span class="p">{</span>
+          <span class="s2">"transaction"</span><span class="o">:</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+          <span class="s2">"min_ledger"</span><span class="o">:</span> <span class="nx">min_ledger</span><span class="p">,</span>
+          <span class="s2">"max_ledger"</span><span class="o">:</span> <span class="nx">max_ledger</span>
+      <span class="p">})</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">tx_result</span><span class="p">.</span><span class="nx">validated</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Got validated result:"</span><span class="p">,</span> <span class="nx">tx_result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="p">)</span>
+        <span class="nx">tx_status</span> <span class="o">=</span> <span class="s2">"validated"</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// Transaction found, but not yet validated. No change.</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">error</span> <span class="o">==</span> <span class="s2">"txnNotFound"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">searched_all</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Tx not found in ledgers </span><span class="si">${</span><span class="nx">min_ledger</span><span class="si">}</span><span class="sb">-</span><span class="si">${</span><span class="nx">max_ledger</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+          <span class="nx">tx_status</span> <span class="o">=</span> <span class="s2">"rejected"</span>
+          <span class="c1">// This result is final if min_ledger and max_ledger are correct</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">max_ledger</span> <span class="o">&gt;</span> <span class="nx">ledger</span><span class="p">.</span><span class="nx">ledgerVersion</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Transaction may yet be confirmed. Keep waiting.</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Can't get final result. Check a full history server."</span><span class="p">)</span>
+            <span class="nx">tx_result</span> <span class="o">=</span> <span class="s2">"unknown - check full history"</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// Unknown error; pass it back up</span>
+        <span class="k">throw</span> <span class="nx">e</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-wait">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="wait" data-steplabel="Wait" id="bc-ul-wait">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled current"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<table class="wait-step table-responsive" data-explorerurl="https://devnet.xrpl.org">
+<tr>
+<th>Transaction ID:</th>
+<td class="waiting-for-tx">(None)</td>
+<tr>
+<th>Latest Validated Ledger Index:</th>
+<td class="validated-ledger-version">(Not connected)</td>
+</tr>
+<tr>
+<th>Ledger Index at Time of Submission:</th>
+<td class="earliest-ledger-version">(Not submitted)</td>
+</tr>
+<tr>
+<th>Transaction <code>LastLedgerSequence</code>:</th>
+<td class="lastledgersequence">(Not prepared)</td>
+</tr>
+<tr class="tx-validation-status">
+</tr>
+</tr></table>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="optional-intermission">(Optional) Intermission<a aria-hidden="true" class="hover_anchor" href="#optional-intermission"><i class="fa fa-link"></i></a></h3>
+<p>The power of Tickets is that you can carry on with your account's business as usual while you are getting Ticketed transactions ready. When you want to send a transaction using a Ticket, you can do that in parallel with other sending transactions, including ones using different Tickets, and submit a Ticketed transaction at any time. The only constraint is that each Ticket can only be used once.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> You can come back here to send Sequenced transactions between or during any of the following steps, without interfering with the success of your Ticketed transaction.</p>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-intermission">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="intermission" data-steplabel="Intermission" id="bc-ul-intermission">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled current"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" id="intermission-payment">Payment</button>
+<button class="btn btn-primary previous-steps-required" id="intermission-escrowcreate">EscrowCreate</button>
+<button class="btn btn-primary previous-steps-required" id="intermission-accountset">AccountSet</button>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="7-check-available-tickets">7. Check Available Tickets<a aria-hidden="true" class="hover_anchor" href="#7-check-available-tickets"><i class="fa fa-link"></i></a></h3>
+<p>When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the <a href="account_objects.html">account_objects method</a> (or <a href="rippleapi-reference.html#getaccountobjects"><code>getAccountObjects()</code></a>) to look up your available tickets. For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">"account_objects"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">"account"</span><span class="o">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"ticket"</span>
+  <span class="p">})</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Available Tickets:"</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">account_objects</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nx">use_ticket</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">account_objects</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">TicketSequence</span>
+</code></pre></div>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-check_tickets">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="check_tickets" data-steplabel="Check Tickets" id="bc-ul-check_tickets">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled current"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" id="check-tickets">Check Tickets</button>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<p class="devportal-callout tip"><strong>Tip:</strong> You can repeat the steps from here through the end as long as you have Tickets left to be used!</p>
+<h3 id="8-prepare-ticketed-transaction">8. Prepare Ticketed Transaction<a aria-hidden="true" class="hover_anchor" href="#8-prepare-ticketed-transaction"><i class="fa fa-link"></i></a></h3>
+<p>Now that you have a Ticket available, you can prepare a transaction that uses it.</p>
+<p>This can be any <a href="transaction-types.html">type of transaction</a> you like. The following example uses a no-op <a href="accountset.html">AccountSet transaction</a> since that doesn't require any other setup in the ledger. Set the <code>Sequence</code> field to <code>0</code> and include a <code>TicketSequence</code> field with the Ticket Sequence number of one of your available Tickets.</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nx">prepared_t</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareTransaction</span><span class="p">({</span>
+  <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
+  <span class="s2">"Account"</span><span class="o">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+  <span class="s2">"TicketSequence"</span><span class="o">:</span> <span class="nx">use_ticket</span><span class="p">,</span>
+  <span class="s2">"Sequence"</span><span class="o">:</span> <span class="mf">0</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="c1">// Adjust instructions to allow more time before submitting the transaction</span>
+  <span class="nx">maxLedgerVersionOffset</span><span class="o">:</span> <span class="mf">20</span>
+  <span class="c1">//maxLedgerVersion: null // or, let the transaction remain valid indefinitely</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Prepared JSON:"</span><span class="p">,</span> <span class="nx">prepared_t</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nx">signed_t</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared_t</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span>
+                                   <span class="s2">"s████████████████████████████"</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction hash:"</span><span class="p">,</span> <span class="nx">signed_t</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nx">tx_blob_t</span> <span class="o">=</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">signedTransaction</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Signed transaction blob:"</span><span class="p">,</span> <span class="nx">tx_blob_t</span><span class="p">)</span>
+</code></pre></div>
+<p class="devportal-callout tip"><strong>Tip:</strong> If you don't plan to submit the TicketCreate transaction right away, you should explicitly set the <a href="rippleapi-reference.html#transaction-instructions">instructions'</a> <code>maxLedgerVersionOffset</code> to a larger number of ledgers. To create a transaction that could remain valid indefinitely, set the <code>maxLedgerVersion</code> to <code>null</code>.</p>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-prepare_ticketed_tx">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="prepare_ticketed_tx" data-steplabel="Prepare Ticketed Tx" id="bc-ul-prepare_ticketed_tx">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled current"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<div id="ticket-selector">
+<h4 id="select-a-ticket">Select a Ticket:<a aria-hidden="true" class="hover_anchor" href="#select-a-ticket"><i class="fa fa-link"></i></a></h4>
+<div class="form-area"></div>
+</div>
+<button class="btn btn-primary previous-steps-required" id="prepare-ticketed-tx">Prepare Ticketed Transaction</button>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="9-submit-ticketed-transaction">9. Submit Ticketed Transaction<a aria-hidden="true" class="hover_anchor" href="#9-submit-ticketed-transaction"><i class="fa fa-link"></i></a></h3>
+<p>Submit the signed transaction blob that you created in the previous step. For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nx">prelim_result_t</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">"submit"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"tx_blob"</span><span class="o">:</span> <span class="nx">tx_blob_t</span><span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Preliminary result:"</span><span class="p">,</span> <span class="nx">prelim_result_t</span><span class="p">)</span>
+</code></pre></div>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-submit_ticketed_tx">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="submit_ticketed_tx" data-steplabel="Submit Ticketed Tx" id="bc-ul-submit_ticketed_tx">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled current"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob_t" data-wait-step-name="Wait Again" id="ticketedtx-submit">Submit</button>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="10-wait-for-validation">10. Wait for Validation<a aria-hidden="true" class="hover_anchor" href="#10-wait-for-validation"><i class="fa fa-link"></i></a></h3>
+<p>Ticketed transactions go through the consensus process the same way that Sequenced transactions do.</p>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-wait_again">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="wait_again" data-steplabel="Wait Again" id="bc-ul-wait_again">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-check_sequence disabled"><a href="#interactive-check_sequence">Check Sequence</a></li><li class="breadcrumb-item bc-prepare_sign disabled"><a href="#interactive-prepare_sign">Prepare &amp; Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-intermission disabled"><a href="#interactive-intermission">Intermission</a></li><li class="breadcrumb-item bc-check_tickets disabled"><a href="#interactive-check_tickets">Check Tickets</a></li><li class="breadcrumb-item bc-prepare_ticketed_tx disabled"><a href="#interactive-prepare_ticketed_tx">Prepare Ticketed Tx</a></li><li class="breadcrumb-item bc-submit_ticketed_tx disabled"><a href="#interactive-submit_ticketed_tx">Submit Ticketed Tx</a></li><li class="breadcrumb-item bc-wait_again disabled current"><a href="#interactive-wait_again">Wait Again</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<table class="wait-step table-responsive" data-explorerurl="https://devnet.xrpl.org">
+<tr>
+<th>Transaction ID:</th>
+<td class="waiting-for-tx">(None)</td>
+<tr>
+<th>Latest Validated Ledger Index:</th>
+<td class="validated-ledger-version">(Not connected)</td>
+</tr>
+<tr>
+<th>Ledger Index at Time of Submission:</th>
+<td class="earliest-ledger-version">(Not submitted)</td>
+</tr>
+<tr>
+<th>Transaction <code>LastLedgerSequence</code>:</th>
+<td class="lastledgersequence">(Not prepared)</td>
+</tr>
+<tr class="tx-validation-status">
+</tr>
+</tr></table>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h2 id="with-multi-signing">With Multi-Signing<a aria-hidden="true" class="hover_anchor" href="#with-multi-signing"><i class="fa fa-link"></i></a></h2>
+<p>One of the main use cases for Tickets is to be able to collect signatures for several <a href="multi-signing.html">multi-signed transactions</a> in parallel. By using a Ticket, you can send a multi-signed transaction as soon as it is fully signed and ready to go, without worrying about which one will be ready first.</p>
+<p>In this scenario, <a href="#8-prepare-ticketed-transaction">step 8, "Prepare Ticketed Transaction"</a> is slightly different. Instead of preparing and signing all at once, you would follow the steps for <a href="send-a-multi-signed-transaction.html">sending any multi-signed transaction</a>: first prepare the transaction, then circulate it among trusted signers to collect their signatures, and finally combine the signatures into the final multi-signed transaction.</p>
+<p>You could do this in parallel for several different potential transactions as long as each one uses a different Ticket.</p>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>Concepts:</strong><ul>
+<li><a href="tickets.html">Tickets</a></li>
+<li><a href="multi-signing.html">Multi-Signing</a></li>
+</ul>
+</li>
+<li><strong>Tutorials:</strong><ul>
+<li><a href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
+<li><a href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+</ul>
+</li>
+<li><strong>References:</strong><ul>
+<li><a href="account_objects.html">account_objects method</a></li>
+<li><a href="sign_for.html">sign_for method</a></li>
+<li><a href="submit_multisigned.html">submit_multisigned method</a></li>
+<li><a href="ticketcreate.html">TicketCreate transaction</a></li>
+<li><a href="transaction-common-fields.html">Transaction Common Fields</a></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+<!--/.interactive-block-->
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+<script>
+  const widget = new EmbeddableWidget.default({
+    theme: 'xrpl',
+    opened: false,
+    parentElement: '#feedback-content',
+    currentPath: window.location.pathname,
+    adapter: 'ga',
+    app:'Feedback Widget',
+    adapterConfig:{
+      containerId:"GTM-THHW334",
+      trackingId:"UA-45576805-2"
+    }
+  });
+  setTimeout(() => {
+    widget.open();
+    // EmbeddableWidget.default.unmount();
+  }, 2000);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/docs.html">ドキュメント</a>
+  </div>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/concepts.html">コンセプト</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_1" aria-expanded="false" aria-controls="tree_nav_group_1_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/introduction.html">基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/intro-to-consensus.html">コンセンサスについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/xrp.html">XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/software-ecosystem.html">ソフトウェアエコシステム</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/technical-faq.html">技術に関するよくある質問</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2" aria-expanded="false" aria-controls="tree_nav_group_1_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/payment-system-basics.html">支払いシステムの基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_1_2_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/accounts.html">アカウント</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/cryptographic-keys.html">暗号鍵</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/multi-signing.html">マルチ署名</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/reserves.html">準備金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/fees.html">手数料（曖昧さの回避）</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledgers.html">レジャー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_1_2_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-basics.html">トランザクションの基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-cost.html">トランザクションコスト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/finality-of-results.html">結果のファイナリティー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/source-and-destination-tags.html">Source and Destination Tags</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_3" aria-expanded="false" aria-controls="tree_nav_group_1_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/payment-types.html">支払いのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/partial-payments.html">Partial Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/payment-channels.html">Payment Channel</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/issued-currencies.html">発行済み通貨</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/issued-currencies-overview.html">発行済み通貨の概要</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/freezes.html">発行済み通貨の凍結</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transfer-fees.html">送金手数料</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/issuing-and-operational-addresses.html">発行アドレスと運用アドレス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/paths.html">パス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_5" aria-expanded="false" aria-controls="tree_nav_group_1_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/decentralized-exchange.html">分散型取引所</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/offers.html">オファー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/autobridging.html">オートブリッジング</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ticksize.html">ティックサイズ</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6" aria-expanded="false" aria-controls="tree_nav_group_1_6"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/consensus-network.html">コンセンサスネットワーク</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/consensus.html">コンセンサス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/consensus-principles-and-rules.html">コンセンサスの原理とルール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/invariant-checking.html">Invariant Checking</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-queue.html">トランザクションキュー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/about-canceling-a-transaction.html">トランザクションの取消しについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-malleability.html">トランザクション展性</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_1_6_9"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/amendments.html">Amendment</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_6_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/known-amendments.html">既知のAmendment</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/fee-voting.html">手数料投票</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/consensus-research.html">コンセンサスの研究</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/parallel-networks.html">並列ネットワーク</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/the-rippled-server.html">rippledサーバー</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/rippled-server-modes.html">rippledサーバーのモード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/clustering.html">クラスター化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_1_7_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger-history.html">レジャー履歴</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_7_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/online-deletion.html">オンライン削除</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/history-sharding.html">履歴シャーディング</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/peer-protocol.html">ピアプロトコル</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-censorship-detection.html">取引検閲の検知</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="true" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tutorials.html">チュートリアル</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/get-started.html">使用開始</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/public-servers.html">Public Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/get-started-using-python.html">Get Started Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/get-started-using-java.html">Get Started Using Java</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/get-started-using-node-js.html">RippleAPI入門ガイド</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/send-xrp.html">XRPの送金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/monitor-incoming-payments-with-websocket.html">WebSocketを使用した着信ペイメントの監視</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/production-readiness.html">Production Readiness</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/set-up-secure-signing.html">安全な署名の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/look-up-transaction-results.html">トランザクションの結果の確認</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/reliable-transaction-submission.html">信頼できるトランザクションの送信</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="true" aria-controls="tree_nav_group_2_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/manage-account-settings.html">アカウントの設定の利用</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/change-or-remove-a-regular-key-pair.html">レギュラーキーペアの変更または削除</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/disable-master-key-pair.html">Disable Master Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/require-destination-tags.html">宛先タグの要求</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/offline-account-setup.html">オフラインでのアカウント設定のチュートリアル</a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/use-escrows.html">Escrowの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/send-a-conditionally-held-escrow.html">条件に基づくEscrowの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/cancel-an-expired-escrow.html">有効期限切れEscrowの取消し</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/look-up-escrows.html">Escrowの検索</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_2" aria-expanded="false" aria-controls="tree_nav_group_2_4_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/use-payment-channels.html">Payment Channelの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/use-checks.html">Checksの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/send-a-check.html">Checkの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/cash-a-check-for-an-exact-amount.html">Checkの正確な金額での換金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/cash-a-check-for-a-flexible-amount.html">Checkの変動金額での換金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/cancel-a-check.html">Checkの取消し</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/look-up-checks-by-sender.html">送金元に基づくCheckの検索</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/look-up-checks-by-recipient.html">受取人に基づくCheckの検索</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/install-rippled.html">rippledのインストール</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/system-requirements.html">システム要件</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/install-rippled-on-centos-rhel-with-yum.html">yumを使用したCentOS/Red Hatへのインストール</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/install-rippled-on-ubuntu.html">UbuntuまたはDebian Linuxへのインストール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/update-rippled-automatically-on-linux.html">Linuxでの自動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/update-rippled-manually-on-centos-rhel.html">CentOS/Red Hatでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/build-run-rippled-ubuntu.html">Ubuntuでのrippledの構築と実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/build-run-rippled-macos.html">macOSでのrippledの構築と実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/capacity-planning.html">容量の計画</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/rippled-1-3-migration-instructions.html">rippled v1.3.xへの移行手順</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-rippled.html">rippledの設定</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-online-deletion.html">オンライン削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-advisory-deletion.html">指示による削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-history-sharding.html">履歴シャーディングの設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-full-history.html">全履歴の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/enable-public-signing.html">パブリック署名の有効化</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-peering.html">ピアリングの設定</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-a-private-server.html">プライベートサーバーの設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/forward-ports-for-peering.html">ピアリングのポート転送</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/manually-connect-to-a-specific-peer.html">特定のピアへの手動接続</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/set-max-number-of-peers.html">ピアの最大数の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/use-a-peer-reservation.html">ピアリザベーションの使用</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/load-a-saved-ledger-in-stand-alone-mode.html">スタンドアロンモードでの保存済みレジャーの読み込み</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/advance-the-ledger-in-stand-alone-mode.html">スタンドアロンモードでレジャーを進める</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_5" aria-expanded="false" aria-controls="tree_nav_group_2_6_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/diagnosing-problems.html">rippledの問題の診断</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/health-check-interventions.html">Health Check Interventions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/understanding-log-messages.html">ログメッセージについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/server-doesnt-sync.html">rippledサーバーが同期しない</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/server-wont-start.html">rippledサーバーが起動しない</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/fix-sqlite-tx-db-page-size-issue.html">SQLiteトランザクションデータベースのページサイズの問題の解決</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/references.html">リファレンス</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/basic-data-types.html">基本的なデータ型</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/base58-encodings.html">base58エンコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/currency-formats.html">通貨フォーマット</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger-data-formats.html">レジャーのデータ型</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger-header.html">レジャーヘッダー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_2_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/accountroot.html">AccountRoot</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/amendments-object.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/check.html">Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/depositpreauth-object.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/directorynode.html">DirectoryNode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/escrow-object.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/feesettings.html">FeeSettings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledgerhashes.html">LedgerHashes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/offer.html">Offer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/paychannel.html">PayChannel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ripplestate.html">RippleState</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/signerlist.html">SignerList</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-formats.html">トランザクションのフォーマット</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-common-fields.html">トランザクションの共通フィールド</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-types.html">トランザクションのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/accountset.html">AccountSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/checkcancel.html">CheckCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/checkcash.html">CheckCash</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/depositpreauth.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/escrowcancel.html">EscrowCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/escrowcreate.html">EscrowCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/offercancel.html">OfferCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/offercreate.html">OfferCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/payment.html">Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/paymentchannelclaim.html">PaymentChannelClaim</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/paymentchannelcreate.html">PaymentChannelCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/paymentchannelfund.html">PaymentChannelFund</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/setregularkey.html">SetRegularKey</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/signerlistset.html">SignerListSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/trustset.html">TrustSet</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/pseudo-transaction-types.html">疑似トランザクション</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/enableamendment.html">EnableAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/setfee.html">SetFee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-results.html">トランザクションの結果</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tec-codes.html">tecコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tef-codes.html">tefコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tel-codes.html">telコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tem-codes.html">temコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ter-codes.html">terコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tes-success.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-metadata.html">トランザクションのメタデータ</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/serialization.html">シリアル化フォーマット</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/client-libraries.html">Client Libraries</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/rippleapi-reference.html">JavaScript / TypeScript Client Library</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/api-conventions.html">APIの規則</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/request-formatting.html">要求フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/response-formatting.html">応答フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/error-formatting.html">エラーのフォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/markers-and-pagination.html">マーカーとページネーション</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/rate-limiting.html">Rate Limiting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/rippled-server-states.html">rippledサーバーの状態</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/account-methods.html">Account Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/account_channels.html">account_channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/account_currencies.html">account_currencies</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/account_info.html">account_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/account_objects.html">account_objects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/account_offers.html">account_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/account_tx.html">account_tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/gateway_balances.html">gateway_balances</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/noripple_check.html">noripple_check</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger-methods.html">Ledger Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger_closed.html">ledger_closed</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger_current.html">ledger_current</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger_data.html">ledger_data</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger_entry.html">ledger_entry</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction-methods.html">Transaction Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/sign_for.html">sign_for</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/submit.html">submit</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/submit_multisigned.html">submit_multisigned</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/transaction_entry.html">transaction_entry</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tx.html">tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tx_history.html">tx_history</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/path-and-order-book-methods.html">Path and Order Book Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/book_offers.html">book_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/path_find.html">path_find</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ripple_path_find.html">ripple_path_find</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/payment-channel-methods.html">Payment Channel Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/channel_authorize.html">channel_authorize</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/channel_verify.html">channel_verify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_6"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/subscription-methods.html">Subscription Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/subscribe.html">subscribe</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/unsubscribe.html">unsubscribe</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_7"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/server-info-methods.html">Server Info Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/fee.html">fee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/server_info.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/server_state.html">server_state</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/json.html">json</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ping.html">ping</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/random.html">random</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/admin-rippled-methods.html">管理rippledメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_1"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/key-generation-methods.html">キー生成のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/validation_create.html">validation_create</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/wallet_propose.html">wallet_propose</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_2"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/logging-and-data-management-methods.html">ログとデータ管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/can_delete.html">can_delete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/crawl_shards.html">crawl_shards</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/download_shard.html">download_shard</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger_cleaner.html">ledger_cleaner</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger_request.html">ledger_request</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/log_level.html">log_level</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/logrotate.html">logrotate</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_3"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/server-control-methods.html">Server Control Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/ledger_accept.html">ledger_accept</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/stop.html">stop</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/validation_seed.html">validation_seed <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/peer-management-methods.html">ピア管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/connect.html">connect</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/peer_reservations_add.html">peer_reservations_add</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/peer_reservations_del.html">peer_reservations_del</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/peer_reservations_list.html">peer_reservations_list</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/peers.html">peers</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/consensus_info.html">consensus_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/feature.html">feature</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/fetch_info.html">fetch_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/get_counts.html">get_counts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/print.html">print</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/validator_info.html">validator_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/validator_list_sites.html">validator_list_sites</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/validators.html">validators</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/commandline-usage.html">rippledコマンドライン使用リファレンス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/peer-port-methods.html">Peer Port Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/health-check.html">Health Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/peer-crawler.html">Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/validator-list.html">Validator List Method</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/xrp-ledger-toml.html">xrp-ledger.tomlファイル</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/by-label.html">ラベル別に閲覧</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-accounts.html">アカウント</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-blockchain.html">ブロックチェーン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-rippled.html">コアサーバー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-cross-currency.html">複数通貨間</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-data-retention.html">データ保持</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-decentralized-exchange.html">分散型取引所</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-development.html">開発</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-fees.html">手数料</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-payment-channels.html">Payment Channel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-payments.html">支払い</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-smart-contracts.html">スマートコントラクト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-security.html">セキュリティ</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-tokens.html">トークン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-transaction-sending.html">トランザクション送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/label-xrp.html">XRP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+
+        <a class="nav-link" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/dev-tools.html">開発者用ツール</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/websocket-api-tool.html">WebSocket API Tool</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/validator-domain-verifier.html">Domain Verification Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/xrp-testnet-faucet.html">XRP Faucets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tx-sender.html">Transaction Sender</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/faq.html">FAQ</a>
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>アバウト</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/history.html" class="nav-link">沿革</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/impact.html" class="nav-link">インパクト</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>ドキュメント</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/docs.html" class="nav-link">ドキュメント</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/concepts.html" class="nav-link">コンセプト</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/references.html" class="nav-link">リファレンス</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/faq.html" class="nav-link">FAQ</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>コミュニティー</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/contribute.html" class="nav-link">貢献する</a></li>
+            <li class="nav-item"><a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/ripple/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex">
+      <a href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/" class="footer-brand"><img src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  indexName: 'xrpl',
+  inputSelector: '#topsearchbox',
+  algoliaOptions: { 'facetFilters': ["lang:ja"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+<!-- ripple-lib & prerequisites -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>
+<script type="application/javascript" src="assets/js/ripple-lib-1.9.1.min.js"></script>
+
+<!-- Helper for interactive tutorials -->
+<script type="application/javascript" src="https://ripple.github.io/xrpl-dev-portal/pr-preview/2021_refresh/52f778/ja/assets/js/interactive-tutorial.js"></script>
+
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});
+</script>
+
+</body>
+</html>
