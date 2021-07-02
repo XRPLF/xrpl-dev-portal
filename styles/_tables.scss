@@ -50,7 +50,7 @@ td:nth-child(1) {
 
 
 .dblue {
-  color: #656E81;
+  color: $gray-600;
 }
 #overview-table {
   td:nth-child(1){
@@ -92,6 +92,7 @@ td:nth-child(1) {
   tbody td {
     padding: 2rem 0;
   }
+  thead tr,
   tbody tr {
     border-bottom: 1px solid $gray-600;
   }

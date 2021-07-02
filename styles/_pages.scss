@@ -54,6 +54,12 @@
   top: 0;
   left: 0;
 }
+#xrp-mark-overview {
+  @include media-breakpoint-down(sm) {
+    height: 40px;
+    margin-top: 16px;
+  }
+}
 
 // XRPL Overview Page
 #xrpl-overview-purple {
@@ -62,7 +68,7 @@
   left: 0;
   @include media-breakpoint-down(sm) {
     top: 0;
-    left: -120px;
+    left: -20vw;
   }
 }
 #xrpl-overview-orange {

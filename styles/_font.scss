@@ -33,6 +33,12 @@ h2, .h2 {
     font-size: 1.75rem;
     line-height: 34px;
   }
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      font-size: 1.75rem !important;
+      line-height: 34px !important;
+    }
+  }
 }
 h3, .h3 {
   font-size: 3rem;

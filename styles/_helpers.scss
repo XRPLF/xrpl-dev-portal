@@ -60,6 +60,11 @@
 }
 .mb-6 {
   margin-bottom: 1.5rem;
+  &-sm {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 1.5rem;
+    }
+  }
 }
 .mt-6 {
   margin-top: 1.5rem;
@@ -107,7 +112,7 @@
     }
   }
   &-sm {
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-down(sm) {
       margin-bottom: 2.5rem;
     }
   }
