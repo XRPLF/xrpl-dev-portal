@@ -454,12 +454,12 @@
       }
     }
     .dropdown.show .dropdown-toggle::after {
-      text-indent: 1rem;
+      text-indent: 5rem;
     }
     .dropdown:not(.show) .dropdown-toggle::before {
       width: 0;
       height: 0;
-      text-indent: -1rem;
+      text-indent: -5rem;
     }
 
     .dropdown-toggle.with-caret {
