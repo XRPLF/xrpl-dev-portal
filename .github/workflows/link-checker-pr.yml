@@ -26,16 +26,10 @@ jobs:
       run: |
         tool/conflictmarkers.sh
 
-    - name: Get short SHA6
-      id: slug
-      run: echo "::set-output name=sha6::$(echo ${{ github.event.pull_request.head.sha }} | cut -c1-6)"
-
     - name: Build docs
       run: |
-        echo '{"github_forkurl": "https://github.com/${{ github.event.pull_request.head.repo.full_name }}", "github_branch": "${{ github.head_ref }}", "github_pr_id": "${{ github.event.number }}", "is_pr_build": true, "prefix": "https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/${{steps.slug.outputs.sha6}}/"}' > dactyl_vars.json
-        dactyl_build --vars dactyl_vars.json
-        echo '{"github_forkurl": "https://github.com/${{ github.event.pull_request.head.repo.full_name }}", "github_branch": "${{ github.head_ref }}", "github_pr_id": "${{ github.event.number }}", "is_pr_build": true, "prefix": "https://${{ github.repository_owner }}.github.io/${{ github.event.pull_request.base.repo.name }}/pr-preview/${{ github.head_ref }}/${{steps.slug.outputs.sha6}}/ja/"}' > dactyl_vars_ja.json
-        dactyl_build -t ja --vars dactyl_vars_ja.json -o out/ja/
+        echo '{"github_forkurl": "https://github.com/${{ github.event.pull_request.head.repo.full_name }}", "github_branch": "${{ github.head_ref }}", "github_pr_id": "${{ github.event.number }}", "is_pr_build": true}' > dactyl_vars.json
+        tool/build_all_langs.sh --vars dactyl_vars.json
 
     - name: Run Dactyl Link Checker
       continue-on-error: true
@@ -61,6 +55,10 @@ jobs:
         branch: "gh-pages"
         dist: "out"
         slug: "pr-preview"
+
+    - name: Get short SHA6
+      id: slug
+      run: echo "::set-output name=sha6::$(echo ${{ github.event.pull_request.head.sha }} | cut -c1-6)"
 
     - name: Summarize Output
       uses: unsplash/comment-on-pr@master
