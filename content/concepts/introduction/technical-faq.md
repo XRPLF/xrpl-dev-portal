@@ -6,6 +6,7 @@ labels:
   - Blockchain
 #top_nav_grouping: Questions
 template: page-faq2.html.jinja
+sidebar: disabled
 eyebrow_text: Your Questions About XRPL, Answered
 filters:
   - faq

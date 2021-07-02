@@ -194,6 +194,12 @@
   width: 100%;
 }
 
+.q-wrapper {
+  background: $gray-800;
+  border-radius: $border-radius-sm;
+  padding: 2rem;
+}
+
 .page-docs-index {
   background: url(../img/backgrounds/bg-docs.png) no-repeat;
   background-position-x: left -20vw;
