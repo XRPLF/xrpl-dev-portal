@@ -119,5 +119,16 @@
         "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1116"
       }
     ]
+  },
+  "spacing_touchups": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "ed52d08ca0e0e0765981a7f72aace87167018137",
+        "updatedAt": "2021-07-02T23:15:51.012Z",
+        "href": "pr-preview/spacing_touchups/ed52d0",
+        "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1117"
+      }
+    ]
   }
 }
