@@ -5,8 +5,12 @@ blurb: Get answers to frequently asked questions, covering topics such as valida
 labels:
   - Blockchain
 #top_nav_grouping: Questions
+template: page-faq2.html.jinja
+eyebrow_text: Your Questions About XRPL, Answered
+filters:
+  - faq
 ---
-# Technical FAQ
+# FAQ
 
 ## Validators and Unique Node Lists
 
