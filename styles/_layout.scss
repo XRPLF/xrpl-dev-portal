@@ -159,6 +159,7 @@ section {
     /* 2 equal columns and any number of auto-sized rows. */
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: auto;
+    gap: 40px;
 
     /* No "hero" blocks expected here. */
 
@@ -264,14 +265,15 @@ $columns: 12; // Number of columns in the grid system
     background-size: contain;
     overflow: hidden;
     max-width: 100%;
+    margin: 0 0 40px;
 
-    @include media-breakpoint-down(lg) {
+    @include media-breakpoint-up(md) {
       margin: 24px 0;
     }
-    @include media-breakpoint-down(sm) {
-      margin: 0 0 40px;
-    }
     @include media-breakpoint-up(lg) {
+      margin: 24px;
+    }
+    @include media-breakpoint-up(xl) {
       margin: 40px;
     }
 
