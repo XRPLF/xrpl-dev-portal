@@ -72,7 +72,7 @@ targets:
         display_name: XRPL.org
         <<: *defaults
         prefix: ""
-        blurb: XRPL.org is a community-driven resource for all things XRP and the XRP Ledger—your source for technical information, reference materials and tools.
+        blurb: XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools.
 
     -   name: ja
         lang: ja
@@ -167,6 +167,7 @@ pages:
         top_nav_name: About
         top_nav_grouping: XRP Ledger
         sidebar: disabled
+        blurb: An introduction to the key benefits and features of the XRP Ledger, a public blockchain driven by the XRPL developer community.
         targets:
             - en
 
@@ -194,6 +195,7 @@ pages:
         template: page-uses.html.jinja
         html: uses.html
         parent: xrp-ledger-overview.html
+        blurb: Here’s how the XRP Ledger is used to power innovative technology across the payments and public blockchain landscape.
         top_nav_grouping: XRP Ledger
         sidebar: disabled
         targets:
@@ -212,6 +214,7 @@ pages:
         template: page-history.html.jinja
         html: history.html
         parent: xrp-ledger-overview.html
+        blurb: The history of the XRP Ledger (XRPL), launched in 2012 as a faster, scalable, more sustainable blockchain.
         top_nav_grouping: XRP Ledger
         sidebar: disabled
         targets:
@@ -244,6 +247,7 @@ pages:
         template: page-xrp-overview.html.jinja
         html: xrp-overview.html
         parent: xrp-ledger-overview.html
+        blurb: Learn more about XRP Ledger’s native digital asset, XRP.
         top_nav_grouping: XRP
         top_nav_name: XRP Overview
         sidebar: disabled
@@ -256,6 +260,7 @@ pages:
         parent: xrp-ledger-overview.html
         template: page-impact.html.jinja
         top_nav_grouping: Sustainability
+        blurb: Learn how the XRP Ledger helps move money around the world faster, cheaper and more sustainably than any other currency available today.
         sidebar: disabled
         targets:
             - en
@@ -275,7 +280,7 @@ pages:
         template: page-calculator.html.jinja
         top_nav_grouping: Sustainability
         sidebar: disabled
-        blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the green currency calculator to compare.
+        blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the XRPL cryptocurrency carbon calculator to compare.
         fb_card: currency-calculator-card-fb.png
         twitter_card: currency-calculator-card-tw.png
         targets:
@@ -298,6 +303,7 @@ pages:
         template: page-xrpl-foundation.html.jinja
         parent: xrp-ledger-overview.html
         top_nav_grouping: About
+        blurb: Learn more about the XRPL Foundation, dedicated to advancing the development and use of the XRPL.
         sidebar: disabled
         targets:
             - en
@@ -332,7 +338,8 @@ pages:
             - run-rippled-as-a-validator.html
             - intro-to-consensus.html
             - public-rippled-methods.html
-        blurb: Dive into XRP Ledger technology and start integrating.
+        blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
+        top_nav_blurb: Dive into XRP Ledger technology and start integrating.
         filters:
             - labels
         targets:
@@ -3731,6 +3738,7 @@ pages:
         html: faq.html
         template: page-faq.html.jinja
         parent: docs.html
+        blurb: Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community.
         top_nav_grouping: Questions
         sidebar: disabled
         targets:
@@ -3743,7 +3751,8 @@ pages:
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        blurb: Join the conversation
+        top_nav_blurb: Join the conversation
+        blurb: The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.
         top_nav_name: Community
         top_nav_hero_image: assets/img/icons/contribute.svg
         targets:

@@ -16,7 +16,7 @@
             <img src="{{top_page.top_nav_hero_image}}" alt="{{top_page.name}} icon" />
             <div class="dropdown-hero-text">
               <h4>{{top_page.name}}</h4>
-              <p>{{top_page.blurb}}</p>
+              <p>{{top_page.top_nav_blurb|default(top_page.blurb)}}</p>
             </div>
           </a>
           {% else %}
