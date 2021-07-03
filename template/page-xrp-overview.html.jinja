@@ -136,13 +136,12 @@
 
       <div class="link-section py-26" id="wallets">
         <h2 class="h4 h2-sm mb-8">{% trans %}What Wallets Support XRP?{% endtrans %}</h2>
-        <h5 class="longform mb-10">{% trans %}Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: custodial and non-custodial.{% endtrans %}</h5>
+        <h5 class="longform mb-10">{% trans %}Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software.{% endtrans %}</h5>
         <div class="card-grid card-grid-2xN mb-10">
           <div class="mr-5-until-md">
-            <h6 class="fs-4-5">{% trans %}Custodial Wallets{% endtrans %}</h6>
-            <p class="">{% trans %}Custodial wallets manage a user's private key, which allows the wallet to withdraw crypto currency on a user's behalf.{% endtrans %}</p>
+            <h6 class="fs-4-5">{% trans %}Hardware Wallets{% endtrans %}</h6>
             <ul class="nav flex-column">
-              {% set wallets = [
+              {% set hardwallets = [
                 { "href": _("https://www.ledger.com/"),
                   "img":  _("./img/wallets/ledger.svg"),
                   "alt": _("Ledger") },
@@ -152,11 +151,8 @@
                 { "href": _("https://trezor.io/"),
                   "img":  _("./img/wallets/trezor.svg"),
                   "alt": _("Trezor") },
-                { "href": _("https://gatehub.net/"),
-                  "img":  _("./img/wallets/gatehub.svg"),
-                  "alt": _("Gatehub") },
               ] %}
-              {% for wallet in wallets %}
+              {% for wallet in hardwallets %}
               <li class="nav-item">
                 <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100" src="{{wallet.img}}" alt="{{wallet.alt}} Logo"></a>
               </li>
@@ -164,20 +160,22 @@
             </ul>
           </div>
           <div class="ml-5-until-md mt-10-sm">
-            <h6 class="fs-4-5">{% trans %}Non-Custodial Wallets{% endtrans %}</h6>
-            <p>{% trans %}Non-custodial wallets do not manage a user's private key, which is up to the user to manage, and therefore cannot send crypto currency on the user's behalf.{% endtrans %}</p>
+            <h6 class="fs-4-5">{% trans %}Software Wallets{% endtrans %}</h6>
             <ul class="nav flex-column">
-              {% set custodials = [
+              {% set softwallets = [
                 { "href": _("https://xumm.app/"),
                   "img":  _("./img/wallets/xumm.svg"),
                   "alt": _("Xumm") },
                 { "href": _("https://trustwallet.com/"),
                   "img":  _("./img/wallets/trust.svg"),
                   "alt": _("Trust Wallet") },
+                { "href": _("https://gatehub.net/"),
+                  "img":  _("./img/wallets/gatehub.svg"),
+                  "alt": _("Gatehub") },
               ] %}
-              {% for cust in custodials %}
+              {% for wallet in softwallets %}
               <li class="nav-item">
-                <a class="nav-link external-link" href="{{cust.href}}" target="_blank"><img class="mw-100" src="{{cust.img}}" alt="{{cust.alt}} Logo"></a>
+                <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100" src="{{wallet.img}}" alt="{{wallet.alt}} Logo"></a>
               </li>
               {% endfor %}
             </ul>
