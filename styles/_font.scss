@@ -99,24 +99,9 @@ h6, .h6 {
   }
 }
 p {
-  color: $gray-200;
   font-size: 1rem;
   line-height: 24px;
 }
-
-// a {
-//   color: inherit;
-//   &:hover {
-//     text-decoration: none;
-//   }
-// }
-// p a {
-//   color: $blue-purple-400;
-//   &:hover {
-//     color: $blue-purple-400;
-//     text-decoration: none;
-//   }
-// }
 
 .fs-base {
   font-size: $base-size;

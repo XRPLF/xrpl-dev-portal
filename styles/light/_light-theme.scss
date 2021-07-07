@@ -1,13 +1,22 @@
-$light-theme: #F9FAF8;
+$light-bg: $gray-100;
+$light-fg: $black;
+$light-primary-text: $blue-purple-400;
+$light-box-shadow: 0px 5px 20px 0px $gray-400;
+
 body {
-    background: $light-theme;
-    background-color: $light-theme;
-    color: #000;
+    background: $light-bg;
+    background-color: $light-bg;
+    color: $light-fg;
 }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #000;
+  &:not(.chip) {
+    color: $light-fg;
+  }
+  &.green-500 {
+    color: $green-700;
+  }
 }
 
 // Colors
@@ -16,30 +25,67 @@ $navbar-light-hover-color: $secondary;
 $navbar-light-active-color: $primary;
 
 
-// Content
-/* Site-wide header link styles --------------------------------------------- */
-h1 a,
-h2 a,
-h3 a {
-  color: $dark;
-  text-decoration: none;
-}
-h1 a:hover,
-h2 a:hover,
-h3 a:hover,
-.xrpl-footer h5 a:hover {
-  color: $primary;
+.search, .input-group {
+  .input-group-text {
+    background-color: $gray-200;
+    color: $gray-800;
+  }
+
+  .form-control {
+    border-color: $gray-300;
+  }
+
+  label .input-group-text,
+  .form-control {
+    color: $light-fg;
+    background-color: $gray-300;
+  }
+
+  .ds-input {
+    color: $light-fg;
+    background-color: $gray-300;
+    border-color: $gray-300;
+
+    &:focus {
+      border-color: $blue-purple-400;
+    }
+  }
 }
 
-.curated-links a,
-.children-display a,
-a.card,
-.xrpl-footer a {
-  color: $dark;
+.bg-grey-800 {
+  background-color: $white;
+}
+
+// Content
+
+a {
+  color: $light-fg;
+
+  &.btn-primary {
+    // undo this for buttons
+    color: $white;
+  }
+}
+
+.longform {
+  color: $gray-900;
+}
+
+nav a {
+  color: $light-fg;
 
   &:hover {
-    color: $primary;
+    color: $light-primary-text;
   }
+}
+
+.container-new .col-new-card {
+  box-shadow: $light-box-shadow;
+}
+
+.card {
+  background-color: $white;
+  box-shadow: $light-box-shadow;
 }
 
 // Buttons
@@ -56,31 +102,9 @@ a.card,
   }
 }
 
-//most will be set further down the line. 
-.btn {
-  color: $black;
-}
-
-
-/* (Jump to) "Top" button */
-.jump-to-top {
-  color: $black;
-  background-color: transparent;
-
-  &::after {
-    content: " ↑"
-  }
-
-  &:hover {
-    color: $black;
-    background-color: #00f26f;
-    border-color: #00e56a;
-  }
-}
-
 // Breadcrumbs
 .breadcrumb {
-  background: $light-theme;
+  background: $light-bg;
 }
 .breadcrumb-item a {
   color: $gray-600;
@@ -92,42 +116,62 @@ a.card,
 
 // Top Nav
 .top-nav {
+  background: $light-bg;
 
-// Logo
+  #topnav-pages .nav-link {
+    color: $light-fg;
+  }
+
+  // Logo
   .navbar-brand {
     .logo {
-      content: url(/assets/img/XRPLedger_DevPortal-black.svg);
+      content: url(../img/XRPLedger_DevPortal-black.svg);
     }
   }
+  //
+  // .navbar-nav {
+  //   .nav-link {
+  //     color: $black;
+  //
+  //     &:hover {
+  //       background-color: transparent;
+  //       box-shadow: inset 0 -1px 0 0 $light-bg;
+  //       text-decoration: none;
+  //     }
+  //
+  //   }
+  // }
 
-  .navbar-nav {
-    .nav-link {
-      color: $black;
+  .dropdown-menu {
+    background-color: $white;
+    border-color: $white;
+    box-shadow: $light-box-shadow;
 
-      &:hover {
-        background-color: transparent;
-        box-shadow: inset 0 -1px 0 0 $light-theme;
-        text-decoration: none;
+    .dropdown-item.dropdown-hero {
+      > img {
+        background-color: $gray-200;
       }
+      p {
+        color: $gray-700;
+      }
+    }
+    .dropdown-item.active {
+      color: $light-primary-text;
+    }
 
+    h5 {
+      color: $gray-600;
+    }
+
+    .col-for-popular-pages,
+    .col-for-人気ページ,
+    .col-for-questions,
+    .col-for-質問 {
+      background-color: $gray-200;
     }
   }
 }
 
-.github-edit-wrap .github-edit.nav-link {
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
-  background-size: 24px 24px;
-  background-position: left 12px center;
-  background-repeat: no-repeat;
-  padding-left: 48px;
-  text-decoration: none;
-  display: block;
-}
-
-// side Nav
-aside li a {
-  color: $black;
-}
 aside .sidenav_cat_title {
   color: $black;
 }
@@ -153,7 +197,7 @@ aside .sidenav_cat_title {
 
 // Code / rfs
 code {
-  color: $orange-500;
+  color: $light-fg;
 }
 
 // code-tabs
@@ -169,5 +213,72 @@ code {
       color: $white;
     }
   }
+
+  .code_toggler {
+    background-color: $gray-800;
+    color: $gray-100;
+    border-color: $gray-100;
+  }
 }
 
+.pg-category {
+  color: $gray-600;
+}
+
+.landing {
+  .nav .nav-link {
+    color: $gray-900;
+    border-bottom-color: $gray-300;
+  }
+
+  .circled-logo {
+    background-color: $gray-300;
+
+    img[src="assets/img/logos/globe.svg"] {
+      filter: invert(100%);
+    }
+  }
+}
+
+// Callouts
+.devportal-callout.caution, .devportal-callout.注意 {
+  border-color: $yellow-700;
+
+  > strong:first-child::before {
+    color: $yellow-700;
+  }
+}
+
+
+
+// feedback widget
+#feedback-content {
+  .docked-widget {
+
+    .widget-header {
+      background-color: $light-bg !important;
+      color: $light-fg !important;
+    }
+    .widget-header-icon {
+      filter: invert(100%);
+    }
+  }
+}
+
+
+// Placeholder text colors (search bars, etc.)
+$placeholder-color: $gray-600;
+::-webkit-input-placeholder { /* Chrome */
+  color: $placeholder-color;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $placeholder-color;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $placeholder-color;
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: $placeholder-color;
+  opacity: 1;
+}

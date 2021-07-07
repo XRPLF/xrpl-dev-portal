@@ -14,10 +14,7 @@
 
     .logo {
       margin-left: 0;
-    }
-
-    .logo {
-      content: url(/assets/img/XRPLedger_DevPortal-white.svg);
+      content: url(../img/XRPLedger_DevPortal-white.svg);
       width: 177px;
       height: 44px;
       display: block;
@@ -593,6 +590,28 @@ a {
   }
   span:last-of-type {
     transform: rotate(45deg);
+  }
+}
+
+// Theme toggler
+.custom-theme-toggle {
+  .custom-control-label {
+  }
+  .custom-control-label::before {
+    display: none;
+  }
+  .custom-control-label::after {
+    position: static;
+    content: "\f186"; // moon
+    font-family: FontAwesome;
+    color: $blue-purple-200;
+    cursor: pointer;
+  }
+}
+html.light .custom-theme-toggle {
+  .custom-control-label::after {
+    content: "\f185"; // sun
+    color: $yellow-700;
   }
 }
 
