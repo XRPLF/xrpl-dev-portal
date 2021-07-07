@@ -41,7 +41,7 @@ Although XRPL was initially developed for payment use cases, both the ledger and
 
 #### What service do transaction validators provide?
 
-Validators determine if transactions meet protocol requirements, and are therefore “valid.” The service validators uniquely provide is administratively grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending. <!-- STYLE_OVERRIDE: therefore -->
+All nodes ensure that transactions meet protocol requirements, and are therefore “valid.” The service that validators uniquely provide is administratively grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending. <!-- STYLE_OVERRIDE: therefore -->
 
 See [Consensus](consensus.html) and the [Ripple Labs Tech Talk: Understanding Consensus](https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/) for more information about the consensus process.
 
@@ -105,7 +105,7 @@ For recommendations and best practices, see [Run `rippled` as a Validator](run-r
 
 #### Why does Ripple use XRP holdings?
 
-Ripple's XRP holdings incentivize the company to make the XRP Ledger as useful as possible. XRP exists as a native asset in the XRP Ledger for anti-spam transaction purposes, and for currency bridging only if beneficial to users. Otherwise, XRP is completely optional.
+Ripple's XRP holdings incentivize the company to make the XRP Ledger as useful as possible. XRP exists as a native asset in the XRP Ledger for anti-spam transaction purposes, and for currency bridging only if beneficial to users. Otherwise, XRP is optional.
 
 
 #### How does the XRP Ledger respond to transaction floods?
@@ -154,4 +154,4 @@ Ripple is also one of several entities who publish recommended UNL settings and 
 
 #### Does the XRP Ledger distinguish between the codebase for validation and the one for user software?
 
-Yes. There are several [XRP Ledger client libraries](client-libraries.html) which are intended for users. These libraries have a different codebases and repositories from the [core XRP Ledger server](the-rippled-server.html) which powers the network and validates transactions.
+Yes. There are several [XRP Ledger client libraries](client-libraries.html) which are intended for user software developers. These libraries have different codebases and repositories from the [core XRP Ledger server](the-rippled-server.html) which powers the network and validates transactions.
