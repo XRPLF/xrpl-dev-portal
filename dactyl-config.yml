@@ -448,14 +448,6 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/introduction/technical-faq.md
-        targets:
-            - en
-
-    -   md: concepts/introduction/technical-faq.ja.md
-        targets:
-            - ja
-
     -   name: Payment System Basics
         html: payment-system-basics.html
         parent: concepts.html
@@ -3733,18 +3725,26 @@ pages:
             - en
             - ja
 
-
 # FAQ is a special case directly under "Docs" ----------------------------------
+
+    -   md: faq.md
+        targets:
+            - en
+
+    -   md: faq.ja.md
+        targets:
+            - ja
+
+    # Redirect old technical-faq.html to new faq.html URL
     -   name: FAQ
-        html: faq.html
-        template: page-faq.html.jinja
-        parent: docs.html
-        blurb: Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community.
-        top_nav_grouping: Questions
-        sidebar: disabled
+        html: technical-faq.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: faq.html
+        nav_omit: true
         targets:
             - en
             - ja
+
 
 # "Community" tab --------------------------------------------------------------
     -   name: Contribute

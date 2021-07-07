@@ -187,17 +187,88 @@
 
 
 // FAQ Page
-#faq-background {
+#faq-background {//old
   position: absolute;
   left: 0;
   right: 0;
   width: 100%;
 }
 
-.q-wrapper {
-  background: $gray-800;
-  border-radius: $border-radius-sm;
-  padding: 2rem;
+.page-faq {
+  background-image: url(../img/backgrounds/faq-bg.svg);
+  background-repeat: no-repeat;
+  background-position-x: left -20vw;
+  background-position-y: top;
+  @include media-breakpoint-up(md) {
+    background-position-x: left;
+    background-size: contain;
+
+    .dactyl-tree-nav {
+      background: linear-gradient(90deg, $body-bg 0%, $body-bg 75%, transparent 100%);
+      padding-left: 1rem;
+      margin-left: -1rem;
+    }
+  }
+
+  .content h6:first-of-type {
+    color: $green-500;
+    margin-bottom: 1rem;
+    // margin-top: 6.5rem;
+    margin-top: 0;
+    font-size: 1.25rem;
+    line-height: 26px;
+    text-align: center;
+  }
+  .content h1:first-of-type {
+    font-size: 3.875rem;
+    line-height: 70px;
+    margin-bottom: 13rem;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  h2 {
+    // These divide up sections of questions.
+    margin-top: 13rem;
+    font-size: 2rem;
+    line-height: 2.375rem;
+  }
+
+  .q-wrapper {
+    background: $gray-800;
+    border-radius: $border-radius-sm;
+    padding: 2rem;
+    padding-right: 3rem; // don't overlap chevron
+    margin-bottom: 1.5rem;
+    width: 100%;
+
+    > a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        color: $white;
+      }
+    }
+
+    h4 {
+      position: relative;
+      font-size: 1.25rem;
+      line-height: 1.625rem;
+      margin-top: 0;
+
+      @include media-breakpoint-down(md) {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+    }
+
+    .chevron {
+      position: absolute;
+      top: 80px; // Compensate for anchor-fix ::before size
+      right: -1rem;
+    }
+  }
 }
 
 .page-docs-index {
