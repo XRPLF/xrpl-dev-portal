@@ -15,7 +15,7 @@ A Ticket in the XRP Ledger is a way of setting aside a [sequence number][Sequenc
 
 ## Background
 
-[Transactions](transaction-basics.html) have sequence numbers so that any given transaction can execute no more than once. Sequence numbers also make sure any given transaction is unique: if you send the exact same amount of money to the same person multiple times, the Sequence Number is one detail that is guaranteed to be different each time. Finally, Sequence Numbers provide an elegant way to put transactions in a consistent order, even if some of them tarrive out of order when sent throughout the network.
+[Transactions](transaction-basics.html) have sequence numbers so that any given transaction can execute no more than once. Sequence numbers also make sure any given transaction is unique: if you send the exact same amount of money to the same person multiple times, the Sequence Number is one detail that is guaranteed to be different each time. Finally, Sequence Numbers provide an elegant way to put transactions in a consistent order, even if some of them arrive out of order when sent throughout the network.
 
 However, there are some situations where sequence numbers are too limiting. For example:
 
