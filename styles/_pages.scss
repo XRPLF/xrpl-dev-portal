@@ -95,6 +95,75 @@
   }
 }
 
+.page-uses {
+  #bitgo {
+    background-image: url(../../img/cards/magenta-orange.svg);
+    .biz-logo {
+      content: url(../img/uses/bitgo.svg);
+    }
+  }
+  #bitpay {
+    background-image: url(../../img/cards/blue-green.svg);
+    .biz-logo {
+      content: url(../img/uses/bitpay.svg);
+    }
+  }
+  #coil {
+    background-image: url(../../img/cards/purple-blue.svg);
+    .biz-logo {
+      content: url(../img/uses/coil.svg);
+    }
+  }
+  #forte {
+    background-image: url(../../img/cards/light-blue.svg);
+    .biz-logo {
+      content: url(../img/uses/forte.svg);
+    }
+  }
+  #gatehub {
+    background-image: url(../../img/cards/pink-purple.svg);
+    .biz-logo {
+      content: url(../img/uses/gatehub.svg);
+    }
+  }
+  #exodus {
+    background-image: url(../../img/cards/green-blue.svg);
+    .biz-logo {
+      content: url(../img/uses/exodus.svg);
+    }
+  }
+  #ripple {
+    background-image: url(../../img/cards/blue-light-blue.svg);
+    .biz-logo {
+      content: url(../img/uses/ripple.svg);
+    }
+  }
+  #towo {
+    background-image: url(../../img/cards/purple-blue.svg);
+    .biz-logo {
+      content: url(../img/uses/towo.svg);
+    }
+  }
+  #raisedinspace {
+    background-image: url(../../img/cards/orange-yellow.svg);
+    .biz-logo {
+      content: url(../img/uses/raised.png);
+    }
+  }
+  #xrpl-labs {
+    background-image: url(../../img/cards/magenta-orange.svg);
+    .biz-logo {
+      content: url(../img/uses/xrpl-labs.svg);
+    }
+  }
+  #xrplorer {
+    background-image: url(../../img/cards/green-purple.svg);
+    .biz-logo {
+      content: url(../img/uses/xplorer.svg);
+    }
+  }
+}
+
 // History Page
 #history-orange {
   position: absolute;

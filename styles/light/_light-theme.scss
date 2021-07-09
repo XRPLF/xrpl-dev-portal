@@ -1,5 +1,7 @@
 $light-bg: $gray-100;
 $light-fg: $black;
+$light-fg-muted: $gray-900;
+$light-form-bg: $gray-300;
 $light-primary-text: $blue-purple-400;
 $light-box-shadow: 0px 5px 20px 0px $gray-400;
 
@@ -32,19 +34,19 @@ $navbar-light-active-color: $primary;
   }
 
   .form-control {
-    border-color: $gray-300;
+    border-color: $light-form-bg;
   }
 
   label .input-group-text,
   .form-control {
     color: $light-fg;
-    background-color: $gray-300;
+    background-color: $light-form-bg;
   }
 
   .ds-input {
     color: $light-fg;
-    background-color: $gray-300;
-    border-color: $gray-300;
+    background-color: $light-form-bg;
+    border-color: $light-form-bg;
 
     &:focus {
       border-color: $blue-purple-400;
@@ -55,28 +57,38 @@ $navbar-light-active-color: $primary;
 .bg-grey-800 {
   background-color: $white;
 }
+.grey-400 {
+  color: $gray-600;
+}
 
 // Content
 
-a {
+a, nav a {
   color: $light-fg;
 
   &.btn-primary {
     // undo this for buttons
     color: $white;
+
+    &:hover {
+      color: $white;
+    }
   }
-}
-
-.longform {
-  color: $gray-900;
-}
-
-nav a {
-  color: $light-fg;
 
   &:hover {
     color: $light-primary-text;
   }
+}
+
+.longform {
+  color: $light-fg-muted;
+}
+.numbers {
+  color: $black;
+}
+
+.landing-table tbody td {
+  color: $light-fg-muted;
 }
 
 .container-new .col-new-card {
@@ -195,12 +207,21 @@ aside .sidenav_cat_title {
   }
 }
 
-// Code / rfs
+.status.not_enabled {
+  color: $yellow-700;
+}
+
+// Inline code font
 code {
   color: $light-fg;
 }
 
-// code-tabs
+// Code blocks
+pre code {
+  color: $white;
+}
+
+// Code tabs
 .multicode {
   a {
     color: $black;
@@ -209,7 +230,7 @@ code {
     }
     &:hover {
       text-decoration: none;
-      background-color: $gray-900;
+      background-color: $light-form-bg;
       color: $white;
     }
   }
@@ -227,7 +248,7 @@ code {
 
 .landing {
   .nav .nav-link {
-    color: $gray-900;
+    color: $light-fg-muted;
     border-bottom-color: $gray-300;
   }
 
@@ -249,6 +270,76 @@ code {
   }
 }
 
+.devportal-callout.tip, .devportal-callout.ヒント {
+  border-color: $green-600;
+
+    > strong:first-child::before {
+      color: $green-600;
+    }
+}
+
+// FAQ (old style)
+.accordian-row {
+  background-color: $gray-200;
+  color: $light-fg;
+}
+
+// Carbon calculator
+
+.invertible-img {
+  filter: invert(100%);
+}
+
+#co2Animation, #gasAnimation {
+  //filter: invert(100%) hue-rotate(200deg) brightness(1.8);
+  // Leave these dark for now
+  background: $body-bg;
+  padding: 1rem;
+}
+
+.page-uses {
+  #bitgo {
+    .biz-logo {
+      content: url(../img/uses/bitgo-light.svg);
+    }
+  }
+  #exodus {
+    .biz-logo {
+      content: url(../img/uses/exodus-light.svg);
+    }
+  }
+  #gatehub {
+    .biz-logo {
+      content: url(../img/uses/gatehub-light.svg);
+    }
+  }
+  #raisedinspace {
+    .biz-logo {
+      content: url(../img/uses/raised-light.png);
+    }
+  }
+  #ripple {
+    .biz-logo {
+      content: url(../img/uses/ripple-light.svg);
+    }
+  }
+  #towo {
+    .biz-logo {
+      content: url(../img/uses/towo-light.png);
+    }
+  }
+  #xrpl-labs {
+    .biz-logo {
+      content: url(../img/uses/xrpl-labs-light.svg);
+    }
+  }
+  // Invertible logos
+  #bitpay, #coil, #forte, #xrplorer {
+    .biz-logo {
+      filter: invert(100%);
+    }
+  }
+}
 
 
 // feedback widget

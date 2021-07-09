@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block bodyclasses %}no-sidebar{% endblock %}
-{% block mainclasses %}landing{% endblock %}
+{% block mainclasses %}landing page-uses{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
@@ -80,68 +80,81 @@
       </div>
       <p class="mb-0 longform mt-8-until-sm mt-3 ">{% trans %}There are companies and developer projects around the world that leverage the XRP Ledger to solve interesting problems across a variety of industries and use cases.{% endtrans %}</p>
     </div>
+
+    {% set cards = [
+      { "link": "https://www.bitgo.com/",
+        "name": "BitGo",
+        "id": "bitgo",
+        "title": _("Asset Custody"),
+        "description": _("BitGo provides custodial and non-custodial asset holdings for digital assets including XRP. BitGo's enterprise-level security empowers businesses to integrate digital currencies like XRP into new and existing financial systems.")},
+      { "link": "https://bitpay.com/",
+        "id": "bitpay",
+        "name": "BitPay",
+        "title": _("Payment Processing"),
+        "description": _("BitPay builds powerful, enterprise-grade tools for accepting and spending cryptocurrencies, including XRP.")},
+      { "link": "https://coil.com/",
+        "id": "coil",
+        "name": "Coil",
+        "title": _("Web Monetization"),
+        "description": _("Coil provides web monetization as an alternative to traditional paid advertising. Coil uses the interledger protocol (ILP) to stream micropayments as users consume content. The XRPL’s payment channels provide an ideal system for settling these micropayments at high speed and low cost.")},
+      { "link": "https://www.forte.io/",
+        "id": "forte",
+        "name": "Forte",
+        "title": _("Online Gaming"),
+        "description": _("Forte offers an unprecedented set of easy-to-use tools and services for game developers to integrate blockchain technology into their games, to unlock new economic and creative opportunities for gamers across the world.")},
+      { "link": "https://gatehub.net/",
+        "id": "gatehub",
+        "name": "Gatehub",
+        "title": _("Wallet and Platforms"),
+        "description": _("GateHub is a platform for the Internet of Value, built on the XRP Ledger protocol. It allows everyone to send, receive, trade and manage any type of assets.")},
+      { "link": "https://www.exodus.io/",
+        "id": "exodus",
+        "name": "Exodus",
+        "title": _("Wallets and Apps"),
+        "description": _("Exodus offers wallets and applications for securing, managing and exchanging crypto.")},
+      { "link": "https://ripple.com/",
+        "id": "ripple",
+        "name": "Ripple",
+        "title": _("On-Demand Liquidity"),
+        "description": _("Ripple powers instant, lower-cost settlement of cross-border payments using XRP to source liquidity on demand. XRP is ideally suited for global payments because it's quicker, less costly, and more scalable than any other digital asset.")},
+      { "link": "https://towo.io/",
+        "id": "towo",
+        "name": "Towo Labs",
+        "title": _("Infrastructure"),
+        "description": _("Towo Labs was founded in 2019, to develop XRP Ledger and Interledger infrastructures and make non-custodial crypto management easier.")},
+      { "link": "https://raisedinspace.com/",
+        "id": "raisedinspace",
+        "name": "Raised in Space",
+        "title": _("Music"),
+        "description": _("Raised in Space is a music/tech investment group focused on raising the value of music, innovating across the entire value chain of the music industry.")},
+      { "link": "https://xrpl-labs.com/",
+        "id": "xrpl-labs",
+        "name": "XRPL Labs",
+        "title": _("Applications"),
+        "description": _("From cold storage to apps for signing transactions, XRPL Labs is dedicated to building software on the XRP Ledger.")},
+      { "link": "https://xrplorer.com/",
+        "id": "xrplorer",
+        "name": "Xrplorer",
+        "title": _("Security"),
+        "description": _("Xrplorer offers services and tools that help prevent and combat fraudulent activity on the XRPL as well as custom APIs and analytics that supplement the XRPL APIs where they are not enough.")},
+    ] %}
+    <!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 card-deck">
+    {% for card in cards %}
+      <a class="card col" href="{{card.link}}" target="_blank" id="{{card.id}}">
+        <div class="card-body">
+          <div class="head-logo"><img src="{{card.img}}" alt="{{card.name}}" {% if card.imgclasses %}class="{{card.imgclasses}}"{% endif %}/></div>
+          <h4 class="card-title h5">{{card.title}}</h4>
+        </div>
+        <div class="card-footer">&nbsp;</div>
+      </a>
+    {% endfor %}
+    </div> -->
+
     <div class="mt-10 card-grid card-grid-3xN">
-      {% set cards = [
-        { "href": "https://www.bitgo.com/",
-          "id": "magenta-orange",
-          "img": "./img/uses/bitgo.svg",
-          "title": _("Asset Custody"),
-          "description": _("BitGo provides custodial and non-custodial asset holdings for digital assets including XRP. BitGo's enterprise-level security empowers businesses to integrate digital currencies like XRP into new and existing financial systems.")},
-        { "href": "https://bitpay.com/",
-          "id": "blue-green",
-          "img": "./img/uses/bitpay.svg",
-          "title": _("Payment Processing"),
-          "description": _("BitPay builds powerful, enterprise-grade tools for accepting and spending cryptocurrencies, including XRP.")},
-        { "href": "https://coil.com/",
-          "id": "purple-blue",
-          "img": "./img/uses/coil.svg",
-          "title": _("Web Monetization"),
-          "description": _("Coil provides web monetization as an alternative to traditional paid advertising. Coil uses the interledger protocol (ILP) to stream micropayments as users consume content. The XRPL’s payment channels provide an ideal system for settling these micropayments at high speed and low cost.")},
-        { "href": "https://www.forte.io/",
-          "id": "light-blue",
-          "img": "./img/uses/forte.svg",
-          "title": _("Online Gaming"),
-          "description": _("Forte offers an unprecedented set of easy-to-use tools and services for game developers to integrate blockchain technology into their games, to unlock new economic and creative opportunities for gamers across the world.")},
-        { "href": "https://gatehub.net/",
-          "id": "pink-purple",
-          "img": "./img/uses/gatehub.svg",
-          "title": _("Wallet and Platforms"),
-          "description": _("GateHub is a platform for the Internet of Value, built on the XRP Ledger protocol. It allows everyone to send, receive, trade and manage any type of assets.")},
-        { "href": "https://www.exodus.io/",
-          "id": "green-blue",
-          "img": "./img/uses/exodus.svg",
-          "title": _("Wallets and Apps"),
-          "description": _("Exodus offers wallets and applications for securing, managing and exchanging crypto.")},
-        { "href": "https://ripple.com/",
-          "id": "blue-light-blue",
-          "img": "./img/uses/ripple.svg",
-          "title": _("On-Demand Liquidity"),
-          "description": _("Ripple powers instant, lower-cost settlement of cross-border payments using XRP to source liquidity on demand. XRP is ideally suited for global payments because it's quicker, less costly, and more scalable than any other digital asset.")},
-        { "href": "https://towo.io/",
-          "id": "purple-blue",
-          "img": "./img/uses/towo.svg",
-          "title": _("Infrastructure"),
-          "description": _("Towo Labs was founded in 2019, to develop XRP Ledger and Interledger infrastructures and make non-custodial crypto management easier.")},
-        { "href": "https://raisedinspace.com/",
-          "id": "orange-yellow",
-          "img": "./img/uses/raised.svg",
-          "title": _("Music"),
-          "description": _("Raised in Space is a music/tech investment group focused on raising the value of music, innovating across the entire value chain of the music industry.")},
-        { "href": "https://xrpl-labs.com/",
-          "id": "magenta-orange",
-          "img": "./img/uses/xrpl-labs.svg",
-          "title": _("Applications"),
-          "description": _("From cold storage to apps for signing transactions, XRPL Labs is dedicated to building software on the XRP Ledger.")},
-        { "href": "https://xrplorer.com/",
-          "id": "green-purple",
-          "img": "./img/uses/xplorer.svg",
-          "title": _("Security"),
-          "description": _("Xrplorer offers services and tools that help prevent and combat fraudulent activity on the XRPL as well as custom APIs and analytics that supplement the XRPL APIs where they are not enough.")},
-      ] %}
       {% for card in cards %}
       <a class="col-new col-new-card ls-none bg-grey-800 br-8" href="{{card.href}}" target="_blank" id="{{card.id}}">
         <span class="card-new d-block">
-          <img class="mw-100 mb-3" src="{{card.img}}">
+          <img class="mw-100 mb-3 biz-logo" alt="{{card.name|default(card.id)}}">
           <h4 class="h5">{{card.title}}</h4>
           <p class="mt-6 mb-8">{{card.description}}</p>
         </span>

@@ -58,7 +58,8 @@
   {% set platforms = [
     { "name": "GitHub",
       "img": "assets/img/logos/github.svg",
-      "link": "https://github.com/ripple/xrpl-dev-portal"},
+      "link": "https://github.com/ripple/xrpl-dev-portal",
+      "imgclasses": "invertible-img"},
     { "name": "Twitch",
       "img": "assets/img/logos/twitch.svg",
       "link": "https://www.twitch.tv/ripplexdev"},
@@ -73,7 +74,7 @@
   {% for plat in platforms %}
     <a class="card" href="{{plat.link}}">
       <div class="card-body">
-        <div class="circled-logo"><img src="{{plat.img}}" alt="(logo)" /></div>
+        <div class="circled-logo"><img src="{{plat.img}}" alt="(logo)" {% if plat.imgclasses %}class="{{plat.imgclasses}}"{% endif %}/></div>
         <h4 class="card-title h5">{{plat.name}}</h4>
       </div>
       <div class="card-footer">&nbsp;</div>
