@@ -152,5 +152,16 @@
         "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1119"
       }
     ]
+  },
+  "fix_faucet_and_xrp_escrow": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "b946be648139857ad39443cfc6b3ce5b93342a21",
+        "updatedAt": "2021-07-09T01:45:20.502Z",
+        "href": "pr-preview/fix_faucet_and_xrp_escrow/b946be",
+        "pullRequestUrl": "https://github.com/ripple/xrpl-dev-portal/pull/1121"
+      }
+    ]
   }
 }
