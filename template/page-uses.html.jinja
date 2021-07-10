@@ -17,11 +17,6 @@
 
 {% block main %}
 <div class="overflow-hidden">
-
-  <div class="position-relative">
-    <img src="./img/backgrounds/use-cases-blue.svg" class="landing-bg" id="use-cases-blue">
-  </div>
-
    <section class="py-26 text-center">
     <div class="col-lg-5 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
@@ -35,32 +30,31 @@
   <section class="container-new py-26">
     <ul class="card-grid card-grid-3xN ls-none" id="use-case-card-grid">
       {% set uses = [
-        { "icon": "./img/icons/micropayments.svg",
+        { "id": "micropayments",
           "title": _("Micropayments"),
           "description": _("Developers are using the XRP Ledger to build innovative products for gaming, content, and web monetization, among other applications where currency is at the center.")},
-        { "icon": "./img/icons/wallets.svg",
+        { "id": "wallets",
           "title": _("Cryptocurrency Wallets"),
           "description": _("Use the Ledger to build digital wallets to store private and public passwords and interact with various blockchains to send and receive digital assets, including XRP.")},
-        { "icon": "./img/icons/exchanges.svg",
+        { "id": "exchanges",
           "title": _("Exchanges"),
           "description": _("Build sophisticated exchanges where users can invest and trade crypto and non-blockchain assets such as stocks, ETFs, and commodities.")},
-        { "icon": "./img/icons/stablecoins.svg",
+        { "id": "stablecoins",
           "title": _("Stablecoins"),
           "description": _("Financial institutions can use Issued Currencies to issue stablecoins on the XRP Ledger. XRPL’s integrated decentralized exchange (DEX) allows neutral, counterparty-free digital assets to be seamlessly exchanged to and from “issued assets,” including stablecoins.")},
-        { "icon": "./img/icons/nft.svg",
+        { "id": "nft",
           "title": _("NFTs"),
           "description": _("XRPL allows issuance of IOUs which can represent a currency of any value, which can be extended to the issuance of non-fungible tokens (NFTs).")},
-
-        { "icon": "./img/icons/defi.svg",
+        { "id": "defi",
           "title": _("DeFi"),
           "description": _("Provide access to financial products and services online in a decentralized and borderless manner on XRPL, with decentralized smart contract protocols replacing the traditional role of financial institutions.")},
-        { "icon": "./img/icons/cbdc.svg",
+        { "id": "cbdc",
           "title": _("CBDCs"),
           "description": _("The CBDC Private Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs).")},
       ] %}
       {% for use in uses %}
       <li class="col-new ls-none">
-        <img src="{{use.icon}}">
+        <img id="{{use.id}}" alt="{{use.title}} icon">
         <h4 class="mt-3 mb-0 h5">{{use.title}}</h4>
         <p class="mt-6-until-sm mt-3 mb-0">{{use.description}}</p>
       </li>

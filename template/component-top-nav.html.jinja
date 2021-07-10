@@ -9,7 +9,7 @@
       {% set printed_groupings = [] %}
       {% if top_page.children|selectattr('top_nav_omit', 'undefined_or_ne', True)|list|length %}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="topnav_{{slug(top_page.html)}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>{% if top_page.top_nav_name is defined %}{{top_page.top_nav_name}}{% else %}{{top_page.name}}{% endif %}</span></a>
+        <a class="nav-link dropdown-toggle" href="{{top_page.html}}" id="topnav_{{slug(top_page.html)}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>{% if top_page.top_nav_name is defined %}{{top_page.top_nav_name}}{% else %}{{top_page.name}}{% endif %}</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_{{slug(top_page.html)}}" id="topnav_dd_{{slug(top_page.html)}}">
           {% if top_page.top_nav_hero_image is defined %}
           <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-{{slug(top_page.name)}}" href="{{top_page.html}}">
@@ -92,9 +92,9 @@
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
-        <div class="custom-control custom-theme-toggle" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
           <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
-          <label class="custom-control-label" for="css-toggle-btn"></label>
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
         </div>
       </form>
     </div><!--/#topnav-theme-->

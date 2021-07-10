@@ -2,8 +2,8 @@ $light-bg: $gray-100;
 $light-fg: $black;
 $light-fg-muted: $gray-900;
 $light-form-bg: $gray-300;
-$light-primary-text: $blue-purple-400;
 $light-box-shadow: 0px 5px 20px 0px $gray-400;
+$light-link-hover-color: $blue-purple-500;
 
 body {
     background: $light-bg;
@@ -76,7 +76,7 @@ a, nav a {
   }
 
   &:hover {
-    color: $light-primary-text;
+    color: $light-link-hover-color;
   }
 }
 
@@ -93,9 +93,11 @@ a, nav a {
 
 .container-new .col-new-card {
   box-shadow: $light-box-shadow;
+  color: $light-fg;
 }
 
 .card {
+  color: $light-fg;
   background-color: $white;
   box-shadow: $light-box-shadow;
 }
@@ -138,26 +140,23 @@ a, nav a {
   .navbar-brand {
     .logo {
       content: url(../img/XRPLedger_DevPortal-black.svg);
+      height: 40px;
     }
   }
-  //
-  // .navbar-nav {
-  //   .nav-link {
-  //     color: $black;
-  //
-  //     &:hover {
-  //       background-color: transparent;
-  //       box-shadow: inset 0 -1px 0 0 $light-bg;
-  //       text-decoration: none;
-  //     }
-  //
-  //   }
-  // }
+  .footer-brand {
+    .logo {
+      filter: invert(100%);
+    }
+  }
 
   .dropdown-menu {
     background-color: $white;
     border-color: $white;
     box-shadow: $light-box-shadow;
+
+    a:hover, a.active {
+      color: $light-link-hover-color;
+    }
 
     .dropdown-item.dropdown-hero {
       > img {
@@ -168,7 +167,7 @@ a, nav a {
       }
     }
     .dropdown-item.active {
-      color: $light-primary-text;
+      color: $light-link-hover-color;
     }
 
     h5 {
@@ -182,8 +181,27 @@ a, nav a {
       background-color: $gray-200;
     }
   }
+
+  // Top nav mobile
+  @include media-breakpoint-down(md) {
+    .navbar-toggler {
+      .navbar-toggler-icon {
+        &::after,
+        &::before,
+        div {
+          background-color: $gray-900;
+        }
+      }
+    }
+
+    .navbar-nav .nav-link,
+    .navbar-collapse > .nav-item {
+      background: $gray-100;
+    }
+  }
 }
 
+// Left/right nav
 aside .sidenav_cat_title {
   color: $black;
 }
@@ -191,12 +209,30 @@ aside .sidenav_cat_title {
 .command-list .separator {
   color: $black;
 }
+aside a:hover,
+aside .sidenav_cat_title:hover,
+aside a.active,
+aside a.active:hover,
+aside .active > a,
+aside .active > a:hover {
+  color: $light-link-hover-color;
+}
 
 .dactyl-tree-nav {
   nav {
     border-left: 1px solid $black;
+
+    .nav-link:hover,
+    .nav-link:active {
+      border-left-color: $light-link-hover-color;
+    }
+
+    .active > .nav-link {
+      border-left-color: $light-link-hover-color;
+    }
   }
 }
+
 
 .page-toc,
 .command-list {
@@ -204,6 +240,13 @@ aside .sidenav_cat_title {
 
   .level-3 {
     border-left: 1px solid $black;
+  }
+
+  li a {
+    &:hover,
+    .active {
+      border-left-color: $light-link-hover-color;
+    }
   }
 }
 
@@ -284,6 +327,19 @@ pre code {
   color: $light-fg;
 }
 
+// Homepage
+
+.page-home {
+  #benefits-list {
+    @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
+      ##{$benefit} {
+        content: url("../img/icons/lightmode/#{$benefit}.svg")
+      }
+    }
+  }
+}
+
+
 // Carbon calculator
 
 .invertible-img {
@@ -298,45 +354,35 @@ pre code {
 }
 
 .page-uses {
-  #bitgo {
-    .biz-logo {
-      content: url(../img/uses/bitgo-light.svg);
+  @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
+    ##{$usecase} {
+      content: url("../img/icons/lightmode/#{$usecase}.svg");
     }
   }
-  #exodus {
+
+  // Monochrome logos; invert.
+  #bitpay, #coil, #forte, #xrplorer, #gatehub {
     .biz-logo {
-      content: url(../img/uses/exodus-light.svg);
+      filter: invert(100%);
     }
   }
-  #gatehub {
-    .biz-logo {
-      content: url(../img/uses/gatehub-light.svg);
+  // Alternate SVG logos
+  @each $company in "bitgo", "exodus", "ripple", "xrpl-labs" {
+    ##{$company} {
+      .biz-logo {
+        content: url("../img/uses/lightmode/#{$company}.svg");
+      }
     }
   }
+  // non-SVG logos:
   #raisedinspace {
     .biz-logo {
-      content: url(../img/uses/raised-light.png);
-    }
-  }
-  #ripple {
-    .biz-logo {
-      content: url(../img/uses/ripple-light.svg);
+      content: url(../img/uses/lightmode/raised.png);
     }
   }
   #towo {
     .biz-logo {
-      content: url(../img/uses/towo-light.png);
-    }
-  }
-  #xrpl-labs {
-    .biz-logo {
-      content: url(../img/uses/xrpl-labs-light.svg);
-    }
-  }
-  // Invertible logos
-  #bitpay, #coil, #forte, #xrplorer {
-    .biz-logo {
-      filter: invert(100%);
+      content: url(../img/uses/lightmode/towo.png);
     }
   }
 }

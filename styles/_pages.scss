@@ -27,6 +27,34 @@
   }
 }
 
+.page-home {
+  #benefits-list {
+    @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
+      ##{$benefit} {
+        content: url("../img/icons/#{$benefit}.svg")
+      }
+    }
+  }
+
+  #advanced-features {
+    $feature-cards: ["pink-purple", "neutral-blue", "light-green", "orange", "purple-blue-2"];
+    @for $i from 1 through 5 {
+      .col-new-card:nth-child(#{$i}) {
+        background-image: url("../img/cards/3col-#{nth($feature-cards, $i)}.svg")
+      }
+    }
+  }
+
+  #get-started {
+    $gs-cards: ["orange-yellow-2", "magenta-orange", "blue-green", "light-blue", "green-blue"];
+    @for $i from 1 through 5 {
+      .col-new-card:nth-child(#{$i}) {
+        background-image: url("../img/cards/3col-#{nth($gs-cards, $i)}.svg")
+      }
+    }
+  }
+}
+
 
 .cta {
   position: absolute;
@@ -77,12 +105,6 @@
   right: -4px;
 }
 
-// Use Cases Page
-#use-cases-blue {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 #use-cases-orange {
   position: absolute;
   top: -480px;
@@ -96,70 +118,41 @@
 }
 
 .page-uses {
-  #bitgo {
-    background-image: url(../../img/cards/magenta-orange.svg);
-    .biz-logo {
-      content: url(../img/uses/bitgo.svg);
+  background: url(../img/backgrounds/use-cases-blue.svg) no-repeat;
+  background-position-x: left -20vw;
+  background-position-y: top;
+  @include media-breakpoint-up(md) {
+    background-position-x: left;
+  }
+  @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
+    ##{$usecase} {
+      content: url("../img/icons/#{$usecase}.svg");
     }
   }
-  #bitpay {
-    background-image: url(../../img/cards/blue-green.svg);
-    .biz-logo {
-      content: url(../img/uses/bitpay.svg);
-    }
-  }
-  #coil {
-    background-image: url(../../img/cards/purple-blue.svg);
-    .biz-logo {
-      content: url(../img/uses/coil.svg);
-    }
-  }
-  #forte {
-    background-image: url(../../img/cards/light-blue.svg);
-    .biz-logo {
-      content: url(../img/uses/forte.svg);
-    }
-  }
-  #gatehub {
-    background-image: url(../../img/cards/pink-purple.svg);
-    .biz-logo {
-      content: url(../img/uses/gatehub.svg);
-    }
-  }
-  #exodus {
-    background-image: url(../../img/cards/green-blue.svg);
-    .biz-logo {
-      content: url(../img/uses/exodus.svg);
-    }
-  }
-  #ripple {
-    background-image: url(../../img/cards/blue-light-blue.svg);
-    .biz-logo {
-      content: url(../img/uses/ripple.svg);
-    }
-  }
-  #towo {
-    background-image: url(../../img/cards/purple-blue.svg);
-    .biz-logo {
-      content: url(../img/uses/towo.svg);
+
+  @each $company,$card-graphic in (
+    "bitgo": "magenta-orange",
+    "bitpay": "blue-green",
+    "coil": "purple-blue",
+    "exodus": "green-blue",
+    "forte": "light-blue",
+    "gatehub": "orange-2",
+    "ripple": "blue-light-blue",
+    "towo": "purple",
+    "xrpl-labs": "magenta-2",
+    "xrplorer": "green-purple"
+  ) {
+    ##{$company} {
+      background-image: url("../img/cards/3col-#{$card-graphic}.svg");
+      .biz-logo {
+        content: url("../img/uses/#{$company}.svg");
+      }
     }
   }
   #raisedinspace {
-    background-image: url(../../img/cards/orange-yellow.svg);
+    background-image: url(../img/cards/3col-orange-yellow.svg);
     .biz-logo {
       content: url(../img/uses/raised.png);
-    }
-  }
-  #xrpl-labs {
-    background-image: url(../../img/cards/magenta-orange.svg);
-    .biz-logo {
-      content: url(../img/uses/xrpl-labs.svg);
-    }
-  }
-  #xrplorer {
-    background-image: url(../../img/cards/green-purple.svg);
-    .biz-logo {
-      content: url(../img/uses/xplorer.svg);
     }
   }
 }
@@ -354,7 +347,7 @@
 .page-references {
   #refs-types .card-deck {
     .card:nth-child(1) .card-footer {
-      background-image: url(../img/cards/3col-orange-2.svg);
+      background-image: url(../img/cards/3col-orange.svg);
     }
     .card:nth-child(2) .card-footer {
       background-image: url(../img/cards/3col-green-2.svg);

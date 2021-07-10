@@ -7,8 +7,10 @@
 /* Full-link cards */
 a.card {
   border: 0;
+  color: $white;
 }
-a.card:hover {
+a.card:hover,
+a:hover .card-new {
   text-decoration: none;
 }
 a.card:hover h3 {

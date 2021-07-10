@@ -15,8 +15,8 @@
     .logo {
       margin-left: 0;
       content: url(../img/XRPLedger_DevPortal-white.svg);
-      width: 177px;
-      height: 44px;
+      width: 162px;
+      height: 40px;
       display: block;
     }
 
@@ -376,6 +376,7 @@
       height: 0;
       display: block;
       padding: 0;
+      border-radius: 0;
       &.show {
         // 80px = height of top nav element (with x)
         // 52px = height of dropdown toggle (with <)
@@ -383,7 +384,8 @@
 
         &#topnav_dd_docshtml {
           display: grid;
-          grid-template-columns: 187px 187px;
+          //grid-template-columns: 187px 187px;
+          grid-template-columns: minmax(187px, 1fr) minmax(187px, 1fr);
           gap: 1px;
           left: -200px;
 
@@ -596,22 +598,33 @@ a {
 // Theme toggler
 .custom-theme-toggle {
   .custom-control-label {
+    padding: 1rem;
   }
   .custom-control-label::before {
-    display: none;
+    position: static;
+    display: inline-block;
+    content: " ";
+    background: url("../img/sun-moon.svg");
+    cursor: pointer;
+    border: 0;
+    background-size: 3rem;
+    background-color: transparent;
+    background-position: top left;
+    transform-origin: center;
+    margin-left: -.5rem;
+    margin-right: .5rem;
+    transition: all .4s ease;
+    transform: rotate(15deg);
   }
   .custom-control-label::after {
-    position: static;
-    content: "\f186"; // moon
-    font-family: FontAwesome;
-    color: $blue-purple-200;
-    cursor: pointer;
+    display: none;
   }
 }
 html.light .custom-theme-toggle {
-  .custom-control-label::after {
-    content: "\f185"; // sun
-    color: $yellow-700;
+  .custom-control-label::before {
+    background-color: transparent;
+    background-position: bottom right;
+    transform: rotate(-15deg);
   }
 }
 

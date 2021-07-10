@@ -9,14 +9,14 @@ aside .sidenav_cat_title {
 }
 aside a:hover,
 aside .sidenav_cat_title:hover {
-  color: $primary;
+  color: $link-hover-color;
 }
 
 aside a.active,
 aside a.active:hover,
 aside .active > a,
 aside .active > a:hover {
-  color: $primary;
+  color: $link-hover-color;
   font-weight: 700;
 }
 aside a.active-parent,
@@ -27,7 +27,7 @@ aside .active-parent > a {
 .page-toc .level-1 a,
 .command-list .separator {
   font-weight: 700;
-  font-family: "Space Mono", monospace;
+  // font-family: "Space Mono", monospace;
   color: $white;
 }
 
@@ -62,12 +62,12 @@ aside .active-parent > a {
 
     .nav-link:hover,
     .nav-link:active {
-      border-left: 1px solid $primary;
+      border-left: 1px solid $link-hover-color;
       margin-left: -1px;
     }
 
     .active > .nav-link {
-      border-left: 2px solid $primary;
+      border-left: 2px solid $link-hover-color;
       margin-left: -1px;
       padding-left: calc(1rem - 1px);
     }
@@ -166,14 +166,14 @@ aside .active-parent > a {
       &:hover,
       .active {
         text-decoration: none;
-        border-left: 1px solid $primary;
+        border-left: 1px solid $link-hover-color;
         margin-left: -1px;
       }
     }
 
     &.active a,
     &.active a:hover {
-      border-left: 2px solid $primary;
+      border-left: 2px solid $link-hover-color;
       padding-left: calc(1rem - 1px);
       margin-left: -1px;
     }

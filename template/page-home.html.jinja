@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block bodyclasses %}no-sidebar{% endblock %}
-{% block mainclasses %}landing{% endblock %}
+{% block mainclasses %}landing page-home{% endblock %}
 
 {% block breadcrumbs %}
 {% endblock %}
@@ -49,30 +49,30 @@
       <h3 class="h4 h2-sm">{% trans %}Why developers choose the XRP Ledger{% endtrans %}</h3>
       <h6 class="green-500 mb-3">{% trans %}Discover Benefits{% endtrans %}</h6>
     </div>
-    <ul class="mt-10 card-grid card-grid-3xN">
+    <ul class="mt-10 card-grid card-grid-3xN" id="benefits-list">
       {% set cards = [
-        { "icon": "./img/icons/public.svg",
+        { "id": "public",
           "title": _("Public and Decentralized Structure"),
           "description": _("Open source, open to anyone to build on, maintained by the community")},
-        { "icon": "./img/icons/streamlined.svg",
+        { "id": "streamlined",
           "title": _("Streamlined <br class='until-sm'/>Development"),
           "description": _("Tools and documentation that speed development and reduce time to market")},
-        { "icon": "./img/icons/performance.svg",
+        { "id": "performance",
           "title": _("High <br class='until-sm'/>Performance"),
           "description": _("Capable of settling thousands of transactions in seconds")},
-        { "icon": "./img/icons/low-cost.svg",
+        { "id": "low-cost",
           "title": _("Low Cost"),
           "description": _("At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of use cases")},
-        { "icon": "./img/icons/community.svg",
+        { "id": "community",
           "title": _("Vibrant Community"),
           "description": _("Developers, validators, users, and businesses make the XRP Ledger better every day")},
-        { "icon": "./img/icons/reliability.svg",
+        { "id": "reliability",
           "title": _("Proven Reliability"),
           "description": _("8+ years of consistent performance over more than 63 million ledgers")},
       ] %}
       {% for card in cards %}
       <li class="col-new ls-none">
-        <img src="{{card.icon}}" alt="{{card.title}} Icon">
+        <img id="{{card.id}}" alt="{{card.title}} Icon">
         <h4 class="mt-3 mb-0 h5">{{card.title}}</h4>
         <p class="mt-6-until-sm mt-3 mb-0">{{card.description}}</p>
       </li>
@@ -85,31 +85,26 @@
       <h3 class="h4 h2-sm">{% trans %}Activate the power of the XRP Ledger and find the building blocks for your next innovation{% endtrans %}</h3>
       <h6 class="green-500 mb-3">{% trans %}Explore Advanced Features{% endtrans %}</h6>
     </div>
-    <div class="mt-10 card-grid card-grid-3xN">
+    <div class="mt-10 card-grid card-grid-3xN" id="advanced-features">
       {% set cards2 = [
-        { "id": "pink-purple",
-          "href": "decentralized-exchange.html",
+        { "href": "decentralized-exchange.html",
           "title":  _("Decentralized Exchange"),
           "description":  _("A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain")},
-        { "id": "neutral-blue",
-          "href": "cross-currency-payments.html",
+        { "href": "cross-currency-payments.html",
           "title":  _("Cross-Currency Payments"),
           "description":  _("Atomically settle multi-hop payments that cross currency or national boundaries with ease")},
-        { "id": "light-green",
-          "href": "payment-channels.html",
+        { "href": "payment-channels.html",
           "title":  _("Payment <br class='until-sm'/>Channels"),
           "description":  _("Batched micropayments with unlimited speed, secured with XRP")},
-        { "id": "orange",
-          "href": "multi-signing.html",
+        { "href": "multi-signing.html",
           "title":  _("Multi-Signing"),
           "description":  _("Flexible options for custody and security of on-ledger accounts")},
-        { "id": "purple-blue-2",
-          "href": "issued-currencies-overview.html",
+        { "href": "issued-currencies-overview.html",
           "title":  _("Issued Currencies"),
           "description":  _("All currencies other than XRP can be represented in the XRP Ledger as issued currencies, sometimes called “IOUs”")},
       ] %}
       {% for card in cards2 %}
-      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" id="{{card.id}}" href="{{card.href}}">
+      <a class="col-new col-new-card ls-none bg-grey-800 br-8 mb-16-sm" href="{{card.href}}">
         <span class="card-new d-block">
           <h4 class="h5">{{card.title}}</h4>
           <p class="mt-6 mb-8">{{card.description}}</p>
@@ -124,26 +119,21 @@
       <h3 class="h4 h2-sm">{% trans %}Choose a path to start building on the XRPL{% endtrans %}</h3>
       <h6 class="green-500 mb-3">{% trans %}Get Started{% endtrans %}</h6>
     </div>
-    <div class="mt-10 card-grid card-grid-3xN">
+    <div class="mt-10 card-grid card-grid-3xN" id="get-started">
       {% set cards3 = [
-        { "id": "orange-yellow",
-          "href": "get-started.html",
+        { "href": "get-started.html",
           "title":  _("Quickstart"),
           "description":  _("Access everything you need to get started working with the XRPL")},
-        { "id": "magenta-orange",
-          "href": "tutorials.html",
+        { "href": "tutorials.html",
           "title":  _("Guided Tutorials"),
           "description":  _("Follow step-by-step guides for frequent tasks")},
-        { "id": "blue-green",
-          "href": "concepts.html",
+        { "href": "concepts.html",
           "title":  _("XRPL Fundamentals"),
           "description":  _("Read about the XRPL’s foundational concepts")},
-        { "id": "light-blue",
-          "href": "client-libraries.html",
+        { "href": "client-libraries.html",
           "title":  _("Choose a Language"),
           "description":  _("Find tools, documentation, and sample code in Python, Java, Javascript, or use HTTP APIs")},
-        { "id": "green-blue",
-          "href": "uses.html",
+        { "href": "uses.html",
           "title":  _("Get Inspired"),
           "description":  _("See what your peers have built on the XRPL")},
       ] %}
