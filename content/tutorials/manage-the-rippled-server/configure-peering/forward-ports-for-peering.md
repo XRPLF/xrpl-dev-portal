@@ -59,7 +59,7 @@ $ sudo firewall-cmd --zone=public --permanent --add-port=51235/tcp
 
 For other software and hardware firewalls, see the manufacturer's official documentation.
 
-If your using a hosting provider includes a virtual firewall, you do not need to use `firewalld`, but will still need to allow the peer port, and ensure your host is attached. e.g., AWS Security Groups with a rule for the peer port open to the public internet.
+If you are using a hosting service with a virtual firewall (for example, [AWS Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)), you do not need to use `firewalld`, but you still need to allow inbound traffic from the open internet on the peer port. Make sure you apply the relevant rules to your host or virtual machine.
 
 
 ## See Also
