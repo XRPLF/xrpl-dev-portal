@@ -127,10 +127,25 @@
         <div class="mt-10 p-10 br-8 bg-grey-800 text-center position-relative">
           <img src="./img/backgrounds/cta-xrp-overview-green-2.svg" class="landing-bg cta cta-bottom-right">
           <div class="z-index-1 position-relative">
-            <h3 class="h4">{% trans %}As of <span class="green-500">December 2017</span> <br/>
-            <span class="d-inline-flex"><img id="xrp-mark-overview" class="mw-100 mr-2" src="./img/logos/xrp-mark.svg" alt="XRP Logo Mark"> <span class="numbers green-500">55B</span></span><br/>
+            <h3 class="h4">{% trans %}As of <span class="green-500" id="ripple-escrow-as-of">December 2017</span> <br/>
+            <span class="d-inline-flex"><img id="xrp-mark-overview" class="mw-100 mr-2" src="./img/logos/xrp-mark.svg" alt="XRP Logo Mark"> <span class="numbers green-500" id="ripple-escrow-amount">55B</span></span><br/>
                 XRP remains in escrow{% endtrans %}</h3>
           </div>
+          <script type="application/javascript">
+          $(document).ready(async() => {
+            let resp = await fetch("https://data.ripple.com/v2/network/xrp_distribution?descending=true&limit=1")
+            if (resp.ok) {
+              let j = await resp.json()
+              const exact_amt = j.rows[0].escrowed
+              const amt_billions = Math.floor(exact_amt / 1e9)
+              const when = new Date(j.rows[0].date)
+              $("#ripple-escrow-as-of").text(when.toLocaleDateString(undefined, {year: 'numeric', month:'short'}))
+              $("#ripple-escrow-amount").text(amt_billions + "B")
+            } else {
+              console.warn("Fetching data about Ripple's XRP escrow from the data API failed.")
+            }
+          })
+          </script>
         </div>
       </div>
 

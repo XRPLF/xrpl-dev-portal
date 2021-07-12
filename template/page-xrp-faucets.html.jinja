@@ -3,40 +3,18 @@
 {% block bodyclasses %}page-test-net{% endblock %}
 
 {% block right_sidebar %}
-<div class="card">
-  <div class="card-header">
     <h4>Testnet Servers</h4>
-  </div>
-  <div class="card-body">
-    <h4>WebSocket and RippleAPI</h4>
-    <div class="multicode" id="code-0">
-      <ul class="codetabs">
-        <li><a href="#code-0-0">Testnet</a></li>
-        <li><a href="#code-0-1">Devnet</a></li>
-      </ul>
-      <div class="code_sample" id="code-0-0">
-        <pre><code>wss://s.altnet.rippletest.net:51233</code></pre>
-      </div>
-      <div class="code_sample" id="code-0-1">
-        <pre><code>wss://s.devnet.rippletest.net:51233</code></pre>
-      </div>
-    </div>
+    <pre><code>// WebSocket
+wss://s.altnet.rippletest.net:51233
 
-    <h4 id="json-rpc">JSON-RPC</h4>
-    <div class="multicode" id="code-1">
-      <ul class="codetabs">
-        <li><a href="#code-1-0">Testnet</a></li>
-        <li><a href="#code-1-1">Devnet</a></li>
-      </ul>
-      <div class="code_sample" id="code-1-0">
-        <pre><code>https://s.altnet.rippletest.net:51234</code></pre>
-      </div>
-      <div class="code_sample" id="code-1-1">
-        <pre><code>https://s.devnet.rippletest.net:51234</code></pre>
-      </div>
-    </div>
-  </div>
-</div>
+// JSON-RPC
+https://s.altnet.rippletest.net:51234</code></pre>
+    <h4>Devnet Servers</h4>
+    <pre><code>// WebSocket
+wss://s.devnet.rippletest.net:51233
+
+// JSON-RPC
+https://s.devnet.rippletest.net:51234</code></pre>
 {% endblock %}
 
 {% block main %}
