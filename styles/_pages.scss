@@ -46,7 +46,7 @@
   }
 
   #get-started {
-    $gs-cards: ["orange-yellow ", "magenta-orange", "purple-blue-green", "light-blue", "green-blue"];
+    $gs-cards: ["orange-yellow", "magenta-orange", "purple-blue-green", "light-blue", "green-blue"];
     @for $i from 1 through 5 {
       .col-new-card:nth-child(#{$i}) {
         background-image: url("../img/cards/3col-#{nth($gs-cards, $i)}.svg")

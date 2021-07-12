@@ -22,11 +22,6 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // Colors
-$navbar-light-color: $dark;
-$navbar-light-hover-color: $secondary;
-$navbar-light-active-color: $primary;
-
-
 .search, .input-group {
   .input-group-text {
     background-color: $gray-200;
@@ -75,8 +70,12 @@ a, nav a {
     }
   }
 
-  &:hover {
+  &:hover, &:active, &.active {
     color: $light-link-hover-color;
+  }
+
+  &:focus {
+    background-color: transparent;
   }
 }
 
