@@ -600,7 +600,8 @@ a {
   .custom-control-label {
     padding: 1rem;
   }
-  .custom-control-label::before {
+  .custom-control-label::before,
+  .custom-control-input:checked ~ .custom-control-label::before {
     position: static;
     display: inline-block;
     content: " ";

@@ -1,29 +1,4 @@
-// /* Site-wide header link styles --------------------------------------------- */
-// h1 a,
-// h2 a,
-// h3 a {
-//   color: $white;
-//   text-decoration: none;
-// }
-// h1 a:hover,
-// h2 a:hover,
-// h3 a:hover,
-// .xrpl-footer h5 a:hover {
-//   color: $link-hover-color;
-// }
-//
-// .curated-links a,
-// .children-display a,
-// a.card,
-// .xrpl-footer a {
-//   color: $white;
-//
-//   &:hover {
-//     color: $primary;
-//   }
-// }
-
-/* Content text styling ----------------------------------------------------- */
+/* Content text styling (applies mostly to Markdown-generated content)------- */
 
 .content {
   padding-bottom: 50px;
