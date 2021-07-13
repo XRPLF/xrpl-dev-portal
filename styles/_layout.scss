@@ -57,6 +57,53 @@ section {
   }
 }
 
+// Nav grids -------------------------------------------------------------------
+
+.nav-grid-lg {
+  display: flex;
+  flex-direction: column;
+
+  .nav-item {
+    width: 100%;
+
+    .nav-link {
+      display: flex;
+
+      span {
+        flex-grow: 0;
+      }
+
+      img {
+        max-height: 2rem;
+      }
+    }
+  }
+
+  .nav-grid-head {
+    margin-top: 2.5rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 80px;
+
+    .nav-grid-head {
+      margin-top: 0;
+    }
+  }
+}
+
+
+@for $i from 1 through 5 {
+  .cols-of-#{$i} {
+    @include media-breakpoint-up(lg) {
+      grid-template-rows: repeat($i, min-content);
+    }
+  }
+}
+
+
 // Card Grid styles ------------------------------------------------------------
 
 .card-grid {

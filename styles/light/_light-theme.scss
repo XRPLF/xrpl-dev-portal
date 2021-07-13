@@ -1,9 +1,13 @@
 $light-bg: $gray-100;
 $light-fg: $black;
-$light-fg-muted: $gray-900;
+$light-fg-muted: $gray-800;
+$light-fg-disabled: $gray-400;
 $light-form-bg: $gray-300;
 $light-box-shadow: 0px 5px 20px 0px $gray-400;
 $light-link-hover-color: $blue-purple-500;
+$light-standout-bg: $white;
+
+// General color elements ------------------------------------------------------
 
 body {
     background: $light-bg;
@@ -21,21 +25,39 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-// Colors
-.search, .input-group {
+.bg-grey-800 {
+  background-color: $light-standout-bg;
+}
+.grey-400 {
+  color: $gray-600;
+}
+
+.text-muted {
+  color: $light-fg-muted !important;
+}
+.longform {
+  color: $light-fg-muted;
+}
+.numbers {
+  color: $black;
+}
+
+.invertible-img {
+  filter: invert(100%);
+}
+
+// Forms and inputs ------------------------------------------------------------
+.search, .input-group, .form-group {
   .input-group-text {
     background-color: $gray-200;
     color: $gray-800;
   }
 
-  .form-control {
-    border-color: $light-form-bg;
-  }
-
   label .input-group-text,
-  .form-control {
+  .form-control:not(.btn) {
     color: $light-fg;
     background-color: $light-form-bg;
+    border-color: $light-form-bg;
   }
 
   .ds-input {
@@ -49,14 +71,20 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-.bg-grey-800 {
-  background-color: $white;
-}
-.grey-400 {
-  color: $gray-600;
+.list-group-item {
+  border-color: $light-fg-muted;
+  background-color: $light-bg;
+
+  &.disabled {
+    color: $light-fg-disabled;
+  }
 }
 
-// Content
+.progress {
+  background-color: $light-form-bg;
+}
+
+// Navigation ------------------------------------------------------------------
 
 a, nav a {
   color: $light-fg;
@@ -79,27 +107,10 @@ a, nav a {
   }
 }
 
-.longform {
-  color: $light-fg-muted;
-}
-.numbers {
-  color: $black;
-}
-
 .landing-table tbody td {
   color: $light-fg-muted;
 }
 
-.container-new .col-new-card {
-  box-shadow: $light-box-shadow;
-  color: $light-fg;
-}
-
-.card {
-  color: $light-fg;
-  background-color: $white;
-  box-shadow: $light-box-shadow;
-}
 
 // Buttons
 .btn-outline-secondary,
@@ -140,11 +151,6 @@ a, nav a {
     .logo {
       content: url(../img/XRPLedger_DevPortal-black.svg);
       height: 40px;
-    }
-  }
-  .footer-brand {
-    .logo {
-      filter: invert(100%);
     }
   }
 
@@ -249,10 +255,87 @@ aside .active > a:hover {
   }
 }
 
+// Footer
+.footer-brand {
+  .logo {
+    filter: invert(100%);
+  }
+}
+
+.copyright-license {
+  text-shadow: white 0px 0px 2px, white 1px 1px 2px,
+               white 2px 2px 3px, white 2px 2px 4px,
+               white 2px 2px 5px, white 2px 2px 6px,
+               white -1px -1px 2px,
+               white -2px -2px 3px, white -2px -2px 4px;
+}
+
+// Layout elements -------------------------------------------------------------
+.container-new .col-new-card {
+  box-shadow: $light-box-shadow;
+  color: $light-fg;
+}
+
+.card {
+  color: $light-fg;
+  background-color: $light-standout-bg;
+  box-shadow: $light-box-shadow;
+}
+
+// FAQ (old style)
+.accordian-row {
+  background-color: $gray-200;
+  color: $light-fg;
+}
+
+// Status labels
 .status.not_enabled {
   color: $yellow-700;
 }
 
+// Parent ("category") page in label landings
+.pg-category {
+  color: $gray-600;
+}
+
+.landing {
+  .nav .nav-link {
+    color: $light-fg-muted;
+    border-bottom-color: $gray-300;
+  }
+
+  .circled-logo {
+    background-color: $gray-300;
+
+    img[src="assets/img/logos/globe.svg"] {
+      filter: invert(100%);
+    }
+  }
+
+  p a,
+  .longform a {
+    color: $light-link-hover-color;
+  }
+}
+
+// Callouts
+.devportal-callout.caution, .devportal-callout.注意 {
+  border-color: $yellow-700;
+
+  > strong:first-child::before {
+    color: $yellow-700;
+  }
+}
+
+.devportal-callout.tip, .devportal-callout.ヒント {
+  border-color: $green-600;
+
+    > strong:first-child::before {
+      color: $green-600;
+    }
+}
+
+// Code ------------------------------------------------------------------------
 // Inline code font
 code {
   color: $light-fg;
@@ -284,47 +367,24 @@ pre code {
   }
 }
 
-.pg-category {
-  color: $gray-600;
+// Dev tools -------------------------------------------------------------------
+.modal-content {
+  background-color: $light-standout-bg;
 }
 
-.landing {
-  .nav .nav-link {
-    color: $light-fg-muted;
-    border-bottom-color: $gray-300;
-  }
 
-  .circled-logo {
-    background-color: $gray-300;
+.rpc-tool {
+  pre .toggle {
+    color: $white;
 
-    img[src="assets/img/logos/globe.svg"] {
-      filter: invert(100%);
+    &:hover {
+      color: $blue-purple-300;
     }
   }
 }
 
-// Callouts
-.devportal-callout.caution, .devportal-callout.注意 {
-  border-color: $yellow-700;
 
-  > strong:first-child::before {
-    color: $yellow-700;
-  }
-}
-
-.devportal-callout.tip, .devportal-callout.ヒント {
-  border-color: $green-600;
-
-    > strong:first-child::before {
-      color: $green-600;
-    }
-}
-
-// FAQ (old style)
-.accordian-row {
-  background-color: $gray-200;
-  color: $light-fg;
-}
+// Individual page styles ------------------------------------------------------
 
 // Homepage
 
@@ -338,20 +398,66 @@ pre code {
   }
 }
 
+// XRPL Overview
+#validator-graphic {
+  content: url(../img/lightmode/validators.svg);
+}
+
+// XRP Overview
+
+#wallets {
+  #wallet-xumm {
+    content: url("../img/wallets/lightmode/xumm.svg")
+  }
+}
+
+#top-exchanges {
+  // Kraken, eToro are OK on both light and dark
+
+  // Vector logos
+  @each $exchange in "bitstamp", "cex-io", "liquid", "bitfinex", "lmax" {
+    #exch-#{$exchange} {
+      content: url("../img/exchanges/lightmode/#{$exchange}.svg");
+    }
+  }
+
+  // PNG logos
+  @each $exchange in "bittrex", "currency-com", "ftx" {
+    #exch-#{$exchange} {
+      content: url("../img/exchanges/lightmode/#{$exchange}.png");
+    }
+  }
+}
+
+// History page
+.timeline-dot {
+  background-color: $light-bg;
+}
 
 // Carbon calculator
+.page-calculator {
+  #co2Animation, #gasAnimation {
+    //filter: invert(100%) hue-rotate(200deg) brightness(1.8);
+    // Leave these dark for now
+    background: $body-bg;
+    padding: 1rem;
+  }
 
-.invertible-img {
-  filter: invert(100%);
+  #calculator-mobile-toggle.show {
+    background-color: $blue-purple-500;
+    color: $white;
+  }
+  #calculator-inputs.sticky {
+    background-color: $light-bg;
+  }
+
+  #data-selector li:not(.active) a {
+    background-color: $light-form-bg;
+    color: $light-fg;
+  }
 }
 
-#co2Animation, #gasAnimation {
-  //filter: invert(100%) hue-rotate(200deg) brightness(1.8);
-  // Leave these dark for now
-  background: $body-bg;
-  padding: 1rem;
-}
-
+// Use Cases & Featured Projects page
 .page-uses {
   @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
     ##{$usecase} {

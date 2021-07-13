@@ -36,6 +36,7 @@
 
 .page-tx-sender .input-group .form-control {
   flex: 1 1 20%;
+  height: auto;
 }
 
 .bootstrap-growl {
@@ -97,5 +98,13 @@
 
   input {
     margin: 0 !important;
+  }
+}
+
+.rpc-tool .main {
+  h1::before, h2::before, h3::before {
+    // These aren't anchors, and the placement of the anchor fix thing
+    // causes things above them to be unclickable
+    display: none;
   }
 }

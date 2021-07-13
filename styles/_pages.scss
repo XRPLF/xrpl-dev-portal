@@ -89,6 +89,30 @@
   }
 }
 
+#wallets {
+  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub" {
+    #wallet-#{$wallet} {
+      content: url("../img/wallets/#{$wallet}.svg");
+    }
+  }
+}
+
+#top-exchanges {
+  // Vector logos
+  @each $exchange in "bitstamp", "kraken", "cex-io", "liquid", "lmax", "bitfinex", "etoro" {
+    #exch-#{$exchange} {
+      content: url("../img/exchanges/#{$exchange}.svg");
+    }
+  }
+
+  // Raster logos
+  @each $exchange in "bittrex", "currency-com", "ftx" {
+    #exch-#{$exchange} {
+      content: url("../img/exchanges/#{$exchange}.png");
+    }
+  }
+}
+
 // XRPL Overview Page
 #xrpl-overview-purple {
   position: absolute;
@@ -115,6 +139,10 @@
   @include media-breakpoint-up(lg) {
     margin-top: -40px; // offset the 40px margin of the cols
   }
+}
+
+#validator-graphic {
+  content: url(../img/validators.svg);
 }
 
 .page-uses {
@@ -170,7 +198,7 @@
 }
 .hidden-section {
   overflow: hidden;
-  visibility: none;
+  visibility: hidden;
   height: 0;
   &.show {
     overflow: auto;

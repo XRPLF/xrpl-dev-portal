@@ -93,12 +93,12 @@
         <p class="mb-10">{% trans %}XRP can be sent directly without needing a central intermediary, making it a convenient instrument in bridging two different currencies quickly and efficiently. It is freely exchanged on the open market and used in the real world for enabling cross-border payments and microtransactions.{% endtrans %}</p>
         <div class="card-grid card-grid-2xN mb-10">
           <div>
-            <img class="mw-100 mb-2" src="./img/icons/briefcase.svg">
+            <img class="mw-100 mb-2 invertible-img" src="assets/img/icons/briefcase.svg">
             <h6 class="fs-4-5">{% trans %}Financial Institutions{% endtrans %}</h6>
             <p class="">{% trans %}Leverage XRP as a bridge currency to facilitate faster, more affordable cross-border payments around the world.{% endtrans %}</p>
           </div>
           <div>
-            <img class="mw-100 mb-2" src="./img/icons/user.svg">
+            <img class="mw-100 mb-2 invertible-img" src="assets/img/icons/user.svg">
             <h6 class="fs-4-5">{% trans %}Individual Consumers{% endtrans %}</h6>
             <p>{% trans %}Use XRP to move different currencies around the world. {% endtrans %}</p>
           </div>
@@ -137,50 +137,49 @@
       <div class="link-section py-26" id="wallets">
         <h2 class="h4 h2-sm mb-8">{% trans %}What Wallets Support XRP?{% endtrans %}</h2>
         <h5 class="longform mb-10">{% trans %}Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software.{% endtrans %}</h5>
-        <div class="card-grid card-grid-2xN mb-10">
-          <div class="mr-5-until-md">
+        <ul class="nav nav-grid-lg cols-of-4" id="wallets">
+          <li class="nav-item nav-grid-head">
             <h6 class="fs-4-5">{% trans %}Hardware Wallets{% endtrans %}</h6>
-            <ul class="nav flex-column">
-              {% set hardwallets = [
-                { "href": _("https://www.ledger.com/"),
-                  "img":  _("./img/wallets/ledger.svg"),
-                  "alt": _("Ledger") },
-                { "href": _("https://www.secalot.com/"),
-                  "img":  _("./img/wallets/secalot.svg"),
-                  "alt": _("Secalot") },
-                { "href": _("https://trezor.io/"),
-                  "img":  _("./img/wallets/trezor.svg"),
-                  "alt": _("Trezor") },
-              ] %}
-              {% for wallet in hardwallets %}
-              <li class="nav-item">
-                <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100" src="{{wallet.img}}" alt="{{wallet.alt}} Logo"></a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-          <div class="ml-5-until-md mt-10-sm">
+          </li>
+          {% set hardwallets = [
+            { "href": "https://www.ledger.com/",
+              "id": "wallet-ledger",
+              "alt": _("Ledger"),
+              "imgclasses": "invertible-img" },
+            { "href": "https://www.secalot.com/",
+              "id": "wallet-secalot",
+              "alt": _("Secalot") },
+            { "href": "https://trezor.io/",
+              "id": "wallet-trezor",
+              "alt": _("Trezor"),
+              "imgclasses": "invertible-img"},
+          ] %}
+          {% for wallet in hardwallets %}
+          <li class="nav-item">
+            <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100 {% if wallet.imgclasses %}{{wallet.imgclasses}}{% endif %}" id="{{wallet.id}}" alt="{{wallet.alt}}" /></a>
+          </li>
+          {% endfor %}
+          <li class="nav-item nav-grid-head">
             <h6 class="fs-4-5">{% trans %}Software Wallets{% endtrans %}</h6>
-            <ul class="nav flex-column">
-              {% set softwallets = [
-                { "href": _("https://xumm.app/"),
-                  "img":  _("./img/wallets/xumm.svg"),
-                  "alt": _("Xumm") },
-                { "href": _("https://trustwallet.com/"),
-                  "img":  _("./img/wallets/trust.svg"),
-                  "alt": _("Trust Wallet") },
-                { "href": _("https://gatehub.net/"),
-                  "img":  _("./img/wallets/gatehub.svg"),
-                  "alt": _("Gatehub") },
-              ] %}
-              {% for wallet in softwallets %}
-              <li class="nav-item">
-                <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100" src="{{wallet.img}}" alt="{{wallet.alt}} Logo"></a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
+          </li>
+          {% set softwallets = [
+            { "href": "https://xumm.app/",
+              "id": "wallet-xumm",
+              "alt": _("Xumm") },
+            { "href": _("https://trustwallet.com/"),
+              "id": "wallet-trust",
+              "alt": _("Trust Wallet") },
+            { "href": _("https://gatehub.net/"),
+              "id": "wallet-gatehub",
+              "alt": _("Gatehub"),
+              "imgclasses": "invertible-img" },
+          ] %}
+          {% for wallet in softwallets %}
+          <li class="nav-item">
+            <a class="nav-link external-link" href="{{wallet.href}}" target="_blank"><img class="mw-100 {% if wallet.imgclasses %}{{wallet.imgclasses}}{% endif %}" id="{{wallet.id}}" alt="{{wallet.alt}}" /></a>
+          </li>
+          {% endfor %}
+        </ul>
           <p class="fs-3 mt-10">{% trans %}Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.{% endtrans %}</p>
       </div>
 
@@ -207,72 +206,47 @@
           </div>
         </div>
         <h6>{% trans %}Top Exchanges, according to CryptoCompare{% endtrans %}</h6>
-        <div class="card-grid card-grid-2xN mb-10">
-          <div class="mr-5-until-md">
-            <ul class="nav flex-column">
-              {% set exchanges1 = [
-                { "href": _("https://www.bitstamp.com/"),
-                  "number": "1",
-                  "img":  _("./img/exchanges/bitstamp.svg"),
-                  "alt": _("Bitstamp") },
-                { "href": _("https://www.kraken.com/"),
-                  "number": "2",
-                  "img":  _("./img/exchanges/kraken.svg"),
-                  "alt": _("Kraken") },
-                { "href": _("https://cex.io/"),
-                  "number": "3",
-                  "img":  _("./img/exchanges/cex-io.svg"),
-                  "alt": _("Cex.io") },
-                { "href": _("https://www.liquid.com/"),
-                  "number": "4",
-                  "img":  _("./img/exchanges/liquid.svg"),
-                  "alt": _("Liquid") },
-                { "href": _("https://www.lmax.com/"),
-                  "number": "5",
-                  "img":  _("./img/exchanges/lmax.svg"),
-                  "alt": _("LMAX") },
-              ] %}
-              {% for exch in exchanges1 %}
-              <li class="nav-item">
-                <a class="nav-link external-link" href="{{exch.href}}" target="_blank"><span class="longform mr-3">{{exch.number}}</span><img class="mw-100" src="{{exch.img}}" alt="{{exch.alt}} Logo"></a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-          <div class="ml-5-until-md">
-            <ul class="nav flex-column">
-              {% set exchanges1 = [
-                { "href": _("https://www.bitfinex.com/"),
-                  "number": "6",
-                  "img":  _("./img/exchanges/bitfinex.svg"),
-                  "alt": _("Bitfinex") },
-                { "href": _("https://www.etoro.com/crypto/exchange/"),
-                  "number": "7",
-                  "img":  _("./img/exchanges/etoro.svg"),
-                  "alt": _("eToro") },
-                { "href": _("https://currency.com"),
-                  "number": "8",
-                  "img":  _("./img/exchanges/currency.svg"),
-                  "alt": _("Currency.com") },
-                { "href": _("https://bittrex.com/"),
-                  "number": "9",
-                  "img":  _("./img/exchanges/bittrex.svg"),
-                  "alt": _("Bittrex") },
-                { "href": _("https://ftx.com/"),
-                  "number": "10",
-                  "img":  _("./img/exchanges/ftx.svg"),
-                  "alt": _("FTX") },
-              ] %}
-              {% for exch in exchanges1 %}
-              <li class="nav-item">
-                <a class="nav-link external-link" href="{{exch.href}}" target="_blank"><span class="longform mr-3">{{exch.number}}</span><img class="mw-100" src="{{exch.img}}" alt="{{exch.alt}} Logo"></a>
-              </li>
-              {% endfor %}
-          </ul>
-        </div>
-        </div>
+        <ul class="nav nav-grid-lg cols-of-5 mb-10" id="top-exchanges">
+          {% set exchanges = [
+            { "href": "https://www.bitstamp.com/",
+              "id": "exch-bitstamp",
+              "alt": _("Bitstamp") },
+            { "href": _("https://www.kraken.com/"),
+              "id": "exch-kraken",
+              "alt": _("Kraken") },
+            { "href": _("https://cex.io/"),
+              "id":  "exch-cex-io",
+              "alt": _("Cex.io") },
+            { "href": _("https://www.liquid.com/"),
+              "id": "exch-liquid",
+              "alt": _("Liquid") },
+            { "href": _("https://www.lmax.com/"),
+              "id": "exch-lmax",
+              "alt": _("LMAX") },
+            { "href": _("https://www.bitfinex.com/"),
+              "id": "exch-bitfinex",
+              "alt": _("Bitfinex") },
+            { "href": _("https://www.etoro.com/crypto/exchange/"),
+              "id": "exch-etoro",
+              "alt": _("eToro") },
+            { "href": _("https://currency.com"),
+              "id": "exch-currency-com",
+              "alt": _("Currency.com") },
+            { "href": _("https://bittrex.com/"),
+              "id": "exch-bittrex",
+              "alt": _("Bittrex") },
+            { "href": _("https://ftx.com/"),
+              "id": "exch-ftx",
+              "alt": _("FTX") },
+          ] %}
+          {% for exch in exchanges %}
+          <li class="nav-item">
+            <a class="nav-link external-link" href="{{exch.href}}" target="_blank"><span class="longform mr-3">{{loop.index}}</span><img class="mw-100" id="{{exch.id}}" alt="{{exch.alt}}"></a>
+          </li>
+          {% endfor %}
+        </ul>
+
         <p class="fs-3 mt-10 mb-0">{% trans %}Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.{% endtrans %}</p>
-      </div>
       </div>
 
     </div>
