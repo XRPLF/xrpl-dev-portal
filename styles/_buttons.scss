@@ -5,6 +5,8 @@
   cursor: pointer;
   text-decoration: none;
   transition: 0.2s;
+  padding: 0.5rem 1rem;
+  line-height: 16px;
 }
 
 .content a.button {
@@ -19,33 +21,6 @@ button.disabled,
 button[disabled="disabled"] {
   cursor: not-allowed;
 }
-//
-// // .btn-outline-secondary,
-// .content a.button,
-// .navbar-dark .navbar-nav .nav-link.btn-outline-secondary {
-//   color: $white;
-//   border-color: $white;
-//   border-width: 2px;
-//   border-style: solid;
-//
-//   &:not(:disabled):not(.disabled):hover, &:not(:disabled):not(.disabled):active {
-//     color: $primary;
-//     border-color: $primary;
-//     background-color: transparent;
-//   }
-// }
-//
-// .navbar-dark .navbar-nav .nav-link:hover {
-//   color: $white;
-// }
-//
-// p + .readmore {
-//   margin-top: 12px;
-// }
-//
-// .card-header a i {
-//   margin: 0 0.2em 0 0.8em;
-// }
 
 .btn-primary code,
 .btn-secondary code {
@@ -58,9 +33,6 @@ button[disabled="disabled"] {
   color: $white;
   border: none;
   border-color: transparent;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  line-height: 16px;
   &:hover {
     background: $blue-purple-600;
   }

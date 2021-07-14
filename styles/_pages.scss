@@ -70,9 +70,29 @@
 
 // Page backgrounds
 .landing-bg {
-  @include media-breakpoint-down(sm) {
-    opacity: .6;
-    margin-right: -20vw;//CURSOR
+  opacity: 0.6;
+  @include media-breakpoint-up(md) {
+    opacity: 1.0;
+  }
+}
+
+.landing-builtin-bg {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    // background-image set on the page-* classes
+    background-repeat: no-repeat;
+    background-position-x: left -20vw;
+    background-position-y: top;
+    opacity: 0.6;
+    @include media-breakpoint-up(md) {
+      background-position-x: left;
+      opacity: 1.0;
+    }
   }
 }
 
@@ -146,11 +166,21 @@
 }
 
 .page-uses {
-  background: url(../img/backgrounds/use-cases-blue.svg) no-repeat;
-  background-position-x: left -20vw;
-  background-position-y: top;
-  @include media-breakpoint-up(md) {
-    background-position-x: left;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(../img/backgrounds/use-cases-blue.svg) no-repeat;
+    background-position-x: left -20vw;
+    background-position-y: top;
+    opacity: 0.6;
+    @include media-breakpoint-up(md) {
+      background-position-x: left;
+      opacity: 1.0;
+    }
   }
   @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
     ##{$usecase} {
@@ -285,11 +315,8 @@
 }
 
 .page-docs-index {
-  background: url(../img/backgrounds/bg-docs.png) no-repeat;
-  background-position-x: left -20vw;
-  background-position-y: top;
-  @include media-breakpoint-up(md) {
-    background-position-x: left;
+  &::before {
+    background-image: url(../img/backgrounds/bg-docs.png);
   }
 
   .center-search {

@@ -615,27 +615,21 @@ a {
     position: static;
     display: inline-block;
     content: " ";
-    background: url("../img/sun-moon.svg");
     cursor: pointer;
     border: 0;
+    background-image: url("../img/sun-moon.svg");
     background-size: 3rem;
     background-color: transparent;
-    background-position: top left;
     transform-origin: center;
     margin-left: -.5rem;
     margin-right: .5rem;
-    transition: all .4s ease;
+    transition: transform .4s ease, background-position .4s ease;
+    // Default: dark mode, show moon
     transform: rotate(15deg);
+    background-position: top left;
   }
   .custom-control-label::after {
     display: none;
-  }
-}
-html.light .custom-theme-toggle {
-  .custom-control-label::before {
-    background-color: transparent;
-    background-position: bottom right;
-    transform: rotate(-15deg);
   }
 }
 

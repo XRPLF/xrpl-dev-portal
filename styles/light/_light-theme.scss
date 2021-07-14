@@ -14,6 +14,13 @@ body {
     background-color: $light-bg;
     color: $light-fg;
 }
+#topnav-theme .custom-theme-toggle {
+  .custom-control-label::before {
+    background-color: transparent;
+    background-position: bottom right;
+    transform: rotate(-15deg);
+  }
+}
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -22,6 +29,7 @@ h1, h2, h3, h4, h5, h6,
   }
   &.green-500 {
     color: $green-700;
+    text-shadow: white 0 0 2px, white -1px -1px 2px, white 1px 1px 2px;
   }
 }
 
@@ -102,7 +110,7 @@ a, nav a {
     color: $light-link-hover-color;
   }
 
-  &:focus {
+  &:not(.btn):focus {
     background-color: transparent;
   }
 }
@@ -358,12 +366,21 @@ pre code {
       background-color: $light-form-bg;
       color: $white;
     }
+    &:focus {
+      background-color: $gray-800;
+    }
   }
 
   .code_toggler {
     background-color: $gray-800;
     color: $gray-100;
     border-color: $gray-100;
+  }
+}
+
+.interactive-block {
+  .breadcrumb-item.done a::after {
+    color: $green-900;
   }
 }
 
@@ -488,6 +505,21 @@ pre code {
   #towo {
     .biz-logo {
       content: url(../img/uses/lightmode/towo.png);
+    }
+  }
+}
+
+.landing-bg {
+  opacity: 0.4;
+  @include media-breakpoint-up(md) {
+    opacity: 1.0;
+  }
+}
+.landing-builtin-bg {
+  &::before {
+    opacity: 0.4;
+    @include media-breakpoint-up(md) {
+      opacity: 1.0;
     }
   }
 }
