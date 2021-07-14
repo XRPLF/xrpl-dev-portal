@@ -21,9 +21,8 @@ WebSocket follows a model where the client and server establish one connection, 
 - You need a stable internet connection and access to a `rippled` server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` server](install-rippled.html), you can also connect to that server locally.
 - To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [issued currencies](issued-currencies.html), you need even more precision. For more information, see [Currency Precision](currency-formats.html#xrp-precision).
 
-<!-- Helper for interactive tutorial breadcrumbs -->
+<!-- Big number support -->
 <script type="application/javascript" src="assets/vendor/big.min.js"></script>
-<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
 <script type="application/javascript">
 // Helper stuff for this interactive tutorial specifically
 
@@ -33,7 +32,6 @@ function writeToConsole(console_selector, message) {
   $(console_selector).append(write_msg)
   // TODO: JSON pretty-printing, maybe w/ multiple input args?
 }
-
 </script>
 
 {% set n = cycler(* range(1,99)) %}
