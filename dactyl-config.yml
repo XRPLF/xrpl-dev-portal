@@ -2280,7 +2280,7 @@ pages:
             - ja
 
     -   name: JavaScript / TypeScript Client Library
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.4/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.7/docs/index.md
         html: rippleapi-reference.html
         parent: client-libraries.html
         blurb: JavaScript/TypeScript client library to the XRP Ledger.
