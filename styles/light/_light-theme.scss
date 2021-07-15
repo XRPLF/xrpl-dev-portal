@@ -92,6 +92,42 @@ h1, h2, h3, h4, h5, h6,
   background-color: $light-form-bg;
 }
 
+// Algolia search results
+.xrp-ledger-dev-portal {
+  // The extra specificity makes this override the default Algolia styles.
+  .algolia-autocomplete {
+    .ds-dropdown-menu [class^="ds-dataset-"] {
+      background-color: $light-standout-bg;
+    }
+    .ds-dropdown-menu::before {
+      background-color: $light-standout-bg;
+    }
+    .algolia-docsearch-suggestion {
+      background-color: $light-standout-bg;
+    }
+    .algolia-docsearch-suggestion--category-header {
+      color: $black;
+      border-bottom-color:$blue-purple-500;
+    }
+    .algolia-docsearch-suggestion--subcategory-column {
+      color: $black;
+    }
+    .algolia-docsearch-suggestion--title {
+      color: $black;
+    }
+    .algolia-docsearch-suggestion--text {
+      color: $light-fg-muted;
+    }
+    .algolia-docsearch-suggestion--highlight {
+      color: $black;
+      background-color: $gray-300;
+    }
+    .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl0 .algolia-docsearch-suggestion--highlight, .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl1 .algolia-docsearch-suggestion--highlight, .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
+      background-color: $gray-300;
+    }
+  }
+}
+
 // Navigation ------------------------------------------------------------------
 
 a, nav a {
