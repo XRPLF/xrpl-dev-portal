@@ -4,24 +4,18 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-  <article class="pt-3 p-md-3">
+  <article class="row">
     {% if (target.lang != "en" and "en" in currentpage.targets) or currentpage.untranslated_warning %}
     {# Add a "sorry this page isn't translated" banner. #}
     <div class="devportal-callout note mb-5"><strong>{% trans %}Sorry, this page is not available in your language.{% endtrans %}</strong>
       <p class="mb-0">{% trans %}We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a>{% endtrans %}</p>
     </div><!--/.devportal-callout-->
     {% endif %}
-<!--
-    <section class="py-26 text-center">
-        <div class="d-flex flex-column-reverse">
-          <h1 class="mb-0">{{currentpage.subtitle}}</h1>
-          <h6 class="green-500 mb-3">{{currentpage.name}}</h6>
-        </div>
-    </section> -->
 
-    <div class="content">
+    <div class="content container-new">
+      <div class="d-flex-column">
         {{ content }}
+      </div>
     </div>
   </article>
-  {% include 'component-feedback-widget.html.jinja' %}
 {% endblock %}

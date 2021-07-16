@@ -1,9 +1,10 @@
 ---
 html: faq.html
-parent: docs.html
+parent: xrp-ledger-overview.html
 blurb: Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community.
 subtitle: Your Questions About XRPL, Answered
-top_nav_grouping: Questions
+top_nav_grouping: About
+sidebar: disabled
 labels:
   - Blockchain
 template: page-faq2.html.jinja
@@ -103,9 +104,9 @@ For recommendations and best practices, see [Run `rippled` as a Validator](run-r
 ## Role of XRP
 
 
-#### Why does Ripple use XRP holdings?
+#### What purpose does XRP serve?
 
-Ripple's XRP holdings incentivize the company to make the XRP Ledger as useful as possible. XRP exists as a native asset in the XRP Ledger for anti-spam transaction purposes, and for currency bridging only if beneficial to users. Otherwise, XRP is optional.
+XRP was created as the XRP Ledger's native asset to empower a new generation of digital payments—faster, greener, and cheaper than any previous digital asset. It also serves to protect the ledger from spam, and to [bridge currencies](autobridging.html) in the XRP Ledger's decentralized exchange, when doing so is beneficial to users. Over time, the XRP Ledger community has pioneered new [use cases](uses.html) for XRP as well was the XRP Ledger itself.
 
 
 #### How does the XRP Ledger respond to transaction floods?

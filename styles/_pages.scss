@@ -210,21 +210,45 @@
     }
   }
 
+  .content {
+    @include media-breakpoint-up(lg) {
+      max-width: 704px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
   .content h6:first-of-type {
     color: $green-500;
     margin-bottom: 1rem;
-    // margin-top: 6.5rem;
-    margin-top: 0;
+    margin-top: 2.5rem;
     font-size: 1.25rem;
     line-height: 26px;
     text-align: center;
+
+    .hover_anchor {
+      display: none;
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 6.5rem;
+    }
   }
   .content h1:first-of-type {
-    font-size: 3.875rem;
-    line-height: 70px;
-    margin-bottom: 13rem;
+    font-size: 2.625rem;
+    line-height: 1.2;
     margin-top: 0;
+    margin-bottom: 5rem;
     text-align: center;
+
+    .hover_anchor {
+      display: none;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 3.875rem;
+      margin-bottom: 13rem;
+    }
   }
 
   h2 {
@@ -232,6 +256,8 @@
     margin-top: 13rem;
     font-size: 2rem;
     line-height: 2.375rem;
+    text-align: center;
+    font-weight: 700;
   }
 
   .q-wrapper {
@@ -248,6 +274,16 @@
       &:hover {
         text-decoration: underline;
         color: $white;
+      }
+    }
+
+    p a {
+      text-decoration: none;
+      font-weight: 600;
+      color: $link-hover-color;
+
+      &:hover {
+        text-decoration: underline;
       }
     }
 

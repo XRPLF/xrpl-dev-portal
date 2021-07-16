@@ -309,6 +309,24 @@ pages:
             - en
             - ja
 
+    -   md: faq.md
+        targets:
+            - en
+
+    -   md: faq.ja.md
+        targets:
+            - ja
+
+    # Redirect old technical-faq.html to new faq.html URL
+    -   name: FAQ
+        html: technical-faq.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: faq.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
 
 # "Documentation" section ------------------------------------------------------
     -   name: Documentation
@@ -3721,26 +3739,6 @@ pages:
         parent: dev-tools.html
         template: page-tx-sender.html.jinja
         embed_ripple_lib: true
-        targets:
-            - en
-            - ja
-
-# FAQ is a special case directly under "Docs" ----------------------------------
-
-    -   md: faq.md
-        targets:
-            - en
-
-    -   md: faq.ja.md
-        targets:
-            - ja
-
-    # Redirect old technical-faq.html to new faq.html URL
-    -   name: FAQ
-        html: technical-faq.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: faq.html
-        nav_omit: true
         targets:
             - en
             - ja

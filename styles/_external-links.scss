@@ -45,6 +45,15 @@
   }
 }
 
+.q-wrapper .external-link {
+  &::after {
+    background-position: left 0 bottom 7px;
+  }
+  &:hover::after {
+    background-position: left 4px bottom 11px;
+  }
+}
+
 .li-links {
   position: relative;
   border-bottom: 2px solid $gray-600;
