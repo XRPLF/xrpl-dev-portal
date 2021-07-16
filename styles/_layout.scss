@@ -15,19 +15,6 @@ section {
   margin-top: 80px;
 }
 
-// Normally-padded pages
-.padded-landing,
-.sidebar-primary #main_content_wrapper {
-  /* Mobile first */
-  padding: 0 1rem 1rem 1rem;
-  @include media-breakpoint-up(md) {
-    padding: 0 2rem 2rem 2rem;
-  }
-  @include media-breakpoint-up(lg) {
-    padding: 0 3rem 3rem 3rem;
-  }
-}
-
 // Square blocks ---------------------------------------------------------------
 
 .square {
@@ -95,6 +82,11 @@ section {
 }
 
 
+.col-lg {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 @for $i from 1 through 5 {
   .cols-of-#{$i} {
     @include media-breakpoint-up(lg) {
@@ -108,87 +100,14 @@ section {
 
 .card-grid {
   display: grid;
-  gap: 1px;
+  grid-gap: 40px;
   padding: 0;
   width: 100%;
-
-  &.card-grid-2x2 {
-    /* left half is a hero area; right half is a 2x2 grid. */
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: auto auto;
-
-    .section-hero {
-      grid-row-end: span 2;
-    }
-
-    @include media-breakpoint-down(md) {
-      /* Switch to 1-column layout on smaller widths */
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(5, auto);
-    }
-  }
-
-  &.card-grid-2x1 {
-    /* left half is a hero area; right half is a 2x1 grid. */
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 1fr;
-
-    .section-hero {
-      grid-row-end: span 1;
-    }
-
-    @include media-breakpoint-down(md) {
-      /* Switch to 1-column layout on smaller widths */
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-    }
-  }
-
-  &.card-grid-2x4 {
-    /* left half is a hero area; right half is a 2x4 grid. Total grid is 4x4 */
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-
-    .section-hero {
-      grid-row-end: span 4;
-    }
-
-    @include media-breakpoint-down(md) {
-      /* Switch to 1-column layout on smaller widths */
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(5, auto);
-
-      .section-hero {
-        grid-row-end: span 1;
-      }
-    }
-  }
-
-  &.card-grid-4xN {
-    /* 4 equal columns and any number of auto-sized rows. */
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-auto-rows: auto;
-
-    /* No "hero" blocks expected here. */
-
-    @include media-breakpoint-down(md) {
-      /* Switch to 1-column layout on smaller widths */
-      grid-template-columns: 1fr;
-    }
-    .col-new {
-      margin: 20px;
-      @include media-breakpoint-down(md) {
-        margin: 20px 0;
-      }
-    }
-  }
 
   &.card-grid-3xN {
     /* 3 equal columns and any number of auto-sized rows. */
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: auto;
-
-    /* No "hero" blocks expected here. */
 
     @include media-breakpoint-down(md) {
       /* Switch to 1-column layout on smaller widths */
@@ -208,8 +127,6 @@ section {
     grid-auto-rows: auto;
     gap: 40px;
 
-    /* No "hero" blocks expected here. */
-
     @include media-breakpoint-down(md) {
       /* Switch to 1-column layout on smaller widths */
       grid-template-columns: 1fr;
@@ -225,21 +142,6 @@ section {
 
     @include media-breakpoint-down(md) {
       /* Switch to 1-column layout on smaller widths */
-      grid-template-columns: 1fr;
-    }
-  }
-
-  &.card-grid-Nx1 {
-    /* 1 row of equal sized columns */
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-    grid-template-rows: auto;
-
-    /* No "hero" blocks expected here. */
-
-    @include media-breakpoint-down(md) {
-      /* Switch to 1-column layout on smaller widths */
-      grid-auto-flow: row;
       grid-template-columns: 1fr;
     }
   }
@@ -271,23 +173,17 @@ $columns: 12; // Number of columns in the grid system
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
+  padding: 0 32px;
   max-width: 100%;
   z-index: 1;
-  @include media-breakpoint-up(xl) {
-    max-width: 1280px;
-  }
-  @include media-breakpoint-down(xl) {
-    max-width: 1040px;
-  }
-  @include media-breakpoint-down(lg) {
-    max-width: 832px;
-  }
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-up(md) {
     max-width: 608px;
   }
-  @include media-breakpoint-down(sm) {
-    max-width: 100%;
-    margin: 0 32px;
+  @include media-breakpoint-up(lg) {
+    max-width: 832px;
+  }
+  @include media-breakpoint-up(xl) {
+    max-width: 1280px;
   }
   // create columns
   @for $width from 1 through $columns {
@@ -345,13 +241,41 @@ $columns: 12; // Number of columns in the grid system
   }
 }
 
-// Misc. layout styles ---------------------------------------------------------
+// 3-column layout for docs pages ----------------------------------------------
 
 .xrp-ledger-dev-portal.sidebar-primary .main {
   z-index: 5;
-  padding: 44px 24px 48px;
+  padding: 2rem;
   min-height: 700px;
 }
+
+.left-sidebar {
+  padding: 2rem;
+
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    max-height: calc(100vh - 80px);
+    top: 80px;
+    left: 0;
+    overflow: auto;
+    border: 0;
+  }
+}
+
+.right-sidebar {
+  padding: 2rem;
+  border: 1px solid $gray-600;
+
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    max-height: calc(100vh - 80px);
+    top: 80px;
+    right: 0;
+    overflow: auto;
+    border: 0;
+  }
+}
+
 
 /* Responsive design for different viewscreens ------------------------------ */
 

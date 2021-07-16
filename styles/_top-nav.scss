@@ -10,7 +10,7 @@
     white-space: pre;
     -webkit-transition: opacity .2s ease, color .2s ease;
     transition: opacity .2s ease, color .2s ease;
-
+    padding-left: 2rem;
 
     .logo {
       margin-left: 0;
@@ -165,10 +165,11 @@
 
   // Desktop only styles -------------------------------------------------------
   @include media-breakpoint-up(lg) {
-    padding: 0 3rem;
+    padding: 0 2rem;
 
     .navbar-brand {
       margin-left: 0;
+      padding-left: 0;
     }
 
     .dropdown-toggle {
@@ -303,12 +304,9 @@
 
   // Mobile only styles --------------------------------------------------------
   @include media-breakpoint-down(md) {
-    .navbar-brand {
-      padding-left: 15px;
-    }
     .navbar-toggler {
       border: 0;
-      padding: 30px;
+      padding: 30px 2rem;
       font-size: 1rem;
       display: inline-block;
 

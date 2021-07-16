@@ -52,8 +52,6 @@ aside .active-parent > a {
 }
 
 .dactyl-tree-nav {
-  padding: 44px 24px 48px 0;
-  position: relative;
 
   nav {
     margin-left: 1rem;
@@ -80,9 +78,14 @@ aside .active-parent > a {
       padding: 0.25rem 1rem;
       font-size: 0.9rem;
     }
-    &.nav-parent .nav-link {
-      padding-left: 0;
-      font-size: 1.125rem;
+    &.nav-parent {
+      padding-top: 0;
+      
+      .nav-link {
+        padding-left: 0;
+        padding-top: 0;
+        font-size: 1.125rem;
+      }
     }
 
     .nav-toggler + .nav-link {
@@ -108,38 +111,30 @@ aside .active-parent > a {
 
 /* Right navigation --------------------------------------------------------- */
 
-.right-sidebar {
-  padding: 44px 0 24px 48px;
 
-  @include media-breakpoint-down(md) {
-    padding: 1.5rem;
-    border: 1px solid $gray-600;
-  }
+.toc-header {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 1rem 0;
 
-  .toc-header {
-    font-weight: bold;
-    font-size: 14px;
-    padding: 1rem 0;
-
-    h4 {
-      line-height: 20px;
-      font-size: 1.2em;
-      padding: 0;
-      margin: 0;
-    }
+  h4 {
+    line-height: 20px;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
   }
 }
 
 #page-toc-wrapper {
-  position: sticky;
-  max-height: 85vh;
-  top: 48px;
-  overflow: auto;
-  padding: 0;
-  border: none;
+  // position: sticky;
+  // max-height: 85vh;
+  // top: 48px;
+  // overflow: auto;
+  // padding: 0;
+  // border: none;
 
   .card-body {
-    padding: 0;
+    // padding: 0;
     list-style-type: none;
   }
 }

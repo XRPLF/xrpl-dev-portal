@@ -67,7 +67,7 @@
   </div>
 
   <section class="container-new py-26">
-    <div class="col-sm-7 p-0 mx-10-until-sm">
+    <div class="col-sm-7">
       <div class="d-flex flex-column-reverse">
         <h3 class="h4 h2-sm">{% trans %}Businesses and projects running<br class="until-sm"> on the XRP Ledger{% endtrans %}</h3>
         <h6 class="green-500 mb-3">{% trans %}Solving Real Problems Across Industries{% endtrans %}</h6>
@@ -132,17 +132,6 @@
         "title": _("Security"),
         "description": _("Xrplorer offers services and tools that help prevent and combat fraudulent activity on the XRPL as well as custom APIs and analytics that supplement the XRPL APIs where they are not enough.")},
     ] %}
-    <!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 card-deck">
-    {% for card in cards %}
-      <a class="card col" href="{{card.link}}" target="_blank" id="{{card.id}}">
-        <div class="card-body">
-          <div class="head-logo"><img src="{{card.img}}" alt="{{card.name}}" {% if card.imgclasses %}class="{{card.imgclasses}}"{% endif %}/></div>
-          <h4 class="card-title h5">{{card.title}}</h4>
-        </div>
-        <div class="card-footer">&nbsp;</div>
-      </a>
-    {% endfor %}
-    </div> -->
 
     <div class="mt-10 card-grid card-grid-3xN">
       {% for card in cards %}

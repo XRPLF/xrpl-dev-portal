@@ -32,6 +32,8 @@ a.card:hover h3 {
 
 .card-deck {
   margin-top: 2.5rem;
+  margin-left: 0;
+  margin-right: 0;
   flex-grow: 1;
   .card {
     background-position: bottom;
