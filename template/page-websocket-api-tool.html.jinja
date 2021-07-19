@@ -31,7 +31,7 @@
           </div><!--/.input-group.loader-->
         </div><!--/.btn-group-->
         <div class="btn-group request-options" role="group">
-          <button class="btn btn-outline-secondary connection" data-toggle="modal" data-target="#wstool-1-connection-settings">Offline (Main Net)</button>
+          <button class="btn btn-outline-secondary connection" data-toggle="modal" data-target="#wstool-1-connection-settings">Offline (Mainnet)</button>
           <div class="input-group loader connect-loader" style="display:none;">
             <span class="input-group-append">
               <img src="assets/img/xrp-loader-96.png" height="24" width="24" />
@@ -51,7 +51,7 @@
           <div class="input-group-prepend">
             <div class="input-group-text" id="wstool-1-keep-last-label">Keep last:</div>
           </div><!--/.input-group-prepend-->
-          <input type="number" value="50" aria-label="Number of responses to keep at once" aria-describedby="wstool-1-keep-last-label" class="form-control keep-last">
+          <input type="number" value="50" min="1" aria-label="Number of responses to keep at once" aria-describedby="wstool-1-keep-last-label" class="form-control keep-last">
         </div><!--/.input-group-->
 
         <div class="btn-group" role="group">
@@ -90,19 +90,19 @@
         <div class="modal-body">
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s1" value="wss://s1.ripple.com/" data-jsonrpcurl="https://s1.ripple.com:51234/" data-shortname="Mainnet" checked>
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s1" value="wss://s1.ripple.com/" data-jsonrpcurl="https://s1.ripple.com:51234/" data-shortname="Mainnet s1" checked>
             <label class="form-check-label" for="wstool-1-connection-s1">
               s1.ripple.com (Mainnet Public Cluster)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-xrplws" value="wss://xrpl.ws/" data-jsonrpcurl="https://xrpl.ws/" data-shortname="Mainnet">
-            <label class="form-check-label" for="wstool-1-connection-xrplws">
-              xrpl.ws (Mainnet Full History Cluster)
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-xrplcluster" value="wss://xrplcluster.com/" data-jsonrpcurl="https://xrplcluster.com/" data-shortname="Mainnet xrplcluster">
+            <label class="form-check-label" for="wstool-1-connection-xrplcluster">
+              xrplcluster.com (Mainnet Full History Cluster)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s2" value="wss://s2.ripple.com/" data-jsonrpcurl="https://s2.ripple.com:51234/" data-shortname="Full History">
+            <input class="form-check-input" type="radio" name="wstool-1-connection" id="wstool-1-connection-s2" value="wss://s2.ripple.com/" data-jsonrpcurl="https://s2.ripple.com:51234/" data-shortname="Mainnet s2">
             <label class="form-check-label" for="wstool-1-connection-s2">
               s2.ripple.com (Mainnet Full History Cluster)
             </label>
