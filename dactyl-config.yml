@@ -63,7 +63,7 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     # Script tags used in a variety of tools & examples.
     lodash_tag: '<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>'
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.9.1.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.9.7.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -309,6 +309,24 @@ pages:
             - en
             - ja
 
+    -   md: faq.md
+        targets:
+            - en
+
+    -   md: faq.ja.md
+        targets:
+            - ja
+
+    # Redirect old technical-faq.html to new faq.html URL
+    -   name: FAQ
+        html: technical-faq.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: faq.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
 
 # "Documentation" section ------------------------------------------------------
     -   name: Documentation
@@ -445,14 +463,6 @@ pages:
             - en
 
     -   md: concepts/introduction/software-ecosystem.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/introduction/technical-faq.md
-        targets:
-            - en
-
-    -   md: concepts/introduction/technical-faq.ja.md
         targets:
             - ja
 
@@ -2280,7 +2290,7 @@ pages:
             - ja
 
     -   name: JavaScript / TypeScript Client Library
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.4/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.9.7/docs/index.md
         html: rippleapi-reference.html
         parent: client-libraries.html
         blurb: JavaScript/TypeScript client library to the XRP Ledger.
@@ -3733,18 +3743,6 @@ pages:
             - en
             - ja
 
-
-# FAQ is a special case directly under "Docs" ----------------------------------
-    -   name: FAQ
-        html: faq.html
-        template: page-faq.html.jinja
-        parent: docs.html
-        blurb: Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community.
-        top_nav_grouping: Questions
-        sidebar: disabled
-        targets:
-            - en
-            - ja
 
 # "Community" tab --------------------------------------------------------------
     -   name: Contribute
