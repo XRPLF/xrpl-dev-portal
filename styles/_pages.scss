@@ -86,11 +86,10 @@
     right: 0;
     // background-image set on the page-* classes
     background-repeat: no-repeat;
-    background-position-x: left -20vw;
+    background-position-x: left;
     background-position-y: top;
     opacity: 0.6;
     @include media-breakpoint-up(md) {
-      background-position-x: left;
       opacity: 1.0;
     }
   }
@@ -167,20 +166,7 @@
 
 .page-uses {
   &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: url(../img/backgrounds/use-cases-blue.svg) no-repeat;
-    background-position-x: left -20vw;
-    background-position-y: top;
-    opacity: 0.6;
-    @include media-breakpoint-up(md) {
-      background-position-x: left;
-      opacity: 1.0;
-    }
+    background-image: url(../img/backgrounds/use-cases-blue.svg);
   }
   @each $usecase in "micropayments", "wallets", "exchanges", "stablecoins", "nft", "defi", "cbdc" {
     ##{$usecase} {
@@ -306,27 +292,11 @@
 }
 
 
-// FAQ Page
-#faq-background {//old
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-}
-
 .page-faq {
-  background-image: url(../img/backgrounds/faq-bg.svg);
-  background-repeat: no-repeat;
-  background-position-x: left -20vw;
-  background-position-y: top;
-  @include media-breakpoint-up(md) {
-    background-position-x: left;
-    background-size: contain;
-
-    .dactyl-tree-nav {
-      background: linear-gradient(90deg, $body-bg 0%, $body-bg 75%, transparent 100%);
-      padding-left: 1rem;
-      margin-left: -1rem;
+  &::before {
+    background-image: url(../img/backgrounds/faq-bg.svg);
+    @include media-breakpoint-up(md) {
+      background-size: contain;
     }
   }
 
@@ -508,6 +478,14 @@
     }
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/4col-light-green.svg);
+    }
+  }
+}
+
+.page-community {
+  @each $platform in "github", "twitch", "stack-overflow", "twitter" {
+    #platform-#{$platform} {
+      content: url("../img/logos/#{$platform}.svg")
     }
   }
 }

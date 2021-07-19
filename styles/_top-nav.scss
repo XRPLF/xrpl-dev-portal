@@ -601,6 +601,7 @@ a {
 .custom-theme-toggle {
   .custom-control-label {
     padding: 1rem;
+    cursor: pointer;
   }
   .custom-control-label::before,
   .custom-control-input:checked ~ .custom-control-label::before {

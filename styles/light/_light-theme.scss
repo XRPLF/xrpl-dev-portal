@@ -10,9 +10,8 @@ $light-standout-bg: $white;
 // General color elements ------------------------------------------------------
 
 body {
-    background: $light-bg;
-    background-color: $light-bg;
-    color: $light-fg;
+  background-color: $light-bg;
+  color: $light-fg;
 }
 #topnav-theme .custom-theme-toggle {
   .custom-control-label::before {
@@ -326,10 +325,28 @@ aside .active > a:hover {
   box-shadow: $light-box-shadow;
 }
 
-// FAQ (old style)
-.accordian-row {
-  background-color: $gray-200;
-  color: $light-fg;
+// FAQ
+.page-faq {
+  &.landing-builtin-bg::before {
+    // Lighten the background image for legibility, since this one
+    // runs under a significant amount of the header text.
+    opacity: 0.6;
+  }
+
+  .q-wrapper {
+    background-color: $gray-200;
+    color: $light-fg;
+
+    > a.expander:hover {
+      color: $light-fg;
+    }
+  }
+}
+
+.page-community {
+  #platform-stack-overflow {
+    content: url("../img/logos/lightmode/stack-overflow.svg")
+  }
 }
 
 // Status labels
