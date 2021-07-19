@@ -1,11 +1,17 @@
 ---
-html: technical-faq.html
-parent: introduction.html
+html: faq.html
+parent: docs.html
 blurb: バリデータ、ユニークノードリスト、XRPの役割、セキュリティなどのトピックに関するよくある質問に対しての答えを見つけてください。
 labels:
   - ブロックチェーン
+subtitle: Your Questions About XRPL, Answered
+top_nav_grouping: 質問
+template: page-faq2.html.jinja
+filters:
+  - faq
+name: よくある質問
 ---
-# 技術に関するよくある質問
+# よくある質問
 
 ## バリデータ（検証者）とユニークノードリスト
 
