@@ -90,6 +90,7 @@
     </div><!--/.language-selector-->
 #}-->
 
+    {% if target.light_theme_enabled %}
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
         <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
@@ -98,5 +99,6 @@
         </div>
       </form>
     </div><!--/#topnav-theme-->
+    {% endif %}
   </div><!--/#top-main-nav-->
 </nav>

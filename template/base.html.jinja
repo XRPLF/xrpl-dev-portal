@@ -32,8 +32,10 @@
     <meta name="msapplication-TileColor" content="#25A768">
     <meta name="msapplication-config" content="{{currentpage.prefix}}assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#25A768">
+    {% if target.light_theme_enabled %}
     <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
     <meta name="color-scheme" content="dark light">
+    {% endif %}
 
     <!-- jQuery -->
     <script src="{{currentpage.prefix}}assets/vendor/jquery-3.6.0.min.js"></script>
@@ -73,8 +75,10 @@
     <script src="assets/js/js-editor.js"></script>
     {% endif %}
 
+    {% if target.light_theme_enabled %}
     <!-- Theme switch -->
     <script src="assets/js/theme-switch.js"></script>
+    {% endif %}
 
     {% block head %}
 
