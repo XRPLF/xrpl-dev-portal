@@ -6,6 +6,10 @@
   padding: 0 2rem 2rem 2rem;
 }
 
+.interactive-block .breadcrumbs-wrap {
+  padding: 0;
+}
+
 .breadcrumb-item + .breadcrumb-item:before {
     content: "\f105"; /* fontawesome angle-right */
     font-family: FontAwesome;
