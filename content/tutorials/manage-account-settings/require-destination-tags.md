@@ -42,7 +42,7 @@ When you're [building actual production-ready software](production-readiness.htm
 
 You must be connected to the network to submit transactions to it.
 
-The following code uses a [ripple-lib for JavaScript](rippleapi-reference.html) instance to connect to a public XRP Testnet server:
+The following code uses a [ripple-lib for JavaScript](rippleapi-reference.html) instance to connect to a public XRP Ledger Testnet server:
 
 ```js
 ripple = require('ripple-lib') // Node.js only. Use a <script> tag in browsers.
