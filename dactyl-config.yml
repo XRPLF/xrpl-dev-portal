@@ -1349,6 +1349,22 @@ pages:
         targets:
             - ja
 
+        # TODO: translate title & blurb
+    -   name: Use Tokens
+        html: use-tokens.html
+        parent: tutorials.html
+        blurb: Create and trade tokens (fungible or otherwise) in the XRP Ledger.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/use-tokens/issue-a-fungible-token.md
+        targets:
+            - en
+            - ja
+
     # TODO: "Send a Cross-Currency Payment"
 
     # TODO: Set up issuing/operational addresses, monitor changes to balances,
