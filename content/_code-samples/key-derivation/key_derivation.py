@@ -9,7 +9,7 @@
 # exercise due caution before using it with real money or infrastructure.
 # This file is provided under the MIT license along with the rest of the
 # XRP Ledger Dev Portal docs and sample code:
-# https://github.com/ripple/xrpl-dev-portal/blob/master/LICENSE
+# https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE
 # Some of its dependencies are released under other licenses or are adapted
 # from public domain code. See their respective files for details.
 ################################################################################

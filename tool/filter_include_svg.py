@@ -2,7 +2,7 @@
 ## SVG Diagram Includer                                                       ##
 ## Author: Rome Reginelli                                                     ##
 ## Copyright: Ripple Labs, Inc. 2020                                          ##
-## License: MIT https://github.com/ripple/xrpl-dev-portal/blob/master/LICENSE ##
+## License: MIT https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE  ##
 ##                                                                            ##
 ## Includes a particular SVG diagram inline while also making it a link to    ##
 ## the raw diagram (so people can click to view it zoomed in).                ##
