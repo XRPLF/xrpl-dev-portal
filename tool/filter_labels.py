@@ -2,7 +2,7 @@
 ## Label Functions                                                            ##
 ## Author: Rome Reginelli                                                     ##
 ## Copyright: Ripple Labs, Inc. 2021                                          ##
-## License: MIT https://github.com/ripple/xrpl-dev-portal/blob/master/LICENSE ##
+## License: MIT https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE  ##
 ##                                                                            ##
 ## Functions to find pages with a given label                                 ##
 ################################################################################

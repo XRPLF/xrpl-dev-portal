@@ -57,7 +57,7 @@ languages:
 default_keys: &defaults
     # These github_ fields are used by the template's "Edit on GitHub" link.
     #  Override them with --vars to change which fork/branch to edit.
-    github_forkurl: https://github.com/ripple/xrpl-dev-portal
+    github_forkurl: https://github.com/XRPLF/xrpl-dev-portal
     github_branch: master
     # Hover icon markup for permalinking headers
     hover_anchors: <i class="fa fa-link"></i>
@@ -3803,7 +3803,7 @@ pages:
             - ja
 
     -   name: GitHub
-        html: https://github.com/ripple/xrpl-dev-portal/
+        html: https://github.com/XRPLF/xrpl-dev-portal/
         parent: contribute.html
         blurb: View and propose changes to this site's source code on GitHub.
         targets:

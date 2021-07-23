@@ -10,7 +10,7 @@ To build the site locally:
 
 2. Clone the repo and change into its directory:
 
-        git clone git@github.com:ripple/xrpl-dev-portal.git && cd xrpl-dev-portal
+        git clone git@github.com:XRPLF/xrpl-dev-portal.git && cd xrpl-dev-portal
 
 3. Build the site to the `out/` directory:
 

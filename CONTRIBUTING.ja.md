@@ -103,7 +103,7 @@ XRP Ledger開発者ポータルは主に英語で記載されているため、�
     display_name: XRP Ledger Dev Portal
     # These github_ fields are used by the template's "Edit on GitHub" link.
     #  Override them with --vars to change which fork/branch to edit.
-    github_forkurl: https://github.com/ripple/xrpl-dev-portal
+    github_forkurl: https://github.com/XRPLF/xrpl-dev-portal
     github_branch: master
     strings:
         blog: "Blog"
@@ -173,7 +173,7 @@ languages:
 
 ### 最初にすべきこと
 
-XRP Ledger開発者ポータルを任意の母国語に翻訳いただける場合は、XRP Ledgerの主要なプロパティーと機能について説明する[XRP Ledgerの概要ファイル](https://github.com/ripple/xrpl-dev-portal/blob/master/content/concepts/introduction/xrp-ledger-overview.md)から始めてください。
+XRP Ledger開発者ポータルを任意の母国語に翻訳いただける場合は、XRP Ledgerの主要なプロパティーと機能について説明する[XRP Ledgerの概要ファイル](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/concepts/introduction/xrp-ledger-overview.md)から始めてください。
 
 ファイル名は`xrp-ledger-overview.{language code}.md`で保存してください。`{language code}`は[IETF BCP47](https://tools.ietf.org/html/bcp47)の言語コードです。（例えば、スペイン語は「es」、日本語は「ja」、簡体字中国語は「zh-CN」、台湾で使用される繁体字中国語は「zh-TW」などです。）その後、このリポジトリーにファイルを追加する[プルリクエスト](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)を開きます。リポジトリーのメンテナーが、サイトに言語を追加するために必要なその他のセットアップについてお手伝いします。
 
