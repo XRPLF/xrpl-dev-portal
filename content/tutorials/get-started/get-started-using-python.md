@@ -167,7 +167,7 @@ Using these building blocks, we can create a simple Python app that:
 {% include '_code-samples/xrpl-py/get-acct-info.py' %}
 ```
 
-To run the app, you can copy and paste the code into an editor or IDE and run it from there. Or you could download the file from the [XRP Ledger Dev Portal repo](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/xrpl-py) and run it locally:
+To run the app, you can copy and paste the code into an editor or IDE and run it from there. Or you could download the file from the [XRP Ledger Dev Portal repo](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/xrpl-py) and run it locally:
 
 
 ```sh

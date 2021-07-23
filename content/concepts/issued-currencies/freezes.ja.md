@@ -428,7 +428,7 @@ console.log(currentFlags & lsfNoFreeze); //0
 # 関連項目
 
 * [GB-2014-02新機能残高凍結](https://ripple.com/files/GB-2014-02.pdf)
-* [凍結コードの例](https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/freeze)
+* [凍結コードの例](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
