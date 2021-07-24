@@ -1,21 +1,19 @@
 <!-- Feedback Widget -->
-<script src="{{currentpage.prefix}}assets/vendor/custom-widget.js"></script>
+<script src="{{currentpage.prefix}}assets/vendor/feedback-widget.js"></script>
 <div id="feedback-content"></div>
-<script>
-  const widget = new EmbeddableWidget.default({
+ <script>
+  // Options
+  const options = {
+    analyticsConfig: [
+      { name: 'ga', id: 'UA-45576805-2' },
+      { name: 'gtm', id: 'GTM-THHW334' },
+    ],
+    analyticsName: 'Feedback Widget Tracker',
     theme: 'xrpl',
-    opened: false,
-    parentElement: '#feedback-content',
     currentPath: window.location.pathname,
-    adapter: 'ga',
-    app:'Feedback Widget',
-    adapterConfig:{
-      containerId:"GTM-THHW334",
-      trackingId:"UA-45576805-2"
-    }
-  });
-  setTimeout(() => {
-    widget.open();
-    // EmbeddableWidget.default.unmount();
-  }, 2000);
+    parentElement: '#feedback-content',
+  };
+
+  // Init WidgetClass
+  const r = new WidgetClass(options);
 </script>
