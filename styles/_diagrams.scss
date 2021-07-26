@@ -20,7 +20,7 @@
   }
 }
 
-.dark .content {
+:not(.light) .content {
 
   // Recolor UMLet diagrams for dark theme -------------------------------------
   svg[fill="black"] {
