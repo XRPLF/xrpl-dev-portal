@@ -185,5 +185,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1126"
       }
     ]
+  },
+  "fix_dark_mode_diagrams": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "ff214a40b8ae9c3d6f0915127246425eaaf9cf89",
+        "updatedAt": "2021-07-26T21:53:38.905Z",
+        "href": "pr-preview/fix_dark_mode_diagrams/ff214a",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1128"
+      }
+    ]
   }
 }
