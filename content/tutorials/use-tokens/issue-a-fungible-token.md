@@ -123,12 +123,12 @@ TODO: CODE SAMPLE
       <input type="checkbox" class="form-control form-check-input" value="" id="cold-default-ripple" disabled="disabled" checked/>
     </div>
   </div>
-  <div class="form-group row">
+  <!--<div class="form-group row">
     <label for="cold-require-auth" class="col-form-label col-sm-3">Require Authorization</label>
     <div class="input-group col">
       <input type="checkbox" class="form-control form-check-input" value="" id="cold-require-auth" />
     </div>
-  </div>
+  </div>-->
   <div class="form-group row">
     <label for="cold-require-dest" class="col-form-label col-sm-3">Require Destination Tags</label>
     <div class="input-group col">
@@ -144,7 +144,7 @@ TODO: CODE SAMPLE
   <div class="form-group row">
     <label for="cold-transfer-fee" class="col-form-label col-sm-3">Transfer Fee</label>
     <div class="input-group col">
-      <input type="number" class="form-control" id="cold-transfer-fee" value="0" step="0.01" min="0" max="100">
+      <input type="number" class="form-control" id="cold-transfer-fee" value="0" step="0.01" min="0" max="100" />
       <div class="input-group-append">
         <div class="input-group-text">%</div>
       </div>
@@ -153,7 +153,7 @@ TODO: CODE SAMPLE
   <div class="form-group row">
     <label for="cold-tick-size" class="col-form-label col-sm-3">Tick Size</label>
     <div class="input-group col">
-      <input type="number" class="form-control" id="cold-tick-size" value="5" step="1" min="0" max="15">
+      <input type="number" class="form-control" id="cold-tick-size" value="5" step="1" min="0" max="15" />
     </div>
   </div><!--/.form-inline-->
 </form>
@@ -183,8 +183,8 @@ TODO: code
 <form>
   <div class="form-inline">
     <div class="input-group">
-      <label for="cold-disallow-xrp" class="form-check-label mr-3">Disallow XRP</label>
-      <input type="checkbox" class="form-control form-check-input" value="" id="cold-disallow-xrp" checked />
+      <label for="hot-disallow-xrp" class="form-check-label mr-3">Disallow XRP</label>
+      <input type="checkbox" class="form-control form-check-input" value="" id="hot-disallow-xrp" checked="checked" />
     </div>
   </div>
 </form>
@@ -208,10 +208,33 @@ TODO: code
 ```
 
 {{ start_step("Make Trust Line") }}
+<form>
+  <h4>Currency code:</h4>
+  <div class="container">
+    <div class="input-group row">
+      <input type="radio" id="use-std-code" name="currency-code-type" class="mr-2" checked="checked" />
+      <label for="use-std-code" class="input-group-text col-lg-3">Standard:</label>
+      <input type="text" id="currency-code-std" pattern="[A-Za-z0-9?!@#$%*(){}|\x26\x3c\x3e]{3}" value="FOO" class="form-control col-lg-8" title="3 character code (letters, numbers, and some symbols)" />
+    </div>
+
+    <div class="input-group row">
+      <input type="radio" id="use-hex-code" name="currency-code-type" class="mr-2" />
+      <label for="use-hex-code" class="input-group-text col-lg-3">Non-standard:</label>
+      <input type="text" id="currency-code-hex" pattern="[0-9A-F]{40}" value="015841551A748AD2C1F76FF6ECB0CCCD00000000" title="40 hexadecimal characters" class="form-control col-lg-8" />
+    </div>
+
+    <div class="input-group row mt-2">
+      <label for="trust-limit" class="input-group-text col-lg-3">Limit:</label>
+      <input type="number" id="trust-limit" min="0" value="1000000000" title="Maximum amount the hot address can hold" class="form-control col-lg-8" />
+    </div>
+  </div>
+</form>
 <button id="make-trust-line-button" class="btn btn-primary">Send TrustSet</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
+
+**Note**: If you use [Authorized Trust Lines][], there is an extra step after this one: the cold address must approve the trust line from the hot address. For details of how to do this, see [Authorizing Trust Lines](authorized-trust-lines.html#authorizing-trust-lines).
 
 
 ### {{n.next()}}. Send Token
@@ -239,7 +262,7 @@ TODO: code
 ```
 
 {{ start_step("Send Token") }}
-<button id="make-trust-line-button" class="btn btn-primary">Send Token</button>
+<button id="send-token-button" class="btn btn-primary">Send Token</button>
 <div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
