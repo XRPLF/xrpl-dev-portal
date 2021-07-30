@@ -196,5 +196,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1128"
       }
     ]
+  },
+  "bharathchari-ripplex-interledger": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "ab2cc74e9c728fad0c92173cd900e72fb98b3930",
+        "updatedAt": "2021-07-30T15:07:14.893Z",
+        "href": "pr-preview/bharathchari-ripplex-interledger/ab2cc7",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1131"
+      }
+    ]
   }
 }
