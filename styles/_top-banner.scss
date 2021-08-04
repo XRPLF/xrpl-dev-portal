@@ -54,3 +54,40 @@ body {
         top: 100px;
     }
 }
+
+$banner-top-offset: 146px;
+
+.main h1:before,
+.main h2:before,
+.main h3:before,
+.main h4:before,
+.main h5:before,
+.main h6:before,
+#main_content_wrapper:before,
+.interactive-block:before {
+    margin-top: -$banner-top-offset;
+    height: $banner-top-offset;
+}
+
+.content h1:first-child:before {
+    margin-top: -$banner-top-offset;
+}
+
+#main_content_wrapper {
+    margin-top: 53px;
+}
+
+html.light {
+    .top-banner {
+        .btn-outline-secondary {
+            color: #E0E0E1;
+            border-color: #E0E0E1;
+            &:not(:disabled):not(.disabled):hover {
+                color: #111112;
+                background-color: #E0E0E1;
+                border-color: #E0E0E1;
+            }
+        }
+        
+    }
+} 
