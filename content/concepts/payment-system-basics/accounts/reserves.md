@@ -13,7 +13,9 @@ The XRP Ledger applies _reserve requirements_, in XRP, to protect the shared glo
 
 To have an account, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send that address enough XRP to meet the reserve requirement.
 
-As determined by [Fee Voting](fee-voting.html), the current minimum reserve requirement is **20 XRP**. (This is the cost of an address that owns no other objects in the ledger.) Each new [account](accounts.html) must set aside this much XRP. Some of this XRP can be recovered by [deleting the account](accounts.html#deletion-of-accounts).
+The current minimum reserve requirement is **20 XRP**. (This is the cost of an address that owns no other objects in the ledger.) Each new [account](accounts.html) must set aside this much XRP. Some of this XRP can be recovered by [deleting the account](accounts.html#deletion-of-accounts).
+
+The [Fee Voting](fee-voting.html) process can change the reserve requirement if enough validators agree to new reserve settings.
 
 
 ## Base Reserve and Owner Reserve
