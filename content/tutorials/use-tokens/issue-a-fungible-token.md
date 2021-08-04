@@ -89,6 +89,7 @@ First, configure the settings for your cold address (which will become the issue
 
 - [Default Ripple][]: **This setting is required** so that users can send your token to each other. It's best to enable it _before_ setting up any trust lines or issuing any tokens.
 - [Authorized Trust Lines][]: (Optional) This setting (also called "Require Auth") limits your tokens to being held _only_ by accounts you've explicitly approved. You cannot enable this setting if you already have any trust lines or offers for _any_ token.
+    **Note:** To use authorized trust lines, you must perform additional steps that are not shown in this tutorial.
 
 [Default Ripple]: rippling.html
 [Authorized Trust Lines]: authorized-trust-lines.html
@@ -106,6 +107,7 @@ Other settings you may want to, optionally, configure for your cold address (iss
 [Require Destination Tags]: require-destination-tags.html
 [Transfer Fee]: transfer-fees.html
 [Tick Size]: tick-size.html
+[Domain]: accountset.html#domain
 
 **Note:** Many issuing settings apply equally to all tokens issued by an address, regardless of the currency code. If you want to issue multiple types of tokens in the XRP Ledger with different settings, you should use a different address to issue each different token.
 
