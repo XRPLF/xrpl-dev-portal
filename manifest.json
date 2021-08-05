@@ -207,5 +207,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1131"
       }
     ]
+  },
+  "css_fixes": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "20fd1844298f66d106023f3aadbcf644dbf58a90",
+        "updatedAt": "2021-08-05T00:37:16.698Z",
+        "href": "pr-preview/css_fixes/20fd18",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1136"
+      }
+    ]
   }
 }
