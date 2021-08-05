@@ -169,17 +169,20 @@
       {% set features = [
         { "chip": _("In Development"),
           "title":  _("Smart Contracts"),
-          "description":  _("Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the <a href='https://hooks-testnet.xrpl-labs.com/' target='_blank'>hooks amendment and public testnet</a> that enable smart contract functionality.") },
+          "description":  _("Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the <a href='https://hooks-testnet.xrpl-labs.com/' target='_blank'>hooks amendment and public testnet</a> that enable smart contract functionality."),
+          "href": "https://hooks-testnet.xrpl-labs.com/" },
         { "chip": _("In Development"),
           "title":  _("Non-Fungible Tokens"),
-          "description":  _("Lower fees, faster transactions, and custom token functionality make the XRPL ideally suited for building an ecosystem for NFTs. Explore <a href='docs.html'>proposed standards</a> for issuing NFTs.")},
+          "description":  _("Lower fees, faster transactions, and custom token functionality make the XRPL ideally suited for building an ecosystem for NFTs. Explore <a href='docs.html#docs-hot-topic'>proposed standards</a> for issuing NFTs."),
+          "href": "docs.html#docs-hot-topic"},
         { "chip": _("In Development"),
           "title":  _("Sidechains"),
-          "description":  _("Extend, experiment, and specialize a custom sidechain based on the XRPL's proven blockchain technology. Learn more about <a href='https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-xrp-ledger-2o7o' target='_blank'>the vision of sidechains</a>.")},
+          "description":  _("Extend, experiment, and specialize a custom sidechain based on the XRPL's proven blockchain technology. Learn more about <a href='https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-xrp-ledger-2o7o' target='_blank'>the vision of sidechains</a>."),
+          "href": "https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-xrp-ledger-2o7o"},
       ] %}
       {% for feat in features %}
-      <li class="col-new ls-none pt-3-sm">
-        <h5 class="chip chip-green">{{feat.chip}}</h5>
+      <li class="col-new ls-none pt-2">
+        <a class="label chip-green" href="{{feat.href}}">{{feat.chip}}</a>
         <h4 class="mt-3 mb-0 h5">{{feat.title}}</h4>
         <p class="mt-6-until-sm mt-3 mb-0">{{feat.description}}</p>
       </li>
