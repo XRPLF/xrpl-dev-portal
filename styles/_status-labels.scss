@@ -76,10 +76,7 @@
     }
   }
 
-  &.label-accounts,
-  &.label-payment-channels,
-  &.label-アカウント,
-  &.label-payment-channel {
+  @mixin chip-indigo {
     background-color: $blue-purple-900;
     color: $blue-purple-300;
     .badge-pill {
@@ -96,9 +93,7 @@
     }
   }
 
-  &.label-blockchain,
-  &.label-xrp,
-  &.label-ブロックチェーン {
+  @mixin chip-green {
     background-color: $green-900;
     color: $green-300;
     .badge-pill {
@@ -115,9 +110,7 @@
     }
   }
 
-  &.label-checks,
-  &.label-core-server,
-  &.label-コアサーバー  {
+  @mixin chip-purple {
     background-color: $red-purple-900;
     color: $red-purple-300;
     .badge-pill {
@@ -134,10 +127,7 @@
     }
   }
 
-  &.label-cross-currency,
-  &.label-security,
-  &.label-複数通貨間,
-  &.label-セキュリティ {
+  @mixin chip-yellow {
     background-color: $yellow-900;
     color: $yellow-300;
     .badge-pill {
@@ -154,12 +144,7 @@
     }
   }
 
-  &.label-decentralized-exchange,
-  &.label-smart-contracts,
-  &.label-transaction-sending,
-  &.label-分散型取引所,
-  &.label-スマートコントラクト,
-  &.label-トランザクション送信 {
+  @mixin chip-blue {
     background-color: $blue-900;
     color: $blue-300;
     .badge-pill {
@@ -176,11 +161,7 @@
     }
   }
 
-  &.label-escrow,
-  &.label-tokens,
-  &.label-development,
-  &.label-トークン,
-  &.label-開発 {
+  @mixin chip-orange {
     background-color: $orange-900;
     color: $orange-300;
     .badge-pill {
@@ -197,12 +178,7 @@
     }
   }
 
-  &.label-fees,
-  &.label-payments,
-  &.label-data-retention,
-  &.label-手数料,
-  &.label-支払い,
-  &.label-データ保持 {
+  @mixin chip-magenta {
     background-color: $magenta-900;
     color: $magenta-300;
     .badge-pill {
@@ -217,6 +193,65 @@
         color: $magenta-800;
       }
     }
+  }
+
+  &.label-accounts,
+  &.label-payment-channels,
+  &.label-アカウント,
+  &.label-payment-channel,
+  &.chip-indigo {
+    @include chip-indigo;
+  }
+
+  &.label-blockchain,
+  &.label-xrp,
+  &.label-ブロックチェーン,
+  &.chip-green {
+    @include chip-green;
+  }
+
+  &.label-checks,
+  &.label-core-server,
+  &.label-コアサーバー,
+  &.chip-purple  {
+    @include chip-purple;
+  }
+
+  &.label-cross-currency,
+  &.label-security,
+  &.label-複数通貨間,
+  &.label-セキュリティ,
+  &.chip-yellow {
+    @include chip-yellow;
+  }
+
+  &.label-decentralized-exchange,
+  &.label-smart-contracts,
+  &.label-transaction-sending,
+  &.label-分散型取引所,
+  &.label-スマートコントラクト,
+  &.label-トランザクション送信,
+  &.chip-blue {
+    @include chip-blue;
+  }
+
+  &.label-escrow,
+  &.label-tokens,
+  &.label-development,
+  &.label-トークン,
+  &.label-開発,
+  &.chip-orange {
+    @include chip-orange;
+  }
+
+  &.label-fees,
+  &.label-payments,
+  &.label-data-retention,
+  &.label-手数料,
+  &.label-支払い,
+  &.label-データ保持,
+  &.chip-magenta {
+    @include chip-magenta;
   }
 }
 

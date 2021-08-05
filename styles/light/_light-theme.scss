@@ -326,7 +326,8 @@ aside .active > a:hover {
 }
 
 // FAQ
-.page-faq {
+.page-faq,
+.mini-faq {
   &.landing-builtin-bg::before {
     // Lighten the background image for legibility, since this one
     // runs under a significant amount of the header text.
