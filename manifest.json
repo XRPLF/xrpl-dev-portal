@@ -218,5 +218,16 @@
         "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1136"
       }
     ]
+  },
+  "bharathchari-patch-1": {
+    "apps": [
+      {
+        "name": "pr-preview",
+        "headCommitId": "1de391e244c907c68449a4758118db4aecd17cdd",
+        "updatedAt": "2021-08-06T13:34:24.010Z",
+        "href": "pr-preview/bharathchari-patch-1/1de391",
+        "pullRequestUrl": "https://github.com/XRPLF/xrpl-dev-portal/pull/1138"
+      }
+    ]
   }
 }
