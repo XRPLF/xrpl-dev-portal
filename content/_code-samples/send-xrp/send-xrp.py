@@ -1,4 +1,5 @@
 # Example Credentials ----------------------------------------------------------
+import sys
 from xrpl.wallet import Wallet
 test_wallet = Wallet(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9", sequence=16237283)
 print(test_wallet.classic_address) # "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
@@ -43,7 +44,7 @@ print(f"Can be validated in ledger range: {min_ledger} - {max_ledger}")
 try:
     prelim_result = xrpl.transaction.submit_transaction(signed_tx, client)
 except xrpl.clients.XRPLRequestFailureException as e:
-    exit(f"Submit failed: {e}")
+    sys.exit(f"Submit failed: {e}")
 print("Preliminary transaction result:", prelim_result)
 
 # Wait for validation ----------------------------------------------------------
