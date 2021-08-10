@@ -5,6 +5,7 @@ blurb: Create your own token and issue it on the XRP Ledger Testnet.
 embed_ripple_lib: true
 filters:
   - interactive_steps
+  - include_code
 labels:
   - Tokens
 ---
@@ -113,9 +114,14 @@ Other settings you may want to, optionally, configure for your cold address (iss
 
 The following code sample shows how to send an [AccountSet transaction][] to enable the recommended cold address settings:
 
-```
-TODO: CODE SAMPLE
-```
+
+<!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
+
+{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Configure issuer", end_before="// Configure hot", language="js") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Configure Issuer") }}
 <form>
@@ -176,10 +182,13 @@ The hot address does not strictly require any settings changes from the default,
 
 The following code sample shows how to send an [AccountSet transaction][] to enable the recommended hot address settings:
 
-```
-TODO: code
-```
+<!-- MULTICODE_BLOCK_START -->
 
+_JavaScript_
+
+{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Configure hot address", end_before="// Create trust line", language="js") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Configure Hot Address") }}
 <form>
@@ -205,9 +214,13 @@ The hot address needs a trust line like this before it can receive tokens from t
 
 The following code sample shows how to send a [TrustSet transaction][] from the hot address, trusting the issuing address for a limit of 1 billion FOO:
 
-```
-TODO: code
-```
+<!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
+
+{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Create trust line", end_before="// Send token", language="js") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Make Trust Line") }}
 <form>
@@ -259,9 +272,13 @@ You can use [auto-filled values](transaction-common-fields.html#auto-fillable-fi
 
 The following code sample shows how to send a [Payment transaction][] to issue 88 FOO from the cold address to the hot address:
 
-```
-TODO: code
-```
+<!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
+
+{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Send token", end_before="// Check balances", language="js") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Send Token") }}
 <button id="send-token-button" class="btn btn-primary">Send Token</button>
@@ -282,9 +299,13 @@ Use the [gateway_balances method][] to look up balances from the perspective of 
 
 The following code sample shows how to use both methods:
 
-```
-TODO: code
-```
+<!-- MULTICODE_BLOCK_START -->
+
+_JavaScript_
+
+{{ include_code("_code-samples/issue-a-token/issue-a-token.js", start_with="// Check balances", end_before="// End of", language="js") }}
+
+<!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Confirm Balances") }}
 <button id="check-balances-button" class="btn btn-primary">Confirm Balances</button>

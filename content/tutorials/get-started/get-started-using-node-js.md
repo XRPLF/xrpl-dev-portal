@@ -242,17 +242,13 @@ The `catch` method ends this Promise chain. The callback provided here runs if a
 
 # Waiting for Validation
 
-One of the biggest challenges in using the XRP Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you [follow the best practices](reliable-transaction-submission.html) you still have to wait for the [consensus process](consensus.html) to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:
+Most transactions are validated and have a final result in one or two ledger versions, about 2-7 seconds after submission. However, when things don't go quite as planned, it can be tricky to know what a transaction's final, immutable results are. Even if you [follow the best practices](reliable-transaction-submission.html) you still have to wait for the [consensus process](consensus.html) to finally accept or reject your transaction.
 
-```
-{% include '_code-samples/rippleapi_quickstart/submit-and-verify.js' %}
-```
+The [submit-and-verify code sample](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/submit-and-verify/) demonstrates how to submit a transaction and wait for it to have a final result.
 
-This code creates and submits an order transaction, although the same principles apply to other types of transactions as well. After submitting the transaction, the code uses a new Promise, which queries the ledger again after using `setTimeout` to wait a fixed amount of time, to see if the transaction has been verified. If it hasn't been verified, the process repeats until either the transaction is found in a validated ledger or the returned ledger is higher than the `LastLedgerSequence` parameter.
+In rare cases (particularly with a large delay, a brief network outage, or a loss of power), the `rippled` server may be missing a ledger version between when you submitted the transaction and when you determined that the network validated the last ledger version that the transaction . In this case, you cannot be definitively sure whether the transaction has failed, or has been included in one of the missing ledger versions.
 
-In rare cases (particularly with a large delay or a loss of power), the `rippled` server may be missing a ledger version between when you submitted the transaction and when you determined that the network has passed the `maxLedgerVersion`. In this case, you cannot be definitively sure whether the transaction has failed, or has been included in one of the missing ledger versions. RippleAPI returns `MissingLedgerHistoryError` in this case.
-
-If you are the administrator of the `rippled` server, you can [manually request the missing ledger(s)](ledger_request.html). Otherwise, you can try checking the ledger history using a different server. (Ripple runs a public full-history server at `s2.ripple.com` for this purpose.)
+If you are the administrator of the `rippled` server, you can [manually request the missing ledger(s)](ledger_request.html). Otherwise, you can try checking the ledger history using a different server. Several [public full-history servers](public-servers.html) are available for this purpose.
 
 See [Reliable Transaction Submission](reliable-transaction-submission.html) for a more thorough explanation.
 
